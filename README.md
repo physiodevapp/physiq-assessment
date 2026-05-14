@@ -1,4 +1,4 @@
-# PhysiQ-V
+# PhysiQ-Assessment
 
 Musculoskeletal physiotherapy assessment assistant. Guides the clinician
 through a structured 5-phase clinical workflow: triage, systemic screening,

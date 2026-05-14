@@ -1,5 +1,5 @@
 // ============================================================
-// PhysiQ-V · APP.js
+// PhysiQ-Assessment · APP.js
 // Lógica principal de la aplicación
 // ============================================================
 
@@ -1317,7 +1317,7 @@ function buildResults() {
   const now = new Date();
   container.innerHTML += `
   <div style="text-align:center; padding:1rem 0; color:var(--text3); font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:1px;">
-    PhysiQ-V · Valoración generada el ${now.toLocaleDateString('es-ES')} a las ${now.toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'})}
+    PhysiQ-Assessment · Valoración generada el ${now.toLocaleDateString('es-ES')} a las ${now.toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'})}
   </div>`;
 }
 
