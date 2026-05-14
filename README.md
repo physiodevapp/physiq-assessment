@@ -21,6 +21,29 @@ SINSS, ICF decision tree, and hypothesis confirmation.
 
 Available regions: shoulder, hip, cervical, lumbar, knee, elbow.
 
+## Motivation
+
+I'm a physiotherapist and developer. This tool was born from a real clinical
+need: structured assessments in busy outpatient settings are often rushed or
+inconsistent. PhysiQ-Assessment brings a standardised 5-phase workflow to the
+consultation room, designed to be used live with patients.
+
+Currently being piloted in a real clinical environment.
+
+## Technical decisions
+
+- **No frameworks** — the app runs on any device without installation or internet
+  dependency beyond the initial load. A clinician can use it on a tablet mid-session.
+- **data.js separated from logic** — clinical content (red flags, LR+/LR−, ICF tree)
+  is isolated so it can be reviewed and updated by another physiotherapist without
+  touching the application logic.
+- **Single-file standalone version** — `physiq-v-standalone.html` allows offline use
+  or sharing without a server.
+
+## Status
+
+🧪 Pilot phase — being tested in a real outpatient physiotherapy clinic.
+
 ## Stack
 
 Pure HTML/CSS/JS SPA — no frameworks, no build step.
