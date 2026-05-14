@@ -4,7 +4,7 @@ Musculoskeletal physiotherapy assessment assistant. Guides the clinician
 through a structured 5-phase clinical workflow: triage, systemic screening,
 SINSS, ICF decision tree, and hypothesis confirmation.
 
-**[→ Open app](https://physiodevapp.github.io/physiq-v/)**
+**[→ Open app](https://physiodevapp.github.io/physiq-assessment/)**
 
 ---
 
@@ -28,7 +28,22 @@ need: structured assessments in busy outpatient settings are often rushed or
 inconsistent. PhysiQ-Assessment brings a standardised 5-phase workflow to the
 consultation room, designed to be used live with patients.
 
-Currently being piloted in a real clinical environment.
+## Clinical content
+
+The screening questions, red flags, diagnostic tests and LR+/LR− values were
+curated from peer-reviewed clinical literature and structured around the
+clinical reasoning framework I use in daily practice.
+
+The ICF decision tree for each region reflects real differential diagnosis
+pathways built from clinical experience — not a generic checklist. Each
+hypothesis maps to specific exploratory tests with documented sensitivity,
+specificity and likelihood ratios.
+
+## Status
+
+🧪 Pilot phase — currently in use across both my own private practice and
+a physiotherapy clinic, gathering structured feedback to iterate on the
+workflow and expand region coverage.
 
 ## Technical decisions
 
@@ -40,9 +55,12 @@ Currently being piloted in a real clinical environment.
 - **Single-file standalone version** — `physiq-v-standalone.html` allows offline use
   or sharing without a server.
 
-## Status
+## Development
 
-🧪 Pilot phase — being tested in a real outpatient physiotherapy clinic.
+Built with Claude Code as a coding assistant. The clinical architecture,
+UX decisions, and all domain content are my own — the tool reflects how I
+actually think through a musculoskeletal assessment, translated into a
+structured interface.
 
 ## Stack
 
