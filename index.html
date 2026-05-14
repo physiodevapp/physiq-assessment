@@ -1653,6 +1653,79 @@
     margin-top: 8px;
   }
   .tool-suggestion strong { color: var(--accent); }
+
+  /* ── TRANSLATE BUTTON & TOOLTIP ─────────────────────────── */
+  .btn-translate {
+    position: relative;
+    background: transparent;
+    border: none;
+    color: var(--text3);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: color 0.2s;
+    line-height: 1;
+  }
+  .btn-translate:hover { color: var(--text2); }
+  .translate-tooltip {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    color: var(--text2);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 200;
+  }
+  .btn-translate:hover .translate-tooltip { opacity: 1; }
+  .translate-banner {
+    position: fixed;
+    top: 94px;
+    left: 0; right: 0;
+    z-index: 90;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    padding: 9px 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: var(--text2);
+    font-family: 'Outfit', sans-serif;
+    transform: translateY(-100%);
+    transition: transform 0.25s ease;
+  }
+  .translate-banner.visible { transform: translateY(0); }
+  .translate-banner-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--text3);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 4px;
+    line-height: 1;
+  }
+  @media (min-width: 769px) {
+    .translate-banner { display: none; }
+  }
+  @media (max-width: 768px) {
+    .translate-tooltip { display: none; }
+    .btn-reset-text { display: none; }
+  }
+  @media (max-width: 480px) {
+    .translate-banner { top: 88px; }
+  }
 </style>
 </head>
 <body>
@@ -1665,9 +1738,18 @@
   </div>
   <div class="header-right">
     <span class="phase-indicator" id="phaseIndicator">FASE 1 / 5</span>
-    <button class="btn-reset" onclick="resetApp()">↺ Reiniciar</button>
+    <button class="btn-translate" onclick="handleTranslateClick()" aria-label="View in English">
+      🌐
+      <span class="translate-tooltip">View in English<br>Right-click → Translate to English</span>
+    </button>
+    <button class="btn-reset" onclick="resetApp()">↺ <span class="btn-reset-text">Reiniciar</span></button>
   </div>
 </header>
+
+<div class="translate-banner" id="translateBanner">
+  🌐 <span>Long-press or right-click → Translate to English</span>
+  <button class="translate-banner-close" onclick="hideTranslateBanner()">✕</button>
+</div>
 
 <!-- PROGRESS -->
 <div class="progress-bar-wrap">
