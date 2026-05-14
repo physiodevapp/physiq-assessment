@@ -544,15 +544,16 @@ function setupSisObserver(sisId, row) {
   document.getElementById('sisBannerIcon').textContent = icon;
   document.getElementById('sisBannerName').textContent = name;
 
+  const sisNavH = window.innerWidth <= 768 ? 94 : 64;
   _sisObserver = new IntersectionObserver(entries => {
     const entry = entries[0];
     const banner = document.getElementById('sisContextBanner');
-    if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+    if (!entry.isIntersecting && entry.boundingClientRect.top < sisNavH) {
       banner.classList.add('visible');
     } else {
       banner.classList.remove('visible');
     }
-  }, { threshold: 0, rootMargin: '-94px 0px 0px 0px' });
+  }, { threshold: 0, rootMargin: `-${sisNavH}px 0px 0px 0px` });
 
   _sisObserver.observe(header);
 }
@@ -1045,15 +1046,16 @@ function setupHypObserver(hId) {
   if (bannerDot) bannerDot.style.background = dotBg;
   if (bannerName) bannerName.textContent = name.textContent;
 
+  const hypNavH = window.innerWidth <= 768 ? 94 : 64;
   _hypObserver = new IntersectionObserver(entries => {
     const entry = entries[0];
     const banner = document.getElementById('hypContextBanner');
-    if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+    if (!entry.isIntersecting && entry.boundingClientRect.top < hypNavH) {
       banner.classList.add('visible');
     } else {
       banner.classList.remove('visible');
     }
-  }, { threshold: 0, rootMargin: '-94px 0px 0px 0px' });
+  }, { threshold: 0, rootMargin: `-${hypNavH}px 0px 0px 0px` });
 
   _hypObserver.observe(header);
 }
