@@ -1,46 +1,46 @@
 # PhysiQ-V
 
-Asistente de valoración en fisioterapia musculoesquelética. Guía al
-fisioterapeuta a través de un flujo clínico estructurado en 5 fases:
-triage, cribado sistémico, SINSS, árbol CIF y confirmación de hipótesis.
+Musculoskeletal physiotherapy assessment assistant. Guides the clinician
+through a structured 5-phase clinical workflow: triage, systemic screening,
+SINSS, ICF decision tree, and hypothesis confirmation.
 
-**[→ Abrir aplicación](https://physiodevapp.github.io/physiq-v/)**
+**[→ Open app](https://physiodevapp.github.io/physiq-v/)**
 
 ---
 
-## Fases del flujo clínico
+## Clinical workflow
 
-| Fase | Descripción |
-|------|-------------|
-| 1 — Triage y Cabecera | Datos demográficos, mecanismo, cronología, riesgo psicosocial, banderas rojas |
-| 2 — Cribado Sistémico | Screening por región corporal y sistema orgánico |
-| 3 — SINSS | Naturaleza del dolor, estadio, irritabilidad, signo comparable, NRS |
-| 4 — Algoritmo CIF | Árbol de decisión diagnóstica por región |
-| 4b — Confirmación de Hipótesis | Tests exploratorios con LR+/LR− |
-| 5 — Resultados | Resumen clínico, hipótesis prioritarias, plan de tratamiento |
+| Phase | Description |
+|-------|-------------|
+| 1 — Triage & Header | Demographics, mechanism, timeline, psychosocial risk, red flags |
+| 2 — Systemic Screening | Screening by body region and organ system |
+| 3 — SINSS | Pain nature, stage, irritability, comparable sign, NRS |
+| 4 — ICF Algorithm | Region-specific diagnostic decision tree |
+| 4b — Hypothesis Confirmation | Exploratory tests with LR+/LR− |
+| 5 — Results | Clinical summary, priority hypotheses, treatment plan |
 
-Regiones disponibles: hombro, cadera, cervical, lumbar, rodilla, codo.
+Available regions: shoulder, hip, cervical, lumbar, knee, elbow.
 
 ## Stack
 
-SPA en HTML/CSS/JS puro, sin frameworks ni dependencias de build.
-Única dependencia externa: Google Fonts (DM Serif Display, DM Mono, Outfit).
+Pure HTML/CSS/JS SPA — no frameworks, no build step.
+Single external dependency: Google Fonts (DM Serif Display, DM Mono, Outfit).
 
 ```
-index.html   → HTML estructural + CSS completo
-data.js      → Constantes clínicas (screening, hipótesis, árbol CIF)
-app.js       → State, lógica de navegación y event handlers
+index.html   → HTML structure + full CSS
+data.js      → Clinical constants (screening, hypotheses, ICF tree)
+app.js       → State, navigation logic and event handlers
 ```
 
-## Correr en local
+## Run locally
 
 ```bash
 npx serve .
-# o Live Server en VS Code
+# or Live Server in VS Code
 ```
 
-## Aviso clínico
+## Clinical disclaimer
 
-El contenido clínico (banderas rojas, preguntas de screening, tests
-diagnósticos con LR+/LR−) proviene de documentación clínica validada.
-No modificar sin revisión de un fisioterapeuta clínico.
+Clinical content (red flags, screening questions, diagnostic tests with
+LR+/LR−) is derived from validated clinical documentation.
+Do not modify without review by a licensed physiotherapist.
