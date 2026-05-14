@@ -4,7 +4,7 @@ Asistente de valoración en fisioterapia musculoesquelética. Guía al
 fisioterapeuta a través de un flujo clínico estructurado en 5 fases:
 triage, cribado sistémico, SINSS, árbol CIF y confirmación de hipótesis.
 
-**[→ Abrir aplicación](https://TU_USUARIO.github.io/physiq-v/)**
+**[→ Abrir aplicación](https://physiodevapp.github.io/physiq-v/)**
 
 ---
 
