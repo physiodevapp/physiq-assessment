@@ -1334,10 +1334,8 @@ function goToPhase2Next() {
 function updateMobilePhaseBar(phaseN) {
   const def = PHASE_DEFS.find(p => p.n === phaseN || String(p.n) === String(phaseN));
   if (!def) return;
-  const total = PHASE_DEFS.length;
-  const idx = PHASE_DEFS.indexOf(def) + 1;
   const label = document.getElementById('mobilePhaseLabel');
-  if (label) label.textContent = `Fase ${idx} de ${total} · ${def.label}`;
+  if (label) label.textContent = `${def.short} · ${def.label}`;
 }
 
 function togglePhaseSheet() {

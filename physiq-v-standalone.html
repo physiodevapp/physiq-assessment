@@ -1730,7 +1730,6 @@
 <!-- ==================== FASE 1: TRIAGE ==================== -->
 <div class="phase-container active" id="phase1">
   <div class="phase-header">
-    <div class="phase-tag">Fase 1 · Triage y Cabecera</div>
     <h1 class="phase-title">Datos Iniciales del Paciente</h1>
     <p class="phase-subtitle">Recogida de información básica y filtros de seguridad antes de iniciar la valoración mecánica.</p>
   </div>
@@ -1857,7 +1856,6 @@
 <!-- ==================== FASE 2: CRIBADO SISTÉMICO ==================== -->
 <div class="phase-container" id="phase2">
   <div class="phase-header">
-    <div class="phase-tag">Fase 2 · Cribado Sistémico</div>
     <h1 class="phase-title">Screening de Patología Sistémica</h1>
     <p class="phase-subtitle">Seleccione la región de valoración. El sistema mostrará banderas rojas/amarillas y el cuestionario de cribado por sistema orgánico relevante.</p>
   </div>
@@ -1928,7 +1926,6 @@
 <!-- ==================== FASE 3: SINSS ==================== -->
 <div class="phase-container" id="phase3">
   <div class="phase-header">
-    <div class="phase-tag">Fase 3 · SINSS</div>
     <h1 class="phase-title">Abordaje de la Sesión</h1>
     <p class="phase-subtitle">Caracterización del cuadro clínico: Severidad, Irritabilidad, Naturaleza, Estadio y Estabilidad.</p>
   </div>
@@ -2099,7 +2096,6 @@
 <!-- ==================== FASE 4: ALGORITMO CIF ==================== -->
 <div class="phase-container" id="phase4">
   <div class="phase-header">
-    <div class="phase-tag">Fase 4 · Algoritmo CIF</div>
     <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
       <div>
         <h1 class="phase-title" id="phase4Title">Árbol de Decisión</h1>
@@ -2118,7 +2114,6 @@
 <!-- ==================== FASE 4b: CONFIRMACIÓN DE HIPÓTESIS ==================== -->
 <div class="phase-container" id="phase4b">
   <div class="phase-header">
-    <div class="phase-tag">Fase 4b · Confirmación de Hipótesis</div>
     <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
       <div>
         <h1 class="phase-title">Tests Exploratorios <span class="semaforo-dots"><span style="color:var(--green);">●</span><span style="color:var(--orange);">●</span><span style="color:var(--red);">●</span></span></h1>
@@ -2137,7 +2132,6 @@
 <!-- ==================== FASE 5: RESULTADOS ==================== -->
 <div class="phase-container" id="phase5">
   <div class="phase-header">
-    <div class="phase-tag">Fase 5 · Resultados</div>
     <h1 class="phase-title">Informe de Valoración</h1>
     <p class="phase-subtitle">Resumen clínico completo generado a partir de la valoración. Puede imprimirlo o guardarlo.</p>
   </div>
@@ -5151,10 +5145,8 @@ const PHASE_NAV_IDS = { 1:'nav1', 2:'nav2', 3:'nav3', 4:'nav4', '4b':'nav4b', 5:
 function updateMobilePhaseBar(phaseN) {
   const def = PHASE_DEFS.find(p => p.n === phaseN || String(p.n) === String(phaseN));
   if (!def) return;
-  const total = PHASE_DEFS.length;
-  const idx = PHASE_DEFS.indexOf(def) + 1;
   const label = document.getElementById('mobilePhaseLabel');
-  if (label) label.textContent = `Fase ${idx} de ${total} · ${def.label}`;
+  if (label) label.textContent = `${def.short} · ${def.label}`;
 }
 
 function togglePhaseSheet() {
