@@ -478,7 +478,7 @@ function buildSistemaHTML(sis) {
   if (hasImpact) {
     const impId = `imp_${sis.id}`;
     html += `
-      <div class="impact-toggle" id="toggle_${impId}" onclick="toggleImpact('${impId}')">
+      <div class="impact-toggle" id="toggle_${impId}" onclick="toggleImpact(this)">
         <span class="impact-chevron">▶</span>
         <span>Impacto en Descanso y Tolerancia al Ejercicio</span>
       </div>
@@ -583,13 +583,12 @@ function scrollToActiveSisHeader() {
   window.scrollTo({ top, behavior: 'smooth' });
 }
 
-function toggleImpact(impId) {
-  const body = document.getElementById(impId);
-  const toggle = document.getElementById(`toggle_${impId}`);
+function toggleImpact(toggleEl) {
+  const body = toggleEl.nextElementSibling;
   if (!body) return;
   const isOpen = body.classList.contains('open');
   body.classList.toggle('open', !isOpen);
-  toggle.classList.toggle('open', !isOpen);
+  toggleEl.classList.toggle('open', !isOpen);
 }
 
 function selectSistQ(btn, id, value, isAlerta, sisId) {
