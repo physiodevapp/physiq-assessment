@@ -39,6 +39,12 @@ pathways built from clinical experience — not a generic checklist. Each
 hypothesis maps to specific exploratory tests with documented sensitivity,
 specificity and likelihood ratios.
 
+### Primary references
+
+- **Goodman, C.C. & Snyder, T.E.K.** — *Differential Diagnosis for Physical Therapists: Screening for Referral* (6th ed.). Elsevier. Core framework for systemic screening, organ-system red flags, and referral criteria.
+- **Magee, D.J.** — *Orthopedic Physical Assessment* (7th ed.). Elsevier. Source for region-specific special tests, sensitivity/specificity values, and diagnostic likelihood ratios.
+- **OpenEvidence** — [openevidence.com](https://www.openevidence.com). AI-assisted clinical evidence synthesis used to cross-reference and validate LR+/LR− values and screening criteria against current literature.
+
 ## Status
 
 🧪 Pilot phase — currently in use across both my own private practice and
