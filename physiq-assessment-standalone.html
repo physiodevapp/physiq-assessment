@@ -5307,7 +5307,7 @@ function exportToPhysiQ() {
 function copyContextToClipboard() {
   const d = buildPhysiQPayload();
   const hyps = (d.h || []).map(h => `  · ${h.name} — ${h.sc}`).join('\n');
-  const text = `VALORACIÓN PhysiQ-V
+  const text = `VALORACIÓN PhysiQ-Assessment
 Región: ${d.r} · NRS: ${d.nr}/10 · Irritabilidad: ${d.ir}
 Cribado sistémico: ${d.si ? 'POSITIVO ⚠️' : 'Negativo'}
 Hipótesis:

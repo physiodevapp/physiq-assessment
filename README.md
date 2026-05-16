@@ -58,7 +58,7 @@ workflow and expand region coverage.
 - **data.js separated from logic** — clinical content (red flags, LR+/LR−, ICF tree)
   is isolated so it can be reviewed and updated by another physiotherapist without
   touching the application logic.
-- **Single-file standalone version** — `physiq-v-standalone.html` allows offline use
+- **Single-file standalone version** — `physiq-assessment-standalone.html` allows offline use
   or sharing without a server.
 
 ## Development

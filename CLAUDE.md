@@ -29,12 +29,12 @@ All source lives in the project root — there are no subdirectories.
 | `index.html` | DOM structure + all embedded CSS (2,200+ lines) |
 | `app.js` | Application state, navigation logic, event handlers, UI rendering |
 | `data.js` | All clinical content: screening systems, ICF trees, hypotheses, LR± values |
-| `physiq-v-standalone.html` | Self-contained offline version (inline JS+CSS) for tablet distribution |
+| `physiq-assessment-standalone.html` | Self-contained offline version (inline JS+CSS) for tablet distribution |
 
-### Internal structure of `physiq-v-standalone.html`
+### Internal structure of `physiq-assessment-standalone.html`
 
 ```
-physiq-v-standalone.html  (~5480 lines)
+physiq-assessment-standalone.html  (~5480 lines)
 ├── L1–220      Head + imports (Google Fonts: Outfit, DM Serif Display, DM Mono)
 ├── L220–1750   Full CSS (variables, components, responsive)
 ├── L1750–3850  HTML for all 6 phases + nav + bottom sheets
@@ -160,7 +160,7 @@ Use `showConfirmBanner(title, text, actionLabel, callback)` — never use the na
 ### Responsive layout
 Mobile uses card layouts and bottom phase bar; desktop uses tables and horizontal nav.
 
-The `physiq-v-standalone.html` file must be kept in sync with `index.html` + `app.js` + `data.js` when significant features change, as it is the offline distribution version.
+The `physiq-assessment-standalone.html` file must be kept in sync with `index.html` + `app.js` + `data.js` when significant features change, as it is the offline distribution version.
 
 ## Export to PhysiQ
 
