@@ -11,6 +11,7 @@ const state = {
   regionChanged: false,   // región cambiada sin haber rehecho el árbol
   treeModified: false,    // árbol modificado sin haber rehecho 4b
   // Fase 1
+  patient: '',
   motivoConsulta: '',
   mecanismo: '',
   cronologia: '',
@@ -1314,6 +1315,17 @@ function buildResults() {
     </div>
   </div>`;
 
+  // ── Export buttons
+  container.innerHTML += `
+  <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:10px;">
+    <button class="btn btn-primary" onclick="exportToPhysiQ()" style="background:linear-gradient(135deg,#4fc3a1,#3db38d); font-size:0.9rem; padding:12px 20px;">
+      Generar informe CIF-AFTA en PhysiQ
+    </button>
+    <button class="btn btn-secondary" onclick="copyContextToClipboard()" style="font-size:0.85rem;">
+      Copiar contexto clínico
+    </button>
+  </div>`;
+
   // ── Timestamp
   const now = new Date();
   container.innerHTML += `
@@ -1426,6 +1438,72 @@ function showConfirmBanner(title, text, actionLabel, onConfirm) {
     overlay.remove();
     onConfirm();
   };
+}
+
+// ─── PHYSIQ EXPORT ───────────────────────────────────────────
+function buildPhysiQPayload() {
+  return {
+    p:  state.patient ?? '',
+    r:  state.region,
+    d:  new Date().toLocaleDateString('es-ES'),
+    mo: state.motivoConsulta,
+    me: state.mecanismo,
+    cr: state.cronologia,
+    rp: state.riesgoPsico,
+    nr: state.severidad ?? 0,
+    ir: state.irritabilidadNivel,
+    na: state.naturaleza,
+    si: state.sistemicoAlerta,
+    br: Object.values(state.banderasRojas).includes('SI'),
+    h:  state.activeHypotheses.map(id => ({
+          id,
+          name: HYPOTHESES[id]?.name ?? id,
+          sc:   state.hypothesisScores[id]?.label ?? 'Sin evaluar',
+          lr:   state.hypothesisScores[id]?.totalLR ?? null,
+          tr:   state.testResults[id] ?? {}
+        })),
+    pn: state.planNotes
+  };
+}
+
+function exportToPhysiQ() {
+  const payload = buildPhysiQPayload();
+  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+  window.open(`https://physiodevapp.github.io/physiq-report/?v=${encoded}`, '_blank');
+}
+
+function copyContextToClipboard() {
+  const d = buildPhysiQPayload();
+  const hyps = (d.h || []).map(h => `  · ${h.name} — ${h.sc}`).join('\n');
+  const text = `VALORACIÓN PhysiQ-V
+Región: ${d.r} · NRS: ${d.nr}/10 · Irritabilidad: ${d.ir}
+Cribado sistémico: ${d.si ? 'POSITIVO ⚠️' : 'Negativo'}
+Hipótesis:
+${hyps}
+Variable control: ${d.pn?.variableControl || '—'}
+Ventana recuperación: ${d.pn?.ventanaRecuperacion || '—'}
+Anclaje hábito: ${d.pn?.anclajeHabito || '—'}`;
+  navigator.clipboard.writeText(text).then(() => {
+    showCopyFeedback();
+  });
+}
+
+function showCopyFeedback() {
+  const existing = document.getElementById('copyFeedback');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.id = 'copyFeedback';
+  toast.style.cssText = `
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
+    background:var(--surface3); border:1px solid var(--accent2);
+    color:var(--accent2); font-size:0.8rem; font-family:'Outfit',sans-serif;
+    padding:10px 20px; border-radius:8px; z-index:9999;
+    box-shadow:0 4px 16px rgba(0,0,0,0.4);
+    animation:fadeUp 0.25s ease;
+  `;
+  toast.textContent = '✓ Contexto clínico copiado al portapapeles';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2500);
 }
 
 // ─── INIT ─────────────────────────────────────────────────────
