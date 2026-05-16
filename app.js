@@ -953,7 +953,7 @@ function buildHypothesisCards() {
     container.innerHTML = `
       <div class="alert alert-warning" style="flex-direction:column; align-items:flex-start; gap:10px;">
         <div style="display:flex; align-items:center; gap:8px;">
-          <span class="alert-icon">⚠️</span>
+          <span style="font-size:1.2rem; flex-shrink:0; line-height:1;">⚠️</span>
           <strong>El algoritmo no ha identificado un patrón dominante claro.</strong>
         </div>
         <p style="font-size:0.85rem; line-height:1.6; color:var(--text2);">
@@ -1283,7 +1283,7 @@ function buildResults() {
     const showCS = state.cronologia === 'Crónico (>3 meses)' && state.riesgoPsico === 'Alto';
     hypHtml += `
       <div style="background:var(--surface2); border:1px solid var(--orange); border-radius:var(--radius); padding:1.2rem; color:var(--text2); font-size:0.85rem; line-height:1.7;">
-        <div style="color:var(--orange); font-weight:600; margin-bottom:8px;">⚠️ Sin hipótesis diagnósticas identificadas</div>
+        <div style="display:flex; align-items:center; gap:6px; color:var(--orange); font-weight:600; margin-bottom:8px;"><span style="line-height:1;">⚠️</span><span>Sin hipótesis diagnósticas identificadas</span></div>
         <div>El algoritmo no encontró un patrón dominante claro. Se recomienda trabajar con hipótesis de trabajo de <em>dolor de ${regionLabel} inespecífico</em>.</div>
         ${showCS ? `<div style="margin-top:8px; padding-top:8px; border-top:1px solid var(--border2);">Dado el perfil crónico y el riesgo psicosocial elevado, considere también <em>sensibilización central</em> como hipótesis complementaria.</div>` : ''}
       </div>`;
