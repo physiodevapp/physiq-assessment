@@ -34,17 +34,17 @@ All source lives in the project root — there are no subdirectories.
 ### Internal structure of `physiq-v-standalone.html`
 
 ```
-physiq-v-standalone.html  (~5262 lines)
+physiq-v-standalone.html  (~5480 lines)
 ├── L1–220      Head + imports (Google Fonts: Outfit, DM Serif Display, DM Mono)
-├── L220–1700   Full CSS (variables, components, responsive)
-├── L1700–3806  HTML for all 6 phases + nav + contextual banners
-├── L3807–3856  Global `state` object declaration
-├── L3857–4108  Navigation, phases, data collection
-├── L4109–4563  Phase 2: systemic screening, accordions, observers
-├── L4564–4748  Phase 4: CIF tree, renderStep, prune, rebuild
-├── L4749–4950  Phase 4b: hypothesis cards, test results, scores
-├── L4951–5131  Phase 5: buildSummary (full summary render)
-└── L5132–5262  Mobile nav, confirm dialogs, DOMContentLoaded
+├── L220–1750   Full CSS (variables, components, responsive)
+├── L1750–3850  HTML for all 6 phases + nav + bottom sheets
+├── L3850–3900  Global `state` object declaration
+├── L3900–4150  Navigation, phases, data collection
+├── L4150–4600  Phase 2: systemic screening, accordions, observers
+├── L4600–4800  Phase 4: CIF tree, renderStep, prune, rebuild
+├── L4800–5000  Phase 4b: hypothesis cards, test results, scores
+├── L5000–5200  Phase 5: buildSummary (full summary render)
+└── L5200–5480  Mobile nav, actions sheet, confirm dialogs, DOMContentLoaded
 ```
 
 ## State Management
@@ -63,6 +63,7 @@ const state = {
   treeModified: false,
 
   // Phase 1
+  patient: '',              // no UI input yet — always empty
   motivoConsulta: '',       // textarea #motivoConsulta
   mecanismo: '',            // 'Traumático' | 'Insidioso' | 'Post-quirúrgico'
   cronologia: '',           // 'Agudo (<6 semanas)' | 'Subagudo' | 'Crónico (>3 meses)'
@@ -104,8 +105,6 @@ const state = {
   }
 };
 ```
-
-> **Note:** There is no `patient` field in the current state — Phase 1 does not collect patient name. If needed for export payloads, add a `patient` field to state and an input in the Phase 1 UI.
 
 ## Five-Phase Clinical Workflow
 
@@ -163,97 +162,28 @@ Mobile uses card layouts and bottom phase bar; desktop uses tables and horizonta
 
 The `physiq-v-standalone.html` file must be kept in sync with `index.html` + `app.js` + `data.js` when significant features change, as it is the offline distribution version.
 
-## Planned Integration: Export to PhysiQ
+## Export to PhysiQ
 
-At the end of Phase 5, add a **"Generar informe CIF-AFTA"** button that opens the PhysiQ report app with assessment data pre-loaded via URL param (`?v=<base64>`).
+At the end of Phase 5, the app offers three export options:
 
-**Target:** `https://physiodevapp.github.io/physiq-report/`
+- **Desktop (>768px):** three inline buttons in the nav bar — `🖨️ Imprimir`, `📋 Copiar contexto`, `📤 Generar en PhysiQ-Report`
+- **Tablet/mobile (≤768px):** a `↑ Exportar` button that opens a bottom sheet (`#actionsSheet`) with the same three options, following the same pattern as the phase-navigation sheet
 
-### Functions to implement
+**Target URL:** `https://physiodevapp.github.io/physiq-report/`
 
-**`buildPhysiQPayload()`** — builds the minimum payload from state:
+### Key functions (`app.js`)
 
-```js
-function buildPhysiQPayload() {
-  return {
-    p:  state.patient ?? '',
-    r:  state.region,
-    d:  new Date().toLocaleDateString('es-ES'),
-    mo: state.motivoConsulta,
-    me: state.mecanismo,
-    cr: state.cronologia,
-    rp: state.riesgoPsico,
-    nr: state.severidad ?? 0,
-    ir: state.irritabilidadNivel,
-    na: state.naturaleza,
-    si: state.sistemicoAlerta,
-    br: Object.values(state.banderasRojas).includes('SI'),
-    h:  state.activeHypotheses.map(id => ({
-          id,
-          name: HYPOTHESES[id]?.name ?? id,
-          sc:   state.hypothesisScores[id]?.label ?? 'Sin evaluar',
-          lr:   state.hypothesisScores[id]?.totalLR ?? null,
-          tr:   state.testResults[id] ?? {}
-        })),
-    pn: state.planNotes
-  };
-}
-```
+| Function | Purpose |
+|---|---|
+| `buildPhysiQPayload()` | Builds the minimum JSON payload from state |
+| `exportToPhysiQ()` | Base64-encodes the payload and opens PhysiQ-Report in a new tab |
+| `copyContextToClipboard()` | Copies a plain-text summary to clipboard; shows a toast via `showCopyFeedback()` |
+| `toggleActionsSheet()` / `closeActionsSheet()` | Controls the mobile/tablet export bottom sheet |
 
-**`exportToPhysiQ()`** — encodes and opens PhysiQ:
-
-```js
-function exportToPhysiQ() {
-  const payload = buildPhysiQPayload();
-  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-  window.open(`https://physiodevapp.github.io/physiq-report/?v=${encoded}`, '_blank');
-}
-```
-
-**`copyContextToClipboard()`** — plain-text fallback:
-
-```js
-function copyContextToClipboard() {
-  const d = buildPhysiQPayload();
-  const hyps = (d.h || []).map(h => `  · ${h.name} — ${h.sc}`).join('\n');
-  const text = `VALORACIÓN PhysiQ-V
-Región: ${d.r} · NRS: ${d.nr}/10 · Irritabilidad: ${d.ir}
-Cribado sistémico: ${d.si ? 'POSITIVO ⚠️' : 'Negativo'}
-Hipótesis:
-${hyps}
-Variable control: ${d.pn?.variableControl || '—'}
-Ventana recuperación: ${d.pn?.ventanaRecuperacion || '—'}
-Anclaje hábito: ${d.pn?.anclajeHabito || '—'}`;
-  navigator.clipboard.writeText(text).then(() => {
-    showCopyFeedback();
-  });
-}
-```
-
-### Where to add the buttons (Phase 5)
-
-At the end of `buildSummary()` (~L4951 in standalone), after the plan notes block and before the timestamp:
-
-```js
-container.innerHTML += `
-<div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:10px;">
-  <button class="btn btn-primary" onclick="exportToPhysiQ()" style="background:linear-gradient(135deg,#4fc3a1,#3db38d);">
-    📋 Generar informe CIF-AFTA en PhysiQ
-  </button>
-  <button class="btn btn-secondary" onclick="copyContextToClipboard()" style="font-size:0.85rem;">
-    📋 Copiar contexto clínico
-  </button>
-</div>`;
-```
+**Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
 
 > **Verification:** test payload size in DevTools: `btoa(unescape(encodeURIComponent(JSON.stringify(buildPhysiQPayload()))))` — target < 4 KB.
 
-### Pending integration tasks
+### Pending
 
-- [ ] Add `patient` field to `state` and an input in the Phase 1 UI
-- [ ] Implement `buildPhysiQPayload()` in the main JS block
-- [ ] Implement `exportToPhysiQ()` with the correct physiq-report URL
-- [ ] Implement `copyContextToClipboard()` with visual feedback (`showCopyFeedback`)
-- [ ] Add the two buttons at the end of `buildSummary()` in Phase 5
-- [ ] Verify `buildSummary()` is called with complete state before rendering the buttons
-- [ ] Test payload in Chrome DevTools and verify size < 4 KB
+- [ ] Add a patient name input in the Phase 1 UI — `state.patient` exists but is never populated from the UI
