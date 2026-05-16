@@ -944,7 +944,25 @@ function buildHypothesisCards() {
   container.innerHTML = '';
 
   if (state.activeHypotheses.length === 0) {
-    container.innerHTML = `<div class="alert alert-warning"><span class="alert-icon">⚠️</span><span>No hay hipótesis seleccionadas. Regrese al Algoritmo CIF.</span></div>`;
+    const regionLabel = state.region ? state.region.charAt(0).toUpperCase() + state.region.slice(1) : 'la región';
+    const showCS = state.cronologia === 'Crónico (>3 meses)' && state.riesgoPsico === 'Alto';
+    container.innerHTML = `
+      <div class="alert alert-warning" style="flex-direction:column; align-items:flex-start; gap:10px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="alert-icon">⚠️</span>
+          <strong>El algoritmo no ha identificado un patrón dominante claro.</strong>
+        </div>
+        <p style="font-size:0.85rem; line-height:1.6; color:var(--text2);">
+          Esto puede indicar una presentación atípica o un cuadro de dolor musculoesquelético inespecífico.
+        </p>
+        <div style="font-size:0.82rem; color:var(--text2); line-height:1.8;">
+          <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--orange); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Consideraciones</div>
+          <div>· Revise si hay factores psicosociales relevantes (evaluados en Fase 1 y SINSS)</div>
+          <div>· Valore iniciar con hipótesis de trabajo: <em>Dolor de ${regionLabel} inespecífico</em></div>
+          <div>· Regrese al Algoritmo CIF y reconsidere las respuestas seleccionadas</div>
+          ${showCS ? `<div style="margin-top:6px; padding-top:6px; border-top:1px solid var(--border2);">· Dado el perfil crónico y el riesgo psicosocial elevado, considere también <em>sensibilización central</em> como hipótesis complementaria</div>` : ''}
+        </div>
+      </div>`;
     return;
   }
 

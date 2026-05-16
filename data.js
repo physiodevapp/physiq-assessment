@@ -844,7 +844,7 @@ const CIF_TREES = {
         question: '¿Se observa asimetría o "winging" escapular durante el movimiento activo?',
         options: [
           { label: 'SÍ — Asimetría visual en la elevación o test de asistencia escapular positivo', value: 'si', next: null, hypothesis: ['h8'] },
-          { label: 'NO — Sin alteración escapular evidente', value: 'no', next: null, hypothesis: ['h2', 'h3'] }
+          { label: 'NO — Sin alteración escapular evidente', value: 'no', next: null, hypothesis: [] }
         ]
       }
     ]
@@ -901,7 +901,7 @@ const CIF_TREES = {
           { label: 'Dolor profundo en glúteo que empeora al sentarse (ciática) — posible Síndrome Piriforme', value: 'piriforme', next: null, hypothesis: ['ca7'] },
           { label: 'Dolor que empeora con zancada larga al caminar — posible Pinzamiento Isquiofemoral', value: 'isquiof', next: null, hypothesis: ['ca8'] },
           { label: 'Sensibilidad sobre tuberosidad isquiática — posible Tendinopatía Proximal Isquiotibiales', value: 'isquiotib', next: null, hypothesis: ['ca9'] },
-          { label: 'Sin localización clara posterior', value: 'no', next: null, hypothesis: ['ca1', 'ca4'] }
+          { label: 'Sin localización clara posterior', value: 'no', next: null, hypothesis: [] }
         ]
       }
     ]
@@ -1090,7 +1090,7 @@ const CIF_TREES = {
           { label: 'Inestabilidad medial — Dolor al estrés en valgo en deportistas de lanzamiento', value: 'lcc', next: null, hypothesis: ['co4'] },
           { label: 'Inestabilidad posterolateral — Sensación de fallo con carga en supinación/extensión', value: 'irpl', next: null, hypothesis: ['co5'] },
           { label: 'Bloqueo/Chasquido — Dolor posterolateral en extensión terminal', value: 'plica', next: null, hypothesis: ['co6'] },
-          { label: 'Sin inestabilidad ni bloqueos', value: 'no', next: null, hypothesis: ['co1', 'co2'] }
+          { label: 'Sin inestabilidad ni bloqueos', value: 'no', next: null, hypothesis: [] }
         ]
       }
     ]
