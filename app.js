@@ -1185,6 +1185,29 @@ function recalcHypScore(hId) {
 }
 
 // ─── PHASE 5 — RESULTS ───────────────────────────────────────
+const BR_LABELS = {
+  br1: 'Sudor nocturno / Pérdida de peso inexplicada',
+  br2: 'Trauma mayor reciente',
+  br3: 'Déficit neurológico progresivo',
+  br4: 'Dolor no mecánico (no cambia con postura ni movimiento)'
+};
+
+function getSistemicoAffirmativeTexts() {
+  const affirmativeIds = Object.entries(state.sistemicoAnswers)
+    .filter(([, v]) => v === 'SI')
+    .map(([id]) => id);
+  if (!affirmativeIds.length || !state.region) return [];
+  const regionData = SYSTEMIC_SCREENING[state.region];
+  if (!regionData) return [];
+  const texts = [];
+  regionData.sistemas.forEach(sis => {
+    (sis.preguntas || []).forEach(q => {
+      if (affirmativeIds.includes(q.id)) texts.push(q.text);
+    });
+  });
+  return texts;
+}
+
 function buildResults() {
   const container = document.getElementById('resultsContent');
   container.innerHTML = '';
@@ -1195,8 +1218,10 @@ function buildResults() {
     .filter(x => x.hyp)
     .sort((a, b) => b.score - a.score);
 
-  const getBanderaStatus = () => Object.values(state.banderasRojas).includes('SI') ? '⚠️ Bandera roja presente — watchful waiting' : '✓ Sin banderas rojas';
-  const getSistemicoStatus = () => state.sistemicoAlerta ? '⚠️ Respuesta afirmativa en cribado sistémico' : '✓ Sin alertas sistémicas';
+  const brAffirmative = Object.entries(state.banderasRojas)
+    .filter(([, v]) => v === 'SI')
+    .map(([k]) => BR_LABELS[k]);
+  const sqAffirmative = getSistemicoAffirmativeTexts();
 
   // ── Header summary
   container.innerHTML += `
@@ -1205,8 +1230,10 @@ function buildResults() {
     <div class="summary-row"><span class="summary-label">Motivo de consulta</span><span class="summary-value">${state.motivoConsulta || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Mecanismo</span><span class="summary-value">${state.mecanismo || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Cronología</span><span class="summary-value">${state.cronologia || '—'}</span></div>
-    <div class="summary-row"><span class="summary-label">Banderas rojas</span><span class="summary-value">${getBanderaStatus()}</span></div>
-    <div class="summary-row"><span class="summary-label">Cribado sistémico</span><span class="summary-value">${getSistemicoStatus()}</span></div>
+    <div class="summary-row"><span class="summary-label">Banderas rojas</span><span class="summary-value" style="${brAffirmative.length ? 'color:var(--red)' : ''}">${brAffirmative.length ? '⚠️ Bandera roja presente — watchful waiting' : '✓ Sin banderas rojas'}</span></div>
+    ${brAffirmative.length ? `<div style="padding:2px 0 8px 1rem; display:flex; flex-direction:column; gap:3px;">${brAffirmative.map(t => `<span style="color:var(--red); font-size:0.78rem;">· ${t}</span>`).join('')}</div>` : ''}
+    <div class="summary-row"><span class="summary-label">Cribado sistémico</span><span class="summary-value" style="${sqAffirmative.length ? 'color:var(--orange)' : ''}">${sqAffirmative.length ? '⚠️ Respuesta afirmativa en cribado sistémico' : '✓ Sin alertas sistémicas'}</span></div>
+    ${sqAffirmative.length ? `<div style="padding:2px 0 8px 1rem; display:flex; flex-direction:column; gap:3px;">${sqAffirmative.map(t => `<span style="color:var(--orange); font-size:0.78rem;">· ${t}</span>`).join('')}</div>` : ''}
     <div class="summary-row"><span class="summary-label">Riesgo psicosocial</span><span class="summary-value">${state.riesgoPsico ? `${state.riesgoPsico === 'Bajo' ? '🟢' : state.riesgoPsico === 'Medio' ? '🟠' : '🔴'} ${state.riesgoPsico}` : '—'}</span></div>
     ${state.riesgoPsico === 'Alto' ? `<div class="summary-row"><span class="summary-label">Miedo/catastrofización</span><span class="summary-value">${state.psico_miedo || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Autoeficacia</span><span class="summary-value">${state.psico_autoef || '—'}</span></div>
@@ -1454,7 +1481,8 @@ function buildPhysiQPayload() {
     ir: state.irritabilidadNivel,
     na: state.naturaleza,
     si: state.sistemicoAlerta,
-    br: Object.values(state.banderasRojas).includes('SI'),
+    br: Object.entries(state.banderasRojas).filter(([, v]) => v === 'SI').map(([k]) => BR_LABELS[k]),
+    sq: getSistemicoAffirmativeTexts(),
     h:  state.activeHypotheses.map(id => ({
           id,
           name: HYPOTHESES[id]?.name ?? id,
