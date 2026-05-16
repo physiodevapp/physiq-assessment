@@ -1371,17 +1371,6 @@ function buildResults() {
     </div>
   </div>`;
 
-  // ── Export buttons
-  container.innerHTML += `
-  <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:10px;">
-    <button class="btn btn-primary" onclick="exportToPhysiQ()" style="background:linear-gradient(135deg,#4fc3a1,#3db38d); font-size:0.9rem; padding:12px 20px;">
-      Generar informe CIF-AFTA en PhysiQ-Report
-    </button>
-    <button class="btn btn-secondary" onclick="copyContextToClipboard()" style="font-size:0.85rem;">
-      Copiar contexto clínico
-    </button>
-  </div>`;
-
   // ── Timestamp
   const now = new Date();
   container.innerHTML += `
@@ -1419,6 +1408,21 @@ function togglePhaseSheet() {
 function closePhaseSheet() {
   document.getElementById('phaseSheet').classList.remove('open');
   document.getElementById('phaseSheetOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleActionsSheet() {
+  const sheet = document.getElementById('actionsSheet');
+  const overlay = document.getElementById('actionsSheetOverlay');
+  const isOpen = sheet.classList.contains('open');
+  sheet.classList.toggle('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+
+function closeActionsSheet() {
+  document.getElementById('actionsSheet').classList.remove('open');
+  document.getElementById('actionsSheetOverlay').classList.remove('open');
   document.body.style.overflow = '';
 }
 
