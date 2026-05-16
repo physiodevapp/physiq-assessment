@@ -1346,7 +1346,7 @@ function buildResults() {
   container.innerHTML += `
   <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:10px;">
     <button class="btn btn-primary" onclick="exportToPhysiQ()" style="background:linear-gradient(135deg,#4fc3a1,#3db38d); font-size:0.9rem; padding:12px 20px;">
-      Generar informe CIF-AFTA en PhysiQ
+      Generar informe CIF-AFTA en PhysiQ-Report
     </button>
     <button class="btn btn-secondary" onclick="copyContextToClipboard()" style="font-size:0.85rem;">
       Copiar contexto clínico
