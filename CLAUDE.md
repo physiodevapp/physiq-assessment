@@ -63,7 +63,7 @@ const state = {
   treeModified: false,
 
   // Phase 1
-  patient: '',              // no UI input yet — always empty
+  patient: '',              // input #patientName (Phase 1, optional)
   motivoConsulta: '',       // textarea #motivoConsulta
   mecanismo: '',            // 'Traumático' | 'Insidioso' | 'Post-quirúrgico'
   cronologia: '',           // 'Agudo (<6 semanas)' | 'Subagudo' | 'Crónico (>3 meses)'
@@ -186,4 +186,4 @@ At the end of Phase 5, the app offers three export options:
 
 ### Pending
 
-- [ ] Add a patient name input in the Phase 1 UI — `state.patient` exists but is never populated from the UI
+_No pending tasks._

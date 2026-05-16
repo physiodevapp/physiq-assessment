@@ -1249,6 +1249,7 @@ function buildResults() {
   container.innerHTML += `
   <div class="summary-section">
     <div class="summary-section-title">📋 Datos de Cabecera</div>
+    ${state.patient ? `<div class="summary-row"><span class="summary-label">Paciente</span><span class="summary-value">${state.patient}</span></div>` : ''}
     <div class="summary-row"><span class="summary-label">Motivo de consulta</span><span class="summary-value">${state.motivoConsulta || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Mecanismo</span><span class="summary-value">${state.mecanismo || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Cronología</span><span class="summary-value">${state.cronologia || '—'}</span></div>
@@ -1536,7 +1537,7 @@ function exportToPhysiQ() {
 function copyContextToClipboard() {
   const d = buildPhysiQPayload();
   const hyps = (d.h || []).map(h => `  · ${h.name} — ${h.sc}`).join('\n');
-  const text = `VALORACIÓN PhysiQ-Assessment
+  const text = `VALORACIÓN PhysiQ-Assessment${d.p ? `\nPaciente: ${d.p}` : ''}
 Región: ${d.r} · NRS: ${d.nr}/10 · Irritabilidad: ${d.ir}
 Cribado sistémico: ${d.si ? 'POSITIVO ⚠️' : 'Negativo'}
 Hipótesis:
