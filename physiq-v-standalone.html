@@ -4741,10 +4741,14 @@ function showTreeComplete() {
   const hyps = state.activeHypotheses.map(h => HYPOTHESES[h]).filter(Boolean);
   const div = document.createElement('div');
   div.id = 'treeComplete';
-  div.className = 'alert alert-success';
   div.style.marginTop = '1.5rem';
-  div.innerHTML = `<span class="alert-icon">✅</span>
-    <div><strong>Árbol completado.</strong> Hipótesis identificadas: <strong>${hyps.map(h=>h.name).join(', ')}</strong>. Proceda a confirmar con los tests específicos.</div>`;
+  if (hyps.length === 0) {
+    div.className = 'alert alert-warning';
+    div.innerHTML = `<span class="alert-icon">⚠️</span><span><strong>Árbol completado.</strong> No se ha identificado un patrón diagnóstico dominante. Proceda a Fase 4b para revisar las consideraciones clínicas o regrese al árbol para reconsiderar las respuestas.</span>`;
+  } else {
+    div.className = 'alert alert-success';
+    div.innerHTML = `<span class="alert-icon">✅</span><span><strong>Árbol completado.</strong> Hipótesis identificadas: <strong>${hyps.map(h => h.name).join(', ')}</strong>. Proceda a confirmar con los tests específicos.</span>`;
+  }
   container.appendChild(div);
   document.getElementById('btnGoConfirm').disabled = false;
   div.scrollIntoView({ behavior: 'smooth' });
@@ -5086,7 +5090,14 @@ function buildResults() {
   let hypHtml = `<div class="summary-section"><div class="summary-section-title">🎯 Hipótesis Diagnósticas — Ordenadas por Peso Diagnóstico</div>`;
 
   if (sorted.length === 0) {
-    hypHtml += `<p style="color:var(--text3); font-size:0.85rem;">No se identificaron hipótesis diagnósticas.</p>`;
+    const regionLabel = state.region ? state.region.charAt(0).toUpperCase() + state.region.slice(1) : 'la región';
+    const showCS = state.cronologia === 'Crónico (>3 meses)' && state.riesgoPsico === 'Alto';
+    hypHtml += `
+      <div style="background:var(--surface2); border:1px solid var(--orange); border-radius:var(--radius); padding:1.2rem; color:var(--text2); font-size:0.85rem; line-height:1.7;">
+        <div style="color:var(--orange); font-weight:600; margin-bottom:8px;">⚠️ Sin hipótesis diagnósticas identificadas</div>
+        <div>El algoritmo no encontró un patrón dominante claro. Se recomienda trabajar con hipótesis de trabajo de <em>dolor de ${regionLabel} inespecífico</em>.</div>
+        ${showCS ? `<div style="margin-top:8px; padding-top:8px; border-top:1px solid var(--border2);">Dado el perfil crónico y el riesgo psicosocial elevado, considere también <em>sensibilización central</em> como hipótesis complementaria.</div>` : ''}
+      </div>`;
   } else {
     sorted.forEach((item, rank) => {
       const { id, hyp, score } = item;
