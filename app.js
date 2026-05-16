@@ -932,10 +932,10 @@ function showTreeComplete() {
   div.style.marginTop = '1.5rem';
   if (hyps.length === 0) {
     div.className = 'alert alert-warning';
-    div.innerHTML = `<span class="alert-icon">⚠️</span><span><strong>Árbol completado.</strong> No se ha identificado un patrón diagnóstico dominante. Proceda a Fase 4b para revisar las consideraciones clínicas o regrese al árbol para reconsiderar las respuestas.</span>`;
+    div.innerHTML = `<span style="font-size:1.2rem; flex-shrink:0; line-height:1;">⚠️</span><span><strong>Árbol completado.</strong> No se ha identificado un patrón diagnóstico dominante. Proceda a Fase 4b para revisar las consideraciones clínicas o regrese al árbol para reconsiderar las respuestas.</span>`;
   } else {
     div.className = 'alert alert-success';
-    div.innerHTML = `<span class="alert-icon">✅</span><span><strong>Árbol completado.</strong> Hipótesis identificadas: <strong>${hyps.map(h => h.name).join(', ')}</strong>. Proceda a confirmar con los tests específicos.</span>`;
+    div.innerHTML = `<span style="font-size:1.2rem; flex-shrink:0; line-height:1;">✅</span><span><strong>Árbol completado.</strong> Hipótesis identificadas: <strong>${hyps.map(h => h.name).join(', ')}</strong>. Proceda a confirmar con los tests específicos.</span>`;
   }
   container.appendChild(div);
   document.getElementById('btnGoConfirm').disabled = false;
@@ -952,7 +952,7 @@ function buildHypothesisCards() {
     const showCS = state.cronologia === 'Crónico (>3 meses)' && state.riesgoPsico === 'Alto';
     container.innerHTML = `
       <div class="alert alert-warning" style="flex-direction:column; align-items:flex-start; gap:10px;">
-        <div style="display:flex; align-items:center; gap:8px;">
+        <div style="display:flex; align-items:flex-start; gap:8px;">
           <span style="font-size:1.2rem; flex-shrink:0; line-height:1;">⚠️</span>
           <strong>El algoritmo no ha identificado un patrón dominante claro.</strong>
         </div>
