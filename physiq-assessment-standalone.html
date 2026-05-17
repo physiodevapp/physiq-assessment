@@ -5056,16 +5056,8 @@ function setTestResult(hId, idx, result, btn) {
   if (_activeHypId === hId) refreshHypBanner(hId);
 }
 
-function recalcHypScore(hId) {
-  const hyp = HYPOTHESES[hId];
-  const results = state.testResults[hId];
-  if (!hyp || !results) return;
-
-  let totalLR = 1.0;
-  let evaluatedCount = 0;
-  let positiveCount = 0;
-  let hasHighLR = false;
-
+function calcLRScore(hyp, results) {
+  let totalLR = 1.0, evaluatedCount = 0, positiveCount = 0, hasHighLR = false;
   hyp.tests.forEach((test, i) => {
     const res = results[i];
     if (res === 'nd') return;
@@ -5080,18 +5072,24 @@ function recalcHypScore(hId) {
       totalLR *= lr;
     }
   });
-
-  let color, label, colorClass;
+  let label, colorClass;
   if (evaluatedCount === 0) {
-    color = 'var(--text3)'; label = 'Sin evaluar'; colorClass = 'hyp-orange';
+    label = 'Sin evaluar'; colorClass = 'hyp-orange';
   } else if (totalLR >= 5 || (hasHighLR && positiveCount > 0)) {
-    color = 'var(--green)'; label = `🟢 Peso alto (LR× ${totalLR.toFixed(1)})`; colorClass = 'hyp-green';
+    label = `🟢 Peso alto (LR× ${totalLR.toFixed(1)})`; colorClass = 'hyp-green';
   } else if (totalLR >= 2 || positiveCount > 0) {
-    color = 'var(--orange)'; label = `🟠 Peso moderado (LR× ${totalLR.toFixed(1)})`; colorClass = 'hyp-orange';
+    label = `🟠 Peso moderado (LR× ${totalLR.toFixed(1)})`; colorClass = 'hyp-orange';
   } else {
-    color = 'var(--red)'; label = `🔴 Peso bajo (LR× ${totalLR.toFixed(1)})`; colorClass = 'hyp-red';
+    label = `🔴 Peso bajo (LR× ${totalLR.toFixed(1)})`; colorClass = 'hyp-red';
   }
+  return { totalLR, label, colorClass, evaluatedCount };
+}
 
+function recalcHypScore(hId) {
+  const hyp = HYPOTHESES[hId];
+  const results = state.testResults[hId];
+  if (!hyp || !results) return;
+  const { totalLR, label, colorClass } = calcLRScore(hyp, results);
   state.hypothesisScores[hId] = { totalLR, label, colorClass };
   const card = document.getElementById(`hypcard_${hId}`);
   card.className = `hypothesis-card ${colorClass}`;
