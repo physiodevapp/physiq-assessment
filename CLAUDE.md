@@ -23,18 +23,18 @@ There are no linting or compilation commands. To run unit tests:
 node tests/unit.js
 ```
 
-## Formato de commits
+## Commit format
 
-Usar siempre este formato al hacer commits:
+Always use this format when committing:
 
 ```
-git commit -m "título corto en imperativo" -m "descripción cuando sea necesario"
+git commit -m "short imperative title" -m "description when needed"
 ```
 
-- El primer `-m` es el título (máx ~72 caracteres)
-- El segundo `-m` solo se incluye cuando hay contexto relevante que añadir
-- Nunca usar `git commit` sin flags ni editores interactivos
-- No añadir co-autoría (`Co-authored-by`) en ningún caso
+- First `-m` is the title (max ~72 characters)
+- Second `-m` is only included when there is relevant context to add
+- Never use `git commit` without flags or interactive editors
+- **Never add co-authorship** (`Co-authored-by`) under any circumstance
 
 ## File Architecture
 
