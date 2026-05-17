@@ -18,7 +18,23 @@ npx serve .
 ```
 Or use VS Code Live Server. Open `index.html` directly in a browser also works for most features.
 
-There are no linting, test, or compilation commands.
+There are no linting or compilation commands. To run unit tests:
+```
+node tests/unit.js
+```
+
+## Formato de commits
+
+Usar siempre este formato al hacer commits:
+
+```
+git commit -m "título corto en imperativo" -m "descripción cuando sea necesario"
+```
+
+- El primer `-m` es el título (máx ~72 caracteres)
+- El segundo `-m` solo se incluye cuando hay contexto relevante que añadir
+- Nunca usar `git commit` sin flags ni editores interactivos
+- No añadir co-autoría (`Co-authored-by`) en ningún caso
 
 ## File Architecture
 
