@@ -267,6 +267,173 @@ test('affirmative answer for known region returns non-empty array', () => {
   }
 });
 
+// ── data.js integrity: HYPOTHESES ────────────────────────────────────────────
+console.log('\nHYPOTHESES data integrity');
+
+const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
+
+test('all 50 hypotheses present', () => {
+  const count = run('Object.keys(HYPOTHESES).length');
+  assert.equal(count, 50);
+});
+
+test('every hypothesis has id, region, name, tests', () => {
+  const missing = run(`
+    JSON.stringify(
+      Object.entries(HYPOTHESES)
+        .filter(([, h]) => !h.id || !h.region || !h.name || !Array.isArray(h.tests))
+        .map(([k]) => k)
+    )
+  `);
+  assert.deepEqual(JSON.parse(missing), []);
+});
+
+test('every hypothesis id matches its key', () => {
+  const mismatched = run(`
+    JSON.stringify(
+      Object.entries(HYPOTHESES)
+        .filter(([k, h]) => h.id !== k)
+        .map(([k, h]) => k + ' → id:' + h.id)
+    )
+  `);
+  assert.deepEqual(JSON.parse(mismatched), []);
+});
+
+test('every hypothesis has a valid region', () => {
+  const invalid = run(`
+    JSON.stringify(
+      Object.entries(HYPOTHESES)
+        .filter(([, h]) => !${JSON.stringify(VALID_REGIONS)}.includes(h.region))
+        .map(([k, h]) => k + ':' + h.region)
+    )
+  `);
+  assert.deepEqual(JSON.parse(invalid), []);
+});
+
+test('no hypothesis has empty tests array', () => {
+  const empty = run(`
+    JSON.stringify(
+      Object.entries(HYPOTHESES)
+        .filter(([, h]) => !h.tests || h.tests.length === 0)
+        .map(([k]) => k)
+    )
+  `);
+  assert.deepEqual(JSON.parse(empty), []);
+});
+
+test('all tests have a name', () => {
+  const missing = run(`
+    JSON.stringify(
+      Object.entries(HYPOTHESES).flatMap(([id, h]) =>
+        h.tests
+          .map((t, i) => ({ id, i, name: t.name }))
+          .filter(({ name }) => !name)
+          .map(({ id, i }) => id + '[' + i + ']')
+      )
+    )
+  `);
+  assert.deepEqual(JSON.parse(missing), []);
+});
+
+test('all lr_pos values are null or numeric string', () => {
+  const invalid = run(`
+    JSON.stringify(
+      Object.entries(HYPOTHESES).flatMap(([id, h]) =>
+        h.tests
+          .map((t, i) => ({ id, i, v: t.lr_pos }))
+          .filter(({ v }) => v !== null && v !== undefined && isNaN(parseFloat(v)))
+          .map(({ id, i, v }) => id + '[' + i + '].lr_pos=' + v)
+      )
+    )
+  `);
+  assert.deepEqual(JSON.parse(invalid), [], 'non-numeric lr_pos values found');
+});
+
+test('all lr_neg values are null or numeric string', () => {
+  const invalid = run(`
+    JSON.stringify(
+      Object.entries(HYPOTHESES).flatMap(([id, h]) =>
+        h.tests
+          .map((t, i) => ({ id, i, v: t.lr_neg }))
+          .filter(({ v }) => v !== null && v !== undefined && isNaN(parseFloat(v)))
+          .map(({ id, i, v }) => id + '[' + i + '].lr_neg=' + v)
+      )
+    )
+  `);
+  assert.deepEqual(JSON.parse(invalid), [], 'non-numeric lr_neg values found');
+});
+
+test('calcLRScore does not return NaN for any hypothesis with all-pos results', () => {
+  const nanHyps = run(`
+    JSON.stringify(
+      Object.entries(HYPOTHESES)
+        .filter(([, h]) => {
+          const fakeResults = Object.fromEntries(h.tests.map((_, i) => [i, 'pos']));
+          const { totalLR } = calcLRScore(h, fakeResults);
+          return isNaN(totalLR) || totalLR <= 0;
+        })
+        .map(([k]) => k)
+    )
+  `);
+  assert.deepEqual(JSON.parse(nanHyps), []);
+});
+
+// ── data.js integrity: SYSTEMIC_SCREENING ─────────────────────────────────────
+console.log('\nSYSTEMIC_SCREENING data integrity');
+
+test('all 6 regions present', () => {
+  for (const r of VALID_REGIONS) {
+    const exists = run(`typeof SYSTEMIC_SCREENING[${JSON.stringify(r)}] === 'object'`);
+    assert.ok(exists, `missing region: ${r}`);
+  }
+});
+
+test('every region has at least one sistema with at least one pregunta', () => {
+  const empty = run(`
+    JSON.stringify(
+      ${JSON.stringify(VALID_REGIONS)}.filter(r => {
+        const data = SYSTEMIC_SCREENING[r];
+        if (!data || !Array.isArray(data.sistemas)) return true;
+        return !data.sistemas.some(s => s.preguntas && s.preguntas.length > 0);
+      })
+    )
+  `);
+  assert.deepEqual(JSON.parse(empty), []);
+});
+
+test('all preguntas have id and text', () => {
+  const missing = run(`
+    JSON.stringify(
+      ${JSON.stringify(VALID_REGIONS)}.flatMap(r => {
+        const data = SYSTEMIC_SCREENING[r];
+        if (!data) return [];
+        return data.sistemas.flatMap((s, si) =>
+          (s.preguntas || [])
+            .filter(q => !q.id || !q.text)
+            .map((q, qi) => r + '[' + si + '][' + qi + ']')
+        );
+      })
+    )
+  `);
+  assert.deepEqual(JSON.parse(missing), []);
+});
+
+test('no duplicate pregunta IDs within a region', () => {
+  const dupes = run(`
+    JSON.stringify(
+      ${JSON.stringify(VALID_REGIONS)}.flatMap(r => {
+        const data = SYSTEMIC_SCREENING[r];
+        if (!data) return [];
+        const ids = data.sistemas.flatMap(s => (s.preguntas || []).map(q => q.id));
+        const seen = new Set(), dupes = [];
+        ids.forEach(id => { if (seen.has(id)) dupes.push(r + ':' + id); seen.add(id); });
+        return dupes;
+      })
+    )
+  `);
+  assert.deepEqual(JSON.parse(dupes), []);
+});
+
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 if (failed > 0) process.exit(1);

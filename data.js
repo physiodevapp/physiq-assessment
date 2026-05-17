@@ -1246,7 +1246,7 @@ const HYPOTHESES = {
     dosis: 'Ejercicios isométricos de abducción de cadera en decúbito lateral con cadera en 0° de flexión/extensión. 3 series × 6 contracciones de 6 seg al 20-30% CVM. Evitar cruzar la línea media las primeras 2-3 semanas. Educación: evitar sedestación con piernas cruzadas.',
     tests: [
       { name: 'Palpación del trocánter mayor / tendón glúteo', sn: '80%', sp: null, lr_pos: null, lr_neg: null, criterio: 'Alta sensibilidad — útil para descartar si negativo. Dolor a la palpación directa.' },
-      { name: 'Apoyo Monopodal <30 segundos (Single-Leg Stance)', sn: null, sp: '100%', lr_pos: '~12', lr_neg: null, criterio: 'Alta especificidad: probabilidad post-test 98% si positivo. Dolor aparece antes de los 30 segundos.' },
+      { name: 'Apoyo Monopodal <30 segundos (Single-Leg Stance)', sn: null, sp: '100%', lr_pos: '12', lr_neg: null, criterio: 'Alta especificidad: probabilidad post-test 98% si positivo. Dolor aparece antes de los 30 segundos.' },
       { name: 'Test de Abducción Resistida de Cadera', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Secuencia diagnóstica: palpación + abducción resistida positivos → probabilidad post-test del 96%.' },
       { name: 'Marcha de Trendelenburg', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Signo visual de insuficiencia del glúteo medio. Caída pélvica contralateral al apoyo.' }
     ]
