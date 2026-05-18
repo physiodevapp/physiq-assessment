@@ -1499,6 +1499,105 @@ function showConfirmBanner(title, text, actionLabel, onConfirm) {
   };
 }
 
+// ─── AUDIO RECORDER ──────────────────────────────────────────
+let _mediaRecorder = null;
+let _audioChunks = [];
+let _audioBlobRecorded = null;
+let _recordingDuration = 0;
+let _recordTimerInterval = null;
+
+function toggleRecording() {
+  if (_mediaRecorder && _mediaRecorder.state === 'recording') {
+    stopRecording();
+  } else {
+    startRecording();
+  }
+}
+
+async function startRecording() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+      ? 'audio/webm;codecs=opus'
+      : 'audio/mp4';
+    _mediaRecorder = new MediaRecorder(stream, { mimeType });
+    _audioChunks = [];
+    _mediaRecorder.ondataavailable = e => { if (e.data.size > 0) _audioChunks.push(e.data); };
+    _mediaRecorder.onstop = () => {
+      _audioBlobRecorded = new Blob(_audioChunks, { type: _mediaRecorder.mimeType });
+      stream.getTracks().forEach(t => t.stop());
+      _updateRecordBtn('recorded');
+      _updateExportAudioUI();
+    };
+    _mediaRecorder.start(1000);
+    _recordingDuration = 0;
+    _recordTimerInterval = setInterval(() => {
+      _recordingDuration++;
+      const timerEl = document.getElementById('recordTimer');
+      if (timerEl) timerEl.textContent = _formatDuration(_recordingDuration);
+    }, 1000);
+    _updateRecordBtn('recording');
+  } catch (e) {
+    console.warn('Micrófono no disponible:', e);
+  }
+}
+
+function stopRecording() {
+  if (_mediaRecorder && _mediaRecorder.state !== 'inactive') _mediaRecorder.stop();
+  clearInterval(_recordTimerInterval);
+}
+
+function _formatDuration(secs) {
+  const m = Math.floor(secs / 60).toString().padStart(2, '0');
+  const s = (secs % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
+}
+
+function _updateRecordBtn(state) {
+  const btn = document.getElementById('btnRecord');
+  const label = document.getElementById('recordLabel');
+  const timer = document.getElementById('recordTimer');
+  if (!btn) return;
+  btn.className = 'btn-record';
+  if (state === 'recording') {
+    btn.classList.add('recording');
+    if (label) label.textContent = 'Parar';
+    if (timer) { timer.style.display = ''; timer.textContent = '00:00'; }
+  } else if (state === 'recorded') {
+    btn.classList.add('recorded');
+    if (label) label.textContent = 'Listo';
+    if (timer) { timer.style.display = ''; timer.textContent = _formatDuration(_recordingDuration); }
+  }
+}
+
+function _updateExportAudioUI() {
+  const dur = _formatDuration(_recordingDuration);
+  const badge = document.getElementById('btnExportAudioBadge');
+  const badgeDur = document.getElementById('btnExportAudioDuration');
+  const asiStatus = document.getElementById('asiAudioStatus');
+  const asiDur = document.getElementById('asiAudioDuration');
+  if (badge) badge.style.display = '';
+  if (badgeDur) badgeDur.textContent = dur;
+  if (asiStatus) asiStatus.style.display = '';
+  if (asiDur) asiDur.textContent = dur;
+}
+
+// ─── INDEXEDDB AUDIO ──────────────────────────────────────────
+function _saveAudioToIDB(blob, meta) {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open('physiq', 1);
+    req.onupgradeneeded = e => e.target.result.createObjectStore('audio');
+    req.onsuccess = e => {
+      const db = e.target.result;
+      const tx = db.transaction('audio', 'readwrite');
+      tx.objectStore('audio').put({ blob, ...meta }, 'pending');
+      tx.oncomplete = resolve;
+      tx.onerror = reject;
+    };
+    req.onerror = reject;
+  });
+}
+
 // ─── PHYSIQ EXPORT ───────────────────────────────────────────
 function buildPhysiQPayload() {
   return {
@@ -1526,10 +1625,21 @@ function buildPhysiQPayload() {
   };
 }
 
-function exportToPhysiQ() {
+async function exportToPhysiQ() {
   const payload = buildPhysiQPayload();
   const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+  // window.open debe llamarse en contexto síncrono (antes de cualquier await)
   window.open(`https://physiodevapp.github.io/physiq-report/?v=${encoded}`, '_blank');
+  if (_audioBlobRecorded) {
+    const ext = _audioBlobRecorded.type.includes('mp4') ? 'mp4' : 'webm';
+    const safeName = (state.patient || 'paciente').replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
+    const date = new Date().toLocaleDateString('es-ES').replace(/\//g, '-');
+    await _saveAudioToIDB(_audioBlobRecorded, {
+      name: `physiq-${safeName}-${date}.${ext}`,
+      type: _audioBlobRecorded.type,
+      duration: _recordingDuration
+    });
+  }
 }
 
 function copyContextToClipboard() {

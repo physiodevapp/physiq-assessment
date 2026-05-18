@@ -1746,6 +1746,37 @@
     z-index: 200;
   }
   .btn-translate:hover .translate-tooltip { opacity: 1; }
+
+  /* Record button */
+  .btn-record {
+    background: transparent;
+    border: 1px solid var(--border2);
+    color: var(--text2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-record:hover { border-color: var(--red); color: var(--red); }
+  .btn-record.recording { border-color: var(--red); color: var(--red); }
+  .btn-record.recorded { border-color: var(--accent2); color: var(--accent2); }
+  .btn-record-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+  .btn-record.recording .btn-record-dot { animation: recordPulse 1s ease-in-out infinite; }
+  @keyframes recordPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.7); }
+  }
   .translate-banner {
     position: fixed;
     top: 94px;
@@ -1781,6 +1812,9 @@
   @media (max-width: 768px) {
     .translate-tooltip { display: none; }
     .btn-reset-text { display: none; }
+    .btn-record-text { display: none; }
+    .btn-record-timer { display: none; }
+    .btn-record { padding: 6px 8px; }
   }
   @media (max-width: 480px) {
     .translate-banner { top: 88px; }
@@ -1797,6 +1831,11 @@
   </div>
   <div class="header-right">
     <span class="phase-indicator" id="phaseIndicator">FASE 1 / 5</span>
+    <button class="btn-record" id="btnRecord" onclick="toggleRecording()" aria-label="Grabar sesión">
+      <span class="btn-record-dot" id="recordDot"></span>
+      <span class="btn-record-text" id="recordLabel">Grabar</span>
+      <span class="btn-record-timer" id="recordTimer" style="display:none"></span>
+    </button>
     <button class="btn-translate" onclick="handleTranslateClick()" aria-label="View in English">
       🌐
       <span class="translate-tooltip">View in English<br>Right-click → Translate to English</span>
@@ -1874,7 +1913,7 @@
     <div class="asi-icon">📤</div>
     <div class="asi-info">
       <div class="asi-name">Generar informe en PhysiQ-Report</div>
-      <div class="asi-desc">Abre el informe CIF-AFTA en una nueva pestaña</div>
+      <div class="asi-desc">Abre el informe CIF-AFTA en una nueva pestaña<span id="asiAudioStatus" style="display:none;color:var(--accent2);"> · 🎙 <span id="asiAudioDuration"></span></span></div>
     </div>
   </div>
   <div class="asi-item asi-copy" onclick="copyContextToClipboard(); closeActionsSheet()">
@@ -2317,7 +2356,7 @@
     <button class="btn btn-secondary" onclick="goToPhase('4b')">← Anterior</button>
     <button class="btn btn-secondary btn-export-desktop" onclick="window.print()">🖨️ Imprimir</button>
     <button class="btn btn-secondary btn-export-desktop" onclick="copyContextToClipboard()">📋 Copiar contexto</button>
-    <button class="btn btn-primary btn-export-desktop" onclick="exportToPhysiQ()">📤 Generar en PhysiQ-Report</button>
+    <button class="btn btn-primary btn-export-desktop" onclick="exportToPhysiQ()">📤 Generar en PhysiQ-Report<span id="btnExportAudioBadge" style="display:none;font-size:0.7em;margin-left:6px;opacity:0.85;">🎙 <span id="btnExportAudioDuration"></span></span></button>
     <button class="btn btn-primary btn-export-toggle" onclick="toggleActionsSheet()">↑ Exportar</button>
   </div>
 </div>
