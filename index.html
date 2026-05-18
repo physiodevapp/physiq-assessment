@@ -1765,6 +1765,32 @@
   .btn-record:hover { border-color: var(--red); color: var(--red); }
   .btn-record.recording { border-color: var(--red); color: var(--red); }
   .btn-record.recorded { border-color: var(--accent2); color: var(--accent2); }
+  .btn-record.paused { border-color: var(--orange); color: var(--orange); }
+  .btn-record.paused .btn-record-dot { animation: none; }
+  .btn-pause {
+    background: transparent;
+    border: 1px solid var(--border2);
+    color: var(--text2);
+    padding: 6px 9px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-pause:hover, .btn-pause.paused { border-color: var(--orange); color: var(--orange); }
+  .btn-discard {
+    background: transparent;
+    border: none;
+    color: var(--text3);
+    padding: 6px 6px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .btn-discard:hover { color: var(--red); }
   .btn-record-dot {
     width: 7px;
     height: 7px;
@@ -1813,11 +1839,16 @@
     .translate-tooltip { display: none; }
     .btn-reset-text { display: none; }
     .btn-record-text { display: none; }
-    .btn-record-timer { display: none; }
     .btn-record { padding: 6px 8px; }
+    .header-right { gap: 0.5rem; }
+    .header-right.recording-active .btn-translate,
+    .header-right.recording-active .btn-reset { display: none; }
   }
   @media (max-width: 480px) {
     .translate-banner { top: 88px; }
+  }
+  @media (max-width: 360px) {
+    .logo-sub { display: none; }
   }
 </style>
 </head>
@@ -1836,6 +1867,8 @@
       <span class="btn-record-text" id="recordLabel">Grabar</span>
       <span class="btn-record-timer" id="recordTimer" style="display:none"></span>
     </button>
+    <button class="btn-pause" id="btnPause" onclick="togglePause()" style="display:none" aria-label="Pausar grabación">⏸</button>
+    <button class="btn-discard" id="btnDiscard" onclick="discardRecording()" style="display:none" aria-label="Descartar grabación">✕</button>
     <button class="btn-translate" onclick="handleTranslateClick()" aria-label="View in English">
       🌐
       <span class="translate-tooltip">View in English<br>Right-click → Translate to English</span>

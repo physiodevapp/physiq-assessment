@@ -1501,14 +1501,18 @@ function showConfirmBanner(title, text, actionLabel, onConfirm) {
 
 // ─── AUDIO RECORDER ──────────────────────────────────────────
 let _mediaRecorder = null;
+let _mediaStream = null;
 let _audioChunks = [];
 let _audioBlobRecorded = null;
 let _recordingDuration = 0;
 let _recordTimerInterval = null;
+let _discarding = false;
 
 function toggleRecording() {
-  if (_mediaRecorder && _mediaRecorder.state === 'recording') {
+  if (_mediaRecorder && (_mediaRecorder.state === 'recording' || _mediaRecorder.state === 'paused')) {
     stopRecording();
+  } else if (_audioBlobRecorded) {
+    _showRecordOverwriteBanner();
   } else {
     startRecording();
   }
@@ -1516,7 +1520,9 @@ function toggleRecording() {
 
 async function startRecording() {
   try {
+    _discarding = false;
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    _mediaStream = stream;
     const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
       ? 'audio/webm;codecs=opus'
       : 'audio/mp4';
@@ -1524,8 +1530,10 @@ async function startRecording() {
     _audioChunks = [];
     _mediaRecorder.ondataavailable = e => { if (e.data.size > 0) _audioChunks.push(e.data); };
     _mediaRecorder.onstop = () => {
+      if (_discarding) { _discarding = false; return; }
       _audioBlobRecorded = new Blob(_audioChunks, { type: _mediaRecorder.mimeType });
       stream.getTracks().forEach(t => t.stop());
+      _mediaStream = null;
       _updateRecordBtn('recorded');
       _updateExportAudioUI();
     };
@@ -1547,6 +1555,71 @@ function stopRecording() {
   clearInterval(_recordTimerInterval);
 }
 
+function togglePause() {
+  if (!_mediaRecorder) return;
+  if (_mediaRecorder.state === 'recording') {
+    _mediaRecorder.pause();
+    clearInterval(_recordTimerInterval);
+    _updateRecordBtn('paused');
+  } else if (_mediaRecorder.state === 'paused') {
+    _mediaRecorder.resume();
+    _recordTimerInterval = setInterval(() => {
+      _recordingDuration++;
+      const timerEl = document.getElementById('recordTimer');
+      if (timerEl) timerEl.textContent = _formatDuration(_recordingDuration);
+    }, 1000);
+    _updateRecordBtn('recording');
+  }
+}
+
+function _doDiscard() {
+  clearInterval(_recordTimerInterval);
+  if (_mediaRecorder && _mediaRecorder.state !== 'inactive') {
+    _discarding = true;
+    _mediaRecorder.stop();
+  }
+  if (_mediaStream) { _mediaStream.getTracks().forEach(t => t.stop()); _mediaStream = null; }
+  _mediaRecorder = null;
+  _audioChunks = [];
+  _audioBlobRecorded = null;
+  _recordingDuration = 0;
+  _updateRecordBtn('idle');
+  const badge = document.getElementById('btnExportAudioBadge');
+  const asiStatus = document.getElementById('asiAudioStatus');
+  if (badge) badge.style.display = 'none';
+  if (asiStatus) asiStatus.style.display = 'none';
+}
+
+function discardRecording() {
+  showConfirmBanner(
+    '🎙 ¿Descartar grabación?',
+    `Se perderá la grabación de ${_formatDuration(_recordingDuration)}. Esta acción no se puede deshacer.`,
+    'Descartar',
+    _doDiscard
+  );
+}
+
+function _showRecordOverwriteBanner() {
+  const dur = _formatDuration(_recordingDuration);
+  const overlay = document.createElement('div');
+  overlay.className = 'confirm-banner';
+  overlay.id = 'confirmBanner';
+  overlay.innerHTML = `
+    <div class="confirm-box">
+      <div class="confirm-box-title">🎙 ¿Qué quieres hacer con esta grabación?</div>
+      <div class="confirm-box-text">Se perderá la grabación de ${dur}. Esta acción no se puede deshacer.</div>
+      <div class="confirm-box-btns" style="flex-direction: column; align-items: stretch;">
+        <button class="btn btn-primary" id="confirmRerecord" style="font-size:0.85rem; padding:9px 18px;">Eliminar y grabar de nuevo</button>
+        <button class="btn btn-secondary" id="confirmDelete" style="font-size:0.85rem; padding:9px 18px;">Solo eliminar</button>
+        <button class="btn btn-secondary" id="confirmCancel" style="font-size:0.85rem; padding:9px 18px;">Cancelar</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('confirmCancel').onclick = () => overlay.remove();
+  document.getElementById('confirmDelete').onclick = () => { overlay.remove(); _doDiscard(); };
+  document.getElementById('confirmRerecord').onclick = () => { overlay.remove(); _doDiscard(); startRecording(); };
+}
+
 function _formatDuration(secs) {
   const m = Math.floor(secs / 60).toString().padStart(2, '0');
   const s = (secs % 60).toString().padStart(2, '0');
@@ -1557,16 +1630,32 @@ function _updateRecordBtn(state) {
   const btn = document.getElementById('btnRecord');
   const label = document.getElementById('recordLabel');
   const timer = document.getElementById('recordTimer');
+  const btnPause = document.getElementById('btnPause');
+  const btnDiscard = document.getElementById('btnDiscard');
   if (!btn) return;
   btn.className = 'btn-record';
+  const showControls = state === 'recording' || state === 'paused';
+  if (btnPause) btnPause.style.display = showControls ? '' : 'none';
+  if (btnDiscard) btnDiscard.style.display = showControls ? '' : 'none';
+  const headerRight = document.querySelector('.header-right');
+  if (headerRight) headerRight.classList.toggle('recording-active', showControls);
   if (state === 'recording') {
     btn.classList.add('recording');
     if (label) label.textContent = 'Parar';
-    if (timer) { timer.style.display = ''; timer.textContent = '00:00'; }
+    if (timer) { timer.style.display = ''; timer.textContent = _formatDuration(_recordingDuration); }
+    if (btnPause) { btnPause.className = 'btn-pause'; btnPause.textContent = '⏸'; btnPause.setAttribute('aria-label', 'Pausar grabación'); }
+  } else if (state === 'paused') {
+    btn.classList.add('paused');
+    if (label) label.textContent = 'Pausa';
+    if (timer) { timer.style.display = ''; timer.textContent = _formatDuration(_recordingDuration); }
+    if (btnPause) { btnPause.className = 'btn-pause paused'; btnPause.textContent = '▶'; btnPause.setAttribute('aria-label', 'Reanudar grabación'); }
   } else if (state === 'recorded') {
     btn.classList.add('recorded');
     if (label) label.textContent = 'Listo';
     if (timer) { timer.style.display = ''; timer.textContent = _formatDuration(_recordingDuration); }
+  } else {
+    if (label) label.textContent = 'Grabar';
+    if (timer) timer.style.display = 'none';
   }
 }
 
