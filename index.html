@@ -91,6 +91,8 @@
     letter-spacing: -0.5px;
   }
 
+  .logo-sub-initial { display: none; }
+
   .header-right {
     display: flex;
     align-items: center;
@@ -1848,7 +1850,8 @@
     .translate-banner { top: 88px; }
   }
   @media (max-width: 360px) {
-    .logo-sub { display: none; }
+    .logo-sub-word { display: none; }
+    .logo-sub-initial { display: inline; }
   }
 </style>
 </head>
@@ -1858,7 +1861,7 @@
 <header class="app-header">
   <div class="logo">
     <span class="logo-main">PhysiQ</span>
-    <span class="logo-sub">— Assessment</span>
+    <span class="logo-sub">— <span class="logo-sub-word">Assessment</span><span class="logo-sub-initial">A</span></span>
   </div>
   <div class="header-right">
     <span class="phase-indicator" id="phaseIndicator">FASE 1 / 5</span>
