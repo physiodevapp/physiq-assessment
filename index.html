@@ -1843,8 +1843,7 @@
     .btn-record-text { display: none; }
     .btn-record { padding: 6px 8px; }
     .header-right { gap: 0.5rem; }
-    .header-right.recording-active .btn-translate,
-    .header-right.recording-active .btn-reset { display: none; }
+    .header-right.recording-active .btn-translate { display: none; }
   }
   @media (max-width: 480px) {
     .translate-banner { top: 88px; }
@@ -1852,6 +1851,8 @@
   @media (max-width: 360px) {
     .logo-sub-word { display: none; }
     .logo-sub-initial { display: inline; }
+    .header-right.recording-active .btn-record { padding: 4px 6px; }
+    .header-right.recording-active .btn-reset { padding: 4px 6px; }
   }
 </style>
 </head>

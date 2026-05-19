@@ -172,12 +172,90 @@ function paintNav(activeIdx) {
   });
 }
 
+function _softResetApp() {
+  state.currentPhase = 1;
+  state.maxVisitedIdx = 0;
+  state.regionChanged = false;
+  state.treeModified = false;
+  state.patient = '';
+  state.motivoConsulta = '';
+  state.mecanismo = '';
+  state.cronologia = '';
+  state.banderasRojas = { br1: 'NO', br2: 'NO', br3: 'NO', br4: 'NO' };
+  state.riesgoPsico = '';
+  state.psico_miedo = '';
+  state.psico_autoef = '';
+  state.psico_emocional = '';
+  state.region = '';
+  state.sistemicoAnswers = {};
+  state.sistemicoAlerta = false;
+  state.activeHypotheses = [];
+  state.treeAnswers = {};
+  state.currentStep = null;
+  state.stepsCompleted = [];
+  state.testResults = {};
+  state.hypothesisScores = {};
+  state.resultsBuilt = false;
+  state.planNotes = { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' };
+
+  // Phase 1 DOM
+  const pName = document.getElementById('patientName');
+  if (pName) pName.value = '';
+  const mConsulta = document.getElementById('motivoConsulta');
+  if (mConsulta) mConsulta.value = '';
+  document.querySelectorAll('#phase1 .option-btn').forEach(b => b.classList.remove('selected'));
+  ['banderaAlert', 'psicoToolSuggest', 'psicoAltoQuestions', 'psicoRecomendacion'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+
+  // Phase 2 DOM
+  document.querySelectorAll('.region-card').forEach(c => c.classList.remove('selected'));
+  ['sistemaTabs', 'sistemaPanels'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '';
+  });
+  const sistemicoAlert = document.getElementById('sistemicoAlert');
+  if (sistemicoAlert) { sistemicoAlert.style.display = 'none'; sistemicoAlert.innerHTML = ''; }
+  const btnSinss = document.getElementById('btnContinuarSinss');
+  if (btnSinss) btnSinss.disabled = true;
+
+  // Phase 3 DOM (resetPhase3UI handles both state and DOM)
+  resetPhase3UI();
+
+  // Phase 4 DOM
+  ['treeContainer', 'treeAlert'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '';
+  });
+
+  // Phase 4b DOM
+  const hypCards = document.getElementById('hypothesisCards');
+  if (hypCards) hypCards.innerHTML = '';
+
+  // Phase 5 DOM
+  const resultsContent = document.getElementById('resultsContent');
+  if (resultsContent) resultsContent.innerHTML = '';
+
+  // Navigate to phase 1
+  document.querySelectorAll('.phase-container').forEach(p => p.classList.remove('active'));
+  document.getElementById('phase1').classList.add('active');
+  paintNav(0);
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('phaseIndicator').textContent = 'FASE 1 / 5';
+  updateMobilePhaseBar(1);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function resetApp() {
+  const hasRecording = (_mediaRecorder && (_mediaRecorder.state === 'recording' || _mediaRecorder.state === 'paused')) || _audioBlobRecorded;
+  const text = 'Se perderán todos los datos introducidos y la aplicación volverá al inicio.' +
+    (hasRecording ? ' La grabación de audio no se verá afectada.' : '');
   showConfirmBanner(
     '↺ Reiniciar valoración completa',
-    'Se perderán todos los datos introducidos y la aplicación volverá al inicio.',
+    text,
     'Reiniciar',
-    () => { location.reload(); }
+    hasRecording ? _softResetApp : () => { location.reload(); }
   );
 }
 
