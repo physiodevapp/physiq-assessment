@@ -1796,7 +1796,7 @@ async function exportToPhysiQ() {
   const payload = buildPhysiQPayload();
   const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
   // window.open debe llamarse en contexto síncrono (antes de cualquier await)
-  window.open(`https://physiodevapp.github.io/physiq-report/?v=${encoded}`, '_blank');
+  window.open(`https://physiodevapp.github.io/physiq-report/?v=${encodeURIComponent(encoded)}`, '_blank');
   if (_audioBlobRecorded) {
     const ext = _audioBlobRecorded.type.includes('mp4') ? 'mp4' : 'webm';
     const safeName = (state.patient || 'paciente').replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
