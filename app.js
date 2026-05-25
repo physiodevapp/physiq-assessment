@@ -1869,3 +1869,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMobilePhaseBar(1);
 });
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(() => {});
+}
+
