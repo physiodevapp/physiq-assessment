@@ -45,7 +45,8 @@ const state = {
     variableControl: '',
     ventanaRecuperacion: '',
     anclajeHabito: ''
-  }
+  },
+  rom: null   // payload importado desde PhysiQ-Motion vía ?rom=
 };
 
 // ─── HISTORY / BACK-BUTTON NAVIGATION ────────────────────────
@@ -1784,6 +1785,14 @@ function _saveAudioToIDB(blob, meta) {
 }
 
 // ─── PHYSIQ EXPORT ───────────────────────────────────────────
+function loadROMFromURL() {
+  const raw = new URLSearchParams(location.search).get('rom');
+  if (!raw) return;
+  try {
+    state.rom = JSON.parse(decodeURIComponent(escape(atob(raw))));
+  } catch {}
+}
+
 function buildPhysiQPayload() {
   return {
     p:  state.patient ?? '',
@@ -1806,7 +1815,8 @@ function buildPhysiQPayload() {
           lr:   state.hypothesisScores[id]?.totalLR ?? null,
           tr:   state.testResults[id] ?? {}
         })),
-    pn: state.planNotes
+    pn: state.planNotes,
+    ...(state.rom ? { rom: state.rom } : {})
   };
 }
 
@@ -2058,6 +2068,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.visibilityState === 'hidden') saveSession();
   });
 
+  loadROMFromURL();
   // Offer to restore a previous session
   restoreSession();
 });
