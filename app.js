@@ -253,7 +253,7 @@ function _softResetApp() {
   const resultsContent = document.getElementById('resultsContent');
   if (resultsContent) resultsContent.innerHTML = '';
 
-  clearSession();
+  clearLocalSession();
 
   // Navigate to phase 1
   document.querySelectorAll('.phase-container').forEach(p => p.classList.remove('active'));
@@ -1770,18 +1770,29 @@ function _updateExportAudioUI() {
 
 // ─── INDEXEDDB AUDIO ──────────────────────────────────────────
 function _saveAudioToIDB(blob, meta) {
-  return new Promise((resolve, reject) => {
-    const req = indexedDB.open('physiq', 1);
-    req.onupgradeneeded = e => e.target.result.createObjectStore('audio');
-    req.onsuccess = e => {
-      const db = e.target.result;
-      const tx = db.transaction('audio', 'readwrite');
-      tx.objectStore('audio').put({ blob, ...meta }, 'pending');
-      tx.oncomplete = resolve;
-      tx.onerror = reject;
-    };
-    req.onerror = reject;
-  });
+  return openSessionDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction('audio', 'readwrite');
+    tx.objectStore('audio').put({ blob, ...meta }, 'pending');
+    tx.oncomplete = resolve;
+    tx.onerror    = reject;
+  }));
+}
+
+// ─── SESSION CHIP ─────────────────────────────────────────────
+function updateSessionChip(session) {
+  const chip  = document.getElementById('sessionChip');
+  const label = document.getElementById('sessionChipLabel');
+  if (!chip || !label) return;
+  if (!session) { chip.classList.remove('active'); return; }
+  label.textContent = session.patient
+    ? `${session.patient} · ${session.date || '—'}`
+    : `Sesión · ${session.date || '—'}`;
+  chip.classList.add('active');
+}
+
+function promptClearSession() {
+  if (!confirm('¿Borrar la sesión activa?')) return;
+  clearSession().then(() => updateSessionChip(null));
 }
 
 // ─── PHYSIQ EXPORT ───────────────────────────────────────────
@@ -1822,15 +1833,18 @@ function buildPhysiQPayload() {
 
 async function exportToPhysiQ() {
   const payload = buildPhysiQPayload();
-  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-  // window.open debe llamarse en contexto síncrono (antes de cualquier await)
-  window.open(`https://physiodevapp.github.io/physiq-report/?v=${encodeURIComponent(encoded)}`, '_blank');
+  // window.open must be called synchronously (user gesture)
+  window.open('https://physiodevapp.github.io/physiq-report/', '_blank');
+  const date = new Date().toLocaleDateString('es-ES');
+  writeSession({ assessment: payload, patient: state.patient || '', date }).then(session => {
+    if (session) updateSessionChip(session);
+  });
   if (_audioBlobRecorded) {
     const ext = _audioBlobRecorded.type.includes('mp4') ? 'mp4' : 'webm';
     const safeName = (state.patient || 'paciente').replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
-    const date = new Date().toLocaleDateString('es-ES').replace(/\//g, '-');
+    const dateFile = date.replace(/\//g, '-');
     await _saveAudioToIDB(_audioBlobRecorded, {
-      name: `physiq-${safeName}-${date}.${ext}`,
+      name: `physiq-${safeName}-${dateFile}.${ext}`,
       type: _audioBlobRecorded.type,
       duration: _recordingDuration
     });
@@ -1886,7 +1900,7 @@ function saveSession() {
   } catch (e) {}
 }
 
-function clearSession() {
+function clearLocalSession() {
   try { localStorage.removeItem('physiq_session'); } catch (e) {}
 }
 
@@ -1899,7 +1913,7 @@ function restoreSession() {
   } catch (e) { return; }
   if (!saved || saved.v !== 1 || !saved.state) return;
   // Expire after 24 hours
-  if (Date.now() - saved.savedAt > 86400000) { clearSession(); return; }
+  if (Date.now() - saved.savedAt > 86400000) { clearLocalSession(); return; }
   // Nothing meaningful to restore
   if (!saved.state.maxVisitedIdx) return;
 
@@ -2071,6 +2085,18 @@ document.addEventListener('DOMContentLoaded', () => {
   loadROMFromURL();
   // Offer to restore a previous session
   restoreSession();
+  readSession().then(session => {
+    if (!session) return;
+    updateSessionChip(session);
+    const patientEl = document.getElementById('patientName');
+    if (session.patient && patientEl && !patientEl.value) {
+      patientEl.value = session.patient;
+      state.patient = session.patient;
+    }
+    if (session.rom && !state.rom) {
+      state.rom = session.rom;
+    }
+  });
 });
 
 if ('serviceWorker' in navigator) {

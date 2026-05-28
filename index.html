@@ -1861,6 +1861,12 @@
     .header-right.recording-active .btn-record { padding: 4px 6px; }
     .header-right.recording-active .btn-reset { padding: 4px 6px; }
   }
+  .session-chip{display:none;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;color:var(--accent2);background:rgba(56,217,169,0.08);border:1px solid rgba(56,217,169,0.2);border-radius:20px;padding:4px 10px;white-space:nowrap;max-width:200px;overflow:hidden;}
+  .session-chip.active{display:flex;}
+  .session-chip-dot{font-size:8px;flex-shrink:0;}
+  .session-chip-label{overflow:hidden;text-overflow:ellipsis;}
+  .session-chip-clear{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:0 0 0 2px;font-size:14px;line-height:1;flex-shrink:0;}
+  .session-chip-clear:hover{color:var(--danger);}
 </style>
 </head>
 <body>
@@ -1870,6 +1876,11 @@
   <div class="logo">
     <span class="logo-main">PhysiQ</span>
     <span class="logo-sub">— <span class="logo-sub-word">Assessment</span><span class="logo-sub-initial">A</span></span>
+  </div>
+  <div id="sessionChip" class="session-chip">
+    <span class="session-chip-dot">●</span>
+    <span class="session-chip-label" id="sessionChipLabel"></span>
+    <button class="session-chip-clear" onclick="promptClearSession()" title="Nueva sesión">×</button>
   </div>
   <div class="header-right">
     <span class="phase-indicator" id="phaseIndicator">FASE 1 / 5</span>
@@ -2408,6 +2419,7 @@
 </main>
 
 <script src="data.js"></script>
+<script src="lib/session.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
