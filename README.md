@@ -58,8 +58,8 @@ workflow and expand region coverage.
 - **data.js separated from logic** — clinical content (red flags, LR+/LR−, ICF tree)
   is isolated so it can be reviewed and updated by another physiotherapist without
   touching the application logic.
-- **Single-file standalone version** — `physiq-assessment-standalone.html` allows offline use
-  or sharing without a server.
+- **PWA with Service Worker** — app shell is cached for offline use after first load; network-first
+  strategy ensures deployments are picked up without reinstalling the PWA.
 
 ## Development
 
@@ -74,9 +74,11 @@ Pure HTML/CSS/JS SPA — no frameworks, no build step.
 Single external dependency: Google Fonts (DM Serif Display, DM Mono, Outfit).
 
 ```
-index.html   → HTML structure + full CSS
-data.js      → Clinical constants (screening, hypotheses, ICF tree)
-app.js       → State, navigation logic and event handlers
+index.html    → HTML structure + full CSS
+data.js       → Clinical constants (screening, hypotheses, ICF tree)
+app.js        → State, navigation logic and event handlers
+sw.js         → Service Worker (PWA offline shell + CDN caching)
+manifest.json → PWA manifest
 ```
 
 ## Run locally
