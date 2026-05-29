@@ -1902,6 +1902,10 @@ function saveSession() {
   try {
     localStorage.setItem('physiq_session', JSON.stringify({ v: 1, savedAt: Date.now(), state: { ...state } }));
   } catch (e) {}
+  if (state.patient || state.maxVisitedIdx > 0) {
+    const date = new Date().toLocaleDateString('es-ES');
+    writeSession({ patient: state.patient, date }).then(session => { if (session) updateSessionChip(session); });
+  }
 }
 
 function clearLocalSession() {
