@@ -154,7 +154,24 @@ When modifying clinical content, keep `data.js` isolated from logic — this sep
 - `IntersectionObserver` — contextual banners on scroll in Phase 2 and 4b
 
 ### Dialogs
-Use `showConfirmBanner(title, text, actionLabel, callback)` — never use the native `confirm()`.
+Use `showConfirmBanner(title, text, actionLabel, callback)` — never use the native `confirm()` or `alert()`.
+
+## Session Persistence
+
+IDB (`lib/session.js`) is the only persistence layer — no localStorage.
+
+**Write triggers in `saveSession()`** (called on every phase transition, `visibilitychange`, and all state-mutating handlers):
+- `selectSQ`, `selectPsico`, `selectOption` — phase 1 inputs
+- `applyRegionChange`, `selectSistQ` — phase 2 inputs
+- `selectNRS`, `selectIrritab`, `selectIrritabSync` — phase 3 inputs
+- `selectTreeOption` — phase 4 CIF tree
+- `setTestResult` — phase 4b test results
+
+`saveSession()` flushes DOM fields into `state` (patient, motivoConsulta, signoComparable), then calls `writeSession({ patient, date, assessmentState: { ...state } })` if `state.patient` is non-empty or `state.maxVisitedIdx > 0`.
+
+**On startup:** `readSession()` checks for `session.assessmentState.maxVisitedIdx > 0`. If found, silently restores all state via `_restoreSessionDOM()` and `goToPhase(targetPhase)`. No prompt.
+
+**Session chip** in the header shows `● patient · date [×]` when active. `[×]` triggers `promptClearSession()` → `showConfirmBanner` → `_softResetApp()` + `goToPhase(1)` + `clearSession()`.
 
 ### Responsive layout
 Mobile uses card layouts and bottom phase bar; desktop uses tables and horizontal nav.
