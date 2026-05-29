@@ -1791,8 +1791,12 @@ function updateSessionChip(session) {
 }
 
 function promptClearSession() {
-  if (!confirm('¿Borrar la sesión activa?')) return;
-  clearSession().then(() => updateSessionChip(null));
+  showConfirmBanner(
+    'Nueva sesión',
+    '¿Borrar la sesión activa y empezar de nuevo?',
+    'Borrar sesión',
+    () => clearSession().then(() => updateSessionChip(null))
+  );
 }
 
 // ─── PHYSIQ EXPORT ───────────────────────────────────────────
