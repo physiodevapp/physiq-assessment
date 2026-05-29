@@ -287,6 +287,7 @@ function selectOption(groupId, btn, value) {
   if (groupId === 'psico_miedo' || groupId === 'psico_autoef' || groupId === 'psico_emocional') {
     updatePsicoRecomendacion();
   }
+  saveSession();
 }
 
 function selectSQ(btn, id, value) {
@@ -738,6 +739,7 @@ function selectNRS(btn, val) {
   state.severidad = val;
   const label = document.getElementById('nrsLabel');
   if (label) label.textContent = `${val}/10 — ${NRS_LABELS[val]}`;
+  saveSession();
 }
 
 function initNRS() {
@@ -760,16 +762,17 @@ function selectIrritab(key, btn, value) {
   state.irritabilidad[key] = value;
   syncIrritabMobile(key, value);
   calcIrritabilidad();
+  saveSession();
 }
 
 function selectIrritabSync(key, btn, value) {
-  // Actualizar vista de cards
   const card = btn.closest('.irritab-card');
   card.querySelectorAll('.irritab-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   state.irritabilidad[key] = value;
   syncIrritabDesktop(key, value);
   calcIrritabilidad();
+  saveSession();
 }
 
 // Sincronizar selección de desktop → mobile
