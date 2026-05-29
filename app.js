@@ -296,6 +296,7 @@ function selectSQ(btn, id, value) {
   btn.classList.add('selected');
   state.banderasRojas[id] = value;
   checkBanderasRojas();
+  saveSession();
 }
 
 function checkBanderasRojas() {
@@ -316,6 +317,7 @@ function selectPsico(btn, value) {
   suggest.innerHTML = `Herramienta recomendada: <strong>Örebro (OMPSQ)</strong> — validada para cualquier región MSK. Si la región es lumbar, también puede usar <strong>STarT Back</strong> (desarrollada y validada principalmente para columna lumbar).`;
 
   altoQ.style.display = value === 'Alto' ? 'block' : 'none';
+  saveSession();
 }
 
 function updatePsicoRecomendacion() {
@@ -428,6 +430,7 @@ function applyRegionChange(regionId, card) {
   }
   state.region = regionId;
   buildSistemicoQuestions(regionId);
+  saveSession();
 }
 
 function buildSistemicoQuestions(regionId) {
@@ -713,6 +716,7 @@ function selectSistQ(btn, id, value, isAlerta, sisId) {
   }
 
   updateSistemicoAlert();
+  saveSession();
 }
 
 function updateSistemicoAlert() {
@@ -977,6 +981,7 @@ function selectTreeOption(stepId, optIdx, value) {
   }
 
   checkTreeComplete(tree);
+  saveSession();
 }
 
 // Elimina del DOM y del state todos los pasos a partir de fromIdx
@@ -1260,6 +1265,7 @@ function setTestResult(hId, idx, result, btn) {
   }
   // Refresh context banner if this hypothesis is being observed
   if (_activeHypId === hId) refreshHypBanner(hId);
+  saveSession();
 }
 
 function calcLRScore(hyp, results) {
