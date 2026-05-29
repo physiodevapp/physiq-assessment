@@ -1899,8 +1899,94 @@ function saveSession() {
   if (signoEl) state.signoComparable = signoEl.value;
   if (state.patient || state.maxVisitedIdx > 0) {
     const date = new Date().toLocaleDateString('es-ES');
-    writeSession({ patient: state.patient, date }).then(session => { if (session) updateSessionChip(session); });
+    writeSession({ patient: state.patient, date, assessmentState: { ...state } })
+      .then(session => { if (session) updateSessionChip(session); });
   }
+}
+
+function _restoreOptionBtnGroup(groupId, val) {
+  if (!val) return;
+  const group = document.getElementById(groupId);
+  if (!group) return;
+  group.querySelectorAll('.option-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/,\s*this\s*,\s*'([^']*)'\s*\)/);
+    btn.classList.toggle('selected', !!(m && m[1] === val));
+  });
+}
+
+function _restoreSessionDOM() {
+  const patientEl = document.getElementById('patientName');
+  if (patientEl) patientEl.value = state.patient || '';
+  const motivoEl = document.getElementById('motivoConsulta');
+  if (motivoEl) motivoEl.value = state.motivoConsulta || '';
+
+  ['mecanismo', 'cronologia', 'riesgoPsico'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
+
+  Object.entries(state.banderasRojas).forEach(([brId, val]) => {
+    document.querySelectorAll('#banderasRojas .sq-btn').forEach(btn => {
+      const onclick = btn.getAttribute('onclick') || '';
+      if (!onclick.includes(`'${brId}'`)) return;
+      const m = onclick.match(/'(SI|NO)'\s*\)/);
+      if (m) btn.classList.toggle('selected', m[1] === val);
+    });
+  });
+  checkBanderasRojas();
+
+  if (state.riesgoPsico) {
+    const suggest = document.getElementById('psicoToolSuggest');
+    if (suggest) suggest.style.display = 'block';
+    const altoQ = document.getElementById('psicoAltoQuestions');
+    if (altoQ) altoQ.style.display = state.riesgoPsico === 'Alto' ? 'block' : 'none';
+  }
+  if (state.riesgoPsico === 'Alto') {
+    ['psico_miedo', 'psico_autoef', 'psico_emocional'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
+    updatePsicoRecomendacion();
+  }
+
+  if (state.maxVisitedIdx < 1) return;
+
+  if (state.region) {
+    document.querySelectorAll('.region-card').forEach(card => {
+      card.classList.toggle('selected', (card.getAttribute('onclick') || '').includes(`'${state.region}'`));
+    });
+    const savedAnswers = { ...state.sistemicoAnswers };
+    buildSistemicoQuestions(state.region);
+    Object.assign(state.sistemicoAnswers, savedAnswers);
+    Object.entries(savedAnswers).forEach(([qId, answer]) => {
+      const sq2 = document.getElementById(`sq2_${qId}`);
+      if (!sq2) return;
+      sq2.querySelectorAll('.sq-btn').forEach(btn => {
+        const m = (btn.getAttribute('onclick') || '').match(/'(SI|NO)'/);
+        if (m) btn.classList.toggle('selected', m[1] === answer);
+      });
+    });
+    updateSistemicoAlert();
+    const btnSinss = document.getElementById('btnContinuarSinss');
+    if (btnSinss) btnSinss.disabled = false;
+  }
+
+  if (state.maxVisitedIdx < 2) return;
+
+  if (state.severidad !== null) {
+    document.querySelectorAll('.nrs-btn').forEach(btn => {
+      btn.classList.toggle('selected', parseInt(btn.textContent.trim()) === state.severidad);
+    });
+    const nrsLabel = document.getElementById('nrsLabel');
+    if (nrsLabel) nrsLabel.textContent = `${state.severidad}/10 — ${NRS_LABELS[state.severidad]}`;
+  }
+  document.querySelectorAll('.irritab-table .irritab-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/selectIrritab\('(\w+)',\s*this,\s*'([^']*)'\)/);
+    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
+  });
+  document.querySelectorAll('.irritab-card-btns .irritab-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/selectIrritabSync\('(\w+)',\s*this,\s*'([^']*)'\)/);
+    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
+  });
+  calcIrritabilidad();
+  ['naturaleza', 'estadio', 'estabilidad'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
+  const signoEl = document.getElementById('signoComparable');
+  if (signoEl) signoEl.value = state.signoComparable || '';
+  // Phases 4 / 4b / 5 restore automatically via initCIFTree / buildHypothesisCards / buildResults
 }
 
 
@@ -1942,14 +2028,26 @@ document.addEventListener('DOMContentLoaded', () => {
   readSession().then(session => {
     if (!session) return;
     updateSessionChip(session);
-    const patientEl = document.getElementById('patientName');
-    if (session.patient && patientEl && !patientEl.value) {
-      patientEl.value = session.patient;
-      state.patient = session.patient;
+    if (session.assessmentState?.maxVisitedIdx > 0) {
+      Object.assign(state, session.assessmentState);
+      _restoreSessionDOM();
+      const targetPhase = state.currentPhase;
+      if (targetPhase === 5) buildResults();
+      _handlingPopState = true;
+      goToPhase(targetPhase);
+      _handlingPopState = false;
+      const phaseSeq = [1, 2, 3, 4, '4b', 5];
+      const idx = phaseSeq.indexOf(targetPhase);
+      history.replaceState({ phase: 1 }, '');
+      for (let i = 1; i <= idx; i++) history.pushState({ phase: phaseSeq[i] }, '');
+    } else {
+      const patientEl = document.getElementById('patientName');
+      if (session.patient && patientEl && !patientEl.value) {
+        patientEl.value = session.patient;
+        state.patient = session.patient;
+      }
     }
-    if (session.rom && !state.rom) {
-      state.rom = session.rom;
-    }
+    if (session.rom && !state.rom) state.rom = session.rom;
   });
 });
 
