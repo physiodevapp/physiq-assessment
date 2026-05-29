@@ -20,6 +20,7 @@ jobs:
 
       - name: Copy files to hub
         run: |
+          rm -rf physiq-hub/assessment
           mkdir -p physiq-hub/assessment/lib physiq-hub/assessment/icons
           cp index.html app.js data.js sw.js manifest.json favicon.svg .nojekyll physiq-hub/assessment/
           cp icons/icon-192.png icons/icon-512.png physiq-hub/assessment/icons/
@@ -30,6 +31,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assessment/
+          git add -A assessment/
           git diff --cached --quiet || git commit -m "chore: update assessment from physiq-assessment@${{ github.sha }}"
           git push
