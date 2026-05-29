@@ -253,8 +253,6 @@ function _softResetApp() {
   const resultsContent = document.getElementById('resultsContent');
   if (resultsContent) resultsContent.innerHTML = '';
 
-  clearLocalSession();
-
   // Navigate to phase 1
   document.querySelectorAll('.phase-container').forEach(p => p.classList.remove('active'));
   document.getElementById('phase1').classList.add('active');
@@ -1899,163 +1897,13 @@ function saveSession() {
   if (motivoEl) state.motivoConsulta = motivoEl.value;
   const signoEl = document.getElementById('signoComparable');
   if (signoEl) state.signoComparable = signoEl.value;
-  try {
-    localStorage.setItem('physiq_session', JSON.stringify({ v: 1, savedAt: Date.now(), state: { ...state } }));
-  } catch (e) {}
   if (state.patient || state.maxVisitedIdx > 0) {
     const date = new Date().toLocaleDateString('es-ES');
     writeSession({ patient: state.patient, date }).then(session => { if (session) updateSessionChip(session); });
   }
 }
 
-function clearLocalSession() {
-  try { localStorage.removeItem('physiq_session'); } catch (e) {}
-}
 
-function restoreSession() {
-  let saved;
-  try {
-    const raw = localStorage.getItem('physiq_session');
-    if (!raw) return;
-    saved = JSON.parse(raw);
-  } catch (e) { return; }
-  if (!saved || saved.v !== 1 || !saved.state) return;
-  // Expire after 24 hours
-  if (Date.now() - saved.savedAt > 86400000) { clearLocalSession(); return; }
-  // Nothing meaningful to restore
-  if (!saved.state.maxVisitedIdx) return;
-
-  const d = new Date(saved.savedAt);
-  const timeStr = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  const dateStr = d.toLocaleDateString([], { day: '2-digit', month: '2-digit' });
-  const phaseNames = { 1: 'Triage', 2: 'Cribado Sistémico', 3: 'SINSS', 4: 'Algoritmo CIF', '4b': 'Confirmación', 5: 'Resultados' };
-  const phaseName = phaseNames[saved.state.currentPhase] || `Fase ${saved.state.currentPhase}`;
-  const patientInfo = saved.state.patient ? ` · ${saved.state.patient}` : '';
-
-  showConfirmBanner(
-    '↩ Sesión anterior encontrada',
-    `Guardado el ${dateStr} a las ${timeStr}${patientInfo} — en ${phaseName}. ¿Restaurar?`,
-    'Restaurar sesión',
-    () => _applyRestore(saved)
-  );
-}
-
-function _applyRestore(saved) {
-  Object.assign(state, saved.state);
-  _restoreSessionDOM();
-
-  const targetPhase = state.currentPhase;
-  if (targetPhase === 5) buildResults();
-
-  _handlingPopState = true;
-  goToPhase(targetPhase);
-  _handlingPopState = false;
-
-  // Rebuild history stack so back button traverses correctly
-  const phaseSeq = [1, 2, 3, 4, '4b', 5];
-  const idx = phaseSeq.indexOf(targetPhase);
-  history.replaceState({ phase: 1 }, '');
-  for (let i = 1; i <= idx; i++) {
-    history.pushState({ phase: phaseSeq[i] }, '');
-  }
-}
-
-function _restoreOptionBtnGroup(groupId, val) {
-  if (!val) return;
-  const group = document.getElementById(groupId);
-  if (!group) return;
-  group.querySelectorAll('.option-btn').forEach(btn => {
-    const m = (btn.getAttribute('onclick') || '').match(/,\s*this\s*,\s*'([^']*)'\s*\)/);
-    btn.classList.toggle('selected', !!(m && m[1] === val));
-  });
-}
-
-function _restoreSessionDOM() {
-  // ── Phase 1 ──────────────────────────────────────────────────
-  const patientEl = document.getElementById('patientName');
-  if (patientEl) patientEl.value = state.patient || '';
-  const motivoEl = document.getElementById('motivoConsulta');
-  if (motivoEl) motivoEl.value = state.motivoConsulta || '';
-
-  ['mecanismo', 'cronologia', 'riesgoPsico'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
-
-  // Banderas rojas sq-btns
-  Object.entries(state.banderasRojas).forEach(([brId, val]) => {
-    document.querySelectorAll('#banderasRojas .sq-btn').forEach(btn => {
-      const onclick = btn.getAttribute('onclick') || '';
-      if (!onclick.includes(`'${brId}'`)) return;
-      const m = onclick.match(/'(SI|NO)'\s*\)/);
-      if (m) btn.classList.toggle('selected', m[1] === val);
-    });
-  });
-  checkBanderasRojas();
-
-  if (state.riesgoPsico) {
-    const suggest = document.getElementById('psicoToolSuggest');
-    if (suggest) suggest.style.display = 'block';
-    const altoQ = document.getElementById('psicoAltoQuestions');
-    if (altoQ) altoQ.style.display = state.riesgoPsico === 'Alto' ? 'block' : 'none';
-  }
-  if (state.riesgoPsico === 'Alto') {
-    ['psico_miedo', 'psico_autoef', 'psico_emocional'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
-    updatePsicoRecomendacion();
-  }
-
-  if (state.maxVisitedIdx < 1) return;
-
-  // ── Phase 2 ──────────────────────────────────────────────────
-  if (state.region) {
-    document.querySelectorAll('.region-card').forEach(card => {
-      card.classList.toggle('selected', (card.getAttribute('onclick') || '').includes(`'${state.region}'`));
-    });
-
-    const savedAnswers = { ...state.sistemicoAnswers };
-    buildSistemicoQuestions(state.region); // resets sistemicoAnswers
-    Object.assign(state.sistemicoAnswers, savedAnswers);
-
-    Object.entries(savedAnswers).forEach(([qId, answer]) => {
-      const sq2 = document.getElementById(`sq2_${qId}`);
-      if (!sq2) return;
-      sq2.querySelectorAll('.sq-btn').forEach(btn => {
-        const m = (btn.getAttribute('onclick') || '').match(/'(SI|NO)'/);
-        if (m) btn.classList.toggle('selected', m[1] === answer);
-      });
-    });
-    updateSistemicoAlert();
-
-    const btnSinss = document.getElementById('btnContinuarSinss');
-    if (btnSinss) btnSinss.disabled = false;
-  }
-
-  if (state.maxVisitedIdx < 2) return;
-
-  // ── Phase 3 ──────────────────────────────────────────────────
-  if (state.severidad !== null) {
-    document.querySelectorAll('.nrs-btn').forEach(btn => {
-      btn.classList.toggle('selected', parseInt(btn.textContent.trim()) === state.severidad);
-    });
-    const nrsLabel = document.getElementById('nrsLabel');
-    if (nrsLabel) nrsLabel.textContent = `${state.severidad}/10 — ${NRS_LABELS[state.severidad]}`;
-  }
-
-  // Irritability desktop
-  document.querySelectorAll('.irritab-table .irritab-btn').forEach(btn => {
-    const m = (btn.getAttribute('onclick') || '').match(/selectIrritab\('(\w+)',\s*this,\s*'([^']*)'\)/);
-    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
-  });
-  // Irritability mobile
-  document.querySelectorAll('.irritab-card-btns .irritab-btn').forEach(btn => {
-    const m = (btn.getAttribute('onclick') || '').match(/selectIrritabSync\('(\w+)',\s*this,\s*'([^']*)'\)/);
-    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
-  });
-  calcIrritabilidad();
-
-  ['naturaleza', 'estadio', 'estabilidad'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
-
-  const signoEl = document.getElementById('signoComparable');
-  if (signoEl) signoEl.value = state.signoComparable || '';
-  // Phases 4 / 4b / 5 restore automatically via initCIFTree / buildHypothesisCards / buildResults
-}
 
 // ─── INIT ─────────────────────────────────────────────────────
 // ─── TRANSLATE BANNER ────────────────────────────────────────
@@ -2091,8 +1939,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   loadROMFromURL();
-  // Offer to restore a previous session
-  restoreSession();
   readSession().then(session => {
     if (!session) return;
     updateSessionChip(session);
