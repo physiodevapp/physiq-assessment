@@ -1795,7 +1795,7 @@ function promptClearSession() {
     'Nueva sesión',
     '¿Borrar la sesión activa y empezar de nuevo?',
     'Borrar sesión',
-    () => clearSession().then(() => updateSessionChip(null))
+    () => { _softResetApp(); goToPhase(1); clearSession().then(() => updateSessionChip(null)); }
   );
 }
 
