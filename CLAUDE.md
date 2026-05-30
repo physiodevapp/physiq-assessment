@@ -183,20 +183,20 @@ At the end of Phase 5, the app offers three export options:
 - **Desktop (>768px):** three inline buttons in the nav bar — `🖨️ Imprimir`, `📋 Copiar contexto`, `📤 Generar en PhysiQ-Report`
 - **Tablet/mobile (≤768px):** a `↑ Exportar` button that opens a bottom sheet (`#actionsSheet`) with the same three options, following the same pattern as the phase-navigation sheet
 
-**Target URL:** `https://physiodevapp.github.io/physiq-report/`
-
 ### Key functions (`app.js`)
 
 | Function | Purpose |
 |---|---|
 | `buildPhysiQPayload()` | Builds the minimum JSON payload from state |
-| `exportToPhysiQ()` | Base64-encodes the payload and opens PhysiQ-Report in a new tab |
+| `exportToPhysiQ()` | Saves session to IDB, then sends `postMessage({ type: 'PHYSIQ_NAVIGATE', to: 'report' })` to the hub when running inside an iframe; falls back to opening PhysiQ-Report in a new tab when standalone |
 | `copyContextToClipboard()` | Copies a plain-text summary to clipboard; shows a toast via `showCopyFeedback()` |
 | `toggleActionsSheet()` / `closeActionsSheet()` | Controls the mobile/tablet export bottom sheet |
 
 **Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
 
-> **Verification:** test payload size in DevTools: `btoa(unescape(encodeURIComponent(JSON.stringify(buildPhysiQPayload()))))` — target < 4 KB.
+## Audio recording
+
+Audio recording was removed from this satellite entirely. The `RecorderEngine` lives in the PhysiQ hub (`physiq/index.html`) and persists across all satellites. The hub widget (bottom-right, z-index 300) controls start/pause/stop/discard and saves audio to IDB key `'pending'` in the `physiq` database. The hub broadcasts recorder state via `BroadcastChannel('physiq-recorder')`; satellites can listen if they need to react to recording state.
 
 ### Pending
 
