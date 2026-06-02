@@ -1716,6 +1716,9 @@ function saveSession() {
       .then(session => {
         if (session) updateSessionChip(session);
         _sessionCh.postMessage({ type: 'SESSION_PATIENT', patient: state.patient || '' });
+        if (state.currentPhase !== 5) {
+          _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_PARTIAL', phase: state.currentPhase });
+        }
       });
   }
 }
