@@ -174,10 +174,8 @@ function goToPhase(n) {
       history.replaceState({ phase: n }, '');
     }
   }
-  if (n !== 5) {
-    const _phaseLabels = [1, 2, 3, 4, '4b', 5];
-    _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_PARTIAL', phase: _phaseLabels[state.maxVisitedIdx], region: state.region || null });
-  }
+  const _phaseLabels = [1, 2, 3, 4, '4b', 5];
+  _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_PARTIAL', phase: _phaseLabels[state.maxVisitedIdx], region: state.region || null });
   saveSession();
 }
 
