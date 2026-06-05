@@ -4,7 +4,9 @@ Musculoskeletal physiotherapy assessment assistant. Guides the clinician
 through a structured 5-phase clinical workflow: triage, systemic screening,
 SINSS, ICF decision tree, and hypothesis confirmation.
 
-**[→ Open app](https://physiodevapp.github.io/physiq-assessment/)**
+**Primary entry point: [PhysiQ Hub](https://physiodevapp.github.io/physiq/)** — installs as a single PWA covering all PhysiQ apps.
+
+**Standalone: [→ Open app](https://physiodevapp.github.io/physiq-assessment/)**
 
 ---
 
@@ -17,7 +19,7 @@ SINSS, ICF decision tree, and hypothesis confirmation.
 | 3 — SINSS | Pain nature, stage, irritability, comparable sign, NRS |
 | 4 — ICF Algorithm | Region-specific diagnostic decision tree |
 | 4b — Hypothesis Confirmation | Exploratory tests with LR+/LR− |
-| 5 — Results | Clinical summary, priority hypotheses, treatment plan |
+| 5 — Results | Clinical summary, priority hypotheses, treatment plan notes |
 
 Available regions: shoulder, hip, cervical, lumbar, knee, elbow.
 
@@ -60,6 +62,14 @@ workflow and expand region coverage.
   touching the application logic.
 - **PWA with Service Worker** — app shell is cached for offline use after first load; network-first
   strategy ensures deployments are picked up without reinstalling the PWA.
+
+## Hub ecosystem integration
+
+When running inside the PhysiQ hub, clicking the logo navigates back to the hub home. Navigation to physiq-report is handled by the hub — the satellite does not open new tabs.
+
+Assessment state is shared with physiq-report via `BroadcastChannel('physiq-session')` and a shared IndexedDB session:
+- **Partial updates** (`SESSION_ASSESSMENT_PARTIAL`) are broadcast on every phase transition, letting physiq-report display a live "valoración en curso" badge.
+- **Complete payload** (`SESSION_ASSESSMENT`) is only emitted when the clinician presses **"Finalizar valoración →"** in phase 5, ensuring plan notes are included.
 
 ## Development
 

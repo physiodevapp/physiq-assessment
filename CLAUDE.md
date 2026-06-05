@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 PhysiQ-Assessment is a musculoskeletal physiotherapy clinical assessment assistant. It guides clinicians through a structured 5-phase workflow (phases 1–4b–5, where 4b is a sub-phase of 4) using evidence-based screening, ICF decision trees, and diagnostic likelihood ratios. It is in active clinical pilot use.
 
-**Deployment:** GitHub Pages — push to `main` deploys automatically.
+**Deployment:** GitHub Pages — push to `main` deploys automatically. The hub (`physiodevapp.github.io/physiq/`) is the primary entry point; this app is also accessible standalone.
 
 ## Development
 
@@ -171,33 +171,78 @@ IDB (`lib/session.js`) is the only persistence layer — no localStorage.
 
 **On startup:** `readSession()` checks for `session.assessmentState.maxVisitedIdx > 0`. If found, silently restores all state via `_restoreSessionDOM()` and `goToPhase(targetPhase)`. No prompt.
 
-**Session chip** in the header shows `● patient · date [×]` when active. `[×]` triggers `promptClearSession()` → `showConfirmBanner` → `_softResetApp()` + `goToPhase(1)` + `clearSession()`.
+**Session button** in the header (`#sessionBtn`) is a person-silhouette SVG icon. `[×]` triggers `promptClearSession()` → `showConfirmBanner` → `_softResetApp()` + `goToPhase(1)` + `clearSession()`.
 
 ### Responsive layout
 Mobile uses card layouts and bottom phase bar; desktop uses tables and horizontal nav.
 
-## Export to PhysiQ
+## BroadcastChannel protocol
 
-At the end of Phase 5, the app offers three export options:
+All satellites use `const _sessionCh = new BroadcastChannel('physiq-session')`.
 
-- **Desktop (>768px):** three inline buttons in the nav bar — `🖨️ Imprimir`, `📋 Copiar contexto`, `📤 Generar en PhysiQ-Report`
-- **Tablet/mobile (≤768px):** a `↑ Exportar` button that opens a bottom sheet (`#actionsSheet`) with the same three options, following the same pattern as the phase-navigation sheet
+Messages emitted by physiq-assessment:
 
-### Key functions (`app.js`)
+| Type | When | Payload |
+|------|------|---------|
+| `SESSION_PATIENT` | after each IDB write or reset | `{ patient: string }` |
+| `SESSION_ASSESSMENT_PARTIAL` | on every `goToPhase()` call | `{ phase: string, region: string \| null }` |
+| `SESSION_ASSESSMENT` | in `finalizarValoracion()` only | `{ assessment: buildPhysiQPayload() }` |
+| `SESSION_CLEAR` | after `promptClearSession()` full clear | — |
+
+`SESSION_ASSESSMENT_PARTIAL` is emitted **before** `saveSession()` in `goToPhase()`, synchronously, for all phases including phase 5. physiq-report uses this to display an "incompleto" badge in real time.
+
+## Phase 5 and finalizarValoracion()
+
+Reaching phase 5 (`buildResults()`) renders the summary HTML but does **not** emit the assessment payload. The assessment is only considered **complete** when the clinician explicitly presses **"Finalizar valoración →"**.
+
+`finalizarValoracion()` flow:
+1. `buildPhysiQPayload()` — builds payload including `pn: state.planNotes` with the filled plan notes
+2. `writeSession({ assessment: payload, patient, date })` — writes the complete payload to IDB
+3. Emits `SESSION_ASSESSMENT` via BroadcastChannel → physiq-report updates to "completo" badge
+4. Button shows "✓ Enviado al informe" for 3s, then re-activates (re-pressable if notes are edited)
+
+Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclajeHabito` — not mandatory, included in payload as `pn`.
+
+## Key functions (`app.js`)
 
 | Function | Purpose |
 |---|---|
 | `buildPhysiQPayload()` | Builds the minimum JSON payload from state |
-| `exportToPhysiQ()` | Saves session to IDB, then sends `postMessage({ type: 'PHYSIQ_NAVIGATE', to: 'report' })` to the hub when running inside an iframe; falls back to opening PhysiQ-Report in a new tab when standalone |
+| `finalizarValoracion()` | Writes complete assessment to IDB and emits `SESSION_ASSESSMENT` |
 | `copyContextToClipboard()` | Copies a plain-text summary to clipboard; shows a toast via `showCopyFeedback()` |
-| `toggleActionsSheet()` / `closeActionsSheet()` | Controls the mobile/tablet export bottom sheet |
 
 **Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
 
+**Copy context:** a discrete `📋 Copiar` button in phase 5 calls `copyContextToClipboard()` — the only export action remaining in the satellite UI. Navigation to physiq-report is handled by the hub.
+
 ## Audio recording
 
-Audio recording was removed from this satellite entirely. The `RecorderEngine` lives in the PhysiQ hub (`physiq/index.html`) and persists across all satellites. The hub widget (bottom-right, z-index 300) controls start/pause/stop/discard and saves audio to IDB key `'pending'` in the `physiq` database. The hub broadcasts recorder state via `BroadcastChannel('physiq-recorder')`; satellites can listen if they need to react to recording state.
+Audio recording was removed from this satellite entirely. The `RecorderEngine` lives in the PhysiQ hub (`physiq/index.html`) and persists across all satellites. The hub widget (bottom-center, z-index 300) controls start/pause/stop/discard and saves audio to IDB key `'pending'` in the `physiq` database. The hub broadcasts recorder state via `BroadcastChannel('physiq-recorder')`; satellites can listen if they need to react to recording state.
 
-### Pending
+## Hub integration
 
-_No pending tasks._
+physiq-assessment runs inside an iframe in the PhysiQ hub. On load:
+
+```js
+if (window.self !== window.top) {
+  document.body.classList.add('in-hub');
+  document.querySelector('.logo-main').addEventListener('click', () => {
+    window.parent.postMessage({ type: 'PHYSIQ_GO_HOME' }, '*');
+  });
+}
+```
+
+CSS `.in-hub .logo-main` adds a `‹` back-arrow hint. When running in-hub, clicking the logo navigates back to the hub home.
+
+`showConfirmBanner` sends `{ type: 'PHYSIQ_WIDGET_HIDE' }` to the parent when opening and `{ type: 'PHYSIQ_WIDGET_SHOW' }` when closing, so the hub recorder widget is hidden during modals.
+
+Navigation to physiq-report from phase 5 is the hub's responsibility. physiq-assessment does not call `window.open`.
+
+## Sibling repos
+
+The hub at `physiodevapp.github.io/physiq/` is the primary entry point for the ecosystem.
+
+| Repo | Hub path | Role |
+|------|----------|------|
+| physiq-motion | /physiq/motion/ | Joint ROM measurement |
+| physiq-report | /physiq/report/ | Audio transcription + Claude report generation |
