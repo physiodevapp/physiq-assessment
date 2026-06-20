@@ -181,6 +181,8 @@ IDB (`lib/session.js`) is the only persistence layer — no localStorage.
 
 **Session button** in the header (`#sessionBtn`) is a person-silhouette SVG icon. `[×]` triggers `promptClearSession()` → `showConfirmBanner` → `_softResetApp()` + `goToPhase(1)` + `clearSession()`.
 
+**`↺ Reiniciar valoración completa`** (header button, calls `resetApp()`) resets all clinical data (phases 1–5) but **preserves `state.patient` and `#patientName`** — the patient identity survives a clinical reset, consistent with the pattern in physiq-motion, physiq-force, and physiq-balance where "borrar mediciones" never clears the patient name.
+
 ### Responsive layout
 Mobile uses card layouts and bottom phase bar; desktop uses tables and horizontal nav.
 
