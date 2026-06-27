@@ -55,6 +55,8 @@ All source lives in the project root — there are no subdirectories.
 
 Script load order in `index.html`: `data.js` → `phase4.js` → `phase4b.js` → `app.js`. All files share the same global scope — `state`, `HYPOTHESES`, `CIF_TREES`, `saveSession`, `showConfirmBanner`, and `paintNav` are globals defined in their respective files and called freely across them.
 
+`styles.css` is intentionally kept as a single file (~1852 lines) even though it spans multiple concerns (base tokens, layout, per-phase components, responsive breakpoints). Splitting it by concern or by phase would scatter rules without a clear seam — CSS variables like `--accent` and `--surface` are used everywhere, so any split would introduce cross-file dependencies immediately. A single file also makes it trivial to grep any class and know exactly where to edit it.
+
 ## State Management
 
 A single global `state` object in `app.js` holds the entire session. There is no reactive framework — UI updates are manual DOM manipulation triggered after state mutations.
