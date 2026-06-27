@@ -22,7 +22,7 @@ jobs:
         run: |
           rm -rf physiq-hub/assessment
           mkdir -p physiq-hub/assessment/lib physiq-hub/assessment/icons
-          cp index.html app.js data.js sw.js manifest.json favicon.svg .nojekyll physiq-hub/assessment/
+          cp index.html styles.css app.js phase4.js phase4b.js data.js sw.js manifest.json favicon.svg .nojekyll physiq-hub/assessment/
           cp icons/icon-192.png icons/icon-512.png physiq-hub/assessment/icons/
           cp lib/session.js physiq-hub/assessment/lib/
 
