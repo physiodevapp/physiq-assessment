@@ -46,7 +46,8 @@ All source lives in the project root — there are no subdirectories.
 
 | File | Role |
 |------|------|
-| `index.html` | DOM structure + all embedded CSS (2,200+ lines) |
+| `index.html` | DOM structure only (~555 lines) |
+| `styles.css` | All CSS — variables, layout, components, responsive breakpoints (~1852 lines) |
 | `app.js` | Application state, navigation logic, event handlers, UI rendering (phases 1–3, 5) |
 | `phase4.js` | Phase 4 algorithm: CIF decision tree (`initCIFTree`, `renderStep`, `selectTreeOption`, `pruneTreeFrom`, `rebuildHypotheses`, `checkTreeComplete`, `showTreeComplete`) |
 | `phase4b.js` | Phase 4b algorithm: hypothesis scoring (`buildHypothesisCards`, `setTestResult`, `calcLRScore`, `recalcHypScore`, accordion observer) |
