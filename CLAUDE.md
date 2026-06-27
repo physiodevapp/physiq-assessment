@@ -46,9 +46,16 @@ All source lives in the project root — there are no subdirectories.
 
 | File | Role |
 |------|------|
-| `index.html` | DOM structure + all embedded CSS (2,200+ lines) |
-| `app.js` | Application state, navigation logic, event handlers, UI rendering |
+| `index.html` | DOM structure only (~555 lines) |
+| `styles.css` | All CSS — variables, layout, components, responsive breakpoints (~1852 lines) |
+| `app.js` | Application state, navigation logic, event handlers, UI rendering (phases 1–3, 5) |
+| `phase4.js` | Phase 4 algorithm: CIF decision tree (`initCIFTree`, `renderStep`, `selectTreeOption`, `pruneTreeFrom`, `rebuildHypotheses`, `checkTreeComplete`, `showTreeComplete`) |
+| `phase4b.js` | Phase 4b algorithm: hypothesis scoring (`buildHypothesisCards`, `setTestResult`, `calcLRScore`, `recalcHypScore`, accordion observer) |
 | `data.js` | All clinical content: screening systems, ICF trees, hypotheses, LR± values |
+
+Script load order in `index.html`: `data.js` → `phase4.js` → `phase4b.js` → `app.js`. All files share the same global scope — `state`, `HYPOTHESES`, `CIF_TREES`, `saveSession`, `showConfirmBanner`, and `paintNav` are globals defined in their respective files and called freely across them.
+
+`styles.css` is intentionally kept as a single file (~1852 lines) even though it spans multiple concerns (base tokens, layout, per-phase components, responsive breakpoints). Splitting it by concern or by phase would scatter rules without a clear seam — CSS variables like `--accent` and `--surface` are used everywhere, so any split would introduce cross-file dependencies immediately. A single file also makes it trivial to grep any class and know exactly where to edit it.
 
 ## State Management
 
@@ -111,14 +118,14 @@ const state = {
 
 ## Five-Phase Clinical Workflow
 
-| Phase | DOM ID | Name | Key Logic |
-|-------|--------|------|-----------|
-| 1 | `#phase1` | Triage & Header | Red flag detection (`checkBanderasRojas`), psychosocial risk |
-| 2 | `#phase2` | Systemic Screening | Region selection drives which organ systems render (`buildSistemicoQuestions`) |
-| 3 | `#phase3` | SINSS | Irritability matrix syncs between desktop table and mobile cards (`syncIrritabMobile/Desktop`) |
-| 4 | `#phase4` | ICF Decision Tree | `initCIFTree` / `renderStep` / `selectTreeOption` navigate the region-specific tree; `pruneTreeFrom` invalidates downstream branches |
-| 4b | `#phase4b` | Hypothesis Confirmation | `setTestResult` + `recalcHypScore` update Bayesian posterior probabilities per test |
-| 5 | `#phase5` | Results | `buildResults` / `buildSummary` generates the clinical summary from accumulated state |
+| Phase | DOM ID | Name | Key Logic | File |
+|-------|--------|------|-----------|------|
+| 1 | `#phase1` | Triage & Header | Red flag detection (`checkBanderasRojas`), psychosocial risk | `app.js` |
+| 2 | `#phase2` | Systemic Screening | Region selection drives which organ systems render (`buildSistemicoQuestions`) | `app.js` |
+| 3 | `#phase3` | SINSS | Irritability matrix syncs between desktop table and mobile cards (`syncIrritabMobile/Desktop`) | `app.js` |
+| 4 | `#phase4` | ICF Decision Tree | `initCIFTree` / `renderStep` / `selectTreeOption` navigate the region-specific tree; `pruneTreeFrom` invalidates downstream branches | `phase4.js` |
+| 4b | `#phase4b` | Hypothesis Confirmation | `setTestResult` + `recalcHypScore` update Bayesian posterior probabilities per test | `phase4b.js` |
+| 5 | `#phase5` | Results | `buildResults` / `buildSummary` generates the clinical summary from accumulated state | `app.js` |
 
 Navigation is validated by `navStepClick` — users cannot skip phases with incomplete required data. Phase transitions use `goToPhase(n)` where n ∈ {1, 2, 3, 4, '4b', 5}.
 
@@ -132,7 +139,7 @@ Navigation is validated by `navStepClick` — users cannot skip phases with inco
 
 **`HYPOTHESES`** — keyed by hypothesis ID. Each entry: `{ id, region, name, prom, dosis, tests: [{name, sn, sp, lr_pos, lr_neg, criterio}] }`. The `lr_pos` and `lr_neg` values are used in Phase 4b Bayesian scoring.
 
-When modifying clinical content, keep `data.js` isolated from logic — this separation allows physiotherapists to review domain content independently.
+When modifying clinical content, keep `data.js` isolated from logic — this separation allows physiotherapists to review domain content independently. `data.js` is intentionally kept as a single unified file (~1668 lines) even though it covers three distinct domains (`SYSTEMIC_SCREENING`, `CIF_TREES`, `HYPOTHESES`): splitting it would fragment the "single source of clinical content" property without meaningful benefit.
 
 ## UI Conventions
 

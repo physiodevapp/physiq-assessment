@@ -27,22 +27,28 @@ const sandbox = vm.createContext({
   console,
   setTimeout,
   clearTimeout,
+  URLSearchParams,
   btoa: s => Buffer.from(s, 'binary').toString('base64'),
-  window: { innerWidth: 1024, addEventListener: () => {}, location: { href: '' } },
+  location: { search: '', href: '' },
+  history: { replaceState() {}, pushState() {}, go() {} },
+  BroadcastChannel: class { constructor() {} postMessage() {} set onmessage(_) {} },
+  window: { innerWidth: 1024, addEventListener: () => {}, scrollTo: () => {}, location: { href: '', search: '' } },
   document: {
     addEventListener:  () => {},
     getElementById:    () => makeEl(),
     querySelector:     () => makeEl(),
     querySelectorAll:  () => [],
     createElement:     () => makeEl(),
-    body:              { appendChild: () => {} },
+    body:              { appendChild: () => {}, style: {} },
   },
-  navigator: { clipboard: { writeText: () => Promise.resolve() } },
-  IntersectionObserver: class { observe() {} unobserve() {} },
+  navigator: { serviceWorker: { register: () => Promise.resolve() }, clipboard: { writeText: () => Promise.resolve() } },
+  IntersectionObserver: class { observe() {} unobserve() {} disconnect() {} },
 });
 
-vm.runInContext(fs.readFileSync(path.join(ROOT, 'data.js'),  'utf-8'), sandbox);
-vm.runInContext(fs.readFileSync(path.join(ROOT, 'app.js'),   'utf-8'), sandbox);
+vm.runInContext(fs.readFileSync(path.join(ROOT, 'data.js'),    'utf-8'), sandbox);
+vm.runInContext(fs.readFileSync(path.join(ROOT, 'phase4.js'),  'utf-8'), sandbox);
+vm.runInContext(fs.readFileSync(path.join(ROOT, 'phase4b.js'), 'utf-8'), sandbox);
+vm.runInContext(fs.readFileSync(path.join(ROOT, 'app.js'),     'utf-8'), sandbox);
 
 const run = code => vm.runInContext(code, sandbox);
 
