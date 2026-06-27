@@ -136,7 +136,7 @@ Navigation is validated by `navStepClick` — users cannot skip phases with inco
 
 **`HYPOTHESES`** — keyed by hypothesis ID. Each entry: `{ id, region, name, prom, dosis, tests: [{name, sn, sp, lr_pos, lr_neg, criterio}] }`. The `lr_pos` and `lr_neg` values are used in Phase 4b Bayesian scoring.
 
-When modifying clinical content, keep `data.js` isolated from logic — this separation allows physiotherapists to review domain content independently.
+When modifying clinical content, keep `data.js` isolated from logic — this separation allows physiotherapists to review domain content independently. `data.js` is intentionally kept as a single unified file (~1668 lines) even though it covers three distinct domains (`SYSTEMIC_SCREENING`, `CIF_TREES`, `HYPOTHESES`): splitting it would fragment the "single source of clinical content" property without meaningful benefit.
 
 ## UI Conventions
 
