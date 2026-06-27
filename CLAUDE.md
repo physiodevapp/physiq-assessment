@@ -47,8 +47,12 @@ All source lives in the project root — there are no subdirectories.
 | File | Role |
 |------|------|
 | `index.html` | DOM structure + all embedded CSS (2,200+ lines) |
-| `app.js` | Application state, navigation logic, event handlers, UI rendering |
+| `app.js` | Application state, navigation logic, event handlers, UI rendering (phases 1–3, 5) |
+| `phase4.js` | Phase 4 algorithm: CIF decision tree (`initCIFTree`, `renderStep`, `selectTreeOption`, `pruneTreeFrom`, `rebuildHypotheses`, `checkTreeComplete`, `showTreeComplete`) |
+| `phase4b.js` | Phase 4b algorithm: hypothesis scoring (`buildHypothesisCards`, `setTestResult`, `calcLRScore`, `recalcHypScore`, accordion observer) |
 | `data.js` | All clinical content: screening systems, ICF trees, hypotheses, LR± values |
+
+Script load order in `index.html`: `data.js` → `phase4.js` → `phase4b.js` → `app.js`. All files share the same global scope — `state`, `HYPOTHESES`, `CIF_TREES`, `saveSession`, `showConfirmBanner`, and `paintNav` are globals defined in their respective files and called freely across them.
 
 ## State Management
 
@@ -111,14 +115,14 @@ const state = {
 
 ## Five-Phase Clinical Workflow
 
-| Phase | DOM ID | Name | Key Logic |
-|-------|--------|------|-----------|
-| 1 | `#phase1` | Triage & Header | Red flag detection (`checkBanderasRojas`), psychosocial risk |
-| 2 | `#phase2` | Systemic Screening | Region selection drives which organ systems render (`buildSistemicoQuestions`) |
-| 3 | `#phase3` | SINSS | Irritability matrix syncs between desktop table and mobile cards (`syncIrritabMobile/Desktop`) |
-| 4 | `#phase4` | ICF Decision Tree | `initCIFTree` / `renderStep` / `selectTreeOption` navigate the region-specific tree; `pruneTreeFrom` invalidates downstream branches |
-| 4b | `#phase4b` | Hypothesis Confirmation | `setTestResult` + `recalcHypScore` update Bayesian posterior probabilities per test |
-| 5 | `#phase5` | Results | `buildResults` / `buildSummary` generates the clinical summary from accumulated state |
+| Phase | DOM ID | Name | Key Logic | File |
+|-------|--------|------|-----------|------|
+| 1 | `#phase1` | Triage & Header | Red flag detection (`checkBanderasRojas`), psychosocial risk | `app.js` |
+| 2 | `#phase2` | Systemic Screening | Region selection drives which organ systems render (`buildSistemicoQuestions`) | `app.js` |
+| 3 | `#phase3` | SINSS | Irritability matrix syncs between desktop table and mobile cards (`syncIrritabMobile/Desktop`) | `app.js` |
+| 4 | `#phase4` | ICF Decision Tree | `initCIFTree` / `renderStep` / `selectTreeOption` navigate the region-specific tree; `pruneTreeFrom` invalidates downstream branches | `phase4.js` |
+| 4b | `#phase4b` | Hypothesis Confirmation | `setTestResult` + `recalcHypScore` update Bayesian posterior probabilities per test | `phase4b.js` |
+| 5 | `#phase5` | Results | `buildResults` / `buildSummary` generates the clinical summary from accumulated state | `app.js` |
 
 Navigation is validated by `navStepClick` — users cannot skip phases with incomplete required data. Phase transitions use `goToPhase(n)` where n ∈ {1, 2, 3, 4, '4b', 5}.
 
