@@ -27,6 +27,7 @@
 
   html {
     background: var(--bg);
+    overflow-x: hidden;
   }
   body {
     background: var(--bg);
@@ -34,7 +35,6 @@
     font-family: 'Outfit', sans-serif;
     font-weight: 300;
     min-height: 100vh;
-    overflow-x: hidden;
   }
 
   /* Background grid */
