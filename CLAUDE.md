@@ -184,7 +184,7 @@ IDB (`lib/session.js`) is the only persistence layer — no localStorage.
 - `_sessionGen` (integer) — incremented on every clear. Captured before the async `writeSession` call; if `_sessionGen !== gen` at resolve time, `clearSession()` is called to undo the stale write.
 - `_sessionCleared` (boolean) — set `true` synchronously on clear; blocks `saveSession()` from starting a new write until `state.patient` is non-empty, then resets to `false`.
 
-**On startup:** `readSession()` checks for `session.assessmentState.maxVisitedIdx > 0`. If found, silently restores all state via `_restoreSessionDOM()` and `goToPhase(targetPhase)`. No prompt.
+**On startup:** `readSession()` checks for `session.assessmentState.maxVisitedIdx > 0`. If found, silently restores all state via `_restoreSessionDOM()` and `goToPhase(targetPhase)`. No prompt. Note: `assessmentState` is only persisted when a patient name is set, so startup restoration only applies to prior sessions where a patient name was entered.
 
 **Session button** in the header (`#sessionBtn`) is a person-silhouette SVG icon. `[×]` triggers `promptClearSession()` → `showConfirmBanner` → `_softResetApp()` + `goToPhase(1)` + `clearSession()`.
 
