@@ -178,11 +178,11 @@ IDB (`lib/session.js`) is the only persistence layer — no localStorage.
 - `selectTreeOption` — phase 4 CIF tree
 - `setTestResult` — phase 4b test results
 
-`saveSession()` flushes DOM fields into `state` (patient, motivoConsulta, signoComparable), then calls `writeSession({ patient, date, assessmentState: { ...state } })` if `state.patient` is non-empty or `state.maxVisitedIdx > 0`.
+`saveSession()` flushes DOM fields into `state` (patient, motivoConsulta, signoComparable), then calls `writeSession({ patient, date, assessmentState: { ...state } })` only if `state.patient` is non-empty. Navigating phases without a patient name does not write to IDB; `SESSION_ASSESSMENT_PARTIAL` is still emitted by `goToPhase()` for real-time report sync.
 
 **Ghost-write protection** — two guards prevent a stale `writeSession` from recreating a deleted session:
 - `_sessionGen` (integer) — incremented on every clear. Captured before the async `writeSession` call; if `_sessionGen !== gen` at resolve time, `clearSession()` is called to undo the stale write.
-- `_sessionCleared` (boolean) — set `true` synchronously on clear; blocks `saveSession()` from starting a new write until genuine data appears (`state.patient` non-empty or `maxVisitedIdx > 0`), then resets to `false`.
+- `_sessionCleared` (boolean) — set `true` synchronously on clear; blocks `saveSession()` from starting a new write until `state.patient` is non-empty, then resets to `false`.
 
 **On startup:** `readSession()` checks for `session.assessmentState.maxVisitedIdx > 0`. If found, silently restores all state via `_restoreSessionDOM()` and `goToPhase(targetPhase)`. No prompt.
 
