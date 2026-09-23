@@ -34,14 +34,19 @@ Objetivo: reducir la dependencia del teclado físico en los campos de texto libr
 
 Campos afectados: `#motivoConsulta`, `#signoComparable` (fase 3), y las notas de plan en fase 5 (`variableControl`, `ventanaRecuperacion`, `anclajeHabito`).
 
-- [ ] Añadir una sección `QUICK_PHRASES` (o nombre similar) en `data.js` con frases clínicas predefinidas por campo/contexto — mantiene la separación contenido/lógica del proyecto.
-- [ ] Componente de "chips" reutilizando el estilo visual de `.option-btn`: tocar un chip inserta/añade texto en el campo; el texto sigue siendo editable después.
-- [ ] Botón de dictado por voz junto a cada campo de texto libre, usando `SpeechRecognition`/`webkitSpeechRecognition` (API nativa del navegador, sin dependencias nuevas), con fallback silencioso si no está soportado (Safari/iOS tiene soporte limitado).
-- [ ] Aplicar a los 5 campos listados arriba.
-- [ ] CSS: variante "chip" en fila con scroll horizontal, sin invadir el espacio vertical del layout móvil de cada fase.
+- [x] Añadir una sección `QUICK_PHRASES` (o nombre similar) en `data.js` con frases clínicas predefinidas por campo/contexto — mantiene la separación contenido/lógica del proyecto.
+- [x] Componente de "chips" reutilizando el estilo visual de `.option-btn`: tocar un chip inserta/añade texto en el campo; el texto sigue siendo editable después.
+- [x] Botón de dictado por voz junto a cada campo de texto libre, usando `SpeechRecognition`/`webkitSpeechRecognition` (API nativa del navegador, sin dependencias nuevas), con fallback silencioso si no está soportado (Safari/iOS tiene soporte limitado).
+- [x] Aplicar a los 5 campos listados arriba.
+- [x] CSS: variante "chip" en fila con scroll horizontal, sin invadir el espacio vertical del layout móvil de cada fase.
 - [ ] Probar en dispositivo móvil real (o emulación de Chrome DevTools) el flujo completo intentando no usar el teclado físico.
 
-**Notas / decisiones:** _(vacío por ahora)_
+**Notas / decisiones:**
+- Implementado en `app.js` (`renderQuickInputBar`, `injectQuickInputBar`, `initQuickInputBars`, `appendQuickPhrase`, `toggleDictation`), `data.js` (`QUICK_PHRASES`) y `styles.css` (`.quick-input-bar`, `.chip-row`, `.chip-btn`, `.mic-btn`).
+- `motivoConsulta` y `signoComparable` son estáticos en `index.html`; la barra de chips/mic se inyecta en `DOMContentLoaded` vía `initQuickInputBars()` (evita duplicar contenido en el HTML estático). Los 3 campos de notas de plan (fase 5) se generan dinámicamente en `buildResults()`, así que ahí se invoca `renderQuickInputBar(fieldId)` directamente en el template.
+- Insertar un chip o dictar despacha un evento `input` nativo sobre el `<textarea>`, así que el `oninput` existente de cada campo (que actualiza `state` y llama `saveSession()`) se dispara sin duplicar lógica — ningún campo necesitó tocarse dos veces.
+- El botón de micrófono solo se renderiza si `window.SpeechRecognition || window.webkitSpeechRecognition` existe en tiempo de render (fallback silencioso real: el botón ni aparece en navegadores sin soporte, en vez de aparecer y fallar al pulsar).
+- Verificado con Playwright (Chromium headless) contra `npx serve .`: los 5 campos renderizan sus chips, el click en un chip actualiza el `<textarea>` y el `state` correspondiente (incluido `state.planNotes.*`), y el layout se ve correcto en viewport móvil (420px). Pendiente solo la prueba manual en dispositivo/DevTools real mencionada arriba.
 
 ---
 
