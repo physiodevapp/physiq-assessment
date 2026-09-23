@@ -255,6 +255,10 @@ CSS `.in-hub .logo-main` adds a `‹` back-arrow hint. When running in-hub, clic
 
 Navigation to physiq-report from phase 5 is the hub's responsibility. physiq-assessment does not call `window.open`.
 
+## In-progress migration plan
+
+See `MIGRATION_PLAN.md` for a living checklist covering the ES modules migration (Fase A) and mobile-friendly text input improvements (Fase B), meant to be completed incrementally across sessions. Check it for current progress before starting related work; update its checkboxes and notes as steps are completed.
+
 ## Sibling repos
 
 The hub at `physiodevapp.github.io/physiq/` is the primary entry point for the ecosystem.
