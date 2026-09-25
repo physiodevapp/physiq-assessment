@@ -247,12 +247,14 @@ Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclaje
 |---|---|
 | `buildPhysiQPayload()` | Builds the minimum JSON payload from state |
 | `finalizarValoracion()` | Writes complete assessment to IDB, emits `SESSION_ASSESSMENT`, and (standalone only) shares/copies the summary |
-| `buildContextSummaryText()` | Builds the plain-text clinical summary shared by `copyContextToClipboard()` and standalone `finalizarValoracion()` |
-| `copyContextToClipboard()` | Copies a plain-text summary to clipboard; shows a toast via `showCopyFeedback()` |
+| `buildContextSummaryText()` | Builds the plain-text **clinician shorthand** summary shared by `copyContextToClipboard()` and standalone `finalizarValoracion()` — dense, includes LR/score jargon, meant for the clinician's own use or `physiq-report` |
+| `copyContextToClipboard()` | Copies the clinician shorthand summary to clipboard; shows a toast via `showCopyFeedback()` |
+| `buildInformeFisioterapiaText()` | Builds a **patient/GP-facing** physiotherapy report from the same payload — plain language, no NRS/LR jargon or emoji, hypothesis names only (no scores); meant to be pasted as-is into a letterhead template and handed to the patient |
+| `copyInformeFisioterapia()` | Copies that patient/GP report to clipboard (`📄 Informe` button, phase 5, next to `📋 Copiar`) |
 
-**Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
+**Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `sq` (systemic screening affirmative question texts), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
 
-**Copy context:** a discrete `📋 Copiar` button in phase 5 calls `copyContextToClipboard()` regardless of hub context. Navigation to physiq-report is handled by the hub; standalone, `#btnFinalizar`'s share action (see above) is the closest equivalent.
+**Two different summaries, two different audiences** — both live in phase 5's header, both work regardless of hub context: `📋 Copiar` is the clinician's own dense shorthand (`buildContextSummaryText()`); `📄 Informe` is the patient/GP-facing report (`buildInformeFisioterapiaText()`), reworded from the same data but stripped of internal scoring language. When adding a new clinical field to one, consider whether the other needs it too — they diverge in *tone*, not in what data exists. Navigation to physiq-report is handled by the hub; standalone, `#btnFinalizar`'s share action (see above) is the closest equivalent to "sending" the assessment out, but `📄 Informe` is what's actually meant to be handed to the patient.
 
 ## Audio recording
 
