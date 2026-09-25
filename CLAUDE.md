@@ -10,7 +10,7 @@ PhysiQ-Assessment is a musculoskeletal physiotherapy clinical assessment assista
 
 ### Standalone use (without the hub)
 
-`manifest.json` (`start_url`/`scope`: `/physiq/assessment/`, `display: standalone`, install icons) plus `sw.js` already make the deployed app fully installable on its own — no code changes needed. Open `https://physiodevapp.github.io/physiq/assessment/` directly (not through the hub) and use the browser's "Install app" / "Add to Home Screen"; it installs as its own icon, scoped to that path, separate from the hub's own installed PWA. `_initHubIntegration()` (`app.js`) no-ops cleanly outside an iframe (`window.self === window.top`), so nothing hub-specific blocks standalone use. What's unavailable standalone (both are hub-only by design, not bugs): the audio recording widget, and the "navigate to physiq-report" hop from phase 5 — phase 5's `#btnFinalizar` becomes "📤 Compartir informe" and shares the clinical summary directly (`navigator.share()`, clipboard fallback) instead of the in-hub "Finalizar valoración" flow (see "Phase 5 and finalizarValoracion()" below); the "📋 Copiar" button also still works either way. Session data (IndexedDB, `BroadcastChannel`) is scoped per browser *origin*, not per path, so a standalone install and the hub-embedded copy share the same session data when used in the same browser.
+`manifest.json` (`start_url`/`scope`: `/physiq/assessment/`, `display: standalone`, install icons) plus `sw.js` already make the deployed app fully installable on its own — no code changes needed. Open `https://physiodevapp.github.io/physiq/assessment/` directly (not through the hub) and use the browser's "Install app" / "Add to Home Screen"; it installs as its own icon, scoped to that path, separate from the hub's own installed PWA. `_initHubIntegration()` (`app.js`) no-ops cleanly outside an iframe (`window.self === window.top`), so nothing hub-specific blocks standalone use. What's unavailable standalone (both are hub-only by design, not bugs): the audio recording widget, and the "navigate to physiq-report" hop from phase 5 — phase 5's `#btnFinalizar` becomes "📤 Compartir informe" and shares the patient/GP report directly (`navigator.share()`, clipboard fallback) instead of the in-hub "Finalizar valoración" flow (see "Phase 5 and finalizarValoracion()" below); the "📋 Copiar" and "📄 Informe" buttons also still work either way. Session data (IndexedDB, `BroadcastChannel`) is scoped per browser *origin*, not per path, so a standalone install and the hub-embedded copy share the same session data when used in the same browser.
 
 ## Development
 
@@ -237,7 +237,7 @@ Reaching phase 5 (`buildResults()`) renders the summary HTML but does **not** em
 
 Then it branches on hub context:
 - **In-hub:** button shows "✓ Enviado al informe" for 3s, then re-activates (re-pressable if notes are edited).
-- **Standalone:** no report app around to relay to, so it shares the summary (`buildContextSummaryText()`) via `navigator.share()` instead; falls back to `navigator.clipboard.writeText()` + a toast when Web Share isn't supported (e.g. desktop browsers).
+- **Standalone:** no report app around to relay to, so it shares the patient/GP report (`buildInformeFisioterapiaText()` — *not* the clinician shorthand) via `navigator.share()` instead; falls back to `navigator.clipboard.writeText()` + a toast when Web Share isn't supported (e.g. desktop browsers).
 
 Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclajeHabito` — not mandatory, included in payload as `pn`.
 
@@ -247,14 +247,14 @@ Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclaje
 |---|---|
 | `buildPhysiQPayload()` | Builds the minimum JSON payload from state |
 | `finalizarValoracion()` | Writes complete assessment to IDB, emits `SESSION_ASSESSMENT`, and (standalone only) shares/copies the summary |
-| `buildContextSummaryText()` | Builds the plain-text **clinician shorthand** summary shared by `copyContextToClipboard()` and standalone `finalizarValoracion()` — dense, includes LR/score jargon, meant for the clinician's own use or `physiq-report` |
+| `buildContextSummaryText()` | Builds the plain-text **clinician shorthand** summary used by `copyContextToClipboard()` — dense, includes LR/score jargon, meant for the clinician's own use or `physiq-report` |
 | `copyContextToClipboard()` | Copies the clinician shorthand summary to clipboard; shows a toast via `showCopyFeedback()` |
 | `buildInformeFisioterapiaText()` | Builds a **patient/GP-facing** physiotherapy report from the same payload — plain language, no NRS/LR jargon or emoji, hypothesis names only (no scores); meant to be pasted as-is into a letterhead template and handed to the patient |
 | `copyInformeFisioterapia()` | Copies that patient/GP report to clipboard (`📄 Informe` button, phase 5, next to `📋 Copiar`) |
 
 **Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `sq` (systemic screening affirmative question texts), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
 
-**Two different summaries, two different audiences** — both live in phase 5's header, both work regardless of hub context: `📋 Copiar` is the clinician's own dense shorthand (`buildContextSummaryText()`); `📄 Informe` is the patient/GP-facing report (`buildInformeFisioterapiaText()`), reworded from the same data but stripped of internal scoring language. When adding a new clinical field to one, consider whether the other needs it too — they diverge in *tone*, not in what data exists. Navigation to physiq-report is handled by the hub; standalone, `#btnFinalizar`'s share action (see above) is the closest equivalent to "sending" the assessment out, but `📄 Informe` is what's actually meant to be handed to the patient.
+**Two different summaries, two different audiences** — both live in phase 5's header, both work regardless of hub context: `📋 Copiar` is the clinician's own dense shorthand (`buildContextSummaryText()`); `📄 Informe` is the patient/GP-facing report (`buildInformeFisioterapiaText()`), reworded from the same data but stripped of internal scoring language. When adding a new clinical field to one, consider whether the other needs it too — they diverge in *tone*, not in what data exists. Navigation to physiq-report is handled by the hub; standalone, `#btnFinalizar`'s share action reuses `buildInformeFisioterapiaText()` too (see "Phase 5 and finalizarValoracion()" above) — it's the same patient/GP report as `📄 Informe`, just pushed through `navigator.share()` instead of the clipboard.
 
 ## Audio recording
 
