@@ -49,10 +49,11 @@ globalThis.IntersectionObserver = class { observe() {} unobserve() {} disconnect
 // Real ES modules, loaded only after the shims above are in place — app.js,
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
-const { HYPOTHESES, SYSTEMIC_SCREENING } = await import('../data.js');
+const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES } = await import('../data.js');
 const { calcLRScore } = await import('../phase4b.js');
 const { buildPhysiQPayload, getSistemicoAffirmativeTexts } = await import('../app.js');
 const { state } = await import('../state.js');
+const { rebuildHypotheses, pruneTreeFrom } = await import('../phase4.js');
 
 // ── Test runner ───────────────────────────────────────────────────────────────
 let passed = 0, failed = 0;
@@ -344,6 +345,163 @@ test('calcLRScore does not return NaN for any hypothesis with all-pos results', 
     })
     .map(([k]) => k);
   assert.deepEqual(nanHyps, []);
+});
+
+// ── data.js integrity: CIF_TREES ─────────────────────────────────────────────
+console.log('\nCIF_TREES data integrity');
+
+test('all 6 regions present', () => {
+  for (const r of VALID_REGIONS) {
+    assert.ok(typeof CIF_TREES[r] === 'object', `missing region: ${r}`);
+  }
+});
+
+test('every tree has a title and a non-empty steps array', () => {
+  const bad = VALID_REGIONS.filter(r => {
+    const t = CIF_TREES[r];
+    return !t || !t.title || !Array.isArray(t.steps) || t.steps.length === 0;
+  });
+  assert.deepEqual(bad, []);
+});
+
+test('no duplicate step ids within a tree', () => {
+  const dupes = VALID_REGIONS.flatMap(r => {
+    const seen = new Set(), out = [];
+    CIF_TREES[r].steps.forEach(s => { if (seen.has(s.id)) out.push(r + ':' + s.id); seen.add(s.id); });
+    return out;
+  });
+  assert.deepEqual(dupes, []);
+});
+
+test('every step has tag, question and a non-empty options array', () => {
+  const bad = VALID_REGIONS.flatMap(r =>
+    CIF_TREES[r].steps
+      .filter(s => !s.tag || !s.question || !Array.isArray(s.options) || s.options.length === 0)
+      .map(s => r + ':' + s.id)
+  );
+  assert.deepEqual(bad, []);
+});
+
+test('every option has label, value and a hypothesis array', () => {
+  const bad = VALID_REGIONS.flatMap(r =>
+    CIF_TREES[r].steps.flatMap(s =>
+      s.options
+        .map((o, i) => ({ o, i }))
+        .filter(({ o }) => !o.label || !o.value || !Array.isArray(o.hypothesis))
+        .map(({ i }) => r + ':' + s.id + '[' + i + ']')
+    )
+  );
+  assert.deepEqual(bad, []);
+});
+
+test('every option.next references a step id within the same tree', () => {
+  const dangling = VALID_REGIONS.flatMap(r => {
+    const ids = new Set(CIF_TREES[r].steps.map(s => s.id));
+    return CIF_TREES[r].steps.flatMap(s =>
+      s.options
+        .filter(o => o.next && !ids.has(o.next))
+        .map(o => r + ':' + s.id + ' -> next:' + o.next)
+    );
+  });
+  assert.deepEqual(dangling, [], 'option.next points to a non-existent step id');
+});
+
+test('every option.hypothesis id exists in HYPOTHESES', () => {
+  const dangling = VALID_REGIONS.flatMap(r =>
+    CIF_TREES[r].steps.flatMap(s =>
+      s.options.flatMap(o =>
+        o.hypothesis
+          .filter(hId => !HYPOTHESES[hId])
+          .map(hId => r + ':' + s.id + ' -> hypothesis:' + hId)
+      )
+    )
+  );
+  assert.deepEqual(dangling, [], 'option.hypothesis references a non-existent HYPOTHESES id');
+});
+
+test('every option.hypothesis id belongs to the same region as its tree', () => {
+  const mismatched = VALID_REGIONS.flatMap(r =>
+    CIF_TREES[r].steps.flatMap(s =>
+      s.options.flatMap(o =>
+        o.hypothesis
+          .filter(hId => HYPOTHESES[hId] && HYPOTHESES[hId].region !== r)
+          .map(hId => r + ':' + s.id + ' -> ' + hId + ' is region ' + HYPOTHESES[hId].region)
+      )
+    )
+  );
+  assert.deepEqual(mismatched, []);
+});
+
+// ── phase4.js engine: rebuildHypotheses / pruneTreeFrom ───────────────────────
+// Fixture tree — deliberately NOT real clinical content. rebuildHypotheses and
+// pruneTreeFrom both take the tree as a parameter rather than importing
+// CIF_TREES themselves, so the tree-walking engine can be regression-tested
+// here independently of whatever data.js currently contains (Fase C of
+// MIGRATION_PLAN.md).
+console.log('\nphase4.js engine (fixture tree, decoupled from data.js)');
+
+const FIXTURE_TREE = {
+  title: 'Fixture — motor de árbol CIF',
+  steps: [
+    {
+      id: 'fx_step1', tag: 'Paso 1', question: '¿Q1?',
+      options: [
+        { label: 'A', value: 'a', next: null,        hypothesis: ['fxA'] },
+        { label: 'B', value: 'b', next: 'fx_step3',   hypothesis: ['fxB'] }
+      ]
+    },
+    {
+      id: 'fx_step2', tag: 'Paso 2', question: '¿Q2?',
+      options: [
+        { label: 'C', value: 'c', next: null, hypothesis: ['fxC'] }
+      ]
+    },
+    {
+      id: 'fx_step3', tag: 'Paso 3', question: '¿Q3?',
+      options: [
+        { label: 'D', value: 'd', next: null, hypothesis: ['fxA', 'fxD'] }
+      ]
+    }
+  ]
+};
+
+test('rebuildHypotheses: accumulates hypotheses from answered steps, in step order', () => {
+  state.treeAnswers = { fx_step1: 'b', fx_step3: 'd' };
+  rebuildHypotheses(FIXTURE_TREE);
+  assert.deepEqual(state.activeHypotheses, ['fxB', 'fxA', 'fxD']);
+});
+
+test('rebuildHypotheses: dedupes a hypothesis reached via two different steps', () => {
+  state.treeAnswers = { fx_step1: 'a', fx_step3: 'd' };
+  rebuildHypotheses(FIXTURE_TREE);
+  assert.deepEqual(state.activeHypotheses, ['fxA', 'fxD']);
+});
+
+test('rebuildHypotheses: unanswered steps and stale answers referencing a removed option are ignored', () => {
+  state.treeAnswers = { fx_step1: 'nonexistent-value' };
+  rebuildHypotheses(FIXTURE_TREE);
+  assert.deepEqual(state.activeHypotheses, []);
+});
+
+test('pruneTreeFrom: deletes answers at and after fromIdx, keeps earlier ones', () => {
+  state.treeAnswers = { fx_step1: 'a', fx_step2: 'c', fx_step3: 'd' };
+  state.maxVisitedIdx = 0; state.treeModified = false;
+  pruneTreeFrom(1, FIXTURE_TREE);
+  assert.deepEqual(state.treeAnswers, { fx_step1: 'a' });
+});
+
+test('pruneTreeFrom: marks treeModified when phase 4b/5 were already visited', () => {
+  state.treeAnswers = { fx_step1: 'a', fx_step2: 'c' };
+  state.maxVisitedIdx = 4; state.treeModified = false;
+  pruneTreeFrom(1, FIXTURE_TREE);
+  assert.equal(state.treeModified, true);
+});
+
+test('pruneTreeFrom: leaves treeModified untouched when 4b/5 were never visited', () => {
+  state.treeAnswers = { fx_step1: 'a', fx_step2: 'c' };
+  state.maxVisitedIdx = 2; state.treeModified = false;
+  pruneTreeFrom(1, FIXTURE_TREE);
+  assert.equal(state.treeModified, false);
 });
 
 // ── data.js integrity: SYSTEMIC_SCREENING ─────────────────────────────────────
