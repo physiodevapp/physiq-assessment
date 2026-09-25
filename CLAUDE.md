@@ -27,7 +27,7 @@ There are no linting or compilation commands. To run unit tests:
 node tests/unit.js
 ```
 
-**Browser smoke test** (`tests/smoke.mjs`, optional dev tool — not a project dependency, needs Playwright available separately): launches the real app with Playwright and checks the things `tests/unit.js` can't — that every ES module actually loads (200, no broken `import` across `app.js`/`state.js`/`data.js`/`phase4.js`/`phase4b.js`/`lib/session.js`), no console/page errors, and a full click-through of phases 1–5 plus the mobile "☰ Fases" button via the real UI. Run it after any change touching module structure, `window` exposure, or navigation:
+**Browser smoke test** (`tests/smoke.mjs`, optional dev tool — not a project dependency, needs Playwright available separately): launches the real app with Playwright and checks the things `tests/unit.js` can't — that every ES module actually loads (200, no broken `import` across `app.js`/`state.js`/`data.js`/`phase4.js`/`phase4b.js`/`lib/session.js`), no console/page errors, and a full click-through of phases 1–5 (one golden path per region — always the first option at each CIF tree step, not every branch — but for **all 6 regions**, since each has its own `CIF_TREES` entry with a different step count/branches) plus the mobile "☰ Fases" button via the real UI. Run it after any change touching module structure, `window` exposure, or navigation — and always after editing `CIF_TREES` for any region, since this is the only check that exercises real rendering (`renderStep`/`checkTreeComplete`/`showTreeComplete`), which `tests/unit.js` cannot (see below):
 ```
 npx serve . &
 node tests/smoke.mjs                # add http://localhost:PORT if not :3000

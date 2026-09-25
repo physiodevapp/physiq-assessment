@@ -4,7 +4,11 @@
 // broken `import` across app.js/state.js/data.js/phase4.js/phase4b.js/
 // lib/session.js), that there are no console/page errors, and that a full
 // walk through all 6 phases works by clicking the real UI (the same onclick
-// handlers a physiotherapist would trigger).
+// handlers a physiotherapist would trigger) — for EACH of the 6 regions the
+// app currently ships (hombro, cadera, cervical, lumbar, rodilla, codo), not
+// just one. Each region has its own CIF_TREES entry with a different number
+// of steps and branches, so walking only one region (as this file used to)
+// leaves the other 5 regions' trees completely unexercised in a real browser.
 //
 // This project ships zero runtime dependencies (see CLAUDE.md) and this
 // script keeps that true for the *app* — Playwright is dev-only tooling, not
@@ -38,6 +42,80 @@ try {
 const BASE_URL = process.argv[2] || process.env.SMOKE_URL || 'http://localhost:3000';
 const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'lib/session.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
+// Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
+// and VALID_REGIONS in tests/unit.js — add a new region to all three.
+const REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
+
+// Click the *last* rendered step each time — earlier steps stay in the DOM
+// (answered options remain clickable, to allow changing an answer), so
+// querying `#cifTree .option-btn` globally always matches the FIRST step
+// ever rendered, not the pending one. That used to make this loop toggle
+// the first step's first option on/off without ever reaching later steps,
+// silently leaving the tree unanswered (caught by instrumenting this file:
+// ended with `state.treeAnswers === {}`) — a real bug this fixes, not just a
+// stylistic cleanup. `.locator(...).last()` re-queries fresh each turn.
+async function walkCifTreeToCompletion(page) {
+  for (let i = 0; i < 8; i++) {
+    const lastStep = page.locator('#cifTree .tree-question').last();
+    if (await lastStep.count() === 0) break;
+    const opt = lastStep.locator('.option-btn, button').first();
+    if (await opt.count() === 0) break;
+    await opt.click().catch(() => {});
+    await page.waitForTimeout(100);
+    // Stop as soon as the tree is complete — otherwise the loop would keep
+    // clicking the terminal step's already-selected option (nothing new to
+    // render, so it stays "last"), and a second click on an already-selected
+    // option UN-answers it (see selectTreeOption in phase4.js), silently
+    // undoing completion.
+    if (await page.locator('#treeComplete').count() > 0) break;
+  }
+  return page.evaluate(() => ({
+    answeredSteps: Object.keys(state.treeAnswers).length,
+    activeHypotheses: state.activeHypotheses.length,
+    treeCompleteShown: !!document.getElementById('treeComplete'),
+  }));
+}
+
+// Walks phases 1-5 for a single region via real UI clicks (the same onclick
+// handlers a physiotherapist would trigger), always picking the first
+// available option at each step — one golden path per region, not every
+// branch, but enough to prove that region's CIF_TREES entry actually
+// renders and completes in a real browser.
+async function walkRegion(page, region) {
+  await page.fill('#motivoConsulta', `Dolor de ${region} tras esfuerzo`);
+  await page.click('#mecanismo .option-btn >> nth=0');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+
+  await page.click(`[onclick="selectRegion('${region}', this)"]`);
+  await page.waitForTimeout(150);
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+
+  await page.click('#phase3 .nrs-btn >> nth=6');
+  await page.evaluate(() => {
+    ['naturaleza', 'estadio', 'estabilidad'].forEach(g => document.getElementById(g)?.querySelector('.option-btn')?.click());
+  });
+  await page.fill('#signoComparable', `Signo comparable de ${region}`);
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+
+  const treeResult = await walkCifTreeToCompletion(page);
+
+  // No forced state here on purpose: if the walk above didn't really reach
+  // tree completion, `#btnGoConfirm` stays disabled and Playwright's
+  // actionability check fails the click below loudly, instead of a hidden
+  // hack papering over a broken CIF tree walk.
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+
+  const finalPhase = await page.evaluate(() => state.currentPhase);
+  return { region, treeResult, finalPhase };
+}
 
 async function main() {
   const browser = await chromium.launch();
@@ -65,75 +143,28 @@ async function main() {
     console.log(`  ${ok ? '✓' : '✗'} ${f} -> ${status ?? 'never requested'}`);
   }
 
-  console.log('\nWalking through phases 1-5 via real UI clicks...');
-  await page.fill('#motivoConsulta', 'Dolor de hombro tras caída');
-  await page.click('#mecanismo .option-btn >> nth=0');
-  await page.click('#cronologia .option-btn >> nth=0');
-  await page.click('#phase1 .btn-primary');
-  await page.waitForTimeout(150);
-
-  await page.click('.region-card:has-text("hombro"), [onclick*="hombro"]');
-  await page.waitForTimeout(150);
-  await page.click('#btnContinuarSinss');
-  await page.waitForTimeout(150);
-
-  await page.click('#phase3 .nrs-btn >> nth=6');
-  await page.evaluate(() => {
-    ['naturaleza', 'estadio', 'estabilidad'].forEach(g => document.getElementById(g)?.querySelector('.option-btn')?.click());
-  });
-  await page.fill('#signoComparable', 'Flexión de hombro con dolor');
-  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
-  await page.waitForTimeout(150);
-
-  // Click the *last* rendered step each time — earlier steps stay in the DOM
-  // (answered options remain clickable, to allow changing an answer), so
-  // querying `#cifTree .option-btn` globally always matches the FIRST step
-  // ever rendered, not the pending one. That used to make this loop toggle
-  // h_step1's first option on/off without ever reaching h_step2+, silently
-  // leaving the tree unanswered (caught by instrumenting this file: ended
-  // with `state.treeAnswers === {}`) — a real bug this fix closes, not just
-  // a stylistic cleanup. `.locator(...).last()` re-queries fresh each turn.
-  for (let i = 0; i < 8; i++) {
-    const lastStep = page.locator('#cifTree .tree-question').last();
-    if (await lastStep.count() === 0) break;
-    const opt = lastStep.locator('.option-btn, button').first();
-    if (await opt.count() === 0) break;
-    await opt.click().catch(() => {});
-    await page.waitForTimeout(100);
-    // Stop as soon as the tree is complete — otherwise the loop would keep
-    // clicking the terminal step's already-selected option (nothing new to
-    // render, so it stays "last"), and a second click on an already-selected
-    // option UN-answers it (see selectTreeOption in phase4.js), silently
-    // undoing completion.
-    if (await page.locator('#treeComplete').count() > 0) break;
+  console.log(`\nWalking through phases 1-5 for all ${REGIONS.length} regions...`);
+  const results = [];
+  for (const region of REGIONS) {
+    // Fresh load per region instead of resetting in-page state: `patient`
+    // is never filled here, so saveSession() never writes to IDB (it's
+    // gated on a non-empty patient name — see CLAUDE.md), meaning a plain
+    // reload always starts phase 1 clean with nothing to restore.
+    if (results.length > 0) await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    const r = await walkRegion(page, region);
+    const t = r.treeResult;
+    const ok = t.treeCompleteShown && r.finalPhase === 5;
+    console.log(`  ${ok ? '✓' : '✗'} ${region.padEnd(9)} -> ${t.answeredSteps} pasos, ${t.activeHypotheses} hipótesis, árbol completo: ${t.treeCompleteShown}, fase alcanzada: ${r.finalPhase}`);
+    results.push(r);
   }
 
-  const treeResult = await page.evaluate(() => ({
-    answeredSteps: Object.keys(state.treeAnswers).length,
-    activeHypotheses: state.activeHypotheses.length,
-    treeCompleteShown: !!document.getElementById('treeComplete'),
-  }));
-  console.log(`\nCIF tree walk: ${treeResult.answeredSteps} steps answered, ${treeResult.activeHypotheses} hypotheses, complete banner shown: ${treeResult.treeCompleteShown}`);
-
-  // No forced state here on purpose: if the walk above didn't really reach
-  // tree completion, `#btnGoConfirm` stays disabled and Playwright's
-  // actionability check fails the click below loudly, instead of a hidden
-  // hack papering over a broken CIF tree walk.
-  await page.click('#btnGoConfirm');
-  await page.waitForTimeout(150);
-
-  await page.click('#phase4b button:has-text("Ver Resultados")');
-  await page.waitForTimeout(150);
-
-  // Exercise the mobile phase-sheet button (the last real bug found, PHASE_NAV_IDS).
+  // Exercise the mobile phase-sheet button (the last real bug found,
+  // PHASE_NAV_IDS) once, on whichever region the loop above ended on.
   await page.setViewportSize({ width: 390, height: 844 });
   await page.click('.mobile-phase-menu-btn').catch(() => {});
   await page.waitForTimeout(150);
   const sheetOpen = await page.evaluate(() => document.getElementById('phaseSheet')?.classList.contains('open'));
-
-  const finalPhase = await page.evaluate(() => state.currentPhase);
-  console.log(`\nReached phase: ${finalPhase} (expected 5)`);
-  console.log(`Phase sheet opens from "☰ Fases": ${sheetOpen}`);
+  console.log(`\nPhase sheet opens from "☰ Fases": ${sheetOpen}`);
 
   await browser.close();
 
@@ -141,8 +172,14 @@ async function main() {
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
   realErrors.forEach(e => console.log('  -', e));
 
-  const pass = modulesOk && treeResult.treeCompleteShown && finalPhase === 5 && sheetOpen === true && realErrors.length === 0;
+  const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
+  const pass = modulesOk && regionsOk && sheetOpen === true && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
+  if (!regionsOk) {
+    console.log('\nRegions that did not complete / reach phase 5:');
+    results.filter(r => !(r.treeResult.treeCompleteShown && r.finalPhase === 5))
+      .forEach(r => console.log('  -', JSON.stringify(r)));
+  }
   process.exit(pass ? 0 : 1);
 }
 
