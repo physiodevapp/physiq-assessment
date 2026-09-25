@@ -85,22 +85,45 @@ async function main() {
   await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
   await page.waitForTimeout(150);
 
-  for (let i = 0; i < 6; i++) {
-    const opt = await page.$('#cifTree .option-btn, #cifTree button');
-    if (!opt) break;
+  // Click the *last* rendered step each time — earlier steps stay in the DOM
+  // (answered options remain clickable, to allow changing an answer), so
+  // querying `#cifTree .option-btn` globally always matches the FIRST step
+  // ever rendered, not the pending one. That used to make this loop toggle
+  // h_step1's first option on/off without ever reaching h_step2+, silently
+  // leaving the tree unanswered (caught by instrumenting this file: ended
+  // with `state.treeAnswers === {}`) — a real bug this fix closes, not just
+  // a stylistic cleanup. `.locator(...).last()` re-queries fresh each turn.
+  for (let i = 0; i < 8; i++) {
+    const lastStep = page.locator('#cifTree .tree-question').last();
+    if (await lastStep.count() === 0) break;
+    const opt = lastStep.locator('.option-btn, button').first();
+    if (await opt.count() === 0) break;
     await opt.click().catch(() => {});
-    await page.waitForTimeout(80);
+    await page.waitForTimeout(100);
+    // Stop as soon as the tree is complete — otherwise the loop would keep
+    // clicking the terminal step's already-selected option (nothing new to
+    // render, so it stays "last"), and a second click on an already-selected
+    // option UN-answers it (see selectTreeOption in phase4.js), silently
+    // undoing completion.
+    if (await page.locator('#treeComplete').count() > 0) break;
   }
-  await page.evaluate(() => {
-    if (!state.activeHypotheses.length) state.activeHypotheses = ['h2'];
-    document.getElementById('btnGoConfirm').disabled = false;
-  });
+
+  const treeResult = await page.evaluate(() => ({
+    answeredSteps: Object.keys(state.treeAnswers).length,
+    activeHypotheses: state.activeHypotheses.length,
+    treeCompleteShown: !!document.getElementById('treeComplete'),
+  }));
+  console.log(`\nCIF tree walk: ${treeResult.answeredSteps} steps answered, ${treeResult.activeHypotheses} hypotheses, complete banner shown: ${treeResult.treeCompleteShown}`);
+
+  // No forced state here on purpose: if the walk above didn't really reach
+  // tree completion, `#btnGoConfirm` stays disabled and Playwright's
+  // actionability check fails the click below loudly, instead of a hidden
+  // hack papering over a broken CIF tree walk.
   await page.click('#btnGoConfirm');
   await page.waitForTimeout(150);
 
-  await page.evaluate(() => goToPhase(5));
+  await page.click('#phase4b button:has-text("Ver Resultados")');
   await page.waitForTimeout(150);
-  await page.evaluate(() => buildResults());
 
   // Exercise the mobile phase-sheet button (the last real bug found, PHASE_NAV_IDS).
   await page.setViewportSize({ width: 390, height: 844 });
@@ -118,7 +141,7 @@ async function main() {
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
   realErrors.forEach(e => console.log('  -', e));
 
-  const pass = modulesOk && finalPhase === 5 && sheetOpen === true && realErrors.length === 0;
+  const pass = modulesOk && treeResult.treeCompleteShown && finalPhase === 5 && sheetOpen === true && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   process.exit(pass ? 0 : 1);
 }
