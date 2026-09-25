@@ -1,0 +1,144 @@
+{
+  "cadera": {
+    "ca_step1": [
+      "ca_step2",
+      "ca_step2",
+      "ca_step2"
+    ],
+    "ca_step2": [
+      "ca_step3",
+      "ca_step3"
+    ],
+    "ca_step3": [
+      "ca_step4",
+      "ca_step4",
+      "ca_step4"
+    ],
+    "ca_step4": [
+      "ca_step5",
+      "ca_step5",
+      "ca_step5",
+      "ca_step5"
+    ],
+    "ca_step5": [
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "cervical": {
+    "ce_step1": [
+      "ce_step2",
+      "ce_step2"
+    ],
+    "ce_step2": [
+      "ce_step3",
+      "ce_step3"
+    ],
+    "ce_step3": [
+      "ce_step4",
+      "ce_step4"
+    ],
+    "ce_step4": [
+      "ce_step5",
+      "ce_step5",
+      "ce_step5"
+    ],
+    "ce_step5": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "codo": {
+    "co_step1": [
+      "co_step2",
+      "co_step2"
+    ],
+    "co_step2": [
+      "co_step3",
+      "co_step3"
+    ],
+    "co_step3": [
+      "co_step4",
+      "co_step4",
+      "co_step4"
+    ],
+    "co_step4": [
+      "co_step5",
+      "co_step5",
+      "co_step5"
+    ],
+    "co_step5": [
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "hombro": {
+    "h_step1": [
+      "h_step2",
+      "h_step2",
+      "h_step2"
+    ],
+    "h_step2": [
+      "h_step3",
+      "h_step3"
+    ],
+    "h_step3": [
+      "h_step4",
+      "h_step4",
+      "h_step4",
+      "h_step4"
+    ],
+    "h_step4": [
+      "h_step5",
+      "h_step5",
+      "h_step5"
+    ],
+    "h_step5": [
+      null,
+      null
+    ]
+  },
+  "lumbar": {
+    "lu_step1": [
+      "lu_step1b",
+      "lu_step2"
+    ],
+    "lu_step1b": [
+      "lu_step2",
+      "lu_step2"
+    ],
+    "lu_step2": [
+      "lu_step3",
+      "lu_step3"
+    ],
+    "lu_step3": [
+      null,
+      null
+    ]
+  },
+  "rodilla": {
+    "ro_step1": [
+      "ro_step2",
+      "ro_step2",
+      "ro_step2"
+    ],
+    "ro_step2": [
+      "ro_step3",
+      "ro_step3"
+    ],
+    "ro_step3": [
+      null,
+      null,
+      null,
+      null
+    ]
+  }
+}

@@ -1,50 +1,9 @@
 'use strict';
 import assert from 'node:assert/strict';
-
-// ── DOM shim ─────────────────────────────────────────────────────────────────
-function makeEl() {
-  return {
-    className: '', textContent: '', innerHTML: '', id: '',
-    style: { cssText: '' },
-    classList: { contains: () => false, add() {}, remove() {}, toggle() {} },
-    querySelectorAll: () => [],
-    querySelector:    () => null,
-    closest:          () => null,
-    addEventListener: () => {},
-    getAttribute:     () => null,
-    setAttribute:     () => {},
-    remove:           () => {},
-    appendChild:      () => {},
-  };
-}
-
-// `window` IS `globalThis`: modules do `window.x = y` (or `Object.assign(window, {...})`)
-// to expose things for inline onclick/oninput attributes — aliasing window to
-// globalThis means those assignments land as real globals here too, so this file
-// can just `await import(...)` the real source files and read their exports back.
-globalThis.window = globalThis;
-globalThis.innerWidth = 1024;
-globalThis.addEventListener = () => {};
-globalThis.scrollTo = () => {};
-globalThis.location = { search: '', href: '' };
-globalThis.history = { replaceState() {}, pushState() {}, go() {} };
-globalThis.btoa = s => Buffer.from(s, 'binary').toString('base64');
-globalThis.BroadcastChannel = class { constructor() {} postMessage() {} set onmessage(_) {} };
-globalThis.document = {
-  addEventListener:  () => {},
-  getElementById:    () => makeEl(),
-  querySelector:     () => makeEl(),
-  querySelectorAll:  () => [],
-  createElement:     () => makeEl(),
-  body:              { appendChild: () => {}, style: {}, classList: { add() {}, remove() {}, contains: () => false } },
-};
-// Node defines a read-only global `navigator`; override it with a configurable one.
-Object.defineProperty(globalThis, 'navigator', {
-  value: { serviceWorker: { register: () => Promise.resolve() }, clipboard: { writeText: () => Promise.resolve() } },
-  writable: true,
-  configurable: true,
-});
-globalThis.IntersectionObserver = class { observe() {} unobserve() {} disconnect() {} };
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import './dom-shim.mjs';
 
 // Real ES modules, loaded only after the shims above are in place — app.js,
 // phase4.js and phase4b.js touch `document`/`window` at module top level
@@ -53,7 +12,7 @@ const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES } = await import('../data.js')
 const { calcLRScore } = await import('../phase4b.js');
 const { buildPhysiQPayload, getSistemicoAffirmativeTexts } = await import('../app.js');
 const { state } = await import('../state.js');
-const { rebuildHypotheses, pruneTreeFrom } = await import('../phase4.js');
+const { rebuildHypotheses, pruneTreeFrom, resolveOptionTargets } = await import('../phase4.js');
 
 // ── Test runner ───────────────────────────────────────────────────────────────
 let passed = 0, failed = 0;
@@ -432,11 +391,44 @@ test('every option.hypothesis id belongs to the same region as its tree', () => 
   assert.deepEqual(mismatched, []);
 });
 
-// ── phase4.js engine: rebuildHypotheses / pruneTreeFrom ───────────────────────
-// Fixture tree — deliberately NOT real clinical content. rebuildHypotheses and
-// pruneTreeFrom both take the tree as a parameter rather than importing
-// CIF_TREES themselves, so the tree-walking engine can be regression-tested
-// here independently of whatever data.js currently contains (Fase C of
+// ── CIF tree navigation regression ────────────────────────────────────────────
+// Inserting or reordering a step inside a region's `steps` array can silently
+// change which step an UNRELATED option falls through to — an option without
+// an explicit `next` resolves to "the next step in the array" (see the schema
+// comment above CIF_TREES in data.js). That's not a schema violation (nothing
+// above catches it), just a quiet change in clinical behavior for a branch
+// nobody meant to touch. This test locks in the current resolved navigation
+// graph for all 6 real regions, so a reorganization that changes it shows up
+// as a named diff instead of a silent regression — see tests/gen-cif-snapshot.mjs
+// for how to review and update the snapshot once a change is confirmed intentional.
+console.log('\nCIF tree navigation regression (real data vs. checked-in snapshot)');
+
+test('resolved next-step for every option matches tests/fixtures/cif-tree-navigation.json', () => {
+  const expected = JSON.parse(readFileSync(
+    join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'cif-tree-navigation.json'),
+    'utf8'
+  ));
+  const live = {};
+  for (const region of Object.keys(CIF_TREES).sort()) {
+    const tree = CIF_TREES[region];
+    const steps = {};
+    tree.steps.forEach((step, stepIdx) => {
+      steps[step.id] = step.options.map((opt, optIdx) => {
+        const [target] = resolveOptionTargets(tree, stepIdx, opt);
+        return target ? target.id : null;
+      });
+    });
+    live[region] = steps;
+  }
+  assert.deepEqual(live, expected,
+    'CIF tree navigation changed — if intentional, run `node tests/gen-cif-snapshot.mjs` after reviewing the diff');
+});
+
+// ── phase4.js engine: rebuildHypotheses / pruneTreeFrom / resolveOptionTargets ─
+// Fixture tree — deliberately NOT real clinical content. These three functions
+// take the tree/step as a parameter rather than importing CIF_TREES
+// themselves, so the tree-walking engine can be regression-tested here
+// independently of whatever data.js currently contains (Fase C of
 // MIGRATION_PLAN.md).
 console.log('\nphase4.js engine (fixture tree, decoupled from data.js)');
 
@@ -464,6 +456,27 @@ const FIXTURE_TREE = {
     }
   ]
 };
+
+test('resolveOptionTargets: no explicit next -> falls through to the next step in the array', () => {
+  const targets = resolveOptionTargets(FIXTURE_TREE, 0, FIXTURE_TREE.steps[0].options[0]);
+  assert.deepEqual(targets.map(s => s.id), ['fx_step2']);
+});
+
+test('resolveOptionTargets: explicit next -> jumps there instead of falling through', () => {
+  const targets = resolveOptionTargets(FIXTURE_TREE, 0, FIXTURE_TREE.steps[0].options[1]);
+  assert.deepEqual(targets.map(s => s.id), ['fx_step3']);
+});
+
+test('resolveOptionTargets: no next on the last step -> terminal, no targets', () => {
+  const targets = resolveOptionTargets(FIXTURE_TREE, 2, FIXTURE_TREE.steps[2].options[0]);
+  assert.deepEqual(targets, []);
+});
+
+test('resolveOptionTargets: explicit next equal to the sequential step is not duplicated', () => {
+  const opt = { label: 'X', value: 'x', next: 'fx_step2', hypothesis: [] };
+  const targets = resolveOptionTargets(FIXTURE_TREE, 0, opt);
+  assert.deepEqual(targets.map(s => s.id), ['fx_step2']);
+});
 
 test('rebuildHypotheses: accumulates hypotheses from answered steps, in step order', () => {
   state.treeAnswers = { fx_step1: 'b', fx_step3: 'd' };

@@ -34,6 +34,8 @@ node tests/smoke.mjs                # add http://localhost:PORT if not :3000
 ```
 If Playwright isn't resolvable via a normal `import`, it also tries `createRequire` so a global-only install (found via `NODE_PATH`) still works — Node's ESM resolver ignores `NODE_PATH` on its own.
 
+**Editing `CIF_TREES` (adding/reorganizing a region's decision tree):** inserting or reordering a `step` inside a region's array can silently change which step an *untouched* option falls through to — `next: null` resolves positionally to `steps[idx+1]` (see the schema comment above `CIF_TREES` in `data.js`). `node tests/unit.js` guards this with a checked-in navigation snapshot (`tests/fixtures/cif-tree-navigation.json`). After editing a tree: run `node tests/unit.js`; if it fails on "CIF tree navigation regression", read the diff and confirm every changed entry is an intended part of your edit, not collateral from reordering `steps[]`; only then run `node tests/gen-cif-snapshot.mjs` to regenerate the fixture (see that file's header), re-run `node tests/unit.js` to confirm, and commit the regenerated fixture together with the `data.js` change. Full rationale in `MIGRATION_PLAN.md`, Fase C.
+
 ## Commit format
 
 Always use this format when committing:
