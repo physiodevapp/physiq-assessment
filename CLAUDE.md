@@ -46,14 +46,21 @@ All source lives in the project root — there are no subdirectories.
 
 | File | Role |
 |------|------|
-| `index.html` | DOM structure only (~555 lines) |
+| `index.html` | DOM structure only (~530 lines) |
 | `styles.css` | All CSS — variables, layout, components, responsive breakpoints (~1852 lines) |
-| `app.js` | Application state, navigation logic, event handlers, UI rendering (phases 1–3, 5) |
+| `state.js` | The global `state` object — its own module so every other file can import a single shared instance |
+| `app.js` | Application logic, navigation, event handlers, UI rendering (phases 1–3, 5) — the module root |
 | `phase4.js` | Phase 4 algorithm: CIF decision tree (`initCIFTree`, `renderStep`, `selectTreeOption`, `pruneTreeFrom`, `rebuildHypotheses`, `checkTreeComplete`, `showTreeComplete`) |
 | `phase4b.js` | Phase 4b algorithm: hypothesis scoring (`buildHypothesisCards`, `setTestResult`, `calcLRScore`, `recalcHypScore`, accordion observer) |
 | `data.js` | All clinical content: screening systems, ICF trees, hypotheses, LR± values |
 
-Script load order in `index.html`: `data.js` → `phase4.js` → `phase4b.js` → `app.js`. All files share the same global scope — `state`, `HYPOTHESES`, `CIF_TREES`, `saveSession`, `showConfirmBanner`, and `paintNav` are globals defined in their respective files and called freely across them.
+### ES Modules
+
+`index.html` loads a single `<script type="module" src="./app.js"></script>` — no bundler, no build step. `app.js` is the module root: it `import`s `state` from `state.js`, data from `data.js`, and the public functions it needs from `phase4.js`/`phase4b.js`/`lib/session.js`; `phase4.js` and `phase4b.js` import back `state`, `saveSession`, `showConfirmBanner` and (for `phase4.js`) `paintNav` from `app.js` — this import cycle is safe because those bindings are only ever called from event handlers, never at module-evaluation time.
+
+Every file that defines functions referenced from an inline `onclick`/`oninput` attribute (in `index.html`'s static markup, or in HTML strings built by `app.js`/`phase4.js`/`phase4b.js`) must also assign them onto `window` — inline handler attributes are parsed by the browser and resolved against the global scope, never a module's private scope. `state.js` does the same for `state` itself (`oninput="state.foo=this.value"` needs `window.state`). Each file does this in one block near the bottom (`window.x = x` or `Object.assign(window, {...})`, commented `// Exposed for inline onclick...`) — when adding a new function that's called from an inline attribute anywhere in the codebase, add it to that file's block too, or the handler will silently fail (`ReferenceError` swallowed by the inline-handler call, or simply "nothing happens" on click).
+
+`tests/unit.js` loads the real files via dynamic `import()` after setting up DOM/`window`/`navigator` shims on `globalThis` (see the file for the exact shim set) — `globalThis.window = globalThis`, so the `window.x = x` exposure lines above also land as real globals the test file can read back. `package.json` sets `"type": "module"` so Node treats `.js` files as ES modules (still no bundler, no dependencies).
 
 `styles.css` is intentionally kept as a single file (~1852 lines) even though it spans multiple concerns (base tokens, layout, per-phase components, responsive breakpoints). Splitting it by concern or by phase would scatter rules without a clear seam — CSS variables like `--accent` and `--surface` are used everywhere, so any split would introduce cross-file dependencies immediately. A single file also makes it trivial to grep any class and know exactly where to edit it.
 
@@ -238,7 +245,7 @@ Audio recording was removed from this satellite entirely. The `RecorderEngine` l
 
 ## Hub integration
 
-physiq-assessment runs inside an iframe in the PhysiQ hub. On load:
+physiq-assessment runs inside an iframe in the PhysiQ hub. On load (`_initHubIntegration()` in `app.js` — moved there from an inline `<script>` in `index.html` during the ES modules migration, since it needs direct access to module-scoped state like `_historyDepth`):
 
 ```js
 if (window.self !== window.top) {
