@@ -6,7 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 PhysiQ-Assessment is a musculoskeletal physiotherapy clinical assessment assistant. It guides clinicians through a structured 5-phase workflow (phases 1–4b–5, where 4b is a sub-phase of 4) using evidence-based screening, ICF decision trees, and diagnostic likelihood ratios. It is in active clinical pilot use.
 
-**Deployment:** Push to `main` triggers `deploy-to-hub.yml`, which copies the app files into the central PhysiQ hub repo (`physiodevapp/physiq`). The hub's own GitHub Pages deployment serves the app at `physiodevapp.github.io/physiq/assessment/`. There is no standalone Pages deployment for this repo.
+**Deployment:** Push to `main` triggers `deploy-to-hub.yml`, which copies the app files into the central PhysiQ hub repo (`physiodevapp/physiq`). The hub's own GitHub Pages deployment serves the app at `physiodevapp.github.io/physiq/assessment/`. There is no standalone Pages deployment for this repo — but the deployed copy at that URL is itself a complete, installable PWA independent of the hub (see "Standalone use" below); "no standalone Pages deployment" only means physiq-assessment doesn't have its *own* separate GitHub Pages site.
+
+### Standalone use (without the hub)
+
+`manifest.json` (`start_url`/`scope`: `/physiq/assessment/`, `display: standalone`, install icons) plus `sw.js` already make the deployed app fully installable on its own — no code changes needed. Open `https://physiodevapp.github.io/physiq/assessment/` directly (not through the hub) and use the browser's "Install app" / "Add to Home Screen"; it installs as its own icon, scoped to that path, separate from the hub's own installed PWA. `_initHubIntegration()` (`app.js`) no-ops cleanly outside an iframe (`window.self === window.top`), so nothing hub-specific blocks standalone use. What's unavailable standalone (both are hub-only by design, not bugs): the audio recording widget, and the "navigate to physiq-report" hop from phase 5 — the "📋 Copiar" button still works for getting the clinical summary out manually. Session data (IndexedDB, `BroadcastChannel`) is scoped per browser *origin*, not per path, so a standalone install and the hub-embedded copy share the same session data when used in the same browser.
 
 ## Development
 
@@ -22,6 +26,13 @@ There are no linting or compilation commands. To run unit tests:
 ```
 node tests/unit.js
 ```
+
+**Browser smoke test** (`tests/smoke.mjs`, optional dev tool — not a project dependency, needs Playwright available separately): launches the real app with Playwright and checks the things `tests/unit.js` can't — that every ES module actually loads (200, no broken `import` across `app.js`/`state.js`/`data.js`/`phase4.js`/`phase4b.js`/`lib/session.js`), no console/page errors, and a full click-through of phases 1–5 plus the mobile "☰ Fases" button via the real UI. Run it after any change touching module structure, `window` exposure, or navigation:
+```
+npx serve . &
+node tests/smoke.mjs                # add http://localhost:PORT if not :3000
+```
+If Playwright isn't resolvable via a normal `import`, it also tries `createRequire` so a global-only install (found via `NODE_PATH`) still works — Node's ESM resolver ignores `NODE_PATH` on its own.
 
 ## Commit format
 
