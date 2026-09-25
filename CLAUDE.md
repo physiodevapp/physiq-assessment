@@ -102,12 +102,12 @@ const state = {
   psico_miedo: '',
   psico_autoef: '',
   psico_emocional: '',
+  edadPaciente: null,       // years; input #edadPaciente — general demographic, read by any phase (currently only criterioCompuesto, phase 2)
 
   // Phase 2
   region: '',               // 'hombro'|'cadera'|'cervical'|'lumbar'|'rodilla'|'codo'
   sistemicoAnswers: {},     // { [questionId]: 'SI'|'NO' }
   sistemicoAlerta: false,   // true if any systemic question = 'SI'
-  edadPaciente: null,       // years; only rendered where a system needs it (see criterioCompuesto below)
 
   // Phase 3
   severidad: null,          // 0–10 (NRS)
@@ -155,7 +155,7 @@ Navigation is validated by `navStepClick` — users cannot skip phases with inco
 **`SYSTEMIC_SCREENING`** — keyed by region (`hombro`, `cadera`, …). Each region maps to system objects (`SIS_CANCER`, `SIS_CARDIOVASCULAR`, etc.) containing:
 - `banderasRojas` / `banderasAmarillas` — red/yellow flag arrays
 - `preguntas` — screening questions with `alerta` and `s1` (severity) flags. `alerta` only controls the red-border visual emphasis in Phase 2 (`buildSistemaHTML`) — the actual `sistemicoAlerta` banner fires on any `SI` answer regardless of this flag; it doesn't gate anything on its own.
-- `criterioCompuesto` (optional) — a multi-question screening rule that can't be expressed by any single `alerta` flag (e.g. Goodman's 2-of-4 inflammatory-back-pain criterion on `l_espondilo`, lumbar): `{ ids: [...preguntaId], minPositivas: number, filtro: { edadMax, evolucion }, etiqueta, nota }`. `filtro.evolucion` matches against `state.cronologia` as a duration proxy (no separate duration field exists). Evaluated by `evaluarCriterioCompuesto()`/`evaluarCriteriosCompuestos()` in `app.js`, rendered into a system-specific `#criterioCompuesto_<sisId>` container — a phrasing note, never a diagnosis ("patrón compatible con", not "probable"). This is the only place `state.edadPaciente` is read; the age `<input>` is only rendered (via `buildSistemaHTML`) for systems that declare a `criterioCompuesto`.
+- `criterioCompuesto` (optional) — a multi-question screening rule that can't be expressed by any single `alerta` flag (e.g. Goodman's 2-of-4 inflammatory-back-pain criterion on `l_espondilo`, lumbar): `{ ids: [...preguntaId], minPositivas: number, filtro: { edadMax, evolucion }, etiqueta, nota }`. `filtro.evolucion` matches against `state.cronologia` as a duration proxy (no separate duration field exists). `filtro.edadMax` matches against `state.edadPaciente` — a general demographic field collected in Phase 1 (`#edadPaciente`), not rendered anywhere in Phase 2. Evaluated by `evaluarCriterioCompuesto()`/`evaluarCriteriosCompuestos()` in `app.js`, rendered into a system-specific `#criterioCompuesto_<sisId>` container — a phrasing note, never a diagnosis ("patrón compatible con", not "probable"); shows a muted hint instead of the alert when `state.edadPaciente` hasn't been entered yet, since the criterion can't be evaluated without it. This is currently the only place `state.edadPaciente` is read, but the field is intentionally Phase 1-level (not scoped to `l_espondilo`) so any future Phase 2 screening rule can reuse it without relocating it again.
 
 **`CIF_TREES`** — keyed by region. Each tree is a map of step IDs → nodes with `question`, `options` (each option has `next` step ID and effects on `activeHypotheses`).
 
@@ -194,8 +194,8 @@ Use `showConfirmBanner(title, text, actionLabel, callback)` — never use the na
 IDB (`lib/session.js`) is the only persistence layer — no localStorage.
 
 **Write triggers in `saveSession()`** (called on every phase transition, `visibilitychange`, and all state-mutating handlers):
-- `selectSQ`, `selectPsico`, `selectOption` — phase 1 inputs
-- `applyRegionChange`, `selectSistQ`, `updateEdadPaciente` — phase 2 inputs
+- `selectSQ`, `selectPsico`, `selectOption`, `updateEdadPaciente` — phase 1 inputs
+- `applyRegionChange`, `selectSistQ` — phase 2 inputs
 - `selectNRS`, `selectIrritab`, `selectIrritabSync` — phase 3 inputs
 - `selectTreeOption` — phase 4 CIF tree
 - `setTestResult` — phase 4b test results
