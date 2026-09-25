@@ -10,7 +10,7 @@ PhysiQ-Assessment is a musculoskeletal physiotherapy clinical assessment assista
 
 ### Standalone use (without the hub)
 
-`manifest.json` (`start_url`/`scope`: `/physiq/assessment/`, `display: standalone`, install icons) plus `sw.js` already make the deployed app fully installable on its own — no code changes needed. Open `https://physiodevapp.github.io/physiq/assessment/` directly (not through the hub) and use the browser's "Install app" / "Add to Home Screen"; it installs as its own icon, scoped to that path, separate from the hub's own installed PWA. `_initHubIntegration()` (`app.js`) no-ops cleanly outside an iframe (`window.self === window.top`), so nothing hub-specific blocks standalone use. What's unavailable standalone (both are hub-only by design, not bugs): the audio recording widget, and the "navigate to physiq-report" hop from phase 5 — the "📋 Copiar" button still works for getting the clinical summary out manually. Session data (IndexedDB, `BroadcastChannel`) is scoped per browser *origin*, not per path, so a standalone install and the hub-embedded copy share the same session data when used in the same browser.
+`manifest.json` (`start_url`/`scope`: `/physiq/assessment/`, `display: standalone`, install icons) plus `sw.js` already make the deployed app fully installable on its own — no code changes needed. Open `https://physiodevapp.github.io/physiq/assessment/` directly (not through the hub) and use the browser's "Install app" / "Add to Home Screen"; it installs as its own icon, scoped to that path, separate from the hub's own installed PWA. `_initHubIntegration()` (`app.js`) no-ops cleanly outside an iframe (`window.self === window.top`), so nothing hub-specific blocks standalone use. What's unavailable standalone (both are hub-only by design, not bugs): the audio recording widget, and the "navigate to physiq-report" hop from phase 5 — phase 5's `#btnFinalizar` becomes "📤 Compartir informe" and shares the clinical summary directly (`navigator.share()`, clipboard fallback) instead of the in-hub "Finalizar valoración" flow (see "Phase 5 and finalizarValoracion()" below); the "📋 Copiar" button also still works either way. Session data (IndexedDB, `BroadcastChannel`) is scoped per browser *origin*, not per path, so a standalone install and the hub-embedded copy share the same session data when used in the same browser.
 
 ## Development
 
@@ -228,13 +228,16 @@ Messages emitted by physiq-assessment:
 
 ## Phase 5 and finalizarValoracion()
 
-Reaching phase 5 (`buildResults()`) renders the summary HTML but does **not** emit the assessment payload. The assessment is only considered **complete** when the clinician explicitly presses **"Finalizar valoración →"**.
+Reaching phase 5 (`buildResults()`) renders the summary HTML but does **not** emit the assessment payload. The assessment is only considered **complete** when the clinician explicitly presses `#btnFinalizar` — labeled **"Finalizar valoración →"** in-hub, **"📤 Compartir informe"** standalone (`buildResults()` sets the label each render, keyed off `document.body.classList.contains('in-hub')` — the same signal `_initHubIntegration()` sets).
 
-`finalizarValoracion()` flow:
+`finalizarValoracion()` flow (both contexts, always):
 1. `buildPhysiQPayload()` — builds payload including `pn: state.planNotes` with the filled plan notes
-2. `writeSession({ assessment: payload, patient, date })` — writes the complete payload to IDB
-3. Emits `SESSION_ASSESSMENT` via BroadcastChannel → physiq-report updates to "completo" badge
-4. Button shows "✓ Enviado al informe" for 3s, then re-activates (re-pressable if notes are edited)
+2. `writeSession({ assessment: payload, patient, date })` — writes the complete payload to IDB. Always runs, hub or not: `physiq-report` reads this from IDB on its own load independent of ever receiving the broadcast below, so this is never wasted even standalone.
+3. Emits `SESSION_ASSESSMENT` via BroadcastChannel → if the hub/physiq-report happens to be open right now, its "completo" badge updates live; if nothing is listening (standalone with nothing else open), this is a harmless no-op.
+
+Then it branches on hub context:
+- **In-hub:** button shows "✓ Enviado al informe" for 3s, then re-activates (re-pressable if notes are edited).
+- **Standalone:** no report app around to relay to, so it shares the summary (`buildContextSummaryText()`) via `navigator.share()` instead; falls back to `navigator.clipboard.writeText()` + a toast when Web Share isn't supported (e.g. desktop browsers).
 
 Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclajeHabito` — not mandatory, included in payload as `pn`.
 
@@ -243,12 +246,13 @@ Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclaje
 | Function | Purpose |
 |---|---|
 | `buildPhysiQPayload()` | Builds the minimum JSON payload from state |
-| `finalizarValoracion()` | Writes complete assessment to IDB and emits `SESSION_ASSESSMENT` |
+| `finalizarValoracion()` | Writes complete assessment to IDB, emits `SESSION_ASSESSMENT`, and (standalone only) shares/copies the summary |
+| `buildContextSummaryText()` | Builds the plain-text clinical summary shared by `copyContextToClipboard()` and standalone `finalizarValoracion()` |
 | `copyContextToClipboard()` | Copies a plain-text summary to clipboard; shows a toast via `showCopyFeedback()` |
 
 **Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
 
-**Copy context:** a discrete `📋 Copiar` button in phase 5 calls `copyContextToClipboard()` — the only export action remaining in the satellite UI. Navigation to physiq-report is handled by the hub.
+**Copy context:** a discrete `📋 Copiar` button in phase 5 calls `copyContextToClipboard()` regardless of hub context. Navigation to physiq-report is handled by the hub; standalone, `#btnFinalizar`'s share action (see above) is the closest equivalent.
 
 ## Audio recording
 
