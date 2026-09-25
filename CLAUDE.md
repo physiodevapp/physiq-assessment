@@ -141,7 +141,7 @@ const state = {
 | 1 | `#phase1` | Triage & Header | Red flag detection (`checkBanderasRojas`), psychosocial risk | `app.js` |
 | 2 | `#phase2` | Systemic Screening | Region selection drives which organ systems render (`buildSistemicoQuestions`) | `app.js` |
 | 3 | `#phase3` | SINSS | Irritability matrix syncs between desktop table and mobile cards (`syncIrritabMobile/Desktop`) | `app.js` |
-| 4 | `#phase4` | ICF Decision Tree | `initCIFTree` / `renderStep` / `selectTreeOption` navigate the region-specific tree; `pruneTreeFrom` invalidates downstream branches | `phase4.js` |
+| 4 | `#phase4` | ICF Decision Tree | `initCIFTree` / `renderStep` / `selectTreeOption` navigate the region-specific tree; `pruneTreeFrom` invalidates downstream branches. Clicking a step's already-selected option again un-answers just that step (deletes `treeAnswers[stepId]`, prunes everything after it, leaves the step itself rendered with nothing selected) instead of requiring "↺ Reiniciar árbol" to back up one step | `phase4.js` |
 | 4b | `#phase4b` | Hypothesis Confirmation | `setTestResult` + `recalcHypScore` update Bayesian posterior probabilities per test | `phase4b.js` |
 | 5 | `#phase5` | Results | `buildResults` / `buildSummary` generates the clinical summary from accumulated state | `app.js` |
 
@@ -170,7 +170,7 @@ When modifying clinical content, keep `data.js` isolated from logic — this sep
 - DM Mono — monospaced / labels
 
 ### Component classes
-- `.option-btn` — single-select button groups (toggled via `selectOption`, `selectSQ`, etc.); active state uses class `selected`
+- `.option-btn` — single-select button groups; active state uses class `selected`. Groups with no meaningful default (`selectOption`: mecanismo, cronología, naturaleza, estadio, estabilidad, psico_*; `selectPsico`: riesgoPsico) deselect back to `''` on a second click of the already-selected option. Groups that already default to a real value (`selectSQ`/`selectSistQ`, SI/NO screening — pre-selected `NO`) don't: there's no meaningful "unanswered" state to toggle back to, so switching to the other option is already a one-click undo.
 - `.accordion-row` — collapsible system panels in Phase 2 (managed by `setupSisObserver`)
 - `.hyp-card` — hypothesis test panels in Phase 4b (managed by `setupHypObserver`)
 - `.card` / `.card-title` — standard card containers
