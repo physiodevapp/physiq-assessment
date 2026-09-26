@@ -103,6 +103,8 @@ const state = {
   psico_autoef: '',
   psico_emocional: '',
   edadPaciente: null,       // years; input #edadPaciente — general demographic, read by any phase (currently only criterioCompuesto, phase 2)
+  signosVitales: { fc:null, fr:null, spo2:null, tas:null, tad:null },  // optional; no algorithm reads these yet — captured for future evolutivo/trend tracking only
+  antropometria: { talla:null, peso:null },  // optional, same rationale; imc is never persisted — see calcImc() in app.js
 
   // Phase 2
   region: '',               // 'hombro'|'cadera'|'cervical'|'lumbar'|'rodilla'|'codo'
@@ -194,7 +196,7 @@ Use `showConfirmBanner(title, text, actionLabel, callback)` — never use the na
 IDB (`lib/session.js`) is the only persistence layer — no localStorage.
 
 **Write triggers in `saveSession()`** (called on every phase transition, `visibilitychange`, and all state-mutating handlers):
-- `selectSQ`, `selectPsico`, `selectOption`, `updateEdadPaciente` — phase 1 inputs
+- `selectSQ`, `selectPsico`, `selectOption`, `updateEdadPaciente`, `updateVital` — phase 1 inputs
 - `applyRegionChange`, `selectSistQ` — phase 2 inputs
 - `selectNRS`, `selectIrritab`, `selectIrritabSync` — phase 3 inputs
 - `selectTreeOption` — phase 4 CIF tree
@@ -256,7 +258,7 @@ Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclaje
 | `buildInformeFisioterapiaText()` | Builds a **patient/GP-facing** physiotherapy report from the same payload — plain language, no NRS/LR jargon or emoji, hypothesis names only (no scores); meant to be pasted as-is into a letterhead template and handed to the patient |
 | `copyInformeFisioterapia()` | Copies that patient/GP report to clipboard (`📄 Informe` button, phase 5, next to `📋 Notas`) |
 
-**Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `sq` (systemic screening affirmative question texts), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
+**Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `sv` (signos vitales: fc/fr/spo2/tas/tad), `an` (antropometría: talla/peso/imc — imc computed at build time, never stored in state), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `sq` (systemic screening affirmative question texts), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
 
 **Two different summaries, two different audiences** — both live in phase 5's header (`.phase5-copy-btn`, `styles.css`), both work regardless of hub context: `📋 Notas` is the clinician's own dense shorthand (`buildContextSummaryText()`); `📄 Informe` is the patient/GP-facing report (`buildInformeFisioterapiaText()`), reworded from the same data but stripped of internal scoring language. Both buttons show a fuller "Copiar informe"/"Copiar notas" label ≥481px and collapse to the single-word `📄 Informe`/`📋 Notas` under 480px (`.btn-text-full`/`.btn-text-short`, plus `flex-wrap` on the header row) so the pair doesn't overflow next to the phase title on narrow phones. When adding a new clinical field to one, consider whether the other needs it too — they diverge in *tone*, not in what data exists. Navigation to physiq-report is handled by the hub; standalone, `#btnFinalizar`'s share action reuses `buildInformeFisioterapiaText()` too (see "Phase 5 and finalizarValoracion()" above) — it's the same patient/GP report as `📄 Informe`, just pushed through `navigator.share()` instead of the clipboard.
 
