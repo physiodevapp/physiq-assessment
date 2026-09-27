@@ -2,7 +2,11 @@
 // Formulario previo a la primera visita · CARA 1 (común a todas las regiones)
 // Texto literal de guia-de-consulta/tools/plantilla_formularios.js (cara 1).
 // Solo datos: lo pinta formulario.js. Los campos de cabecera del papel
-// (nombre, fecha, edad) no se repiten: ya están en la fase 1.
+// (nombre, fecha, edad) no se repiten: ya están en la fase 1. Tampoco la
+// casilla final del papel «Hay algo relacionado con esta molestia que prefiero
+// comentarle en persona»: aquí el fisio rellena el formulario siempre con el
+// paciente delante, así que esa conversación ya está ocurriendo (y marcada
+// acababa en las notas y en physiq-report como una confidencia sin contenido).
 //
 // Tipos de pregunta:
 //   unica  { opciones, detalle? }   una sola opción; `detalle: { opcion, etiqueta }`
@@ -86,8 +90,7 @@ export default {
       items: [
         { id: 'enfermedades', tipo: 'texto', informe: 'Enfermedades', antecedente: true, texto: 'Enfermedades importantes que tenga o haya tenido', ayuda: 'Todas, aunque le parezca que no tienen relación con esto', lineas: 2 },
         { id: 'operaciones', tipo: 'texto', informe: 'Operaciones', antecedente: true, texto: 'Operaciones', ayuda: 'Y aproximadamente cuándo', lineas: 1 },
-        { id: 'medicacion', tipo: 'texto', informe: 'Medicación actual', antecedente: true, texto: 'Medicación que toma ahora', ayuda: 'Incluidos parches, inyecciones y lo que compra sin receta', lineas: 2 },
-        { id: 'en_persona', tipo: 'multi', texto: '', opciones: ['Hay algo relacionado con esta molestia que prefiero comentarle en persona.'] }
+        { id: 'medicacion', tipo: 'texto', informe: 'Medicación actual', antecedente: true, texto: 'Medicación que toma ahora', ayuda: 'Incluidos parches, inyecciones y lo que compra sin receta', lineas: 2 }
       ]
     }
   ]

@@ -698,9 +698,9 @@ test('resumen y pistas: solo respuestas visibles, con detalle y filas de matriz'
   assert.deepEqual(fpMod.pistasPaso('lu_step3').map(x => x.a), ['Poco a poco', 'Sí']);
 });
 
-test('informe: en_persona y lo no marcado nunca van al informe del médico', () => {
+test('informe: antecedentes marcados; «prefiero comentarlo en persona» no existe en PhysiQ', () => {
   const comun = fpItems(FP_COMUN);
-  assert.ok(!comun.find(i => i.id === 'en_persona').informe, 'en_persona es confidencial');
+  assert.ok(!comun.some(i => i.id === 'en_persona'), 'en_persona se quitó a propósito (ver cabecera de formularios/comun.js)');
   assert.deepEqual(comun.filter(i => i.antecedente).map(i => i.id), ['enfermedades', 'operaciones', 'medicacion']);
   comun.filter(i => i.antecedente).forEach(i => assert.ok(i.informe, i.id));
 });
@@ -728,6 +728,7 @@ test('informe: solo lo marcado, con su etiqueta, sin «No sabría decir» y acti
   assert.ok(txt.includes('SEGÚN REFIERE EL PACIENTE\n  · Evolución desde el inicio: A peor'), txt);
   assert.ok(txt.includes('ANTECEDENTES REFERIDOS POR EL PACIENTE\n  · Medicación actual: Ibuprofeno 600'));
   assert.ok(!txt.includes('en persona'));
+  assert.ok(!fpMod.resumenFormularioPrevio().some(x => x.a.includes('en persona')), 'respuesta antigua de en_persona');
   state.formularioPrevio = { comun: {}, regiones: {} };
   assert.ok(!buildInformeFisioterapiaText().includes('SEGÚN REFIERE'), 'sin respuestas no sale la sección');
 });
