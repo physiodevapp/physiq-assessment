@@ -98,7 +98,7 @@ export function buildTestItem(hId, test, idx) {
     test.cluster ? '' : lrBadge('+', lr.pos, lr.origenPos, lr.posUtil),
     test.cluster ? '' : lrBadge('−', lr.neg, lr.origenNeg, lr.negUtil),
     test.tipo === 'pronostico' ? `<span class="stat-badge lr-weak">Pronóstico · no puntúa</span>` : '',
-    test.cluster && hyp?.clusters?.[test.cluster] ? `<span class="stat-badge">Cluster: ${hyp.clusters[test.cluster].nombre}</span>` : '',
+    test.cluster && hyp?.clusters?.[test.cluster] ? `<span class="stat-badge">🧩 ${hyp.clusters[test.cluster].nombre}</span>` : '',
   ].filter(Boolean);
   if (!test.cluster && test.tipo !== 'pronostico' && lr.pos == null && lr.neg == null) {
     badges.push(`<span class="stat-badge no-data">Sin LR publicada · cuenta como hallazgo clínico</span>`);

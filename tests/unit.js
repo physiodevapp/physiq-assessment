@@ -303,8 +303,8 @@ console.log('\nHYPOTHESES data integrity');
 
 const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
 
-test('all 50 hypotheses present', () => {
-  assert.equal(Object.keys(HYPOTHESES).length, 50);
+test('all 55 hypotheses present', () => {
+  assert.equal(Object.keys(HYPOTHESES).length, 55);
 });
 
 test('every hypothesis has id, region, name, tests', () => {
