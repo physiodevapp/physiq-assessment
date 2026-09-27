@@ -699,6 +699,29 @@ test('payload lleva fp con el resumen del formulario', () => {
   state.formularioPrevio = { comun: {}, regiones: {} };
 });
 
+// ── Urgencias de región (fase 2) ─────────────────────────────────────────────
+console.log('\nurgencias fase 2');
+
+test('urgencia de región: título y líneas no vacías', () => {
+  for (const [r, d] of Object.entries(SYSTEMIC_SCREENING)) {
+    if (!d.urgencia) continue;
+    assert.ok(d.urgencia.titulo && d.urgencia.lineas?.length, r);
+    d.urgencia.lineas.forEach(l => assert.ok(typeof l === 'string' && l.trim(), r));
+  }
+  assert.ok(SYSTEMIC_SCREENING.lumbar.urgencia.titulo.includes('CAUDA EQUINA'));
+});
+
+test('l6 (cauda equina) es una pregunta de urgencia y entra en el payload', () => {
+  const l6 = SYSTEMIC_SCREENING.lumbar.sistemas.flatMap(s => s.preguntas).find(q => q.id === 'l6');
+  assert.ok(l6.urgencia);
+  withState({ region: 'lumbar', sistemicoAnswers: { l6: 'SI' } }, () => {
+    assert.deepEqual(buildPhysiQPayload().ur, [l6.urgencia]);
+  });
+  withState({ region: 'lumbar', sistemicoAnswers: { l6: 'NO' } }, () => {
+    assert.deepEqual(buildPhysiQPayload().ur, []);
+  });
+});
+
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 if (failed > 0) process.exit(1);

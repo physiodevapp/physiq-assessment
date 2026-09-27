@@ -283,6 +283,16 @@ export const SYSTEMIC_SCREENING = {
 
   cadera: {
     label: 'Cuadrante Inferior — Cadera, Ingle y Muslo',
+    // Recuadro de urgencia: literal de la tarjeta de consulta cadera (guía de consulta, URGENCIA)
+    urgencia: {
+      titulo: 'DERIVACIÓN URGENTE · FRACTURA DE ESTRÉS DEL CUELLO FEMORAL',
+      lineas: [
+        'Puede completarse y comprometer la vascularización de la cabeza femoral. Dolor inguinal vago e insidioso que empeora con la actividad; a menudo el único hallazgo es dolor al final del rango, sobre todo en RI. Dolor profundo nocturno o en carga.',
+        'Perfil: corredor de fondo, militar o deportista de alta intensidad; poca forma al empezar, cambio de superficie o calzado; mujer con tríada de la deportista; corticoides prolongados.',
+        'Percusión rotuliano-púbica (S 95 %, E 86 %, LR+ 6,11, LR− 0,07): supino, fonendoscopio sobre el tubérculo púbico homolateral y percusión de la rótula; positivo si el sonido llega disminuido en el lado doloroso. Talón: golpe con el borde cubital del puño; positivo si reproduce el dolor con la carga axial.',
+        'Una radiografía negativa NO descarta, sobre todo en las primeras semanas. · Adenopatía inguinal sin foco séptico: considerar malignidad. · Sospecha de torsión testicular o de artritis séptica: urgencias hoy.'
+      ]
+    },
     sistemas: [
       {
         id: 'ca_cancer', icon: '🔬', nombre: 'Cáncer / Oncológico',
@@ -410,6 +420,16 @@ export const SYSTEMIC_SCREENING = {
 
   cervical: {
     label: 'Cabeza, Cuello y Espalda',
+    // Recuadro de urgencia: literal de la tarjeta de consulta cervical (guía de consulta, URGENCIA)
+    urgencia: {
+      titulo: 'URGENCIAS HOY · disfunción arterial · lesión tras traumatismo · cefalea con signos de alarma',
+      lineas: [
+        'Disección arterial (<55 a): cefalea o dolor cervical súbito, DESCONOCIDO PARA EL PACIENTE, moderado o grave y a menudo progresivo. Alteración del equilibrio o la marcha, Horner, déficit de pares craneales. Puede imitar una cefalea cervicogénica.',
+        'Insuficiencia vertebrobasilar (suele ser >65 a, posible en jóvenes) · 5 D y 3 N: mareo o inestabilidad, diplopía o pérdida de campo visual, disartria o disfasia, disfagia o ronquera, caídas súbitas sin pérdida de conciencia; nistagmo espontáneo, náuseas o vómitos, entumecimiento peribucal.',
+        'Fractura, subluxación o luxación: traumatismo importante en persona mayor o mecanismo peligroso (flexión con compresión en deporte de colisión). Se sujeta la cabeza, espasmo defensivo, movilidad muy limitada, posibles signos neurológicos. Incluye la inestabilidad cervical alta traumática.',
+        'Cefalea con signos de alarma: cambio súbito de calidad, intensidad o frecuencia; síntomas neurológicos nuevos; inicio súbito y grave; fiebre u otros síntomas sistémicos.'
+      ]
+    },
     sistemas: [
       {
         id: 'cv_cancer', icon: '🔬', nombre: 'Cáncer / Oncológico',
@@ -550,6 +570,15 @@ export const SYSTEMIC_SCREENING = {
 
   lumbar: {
     label: 'Sacro, Sacroilíaca, Pelvis y Lumbar',
+    // Recuadro de urgencia: literal de la tarjeta de consulta lumbar (guía de consulta, URGENCIA)
+    urgencia: {
+      titulo: 'URGENCIAS HOY · CAUDA EQUINA',
+      lineas: [
+        'Urgencia quirúrgica: el tiempo hasta la cirugía pesa más que la duración de los síntomas.',
+        'Dolor o debilidad bilateral grave en MMII · parestesia en silla de montar · retención o incontinencia urinaria · incontinencia fecal · menor tono anal.',
+        'PREGUNTAR SIEMPRE. Signos más específicos que sensibles; RM de elección. En mayores con estenosis el inicio lento se solapa y pasa desapercibido.'
+      ]
+    },
     sistemas: [
       {
         id: 'l_cancer', icon: '🔬', nombre: 'Cáncer / Oncológico',
@@ -587,7 +616,7 @@ export const SYSTEMIC_SCREENING = {
         ],
         preguntas: [
           { id: 'l4', text: '¿Ha notado cambios en la orina (color rojo, marrón, turbio) o fiebre/escalofríos junto con el dolor de espalda?', alerta: true, s1: true },
-          { id: 'l6', text: '¿Presenta incontinencia urinaria o intestinal, o pérdida de sensibilidad en la zona de "silla de montar"?', alerta: true, s1: true },
+          { id: 'l6', text: '¿Presenta incontinencia urinaria o intestinal, o pérdida de sensibilidad en la zona de "silla de montar"?', alerta: true, s1: true, urgencia: 'Sospecha de cauda equina: derivación a urgencias hoy (RM de elección).' },
           { id: 'l_u3a', text: '¿En las últimas 3–4 semanas ha notado ardor o dolor al orinar?', alerta: true },
           { id: 'l_u3b', text: '¿Desde hace poco se levanta a orinar más de una vez cada noche, sin que haya cambiado lo que bebe antes de acostarse?', alerta: true }
         ],
@@ -710,6 +739,17 @@ export const SYSTEMIC_SCREENING = {
 
   rodilla: {
     label: 'Cuadrante Inferior — Rodilla',
+    // Recuadro de urgencia: literal de la tarjeta de consulta rodilla (guía de consulta, URGENCIA)
+    urgencia: {
+      titulo: 'URGENCIAS · TVP · ARTRITIS SÉPTICA · APARATO EXTENSOR · BURSA CON FIEBRE · NEUROVASCULAR',
+      lineas: [
+        'TVP: no identificarla puede llevar a embolia pulmonar, que ocurre en más de un tercio de los casos. Dolor intenso e inexplicado, calambre en el hueco poplíteo, calor o hinchazón. Derivar a quien pueda excluirla.',
+        'ARTRITIS SÉPTICA: rodilla caliente, roja y con derrame a tensión. Dolor intenso en todo el arco, incluso en recorridos mínimos. Fiebre, malestar general, incapacidad para cargar. Factores: infiltración o cirugía articular reciente, prótesis, inmunodepresión, diabetes, AR, infección cutánea, drogas parenterales. Puede coexistir con artrosis o gota y despistar. Ningún signo aislado es bastante sensible para descartarla → URGENCIA HOSPITALARIA HOY.',
+        'ROTURA DEL APARATO EXTENSOR: la regla de Ottawa NO lo detecta. Carga excéntrica brusca sobre la rodilla flexionada o caída, con chasquido y caída inmediata. NO puede elevar la pierna extendida ni mantener la rodilla extendida contra gravedad. Escalón palpable por encima de la rótula (cuádriceps) o por debajo (rotuliano); hemartrosis; rótula alta o baja. La elevación de la pierna extendida es prueba aparte y obligatoria en toda rodilla traumática con dolor anterior. Reparación precoz (2 primeras semanas) → mejores resultados.',
+        'Bursitis prerrotuliana séptica: la FIEBRE >37,7 °C solo se ha descrito en la séptica. Derivación el mismo día. · Compromiso neurovascular tras traumatismo: cambios de temperatura, adormecimiento, parestesias o debilidad tras fractura de meseta o luxación → pulsos distales, cribado neurológico e índice tobillo-brazo.',
+        'REGLA DE OTTAWA, antes de explorar cualquier rodilla con traumatismo agudo → radiografía si hay ALGUNO de los cinco, por separado: ≥55 años · dolor a la palpación de la cabeza del peroné · dolor aislado a la palpación de la rótula · no flexiona hasta 90° · no carga cuatro pasos, ni justo tras la lesión ni ahora, aunque sea cojeando. S 98–100 %, E ≈50 %: sirve para descartar, no para confirmar. Excluida si la lesión tiene más de 7 días.'
+      ]
+    },
     sistemas: [
       {
         id: 'ro_vascular', icon: '🩸', nombre: 'Vascular',
@@ -721,7 +761,7 @@ export const SYSTEMIC_SCREENING = {
         banderasAmarillas: ['Dolor en reposo que mejora al colgar la pierna fuera de la cama'],
         preguntas: [
           { id: 'r_v1', text: '¿El dolor aparece tras caminar unos minutos y cede casi de inmediato al parar (claudicación)?', alerta: true },
-          { id: 'r_v2', text: '¿Tiene la pantorrilla hinchada, caliente y más rojiza que la otra (posible TVP)?', alerta: true }
+          { id: 'r_v2', urgencia: 'Sospecha de TVP: derivar hoy a quien pueda excluirla (riesgo de embolia pulmonar).', text: '¿Tiene la pantorrilla hinchada, caliente y más rojiza que la otra (posible TVP)?', alerta: true }
         ],
         zonasDolor: [
           { zona: 'Pantorrilla / Rodilla', desc: 'Claudicación distal o TVP' }
@@ -738,7 +778,7 @@ export const SYSTEMIC_SCREENING = {
         ],
         banderasAmarillas: ['Antecedente de infección reciente (urinaria, respiratoria, cutánea)'],
         preguntas: [
-          { id: 'r1', text: '¿Hay fiebre, enrojecimiento intenso y calor local junto con la tumefacción de la rodilla (artritis séptica)?', alerta: true },
+          { id: 'r1', urgencia: 'Sospecha de artritis séptica: urgencia hospitalaria hoy.', text: '¿Hay fiebre, enrojecimiento intenso y calor local junto con la tumefacción de la rodilla (artritis séptica)?', alerta: true },
           { id: 'r_i2', text: '¿Ha tenido alguna infección reciente (urinaria, respiratoria, cutánea) antes de que apareciera el dolor articular?', alerta: true }
         ],
         zonasDolor: [{ zona: 'Rodilla / Articulación', desc: 'Artritis séptica — dolor intenso localizado con signos flogóticos' }],
