@@ -25,9 +25,10 @@ jobs:
       - name: Copy files to hub
         run: |
           rm -rf physiq-hub/assessment
-          mkdir -p physiq-hub/assessment/lib physiq-hub/assessment/icons physiq-hub/assessment/formularios
+          mkdir -p physiq-hub/assessment/lib physiq-hub/assessment/icons physiq-hub/assessment/formularios physiq-hub/assessment/data
           cp index.html styles.css app.js state.js phase4.js phase4b.js formulario.js data.js sw.js manifest.json favicon.svg .nojekyll physiq-hub/assessment/
           cp formularios/*.js physiq-hub/assessment/formularios/
+          cp data/*.js physiq-hub/assessment/data/
           cp icons/icon-192.png icons/icon-512.png physiq-hub/assessment/icons/
           cp lib/session.js physiq-hub/assessment/lib/
 
