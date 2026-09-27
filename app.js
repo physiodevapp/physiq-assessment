@@ -269,10 +269,11 @@ function _softResetApp() {
   if (mConsulta) mConsulta.value = '';
   const edadEl = document.getElementById('edadPaciente');
   if (edadEl) edadEl.value = '';
-  ['vitalFc', 'vitalFr', 'vitalSpo2', 'vitalTas', 'vitalTad', 'vitalTalla', 'vitalPeso', 'imcCalculado'].forEach(id => {
+  ['vitalFc', 'vitalFr', 'vitalSpo2', 'vitalTas', 'vitalTad', 'vitalTalla', 'vitalPeso'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.value = '';
   });
+  updateImcDisplay(); // also strips the imc-green/orange/red color class
   document.querySelectorAll('#phase1 .option-btn').forEach(b => b.classList.remove('selected'));
   ['banderaAlert', 'psicoToolSuggest', 'psicoAltoQuestions', 'psicoRecomendacion'].forEach(id => {
     const el = document.getElementById(id);
@@ -902,11 +903,23 @@ function calcImc(peso, talla) {
   return peso / (m * m);
 }
 
+// WHO categories collapsed into the app's 3-color convention (green =
+// normal, orange = caution, red = alert) — bajo peso and sobrepeso both
+// read as "caution" rather than inventing a 4th color.
+function imcColorClass(imc) {
+  if (imc < 18.5) return 'imc-orange';
+  if (imc < 25) return 'imc-green';
+  if (imc < 30) return 'imc-orange';
+  return 'imc-red';
+}
+
 function updateImcDisplay() {
   const el = document.getElementById('imcCalculado');
   if (!el) return;
   const imc = calcImc(state.antropometria.peso, state.antropometria.talla);
   el.value = imc !== null ? imc.toFixed(1) : '';
+  el.classList.remove('imc-green', 'imc-orange', 'imc-red');
+  if (imc !== null) el.classList.add(imcColorClass(imc));
 }
 
 // Shared handler for the optional Fase 1 vitals/anthropometry fields
