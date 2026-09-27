@@ -1316,7 +1316,7 @@ export const HYPOTHESES = {
     dosis: 'Activación isométrica de glúteo medio en decúbito lateral con cadera en posición neutra. 3 series × 8 contracciones de 5 seg al 25% CVM. ROM limitado a 0-70° de flexión, evitando rotación interna combinada con flexión y aducción.',
     tests: [
       { name: 'Test de Arlington', sn: '94%', sp: '33%', lr_pos: null, lr_neg: null, criterio: 'VPP 95%, VPN 26%. Alta sensibilidad — bueno para descartar. Maniobra específica de provocación labral.' },
-      { name: 'Test de Torsión/Twist', sn: '68%', sp: '72%', lr_pos: null, lr_neg: '97% VPP', criterio: 'VPP 97% para desgarro labral cuando positivo.' },
+      { name: 'Test de Torsión/Twist', sn: '68%', sp: '72%', lr_pos: null, lr_neg: null, criterio: 'VPP 97% para desgarro labral cuando positivo.' },
       { name: 'Combinación FADDIR + FABER + Elevación pierna recta resistida', sn: '94%', sp: '100%', lr_pos: null, lr_neg: null, criterio: 'Los tres positivos simultáneamente tienen alta precisión diagnóstica.' },
       { name: 'Apoyo Monopodal <30 segundos', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Puede indicar patología intraarticular cuando el dolor aparece antes de los 30 segundos.' }
     ]

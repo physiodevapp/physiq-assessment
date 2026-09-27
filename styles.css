@@ -731,6 +731,10 @@
   .hyp-orange .hyp-color-dot { background: var(--orange); box-shadow: 0 0 8px rgba(255,159,67,0.4); }
   .hyp-orange .hyp-name { color: var(--orange); }
 
+  .hyp-neutral { background: var(--surface); border-color: var(--border2); }
+  .hyp-neutral .hyp-color-dot { background: var(--text3); }
+  .hyp-neutral .hyp-name { color: var(--text2); }
+
   .hyp-red { background: var(--surface); border-color: rgba(255,107,107,0.3); }
   .hyp-red .hypothesis-header { background: rgba(255,107,107,0.05); }
   .hyp-red .hyp-color-dot { background: var(--red); box-shadow: 0 0 8px rgba(255,107,107,0.4); }
@@ -767,6 +771,12 @@
   }
   .stat-badge.highlight { background: rgba(79,156,249,0.1); border-color: rgba(79,156,249,0.2); color: var(--accent); }
   .stat-badge.no-data { color: var(--text3); font-style: italic; }
+  .stat-badge.lr-weak { color: var(--text3); border-style: dashed; }
+  .test-source { font-size: 0.68rem; color: var(--text3); font-family: 'DM Mono', monospace; margin: -6px 0 10px; }
+  .cluster-box { border: 1px dashed var(--border2); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 12px; background: var(--surface2); }
+  .cluster-title { font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .cluster-rule { font-size: 0.75rem; color: var(--text2); line-height: 1.5; }
+  .cluster-box .test-source { margin: 4px 0 0; }
   .test-criterion {
     font-size: 0.78rem;
     color: var(--text3);

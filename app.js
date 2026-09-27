@@ -1332,7 +1332,7 @@ function buildResults() {
       const { id, hyp, score } = item;
       const scoreInfo = state.hypothesisScores[id];
       const colorClass = scoreInfo?.colorClass || 'hyp-orange';
-      const colorMap = { 'hyp-green': '#38d9a9', 'hyp-orange': '#ff9f43', 'hyp-red': '#ff6b6b' };
+      const colorMap = { 'hyp-green': '#38d9a9', 'hyp-orange': '#ff9f43', 'hyp-red': '#ff6b6b', 'hyp-neutral': '#8b95a7' };
       const rankEmoji = ['🥇','🥈','🥉'][rank] || `${rank+1}º`;
       const dotColor = colorMap[colorClass] || '#ff9f43';
 
@@ -1368,8 +1368,14 @@ function buildResults() {
         </div>
         <div>
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent2); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">💊 Dosis Día 1 (Baja Fricción)</div>
-          <div class="exercise-box">${hyp.dosis}</div>
+          <div class="exercise-box">${hyp.dosis || '<em style="color:var(--text3)">Sin dosis de referencia: a criterio del clínico.</em>'}</div>
         </div>
+        ${hyp.pronostico ? `<div style="margin-top:1rem;">
+          <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">🧭 Pronóstico y derivación</div>
+          <div style="font-size:0.8rem; color:var(--text2); line-height:1.6;">${hyp.pronostico.horizonte}</div>
+          ${hyp.pronostico.derivacion ? `<div style="font-size:0.8rem; color:var(--text2); line-height:1.6; margin-top:4px;"><strong>Derivar si:</strong> ${hyp.pronostico.derivacion}</div>` : ''}
+          ${hyp.pronostico.fuente ? `<div class="test-source" style="margin:4px 0 0;">${hyp.pronostico.fuente}</div>` : ''}
+        </div>` : ''}
       </div>`;
     });
   }

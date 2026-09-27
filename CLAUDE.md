@@ -161,7 +161,16 @@ Navigation is validated by `navStepClick` — users cannot skip phases with inco
 
 **`CIF_TREES`** — keyed by region. Each tree is a map of step IDs → nodes with `question`, `options` (each option has `next` step ID and effects on `activeHypotheses`).
 
-**`HYPOTHESES`** — keyed by hypothesis ID. Each entry: `{ id, region, name, prom, dosis, tests: [{name, sn, sp, lr_pos, lr_neg, criterio}] }`. The `lr_pos` and `lr_neg` values are used in Phase 4b Bayesian scoring.
+**`HYPOTHESES`** — keyed by hypothesis ID. Each entry: `{ id, region, name, prom, dosis, pronostico?, clusters?, tests: [{name, sn, sp, lr_pos, lr_neg, criterio, fuente?, tipo?, cluster?, absorbe?}] }`. Optional fields: `pronostico: { horizonte, derivacion, fuente }` (rendered in phase 5 under the dose); `dosis` may be `''` (phase 5 then says it's the clinician's call — never invent one); `fuente` is a short citation shown under the test.
+
+### Phase 4b scoring (`calcLRScore`, `phase4b.js`)
+There are **no default LRs**: a test with no usable LR never multiplies (the old `|| 1.5` / `|| 0.5` fallbacks were removed on purpose — they gave weight to tests with no evidence behind them). Rules:
+1. Published `lr_pos`/`lr_neg` if present; otherwise computed from `sn`/`sp` when both are a single number (`LR+ = S/(1−E)`, `LR− = (1−S)/E`, badge says "(calc.)"). S/E ranges (`'52–70%'`, `'~40%'`, `'>90%'`) are not computed. An LR range (`'2.9–4.9'`) uses the bound closest to 1 (conservative). `lr_pos`/`lr_neg` must be an LR, never other text (a unit test enforces it: `'97% VPP'` was once stored as an LR− and multiplied by 97).
+2. Each direction is judged separately: LR+ multiplies only if ≥ 2 (`LR_POS_MIN`), LR− only if ≤ 0.5 (`LR_NEG_MAX`). Otherwise the result is a *clinical finding*: LR = 1, counted in the label as `X/Y hallazgos compatibles`.
+3. `cluster: '<id>'` on a test → it never multiplies alone; `hyp.clusters[id] = { nombre, umbralPos, lr_pos, umbralNeg, lr_neg, fuente }` does: LR+ when positives ≥ `umbralPos`; LR− only when *every* member was done and positives ≤ `umbralNeg`.
+4. `tipo: 'pronostico'` (e.g. Flynn's manipulation CPR) never enters the diagnostic score.
+5. With no applicable LR the label is `⚪ Sin LR aplicable · X/Y hallazgos compatibles` (`hyp-neutral`), never "Peso bajo".
+6. `absorbe: [idx]` — when a composite test (e.g. RAPIDH) contributes an LR, the listed component tests (the SLR it contains) stop multiplying, so the same evidence isn't counted twice.
 
 When modifying clinical content, keep `data.js` isolated from logic — this separation allows physiotherapists to review domain content independently. `data.js` is intentionally kept as a single unified file (~1668 lines) even though it covers three distinct domains (`SYSTEMIC_SCREENING`, `CIF_TREES`, `HYPOTHESES`): splitting it would fragment the "single source of clinical content" property without meaningful benefit.
 
