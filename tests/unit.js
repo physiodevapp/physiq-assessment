@@ -778,6 +778,12 @@ test('cervical: ningún test multiplica por una LR− de 0; el cluster de Jull y
   assert.equal(calcLRScore(ce5, { [iHielo]: 'pos' }).totalLR, 1);
 });
 
+test('cervical: el FRT puntúa solo positivo (un negativo no descarta una cervicogénica de C2–C3)', () => {
+  const ce4 = HYPOTHESES.ce4, iFrt = ce4.tests.findIndex(t => t.name.startsWith('Test de Flexión-Rotación'));
+  assert.ok(Math.abs(calcLRScore(ce4, { [iFrt]: 'pos' }).totalLR - 5) < 0.001);
+  assert.equal(calcLRScore(ce4, { [iFrt]: 'neg' }).totalLR, 1);
+});
+
 // ── data/ por regiones ────────────────────────────────────────────────────────
 console.log('\ndata/ por regiones');
 const REGION_MODS = {};
