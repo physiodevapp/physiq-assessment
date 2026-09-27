@@ -57,7 +57,7 @@ const REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
 // ended with `state.treeAnswers === {}`) — a real bug this fixes, not just a
 // stylistic cleanup. `.locator(...).last()` re-queries fresh each turn.
 async function walkCifTreeToCompletion(page) {
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 20; i++) {
     const lastStep = page.locator('#cifTree .tree-question').last();
     if (await lastStep.count() === 0) break;
     const opt = lastStep.locator('.option-btn, button').first();
