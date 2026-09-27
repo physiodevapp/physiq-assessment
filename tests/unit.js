@@ -303,8 +303,8 @@ console.log('\nHYPOTHESES data integrity');
 
 const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
 
-test('all 55 hypotheses present', () => {
-  assert.equal(Object.keys(HYPOTHESES).length, 55);
+test('all 64 hypotheses present', () => {
+  assert.equal(Object.keys(HYPOTHESES).length, 64);
 });
 
 test('every hypothesis has id, region, name, tests', () => {
@@ -730,6 +730,29 @@ test('lu8: la regla SI es 3 de 5 tests de provocación (como la tarjeta lumbar)'
   h.tests.forEach((t, i) => { if (t.cluster) r[i] = 'neg'; });
   [0, 1, 2].forEach(i => { r[i] = 'pos'; });
   assert.ok(Math.abs(calcLRScore(h, r).totalLR - 2.44) < 0.001);
+});
+
+test('cadera: fractura de estrés del cuello femoral, artritis séptica y torsión testicular son urgencias', () => {
+  const qs = SYSTEMIC_SCREENING.cadera.sistemas.flatMap(s => s.preguntas);
+  ['ca_os1', 'ca_in1', 'ca_u3'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+  withState({ region: 'cadera', sistemicoAnswers: { ca_os1: 'SI', ca_in1: 'NO', ca_u3: 'NO' } }, () => {
+    assert.equal(buildPhysiQPayload().ur.length, 1);
+  });
+});
+
+test('cadera: ningún test con S 100 % multiplica por una LR− de 0, y Thomas sin estudio primario no puntúa', () => {
+  Object.values(HYPOTHESES).filter(h => h.region === 'cadera').forEach(h => {
+    const r = Object.fromEntries(h.tests.map((_, i) => [i, 'neg']));
+    assert.ok(calcLRScore(h, r).totalLR > 0, h.id);
+  });
+  const ca2 = HYPOTHESES.ca2, iThomas = ca2.tests.findIndex(t => t.name === 'Test de Thomas');
+  assert.equal(calcLRScore(ca2, { [iThomas]: 'pos' }).totalLR, 1);
+});
+
+test('ca1: los criterios ACR absorben el criterio combinado y la RI disminuida', () => {
+  const h = HYPOTHESES.ca1, iAcr = h.tests.findIndex(t => t.name.startsWith('Criterios clínicos ACR'));
+  assert.deepEqual(h.tests[iAcr].absorbe, [0, 2]);
+  assert.ok(Math.abs(calcLRScore(h, { 0: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 3.4) < 0.001);
 });
 
 // ── data/ por regiones ────────────────────────────────────────────────────────

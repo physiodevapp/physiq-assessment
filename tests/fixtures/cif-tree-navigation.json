@@ -1,7 +1,11 @@
 {
   "cadera": {
     "ca_step1": [
-      "ca_step2",
+      "ca_step1b",
+      "ca_step1b",
+      "ca_step1b"
+    ],
+    "ca_step1b": [
       "ca_step2",
       "ca_step2"
     ],
@@ -10,6 +14,13 @@
       "ca_step3"
     ],
     "ca_step3": [
+      "ca_step3b",
+      "ca_step3b",
+      "ca_step4"
+    ],
+    "ca_step3b": [
+      "ca_step4",
+      "ca_step4",
       "ca_step4",
       "ca_step4",
       "ca_step4"
@@ -21,6 +32,20 @@
       "ca_step5"
     ],
     "ca_step5": [
+      "ca_step6",
+      "ca_step6",
+      "ca_step6",
+      "ca_step6"
+    ],
+    "ca_step6": [
+      "ca_step7",
+      "ca_step7",
+      "ca_step7",
+      "ca_step7",
+      "ca_step7"
+    ],
+    "ca_step7": [
+      null,
       null,
       null,
       null,
