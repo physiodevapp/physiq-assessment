@@ -816,6 +816,23 @@ test('hombro: sin urgencia; la bisagra reparte congelado, artrosis GH y luxació
   assert.deepEqual(steps.find(s => s.id === 'h_step2b').options.map(o => o.hypothesis[0]), ['h11', 'h10', 'h1']);
 });
 
+test('hombro: clusters del manguito (Park, Litaker) sin contar dos veces; AC de Chronopoulos', () => {
+  const h3 = HYPOTHESES.h3, i = n => h3.tests.findIndex(t => t.name.startsWith(n));
+  const iA = i('Cluster A, confirmar'), iAd = i('Cluster A, descartar'), iB = i('Cluster B'), iDrop = i('Drop Arm'), iLag = i('External Rotation Lag');
+  assert.ok(Math.abs(calcLRScore(h3, { [iA]: 'pos' }).totalLR - 15.57) < 0.001);
+  assert.equal(calcLRScore(h3, { [iA]: 'neg' }).totalLR, 1);                     // sin LR−: para eso está «descartar»
+  assert.ok(Math.abs(calcLRScore(h3, { [iAd]: 'neg' }).totalLR - 0.16) < 0.001);
+  assert.equal(calcLRScore(h3, { [iAd]: 'pos' }).totalLR, 1);
+  // El cluster A absorbe drop arm, signo de retraso en RE y cluster B (la debilidad en RE va en los dos)
+  assert.ok(Math.abs(calcLRScore(h3, { [iA]: 'pos', [iDrop]: 'pos', [iLag]: 'pos', [iB]: 'pos' }).totalLR - 15.57) < 0.001);
+  assert.ok(Math.abs(calcLRScore(h3, { [iB]: 'pos' }).totalLR - 5.0) < 0.001); // validación, no la 9,84 de derivación
+  const h7 = HYPOTHESES.h7;
+  assert.ok(Math.abs(calcLRScore(h7, { 0: 'pos' }).totalLR - 0.77 / 0.21) < 0.01);
+  const iOB = h7.tests.findIndex(t => t.name.startsWith('Compresión activa'));
+  assert.ok(Math.abs(calcLRScore(h7, { [iOB]: 'pos' }).totalLR - 0.41 / 0.05) < 0.01);
+  assert.equal(calcLRScore(h7, { [iOB]: 'neg' }).totalLR, 1);                    // LR− 0,62: hallazgo
+});
+
 test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan', () => {
   // Clusters A/B del manguito, palpación AC, Paxinos + O'Brien: cifras solo en el criterio
   ['h1', 'h2', 'h3', 'h4', 'h5', 'h7', 'h10', 'h11'].forEach(id => {
