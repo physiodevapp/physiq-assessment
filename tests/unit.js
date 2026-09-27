@@ -303,8 +303,8 @@ console.log('\nHYPOTHESES data integrity');
 
 const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
 
-test('all 80 hypotheses present', () => {
-  assert.equal(Object.keys(HYPOTHESES).length, 80);
+test('all 82 hypotheses present', () => {
+  assert.equal(Object.keys(HYPOTHESES).length, 82);
 });
 
 test('every hypothesis has id, region, name, tests', () => {
@@ -804,6 +804,27 @@ test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y de
   // Plica: la E de Kim 2007 sale solo de los controles con dolor lateral → hallazgo, no puntúa
   assert.equal(calcLRScore(HYPOTHESES.ro17, { 0: 'pos' }).totalLR, 1);
   assert.equal(calcLRScore(HYPOTHESES.ro17, { 0: 'neg' }).totalLR, 1);
+});
+
+test('hombro: sin urgencia; la bisagra reparte congelado, artrosis GH y luxación/fractura', () => {
+  const qs = SYSTEMIC_SCREENING.hombro.sistemas.flatMap(s => s.preguntas);
+  assert.equal(SYSTEMIC_SCREENING.hombro.urgencia, undefined);
+  assert.ok(qs.every(q => !q.urgencia));
+  ['h_t1', 'h_i1', 'h_n1'].forEach(id => assert.ok(qs.find(q => q.id === id), id));
+  const steps = CIF_TREES.hombro.steps, s2 = steps.find(s => s.id === 'h_step2');
+  assert.deepEqual(s2.options.find(o => o.value === 'si').hypothesis, []);
+  assert.deepEqual(steps.find(s => s.id === 'h_step2b').options.map(o => o.hypothesis[0]), ['h11', 'h10', 'h1']);
+});
+
+test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan', () => {
+  // Clusters A/B del manguito, palpación AC, Paxinos + O'Brien: cifras solo en el criterio
+  ['h1', 'h2', 'h3', 'h4', 'h5', 'h7', 'h10', 'h11'].forEach(id => {
+    HYPOTHESES[id].tests.filter(t => t.fuente?.startsWith('Tarjeta de consulta hombro')).forEach(t => {
+      const i = HYPOTHESES[id].tests.indexOf(t);
+      assert.equal(calcLRScore(HYPOTHESES[id], { [i]: 'pos' }).totalLR, 1, `${id}/${t.name}`);
+      assert.equal(calcLRScore(HYPOTHESES[id], { [i]: 'neg' }).totalLR, 1, `${id}/${t.name}`);
+    });
+  });
 });
 
 // ── data/ por regiones ────────────────────────────────────────────────────────

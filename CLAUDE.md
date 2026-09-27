@@ -70,7 +70,7 @@ Source lives in the project root, plus `lib/` (session IDB helper), `data/` (cli
 | `data/comun.js` | Cross-region screening systems (`SIS_ENDOCRINO`, `SIS_HEMATOLOGICO`), imported by each region file that uses them — the same object instance is shared, as before the split |
 | `formulario.js` | Formulario previo engine (lo rellena el fisio): renders any schema from `formularios/`, stores answers, builds the summary (`resumenFormularioPrevio`) and the per-step hints for the CIF tree (`pistasPaso`). Loaded by `app.js` with dynamic `import()` only — never statically — so a missing file can't break the app |
 | `formularios/comun.js` | Cara 1 of the pre-visit form (common to every region). Pure data |
-| `formularios/<region>.js` | Cara 2 for one region (today `lumbar.js`, `cadera.js`, `cervical.js` and `rodilla.js`). Pure data, plus `pistas: { <stepId>: ['c:<id>' \| 'r:<id>' \| 'r:<id>.<fila>'] }` linking answers to that region's `CIF_TREES` steps. When adding one, also add the region to `REGIONES_CON_FORMULARIO` in `formulario.js` (unit tests validate every listed schema and its pistas) |
+| `formularios/<region>.js` | Cara 2 for one region (today `lumbar.js`, `cadera.js`, `cervical.js`, `rodilla.js` and `hombro.js`). Pure data, plus `pistas: { <stepId>: ['c:<id>' \| 'r:<id>' \| 'r:<id>.<fila>'] }` linking answers to that region's `CIF_TREES` steps. When adding one, also add the region to `REGIONES_CON_FORMULARIO` in `formulario.js` (unit tests validate every listed schema and its pistas) |
 
 ### ES Modules
 

@@ -17,7 +17,8 @@ export const screening = {
         'Historia personal de cáncer o tratamiento oncológico (quimio, radioterapia)',
         'Dolor nocturno constante que despierta al paciente sin alivio con cambio de postura',
         'Ganglios linfáticos duros, fijos e indoloros en axila o cuello',
-        'Tumor de Pancoast: dolor irradiado a escápula, cuello, axila o cara medial del brazo'
+        'Tumor de Pancoast: dolor irradiado a escápula, cuello, axila o cara medial del brazo',
+        'Tumor (tarjeta de consulta): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.'
       ],
       banderasAmarillas: [
         'Edad >50 años con dolor insidioso sin causa mecánica clara',
@@ -197,6 +198,39 @@ export const screening = {
         'Flujo sanguíneo hepático disminuye con ejercicio moderado — ajustar cargas'
       ]
     },
+    // Tarjeta hombro (guía de consulta), BANDERAS: las tres filas que no
+    // cubría ningún sistema. Sin `urgencia`: la tarjeta no tiene URGENCIA
+    // (en hombro las banderas van a derivación médica, no a urgencias hoy).
+    {
+      id: 'h_trauma', icon: '🦴', nombre: 'Traumático (Fractura o Luxación)',
+      banderasRojas: [
+        'Fractura o luxación no reducida: traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).'
+      ],
+      banderasAmarillas: [],
+      preguntas: [
+        { id: 'h_t1', text: '¿Tras una caída sobre el hombro o el codo, perdió de golpe movilidad del brazo o nota el hombro deformado? (Tener en cuenta la osteoporosis.)', alerta: true, s1: true }
+      ]
+    },
+    {
+      id: 'h_infeccion', icon: '🌡️', nombre: 'Infección / Sistémico',
+      banderasRojas: [
+        'Infección o sistémico: fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.'
+      ],
+      banderasAmarillas: [],
+      preguntas: [
+        { id: 'h_i1', text: '¿Ha tenido fiebre o se ha sentido enfermo últimamente, o ha notado cambios en la piel (aspecto, erupciones, sudoración), hematomas sin motivo o dolor en otras partes del cuerpo?', alerta: true, s1: true }
+      ]
+    },
+    {
+      id: 'h_neuro', icon: '🧠', nombre: 'Neurológico',
+      banderasRojas: [
+        'Lesión neurológica: déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.'
+      ],
+      banderasAmarillas: [],
+      preguntas: [
+        { id: 'h_n1', text: '¿Ha perdido fuerza o sensibilidad de forma importante en el brazo o la mano, o nota algún músculo del hombro o del brazo más delgado que el del otro lado?', alerta: true, s1: true }
+      ]
+    },
     SIS_ENDOCRINO,
     SIS_HEMATOLOGICO
   ]
@@ -221,8 +255,22 @@ export const tree = {
       tag: 'Paso 2 — Movilidad Global (PROM)',
       question: '¿Existe una restricción GLOBAL de la movilidad pasiva, especialmente en rotación externa?',
       options: [
-        { label: 'SÍ — Abducción pasiva <80° y pérdida severa de rotación externa', value: 'si', next: null, hypothesis: ['h1'] },
+        // Bisagra de la tarjeta (nodo 2): el SÍ ya no activa h1 por sí solo,
+        // lo reparte h_step2b entre congelado, artrosis GH y luxación/fractura.
+        { label: 'SÍ — Abducción pasiva <80° y pérdida severa de rotación externa', value: 'si', next: null, hypothesis: [] },
         { label: 'NO — Movilidad pasiva mayormente preservada', value: 'no', next: 'h_step3', hypothesis: [] }
+      ]
+    },
+    {
+      // Tarjeta hombro, nodo 2b. Solo se llega por el SÍ de h_step2 (el NO
+      // salta a h_step3); de aquí se sigue a h_step3 como antes.
+      id: 'h_step2b',
+      tag: 'Paso 2b — Rigidez activa = pasiva',
+      question: 'La movilidad pasiva GH (sobre todo la RE) está limitada igual que la activa. ¿Hubo traumatismo previo?',
+      options: [
+        { label: 'SÍ — Traumatismo previo → luxación bloqueada o fractura → Rx', value: 'trauma', next: null, hypothesis: ['h11'] },
+        { label: 'NO — Mayor edad + crepitación → artrosis GH (Rx)', value: 'artrosis', next: null, hypothesis: ['h10'] },
+        { label: 'NO — Resto → hombro congelado', value: 'congelado', next: null, hypothesis: ['h1'] }
       ]
     },
     {
@@ -233,6 +281,7 @@ export const tree = {
         { label: 'Dolor en articulación acromioclavicular (parte superior)', value: 'ac', next: null, hypothesis: ['h7'] },
         { label: 'Evento traumático / "Pop" con sensación de inestabilidad anterior', value: 'trauma_ant', next: null, hypothesis: ['h4'] },
         { label: 'Evento traumático / dolor profundo, síntomas de labrum (chasquidos)', value: 'trauma_lab', next: null, hypothesis: ['h5'] },
+        { label: 'Episodio concreto o aprensión (inestabilidad anterior o posterior, también sin «pop» traumático)', value: 'inestab', next: null, hypothesis: ['h4'] },
         { label: 'Ninguno de los anteriores', value: 'no', next: 'h_step4', hypothesis: [] }
       ]
     },
@@ -266,9 +315,16 @@ export const hypotheses = {
     name: 'Capsulitis Adhesiva',
     prom: 'SPADI (MCID: 14.9–25.4 puntos)',
     dosis: 'Movilizaciones pasivas grado I-II de Maitland en rotación externa, limitadas al 50% del rango disponible sin dolor (≈10-15° desde posición neutra). Evitar estiramiento capsular agresivo. 3 series × 10 repeticiones, 2 veces al día.',
+    pronostico: {
+      horizonte: 'Se suele decir que se resuelve en 2–3 años, pero un 41 % sigue con síntomas a los 4 años y la mitad a los 7. No hay evidencia de que avance por estadios hasta curarse sin tratamiento. Rx normal salvo osteopenia o calcificación; RM no necesaria.',
+      derivacion: 'Ejercicio en grupo supervisado: mejores resultados que el individual y que el ejercicio en casa. Derivar a psicología si los factores psicosociales superan tu competencia. Baja autoeficacia predice peor evolución. Contralateral en el 6–34 %.',
+      fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5 y 6)'
+    },
     tests: [
       { name: 'Abducción pasiva glenohumeral <80°', sn: '83-100% VPP (para capsulitis confirmada por volumen capsular <12 mL)', sp: null, lr_pos: null, lr_neg: null, criterio: 'Abducción pasiva glenohumeral menor de 80° confirma capsulitis con alta probabilidad post-test.' },
-      { name: 'Test de Rotación Externa (brazo neutro al lado, codo 90°)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Datos de fiabilidad limitados/ausentes en la literatura actual. Positivo cuando reproduce dolor.', noData: true }
+      { name: 'Test de Rotación Externa (brazo neutro al lado, codo 90°)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Datos de fiabilidad limitados/ausentes en la literatura actual. Positivo cuando reproduce dolor.', noData: true },
+      { name: 'Restricción equivalente activa y pasiva (criterio de Bunker)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Restricción equivalente de movilidad activa y pasiva: es el dato que más discrimina. La RE se considera la más afectada, pero la RI suele estar muy limitada con el brazo cerca de 90° de abducción. Criterio de Bunker: restricción igual de RE activa y pasiva + Rx esencialmente normal. No usar en hombro congelado: test específicos de MR, labrum o AC — casi siempre salen positivos al tensar una cápsula sensibilizada.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① Final del rango de RE pasiva → EVA (más útil cuando dolor > rigidez). ② RE pasiva en grados a 0° de abducción y RI a 90° de abducción (más útil cuando rigidez > dolor).', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' }
     ]
   },
   h2: {
@@ -276,11 +332,18 @@ export const hypotheses = {
     name: 'Síndrome de Pinzamiento Subacromial (Impingement)',
     prom: 'QuickDASH (MCID: 8.0–15.9 puntos)',
     dosis: 'Ejercicios de rotación externa isométrica submáxima (20% CVM) con brazo en aducción y rotación neutra, evitando elevación >60°. 3 series × 10 segundos de contracción, descanso 30 segundos.',
+    pronostico: {
+      horizonte: 'Una rotura completa del supraespinoso en ecografía aumenta la probabilidad, pero la imagen no mejora la capacidad de descartarlo.',
+      derivacion: 'Dolor en reposo: puede indicar bursitis o proceso inflamatorio que tolere mal el movimiento vigoroso → dosificar. La idea de «espacio subacromial estrecho» es controvertida.',
+      fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5 y 6)'
+    },
     tests: [
       { name: 'Arco doloroso', sn: '71%', sp: '81%', lr_pos: '3.7', lr_neg: '0.36', criterio: 'Dolor durante la elevación activa entre 60° y 120°.' },
       { name: 'Test de Hawkins-Kennedy', sn: '76%', sp: '48%', lr_pos: '1.5', lr_neg: null, criterio: 'Flexión de hombro a 90°, rotación interna forzada. Positivo si reproduce dolor subacromial.' },
       { name: 'Test de Neer', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Elevación pasiva en el plano escapular con rotación interna. Parte del cluster diagnóstico (≥3/5 tests positivos: AUC 0.79).', noData: false },
-      { name: 'Test de Resistencia a Rotación Externa', sn: '63%', sp: '75%', lr_pos: '2.6', lr_neg: '0.49', criterio: 'Contracción isométrica de rotación externa contra resistencia. Positivo si reproduce dolor.' }
+      { name: 'Test de Resistencia a Rotación Externa', sn: '63%', sp: '75%', lr_pos: '2.6', lr_neg: '0.49', criterio: 'Contracción isométrica de rotación externa contra resistencia. Positivo si reproduce dolor.' },
+      { name: 'Regla clínica de SAPS', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Descartar primero capsulitis (RE pasiva), origen cervical y dolor postraumático. Dolor o debilidad al elevar el brazo; el dolor debe reproducirse de forma consistente con los test resistidos. Regla clínica: SAPS probable si no hay pérdida de RE pasiva y hay dolor anterior, lesión por sobreesfuerzo y ausencia de síntomas en RE final en abducción.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① Elevación en el plano de la escápula o RE resistida que reproduce el dolor → EVA. ② Fuerza isométrica en RE con dinamómetro si se dispone (brazo junto al cuerpo, codo a 90°) o grados de elevación activa hasta el dolor.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' }
     ]
   },
   h3: {
@@ -288,23 +351,40 @@ export const hypotheses = {
     name: 'Rotura del Manguito Rotador',
     prom: 'SPADI (MCID: 14.9–25.4 pts) o ASES (MCID: 9–26.9 pts)',
     dosis: 'Isométricos de rotación externa en posición neutra (brazo al lado, codo 90°) al 15% CVM, sin elevación del brazo. 3 series × 8 repeticiones × 6 segundos, descanso 60 segundos entre series.',
+    pronostico: {
+      horizonte: 'RM como referencia: rotura completa S 90 %, E 100 %; parcial S 100 %, E 87 %. No se observa curación espontánea y el tamaño puede aumentar en unos 2 años, también en asintomáticas.',
+      derivacion: 'Alrededor del 40 % de la población tiene roturas asintomáticas: la rotura no explica por sí sola el dolor. La degeneración crece desde los 50–55 años mientras el dolor no traumático baja a partir de los 60–65.',
+      fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5 y 6)'
+    },
     tests: [
       { name: 'Test de Lata Vacía (Empty Can)', sn: '71%', sp: '49%', lr_pos: '1.3', lr_neg: null, criterio: 'Resistencia a abducción con el brazo a 90° en el plano escapular y rotación interna (pulgar hacia abajo). Positivo: dolor o debilidad.' },
       { name: 'Test de Lata Llena (Full Can)', sn: '75%', sp: '68%', lr_pos: '2.4', lr_neg: null, criterio: 'Resistencia a abducción con el brazo a 90° y rotación externa (pulgar hacia arriba). Positivo: dolor o debilidad.' },
       { name: 'External Rotation Lag Sign', sn: '47%', sp: '94%', lr_pos: '7.2', lr_neg: null, criterio: 'Alta especificidad para roturas completas. Imposibilidad de mantener la rotación externa pasivamente colocada.' },
       { name: 'Internal Rotation Lag Sign', sn: '97%', sp: '83%', lr_pos: '5.6', lr_neg: null, criterio: 'Alta sensibilidad para roturas completas. Imposibilidad de mantener la rotación interna contra gravedad.' },
-      { name: 'Drop Arm Test', sn: '24%', sp: '93%', lr_pos: '3.3', lr_neg: null, criterio: 'El brazo abducido a 90° no puede mantenerse — cae. Alta especificidad para rotura masiva.' }
+      { name: 'Drop Arm Test', sn: '24%', sp: '93%', lr_pos: '3.3', lr_neg: null, criterio: 'El brazo abducido a 90° no puede mantenerse — cae. Alta especificidad para rotura masiva.' },
+      { name: 'Inspección', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Brazo en cabestrillo, escápula en rotación inferior o inclinación anterior, cabeza humeral anteriorizada.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Cluster A: arco doloroso + drop arm + debilidad en RE', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'LR+ 15,6 con los tres positivos (cifra de la tarjeta). Fuente probable Park 2005, sin verificar con el artículo: no puntúa hasta tener el PDF.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Cluster B: edad >65 + debilidad en RE + dolor nocturno', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'LR+ 9,8 con los tres positivos (cifra de la tarjeta). Fuente probable Litaker 2000, sin verificar con el artículo: no puntúa hasta tener el PDF.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① Elevación activa o arco doloroso → EVA. ② Fuerza isométrica en RE con dinamómetro si se dispone (brazo junto al cuerpo, codo a 90°) o grados de elevación activa.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' }
     ]
   },
   h4: {
     id: 'h4', region: 'hombro', num: '④',
-    name: 'Inestabilidad Anterior Traumática',
+    name: 'Inestabilidad Glenohumeral (Anterior o Posterior)',
     prom: 'DASH (MCID: 10.8 pts) o QuickDASH (MCID: 8.0–15.9 pts)',
     dosis: 'Isométricos de rotadores externos en posición de seguridad (brazo en aducción, rotación neutra). Contracción al 20% CVM, sin movimiento glenohumeral. 3 series × 10 segundos, descanso 45 segundos.',
+    pronostico: {
+      horizonte: 'Diagnóstico sobre todo clínico; la Rx simple puede identificar Bankart y Hill-Sachs. A las 3–4 semanas del episodio agudo hay poco dolor y recuperan movilidad y fuerza.',
+      derivacion: 'La MDI se confunde con inestabilidad unidireccional, SAPS, patología discal cervical, plexitis braquial y desfiladero torácico. Tener presente Ehlers-Danlos o Marfan.',
+      fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5 y 6)'
+    },
     tests: [
       { name: 'Test de Aprehensión', sn: '72%', sp: '96%', lr_pos: '20.2', lr_neg: null, criterio: 'Criterio: APREHENSIÓN (no solo dolor). Brazo a 90° abducción + rotación externa progresiva. El paciente siente que el hombro "se va a salir".' },
       { name: 'Test de Recolocación (Jobe)', sn: '81%', sp: '92%', lr_pos: '10.4', lr_neg: null, criterio: 'Tras el test de aprehensión, se aplica fuerza posterior en la cabeza humeral. Positivo si desaparece la aprehensión.' },
-      { name: 'Test de Liberación/Release/Surprise', sn: null, sp: null, lr_pos: '8.3', lr_neg: null, criterio: 'Mejor sensibilidad y especificidad para inestabilidad anterior. Se retira la fuerza de recolocación súbitamente — reaparece la aprehensión.' }
+      { name: 'Test de Liberación/Release/Surprise', sn: null, sp: null, lr_pos: '8.3', lr_neg: null, criterio: 'Mejor sensibilidad y especificidad para inestabilidad anterior. Se retira la fuerza de recolocación súbitamente — reaparece la aprehensión.' },
+      { name: 'Anterior: aprensión, recolocación y sorpresa en conjunto', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Aprensión, recolocación y sorpresa (S y E >72 %). Interpretar la aprensión, no el dolor. Cada test ya puntúa por separado arriba; esta fila no multiplica.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Posterior: Jerk, Kim y signo de pinzamiento posterior agrupados', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'No usar un test aislado; agrupar Jerk, Kim y signo de pinzamiento posterior junto con la historia.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① Aprensión de 0 a 10 en abducción + RE; en posterior, la posición provocadora. ② Fuerza isométrica de RE y RI con dinamómetro si se dispone, siempre en la misma posición.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' }
     ]
   },
   h5: {
@@ -312,10 +392,16 @@ export const hypotheses = {
     name: 'Lesión Labral Superior (SLAP)',
     prom: 'DASH (MCID: 10.8 pts) o QuickDASH (MCID: 8.0–15.9 pts)',
     dosis: 'Estabilización escapular en cadena cerrada (apoyo de manos en pared, protracción escapular controlada) sin carga axial sobre complejo bicipital-labral. ROM limitado a 0-30° de flexión glenohumeral. 3 series × 8 repeticiones lentas.',
+    pronostico: {
+      horizonte: 'La artro-RM es más precisa que la RM sin contraste.',
+      derivacion: 'El SLAP aislado es raro y es frecuente en asintomáticos: tratarlo solo tiene sentido si explica los síntomas. Suele acompañar a rotura del MR, inestabilidad, rotura del bíceps o bursitis.',
+      fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5 y 6)'
+    },
     tests: [
-      { name: 'Test de O\'Brien (Active Compression)', sn: null, sp: null, lr_pos: '3–50 (alta variabilidad)', lr_neg: null, criterio: 'Flexión a 90°, aducción horizontal 10°, rotación interna (pulgar abajo) — resistencia. Luego igual con rotación externa. Positivo: dolor que desaparece o disminuye en supinación.' },
+      { name: 'Test de O\'Brien (Active Compression)', sn: null, sp: null, lr_pos: '3–50 (alta variabilidad)', lr_neg: null, criterio: 'Flexión a 90°, aducción horizontal 10°, rotación interna (pulgar abajo) — resistencia. Luego igual con rotación externa. Positivo: dolor que desaparece o disminuye en supinación. Tarjeta de consulta: ningún hallazgo físico es específico; compresión-rotación activa (S 72 %, E 52 %) sirve para sostener la hipótesis, no para confirmarla (con esas cifras no puntuaría: pendiente de fuente para corregir la LR).' },
       { name: 'Biceps Load Test II', sn: null, sp: null, lr_pos: '26', lr_neg: null, criterio: 'Alta LR+ pero evaluado principalmente por diseñadores del test. Flexión de codo a 120°, resistencia a supinación con hombro a 90° abd.' },
-      { name: 'Test de Resistencia a Rotación Interna', sn: null, sp: null, lr_pos: '25', lr_neg: null, criterio: 'Alta variabilidad entre estudios. Resistencia a rotación interna en abducción.' }
+      { name: 'Test de Resistencia a Rotación Interna', sn: null, sp: null, lr_pos: '25', lr_neg: null, criterio: 'Alta variabilidad entre estudios. Resistencia a rotación interna en abducción.' },
+      { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① Gesto por encima de la cabeza que reproduce el síntoma mecánico → EVA. ② Fuerza isométrica de RE y RI con dinamómetro si se dispone, siempre en la misma posición.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' }
     ]
   },
   h6: {
@@ -333,9 +419,17 @@ export const hypotheses = {
     name: 'Artropatía Acromioclavicular',
     prom: 'SPADI o QuickDASH (MCID: 14.9–25.4 / 8.0–15.9 pts)',
     dosis: 'Movilizaciones escapulares pasivas (elevación-depresión, protracción-retracción) sin carga en articulación AC. Evitar aducción horizontal forzada. Rango limitado al 50% sin dolor. 3 series × 10 repeticiones, 2 veces al día.',
+    pronostico: {
+      horizonte: 'Rx y RM muestran patología AC, pero muchos cambios aparecen en personas sin síntomas.',
+      derivacion: 'La infiltración ecoguiada tiene efecto diagnóstico y terapéutico: decisión médica.',
+      fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5 y 6)'
+    },
     tests: [
-      { name: 'Test de Aducción Cruzada (Cross-body Adduction)', sn: '77%', sp: '79%', lr_pos: null, lr_neg: null, criterio: 'Aducción horizontal pasiva del brazo cruzando el pecho. Positivo si reproduce dolor localizado en articulación AC.' },
-      { name: 'Palpación directa de la articulación AC', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproduce dolor localizado en la articulación AC. Datos de fiabilidad diagnóstica específicos limitados en literatura.', noData: true }
+      { name: 'Test de Aducción Cruzada (Cross-body Adduction)', sn: '77%', sp: '79%', lr_pos: null, lr_neg: null, criterio: 'Aducción horizontal pasiva del brazo cruzando el pecho. Positivo si reproduce dolor localizado en articulación AC. La tarjeta de consulta da, con el brazo a 90° de flexión, S >67 %, E 79 % (pendiente de cotejar con la fuente de estas cifras).' },
+      { name: 'Palpación directa de la articulación AC', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproduce dolor localizado en la articulación AC. Tarjeta de consulta: palpación AC (S 96 %, E 10 %): si no duele, hace poco probable el cuadro; si duele, no lo confirma. Cifras sin fuente verificada: no puntúa.' },
+      { name: 'Paxinos + O’Brien combinados', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Los test AC por separado son débiles: Paxinos + O’Brien combinados dan S y E >90 % (cifra de la tarjeta, sin fuente verificada: no puntúa).', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Movilidad pasiva sin restricción; posible escalón', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Movilidad pasiva sin restricción; posible escalón.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① Aducción horizontal → EVA. ② Grados de aducción horizontal hasta la aparición del dolor, en la misma posición.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' }
     ]
   },
   h8: {
@@ -356,6 +450,29 @@ export const hypotheses = {
     tests: [
       { name: 'Palpación posteroanterior de 1ª costilla', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Restricción de movilidad de primera costilla a la palpación posteroanterior. Datos de fiabilidad limitados/ausentes en literatura actual.', noData: true },
       { name: 'Test de elevación del brazo post-movilización', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Mejoría de la elevación del brazo tras movilización de la primera costilla. Datos de fiabilidad limitados.', noData: true }
+    ]
+  },  // Tarjeta hombro, nodo 2b: las dos ramas de rigidez activa = pasiva que no
+  // son el congelado. Sin fila de PRONOSTICO en la tarjeta → sin `pronostico`;
+  // sin dosis en la guía → `dosis: ''`.
+  h10: {
+    id: 'h10', region: 'hombro', num: '⑩',
+    name: 'Artrosis Glenohumeral',
+    prom: 'SPADI (MCID: 14.9–25.4 puntos)',
+    dosis: '',
+    tests: [
+      { name: 'Mayor edad + crepitación con rigidez activa = pasiva', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Mayor edad, dolor progresivo más largo y a menudo menos intenso, crepitación, posible atrofia. Rx simple la muestra.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' }
+    ]
+  },
+  h11: {
+    id: 'h11', region: 'hombro', num: '⑪',
+    name: 'Luxación Bloqueada o Fractura (→ Rx)',
+    prom: 'QuickDASH (MCID: 8.0–15.9 pts)',
+    dosis: '',
+    tests: [
+      { name: 'Rx antes de nada', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Traumatismo previo + rigidez activa y pasiva → luxación bloqueada o fractura → Rx. No explorar más hasta tenerla.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Luxación bloqueada', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Traumatismo previo, cualquier edad, rigidez activa y pasiva similar al congelado. Imagen: Rx simple.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Fractura', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Traumatismo previo, osteoporosis. Imagen: Rx; RM si fractura no desplazada del troquíter.', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' },
+      { name: 'Test de aprensión ósea y percusión olécranon-manubrio', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).', fuente: 'Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)' }
     ]
   },
 };
