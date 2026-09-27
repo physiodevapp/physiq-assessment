@@ -9,7 +9,7 @@ import './dom-shim.mjs';
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
 const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES } = await import('../data.js');
-const { calcLRScore } = await import('../phase4b.js');
+const { calcLRScore, parseLR } = await import('../phase4b.js');
 const { buildPhysiQPayload, getSistemicoAffirmativeTexts } = await import('../app.js');
 const { state } = await import('../state.js');
 const { rebuildHypotheses, pruneTreeFrom, resolveOptionTargets } = await import('../phase4.js');
@@ -60,18 +60,19 @@ test('one negative LR_neg 0.2 → Peso bajo, hyp-red', () => {
   assert.ok(Math.abs(r.totalLR - 0.2) < 0.001);
 });
 
-test('lr_pos null → fallback 1.5', () => {
+test('no LR and no Sn/Sp → Sin LR aplicable, neutral, LR stays 1', () => {
   const hyp = { tests: [{ lr_pos: null, lr_neg: null }] };
-  const res = { 0: 'pos' };
-  const r = calcLRScore(hyp, res);
-  assert.ok(Math.abs(r.totalLR - 1.5) < 0.001);
+  const r = calcLRScore(hyp, { 0: 'pos' });
+  assert.equal(r.totalLR, 1);
+  assert.equal(r.colorClass, 'hyp-neutral');
+  assert.ok(r.label.includes('Sin LR aplicable') && r.label.includes('1/1'), `got: ${r.label}`);
 });
 
-test('lr_neg null → fallback 0.5', () => {
+test('no LR, negative → hallazgo 0/1, no multiplier', () => {
   const hyp = { tests: [{ lr_pos: null, lr_neg: null }] };
-  const res = { 0: 'neg' };
-  const r = calcLRScore(hyp, res);
-  assert.ok(Math.abs(r.totalLR - 0.5) < 0.001);
+  const r = calcLRScore(hyp, { 0: 'neg' });
+  assert.equal(r.totalLR, 1);
+  assert.ok(r.label.includes('0/1'), `got: ${r.label}`);
 });
 
 test('hasHighLR: pos LR=5 × neg LR=0.1 = 0.5 but still hyp-green', () => {
@@ -90,11 +91,80 @@ test('LR chain 3.7 × 2.6 → product correct and hyp-green', () => {
   assert.equal(r.colorClass, 'hyp-green');
 });
 
-test('one positive no LR values (default 1.5) → Peso moderado', () => {
-  const hyp = { tests: [{ lr_pos: null }] };
-  const res = { 0: 'pos' };
-  const r = calcLRScore(hyp, res);
-  assert.equal(r.colorClass, 'hyp-orange');
+test('LR computed from numeric Sn/Sp when no published LR', () => {
+  const hyp = { tests: [{ sn: '84%', sp: '83%' }] };   // LR+ ≈ 4.94, LR− ≈ 0.19
+  assert.ok(Math.abs(calcLRScore(hyp, { 0: 'pos' }).totalLR - 0.84 / 0.17) < 0.001);
+  assert.ok(Math.abs(calcLRScore(hyp, { 0: 'neg' }).totalLR - 0.16 / 0.83) < 0.001);
+});
+
+test('Sn/Sp ranges are not computed', () => {
+  const r = calcLRScore({ tests: [{ sn: '52–70%', sp: '55–83%' }] }, { 0: 'pos' });
+  assert.equal(r.totalLR, 1);
+  assert.equal(r.colorClass, 'hyp-neutral');
+});
+
+test('each direction judged separately: SLR (Sn .91 Sp .26) — pos is a finding, neg multiplies', () => {
+  const hyp = { tests: [{ sn: '91%', sp: '26%' }] };   // LR+ 1.23 (no), LR− 0.35 (sí)
+  const rPos = calcLRScore(hyp, { 0: 'pos' });
+  assert.equal(rPos.totalLR, 1);
+  assert.equal(rPos.colorClass, 'hyp-neutral');
+  const rNeg = calcLRScore(hyp, { 0: 'neg' });
+  assert.ok(Math.abs(rNeg.totalLR - 0.09 / 0.26) < 0.001);
+  assert.equal(rNeg.colorClass, 'hyp-red');
+});
+
+test('published LR below 2 does not multiply', () => {
+  const r = calcLRScore({ tests: [{ lr_pos: '1.5', lr_neg: '0.8' }] }, { 0: 'pos' });
+  assert.equal(r.totalLR, 1);
+});
+
+test('LR range → conservative bound (lower for LR+, upper for LR−)', () => {
+  const hyp = { tests: [{ lr_pos: '2.9–4.9', lr_neg: '0.43–0.49' }] };
+  assert.ok(Math.abs(calcLRScore(hyp, { 0: 'pos' }).totalLR - 2.9) < 0.001);
+  assert.ok(Math.abs(calcLRScore(hyp, { 0: 'neg' }).totalLR - 0.49) < 0.001);
+  assert.equal(parseLR('3–50 (alta variabilidad)', 'pos'), 3);
+  assert.equal(parseLR('97% VPP', 'neg'), null);
+});
+
+test('pronostico tests never score', () => {
+  const r = calcLRScore({ tests: [{ lr_pos: '24.4', tipo: 'pronostico' }] }, { 0: 'pos' });
+  assert.equal(r.totalLR, 1);
+  assert.equal(r.evaluatedCount, 1);
+  assert.equal(r.colorClass, 'hyp-neutral');
+});
+
+const CLUSTER_HYP = {
+  clusters: { c: { nombre: 'C', umbralPos: 2, umbralNeg: 1, lr_pos: '4.0', lr_neg: '0.15' } },
+  tests: [0, 1, 2, 3].map(() => ({ cluster: 'c', lr_pos: '9' })),
+};
+
+test('cluster: members never multiply alone; ≥ umbralPos → cluster LR+', () => {
+  assert.equal(calcLRScore(CLUSTER_HYP, { 0: 'pos', 1: 'nd', 2: 'nd', 3: 'nd' }).totalLR, 1);
+  assert.equal(calcLRScore(CLUSTER_HYP, { 0: 'pos', 1: 'pos', 2: 'nd', 3: 'nd' }).totalLR, 4);
+});
+
+test('cluster: LR− only when every member was done and positives ≤ umbralNeg', () => {
+  assert.equal(calcLRScore(CLUSTER_HYP, { 0: 'pos', 1: 'neg', 2: 'neg', 3: 'nd' }).totalLR, 1);
+  assert.ok(Math.abs(calcLRScore(CLUSTER_HYP, { 0: 'pos', 1: 'neg', 2: 'neg', 3: 'neg' }).totalLR - 0.15) < 0.001);
+});
+
+test('absorbe: composite test cancels its component LR', () => {
+  const hyp = { tests: [{ lr_neg: '0.35' }, { lr_neg: '0.33', absorbe: [0] }] };
+  assert.ok(Math.abs(calcLRScore(hyp, { 0: 'neg', 1: 'neg' }).totalLR - 0.33) < 0.001);
+  assert.ok(Math.abs(calcLRScore(hyp, { 0: 'neg', 1: 'nd' }).totalLR - 0.35) < 0.001);
+});
+
+test('every HYPOTHESES test: LR fields are parseable or null (no text disguised as LR)', () => {
+  for (const h of Object.values(HYPOTHESES)) h.tests.forEach(t => {
+    if (t.lr_pos != null) assert.ok(parseLR(t.lr_pos, 'pos') != null, `${h.id}/${t.name} lr_pos=${t.lr_pos}`);
+    if (t.lr_neg != null) assert.ok(parseLR(t.lr_neg, 'neg') != null, `${h.id}/${t.name} lr_neg=${t.lr_neg}`);
+  });
+});
+
+test('every cluster reference points to an existing cluster rule', () => {
+  for (const h of Object.values(HYPOTHESES)) h.tests.forEach(t => {
+    if (t.cluster) assert.ok(h.clusters?.[t.cluster], `${h.id}/${t.name} → ${t.cluster}`);
+  });
 });
 
 // ── buildPhysiQPayload ────────────────────────────────────────────────────────
@@ -233,8 +303,8 @@ console.log('\nHYPOTHESES data integrity');
 
 const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
 
-test('all 50 hypotheses present', () => {
-  assert.equal(Object.keys(HYPOTHESES).length, 50);
+test('all 55 hypotheses present', () => {
+  assert.equal(Object.keys(HYPOTHESES).length, 55);
 });
 
 test('every hypothesis has id, region, name, tests', () => {
@@ -558,6 +628,75 @@ test('no duplicate pregunta IDs within a region', () => {
     return dupes;
   });
   assert.deepEqual(dupes, []);
+});
+
+// ── Formulario previo: esquemas (formularios/*.js) y lectura (formulario.js) ──
+console.log('\nformulario previo');
+
+const { default: FP_COMUN } = await import('../formularios/comun.js');
+const fpMod = await import('../formulario.js');
+const FP_REGIONES = {};
+for (const r of fpMod.REGIONES_CON_FORMULARIO) FP_REGIONES[r] = (await import(`../formularios/${r}.js`)).default;
+const FP_TIPOS = ['unica', 'multi', 'escala', 'matriz', 'texto'];
+await fpMod.cargarEsquemaRegion('lumbar');   // test() es síncrono: precargar aquí
+
+function fpItems(esq) { return esq.secciones.flatMap(s => s.items); }
+
+for (const esq of [FP_COMUN, ...Object.values(FP_REGIONES)]) {
+  test(`formulario ${esq.id}: ids únicos, tipos válidos, opciones y mostrarSi coherentes`, () => {
+    const items = fpItems(esq);
+    const ids = items.map(i => i.id);
+    assert.equal(new Set(ids).size, ids.length, 'ids duplicados');
+    items.forEach(it => {
+      assert.ok(FP_TIPOS.includes(it.tipo), `${it.id}: tipo ${it.tipo}`);
+      if (it.tipo === 'unica' || it.tipo === 'multi') assert.ok(it.opciones?.length, `${it.id}: sin opciones`);
+      if (it.tipo === 'matriz') assert.ok(it.filas?.length && it.opciones?.length, `${it.id}: matriz incompleta`);
+      if (it.detalle) assert.ok(it.opciones.includes(it.detalle.opcion), `${it.id}: detalle.opcion`);
+      if (it.mostrarSi) {
+        const ref = items.find(x => x.id === it.mostrarSi.id);
+        assert.ok(ref, `${it.id}: mostrarSi → ${it.mostrarSi.id}`);
+        it.mostrarSi.valores.forEach(v => assert.ok(ref.opciones.includes(v), `${it.id}: mostrarSi valor ${v}`));
+      }
+    });
+  });
+}
+
+for (const [region, esq] of Object.entries(FP_REGIONES)) {
+  test(`formulario ${region}: cada pista apunta a un paso del árbol y a una pregunta existente`, () => {
+    const pasos = new Set(CIF_TREES[region].steps.map(s => s.id));
+    for (const [paso, refs] of Object.entries(esq.pistas || {})) {
+      assert.ok(pasos.has(paso), `paso ${paso} no existe en CIF_TREES.${region}`);
+      refs.forEach(ref => {
+        const [pref, rest] = ref.split(':');
+        const [id, fila] = rest.split('.');
+        const it = fpItems(pref === 'c' ? FP_COMUN : esq).find(x => x.id === id);
+        assert.ok(it, `${ref}: pregunta inexistente`);
+        if (fila) assert.ok(it.filas?.some(f => f.id === fila), `${ref}: fila inexistente`);
+      });
+    }
+  });
+}
+
+test('resumen y pistas: solo respuestas visibles, con detalle y filas de matriz', () => {
+  state.region = 'lumbar';
+  state.formularioPrevio = {
+    comun: { inicio: 'Poco a poco', primera_vez: 'Sí', episodio_previo: 'oculto: primera_vez ≠ No' },
+    regiones: { lumbar: { pierna_hasta: 'Por debajo de la rodilla', empeora: { caminando: 'Sí' }, postura_alivio: 'Sí', postura_alivio__detalle: 'Sentado inclinado' } },
+  };
+  const r = fpMod.resumenFormularioPrevio();
+  assert.ok(r.some(x => x.a === 'Poco a poco'));
+  assert.ok(!r.some(x => x.a.startsWith('oculto')), 'mostrarSi no respetado');
+  assert.ok(r.some(x => x.a === 'Sí — Sentado inclinado'));
+  assert.ok(r.some(x => x.a === 'Caminando: Sí'));
+  const p = fpMod.pistasPaso('lu_step2');
+  assert.deepEqual(p, [{ q: 'Caminando', a: 'Sí' }]);
+  assert.deepEqual(fpMod.pistasPaso('lu_step3').map(x => x.a), ['Poco a poco', 'Sí']);
+});
+
+test('payload lleva fp con el resumen del formulario', () => {
+  const pl = buildPhysiQPayload();
+  assert.ok(Array.isArray(pl.fp));
+  state.formularioPrevio = { comun: {}, regiones: {} };
 });
 
 // ── Summary ───────────────────────────────────────────────────────────────────

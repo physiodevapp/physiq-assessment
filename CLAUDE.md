@@ -55,7 +55,7 @@ git commit -m "short imperative title" -m "description when needed"
 
 ## File Architecture
 
-All source lives in the project root — there are no subdirectories.
+Source lives in the project root, plus `lib/` (session IDB helper) and `formularios/` (one form schema per file).
 
 | File | Role |
 |------|------|
@@ -66,6 +66,9 @@ All source lives in the project root — there are no subdirectories.
 | `phase4.js` | Phase 4 algorithm: CIF decision tree (`initCIFTree`, `renderStep`, `selectTreeOption`, `pruneTreeFrom`, `rebuildHypotheses`, `checkTreeComplete`, `showTreeComplete`) |
 | `phase4b.js` | Phase 4b algorithm: hypothesis scoring (`buildHypothesisCards`, `setTestResult`, `calcLRScore`, `recalcHypScore`, accordion observer) |
 | `data.js` | All clinical content: screening systems, ICF trees, hypotheses, LR± values |
+| `formulario.js` | Formulario previo engine (lo rellena el fisio): renders any schema from `formularios/`, stores answers, builds the summary (`resumenFormularioPrevio`) and the per-step hints for the CIF tree (`pistasPaso`). Loaded by `app.js` with dynamic `import()` only — never statically — so a missing file can't break the app |
+| `formularios/comun.js` | Cara 1 of the pre-visit form (common to every region). Pure data |
+| `formularios/<region>.js` | Cara 2 for one region (today only `lumbar.js`). Pure data, plus `pistas: { <stepId>: ['c:<id>' \| 'r:<id>' \| 'r:<id>.<fila>'] }` linking answers to that region's `CIF_TREES` steps. When adding one, also add the region to `REGIONES_CON_FORMULARIO` in `formulario.js` (unit tests validate every listed schema and its pistas) |
 
 ### ES Modules
 
@@ -135,7 +138,13 @@ const state = {
     variableControl: '',
     ventanaRecuperacion: '',
     anclajeHabito: ''
-  }
+  },
+
+  // Formulario previo (formulario.js) — answers keyed by item id; per-region
+  // answers kept separately so changing region never loses them.
+  // unica → string · multi → string[] · escala → number|'ns' · matriz → { fila: valor }
+  // texto → string · `<id>__detalle` → free text of an option with `detalle`
+  formularioPrevio: { comun: {}, regiones: { lumbar: {} } }
 };
 ```
 
@@ -161,7 +170,16 @@ Navigation is validated by `navStepClick` — users cannot skip phases with inco
 
 **`CIF_TREES`** — keyed by region. Each tree is a map of step IDs → nodes with `question`, `options` (each option has `next` step ID and effects on `activeHypotheses`).
 
-**`HYPOTHESES`** — keyed by hypothesis ID. Each entry: `{ id, region, name, prom, dosis, tests: [{name, sn, sp, lr_pos, lr_neg, criterio}] }`. The `lr_pos` and `lr_neg` values are used in Phase 4b Bayesian scoring.
+**`HYPOTHESES`** — keyed by hypothesis ID. Each entry: `{ id, region, name, prom, dosis, pronostico?, clusters?, tests: [{name, sn, sp, lr_pos, lr_neg, criterio, fuente?, tipo?, cluster?, absorbe?}] }`. Optional fields: `pronostico: { horizonte, derivacion, fuente }` (rendered in phase 5 under the dose); `dosis` may be `''` (phase 5 then says it's the clinician's call — never invent one); `fuente` is a short citation shown under the test.
+
+### Phase 4b scoring (`calcLRScore`, `phase4b.js`)
+There are **no default LRs**: a test with no usable LR never multiplies (the old `|| 1.5` / `|| 0.5` fallbacks were removed on purpose — they gave weight to tests with no evidence behind them). Rules:
+1. Published `lr_pos`/`lr_neg` if present; otherwise computed from `sn`/`sp` when both are a single number (`LR+ = S/(1−E)`, `LR− = (1−S)/E`, badge says "(calc.)"). S/E ranges (`'52–70%'`, `'~40%'`, `'>90%'`) are not computed. An LR range (`'2.9–4.9'`) uses the bound closest to 1 (conservative). `lr_pos`/`lr_neg` must be an LR, never other text (a unit test enforces it: `'97% VPP'` was once stored as an LR− and multiplied by 97).
+2. Each direction is judged separately: LR+ multiplies only if ≥ 2 (`LR_POS_MIN`), LR− only if ≤ 0.5 (`LR_NEG_MAX`). Otherwise the result is a *clinical finding*: LR = 1, counted in the label as `X/Y hallazgos compatibles`.
+3. `cluster: '<id>'` on a test → it never multiplies alone; `hyp.clusters[id] = { nombre, umbralPos, lr_pos, umbralNeg, lr_neg, fuente }` does: LR+ when positives ≥ `umbralPos`; LR− only when *every* member was done and positives ≤ `umbralNeg`.
+4. `tipo: 'pronostico'` (e.g. Flynn's manipulation CPR) never enters the diagnostic score.
+5. With no applicable LR the label is `⚪ Sin LR aplicable · X/Y hallazgos compatibles` (`hyp-neutral`), never "Peso bajo".
+6. `absorbe: [idx]` — when a composite test (e.g. RAPIDH) contributes an LR, the listed component tests (the SLR it contains) stop multiplying, so the same evidence isn't counted twice.
 
 When modifying clinical content, keep `data.js` isolated from logic — this separation allows physiotherapists to review domain content independently. `data.js` is intentionally kept as a single unified file (~1668 lines) even though it covers three distinct domains (`SYSTEMIC_SCREENING`, `CIF_TREES`, `HYPOTHESES`): splitting it would fragment the "single source of clinical content" property without meaningful benefit.
 
@@ -258,9 +276,13 @@ Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclaje
 | `buildInformeFisioterapiaText()` | Builds a **patient/GP-facing** physiotherapy report from the same payload — plain language, no NRS/LR jargon or emoji, hypothesis names only (no scores); meant to be pasted as-is into a letterhead template and handed to the patient |
 | `copyInformeFisioterapia()` | Copies that patient/GP report to clipboard (`📄 Informe` button, phase 5, next to `📋 Notas`) |
 
-**Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `sv` (signos vitales: fc/fr/spo2/tas/tad), `an` (antropometría: talla/peso/imc — imc computed at build time, never stored in state), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `sq` (systemic screening affirmative question texts), `h[]` (hypotheses with scores and test results), `pn` (plan notes).
+**Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `sv` (signos vitales: fc/fr/spo2/tas/tad), `an` (antropometría: talla/peso/imc — imc computed at build time, never stored in state), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `sq` (systemic screening affirmative question texts), `h[]` (hypotheses with scores and test results), `pn` (plan notes), `fp[]` (formulario previo answers as readable `{ s, q, a }` — section, question, answer; also listed in `📋 Notas`, deliberately not in the patient/GP `📄 Informe`).
 
 **Two different summaries, two different audiences** — both live in phase 5's header (`.phase5-copy-btn`, `styles.css`), both work regardless of hub context: `📋 Notas` is the clinician's own dense shorthand (`buildContextSummaryText()`); `📄 Informe` is the patient/GP-facing report (`buildInformeFisioterapiaText()`), reworded from the same data but stripped of internal scoring language. Both buttons show a fuller "Copiar informe"/"Copiar notas" label ≥481px and collapse to the single-word `📄 Informe`/`📋 Notas` under 480px (`.btn-text-full`/`.btn-text-short`, plus `flex-wrap` on the header row) so the pair doesn't overflow next to the phase title on narrow phones. When adding a new clinical field to one, consider whether the other needs it too — they diverge in *tone*, not in what data exists. Navigation to physiq-report is handled by the hub; standalone, `#btnFinalizar`'s share action reuses `buildInformeFisioterapiaText()` too (see "Phase 5 and finalizarValoracion()" above) — it's the same patient/GP report as `📄 Informe`, just pushed through `navigator.share()` instead of the clipboard.
+
+## Formulario previo
+
+Pre-visit form transcribed from guía-de-consulta (`tools/plantilla_formularios.js` cara 1 + `data/formulario_<region>.js` cara 2) — question text kept literal; the paper header (name, date, age) is not repeated because phase 1 already has it. The physio fills it in PhysiQ: phase 1 card "📝 Formulario Previo" (General tab; Region tab once a region is chosen) and a button at the top of phase 2's screening once a region is picked. Every `texto` item gets the same mic + chips bar as `motivoConsulta` (`injectQuickInputBar(fieldId, chips)`, exported from `app.js`); the chips come from the item's own `chips` in the schema. Answers linked through `pistas` show as a "📝 Del formulario previo" box inside the matching CIF step (`renderStep` → `window.fpPistasPasoHTML`) — a reminder only, never an automatic answer. Deploy: `formulario.js` and `formularios/` must be in `deploy-to-hub.yml`'s copy step.
 
 ## Audio recording
 
