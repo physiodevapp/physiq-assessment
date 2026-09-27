@@ -740,7 +740,7 @@ test('cadera: fractura de estrés del cuello femoral, artritis séptica y torsi�
   });
 });
 
-test('cadera: ningún test multiplica por una LR− de 0, y Thomas (evidencia de rotura labral) puntúa en labrum, no en FAIS', () => {
+test('cadera: ningún test multiplica por una LR− de 0, y Thomas puntúa solo positivo y solo en labrum (evidencia contradictoria para descartar)', () => {
   Object.values(HYPOTHESES).filter(h => h.region === 'cadera').forEach(h => {
     const r = Object.fromEntries(h.tests.map((_, i) => [i, 'neg']));
     assert.ok(calcLRScore(h, r).totalLR > 0, h.id);
@@ -749,6 +749,7 @@ test('cadera: ningún test multiplica por una LR− de 0, y Thomas (evidencia de
   assert.equal(calcLRScore(ca2, { [iThomas]: 'pos' }).totalLR, 1);
   const ca3 = HYPOTHESES.ca3, jThomas = ca3.tests.findIndex(t => t.name === 'Test de Thomas');
   assert.ok(Math.abs(calcLRScore(ca3, { [jThomas]: 'pos' }).totalLR - 11.1) < 0.001);
+  assert.equal(calcLRScore(ca3, { [jThomas]: 'neg' }).totalLR, 1);
 });
 
 test('ca1: los criterios ACR absorben el criterio combinado y la RI disminuida', () => {
