@@ -837,6 +837,12 @@ test('hombro: clusters del manguito (Park, Litaker) sin contar dos veces; AC de 
   });
 });
 
+test('hombro: el O’Brien de SLAP no puntúa (Hegedus 2012: LR+ 1,06, IC con el 1)', () => {
+  const k = HYPOTHESES.h5.tests.findIndex(t => t.name.startsWith('Test de O'));
+  assert.equal(calcLRScore(HYPOTHESES.h5, { [k]: 'pos' }).totalLR, 1);
+  assert.equal(calcLRScore(HYPOTHESES.h5, { [k]: 'neg' }).totalLR, 1);
+});
+
 test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan', () => {
   // Clusters A/B del manguito, palpación AC, Paxinos + O'Brien: cifras solo en el criterio
   ['h1', 'h2', 'h3', 'h4', 'h5', 'h7', 'h10', 'h11'].forEach(id => {
