@@ -843,6 +843,21 @@ test('hombro: el O’Brien de SLAP no puntúa (Hegedus 2012: LR+ 1,06, IC con el
   assert.equal(calcLRScore(HYPOTHESES.h5, { [k]: 'neg' }).totalLR, 1);
 });
 
+test('hombro: LR de Hegedus 2012 en SAPS e inestabilidad; cada dirección por separado', () => {
+  const lr = (h, n, r) => calcLRScore(HYPOTHESES[h], { [HYPOTHESES[h].tests.findIndex(t => t.name.startsWith(n))]: r }).totalLR;
+  assert.ok(Math.abs(lr('h2', 'Arco doloroso', 'pos') - 2.25) < 0.001);
+  assert.equal(lr('h2', 'Arco doloroso', 'neg'), 1);
+  assert.equal(lr('h2', 'Test de Hawkins', 'pos'), 1);
+  assert.ok(Math.abs(lr('h2', 'Test de Hawkins', 'neg') - 0.35) < 0.001);
+  assert.ok(Math.abs(lr('h2', 'Test de Neer', 'neg') - 0.47) < 0.001);
+  assert.ok(Math.abs(lr('h4', 'Test de Aprehensión', 'pos') - 17.21) < 0.001);
+  assert.ok(Math.abs(lr('h4', 'Test de Aprehensión', 'neg') - 0.39) < 0.001);
+  assert.equal(lr('h4', 'Test de Recolocación', 'pos'), 1);   // IC de las dos LR con el 1
+  assert.equal(lr('h4', 'Test de Recolocación', 'neg'), 1);
+  assert.equal(lr('h4', 'Test de Liberación', 'pos'), 1);     // IC de la LR+ con el 1
+  assert.ok(Math.abs(lr('h4', 'Test de Liberación', 'neg') - 0.25) < 0.001);
+});
+
 test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan', () => {
   // Clusters A/B del manguito, palpación AC, Paxinos + O'Brien: cifras solo en el criterio
   ['h1', 'h2', 'h3', 'h4', 'h5', 'h7', 'h10', 'h11'].forEach(id => {
