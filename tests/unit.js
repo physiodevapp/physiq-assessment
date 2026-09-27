@@ -740,19 +740,21 @@ test('cadera: fractura de estrés del cuello femoral, artritis séptica y torsi�
   });
 });
 
-test('cadera: ningún test con S 100 % multiplica por una LR− de 0, y Thomas sin estudio primario no puntúa', () => {
+test('cadera: ningún test multiplica por una LR− de 0, y Thomas (evidencia de rotura labral) puntúa en labrum, no en FAIS', () => {
   Object.values(HYPOTHESES).filter(h => h.region === 'cadera').forEach(h => {
     const r = Object.fromEntries(h.tests.map((_, i) => [i, 'neg']));
     assert.ok(calcLRScore(h, r).totalLR > 0, h.id);
   });
   const ca2 = HYPOTHESES.ca2, iThomas = ca2.tests.findIndex(t => t.name === 'Test de Thomas');
   assert.equal(calcLRScore(ca2, { [iThomas]: 'pos' }).totalLR, 1);
+  const ca3 = HYPOTHESES.ca3, jThomas = ca3.tests.findIndex(t => t.name === 'Test de Thomas');
+  assert.ok(Math.abs(calcLRScore(ca3, { [jThomas]: 'pos' }).totalLR - 11.1) < 0.001);
 });
 
 test('ca1: los criterios ACR absorben el criterio combinado y la RI disminuida', () => {
   const h = HYPOTHESES.ca1, iAcr = h.tests.findIndex(t => t.name.startsWith('Criterios clínicos ACR'));
   assert.deepEqual(h.tests[iAcr].absorbe, [0, 2]);
-  assert.ok(Math.abs(calcLRScore(h, { 0: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 3.4) < 0.001);
+  assert.ok(Math.abs(calcLRScore(h, { 0: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 0.86 / 0.25) < 0.001);
 });
 
 // ── data/ por regiones ────────────────────────────────────────────────────────
