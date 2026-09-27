@@ -801,8 +801,9 @@ test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y de
   assert.ok(Math.abs(calcLRScore(ro2, { [iTrau]: 'pos', [iPalp]: 'pos' }).totalLR - 8.9) < 0.001);
   const ro1 = HYPOTHESES.ro1, iAcr = ro1.tests.findIndex(t => t.name === 'Criterios clínicos del ACR');
   assert.ok(Math.abs(calcLRScore(ro1, { 0: 'pos', 1: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 0.95 / 0.31) < 0.01);
-  // Plica: LR calculadas de S/E de Kim 2007 (el artículo no publica LR)
-  assert.ok(Math.abs(calcLRScore(HYPOTHESES.ro17, { 0: 'pos' }).totalLR - 0.895 / 0.113) < 0.01);
+  // Plica: la E de Kim 2007 sale solo de los controles con dolor lateral → hallazgo, no puntúa
+  assert.equal(calcLRScore(HYPOTHESES.ro17, { 0: 'pos' }).totalLR, 1);
+  assert.equal(calcLRScore(HYPOTHESES.ro17, { 0: 'neg' }).totalLR, 1);
 });
 
 // ── data/ por regiones ────────────────────────────────────────────────────────
