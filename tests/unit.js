@@ -784,6 +784,27 @@ test('cervical: el FRT puntúa solo positivo (un negativo no descarta una cervic
   assert.equal(calcLRScore(ce4, { [iFrt]: 'neg' }).totalLR, 1);
 });
 
+test('rodilla: bursa séptica, aparato extensor, luxación y neurovascular son urgencias', () => {
+  const qs = SYSTEMIC_SCREENING.rodilla.sistemas.flatMap(s => s.preguntas);
+  ['r1', 'r_v2', 'r_i3', 'ro_t2', 'ro_t3', 'ro_t4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+});
+
+test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y descarta por separado', () => {
+  const ro4 = HYPOTHESES.ro4, iConf = ro4.tests.findIndex(t => t.name.startsWith('Confirmar')),
+    iDesc = ro4.tests.findIndex(t => t.name.startsWith('Descartar'));
+  assert.ok(Math.abs(calcLRScore(ro4, { [iConf]: 'pos' }).totalLR - 17.5) < 0.001);
+  assert.equal(calcLRScore(ro4, { [iConf]: 'neg' }).totalLR, 1);   // sin LR− publicada
+  assert.ok(Math.abs(calcLRScore(ro4, { [iDesc]: 'neg' }).totalLR - 0.08) < 0.001);
+  assert.equal(calcLRScore(ro4, { [iDesc]: 'pos' }).totalLR, 1);   // sin LR+ publicada
+  const ro2 = HYPOTHESES.ro2, iTrau = ro2.tests.findIndex(t => t.name.startsWith('Combinación traumática')),
+    iPalp = ro2.tests.findIndex(t => t.name.startsWith('Sensibilidad a la palpación'));
+  assert.ok(Math.abs(calcLRScore(ro2, { [iTrau]: 'pos', [iPalp]: 'pos' }).totalLR - 8.9) < 0.001);
+  const ro1 = HYPOTHESES.ro1, iAcr = ro1.tests.findIndex(t => t.name === 'Criterios clínicos del ACR');
+  assert.ok(Math.abs(calcLRScore(ro1, { 0: 'pos', 1: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 0.95 / 0.31) < 0.01);
+  // Plica: cifras de la tarjeta sin verificar → no puntúa
+  assert.equal(calcLRScore(HYPOTHESES.ro17, { 0: 'pos' }).totalLR, 1);
+});
+
 // ── data/ por regiones ────────────────────────────────────────────────────────
 console.log('\ndata/ por regiones');
 const REGION_MODS = {};
