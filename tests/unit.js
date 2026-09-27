@@ -10,7 +10,7 @@ import './dom-shim.mjs';
 // (e.g. app.js's _initHubIntegration() call).
 const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES } = await import('../data.js');
 const { calcLRScore, parseLR } = await import('../phase4b.js');
-const { buildPhysiQPayload, getSistemicoAffirmativeTexts } = await import('../app.js');
+const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio } = await import('../app.js');
 const { state } = await import('../state.js');
 const { rebuildHypotheses, pruneTreeFrom, resolveOptionTargets } = await import('../phase4.js');
 
@@ -639,6 +639,7 @@ const FP_REGIONES = {};
 for (const r of fpMod.REGIONES_CON_FORMULARIO) FP_REGIONES[r] = (await import(`../formularios/${r}.js`)).default;
 const FP_TIPOS = ['unica', 'multi', 'escala', 'matriz', 'texto'];
 await fpMod.cargarEsquemaRegion('lumbar');   // test() es síncrono: precargar aquí
+await precargarFormularioPrevio();              // app.js carga formulario.js con import() dinámico
 
 function fpItems(esq) { return esq.secciones.flatMap(s => s.items); }
 
@@ -652,6 +653,10 @@ for (const esq of [FP_COMUN, ...Object.values(FP_REGIONES)]) {
       if (it.tipo === 'unica' || it.tipo === 'multi') assert.ok(it.opciones?.length, `${it.id}: sin opciones`);
       if (it.tipo === 'matriz') assert.ok(it.filas?.length && it.opciones?.length, `${it.id}: matriz incompleta`);
       if (it.detalle) assert.ok(it.opciones.includes(it.detalle.opcion), `${it.id}: detalle.opcion`);
+      if (it.informe) {
+        assert.ok(typeof it.informe === 'string' && it.informe.trim(), `${it.id}: informe vacío`);
+        assert.notEqual(it.tipo, 'matriz', `${it.id}: informe en matriz`);
+      }
       if (it.mostrarSi) {
         const ref = items.find(x => x.id === it.mostrarSi.id);
         assert.ok(ref, `${it.id}: mostrarSi → ${it.mostrarSi.id}`);
@@ -691,6 +696,41 @@ test('resumen y pistas: solo respuestas visibles, con detalle y filas de matriz'
   const p = fpMod.pistasPaso('lu_step2');
   assert.deepEqual(p, [{ q: 'Caminando', a: 'Sí' }]);
   assert.deepEqual(fpMod.pistasPaso('lu_step3').map(x => x.a), ['Poco a poco', 'Sí']);
+});
+
+test('informe: antecedentes marcados; «prefiero comentarlo en persona» no existe en PhysiQ', () => {
+  const comun = fpItems(FP_COMUN);
+  assert.ok(!comun.some(i => i.id === 'en_persona'), 'en_persona se quitó a propósito (ver cabecera de formularios/comun.js)');
+  assert.deepEqual(comun.filter(i => i.antecedente).map(i => i.id), ['enfermedades', 'operaciones', 'medicacion']);
+  comun.filter(i => i.antecedente).forEach(i => assert.ok(i.informe, i.id));
+});
+
+test('informe: solo lo marcado, con su etiqueta, sin «No sabría decir» y actividades unidas', () => {
+  state.region = 'lumbar';
+  state.formularioPrevio = {
+    comun: {
+      inicio: 'Poco a poco', evolucion: 'A peor', despierta: 'ns',
+      actividad_1: 'Conducir', actividad_2: 'Dormir', probado: ['Reposo', 'Medicación'],
+      medicacion: 'Ibuprofeno 600', en_persona: ['Hay algo relacionado con esta molestia que prefiero comentarle en persona.'],
+    },
+    regiones: { lumbar: { pierna_hasta: 'Hasta la rodilla', pierna_lado: 'Derecha', cambia_lado: 'Sí', empeora: { caminando: 'Sí' } } },
+  };
+  const inf = fpMod.informeFormularioPrevio();
+  assert.deepEqual(inf.historia, [
+    { q: 'Evolución desde el inicio', a: 'A peor' },
+    { q: 'Actividades limitadas', a: 'Conducir; Dormir' },
+    { q: 'Tratamientos ya probados', a: 'Reposo, Medicación' },
+    { q: 'Dolor irradiado a la pierna', a: 'Hasta la rodilla' },
+    { q: 'Pierna afectada', a: 'Derecha' },
+  ]);
+  assert.deepEqual(inf.antecedentes, [{ q: 'Medicación actual', a: 'Ibuprofeno 600' }]);
+  const txt = buildInformeFisioterapiaText();
+  assert.ok(txt.includes('SEGÚN REFIERE EL PACIENTE\n  · Evolución desde el inicio: A peor'), txt);
+  assert.ok(txt.includes('ANTECEDENTES REFERIDOS POR EL PACIENTE\n  · Medicación actual: Ibuprofeno 600'));
+  assert.ok(!txt.includes('en persona'));
+  assert.ok(!fpMod.resumenFormularioPrevio().some(x => x.a.includes('en persona')), 'respuesta antigua de en_persona');
+  state.formularioPrevio = { comun: {}, regiones: {} };
+  assert.ok(!buildInformeFisioterapiaText().includes('SEGÚN REFIERE'), 'sin respuestas no sale la sección');
 });
 
 test('payload lleva fp con el resumen del formulario', () => {
