@@ -1697,7 +1697,7 @@ export const HYPOTHESES = {
       fuente: 'Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6)'
     },
     tests: [
-      { name: 'Centralización con movimientos repetidos', sn: null, sp: null, lr_pos: '2.8', lr_neg: null, criterio: 'Desaparecen los síntomas distales con movimientos repetidos al final del rango. Que no centralice no descarta el origen discal. La especificidad baja con discapacidad grave o malestar psicológico.', fuente: 'Hancock 2007 (revisión sistemática, IC 95 %: 1,4–5,3; referencia: discografía)' },
+      { name: 'Centralización con movimientos repetidos', sn: null, sp: null, lr_pos: '3.06', lr_neg: '0.66', criterio: 'Desaparecen los síntomas distales con movimientos repetidos al final del rango. Que no centralice no descarta el origen discal. La especificidad baja con discapacidad grave o malestar psicológico.', fuente: 'Han 2023 (eClinicalMedicine, revisión sistemática, 4 estudios; LR+ IC 95 %: 1,44–6,50; referencia: discografía). Antes: Hancock 2007, LR+ 2,8' },
       { name: 'Preferencia direccional', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Movimientos repetidos al final del rango o posturas mantenidas que alivian de forma duradera o aumentan la movilidad.' },
       { name: 'Observación: espalda plana o shift lateral', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Pérdida de lordosis o desviación lateral del tronco.' }
     ]
@@ -1713,7 +1713,7 @@ export const HYPOTHESES = {
       fuente: 'Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6)'
     },
     tests: [
-      { name: 'Dolor en extensión, inclinación o rotación hacia el lado del dolor', sn: null, sp: null, lr_pos: '1.29', lr_neg: null, criterio: 'Criterios clínicos tipo Revel. Ningún test clínico ha resultado informativo para el origen facetario.', fuente: 'Laslett 2006 (no replica a Revel; referencia: doble bloqueo); Hancock 2007' },
+      { name: 'Dolor en extensión, inclinación o rotación hacia el lado del dolor', sn: null, sp: null, lr_pos: '1.29', lr_neg: null, criterio: 'Criterios clínicos tipo Revel. Ningún test clínico ha resultado informativo para el origen facetario: el único test informativo agrupado es la captación facetaria en SPECT (LR+ 2,80, LR− 0,44), una prueba de imagen, no de consulta.', fuente: 'Laslett 2006 (no replica a Revel; referencia: doble bloqueo); Han 2023 (eClinicalMedicine, revisión sistemática: Revel inconsistente, no agrupable)' },
       { name: 'PA unilateral dolorosa o con menos movilidad', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'PA sobre la faceta o la transversa; espasmo ipsilateral.' },
       { name: 'Sin signos radiculares y sin alivio con repetidos', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Ausencia de signos radiculares; espalda en flexión, sin shift; los repetidos no suelen aliviar.' }
     ]
@@ -1729,14 +1729,18 @@ export const HYPOTHESES = {
       fuente: 'Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6)'
     },
     clusters: {
-      laslett: { nombre: 'Cluster de Laslett (2 de 4)', umbralPos: 2, umbralNeg: 1, sn: '88%', sp: '78%', lr_pos: null, lr_neg: null, fuente: 'Laslett 2005 (referencia: bloqueo anestésico intraarticular). Parar al llegar a 2 positivos' }
+      laslett: { nombre: 'Tests de provocación SI (3 de 5)', umbralPos: 3, umbralNeg: 2, sn: null, sp: null, lr_pos: '2.44', lr_neg: '0.31', fuente: 'Han 2023 (eClinicalMedicine, revisión sistemática, 6 estudios; LR+ IC 95 %: 1,50–3,98, LR− 0,21–0,47; referencia: bloqueo anestésico). Misma regla que la tarjeta lumbar: 3 de 5 positivos' }
     },
     tests: [
       { name: 'Distracción', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'laslett', criterio: 'Supino: presión posterolateral sobre ambas EIAS. Positivo: reproduce el dolor conocido.' },
       { name: 'Thrust de muslo', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'laslett', criterio: 'Supino, cadera a 90°: presión axial sobre el fémur. Positivo: reproduce el dolor conocido.' },
       { name: 'Compresión', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'laslett', criterio: 'Decúbito lateral: presión vertical sobre la cresta ilíaca. Positivo: reproduce el dolor conocido.' },
       { name: 'Thrust sacro', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'laslett', criterio: 'Prono: presión PA sobre el centro del sacro. Positivo: reproduce el dolor conocido.' },
-      { name: 'No centraliza con movimientos repetidos', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Descartar antes origen lumbar buscando preferencia direccional. No usar tests de disfunción de movimiento SI (baja fiabilidad y validez).' }
+      { name: 'No centraliza con movimientos repetidos', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Descartar antes origen lumbar buscando preferencia direccional. No usar tests de disfunción de movimiento SI (baja fiabilidad y validez).' },
+      // Añadidos al final (no en medio) para no desplazar los índices de
+      // state.testResults de sesiones ya guardadas.
+      { name: 'Gaenslen', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'laslett', criterio: 'Supino al borde de la camilla: una cadera en flexión máxima y la otra en extensión fuera de la camilla, con presión sobre ambas. Positivo: reproduce el dolor conocido.' },
+      { name: 'Ausencia de dolor lumbar en la línea media', sn: null, sp: null, lr_pos: '2.41', lr_neg: null, criterio: 'Positivo si el paciente no refiere dolor en la línea media lumbar. Su LR− (0,35) tiene un IC 95 % que llega a 1,01: no se usa para descartar.', fuente: 'Han 2023 (eClinicalMedicine, revisión sistemática, 2 estudios; LR+ IC 95 %: 1,89–3,07)' }
     ]
   },
   lu9: {
