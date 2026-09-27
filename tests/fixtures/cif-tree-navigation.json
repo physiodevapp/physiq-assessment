@@ -183,15 +183,62 @@
   },
   "rodilla": {
     "ro_step1": [
+      "ro_step1b",
+      "ro_step1b",
+      "ro_step1b",
+      "ro_step1b",
+      "ro_step1b",
+      "ro_step1b",
+      "ro_step1b",
+      "ro_step2"
+    ],
+    "ro_step1b": [
       "ro_step2",
       "ro_step2",
       "ro_step2"
     ],
     "ro_step2": [
+      "ro_step2b",
+      "ro_step2b"
+    ],
+    "ro_step2b": [
+      "ro_step2c",
+      "ro_step2c",
+      "ro_step2c"
+    ],
+    "ro_step2c": [
+      "ro_step3",
       "ro_step3",
       "ro_step3"
     ],
     "ro_step3": [
+      "ro_step4",
+      "ro_step4",
+      "ro_step4",
+      "ro_step4",
+      "ro_step4"
+    ],
+    "ro_step4": [
+      "ro_step5",
+      "ro_step5",
+      "ro_step5",
+      "ro_step5",
+      "ro_step5",
+      "ro_step5"
+    ],
+    "ro_step5": [
+      "ro_step6",
+      "ro_step6",
+      "ro_step6",
+      "ro_step6"
+    ],
+    "ro_step6": [
+      "ro_step7",
+      "ro_step7",
+      "ro_step7",
+      "ro_step7"
+    ],
+    "ro_step7": [
       null,
       null,
       null,
