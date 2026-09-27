@@ -732,6 +732,30 @@ test('lu8: la regla SI es 3 de 5 tests de provocación (como la tarjeta lumbar)'
   assert.ok(Math.abs(calcLRScore(h, r).totalLR - 2.44) < 0.001);
 });
 
+// ── data/ por regiones ────────────────────────────────────────────────────────
+console.log('\ndata/ por regiones');
+const REGION_MODS = {};
+for (const r of VALID_REGIONS) REGION_MODS[r] = await import(`../data/${r}.js`);
+
+test('cada data/<region>.js exporta screening, tree y hypotheses, y data.js los reúne', () => {
+  for (const [r, m] of Object.entries(REGION_MODS)) {
+    assert.equal(SYSTEMIC_SCREENING[r], m.screening, r);
+    assert.equal(CIF_TREES[r], m.tree, r);
+    Object.keys(m.hypotheses).forEach(id => assert.equal(HYPOTHESES[id], m.hypotheses[id], `${r}/${id}`));
+  }
+});
+
+test('ningún id de hipótesis se repite entre regiones (se sobrescribiría sin aviso)', () => {
+  const total = Object.values(REGION_MODS).reduce((n, m) => n + Object.keys(m.hypotheses).length, 0);
+  assert.equal(Object.keys(HYPOTHESES).length, total);
+});
+
+test('cada hipótesis está en el archivo de su región', () => {
+  for (const [r, m] of Object.entries(REGION_MODS)) {
+    Object.values(m.hypotheses).forEach(h => assert.equal(h.region, r, h.id));
+  }
+});
+
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 if (failed > 0) process.exit(1);

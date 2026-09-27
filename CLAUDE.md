@@ -27,14 +27,14 @@ There are no linting or compilation commands. To run unit tests:
 node tests/unit.js
 ```
 
-**Browser smoke test** (`tests/smoke.mjs`, optional dev tool — not a project dependency, needs Playwright available separately): launches the real app with Playwright and checks the things `tests/unit.js` can't — that every ES module actually loads (200, no broken `import` across `app.js`/`state.js`/`data.js`/`phase4.js`/`phase4b.js`/`lib/session.js`), no console/page errors, and a full click-through of phases 1–5 (one golden path per region — always the first option at each CIF tree step, not every branch — but for **all 6 regions**, since each has its own `CIF_TREES` entry with a different step count/branches) plus the mobile "☰ Fases" button via the real UI. Run it after any change touching module structure, `window` exposure, or navigation — and always after editing `CIF_TREES` for any region, since this is the only check that exercises real rendering (`renderStep`/`checkTreeComplete`/`showTreeComplete`), which `tests/unit.js` cannot (see below):
+**Browser smoke test** (`tests/smoke.mjs`, optional dev tool — not a project dependency, needs Playwright available separately): launches the real app with Playwright and checks the things `tests/unit.js` can't — that every ES module actually loads (200, no broken `import` across `app.js`/`state.js`/`data.js`/`data/*.js`/`phase4.js`/`phase4b.js`/`lib/session.js`), no console/page errors, and a full click-through of phases 1–5 (one golden path per region — always the first option at each CIF tree step, not every branch — but for **all 6 regions**, since each has its own `CIF_TREES` entry with a different step count/branches) plus the mobile "☰ Fases" button via the real UI. Run it after any change touching module structure, `window` exposure, or navigation — and always after editing `CIF_TREES` for any region, since this is the only check that exercises real rendering (`renderStep`/`checkTreeComplete`/`showTreeComplete`), which `tests/unit.js` cannot (see below):
 ```
 npx serve . &
 node tests/smoke.mjs                # add http://localhost:PORT if not :3000
 ```
 If Playwright isn't resolvable via a normal `import`, it also tries `createRequire` so a global-only install (found via `NODE_PATH`) still works — Node's ESM resolver ignores `NODE_PATH` on its own.
 
-**Editing `CIF_TREES` (adding/reorganizing a region's decision tree):** inserting or reordering a `step` inside a region's array can silently change which step an *untouched* option falls through to — `next: null` resolves positionally to `steps[idx+1]` (see the schema comment above `CIF_TREES` in `data.js`). `node tests/unit.js` guards this with a checked-in navigation snapshot (`tests/fixtures/cif-tree-navigation.json`). After editing a tree: run `node tests/unit.js`; if it fails on "CIF tree navigation regression", read the diff and confirm every changed entry is an intended part of your edit, not collateral from reordering `steps[]`; only then run `node tests/gen-cif-snapshot.mjs` to regenerate the fixture (see that file's header), re-run `node tests/unit.js` to confirm, and commit the regenerated fixture together with the `data.js` change. Full rationale in `MIGRATION_PLAN.md`, Fase C.
+**Editing `CIF_TREES` (adding/reorganizing a region's decision tree):** inserting or reordering a `step` inside a region's array can silently change which step an *untouched* option falls through to — `next: null` resolves positionally to `steps[idx+1]` (see the schema comment above `CIF_TREES` in `data.js`; each region's tree is `export const tree` in `data/<region>.js`). `node tests/unit.js` guards this with a checked-in navigation snapshot (`tests/fixtures/cif-tree-navigation.json`). After editing a tree: run `node tests/unit.js`; if it fails on "CIF tree navigation regression", read the diff and confirm every changed entry is an intended part of your edit, not collateral from reordering `steps[]`; only then run `node tests/gen-cif-snapshot.mjs` to regenerate the fixture (see that file's header), re-run `node tests/unit.js` to confirm, and commit the regenerated fixture together with the `data/<region>.js` change. Full rationale in `MIGRATION_PLAN.md`, Fase C.
 
 ## Commit format
 
@@ -55,7 +55,7 @@ git commit -m "short imperative title" -m "description when needed"
 
 ## File Architecture
 
-Source lives in the project root, plus `lib/` (session IDB helper) and `formularios/` (one form schema per file).
+Source lives in the project root, plus `lib/` (session IDB helper), `data/` (clinical content, one file per region) and `formularios/` (one form schema per file).
 
 | File | Role |
 |------|------|
@@ -65,7 +65,9 @@ Source lives in the project root, plus `lib/` (session IDB helper) and `formular
 | `app.js` | Application logic, navigation, event handlers, UI rendering (phases 1–3, 5) — the module root |
 | `phase4.js` | Phase 4 algorithm: CIF decision tree (`initCIFTree`, `renderStep`, `selectTreeOption`, `pruneTreeFrom`, `rebuildHypotheses`, `checkTreeComplete`, `showTreeComplete`) |
 | `phase4b.js` | Phase 4b algorithm: hypothesis scoring (`buildHypothesisCards`, `setTestResult`, `calcLRScore`, `recalcHypScore`, accordion observer) |
-| `data.js` | All clinical content: screening systems, ICF trees, hypotheses, LR± values |
+| `data.js` | Aggregator: imports `data/<region>.js` and exports `SYSTEMIC_SCREENING`, `CIF_TREES`, `HYPOTHESES` in the same shape as always (no consumer changed), plus the non-regional UI constants (`NRS_*`, `PHASE_DEFS`, `QUICK_PHRASES`, `PHASE_NAV_IDS`) and the schema comments for the three clinical objects |
+| `data/<region>.js` | All clinical content of one region: `export const screening` (phase 2), `tree` (phase 4), `hypotheses` (phase 4b). Adding a region = new file + add it to `REGIONES` in `data.js` (+ `VALID_REGIONS` in `tests/unit.js`, `REGIONS` in `tests/smoke.mjs`) |
+| `data/comun.js` | Cross-region screening systems (`SIS_ENDOCRINO`, `SIS_HEMATOLOGICO`), imported by each region file that uses them — the same object instance is shared, as before the split |
 | `formulario.js` | Formulario previo engine (lo rellena el fisio): renders any schema from `formularios/`, stores answers, builds the summary (`resumenFormularioPrevio`) and the per-step hints for the CIF tree (`pistasPaso`). Loaded by `app.js` with dynamic `import()` only — never statically — so a missing file can't break the app |
 | `formularios/comun.js` | Cara 1 of the pre-visit form (common to every region). Pure data |
 | `formularios/<region>.js` | Cara 2 for one region (today only `lumbar.js`). Pure data, plus `pistas: { <stepId>: ['c:<id>' \| 'r:<id>' \| 'r:<id>.<fila>'] }` linking answers to that region's `CIF_TREES` steps. When adding one, also add the region to `REGIONES_CON_FORMULARIO` in `formulario.js` (unit tests validate every listed schema and its pistas) |
@@ -183,7 +185,7 @@ There are **no default LRs**: a test with no usable LR never multiplies (the old
 5. With no applicable LR the label is `⚪ Sin LR aplicable · X/Y hallazgos compatibles` (`hyp-neutral`), never "Peso bajo".
 6. `absorbe: [idx]` — when a composite test (e.g. RAPIDH) contributes an LR, the listed component tests (the SLR it contains) stop multiplying, so the same evidence isn't counted twice.
 
-When modifying clinical content, keep `data.js` isolated from logic — this separation allows physiotherapists to review domain content independently. `data.js` is intentionally kept as a single unified file (~1668 lines) even though it covers three distinct domains (`SYSTEMIC_SCREENING`, `CIF_TREES`, `HYPOTHESES`): splitting it would fragment the "single source of clinical content" property without meaningful benefit.
+When modifying clinical content, keep `data/` isolated from logic — this separation allows physiotherapists to review domain content independently. The content used to live in a single `data.js`; it was split **by region** (not by domain) once each region started getting its own guía-de-consulta integration: one file per region keeps diffs and reviews scoped to that region, avoids merge conflicts between sessions working on different regions, and mirrors `formularios/<region>.js`. The split was a pure move (verified by comparing `JSON.stringify` of every `data.js` export before and after: byte-identical). `data.js` still exports the same objects, so code outside `data/` never needs to know about the split. Hypothesis ids are global: a unit test fails if two region files reuse one (`Object.assign` would silently overwrite it). `data/*.js` are static imports — if one is missing from `deploy-to-hub.yml`'s copy step the deployed app breaks entirely, which the smoke test's module check would also catch locally.
 
 ## UI Conventions
 
@@ -311,7 +313,7 @@ Navigation to physiq-report from phase 5 is the hub's responsibility. physiq-ass
 
 ## In-progress migration plan
 
-See `MIGRATION_PLAN.md` for a living checklist covering the ES modules migration (Fase A) and mobile-friendly text input improvements (Fase B), meant to be completed incrementally across sessions. Check it for current progress before starting related work; update its checkboxes and notes as steps are completed.
+See `MIGRATION_PLAN.md` for a living checklist covering the ES modules migration (Fase A), mobile-friendly text input improvements (Fase B), the phase 4/4b engine isolation (Fase C) and **Fase D — integrating guía de consulta region by region** (step-by-step procedure + per-region status; lumbar is the reference implementation). One region per session: start any region work by reading Fase D. Check it for current progress before starting related work; update its checkboxes and notes as steps are completed.
 
 ## Sibling repos
 

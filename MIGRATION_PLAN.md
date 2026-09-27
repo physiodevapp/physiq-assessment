@@ -82,3 +82,42 @@ Objetivo: que añadir o editar hipótesis/tests/pasos del árbol en `data.js` se
 - **`tests/smoke.mjs` ahora recorre las 6 regiones (hombro, cadera, cervical, lumbar, rodilla, codo), no solo hombro** — antes solo se ejercitaba en un navegador real el árbol de una región; las otras 5 (cada una con su propio número de pasos y ramas en `CIF_TREES`) no tenían ninguna cobertura de renderizado. El bucle de fases 1-5 ahora se repite por región (recarga la página entre una y otra — como no se rellena `#patientName`, `saveSession()` nunca escribe en IDB, así que la recarga siempre arranca en fase 1 limpia, sin nada que restaurar) y solo el fallo de módulos/consola y el botón "☰ Fases" se comprueban una vez. Verificado: las 6 regiones completan el árbol (hombro 5 pasos/5 hipótesis, cadera 5/5, cervical 5/5, lumbar 4/3, rodilla 3/3, codo 5/5 — coincide con `CIF_TREES[r].steps.length` de cada una) y llegan a fase 5, 0 errores de consola.
 - **Para una futura sesión de Claude a la que se le pida reorganizar el árbol completo de una región** (data.js con ramas/árboles nuevos, a reorganizar): el flujo es (1) editar `CIF_TREES[region]`; (2) `node tests/unit.js` — si falla en "CIF tree navigation regression", leer el diff entre lo calculado y `tests/fixtures/cif-tree-navigation.json` y confirmar que cada entrada que cambió es una consecuencia querida de la reorganización, no colateral de reordenar `steps[]`; (3) solo entonces `node tests/gen-cif-snapshot.mjs` para regenerar el fixture; (4) `node tests/unit.js` otra vez para confirmar que el nuevo snapshot es el esperado; (5) `node tests/smoke.mjs` si hay Playwright disponible — cubre las 6 regiones en un navegador real, no solo la reorganizada. Commitear el fixture regenerado junto con el cambio de `data.js`.
 - La validación de integridad de `CIF_TREES` sigue siendo la pieza que atrapa los errores tipográficos (un `next` mal escrito, un id de hipótesis mal escrito o copiado de otra región); el snapshot cubre el riesgo distinto de "los ids son válidos pero el destino cambió sin querer".
+
+---
+
+## Fase D — Integrar guía de consulta región a región
+
+Objetivo: llevar a cada región de PhysiQ lo que ya se hizo con lumbar (PRs #81–#83): el contenido de la **tarjeta de consulta** y el **formulario previo** del repo `physiodevapp/guia-de-consulta`, y LR con fuente citada. **Una región por sesión/chat.** Lumbar es la implementación de referencia: ante cualquier duda de forma, copiar lo que hace `data/lumbar.js` y `formularios/lumbar.js`.
+
+### Reglas que no se negocian
+- **Se complementa, no se sustituye**: los pasos, hipótesis y tests que ya existen se quedan (se pueden corregir cifras con fuente). Lo de la tarjeta se añade.
+- **Nunca inventar cifras ni dosis.** Una LR sin fuente verificable no entra (el test queda como hallazgo clínico, `lr_pos: null`). Una hipótesis nueva sin dosis en la guía lleva `dosis: ''` (la fase 5 dice «a criterio del clínico»). Lo que no se haya podido verificar se lista como pendiente en la PR y en las notas de abajo — nunca se rellena «a ojo».
+- **Tests nuevos de una hipótesis existente, siempre al final de `tests[]`**: `state.testResults` guarda resultados por índice, insertar en medio desplaza los resultados de sesiones guardadas.
+- **Ids de hipótesis globales y con el prefijo de la región** (`h`, `ca`, `ce`, `lu`, `ro`, `co`), siguiendo la numeración existente.
+- Texto clínico de la tarjeta/formulario: **literal**. Quitar solo referencias que en PhysiQ no apunten a nada («(anexo)», «ver tabla de abajo»).
+- La búsqueda de LR: preferir revisiones sistemáticas recientes (p. ej. Han 2023 para lumbar) sobre estudios únicos; si el proxy de la sesión bloquea el texto completo, pedir el PDF al usuario en vez de dar la cifra por buena desde un resumen de terceros.
+
+### Pasos (en este orden)
+1. **Leer** en guía-de-consulta `data/tarjeta_<región>.js` (URGENCIA, BANDERAS, BISAGRA, ARBOL, SINDROMES, ORIENTATIVA, PRONOSTICO), `data/spa_<región>.js` (qué síndrome sale de qué nodo) y `data/formulario_<región>.js` (+ la cara 1 común en `tools/plantilla_formularios.js`, ya transcrita en `formularios/comun.js`). Comparar con `data/<región>.js` de PhysiQ y proponer al usuario el mapeo (qué pasos/hipótesis se añaden, qué se corrige) **antes** de tocar nada.
+2. **Fase 2 — `screening` en `data/<región>.js`**: `urgencia` de la región (ya hecho en cadera, cervical, rodilla, lumbar), `urgencia: '…'` en las preguntas cuya respuesta SÍ sea derivación urgente, y las banderas rojas de la tarjeta que falten (como pregunta nueva o en `banderasRojas` de su sistema; sistema nuevo si no encaja en ninguno, como `l_vascular`).
+3. **Fase 4 — `tree`**: pasos/opciones nuevos (opción «ninguno» donde un paso obligue a elegir algo que no aplica). Luego `node tests/unit.js` → si falla «CIF tree navigation regression», revisar el diff, confirmar que cada cambio es querido y regenerar con `node tests/gen-cif-snapshot.mjs`.
+4. **Fase 4b — `hypotheses`**: hipótesis nuevas (una por síndrome de la tarjeta que no exista), `pronostico` literal de la tarjeta, y para cada test: `sn`/`sp`/`lr_pos`/`lr_neg` con `fuente`, `cluster` (+ `hyp.clusters`) cuando la evidencia es de una regla y no de tests sueltos, `absorbe` cuando un test compuesto contiene otro, `tipo: 'pronostico'` para reglas de respuesta al tratamiento. Reglas de puntuación: CLAUDE.md, «Phase 4b scoring».
+5. **Formulario — `formularios/<región>.js`**: cara 2 literal, `pistas` hacia los pasos del árbol de la región, y añadir la región a `REGIONES_CON_FORMULARIO` en `formulario.js`.
+6. **Verificar**: `node tests/unit.js`, `node tests/smoke.mjs` (servidor en :3000; en la nube, `NODE_PATH=/opt/node22/lib/node_modules`), y recorrer a mano en Playwright a 390 px la fase 2 (urgencia), el árbol completo de la región, la 4b de las hipótesis nuevas y el formulario.
+7. **PR** con: qué se añadió, fuentes de cada LR nueva, lo que queda pendiente y los avisos (p. ej. puntuaciones que cambian).
+
+### Estado por región
+| Región | Guía de consulta | Urgencia fase 2 | Árbol + hipótesis + LR | Formulario | Notas |
+|---|---|---|---|---|---|
+| Lumbar | tarjeta + formulario | [x] | [x] | [x] | Referencia. Pendiente clínico: dosis de `lu5`–`lu9` |
+| Cadera | tarjeta + formulario | [x] | [ ] | [ ] | Tarjeta con cara C y 9 síndromes; varias entidades solo en ORIENTATIVA |
+| Cervical | tarjeta + formulario | [x] | [ ] | [ ] | ORIENTATIVA = matriz de cefaleas; «vestibular» sin ficha |
+| Rodilla | tarjeta + formulario | [x] | [ ] | [ ] | La más grande (13 síndromes + 8 entidades); ya marcadas `r1` y `r_v2` como urgencia |
+| Hombro | tarjeta + formulario (sin URGENCIA) | — | [ ] | [ ] | Bisagra = RE pasiva |
+| Codo | **sin tarjeta** | — | solo auditar LR | — | No hay contenido de guía que integrar |
+| Tobillo y pie | tarjeta + formulario | — | — | — | No existe como región en PhysiQ: fuera de alcance salvo que se decida crearla |
+
+Orden sugerido: cadera → cervical → rodilla → hombro → auditoría de LR de codo.
+
+**Notas / decisiones:**
+- `data.js` se dividió en `data/<región>.js` + `data/comun.js` antes de empezar esta fase, para que cada región sea un archivo propio (diffs y revisiones acotados, sin conflictos entre sesiones). `data.js` sigue exportando lo mismo; comprobado byte a byte.
