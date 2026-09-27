@@ -323,9 +323,11 @@
   .vitals-row:last-child { margin-bottom: 0; }
   .vitals-row .form-group { flex: 1; margin-bottom: 0; }
   #imcCalculado { color: var(--text2); }
-  #imcCalculado.imc-green { color: var(--green); border-color: rgba(56,217,169,0.4); background: rgba(56,217,169,0.06); }
-  #imcCalculado.imc-orange { color: var(--orange); border-color: rgba(255,159,67,0.4); background: rgba(255,159,67,0.06); }
-  #imcCalculado.imc-red { color: var(--red); border-color: rgba(255,107,107,0.4); background: rgba(255,107,107,0.06); }
+  /* Shared by imcCalculado and the raw vitalFc/Fr/Spo2/Tas/Tad inputs — see
+     VITAL_BANDS in app.js for the thresholds behind each color. */
+  .form-input.vital-green { color: var(--green); border-color: rgba(56,217,169,0.4); background: rgba(56,217,169,0.06); }
+  .form-input.vital-orange { color: var(--orange); border-color: rgba(255,159,67,0.4); background: rgba(255,159,67,0.06); }
+  .form-input.vital-red { color: var(--red); border-color: rgba(255,107,107,0.4); background: rgba(255,107,107,0.06); }
 
   /* Quick-input bar: phrase chips + voice dictation, under free-text fields */
   .quick-input-bar {

@@ -271,9 +271,9 @@ function _softResetApp() {
   if (edadEl) edadEl.value = '';
   ['vitalFc', 'vitalFr', 'vitalSpo2', 'vitalTas', 'vitalTad', 'vitalTalla', 'vitalPeso'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.value = '';
+    if (el) { el.value = ''; el.classList.remove('vital-green', 'vital-orange', 'vital-red'); }
   });
-  updateImcDisplay(); // also strips the imc-green/orange/red color class
+  updateImcDisplay(); // also strips imcCalculado's own vital-green/orange/red class
   document.querySelectorAll('#phase1 .option-btn').forEach(b => b.classList.remove('selected'));
   ['banderaAlert', 'psicoToolSuggest', 'psicoAltoQuestions', 'psicoRecomendacion'].forEach(id => {
     const el = document.getElementById(id);
@@ -903,14 +903,31 @@ function calcImc(peso, talla) {
   return peso / (m * m);
 }
 
-// WHO categories collapsed into the app's 3-color convention (green =
-// normal, orange = caution, red = alert) — bajo peso and sobrepeso both
-// read as "caution" rather than inventing a 4th color.
-function imcColorClass(imc) {
-  if (imc < 18.5) return 'imc-orange';
-  if (imc < 25) return 'imc-green';
-  if (imc < 30) return 'imc-orange';
-  return 'imc-red';
+// Rough resting-adult reference ranges, for visual flagging only (none of
+// this feeds an algorithm) — below redLo or above redHi is red (alert),
+// within greenLo..greenHi is green (normal), the two bands in between are
+// orange (caution). Same 3-color convention as the rest of the app.
+const VITAL_BANDS = {
+  imc:  { redLo: 0,  greenLo: 18.5, greenHi: 24.9, redHi: 30 },
+  fc:   { redLo: 50, greenLo: 60,   greenHi: 100,  redHi: 120 },
+  fr:   { redLo: 8,  greenLo: 12,   greenHi: 20,   redHi: 24 },
+  spo2: { redLo: 90, greenLo: 95,   greenHi: 100,  redHi: 100 },
+  tas:  { redLo: 70, greenLo: 90,   greenHi: 139,  redHi: 180 },
+  tad:  { redLo: 40, greenLo: 60,   greenHi: 89,   redHi: 110 },
+};
+const VITAL_INPUT_IDS = { fc: 'vitalFc', fr: 'vitalFr', spo2: 'vitalSpo2', tas: 'vitalTas', tad: 'vitalTad' };
+
+function bandColorClass(value, bands) {
+  if (value < bands.redLo || value > bands.redHi) return 'vital-red';
+  if (value < bands.greenLo || value > bands.greenHi) return 'vital-orange';
+  return 'vital-green';
+}
+
+function applyVitalColor(el, value, field) {
+  if (!el) return;
+  el.classList.remove('vital-green', 'vital-orange', 'vital-red');
+  const bands = VITAL_BANDS[field];
+  if (value !== null && bands) el.classList.add(bandColorClass(value, bands));
 }
 
 function updateImcDisplay() {
@@ -918,8 +935,7 @@ function updateImcDisplay() {
   if (!el) return;
   const imc = calcImc(state.antropometria.peso, state.antropometria.talla);
   el.value = imc !== null ? imc.toFixed(1) : '';
-  el.classList.remove('imc-green', 'imc-orange', 'imc-red');
-  if (imc !== null) el.classList.add(imcColorClass(imc));
+  applyVitalColor(el, imc, 'imc');
 }
 
 // Shared handler for the optional Fase 1 vitals/anthropometry fields
@@ -928,8 +944,10 @@ function updateImcDisplay() {
 // repeating updateEdadPaciente's body seven times over.
 function updateVital(group, field, value) {
   const num = value === '' ? null : parseFloat(value);
-  state[group][field] = (num === null || isNaN(num)) ? null : num;
+  const val = (num === null || isNaN(num)) ? null : num;
+  state[group][field] = val;
   if (group === 'antropometria') updateImcDisplay();
+  if (VITAL_INPUT_IDS[field]) applyVitalColor(document.getElementById(VITAL_INPUT_IDS[field]), val, field);
   saveSession();
 }
 
@@ -1921,10 +1939,11 @@ function _restoreSessionDOM() {
   syncQuickPhraseChips('motivoConsulta');
   const edadEl = document.getElementById('edadPaciente');
   if (edadEl) edadEl.value = state.edadPaciente ?? '';
-  const vitalIds = { fc: 'vitalFc', fr: 'vitalFr', spo2: 'vitalSpo2', tas: 'vitalTas', tad: 'vitalTad' };
-  Object.entries(vitalIds).forEach(([field, id]) => {
+  Object.entries(VITAL_INPUT_IDS).forEach(([field, id]) => {
     const el = document.getElementById(id);
-    if (el) el.value = state.signosVitales[field] ?? '';
+    const val = state.signosVitales[field] ?? null;
+    if (el) el.value = val ?? '';
+    applyVitalColor(el, val, field);
   });
   const tallaEl = document.getElementById('vitalTalla');
   if (tallaEl) tallaEl.value = state.antropometria.talla ?? '';
