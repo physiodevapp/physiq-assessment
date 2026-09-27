@@ -630,6 +630,75 @@ test('no duplicate pregunta IDs within a region', () => {
   assert.deepEqual(dupes, []);
 });
 
+// ── Formulario previo: esquemas (formularios/*.js) y lectura (formulario.js) ──
+console.log('\nformulario previo');
+
+const { default: FP_COMUN } = await import('../formularios/comun.js');
+const fpMod = await import('../formulario.js');
+const FP_REGIONES = {};
+for (const r of fpMod.REGIONES_CON_FORMULARIO) FP_REGIONES[r] = (await import(`../formularios/${r}.js`)).default;
+const FP_TIPOS = ['unica', 'multi', 'escala', 'matriz', 'texto'];
+await fpMod.cargarEsquemaRegion('lumbar');   // test() es síncrono: precargar aquí
+
+function fpItems(esq) { return esq.secciones.flatMap(s => s.items); }
+
+for (const esq of [FP_COMUN, ...Object.values(FP_REGIONES)]) {
+  test(`formulario ${esq.id}: ids únicos, tipos válidos, opciones y mostrarSi coherentes`, () => {
+    const items = fpItems(esq);
+    const ids = items.map(i => i.id);
+    assert.equal(new Set(ids).size, ids.length, 'ids duplicados');
+    items.forEach(it => {
+      assert.ok(FP_TIPOS.includes(it.tipo), `${it.id}: tipo ${it.tipo}`);
+      if (it.tipo === 'unica' || it.tipo === 'multi') assert.ok(it.opciones?.length, `${it.id}: sin opciones`);
+      if (it.tipo === 'matriz') assert.ok(it.filas?.length && it.opciones?.length, `${it.id}: matriz incompleta`);
+      if (it.detalle) assert.ok(it.opciones.includes(it.detalle.opcion), `${it.id}: detalle.opcion`);
+      if (it.mostrarSi) {
+        const ref = items.find(x => x.id === it.mostrarSi.id);
+        assert.ok(ref, `${it.id}: mostrarSi → ${it.mostrarSi.id}`);
+        it.mostrarSi.valores.forEach(v => assert.ok(ref.opciones.includes(v), `${it.id}: mostrarSi valor ${v}`));
+      }
+    });
+  });
+}
+
+for (const [region, esq] of Object.entries(FP_REGIONES)) {
+  test(`formulario ${region}: cada pista apunta a un paso del árbol y a una pregunta existente`, () => {
+    const pasos = new Set(CIF_TREES[region].steps.map(s => s.id));
+    for (const [paso, refs] of Object.entries(esq.pistas || {})) {
+      assert.ok(pasos.has(paso), `paso ${paso} no existe en CIF_TREES.${region}`);
+      refs.forEach(ref => {
+        const [pref, rest] = ref.split(':');
+        const [id, fila] = rest.split('.');
+        const it = fpItems(pref === 'c' ? FP_COMUN : esq).find(x => x.id === id);
+        assert.ok(it, `${ref}: pregunta inexistente`);
+        if (fila) assert.ok(it.filas?.some(f => f.id === fila), `${ref}: fila inexistente`);
+      });
+    }
+  });
+}
+
+test('resumen y pistas: solo respuestas visibles, con detalle y filas de matriz', () => {
+  state.region = 'lumbar';
+  state.formularioPrevio = {
+    comun: { inicio: 'Poco a poco', primera_vez: 'Sí', episodio_previo: 'oculto: primera_vez ≠ No' },
+    regiones: { lumbar: { pierna_hasta: 'Por debajo de la rodilla', empeora: { caminando: 'Sí' }, postura_alivio: 'Sí', postura_alivio__detalle: 'Sentado inclinado' } },
+  };
+  const r = fpMod.resumenFormularioPrevio();
+  assert.ok(r.some(x => x.a === 'Poco a poco'));
+  assert.ok(!r.some(x => x.a.startsWith('oculto')), 'mostrarSi no respetado');
+  assert.ok(r.some(x => x.a === 'Sí — Sentado inclinado'));
+  assert.ok(r.some(x => x.a === 'Caminando: Sí'));
+  const p = fpMod.pistasPaso('lu_step2');
+  assert.deepEqual(p, [{ q: 'Caminando', a: 'Sí' }]);
+  assert.deepEqual(fpMod.pistasPaso('lu_step3').map(x => x.a), ['Poco a poco', 'Sí']);
+});
+
+test('payload lleva fp con el resumen del formulario', () => {
+  const pl = buildPhysiQPayload();
+  assert.ok(Array.isArray(pl.fp));
+  state.formularioPrevio = { comun: {}, regiones: {} };
+});
+
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 if (failed > 0) process.exit(1);
