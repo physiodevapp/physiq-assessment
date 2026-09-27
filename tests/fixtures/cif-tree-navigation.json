@@ -131,10 +131,16 @@
       "h_step2"
     ],
     "h_step2": [
+      "h_step2b",
+      "h_step3"
+    ],
+    "h_step2b": [
+      "h_step3",
       "h_step3",
       "h_step3"
     ],
     "h_step3": [
+      "h_step4",
       "h_step4",
       "h_step4",
       "h_step4",
