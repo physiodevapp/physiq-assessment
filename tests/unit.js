@@ -303,8 +303,8 @@ console.log('\nHYPOTHESES data integrity');
 
 const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
 
-test('all 64 hypotheses present', () => {
-  assert.equal(Object.keys(HYPOTHESES).length, 64);
+test('all 67 hypotheses present', () => {
+  assert.equal(Object.keys(HYPOTHESES).length, 67);
 });
 
 test('every hypothesis has id, region, name, tests', () => {
@@ -756,6 +756,26 @@ test('ca1: los criterios ACR absorben el criterio combinado y la RI disminuida',
   const h = HYPOTHESES.ca1, iAcr = h.tests.findIndex(t => t.name.startsWith('Criterios clínicos ACR'));
   assert.deepEqual(h.tests[iAcr].absorbe, [0, 2]);
   assert.ok(Math.abs(calcLRScore(h, { 0: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 0.86 / 0.25) < 0.001);
+});
+
+test('cervical: disección, IVB, fractura tras traumatismo y cefalea de alarma son urgencias', () => {
+  const qs = SYSTEMIC_SCREENING.cervical.sistemas.flatMap(s => s.preguntas);
+  ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+  withState({ region: 'cervical', sistemicoAnswers: { cv_ar1: 'NO', cv_ar2: 'SI', cv_ar3: 'NO', cv_ar4: 'NO' } }, () => {
+    assert.equal(buildPhysiQPayload().ur.length, 1);
+  });
+});
+
+test('cervical: ningún test multiplica por una LR− de 0; el cluster de Jull y el hielo no puntúan', () => {
+  Object.values(HYPOTHESES).filter(h => h.region === 'cervical').forEach(h => {
+    const r = Object.fromEntries(h.tests.map((_, i) => [i, 'neg']));
+    assert.ok(calcLRScore(h, r).totalLR > 0, h.id);
+  });
+  const ce4 = HYPOTHESES.ce4, iCluster = ce4.tests.findIndex(t => t.name.startsWith('Cluster'));
+  assert.equal(calcLRScore(ce4, { [iCluster]: 'pos' }).totalLR, 1);
+  const ce5 = HYPOTHESES.ce5, iHielo = ce5.tests.findIndex(t => t.name.startsWith('Hielo'));
+  assert.equal(ce5.tests[iHielo].tipo, 'pronostico');
+  assert.equal(calcLRScore(ce5, { [iHielo]: 'pos' }).totalLR, 1);
 });
 
 // ── data/ por regiones ────────────────────────────────────────────────────────

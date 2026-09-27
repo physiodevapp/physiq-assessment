@@ -62,17 +62,36 @@
       "ce_step3"
     ],
     "ce_step3": [
+      "ce_step3b",
+      "ce_step4"
+    ],
+    "ce_step3b": [
+      "ce_step4",
+      "ce_step4",
+      "ce_step4",
       "ce_step4",
       "ce_step4"
     ],
     "ce_step4": [
+      "ce_step4b",
+      "ce_step4b",
+      "ce_step4b",
+      "ce_step4b"
+    ],
+    "ce_step4b": [
       "ce_step5",
       "ce_step5",
       "ce_step5"
     ],
     "ce_step5": [
-      null,
-      null,
+      "ce_step6",
+      "ce_step6",
+      "ce_step6",
+      "ce_step6",
+      "ce_step6",
+      "ce_step6"
+    ],
+    "ce_step6": [
       null,
       null,
       null,
