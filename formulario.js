@@ -428,7 +428,16 @@ export function contarRespuestas() {
 // paso en `esquema.pistas`. Solo recuerdan; nunca responden el paso.
 export function pistasPaso(stepId) {
   const esquema = state.region && _regiones[state.region];
-  const refs = esquema?.pistas?.[stepId];
+  return _pistas(esquema?.pistas?.[stepId]);
+}
+
+// Lo mismo para las tarjetas de la fase 1 (mecanismo, cronologia): la cara
+// común tiene su propio `pistas`, por campo de la fase 1 en vez de por paso.
+export function pistasFase1(campo) {
+  return _pistas(COMUN.pistas?.[campo]);
+}
+
+function _pistas(refs) {
   if (!refs) return [];
   const out = [];
   refs.forEach(ref => {
@@ -450,14 +459,27 @@ export function pistasPaso(stepId) {
   return out;
 }
 
-export function pistasPasoHTML(stepId) {
-  const p = pistasPaso(stepId);
+function _pistasHTML(p) {
   if (!p.length) return '';
   return `<div class="fp-pistas"><div class="fp-pistas-title">📝 Del formulario previo</div>${
     p.map(x => `<div class="fp-pista"><span class="fp-pista-q">${esc(x.q)}</span> <span class="fp-pista-a">${esc(x.a)}</span></div>`).join('')}</div>`;
 }
 
+export function pistasPasoHTML(stepId) {
+  return _pistasHTML(pistasPaso(stepId));
+}
+
+// Pinta las pistas en #fpPistas_<campo> de la fase 1. Va con el contador:
+// ambos se refrescan en cada respuesta, al cerrar, al restaurar y al resetear.
+function _actualizarPistasFase1() {
+  Object.keys(COMUN.pistas || {}).forEach(campo => {
+    const el = document.getElementById(`fpPistas_${campo}`);
+    if (el) el.innerHTML = _pistasHTML(pistasFase1(campo));
+  });
+}
+
 function _actualizarContador() {
+  _actualizarPistasFase1();
   const el = document.getElementById('fpContador');
   if (!el) return;
   const n = contarRespuestas();
