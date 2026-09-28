@@ -317,6 +317,7 @@ function _asegurarDOM() {
         <button type="button" class="fp-tab" data-tab="comun" onclick="fpTab('comun')">General</button>
         <button type="button" class="fp-tab" data-tab="region" id="fpTabRegion" onclick="fpTab('region')">Región</button>
       </div>
+      <div class="fp-literal-nota">Anote las respuestas de texto con las palabras del paciente: se muestran luego como cita.</div>
       <div class="fp-body" id="fpBody"></div>
       <div class="fp-foot"><button type="button" class="btn btn-primary" onclick="cerrarFormularioPrevio()">Hecho</button></div>
     </div>`;
@@ -453,7 +454,12 @@ function _pistas(refs) {
       const f = it.filas.find(x => x.id === fila);
       if (f && v && v[fila]) out.push({ q: f.texto, a: v[fila] });
     } else if (!vacio(v)) {
-      out.push({ q: it.texto, a: textoRespuesta(it, v, resp) });
+      // `cita`: la parte escrita por el fisio con las palabras del paciente
+      // (un ítem texto, o el detalle de una opción); va entre comillas.
+      const det = it.detalle && resp[`${id}__detalle`];
+      const cita = it.tipo === 'texto' ? v
+        : det && (Array.isArray(v) ? v.includes(it.detalle.opcion) : v === it.detalle.opcion) ? det : '';
+      out.push({ q: it.texto, a: textoRespuesta(it, v, resp), ...(cita && { cita }) });
     }
   });
   return out;
@@ -461,8 +467,16 @@ function _pistas(refs) {
 
 function _pistasHTML(p) {
   if (!p.length) return '';
-  return `<div class="fp-pistas"><div class="fp-pistas-title">📝 Del formulario previo</div>${
-    p.map(x => `<div class="fp-pista"><span class="fp-pista-q">${esc(x.q)}</span> <span class="fp-pista-a">${esc(x.a)}</span></div>`).join('')}</div>`;
+  // «Refiere el paciente», como el «SEGÚN REFIERE EL PACIENTE» del 📄 Informe:
+  // la voz del paciente, distinta de la clasificación del fisio de debajo.
+  // textoRespuesta() pone el detalle al final, así que `cita` es el sufijo de `a`.
+  const resp = x => {
+    if (!x.cita) return esc(x.a);
+    const pre = x.a.slice(0, x.a.length - x.cita.length);
+    return `${esc(pre)}<span class="fp-pista-cita">«${esc(x.cita)}»</span>`;
+  };
+  return `<div class="fp-pistas"><div class="fp-pistas-title">📝 Refiere el paciente</div>${
+    p.map(x => `<div class="fp-pista"><span class="fp-pista-q">${esc(x.q)}</span> <span class="fp-pista-a">${resp(x)}</span></div>`).join('')}</div>`;
 }
 
 export function pistasPasoHTML(stepId) {

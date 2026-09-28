@@ -716,6 +716,11 @@ test('pistas fase 1: solo lo respondido y visible, con detalle', () => {
   assert.deepEqual(fpMod.pistasFase1('mecanismo').map(x => x.a), ['Sí — una caída']);
   assert.deepEqual(fpMod.pistasFase1('cronologia').map(x => x.a), ['hace 5 semanas']);
   assert.deepEqual(fpMod.pistasFase1('inexistente'), []);
+  // Solo lo escrito con palabras del paciente va como cita (texto libre o detalle)
+  assert.deepEqual(fpMod.pistasFase1('mecanismo').map(x => x.cita), ['una caída']);
+  assert.deepEqual(fpMod.pistasFase1('cronologia').map(x => x.cita), ['hace 5 semanas']);
+  state.formularioPrevio.comun.inicio = 'De golpe';
+  assert.ok(!fpMod.pistasFase1('mecanismo').find(x => x.a === 'De golpe').cita, 'una opción no es cita');
 });
 
 test('informe: antecedentes marcados; «prefiero comentarlo en persona» no existe en PhysiQ', () => {
