@@ -250,5 +250,99 @@
       null,
       null
     ]
+  },
+  "tobillo_pie": {
+    "tp_step1": [
+      "tp_step2",
+      "tp_step4"
+    ],
+    "tp_step2": [
+      "tp_step3",
+      "tp_step3",
+      "tp_step3",
+      "tp_step3",
+      "tp_step3"
+    ],
+    "tp_step3": [
+      "tp_step4",
+      "tp_step4",
+      "tp_step4",
+      "tp_step4",
+      "tp_step4"
+    ],
+    "tp_step4": [
+      "tp_step5",
+      "tp_step5",
+      "tp_step5",
+      "tp_step5",
+      "tp_step5",
+      "tp_step5",
+      "tp_step5"
+    ],
+    "tp_step5": [
+      "tp_step6",
+      "tp_step6",
+      "tp_step6"
+    ],
+    "tp_step6": [
+      "tp_step7",
+      "tp_step7",
+      "tp_step7",
+      "tp_step7",
+      "tp_step7",
+      "tp_step7",
+      "tp_step7",
+      "tp_step7"
+    ],
+    "tp_step7": [
+      "tp_step8",
+      "tp_step8",
+      "tp_step8",
+      "tp_step8",
+      "tp_step8"
+    ],
+    "tp_step8": [
+      "tp_step9",
+      "tp_step9",
+      "tp_step9",
+      "tp_step9",
+      "tp_step9"
+    ],
+    "tp_step9": [
+      "tp_step10",
+      "tp_step10"
+    ],
+    "tp_step10": [
+      "tp_step11",
+      "tp_step11",
+      "tp_step11",
+      "tp_step11",
+      "tp_step11"
+    ],
+    "tp_step11": [
+      "tp_step12",
+      "tp_step12",
+      "tp_step12",
+      "tp_step12",
+      "tp_step12"
+    ],
+    "tp_step12": [
+      "tp_step13",
+      "tp_step13",
+      "tp_step13",
+      "tp_step13",
+      "tp_step13",
+      "tp_step13",
+      "tp_step13"
+    ],
+    "tp_step13": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
   }
 }

@@ -4,11 +4,12 @@
 // broken `import` across app.js/state.js/data.js/phase4.js/phase4b.js/
 // lib/session.js), that there are no console/page errors, and that a full
 // walk through all 6 phases works by clicking the real UI (the same onclick
-// handlers a physiotherapist would trigger) — for EACH of the 6 regions the
-// app currently ships (hombro, cadera, cervical, lumbar, rodilla, codo), not
+// handlers a physiotherapist would trigger) — for EACH of the 7 regions the
+// app currently ships (hombro, cadera, cervical, lumbar, rodilla, codo,
+// tobillo_pie), not
 // just one. Each region has its own CIF_TREES entry with a different number
 // of steps and branches, so walking only one region (as this file used to)
-// leaves the other 5 regions' trees completely unexercised in a real browser.
+// leaves the other 6 regions' trees completely unexercised in a real browser.
 //
 // This project ships zero runtime dependencies (see CLAUDE.md) and this
 // script keeps that true for the *app* — Playwright is dev-only tooling, not
@@ -42,11 +43,11 @@ try {
 const BASE_URL = process.argv[2] || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
 const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'lib/session.js',
-  'data/comun.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js'];
+  'data/comun.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
 // and VALID_REGIONS in tests/unit.js — add a new region to all three.
-const REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
+const REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo', 'tobillo_pie'];
 
 // Click the *last* rendered step each time — earlier steps stay in the DOM
 // (answered options remain clickable, to allow changing an answer), so

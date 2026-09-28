@@ -301,10 +301,10 @@ test('affirmative answer for known region returns non-empty array', () => {
 // ── data.js integrity: HYPOTHESES ────────────────────────────────────────────
 console.log('\nHYPOTHESES data integrity');
 
-const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
+const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo', 'tobillo_pie'];
 
-test('all 82 hypotheses present', () => {
-  assert.equal(Object.keys(HYPOTHESES).length, 82);
+test('all 118 hypotheses present', () => {
+  assert.equal(Object.keys(HYPOTHESES).length, 118);
 });
 
 test('every hypothesis has id, region, name, tests', () => {
@@ -379,7 +379,7 @@ test('calcLRScore does not return NaN for any hypothesis with all-pos results', 
 // ── data.js integrity: CIF_TREES ─────────────────────────────────────────────
 console.log('\nCIF_TREES data integrity');
 
-test('all 6 regions present', () => {
+test('all 7 regions present', () => {
   for (const r of VALID_REGIONS) {
     assert.ok(typeof CIF_TREES[r] === 'object', `missing region: ${r}`);
   }
@@ -590,7 +590,7 @@ test('pruneTreeFrom: leaves treeModified untouched when 4b/5 were never visited'
 // ── data.js integrity: SYSTEMIC_SCREENING ─────────────────────────────────────
 console.log('\nSYSTEMIC_SCREENING data integrity');
 
-test('all 6 regions present', () => {
+test('all 7 regions present', () => {
   for (const r of VALID_REGIONS) {
     assert.ok(typeof SYSTEMIC_SCREENING[r] === 'object', `missing region: ${r}`);
   }
@@ -639,6 +639,7 @@ const FP_REGIONES = {};
 for (const r of fpMod.REGIONES_CON_FORMULARIO) FP_REGIONES[r] = (await import(`../formularios/${r}.js`)).default;
 const FP_TIPOS = ['unica', 'multi', 'escala', 'matriz', 'texto'];
 await fpMod.cargarEsquemaRegion('lumbar');   // test() es síncrono: precargar aquí
+await fpMod.cargarEsquemaRegion('tobillo_pie');
 await precargarFormularioPrevio();              // app.js carga formulario.js con import() dinámico
 
 function fpItems(esq) { return esq.secciones.flatMap(s => s.items); }
@@ -731,6 +732,22 @@ test('informe: solo lo marcado, con su etiqueta, sin «No sabría decir» y acti
   assert.ok(!fpMod.resumenFormularioPrevio().some(x => x.a.includes('en persona')), 'respuesta antigua de en_persona');
   state.formularioPrevio = { comun: {}, regiones: {} };
   assert.ok(!buildInformeFisioterapiaText().includes('SEGÚN REFIERE'), 'sin respuestas no sale la sección');
+});
+
+test('informe tobillo y pie: mecanismo y torceduras previas, nada más de la cara 2', () => {
+  state.region = 'tobillo_pie';
+  state.formularioPrevio = {
+    comun: {},
+    regiones: { tobillo_pie: {
+      que_paso: ['Se me torció el tobillo hacia dentro, apoyando el borde de fuera del pie', 'No sabría decir'],
+      torceduras: 'Varias veces', chasquido: 'Sí', provoca: { correr: 'Sí' },
+    } },
+  };
+  assert.deepEqual(fpMod.informeFormularioPrevio().historia, [
+    { q: 'Cómo se lesionó', a: 'Se me torció el tobillo hacia dentro, apoyando el borde de fuera del pie' },
+    { q: 'Torceduras previas del mismo tobillo', a: 'Varias veces' },
+  ]);
+  state.formularioPrevio = { comun: {}, regiones: {} };
 });
 
 test('payload lleva fp con el resumen del formulario', () => {
@@ -907,6 +924,26 @@ test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan'
       assert.equal(calcLRScore(HYPOTHESES[id], { [i]: 'neg' }).totalLR, 1, `${id}/${t.name}`);
     });
   });
+});
+
+test('tobillo y pie: cinco P, artritis infecciosa y debilidad simétrica con arreflexia son urgencias', () => {
+  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.flatMap(s => s.preguntas);
+  ['tp_t1', 'tp_i1', 'tp_n1'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+});
+
+test('tobillo y pie: ningún test puntúa hasta verificar sus fuentes (Thompson incluido)', () => {
+  Object.values(HYPOTHESES).filter(h => h.region === 'tobillo_pie').forEach(h => {
+    h.tests.forEach((t, i) => {
+      assert.equal(calcLRScore(h, { [i]: 'pos' }).totalLR, 1, `${h.id}/${t.name}`);
+      assert.equal(calcLRScore(h, { [i]: 'neg' }).totalLR, 1, `${h.id}/${t.name}`);
+    });
+  });
+});
+
+test('tobillo y pie: todas las hipótesis se alcanzan desde el árbol', () => {
+  const alcanzadas = new Set(CIF_TREES.tobillo_pie.steps.flatMap(s => s.options.flatMap(o => o.hypothesis)));
+  const sinRama = Object.values(HYPOTHESES).filter(h => h.region === 'tobillo_pie' && !alcanzadas.has(h.id)).map(h => h.id);
+  assert.deepEqual(sinRama, []);
 });
 
 // ── data/ por regiones ────────────────────────────────────────────────────────
