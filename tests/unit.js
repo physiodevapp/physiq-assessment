@@ -301,10 +301,10 @@ test('affirmative answer for known region returns non-empty array', () => {
 // ── data.js integrity: HYPOTHESES ────────────────────────────────────────────
 console.log('\nHYPOTHESES data integrity');
 
-const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo'];
+const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo', 'tobillo_pie'];
 
-test('all 82 hypotheses present', () => {
-  assert.equal(Object.keys(HYPOTHESES).length, 82);
+test('all 118 hypotheses present', () => {
+  assert.equal(Object.keys(HYPOTHESES).length, 118);
 });
 
 test('every hypothesis has id, region, name, tests', () => {
@@ -379,7 +379,7 @@ test('calcLRScore does not return NaN for any hypothesis with all-pos results', 
 // ── data.js integrity: CIF_TREES ─────────────────────────────────────────────
 console.log('\nCIF_TREES data integrity');
 
-test('all 6 regions present', () => {
+test('all 7 regions present', () => {
   for (const r of VALID_REGIONS) {
     assert.ok(typeof CIF_TREES[r] === 'object', `missing region: ${r}`);
   }
@@ -590,7 +590,7 @@ test('pruneTreeFrom: leaves treeModified untouched when 4b/5 were never visited'
 // ── data.js integrity: SYSTEMIC_SCREENING ─────────────────────────────────────
 console.log('\nSYSTEMIC_SCREENING data integrity');
 
-test('all 6 regions present', () => {
+test('all 7 regions present', () => {
   for (const r of VALID_REGIONS) {
     assert.ok(typeof SYSTEMIC_SCREENING[r] === 'object', `missing region: ${r}`);
   }
@@ -907,6 +907,26 @@ test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan'
       assert.equal(calcLRScore(HYPOTHESES[id], { [i]: 'neg' }).totalLR, 1, `${id}/${t.name}`);
     });
   });
+});
+
+test('tobillo y pie: cinco P, artritis infecciosa y debilidad simétrica con arreflexia son urgencias', () => {
+  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.flatMap(s => s.preguntas);
+  ['tp_t1', 'tp_i1', 'tp_n1'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+});
+
+test('tobillo y pie: ningún test puntúa hasta verificar sus fuentes (Thompson incluido)', () => {
+  Object.values(HYPOTHESES).filter(h => h.region === 'tobillo_pie').forEach(h => {
+    h.tests.forEach((t, i) => {
+      assert.equal(calcLRScore(h, { [i]: 'pos' }).totalLR, 1, `${h.id}/${t.name}`);
+      assert.equal(calcLRScore(h, { [i]: 'neg' }).totalLR, 1, `${h.id}/${t.name}`);
+    });
+  });
+});
+
+test('tobillo y pie: todas las hipótesis se alcanzan desde el árbol', () => {
+  const alcanzadas = new Set(CIF_TREES.tobillo_pie.steps.flatMap(s => s.options.flatMap(o => o.hypothesis)));
+  const sinRama = Object.values(HYPOTHESES).filter(h => h.region === 'tobillo_pie' && !alcanzadas.has(h.id)).map(h => h.id);
+  assert.deepEqual(sinRama, []);
 });
 
 // ── data/ por regiones ────────────────────────────────────────────────────────
