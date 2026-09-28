@@ -931,9 +931,30 @@ test('tobillo y pie: cinco P, artritis infecciosa y debilidad simétrica con arr
   ['tp_t1', 'tp_i1', 'tp_n1'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
 });
 
-test('tobillo y pie: ningún test puntúa hasta verificar sus fuentes (Thompson incluido)', () => {
+test('tobillo y pie: solo puntúan Thompson, hueco palpable, Ottawa (LR−) y Molloy', () => {
+  const idx = (id, nombre) => HYPOTHESES[id].tests.findIndex(t => t.name === nombre);
+  const lr = (id, nombre, r) => calcLRScore(HYPOTHESES[id], { [idx(id, nombre)]: r }).totalLR;
+  const puntuan = {
+    tp3: ['Thompson (Simmonds)', 'Hueco palpable'],
+    tp5: ['Reglas de Ottawa de tobillo y de pie'],
+    tp20: ['Signo de pinzamiento de Molloy'],
+  };
+  // Maffulli 1998 con las LR de Reiman 2014
+  assert.equal(lr('tp3', 'Thompson (Simmonds)', 'pos'), 13.71);
+  assert.equal(lr('tp3', 'Thompson (Simmonds)', 'neg'), 0.04);
+  assert.equal(lr('tp3', 'Hueco palpable', 'pos'), 6.64);
+  assert.equal(lr('tp3', 'Hueco palpable', 'neg'), 0.3);
+  // Bachmann 2003: solo descarta (las dos reglas juntas); el positivo es hallazgo
+  assert.equal(lr('tp5', 'Reglas de Ottawa de tobillo y de pie', 'neg'), 0.21);
+  assert.equal(lr('tp5', 'Reglas de Ottawa de tobillo y de pie', 'pos'), 1);
+  // Molloy 2003: LR calculadas de S 94,8 % y E 88 %
+  assert.ok(Math.abs(lr('tp20', 'Signo de pinzamiento de Molloy', 'pos') - 7.9) < 0.01);
+  assert.ok(Math.abs(lr('tp20', 'Signo de pinzamiento de Molloy', 'neg') - 0.059) < 0.002);
+  assert.equal(idx('tp20', 'Signo de pinzamiento de Molloy'), HYPOTHESES.tp20.tests.length - 1, 'test añadido al final');
+  // Todo lo demás es hallazgo
   Object.values(HYPOTHESES).filter(h => h.region === 'tobillo_pie').forEach(h => {
     h.tests.forEach((t, i) => {
+      if ((puntuan[h.id] || []).includes(t.name)) return;
       assert.equal(calcLRScore(h, { [i]: 'pos' }).totalLR, 1, `${h.id}/${t.name}`);
       assert.equal(calcLRScore(h, { [i]: 'neg' }).totalLR, 1, `${h.id}/${t.name}`);
     });
