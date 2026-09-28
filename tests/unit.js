@@ -699,6 +699,30 @@ test('resumen y pistas: solo respuestas visibles, con detalle y filas de matriz'
   assert.deepEqual(fpMod.pistasPaso('lu_step3').map(x => x.a), ['Poco a poco', 'Sí']);
 });
 
+test('formulario comun: pistas de la fase 1 apuntan a una tarjeta con hueco y a una pregunta existente', () => {
+  const campos = Object.keys(FP_COMUN.pistas || {});
+  assert.deepEqual(campos, ['mecanismo', 'cronologia']);
+  campos.forEach(campo => FP_COMUN.pistas[campo].forEach(ref => {
+    assert.ok(ref.startsWith('c:'), `${ref}: la cara común solo puede apuntar a sí misma`);
+    assert.ok(fpItems(FP_COMUN).some(x => x.id === ref.slice(2)), `${ref}: pregunta inexistente`);
+  }));
+});
+
+test('pistas fase 1: solo lo respondido y visible, con detalle', () => {
+  state.formularioPrevio = {
+    comun: { desde_cuando: 'hace 5 semanas', desencadenante: 'Sí', desencadenante__detalle: 'una caída', primera_vez: 'Sí', episodio_previo: 'oculto' },
+    regiones: {},
+  };
+  assert.deepEqual(fpMod.pistasFase1('mecanismo').map(x => x.a), ['Sí — una caída']);
+  assert.deepEqual(fpMod.pistasFase1('cronologia').map(x => x.a), ['hace 5 semanas']);
+  assert.deepEqual(fpMod.pistasFase1('inexistente'), []);
+  // Solo lo escrito con palabras del paciente va como cita (texto libre o detalle)
+  assert.deepEqual(fpMod.pistasFase1('mecanismo').map(x => x.cita), ['una caída']);
+  assert.deepEqual(fpMod.pistasFase1('cronologia').map(x => x.cita), ['hace 5 semanas']);
+  state.formularioPrevio.comun.inicio = 'De golpe';
+  assert.ok(!fpMod.pistasFase1('mecanismo').find(x => x.a === 'De golpe').cita, 'una opción no es cita');
+});
+
 test('informe: antecedentes marcados; «prefiero comentarlo en persona» no existe en PhysiQ', () => {
   const comun = fpItems(FP_COMUN);
   assert.ok(!comun.some(i => i.id === 'en_persona'), 'en_persona se quitó a propósito (ver cabecera de formularios/comun.js)');
