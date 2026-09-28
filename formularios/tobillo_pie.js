@@ -20,7 +20,7 @@ export default {
       titulo: 'Si empezó con una torcedura, un golpe o una caída',
       intro: 'Si en la hoja 1 contestó que NO hubo nada concreto que lo desencadenara, salte el apartado siguiente.',
       items: [
-        { id: 'que_paso', tipo: 'multi', texto: '¿Qué pasó? (puede marcar varias)',
+        { id: 'que_paso', tipo: 'multi', informe: 'Cómo se lesionó', texto: '¿Qué pasó? (puede marcar varias)',
           opciones: ['Se me torció el tobillo hacia dentro, apoyando el borde de fuera del pie',
             'Me giraron el pie hacia fuera con el tobillo doblado hacia arriba (un placaje, una entrada)',
             'Me caí hacia delante con el pie de puntillas, o fallé un escalón al bajar',
@@ -29,7 +29,7 @@ export default {
             'Ninguna de estas', NS] },
         { id: 'chasquido', tipo: 'unica', texto: '¿Oyó o notó un chasquido en ese momento?', opciones: SNNS },
         { id: 'pudo_seguir', tipo: 'unica', texto: '¿Pudo seguir con lo que estaba haciendo?', opciones: ['Sí', 'No, tuve que parar', NS] },
-        { id: 'torceduras', tipo: 'unica', texto: '¿Se le había torcido ese tobillo otras veces?', opciones: ['No', 'Una vez', 'Varias veces', NS] }
+        { id: 'torceduras', tipo: 'unica', informe: 'Torceduras previas del mismo tobillo', texto: '¿Se le había torcido ese tobillo otras veces?', opciones: ['No', 'Una vez', 'Varias veces', NS] }
       ]
     },
     {

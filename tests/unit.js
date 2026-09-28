@@ -639,6 +639,7 @@ const FP_REGIONES = {};
 for (const r of fpMod.REGIONES_CON_FORMULARIO) FP_REGIONES[r] = (await import(`../formularios/${r}.js`)).default;
 const FP_TIPOS = ['unica', 'multi', 'escala', 'matriz', 'texto'];
 await fpMod.cargarEsquemaRegion('lumbar');   // test() es síncrono: precargar aquí
+await fpMod.cargarEsquemaRegion('tobillo_pie');
 await precargarFormularioPrevio();              // app.js carga formulario.js con import() dinámico
 
 function fpItems(esq) { return esq.secciones.flatMap(s => s.items); }
@@ -731,6 +732,22 @@ test('informe: solo lo marcado, con su etiqueta, sin «No sabría decir» y acti
   assert.ok(!fpMod.resumenFormularioPrevio().some(x => x.a.includes('en persona')), 'respuesta antigua de en_persona');
   state.formularioPrevio = { comun: {}, regiones: {} };
   assert.ok(!buildInformeFisioterapiaText().includes('SEGÚN REFIERE'), 'sin respuestas no sale la sección');
+});
+
+test('informe tobillo y pie: mecanismo y torceduras previas, nada más de la cara 2', () => {
+  state.region = 'tobillo_pie';
+  state.formularioPrevio = {
+    comun: {},
+    regiones: { tobillo_pie: {
+      que_paso: ['Se me torció el tobillo hacia dentro, apoyando el borde de fuera del pie', 'No sabría decir'],
+      torceduras: 'Varias veces', chasquido: 'Sí', provoca: { correr: 'Sí' },
+    } },
+  };
+  assert.deepEqual(fpMod.informeFormularioPrevio().historia, [
+    { q: 'Cómo se lesionó', a: 'Se me torció el tobillo hacia dentro, apoyando el borde de fuera del pie' },
+    { q: 'Torceduras previas del mismo tobillo', a: 'Varias veces' },
+  ]);
+  state.formularioPrevio = { comun: {}, regiones: {} };
 });
 
 test('payload lleva fp con el resumen del formulario', () => {
