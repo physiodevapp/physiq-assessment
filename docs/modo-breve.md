@@ -1,6 +1,20 @@
 # Modo breve (consulta de aseguradora, 10 min) — diseño
 
-Estado: **propuesta, sin implementar**. Hay decisiones clínicas abiertas (al final) que tiene que tomar el fisio antes de tocar código.
+Estado: **implementado** con las cinco decisiones de abajo (todas según la recomendación). Detalle técnico en CLAUDE.md, «Modo breve». Diferencias con este diseño, vistas al implementarlo:
+- En la fase 4b no hacía falta «mostrar solo las 2 primeras hipótesis»: las tarjetas ya están todas plegadas. Lo que cambia en breve es el orden de los tests dentro de cada tarjeta.
+- La irritabilidad ya tenía un valor por defecto («Baja», con la matriz preseleccionada), igual que en el modo completo. El nivel directo solo marca «estimada» cuando se usa.
+- «Completar pendientes» lleva al primer pendiente sin cambiar de modo. El paso a completa es un acto explícito del fisio y pide confirmación si quedan pendientes.
+
+## Decisiones tomadas (septiembre 2026)
+1. Cribado: **embudo por sistema** (un SÍ/NO leyendo sus banderas rojas), no una lista corta elegida a mano.
+2. Irritabilidad: **nivel directo** en breve, con la matriz plegada y opcional.
+3. 📄 Informe breve: **siempre** con la línea «valoración inicial breve… no exhaustivos», sin opción de quitarla.
+4. Formulario previo: **papel en la sala de espera** (sin cambios de código; solo un aviso en la tarjeta).
+5. Informe específico de aseguradora: **no** en esta versión.
+
+---
+
+Diseño original:
 
 ## Punto de partida (medido en el código, septiembre 2026)
 

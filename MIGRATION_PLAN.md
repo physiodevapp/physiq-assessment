@@ -144,9 +144,9 @@ Orden sugerido: cadera → cervical → rodilla → hombro → auditoría de LR 
 
 ## Fase E — Modo breve (consulta de aseguradora, 10 min) y dosis pendientes
 
-Diseño y decisiones abiertas en `docs/modo-breve.md` (sin implementar: esperan decisión clínica). Mapa de fuentes para las hipótesis con `dosis: ''` en `docs/dosis-pendientes-fuentes.md`: ninguna cifra copiada a `data/`, porque el proxy bloqueó los textos completos; hay que pedir los PDF o abrir la red antes de rellenar, región a región y con las reglas de la Fase D.
+Diseño, decisiones y diferencias con lo implementado en `docs/modo-breve.md`. Mapa de fuentes para las hipótesis con `dosis: ''` en `docs/dosis-pendientes-fuentes.md`: ninguna cifra copiada a `data/`, porque el proxy bloqueó los textos completos; hay que pedir los PDF o abrir la red antes de rellenar, región a región y con las reglas de la Fase D.
 
-- [ ] Decidir las 5 cuestiones abiertas de `docs/modo-breve.md`
-- [ ] Implementar el modo breve (`state.modo`, embudo de fase 2, 4b opcional, pendientes y transparencia en los resúmenes)
+- [x] Decidir las 5 cuestiones abiertas de `docs/modo-breve.md` (las cinco según la recomendación)
+- [x] Implementar el modo breve (`state.modo`, embudo de fase 2, 4b opcional, pendientes y transparencia en los resúmenes). Verificado: `tests/unit.js` (9 tests nuevos, entre ellos que ninguna pregunta de urgencia se pliega) y `tests/smoke.mjs` con recorrido breve en las 7 regiones; revisión a mano a 390 px (embudo en acordeón, bloqueo del NO con respuestas SÍ, restauración de sesión, confirmación al pasar a completa)
 - [ ] Dosis tipo A (ce12, ce13, ro15, tp8, tp9, tp14, tp21, tp1, tp26, ca16): verificar con los PDF y copiar la pauta literal con `fuente`
 - [ ] Decidir si las hipótesis de derivación (tipo C) llevan un texto de derivación en lugar de `dosis: ''`
