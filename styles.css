@@ -1554,6 +1554,8 @@
   .nrs-btn.selected.nrs-9, .nrs-btn.selected.nrs-10 {
     background: rgba(255,71,87,0.12); border-color: var(--danger); color: var(--danger);
   }
+  .nrs-ext { display: flex; justify-content: space-between; gap: 12px; font-size: 0.7rem; color: var(--text3); margin: 2px 0 8px; }
+  .nrs-ext span:last-child { text-align: right; }
   .nrs-label {
     font-size: 0.78rem;
     color: var(--text3);
