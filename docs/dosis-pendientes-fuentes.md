@@ -1,0 +1,101 @@
+# Dosis pendientes — mapa de fuentes (septiembre 2026)
+
+**Nada de esto se ha copiado a `data/`.** El proxy de la sesión bloqueó todos los textos completos: PubMed, PMC, jospt.org, orthopt.org, bjsm.bmj.com y los espejos de PDF. Solo se pudieron leer títulos y fragmentos del buscador. Por la regla de la Fase D («nunca dar una cifra por buena desde un resumen de terceros»), este documento **localiza la fuente correcta de cada hipótesis y dice qué hay que comprobar en el PDF**. No propone dosis para pegar.
+
+Leyenda:
+- **A — Hay fuente con pauta.** Guía de práctica clínica o ensayo con protocolo. Pedir el PDF y copiar la pauta literal con `fuente`.
+- **B — Hay recomendación sin pauta numérica.** La guía dice qué hacer, pero no series ni semanas. La dosis sería «principio + a criterio del clínico», citando la guía.
+- **C — Hipótesis de derivación.** Lo primero no es una dosis de fisioterapia, sino derivar o descargar hasta la pauta médica. Propuesta: en lugar de `dosis: ''`, un texto de derivación (decisión del usuario, porque cambia lo que dice la fase 5).
+- **D — No se encontró evidencia de dosis específica.** Se queda en `dosis: ''` («a criterio del clínico»), que es lo honesto.
+
+«Fragmento» quiere decir que el dato solo se ha visto en el resumen o el fragmento del buscador. Está sin verificar.
+
+## Lumbar (`lu5`–`lu9`)
+| Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
+|---|---|---|---|---|
+| lu5 | Radiculopatía (déficit neurológico) | B | George 2021, JOSPT 51(11):CPG1–60, *Interventions for the Management of Acute and Chronic LBP: Revision 2021* (acceso libre) · NICE NG59 | Fragmento: «exercise training, incl. trunk strengthening/endurance and specific trunk muscle activation» para lumbalgia con dolor en la pierna (aguda y crónica). Confirmar el grado de la recomendación y si hay algún parámetro de dosis |
+| lu6 | Discogénico | B/D | La misma guía (la trata como lumbalgia inespecífica) | No se encontró ningún ensayo con pauta específica para discogénico. Si se usa la guía, decir que la recomendación es para lumbalgia en general, no para este subgrupo |
+| lu7 | Facetario | D | — | Solo revisiones de infiltración y radiofrecuencia. Ninguna pauta de ejercicio con evidencia específica |
+| lu8 | Sacroilíaca | B/D | Al-Subahi 2017, J Phys Ther Sci 29(9):1689 (revisión sistemática; ejercicio y técnicas de energía muscular > movilización) | Calidad baja; comprobar si alguno de los ensayos incluidos da un protocolo reproducible |
+| lu9 | Miofascial | D | — | No se buscó (sin fuente de calidad previsible). La guía de 2021 trata la punción seca como adyuvante: comprobarlo en el PDF |
+
+## Cervical (`ce12`–`ce14`)
+| Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
+|---|---|---|---|---|
+| ce12 | Dolor radicular | **A** | Kuijper 2009, BMJ 339:b3883 (n = 205, radiculopatía de <1 mes) · Blanpied 2017, JOSPT 47(7):A1–83, *Neck Pain Revision 2017* | Fragmento (Kuijper): 12 sesiones, 2 por semana, durante 6 semanas, más ejercicios en casa; o collarín semirrígido y reposo 3–6 semanas; ambos > esperar. Fragmento (Blanpied): tracción mecánica **intermitente** (no continua) combinada con ejercicio y movilización o manipulación, grado B, en dolor cervical **crónico** con dolor irradiado. Copiar los ejercicios concretos del apéndice de Kuijper |
+| ce13 | Mareo cervicogénico | **A** | Reid 2014, Phys Ther (SNAG de Mulligan frente a Maitland; n = 86) · seguimiento a largo plazo, Man Ther 2015 | Fragmento: 2–6 sesiones en 6 semanas; ambas técnicas reducen el mareo hasta las 12 semanas. Comprobar la pauta de autoSNAG en casa (repeticiones y veces al día) |
+| ce14 | Idiopático | B | Blanpied 2017 (categoría «dolor cervical con déficit de movilidad») | Pauta por fase aguda/subaguda/crónica. Comprobar qué parámetros da la guía |
+
+## Rodilla (`ro8`–`ro20`)
+| Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
+|---|---|---|---|---|
+| ro8 | LCM | A/B | Logerstedt 2017, JOSPT 47(11):A1–47, *Knee Ligament Sprain Revision 2017* | Ortesis, carga y progresión por grado I–III |
+| ro9 | LCP | A/B | Logerstedt 2017 | Ídem. Las lesiones combinadas van a derivación |
+| ro10 | LLE y esquina posterolateral | C (grado III) / B | Logerstedt 2017 | Las de grado III o combinadas suelen ser quirúrgicas: comprobar lo que dice la guía |
+| ro11 | Fracturas (rótula, meseta) | C | — | Derivar. Sin dosis de fisioterapia hasta la pauta traumatológica |
+| ro12 | Inestabilidad rotuliana | B | ESSKA 2024, consenso formal sobre la primera luxación de rótula, parte 2 (KSSTA, acceso libre) | Fragmento: ninguna ortesis es superior a no llevarla (solo quizá, muy poco tiempo, en fase aguda y sin limitar el rango); movilidad activa y fuerza precoces; sin diferencia en las reluxaciones entre carga parcial y total. Copiar sus afirmaciones literales |
+| ro13 | Grasa de Hoffa | D | — | — |
+| ro14 | Bursitis pre e infrarrotuliana | C/D | — | Si hay sospecha séptica, derivar (ya está en el cribado de rodilla) |
+| ro15 | Osgood-Schlatter / SLJ | **A** | Rathleff 2020, Orthop J Sports Med 8(4):2325967120911106 (acceso libre; n = 51, 10–14 años) | Fragmento: bloque 1 (semanas 0–4), dejar el deporte y las actividades que duelen; luego fuerza progresiva con reincorporación guiada por el dolor. Éxito del 80 % a las 12 semanas y del 90 % a los 12 meses; vuelta al deporte del 16 % a las 12 semanas y del 69 % a los 12 meses. Copiar los ejercicios y la regla del dolor del apéndice |
+| ro16 | Lesión osteocondral | C/D | — | Si es inestable, derivar |
+| ro17 | Plica | D | — | — |
+| ro18 | Tibioperonea proximal | D | — | — |
+| ro19 | Nervio peroneo común | C/D | — | Déficit motor progresivo → derivar |
+| ro20 | Quiste de Baker | D | — | Diferencial con TVP (ya lo cubre el cribado, `r_v2`) |
+
+## Hombro (`h10`–`h11`)
+| Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
+|---|---|---|---|---|
+| h10 | Artrosis GH | D (sin ensayos) | AAOS 2020, *Management of Glenohumeral Joint Osteoarthritis* (guía) · revisión sistemática de 2026 sobre intervenciones dirigidas por fisioterapeutas (Shoulder & Elbow, doi 10.1177/17585732261450961) | Fragmento de la revisión: «no hay ensayos publicados sobre intervenciones de fisioterapia en artrosis GH con tratamiento no quirúrgico», solo en el postoperatorio. Conclusión: `dosis: ''` es correcto; se puede citar en el criterio la ausencia de evidencia |
+| h11 | Luxación bloqueada o fractura | C | — | Ya dice «→ Rx». Propuesta: dosis «Derivar para radiografía; sin tratamiento de fisioterapia hasta el diagnóstico» |
+
+## Tobillo y pie (`tp1`–`tp36`)
+| Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
+|---|---|---|---|---|
+| tp1 | Esguince lateral agudo | **A/B** | Martin 2021, JOSPT 51(4):CPG1–80, *Lateral Ankle Ligament Sprains Revision 2021* | Fragmento: movilización precoz y carga óptima; si se inmoviliza, ≤10 días; ejercicio neuromuscular y propioceptivo precoz; tobillera profiláctica y equilibrio para prevenir recidivas. Comprobar si hay parámetros |
+| tp2 | Sindesmosis | C/B | — | Las inestables van a derivación. Pedir consenso (p. ej. BJSM) si se quiere pauta conservadora |
+| tp3 | Rotura del Aquiles | C | — | Derivar. El tratamiento funcional frente a la cirugía lo decide traumatología |
+| tp4 | Lisfranc | C | — | Derivar |
+| tp5 | Fracturas (5.º MT, calcáneo) | C | — | Derivar |
+| tp6 | Luxación del tibial posterior | C | — | Derivar |
+| tp7 | Pinzamiento posterior | D | — | — |
+| tp8 | Aquiles, porción media | **A** | Chimenti 2024, JOSPT, *Midportion Achilles Tendinopathy Revision 2024* (acceso libre en jospt.org/orthopt.org) | Fragmento: carga del tendón (cualquier tipo de contracción: excéntrica, concéntrica, isométrica, HSR, pliometría) **como primera línea**, con carga tan alta como se tolere, **al menos 2 veces por semana**, salvo tendón frágil. Copiar la recomendación literal y su grado |
+| tp9 | Aquiles insercional | A (evidencia baja) | Jonsson 2008, BJSM 42:746–749 (piloto sin grupo control) | Fragmento: excéntrico de puntillas al suelo **sin dorsiflexión**; 67 % satisfechos. Copiar el protocolo (series, repeticiones, semanas) del PDF y dejar clara la calidad de la evidencia |
+| tp10 | Vaina del Aquiles | D | — | — |
+| tp11 | Plantar delgado | D | — | — |
+| tp12 | Nervio sural | D | — | — |
+| tp13 | Bursitis calcánea superficial | D | — | — |
+| tp14 | Tendinopatía del tibial posterior | **A** | Kulig 2009, Phys Ther 89(1):26–37 (ensayo aleatorizado, n = 36, estadios I–II) | Fragmento: 3 meses de ortesis más estiramientos (todos los grupos mejoran); el excéntrico añadido da efecto moderado frente al concéntrico o solo ortesis. Copiar la pauta excéntrica y la de estiramiento |
+| tp15 | Flexor largo del primer dedo | D | — | — |
+| tp16 | Túnel del tarso | D | — | — |
+| tp17 | Fractura de estrés (maléolo medial, astrágalo, calcáneo) | C | Warden 2014, JOSPT 44(10):749–765 | Clasificación de alto y bajo riesgo: el maléolo medial es de alto riesgo, así que derivar y descargar. Copiar la pauta de vuelta a la carrera solo para las de bajo riesgo |
+| tp18 | Seno del tarso | D | — | — |
+| tp19 | Peroneos | D | — | — |
+| tp20 | Pinzamiento anterior | D | — | — |
+| tp21 | Inestabilidad crónica | **A** | McKeon 2008, Med Sci Sports Exerc (ensayo aleatorizado, n = 31) · Martin 2021 (la misma guía que tp1) · metaanálisis de dosis de equilibrio, BMC Musculoskelet Disord 2024 (doi 10.1186/s12891-024-07800-8) | Fragmento (McKeon): 4 semanas, 12 sesiones supervisadas de 20 min, programa progresivo de salto a estabilización (5 tareas × 7 niveles). Comprobar en el metaanálisis qué dosis total recomienda |
+| tp22 | Sinovitis postraumática | D | — | — |
+| tp23 | Coalición tarsiana | C | — | Derivar si hay rigidez o espasmo peroneo |
+| tp24 | Artrosis de tobillo o pie | D | — | — |
+| tp25 | Osteocondritis del astrágalo | C/D | — | — |
+| tp26 | Dolor plantar crónico del talón | **A/B** | Koc 2023, JOSPT, *Heel Pain – Plantar Fasciitis Revision 2023* (acceso libre) | Fragmento: terapia manual, estiramiento específico de la fascia y del tríceps sural, vendaje y férula nocturna como núcleo; láser de baja intensidad como adyuvante. Comprobar si hay parámetros de estiramiento (tiempo, veces al día) |
+| tp27 | Almohadilla grasa del talón | D | — | — |
+| tp28 | Atrapamiento nervioso del talón | D | — | — |
+| tp29 | Calcaneocuboidea y cubometatarsiana | D | — | — |
+| tp30 | Fractura de estrés del mediopié | C | Warden 2014 | El navicular es de alto riesgo: derivar y descargar |
+| tp31 | 1.ª metatarsofalángica | D | — | — |
+| tp32 | Base del 2.º metatarsiano | C/D | Warden 2014 | Es de alto riesgo si se trata de fractura de estrés |
+| tp33 | Fractura de marcha (cuello del metatarsiano) | B | Warden 2014 | Bajo riesgo: carga modificada y vuelta progresiva. Copiar el criterio de progresión |
+| tp34 | Neuroma de Morton | D | — | — |
+| tp35 | Gota | C | — | Derivación médica. No es competencia de fisioterapia tratar la crisis |
+| tp36 | Apofisitis pediátricas (Sever, Iselin, Köhler, Freiberg) | B (por analogía) | Rathleff 2020 (Osgood) | Solo por analogía: no hay ensayo para Sever. Si se usa, decirlo. Köhler y Freiberg van a derivación |
+
+## Cadera (`ca11`–`ca19`, también pendientes, no pedidas)
+Solo se miró una fuente. **ca16 (aductor)**: Hölmich 1999, Lancet 353:439–443, *Effectiveness of active physical training as treatment for long-standing adductor-related groin pain* (ensayo aleatorizado). Fragmento: 23 frente a 4 volvieron al deporte sin dolor (OR 12,7, IC 3,4–47,2). Copiar el protocolo de 8–12 semanas del PDF. El Copenhagen de aductores tiene revisiones sobre todo en prevención y fuerza, no como tratamiento de primera línea. El resto de la cadera queda sin revisar.
+
+## Resumen
+- **Con fuente de pauta y a falta solo del PDF (A):** ce12, ce13, ro15, tp8, tp9, tp14, tp21, y tp1/tp26 si la guía da parámetros; en cadera, ca16.
+- **Derivación antes que dosis (C):** h11, ro11, tp3–tp6, tp17, tp30, tp35 y las de grado alto de ro10, tp2, tp23. Propuesta: sustituir `dosis: ''` por un texto de derivación (decisión del usuario).
+- **Sin evidencia de dosis específica (D):** la mayoría de las entidades raras de tobillo y pie, rodilla y lumbar. `dosis: ''` es lo correcto y no conviene rellenarlo.
+
+## Para cerrar esto
+Hay dos caminos: que el usuario aporte los PDF (como se hizo en cadera y rodilla), o permitir en la red del entorno `pubmed.ncbi.nlm.nih.gov`, `pmc.ncbi.nlm.nih.gov`, `www.jospt.org` y `www.orthopt.org`. Luego, una región por sesión, siguiendo la Fase D.
