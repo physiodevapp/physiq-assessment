@@ -124,7 +124,7 @@ const state = {
   irritabilidadNivel: '',   // 'Baja' | 'Moderada' | 'Alta'
   irritabilidadDirecta: false, // true when the level was picked directly (modo breve), not computed from the matrix
   naturaleza: '',
-  estadio: '',
+  // (no `estadio`: phase 3's Estadio card shows `cronologia` read-only — same categories, asked once in phase 1)
   estabilidad: '',
   signoComparable: '',      // textarea #signoComparable
 
@@ -201,7 +201,7 @@ When modifying clinical content, keep `data/` isolated from logic — this separ
 - DM Mono — monospaced / labels
 
 ### Component classes
-- `.option-btn` — single-select button groups; active state uses class `selected`. Groups with no meaningful default (`selectOption`: mecanismo, cronología, naturaleza, estadio, estabilidad, psico_*; `selectPsico`: riesgoPsico) deselect back to `''` on a second click of the already-selected option. Groups that already default to a real value (`selectSQ`/`selectSistQ`, SI/NO screening — pre-selected `NO`) don't: there's no meaningful "unanswered" state to toggle back to, so switching to the other option is already a one-click undo.
+- `.option-btn` — single-select button groups; active state uses class `selected`. Groups with no meaningful default (`selectOption`: mecanismo, cronología, naturaleza, estabilidad, psico_*; `selectPsico`: riesgoPsico) deselect back to `''` on a second click of the already-selected option. Groups that already default to a real value (`selectSQ`/`selectSistQ`, SI/NO screening — pre-selected `NO`) don't: there's no meaningful "unanswered" state to toggle back to, so switching to the other option is already a one-click undo.
 - `.accordion-row` — collapsible system panels in Phase 2 (managed by `setupSisObserver`)
 - `.hyp-card` — hypothesis test panels in Phase 4b (managed by `setupHypObserver`)
 - `.card` / `.card-title` — standard card containers
