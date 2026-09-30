@@ -97,7 +97,7 @@ Solo se miró una fuente. **ca16 (aductor)**: Hölmich 1999, Lancet 353:439–44
 ## Resumen
 - **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp21, tp26, ce12 y ro15, con `dosisFuente`.
 - **Con fuente de pauta, a falta del PDF de pago (A):** ce13 (Reid 2014), tp9 (Jonsson 2008), tp14 (Kulig 2009); en cadera, ca16 (Hölmich 1999). McKeon 2008 completaría tp21.
-- **Derivación antes que dosis (C):** h11, ro11, tp3–tp6, tp17, tp30, tp35 y las de grado alto de ro10, tp2, tp23. Propuesta: sustituir `dosis: ''` por un texto de derivación (decisión del usuario).
+- **Derivación antes que dosis (C), hecho:** h11, ro11, tp3–tp6, tp17, tp30 y tp35 llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
 - **Sin evidencia de dosis específica (D):** la mayoría de las entidades raras de tobillo y pie, rodilla y lumbar. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
 ## Para cerrar esto
