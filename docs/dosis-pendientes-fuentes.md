@@ -24,7 +24,7 @@ Leyenda:
 ## Cervical (`ce12`–`ce14`)
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
-| ce12 | Dolor radicular | **A** | Kuijper 2009, BMJ 339:b3883 (n = 205, radiculopatía de <1 mes) · Blanpied 2017, JOSPT 47(7):A1–83, *Neck Pain Revision 2017* | Fragmento (Kuijper): 12 sesiones, 2 por semana, durante 6 semanas, más ejercicios en casa; o collarín semirrígido y reposo 3–6 semanas; ambos > esperar. Fragmento (Blanpied): tracción mecánica **intermitente** (no continua) combinada con ejercicio y movilización o manipulación, grado B, en dolor cervical **crónico** con dolor irradiado. Copiar los ejercicios concretos del apéndice de Kuijper |
+| ce12 | Dolor radicular | ✅ **Hecho** | Kuijper 2009, BMJ 339:b3883 (acceso abierto en PMC) · Blanpied 2017, JOSPT 47(7):A1–A83 (versión publicada, orthopt.org) | Kuijper: 12 sesiones en 6 semanas, sin terapia manual, ejercicio graduado + casa diario; o collarín semirrígido 3 + 3 semanas. La lista de ejercicios está en el apéndice web de BMJ (bloqueado): pedirla si se quiere concretar. Guía: agudo C, crónico B (tracción intermitente combinada) |
 | ce13 | Mareo cervicogénico | **A** | Reid 2014, Phys Ther (SNAG de Mulligan frente a Maitland; n = 86) · seguimiento a largo plazo, Man Ther 2015 | Fragmento: 2–6 sesiones en 6 semanas; ambas técnicas reducen el mareo hasta las 12 semanas. Comprobar la pauta de autoSNAG en casa (repeticiones y veces al día) |
 | ce14 | Idiopático | B | Blanpied 2017 (categoría «dolor cervical con déficit de movilidad») | Pauta por fase aguda/subaguda/crónica. Comprobar qué parámetros da la guía |
 
@@ -38,7 +38,7 @@ Leyenda:
 | ro12 | Inestabilidad rotuliana | B | ESSKA 2024, consenso formal sobre la primera luxación de rótula, parte 2 (KSSTA, acceso libre) | Fragmento: ninguna ortesis es superior a no llevarla (solo quizá, muy poco tiempo, en fase aguda y sin limitar el rango); movilidad activa y fuerza precoces; sin diferencia en las reluxaciones entre carga parcial y total. Copiar sus afirmaciones literales |
 | ro13 | Grasa de Hoffa | D | — | — |
 | ro14 | Bursitis pre e infrarrotuliana | C/D | — | Si hay sospecha séptica, derivar (ya está en el cribado de rodilla) |
-| ro15 | Osgood-Schlatter / SLJ | **A** | Rathleff 2020, Orthop J Sports Med 8(4):2325967120911106 (acceso libre; n = 51, 10–14 años) | Fragmento: bloque 1 (semanas 0–4), dejar el deporte y las actividades que duelen; luego fuerza progresiva con reincorporación guiada por el dolor. Éxito del 80 % a las 12 semanas y del 90 % a los 12 meses; vuelta al deporte del 16 % a las 12 semanas y del 69 % a los 12 meses. Copiar los ejercicios y la regla del dolor del apéndice |
+| ro15 | Osgood-Schlatter / SLJ | ✅ **Hecho** (solo Osgood) | Rathleff 2020, Orthop J Sports Med 8(4) (acceso abierto en PMC; apéndice 1 descargado) | Es una **serie de casos, nivel 4**, sin grupo control (no una cohorte comparativa). **Excluyó el Sinding-Larsen-Johansson**: la dosis lo dice. Pauta completa del apéndice: isométricos y puente 4 semanas, 3 niveles de fuerza y escalera de 11 escalones con dolor ≤2/10 |
 | ro16 | Lesión osteocondral | C/D | — | Si es inestable, derivar |
 | ro17 | Plica | D | — | — |
 | ro18 | Tibioperonea proximal | D | — | — |
@@ -95,8 +95,8 @@ Leyenda:
 Solo se miró una fuente. **ca16 (aductor)**: Hölmich 1999, Lancet 353:439–443, *Effectiveness of active physical training as treatment for long-standing adductor-related groin pain* (ensayo aleatorizado). Fragmento: 23 frente a 4 volvieron al deporte sin dolor (OR 12,7, IC 3,4–47,2). Copiar el protocolo de 8–12 semanas del PDF. El Copenhagen de aductores tiene revisiones sobre todo en prevención y fuerza, no como tratamiento de primera línea. El resto de la cadera queda sin revisar.
 
 ## Resumen
-- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp21 y tp26, con `dosisFuente`.
-- **Con fuente de pauta, a falta del PDF (A):** ce12, ce13, ro15, tp9, tp14; en cadera, ca16.
+- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp21, tp26, ce12 y ro15, con `dosisFuente`.
+- **Con fuente de pauta, a falta del PDF de pago (A):** ce13 (Reid 2014), tp9 (Jonsson 2008), tp14 (Kulig 2009); en cadera, ca16 (Hölmich 1999). McKeon 2008 completaría tp21.
 - **Derivación antes que dosis (C):** h11, ro11, tp3–tp6, tp17, tp30, tp35 y las de grado alto de ro10, tp2, tp23. Propuesta: sustituir `dosis: ''` por un texto de derivación (decisión del usuario).
 - **Sin evidencia de dosis específica (D):** la mayoría de las entidades raras de tobillo y pie, rodilla y lumbar. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
