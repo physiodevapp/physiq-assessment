@@ -150,7 +150,7 @@ export const hypotheses = {
     tests: [
       { name: 'Dolor a la palpación del epicóndilo medial', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador.' },
       { name: 'Dolor con flexión resistida de antebrazo y pronación', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.' },
-      { name: 'Ecografía (si se dispone de informe)', sn: '95.2%', sp: '92%', lr_pos: null, lr_neg: null, criterio: 'Ecografía convencional (no sonoelastografía): foco hipo o anecoico, tendón no visible, calcificación o irregularidad cortical. S 95,2 %, E 92 % frente al diagnóstico clínico de un fisiatra, en 21 codos con epicondilalgia medial frente a 25 sin ella.' , fuente: 'Park 2008 (Arch Phys Med Rehabil 89:738–742; prospectivo, un solo radiólogo)' }
+      { name: 'Ecografía (si se dispone de informe)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Ecografía convencional (no sonoelastografía): foco hipo o anecoico, tendón no visible, calcificación o irregularidad cortical. Cuenta como hallazgo: S 95,2 %, E 92 %, pero el patrón de referencia fue el propio diagnóstico clínico de un fisiatra y se comparó con 25 codos sin la patología, un diseño que infla la precisión y no mide si la ecografía añade algo al diagnóstico clínico.' , fuente: 'Park 2008 (Arch Phys Med Rehabil 89:738–742; prospectivo, un solo radiólogo)' }
     ]
   },
   co3: {
@@ -169,8 +169,8 @@ export const hypotheses = {
     prom: 'QuickDASH (MCID: 10–16 puntos)',
     dosis: 'Isométrico de flexión de codo en posición neutra (sin valgo), contracción sostenida 5 seg, 10 rep × 1 serie. Evitar completamente el estrés en valgo. Mantener codo en posición protegida (flexión 70-90°).',
     tests: [
-      { name: 'Ecografía dinámica con estrés en valgo', sn: '96%', sp: '81%', lr_pos: null, lr_neg: null, criterio: 'Delta de apertura articular >1.0 mm comparado con lado contralateral. Técnica de elección no invasiva.' , fuente: 'Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática con referencia quirúrgica; cifras del resumen, texto completo no revisado)' },
-      { name: 'RM con artrograma', sn: '81%', sp: '91%', lr_pos: null, lr_neg: null, criterio: 'Alta especificidad. Gold standard para lesiones del LCC.' , fuente: 'Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática con referencia quirúrgica; la revisión da un rango, S 81–100 % y E 91–100 %, y aquí va el extremo bajo; cifras del resumen)' },
+      { name: 'Ecografía dinámica con estrés en valgo', sn: '96%', sp: '81%', lr_pos: null, lr_neg: null, criterio: 'Delta de apertura articular >1.0 mm comparado con lado contralateral. Técnica de elección no invasiva.' , fuente: 'Roedl, recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática; 144 pacientes, referencia intraoperatoria, positivo con apertura ≥1,0 mm frente al lado sano; para rotura completa, umbral de 2,5 mm: S 95 %, E 89 %)' },
+      { name: 'RM con artrograma', sn: '81%', sp: '91%', lr_pos: null, lr_neg: null, criterio: 'Alta especificidad. Gold standard para lesiones del LCC.' , fuente: 'Roedl, recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática; 144 pacientes, referencia intraoperatoria; la misma precisión que la ecografía convencional en esa cohorte; otros estudios de la revisión, S 81–100 %, E 91–100 %)' },
       { name: 'Test de valgo dinámico (maniobra de ordeño, test de valgo móvil de Mayo)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Más confiable que el valgo estático. Reproducción del dolor medial con estrés en valgo dinámico.' }
     ]
   },
