@@ -93,6 +93,7 @@ A single global `state` object in `app.js` holds the entire session. There is no
 ```js
 const state = {
   currentPhase: 1,
+  modo: 'completo',         // 'completo' | 'breve' — see "Modo breve"; survives resetApp() like the patient name
   maxVisitedIdx: 0,
   regionChanged: false,
   treeModified: false,
@@ -115,11 +116,13 @@ const state = {
   region: '',               // 'hombro'|'cadera'|'cervical'|'lumbar'|'rodilla'|'codo'|'tobillo_pie'
   sistemicoAnswers: {},     // { [questionId]: 'SI'|'NO' }
   sistemicoAlerta: false,   // true if any systemic question = 'SI'
+  sistemicoBreve: {},       // modo breve only: { [sisId]: 'SI'|'NO' } — per-system embudo answer
 
   // Phase 3
   severidad: null,          // 0–10 (NRS)
   irritabilidad: { dolor, reposo, movimiento, discapacidad, tolerancia },
   irritabilidadNivel: '',   // 'Baja' | 'Moderada' | 'Alta'
+  irritabilidadDirecta: false, // true when the level was picked directly (modo breve), not computed from the matrix
   naturaleza: '',
   estadio: '',
   estabilidad: '',
@@ -277,12 +280,25 @@ Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclaje
 | `finalizarValoracion()` | Writes complete assessment to IDB, emits `SESSION_ASSESSMENT`, and (standalone only) shares/copies the summary |
 | `buildContextSummaryText()` | Builds the plain-text **clinician shorthand** summary used by `copyContextToClipboard()` — dense, includes LR/score jargon, meant for the clinician's own use or `physiq-report` |
 | `copyContextToClipboard()` | Copies the clinician shorthand summary to clipboard; shows a toast via `showCopyFeedback()` |
+| `getPendientesBreve()` | Modo breve: what was left undone, `[{ texto, fase }]`; `[]` in completo (see "Modo breve") |
 | `buildInformeFisioterapiaText()` | Builds a **patient/GP-facing** physiotherapy report from the same payload — plain language, no NRS/LR jargon or emoji, hypothesis names only (no scores); meant to be pasted as-is into a letterhead template and handed to the patient |
 | `copyInformeFisioterapia()` | Copies that patient/GP report to clipboard (`📄 Informe` button, phase 5, next to `📋 Notas`) |
 
-**Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `sv` (signos vitales: fc/fr/spo2/tas/tad), `an` (antropometría: talla/peso/imc — imc computed at build time, never stored in state), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `sq` (systemic screening affirmative question texts), `ur[]` (urgent-referral messages of phase 2 questions answered SÍ), `h[]` (hypotheses with scores and test results), `pn` (plan notes), `fp[]` (formulario previo answers as readable `{ s, q, a }` — section, question, answer; also listed in `📋 Notas` in full; the patient/GP `📄 Informe` gets only the items marked `informe` in the schema — see "Formulario previo" below).
+**Payload fields:** `p` (patient), `r` (region), `d` (date), `mo` (motivo), `sv` (signos vitales: fc/fr/spo2/tas/tad), `an` (antropometría: talla/peso/imc — imc computed at build time, never stored in state), `me` (mecanismo), `cr` (cronología), `rp` (riesgo psicosocial), `nr` (NRS), `ir` (irritabilidad), `na` (naturaleza), `si` (sistémico alert), `br` (banderas rojas), `sq` (systemic screening affirmative question texts), `ur[]` (urgent-referral messages of phase 2 questions answered SÍ), `h[]` (hypotheses with scores and test results), `pn` (plan notes), `md` (`'completo'`|`'breve'`), `pe[]` (modo breve only: pending items as text — see "Modo breve"), `fp[]` (formulario previo answers as readable `{ s, q, a }` — section, question, answer; also listed in `📋 Notas` in full; the patient/GP `📄 Informe` gets only the items marked `informe` in the schema — see "Formulario previo" below).
 
 **Two different summaries, two different audiences** — both live in phase 5's header (`.phase5-copy-btn`, `styles.css`), both work regardless of hub context: `📋 Notas` is the clinician's own dense shorthand (`buildContextSummaryText()`); `📄 Informe` is the patient/GP-facing report (`buildInformeFisioterapiaText()`), reworded from the same data but stripped of internal scoring language. Both buttons show a fuller "Copiar informe"/"Copiar notas" label ≥481px and collapse to the single-word `📄 Informe`/`📋 Notas` under 480px (`.btn-text-full`/`.btn-text-short`, plus `flex-wrap` on the header row) so the pair doesn't overflow next to the phase title on narrow phones. When adding a new clinical field to one, consider whether the other needs it too — they diverge in *tone*, not in what data exists. Navigation to physiq-report is handled by the hub; standalone, `#btnFinalizar`'s share action reuses `buildInformeFisioterapiaText()` too (see "Phase 5 and finalizarValoracion()" above) — it's the same patient/GP report as `📄 Informe`, just pushed through `navigator.share()` instead of the clipboard.
+
+## Modo breve
+
+Consultation type chosen at the top of phase 1 (`#modoConsulta`, `selectModo()`): **Completa** (default; old sessions without `modo` stay completo) or **Breve (10')** for insurer visits. Design and the 5 clinical decisions behind it: `docs/modo-breve.md`. Rule that never bends: **breve never hides a safety item** — phase 1 red flags, questions with `urgencia`, the region `urgencia` box, the urgent-referral alert and the full CIF tree work exactly as in completo. Breve only folds optional fields and makes the gaps explicit.
+
+- `body.modo-breve` (set by `_pintarModoUI()`) drives everything visual via CSS: `.breve-opcional` is hidden (vitals except age, `psico_*`, the irritability matrix, naturaleza/estadio/estabilidad), `.breve-only`/`.breve-only-inline` are shown. `toggleBreveVerTodo()` (`body.breve-ver-todo`, view-only, not persisted) shows everything again, including the folded phase 2 questions — that's how pending items get completed without leaving breve.
+- **Phase 2 embudo**: `buildSistemaHTML` adds one SÍ/NO per system (`[data-embudo]`, `selectEmbudo()`) read against that system's `banderasRojas`, and wraps the questions in `.sis-body`. With the embudo not in SÍ, CSS hides every `.sq2` **except `.sq2-urg`** (questions with `urgencia`) — a unit test checks every urgent question carries that class and no other does, and the smoke test checks it in a real browser. NO is refused while the system has any SÍ answer; a SÍ answer flips an embudo NO to SÍ. Unanswered questions stay `'NO'` as always — `sistemicoBreve` is what tells "asked one by one" from "screened by embudo".
+- **Phase 3**: `selectIrritabDirecta()` sets `irritabilidadNivel` directly and `irritabilidadDirecta: true`; touching the matrix (`_usarMatrizIrritabilidad()`) switches back to the computed level. Summaries say "(estimada)".
+- **Phase 4**: `#btnSinConfirmar` ("Resultados sin confirmar →", breve only) goes to phase 5 skipping 4b; greyed out by CSS while `#btnGoConfirm` is disabled (`#btnGoConfirm:disabled ~ #btnSinConfirmar`), so no change to `phase4.js`.
+- **Phase 4b**: `buildTestList()` lists first the tests that can move the score (`testPuntua()` — same rules as `calcLRScore`, a unit test cross-checks both) and folds the rest in `<details class="breve-hallazgos">`. Visual order only: every test keeps its index in `state.testResults`.
+- **Pending items**: `getPendientesBreve()` → `[{ texto, fase }]` (systems by embudo, systems not screened, estimated irritability, active hypotheses with no pos/neg test, empty formulario previo); `[]` in completo. Shown in phase 1 (`#brevePendientes`, once past phase 2, with "Completar pendientes →"), at the top of phase 5, in `📋 Notas`, and in the payload (`pe`).
+- **Transparency**: `TEXTO_VALORACION_BREVE` goes into phase 5, `📋 Notas` and `📄 Informe` in breve, always (decision 3 of the design); the Informe's "IMPRESIÓN CLÍNICA" says "(hipótesis de trabajo, pendiente de confirmar)" when tests are pending. Switching breve → completo with pending items asks for confirmation, because from then on the summaries stop saying the assessment was brief.
 
 ## Formulario previo
 

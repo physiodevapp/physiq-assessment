@@ -120,6 +120,63 @@ async function walkRegion(page, region) {
   return { region, treeResult, finalPhase };
 }
 
+// Same golden path in modo breve (docs/modo-breve.md), again by real clicks:
+// embudo NO on every system (clicking each desktop tab), irritabilidad
+// directa, and «Resultados sin confirmar» from phase 4 straight to phase 5.
+// Checks the safety invariant in a real browser — with every embudo in NO,
+// the only screening questions still visible are the ones with `urgencia` —
+// and that phase 5 carries the transparency line and the pending tests.
+async function walkRegionBreve(page, region) {
+  await page.click('#modoConsulta .option-btn:has-text("Breve")');
+  await page.fill('#motivoConsulta', `Dolor de ${region} (breve)`);
+  await page.click('#mecanismo .option-btn >> nth=0');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+
+  await page.click(`[onclick="selectRegion('${region}', this)"]`);
+  await page.waitForTimeout(150);
+  const sisIds = await page.evaluate(() => [...document.querySelectorAll('#sistemaTabs .sistema-tab')].map(t => t.id.replace('tab_', '')));
+  for (const id of sisIds) {
+    await page.click(`#tab_${id}`);
+    await page.click(`#panel_${id} [data-embudo] .sq-btn.no`);
+  }
+  const screening = await page.evaluate(() => {
+    // Own computed display (not offsetParent): inactive tab panels are hidden as
+    // a whole, but the embudo rule is what must hide each non-urgent question.
+    const visibles = [...document.querySelectorAll('#sistemaPanels .sq2')].filter(el => getComputedStyle(el).display !== 'none');
+    return {
+      noUrgVisibles: visibles.filter(el => !el.classList.contains('sq2-urg')).length,
+      urgVisibles: visibles.filter(el => el.classList.contains('sq2-urg')).length,
+      urgTotal: document.querySelectorAll('#sistemaPanels .sq2.sq2-urg').length,
+      embudoNo: Object.values(state.sistemicoBreve).filter(v => v === 'NO').length,
+    };
+  });
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+
+  await page.click('#phase3 .nrs-btn >> nth=6');
+  await page.click('#irritabDirecta .option-btn >> nth=1');
+  const naturalezaOculta = await page.evaluate(() => getComputedStyle(document.getElementById('naturaleza').closest('.card')).display === 'none');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+
+  const treeResult = await walkCifTreeToCompletion(page);
+  await page.click('#btnSinConfirmar');
+  await page.waitForTimeout(150);
+
+  const fase5 = await page.evaluate(() => ({
+    phase: state.currentPhase,
+    transparencia: document.getElementById('resultsContent').textContent.includes('Valoración inicial breve'),
+    pendienteTests: document.getElementById('resultsContent').textContent.includes('Tests de confirmación sin hacer'),
+    irritab: state.irritabilidadDirecta && state.irritabilidadNivel === 'Moderada',
+  }));
+  const ok = treeResult.treeCompleteShown && fase5.phase === 5 && fase5.transparencia && fase5.irritab && naturalezaOculta
+    && screening.noUrgVisibles === 0 && screening.urgVisibles === screening.urgTotal && screening.embudoNo === sisIds.length
+    && (treeResult.activeHypotheses === 0 || fase5.pendienteTests);
+  return { region, ok, treeResult, screening, fase5, naturalezaOculta };
+}
+
 async function main() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
@@ -161,6 +218,16 @@ async function main() {
     results.push(r);
   }
 
+  console.log(`\nModo breve (embudo, irritabilidad directa, resultados sin confirmar) for all ${REGIONS.length} regions...`);
+  const breveResults = [];
+  for (const region of REGIONS) {
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    const r = await walkRegionBreve(page, region);
+    const sc = r.screening;
+    console.log(`  ${r.ok ? '✓' : '✗'} ${region.padEnd(9)} -> embudo NO en ${sc.embudoNo} sistemas, urgentes visibles ${sc.urgVisibles}/${sc.urgTotal}, no urgentes visibles ${sc.noUrgVisibles}, fase ${r.fase5.phase}, transparencia: ${r.fase5.transparencia}`);
+    breveResults.push(r);
+  }
+
   // Exercise the mobile phase-sheet button (the last real bug found,
   // PHASE_NAV_IDS) once, on whichever region the loop above ended on.
   await page.setViewportSize({ width: 390, height: 844 });
@@ -176,12 +243,17 @@ async function main() {
   realErrors.forEach(e => console.log('  -', e));
 
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
-  const pass = modulesOk && regionsOk && sheetOpen === true && realErrors.length === 0;
+  const breveOk = breveResults.every(r => r.ok);
+  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
     results.filter(r => !(r.treeResult.treeCompleteShown && r.finalPhase === 5))
       .forEach(r => console.log('  -', JSON.stringify(r)));
+  }
+  if (!breveOk) {
+    console.log('\nModo breve failures:');
+    breveResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
   }
   process.exit(pass ? 0 : 1);
 }

@@ -9,8 +9,9 @@ import './dom-shim.mjs';
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
 const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES } = await import('../data.js');
-const { calcLRScore, parseLR } = await import('../phase4b.js');
-const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio } = await import('../app.js');
+const { calcLRScore, parseLR, testPuntua } = await import('../phase4b.js');
+const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
+  buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../app.js');
 const { state } = await import('../state.js');
 const { rebuildHypotheses, pruneTreeFrom, resolveOptionTargets } = await import('../phase4.js');
 
@@ -171,6 +172,10 @@ test('every cluster reference points to an existing cluster rule', () => {
 console.log('\nbuildPhysiQPayload');
 
 const BASE_STATE = {
+  modo:             'completo',
+  sistemicoBreve:   {},
+  irritabilidadDirecta: false,
+  maxVisitedIdx:    5,
   patient:          'Juan García',
   region:           'hombro',
   motivoConsulta:   'Dolor hombro derecho',
@@ -1014,6 +1019,109 @@ test('cada hipótesis está en el archivo de su región', () => {
     Object.values(m.hypotheses).forEach(h => assert.equal(h.region, r, h.id));
   }
 });
+
+
+// ── Modo breve ────────────────────────────────────────────────────────────────
+console.log('\nmodo breve');
+
+const LUMBAR_SIS = SYSTEMIC_SCREENING.lumbar.sistemas;
+
+test('modo completo → sin pendientes, md "completo" y sin campo pe', () => {
+  withState({}, () => {
+    assert.deepEqual(getPendientesBreve(), []);
+    const p = buildPhysiQPayload();
+    assert.equal(p.md, 'completo');
+    assert.ok(!('pe' in p));
+  });
+});
+
+test('breve: sistemas con embudo en NO y sin responder salen como pendientes, cada uno en su lista', () => {
+  const [a, b, ...resto] = LUMBAR_SIS;
+  withState({ modo: 'breve', region: 'lumbar', sistemicoBreve: { [a.id]: 'NO', [b.id]: 'SI' } }, () => {
+    const t = getPendientesBreve().map(p => p.texto);
+    const embudo = t.find(x => x.startsWith('Cribado sistémico solo por embudo'));
+    const sinCribar = t.find(x => x.startsWith('Sistemas sin cribar'));
+    assert.ok(embudo.includes(a.nombre) && !embudo.includes(b.nombre), embudo);
+    resto.forEach(s => assert.ok(sinCribar.includes(s.nombre), s.nombre));
+    assert.ok(!sinCribar.includes(a.nombre) && !sinCribar.includes(b.nombre));
+  });
+});
+
+test('breve: todos los sistemas con embudo en SÍ → ningún pendiente de cribado', () => {
+  const todos = Object.fromEntries(LUMBAR_SIS.map(s => [s.id, 'SI']));
+  withState({ modo: 'breve', region: 'lumbar', sistemicoBreve: todos }, () => {
+    assert.ok(!getPendientesBreve().some(p => p.fase === 2));
+  });
+});
+
+test('breve: irritabilidad directa → pendiente y payload «(estimada)»', () => {
+  withState({ modo: 'breve', irritabilidadDirecta: true, irritabilidadNivel: 'Alta' }, () => {
+    assert.ok(getPendientesBreve().some(p => p.fase === 3));
+    assert.equal(buildPhysiQPayload().ir, 'Alta (estimada)');
+  });
+});
+
+test('breve: hipótesis sin ningún test pos/neg → pendiente de confirmación; con uno hecho, no', () => {
+  withState({ modo: 'breve', testResults: { h2: { 0: 'nd', 1: 'nd' } } }, () => {
+    assert.ok(getPendientesBreve().some(p => p.fase === '4b'));
+  });
+  withState({ modo: 'breve', testResults: { h2: { 0: 'pos' } } }, () => {
+    assert.ok(!getPendientesBreve().some(p => p.fase === '4b'));
+  });
+});
+
+test('breve: notas, informe y payload llevan la línea de valoración no exhaustiva; completo, no', () => {
+  const marca = 'Valoración inicial breve';
+  withState({ modo: 'breve', testResults: { h2: {} } }, () => {
+    const p = buildPhysiQPayload();
+    assert.equal(p.md, 'breve');
+    assert.ok(Array.isArray(p.pe) && p.pe.length > 0);
+    assert.ok(buildContextSummaryText().includes(marca));
+    const inf = buildInformeFisioterapiaText();
+    assert.ok(inf.includes(marca));
+    assert.ok(inf.includes('IMPRESIÓN CLÍNICA (hipótesis de trabajo, pendiente de confirmar)'));
+  });
+  withState({}, () => {
+    assert.ok(!buildContextSummaryText().includes(marca));
+    assert.ok(!buildInformeFisioterapiaText().includes(marca));
+  });
+});
+
+test('embudo: toda pregunta con `urgencia` lleva sq2-urg (el CSS nunca la pliega) y ninguna otra', () => {
+  for (const [region, data] of Object.entries(SYSTEMIC_SCREENING)) {
+    for (const sis of data.sistemas) {
+      const html = buildSistemaHTML(sis);
+      assert.ok(html.includes(`data-embudo="${sis.id}"`), `${region}/${sis.id} sin embudo`);
+      for (const q of sis.preguntas) {
+        const m = html.match(new RegExp(`<div class="(sq2[^"]*)" id="sq2_${q.id}"`));
+        assert.ok(m, `${region}/${q.id} no renderizada`);
+        assert.equal(m[1].split(' ').includes('sq2-urg'), !!q.urgencia, `${region}/${q.id}`);
+      }
+    }
+  }
+});
+
+test('testPuntua: LR útil sí; hallazgo, pronóstico y cluster sin regla útil, no', () => {
+  assert.equal(testPuntua({}, { lr_pos: '6' }), true);
+  assert.equal(testPuntua({}, { lr_neg: '0.2' }), true);
+  assert.equal(testPuntua({}, { lr_pos: '1.2', lr_neg: '0.9' }), false);
+  assert.equal(testPuntua({}, { lr_pos: '6', tipo: 'pronostico' }), false);
+  assert.equal(testPuntua({ clusters: { c: { lr_pos: '4' } } }, { cluster: 'c' }), true);
+  assert.equal(testPuntua({ clusters: { c: { lr_pos: '1.1' } } }, { cluster: 'c' }), false);
+});
+
+test('testPuntua coincide con calcLRScore: un test que no puntúa nunca cambia totalLR', () => {
+  for (const hyp of Object.values(HYPOTHESES)) {
+    hyp.tests.forEach((t, i) => {
+      if (testPuntua(hyp, t) || t.cluster) return;
+      for (const r of ['pos', 'neg']) {
+        assert.equal(calcLRScore(hyp, { [i]: r }).totalLR, 1, `${hyp.id}[${i}] ${r}`);
+      }
+    });
+  }
+});
+
+Object.assign(state, BASE_STATE);   // deja el modo en completo para lo que venga detrás
 
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
