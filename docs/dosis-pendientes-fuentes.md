@@ -1,6 +1,8 @@
 # Dosis pendientes — mapa de fuentes (septiembre 2026)
 
-**Nada de esto se ha copiado a `data/`.** El proxy de la sesión bloqueó todos los textos completos: PubMed, PMC, jospt.org, orthopt.org, bjsm.bmj.com y los espejos de PDF. Solo se pudieron leer títulos y fragmentos del buscador. Por la regla de la Fase D («nunca dar una cifra por buena desde un resumen de terceros»), este documento **localiza la fuente correcta de cada hipótesis y dice qué hay que comprobar en el PDF**. No propone dosis para pegar.
+**Actualización:** con la red abierta ya se han leído los textos completos de las guías de tobillo y pie (ver «Resumen»). Lo demás sigue sin copiarse a `data/`.
+
+**Nada de esto se ha copiado a `data/`** (salvo lo marcado ✅ Hecho). El proxy de la sesión bloqueó todos los textos completos: PubMed, PMC, jospt.org, orthopt.org, bjsm.bmj.com y los espejos de PDF. Solo se pudieron leer títulos y fragmentos del buscador. Por la regla de la Fase D («nunca dar una cifra por buena desde un resumen de terceros»), este documento **localiza la fuente correcta de cada hipótesis y dice qué hay que comprobar en el PDF**. No propone dosis para pegar.
 
 Leyenda:
 - **A — Hay fuente con pauta.** Guía de práctica clínica o ensayo con protocolo. Pedir el PDF y copiar la pauta literal con `fuente`.
@@ -22,7 +24,7 @@ Leyenda:
 ## Cervical (`ce12`–`ce14`)
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
-| ce12 | Dolor radicular | **A** | Kuijper 2009, BMJ 339:b3883 (n = 205, radiculopatía de <1 mes) · Blanpied 2017, JOSPT 47(7):A1–83, *Neck Pain Revision 2017* | Fragmento (Kuijper): 12 sesiones, 2 por semana, durante 6 semanas, más ejercicios en casa; o collarín semirrígido y reposo 3–6 semanas; ambos > esperar. Fragmento (Blanpied): tracción mecánica **intermitente** (no continua) combinada con ejercicio y movilización o manipulación, grado B, en dolor cervical **crónico** con dolor irradiado. Copiar los ejercicios concretos del apéndice de Kuijper |
+| ce12 | Dolor radicular | ✅ **Hecho** | Kuijper 2009, BMJ 339:b3883 (acceso abierto en PMC) · Blanpied 2017, JOSPT 47(7):A1–A83 (versión publicada, orthopt.org) | Kuijper: 12 sesiones en 6 semanas, sin terapia manual, ejercicio graduado + casa diario; o collarín semirrígido 3 + 3 semanas. La lista de ejercicios está en el apéndice web de BMJ (bloqueado): pedirla si se quiere concretar. Guía: agudo C, crónico B (tracción intermitente combinada) |
 | ce13 | Mareo cervicogénico | **A** | Reid 2014, Phys Ther (SNAG de Mulligan frente a Maitland; n = 86) · seguimiento a largo plazo, Man Ther 2015 | Fragmento: 2–6 sesiones en 6 semanas; ambas técnicas reducen el mareo hasta las 12 semanas. Comprobar la pauta de autoSNAG en casa (repeticiones y veces al día) |
 | ce14 | Idiopático | B | Blanpied 2017 (categoría «dolor cervical con déficit de movilidad») | Pauta por fase aguda/subaguda/crónica. Comprobar qué parámetros da la guía |
 
@@ -36,7 +38,7 @@ Leyenda:
 | ro12 | Inestabilidad rotuliana | B | ESSKA 2024, consenso formal sobre la primera luxación de rótula, parte 2 (KSSTA, acceso libre) | Fragmento: ninguna ortesis es superior a no llevarla (solo quizá, muy poco tiempo, en fase aguda y sin limitar el rango); movilidad activa y fuerza precoces; sin diferencia en las reluxaciones entre carga parcial y total. Copiar sus afirmaciones literales |
 | ro13 | Grasa de Hoffa | D | — | — |
 | ro14 | Bursitis pre e infrarrotuliana | C/D | — | Si hay sospecha séptica, derivar (ya está en el cribado de rodilla) |
-| ro15 | Osgood-Schlatter / SLJ | **A** | Rathleff 2020, Orthop J Sports Med 8(4):2325967120911106 (acceso libre; n = 51, 10–14 años) | Fragmento: bloque 1 (semanas 0–4), dejar el deporte y las actividades que duelen; luego fuerza progresiva con reincorporación guiada por el dolor. Éxito del 80 % a las 12 semanas y del 90 % a los 12 meses; vuelta al deporte del 16 % a las 12 semanas y del 69 % a los 12 meses. Copiar los ejercicios y la regla del dolor del apéndice |
+| ro15 | Osgood-Schlatter / SLJ | ✅ **Hecho** (solo Osgood) | Rathleff 2020, Orthop J Sports Med 8(4) (acceso abierto en PMC; apéndice 1 descargado) | Es una **serie de casos, nivel 4**, sin grupo control (no una cohorte comparativa). **Excluyó el Sinding-Larsen-Johansson**: la dosis lo dice. Pauta completa del apéndice: isométricos y puente 4 semanas, 3 niveles de fuerza y escalera de 11 escalones con dolor ≤2/10 |
 | ro16 | Lesión osteocondral | C/D | — | Si es inestable, derivar |
 | ro17 | Plica | D | — | — |
 | ro18 | Tibioperonea proximal | D | — | — |
@@ -52,14 +54,14 @@ Leyenda:
 ## Tobillo y pie (`tp1`–`tp36`)
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
-| tp1 | Esguince lateral agudo | **A/B** | Martin 2021, JOSPT 51(4):CPG1–80, *Lateral Ankle Ligament Sprains Revision 2021* | Fragmento: movilización precoz y carga óptima; si se inmoviliza, ≤10 días; ejercicio neuromuscular y propioceptivo precoz; tobillera profiláctica y equilibrio para prevenir recidivas. Comprobar si hay parámetros |
+| tp1 | Esguince lateral agudo | ✅ **Hecho** | Martin 2021, JOSPT 51(4):CPG1–CPG80 (versión publicada, orthopt.org) | En `data/tobillo_pie.js` con los grados. La guía dice expresamente que no se puede recomendar modalidad ni volumen de ejercicio; el único número es la inmovilización ≤10 días en los graves |
 | tp2 | Sindesmosis | C/B | — | Las inestables van a derivación. Pedir consenso (p. ej. BJSM) si se quiere pauta conservadora |
 | tp3 | Rotura del Aquiles | C | — | Derivar. El tratamiento funcional frente a la cirugía lo decide traumatología |
 | tp4 | Lisfranc | C | — | Derivar |
 | tp5 | Fracturas (5.º MT, calcáneo) | C | — | Derivar |
 | tp6 | Luxación del tibial posterior | C | — | Derivar |
 | tp7 | Pinzamiento posterior | D | — | — |
-| tp8 | Aquiles, porción media | **A** | Chimenti 2024, JOSPT, *Midportion Achilles Tendinopathy Revision 2024* (acceso libre en jospt.org/orthopt.org) | Fragmento: carga del tendón (cualquier tipo de contracción: excéntrica, concéntrica, isométrica, HSR, pliometría) **como primera línea**, con carga tan alta como se tolere, **al menos 2 veces por semana**, salvo tendón frágil. Copiar la recomendación literal y su grado |
+| tp8 | Aquiles, porción media | ✅ **Hecho** | Chimenti 2024, JOSPT 54(12):CPG1–CPG32 (versión publicada, orthopt.org) | **Corrección:** la guía de 2024 dice **al menos 3 veces por semana** (grado E), no 2: el «2» del fragmento era la recomendación de 2018 (grado F). Frecuencia, sesiones y duración no parecen cambiar el resultado |
 | tp9 | Aquiles insercional | A (evidencia baja) | Jonsson 2008, BJSM 42:746–749 (piloto sin grupo control) | Fragmento: excéntrico de puntillas al suelo **sin dorsiflexión**; 67 % satisfechos. Copiar el protocolo (series, repeticiones, semanas) del PDF y dejar clara la calidad de la evidencia |
 | tp10 | Vaina del Aquiles | D | — | — |
 | tp11 | Plantar delgado | D | — | — |
@@ -72,12 +74,12 @@ Leyenda:
 | tp18 | Seno del tarso | D | — | — |
 | tp19 | Peroneos | D | — | — |
 | tp20 | Pinzamiento anterior | D | — | — |
-| tp21 | Inestabilidad crónica | **A** | McKeon 2008, Med Sci Sports Exerc (ensayo aleatorizado, n = 31) · Martin 2021 (la misma guía que tp1) · metaanálisis de dosis de equilibrio, BMC Musculoskelet Disord 2024 (doi 10.1186/s12891-024-07800-8) | Fragmento (McKeon): 4 semanas, 12 sesiones supervisadas de 20 min, programa progresivo de salto a estabilización (5 tareas × 7 niveles). Comprobar en el metaanálisis qué dosis total recomienda |
+| tp21 | Inestabilidad crónica | ✅ **Hecho** (falta McKeon) | Martin 2021 (misma guía que tp1) · Liu 2025, BMC Sports Sci Med Rehabil 17:335 (metaanálisis de dosis, acceso abierto, 26 ensayos) | La guía no fija dosis. Liu, análisis de subgrupos exploratorio y certeza de muy baja a moderada: terapia manual 1–2/semana ≤4 semanas (CAIT); multimodal 1–2/semana 5–8 semanas (FAAM). McKeon 2008 (MSSE) sigue de pago: pedir el PDF si se quiere su protocolo concreto |
 | tp22 | Sinovitis postraumática | D | — | — |
 | tp23 | Coalición tarsiana | C | — | Derivar si hay rigidez o espasmo peroneo |
 | tp24 | Artrosis de tobillo o pie | D | — | — |
 | tp25 | Osteocondritis del astrágalo | C/D | — | — |
-| tp26 | Dolor plantar crónico del talón | **A/B** | Koc 2023, JOSPT, *Heel Pain – Plantar Fasciitis Revision 2023* (acceso libre) | Fragmento: terapia manual, estiramiento específico de la fascia y del tríceps sural, vendaje y férula nocturna como núcleo; láser de baja intensidad como adyuvante. Comprobar si hay parámetros de estiramiento (tiempo, veces al día) |
+| tp26 | Dolor plantar crónico del talón | ✅ **Hecho** | Koc 2023, JOSPT 53(12):CPG1–CPG39 (versión publicada: `Heel_Pain_Plantar_Fasciitis_revision_2023_1_.pdf` en orthopt.org) | **Ojo:** `Heel_Pain_Plantar_Fasciitis_Revision_2023.pdf` en orthopt.org es el **borrador** para revisión y difiere (p. ej. ejercicio C en el borrador, B en la publicada). Parámetros de la tabla de intervención: vendaje 1 a ≤6 semanas, férula nocturna 1–3 meses, láser 2–3 puntos con dosis por punto, punción seca 1–6 sesiones. La dosis del estiramiento no está establecida |
 | tp27 | Almohadilla grasa del talón | D | — | — |
 | tp28 | Atrapamiento nervioso del talón | D | — | — |
 | tp29 | Calcaneocuboidea y cubometatarsiana | D | — | — |
@@ -93,7 +95,8 @@ Leyenda:
 Solo se miró una fuente. **ca16 (aductor)**: Hölmich 1999, Lancet 353:439–443, *Effectiveness of active physical training as treatment for long-standing adductor-related groin pain* (ensayo aleatorizado). Fragmento: 23 frente a 4 volvieron al deporte sin dolor (OR 12,7, IC 3,4–47,2). Copiar el protocolo de 8–12 semanas del PDF. El Copenhagen de aductores tiene revisiones sobre todo en prevención y fuerza, no como tratamiento de primera línea. El resto de la cadera queda sin revisar.
 
 ## Resumen
-- **Con fuente de pauta y a falta solo del PDF (A):** ce12, ce13, ro15, tp8, tp9, tp14, tp21, y tp1/tp26 si la guía da parámetros; en cadera, ca16.
+- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp21, tp26, ce12 y ro15, con `dosisFuente`.
+- **Con fuente de pauta, a falta del PDF de pago (A):** ce13 (Reid 2014), tp9 (Jonsson 2008), tp14 (Kulig 2009); en cadera, ca16 (Hölmich 1999). McKeon 2008 completaría tp21.
 - **Derivación antes que dosis (C):** h11, ro11, tp3–tp6, tp17, tp30, tp35 y las de grado alto de ro10, tp2, tp23. Propuesta: sustituir `dosis: ''` por un texto de derivación (decisión del usuario).
 - **Sin evidencia de dosis específica (D):** la mayoría de las entidades raras de tobillo y pie, rodilla y lumbar. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
