@@ -98,7 +98,7 @@ async function walkRegion(page, region) {
 
   await page.click('#phase3 .nrs-btn >> nth=6');
   await page.evaluate(() => {
-    ['naturaleza', 'estadio', 'estabilidad'].forEach(g => document.getElementById(g)?.querySelector('.option-btn')?.click());
+    ['naturaleza', 'estabilidad'].forEach(g => document.getElementById(g)?.querySelector('.option-btn')?.click());
   });
   await page.fill('#signoComparable', `Signo comparable de ${region}`);
   await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
