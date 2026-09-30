@@ -1021,6 +1021,15 @@ test('cada hipótesis está en el archivo de su región', () => {
 });
 
 
+test('dosisFuente solo acompaña a una dosis escrita (nunca cita algo vacío)', () => {
+  for (const h of Object.values(HYPOTHESES)) {
+    if (h.dosisFuente !== undefined) {
+      assert.ok(typeof h.dosisFuente === 'string' && h.dosisFuente.trim(), `${h.id}: dosisFuente vacía`);
+      assert.ok(h.dosis && h.dosis.trim(), `${h.id}: dosisFuente sin dosis`);
+    }
+  }
+});
+
 // ── Modo breve ────────────────────────────────────────────────────────────────
 console.log('\nmodo breve');
 

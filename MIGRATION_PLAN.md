@@ -115,7 +115,7 @@ Objetivo: llevar a cada región de PhysiQ lo que ya se hizo con lumbar (PRs #81�
 | Rodilla | tarjeta + formulario | [x] | [x] | [x] | Hecho (ver notas). Todas las LR nuevas verificadas con los PDF; S del LCA corregida en la tarjeta. Pendiente: dosis de `ro8`–`ro20` |
 | Hombro | tarjeta + formulario (sin URGENCIA) | — | [x] | [x] | Hecho (ver notas). Clusters del manguito y AC verificados con los PDF; nota AC de la tarjeta corregida (Paxinos + gammagrafía, no + O'Brien). O'Brien de SLAP a hallazgo (Hegedus 2012). Pendiente: dosis de `h10`–`h11` |
 | Codo | **sin tarjeta** | — | solo auditar LR | — | No hay contenido de guía que integrar |
-| Tobillo y pie | tarjeta + formulario | [x] | [x] | [x] | Región nueva (ver notas). LR verificadas con los PDF: puntúan Thompson, hueco palpable, Ottawa (LR−) y Molloy. Pendiente: dosis de `tp1`–`tp36` |
+| Tobillo y pie | tarjeta + formulario | [x] | [x] | [x] | Región nueva (ver notas). LR verificadas con los PDF: puntúan Thompson, hueco palpable, Ottawa (LR−) y Molloy. Dosis con fuente: `tp1`, `tp8`, `tp21`, `tp26` (guías JOSPT; ver Fase E). Pendiente: dosis del resto de `tp1`–`tp36` |
 
 Orden sugerido: cadera → cervical → rodilla → hombro → auditoría de LR de codo.
 
@@ -148,5 +148,6 @@ Diseño, decisiones y diferencias con lo implementado en `docs/modo-breve.md`. M
 
 - [x] Decidir las 5 cuestiones abiertas de `docs/modo-breve.md` (las cinco según la recomendación)
 - [x] Implementar el modo breve (`state.modo`, embudo de fase 2, 4b opcional, pendientes y transparencia en los resúmenes). Verificado: `tests/unit.js` (9 tests nuevos, entre ellos que ninguna pregunta de urgencia se pliega) y `tests/smoke.mjs` con recorrido breve en las 7 regiones; revisión a mano a 390 px (embudo en acordeón, bloqueo del NO con respuestas SÍ, restauración de sesión, confirmación al pasar a completa)
-- [ ] Dosis tipo A (ce12, ce13, ro15, tp8, tp9, tp14, tp21, tp1, tp26, ca16): verificar con los PDF y copiar la pauta literal con `fuente`
+- [x] Dosis tipo A de tobillo y pie con texto completo de acceso abierto: `tp1`, `tp8`, `tp21`, `tp26` (campo nuevo `dosisFuente`). Las tres guías APTA/JOSPT (Martin 2021, Chimenti 2024, Koc 2023) casi no dan volumen: la dosis dice lo que recomiendan con su grado y, cuando no fijan series ni semanas, lo dice. Dos avisos para futuras sesiones: el PDF `Heel_Pain_Plantar_Fasciitis_Revision_2023.pdf` de orthopt.org es un borrador (usar `…revision_2023_1_.pdf`), y la frecuencia de la guía del Aquiles 2024 es ≥3/semana, no la de 2018 (≥2).
+- [ ] Dosis tipo A que necesitan PDF de pago: `tp9` (Jonsson 2008), `tp14` (Kulig 2009), McKeon 2008 para `tp21`; y fuera de tobillo, `ce12`, `ce13`, `ro15`, `ca16`
 - [ ] Decidir si las hipótesis de derivación (tipo C) llevan un texto de derivación en lugar de `dosis: ''`
