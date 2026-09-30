@@ -25,7 +25,7 @@ Leyenda:
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
 | ce12 | Dolor radicular | ✅ **Hecho** | Kuijper 2009, BMJ 339:b3883 (acceso abierto en PMC) · Blanpied 2017, JOSPT 47(7):A1–A83 (versión publicada, orthopt.org) | Kuijper: 12 sesiones en 6 semanas, sin terapia manual, ejercicio graduado + casa diario; o collarín semirrígido 3 + 3 semanas. La lista de ejercicios está en el apéndice web de BMJ (bloqueado): pedirla si se quiere concretar. Guía: agudo C, crónico B (tracción intermitente combinada) |
-| ce13 | Mareo cervicogénico | **A** | Reid 2014, Phys Ther (SNAG de Mulligan frente a Maitland; n = 86) · seguimiento a largo plazo, Man Ther 2015 | Fragmento: 2–6 sesiones en 6 semanas; ambas técnicas reducen el mareo hasta las 12 semanas. Comprobar la pauta de autoSNAG en casa (repeticiones y veces al día) |
+| ce13 | Mareo cervicogénico | ✅ **Hecho** | Reid 2014, Phys Ther 94(4):466–476 (PDF del usuario; doble ciego frente a placebo, n = 86) | Población: mareo crónico ≥3 meses con dolor o rigidez cervical. SNAG (6 rep., autoSNAG 6 rep./día) o Maitland (3 × 30 s por nivel, hasta 3 niveles, + movilidad 3 rep./dirección/día); 2–6 sesiones en 6 semanas |
 | ce14 | Idiopático | B | Blanpied 2017 (categoría «dolor cervical con déficit de movilidad») | Pauta por fase aguda/subaguda/crónica. Comprobar qué parámetros da la guía |
 
 ## Rodilla (`ro8`–`ro20`)
@@ -62,19 +62,19 @@ Leyenda:
 | tp6 | Luxación del tibial posterior | C | — | Derivar |
 | tp7 | Pinzamiento posterior | D | — | — |
 | tp8 | Aquiles, porción media | ✅ **Hecho** | Chimenti 2024, JOSPT 54(12):CPG1–CPG32 (versión publicada, orthopt.org) | **Corrección:** la guía de 2024 dice **al menos 3 veces por semana** (grado E), no 2: el «2» del fragmento era la recomendación de 2018 (grado F). Frecuencia, sesiones y duración no parecen cambiar el resultado |
-| tp9 | Aquiles insercional | A (evidencia baja) | Jonsson 2008, BJSM 42:746–749 (piloto sin grupo control) | Fragmento: excéntrico de puntillas al suelo **sin dorsiflexión**; 67 % satisfechos. Copiar el protocolo (series, repeticiones, semanas) del PDF y dejar clara la calidad de la evidencia |
+| tp9 | Aquiles insercional | ✅ **Hecho** (evidencia baja) | Jonsson 2008, BJSM 42:746–749 (PDF del usuario; piloto sin grupo control) | Excéntrico sin dorsiflexión, rodilla extendida, 3 × 15 dos veces al día, 7 días/semana, 12 semanas, con dolor permitido y carga en mochila |
 | tp10 | Vaina del Aquiles | D | — | — |
 | tp11 | Plantar delgado | D | — | — |
 | tp12 | Nervio sural | D | — | — |
 | tp13 | Bursitis calcánea superficial | D | — | — |
-| tp14 | Tendinopatía del tibial posterior | **A** | Kulig 2009, Phys Ther 89(1):26–37 (ensayo aleatorizado, n = 36, estadios I–II) | Fragmento: 3 meses de ortesis más estiramientos (todos los grupos mejoran); el excéntrico añadido da efecto moderado frente al concéntrico o solo ortesis. Copiar la pauta excéntrica y la de estiramiento |
+| tp14 | Tendinopatía del tibial posterior | ✅ **Hecho** | Kulig 2009, Phys Ther 89(1):26–37 (PDF del usuario; ensayo aleatorizado, n = 36) | Plantillas + estiramiento 3 × 30 s 2/día + aducción resistida del pie con flexión plantar 3 × 15 2/día, 12 semanas. Ojo: usó un aparato de muelles específico (TibPost Loader); la dosis lo dice |
 | tp15 | Flexor largo del primer dedo | D | — | — |
 | tp16 | Túnel del tarso | D | — | — |
 | tp17 | Fractura de estrés (maléolo medial, astrágalo, calcáneo) | C | Warden 2014, JOSPT 44(10):749–765 | Clasificación de alto y bajo riesgo: el maléolo medial es de alto riesgo, así que derivar y descargar. Copiar la pauta de vuelta a la carrera solo para las de bajo riesgo |
 | tp18 | Seno del tarso | D | — | — |
 | tp19 | Peroneos | D | — | — |
 | tp20 | Pinzamiento anterior | D | — | — |
-| tp21 | Inestabilidad crónica | ✅ **Hecho** (falta McKeon) | Martin 2021 (misma guía que tp1) · Liu 2025, BMC Sports Sci Med Rehabil 17:335 (metaanálisis de dosis, acceso abierto, 26 ensayos) | La guía no fija dosis. Liu, análisis de subgrupos exploratorio y certeza de muy baja a moderada: terapia manual 1–2/semana ≤4 semanas (CAIT); multimodal 1–2/semana 5–8 semanas (FAAM). McKeon 2008 (MSSE) sigue de pago: pedir el PDF si se quiere su protocolo concreto |
+| tp21 | Inestabilidad crónica | ✅ **Hecho** | Martin 2021 · Liu 2025 · McKeon 2008, Med Sci Sports Exerc 40(10):1810–1819 (PDF del usuario) | La guía no fija dosis; Liu, orientativo; McKeon da el protocolo concreto (12 sesiones de 20 min en 4 semanas, saltos a estabilización con 7 niveles) |
 | tp22 | Sinovitis postraumática | D | — | — |
 | tp23 | Coalición tarsiana | C | — | Derivar si hay rigidez o espasmo peroneo |
 | tp24 | Artrosis de tobillo o pie | D | — | — |
@@ -92,11 +92,11 @@ Leyenda:
 | tp36 | Apofisitis pediátricas (Sever, Iselin, Köhler, Freiberg) | B (por analogía) | Rathleff 2020 (Osgood) | Solo por analogía: no hay ensayo para Sever. Si se usa, decirlo. Köhler y Freiberg van a derivación |
 
 ## Cadera (`ca11`–`ca19`, también pendientes, no pedidas)
-Solo se miró una fuente. **ca16 (aductor)**: Hölmich 1999, Lancet 353:439–443, *Effectiveness of active physical training as treatment for long-standing adductor-related groin pain* (ensayo aleatorizado). Fragmento: 23 frente a 4 volvieron al deporte sin dolor (OR 12,7, IC 3,4–47,2). Copiar el protocolo de 8–12 semanas del PDF. El Copenhagen de aductores tiene revisiones sobre todo en prevención y fuerza, no como tratamiento de primera línea. El resto de la cadera queda sin revisar.
+Solo se miró una fuente. **ca16 (aductor)**: ✅ **Hecho** con Hölmich 1999, Lancet 353:439–443 (PDF del usuario; ensayo aleatorizado, n = 68): programa activo de 8–12 semanas en dos módulos, con las series del panel 1 del artículo. El resto de la cadera (ca11–ca15, ca17–ca19) queda sin revisar.
 
 ## Resumen
-- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp21, tp26, ce12 y ro15, con `dosisFuente`.
-- **Con fuente de pauta, a falta del PDF de pago (A):** ce13 (Reid 2014), tp9 (Jonsson 2008), tp14 (Kulig 2009); en cadera, ca16 (Hölmich 1999). McKeon 2008 completaría tp21.
+- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`.
+- **Con fuente de pauta, a falta del PDF de pago (A):** ninguna.
 - **Derivación antes que dosis (C), hecho:** h11, ro11, tp3–tp6, tp17, tp30 y tp35 llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
 - **Sin evidencia de dosis específica (D):** la mayoría de las entidades raras de tobillo y pie, rodilla y lumbar. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
