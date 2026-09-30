@@ -8,7 +8,7 @@ import './dom-shim.mjs';
 // Real ES modules, loaded only after the shims above are in place — app.js,
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
-const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES } = await import('../data.js');
+const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, DOSIS_DERIVAR } = await import('../data.js');
 const { calcLRScore, parseLR, testPuntua } = await import('../phase4b.js');
 const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../app.js');
@@ -1028,6 +1028,12 @@ test('dosisFuente solo acompaña a una dosis escrita (nunca cita algo vacío)', 
       assert.ok(h.dosis && h.dosis.trim(), `${h.id}: dosisFuente sin dosis`);
     }
   }
+});
+
+test('hipótesis de derivación: texto fijo, sin fuente, y solo las decididas', () => {
+  const derivar = Object.values(HYPOTHESES).filter(h => h.dosis === DOSIS_DERIVAR).map(h => h.id).sort();
+  assert.deepEqual(derivar, ['h11', 'ro11', 'tp17', 'tp3', 'tp30', 'tp35', 'tp4', 'tp5', 'tp6']);
+  derivar.forEach(id => assert.ok(!HYPOTHESES[id].dosisFuente, `${id}: una derivación no lleva fuente de dosis`));
 });
 
 // ── Modo breve ────────────────────────────────────────────────────────────────
