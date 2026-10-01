@@ -14,7 +14,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 - **88** referencias de literatura, con **175** usos.
 - **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
-- **5** de 89 referencias del registro revisadas. Ver «Estado de revisión».
+- **12** de 89 referencias del registro revisadas. Ver «Estado de revisión».
 - **105** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -51,7 +51,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Solomon 2001](#solomon-2001) | puntuación 4b · texto | 3 | **sin revisar** |
 | [Bachmann 2003](#bachmann-2003) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | **sin revisar** |
-| [Narvani 2003](#narvani-2003) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Chronopoulos 2004](#chronopoulos-2004) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Park 2005](#park-2005) | puntuación 4b | 2 | **sin revisar** |
@@ -72,16 +71,13 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | **sin revisar** |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Décary 2018](#décary-2018) | puntuación 4b | 4 | **sin revisar** |
-| [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar | 5 | **sin revisar** |
 | [Park 2019](#park-2019) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | **sin revisar** |
 | [Getsoian 2020](#getsoian-2020) | puntuación 4b | 1 | **sin revisar** |
-| [Pålsson 2020](#pålsson-2020) | puntuación 4b | 1 | **sin revisar** |
 | [Saueressig 2021](#saueressig-2021) | puntuación 4b | 1 | **sin revisar** |
 | [Demont 2022](#demont-2022) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Gomes 2022](#gomes-2022) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | **sin revisar** |
-| [Wong 2022](#wong-2022) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 | 1 | **sin revisar** |
@@ -98,7 +94,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Chimenti 2024](#chimenti-2024) | pauta | 1 | **sin revisar** |
 | [Liu 2025](#liu-2025) | pauta | 1 | **sin revisar** |
 | [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 296 | **sin revisar** |
-| [NICE NG226](#nice-ng226) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Katz 1995](#katz-1995) | test 4b sin puntuar | 1 | **sin revisar** |
 | [van Dijk 1996](#van-dijk-1996) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Kim 2001](#kim-2001) | test 4b sin puntuar | 1 | **sin revisar** |
@@ -121,17 +116,22 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Tawa 2017](#tawa-2017) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · texto | 4 | **sin revisar** |
 | [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | **sin revisar** |
-| [Adib 2023](#adib-2023) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Williams 2025](#williams-2025) | test 4b sin puntuar | 1 | **sin revisar** |
-| [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Hutchison 2013](#hutchison-2013) | texto | 1 | **sin revisar** |
 | [Großterlinden 2016](#großterlinden-2016) | texto | 1 | **sin revisar** |
 | [Frey 2017](#frey-2017) | texto | 1 | **sin revisar** |
+| [Narvani 2003](#narvani-2003) | puntuación 4b · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: chasquido S 100 %, E 85 % y «Thomas ni sensible ni específico» comprobados en el resumen. |
+| [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
+| [Pålsson 2020](#pålsson-2020) | puntuación 4b | 1 | 2026-10 · Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015). |
+| [Wong 2022](#wong-2022) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras. |
+| [NICE NG226](#nice-ng226) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo respalda el diagnóstico clínico (edad ≥45, dolor con la actividad, rigidez matutina ausente o ≤30 min), sin S ni E; no puntúa. No se pudo abrir nice.org.uk (bloqueado por la red) para comprobar si hay actualización. |
 | [Altman 1991](#altman-1991) | test 4b sin puntuar · texto | 2 | 2026-10 · S 86 % / E 75 % del árbol clínico comprobadas en el resumen, pero son de la muestra de desarrollo; en atención primaria los criterios no se sostienen (Bierma-Zeinstra 1999, Reijman 2004) y no hay S/E de ese ámbito. Los criterios ACR de cadera (ca1) pasan a hallazgo, sin puntuar. |
 | [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído (PubMed 10332979): el texto completo no es accesible. No da S ni E de los criterios clínicos. |
 | [Reijman 2004](#reijman-2004) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído: en PMC (PMC1754907) el cuerpo es un PDF escaneado que no se pudo descargar. |
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
+| [Adib 2023](#adib-2023) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015). |
+| [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo. |
 | [Altman 1986](#altman-1986) | texto | 2 | 2026-10 · Sustituida por Peat 2006 en los criterios del ACR de rodilla (ro1): su S 95 % / E 69 % sale de la muestra de desarrollo, no del ámbito de un fisio. Solo queda citada como contexto en el texto del test. |
 
 ## 1. Tarjetas de consulta
@@ -578,9 +578,9 @@ la lista «Citada como» los distingue.
 
 ### Adib 2023
 
-Publicación: Am J Sports Med  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Am J Sports Med 51(4):1007–14  
+DOI: 10.1177/03635465221149748  
+Última revisión: 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015).
 
 Citada como:
 
@@ -985,9 +985,9 @@ Citada como:
 
 ### Halliwell 2026
 
-Publicación: Arthroscopy  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Arthroscopy 42(4):745–52  
+DOI: 10.1002/arj.70074  
+Última revisión: 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo.
 
 Citada como:
 
@@ -1451,9 +1451,9 @@ Citada como:
 
 ### Metcalfe 2019
 
-Publicación: JAMA  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: JAMA 322(23):2323–33  
+DOI: 10.1001/jama.2019.19413  
+Última revisión: 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera.
 
 Citada como:
 
@@ -1489,9 +1489,9 @@ Citada como:
 
 ### Narvani 2003
 
-Publicación: Knee Surg Sports Traumatol Arthrosc  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Knee Surg Sports Traumatol Arthrosc 11(6):403–8  
+DOI: 10.1007/s00167-003-0390-7  
+Última revisión: 2026-10 · Sin cambios: chasquido S 100 %, E 85 % y «Thomas ni sensible ni específico» comprobados en el resumen.
 
 Citada como:
 
@@ -1528,7 +1528,7 @@ Citada como:
 
 Publicación: Guía NICE (2022)  
 DOI: —  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: solo respalda el diagnóstico clínico (edad ≥45, dolor con la actividad, rigidez matutina ausente o ≤30 min), sin S ni E; no puntúa. No se pudo abrir nice.org.uk (bloqueado por la red) para comprobar si hay actualización.
 
 Citada como:
 
@@ -1556,9 +1556,9 @@ Citada como:
 
 ### Pålsson 2020
 
-Publicación: Knee Surg Sports Traumatol Arthrosc  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Knee Surg Sports Traumatol Arthrosc 28(10):3382–92  
+DOI: 10.1007/s00167-020-06005-5  
+Última revisión: 2026-10 · Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015).
 
 Citada como:
 
@@ -1931,9 +1931,9 @@ Citada como:
 
 ### Wong 2022
 
-Publicación: Curr Rev Musculoskelet Med  
-DOI: —  
-Última revisión: **sin revisar**  
+Publicación: Curr Rev Musculoskelet Med 15:38–52  
+DOI: 10.1007/s12178-022-09745-8  
+Última revisión: 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras.  
 Nota: Solo para la técnica del test.
 
 Citada como:

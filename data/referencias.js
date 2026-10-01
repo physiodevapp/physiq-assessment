@@ -42,8 +42,14 @@ export const REFERENCIAS = {
     citadaComo: ['Criterio de Goodman'],
     nota: 'El cribado de fase 2 lo cita sin año («Criterio de Goodman (cap. 14)»).'
   },
-  'NICE NG226': { publicacion: 'Guía NICE (2022)', doi: '', revision: null },
-  'Adib 2023': { publicacion: 'Am J Sports Med', doi: '', revision: null },
+  'NICE NG226': {
+    publicacion: 'Guía NICE (2022)', doi: '',
+    revision: { fecha: '2026-10', resultado: 'Sin cambios: solo respalda el diagnóstico clínico (edad ≥45, dolor con la actividad, rigidez matutina ausente o ≤30 min), sin S ni E; no puntúa. No se pudo abrir nice.org.uk (bloqueado por la red) para comprobar si hay actualización.' }
+  },
+  'Adib 2023': {
+    publicacion: 'Am J Sports Med 51(4):1007–14', doi: '10.1177/03635465221149748',
+    revision: { fecha: '2026-10', resultado: 'Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015).' }
+  },
   'Altman 1986': {
     publicacion: 'Arthritis Rheum 29(8):1039–49', doi: '10.1002/art.1780290816',
     revision: { fecha: '2026-10', resultado: 'Sustituida por Peat 2006 en los criterios del ACR de rodilla (ro1): su S 95 % / E 69 % sale de la muestra de desarrollo, no del ámbito de un fisio. Solo queda citada como contexto en el texto del test.' },
@@ -79,7 +85,10 @@ export const REFERENCIAS = {
   'Gomes 2022': { publicacion: 'BMC Musculoskelet Disord 23:885', doi: '', revision: null },
   'Grimaldi 2017': { publicacion: 'Br J Sports Med', doi: '', revision: null },
   'Großterlinden 2016': { publicacion: '', doi: '', revision: null, nota: 'Citado a través de Netterström-Wedin 2021.' },
-  'Halliwell 2026': { publicacion: 'Arthroscopy', doi: '', revision: null },
+  'Halliwell 2026': {
+    publicacion: 'Arthroscopy 42(4):745–52', doi: '10.1002/arj.70074',
+    revision: { fecha: '2026-10', resultado: 'Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo.' }
+  },
   'Han 2023': { publicacion: 'eClinicalMedicine', doi: '', revision: null },
   'Hancock 2007': { publicacion: '', doi: '', revision: null, nota: 'Cifra anterior, sustituida por Han 2023 (se menciona en la cita).' },
   'Hegedus 2012': { publicacion: 'Br J Sports Med 46:964–978', doi: '', revision: null },
@@ -109,12 +118,21 @@ export const REFERENCIAS = {
   'Maxwell y Sterling 2013': { publicacion: 'Man Ther 18:172–174', doi: '', revision: null },
   'McCarthy y Busconi 1995': { publicacion: 'Can J Surg', doi: '', revision: null },
   'McKeon 2008': { publicacion: 'Med Sci Sports Exerc 40(10):1810–1819', doi: '', revision: null },
-  'Metcalfe 2019': { publicacion: 'JAMA', doi: '', revision: null },
+  'Metcalfe 2019': {
+    publicacion: 'JAMA 322(23):2323–33', doi: '10.1001/jama.2019.19413',
+    revision: { fecha: '2026-10', resultado: 'Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera.' }
+  },
   'Molloy 2003': { publicacion: 'J Bone Joint Surg Br 85-B(3)', doi: '', revision: null },
-  'Narvani 2003': { publicacion: 'Knee Surg Sports Traumatol Arthrosc', doi: '', revision: null },
+  'Narvani 2003': {
+    publicacion: 'Knee Surg Sports Traumatol Arthrosc 11(6):403–8', doi: '10.1007/s00167-003-0390-7',
+    revision: { fecha: '2026-10', resultado: 'Sin cambios: chasquido S 100 %, E 85 % y «Thomas ni sensible ni específico» comprobados en el resumen.' }
+  },
   'Netterström-Wedin 2021': { publicacion: 'Phys Ther Sport 49:214–26', doi: '', revision: null },
   'Nunes 2013': { publicacion: 'Phys Ther Sport 14:54–9', doi: '', revision: null },
-  'Pålsson 2020': { publicacion: 'Knee Surg Sports Traumatol Arthrosc', doi: '', revision: null },
+  'Pålsson 2020': {
+    publicacion: 'Knee Surg Sports Traumatol Arthrosc 28(10):3382–92', doi: '10.1007/s00167-020-06005-5',
+    revision: { fecha: '2026-10', resultado: 'Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015).' }
+  },
   'Paquin 2022': { publicacion: 'Arch Physiother 12:26', doi: '', revision: null },
   'Park 2005': { publicacion: 'J Bone Joint Surg Am', doi: '', revision: null },
   'Park 2008': { publicacion: 'Arch Phys Med Rehabil 89:738–742', doi: '', revision: null },
@@ -143,7 +161,10 @@ export const REFERENCIAS = {
   'Walton 2004': { publicacion: 'J Bone Joint Surg Am', doi: '', revision: null },
   'Warden 2007': { publicacion: 'Am J Sports Med 35:427–36', doi: '', revision: null },
   'Williams 2025': { publicacion: 'J Man Manip Ther', doi: '', revision: null },
-  'Wong 2022': { publicacion: 'Curr Rev Musculoskelet Med', doi: '', revision: null, nota: 'Solo para la técnica del test.' },
+  'Wong 2022': {
+    publicacion: 'Curr Rev Musculoskelet Med 15:38–52', doi: '10.1007/s12178-022-09745-8', nota: 'Solo para la técnica del test.',
+    revision: { fecha: '2026-10', resultado: 'Sin cambios: solo describe la técnica, no aporta cifras.' }
+  },
   'Zaslav 2001': { publicacion: 'J Shoulder Elbow Surg 10:23–27', doi: '', revision: null },
   'Zhang 2010': { publicacion: 'Ann Rheum Dis 69:483–9', doi: '', revision: null },
 };
