@@ -873,10 +873,11 @@ test('cadera: ningún test multiplica por una LR− de 0, y Thomas puntúa solo 
   assert.equal(calcLRScore(ca3, { [jThomas]: 'neg' }).totalLR, 1);
 });
 
-test('ca1: los criterios ACR absorben el criterio combinado y la RI disminuida', () => {
+test('ca1: los criterios ACR no puntúan (cifras de la muestra de desarrollo); la RI disminuida puntúa sola', () => {
   const h = HYPOTHESES.ca1, iAcr = h.tests.findIndex(t => t.name.startsWith('Criterios clínicos ACR'));
-  assert.deepEqual(h.tests[iAcr].absorbe, [0, 2]);
-  assert.ok(Math.abs(calcLRScore(h, { 0: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 0.86 / 0.25) < 0.001);
+  assert.equal(calcLRScore(h, { [iAcr]: 'pos' }).totalLR, 1);
+  assert.equal(calcLRScore(h, { [iAcr]: 'neg' }).totalLR, 1);
+  assert.ok(Math.abs(calcLRScore(h, { 0: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 3.2) < 0.001);
 });
 
 test('cervical: disección, IVB, fractura tras traumatismo y cefalea de alarma son urgencias', () => {
