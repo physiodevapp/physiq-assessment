@@ -509,7 +509,7 @@ console.log('\ndocs/referencias.md y data/referencias.js');
 
 const { construirReferencias, recogerCitas, problemasRegistro } = await import('./referencias.mjs');
 const { REFERENCIAS } = await import('../data/referencias.js');
-const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPuntua }), REFERENCIAS);
+const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS, testPuntua }), REFERENCIAS);
 
 test('toda referencia citada en data/ está en data/referencias.js', () => {
   assert.deepEqual(problemas.sinRegistrar, [], `${problemas.sinRegistrar.join(', ')}: añádelas al registro (clave = «Autor Año» tal como sale en la cita)`);

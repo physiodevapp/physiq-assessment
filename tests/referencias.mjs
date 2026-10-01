@@ -81,8 +81,11 @@ const RE_AUTOR_ANO = new RegExp(`(${AUTOR}(?: (?:y|e|and|&) ${AUTOR})?(?: et al\
 const RE_NICE = /\bNICE (NG|CG|QS)(\d+)/g;
 const RE_TARJETA = /Tarjeta de consulta (hombro|cadera|cervical|lumbar|rodilla|codo|tobillo y pie)/g;
 
-function clavesDe(texto) {
+// `alias`: [[clave, texto]] de las entradas del registro con `citadaComo`
+// (referencias que data/ cita sin año, como «Criterio de Goodman»).
+function clavesDe(texto, alias = []) {
   const claves = [];
+  for (const [clave, a] of alias) if (texto.includes(a)) claves.push({ tipo: 'lit', clave });
   for (const m of texto.matchAll(RE_TARJETA)) claves.push({ tipo: 'tarjeta', clave: m[1].replace(/ y /, '_') });
   for (const m of texto.matchAll(RE_NICE)) claves.push({ tipo: 'lit', clave: `NICE ${m[1]}${m[2]}` });
   for (const m of texto.matchAll(RE_AUTOR_ANO)) claves.push({ tipo: 'lit', clave: `${m[1]} ${m[2]}` });
@@ -114,7 +117,7 @@ function lugar(hyp, ruta, testPuntua) {
   if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto', efecto: 'texto' };
   return { donde: `\`${ruta.join('.')}\``, fase: '—', efecto: 'texto' };
 }
-const ORDEN_EFECTO = ['puntuación 4b', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'texto'];
+const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'texto'];
 
 function recorrer(obj, ruta, fn) {
   if (typeof obj === 'string') return fn(obj, ruta);
@@ -129,7 +132,8 @@ const ancla = k => k.toLowerCase().replace(/[^\p{L}\d\s-]/gu, '').replace(/\s+/g
 
 // Todas las citas de data/: literatura (clave → citas y usos), tarjetas
 // (región → citas y usos), tests sin fuente y otras fuentes sin campo propio.
-export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPuntua }) {
+export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS = {}, testPuntua }) {
+  const alias = Object.entries(REFERENCIAS).flatMap(([k, r]) => (r.citadaComo || []).map(a => [k, a]));
   const lit = new Map();        // clave → { citas: [texto], usos: [] }
   const tarjetas = new Map();   // región → { citas: [texto], usos: [] }
   const sinFuente = [];
@@ -146,7 +150,7 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPu
   for (const hyp of Object.values(HYPOTHESES)) {
     for (const campo of ['tests', 'clusters', 'pronostico', 'dosis', 'dosisFuente']) {
       recorrer(hyp[campo], [campo], (texto, ruta) => {
-        for (const { tipo, clave } of clavesDe(texto)) {
+        for (const { tipo, clave } of clavesDe(texto, alias)) {
           const uso = { region: hyp.region, hyp: `${hyp.id} · ${hyp.name}`, ...lugar(hyp, ruta, testPuntua) };
           anotar(tipo === 'tarjeta' ? tarjetas : lit, clave, texto, uso);
         }
@@ -162,9 +166,11 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPu
   // Menciones fuera de HYPOTHESES (cribado de fase 2 y árbol de fase 4).
   for (const [nombre, obj, fase] of [['SYSTEMIC_SCREENING', SYSTEMIC_SCREENING, '2'], ['CIF_TREES', CIF_TREES, '4']]) {
     recorrer(obj, [nombre], (texto, ruta) => {
-      for (const { tipo, clave } of clavesDe(texto)) {
+      for (const { tipo, clave } of clavesDe(texto, alias)) {
         if (tipo !== 'lit') continue;
-        anotar(lit, clave, texto, { region: ruta[1], hyp: '—', donde: `\`${ruta.slice(2).join('.')}\``, fase: `${fase} · mención en el texto`, efecto: 'texto' });
+        const criterio = ruta.includes('criterioCompuesto');
+        anotar(lit, clave, texto, { region: ruta[1], hyp: '—', donde: `\`${ruta.slice(2).join('.')}\``,
+          fase: criterio ? `${fase} · criterio compuesto del cribado` : `${fase} · mención en el texto`, efecto: criterio ? 'cribado fase 2' : 'texto' });
       }
     });
   }
@@ -206,7 +212,7 @@ function lineaRegistro(r) {
 
 export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS, testPuntua }) {
   const regiones = Object.keys(CIF_TREES);
-  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPuntua });
+  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS, testPuntua });
   const claveBase = Object.keys(REFERENCIAS).find(k => REFERENCIAS[k].tarjetas);
 
   const L = [];
@@ -261,7 +267,8 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     'Orden de trabajo: primero las nunca revisadas, luego las revisadas hace más tiempo. Dentro de cada grupo,',
     'primero las que mueven la puntuación de la fase 4b, luego pauta y pronóstico (fase 5), y las más antiguas antes.',
     '«Afecta a»: «puntuación 4b» = respalda un test o cluster que puntúa; «test 4b sin puntuar» = el test se ve',
-    'pero no mueve la puntuación; «texto» = solo se menciona.', '',
+    'pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que dispara una alerta de derivación;',
+    '«texto» = solo se menciona.', '',
     '| Referencia | Afecta a | Usos | Última revisión |', '|---|---|---|---|',
     ...filas.map(f => `| [${f.k}](#${ancla(f.r.tarjetas ? '1. Tarjetas de consulta' : f.k)}) | ${f.efectos.join(' · ') || '—'} | ${f.n} | ${f.r.revision ? `${f.r.revision.fecha} · ${esc(f.r.revision.resultado)}` : '**sin revisar**'} |`), '');
 
