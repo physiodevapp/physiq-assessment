@@ -1,30 +1,149 @@
 # Referencias bibliográficas
 
-> **Archivo generado — no editar a mano.** Sale de `data/` con `node tests/gen-referencias.mjs`;
-> `node tests/unit.js` falla si no está al día. Para cambiar una referencia, edita la cita en
-> `data/<región>.js` y regenera este archivo.
+> **Archivo generado — no editar a mano.** Sale de `data/` y del registro `data/referencias.js` con
+> `node tests/gen-referencias.mjs`; `node tests/unit.js` falla si no está al día.
 
 Todas las referencias que cita el contenido clínico de la app y dónde se usa cada una.
 Las citas viven en `data/<región>.js`: `fuente` de cada test y de cada cluster (se ve en la fase 4b,
 bajo el test), `pronostico.fuente` y `dosisFuente` (fase 5, bajo el pronóstico y la pauta).
 También se recogen las menciones a un estudio dentro de otros textos (el `criterio` de un test, la `dosis`).
+Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vive en el registro
+`data/referencias.js`, una entrada por referencia.
 
 ## Resumen
 
-- **84** referencias de literatura, con **168** usos.
-- **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos.
+- **85** referencias de literatura, con **169** usos.
+- **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
+- **0** de 86 referencias del registro revisadas. Ver «Estado de revisión».
 - **105** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
+
+## Cómo revisar una referencia
+
+1. Coge la primera de «Estado de revisión» (sin revisar y que mueve la puntuación, primero).
+2. Busca si hay literatura más reciente o mejor (revisión sistemática, guía de práctica clínica).
+3. Si no hay nada mejor: en `data/referencias.js`, pon a esa referencia
+   `revision: { fecha: 'AAAA-MM', resultado: 'Sin cambios: <qué se buscó>' }`.
+4. Si la hay: en su tabla de usos (sección 2) tienes cada test, cluster, pronóstico o pauta que la cita.
+   En cada uno, cambia la `fuente` y las cifras (`sn`, `sp`, `lr_pos`, `lr_neg`) en `data/<región>.js`,
+   leyendo el artículo, nunca un resumen de terceros. Añade la referencia nueva al registro con su
+   `revision`; si la antigua deja de citarse, bórrala del registro (la prueba lo exige).
+5. `node tests/gen-referencias.mjs` y `node tests/unit.js`, y comitea `data/` junto con este archivo.
+   Cambiar un LR cambia la puntuación de la fase 4b: dilo en el mensaje del commit.
 
 Columna «Fase»: dónde lo ve el clínico. «4b · cita bajo el test» quiere decir que esa referencia respalda
 las cifras (S, E, LR) del test; que el test puntúe o no depende de las reglas de `calcLRScore` (ver CLAUDE.md).
 Columna «Cita»: número de la forma de citar (lista «Citada como») que usa esa fila.
 
-## 1. Tarjetas de consulta (guía de consulta)
+## Estado de revisión
+
+Orden de trabajo: primero las nunca revisadas, luego las revisadas hace más tiempo. Dentro de cada grupo,
+primero las que mueven la puntuación de la fase 4b, luego pauta y pronóstico (fase 5), y las más antiguas antes.
+«Afecta a»: «puntuación 4b» = respalda un test o cluster que puntúa; «test 4b sin puntuar» = el test se ve
+pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que dispara una alerta de derivación;
+«texto» = solo se menciona.
+
+| Referencia | Afecta a | Usos | Última revisión |
+|---|---|---|---|
+| [Altman 1986](#altman-1986) | puntuación 4b · texto | 2 | **sin revisar** |
+| [Altman 1991](#altman-1991) | puntuación 4b | 1 | **sin revisar** |
+| [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
+| [Maffulli 1998](#maffulli-1998) | puntuación 4b · texto | 4 | **sin revisar** |
+| [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | **sin revisar** |
+| [Litaker 2000](#litaker-2000) | puntuación 4b | 1 | **sin revisar** |
+| [Solomon 2001](#solomon-2001) | puntuación 4b · texto | 3 | **sin revisar** |
+| [Bachmann 2003](#bachmann-2003) | puntuación 4b · texto | 2 | **sin revisar** |
+| [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | **sin revisar** |
+| [Narvani 2003](#narvani-2003) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
+| [Chronopoulos 2004](#chronopoulos-2004) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
+| [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
+| [Park 2005](#park-2005) | puntuación 4b | 2 | **sin revisar** |
+| [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | **sin revisar** |
+| [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | **sin revisar** |
+| [Lequesne 2008](#lequesne-2008) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
+| [Majlesi 2008](#majlesi-2008) | puntuación 4b | 1 | **sin revisar** |
+| [Suri 2010](#suri-2010) | puntuación 4b | 2 | **sin revisar** |
+| [Zhang 2010](#zhang-2010) | puntuación 4b | 3 | **sin revisar** |
+| [Cook 2011](#cook-2011) | puntuación 4b | 1 | **sin revisar** |
+| [Hegedus 2012](#hegedus-2012) | puntuación 4b · test 4b sin puntuar · texto | 9 | **sin revisar** |
+| [Apelby-Albrecht 2013](#apelby-albrecht-2013) | puntuación 4b | 1 | **sin revisar** |
+| [Hermans 2013](#hermans-2013) | puntuación 4b · test 4b sin puntuar | 6 | **sin revisar** |
+| [Nunes 2013](#nunes-2013) | puntuación 4b | 1 | **sin revisar** |
+| [Reiman 2014](#reiman-2014) | puntuación 4b · test 4b sin puntuar · texto | 6 | **sin revisar** |
+| [Reiman 2015](#reiman-2015) | puntuación 4b · test 4b sin puntuar | 6 | **sin revisar** |
+| [Smith 2015](#smith-2015) | puntuación 4b | 2 | **sin revisar** |
+| [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | **sin revisar** |
+| [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
+| [Décary 2018](#décary-2018) | puntuación 4b | 4 | **sin revisar** |
+| [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar | 5 | **sin revisar** |
+| [Park 2019](#park-2019) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
+| [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | **sin revisar** |
+| [Getsoian 2020](#getsoian-2020) | puntuación 4b | 1 | **sin revisar** |
+| [Pålsson 2020](#pålsson-2020) | puntuación 4b | 1 | **sin revisar** |
+| [Saueressig 2021](#saueressig-2021) | puntuación 4b | 1 | **sin revisar** |
+| [Demont 2022](#demont-2022) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
+| [Gomes 2022](#gomes-2022) | puntuación 4b · texto | 2 | **sin revisar** |
+| [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | **sin revisar** |
+| [Wong 2022](#wong-2022) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
+| [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
+| [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
+| [Goodman 6.ª ed.](#goodman-6ª-ed) | cribado fase 2 | 1 | **sin revisar** |
+| [Hölmich 1999](#hölmich-1999) | pauta | 1 | **sin revisar** |
+| [Jonsson 2008](#jonsson-2008) | pauta | 1 | **sin revisar** |
+| [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | **sin revisar** |
+| [Kuijper 2009](#kuijper-2009) | pauta | 1 | **sin revisar** |
+| [Kulig 2009](#kulig-2009) | pauta | 1 | **sin revisar** |
+| [Reid 2014](#reid-2014) | pauta | 1 | **sin revisar** |
+| [Blanpied 2017](#blanpied-2017) | pauta | 1 | **sin revisar** |
+| [Rathleff 2020](#rathleff-2020) | pauta | 1 | **sin revisar** |
+| [Martin 2021](#martin-2021) | pauta | 2 | **sin revisar** |
+| [Koc 2023](#koc-2023) | pauta | 1 | **sin revisar** |
+| [Chimenti 2024](#chimenti-2024) | pauta | 1 | **sin revisar** |
+| [Liu 2025](#liu-2025) | pauta | 1 | **sin revisar** |
+| [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 296 | **sin revisar** |
+| [NICE NG226](#nice-ng226) | test 4b sin puntuar | 2 | **sin revisar** |
+| [Katz 1995](#katz-1995) | test 4b sin puntuar | 1 | **sin revisar** |
+| [van Dijk 1996](#van-dijk-1996) | test 4b sin puntuar · texto | 2 | **sin revisar** |
+| [Kim 2001](#kim-2001) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Zaslav 2001](#zaslav-2001) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Flynn 2002](#flynn-2002) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Kim 2004](#kim-2004) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Walton 2004](#walton-2004) | test 4b sin puntuar · texto | 5 | **sin revisar** |
+| [Laslett 2006](#laslett-2006) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Dorf 2007](#dorf-2007) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Jull 2007](#jull-2007) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Kim 2007](#kim-2007) | test 4b sin puntuar · texto | 2 | **sin revisar** |
+| [Warden 2007](#warden-2007) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Appelboam 2008](#appelboam-2008) | test 4b sin puntuar · texto | 2 | **sin revisar** |
+| [Park 2008](#park-2008) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Lucas 2009](#lucas-2009) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Mahadevan 2015](#mahadevan-2015) | test 4b sin puntuar · texto | 2 | **sin revisar** |
+| [Sman 2015](#sman-2015) | test 4b sin puntuar · texto | 4 | **sin revisar** |
+| [Dobbs 2016](#dobbs-2016) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Tawa 2017](#tawa-2017) | test 4b sin puntuar | 2 | **sin revisar** |
+| [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · texto | 4 | **sin revisar** |
+| [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | **sin revisar** |
+| [Adib 2023](#adib-2023) | test 4b sin puntuar | 2 | **sin revisar** |
+| [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | **sin revisar** |
+| [Williams 2025](#williams-2025) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Hutchison 2013](#hutchison-2013) | texto | 1 | **sin revisar** |
+| [Großterlinden 2016](#großterlinden-2016) | texto | 1 | **sin revisar** |
+| [Frey 2017](#frey-2017) | texto | 1 | **sin revisar** |
+
+## 1. Tarjetas de consulta
+
+Autores: Lluch, López-Cubas, Jones, Jull, Hall y Lewis  
+Título: *Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders*  
+Publicación: ZERAPI  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los «cap.» que citan los pies de las tarjetas (Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son capítulos de este libro.
 
 Las tarjetas de consulta están en el repo [physiodevapp/guia-de-consulta](https://github.com/physiodevapp/guia-de-consulta),
-en `data/tarjeta_<región>.js`. Son extractos de las **guías clínicas** de cada región. Ese repo no guarda la
-bibliografía de las guías clínicas: solo cita sus apartados en el pie de cada cara (abajo, literal).
-Las referencias originales de esos apartados están en las guías clínicas, que no están en ningún repo.
+en `data/tarjeta_<región>.js`. Son extractos de las **guías clínicas** de cada región, basadas en Lluch 2020
+(arriba). En `data/` se citan como «Tarjeta de consulta <región>». Los pies de cada tarjeta (abajo, literales)
+dicen de qué apartados de la guía clínica sale cada cara.
 
 ### Tarjeta de consulta hombro
 
@@ -452,9 +571,13 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[Adib 2023](#adib-2023) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Blanpied 2017](#blanpied-2017) · [Campbell 2020](#campbell-2020) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cook 2011](#cook-2011) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [Getsoian 2020](#getsoian-2020) · [Gomes 2022](#gomes-2022) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hegedus 2012](#hegedus-2012) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hutchison 2013](#hutchison-2013) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Laslett 2006](#laslett-2006) · [Lequesne 2008](#lequesne-2008) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Saueressig 2021](#saueressig-2021) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suri 2010](#suri-2010) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zhang 2010](#zhang-2010)
+[Adib 2023](#adib-2023) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Blanpied 2017](#blanpied-2017) · [Campbell 2020](#campbell-2020) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cook 2011](#cook-2011) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [Getsoian 2020](#getsoian-2020) · [Gomes 2022](#gomes-2022) · [Goodman 6.ª ed.](#goodman-6ª-ed) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hegedus 2012](#hegedus-2012) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hutchison 2013](#hutchison-2013) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Laslett 2006](#laslett-2006) · [Lequesne 2008](#lequesne-2008) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Saueressig 2021](#saueressig-2021) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suri 2010](#suri-2010) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zhang 2010](#zhang-2010)
 
 ### Adib 2023
+
+Publicación: Am J Sports Med  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -466,6 +589,10 @@ Citada como:
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Torsión/Twist» | 4b · cita bajo el test | 1 |
 
 ### Altman 1986
+
+Publicación: Arthritis Rheum  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -479,6 +606,10 @@ Citada como:
 
 ### Altman 1991
 
+Publicación: Arthritis Rheum  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Altman 1991 (Arthritis Rheum, criterios ACR; n = 201 con dolor de cadera, controles con dolor de cadera de otra causa)
@@ -489,6 +620,11 @@ Citada como:
 
 ### Apelby-Albrecht 2013
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Citado a través de Thoomes 2026.
+
 Citada como:
 
 1. Thoomes 2026 (BMC Musculoskelet Disord, actualización de la revisión sistemática de 2018; metaanálisis de Apelby-Albrecht 2013 y Grondin, tabla 4)
@@ -498,6 +634,10 @@ Citada como:
 | Cervical | ce3 · Radiculopatía Cervical | Test «Combinación de 4 ULNT (ULNT1 y ULNT2a mediano, ULNT2b radial, ULNT3 cubital)» | 4b · cita bajo el test | 1 |
 
 ### Appelboam 2008
+
+Publicación: BMJ 337:a2428  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -511,6 +651,10 @@ Citada como:
 
 ### Bachmann 2003
 
+Publicación: BMJ 326:417  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. TOBILLO → radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. PIE → radiografía si dolor en el mediopié Y alguno: dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos. Solo descarta: Bachmann 2003 (27 estudios, 15 581 pacientes) da LR− 0,08 aplicando solo la regla del tobillo o solo la del pie, pero 0,21 (IC 95 % 0,12–0,38) en los estudios que aplican las dos juntas, que es como se usan aquí (se toma la más prudente). El positivo es un hallazgo: en adultos, LR+ 1,47 (IC 1,11–1,93; Gomes 2022).
@@ -523,6 +667,10 @@ Citada como:
 
 ### Blanpied 2017
 
+Publicación: J Orthop Sports Phys Ther 47(7):A1–A83  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Kuijper 2009, BMJ 339:b3883 (ensayo aleatorizado, n = 205; la lista de ejercicios está en su apéndice web, no revisado) · Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación)
@@ -532,6 +680,11 @@ Citada como:
 | Cervical | ce12 · Dolor Radicular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Campbell 2020
+
+Publicación: Am J Sports Med 48:2819–2827  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Recoge los datos de Roedl (sin año en la cita).
 
 Citada como:
 
@@ -545,6 +698,10 @@ Citada como:
 
 ### Chimenti 2024
 
+Publicación: J Orthop Sports Phys Ther 54(12):CPG1–CPG32  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Chimenti 2024, J Orthop Sports Phys Ther 54(12):CPG1–CPG32 (guía de práctica clínica APTA; letra = grado de la recomendación)
@@ -554,6 +711,10 @@ Citada como:
 | Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Chronopoulos 2004
+
+Publicación: Am J Sports Med  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -569,6 +730,10 @@ Citada como:
 
 ### Cook 2011
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Cook 2011 (n = 1448). 4 de 5: S 6 %, E 98 %; ninguno: S 96 %
@@ -578,6 +743,11 @@ Citada como:
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Cluster «Cluster de Cook (anamnesis y observación)» | 4b · cita del cluster | 1 |
 
 ### Décary 2018
+
+Publicación: PLoS One · PM&R (dos artículos)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Dos artículos distintos con la misma clave: la cita de cada uso dice la revista.
 
 Citada como:
 
@@ -595,6 +765,10 @@ Citada como:
 
 ### Demont 2022
 
+Publicación: Musculoskelet Sci Pract  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Demont 2022 (Musculoskelet Sci Pract, metaanálisis, 4 estudios, n = 182; frente a cefalea facetaria cervical baja, migraña, cefaleas concomitantes o asintomáticos; certeza moderada. S IC 95 %: 70–92 %; E IC 95 %: 71–91 %; LR+ IC 2,6–9,5; LR− IC 0,1–0,4; 4 estudios de cohorte prospectivos de Hall y Ogince, 2007–2010; riesgo de sesgo por la selección de pacientes). FRT normal en cervicogénica de C2–C3/C3–C4: Getsoian 2020 (BMJ Open, bloqueos diagnósticos controlados), citado en Demont 2022. Precauciones: Paquin 2022 (Arch Physiother 12:26, artículo de opinión)
@@ -607,6 +781,10 @@ Citada como:
 
 ### Devillé 2000
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Devillé 2000 (revisión sistemática; referencia: cirugía)
@@ -618,6 +796,10 @@ Citada como:
 
 ### Dobbs 2016
 
+Publicación: Manual Therapy  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Katz 1995, datos citados en Dobbs 2016 (Manual Therapy; referencia: RM)
@@ -627,6 +809,10 @@ Citada como:
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Test de extensión lumbar de 30 s» | 4b · cita bajo el test | 1 |
 
 ### Dorf 2007
+
+Publicación: J Hand Surg Am 32:882–886  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -638,6 +824,10 @@ Citada como:
 
 ### Flynn 2002
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Flynn 2002 (regla pronóstica: probabilidad de éxito con manipulación del 45 % al 95 %)
@@ -648,6 +838,11 @@ Citada como:
 
 ### Frey 2017
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Citado a través de Netterström-Wedin 2021.
+
 Citada como:
 
 1. Palpación del LTPAI (la más sensible). Si las dos reproducen el dolor conocido, sospechar lesión. Sin cifras en el capítulo. No puntúa: la palpación del LTPAI sola da resultados contradictorios (Frey 2017: S 95 %, E 86 %; Großterlinden 2016: S 43 %, E 52 %; recogidos en Netterström-Wedin 2021). La LR− 0,28 (IC 0,09–0,89) de Sman 2015 es de otra cosa: dolor en cualquiera de cinco estructuras de la sindesmosis (S 92 %, E 29 %).
@@ -657,6 +852,10 @@ Citada como:
 | Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Palpación del LTPAI» (en `criterio`) | 4b · mención en el texto | 1 |
 
 ### Fritz 2005
+
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -670,6 +869,10 @@ Citada como:
 
 ### Genevay 2017
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Genevay 2017
@@ -679,6 +882,11 @@ Citada como:
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «Criterios RAPIDH (5 criterios)» | 4b · cita bajo el test | 1 |
 
 ### Getsoian 2020
+
+Publicación: BMJ Open  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Citado a través de Demont 2022.
 
 Citada como:
 
@@ -690,6 +898,10 @@ Citada como:
 
 ### Gomes 2022
 
+Publicación: BMC Musculoskelet Disord 23:885  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. TOBILLO → radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. PIE → radiografía si dolor en el mediopié Y alguno: dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos. Solo descarta: Bachmann 2003 (27 estudios, 15 581 pacientes) da LR− 0,08 aplicando solo la regla del tobillo o solo la del pie, pero 0,21 (IC 95 % 0,12–0,38) en los estudios que aplican las dos juntas, que es como se usan aquí (se toma la más prudente). El positivo es un hallazgo: en adultos, LR+ 1,47 (IC 1,11–1,93; Gomes 2022).
@@ -700,7 +912,28 @@ Citada como:
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» (en `criterio`) | 4b · mención en el texto | 1 |
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» | 4b · cita bajo el test | 2 |
 
+### Goodman 6.ª ed.
+
+Autores: Goodman, Heick y Lazaro  
+Título: *Differential Diagnosis for Physical Therapists: Screening for Referral*  
+Publicación: Elsevier, 6.ª edición  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Sin año en el registro: no figura en la portada. El cribado de fase 2 lo cita sin año («Criterio de Goodman (cap. 14)»).
+
+Citada como:
+
+1. Criterio de Goodman (cap. 14): 2 de 4 → sensibilidad 70%, especificidad 81%; 3 de 4 → especificidad cercana al 100%. No es un diagnóstico.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Lumbar | — | `sistemas.3.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
+
 ### Grimaldi 2017
+
+Publicación: Br J Sports Med  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -714,6 +947,11 @@ Citada como:
 
 ### Großterlinden 2016
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Citado a través de Netterström-Wedin 2021.
+
 Citada como:
 
 1. Palpación del LTPAI (la más sensible). Si las dos reproducen el dolor conocido, sospechar lesión. Sin cifras en el capítulo. No puntúa: la palpación del LTPAI sola da resultados contradictorios (Frey 2017: S 95 %, E 86 %; Großterlinden 2016: S 43 %, E 52 %; recogidos en Netterström-Wedin 2021). La LR− 0,28 (IC 0,09–0,89) de Sman 2015 es de otra cosa: dolor en cualquiera de cinco estructuras de la sindesmosis (S 92 %, E 29 %).
@@ -724,6 +962,10 @@ Citada como:
 
 ### Halliwell 2026
 
+Publicación: Arthroscopy  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Halliwell 2026 (Arthroscopy; retrospectivo, 224 pacientes con SIFA operados; referencia: artroscopia)
@@ -733,6 +975,10 @@ Citada como:
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Combinación FADDIR + FABER + Elevación pierna recta resistida» | 4b · cita bajo el test | 1 |
 
 ### Han 2023
+
+Publicación: eClinicalMedicine  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -750,6 +996,11 @@ Citada como:
 
 ### Hancock 2007
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Cifra anterior, sustituida por Han 2023 (se menciona en la cita).
+
 Citada como:
 
 1. Han 2023 (eClinicalMedicine, revisión sistemática, 4 estudios; LR+ IC 95 %: 1,44–6,50; referencia: discografía). Antes: Hancock 2007, LR+ 2,8
@@ -759,6 +1010,10 @@ Citada como:
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Centralización con movimientos repetidos» | 4b · cita bajo el test | 1 |
 
 ### Hegedus 2012
+
+Publicación: Br J Sports Med 46:964–978  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -780,6 +1035,10 @@ Citada como:
 
 ### Hermans 2013
 
+Publicación: JAMA 310:837–847  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Hermans 2013 (JAMA 310:837–847, revisión sistemática; tabla 2, patología del manguito)
@@ -797,6 +1056,10 @@ Citada como:
 
 ### Hölmich 1999
 
+Publicación: Lancet 353:439–443  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Hölmich 1999, Lancet 353:439–443 (ensayo aleatorizado, n = 68, frente a fisioterapia pasiva)
@@ -806,6 +1069,11 @@ Citada como:
 | Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Hutchison 2013
+
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Citado a través de Reiman 2014.
 
 Citada como:
 
@@ -817,6 +1085,10 @@ Citada como:
 
 ### Jonsson 2008
 
+Publicación: Br J Sports Med 42:746–749  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Jonsson 2008, Br J Sports Med 42:746–749 (estudio piloto sin grupo control, n = 27, 34 tendones, diagnóstico con ecografía)
@@ -827,6 +1099,10 @@ Citada como:
 
 ### Jull 2007
 
+Publicación: Cephalalgia 27:793–802  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Jull 2007 (Cephalalgia 27:793–802, parte 1; 18 cervicogénicas frente a 22 migrañas, 33 tensionales y 57 controles, n = 130; tabla 3). Riesgo de sesgo alto según Demont 2022 (PROBAST)
@@ -836,6 +1112,10 @@ Citada como:
 | Cervical | ce4 · Cefalea Cervicogénica | Test «Cluster: ROM cervical + PAIVM + CCFT» | 4b · cita bajo el test | 1 |
 
 ### Karanasios 2022
+
+Publicación: J Hand Ther 35:541–551  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -849,6 +1129,10 @@ Citada como:
 
 ### Kastelein 2008
 
+Publicación: Am J Med  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Kastelein 2008 (Am J Med; n = 134, 35 con lesión del LCM; referencia: RM)
@@ -858,6 +1142,11 @@ Citada como:
 | Rodilla | ro8 · Lesión del Ligamento Colateral Medial (LCM) | Test «Valgo forzado a 30° de flexión + mecanismo de la entrevista» | 4b · cita bajo el test | 1 |
 
 ### Katz 1995
+
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Citado a través de Dobbs 2016.
 
 Citada como:
 
@@ -869,6 +1158,10 @@ Citada como:
 
 ### Kim 2001
 
+Publicación: Arthroscopy 17:160–164  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Kim 2001 (Arthroscopy 17:160–164) · Hegedus 2012 (Br J Sports Med 46:964–978, tabla 2)
@@ -879,6 +1172,11 @@ Citada como:
 
 ### Kim 2004
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Solo para la técnica del test.
+
 Citada como:
 
 1. Kim 2007 (Arthroscopy; 172 rodillas, referencia: artroscopia); técnica: Kim 2004
@@ -888,6 +1186,10 @@ Citada como:
 | Rodilla | ro17 · Plica Sinovial Medial | Test «Test de provocación de la plica rotuliana medial» | 4b · cita bajo el test | 1 |
 
 ### Kim 2007
+
+Publicación: Arthroscopy  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -901,6 +1203,10 @@ Citada como:
 
 ### Koc 2023
 
+Publicación: J Orthop Sports Phys Ther 53(12):CPG1–CPG39  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Koc 2023, J Orthop Sports Phys Ther 53(12):CPG1–CPG39 (guía de práctica clínica APTA; letra = grado de la recomendación)
@@ -910,6 +1216,10 @@ Citada como:
 | Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Kuijper 2009
+
+Publicación: BMJ 339:b3883  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -921,6 +1231,10 @@ Citada como:
 
 ### Kulig 2009
 
+Publicación: Phys Ther 89(1):26–37  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Kulig 2009, Phys Ther 89(1):26–37 (ensayo aleatorizado, n = 36: plantillas + estiramiento, con o sin ejercicio concéntrico o excéntrico)
@@ -931,6 +1245,10 @@ Citada como:
 
 ### Laslett 2006
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Laslett 2006 (no replica a Revel; referencia: doble bloqueo); Han 2023 (eClinicalMedicine, revisión sistemática: Revel inconsistente, no agrupable)
@@ -940,6 +1258,10 @@ Citada como:
 | Lumbar | lu7 · Dolor Lumbar Facetario | Test «Dolor en extensión, inclinación o rotación hacia el lado del dolor» | 4b · cita bajo el test | 1 |
 
 ### Lequesne 2008
+
+Publicación: Arthritis Rheum  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -953,6 +1275,10 @@ Citada como:
 
 ### Litaker 2000
 
+Publicación: J Am Geriatr Soc  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Litaker 2000 (J Am Geriatr Soc; n = 448 derivados a artrografía, 67 % con rotura; tabla 4, grupo de validación)
@@ -962,6 +1288,10 @@ Citada como:
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster B: debilidad en RE + edad ≥65 (puntuación de Litaker ≥4)» | 4b · cita bajo el test | 1 |
 
 ### Liu 2025
+
+Publicación: BMC Sports Sci Med Rehabil 17:335  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -973,6 +1303,10 @@ Citada como:
 
 ### Lucas 2009
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Lucas 2009 (revisión sistemática de fiabilidad)
@@ -982,6 +1316,10 @@ Citada como:
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Banda tensa palpable» | 4b · cita bajo el test | 1 |
 
 ### Maffulli 1998
+
+Publicación: Am J Sports Med 26:266–70  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -998,6 +1336,10 @@ Citada como:
 
 ### Mahadevan 2015
 
+Publicación: J Foot Ankle Surg 54:549–53  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Dolor a la palpación directa del espacio (sobre todo 3.º–4.º); posible chasquido al palpar mientras se comprimen los metatarsianos. No puntúa: la compresión pulgar-índice del espacio (Mahadevan 2015) tiene S 96 %, pero su especificidad sale de un solo pie sin Morton; el chasquido de Mulder da LR+ 2,19 (IC 0,45–10,60; Dando, en Pitcher 2024).
@@ -1010,6 +1352,10 @@ Citada como:
 
 ### Majlesi 2008
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Majlesi 2008 (estudio único; referencia: RM)
@@ -1019,6 +1365,10 @@ Citada como:
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «Test de Slump» | 4b · cita bajo el test | 1 |
 
 ### Martin 2021
+
+Publicación: J Orthop Sports Phys Ther 51(4):CPG1–CPG80  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1032,6 +1382,10 @@ Citada como:
 
 ### Maxwell y Sterling 2013
 
+Publicación: Man Ther 18:172–174  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Maxwell y Sterling 2013 (Man Ther 18:172–174; 62 con latigazo crónico, grado II–III, 124 lados del cuello; referencia: umbral de dolor al frío ≥13 °C con termotest; orden de los tests no aleatorizado). Tarjeta de consulta cervical (guía clínica cervical, ap. 5)
@@ -1041,6 +1395,10 @@ Citada como:
 | Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Test «Hielo sobre la nuca (hiperalgesia al frío)» | 4b · cita bajo el test | 1 |
 
 ### McCarthy y Busconi 1995
+
+Publicación: Can J Surg  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1054,6 +1412,10 @@ Citada como:
 
 ### McKeon 2008
 
+Publicación: Med Sci Sports Exerc 40(10):1810–1819  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Ejercicio propioceptivo y neuromuscular para la estabilidad postural dinámica y la estabilidad percibida (A). Terapia manual —movilizaciones graduadas, manipulación y movilización con movimiento en carga y sin carga— para la dorsiflexión en carga y el equilibrio dinámico a corto plazo (A); se puede combinar con el ejercicio (B). Tobillera o vendaje nunca como tratamiento único (B). La guía no fija dosis. Orientativo (metaanálisis de 26 ensayos, análisis de subgrupos exploratorio, certeza de muy baja a moderada): terapia manual 1–2 veces por semana durante 4 semanas o menos para el CAIT; entrenamiento multimodal 1–2 veces por semana durante 5–8 semanas para el FAAM. Protocolo concreto con ensayo (McKeon 2008, adultos jóvenes): 12 sesiones supervisadas de unos 20 min, 3 por semana durante 4 semanas: saltos a estabilización monopodal en 4 direcciones (10 por dirección), salto con alcance (5), saltos no anticipados siguiendo una secuencia, y equilibrio monopodal con ojos abiertos y cerrados. 7 niveles por tarea (saltos de 46, 69 y 91 cm, primero con ayuda de los brazos y luego con las manos en la cadera; al final, desde una plataforma de 15 cm); se sube de nivel tras 10 repeticiones sin error (5 en el salto con alcance). Mejoró la función autorreferida (FADI) y el equilibrio frente a no entrenar.
@@ -1065,6 +1427,10 @@ Citada como:
 | Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
 ### Metcalfe 2019
+
+Publicación: JAMA  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1084,6 +1450,10 @@ Citada como:
 
 ### Molloy 2003
 
+Publicación: J Bone Joint Surg Br 85-B(3)  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Pulgar sobre la gotera anterolateral con el pie en flexión plantar y, sin soltar, llevar a flexión dorsal completa. Positivo si la maniobra combinada provoca dolor o aumenta el que daba la presión sola. Molloy 2003, 73 pacientes con artroscopia: 37 verdaderos positivos, 4 falsos positivos (adherencias, artrosis), 2 falsos negativos, 30 verdaderos negativos → S 94,8 %, E 88 % (LR calculadas). Límites: todos ya iban a artroscopia (sin inestabilidad mecánica), el mismo cirujano exploraba y decidía operar, y valida el pinzamiento sinovial anterolateral, no el óseo.
@@ -1095,6 +1465,10 @@ Citada como:
 | Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «Signo de pinzamiento de Molloy» | 4b · cita bajo el test | 2 |
 
 ### Narvani 2003
+
+Publicación: Knee Surg Sports Traumatol Arthrosc  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1109,6 +1483,10 @@ Citada como:
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» | 4b · cita bajo el test | 3 |
 
 ### Netterström-Wedin 2021
+
+Publicación: Phys Ther Sport 49:214–26  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1125,6 +1503,10 @@ Citada como:
 
 ### NICE NG226
 
+Publicación: Guía NICE (2022)  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. NICE NG226 (2022). Metcalfe 2019 (JAMA) para la rigidez matutina
@@ -1137,6 +1519,10 @@ Citada como:
 
 ### Nunes 2013
 
+Publicación: Phys Ther Sport 14:54–9  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Nunes 2013 (Phys Ther Sport 14:54–9; revisión sistemática con metaanálisis, 5 estudios, 2 de buena calidad)
@@ -1146,6 +1532,10 @@ Citada como:
 | Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Dolor anterior durante sentadilla» | 4b · cita bajo el test | 1 |
 
 ### Pålsson 2020
+
+Publicación: Knee Surg Sports Traumatol Arthrosc  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1157,6 +1547,10 @@ Citada como:
 
 ### Paquin 2022
 
+Publicación: Arch Physiother 12:26  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Demont 2022 (Musculoskelet Sci Pract, metaanálisis, 4 estudios, n = 182; frente a cefalea facetaria cervical baja, migraña, cefaleas concomitantes o asintomáticos; certeza moderada. S IC 95 %: 70–92 %; E IC 95 %: 71–91 %; LR+ IC 2,6–9,5; LR− IC 0,1–0,4; 4 estudios de cohorte prospectivos de Hall y Ogince, 2007–2010; riesgo de sesgo por la selección de pacientes). FRT normal en cervicogénica de C2–C3/C3–C4: Getsoian 2020 (BMJ Open, bloqueos diagnósticos controlados), citado en Demont 2022. Precauciones: Paquin 2022 (Arch Physiother 12:26, artículo de opinión)
@@ -1166,6 +1560,10 @@ Citada como:
 | Cervical | ce4 · Cefalea Cervicogénica | Test «Test de Flexión-Rotación Cervical (CFRT)» | 4b · cita bajo el test | 1 |
 
 ### Park 2005
+
+Publicación: J Bone Joint Surg Am  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1178,6 +1576,10 @@ Citada como:
 
 ### Park 2008
 
+Publicación: Arch Phys Med Rehabil 89:738–742  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Park 2008 (Arch Phys Med Rehabil 89:738–742; prospectivo, un solo radiólogo)
@@ -1187,6 +1589,10 @@ Citada como:
 | Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Ecografía (si se dispone de informe)» | 4b · cita bajo el test | 1 |
 
 ### Park 2019
+
+Publicación: Medicine 98:e15497  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1200,6 +1606,10 @@ Citada como:
 
 ### Pitcher 2024
 
+Publicación: Foot Ankle Orthop 9(4)  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Dolor a la palpación directa del espacio (sobre todo 3.º–4.º); posible chasquido al palpar mientras se comprimen los metatarsianos. No puntúa: la compresión pulgar-índice del espacio (Mahadevan 2015) tiene S 96 %, pero su especificidad sale de un solo pie sin Morton; el chasquido de Mulder da LR+ 2,19 (IC 0,45–10,60; Dando, en Pitcher 2024).
@@ -1212,6 +1622,10 @@ Citada como:
 
 ### Rathleff 2020
 
+Publicación: Orthop J Sports Med 8(4):2325967120911106  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Rathleff 2020, Orthop J Sports Med 8(4):2325967120911106 (serie de casos, n = 51, 10–14 años, sin grupo control: nivel de evidencia 4; pauta de su apéndice 1)
@@ -1222,6 +1636,10 @@ Citada como:
 
 ### Reid 2014
 
+Publicación: Phys Ther 94(4):466–476  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Reid 2014, Phys Ther 94(4):466–476 (ensayo aleatorizado doble ciego frente a placebo, n = 86)
@@ -1231,6 +1649,10 @@ Citada como:
 | Cervical | ce13 · Mareo Cervicogénico | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Reiman 2014
+
+Publicación: J Athl Train 49:820–9  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1251,6 +1673,10 @@ Citada como:
 
 ### Reiman 2015
 
+Publicación: Br J Sports Med  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral: 4 estudios, n = 319, referencia: cirugía; LR− IC 95 %: 0,02–0,93). Con artro-RM como referencia, LR− 0,45 (IC hasta 1,09). Estudios de baja calidad con pacientes de alta probabilidad previa. Antes: S 80 %, E 25–26 % sin fuente
@@ -1270,6 +1696,10 @@ Citada como:
 
 ### Saueressig 2021
 
+Publicación: J Orthop Sports Phys Ther  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Han 2023 (eClinicalMedicine, revisión sistemática, 6 estudios; LR+ IC 95 %: 1,50–3,98, LR− 0,21–0,47; referencia: bloqueo anestésico). Misma regla que la tarjeta lumbar: 3 de 5 positivos. Saueressig 2021 (JOSPT, metaanálisis, 5 estudios): LR+ 2,13, LR− 0,33, certeza muy baja (GRADE); descarta mejor de lo que confirma
@@ -1279,6 +1709,10 @@ Citada como:
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Cluster «Tests de provocación SI (3 de 5)» | 4b · cita del cluster | 1 |
 
 ### Sman 2015
+
+Publicación: Br J Sports Med  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1295,6 +1729,10 @@ Citada como:
 
 ### Smith 2015
 
+Publicación: Evid Based Med 20:88–97  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Smith 2015 (Evid Based Med 20:88–97; metaanálisis, 9 estudios, n = 1234, calidad metodológica en general baja; referencia: artroscopia o RM)
@@ -1305,6 +1743,10 @@ Citada como:
 | Rodilla | ro2 · Lesión Meniscal | Test «Sensibilidad a la palpación de la línea articular» | 4b · cita bajo el test | 1 |
 
 ### Solomon 2001
+
+Publicación: JAMA 286:1610–20  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1320,6 +1762,10 @@ Citada como:
 
 ### Suri 2010
 
+Publicación: JAMA  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Suri 2010 (JAMA, revisión RCE; IC 95 %: 1,9–95)
@@ -1332,6 +1778,10 @@ Citada como:
 
 ### Tawa 2017
 
+Publicación: —  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Tawa 2017 (revisión sistemática)
@@ -1343,6 +1793,10 @@ Citada como:
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Sensibilidad (algodón, diapasón, pinchazo)» | 4b · cita bajo el test | 2 |
 
 ### Thoomes 2026
+
+Publicación: BMC Musculoskelet Disord  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1359,6 +1813,10 @@ Citada como:
 
 ### van Dijk 1996
 
+Publicación: J Bone Joint Surg Br 78-B(6)  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Cajón anterior con mejor S y E a los 4–6 días; sin signo del surco, el LPAA no está roto del todo. No puntúa: van Dijk 1996 (160 inversiones; referencia: cirugía o artrografía) da para la exploración diferida completa (día 5: hinchazón, hematoma, palpación y cajón) S 96 %, E 84 %, pero para el cajón solo el texto (S 86 %, E 74 %) no cuadra con su propia tabla, y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos.
@@ -1370,6 +1828,10 @@ Citada como:
 | Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Cajón anterior (a los 4–6 días)» | 4b · cita bajo el test | 2 |
 
 ### Walton 2004
+
+Publicación: J Bone Joint Surg Am  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
@@ -1388,6 +1850,10 @@ Citada como:
 
 ### Warden 2007
 
+Publicación: Am J Sports Med 35:427–36  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Warden 2007 (Am J Sports Med 35:427–36; 30 con tendinopatía rotuliana clínica frente a 33 asintomáticos)
@@ -1398,6 +1864,10 @@ Citada como:
 
 ### Williams 2025
 
+Publicación: J Man Manip Ther  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Williams 2025 (J Man Manip Ther, revisión de revisiones sistemáticas): evidencia del PAIVM frente a bloqueo facetario
@@ -1407,6 +1877,11 @@ Citada como:
 | Cervical | ce1 · Disfunción Articular Cervical | Test «PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3» | 4b · cita bajo el test | 1 |
 
 ### Wong 2022
+
+Publicación: Curr Rev Musculoskelet Med  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Solo para la técnica del test.
 
 Citada como:
 
@@ -1420,6 +1895,10 @@ Citada como:
 
 ### Zaslav 2001
 
+Publicación: J Shoulder Elbow Surg 10:23–27  
+DOI: —  
+Última revisión: **sin revisar**
+
 Citada como:
 
 1. Zaslav 2001 (J Shoulder Elbow Surg 10:23–27)
@@ -1429,6 +1908,10 @@ Citada como:
 | Hombro | h5 · Lesión Labral Superior (SLAP) | Test «Test de Resistencia a Rotación Interna» | 4b · cita bajo el test | 1 |
 
 ### Zhang 2010
+
+Publicación: Ann Rheum Dis 69:483–9  
+DOI: —  
+Última revisión: **sin revisar**
 
 Citada como:
 
