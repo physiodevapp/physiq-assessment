@@ -86,7 +86,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Wong 2022](#wong-2022) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
-| [Goodman 6.ª ed.](#goodman-6ª-ed) | cribado fase 2 | 1 | **sin revisar** |
+| [Goodman 2018](#goodman-2018) | cribado fase 2 | 1 | **sin revisar** |
 | [Hölmich 1999](#hölmich-1999) | pauta | 1 | **sin revisar** |
 | [Jonsson 2008](#jonsson-2008) | pauta | 1 | **sin revisar** |
 | [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | **sin revisar** |
@@ -138,7 +138,7 @@ Título: *Pattern Recognition of Clinical Syndromes Related to Neuromusculoskele
 Publicación: ZERAPI  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los «cap.» que citan los pies de las tarjetas (Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son capítulos de este libro.
+Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro.
 
 Las tarjetas de consulta están en el repo [physiodevapp/guia-de-consulta](https://github.com/physiodevapp/guia-de-consulta),
 en `data/tarjeta_<región>.js`. Son extractos de las **guías clínicas** de cada región, basadas en Lluch 2020
@@ -571,7 +571,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[Adib 2023](#adib-2023) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Blanpied 2017](#blanpied-2017) · [Campbell 2020](#campbell-2020) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cook 2011](#cook-2011) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [Getsoian 2020](#getsoian-2020) · [Gomes 2022](#gomes-2022) · [Goodman 6.ª ed.](#goodman-6ª-ed) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hegedus 2012](#hegedus-2012) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hutchison 2013](#hutchison-2013) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Laslett 2006](#laslett-2006) · [Lequesne 2008](#lequesne-2008) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Saueressig 2021](#saueressig-2021) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suri 2010](#suri-2010) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zhang 2010](#zhang-2010)
+[Adib 2023](#adib-2023) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Blanpied 2017](#blanpied-2017) · [Campbell 2020](#campbell-2020) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cook 2011](#cook-2011) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [Getsoian 2020](#getsoian-2020) · [Gomes 2022](#gomes-2022) · [Goodman 2018](#goodman-2018) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hegedus 2012](#hegedus-2012) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hutchison 2013](#hutchison-2013) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Laslett 2006](#laslett-2006) · [Lequesne 2008](#lequesne-2008) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Saueressig 2021](#saueressig-2021) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suri 2010](#suri-2010) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zhang 2010](#zhang-2010)
 
 ### Adib 2023
 
@@ -912,14 +912,14 @@ Citada como:
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» (en `criterio`) | 4b · mención en el texto | 1 |
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» | 4b · cita bajo el test | 2 |
 
-### Goodman 6.ª ed.
+### Goodman 2018
 
 Autores: Goodman, Heick y Lazaro  
 Título: *Differential Diagnosis for Physical Therapists: Screening for Referral*  
 Publicación: Elsevier, 6.ª edición  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Sin año en el registro: no figura en la portada. El cribado de fase 2 lo cita sin año («Criterio de Goodman (cap. 14)»).
+Nota: El cribado de fase 2 lo cita sin año («Criterio de Goodman (cap. 14)»).
 
 Citada como:
 
