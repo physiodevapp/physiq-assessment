@@ -3,9 +3,10 @@
 // el contenido clínico (data/) y en qué parte de la app se usa cada una.
 //
 // Lo usan tests/gen-referencias.mjs (escribe el archivo) y tests/unit.js
-// (falla si docs/referencias.md no coincide con lo que sale de data/ ahora).
-// Función pura: recibe los objetos de data.js y devuelve el Markdown, sin
-// fechas ni nada que cambie entre ejecuciones.
+// (falla si docs/referencias.md no coincide con lo que sale de data/ ahora, o
+// si data/referencias.js —el registro central— no cuadra con las citas).
+// Funciones puras: reciben los objetos de data.js y el registro, sin fechas
+// ni nada que cambie entre ejecuciones.
 //
 // Cómo se reconoce una referencia dentro de una cita de texto libre:
 //   - «Autor Año», «Autor y Autor Año», «Autor et al. Año» → literatura
@@ -21,10 +22,10 @@ const NOMBRE_REGION = {
 };
 
 // Tarjetas de consulta (repo physiodevapp/guia-de-consulta). Las tarjetas son
-// extractos de las guías clínicas de cada región; los pies de cada cara dicen
-// de qué apartados salen. Copiados de data/tarjeta_<región>.js (TITULOS.pie*)
-// y data/formulario_<región>.js (pie) en guia-de-consulta 90c8e19: ese repo no
-// guarda la bibliografía de las guías clínicas, solo cita sus apartados.
+// extractos de las guías clínicas de cada región, basadas en Lluch et al. 2020
+// (ZERAPI; entrada con `tarjetas: true` en data/referencias.js); los pies de
+// cada cara dicen de qué apartados salen. Copiados de data/tarjeta_<región>.js
+// (TITULOS.pie*) y data/formulario_<región>.js (pie) en guia-de-consulta 90c8e19.
 const TARJETAS = {
   hombro: {
     pies: [
@@ -89,30 +90,31 @@ function clavesDe(texto) {
   return claves.filter(c => !vistas.has(c.tipo + c.clave) && vistas.add(c.tipo + c.clave));
 }
 
-// Dónde aparece un texto de una hipótesis, en palabras de la app.
-function lugar(hyp, ruta) {
+// Dónde aparece un texto de una hipótesis, en palabras de la app, y a qué
+// afecta (`efecto`, para priorizar la revisión: lo que mueve la puntuación
+// de la fase 4b pesa más que un texto).
+function lugar(hyp, ruta, testPuntua) {
   const [a, b, c] = ruta;
   if (a === 'tests') {
     const t = hyp.tests[b];
-    return c === 'fuente'
-      ? { donde: `Test «${t.name}»`, fase: '4b · cita bajo el test' }
-      : { donde: `Test «${t.name}» (en \`${c}\`)`, fase: '4b · mención en el texto' };
+    if (c !== 'fuente') return { donde: `Test «${t.name}» (en \`${c}\`)`, fase: '4b · mención en el texto', efecto: 'texto' };
+    return { donde: `Test «${t.name}»`, fase: '4b · cita bajo el test', efecto: testPuntua(hyp, t) ? 'puntuación 4b' : 'test 4b sin puntuar' };
   }
   if (a === 'clusters') {
     const r = hyp.clusters[b];
-    return c === 'fuente'
-      ? { donde: `Cluster «${r.nombre}»`, fase: '4b · cita del cluster' }
-      : { donde: `Cluster «${r.nombre}» (en \`${c}\`)`, fase: '4b · mención en el texto' };
+    if (c !== 'fuente') return { donde: `Cluster «${r.nombre}» (en \`${c}\`)`, fase: '4b · mención en el texto', efecto: 'texto' };
+    return { donde: `Cluster «${r.nombre}»`, fase: '4b · cita del cluster', efecto: testPuntua(hyp, { cluster: b }) ? 'puntuación 4b' : 'test 4b sin puntuar' };
   }
   if (a === 'pronostico') {
     return b === 'fuente'
-      ? { donde: 'Pronóstico', fase: '5 · cita del pronóstico' }
-      : { donde: `Pronóstico (en \`${b}\`)`, fase: '5 · mención en el texto' };
+      ? { donde: 'Pronóstico', fase: '5 · cita del pronóstico', efecto: 'pronóstico' }
+      : { donde: `Pronóstico (en \`${b}\`)`, fase: '5 · mención en el texto', efecto: 'texto' };
   }
-  if (a === 'dosisFuente') return { donde: 'Pauta de tratamiento', fase: '5 · cita de la pauta' };
-  if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto' };
-  return { donde: `\`${ruta.join('.')}\``, fase: '—' };
+  if (a === 'dosisFuente') return { donde: 'Pauta de tratamiento', fase: '5 · cita de la pauta', efecto: 'pauta' };
+  if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto', efecto: 'texto' };
+  return { donde: `\`${ruta.join('.')}\``, fase: '—', efecto: 'texto' };
 }
+const ORDEN_EFECTO = ['puntuación 4b', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'texto'];
 
 function recorrer(obj, ruta, fn) {
   if (typeof obj === 'string') return fn(obj, ruta);
@@ -123,12 +125,15 @@ function recorrer(obj, ruta, fn) {
 
 const esc = s => String(s).replace(/\|/g, '\\|').replace(/\n/g, ' ');
 const porRegion = regiones => (a, b) => regiones.indexOf(a.region) - regiones.indexOf(b.region);
+const ancla = k => k.toLowerCase().replace(/[^\p{L}\d\s-]/gu, '').replace(/\s+/g, '-');
 
-export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPuntua }) {
-  const regiones = Object.keys(CIF_TREES);
+// Todas las citas de data/: literatura (clave → citas y usos), tarjetas
+// (región → citas y usos), tests sin fuente y otras fuentes sin campo propio.
+export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPuntua }) {
   const lit = new Map();        // clave → { citas: [texto], usos: [] }
   const tarjetas = new Map();   // región → { citas: [texto], usos: [] }
   const sinFuente = [];
+  const otras = [];
 
   const anotar = (mapa, clave, cita, uso) => {
     if (!mapa.has(clave)) mapa.set(clave, { citas: [], usos: [] });
@@ -142,7 +147,7 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     for (const campo of ['tests', 'clusters', 'pronostico', 'dosis', 'dosisFuente']) {
       recorrer(hyp[campo], [campo], (texto, ruta) => {
         for (const { tipo, clave } of clavesDe(texto)) {
-          const uso = { region: hyp.region, hyp: `${hyp.id} · ${hyp.name}`, ...lugar(hyp, ruta) };
+          const uso = { region: hyp.region, hyp: `${hyp.id} · ${hyp.name}`, ...lugar(hyp, ruta, testPuntua) };
           anotar(tipo === 'tarjeta' ? tarjetas : lit, clave, texto, uso);
         }
       });
@@ -155,12 +160,11 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
   }
 
   // Menciones fuera de HYPOTHESES (cribado de fase 2 y árbol de fase 4).
-  const otras = [];
   for (const [nombre, obj, fase] of [['SYSTEMIC_SCREENING', SYSTEMIC_SCREENING, '2'], ['CIF_TREES', CIF_TREES, '4']]) {
     recorrer(obj, [nombre], (texto, ruta) => {
       for (const { tipo, clave } of clavesDe(texto)) {
         if (tipo !== 'lit') continue;
-        anotar(lit, clave, texto, { region: ruta[1], hyp: '—', donde: `\`${ruta.slice(2).join('.')}\``, fase: `${fase} · mención en el texto` });
+        anotar(lit, clave, texto, { region: ruta[1], hyp: '—', donde: `\`${ruta.slice(2).join('.')}\``, fase: `${fase} · mención en el texto`, efecto: 'texto' });
       }
     });
   }
@@ -170,35 +174,104 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
       if (sis.criterioCompuesto) otras.push({ region, que: `Criterio compuesto · ${sis.nombre}`, fase: '2', fuente: sis.criterioCompuesto.nota });
     }
   }
+  return { lit, tarjetas, sinFuente, otras };
+}
+
+// Lo que no cuadra entre las citas de data/ y el registro (data/referencias.js).
+// Todo vacío = bien. Lo comprueba tests/unit.js.
+export function problemasRegistro({ lit, tarjetas }, REFERENCIAS) {
+  const base = Object.keys(REFERENCIAS).filter(k => REFERENCIAS[k].tarjetas);
+  return {
+    sinRegistrar: [...lit.keys()].filter(k => !REFERENCIAS[k]),
+    sinUso: Object.keys(REFERENCIAS).filter(k => !lit.has(k) && !(REFERENCIAS[k].tarjetas && tarjetas.size)),
+    revisionMal: Object.entries(REFERENCIAS)
+      .filter(([, r]) => r.revision !== null && !(/^\d{4}-(0[1-9]|1[0-2])$/.test(r.revision?.fecha) && r.revision?.resultado?.trim()))
+      .map(([k]) => k),
+    baseTarjetas: base.length === 1 ? [] : [`${base.length} entradas con tarjetas: true (tiene que haber exactamente 1)`]
+  };
+}
+
+function lineaRegistro(r) {
+  if (!r) return ['_⚠ No está en `data/referencias.js`._', ''];
+  const xs = [
+    r.autores && `Autores: ${r.autores}`,
+    r.titulo && `Título: *${r.titulo}*`,
+    `Publicación: ${r.publicacion || '—'}`,
+    `DOI: ${r.doi || '—'}`,
+    `Última revisión: ${r.revision ? `${r.revision.fecha} · ${r.revision.resultado}` : '**sin revisar**'}`,
+    r.nota && `Nota: ${r.nota}`
+  ].filter(Boolean);
+  return [xs.join('  \n'), ''];
+}
+
+export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS, testPuntua }) {
+  const regiones = Object.keys(CIF_TREES);
+  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPuntua });
+  const claveBase = Object.keys(REFERENCIAS).find(k => REFERENCIAS[k].tarjetas);
 
   const L = [];
   const p = (...xs) => L.push(...xs);
   const total = [...lit.values()].reduce((n, e) => n + e.usos.length, 0);
-  const totalTarjetas = [...tarjetas.values()].reduce((n, e) => n + e.usos.length, 0);
+  const usosTarjetas = [...tarjetas.values()].flatMap(e => e.usos);
   const nTests = Object.values(HYPOTHESES).reduce((n, h) => n + h.tests.length, 0);
+  const revisadas = Object.values(REFERENCIAS).filter(r => r.revision).length;
 
   p('# Referencias bibliográficas', '',
-    '> **Archivo generado — no editar a mano.** Sale de `data/` con `node tests/gen-referencias.mjs`;',
-    '> `node tests/unit.js` falla si no está al día. Para cambiar una referencia, edita la cita en',
-    '> `data/<región>.js` y regenera este archivo.', '',
+    '> **Archivo generado — no editar a mano.** Sale de `data/` y del registro `data/referencias.js` con',
+    '> `node tests/gen-referencias.mjs`; `node tests/unit.js` falla si no está al día.', '',
     'Todas las referencias que cita el contenido clínico de la app y dónde se usa cada una.',
     'Las citas viven en `data/<región>.js`: `fuente` de cada test y de cada cluster (se ve en la fase 4b,',
     'bajo el test), `pronostico.fuente` y `dosisFuente` (fase 5, bajo el pronóstico y la pauta).',
-    'También se recogen las menciones a un estudio dentro de otros textos (el `criterio` de un test, la `dosis`).', '',
+    'También se recogen las menciones a un estudio dentro de otros textos (el `criterio` de un test, la `dosis`).',
+    'Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vive en el registro',
+    '`data/referencias.js`, una entrada por referencia.', '',
     '## Resumen', '',
     `- **${lit.size}** referencias de literatura, con **${total}** usos.`,
-    `- **${tarjetas.size}** tarjetas de consulta (repo guia-de-consulta), con **${totalTarjetas}** usos.`,
+    `- **${tarjetas.size}** tarjetas de consulta (repo guia-de-consulta), con **${usosTarjetas.length}** usos${claveBase ? `, basadas en ${claveBase}` : ''}.`,
+    `- **${revisadas}** de ${Object.keys(REFERENCIAS).length} referencias del registro revisadas. Ver «Estado de revisión».`,
     `- **${sinFuente.length}** de ${nTests} tests sin \`fuente\` (${sinFuente.filter(s => s.puntua).length} de ellos puntúan en la fase 4b). Ver «Tests sin fuente».`, '',
+    '## Cómo revisar una referencia', '',
+    '1. Coge la primera de «Estado de revisión» (sin revisar y que mueve la puntuación, primero).',
+    '2. Busca si hay literatura más reciente o mejor (revisión sistemática, guía de práctica clínica).',
+    '3. Si no hay nada mejor: en `data/referencias.js`, pon a esa referencia',
+    "   `revision: { fecha: 'AAAA-MM', resultado: 'Sin cambios: <qué se buscó>' }`.",
+    '4. Si la hay: en su tabla de usos (sección 2) tienes cada test, cluster, pronóstico o pauta que la cita.',
+    '   En cada uno, cambia la `fuente` y las cifras (`sn`, `sp`, `lr_pos`, `lr_neg`) en `data/<región>.js`,',
+    '   leyendo el artículo, nunca un resumen de terceros. Añade la referencia nueva al registro con su',
+    '   `revision`; si la antigua deja de citarse, bórrala del registro (la prueba lo exige).',
+    '5. `node tests/gen-referencias.mjs` y `node tests/unit.js`, y comitea `data/` junto con este archivo.',
+    '   Cambiar un LR cambia la puntuación de la fase 4b: dilo en el mensaje del commit.', '',
     'Columna «Fase»: dónde lo ve el clínico. «4b · cita bajo el test» quiere decir que esa referencia respalda',
     'las cifras (S, E, LR) del test; que el test puntúe o no depende de las reglas de `calcLRScore` (ver CLAUDE.md).',
     'Columna «Cita»: número de la forma de citar (lista «Citada como») que usa esa fila.', '');
 
+  // ── Estado de revisión ──
+  const filas = Object.entries(REFERENCIAS).map(([k, r]) => {
+    const usos = r.tarjetas ? usosTarjetas : (lit.get(k)?.usos || []);
+    const efectos = ORDEN_EFECTO.filter(e => usos.some(u => u.efecto === e));
+    const ano = Number((k.match(/(\d{4})$/) || [])[1]) || 0;
+    return { k, r, n: usos.length, efectos, ano };
+  });
+  const rango = f => (f.efectos.length ? ORDEN_EFECTO.indexOf(f.efectos[0]) : ORDEN_EFECTO.length);
+  filas.sort((a, b) =>
+    (a.r.revision ? 1 : 0) - (b.r.revision ? 1 : 0) ||
+    (a.r.revision?.fecha || '').localeCompare(b.r.revision?.fecha || '') ||
+    rango(a) - rango(b) || a.ano - b.ano || a.k.localeCompare(b.k, 'es'));
+  p('## Estado de revisión', '',
+    'Orden de trabajo: primero las nunca revisadas, luego las revisadas hace más tiempo. Dentro de cada grupo,',
+    'primero las que mueven la puntuación de la fase 4b, luego pauta y pronóstico (fase 5), y las más antiguas antes.',
+    '«Afecta a»: «puntuación 4b» = respalda un test o cluster que puntúa; «test 4b sin puntuar» = el test se ve',
+    'pero no mueve la puntuación; «texto» = solo se menciona.', '',
+    '| Referencia | Afecta a | Usos | Última revisión |', '|---|---|---|---|',
+    ...filas.map(f => `| [${f.k}](#${ancla(f.r.tarjetas ? '1. Tarjetas de consulta' : f.k)}) | ${f.efectos.join(' · ') || '—'} | ${f.n} | ${f.r.revision ? `${f.r.revision.fecha} · ${esc(f.r.revision.resultado)}` : '**sin revisar**'} |`), '');
+
   // ── 1. Tarjetas de consulta ──
-  p('## 1. Tarjetas de consulta (guía de consulta)', '',
-    'Las tarjetas de consulta están en el repo [physiodevapp/guia-de-consulta](https://github.com/physiodevapp/guia-de-consulta),',
-    'en `data/tarjeta_<región>.js`. Son extractos de las **guías clínicas** de cada región. Ese repo no guarda la',
-    'bibliografía de las guías clínicas: solo cita sus apartados en el pie de cada cara (abajo, literal).',
-    'Las referencias originales de esos apartados están en las guías clínicas, que no están en ningún repo.', '');
+  p('## 1. Tarjetas de consulta', '');
+  if (claveBase) p(...lineaRegistro(REFERENCIAS[claveBase]));
+  p('Las tarjetas de consulta están en el repo [physiodevapp/guia-de-consulta](https://github.com/physiodevapp/guia-de-consulta),',
+    `en \`data/tarjeta_<región>.js\`. Son extractos de las **guías clínicas** de cada región, basadas en ${claveBase || '—'}`,
+    '(arriba). En `data/` se citan como «Tarjeta de consulta <región>». Los pies de cada tarjeta (abajo, literales)',
+    'dicen de qué apartados de la guía clínica sale cada cara.', '');
   for (const region of regiones) {
     const e = tarjetas.get(region);
     const t = TARJETAS[region];
@@ -223,10 +296,10 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     'Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):',
     'la lista «Citada como» los distingue.', '');
   const claves = [...lit.keys()].sort((a, b) => a.localeCompare(b, 'es'));
-  p(claves.map(k => `[${k}](#${k.toLowerCase().replace(/[^\p{L}\d\s-]/gu, '').replace(/\s+/g, '-')})`).join(' · '), '');
+  p(claves.map(k => `[${k}](#${ancla(k)})`).join(' · '), '');
   for (const k of claves) {
     const e = lit.get(k);
-    p(`### ${k}`, '', 'Citada como:', '', ...e.citas.map((c, i) => `${i + 1}. ${c}`), '',
+    p(`### ${k}`, '', ...lineaRegistro(REFERENCIAS[k]), 'Citada como:', '', ...e.citas.map((c, i) => `${i + 1}. ${c}`), '',
       '| Región | Hipótesis | Dónde | Fase | Cita |', '|---|---|---|---|---|',
       ...e.usos.slice().sort(porRegion(regiones)).map(u => `| ${NOMBRE_REGION[u.region] || u.region} | ${esc(u.hyp)} | ${esc(u.donde)} | ${u.fase} | ${u.cita} |`), '');
   }
@@ -245,11 +318,11 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     'Tests sin `fuente` (los miembros de un cluster con `fuente` no cuentan: la cita del cluster los cubre).',
     '«Puntúa» = sí: sus cifras mueven la puntuación de la fase 4b sin que la app diga de dónde salen.', '');
   for (const region of regiones) {
-    const filas = sinFuente.filter(s => s.region === region);
-    if (!filas.length) continue;
-    p(`### ${NOMBRE_REGION[region]} (${filas.length})`, '',
+    const filasR = sinFuente.filter(s => s.region === region);
+    if (!filasR.length) continue;
+    p(`### ${NOMBRE_REGION[region]} (${filasR.length})`, '',
       '| Hipótesis | Test | Cifras | Puntúa |', '|---|---|---|---|',
-      ...filas.map(s => `| ${esc(s.hyp)} | ${esc(s.test)} | ${esc(s.cifras.join(' · ') || '—')} | ${s.puntua ? '**sí**' : 'no'} |`), '');
+      ...filasR.map(s => `| ${esc(s.hyp)} | ${esc(s.test)} | ${esc(s.cifras.join(' · ') || '—')} | ${s.puntua ? '**sí**' : 'no'} |`), '');
   }
 
   return L.join('\n').replace(/\n+$/, '') + '\n';

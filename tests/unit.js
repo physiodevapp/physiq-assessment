@@ -499,18 +499,39 @@ test('resolved next-step for every option matches tests/fixtures/cif-tree-naviga
     'CIF tree navigation changed — if intentional, run `node tests/gen-cif-snapshot.mjs` after reviewing the diff');
 });
 
-// ── docs/referencias.md al día ───────────────────────────────────────────────
+// ── docs/referencias.md al día y registro de referencias ─────────────────────
 // Índice generado de todas las referencias de data/ y dónde se usan (ver
-// tests/referencias.mjs). Si alguien toca una `fuente` sin regenerarlo, falla.
-console.log('\ndocs/referencias.md');
+// tests/referencias.mjs), y el registro central data/referencias.js: toda
+// referencia citada tiene que estar en el registro y toda entrada del registro
+// tiene que citarse en algún sitio. Si alguien toca una `fuente` o el registro
+// sin regenerar el índice, falla.
+console.log('\ndocs/referencias.md y data/referencias.js');
 
-const { construirReferencias } = await import('./referencias.mjs');
+const { construirReferencias, recogerCitas, problemasRegistro } = await import('./referencias.mjs');
+const { REFERENCIAS } = await import('../data/referencias.js');
+const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPuntua }), REFERENCIAS);
 
-test('docs/referencias.md coincide con las citas de data/', () => {
+test('toda referencia citada en data/ está en data/referencias.js', () => {
+  assert.deepEqual(problemas.sinRegistrar, [], `${problemas.sinRegistrar.join(', ')}: añádelas al registro (clave = «Autor Año» tal como sale en la cita)`);
+});
+
+test('toda entrada de data/referencias.js se cita en data/', () => {
+  assert.deepEqual(problemas.sinUso, [], `${problemas.sinUso.join(', ')}: ya no se citan, bórralas del registro (o corrige la clave)`);
+});
+
+test("data/referencias.js: revision es null o { fecha: 'AAAA-MM', resultado }", () => {
+  assert.deepEqual(problemas.revisionMal, [], `revision mal escrita en: ${problemas.revisionMal.join(', ')}`);
+});
+
+test('data/referencias.js: exactamente una referencia base de las tarjetas (tarjetas: true)', () => {
+  assert.deepEqual(problemas.baseTarjetas, []);
+});
+
+test('docs/referencias.md coincide con las citas de data/ y con el registro', () => {
   const actual = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'docs', 'referencias.md'), 'utf8');
-  const esperado = construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPuntua });
+  const esperado = construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS, testPuntua });
   assert.ok(actual === esperado,
-    'docs/referencias.md no está al día — ejecuta `node tests/gen-referencias.mjs` y comitéalo junto con el cambio de data/');
+    'docs/referencias.md no está al día — ejecuta `node tests/gen-referencias.mjs` y comitéalo junto con el cambio');
 });
 
 // ── phase4.js engine: rebuildHypotheses / pruneTreeFrom / resolveOptionTargets ─
