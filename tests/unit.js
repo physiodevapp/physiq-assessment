@@ -920,8 +920,12 @@ test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y de
   const ro2 = HYPOTHESES.ro2, iTrau = ro2.tests.findIndex(t => t.name.startsWith('Combinación traumática')),
     iPalp = ro2.tests.findIndex(t => t.name.startsWith('Sensibilidad a la palpación'));
   assert.ok(Math.abs(calcLRScore(ro2, { [iTrau]: 'pos', [iPalp]: 'pos' }).totalLR - 8.9) < 0.001);
+  // Criterios del ACR con las cifras de Peat 2006 (LR+ 1,6 · LR− 0,8): no puntúan, así que no
+  // absorben a sus componentes — crepitación (2,23) y agrandamiento óseo (11,81) cuentan solos.
   const ro1 = HYPOTHESES.ro1, iAcr = ro1.tests.findIndex(t => t.name === 'Criterios clínicos del ACR');
-  assert.ok(Math.abs(calcLRScore(ro1, { 0: 'pos', 1: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 0.95 / 0.31) < 0.01);
+  assert.equal(calcLRScore(ro1, { [iAcr]: 'pos' }).totalLR, 1);
+  assert.equal(calcLRScore(ro1, { [iAcr]: 'neg' }).totalLR, 1);
+  assert.ok(Math.abs(calcLRScore(ro1, { 0: 'pos', 1: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 2.23 * 11.81) < 0.01);
   // Plica: la E de Kim 2007 sale solo de los controles con dolor lateral → hallazgo, no puntúa
   assert.equal(calcLRScore(HYPOTHESES.ro17, { 0: 'pos' }).totalLR, 1);
   assert.equal(calcLRScore(HYPOTHESES.ro17, { 0: 'neg' }).totalLR, 1);
