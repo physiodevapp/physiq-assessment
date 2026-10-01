@@ -499,6 +499,20 @@ test('resolved next-step for every option matches tests/fixtures/cif-tree-naviga
     'CIF tree navigation changed — if intentional, run `node tests/gen-cif-snapshot.mjs` after reviewing the diff');
 });
 
+// ── docs/referencias.md al día ───────────────────────────────────────────────
+// Índice generado de todas las referencias de data/ y dónde se usan (ver
+// tests/referencias.mjs). Si alguien toca una `fuente` sin regenerarlo, falla.
+console.log('\ndocs/referencias.md');
+
+const { construirReferencias } = await import('./referencias.mjs');
+
+test('docs/referencias.md coincide con las citas de data/', () => {
+  const actual = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'docs', 'referencias.md'), 'utf8');
+  const esperado = construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, testPuntua });
+  assert.ok(actual === esperado,
+    'docs/referencias.md no está al día — ejecuta `node tests/gen-referencias.mjs` y comitéalo junto con el cambio de data/');
+});
+
 // ── phase4.js engine: rebuildHypotheses / pruneTreeFrom / resolveOptionTargets ─
 // Fixture tree — deliberately NOT real clinical content. These three functions
 // take the tree/step as a parameter rather than importing CIF_TREES
