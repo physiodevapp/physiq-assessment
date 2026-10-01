@@ -216,9 +216,13 @@ When modifying clinical content, keep `data/` isolated from logic — this separ
 ### Dialogs
 Use `showConfirmBanner(title, text, actionLabel, callback)` — never use the native `confirm()` or `alert()`.
 
+## Theme
+
+Dark (default of `:root`) and light, with a manual selector (Sistema / Claro / Oscuro). `data-theme` on `<html>` is always the *resolved* theme; light overrides the CSS variables in `:root[data-theme="light"]` (`styles.css`), so new colors must be variables, never literals (the `--header-bg`, `--nav-bg`, `--hover-tint`, `--alert-*-text`, `--lime`… tokens exist for that). The choice lives in `localStorage` (exception to the no-localStorage rule: a synchronous per-device UI preference, read by the inline script in `index.html`'s `<head>` before first paint; the IDB session expires after 24h and is async). `applyTheme()`/`setThemePref()` (`app.js`) mirror that script and follow `prefers-color-scheme` live while the choice is "Sistema". **In the hub (`window.self !== window.top`) the app is always dark** and the selector is hidden (`.in-hub .theme-row`) — the stored choice is ignored there even though the origin is shared. The selector is rendered in the session panel (`_themeRowHTML()` in the `edit` state of `_showSessionState`), not in the header, which is already full at 360px. Not themed: `manifest.json` colors and iOS `black-translucent` status bar (static).
+
 ## Session Persistence
 
-IDB (`lib/session.js`) is the only persistence layer — no localStorage.
+IDB (`lib/session.js`) is the persistence layer for session/clinical data — no localStorage for that. The single exception is the UI theme choice (`physiq-assessment-theme`, see "Theme").
 
 **Write triggers in `saveSession()`** (called on every phase transition, `visibilitychange`, and all state-mutating handlers):
 - `selectSQ`, `selectPsico`, `selectOption`, `updateEdadPaciente`, `updateVital` — phase 1 inputs
