@@ -157,3 +157,17 @@ Diseño, decisiones y diferencias con lo implementado en `docs/modo-breve.md`. M
 - [x] `ce12` (Kuijper 2009 en PMC + guía cervical JOSPT 2017) y `ro15` (Rathleff 2020 en PMC, con su apéndice: serie de casos de nivel 4 que excluyó el Sinding-Larsen-Johansson, y la dosis lo dice).
 - [x] Dosis tipo A con PDF de pago (aportados por el usuario): `tp9` (Jonsson 2008), `tp14` (Kulig 2009), `ce13` (Reid 2014), `ca16` (Hölmich 1999) y el protocolo de McKeon 2008 añadido a `tp21`. Con esto no queda ninguna dosis tipo A pendiente; el resto de hipótesis sin dosis no tiene evidencia de pauta específica (tipo D) o es de derivación (`DOSIS_DERIVAR`).
 - [x] Hipótesis de derivación (tipo C): `h11`, `ro11`, `tp3`–`tp6`, `tp17`, `tp30`, `tp35` llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», decisión del usuario) y la fase 5 las titula «🚑 Derivación». Las que solo se derivan según el grado o un signo (`ro10`, `tp2`, `tp23`, `ro14`, `ro16`, `ro19`, `tp25`, `tp32`) siguen con `dosis: ''`
+
+## Fase F — Razonamiento fisiológico de las preguntas de cribado (fase 2)
+
+Diseño, fuentes, reglas y procedimiento en `docs/razonamiento-cribado.md` (léelo entero antes de empezar). **Una región por sesión/chat**, en el orden de la tabla. La primera sesión implementa además el campo `razonamiento`, la UI (nivel 1 inline + panel lateral en escritorio / bottom sheet en móvil), los tests y los sistemas comunes de `data/comun.js`. Ninguna región llega a `main` sin la revisión clínica del usuario (tabla de revisión).
+
+| Orden | Región | Preguntas | Goodman (páginas pedidas) | Razonamientos | Revisión usuario | Notas |
+|---|---|---|---|---|---|---|
+| 1 | Lumbar + UI + `comun.js` | 21 + 9 | [ ] | [ ] | [ ] | Confirmar edición de Goodman (6.ª/7.ª) |
+| 2 | Cervical | 20 | [ ] | [ ] | [ ] | Rushton 2020 para el «cuánto pesa» |
+| 3 | Hombro | 19 | [ ] | [ ] | [ ] | |
+| 4 | Cadera | 20 | [ ] | [ ] | [ ] | |
+| 5 | Rodilla | 10 | [ ] | [ ] | [ ] | |
+| 6 | Tobillo y pie | 13 | [ ] | [ ] | [ ] | |
+| 7 | Codo | 10 | [ ] | [ ] | [ ] | |
