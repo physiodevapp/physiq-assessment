@@ -338,6 +338,8 @@ Navigation to physiq-report from phase 5 is the hub's responsibility. physiq-ass
 
 See `MIGRATION_PLAN.md` for a living checklist covering the ES modules migration (Fase A), mobile-friendly text input improvements (Fase B), the phase 4/4b engine isolation (Fase C) and **Fase D — integrating guía de consulta region by region** (step-by-step procedure + per-region status; lumbar is the reference implementation). One region per session: start any region work by reading Fase D. Check it for current progress before starting related work; update its checkboxes and notes as steps are completed.
 
+**Fase F — physiological rationale for phase 2 screening questions** (`razonamiento` field: inline «¿Por qué?» + detail in a side panel on desktop / bottom sheet on mobile; sources Goodman + StatPearls + Finucane/Rushton/Cochrane/NICE; clinical review by the user before `main`). Also one region per session: read `docs/razonamiento-cribado.md` in full and the Fase F table in `MIGRATION_PLAN.md` before starting.
+
 ## Sibling repos
 
 The hub at `physiodevapp.github.io/physiq/` is the primary entry point for the ecosystem.
