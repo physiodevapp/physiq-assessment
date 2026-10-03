@@ -18,7 +18,8 @@
 
 const NOMBRE_REGION = {
   hombro: 'Hombro', cadera: 'Cadera', cervical: 'Cervical', lumbar: 'Lumbar',
-  rodilla: 'Rodilla', codo: 'Codo', tobillo_pie: 'Tobillo y pie'
+  rodilla: 'Rodilla', codo: 'Codo', tobillo_pie: 'Tobillo y pie',
+  comun: 'Todas (sistemas comunes)'
 };
 
 // Tarjetas de consulta (repo physiodevapp/guia-de-consulta). Las tarjetas son
@@ -117,7 +118,7 @@ function lugar(hyp, ruta, testPuntua) {
   if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto', efecto: 'texto' };
   return { donde: `\`${ruta.join('.')}\``, fase: '—', efecto: 'texto' };
 }
-const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'texto'];
+const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'texto'];
 
 function recorrer(obj, ruta, fn) {
   if (typeof obj === 'string') return fn(obj, ruta);
@@ -166,6 +167,7 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERE
   // Menciones fuera de HYPOTHESES (cribado de fase 2 y árbol de fase 4).
   for (const [nombre, obj, fase] of [['SYSTEMIC_SCREENING', SYSTEMIC_SCREENING, '2'], ['CIF_TREES', CIF_TREES, '4']]) {
     recorrer(obj, [nombre], (texto, ruta) => {
+      if (ruta.includes('razonamiento')) return;   // sus fuentes se recogen abajo, por clave
       for (const { tipo, clave } of clavesDe(texto, alias)) {
         if (tipo !== 'lit') continue;
         const criterio = ruta.includes('criterioCompuesto');
@@ -174,6 +176,28 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERE
       }
     });
   }
+  // Razonamiento de las preguntas de cribado (fase 2, «¿Por qué?»):
+  // `razonamiento.fuentes` son claves del registro, no texto libre. Los
+  // sistemas comunes (data/comun.js) salen en todas las regiones: se cuentan
+  // una vez, como región «comun». «Citada como»: la `cita` completa que
+  // empieza por la clave, si la hay.
+  const vistas = new Set();
+  for (const [region, scr] of Object.entries(SYSTEMIC_SCREENING)) {
+    for (const sis of scr.sistemas || []) {
+      const reg = sis.id.startsWith('transversal_') ? 'comun' : region;
+      for (const q of sis.preguntas || []) {
+        const r = q.razonamiento;
+        if (!r || vistas.has(`${sis.id}.${q.id}`)) continue;
+        vistas.add(`${sis.id}.${q.id}`);
+        for (const clave of r.fuentes || []) {
+          const cita = (r.citas || []).find(c => c.startsWith(clave)) || clave;
+          anotar(lit, clave, cita, { region: reg, hyp: '—', donde: `Pregunta \`${q.id}\` · ${sis.nombre}`,
+            fase: '2 · razonamiento del cribado', efecto: 'razonamiento fase 2' });
+        }
+      }
+    }
+  }
+
   for (const [region, scr] of Object.entries(SYSTEMIC_SCREENING)) {
     if (scr.urgencia) otras.push({ region, que: `Recuadro «${scr.urgencia.titulo}»`, fase: '2', fuente: 'Literal de la tarjeta de consulta (URGENCIA)' });
     for (const sis of scr.sistemas || []) {
@@ -228,7 +252,8 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     'Todas las referencias que cita el contenido clínico de la app y dónde se usa cada una.',
     'Las citas viven en `data/<región>.js`: `fuente` de cada test y de cada cluster (se ve en la fase 4b,',
     'bajo el test), `pronostico.fuente` y `dosisFuente` (fase 5, bajo el pronóstico y la pauta).',
-    'También se recogen las menciones a un estudio dentro de otros textos (el `criterio` de un test, la `dosis`).',
+    'También se recogen las menciones a un estudio dentro de otros textos (el `criterio` de un test, la `dosis`)',
+    'y las `fuentes` del razonamiento de cada pregunta de cribado (fase 2, «¿Por qué?»).',
     'Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vive en el registro',
     '`data/referencias.js`, una entrada por referencia.', '',
     '## Resumen', '',
@@ -268,6 +293,7 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     'primero las que mueven la puntuación de la fase 4b, luego pauta y pronóstico (fase 5), y las más antiguas antes.',
     '«Afecta a»: «puntuación 4b» = respalda un test o cluster que puntúa; «test 4b sin puntuar» = el test se ve',
     'pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que dispara una alerta de derivación;',
+    '«razonamiento fase 2» = respalda el «¿Por qué?» de una pregunta de cribado (no cambia ninguna alerta);',
     '«texto» = solo se menciona.', '',
     '| Referencia | Afecta a | Usos | Última revisión |', '|---|---|---|---|',
     ...filas.map(f => `| [${f.k}](#${ancla(f.r.tarjetas ? '1. Tarjetas de consulta' : f.k)}) | ${f.efectos.join(' · ') || '—'} | ${f.n} | ${f.r.revision ? `${f.r.revision.fecha} · ${esc(f.r.revision.resultado)}` : '**sin revisar**'} |`), '');
