@@ -64,6 +64,7 @@ export const REFERENCIAS = {
     nota: 'Texto completo no consultado (Wiley, de pago): la «validación cruzada S 83 %, E 68 %» que citaba la app no está en el resumen y se ha quitado.'
   },
   'Anastasopoulou y Gillespie 2026': { autores: 'Anastasopoulou y Gillespie', titulo: 'Paget Bone Disease', publicacion: 'StatPearls [Internet], NBK430805 (act. 2026-08-17)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430805/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
+  'Antunes 2024': { autores: 'Antunes, Tian y Copelin', titulo: 'Upper Gastrointestinal Bleeding', publicacion: 'StatPearls [Internet], NBK470300 (act. 2024-08-17)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK470300/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Apelby-Albrecht 2013': { publicacion: '', doi: '', revision: null, nota: 'Citado a través de Thoomes 2026.' },
   'Appelboam 2008': { publicacion: 'BMJ 337:a2428', doi: '', revision: null },
   'Bachmann 2003': { publicacion: 'BMJ 326:417', doi: '', revision: null },
@@ -77,7 +78,9 @@ export const REFERENCIAS = {
   'Chen 2023': { autores: 'Chen, Sabir y Al Khalili', titulo: 'Physiology, Osmoregulation and Excretion', publicacion: 'StatPearls [Internet], NBK541108 (act. 2023-05-01)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK541108/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Chimenti 2024': { publicacion: 'J Orthop Sports Phys Ther 54(12):CPG1–CPG32', doi: '', revision: null },
   'Chronopoulos 2004': { publicacion: 'Am J Sports Med', doi: '', revision: null },
+  'Consoli y Carlson 2026': { autores: 'Consoli y Carlson', titulo: 'Endometriosis', publicacion: 'StatPearls [Internet], NBK567777 (act. 2026-06-17)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK567777/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Cook 2011': { publicacion: '', doi: '', revision: null },
+  'Denault y Launico 2026': { autores: 'Denault y Launico', titulo: 'Physiology, Platelet', publicacion: 'StatPearls [Internet], NBK470328 (act. 2026-09-14)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK470328/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Downie 2013': { autores: 'Downie, Williams, Henschke, Hancock, Ostelo, de Vet, Macaskill, Irwig, van Tulder, Koes y Maher', titulo: 'Red flags to screen for malignancy and fracture in patients with low back pain: systematic review', publicacion: 'BMJ 347:f7095', doi: '10.1136/bmj.f7095', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3898572/', revision: null, nota: 'Texto completo en PMC3898572. Resume las dos revisiones Cochrane de banderas rojas (malignidad y fractura).' },
   'Décary 2018': { publicacion: 'PLoS One · PM&R (dos artículos)', doi: '', revision: null, nota: 'Dos artículos distintos con la misma clave: la cita de cada uso dice la revista.' },
   'Demont 2022': { publicacion: 'Musculoskelet Sci Pract', doi: '', revision: null },
@@ -91,6 +94,7 @@ export const REFERENCIAS = {
   'Fritz 2005': { publicacion: '', doi: '', revision: null },
   'Genevay 2017': { publicacion: '', doi: '', revision: null },
   'Getsoian 2020': { publicacion: 'BMJ Open', doi: '', revision: null, nota: 'Citado a través de Demont 2022.' },
+  'Gill 2025': { autores: 'Gill, Leslie y Minter', titulo: 'Acute Cystitis', publicacion: 'StatPearls [Internet], NBK459322 (act. 2025-11-28)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK459322/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Gomes 2022': { publicacion: 'BMC Musculoskelet Disord 23:885', doi: '', revision: null },
   'Grimaldi 2017': {
     publicacion: 'Br J Sports Med 51(6):519–24', doi: '10.1136/bjsports-2016-096175',
@@ -112,6 +116,7 @@ export const REFERENCIAS = {
     revision: { fecha: '2026-10', resultado: 'Texto completo leído: la pauta de ca16 coincide con el panel 1 y los métodos. Corregido el trote (pasadas las 6 primeras semanas) y añadida la población (varones de 18 a 50 años). No se encontró un ensayo posterior que lo sustituya.' }
   },
   'Hutchison 2013': { publicacion: '', doi: '', revision: null, nota: 'Citado a través de Reiman 2014.' },
+  'Jayarangaiah 2023': { autores: 'Jayarangaiah, Kemp y Theetha Kariyanna', titulo: 'Bone Metastasis', publicacion: 'StatPearls [Internet], NBK507911 (act. 2023-07-31)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK507911/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Jonsson 2008': { publicacion: 'Br J Sports Med 42:746–749', doi: '', revision: null },
   'Jull 2007': { publicacion: 'Cephalalgia 27:793–802', doi: '', revision: null },
   'Karanasios 2022': { publicacion: 'J Hand Ther 35:541–551', doi: '', revision: null },
@@ -129,18 +134,21 @@ export const REFERENCIAS = {
   'Koc 2023': { publicacion: 'J Orthop Sports Phys Ther 53(12):CPG1–CPG39', doi: '', revision: null },
   'Kuijper 2009': { publicacion: 'BMJ 339:b3883', doi: '', revision: null },
   'Kulig 2009': { publicacion: 'Phys Ther 89(1):26–37', doi: '', revision: null },
+  'LaPelusa y Dave 2023': { autores: 'LaPelusa y Dave', titulo: 'Physiology, Hemostasis', publicacion: 'StatPearls [Internet], NBK545263 (act. 2023-05-01)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK545263/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Laslett 2006': { publicacion: '', doi: '', revision: null },
   'Lassiter 2024': { autores: 'Lassiter, Bhutta y Allam', titulo: 'Inflammatory Back Pain and Spondyloarthropathies', publicacion: 'StatPearls [Internet], NBK539753 (act. 2024-02-26)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK539753/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Lequesne 2008': {
     publicacion: 'Arthritis Rheum 59(2):241–6', doi: '10.1002/art.23354',
     revision: { fecha: '2026-10', resultado: 'Cifras comprobadas en el resumen y en la tabla 2 de Kinsella 2024. La E se midió frente a controles sin dolor de cadera (casos y controles), lo que la infla: la derotación externa resistida pasa a hallazgo.' }
   },
+  'Leslie 2024': { autores: 'Leslie, Sajjad y Singh', titulo: 'Nocturia', publicacion: 'StatPearls [Internet], NBK518987 (act. 2024-02-17)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK518987/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Litaker 2000': { publicacion: 'J Am Geriatr Soc', doi: '', revision: null },
   'Liu 2025': { publicacion: 'BMC Sports Sci Med Rehabil 17:335', doi: '', revision: null },
   'Lucas 2009': { publicacion: '', doi: '', revision: null },
   'Maffulli 1998': { publicacion: 'Am J Sports Med 26:266–70', doi: '', revision: null },
   'Mahadevan 2015': { publicacion: 'J Foot Ankle Surg 54:549–53', doi: '', revision: null },
   'Majlesi 2008': { publicacion: '', doi: '', revision: null },
+  'Malik 2023': { autores: 'Malik, Gnanapandithan y Singh', titulo: 'Peptic Ulcer Disease', publicacion: 'StatPearls [Internet], NBK534792 (act. 2023-06-05)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK534792/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Margetis y Gillis 2025': { autores: 'Margetis y Gillis', titulo: 'Spondylolisthesis', publicacion: 'StatPearls [Internet], NBK430767 (act. 2025-03-28)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430767/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Martin 2021': { publicacion: 'J Orthop Sports Phys Ther 51(4):CPG1–CPG80', doi: '', revision: null },
   'Maxwell y Sterling 2013': { publicacion: 'Man Ther 18:172–174', doi: '', revision: null },
@@ -155,6 +163,7 @@ export const REFERENCIAS = {
     revision: { fecha: '2026-10', resultado: 'Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera.' }
   },
   'Molloy 2003': { publicacion: 'J Bone Joint Surg Br 85-B(3)', doi: '', revision: null },
+  'Munakomi 2023': { autores: 'Munakomi, Foris y Varacallo', titulo: 'Spinal Stenosis and Neurogenic Claudication', publicacion: 'StatPearls [Internet], NBK430872 (act. 2023-08-13)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430872/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Narvani 2003': {
     publicacion: 'Knee Surg Sports Traumatol Arthrosc 11(6):403–8', doi: '10.1007/s00167-003-0390-7',
     revision: { fecha: '2026-10', resultado: 'Sin cambios: chasquido S 100 %, E 85 % y «Thomas ni sensible ni específico» comprobados en el resumen.' }
@@ -187,9 +196,12 @@ export const REFERENCIAS = {
   },
   'Rhodes 2022': { autores: 'Rhodes, Denault y Varacallo', titulo: 'Physiology, Oxygen Transport', publicacion: 'StatPearls [Internet], NBK538336 (act. 2022-11-14)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK538336/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Rider y Marra 2023': { autores: 'Rider y Marra', titulo: 'Cauda Equina and Conus Medullaris Syndromes', publicacion: 'StatPearls [Internet], NBK537200 (act. 2023-08-07)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK537200/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
+  'Rout 2024': { autores: 'Rout, Reynolds y Zito', titulo: 'Neutropenia', publicacion: 'StatPearls [Internet], NBK507702 (act. 2024-06-07)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK507702/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Rowe 2023': { autores: 'Rowe, Koller y Sharma', titulo: 'Physiology, Bone Remodeling', publicacion: 'StatPearls [Internet], NBK499863 (act. 2023-03-17)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK499863/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Sanvictores 2023': { autores: 'Sanvictores, Jozsa y Tadi', titulo: 'Neuroanatomy, Autonomic Nervous System Visceral Afferent Fibers and Pain', publicacion: 'StatPearls [Internet], NBK560843 (act. 2023-07-30)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK560843/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Saueressig 2021': { publicacion: 'J Orthop Sports Phys Ther', doi: '', revision: null },
+  'Shahid 2023': { autores: 'Shahid, Ashraf y Sharma', titulo: 'Physiology, Thyroid Hormone', publicacion: 'StatPearls [Internet], NBK500006 (act. 2023-06-05)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK500006/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
+  'Shaw 2025': { autores: 'Shaw, Loree y Oropallo', titulo: 'Abdominal Aortic Aneurysm', publicacion: 'StatPearls [Internet], NBK470237 (act. 2025-01-19)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK470237/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Sman 2015': { publicacion: 'Br J Sports Med', doi: '', revision: null },
   'Smith 2015': { publicacion: 'Evid Based Med 20:88–97', doi: '', revision: null },
   'Solomon 2001': { publicacion: 'JAMA 286:1610–20', doi: '', revision: null },
@@ -205,5 +217,6 @@ export const REFERENCIAS = {
     revision: { fecha: '2026-10', resultado: 'Sin cambios: solo describe la técnica, no aporta cifras.' }
   },
   'Zaslav 2001': { publicacion: 'J Shoulder Elbow Surg 10:23–27', doi: '', revision: null },
+  'Zemaitis 2026': { autores: 'Zemaitis, Boll, Kato y Golla', titulo: 'Peripheral Arterial Disease', publicacion: 'StatPearls [Internet], NBK430745 (act. 2026-01-31)', doi: '', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430745/', revision: null, nota: 'Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.' },
   'Zhang 2010': { publicacion: 'Ann Rheum Dis 69:483–9', doi: '', revision: null },
 };

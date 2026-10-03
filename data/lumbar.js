@@ -35,11 +35,21 @@ export const screening = {
             porque: 'Un cáncer previo puede volver como metástasis ósea, y la columna es una diana frecuente: mama, pulmón, próstata y riñón llegan a la lumbar por el plexo venoso paravertebral, de pared fina y sin válvulas. Por eso cuenta también la quimio o radioterapia previa aunque el paciente diga que no ha tenido «cáncer».',
             peso: 'Es la bandera roja de malignidad que más pesa. Con antecedente de cáncer, la probabilidad de un tumor vertebral sube al 7 % en atención primaria y al 33 % en urgencias; edad > 50 años, pérdida de peso y no mejorar en un mes quedan por debajo del 3 %. Aun así, un SÍ no diagnostica: obliga a explorar el resto. Y un NO no tranquiliza del todo: en torno al 25 % de las compresiones medulares metastásicas aparecen sin cáncer conocido.',
             detalle: 'Mecanismo: la columna torácica y la lumbosacra son las zonas que más metástasis reciben. En la lumbar suelen venir de mama, pulmón, próstata o riñón; los cánceres digestivos, el mieloma y los linfomas también llegan por el plexo venoso paravertebral. El mieloma múltiple es el tumor primario más frecuente de la columna y puede dar años de lumbalgia crónica antes del diagnóstico. Por eso Goodman pide preguntar por quimio o radioterapia previas a quien niega haber tenido cáncer.\n\nCon qué se confunde: casi la mitad de las lumbalgias de origen tumoral tienen un traumatismo previo identificable, así que un «me hice daño» no descarta nada. La radiografía no enseña la lesión lítica hasta que se ha destruido un 30–50 % del hueso: una radiografía normal tampoco la descarta. Orientan más el dolor constante e intenso que no cambia con la postura, que empeora de noche o con la carga; la debilidad sin dolor; y la percusión dolorosa de una apófisis espinosa.\n\nQué hacer con un SÍ: explorar las demás banderas rojas y el examen neurológico. Goodman indica derivar si al antecedente de cáncer se suman pérdida de peso inexplicada y falta de mejoría tras un mes de tratamiento conservador.\n\nQué tipo de cáncer (Finucane 2020): los que más metastatizan en el hueso son mama, próstata, pulmón, riñón y tiroides, y aproximadamente el 30 % de quienes tienen uno de ellos acaba teniendo metástasis, así que no todo antecedente de cáncer justifica pruebas. Preocupan más los tumores grandes, en estadio avanzado (3–4) o con afectación ganglionar. En el cáncer de mama, la mitad de las metástasis óseas aparecen en los 5 primeros años y la otra mitad 10 años o más después: un cáncer «antiguo» sigue contando.',
-            fuentes: ['Goodman 2018', 'Downie 2013', 'Finucane 2020'],
+            fisiologia: {
+              pasos: [
+                'Las células tumorales se sueltan del cáncer primario y viajan sobre todo por la sangre. A la columna llegan por las venas: la mama y el pulmón drenan al plexo de Batson en la zona torácica, y la próstata, por el plexo pélvico, a la columna lumbosacra y la pelvis.',
+                'La médula ósea, muy irrigada, es un «terreno» receptivo (hipótesis de la semilla y el terreno): receptores de la célula tumoral, como CXCR4 o RANKL, interactúan con las células del estroma de la médula y de la matriz ósea.',
+                'Esa interacción libera factores de crecimiento, citoquinas (IL-6, IL-8) y factores que forman vasos (VEGF): el tumor crece y se activan los osteoclastos, que destruyen hueso. Unas metástasis son líticas (mama, pulmón, riñón), otras forman hueso (próstata) y otras son mixtas.',
+                'Al romperse la arquitectura del hueso aparecen dolor sordo y profundo que empeora de noche, fracturas con cargas mínimas, compresión de raíces o de la médula e hipercalcemia (náuseas, estreñimiento, confusión).'
+              ],
+              metafora: 'Como semillas que llegan a un jardín muy regado: prenden en la médula ósea y, para hacerse sitio, ponen a trabajar a los demoledores del propio hueso, los osteoclastos, que lo van vaciando por dentro.'
+            },
+            fuentes: ['Goodman 2018', 'Downie 2013', 'Finucane 2020', 'Jayarangaiah 2023'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.',
               { texto: 'Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3898572/' },
-              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), pp. 34–36.', url: 'https://doi.org/10.2519/jospt.2020.9971' }
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), pp. 34–36.', url: 'https://doi.org/10.2519/jospt.2020.9971' },
+              { texto: 'Jayarangaiah 2023 — Jayarangaiah, Kemp y Theetha Kariyanna, «Bone Metastasis», StatPearls [Internet], NCBI Bookshelf, última actualización 31 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK507911/' }
             ]
           } },
         { id: 'l_on2', text: '¿El dolor nocturno lo despierta desde un sueño profundo y le resulta imposible encontrar una posición que lo alivie?', alerta: true, s1: true,
@@ -47,11 +57,22 @@ export const screening = {
             porque: 'El tumor crece a costa del riego del tejido que lo rodea y le provoca isquemia: el dolor no depende de la carga ni de la postura, despierta de un sueño profundo y no deja volver a dormir. El dolor mecánico, en cambio, suele ceder al cambiar de posición.',
             peso: 'Poco específico: la mayoría de las personas con lumbalgia tienen dolor nocturno. Preocupa más quien no consigue volver a dormirse por la intensidad del dolor y tiene que levantarse, caminar o dormir en un sillón que quien se duerme de nuevo tras cambiar de postura. Pesa de verdad junto a un antecedente de cáncer, dolor óseo o síntomas generales.',
             detalle: 'Mecanismo: los tumores están muy vascularizados a costa del tejido huésped, que queda isquémico. El resultado es un dolor de reposo, sobre todo nocturno, que despierta al paciente y le impide volver a dormirse aunque cambie de postura. El dolor óseo nocturno es el más sospechoso, sobre todo con antecedente de cáncer.\n\nCon qué se confunde: quien nota más dolor al acostarse, sin haberse dormido todavía, puede estar simplemente sin distracciones por primera vez en el día. También despiertan de noche la úlcera duodenal (entre la medianoche y las 3, y comer la alivia), el dolor inflamatorio de las espondiloartropatías (segunda mitad de la noche, con rigidez matutina) y la osteomielitis vertebral, cuyo dolor es más intenso de noche.\n\nQué preguntar después (Goodman, cuadro 3.7): cómo es el patrón nocturno, si puede tumbarse sobre ese lado y cuánto tiempo, qué pasa al incorporarse, si la aspirina lo alivia de forma desproporcionada y si comer o beber cambia el dolor. El marco IFOMPT (Finucane 2020) propone preguntar qué tiene que hacer para volver a dormirse y si el dolor nocturno depende de la postura. La revisión Cochrane concluye que la sospecha de malignidad no debe basarse en una sola bandera roja.',
-            fuentes: ['Goodman 2018', 'Finucane 2020', 'Henschke 2013'],
+            fisiologia: {
+              pasos: [
+                'Para crecer, el tumor necesita riego: libera factores que forman vasos (VEGF) y se vasculariza a costa del tejido que lo rodea, que queda isquémico.',
+                'En el hueso, además, el tumor activa a los osteoclastos, que destruyen hueso y deshacen su arquitectura.',
+                'El dolor que resulta no depende de la carga ni de la postura: es sordo, profundo, de comienzo gradual y peor de noche, y no cede al cambiar de posición.',
+                'Si el hueso debilitado se fractura, el dolor pasa a ser constante y, en la columna, empeora al sentarse o estar de pie.'
+              ],
+              nota: 'Ninguna de las fuentes leídas explica por qué el dolor tumoral es peor de noche que de día: lo describen como rasgo clínico.',
+              metafora: 'Como un vecino que se engancha a tu red eléctrica: el tumor se lleva la sangre del tejido de alrededor, que se queda sin suministro y duele aunque no se mueva nada.'
+            },
+            fuentes: ['Goodman 2018', 'Finucane 2020', 'Henschke 2013', 'Jayarangaiah 2023'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.',
               { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Night pain», p. 37.', url: 'https://doi.org/10.2519/jospt.2020.9971' },
-              { texto: 'Henschke 2013 — Henschke, Maher, Ostelo et al., «Red flags to screen for malignancy in patients with low-back pain», Cochrane Database Syst Rev 2013;(2):CD008686 (resumen y conclusiones de los autores).', url: 'https://doi.org/10.1002/14651858.CD008686.pub2' }
+              { texto: 'Henschke 2013 — Henschke, Maher, Ostelo et al., «Red flags to screen for malignancy in patients with low-back pain», Cochrane Database Syst Rev 2013;(2):CD008686 (resumen y conclusiones de los autores).', url: 'https://doi.org/10.1002/14651858.CD008686.pub2' },
+              { texto: 'Jayarangaiah 2023 — Jayarangaiah, Kemp y Theetha Kariyanna, «Bone Metastasis», StatPearls [Internet], NCBI Bookshelf, última actualización 31 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK507911/' }
             ]
           } }
       ],
@@ -125,9 +146,20 @@ export const screening = {
             porque: 'La infección de las vías urinarias bajas irrita la vejiga y la uretra y puede referir dolor a la zona lumbar, pélvica o sacra. Muchas veces el paciente solo consulta por la espalda y el escozor al orinar sale únicamente si se pregunta.',
             peso: 'Orienta a un origen urinario si acompaña a una lumbalgia sin causa mecánica clara, sobre todo con fiebre, sangre en la orina o dolor en el flanco. Solo, no localiza el origen del dolor de espalda; algunos pacientes con problemas urinarios no tienen ningún síntoma urinario.',
             detalle: 'Mecanismo: las vías urinarias bajas (vejiga y uretra) no tocan el diafragma, así que no refieren dolor al hombro, pero sí a la zona lumbar baja, la pelvis o el sacro. La intensidad depende de la gravedad de la infección. En el varón, la prostatitis da también escozor, frecuencia, nicturia y dolor lumbar, perineal o en la cara interna del muslo.\n\nQué preguntar junto a esta: frecuencia, urgencia, nicturia, sangre en la orina, fiebre, escalofríos, náuseas, dolor testicular y antecedentes de infecciones urinarias o cálculos. Lo que importa es el cambio respecto a lo habitual en ese paciente.',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'Bacterias de la zona que rodea la uretra, muchas veces de origen intestinal, suben por la uretra hasta la vejiga; en la mujer lo facilitan la cercanía de la uretra al ano y su menor longitud.',
+                'Los uropatógenos, como Escherichia coli, se adhieren al epitelio de la vejiga mediante adhesinas y lo invaden.',
+                'Esa adherencia desencadena una respuesta inflamatoria: escozor al orinar, frecuencia, urgencia y molestia por encima del pubis.',
+                'La vejiga y la uretra refieren el dolor a la zona lumbar baja, la pelvis o el sacro.',
+                'Sin tratamiento, la infección puede subir hasta el riñón (pielonefritis): dolor en el flanco, dolor a la percusión del ángulo costovertebral, fiebre, escalofríos, náuseas y vómitos; en los casos graves, bacteriemia y sepsis.'
+              ],
+              metafora: 'Como una invasión que remonta un río: entra por la desembocadura (la uretra), se instala en el lago (la vejiga) y, si nadie la frena, sigue río arriba hasta el riñón.'
+            },
+            fuentes: ['Goodman 2018', 'Gill 2025'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.',
+              { texto: 'Gill 2025 — Gill, Leslie y Minter, «Acute Cystitis», StatPearls [Internet], NCBI Bookshelf, última actualización 28 de noviembre de 2025.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK459322/' }
             ]
           } },
         { id: 'l_u3b', text: '¿Desde hace poco se levanta a orinar más de una vez cada noche, sin que haya cambiado lo que bebe antes de acostarse?', alerta: true,
@@ -135,9 +167,20 @@ export const screening = {
             porque: 'Levantarse a orinar más de lo habitual sin beber más puede reflejar una infección, una obstrucción por la próstata u otro problema urinario. La clave es el cambio reciente, no la nicturia en sí.',
             peso: 'Poco específico solo: muchas mujeres tienen nicturia tras los partos, y Goodman recuerda que la mayoría de los hombres no se levantan de noche a orinar hasta después de los 65. Pesa como cambio nuevo junto a dolor lumbar, pélvico o sacro y otros síntomas urinarios.',
             detalle: 'Mecanismo: cualquier obstrucción, crecimiento o inflamación de la próstata afecta a la uretra y da dificultad para iniciar o mantener el chorro, frecuencia y nicturia; la infección urinaria da frecuencia, urgencia y nicturia. El cáncer de próstata puede no dar síntomas hasta que aparece la obstrucción urinaria o una ciática por metástasis en la pelvis, la columna lumbar o el fémur.\n\nCómo preguntar: muchos pacientes no se dan cuenta del cambio, y a menudo es la pareja quien confirma que se levanta de noche. Por eso la pregunta se ancla en «desde hace poco» y en que no ha cambiado lo que bebe.',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'De noche se fabrica normalmente menos orina: durante el sueño sube la vasopresina (hormona antidiurética), que actúa en los túbulos colectores del riñón y hace que se reabsorba más agua.',
+                'Si ese aumento nocturno se reduce o falta —tiende a desaparecer con la edad, y también lo alteran la insuficiencia cardíaca, la apnea del sueño o algunos fármacos—, se produce demasiada orina de noche (poliuria nocturna), la causa más frecuente de nicturia.',
+                'Cuando la vejiga almacena mal (vejiga hiperactiva, infección urinaria, prostatitis o próstata aumentada), el paciente se levanta muchas veces y orina poca cantidad cada vez; en los jóvenes es la causa más frecuente.',
+                'Cualquier obstrucción, crecimiento o inflamación de la próstata afecta a la uretra: dificultad para iniciar o mantener el chorro, frecuencia y nicturia.'
+              ],
+              nota: 'Beber mucho por la tarde, la cafeína y el alcohol también la aumentan: por eso la pregunta se ancla en un cambio reciente sin cambios en lo que se bebe.',
+              metafora: 'Como un depósito que se llena de noche: o entra demasiada agua, porque el riñón no recibe la orden nocturna de ahorrar, o el depósito se ha vuelto pequeño o irritable y avisa antes de estar lleno.'
+            },
+            fuentes: ['Goodman 2018', 'Leslie 2024'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.',
+              { texto: 'Leslie 2024 — Leslie, Sajjad y Singh, «Nocturia», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de febrero de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK518987/' }
             ]
           } }
       ],
@@ -189,9 +232,20 @@ export const screening = {
             porque: 'Los órganos pélvicos comparten inervación con la zona lumbar y sacra. Un dolor que sigue al ciclo menstrual, que se acompaña de sangrado anormal o que alterna con dolor abdominal al mismo nivel apunta a un origen visceral (ginecológico o digestivo), no mecánico.',
             peso: 'Un SÍ no implica patología: el dolor lumbar con la regla puede ser habitual en esa mujer y muchos problemas del suelo pélvico los trata un fisioterapeuta especializado. Pesa más si es nuevo, si hay sangrado fuera de la regla o tras la menopausia, o si el dolor abdominal y el lumbar alternan al mismo nivel.',
             detalle: 'Mecanismo: la endometriosis (tejido endometrial fuera del útero) sangra con cada ciclo y da dolor lumbar, pélvico, de cadera o sacro que empeora justo antes de la regla y en sus primeros días. Los quistes de ovario y los miomas pueden dar un patrón cíclico parecido. El dolor de origen menstrual suele aparecer en la ovulación (días 10–14) y justo antes o durante la regla (días 23–28), y puede referirse al recto, al sacro o al cóccix.\n\nQué buscar con un SÍ: relación con el ciclo (pedir que lo anote si no lo sabe), sangrado entre reglas o tras la menopausia, reglas más largas o abundantes, dolor con las relaciones o al defecar u orinar durante la regla, flujo anormal, DIU, posibilidad de embarazo. Dolor abdominal y lumbar al mismo nivel, alternando, es una bandera roja que requiere derivación.\n\nUrgencia: dolor súbito e intenso en una mujer en edad fértil, sexualmente activa, puede ser un embarazo ectópico roto (urgencia médica).',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'La teoría más aceptada es la menstruación retrógrada: células endometriales vivas refluyen por las trompas y se implantan en el peritoneo. Como eso también ocurre en muchas mujeres sin la enfermedad, hacen falta otros factores, inmunitarios y hormonales.',
+                'Los implantes dependen del estradiol, que estimula su proliferación, adhesión, fibrosis e inflamación, y la formación de vasos y nervios nuevos.',
+                'Con cada ciclo el tejido responde como el endometrio y se llena de sangre que no puede salir: dolor cíclico pélvico, lumbar o sacro, que aumenta antes de la regla y en sus primeros días.',
+                'Según dónde estén los implantes duele la regla, las relaciones, defecar u orinar; si la enfermedad profunda infiltra nervios, el dolor puede ser neuropático.'
+              ],
+              nota: 'La intensidad de los síntomas no se corresponde con la extensión de la enfermedad: poco tejido puede doler mucho, y al revés.',
+              metafora: 'Como esquejes de una planta que arraigan fuera de su maceta: se siguen regando con cada ciclo, pero el agua no tiene por dónde salir, y la zona se inflama y cicatriza.'
+            },
+            fuentes: ['Goodman 2018', 'Consoli y Carlson 2026'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.',
+              { texto: 'Consoli y Carlson 2026 — Consoli y Carlson, «Endometriosis», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de junio de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK567777/' }
             ]
           } },
         { id: 'l_gi2', text: '¿Ha notado heces negras/alquitranadas, sangre en las heces, o dolor que lo despierta entre la medianoche y las 3 am?', alerta: true,
@@ -199,9 +253,21 @@ export const screening = {
             porque: 'La sangre digerida en el tubo digestivo alto se oxida y vuelve las heces negras, pegajosas y malolientes (melena): suele venir de una úlcera, a menudo por AINE. La úlcera duodenal refiere dolor a la espalda y es típico que despierte entre la medianoche y las 3.',
             peso: 'La melena o la sangre en las heces siempre requieren valoración médica, aunque no expliquen el dolor de espalda. El dolor nocturno a esas horas, aislado, es menos específico; orienta a úlcera si se alivia al comer, y a algo más serio si es intenso y constante.',
             detalle: 'Mecanismo: la úlcera gástrica o duodenal puede dar dolor solo en la espalda (columna torácica media, T6–T10). La úlcera duodenal duele 2–4 horas después de comer y de noche, entre la medianoche y las 3; comer la alivia. El dolor nocturno del cáncer se distingue por ser intenso y constante, y por no aliviarse con nada. La causa más frecuente de dolor de espalda de origen gástrico o duodenal es el uso prolongado de AINE.\n\nCon qué se confunde: la sangre roja brillante suele venir del recto o el ano (hemorroides, fisuras), pero también puede ser un cáncer colorrectal: lo valora el médico. Las heces rojizas pueden deberse a la remolacha o a colorantes, y los preparados con bismuto ennegrecen las heces y la lengua.\n\nQué preguntar: uso de AINE o anticoagulantes, antecedentes de úlcera, Crohn, colitis o diverticulitis, relación del dolor con las comidas y alivio con antiácidos.',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'Las prostaglandinas protegen la mucosa del estómago: mantienen la producción de moco y bicarbonato y el riego de la mucosa.',
+                'Los AINE bloquean la enzima COX-1 y, con ella, la síntesis de prostaglandinas: bajan el moco, el bicarbonato y el riego. Helicobacter pylori, la otra gran causa, inflama la mucosa y también reduce el bicarbonato.',
+                'Sin esa barrera, el ácido y la pepsina atacan las capas profundas y se forma una úlcera, sobre todo en el estómago y la primera parte del duodeno.',
+                'La úlcera duodenal duele 2–3 horas después de comer (la gástrica, a los 15–30 minutos), y puede despertar de madrugada y referir el dolor solo a la espalda.',
+                'La úlcera es la causa más frecuente de hemorragia digestiva alta. Esa sangre sale como melena: heces negras, pegajosas, alquitranadas y de olor característico. El hierro y el bismuto ennegrecen las heces sin que haya sangrado.'
+              ],
+              metafora: 'Como el barniz de una tabla de cortar: las prostaglandinas lo mantienen, el AINE lo va quitando y el ácido acaba abriendo surcos en la madera.'
+            },
+            fuentes: ['Goodman 2018', 'Malik 2023', 'Antunes 2024'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.',
+              { texto: 'Malik 2023 — Malik, Gnanapandithan y Singh, «Peptic Ulcer Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 5 de junio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK534792/' },
+              { texto: 'Antunes 2024 — Antunes, Tian y Copelin, «Upper Gastrointestinal Bleeding», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de agosto de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK470300/' }
             ]
           } }
       ],
@@ -321,9 +387,20 @@ export const screening = {
             porque: 'Los órganos pélvicos (útero, ovarios) refieren dolor a la pelvis, el sacro y la zona lumbar. Un dolor pélvico que sigue al ciclo menstrual, o que va con sangrado ginecológico anormal, apunta a una causa ginecológica como la endometriosis, los quistes de ovario o los miomas.',
             peso: 'Un dolor ligado a la regla puede ser habitual y benigno; pesa si es nuevo o va con sangrado anormal (entre reglas, reglas más abundantes o largas, tras la menopausia). Un dolor súbito e intenso con retraso de la regla o sangrado irregular puede ser un embarazo ectópico: urgencia.',
             detalle: 'Mecanismo: en la endometriosis, el tejido endometrial fuera del útero se llena de sangre en cada ciclo; el dolor es cíclico y suele aumentar justo antes de la regla y en sus primeros días. Los quistes de ovario y los miomas pueden dar un patrón parecido; la rotura o la hemorragia de un quiste da un dolor brusco y agudo.\n\nQué buscar con un SÍ: sangrado entre reglas o tras la menopausia, reglas irregulares o más abundantes, dolor con las relaciones o al defecar u orinar durante la regla, flujo anormal, DIU, infecciones de transmisión sexual, embarazos ectópicos, abortos o infertilidad previos.\n\nUrgencia: en una mujer en edad fértil, sexualmente activa, un dolor súbito, intenso y constante en la parte baja del abdomen, la pelvis o la espalda (a veces también en el hombro) puede ser un embarazo ectópico roto. Tomar constantes y pedir ayuda médica inmediata.',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'La teoría más aceptada es la menstruación retrógrada: células endometriales vivas refluyen por las trompas y se implantan en el peritoneo. Como eso también ocurre en muchas mujeres sin la enfermedad, hacen falta otros factores, inmunitarios y hormonales.',
+                'Los implantes dependen del estradiol, que estimula su proliferación, adhesión, fibrosis e inflamación, y la formación de vasos y nervios nuevos.',
+                'Con cada ciclo el tejido responde como el endometrio y se llena de sangre que no puede salir: dolor cíclico pélvico, lumbar o sacro, que aumenta antes de la regla y en sus primeros días.',
+                'Según dónde estén los implantes duele la regla, las relaciones, defecar u orinar; si la enfermedad profunda infiltra nervios, el dolor puede ser neuropático.'
+              ],
+              nota: 'La intensidad de los síntomas no se corresponde con la extensión de la enfermedad: poco tejido puede doler mucho, y al revés.',
+              metafora: 'Como esquejes de una planta que arraigan fuera de su maceta: se siguen regando con cada ciclo, pero el agua no tiene por dónde salir, y la zona se inflama y cicatriza.'
+            },
+            fuentes: ['Goodman 2018', 'Consoli y Carlson 2026'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.',
+              { texto: 'Consoli y Carlson 2026 — Consoli y Carlson, «Endometriosis», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de junio de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK567777/' }
             ]
           } },
         { id: 'l_e4', text: '¿Tiene diagnóstico de osteoporosis, o ha tenido una fractura reciente ante un golpe menor o sin trauma aparente?', alerta: true,
@@ -463,9 +540,21 @@ export const screening = {
             porque: 'En la claudicación vascular, las arterias estrechadas no aportan la sangre que piden los músculos al caminar: el dolor aparece con el esfuerzo y cede al parar, en 1–3 minutos, sin necesidad de sentarse ni de flexionar la columna. En la estenosis de canal (claudicación neurógena) lo que alivia es flexionar o sentarse.',
             peso: 'Es uno de los tres datos que Goodman usa para separar lo vascular de lo neurógeno, junto a la postura de la columna (que no influye en lo vascular) y los cambios tróficos de la piel. Muchas personas mayores tienen las dos cosas a la vez, así que un SÍ pide además explorar pulsos y piel.',
             detalle: 'Mecanismo: la aterosclerosis de la aorta o de las ilíacas da dolor en la espalda, las nalgas o las piernas con el ejercicio porque el músculo pide más sangre de la que llega; al parar, la demanda baja y el dolor cede en 1–3 minutos. Los movimientos de la columna no comprimen las arterias, así que la flexión no alivia ni la extensión empeora. En la claudicación neurógena, la flexión abre el conducto y alivia; el paciente se inclina hacia delante o se sienta, y el alivio tarda más.\n\nCon qué se confunde: la estenosis lumbar (claudicación neurógena) y la combinación de ambas, frecuente a partir de los 60–70 años. Goodman propone la prueba de la bicicleta (pedalear erguido y luego inclinado; sin cifras de precisión diagnóstica establecidas) y la prueba de inclinarse al caminar (stoop test) para orientar.\n\nQué buscar con un SÍ: pulsos distales, temperatura y color de los pies, factores de riesgo cardiovascular (tabaco, hipertensión, diabetes, colesterol, edad).',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'La placa de ateroma estrecha poco a poco la arteria y la sangre se desvía por arterias más pequeñas paralelas (circulación colateral), que mantienen el riego en reposo pero nunca llevan tanto flujo como la arteria principal.',
+                'Al caminar, los músculos de la pierna piden más sangre; llega un punto en que el flujo colateral está al máximo y no puede aumentar.',
+                'Ese desajuste entre lo que llega y lo que se pide produce una isquemia muscular pasajera: dolor o calambre en la pantorrilla, el muslo o la nalga, según el nivel de la obstrucción.',
+                'Al bajar el ritmo o parar, la demanda baja y la sangre «se pone al día»: el dolor cede sin necesidad de cambiar de postura.',
+                'En la claudicación neurógena el mecanismo es otro: con la columna en extensión (de pie, caminando) los bordes de las láminas se solapan y el ligamento amarillo se pliega hacia dentro, y la raíz comprimida no recibe la sangre que pide al caminar. Por eso alivia sentarse o inclinarse hacia delante.'
+              ],
+              metafora: 'Como una carretera cortada con un desvío por caminos secundarios: basta para el tráfico de un domingo, pero en hora punta (caminar) se atasca; en cuanto baja el tráfico (parar), se despeja.'
+            },
+            fuentes: ['Goodman 2018', 'Zemaitis 2026', 'Munakomi 2023'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.',
+              { texto: 'Zemaitis 2026 — Zemaitis, Boll, Kato y Golla, «Peripheral Arterial Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 31 de enero de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430745/' },
+              { texto: 'Munakomi 2023 — Munakomi, Foris y Varacallo, «Spinal Stenosis and Neurogenic Claudication», StatPearls [Internet], NCBI Bookshelf, última actualización 13 de agosto de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430872/' }
             ]
           } },
         { id: 'l_v2', text: '¿Tiene dolor lumbar o abdominal en reposo o por la noche, o le han notado un bulto que late en el abdomen?', alerta: true,
@@ -473,9 +562,19 @@ export const screening = {
             porque: 'Un aneurisma de la aorta abdominal, casi siempre por debajo de las arterias renales, puede dar un dolor lumbar profundo y sordo que no cambia con la postura. A veces el paciente nota un latido en el abdomen o se palpa una masa pulsátil.',
             peso: 'Goodman pide derivación inmediata si hay estos signos en un hombre de 65–75 años que fuma o ha fumado; en el resto, un SÍ pide valoración médica. El dolor súbito e intenso, «desgarrador», con frío o falta de pulso en las piernas, puede ser una rotura inminente: urgencia vital.',
             detalle: 'Mecanismo: el aneurisma es una dilatación de una pared arterial debilitada, casi siempre por aterosclerosis. El dolor es profundo en la zona lumbar media y puede ser agudo e intenso en el abdomen, el tórax o cualquier zona de la espalda, sacro incluido. Puede haber masa abdominal pulsátil o un pulso aórtico ensanchado, soplos, y pulsos periféricos disminuidos. La obesidad o la distensión abdominal dificultan palparlo.\n\nFactores de riesgo: edad, sexo masculino, tabaco y antecedentes familiares; también claudicación intermitente previa. Goodman recuerda que se recomienda cribado con ecografía en hombres de 65–75 años que fuman o han fumado. En mujeres es menos frecuente, pero crece más rápido y se rompe más.\n\nRotura inminente o en curso: dolor brusco e intenso en el cuello o la espalda (nalga, cadera o flanco), que puede irradiarse al tórax, entre las escápulas o a los muslos; no se alivia al cambiar de postura; se describe como «desgarro»; piernas frías y sin pulso.',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'La pared de la aorta pierde proteínas estructurales, elastina y colágeno, por una causa aún desconocida. Por debajo de las arterias renales la aorta tiene menos unidades laminares de colágeno, y por eso es donde más aneurismas aparecen.',
+                'En la pared hay además un proceso inflamatorio crónico, también de causa no aclarada: la pared se debilita y se dilata de forma permanente, al menos un 150 % del diámetro de la arteria vecina.',
+                'Por la ley de Laplace, la tensión de la pared crece con el radio: cuanto mayor es el aneurisma, más deprisa crece (0,2–0,3 cm al año entre 3 y 5 cm; 0,3–0,5 cm por encima de 5 cm) y más riesgo tiene de romperse. La hipertensión aumenta ese riesgo.',
+                'La mayoría no da síntomas y se palpa como una masa que late y no duele; al crecer puede dar dolor abdominal, en el flanco o en la espalda. La rotura puede manifestarse de forma sutil o dramática.'
+              ],
+              metafora: 'Como un globo: cuanto más se infla, más tensa está la goma y más fácil es que siga inflándose, hasta que revienta.'
+            },
+            fuentes: ['Goodman 2018', 'Shaw 2025'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.',
+              { texto: 'Shaw 2025 — Shaw, Loree y Oropallo, «Abdominal Aortic Aneurysm», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2025.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK470237/' }
             ]
           } },
         { id: 'l_v3', text: '¿Nota un pie más frío que el otro, o le han dicho que tiene los pulsos de las piernas débiles?', alerta: true,
@@ -483,9 +582,19 @@ export const screening = {
             porque: 'Si una arteria de la pierna está obstruida, llega menos sangre al pie: queda más frío y pálido, los pulsos se debilitan o desaparecen, y la piel cambia (cambios tróficos). Esos signos no aparecen en el dolor de origen nervioso.',
             peso: 'Los pulsos distales se debilitan con la edad y la aterosclerosis, así que un pulso débil aislado en una persona mayor es frecuente. Pesa junto a dolor con el esfuerzo que cede al parar, o en mayores de 50 años con lumbalgia sin causa clara y tensión arterial alta.',
             detalle: 'Mecanismo: la obstrucción de la bifurcación aórtica da síntomas a menudo bilaterales (nalgas y piernas, debilidad, piernas frías y pálidas sin pulsos); la de la ilíaca, en la nalga, la cadera y el muslo de ese lado, con pulsos femoral o distales disminuidos e impotencia en el varón; las más distales, en la pantorrilla y el pie. La localización del síntoma la marca la localización de la obstrucción.\n\nCon qué se confunde: en la claudicación neurógena los pulsos no cambian y no hay cambios tróficos; puede haber déficits de fuerza sutiles.\n\nQué hacer con un SÍ: palpar pulsos (femoral, poplíteo, tibial posterior, pedio) y comparar la temperatura de ambos lados. Goodman recomienda cribar enfermedad vascular periférica a los mayores de 50 con lumbalgia de causa desconocida y tensión arterial alta.',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'Cuando la arteria se estrecha, la circulación colateral mantiene parte del riego del pie, pero no todo: los pulsos distales se debilitan o desaparecen.',
+                'Con menos sangre, la piel del pie queda más fría, pálida o amoratada, el relleno capilar se enlentece y pueden aparecer hormigueos.',
+                'En fases avanzadas la sangre no basta ni en reposo: duele el antepié al elevar la pierna o al tumbarse, alivia dejarla colgando (la gravedad ayuda al riego), y aparecen heridas en los dedos que no curan.',
+                'La disfunción eréctil puede ser una manifestación temprana de la aterosclerosis; la diabetes, el colesterol alto y el tabaco son factores de riesgo.'
+              ],
+              metafora: 'Como el último piso de un edificio con poca presión de agua: es el primero en quedarse sin ella, y por eso el pie se enfría y pierde el pulso antes que el resto de la pierna.'
+            },
+            fuentes: ['Goodman 2018', 'Zemaitis 2026'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.',
+              { texto: 'Zemaitis 2026 — Zemaitis, Boll, Kato y Golla, «Peripheral Arterial Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 31 de enero de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430745/' }
             ]
           } }
       ]
