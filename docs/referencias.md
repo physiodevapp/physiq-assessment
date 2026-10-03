@@ -12,10 +12,10 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **88** referencias de literatura, con **175** usos.
+- **89** referencias de literatura, con **189** usos.
 - **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
-- **5** de 89 referencias del registro revisadas. Ver «Estado de revisión».
-- **105** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
+- **18** de 90 referencias del registro revisadas. Ver «Estado de revisión».
+- **103** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
 
@@ -44,20 +44,17 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 
 | Referencia | Afecta a | Usos | Última revisión |
 |---|---|---|---|
-| [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · texto | 4 | **sin revisar** |
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | **sin revisar** |
 | [Litaker 2000](#litaker-2000) | puntuación 4b | 1 | **sin revisar** |
 | [Solomon 2001](#solomon-2001) | puntuación 4b · texto | 3 | **sin revisar** |
 | [Bachmann 2003](#bachmann-2003) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | **sin revisar** |
-| [Narvani 2003](#narvani-2003) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Chronopoulos 2004](#chronopoulos-2004) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Park 2005](#park-2005) | puntuación 4b | 2 | **sin revisar** |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | **sin revisar** |
 | [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | **sin revisar** |
-| [Lequesne 2008](#lequesne-2008) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Majlesi 2008](#majlesi-2008) | puntuación 4b | 1 | **sin revisar** |
 | [Suri 2010](#suri-2010) | puntuación 4b | 2 | **sin revisar** |
 | [Zhang 2010](#zhang-2010) | puntuación 4b | 3 | **sin revisar** |
@@ -67,25 +64,19 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hermans 2013](#hermans-2013) | puntuación 4b · test 4b sin puntuar | 6 | **sin revisar** |
 | [Nunes 2013](#nunes-2013) | puntuación 4b | 1 | **sin revisar** |
 | [Reiman 2014](#reiman-2014) | puntuación 4b · test 4b sin puntuar · texto | 6 | **sin revisar** |
-| [Reiman 2015](#reiman-2015) | puntuación 4b · test 4b sin puntuar | 6 | **sin revisar** |
 | [Smith 2015](#smith-2015) | puntuación 4b | 2 | **sin revisar** |
 | [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | **sin revisar** |
-| [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Décary 2018](#décary-2018) | puntuación 4b | 4 | **sin revisar** |
-| [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar | 5 | **sin revisar** |
 | [Park 2019](#park-2019) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | **sin revisar** |
 | [Getsoian 2020](#getsoian-2020) | puntuación 4b | 1 | **sin revisar** |
-| [Pålsson 2020](#pålsson-2020) | puntuación 4b | 1 | **sin revisar** |
 | [Saueressig 2021](#saueressig-2021) | puntuación 4b | 1 | **sin revisar** |
 | [Demont 2022](#demont-2022) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Gomes 2022](#gomes-2022) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | **sin revisar** |
-| [Wong 2022](#wong-2022) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 | 1 | **sin revisar** |
-| [Hölmich 1999](#hölmich-1999) | pauta | 1 | **sin revisar** |
 | [Jonsson 2008](#jonsson-2008) | pauta | 1 | **sin revisar** |
 | [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | **sin revisar** |
 | [Kuijper 2009](#kuijper-2009) | pauta | 1 | **sin revisar** |
@@ -98,7 +89,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Chimenti 2024](#chimenti-2024) | pauta | 1 | **sin revisar** |
 | [Liu 2025](#liu-2025) | pauta | 1 | **sin revisar** |
 | [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 296 | **sin revisar** |
-| [NICE NG226](#nice-ng226) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Katz 1995](#katz-1995) | test 4b sin puntuar | 1 | **sin revisar** |
 | [van Dijk 1996](#van-dijk-1996) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Kim 2001](#kim-2001) | test 4b sin puntuar | 1 | **sin revisar** |
@@ -121,17 +111,28 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Tawa 2017](#tawa-2017) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · texto | 4 | **sin revisar** |
 | [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | **sin revisar** |
-| [Adib 2023](#adib-2023) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Williams 2025](#williams-2025) | test 4b sin puntuar | 1 | **sin revisar** |
-| [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Hutchison 2013](#hutchison-2013) | texto | 1 | **sin revisar** |
 | [Großterlinden 2016](#großterlinden-2016) | texto | 1 | **sin revisar** |
 | [Frey 2017](#frey-2017) | texto | 1 | **sin revisar** |
+| [Lequesne 2008](#lequesne-2008) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en el resumen y en la tabla 2 de Kinsella 2024. La E se midió frente a controles sin dolor de cadera (casos y controles), lo que la infla: la derotación externa resistida pasa a hallazgo. |
+| [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
+| [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
+| [Pålsson 2020](#pålsson-2020) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015). |
+| [Kinsella 2024](#kinsella-2024) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Texto completo leído (tablas 2 y 3). En el texto el LR+ de la abducción resistida aparece como 13,39, que en la tabla 3 es la DOR; se usa el LR+ de la tabla (6,09). |
+| [Hölmich 1999](#hölmich-1999) | pauta | 1 | 2026-10 · Texto completo leído: la pauta de ca16 coincide con el panel 1 y los métodos. Corregido el trote (pasadas las 6 primeras semanas) y añadida la población (varones de 18 a 50 años). No se encontró un ensayo posterior que lo sustituya. |
+| [NICE NG226](#nice-ng226) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo respalda el diagnóstico clínico (edad ≥45, dolor con la actividad, rigidez matutina ausente o ≤30 min), sin S ni E; no puntúa. No se pudo abrir nice.org.uk (bloqueado por la red) para comprobar si hay actualización. |
 | [Altman 1991](#altman-1991) | test 4b sin puntuar · texto | 2 | 2026-10 · S 86 % / E 75 % del árbol clínico comprobadas en el resumen, pero son de la muestra de desarrollo; en atención primaria los criterios no se sostienen (Bierma-Zeinstra 1999, Reijman 2004) y no hay S/E de ese ámbito. Los criterios ACR de cadera (ca1) pasan a hallazgo, sin puntuar. |
+| [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) | test 4b sin puntuar | 2 | 2026-10 · Texto completo no conseguido. Según Reiman 2015 (tabla 3), el estudio no publicó S ni E del test de Thomas («NA»): las calcularon los autores del metaanálisis. Serie de casos con riesgo de sesgo alto; Narvani 2003 no lo confirma. El Thomas pasa a hallazgo en labrum. |
 | [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído (PubMed 10332979): el texto completo no es accesible. No da S ni E de los criterios clínicos. |
+| [Narvani 2003](#narvani-2003) | test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: chasquido S 100 %, E 85 % y «Thomas ni sensible ni específico» comprobados en el resumen. |
 | [Reijman 2004](#reijman-2004) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído: en PMC (PMC1754907) el cuerpo es un PDF escaneado que no se pudo descargar. |
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
+| [Reiman 2015](#reiman-2015) | test 4b sin puntuar · texto | 8 | 2026-10 · Texto completo leído (tablas 3 y 4): cifras correctas, pero el FADDIR agrupado sale de pacientes operados (probabilidad previa 90 %) y los propios autores concluyen que ningún test cambia de forma significativa la probabilidad. El FADDIR pasa a hallazgo en SIFA (con Pålsson 2020) y en labrum. Revisiones posteriores (Shanmugaraj 2020, Fernandes 2022, Dhillon 2025) no dan un valor agrupado mejor. |
+| [Wong 2022](#wong-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras. |
+| [Adib 2023](#adib-2023) | test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015). |
+| [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo. |
 | [Altman 1986](#altman-1986) | texto | 2 | 2026-10 · Sustituida por Peat 2006 en los criterios del ACR de rodilla (ro1): su S 95 % / E 69 % sale de la muestra de desarrollo, no del ámbito de un fisio. Solo queda citada como contexto en el texto del test. |
 
 ## 1. Tarjetas de consulta
@@ -574,22 +575,26 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[Adib 2023](#adib-2023) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Campbell 2020](#campbell-2020) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cook 2011](#cook-2011) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [Getsoian 2020](#getsoian-2020) · [Gomes 2022](#gomes-2022) · [Goodman 2018](#goodman-2018) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hegedus 2012](#hegedus-2012) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hutchison 2013](#hutchison-2013) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Laslett 2006](#laslett-2006) · [Lequesne 2008](#lequesne-2008) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Peat 2006](#peat-2006) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Saueressig 2021](#saueressig-2021) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suri 2010](#suri-2010) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zhang 2010](#zhang-2010)
+[Adib 2023](#adib-2023) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Campbell 2020](#campbell-2020) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cook 2011](#cook-2011) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [Getsoian 2020](#getsoian-2020) · [Gomes 2022](#gomes-2022) · [Goodman 2018](#goodman-2018) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hegedus 2012](#hegedus-2012) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hutchison 2013](#hutchison-2013) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Laslett 2006](#laslett-2006) · [Lequesne 2008](#lequesne-2008) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Peat 2006](#peat-2006) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Saueressig 2021](#saueressig-2021) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suri 2010](#suri-2010) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zhang 2010](#zhang-2010)
 
 ### Adib 2023
 
-Publicación: Am J Sports Med  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Am J Sports Med 51(4):1007–14  
+DOI: 10.1177/03635465221149748  
+Última revisión: 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015).
 
 Citada como:
 
 1. Adib 2023 (Am J Sports Med; retrospectivo, evaluado por el autor de los tests; referencia: artro-RM)
+2. Flexión, aducción y rotación interna. Positivo: dolor conocido, bloqueo, chasquido o enganche (que reproduzca el chasquido cuenta como positivo). No puntúa: el valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93; con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1. En otra serie, S 43 %, E 56 % (Adib 2023). Un negativo no descarta la rotura.
+3. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09). Adib 2023 (Am J Sports Med; retrospectivo; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Arlington» | 4b · cita bajo el test | 1 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Torsión/Twist» | 4b · cita bajo el test | 1 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» (en `criterio`) | 4b · mención en el texto | 2 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» | 4b · cita bajo el test | 3 |
 
 ### Altman 1986
 
@@ -954,19 +959,23 @@ Citada como:
 
 ### Grimaldi 2017
 
-Publicación: Br J Sports Med  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Br J Sports Med 51(6):519–24  
+DOI: 10.1136/bjsports-2016-096175  
+Última revisión: 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo).
 
 Citada como:
 
-1. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM); LR− IC 95 %: 0,20–0,93
-2. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM). Lequesne 2008: S 100 %, E 97,3 %, frente a caderas sin dolor
+1. Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 2 estudios, certeza baja; LR+ IC 95 %: 1,37–4,30; LR− IC 0,15–0,43). Solo Grimaldi 2017 (BJSM; n = 65, referencia: RM): S 80 %, E 47 %
+2. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM). Agrupado: Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 2 estudios, certeza muy baja)
+3. Supino, cadera a 90° en RE; el paciente vuelve a neutro contra resistencia. Positivo: reproduce su dolor. Si es negativo, repetir en prono con la cadera en extensión. No puntúa: en pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017). Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7; certeza muy baja).
+4. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM; versión con aducción añadida), según Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3, tabla 2). Lequesne 2008 (Arthritis Rheum; n = 17 con SDTM refractario de 13 meses de media, frente a 38 caderas sin dolor; referencia: RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Palpación del trocánter mayor / tendón glúteo» | 4b · cita bajo el test | 1 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» | 4b · cita bajo el test | 2 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» (en `criterio`) | 4b · mención en el texto | 3 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 4 |
 
 ### Großterlinden 2016
 
@@ -985,9 +994,9 @@ Citada como:
 
 ### Halliwell 2026
 
-Publicación: Arthroscopy  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Arthroscopy 42(4):745–52  
+DOI: 10.1002/arj.70074  
+Última revisión: 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo.
 
 Citada como:
 
@@ -1079,13 +1088,13 @@ Citada como:
 
 ### Hölmich 1999
 
-Publicación: Lancet 353:439–443  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Lancet 353(9151):439–43  
+DOI: 10.1016/S0140-6736(98)03340-6  
+Última revisión: 2026-10 · Texto completo leído: la pauta de ca16 coincide con el panel 1 y los métodos. Corregido el trote (pasadas las 6 primeras semanas) y añadida la población (varones de 18 a 50 años). No se encontró un ensayo posterior que lo sustituya.
 
 Citada como:
 
-1. Hölmich 1999, Lancet 353:439–443 (ensayo aleatorizado, n = 68, frente a fisioterapia pasiva)
+1. Hölmich 1999, Lancet 353:439–443 (ensayo aleatorizado, n = 68 varones de 18 a 50 años, frente a fisioterapia pasiva)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1224,6 +1233,28 @@ Citada como:
 | Rodilla | ro17 · Plica Sinovial Medial | Test «Test de provocación de la plica rotuliana medial» (en `criterio`) | 4b · mención en el texto | 1 |
 | Rodilla | ro17 · Plica Sinovial Medial | Test «Test de provocación de la plica rotuliana medial» | 4b · cita bajo el test | 2 |
 
+### Kinsella 2024
+
+Publicación: J Orthop Sports Phys Ther 54(1):26–49  
+DOI: 10.2519/jospt.2023.11890  
+Última revisión: 2026-10 · Texto completo leído (tablas 2 y 3). En el texto el LR+ de la abducción resistida aparece como 13,39, que en la tabla 3 es la DOR; se usa el LR+ de la tabla (6,09).
+
+Citada como:
+
+1. Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 2 estudios, certeza baja; LR+ IC 95 %: 1,37–4,30; LR− IC 0,15–0,43). Solo Grimaldi 2017 (BJSM; n = 65, referencia: RM): S 80 %, E 47 %
+2. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM). Agrupado: Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 2 estudios, certeza muy baja)
+3. Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 5 estudios, certeza baja; LR+ IC 95 %: 3,19–11,61; LR− IC 0,33–0,63). Incluye un estudio con controles sin dolor de cadera (Lequesne 2008)
+4. Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 3 estudios, certeza muy baja)
+5. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM; versión con aducción añadida), según Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3, tabla 2). Lequesne 2008 (Arthritis Rheum; n = 17 con SDTM refractario de 13 meses de media, frente a 38 caderas sin dolor; referencia: RM)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Palpación del trocánter mayor / tendón glúteo» | 4b · cita bajo el test | 1 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» | 4b · cita bajo el test | 2 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» | 4b · cita bajo el test | 3 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Marcha de Trendelenburg» | 4b · cita bajo el test | 4 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 5 |
+
 ### Koc 2023
 
 Publicación: J Orthop Sports Phys Ther 53(12):CPG1–CPG39  
@@ -1282,19 +1313,23 @@ Citada como:
 
 ### Lequesne 2008
 
-Publicación: Arthritis Rheum  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Arthritis Rheum 59(2):241–6  
+DOI: 10.1002/art.23354  
+Última revisión: 2026-10 · Cifras comprobadas en el resumen y en la tabla 2 de Kinsella 2024. La E se midió frente a controles sin dolor de cadera (casos y controles), lo que la infla: la derotación externa resistida pasa a hallazgo.
 
 Citada como:
 
-1. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM). Lequesne 2008: S 100 %, E 97,3 %, frente a caderas sin dolor
-2. Lequesne 2008 (Arthritis Rheum; estudio único, n = 17 con SDTM refractario de 13 meses de media; referencia: RM). La E se midió en 38 caderas sin dolor, lo que probablemente la sobrestima
+1. Positivo: reproduce el dolor lateral de cadera antes de 30 s de apoyo sobre la pierna afectada. Todos los positivos tenían tendinopatía en la RM (LR+ 12,2), pero con IC 95 % de 0,8 a 191,5 (15 pacientes sin tendinopatía): aún no puntúa. El valor agrupado (LR+ 87,8, IC 3,0–2587) depende de un estudio con controles sin dolor de cadera (Lequesne 2008); certeza muy baja. Negativo no descarta (S 38 %).
+2. Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 5 estudios, certeza baja; LR+ IC 95 %: 3,19–11,61; LR− IC 0,33–0,63). Incluye un estudio con controles sin dolor de cadera (Lequesne 2008)
+3. Supino, cadera a 90° en RE; el paciente vuelve a neutro contra resistencia. Positivo: reproduce su dolor. Si es negativo, repetir en prono con la cadera en extensión. No puntúa: en pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017). Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7; certeza muy baja).
+4. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM; versión con aducción añadida), según Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3, tabla 2). Lequesne 2008 (Arthritis Rheum; n = 17 con SDTM refractario de 13 meses de media, frente a 38 caderas sin dolor; referencia: RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» | 4b · cita bajo el test | 1 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 2 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» | 4b · cita bajo el test | 2 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» (en `criterio`) | 4b · mención en el texto | 3 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 4 |
 
 ### Litaker 2000
 
@@ -1419,14 +1454,14 @@ Citada como:
 
 ### McCarthy y Busconi 1995
 
-Publicación: Can J Surg  
+Publicación: Can J Surg 38 Supl 1:S13–7  
 DOI: —  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Texto completo no conseguido. Según Reiman 2015 (tabla 3), el estudio no publicó S ni E del test de Thomas («NA»): las calcularon los autores del metaanálisis. Serie de casos con riesgo de sesgo alto; Narvani 2003 no lo confirma. El Thomas pasa a hallazgo en labrum.
 
 Citada como:
 
-1. McCarthy y Busconi 1995 (Can J Surg; estudio único, n = 59 con dolor de cadera refractario; referencia: artroscopia, rotura labral), LR calculadas en Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med)
-2. McCarthy y Busconi 1995 (Can J Surg; estudio único, n = 59 con dolor de cadera refractario; referencia: artroscopia, rotura labral), LR calculadas en Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
+1. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med)
+2. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1451,9 +1486,9 @@ Citada como:
 
 ### Metcalfe 2019
 
-Publicación: JAMA  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: JAMA 322(23):2323–33  
+DOI: 10.1001/jama.2019.19413  
+Última revisión: 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera.
 
 Citada como:
 
@@ -1489,15 +1524,15 @@ Citada como:
 
 ### Narvani 2003
 
-Publicación: Knee Surg Sports Traumatol Arthrosc  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Knee Surg Sports Traumatol Arthrosc 11(6):403–8  
+DOI: 10.1007/s00167-003-0390-7  
+Última revisión: 2026-10 · Sin cambios: chasquido S 100 %, E 85 % y «Thomas ni sensible ni específico» comprobados en el resumen.
 
 Citada como:
 
 1. Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
-2. Si la sospecha persiste. Supino con ambas caderas en flexión completa; se sujeta la contralateral en flexión y la afectada se lleva a extensión completa fuera del borde de la camilla. Positivo: dolor conocido, bloqueo, chasquido o enganche (en el estudio: chasquido palpable o dolor). Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral. Evidencia contradictoria: en McCarthy y Busconi, S 89 %, E 92 % (LR− 0,12); en Narvani 2003 solo fue positivo en 1 de 4 roturas (S 25 %). Por eso puntúa el LR+ pero un Thomas negativo no descarta.
-3. McCarthy y Busconi 1995 (Can J Surg; estudio único, n = 59 con dolor de cadera refractario; referencia: artroscopia, rotura labral), LR calculadas en Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
+2. Si la sospecha persiste. Supino con ambas caderas en flexión completa; se sujeta la contralateral en flexión y la afectada se lleva a extensión completa fuera del borde de la camilla. Positivo: dolor conocido, bloqueo, chasquido o enganche (en el estudio: chasquido palpable o dolor). Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral. No puntúa: el S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original; lo calcularon los autores del metaanálisis de Reiman 2015 a partir de una serie de 59 casos operados, con riesgo de sesgo alto. En Narvani 2003 no fue ni sensible ni específico (positivo en 1 de 4 roturas).
+3. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1528,7 +1563,7 @@ Citada como:
 
 Publicación: Guía NICE (2022)  
 DOI: —  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: solo respalda el diagnóstico clínico (edad ≥45, dolor con la actividad, rigidez matutina ausente o ≤30 min), sin S ni E; no puntúa. No se pudo abrir nice.org.uk (bloqueado por la red) para comprobar si hay actualización.
 
 Citada como:
 
@@ -1556,17 +1591,19 @@ Citada como:
 
 ### Pålsson 2020
 
-Publicación: Knee Surg Sports Traumatol Arthrosc  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Knee Surg Sports Traumatol Arthrosc 28(10):3382–92  
+DOI: 10.1007/s00167-020-06005-5  
+Última revisión: 2026-10 · Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015).
 
 Citada como:
 
-1. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc; 69 caderas de 63 pacientes derivados a atención especializada, 35 con SIFA; referencia: síntomas + morfología cam/pincer + respuesta a infiltración intraarticular). S IC 95 %: 13–44 %; E IC 86–100 %
+1. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc; 69 caderas de 63 pacientes derivados a atención especializada, 35 con SIFA; referencia: síntomas + morfología cam/pincer + respuesta a infiltración intraarticular; S IC 95 %: 67–93 %, E IC 9–38 %). Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09)
+2. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc; 69 caderas de 63 pacientes derivados a atención especializada, 35 con SIFA; referencia: síntomas + morfología cam/pincer + respuesta a infiltración intraarticular). S IC 95 %: 13–44 %; E IC 86–100 %
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» | 4b · cita bajo el test | 1 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» | 4b · cita bajo el test | 1 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» | 4b · cita bajo el test | 2 |
 
 ### Paquin 2022
 
@@ -1726,26 +1763,30 @@ Citada como:
 
 ### Reiman 2015
 
-Publicación: Br J Sports Med  
-DOI: —  
-Última revisión: **sin revisar**
+Publicación: Br J Sports Med 49(12):811  
+DOI: 10.1136/bjsports-2014-094302  
+Última revisión: 2026-10 · Texto completo leído (tablas 3 y 4): cifras correctas, pero el FADDIR agrupado sale de pacientes operados (probabilidad previa 90 %) y los propios autores concluyen que ningún test cambia de forma significativa la probabilidad. El FADDIR pasa a hallazgo en SIFA (con Pålsson 2020) y en labrum. Revisiones posteriores (Shanmugaraj 2020, Fernandes 2022, Dhillon 2025) no dan un valor agrupado mejor.
 
 Citada como:
 
-1. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral: 4 estudios, n = 319, referencia: cirugía; LR− IC 95 %: 0,02–0,93). Con artro-RM como referencia, LR− 0,45 (IC hasta 1,09). Estudios de baja calidad con pacientes de alta probabilidad previa. Antes: S 80 %, E 25–26 % sin fuente
-2. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral: 2 estudios, n = 27)
-3. McCarthy y Busconi 1995 (Can J Surg; estudio único, n = 59 con dolor de cadera refractario; referencia: artroscopia, rotura labral), LR calculadas en Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med)
-4. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral: 4 estudios, n = 319, referencia: cirugía; LR− IC 95 %: 0,02–0,93). Con artro-RM como referencia, LR− 0,45 (IC hasta 1,09). Estudios de baja calidad con pacientes de alta probabilidad previa
-5. McCarthy y Busconi 1995 (Can J Surg; estudio único, n = 59 con dolor de cadera refractario; referencia: artroscopia, rotura labral), LR calculadas en Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
+1. Cadera a 90° de flexión, aducción completa y rotación interna máxima. Positivo: dolor conocido, bloqueo, chasquido o enganche. En pacientes derivados con sospecha de SIFA, S 80 %, E 24 % (LR− 0,83): no puntúa. Un negativo orienta algo en contra, pero no descarta. El valor agrupado de Reiman 2015 (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93.
+2. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc; 69 caderas de 63 pacientes derivados a atención especializada, 35 con SIFA; referencia: síntomas + morfología cam/pincer + respuesta a infiltración intraarticular; S IC 95 %: 67–93 %, E IC 9–38 %). Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09)
+3. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral: 2 estudios, n = 27)
+4. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med)
+5. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09). Adib 2023 (Am J Sports Med; retrospectivo; referencia: artro-RM)
+6. Si la sospecha persiste. Supino con ambas caderas en flexión completa; se sujeta la contralateral en flexión y la afectada se lleva a extensión completa fuera del borde de la camilla. Positivo: dolor conocido, bloqueo, chasquido o enganche (en el estudio: chasquido palpable o dolor). Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral. No puntúa: el S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original; lo calcularon los autores del metaanálisis de Reiman 2015 a partir de una serie de 59 casos operados, con riesgo de sesgo alto. En Narvani 2003 no fue ni sensible ni específico (positivo en 1 de 4 roturas).
+7. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» | 4b · cita bajo el test | 1 |
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test de flexión-rotación interna» | 4b · cita bajo el test | 2 |
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test de Thomas» | 4b · cita bajo el test | 3 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de flexión-rotación interna» | 4b · cita bajo el test | 2 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» | 4b · cita bajo el test | 4 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» | 4b · cita bajo el test | 5 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» | 4b · cita bajo el test | 2 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test de flexión-rotación interna» | 4b · cita bajo el test | 3 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test de Thomas» | 4b · cita bajo el test | 4 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de flexión-rotación interna» | 4b · cita bajo el test | 3 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» | 4b · cita bajo el test | 5 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» (en `criterio`) | 4b · mención en el texto | 6 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» | 4b · cita bajo el test | 7 |
 
 ### Saueressig 2021
 
@@ -1931,15 +1972,15 @@ Citada como:
 
 ### Wong 2022
 
-Publicación: Curr Rev Musculoskelet Med  
-DOI: —  
-Última revisión: **sin revisar**  
+Publicación: Curr Rev Musculoskelet Med 15:38–52  
+DOI: 10.1007/s12178-022-09745-8  
+Última revisión: 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras.  
 Nota: Solo para la técnica del test.
 
 Citada como:
 
-1. McCarthy y Busconi 1995 (Can J Surg; estudio único, n = 59 con dolor de cadera refractario; referencia: artroscopia, rotura labral), LR calculadas en Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med)
-2. McCarthy y Busconi 1995 (Can J Surg; estudio único, n = 59 con dolor de cadera refractario; referencia: artroscopia, rotura labral), LR calculadas en Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
+1. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med)
+2. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -2013,14 +2054,12 @@ Tests sin `fuente` (los miembros de un cluster con `fuente` no cuentan: la cita 
 | h9 · Disfunción de Primera Costilla (Zona Cervicotorácica) | Palpación posteroanterior de 1ª costilla | — | no |
 | h9 · Disfunción de Primera Costilla (Zona Cervicotorácica) | Test de elevación del brazo post-movilización | — | no |
 
-### Cadera (39)
+### Cadera (37)
 
 | Hipótesis | Test | Cifras | Puntúa |
 |---|---|---|---|
 | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test FABER (Flexión-Abducción-Rotación Externa) | — | no |
 | ca3 · Desgarro del Labrum Acetabular | Apoyo Monopodal <30 segundos | — | no |
-| ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test de Abducción Resistida de Cadera | — | no |
-| ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Marcha de Trendelenburg | — | no |
 | ca5 · Debilidad de Abductores de Cadera | Test de Trendelenburg | — | no |
 | ca5 · Debilidad de Abductores de Cadera | Dinamometría manual (HHD) de abductores | — | no |
 | ca5 · Debilidad de Abductores de Cadera | Test de paso lateral + marcha en tándem combinados | — | no |
