@@ -80,6 +80,7 @@ export const REFERENCIAS = {
   'Dobbs 2016': { publicacion: 'Manual Therapy', doi: '', revision: null },
   'Dorf 2007': { publicacion: 'J Hand Surg Am 32:882–886', doi: '', revision: null },
   'Fairbank 2011': { autores: 'Fairbank, Hashimoto, Dailey, Patel y Dettori', titulo: 'Does patient history and physical examination predict MRI proven cauda equina syndrome?', publicacion: 'Evid Based Spine Care J 2(4):27–33', doi: '10.1055/s-0031-1274754', revision: null, nota: 'Texto completo en PMC3506147.' },
+  'Finucane 2020': { autores: 'Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe', titulo: 'International Framework for Red Flags for Potential Serious Spinal Pathologies', publicacion: 'IFOMPT, marzo de 2020 (documento completo); artículo en J Orthop Sports Phys Ther 50(7):350–372', doi: '10.2519/jospt.2020.9971', revision: null, nota: 'Se leyó el documento completo del marco IFOMPT; las páginas citadas son las suyas, no las del artículo de JOSPT.' },
   'Flynn 2002': { publicacion: '', doi: '', revision: null },
   'Frey 2017': { publicacion: '', doi: '', revision: null, nota: 'Citado a través de Netterström-Wedin 2021.' },
   'Fritz 2005': { publicacion: '', doi: '', revision: null },

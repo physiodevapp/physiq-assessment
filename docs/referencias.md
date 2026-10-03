@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **93** referencias de literatura, con **223** usos.
+- **94** referencias de literatura, con **228** usos.
 - **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
-- **18** de 94 referencias del registro revisadas. Ver «Estado de revisión».
+- **18** de 95 referencias del registro revisadas. Ver «Estado de revisión».
 - **103** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -78,7 +78,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | **sin revisar** |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
-| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 | 30 | **sin revisar** |
+| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 31 | **sin revisar** |
 | [Jonsson 2008](#jonsson-2008) | pauta | 1 | **sin revisar** |
 | [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | **sin revisar** |
 | [Kuijper 2009](#kuijper-2009) | pauta | 1 | **sin revisar** |
@@ -118,6 +118,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Downie 2013](#downie-2013) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Henschke 2013](#henschke-2013) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Finucane 2020](#finucane-2020) | razonamiento fase 2 | 4 | **sin revisar** |
 | [Cabre 2022](#cabre-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hutchison 2013](#hutchison-2013) | texto | 1 | **sin revisar** |
 | [Großterlinden 2016](#großterlinden-2016) | texto | 1 | **sin revisar** |
@@ -581,7 +582,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[Adib 2023](#adib-2023) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Cabre 2022](#cabre-2022) · [Campbell 2020](#campbell-2020) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cook 2011](#cook-2011) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Fairbank 2011](#fairbank-2011) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [Getsoian 2020](#getsoian-2020) · [Gomes 2022](#gomes-2022) · [Goodman 2018](#goodman-2018) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hegedus 2012](#hegedus-2012) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hutchison 2013](#hutchison-2013) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Laslett 2006](#laslett-2006) · [Lequesne 2008](#lequesne-2008) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Peat 2006](#peat-2006) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Saueressig 2021](#saueressig-2021) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suri 2010](#suri-2010) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zhang 2010](#zhang-2010)
+[Adib 2023](#adib-2023) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Cabre 2022](#cabre-2022) · [Campbell 2020](#campbell-2020) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cook 2011](#cook-2011) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Fairbank 2011](#fairbank-2011) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [Getsoian 2020](#getsoian-2020) · [Gomes 2022](#gomes-2022) · [Goodman 2018](#goodman-2018) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hegedus 2012](#hegedus-2012) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hutchison 2013](#hutchison-2013) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Laslett 2006](#laslett-2006) · [Lequesne 2008](#lequesne-2008) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Peat 2006](#peat-2006) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Saueressig 2021](#saueressig-2021) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suri 2010](#suri-2010) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zhang 2010](#zhang-2010)
 
 ### Adib 2023
 
@@ -908,6 +909,29 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
+### Finucane 2020
+
+Autores: Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe  
+Título: *International Framework for Red Flags for Potential Serious Spinal Pathologies*  
+Publicación: IFOMPT, marzo de 2020 (documento completo); artículo en J Orthop Sports Phys Ther 50(7):350–372  
+DOI: 10.2519/jospt.2020.9971  
+Última revisión: **sin revisar**  
+Nota: Se leyó el documento completo del marco IFOMPT; las páginas citadas son las suyas, no las del artículo de JOSPT.
+
+Citada como:
+
+1. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), pp. 34–36.
+2. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Night pain», p. 37.
+3. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–17.
+4. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura vertebral), pp. 24–26.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 3 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 4 |
+
 ### Flynn 2002
 
 Publicación: —  
@@ -1009,68 +1033,70 @@ Nota: El cribado de fase 2 lo cita sin año («Criterio de Goodman (cap. 14)»).
 
 Citada como:
 
-1. Criterio de Goodman (cap. 14): 2 de 4 → sensibilidad 70%, especificidad 81%; 3 de 4 → especificidad cercana al 100%. No es un diagnóstico.
-2. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387, 392 y 423.
-3. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 399, 402 y 423.
-4. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 395–397 y 423.
-5. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 392, 402–403 y 423.
-6. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 404, 408–409 y 423.
-7. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213 y 218–221.
-8. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213–215, 220 y 221.
-9. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 217–218 y 221.
-10. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 219–221; cap. 8, p. 306.
-11. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
-12. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
-13. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
-14. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
-15. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
-16. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
-17. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
-18. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
-19. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
-20. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
-21. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
-22. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
-23. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
-24. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
-25. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
-26. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
-27. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
-28. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
-29. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
+1. Fractura sacra por estrés: mujer deportista con actividad vigorosa y repetitiva, dolor en nalga que reproduce la carrera, dieta pobre, alteraciones menstruales o fracturas de estrés previas. Signo de la nalga; la radiografía inicial suele ser normal: la confirman la gammagrafía o la RM (Goodman 2018, cap. 15)
+2. Criterio de Goodman (cap. 14): 2 de 4 → sensibilidad 70%, especificidad 81%; 3 de 4 → especificidad cercana al 100%. No es un diagnóstico.
+3. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387, 392 y 423.
+4. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 399, 402 y 423.
+5. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 395–397 y 423.
+6. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 392, 402–403 y 423.
+7. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 404, 408–409 y 423.
+8. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213 y 218–221.
+9. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213–215, 220 y 221.
+10. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 217–218 y 221.
+11. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 219–221; cap. 8, p. 306.
+12. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
+13. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
+14. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
+15. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
+16. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
+17. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
+18. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
+19. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
+20. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
+21. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
+22. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
+23. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
+24. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
+25. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
+26. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
+27. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
+28. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
+29. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
+30. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Pregunta `end_1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 2 |
-| Todas (sistemas comunes) | — | Pregunta `end_2` · Endocrino / Metabólico | 2 · razonamiento del cribado | 3 |
-| Todas (sistemas comunes) | — | Pregunta `end_3` · Endocrino / Metabólico | 2 · razonamiento del cribado | 4 |
-| Todas (sistemas comunes) | — | Pregunta `end_4` · Endocrino / Metabólico | 2 · razonamiento del cribado | 5 |
-| Todas (sistemas comunes) | — | Pregunta `end_5` · Endocrino / Metabólico | 2 · razonamiento del cribado | 6 |
-| Todas (sistemas comunes) | — | Pregunta `hem_1` · Hematológico | 2 · razonamiento del cribado | 7 |
-| Todas (sistemas comunes) | — | Pregunta `hem_2` · Hematológico | 2 · razonamiento del cribado | 8 |
-| Todas (sistemas comunes) | — | Pregunta `hem_3` · Hematológico | 2 · razonamiento del cribado | 9 |
-| Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 10 |
-| Lumbar | — | `sistemas.3.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
-| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 11 |
-| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 12 |
-| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 13 |
-| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 14 |
-| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 15 |
-| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 16 |
-| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 17 |
-| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 18 |
-| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 19 |
-| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 20 |
-| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 20 |
-| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 21 |
-| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 22 |
-| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 23 |
-| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 24 |
-| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 25 |
-| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 26 |
-| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 27 |
-| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 28 |
-| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 29 |
+| Todas (sistemas comunes) | — | Pregunta `end_1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `end_2` · Endocrino / Metabólico | 2 · razonamiento del cribado | 4 |
+| Todas (sistemas comunes) | — | Pregunta `end_3` · Endocrino / Metabólico | 2 · razonamiento del cribado | 5 |
+| Todas (sistemas comunes) | — | Pregunta `end_4` · Endocrino / Metabólico | 2 · razonamiento del cribado | 6 |
+| Todas (sistemas comunes) | — | Pregunta `end_5` · Endocrino / Metabólico | 2 · razonamiento del cribado | 7 |
+| Todas (sistemas comunes) | — | Pregunta `hem_1` · Hematológico | 2 · razonamiento del cribado | 8 |
+| Todas (sistemas comunes) | — | Pregunta `hem_2` · Hematológico | 2 · razonamiento del cribado | 9 |
+| Todas (sistemas comunes) | — | Pregunta `hem_3` · Hematológico | 2 · razonamiento del cribado | 10 |
+| Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 11 |
+| Lumbar | — | `sistemas.3.banderasRojas.5` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 2 |
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 12 |
+| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 13 |
+| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 14 |
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 15 |
+| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 16 |
+| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 17 |
+| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 18 |
+| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 19 |
+| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 20 |
+| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 21 |
+| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 21 |
+| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 22 |
+| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 23 |
+| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 24 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 25 |
+| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 26 |
+| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 27 |
+| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 28 |
+| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 29 |
+| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 30 |
 
 ### Grimaldi 2017
 

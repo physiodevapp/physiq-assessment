@@ -43,9 +43,9 @@ Proyecto de contenido: que cada pregunta de cribado sistémico de la fase 2 expl
 - `tests/referencias.mjs` recoge `razonamiento.fuentes` por clave (efecto «razonamiento fase 2»; los sistemas comunes cuentan una vez, como región «Todas»). `tests/unit.js`: forma, claves en el registro, citas↔fuentes, render del «¿Por qué?»/«Ampliar» y que nada llega al payload ni a los resúmenes. `tests/smoke.mjs`: escritorio y 390 px en lumbar.
 
 ### Acceso a las fuentes desde la sesión (2026-10)
-El proxy de la sesión en la nube bloquea JOSPT, orthodiv.org, los repositorios universitarios, NICE, Cochrane Library, BMJ, OUP y LWW, y NCBI Bookshelf (StatPearls) responde con reCAPTCHA. Sí funciona el texto completo de los artículos de acceso abierto de PMC vía la API de Europe PMC (`https://www.ebi.ac.uk/europepmc/webservices/rest/<PMCID>/fullTextXML`). En lumbar se usaron Goodman (PDF del usuario), Downie 2013, Henschke 2013 (resumen de los autores), Fairbank 2011 y Cabre 2022. **Pendiente para la revisión de lumbar**: Finucane 2020 (pedir el PDF al usuario) y StatPearls como contraste; si llegan, revisar los «cuánto pesa» de lumbar con ellos.
-- Smoke test: abrir un «¿Por qué?» y un «Ampliar» en lumbar, a 390 px y en escritorio.
-- El componente queda reutilizable (p. ej. explicar los tests de la fase 4b más adelante).
+El usuario añadió dominios a la red del entorno. Funcionan: Finucane 2020 (documento completo IFOMPT en `www.orthodiv.org/wp-content/uploads/2021/08/International-Framework-for-Red-Flags-Serious-Spinal-Pathology-2020.pdf`), `www.nice.org.uk` y el texto completo de los artículos de acceso abierto de PMC vía la API de Europe PMC (`https://www.ebi.ac.uk/europepmc/webservices/rest/<PMCID>/fullTextXML`). **No funcionan aunque el dominio esté permitido**, porque responden con una comprobación anti-bots (Cloudflare o reCAPTCHA): `www.jospt.org`, `www.cochranelibrary.com`, `www.statpearls.com` y NCBI Bookshelf (`www.ncbi.nlm.nih.gov/books`, donde vive StatPearls). Para StatPearls o una revisión Cochrane completa, pedir el PDF al usuario.
+
+En lumbar se usaron Goodman (PDF del usuario), Finucane 2020, Downie 2013, Henschke 2013 (resumen de los autores), Fairbank 2011 y Cabre 2022. StatPearls queda sin usar como contraste del nivel 2 en lumbar.
 
 ## Fuentes y reglas
 
