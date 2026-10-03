@@ -164,7 +164,7 @@ Diseño, fuentes, reglas y procedimiento en `docs/razonamiento-cribado.md` (lée
 
 | Orden | Región | Preguntas | Goodman (páginas pedidas) | Razonamientos | Revisión usuario | Notas |
 |---|---|---|---|---|---|---|
-| 1 | Lumbar + UI + `comun.js` | 21 + 9 | [ ] | [ ] | [ ] | Goodman 6.ª ed. (2018) confirmada. Pedir caps. 14–15, 3 (dolor referido) y las páginas de sistema que falten |
+| 1 | Lumbar + UI + `comun.js` | 21 + 9 | [x] | [x] | [ ] | Goodman 6.ª ed. (2018): caps. 3, 5, 8, 11, 14 y 15 completos (PDF del usuario). UI, tests y 20 + 9 razonamientos hechos en la rama `claude/cool-mendel-81qknw`. `l_e7` (espondilolistesis aguda) queda sin razonamiento: ninguna fuente leída respalda la ciática bilateral súbita. Finucane 2020, StatPearls y NICE no accesibles desde la sesión (ver «Acceso a las fuentes» en `docs/razonamiento-cribado.md`). Esperando la revisión clínica del usuario |
 | 2 | Cervical | 20 | [ ] | [ ] | [ ] | Rushton 2020 para el «cuánto pesa» |
 | 3 | Hombro | 19 | [ ] | [ ] | [ ] | |
 | 4 | Cadera | 20 | [ ] | [ ] | [ ] | |

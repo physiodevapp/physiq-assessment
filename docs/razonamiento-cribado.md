@@ -25,13 +25,25 @@ Proyecto de contenido: que cada pregunta de cribado sistémico de la fase 2 expl
     porque: '…',          // nivel 1
     peso: '…',            // nivel 1
     detalle: '…',         // nivel 2 (opcional; sin él no hay «Ampliar»)
-    fuentes: ['Goodman 2018', 'Finucane 2020']  // claves de data/referencias.js
+    fuentes: ['Goodman 2018', 'Finucane 2020'], // claves de data/referencias.js
+    citas: ['Goodman 2018 — …, cap. 14, pp. 534–535.']  // opcional: cita completa (capítulo, páginas) de cada fuente
   }
   ```
+  `citas` se añadió en la primera sesión para que el nivel 2 muestre «las fuentes completas» con capítulo y página sin que la app importe el registro: cada cita empieza por su clave de `fuentes` y cada clave tiene su cita (lo comprueba `tests/unit.js`).
   Opcional a propósito: una pregunta sin respaldo verificable se queda sin razonamiento antes que con uno inventado.
 - Render en `buildSistemaHTML()` (`app.js`). El panel/sheet reutiliza los patrones existentes (hoja «☰ Fases», panel de sesión) y sus tokens (`--scrim`, `--scrim-blur`, `--modal-shadow`); colores solo con variables (tema claro). Al abrir el sheet: `PHYSIQ_WIDGET_HIDE`/`SHOW` al hub como los demás modales, Escape y gestión de foco, y el botón atrás en móvil cierra el sheet en vez de cambiar de fase (`_historyDepth`). Funciones llamadas desde `onclick` inline → al bloque `window` de `app.js`.
 - `tests/referencias.mjs`: extraer también `razonamiento.fuentes` como citas (para que el registro y `docs/referencias.md` las cuenten); regenerar con `node tests/gen-referencias.mjs`.
 - Unit tests: forma del campo (`porque` y `peso` no vacíos si existe; `fuentes` no vacío y todas en el registro).
+
+### Implementado (primera sesión, 2026-10)
+- `razonamientoInlineHTML()`, `abrirRazonamiento()` y `cerrarRazonamiento()` en `app.js`; marcado del panel (`#razonPanel`, `#razonScrim`) en `index.html`; estilos `.razon*` al final de `styles.css`.
+- Escritorio (> 768 px): panel lateral fijo a la derecha, sin velo; `body.razon-abierto` aparta el contenido. Otro «Ampliar» cambia el contenido sin cerrar. Escape cierra y devuelve el foco al botón que lo abrió.
+- Móvil (≤ 768 px): bottom sheet al 85 % con `--scrim`, `PHYSIQ_WIDGET_HIDE`/`SHOW`, arrastrar hacia abajo para cerrar, y una entrada en el historial (`{ phase, razon: true }`) para que el botón atrás cierre el sheet sin cambiar de fase; al cerrarlo con × o el velo se retira esa entrada (`history.back()`, ignorado en el `popstate`).
+- Se cierra solo al cambiar de fase, al repintar el cribado (cambio de región) y cuando el hub oculta el satélite (`_closeAllOverlays`).
+- `tests/referencias.mjs` recoge `razonamiento.fuentes` por clave (efecto «razonamiento fase 2»; los sistemas comunes cuentan una vez, como región «Todas»). `tests/unit.js`: forma, claves en el registro, citas↔fuentes, render del «¿Por qué?»/«Ampliar» y que nada llega al payload ni a los resúmenes. `tests/smoke.mjs`: escritorio y 390 px en lumbar.
+
+### Acceso a las fuentes desde la sesión (2026-10)
+El proxy de la sesión en la nube bloquea JOSPT, orthodiv.org, los repositorios universitarios, NICE, Cochrane Library, BMJ, OUP y LWW, y NCBI Bookshelf (StatPearls) responde con reCAPTCHA. Sí funciona el texto completo de los artículos de acceso abierto de PMC vía la API de Europe PMC (`https://www.ebi.ac.uk/europepmc/webservices/rest/<PMCID>/fullTextXML`). En lumbar se usaron Goodman (PDF del usuario), Downie 2013, Henschke 2013 (resumen de los autores), Fairbank 2011 y Cabre 2022. **Pendiente para la revisión de lumbar**: Finucane 2020 (pedir el PDF al usuario) y StatPearls como contraste; si llegan, revisar los «cuánto pesa» de lumbar con ellos.
 - Smoke test: abrir un «¿Por qué?» y un «Ampliar» en lumbar, a 390 px y en escritorio.
 - El componente queda reutilizable (p. ej. explicar los tests de la fase 4b más adelante).
 
