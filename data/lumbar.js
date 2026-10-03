@@ -38,8 +38,8 @@ export const screening = {
             fuentes: ['Goodman 2018', 'Downie 2013', 'Finucane 2020'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.',
-              'Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).',
-              'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), pp. 34–36.'
+              { texto: 'Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3898572/' },
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), pp. 34–36.', url: 'https://doi.org/10.2519/jospt.2020.9971' }
             ]
           } },
         { id: 'l_on2', text: '¿El dolor nocturno lo despierta desde un sueño profundo y le resulta imposible encontrar una posición que lo alivie?', alerta: true, s1: true,
@@ -50,8 +50,8 @@ export const screening = {
             fuentes: ['Goodman 2018', 'Finucane 2020', 'Henschke 2013'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.',
-              'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Night pain», p. 37.',
-              'Henschke 2013 — Henschke, Maher, Ostelo et al., «Red flags to screen for malignancy in patients with low-back pain», Cochrane Database Syst Rev 2013;(2):CD008686 (resumen y conclusiones de los autores).'
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Night pain», p. 37.', url: 'https://doi.org/10.2519/jospt.2020.9971' },
+              { texto: 'Henschke 2013 — Henschke, Maher, Ostelo et al., «Red flags to screen for malignancy in patients with low-back pain», Cochrane Database Syst Rev 2013;(2):CD008686 (resumen y conclusiones de los autores).', url: 'https://doi.org/10.1002/14651858.CD008686.pub2' }
             ]
           } }
       ],
@@ -82,9 +82,20 @@ export const screening = {
             porque: 'El riñón y las vías urinarias comparten inervación segmentaria con la zona lumbar, y su dolor se refiere al ángulo costovertebral y al flanco. La infección (pielonefritis, absceso perirrenal) suele dar además fiebre, escalofríos y cambios en la orina, que la exploración mecánica no explica.',
             peso: 'La combinación es lo que pesa: dolor lumbar más fiebre o escalofríos, o más orina con sangre, apunta a un origen renal y pide valoración médica. La puñopercusión renal, aunque se usa mucho, nunca se ha validado; en el cólico renal, la sangre en la orina y el dolor a la presión en la fosa lumbar orientan más.',
             detalle: 'Mecanismo: la pielonefritis aguda y el absceso perirrenal dan un dolor sordo y constante a un lado de la columna, en T12–L1, por distensión aguda de la cápsula renal, que puede irradiarse a la cresta ilíaca o a la ingle. El cólico por cálculo es intermitente, muy intenso, no cede con el reposo ni con los cambios de postura y suele acompañarse de náuseas, sudoración y sangre en la orina.\n\nCon qué se confunde: el dolor «seudorrenal» por una disfunción costovertebral o una radiculitis T10–T12 imita al renal, pero cambia con la postura (empeora al tumbarse sobre ese lado y al sentarse encorvado) y no trae fiebre ni síntomas urinarios. Una hernia discal torácica baja también puede imitar dolor renal.\n\nQué buscar con un SÍ: antecedentes de cálculos o de infecciones urinarias, traumatismo reciente, temperatura y el resto de síntomas urinarios (frecuencia, urgencia, escozor, nicturia).',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'La infección o la obstrucción distienden de forma aguda la cápsula del riñón o la vía urinaria e inflaman el órgano.',
+                'Esas señales viajan por fibras aferentes viscerales hasta el asta dorsal de los segmentos medulares que también reciben la piel y el músculo del flanco y la espalda (en torno a T9–L1).',
+                'Varias neuronas sensitivas, viscerales y somáticas, convergen en la misma vía ascendente de la médula: el cerebro no distingue de dónde viene la señal y la atribuye a una zona del cuerpo (piel, músculo, hueso) en lugar de al órgano. Es el dolor referido.',
+                'Por eso el dolor se nota en el ángulo costovertebral y el flanco, y en el cólico baja hacia la ingle siguiendo el uréter. Como las fibras viscerales y cutáneas convergen en las mismas neuronas, la piel de esa zona también puede doler.',
+                'La fiebre, los escalofríos y los cambios en la orina vienen del propio órgano, no de la columna: por eso pesan tanto en la valoración.'
+              ],
+              metafora: 'Como una alarma con el cableado cruzado: salta en el riñón, pero el panel de la centralita marca «espalda».'
+            },
+            fuentes: ['Goodman 2018', 'Sanvictores 2023'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.',
+              { texto: 'Sanvictores 2023 — Sanvictores, Jozsa y Tadi, «Neuroanatomy, Autonomic Nervous System Visceral Afferent Fibers and Pain», StatPearls [Internet], NCBI Bookshelf, última actualización 30 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK560843/' }
             ]
           } },
         { id: 'l6', text: '¿Presenta incontinencia urinaria o intestinal, o pérdida de sensibilidad en la zona de "silla de montar"?', alerta: true, s1: true, urgencia: 'Sospecha de cauda equina: derivación a urgencias hoy (RM de elección).',
@@ -95,9 +106,9 @@ export const screening = {
             fuentes: ['Goodman 2018', 'Fairbank 2011', 'Finucane 2020', 'Rider y Marra 2023'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.',
-              'Fairbank 2011 — Fairbank, Hashimoto, Dailey, Patel y Dettori, «Does patient history and physical examination predict MRI proven cauda equina syndrome?», Evid Based Spine Care J 2011;2(4):27–33 (texto completo en PMC).',
-              'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–17.',
-              'Rider y Marra 2023 — Rider y Marra, «Cauda Equina and Conus Medullaris Syndromes», StatPearls [Internet], NCBI Bookshelf, última actualización 7 de agosto de 2023.'
+              { texto: 'Fairbank 2011 — Fairbank, Hashimoto, Dailey, Patel y Dettori, «Does patient history and physical examination predict MRI proven cauda equina syndrome?», Evid Based Spine Care J 2011;2(4):27–33 (texto completo en PMC).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3506147/' },
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–17.', url: 'https://doi.org/10.2519/jospt.2020.9971' },
+              { texto: 'Rider y Marra 2023 — Rider y Marra, «Cauda Equina and Conus Medullaris Syndromes», StatPearls [Internet], NCBI Bookshelf, última actualización 7 de agosto de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK537200/' }
             ]
           } },
         { id: 'l_u3a', text: '¿En las últimas 3–4 semanas ha notado ardor o dolor al orinar?', alerta: true,
@@ -148,9 +159,20 @@ export const screening = {
             porque: 'El intestino grueso y el recto refieren dolor a la zona lumbar baja y al sacro. Si el dolor cede o cambia al expulsar gases o al defecar, la fuente probable es visceral (distensión del intestino), no la columna.',
             peso: 'Es una bandera roja de origen digestivo y un SÍ pide más preguntas sobre el intestino: hábito, sangre, dolor abdominal al mismo nivel, antecedentes de colitis, Crohn o colon irritable. Se valora con el resto del cuadro, no aislado.',
             detalle: 'Mecanismo: el dolor visceral se refiere a la piel y al músculo que comparten segmento medular con el órgano. El intestino delgado y el grueso pueden referir dolor a la zona lumbar o sacra cuando el estímulo es intenso. Si la distensión es la causa, el dolor se reduce al vaciar el intestino.\n\nQué buscar con un SÍ: dolor abdominal y lumbar al mismo nivel, a la vez o alternando (bandera roja por sí misma; en un caso del libro era un cáncer de colon avanzado); cambios en las heces o sangre; relación con las comidas; uso prolongado de antibióticos o AINE; dolor en otras articulaciones o erupciones cutáneas (artritis enteropática). Un 25 % de las personas con enfermedad digestiva tiene dolor de espalda o articular.\n\nCon qué se confunde: la coccigodinia también empeora al defecar o al expulsar gases, pero por presión local sobre el cóccix, no por distensión del intestino.',
-            fuentes: ['Goodman 2018'],
+            fisiologia: {
+              pasos: [
+                'La distensión o la inflamación del intestino activan sus fibras aferentes viscerales.',
+                'Esas fibras llegan por la raíz dorsal al asta dorsal de la médula, donde hacen sinapsis con una segunda neurona.',
+                'Varias neuronas sensitivas, viscerales y somáticas, convergen en la misma vía ascendente de la médula: el cerebro no distingue de dónde viene la señal y la atribuye a una zona del cuerpo (piel, músculo, hueso) en lugar de al órgano. Es el dolor referido.',
+                'El intestino grueso y el recto refieren así el dolor a la zona lumbar baja y al sacro.',
+                'Si el estímulo es la distensión, al expulsar gases o heces disminuye y el dolor «de espalda» cede: la columna no era el origen.'
+              ],
+              metafora: 'Como dos teléfonos que comparten la misma línea: la centralita (la médula) recibe la llamada pero no sabe desde cuál se hizo, y el cerebro la atribuye a la espalda.'
+            },
+            fuentes: ['Goodman 2018', 'Sanvictores 2023'],
             citas: [
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.'
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.',
+              { texto: 'Sanvictores 2023 — Sanvictores, Jozsa y Tadi, «Neuroanatomy, Autonomic Nervous System Visceral Afferent Fibers and Pain», StatPearls [Internet], NCBI Bookshelf, última actualización 30 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK560843/' }
             ]
           } },
         { id: 'l3', text: '¿El dolor está relacionado con su ciclo menstrual, tiene sangrado inusual o dolor que alterna con dolor abdominal?', alerta: true, s1: true,
@@ -206,10 +228,20 @@ export const screening = {
             porque: 'En las espondiloartropatías (espondilitis anquilosante, artritis psoriásica, reactiva o de la enfermedad inflamatoria intestinal) la inflamación de la sacroilíaca y la columna empeora con la inactividad: tras la noche aparece una rigidez larga que mejora al moverse. El dolor mecánico suele ir al revés: empeora con el movimiento.',
             peso: 'Solo cuenta dentro del criterio de dolor lumbar inflamatorio (menores de 45 años con dolor de más de 3 meses): 2 de 4 preguntas positivas dan sensibilidad del 70 % y especificidad del 81 %; con 3 de 4, la especificidad roza el 100 % y la sensibilidad baja al 33 %. Aislado, no diagnostica nada.',
             detalle: 'Mecanismo: la espondiloartropatía se caracteriza por dolor en la segunda parte de la noche y rigidez prolongada que mejora con la actividad, con limitación de la movilidad en todas las direcciones y dolor a la presión en la columna y las sacroilíacas. Suele acompañarse de otros signos sistémicos (fiebre, lesiones cutáneas, pérdida de apetito o de peso), y hay predisposición genética.\n\nQué buscar con un SÍ: dolor en otras articulaciones, psoriasis o erupciones, ojo rojo y doloroso (conjuntivitis), diarrea o enfermedad inflamatoria intestinal, síntomas urinarios o infección de transmisión sexual reciente (artritis reactiva), y antecedentes familiares.\n\nEl criterio (Goodman, cap. 14): a cualquier persona menor de 45 años con dolor lumbar, de cadera, de nalga o sacro de más de 3 meses, preguntarle por rigidez matutina de más de 30 minutos, dolor que la despierta en la segunda mitad de la noche, dolor que alterna de una nalga a otra y dolor que no se alivia con el reposo. La app lo evalúa sola con la edad de la fase 1 y la cronología, y lo muestra bajo las preguntas de este sistema.\n\nContraste (StatPearls, Lassiter 2024): el dolor lumbar inflamatorio es frecuente (en torno al 5–6 % de los adultos de EE. UU.) y bastante más que las espondiloartropatías (0,9–1,4 %), así que no es diagnóstico por sí mismo: sirve como criterio para derivar a reumatología. Lo caracterizan el inicio insidioso antes de los 40 años, más de 3 meses de evolución, la rigidez matutina que mejora con el ejercicio, el dolor que no mejora con el reposo, el dolor nocturno que mejora al levantarse y moverse, y el dolor de nalga que alterna de lado. El dolor mecánico, en cambio, suele empeorar con el movimiento y el ejercicio, y suele tener un inicio más agudo ligado a una lesión.',
+            fisiologia: {
+              pasos: [
+                'Una respuesta inflamatoria sistémica, de origen conocido o no (en la artritis reactiva, una infección intestinal previa), lleva mediadores inflamatorios a las articulaciones del esqueleto axial, sobre todo a las sacroilíacas.',
+                'Allí, citoquinas como la IL-17 y el TNF mantienen la inflamación en las entesis (donde tendones y ligamentos se anclan al hueso) y en las articulaciones; el gen HLA-B27 interviene en varios de esos pasos.',
+                'La inflamación persistente erosiona el hueso y, a la vez, estimula la formación de hueso nuevo (sindesmofitos): con los años, la columna puede llegar a fusionarse.',
+                'Clínicamente da el patrón inflamatorio: dolor de inicio insidioso que no mejora con el reposo, rigidez matutina y dolor nocturno que mejoran al levantarse y moverse.'
+              ],
+              nota: 'Por qué el movimiento alivia la rigidez no lo explica la fuente leída: es la seña clínica que distingue este dolor del mecánico, no un mecanismo demostrado aquí.',
+              metafora: 'Como un fuego lento en las bisagras de la columna: el cuerpo intenta repararlas poniendo hueso nuevo, y con los años las bisagras pueden soldarse.'
+            },
             fuentes: ['Goodman 2018', 'Lassiter 2024'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.',
-              'Lassiter 2024 — Lassiter, Bhutta y Allam, «Inflammatory Back Pain and Spondyloarthropathies», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de febrero de 2024.'
+              { texto: 'Lassiter 2024 — Lassiter, Bhutta y Allam, «Inflammatory Back Pain and Spondyloarthropathies», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de febrero de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK539753/' }
             ]
           } },
         { id: 'l5c', text: '¿El dolor cambia de un glúteo a otro, unas veces en un lado y otras en el otro?', alerta: false,
@@ -220,7 +252,7 @@ export const screening = {
             fuentes: ['Goodman 2018', 'Lassiter 2024'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.',
-              'Lassiter 2024 — Lassiter, Bhutta y Allam, «Inflammatory Back Pain and Spondyloarthropathies», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de febrero de 2024.'
+              { texto: 'Lassiter 2024 — Lassiter, Bhutta y Allam, «Inflammatory Back Pain and Spondyloarthropathies», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de febrero de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK539753/' }
             ]
           } },
         { id: 'l5d', text: '¿El dolor sigue igual o empeora cuando descansa, en lugar de aliviarse?', alerta: false,
@@ -231,7 +263,7 @@ export const screening = {
             fuentes: ['Goodman 2018', 'Lassiter 2024'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.',
-              'Lassiter 2024 — Lassiter, Bhutta y Allam, «Inflammatory Back Pain and Spondyloarthropathies», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de febrero de 2024.'
+              { texto: 'Lassiter 2024 — Lassiter, Bhutta y Allam, «Inflammatory Back Pain and Spondyloarthropathies», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de febrero de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK539753/' }
             ]
           } },
         { id: 'l_e2', text: '¿El dolor sacroilíaco lo despierta en la segunda mitad de la noche (entre las 2 y las 5 am)?', alerta: true, s1: true,
@@ -242,7 +274,7 @@ export const screening = {
             fuentes: ['Goodman 2018', 'Lassiter 2024'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.',
-              'Lassiter 2024 — Lassiter, Bhutta y Allam, «Inflammatory Back Pain and Spondyloarthropathies», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de febrero de 2024.'
+              { texto: 'Lassiter 2024 — Lassiter, Bhutta y Allam, «Inflammatory Back Pain and Spondyloarthropathies», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de febrero de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK539753/' }
             ]
           } },
         { id: 'l_e3', text: '¿El dolor pélvico está claramente relacionado con el ciclo menstrual, o tiene sangrado ginecológico inusual?', alerta: true, s1: true,
@@ -263,8 +295,8 @@ export const screening = {
             fuentes: ['Goodman 2018', 'Downie 2013', 'Finucane 2020'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.',
-              'Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).',
-              'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura vertebral), pp. 24–26.'
+              { texto: 'Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3898572/' },
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura vertebral), pp. 24–26.', url: 'https://doi.org/10.2519/jospt.2020.9971' }
             ]
           } },
         { id: 'l_e5', text: '¿Ha notado deformidad ósea, engrosamiento de huesos o ha sido diagnosticado de enfermedad de Paget?', alerta: true,
@@ -272,10 +304,21 @@ export const screening = {
             porque: 'En la enfermedad de Paget el hueso se destruye y se forma de nuevo a un ritmo acelerado y desordenado: queda agrandado, deformado y débil. Afecta sobre todo a la pelvis, el fémur, la columna lumbar y el cráneo, y su síntoma más frecuente es el dolor óseo.',
             peso: 'Más del 75 % de las personas con Paget no tienen síntomas, y suele aparecer después de los 50 años. Un diagnóstico conocido explica parte del dolor, pero también aumenta el riesgo de fractura (es factor de riesgo de fractura sacra). Un aumento brusco del dolor óseo o de la hinchazón pide valoración médica: puede ser una complicación (fractura o, rara vez, sarcoma).',
             detalle: 'Mecanismo: el aumento de la resorción y del depósito óseo da huesos más grandes pero esponjosos y frágiles; puede notarse calor y enrojecimiento sobre el hueso afectado. Las enfermedades metabólicas óseas leves o moderadas pueden no dar signos visibles; las avanzadas dan fracturas y deformidad.\n\nCon qué se confunde: el dolor óseo por Paget en la pelvis o la columna puede parecer una lumbalgia mecánica; lo que lo distingue es el dolor óseo, la deformidad o el engrosamiento óseo, y el diagnóstico previo.\n\nQué buscar con un SÍ: dolor nuevo o distinto del habitual, sobre todo con carga (posible fractura).\n\nContraste (StatPearls, Anastasopoulou y Gillespie 2026): la columna y la pelvis son los huesos más afectados, y la columna lumbar, el sacro y el cráneo están implicados en la mayoría de los casos. El dolor empeora con la carga; puede haber deformidad, dolor a la palpación y calor local por la hipervascularización. Las fracturas incompletas son frecuentes y pueden aparecer con traumatismos leves; las fracturas vertebrales pueden comprimir la médula, y la cola de caballo figura entre sus complicaciones. Es igual de frecuente en hombres y mujeres y suele aparecer después de los 50 años.',
-            fuentes: ['Goodman 2018', 'Anastasopoulou y Gillespie 2026'],
+            fisiologia: {
+              pasos: [
+                'El hueso se renueva toda la vida en ciclos acoplados: los osteoclastos reabsorben hueso viejo y dejan huecos (las lagunas de Howship), y los osteoblastos los rellenan con colágeno y mineral nuevos.',
+                'En el Paget, los osteoclastos se activan de forma anormal y reabsorben de manera desordenada.',
+                'Los osteoblastos responden con fuerza pero de forma irregular y depositan hueso inmaduro (hueso reticular o «woven»), sin la organización del hueso normal.',
+                'El hueso queda más grande, pero menos compacto, más débil y muy vascularizado: por eso puede notarse calor sobre él y duele con la carga.',
+                'Esa arquitectura deficiente explica las fracturas patológicas, a veces con traumatismos leves.'
+              ],
+              metafora: 'Como una obra con demoledores acelerados y albañiles con prisa: el muro acaba más grueso, pero con piezas mal encajadas, y aguanta peor que el original.'
+            },
+            fuentes: ['Goodman 2018', 'Anastasopoulou y Gillespie 2026', 'Rowe 2023'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.',
-              'Anastasopoulou y Gillespie 2026 — Anastasopoulou y Gillespie, «Paget Bone Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de agosto de 2026.'
+              { texto: 'Anastasopoulou y Gillespie 2026 — Anastasopoulou y Gillespie, «Paget Bone Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de agosto de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430805/' },
+              { texto: 'Rowe 2023 — Rowe, Koller y Sharma, «Physiology, Bone Remodeling», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de marzo de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK499863/' }
             ]
           } },
         { id: 'l_e6', text: '¿Hace deporte o actividad vigorosa y repetitiva (p. ej. correr) y el dolor de nalga aparece con ella, con dieta pobre, alteraciones menstruales o fracturas de estrés previas?', alerta: true,
@@ -286,8 +329,8 @@ export const screening = {
             fuentes: ['Goodman 2018', 'Cabre 2022', 'May y Marappa-Ganeshan 2023'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.',
-              'Cabre 2022 — Cabre, Moore, Smith-Ryan y Hackney, «Relative Energy Deficiency in Sport (RED-S): Scientific, Clinical, and Practical Implications for the Female Athlete», Dtsch Z Sportmed 2022;73(7):225–234 (texto completo en PMC).',
-              'May y Marappa-Ganeshan 2023 — May y Marappa-Ganeshan, «Stress Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 10 de julio de 2023.'
+              { texto: 'Cabre 2022 — Cabre, Moore, Smith-Ryan y Hackney, «Relative Energy Deficiency in Sport (RED-S): Scientific, Clinical, and Practical Implications for the Female Athlete», Dtsch Z Sportmed 2022;73(7):225–234 (texto completo en PMC).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9724109/' },
+              { texto: 'May y Marappa-Ganeshan 2023 — May y Marappa-Ganeshan, «Stress Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 10 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK554538/' }
             ]
           } },
         { id: 'l_e7', text: '¿Ha aparecido de golpe dolor en ambas piernas durante el deporte, tras lesiones repetidas en extensión de la espalda?', alerta: true,
@@ -297,9 +340,9 @@ export const screening = {
             detalle: 'Mecanismo (StatPearls, Margetis y Gillis 2025): en la espondilolistesis ístmica el origen es un defecto del istmo. El subtipo A son fracturas por fatiga por hiperextensión repetida en deportistas jóvenes; el subtipo C, fracturas agudas traumáticas del istmo. El defecto desestabiliza los elementos posteriores y permite que el cuerpo vertebral se desplace hacia delante; el estrechamiento del foramen o del canal puede comprimir las raíces y dar radiculopatía, claudicación neurógena, dolor de nalga, entumecimiento o debilidad en las piernas y, rara vez, alteraciones de vejiga o intestino. En los casos graves puede llegar a una cola de caballo, que requiere cirugía inmediata.\n\nCómo se presenta (May y Marappa-Ganeshan 2023): la espondilólisis es una fractura de estrés singular que exige un índice de sospecha alto; en el deportista con lumbalgia, la extensión lumbar aumenta el dolor. La radiografía puede no ver los cambios iniciales; si es negativa y la sospecha persiste, la SPECT, la TC o la RM ayudan.\n\nCuánto preocupa el dolor en ambas piernas (Finucane 2020): el dolor radicular uni o bilateral, la pérdida de sensibilidad dermatómica o la debilidad miotómica son precursores de la cola de caballo, y el dolor que empieza en una pierna y pasa a las dos aumenta la probabilidad de una cola de caballo inminente. Ninguna fuente leída describe la «ciática bilateral súbita durante el deporte» como presentación típica de la espondilolistesis: la pregunta vale sobre todo como puerta a esas preguntas de urgencia.',
             fuentes: ['Margetis y Gillis 2025', 'May y Marappa-Ganeshan 2023', 'Finucane 2020'],
             citas: [
-              'Margetis y Gillis 2025 — Margetis y Gillis, «Spondylolisthesis», StatPearls [Internet], NCBI Bookshelf, última actualización 28 de marzo de 2025.',
-              'May y Marappa-Ganeshan 2023 — May y Marappa-Ganeshan, «Stress Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 10 de julio de 2023.',
-              'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–11.'
+              { texto: 'Margetis y Gillis 2025 — Margetis y Gillis, «Spondylolisthesis», StatPearls [Internet], NCBI Bookshelf, última actualización 28 de marzo de 2025.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430767/' },
+              { texto: 'May y Marappa-Ganeshan 2023 — May y Marappa-Ganeshan, «Stress Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 10 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK554538/' },
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–11.', url: 'https://doi.org/10.2519/jospt.2020.9971' }
             ]
           } }
       ],

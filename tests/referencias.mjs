@@ -190,7 +190,7 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERE
         if (!r || vistas.has(`${sis.id}.${q.id}`)) continue;
         vistas.add(`${sis.id}.${q.id}`);
         for (const clave of r.fuentes || []) {
-          const cita = (r.citas || []).find(c => c.startsWith(clave)) || clave;
+          const cita = (r.citas || []).map(c => (typeof c === 'string' ? c : c.texto)).find(c => c.startsWith(clave)) || clave;
           anotar(lit, clave, cita, { region: reg, hyp: '—', donde: `Pregunta \`${q.id}\` · ${sis.nombre}`,
             fase: '2 · razonamiento del cribado', efecto: 'razonamiento fase 2' });
         }

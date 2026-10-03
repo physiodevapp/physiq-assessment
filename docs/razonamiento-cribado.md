@@ -29,6 +29,15 @@ Proyecto de contenido: que cada pregunta de cribado sistémico de la fase 2 expl
     citas: ['Goodman 2018 — …, cap. 14, pp. 534–535.']  // opcional: cita completa (capítulo, páginas) de cada fuente
   }
   ```
+  Campos opcionales añadidos después (2026-10):
+  ```js
+  fisiologia: {
+    pasos: ['…', '…', '…'],  // 3–6 pasos: del mecanismo al síntoma que cuenta el paciente
+    nota: '…',              // opcional: lo que la fuente leída no explica
+    metafora: '…'           // opcional: una frase divulgativa, siempre después de los pasos
+  },
+  citas: ['…', { texto: 'Clave Año — …', url: 'https://…' }]  // la url, la del registro
+  ```
   `citas` se añadió en la primera sesión para que el nivel 2 muestre «las fuentes completas» con capítulo y página sin que la app importe el registro: cada cita empieza por su clave de `fuentes` y cada clave tiene su cita (lo comprueba `tests/unit.js`).
   Opcional a propósito: una pregunta sin respaldo verificable se queda sin razonamiento antes que con uno inventado.
 - Render en `buildSistemaHTML()` (`app.js`). El panel/sheet reutiliza los patrones existentes (hoja «☰ Fases», panel de sesión) y sus tokens (`--scrim`, `--scrim-blur`, `--modal-shadow`); colores solo con variables (tema claro). Al abrir el sheet: `PHYSIQ_WIDGET_HIDE`/`SHOW` al hub como los demás modales, Escape y gestión de foco, y el botón atrás en móvil cierra el sheet en vez de cambiar de fase (`_historyDepth`). Funciones llamadas desde `onclick` inline → al bloque `window` de `app.js`.
@@ -61,6 +70,9 @@ En lumbar se usaron Goodman (PDF del usuario), Finucane 2020, Downie 2013, Hensc
 - **Nunca escribir de memoria.** Cada afirmación sale de una fuente leída en la sesión. Si el proxy bloquea el texto completo, pedir el PDF al usuario; un resumen de terceros no basta para dar una cifra.
 - Cifras de precisión diagnóstica (S/E/LR) solo con fuente, igual que en la Fase D.
 - Toda referencia nueva entra en `data/referencias.js` con `revision: null`.
+- **Fisiología, paso a paso** (sección del nivel 2, piloto 2026-10 en `end_2`, `end_4`, `hem_2`, `l1`, `l4`, `l5`, `l_e5`): una cadena causal de 3–6 pasos que va del mecanismo al síntoma, cada paso respaldado por una fuente leída. Fuente principal: los capítulos «Physiology, …» de StatPearls (PDF del usuario). Las moléculas solo entran si explican el síntoma. Si la fuente no explica un eslabón, se dice en `nota` en vez de rellenarlo.
+- **La metáfora es un extra, nunca sustituye a la información** (decisión del usuario): una sola frase, después de los pasos y marcada con 💡; no añade nada que los pasos no digan; nada alarmista (el clínico puede repetirla al paciente). No va en el nivel 1.
+- **Enlaces**: solo en las fuentes del nivel 2. Texto completo en PMC si es de acceso abierto, si no el DOI; StatPearls, su página de NCBI Bookshelf; Goodman, sin enlace (libro de pago). La url vive en `data/referencias.js` (`url`) y la cita la repite; `tests/unit.js` comprueba que coinciden.
 - **Conflictos entre fuentes: prevalece la más actual** (decisión del usuario, 2026-10). Si dos fuentes leídas dicen cosas distintas sobre el mismo dato, se usa la de fecha más reciente: la edición del libro, o la «última actualización» en StatPearls. La otra no se cita para ese dato. El conflicto y cómo se resolvió se dicen en la entrega de la tabla de revisión, para que el usuario pueda corregirlo. Ejemplo: en `l_e5`, el sexo en el Paget sale de StatPearls (2026), igual en hombres y mujeres, y no de Goodman (2018), más frecuente en hombres de más de 70 años. Esta regla es para conflictos entre fuentes; cuando el choque es con un texto que ya estaba en `data/` (como la bandera de fractura sacra), decide el usuario.
 - **Revisión clínica obligatoria antes de `main`**: al terminar la región, entregar al usuario una tabla compacta (pregunta · porque · peso · fuentes) para revisar en ~10 min. La región no se fusiona hasta que la valide; sus correcciones se aplican en la misma rama.
 
