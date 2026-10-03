@@ -1193,7 +1193,8 @@ test('testPuntua coincide con calcLRScore: un test que no puntúa nunca cambia t
 // y `peso` no vacíos, `fuentes` con claves del registro, y nada fuera del esquema.
 console.log('\nrazonamiento del cribado');
 
-const CAMPOS_RAZON = ['porque', 'peso', 'detalle', 'fuentes', 'citas'];
+const CAMPOS_RAZON = ['porque', 'peso', 'detalle', 'fuentes', 'citas', 'fisiologia'];
+const textoCita = c => (typeof c === 'string' ? c : c.texto);
 const preguntasConRazon = [];
 {
   const vistas = new Set();
@@ -1230,8 +1231,34 @@ test('razonamiento: fuentes no vacío y todas son claves de data/referencias.js'
 test('razonamiento: cada cita completa empieza por una de sus fuentes, y cada fuente tiene su cita', () => {
   for (const { region, q, r } of preguntasConRazon) {
     if (!r.citas) continue;
-    for (const c of r.citas) assert.ok(r.fuentes.some(f => c.startsWith(f)), `${region}/${q.id}: cita sin fuente: ${c}`);
-    for (const f of r.fuentes) assert.ok(r.citas.some(c => c.startsWith(f)), `${region}/${q.id}: fuente sin cita: ${f}`);
+    for (const c of r.citas.map(textoCita)) assert.ok(r.fuentes.some(f => c.startsWith(f)), `${region}/${q.id}: cita sin fuente: ${c}`);
+    for (const f of r.fuentes) assert.ok(r.citas.map(textoCita).some(c => c.startsWith(f)), `${region}/${q.id}: fuente sin cita: ${f}`);
+  }
+});
+
+test('razonamiento: una cita con enlace es { texto, url } y su url es la del registro', () => {
+  for (const { region, q, r } of preguntasConRazon) {
+    for (const c of r.citas || []) {
+      if (typeof c === 'string') continue;
+      assert.deepEqual(Object.keys(c).sort(), ['texto', 'url'], `${region}/${q.id}: cita con campos raros`);
+      const clave = r.fuentes.find(f => c.texto.startsWith(f));
+      assert.ok(/^https:\/\//.test(c.url), `${region}/${q.id}: url no https: ${c.url}`);
+      assert.equal(c.url, REFERENCIAS[clave]?.url, `${region}/${q.id}: la url de «${clave}» no coincide con data/referencias.js`);
+    }
+  }
+});
+
+test('razonamiento: fisiologia = { pasos (3–6), nota?, metafora? }, solo con detalle (se ve en «Ampliar»)', () => {
+  for (const { region, q, r } of preguntasConRazon) {
+    const f = r.fisiologia;
+    if (!f) continue;
+    const donde = `${region}/${q.id}`;
+    assert.ok(r.detalle, `${donde}: fisiologia sin detalle no se vería`);
+    assert.deepEqual(Object.keys(f).filter(k => !['pasos', 'nota', 'metafora'].includes(k)), [], `${donde}: campos raros en fisiologia`);
+    assert.ok(Array.isArray(f.pasos) && f.pasos.length >= 3 && f.pasos.length <= 6, `${donde}: 3–6 pasos`);
+    for (const p of f.pasos) assert.ok(noVacio(p), `${donde}: paso vacío`);
+    assert.ok(f.nota === undefined || noVacio(f.nota), `${donde}: nota vacía`);
+    assert.ok(f.metafora === undefined || noVacio(f.metafora), `${donde}: metáfora vacía`);
   }
 });
 
@@ -1260,6 +1287,7 @@ test('razonamiento: nunca entra en el payload, 📋 Notas ni 📄 Informe', () =
     for (const t of textos) {
       assert.ok(!t.includes(r.porque.slice(0, 40)), 'porque filtrado a un resumen');
       assert.ok(!t.includes(r.peso.slice(0, 40)), 'peso filtrado a un resumen');
+      if (r.fisiologia) assert.ok(!t.includes(r.fisiologia.pasos[0].slice(0, 40)), 'fisiología filtrada a un resumen');
     }
   });
 });

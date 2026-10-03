@@ -29,6 +29,15 @@ Proyecto de contenido: que cada pregunta de cribado sistémico de la fase 2 expl
     citas: ['Goodman 2018 — …, cap. 14, pp. 534–535.']  // opcional: cita completa (capítulo, páginas) de cada fuente
   }
   ```
+  Campos opcionales añadidos después (2026-10):
+  ```js
+  fisiologia: {
+    pasos: ['…', '…', '…'],  // 3–6 pasos: del mecanismo al síntoma que cuenta el paciente
+    nota: '…',              // opcional: lo que la fuente leída no explica
+    metafora: '…'           // opcional: una frase divulgativa, siempre después de los pasos
+  },
+  citas: ['…', { texto: 'Clave Año — …', url: 'https://…' }]  // la url, la del registro
+  ```
   `citas` se añadió en la primera sesión para que el nivel 2 muestre «las fuentes completas» con capítulo y página sin que la app importe el registro: cada cita empieza por su clave de `fuentes` y cada clave tiene su cita (lo comprueba `tests/unit.js`).
   Opcional a propósito: una pregunta sin respaldo verificable se queda sin razonamiento antes que con uno inventado.
 - Render en `buildSistemaHTML()` (`app.js`). El panel/sheet reutiliza los patrones existentes (hoja «☰ Fases», panel de sesión) y sus tokens (`--scrim`, `--scrim-blur`, `--modal-shadow`); colores solo con variables (tema claro). Al abrir el sheet: `PHYSIQ_WIDGET_HIDE`/`SHOW` al hub como los demás modales, Escape y gestión de foco, y el botón atrás en móvil cierra el sheet en vez de cambiar de fase (`_historyDepth`). Funciones llamadas desde `onclick` inline → al bloque `window` de `app.js`.
@@ -45,7 +54,7 @@ Proyecto de contenido: que cada pregunta de cribado sistémico de la fase 2 expl
 ### Acceso a las fuentes desde la sesión (2026-10)
 El usuario añadió dominios a la red del entorno. Funcionan: Finucane 2020 (documento completo IFOMPT en `www.orthodiv.org/wp-content/uploads/2021/08/International-Framework-for-Red-Flags-Serious-Spinal-Pathology-2020.pdf`), `www.nice.org.uk` y el texto completo de los artículos de acceso abierto de PMC vía la API de Europe PMC (`https://www.ebi.ac.uk/europepmc/webservices/rest/<PMCID>/fullTextXML`). **No funcionan aunque el dominio esté permitido**, porque responden con una comprobación anti-bots (Cloudflare o reCAPTCHA): `www.jospt.org`, `www.cochranelibrary.com`, `www.statpearls.com` y NCBI Bookshelf (`www.ncbi.nlm.nih.gov/books`, donde vive StatPearls). Para StatPearls o una revisión Cochrane completa, pedir el PDF al usuario (abrir el capítulo y guardarlo como PDF con la fecha de «Last Update» visible).
 
-En lumbar se usaron Goodman (PDF del usuario), Finucane 2020, Downie 2013, Henschke 2013 (resumen de los autores), Fairbank 2011, Cabre 2022 y cinco capítulos de StatPearls en PDF del usuario: Rider y Marra 2023 (cola de caballo), Lassiter 2024 (dolor inflamatorio), Anastasopoulou y Gillespie 2026 (Paget), May y Marappa-Ganeshan 2023 (fracturas de estrés) y Margetis y Gillis 2025 (espondilolistesis). Clave de un capítulo de StatPearls: autores (o primer autor si son tres o más) y el año de su última actualización.
+En lumbar se usaron Goodman (PDF del usuario), Finucane 2020, Downie 2013, Henschke 2013 (resumen de los autores), Fairbank 2011, Cabre 2022 y cinco capítulos de StatPearls en PDF del usuario: Rider y Marra 2023 (cola de caballo), Lassiter 2024 (dolor inflamatorio), Anastasopoulou y Gillespie 2026 (Paget), May y Marappa-Ganeshan 2023 (fracturas de estrés) y Margetis y Gillis 2025 (espondilolistesis). Para «Fisiología, paso a paso», 20 capítulos más de StatPearls en PDF del usuario: siete «Physiology» (Rowe 2023, Kaur 2025, Hantzidiamantis 2024, Chen 2023, Rhodes 2022, King y Lowery 2023, Sanvictores 2023), Shahid 2023 (tiroides), LaPelusa y Dave 2023 (hemostasia), Denault y Launico 2026 (plaquetas), Rout 2024 (neutropenia), Jayarangaiah 2023 (metástasis ósea), Gill 2025 (cistitis), Leslie 2024 (nicturia), Consoli y Carlson 2026 (endometriosis), Malik 2023 (úlcera péptica), Antunes 2024 (hemorragia digestiva alta), Zemaitis 2026 (enfermedad arterial periférica), Munakomi 2023 (estenosis de canal y claudicación neurógena) y Shaw 2025 (aneurisma de aorta abdominal). Clave de un capítulo de StatPearls: autores (o primer autor si son tres o más) y el año de su última actualización.
 
 ## Fuentes y reglas
 
@@ -61,6 +70,9 @@ En lumbar se usaron Goodman (PDF del usuario), Finucane 2020, Downie 2013, Hensc
 - **Nunca escribir de memoria.** Cada afirmación sale de una fuente leída en la sesión. Si el proxy bloquea el texto completo, pedir el PDF al usuario; un resumen de terceros no basta para dar una cifra.
 - Cifras de precisión diagnóstica (S/E/LR) solo con fuente, igual que en la Fase D.
 - Toda referencia nueva entra en `data/referencias.js` con `revision: null`.
+- **Fisiología, paso a paso** (sección del nivel 2; piloto 2026-10 en `end_2`, `end_4`, `hem_2`, `l1`, `l4`, `l5`, `l_e5`, extendido después a las 30 preguntas de lumbar y comunes): una cadena causal de 3–6 pasos que va del mecanismo al síntoma, cada paso respaldado por una fuente leída. Fuente principal: los capítulos «Physiology, …» de StatPearls (PDF del usuario). Las moléculas solo entran si explican el síntoma. Si la fuente no explica un eslabón, se dice en `nota` en vez de rellenarlo.
+- **La metáfora es un extra, nunca sustituye a la información** (decisión del usuario): una sola frase, después de los pasos y marcada con 💡; no añade nada que los pasos no digan; nada alarmista (el clínico puede repetirla al paciente). No va en el nivel 1.
+- **Enlaces**: solo en las fuentes del nivel 2. Texto completo en PMC si es de acceso abierto, si no el DOI; StatPearls, su página de NCBI Bookshelf; Goodman, sin enlace (libro de pago). La url vive en `data/referencias.js` (`url`) y la cita la repite; `tests/unit.js` comprueba que coinciden.
 - **Conflictos entre fuentes: prevalece la más actual** (decisión del usuario, 2026-10). Si dos fuentes leídas dicen cosas distintas sobre el mismo dato, se usa la de fecha más reciente: la edición del libro, o la «última actualización» en StatPearls. La otra no se cita para ese dato. El conflicto y cómo se resolvió se dicen en la entrega de la tabla de revisión, para que el usuario pueda corregirlo. Ejemplo: en `l_e5`, el sexo en el Paget sale de StatPearls (2026), igual en hombres y mujeres, y no de Goodman (2018), más frecuente en hombres de más de 70 años. Esta regla es para conflictos entre fuentes; cuando el choque es con un texto que ya estaba en `data/` (como la bandera de fractura sacra), decide el usuario.
 - **Revisión clínica obligatoria antes de `main`**: al terminar la región, entregar al usuario una tabla compacta (pregunta · porque · peso · fuentes) para revisar en ~10 min. La región no se fusiona hasta que la valide; sus correcciones se aplican en la misma rama.
 
