@@ -160,7 +160,7 @@ Diseño, decisiones y diferencias con lo implementado en `docs/modo-breve.md`. M
 
 ## Fase F — Razonamiento fisiológico de las preguntas de cribado (fase 2)
 
-Diseño, fuentes, reglas y procedimiento en `docs/razonamiento-cribado.md` (léelo entero antes de empezar). **Una región por sesión/chat**, en el orden de la tabla. La primera sesión implementa además el campo `razonamiento`, la UI (nivel 1 inline + panel lateral en escritorio / bottom sheet en móvil), los tests y los sistemas comunes de `data/comun.js`. Ninguna región llega a `main` sin la revisión clínica del usuario (tabla de revisión).
+Diseño, fuentes, reglas y procedimiento en `docs/razonamiento-cribado.md` (léelo entero antes de empezar). **Una región por sesión/chat**, en el orden de la tabla. La primera sesión implementa además el campo `razonamiento`, la UI (nivel 1 inline + panel lateral en escritorio / bottom sheet en móvil), los tests y los sistemas comunes de `data/comun.js`. Ninguna región llega a `main` sin la revisión clínica del usuario (tabla de revisión). Si dos fuentes se contradicen, prevalece la más actual (ver «Fuentes y reglas» en `docs/razonamiento-cribado.md`).
 
 | Orden | Región | Preguntas | Goodman (páginas pedidas) | Razonamientos | Revisión usuario | Notas |
 |---|---|---|---|---|---|---|

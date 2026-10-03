@@ -61,6 +61,7 @@ En lumbar se usaron Goodman (PDF del usuario), Finucane 2020, Downie 2013, Hensc
 - **Nunca escribir de memoria.** Cada afirmación sale de una fuente leída en la sesión. Si el proxy bloquea el texto completo, pedir el PDF al usuario; un resumen de terceros no basta para dar una cifra.
 - Cifras de precisión diagnóstica (S/E/LR) solo con fuente, igual que en la Fase D.
 - Toda referencia nueva entra en `data/referencias.js` con `revision: null`.
+- **Conflictos entre fuentes: prevalece la más actual** (decisión del usuario, 2026-10). Si dos fuentes leídas dicen cosas distintas sobre el mismo dato, se usa la de fecha más reciente: la edición del libro, o la «última actualización» en StatPearls. La otra no se cita para ese dato. El conflicto y cómo se resolvió se dicen en la entrega de la tabla de revisión, para que el usuario pueda corregirlo. Ejemplo: en `l_e5`, el sexo en el Paget sale de StatPearls (2026), igual en hombres y mujeres, y no de Goodman (2018), más frecuente en hombres de más de 70 años. Esta regla es para conflictos entre fuentes; cuando el choque es con un texto que ya estaba en `data/` (como la bandera de fractura sacra), decide el usuario.
 - **Revisión clínica obligatoria antes de `main`**: al terminar la región, entregar al usuario una tabla compacta (pregunta · porque · peso · fuentes) para revisar en ~10 min. La región no se fusiona hasta que la valide; sus correcciones se aplican en la misma rama.
 
 ## Capítulos de Goodman 2018 por región
