@@ -891,10 +891,10 @@ Citada como:
 
 ### Décary 2018
 
-Publicación: PLoS One · PM&R (dos artículos)  
+Publicación: PLoS One 13:e0198797 · PM R 10:472–482 (dos artículos)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Dos artículos distintos con la misma clave: la cita de cada uso dice la revista.
+Nota: Dos artículos distintos con la misma clave: la cita de cada uso dice la revista. DOI de cada uno (el campo doi admite uno solo): PLoS One (LCA) 10.1371/journal.pone.0198797; PM R (menisco) 10.1016/j.pmrj.2017.10.009.
 
 Citada como:
 
@@ -1062,10 +1062,10 @@ Citada como:
 
 ### Frey 2017
 
-Publicación: —  
+Publicación: Clin J Sport Med 27(3):e36 (resumen de congreso)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Citado a través de Netterström-Wedin 2021.
+Nota: Citado a través de Netterström-Wedin 2021 (ref. 21). Resumen de congreso sin DOI propio: «Prospective study of ankle injury in high level athlete to detect the lesion of the distal tibio-fibular syndesmosis (DTFS) in the French national sport institute in Paris».
 
 Citada como:
 
