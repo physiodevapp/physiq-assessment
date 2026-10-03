@@ -44,15 +44,35 @@ Proyecto de contenido: que cada pregunta de cribado sistémico de la fase 2 expl
 | 2 · Mecanismo ampliado | **StatPearls** (NCBI Bookshelf, fechado por capítulo) | Goodman |
 
 - **Goodman**: el registro tiene la 6.ª ed. (`'Goodman 2018'`). En la primera sesión, confirmar con el usuario qué edición tiene; si es la 7.ª, entrada nueva en `data/referencias.js` y citar esa. Goodman es de pago: **pedir al usuario las páginas** del capítulo de cada región y sistema (PDF o fotos) al empezar la región. Redactar con palabras propias y citar; no copiar el texto.
+- **Edición confirmada: 6.ª (2018)**, la que ya está en el registro como `'Goodman 2018'`; no hace falta entrada nueva. Índice (el usuario lo aportó, 2026-10) y qué capítulo pedir para cada sistema de PhysiQ en la tabla «Capítulos de Goodman por región» de abajo.
 - **Finucane 2020 / Rushton 2020** son marcos de la columna: valen para lumbar y cervical. En las regiones periféricas (hombro, cadera, rodilla, codo, tobillo y pie) el «cuánto pesa» sale de NICE (CKS de artritis séptica, NG158 de TVP…), Cochrane cuando exista y Goodman.
 - **Nunca escribir de memoria.** Cada afirmación sale de una fuente leída en la sesión. Si el proxy bloquea el texto completo, pedir el PDF al usuario; un resumen de terceros no basta para dar una cifra.
 - Cifras de precisión diagnóstica (S/E/LR) solo con fuente, igual que en la Fase D.
 - Toda referencia nueva entra en `data/referencias.js` con `revision: null`.
 - **Revisión clínica obligatoria antes de `main`**: al terminar la región, entregar al usuario una tabla compacta (pregunta · porque · peso · fuentes) para revisar en ~10 min. La región no se fusiona hasta que la valide; sus correcciones se aplican en la misma rama.
 
+## Capítulos de Goodman 2018 por región
+
+Índice de la 6.ª ed.: 1 Introducción al cribado (1) · 2 Entrevista (30) · **3 Tipos de dolor y patrones de dolor visceral (90)** · 4 Exploración física (147) · **5 Hematológico (213)** · **6 Cardiovascular (224)** · **7 Pulmonar (272)** · **8 Gastrointestinal (302)** · **9 Hepático y biliar (337)** · **10 Urogenital (360)** · **11 Endocrino y metabólico (387)** · **12 Inmunológico (428)** · **13 Cáncer (463)** · **14 Cabeza, cuello y espalda (521)** · **15 Sacro, sacroilíaca y pelvis (579)** · **16 Cuadrante inferior: glúteo, cadera, ingle, muslo y pierna (611)** · 17 Tórax, mamas y costillas (647) · **18 Hombro y extremidad superior (685)**.
+
+Pedir primero el **capítulo regional** (agrupa el cribado de esa zona sistema por sistema) y de los capítulos de sistema **solo las páginas** de las preguntas que el regional no cubra; no hacen falta capítulos enteros. El **cap. 3** (mecanismos del dolor referido visceral) sirve a todas las regiones: pedir sus páginas sobre dolor referido una sola vez, en la primera sesión.
+
+| Región | Capítulo regional | Sistemas de PhysiQ → capítulo de sistema |
+|---|---|---|
+| Lumbar | 14 (espalda) + 15 | cáncer 13 · urogenital 10 · GI 8 · espondiloartropatías/ginecológico 12 y 15 · vascular 6 |
+| Comunes (`data/comun.js`) | — | endocrino 11 · hematológico 5 |
+| Cervical | 14 (cabeza y cuello) | cáncer 13 · cardio 6 · pulmonar 7 · renal 10 · GI 8 · arterial/cefalea 14 y 6 · médula 14 · inflamatoria 12 |
+| Hombro | 18 | cáncer 13 · cardio 6 · pulmonar 7 · renal 10 · ginecológico 17 · GI/hepático 8 y 9 · infección 12 · neurológico 18 |
+| Cadera | 16 | cáncer 13 · vascular 6 · urogenital 10 · GI 8 · óseo 16 · inflamatoria 12 |
+| Rodilla | 16 (solo en parte) | vascular 6 · infecciosa 12 · oncológico/hematológico 13 y 5 |
+| Tobillo y pie | — | vascular 6 · infecciosa 12 · oncológico 13 |
+| Codo | 18 | vascular 6 · infecciosa 12 · endocrino 11 |
+
+**Rodilla, tobillo y pie** no tienen capítulo regional propio en Goodman, y los sistemas traumático, pediátrico, fractura de estrés y neurológico periférico apenas aparecen. En esas regiones el peso recae en StatPearls, NICE y Cochrane, y Goodman queda como contraste solo donde cubre la pregunta.
+
 ## Procedimiento por región
 1. Leer este documento y la Fase F de `MIGRATION_PLAN.md`.
-2. Pedir al usuario las páginas de Goodman de la región (y de los sistemas que aparezcan).
+2. Pedir al usuario las páginas de Goodman según la tabla «Capítulos de Goodman 2018 por región».
 3. Para cada sistema de `screening.sistemas`: buscar y leer las fuentes abiertas (StatPearls, Finucane/Rushton, Cochrane, NICE), redactar `razonamiento` de cada pregunta.
 4. Registrar las referencias nuevas; `node tests/gen-referencias.mjs`; `node tests/unit.js`; `node tests/smoke.mjs`; revisar a mano a 390 px y en escritorio.
 5. Tabla de revisión para el usuario; aplicar correcciones; PR; marcar la región en la Fase F.
