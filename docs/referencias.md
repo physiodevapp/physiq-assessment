@@ -700,7 +700,7 @@ Citada como:
 ### Apelby-Albrecht 2013
 
 Publicación: —  
-DOI: —  
+DOI: 10.1016/j.jmpt.2013.07.007  
 Última revisión: **sin revisar**  
 Nota: Citado a través de Thoomes 2026.
 
@@ -715,7 +715,7 @@ Citada como:
 ### Appelboam 2008
 
 Publicación: BMJ 337:a2428  
-DOI: —  
+DOI: 10.1136/bmj.a2428  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -731,7 +731,7 @@ Citada como:
 ### Bachmann 2003
 
 Publicación: BMJ 326:417  
-DOI: —  
+DOI: 10.1136/bmj.326.7386.417  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -763,7 +763,7 @@ Citada como:
 ### Blanpied 2017
 
 Publicación: J Orthop Sports Phys Ther 47(7):A1–A83  
-DOI: —  
+DOI: 10.2519/jospt.2017.0302  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -794,7 +794,7 @@ Citada como:
 ### Campbell 2020
 
 Publicación: Am J Sports Med 48:2819–2827  
-DOI: —  
+DOI: 10.1177/0363546520937302  
 Última revisión: **sin revisar**  
 Nota: Recoge los datos de Roedl (sin año en la cita).
 
@@ -828,7 +828,7 @@ Citada como:
 ### Chimenti 2024
 
 Publicación: J Orthop Sports Phys Ther 54(12):CPG1–CPG32  
-DOI: —  
+DOI: 10.2519/jospt.2024.0302  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -842,7 +842,7 @@ Citada como:
 ### Chronopoulos 2004
 
 Publicación: Am J Sports Med  
-DOI: —  
+DOI: 10.1177/0363546503261723  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -878,7 +878,7 @@ Citada como:
 ### Cook 2011
 
 Publicación: —  
-DOI: —  
+DOI: 10.1002/pri.500  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -913,7 +913,7 @@ Citada como:
 ### Demont 2022
 
 Publicación: Musculoskelet Sci Pract  
-DOI: —  
+DOI: 10.1016/j.msksp.2022.102640  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -946,7 +946,7 @@ Citada como:
 ### Devillé 2000
 
 Publicación: —  
-DOI: —  
+DOI: 10.1097/00007632-200005010-00016  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -961,7 +961,7 @@ Citada como:
 ### Dobbs 2016
 
 Publicación: Manual Therapy  
-DOI: —  
+DOI: 10.1016/j.math.2016.05.332  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -975,7 +975,7 @@ Citada como:
 ### Dorf 2007
 
 Publicación: J Hand Surg Am 32:882–886  
-DOI: —  
+DOI: 10.1016/j.jhsa.2007.04.010  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1049,7 +1049,7 @@ Citada como:
 ### Flynn 2002
 
 Publicación: —  
-DOI: —  
+DOI: 10.1097/00007632-200212150-00021  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1078,7 +1078,7 @@ Citada como:
 ### Fritz 2005
 
 Publicación: —  
-DOI: —  
+DOI: 10.1007/s00586-004-0803-4  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1094,7 +1094,7 @@ Citada como:
 ### Genevay 2017
 
 Publicación: —  
-DOI: —  
+DOI: 10.1016/j.spinee.2017.05.005  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1108,7 +1108,7 @@ Citada como:
 ### Getsoian 2020
 
 Publicación: BMJ Open  
-DOI: —  
+DOI: 10.1136/bmjopen-2019-035245  
 Última revisión: **sin revisar**  
 Nota: Citado a través de Demont 2022.
 
@@ -1140,7 +1140,7 @@ Citada como:
 ### Gomes 2022
 
 Publicación: BMC Musculoskelet Disord 23:885  
-DOI: —  
+DOI: 10.1186/s12891-022-05831-7  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1252,7 +1252,7 @@ Citada como:
 ### Großterlinden 2016
 
 Publicación: —  
-DOI: —  
+DOI: 10.1007/s00167-015-3604-x  
 Última revisión: **sin revisar**  
 Nota: Citado a través de Netterström-Wedin 2021.
 
@@ -1281,7 +1281,7 @@ Citada como:
 ### Han 2023
 
 Publicación: eClinicalMedicine  
-DOI: —  
+DOI: 10.1016/j.eclinm.2023.101960  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1301,7 +1301,7 @@ Citada como:
 ### Hancock 2007
 
 Publicación: —  
-DOI: —  
+DOI: 10.1007/s00586-007-0391-1  
 Última revisión: **sin revisar**  
 Nota: Cifra anterior, sustituida por Han 2023 (se menciona en la cita).
 
@@ -1334,7 +1334,7 @@ Citada como:
 ### Hegedus 2012
 
 Publicación: Br J Sports Med 46:964–978  
-DOI: —  
+DOI: 10.1136/bjsports-2012-091066  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1375,7 +1375,7 @@ Citada como:
 ### Hermans 2013
 
 Publicación: JAMA 310:837–847  
-DOI: —  
+DOI: 10.1001/jama.2013.276187  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1410,7 +1410,7 @@ Citada como:
 ### Hutchison 2013
 
 Publicación: —  
-DOI: —  
+DOI: 10.1016/j.fas.2012.12.006  
 Última revisión: **sin revisar**  
 Nota: Citado a través de Reiman 2014.
 
@@ -1443,7 +1443,7 @@ Citada como:
 ### Jonsson 2008
 
 Publicación: Br J Sports Med 42:746–749  
-DOI: —  
+DOI: 10.1136/bjsm.2007.039545  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1457,7 +1457,7 @@ Citada como:
 ### Jull 2007
 
 Publicación: Cephalalgia 27:793–802  
-DOI: —  
+DOI: 10.1111/j.1468-2982.2007.01345.x  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1471,7 +1471,7 @@ Citada como:
 ### Karanasios 2022
 
 Publicación: J Hand Ther 35:541–551  
-DOI: —  
+DOI: 10.1016/j.jht.2021.02.002  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1487,7 +1487,7 @@ Citada como:
 ### Kastelein 2008
 
 Publicación: Am J Med  
-DOI: —  
+DOI: 10.1016/j.amjmed.2008.05.041  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1501,7 +1501,7 @@ Citada como:
 ### Katz 1995
 
 Publicación: —  
-DOI: —  
+DOI: 10.1002/art.1780380910  
 Última revisión: **sin revisar**  
 Nota: Citado a través de Dobbs 2016.
 
@@ -1534,7 +1534,7 @@ Citada como:
 ### Kim 2001
 
 Publicación: Arthroscopy 17:160–164  
-DOI: —  
+DOI: 10.1053/jars.2001.20665  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1548,7 +1548,7 @@ Citada como:
 ### Kim 2004
 
 Publicación: —  
-DOI: —  
+DOI: 10.1016/j.arthro.2004.08.003  
 Última revisión: **sin revisar**  
 Nota: Solo para la técnica del test.
 
@@ -1563,7 +1563,7 @@ Citada como:
 ### Kim 2007
 
 Publicación: Arthroscopy  
-DOI: —  
+DOI: 10.1016/j.arthro.2007.06.016  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1618,7 +1618,7 @@ Citada como:
 ### Koc 2023
 
 Publicación: J Orthop Sports Phys Ther 53(12):CPG1–CPG39  
-DOI: —  
+DOI: 10.2519/jospt.2023.0303  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1632,7 +1632,7 @@ Citada como:
 ### Kuijper 2009
 
 Publicación: BMJ 339:b3883  
-DOI: —  
+DOI: 10.1136/bmj.b3883  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1646,7 +1646,7 @@ Citada como:
 ### Kulig 2009
 
 Publicación: Phys Ther 89(1):26–37  
-DOI: —  
+DOI: 10.2522/ptj.20080052  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1678,7 +1678,7 @@ Citada como:
 ### Laslett 2006
 
 Publicación: —  
-DOI: —  
+DOI: 10.1016/j.spinee.2006.01.004  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1749,7 +1749,7 @@ Citada como:
 ### Litaker 2000
 
 Publicación: J Am Geriatr Soc  
-DOI: —  
+DOI: 10.1111/j.1532-5415.2000.tb03875.x  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1763,7 +1763,7 @@ Citada como:
 ### Liu 2025
 
 Publicación: BMC Sports Sci Med Rehabil 17:335  
-DOI: —  
+DOI: 10.1186/s13102-025-01404-y  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1777,7 +1777,7 @@ Citada como:
 ### Lucas 2009
 
 Publicación: —  
-DOI: —  
+DOI: 10.1097/ajp.0b013e31817e13b6  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1791,7 +1791,7 @@ Citada como:
 ### Maffulli 1998
 
 Publicación: Am J Sports Med 26:266–70  
-DOI: —  
+DOI: 10.1177/03635465980260021801  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1810,7 +1810,7 @@ Citada como:
 ### Mahadevan 2015
 
 Publicación: J Foot Ankle Surg 54:549–53  
-DOI: —  
+DOI: 10.1053/j.jfas.2014.09.021  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1826,7 +1826,7 @@ Citada como:
 ### Majlesi 2008
 
 Publicación: —  
-DOI: —  
+DOI: 10.1097/rhu.0b013e31816b2f99  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1874,7 +1874,7 @@ Citada como:
 ### Martin 2021
 
 Publicación: J Orthop Sports Phys Ther 51(4):CPG1–CPG80  
-DOI: —  
+DOI: 10.2519/jospt.2021.0302  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1890,7 +1890,7 @@ Citada como:
 ### Maxwell y Sterling 2013
 
 Publicación: Man Ther 18:172–174  
-DOI: —  
+DOI: 10.1016/j.math.2012.07.004  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1938,7 +1938,7 @@ Citada como:
 ### McKeon 2008
 
 Publicación: Med Sci Sports Exerc 40(10):1810–1819  
-DOI: —  
+DOI: 10.1249/mss.0b013e31817e0f92  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -1976,7 +1976,7 @@ Citada como:
 ### Molloy 2003
 
 Publicación: J Bone Joint Surg Br 85-B(3)  
-DOI: —  
+DOI: 10.1302/0301-620x.85b3.12873  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2027,7 +2027,7 @@ Citada como:
 ### Netterström-Wedin 2021
 
 Publicación: Phys Ther Sport 49:214–26  
-DOI: —  
+DOI: 10.1016/j.ptsp.2021.03.005  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2062,7 +2062,7 @@ Citada como:
 ### Nunes 2013
 
 Publicación: Phys Ther Sport 14:54–9  
-DOI: —  
+DOI: 10.1016/j.ptsp.2012.11.003  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2092,7 +2092,7 @@ Citada como:
 ### Paquin 2022
 
 Publicación: Arch Physiother 12:26  
-DOI: —  
+DOI: 10.1186/s40945-022-00153-2  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2106,7 +2106,7 @@ Citada como:
 ### Park 2005
 
 Publicación: J Bone Joint Surg Am  
-DOI: —  
+DOI: 10.2106/jbjs.d.02335  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2121,7 +2121,7 @@ Citada como:
 ### Park 2008
 
 Publicación: Arch Phys Med Rehabil 89:738–742  
-DOI: —  
+DOI: 10.1016/j.apmr.2007.09.048  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2135,7 +2135,7 @@ Citada como:
 ### Park 2019
 
 Publicación: Medicine 98:e15497  
-DOI: —  
+DOI: 10.1097/md.0000000000015497  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2165,7 +2165,7 @@ Citada como:
 ### Pitcher 2024
 
 Publicación: Foot Ankle Orthop 9(4)  
-DOI: —  
+DOI: 10.1177/24730114241291055  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2181,7 +2181,7 @@ Citada como:
 ### Rathleff 2020
 
 Publicación: Orthop J Sports Med 8(4):2325967120911106  
-DOI: —  
+DOI: 10.1177/2325967120911106  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2195,7 +2195,7 @@ Citada como:
 ### Reid 2014
 
 Publicación: Phys Ther 94(4):466–476  
-DOI: —  
+DOI: 10.2522/ptj.20120483  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2225,7 +2225,7 @@ Citada como:
 ### Reiman 2014
 
 Publicación: J Athl Train 49:820–9  
-DOI: —  
+DOI: 10.4085/1062-6050-49.3.36  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2363,7 +2363,7 @@ Citada como:
 ### Saueressig 2021
 
 Publicación: J Orthop Sports Phys Ther  
-DOI: —  
+DOI: 10.2519/jospt.2021.10469  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2411,7 +2411,7 @@ Citada como:
 ### Sman 2015
 
 Publicación: Br J Sports Med  
-DOI: —  
+DOI: 10.1136/bjsports-2013-092787  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2430,7 +2430,7 @@ Citada como:
 ### Smith 2015
 
 Publicación: Evid Based Med 20:88–97  
-DOI: —  
+DOI: 10.1136/ebmed-2014-110160  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2445,7 +2445,7 @@ Citada como:
 ### Solomon 2001
 
 Publicación: JAMA 286:1610–20  
-DOI: —  
+DOI: 10.1001/jama.286.13.1610  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2463,7 +2463,7 @@ Citada como:
 ### Suri 2010
 
 Publicación: JAMA  
-DOI: —  
+DOI: 10.1001/jama.2010.1833  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2479,7 +2479,7 @@ Citada como:
 ### Tawa 2017
 
 Publicación: —  
-DOI: —  
+DOI: 10.1186/s12891-016-1383-2  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2495,7 +2495,7 @@ Citada como:
 ### Thoomes 2026
 
 Publicación: BMC Musculoskelet Disord  
-DOI: —  
+DOI: 10.1186/s12891-026-09551-0  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2514,7 +2514,7 @@ Citada como:
 ### van Dijk 1996
 
 Publicación: J Bone Joint Surg Br 78-B(6)  
-DOI: —  
+DOI: 10.1302/0301-620x78b6.1283  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2530,7 +2530,7 @@ Citada como:
 ### Walton 2004
 
 Publicación: J Bone Joint Surg Am  
-DOI: —  
+DOI: 10.2106/00004623-200404000-00021  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2551,7 +2551,7 @@ Citada como:
 ### Warden 2007
 
 Publicación: Am J Sports Med 35:427–36  
-DOI: —  
+DOI: 10.1177/0363546506294858  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2565,7 +2565,7 @@ Citada como:
 ### Williams 2025
 
 Publicación: J Man Manip Ther  
-DOI: —  
+DOI: 10.1080/10669817.2024.2436403  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2596,7 +2596,7 @@ Citada como:
 ### Zaslav 2001
 
 Publicación: J Shoulder Elbow Surg 10:23–27  
-DOI: —  
+DOI: 10.1067/mse.2001.111960  
 Última revisión: **sin revisar**
 
 Citada como:
@@ -2628,7 +2628,7 @@ Citada como:
 ### Zhang 2010
 
 Publicación: Ann Rheum Dis 69:483–9  
-DOI: —  
+DOI: 10.1136/ard.2009.113100  
 Última revisión: **sin revisar**
 
 Citada como:
