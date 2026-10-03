@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **119** referencias de literatura, con **267** usos.
+- **119** referencias de literatura, con **268** usos.
 - **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
 - **18** de 120 referencias del registro revisadas. Ver «Estado de revisión».
 - **103** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -130,7 +130,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Munakomi 2023](#munakomi-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rider y Marra 2023](#rider-y-marra-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rowe 2023](#rowe-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Shahid 2023](#shahid-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Hantzidiamantis 2024](#hantzidiamantis-2024) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -2358,6 +2358,7 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
+| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 
 ### Saueressig 2021
 
