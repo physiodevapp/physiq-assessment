@@ -1188,6 +1188,90 @@ test('testPuntua coincide con calcLRScore: un test que no puntúa nunca cambia t
   }
 });
 
+// ── Razonamiento del cribado (fase 2, «¿Por qué?») ───────────────────────────
+// docs/razonamiento-cribado.md. Campo opcional por pregunta: si existe, `porque`
+// y `peso` no vacíos, `fuentes` con claves del registro, y nada fuera del esquema.
+console.log('\nrazonamiento del cribado');
+
+const CAMPOS_RAZON = ['porque', 'peso', 'detalle', 'fuentes', 'citas'];
+const preguntasConRazon = [];
+{
+  const vistas = new Set();
+  for (const [region, data] of Object.entries(SYSTEMIC_SCREENING)) {
+    for (const sis of data.sistemas) {
+      for (const q of sis.preguntas) {
+        if (!q.razonamiento || vistas.has(`${sis.id}.${q.id}`)) continue;
+        vistas.add(`${sis.id}.${q.id}`);
+        preguntasConRazon.push({ region, sis, q, r: q.razonamiento });
+      }
+    }
+  }
+}
+const noVacio = x => typeof x === 'string' && x.trim().length > 0;
+
+test('razonamiento: porque y peso no vacíos, detalle no vacío si existe, sin campos fuera del esquema', () => {
+  for (const { region, q, r } of preguntasConRazon) {
+    const donde = `${region}/${q.id}`;
+    assert.ok(noVacio(r.porque), `${donde}: porque vacío`);
+    assert.ok(noVacio(r.peso), `${donde}: peso vacío`);
+    assert.ok(r.detalle === undefined || noVacio(r.detalle), `${donde}: detalle vacío`);
+    const extra = Object.keys(r).filter(k => !CAMPOS_RAZON.includes(k));
+    assert.deepEqual(extra, [], `${donde}: campos desconocidos`);
+  }
+});
+
+test('razonamiento: fuentes no vacío y todas son claves de data/referencias.js', () => {
+  for (const { region, q, r } of preguntasConRazon) {
+    assert.ok(Array.isArray(r.fuentes) && r.fuentes.length > 0, `${region}/${q.id}: sin fuentes`);
+    for (const f of r.fuentes) assert.ok(REFERENCIAS[f], `${region}/${q.id}: «${f}» no está en el registro`);
+  }
+});
+
+test('razonamiento: cada cita completa empieza por una de sus fuentes, y cada fuente tiene su cita', () => {
+  for (const { region, q, r } of preguntasConRazon) {
+    if (!r.citas) continue;
+    for (const c of r.citas) assert.ok(r.fuentes.some(f => c.startsWith(f)), `${region}/${q.id}: cita sin fuente: ${c}`);
+    for (const f of r.fuentes) assert.ok(r.citas.some(c => c.startsWith(f)), `${region}/${q.id}: fuente sin cita: ${f}`);
+  }
+});
+
+test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar» solo con detalle', () => {
+  for (const [region, data] of Object.entries(SYSTEMIC_SCREENING)) {
+    for (const sis of data.sistemas) {
+      const html = buildSistemaHTML(sis);
+      for (const q of sis.preguntas) {
+        const ini = html.indexOf(`id="sq2_${q.id}"`);
+        const fin = html.indexOf('id="sq2_', ini + 1);
+        const bloque = html.slice(ini, fin === -1 ? undefined : fin);
+        assert.equal(bloque.includes('class="razon"'), !!q.razonamiento, `${region}/${q.id}: ¿Por qué?`);
+        assert.equal(bloque.includes(`abrirRazonamiento(this,'${sis.id}','${q.id}')`), !!q.razonamiento?.detalle, `${region}/${q.id}: Ampliar`);
+      }
+    }
+  }
+});
+
+test('razonamiento: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
+  const muestra = preguntasConRazon.find(p => p.region !== 'comun' && SYSTEMIC_SCREENING[p.region]);
+  if (!muestra) return;   // aún no hay ninguna pregunta con razonamiento
+  const { region, q, r } = muestra;
+  withState({ region, sistemicoAnswers: { [q.id]: 'SI' }, sistemicoAlerta: true }, () => {
+    const textos = [JSON.stringify(buildPhysiQPayload()), buildContextSummaryText(), buildInformeFisioterapiaText()];
+    assert.ok(JSON.stringify(buildPhysiQPayload()).includes(q.text.slice(0, 20)), 'la pregunta respondida SÍ sí va en el payload (control)');
+    for (const t of textos) {
+      assert.ok(!t.includes(r.porque.slice(0, 40)), 'porque filtrado a un resumen');
+      assert.ok(!t.includes(r.peso.slice(0, 40)), 'peso filtrado a un resumen');
+    }
+  });
+});
+
+test('razonamiento: los sistemas comunes son el mismo objeto en todas las regiones (se redactan una vez)', () => {
+  const ids = ['transversal_endocrino', 'transversal_hematologico'];
+  for (const id of ids) {
+    const instancias = new Set(Object.values(SYSTEMIC_SCREENING).flatMap(d => d.sistemas.filter(s => s.id === id)));
+    assert.ok(instancias.size <= 1, `${id}: ${instancias.size} copias distintas`);
+  }
+});
+
 Object.assign(state, BASE_STATE);   // deja el modo en completo para lo que venga detrás
 
 // ── Summary ───────────────────────────────────────────────────────────────────

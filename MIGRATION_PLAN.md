@@ -164,11 +164,11 @@ Diseño, decisiones y diferencias con lo implementado en `docs/modo-breve.md`. M
 
 ## Fase F — Razonamiento fisiológico de las preguntas de cribado (fase 2)
 
-Diseño, fuentes, reglas y procedimiento en `docs/razonamiento-cribado.md` (léelo entero antes de empezar). **Una región por sesión/chat**, en el orden de la tabla. La primera sesión implementa además el campo `razonamiento`, la UI (nivel 1 inline + panel lateral en escritorio / bottom sheet en móvil), los tests y los sistemas comunes de `data/comun.js`. Ninguna región llega a `main` sin la revisión clínica del usuario (tabla de revisión).
+Diseño, fuentes, reglas y procedimiento en `docs/razonamiento-cribado.md` (léelo entero antes de empezar). **Una región por sesión/chat**, en el orden de la tabla. La primera sesión implementa además el campo `razonamiento`, la UI (nivel 1 inline + panel lateral en escritorio / bottom sheet en móvil), los tests y los sistemas comunes de `data/comun.js`. Ninguna región llega a `main` sin la revisión clínica del usuario (tabla de revisión). Si dos fuentes se contradicen, prevalece la más actual (ver «Fuentes y reglas» en `docs/razonamiento-cribado.md`).
 
 | Orden | Región | Preguntas | Goodman (páginas pedidas) | Razonamientos | Revisión usuario | Notas |
 |---|---|---|---|---|---|---|
-| 1 | Lumbar + UI + `comun.js` | 21 + 9 | [ ] | [ ] | [ ] | Goodman 6.ª ed. (2018) confirmada. Pedir caps. 14–15, 3 (dolor referido) y las páginas de sistema que falten |
+| 1 | Lumbar + UI + `comun.js` | 21 + 9 | [x] | [x] | [ ] | Goodman 6.ª ed. (2018): caps. 3, 5, 8, 11, 14 y 15 completos (PDF del usuario). UI, tests y 20 + 9 razonamientos hechos en la rama `claude/cool-mendel-81qknw`. `l_e7` (espondilolistesis aguda) tiene razonamiento desde que llegó StatPearls; dice expresamente que ninguna fuente describe la «ciática bilateral súbita» como presentación típica. Finucane 2020 incorporado (l2, l_on2, l6, l_e4); StatPearls (5 capítulos en PDF del usuario) como contraste en l6, l5, l5c, l5d, l_e2, l_e5, l_e6 y l_e7; Cochrane completa no accesible por anti-bots (ver «Acceso a las fuentes» en `docs/razonamiento-cribado.md`). La bandera roja de fractura sacra por estrés se corrigió a Goodman (la RM la confirma; decisión del usuario). Esperando la revisión clínica del usuario |
 | 2 | Cervical | 20 | [ ] | [ ] | [ ] | Rushton 2020 para el «cuánto pesa» |
 | 3 | Hombro | 19 | [ ] | [ ] | [ ] | |
 | 4 | Cadera | 20 | [ ] | [ ] | [ ] | |

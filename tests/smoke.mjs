@@ -177,6 +177,89 @@ async function walkRegionBreve(page, region) {
   return { region, ok, treeResult, screening, fase5, naturalezaOculta };
 }
 
+// Razonamiento del cribado (fase 2, docs/razonamiento-cribado.md): nivel 1
+// («¿Por qué?», <details>) y nivel 2 («Ampliar →»). Escritorio: panel lateral
+// sin velo — se puede seguir contestando SÍ/NO con él abierto, «Ampliar» en
+// otra pregunta cambia el contenido sin cerrarlo, Escape lo cierra. Móvil
+// (390 px): bottom sheet con velo; el botón atrás lo cierra sin cambiar de
+// fase, y la × también, sin dejar una entrada colgando en el historial.
+const RAZON_SIS = 'l_cancer', RAZON_Q1 = 'l2', RAZON_Q2 = 'l_on2';
+async function irAFase2(page, region) {
+  await page.fill('#motivoConsulta', `Dolor de ${region} (razonamiento)`);
+  await page.click('#mecanismo .option-btn >> nth=0');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('${region}', this)"]`);
+  await page.waitForTimeout(200);
+}
+const razonEstado = page => page.evaluate(() => {
+  const p = document.getElementById('razonPanel');
+  const r = p.getBoundingClientRect();
+  return {
+    abierto: p.classList.contains('open'),
+    visible: r.width > 0 && r.left < innerWidth && r.top < innerHeight && getComputedStyle(p).visibility === 'visible',
+    velo: getComputedStyle(document.getElementById('razonScrim')).display !== 'none',
+    pregunta: document.getElementById('razonPregunta').textContent,
+    fase: state.currentPhase,
+    ancho: r.width, alto: r.height, vw: innerWidth, vh: innerHeight,
+    scrollX: document.documentElement.scrollWidth > innerWidth,
+  };
+});
+
+async function checkRazonamientoEscritorio(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await irAFase2(page, 'lumbar');
+  const base = `#panel_${RAZON_SIS}`;
+  await page.click(`${base} #sq2_${RAZON_Q1} details.razon > summary`);
+  const inlineVisible = await page.isVisible(`${base} #sq2_${RAZON_Q1} .razon-cuerpo`);
+  await page.click(`${base} #sq2_${RAZON_Q1} .razon-ampliar`);
+  await page.waitForTimeout(400);
+  const a = await razonEstado(page);
+  // Sin velo: el SÍ de otra pregunta se puede pulsar con el panel abierto
+  await page.click(`${base} #sq2_${RAZON_Q2} .sq-btn.si`);
+  const siConPanel = await page.evaluate(q => state.sistemicoAnswers[q] === 'SI', RAZON_Q2);
+  await page.click(`${base} #sq2_${RAZON_Q2} details.razon > summary`);
+  await page.click(`${base} #sq2_${RAZON_Q2} .razon-ampliar`);
+  await page.waitForTimeout(150);
+  const b = await razonEstado(page);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(400);
+  const c = await razonEstado(page);
+  const ok = inlineVisible && a.abierto && a.visible && !a.velo && siConPanel
+    && b.abierto && b.pregunta !== a.pregunta && !c.abierto && c.fase === 2;
+  return { ok, inlineVisible, siConPanel, a, b, c };
+}
+
+async function checkRazonamientoMovil(page) {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await irAFase2(page, 'lumbar');
+  const acc = `#acc_${RAZON_SIS}`;
+  await page.click(`${acc} .sistema-accordion-header`);
+  await page.waitForTimeout(200);
+  await page.click(`${acc} #sq2_${RAZON_Q1} details.razon > summary`);
+  await page.click(`${acc} #sq2_${RAZON_Q1} .razon-ampliar`);
+  await page.waitForTimeout(400);
+  const a = await razonEstado(page);
+  await page.goBack();                       // botón atrás: cierra el sheet, sigue en la fase 2
+  await page.waitForTimeout(400);
+  const b = await razonEstado(page);
+  await page.click(`${acc} #sq2_${RAZON_Q1} .razon-ampliar`);
+  await page.waitForTimeout(400);
+  const c = await razonEstado(page);
+  await page.click('#razonCerrar');
+  await page.waitForTimeout(500);
+  const d = await razonEstado(page);
+  await page.goBack();                       // sin entrada colgando: este atrás ya va a la fase 1
+  await page.waitForTimeout(400);
+  const fase = await page.evaluate(() => state.currentPhase);
+  const ok = a.abierto && a.visible && a.velo && a.alto > a.vh * 0.7 && !a.scrollX
+    && !b.abierto && b.fase === 2 && c.abierto && !d.abierto && d.fase === 2 && fase === 1;
+  return { ok, a, b, c, d, faseTrasAtras: fase };
+}
+
 async function main() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
@@ -236,6 +319,12 @@ async function main() {
   const sheetOpen = await page.evaluate(() => document.getElementById('phaseSheet')?.classList.contains('open'));
   console.log(`\nPhase sheet opens from "☰ Fases": ${sheetOpen}`);
 
+  console.log('\nRazonamiento del cribado (lumbar):');
+  const razonEsc = await checkRazonamientoEscritorio(page);
+  console.log(`  ${razonEsc.ok ? '✓' : '✗'} escritorio: panel lateral sin velo, SÍ con el panel abierto, cambia de pregunta, Escape cierra`);
+  const razonMov = await checkRazonamientoMovil(page);
+  console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
+
   await browser.close();
 
   const realErrors = errors.filter(e => !KNOWN_NOISE.some(n => e.includes(n)));
@@ -244,13 +333,15 @@ async function main() {
 
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
   const breveOk = breveResults.every(r => r.ok);
-  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
     results.filter(r => !(r.treeResult.treeCompleteShown && r.finalPhase === 5))
       .forEach(r => console.log('  -', JSON.stringify(r)));
   }
+  if (!razonEsc.ok) console.log('\nRazonamiento escritorio:', JSON.stringify(razonEsc));
+  if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
   if (!breveOk) {
     console.log('\nModo breve failures:');
     breveResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
