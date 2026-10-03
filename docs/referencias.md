@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **106** referencias de literatura, con **246** usos.
+- **106** referencias de literatura, con **249** usos.
 - **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
 - **18** de 107 referencias del registro revisadas. Ver «Estado de revisión».
 - **103** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -125,11 +125,11 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [King y Lowery 2023](#king-y-lowery-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Rider y Marra 2023](#rider-y-marra-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Rowe 2023](#rowe-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Rowe 2023](#rowe-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Hantzidiamantis 2024](#hantzidiamantis-2024) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Hantzidiamantis 2024](#hantzidiamantis-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Lassiter 2024](#lassiter-2024) | razonamiento fase 2 | 4 | **sin revisar** |
-| [Kaur 2025](#kaur-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Kaur 2025](#kaur-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Margetis y Gillis 2025](#margetis-y-gillis-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hutchison 2013](#hutchison-2013) | texto | 1 | **sin revisar** |
@@ -1246,6 +1246,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `end_2` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `end_5` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 
 ### Hegedus 2012
 
@@ -1426,6 +1427,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `end_1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `end_4` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 
 ### Kim 2001
@@ -2149,6 +2151,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 
 ### Sanvictores 2023
