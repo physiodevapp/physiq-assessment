@@ -861,16 +861,28 @@ test('cadera: fractura de estrés del cuello femoral, artritis séptica y torsi�
   });
 });
 
-test('cadera: ningún test multiplica por una LR− de 0, y Thomas puntúa solo positivo y solo en labrum (evidencia contradictoria para descartar)', () => {
+test('cadera: ningún test multiplica por una LR− de 0; Thomas y FADDIR no puntúan; trocantéreo según Kinsella 2024', () => {
   Object.values(HYPOTHESES).filter(h => h.region === 'cadera').forEach(h => {
     const r = Object.fromEntries(h.tests.map((_, i) => [i, 'neg']));
     assert.ok(calcLRScore(h, r).totalLR > 0, h.id);
   });
-  const ca2 = HYPOTHESES.ca2, iThomas = ca2.tests.findIndex(t => t.name === 'Test de Thomas');
-  assert.equal(calcLRScore(ca2, { [iThomas]: 'pos' }).totalLR, 1);
-  const ca3 = HYPOTHESES.ca3, jThomas = ca3.tests.findIndex(t => t.name === 'Test de Thomas');
-  assert.ok(Math.abs(calcLRScore(ca3, { [jThomas]: 'pos' }).totalLR - 11.1) < 0.001);
-  assert.equal(calcLRScore(ca3, { [jThomas]: 'neg' }).totalLR, 1);
+  // Thomas (S/E calculadas por Reiman 2015 sobre una serie de casos) y FADDIR (agrupado con probabilidad
+  // previa del 90 %; Pålsson 2020 en FAIS) son hallazgos en SIFA y en labrum.
+  for (const id of ['ca2', 'ca3']) {
+    const h = HYPOTHESES[id];
+    h.tests.forEach((t, i) => {
+      if (t.name !== 'Test de Thomas' && !t.name.includes('FADDIR')) return;
+      for (const r of ['pos', 'neg']) assert.equal(calcLRScore(h, { [i]: r }).totalLR, 1, `${id} ${t.name} ${r}`);
+    });
+  }
+  // Síndrome trocantéreo: palpación × abducción resistida reproducen la secuencia de Kinsella 2024
+  // (59 % → 96 % con las dos positivas, → 14 % con las dos negativas); la derotación es hallazgo.
+  const ca4 = HYPOTHESES.ca4, iPal = ca4.tests.findIndex(t => t.name.startsWith('Palpación')),
+    iAbd = ca4.tests.findIndex(t => t.name.startsWith('Test de Abducción')),
+    iDer = ca4.tests.findIndex(t => t.name.startsWith('Derotación'));
+  assert.ok(Math.abs(calcLRScore(ca4, { [iPal]: 'pos', [iAbd]: 'pos' }).totalLR - 2.42 * 6.09) < 0.001);
+  assert.ok(Math.abs(calcLRScore(ca4, { [iPal]: 'neg', [iAbd]: 'neg' }).totalLR - 0.25 * 0.45) < 0.001);
+  assert.equal(calcLRScore(ca4, { [iDer]: 'pos' }).totalLR, 1);
 });
 
 test('ca1: los criterios ACR no puntúan (cifras de la muestra de desarrollo); la RI disminuida puntúa sola', () => {
