@@ -523,6 +523,11 @@ test("data/referencias.js: revision es null o { fecha: 'AAAA-MM', resultado }", 
   assert.deepEqual(problemas.revisionMal, [], `revision mal escrita en: ${problemas.revisionMal.join(', ')}`);
 });
 
+test("data/referencias.js: doi vacío o con forma de DOI ('10.xxxx/…', sin prefijo https://doi.org/)", () => {
+  const mal = Object.entries(REFERENCIAS).filter(([, r]) => r.doi && !/^10\.\d{4,9}\/\S+$/.test(r.doi)).map(([k]) => k);
+  assert.deepEqual(mal, [], `doi mal escrito en: ${mal.join(', ')}`);
+});
+
 test('data/referencias.js: exactamente una referencia base de las tarjetas (tarjetas: true)', () => {
   assert.deepEqual(problemas.baseTarjetas, []);
 });
