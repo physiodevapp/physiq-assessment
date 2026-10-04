@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **122** referencias de literatura, con **276** usos.
+- **122** referencias de literatura, con **279** usos.
 - **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
 - **18** de 123 referencias del registro revisadas. Ver «Estado de revisión».
 - **103** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -79,7 +79,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 31 | **sin revisar** |
-| [NICE NG59](#nice-ng59) | pauta | 4 | **sin revisar** |
+| [NICE NG59](#nice-ng59) | pauta · pronóstico | 6 | **sin revisar** |
 | [Jonsson 2008](#jonsson-2008) | pauta | 1 | **sin revisar** |
 | [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | **sin revisar** |
 | [Kuijper 2009](#kuijper-2009) | pauta | 1 | **sin revisar** |
@@ -88,7 +88,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Al-Subahi 2017](#al-subahi-2017) | pauta | 1 | **sin revisar** |
 | [Blanpied 2017](#blanpied-2017) | pauta | 1 | **sin revisar** |
 | [Rathleff 2020](#rathleff-2020) | pauta | 1 | **sin revisar** |
-| [George 2021](#george-2021) | pauta | 3 | **sin revisar** |
+| [George 2021](#george-2021) | pauta | 4 | **sin revisar** |
 | [Martin 2021](#martin-2021) | pauta | 2 | **sin revisar** |
 | [Koc 2023](#koc-2023) | pauta | 1 | **sin revisar** |
 | [Chimenti 2024](#chimenti-2024) | pauta | 1 | **sin revisar** |
@@ -330,6 +330,7 @@ Formulario previo, cara 2 (`formularios/lumbar.js`): Hoja 2 de 2 · versión lum
 Citada como:
 
 1. Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6)
+2. Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6) · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
 
 | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|
@@ -337,7 +338,7 @@ Citada como:
 | lu4 · Estenosis Espinal / Claudicación Neurogénica | Pronóstico | 5 · cita del pronóstico | 1 |
 | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pronóstico | 5 · cita del pronóstico | 1 |
 | lu6 · Dolor Lumbar Discogénico | Pronóstico | 5 · cita del pronóstico | 1 |
-| lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 1 |
+| lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 2 |
 | lu8 · Dolor de la Articulación Sacroilíaca | Pronóstico | 5 · cita del pronóstico | 1 |
 
 ### Tarjeta de consulta rodilla
@@ -1132,7 +1133,7 @@ Título: *Interventions for the Management of Acute and Chronic Low Back Pain: R
 Publicación: J Orthop Sports Phys Ther 51(11):CPG1–CPG60  
 DOI: 10.2519/jospt.2021.0304  
 Última revisión: **sin revisar**  
-Nota: Texto completo en PMC10508241 (manuscrito del autor). En ese texto no se ven las letras de grado: se deducen del verbo con la tabla de la propia guía. Pauta de lu5, lu6 y lu9.
+Nota: Texto completo en PMC10508241 (manuscrito del autor). En ese texto no se ven las letras de grado: se deducen del verbo con la tabla de la propia guía. Pauta de lu5, lu6, lu7 y lu9.
 
 Citada como:
 
@@ -1143,6 +1144,7 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
 ### Getsoian 2020
@@ -2104,19 +2106,22 @@ Citada como:
 Publicación: Guía NICE «Low back pain and sciatica in over 16s: assessment and management» (2016, actualizada en julio de 2026)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Leídas las recomendaciones en nice.org.uk (2026-10). Pauta de lu5, lu6, lu8 y lu9.
+Nota: Leídas las recomendaciones en nice.org.uk (2026-10). Pauta de lu5–lu9 y derivación de lu7.
 
 Citada como:
 
 1. George 2021, J Orthop Sports Phys Ther 51(11):CPG1–CPG60 (guía de práctica clínica APTA; letra = grado de la recomendación, deducido del verbo según la tabla de la guía: «should» A, «may» B, «can» C, «should not» D) · NICE NG59 (rec. 1.2.1, 1.2.6 y 1.2.7; actualizada en julio de 2026)
 2. George 2021, J Orthop Sports Phys Ther 51(11):CPG1–CPG60 (guía de práctica clínica APTA; letra = grado de la recomendación, deducido del verbo según la tabla de la guía: «should» A, «may» B, «can» C) · NICE NG59 (rec. 1.2.7; actualizada en julio de 2026)
-3. Al-Subahi 2017, J Phys Ther Sci 29(9):1689–1694 (revisión sistemática, 9 estudios de 2004–2014 de calidad baja o media: manipulación, ejercicio y vendaje neuromuscular) · NICE NG59 (rec. 1.2.7; actualizada en julio de 2026)
+3. Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6) · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
+4. Al-Subahi 2017, J Phys Ther Sci 29(9):1689–1694 (revisión sistemática, 9 estudios de 2004–2014 de calidad baja o media: manipulación, ejercicio y vendaje neuromuscular) · NICE NG59 (rec. 1.2.7; actualizada en julio de 2026)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Pauta de tratamiento | 5 · cita de la pauta | 2 |
-| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pauta de tratamiento | 5 · cita de la pauta | 3 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 3 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pauta de tratamiento | 5 · cita de la pauta | 4 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
 ### Nunes 2013

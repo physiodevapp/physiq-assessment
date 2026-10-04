@@ -109,7 +109,7 @@ Objetivo: llevar a cada región de PhysiQ lo que ya se hizo con lumbar (PRs #81�
 ### Estado por región
 | Región | Guía de consulta | Urgencia fase 2 | Árbol + hipótesis + LR | Formulario | Notas |
 |---|---|---|---|---|---|
-| Lumbar | tarjeta + formulario | [x] | [x] | [x] | Referencia. Dosis: `lu5`, `lu6`, `lu8`, `lu9` hechas (Fase E, 2026-10); `lu7` tipo D |
+| Lumbar | tarjeta + formulario | [x] | [x] | [x] | Referencia. Dosis: `lu5`–`lu9` hechas (Fase E, 2026-10) |
 | Cadera | tarjeta + formulario | [x] | [x] | [x] | Hecho (ver nota). Dosis: `ca16` hecha; `ca11`–`ca15`, `ca17`–`ca19` sin buscar (Fase E). Todas las LR verificadas en los artículos originales; percusión rotuliano-púbica corregida en la tarjeta (Smeets 2018) y copiada literal |
 | Cervical | tarjeta + formulario | [x] | [x] | [x] | Hecho (ver nota). Dosis con fuente: `ce12` (Kuijper 2009 + guía JOSPT 2017; ver Fase E). Dosis con fuente también en `ce13` (Reid 2014). Dosis: `ce14` tipo B pendiente (Fase E) |
 | Rodilla | tarjeta + formulario | [x] | [x] | [x] | Hecho (ver notas). Todas las LR nuevas verificadas con los PDF; S del LCA corregida en la tarjeta. Dosis con fuente: `ro15` (Rathleff 2020, solo Osgood; ver Fase E). Dosis: tipo B `ro8`–`ro10`, `ro12` pendientes (Fase E); el resto, tipo C/D |
@@ -159,8 +159,8 @@ Diseño, decisiones y diferencias con lo implementado en `docs/modo-breve.md`. M
 - [x] Hipótesis de derivación (tipo C): `h11`, `ro11`, `tp3`–`tp6`, `tp17`, `tp30`, `tp35` llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», decisión del usuario) y la fase 5 las titula «🚑 Derivación». Las que solo se derivan según el grado o un signo (`ro10`, `tp2`, `tp23`, `ro14`, `ro16`, `ro19`, `tp25`, `tp32`) siguen con `dosis: ''`
 - [ ] **Cadera sin buscar** (`ca11`–`ca15`, `ca17`–`ca19`): nunca se buscó fuente; de cadera solo se hizo `ca16`. Una sesión: buscar, clasificar cada una (A/B/C/D) en `docs/dosis-pendientes-fuentes.md` y rellenar las A/B con texto leído.
 - [ ] **Tipo B, rodilla** (`ro8` LCM, `ro9` LCP, `ro10` LLE/esquina posterolateral sin grado III): Logerstedt 2017, JOSPT, pautas por grado. Una sesión.
-- [ ] **Tipo B, resto** (`ce14`, `ro12`, `tp2`, `tp33`, `tp36`): guía con recomendación sin series ni semanas. Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado, diciendo que no fija volumen, con `dosisFuente`. Hechos (2026-10): `lu5`, `lu6` (George 2021 + NICE NG59), `lu8` (Al-Subahi 2017 + NICE NG59) y `lu9` (George 2021 + NICE NG59, como lumbalgia en general; estaba como tipo D).
-- Se quedan con `dosis: ''` **a propósito** (no son pendientes): las tipo D (`h10`, `lu7`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`) y las que se derivan solo según grado o signo (`ro14`, `ro16`, `ro19`, `tp23`, `tp25`, `tp32`, y la parte grave de `ro10` y `tp2`).
+- [ ] **Tipo B, resto** (`ce14`, `ro12`, `tp2`, `tp33`, `tp36`): guía con recomendación sin series ni semanas. Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado, diciendo que no fija volumen, con `dosisFuente`. Hechos (2026-10): `lu5`, `lu6` (George 2021 + NICE NG59), `lu8` (Al-Subahi 2017 + NICE NG59) `lu9` y `lu7` (George 2021 + NICE NG59, como lumbalgia en general; estaban como tipo D; en `lu7`, NICE 1.3.1–1.3.3 en la derivación).
+- Se quedan con `dosis: ''` **a propósito** (no son pendientes): las tipo D (`h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`) y las que se derivan solo según grado o signo (`ro14`, `ro16`, `ro19`, `tp23`, `tp25`, `tp32`, y la parte grave de `ro10` y `tp2`).
 
 ## Fase F — Razonamiento fisiológico de las preguntas de cribado (fase 2)
 
