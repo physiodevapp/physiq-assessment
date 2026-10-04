@@ -24,12 +24,15 @@ Leyenda:
 | lu8 | Sacroilíaca | B | Al-Subahi 2017 (PMC5599847) · NICE NG59 | ✅ Hecho (2026-10). **Corrección:** el fragmento anterior («ejercicio y técnicas de energía muscular > movilización») era erróneo; el texto completo concluye que la manipulación parece más eficaz que el ejercicio, el vendaje neuromuscular o el reposo, y no habla de energía muscular. Calidad baja o media, sin volumen reproducible; manipulación siempre junto a ejercicio (NICE 1.2.7, más reciente) |
 | lu9 | Miofascial | B | George 2021 · NICE NG59 | ✅ Hecho (2026-10): recomendaciones para la lumbalgia en general (masaje/partes blandas B, punción seca C solo como complemento, ejercicio y movilización A), diciendo que no son específicas del dolor miofascial |
 
-## Cervical (`ce12`–`ce14`)
+## Cervical (`ce1`–`ce14`)
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
 | ce12 | Dolor radicular | ✅ **Hecho** | Kuijper 2009, BMJ 339:b3883 (acceso abierto en PMC) · Blanpied 2017, JOSPT 47(7):A1–A83 (versión publicada, orthopt.org) | Kuijper: 12 sesiones en 6 semanas, sin terapia manual, ejercicio graduado + casa diario; o collarín semirrígido 3 + 3 semanas. La lista de ejercicios está en el apéndice web de BMJ (bloqueado): pedirla si se quiere concretar. Guía: agudo C, crónico B (tracción intermitente combinada) |
 | ce13 | Mareo cervicogénico | ✅ **Hecho** | Reid 2014, Phys Ther 94(4):466–476 (PDF del usuario; doble ciego frente a placebo, n = 86) | Población: mareo crónico ≥3 meses con dolor o rigidez cervical. SNAG (6 rep., autoSNAG 6 rep./día) o Maitland (3 × 30 s por nivel, hasta 3 niveles, + movilidad 3 rep./dirección/día); 2–6 sesiones en 6 semanas |
-| ce14 | Idiopático | B | Blanpied 2017 (categoría «dolor cervical con déficit de movilidad») | Pauta por fase aguda/subaguda/crónica. Comprobar qué parámetros da la guía |
+| ce14 | Idiopático | ✅ **Hecho** (2026-10) | Blanpied 2017 (PDF del usuario), categoría «dolor de cuello con déficit de movilidad» | Recomendación por fase con su grado (agudo B/C, subagudo B/C, crónico B/C); la guía no fija volumen y lo dice |
+| ce1–ce7, ce9, ce11 | Con cifras sin fuente | ✅ **Revisadas** (2026-10) | Blanpied 2017; Lluch 2020, cap. 5.3, p. 378 en `ce2` y `ce4` | Tenían repeticiones, segundos, «% CVM» y «20–22 mmHg» sin fuente desde el primer commit; ninguna cifra está en la guía. Reescritas como `lu1`–`lu4`: recomendación de la categoría de Blanpied con su grado, sin cifras, con `dosisFuente`. `ce2` y `ce4` añaden cómo dosificar el entrenamiento craneocervical (Lluch 2020: nivel inferior al fallo del test, apoyos de 5–10 s) |
+| ce8 | Mielopatía | C · Derivación | Blanpied 2017 (solo un dato de nivel IV, no recomendación) | `DOSIS_DERIVAR` (decisión del usuario) |
+| ce10 | Disfunción de 1.ª costilla | D | — | `dosis: ''` (decisión del usuario): ninguna fuente, y Blanpied 2017 no encontró beneficio de los ejercicios respiratorios en el dolor de cuello crónico, que era la pauta anterior |
 
 ## Rodilla (`ro8`–`ro20`)
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
@@ -113,8 +116,8 @@ El resto **nunca se ha buscado** (2026-10): no hay tipo asignado. Pendiente de u
 ## Resumen
 - **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`.
 - **Con fuente de pauta, a falta del PDF de pago (A):** ninguna.
-- **Derivación antes que dosis (C), hecho:** h11, ro11, tp3–tp6, tp17, tp30 y tp35 llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
-- **Recomendación de guía sin pauta numérica (B), pendientes:** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ce14` (Blanpied 2017), `ro12` (ESSKA 2024), `tp2`, `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
+- **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), h11, ro11, tp3–tp6, tp17, tp30 y tp35 llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
+- **Recomendación de guía sin pauta numérica (B), pendientes:** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ro12` (ESSKA 2024), `tp2`, `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
 - **Sin buscar:** cadera `ca11`–`ca15`, `ca17`–`ca19`.
 - **Sin evidencia de dosis específica (D):** `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
