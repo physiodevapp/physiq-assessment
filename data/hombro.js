@@ -15,6 +15,7 @@ export const screening = {
       id: 'h_cancer', icon: '🔬', nombre: 'Cáncer / Oncológico',
       banderasRojas: [
         'Historia personal de cáncer o tratamiento oncológico (quimio, radioterapia)',
+        'Pérdida de peso inexplicada (>5 % del peso en 6 meses)',
         'Dolor nocturno constante que despierta al paciente sin alivio con cambio de postura',
         'Ganglios linfáticos duros, fijos e indoloros en axila o cuello',
         'Tumor de Pancoast: dolor irradiado a escápula, cuello, axila o cara medial del brazo',
@@ -360,7 +361,7 @@ export const screening = {
         'Antecedentes de enfermedad inflamatoria pélvica (EPI)'
       ],
       preguntas: [
-        { id: 'h_g1', text: '¿El dolor de hombro apareció de forma súbita y se acompaña de dolor pélvico, sangrado vaginal inusual o mareos intensos?', alerta: true, s1: true,
+        { id: 'h_g1', text: '¿El dolor de hombro apareció de forma súbita y se acompaña de dolor pélvico, sangrado vaginal inusual o mareos intensos?', alerta: true, s1: true, urgencia: 'Sospecha de embarazo ectópico roto: derivación a urgencias hoy.',
           razonamiento: {
             porque: 'En un embarazo ectópico roto, la sangre que se acumula en el abdomen irrita el diafragma y el dolor se refiere a la punta del hombro por el nervio frénico. Por eso un dolor de hombro de inicio súbito con dolor pélvico, sangrado vaginal o mareo, en una mujer en edad fértil, puede ser una hemorragia interna.',
             peso: 'Es una urgencia: el embarazo ectópico es potencialmente mortal y Goodman pide derivación médica inmediata. NICE recoge el dolor en la punta del hombro y el mareo o el desmayo entre los síntomas del ectópico, y advierte de que la presentación atípica es frecuente. El dolor de hombro puede ser el único síntoma. Pesa en una mujer sexualmente activa en edad fértil con un retraso de la regla o un sangrado inesperado, aunque use anticonceptivos.',
@@ -516,7 +517,10 @@ export const screening = {
     // cubría ningún sistema; las respalda el capítulo de Lluch 2020 (cap. 3.1,
     // p. 54, y 3.1.1, p. 76). Sin `urgencia`: la tarjeta no tiene URGENCIA. Lluch
     // pide «derivación inmediata» ante cualquiera de ellas, que el razonamiento
-    // de cada pregunta ya dice; no es la alerta roja de urgencias hoy.
+    // de cada pregunta ya dice; no es la alerta roja de urgencias hoy. La única
+    // pregunta de hombro con `urgencia` es h_g1 (ectópico; decisión del usuario,
+    // 2026-10: Goodman pide derivación inmediata y NICE NG126, urgencias si hay
+    // inestabilidad).
     {
       id: 'h_trauma', icon: '🦴', nombre: 'Traumático (Fractura o Luxación)',
       banderasRojas: [

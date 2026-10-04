@@ -2499,7 +2499,7 @@ Citada como:
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Luxación bloqueada» | 4b · cita bajo el test | 17 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Fractura» | 4b · cita bajo el test | 17 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 6 |
-| Hombro | — | `sistemas.0.banderasRojas.4` | 2 · mención en el texto | 37 |
+| Hombro | — | `sistemas.0.banderasRojas.5` | 2 · mención en el texto | 37 |
 | Hombro | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 38 |
 | Hombro | — | `sistemas.7.banderasRojas.0` | 2 · mención en el texto | 39 |
 | Hombro | — | `sistemas.8.banderasRojas.0` | 2 · mención en el texto | 40 |
