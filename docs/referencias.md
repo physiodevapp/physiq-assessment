@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **122** referencias de literatura, con **288** usos.
+- **150** referencias de literatura, con **364** usos.
 - **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
-- **18** de 123 referencias del registro revisadas. Ver «Estado de revisión».
+- **18** de 151 referencias del registro revisadas. Ver «Estado de revisión».
 - **103** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -78,7 +78,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | **sin revisar** |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
-| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 31 | **sin revisar** |
+| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 49 | **sin revisar** |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | **sin revisar** |
 | [Jonsson 2008](#jonsson-2008) | pauta | 1 | **sin revisar** |
 | [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | **sin revisar** |
@@ -122,31 +122,59 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Downie 2013](#downie-2013) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Henschke 2013](#henschke-2013) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Finucane 2020](#finucane-2020) | razonamiento fase 2 | 5 | **sin revisar** |
+| [Barcelos 2014](#barcelos-2014) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Finucane 2020](#finucane-2020) | razonamiento fase 2 | 10 | **sin revisar** |
 | [Cabre 2022](#cabre-2022) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Goodfriend 2022](#goodfriend-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rhodes 2022](#rhodes-2022) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Chauhan 2023](#chauhan-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Chen 2023](#chen-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Jayarangaiah 2023](#jayarangaiah-2023) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Cunha 2023](#cunha-2023) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Jayarangaiah 2023](#jayarangaiah-2023) | razonamiento fase 2 | 4 | **sin revisar** |
+| [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Khan y Bollu 2023](#khan-y-bollu-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [King y Lowery 2023](#king-y-lowery-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Lacy 2023](#lacy-2023) | razonamiento fase 2 | 3 | **sin revisar** |
 | [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Malik 2023](#malik-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Leslie 2023](#leslie-2023) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Malik 2023](#malik-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 | 2 | **sin revisar** |
+| [McMordie 2023](#mcmordie-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Pana y Saggu 2023](#pana-y-saggu-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rider y Marra 2023](#rider-y-marra-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rowe 2023](#rowe-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 3 | **sin revisar** |
+| [Rushton 2023](#rushton-2023) | razonamiento fase 2 | 4 | **sin revisar** |
+| [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 5 | **sin revisar** |
+| [Sekhon 2023](#sekhon-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Shahid 2023](#shahid-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Singleton y Hefner 2023](#singleton-y-hefner-2023) | razonamiento fase 2 | 5 | **sin revisar** |
+| [Ziu 2023](#ziu-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 3 | **sin revisar** |
+| [Feller 2024](#feller-2024) | razonamiento fase 2 | 5 | **sin revisar** |
+| [Hall 2024](#hall-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hantzidiamantis 2024](#hantzidiamantis-2024) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Lassiter 2024](#lassiter-2024) | razonamiento fase 2 | 4 | **sin revisar** |
+| [Hunter 2024](#hunter-2024) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Lassiter 2024](#lassiter-2024) | razonamiento fase 2 | 5 | **sin revisar** |
 | [Leslie 2024](#leslie-2024) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Menger 2024](#menger-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rout 2024](#rout-2024) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Benjamin y Lui 2025](#benjamin-y-lui-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Budha 2025](#budha-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Daley 2025](#daley-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Gill 2025](#gill-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Hall 2025](#hall-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Kaur 2025](#kaur-2025) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Margetis y Donnally 2025](#margetis-y-donnally-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Margetis y Gillis 2025](#margetis-y-gillis-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Shams 2025](#shams-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Shaw 2025](#shaw-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Suha 2025](#suha-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Tavakoli 2025](#tavakoli-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Consoli y Carlson 2026](#consoli-y-carlson-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Denault y Launico 2026](#denault-y-launico-2026) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Gillen 2026](#gillen-2026) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Jain 2026](#jain-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Zemaitis 2026](#zemaitis-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Hutchison 2013](#hutchison-2013) | texto | 1 | **sin revisar** |
 | [Großterlinden 2016](#großterlinden-2016) | texto | 1 | **sin revisar** |
@@ -612,7 +640,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[Adib 2023](#adib-2023) · [Al-Subahi 2017](#al-subahi-2017) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Cabre 2022](#cabre-2022) · [Campbell 2020](#campbell-2020) · [Chen 2023](#chen-2023) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2011](#cook-2011) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Fairbank 2011](#fairbank-2011) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gill 2025](#gill-2025) · [Gomes 2022](#gomes-2022) · [Goodman 2018](#goodman-2018) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hegedus 2012](#hegedus-2012) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hutchison 2013](#hutchison-2013) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2006](#laslett-2006) · [Lassiter 2024](#lassiter-2024) · [Lequesne 2008](#lequesne-2008) · [Leslie 2024](#leslie-2024) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Munakomi 2023](#munakomi-2023) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [NICE NG59](#nice-ng59) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Peat 2006](#peat-2006) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rhodes 2022](#rhodes-2022) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Shahid 2023](#shahid-2023) · [Shaw 2025](#shaw-2025) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suri 2010](#suri-2010) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010)
+[Adib 2023](#adib-2023) · [Al-Subahi 2017](#al-subahi-2017) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Barcelos 2014](#barcelos-2014) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Campbell 2020](#campbell-2020) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2011](#cook-2011) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Fairbank 2011](#fairbank-2011) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Gomes 2022](#gomes-2022) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hegedus 2012](#hegedus-2012) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hölmich 1999](#hölmich-1999) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2006](#laslett-2006) · [Lassiter 2024](#lassiter-2024) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Menger 2024](#menger-2024) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Munakomi 2023](#munakomi-2023) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE NG226](#nice-ng226) · [NICE NG59](#nice-ng59) · [Nunes 2013](#nunes-2013) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Peat 2006](#peat-2006) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rhodes 2022](#rhodes-2022) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rushton 2023](#rushton-2023) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sekhon 2023](#sekhon-2023) · [Shahid 2023](#shahid-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [van Dijk 1996](#van-dijk-1996) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Ziu 2023](#ziu-2023)
 
 ### Adib 2023
 
@@ -717,6 +745,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 
 ### Apelby-Albrecht 2013
@@ -766,6 +795,40 @@ Citada como:
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» (en `criterio`) | 4b · mención en el texto | 1 |
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» | 4b · cita bajo el test | 2 |
 
+### Barcelos 2014
+
+Autores: Barcelos, Patriota y Netto  
+Título: *Nontraumatic atlantoaxial rotatory subluxation: Grisel syndrome. Case report and literature review*  
+Publicación: Global Spine J 4(3):179–186  
+DOI: 10.1055/s-0033-1363936  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC4111947 (acceso abierto). Caso clínico y revisión; razonamiento del cribado cervical (cv_n3).
+
+Citada como:
+
+1. Barcelos 2014 — Barcelos, Patriota y Netto, «Nontraumatic atlantoaxial rotatory subluxation: Grisel syndrome. Case report and literature review», Global Spine J 2014;4(3):179–186 (texto completo en PMC).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 1 |
+
+### Benjamin y Lui 2025
+
+Autores: Benjamin y Lui  
+Título: *Vertebrobasilar Insufficiency*  
+Publicación: StatPearls [Internet], NBK482259 (act. 2025-12-01)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Benjamin y Lui 2025 — Benjamin y Lui, «Vertebrobasilar Insufficiency», StatPearls [Internet], NCBI Bookshelf, última actualización 1 de diciembre de 2025.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
+
 ### Bierma-Zeinstra 1999
 
 Publicación: J Rheumatol 26(5):1129–33  
@@ -795,6 +858,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cervical | ce12 · Dolor Radicular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Budha 2025
+
+Autores: Budha, Paudel, Luitel, Joshi, Upreti y Ghimire  
+Título: *Torticollis in a child with Grisel syndrome: A case report and review of the literature*  
+Publicación: Int J Surg Case Rep 127:110817  
+DOI: 10.1016/j.ijscr.2025.110817  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC11786686 (acceso abierto). Caso clínico y revisión; razonamiento del cribado cervical (cv_n3).
+
+Citada como:
+
+1. Budha 2025 — Budha, Paudel, Luitel, Joshi, Upreti y Ghimire, «Torticollis in a child with Grisel syndrome: a case report and review of the literature», Int J Surg Case Rep 2025;127:110817 (texto completo en PMC).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 1 |
 
 ### Cabre 2022
 
@@ -829,6 +909,24 @@ Citada como:
 |---|---|---|---|---|
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» | 4b · cita bajo el test | 1 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» | 4b · cita bajo el test | 2 |
+
+### Chauhan 2023
+
+Autores: Chauhan, Jandu, Brent y Al-Dhahir  
+Título: *Rheumatoid Arthritis*  
+Publicación: StatPearls [Internet], NBK441999 (act. 2023-05-25)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Chauhan 2023 — Chauhan, Jandu, Brent y Al-Dhahir, «Rheumatoid Arthritis», StatPearls [Internet], NCBI Bookshelf, última actualización 25 de mayo de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 
 ### Chen 2023
 
@@ -910,6 +1008,41 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Cluster «Cluster de Cook (anamnesis y observación)» | 4b · cita del cluster | 1 |
+
+### Cunha 2023
+
+Autores: Cunha, Tadi y Bragg  
+Título: *Torticollis*  
+Publicación: StatPearls [Internet], NBK539857 (act. 2023-08-08)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Cunha 2023 — Cunha, Tadi y Bragg, «Torticollis», StatPearls [Internet], NCBI Bookshelf, última actualización 8 de agosto de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_n2` · Médula / Estructural | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 1 |
+
+### Daley 2025
+
+Autores: Daley, Ali, Ohnuma y Adigun  
+Título: *Anorexia and Cachexia*  
+Publicación: StatPearls [Internet], NBK430977 (act. 2025-01-19)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Daley 2025 — Daley, Ali, Ohnuma y Adigun, «Anorexia and Cachexia», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2025.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 
 ### Décary 2018
 
@@ -1043,6 +1176,31 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
+### Feller 2024
+
+Autores: Feller, Chiarotto, Koes, Maselli y Mourad  
+Título: *Red flags for potential serious pathologies in people with neck pain: a systematic review of clinical practice guidelines*  
+Publicación: Arch Physiother 14:105–115  
+DOI: 10.33393/aop.2024.3245  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC11618059 (acceso abierto). Razonamiento del cribado cervical.
+
+Citada como:
+
+1. Feller 2024 — Feller, Chiarotto, Koes, Maselli y Mourad, «Red flags for potential serious pathologies in people with neck pain: a systematic review of clinical practice guidelines», Arch Physiother 2024;14:105–115 (texto completo en PMC), apartados «Red flags» y «Level of evidence».
+2. Feller 2024 — Feller, Chiarotto, Koes, Maselli y Mourad, «Red flags for potential serious pathologies in people with neck pain: a systematic review of clinical practice guidelines», Arch Physiother 2024;14:105–115 (texto completo en PMC), apartado «Agreement in red flags recommendations».
+3. Feller 2024 — Feller, Chiarotto, Koes, Maselli y Mourad, «Red flags for potential serious pathologies in people with neck pain: a systematic review of clinical practice guidelines», Arch Physiother 2024;14:105–115 (texto completo en PMC), apartado «Implication for practice».
+4. Feller 2024 — Feller, Chiarotto, Koes, Maselli y Mourad, «Red flags for potential serious pathologies in people with neck pain: a systematic review of clinical practice guidelines», Arch Physiother 2024;14:105–115 (texto completo en PMC), apartados «Level of evidence» y «Discussion».
+5. Feller 2024 — Feller, Chiarotto, Koes, Maselli y Mourad, «Red flags for potential serious pathologies in people with neck pain: a systematic review of clinical practice guidelines», Arch Physiother 2024;14:105–115 (texto completo en PMC), apartados «Red flags» e «Implication for future research».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
+| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 3 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 4 |
+| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 5 |
+
 ### Finucane 2020
 
 Autores: Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe  
@@ -1056,17 +1214,25 @@ Citada como:
 
 1. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), pp. 34–36.
 2. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Night pain», p. 37.
-3. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–17.
-4. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura vertebral), pp. 24–26.
-5. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–11.
+3. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Unexplained weight loss», p. 39.
+4. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 5.1, «Recent pre-existing infection», p. 46.
+5. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 5 (infección), pp. 43–48.
+6. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–17.
+7. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura vertebral), pp. 24–26.
+8. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–11.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
+| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 3 |
+| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 4 |
+| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 5 |
 | Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
-| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 3 |
-| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 4 |
-| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 5 |
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 6 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 7 |
+| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 8 |
 
 ### Flynn 2002
 
@@ -1188,6 +1354,24 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
+### Gillen 2026
+
+Autores: Gillen, Shams y Goyal  
+Título: *Stable Angina*  
+Publicación: StatPearls [Internet], NBK559016 (act. 2026-06-17)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Gillen 2026 — Gillen, Shams y Goyal, «Stable Angina», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de junio de 2026.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_c2` · Cardiovascular | 2 · razonamiento del cribado | 1 |
+
 ### Gomes 2022
 
 Publicación: BMC Musculoskelet Disord 23:885  
@@ -1203,6 +1387,23 @@ Citada como:
 |---|---|---|---|---|
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» (en `criterio`) | 4b · mención en el texto | 1 |
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» | 4b · cita bajo el test | 2 |
+
+### Goodfriend 2022
+
+Autores: Goodfriend, Tadi y Koury  
+Título: *Carotid Artery Dissection*  
+Publicación: StatPearls [Internet], NBK430835 (act. 2022-12-19)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Goodfriend 2022 — Goodfriend, Tadi y Koury, «Carotid Artery Dissection», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de diciembre de 2022.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
 
 ### Goodman 2018
 
@@ -1226,25 +1427,43 @@ Citada como:
 9. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213–215, 220 y 221.
 10. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 217–218 y 221.
 11. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 219–221; cap. 8, p. 306.
-12. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
-13. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
-14. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
-15. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
-16. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
-17. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
-18. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
-19. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
-20. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
-21. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
-22. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
-23. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
-24. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
-25. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
-26. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
-27. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
-28. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
-29. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
-30. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
+12. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 463–464 y 475; cap. 14, pp. 529 y 540–542.
+13. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 13, pp. 476 y 483; cap. 14, pp. 525 y 562.
+14. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 475; cap. 14, pp. 523, 527 y 540–542.
+15. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 6, pp. 226 y 233–236; cap. 14, pp. 542–543.
+16. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226 y 234–236; cap. 14, pp. 537, 543 y 567.
+17. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 7, pp. 272–275; cap. 13, p. 483; cap. 14, pp. 548–550.
+18. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227; cap. 7, pp. 272–274; cap. 14, pp. 549–550.
+19. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373 y 376; cap. 13, p. 483; cap. 14, pp. 531, 542 y 568.
+20. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373; cap. 14, pp. 531, 550 y 562–563.
+21. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 90; cap. 8, pp. 304 y 307; cap. 14, pp. 532 y 552–553.
+22. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307 y 316; cap. 14, pp. 532 y 553.
+23. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522 y 532.
+24. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 227; cap. 14, pp. 530 y 532.
+25. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 523–524.
+26. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 482; cap. 14, pp. 528–531.
+27. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 440 y 448; cap. 14, pp. 522, 531–532.
+28. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522, 531 y 562–563.
+29. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 429, 438, 440 y 447–448; cap. 14, pp. 522 y 531.
+30. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
+31. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
+32. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
+33. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
+34. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
+35. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
+36. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
+37. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
+38. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
+39. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
+40. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
+41. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
+42. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
+43. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
+44. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
+45. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
+46. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
+47. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
+48. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1257,28 +1476,46 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `hem_2` · Hematológico | 2 · razonamiento del cribado | 9 |
 | Todas (sistemas comunes) | — | Pregunta `hem_3` · Hematológico | 2 · razonamiento del cribado | 10 |
 | Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 11 |
+| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 12 |
+| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 13 |
+| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 14 |
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 15 |
+| Cervical | — | Pregunta `cv_c2` · Cardiovascular | 2 · razonamiento del cribado | 16 |
+| Cervical | — | Pregunta `cv_p1` · Pulmonar | 2 · razonamiento del cribado | 17 |
+| Cervical | — | Pregunta `cv_p2` · Pulmonar | 2 · razonamiento del cribado | 18 |
+| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 19 |
+| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 20 |
+| Cervical | — | Pregunta `cv_gi1` · Gastrointestinal | 2 · razonamiento del cribado | 21 |
+| Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 22 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 23 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 24 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 25 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 26 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 27 |
+| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 28 |
+| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 29 |
 | Lumbar | — | `sistemas.3.banderasRojas.5` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.3.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 2 |
-| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 12 |
-| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 13 |
-| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 14 |
-| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 15 |
-| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 16 |
-| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 17 |
-| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 18 |
-| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 19 |
-| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 20 |
-| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 21 |
-| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 21 |
-| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 22 |
-| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 23 |
-| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 24 |
-| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 25 |
-| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 26 |
-| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 27 |
-| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 28 |
-| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 29 |
-| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 30 |
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 30 |
+| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 31 |
+| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 32 |
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 33 |
+| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 34 |
+| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 35 |
+| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 36 |
+| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 37 |
+| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 38 |
+| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 39 |
+| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 39 |
+| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 40 |
+| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 41 |
+| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 42 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 43 |
+| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 44 |
+| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 45 |
+| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 46 |
+| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 47 |
+| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 48 |
 
 ### Grimaldi 2017
 
@@ -1314,6 +1551,41 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Palpación del LTPAI» (en `criterio`) | 4b · mención en el texto | 1 |
+
+### Hall 2024
+
+Autores: Hall, Graeber y Cecava  
+Título: *Vertebral Osteomyelitis*  
+Publicación: StatPearls [Internet], NBK532256 (act. 2024-11-25)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Hall 2024 — Hall, Graeber y Cecava, «Vertebral Osteomyelitis», StatPearls [Internet], NCBI Bookshelf, última actualización 25 de noviembre de 2024.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
+
+### Hall 2025
+
+Autores: Hall, Munakomi y Mesfin  
+Título: *Spinal Epidural Abscess*  
+Publicación: StatPearls [Internet], NBK441890 (act. 2025-11-08)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Hall 2025 — Hall, Munakomi y Mesfin, «Spinal Epidural Abscess», StatPearls [Internet], NCBI Bookshelf, última actualización 8 de noviembre de 2025.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 
 ### Halliwell 2026
 
@@ -1458,6 +1730,23 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
+### Hunter 2024
+
+Autores: Hunter, Goldin y Regunath  
+Título: *Pleurisy*  
+Publicación: StatPearls [Internet], NBK558958 (act. 2024-11-14)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Hunter 2024 — Hunter, Goldin y Regunath, «Pleurisy», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de noviembre de 2024.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_p1` · Pulmonar | 2 · razonamiento del cribado | 1 |
+
 ### Hutchison 2013
 
 Publicación: —  
@@ -1472,6 +1761,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» (en `criterio`) | 4b · mención en el texto | 1 |
+
+### Jain 2026
+
+Autores: Jain, Singh, Shah y Grossman  
+Título: *Acute Coronary Syndrome*  
+Publicación: StatPearls [Internet], NBK459157 (act. 2026-07-05)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Jain 2026 — Jain, Singh, Shah y Grossman, «Acute Coronary Syndrome», StatPearls [Internet], NCBI Bookshelf, última actualización 5 de julio de 2026.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 1 |
 
 ### Jayarangaiah 2023
 
@@ -1488,8 +1794,27 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+
+### Jeanmonod y Varacallo 2023
+
+Autores: Jeanmonod y Varacallo  
+Título: *Geriatric Cervical Spine Injury*  
+Publicación: StatPearls [Internet], NBK470375 (act. 2023-08-04)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Jeanmonod y Varacallo 2023 — Jeanmonod y Varacallo, «Geriatric Cervical Spine Injury», StatPearls [Internet], NCBI Bookshelf, última actualización 4 de agosto de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
 
 ### Jonsson 2008
 
@@ -1581,6 +1906,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `end_1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `end_4` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+
+### Khan y Bollu 2023
+
+Autores: Khan y Bollu  
+Título: *Horner Syndrome*  
+Publicación: StatPearls [Internet], NBK500000 (act. 2023-04-10)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Khan y Bollu 2023 — Khan y Bollu, «Horner Syndrome», StatPearls [Internet], NCBI Bookshelf, última actualización 10 de abril de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
 
 ### Kim 2001
 
@@ -1708,6 +2050,25 @@ Citada como:
 |---|---|---|---|---|
 | Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
+### Lacy 2023
+
+Autores: Lacy, Bajaj y Gillis  
+Título: *Atlantoaxial Instability*  
+Publicación: StatPearls [Internet], NBK519563 (act. 2023-06-12)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Lacy 2023 — Lacy, Bajaj y Gillis, «Atlantoaxial Instability», StatPearls [Internet], NCBI Bookshelf, última actualización 12 de junio de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
+
 ### LaPelusa y Dave 2023
 
 Autores: LaPelusa y Dave  
@@ -1755,6 +2116,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
@@ -1779,6 +2141,24 @@ Citada como:
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» | 4b · cita bajo el test | 2 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» (en `criterio`) | 4b · mención en el texto | 3 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 4 |
+
+### Leslie 2023
+
+Autores: Leslie, Tadi y Tayyeb  
+Título: *Neurogenic Bladder and Neurogenic Lower Urinary Tract Dysfunction*  
+Publicación: StatPearls [Internet], NBK560617 (act. 2023-07-04)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Leslie 2023 — Leslie, Tadi y Tayyeb, «Neurogenic Bladder and Neurogenic Lower Urinary Tract Dysfunction», StatPearls [Internet], NCBI Bookshelf, última actualización 4 de julio de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 1 |
 
 ### Leslie 2024
 
@@ -1903,7 +2283,25 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
+
+### Margetis y Donnally 2025
+
+Autores: Margetis y Donnally  
+Título: *Cervical Myelopathy*  
+Publicación: StatPearls [Internet], NBK482312 (act. 2025-08-02)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Margetis y Donnally 2025 — Margetis y Donnally, «Cervical Myelopathy», StatPearls [Internet], NCBI Bookshelf, última actualización 2 de agosto de 2025.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 1 |
 
 ### Margetis y Gillis 2025
 
@@ -2001,6 +2399,40 @@ Citada como:
 |---|---|---|---|---|
 | Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+
+### McMordie 2023
+
+Autores: McMordie, Viswanathan y Gillis  
+Título: *Cervical Spine Fractures Overview*  
+Publicación: StatPearls [Internet], NBK448129 (act. 2023-04-03)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. McMordie 2023 — McMordie, Viswanathan y Gillis, «Cervical Spine Fractures Overview», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de abril de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
+
+### Menger 2024
+
+Autores: Menger, Rayi y Notarianni  
+Título: *Klippel Feil Syndrome*  
+Publicación: StatPearls [Internet], NBK493157 (act. 2024-05-11)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Menger 2024 — Menger, Rayi y Notarianni, «Klippel Feil Syndrome», StatPearls [Internet], NCBI Bookshelf, última actualización 11 de mayo de 2024.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 1 |
 
 ### Metcalfe 2019
 
@@ -2172,6 +2604,23 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» | 4b · cita bajo el test | 1 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» | 4b · cita bajo el test | 2 |
+
+### Pana y Saggu 2023
+
+Autores: Pana y Saggu  
+Título: *Dystonia*  
+Publicación: StatPearls [Internet], NBK448144 (act. 2023-09-04)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Pana y Saggu 2023 — Pana y Saggu, «Dystonia», StatPearls [Internet], NCBI Bookshelf, última actualización 4 de septiembre de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_n2` · Médula / Estructural | 2 · razonamiento del cribado | 1 |
 
 ### Paquin 2022
 
@@ -2425,6 +2874,29 @@ Citada como:
 | Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 
+### Rushton 2023
+
+Autores: Rushton, Carlesso, Flynn, Hing, Rubinstein, Vogel y Kerry  
+Título: *International Framework for Examination of the Cervical Region for Potential of Vascular Pathologies of the Neck Prior to Musculoskeletal Intervention: International IFOMPT Cervical Framework*  
+Publicación: J Orthop Sports Phys Ther 53(1):7–22  
+DOI: 10.2519/jospt.2022.11147  
+Última revisión: **sin revisar**  
+Nota: Declaración de posición del marco IFOMPT cervical (aprobado en 2020). PDF del artículo aportado por el usuario: no está en PMC y el documento de ifompt.org no es accesible desde la red del entorno. Fe de erratas en J Orthop Sports Phys Ther 53(6):372 (corrige las cifras de riesgo de los AINE de la tabla 9; no afecta al cribado).
+
+Citada como:
+
+1. Rushton 2023 — Rushton, Carlesso, Flynn, Hing, Rubinstein, Vogel y Kerry, «International Framework for Examination of the Cervical Region for Potential of Vascular Pathologies of the Neck Prior to Musculoskeletal Intervention: International IFOMPT Cervical Framework», J Orthop Sports Phys Ther 2023;53(1):7–22 (marco IFOMPT cervical aprobado en 2020), tablas 1–2, 4, 6 y 7, pp. 9–12; «Differentiation during the patient examination», p. 16; riesgo, p. 17.
+2. Rushton 2023 — Rushton, Carlesso, Flynn, Hing, Rubinstein, Vogel y Kerry, «International Framework for Examination of the Cervical Region for Potential of Vascular Pathologies of the Neck Prior to Musculoskeletal Intervention: International IFOMPT Cervical Framework», J Orthop Sports Phys Ther 2023;53(1):7–22 (marco IFOMPT cervical aprobado en 2020), tablas 2, 5 y 6, pp. 11–12; «Planning the physical examination», p. 14.
+3. Rushton 2023 — Rushton, Carlesso, Flynn, Hing, Rubinstein, Vogel y Kerry, «International Framework for Examination of the Cervical Region for Potential of Vascular Pathologies of the Neck Prior to Musculoskeletal Intervention: International IFOMPT Cervical Framework», J Orthop Sports Phys Ther 2023;53(1):7–22 (marco IFOMPT cervical aprobado en 2020), «Importance of observation throughout history», p. 13.
+4. Rushton 2023 — Rushton, Carlesso, Flynn, Hing, Rubinstein, Vogel y Kerry, «International Framework for Examination of the Cervical Region for Potential of Vascular Pathologies of the Neck Prior to Musculoskeletal Intervention: International IFOMPT Cervical Framework», J Orthop Sports Phys Ther 2023;53(1):7–22 (marco IFOMPT cervical aprobado en 2020), tabla 1, p. 9.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 2 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 3 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 4 |
+
 ### Sanvictores 2023
 
 Autores: Sanvictores, Jozsa y Tadi  
@@ -2440,6 +2912,8 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_gi1` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
@@ -2458,6 +2932,23 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Cluster «Tests de provocación SI (3 de 5)» | 4b · cita del cluster | 1 |
 
+### Sekhon 2023
+
+Autores: Sekhon, Sharma y Cascella  
+Título: *Thunderclap Headache*  
+Publicación: StatPearls [Internet], NBK560629 (act. 2023-06-04)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Sekhon 2023 — Sekhon, Sharma y Cascella, «Thunderclap Headache», StatPearls [Internet], NCBI Bookshelf, última actualización 4 de junio de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
+
 ### Shahid 2023
 
 Autores: Shahid, Ashraf y Sharma  
@@ -2475,6 +2966,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `end_3` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 
+### Shams 2025
+
+Autores: Shams, Malik y Chhabra  
+Título: *Heart Failure (Congestive Heart Failure)*  
+Publicación: StatPearls [Internet], NBK430873 (act. 2025-02-26)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Shams 2025 — Shams, Malik y Chhabra, «Heart Failure (Congestive Heart Failure)», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de febrero de 2025.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_p2` · Pulmonar | 2 · razonamiento del cribado | 1 |
+
 ### Shaw 2025
 
 Autores: Shaw, Loree y Oropallo  
@@ -2491,6 +2999,27 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 1 |
+
+### Singleton y Hefner 2023
+
+Autores: Singleton y Hefner  
+Título: *Spinal Cord Compression*  
+Publicación: StatPearls [Internet], NBK557604 (act. 2023-02-13)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Singleton y Hefner 2023 — Singleton y Hefner, «Spinal Cord Compression», StatPearls [Internet], NCBI Bookshelf, última actualización 13 de febrero de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_p1` · Pulmonar | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 1 |
+| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 
 ### Sman 2015
 
@@ -2544,6 +3073,23 @@ Citada como:
 | Rodilla | ro2 · Lesión Meniscal | Test «Sensibilidad a la palpación de la línea articular» (en `criterio`) | 4b · mención en el texto | 2 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» | 4b · cita bajo el test | 3 |
 
+### Suha 2025
+
+Autores: Suha, Modi y Sharma  
+Título: *Dyspnea*  
+Publicación: StatPearls [Internet], NBK499965 (act. 2025-12-13)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Suha 2025 — Suha, Modi y Sharma, «Dyspnea», StatPearls [Internet], NCBI Bookshelf, última actualización 13 de diciembre de 2025.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_p2` · Pulmonar | 2 · razonamiento del cribado | 1 |
+
 ### Suri 2010
 
 Publicación: JAMA  
@@ -2559,6 +3105,23 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Marcha con base amplia» | 4b · cita bajo el test | 1 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Romberg alterado» | 4b · cita bajo el test | 2 |
+
+### Tavakoli 2025
+
+Autores: Tavakoli, Britt y Agarwal  
+Título: *Vertebral Artery Dissection*  
+Publicación: StatPearls [Internet], NBK441827 (act. 2025-04-06)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Tavakoli 2025 — Tavakoli, Britt y Agarwal, «Vertebral Artery Dissection», StatPearls [Internet], NCBI Bookshelf, última actualización 6 de abril de 2025.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
 
 ### Tawa 2017
 
@@ -2726,6 +3289,23 @@ Citada como:
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Crepitación articular» | 4b · cita bajo el test | 1 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Agrandamiento óseo» | 4b · cita bajo el test | 2 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Restricción de ROM» | 4b · cita bajo el test | 3 |
+
+### Ziu 2023
+
+Autores: Ziu, Khan Suheb y Mesfin  
+Título: *Subarachnoid Hemorrhage*  
+Publicación: StatPearls [Internet], NBK441958 (act. 2023-06-01)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+
+Citada como:
+
+1. Ziu 2023 — Ziu, Khan Suheb y Mesfin, «Subarachnoid Hemorrhage», StatPearls [Internet], NCBI Bookshelf, última actualización 1 de junio de 2023.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
 
 ## 3. Otras fuentes del contenido
 
