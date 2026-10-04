@@ -207,6 +207,40 @@ const razonEstado = page => page.evaluate(() => {
   };
 });
 
+// Derivación pedida por el árbol (`derivacion` en una opción de CIF_TREES):
+// lumbar, paso 1 NO y paso 2 VASCULAR. Comprueba el aviso bajo el paso, en el
+// «árbol completado» y en la fase 5, por clics reales.
+async function checkDerivacionVascular(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.fill('#motivoConsulta', 'Dolor lumbar al caminar');
+  await page.click('#mecanismo .option-btn >> nth=0');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.fill('#signoComparable', 'Marcha');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
+  await elegir('lu_step1', 1);          // NO
+  await elegir('lu_step2', 2);          // VASCULAR
+  const bajoPaso = await page.isVisible('#deriv_lu_step2 .alert-danger');
+  await elegir('lu_step3', 0);
+  await elegir('lu_step4', 0);
+  const enCompleto = await page.isVisible('#treeComplete .alert-danger');
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  const enFase5 = await page.evaluate(() => document.getElementById('resultsContent')?.textContent.includes('Derivación médica pendiente'));
+  return { ok: bajoPaso && enCompleto && enFase5, bajoPaso, enCompleto, enFase5 };
+}
+
 async function checkRazonamientoEscritorio(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
@@ -325,6 +359,10 @@ async function main() {
   const razonMov = await checkRazonamientoMovil(page);
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
+  console.log('\nDerivación del árbol (lumbar, VASCULAR):');
+  const deriv = await checkDerivacionVascular(page);
+  console.log(`  ${deriv.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
+
   await browser.close();
 
   const realErrors = errors.filter(e => !KNOWN_NOISE.some(n => e.includes(n)));
@@ -333,7 +371,7 @@ async function main() {
 
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
   const breveOk = breveResults.every(r => r.ok);
-  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
@@ -342,6 +380,7 @@ async function main() {
   }
   if (!razonEsc.ok) console.log('\nRazonamiento escritorio:', JSON.stringify(razonEsc));
   if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
+  if (!deriv.ok) console.log('\nDerivación del árbol:', JSON.stringify(deriv));
   if (!breveOk) {
     console.log('\nModo breve failures:');
     breveResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));

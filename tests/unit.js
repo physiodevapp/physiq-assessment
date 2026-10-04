@@ -858,6 +858,31 @@ test('lu8: la regla SI es 3 de 5 tests de provocación (como la tarjeta lumbar)'
   assert.ok(Math.abs(calcLRScore(h, r).totalLR - 2.44) < 0.001);
 });
 
+test('árbol CIF: `derivacion` de una opción es texto no vacío; lumbar VASCULAR la lleva', () => {
+  for (const [r, tree] of Object.entries(CIF_TREES)) {
+    tree.steps.forEach(st => st.options.forEach(o => {
+      if ('derivacion' in o) assert.ok(typeof o.derivacion === 'string' && o.derivacion.trim(), `${r}/${st.id}/${o.value}`);
+    }));
+  }
+  const vasc = CIF_TREES.lumbar.steps.find(s => s.id === 'lu_step2').options.find(o => o.value === 'vascular');
+  assert.ok(vasc.derivacion?.includes('derivación médica'));
+});
+
+test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otra respuesta no', () => {
+  const msg = CIF_TREES.lumbar.steps.find(s => s.id === 'lu_step2').options.find(o => o.value === 'vascular').derivacion;
+  withState({ region: 'lumbar', treeAnswers: { lu_step1: 'no', lu_step2: 'vascular' } }, () => {
+    assert.deepEqual(buildPhysiQPayload().dv, [msg]);
+    assert.ok(buildContextSummaryText().includes(`🩺 DERIVACIÓN MÉDICA (árbol CIF): ${msg}`));
+    const inf = buildInformeFisioterapiaText();
+    assert.ok(inf.includes('Se recomienda valoración médica') && inf.includes(msg));
+  });
+  withState({ region: 'lumbar', treeAnswers: { lu_step1: 'no', lu_step2: 'si' } }, () => {
+    assert.deepEqual(buildPhysiQPayload().dv, []);
+    assert.ok(!buildContextSummaryText().includes('DERIVACIÓN MÉDICA'));
+    assert.ok(!buildInformeFisioterapiaText().includes('Se recomienda valoración médica'));
+  });
+});
+
 test('cadera: fractura de estrés del cuello femoral, artritis séptica y torsión testicular son urgencias', () => {
   const qs = SYSTEMIC_SCREENING.cadera.sistemas.flatMap(s => s.preguntas);
   ['ca_os1', 'ca_in1', 'ca_u3'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
