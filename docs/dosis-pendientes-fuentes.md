@@ -19,7 +19,7 @@ Leyenda:
 | lu6 | Discogénico | B | George 2021 · NICE NG59 | ✅ Hecho (2026-10): recomendaciones para la lumbalgia en general (aguda y crónica, incluido MDT), diciendo que no son específicas del origen discogénico |
 | lu7 | Facetario | D | — | Solo revisiones de infiltración y radiofrecuencia. Ninguna pauta de ejercicio con evidencia específica |
 | lu8 | Sacroilíaca | B | Al-Subahi 2017 (PMC5599847) · NICE NG59 | ✅ Hecho (2026-10). **Corrección:** el fragmento anterior («ejercicio y técnicas de energía muscular > movilización») era erróneo; el texto completo concluye que la manipulación parece más eficaz que el ejercicio, el vendaje neuromuscular o el reposo, y no habla de energía muscular. Calidad baja o media, sin volumen reproducible; manipulación siempre junto a ejercicio (NICE 1.2.7, más reciente) |
-| lu9 | Miofascial | D | — | No se buscó (sin fuente de calidad previsible). La guía de 2021 trata la punción seca como adyuvante: comprobarlo en el PDF. George 2021 (leída): «can consider the use of dry needling in conjunction with other treatments… chronic LBP» (C), sin subgrupo miofascial |
+| lu9 | Miofascial | B | George 2021 · NICE NG59 | ✅ Hecho (2026-10): recomendaciones para la lumbalgia en general (masaje/partes blandas B, punción seca C solo como complemento, ejercicio y movilización A), diciendo que no son específicas del dolor miofascial |
 
 ## Cervical (`ce12`–`ce14`)
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
@@ -113,7 +113,7 @@ El resto **nunca se ha buscado** (2026-10): no hay tipo asignado. Pendiente de u
 - **Derivación antes que dosis (C), hecho:** h11, ro11, tp3–tp6, tp17, tp30 y tp35 llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
 - **Recomendación de guía sin pauta numérica (B), pendientes:** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ce14` (Blanpied 2017), `ro12` (ESSKA 2024), `tp2`, `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
 - **Sin buscar:** cadera `ca11`–`ca15`, `ca17`–`ca19`.
-- **Sin evidencia de dosis específica (D):** `h10`, `lu7`, `lu9`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
+- **Sin evidencia de dosis específica (D):** `h10`, `lu7`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
 ## Para cerrar esto
 Hay dos caminos: que el usuario aporte los PDF (como se hizo en cadera y rodilla), o permitir en la red del entorno `pubmed.ncbi.nlm.nih.gov`, `pmc.ncbi.nlm.nih.gov`, `www.jospt.org` y `www.orthopt.org`. Luego, una región por sesión, siguiendo la Fase D.

@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **122** referencias de literatura, con **274** usos.
+- **122** referencias de literatura, con **276** usos.
 - **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
 - **18** de 123 referencias del registro revisadas. Ver «Estado de revisión».
 - **103** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -79,7 +79,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 31 | **sin revisar** |
-| [NICE NG59](#nice-ng59) | pauta | 3 | **sin revisar** |
+| [NICE NG59](#nice-ng59) | pauta | 4 | **sin revisar** |
 | [Jonsson 2008](#jonsson-2008) | pauta | 1 | **sin revisar** |
 | [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | **sin revisar** |
 | [Kuijper 2009](#kuijper-2009) | pauta | 1 | **sin revisar** |
@@ -88,7 +88,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Al-Subahi 2017](#al-subahi-2017) | pauta | 1 | **sin revisar** |
 | [Blanpied 2017](#blanpied-2017) | pauta | 1 | **sin revisar** |
 | [Rathleff 2020](#rathleff-2020) | pauta | 1 | **sin revisar** |
-| [George 2021](#george-2021) | pauta | 2 | **sin revisar** |
+| [George 2021](#george-2021) | pauta | 3 | **sin revisar** |
 | [Martin 2021](#martin-2021) | pauta | 2 | **sin revisar** |
 | [Koc 2023](#koc-2023) | pauta | 1 | **sin revisar** |
 | [Chimenti 2024](#chimenti-2024) | pauta | 1 | **sin revisar** |
@@ -1132,7 +1132,7 @@ Título: *Interventions for the Management of Acute and Chronic Low Back Pain: R
 Publicación: J Orthop Sports Phys Ther 51(11):CPG1–CPG60  
 DOI: 10.2519/jospt.2021.0304  
 Última revisión: **sin revisar**  
-Nota: Texto completo en PMC10508241 (manuscrito del autor). En ese texto no se ven las letras de grado: se deducen del verbo con la tabla de la propia guía. Pauta de lu5 y lu6.
+Nota: Texto completo en PMC10508241 (manuscrito del autor). En ese texto no se ven las letras de grado: se deducen del verbo con la tabla de la propia guía. Pauta de lu5, lu6 y lu9.
 
 Citada como:
 
@@ -1143,6 +1143,7 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
 ### Getsoian 2020
 
@@ -2103,7 +2104,7 @@ Citada como:
 Publicación: Guía NICE «Low back pain and sciatica in over 16s: assessment and management» (2016, actualizada en julio de 2026)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Leídas las recomendaciones en nice.org.uk (2026-10). Pauta de lu5, lu6 y lu8.
+Nota: Leídas las recomendaciones en nice.org.uk (2026-10). Pauta de lu5, lu6, lu8 y lu9.
 
 Citada como:
 
@@ -2116,6 +2117,7 @@ Citada como:
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pauta de tratamiento | 5 · cita de la pauta | 3 |
+| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
 ### Nunes 2013
 
