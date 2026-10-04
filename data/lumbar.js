@@ -473,7 +473,7 @@ export const screening = {
           razonamiento: {
             porque: 'La hiperextensión lumbar repetida (gimnasia, lucha, fútbol americano) produce fracturas por fatiga del istmo vertebral (pars interarticularis) en adolescentes y adultos jóvenes. Si el defecto no cura, la vértebra se desliza hacia delante (espondilolistesis ístmica, sobre todo L5–S1) y puede comprimir las raíces nerviosas; por eso duele al extender la columna y puede irradiarse a las piernas.',
             peso: 'La espondilólisis puede no dar síntomas y las pruebas de provocación (la de la cigüeña) no son sensibles ni específicas: el SÍ no diagnostica. Lo que más pesa es el dolor en las dos piernas: el dolor radicular bilateral, sobre todo si empezó en una pierna y pasó a las dos, es un precursor de la cola de caballo y obliga a preguntar ya por vejiga, intestino y sensibilidad en silla de montar.',
-            detalle: 'Mecanismo (StatPearls, Margetis y Gillis 2025): en la espondilolistesis ístmica el origen es un defecto del istmo. El subtipo A son fracturas por fatiga por hiperextensión repetida en deportistas jóvenes; el subtipo C, fracturas agudas traumáticas del istmo. El defecto desestabiliza los elementos posteriores y permite que el cuerpo vertebral se desplace hacia delante; el estrechamiento del foramen o del canal puede comprimir las raíces y dar radiculopatía, claudicación neurógena, dolor de nalga, entumecimiento o debilidad en las piernas y, rara vez, alteraciones de vejiga o intestino. En los casos graves puede llegar a una cola de caballo, que requiere cirugía inmediata.\n\nCómo se presenta (May y Marappa-Ganeshan 2023): la espondilólisis es una fractura de estrés singular que exige un índice de sospecha alto; en el deportista con lumbalgia, la extensión lumbar aumenta el dolor. La radiografía puede no ver los cambios iniciales; si es negativa y la sospecha persiste, la SPECT, la TC o la RM ayudan.\n\nCuánto preocupa el dolor en ambas piernas (Finucane 2020): el dolor radicular uni o bilateral, la pérdida de sensibilidad dermatómica o la debilidad miotómica son precursores de la cola de caballo, y el dolor que empieza en una pierna y pasa a las dos aumenta la probabilidad de una cola de caballo inminente. Ninguna fuente leída describe la «ciática bilateral súbita durante el deporte» como presentación típica de la espondilolistesis: la pregunta vale sobre todo como puerta a esas preguntas de urgencia.',
+            detalle: 'Mecanismo (StatPearls, Margetis y Gillis 2025): en la espondilolistesis ístmica el origen es un defecto del istmo. El subtipo A son fracturas por fatiga por hiperextensión repetida en deportistas jóvenes; el subtipo C, fracturas agudas traumáticas del istmo. El defecto desestabiliza los elementos posteriores y permite que el cuerpo vertebral se desplace hacia delante; el estrechamiento del foramen o del canal puede comprimir las raíces y dar radiculopatía, claudicación neurógena, dolor de nalga, entumecimiento o debilidad en las piernas y, rara vez, alteraciones de vejiga o intestino. En los casos graves puede llegar a una cola de caballo, que requiere cirugía inmediata.\n\nCómo se presenta (May y Marappa-Ganeshan 2023): la espondilólisis es una fractura de estrés singular que exige un índice de sospecha alto; en el deportista con lumbalgia, la extensión lumbar aumenta el dolor. La radiografía puede no ver los cambios iniciales; si es negativa y la sospecha persiste, la SPECT, la TC o la RM ayudan.\n\nCuánto preocupa el dolor en ambas piernas (Finucane 2020): el dolor radicular uni o bilateral, la pérdida de sensibilidad dermatómica o la debilidad miotómica son precursores de la cola de caballo, y el dolor que empieza en una pierna y pasa a las dos aumenta la probabilidad de una cola de caballo inminente. Por eso la pregunta vale también como puerta a esas preguntas de urgencia.\n\nCómo la describe el capítulo lumbar de Lluch 2020 (tabla 1, adaptada de Alrwaily et al.): persona joven, lesiones repetidas en hiperextensión, ciática bilateral súbita durante la actividad deportiva, dolor en extensión (en prono, con extensión pasiva de las dos caderas) y sin incontinencia urinaria ni fecal. Ninguna prueba física ha demostrado utilidad para diagnosticar la espondilólisis (la de extensión sobre una pierna, prácticamente ninguna); para la espondilolistesis, la mejor es la palpación de las apófisis espinosas lumbares (especificidad 87–100 %, sensibilidad 60–88 %). La espondilólisis no siempre duele y es más frecuente en gimnastas (11–14 %, frente al 4–6 % de los adolescentes).',
             fisiologia: {
               pasos: [
                 'La hiperextensión repetida carga el istmo vertebral (pars interarticularis), el puente óseo entre las carillas articulares; en algunos jóvenes ese istmo es más fino y más vulnerable.',
@@ -484,11 +484,12 @@ export const screening = {
               ],
               metafora: 'Como una estantería cuyo anclaje trasero se ha partido: el estante se va deslizando hacia delante y acaba pellizcando los cables que pasan por los huecos de al lado.'
             },
-            fuentes: ['Margetis y Gillis 2025', 'May y Marappa-Ganeshan 2023', 'Finucane 2020'],
+            fuentes: ['Margetis y Gillis 2025', 'May y Marappa-Ganeshan 2023', 'Finucane 2020', 'Lluch 2020'],
             citas: [
               { texto: 'Margetis y Gillis 2025 — Margetis y Gillis, «Spondylolisthesis», StatPearls [Internet], NCBI Bookshelf, última actualización 28 de marzo de 2025.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430767/' },
               { texto: 'May y Marappa-Ganeshan 2023 — May y Marappa-Ganeshan, «Stress Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 10 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK554538/' },
-              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–11.', url: 'https://doi.org/10.2519/jospt.2020.9971' }
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–11.', url: 'https://doi.org/10.2519/jospt.2020.9971' },
+              'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.'
             ]
           } }
       ],
@@ -681,7 +682,8 @@ export const hypotheses = {
   // ─── LUMBAR ─────────────────────────────────────────────
   // LR: ver «Phase 4b scoring» en CLAUDE.md. `fuente` cita el estudio de cada
   // cifra; sin fuente no hay LR (el test cuenta como hallazgo clínico).
-  // `pronostico`: texto literal de la tarjeta lumbar de la guía de consulta.
+  // `pronostico`: texto de la tarjeta lumbar de la guía de consulta, comprobado
+  // contra su origen, el capítulo lumbar de Lluch 2020 (cap. 5.1, Fondevila Suárez).
   lu1: {
     id: 'lu1', region: 'lumbar', num: '①',
     name: 'Disfunción Segmentaria Lumbosacra (Déficit de Movilidad)',
@@ -714,7 +716,7 @@ export const hypotheses = {
     pronostico: {
       horizonte: 'Agudo hasta 3 semanas, subagudo hasta 3 meses. Mejora a los 6 meses en el 88 %, recuperación completa en el 65 %. Hernia reabsorbida en al menos dos tercios. Recurrencia 20 %.',
       derivacion: 'RM si sospecha de patología grave, dolor radicular persistente, déficit grave o progresivo, o más de 1 mes sin remisión con conservador.',
-      fuente: 'Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6)'
+      fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 308–309'
     },
     tests: [
       { name: 'Test de Elevación de Pierna Recta (SLR) ipsilateral', sn: '91%', sp: '26%', lr_pos: null, lr_neg: null, criterio: 'Positivo: reproduce el dolor de pierna (no solo lumbar) con elevación <60°. Útil sobre todo negativo, para descartar; un positivo aislado aporta poco.', fuente: 'Devillé 2000 (revisión sistemática; referencia: cirugía)' },
@@ -732,7 +734,7 @@ export const hypotheses = {
     pronostico: {
       horizonte: 'Historia natural poco conocida. 15 % mejora solo; hasta 20 % controla los síntomas evitando la extensión. Conservador antes que cirugía.',
       derivacion: 'Progresión neurológica rápida o deterioro de la calidad de vida. La cirugía no garantiza recuperar los déficits. NICE: no usar infiltraciones epidurales en la claudicación neurógena por estenosis de canal central.',
-      fuente: 'Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6) · NICE NG59 (rec. 1.3.6)'
+      fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 313–314 · NICE NG59 (rec. 1.3.6)'
     },
     clusters: {
       cook: { nombre: 'Cluster de Cook (anamnesis y observación)', umbralPos: 4, lr_pos: '4.6', umbralNeg: 0, lr_neg: '0.19', fuente: 'Cook 2011 (n = 1448). 4 de 5: S 6 %, E 98 %; ninguno: S 96 %' }
@@ -759,10 +761,10 @@ export const hypotheses = {
     pronostico: {
       horizonte: 'RM de elección. EMG muy específica, poco sensible; útil si clínica e imagen no casan.',
       derivacion: 'Cirugía: déficit significativo en abductores de cadera, flexores plantares o dorsales del pie, o déficit que progresa pese al conservador.',
-      fuente: 'Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6)'
+      fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 311'
     },
     tests: [
-      { name: 'Fuerza por miotomas L1–S2', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'La debilidad es el signo más importante. Comparar siempre con el lado sano. Interpretar junto a reflejos y sensibilidad, nunca aislado.' },
+      { name: 'Fuerza por miotomas L1–S2', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'La debilidad es el signo más importante. Comparar siempre con el lado sano. Interpretar junto a reflejos y sensibilidad, nunca aislado.', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 310' },
       { name: 'Reflejos rotuliano (L3–L4) y aquíleo (L5–S1)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Especificidad 0,60–0,93 y sensibilidad hasta 0,67 según estudio, sin valor agrupado.', fuente: 'Tawa 2017 (revisión sistemática)' },
       { name: 'Sensibilidad (algodón, diapasón, pinchazo)', sn: '61%', sp: '63%', lr_pos: null, lr_neg: null, criterio: 'Algodón, diapasón sobre prominencia ósea y pinchazo, comparando con el lado sano.', fuente: 'Tawa 2017 (revisión sistemática; referencia: RM)' }
     ]
@@ -776,12 +778,12 @@ export const hypotheses = {
     pronostico: {
       horizonte: 'A 4 años: 13 % mejoró, 7,6 % alivio leve, 12,2 % empeoró, 67,2 % sin cambios. La preferencia direccional predice buen pronóstico.',
       derivacion: 'Componente neuropático o disfuncional → más cronicidad. Con dolor en pierna, diferenciar de dolor radicular.',
-      fuente: 'Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6)'
+      fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 317–318'
     },
     tests: [
       { name: 'Centralización con movimientos repetidos', sn: null, sp: null, lr_pos: '3.06', lr_neg: '0.66', criterio: 'Desaparecen los síntomas distales con movimientos repetidos al final del rango. Que no centralice no descarta el origen discal. La especificidad baja con discapacidad grave o malestar psicológico.', fuente: 'Han 2023 (eClinicalMedicine, revisión sistemática, 4 estudios; LR+ IC 95 %: 1,44–6,50; referencia: discografía). Antes: Hancock 2007, LR+ 2,8' },
-      { name: 'Preferencia direccional', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Movimientos repetidos al final del rango o posturas mantenidas que alivian de forma duradera o aumentan la movilidad.' },
-      { name: 'Observación: espalda plana o shift lateral', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Pérdida de lordosis o desviación lateral del tronco.' }
+      { name: 'Preferencia direccional', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Movimientos repetidos al final del rango o posturas mantenidas que alivian de forma duradera o aumentan la movilidad.', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 317 y tabla 4 (consenso Delphi), p. 316' },
+      { name: 'Observación: espalda plana o shift lateral', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Pérdida de lordosis o desviación lateral del tronco.', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 4 y 6, pp. 316 y 323 (orientativo)' }
     ]
   },
   lu7: {
@@ -793,12 +795,12 @@ export const hypotheses = {
     pronostico: {
       horizonte: 'No se puede establecer pronóstico: la degeneración aumenta con la edad sin relación causal demostrada con el dolor. La radiología no es criterio diagnóstico; un bloqueo simple alivia definitivamente a menos del 10 %.',
       derivacion: 'NICE: considerar derivar para valorar denervación por radiofrecuencia si el tratamiento no quirúrgico no ha funcionado, se piensa que el dolor viene principalmente de estructuras inervadas por la rama medial y el dolor lumbar localizado es moderado o intenso (≥ 5/10) al derivar; la radiofrecuencia solo tras una respuesta positiva a un bloqueo diagnóstico de la rama medial. No ofrecer infiltraciones raquídeas para la lumbalgia.',
-      fuente: 'Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6) · NICE NG59 (rec. 1.3.1–1.3.3, derivación)'
+      fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 319–320 · NICE NG59 (rec. 1.3.1–1.3.3, derivación)'
     },
     tests: [
       { name: 'Dolor en extensión, inclinación o rotación hacia el lado del dolor', sn: null, sp: null, lr_pos: '1.29', lr_neg: null, criterio: 'Criterios clínicos tipo Revel. Ningún test clínico ha resultado informativo para el origen facetario: el único test informativo agrupado es la captación facetaria en SPECT (LR+ 2,80, LR− 0,44), una prueba de imagen, no de consulta.', fuente: 'Laslett 2006 (no replica a Revel; referencia: doble bloqueo); Han 2023 (eClinicalMedicine, revisión sistemática: Revel inconsistente, no agrupable)' },
-      { name: 'PA unilateral dolorosa o con menos movilidad', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'PA sobre la faceta o la transversa; espasmo ipsilateral.' },
-      { name: 'Sin signos radiculares y sin alivio con repetidos', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Ausencia de signos radiculares; espalda en flexión, sin shift; los repetidos no suelen aliviar.' }
+      { name: 'PA unilateral dolorosa o con menos movilidad', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'PA sobre la faceta o la transversa; espasmo ipsilateral.', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), tabla 5 (consenso Delphi), p. 319' },
+      { name: 'Sin signos radiculares y sin alivio con repetidos', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Ausencia de signos radiculares; espalda en flexión, sin shift; los repetidos no suelen aliviar.', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 5 y 6, pp. 319 y 323' }
     ]
   },
   lu8: {
@@ -810,7 +812,7 @@ export const hypotheses = {
     pronostico: {
       horizonte: 'PRPPP: >54 % en el último trimestre, 25 % posparto; la mayoría se recupera, 7–20 % persiste. Recaída del 85 % en el siguiente embarazo.',
       derivacion: 'Predicen persistencia: edad, carga de trabajo alta, lumbalgia previa, mala función muscular. Cribar depresión posparto (×3).',
-      fuente: 'Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6)'
+      fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 322'
     },
     clusters: {
       laslett: { nombre: 'Tests de provocación SI (3 de 5)', umbralPos: 3, umbralNeg: 2, sn: null, sp: null, lr_pos: '2.44', lr_neg: '0.31', fuente: 'Han 2023 (eClinicalMedicine, revisión sistemática, 6 estudios; LR+ IC 95 %: 1,50–3,98, LR− 0,21–0,47; referencia: bloqueo anestésico). Misma regla que la tarjeta lumbar: 3 de 5 positivos. Saueressig 2021 (JOSPT, metaanálisis, 5 estudios): LR+ 2,13, LR− 0,33, certeza muy baja (GRADE); descarta mejor de lo que confirma' }
@@ -820,7 +822,7 @@ export const hypotheses = {
       { name: 'Thrust de muslo', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'laslett', criterio: 'Supino, cadera a 90°: presión axial sobre el fémur. Positivo: reproduce el dolor conocido.' },
       { name: 'Compresión', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'laslett', criterio: 'Decúbito lateral: presión vertical sobre la cresta ilíaca. Positivo: reproduce el dolor conocido.' },
       { name: 'Thrust sacro', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'laslett', criterio: 'Prono: presión PA sobre el centro del sacro. Positivo: reproduce el dolor conocido.' },
-      { name: 'No centraliza con movimientos repetidos', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Descartar antes origen lumbar buscando preferencia direccional. No usar tests de disfunción de movimiento SI (baja fiabilidad y validez).' },
+      { name: 'No centraliza con movimientos repetidos', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Descartar antes origen lumbar buscando preferencia direccional. No usar tests de disfunción de movimiento SI (baja fiabilidad y validez).', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 321–322 (criterio a del clúster de Laslett)' },
       // Añadidos al final (no en medio) para no desplazar los índices de
       // state.testResults de sesiones ya guardadas.
       { name: 'Gaenslen', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'laslett', criterio: 'Supino al borde de la camilla: una cadera en flexión máxima y la otra en extensión fuera de la camilla, con presión sobre ambas. Positivo: reproduce el dolor conocido.' },
@@ -835,8 +837,8 @@ export const hypotheses = {
     dosisFuente: 'George 2021, J Orthop Sports Phys Ther 51(11):CPG1–CPG60 (guía de práctica clínica APTA; letra = grado de la recomendación, deducido del verbo según la tabla de la guía: «should» A, «may» B, «can» C) · NICE NG59 (rec. 1.2.7; actualizada en julio de 2026)',
     tests: [
       { name: 'Banda tensa palpable', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Criterio mínimo. Sin patrón de referencia diagnóstico; la palpación tiene fiabilidad baja.', fuente: 'Lucas 2009 (revisión sistemática de fiabilidad)' },
-      { name: 'Punto hipersensible dentro de la banda', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Criterio mínimo.' },
-      { name: 'El paciente reconoce el dolor provocado', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Criterio mínimo, con o sin dolor referido. Hallazgo acompañante hasta descartar lo anterior.' }
+      { name: 'Punto hipersensible dentro de la banda', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Criterio mínimo.', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 323–324' },
+      { name: 'El paciente reconoce el dolor provocado', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Criterio mínimo, con o sin dolor referido. Hallazgo acompañante hasta descartar lo anterior.', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 323–324' }
     ]
   },
 };

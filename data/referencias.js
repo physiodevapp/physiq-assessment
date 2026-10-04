@@ -36,7 +36,7 @@ export const REFERENCIAS = {
     autores: 'Lluch, López-Cubas, Jones, Jull, Hall y Lewis',
     titulo: 'Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders',
     publicacion: 'ZERAPI', doi: '', revision: null, tarjetas: true,
-    nota: 'Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro.'
+    nota: 'Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro. Capítulos leídos enteros (PDF escaneado del usuario) y citados directamente como fuente, con capítulo y páginas: cap. 5.1 (Fondevila Suárez, lumbar, pp. 295–326: pronósticos de lu3–lu8, tests de lu5–lu9 y l_e7) y caps. 5.3 y 5.3.1 (cervical).'
   },
   'Goodman 2018': {
     autores: 'Goodman, Heick y Lazaro',

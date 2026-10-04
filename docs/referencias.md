@@ -13,10 +13,10 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **151** referencias de literatura, con **371** usos.
-- **6** tarjetas de consulta (repo guia-de-consulta), con **296** usos, basadas en Lluch 2020.
+- **151** referencias de literatura, con **386** usos.
+- **5** tarjetas de consulta (repo guia-de-consulta), con **290** usos, basadas en Lluch 2020.
 - **18** de 151 referencias del registro revisadas. Ver «Estado de revisión».
-- **103** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
+- **95** de 426 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
 
@@ -94,7 +94,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Munakomi 2023](#munakomi-2023) | pauta · razonamiento fase 2 · texto | 3 | **sin revisar** |
 | [Chimenti 2024](#chimenti-2024) | pauta | 1 | **sin revisar** |
 | [Liu 2025](#liu-2025) | pauta | 1 | **sin revisar** |
-| [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 296 | **sin revisar** |
+| [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 290 | **sin revisar** |
 | [Katz 1995](#katz-1995) | test 4b sin puntuar | 1 | **sin revisar** |
 | [van Dijk 1996](#van-dijk-1996) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Kim 2001](#kim-2001) | test 4b sin puntuar | 1 | **sin revisar** |
@@ -205,7 +205,7 @@ Título: *Pattern Recognition of Clinical Syndromes Related to Neuromusculoskele
 Publicación: ZERAPI  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro.
+Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro. Capítulos leídos enteros (PDF escaneado del usuario) y citados directamente como fuente, con capítulo y páginas: cap. 5.1 (Fondevila Suárez, lumbar, pp. 295–326: pronósticos de lu3–lu8, tests de lu5–lu9 y l_e7) y caps. 5.3 y 5.3.1 (cervical).
 
 Las tarjetas de consulta están en el repo [physiodevapp/guia-de-consulta](https://github.com/physiodevapp/guia-de-consulta),
 en `data/tarjeta_<región>.js`. Son extractos de las **guías clínicas** de cada región, basadas en Lluch 2020
@@ -355,20 +355,7 @@ De dónde sale (pies de la tarjeta):
 
 Formulario previo, cara 2 (`formularios/lumbar.js`): Hoja 2 de 2 · versión lumbar — Preguntas discriminantes: guía clínica lumbar, ap. 3 y 6. Ficha de primera visita: ejes 2 a 6 y bloque 4.
 
-Citada como:
-
-1. Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6)
-2. Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6) · NICE NG59 (rec. 1.3.6)
-3. Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6) · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
-
-| Hipótesis | Dónde | Fase | Cita |
-|---|---|---|---|
-| lu3 · Dolor Radicular Lumbar | Pronóstico | 5 · cita del pronóstico | 1 |
-| lu4 · Estenosis Espinal / Claudicación Neurogénica | Pronóstico | 5 · cita del pronóstico | 2 |
-| lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pronóstico | 5 · cita del pronóstico | 1 |
-| lu6 · Dolor Lumbar Discogénico | Pronóstico | 5 · cita del pronóstico | 1 |
-| lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 3 |
-| lu8 · Dolor de la Articulación Sacroilíaca | Pronóstico | 5 · cita del pronóstico | 1 |
+_Ninguna cita en `data/` nombra esta tarjeta._
 
 ### Tarjeta de consulta rodilla
 
@@ -2212,27 +2199,56 @@ Título: *Pattern Recognition of Clinical Syndromes Related to Neuromusculoskele
 Publicación: ZERAPI  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro.
+Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro. Capítulos leídos enteros (PDF escaneado del usuario) y citados directamente como fuente, con capítulo y páginas: cap. 5.1 (Fondevila Suárez, lumbar, pp. 295–326: pronósticos de lu3–lu8, tests de lu5–lu9 y l_e7) y caps. 5.3 y 5.3.1 (cervical).
 
 Citada como:
 
-1. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
-2. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
-3. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
-4. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
-5. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
-6. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
-7. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
+1. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 308–309
+2. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 313–314 · NICE NG59 (rec. 1.3.6)
+3. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 310
+4. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 311
+5. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 317 y tabla 4 (consenso Delphi), p. 316
+6. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 4 y 6, pp. 316 y 323 (orientativo)
+7. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 317–318
+8. Lluch 2020, cap. 5.1 (Fondevila Suárez), tabla 5 (consenso Delphi), p. 319
+9. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 5 y 6, pp. 319 y 323
+10. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 319–320 · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
+11. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 321–322 (criterio a del clúster de Laslett)
+12. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 322
+13. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 323–324
+14. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
+15. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
+16. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
+17. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
+18. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
+19. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
+20. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
+21. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 1 |
-| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 2 |
-| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 3 |
-| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 4 |
-| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 5 |
-| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 6 |
-| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 7 |
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 14 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 15 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 16 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 17 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 18 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 19 |
+| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 20 |
+| Lumbar | lu3 · Dolor Radicular Lumbar | Pronóstico | 5 · cita del pronóstico | 1 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Pronóstico | 5 · cita del pronóstico | 2 |
+| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Fuerza por miotomas L1–S2» | 4b · cita bajo el test | 3 |
+| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pronóstico | 5 · cita del pronóstico | 4 |
+| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Preferencia direccional» | 4b · cita bajo el test | 5 |
+| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Observación: espalda plana o shift lateral» | 4b · cita bajo el test | 6 |
+| Lumbar | lu6 · Dolor Lumbar Discogénico | Pronóstico | 5 · cita del pronóstico | 7 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Test «PA unilateral dolorosa o con menos movilidad» | 4b · cita bajo el test | 8 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Test «Sin signos radiculares y sin alivio con repetidos» | 4b · cita bajo el test | 9 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 10 |
+| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «No centraliza con movimientos repetidos» | 4b · cita bajo el test | 11 |
+| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pronóstico | 5 · cita del pronóstico | 12 |
+| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 13 |
+| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 13 |
+| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 21 |
 
 ### Lucas 2009
 
@@ -2586,10 +2602,10 @@ Citada como:
 
 1. George 2021, J Orthop Sports Phys Ther 51(11):CPG1–CPG60 (guía de práctica clínica APTA; letra = grado de la recomendación, deducido del verbo según la tabla de la guía: «should» A, «may» B, «can» C, «should not» D) · NICE NG59 (rec. 1.2.1 y 1.2.7; actualizada en julio de 2026)
 2. George 2021, J Orthop Sports Phys Ther 51(11):CPG1–CPG60 (guía de práctica clínica APTA; letra = grado de la recomendación, deducido del verbo según la tabla de la guía: «should» A, «may» B, «can» C, «should not» D) · NICE NG59 (rec. 1.2.6 y 1.2.7; actualizada en julio de 2026)
-3. Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6) · NICE NG59 (rec. 1.3.6)
+3. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 313–314 · NICE NG59 (rec. 1.3.6)
 4. George 2021, J Orthop Sports Phys Ther 51(11):CPG1–CPG60 (guía de práctica clínica APTA; letra = grado de la recomendación, deducido del verbo según la tabla de la guía: «should» A, «may» B, «can» C, «should not» D) · NICE NG59 (rec. 1.2.1, 1.2.6 y 1.2.7; actualizada en julio de 2026)
 5. George 2021, J Orthop Sports Phys Ther 51(11):CPG1–CPG60 (guía de práctica clínica APTA; letra = grado de la recomendación, deducido del verbo según la tabla de la guía: «should» A, «may» B, «can» C) · NICE NG59 (rec. 1.2.7; actualizada en julio de 2026)
-6. Tarjeta de consulta lumbar (guía clínica lumbar, ap. 6) · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
+6. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 319–320 · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
 7. Al-Subahi 2017, J Phys Ther Sci 29(9):1689–1694 (revisión sistemática, 9 estudios de 2004–2014 de calidad baja o media: manipulación, ejercicio y vendaje neuromuscular) · NICE NG59 (rec. 1.2.7; actualizada en julio de 2026)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -3440,21 +3456,13 @@ Tests sin `fuente` (los miembros de un cluster con `fuente` no cuentan: la cita 
 | ce11 · Fatiga Muscular Cérvico-Escapular | Test de resistencia de flexores cervicales profundos | — | no |
 | ce11 · Fatiga Muscular Cérvico-Escapular | Evaluación de fatiga en actividades funcionales prolongadas | — | no |
 
-### Lumbar (11)
+### Lumbar (3)
 
 | Hipótesis | Test | Cifras | Puntúa |
 |---|---|---|---|
 | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Evaluación de hipomovilidad segmentaria lumbar (PAIVM) | — | no |
 | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Evaluación de control motor en bipedestación | — | no |
 | lu4 · Estenosis Espinal / Claudicación Neurogénica | Déficits sensoriales (L3-S1) | S ~50% · E ~80% | no |
-| lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Fuerza por miotomas L1–S2 | — | no |
-| lu6 · Dolor Lumbar Discogénico | Preferencia direccional | — | no |
-| lu6 · Dolor Lumbar Discogénico | Observación: espalda plana o shift lateral | — | no |
-| lu7 · Dolor Lumbar Facetario | PA unilateral dolorosa o con menos movilidad | — | no |
-| lu7 · Dolor Lumbar Facetario | Sin signos radiculares y sin alivio con repetidos | — | no |
-| lu8 · Dolor de la Articulación Sacroilíaca | No centraliza con movimientos repetidos | — | no |
-| lu9 · Síndrome de Dolor Miofascial Lumbar | Punto hipersensible dentro de la banda | — | no |
-| lu9 · Síndrome de Dolor Miofascial Lumbar | El paciente reconoce el dolor provocado | — | no |
 
 ### Rodilla (11)
 
