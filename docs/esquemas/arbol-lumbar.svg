@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1587 1123" width="1587" height="1123">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#475569"/></marker></defs>
+<rect width="1587" height="1123" fill="#ffffff"/>
+<text x="40" y="58.0" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#1f2937" text-anchor="start">Árbol de decisión CIF · Región lumbar</text>
+<text x="40" y="86.0" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="normal" fill="#6b7280" text-anchor="start">PhysiQ-Assessment · fase 4. Cada respuesta puede sumar una hipótesis; todas se confirman con tests en la fase 4b.</text>
+<rect x="40" y="104" width="1507" height="44" rx="10" fill="#fde8e8" stroke="#d0342c" stroke-width="2"/>
+<text x="60" y="132.0" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#d0342c" text-anchor="start">REQUISITO PREVIO · Banderas rojas (fase 1) y cribado sistémico (fase 2). Si hay una urgencia, derivar: este árbol no se aplica.</text>
+<rect x="40" y="390" width="290" height="125" rx="14" fill="#eaf1ff" stroke="#3567d6" stroke-width="2.5"/>
+<circle cx="66" cy="418" r="17" fill="#3567d6"/>
+<text x="66" y="423.8" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="92" y="424.0" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">¿El dolor baja por la pierna</text>
+<text x="92" y="445.8" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">(unilateral) y es peor que</text>
+<text x="92" y="467.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">el dolor de espalda?</text>
+<text x="58" y="501.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#6b7280" text-anchor="start" font-style="italic">SLR &lt; 60°, Slump + o déficit dermatómico</text>
+<rect x="400" y="390" width="300" height="125" rx="14" fill="#eaf1ff" stroke="#3567d6" stroke-width="2.5"/>
+<circle cx="426" cy="418" r="17" fill="#3567d6"/>
+<text x="426" y="423.8" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="452" y="424.0" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">¿Paciente mayor al que le</text>
+<text x="452" y="445.8" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">alivia sentarse o inclinarse</text>
+<text x="452" y="467.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">hacia delante?</text>
+<text x="418" y="501.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#6b7280" text-anchor="start" font-style="italic">Signo del carrito de la compra</text>
+<rect x="790" y="390" width="300" height="125" rx="14" fill="#eaf1ff" stroke="#3567d6" stroke-width="2.5"/>
+<circle cx="816" cy="418" r="17" fill="#3567d6"/>
+<text x="816" y="423.8" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="842" y="424.0" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">¿Cuál es el patrón de dolor</text>
+<text x="842" y="445.8" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">lumbar predominante?</text>
+<rect x="1180" y="390" width="300" height="125" rx="14" fill="#eaf1ff" stroke="#3567d6" stroke-width="2.5"/>
+<circle cx="1206" cy="418" r="17" fill="#3567d6"/>
+<text x="1206" y="423.8" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="1232" y="424.0" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">¿Qué patrón estructural</text>
+<text x="1232" y="445.8" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#1f2937" text-anchor="start">encaja mejor?</text>
+<text x="1198" y="501.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#6b7280" text-anchor="start" font-style="italic">Revisar siempre cadera y factores contribuyentes</text>
+<text x="190" y="170.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#6b7280" text-anchor="start" font-style="italic">Desvío si el dolor de pierna predomina (respuesta SÍ en el paso 1)</text>
+<rect x="190" y="180" width="300" height="100" rx="14" fill="#eaf1ff" stroke="#3567d6" stroke-width="2.5"/>
+<circle cx="216" cy="208" r="17" fill="#3567d6"/>
+<text x="216" y="213.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">1b</text>
+<text x="242" y="212.0" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937" text-anchor="start">¿El dolor CENTRALIZA con</text>
+<text x="242" y="232.5" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937" text-anchor="start">movimientos repetidos (MDT)?</text>
+<text x="208" y="266.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#6b7280" text-anchor="start" font-style="italic">SÍ: mejor pronóstico · NO: no centraliza</text>
+<rect x="580" y="180" width="300" height="100" rx="14" fill="#eaf1ff" stroke="#3567d6" stroke-width="2.5"/>
+<circle cx="606" cy="208" r="17" fill="#3567d6"/>
+<text x="606" y="213.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">1c</text>
+<text x="632" y="212.0" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937" text-anchor="start">¿Déficit de fuerza, sensibilidad</text>
+<text x="632" y="232.5" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937" text-anchor="start">o reflejos frente al lado sano?</text>
+<text x="598" y="266.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#6b7280" text-anchor="start" font-style="italic">Miotoma, reflejo o dermatoma alterado</text>
+<rect x="190" y="292" width="300" height="44" rx="10" fill="#f1e9ff" stroke="#7c4ddb" stroke-width="2"/>
+<circle cx="214" cy="314" r="13" fill="#7c4ddb"/>
+<text x="214" y="318.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="236" y="319.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">Dolor radicular (con SÍ o con NO)</text>
+<rect x="580" y="292" width="300" height="44" rx="10" fill="#f1e9ff" stroke="#7c4ddb" stroke-width="2"/>
+<circle cx="604" cy="314" r="13" fill="#7c4ddb"/>
+<text x="604" y="318.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+<text x="626" y="319.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">SÍ → Radiculopatía · NO → nada</text>
+<path d="M110 390 L110 230 L186 230" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#ah)"/>
+<text x="92" y="300.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#6b7280" text-anchor="middle">SÍ</text>
+<path d="M490 230 L576 230" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M880 230 L930 230 L930 362 L550 362 L550 386" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M330 452 L396 452" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#ah)"/>
+<text x="363" y="442.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#6b7280" text-anchor="middle">NO</text>
+<path d="M700 452 L786 452" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#ah)"/>
+<text x="743" y="442.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#6b7280" text-anchor="middle">todas</text>
+<path d="M1090 452 L1176 452" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#ah)"/>
+<text x="1133" y="442.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#6b7280" text-anchor="middle">todas</text>
+<rect x="400" y="545" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="412" y="566.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">SÍ</text>
+<text x="412" y="585.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">alivio al sentarse</text>
+<path d="M565 570 L581 570" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="585" y="545" width="182" height="50" rx="10" fill="#f1e9ff" stroke="#7c4ddb" stroke-width="2"/>
+<circle cx="607" cy="570" r="13" fill="#7c4ddb"/>
+<text x="607" y="574.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="627" y="566.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">Estenosis /</text>
+<text x="627" y="583.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">claud. neurogénica</text>
+<rect x="400" y="605" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="412" y="626.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">NO</text>
+<text x="412" y="645.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">sin este patrón</text>
+<path d="M565 630 L581 630" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="585" y="605" width="182" height="50" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="676" y="636.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#6b7280" text-anchor="middle">sin hipótesis</text>
+<rect x="400" y="665" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="412" y="686.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">VASCULAR</text>
+<text x="412" y="705.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">cede con solo pararse</text>
+<path d="M565 690 L581 690" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="585" y="665" width="182" height="50" rx="10" fill="#fde8e8" stroke="#d0342c" stroke-width="2"/>
+<text x="597" y="686.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">Derivación médica</text>
+<text x="597" y="703.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">(claud. vascular)</text>
+<rect x="790" y="545" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="802" y="566.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">AGUDO / RIGIDEZ</text>
+<text x="802" y="585.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">&lt; 16 días, hipomóvil</text>
+<path d="M955 570 L971 570" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="975" y="545" width="182" height="50" rx="10" fill="#e3f6ee" stroke="#0f9a6e" stroke-width="2"/>
+<circle cx="997" cy="570" r="13" fill="#0f9a6e"/>
+<text x="997" y="574.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="1017" y="566.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">Disfunción segm.</text>
+<text x="1017" y="583.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">(déf. movilidad)</text>
+<rect x="790" y="605" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="802" y="626.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">PERSISTENTE</text>
+<text x="802" y="645.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">sensación de «fallo»</text>
+<path d="M955 630 L971 630" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="975" y="605" width="182" height="50" rx="10" fill="#e3f6ee" stroke="#0f9a6e" stroke-width="2"/>
+<circle cx="997" cy="630" r="13" fill="#0f9a6e"/>
+<text x="997" y="634.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="1017" y="626.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">Inestabilidad</text>
+<text x="1017" y="643.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">(déf. coordinación)</text>
+<rect x="790" y="665" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="802" y="686.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">NINGUNO</text>
+<text x="802" y="705.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">dolor inespecífico</text>
+<path d="M955 690 L971 690" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="975" y="665" width="182" height="50" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="1066" y="696.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#6b7280" text-anchor="middle">sin hipótesis</text>
+<rect x="1180" y="545" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1192" y="566.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">DISCOGÉNICO</text>
+<text x="1192" y="585.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">línea media, centraliza</text>
+<path d="M1345 570 L1361 570" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="1365" y="545" width="182" height="50" rx="10" fill="#fff1dc" stroke="#d17f00" stroke-width="2"/>
+<circle cx="1387" cy="570" r="13" fill="#d17f00"/>
+<text x="1387" y="574.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+<text x="1407" y="575.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">Discogénico</text>
+<rect x="1180" y="605" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1192" y="626.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">FACETARIO</text>
+<text x="1192" y="645.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">extensión + rotación</text>
+<path d="M1345 630 L1361 630" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="1365" y="605" width="182" height="50" rx="10" fill="#fff1dc" stroke="#d17f00" stroke-width="2"/>
+<circle cx="1387" cy="630" r="13" fill="#d17f00"/>
+<text x="1387" y="634.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">7</text>
+<text x="1407" y="635.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">Facetario</text>
+<rect x="1180" y="665" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1192" y="686.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">SACROILÍACA</text>
+<text x="1192" y="705.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">zona de Fortin</text>
+<path d="M1345 690 L1361 690" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="1365" y="665" width="182" height="50" rx="10" fill="#fff1dc" stroke="#d17f00" stroke-width="2"/>
+<circle cx="1387" cy="690" r="13" fill="#d17f00"/>
+<text x="1387" y="694.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">8</text>
+<text x="1407" y="686.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">Articulación</text>
+<text x="1407" y="703.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">sacroilíaca</text>
+<rect x="1180" y="725" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1192" y="746.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">MIOFASCIAL</text>
+<text x="1192" y="765.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">banda tensa reconocida</text>
+<path d="M1345 750 L1361 750" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="1365" y="725" width="182" height="50" rx="10" fill="#fff1dc" stroke="#d17f00" stroke-width="2"/>
+<circle cx="1387" cy="750" r="13" fill="#d17f00"/>
+<text x="1387" y="754.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">9</text>
+<text x="1407" y="755.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" text-anchor="start">Miofascial</text>
+<rect x="1180" y="785" width="165" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="1192" y="806.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="start">NINGUNO</text>
+<text x="1192" y="825.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#6b7280" text-anchor="start">sin patrón predominante</text>
+<path d="M1345 810 L1361 810" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="1365" y="785" width="182" height="50" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="1456" y="816.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" fill="#6b7280" text-anchor="middle">sin hipótesis</text>
+<text x="400" y="533.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#6b7280" text-anchor="start">Respuestas</text>
+<text x="790" y="533.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#6b7280" text-anchor="start">Respuestas</text>
+<text x="1180" y="533.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#6b7280" text-anchor="start">Respuestas</text>
+<text x="400" y="736.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#d0342c" text-anchor="start">VASCULAR: el recorrido sigue al paso 3, pero la derivación es prioritaria.</text>
+<text x="400" y="753.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#d0342c" text-anchor="start">La app la muestra en rojo en la fase 4, la fase 5, las notas y el informe.</text>
+<rect x="400" y="790" width="760" height="120" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="420" y="818.0" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937" text-anchor="start">Al terminar sin ninguna hipótesis activa</text>
+<text x="420" y="844.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1f2937" text-anchor="start">La app propone trabajar con «dolor lumbar inespecífico», revisar los factores psicosociales</text>
+<text x="420" y="863.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1f2937" text-anchor="start">(fase 1 y SINSS) y reconsiderar las respuestas. Si el cuadro es crónico y el riesgo psicosocial</text>
+<text x="420" y="882.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#1f2937" text-anchor="start">es alto, sugiere considerar también sensibilización central.</text>
+<path d="M1180 850 L1166 850" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#ah)"/>
+<text x="1186" y="878.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#6b7280" text-anchor="start">¿ninguna hipótesis?</text>
+<path d="M1363 845 L1363 946" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#ah)"/>
+<text x="1400" y="900.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#6b7280" text-anchor="middle">fin</text>
+<text x="40" y="553.0" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937" text-anchor="start">Leyenda</text>
+<rect x="40" y="573" width="34" height="26" rx="6" fill="#eaf1ff" stroke="#3567d6" stroke-width="2"/>
+<text x="86" y="591.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Pregunta del árbol</text>
+<rect x="40" y="613" width="34" height="26" rx="6" fill="#f1e9ff" stroke="#7c4ddb" stroke-width="2"/>
+<text x="86" y="631.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Hipótesis neural (3, 4, 5)</text>
+<rect x="40" y="653" width="34" height="26" rx="6" fill="#e3f6ee" stroke="#0f9a6e" stroke-width="2"/>
+<text x="86" y="671.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Movilidad y control (1, 2)</text>
+<rect x="40" y="693" width="34" height="26" rx="6" fill="#fff1dc" stroke="#d17f00" stroke-width="2"/>
+<text x="86" y="711.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Estructural (6, 7, 8, 9)</text>
+<rect x="40" y="733" width="34" height="26" rx="6" fill="#fde8e8" stroke="#d0342c" stroke-width="2"/>
+<text x="86" y="751.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Seguridad: derivar</text>
+<text x="40" y="795.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#6b7280" text-anchor="start">Las hipótesis se acumulan: un</text>
+<text x="40" y="814.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#6b7280" text-anchor="start">paciente puede activar varias.</text>
+<text x="40" y="833.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#6b7280" text-anchor="start">El recorrido no se corta en</text>
+<text x="40" y="852.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="normal" fill="#6b7280" text-anchor="start">ninguna respuesta.</text>
+<rect x="40" y="950" width="1507" height="135" rx="14" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+<text x="62" y="980.0" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="start">Fase 4b · confirmar cada hipótesis activa con sus tests</text>
+<circle cx="73" cy="1005" r="11" fill="#0f9a6e"/>
+<text x="73" y="1009.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="92" y="1010.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Regla de Flynn (4/5) · PAIVM</text>
+<circle cx="573" cy="1005" r="11" fill="#0f9a6e"/>
+<text x="573" y="1009.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="592" y="1010.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Inestabilidad en prono · flexión ≥ 53°</text>
+<circle cx="1073" cy="1005" r="11" fill="#7c4ddb"/>
+<text x="1073" y="1009.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="1092" y="1010.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">SLR · Slump · criterios RAPIDH</text>
+<circle cx="73" cy="1033" r="11" fill="#7c4ddb"/>
+<text x="73" y="1037.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="92" y="1038.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Clúster de estenosis (bilateral, alivio al sentarse…)</text>
+<circle cx="573" cy="1033" r="11" fill="#7c4ddb"/>
+<text x="573" y="1037.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+<text x="592" y="1038.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Miotomas · reflejos · sensibilidad</text>
+<circle cx="1073" cy="1033" r="11" fill="#d17f00"/>
+<text x="1073" y="1037.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+<text x="1092" y="1038.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Centralización · preferencia direccional</text>
+<circle cx="73" cy="1061" r="11" fill="#d17f00"/>
+<text x="73" y="1065.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">7</text>
+<text x="92" y="1066.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Dolor en extensión/rotación · PA unilateral</text>
+<circle cx="573" cy="1061" r="11" fill="#d17f00"/>
+<text x="573" y="1065.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">8</text>
+<text x="592" y="1066.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Clúster de Laslett (3 de 5)</text>
+<circle cx="1073" cy="1061" r="11" fill="#d17f00"/>
+<text x="1073" y="1065.3" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">9</text>
+<text x="1092" y="1066.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#1f2937" text-anchor="start">Banda tensa · punto hipersensible</text>
+</svg>
