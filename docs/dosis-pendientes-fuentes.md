@@ -12,7 +12,10 @@ Leyenda:
 
 «Fragmento» quiere decir que el dato solo se ha visto en el resumen o el fragmento del buscador. Está sin verificar.
 
-## Lumbar (`lu5`–`lu9`)
+## Lumbar (`lu1`–`lu9`)
+
+`lu1`–`lu4` no eran pendientes (tenían dosis), pero sus cifras no tenían fuente: ✅ revisadas en 2026-10 con George 2021, NICE NG59 y Munakomi 2023 (ver Fase E en `MIGRATION_PLAN.md`).
+
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
 | lu5 | Radiculopatía (déficit neurológico) | B | George 2021 (PMC10508241) · NICE NG59 | ✅ Hecho (2026-10): textos completos leídos. Ejercicio (B), movilización articular y neural (B), sin tracción (D; NICE: no ofrecer), terapia manual solo con ejercicio (NICE 1.2.7). Grado deducido del verbo con la tabla de la guía. Ninguna fija volumen |
