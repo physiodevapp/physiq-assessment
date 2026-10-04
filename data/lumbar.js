@@ -183,6 +183,27 @@ export const screening = {
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.',
               { texto: 'Leslie 2024 — Leslie, Sajjad y Singh, «Nocturia», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de febrero de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK518987/' }
             ]
+          } },
+        { id: 'l_u4', text: '¿Ha tenido un dolor muy intenso en el costado o la zona lumbar, que va y viene a oleadas y baja hacia la ingle o los genitales, con náuseas o vómitos?', alerta: true,
+          razonamiento: {
+            porque: 'Cuando un cálculo baja por el uréter y lo obstruye, la orina se acumula y tensa la pared del uréter: aparece un dolor muy intenso, cólico, en la zona lumbar o el costado, que se irradia a la ingle o los genitales porque esos órganos comparten inervación. Los movimientos de la columna no lo provocan.',
+            peso: 'Orienta a una causa visceral, no mecánica, sobre todo si la exploración de la columna no reproduce el dolor. Con fiebre o escalofríos sugiere un cálculo infectado, con riesgo de urosepsis: derivación urgente. Sin fiebre, pide valoración médica.',
+            detalle: 'Cómo se presenta (Wróblewski 2026): dolor cólico intenso en la zona lumbar que va y viene, con vómitos y a veces fiebre; la mitad de los pacientes tienen náuseas o vómitos. Al recorrer el uréter, el cálculo puede dar sangre en la orina (en el 90 % de los casos solo se ve al microscopio), escozor al orinar o urgencia. La sangre en la orina se detecta en el 95 % el primer día y en el 65 % a los 3–4 días: que no la haya no lo descarta. El dolor puede subir la tensión arterial y el pulso. En la exploración es frecuente el dolor en el ángulo costovertebral; el abdomen suele ser normal. Algunos cálculos no dan síntomas.\n\nCómo lo describe el capítulo lumbar de Lluch 2020 (tabla 1): dolor agudo y rápido, intermitente, que llega a los testículos o a los labios mayores; el mismo dolor con fiebre puede indicar una infección del riñón; la exploración mecánica de la columna no lo provoca.\n\nFactores de riesgo (Wróblewski 2026): beber poca agua; mucha proteína animal, sal u oxalato en la dieta; obesidad, diabetes, hipertensión, gota e hiperlipidemia; y los antecedentes familiares, uno de los indicadores más sólidos. Recae mucho: la mitad en 5 años y hasta el 80 % en 10, así que un cólico previo cuenta.\n\nQué hacer con un SÍ: preguntar por cólicos previos, fiebre, escalofríos y cambios en la orina; comprobar que la exploración de la columna no reproduce el dolor; derivar. La mayoría de los cálculos (86 %) se expulsan solos.',
+            fisiologia: {
+              pasos: [
+                'Los cálculos se forman en el riñón cuando se rompe el equilibrio entre lo que favorece y lo que impide la cristalización: poca agua, poco citrato (que mantiene el calcio disuelto) o exceso de calcio, oxalato o ácido úrico en la orina. El 80 % son de oxalato o fosfato cálcico.',
+                'Un cálculo puede desprenderse y bajar por el uréter hacia la vejiga.',
+                'Si obstruye el uréter, la orina se acumula por encima y tensa su pared; aumenta la liberación de prostaglandinas, que intensifican el dolor y la inflamación.',
+                'El aparato urinario comparte inervación con el digestivo y con la pared del cuerpo: el dolor se refiere al costado, la ingle, la vejiga o los genitales, y aparecen náuseas y vómitos.',
+                'Al recorrer el uréter, el cálculo puede producir sangre en la orina; si está infectado, aparecen fiebre y escalofríos, con riesgo de urosepsis.'
+              ],
+              metafora: 'Como una piedrecita atascada en una manguera: el agua se acumula detrás, estira la goma y duele a oleadas.'
+            },
+            fuentes: ['Wróblewski 2026', 'Lluch 2020'],
+            citas: [
+              { texto: 'Wróblewski 2026 — Wróblewski, Wróblewska, Szukalska, Karczewska, Lichwala, Samborska, Balajewicz y Siwek, «Current Perspectives on Urolithiasis: Pathogenesis, Clinical Management, and Treatment», Cureus 2026;18(1):e101141 (texto completo en PMC), apartados «Etiology», «Diagnosis» y «Treatment and management».', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12883049/' },
+              'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.'
+            ]
           } }
       ],
       zonasDolor: [
@@ -601,6 +622,40 @@ export const screening = {
           } }
       ]
     },
+    {
+      id: 'l_infeccion', icon: '🦠', nombre: 'Infección vertebral',
+      banderasRojas: [
+        'Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH',
+        'Signos neurológicos (déficit sensitivo o motor, alteraciones de vejiga o recto) junto a fiebre o malestar general'
+      ],
+      banderasAmarillas: [
+        'Diabetes, corticoides prolongados u otros inmunosupresores, insuficiencia renal crónica o consumo de drogas'
+      ],
+      preguntas: [
+        { id: 'l_inf1', text: '¿Ha tenido fiebre o alguna infección en las últimas semanas, le han operado o infiltrado la espalda hace poco, o tiene las defensas bajas (corticoides, inmunosupresores, VIH, diabetes)?', alerta: true, s1: true,
+          razonamiento: {
+            porque: 'Las bacterias de una infección en otra parte del cuerpo (boca, piel, intestino) pueden llegar por la sangre a la columna, sobre todo a la zona lumbosacra, o entrar directamente con una intervención. La infección del disco y las vértebras (espondilodiscitis) da un dolor de espalda que no se explica por la mecánica, y es más probable con las defensas bajas.',
+            peso: 'Es rara pero grave (mortalidad de hasta el 20 %) y cada vez más frecuente, sobre todo en mayores. Empieza de forma insidiosa y con síntomas poco específicos: el dolor de espalda aparece en el 79 % y la fiebre en el 72 %, así que más de una cuarta parte no tiene fiebre. Un SÍ junto a dolor nocturno, dolor que empeora con el tiempo o que no responde al tratamiento pide valoración médica; con déficit neurológico (hasta la mitad de los casos), sin demora: es la indicación más clara de cirugía.',
+            detalle: 'Mecanismo (Sendrea 2026): en el adulto el disco no tiene vasos. Las bacterias llegan casi siempre por las arterias a la zona del hueso pegada al disco, donde la médula ósea tiene un riego abundante y lento, y desde ahí invaden el disco y la vértebra vecina, que comparten la misma arteria: por eso suelen afectarse dos vértebras contiguas. Más rara es la vía venosa, por el plexo de Batson, en infecciones de los órganos de la pelvis, o la entrada directa desde un foco vecino, un traumatismo o un procedimiento. La mayoría de los casos son lumbosacros, donde también se forman la mayoría de los abscesos paravertebrales.\n\nCómo se presenta (Sendrea 2026): comienzo insidioso, desde un dolor leve hasta el déficit neurológico, la sepsis o la muerte. El signo más frecuente es el dolor a la palpación de la columna, con espasmo de la musculatura paravertebral. El dolor radicular, si aparece, puede despistar hacia una hernia. Hay déficit neurológico en el 47–50 %: sensitivo y motor, y también vejiga neurógena y pérdida del tono anal. En la tuberculosa los síntomas duran más y la cifosis es más frecuente.\n\nFactores de riesgo (Sendrea 2026; Lluch 2020, tabla 1): todo lo que baja las defensas (corticoides prolongados y otros inmunosupresores, infecciones crónicas, consumo de drogas, diabetes, insuficiencia renal crónica, sepsis de otro origen, VIH), una infección bacteriana reciente y una cirugía lumbar reciente. Los varones se afectan casi el doble.\n\nCon qué se confunde (Lluch 2020, tabla 1): el cáncer vertebral comparte el dolor nocturno, el dolor que empeora con el tiempo y la falta de respuesta al tratamiento; la fiebre y el antecedente de infección o de cirugía orientan a infección.\n\nQué hacer con un SÍ: tomar la temperatura, preguntar por el dolor nocturno y su evolución, explorar la neurología y derivar. La RM es la prueba de imagen de referencia; los hemocultivos (positivos en la mitad de los casos) y la biopsia los decide el médico.',
+            fisiologia: {
+              pasos: [
+                'Una infección en otra parte del cuerpo (boca, piel, intestino) deja bacterias en la sangre; o un procedimiento o un foco vecino las lleva directamente junto a la columna.',
+                'En el adulto el disco no tiene vasos: las bacterias llegan por las arterias a la zona del hueso pegada al disco, donde la médula ósea recibe mucha sangre que circula despacio.',
+                'Desde ahí invaden el disco y la vértebra vecina, que comparten la misma arteria: por eso suelen afectarse dos vértebras contiguas.',
+                'La infección puede extenderse a los tejidos de alrededor y formar abscesos paravertebrales (sobre todo en la zona lumbosacra) o epidurales.',
+                'En la zona lumbar el dolor y el espasmo paravertebral aparecen pronto; si la infección alcanza las raíces, aparecen déficits sensitivos y motores, y alteraciones de vejiga y recto.'
+              ],
+              nota: 'Las fuentes leídas no explican por qué el dolor empeora de noche: la tabla 1 de Lluch 2020 lo recoge como rasgo clínico.',
+              metafora: 'Como la humedad que entra por donde el agua corre despacio y pasa de una planta a la de al lado.'
+            },
+            fuentes: ['Sendrea 2026', 'Lluch 2020'],
+            citas: [
+              { texto: 'Sendrea 2026 — Sendrea, Periferakis, Periferakis, Xefteris, Troumpata, Periferakis, Scheau, Preda, Nedelea, Vulpe, Birlutiu, Scheau y Cergan, «Infectious Spondylodiscitis of Bacterial Causes in Adults: Epidemiology, Pathophysiology, Diagnostic and Treatment Challenges», Microorganisms 2026;14(5):1110 (texto completo en PMC), apartados 2, 3.2 y 6.', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC13210327/' },
+              'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.'
+            ]
+          } }
+      ]
+    },
     SIS_ENDOCRINO,
     SIS_HEMATOLOGICO
   ]
@@ -615,7 +670,7 @@ export const tree = {
       tag: 'Paso 1 — Evaluación de Dolor Irradiado (Rama Radicular)',
       question: '¿El dolor baja por la pierna (unilateral) y es peor que el dolor de espalda?',
       options: [
-        { label: 'SÍ — SLR positivo <60°, Test de Slump positivo o déficits neurológicos dermatomales', value: 'si', next: 'lu_step1b', hypothesis: [] },
+        { label: 'SÍ — SLR positivo <60° o Test de Slump positivo', value: 'si', next: 'lu_step1b', hypothesis: [] },
         { label: 'NO — Sin irradiación predominante a la pierna', value: 'no', next: 'lu_step2', hypothesis: [] }
       ]
     },
@@ -747,7 +802,7 @@ export const hypotheses = {
       { name: 'Edad > 48 años', sn: null, sp: null, lr_pos: null, lr_neg: null, cluster: 'cook', criterio: 'Positivo si el paciente tiene más de 48 años.' },
       { name: 'Marcha con base amplia', sn: null, sp: null, lr_pos: '13', lr_neg: null, criterio: 'Observación de la marcha: aumento de la base de sustentación. Muy específica, poco sensible.', fuente: 'Suri 2010 (JAMA, revisión RCE; IC 95 %: 1,9–95)' },
       { name: 'Romberg alterado', sn: null, sp: null, lr_pos: '4.2', lr_neg: null, criterio: 'Alteración del equilibrio en bipedestación con pies juntos y ojos cerrados.', fuente: 'Suri 2010 (JAMA, revisión RCE; IC 95 %: 1,4–13)' },
-      { name: 'Déficits sensoriales (L3-S1)', sn: '~50%', sp: '~80%', lr_pos: null, lr_neg: null, criterio: 'Distribuciones de pinchazo/vibración en L3-S1.' },
+      { name: 'Déficits sensoriales (L3-S1)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Pinchazo y vibración en L3–S1, comparando con el lado sano. En la estenosis la exploración neurológica suele ser normal; a veces hay déficits motores o sensitivos leves en la raíz L5.', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 313' },
       // Al final (no en medio) para no desplazar los índices de state.testResults ya guardados.
       { name: 'Test de extensión lumbar de 30 s', sn: '51%', sp: '69%', lr_pos: null, lr_neg: null, criterio: 'De pie, extensión lumbar mantenida 30 s. Positivo: aparece o aumenta el dolor en el muslo (por debajo del pliegue glúteo), no solo el lumbar. No informativo por sí solo. Una versión modificada (hasta 60 s, más extensión + inclinación hacia el lado sintomático) da S 92 %, E 40 %, LR− 0,2, pero con IC 95 % hasta 1,36 en 30 pacientes: no sirve aún para descartar.', fuente: 'Katz 1995, datos citados en Dobbs 2016 (Manual Therapy; referencia: RM)' }
     ]
