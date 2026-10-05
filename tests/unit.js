@@ -974,10 +974,10 @@ test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y de
   assert.equal(calcLRScore(HYPOTHESES.ro17, { 0: 'neg' }).totalLR, 1);
 });
 
-test('hombro: sin urgencia; la bisagra reparte congelado, artrosis GH y luxación/fractura', () => {
+test('hombro: solo h_g1 (ectópico) es urgencia; la bisagra reparte congelado, artrosis GH y luxación/fractura', () => {
   const qs = SYSTEMIC_SCREENING.hombro.sistemas.flatMap(s => s.preguntas);
   assert.equal(SYSTEMIC_SCREENING.hombro.urgencia, undefined);
-  assert.ok(qs.every(q => !q.urgencia));
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['h_g1']);
   ['h_t1', 'h_i1', 'h_n1'].forEach(id => assert.ok(qs.find(q => q.id === id), id));
   const steps = CIF_TREES.hombro.steps, s2 = steps.find(s => s.id === 'h_step2');
   assert.deepEqual(s2.options.find(o => o.value === 'si').hypothesis, []);
