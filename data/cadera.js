@@ -28,14 +28,19 @@ export const screening = {
         'Dolor constante nocturno en cadera/muslo sin alivio postural',
         'Antecedentes de cáncer de próstata, testículo, colon o riñón',
         'Masa palpable en muslo o zona glútea',
-        // Tarjeta cadera (guía de consulta), BANDERAS «Cáncer»
-        '≥50 años + sin mejoría en 1 mes + pérdida de peso + cáncer previo: S 100 % para malignidad. Lo que más informa: cáncer previo, sospecha clínica, VSG elevada y hematocrito bajo',
+        // Tarjeta cadera (guía de consulta), BANDERAS «Cáncer». Sin la «S 100 %» de la
+        // combinación: ningún estudio ha evaluado combinaciones de banderas (Henschke 2013).
+        'Factores de riesgo de malignidad: ≥50 años, sin mejoría en 1 mes, pérdida de peso inexplicada, cáncer previo (ninguna combinación está validada). Lo que más informa: cáncer previo, sospecha clínica, VSG elevada y hematocrito bajo',
         'Masas o ganglios que crecen o fluctúan; avulsión ósea en un adulto mayor (descartar metástasis)',
-        'Adenopatía inguinal sin foco séptico en el miembro inferior: considerar malignidad'
+        'Adenopatía inguinal sin foco séptico en el miembro inferior: considerar malignidad',
+        // Lluch 2020, cap. 4.1.3, p. 147 (tabla 2); Goodman 2018, cap. 16, pp. 614 y 631–632
+        'Tumores óseos primarios (osteoma osteoide: dolor sordo nocturno en el joven que alivian la actividad y, de forma desproporcionada, la aspirina; condrosarcoma, tumor de células gigantes, Ewing) y masas de partes blandas'
       ],
       banderasAmarillas: [
         'Edad >50 años con dolor insidioso en cadera',
-        'Pérdida de peso inexplicada'
+        'Pérdida de peso inexplicada',
+        // Lluch 2020, cap. 4.1.3, p. 146
+        'Antecedente familiar de cáncer'
       ],
       preguntas: [
         { id: 'c5', text: '¿Tiene antecedentes de cáncer de cualquier tipo (especialmente próstata, mama, pulmón, riñón)?', alerta: true, s1: true,
@@ -364,7 +369,9 @@ export const screening = {
         'Fiebre y dolor abdominal simultáneo al dolor de cadera',
         // Tarjeta cadera (guía de consulta), BANDERAS «Hernia inguinal o femoral» y «Visceral»
         'Apendicitis, enfermedad de Crohn, diverticulitis; cáncer digestivo, linfoma',
-        'Hernia inguinal (80 % varones: dolor, tumefacción y bulto con sensación de peso o arrastre) o femoral (85 % mujeres: nódulo lateral e inferior al tubérculo púbico). Palpar DE PIE el canal inguinal y, si no se nota, pedir que tosa'
+        'Hernia inguinal (80 % varones: dolor, tumefacción y bulto con sensación de peso o arrastre) o femoral (unas 4 veces más en mujeres: nódulo lateral e inferior al tubérculo púbico). Palpar DE PIE el canal inguinal y, si no se nota, pedir que tosa',
+        // Lluch 2020, cap. 4.1.3, p. 147 (tabla 2); Goodman 2018, cap. 16, pp. 617 y 639
+        'Líquido en la cavidad peritoneal (ascitis por cirrosis, insuficiencia cardiaca, cáncer): abdomen distendido con dolor inguinal o lumbar; preguntar por enfermedad hepática o alcohol'
       ],
       banderasAmarillas: [
         'Distensión abdominal acompañando el dolor de cadera',
@@ -456,8 +463,10 @@ export const screening = {
       banderasRojas: [
         'Fractura de estrés del cuello femoral: dolor inguinal vago e insidioso que empeora con la actividad, dolor al final del rango (sobre todo en RI), dolor profundo nocturno o en carga → DERIVACIÓN URGENTE',
         'Fractura de estrés de rama púbica (corredores, mucho trabajo de aductores; el dolor NO aumenta con abducción pasiva ni aducción resistida) o de diáfisis femoral (dolor vago en muslo anterior en carga; fulcro S 88–93 %, E 13–75 %)',
+        // Lluch 2020, cap. 4.1.3, p. 147 (tabla 2); Goodman 2018, cap. 15, p. 583
+        'Fractura de estrés del acetábulo o del sacro (sacro: osteoporosis, embarazo o posparto, radioterapia pélvica, corticoides prolongados, deportistas y militares)',
         'Osteonecrosis de la cabeza femoral: corticoides o alcohol prolongados, traumatismo o fractura previos, lupus y otras conectivopatías, hiperlipidemia; dolor inguinal profundo en carga',
-        'Lesiones del desarrollo: EFCF (9–16 años, durante el estirón), Perthes (4–8 años, más en varones), displasia, apofisitis púbica',
+        'Lesiones del desarrollo: EFCF (9–16 años, durante el estirón), Perthes (4–10 años, más en varones), displasia, apofisitis púbica',
         'Fractura por avulsión en el adolescente con tracción brusca (EIAI, EIAS, pubis, tuberosidad isquiática, trocánteres); en un adulto mayor, descartar metástasis'
       ],
       banderasAmarillas: [
@@ -612,6 +621,27 @@ export const screening = {
               { texto: 'Wenker y Quint 2023 — Wenker y Quint, «Ankylosing Spondylitis», StatPearls [Internet], NCBI Bookshelf, última actualización 20 de junio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK470173/' },
               'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.'
             ]
+          } },
+        { id: 'ca_in3', text: '¿Le han operado de la cadera o la ingle (prótesis, artroscopia, hernia) o le han infiltrado la cadera, y el dolor es nuevo, no cede en reposo o ha tenido una infección reciente?', alerta: true,
+          razonamiento: {
+            porque: 'Una prótesis, una cirugía o una infiltración son una puerta para la infección: las bacterias pueden entrar durante el procedimiento o llegar más tarde por la sangre desde una infección en otro sitio. Un dolor nuevo que no cede en reposo y sigue de noche, o que aparece tras una infección reciente, puede ser la primera señal.',
+            peso: 'No hay cifras para la pregunta. Lluch incluye la cirugía previa de cadera o ingle entre las banderas rojas del dolor de cadera e ingle. Para Goodman, una prótesis (sobre todo de cadera) con una infección reciente de cualquier tipo y un dolor nuevo de cadera, ingle o rodilla es sospechosa, y el dolor persistente que no cede en reposo y sigue de noche sugiere infección y pide derivación médica. La cirugía articular reciente, la prótesis y la infiltración previa son factores de riesgo de artritis séptica en el adulto (Momodu y Savaliya).',
+            detalle: 'Infección de prótesis, según el tiempo desde la cirugía: precoz (en los 3 primeros meses), diferida (de 3 a 24 meses) o tardía (más de 24 meses), esta casi siempre por bacterias llegadas por la sangre desde otro foco; la mayoría tiene una fístula que supura (Momodu y Savaliya). Diferencial con el aflojamiento de un componente: dolor de «arranque» en la ingle o el muslo que cede tras 5–10 pasos y vuelve al caminar un rato; el dolor que no cede en reposo y sigue de noche orienta a infección. Ante un dolor articular sin causa clara, preguntar por infecciones de las últimas 6 semanas (urinaria, respiratoria, dental, de transmisión sexual, por estreptococo) y por exantema: si los hay, derivar (Goodman). Si además hay fiebre, malestar general o no puede apoyar, es la pregunta de artritis séptica: urgencias hoy.',
+            fisiologia: {
+              pasos: [
+                'Una cirugía o una infiltración abre un camino directo para que las bacterias entren en la articulación; más tarde también pueden llegar por la sangre desde una infección en otro sitio.',
+                'La sinovial está muy irrigada y no tiene una membrana basal que la limite, así que las bacterias que llegan se instalan con facilidad; algunas, como el estafilococo, tienen adhesinas que las pegan a las proteínas de la articulación.',
+                'La inflamación libera citoquinas y proteasas que dañan la articulación; el dolor deja de depender de la postura y la carga: no cede en reposo y sigue de noche.',
+                'En una prótesis, la infección puede dar la cara en los primeros meses o años después, y a menudo acaba abriendo una fístula que supura.'
+              ],
+              metafora: 'Como una puerta que se abrió para arreglar la casa: casi siempre se cierra bien, pero conviene vigilar quién pudo entrar.'
+            },
+            fuentes: ['Goodman 2018', 'Momodu y Savaliya 2023', 'Lluch 2020'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 611, 614 y 633.',
+              { texto: 'Momodu y Savaliya 2023 — Momodu y Savaliya, «Septic Arthritis», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK538176/' },
+              'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.'
+            ]
           } }
       ]
     },
@@ -626,12 +656,13 @@ export const tree = {
   steps: [
     {
       id: 'ca_step1',
+      // Lluch 2020, cap. 4.1.3, pp. 153–154; cap. 4.1.4, pp. 157–158; Goodman 2018, cap. 15, p. 582.
       tag: 'Paso 1 — Diferenciación Proximal (Clearing)',
       question: '¿El dolor podría ser referido desde la columna lumbar o la articulación sacroilíaca?',
       options: [
-        { label: 'SÍ — Sensibilidad sobre la ASI (sin sensibilidad en L5) y test de compresión pélvica positivo', value: 'si_asi', next: null, hypothesis: ['ca10'] },
-        { label: 'SÍ — Dolor que cambia con movimientos repetidos de la espalda o déficit neurológico dermatomal', value: 'si_lumbar', next: null, hypothesis: [] },
-        { label: 'NO — Origen puramente coxofemoral', value: 'no', next: null, hypothesis: [] }
+        { label: 'SÍ — SACROILÍACA: señala con el dedo el dolor junto a la EIPS (rara vez por encima de L5) y 3 o más de 5 tests de provocación positivos', value: 'si_asi', next: null, hypothesis: ['ca10'] },
+        { label: 'SÍ — LUMBAR: el dolor cambia con movimientos repetidos de la espalda, o la elevación de la pierna recta o el slump reproducen su dolor', value: 'si_lumbar', next: null, hypothesis: [] },
+        { label: 'NO — Origen coxofemoral: la cojera (unas 7 veces) y la rotación interna limitada (unas 14 veces) orientan más a la cadera que a la columna', value: 'no', next: null, hypothesis: [] }
       ]
     },
     {
@@ -656,17 +687,19 @@ export const tree = {
     },
     {
       id: 'ca_step3',
+      // Lluch 2020, cap. 4.1.2, p. 137; cap. 4.1.4, pp. 162–163: flexión-RI y FADDIR
+      // tienen S alta y E baja; sirven para descartar, no para confirmar.
       tag: 'Paso 3 — Intraarticular (Joven/Activo)',
-      question: '¿El test FADDIR y FABER son positivos? ¿Hay chasquidos o síntomas mecánicos?',
+      question: '¿Sospecha de origen intraarticular: dolor inguinal ligado al movimiento con FADDIR o flexión-RI positivos? Estos tests descartan; positivos no confirman.',
       options: [
-        { label: 'FADDIR+/FABER+ — Síntomas compatibles con pinzamiento femoroacetabular (SIFA)', value: 'sifa', next: null, hypothesis: ['ca2'] },
-        { label: 'FADDIR+/FABER+ con chasquidos/bloqueos — Posible desgarro labral', value: 'labrum', next: null, hypothesis: ['ca2', 'ca3'] },
-        { label: 'Negativos — Sin patrón intraarticular claro', value: 'no', next: 'ca_step4', hypothesis: [] }
+        { label: 'SÍ — Compatible con pinzamiento femoroacetabular (SIFA), sin confirmar: seguir con Thomas', value: 'sifa', next: null, hypothesis: ['ca2'] },
+        { label: 'SÍ, con chasquido doloroso, bloqueo o fallo — Posible desgarro labral', value: 'labrum', next: null, hypothesis: ['ca2', 'ca3'] },
+        { label: 'NO — FADDIR y flexión-RI negativos: origen intraarticular improbable', value: 'no', next: 'ca_step4', hypothesis: [] }
       ]
     },
     {
       // Tarjeta cadera (guía de consulta), nodo 5b. Solo se llega si el paso 3
-      // es positivo (su «Negativos» salta al paso 4: intraarticular improbable).
+      // es positivo (su «NO» salta al paso 4: intraarticular improbable).
       // La tarjeta dice «identificar entidad» sin nombrarlas: aquí van las
       // fichas intraarticulares que aún no activa el paso 3.
       id: 'ca_step3b',
@@ -725,6 +758,7 @@ export const tree = {
         { label: 'MERALGIA — Tinel bajo la EIAS, parestesias anterolaterales del muslo', value: 'meralgia', next: null, hypothesis: ['ca14'] },
         { label: 'OBTURADOR — Dolor en ingle y muslo medial con el ejercicio', value: 'obturador', next: null, hypothesis: ['ca14'] },
         { label: 'ILIOINGUINAL, ILIOHIPOGÁSTRICO O GENITOFEMORAL — Arch and twist de pie', value: 'ilioinguinal', next: null, hypothesis: ['ca14'] },
+        { label: 'PUDENDO — Dolor perineal al sentarse o en bici, sin déficit sensitivo objetivo', value: 'pudendo', next: null, hypothesis: ['ca14'] },
         { label: 'SENSIBILIZACIÓN CENTRAL — Nada encaja o dolor extenso (revisar banderas rojas)', value: 'sc', next: null, hypothesis: ['ca15'] },
         { label: 'NINGUNO — Sin patrón neuropático ni dolor extenso', value: 'no', next: null, hypothesis: [] }
       ]
@@ -751,7 +785,8 @@ export const hypotheses = {
       { name: 'Rotación Interna disminuida (<24°)', sn: '66%', sp: '79%', lr_pos: '3.2', lr_neg: '0.43', criterio: 'Rotación interna pasiva de cadera menor de 24° (o 15° menos que lado sano). El umbral es de la tarjeta: en los estudios, «disminuida» con goniómetro o frente al lado sano.', fuente: 'Metcalfe 2019 (JAMA, Rational Clinical Examination: 6 estudios, 1110 pacientes; referencia: radiografía simple); LR+ IC 95 %: 1,7–6,0; LR− IC 0,31–0,60' },
       { name: 'Dolor posterior con sentadilla profunda', sn: '24%', sp: '96%', lr_pos: '6.1', lr_neg: '0.79', criterio: 'Alta especificidad. Dolor posterior al realizar una sentadilla profunda. Negativa no descarta.', fuente: 'Metcalfe 2019 (JAMA, Rational Clinical Examination: 6 estudios, 1110 pacientes; referencia: radiografía simple); 72 pacientes, LR+ IC 95 %: 1,3–29' },
       { name: 'Debilidad de abductores', sn: '44%', sp: '90%', lr_pos: '4.5', lr_neg: '0.62', criterio: 'Debilidad de la abducción de cadera frente al lado sano. Alta especificidad; normal no descarta.', fuente: 'Metcalfe 2019 (JAMA, Rational Clinical Examination: 6 estudios, 1110 pacientes; referencia: radiografía simple); LR+ IC 95 %: 2,4–8,4' },
-      { name: 'Criterios clínicos ACR (árbol de clasificación)', sn: null, sp: null, lr_pos: null, lr_neg: null, absorbe: [0, 2], criterio: 'Dolor de cadera y, además: (1) RI ≥15°, dolor en la RI, rigidez matutina ≤60 min y edad >50 años; o bien (2) RI <15° y VSG ≤45 mm/h (sin VSG: flexión ≤115°). La tarjeta cita solo la rama (1). En la muestra en la que se crearon (201 pacientes con dolor de cadera, frente a artritis reumatoide, espondiloartropatía y otras causas) daban S 86 % · E 75 % (Altman 1991), pero no puntúa: en atención primaria, en pacientes de 50 años o más, los criterios clínicos no concuerdan con los criterios del ACR que incluyen radiografía (kappa ≤ 0,11; Bierma-Zeinstra 1999), y una revisión los da por poco fiables en ese ámbito (Reijman 2004). La rotación interna disminuida, que forma parte del árbol, sí tiene cifras de atención primaria y puntúa sola.', fuente: 'Altman 1991 (Arthritis Rheum 34:505–14, criterios ACR; n = 201 con dolor de cadera, controles con dolor de cadera de otra causa). En atención primaria: Bierma-Zeinstra 1999 (J Rheumatol 26:1129–33; n = 227 de 50 años o más, derivados a radiografía por su médico de cabecera) y Reijman 2004 (Ann Rheum Dis 63:226–32, revisión sistemática de definiciones de artrosis de cadera)' }
+      { name: 'Criterios clínicos ACR (árbol de clasificación)', sn: null, sp: null, lr_pos: null, lr_neg: null, absorbe: [0, 2], criterio: 'Dolor de cadera y, además: (1) RI ≥15°, dolor en la RI, rigidez matutina ≤60 min y edad >50 años; o bien (2) RI <15° y VSG ≤45 mm/h (sin VSG: flexión ≤115°). La tarjeta cita solo la rama (1). En la muestra en la que se crearon (201 pacientes con dolor de cadera, frente a artritis reumatoide, espondiloartropatía y otras causas) daban S 86 % · E 75 % (Altman 1991), pero no puntúa: en atención primaria, en pacientes de 50 años o más, los criterios clínicos no concuerdan con los criterios del ACR que incluyen radiografía (kappa ≤ 0,11; Bierma-Zeinstra 1999), y una revisión los da por poco fiables en ese ámbito (Reijman 2004). La rotación interna disminuida, que forma parte del árbol, sí tiene cifras de atención primaria y puntúa sola.', fuente: 'Altman 1991 (Arthritis Rheum 34:505–14, criterios ACR; n = 201 con dolor de cadera, controles con dolor de cadera de otra causa). En atención primaria: Bierma-Zeinstra 1999 (J Rheumatol 26:1129–33; n = 227 de 50 años o más, derivados a radiografía por su médico de cabecera) y Reijman 2004 (Ann Rheum Dis 63:226–32, revisión sistemática de definiciones de artrosis de cadera)' },
+      { name: 'Apoyo monopodal (30 s)', sn: '55%', sp: '70%', lr_pos: '1.83', lr_neg: '0.82', criterio: 'De pie, levanta una pierna flexionando cadera y rodilla y se apoya solo en la afectada. Positivo: reproduce su dolor antes de 30 s, comparado con el otro lado. LR+ y LR− cercanas a 1: cuenta como hallazgo.', fuente: 'Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 170' }
     ]
   },
   ca2: {
@@ -787,7 +822,6 @@ export const hypotheses = {
       { name: 'Test de Arlington', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Maniobra específica de provocación labral. Estudio: S 94 %, E 33 % (IC 95 % de la E: 16–56 %), VPP 95 %, VPN 26 %; con un 93 % de roturas solo hubo unos 17 controles, así que cuenta como hallazgo.', fuente: 'Adib 2023 (Am J Sports Med; retrospectivo, evaluado por el autor de los tests; referencia: artro-RM)' },
       { name: 'Test de Torsión/Twist', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Estudio: S 68 %, E 72 % (IC 95 % de la E: 49–88 %), VPP 97 %; con un 93 % de roturas solo hubo unos 17 controles, así que cuenta como hallazgo.', fuente: 'Adib 2023 (Am J Sports Med; retrospectivo, evaluado por el autor de los tests; referencia: artro-RM)' },
       { name: 'Combinación FADDIR + FABER + Elevación pierna recta resistida', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Positivo: los tres provocan dolor. Estudio: S 94 %, E 100 %, pero con un área bajo la curva de 0,879 que no cuadra con esas cifras, en candidatos a artroscopia (casi todos con rotura) y sin el número de controles: cuenta como hallazgo.', fuente: 'Halliwell 2026 (Arthroscopy; retrospectivo, 224 pacientes con SIFA operados; referencia: artroscopia)' },
-      { name: 'Apoyo Monopodal <30 segundos', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Puede indicar patología intraarticular cuando el dolor aparece antes de los 30 segundos.' },
       { name: 'Chasquido doloroso', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Chasquido en la cadera asociado al dolor inguinal. Sin él, la rotura es improbable. Estudio: S 100 % (IC 95 %: 48–100 %), E 85 % (IC 55–98 %), sin LR publicada; con S 100 % la LR− calculada sería 0 y anularía la hipótesis, y con solo 4 roturas el intervalo es muy amplio: cuenta como hallazgo.', fuente: 'Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)' },
       { name: 'Test de flexión-rotación interna', sn: null, sp: null, lr_pos: '1.28', lr_neg: null, criterio: 'Supino, cadera a 90° de flexión y rotación interna. Positivo: dolor conocido, bloqueo, chasquido o enganche. Metaanálisis: S 96 %, E 25 %, LR− 0,15, pero con IC 95 % hasta 1,99 (27 pacientes): la tarjeta lo usa para descartar, la evidencia aún no lo sostiene.', fuente: 'Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral: 2 estudios, n = 27)' },
       { name: 'FADDIR (valor agrupado)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Flexión, aducción y rotación interna. Positivo: dolor conocido, bloqueo, chasquido o enganche (que reproduzca el chasquido cuenta como positivo). No puntúa: el valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93; con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1. En otra serie, S 43 %, E 56 % (Adib 2023). Un negativo no descarta la rotura.', fuente: 'Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09). Adib 2023 (Am J Sports Med; retrospectivo; referencia: artro-RM)' },
@@ -872,7 +906,10 @@ export const hypotheses = {
     tests: [
       { name: 'Test de Compresión Pélvica', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Datos de fiabilidad limitados. Compresión sobre ambas crestas ilíacas en decúbito lateral. Positivo si reproduce dolor sacroilíaco.', noData: true },
       { name: 'Test de Patrick (FABER)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Puede provocar dolor sacroilíaco. Sensibilidad sobre ASI sin sensibilidad en L5.' },
-      { name: 'Sin sensibilidad por encima de L5', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Criterio clave de diferenciación respecto al origen lumbar.' }
+      { name: 'Sin sensibilidad por encima de L5', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Criterio clave de diferenciación respecto al origen lumbar.' },
+      { name: 'Cluster de Laslett: 3 o más de 5 tests de provocación positivos', sn: '91%', sp: '78%', lr_pos: null, lr_neg: null, criterio: 'Distracción, compresión, thigh thrust, Gaenslen y sacral thrust; positivo si 3 o más reproducen su dolor. Si los síntomas no se centralizan con movimientos repetidos, la especificidad sube al 87 %; positivos con centralización (dolor discal) son falsos positivos. Lluch cita S 85–94 %, E 79 %: se usan las cifras del estudio original.', fuente: 'Laslett 2008 (J Man Manip Ther 16:142–152); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153' },
+      { name: 'Thigh thrust', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Supino, mano caudal bajo el sacro, cadera a 90° de flexión: carga longitudinal por el fémur hasta 30 s (si no duele, 3–5 empujes). Positivo: reproduce su dolor. Lluch cita S 88 %, E 69 %, LR+ 2,80, LR− 0,18, cifras que no constan en el estudio original: cuenta como hallazgo (ya forma parte del cluster).', fuente: 'Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 153–154' },
+      { name: 'Prueba del dedo (Fortin)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'El paciente señala con la punta del dedo el dolor inferomedial a la EIPS, al menos 2 veces en el mismo punto. Si el dolor no está en esa zona, el dolor sacroilíaco es muy improbable.', fuente: 'Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153' }
     ]
   },
   // ─── Tarjeta de consulta cadera (guía de consulta) ─────────
@@ -886,12 +923,12 @@ export const hypotheses = {
     prom: 'HAGOS (o HOS, iHOT)',
     dosis: '',
     pronostico: {
-      horizonte: 'Ecografía o RM (planos axiales oblicuos para la inserción): edema óseo en la sínfisis, signo de la hendidura secundaria.',
-      derivacion: 'AINE y reposo reducen el dolor, pero suele volver al retomar el deporte. La debilidad de cadera aumenta el riesgo: vuelta al deporte con déficit de fuerza <10–20 %.',
-      fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177'
+      horizonte: 'Ecografía o RM. En los aductores la exploración localiza la lesión con exactitud >90 %; en los flexores (psoas ilíaco, recto femoral, sartorio), poco mejor que lanzar una moneda, y la imagen puede infradiagnosticar.',
+      derivacion: 'Alrededor del 40 % de las lesiones de ingle en el fútbol. Las de aductores, sobre todo el aductor largo, son unos 2/3; siguen recto femoral, psoas ilíaco, sartorio y abdominales. El aductor largo y el recto femoral pueden llegar a la rotura tendinosa proximal o a la avulsión. Vuelta al deporte con déficit de fuerza <10–20 %.',
+      fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 168, 170 y 173'
     },
     tests: [
-      { name: 'Palpación del grupo sospechoso (primero)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Palpar PRIMERO: si no duele, se descarta (exactitud >90 % en aductores y flexores). Aductores (el largo en unos 2/3), recto femoral, ilíaco y psoas.', fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 168' },
+      { name: 'Palpación del grupo sospechoso (primero)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Palpar PRIMERO: si no duele, se descarta (exactitud >90 % en aductores y flexores). Aductores (unos 2/3 de las lesiones agudas de la ingle, sobre todo el aductor largo), recto femoral, ilíaco y psoas.', fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 168' },
       { name: 'Resistencia del grupo sospechoso', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Después de palpar: squeeze a 0° o flexión resistida a 90°. Cuenta si reproduce su dolor en el mismo sitio.' },
       { name: 'Estiramiento del grupo sospechoso', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Cuenta si reproduce su dolor en el mismo sitio.' }
     ]
@@ -943,7 +980,8 @@ export const hypotheses = {
       { name: 'Tinel del femorocutáneo (meralgia)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Meralgia (la más frecuente): Tinel 1 cm medial e inferior a la EIAS; parestesias anterolaterales del muslo.', fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 172' },
       { name: 'Neurodinámico del femorocutáneo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproduce los síntomas anterolaterales del muslo.' },
       { name: 'Obturador: neurodinámico, sensibilidad del muslo medial y fuerza de aductores', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'A ser posible tras el deporte.' },
-      { name: 'Arch and twist de pie', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Ilioinguinal, iliohipogástrico y genitofemoral.' }
+      { name: 'Arch and twist de pie', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Ilioinguinal, iliohipogástrico y genitofemoral.' },
+      { name: 'Pudendo: dolor perineal al sentarse o en bici', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor en el periné, sobre todo sentado o en bici (en mujeres, también en las relaciones sexuales), sin déficit sensitivo objetivo.', fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141' }
     ]
   },
   ca15: {
@@ -981,9 +1019,9 @@ export const hypotheses = {
     prom: 'HAGOS (o HOS, iHOT)',
     dosis: '',
     pronostico: {
-      horizonte: 'Ecografía o RM (planos axiales oblicuos para la inserción): edema óseo en la sínfisis, signo de la hendidura secundaria.',
+      horizonte: 'Ecografía. La vaina sinovial del tendón del psoas comunica con la articulación en el 5 % de la población y puede inflamarse: líquido alrededor del tendón en ecografía o RM.',
       derivacion: 'AINE y reposo reducen el dolor, pero suele volver al retomar el deporte. La debilidad de cadera aumenta el riesgo: vuelta al deporte con déficit de fuerza <10–20 %.',
-      fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177'
+      fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 145; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177'
     },
     tests: [
       { name: 'Palpación dolorosa supra o infrainguinal', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Necesario para el diagnóstico.', fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 139–140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164' },
@@ -997,9 +1035,9 @@ export const hypotheses = {
     prom: 'HAGOS (o HOS, iHOT)',
     dosis: '',
     pronostico: {
-      horizonte: 'Ecografía o RM (planos axiales oblicuos para la inserción): edema óseo en la sínfisis, signo de la hendidura secundaria.',
+      horizonte: 'Ecografía. Explorar de pie y con tos: una hernia palpable excluye este diagnóstico.',
       derivacion: 'AINE y reposo reducen el dolor, pero suele volver al retomar el deporte. La debilidad de cadera aumenta el riesgo: vuelta al deporte con déficit de fuerza <10–20 %.',
-      fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177'
+      fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 145; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 173'
     },
     tests: [
       { name: 'Dolor en la región del canal + palpación dolorosa del canal, sin hernia palpable', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Necesario para el diagnóstico. Explorar de pie y con tos: una hernia palpable excluye este diagnóstico.', fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 139–140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164' },

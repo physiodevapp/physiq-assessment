@@ -13,10 +13,10 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **185** referencias de literatura, con **579** usos.
+- **186** referencias de literatura, con **588** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **251** usos, basadas en Lluch 2020.
-- **18** de 185 referencias del registro revisadas. Ver «Estado de revisión».
-- **92** de 430 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
+- **18** de 186 referencias del registro revisadas. Ver «Estado de revisión».
+- **91** de 434 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
 
@@ -57,6 +57,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Park 2005](#park-2005) | puntuación 4b | 2 | **sin revisar** |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | **sin revisar** |
 | [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | **sin revisar** |
+| [Laslett 2008](#laslett-2008) | puntuación 4b | 1 | **sin revisar** |
 | [Majlesi 2008](#majlesi-2008) | puntuación 4b | 1 | **sin revisar** |
 | [Suri 2010](#suri-2010) | puntuación 4b | 2 | **sin revisar** |
 | [Zhang 2010](#zhang-2010) | puntuación 4b | 3 | **sin revisar** |
@@ -78,7 +79,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | **sin revisar** |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
-| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 87 | **sin revisar** |
+| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 88 | **sin revisar** |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | **sin revisar** |
 | [Jonsson 2008](#jonsson-2008) | pauta | 1 | **sin revisar** |
 | [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | **sin revisar** |
@@ -151,7 +152,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Malik 2023](#malik-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 | 3 | **sin revisar** |
 | [McMordie 2023](#mcmordie-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) | razonamiento fase 2 | 5 | **sin revisar** |
 | [Pak y Kim 2023](#pak-y-kim-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Pana y Saggu 2023](#pana-y-saggu-2023) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -614,7 +615,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[Adib 2023](#adib-2023) · [Al-Subahi 2017](#al-subahi-2017) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Campbell 2020](#campbell-2020) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2011](#cook-2011) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Fairbank 2011](#fairbank-2011) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Gomes 2022](#gomes-2022) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hegedus 2012](#hegedus-2012) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [HerniaSurge 2018](#herniasurge-2018) · [Hölmich 1999](#hölmich-1999) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2006](#laslett-2006) · [Lassiter 2024](#lassiter-2024) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lluch 2020](#lluch-2020) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Menger 2024](#menger-2024) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG226](#nice-ng226) · [NICE NG59](#nice-ng59) · [Nunes 2013](#nunes-2013) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rhodes 2022](#rhodes-2022) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Shahid 2023](#shahid-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van Dijk 1996](#van-dijk-1996) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Waheed 2023](#waheed-2023) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Ziu 2023](#ziu-2023)
+[Adib 2023](#adib-2023) · [Al-Subahi 2017](#al-subahi-2017) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Campbell 2020](#campbell-2020) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2011](#cook-2011) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Fairbank 2011](#fairbank-2011) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Gomes 2022](#gomes-2022) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hegedus 2012](#hegedus-2012) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [HerniaSurge 2018](#herniasurge-2018) · [Hölmich 1999](#hölmich-1999) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lluch 2020](#lluch-2020) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Menger 2024](#menger-2024) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG226](#nice-ng226) · [NICE NG59](#nice-ng59) · [Nunes 2013](#nunes-2013) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rhodes 2022](#rhodes-2022) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Shahid 2023](#shahid-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van Dijk 1996](#van-dijk-1996) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Waheed 2023](#waheed-2023) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Ziu 2023](#ziu-2023)
 
 ### Adib 2023
 
@@ -1542,43 +1543,44 @@ Citada como:
 46. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 616 y 637–639.
 47. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, p. 455; cap. 16, pp. 611, 614, 633 y 639.
 48. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 439–440, 447–448 y 455; cap. 15, p. 582; cap. 16, pp. 627 y 636.
-49. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 463–464 y 475; cap. 14, pp. 529 y 540–542.
-50. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 13, pp. 476 y 483; cap. 14, pp. 525 y 562.
-51. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 475; cap. 14, pp. 523, 527 y 540–542.
-52. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 6, pp. 226 y 233–236; cap. 14, pp. 542–543.
-53. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226 y 234–236; cap. 14, pp. 537, 543 y 567.
-54. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 7, pp. 272–275; cap. 13, p. 483; cap. 14, pp. 548–550.
-55. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227; cap. 7, pp. 272–274; cap. 14, pp. 549–550.
-56. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373 y 376; cap. 13, p. 483; cap. 14, pp. 531, 542 y 568.
-57. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373; cap. 14, pp. 531, 550 y 562–563.
-58. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 90; cap. 8, pp. 304 y 307; cap. 14, pp. 532 y 552–553.
-59. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307 y 316; cap. 14, pp. 532 y 553.
-60. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522 y 532.
-61. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 227; cap. 14, pp. 530 y 532.
-62. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 523–524.
-63. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 482; cap. 14, pp. 528–531.
-64. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 440 y 448; cap. 14, pp. 522, 531–532.
-65. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522, 531 y 562–563.
-66. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 429, 438, 440 y 447–448; cap. 14, pp. 522 y 531.
-67. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
-68. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
-69. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
-70. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
-71. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
-72. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
-73. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
-74. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
-75. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
-76. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
-77. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
-78. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
-79. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
-80. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
-81. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
-82. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
-83. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
-84. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
-85. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
+49. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 611, 614 y 633.
+50. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 463–464 y 475; cap. 14, pp. 529 y 540–542.
+51. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 13, pp. 476 y 483; cap. 14, pp. 525 y 562.
+52. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 475; cap. 14, pp. 523, 527 y 540–542.
+53. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 6, pp. 226 y 233–236; cap. 14, pp. 542–543.
+54. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226 y 234–236; cap. 14, pp. 537, 543 y 567.
+55. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 7, pp. 272–275; cap. 13, p. 483; cap. 14, pp. 548–550.
+56. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227; cap. 7, pp. 272–274; cap. 14, pp. 549–550.
+57. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373 y 376; cap. 13, p. 483; cap. 14, pp. 531, 542 y 568.
+58. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373; cap. 14, pp. 531, 550 y 562–563.
+59. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 90; cap. 8, pp. 304 y 307; cap. 14, pp. 532 y 552–553.
+60. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307 y 316; cap. 14, pp. 532 y 553.
+61. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522 y 532.
+62. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 227; cap. 14, pp. 530 y 532.
+63. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 523–524.
+64. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 482; cap. 14, pp. 528–531.
+65. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 440 y 448; cap. 14, pp. 522, 531–532.
+66. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522, 531 y 562–563.
+67. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 429, 438, 440 y 447–448; cap. 14, pp. 522 y 531.
+68. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
+69. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
+70. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
+71. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
+72. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
+73. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
+74. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
+75. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
+76. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
+77. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
+78. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
+79. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
+80. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
+81. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
+82. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
+83. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
+84. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
+85. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
+86. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1629,46 +1631,47 @@ Citada como:
 | Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 40 |
 | Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 47 |
 | Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 48 |
-| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 49 |
-| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 50 |
-| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 51 |
-| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 52 |
-| Cervical | — | Pregunta `cv_c2` · Cardiovascular | 2 · razonamiento del cribado | 53 |
-| Cervical | — | Pregunta `cv_p1` · Pulmonar | 2 · razonamiento del cribado | 54 |
-| Cervical | — | Pregunta `cv_p2` · Pulmonar | 2 · razonamiento del cribado | 55 |
-| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 56 |
-| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 57 |
-| Cervical | — | Pregunta `cv_gi1` · Gastrointestinal | 2 · razonamiento del cribado | 58 |
-| Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 59 |
-| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 60 |
-| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 61 |
-| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 62 |
-| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 63 |
-| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 64 |
-| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 65 |
-| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 66 |
+| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 49 |
+| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 50 |
+| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 51 |
+| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 52 |
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 53 |
+| Cervical | — | Pregunta `cv_c2` · Cardiovascular | 2 · razonamiento del cribado | 54 |
+| Cervical | — | Pregunta `cv_p1` · Pulmonar | 2 · razonamiento del cribado | 55 |
+| Cervical | — | Pregunta `cv_p2` · Pulmonar | 2 · razonamiento del cribado | 56 |
+| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 57 |
+| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 58 |
+| Cervical | — | Pregunta `cv_gi1` · Gastrointestinal | 2 · razonamiento del cribado | 59 |
+| Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 60 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 61 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 62 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 63 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 64 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 65 |
+| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 66 |
+| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 67 |
 | Lumbar | — | `sistemas.3.banderasRojas.5` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.3.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 2 |
-| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 67 |
-| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 68 |
-| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 69 |
-| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 70 |
-| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 71 |
-| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 72 |
-| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 73 |
-| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 74 |
-| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 75 |
-| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 76 |
-| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 76 |
-| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 77 |
-| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 78 |
-| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 79 |
-| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 80 |
-| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 81 |
-| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 82 |
-| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 83 |
-| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 84 |
-| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 85 |
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 68 |
+| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 69 |
+| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 70 |
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 71 |
+| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 72 |
+| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 73 |
+| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 74 |
+| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 75 |
+| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 76 |
+| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 77 |
+| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 77 |
+| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 78 |
+| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 79 |
+| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 80 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 81 |
+| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 82 |
+| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 83 |
+| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 84 |
+| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 85 |
+| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 86 |
 
 ### Grant y John 2025
 
@@ -2398,6 +2401,23 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | lu7 · Dolor Lumbar Facetario | Test «Dolor en extensión, inclinación o rotación hacia el lado del dolor» | 4b · cita bajo el test | 1 |
 
+### Laslett 2008
+
+Autores: Laslett  
+Título: *Evidence-based diagnosis and treatment of the painful sacroiliac joint*  
+Publicación: J Man Manip Ther 16(3):142–152  
+DOI: 10.1179/jmt.2008.16.3.142  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC2582421. Fuente primaria de la cifra del cluster de provocación sacroilíaca (≥3/5: S 91 %, E 78 %; E 87 % sin centralización) que Lluch 2020 cita como «85–94 %, 79 %». Hipótesis ca10 (cadera).
+
+Citada como:
+
+1. Laslett 2008 (J Man Manip Ther 16:142–152); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 1 |
+
 ### Lassiter 2024
 
 Autores: Lassiter, Bhutta y Allam  
@@ -2550,70 +2570,79 @@ Citada como:
 17. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
 18. Brazo a 90° de flexión y 10° de aducción; resistir un empuje hacia abajo con el pulgar hacia abajo y después hacia arriba. Positivo si el dolor está en la AC con el pulgar abajo y baja o desaparece con el pulgar arriba; dolor en otro sitio = negativo. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 da E 95,8 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que el resumen de la revisión no respalda.
 19. Lluch 2020, cap. 3.1 (Struyf), p. 61 · Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
-20. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 138; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
-21. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137
-22. Lluch 2020, cap. 4.1.1 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 125; cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 136; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 175–176
-23. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 157
-24. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 176–177
-25. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 134, 137 y 142; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 179
-26. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 168
-27. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177
-28. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 160
-29. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 163; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 175
-30. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 162–163
-31. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 175 y 177
-32. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 172
-33. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 172
-34. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 138
-35. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 139–140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
-36. Ejercicio neuromuscular (coordinación, propiocepción, entrenamiento postural, coordinación ojo-cabeza-cuello) dentro del abordaje multimodal de la fase crónica (B). El fortalecimiento isométrico de los flexores profundos redujo dolor y discapacidad a corto plazo, pero el entrenamiento con biofeedback de presión no fue mejor que el fortalecimiento de los flexores con pesas. Para dosificar el entrenamiento craneocervical (Lluch 2020): test de flexión craneocervical en supino con biofeedback de presión inflado a 20 mmHg y cinco escalones de 2 mmHg (22–30), sin activar en exceso el esternocleidomastoideo ni los escalenos y sin retraer la cabeza; la resistencia se mide con apoyos repetidos de 5–10 s en cada nivel y el entrenamiento empieza en el nivel inferior al del fallo. Ni la guía ni el libro fijan series ni semanas.
-37. Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Lluch 2020, cap. 5.3 (Jull y Falla), p. 378 (test de flexión craneocervical para dosificar)
-38. Según la fase (dolor de cuello con cefalea). Aguda: instrucción supervisada en ejercicios de movilidad activa (B); autoSNAG C1–2 (C). Subaguda: manipulación y movilización cervical (B); autoSNAG C1–2 (C). Crónica: manipulación o movilización cervical o cervicotorácica combinada con estiramiento, fortalecimiento y resistencia de cuello y cintura escapular (B); el fortalecimiento cervicoescapular con entrenamiento de flexión craneocervical con biofeedback mejoró dolor y función a largo plazo, y los autores de la guía señalan, como opinión, que el entrenamiento craneocervical puede ser especialmente útil. Con algún signo de disfunción temporomandibular, la terapia manual y el ejercicio dirigidos a la ATM mejoraron más que los centrados solo en la región craneocervical. Aplicar antes el cribado vascular del marco IFOMPT. Para dosificar el entrenamiento craneocervical (Lluch 2020): test de flexión craneocervical en supino con biofeedback de presión inflado a 20 mmHg y cinco escalones de 2 mmHg (22–30), sin activar en exceso el esternocleidomastoideo ni los escalenos y sin retraer la cabeza; la resistencia se mide con apoyos repetidos de 5–10 s en cada nivel y el entrenamiento empieza en el nivel inferior al del fallo. La guía no fija series ni semanas (la manipulación 3–4 veces por semana, 12–18 sesiones, superó a una vez por semana a corto plazo, pero no a medio).
-39. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 308–309
-40. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 313
-41. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 313–314 · NICE NG59 (rec. 1.3.6)
-42. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 310
-43. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 311
-44. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 317 y tabla 4 (consenso Delphi), p. 316
-45. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 4 y 6, pp. 316 y 323 (orientativo)
-46. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 317–318
-47. Lluch 2020, cap. 5.1 (Fondevila Suárez), tabla 5 (consenso Delphi), p. 319
-48. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 5 y 6, pp. 319 y 323
-49. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 319–320 · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
-50. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 321–322 (criterio a del clúster de Laslett)
-51. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 322
-52. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 323–324
-53. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
-54. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
-55. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
-56. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
-57. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
-58. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
-59. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
-60. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
-61. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
-62. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
-63. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
-64. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
-65. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
-66. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
-67. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-68. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
-69. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
-70. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
-71. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
-72. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
-73. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-74. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
-75. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
-76. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
-77. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
-78. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
-79. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
-80. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
-81. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
-82. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
-83. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
+20. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 170
+21. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 138; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
+22. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137
+23. Lluch 2020, cap. 4.1.1 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 125; cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 136; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 175–176
+24. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 157
+25. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 176–177
+26. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 134, 137 y 142; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 179
+27. Laslett 2008 (J Man Manip Ther 16:142–152); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
+28. Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 153–154
+29. Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
+30. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 168
+31. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 168, 170 y 173
+32. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 160
+33. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 163; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 175
+34. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 162–163
+35. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 175 y 177
+36. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 172
+37. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141
+38. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 172
+39. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 138
+40. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 139–140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
+41. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177
+42. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 145; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177
+43. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 145; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 173
+44. Ejercicio neuromuscular (coordinación, propiocepción, entrenamiento postural, coordinación ojo-cabeza-cuello) dentro del abordaje multimodal de la fase crónica (B). El fortalecimiento isométrico de los flexores profundos redujo dolor y discapacidad a corto plazo, pero el entrenamiento con biofeedback de presión no fue mejor que el fortalecimiento de los flexores con pesas. Para dosificar el entrenamiento craneocervical (Lluch 2020): test de flexión craneocervical en supino con biofeedback de presión inflado a 20 mmHg y cinco escalones de 2 mmHg (22–30), sin activar en exceso el esternocleidomastoideo ni los escalenos y sin retraer la cabeza; la resistencia se mide con apoyos repetidos de 5–10 s en cada nivel y el entrenamiento empieza en el nivel inferior al del fallo. Ni la guía ni el libro fijan series ni semanas.
+45. Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Lluch 2020, cap. 5.3 (Jull y Falla), p. 378 (test de flexión craneocervical para dosificar)
+46. Según la fase (dolor de cuello con cefalea). Aguda: instrucción supervisada en ejercicios de movilidad activa (B); autoSNAG C1–2 (C). Subaguda: manipulación y movilización cervical (B); autoSNAG C1–2 (C). Crónica: manipulación o movilización cervical o cervicotorácica combinada con estiramiento, fortalecimiento y resistencia de cuello y cintura escapular (B); el fortalecimiento cervicoescapular con entrenamiento de flexión craneocervical con biofeedback mejoró dolor y función a largo plazo, y los autores de la guía señalan, como opinión, que el entrenamiento craneocervical puede ser especialmente útil. Con algún signo de disfunción temporomandibular, la terapia manual y el ejercicio dirigidos a la ATM mejoraron más que los centrados solo en la región craneocervical. Aplicar antes el cribado vascular del marco IFOMPT. Para dosificar el entrenamiento craneocervical (Lluch 2020): test de flexión craneocervical en supino con biofeedback de presión inflado a 20 mmHg y cinco escalones de 2 mmHg (22–30), sin activar en exceso el esternocleidomastoideo ni los escalenos y sin retraer la cabeza; la resistencia se mide con apoyos repetidos de 5–10 s en cada nivel y el entrenamiento empieza en el nivel inferior al del fallo. La guía no fija series ni semanas (la manipulación 3–4 veces por semana, 12–18 sesiones, superó a una vez por semana a corto plazo, pero no a medio).
+47. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 308–309
+48. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 313
+49. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 313–314 · NICE NG59 (rec. 1.3.6)
+50. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 310
+51. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 311
+52. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 317 y tabla 4 (consenso Delphi), p. 316
+53. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 4 y 6, pp. 316 y 323 (orientativo)
+54. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 317–318
+55. Lluch 2020, cap. 5.1 (Fondevila Suárez), tabla 5 (consenso Delphi), p. 319
+56. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 5 y 6, pp. 319 y 323
+57. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 319–320 · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
+58. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 321–322 (criterio a del clúster de Laslett)
+59. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 322
+60. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 323–324
+61. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
+62. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
+63. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
+64. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
+65. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
+66. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
+67. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
+68. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
+69. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
+70. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
+71. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
+72. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
+73. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+74. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
+75. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+76. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
+77. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
+78. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
+79. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
+80. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
+81. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+82. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+83. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
+84. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
+85. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
+86. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
+87. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
+88. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
+89. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
+90. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
+91. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
+92. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -2645,84 +2674,90 @@ Citada como:
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Luxación bloqueada» | 4b · cita bajo el test | 17 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Fractura» | 4b · cita bajo el test | 17 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 6 |
-| Hombro | — | `sistemas.0.banderasRojas.5` | 2 · mención en el texto | 53 |
-| Hombro | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 54 |
-| Hombro | — | `sistemas.7.banderasRojas.0` | 2 · mención en el texto | 55 |
-| Hombro | — | `sistemas.8.banderasRojas.0` | 2 · mención en el texto | 56 |
-| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 58 |
-| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 59 |
-| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 60 |
-| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 61 |
-| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 60 |
-| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 62 |
-| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 63 |
-| Cadera | ca1 · Artrosis de Cadera | Pronóstico | 5 · cita del pronóstico | 20 |
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Dolor inguinal» | 4b · cita bajo el test | 21 |
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pronóstico | 5 · cita del pronóstico | 22 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Longitud de paso» | 4b · cita bajo el test | 23 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Pronóstico | 5 · cita del pronóstico | 24 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Pronóstico | 5 · cita del pronóstico | 25 |
-| Cadera | ca11 · Lesión Aguda de Ingle | Test «Palpación del grupo sospechoso (primero)» | 4b · cita bajo el test | 26 |
-| Cadera | ca11 · Lesión Aguda de Ingle | Pronóstico | 5 · cita del pronóstico | 27 |
-| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Test «Log roll» | 4b · cita bajo el test | 28 |
-| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Pronóstico | 5 · cita del pronóstico | 29 |
-| Cadera | ca13 · Condropatía de Cadera | Test «Cribado intraarticular y Thomas positivos» | 4b · cita bajo el test | 30 |
-| Cadera | ca13 · Condropatía de Cadera | Pronóstico | 5 · cita del pronóstico | 31 |
-| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Tinel del femorocutáneo (meralgia)» | 4b · cita bajo el test | 32 |
-| Cadera | ca14 · Neuropatías de Cadera e Ingle | Pronóstico | 5 · cita del pronóstico | 33 |
-| Cadera | ca15 · Sensibilización Central | Test «Dolor multifocal, referido y extenso» | 4b · cita bajo el test | 34 |
-| Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Test «Palpación dolorosa de aductores + squeeze doloroso» | 4b · cita bajo el test | 35 |
-| Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Pronóstico | 5 · cita del pronóstico | 27 |
-| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Test «Palpación dolorosa supra o infrainguinal» | 4b · cita bajo el test | 35 |
-| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Pronóstico | 5 · cita del pronóstico | 27 |
-| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Test «Dolor en la región del canal + palpación dolorosa del canal, sin hernia palpable» | 4b · cita bajo el test | 35 |
-| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Pronóstico | 5 · cita del pronóstico | 27 |
-| Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Palpación dolorosa de la sínfisis y el hueso adyacente» | 4b · cita bajo el test | 35 |
-| Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Pronóstico | 5 · cita del pronóstico | 27 |
-| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 64 |
-| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 65 |
-| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 64 |
-| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 66 |
-| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 67 |
-| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 67 |
-| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 67 |
-| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 68 |
-| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 69 |
-| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 70 |
-| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 71 |
-| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 72 |
-| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 67 |
-| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 73 |
-| Cervical | ce2 · Disfunción Neuromuscular Cervical | Dosis (en el texto) | 5 · mención en el texto | 36 |
-| Cervical | ce2 · Disfunción Neuromuscular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 37 |
-| Cervical | ce4 · Cefalea Cervicogénica | Dosis (en el texto) | 5 · mención en el texto | 38 |
-| Cervical | ce4 · Cefalea Cervicogénica | Pauta de tratamiento | 5 · cita de la pauta | 37 |
-| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 74 |
-| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 75 |
-| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 76 |
-| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 77 |
-| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 78 |
-| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 79 |
-| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 80 |
-| Lumbar | lu3 · Dolor Radicular Lumbar | Pronóstico | 5 · cita del pronóstico | 39 |
-| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Déficits sensoriales (L3-S1)» | 4b · cita bajo el test | 40 |
-| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Pronóstico | 5 · cita del pronóstico | 41 |
-| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Fuerza por miotomas L1–S2» | 4b · cita bajo el test | 42 |
-| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pronóstico | 5 · cita del pronóstico | 43 |
-| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Preferencia direccional» | 4b · cita bajo el test | 44 |
-| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Observación: espalda plana o shift lateral» | 4b · cita bajo el test | 45 |
-| Lumbar | lu6 · Dolor Lumbar Discogénico | Pronóstico | 5 · cita del pronóstico | 46 |
-| Lumbar | lu7 · Dolor Lumbar Facetario | Test «PA unilateral dolorosa o con menos movilidad» | 4b · cita bajo el test | 47 |
-| Lumbar | lu7 · Dolor Lumbar Facetario | Test «Sin signos radiculares y sin alivio con repetidos» | 4b · cita bajo el test | 48 |
-| Lumbar | lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 49 |
-| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «No centraliza con movimientos repetidos» | 4b · cita bajo el test | 50 |
-| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pronóstico | 5 · cita del pronóstico | 51 |
-| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 52 |
-| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 52 |
-| Lumbar | — | `sistemas.5.banderasRojas.0` | 2 · mención en el texto | 57 |
-| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 81 |
-| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 82 |
-| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 83 |
+| Hombro | — | `sistemas.0.banderasRojas.5` | 2 · mención en el texto | 61 |
+| Hombro | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 62 |
+| Hombro | — | `sistemas.7.banderasRojas.0` | 2 · mención en el texto | 63 |
+| Hombro | — | `sistemas.8.banderasRojas.0` | 2 · mención en el texto | 64 |
+| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 66 |
+| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 67 |
+| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 68 |
+| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 69 |
+| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 68 |
+| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 70 |
+| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 71 |
+| Cadera | ca1 · Artrosis de Cadera | Test «Apoyo monopodal (30 s)» | 4b · cita bajo el test | 20 |
+| Cadera | ca1 · Artrosis de Cadera | Pronóstico | 5 · cita del pronóstico | 21 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Dolor inguinal» | 4b · cita bajo el test | 22 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pronóstico | 5 · cita del pronóstico | 23 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Longitud de paso» | 4b · cita bajo el test | 24 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Pronóstico | 5 · cita del pronóstico | 25 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Pronóstico | 5 · cita del pronóstico | 26 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 27 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Thigh thrust» | 4b · cita bajo el test | 28 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Prueba del dedo (Fortin)» | 4b · cita bajo el test | 29 |
+| Cadera | ca11 · Lesión Aguda de Ingle | Test «Palpación del grupo sospechoso (primero)» | 4b · cita bajo el test | 30 |
+| Cadera | ca11 · Lesión Aguda de Ingle | Pronóstico | 5 · cita del pronóstico | 31 |
+| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Test «Log roll» | 4b · cita bajo el test | 32 |
+| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Pronóstico | 5 · cita del pronóstico | 33 |
+| Cadera | ca13 · Condropatía de Cadera | Test «Cribado intraarticular y Thomas positivos» | 4b · cita bajo el test | 34 |
+| Cadera | ca13 · Condropatía de Cadera | Pronóstico | 5 · cita del pronóstico | 35 |
+| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Tinel del femorocutáneo (meralgia)» | 4b · cita bajo el test | 36 |
+| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Pudendo: dolor perineal al sentarse o en bici» | 4b · cita bajo el test | 37 |
+| Cadera | ca14 · Neuropatías de Cadera e Ingle | Pronóstico | 5 · cita del pronóstico | 38 |
+| Cadera | ca15 · Sensibilización Central | Test «Dolor multifocal, referido y extenso» | 4b · cita bajo el test | 39 |
+| Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Test «Palpación dolorosa de aductores + squeeze doloroso» | 4b · cita bajo el test | 40 |
+| Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Pronóstico | 5 · cita del pronóstico | 41 |
+| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Test «Palpación dolorosa supra o infrainguinal» | 4b · cita bajo el test | 40 |
+| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Pronóstico | 5 · cita del pronóstico | 42 |
+| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Test «Dolor en la región del canal + palpación dolorosa del canal, sin hernia palpable» | 4b · cita bajo el test | 40 |
+| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Pronóstico | 5 · cita del pronóstico | 43 |
+| Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Palpación dolorosa de la sínfisis y el hueso adyacente» | 4b · cita bajo el test | 40 |
+| Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Pronóstico | 5 · cita del pronóstico | 41 |
+| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 72 |
+| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 73 |
+| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 72 |
+| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 74 |
+| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 75 |
+| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 75 |
+| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 75 |
+| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 76 |
+| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 77 |
+| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 78 |
+| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 79 |
+| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 80 |
+| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 75 |
+| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 81 |
+| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 82 |
+| Cervical | ce2 · Disfunción Neuromuscular Cervical | Dosis (en el texto) | 5 · mención en el texto | 44 |
+| Cervical | ce2 · Disfunción Neuromuscular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 45 |
+| Cervical | ce4 · Cefalea Cervicogénica | Dosis (en el texto) | 5 · mención en el texto | 46 |
+| Cervical | ce4 · Cefalea Cervicogénica | Pauta de tratamiento | 5 · cita de la pauta | 45 |
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 83 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 84 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 85 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 86 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 87 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 88 |
+| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 89 |
+| Lumbar | lu3 · Dolor Radicular Lumbar | Pronóstico | 5 · cita del pronóstico | 47 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Déficits sensoriales (L3-S1)» | 4b · cita bajo el test | 48 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Pronóstico | 5 · cita del pronóstico | 49 |
+| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Fuerza por miotomas L1–S2» | 4b · cita bajo el test | 50 |
+| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pronóstico | 5 · cita del pronóstico | 51 |
+| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Preferencia direccional» | 4b · cita bajo el test | 52 |
+| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Observación: espalda plana o shift lateral» | 4b · cita bajo el test | 53 |
+| Lumbar | lu6 · Dolor Lumbar Discogénico | Pronóstico | 5 · cita del pronóstico | 54 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Test «PA unilateral dolorosa o con menos movilidad» | 4b · cita bajo el test | 55 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Test «Sin signos radiculares y sin alivio con repetidos» | 4b · cita bajo el test | 56 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 57 |
+| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «No centraliza con movimientos repetidos» | 4b · cita bajo el test | 58 |
+| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pronóstico | 5 · cita del pronóstico | 59 |
+| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 60 |
+| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 60 |
+| Lumbar | — | `sistemas.5.banderasRojas.0` | 2 · mención en el texto | 65 |
+| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 90 |
+| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 91 |
+| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 92 |
 
 ### Lotfollahzadeh 2024
 
@@ -3026,6 +3061,7 @@ Citada como:
 |---|---|---|---|---|
 | Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 1 |
 | Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
+| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 
 ### Munakomi 2023
 
@@ -4207,12 +4243,11 @@ Tests sin `fuente` (los miembros de un cluster con `fuente` no cuentan: la cita 
 | h9 · Disfunción de Primera Costilla (Zona Cervicotorácica) | Palpación posteroanterior de 1ª costilla | — | no |
 | h9 · Disfunción de Primera Costilla (Zona Cervicotorácica) | Test de elevación del brazo post-movilización | — | no |
 
-### Cadera (37)
+### Cadera (36)
 
 | Hipótesis | Test | Cifras | Puntúa |
 |---|---|---|---|
 | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test FABER (Flexión-Abducción-Rotación Externa) | — | no |
-| ca3 · Desgarro del Labrum Acetabular | Apoyo Monopodal <30 segundos | — | no |
 | ca5 · Debilidad de Abductores de Cadera | Test de Trendelenburg | — | no |
 | ca5 · Debilidad de Abductores de Cadera | Dinamometría manual (HHD) de abductores | — | no |
 | ca5 · Debilidad de Abductores de Cadera | Test de paso lateral + marcha en tándem combinados | — | no |
