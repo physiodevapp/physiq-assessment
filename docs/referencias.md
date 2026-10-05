@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **193** referencias de literatura, con **597** usos.
+- **196** referencias de literatura, con **603** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **251** usos, basadas en Lluch 2020.
-- **18** de 193 referencias del registro revisadas. Ver «Estado de revisión».
+- **18** de 196 referencias del registro revisadas. Ver «Estado de revisión».
 - **91** de 434 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -80,6 +80,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 88 | **sin revisar** |
+| [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) | pauta · texto | 4 | **sin revisar** |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | **sin revisar** |
 | [Jonsson 2008](#jonsson-2008) | pauta | 1 | **sin revisar** |
 | [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | **sin revisar** |
@@ -89,13 +90,15 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Mellor 2016](#mellor-2016) | pauta | 1 | **sin revisar** |
 | [Al-Subahi 2017](#al-subahi-2017) | pauta | 1 | **sin revisar** |
 | [Blanpied 2017](#blanpied-2017) | pauta | 11 | **sin revisar** |
+| [Cibulka 2017](#cibulka-2017) | pauta | 1 | **sin revisar** |
 | [Griffin 2018](#griffin-2018) | pauta | 1 | **sin revisar** |
 | [Mellor 2018](#mellor-2018) | pauta | 1 | **sin revisar** |
-| [Kemp 2020](#kemp-2020) | pauta | 2 | **sin revisar** |
+| [Kemp 2020](#kemp-2020) | pauta | 1 | **sin revisar** |
 | [Rathleff 2020](#rathleff-2020) | pauta | 1 | **sin revisar** |
 | [Serner 2020](#serner-2020) | pauta | 1 | **sin revisar** |
 | [George 2021](#george-2021) | pauta | 8 | **sin revisar** |
 | [Martin 2021](#martin-2021) | pauta | 2 | **sin revisar** |
+| [Enseki 2023](#enseki-2023) | pauta | 2 | **sin revisar** |
 | [Koc 2023](#koc-2023) | pauta | 1 | **sin revisar** |
 | [Munakomi 2023](#munakomi-2023) | pauta · razonamiento fase 2 · texto | 3 | **sin revisar** |
 | [Chimenti 2024](#chimenti-2024) | pauta | 1 | **sin revisar** |
@@ -622,7 +625,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[Adib 2023](#adib-2023) · [Al-Subahi 2017](#al-subahi-2017) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Campbell 2020](#campbell-2020) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2011](#cook-2011) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Fairbank 2011](#fairbank-2011) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Gomes 2022](#gomes-2022) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hegedus 2012](#hegedus-2012) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [HerniaSurge 2018](#herniasurge-2018) · [Hölmich 1999](#hölmich-1999) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Kemp 2020](#kemp-2020) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lluch 2020](#lluch-2020) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Menger 2024](#menger-2024) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG226](#nice-ng226) · [NICE NG59](#nice-ng59) · [Nunes 2013](#nunes-2013) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Shahid 2023](#shahid-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van Dijk 1996](#van-dijk-1996) · [Vandeputte 2026](#vandeputte-2026) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Waheed 2023](#waheed-2023) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Ziu 2023](#ziu-2023)
+[Adib 2023](#adib-2023) · [Al-Subahi 2017](#al-subahi-2017) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Bachmann 2003](#bachmann-2003) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Blanpied 2017](#blanpied-2017) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Campbell 2020](#campbell-2020) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cibulka 2017](#cibulka-2017) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2011](#cook-2011) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Enseki 2023](#enseki-2023) · [Fairbank 2011](#fairbank-2011) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Gomes 2022](#gomes-2022) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Großterlinden 2016](#großterlinden-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hegedus 2012](#hegedus-2012) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [HerniaSurge 2018](#herniasurge-2018) · [Hölmich 1999](#hölmich-1999) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Kemp 2020](#kemp-2020) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lluch 2020](#lluch-2020) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lucas 2009](#lucas-2009) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Menger 2024](#menger-2024) · [Metcalfe 2019](#metcalfe-2019) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG226](#nice-ng226) · [NICE NG59](#nice-ng59) · [Nunes 2013](#nunes-2013) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Shahid 2023](#shahid-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sman 2015](#sman-2015) · [Smith 2015](#smith-2015) · [Solomon 2001](#solomon-2001) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van Dijk 1996](#van-dijk-1996) · [Vandeputte 2026](#vandeputte-2026) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Waheed 2023](#waheed-2023) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Ziu 2023](#ziu-2023)
 
 ### Adib 2023
 
@@ -1025,6 +1028,46 @@ Citada como:
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `criterio`) | 4b · mención en el texto | 2 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» | 4b · cita bajo el test | 3 |
 
+### Cibulka 2017
+
+Autores: Cibulka, Bloom, Enseki, Macdonald, Woehrle y McDonough  
+Título: *Hip Pain and Mobility Deficits—Hip Osteoarthritis: Revision 2017*  
+Publicación: J Orthop Sports Phys Ther 47(6):A1–A37  
+DOI: 10.2519/jospt.2017.0301  
+Última revisión: **sin revisar**  
+Nota: Guía de práctica clínica APTA; PDF aportado por el usuario. Dosis de ca1 (cadera); donde choca con NICE NG226 (terapia manual, ultrasonido) prevalece NICE, más reciente.
+
+Citada como:
+
+1. Cibulka 2017, J Orthop Sports Phys Ther 47(6):A1–A37 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · NICE NG226 (rec. 1.3.1–1.3.11; prevalece donde chocan, por ser más reciente)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cadera | ca1 · Artrosis de Cadera | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Consenso de Zúrich IHiPRN
+
+Autores: Kemp, Risberg, Mosler, Harris-Hayes, Serner, Moksnes, Bloom, Crossley et al. (grupo IHiPRN; último autor, Bizzini)  
+Título: *Physiotherapist-led treatment for young to middle-aged active adults with hip-related pain: consensus recommendations from the International Hip-related Pain Research Network, Zurich 2018*  
+Publicación: Br J Sports Med 54:504–511 (2020)  
+DOI: 10.1136/bjsports-2019-101458  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario. Mismo primer autor y año que la revisión «Kemp 2020», por eso se cita como «consenso de Zúrich». Dosis de ca2 y ca3 (cadera).
+
+Citada como:
+
+1. Abordaje multimodal (B): modificar la actividad y fortalecer la musculatura propia de la cadera (psoas ilíaco, glúteo medio y mayor, rotadores internos y externos), el tronco (abdominales y paravertebrales) y el resto del miembro inferior, junto con terapia manual, corrección postural y del movimiento, estiramientos y equilibrio. Evitar los ejercicios que provoquen síntomas o que lleven a rangos que reproduzcan el pinzamiento. Educación para modificar los factores agravantes y manejar el dolor (C); entrenamiento del patrón de movimiento en las actividades que duelen (C); movilización articular si el dolor o la cápsula limitan la movilidad, y de tejidos blandos si lo hacen músculo y fascia (F); reeducación neuromuscular progresiva (F). La ortesis sola no se recomienda (D, evidencia contradictoria). Duración de al menos 3 meses; recomendar actividad física, incluido el deporte, y hablar de expectativas, decidir juntos y educar (consenso de Zúrich). En el ensayo FASHIoN, 6–10 contactos en 12–24 semanas; la artroscopia mejoró algo más a los 12 meses (6,8 puntos de iHOT-33). Ninguna fuente fija series ni repeticiones: el volumen queda a criterio del clínico.
+2. Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · consenso de Zúrich del IHiPRN (Kemp, Risberg, Mosler et al., Br J Sports Med 54:504–511) · Griffin 2018, Lancet 391:2225–2235 (ensayo aleatorizado UK FASHIoN, n = 348)
+3. El mismo abordaje multimodal que en el SIFA, que la guía recomienda en particular para el SIFA y las lesiones del labrum (B): modificar la actividad y fortalecer cadera (psoas ilíaco, glúteos, rotadores), tronco y miembro inferior, junto con terapia manual, corrección postural y del movimiento, estiramientos y equilibrio, evitando los ejercicios y rangos que provoquen síntomas. Educación sobre los factores agravantes y el dolor (C) y entrenamiento del patrón de movimiento (C). Al menos 3 meses (consenso de Zúrich). En adolescentes con rotura labral en la RM, el 73 % de los tratados solo con fisioterapia y modificación de la actividad alcanzó la mejoría mínima importante a los 3 años, igual que con infiltración o artroscopia (serie de casos). Ninguna fuente fija series ni repeticiones: el volumen queda a criterio del clínico.
+4. Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía; serie de Murtha citada en ella) · consenso de Zúrich del IHiPRN (Kemp, Risberg, Mosler et al., Br J Sports Med 54:504–511) · Kemp 2020, Br J Sports Med 54:1382–1394 (revisión sistemática)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Dosis (en el texto) | 5 · mención en el texto | 1 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Dosis (en el texto) | 5 · mención en el texto | 3 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Pauta de tratamiento | 5 · cita de la pauta | 4 |
+
 ### Consoli y Carlson 2026
 
 Autores: Consoli y Carlson  
@@ -1226,6 +1269,25 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
+
+### Enseki 2023
+
+Autores: Enseki, Bloom, Harris-Hayes, Cibulka, Disantis, Di Stasi, Malloy, Clohisy y Martin  
+Título: *Hip Pain and Movement Dysfunction Associated With Nonarthritic Hip Joint Pain: A Revision*  
+Publicación: J Orthop Sports Phys Ther 53(7):CPG1–CPG70  
+DOI: 10.2519/jospt.2023.0302  
+Última revisión: **sin revisar**  
+Nota: Guía de práctica clínica APTA; PDF aportado por el usuario (dos partes). Dosis de ca2 y ca3 (cadera).
+
+Citada como:
+
+1. Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · consenso de Zúrich del IHiPRN (Kemp, Risberg, Mosler et al., Br J Sports Med 54:504–511) · Griffin 2018, Lancet 391:2225–2235 (ensayo aleatorizado UK FASHIoN, n = 348)
+2. Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía; serie de Murtha citada en ella) · consenso de Zúrich del IHiPRN (Kemp, Risberg, Mosler et al., Br J Sports Med 54:504–511) · Kemp 2020, Br J Sports Med 54:1382–1394 (revisión sistemática)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
 ### Fairbank 2011
 
@@ -1708,7 +1770,7 @@ Nota: Texto completo en PMC5988794 (leído en Europe PMC). Dosis de ca2 (cadera)
 
 Citada como:
 
-1. Griffin 2018, Lancet 391:2225–2235 (ensayo aleatorizado UK FASHIoN, n = 348; fisioterapia «personalised hip therapy» frente a artroscopia) · Kemp 2020, Br J Sports Med 54:1382–1394 (revisión sistemática y metaanálisis, 14 estudios, ninguno a escala completa frente a placebo)
+1. Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · consenso de Zúrich del IHiPRN (Kemp, Risberg, Mosler et al., Br J Sports Med 54:504–511) · Griffin 2018, Lancet 391:2225–2235 (ensayo aleatorizado UK FASHIoN, n = 348)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -2200,17 +2262,15 @@ Título: *Improving function in people with hip-related pain: a systematic revie
 Publicación: Br J Sports Med 54(23):1382–1394  
 DOI: 10.1136/bjsports-2019-101690  
 Última revisión: **sin revisar**  
-Nota: Texto completo en PMC7677471. Dosis de ca2 y ca3 (cadera). No confundir con el consenso de Zúrich del mismo grupo (Kemp 2020, BJSM 54:504), no consultado.
+Nota: Texto completo en PMC7677471. Dosis de ca2 y ca3 (cadera). No confundir con el consenso de Zúrich del mismo grupo y año (entrada «Consenso de Zúrich IHiPRN»).
 
 Citada como:
 
-1. Griffin 2018, Lancet 391:2225–2235 (ensayo aleatorizado UK FASHIoN, n = 348; fisioterapia «personalised hip therapy» frente a artroscopia) · Kemp 2020, Br J Sports Med 54:1382–1394 (revisión sistemática y metaanálisis, 14 estudios, ninguno a escala completa frente a placebo)
-2. Kemp 2020, Br J Sports Med 54:1382–1394 (revisión sistemática y metaanálisis de fisioterapia en el dolor de cadera de origen articular; 10 de 14 estudios en pinzamiento femoroacetabular)
+1. Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía; serie de Murtha citada en ella) · consenso de Zúrich del IHiPRN (Kemp, Risberg, Mosler et al., Br J Sports Med 54:504–511) · Kemp 2020, Br J Sports Med 54:1382–1394 (revisión sistemática)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Khan y Bollu 2023
 
@@ -3271,7 +3331,7 @@ DOI: —
 Citada como:
 
 1. NICE NG226 (2022). Metcalfe 2019 (JAMA) para la rigidez matutina
-2. NICE NG226 (rec. 1.3.1–1.3.8)
+2. Cibulka 2017, J Orthop Sports Phys Ther 47(6):A1–A37 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · NICE NG226 (rec. 1.3.1–1.3.11; prevalece donde chocan, por ser más reciente)
 3. NICE NG226 (2022)
 
 | Región | Hipótesis | Dónde | Fase | Cita |

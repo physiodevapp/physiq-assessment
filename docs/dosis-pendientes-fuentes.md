@@ -102,9 +102,9 @@ Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y n
 
 | Id | Hipótesis | Tipo | Fuente | Estado |
 |---|---|---|---|---|
-| ca1 | Artrosis | B | NICE NG226 (rec. 1.3.1–1.3.8) | ✅ Reescrita sin cifras: NICE no fija volumen |
-| ca2 | SIFA | B | Griffin 2018 (FASHIoN) + Kemp 2020 | ✅ Cuatro componentes, 6–10 contactos en 12–24 semanas, sin series |
-| ca3 | Labrum | B | Kemp 2020 | ✅ Como dolor de cadera de origen articular; evidencia sobre todo de SIFA |
+| ca1 | Artrosis | A | Cibulka 2017 (guía APTA) + NICE NG226 | ✅ Grados APTA y frecuencia (ejercicio 1–5/semana, 6–12 semanas); donde chocan (terapia manual, ultrasonido) prevalece NICE, más reciente |
+| ca2 | SIFA | B | Enseki 2023 (guía APTA) + consenso de Zúrich + Griffin 2018 | ✅ Multimodal (B) con sus grados, al menos 3 meses; sin series |
+| ca3 | Labrum | B | Enseki 2023 + consenso de Zúrich + Kemp 2020 | ✅ Multimodal (B, recomendado en particular para SIFA y labrum), al menos 3 meses |
 | ca4 | Tendinopatía glútea | A | Mellor 2018 (LEAP) + Mellor 2016 (protocolo) | ✅ Pauta completa de 8 semanas |
 | ca5 | Debilidad de abductores | D | — | Vaciada (era un déficit, no un diagnóstico; cifras sin fuente) |
 | ca6 | Control neuromuscular | D | — | Vaciada (ídem) |
@@ -122,7 +122,7 @@ Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y n
 | ca18 | Canal inguinal | D | — | Sin fuente (la Cochrane de 2025 sobre dolor inguinal es solo un protocolo) |
 | ca19 | Pubis | D | — | Sin fuente |
 
-Mejorarían esto, si el usuario aporta los PDF: el consenso de Zúrich (Kemp 2020, BJSM 54:504) para `ca2`/`ca3`, la guía JOSPT de artrosis de cadera (Cibulka 2017) para dar grados a `ca1` y la guía JOSPT de dolor de cadera no artrósico (Enseki 2023).
+Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2017, guía APTA de dolor de cadera no artrósico de Enseki 2023 y consenso de Zúrich del IHiPRN), `ca1`–`ca3` ganan grados de recomendación.
 
 ## Resumen
 - **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11 y ca17.
