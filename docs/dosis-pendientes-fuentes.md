@@ -51,11 +51,21 @@ Leyenda:
 | ro19 | Nervio peroneo común | C/D | — | Déficit motor progresivo → derivar |
 | ro20 | Quiste de Baker | D | — | Diferencial con TVP (ya lo cubre el cribado, `r_v2`) |
 
-## Hombro (`h10`–`h11`)
+## Hombro (`h1`–`h11`)
 
-**Pendiente (2026-10):** `h1`–`h9` tienen dosis con cifras sin fuente desde el primer commit; se revisan en una sesión propia (ver la casilla de hombro en la Fase E de `MIGRATION_PLAN.md`).
+`h1`–`h9` tenían series, repeticiones, «% CVM» y grados sin fuente desde el primer commit: ✅ revisadas en 2026-10 (ver Fase E en `MIGRATION_PLAN.md`).
+
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
+| h1 | Capsulitis adhesiva | ✅ **Hecho** (2026-10) · B | Kelley 2013, JOSPT 43(5):A1–A31 · Salamh 2025, J Man Manip Ther 33(4):309–320 (PDF del usuario) | Pauta por irritabilidad (Kelley: educación B, estiramientos B, movilización C, infiltración + ejercicio A). **Conflicto:** Kelley admite movilización de baja intensidad en la irritabilidad alta (C) y modalidades (C); el consenso Delphi de 2025 considera ineficaz la terapia manual en la fase precoz (93 %) y el masaje, frío, electroestimulación y ultrasonido (también el calor en la fase precoz). Prevalece el consenso, más reciente, y se dice. Ninguna fuente fija volumen |
+| h2 | Pinzamiento subacromial | ✅ **Hecho** (2026-10) · B | Desmeules 2025, JOSPT 55(4):235–274 (PDF del usuario; incluye el SAPS en la tendinopatía del manguito) | Educación C, ejercicio activo A (carga alta no mejor que baja; supervisado no mejor que en casa), terapia manual B, vendaje D, sin ultrasonido B, ergonomía C, imagen y derivación a las 12 semanas F. Sin volumen |
+| h3 | Rotura del manguito | ✅ **Hecho** (2026-10) · B (parcial) / D (completa) | Desmeules 2025 · Alentorn-Geli 2026 | Desmeules incluye la rotura parcial y excluye la completa. La completa queda a criterio del clínico; tras una luxación anterior es indicación quirúrgica (consenso ESSKA-ESA, B) |
+| h4 | Inestabilidad GH | ✅ **Hecho** (2026-10) · B | Alentorn-Geli 2026, KSSTA 34:3040–3051 (consenso ESSKA-ESA, parte 2; PDF del usuario) | Solo la anterior traumática: cabestrillo para el dolor y movilización precoz (C), rehabilitación siempre (D), recidiva → cirugía, preparación (C), vuelta al deporte con criterios, 6–16 semanas (C). La posterior y la multidireccional no las trata: a criterio del clínico |
+| h5 | SLAP | ✅ D | — | Ninguna guía ni consenso con pauta de fisioterapia (Lluch 2020, cap. 3.1, pp. 63–64: no hay hallazgo específico y no siempre se trata). `dosis: ''` |
+| h6 | Cervical con dolor referido al hombro | ✅ **Hecho** (2026-10) · B | Blanpied 2017 (PDF del usuario) | Categoría «dolor de cuello con déficit de movilidad», que incluye el dolor referido a la cintura escapular; misma pauta que `ce1` |
+| h7 | Acromioclavicular | ✅ D | — | Sin guía de fisioterapia. Lluch 2020 (p. 61) solo menciona la infiltración ecoguiada de corticoide, que es médica. `dosis: ''` |
+| h8 | Discinesia escapular | ✅ D | — | Sin guía. Lluch 2020 (pp. 53–54): no se ha demostrado que la discinesia cause el dolor. `dosis: ''` |
+| h9 | Disfunción de 1.ª costilla | ✅ D | — | Igual que `ce10`: ninguna fuente, y Blanpied 2017 (p. A29) no encontró beneficio de los ejercicios respiratorios en el dolor de cuello crónico, que era la pauta anterior. `dosis: ''` |
 | h10 | Artrosis GH | D (sin ensayos) | AAOS 2020, *Management of Glenohumeral Joint Osteoarthritis* (guía) · revisión sistemática de 2026 sobre intervenciones dirigidas por fisioterapeutas (Shoulder & Elbow, doi 10.1177/17585732261450961) | Fragmento de la revisión: «no hay ensayos publicados sobre intervenciones de fisioterapia en artrosis GH con tratamiento no quirúrgico», solo en el postoperatorio. Conclusión: `dosis: ''` es correcto; se puede citar en el criterio la ausencia de evidencia |
 | h11 | Luxación bloqueada o fractura | C | — | Ya dice «→ Rx». Propuesta: dosis «Derivar para radiografía; sin tratamiento de fisioterapia hasta el diagnóstico» |
 
