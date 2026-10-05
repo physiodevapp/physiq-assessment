@@ -52,6 +52,8 @@ Leyenda:
 | ro20 | Quiste de Baker | D | — | Diferencial con TVP (ya lo cubre el cribado, `r_v2`) |
 
 ## Hombro (`h10`–`h11`)
+
+**Pendiente (2026-10):** `h1`–`h9` tienen dosis con cifras sin fuente desde el primer commit; se revisan en una sesión propia (ver la casilla de hombro en la Fase E de `MIGRATION_PLAN.md`).
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
 | h10 | Artrosis GH | D (sin ensayos) | AAOS 2020, *Management of Glenohumeral Joint Osteoarthritis* (guía) · revisión sistemática de 2026 sobre intervenciones dirigidas por fisioterapeutas (Shoulder & Elbow, doi 10.1177/17585732261450961) | Fragmento de la revisión: «no hay ensayos publicados sobre intervenciones de fisioterapia en artrosis GH con tratamiento no quirúrgico», solo en el postoperatorio. Conclusión: `dosis: ''` es correcto; se puede citar en el criterio la ausencia de evidencia |
