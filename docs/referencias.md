@@ -13,10 +13,10 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **244** referencias de literatura, con **822** usos.
+- **244** referencias de literatura, con **823** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **199** usos, basadas en Lluch 2020.
 - **19** de 244 referencias del registro revisadas. Ver «Estado de revisión».
-- **52** de 441 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
+- **52** de 442 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
 
@@ -70,7 +70,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Reiman 2014](#reiman-2014) | puntuación 4b · test 4b sin puntuar · texto | 6 | **sin revisar** |
 | [Smith 2015](#smith-2015) | puntuación 4b | 2 | **sin revisar** |
 | [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | **sin revisar** |
-| [Décary 2018](#décary-2018) | puntuación 4b · test 4b sin puntuar | 5 | **sin revisar** |
+| [Décary 2018](#décary-2018) | puntuación 4b | 6 | **sin revisar** |
 | [Park 2019](#park-2019) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | **sin revisar** |
 | [Getsoian 2020](#getsoian-2020) | puntuación 4b | 1 | **sin revisar** |
@@ -1310,23 +1310,25 @@ Citada como:
 Publicación: PLoS One 13:e0198797 · PM R 10:472–482 · Arch Phys Med Rehabil 99(4):607–614 (tres artículos)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Tres artículos distintos con la misma clave: la cita de cada uso dice la revista. DOI de cada uno (el campo doi admite uno solo): PLoS One (LCA) 10.1371/journal.pone.0198797; PM R (menisco) 10.1016/j.pmrj.2017.10.009; Arch Phys Med Rehabil (dolor femoropatelar, solo leído el resumen de PubMed en 2026-10) 10.1016/j.apmr.2017.10.014.
+Nota: Tres artículos distintos con la misma clave: la cita de cada uso dice la revista. DOI de cada uno (el campo doi admite uno solo): PLoS One (LCA) 10.1371/journal.pone.0198797; PM R (menisco) 10.1016/j.pmrj.2017.10.009; Arch Phys Med Rehabil (dolor femoropatelar; PDF del usuario leído en 2026-10, tablas 3 y 4: los grupos para confirmar y descartar de ro3) 10.1016/j.apmr.2017.10.014.
 
 Citada como:
 
 1. Décary 2018 (PM&R; n = 279, 35 roturas traumáticas; referencia: diagnóstico compuesto de médico experto con RM)
 2. Décary 2018 (PM&R; n = 279, 45 roturas degenerativas; referencia: diagnóstico compuesto de médico experto con RM)
-3. Décary 2018 (Arch Phys Med Rehabil 99:607–614; n = 279 consultas por la rodilla, 75 con dolor femoropatelar; referencia: diagnóstico compuesto de médico experto con imagen)
-4. Décary 2018 (PLoS One; n = 279, 22 roturas completas; referencia: diagnóstico compuesto de médico experto con RM)
-5. Décary 2018 (PLoS One; n = 279, 43 roturas parciales o completas; referencia: diagnóstico compuesto de médico experto con RM)
+3. Décary 2018 (Arch Phys Med Rehabil 99:607–614; n = 279 consultas por la rodilla, 75 con dolor femoropatelar; referencia: diagnóstico compuesto de médico experto con radiografía y, si hacía falta, RM; tabla 3)
+4. Décary 2018 (Arch Phys Med Rehabil 99:607–614; n = 279 consultas por la rodilla, 75 con dolor femoropatelar; referencia: diagnóstico compuesto de médico experto con radiografía y, si hacía falta, RM; tabla 4)
+5. Décary 2018 (PLoS One; n = 279, 22 roturas completas; referencia: diagnóstico compuesto de médico experto con RM)
+6. Décary 2018 (PLoS One; n = 279, 43 roturas parciales o completas; referencia: diagnóstico compuesto de médico experto con RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación traumática: traumatismo + dolor medial o difuso + palpación de la interlínea medial» | 4b · cita bajo el test | 1 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación degenerativa: inicio progresivo + dolor medial aislado + uno de tres» | 4b · cita bajo el test | 2 |
-| Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Cluster diagnóstico: edad + localización + escaleras + palpación facetas + ROM extensión» | 4b · cita bajo el test | 3 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo» | 4b · cita bajo el test | 4 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Descartar: sin mecanismo de pivote ni chasquido + Lachman o pivot shift negativos (si se cumple, marcar «Negativo»)» | 4b · cita bajo el test | 5 |
+| Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva)» | 4b · cita bajo el test | 3 |
+| Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Descartar: grupos de Décary (si se cumple alguno, marcar «Negativo»)» | 4b · cita bajo el test | 4 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo» | 4b · cita bajo el test | 5 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Descartar: sin mecanismo de pivote ni chasquido + Lachman o pivot shift negativos (si se cumple, marcar «Negativo»)» | 4b · cita bajo el test | 6 |
 
 ### Demont 2022
 
@@ -4243,7 +4245,7 @@ Nota: Guía de práctica clínica (AGREE II y GRADE); texto completo leído en P
 
 Citada como:
 
-1. Ophey 2025, Knee Surg Sports Traumatol Arthrosc 33:457–469 (guía multidisciplinar holandesa, módulos 1–3; certeza GRADE como la da la guía) · Willy 2019, J Orthop Sports Phys Ther 49(9) (guía de práctica clínica APTA, figura del árbol de decisión; letra = grado de la recomendación)
+1. Ophey 2025, Knee Surg Sports Traumatol Arthrosc 33:457–469 (guía multidisciplinar holandesa, módulos 1–3; certeza GRADE como la da la guía) · Willy 2019, J Orthop Sports Phys Ther 49(9):CPG1–CPG95 (guía de práctica clínica APTA, resumen de recomendaciones, pp. CPG2–CPG3; letra = grado de la recomendación)
 2. Ophey 2025 (Knee Surg Sports Traumatol Arthrosc 33:457–469; guía multidisciplinar holandesa, módulo 4; certeza GRADE muy baja); Cook 2001 (Br J Sports Med 35:65–9; 326 tendones de jóvenes jugadores de baloncesto; referencia: ecografía)
 3. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 192–193; Ophey 2025 (Knee Surg Sports Traumatol Arthrosc 33:457–469; guía multidisciplinar holandesa, módulo 4; certeza GRADE muy baja); Mendonça 2016 (J Orthop Sports Phys Ther 46:673–80; 43 deportistas con dolor en el tendón rotuliano; referencia: ecografía)
 4. Ophey 2025, Knee Surg Sports Traumatol Arthrosc 33:457–469 (guía multidisciplinar holandesa, módulos 5–7; certeza GRADE muy baja) · Lopes 2025, Cochrane Database Syst Rev 5:CD013078 (revisión sistemática, 7 ensayos, 211 deportistas)
@@ -5380,16 +5382,16 @@ Citada como:
 
 ### Willy 2019
 
-Autores: Willy y cols.  
-Título: *Patellofemoral Pain: Clinical Practice Guidelines*  
-Publicación: J Orthop Sports Phys Ther 49(9)  
+Autores: Willy, Hoglund, Barton, Bolgla, Scalzitti, Logerstedt, Lynch, Snyder-Mackler y McDonough  
+Título: *Patellofemoral Pain: Clinical Practice Guidelines Linked to the International Classification of Functioning, Disability and Health*  
+Publicación: J Orthop Sports Phys Ther 49(9):CPG1–CPG95  
 DOI: 10.2519/jospt.2019.0302  
 Última revisión: **sin revisar**  
-Nota: Guía de práctica clínica APTA. Solo se ha podido leer la figura del árbol de decisión con los grados (PDF de orthopt.org, 2026-10); jospt.org está bloqueado. Pauta de ro3, donde manda Ophey 2025 por más reciente.
+Nota: Guía de práctica clínica APTA; PDF del usuario (2026-10): resumen de recomendaciones (pp. CPG2–CPG3) y lagunas sobre la dosis. Pauta de ro3: se suma en lo que no choca; en vendaje, rodilleras y ortesis manda Ophey 2025, más reciente.
 
 Citada como:
 
-1. Ophey 2025, Knee Surg Sports Traumatol Arthrosc 33:457–469 (guía multidisciplinar holandesa, módulos 1–3; certeza GRADE como la da la guía) · Willy 2019, J Orthop Sports Phys Ther 49(9) (guía de práctica clínica APTA, figura del árbol de decisión; letra = grado de la recomendación)
+1. Ophey 2025, Knee Surg Sports Traumatol Arthrosc 33:457–469 (guía multidisciplinar holandesa, módulos 1–3; certeza GRADE como la da la guía) · Willy 2019, J Orthop Sports Phys Ther 49(9):CPG1–CPG95 (guía de práctica clínica APTA, resumen de recomendaciones, pp. CPG2–CPG3; letra = grado de la recomendación)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
