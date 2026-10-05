@@ -2106,7 +2106,7 @@ Título: *Shoulder Pain and Mobility Deficits: Adhesive Capsulitis. Clinical Pra
 Publicación: J Orthop Sports Phys Ther 43(5):A1–A31  
 DOI: 10.2519/jospt.2013.0302  
 Última revisión: **sin revisar**  
-Nota: PDF aportado por el usuario. Guía APTA de capsulitis adhesiva (Lluch 2020, cap. 3.1.1, ref. 23). Pauta de h1 y test de rotación externa de h1. Donde choca con Salamh 2025 prevalece el consenso, más reciente.
+Nota: PDF aportado por el usuario. Guía APTA de capsulitis adhesiva (Lluch 2020, cap. 3.1.1, ref. 23). Pauta de h1 y test de rotación externa de h1. Donde choca con Salamh 2025 (consenso de expertos, posterior pero de menor nivel) se presentan las dos.
 
 Citada como:
 
