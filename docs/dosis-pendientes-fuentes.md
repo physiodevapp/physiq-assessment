@@ -102,6 +102,8 @@ Leyenda:
 
 El resto **nunca se ha buscado** (2026-10): no hay tipo asignado. Pendiente de una sesión propia (Fase E de `MIGRATION_PLAN.md`).
 
+Aparte, `ca1`–`ca10` tienen dosis con cifras sin fuente desde el primer commit (como tenían `lu1`–`lu4` y `ce1`–`ce14`): pendiente de contrastar con la guía de cada entidad y reescribir con `dosisFuente` (Fase E de `MIGRATION_PLAN.md`).
+
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
 | ca11 | Lesión aguda de ingle | sin buscar | — | — |
