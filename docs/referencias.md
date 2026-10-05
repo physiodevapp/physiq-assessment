@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **169** referencias de literatura, con **488** usos.
+- **169** referencias de literatura, con **489** usos.
 - **5** tarjetas de consulta (repo guia-de-consulta), con **274** usos, basadas en Lluch 2020.
 - **18** de 169 referencias del registro revisadas. Ver «Estado de revisión».
 - **92** de 430 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -171,7 +171,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rout 2024](#rout-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Benjamin y Lui 2025](#benjamin-y-lui-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Budha 2025](#budha-2025) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Daley 2025](#daley-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Daley 2025](#daley-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Gill 2025](#gill-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Grant y John 2025](#grant-y-john-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hall 2025](#hall-2025) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -1076,6 +1076,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 
 ### Décary 2018
