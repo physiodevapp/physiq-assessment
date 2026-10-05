@@ -857,8 +857,8 @@ export const hypotheses = {
     prom: 'QuickDASH (MCID: 8.0–15.9 pts)',
     dosis: '',
     tests: [
-      { name: 'Palpación posteroanterior de 1ª costilla', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Restricción de movilidad de primera costilla a la palpación posteroanterior. Datos de fiabilidad limitados/ausentes en literatura actual.', noData: true },
-      { name: 'Test de elevación del brazo post-movilización', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Mejoría de la elevación del brazo tras movilización de la primera costilla. Datos de fiabilidad limitados.', noData: true }
+      { name: 'Palpación posteroanterior de 1ª costilla', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Restricción de movilidad de primera costilla a la palpación posteroanterior. En un Delphi de 12 expertos en terapia manual hubo consenso en que el movimiento accesorio posteroanterior doloroso y restringido de la 1.ª costilla, y su palpación dolorosa, ayudan a identificar su disfunción; es opinión de expertos y los autores piden estudiar su fiabilidad y validez. Sin S ni E; no puntúa.', fuente: 'Mastromarchi 2021 (J Man Manip Ther 29(3):181–188, Delphi, tabla 2)', noData: true },
+      { name: 'Test de elevación del brazo post-movilización', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Mejoría de la elevación del brazo tras movilización de la primera costilla. En un Delphi de 12 expertos en terapia manual hubo consenso en que la mejoría tras movilizar la 1.ª costilla apoya su disfunción (el consenso habla de mejoría en general, no de la elevación del brazo en concreto); es opinión de expertos, sin fiabilidad ni validez estudiadas. Sin S ni E; no puntúa.', fuente: 'Mastromarchi 2021 (J Man Manip Ther 29(3):181–188, Delphi, tabla 2)', noData: true }
     ]
   },  // Tarjeta hombro, nodo 2b: las dos ramas de rigidez activa = pasiva que no
   // son el congelado. Sin fila de PRONOSTICO en la tarjeta → sin `pronostico`;
