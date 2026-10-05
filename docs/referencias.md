@@ -2111,8 +2111,8 @@ Nota: PDF aportado por el usuario. Guía APTA de capsulitis adhesiva (Lluch 2020
 
 Citada como:
 
-1. Positivo cuando reproduce dolor (criterio anterior, pendiente de revisar: las fuentes describen la pérdida de RE pasiva, no el dolor). La pérdida de movilidad pasiva en varios planos, sobre todo de RE con el brazo al lado y en distintos grados de abducción, es un hallazgo significativo para orientar el tratamiento (Kelley 2013, E). El consenso de 2025 asocia al hombro congelado una RE pasiva más limitada que las demás direcciones (100 %) y cada vez más limitada al aumentar la abducción (100 %). Lluch 2020: la RE está reducida de forma constante en neutro y a 90° de abducción, aunque la RI suele ser la más afectada cerca de 90°. Sin S ni E; no puntúa.
-2. Kelley 2013 (J Orthop Sports Phys Ther 43(5):A1–A31, p. A26) · Salamh 2025 (J Man Manip Ther 33(4):309–320, tabla 2) · Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 72
+1. Positivo si la RE pasiva con el brazo al lado pierde más del 50 % respecto al lado sano o queda por debajo de 30°: es el criterio que se ha usado en los estudios para definir la capsulitis, junto a una pérdida de movilidad mayor del 25 % en al menos 2 planos (Kelley 2013, p. A9). La pérdida de movilidad pasiva en varios planos, sobre todo de RE con el brazo al lado y en distintos grados de abducción, es un hallazgo significativo para orientar el tratamiento (Kelley 2013, E). El consenso de 2025 asocia al hombro congelado una RE pasiva más limitada que las demás direcciones (100 %) y cada vez más limitada al aumentar la abducción (100 %). Lluch 2020: la RE está reducida de forma constante en neutro y a 90° de abducción, aunque la RI suele ser la más afectada cerca de 90°. Sin S ni E; no puntúa.
+2. Kelley 2013 (J Orthop Sports Phys Ther 43(5):A1–A31, pp. A9 y A26) · Salamh 2025 (J Man Manip Ther 33(4):309–320, tabla 2) · Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 72
 3. Kelley 2013, J Orthop Sports Phys Ther 43(5):A1–A31 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Salamh 2025, J Man Manip Ther 33(4):309–320 (consenso Delphi de 14 expertos; % = acuerdo del panel; es opinión de expertos, no evidencia de eficacia)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -2486,8 +2486,8 @@ Nota: Base de las guías clínicas de cada región, de las que son extracto las 
 Citada como:
 
 1. Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 73
-2. Positivo cuando reproduce dolor (criterio anterior, pendiente de revisar: las fuentes describen la pérdida de RE pasiva, no el dolor). La pérdida de movilidad pasiva en varios planos, sobre todo de RE con el brazo al lado y en distintos grados de abducción, es un hallazgo significativo para orientar el tratamiento (Kelley 2013, E). El consenso de 2025 asocia al hombro congelado una RE pasiva más limitada que las demás direcciones (100 %) y cada vez más limitada al aumentar la abducción (100 %). Lluch 2020: la RE está reducida de forma constante en neutro y a 90° de abducción, aunque la RI suele ser la más afectada cerca de 90°. Sin S ni E; no puntúa.
-3. Kelley 2013 (J Orthop Sports Phys Ther 43(5):A1–A31, p. A26) · Salamh 2025 (J Man Manip Ther 33(4):309–320, tabla 2) · Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 72
+2. Positivo si la RE pasiva con el brazo al lado pierde más del 50 % respecto al lado sano o queda por debajo de 30°: es el criterio que se ha usado en los estudios para definir la capsulitis, junto a una pérdida de movilidad mayor del 25 % en al menos 2 planos (Kelley 2013, p. A9). La pérdida de movilidad pasiva en varios planos, sobre todo de RE con el brazo al lado y en distintos grados de abducción, es un hallazgo significativo para orientar el tratamiento (Kelley 2013, E). El consenso de 2025 asocia al hombro congelado una RE pasiva más limitada que las demás direcciones (100 %) y cada vez más limitada al aumentar la abducción (100 %). Lluch 2020: la RE está reducida de forma constante en neutro y a 90° de abducción, aunque la RI suele ser la más afectada cerca de 90°. Sin S ni E; no puntúa.
+3. Kelley 2013 (J Orthop Sports Phys Ther 43(5):A1–A31, pp. A9 y A26) · Salamh 2025 (J Man Manip Ther 33(4):309–320, tabla 2) · Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 72
 4. Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 72–73
 5. Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 71
 6. Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 69–73
@@ -3457,7 +3457,7 @@ Nota: PDF aportado por el usuario. Consenso Delphi de 14 expertos (12 fisioterap
 
 Citada como:
 
-1. Kelley 2013 (J Orthop Sports Phys Ther 43(5):A1–A31, p. A26) · Salamh 2025 (J Man Manip Ther 33(4):309–320, tabla 2) · Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 72
+1. Kelley 2013 (J Orthop Sports Phys Ther 43(5):A1–A31, pp. A9 y A26) · Salamh 2025 (J Man Manip Ther 33(4):309–320, tabla 2) · Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 72
 2. Kelley 2013, J Orthop Sports Phys Ther 43(5):A1–A31 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Salamh 2025, J Man Manip Ther 33(4):309–320 (consenso Delphi de 14 expertos; % = acuerdo del panel; es opinión de expertos, no evidencia de eficacia)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
