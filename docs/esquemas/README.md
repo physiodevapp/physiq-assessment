@@ -8,7 +8,7 @@ Esquemas para tener a mano en consulta, **generados desde los datos de la app**:
 | Árbol de decisión CIF en flujo con flechas: pasos principales de izquierda a derecha, desvíos encima del paso del que salen, y bajo cada paso sus respuestas con la hipótesis que activan, la derivación o adónde llevan | 4 | A3 apaisado | `arbol-lumbar.pdf` |
 | Confirmación: tests de cada hipótesis con su LR+/LR− y si puntúan, clústeres | 4b | A4 apaisado | `confirmacion-lumbar.pdf` |
 
-Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, hombro y cadera; los de cualquier región se generan con el mismo script.
+Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, hombro, cadera y rodilla; los de cualquier región se generan con el mismo script.
 
 ## Cómo se generan
 

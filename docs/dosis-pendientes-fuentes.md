@@ -34,14 +34,24 @@ Leyenda:
 | ce8 | Mielopatía | C · Derivación | Blanpied 2017 (solo un dato de nivel IV, no recomendación) | `DOSIS_DERIVAR` (decisión del usuario) |
 | ce10 | Disfunción de 1.ª costilla | D | — | `dosis: ''` (decisión del usuario): ninguna fuente, y Blanpied 2017 no encontró beneficio de los ejercicios respiratorios en el dolor de cuello crónico, que era la pauta anterior |
 
-## Rodilla (`ro8`–`ro20`)
+## Rodilla (`ro1`–`ro20`)
+
+`ro1`–`ro7` tenían series, repeticiones y segundos sin fuente desde el primer commit: ✅ revisadas en 2026-10, con los textos completos (o la parte indicada) leídos en esta sesión. Como en lumbar, cervical y hombro, se reescriben con la recomendación de la guía y su grado, sin cifras que la guía no da.
+
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
-| ro8 | LCM | A/B | Logerstedt 2017, JOSPT 47(11):A1–47, *Knee Ligament Sprain Revision 2017* | Ortesis, carga y progresión por grado I–III |
-| ro9 | LCP | A/B | Logerstedt 2017 | Ídem. Las lesiones combinadas van a derivación |
-| ro10 | LLE y esquina posterolateral | C (grado III) / B | Logerstedt 2017 | Las de grado III o combinadas suelen ser quirúrgicas: comprobar lo que dice la guía |
+| ro1 | Artrosis | ✅ **Hecho** (2026-10) · B | NICE NG226 (nice.org.uk, sin actualizar desde 2022) | Ejercicio terapéutico adaptado («offer»), supervisado y con educación («consider»), pérdida de peso, terapia manual solo con ejercicio, sin acupuntura, punción seca ni electroterapia, ayudas para la marcha, ortesis solo en casos concretos. Sin volumen |
+| ro2 | Menisco | ✅ **Hecho** (2026-10) · B | Logerstedt 2018, JOSPT 48(2):A1–A50 (PDF de orthopt.org) | Movilidad, fuerza de rodilla y cadera y neuromuscular (B); tras meniscectomía, supervisado + casa (B) y electroestimulación (B). Centrada en el posoperatorio; sin volumen |
+| ro3 | Dolor femoropatelar | ✅ **Hecho** (2026-10) · B | Ophey 2025, KSSTA 33:457–469 (guía holandesa, PMC) · Willy 2019, JOSPT 49(9):CPG1–CPG95 (PDF del usuario) | Ejercicio de cuádriceps y/o cadera 6–12 semanas, ajustado al dolor; de Willy se suma lo que no choca (sin punción seca ni terapia manual aislada, A; sin agentes físicos ni biofeedback, B; carrera C; educación F). **Conflicto:** Willy admite vendaje (B) y ortesis plantar prefabricada (A) con el ejercicio desde el inicio y desaconseja rodilleras (B); la holandesa, más reciente y del mismo nivel, los deja para cuando el ejercicio no basta. Willy: la dosis óptima no se conoce |
+| ro4 | LCA | ✅ **Hecho** (2026-10) · B | Logerstedt 2017, JOSPT 47(11):A1–A47 (PDF de orthopt.org) | Reeducación neuromuscular con fuerza (A), ortesis funcional en la insuficiencia (C); el resto, y el único volumen (2–3 veces por semana, 6–10 meses, A), es tras la reconstrucción |
+| ro5 | Tendinopatía rotuliana | ✅ **Hecho** (2026-10) · B | Ophey 2025 · Lopes 2025 (Cochrane, resumen) | Plan en cuatro fases, fuerza progresiva ≥12 semanas (resistencia pesada y lenta; isométricos si hay dolor reactivo), cinta infrarrotuliana si no mejora. Certeza muy baja; la Cochrane no puede asegurar el efecto. La pauta anterior (isométricos 5 × 45 s) no tenía fuente |
+| ro6 | Cintilla iliotibial | ✅ **Hecho** (2026-10) · B | Sanchez-Alvarado 2024, Front Sports Act Living (revisión sistemática, PMC) | Fortalecimiento de abductores de cadera, 4–8 semanas, mejor con terapia manual u ondas de choque. Evidencia baja, solo corredores, sin guía |
+| ro7 | Pata de ganso | ✅ D | — | No se encontró ninguna guía ni revisión de fisioterapia: `dosis: ''` (la pauta anterior no tenía fuente) |
+| ro8 | LCM | ✅ **Hecho** (2026-10) · B | Logerstedt 2017 | Reeducación neuromuscular con fuerza (A); ortesis en la lesión grave (F). Sin volumen |
+| ro9 | LCP | ✅ **Hecho** (2026-10) · B | Logerstedt 2017 | Ídem; ortesis en la lesión aguda (F) |
+| ro10 | LLE y esquina posterolateral | ✅ **Hecho** (2026-10) · B | Logerstedt 2017 | Ídem; ortesis en la lesión de la esquina posterolateral (F). La guía no trata cuándo operar las de grado III o combinadas |
 | ro11 | Fracturas (rótula, meseta) | C | — | Derivar. Sin dosis de fisioterapia hasta la pauta traumatológica |
-| ro12 | Inestabilidad rotuliana | B | ESSKA 2024, consenso formal sobre la primera luxación de rótula, parte 2 (KSSTA, acceso libre) | Fragmento: ninguna ortesis es superior a no llevarla (solo quizá, muy poco tiempo, en fase aguda y sin limitar el rango); movilidad activa y fuerza precoces; sin diferencia en las reluxaciones entre carga parcial y total. Copiar sus afirmaciones literales |
+| ro12 | Inestabilidad rotuliana | ✅ **Hecho** (2026-10) · B | Balcarek 2025, KSSTA 33(12):4197–4206 (consenso formal ESSKA, parte 2; texto completo en PMC) | Conservador solo con riesgo de recidiva bajo y sin lesión osteocondral (C); ortesis sin ventaja, como mucho muy breve y sin limitar el rango (B); ejercicio guiado siempre (C); recidiva ≥25 %, hasta 70 % en jóvenes (B). La parte 2 no habla de carga parcial frente a total (el fragmento anterior no se confirma) |
 | ro13 | Grasa de Hoffa | D | — | — |
 | ro14 | Bursitis pre e infrarrotuliana | C/D | — | Si hay sospecha séptica, derivar (ya está en el cribado de rodilla) |
 | ro15 | Osgood-Schlatter / SLJ | ✅ **Hecho** (solo Osgood) | Rathleff 2020, Orthop J Sports Med 8(4) (acceso abierto en PMC; apéndice 1 descargado) | Es una **serie de casos, nivel 4**, sin grupo control (no una cohorte comparativa). **Excluyó el Sinding-Larsen-Johansson**: la dosis lo dice. Pauta completa del apéndice: isométricos y puente 4 semanas, 3 niveles de fuerza y escalera de 11 escalones con dolor ≤2/10 |
@@ -51,9 +61,21 @@ Leyenda:
 | ro19 | Nervio peroneo común | C/D | — | Déficit motor progresivo → derivar |
 | ro20 | Quiste de Baker | D | — | Diferencial con TVP (ya lo cubre el cribado, `r_v2`) |
 
-## Hombro (`h10`–`h11`)
+## Hombro (`h1`–`h11`)
+
+`h1`–`h9` tenían series, repeticiones, «% CVM» y grados sin fuente desde el primer commit: ✅ revisadas en 2026-10 (ver Fase E en `MIGRATION_PLAN.md`).
+
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
+| h1 | Capsulitis adhesiva | ✅ **Hecho** (2026-10) · B | Kelley 2013, JOSPT 43(5):A1–A31 · Salamh 2025, J Man Manip Ther 33(4):309–320 (PDF del usuario) | Pauta por irritabilidad (Kelley: educación B, estiramientos B, movilización C, infiltración + ejercicio A). **Conflicto:** Kelley admite movilización de baja intensidad en la irritabilidad alta (C) y modalidades (C); el consenso Delphi de 2025 considera ineficaz la terapia manual en la fase precoz (93 %) y el masaje, frío, electroestimulación y ultrasonido (también el calor en la fase precoz). Como el consenso es posterior pero de menor nivel de evidencia que la guía, se presentan las dos (regla de conflictos en `docs/razonamiento-cribado.md`). Ninguna fuente fija volumen |
+| h2 | Pinzamiento subacromial | ✅ **Hecho** (2026-10) · B | Desmeules 2025, JOSPT 55(4):235–274 (PDF del usuario; incluye el SAPS en la tendinopatía del manguito) | Educación C, ejercicio activo A (carga alta no mejor que baja; supervisado no mejor que en casa), terapia manual B, vendaje D, sin ultrasonido B, ergonomía C, imagen y derivación a las 12 semanas F. Sin volumen |
+| h3 | Rotura del manguito | ✅ **Hecho** (2026-10) · B (parcial) / D (completa) | Desmeules 2025 · Alentorn-Geli 2026 | Desmeules incluye la rotura parcial y excluye la completa. La completa queda a criterio del clínico; tras una luxación anterior es indicación quirúrgica (consenso ESSKA-ESA, B) |
+| h4 | Inestabilidad GH | ✅ **Hecho** (2026-10) · B | Alentorn-Geli 2026, KSSTA 34:3040–3051 (consenso ESSKA-ESA, parte 2; PDF del usuario) | Solo la anterior traumática: cabestrillo para el dolor y movilización precoz (C), rehabilitación siempre (D), recidiva → cirugía, preparación (C), vuelta al deporte con criterios, 6–16 semanas (C). La posterior y la multidireccional no las trata: a criterio del clínico |
+| h5 | SLAP | ✅ D | — | Ninguna guía ni consenso con pauta de fisioterapia (Lluch 2020, cap. 3.1, pp. 63–64: no hay hallazgo específico y no siempre se trata). `dosis: ''` |
+| h6 | Cervical con dolor referido al hombro | ✅ **Hecho** (2026-10) · B | Blanpied 2017 (PDF del usuario) | Categoría «dolor de cuello con déficit de movilidad», que incluye el dolor referido a la cintura escapular; misma pauta que `ce1` |
+| h7 | Acromioclavicular | ✅ D | — | Sin guía de fisioterapia. Lluch 2020 (p. 61) solo menciona la infiltración ecoguiada de corticoide, que es médica. `dosis: ''` |
+| h8 | Discinesia escapular | ✅ D | — | Sin guía. Lluch 2020 (pp. 53–54): no se ha demostrado que la discinesia cause el dolor. `dosis: ''` |
+| h9 | Disfunción de 1.ª costilla | ✅ D | — | Igual que `ce10`: ninguna fuente, y Blanpied 2017 (p. A29) no encontró beneficio de los ejercicios respiratorios en el dolor de cuello crónico, que era la pauta anterior. `dosis: ''` |
 | h10 | Artrosis GH | D (sin ensayos) | AAOS 2020, *Management of Glenohumeral Joint Osteoarthritis* (guía) · revisión sistemática de 2026 sobre intervenciones dirigidas por fisioterapeutas (Shoulder & Elbow, doi 10.1177/17585732261450961) | Fragmento de la revisión: «no hay ensayos publicados sobre intervenciones de fisioterapia en artrosis GH con tratamiento no quirúrgico», solo en el postoperatorio. Conclusión: `dosis: ''` es correcto; se puede citar en el criterio la ausencia de evidencia |
 | h11 | Luxación bloqueada o fractura | C | — | Ya dice «→ Rx». Propuesta: dosis «Derivar para radiografía; sin tratamiento de fisioterapia hasta el diagnóstico» |
 

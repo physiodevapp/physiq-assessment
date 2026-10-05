@@ -922,6 +922,21 @@ test('ca1: los criterios ACR no puntúan (cifras de la muestra de desarrollo); l
   assert.ok(Math.abs(calcLRScore(h, { 0: 'pos', 2: 'pos', [iAcr]: 'pos' }).totalLR - 3.2) < 0.001);
 });
 
+test('ca10: thigh thrust y compresión puntúan solos (Laslett 2005) y el cluster de Laslett los absorbe', () => {
+  const h = HYPOTHESES.ca10, iTt = h.tests.findIndex(t => t.name === 'Thigh thrust'),
+    iCl = h.tests.findIndex(t => t.name.startsWith('Cluster de Laslett'));
+  assert.ok(h.tests[iCl].absorbe.includes(iTt));
+  assert.ok(Math.abs(calcLRScore(h, { [iTt]: 'pos' }).totalLR - 2.8) < 0.001);
+  assert.ok(Math.abs(calcLRScore(h, { [iTt]: 'neg' }).totalLR - 0.18) < 0.001);
+  const soloCluster = calcLRScore(h, { [iCl]: 'pos' }).totalLR;
+  assert.ok(Math.abs(calcLRScore(h, { [iCl]: 'pos', [iTt]: 'pos' }).totalLR - soloCluster) < 0.001);
+  const iCo = h.tests.findIndex(t => t.name === 'Test de Compresión Pélvica');
+  assert.ok(h.tests[iCl].absorbe.includes(iCo));
+  assert.ok(Math.abs(calcLRScore(h, { [iCo]: 'pos' }).totalLR - 2.2) < 0.001);
+  assert.ok(Math.abs(calcLRScore(h, { [iCo]: 'neg' }).totalLR - 0.46) < 0.001);
+  assert.ok(Math.abs(calcLRScore(h, { [iCl]: 'pos', [iCo]: 'pos', [iTt]: 'pos' }).totalLR - soloCluster) < 0.001);
+});
+
 test('cervical: disección, IVB, fractura tras traumatismo y cefalea de alarma son urgencias', () => {
   const qs = SYSTEMIC_SCREENING.cervical.sistemas.flatMap(s => s.preguntas);
   ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
