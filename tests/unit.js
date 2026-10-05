@@ -1332,6 +1332,152 @@ test('razonamiento: los sistemas comunes son el mismo objeto en todas las region
 
 Object.assign(state, BASE_STATE);   // deja el modo en completo para lo que venga detrás
 
+// ── Informe narrativo con IA (lib/informe-narrativo.js, informe-ia.js) ───────
+console.log('\ninforme narrativo (standalone)');
+const IN = await import('../lib/informe-narrativo.js');
+
+test('prompt: estructura CIF de report, empieza por CONDICIÓN DE SALUD y cierra en SEGUIMIENTO FUNCIONAL', () => {
+  withState({}, () => {
+    const p = IN.buildNarrativePrompt(buildPhysiQPayload(), { conAudio: true });
+    for (const sec of ['## CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES', '## HISTORIA CLÍNICA Y EVOLUCIÓN',
+      '## EVALUACIÓN DE FUNCIONES Y ESTRUCTURAS CORPORALES', '## CONCLUSIONES Y PLAN DE TRATAMIENTO', '## SEGUIMIENTO FUNCIONAL']) {
+      assert.ok(p.includes(sec), `falta ${sec}`);
+    }
+    assert.ok(p.includes('{{TRANSCRIPT}}'), 'el worker necesita el hueco {{TRANSCRIPT}}');
+    assert.ok(p.includes(`${IN.PALABRAS_INFORME} palabras`), 'presupuesto de extensión fijo');
+    assert.ok(!p.includes('cabecera del documento'), 'aquí no hay cabecera: la identificación va aparte');
+  });
+});
+
+test('prompt: lleva los datos de la valoración y las hipótesis (con sus subsecciones)', () => {
+  withState({}, () => {
+    const d = buildPhysiQPayload();
+    const p = IN.buildNarrativePrompt(d, { conAudio: true });
+    assert.ok(p.includes('DATOS DE VALORACIÓN ESTRUCTURADA'));
+    assert.ok(p.includes('Dolor hombro derecho'), 'motivo de consulta');
+    assert.ok(p.includes(d.h[0].name), 'hipótesis activa');
+    assert.ok(p.includes('### Coherencia con hipótesis de valoración'));
+  });
+  withState({ activeHypotheses: [] }, () => {
+    const p = IN.buildNarrativePrompt(buildPhysiQPayload(), { conAudio: true });
+    assert.ok(!p.includes('### Coherencia con hipótesis de valoración'), 'sin hipótesis, sin esa subsección');
+  });
+});
+
+test('prompt: sin audio pide redactar solo con los datos, y nunca inventar', () => {
+  withState({}, () => {
+    const sin = IN.buildNarrativePrompt(buildPhysiQPayload(), { conAudio: false });
+    const con = IN.buildNarrativePrompt(buildPhysiQPayload(), { conAudio: true });
+    assert.ok(sin.includes('No hay transcripción de la sesión'));
+    assert.ok(!con.includes('No hay transcripción de la sesión'));
+    assert.ok(sin.includes('No inventes') && con.includes('No inventes'));
+  });
+});
+
+test('prompt: derivaciones, formulario previo, signos vitales y modo breve entran en el bloque de datos', () => {
+  const d = { p: 'X', r: 'lumbar', d: '01/01/2026', h: [], br: [], sq: [], pn: {},
+    ur: ['Cauda equina: derivar hoy'], dv: ['Claudicación vascular'],
+    sv: { fc: 80, fr: null, spo2: 97, tas: 130, tad: 85 }, an: { talla: 170, peso: 70, imc: 24.2 },
+    fp: [{ s: 'General', q: 'Cómo empezó', a: '«Al levantar una caja»' }], md: 'breve', pe: ['Tests sin hacer'] };
+  const c = IN.contextoValoracion(d);
+  for (const t of ['DERIVACIÓN URGENTE', 'Cauda equina', 'Claudicación vascular', 'FC 80 lpm', 'TA 130/85', 'IMC 24.2',
+    'Al levantar una caja', 'inicial breve', 'Tests sin hacer']) assert.ok(c.includes(t), `falta «${t}»`);
+  const vacio = IN.contextoValoracion({ h: [], br: [], sq: [], pn: {} });
+  assert.ok(!vacio.includes('DERIVACIÓN') && !vacio.includes('Signos vitales') && !vacio.includes('Formulario previo'),
+    'sin datos, sin bloques vacíos');
+});
+
+test('pista de Whisper por región, con default para lo desconocido', () => {
+  assert.ok(IN.getWhisperPrompt('lumbar').includes('Columna lumbar'));
+  assert.ok(IN.getWhisperPrompt('tobillo_pie').includes('Tobillo y pie'));
+  assert.ok(IN.getWhisperPrompt('').startsWith('Fisioterapia musculoesquelética'));
+  assert.ok(IN.getWhisperPrompt('inexistente').startsWith('Fisioterapia musculoesquelética'));
+});
+
+test('SSE: eventos completos, resto sin cerrar, bloques rotos ignorados', () => {
+  const buf = 'event: transcript\ndata: {"text":"hola"}\n\nevent: report_chunk\ndata: {"text":"## A"}\n\nevent: basura\ndata: {no json}\n\nevent: report_chunk\ndata: {"te';
+  const { eventos, resto } = IN.parseSSEBuffer(buf);
+  assert.deepEqual(eventos.map(e => e.type), ['transcript', 'report_chunk']);
+  assert.equal(eventos[0].data.text, 'hola');
+  assert.ok(resto.startsWith('event: report_chunk'));
+  assert.deepEqual(IN.parseSSEBlock('event: done\ndata: {"success":true}'), { type: 'done', data: { success: true } });
+});
+
+test('truncado: falta la última sección o acaba a mitad de frase', () => {
+  assert.equal(IN.informeTruncado('## A\nTexto.\n## SEGUIMIENTO FUNCIONAL\nPendiente de reevaluaciones programadas.'), false);
+  assert.equal(IN.informeTruncado('## A\nTexto.'), true);
+  assert.equal(IN.informeTruncado('## SEGUIMIENTO FUNCIONAL\nPendiente de reev'), true);
+  assert.equal(IN.informeTruncado(''), true);
+});
+
+const MD = `## CONDICIÓN DE SALUD
+Párrafo con **negrita** y <script>x</script>.
+
+### Factores Personales
+Texto.
+
+| Articulación | Rango |
+|---|---|
+| Hombro | 120° |
+`;
+
+test('markdown → texto: títulos en mayúsculas, tablas sin separador, sin **', () => {
+  const t = IN.markdownATexto(MD);
+  assert.ok(t.startsWith('CONDICIÓN DE SALUD\n'));
+  assert.ok(t.includes('Párrafo con negrita'));
+  assert.ok(!t.includes('**') && !t.includes('##') && !t.includes('---'));
+  assert.ok(t.includes('Articulación | Rango') && t.includes('Hombro | 120°'));
+});
+
+test('markdown → HTML: escapa, títulos y tabla con cabecera', () => {
+  const h = IN.markdownAHtml(MD);
+  assert.ok(!h.includes('<script>') && h.includes('&lt;script&gt;'), 'el texto del modelo se escapa');
+  assert.ok(h.includes('<h3>CONDICIÓN DE SALUD</h3>') && h.includes('<h4>Factores Personales</h4>'));
+  assert.ok(h.includes('<th>Articulación</th>') && h.includes('<td>120°</td>'));
+});
+
+test('texto para compartir: identificación local + informe + pie, sin markdown', () => {
+  const t = IN.textoParaCompartir(MD, { p: 'Ana Ruiz', d: '05/10/2026', r: 'tobillo_pie' }, r => r === 'tobillo_pie' ? 'Tobillo y pie' : r);
+  assert.ok(t.startsWith('INFORME DE FISIOTERAPIA\nPaciente: Ana Ruiz\nFecha: 05/10/2026\nRegión valorada: Tobillo y pie'));
+  assert.ok(t.includes('CONDICIÓN DE SALUD') && t.includes('redacción asistida por IA'));
+  assert.ok(!t.includes('##'));
+});
+
+test('huella: cambia con la valoración, no con la fecha', () => {
+  withState({}, () => {
+    const a = buildPhysiQPayload();
+    assert.equal(IN.huellaPayload(a), IN.huellaPayload({ ...a, d: '31/12/2099' }));
+    assert.notEqual(IN.huellaPayload(a), IN.huellaPayload({ ...a, nr: a.nr + 1 }));
+  });
+});
+
+test('extensión del audio según el tipo MIME', () => {
+  assert.equal(IN.extensionAudio('audio/webm;codecs=opus'), 'webm');
+  assert.equal(IN.extensionAudio('audio/mp4'), 'm4a');
+  assert.equal(IN.extensionAudio('audio/mpeg'), 'mp3');
+  assert.equal(IN.extensionAudio(''), 'webm');
+});
+
+test('informeIA nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
+  withState({ informeIA: { texto: 'TEXTO-IA-CENTINELA', transcripcion: 'TRANSCRIPCION-CENTINELA', huella: 'x' } }, () => {
+    const textos = [JSON.stringify(buildPhysiQPayload()), buildContextSummaryText(), buildInformeFisioterapiaText()];
+    for (const t of textos) assert.ok(!t.includes('CENTINELA'), 'el informe narrativo se filtró a un resumen');
+  });
+  state.informeIA = null;
+});
+
+test('app.js solo carga informe-ia.js fuera del hub', () => {
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'app.js'), 'utf8');
+  const montar = src.slice(src.indexOf('function _montarInformeIA'), src.indexOf('function _montarInformeIA') + 300);
+  assert.ok(/if \(_enHub\(\)\) return;/.test(montar), '_montarInformeIA debe salir antes de importar dentro del hub');
+  assert.ok(!/^import .*informe-ia/m.test(src), 'nunca import estático de informe-ia.js');
+});
+
+test('deploy-to-hub copia los archivos del informe narrativo', () => {
+  const wf = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github/workflows/deploy-to-hub.yml'), 'utf8');
+  for (const f of ['informe-ia.js', 'lib/informe-narrativo.js', 'lib/audio-store.js']) assert.ok(wf.includes(f), `falta ${f}`);
+});
+
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 if (failed > 0) process.exit(1);

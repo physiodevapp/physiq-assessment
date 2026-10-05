@@ -275,6 +275,10 @@ function _softResetApp() {
   state.planNotes = { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' };
   state.formularioPrevio = { comun: {}, regiones: {} };
   precargarFormularioPrevio();   // refresca contadores y desplegables abiertos
+  // Informe narrativo: también para la grabación en curso y borra el audio guardado
+  state.informeIA = null;
+  if (_iaMod) _iaMod.resetInformeIA();
+  else if (!_enHub()) import('./lib/audio-store.js').then(m => m.borrarAudio()).catch(() => {});
 
   // Phase 1 DOM
   const mConsulta = document.getElementById('motivoConsulta');
@@ -377,6 +381,23 @@ function abrirFormularioPrevio(slot) {
 }
 function resumenFormularioPrevio() {
   return _fpMod ? _fpMod.resumenFormularioPrevio() : [];
+}
+
+// ─── INFORME NARRATIVO CON IA (informe-ia.js, solo standalone) ───
+// Fuera del hub no hay physiq-report al lado, así que la fase 5 ofrece generar
+// el informe narrativo aquí mismo. Dentro del hub el módulo ni se descarga:
+// el informe narrativo es cosa de physiq-report. import() dinámico, como el
+// formulario previo: si no carga, el resto de la fase 5 sigue funcionando.
+let _iaMod = null;
+const _enHub = () => document.body.classList.contains('in-hub');
+function _cargarInformeIA() {
+  return import('./informe-ia.js').then(m => { _iaMod = m; return m; });
+}
+function _montarInformeIA() {
+  if (_enHub()) return;
+  _cargarInformeIA()
+    .then(m => m.montarInformeIA(document.getElementById('informeIA')))
+    .catch(() => {});
 }
 function informeFormularioPrevio() {
   return _fpMod ? _fpMod.informeFormularioPrevio() : { historia: [], antecedentes: [] };
@@ -1892,6 +1913,8 @@ function buildResults() {
   // Wire chip sync last: every `container.innerHTML +=` above reparses and
   // recreates the whole subtree, which would drop listeners attached earlier.
   ['planVariableControl', 'planVentana', 'planAnclaje'].forEach(wireQuickInputBar);
+
+  _montarInformeIA();
 }
 
 function finalizarValoracion() {
@@ -2812,7 +2835,7 @@ _initHubIntegration();
 // for tests/unit.js.
 export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML,
-  precargarFormularioPrevio,
+  precargarFormularioPrevio, nombreRegion, showToast,
   injectQuickInputBar, lockBodyScroll, unlockBodyScroll };
 
 // Exposed on window for inline onclick/oninput attributes across index.html
