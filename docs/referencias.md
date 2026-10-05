@@ -13,10 +13,10 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **201** referencias de literatura, con **628** usos.
+- **201** referencias de literatura, con **630** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **251** usos, basadas en Lluch 2020.
 - **18** de 201 referencias del registro revisadas. Ver «Estado de revisión».
-- **85** de 434 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
+- **83** de 434 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
 
@@ -131,7 +131,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Dobbs 2016](#dobbs-2016) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Tawa 2017](#tawa-2017) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Krill 2018](#krill-2018) | test 4b sin puntuar · texto | 2 | **sin revisar** |
-| [Mastromarchi 2021](#mastromarchi-2021) | test 4b sin puntuar | 2 | **sin revisar** |
+| [Mastromarchi 2021](#mastromarchi-2021) | test 4b sin puntuar | 4 | **sin revisar** |
 | [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · texto | 4 | **sin revisar** |
 | [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | **sin revisar** |
@@ -3107,7 +3107,7 @@ Título: *First rib dysfunction in patients with neck and shoulder pain: a Delph
 Publicación: J Man Manip Ther 29(3):181–188  
 DOI: 10.1080/10669817.2020.1824470  
 Última revisión: **sin revisar**  
-Nota: PDF aportado por el usuario. Delphi de 12 expertos en terapia manual (cuatro rondas): opinión de expertos; los autores piden estudiar la fiabilidad y la validez de los tests. Tests de la 1.ª costilla de h9.
+Nota: PDF aportado por el usuario. Delphi de 12 expertos en terapia manual (cuatro rondas): opinión de expertos; los autores piden estudiar la fiabilidad y la validez de los tests. Tests de la 1.ª costilla de h9 y ce10.
 
 Citada como:
 
@@ -3117,6 +3117,8 @@ Citada como:
 |---|---|---|---|---|
 | Hombro | h9 · Disfunción de Primera Costilla (Zona Cervicotorácica) | Test «Palpación posteroanterior de 1ª costilla» | 4b · cita bajo el test | 1 |
 | Hombro | h9 · Disfunción de Primera Costilla (Zona Cervicotorácica) | Test «Test de elevación del brazo post-movilización» | 4b · cita bajo el test | 1 |
+| Cervical | ce10 · Disfunción de 1ª Costilla (Articulación Costo-Vertebral Superior) | Test «Palpación de 1ª costilla (sensibilidad y restricción)» | 4b · cita bajo el test | 1 |
+| Cervical | ce10 · Disfunción de 1ª Costilla (Articulación Costo-Vertebral Superior) | Test «Restricción de rotación cervical ipsilateral» | 4b · cita bajo el test | 1 |
 
 ### Maxwell y Sterling 2013
 
@@ -4590,7 +4592,7 @@ Tests sin `fuente` (los miembros de un cluster con `fuente` no cuentan: la cita 
 | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Flexión resistida en Thomas modificado | — | no |
 | ca19 · Dolor Inguinal Relacionado con el Pubis | Resistencia abdominal y squeeze | — | no |
 
-### Cervical (22)
+### Cervical (20)
 
 | Hipótesis | Test | Cifras | Puntúa |
 |---|---|---|---|
@@ -4612,8 +4614,6 @@ Tests sin `fuente` (los miembros de un cluster con `fuente` no cuentan: la cita 
 | ce8 · Mielopatía Espondilótica Cervical | Hiperreflexia (ROT aumentados) | — | no |
 | ce9 · Disfunción Postural Cérvico-Torácica | Evaluación postural de cabeza adelantada (Forward Head Posture) | — | no |
 | ce9 · Disfunción Postural Cérvico-Torácica | Evaluación de cifosis torácica | — | no |
-| ce10 · Disfunción de 1ª Costilla (Articulación Costo-Vertebral Superior) | Palpación de 1ª costilla (sensibilidad y restricción) | — | no |
-| ce10 · Disfunción de 1ª Costilla (Articulación Costo-Vertebral Superior) | Restricción de rotación cervical ipsilateral | — | no |
 | ce11 · Fatiga Muscular Cérvico-Escapular | Test de resistencia de flexores cervicales profundos | — | no |
 | ce11 · Fatiga Muscular Cérvico-Escapular | Evaluación de fatiga en actividades funcionales prolongadas | — | no |
 
