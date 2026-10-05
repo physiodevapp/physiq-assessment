@@ -3,12 +3,13 @@
 // Informe narrativo con IA — solo standalone (fuera del hub)
 // ============================================================
 //
-// Tarjeta al final de la fase 5 (#informeIA): grabar o adjuntar el audio de la
-// sesión, generar con el orquestador de physiq-report (Whisper + Claude) un
-// informe narrativo CIF como el de PhysiQ-Report, y compartirlo o copiarlo.
+// Tarjeta al final de la fase 5 (#informeIA): con el audio de la sesión
+// (grabado desde la cabecera, grabadora.js, o adjuntado aquí) y los datos de
+// la valoración, genera con el orquestador de physiq-report (Whisper + Claude)
+// un informe narrativo CIF como el de PhysiQ-Report, y lo comparte o copia.
 // app.js lo carga con import() dinámico solo cuando la app NO está en el hub:
 // dentro del hub ni se descarga. Las piezas puras (prompt, SSE, markdown)
-// están en lib/informe-narrativo.js; el audio en IDB, en lib/audio-store.js.
+// están en lib/informe-narrativo.js; la licencia, en lib/licencia-ia.js.
 //
 // El modo lo decide el worker (/validate), nunca este cliente: sin licencia
 // válida la tarjeta queda desactivada, y si una respuesta llega en modo demo
@@ -18,24 +19,24 @@
 import { state } from './state.js';
 import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast } from './app.js';
 import {
-  ORCHESTRATOR_URL, TURNSTILE_SITEKEY, LICENSE_KEY_STORAGE, MAX_TOKENS_INFORME, MAX_AUDIO_BYTES,
+  ORCHESTRATOR_URL, TURNSTILE_SITEKEY, MAX_TOKENS_INFORME, MAX_AUDIO_BYTES,
   getWhisperPrompt, buildNarrativePrompt, huellaPayload, parseSSEBuffer, parseSSEBlock,
   informeTruncado, markdownAHtml, textoParaCompartir, extensionAudio,
 } from './lib/informe-narrativo.js';
-import { guardarTrozo, actualizarMeta, leerAudio, borrarAudio } from './lib/audio-store.js';
+import { estadoLicencia, onLicencia, comprobarLicencia, probarClave, marcarSinLicencia, claveGuardada } from './lib/licencia-ia.js';
+import {
+  onGrabadora, audioActual, estadoGrabacion, fijarArchivo, quitarAudio, pausar, reanudar, parar, fmtTiempo, fmtMB,
+} from './grabadora.js';
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const $ = id => document.getElementById(id);
 
 // ── Estado del módulo (no persiste: lo persistente es state.informeIA) ───────
 let _root = null;
-let _licencia = 'comprobando';   // 'comprobando' | 'real' | 'sin-licencia' | 'desactivado' | 'error-red'
-let _validado = false;
 let _mostrarClave = false;
 let _claveMsg = '';
-let _audio = null;               // { blob, meta, url, recuperado? }
-let _grab = null;                // grabación en curso
 let _consentido = false;
+let _audioConsentido = null;     // el consentimiento vale para un audio concreto
 let _gen = null;                 // generación en curso: { texto, transcripcion, fase, ctrl }
 let _turnstileToken = null;
 let _turnstileWidget = null;
@@ -43,20 +44,25 @@ let _turnstileFallo = false;
 let _turnstileCargando = false;
 
 // ── Montaje ──────────────────────────────────────────────────────────────────
-// Se llama en cada buildResults(): la primera vez pinta la tarjeta, comprueba
-// la licencia y recupera un audio pendiente; las siguientes solo refrescan.
+// Se llama en cada buildResults(): la primera vez pinta la tarjeta y se suscribe
+// a la licencia y a la grabadora; las siguientes solo refrescan.
 export function montarInformeIA(root) {
   if (!root) return;
   if (_root !== root || !root.firstChild) {
+    const primera = !_root;
     _root = root;
     root.innerHTML = esqueleto();
     if (state.informeIA?.texto) $('iaGenerador').open = false;
-    $('phase5')?.addEventListener('input', _refrescarHuellaDiferido);
-    if (!_audio) leerAudio().then(a => {
-      if (a && !_audio && !_grab) { _audio = { ...a, url: URL.createObjectURL(a.blob), recuperado: true }; pintar(); }
-    });
+    if (primera) {
+      $('phase5')?.addEventListener('input', _refrescarHuellaDiferido);
+      onLicencia(() => { if (estadoLicencia() === 'real') cargarTurnstile(); pintar(); });
+      onGrabadora(tipo => {
+        if (tipo === 'tick') { actualizarCronoTarjeta(); return; }
+        if (!_gen) pintarGenerador();
+      });
+    }
   }
-  if (!_validado) comprobarLicencia();
+  comprobarLicencia().then(e => { if (e === 'real') cargarTurnstile(); });
   pintar();
 }
 
@@ -89,46 +95,20 @@ function pintar() {
 }
 
 // ── Licencia ─────────────────────────────────────────────────────────────────
-function claveGuardada() {
-  try { return localStorage.getItem(LICENSE_KEY_STORAGE) || ''; } catch { return ''; }
-}
-
-// GET /validate → { routes: { report: 'real'|'demo' }, demoOnly }. Lo que
-// importa es la ruta de informes; si el email está en demo, da igual aquí.
-async function consultarModo(clave) {
-  const res = await fetch(ORCHESTRATOR_URL + '/validate', { headers: clave ? { 'X-License-Key': clave } : {} });
-  const j = await res.json().catch(() => ({}));
-  const modo = j.routes?.report || res.headers.get('X-PhysiQ-Mode') || 'demo';
-  if (modo === 'real') return 'real';
-  return j.demoOnly ? 'desactivado' : 'sin-licencia';
-}
-
-async function comprobarLicencia() {
-  _validado = true;
-  _licencia = 'comprobando';
-  pintar();
-  try {
-    _licencia = await consultarModo(claveGuardada());
-  } catch {
-    _licencia = 'error-red';
-  }
-  if (_licencia === 'real') cargarTurnstile();
-  pintar();
-}
-
 function pintarLicencia() {
   const el = $('iaLicencia');
-  if (_licencia === 'real') { el.innerHTML = ''; return; }
-  if (_licencia === 'comprobando') {
+  const lic = estadoLicencia();
+  if (lic === 'real') { el.innerHTML = ''; return; }
+  if (lic === 'comprobando') {
     el.innerHTML = '<div class="ia-estado">Comprobando la licencia…</div>';
     return;
   }
-  if (_licencia === 'error-red') {
+  if (lic === 'error-red') {
     el.innerHTML = `<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>No se ha podido comprobar la licencia. Revisa la conexión.
       <div class="ia-acciones"><button class="phase5-copy-btn" onclick="iaReintentarLicencia()">Reintentar</button></div></div></div>`;
     return;
   }
-  if (_licencia === 'desactivado') {
+  if (lic === 'desactivado') {
     el.innerHTML = '<div class="alert alert-warning"><span class="alert-icon">⏸</span><div>La generación de informes está desactivada temporalmente en el servidor de PhysiQ.</div></div>';
     return;
   }
@@ -147,22 +127,17 @@ function pintarLicencia() {
 
 function iaMostrarClave() { _mostrarClave = true; _claveMsg = ''; pintarLicencia(); }
 
-// Solo se guarda si el worker la da por buena: una clave mala no debe pisar
-// la que el hub tenga guardada en este navegador.
 async function iaGuardarClave() {
   const clave = ($('iaClaveInput')?.value || '').trim();
   if (!clave) return;
   const btn = $('iaClaveBtn');
   if (btn) { btn.disabled = true; btn.textContent = 'Comprobando…'; }
   try {
-    const modo = await consultarModo(clave);
+    const modo = await probarClave(clave);   // solo la guarda si el worker la da por buena
     if (modo === 'real') {
-      try { localStorage.setItem(LICENSE_KEY_STORAGE, clave); } catch {}
-      _licencia = 'real'; _mostrarClave = false; _claveMsg = '';
-      cargarTurnstile();
+      _mostrarClave = false; _claveMsg = '';
       showToast('✓ Licencia guardada', 'success');
-      pintar();
-      return;
+      return;   // onLicencia repinta y carga Turnstile
     }
     _claveMsg = modo === 'desactivado' ? 'El servidor tiene la generación desactivada; inténtalo más tarde.' : 'Clave no válida.';
   } catch {
@@ -171,7 +146,7 @@ async function iaGuardarClave() {
   pintarLicencia();
 }
 
-function iaReintentarLicencia() { comprobarLicencia(); }
+function iaReintentarLicencia() { comprobarLicencia(true); }
 
 // ── Turnstile ────────────────────────────────────────────────────────────────
 // El worker lo exige en modo real. Se carga solo aquí, y solo con licencia.
@@ -276,198 +251,93 @@ function iaDescartarInforme() {
   });
 }
 
-// ── Audio ────────────────────────────────────────────────────────────────────
-const fmtTiempo = ms => {
-  const s = Math.floor((ms || 0) / 1000);
-  return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
-};
-const fmtMB = b => `${(b / (1024 * 1024)).toFixed(1).replace('.', ',')} MB`;
-const puedeGrabar = () => !!(navigator.mediaDevices?.getUserMedia && window.MediaRecorder);
-
-function duracionGrab() {
-  if (!_grab) return 0;
-  return _grab.acumulado + (_grab.pausado ? 0 : Date.now() - _grab.desde);
-}
-
+// ── Audio de la sesión ───────────────────────────────────────────────────────
+// Se graba desde la cabecera (grabadora.js); aquí se ve, se adjunta o se quita.
 function pintarAudio() {
   const el = $('iaAudio');
-  if (_grab) {
+  const g = estadoGrabacion();
+  if (g.fase !== 'parado') {
     el.innerHTML = `
-      <div class="ia-grabando${_grab.pausado ? ' pausado' : ''}">
+      <div class="ia-grabando${g.fase === 'pausado' ? ' pausado' : ''}">
         <span class="ia-punto"></span>
-        <span>${_grab.pausado ? 'En pausa' : 'Grabando'}</span>
-        <span class="ia-crono" id="iaCrono">${fmtTiempo(duracionGrab())}</span>
+        <span>${g.fase === 'pausado' ? 'Grabación en pausa' : 'Grabación en curso'}</span>
+        <span class="ia-crono" id="iaCrono">${fmtTiempo(g.duracionMs)}</span>
       </div>
+      ${g.sinSenal ? '<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>El micrófono no está dando señal.</div></div>' : ''}
       <div class="ia-acciones">
-        <button class="phase5-copy-btn" onclick="iaPausa()">${_grab.pausado ? '▶ Reanudar' : '⏸ Pausa'}</button>
-        <button class="phase5-copy-btn" onclick="iaParar()">■ Parar</button>
-        <button class="phase5-copy-btn ia-btn-descartar" onclick="iaDescartarGrabacion()">Descartar</button>
+        <button class="phase5-copy-btn" onclick="iaPararGrabacion()">■ Parar y usar</button>
+        ${g.fase === 'pausado'
+          ? '<button class="phase5-copy-btn" onclick="iaReanudarGrabacion()">▶ Reanudar</button>'
+          : '<button class="phase5-copy-btn" onclick="iaPausarGrabacion()">⏸ Pausa</button>'}
       </div>`;
     return;
   }
-  if (_audio) {
-    const m = _audio.meta || {};
-    const grande = _audio.blob.size > MAX_AUDIO_BYTES;
+  const audio = audioActual();
+  if (audio) {
+    const m = audio.meta || {};
+    const grande = audio.blob.size > MAX_AUDIO_BYTES;
     const etiqueta = m.origen === 'archivo'
       ? `📎 ${esc(m.nombre || 'Audio adjunto')}`
       : `🎧 Grabación${m.duracionMs ? ` de ${fmtTiempo(m.duracionMs)}` : ''}`;
     el.innerHTML = `
-      <div class="ia-audio-info">${etiqueta} · ${fmtMB(_audio.blob.size)}${_audio.recuperado ? ' <span class="ia-recuperado">(recuperado)</span>' : ''}</div>
-      <audio class="ia-reproductor" controls preload="metadata" src="${_audio.url}"></audio>
+      <div class="ia-audio-info">${etiqueta} · ${fmtMB(audio.blob.size)}${audio.recuperado ? ' <span class="ia-recuperado">(recuperado)</span>' : ''}</div>
+      <audio class="ia-reproductor" controls preload="metadata" src="${audio.url}"></audio>
       ${grande ? `<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>El audio supera los 25 MB que admite la transcripción. Usa un archivo más corto o comprimido.</div></div>` : ''}
       <div class="ia-acciones"><button class="phase5-copy-btn ia-btn-descartar" onclick="iaQuitarAudio()">Quitar audio</button></div>`;
     return;
   }
   el.innerHTML = `
     <div class="ia-audio-vacio">Audio de la sesión <span class="ia-opcional">(opcional)</span></div>
+    <div class="ia-audio-pista">Graba la consulta con el botón 🎙 de la cabecera, en cualquier fase, o adjunta un archivo.</div>
     <div class="ia-acciones">
-      ${puedeGrabar() ? '<button class="phase5-copy-btn" onclick="iaGrabar()">● Grabar</button>' : ''}
       <button class="phase5-copy-btn" onclick="document.getElementById(\'iaArchivo\').click()">📎 Adjuntar audio</button>
       <input type="file" id="iaArchivo" accept="audio/*,.m4a,.mp3,.wav,.webm,.ogg,.mp4" hidden onchange="iaArchivo(this)">
     </div>`;
 }
 
-let _wakeLock = null;
-function pedirWakeLock() {
-  navigator.wakeLock?.request('screen').then(l => { _wakeLock = l; }).catch(() => {});
-}
-function soltarWakeLock() {
-  _wakeLock?.release?.().catch(() => {});
-  _wakeLock = null;
-}
-document.addEventListener('visibilitychange', () => {
-  // El navegador suelta el wake lock al ocultar la página; al volver, se pide otra vez.
-  if (document.visibilityState === 'visible' && _grab && !_grab.pausado) pedirWakeLock();
-});
-
-async function iaGrabar() {
-  if (_grab || _gen) return;
-  let stream;
-  try {
-    stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
-  } catch {
-    showToast('No se ha podido acceder al micrófono. Revisa los permisos del navegador.', 'warning');
-    return;
-  }
-  const tipos = ['audio/webm;codecs=opus', 'audio/mp4', 'audio/webm', 'audio/ogg;codecs=opus'];
-  const mime = tipos.find(t => window.MediaRecorder.isTypeSupported?.(t)) || '';
-  let rec;
-  try {
-    rec = new MediaRecorder(stream, { ...(mime ? { mimeType: mime } : {}), audioBitsPerSecond: 32000 });
-  } catch {
-    stream.getTracks().forEach(t => t.stop());
-    showToast('Este navegador no permite grabar audio.', 'warning');
-    return;
-  }
-  await borrarAudio();
-  quitarAudioLocal();
-  const g = { rec, stream, partes: [], n: 0, desde: Date.now(), acumulado: 0, pausado: false, descartar: false, mime: rec.mimeType || mime, timer: null };
-  const meta = () => ({ origen: 'grabacion', mime: g.mime, duracionMs: g.acumulado + (g.pausado ? 0 : Date.now() - g.desde), fecha: new Date().toISOString() });
-  rec.ondataavailable = e => {
-    if (!e.data?.size || g.descartar) return;
-    g.partes.push(e.data);
-    guardarTrozo(g.n++, e.data, meta());
-  };
-  rec.onstop = () => {
-    clearInterval(g.timer);
-    g.stream.getTracks().forEach(t => t.stop());
-    soltarWakeLock();
-    _grab = null;
-    if (g.descartar || !g.partes.length) {
-      borrarAudio();
-    } else {
-      const m = { ...meta(), duracionMs: g.acumulado, chunks: g.n };
-      actualizarMeta(m);
-      const blob = new Blob(g.partes, { type: g.mime });
-      _audio = { blob, meta: m, url: URL.createObjectURL(blob) };
-    }
-    pintarGenerador();
-  };
-  // Trozos de 10 s: si la página se cierra, se pierde como mucho lo último.
-  rec.start(10000);
-  g.timer = setInterval(() => { const c = $('iaCrono'); if (c) c.textContent = fmtTiempo(duracionGrab()); }, 500);
-  _grab = g;
-  _consentido = false;
-  pedirWakeLock();
-  pintarGenerador();
+function actualizarCronoTarjeta() {
+  const c = $('iaCrono');
+  if (c) c.textContent = fmtTiempo(estadoGrabacion().duracionMs);
 }
 
-function iaPausa() {
-  if (!_grab) return;
-  if (_grab.pausado) {
-    _grab.rec.resume();
-    _grab.desde = Date.now();
-    _grab.pausado = false;
-    pedirWakeLock();
-  } else {
-    _grab.rec.pause();
-    _grab.acumulado += Date.now() - _grab.desde;
-    _grab.pausado = true;
-    soltarWakeLock();
-  }
-  pintarAudio();
-}
-
-function iaParar() {
-  if (!_grab) return;
-  if (!_grab.pausado) { _grab.acumulado += Date.now() - _grab.desde; _grab.pausado = true; }
-  _grab.rec.stop();
-}
-
-function iaDescartarGrabacion() {
-  showConfirmBanner('Descartar grabación', 'Se borrará el audio grabado hasta ahora.', 'Descartar', () => {
-    if (!_grab) return;
-    _grab.descartar = true;
-    _grab.rec.stop();
-  });
-}
+function iaPararGrabacion() { parar(); }
+function iaPausarGrabacion() { pausar(); }
+function iaReanudarGrabacion() { reanudar(); }
 
 async function iaArchivo(input) {
   const file = input.files?.[0];
   input.value = '';
-  if (!file) return;
-  await borrarAudio();
-  quitarAudioLocal();
-  const meta = { origen: 'archivo', nombre: file.name, mime: file.type || '', fecha: new Date().toISOString() };
-  _audio = { blob: file, meta: { ...meta, chunks: 1 }, url: URL.createObjectURL(file) };
-  _consentido = false;
-  if (file.size <= MAX_AUDIO_BYTES) guardarTrozo(0, file, meta);
-  pintarGenerador();
-}
-
-function quitarAudioLocal() {
-  if (_audio?.url) URL.revokeObjectURL(_audio.url);
-  _audio = null;
-  _consentido = false;
+  if (file) await fijarArchivo(file);
 }
 
 function iaQuitarAudio() {
-  showConfirmBanner('Quitar audio', 'Se borrará el audio de la sesión. El informe podrá generarse solo con los datos de la valoración.', 'Quitar', () => {
-    quitarAudioLocal();
-    borrarAudio();
-    pintarGenerador();
-  });
+  showConfirmBanner('Quitar audio', 'Se borrará el audio de la sesión. El informe podrá generarse solo con los datos de la valoración.', 'Quitar', quitarAudio);
 }
 
 // ── Consentimiento y botón de generar ────────────────────────────────────────
+function consentido() {
+  return _consentido && _audioConsentido === audioActual();
+}
+
 function pintarConsent() {
   const el = $('iaConsent');
-  if (!_audio || _grab) { el.innerHTML = ''; return; }
+  if (!audioActual() || estadoGrabacion().fase !== 'parado') { el.innerHTML = ''; return; }
   el.innerHTML = `
     <label class="ia-consent">
-      <input type="checkbox" ${_consentido ? 'checked' : ''} onchange="iaConsent(this.checked)">
+      <input type="checkbox" ${consentido() ? 'checked' : ''} onchange="iaConsent(this.checked)">
       <span>El paciente ha sido informado y consiente el envío del audio de la sesión para su transcripción.</span>
     </label>`;
 }
 
-function iaConsent(v) { _consentido = !!v; pintarBoton(); }
+function iaConsent(v) { _consentido = !!v; _audioConsentido = audioActual(); pintarBoton(); }
 
 function motivoBloqueo() {
-  if (_licencia !== 'real') return 'licencia';
+  const audio = audioActual();
+  if (estadoLicencia() !== 'real') return 'licencia';
   if (_gen) return 'generando';
-  if (_grab) return 'Para la grabación antes de generar el informe.';
-  if (_audio && _audio.blob.size > MAX_AUDIO_BYTES) return 'El audio supera los 25 MB.';
-  if (_audio && !_consentido) return 'Marca el consentimiento del paciente para enviar el audio.';
+  if (estadoGrabacion().fase !== 'parado') return 'Para la grabación antes de generar el informe.';
+  if (audio && audio.blob.size > MAX_AUDIO_BYTES) return 'El audio supera los 25 MB.';
+  if (audio && !consentido()) return 'Marca el consentimiento del paciente para enviar el audio.';
   if (!_turnstileToken) return _turnstileFallo ? 'turnstile' : 'Completa la verificación de seguridad.';
   return '';
 }
@@ -490,14 +360,14 @@ function pintarBoton() {
 function pintarGenerador() {
   const det = $('iaGenerador');
   if (!det) return;
-  const activo = _licencia === 'real' && !_gen;
+  const activo = estadoLicencia() === 'real' && !_gen;
   det.hidden = !activo;
   // Con un informe ya generado, generar otro queda plegado: es una acción de pago.
   // Se pliega al montar con un informe ya guardado y al terminar de generar
   // (iaGenerar); a partir de ahí lo abre o cierra quien lo usa.
   const hayInforme = !!state.informeIA?.texto;
   det.classList.toggle('con-resultado', hayInforme);
-  if (!hayInforme || _grab || _audio) det.open = true;
+  if (!hayInforme || audioActual() || estadoGrabacion().fase !== 'parado') det.open = true;
   if (!activo) return;
   pintarAudio();
   pintarConsent();
@@ -532,12 +402,13 @@ async function iaGenerar() {
   if (motivoBloqueo()) { pintarBoton(); return; }
   saveSession();   // vuelca al estado lo último escrito (notas del plan, etc.)
   const datos = buildPhysiQPayload();
-  const conAudio = !!_audio;
+  const audio = audioActual();
+  const conAudio = !!audio;
   const fd = new FormData();
   if (conAudio) {
-    const ext = extensionAudio(_audio.blob.type || _audio.meta?.mime);
-    const nombre = _audio.meta?.origen === 'archivo' && _audio.meta?.nombre ? _audio.meta.nombre : `sesion.${ext}`;
-    fd.append('file', _audio.blob, nombre);
+    const ext = extensionAudio(audio.blob.type || audio.meta?.mime);
+    const nombre = audio.meta?.origen === 'archivo' && audio.meta?.nombre ? audio.meta.nombre : `sesion.${ext}`;
+    fd.append('file', audio.blob, nombre);
   }
   fd.append('whisperHint', getWhisperPrompt(datos.r));
   fd.append('prompt', buildNarrativePrompt(datos, { conAudio, nombreRegion }));
@@ -577,14 +448,13 @@ async function iaGenerar() {
     };
     saveSession();
     // Con el informe guardado, el audio ya no hace falta en el dispositivo.
-    quitarAudioLocal();
-    borrarAudio();
+    if (conAudio && audioActual() === audio) quitarAudio();
     const det = $('iaGenerador');
     if (det) det.open = false;
     showToast('✓ Informe narrativo generado', 'success');
   } catch (err) {
     if (err instanceof ModoDemo) {
-      _licencia = 'sin-licencia';
+      marcarSinLicencia();
       showToast('Este navegador no tiene una licencia PhysiQ válida.', 'warning');
     } else if (err.name === 'AbortError') {
       if (!_gen?.cancelado) showToast('Tiempo de espera agotado. Inténtalo de nuevo.', 'warning');
@@ -631,20 +501,18 @@ function iaCancelar() {
 }
 
 // ── Reinicio ─────────────────────────────────────────────────────────────────
-// Desde _softResetApp() (reiniciar valoración o borrar sesión): para y descarta
-// la grabación, cancela la generación y borra el audio guardado. state.informeIA
-// lo limpia app.js.
+// Desde _softResetApp(): cancela la generación en curso y repinta.
+// state.informeIA lo limpia app.js; el audio es de grabadora.js, que solo se
+// descarta en un reinicio confirmado en este dispositivo (ver app.js).
 export function resetInformeIA() {
-  if (_grab) { _grab.descartar = true; try { _grab.rec.stop(); } catch {} }
   if (_gen) { _gen.cancelado = true; _gen.ctrl.abort(); }
-  quitarAudioLocal();
-  borrarAudio();
+  _consentido = false;
   pintar();
 }
 
 // Exposed for inline onclick/onchange attributes in the HTML strings above.
 Object.assign(window, {
   iaMostrarClave, iaGuardarClave, iaReintentarLicencia,
-  iaGrabar, iaPausa, iaParar, iaDescartarGrabacion, iaArchivo, iaQuitarAudio, iaConsent,
+  iaPararGrabacion, iaPausarGrabacion, iaReanudarGrabacion, iaArchivo, iaQuitarAudio, iaConsent,
   iaGenerar, iaCancelar, iaCompartir, iaCopiar, iaDescartarInforme,
 });

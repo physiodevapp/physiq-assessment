@@ -2449,3 +2449,38 @@
   animation: iaGira 0.8s linear infinite;
 }
 @keyframes iaGira { to { transform: rotate(360deg); } }
+
+/* ── Grabación de la sesión en la cabecera (grabadora.js) ──────────────────
+   Reutiliza .btn-record (estados recording/paused/recorded). Visible solo
+   fuera del hub y con licencia, o mientras haya una grabación en marcha. */
+.grab-wrap { position: relative; display: none; }
+body.ia-licencia:not(.in-hub) .grab-wrap,
+body.grab-activa:not(.in-hub) .grab-wrap { display: block; }
+.grab-btn { padding: 5px 8px; position: relative; color: var(--text3); }
+.grab-btn.grab-pildora { font-variant-numeric: tabular-nums; }
+.grab-btn.grab-aviso { border-color: var(--orange); color: var(--orange); }
+.grab-crono { font-family: 'DM Mono', monospace; }
+.grab-punto {
+  position: absolute; top: 3px; right: 3px; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent2);
+}
+.grab-btn.grab-aviso .grab-punto { background: var(--orange); }
+.grab-menu {
+  /* top/right los pone grabadora.js bajo el botón */
+  position: fixed; z-index: 400;
+  width: max-content; max-width: min(300px, calc(100vw - 32px));
+  background: var(--surface); border: 1px solid var(--border2); border-radius: var(--radius);
+  box-shadow: var(--modal-shadow); padding: 12px 14px;
+  font-size: 0.82rem; color: var(--text); text-align: left;
+}
+.grab-menu[hidden] { display: none; }
+@media (max-width: 480px) {
+  .grab-menu { left: 16px !important; right: 16px !important; width: auto; max-width: none; }
+}
+.grab-menu-titulo { font-weight: 500; }
+.grab-menu-titulo.aviso { color: var(--orange); }
+.grab-menu-dato { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--text3); margin-top: 2px; }
+.grab-menu-nota { font-size: 0.78rem; color: var(--text2); margin-top: 8px; line-height: 1.4; }
+.grab-menu-aviso { font-size: 0.78rem; color: var(--alert-warning-text); margin-top: 8px; line-height: 1.4; }
+.grab-menu-acciones { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.ia-audio-pista { font-size: 0.8rem; color: var(--text3); margin-top: 4px; line-height: 1.45; }

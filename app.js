@@ -275,10 +275,12 @@ function _softResetApp() {
   state.planNotes = { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' };
   state.formularioPrevio = { comun: {}, regiones: {} };
   precargarFormularioPrevio();   // refresca contadores y desplegables abiertos
-  // Informe narrativo: también para la grabación en curso y borra el audio guardado
+  // Informe narrativo: cancela una generación en curso. El audio de la sesión
+  // NO se toca aquí — _softResetApp() también corre por un reinicio llegado de
+  // otra pestaña, y eso no puede cortar una grabación de este dispositivo; lo
+  // descarta _descartarAudioSesion() en los dos reinicios confirmados aquí.
   state.informeIA = null;
   if (_iaMod) _iaMod.resetInformeIA();
-  else if (!_enHub()) import('./lib/audio-store.js').then(m => m.borrarAudio()).catch(() => {});
 
   // Phase 1 DOM
   const mConsulta = document.getElementById('motivoConsulta');
@@ -352,9 +354,10 @@ function _softResetApp() {
 function resetApp() {
   showConfirmBanner(
     '↺ Reiniciar valoración completa',
-    'Se perderán los datos clínicos de la valoración. El nombre del paciente se conservará.',
+    'Se perderán los datos clínicos de la valoración. El nombre del paciente se conservará.' + _avisoAudioSesion(),
     'Reiniciar',
     () => {
+      _descartarAudioSesion();
       _softResetApp(); goToPhase(1);
       _sessionCh.postMessage({ type: 'SESSION_RESET', patient: state.patient || '' });
     }
@@ -392,6 +395,25 @@ let _iaMod = null;
 const _enHub = () => document.body.classList.contains('in-hub');
 function _cargarInformeIA() {
   return import('./informe-ia.js').then(m => { _iaMod = m; return m; });
+}
+// Grabación de la sesión desde la cabecera (grabadora.js, solo standalone):
+// se carga al arrancar porque la consulta ocurre en las fases 1–4b.
+let _grabMod = null;
+function _iniciarGrabadora() {
+  if (_enHub()) return;
+  import('./grabadora.js')
+    .then(m => { _grabMod = m; m.iniciarGrabadora(); })
+    .catch(() => {});
+}
+// Para los textos de confirmación de reiniciar/borrar sesión.
+function _avisoAudioSesion() {
+  if (!_grabMod?.hayAudio()) return '';
+  return _grabMod.grabando()
+    ? ' También se detendrá y descartará la grabación en curso.'
+    : ' También se descartará el audio grabado de la sesión.';
+}
+function _descartarAudioSesion() {
+  _grabMod?.descartarTodo();
 }
 function _montarInformeIA() {
   if (_enHub()) return;
@@ -2146,7 +2168,7 @@ function _showSessionState(st) {
     panel.innerHTML = `
       <div class="session-panel-handle"></div>
       <div class="session-panel-title">${label || 'Sin sesión activa'}</div>
-      <div class="confirm-box-text" style="margin:12px 0 0;">¿Borrar y empezar de nuevo?</div>
+      <div class="confirm-box-text" style="margin:12px 0 0;">¿Borrar y empezar de nuevo?${_avisoAudioSesion()}</div>
       <div class="confirm-box-btns" style="margin-top:1rem;">
         <button class="confirm-btn-cancel" id="confirmCancel">Cancelar</button>
         <button class="confirm-btn-ok" id="confirmAction">Borrar sesión</button>
@@ -2154,6 +2176,7 @@ function _showSessionState(st) {
     panel.querySelector('#confirmCancel').onclick = () => _showSessionState('edit');
     panel.querySelector('#confirmAction').onclick = () => {
       closeSessionPanel();
+      _descartarAudioSesion();
       _sessionGen++; _sessionCleared = true;
       state.patient = '';
       updateSessionChip(null);
@@ -2829,6 +2852,7 @@ function _initHubIntegration() {
   });
 }
 _initHubIntegration();
+_iniciarGrabadora();
 
 // ─── PUBLIC API ──────────────────────────────────────────────
 // Named exports for phase4.js / phase4b.js (which import these directly) and

@@ -341,9 +341,11 @@ async function checkInformeNarrativo(browser, errors) {
   page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (informe IA): ${msg.text()}`); });
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
   await page.evaluate(() => { try { localStorage.removeItem('physiq-license-key'); } catch {} });
+  await page.reload({ waitUntil: 'networkidle' });
+  const sinBotonSinLicencia = !(await page.isVisible('#grabBtn'));
   await walkRegion(page, 'lumbar');
   await page.waitForSelector('#iaLicencia .ia-licencia');
-  const r = {};
+  const r = { sinBotonSinLicencia };
   r.sinLicencia = await page.isVisible('#iaLicencia :text("Disponible con licencia PhysiQ")');
   r.generadorOculto = await page.evaluate(() => document.getElementById('iaGenerador').hidden);
 
@@ -357,6 +359,7 @@ async function checkInformeNarrativo(browser, errors) {
   await page.click('#iaClaveBtn');
   await page.waitForFunction(() => !document.getElementById('iaGenerador').hidden);
   r.claveGuardada = await page.evaluate(k => localStorage.getItem('physiq-license-key') === k, CLAVE_OK);
+  r.botonCabeceraConLicencia = await page.isVisible('#grabBtn');
   await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
 
   // Respuesta en demo: se descarta, nunca se guarda el informe ficticio
@@ -394,7 +397,7 @@ async function checkInformeNarrativo(browser, errors) {
   const ctxHub = await browser.newContext();
   const hub = await ctxHub.newPage();
   const pedidos = [];
-  hub.on('request', q => { if (q.url().includes('informe-ia.js') || q.url().includes('informe-narrativo.js')) pedidos.push(q.url()); });
+  hub.on('request', q => { if (/informe-ia\.js|informe-narrativo\.js|grabadora\.js|licencia-ia\.js/.test(q.url())) pedidos.push(q.url()); });
   await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
   await hub.waitForTimeout(1500);
   const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
@@ -404,6 +407,85 @@ async function checkInformeNarrativo(browser, errors) {
   await ctxHub.close();
 
   r.ok = Object.entries(r).every(([, v]) => v === true);
+  return r;
+}
+
+// Grabación desde la cabecera (grabadora.js), con el micrófono falso de
+// Chromium: empieza en la fase 1, sigue visible por todas las fases, la tarjeta
+// de la fase 5 la ve en curso (y no deja generar), «Parar y usar» la deja como
+// audio de la sesión; pausa/reanudar y «Grabar de nuevo» desde el menú; y
+// «Reiniciar» avisa del audio y lo descarta.
+async function checkGrabadoraCabecera(errors) {
+  const browser = await chromium.launch({ args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'] });
+  // Con una grabación en marcha la página tiene beforeunload: si algo falla, el
+  // navegador debe cerrarse igual o el proceso no termina nunca.
+  try { return await recorrerGrabadora(browser, errors); }
+  catch (e) { return { ok: false, error: e.message.split('\n')[0] }; }
+  finally { await browser.close().catch(() => {}); }
+}
+
+async function recorrerGrabadora(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  await context.grantPermissions(['microphone']);
+  await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
+  await mockWorkerYTurnstile(context, ['x']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (grabadora): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (grabadora): ${msg.text()}`); });
+  const btn = () => page.evaluate(() => { const b = document.getElementById('grabBtn'); return { clases: b.className, texto: b.textContent.trim() }; });
+  const r = {};
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.waitForSelector('#grabBtn', { state: 'visible' });
+  r.botonVisible = true;
+
+  await page.click('#grabBtn');                        // fase 1: un toque empieza
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await page.waitForTimeout(1200);
+  const b1 = await btn();
+  r.pildora = /\d\d:\d\d/.test(b1.texto);
+  r.cabeceraSinDesbordar = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth
+    && document.querySelector('.header-right').getBoundingClientRect().right <= innerWidth + 1);
+
+  await walkRegion(page, 'lumbar');                    // la consulta sigue grabando
+  r.siguePorLasFases = (await btn()).clases.includes('recording');
+  await page.waitForSelector('#iaAudio .ia-grabando');
+  r.tarjetaVeEnCurso = true;
+  r.generarBloqueado = await page.evaluate(() => document.getElementById('iaGenerar').disabled);
+
+  await page.click('#iaAudio button:has-text("Parar y usar")');
+  await page.waitForSelector('#iaAudio .ia-reproductor');
+  r.audioEnTarjeta = (await btn()).clases.includes('recorded');
+  r.audioEnIDB = await page.evaluate(() => new Promise(res => {
+    const rq = indexedDB.open('physiq', 3);
+    rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(!!g.result?.chunks); };
+  }));
+
+  // Menú: con audio → «Grabar de nuevo» (confirmación) → pausa y reanudar → parar
+  await page.click('#grabBtn');
+  r.menuConAudio = await page.isVisible('#grabMenu :text("Grabar de nuevo")');
+  await page.click('#grabMenu button:has-text("Grabar de nuevo")');
+  await page.click('#confirmAction');
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await page.click('#grabBtn');
+  await page.click('#grabMenu button:has-text("Pausa")');
+  r.pausa = (await btn()).clases.includes('paused');
+  await page.click('#grabMenu button:has-text("Reanudar")');
+  r.reanuda = (await btn()).clases.includes('recording');
+  await page.waitForTimeout(600);
+  await page.click('#grabMenu button:has-text("Parar")');
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recorded'));
+  r.paraDesdeMenu = true;
+
+  // Reiniciar: la confirmación avisa del audio y, al aceptar, se descarta
+  await page.click('.btn-reset');
+  r.avisoEnReinicio = (await page.textContent('#confirmBanner')).includes('audio grabado de la sesión');
+  await page.click('#confirmAction');
+  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('recorded'));
+  r.descartadoAlReiniciar = await page.evaluate(() => new Promise(res => {
+    const rq = indexedDB.open('physiq', 3);
+    rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result === undefined); };
+  }));
+  r.ok = Object.values(r).every(v => v === true);
   return r;
 }
 
@@ -491,13 +573,17 @@ async function main() {
 
   await browser.close();
 
+  console.log('\nGrabación desde la cabecera (micrófono falso de Chromium):');
+  const grab = await checkGrabadoraCabecera(errors);
+  console.log(`  ${grab.ok ? '✓' : '✗'} empieza en la fase 1, sigue por todas, la fase 5 la ve y la para; menú; reiniciar avisa y descarta`);
+
   const realErrors = errors.filter(e => !KNOWN_NOISE.some(n => e.includes(n)));
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
   realErrors.forEach(e => console.log('  -', e));
 
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
   const breveOk = breveResults.every(r => r.ok);
-  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && grab.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
@@ -508,6 +594,7 @@ async function main() {
   if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
   if (!deriv.ok) console.log('\nDerivación del árbol:', JSON.stringify(deriv));
   if (!informeIA.ok) console.log('\nInforme narrativo:', JSON.stringify(informeIA));
+  if (!grab.ok) console.log('\nGrabadora:', JSON.stringify(grab));
   if (!breveOk) {
     console.log('\nModo breve failures:');
     breveResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));

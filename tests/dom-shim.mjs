@@ -40,7 +40,7 @@ globalThis.document = {
   querySelector:     () => makeEl(),
   querySelectorAll:  () => [],
   createElement:     () => makeEl(),
-  body:              { appendChild: () => {}, style: {}, classList: { add() {}, remove() {}, contains: () => false } },
+  body:              { appendChild: () => {}, style: {}, classList: { add() {}, remove() {}, toggle() {}, contains: () => false } },
 };
 // Node defines a read-only global `navigator`; override it with a configurable one.
 Object.defineProperty(globalThis, 'navigator', {
@@ -49,3 +49,6 @@ Object.defineProperty(globalThis, 'navigator', {
   configurable: true,
 });
 globalThis.IntersectionObserver = class { observe() {} unobserve() {} disconnect() {} };
+// Sin red en los tests: fuera del hub app.js arranca la grabadora, que consulta
+// la licencia al worker (lib/licencia-ia.js). Así nunca sale una petición real.
+globalThis.fetch = () => Promise.reject(new Error('sin red en los tests'));

@@ -1475,7 +1475,27 @@ test('app.js solo carga informe-ia.js fuera del hub', () => {
 
 test('deploy-to-hub copia los archivos del informe narrativo', () => {
   const wf = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github/workflows/deploy-to-hub.yml'), 'utf8');
-  for (const f of ['informe-ia.js', 'lib/informe-narrativo.js', 'lib/audio-store.js']) assert.ok(wf.includes(f), `falta ${f}`);
+  for (const f of ['informe-ia.js', 'grabadora.js', 'lib/informe-narrativo.js', 'lib/audio-store.js', 'lib/licencia-ia.js']) assert.ok(wf.includes(f), `falta ${f}`);
+});
+
+test('grabadora: app.js solo la carga fuera del hub', () => {
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'app.js'), 'utf8');
+  const ini = src.slice(src.indexOf('function _iniciarGrabadora'), src.indexOf('function _iniciarGrabadora') + 200);
+  assert.ok(/if \(_enHub\(\)\) return;/.test(ini), '_iniciarGrabadora debe salir antes de importar dentro del hub');
+  assert.ok(!/^import .*grabadora/m.test(src), 'nunca import estático de grabadora.js');
+});
+
+test('grabadora: un reinicio llegado de otra pestaña no descarta el audio de este dispositivo', () => {
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'app.js'), 'utf8');
+  const cuerpo = nombre => {
+    const i = src.indexOf(`function ${nombre}(`);
+    return src.slice(i, src.indexOf('\n}\n', i)).replace(/\/\/.*$/gm, '');   // sin comentarios
+  };
+  assert.ok(!/descartarTodo|_descartarAudioSesion/.test(cuerpo('_softResetApp')), '_softResetApp no puede tocar el audio (también corre por SESSION_RESET/SESSION_CLEAR remotos)');
+  assert.ok(/_descartarAudioSesion\(\)/.test(cuerpo('resetApp')), 'reiniciar valoración (confirmado aquí) sí lo descarta');
+  assert.ok(/_avisoAudioSesion\(\)/.test(cuerpo('resetApp')), 'y lo avisa en la confirmación');
+  const borrar = src.slice(src.indexOf("} else if (st === 'delete') {"), src.indexOf("} else if (st === 'delete') {") + 1500);
+  assert.ok(/_avisoAudioSesion\(\)/.test(borrar) && /_descartarAudioSesion\(\)/.test(borrar), 'borrar sesión: avisa y descarta');
 });
 
 // ── Summary ───────────────────────────────────────────────────────────────────
