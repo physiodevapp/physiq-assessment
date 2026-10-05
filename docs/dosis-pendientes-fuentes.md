@@ -113,8 +113,8 @@ Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y n
 | ca9 | Tendinopatía proximal de isquiotibiales | B | Rich 2025 | ✅ Programa progresivo con reintroducción de la compresión; sin series en el artículo |
 | ca10 | Sacroilíaca | D | — | Vaciada: nada de acceso abierto |
 | ca11 | Lesión aguda de ingle | A (solo aductor) | Serner 2020 | ✅ Por criterios; series en un apéndice no consultado; flexores sin pauta |
-| ca12 | Ligamento redondo e inestabilidad | D | — | Sin fuente |
-| ca13 | Condropatía de cadera | D | — | Sin fuente |
+| ca12 | Ligamento redondo e inestabilidad | B (extrapolada) | Enseki 2023 | ✅ La precaución capsuloligamentosa de la guía como dato principal; multimodal por extrapolación; sin evidencia específica |
+| ca13 | Condropatía de cadera | D | — | Vacía a propósito: Enseki 2023 la incluye en su alcance pero no dice nada propio (decisión del usuario) |
 | ca14 | Neuropatías de cadera e ingle | D | — | Sin fuente de fisioterapia (meralgia: revisiones de tratamiento médico) |
 | ca15 | Sensibilización central | D | — | Sin fuente |
 | ca16 | Aductor (largo plazo) | A | Hölmich 1999 | ✅ Hecho antes (PDF del usuario) |
@@ -125,11 +125,11 @@ Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y n
 Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2017, guía APTA de dolor de cadera no artrósico de Enseki 2023 y consenso de Zúrich del IHiPRN), `ca1`–`ca3` ganan grados de recomendación.
 
 ## Resumen
-- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11 y ca17.
+- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12 y ca17.
 - **Con fuente de pauta, a falta del PDF de pago (A):** ninguna.
 - **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), h11, ro11, tp3–tp6, tp17, tp30 y tp35 llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
 - **Recomendación de guía sin pauta numérica (B), pendientes:** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ro12` (ESSKA 2024), `tp2`, `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
-- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `ca10`, `ca12`–`ca15`, `ca18`, `ca19`, `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
+- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `ca10`, `ca13`–`ca15`, `ca18`, `ca19`, `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
 ## Para cerrar esto
 Hay dos caminos: que el usuario aporte los PDF (como se hizo en cadera y rodilla), o permitir en la red del entorno `pubmed.ncbi.nlm.nih.gov`, `pmc.ncbi.nlm.nih.gov`, `www.jospt.org` y `www.orthopt.org`. Luego, una región por sesión, siguiendo la Fase D.

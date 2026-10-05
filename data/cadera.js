@@ -943,7 +943,8 @@ export const hypotheses = {
     id: 'ca12', region: 'cadera', num: '⑫',
     name: 'Ligamento Redondo e Inestabilidad',
     prom: 'HAGOS (o HOS, iHOT)',
-    dosis: '',
+    dosis: 'Precaución principal: evitar los ejercicios y actividades que provoquen síntomas o que carguen en exceso las estructuras capsuloligamentosas (al revés que en el SIFA, donde lo que se evita son los rangos de pinzamiento). No hay evidencia de tratamiento conservador específico: en la displasia, la guía pide basar el tratamiento en la exploración y los déficits funcionales. Por extrapolación del abordaje multimodal que la guía recomienda para el SIFA y el labrum (B): modificar la actividad, fortalecer cadera, tronco y miembro inferior, reeducación neuromuscular progresiva (F), entrenamiento del patrón de movimiento (C) y educación. Ninguna fuente fija series ni repeticiones: el volumen queda a criterio del clínico.',
+    dosisFuente: 'Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía; la precaución está en su descripción de la intervención multimodal)',
     pronostico: {
       horizonte: 'Artro-RM. Los test de confirmación se basan en estudios únicos.',
       derivacion: 'La inestabilidad puede conducir a degeneración condral.',
