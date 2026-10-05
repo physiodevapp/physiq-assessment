@@ -294,6 +294,201 @@ async function checkRazonamientoMovil(page) {
   return { ok, a, b, c, d, faseTrasAtras: fase };
 }
 
+// Informe narrativo con IA (informe-ia.js, solo standalone). Sin coste: el
+// worker (/validate y POST /) y Turnstile se simulan con page.route. Cubre:
+// sin licencia → tarjeta desactivada; «Introducir clave»; una respuesta en
+// modo demo se descarta; audio adjunto exige consentimiento; el informe llega
+// por SSE, se guarda en state.informeIA y se copia como texto plano. Y dentro
+// de un iframe (hub) informe-ia.js ni se descarga.
+const CLAVE_OK = 'CLAVE-SMOKE-OK';
+async function mockWorkerYTurnstile(context, captura) {
+  const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Expose-Headers': 'X-PhysiQ-Mode' };
+  await context.route('**/turnstile/v0/api.js*', route => route.fulfill({
+    contentType: 'application/javascript',
+    // Como el real: reset() vuelve a resolver y emite un token nuevo
+    body: `let _o = null;
+      window.turnstile = { render(el, o) { _o = o; el.textContent = 'turnstile simulado'; setTimeout(() => o.callback('tok-' + Date.now()), 30); return 'w1'; },
+        reset() { setTimeout(() => _o && _o.callback('tok-' + Date.now()), 30); } };
+      window.__iaTurnstileOnload && window.__iaTurnstileOnload();`,
+  }));
+  await context.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', async route => {
+    const req = route.request();
+    if (req.method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors });
+    const real = req.headers()['x-license-key'] === CLAVE_OK;
+    if (req.url().endsWith('/validate')) {
+      return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': real ? 'real' : 'demo' }, contentType: 'application/json',
+        body: JSON.stringify({ ok: true, mode: real ? 'real' : 'demo', routes: { report: real ? 'real' : 'demo', email: 'demo' }, demoOnly: false }) });
+    }
+    captura.push(req.postDataBuffer()?.toString('latin1') || '');
+    const sse = (t, d) => `event: ${t}\ndata: ${JSON.stringify(d)}\n\n`;
+    const modo = captura.length === 1 ? 'demo' : 'real';   // la primera petición simula un worker en demo
+    return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': modo }, contentType: 'text/event-stream',
+      body: sse('transcript', { text: 'Transcripción simulada de la sesión.' })
+        + sse('report_chunk', { text: modo === 'demo' ? '## INFORME DEMO DE OTRO PACIENTE\n' : '## CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES\nTexto clínico.\n\n' })
+        + sse('report_chunk', { text: '## SEGUIMIENTO FUNCIONAL\nPendiente de reevaluaciones programadas.' })
+        + sse('done', { success: true }) });
+  });
+}
+
+async function checkInformeNarrativo(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const captura = [];
+  await mockWorkerYTurnstile(context, captura);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (informe IA): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (informe IA): ${msg.text()}`); });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.evaluate(() => { try { localStorage.removeItem('physiq-license-key'); } catch {} });
+  await page.reload({ waitUntil: 'networkidle' });
+  const sinBotonSinLicencia = !(await page.isVisible('#grabBtn'));
+  await walkRegion(page, 'lumbar');
+  await page.waitForSelector('#iaLicencia .ia-licencia');
+  const r = { sinBotonSinLicencia };
+  r.sinLicencia = await page.isVisible('#iaLicencia :text("Disponible con licencia PhysiQ")');
+  r.generadorOculto = await page.evaluate(() => document.getElementById('iaGenerador').hidden);
+
+  // «Introducir clave»: una mala no se guarda, la buena sí y activa la tarjeta
+  await page.click('#iaLicencia button:has-text("Introducir clave")');
+  await page.fill('#iaClaveInput', 'CLAVE-MALA');
+  await page.click('#iaClaveBtn');
+  await page.waitForSelector('.ia-clave-msg');
+  r.claveMalaNoGuardada = await page.evaluate(() => localStorage.getItem('physiq-license-key') === null);
+  await page.fill('#iaClaveInput', CLAVE_OK);
+  await page.click('#iaClaveBtn');
+  await page.waitForFunction(() => !document.getElementById('iaGenerador').hidden);
+  r.claveGuardada = await page.evaluate(k => localStorage.getItem('physiq-license-key') === k, CLAVE_OK);
+  r.botonCabeceraConLicencia = await page.isVisible('#grabBtn');
+  await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+
+  // Respuesta en demo: se descarta, nunca se guarda el informe ficticio
+  await page.click('#iaGenerar');
+  await page.waitForFunction(() => document.querySelector('#iaLicencia .ia-licencia'));
+  r.demoDescartado = await page.evaluate(() => state.informeIA === null && !document.getElementById('iaResultado').textContent.includes('DEMO'));
+  await page.evaluate(() => iaReintentarLicencia());
+  await page.waitForFunction(() => !document.getElementById('iaGenerador').hidden);
+
+  // Audio adjunto → consentimiento obligatorio
+  await page.setInputFiles('#iaArchivo', { name: 'sesion.webm', mimeType: 'audio/webm', buffer: Buffer.from('audio-falso') });
+  await page.waitForSelector('#iaConsent input[type=checkbox]');
+  await page.waitForTimeout(150);
+  r.bloqueadoSinConsent = await page.evaluate(() => document.getElementById('iaGenerar').disabled);
+  await page.check('#iaConsent input[type=checkbox]');
+  await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+  await page.click('#iaGenerar');
+  await page.waitForSelector('#iaResultado .ia-informe');
+  const cuerpo = captura[1] || '';
+  r.peticion = cuerpo.includes('name="file"') && cuerpo.includes('DATOS DE VALORACI') && cuerpo.includes('{{TRANSCRIPT}}') && cuerpo.includes('name="whisperHint"');
+  r.guardado = await page.evaluate(() => !!state.informeIA?.texto && state.informeIA.conAudio === true
+    && state.informeIA.transcripcion.includes('simulada'));
+  r.audioBorrado = await page.evaluate(() => new Promise(res => {
+    const rq = indexedDB.open('physiq', 3);
+    rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result === undefined); };
+  }));
+  await page.click('#iaResultado button:has-text("Copiar")');
+  await page.waitForTimeout(200);
+  const copiado = await page.evaluate(() => navigator.clipboard.readText());
+  r.copiado = copiado.startsWith('INFORME DE FISIOTERAPIA') && copiado.includes('CONDICIÓN DE SALUD') && !copiado.includes('##');
+  r.sinScrollX = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+  await context.close();
+
+  // Dentro del hub (iframe): el módulo no se descarga y la tarjeta queda vacía
+  const ctxHub = await browser.newContext();
+  const hub = await ctxHub.newPage();
+  const pedidos = [];
+  hub.on('request', q => { if (/informe-ia\.js|informe-narrativo\.js|grabadora\.js|licencia-ia\.js/.test(q.url())) pedidos.push(q.url()); });
+  await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
+  await hub.waitForTimeout(1500);
+  const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
+  await frame.evaluate(() => { buildResults(); goToPhase(5); });
+  await hub.waitForTimeout(500);
+  r.hubSinModulo = pedidos.length === 0 && await frame.evaluate(() => document.body.classList.contains('in-hub') && document.getElementById('informeIA').innerHTML === '');
+  await ctxHub.close();
+
+  r.ok = Object.entries(r).every(([, v]) => v === true);
+  return r;
+}
+
+// Grabación desde la cabecera (grabadora.js), con el micrófono falso de
+// Chromium: empieza en la fase 1, sigue visible por todas las fases, la tarjeta
+// de la fase 5 la ve en curso (y no deja generar), «Parar y usar» la deja como
+// audio de la sesión; pausa/reanudar y «Grabar de nuevo» desde el menú; y
+// «Reiniciar» avisa del audio y lo descarta.
+async function checkGrabadoraCabecera(errors) {
+  const browser = await chromium.launch({ args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'] });
+  // Con una grabación en marcha la página tiene beforeunload: si algo falla, el
+  // navegador debe cerrarse igual o el proceso no termina nunca.
+  try { return await recorrerGrabadora(browser, errors); }
+  catch (e) { return { ok: false, error: e.message.split('\n')[0] }; }
+  finally { await browser.close().catch(() => {}); }
+}
+
+async function recorrerGrabadora(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  await context.grantPermissions(['microphone']);
+  await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
+  await mockWorkerYTurnstile(context, ['x']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (grabadora): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (grabadora): ${msg.text()}`); });
+  const btn = () => page.evaluate(() => { const b = document.getElementById('grabBtn'); return { clases: b.className, texto: b.textContent.trim() }; });
+  const r = {};
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.waitForSelector('#grabBtn', { state: 'visible' });
+  r.botonVisible = true;
+
+  await page.click('#grabBtn');                        // fase 1: un toque empieza
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await page.waitForTimeout(1200);
+  const b1 = await btn();
+  r.pildora = /\d\d:\d\d/.test(b1.texto);
+  r.cabeceraSinDesbordar = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth
+    && document.querySelector('.header-right').getBoundingClientRect().right <= innerWidth + 1);
+
+  await walkRegion(page, 'lumbar');                    // la consulta sigue grabando
+  r.siguePorLasFases = (await btn()).clases.includes('recording');
+  await page.waitForSelector('#iaAudio .ia-grabando');
+  r.tarjetaVeEnCurso = true;
+  r.generarBloqueado = await page.evaluate(() => document.getElementById('iaGenerar').disabled);
+
+  await page.click('#iaAudio button:has-text("Parar y usar")');
+  await page.waitForSelector('#iaAudio .ia-reproductor');
+  r.audioEnTarjeta = (await btn()).clases.includes('recorded');
+  r.audioEnIDB = await page.evaluate(() => new Promise(res => {
+    const rq = indexedDB.open('physiq', 3);
+    rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(!!g.result?.chunks); };
+  }));
+
+  // Menú: con audio → «Grabar de nuevo» (confirmación) → pausa y reanudar → parar
+  await page.click('#grabBtn');
+  r.menuConAudio = await page.isVisible('#grabMenu :text("Grabar de nuevo")');
+  await page.click('#grabMenu button:has-text("Grabar de nuevo")');
+  await page.click('#confirmAction');
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await page.click('#grabBtn');
+  await page.click('#grabMenu button:has-text("Pausa")');
+  r.pausa = (await btn()).clases.includes('paused');
+  await page.click('#grabMenu button:has-text("Reanudar")');
+  r.reanuda = (await btn()).clases.includes('recording');
+  await page.waitForTimeout(600);
+  await page.click('#grabMenu button:has-text("Parar")');
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recorded'));
+  r.paraDesdeMenu = true;
+
+  // Reiniciar: la confirmación avisa del audio y, al aceptar, se descarta
+  await page.click('.btn-reset');
+  r.avisoEnReinicio = (await page.textContent('#confirmBanner')).includes('audio grabado de la sesión');
+  await page.click('#confirmAction');
+  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('recorded'));
+  r.descartadoAlReiniciar = await page.evaluate(() => new Promise(res => {
+    const rq = indexedDB.open('physiq', 3);
+    rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result === undefined); };
+  }));
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function main() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
@@ -307,6 +502,15 @@ async function main() {
     const match = MODULE_FILES.find(f => url.endsWith('/' + f));
     if (match) moduleStatus[match] = res.status();
   });
+
+  // Standalone, la fase 5 monta la tarjeta del informe narrativo, que consulta
+  // /validate al llegar: aquí responde siempre «demo» para que ningún recorrido
+  // llame al worker real (checkInformeNarrativo usa su propio contexto).
+  await page.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json',
+    body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo', email: 'demo' }, demoOnly: false }),
+  }));
 
   console.log(`Loading ${BASE_URL} ...`);
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
@@ -363,7 +567,15 @@ async function main() {
   const deriv = await checkDerivacionVascular(page);
   console.log(`  ${deriv.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
 
+  console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
+  const informeIA = await checkInformeNarrativo(browser, errors);
+  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado y copiado, nada en el hub`);
+
   await browser.close();
+
+  console.log('\nGrabación desde la cabecera (micrófono falso de Chromium):');
+  const grab = await checkGrabadoraCabecera(errors);
+  console.log(`  ${grab.ok ? '✓' : '✗'} empieza en la fase 1, sigue por todas, la fase 5 la ve y la para; menú; reiniciar avisa y descarta`);
 
   const realErrors = errors.filter(e => !KNOWN_NOISE.some(n => e.includes(n)));
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
@@ -371,7 +583,7 @@ async function main() {
 
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
   const breveOk = breveResults.every(r => r.ok);
-  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && grab.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
@@ -381,6 +593,8 @@ async function main() {
   if (!razonEsc.ok) console.log('\nRazonamiento escritorio:', JSON.stringify(razonEsc));
   if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
   if (!deriv.ok) console.log('\nDerivación del árbol:', JSON.stringify(deriv));
+  if (!informeIA.ok) console.log('\nInforme narrativo:', JSON.stringify(informeIA));
+  if (!grab.ok) console.log('\nGrabadora:', JSON.stringify(grab));
   if (!breveOk) {
     console.log('\nModo breve failures:');
     breveResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
