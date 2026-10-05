@@ -13,10 +13,10 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **228** referencias de literatura, con **788** usos.
+- **228** referencias de literatura, con **811** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **199** usos, basadas en Lluch 2020.
 - **18** de 228 referencias del registro revisadas. Ver «Estado de revisión».
-- **63** de 441 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
+- **40** de 441 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
 
@@ -55,7 +55,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Bachmann 2004](#bachmann-2004) | puntuación 4b · razonamiento fase 2 | 2 | **sin revisar** |
 | [Chronopoulos 2004](#chronopoulos-2004) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
-| [Laslett 2005](#laslett-2005) | puntuación 4b | 2 | **sin revisar** |
+| [Laslett 2005](#laslett-2005) | puntuación 4b | 3 | **sin revisar** |
 | [Park 2005](#park-2005) | puntuación 4b | 2 | **sin revisar** |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | **sin revisar** |
 | [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | **sin revisar** |
@@ -2791,13 +2791,15 @@ Nota: PDF aportado por el usuario. Ref. 99 de Lluch 2020, cap. 4.1: origen de la
 
 Citada como:
 
-1. Laslett 2008 (J Man Manip Ther 16:142–152); Laslett 2005 (Man Ther 10:207–218, tablas 4–6 y fig. 7); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
-2. Laslett 2005 (Man Ther 10:207–218, tabla 2; referencia: bloqueo anestésico intraarticular); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 153–154
+1. Laslett 2005 (Man Ther 10:207–218, tabla 2 y fig. 5; referencia: bloqueo anestésico intraarticular)
+2. Laslett 2008 (J Man Manip Ther 16:142–152); Laslett 2005 (Man Ther 10:207–218, tablas 4–6 y fig. 7); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
+3. Laslett 2005 (Man Ther 10:207–218, tabla 2; referencia: bloqueo anestésico intraarticular); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 153–154
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 1 |
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Thigh thrust» | 4b · cita bajo el test | 2 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Compresión Pélvica» | 4b · cita bajo el test | 1 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 2 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Thigh thrust» | 4b · cita bajo el test | 3 |
 
 ### Laslett 2006
 
@@ -3027,139 +3029,149 @@ Citada como:
 26. Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274, recomendación 6) · Lluch 2020, cap. 3.1 (Struyf), pp. 53–54
 27. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 170
 28. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 138; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
-29. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137
-30. Lluch 2020, cap. 4.1.1 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 125; cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 136; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 175–176
-31. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 157
-32. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 176–177
-33. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 134, 137 y 142; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 179
-34. Laslett 2008 (J Man Manip Ther 16:142–152); Laslett 2005 (Man Ther 10:207–218, tablas 4–6 y fig. 7); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
-35. Laslett 2005 (Man Ther 10:207–218, tabla 2; referencia: bloqueo anestésico intraarticular); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 153–154
-36. Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
-37. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 168
-38. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 168, 170 y 173
-39. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 160
-40. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 163; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 175
-41. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 162–163
-42. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 175 y 177
-43. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 172
-44. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141
-45. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 172
-46. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 138
-47. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 139–140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
-48. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177
-49. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 145; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177
-50. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 145; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 173
-51. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 377–378 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
-52. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 379–380 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A19)
-53. Ejercicio neuromuscular (coordinación, propiocepción, entrenamiento postural, coordinación ojo-cabeza-cuello) dentro del abordaje multimodal de la fase crónica (B). El fortalecimiento isométrico de los flexores profundos redujo dolor y discapacidad a corto plazo, pero el entrenamiento con biofeedback de presión no fue mejor que el fortalecimiento de los flexores con pesas. Para dosificar el entrenamiento craneocervical (Lluch 2020): test de flexión craneocervical en supino con biofeedback de presión inflado a 20 mmHg y cinco escalones de 2 mmHg (22–30), sin activar en exceso el esternocleidomastoideo ni los escalenos y sin retraer la cabeza; la resistencia se mide con apoyos repetidos de 5–10 s en cada nivel y el entrenamiento empieza en el nivel inferior al del fallo. Ni la guía ni el libro fijan series ni semanas.
-54. Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Lluch 2020, cap. 5.3 (Jull y Falla), p. 378 (test de flexión craneocervical para dosificar)
-55. Lluch 2020, cap. 5.3 (Jull y Falla), p. 380 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
-56. Según la fase (dolor de cuello con cefalea). Aguda: instrucción supervisada en ejercicios de movilidad activa (B); autoSNAG C1–2 (C). Subaguda: manipulación y movilización cervical (B); autoSNAG C1–2 (C). Crónica: manipulación o movilización cervical o cervicotorácica combinada con estiramiento, fortalecimiento y resistencia de cuello y cintura escapular (B); el fortalecimiento cervicoescapular con entrenamiento de flexión craneocervical con biofeedback mejoró dolor y función a largo plazo, y los autores de la guía señalan, como opinión, que el entrenamiento craneocervical puede ser especialmente útil. Con algún signo de disfunción temporomandibular, la terapia manual y el ejercicio dirigidos a la ATM mejoraron más que los centrados solo en la región craneocervical. Aplicar antes el cribado vascular del marco IFOMPT. Para dosificar el entrenamiento craneocervical (Lluch 2020): test de flexión craneocervical en supino con biofeedback de presión inflado a 20 mmHg y cinco escalones de 2 mmHg (22–30), sin activar en exceso el esternocleidomastoideo ni los escalenos y sin retraer la cabeza; la resistencia se mide con apoyos repetidos de 5–10 s en cada nivel y el entrenamiento empieza en el nivel inferior al del fallo. La guía no fija series ni semanas (la manipulación 3–4 veces por semana, 12–18 sesiones, superó a una vez por semana a corto plazo, pero no a medio).
-57. Lluch 2020, cap. 5.3 (Jull y Falla), p. 382
-58. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 372–373 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), pp. A13–A14, tabla 6)
-59. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
-60. Lluch 2020, cap. 5.3 (Jull y Falla), p. 375 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
-61. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 374–375
-62. Lluch 2020, cap. 5.3 (Jull y Falla), p. 375
-63. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A20)
-64. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 308–309
-65. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 313
-66. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 313–314 · NICE NG59 (rec. 1.3.6)
-67. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 310
-68. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 311
-69. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 317 y tabla 4 (consenso Delphi), p. 316
-70. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 4 y 6, pp. 316 y 323 (orientativo)
-71. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 317–318
-72. Lluch 2020, cap. 5.1 (Fondevila Suárez), tabla 5 (consenso Delphi), p. 319
-73. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 5 y 6, pp. 319 y 323
-74. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 319–320 · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
-75. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 321–322 (criterio a del clúster de Laslett)
-76. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 322
-77. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 323–324
-78. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 211
-79. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 210–211; Culvenor 2019 (Br J Sports Med 53:1268–78; revisión sistemática con metaanálisis, 63 estudios, 5397 rodillas sin síntomas ni lesiones)
-80. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209 y 220
-81. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209–210; Englund 2003 (Arthritis Rheum 48:2178–87; 155 meniscectomías frente a 68 controles, 16 años; RR 7,0, IC 95 %: 2,1–23,5)
-82. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 194
-83. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 194–195
-84. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 206–207
-85. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 192–193
-86. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 215 y 220
-87. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 215
-88. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 215–216
-89. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 212
-90. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 208
-91. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 222
-92. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216 y 221–222
-93. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 216
-94. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219–220
-95. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 219
-96. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 197; Bachmann 2004 (Ann Intern Med 140:121–4; revisión sistemática, 6 estudios, 4249 adultos)
-97. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 197
-98. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 198
-99. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 197–198
-100. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 195
-101. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 195–196
-102. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 196
-103. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 202
-104. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 202–203
-105. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 203
-106. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–204
-107. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205
-108. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 201
-109. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 200–201
-110. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 199
-111. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 199; Mohr 2024 (StatPearls, NBK538194)
-112. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 217
-113. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217 y 220
-114. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216–217
-115. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 218
-116. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 218 y 220
-117. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 223
-118. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–224
-119. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
-120. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
-121. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
-122. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
-123. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
-124. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
-125. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
-126. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
-127. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
-128. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
-129. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
-130. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
-131. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
-132. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
-133. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-134. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
-135. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
-136. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
-137. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
-138. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
-139. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-140. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
-141. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
-142. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
-143. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
-144. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
-145. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
-146. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
-147. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
-148. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
-149. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
-150. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
-151. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 224–225.
-152. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.
-153. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205.
-154. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 200.
-155. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–198 y 205–206.
-156. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–197.
-157. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219 y 221–222.
-158. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198, 217 y 223.
-159. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217–218 y 220.
-160. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198–199 y 205.
-161. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201 y 213–214.
+29. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 162
+30. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137
+31. Lluch 2020, cap. 4.1.1 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 125; cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 136; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 175–176
+32. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 157
+33. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 176–177
+34. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 134, 137 y 142; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 179
+35. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 172
+36. Laslett 2008 (J Man Manip Ther 16:142–152); Laslett 2005 (Man Ther 10:207–218, tablas 4–6 y fig. 7); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
+37. Laslett 2005 (Man Ther 10:207–218, tabla 2; referencia: bloqueo anestésico intraarticular); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 153–154
+38. Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
+39. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 168
+40. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 168
+41. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 168, 170 y 173
+42. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 160
+43. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 162
+44. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 163; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 175
+45. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 162–163
+46. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137
+47. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 135
+48. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 137; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 175 y 177
+49. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 172
+50. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141
+51. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 138
+52. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 138
+53. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 139–140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
+54. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
+55. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177
+56. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 168
+57. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 145; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 173; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 177
+58. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
+59. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 145; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 173
+60. Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 140; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 164
+61. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 377–378 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
+62. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 379–380 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A19)
+63. Ejercicio neuromuscular (coordinación, propiocepción, entrenamiento postural, coordinación ojo-cabeza-cuello) dentro del abordaje multimodal de la fase crónica (B). El fortalecimiento isométrico de los flexores profundos redujo dolor y discapacidad a corto plazo, pero el entrenamiento con biofeedback de presión no fue mejor que el fortalecimiento de los flexores con pesas. Para dosificar el entrenamiento craneocervical (Lluch 2020): test de flexión craneocervical en supino con biofeedback de presión inflado a 20 mmHg y cinco escalones de 2 mmHg (22–30), sin activar en exceso el esternocleidomastoideo ni los escalenos y sin retraer la cabeza; la resistencia se mide con apoyos repetidos de 5–10 s en cada nivel y el entrenamiento empieza en el nivel inferior al del fallo. Ni la guía ni el libro fijan series ni semanas.
+64. Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Lluch 2020, cap. 5.3 (Jull y Falla), p. 378 (test de flexión craneocervical para dosificar)
+65. Lluch 2020, cap. 5.3 (Jull y Falla), p. 380 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
+66. Según la fase (dolor de cuello con cefalea). Aguda: instrucción supervisada en ejercicios de movilidad activa (B); autoSNAG C1–2 (C). Subaguda: manipulación y movilización cervical (B); autoSNAG C1–2 (C). Crónica: manipulación o movilización cervical o cervicotorácica combinada con estiramiento, fortalecimiento y resistencia de cuello y cintura escapular (B); el fortalecimiento cervicoescapular con entrenamiento de flexión craneocervical con biofeedback mejoró dolor y función a largo plazo, y los autores de la guía señalan, como opinión, que el entrenamiento craneocervical puede ser especialmente útil. Con algún signo de disfunción temporomandibular, la terapia manual y el ejercicio dirigidos a la ATM mejoraron más que los centrados solo en la región craneocervical. Aplicar antes el cribado vascular del marco IFOMPT. Para dosificar el entrenamiento craneocervical (Lluch 2020): test de flexión craneocervical en supino con biofeedback de presión inflado a 20 mmHg y cinco escalones de 2 mmHg (22–30), sin activar en exceso el esternocleidomastoideo ni los escalenos y sin retraer la cabeza; la resistencia se mide con apoyos repetidos de 5–10 s en cada nivel y el entrenamiento empieza en el nivel inferior al del fallo. La guía no fija series ni semanas (la manipulación 3–4 veces por semana, 12–18 sesiones, superó a una vez por semana a corto plazo, pero no a medio).
+67. Lluch 2020, cap. 5.3 (Jull y Falla), p. 382
+68. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 372–373 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), pp. A13–A14, tabla 6)
+69. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
+70. Lluch 2020, cap. 5.3 (Jull y Falla), p. 375 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
+71. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 374–375
+72. Lluch 2020, cap. 5.3 (Jull y Falla), p. 375
+73. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A20)
+74. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 308–309
+75. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 313
+76. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 313–314 · NICE NG59 (rec. 1.3.6)
+77. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 310
+78. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 311
+79. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 317 y tabla 4 (consenso Delphi), p. 316
+80. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 4 y 6, pp. 316 y 323 (orientativo)
+81. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 317–318
+82. Lluch 2020, cap. 5.1 (Fondevila Suárez), tabla 5 (consenso Delphi), p. 319
+83. Lluch 2020, cap. 5.1 (Fondevila Suárez), tablas 5 y 6, pp. 319 y 323
+84. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 319–320 · NICE NG59 (rec. 1.3.1–1.3.3, derivación)
+85. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 321–322 (criterio a del clúster de Laslett)
+86. Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 322
+87. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 323–324
+88. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 211
+89. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 210–211; Culvenor 2019 (Br J Sports Med 53:1268–78; revisión sistemática con metaanálisis, 63 estudios, 5397 rodillas sin síntomas ni lesiones)
+90. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209 y 220
+91. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209–210; Englund 2003 (Arthritis Rheum 48:2178–87; 155 meniscectomías frente a 68 controles, 16 años; RR 7,0, IC 95 %: 2,1–23,5)
+92. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 194
+93. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 194–195
+94. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 206–207
+95. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 192–193
+96. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 215 y 220
+97. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 215
+98. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 215–216
+99. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 212
+100. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 208
+101. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 222
+102. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216 y 221–222
+103. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 216
+104. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219–220
+105. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 219
+106. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 197; Bachmann 2004 (Ann Intern Med 140:121–4; revisión sistemática, 6 estudios, 4249 adultos)
+107. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 197
+108. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 198
+109. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 197–198
+110. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 195
+111. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 195–196
+112. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 196
+113. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 202
+114. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 202–203
+115. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 203
+116. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–204
+117. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205
+118. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 201
+119. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 200–201
+120. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 199
+121. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 199; Mohr 2024 (StatPearls, NBK538194)
+122. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 217
+123. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217 y 220
+124. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216–217
+125. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 218
+126. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 218 y 220
+127. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 223
+128. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–224
+129. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
+130. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
+131. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
+132. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
+133. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
+134. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
+135. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
+136. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
+137. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
+138. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
+139. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
+140. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
+141. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+142. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
+143. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+144. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
+145. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
+146. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
+147. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
+148. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
+149. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+150. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+151. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
+152. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
+153. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
+154. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
+155. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
+156. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
+157. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
+158. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
+159. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
+160. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
+161. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 224–225.
+162. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.
+163. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205.
+164. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 200.
+165. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–198 y 205–206.
+166. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–197.
+167. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219 y 221–222.
+168. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198, 217 y 223.
+169. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217–218 y 220.
+170. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198–199 y 205.
+171. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201 y 213–214.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -3199,173 +3211,195 @@ Citada como:
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Luxación bloqueada» | 4b · cita bajo el test | 21 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Fractura» | 4b · cita bajo el test | 21 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 8 |
-| Hombro | — | `sistemas.0.banderasRojas.5` | 2 · mención en el texto | 119 |
-| Hombro | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 120 |
-| Hombro | — | `sistemas.7.banderasRojas.0` | 2 · mención en el texto | 121 |
-| Hombro | — | `sistemas.8.banderasRojas.0` | 2 · mención en el texto | 122 |
-| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 124 |
-| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 125 |
-| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 126 |
-| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 127 |
-| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 126 |
-| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 128 |
-| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 129 |
+| Hombro | — | `sistemas.0.banderasRojas.5` | 2 · mención en el texto | 129 |
+| Hombro | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 130 |
+| Hombro | — | `sistemas.7.banderasRojas.0` | 2 · mención en el texto | 131 |
+| Hombro | — | `sistemas.8.banderasRojas.0` | 2 · mención en el texto | 132 |
+| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 134 |
+| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 135 |
+| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 136 |
+| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 137 |
+| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 136 |
+| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 138 |
+| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 139 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Apoyo monopodal (30 s)» | 4b · cita bajo el test | 27 |
 | Cadera | ca1 · Artrosis de Cadera | Pronóstico | 5 · cita del pronóstico | 28 |
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Dolor inguinal» | 4b · cita bajo el test | 29 |
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pronóstico | 5 · cita del pronóstico | 30 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Longitud de paso» | 4b · cita bajo el test | 31 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Pronóstico | 5 · cita del pronóstico | 32 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Pronóstico | 5 · cita del pronóstico | 33 |
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 34 |
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Thigh thrust» | 4b · cita bajo el test | 35 |
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Prueba del dedo (Fortin)» | 4b · cita bajo el test | 36 |
-| Cadera | ca11 · Lesión Aguda de Ingle | Test «Palpación del grupo sospechoso (primero)» | 4b · cita bajo el test | 37 |
-| Cadera | ca11 · Lesión Aguda de Ingle | Pronóstico | 5 · cita del pronóstico | 38 |
-| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Test «Log roll» | 4b · cita bajo el test | 39 |
-| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Pronóstico | 5 · cita del pronóstico | 40 |
-| Cadera | ca13 · Condropatía de Cadera | Test «Cribado intraarticular y Thomas positivos» | 4b · cita bajo el test | 41 |
-| Cadera | ca13 · Condropatía de Cadera | Pronóstico | 5 · cita del pronóstico | 42 |
-| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Tinel del femorocutáneo (meralgia)» | 4b · cita bajo el test | 43 |
-| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Pudendo: dolor perineal al sentarse o en bici» | 4b · cita bajo el test | 44 |
-| Cadera | ca14 · Neuropatías de Cadera e Ingle | Pronóstico | 5 · cita del pronóstico | 45 |
-| Cadera | ca15 · Sensibilización Central | Test «Dolor multifocal, referido y extenso» | 4b · cita bajo el test | 46 |
-| Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Test «Palpación dolorosa de aductores + squeeze doloroso» | 4b · cita bajo el test | 47 |
-| Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Pronóstico | 5 · cita del pronóstico | 48 |
-| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Test «Palpación dolorosa supra o infrainguinal» | 4b · cita bajo el test | 47 |
-| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Pronóstico | 5 · cita del pronóstico | 49 |
-| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Test «Dolor en la región del canal + palpación dolorosa del canal, sin hernia palpable» | 4b · cita bajo el test | 47 |
-| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Pronóstico | 5 · cita del pronóstico | 50 |
-| Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Palpación dolorosa de la sínfisis y el hueso adyacente» | 4b · cita bajo el test | 47 |
-| Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Pronóstico | 5 · cita del pronóstico | 48 |
-| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 130 |
-| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 131 |
-| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 130 |
-| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 132 |
-| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 133 |
-| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 133 |
-| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 133 |
-| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 134 |
-| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 135 |
-| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 136 |
-| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 137 |
-| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 138 |
-| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 133 |
-| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 139 |
-| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 140 |
-| Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Flexión Craneocervical (CCFT) con biofeedback de presión» | 4b · cita bajo el test | 51 |
-| Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Reposicionamiento Cabeza-Neutro» | 4b · cita bajo el test | 52 |
-| Cervical | ce2 · Disfunción Neuromuscular Cervical | Dosis (en el texto) | 5 · mención en el texto | 53 |
-| Cervical | ce2 · Disfunción Neuromuscular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 54 |
-| Cervical | ce3 · Radiculopatía Cervical | Test «Reflejos tendinosos (bíceps C6, tríceps C7)» | 4b · cita bajo el test | 55 |
-| Cervical | ce4 · Cefalea Cervicogénica | Dosis (en el texto) | 5 · mención en el texto | 56 |
-| Cervical | ce4 · Cefalea Cervicogénica | Pauta de tratamiento | 5 · cita de la pauta | 54 |
-| Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Test «ROM Cervical Activo (reducción significativa)» | 4b · cita bajo el test | 57 |
-| Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Test «Síntomas de hiperalerta / PTSD» | 4b · cita bajo el test | 58 |
-| Cervical | ce6 · Debilidad Muscular Cérvico-Escapular | Test «Fuerza de Flexión Cervical (dinamometría)» | 4b · cita bajo el test | 59 |
-| Cervical | ce6 · Debilidad Muscular Cérvico-Escapular | Test «Fuerza de Extensión Cervical (dinamometría)» | 4b · cita bajo el test | 59 |
-| Cervical | ce7 · Dolor Mecánico Cervical Inespecífico Crónico | Test «ROM Cervical Activo (reducción en todas las direcciones)» | 4b · cita bajo el test | 60 |
-| Cervical | ce7 · Dolor Mecánico Cervical Inespecífico Crónico | Test «Test de reposicionamiento cabeza-neutro» | 4b · cita bajo el test | 52 |
-| Cervical | ce9 · Disfunción Postural Cérvico-Torácica | Test «Evaluación postural de cabeza adelantada (Forward Head Posture)» | 4b · cita bajo el test | 61 |
-| Cervical | ce9 · Disfunción Postural Cérvico-Torácica | Test «Evaluación de cifosis torácica» | 4b · cita bajo el test | 62 |
-| Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Test «Test de resistencia de flexores cervicales profundos» | 4b · cita bajo el test | 63 |
-| Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Test «Evaluación de fatiga en actividades funcionales prolongadas» | 4b · cita bajo el test | 61 |
-| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 141 |
-| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 142 |
-| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 143 |
-| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 144 |
-| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 145 |
-| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 146 |
-| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 147 |
-| Lumbar | lu3 · Dolor Radicular Lumbar | Pronóstico | 5 · cita del pronóstico | 64 |
-| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Déficits sensoriales (L3-S1)» | 4b · cita bajo el test | 65 |
-| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Pronóstico | 5 · cita del pronóstico | 66 |
-| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Fuerza por miotomas L1–S2» | 4b · cita bajo el test | 67 |
-| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pronóstico | 5 · cita del pronóstico | 68 |
-| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Preferencia direccional» | 4b · cita bajo el test | 69 |
-| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Observación: espalda plana o shift lateral» | 4b · cita bajo el test | 70 |
-| Lumbar | lu6 · Dolor Lumbar Discogénico | Pronóstico | 5 · cita del pronóstico | 71 |
-| Lumbar | lu7 · Dolor Lumbar Facetario | Test «PA unilateral dolorosa o con menos movilidad» | 4b · cita bajo el test | 72 |
-| Lumbar | lu7 · Dolor Lumbar Facetario | Test «Sin signos radiculares y sin alivio con repetidos» | 4b · cita bajo el test | 73 |
-| Lumbar | lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 74 |
-| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «No centraliza con movimientos repetidos» | 4b · cita bajo el test | 75 |
-| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pronóstico | 5 · cita del pronóstico | 76 |
-| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 77 |
-| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 77 |
-| Lumbar | — | `sistemas.5.banderasRojas.0` | 2 · mención en el texto | 123 |
-| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 148 |
-| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 149 |
-| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 150 |
-| Rodilla | ro1 · Artrosis de Rodilla | Test «Rango disminuido, hinchazón persistente, debilidad de cuádriceps» | 4b · cita bajo el test | 78 |
-| Rodilla | ro1 · Artrosis de Rodilla | Pronóstico | 5 · cita del pronóstico | 79 |
-| Rodilla | ro2 · Lesión Meniscal | Test «Test de Thessaly» | 4b · cita bajo el test | 80 |
-| Rodilla | ro2 · Lesión Meniscal | Pronóstico | 5 · cita del pronóstico | 81 |
-| Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Palpación alrededor de la FR, sobre todo de las facetas» | 4b · cita bajo el test | 82 |
-| Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Pronóstico | 5 · cita del pronóstico | 83 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Pronóstico | 5 · cita del pronóstico | 84 |
-| Rodilla | ro5 · Tendinopatía Rotuliana | Pronóstico | 5 · cita del pronóstico | 85 |
-| Rodilla | ro6 · Síndrome de la Banda Iliotibial | Test «Palpación a lo largo de la cintilla» | 4b · cita bajo el test | 86 |
-| Rodilla | ro6 · Síndrome de la Banda Iliotibial | Test «Step-down lateral» | 4b · cita bajo el test | 87 |
-| Rodilla | ro6 · Síndrome de la Banda Iliotibial | Test «Test de Thomas» | 4b · cita bajo el test | 86 |
-| Rodilla | ro6 · Síndrome de la Banda Iliotibial | Pronóstico | 5 · cita del pronóstico | 88 |
-| Rodilla | ro7 · Bursitis de la Pata de Ganso | Test «Flexión de rodilla en carga y palpación de la pata de ganso» | 4b · cita bajo el test | 89 |
-| Rodilla | ro8 · Lesión del Ligamento Colateral Medial (LCM) | Pronóstico | 5 · cita del pronóstico | 90 |
-| Rodilla | ro9 · Lesión del Ligamento Cruzado Posterior (LCP) | Test «Cajón posterior a 90° de flexión» | 4b · cita bajo el test | 91 |
-| Rodilla | ro9 · Lesión del Ligamento Cruzado Posterior (LCP) | Test «Signo del sag posterior» | 4b · cita bajo el test | 91 |
-| Rodilla | ro9 · Lesión del Ligamento Cruzado Posterior (LCP) | Test «Test activo del cuádriceps» | 4b · cita bajo el test | 91 |
-| Rodilla | ro9 · Lesión del Ligamento Cruzado Posterior (LCP) | Pronóstico | 5 · cita del pronóstico | 92 |
-| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Hinchazón y equimosis laterales; palpación dolorosa del ligamento» | 4b · cita bajo el test | 93 |
-| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Varo forzado a unos 30° de flexión» | 4b · cita bajo el test | 93 |
-| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Marcha con empuje en varo» | 4b · cita bajo el test | 94 |
-| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Test del dial (esquina posterolateral)» | 4b · cita bajo el test | 95 |
-| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Cajón posterolateral» | 4b · cita bajo el test | 95 |
-| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Test de recurvatum» | 4b · cita bajo el test | 95 |
-| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Pronóstico | 5 · cita del pronóstico | 92 |
-| Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Regla de Ottawa antes de nada» | 4b · cita bajo el test | 96 |
-| Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Rótula: dolor localizado, escalón, dolor con extensión resistida» | 4b · cita bajo el test | 97 |
-| Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Meseta: dolor exquisito sobre el foco y función neurovascular» | 4b · cita bajo el test | 98 |
-| Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Pronóstico | 5 · cita del pronóstico | 99 |
-| Rodilla | ro12 · Inestabilidad Rotuliana | Test «Tests de estrés tibiofemoral normales» | 4b · cita bajo el test | 100 |
-| Rodilla | ro12 · Inestabilidad Rotuliana | Test «Movilidad rotuliana excesiva» | 4b · cita bajo el test | 101 |
-| Rodilla | ro12 · Inestabilidad Rotuliana | Test «Test de aprensión» | 4b · cita bajo el test | 102 |
-| Rodilla | ro12 · Inestabilidad Rotuliana | Pronóstico | 5 · cita del pronóstico | 101 |
-| Rodilla | ro13 · Síndrome de la Grasa de Hoffa | Test «Observación: genu recurvatum» | 4b · cita bajo el test | 103 |
-| Rodilla | ro13 · Síndrome de la Grasa de Hoffa | Test «Test de Hoffa» | 4b · cita bajo el test | 103 |
-| Rodilla | ro13 · Síndrome de la Grasa de Hoffa | Pronóstico | 5 · cita del pronóstico | 104 |
-| Rodilla | ro14 · Bursitis Pre e Infrarrotuliana | Test «Fiebre >37,7 °C (séptica → urgencia)» | 4b · cita bajo el test | 105 |
-| Rodilla | ro14 · Bursitis Pre e Infrarrotuliana | Test «Hinchazón en la propia bursa y arrodillarse intolerable» | 4b · cita bajo el test | 106 |
-| Rodilla | ro14 · Bursitis Pre e Infrarrotuliana | Pronóstico | 5 · cita del pronóstico | 107 |
-| Rodilla | ro15 · Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson) | Test «Cadera primero» | 4b · cita bajo el test | 108 |
-| Rodilla | ro15 · Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson) | Test «Palpación de la tuberosidad tibial o del polo inferior de la rótula» | 4b · cita bajo el test | 109 |
-| Rodilla | ro15 · Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson) | Test «Sentadillas, escaleras, step-down, saltos y extensión resistida» | 4b · cita bajo el test | 109 |
-| Rodilla | ro15 · Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson) | Pronóstico | 5 · cita del pronóstico | 109 |
-| Rodilla | ro16 · Lesión Osteocondral | Test «Palpación de la zona afectada» | 4b · cita bajo el test | 110 |
-| Rodilla | ro16 · Lesión Osteocondral | Test «Marcha antiálgica» | 4b · cita bajo el test | 110 |
-| Rodilla | ro16 · Lesión Osteocondral | Test «Signos de inestabilidad: derrame y bloqueo» | 4b · cita bajo el test | 111 |
-| Rodilla | ro18 · Disfunción de la Articulación Tibioperonea Proximal | Test «Presión directa sobre la cabeza del peroné y movilidad accesoria» | 4b · cita bajo el test | 112 |
-| Rodilla | ro18 · Disfunción de la Articulación Tibioperonea Proximal | Test «Movimiento de rodilla con isquiotibiales en tensión y movimiento de tobillo» | 4b · cita bajo el test | 112 |
-| Rodilla | ro18 · Disfunción de la Articulación Tibioperonea Proximal | Test «Cabeza del peroné prominente, hipermovilidad o luxación» | 4b · cita bajo el test | 113 |
-| Rodilla | ro18 · Disfunción de la Articulación Tibioperonea Proximal | Pronóstico | 5 · cita del pronóstico | 114 |
-| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Marcha en steppage» | 4b · cita bajo el test | 115 |
-| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Sensibilidad en la cara lateral inferior de la pierna y el dorso del pie» | 4b · cita bajo el test | 115 |
-| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Fuerza de eversión y de flexión dorsal de tobillo y dedos» | 4b · cita bajo el test | 115 |
-| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Tinel cerca de la cabeza del peroné» | 4b · cita bajo el test | 115 |
-| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Prueba neurodinámica con sesgo peroneo» | 4b · cita bajo el test | 116 |
-| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Pronóstico | 5 · cita del pronóstico | 115 |
-| Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signos de patología meniscal o condral» | 4b · cita bajo el test | 117 |
-| Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signo de Foucher» | 4b · cita bajo el test | 117 |
-| Rodilla | ro20 · Quiste Poplíteo (Baker) | Pronóstico | 5 · cita del pronóstico | 118 |
-| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 151 |
-| Rodilla | — | Pregunta `r_v3` · Vascular | 2 · razonamiento del cribado | 152 |
-| Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 153 |
-| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 154 |
-| Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 155 |
-| Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 156 |
-| Rodilla | — | Pregunta `ro_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 157 |
-| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 158 |
-| Rodilla | — | Pregunta `ro_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 159 |
-| Rodilla | — | Pregunta `ro_t6` · Traumático / Mecánico | 2 · razonamiento del cribado | 160 |
-| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 161 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FABER (Flexión-Abducción-Rotación Externa)» | 4b · cita bajo el test | 29 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Dolor inguinal» | 4b · cita bajo el test | 30 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pronóstico | 5 · cita del pronóstico | 31 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Longitud de paso» | 4b · cita bajo el test | 32 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Pronóstico | 5 · cita del pronóstico | 33 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Pronóstico | 5 · cita del pronóstico | 34 |
+| Cadera | ca5 · Debilidad de Abductores de Cadera | Test «Dinamometría manual (HHD) de abductores» | 4b · cita bajo el test | 35 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 36 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Thigh thrust» | 4b · cita bajo el test | 37 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Prueba del dedo (Fortin)» | 4b · cita bajo el test | 38 |
+| Cadera | ca11 · Lesión Aguda de Ingle | Test «Palpación del grupo sospechoso (primero)» | 4b · cita bajo el test | 39 |
+| Cadera | ca11 · Lesión Aguda de Ingle | Test «Resistencia del grupo sospechoso» | 4b · cita bajo el test | 40 |
+| Cadera | ca11 · Lesión Aguda de Ingle | Test «Estiramiento del grupo sospechoso» | 4b · cita bajo el test | 40 |
+| Cadera | ca11 · Lesión Aguda de Ingle | Pronóstico | 5 · cita del pronóstico | 41 |
+| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Test «Log roll» | 4b · cita bajo el test | 42 |
+| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Test «Movilidad aumentada» | 4b · cita bajo el test | 43 |
+| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Test «Episodio de fallo» | 4b · cita bajo el test | 30 |
+| Cadera | ca12 · Ligamento Redondo e Inestabilidad | Pronóstico | 5 · cita del pronóstico | 44 |
+| Cadera | ca13 · Condropatía de Cadera | Test «Cribado intraarticular y Thomas positivos» | 4b · cita bajo el test | 45 |
+| Cadera | ca13 · Condropatía de Cadera | Test «Dolor en reposo y nocturno con síntomas mecánicos» | 4b · cita bajo el test | 46 |
+| Cadera | ca13 · Condropatía de Cadera | Test «Rigidez» | 4b · cita bajo el test | 47 |
+| Cadera | ca13 · Condropatía de Cadera | Test «IMC >25» | 4b · cita bajo el test | 30 |
+| Cadera | ca13 · Condropatía de Cadera | Pronóstico | 5 · cita del pronóstico | 48 |
+| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Tinel del femorocutáneo (meralgia)» | 4b · cita bajo el test | 49 |
+| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Neurodinámico del femorocutáneo» | 4b · cita bajo el test | 35 |
+| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Obturador: neurodinámico, sensibilidad del muslo medial y fuerza de aductores» | 4b · cita bajo el test | 35 |
+| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Arch and twist de pie» | 4b · cita bajo el test | 35 |
+| Cadera | ca14 · Neuropatías de Cadera e Ingle | Test «Pudendo: dolor perineal al sentarse o en bici» | 4b · cita bajo el test | 50 |
+| Cadera | ca14 · Neuropatías de Cadera e Ingle | Pronóstico | 5 · cita del pronóstico | 35 |
+| Cadera | ca15 · Sensibilización Central | Test «Dolor multifocal, referido y extenso» | 4b · cita bajo el test | 51 |
+| Cadera | ca15 · Sensibilización Central | Test «Fatiga y mal sueño» | 4b · cita bajo el test | 52 |
+| Cadera | ca15 · Sensibilización Central | Test «Dificultades de memoria» | 4b · cita bajo el test | 52 |
+| Cadera | ca15 · Sensibilización Central | Test «Más comorbilidad; intolerancia al estrés, ansiedad o depresión» | 4b · cita bajo el test | 52 |
+| Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Test «Palpación dolorosa de aductores + squeeze doloroso» | 4b · cita bajo el test | 53 |
+| Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Test «Estiramiento pasivo de aductores» | 4b · cita bajo el test | 54 |
+| Cadera | ca16 · Dolor Inguinal Relacionado con el Aductor | Pronóstico | 5 · cita del pronóstico | 55 |
+| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Test «Palpación dolorosa supra o infrainguinal» | 4b · cita bajo el test | 53 |
+| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Test «Flexión resistida con cadera y rodilla a 90°» | 4b · cita bajo el test | 56 |
+| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Test «Flexión resistida o extensión pasiva en Thomas modificado» | 4b · cita bajo el test | 56 |
+| Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Pronóstico | 5 · cita del pronóstico | 57 |
+| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Test «Dolor en la región del canal + palpación dolorosa del canal, sin hernia palpable» | 4b · cita bajo el test | 53 |
+| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Test «Sit-up recto u oblicuo resistido» | 4b · cita bajo el test | 56 |
+| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Test «Valsalva, tos o estornudo» | 4b · cita bajo el test | 58 |
+| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Test «Flexión resistida en Thomas modificado» | 4b · cita bajo el test | 56 |
+| Cadera | ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Pronóstico | 5 · cita del pronóstico | 59 |
+| Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Palpación dolorosa de la sínfisis y el hueso adyacente» | 4b · cita bajo el test | 53 |
+| Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Resistencia abdominal y squeeze» | 4b · cita bajo el test | 60 |
+| Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Pronóstico | 5 · cita del pronóstico | 55 |
+| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 140 |
+| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 141 |
+| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 140 |
+| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 142 |
+| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 143 |
+| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 143 |
+| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 143 |
+| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 144 |
+| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 145 |
+| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 146 |
+| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 147 |
+| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 148 |
+| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 143 |
+| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 149 |
+| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 150 |
+| Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Flexión Craneocervical (CCFT) con biofeedback de presión» | 4b · cita bajo el test | 61 |
+| Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Reposicionamiento Cabeza-Neutro» | 4b · cita bajo el test | 62 |
+| Cervical | ce2 · Disfunción Neuromuscular Cervical | Dosis (en el texto) | 5 · mención en el texto | 63 |
+| Cervical | ce2 · Disfunción Neuromuscular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 64 |
+| Cervical | ce3 · Radiculopatía Cervical | Test «Reflejos tendinosos (bíceps C6, tríceps C7)» | 4b · cita bajo el test | 65 |
+| Cervical | ce4 · Cefalea Cervicogénica | Dosis (en el texto) | 5 · mención en el texto | 66 |
+| Cervical | ce4 · Cefalea Cervicogénica | Pauta de tratamiento | 5 · cita de la pauta | 64 |
+| Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Test «ROM Cervical Activo (reducción significativa)» | 4b · cita bajo el test | 67 |
+| Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Test «Síntomas de hiperalerta / PTSD» | 4b · cita bajo el test | 68 |
+| Cervical | ce6 · Debilidad Muscular Cérvico-Escapular | Test «Fuerza de Flexión Cervical (dinamometría)» | 4b · cita bajo el test | 69 |
+| Cervical | ce6 · Debilidad Muscular Cérvico-Escapular | Test «Fuerza de Extensión Cervical (dinamometría)» | 4b · cita bajo el test | 69 |
+| Cervical | ce7 · Dolor Mecánico Cervical Inespecífico Crónico | Test «ROM Cervical Activo (reducción en todas las direcciones)» | 4b · cita bajo el test | 70 |
+| Cervical | ce7 · Dolor Mecánico Cervical Inespecífico Crónico | Test «Test de reposicionamiento cabeza-neutro» | 4b · cita bajo el test | 62 |
+| Cervical | ce9 · Disfunción Postural Cérvico-Torácica | Test «Evaluación postural de cabeza adelantada (Forward Head Posture)» | 4b · cita bajo el test | 71 |
+| Cervical | ce9 · Disfunción Postural Cérvico-Torácica | Test «Evaluación de cifosis torácica» | 4b · cita bajo el test | 72 |
+| Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Test «Test de resistencia de flexores cervicales profundos» | 4b · cita bajo el test | 73 |
+| Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Test «Evaluación de fatiga en actividades funcionales prolongadas» | 4b · cita bajo el test | 71 |
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 151 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 152 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 153 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 154 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 155 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 156 |
+| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 157 |
+| Lumbar | lu3 · Dolor Radicular Lumbar | Pronóstico | 5 · cita del pronóstico | 74 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Déficits sensoriales (L3-S1)» | 4b · cita bajo el test | 75 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Pronóstico | 5 · cita del pronóstico | 76 |
+| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Fuerza por miotomas L1–S2» | 4b · cita bajo el test | 77 |
+| Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Pronóstico | 5 · cita del pronóstico | 78 |
+| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Preferencia direccional» | 4b · cita bajo el test | 79 |
+| Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Observación: espalda plana o shift lateral» | 4b · cita bajo el test | 80 |
+| Lumbar | lu6 · Dolor Lumbar Discogénico | Pronóstico | 5 · cita del pronóstico | 81 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Test «PA unilateral dolorosa o con menos movilidad» | 4b · cita bajo el test | 82 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Test «Sin signos radiculares y sin alivio con repetidos» | 4b · cita bajo el test | 83 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 84 |
+| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «No centraliza con movimientos repetidos» | 4b · cita bajo el test | 85 |
+| Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pronóstico | 5 · cita del pronóstico | 86 |
+| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 87 |
+| Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 87 |
+| Lumbar | — | `sistemas.5.banderasRojas.0` | 2 · mención en el texto | 133 |
+| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 158 |
+| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 159 |
+| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 160 |
+| Rodilla | ro1 · Artrosis de Rodilla | Test «Rango disminuido, hinchazón persistente, debilidad de cuádriceps» | 4b · cita bajo el test | 88 |
+| Rodilla | ro1 · Artrosis de Rodilla | Pronóstico | 5 · cita del pronóstico | 89 |
+| Rodilla | ro2 · Lesión Meniscal | Test «Test de Thessaly» | 4b · cita bajo el test | 90 |
+| Rodilla | ro2 · Lesión Meniscal | Pronóstico | 5 · cita del pronóstico | 91 |
+| Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Palpación alrededor de la FR, sobre todo de las facetas» | 4b · cita bajo el test | 92 |
+| Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Pronóstico | 5 · cita del pronóstico | 93 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Pronóstico | 5 · cita del pronóstico | 94 |
+| Rodilla | ro5 · Tendinopatía Rotuliana | Pronóstico | 5 · cita del pronóstico | 95 |
+| Rodilla | ro6 · Síndrome de la Banda Iliotibial | Test «Palpación a lo largo de la cintilla» | 4b · cita bajo el test | 96 |
+| Rodilla | ro6 · Síndrome de la Banda Iliotibial | Test «Step-down lateral» | 4b · cita bajo el test | 97 |
+| Rodilla | ro6 · Síndrome de la Banda Iliotibial | Test «Test de Thomas» | 4b · cita bajo el test | 96 |
+| Rodilla | ro6 · Síndrome de la Banda Iliotibial | Pronóstico | 5 · cita del pronóstico | 98 |
+| Rodilla | ro7 · Bursitis de la Pata de Ganso | Test «Flexión de rodilla en carga y palpación de la pata de ganso» | 4b · cita bajo el test | 99 |
+| Rodilla | ro8 · Lesión del Ligamento Colateral Medial (LCM) | Pronóstico | 5 · cita del pronóstico | 100 |
+| Rodilla | ro9 · Lesión del Ligamento Cruzado Posterior (LCP) | Test «Cajón posterior a 90° de flexión» | 4b · cita bajo el test | 101 |
+| Rodilla | ro9 · Lesión del Ligamento Cruzado Posterior (LCP) | Test «Signo del sag posterior» | 4b · cita bajo el test | 101 |
+| Rodilla | ro9 · Lesión del Ligamento Cruzado Posterior (LCP) | Test «Test activo del cuádriceps» | 4b · cita bajo el test | 101 |
+| Rodilla | ro9 · Lesión del Ligamento Cruzado Posterior (LCP) | Pronóstico | 5 · cita del pronóstico | 102 |
+| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Hinchazón y equimosis laterales; palpación dolorosa del ligamento» | 4b · cita bajo el test | 103 |
+| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Varo forzado a unos 30° de flexión» | 4b · cita bajo el test | 103 |
+| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Marcha con empuje en varo» | 4b · cita bajo el test | 104 |
+| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Test del dial (esquina posterolateral)» | 4b · cita bajo el test | 105 |
+| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Cajón posterolateral» | 4b · cita bajo el test | 105 |
+| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Test «Test de recurvatum» | 4b · cita bajo el test | 105 |
+| Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Pronóstico | 5 · cita del pronóstico | 102 |
+| Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Regla de Ottawa antes de nada» | 4b · cita bajo el test | 106 |
+| Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Rótula: dolor localizado, escalón, dolor con extensión resistida» | 4b · cita bajo el test | 107 |
+| Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Meseta: dolor exquisito sobre el foco y función neurovascular» | 4b · cita bajo el test | 108 |
+| Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Pronóstico | 5 · cita del pronóstico | 109 |
+| Rodilla | ro12 · Inestabilidad Rotuliana | Test «Tests de estrés tibiofemoral normales» | 4b · cita bajo el test | 110 |
+| Rodilla | ro12 · Inestabilidad Rotuliana | Test «Movilidad rotuliana excesiva» | 4b · cita bajo el test | 111 |
+| Rodilla | ro12 · Inestabilidad Rotuliana | Test «Test de aprensión» | 4b · cita bajo el test | 112 |
+| Rodilla | ro12 · Inestabilidad Rotuliana | Pronóstico | 5 · cita del pronóstico | 111 |
+| Rodilla | ro13 · Síndrome de la Grasa de Hoffa | Test «Observación: genu recurvatum» | 4b · cita bajo el test | 113 |
+| Rodilla | ro13 · Síndrome de la Grasa de Hoffa | Test «Test de Hoffa» | 4b · cita bajo el test | 113 |
+| Rodilla | ro13 · Síndrome de la Grasa de Hoffa | Pronóstico | 5 · cita del pronóstico | 114 |
+| Rodilla | ro14 · Bursitis Pre e Infrarrotuliana | Test «Fiebre >37,7 °C (séptica → urgencia)» | 4b · cita bajo el test | 115 |
+| Rodilla | ro14 · Bursitis Pre e Infrarrotuliana | Test «Hinchazón en la propia bursa y arrodillarse intolerable» | 4b · cita bajo el test | 116 |
+| Rodilla | ro14 · Bursitis Pre e Infrarrotuliana | Pronóstico | 5 · cita del pronóstico | 117 |
+| Rodilla | ro15 · Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson) | Test «Cadera primero» | 4b · cita bajo el test | 118 |
+| Rodilla | ro15 · Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson) | Test «Palpación de la tuberosidad tibial o del polo inferior de la rótula» | 4b · cita bajo el test | 119 |
+| Rodilla | ro15 · Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson) | Test «Sentadillas, escaleras, step-down, saltos y extensión resistida» | 4b · cita bajo el test | 119 |
+| Rodilla | ro15 · Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson) | Pronóstico | 5 · cita del pronóstico | 119 |
+| Rodilla | ro16 · Lesión Osteocondral | Test «Palpación de la zona afectada» | 4b · cita bajo el test | 120 |
+| Rodilla | ro16 · Lesión Osteocondral | Test «Marcha antiálgica» | 4b · cita bajo el test | 120 |
+| Rodilla | ro16 · Lesión Osteocondral | Test «Signos de inestabilidad: derrame y bloqueo» | 4b · cita bajo el test | 121 |
+| Rodilla | ro18 · Disfunción de la Articulación Tibioperonea Proximal | Test «Presión directa sobre la cabeza del peroné y movilidad accesoria» | 4b · cita bajo el test | 122 |
+| Rodilla | ro18 · Disfunción de la Articulación Tibioperonea Proximal | Test «Movimiento de rodilla con isquiotibiales en tensión y movimiento de tobillo» | 4b · cita bajo el test | 122 |
+| Rodilla | ro18 · Disfunción de la Articulación Tibioperonea Proximal | Test «Cabeza del peroné prominente, hipermovilidad o luxación» | 4b · cita bajo el test | 123 |
+| Rodilla | ro18 · Disfunción de la Articulación Tibioperonea Proximal | Pronóstico | 5 · cita del pronóstico | 124 |
+| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Marcha en steppage» | 4b · cita bajo el test | 125 |
+| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Sensibilidad en la cara lateral inferior de la pierna y el dorso del pie» | 4b · cita bajo el test | 125 |
+| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Fuerza de eversión y de flexión dorsal de tobillo y dedos» | 4b · cita bajo el test | 125 |
+| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Tinel cerca de la cabeza del peroné» | 4b · cita bajo el test | 125 |
+| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Test «Prueba neurodinámica con sesgo peroneo» | 4b · cita bajo el test | 126 |
+| Rodilla | ro19 · Neuropatía del Nervio Peroneo Común | Pronóstico | 5 · cita del pronóstico | 125 |
+| Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signos de patología meniscal o condral» | 4b · cita bajo el test | 127 |
+| Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signo de Foucher» | 4b · cita bajo el test | 127 |
+| Rodilla | ro20 · Quiste Poplíteo (Baker) | Pronóstico | 5 · cita del pronóstico | 128 |
+| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 161 |
+| Rodilla | — | Pregunta `r_v3` · Vascular | 2 · razonamiento del cribado | 162 |
+| Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 163 |
+| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 164 |
+| Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 165 |
+| Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 166 |
+| Rodilla | — | Pregunta `ro_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 167 |
+| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 168 |
+| Rodilla | — | Pregunta `ro_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 169 |
+| Rodilla | — | Pregunta `ro_t6` · Traumático / Mecánico | 2 · razonamiento del cribado | 170 |
+| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 171 |
 
 ### Lotfollahzadeh 2024
 
@@ -5205,13 +5239,11 @@ Las fuentes que faltan para las dosis están en `docs/dosis-pendientes-fuentes.m
 Tests sin `fuente` (los miembros de un cluster con `fuente` no cuentan: la cita del cluster los cubre).
 «Puntúa» = sí: sus cifras mueven la puntuación de la fase 4b sin que la app diga de dónde salen.
 
-### Cadera (36)
+### Cadera (13)
 
 | Hipótesis | Test | Cifras | Puntúa |
 |---|---|---|---|
-| ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test FABER (Flexión-Abducción-Rotación Externa) | — | no |
 | ca5 · Debilidad de Abductores de Cadera | Test de Trendelenburg | — | no |
-| ca5 · Debilidad de Abductores de Cadera | Dinamometría manual (HHD) de abductores | — | no |
 | ca5 · Debilidad de Abductores de Cadera | Test de paso lateral + marcha en tándem combinados | — | no |
 | ca6 · Disfunción de Control Neuromuscular de Cadera | Test de Sentadilla Monopodal (Single-Leg Squat) | — | no |
 | ca6 · Disfunción de Control Neuromuscular de Cadera | Test de Step-Down | — | no |
@@ -5221,30 +5253,9 @@ Tests sin `fuente` (los miembros de un cluster con `fuente` no cuentan: la cita 
 | ca8 · Pinzamiento Isquiofemoral | Test de marcha con zancada larga (Long-Stride Walking Test) | — | no |
 | ca9 · Tendinopatía Proximal de Isquiotibiales | Sensibilidad a la palpación sobre tuberosidad isquiática | — | no |
 | ca9 · Tendinopatía Proximal de Isquiotibiales | Dolor con test de fuerza de isquiotibiales | — | no |
-| ca10 · Dolor Articular Sacroilíaco | Test de Compresión Pélvica | — | no |
 | ca10 · Dolor Articular Sacroilíaco | Test de Patrick (FABER) | — | no |
 | ca10 · Dolor Articular Sacroilíaco | Sin sensibilidad por encima de L5 | — | no |
-| ca11 · Lesión Aguda de Ingle | Resistencia del grupo sospechoso | — | no |
-| ca11 · Lesión Aguda de Ingle | Estiramiento del grupo sospechoso | — | no |
-| ca12 · Ligamento Redondo e Inestabilidad | Movilidad aumentada | — | no |
-| ca12 · Ligamento Redondo e Inestabilidad | Episodio de fallo | — | no |
-| ca13 · Condropatía de Cadera | Dolor en reposo y nocturno con síntomas mecánicos | — | no |
-| ca13 · Condropatía de Cadera | Rigidez | — | no |
-| ca13 · Condropatía de Cadera | IMC >25 | — | no |
-| ca14 · Neuropatías de Cadera e Ingle | Neurodinámico del femorocutáneo | — | no |
-| ca14 · Neuropatías de Cadera e Ingle | Obturador: neurodinámico, sensibilidad del muslo medial y fuerza de aductores | — | no |
-| ca14 · Neuropatías de Cadera e Ingle | Arch and twist de pie | — | no |
 | ca15 · Sensibilización Central | Dolor en las AVD | — | no |
-| ca15 · Sensibilización Central | Fatiga y mal sueño | — | no |
-| ca15 · Sensibilización Central | Dificultades de memoria | — | no |
-| ca15 · Sensibilización Central | Más comorbilidad; intolerancia al estrés, ansiedad o depresión | — | no |
-| ca16 · Dolor Inguinal Relacionado con el Aductor | Estiramiento pasivo de aductores | — | no |
-| ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Flexión resistida con cadera y rodilla a 90° | — | no |
-| ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Flexión resistida o extensión pasiva en Thomas modificado | — | no |
-| ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Sit-up recto u oblicuo resistido | — | no |
-| ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Valsalva, tos o estornudo | — | no |
-| ca18 · Dolor Inguinal Relacionado con el Canal Inguinal | Flexión resistida en Thomas modificado | — | no |
-| ca19 · Dolor Inguinal Relacionado con el Pubis | Resistencia abdominal y squeeze | — | no |
 
 ### Lumbar (2)
 
