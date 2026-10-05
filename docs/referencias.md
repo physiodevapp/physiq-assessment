@@ -52,6 +52,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Solomon 2001](#solomon-2001) | puntuación 4b · texto | 3 | **sin revisar** |
 | [Bachmann 2003](#bachmann-2003) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | **sin revisar** |
+| [Bachmann 2004](#bachmann-2004) | puntuación 4b · razonamiento fase 2 | 2 | **sin revisar** |
 | [Chronopoulos 2004](#chronopoulos-2004) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Laslett 2005](#laslett-2005) | puntuación 4b | 2 | **sin revisar** |
@@ -118,7 +119,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kim 2001](#kim-2001) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Zaslav 2001](#zaslav-2001) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Flynn 2002](#flynn-2002) | test 4b sin puntuar | 1 | **sin revisar** |
-| [Bachmann 2004](#bachmann-2004) | test 4b sin puntuar · razonamiento fase 2 | 2 | **sin revisar** |
 | [Kim 2004](#kim-2004) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Walton 2004](#walton-2004) | test 4b sin puntuar · texto | 5 | **sin revisar** |
 | [Laslett 2006](#laslett-2006) | test 4b sin puntuar | 1 | **sin revisar** |
@@ -802,7 +802,7 @@ Título: *The accuracy of the Ottawa knee rule to rule out knee fractures: a sys
 Publicación: Ann Intern Med 140(2):121–4  
 DOI: 10.7326/0003-4819-140-5-200403020-00013  
 Última revisión: **sin revisar**  
-Nota: Revisión sistemática (6 estudios, 4249 adultos): S 98,5 %, E 48,6 %, LR− 0,05, leídas en el resumen de PubMed (2026-10); no está en PMC. Sustituye a la S 1,0 que Lluch 2020 (cap. 4.2, p. 197) toma del estudio de derivación (Stiell 1995). Regla de Ottawa en ro11 y razonamiento de ro_t1.
+Nota: Revisión sistemática (6 estudios, 4249 adultos): S 98,5 %, E 48,6 %, LR− 0,05, leídas en el resumen de PubMed (2026-10); no está en PMC. Sustituye a la S 1,0 que Lluch 2020 (cap. 4.2, p. 197) toma del estudio de derivación (Stiell 1995). Regla de Ottawa en ro11 (puntúa con LR− 0,05; la LR+ calculada, 1,9, queda como hallazgo; decisión del usuario, 2026-10) y razonamiento de ro_t1.
 
 Citada como:
 
