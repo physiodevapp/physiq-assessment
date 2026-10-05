@@ -97,29 +97,39 @@ Leyenda:
 | tp35 | Gota | C | — | Derivación médica. No es competencia de fisioterapia tratar la crisis |
 | tp36 | Apofisitis pediátricas (Sever, Iselin, Köhler, Freiberg) | B (por analogía) | Rathleff 2020 (Osgood) | Solo por analogía: no hay ensayo para Sever. Si se usa, decirlo. Köhler y Freiberg van a derivación |
 
-## Cadera (`ca11`–`ca19`)
-**ca16 (aductor)**: ✅ **Hecho** con Hölmich 1999, Lancet 353:439–443 (PDF del usuario; ensayo aleatorizado, n = 68): programa activo de 8–12 semanas en dos módulos, con las series del panel 1 del artículo.
+## Cadera (`ca1`–`ca19`)
+Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y nice.org.uk; JOSPT y BMJ/BJSM bloqueados por el proxy). `ca1`–`ca10` tenían dosis con cifras sin fuente desde el primer commit (como `lu1`–`lu4` y `ce1`–`ce14`): se reescriben las que tienen fuente y se vacían las que no (decisión del usuario).
 
-El resto **nunca se ha buscado** (2026-10): no hay tipo asignado. Pendiente de una sesión propia (Fase E de `MIGRATION_PLAN.md`).
-
-| Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
+| Id | Hipótesis | Tipo | Fuente | Estado |
 |---|---|---|---|---|
-| ca11 | Lesión aguda de ingle | sin buscar | — | — |
-| ca12 | Ligamento redondo e inestabilidad | sin buscar | — | — |
-| ca13 | Condropatía de cadera | sin buscar | — | — |
-| ca14 | Neuropatías de cadera e ingle | sin buscar | — | — |
-| ca15 | Sensibilización central | sin buscar | — | — |
-| ca17 | Dolor inguinal relacionado con el psoas ilíaco | sin buscar | — | — |
-| ca18 | Dolor inguinal relacionado con el canal inguinal | sin buscar | — | — |
-| ca19 | Dolor inguinal relacionado con el pubis | sin buscar | — | — |
+| ca1 | Artrosis | A | Cibulka 2017 (guía APTA) + NICE NG226 | ✅ Grados APTA y frecuencia (ejercicio 1–5/semana, 6–12 semanas); donde chocan (terapia manual, ultrasonido) prevalece NICE, más reciente |
+| ca2 | SIFA | B | Enseki 2023 (guía APTA) + consenso de Zúrich + Griffin 2018 | ✅ Multimodal (B) con sus grados, al menos 3 meses; sin series |
+| ca3 | Labrum | B | Enseki 2023 + consenso de Zúrich + Kemp 2020 | ✅ Multimodal (B, recomendado en particular para SIFA y labrum), al menos 3 meses |
+| ca4 | Tendinopatía glútea | A | Mellor 2018 (LEAP) + Mellor 2016 (protocolo) | ✅ Pauta completa de 8 semanas |
+| ca5 | Debilidad de abductores | D | — | Vaciada (era un déficit, no un diagnóstico; cifras sin fuente) |
+| ca6 | Control neuromuscular | D | — | Vaciada (ídem) |
+| ca7 | Síndrome glúteo profundo | D | — | Vaciada: solo casos clínicos |
+| ca8 | Pinzamiento isquiofemoral | D | — | Vaciada: solo casos clínicos (Ma 2025, comentario a un caso) |
+| ca9 | Tendinopatía proximal de isquiotibiales | B | Rich 2025 | ✅ Programa progresivo con reintroducción de la compresión; sin series en el artículo |
+| ca10 | Sacroilíaca | D | — | Vaciada: nada de acceso abierto |
+| ca11 | Lesión aguda de ingle | A (solo aductor) | Serner 2020 | ✅ Por criterios; series en un apéndice no consultado; flexores sin pauta |
+| ca12 | Ligamento redondo e inestabilidad | B (extrapolada) | Enseki 2023 | ✅ La precaución capsuloligamentosa de la guía como dato principal; multimodal por extrapolación; sin evidencia específica |
+| ca13 | Condropatía de cadera | D | — | Vacía a propósito: Enseki 2023 la incluye en su alcance pero no dice nada propio (decisión del usuario) |
+| ca14 | Neuropatías de cadera e ingle | D | — | Sin fuente de fisioterapia (meralgia: revisiones de tratamiento médico) |
+| ca15 | Sensibilización central | D | — | Sin fuente |
+| ca16 | Aductor (largo plazo) | A | Hölmich 1999 | ✅ Hecho antes (PDF del usuario) |
+| ca17 | Psoas ilíaco | B | Vandeputte 2026 (revisión sistemática) | ✅ Contenido de las series de casos, sin volumen |
+| ca18 | Canal inguinal | D | — | Sin fuente (la Cochrane de 2025 sobre dolor inguinal es solo un protocolo) |
+| ca19 | Pubis | D | — | Sin fuente |
+
+Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2017, guía APTA de dolor de cadera no artrósico de Enseki 2023 y consenso de Zúrich del IHiPRN), `ca1`–`ca3` ganan grados de recomendación.
 
 ## Resumen
-- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`.
+- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12 y ca17.
 - **Con fuente de pauta, a falta del PDF de pago (A):** ninguna.
 - **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), h11, ro11, tp3–tp6, tp17, tp30 y tp35 llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
 - **Recomendación de guía sin pauta numérica (B), pendientes:** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ro12` (ESSKA 2024), `tp2`, `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
-- **Sin buscar:** cadera `ca11`–`ca15`, `ca17`–`ca19`.
-- **Sin evidencia de dosis específica (D):** `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
+- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `ca10`, `ca13`–`ca15`, `ca18`, `ca19`, `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
 ## Para cerrar esto
 Hay dos caminos: que el usuario aporte los PDF (como se hizo en cadera y rodilla), o permitir en la red del entorno `pubmed.ncbi.nlm.nih.gov`, `pmc.ncbi.nlm.nih.gov`, `www.jospt.org` y `www.orthopt.org`. Luego, una región por sesión, siguiendo la Fase D.
