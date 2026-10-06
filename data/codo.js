@@ -20,7 +20,7 @@ export const screening = {
       ],
       banderasAmarillas: [],
       preguntas: [
-        { id: 'co_t1', text: '¿Se ha caído o se ha dado un golpe en el codo en los últimos días y no consigue estirarlo del todo? (Prueba de extensión del codo: brazos al frente con las palmas hacia arriba, comparar con el otro lado.)', alerta: true, s1: true,
+        { id: 'co_t1', urgencia: 'Sospecha de fractura tras un traumatismo (el codo no llega a estirarse del todo: casi un 50 % de fracturas): derivación hoy para radiografía, sin forzar la extensión.', text: '¿Se ha caído o se ha dado un golpe en el codo en los últimos días y no consigue estirarlo del todo? (Prueba de extensión del codo: brazos al frente con las palmas hacia arriba, comparar con el otro lado.)', alerta: true, s1: true,
           razonamiento: {
             porque: 'Tras una caída o un golpe, una fractura del codo (en adultos, sobre todo de la cabeza del radio) llena de líquido la articulación, y un codo con derrame agudo se mantiene en flexión: no llega a estirarse del todo. La prueba de extensión del codo aprovecha ese signo para decidir quién necesita una radiografía.',
             peso: 'Pesa: en el estudio de validación de Appelboam (1740 pacientes de urgencias), quien no conseguía estirar del todo el codo tenía casi un 50 % de probabilidad de fractura, y debe derivarse para radiografía; Lluch indica que las fracturas agudas requieren atención médica. Si lo estira del todo, la fractura es muy improbable en el adulto (LR− 0,03) y algo menos segura en el niño (LR− 0,11); aun así, una fractura del olécranon puede permitir la extensión.',
@@ -43,7 +43,7 @@ export const screening = {
                 'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, p. 704.'
             ]
           } },
-        { id: 'co_t2', text: '¿Tras una caída o un golpe, el codo se ve deformado, o la mano está dormida, fría o pálida?', alerta: true, s1: true,
+        { id: 'co_t2', urgencia: 'Sospecha de luxación o compromiso neurovascular tras un traumatismo: explorar sensibilidad, color y temperatura de la mano, no movilizar el codo y derivar hoy.', text: '¿Tras una caída o un golpe, el codo se ve deformado, o la mano está dormida, fría o pálida?', alerta: true, s1: true,
           razonamiento: {
             porque: 'El codo es la segunda articulación que más se luxa, después del hombro, casi siempre por una caída sobre la mano extendida. El hueso desplazado deforma el codo y puede atrapar los nervios y los vasos que lo cruzan: de ahí la mano dormida, fría o pálida.',
             peso: 'Alto: Lluch indica que las fracturas y luxaciones agudas requieren atención médica y que la exploración neurovascular es crítica justo después de una luxación. Goodman pide atención médica inmediata ante un traumatismo con dolor desproporcionado (fractura, síndrome compartimental). Derivación inmediata.',
