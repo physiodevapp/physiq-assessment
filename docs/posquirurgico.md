@@ -1,6 +1,21 @@
 # Paciente posquirúrgico — diseño
 
-Estado: **propuesta, pendiente de las decisiones clínicas de abajo**. No hay código todavía. Común a las 7 regiones; sin pautas por tipo de cirugía.
+Estado: **decisiones cerradas (octubre 2026)**. Implementado todo menos el cribado posquirúrgico de la fase 2 (punto 2), que espera a leer las fuentes y a la revisión clínica. Común a las 7 regiones; sin pautas por tipo de cirugía.
+
+## Decisiones tomadas (octubre 2026)
+Aceptadas las ocho recomendaciones:
+1. **Tarjeta «Cirugía»**: intervención en texto libre; fecha exacta, o semanas aproximadas si el paciente no la recuerda; protocolo Escrito / Verbal / No hay más restricciones en texto libre; complicaciones en lista cerrada (ninguna, infección, TVP/TEP, lesión nerviosa, SDRC, reintervención) más «otra» en texto. Sin campo de lado ni de carga permitida (la carga va en restricciones).
+2. **Cribado posquirúrgico**: herida (con urgencia) y TVP (con urgencia) en las 7 regiones; la TVP pregunta siempre por las piernas, y en hombro y codo añade el brazo operado. TEP con urgencia (112). Síndrome compartimental en codo, rodilla y tobillo y pie. SDRC sin urgencia, en las 5 regiones de extremidad. Se añade «déficit neurológico nuevo desde la operación», derivación al cirujano sin urgencia. Fuentes: los capítulos de Goodman que aporte el usuario. **Pendiente**: redacción final y razonamientos tras leer las fuentes, y revisión clínica antes de `main`.
+3. **Ventanas temporales**: las preguntas se muestran siempre; la ventana va en la ayuda.
+4. **Preguntas de traumatismo** (`h_t1`, `co_t1`, `co_t2`, `ro_t2`–`ro_t4`, `tp_t1`, `cv_ar3`): nota posquirúrgica, sin tocar su lógica.
+5. **«Ya diagnosticada y tratada»**: disponible siempre, no solo con Post-quirúrgico; pliega y anula los tests de esa hipótesis; vale para la `derivacion` de `co_step1` y no para `lu_step2`. Regla añadida: marcarla nunca silencia las urgencias de la fase 2.
+6. **Pautas de las guías** en el posquirúrgico: se muestran, con la nota «solo si es compatible con el protocolo del cirujano».
+7. **Sin protocolo**: aviso en la fase 5, línea «pendiente de confirmar con el cirujano» en los informes y pendiente en modo breve.
+8. **Payload**: se añaden `cq` (cirugía) y `dt` (en `h[]`, hipótesis diagnosticada y tratada).
+
+---
+
+Diseño original:
 
 ## Punto de partida (medido en el código, octubre 2026)
 

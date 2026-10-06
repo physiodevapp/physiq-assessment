@@ -192,6 +192,8 @@ const BASE_STATE = {
   hypothesisScores: { h2: { totalLR: 3.7, label: '🟠 Peso moderado (LR× 3.7)', colorClass: 'hyp-orange' } },
   testResults:      { h2: { 0: 'pos', 1: 'neg' } },
   planNotes:        { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' },
+  cirugia:          { intervencion: '', fecha: '', semanasAprox: null, protocolo: '', restricciones: '', complicaciones: [], complicacionOtra: '' },
+  derivacionResuelta: {},
 };
 
 function withState(patch, fn) {
@@ -1852,6 +1854,167 @@ console.log('\nexportar / importar valoración');
   test('deploy: lib/valoracion-json.js se copia al hub', () => {
     const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
     assert.ok(wf.includes('lib/valoracion-json.js'));
+  });
+}
+
+// ── Paciente posquirúrgico (docs/posquirurgico.md) ───────────────────────────
+console.log('\npaciente posquirúrgico');
+{
+  const PQ = await import('../lib/posquirurgico.js');
+  const { esTratada, marcarTratada } = await import('../phase4b.js');
+  const { getDerivacionesArbol } = await import('../phase4.js');
+  const HOY = new Date(2026, 9, 6);   // 6 oct 2026
+  const cir = (extra = {}) => ({ ...PQ.cirugiaVacia(), ...extra });
+  const POSQ = (extra = {}) => ({ mecanismo: 'Post-quirúrgico', cirugia: cir(extra), derivacionResuelta: {} });
+
+  test('semanas: desde la fecha (al vuelo), o las aproximadas sin fecha; nunca negativas', () => {
+    assert.equal(PQ.semanasCirugia(cir({ fecha: '2026-08-25' }), HOY), 6);
+    assert.equal(PQ.semanasCirugia(cir({ fecha: '2026-10-06' }), HOY), 0);
+    assert.equal(PQ.semanasCirugia(cir({ fecha: '2026-12-01' }), HOY), 0);
+    assert.equal(PQ.semanasCirugia(cir({ semanasAprox: 4 }), HOY), 4);
+    assert.equal(PQ.semanasCirugia(cir({ fecha: '2026-09-29', semanasAprox: 20 }), HOY), 1, 'la fecha manda');
+    assert.equal(PQ.semanasCirugia(cir(), HOY), null);
+    assert.ok(!('semanas' in state.cirugia), 'las semanas calculadas no se guardan');
+  });
+
+  test('cq: solo con mecanismo Post-quirúrgico, con complicaciones y protocolo legibles', () => {
+    const c = cir({ intervencion: 'PTR derecha', fecha: '2026-08-25', protocolo: 'Escrito', restricciones: 'Carga parcial',
+      complicaciones: ['tvp', 'nervio'], complicacionOtra: 'Dehiscencia leve' });
+    assert.equal(PQ.cirugiaPayload('Traumático', c, HOY), null);
+    assert.deepEqual(PQ.cirugiaPayload('Post-quirúrgico', c, HOY),
+      { iv: 'PTR derecha', fe: '25/08/2026', se: 6, pr: 'Escrito', re: 'Carga parcial', co: ['TVP / TEP', 'Lesión nerviosa', 'Dehiscencia leve'] });
+    withState(POSQ({ intervencion: 'PTR' }), () => assert.equal(buildPhysiQPayload().cq.iv, 'PTR'));
+    withState({ mecanismo: 'Insidioso', cirugia: cir({ intervencion: 'PTR' }), derivacionResuelta: {} }, () => {
+      assert.ok(!('cq' in buildPhysiQPayload()), 'fuera del posquirúrgico, la tarjeta no viaja');
+      assert.ok(!buildContextSummaryText().includes('CIRUGÍA'));
+      assert.ok(!buildInformeFisioterapiaText().includes('ANTECEDENTE QUIRÚRGICO'));
+    });
+  });
+
+  test('📋 Notas y 📄 Informe: cirugía, protocolo y plan supeditado', () => {
+    withState(POSQ({ intervencion: 'Osteosíntesis de maléolo', protocolo: 'Verbal', restricciones: 'Sin carga 6 semanas' }), () => {
+      const n = buildContextSummaryText(), i = buildInformeFisioterapiaText();
+      assert.match(n, /🏥 CIRUGÍA: Osteosíntesis de maléolo · Protocolo: verbal · Restricciones: Sin carga 6 semanas/);
+      assert.ok(!n.includes(PQ.TEXTO_SIN_PROTOCOLO));
+      assert.match(i, /ANTECEDENTE QUIRÚRGICO\n  · Intervención: Osteosíntesis de maléolo/);
+      assert.match(i, /PLAN DE TRATAMIENTO Y RECOMENDACIONES\n  · El tratamiento sigue el protocolo y las restricciones indicadas por el cirujano: Sin carga 6 semanas/);
+    });
+    for (const protocolo of ['', 'No hay']) {
+      withState(POSQ({ intervencion: 'LCA', protocolo }), () => {
+        assert.ok(buildContextSummaryText().includes(PQ.TEXTO_SIN_PROTOCOLO), `Notas, protocolo «${protocolo}»`);
+        assert.match(buildInformeFisioterapiaText(), new RegExp(`RECOMENDACIONES\\n  · ${PQ.TEXTO_SIN_PROTOCOLO}\\.`));
+      });
+    }
+  });
+
+  test('modo breve: sin protocolo del cirujano es un pendiente (y lleva a la tarjeta)', () => {
+    withState({ ...POSQ({ protocolo: 'No hay' }), modo: 'breve' }, () => {
+      const p = getPendientesBreve().find(x => x.ancla === 'cardCirugia');
+      assert.ok(p && p.fase === 1 && p.texto.includes(PQ.TEXTO_SIN_PROTOCOLO));
+    });
+    withState({ ...POSQ({ protocolo: 'Escrito' }), modo: 'breve' }, () => {
+      assert.ok(!getPendientesBreve().some(x => x.ancla === 'cardCirugia'));
+    });
+    withState({ ...POSQ({ protocolo: 'No hay' }), modo: 'completo' }, () => assert.deepEqual(getPendientesBreve(), []));
+  });
+
+  test('«ya diagnosticada y tratada»: h11 sin derivación ni puntuación en payload, Notas, Informe y pendientes', () => {
+    const patch = { ...POSQ({ intervencion: 'Osteosíntesis de húmero proximal', protocolo: 'Escrito' }),
+      activeHypotheses: ['h11'], testResults: { h11: { 0: 'pos' } }, hypothesisScores: {}, modo: 'breve' };
+    withState(patch, () => {
+      assert.ok(!esTratada('h11'));
+      marcarTratada('h11', true);
+      assert.ok(esTratada('h11'));
+      const p = buildPhysiQPayload();
+      assert.equal(p.h[0].dt, true);
+      assert.equal(p.h[0].sc, PQ.ETIQUETA_TRATADA);
+      assert.ok(buildInformeFisioterapiaText().includes(`· ${HYPOTHESES.h11.name} (intervenida quirúrgicamente)`));
+      assert.ok(!getPendientesBreve().some(x => x.fase === '4b'), 'sus tests no aplican: no son un pendiente');
+      marcarTratada('h11', false);
+      assert.ok(!esTratada('h11'));
+      assert.ok(!('dt' in buildPhysiQPayload().h[0]));
+      assert.notEqual(state.hypothesisScores.h11.label, PQ.ETIQUETA_TRATADA, 'al desmarcar vuelve la puntuación de sus tests');
+    });
+    withState({ ...patch, mecanismo: 'Traumático' }, () => {
+      marcarTratada('h11', true);
+      assert.ok(buildInformeFisioterapiaText().includes(`· ${HYPOTHESES.h11.name} (diagnosticada y tratada)`), 'disponible sin cirugía');
+    });
+  });
+
+  test('«ya diagnosticada y tratada»: solo hipótesis «Derivar»', () => {
+    withState({ derivacionResuelta: {}, activeHypotheses: ['h2'], hypothesisScores: {} }, () => {
+      marcarTratada('h2', true);
+      assert.ok(!esTratada('h2'));
+      assert.deepEqual(state.derivacionResuelta, {});
+    });
+  });
+
+  test('árbol: solo codo co_step1 FRACTURA es resoluble, y marcada sale de dv', () => {
+    const resolubles = [];
+    for (const [r, t] of Object.entries(CIF_TREES)) for (const st of t.steps) for (const o of st.options) {
+      if (o.resoluble) { resolubles.push(`${r}/${st.id}/${o.value}`); assert.ok(o.derivacion, 'resoluble sin derivacion'); }
+    }
+    assert.deepEqual(resolubles, ['codo/co_step1/fractura']);
+    withState({ region: 'codo', treeAnswers: { co_step1: 'fractura' }, derivacionResuelta: {} }, () => {
+      assert.equal(getDerivacionesArbol().length, 1);
+      state.derivacionResuelta.co_step1 = true;
+      assert.deepEqual(getDerivacionesArbol(), []);
+      assert.deepEqual(buildPhysiQPayload().dv, []);
+      assert.ok(!buildInformeFisioterapiaText().includes('Se recomienda valoración médica'));
+    });
+    withState({ region: 'lumbar', treeAnswers: { lu_step2: 'vascular' }, derivacionResuelta: { lu_step2: true } }, () => {
+      assert.equal(getDerivacionesArbol().length, 1, 'la claudicación vascular no se resuelve');
+    });
+  });
+
+  test('preguntas de traumatismo: nota posquirúrgica solo en las decididas, visible por CSS', () => {
+    const conNota = [];
+    for (const [r, d] of Object.entries(SYSTEMIC_SCREENING)) for (const sis of d.sistemas) for (const q of sis.preguntas) {
+      if (q.notaPosquirurgica) {
+        conNota.push(q.id);
+        const html = buildSistemaHTML(sis);
+        assert.ok(html.includes(`<div class="nota-posq solo-posq">🏥 ${PQ.TEXTO_NOTA_TRAUMA}</div>`), `${r}/${q.id}`);
+      }
+    }
+    assert.deepEqual(conNota.sort(), ['co_t1', 'co_t2', 'cv_ar3', 'h_t1', 'ro_t2', 'ro_t3', 'ro_t4', 'tp_t1']);
+    const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
+    assert.match(css, /\.solo-posq \{ display: none; \}\nbody\.posquirurgico \.solo-posq \{ display: block; \}/);
+  });
+
+  test('informe con IA: bloque «Cirugía», regla del protocolo y hipótesis tratada sin derivar', () => {
+    const d = { p: 'X', r: 'hombro', d: '01/01/2026', br: [], sq: [], pn: {},
+      h: [{ name: 'Luxación Bloqueada o Fractura (→ Rx)', dt: true }],
+      cq: { iv: 'Osteosíntesis', fe: '01/12/2025', se: 4, pr: '', re: '', co: [] } };
+    const c = IN.contextoValoracion(d, r => r, null);
+    assert.ok(c.includes('Cirugía (paciente posquirúrgico):\n  · Intervención: Osteosíntesis\n  · Fecha: 01/12/2025 (4 semanas)'));
+    assert.ok(c.includes('restricciones pendientes de confirmar con el cirujano'));
+    assert.ok(c.includes('Luxación Bloqueada o Fractura (ya diagnosticada y tratada por el médico: no se deriva)'));
+    const prompt = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.ok(prompt.includes('Paciente operado (si los datos incluyen «Cirugía»)'));
+    assert.ok(prompt.includes('no está marcada como ya diagnosticada y tratada se deriva'));
+    const t = IN.bloquesAmpliados({ pautas: [{ hipotesis: 'Fractura', derivar: false, tratada: true, operada: true, pauta: '', fuente: '', prom: '' }] }).join('\n');
+    assert.ok(t.includes('Ya diagnosticada e intervenida: no se deriva') && !t.includes('Derivar: sin tratamiento'));
+    withState({ ...POSQ({ intervencion: 'ORIF' }), region: 'hombro', activeHypotheses: ['h11'], testResults: { h11: { 0: 'pos' } },
+      hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: {} }, () => {
+      const a = IA.construirAmpliado();
+      assert.deepEqual(a.tests, [], 'los tests de una tratada no aplican');
+      assert.deepEqual(a.pautas.map(x => [x.derivar, x.tratada, x.operada]), [[false, true, true]]);
+    });
+  });
+
+  test('huella del informe con IA: las semanas desde la cirugía no la cambian; la intervención sí', () => {
+    const base = { p: 'X', d: '01/01/2026', cq: { iv: 'PTR', fe: '', se: 4, pr: 'Escrito', re: '', co: [] } };
+    assert.equal(IN.huellaPayload(base), IN.huellaPayload({ ...base, d: '15/01/2026', cq: { ...base.cq, se: 6 } }));
+    assert.notEqual(IN.huellaPayload(base), IN.huellaPayload({ ...base, cq: { ...base.cq, iv: 'PTC' } }));
+  });
+
+  test('integración: window, tarjeta en index.html y deploy', () => {
+    for (const f of ['updateCirugia', 'selectCirProtocolo', 'toggleCirComplicacion', 'toggleDiagnosticoTratado', 'toggleDerivacionArbolResuelta'])
+      assert.equal(typeof window[f], 'function', f);
+    const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+    assert.match(html, /<div class="card solo-posq" id="cardCirugia">/);
+    const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
+    assert.ok(wf.includes('lib/posquirurgico.js'));
   });
 }
 

@@ -46,7 +46,7 @@ try {
 
 const BASE_URL = process.argv[2] || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
-const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'lib/session.js',
+const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'lib/session.js', 'lib/posquirurgico.js',
   'data/comun.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
@@ -179,6 +179,101 @@ async function walkRegionBreve(page, region) {
     && screening.noUrgVisibles === 0 && screening.urgVisibles === screening.urgTotal && screening.embudoNo === sisIds.length
     && (treeResult.activeHypotheses === 0 || fase5.pendienteTests);
   return { region, ok, treeResult, screening, fase5, naturalezaOculta };
+}
+
+// Paciente posquirúrgico (docs/posquirurgico.md), por clics reales en cada
+// región: con mecanismo Post-quirúrgico aparece la tarjeta «Cirugía» (y se
+// oculta al quitarlo), las notas bajo las preguntas de traumatismo se ven en
+// la fase 2, y la fase 5 abre con el recuadro del protocolo del cirujano.
+async function walkRegionPosq(page, region) {
+  await page.fill('#motivoConsulta', `Dolor de ${region} tras la cirugía`);
+  const oculta = !(await page.isVisible('#cardCirugia'));
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  const visible = await page.isVisible('#cardCirugia');
+  await page.fill('#cirIntervencion', `Cirugía de ${region}`);
+  await page.fill('#cirSemanas', '6');
+  await page.click('#cirProtocolo .option-btn:has-text("Escrito")');
+  await page.fill('#cirRestricciones', 'Sin carga hasta la semana 8');
+  await page.click('#cirComplicaciones .option-btn:has-text("Ninguna")');
+  const semanas = await page.textContent('#cirSemanasTxt');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+
+  await page.click(`[onclick="selectRegion('${region}', this)"]`);
+  await page.waitForTimeout(150);
+  const notas = await page.evaluate(() => {
+    const els = [...document.querySelectorAll('#sistemaPanels .nota-posq')];
+    return { total: els.length, visibles: els.filter(el => getComputedStyle(el).display !== 'none').length };
+  });
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.fill('#signoComparable', 'Flexión');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const treeResult = await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  const fase5 = await page.evaluate(() => {
+    const t = document.getElementById('resultsContent').textContent;
+    return { phase: state.currentPhase, recuadro: t.includes('Paciente posquirúrgico') && t.includes('Sin carga hasta la semana 8'),
+      cq: state.cirugia.protocolo === 'Escrito' && state.cirugia.semanasAprox === 6 };
+  });
+  const ok = oculta && visible && semanas.startsWith('6 semanas') && notas.visibles === notas.total
+    && treeResult.treeCompleteShown && fase5.phase === 5 && fase5.recuadro && fase5.cq;
+  return { region, ok, oculta, visible, semanas, notas, treeResult, fase5 };
+}
+
+// Hombro operado de una fractura: h_step2b «traumatismo previo» activa h11
+// («Derivar»). Marcada «ya diagnosticada y tratada» en la 4b, la fase 5 no
+// pide derivación y dice que se siga el protocolo del cirujano.
+async function checkHombroTratada(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.fill('#motivoConsulta', 'Rigidez tras fractura de húmero operada');
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  await page.fill('#cirIntervencion', 'Osteosíntesis de húmero proximal');
+  await page.click('#cirProtocolo .option-btn:has-text("Verbal")');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('hombro', this)"]`);
+  await page.waitForTimeout(150);
+  const notaTrauma = await page.evaluate(() => getComputedStyle(document.querySelector('#sq2_h_t1 .nota-posq')).display !== 'none');
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
+  await elegir('h_step1', 2);
+  await elegir('h_step2', 0);
+  await elegir('h_step2b', 0);          // traumatismo previo → h11
+  await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  await page.click('#hypcard_h11 .hypothesis-header');
+  await page.waitForTimeout(150);
+  await page.click('#hypcard_h11 .dx-tratada input');
+  await page.waitForTimeout(150);
+  const en4b = await page.evaluate(() => ({
+    marcada: !!state.derivacionResuelta.h11,
+    etiqueta: document.getElementById('score_h11').textContent,
+    abierta: document.getElementById('hypcard_h11').classList.contains('open'),
+    testsPlegados: !!document.querySelector('#hypcard_h11 details.dx-tratada-tests:not([open])'),
+  }));
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  const fase5 = await page.evaluate(() => {
+    const t = document.getElementById('resultsContent').textContent;
+    return { sinDerivacion: !t.includes('🚑 Derivación'), protocolo: t.includes('Ya intervenida: seguir el protocolo del cirujano'),
+      casillaMarcada: !!document.querySelector('#resultsContent .dx-tratada input:checked') };
+  });
+  const ok = notaTrauma && en4b.marcada && en4b.etiqueta.includes('Diagnosticada y tratada') && en4b.abierta && en4b.testsPlegados
+    && fase5.sinDerivacion && fase5.protocolo && fase5.casillaMarcada;
+  return { ok, notaTrauma, en4b, fase5 };
 }
 
 // Razonamiento del cribado (fase 2, docs/razonamiento-cribado.md): nivel 1
@@ -753,6 +848,17 @@ async function main() {
     breveResults.push(r);
   }
 
+  console.log(`\nPaciente posquirúrgico (tarjeta «Cirugía», notas de traumatismo, protocolo en la fase 5) for all ${REGIONS.length} regions...`);
+  const posqResults = [];
+  for (const region of REGIONS) {
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    const r = await walkRegionPosq(page, region);
+    console.log(`  ${r.ok ? '✓' : '✗'} ${region.padEnd(9)} -> tarjeta ${r.visible ? 'visible' : 'oculta'}, «${r.semanas}», notas de traumatismo visibles ${r.notas.visibles}/${r.notas.total}, fase ${r.fase5.phase}`);
+    posqResults.push(r);
+  }
+  const hombroTratada = await checkHombroTratada(page);
+  console.log(`  ${hombroTratada.ok ? '✓' : '✗'} hombro h_step2b → h11 «ya diagnosticada y tratada»: sin derivación en la fase 5, protocolo del cirujano`);
+
   // Exercise the mobile phase-sheet button (the last real bug found,
   // PHASE_NAV_IDS) once, on whichever region the loop above ended on.
   await page.setViewportSize({ width: 390, height: 844 });
@@ -792,7 +898,8 @@ async function main() {
 
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
   const breveOk = breveResults.every(r => r.ok);
-  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && grab.ok && realErrors.length === 0;
+  const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && grab.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
@@ -805,6 +912,11 @@ async function main() {
   if (!informeIA.ok) console.log('\nInforme narrativo:', JSON.stringify(informeIA));
   if (!expImp.ok) console.log('\nExportar / importar:', JSON.stringify(expImp));
   if (!grab.ok) console.log('\nGrabadora:', JSON.stringify(grab));
+  if (!posqOk) {
+    console.log('\nPosquirúrgico failures:');
+    posqResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
+    if (!hombroTratada.ok) console.log('  -', JSON.stringify(hombroTratada));
+  }
   if (!breveOk) {
     console.log('\nModo breve failures:');
     breveResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
