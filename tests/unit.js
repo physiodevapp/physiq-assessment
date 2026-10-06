@@ -1513,6 +1513,39 @@ test('grabadora: un reinicio llegado de otra pestaña no descarta el audio de es
   assert.ok(/_avisoAudioSesion\(\)/.test(borrar) && /_descartarAudioSesion\(\)/.test(borrar), 'borrar sesión: avisa y descarta');
 });
 
+// ── Licencia: motivo legible cuando /validate no responde (lib/licencia-ia.js) ─
+console.log('\nlicencia del informe narrativo (motivo del error)');
+{
+  const L = await import('../lib/licencia-ia.js');
+  const fetchReal = globalThis.fetch;
+  const respuesta = (status, cuerpo = {}) => ({ ok: status >= 200 && status < 300, status,
+    headers: { get: () => null }, json: async () => cuerpo });
+  // fetch con CORS (primera llamada) y sin CORS (la sonda no-cors), por separado
+  const caso = async (conCors, sinCors) => {
+    globalThis.fetch = async (_url, opts = {}) => (opts.mode === 'no-cors' ? sinCors() : conCors());
+    const estado = await L.comprobarLicencia(true);
+    return { estado, motivo: L.detalleLicencia() };
+  };
+  const fallo = () => { throw new TypeError('Failed to fetch'); };
+  const pruebas = [
+    ['worker alcanzable pero sin respuesta legible → error del servidor', fallo, async () => ({ type: 'opaque' }), 'error-red', /responde, pero con un error/],
+    ['ni siquiera la sonda llega → bloqueado o sin conexión', fallo, fallo, 'error-red', /bloqueador de anuncios/],
+    ['429 → límite, no «sin licencia»', async () => respuesta(429), fallo, 'error-red', /Demasiadas comprobaciones/],
+    ['500 legible → error con su código', async () => respuesta(500), fallo, 'error-red', /error \(500\)/],
+  ];
+  const resultados = [];
+  for (const [nombre, conCors, sinCors, estado, motivo] of pruebas) resultados.push([nombre, await caso(conCors, sinCors), estado, motivo]);
+  const real = await caso(async () => respuesta(200, { routes: { report: 'real' } }), fallo);
+  globalThis.fetch = fetchReal;
+  for (const [nombre, r, estado, motivo] of resultados) {
+    test(`licencia: ${nombre}`, () => {
+      assert.equal(r.estado, estado);
+      assert.match(r.motivo, motivo);
+    });
+  }
+  test('licencia: con respuesta válida el estado es el del worker', () => assert.equal(real.estado, 'real'));
+}
+
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 if (failed > 0) process.exit(1);
