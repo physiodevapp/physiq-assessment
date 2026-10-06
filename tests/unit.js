@@ -1732,6 +1732,73 @@ console.log('\nlicencia del informe narrativo (motivo del error)');
   test('licencia: con respuesta válida el estado es el del worker', () => assert.equal(real.estado, 'real'));
 }
 
+// ── Exportar / importar la valoración (lib/valoracion-json.js) ────────────────
+console.log('\nexportar / importar valoración');
+{
+  const VJ = await import('../lib/valoracion-json.js');
+  const regiones = Object.keys(SYSTEMIC_SCREENING);
+  const ahora = new Date(2026, 9, 6, 12, 0);
+  const base = { ...JSON.parse(JSON.stringify(state)), patient: 'José Pérez', region: 'hombro', maxVisitedIdx: 5, currentPhase: 5,
+    treeAnswers: { h_step1: 'trauma' }, testResults: { h11: { 0: 'neg' } }, planNotes: { variableControl: 'ROM', ventanaRecuperacion: '', anclajeHabito: '' },
+    formularioPrevio: { comun: { desde_cuando: 'hace mes y medio' }, regiones: { hombro: { luxacion: 'No' } } },
+    informeIA: { texto: 'informe viejo', datos: {} } };
+
+  test('exportar → importar devuelve el mismo estado, sin el informe con IA', () => {
+    const texto = JSON.stringify(VJ.exportarValoracion(base, ahora));
+    const r = VJ.leerImportacion(texto, regiones);
+    assert.ok(r.ok, r.error);
+    const { informeIA, ...esperado } = base;
+    assert.deepEqual(r.assessmentState, esperado);
+    assert.equal(r.paciente, 'José Pérez');
+    assert.ok(!('informeIA' in r.assessmentState) && !texto.includes('informe viejo'));
+  });
+
+  test('exportar: encabezado del archivo y nombre sin acentos', () => {
+    const e = VJ.exportarValoracion(base, ahora);
+    assert.equal(e.app, 'physiq-assessment');
+    assert.equal(e.tipo, 'valoracion');
+    assert.equal(e.version, VJ.VERSION);
+    assert.equal(VJ.nombreArchivo('José Pérez', ahora), 'valoracion-jose-perez-2026-10-06.json');
+    assert.equal(VJ.nombreArchivo('', ahora), 'valoracion-sin-nombre-2026-10-06.json');
+    assert.equal(VJ.hayValoracion({ maxVisitedIdx: 0 }), false);
+    assert.equal(VJ.hayValoracion(base), true);
+  });
+
+  test('importar: rechaza archivos que no son una valoración restaurable, sin lanzar', () => {
+    const conEstado = cambios => JSON.stringify({ ...VJ.exportarValoracion(base, ahora), ...cambios });
+    const conAS = cambios => JSON.stringify({ ...VJ.exportarValoracion(base, ahora), assessmentState: { ...base, ...cambios } });
+    const casos = [
+      ['no es JSON', 'hola', /JSON válido/],
+      ['otra app', conEstado({ app: 'physiq-motion' }), /no es una valoración/],
+      ['versión futura', conEstado({ version: VJ.VERSION + 1 }), /versión más nueva/],
+      ['sin estado', conEstado({ assessmentState: null }), /no contiene/],
+      ['sin pasar de la fase 1', conAS({ maxVisitedIdx: 0 }), /fase 1/],
+      ['fase inválida', conAS({ currentPhase: 7 }), /fase guardada/],
+      ['región desconocida', conAS({ region: 'muñeca' }), /región/],
+    ];
+    for (const [nombre, texto, error] of casos) {
+      const r = VJ.leerImportacion(texto, regiones);
+      assert.equal(r.ok, false, nombre);
+      assert.match(r.error, error, nombre);
+    }
+  });
+
+  test('importar: app.js bloquea saveSession() mientras importa y recarga para restaurar', () => {
+    const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    assert.match(src, /function saveSession\(\) \{\n  if \(_importando\) return;/, 'saveSession no debe pisar lo importado con el DOM anterior');
+    const aplicar = src.slice(src.indexOf('async function _aplicarImportacion'), src.indexOf('function toggleSessionPanel'));
+    assert.ok(aplicar.indexOf('_importando = true') < aplicar.indexOf('writeSession'), 'el bloqueo va antes de escribir');
+    assert.ok(aplicar.indexOf('clearSession()') < aplicar.indexOf('writeSession'), 'sin restos de la sesión anterior');
+    assert.match(aplicar, /location\.reload\(\)/);
+    assert.ok(!/import .*valoracion-json/.test(src), 'el módulo se carga con import() solo al usarlo');
+  });
+
+  test('deploy: lib/valoracion-json.js se copia al hub', () => {
+    const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
+    assert.ok(wf.includes('lib/valoracion-json.js'));
+  });
+}
+
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 if (failed > 0) process.exit(1);
