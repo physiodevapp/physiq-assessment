@@ -657,10 +657,12 @@ export const tree = {
     {
       id: 'ca_step1',
       // Lluch 2020, cap. 4.1.3, pp. 153–154; cap. 4.1.4, pp. 157–158; Goodman 2018, cap. 15, p. 582.
+      // Laslett 2005 (criterios de exclusión): «no solo en la línea media ni por encima de L5»;
+      // Lluch pp. 153–154 no dice «rara vez por encima de L5», que decía antes la etiqueta.
       tag: 'Paso 1 — Diferenciación Proximal (Clearing)',
       question: '¿El dolor podría ser referido desde la columna lumbar o la articulación sacroilíaca?',
       options: [
-        { label: 'SÍ — SACROILÍACA: señala con el dedo el dolor junto a la EIPS (rara vez por encima de L5) y 3 o más de 5 tests de provocación positivos', value: 'si_asi', next: null, hypothesis: ['ca10'] },
+        { label: 'SÍ — SACROILÍACA: señala con el dedo el dolor inferomedial a la EIPS (no solo en la línea media ni por encima de L5) y 3 o más de 5 tests de provocación positivos', value: 'si_asi', next: null, hypothesis: ['ca10'] },
         { label: 'SÍ — LUMBAR: el dolor cambia con movimientos repetidos de la espalda, o la elevación de la pierna recta o el slump reproducen su dolor', value: 'si_lumbar', next: null, hypothesis: [] },
         { label: 'NO — Origen coxofemoral: la cojera (unas 7 veces) y la rotación interna limitada (unas 14 veces) orientan más a la cadera que a la columna', value: 'no', next: null, hypothesis: [] }
       ]
