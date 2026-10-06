@@ -5,12 +5,13 @@
 // con las demás regiones en SYSTEMIC_SCREENING / CIF_TREES / HYPOTHESES;
 // los esquemas de cada objeto están documentados allí.
 // ============================================================
-import { SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
+import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
 
 // ── Fase 2 · SYSTEMIC_SCREENING.codo
 export const screening = {
   label: 'Codo y Antebrazo',
   sistemas: [
+    SIS_POSQUIRURGICO,   // solo con mecanismo Post-quirúrgico (docs/posquirurgico.md)
     {
       id: 'co_trauma', icon: '🦴', nombre: 'Traumático (Fractura o Luxación)',
       banderasRojas: [

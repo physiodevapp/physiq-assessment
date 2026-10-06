@@ -1,6 +1,12 @@
 # Paciente posquirúrgico — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**. Implementado todo menos el cribado posquirúrgico de la fase 2 (punto 2), que espera a leer las fuentes y a la revisión clínica. Común a las 7 regiones; sin pautas por tipo de cirugía.
+Estado: **decisiones cerradas (octubre 2026)**. Implementado, incluido el cribado posquirúrgico de la fase 2 (sistema `transversal_posquirurgico` en `data/comun.js`), **pendiente de la revisión clínica antes de `main`** y con el síndrome compartimental aún sin pregunta (falta releer su fuente).
+
+Cribado implementado, con diferencias respecto al diseño original:
+- Seis preguntas: `pq_herida`, `pq_tvp` (cadera, rodilla, tobillo y pie, lumbar, cervical), `pq_tvp_ms` (hombro y codo: piernas o el brazo operado), `pq_tep`, `pq_sdrc` y `pq_nervio` (estas dos, solo en las 5 regiones de extremidad).
+- **`pq_nervio` lleva `urgencia`**, al contrario de lo decidido («sin urgencia»): la guía del Royal College of Physicians (Goebel 2018, p. 13) pide que el cirujano revise con urgencia un dolor quemante en el territorio de un nervio tras una operación ortopédica. Se aplica la fuente y se deja a la revisión clínica. En lumbar y cervical no se pregunta: la fuente habla de nervios periféricos, y la cola de caballo y la mielopatía ya tienen sus preguntas.
+- **Síndrome compartimental sin pregunta todavía**: su fuente (Torlincasi 2023, StatPearls) se leyó en otra sesión, y lo leído en otra sesión no cuenta. Falta el PDF.
+- Conflicto de cifras resuelto por la regla de fuentes: la frecuencia de la infección de la herida sale de NICE NG125 («al menos el 5 %»), guía, y no de Zabaglo 2024 («0,5–3 %»), StatPearls. Común a las 7 regiones; sin pautas por tipo de cirugía.
 
 ## Decisiones tomadas (octubre 2026)
 Aceptadas las ocho recomendaciones:

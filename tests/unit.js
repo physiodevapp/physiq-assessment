@@ -295,7 +295,7 @@ test('region not set → []', () => {
 test('affirmative answer for known region returns non-empty array', () => {
   // Find a real question id from the hombro screening data
   const sis = SYSTEMIC_SCREENING['hombro'];
-  const firstQid = sis?.sistemas?.[0]?.preguntas?.[0]?.id || null;
+  const firstQid = sis?.sistemas?.find(x => !x.soloPosquirurgico)?.preguntas?.[0]?.id || null;   // el posquirúrgico solo se ve con su mecanismo
   if (firstQid) {
     withState({ sistemicoAnswers: { [firstQid]: 'SI' }, region: 'hombro' }, () => {
       const texts = getSistemicoAffirmativeTexts();
@@ -886,7 +886,7 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
 });
 
 test('cadera: TVP, torsión testicular, fractura de estrés del cuello femoral y artritis séptica son urgencias (y ninguna otra)', () => {
-  const qs = SYSTEMIC_SCREENING.cadera.sistemas.flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.cadera.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_v2']);
   // ca_v2 junta TVP y calambres: la urgencia dice que los calambres solos no lo son,
   // y deriva hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8)
@@ -944,7 +944,7 @@ test('ca10: thigh thrust y compresión puntúan solos (Laslett 2005) y el cluste
 });
 
 test('cervical: disección, IVB, fractura tras traumatismo y cefalea de alarma son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.cervical.sistemas.flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
   withState({ region: 'cervical', sistemicoAnswers: { cv_ar1: 'NO', cv_ar2: 'SI', cv_ar3: 'NO', cv_ar4: 'NO' } }, () => {
     assert.equal(buildPhysiQPayload().ur.length, 1);
@@ -970,7 +970,7 @@ test('cervical: el FRT puntúa solo positivo (un negativo no descarta una cervic
 });
 
 test('rodilla: bursa séptica, aparato extensor, luxación y neurovascular son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.rodilla.sistemas.flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['r1', 'r_v2', 'r_i3', 'ro_t2', 'ro_t3', 'ro_t4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
 });
 
@@ -996,7 +996,7 @@ test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y de
 });
 
 test('hombro: urgencias: h_g1 (ectópico) y h_t1 (fractura o luxación); la bisagra reparte congelado, artrosis GH y luxación/fractura', () => {
-  const qs = SYSTEMIC_SCREENING.hombro.sistemas.flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.hombro.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   assert.equal(SYSTEMIC_SCREENING.hombro.urgencia, undefined);
   assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['h_g1', 'h_t1']);
   ['h_t1', 'h_i1', 'h_n1'].forEach(id => assert.ok(qs.find(q => q.id === id), id));
@@ -1059,7 +1059,7 @@ test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan'
 });
 
 test('tobillo y pie: cinco P, artritis infecciosa y debilidad simétrica con arreflexia son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['tp_t1', 'tp_i1', 'tp_n1'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
   // TVP: derivar hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8), igual que ca_v2 de cadera
   assert.match(qs.find(q => q.id === 'tp_v2').urgencia, /derivar hoy.*1 o menos, dímero D/);
@@ -1148,7 +1148,7 @@ test('hipótesis de derivación: texto fijo, sin fuente, y solo las decididas', 
 // ── Modo breve ────────────────────────────────────────────────────────────────
 console.log('\nmodo breve');
 
-const LUMBAR_SIS = SYSTEMIC_SCREENING.lumbar.sistemas;
+const LUMBAR_SIS = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.soloPosquirurgico);   // fuera del posquirúrgico no se ve
 
 test('modo completo → sin pendientes, md "completo" y sin campo pe', () => {
   withState({}, () => {
@@ -1335,7 +1335,7 @@ test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar»
 });
 
 test('razonamiento: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
-  const muestra = preguntasConRazon.find(p => p.region !== 'comun' && SYSTEMIC_SCREENING[p.region]);
+  const muestra = preguntasConRazon.find(p => p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico);
   if (!muestra) return;   // aún no hay ninguna pregunta con razonamiento
   const { region, q, r } = muestra;
   withState({ region, sistemicoAnswers: { [q.id]: 'SI' }, sistemicoAlerta: true }, () => {
@@ -1866,6 +1866,7 @@ console.log('\npaciente posquirúrgico');
   const HOY = new Date(2026, 9, 6);   // 6 oct 2026
   const cir = (extra = {}) => ({ ...PQ.cirugiaVacia(), ...extra });
   const POSQ = (extra = {}) => ({ mecanismo: 'Post-quirúrgico', cirugia: cir(extra), derivacionResuelta: {} });
+  const await_comun = await import('../data/comun.js');
 
   test('semanas: desde la fecha (al vuelo), o las aproximadas sin fecha; nunca negativas', () => {
     assert.equal(PQ.semanasCirugia(cir({ fecha: '2026-08-25' }), HOY), 6);
@@ -2006,6 +2007,51 @@ console.log('\npaciente posquirúrgico');
     const base = { p: 'X', d: '01/01/2026', cq: { iv: 'PTR', fe: '', se: 4, pr: 'Escrito', re: '', co: [] } };
     assert.equal(IN.huellaPayload(base), IN.huellaPayload({ ...base, d: '15/01/2026', cq: { ...base.cq, se: 6 } }));
     assert.notEqual(IN.huellaPayload(base), IN.huellaPayload({ ...base, cq: { ...base.cq, iv: 'PTC' } }));
+  });
+
+  test('cribado posquirúrgico: el mismo sistema, el primero, en las 7 regiones; preguntas y urgencias decididas', () => {
+    const { SIS_POSQUIRURGICO: SIS } = await_comun;
+    for (const [r, d] of Object.entries(SYSTEMIC_SCREENING)) assert.equal(d.sistemas[0], SIS, r);
+    assert.deepEqual(SIS.preguntas.map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_sdrc', 'pq_nervio']);
+    assert.deepEqual(SIS.preguntas.filter(q => q.urgencia).map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_nervio']);
+    const regiones = Object.keys(SYSTEMIC_SCREENING);
+    for (const q of SIS.preguntas) (q.regiones || []).forEach(r => assert.ok(regiones.includes(r), `${q.id}: región ${r}`));
+    // Cada región ve una sola pregunta de TVP
+    for (const r of regiones) assert.equal(SIS.preguntas.filter(q => q.id.startsWith('pq_tvp') && (!q.regiones || q.regiones.includes(r))).length, 1, r);
+    assert.ok(SIS.preguntas.every(q => q.razonamiento?.porque && q.razonamiento?.peso && q.razonamiento?.fuentes?.length), 'todas con razonamiento');
+  });
+
+  test('cribado posquirúrgico: solo cuenta con mecanismo Post-quirúrgico y con las preguntas de la región', () => {
+    const urg = id => SYSTEMIC_SCREENING.hombro.sistemas[0].preguntas.find(q => q.id === id).urgencia;
+    const base = { region: 'hombro', sistemicoAnswers: { pq_herida: 'SI', pq_tvp_ms: 'SI', pq_tvp: 'SI', pq_sdrc: 'SI' }, sistemicoAlerta: true };
+    withState({ ...base, mecanismo: 'Traumático', cirugia: cir(), derivacionResuelta: {} }, () => {
+      const p = buildPhysiQPayload();
+      assert.deepEqual(p.ur, [], 'sin Post-quirúrgico no hay urgencias del sistema');
+      assert.deepEqual(p.sq, []);
+    });
+    withState({ ...base, ...POSQ() }, () => {
+      const p = buildPhysiQPayload();
+      assert.deepEqual(p.ur, [urg('pq_herida'), urg('pq_tvp_ms')], 'hombro ve pq_tvp_ms, no pq_tvp');
+      assert.equal(p.sq.length, 3, 'herida, TVP del brazo y SDRC');
+    });
+    withState({ ...base, ...POSQ(), region: 'lumbar' }, () => {
+      const p = buildPhysiQPayload();
+      assert.deepEqual(p.ur.length, 2, 'lumbar: herida y pq_tvp');
+      assert.ok(!p.sq.some(t => t.includes('roce de la ropa')), 'el SDRC no se pregunta en lumbar');
+    });
+    withState({ ...base, ...POSQ(), modo: 'breve', sistemicoBreve: {} }, () => {
+      assert.ok(getPendientesBreve().find(x => x.texto.startsWith('Sistemas sin cribar')).texto.includes('Posquirúrgico'));
+    });
+    withState({ ...base, mecanismo: 'Insidioso', cirugia: cir(), derivacionResuelta: {}, modo: 'breve', sistemicoBreve: {} }, () => {
+      assert.ok(!getPendientesBreve().find(x => x.texto.startsWith('Sistemas sin cribar')).texto.includes('Posquirúrgico'));
+    });
+  });
+
+  test('cribado posquirúrgico: el mecanismo repinta el cribado conservando las respuestas', () => {
+    const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    assert.match(src, /if \(groupId === 'mecanismo'\) \{\n    _pintarCirugiaUI\(\);[\s\S]{0,200}_repintarCribado\(\);/);
+    const reparto = src.slice(src.indexOf('function _repintarCribado'), src.indexOf('function buildSistemicoQuestions'));
+    assert.ok(reparto.indexOf('savedAnswers') < reparto.indexOf('buildSistemicoQuestions(state.region)'), 'guarda antes de repintar');
   });
 
   test('integración: window, tarjeta en index.html y deploy', () => {

@@ -14,7 +14,7 @@
 // en su criterio. La tarjeta no da dosis («Dosis y progresión no están en la
 // guía»): dosis '' en todas.
 // ============================================================
-import { SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
+import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
 
 // ── Fase 2 · SYSTEMIC_SCREENING.tobillo_pie
 // Árbol, nodo 1 (cinco P, monoartritis con fiebre, debilidad simétrica con
@@ -32,6 +32,7 @@ export const screening = {
     ]
   },
   sistemas: [
+    SIS_POSQUIRURGICO,   // solo con mecanismo Post-quirúrgico (docs/posquirurgico.md)
     {
       // Tarjeta tobillo y pie (guía de consulta): URGENCIA (compartimental y neurovascular,
       // rotura del Aquiles, Ottawa) y BANDERAS «Lisfranc», «Fractura de calcáneo»,

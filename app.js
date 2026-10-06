@@ -638,7 +638,11 @@ function selectOption(groupId, btn, value) {
   if (groupId === 'psico_miedo' || groupId === 'psico_autoef' || groupId === 'psico_emocional') {
     updatePsicoRecomendacion();
   }
-  if (groupId === 'mecanismo') _pintarCirugiaUI();
+  if (groupId === 'mecanismo') {
+    _pintarCirugiaUI();
+    // El sistema posquirúrgico aparece o desaparece del cribado ya pintado
+    if (state.region && document.getElementById('sistemaPanels')?.children.length) _repintarCribado();
+  }
   saveSession();
 }
 
@@ -853,8 +857,8 @@ function getPendientesBreve() {
   const pendientes = [];
   const data = SYSTEMIC_SCREENING[state.region];
   if (data) {
-    const porEmbudo = data.sistemas.filter(s => state.sistemicoBreve[s.id] === 'NO').map(s => s.nombre);
-    const sinCribar = data.sistemas.filter(s => !state.sistemicoBreve[s.id]).map(s => s.nombre);
+    const porEmbudo = sistemasActivos().filter(s => state.sistemicoBreve[s.id] === 'NO').map(s => s.nombre);
+    const sinCribar = sistemasActivos().filter(s => !state.sistemicoBreve[s.id]).map(s => s.nombre);
     if (porEmbudo.length) pendientes.push({ fase: 2, texto: `Cribado sistémico solo por embudo (sin preguntas una a una): ${porEmbudo.join(', ')}` });
     if (sinCribar.length) pendientes.push({ fase: 2, texto: `Sistemas sin cribar: ${sinCribar.join(', ')}` });
   } else if (state.maxVisitedIdx >= 1) {
@@ -1021,9 +1025,58 @@ function applyRegionChange(regionId, card) {
   saveSession();
 }
 
+// Sistemas que se ven en la región: el posquirúrgico (`soloPosquirurgico`)
+// solo con mecanismo Post-quirúrgico, y de cada sistema solo las preguntas de
+// esa región (`regiones`; sin él, todas). Todo lo que lee el cribado (alerta,
+// urgencias, payload, pendientes) pasa por aquí, así que una respuesta de un
+// sistema que ya no se ve no cuenta.
+function sistemasActivos(regionId = state.region) {
+  const data = SYSTEMIC_SCREENING[regionId];
+  if (!data) return [];
+  return data.sistemas
+    .filter(sis => !sis.soloPosquirurgico || esPosquirurgico(state.mecanismo))
+    .map(sis => sis.preguntas.some(q => q.regiones)
+      ? { ...sis, preguntas: sis.preguntas.filter(q => !q.regiones || q.regiones.includes(regionId)) }
+      : sis);
+}
+
+// Respuestas del cribado de las preguntas que se ven ahora.
+function _respuestasActivas() {
+  const ids = new Set(sistemasActivos().flatMap(sis => sis.preguntas.map(q => q.id)));
+  return Object.entries(state.sistemicoAnswers).filter(([id]) => ids.has(id));
+}
+
+// Repinta el cribado conservando las respuestas (restaurar sesión, cambiar el
+// mecanismo con la región ya elegida); las preguntas nuevas empiezan en NO.
+function _repintarCribado() {
+  if (!state.region) return;
+  const savedAnswers = { ...state.sistemicoAnswers };
+  const savedBreve = { ...(state.sistemicoBreve || {}) };
+  buildSistemicoQuestions(state.region);
+  Object.assign(state.sistemicoAnswers, savedAnswers);
+  state.sistemicoBreve = savedBreve;
+  Object.entries(state.sistemicoAnswers).forEach(([qId, answer]) => {
+    const sq2 = document.getElementById(`sq2_${qId}`);
+    if (!sq2) return;
+    sq2.querySelectorAll('.sq-btn').forEach(btn => {
+      const m = (btn.getAttribute('onclick') || '').match(/'(SI|NO)'/);
+      if (m) btn.classList.toggle('selected', m[1] === answer);
+    });
+  });
+  sistemasActivos().forEach(sis => {
+    const alerta = sis.preguntas.some(q => state.sistemicoAnswers[q.id] === 'SI');
+    document.getElementById(`tab_${sis.id}`)?.classList.toggle('has-alert', alerta);
+    document.getElementById(`acc_${sis.id}`)?.classList.toggle('has-alert', alerta);
+  });
+  evaluarCriteriosCompuestos(state.region);
+  sistemasActivos().forEach(sis => _pintarEmbudo(sis.id));
+  updateSistemicoAlert();
+}
+
 function buildSistemicoQuestions(regionId) {
   const data = SYSTEMIC_SCREENING[regionId];
   if (!data) return;
+  const sistemas = sistemasActivos(regionId);
 
   const wrap = document.getElementById('sistemicoQuestions');
   const tabsContainer = document.getElementById('sistemaTabs');
@@ -1039,7 +1092,7 @@ function buildSistemicoQuestions(regionId) {
   state.sistemicoBreve = {};
 
   // Initialize all answers to NO
-  data.sistemas.forEach(sis => {
+  sistemas.forEach(sis => {
     sis.preguntas.forEach(q => { state.sistemicoAnswers[q.id] = 'NO'; });
   });
 
@@ -1055,13 +1108,13 @@ function buildSistemicoQuestions(regionId) {
   accordion.innerHTML = '';
 
   // Build tabs + panels + accordion rows
-  data.sistemas.forEach((sis, idx) => {
+  sistemas.forEach((sis, idx) => {
     // ── DESKTOP: Tab
     const tab = document.createElement('button');
     tab.className = 'sistema-tab' + (idx === 0 ? ' active' : '');
     tab.id = `tab_${sis.id}`;
     tab.innerHTML = `<span class="tab-dot"></span>${sis.icon} ${sis.nombre}<span class="embudo-estado" title="Cribado por embudo: sin hallazgos">✓</span>`;
-    tab.onclick = () => activeSistemaTab(sis.id, data.sistemas);
+    tab.onclick = () => activeSistemaTab(sis.id, sistemas);
     tabsContainer.appendChild(tab);
 
     // Build shared panel HTML
@@ -1080,7 +1133,7 @@ function buildSistemicoQuestions(regionId) {
     row.className = 'sistema-accordion-row';
     row.id = `acc_${sis.id}`;
     row.innerHTML = `
-      <div class="sistema-accordion-header" onclick="toggleAccordionRow('${sis.id}', '${data.sistemas.map(s=>s.id).join(',')}')">
+      <div class="sistema-accordion-header" onclick="toggleAccordionRow('${sis.id}', '${sistemas.map(s=>s.id).join(',')}')">
         <span class="sistema-accordion-icon">${sis.icon}</span>
         <span class="sistema-accordion-name">${sis.nombre}<span class="embudo-estado" title="Cribado por embudo: sin hallazgos">✓</span></span>
         <span class="sistema-accordion-alert"></span>
@@ -1108,7 +1161,7 @@ function buildSistemicoQuestions(regionId) {
 
   wrap.style.display = 'block';
   evaluarCriteriosCompuestos(regionId);
-  data.sistemas.forEach(sis => _pintarEmbudo(sis.id));
+  sistemas.forEach(sis => _pintarEmbudo(sis.id));
   updateSistemicoAlert();
 }
 
@@ -1595,8 +1648,7 @@ function selectSistQ(btn, id, value, isAlerta, sisId) {
   // Update tab and accordion alert indicators for this system
   const tab = document.getElementById(`tab_${sisId}`);
   const accRow = document.getElementById(`acc_${sisId}`);
-  const data = SYSTEMIC_SCREENING[state.region];
-  const sis = data?.sistemas.find(s => s.id === sisId);
+  const sis = sistemasActivos().find(s => s.id === sisId);
   if (sis) {
     const hasAlert = sis.preguntas.some(q => state.sistemicoAnswers[q.id] === 'SI');
     if (tab) tab.classList.toggle('has-alert', hasAlert);
@@ -1615,7 +1667,7 @@ function selectSistQ(btn, id, value, isAlerta, sisId) {
 // sistema no tiene ninguna respuesta SÍ: «sin hallazgos» no puede convivir
 // con un hallazgo marcado.
 function selectEmbudo(sisId, value) {
-  const sis = SYSTEMIC_SCREENING[state.region]?.sistemas.find(s => s.id === sisId);
+  const sis = sistemasActivos().find(s => s.id === sisId);
   if (!sis) return;
   if (value === 'NO' && sis.preguntas.some(q => state.sistemicoAnswers[q.id] === 'SI')) {
     showToast('Este sistema tiene respuestas SÍ: cámbielas a NO antes de marcarlo sin hallazgos', 'warning');
@@ -1631,7 +1683,7 @@ function selectEmbudo(sisId, value) {
 // embudo es SÍ o si alguna no urgente ya se respondió SÍ (nunca se esconde
 // un hallazgo).
 function _pintarEmbudo(sisId) {
-  const sis = SYSTEMIC_SCREENING[state.region]?.sistemas.find(s => s.id === sisId);
+  const sis = sistemasActivos().find(s => s.id === sisId);
   if (!sis) return;
   const v = state.sistemicoBreve[sisId];
   const abierto = v === 'SI' || sis.preguntas.some(q => !q.urgencia && state.sistemicoAnswers[q.id] === 'SI');
@@ -1658,16 +1710,14 @@ function renderUrgenciaRegion(data) {
 
 // Preguntas del cribado con `urgencia` respondidas SÍ en la región actual.
 function getUrgenciasActivas() {
-  const data = SYSTEMIC_SCREENING[state.region];
-  if (!data) return [];
-  return data.sistemas.flatMap(sis => sis.preguntas)
+  return sistemasActivos().flatMap(sis => sis.preguntas)
     .filter(q => q.urgencia && state.sistemicoAnswers[q.id] === 'SI')
     .map(q => q.urgencia);
 }
 
 function updateSistemicoAlert() {
   const alertDiv = document.getElementById('sistemicoAlert');
-  const hasPositive = Object.values(state.sistemicoAnswers).includes('SI');
+  const hasPositive = _respuestasActivas().some(([, v]) => v === 'SI');
   state.sistemicoAlerta = hasPositive;
   const urgencias = getUrgenciasActivas();
   // Una urgencia nunca lleva el mensaje de «watchful waiting»: aviso propio, arriba.
@@ -1676,8 +1726,8 @@ function updateSistemicoAlert() {
       <div><strong>Derivación urgente hoy.</strong> No continuar con la valoración mecánica.
         ${urgencias.map(u => `<div>· ${u}</div>`).join('')}</div>
     </div>` : '';
-  const soloUrgencias = urgencias.length && !Object.entries(state.sistemicoAnswers)
-    .some(([id, v]) => v === 'SI' && !SYSTEMIC_SCREENING[state.region]?.sistemas.some(s => s.preguntas.some(q => q.id === id && q.urgencia)));
+  const soloUrgencias = urgencias.length && !_respuestasActivas()
+    .some(([id, v]) => v === 'SI' && !sistemasActivos().some(s => s.preguntas.some(q => q.id === id && q.urgencia)));
   if (hasPositive && soloUrgencias) {
     alertDiv.style.display = 'block';
     alertDiv.innerHTML = urgHtml;
@@ -1830,10 +1880,8 @@ function getSistemicoAffirmativeTexts() {
     .filter(([, v]) => v === 'SI')
     .map(([id]) => id);
   if (!affirmativeIds.length || !state.region) return [];
-  const regionData = SYSTEMIC_SCREENING[state.region];
-  if (!regionData) return [];
   const texts = [];
-  regionData.sistemas.forEach(sis => {
+  sistemasActivos().forEach(sis => {
     (sis.preguntas || []).forEach(q => {
       if (affirmativeIds.includes(q.id)) texts.push(q.text);
     });
@@ -2815,22 +2863,7 @@ function _restoreSessionDOM() {
     document.querySelectorAll('.region-card').forEach(card => {
       card.classList.toggle('selected', (card.getAttribute('onclick') || '').includes(`'${state.region}'`));
     });
-    const savedAnswers = { ...state.sistemicoAnswers };
-    const savedBreve = { ...(state.sistemicoBreve || {}) };
-    buildSistemicoQuestions(state.region);
-    Object.assign(state.sistemicoAnswers, savedAnswers);
-    state.sistemicoBreve = savedBreve;
-    Object.entries(savedAnswers).forEach(([qId, answer]) => {
-      const sq2 = document.getElementById(`sq2_${qId}`);
-      if (!sq2) return;
-      sq2.querySelectorAll('.sq-btn').forEach(btn => {
-        const m = (btn.getAttribute('onclick') || '').match(/'(SI|NO)'/);
-        if (m) btn.classList.toggle('selected', m[1] === answer);
-      });
-    });
-    evaluarCriteriosCompuestos(state.region);
-    SYSTEMIC_SCREENING[state.region]?.sistemas.forEach(sis => _pintarEmbudo(sis.id));
-    updateSistemicoAlert();
+    _repintarCribado();
     const btnSinss = document.getElementById('btnContinuarSinss');
     if (btnSinss) btnSinss.disabled = false;
   }
