@@ -12,6 +12,65 @@ export const screening = {
   label: 'Codo y Antebrazo',
   sistemas: [
     {
+      id: 'co_trauma', icon: '🦴', nombre: 'Traumático (Fractura o Luxación)',
+      banderasRojas: [
+        'Caída o golpe reciente y el codo no llega a estirarse del todo: casi un 50 % de fracturas (Appelboam 2008; Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)',
+        'Deformidad del codo tras una caída (luxación), o mano dormida, fría o pálida: compromiso neurovascular (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 93)',
+        'Niño pequeño que no mueve el brazo tras un tirón (pronación dolorosa): descartar una fractura o una infección (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)'
+      ],
+      banderasAmarillas: [],
+      preguntas: [
+        { id: 'co_t1', text: '¿Se ha caído o se ha dado un golpe en el codo en los últimos días y no consigue estirarlo del todo? (Prueba de extensión del codo: brazos al frente con las palmas hacia arriba, comparar con el otro lado.)', alerta: true, s1: true,
+          razonamiento: {
+            porque: 'Tras una caída o un golpe, una fractura del codo (en adultos, sobre todo de la cabeza del radio) llena de líquido la articulación, y un codo con derrame agudo se mantiene en flexión: no llega a estirarse del todo. La prueba de extensión del codo aprovecha ese signo para decidir quién necesita una radiografía.',
+            peso: 'Pesa: en el estudio de validación de Appelboam (1740 pacientes de urgencias), quien no conseguía estirar del todo el codo tenía casi un 50 % de probabilidad de fractura, y debe derivarse para radiografía; Lluch indica que las fracturas agudas requieren atención médica. Si lo estira del todo, la fractura es muy improbable en el adulto (LR− 0,03) y algo menos segura en el niño (LR− 0,11); aun así, una fractura del olécranon puede permitir la extensión.',
+            detalle: 'La prueba (Appelboam 2008): sentado, con los brazos descubiertos y en supinación, el paciente flexiona los hombros a 90° y estira y bloquea los dos codos; se comparan los dos lados a la vista. Se validó en lesiones de menos de 72 horas, excluyendo a quien ya tenía la extensión limitada, alteración del estado mental, varias lesiones o sospecha de lesión intencionada.\n\nResultados: de 1740 adultos y niños, 602 estiraban del todo el codo (17 fracturas) y 1138 no (521 fracturas). S 96,8 % y E 48,5 % (LR+ 1,9). Con extensión completa, un 1,6 % de los adultos (LR− 0,03, IC 0,01–0,08) y un 4,2 % de los niños (LR− 0,11, IC 0,06–0,19) tenían una fractura. Las más frecuentes fueron la de la cabeza del radio en el adulto (64 %) y la supracondílea en el niño (48 %).\n\nCautelas: con extensión completa, se puede diferir la radiografía si se está seguro de que no hay una fractura del olécranon (dos de los adultos con extensión completa la tenían y necesitaron cirugía), y el paciente debe volver si no ha mejorado en 7–10 días; en niños, más precaución por las fracturas supracondíleas ocultas (Appelboam 2008; Lluch 2020). Lluch describe la fractura de la cabeza del radio como la más frecuente del codo, típica de la caída sobre el brazo extendido con valgo. Goodman pide atención médica inmediata ante un traumatismo cuyos síntomas no se resuelven o con un dolor desproporcionado (fractura, síndrome compartimental).\n\nQué hacer con un SÍ: no forzar la extensión, explorar la sensibilidad, el color y la temperatura de la mano y derivar para radiografía.',
+            fisiologia: {
+              pasos: [
+                'En una caída sobre el brazo extendido, el valgo comprime la cabeza del radio contra el húmero y puede romperla o romper su cuello; un golpe directo o el tirón de un ligamento o un tendón rompen otras zonas.',
+                'Tras la lesión se acumula líquido dentro de la articulación (en el estudio de Appelboam, también derrames sin fractura): aumenta el volumen dentro de la cápsula.',
+                'Para dar cabida a ese volumen, el codo se mantiene en flexión.',
+                'Por eso, tras una fractura, el codo casi nunca llega a estirarse del todo: en el estudio de Appelboam, 521 de las 538 fracturas no lo conseguían.',
+                'Una fractura del olécranon puede permitir la extensión completa; por eso, si se sospecha, la extensión normal no basta para descartarla.'
+              ],
+              nota: 'Las fuentes leídas describen que el codo con derrame agudo se mantiene en flexión, pero no explican con detalle por qué no puede extenderse.',
+              metafora: 'Como una bolsa llena de agua metida en una bisagra: con tanto volumen dentro, la bisagra se queda doblada.'
+            },
+            fuentes: ['Appelboam 2008', 'Lluch 2020', 'Goodman 2018'],
+            citas: [
+                { texto: 'Appelboam 2008 — Appelboam, Reuben, Benger et al., «Elbow extension test to rule out elbow fracture: multicentre, prospective validation and observational study of diagnostic accuracy in adults and children», BMJ 337:a2428 (estudio prospectivo multicéntrico, 1740 pacientes).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2600962/' },
+                'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 86, 89 y 93–94.',
+                'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, p. 704.'
+            ]
+          } },
+        { id: 'co_t2', text: '¿Tras una caída o un golpe, el codo se ve deformado, o la mano está dormida, fría o pálida?', alerta: true, s1: true,
+          razonamiento: {
+            porque: 'El codo es la segunda articulación que más se luxa, después del hombro, casi siempre por una caída sobre la mano extendida. El hueso desplazado deforma el codo y puede atrapar los nervios y los vasos que lo cruzan: de ahí la mano dormida, fría o pálida.',
+            peso: 'Alto: Lluch indica que las fracturas y luxaciones agudas requieren atención médica y que la exploración neurovascular es crítica justo después de una luxación. Goodman pide atención médica inmediata ante un traumatismo con dolor desproporcionado (fractura, síndrome compartimental). Derivación inmediata.',
+            detalle: 'Luxación (Lluch 2020): del 10 al 25 % de las lesiones del codo, casi el doble en varones de 10 a 19 años; por una caída sobre la mano extendida o en el deporte. Aunque no haya fractura (luxación simple), puede asociar una lesión importante de las partes blandas y dejar inestabilidad recurrente, incluida la rotatoria posterolateral. Tras reducirla, los nervios y vasos se siguen vigilando, porque el edema y los cambios del hueso y las partes blandas al curar pueden comprometerlos.\n\nFracturas complejas (Lluch 2020): las supracondíleas e intercondíleas del húmero distal aparecen en traumatismos de alta energía (bicicleta de montaña, monopatín). En los niños, la supracondílea es la fractura del codo más frecuente (48 % en Appelboam 2008).\n\nNiños: la pronación dolorosa (subluxación de la cabeza del radio por un tirón del brazo extendido, frecuente antes de los 5 años) da un dolor brusco y rechazo a mover el brazo, a menudo sin hinchazón ni deformidad; hay que descartar una fractura o una infección (Lluch 2020).\n\nFalta de riego: Goodman describe la oclusión arterial aguda con dolor, palidez, ausencia de pulso, parestesias, frialdad y, en los casos graves, parálisis.\n\nQué hacer con un SÍ: no mover el codo, explorar la sensibilidad y la fuerza de los dedos y el color y la temperatura de la mano, y derivar de inmediato.',
+            fisiologia: {
+              pasos: [
+                'Tres nervios (mediano, cubital y radial) cruzan el codo en distintas posiciones respecto a sus ejes y tienen que deslizarse mucho para acompañar su amplio movimiento.',
+                'En una luxación o una fractura desplazada, el hueso se sale de su sitio y deforma el codo.',
+                'Los nervios y los vasos pueden quedar atrapados por el hueso desplazado, o durante la maniobra para recolocarlo.',
+                'Un nervio atrapado deja de conducir y la mano se nota dormida u hormigueante; si se corta el riego, la mano se vuelve pálida y fría.',
+                'Por eso, tras un traumatismo del codo, los cambios de sensibilidad, color o temperatura de la mano obligan a pensar en un compromiso neurovascular.'
+              ],
+              metafora: 'Como un cable que pasa junto a una bisagra: si la bisagra se desencaja, puede pellizcarlo.'
+            },
+            fuentes: ['Lluch 2020', 'Goodman 2018', 'Appelboam 2008'],
+            citas: [
+                'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 81, 87 y 93–94.',
+                'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 18, p. 704.',
+                { texto: 'Appelboam 2008 — Appelboam, Reuben, Benger et al., «Elbow extension test to rule out elbow fracture: multicentre, prospective validation and observational study of diagnostic accuracy in adults and children», BMJ 337:a2428 (estudio prospectivo multicéntrico, 1740 pacientes).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2600962/' }
+            ]
+          } }
+      ],
+      zonasDolor: [{ zona: 'Codo tras traumatismo', desc: 'Fractura (cabeza del radio en el adulto, supracondílea en el niño) o luxación' }],
+      impactoDescanso: [],
+      impactoEjercicio: ['Sin carga ni movilización del codo hasta descartar fractura o luxación']
+    },
+    {
       id: 'co_vascular', icon: '🩸', nombre: 'Vascular / Neurológica',
       banderasRojas: [
         'Cambios de color en mano/dedos (palidez, cianosis) con el frío (fenómeno de Raynaud)',
@@ -304,6 +363,8 @@ export const tree = {
       question: '¿Hubo un evento traumático o hay deformidad muscular característica?',
       options: [
         { label: 'SÍ — Deformidad del contorno muscular ("signo de Popeye") y debilidad en flexión/supinación', value: 'biceps', next: null, hypothesis: ['co7'] },
+        { label: 'FRACTURA / LUXACIÓN — Caída o golpe con deformidad del codo, o el codo no llega a estirarse del todo: sospecha de fractura o luxación → derivación médica', value: 'fractura', next: 'co_step2', hypothesis: [],
+          derivacion: 'Sospecha de fractura o luxación tras un traumatismo (deformidad, o el codo no llega a estirarse del todo: casi un 50 % de fracturas en Appelboam 2008): derivación médica para radiografía; antes, explorar la sensibilidad, el color y la temperatura de la mano.' },
         { label: 'NO — Sin traumatismo significativo ni deformidad', value: 'no', next: 'co_step2', hypothesis: [] }
       ]
     },
