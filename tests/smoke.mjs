@@ -24,6 +24,10 @@
 //
 // Usage: node tests/smoke.mjs [url]   (defaults to http://localhost:3000)
 
+import { mkdtempSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+
 let chromium;
 try {
   ({ chromium } = await import('playwright'));
@@ -341,6 +345,81 @@ async function mockWorkerYTurnstile(context, captura) {
         + sse('report_chunk', { text: '## SEGUIMIENTO FUNCIONAL\nPendiente de reevaluaciones programadas.' })
         + sse('done', { success: true }) });
   });
+}
+
+// Exportar / importar la valoración (panel de sesión, lib/valoracion-json.js):
+// lumbar completo con nombre → exportar (descarga real) → borrar sesión →
+// importar el archivo → tras la recarga vuelve todo, en la fase 5. Y a 320 px
+// los dos botones caben sin cortar el texto.
+async function checkExportarImportar(browser, errors, tmpDir) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 }, acceptDownloads: true });
+  await context.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json',
+    body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo', email: 'demo' }, demoOnly: false }),
+  }));
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (exportar): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (exportar): ${msg.text()}`); });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const r = {};
+
+  await page.click('#sessionBtn');
+  r.exportarDesactivadoAlEmpezar = await page.isDisabled('#sessionExport');
+  await page.fill('#patientName', 'Prueba Exportación');
+  await page.keyboard.press('Enter');
+  await walkRegion(page, 'lumbar');
+  const antes = await page.evaluate(() => JSON.stringify({ p: state.patient, r: state.region, t: state.treeAnswers, f: state.currentPhase, m: state.motivoConsulta, s: state.signoComparable }));
+
+  await page.click('#sessionBtn');
+  const [descarga] = await Promise.all([page.waitForEvent('download'), page.click('#sessionExport')]);
+  r.nombreArchivo = descarga.suggestedFilename();
+  const ruta = `${tmpDir}/${r.nombreArchivo}`;
+  await descarga.saveAs(ruta);
+
+  // Borrar sesión (el panel sigue abierto tras exportar): la app vuelve a la fase 1 vacía
+  r.panelSigueAbierto = await page.isVisible('#sessionPanelClear');
+  await page.click('#sessionPanelClear');
+  await page.click('#confirmAction');
+  await page.waitForTimeout(200);
+  r.borrada = await page.evaluate(() => state.currentPhase === 1 && !state.region);
+
+  // Importar: confirmación → recarga → restaurado
+  await page.click('#sessionBtn');
+  await page.setInputFiles('#sessionImportFile', ruta);
+  await page.waitForSelector('#confirmBanner');
+  await Promise.all([page.waitForEvent('load'), page.click('#confirmAction')]);
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(300);
+  const despues = await page.evaluate(() => JSON.stringify({ p: state.patient, r: state.region, t: state.treeAnswers, f: state.currentPhase, m: state.motivoConsulta, s: state.signoComparable }));
+  r.restaurado = antes === despues;
+  r.fase5Visible = await page.isVisible('#phase5');
+
+  // Un archivo que no es una valoración: aviso y nada cambia
+  const malo = `${tmpDir}/no-es-valoracion.json`;
+  writeFileSync(malo, JSON.stringify({ app: 'otra' }));
+  await page.click('#sessionBtn');
+  await page.setInputFiles('#sessionImportFile', malo);
+  await page.waitForTimeout(300);
+  r.rechazaMalo = !(await page.isVisible('#confirmBanner')) && (await page.evaluate(() => state.region)) === 'lumbar';
+  await page.evaluate(() => closeSessionPanel());
+
+  // 320 px: los dos botones dentro del panel y sin texto cortado
+  await page.setViewportSize({ width: 320, height: 640 });
+  await page.click('#sessionBtn');
+  r.caben320 = await page.evaluate(() => {
+    const panel = document.getElementById('sessionPanel').getBoundingClientRect();
+    return ['sessionExport', 'sessionImport'].every(id => {
+      const b = document.getElementById(id);
+      const rb = b.getBoundingClientRect();
+      return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth && rb.height >= 40;
+    });
+  });
+
+  await context.close();
+  r.ok = r.exportarDesactivadoAlEmpezar && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
+    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320;
+  return r;
 }
 
 async function checkInformeNarrativo(browser, errors) {
@@ -692,6 +771,11 @@ async function main() {
   const deriv = await checkDerivacionVascular(page);
   console.log(`  ${deriv.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
 
+  console.log('\nExportar / importar la valoración (panel de sesión):');
+  const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
+  const expImp = await checkExportarImportar(browser, errors, tmpDir);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px`);
+
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
   console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado y copiado, nada en el hub`);
@@ -708,7 +792,7 @@ async function main() {
 
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
   const breveOk = breveResults.every(r => r.ok);
-  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && grab.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && grab.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
@@ -719,6 +803,7 @@ async function main() {
   if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
   if (!deriv.ok) console.log('\nDerivación del árbol:', JSON.stringify(deriv));
   if (!informeIA.ok) console.log('\nInforme narrativo:', JSON.stringify(informeIA));
+  if (!expImp.ok) console.log('\nExportar / importar:', JSON.stringify(expImp));
   if (!grab.ok) console.log('\nGrabadora:', JSON.stringify(grab));
   if (!breveOk) {
     console.log('\nModo breve failures:');

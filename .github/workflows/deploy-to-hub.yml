@@ -30,7 +30,7 @@ jobs:
           cp formularios/*.js physiq-hub/assessment/formularios/
           cp data/*.js physiq-hub/assessment/data/
           cp icons/icon-192.png icons/icon-512.png physiq-hub/assessment/icons/
-          cp lib/session.js lib/informe-narrativo.js lib/audio-store.js lib/licencia-ia.js physiq-hub/assessment/lib/
+          cp lib/session.js lib/informe-narrativo.js lib/audio-store.js lib/licencia-ia.js lib/valoracion-json.js physiq-hub/assessment/lib/
 
       - name: Commit and push
         working-directory: physiq-hub
