@@ -1804,6 +1804,36 @@ console.log('\nlicencia del informe narrativo (motivo del error)');
   test('licencia: con respuesta válida el estado es el del worker', () => assert.equal(real.estado, 'real'));
 }
 
+// ── Lado afectado (fase 2) ─────────────────────────────────────────────────────
+console.log('\nlado afectado');
+const IN_INFORME = await import('../lib/informe-narrativo.js');
+test('lado: viaja en el payload (la) y sale en 📋 Notas, 📄 Informe y el informe con IA', () => {
+  withState({ region: 'hombro', lado: 'Derecho' }, () => {
+    const d = buildPhysiQPayload();
+    assert.equal(d.la, 'Derecho');
+    assert.match(buildContextSummaryText(), /Región: Hombro \(derecho\)/);
+    assert.match(buildInformeFisioterapiaText(), /Región valorada: Hombro \(derecho\)/);
+    const IN2 = IN_INFORME;
+    assert.match(IN2.buildNarrativePrompt(d, { conAudio: false, nombreRegion: r => r.charAt(0).toUpperCase() + r.slice(1) }), /Región valorada: Hombro \(derecho\)/);
+    assert.match(IN2.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'hombro', la: 'Derecho' }, r => 'Hombro'), /Región valorada: Hombro \(derecho\)/);
+  });
+  withState({ region: 'hombro', lado: '' }, () => {
+    assert.equal(buildPhysiQPayload().la, '');
+    assert.match(buildInformeFisioterapiaText(), /Región valorada: Hombro\n/);
+  });
+});
+
+test('lado: el reinicio lo borra y «Central» solo existe en la columna', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  assert.match(html, /id="ladoWrap" hidden/);
+  for (const v of ['Derecho', 'Izquierdo', 'Bilateral', 'Central']) assert.ok(html.includes(`selectOption('lado', this, '${v}')`), v);
+  const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  const reset = src.slice(src.indexOf('function _softResetApp()'), src.indexOf('function _softResetApp()') + 3000);
+  assert.ok(reset.includes("state.lado = '';"), '_softResetApp borra el lado');
+  assert.match(src, /const REGIONES_COLUMNA = \['cervical', 'lumbar'\]/);
+  assert.match(src, /if \(state.lado === 'Central' && !columna\) state.lado = '';/);
+});
+
 // ── Exportar / importar la valoración (lib/valoracion-json.js) ────────────────
 console.log('\nexportar / importar valoración');
 {
