@@ -13,8 +13,8 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **262** referencias de literatura, con **1025** usos.
-- **4** tarjetas de consulta (repo guia-de-consulta), con **90** usos, basadas en Lluch 2020.
+- **262** referencias de literatura, con **1026** usos.
+- **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **19** de 262 referencias del registro revisadas. Ver «Estado de revisión».
 - **29** de 442 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
@@ -122,7 +122,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Vandeputte 2026](#vandeputte-2026) | pauta | 1 | **sin revisar** |
 | [Englund 2003](#englund-2003) | pronóstico | 1 | **sin revisar** |
 | [Culvenor 2019](#culvenor-2019) | pronóstico | 1 | **sin revisar** |
-| [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 90 | **sin revisar** |
+| [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 89 | **sin revisar** |
 | [Katz 1995](#katz-1995) | test 4b sin puntuar | 1 | **sin revisar** |
 | [van Dijk 1996](#van-dijk-1996) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Cook 2001](#cook-2001) | test 4b sin puntuar | 1 | **sin revisar** |
@@ -316,7 +316,7 @@ Título: *Pattern Recognition of Clinical Syndromes Related to Neuromusculoskele
 Publicación: ZERAPI  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro. Capítulos leídos enteros (PDF escaneado del usuario) y citados directamente como fuente, con capítulo y páginas: cap. 5.1 (Fondevila Suárez, lumbar, pp. 295–326: pronósticos de lu3–lu8, tests de lu5–lu9 y l_e7) caps. 5.3 y 5.3.1 (cervical) cap. 4.1, subcaps. 4.1.1–4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg, cadera, pp. 123–179: pronósticos y tests de cadera y razonamiento del cribado de cadera) cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan, rodilla, pp. 191–234, bibliografía incluida: pronósticos y tests de rodilla y razonamiento del cribado de rodilla; el capítulo no tiene tabla de banderas rojas) y cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook, tobillo y pie, pp. 235–291, bibliografía incluida: 111 de las 147 citas de pronósticos y tests de tobillo y pie y razonamiento del cribado de tobillo y pie; sus banderas rojas están en la p. 287).
+Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro. Capítulos leídos enteros (PDF escaneado del usuario) y citados directamente como fuente, con capítulo y páginas: cap. 5.1 (Fondevila Suárez, lumbar, pp. 295–326: pronósticos de lu3–lu8, tests de lu5–lu9 y l_e7) caps. 5.3 y 5.3.1 (cervical) cap. 4.1, subcaps. 4.1.1–4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg, cadera, pp. 123–179: pronósticos y tests de cadera y razonamiento del cribado de cadera) cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan, rodilla, pp. 191–234, bibliografía incluida: pronósticos y tests de rodilla y razonamiento del cribado de rodilla; el capítulo no tiene tabla de banderas rojas) y cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook, tobillo y pie, pp. 235–291, bibliografía incluida: 112 de las 147 citas de pronósticos y tests de tobillo y pie y razonamiento del cribado de tobillo y pie; sus banderas rojas están en la p. 287).
 
 Las tarjetas de consulta están en el repo [physiodevapp/guia-de-consulta](https://github.com/physiodevapp/guia-de-consulta),
 en `data/tarjeta_<región>.js`. Son extractos de las **guías clínicas** de cada región, basadas en Lluch 2020
@@ -489,7 +489,6 @@ Citada como:
 | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Gesto testigo (①) y medida objetiva (②)» | 4b · cita bajo el test | 1 |
 | tp6 · Luxación del Tibial Posterior | Test «Gesto testigo (①) y medida objetiva (②)» | 4b · cita bajo el test | 1 |
 | tp7 · Pinzamiento Posterior del Tobillo | Test «Gesto testigo (①) y medida objetiva (②)» | 4b · cita bajo el test | 1 |
-| tp8 · Tendinopatía del Aquiles, Porción Media | Test «Descarga en el salto» | 4b · cita bajo el test | 1 |
 | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Gesto testigo (①) y medida objetiva (②)» | 4b · cita bajo el test | 1 |
 | tp9 · Tendinopatía Insercional del Aquiles | Test «Gesto testigo (①) y medida objetiva (②)» | 4b · cita bajo el test | 1 |
 | tp10 · Afectación de la Vaina del Aquiles | Test «Gesto testigo (①) y medida objetiva (②)» | 4b · cita bajo el test | 1 |
@@ -3163,7 +3162,7 @@ Título: *Pattern Recognition of Clinical Syndromes Related to Neuromusculoskele
 Publicación: ZERAPI  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro. Capítulos leídos enteros (PDF escaneado del usuario) y citados directamente como fuente, con capítulo y páginas: cap. 5.1 (Fondevila Suárez, lumbar, pp. 295–326: pronósticos de lu3–lu8, tests de lu5–lu9 y l_e7) caps. 5.3 y 5.3.1 (cervical) cap. 4.1, subcaps. 4.1.1–4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg, cadera, pp. 123–179: pronósticos y tests de cadera y razonamiento del cribado de cadera) cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan, rodilla, pp. 191–234, bibliografía incluida: pronósticos y tests de rodilla y razonamiento del cribado de rodilla; el capítulo no tiene tabla de banderas rojas) y cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook, tobillo y pie, pp. 235–291, bibliografía incluida: 111 de las 147 citas de pronósticos y tests de tobillo y pie y razonamiento del cribado de tobillo y pie; sus banderas rojas están en la p. 287).
+Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro. Capítulos leídos enteros (PDF escaneado del usuario) y citados directamente como fuente, con capítulo y páginas: cap. 5.1 (Fondevila Suárez, lumbar, pp. 295–326: pronósticos de lu3–lu8, tests de lu5–lu9 y l_e7) caps. 5.3 y 5.3.1 (cervical) cap. 4.1, subcaps. 4.1.1–4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg, cadera, pp. 123–179: pronósticos y tests de cadera y razonamiento del cribado de cadera) cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan, rodilla, pp. 191–234, bibliografía incluida: pronósticos y tests de rodilla y razonamiento del cribado de rodilla; el capítulo no tiene tabla de banderas rojas) y cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook, tobillo y pie, pp. 235–291, bibliografía incluida: 112 de las 147 citas de pronósticos y tests de tobillo y pie y razonamiento del cribado de tobillo y pie; sus banderas rojas están en la p. 287).
 
 Citada como:
 
@@ -3314,14 +3313,14 @@ Citada como:
 145. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 239
 146. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 240–241
 147. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243; Reiman 2014 (J Athl Train 49:820–9)
-148. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 242 y 244
-149. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 242
-150. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 243
+148. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 243
+149. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 242 y 244
+150. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 242
 151. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243
 152. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 237
 153. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 244
 154. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 244
-155. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 251–252 y 268
+155. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 243–244, 251–252 y 268
 156. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 246
 157. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248
 158. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 248–249; Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5 y 6)
@@ -3676,24 +3675,25 @@ Citada como:
 | Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Hinchazón y dolor por detrás del astrágalo» | 4b · cita bajo el test | 145 |
 | Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Pronóstico | 5 · cita del pronóstico | 146 |
 | Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» | 4b · cita bajo el test | 147 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Pronóstico | 5 · cita del pronóstico | 148 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Dolor con carga y flexión dorsal» | 4b · cita bajo el test | 149 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Salto con el talón elevado frente a aterrizaje» | 4b · cita bajo el test | 150 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «ETM monopodal sobre plano inclinado» | 4b · cita bajo el test | 150 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Pronóstico | 5 · cita del pronóstico | 148 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Descarga en el salto» | 4b · cita bajo el test | 148 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Pronóstico | 5 · cita del pronóstico | 149 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Dolor con carga y flexión dorsal» | 4b · cita bajo el test | 150 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Salto con el talón elevado frente a aterrizaje» | 4b · cita bajo el test | 148 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «ETM monopodal sobre plano inclinado» | 4b · cita bajo el test | 148 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Pronóstico | 5 · cita del pronóstico | 149 |
 | Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «Crepitación en flexión plantar y dorsal» | 4b · cita bajo el test | 151 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «ETM en rango amplio» | 4b · cita bajo el test | 150 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Pronóstico | 5 · cita del pronóstico | 148 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «ETM en rango amplio» | 4b · cita bajo el test | 148 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Pronóstico | 5 · cita del pronóstico | 149 |
 | Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «ETM sobre un step en todo el rango» | 4b · cita bajo el test | 152 |
 | Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «Marcha descalzo» | 4b · cita bajo el test | 153 |
-| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Pronóstico | 5 · cita del pronóstico | 148 |
+| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Pronóstico | 5 · cita del pronóstico | 149 |
 | Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Tinel a lo largo del sural» | 4b · cita bajo el test | 152 |
 | Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Palpación en prono con flexión dorsal pasiva» | 4b · cita bajo el test | 154 |
 | Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Pronóstico | 5 · cita del pronóstico | 155 |
 | Tobillo y pie | tp13 · Bursitis Calcánea Superficial | Test «Dolor superficial e hinchazón a la presión» | 4b · cita bajo el test | 156 |
 | Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Dolor retromaleolar medial» | 4b · cita bajo el test | 157 |
 | Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Inversión resistida» | 4b · cita bajo el test | 157 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «ETM: el retropié va a varo» | 4b · cita bajo el test | 157 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «ETM: el retropié no va a varo» | 4b · cita bajo el test | 157 |
 | Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test ««Demasiados dedos»» | 4b · cita bajo el test | 143 |
 | Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Pronóstico | 5 · cita del pronóstico | 158 |
 | Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Flexoextensión del primer dedo en flexión plantar completa» | 4b · cita bajo el test | 159 |
@@ -3736,7 +3736,7 @@ Citada como:
 | Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Pronóstico | 5 · cita del pronóstico | 178 |
 | Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Test «Palpación posterolateral del talón» | 4b · cita bajo el test | 177 |
 | Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Pronóstico | 5 · cita del pronóstico | 178 |
-| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Test «Tinel en el calcáneo medial» | 4b · cita bajo el test | 179 |
+| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Test «Tinel sobre el nervio calcáneo medial» | 4b · cita bajo el test | 179 |
 | Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Pronóstico | 5 · cita del pronóstico | 155 |
 | Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Aguda: palpación calcaneocuboidea» | 4b · cita bajo el test | 180 |
 | Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Gradual: interlíneas del cuboides» | 4b · cita bajo el test | 180 |

@@ -803,7 +803,7 @@ export const hypotheses = {
     },
     tests: [
       { name: 'Batería progresiva de carga', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Batería progresiva: ETM bipodal → monopodal → saltos bipodales → monopodales, hasta reproducir; dolor localizado (1–2 dedos). EVA en cada escalón. Aquiles: la palpación no ayuda al diagnóstico. No puntúa: la única cifra de estos gestos es de Hutchison 2013 (estudio piloto, 10 tendinopatías; en Reiman 2014): ETM monopodal S 22 %, E 93 %, LR+ 3,14; salto S 43 %, E 87 %, LR+ 3,31, sin intervalo de confianza publicado.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243; Reiman 2014 (J Athl Train 49:820–9)' },
-      { name: 'Descarga en el salto', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Vigilar la descarga: aterrizar con el talón; saltar con el talón elevado aumenta el dolor.', fuente: 'Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5)' },
+      { name: 'Descarga en el salto', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Vigilar las estrategias de descarga: suele aterrizar con el pie plano; pedirle que salte con el talón elevado aumenta el dolor.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 243' },
       { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① Primer escalón de la batería que reproduce → EVA. ② Repeticiones de ETM monopodal a tempo fijo en el suelo, hasta dolor o fatiga, frente al lado sano.', fuente: 'Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5)' }
     ]
   },
@@ -863,9 +863,9 @@ export const hypotheses = {
     prom: 'FAAM o LEFS',
     dosis: '',
     pronostico: {
-      horizonte: 'Túnel: la conducción no siempre es positiva (diagnóstico clínico). Talón: infiltración diagnóstica ecoguiada; conducción si se plantea cirugía.',
-      derivacion: 'Túnel del tarso: tratar la causa de la hinchazón (FHL, sinovitis subastragalina, esguince).',
-      fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 251–252 y 268'
+      horizonte: 'Sural: diagnóstico clínico; la neurodinámica reproduce el dolor y la carga del tendón rara vez lo aumenta; una provocación del dolor aleatoria obliga a pensar en otro diagnóstico. Túnel: la conducción no siempre es positiva (diagnóstico clínico). Talón: infiltración diagnóstica ecoguiada; conducción si se plantea cirugía.',
+      derivacion: 'Sural: puede ir solo o con dolor del Aquiles o de su vaina, y un tendón hinchado lo irrita. Túnel del tarso: tratar la causa de la hinchazón (FHL, sinovitis subastragalina, esguince).',
+      fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 243–244, 251–252 y 268'
     },
     tests: [
       { name: 'Tinel a lo largo del sural', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Tinel a lo largo del sural.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 237' },
@@ -897,7 +897,7 @@ export const hypotheses = {
     tests: [
       { name: 'Dolor retromaleolar medial', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor por detrás y por debajo del maléolo medial.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248' },
       { name: 'Inversión resistida', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor conocido y debilidad relativa en la inversión resistida.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248' },
-      { name: 'ETM: el retropié va a varo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'ETM: el retropié no va a varo; en fases avanzadas no inicia.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248' },
+      { name: 'ETM: el retropié no va a varo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'ETM: el retropié no va a varo; en fases avanzadas no inicia.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248' },
       { name: '«Demasiados dedos»', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '«Demasiados dedos».', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 249' },
       { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① ETM monopodal (inicio del despegue) o inversión resistida → EVA. ② Repeticiones de ETM monopodal a tempo fijo con el retropié a varo, frente al lado sano.', fuente: 'Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5)' }
     ]
@@ -924,9 +924,9 @@ export const hypotheses = {
     prom: 'FAAM o LEFS',
     dosis: '',
     pronostico: {
-      horizonte: 'Túnel: la conducción no siempre es positiva (diagnóstico clínico). Talón: infiltración diagnóstica ecoguiada; conducción si se plantea cirugía.',
-      derivacion: 'Túnel del tarso: tratar la causa de la hinchazón (FHL, sinovitis subastragalina, esguince).',
-      fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 251–252 y 268'
+      horizonte: 'Sural: diagnóstico clínico; la neurodinámica reproduce el dolor y la carga del tendón rara vez lo aumenta; una provocación del dolor aleatoria obliga a pensar en otro diagnóstico. Túnel: la conducción no siempre es positiva (diagnóstico clínico). Talón: infiltración diagnóstica ecoguiada; conducción si se plantea cirugía.',
+      derivacion: 'Sural: puede ir solo o con dolor del Aquiles o de su vaina, y un tendón hinchado lo irrita. Túnel del tarso: tratar la causa de la hinchazón (FHL, sinovitis subastragalina, esguince).',
+      fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 243–244, 251–252 y 268'
     },
     tests: [
       { name: 'Tinel a lo largo del túnel', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Tinel a lo largo del túnel.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 252' },
@@ -1121,12 +1121,12 @@ export const hypotheses = {
     prom: 'FAAM o LEFS',
     dosis: '',
     pronostico: {
-      horizonte: 'Túnel: la conducción no siempre es positiva (diagnóstico clínico). Talón: infiltración diagnóstica ecoguiada; conducción si se plantea cirugía.',
-      derivacion: 'Túnel del tarso: tratar la causa de la hinchazón (FHL, sinovitis subastragalina, esguince).',
-      fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 251–252 y 268'
+      horizonte: 'Sural: diagnóstico clínico; la neurodinámica reproduce el dolor y la carga del tendón rara vez lo aumenta; una provocación del dolor aleatoria obliga a pensar en otro diagnóstico. Túnel: la conducción no siempre es positiva (diagnóstico clínico). Talón: infiltración diagnóstica ecoguiada; conducción si se plantea cirugía.',
+      derivacion: 'Sural: puede ir solo o con dolor del Aquiles o de su vaina, y un tendón hinchado lo irrita. Túnel del tarso: tratar la causa de la hinchazón (FHL, sinovitis subastragalina, esguince).',
+      fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 243–244, 251–252 y 268'
     },
     tests: [
-      { name: 'Tinel en el calcáneo medial', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Tinel justo proximal al origen de la fascia en la tuberosidad medial, o a lo largo del calcáneo medial.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 267' },
+      { name: 'Tinel sobre el nervio calcáneo medial', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Tinel justo proximal al origen de la fascia en la tuberosidad medial, o a lo largo del nervio calcáneo medial.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 267' },
       { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① Tinel o la carga que reproduce → EVA. ② Minutos de marcha en cinta hasta los síntomas, velocidad fija.', fuente: 'Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5)' }
     ]
   },
@@ -1230,7 +1230,7 @@ export const hypotheses = {
     dosis: DOSIS_DERIVAR,
     tests: [
       { name: 'Articulación roja, hinchada y muy dolorosa', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Articulación roja, hinchada, muy dolorosa al tacto y al movimiento; puede parecer una dactilitis.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 281' },
-      { name: 'Sistémicamente bien', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sistémicamente bien; tofos en la gota de larga evolución. En la gota, en cambio, está sistémicamente bien.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281' },
+      { name: 'Sistémicamente bien', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sistémicamente bien; tofos en la gota de larga evolución.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281' },
       { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① y ② No procede en la crisis: derivar para confirmar. Con fiebre y malestar → artritis infecciosa: urgencia.', fuente: 'Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5)' }
     ]
   },
