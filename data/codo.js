@@ -322,7 +322,7 @@ export const tree = {
       question: '¿Presenta parestesias, debilidad intrínseca de la mano o dolor quemante en el antebrazo?',
       options: [
         { label: 'SÍ — Zona medial: parestesias en 4º y 5º dedo, Tinel positivo en surco epitrócleo-olecraniano', value: 'cubital', next: null, hypothesis: ['co8'] },
-        { label: 'SÍ — Zona dorsal/lateral: dolor en antebrazo proximal que aumenta con extensión del 3er dedo', value: 'radial', next: null, hypothesis: ['co9'] },
+        { label: 'SÍ — Zona dorsal/lateral: dolor en el dorso del antebrazo proximal, distal al epicóndilo, o debilidad para extender los dedos', value: 'radial', next: null, hypothesis: ['co9'] },
         { label: 'NO — Sin síntomas neurales', value: 'no', next: 'co_step4', hypothesis: [] }
       ]
     },
@@ -356,12 +356,13 @@ export const hypotheses = {
   co1: {
     id: 'co1', region: 'codo', num: '①',
     name: 'Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista)',
-    prom: 'PRTEE (MCID: 20 pts) o QuickDASH (MCID: 10–16 pts)',
+    prom: 'PRTEE (MCID: 11 puntos o 37 %; Lluch 2020, cap. 3.2, p. 83) o QuickDASH (MCID: 10–16 pts)',
     dosis: 'Isométrico de extensión de muñeca con codo 90° en supinación. Contracción sostenida 5-10 seg sin dolor, 10 rep × 1 serie. Estiramiento suave de extensores con antebrazo pronado y codo extendido.',
     tests: [
       { name: 'Test de Cozen (extensión resistida de muñeca)', sn: '91%', sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca. Solo hay sensibilidad (sin especificidad publicada): un Cozen negativo hace menos probable la epicondilalgia, pero sin LR no puntúa.', fuente: 'Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce)' },
       { name: 'Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)', sn: '78–83%', sp: '80–90%', lr_pos: null, lr_neg: null, criterio: 'Prensión máxima con el codo a 90° de flexión y en extensión completa: en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia). Cuenta como hallazgo: los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral.', fuente: 'Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen, casi con seguridad: Dorf 2007 (J Hand Surg Am 32:882–886; retrospectivo, 81 pacientes; una diferencia del 8 % entre flexión y extensión distinguió el brazo afectado del sano con un 83 % de precisión)' },
-      { name: 'Test de Thomsen (extensión resistida de muñeca)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Variante del Test de Cozen. Extensión resistida con el codo en extensión completa.' }
+      { name: 'Test de Thomsen (extensión resistida de muñeca)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Variante del Test de Cozen. Extensión resistida con el codo en extensión completa.' },
+      { name: 'Fuerza de prensión sin dolor (dinamómetro)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'En decúbito supino con el antebrazo pronado, el paciente aprieta el dinamómetro despacio y para al primer dolor; se compara con el lado sano. El capítulo la prefiere a la prensión máxima (que en la epicondilalgia puede estar alterada o no) por su buena precisión diagnóstica, su sensibilidad al cambio y su relación con los cuestionarios del paciente, pero no da cifras: cuenta como hallazgo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 82 y 84' }
     ]
   },
   co2: {
@@ -393,7 +394,7 @@ export const hypotheses = {
     tests: [
       { name: 'Ecografía dinámica con estrés en valgo', sn: '96%', sp: '81%', lr_pos: null, lr_neg: null, criterio: 'Delta de apertura articular >1.0 mm comparado con lado contralateral. Técnica de elección no invasiva.' , fuente: 'Roedl, recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática; 144 pacientes, referencia intraoperatoria, positivo con apertura ≥1,0 mm frente al lado sano; para rotura completa, umbral de 2,5 mm: S 95 %, E 89 %)' },
       { name: 'RM con artrograma', sn: '81%', sp: '91%', lr_pos: null, lr_neg: null, criterio: 'Alta especificidad. Gold standard para lesiones del LCC.' , fuente: 'Roedl, recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática; 144 pacientes, referencia intraoperatoria; la misma precisión que la ecografía convencional en esa cohorte; otros estudios de la revisión, S 81–100 %, E 91–100 %)' },
-      { name: 'Test de valgo dinámico (maniobra de ordeño, test de valgo móvil de Mayo)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Más confiable que el valgo estático. Reproducción del dolor medial con estrés en valgo dinámico.' }
+      { name: 'Test de valgo dinámico (maniobra de ordeño, test de valgo móvil de Mayo)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Más confiable que el valgo estático. Reproducción del dolor medial con estrés en valgo dinámico. Test de valgo móvil (O\'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados: S 100 % (17/17), E 75 % (3 de 4 controles). Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Cuenta como hallazgo: la especificidad sale de solo 4 controles.', fuente: 'O\'Driscoll 2005 (Am J Sports Med 33:231–239; resumen en PubMed) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86' }
     ]
   },
   co5: {
@@ -402,8 +403,10 @@ export const hypotheses = {
     prom: 'QuickDASH (MCID: 10–16 puntos)',
     dosis: 'Isométrico de extensión de codo en posición neutra (sin rotación), 5 seg, 10 rep × 1 serie. Evitar rotación externa y supinación forzada. Mantener antebrazo en pronación leve.',
     tests: [
-      { name: 'Test de cajón posterolateral / Test de pivote lateral', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Datos de fiabilidad diagnóstica limitados/ausentes en literatura para tests clínicos específicos.', noData: true },
-      { name: 'Dolor lateral con palpación del ligamento colateral radial', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sensibilidad a la palpación del complejo ligamentario lateral.', noData: true }
+      { name: 'Test de cajón posterolateral / Test de pivote lateral', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Datos de fiabilidad diagnóstica limitados/ausentes en literatura para tests clínicos específicos. Pivot shift: en supino, brazo por encima de la cabeza, hombro en rotación externa completa y antebrazo en supinación; carga axial y valgo mientras se lleva el codo de extensión a flexión; positivo si la radiohumeral se reduce con un resalte palpable. Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular; sin especificidad publicada en el capítulo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100', noData: true },
+      { name: 'Dolor lateral con palpación del ligamento colateral radial', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sensibilidad a la palpación del complejo ligamentario lateral.', noData: true },
+      { name: 'Test de flexión en suelo (push-up) con el antebrazo en supinación', sn: '88–100%', sp: null, lr_pos: null, lr_neg: null, criterio: 'El paciente hace una flexión de brazos con el antebrazo en supinación máxima y otra en pronación máxima; positivo si la aprensión o la subluxación aparecen al extender el codo en supinación. Sensibilidad del 88–100 % (junto con el test de recolocación en la mesa), sin especificidad: cuenta como hallazgo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100' },
+      { name: 'Test de recolocación en la mesa (table-top relocation)', sn: '88–100%', sp: null, lr_pos: null, lr_neg: null, criterio: 'Con el brazo apoyado en el borde de la mesa, el codo hacia fuera y el antebrazo en supinación, el paciente flexiona el codo cargando peso: aparecen aprensión y dolor hacia los 40° de flexión. Se repite con el examinador presionando la cabeza del radio para evitar la subluxación posterior; positivo si los síntomas se alivian. Sensibilidad del 88–100 % (junto con el push-up), sin especificidad: cuenta como hallazgo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100' }
     ]
   },
   co6: {
@@ -434,17 +437,22 @@ export const hypotheses = {
     tests: [
       { name: 'Test de Tinel en túnel cubital', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Recomendado en literatura. Percusión sobre el nervio cubital en el surco epitrócleo-olecraniano. Positivo: parestesias en 4º y 5º dedo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101' },
       { name: 'Evaluación de subluxación del nervio cubital', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Con flexo-extensión de codo — el nervio cubital puede subluxarse sobre el epicóndilo medial.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92 (la subluxación no es diagnóstica de neuropatía cubital)' },
-      { name: 'Electrodiagnóstico (velocidad de conducción nerviosa)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Gold standard para confirmar neuropatía y determinar nivel y severidad de la lesión.' }
+      { name: 'Electrodiagnóstico (velocidad de conducción nerviosa)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Gold standard para confirmar neuropatía y determinar nivel y severidad de la lesión.' },
+      { name: 'Test de flexión del codo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Flexión pasiva mantenida del codo durante 60 segundos; positivo si reproduce las parestesias en el territorio cubital. Lluch atribuye a los tests de provocación cubital LR+ de 27 a 41, cifras que no se han podido comprobar en los estudios originales: cuenta como hallazgo hasta verificarlas.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101' },
+      { name: 'Test de rotación interna del hombro con flexión del codo (SIRT)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo neutro y muñeca y dedos extendidos; positivo si reproduce los síntomas en 10 segundos. Lluch atribuye a los tests de provocación cubital LR+ de 27 a 41, cifras que no se han podido comprobar en los estudios originales: cuenta como hallazgo hasta verificarlas.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101' }
     ]
   },
   co9: {
     id: 'co9', region: 'codo', num: '⑨',
-    name: 'Síndrome del Túnel Radial (Compresión Nervio Interóseo Posterior)',
+    name: 'Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior)',
     prom: 'QuickDASH (MCID: 10–16 puntos)',
     dosis: 'Deslizamiento neural del nervio radial: codo en extensión, antebrazo en pronación, muñeca en flexión palmar suave. 5 rep lentas × 1 serie, sin provocar dolor. Evitar estiramiento agresivo y posiciones de compresión neural.',
     tests: [
       { name: 'Dolor en antebrazo proximal (NO en epicóndilo lateral)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Localización más distal que la epicondilalgia lateral. Puede coexistir con ella.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100' },
-      { name: 'Dolor con extensión resistida del 3er dedo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Datos de fiabilidad diagnóstica limitados/ausentes en literatura. Provoca dolor en zona del nervio interóseo posterior.' }
+      { name: 'Dolor con extensión resistida del 3er dedo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Datos de fiabilidad diagnóstica limitados/ausentes en literatura. Provoca dolor en zona del nervio interóseo posterior. Ojo: el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100' },
+      { name: 'Dolor con supinación resistida con el codo extendido', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproduce el dolor en el dorso del antebrazo proximal. Precisión diagnóstica no estudiada.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100' },
+      { name: 'Neurodinámica del nervio radial (ULNT radial)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Depresión de la cintura escapular, extensión del codo, rotación interna del hombro, pronación, flexión de la muñeca y abducción del hombro; positivo si reproduce los síntomas (al menos en parte) y cambian con la diferenciación estructural (soltar la depresión escapular o inclinar el cuello).', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100' },
+      { name: 'Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Síndrome motor puro: debilidad para extender los dedos y, en menor grado, la muñeca, típicamente sin síntomas sensitivos. Lo distingue del túnel radial, que da dolor sin debilidad.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 100' }
     ]
   }
 };
