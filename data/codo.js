@@ -359,12 +359,13 @@ export const tree = {
   steps: [
     {
       id: 'co_step1',
-      tag: 'Paso 1 — Trauma e Integridad Muscular',
-      question: '¿Hubo un evento traumático o hay deformidad muscular característica?',
+      tag: 'Paso 1 — Trauma, Integridad Muscular y Edad',
+      question: '¿Hubo un evento traumático, hay deformidad muscular característica o es un niño o adolescente?',
       options: [
         { label: 'SÍ — Pérdida del contorno normal del brazo (a veces sutil), hinchazón y debilidad en flexión/supinación', value: 'biceps', next: null, hypothesis: ['co7'] },
         { label: 'FRACTURA / LUXACIÓN — Caída o golpe con deformidad del codo, o el codo no llega a estirarse del todo: sospecha de fractura o luxación → derivación médica', value: 'fractura', next: 'co_step2', hypothesis: [],
           derivacion: 'Sospecha de fractura o luxación tras un traumatismo (deformidad, o el codo no llega a estirarse del todo: casi un 50 % de fracturas en Appelboam 2008): derivación médica para radiografía; antes, explorar la sensibilidad, el color y la temperatura de la mano.' },
+        { label: 'NIÑO O ADOLESCENTE — Esqueleto inmaduro: tirón del brazo extendido en un menor de 5 años, lanzador joven con dolor medial, o dolor lateral insidioso entre los 7 y los 12 años', value: 'nino', next: 'co_step2', hypothesis: ['co14', 'co15', 'co16'] },
         { label: 'NO — Sin traumatismo significativo ni deformidad', value: 'no', next: 'co_step2', hypothesis: [] }
       ]
     },
@@ -384,6 +385,7 @@ export const tree = {
       options: [
         { label: 'SÍ — Zona medial: parestesias en 4º y 5º dedo, Tinel positivo en surco epitrócleo-olecraniano', value: 'cubital', next: null, hypothesis: ['co8'] },
         { label: 'SÍ — Zona dorsal/lateral: dolor en el dorso del antebrazo proximal, distal al epicóndilo, o debilidad para extender los dedos', value: 'radial', next: null, hypothesis: ['co9'] },
+        { label: 'SÍ — Zona anterior: dolor en el antebrazo anterior, parestesias del 1.º al 3.º dedo o debilidad de la flexión del pulgar y del índice', value: 'mediano', next: null, hypothesis: ['co13'] },
         { label: 'NO — Sin síntomas neurales', value: 'no', next: 'co_step4', hypothesis: [] }
       ]
     },
@@ -394,6 +396,7 @@ export const tree = {
       options: [
         { label: 'Epicóndilo lateral — Dolor con extensión resistida de muñeca (Test de Cozen) y dolor en cara lateral', value: 'lateral', next: null, hypothesis: ['co1'] },
         { label: 'Epicóndilo medial — Dolor con flexión resistida de muñeca y pronación, dolor en cara medial', value: 'medial', next: null, hypothesis: ['co2'] },
+        { label: 'Cara posterior — Dolor en la extensión terminal o con la extensión resistida del codo', value: 'posterior', next: null, hypothesis: ['co10', 'co11', 'co12'] },
         { label: 'Sin localización epicondílea clara', value: 'no', next: 'co_step5', hypothesis: [] }
       ]
     },
@@ -436,7 +439,8 @@ export const hypotheses = {
     tests: [
       { name: 'Dolor a la palpación del epicóndilo medial', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101' },
       { name: 'Dolor con flexión resistida de antebrazo y pronación', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101' },
-      { name: 'Ecografía (si se dispone de informe)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Ecografía convencional (no sonoelastografía): foco hipo o anecoico, tendón no visible, calcificación o irregularidad cortical. Cuenta como hallazgo: S 95,2 %, E 92 %, pero el patrón de referencia fue el propio diagnóstico clínico de un fisiatra y se comparó con 25 codos sin la patología, un diseño que infla la precisión y no mide si la ecografía añade algo al diagnóstico clínico.' , fuente: 'Park 2008 (Arch Phys Med Rehabil 89:738–742; prospectivo, un solo radiólogo)' }
+      { name: 'Ecografía (si se dispone de informe)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Ecografía convencional (no sonoelastografía): foco hipo o anecoico, tendón no visible, calcificación o irregularidad cortical. Cuenta como hallazgo: S 95,2 %, E 92 %, pero el patrón de referencia fue el propio diagnóstico clínico de un fisiatra y se comparó con 25 codos sin la patología, un diseño que infla la precisión y no mide si la ecografía añade algo al diagnóstico clínico.' , fuente: 'Park 2008 (Arch Phys Med Rehabil 89:738–742; prospectivo, un solo radiólogo)' },
+      { name: 'Test de Polk (medial)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sentado, con el codo a unos 100° de flexión y el antebrazo en supinación, el paciente coge y levanta un objeto de unos 2,5 kg (p. ej., un libro); positivo si duele el epicóndilo medial. Sin estudios de precisión. Ojo: Lluch llama Polk a la flexión activa de la muñeca sin resistencia; la descripción de aquí es la de la tabla 5 de Zwerus, de donde la toma el capítulo (ref. 9).', fuente: 'Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84' }
     ]
   },
   co3: {
@@ -459,12 +463,15 @@ export const hypotheses = {
     tests: [
       { name: 'Ecografía dinámica con estrés en valgo', sn: '96%', sp: '81%', lr_pos: null, lr_neg: null, criterio: 'Delta de apertura articular >1.0 mm comparado con lado contralateral. Técnica de elección no invasiva.' , fuente: 'Roedl, recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática; 144 pacientes, referencia intraoperatoria, positivo con apertura ≥1,0 mm frente al lado sano; para rotura completa, umbral de 2,5 mm: S 95 %, E 89 %)' },
       { name: 'RM con artrograma', sn: '81%', sp: '91%', lr_pos: null, lr_neg: null, criterio: 'Especificidad del 91 % en la cohorte de Roedl.' , fuente: 'Roedl, recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática; 144 pacientes, referencia intraoperatoria; la misma precisión que la ecografía convencional en esa cohorte; otros estudios de la revisión, S 81–100 %, E 91–100 %)' },
-      { name: 'Test de valgo móvil (moving valgus stress test)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O\'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O\'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados: S 100 % (17/17), E 75 % (3 de 4 controles). Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 controles y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.', fuente: 'O\'Driscoll 2005 (Am J Sports Med 33:231–239; resumen en PubMed) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86' }
+      { name: 'Test de valgo móvil (moving valgus stress test)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O\'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O\'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados: S 100 % (17/17), E 75 % (3 de 4 controles). Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 controles y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.', fuente: 'O\'Driscoll 2005 (Am J Sports Med 33:231–239; resumen en PubMed) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86' },
+      { name: 'Test de valgo estático (dolor)', sn: '64.7%', sp: '50%', lr_pos: '1.29', lr_neg: '0.71', criterio: 'Sentado, codo a 70° de flexión y antebrazo en supinación máxima; estrés en valgo comparado con el otro codo; positivo si reproduce el dolor medial. Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°. El dolor es más sensible y la laxitud, más específica (Lluch). En O\'Driscoll 2005 (Zwerus, tabla 4): S 64,7 %, E 50 % (solo 4 controles), LR+ 1,29 (IC 0,46–3,66), LR− 0,71: no cambia la probabilidad, cuenta como hallazgo.', fuente: 'Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86' },
+      { name: 'Test de valgo estático (laxitud)', sn: '18.8%', sp: null, lr_pos: null, lr_neg: '0.81', criterio: 'La misma maniobra, valorando la apertura medial o la falta de tope firme frente al otro codo. En O\'Driscoll 2005 (Zwerus, tabla 4): S 18,8 %, E 100 % (solo 4 controles; la LR+ no se puede calcular), LR− 0,81: cuenta como hallazgo.', fuente: 'Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86' },
+      { name: 'Dolor a la palpación justo distal al epicóndilo medial', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Palpación del ligamento colateral medial justo distal al epicóndilo medial. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 101' }
     ]
   },
   co5: {
     id: 'co5', region: 'codo', num: '⑤',
-    name: 'Inestabilidad Rotatoria Posterolateral (IRPL)',
+    name: 'Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL)',
     prom: 'QuickDASH',
     dosis: 'Sin ensayos que guíen el tratamiento conservador: una revisión sistemática solo encontró dos ensayos sobre la inestabilidad del codo, uno que comparaba la cirugía con 3 semanas de yeso (sin diferencias al año) y otro de movilización precoz tras la cirugía, los dos con alto riesgo de sesgo (Rinkel). Una revisión narrativa (opinión, no evidencia de eficacia) propone una prueba de tratamiento conservador de 4–6 semanas cuando la inestabilidad es leve o dudosa y los síntomas mejoran tras una lesión reciente: evitar la carga axial en extensión y supinación; fortalecer la musculatura extensora y supinadora, la cocontracción de bíceps y tríceps y el control escapular, con reeducación propioceptiva; y una ortesis articulada con el antebrazo en pronación como complemento. Si persisten la aprensión o los fallos, o la inestabilidad es crónica, valoración quirúrgica (Quzli).',
     dosisFuente: 'Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Quzli 2025, Cureus 17(11):e96151 (revisión narrativa, sin protocolo: opinión de los autores)',
@@ -472,18 +479,23 @@ export const hypotheses = {
       { name: 'Test de cajón posterolateral / Test de pivote lateral', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Datos de fiabilidad diagnóstica limitados/ausentes en literatura para tests clínicos específicos. Pivot shift: en supino, brazo por encima de la cabeza, hombro en rotación externa completa y antebrazo en supinación; carga axial y valgo mientras se lleva el codo de extensión a flexión; positivo si la radiohumeral se reduce con un resalte palpable. Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular; sin especificidad publicada en el capítulo. El dato es de Regan y Lapner, recogido en Zwerus 2018: 8 pacientes, todos con la lesión y sin controles, así que no hay especificidad posible.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)', noData: true },
       { name: 'Dolor lateral con palpación del ligamento colateral radial', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sensibilidad a la palpación del complejo ligamentario lateral.', noData: true },
       { name: 'Test de flexión en suelo (push-up) con el antebrazo en supinación', sn: '87.5%', sp: null, lr_pos: null, lr_neg: null, criterio: 'El paciente hace una flexión de brazos con el antebrazo en supinación máxima y otra en pronación máxima; positivo si la aprensión o la subluxación aparecen al extender el codo en supinación. En Zwerus 2018 (tabla 4; Regan y Lapner): S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles; sin especificidad: cuenta como hallazgo. Lluch da el 88–100 % para este test y el de recolocación juntos.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)' },
-      { name: 'Test de recolocación en la mesa (table-top relocation)', sn: '100%', sp: null, lr_pos: null, lr_neg: null, criterio: 'Con el brazo apoyado en el borde de la mesa, el codo hacia fuera y el antebrazo en supinación, el paciente flexiona el codo cargando peso: aparecen aprensión y dolor hacia los 40° de flexión. Se repite con el examinador presionando la cabeza del radio para evitar la subluxación posterior; positivo si los síntomas se alivian. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles; sin especificidad: cuenta como hallazgo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)' }
+      { name: 'Test de recolocación en la mesa (table-top relocation)', sn: '100%', sp: null, lr_pos: null, lr_neg: null, criterio: 'Con el brazo apoyado en el borde de la mesa, el codo hacia fuera y el antebrazo en supinación, el paciente flexiona el codo cargando peso: aparecen aprensión y dolor hacia los 40° de flexión. Se repite con el examinador presionando la cabeza del radio para evitar la subluxación posterior; positivo si los síntomas se alivian. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles; sin especificidad: cuenta como hallazgo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)' },
+      { name: 'Dolor y laxitud con estrés en varo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Estrés en varo comparado con el otro codo; en la lesión del complejo colateral lateral reproduce dolor y laxitud. Tras una luxación, la estabilidad se explora con estrés en varo y valgo a 30° de flexión y con el pivot shift. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 93 y 100' }
     ]
   },
   co6: {
     id: 'co6', region: 'codo', num: '⑥',
-    name: 'Pinzamiento Posterolateral por Plica Radiocapitelar',
+    name: 'Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar',
     prom: 'DASH (MCID: 10,2 puntos en trastornos del miembro superior; Lucado 2022) o Mayo Elbow Performance Score',
     dosis: 'Hay consenso en empezar por el tratamiento conservador, pero no hay datos sobre cuál aplicar ni sobre su eficacia. Los autores aconsejan reducir la actividad, recuperar el rango de movimiento con fisioterapia guiada y antiinflamatorios no esteroideos; en algunos casos, una infiltración, que además sirve de prueba diagnóstica. Si fracasa (los estudios esperaron de 3 a 6 meses), resección artroscópica, con buen resultado en el 81 % de 288 pacientes de 19 estudios de calidad variable.',
     dosisFuente: 'Lubiatowski 2020, EFORT Open Rev 5(9):549–557 (revisión narrativa)',
     tests: [
       { name: 'Dolor posterolateral en línea articular radiocapitelar a la palpación', sn: '83.3%', sp: null, lr_pos: null, lr_neg: null, criterio: 'Presente en el 83.3% de los casos confirmados artroscópicamente.' , fuente: 'Park 2019 (Medicine 98:e15497): punto de máximo dolor en la línea radiocapitelar en 20 de 24 · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83–84 y 100 (dolor localizado en la línea radiohumeral posterolateral: sospechar un problema intraarticular)' },
-      { name: 'Test de plica radiocapitelar posterolateral', sn: '83.3%', sp: '87.5%', lr_pos: null, lr_neg: null, criterio: 'Pulgar en la cara posterolateral de la radiocapitelar y antebrazo en pronación; empezar con el codo extendido y flexionar manteniendo la presión. Positivo si el dolor a baja flexión desaparece claramente por encima de 90°. S 83,3 % (IC 95 % 62,6–95,3), E 87,5 %: 24 plicas confirmadas por artroscopia frente a 56 epicondilalgias laterales (el diferencial real). Estudio retrospectivo de los creadores del test. La RM identificó la plica en el 70,8 %.' , fuente: 'Park 2019 (Medicine 98:e15497; retrospectivo, n = 24 frente a 56)' }
+      { name: 'Test de plica radiocapitelar posterolateral', sn: '83.3%', sp: '87.5%', lr_pos: null, lr_neg: null, criterio: 'Pulgar en la cara posterolateral de la radiocapitelar y antebrazo en pronación; empezar con el codo extendido y flexionar manteniendo la presión. Positivo si el dolor a baja flexión desaparece claramente por encima de 90°. S 83,3 % (IC 95 % 62,6–95,3), E 87,5 %: 24 plicas confirmadas por artroscopia frente a 56 epicondilalgias laterales (el diferencial real). Estudio retrospectivo de los creadores del test. La RM identificó la plica en el 70,8 %.' , fuente: 'Park 2019 (Medicine 98:e15497; retrospectivo, n = 24 frente a 56)' },
+      { name: 'PEPPER (palpación-extensión de la radiocapitelar)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Posterior Elbow Pain by Palpation-Extension of the Radiocapitellar joint: compresión de la cara posterior de la cabeza del radio mientras se extiende el codo; positivo si reproduce el dolor posterolateral. Solo fue preciso para la condropatía de la cabeza del radio; el capítulo no da cifras y no se ha estudiado en una población más amplia con dolor de codo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 89 y 100' },
+      { name: 'SALT (supinación y dolor anterolateral)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Supination and Antero-Lateral pain Test: compresión de la cara anterior de la cabeza del radio, deslizando el dedo sobre ella, mientras se supina el codo; positivo si reproduce el dolor anterolateral. Sensibilidad alta pero especificidad baja para la laxitud del ligamento colateral lateral y los hallazgos intraarticulares; sin cifras en el capítulo.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 89 y 100' },
+      { name: 'Test de flexión-pronación', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Pronación del antebrazo mientras se flexiona y extiende el codo; positivo si aparece un chasquido doloroso. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89' },
+      { name: 'Deslizamientos accesorios de la cabeza del radio', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor e hipomovilidad con los deslizamientos accesorios de la cabeza del radio; también movimientos combinados (flexión-pronación-abducción, extensión-abducción) para buscar hipomovilidad, hipermovilidad o dolor. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 89 y 100' }
     ]
   },
   co7: {
@@ -523,6 +535,85 @@ export const hypotheses = {
       { name: 'Dolor con supinación resistida con el codo extendido', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproduce el dolor en el dorso del antebrazo proximal. Precisión diagnóstica no estudiada.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100' },
       { name: 'Neurodinámica del nervio radial (ULNT radial)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Depresión de la cintura escapular, extensión del codo, rotación interna del hombro, pronación, flexión de la muñeca y abducción del hombro; positivo si reproduce los síntomas (al menos en parte) y cambian con la diferenciación estructural (soltar la depresión escapular o inclinar el cuello).', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100' },
       { name: 'Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Síndrome motor puro: debilidad para extender los dedos y, en menor grado, la muñeca, típicamente sin síntomas sensitivos. Lo distingue del túnel radial, que da dolor sin debilidad.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 100' }
+    ]
+  },
+  co10: {
+    id: 'co10', region: 'codo', num: '⑩',
+    name: 'Tendinopatía o Rotura del Tríceps',
+    prom: 'QuickDASH',
+    dosis: '',
+    tests: [
+      { name: 'Dolor con la extensión activa o resistida del codo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Reproduce el dolor posterior. Más frecuente en varones, lanzadores, culturistas y ciclistas de montaña; los síntomas suelen seguir a un aumento brusco de la actividad. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 103' },
+      { name: 'Dolor a la palpación de la inserción del tríceps', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103' },
+      { name: 'Defecto palpable e hinchazón (rotura)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'En la rotura: defecto palpable e hinchazón, tras una lesión aguda o un golpe directo; preguntar por anabolizantes. No hay pruebas diagnósticas específicas descritas: el diagnóstico concluyente puede requerir ecografía o RM.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 103' },
+      { name: 'Test de compresión del tríceps (triceps squeeze test)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sentado, con el antebrazo colgando sobre el respaldo de una silla y el codo a 90°; el examinador aprieta con firmeza el vientre del tríceps; si el codo no se extiende, sugiere una rotura completa. Descrito en libros de texto, sin estudios de precisión.', fuente: 'Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)' }
+    ]
+  },
+  co11: {
+    id: 'co11', region: 'codo', num: '⑪',
+    name: 'Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo)',
+    prom: 'QuickDASH',
+    dosis: '',
+    tests: [
+      { name: 'Dolor en la extensión terminal del codo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor provocado por la extensión del codo, en el deportista joven (en lanzadores, sobre todo en la fase de seguimiento o desaceleración) o en el mayor. Puede asociar laxitud del ligamento colateral medial en el estrés en valgo. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85–86, 88 y 103' },
+      { name: 'Déficit fijo de extensión', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Puede haber un flexo fijo; un tope duro a la extensión sugiere un cuerpo libre o un osteofito posterior. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 103' },
+      { name: 'Arm bar test', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'De pie, con el hombro en 90° de flexión y rotación interna completa y el índice apoyado en el hombro del examinador, que presiona sobre el húmero distal para extender del todo el codo; positivo si reproduce dolor posteromedial. Sin estudios de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)' },
+      { name: 'Test de sobrecarga en valgo (valgus overload)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Desde 20–30° de flexión, el examinador extiende con fuerza el codo mientras aplica valgo; positivo si reproduce dolor posteromedial. Sin estudios de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)' }
+    ]
+  },
+  co12: {
+    id: 'co12', region: 'codo', num: '⑫',
+    name: 'Fractura de Estrés del Olécranon',
+    prom: 'QuickDASH',
+    dosis: DOSIS_DERIVAR,
+    tests: [
+      { name: 'Dolor con la extensión del codo, sin traumatismo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor en la extensión terminal del codo en lanzadores, típicamente sin antecedente de traumatismo. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81 y 103' },
+      { name: 'Pérdida de la extensión terminal', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Puede faltar la extensión terminal. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103' },
+      { name: 'TC (si la radiografía no es concluyente)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'La radiografía simple puede no ser concluyente: se necesita una TC. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103' }
+    ]
+  },
+  co13: {
+    id: 'co13', region: 'codo', num: '⑬',
+    name: 'Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior)',
+    prom: 'QuickDASH',
+    dosis: '',
+    tests: [
+      { name: 'Dolor a la palpación del pronador redondo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor en la cara anterior del codo y el antebrazo, con parestesias sobre todo del 1.º al 3.º dedo. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102' },
+      { name: 'Síntomas con la pronación resistida con el codo extendido', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102' },
+      { name: 'Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102' },
+      { name: 'Neurodinámica del nervio mediano (ULNT mediano)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Depresión de la cintura escapular, abducción del hombro, supinación, extensión de la muñeca y extensión del codo; positivo si reproduce los síntomas (al menos en parte) y cambian con la diferenciación estructural (soltar la depresión escapular o inclinar el cuello).', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 102' },
+      { name: 'Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Síndrome motor puro, con solo una molestia vaga en el antebrazo. Las lesiones del interóseo anterior pueden ser idiopáticas y en general no son compresivas.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102' }
+    ]
+  },
+  co14: {
+    id: 'co14', region: 'codo', num: '⑭',
+    name: 'Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño)',
+    prom: 'QuickDASH',
+    dosis: DOSIS_DERIVAR,
+    tests: [
+      { name: 'Tirón del brazo extendido en un menor de 5 años, sin caída', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor brusco, pérdida de movimiento y angustia al intentar moverlo, sin antecedente de caída; a menudo sin hinchazón, deformidad ni hematoma. Hay que descartar una fractura o una infección.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 100' },
+      { name: 'Dolor y limitación de la pronación y de la extensión del codo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 100' }
+    ]
+  },
+  co15: {
+    id: 'co15', region: 'codo', num: '⑮',
+    name: 'Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven)',
+    prom: 'QuickDASH',
+    dosis: 'Identificar y tratar pronto la lesión del cartílago de crecimiento: si no, aumenta el riesgo de dolor crónico e inestabilidad, que a menudo acaban con la carrera deportiva. Ajustar con cuidado las cargas de entrenamiento para asegurar periodos adecuados de descanso y recuperación. La fuente no da una pauta de ejercicio.',
+    dosisFuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94 (capítulo de libro: opinión de los autores, sin ensayos)',
+    tests: [
+      { name: 'Dolor medial con el lanzamiento en un deportista con el esqueleto inmaduro', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Inestabilidad crónica en valgo por lanzamientos repetidos: apofisitis o fractura por avulsión del epicóndilo medial; puede asociar osteocondritis disecante de la cabeza del radio o del capítulo. Preguntar por cambios de entrenamiento y de material. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94' },
+      { name: 'Dolor y laxitud con el estrés en valgo o el valgo móvil', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Mismos hallazgos que la lesión del ligamento colateral medial del adulto. Sin datos de precisión en el niño.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 101' }
+    ]
+  },
+  co16: {
+    id: 'co16', region: 'codo', num: '⑯',
+    name: 'Enfermedad de Panner / Osteocondritis Disecante del Capítulo',
+    prom: 'QuickDASH',
+    dosis: '',
+    tests: [
+      { name: 'Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Empeora con la actividad y cede con el reposo (Panner). La osteocondritis disecante se presenta como un dolor lateral insidioso con antecedente de traumatismos repetidos. Sin datos de precisión.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94–95' },
+      { name: 'Imagen: radiografía o RM', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'La radiografía puede mostrar desmineralización, esclerosis o fragmentación; la RM es más sensible para el diagnóstico precoz.', fuente: 'Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 95' }
     ]
   }
 };

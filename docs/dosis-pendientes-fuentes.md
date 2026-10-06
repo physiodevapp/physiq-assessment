@@ -147,7 +147,7 @@ Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y n
 
 Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2017, guía APTA de dolor de cadera no artrósico de Enseki 2023 y consenso de Zúrich del IHiPRN), `ca1`–`ca3` ganan grados de recomendación.
 
-## Codo (`co1`–`co9`)
+## Codo (`co1`–`co16`)
 
 `co1`–`co9` tenían series, repeticiones, «% de esfuerzo» y ángulos sin fuente desde el primer commit: ✅ revisadas en 2026-10, como `h1`–`h9`. Leídos en la sesión: Lucado 2022 (PDF completo de orthopt.org), Wistow 2025, Siemensma 2023, Biz 2019, Quzli 2025, Lubiatowski 2020 y Natroshvili 2023 (texto completo en Europe PMC); Caliandro 2025 (Cochrane), Cascia 2019 y Bateman 2025 (solo el resumen: el texto completo no es accesible); Rinkel 2013, See 2026 y Zwerus 2018 (PDF del usuario).
 
@@ -162,13 +162,20 @@ Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2
 | co7 | Rotura distal del bíceps | ✅ C · Derivación | — | `DOSIS_DERIVAR` (decisión del usuario, 2026-10); solo había cohortes retrospectivas |
 | co8 | Neuropatía cubital | ✅ **Hecho** (2026-10) · B | Caliandro 2025 (Cochrane) · Rinkel 2013 · Bateman 2025 | Información sobre posturas que evitar; ortesis, deslizamiento neural e información sola sin diferencias; férula nocturna con evidencia insuficiente. **Conflicto:** Natroshvili 2023 (revisión sistemática de series sin control) da mejoría en el 89 % con férula; Bateman 2025, del mismo nivel y más reciente, concluye que la evidencia es insuficiente (certeza muy baja): prevalece Bateman y Natroshvili no se cita |
 | co9 | Neuropatía radial (túnel radial / NIP) | ✅ D | Rinkel 2013 (ningún ensayo) | `dosis: ''`: Rinkel no encontró ningún ensayo del túnel radial. La pauta anterior no tenía fuente |
+| co10 | Tendinopatía o rotura del tríceps | D | — | Hipótesis nueva (2026-10, Lluch 2020, cap. 3.2): sin fuente de pauta, `dosis: ''` |
+| co11 | Pinzamiento posterior o posteromedial | D | — | Ídem |
+| co12 | Fractura de estrés del olécranon | ✅ C · Derivación | — | `DOSIS_DERIVAR` (decisión del usuario, 2026-10) |
+| co13 | Neuropatía del mediano (pronador / interóseo anterior) | D | — | Hipótesis nueva: `dosis: ''` |
+| co14 | Pronación dolorosa | ✅ C · Derivación | — | `DOSIS_DERIVAR` (decisión del usuario, 2026-10): Lluch pide descartar fractura o infección |
+| co15 | Codo de la liga infantil | ✅ **Hecho** (2026-10) · opinión | Lluch 2020, cap. 3.2, p. 94 | Detectar y tratar pronto la lesión del cartílago de crecimiento y ajustar las cargas con descanso y recuperación; sin pauta de ejercicio |
+| co16 | Panner / osteocondritis disecante del capítulo | D | — | Hipótesis nueva: `dosis: ''` |
 
 ## Resumen
 - **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12 y ca17.
 - **Con fuente de pauta, a falta del PDF de pago (A):** ninguna.
-- **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), co7 (rotura distal del bíceps, 2026-10), h11, ro11, tp3–tp6, tp17, tp30, tp35 y tp37 (fractura maleolar, 2026-10) llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
+- **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), co7 (rotura distal del bíceps, 2026-10), co12 (fractura de estrés del olécranon) y co14 (pronación dolorosa, 2026-10), h11, ro11, tp3–tp6, tp17, tp30, tp35 y tp37 (fractura maleolar, 2026-10) llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
 - **Recomendación de guía sin pauta numérica (B), pendientes:** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ro12` (ESSKA 2024), `tp2`, `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
-- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `co9`, `ca10`, `ca13`–`ca15`, `ca18`, `ca19`, `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
+- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `co9`–`co11`, `co13`, `co16`, `ca10`, `ca13`–`ca15`, `ca18`, `ca19`, `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
 ## Para cerrar esto
 Hay dos caminos: que el usuario aporte los PDF (como se hizo en cadera y rodilla), o permitir en la red del entorno `pubmed.ncbi.nlm.nih.gov`, `pmc.ncbi.nlm.nih.gov`, `www.jospt.org` y `www.orthopt.org`. Luego, una región por sesión, siguiendo la Fase D.
