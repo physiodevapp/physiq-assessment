@@ -443,8 +443,19 @@ async function recorrerGrabadora(browser, errors) {
   await page.waitForTimeout(1200);
   const b1 = await btn();
   r.pildora = /\d\d:\d\d/.test(b1.texto);
-  r.cabeceraSinDesbordar = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth
-    && document.querySelector('.header-right').getBoundingClientRect().right <= innerWidth + 1);
+  // A 390 px, grabando y también con el chip del modo breve (solo CSS: la clase
+  // del body basta para medirlo): ni el logo pisa los botones ni se salen.
+  const cabeceraCabe = () => page.evaluate(() => {
+    const r = s => document.querySelector(s).getBoundingClientRect();
+    const items = [...document.querySelectorAll('.header-right > *')].filter(e => e.offsetParent).map(e => e.getBoundingClientRect().right);
+    return document.documentElement.scrollWidth <= innerWidth && Math.max(...items) <= innerWidth + 1
+      && r('.logo').right <= r('.header-right').left + 1;
+  });
+  const sinBreve = await cabeceraCabe();
+  await page.evaluate(() => document.body.classList.add('modo-breve'));
+  const conBreve = await cabeceraCabe();
+  await page.evaluate(() => document.body.classList.remove('modo-breve'));
+  r.cabeceraSinDesbordar = sinBreve && conBreve;
 
   await walkRegion(page, 'lumbar');                    // la consulta sigue grabando
   r.siguePorLasFases = (await btn()).clases.includes('recording');
