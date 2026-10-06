@@ -26,9 +26,9 @@ export const screening = {
     titulo: 'URGENCIAS · COMPARTIMENTAL Y NEUROVASCULAR · ARTRITIS INFECCIOSA · ROTURA DEL AQUILES · OTTAWA',
     lineas: [
       'SÍNDROME COMPARTIMENTAL Y COMPROMISO NEUROVASCULAR tras lesión grave del mediopié (Lisfranc): el flujo puede caer tras luxarse el 2.º MT → cirugía urgente. Cinco P: palidez · dolor desproporcionado · parestesias · sin pulso · frialdad.',
-      'ARTRITIS INFECCIOSA: monoartritis aguda con MALESTAR SISTÉMICO Y FIEBRE ALTA → URGENCIA HOY. En la gota, en cambio, está sistémicamente bien.',
+      'ARTRITIS INFECCIOSA: monoartritis aguda con MALESTAR SISTÉMICO Y FIEBRE ALTA → URGENCIA HOY. En la gota suele estar sistémicamente bien, aunque un brote agudo puede dar fiebre y leucocitosis: solo el análisis del líquido articular las separa.',
       'ROTURA AGUDA DEL AQUILES: golpe o patada detrás de la pierna en un gesto explosivo, a veces chasquido; camina sorprendentemente bien, con cojera. Thompson: prono, pie fuera de la camilla; al comprimir la pantorrilla el tobillo no se mueve → S 96 % · E 93 % → derivación preferente.',
-      'REGLAS DE OTTAWA, antes de explorar cualquier traumatismo agudo. TOBILLO → radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. PIE → radiografía si dolor en el mediopié Y alguno: dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos. Muy sensible, moderadamente específica (sin cifras en el capítulo). Excluidas embarazadas y personas que no pueden seguir la prueba (p. ej., traumatismo craneal). ≈10 % de las inversiones acaban en fractura.'
+      'REGLAS DE OTTAWA, antes de explorar cualquier traumatismo agudo. TOBILLO → radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. PIE → radiografía si dolor en el mediopié Y alguno: dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos. Muy sensible, moderadamente específica: S 98,5 % en niños de más de 6 años (Lluch, p. 257); en adultos, una regla negativa descarta fractura (LR− 0,08, Bachmann 2003). Excluidas embarazadas y personas que no pueden seguir la prueba (p. ej., traumatismo craneal). ≈10 % de las inversiones acaban en fractura.'
     ]
   },
   sistemas: [
@@ -229,7 +229,7 @@ export const screening = {
       // BANDERAS «Artritis inflamatoria».
       id: 'tp_infecciosa', icon: '🦠', nombre: 'Infecciosa / Inflamatoria',
       banderasRojas: [
-        'ARTRITIS INFECCIOSA: monoartritis aguda con MALESTAR SISTÉMICO Y FIEBRE ALTA → URGENCIA HOY. En la gota, en cambio, está sistémicamente bien.',
+        'ARTRITIS INFECCIOSA: monoartritis aguda con MALESTAR SISTÉMICO Y FIEBRE ALTA → URGENCIA HOY. En la gota suele estar sistémicamente bien, aunque un brote agudo puede dar fiebre y leucocitosis: solo el análisis del líquido articular las separa.',
         'Artritis inflamatoria: Rigidez matutina de más de 60 min que mejora con la actividad (reumatoide, espondiloartropatía, psoriásica, reactiva). En consulta: Tumefacción caliente, a menudo simétrica; dactilitis y uñas en la psoriásica.'
       ],
       banderasAmarillas: [],
@@ -290,7 +290,7 @@ export const screening = {
       id: 'tp_oncologico', icon: '🔬', nombre: 'Oncológico / Sistémico',
       banderasRojas: [
         'Osteoma osteoide y otros tumores: Segunda década. Dolor sordo peor de noche, sin relación con la actividad; alivio en <20 min con AINE. Sin alivio → otras causas (osteosarcoma: masa blanda). En consulta: Dolor puntual y tumefacción. ≈25 % no se ve en radiografía.',
-        'Malignidad o infección: Síntomas sistémicos, pérdida de peso, sudores nocturnos; dolor nocturno que despierta. En consulta: Cribado general de la ficha. No reproducir el dolor conocido también obliga a pensarlo.'
+        'Malignidad o infección: Síntomas sistémicos, pérdida de peso, sudores nocturnos; dolor nocturno que despierta. En consulta: Cribado general de la ficha. No reproducir el dolor conocido también obliga a pensarlo, igual que un dolor conocido que no mejora con una infiltración diagnóstica.'
       ],
       banderasAmarillas: [],
       preguntas: [
@@ -377,7 +377,7 @@ export const screening = {
               { texto: 'NICE CG147 — NICE, «Peripheral arterial disease: diagnosis and management» (2012, actualizada el 11 de diciembre de 2020), recomendaciones 1.3.1–1.3.4.', url: 'https://www.nice.org.uk/guidance/cg147' }
             ]
           } },
-        { id: 'tp_v2', text: '¿Tras una inmovilización, una férula, estar encamado o una cirugía reciente, tiene la pantorrilla o toda la pierna hinchada, caliente o dolorosa? (Posible TVP: calcular Wells; ≥2 → probable.)', alerta: true,
+        { id: 'tp_v2', urgencia: 'Posible TVP: calcular Wells; con 2 o más, derivar hoy (NICE NG158: ecografía en 4 horas; riesgo de embolia pulmonar).', text: '¿Tras una inmovilización, una férula, estar encamado o una cirugía reciente, tiene la pantorrilla o toda la pierna hinchada, caliente o dolorosa? (Posible TVP: calcular Wells; ≥2 → probable.)', alerta: true,
           razonamiento: {
             porque: 'Tras una inmovilización, una férula, el encamamiento o una cirugía, la sangre de las venas de la pierna se estanca porque deja de funcionar la bomba de la pantorrilla, y la cirugía o el traumatismo dañan la pared venosa y aumentan la coagulabilidad: es la tríada de Virchow. Se forma un coágulo, casi siempre empezando en las venas de la pantorrilla, que dificulta el retorno y da hinchazón, calor y dolor en esa pierna. El riesgo es que se suelte y llegue al pulmón.',
             peso: 'Pesa mucho por lo que está en juego: la embolia pulmonar puede ser la primera manifestación (Goodman). Pero la clínica sola engaña: hasta la mitad de las TVP no da signos específicos, y ningún signo, solo o combinado, basta para confirmarla o descartarla (Waheed); el signo de Homans es poco sensible y poco específico (Goodman). Por eso NICE pide calcular la escala de Wells de dos niveles: con 2 puntos o más la TVP es probable y hay que hacer una ecografía, con el resultado en 4 horas si es posible; con 1 o menos, un dímero D. Toda fractura de tobillo debería tener valorado su riesgo de TVP (Hermena y Slane). Con sospecha, derivar sin demora a quien pueda confirmarla o descartarla.',
@@ -407,12 +407,12 @@ export const screening = {
       // árbol, nodo 1 (debilidad simétrica progresiva con arreflexia → urgencia).
       id: 'tp_neuro', icon: '🧠', nombre: 'Neurológico',
       banderasRojas: [
-        'Neuropatía sistémica: Dolor neuropático simétrico (diabetes), pie caído (mononeuritis múltiple), debilidad simétrica progresiva en 2–4 semanas con arreflexia (desmielinizante aguda → mismo día). En consulta: Reflejo aquíleo, vibración, pinchazo, temperatura.',
+        'Neuropatía sistémica: Dolor neuropático simétrico (diabetes), pie caído (mononeuritis múltiple), debilidad simétrica que progresa en días o pocas semanas con arreflexia (desmielinizante aguda → mismo día). En consulta: Reflejo aquíleo, vibración, pinchazo, temperatura.',
         'SDRC: Signos autonómicos tras una lesión: rubor, hinchazón más allá de la fase aguda, hiperestesia, hiperalgesia. En consulta: Temperatura, color, sudoración y sensibilidad frente al lado sano.'
       ],
       banderasAmarillas: [],
       preguntas: [
-        { id: 'tp_n1', urgencia: 'Debilidad simétrica progresiva con arreflexia (sospecha de neuropatía desmielinizante aguda): derivación médica el mismo día.', text: '¿Tiene debilidad en las dos piernas que va a más desde hace 2–4 semanas? (Explorar reflejos: con arreflexia, derivación el mismo día.)', alerta: true, s1: true,
+        { id: 'tp_n1', urgencia: 'Debilidad simétrica progresiva con arreflexia (sospecha de neuropatía desmielinizante aguda): derivación médica el mismo día.', text: '¿Tiene debilidad en las dos piernas que va a más en días o pocas semanas? (Explorar reflejos: con arreflexia, derivación el mismo día.)', alerta: true, s1: true,
           razonamiento: {
             porque: 'Una debilidad que empieza en las dos piernas y va a más en días o semanas, con los reflejos abolidos, hace pensar en un síndrome de Guillain-Barré. Tras una infección, el sistema inmune fabrica anticuerpos contra el germen que, por parecido, atacan también la mielina o el axón de los nervios periféricos y de sus raíces. Sin mielina, el impulso nervioso se enlentece o se bloquea: debilidad simétrica, reflejos ausentes y hormigueo en pies y manos.',
             peso: 'Es una urgencia neuromuscular potencialmente mortal: la debilidad puede subir hasta los músculos respiratorios, y la afectación autonómica puede dar arritmias; la mortalidad es del 3–7 %, y de alrededor del 20 % si necesita ventilación (Bhatti). Lluch lo describe en su tabla de neuropatías: debilidad muscular simétrica y progresiva con reflejos ausentes o disminuidos en 2–4 semanas, que puede empezar con dolor en las extremidades y la espalda. Bhatti añade que suele llegar a su peor momento en menos de 2 semanas, y Goodman, que la debilidad progresa rápido, en 3–7 días. Goodman pide derivar los síntomas neurológicos progresivos que aparecen 1–3 semanas después de una infección o una vacuna. Con debilidad progresiva y arreflexia, derivación médica el mismo día.',
@@ -1230,7 +1230,7 @@ export const hypotheses = {
     dosis: DOSIS_DERIVAR,
     tests: [
       { name: 'Articulación roja, hinchada y muy dolorosa', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Articulación roja, hinchada, muy dolorosa al tacto y al movimiento; puede parecer una dactilitis.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 281' },
-      { name: 'Sistémicamente bien', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sistémicamente bien; tofos en la gota de larga evolución.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281' },
+      { name: 'Suele estar sistémicamente bien', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Suele estar sistémicamente bien, aunque un brote agudo puede dar fiebre y leucocitosis y confundirse con una artritis séptica: solo el líquido articular las separa. Tofos en la gota de larga evolución.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Menon y Rednam 2026 (StatPearls, «Gout»)' },
       { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① y ② No procede en la crisis: derivar para confirmar. Con fiebre y malestar → artritis infecciosa: urgencia.', fuente: 'Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5)' }
     ]
   },

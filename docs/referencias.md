@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **262** referencias de literatura, con **1026** usos.
+- **262** referencias de literatura, con **1029** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **19** de 262 referencias del registro revisadas. Ver «Estado de revisión».
 - **29** de 442 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -50,7 +50,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | **sin revisar** |
 | [Litaker 2000](#litaker-2000) | puntuación 4b | 1 | **sin revisar** |
 | [Solomon 2001](#solomon-2001) | puntuación 4b · texto | 3 | **sin revisar** |
-| [Bachmann 2003](#bachmann-2003) | puntuación 4b · razonamiento fase 2 · texto | 3 | **sin revisar** |
+| [Bachmann 2003](#bachmann-2003) | puntuación 4b · razonamiento fase 2 · texto | 4 | **sin revisar** |
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Chronopoulos 2004](#chronopoulos-2004) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
@@ -155,9 +155,10 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Margetis y Donnally 2025](#margetis-y-donnally-2025) | test 4b sin puntuar · razonamiento fase 2 | 5 | **sin revisar** |
 | [Williams 2025](#williams-2025) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Menon y Rednam 2026](#menon-y-rednam-2026) | test 4b sin puntuar · razonamiento fase 2 | 2 | **sin revisar** |
 | [NICE CG147](#nice-cg147) | razonamiento fase 2 | 4 | **sin revisar** |
 | [NICE NG126](#nice-ng126) | razonamiento fase 2 | 1 | **sin revisar** |
-| [NICE NG158](#nice-ng158) | razonamiento fase 2 | 3 | **sin revisar** |
+| [NICE NG158](#nice-ng158) | razonamiento fase 2 · texto | 4 | **sin revisar** |
 | [NICE NG19](#nice-ng19) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG38](#nice-ng38) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -274,7 +275,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Menon y Cassaro 2026](#menon-y-cassaro-2026) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Menon y Rednam 2026](#menon-y-rednam-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Moore y Tafti 2026](#moore-y-tafti-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sabry y Li 2026](#sabry-y-li-2026) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Seaman y Bergman 2026](#seaman-y-bergman-2026) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -748,13 +748,15 @@ Citada como:
 
 1. TOBILLO → radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. PIE → radiografía si dolor en el mediopié Y alguno: dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos. Solo descarta: Bachmann 2003 (27 estudios, 15 581 pacientes) da LR− 0,08 aplicando solo la regla del tobillo o solo la del pie, pero 0,21 (IC 95 % 0,12–0,38) en los estudios que aplican las dos juntas, que es como se usan aquí (se toma la más prudente). El positivo es un hallazgo: en adultos, LR+ 1,47 (IC 1,11–1,93; Gomes 2022).
 2. Bachmann 2003 (BMJ 326:417); Gomes 2022 (BMC Musculoskelet Disord 23:885)
-3. Bachmann 2003 — Bachmann, Kolb, Koller, Steurer y ter Riet, «Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review», BMJ 326(7386):417 (2003); resumen leído en PubMed.
+3. REGLAS DE OTTAWA, antes de explorar cualquier traumatismo agudo. TOBILLO → radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. PIE → radiografía si dolor en el mediopié Y alguno: dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos. Muy sensible, moderadamente específica: S 98,5 % en niños de más de 6 años (Lluch, p. 257); en adultos, una regla negativa descarta fractura (LR− 0,08, Bachmann 2003). Excluidas embarazadas y personas que no pueden seguir la prueba (p. ej., traumatismo craneal). ≈10 % de las inversiones acaban en fractura.
+4. Bachmann 2003 — Bachmann, Kolb, Koller, Steurer y ter Riet, «Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review», BMJ 326(7386):417 (2003); resumen leído en PubMed.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» (en `criterio`) | 4b · mención en el texto | 1 |
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» | 4b · cita bajo el test | 2 |
-| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 3 |
+| Tobillo y pie | — | `urgencia.lineas.3` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 4 |
 
 ### Bachmann 2004
 
@@ -3357,7 +3359,7 @@ Citada como:
 189. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252 y 279
 190. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Mahadevan 2015 (J Foot Ankle Surg 54:549–53); Pitcher 2024 (Foot Ankle Orthop 9(4))
 191. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 281
-192. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281
+192. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Menon y Rednam 2026 (StatPearls, «Gout»)
 193. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 286
 194. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 286
 195. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284 y 286
@@ -3758,7 +3760,7 @@ Citada como:
 | Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Diferencial del antepié» | 4b · cita bajo el test | 191 |
 | Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Pronóstico | 5 · cita del pronóstico | 181 |
 | Tobillo y pie | tp35 · Gota | Test «Articulación roja, hinchada y muy dolorosa» | 4b · cita bajo el test | 191 |
-| Tobillo y pie | tp35 · Gota | Test «Sistémicamente bien» | 4b · cita bajo el test | 192 |
+| Tobillo y pie | tp35 · Gota | Test «Suele estar sistémicamente bien» | 4b · cita bajo el test | 192 |
 | Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Sever: inserción del Aquiles (8–12 años)» | 4b · cita bajo el test | 193 |
 | Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Iselin: base del 5.º MT (8–13 años)» | 4b · cita bajo el test | 194 |
 | Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Navicular: apofisitis del tibial posterior o Köhler» | 4b · cita bajo el test | 195 |
@@ -4258,11 +4260,13 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 
 Citada como:
 
-1. Menon y Rednam 2026 — Menon, Rednam, Gujarathi y Maher, «Gout», StatPearls [Internet], NCBI Bookshelf, última actualización 12 de abril de 2026.
+1. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Menon y Rednam 2026 (StatPearls, «Gout»)
+2. Menon y Rednam 2026 — Menon, Rednam, Gujarathi y Maher, «Gout», StatPearls [Internet], NCBI Bookshelf, última actualización 12 de abril de 2026.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
+| Tobillo y pie | tp35 · Gota | Test «Suele estar sistémicamente bien» | 4b · cita bajo el test | 1 |
+| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 2 |
 
 ### Metcalfe 2019
 
@@ -4497,14 +4501,16 @@ Nota: Leídas las recomendaciones 1.1.1–1.1.4 y la tabla 1 (escala de Wells de
 
 Citada como:
 
-1. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y tabla 1 (escala de Wells de dos niveles).
-2. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.8 y tabla 1 (escala de Wells de dos niveles).
+1. Posible TVP: calcular Wells; con 2 o más, derivar hoy (NICE NG158: ecografía en 4 horas; riesgo de embolia pulmonar).
+2. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y tabla 1 (escala de Wells de dos niveles).
+3. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.8 y tabla 1 (escala de Wells de dos niveles).
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 1 |
-| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 1 |
-| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 2 |
+| Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 2 |
+| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 2 |
+| Tobillo y pie | — | `sistemas.4.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 3 |
 
 ### NICE NG19
 
