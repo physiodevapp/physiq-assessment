@@ -1560,6 +1560,21 @@ test('plantillas: narrativo y ficha breve, por defecto según el tipo de consult
   assert.equal(IN.informeTruncado('## PRESENTACIÓN CLÍNICA\nA.\n## HALLAZGOS Y CODIFICACIÓN CIF\nB.', 'breve'), true);
 });
 
+test('prompt: el bloque de datos no lleva puntuaciones, notas del plan vacías ni nombres que inviten a citarlo', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', br: [], sq: [], dv: ['Sospecha de fractura: derivar'],
+    h: [{ name: 'Síndrome subacromial', sc: '🟠 Peso moderado (LR× 2.0) · 2/2 hallazgos compatibles' }],
+    pn: { variableControl: '', ventanaRecuperacion: '24 h', anclajeHabito: '  ' } };
+  const amp = { edad: 52, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [],
+    arbol: [{ pregunta: '¿Traumatismo previo?', respuesta: 'SÍ' }], tests: [], pautas: [] };
+  const ctx = IN.contextoValoracion(d, r => r, amp);
+  assert.ok(ctx.includes('Síndrome subacromial'));
+  for (const x of ['LR×', 'Peso moderado', 'hallazgos compatibles', 'Variable de control', 'Anclaje de hábito', 'árbol', 'Razonamiento clínico', 'Formulario previo'])
+    assert.ok(!ctx.includes(x), `sin «${x}»`);
+  assert.ok(ctx.includes('Ventana de recuperación: 24 h'), 'las notas con texto sí van');
+  assert.ok(ctx.includes('Recorrido de la exploración'));
+  assert.ok(!IN.contextoValoracion({ ...d, pn: {} }, r => r, null).includes('Notas del plan'), 'sin notas, sin bloque');
+});
+
 test('prompt: reglas de la revisión con informes reales, en las dos plantillas', () => {
   const d = { p: 'X', r: 'lumbar', d: '01/01/2026', h: [], br: [], sq: [], pn: {} };
   for (const conAudio of [true, false]) {
@@ -1574,9 +1589,21 @@ test('prompt: reglas de la revisión con informes reales, en las dos plantillas'
       assert.match(p, /Reglas pronósticas.*nunca las uses para reforzar ni descartar/, `${nombre}: regla pronóstica`);
       assert.match(p, /Derivaciones:.*UNA sola vez, al principio/, `${nombre}: derivación una vez, al principio del plan`);
       assert.match(p, /no decidas por tu cuenta si se espera/, `${nombre}: derivación no urgente sin decidir el momento`);
-      assert.match(p, /mejor omitir un código que poner uno dudoso/, `${nombre}: códigos CIF limitados`);
+      assert.match(p, /Derivar».*aunque sus tests clínicos hayan salido negativos/, `${nombre}: «Derivar» se mantiene con tests negativos`);
+      assert.match(p, /no cites cocientes de probabilidad/, `${nombre}: sin jerga de puntuación`);
+      assert.match(p, /No crees secciones ni subsecciones/, `${nombre}: sin secciones inventadas`);
+      assert.match(p, /no interpretes ni justifiques la discrepancia/, `${nombre}: discrepancias sin interpretar`);
     }
   }
+  // Códigos CIF: limitados en la ficha (tiene sección propia); el narrativo, sin códigos
+  const ficha = IN.PLANTILLAS.breve.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(ficha, /mejor omitir un código que poner uno dudoso/, 'ficha: códigos CIF limitados');
+  assert.match(narr, /sin códigos alfanuméricos/, 'narrativo: sin códigos CIF');
+  // Narrativo de valoración inicial: fuera las subsecciones que solo producían «no se realizó…»
+  for (const x of ['Función Cardiorrespiratoria', 'Control Motor', '#### Equilibrio', '6MWT', 'EQ-5D', 'Limitación Funcional Global'])
+    assert.ok(!narr.includes(x), `narrativo: sin «${x}»`);
+  assert.match(narr, /«\[solo si…\]» se omiten por completo, título incluido/);
   // El tope de tokens solo evita cortes: holgado respecto a las palabras pedidas (~1,6 tokens/palabra en español con códigos)
   for (const pl of Object.values(IN.PLANTILLAS)) assert.ok(pl.maxTokens >= pl.palabras * 3, `${pl.nombre}: tope de tokens holgado`);
 });
