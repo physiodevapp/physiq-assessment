@@ -879,8 +879,8 @@ export const hypotheses = {
     prom: 'HOOS (MCID: 10–13 puntos)',
     dosis: '',
     tests: [
-      { name: 'Test de estiramiento del piriforme en sedestación', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Datos de fiabilidad limitados/ausentes en literatura. Flexión de cadera + rotación interna en sedestación produce dolor profundo en glúteo.', noData: true },
-      { name: 'Dolor con sedestación prolongada (>20 min)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Especialmente al conducir. El dolor mejora al ponerse en pie.', noData: true }
+      { name: 'Test de estiramiento del piriforme en sedestación', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sentado: el examinador extiende la rodilla y lleva la cadera flexionada a aducción y rotación interna mientras palpa 1 cm lateral al isquion y, más arriba, la escotadura ciática. Positivo: reproduce su dolor posterior. Junto con el test activo del piriforme es, según la revisión, el más sensible y específico para el atrapamiento del ciático, sobre todo combinados; no da cifras. Cuenta como hallazgo.', fuente: 'Carro 2016 (Muscles Ligaments Tendons J 6(3):384–396, revisión narrativa)', noData: true },
+      { name: 'Dolor con sedestación prolongada (>20 min)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'No tolera estar sentado más de 20 a 30 minutos, uno de los síntomas del síndrome glúteo profundo (con dolor glúteo o retrotrocantéreo, dolor de tipo ciático, cojera y dolor nocturno que mejora durante el día). Poco específico: estar sentado también provoca el dolor de la tendinopatía proximal de isquiotibiales y de la artrosis de cadera. Cuenta como hallazgo.', fuente: 'Carro 2016 (Muscles Ligaments Tendons J 6(3):384–396, revisión narrativa). Grimaldi 2026 (Musculoskelet Sci Pract 84:103592, revisión narrativa, apartado 2.1.3)', noData: true }
     ]
   },
   ca8: {
