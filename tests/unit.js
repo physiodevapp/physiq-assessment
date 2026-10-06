@@ -883,9 +883,13 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
   });
 });
 
-test('cadera: fractura de estrés del cuello femoral, artritis séptica y torsión testicular son urgencias', () => {
+test('cadera: TVP, torsión testicular, fractura de estrés del cuello femoral y artritis séptica son urgencias (y ninguna otra)', () => {
   const qs = SYSTEMIC_SCREENING.cadera.sistemas.flatMap(s => s.preguntas);
-  ['ca_os1', 'ca_in1', 'ca_u3'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_v2']);
+  // ca_v2 junta TVP y calambres: la urgencia dice que los calambres solos no lo son,
+  // y deriva hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8)
+  assert.match(qs.find(q => q.id === 'ca_v2').urgencia, /no los calambres solos/);
+  assert.match(qs.find(q => q.id === 'ca_v2').urgencia, /1 o menos, dímero D/);
   withState({ region: 'cadera', sistemicoAnswers: { ca_os1: 'SI', ca_in1: 'NO', ca_u3: 'NO' } }, () => {
     assert.equal(buildPhysiQPayload().ur.length, 1);
   });
