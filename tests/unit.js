@@ -1579,6 +1579,56 @@ test('prompt: el bloque de datos no lleva puntuaciones, notas del plan vacías n
   assert.ok(!IN.contextoValoracion({ ...d, pn: {} }, r => r, null).includes('Notas del plan'), 'sin notas, sin bloque');
 });
 
+test('prompt: etiquetas internas limpias, IMC redondeado, gesto testigo sin resultado y comprobaciones de «Derivar»', () => {
+  assert.equal(IN.limpiarEtiqueta('Luxación Bloqueada o Fractura (→ Rx)'), 'Luxación Bloqueada o Fractura');
+  assert.equal(IN.limpiarEtiqueta('SÍ — Traumatismo previo → luxación bloqueada o fractura → Rx'), 'SÍ — Traumatismo previo — orienta a: luxación bloqueada o fractura; Rx');
+  assert.equal(IN.limpiarEtiqueta('Gesto testigo (①) y medida objetiva (②)'), 'Gesto testigo y medida objetiva');
+  assert.equal(IN.limpiarEtiqueta('Arco doloroso'), 'Arco doloroso');
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', br: [], sq: [], pn: {}, an: { talla: 171.2, peso: 64, imc: 21.83596820683029 },
+    h: [{ name: 'Luxación Bloqueada o Fractura (→ Rx)' }] };
+  const amp = { edad: null, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [], arbol: [], pautas: [],
+    tests: [
+      { hipotesis: 'Luxación Bloqueada o Fractura (→ Rx)', derivar: true, items: [{ test: 'Fractura', resultado: 'negativo' }] },
+      { hipotesis: 'Síndrome subacromial', items: [{ test: 'Arco doloroso', resultado: 'positivo' }, { test: 'Gesto testigo (①) y medida objetiva (②)', referencia: true }] },
+    ] };
+  const ctx = IN.contextoValoracion(d, r => r, amp);
+  assert.ok(ctx.includes('IMC 21.8') && !ctx.includes('21.835'), 'IMC con un decimal');
+  assert.ok(!ctx.includes('(→') && !ctx.includes('①'), 'sin etiquetas internas');
+  assert.match(ctx, /Luxación Bloqueada o Fractura — comprobaciones de una hipótesis que se deriva: .*un resultado negativo no la descarta/);
+  assert.match(ctx, /Gesto testigo y medida objetiva: registrado como medida de referencia para el seguimiento/);
+  assert.ok(!/Gesto testigo[^\n]*: (positivo|negativo)/.test(ctx), 'el gesto testigo no lleva resultado');
+});
+
+test('construirAmpliado: el gesto testigo va sin resultado y las hipótesis «Derivar» se marcan', () => {
+  withState({ region: 'hombro', activeHypotheses: ['h11', 'h2'],
+    testResults: { h11: { 0: 'neg' }, h2: { 0: 'pos', 5: 'pos' } } }, () => {
+    const a = IA.construirAmpliado();
+    const h11 = a.tests.find(t => t.hipotesis === HYPOTHESES.h11.name);
+    const h2 = a.tests.find(t => t.hipotesis === HYPOTHESES.h2.name);
+    assert.equal(h11.derivar, true);
+    assert.ok(!('derivar' in h2));
+    const gesto = h2.items.find(i => /^Gesto testigo/.test(i.test));
+    assert.deepEqual(gesto, { test: HYPOTHESES.h2.tests[5].name, referencia: true });
+  });
+});
+
+test('prompt: «No sé» nunca como negación, sin negativos inventados, cada dato en su sección', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.match(p, /«No sé» o «No sabría decir»: omítelas; nunca las conviertas en una negación/);
+    assert.match(p, /No afirmes negativos que no estén en los datos/);
+    assert.match(p, /no la apoya|no la apoyan/, 'coherencia: «Derivar» con comprobaciones negativas');
+  }
+  const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(narr, /La intensidad y la irritabilidad van en Dolor/);
+  assert.match(narr, /Las actividades que provocan el dolor van en Limitaciones/);
+  assert.match(narr, /se dice aquí y solo aquí/);
+  assert.match(narr, /sin suponer cómo podría afectarle/);
+  assert.match(narr, /por falta de mejoría \(aquí y solo aquí\)/);
+  assert.ok(!narr.includes('plan y pauta, y al final el seguimiento'), 'en el narrativo el seguimiento tiene su propia sección');
+});
+
 test('prompt: reglas de la revisión con informes reales, en las dos plantillas', () => {
   const d = { p: 'X', r: 'lumbar', d: '01/01/2026', h: [], br: [], sq: [], pn: {} };
   for (const conAudio of [true, false]) {
