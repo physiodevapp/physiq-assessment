@@ -323,6 +323,11 @@ async function mockWorkerYTurnstile(context, captura) {
     captura.push(req.postDataBuffer()?.toString('latin1') || '');
     const sse = (t, d) => `event: ${t}\ndata: ${JSON.stringify(d)}\n\n`;
     const modo = captura.length === 1 ? 'demo' : 'real';   // la primera petición simula un worker en demo
+    // La tercera simula un fallo de la API tal como lo reenvía el worker
+    if (captura.length === 3) {
+      return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': 'real' }, contentType: 'text/event-stream',
+        body: sse('error', { message: 'Claude: Your credit balance is too low to access the Anthropic API.' }) });
+    }
     return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': modo }, contentType: 'text/event-stream',
       body: sse('transcript', { text: 'Transcripción simulada de la sesión.' })
         + sse('report_chunk', { text: modo === 'demo' ? '## INFORME DEMO DE OTRO PACIENTE\n' : '## CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES\nTexto clínico.\n\n' })
@@ -391,6 +396,17 @@ async function checkInformeNarrativo(browser, errors) {
   const copiado = await page.evaluate(() => navigator.clipboard.readText());
   r.copiado = copiado.startsWith('INFORME DE FISIOTERAPIA') && copiado.includes('CONDICIÓN DE SALUD') && !copiado.includes('##');
   r.sinScrollX = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+
+  // Un fallo de la API se queda en la tarjeta, en español y con el original
+  await page.click('#iaGenSummary');
+  await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+  await page.click('#iaGenerar');
+  await page.waitForSelector('#iaError .ia-error');
+  r.errorLegible = await page.evaluate(() => {
+    const t = document.getElementById('iaError').textContent;
+    return t.includes('Anthropic (redacción)') && t.includes('no tiene saldo') && t.includes('credit balance is too low')
+      && !!state.informeIA?.texto;   // el informe anterior sigue ahí
+  });
   await context.close();
 
   // Dentro del hub (iframe): el módulo no se descarga y la tarjeta queda vacía
