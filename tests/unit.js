@@ -1470,6 +1470,33 @@ test('huella: cambia con la valoración, no con la fecha', () => {
   });
 });
 
+test('errores de los servicios en español, con el original y la salida sin audio', () => {
+  const casos = [
+    ['Whisper: Your account is not active, please check your billing details on our website.', /OpenAI \(transcripción\).*no tiene saldo/, 'whisper'],
+    ['Claude: Your credit balance is too low to access the Anthropic API.', /Anthropic \(redacción\).*no tiene saldo/, 'claude'],
+    ['Whisper: Incorrect API key provided: sk-abc', /clave de OpenAI.*no es válida/, 'whisper'],
+    ['Claude: Overloaded', /saturado/, 'claude'],
+    ['Whisper: Invalid file format. Supported formats: [flac, m4a]', /audio no se ha podido procesar/, 'whisper'],
+    ['Claude: Internal server error', /no responde ahora mismo/, 'claude'],
+    ['Claude: something unexpected', /^No se ha podido redactar el informe \(Anthropic\)\.$/, 'claude'],
+    ['Whisper: something unexpected', /^No se ha podido transcribir el audio \(OpenAI\)\.$/, 'whisper'],
+  ];
+  for (const [msg, re, servicio] of casos) {
+    const e = IN.errorLegible(msg);
+    assert.match(e.texto, re, msg);
+    assert.equal(e.servicio, servicio);
+    assert.equal(e.original, msg, 'el original se conserva');
+    assert.equal(e.sinAudio, servicio === 'whisper', 'solo un fallo de transcripción sugiere generar sin audio');
+  }
+  // Un error de formato de Claude no es «audio no válido»
+  assert.doesNotMatch(IN.errorLegible('Claude: invalid request format').texto, /audio/);
+  // Los mensajes propios (ya en español, sin servicio delante) pasan tal cual
+  const propio = IN.errorLegible('La verificación de seguridad ha fallado.');
+  assert.equal(propio.texto, 'La verificación de seguridad ha fallado.');
+  assert.equal(propio.servicio, null);
+  assert.equal(propio.original, '');
+});
+
 test('extensión del audio según el tipo MIME', () => {
   assert.equal(IN.extensionAudio('audio/webm;codecs=opus'), 'webm');
   assert.equal(IN.extensionAudio('audio/mp4'), 'm4a');
