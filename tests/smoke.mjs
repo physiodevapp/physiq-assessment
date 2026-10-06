@@ -328,6 +328,13 @@ async function mockWorkerYTurnstile(context, captura) {
       return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': 'real' }, contentType: 'text/event-stream',
         body: sse('error', { message: 'Claude: Your credit balance is too low to access the Anthropic API.' }) });
     }
+    // La cuarta, una ficha breve
+    if (captura.length === 4) {
+      return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': 'real' }, contentType: 'text/event-stream',
+        body: sse('report_chunk', { text: '## PRESENTACIÓN CLÍNICA\nTexto.\n\n## HALLAZGOS Y CODIFICACIÓN CIF\nTexto.\n\n' })
+          + sse('report_chunk', { text: '## OBJETIVOS Y PLAN\nReevaluar en dos semanas.' })
+          + sse('done', { success: true }) });
+    }
     return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': modo }, contentType: 'text/event-stream',
       body: sse('transcript', { text: 'Transcripción simulada de la sesión.' })
         + sse('report_chunk', { text: modo === 'demo' ? '## INFORME DEMO DE OTRO PACIENTE\n' : '## CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES\nTexto clínico.\n\n' })
@@ -366,6 +373,14 @@ async function checkInformeNarrativo(browser, errors) {
   r.claveGuardada = await page.evaluate(k => localStorage.getItem('physiq-license-key') === k, CLAVE_OK);
   r.botonCabeceraConLicencia = await page.isVisible('#grabBtn');
   await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+  // Consulta completa → narrativo por defecto; el selector cambia la elección
+  r.plantillaPorDefecto = await page.evaluate(() =>
+    document.querySelector('#iaPlantilla .option-btn.selected')?.textContent.includes('Narrativo'));
+  await page.click('#iaPlantilla .option-btn:has-text("Ficha breve")');
+  await page.click('#iaPlantilla .option-btn:has-text("Narrativo")');
+  r.plantillaCambia = await page.evaluate(() =>
+    document.querySelectorAll('#iaPlantilla .option-btn.selected').length === 1
+    && document.querySelector('#iaPlantilla .option-btn.selected').textContent.includes('Narrativo'));
 
   // Respuesta en demo: se descarta, nunca se guarda el informe ficticio
   await page.click('#iaGenerar');
@@ -382,9 +397,16 @@ async function checkInformeNarrativo(browser, errors) {
   await page.check('#iaConsent input[type=checkbox]');
   await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
   await page.click('#iaGenerar');
-  await page.waitForSelector('#iaResultado .ia-informe');
-  const cuerpo = captura[1] || '';
+  await page.waitForSelector('#iaResultado .ia-resultado-det', { state: 'attached' });
+  const cuerpo = Buffer.from(captura[1] || '', 'latin1').toString('utf8');
   r.peticion = cuerpo.includes('name="file"') && cuerpo.includes('DATOS DE VALORACI') && cuerpo.includes('{{TRANSCRIPT}}') && cuerpo.includes('name="whisperHint"');
+  // Datos ampliados: el recorrido del árbol CIF va en el prompt
+  r.promptAmpliado = cuerpo.includes('Razonamiento clínico (árbol de decisión CIF') && /name="maxTokens"\r\n\r\n5000/.test(cuerpo);
+  // El informe llega plegado, con las acciones a la vista
+  r.resultadoPlegado = await page.evaluate(() => {
+    const det = document.getElementById('iaResultadoDet');
+    return !!det && !det.open && det.querySelector('summary').textContent.includes('Narrativo');
+  }) && await page.isVisible('#iaResultado button:has-text("Compartir")');
   r.guardado = await page.evaluate(() => !!state.informeIA?.texto && state.informeIA.conAudio === true
     && state.informeIA.transcripcion.includes('simulada'));
   r.audioBorrado = await page.evaluate(() => new Promise(res => {
@@ -407,6 +429,16 @@ async function checkInformeNarrativo(browser, errors) {
     return t.includes('Anthropic (redacción)') && t.includes('no tiene saldo') && t.includes('credit balance is too low')
       && !!state.informeIA?.texto;   // el informe anterior sigue ahí
   });
+
+  // Ficha breve: su propio límite y su propia última sección
+  await page.click('#iaPlantilla .option-btn:has-text("Ficha breve")');
+  await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+  await page.click('#iaGenerar');
+  await page.waitForFunction(() => state.informeIA?.plantilla === 'breve');
+  const cuerpoFicha = Buffer.from(captura[3] || '', 'latin1').toString('utf8');
+  r.fichaBreve = cuerpoFicha.includes('## OBJETIVOS Y PLAN') && /name="maxTokens"\r\n\r\n1500/.test(cuerpoFicha)
+    && await page.evaluate(() => document.querySelector('#iaResultadoDet summary').textContent.includes('Ficha breve')
+      && !document.querySelector('#iaResultado .alert-warning'));
   await context.close();
 
   // Dentro del hub (iframe): el módulo no se descarga y la tarjeta queda vacía
