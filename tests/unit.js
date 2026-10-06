@@ -1512,6 +1512,113 @@ test('informeIA nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
   state.informeIA = null;
 });
 
+const IA = await import('../informe-ia.js');
+
+test('datos ampliados: edad, fase 3, árbol, tests, criterios y pauta solo cuando hay datos', () => {
+  const a = {
+    edad: 52, signoComparable: 'Flexión lumbar', estabilidad: 'Empeorando',
+    irritabilidad: { dolor: 'Alto', reposo: 'Sí', movimiento: 'Sí', discapacidad: 'Moderada', tolerancia: 'Baja' },
+    psico: [{ q: 'Miedo al movimiento', a: 'Sí' }],
+    criterios: [{ etiqueta: 'Dolor lumbar inflamatorio', positivas: 2, total: 4, nota: 'Valorar derivación' }],
+    arbol: [{ pregunta: '¿SLR positivo?', respuesta: 'SÍ — SLR <60°' }],
+    tests: [{ hipotesis: 'Radiculopatía', items: [{ test: 'Slump', resultado: 'positivo', cluster: 'Cluster de Laslett' }, { test: 'CPR Flynn', resultado: 'negativo', pronostico: true }] }],
+    pautas: [{ hipotesis: 'Radiculopatía', derivar: false, pauta: 'Movilidad neural', fuente: 'NICE NG59', pronostico: { horizonte: '6-12 semanas', derivacion: 'Déficit progresivo' }, prom: 'ODI' },
+             { hipotesis: 'Fractura', derivar: true, pauta: '', fuente: '', prom: '' }],
+  };
+  const t = IN.bloquesAmpliados(a).join('\n');
+  for (const x of ['Signo comparable', 'Flexión lumbar', 'Empeorando', 'tolerancia al estrés físico Baja', 'Miedo al movimiento → Sí',
+    'Dolor lumbar inflamatorio (2/4)', '¿SLR positivo? → SÍ — SLR <60°', 'Slump: positivo (parte del cluster «Cluster de Laslett»)',
+    'CPR Flynn: negativo (regla pronóstica', 'Pauta: Movilidad neural', 'Fuente: NICE NG59', 'Pronóstico: 6-12 semanas',
+    'Cuándo reconsiderar o derivar: Déficit progresivo', 'seguimiento: ODI', 'Derivar: sin tratamiento']) assert.ok(t.includes(x), `falta «${x}»`);
+  const vacio = { edad: null, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [], arbol: [], tests: [], pautas: [] };
+  assert.deepEqual(IN.bloquesAmpliados(vacio), [], 'sin datos, ningún bloque');
+  assert.deepEqual(IN.bloquesAmpliados(null), []);
+  const c = IN.contextoValoracion({ p: 'X', h: [], br: [], sq: [], pn: {} }, r => r, a);
+  assert.match(c, /Edad: 52 años/);
+  assert.ok(c.includes('Tests de confirmación realizados'));
+  assert.doesNotMatch(IN.contextoValoracion({ p: 'X', h: [], br: [], sq: [], pn: {} }, r => r, vacio), /Edad:/);
+});
+
+test('plantillas: narrativo y ficha breve, por defecto según el tipo de consulta', () => {
+  assert.equal(IN.plantillaPorDefecto('breve'), 'breve');
+  assert.equal(IN.plantillaPorDefecto('completo'), 'narrativo');
+  assert.equal(IN.plantillaPorDefecto(undefined), 'narrativo');
+  const d = { p: 'X', r: 'lumbar', d: '01/01/2026', h: [], br: [], sq: [], pn: {} };
+  const ficha = IN.PLANTILLAS.breve.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  for (const x of ['## PRESENTACIÓN CLÍNICA', '## HALLAZGOS Y CODIFICACIÓN CIF', '## OBJETIVOS Y PLAN', '{{TRANSCRIPT}}'])
+    assert.ok(ficha.includes(x), `ficha: falta «${x}»`);
+  assert.ok(!ficha.includes('## SEGUIMIENTO FUNCIONAL'));
+  const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.ok(narr.includes('## SEGUIMIENTO FUNCIONAL'));
+  // Lo no explorado se dice una vez; la pauta de PhysiQ manda en las dos
+  for (const p of [ficha, narr]) {
+    assert.match(p, /UNA (sola )?vez/i, 'regla de «lo no explorado, una sola vez»');
+    assert.match(p, /sin proponer dosis/);
+  }
+  assert.ok(IN.PLANTILLAS.breve.maxTokens < IN.PLANTILLAS.narrativo.maxTokens);
+  assert.equal(IN.informeTruncado('## PRESENTACIÓN CLÍNICA\nA.\n## OBJETIVOS Y PLAN\nReevaluar en dos semanas.', 'breve'), false);
+  assert.equal(IN.informeTruncado('## PRESENTACIÓN CLÍNICA\nA.\n## HALLAZGOS Y CODIFICACIÓN CIF\nB.', 'breve'), true);
+});
+
+test('texto para compartir: la edad va en la identificación', () => {
+  assert.match(IN.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'lumbar', ed: 47 }), /Edad: 47 años/);
+  assert.doesNotMatch(IN.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'lumbar' }), /Edad:/);
+});
+
+test('construirAmpliado: lee el estado de las cinco fases', () => {
+  const lu = CIF_TREES.lumbar.steps[0];
+  const lu8 = HYPOTHESES.lu8, lu1 = HYPOTHESES.lu1, ce8 = HYPOTHESES.ce8;
+  withState({
+    region: 'lumbar', edadPaciente: 33, signoComparable: ' Flexión ', estabilidad: 'Estable',
+    irritabilidad: { dolor: 'Alto' }, irritabilidadDirecta: false,
+    riesgoPsico: 'Alto', psico_miedo: 'Sí', psico_autoef: '', psico_emocional: 'No',
+    treeAnswers: { [lu.id]: lu.options[0].value },
+    activeHypotheses: ['lu8', 'lu1', 'ce8'],
+    testResults: { lu8: { 0: 'pos', 1: 'nd' }, lu1: { 0: 'neg' } },
+  }, () => {
+    const a = IA.construirAmpliado();
+    assert.equal(a.edad, 33);
+    assert.equal(a.signoComparable, 'Flexión');
+    assert.deepEqual(a.irritabilidad, { dolor: 'Alto' });
+    assert.deepEqual(a.psico.map(x => x.a), ['Sí', 'No'], 'solo lo contestado');
+    assert.deepEqual(a.arbol, [{ pregunta: lu.question, respuesta: lu.options[0].label }]);
+    const t8 = a.tests.find(t => t.hipotesis === lu8.name);
+    assert.equal(t8.items.length, 1, '«nd» no cuenta como realizado');
+    assert.equal(t8.items[0].resultado, 'positivo');
+    assert.equal(t8.items[0].cluster, lu8.clusters[lu8.tests[0].cluster].nombre);
+    assert.equal(a.tests.find(t => t.hipotesis === lu1.name).items[0].pronostico, true);
+    assert.ok(!a.tests.some(t => t.hipotesis === ce8.name), 'sin tests hechos, no aparece');
+    const p8 = a.pautas.find(p => p.hipotesis === ce8.name);
+    assert.equal(p8.derivar, true);
+    assert.equal(p8.pauta, '', 'la pauta de derivar no se repite como texto');
+    assert.equal(a.pautas.find(p => p.hipotesis === lu8.name).fuente, lu8.dosisFuente);
+  });
+  withState({ irritabilidad: { dolor: 'Alto' }, irritabilidadDirecta: true, riesgoPsico: 'Medio', psico_miedo: 'Sí' }, () => {
+    const a = IA.construirAmpliado();
+    assert.equal(a.irritabilidad, null, 'nivel elegido directamente: la matriz no se rellenó');
+    assert.deepEqual(a.psico, [], 'el detalle psicosocial solo con riesgo Alto');
+  });
+});
+
+test('construirAmpliado: criterio compuesto con la misma regla que la fase 2', () => {
+  const sis = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.criterioCompuesto);
+  const c = sis.criterioCompuesto;
+  const si = Object.fromEntries(c.ids.slice(0, c.minPositivas).map(id => [id, 'SI']));
+  withState({ region: 'lumbar', edadPaciente: c.filtro.edadMax - 1, cronologia: c.filtro.evolucion, sistemicoAnswers: si }, () => {
+    assert.deepEqual(IA.construirAmpliado().criterios.map(x => x.etiqueta), [c.etiqueta]);
+  });
+  withState({ region: 'lumbar', edadPaciente: c.filtro.edadMax, cronologia: c.filtro.evolucion, sistemicoAnswers: si }, () => {
+    assert.deepEqual(IA.construirAmpliado().criterios, [], 'fuera del filtro de edad, no se cumple');
+  });
+});
+
+test('el payload de physiq-report no cambia con los datos ampliados', () => {
+  withState({ edadPaciente: 40, signoComparable: 'X', treeAnswers: {}, activeHypotheses: [] }, () => {
+    const keys = Object.keys(buildPhysiQPayload());
+    assert.ok(!keys.includes('ed') && !keys.includes('_ampliado'), 'ni edad ni datos ampliados en el payload');
+  });
+});
+
 test('app.js solo carga informe-ia.js fuera del hub', () => {
   const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'app.js'), 'utf8');
   const montar = src.slice(src.indexOf('function _montarInformeIA'), src.indexOf('function _montarInformeIA') + 300);
