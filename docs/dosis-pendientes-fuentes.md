@@ -79,7 +79,7 @@ Leyenda:
 | h10 | Artrosis GH | D (sin ensayos) | AAOS 2020, *Management of Glenohumeral Joint Osteoarthritis* (guía) · revisión sistemática de 2026 sobre intervenciones dirigidas por fisioterapeutas (Shoulder & Elbow, doi 10.1177/17585732261450961) | Fragmento de la revisión: «no hay ensayos publicados sobre intervenciones de fisioterapia en artrosis GH con tratamiento no quirúrgico», solo en el postoperatorio. Conclusión: `dosis: ''` es correcto; se puede citar en el criterio la ausencia de evidencia |
 | h11 | Luxación bloqueada o fractura | C | — | Ya dice «→ Rx». Propuesta: dosis «Derivar para radiografía; sin tratamiento de fisioterapia hasta el diagnóstico» |
 
-## Tobillo y pie (`tp1`–`tp36`)
+## Tobillo y pie (`tp1`–`tp37`)
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
 | tp1 | Esguince lateral agudo | ✅ **Hecho** | Martin 2021, JOSPT 51(4):CPG1–CPG80 (versión publicada, orthopt.org) | En `data/tobillo_pie.js` con los grados. La guía dice expresamente que no se puede recomendar modalidad ni volumen de ejercicio; el único número es la inmovilización ≤10 días en los graves |
@@ -118,6 +118,7 @@ Leyenda:
 | tp34 | Neuroma de Morton | D | — | — |
 | tp35 | Gota | C | — | Derivación médica. No es competencia de fisioterapia tratar la crisis |
 | tp36 | Apofisitis pediátricas (Sever, Iselin, Köhler, Freiberg) | B (por analogía) | Rathleff 2020 (Osgood) | Solo por analogía: no hay ensayo para Sever. Si se usa, decirlo. Köhler y Freiberg van a derivación |
+| tp37 | Fractura de tobillo (maleolar) | C | — | Derivación médica para radiografía (Ottawa de tobillo positiva) |
 
 ## Cadera (`ca1`–`ca19`)
 Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y nice.org.uk; JOSPT y BMJ/BJSM bloqueados por el proxy). `ca1`–`ca10` tenían dosis con cifras sin fuente desde el primer commit (como `lu1`–`lu4` y `ce1`–`ce14`): se reescriben las que tienen fuente y se vacían las que no (decisión del usuario).
@@ -149,7 +150,7 @@ Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2
 ## Resumen
 - **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12 y ca17.
 - **Con fuente de pauta, a falta del PDF de pago (A):** ninguna.
-- **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), h11, ro11, tp3–tp6, tp17, tp30 y tp35 llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
+- **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), h11, ro11, tp3–tp6, tp17, tp30, tp35 y tp37 (fractura maleolar, 2026-10) llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp2, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`.
 - **Recomendación de guía sin pauta numérica (B), pendientes:** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ro12` (ESSKA 2024), `tp2`, `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
 - **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `ca10`, `ca13`–`ca15`, `ca18`, `ca19`, `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
