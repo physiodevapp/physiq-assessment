@@ -5046,7 +5046,7 @@ Nota: Leídas las recomendaciones 1.1.1–1.1.4 y la tabla 1 (escala de Wells de
 Citada como:
 
 1. Si son la pantorrilla hinchada, caliente o dolorosa (no los calambres solos): posible TVP; derivar hoy (NICE NG158: con Wells ≥2, ecografía en 4 horas; con 1 o menos, dímero D en 4 horas; riesgo de embolia pulmonar).
-2. Posible TVP: calcular Wells; con 2 o más, derivar hoy (NICE NG158: ecografía en 4 horas; riesgo de embolia pulmonar).
+2. Posible TVP: derivar hoy (NICE NG158: con Wells ≥2, ecografía en 4 horas; con 1 o menos, dímero D en 4 horas; riesgo de embolia pulmonar).
 3. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y 1.1.8, y tabla 1 (escala de Wells de dos niveles).
 4. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y tabla 1 (escala de Wells de dos niveles).
 5. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.8 y tabla 1 (escala de Wells de dos niveles).
