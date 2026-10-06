@@ -459,38 +459,60 @@ async function checkInformeNarrativo(browser, errors) {
 }
 
 // Grabación desde la cabecera (grabadora.js), con el micrófono falso de
-// Chromium: empieza en la fase 1, sigue visible por todas las fases, la tarjeta
-// de la fase 5 la ve en curso (y no deja generar), «Parar y usar» la deja como
-// audio de la sesión; pausa/reanudar y «Grabar de nuevo» desde el menú; y
-// «Reiniciar» avisa del audio y lo descarta.
+// Chromium. Táctil (390 px): un toque empieza, otro pausa (con el aviso de la
+// pulsación larga) y otro reanuda; la pulsación larga pide descartar; sigue
+// por todas las fases; la tarjeta de la fase 5 la ve en curso sin «Parar» y
+// «Generar» la cierra y la usa; con un audio adjunto el menú solo ofrece
+// descartarlo; «Reiniciar» avisa y descarta. Con ratón: la papelera descarta.
 async function checkGrabadoraCabecera(errors) {
   const browser = await chromium.launch({ args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'] });
   // Con una grabación en marcha la página tiene beforeunload: si algo falla, el
   // navegador debe cerrarse igual o el proceso no termina nunca.
-  try { return await recorrerGrabadora(browser, errors); }
+  try {
+    const tactil = await recorrerGrabadora(browser, errors);
+    const raton = await recorrerGrabadoraRaton(browser, errors);
+    const r = { ...tactil, ...raton };
+    r.ok = Object.values(r).every(v => v === true);
+    return r;
+  }
   catch (e) { return { ok: false, error: e.message.split('\n')[0] }; }
   finally { await browser.close().catch(() => {}); }
 }
 
+const metaAudioIDB = page => page.evaluate(() => new Promise(res => {
+  const rq = indexedDB.open('physiq', 3);
+  rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result); };
+}));
+
+async function pulsacionLarga(page, sel) {
+  const b = await page.locator(sel).boundingBox();
+  await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2);
+  await page.mouse.down();
+  await page.waitForTimeout(900);
+  await page.mouse.up();
+}
+
 async function recorrerGrabadora(browser, errors) {
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
   await context.grantPermissions(['microphone']);
   await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
-  await mockWorkerYTurnstile(context, ['x']);
+  const captura = ['x'];
+  await mockWorkerYTurnstile(context, captura);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (grabadora): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (grabadora): ${msg.text()}`); });
-  const btn = () => page.evaluate(() => { const b = document.getElementById('grabBtn'); return { clases: b.className, texto: b.textContent.trim() }; });
+  const clases = () => page.evaluate(() => document.getElementById('grabBtn').className);
+  const esperaClase = (c, si = true) => page.waitForFunction(([c, si]) => document.getElementById('grabBtn').classList.contains(c) === si, [c, si]);
   const r = {};
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
   await page.waitForSelector('#grabBtn', { state: 'visible' });
   r.botonVisible = true;
 
   await page.click('#grabBtn');                        // fase 1: un toque empieza
-  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await esperaClase('recording');
   await page.waitForTimeout(1200);
-  const b1 = await btn();
-  r.pildora = /\d\d:\d\d/.test(b1.texto);
+  r.pildora = /\d\d:\d\d/.test(await page.textContent('#grabBtn'));
+  r.sinPapeleraEnTactil = !(await page.isVisible('#grabDescBtn'));
   // A 390 px, grabando y también con el chip del modo breve (solo CSS: la clase
   // del body basta para medirlo): ni el logo pisa los botones ni se salen.
   const cabeceraCabe = () => page.evaluate(() => {
@@ -505,46 +527,90 @@ async function recorrerGrabadora(browser, errors) {
   await page.evaluate(() => document.body.classList.remove('modo-breve'));
   r.cabeceraSinDesbordar = sinBreve && conBreve;
 
+  // Toque = pausa (con el aviso de la pulsación larga, sin menú) / reanudar
+  await page.click('#grabBtn');
+  await esperaClase('paused');
+  r.toquePausa = await page.isHidden('#grabMenu');
+  r.avisoPulsacionLarga = ((await page.textContent('#appToast').catch(() => '')) || '').includes('mantén pulsado');
+  await page.click('#grabBtn');
+  await esperaClase('recording');
+  r.toqueReanuda = true;
+
+  // Pulsación larga = confirmación de descartar; cancelarla deja todo igual
+  await pulsacionLarga(page, '#grabBtn');
+  await page.waitForSelector('#confirmBanner');
+  r.largaPideDescartar = (await page.textContent('#confirmBanner')).includes('Descartar');
+  await page.click('#confirmCancel');
+  await page.waitForTimeout(300);
+  r.cancelarNoPausa = (await clases()).includes('recording');
+
   await walkRegion(page, 'lumbar');                    // la consulta sigue grabando
-  r.siguePorLasFases = (await btn()).clases.includes('recording');
+  r.siguePorLasFases = (await clases()).includes('recording');
   await page.waitForSelector('#iaAudio .ia-grabando');
   r.tarjetaVeEnCurso = true;
-  r.generarBloqueado = await page.evaluate(() => document.getElementById('iaGenerar').disabled);
+  r.tarjetaSinParar = (await page.locator('#iaAudio button:has-text("Parar")').count()) === 0;
+  await page.waitForSelector('#iaConsent input[type=checkbox]');
+  r.consentMientrasGraba = await page.evaluate(() => document.getElementById('iaGenerar').disabled);
+  await page.check('#iaConsent input[type=checkbox]');
+  await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+  const antes = captura.length;
+  await page.click('#iaGenerar');                       // cierra la grabación y la usa
+  await page.waitForFunction(n => document.querySelector('#iaResultado')?.textContent.includes('CONDICIÓN DE SALUD') || false, antes, { timeout: 15000 });
+  r.generarCierraYUsa = captura.length === antes + 1 && /name="file"/.test(captura[captura.length - 1]);
+  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));
+  r.audioBorradoTrasInforme = (await metaAudioIDB(page)) === undefined;
 
-  await page.click('#iaAudio button:has-text("Parar y usar")');
-  await page.waitForSelector('#iaAudio .ia-reproductor');
-  r.audioEnTarjeta = (await btn()).clases.includes('recorded');
-  r.audioEnIDB = await page.evaluate(() => new Promise(res => {
-    const rq = indexedDB.open('physiq', 3);
-    rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(!!g.result?.chunks); };
-  }));
-
-  // Menú: con audio → «Grabar de nuevo» (confirmación) → pausa y reanudar → parar
+  // Con un audio adjunto (cerrado): el menú solo ofrece ir al informe y descartar
+  await page.setInputFiles('#iaArchivo', { name: 'consulta.webm', mimeType: 'audio/webm', buffer: Buffer.alloc(2048, 1) });
+  await esperaClase('recorded');
   await page.click('#grabBtn');
-  r.menuConAudio = await page.isVisible('#grabMenu :text("Grabar de nuevo")');
-  await page.click('#grabMenu button:has-text("Grabar de nuevo")');
+  const menu = await page.textContent('#grabMenu');
+  r.menuConAudio = menu.includes('Descartar') && !menu.includes('Grabar de nuevo') && !menu.includes('Parar');
+  await page.click('#grabMenu button:has-text("Descartar")');
   await page.click('#confirmAction');
-  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await esperaClase('recorded', false);
+  r.descartaAdjunto = (await metaAudioIDB(page)) === undefined;
+
+  // Reiniciar con una grabación en curso: la confirmación avisa y la descarta
   await page.click('#grabBtn');
-  await page.click('#grabMenu button:has-text("Pausa")');
-  r.pausa = (await btn()).clases.includes('paused');
-  await page.click('#grabMenu button:has-text("Reanudar")');
-  r.reanuda = (await btn()).clases.includes('recording');
+  await esperaClase('recording');
   await page.waitForTimeout(600);
-  await page.click('#grabMenu button:has-text("Parar")');
-  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recorded'));
-  r.paraDesdeMenu = true;
-
-  // Reiniciar: la confirmación avisa del audio y, al aceptar, se descarta
   await page.click('.btn-reset');
-  r.avisoEnReinicio = (await page.textContent('#confirmBanner')).includes('audio grabado de la sesión');
+  r.avisoEnReinicio = (await page.textContent('#confirmBanner')).includes('grabación en curso');
   await page.click('#confirmAction');
-  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('recorded'));
-  r.descartadoAlReiniciar = await page.evaluate(() => new Promise(res => {
-    const rq = indexedDB.open('physiq', 3);
-    rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result === undefined); };
-  }));
-  r.ok = Object.values(r).every(v => v === true);
+  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));
+  await page.waitForTimeout(300);
+  r.descartadoAlReiniciar = (await metaAudioIDB(page)) === undefined && !(await clases()).includes('recorded');
+  await context.close();
+  return r;
+}
+
+async function recorrerGrabadoraRaton(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['microphone']);
+  await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
+  await mockWorkerYTurnstile(context, ['x']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (grabadora ratón): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (grabadora ratón): ${msg.text()}`); });
+  const r = {};
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.waitForSelector('#grabBtn', { state: 'visible' });
+  r.ratonSinPapeleraSinGrabar = !(await page.isVisible('#grabDescBtn'));
+  await page.click('#grabBtn');
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await page.waitForTimeout(800);
+  r.ratonPapeleraVisible = await page.isVisible('#grabDescBtn');
+  await page.click('#grabBtn');
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('paused'));
+  r.ratonSinAvisoPulsacion = !((await page.textContent('#appToast').catch(() => '')) || '').includes('mantén pulsado');
+  await page.click('#grabDescBtn');
+  r.ratonPapeleraConfirma = (await page.textContent('#confirmBanner')).includes('Descartar');
+  await page.click('#confirmAction');
+  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));
+  await page.waitForTimeout(300);
+  r.ratonDescartado = (await metaAudioIDB(page)) === undefined && !(await page.isVisible('#grabDescBtn'));
+  await context.close();
   return r;
 }
 
@@ -634,7 +700,7 @@ async function main() {
 
   console.log('\nGrabación desde la cabecera (micrófono falso de Chromium):');
   const grab = await checkGrabadoraCabecera(errors);
-  console.log(`  ${grab.ok ? '✓' : '✗'} empieza en la fase 1, sigue por todas, la fase 5 la ve y la para; menú; reiniciar avisa y descarta`);
+  console.log(`  ${grab.ok ? '✓' : '✗'} toque = empezar/pausa/reanudar, pulsación larga y papelera descartan, sigue por todas las fases, «Generar» la cierra y la usa; reiniciar avisa y descarta`);
 
   const realErrors = errors.filter(e => !KNOWN_NOISE.some(n => e.includes(n)));
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
