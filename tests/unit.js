@@ -1055,6 +1055,8 @@ test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan'
 test('tobillo y pie: cinco P, artritis infecciosa y debilidad simétrica con arreflexia son urgencias', () => {
   const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.flatMap(s => s.preguntas);
   ['tp_t1', 'tp_i1', 'tp_n1'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+  // TVP: derivar hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8), igual que ca_v2 de cadera
+  assert.match(qs.find(q => q.id === 'tp_v2').urgencia, /derivar hoy.*1 o menos, dímero D/);
 });
 
 test('tobillo y pie: solo puntúan Thompson, hueco palpable, Ottawa (LR−) y Molloy', () => {
