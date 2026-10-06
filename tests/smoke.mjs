@@ -401,7 +401,7 @@ async function checkInformeNarrativo(browser, errors) {
   const cuerpo = Buffer.from(captura[1] || '', 'latin1').toString('utf8');
   r.peticion = cuerpo.includes('name="file"') && cuerpo.includes('DATOS DE VALORACI') && cuerpo.includes('{{TRANSCRIPT}}') && cuerpo.includes('name="whisperHint"');
   // Datos ampliados: el recorrido del árbol CIF va en el prompt
-  r.promptAmpliado = cuerpo.includes('Razonamiento clínico (árbol de decisión CIF') && /name="maxTokens"\r\n\r\n7000/.test(cuerpo);
+  r.promptAmpliado = cuerpo.includes('Recorrido de la exploración (pregunta clínica') && /name="maxTokens"\r\n\r\n7000/.test(cuerpo);
   // El informe llega plegado, con las acciones a la vista
   r.resultadoPlegado = await page.evaluate(() => {
     const det = document.getElementById('iaResultadoDet');
