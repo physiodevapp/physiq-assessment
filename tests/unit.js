@@ -1133,7 +1133,7 @@ test('dosisFuente solo acompaña a una dosis escrita (nunca cita algo vacío)', 
 
 test('hipótesis de derivación: texto fijo, sin fuente, y solo las decididas', () => {
   const derivar = Object.values(HYPOTHESES).filter(h => h.dosis === DOSIS_DERIVAR).map(h => h.id).sort();
-  assert.deepEqual(derivar, ['ce8', 'h11', 'ro11', 'tp17', 'tp3', 'tp30', 'tp35', 'tp37', 'tp4', 'tp5', 'tp6']);
+  assert.deepEqual(derivar, ['ce8', 'co7', 'h11', 'ro11', 'tp17', 'tp3', 'tp30', 'tp35', 'tp37', 'tp4', 'tp5', 'tp6']);
   derivar.forEach(id => assert.ok(!HYPOTHESES[id].dosisFuente, `${id}: una derivación no lleva fuente de dosis`));
 });
 
