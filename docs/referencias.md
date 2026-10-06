@@ -13,10 +13,10 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **262** referencias de literatura, con **1029** usos.
+- **262** referencias de literatura, con **1038** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **19** de 262 referencias del registro revisadas. Ver «Estado de revisión».
-- **29** de 442 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
+- **29** de 446 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
 
@@ -50,7 +50,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | **sin revisar** |
 | [Litaker 2000](#litaker-2000) | puntuación 4b | 1 | **sin revisar** |
 | [Solomon 2001](#solomon-2001) | puntuación 4b · texto | 3 | **sin revisar** |
-| [Bachmann 2003](#bachmann-2003) | puntuación 4b · razonamiento fase 2 · texto | 4 | **sin revisar** |
+| [Bachmann 2003](#bachmann-2003) | puntuación 4b · razonamiento fase 2 · texto | 6 | **sin revisar** |
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Chronopoulos 2004](#chronopoulos-2004) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
@@ -120,9 +120,11 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Salamh 2025](#salamh-2025) | pauta · test 4b sin puntuar | 2 | **sin revisar** |
 | [Alentorn-Geli 2026](#alentorn-geli-2026) | pauta | 2 | **sin revisar** |
 | [Vandeputte 2026](#vandeputte-2026) | pauta | 1 | **sin revisar** |
+| [NICE NG19](#nice-ng19) | pronóstico · razonamiento fase 2 | 2 | **sin revisar** |
 | [Englund 2003](#englund-2003) | pronóstico | 1 | **sin revisar** |
 | [Culvenor 2019](#culvenor-2019) | pronóstico | 1 | **sin revisar** |
 | [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 89 | **sin revisar** |
+| [Hermena y Slane 2025](#hermena-y-slane-2025) | pronóstico · test 4b sin puntuar · razonamiento fase 2 | 5 | **sin revisar** |
 | [Katz 1995](#katz-1995) | test 4b sin puntuar | 1 | **sin revisar** |
 | [van Dijk 1996](#van-dijk-1996) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Cook 2001](#cook-2001) | test 4b sin puntuar | 1 | **sin revisar** |
@@ -153,13 +155,13 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Mohr 2024](#mohr-2024) | test 4b sin puntuar · razonamiento fase 2 | 2 | **sin revisar** |
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | **sin revisar** |
+| [Bergman 2025](#bergman-2025) | test 4b sin puntuar · razonamiento fase 2 | 2 | **sin revisar** |
 | [Margetis y Donnally 2025](#margetis-y-donnally-2025) | test 4b sin puntuar · razonamiento fase 2 | 5 | **sin revisar** |
 | [Williams 2025](#williams-2025) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Menon y Rednam 2026](#menon-y-rednam-2026) | test 4b sin puntuar · razonamiento fase 2 | 2 | **sin revisar** |
 | [NICE CG147](#nice-cg147) | razonamiento fase 2 | 4 | **sin revisar** |
 | [NICE NG126](#nice-ng126) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG158](#nice-ng158) | razonamiento fase 2 · texto | 4 | **sin revisar** |
-| [NICE NG19](#nice-ng19) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG38](#nice-ng38) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Downie 2013](#downie-2013) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -241,14 +243,12 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rishor-Olney 2024](#rishor-olney-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rout 2024](#rout-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Benjamin y Lui 2025](#benjamin-y-lui-2025) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Bergman 2025](#bergman-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Budha 2025](#budha-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Daley 2025](#daley-2025) | razonamiento fase 2 | 4 | **sin revisar** |
 | [Gill 2025](#gill-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Grant y John 2025](#grant-y-john-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Guthmiller 2025](#guthmiller-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hall 2025](#hall-2025) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Hermena y Slane 2025](#hermena-y-slane-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Jones 2025](#jones-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kaur 2025](#kaur-2025) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -748,15 +748,19 @@ Citada como:
 
 1. TOBILLO → radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. PIE → radiografía si dolor en el mediopié Y alguno: dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos. Solo descarta: Bachmann 2003 (27 estudios, 15 581 pacientes) da LR− 0,08 aplicando solo la regla del tobillo o solo la del pie, pero 0,21 (IC 95 % 0,12–0,38) en los estudios que aplican las dos juntas, que es como se usan aquí (se toma la más prudente). El positivo es un hallazgo: en adultos, LR+ 1,47 (IC 1,11–1,93; Gomes 2022).
 2. Bachmann 2003 (BMJ 326:417); Gomes 2022 (BMC Musculoskelet Disord 23:885)
-3. REGLAS DE OTTAWA, antes de explorar cualquier traumatismo agudo. TOBILLO → radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. PIE → radiografía si dolor en el mediopié Y alguno: dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos. Muy sensible, moderadamente específica: S 98,5 % en niños de más de 6 años (Lluch, p. 257); en adultos, una regla negativa descarta fractura (LR− 0,08, Bachmann 2003). Excluidas embarazadas y personas que no pueden seguir la prueba (p. ej., traumatismo craneal). ≈10 % de las inversiones acaban en fractura.
-4. Bachmann 2003 — Bachmann, Kolb, Koller, Steurer y ter Riet, «Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review», BMJ 326(7386):417 (2003); resumen leído en PubMed.
+3. Radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. Solo descarta: aplicando solo la regla del tobillo, Bachmann 2003 (27 estudios, 15 581 pacientes) da LR− 0,08 (IC 95 % 0,03–0,18). El positivo es un hallazgo: la regla es muy sensible y poco específica. Excluidas embarazadas y personas que no pueden seguir la prueba.
+4. Bachmann 2003 (BMJ 326:417); Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 256–257
+5. REGLAS DE OTTAWA, antes de explorar cualquier traumatismo agudo. TOBILLO → radiografía si dolor en la zona maleolar Y alguno: dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta. PIE → radiografía si dolor en el mediopié Y alguno: dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos. Muy sensible, moderadamente específica: S 98,5 % en niños de más de 6 años (Lluch, p. 257); en adultos, una regla negativa descarta fractura (LR− 0,08, Bachmann 2003). Excluidas embarazadas y personas que no pueden seguir la prueba (p. ej., traumatismo craneal). ≈10 % de las inversiones acaban en fractura.
+6. Bachmann 2003 — Bachmann, Kolb, Koller, Steurer y ter Riet, «Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review», BMJ 326(7386):417 (2003); resumen leído en PubMed.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» (en `criterio`) | 4b · mención en el texto | 1 |
 | Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Reglas de Ottawa de tobillo y de pie» | 4b · cita bajo el test | 2 |
-| Tobillo y pie | — | `urgencia.lineas.3` | 2 · mención en el texto | 3 |
-| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 4 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Regla de Ottawa de tobillo» (en `criterio`) | 4b · mención en el texto | 3 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Regla de Ottawa de tobillo» | 4b · cita bajo el test | 4 |
+| Tobillo y pie | — | `urgencia.lineas.3` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 6 |
 
 ### Bachmann 2004
 
@@ -892,11 +896,13 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 
 Citada como:
 
-1. Bergman 2025 — Bergman, Li y Shuman, «Acute Ankle Sprain», StatPearls [Internet], NCBI Bookshelf, última actualización 2 de agosto de 2025.
+1. Bergman 2025 (StatPearls, «Acute Ankle Sprain»)
+2. Bergman 2025 — Bergman, Li y Shuman, «Acute Ankle Sprain», StatPearls [Internet], NCBI Bookshelf, última actualización 2 de agosto de 2025.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Palpar el peroné hasta la rodilla» | 4b · cita bajo el test | 1 |
+| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 2 |
 
 ### Bhatti 2026
 
@@ -2328,12 +2334,18 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 
 Citada como:
 
-1. Hermena y Slane 2025 — Hermena y Slane, «Ankle Fracture», StatPearls [Internet], NCBI Bookshelf, última actualización 15 de febrero de 2025.
+1. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»); Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
+2. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»)
+3. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»); NICE NG19, rec. 1.7.1
+4. Hermena y Slane 2025 — Hermena y Slane, «Ankle Fracture», StatPearls [Internet], NCBI Bookshelf, última actualización 15 de febrero de 2025.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
-| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 1 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «No carga cuatro pasos» | 4b · cita bajo el test | 1 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Estado neurovascular» | 4b · cita bajo el test | 2 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Pronóstico | 5 · cita del pronóstico | 3 |
+| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 4 |
+| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 4 |
 
 ### HerniaSurge 2018
 
@@ -3365,62 +3377,64 @@ Citada como:
 195. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284 y 286
 196. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 284
 197. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284–287
-198. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
-199. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
-200. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
-201. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
-202. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
-203. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
-204. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
-205. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
-206. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
-207. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
-208. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
-209. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
-210. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
-211. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
-212. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-213. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
-214. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
-215. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
-216. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
-217. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
-218. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-219. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
-220. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
-221. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
-222. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
-223. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
-224. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
-225. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
-226. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
-227. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
-228. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
-229. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
-230. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 224–225.
-231. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.
-232. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205.
-233. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 200.
-234. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–198 y 205–206.
-235. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–197.
-236. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219 y 221–222.
-237. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198, 217 y 223.
-238. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217–218 y 220.
-239. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198–199 y 205.
-240. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201 y 213–214.
-241. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272.
-242. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254–257.
-243. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 241–245.
-244. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 268 y 272–273.
-245. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247–251.
-246. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 247, 252–253 y 278–280.
-247. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 252 y 287.
-248. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 280–282.
-249. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 264, 282 y 287.
-250. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235 y 287.
-251. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 285–286.
-252. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 287.
-253. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 283.
+198. Bachmann 2003 (BMJ 326:417); Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 256–257
+199. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»); Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
+200. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
+201. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
+202. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
+203. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
+204. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
+205. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
+206. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
+207. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
+208. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
+209. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
+210. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
+211. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
+212. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+213. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
+214. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+215. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
+216. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
+217. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
+218. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
+219. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
+220. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+221. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+222. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
+223. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
+224. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
+225. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
+226. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
+227. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
+228. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
+229. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
+230. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
+231. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
+232. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 224–225.
+233. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.
+234. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205.
+235. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 200.
+236. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–198 y 205–206.
+237. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–197.
+238. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219 y 221–222.
+239. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198, 217 y 223.
+240. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217–218 y 220.
+241. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198–199 y 205.
+242. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201 y 213–214.
+243. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272.
+244. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254–257.
+245. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 241–245.
+246. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 268 y 272–273.
+247. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247–251.
+248. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 247, 252–253 y 278–280.
+249. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 252 y 287.
+250. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 280–282.
+251. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 264, 282 y 287.
+252. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235 y 287.
+253. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 285–286.
+254. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 287.
+255. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 283.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -3460,17 +3474,17 @@ Citada como:
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Luxación bloqueada» | 4b · cita bajo el test | 21 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Fractura» | 4b · cita bajo el test | 21 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 8 |
-| Hombro | — | `sistemas.0.banderasRojas.5` | 2 · mención en el texto | 198 |
-| Hombro | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 199 |
-| Hombro | — | `sistemas.7.banderasRojas.0` | 2 · mención en el texto | 200 |
-| Hombro | — | `sistemas.8.banderasRojas.0` | 2 · mención en el texto | 201 |
-| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 203 |
-| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 204 |
-| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 205 |
-| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 206 |
-| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 205 |
-| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 207 |
-| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 208 |
+| Hombro | — | `sistemas.0.banderasRojas.5` | 2 · mención en el texto | 200 |
+| Hombro | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 201 |
+| Hombro | — | `sistemas.7.banderasRojas.0` | 2 · mención en el texto | 202 |
+| Hombro | — | `sistemas.8.banderasRojas.0` | 2 · mención en el texto | 203 |
+| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 205 |
+| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 206 |
+| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 207 |
+| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 208 |
+| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 207 |
+| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 209 |
+| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 210 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Apoyo monopodal (30 s)» | 4b · cita bajo el test | 27 |
 | Cadera | ca1 · Artrosis de Cadera | Pronóstico | 5 · cita del pronóstico | 28 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FABER (Flexión-Abducción-Rotación Externa)» | 4b · cita bajo el test | 29 |
@@ -3521,21 +3535,21 @@ Citada como:
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Palpación dolorosa de la sínfisis y el hueso adyacente» | 4b · cita bajo el test | 53 |
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Resistencia abdominal y squeeze» | 4b · cita bajo el test | 60 |
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Pronóstico | 5 · cita del pronóstico | 55 |
-| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 209 |
-| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 210 |
-| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 209 |
-| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 211 |
-| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 212 |
-| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 212 |
-| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 212 |
-| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 213 |
-| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 214 |
-| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 215 |
-| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 216 |
-| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 217 |
-| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 212 |
-| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 218 |
-| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 219 |
+| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 211 |
+| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 212 |
+| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 211 |
+| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 213 |
+| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 214 |
+| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 214 |
+| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 214 |
+| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 215 |
+| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 216 |
+| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 217 |
+| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 218 |
+| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 219 |
+| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 214 |
+| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 220 |
+| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 221 |
 | Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Flexión Craneocervical (CCFT) con biofeedback de presión» | 4b · cita bajo el test | 61 |
 | Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Reposicionamiento Cabeza-Neutro» | 4b · cita bajo el test | 62 |
 | Cervical | ce2 · Disfunción Neuromuscular Cervical | Dosis (en el texto) | 5 · mención en el texto | 63 |
@@ -3553,13 +3567,13 @@ Citada como:
 | Cervical | ce9 · Disfunción Postural Cérvico-Torácica | Test «Evaluación de cifosis torácica» | 4b · cita bajo el test | 72 |
 | Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Test «Test de resistencia de flexores cervicales profundos» | 4b · cita bajo el test | 73 |
 | Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Test «Evaluación de fatiga en actividades funcionales prolongadas» | 4b · cita bajo el test | 71 |
-| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 220 |
-| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 221 |
-| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 222 |
-| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 223 |
-| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 224 |
-| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 225 |
-| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 226 |
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 222 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 223 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 224 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 225 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 226 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 227 |
+| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 228 |
 | Lumbar | lu3 · Dolor Radicular Lumbar | Pronóstico | 5 · cita del pronóstico | 74 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Déficits sensoriales (L3-S1)» | 4b · cita bajo el test | 75 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Pronóstico | 5 · cita del pronóstico | 76 |
@@ -3575,10 +3589,10 @@ Citada como:
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pronóstico | 5 · cita del pronóstico | 86 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 87 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 87 |
-| Lumbar | — | `sistemas.5.banderasRojas.0` | 2 · mención en el texto | 202 |
-| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 227 |
-| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 228 |
-| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 229 |
+| Lumbar | — | `sistemas.5.banderasRojas.0` | 2 · mención en el texto | 204 |
+| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 229 |
+| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 230 |
+| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 231 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Rango disminuido, hinchazón persistente, debilidad de cuádriceps» | 4b · cita bajo el test | 88 |
 | Rodilla | ro1 · Artrosis de Rodilla | Pronóstico | 5 · cita del pronóstico | 89 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Test de Thessaly» | 4b · cita bajo el test | 90 |
@@ -3643,17 +3657,17 @@ Citada como:
 | Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signos de patología meniscal o condral» | 4b · cita bajo el test | 130 |
 | Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signo de Foucher» | 4b · cita bajo el test | 130 |
 | Rodilla | ro20 · Quiste Poplíteo (Baker) | Pronóstico | 5 · cita del pronóstico | 131 |
-| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 230 |
-| Rodilla | — | Pregunta `r_v3` · Vascular | 2 · razonamiento del cribado | 231 |
-| Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 232 |
-| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 233 |
-| Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 234 |
-| Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 235 |
-| Rodilla | — | Pregunta `ro_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 236 |
-| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 237 |
-| Rodilla | — | Pregunta `ro_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 238 |
-| Rodilla | — | Pregunta `ro_t6` · Traumático / Mecánico | 2 · razonamiento del cribado | 239 |
-| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 240 |
+| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 232 |
+| Rodilla | — | Pregunta `r_v3` · Vascular | 2 · razonamiento del cribado | 233 |
+| Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 234 |
+| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 235 |
+| Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 236 |
+| Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 237 |
+| Rodilla | — | Pregunta `ro_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 238 |
+| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 239 |
+| Rodilla | — | Pregunta `ro_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 240 |
+| Rodilla | — | Pregunta `ro_t6` · Traumático / Mecánico | 2 · razonamiento del cribado | 241 |
+| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 242 |
 | Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Reglas de Ottawa (si no carga)» | 4b · cita bajo el test | 132 |
 | Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPAA: palpar y estirar» | 4b · cita bajo el test | 133 |
 | Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPC: palpar y estirar» | 4b · cita bajo el test | 133 |
@@ -3766,21 +3780,23 @@ Citada como:
 | Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Navicular: apofisitis del tibial posterior o Köhler» | 4b · cita bajo el test | 195 |
 | Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Freiberg: cabeza del 2.º–4.º MT (14–18 años)» | 4b · cita bajo el test | 196 |
 | Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Pronóstico | 5 · cita del pronóstico | 197 |
-| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 241 |
-| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 242 |
-| Tobillo y pie | — | Pregunta `tp_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 243 |
-| Tobillo y pie | — | Pregunta `tp_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 244 |
-| Tobillo y pie | — | Pregunta `tp_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 245 |
-| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 246 |
-| Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 247 |
-| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 248 |
-| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 249 |
-| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 250 |
-| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 251 |
-| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 252 |
-| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 253 |
-| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 253 |
-| Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 252 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Regla de Ottawa de tobillo» | 4b · cita bajo el test | 198 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «No carga cuatro pasos» | 4b · cita bajo el test | 199 |
+| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 243 |
+| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 244 |
+| Tobillo y pie | — | Pregunta `tp_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 245 |
+| Tobillo y pie | — | Pregunta `tp_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 246 |
+| Tobillo y pie | — | Pregunta `tp_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 247 |
+| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 248 |
+| Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 249 |
+| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 250 |
+| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 251 |
+| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 252 |
+| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 253 |
+| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 254 |
+| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 255 |
+| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 255 |
+| Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 254 |
 
 ### Logerstedt 2017
 
@@ -4521,11 +4537,13 @@ Nota: Leídas las recomendaciones 1.3.4, 1.3.6, 1.4.1–1.4.2 y 1.7.1–1.7.4 en
 
 Citada como:
 
-1. NICE NG19 — NICE, «Diabetic foot problems: prevention and management» (2015, actualizada el 11 de octubre de 2019), recomendaciones 1.3.4, 1.3.6, 1.4.1–1.4.2 y 1.7.1–1.7.3.
+1. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»); NICE NG19, rec. 1.7.1
+2. NICE NG19 — NICE, «Diabetic foot problems: prevention and management» (2015, actualizada el 11 de octubre de 2019), recomendaciones 1.3.4, 1.3.6, 1.4.1–1.4.2 y 1.7.1–1.7.3.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 1 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Pronóstico | 5 · cita del pronóstico | 1 |
+| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 2 |
 
 ### NICE NG226
 

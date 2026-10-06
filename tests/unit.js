@@ -308,8 +308,8 @@ console.log('\nHYPOTHESES data integrity');
 
 const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo', 'tobillo_pie'];
 
-test('all 118 hypotheses present', () => {
-  assert.equal(Object.keys(HYPOTHESES).length, 118);
+test('all 119 hypotheses present', () => {
+  assert.equal(Object.keys(HYPOTHESES).length, 119);
 });
 
 test('every hypothesis has id, region, name, tests', () => {
@@ -1063,6 +1063,7 @@ test('tobillo y pie: solo puntúan Thompson, hueco palpable, Ottawa (LR−) y Mo
   const puntuan = {
     tp3: ['Thompson (Simmonds)', 'Hueco palpable'],
     tp5: ['Reglas de Ottawa de tobillo y de pie'],
+    tp37: ['Regla de Ottawa de tobillo'],
     tp20: ['Signo de pinzamiento de Molloy'],
   };
   // Maffulli 1998 con las LR de Reiman 2014
@@ -1073,6 +1074,9 @@ test('tobillo y pie: solo puntúan Thompson, hueco palpable, Ottawa (LR−) y Mo
   // Bachmann 2003: solo descarta (las dos reglas juntas); el positivo es hallazgo
   assert.equal(lr('tp5', 'Reglas de Ottawa de tobillo y de pie', 'neg'), 0.21);
   assert.equal(lr('tp5', 'Reglas de Ottawa de tobillo y de pie', 'pos'), 1);
+  // Bachmann 2003: regla del tobillo sola, LR− 0,08; el positivo no puntúa
+  assert.equal(lr('tp37', 'Regla de Ottawa de tobillo', 'neg'), 0.08);
+  assert.equal(lr('tp37', 'Regla de Ottawa de tobillo', 'pos'), 1);
   // Molloy 2003: LR calculadas de S 94,8 % y E 88 %
   assert.ok(Math.abs(lr('tp20', 'Signo de pinzamiento de Molloy', 'pos') - 7.9) < 0.01);
   assert.ok(Math.abs(lr('tp20', 'Signo de pinzamiento de Molloy', 'neg') - 0.059) < 0.002);
@@ -1129,7 +1133,7 @@ test('dosisFuente solo acompaña a una dosis escrita (nunca cita algo vacío)', 
 
 test('hipótesis de derivación: texto fijo, sin fuente, y solo las decididas', () => {
   const derivar = Object.values(HYPOTHESES).filter(h => h.dosis === DOSIS_DERIVAR).map(h => h.id).sort();
-  assert.deepEqual(derivar, ['ce8', 'h11', 'ro11', 'tp17', 'tp3', 'tp30', 'tp35', 'tp4', 'tp5', 'tp6']);
+  assert.deepEqual(derivar, ['ce8', 'h11', 'ro11', 'tp17', 'tp3', 'tp30', 'tp35', 'tp37', 'tp4', 'tp5', 'tp6']);
   derivar.forEach(id => assert.ok(!HYPOTHESES[id].dosisFuente, `${id}: una derivación no lleva fuente de dosis`));
 });
 
