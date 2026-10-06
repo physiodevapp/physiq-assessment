@@ -1560,6 +1560,27 @@ test('plantillas: narrativo y ficha breve, por defecto según el tipo de consult
   assert.equal(IN.informeTruncado('## PRESENTACIÓN CLÍNICA\nA.\n## HALLAZGOS Y CODIFICACIÓN CIF\nB.', 'breve'), true);
 });
 
+test('prompt: reglas de la revisión con informes reales, en las dos plantillas', () => {
+  const d = { p: 'X', r: 'lumbar', d: '01/01/2026', h: [], br: [], sq: [], pn: {} };
+  for (const conAudio of [true, false]) {
+    for (const [nombre, pl] of Object.entries(IN.PLANTILLAS)) {
+      const p = pl.prompt(d, { conAudio, nombreRegion: r => r, ampliado: null });
+      // El diagnóstico médico fijo contradecía al paciente cuando lo contaba
+      assert.ok(!p.includes('no aportado'), `${nombre}: sin «Diagnóstico médico: no aportado» fijo`);
+      // «Prevalecen los datos estructurados» hacía descartar o yuxtaponer lo que cuenta el paciente
+      assert.ok(!p.includes('prevalecen los datos estructurados'), `${nombre}: sin la regla antigua de discrepancias`);
+      assert.match(p, /Discrepancias:/, `${nombre}: regla de discrepancias`);
+      assert.match(p, /No menciones de dónde sale cada dato/, `${nombre}: sin citar las fuentes`);
+      assert.match(p, /Reglas pronósticas.*nunca las uses para reforzar ni descartar/, `${nombre}: regla pronóstica`);
+      assert.match(p, /Derivaciones:.*UNA sola vez, al principio/, `${nombre}: derivación una vez, al principio del plan`);
+      assert.match(p, /no decidas por tu cuenta si se espera/, `${nombre}: derivación no urgente sin decidir el momento`);
+      assert.match(p, /mejor omitir un código que poner uno dudoso/, `${nombre}: códigos CIF limitados`);
+    }
+  }
+  // El tope de tokens solo evita cortes: holgado respecto a las palabras pedidas (~1,6 tokens/palabra en español con códigos)
+  for (const pl of Object.values(IN.PLANTILLAS)) assert.ok(pl.maxTokens >= pl.palabras * 3, `${pl.nombre}: tope de tokens holgado`);
+});
+
 test('texto para compartir: la edad va en la identificación', () => {
   assert.match(IN.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'lumbar', ed: 47 }), /Edad: 47 años/);
   assert.doesNotMatch(IN.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'lumbar' }), /Edad:/);

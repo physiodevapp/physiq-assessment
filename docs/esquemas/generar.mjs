@@ -36,7 +36,7 @@ const CSS = `
   .aviso div { font-weight: normal; }
   .pie { color: #6b7280; font-size: 9px; margin-top: 8px; }
   .chip { display: inline-block; border-radius: 10px; padding: 0 6px; font-size: 9px; font-weight: bold; }
-  .urg { background: #d0342c; color: #fff; } .alerta { background: #fff1dc; color: #9a5b00; } .s1 { background: #eaf1ff; color: #3567d6; }
+  .urg { background: #d0342c; color: #fff; } .alerta { background: #fff1dc; color: #9a5b00; }
   .num { display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: #7c4ddb; color: #fff; text-align: center; font-weight: bold; font-size: 10px; line-height: 18px; padding: 0 4px; }
 `;
 
@@ -48,7 +48,7 @@ function htmlCribado(region) {
     const crit = s.criterioCompuesto
       ? `<div class="crit"><b>${esc(s.criterioCompuesto.etiqueta)}</b> — ${s.criterioCompuesto.minPositivas} o más de las preguntas ${s.criterioCompuesto.ids.map(id => idx[id]).join(', ')}${s.criterioCompuesto.filtro?.edadMax ? ` · edad ≤ ${s.criterioCompuesto.filtro.edadMax}` : ''}${s.criterioCompuesto.filtro?.evolucion ? ` · evolución: ${esc(s.criterioCompuesto.filtro.evolucion)}` : ''}</div>` : '';
     return `<section class="sis"><h2>${esc(s.icon || '')} ${esc(s.nombre)}</h2><ol>${s.preguntas.map(q => `
-      <li class="${q.urgencia ? 'qurg' : ''}">${esc(q.text)} ${q.urgencia ? '<span class="chip urg">URGENCIA · derivar hoy</span>' : ''}${q.s1 ? ' <span class="chip s1">rápido</span>' : ''}</li>`).join('')}</ol>${crit}</section>`;
+      <li class="${q.urgencia ? 'qurg' : ''}">${esc(q.text)} ${q.urgencia ? '<span class="chip urg">URGENCIA · derivar hoy</span>' : ''}</li>`).join('')}</ol>${crit}</section>`;
   }).join('');
   const urg = sc.urgencia ? `<div class="aviso">${esc(sc.urgencia.titulo)}${sc.urgencia.lineas.map(l => `<div>· ${esc(l)}</div>`).join('')}</div>` : '';
   return `<style>${CSS}
@@ -64,7 +64,7 @@ function htmlCribado(region) {
   <div class="sub">PhysiQ-Assessment · fase 2. Preguntas literales de la app. Las listas de banderas rojas y amarillas de cada sistema están en la app.</div>
   ${urg}
   <div class="cols">${sistemas}</div>
-  <div class="pie">Un SÍ aislado no implica derivación automática (salvo las preguntas de URGENCIA): evaluar en el contexto clínico completo. «rápido» = pregunta del screening rápido. Generado desde los datos de la app el ${hoy}.</div>`;
+  <div class="pie">Un SÍ aislado no implica derivación automática (salvo las preguntas de URGENCIA): evaluar en el contexto clínico completo. Generado desde los datos de la app el ${hoy}.</div>`;
 }
 
 // ── Fase 4 · árbol ───────────────────────────────────────────────────────────

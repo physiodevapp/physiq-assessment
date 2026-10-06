@@ -401,7 +401,7 @@ async function checkInformeNarrativo(browser, errors) {
   const cuerpo = Buffer.from(captura[1] || '', 'latin1').toString('utf8');
   r.peticion = cuerpo.includes('name="file"') && cuerpo.includes('DATOS DE VALORACI') && cuerpo.includes('{{TRANSCRIPT}}') && cuerpo.includes('name="whisperHint"');
   // Datos ampliados: el recorrido del árbol CIF va en el prompt
-  r.promptAmpliado = cuerpo.includes('Razonamiento clínico (árbol de decisión CIF') && /name="maxTokens"\r\n\r\n5000/.test(cuerpo);
+  r.promptAmpliado = cuerpo.includes('Razonamiento clínico (árbol de decisión CIF') && /name="maxTokens"\r\n\r\n7000/.test(cuerpo);
   // El informe llega plegado, con las acciones a la vista
   r.resultadoPlegado = await page.evaluate(() => {
     const det = document.getElementById('iaResultadoDet');
@@ -436,7 +436,7 @@ async function checkInformeNarrativo(browser, errors) {
   await page.click('#iaGenerar');
   await page.waitForFunction(() => state.informeIA?.plantilla === 'breve');
   const cuerpoFicha = Buffer.from(captura[3] || '', 'latin1').toString('utf8');
-  r.fichaBreve = cuerpoFicha.includes('## OBJETIVOS Y PLAN') && /name="maxTokens"\r\n\r\n1500/.test(cuerpoFicha)
+  r.fichaBreve = cuerpoFicha.includes('## OBJETIVOS Y PLAN') && /name="maxTokens"\r\n\r\n2500/.test(cuerpoFicha)
     && await page.evaluate(() => document.querySelector('#iaResultadoDet summary').textContent.includes('Ficha breve')
       && !document.querySelector('#iaResultado .alert-warning'));
   await context.close();
