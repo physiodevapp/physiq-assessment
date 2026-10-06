@@ -308,8 +308,8 @@ console.log('\nHYPOTHESES data integrity');
 
 const VALID_REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo', 'tobillo_pie'];
 
-test('all 119 hypotheses present', () => {
-  assert.equal(Object.keys(HYPOTHESES).length, 119);
+test('all 126 hypotheses present', () => {
+  assert.equal(Object.keys(HYPOTHESES).length, 126);
 });
 
 test('every hypothesis has id, region, name, tests', () => {
@@ -989,10 +989,10 @@ test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y de
   assert.equal(calcLRScore(HYPOTHESES.ro17, { 0: 'neg' }).totalLR, 1);
 });
 
-test('hombro: solo h_g1 (ectópico) es urgencia; la bisagra reparte congelado, artrosis GH y luxación/fractura', () => {
+test('hombro: urgencias: h_g1 (ectópico) y h_t1 (fractura o luxación); la bisagra reparte congelado, artrosis GH y luxación/fractura', () => {
   const qs = SYSTEMIC_SCREENING.hombro.sistemas.flatMap(s => s.preguntas);
   assert.equal(SYSTEMIC_SCREENING.hombro.urgencia, undefined);
-  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['h_g1']);
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['h_g1', 'h_t1']);
   ['h_t1', 'h_i1', 'h_n1'].forEach(id => assert.ok(qs.find(q => q.id === id), id));
   const steps = CIF_TREES.hombro.steps, s2 = steps.find(s => s.id === 'h_step2');
   assert.deepEqual(s2.options.find(o => o.value === 'si').hypothesis, []);
@@ -1133,7 +1133,7 @@ test('dosisFuente solo acompaña a una dosis escrita (nunca cita algo vacío)', 
 
 test('hipótesis de derivación: texto fijo, sin fuente, y solo las decididas', () => {
   const derivar = Object.values(HYPOTHESES).filter(h => h.dosis === DOSIS_DERIVAR).map(h => h.id).sort();
-  assert.deepEqual(derivar, ['ce8', 'h11', 'ro11', 'tp17', 'tp3', 'tp30', 'tp35', 'tp37', 'tp4', 'tp5', 'tp6']);
+  assert.deepEqual(derivar, ['ce8', 'co12', 'co14', 'co7', 'h11', 'ro11', 'tp17', 'tp3', 'tp30', 'tp35', 'tp37', 'tp4', 'tp5', 'tp6']);
   derivar.forEach(id => assert.ok(!HYPOTHESES[id].dosisFuente, `${id}: una derivación no lleva fuente de dosis`));
 });
 

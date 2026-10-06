@@ -102,6 +102,8 @@
   "codo": {
     "co_step1": [
       "co_step2",
+      "co_step2",
+      "co_step2",
       "co_step2"
     ],
     "co_step2": [
@@ -111,9 +113,11 @@
     "co_step3": [
       "co_step4",
       "co_step4",
+      "co_step4",
       "co_step4"
     ],
     "co_step4": [
+      "co_step5",
       "co_step5",
       "co_step5",
       "co_step5"
