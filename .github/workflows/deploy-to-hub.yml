@@ -30,7 +30,19 @@ jobs:
           cp formularios/*.js physiq-hub/assessment/formularios/
           cp data/*.js physiq-hub/assessment/data/
           cp icons/icon-192.png icons/icon-512.png physiq-hub/assessment/icons/
-          cp lib/session.js lib/informe-narrativo.js lib/audio-store.js lib/licencia-ia.js lib/valoracion-json.js lib/posquirurgico.js physiq-hub/assessment/lib/
+          cp lib/session.js lib/informe-narrativo.js lib/audio-store.js lib/licencia-ia.js lib/valoracion-json.js lib/posquirurgico.js lib/version.js physiq-hub/assessment/lib/
+
+      - name: Stamp deployed version
+        # lib/version.js lleva 'dev' en el repo: aquí se sustituye por el commit
+        # y la fecha, y version.json publica lo mismo para que la app detecte
+        # que hay una versión más nueva que la que tiene cargada.
+        run: |
+          SHA="${GITHUB_SHA::7}"
+          FECHA="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          sed -i "s/^export const VERSION_SHA = 'dev';$/export const VERSION_SHA = '$SHA';/; s/^export const VERSION_FECHA = '';$/export const VERSION_FECHA = '$FECHA';/" physiq-hub/assessment/lib/version.js
+          grep -q "^export const VERSION_SHA = '$SHA';$" physiq-hub/assessment/lib/version.js
+          grep -q "^export const VERSION_FECHA = '$FECHA';$" physiq-hub/assessment/lib/version.js
+          printf '{ "sha": "%s", "fecha": "%s" }\n' "$SHA" "$FECHA" > physiq-hub/assessment/version.json
 
       - name: Commit and push
         working-directory: physiq-hub

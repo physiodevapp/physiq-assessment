@@ -2124,6 +2124,49 @@ console.log('\npaciente posquirúrgico');
   });
 }
 
+// ── Versión desplegada (lib/version.js) ─────────────────────────────────────
+console.log('\nversión desplegada');
+{
+  const V = await import('../lib/version.js');
+
+  test('en el repo la versión es dev y no se compara con nada', () => {
+    assert.equal(V.VERSION_SHA, 'dev');
+    assert.equal(V.VERSION_FECHA, '');
+    assert.equal(V.textoVersion(), 'dev');
+    assert.equal(V.esVersionNueva({ sha: 'a1b2c3d' }), false);
+  });
+
+  test('textoVersion: sha y fecha local; sin fecha válida, solo el sha', () => {
+    const t = V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z');
+    assert.match(t, /^a1b2c3d · .*2026/);
+    assert.equal(V.textoVersion('a1b2c3d', ''), 'a1b2c3d');
+    assert.equal(V.textoVersion('a1b2c3d', 'basura'), 'a1b2c3d');
+  });
+
+  test('esVersionNueva: solo un sha válido y distinto del cargado', () => {
+    assert.equal(V.esVersionNueva({ sha: 'ffffff0' }, 'a1b2c3d'), true);
+    assert.equal(V.esVersionNueva({ sha: 'a1b2c3d' }, 'a1b2c3d'), false);
+    for (const raro of [null, {}, { sha: '' }, { sha: 'dev' }, { sha: '<b>x</b>' }, { sha: 42 }])
+      assert.equal(V.esVersionNueva(raro, 'a1b2c3d'), false, JSON.stringify(raro));
+  });
+
+  test('deploy: copia lib/version.js, sustituye las dos líneas y publica version.json', () => {
+    const src = readFileSync(new URL('../lib/version.js', import.meta.url), 'utf8');
+    assert.match(src, /^export const VERSION_SHA = 'dev';$/m, 'deploy-to-hub.yml busca esta línea exacta');
+    assert.match(src, /^export const VERSION_FECHA = '';$/m, 'deploy-to-hub.yml busca esta línea exacta');
+    const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
+    assert.ok(/cp lib\/[^\n]*lib\/version\.js[^\n]*physiq-hub\/assessment\/lib\//.test(wf), 'lib/version.js se copia al hub');
+    assert.ok(wf.includes("s/^export const VERSION_SHA = 'dev';$/"));
+    assert.ok(wf.includes("s/^export const VERSION_FECHA = '';$/"));
+    assert.ok(wf.includes('physiq-hub/assessment/version.json'));
+  });
+
+  test('sw.js no sirve ni guarda version.json desde la caché', () => {
+    const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
+    assert.match(sw, /if \(url\.pathname\.endsWith\('\/version\.json'\)\) return;/);
+  });
+}
+
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 if (failed > 0) process.exit(1);
