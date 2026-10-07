@@ -1522,6 +1522,19 @@ test('conexión cortada al generar: pantalla apagada / segundo plano, no un erro
   assert.equal(IN.errorConexion(null), null);
 });
 
+test('cancelar la generación pide confirmación y el diálogo se cierra solo si la generación acaba', () => {
+  const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+  const cancelar = src.slice(src.indexOf('function iaCancelar'), src.indexOf('function cancelarGeneracion'));
+  assert.match(cancelar, /showConfirmBanner\('Cancelar la generación'[\s\S]*'Sí, cancelar', cancelarGeneracion, \{ cancelLabel: 'Seguir' \}\)/);
+  assert.doesNotMatch(cancelar, /ctrl\.abort/, 'el botón ya no corta sin confirmar');
+  const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
+  assert.match(gen, /finally \{[\s\S]*_cerrarDlgCancelar\?\.\(\);/);
+  // showConfirmBanner: botón de cerrar configurable y cierre desde fuera idempotente
+  const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  assert.match(app, /\$\{opts\.cancelLabel \|\| 'Cancelar'\}/);
+  assert.match(app, /if \(!overlay\.isConnected\) return;[\s\S]{0,300}return dismiss;/);
+});
+
 test('al generar: pantalla encendida, aviso visible y corte explicado sin borrar el audio', () => {
   const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
   const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
