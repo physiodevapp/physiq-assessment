@@ -1721,8 +1721,16 @@ test('ficha breve: sin nombre en el texto, CIF solo b/d, reparto de palabras, y 
   const d = { p: 'X', r: 'rodilla', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
   const f = IN.PLANTILLAS.breve.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
   assert.match(f, /Tampoco escribas el nombre del paciente ni la fecha en ningún punto del texto/);
-  assert.match(f, /solo de funciones corporales \(b\) y de actividades y participación \(d\)/);
-  assert.match(f, /No uses códigos de factores ambientales \(e\)/);
+  assert.match(f, /elegidos SOLO de esta lista .*si ningún código de la lista encaja, no pongas código: b134 funciones del sueño; /);
+  assert.match(f, /d4101 ponerse en cuclillas; d4102/);
+  // Lista cerrada: códigos b/d con forma válida, sin repetidos, todos en el prompt de la ficha y ninguno en el narrativo
+  const cods = IN.CODIGOS_CIF.map(([c]) => c);
+  assert.equal(new Set(cods).size, cods.length, 'sin códigos repetidos');
+  for (const [c, t] of IN.CODIGOS_CIF) {
+    assert.match(c, /^[bd]\d{3,5}$/, c);
+    assert.ok(t && f.includes(`${c} ${t}`), `${c} en el prompt`);
+  }
+  assert.ok(!IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null }).includes('b134 funciones del sueño'), 'el narrativo no lleva códigos');
   assert.match(f, /PRESENTACIÓN CLÍNICA \d+, HALLAZGOS Y CODIFICACIÓN CIF \d+, OBJETIVOS Y PLAN \d+/);
   for (const pl of Object.values(IN.PLANTILLAS)) {
     const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
@@ -1790,7 +1798,7 @@ test('prompt: reglas de la revisión con informes reales, en las dos plantillas'
   // Códigos CIF: limitados en la ficha (tiene sección propia); el narrativo, sin códigos
   const ficha = IN.PLANTILLAS.breve.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
   const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
-  assert.match(ficha, /mejor omitir un código que poner uno dudoso/, 'ficha: códigos CIF limitados');
+  assert.match(ficha, /si ningún código de la lista encaja, no pongas código/, 'ficha: códigos CIF limitados');
   assert.match(narr, /sin códigos alfanuméricos/, 'narrativo: sin códigos CIF');
   // Narrativo de valoración inicial: fuera las subsecciones que solo producían «no se realizó…»
   for (const x of ['Función Cardiorrespiratoria', 'Control Motor', '#### Equilibrio', '6MWT', 'EQ-5D', 'Limitación Funcional Global'])
