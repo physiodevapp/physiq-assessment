@@ -1583,7 +1583,7 @@ test('prompt: el bloque de datos no lleva puntuaciones, notas del plan vacías n
   assert.ok(!IN.contextoValoracion({ ...d, pn: {} }, r => r, null).includes('Notas del plan'), 'sin notas, sin bloque');
 });
 
-test('prompt: etiquetas internas limpias, IMC redondeado, gesto testigo sin resultado y comprobaciones de «Derivar»', () => {
+test('prompt: etiquetas internas limpias, IMC redondeado y comprobaciones de «Derivar»', () => {
   assert.equal(IN.limpiarEtiqueta('Luxación Bloqueada o Fractura (→ Rx)'), 'Luxación Bloqueada o Fractura');
   assert.equal(IN.limpiarEtiqueta('SÍ — Traumatismo previo → luxación bloqueada o fractura → Rx'), 'SÍ — Traumatismo previo — orienta a: luxación bloqueada o fractura; Rx');
   assert.equal(IN.limpiarEtiqueta('Gesto testigo (①) y medida objetiva (②)'), 'Gesto testigo y medida objetiva');
@@ -1593,17 +1593,15 @@ test('prompt: etiquetas internas limpias, IMC redondeado, gesto testigo sin resu
   const amp = { edad: null, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [], arbol: [], pautas: [],
     tests: [
       { hipotesis: 'Luxación Bloqueada o Fractura (→ Rx)', derivar: true, items: [{ test: 'Fractura', resultado: 'negativo' }] },
-      { hipotesis: 'Síndrome subacromial', items: [{ test: 'Arco doloroso', resultado: 'positivo' }, { test: 'Gesto testigo (①) y medida objetiva (②)', referencia: true }] },
+      { hipotesis: 'Síndrome subacromial', items: [{ test: 'Arco doloroso', resultado: 'positivo' }] },
     ] };
   const ctx = IN.contextoValoracion(d, r => r, amp);
   assert.ok(ctx.includes('IMC 21.8') && !ctx.includes('21.835'), 'IMC con un decimal');
   assert.ok(!ctx.includes('(→') && !ctx.includes('①'), 'sin etiquetas internas');
   assert.match(ctx, /Luxación Bloqueada o Fractura — comprobaciones de una hipótesis que se deriva: .*un resultado negativo no la descarta/);
-  assert.match(ctx, /Gesto testigo y medida objetiva: registrado como medida de referencia para el seguimiento/);
-  assert.ok(!/Gesto testigo[^\n]*: (positivo|negativo)/.test(ctx), 'el gesto testigo no lleva resultado');
 });
 
-test('construirAmpliado: el gesto testigo va sin resultado y las hipótesis «Derivar» se marcan', () => {
+test('construirAmpliado: el gesto testigo no va y las hipótesis «Derivar» se marcan', () => {
   withState({ region: 'hombro', activeHypotheses: ['h11', 'h2'],
     testResults: { h11: { 0: 'neg' }, h2: { 0: 'pos', 5: 'pos' } } }, () => {
     const a = IA.construirAmpliado();
@@ -1611,8 +1609,44 @@ test('construirAmpliado: el gesto testigo va sin resultado y las hipótesis «De
     const h2 = a.tests.find(t => t.hipotesis === HYPOTHESES.h2.name);
     assert.equal(h11.derivar, true);
     assert.ok(!('derivar' in h2));
-    const gesto = h2.items.find(i => /^Gesto testigo/.test(i.test));
-    assert.deepEqual(gesto, { test: HYPOTHESES.h2.tests[5].name, referencia: true });
+    assert.ok(/^Gesto testigo/.test(HYPOTHESES.h2.tests[5].name), 'h2[5] sigue siendo el gesto testigo');
+    assert.ok(!h2.items.some(i => /^Gesto testigo/.test(i.test)), 'el gesto testigo no va al prompt (no lleva valor)');
+    assert.equal(h2.items.length, 1);
+  });
+});
+
+const FM = await import('../formulario.js');
+const ESQUEMAS_FP = [['comun', (await import('../formularios/comun.js')).default],
+  ...await Promise.all(FM.REGIONES_CON_FORMULARIO.map(async r => [r, (await import(`../formularios/${r}.js`)).default]))];
+await FM.cargarEsquemaRegion('hombro');
+test('formulario para la IA: todo item lleva un grupo `ia` válido', () => {
+  const esquemas = ESQUEMAS_FP;
+  for (const [r, e] of esquemas) for (const sec of e.secciones) for (const it of sec.items)
+    assert.ok(FM.GRUPOS_IA.includes(it.ia), `${r}.${it.id}: ia «${it.ia}»`);
+  assert.deepEqual(IN.GRUPOS_FORMULARIO.map(([g]) => g), FM.GRUPOS_IA, 'mismos grupos en formulario.js y en el prompt');
+});
+
+test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de matriz)', () => {
+  withState({ region: 'hombro', formularioPrevio: { comun: { evolucion: 'No sabría decir', despierta: 'Sí' }, regiones: { hombro: {
+    provoca: { elevar: 'Sí', cruzar: 'No sé' }, nota: { fuerza: 'Sí', crujidos: 'No' },
+    antecedentes: { tiroides: 'No sé' }, actividades: ['Nadar', 'No sabría decir'], lanza: 'No sabría decir' } } } }, () => {
+    const f = FM.resumenFormularioIA();
+    const txt = JSON.stringify(f);
+    assert.ok(!/No sé|No sabría decir/.test(txt), 'sin «No sé»');
+    assert.ok(!f.some(x => /tiroides|Si lanza|Desde que empezó/.test(x.q + x.a)), 'sin items que solo tenían «No sé»');
+    const g = q => f.find(x => x.q.includes(q))?.g;
+    assert.equal(g('¿Le aparece o le aumenta'), 'actividades');
+    assert.equal(g('¿Nota alguna'), 'sintomas');
+    assert.equal(g('¿Le despierta'), 'sintomas');
+    assert.equal(g('En el trabajo'), 'contexto');
+    const bloque = IN.bloqueFormulario(f);
+    assert.ok(bloque.indexOf('Síntomas que refiere') < bloque.indexOf('Actividades y posturas'), 'grupos en orden');
+    assert.match(bloque, /van en Limitaciones en las Actividades\):\n    · ¿Le aparece o le aumenta el dolor al…\? → Levantar el brazo, por delante o por un lado: Sí\n/);
+    const amp = IA.construirAmpliado();
+    assert.deepEqual(amp.formulario, f);
+    const ctx = IN.contextoValoracion(buildPhysiQPayload(), r => r, amp);
+    assert.ok(ctx.includes('agrupado por la sección del informe'));
+    assert.ok(!ctx.includes('(pregunta → respuesta):\n  · '), 'con datos ampliados no va el fp plano');
   });
 });
 
@@ -1637,12 +1671,14 @@ test('prompt: sin fisiopatología inventada, ejemplos negativos en Limitaciones,
   const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
   for (const pl of Object.values(IN.PLANTILLAS)) {
     const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
-    assert.match(p, /No añadas causas, mecanismos ni fases de curación que no estén en los datos/);
+    assert.match(p, /No añadas causas, mecanismos, secuelas ni fases de curación o de recuperación que no estén en los datos/);
+    assert.match(p, /«secuela esperada»/);
+    assert.match(p, /Si hay protocolo \(escrito o verbal\), sigue sus restricciones tal como constan: no pidas confirmarlo/);
     assert.match(p, /Cada recomendación del plan aparece una sola vez/);
   }
   const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
   assert.match(narr, /Si aquí aparece fuerza, crujidos, bloqueos.*está mal/);
-  assert.match(narr, /«no se dispone de información»/);
+  assert.match(narr, /ni frases para decir que algo no se hizo, no se midió o «no se dispone de…»/);
   assert.match(narr, /va en Seguimiento, aunque venga dentro del texto de la pauta/);
 });
 
