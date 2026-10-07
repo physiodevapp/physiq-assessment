@@ -1505,6 +1505,35 @@ test('errores de los servicios en español, con el original y la salida sin audi
   assert.equal(propio.original, '');
 });
 
+test('conexión cortada al generar: pantalla apagada / segundo plano, no un error de la API', () => {
+  const red = m => Object.assign(new TypeError(m), {});
+  // Los textos reales de iOS, Chrome y Firefox
+  for (const m of ['Load failed', 'Failed to fetch', 'network error', 'NetworkError when attempting to fetch resource.', 'The network connection was lost.']) {
+    const e = IN.errorConexion(red(m), { seOculto: true });
+    assert.equal(e?.texto, IN.TEXTO_CONEXION_SEGUNDO_PLANO, m);
+    assert.equal(e.original, m);
+    assert.equal(e.sinAudio, false);
+  }
+  assert.equal(IN.errorConexion(red('Failed to fetch')).texto, IN.TEXTO_CONEXION_PERDIDA);
+  // No son cortes: errores de la API (Error, aunque hablen de conexión) y fallos de código
+  assert.equal(IN.errorConexion(new Error('Claude: connection reset by peer'), { seOculto: true }), null);
+  assert.equal(IN.errorConexion(new Error('Error del servidor (500)'), { seOculto: true }), null);
+  assert.equal(IN.errorConexion(new TypeError("Cannot read properties of undefined (reading 'text')"), { seOculto: true }), null);
+  assert.equal(IN.errorConexion(null), null);
+});
+
+test('al generar: pantalla encendida, aviso visible y corte explicado sin borrar el audio', () => {
+  const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+  const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
+  assert.match(gen, /pedirWakeLockGen\(\);/);
+  assert.match(gen, /finally \{[\s\S]*soltarWakeLockGen\(\);/);
+  assert.match(gen, /errorConexion\(err, \{ seOculto: [^}]*\}\) \|\| errorLegible\(err\.message\)/);
+  // El audio solo se quita tras guardar el informe, nunca en el catch
+  const captura = gen.slice(gen.indexOf('} catch (err) {'), gen.indexOf('} finally {'));
+  assert.doesNotMatch(captura, /quitarAudio/);
+  assert.match(src, /class="ia-nota-pantalla">Mantén la pantalla encendida/);
+});
+
 test('extensión del audio según el tipo MIME', () => {
   assert.equal(IN.extensionAudio('audio/webm;codecs=opus'), 'webm');
   assert.equal(IN.extensionAudio('audio/mp4'), 'm4a');
