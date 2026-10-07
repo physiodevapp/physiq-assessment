@@ -747,7 +747,7 @@ export const hypotheses = {
     dosisFuente: 'George 2021, J Orthop Sports Phys Ther 51(11):CPG1–CPG60 (guía de práctica clínica APTA; letra = grado de la recomendación, deducido del verbo según la tabla de la guía: «should» A, «may» B, «can» C, «should not» D) · NICE NG59 (rec. 1.2.1 y 1.2.7; actualizada en julio de 2026)',
     tests: [
       { name: 'Regla de Predicción Clínica de Flynn (4/5 criterios)', sn: null, sp: null, lr_pos: '24.4', lr_neg: null, tipo: 'pronostico', criterio: 'Criterios: síntomas <16 días, sin dolor distal a rodilla, FABQ trabajo <19 pts, ≥1 segmento hipomóvil, ≥1 cadera con >35° rotación interna. Predice la respuesta a la manipulación, no diagnostica la disfunción. Evidencia conflictiva para dolor crónico.', fuente: 'Flynn 2002 (regla pronóstica: probabilidad de éxito con manipulación del 45 % al 95 %)' },
-      { name: 'Evaluación de hipomovilidad segmentaria lumbar (PAIVM)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Movilización posteroanterior sobre apófisis espinosas lumbares. Detecta segmentos hipomóviles.' }
+      { name: 'Evaluación de hipomovilidad segmentaria lumbar (PAIVM)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Prono: presión posteroanterior con la eminencia hipotenar sobre cada apófisis espinosa lumbar; cada segmento se juzga normal, hipomóvil o hipermóvil, y se anota si duele. Positivo: al menos un segmento hipomóvil (criterio de la regla de Flynn). Fiabilidad entre examinadores κ 0,38 (IC 95 %: 0,22–0,54) y sin patrón de referencia para la disfunción segmentaria: es un hallazgo, no confirma la hipótesis. Sola, predice poco la respuesta a la manipulación (S 97 %, E 23 %, LR+ 1,26). Que no haya hipomovilidad orienta a ② (primer test).', fuente: 'Fritz 2005 (técnica y fiabilidad, tabla 3) · Flynn 2002 (variable de la regla, tabla 5)' }
     ]
   },
   lu2: {
@@ -759,7 +759,7 @@ export const hypotheses = {
     tests: [
       { name: 'Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria', sn: null, sp: null, lr_pos: '4.3', lr_neg: null, criterio: 'Positivo si se cumple cualquiera de las dos. Predice inestabilidad radiológica en flexo-extensión (referencia radiográfica, no clínica).', fuente: 'Fritz 2005 (IC 95 % del LR+: 1,8–10,6)' },
       { name: 'Test de inestabilidad en prono', sn: '61%', sp: '57%', lr_pos: null, lr_neg: null, criterio: 'Prono con el tronco sobre la camilla y pies en el suelo: PA dolorosa que deja de doler al levantar los pies (activación de extensores).', fuente: 'Fritz 2005 (referencia: inestabilidad radiológica)' },
-      { name: 'Evaluación de control motor en bipedestación', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Sensación de "fallo" en rangos medios, dificultad para mantener posición neutra bajo carga.', noData: true }
+      { name: 'Movimientos aberrantes en la flexo-extensión', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Durante la flexión y la extensión lumbar activas: «instability catch», arco doloroso, subir apoyando las manos en los muslos (signo de Gowers) o inversión del ritmo lumbopélvico. No se asoció con la inestabilidad radiológica (17,9 % frente a 9,5 %, no significativo) y su fiabilidad entre examinadores fue κ −0,07: solo orienta.', fuente: 'Fritz 2005 (tablas 2 y 3; referencia: inestabilidad radiológica)', noData: true }
     ]
   },
   lu3: {

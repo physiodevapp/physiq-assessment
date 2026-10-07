@@ -13,10 +13,10 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **290** referencias de literatura, con **1194** usos.
+- **290** referencias de literatura, con **1197** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **19** de 290 referencias del registro revisadas. Ver «Estado de revisión».
-- **15** de 487 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
+- **13** de 487 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
 
@@ -53,7 +53,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Bachmann 2003](#bachmann-2003) | puntuación 4b · razonamiento fase 2 · texto | 6 | **sin revisar** |
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Chronopoulos 2004](#chronopoulos-2004) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
-| [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
+| [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Laslett 2005](#laslett-2005) | puntuación 4b | 3 | **sin revisar** |
 | [Park 2005](#park-2005) | puntuación 4b | 2 | **sin revisar** |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | **sin revisar** |
@@ -144,7 +144,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Cook 2001](#cook-2001) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Kim 2001](#kim-2001) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Zaslav 2001](#zaslav-2001) | test 4b sin puntuar | 1 | **sin revisar** |
-| [Flynn 2002](#flynn-2002) | test 4b sin puntuar | 1 | **sin revisar** |
+| [Flynn 2002](#flynn-2002) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Kim 2004](#kim-2004) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Walton 2004](#walton-2004) | test 4b sin puntuar · texto | 5 | **sin revisar** |
 | [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · texto | 4 | **sin revisar** |
@@ -1862,10 +1862,12 @@ DOI: 10.1097/00007632-200212150-00021
 Citada como:
 
 1. Flynn 2002 (regla pronóstica: probabilidad de éxito con manipulación del 45 % al 95 %)
+2. Fritz 2005 (técnica y fiabilidad, tabla 3) · Flynn 2002 (variable de la regla, tabla 5)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Regla de Predicción Clínica de Flynn (4/5 criterios)» | 4b · cita bajo el test | 1 |
+| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM)» | 4b · cita bajo el test | 2 |
 
 ### Frey 2017
 
@@ -1890,13 +1892,17 @@ DOI: 10.1007/s00586-004-0803-4
 
 Citada como:
 
-1. Fritz 2005 (IC 95 % del LR+: 1,8–10,6)
-2. Fritz 2005 (referencia: inestabilidad radiológica)
+1. Fritz 2005 (técnica y fiabilidad, tabla 3) · Flynn 2002 (variable de la regla, tabla 5)
+2. Fritz 2005 (IC 95 % del LR+: 1,8–10,6)
+3. Fritz 2005 (referencia: inestabilidad radiológica)
+4. Fritz 2005 (tablas 2 y 3; referencia: inestabilidad radiológica)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria» | 4b · cita bajo el test | 1 |
-| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Test de inestabilidad en prono» | 4b · cita bajo el test | 2 |
+| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM)» | 4b · cita bajo el test | 1 |
+| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria» | 4b · cita bajo el test | 2 |
+| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Test de inestabilidad en prono» | 4b · cita bajo el test | 3 |
+| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Movimientos aberrantes en la flexo-extensión» | 4b · cita bajo el test | 4 |
 
 ### Genevay 2017
 
@@ -6793,10 +6799,3 @@ Tests sin `fuente` (los miembros de un cluster con `fuente` no cuentan: la cita 
 | ca10 · Dolor Articular Sacroilíaco | Test de Patrick (FABER) | — | no |
 | ca10 · Dolor Articular Sacroilíaco | Sin sensibilidad por encima de L5 | — | no |
 | ca15 · Sensibilización Central | Dolor en las AVD | — | no |
-
-### Lumbar (2)
-
-| Hipótesis | Test | Cifras | Puntúa |
-|---|---|---|---|
-| lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Evaluación de hipomovilidad segmentaria lumbar (PAIVM) | — | no |
-| lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Evaluación de control motor en bipedestación | — | no |
