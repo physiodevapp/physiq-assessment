@@ -1,6 +1,6 @@
 # Paciente posquirúrgico — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**. Implementado, incluido el cribado posquirúrgico de la fase 2 (sistema `transversal_posquirurgico` en `data/comun.js`), **pendiente de la revisión clínica antes de `main`**.
+Estado: **decisiones cerradas (octubre 2026)**. Implementado, incluido el cribado posquirúrgico de la fase 2 (sistema `transversal_posquirurgico` en `data/comun.js`), revisado por el usuario (octubre 2026) y en `main` (PR 195). Seguimiento en `MIGRATION_PLAN.md`, Fase G.
 
 Cribado implementado, con diferencias respecto al diseño original:
 - Siete preguntas: `pq_herida`, `pq_tvp` (cadera, rodilla, tobillo y pie, lumbar, cervical), `pq_tvp_ms` (hombro y codo: piernas o el brazo operado), `pq_tep`, `pq_compart` (codo, rodilla, tobillo y pie), `pq_sdrc` y `pq_nervio` (estas dos, solo en las 5 regiones de extremidad).
