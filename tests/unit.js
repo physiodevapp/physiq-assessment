@@ -1633,6 +1633,19 @@ test('prompt: «No sé» nunca como negación, sin negativos inventados, cada da
   assert.ok(!narr.includes('plan y pauta, y al final el seguimiento'), 'en el narrativo el seguimiento tiene su propia sección');
 });
 
+test('prompt: sin fisiopatología inventada, ejemplos negativos en Limitaciones, criterio de reevaluación solo en Seguimiento', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.match(p, /No añadas causas, mecanismos ni fases de curación que no estén en los datos/);
+    assert.match(p, /Cada recomendación del plan aparece una sola vez/);
+  }
+  const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(narr, /Si aquí aparece fuerza, crujidos, bloqueos.*está mal/);
+  assert.match(narr, /«no se dispone de información»/);
+  assert.match(narr, /va en Seguimiento, aunque venga dentro del texto de la pauta/);
+});
+
 test('prompt: sin datos personales deducidos, sin citar las notas del plan, derivación descartada sin mencionar', () => {
   const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
   for (const pl of Object.values(IN.PLANTILLAS)) {
@@ -1645,7 +1658,7 @@ test('prompt: sin datos personales deducidos, sin citar las notas del plan, deri
   }
   const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
   assert.match(narr, /NO escribas el nombre del paciente ni la fecha en ningún punto del texto/);
-  assert.match(narr, /Los síntomas que refiere o niega .* van en Dolor/);
+  assert.match(narr, /los síntomas que refiere o niega van en Dolor/);
   assert.match(narr, /sin nombrar los tests/);
 });
 
@@ -2035,12 +2048,13 @@ console.log('\npaciente posquirúrgico');
     const c = IN.contextoValoracion(d, r => r, null);
     assert.ok(c.includes('Cirugía (paciente posquirúrgico):\n  · Intervención: Osteosíntesis\n  · Fecha: 01/12/2025 (4 semanas)'));
     assert.ok(c.includes('restricciones pendientes de confirmar con el cirujano'));
-    assert.ok(c.includes('Luxación Bloqueada o Fractura (ya diagnosticada y tratada por el médico: no se deriva)'));
+    assert.ok(c.includes('Luxación Bloqueada o Fractura (diagnóstico ya confirmado y tratado por el médico: es un antecedente)'));
+    assert.ok(!c.includes('no se deriva'), 'nada que invite a escribir «no se deriva»');
     const prompt = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
     assert.ok(prompt.includes('Paciente operado (si los datos incluyen «Cirugía»)'));
     assert.ok(prompt.includes('no está marcada como ya diagnosticada y tratada se deriva'));
     const t = IN.bloquesAmpliados({ pautas: [{ hipotesis: 'Fractura', derivar: false, tratada: true, operada: true, pauta: '', fuente: '', prom: '' }] }).join('\n');
-    assert.ok(t.includes('Ya diagnosticada e intervenida: no se deriva') && !t.includes('Derivar: sin tratamiento'));
+    assert.ok(t.includes('Diagnóstico ya confirmado e intervenido: el plan sigue el protocolo del cirujano') && !t.includes('Derivar: sin tratamiento') && !t.includes('no se deriva'));
     withState({ ...POSQ({ intervencion: 'ORIF' }), region: 'hombro', activeHypotheses: ['h11'], testResults: { h11: { 0: 'pos' } },
       hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: {} }, () => {
       const a = IA.construirAmpliado();
