@@ -1522,6 +1522,49 @@ test('conexión cortada al generar: pantalla apagada / segundo plano, no un erro
   assert.equal(IN.errorConexion(null), null);
 });
 
+test('transcripción sin voz: silencio o texto de relleno de Whisper', () => {
+  // Lo que Whisper devuelve con un audio en silencio
+  for (const t of ['', '   ', 'Subtítulos realizados por la comunidad de Amara.org',
+    'Subtítulos realizados por la comunidad de Amara.org Subtítulos realizados por la comunidad de Amara.org',
+    '¡Suscríbete! Gracias por ver el vídeo.', 'Thank you for watching.', 'Hola. Hola. Hola. Hola.',
+    'Gracias por ver. Gracias por ver. Gracias por ver.'])
+    assert.equal(IN.transcripcionSinVoz(t), true, t);
+  // Una consulta real, aunque sea corta o acabe con relleno
+  for (const t of ['Me duele la rodilla izquierda desde hace dos meses, sobre todo al correr.',
+    'Buenos días, Lucía. Cuéntame qué te pasa. Me duele la rodilla. Subtítulos realizados por la comunidad de Amara.org',
+    'Sí. No. Al bajar escaleras me duele por delante.'])
+    assert.equal(IN.transcripcionSinVoz(t), false, t);
+  assert.match(IN.TEXTO_SIN_VOZ, /micrófono/);
+});
+
+test('al generar: una transcripción sin voz corta antes de redactar y conserva el audio', () => {
+  const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+  const stream = src.slice(src.indexOf('async function leerStream'), src.indexOf('function iaCancelar'));
+  // Solo con audio: sin audio la transcripción vacía es lo esperado
+  assert.match(stream, /_gen\.conAudio && transcripcionSinVoz\(_gen\.transcripcion\)\) throw new SinVoz\(\)/);
+  const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
+  const captura = gen.slice(gen.indexOf('} catch (err) {'), gen.lastIndexOf('} finally {'));
+  assert.match(captura, /err instanceof SinVoz[\s\S]*texto: TEXTO_SIN_VOZ[^}]*sinAudio: true/);
+  assert.ok(captura.length > 100);
+  assert.doesNotMatch(captura, /quitarAudio/);
+  // Sale por el catch sin guardar informe; el finally aborta el stream
+  assert.match(gen, /finally \{[\s\S]*ctrl\.abort\(\)/);
+});
+
+const G_SILENCIO = await import('../grabadora.js');
+test('grabadora: aviso de silencio solo grabando, antes al empezar que a media consulta', () => {
+  const G = G_SILENCIO;
+  assert.equal(G.silencioDetectado({ huboSonido: false, msSinSonido: G.SILENCIO_INICIO_MS - 500 }), false);
+  assert.equal(G.silencioDetectado({ huboSonido: false, msSinSonido: G.SILENCIO_INICIO_MS }), true);
+  assert.equal(G.silencioDetectado({ huboSonido: true, msSinSonido: G.SILENCIO_INICIO_MS }), false);
+  assert.equal(G.silencioDetectado({ huboSonido: true, msSinSonido: G.SILENCIO_MS }), true);
+  assert.ok(G.SILENCIO_MS > G.SILENCIO_INICIO_MS);
+  const src = readFileSync(new URL('../grabadora.js', import.meta.url), 'utf8');
+  const medir = src.slice(src.indexOf('function medirNivel'), src.indexOf('export function pausar'));
+  assert.match(medir, /g\.pausado \|\| n\.ctx\.state !== 'running'\) return/, 'en pausa o sin medir, nunca avisa');
+  assert.match(src, /rec\.onstop = \(\) => \{[\s\S]{0,80}pararNivel\(g\)/, 'el AudioContext se cierra con la grabación');
+});
+
 test('al generar: pantalla encendida, aviso visible y corte explicado sin borrar el audio', () => {
   const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
   const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
@@ -1529,7 +1572,7 @@ test('al generar: pantalla encendida, aviso visible y corte explicado sin borrar
   assert.match(gen, /finally \{[\s\S]*soltarWakeLockGen\(\);/);
   assert.match(gen, /errorConexion\(err, \{ seOculto: [^}]*\}\) \|\| errorLegible\(err\.message\)/);
   // El audio solo se quita tras guardar el informe, nunca en el catch
-  const captura = gen.slice(gen.indexOf('} catch (err) {'), gen.indexOf('} finally {'));
+  const captura = gen.slice(gen.indexOf('} catch (err) {'), gen.lastIndexOf('} finally {'));
   assert.doesNotMatch(captura, /quitarAudio/);
   assert.match(src, /class="ia-nota-pantalla">Mantén la pantalla encendida/);
 });
