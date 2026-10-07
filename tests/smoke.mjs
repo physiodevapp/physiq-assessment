@@ -358,6 +358,43 @@ const razonEstado = page => page.evaluate(() => {
   };
 });
 
+// Lado afectado (fase 2): aparece al elegir región, «Central» solo en columna,
+// se guarda en el estado y cabe a 320 px sin desbordar.
+async function checkLado(page) {
+  await page.setViewportSize({ width: 320, height: 640 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const r = {};
+  r.ocultoSinRegion = await page.evaluate(() => document.getElementById('ladoWrap').hidden);
+  await irAFase2(page, 'hombro');
+  const estado = () => page.evaluate(() => {
+    const w = document.getElementById('ladoWrap');
+    const c = w.querySelector('.lado-central');
+    const rw = w.getBoundingClientRect();
+    return {
+      visible: !w.hidden && rw.height > 0,
+      central: !c.hidden && c.getBoundingClientRect().width > 0,
+      cabe: [...w.querySelectorAll('.option-btn')].filter(b => !b.hidden).every(b => {
+        const rb = b.getBoundingClientRect();
+        return rb.left >= rw.left - 1 && rb.right <= rw.right + 1 && b.scrollWidth <= b.clientWidth;
+      }) && document.documentElement.scrollWidth <= innerWidth,
+      lado: state.lado,
+    };
+  });
+  const h = await estado();
+  r.visibleConRegion = h.visible;
+  r.sinCentralEnHombro = !h.central;
+  r.cabe320 = h.cabe;
+  await page.click('#lado .option-btn:has-text("Derecho")');
+  r.guarda = (await estado()).lado === 'Derecho';
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  const l = await estado();
+  r.centralEnLumbar = l.central && l.cabe;
+  r.ok = r.ocultoSinRegion && r.visibleConRegion && r.sinCentralEnHombro && r.cabe320 && r.guarda && r.centralEnLumbar;
+  await page.setViewportSize({ width: 1280, height: 900 });
+  return r;
+}
+
 // Derivación pedida por el árbol (`derivacion` en una opción de CIF_TREES):
 // lumbar, paso 1 NO y paso 2 VASCULAR. Comprueba el aviso bajo el paso, en el
 // «árbol completado» y en la fase 5, por clics reales.
@@ -927,6 +964,10 @@ async function main() {
   const razonMov = await checkRazonamientoMovil(page);
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
+  console.log('\nLado afectado (fase 2):');
+  const lado = await checkLado(page);
+  console.log(`  ${lado.ok ? '✓' : '✗'} aparece al elegir región, «Central» solo en columna, se guarda, cabe a 320 px`);
+
   console.log('\nDerivación del árbol (lumbar, VASCULAR):');
   const deriv = await checkDerivacionVascular(page);
   console.log(`  ${deriv.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
@@ -953,7 +994,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && grab.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
@@ -965,6 +1006,7 @@ async function main() {
   if (!deriv.ok) console.log('\nDerivación del árbol:', JSON.stringify(deriv));
   if (!informeIA.ok) console.log('\nInforme narrativo:', JSON.stringify(informeIA));
   if (!expImp.ok) console.log('\nExportar / importar:', JSON.stringify(expImp));
+  if (!lado.ok) console.log('\nLado afectado:', JSON.stringify(lado));
   if (!grab.ok) console.log('\nGrabadora:', JSON.stringify(grab));
   if (!posqOk) {
     console.log('\nPosquirúrgico failures:');
