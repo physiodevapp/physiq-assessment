@@ -15,7 +15,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 - **299** referencias de literatura, con **1258** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **19** de 299 referencias del registro revisadas. Ver «Estado de revisión».
+- **24** de 299 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 487 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -53,10 +53,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Bachmann 2003](#bachmann-2003) | puntuación 4b · razonamiento fase 2 · texto | 6 | **sin revisar** |
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Chronopoulos 2004](#chronopoulos-2004) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
-| [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Laslett 2005](#laslett-2005) | puntuación 4b · test 4b sin puntuar · texto | 6 | **sin revisar** |
 | [Park 2005](#park-2005) | puntuación 4b | 2 | **sin revisar** |
-| [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | **sin revisar** |
 | [O'Driscoll 2007](#odriscoll-2007) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | **sin revisar** |
 | [Laslett 2008](#laslett-2008) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
@@ -71,19 +69,16 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Nunes 2013](#nunes-2013) | puntuación 4b | 1 | **sin revisar** |
 | [Reiman 2014](#reiman-2014) | puntuación 4b · test 4b sin puntuar · texto | 6 | **sin revisar** |
 | [Smith 2015](#smith-2015) | puntuación 4b | 2 | **sin revisar** |
-| [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | **sin revisar** |
 | [Décary 2018](#décary-2018) | puntuación 4b | 6 | **sin revisar** |
 | [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · texto | 18 | **sin revisar** |
 | [Park 2019](#park-2019) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | **sin revisar** |
 | [Getsoian 2020](#getsoian-2020) | puntuación 4b | 1 | **sin revisar** |
 | [Sims 2020](#sims-2020) | puntuación 4b · razonamiento fase 2 | 2 | **sin revisar** |
-| [Saueressig 2021](#saueressig-2021) | puntuación 4b | 1 | **sin revisar** |
 | [Demont 2022](#demont-2022) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Gomes 2022](#gomes-2022) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | **sin revisar** |
 | [Sokal 2022](#sokal-2022) | puntuación 4b | 4 | **sin revisar** |
-| [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Kazemi 2023](#kazemi-2023) | puntuación 4b · razonamiento fase 2 | 2 | **sin revisar** |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar | 4 | **sin revisar** |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 119 | **sin revisar** |
@@ -327,10 +322,15 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Großterlinden 2016](#großterlinden-2016) | texto | 1 | **sin revisar** |
 | [Frey 2017](#frey-2017) | texto | 1 | **sin revisar** |
 | [Bachmann 2004](#bachmann-2004) | puntuación 4b · razonamiento fase 2 | 2 | 2026-10 · Hay dos revisiones sistemáticas posteriores: Sims 2020 (LR− 0,07) y Kazemi 2023 (18 estudios, 6702 adultos; LR− 0,12). Por la regla de conflictos (mismo nivel, la más reciente), Kazemi 2023 pasa a dar las cifras de ro11 y de ro_t1; Bachmann se cita como concordante. |
+| [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: PubMed (tests clínicos de inestabilidad lumbar, revisiones sistemáticas). Ferrari 2015 (Chiropr Man Therap, 10.1186/s12998-015-0058-7) confirma que solo Fritz 2005 estudió la precisión del test de inestabilidad en prono; Thomas 2026 (Cureus, 10.7759/cureus.108817, búsqueda hasta 12/2025) sigue citando su regla «flexión ≥ 53° o sin hipomovilidad» (LR+ 4,3) sin replicación externa. Leídas enteras en PMC. Estudios sueltos posteriores (Seyedhoseinpoor 2022, Areeudomwong 2020, Chatprem 2021) no leídos en texto completo. |
+| [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | 2026-10 · Sin cambios: ya superada por Han 2023, que es la que da las cifras; solo se menciona como dato anterior. |
 | [Lequesne 2008](#lequesne-2008) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en el resumen y en la tabla 2 de Kinsella 2024. La E se midió frente a controles sin dolor de cadera (casos y controles), lo que la infla: la derotación externa resistida pasa a hallazgo. |
+| [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | 2026-10 · Sin cambios: PubMed (RAPIDH, validación o precisión diagnóstica; publicaciones de Genevay) no encuentra ninguna validación externa de los criterios RAPIDH. |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
 | [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
 | [Pålsson 2020](#pålsson-2020) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015). |
+| [Saueressig 2021](#saueressig-2021) | puntuación 4b | 1 | 2026-10 · Sin cambios: PubMed (clústeres de provocación sacroilíaca, revisiones sistemáticas) no encuentra ninguna posterior; solo una carta sobre su método (Vraa 2022, JOSPT 52(1):49–50). Han 2023, posterior, es la que da la LR del clúster. |
+| [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: PubMed (precisión diagnóstica de la exploración clínica para origen discal, facetario o sacroilíaco, revisiones sistemáticas desde 2023) no encuentra ninguna revisión posterior de tests clínicos; Manchikanti 2026 (Pain Physician) trata de bloqueos facetarios, no de exploración. |
 | [Kinsella 2024](#kinsella-2024) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Texto completo leído (tablas 2 y 3). En el texto el LR+ de la abducción resistida aparece como 13,39, que en la tabla 3 es la DOR; se usa el LR+ de la tabla (6,09). |
 | [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). |
 | [Hölmich 1999](#hölmich-1999) | pauta | 1 | 2026-10 · Texto completo leído: la pauta de ca16 coincide con el panel 1 y los métodos. Corregido el trote (pasadas las 6 primeras semanas) y añadida la población (varones de 18 a 50 años). No se encontró un ensayo posterior que lo sustituya. |
@@ -1935,9 +1935,9 @@ Citada como:
 
 ### Fritz 2005
 
-Publicación: —  
+Publicación: Eur Spine J 14:743–750  
 DOI: 10.1007/s00586-004-0803-4  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: PubMed (tests clínicos de inestabilidad lumbar, revisiones sistemáticas). Ferrari 2015 (Chiropr Man Therap, 10.1186/s12998-015-0058-7) confirma que solo Fritz 2005 estudió la precisión del test de inestabilidad en prono; Thomas 2026 (Cureus, 10.7759/cureus.108817, búsqueda hasta 12/2025) sigue citando su regla «flexión ≥ 53° o sin hipomovilidad» (LR+ 4,3) sin replicación externa. Leídas enteras en PMC. Estudios sueltos posteriores (Seyedhoseinpoor 2022, Areeudomwong 2020, Chatprem 2021) no leídos en texto completo.
 
 Citada como:
 
@@ -1955,9 +1955,9 @@ Citada como:
 
 ### Genevay 2017
 
-Publicación: —  
+Publicación: Spine J 17(10):1464–1471  
 DOI: 10.1016/j.spinee.2017.05.005  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: PubMed (RAPIDH, validación o precisión diagnóstica; publicaciones de Genevay) no encuentra ninguna validación externa de los criterios RAPIDH.
 
 Citada como:
 
@@ -2556,9 +2556,9 @@ Citada como:
 
 ### Han 2023
 
-Publicación: eClinicalMedicine  
+Publicación: eClinicalMedicine 59:101960  
 DOI: 10.1016/j.eclinm.2023.101960  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: PubMed (precisión diagnóstica de la exploración clínica para origen discal, facetario o sacroilíaco, revisiones sistemáticas desde 2023) no encuentra ninguna revisión posterior de tests clínicos; Manchikanti 2026 (Pain Physician) trata de bloqueos facetarios, no de exploración.
 
 Citada como:
 
@@ -2578,7 +2578,7 @@ Citada como:
 
 Publicación: —  
 DOI: 10.1007/s00586-007-0391-1  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: ya superada por Han 2023, que es la que da las cifras; solo se menciona como dato anterior.  
 Nota: Cifra anterior, sustituida por Han 2023 (se menciona en la cita).
 
 Citada como:
@@ -6065,9 +6065,9 @@ Citada como:
 
 ### Saueressig 2021
 
-Publicación: J Orthop Sports Phys Ther  
+Publicación: J Orthop Sports Phys Ther 51(9):422–431  
 DOI: 10.2519/jospt.2021.10469  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: PubMed (clústeres de provocación sacroilíaca, revisiones sistemáticas) no encuentra ninguna posterior; solo una carta sobre su método (Vraa 2022, JOSPT 52(1):49–50). Han 2023, posterior, es la que da la LR del clúster.
 
 Citada como:
 
