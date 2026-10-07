@@ -1864,6 +1864,7 @@ console.log('\nlicencia del informe narrativo (motivo del error)');
 // ── Lado afectado (fase 2) ─────────────────────────────────────────────────────
 console.log('\nlado afectado');
 const IN_INFORME = await import('../lib/informe-narrativo.js');
+const { ladoTexto } = await import('../lib/region.js');
 test('lado: viaja en el payload (la) y sale en 📋 Notas, 📄 Informe y el informe con IA', () => {
   withState({ region: 'hombro', lado: 'Derecho' }, () => {
     const d = buildPhysiQPayload();
@@ -1874,6 +1875,15 @@ test('lado: viaja en el payload (la) y sale en 📋 Notas, 📄 Informe y el inf
     assert.match(IN2.buildNarrativePrompt(d, { conAudio: false, nombreRegion: r => r.charAt(0).toUpperCase() + r.slice(1) }), /Región valorada: Hombro \(derecho\)/);
     assert.match(IN2.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'hombro', la: 'Derecho' }, r => 'Hombro'), /Región valorada: Hombro \(derecho\)/);
   });
+  // Concordancia con la región: «Rodilla (izquierda)», no «(izquierdo)»
+  withState({ region: 'rodilla', lado: 'Izquierdo' }, () => {
+    assert.match(buildContextSummaryText(), /Región: Rodilla \(izquierda\)/);
+    assert.match(buildInformeFisioterapiaText(), /Región valorada: Rodilla \(izquierda\)/);
+    assert.equal(IN_INFORME.regionTexto(buildPhysiQPayload(), r => 'Rodilla'), 'Rodilla (izquierda)');
+  });
+  for (const [r, l, esperado] of [['cadera', 'Derecho', 'derecha'], ['lumbar', 'Izquierdo', 'izquierda'], ['cervical', 'Central', 'central'],
+    ['rodilla', 'Bilateral', 'bilateral'], ['hombro', 'Izquierdo', 'izquierdo'], ['codo', 'Derecho', 'derecho'], ['tobillo_pie', 'Izquierdo', 'izquierdo']])
+    assert.equal(ladoTexto(r, l), esperado, `${r} ${l}`);
   withState({ region: 'hombro', lado: '' }, () => {
     assert.equal(buildPhysiQPayload().la, '');
     assert.match(buildInformeFisioterapiaText(), /Región valorada: Hombro\n/);
