@@ -2428,6 +2428,90 @@ console.log('\nversión desplegada');
   });
 }
 
+// ── Revisión automática del informe (lib/revision-informe.js) ────────────────
+console.log('\nrevisión automática del informe con IA');
+{
+  const RI = await import('../lib/revision-informe.js');
+  const base = { p: 'Pedro Flores', d: '07/10/2026', r: 'hombro', la: 'Derecho', nr: 4, br: [], sq: [], pn: { variableControl: 'Parar si supera 4/10.' }, md: 'completo',
+    h: [{ name: 'Lesión Labral Superior (SLAP)' }, { name: 'Luxación Bloqueada o Fractura (→ Rx)', dt: true }, { name: 'Postoperatorio: clavo', pq: true }],
+    fp: [{ s: 'Hombro', q: '¿Le han dicho alguna vez que tiene…?', a: 'Diabetes o el azúcar alto: No · Problemas de tiroides: No sé' }] };
+  const amp = { edad: 52, sexo: 'Hombre', pautas: [] };
+  const rev = (t, o = {}) => RI.revisarInforme(t, { datos: { ...base, ...o.datos }, ampliado: { ...amp, ...o.ampliado }, plantilla: o.plantilla || 'narrativo', transcripcion: o.transcripcion || '' });
+  const ids = (t, o) => rev(t, o).map(p => p.id);
+  const limpio = 'Paciente de 52 años con dolor en el hombro derecho de 4/10. La lesión labral superior queda apoyada por los tests.';
+
+  test('revisión: un informe correcto no da puntos', () => {
+    assert.deepEqual(rev(limpio), []);
+  });
+  test('revisión: derivaciones que faltan son de nivel alto y van primero', () => {
+    const p = rev(limpio + ' Se recomienda descansar.', { datos: { ur: ['TVP: urgencias'] }, ampliado: { pautas: [{ hipotesis: 'Fractura', derivar: true }] } });
+    assert.equal(p[0].nivel, 'alto');
+    assert.ok(p.some(x => x.id === 'derivacion-urgente') && p.some(x => x.id === 'derivar-hipotesis'));
+    assert.ok(!ids(limpio + ' Se deriva a urgencias hoy.', { datos: { ur: ['x'] } }).includes('derivacion-urgente'));
+    assert.ok(!ids(limpio, { ampliado: { pautas: [{ hipotesis: 'Fractura', derivar: true, tratada: true }] } }).includes('derivar-hipotesis'), 'tratada: no se exige derivar');
+  });
+  test('revisión: lado, edad, sexo y NRS que contradicen la valoración', () => {
+    assert.ok(ids('Dolor en el hombro izquierdo.').includes('lado'));
+    assert.ok(ids('Hombro derecho.', { datos: { la: '' } }).includes('lado-no-consta'));
+    assert.ok(!ids('Hombro derecho.', { datos: { la: '' }, transcripcion: 'me duele el derecho' }).includes('lado-no-consta'), 'lo dijo en consulta');
+    assert.ok(ids('Paciente de 43 años.').includes('edad'));
+    assert.ok(ids('Paciente de 43 años.', { ampliado: { edad: null } }).includes('edad-no-consta'));
+    assert.ok(ids('Mujer de 52 años.').includes('sexo'));
+    assert.ok(ids('Varón de 52 años.', { ampliado: { sexo: '' } }).includes('sexo-no-consta'));
+    assert.ok(ids('Dolor de 6/10.').includes('nrs'));
+    assert.ok(!ids('Dolor de 4 sobre 10 y control a 4/10.').includes('nrs'));
+    // Un rango (irritabilidad «4-6/10») no valida el 6 suelto
+    assert.ok(ids('Dolor de 6/10.', { datos: { ir: 'Media (4-6/10)' } }).includes('nrs'));
+  });
+  test('revisión: reglas de redacción (nombre, fecha, jerga, descarta, relleno, fuentes, secuelas)', () => {
+    assert.ok(ids('Pedro Flores refiere dolor.').includes('nombre'));
+    assert.ok(ids('Valorado el 07/10/2026.').includes('fecha'));
+    assert.ok(ids('El test tiene un LR+ de 3.').includes('jerga'));
+    assert.ok(ids('La exploración permite descartar origen cervical.').includes('descarta'));
+    assert.ok(!ids('Las comprobaciones no la descartan.').includes('descarta'), '«no la descartan» es correcto');
+    assert.ok(ids('No se dispone de goniometría.').includes('relleno'));
+    assert.ok(!ids('No se identifican banderas rojas.').includes('relleno'), '«No se identifican» no es «No sé»');
+    assert.ok(ids('Según el formulario, refiere dolor.').includes('fuentes'));
+    assert.ok(ids('Según la variable de control, parar a 4/10.').includes('fuentes'));
+    assert.ok(ids('Hallazgos propios de la fase de consolidación.').includes('fisiopatologia'));
+    assert.ok(ids('Secuelas esperables de la cirugía.').includes('fisiopatologia'));
+  });
+  test('revisión: «No sé» convertido en negativo', () => {
+    const p = rev(limpio + ' No refiere diabetes ni problemas tiroideos.');
+    const n = p.find(x => x.id === 'no-se');
+    assert.ok(n && /tiroides/.test(n.mensaje), JSON.stringify(p));
+    assert.ok(!ids(limpio + ' No refiere diabetes.').includes('no-se'), 'la diabetes sí se contestó «No»');
+  });
+  test('revisión: códigos CIF según la plantilla', () => {
+    assert.ok(ids('Dolor (b28016) al correr (d4552).', { plantilla: 'breve' }).every(i => i !== 'cif'));
+    assert.match(rev('Dolor al entrenar (e1101).', { plantilla: 'breve' }).find(x => x.id === 'cif').mensaje, /e1101/);
+    assert.ok(ids('Dolor (b28016).', { plantilla: 'narrativo' }).includes('cif'), 'el narrativo no lleva códigos');
+  });
+  test('revisión: hipótesis sin nombrar (no las tratadas ni la posquirúrgica), modo breve y longitud', () => {
+    const p = rev('Paciente de 52 años con dolor en el hombro derecho.');
+    assert.match(p.find(x => x.id === 'hipotesis').mensaje, /Lesión Labral Superior \(SLAP\)/);
+    assert.ok(!/Luxación|Postoperatorio/.test(p.find(x => x.id === 'hipotesis').mensaje));
+    assert.ok(ids(limpio, { datos: { md: 'breve' } }).includes('breve'));
+    assert.ok(!ids(limpio + ' Valoración breve; queda pendiente el cribado.', { datos: { md: 'breve' } }).includes('breve'));
+    assert.ok(ids(limpio + ' palabra'.repeat(950), { plantilla: 'breve' }).includes('longitud'));
+  });
+  test('revisión: cabecera y pie compartidos se quitan; cita la frase', () => {
+    const t = RI.quitarCabeceraYPie('INFORME DE FISIOTERAPIA\nPaciente: Pedro Flores\nEdad: 52 años\nFecha: 07/10/2026\n\nTexto.\n\n—\nInforme generado con PhysiQ-Assessment el 07/10/2026 (redacción asistida por IA).');
+    assert.equal(t, 'Texto.');
+    assert.equal(RI.fraseEn('Uno. Dos tres. Cuatro.', 6), 'Dos tres.');
+  });
+  test('revisión: se pinta en la tarjeta, nunca en el payload ni en los resúmenes, y se despliega', () => {
+    const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+    assert.match(src, /import \{ revisarInforme \} from '\.\/lib\/revision-informe\.js';/);
+    assert.match(src, /<div id="iaRevision"><\/div>/);
+    assert.match(src, /catch \{ el\.innerHTML = ''; return; \}/, 'una regla rota no tumba la tarjeta');
+    const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
+    assert.ok(/cp lib\/[^\n]*lib\/revision-informe\.js[^\n]*physiq-hub\/assessment\/lib\//.test(wf), 'lib/revision-informe.js se copia al hub');
+    const appSrc = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    assert.ok(!/revision-informe/.test(appSrc), 'app.js no la carga (solo la tarjeta, fuera del hub)');
+  });
+}
+
 // ── Summary ───────────────────────────────────────────────────────────────────
 console.log(`\n${passed + failed} tests: ${passed} passed, ${failed} failed\n`);
 if (failed > 0) process.exit(1);

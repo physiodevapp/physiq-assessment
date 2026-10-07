@@ -749,6 +749,8 @@ async function checkInformeNarrativo(browser, errors) {
     const det = document.getElementById('iaResultadoDet');
     return !!det && !det.open && det.querySelector('summary').textContent.includes('Narrativo');
   }) && await page.isVisible('#iaResultado button:has-text("Compartir")');
+  // Revisión automática: aparece sola bajo el informe (puntos o «sin incidencias»)
+  r.revision = await page.evaluate(() => !!document.querySelector('#iaRevision .ia-revision'));
   r.guardado = await page.evaluate(() => !!state.informeIA?.texto && state.informeIA.conAudio === true
     && state.informeIA.transcripcion.includes('simulada'));
   r.audioBorrado = await page.evaluate(() => new Promise(res => {
@@ -787,7 +789,7 @@ async function checkInformeNarrativo(browser, errors) {
   const ctxHub = await browser.newContext();
   const hub = await ctxHub.newPage();
   const pedidos = [];
-  hub.on('request', q => { if (/informe-ia\.js|informe-narrativo\.js|grabadora\.js|licencia-ia\.js/.test(q.url())) pedidos.push(q.url()); });
+  hub.on('request', q => { if (/informe-ia\.js|informe-narrativo\.js|revision-informe\.js|grabadora\.js|licencia-ia\.js/.test(q.url())) pedidos.push(q.url()); });
   await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
   await hub.waitForTimeout(1500);
   const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
@@ -1061,7 +1063,7 @@ async function main() {
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
-  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado y copiado, nada en el hub`);
+  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y copiado, nada en el hub`);
 
   await browser.close();
 
