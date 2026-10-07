@@ -1633,6 +1633,19 @@ test('prompt: «No sé» nunca como negación, sin negativos inventados, cada da
   assert.ok(!narr.includes('plan y pauta, y al final el seguimiento'), 'en el narrativo el seguimiento tiene su propia sección');
 });
 
+test('prompt: sin fisiopatología inventada, ejemplos negativos en Limitaciones, criterio de reevaluación solo en Seguimiento', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.match(p, /No añadas causas, mecanismos ni fases de curación que no estén en los datos/);
+    assert.match(p, /Cada recomendación del plan aparece una sola vez/);
+  }
+  const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(narr, /Si aquí aparece fuerza, crujidos, bloqueos.*está mal/);
+  assert.match(narr, /«no se dispone de información»/);
+  assert.match(narr, /va en Seguimiento, aunque venga dentro del texto de la pauta/);
+});
+
 test('prompt: sin datos personales deducidos, sin citar las notas del plan, derivación descartada sin mencionar', () => {
   const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
   for (const pl of Object.values(IN.PLANTILLAS)) {
@@ -1645,7 +1658,7 @@ test('prompt: sin datos personales deducidos, sin citar las notas del plan, deri
   }
   const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
   assert.match(narr, /NO escribas el nombre del paciente ni la fecha en ningún punto del texto/);
-  assert.match(narr, /Los síntomas que refiere o niega .* van en Dolor/);
+  assert.match(narr, /los síntomas que refiere o niega van en Dolor/);
   assert.match(narr, /sin nombrar los tests/);
 });
 
