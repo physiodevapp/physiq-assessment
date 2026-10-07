@@ -2425,6 +2425,8 @@ console.log('\nversión desplegada');
     // con versión nueva, el mismo hueco: «Actualizar» en naranja, sin texto aparte
     assert.match(src, /session-version-btn-nueva" id="sessionVersionRecargar"[^>]*>Actualizar</);
     assert.doesNotMatch(src, /hay una más reciente/);
+    // el aviso flotante usa la misma palabra que el panel
+    assert.match(src, /id="versionAvisoRecargar">Actualizar</);
   });
 
   test('sw.js no sirve ni guarda version.json desde la caché', () => {
