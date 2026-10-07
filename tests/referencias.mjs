@@ -77,7 +77,7 @@ const TARJETAS = {
   }
 };
 
-const AUTOR = "(?:(?:van|von) )?[A-ZÁÉÍÓÚÑÄÖÜÅ][\\p{L}'’-]+";
+const AUTOR = "(?:(?:van|von)(?: der| den)? )?[A-ZÁÉÍÓÚÑÄÖÜÅ][\\p{L}'’-]+";
 const RE_AUTOR_ANO = new RegExp(`(${AUTOR}(?: (?:y|e|and|&) ${AUTOR})?(?: et al\\.?)?) ((?:19|20)\\d{2})(?![\\d])`, 'gu');
 const RE_NICE = /\bNICE (NG|CG|QS)(\d+)/g;
 const RE_TARJETA = /Tarjeta de consulta (hombro|cadera|cervical|lumbar|rodilla|codo|tobillo y pie)/g;
