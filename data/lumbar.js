@@ -821,8 +821,8 @@ export const hypotheses = {
     },
     tests: [
       { name: 'Fuerza por miotomas L1–S2', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'La debilidad es el signo más importante. Comparar siempre con el lado sano. Interpretar junto a reflejos y sensibilidad, nunca aislado.', fuente: 'Lluch 2020, cap. 5.1 (Fondevila Suárez), p. 310' },
-      { name: 'Reflejos rotuliano (L3–L4) y aquíleo (L5–S1)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Especificidad 0,60–0,93 y sensibilidad hasta 0,67 según estudio, sin valor agrupado.', fuente: 'Tawa 2017 (revisión sistemática)' },
-      { name: 'Sensibilidad (algodón, diapasón, pinchazo)', sn: '61%', sp: '63%', lr_pos: null, lr_neg: null, criterio: 'Algodón, diapasón sobre prominencia ósea y pinchazo, comparando con el lado sano.', fuente: 'Tawa 2017 (revisión sistemática sin metaanálisis: es la mejor cifra de 5 estudios, la del único con referencia quirúrgica; los de referencia RM dan menos sensibilidad)' }
+      { name: 'Reflejos rotuliano (L3–L4) y aquíleo (L5–S1)', sn: '29%', sp: '78%', lr_pos: '1.26', lr_neg: null, criterio: 'Reflejo disminuido o abolido frente al lado sano. Agrupado en 7 estudios con referencia quirúrgica: S 29 %, E 78 %, LR+ 1,26 (IC 95 %: 1,01–1,58); con RM al nivel concreto (3 estudios), S 25 %, E 75 %. Algún estudio suelto da E de hasta 0,93. No informativo por sí solo.', fuente: 'Al Nezari 2013 (Spine J, metaanálisis; referencia: cirugía) · Tawa 2017 (revisión sistemática posterior, sin metaanálisis)' },
+      { name: 'Sensibilidad (algodón, diapasón, pinchazo)', sn: '40%', sp: '59%', lr_pos: '1.10', lr_neg: null, criterio: 'Algodón, diapasón sobre prominencia ósea y pinchazo, comparando con el lado sano. Agrupado en 6 estudios con referencia quirúrgica: S 40 %, E 59 %, LR+ 1,10 (IC 95 %: 0,87–1,38); con RM, S 32 %, E 72 %. El mejor estudio suelto da S 61 %, E 63 %. No informativo por sí solo.', fuente: 'Al Nezari 2013 (Spine J, metaanálisis; referencia: cirugía) · Tawa 2017 (revisión sistemática posterior, sin metaanálisis: mejor estudio suelto)' }
     ]
   },
   lu6: {
