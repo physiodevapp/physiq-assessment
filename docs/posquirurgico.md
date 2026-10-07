@@ -89,7 +89,7 @@ Fuentes (cambiadas en octubre de 2026: el Goodman no trata en un apartado propio
 **Preguntas de traumatismo existentes** (`h_t1`, `co_t1`, `co_t2`, `ro_t2`–`ro_t4`, `tp_t1`, `cv_ar3`; decisión 4): no cambian de lógica. Con mecanismo Post-quirúrgico, propongo una nota bajo cada una: «En el operado, lo que cuenta es el cambio respecto a lo esperable según el protocolo, no el déficit que ya deja la cirugía».
 
 ### Fase 4 — árbol CIF
-Sin cambios en `CIF_TREES` ni en `phase4.js`. El árbol se recorre igual. Si una rama lleva a una hipótesis «Derivar», se marca en la fase 4b (abajo). Hueco que asumo en esta versión: no hay una hipótesis de «rehabilitación posquirúrgica», así que en cadera y lumbar el árbol da las hipótesis mecánicas habituales y el plan las supedita al protocolo.
+Sin cambios en `CIF_TREES` ni en `phase4.js`. El árbol se recorre igual. Si una rama lleva a una hipótesis «Derivar», se marca en la fase 4b (abajo). Hueco de esta primera versión: no había una hipótesis de «rehabilitación posquirúrgica», así que tras una prótesis el árbol daba la artrosis de esa articulación. Resuelto después con `pq1` (ver «Hipótesis posquirúrgica genérica», al final).
 
 Las `derivacion` del árbol (`co_step1` FRACTURA / LUXACIÓN) se marcan igual que las hipótesis (decisión 5).
 
@@ -129,3 +129,45 @@ Con mecanismo Post-quirúrgico:
 6. **Pautas de las guías** en el posquirúrgico: mostrarlas con la nota de compatibilidad (recomendado) u ocultarlas y dejar solo el protocolo.
 7. **Sin protocolo del cirujano**: ¿aviso en la fase 5 y línea «pendiente de confirmar» en los informes (recomendado), o además como pendiente en el modo breve?
 8. **physiq-report**: ¿añadir `cq` y `dt` al payload (recomendado, aditivo; physiq-report los ignora hasta que se actualice su prompt), o mantener el contrato y que el posquirúrgico solo llegue al informe con IA de aquí?
+
+---
+
+## Hipótesis posquirúrgica genérica (octubre 2026)
+
+Estado: **decisiones cerradas e implementado** (el usuario aceptó las cinco recomendaciones) y en `main` (PR 205).
+
+Implementado, con dos diferencias técnicas respecto a lo planteado (el comportamiento es el decidido):
+- `pq1` (`HIP_POSQUIRURGICA`, `data/comun.js`) **no está en `HYPOTHESES`**: esa colección es la de las hipótesis regionales, y sus tests de integridad exigen región y tests. `hipotesis(id)` (`phase4b.js`) la devuelve con el nombre (`nombreHipPosq`) y el PROM de la región (`promPorRegion`).
+- **No se guarda en `state.activeHypotheses`**, que sigue siendo solo del árbol: `hipotesisActivas()` (`phase4b.js`, sobre `hipotesisConPosq()` de `lib/posquirurgico.js`) la pone delante con mecanismo Post-quirúrgico. Así aparece y desaparece con el mecanismo sin tocar `phase4.js` ni podar el árbol, y una sesión guardada no necesita migración.
+
+### El hueco
+Hoy el árbol de un operado da las hipótesis de un paciente sin operar, y en las cirugías más frecuentes eso da hipótesis equivocadas:
+- **Prótesis**: tras una PTC, el árbol de cadera lleva por `ca_step2` («perfil degenerativo») a `ca1` *Artrosis de cadera*. Lo mismo pasa con la PTR (`ro1`), la artroplastia de hombro (`h10`) y la artrodesis o artroplastia de tobillo (`tp24`). La articulación ya no existe, pero la fase 5 recomienda la pauta de la guía de artrosis, el 📄 Informe pone «Artrosis de cadera» en la impresión clínica y el informe con IA la describe como diagnóstico.
+- **Lumbar y cervical** (artrodesis, discectomía): el árbol da radiculopatía, dolor mecánico, etc. Puede ser cierto, pero ninguna hipótesis dice que el problema principal es una rehabilitación tras una cirugía.
+- La casilla «Ya diagnosticada y tratada» no lo resuelve: solo aparece en las hipótesis `DOSIS_DERIVAR`, y la artrosis no lo es.
+
+El recuadro «Paciente posquirúrgico» de la fase 5 ya da el contexto, pero queda fuera de la lista de hipótesis, que es lo que leen el 📄 Informe, el payload `h[]` y physiq-report.
+
+### Propuesta
+1. **Una hipótesis común**, `pq1` «Rehabilitación posquirúrgica», definida una vez en `data/comun.js` como los sistemas comunes, válida en las 7 regiones. **No sale del árbol**: se añade sola a la lista de hipótesis activas, la primera, cuando el mecanismo es Post-quirúrgico, y se quita si cambia. Así no hay que tocar `CIF_TREES` ni la instantánea de navegación. El árbol se sigue recorriendo igual, porque puede encontrar otro problema además de la cirugía (un hombro operado con dolor referido cervical).
+2. **Nombre en pantalla e informes**: «Postoperatorio: <intervención>» cuando la tarjeta tiene la intervención, por ejemplo «Postoperatorio: PTC derecha». Si no la tiene, «Rehabilitación posquirúrgica».
+3. **Sin tests ni puntuación**: no es una hipótesis que haya que confirmar, porque la cirugía es un hecho. En la fase 4b la tarjeta no lleva tests y dice «Condición conocida: no se puntúa». En modo breve no cuenta como hipótesis sin test.
+4. **Pauta**: ninguna dosis propia. «Seguir el protocolo del cirujano», más sus restricciones, o `TEXTO_SIN_PROTOCOLO` si no lo hay. No lleva `dosisFuente` ni `pronostico`: PhysiQ no propone plazos por tipo de cirugía (principio 2).
+5. **PROM**: el que la región ya usa para la mayoría de sus hipótesis (HOOS en cadera, KOOS-12 en rodilla, QuickDASH en hombro y codo, ODI en lumbar, NDI en cervical, FAAM o LEFS en tobillo y pie). No hace falta ninguna fuente nueva.
+6. **Hipótesis previas a la cirugía** (la artrosis tras la prótesis): con mecanismo Post-quirúrgico, la casilla de `DOSIS_DERIVAR` pasa a estar en **todas** las hipótesis, rotulada «Tratada con la cirugía». Hace lo mismo que la casilla actual: pliega los tests, no puntúa, no da pauta y sale como «(intervenida quirúrgicamente)» en el 📄 Informe. El código no deduce qué hipótesis trató la cirugía: la marca el fisio (principio 4).
+7. **Payload**: `pq1` va en `h[]` como cualquier hipótesis, con `pq: true` y sin `sc` ni tests. physiq-report ya lista `h[]`, así que recibe el posquirúrgico sin cambiar nada, mientras le llega la lectura de `cq` (Fase G).
+
+### Decisiones (aceptadas las recomendaciones en negrita)
+1. **Activación**: **automática con Post-quirúrgico**; un paso nuevo al principio de los 7 árboles; o una casilla manual en la fase 4.
+2. **Nombre**: **«Postoperatorio: <intervención>», con un nombre fijo si falta**; o siempre «Rehabilitación posquirúrgica».
+3. **PROM**: **el de la región**; o uno específico por cirugía (Oxford Hip/Knee Score para prótesis, que pide fuente y una lista de cirugías, contra el principio 2).
+4. **Hipótesis previas a la cirugía**: **casilla en todas las hipótesis con Post-quirúrgico**; solo en las cuatro artrosis (`ca1`, `ro1`, `h10`, `tp24`); o no tocarlas.
+5. **¿Desplaza al resto?**: **no**: va la primera y las demás siguen, con su nota de compatibilidad con el protocolo; o que, con ella activa, las pautas de las otras hipótesis se pliegan.
+
+### Cambios técnicos (hechos)
+- `data/comun.js`: `HIP_POSQUIRURGICA` (`id: 'pq1'`, `tests: []`, `posquirurgica: true`, `promPorRegion`), reexportada por `data.js` fuera de `HYPOTHESES`. Unit tests: ningún árbol la activa, y el PROM de cada región es uno de los que ya usan sus hipótesis.
+- `lib/posquirurgico.js`: `ID_HIP_POSQ`, `hipotesisConPosq`, `nombreHipPosq`, `pautaHipPosq` y los textos `ETIQUETA_HIP_POSQ` / `TEXTO_PAUTA_POSQ`.
+- `phase4b.js`: `hipotesis()`, `hipotesisActivas()`, tarjeta de `pq1` sin tests, y casilla «Tratada con la cirugía» en todas las hipótesis del árbol con Post-quirúrgico (`admiteTratada`). Si el mecanismo deja de ser Post-quirúrgico, la marca de una hipótesis que no es «Derivar» se conserva pero no cuenta (`sincronizarTratadas()` recalcula su puntuación); vuelve a contar si el mecanismo vuelve.
+- `app.js`: fase 5 (tarjeta de `pq1` la primera, sin medalla de puesto), 📋 Notas, 📄 Informe (la primera en IMPRESIÓN CLÍNICA; ni `pq1` ni una hipótesis tratada dejan la impresión «pendiente de confirmar» en breve) y payload (`pq: true`, sin `sc` numérico ni tests). Al cambiar el mecanismo, la intervención, el protocolo o las restricciones se vacía la 4b para que se reconstruya.
+- `informe-ia.js` / `lib/informe-narrativo.js`: `pq1` va en la lista de hipótesis como «la cirugía es la condición de salud, no una hipótesis por confirmar», con la pauta del protocolo y el PROM. La hipótesis marcada «tratada con la cirugía» usa la regla que ya existía para las tratadas (antecedente, sin derivar), sin regla nueva.
+- Tests: unitarios (aparece y desaparece con el mecanismo, no puntúa, no es un pendiente en breve, nombre con o sin intervención, payload, Notas, Informe, casilla y mecanismo, informe con IA) y smoke (en las 7 regiones `pq1` es la primera en la 4b y en la fase 5; cadera con `ca_step2` → `ca1` marcada «tratada con la cirugía»; con Insidioso desaparecen `pq1` y la casilla).

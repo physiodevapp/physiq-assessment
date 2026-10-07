@@ -226,16 +226,83 @@ async function walkRegionPosq(page, region) {
   const treeResult = await walkCifTreeToCompletion(page);
   await page.click('#btnGoConfirm');
   await page.waitForTimeout(150);
+  // Hipótesis posquirúrgica genérica: la primera tarjeta, con la intervención
+  const pq1 = await page.evaluate(r => {
+    const card = document.querySelector('#hypothesisCards .hypothesis-card');
+    return card?.id === 'hypcard_pq1' && card.textContent.includes(`Postoperatorio: Cirugía de ${r}`) && !card.querySelector('.test-item, .test-btn');
+  }, region);
   await page.click('#phase4b button:has-text("Ver Resultados")');
   await page.waitForTimeout(150);
-  const fase5 = await page.evaluate(() => {
+  const fase5 = await page.evaluate(r => {
     const t = document.getElementById('resultsContent').textContent;
+    const hip = t.slice(t.indexOf('Hipótesis'));
     return { phase: state.currentPhase, recuadro: t.includes('Paciente posquirúrgico') && t.includes('Sin carga hasta la semana 8'),
-      cq: state.cirugia.protocolo === 'Escrito' && state.cirugia.semanasAprox === 6 };
-  });
+      cq: state.cirugia.protocolo === 'Escrito' && state.cirugia.semanasAprox === 6,
+      pq1: hip.includes(`🏥 Postoperatorio: Cirugía de ${r}`) && hip.includes('Seguir el protocolo del cirujano: Sin carga hasta la semana 8') };
+  }, region);
   const ok = cribadoOk && oculta && visible && semanas.startsWith('6 semanas') && notas.visibles === notas.total
-    && treeResult.treeCompleteShown && fase5.phase === 5 && fase5.recuadro && fase5.cq;
-  return { region, ok, cribado, oculta, visible, semanas, notas, treeResult, fase5 };
+    && treeResult.treeCompleteShown && pq1 && fase5.phase === 5 && fase5.recuadro && fase5.cq && fase5.pq1;
+  return { region, ok, cribado, oculta, visible, semanas, notas, treeResult, pq1, fase5 };
+}
+
+// Cadera con prótesis: el árbol da la artrosis (ca_step2 → ca1). Con
+// Post-quirúrgico, «Tratada con la cirugía» la saca de la pauta y de los
+// tests; `pq1` va la primera. Al pasar el mecanismo a Insidioso, `pq1` y la
+// casilla desaparecen y la artrosis vuelve a puntuar.
+async function checkCaderaProtesis(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.fill('#motivoConsulta', 'Rehabilitación tras prótesis de cadera');
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  await page.fill('#cirIntervencion', 'PTC derecha');
+  await page.click('#cirProtocolo .option-btn:has-text("Escrito")');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('cadera', this)"]`);
+  await page.waitForTimeout(150);
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
+  await elegir('ca_step1', 2);
+  await elegir('ca_step1b', 1);
+  await elegir('ca_step2', 0);          // perfil degenerativo → ca1, artrosis
+  await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  const orden = await page.evaluate(() => [...document.querySelectorAll('#hypothesisCards .hypothesis-card')].map(c => c.id.replace('hypcard_', '')));
+  await page.click('#hypcard_ca1 .hypothesis-header');
+  await page.waitForTimeout(150);
+  const casilla = await page.textContent('#hypcard_ca1 .dx-tratada');
+  await page.click('#hypcard_ca1 .dx-tratada input');
+  await page.waitForTimeout(150);
+  const en4b = await page.evaluate(() => ({ marcada: !!state.derivacionResuelta.ca1, etiqueta: document.getElementById('score_ca1').textContent }));
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  const fase5 = await page.evaluate(async () => {
+    const { buildInformeFisioterapiaText } = await import('./app.js');
+    const t = document.getElementById('resultsContent').textContent;
+    return { pq1: t.indexOf('Postoperatorio: PTC derecha') >= 0 && t.indexOf('Postoperatorio: PTC derecha') < t.indexOf('Artrosis de Cadera'),
+      intervenida: t.includes('Ya intervenida: seguir el protocolo del cirujano'),
+      informe: buildInformeFisioterapiaText().includes('Artrosis de Cadera (intervenida quirúrgicamente)') };
+  });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#mecanismo .option-btn:has-text("Insidioso")');
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(150);
+  const sinPosq = await page.evaluate(() => ({
+    pq1: !!document.getElementById('hypcard_pq1'),
+    casilla: !!document.querySelector('#hypcard_ca1 .dx-tratada'),
+    etiqueta: document.getElementById('score_ca1')?.textContent || '',
+  }));
+  const ok = orden[0] === 'pq1' && orden.includes('ca1') && casilla.includes('Tratada con la cirugía')
+    && en4b.marcada && en4b.etiqueta.includes('Diagnosticada y tratada')
+    && fase5.pq1 && fase5.intervenida && fase5.informe
+    && !sinPosq.pq1 && !sinPosq.casilla && !sinPosq.etiqueta.includes('Diagnosticada y tratada');
+  return { ok, orden, casilla, en4b, fase5, sinPosq };
 }
 
 // Cambiar el mecanismo con el cribado ya pintado (lumbar): Post-quirúrgico
@@ -958,9 +1025,12 @@ async function main() {
     posqResults.push(r);
   }
   const hombroTratada = await checkHombroTratada(page);
+  const caderaProtesis = await checkCaderaProtesis(page);
   const cambioMec = await checkCambioMecanismo(page);
   console.log(`  ${cambioMec.ok ? '✓' : '✗'} cambiar el mecanismo con el cribado pintado añade o quita el sistema, conserva las respuestas y su urgencia deja de contar`);
   console.log(`  ${hombroTratada.ok ? '✓' : '✗'} hombro h_step2b → h11 «ya diagnosticada y tratada»: sin derivación en la fase 5, protocolo del cirujano`);
+  console.log(`  ${caderaProtesis.ok ? '✓' : '✗'} cadera con prótesis: pq1 la primera, ca1 «tratada con la cirugía»; con Insidioso, sin pq1 ni casilla`);
+  if (!caderaProtesis.ok) console.log('    ', JSON.stringify(caderaProtesis));
 
   // Exercise the mobile phase-sheet button (the last real bug found,
   // PHASE_NAV_IDS) once, on whichever region the loop above ended on.
@@ -1005,7 +1075,7 @@ async function main() {
 
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
-  const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && cambioMec.ok;
+  const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
   const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
