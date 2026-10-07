@@ -2101,13 +2101,14 @@ console.log('\npaciente posquirúrgico');
       marcarTratada('h11', true);
       assert.ok(esTratada('h11'));
       const p = buildPhysiQPayload();
-      assert.equal(p.h[0].dt, true);
-      assert.equal(p.h[0].sc, PQ.ETIQUETA_TRATADA);
+      const h11 = p.h.find(x => x.id === 'h11');
+      assert.equal(h11.dt, true);
+      assert.equal(h11.sc, PQ.ETIQUETA_TRATADA);
       assert.ok(buildInformeFisioterapiaText().includes(`· ${HYPOTHESES.h11.name} (intervenida quirúrgicamente)`));
       assert.ok(!getPendientesBreve().some(x => x.fase === '4b'), 'sus tests no aplican: no son un pendiente');
       marcarTratada('h11', false);
       assert.ok(!esTratada('h11'));
-      assert.ok(!('dt' in buildPhysiQPayload().h[0]));
+      assert.ok(!('dt' in buildPhysiQPayload().h.find(x => x.id === 'h11')));
       assert.notEqual(state.hypothesisScores.h11.label, PQ.ETIQUETA_TRATADA, 'al desmarcar vuelve la puntuación de sus tests');
     });
     withState({ ...patch, mecanismo: 'Traumático' }, () => {
@@ -2116,11 +2117,101 @@ console.log('\npaciente posquirúrgico');
     });
   });
 
-  test('«ya diagnosticada y tratada»: solo hipótesis «Derivar»', () => {
+  test('«ya diagnosticada y tratada»: sin Post-quirúrgico, solo hipótesis «Derivar»', () => {
     withState({ derivacionResuelta: {}, activeHypotheses: ['h2'], hypothesisScores: {} }, () => {
       marcarTratada('h2', true);
       assert.ok(!esTratada('h2'));
       assert.deepEqual(state.derivacionResuelta, {});
+    });
+  });
+
+  // ── Hipótesis posquirúrgica genérica `pq1` (docs/posquirurgico.md, «Propuesta»)
+  const P4B = await import('../phase4b.js');
+  const { HIP_POSQUIRURGICA } = await import('../data.js');
+
+  test('pq1: solo con Post-quirúrgico, la primera, fuera de HYPOTHESES y de ningún árbol', () => {
+    assert.ok(!HYPOTHESES.pq1, 'no es una hipótesis regional');
+    for (const t of Object.values(CIF_TREES)) for (const st of t.steps) for (const o of st.options) {
+      assert.ok(!(o.hypothesis || []).includes('pq1'), `${st.id}: ningún árbol la activa`);
+    }
+    withState({ ...POSQ(), region: 'cadera', activeHypotheses: ['ca1', 'ca2'] }, () => {
+      assert.deepEqual(P4B.hipotesisActivas(), ['pq1', 'ca1', 'ca2']);
+      assert.deepEqual(state.activeHypotheses, ['ca1', 'ca2'], 'no se guarda en el estado del árbol');
+    });
+    withState({ mecanismo: 'Insidioso', region: 'cadera', activeHypotheses: ['ca1'] }, () => {
+      assert.deepEqual(P4B.hipotesisActivas(), ['ca1']);
+    });
+    withState({ ...POSQ(), region: 'cadera', activeHypotheses: [] }, () => {
+      assert.deepEqual(P4B.hipotesisActivas(), ['pq1'], 'también sin hipótesis del árbol');
+    });
+  });
+
+  test('pq1: nombre con la intervención y PROM que la región ya usa', () => {
+    withState({ ...POSQ({ intervencion: 'PTC derecha' }), region: 'cadera' }, () => {
+      const h = P4B.hipotesis('pq1');
+      assert.equal(h.name, 'Postoperatorio: PTC derecha');
+      assert.deepEqual(h.tests, []);
+      assert.equal(h.dosis, '');
+    });
+    withState({ ...POSQ(), region: 'cadera' }, () => assert.equal(P4B.hipotesis('pq1').name, PQ.NOMBRE_HIP_POSQ));
+    assert.deepEqual(Object.keys(HIP_POSQUIRURGICA.promPorRegion).sort(), Object.keys(CIF_TREES).sort());
+    for (const [r, prom] of Object.entries(HIP_POSQUIRURGICA.promPorRegion)) {
+      assert.ok(Object.values(HYPOTHESES).some(h => h.region === r && h.prom === prom), `${r}: «${prom}» no es un PROM de la región`);
+    }
+  });
+
+  test('pq1: en payload (pq), Notas e Informe la primera, sin puntuación ni pendiente en breve', () => {
+    withState({ ...POSQ({ intervencion: 'PTR', protocolo: 'Escrito', restricciones: 'Carga parcial 4 semanas' }), region: 'rodilla',
+      activeHypotheses: ['ro1'], testResults: { ro1: { 0: 'pos' } }, hypothesisScores: { ro1: { totalLR: 3, label: 'x' } }, modo: 'breve' }, () => {
+      const p = buildPhysiQPayload();
+      assert.deepEqual(p.h[0], { id: 'pq1', name: 'Postoperatorio: PTR', sc: PQ.ETIQUETA_HIP_POSQ, lr: null, tr: {}, pq: true });
+      assert.equal(p.h[1].id, 'ro1');
+      const inf = buildInformeFisioterapiaText();
+      assert.ok(inf.includes('IMPRESIÓN CLÍNICA\n  · Postoperatorio: PTR\n'), 'la primera en la impresión clínica');
+      assert.ok(!inf.includes('pendiente de confirmar)'), 'pq1 no deja la impresión «sin confirmar»');
+      assert.ok(buildContextSummaryText().includes(`· Postoperatorio: PTR — ${PQ.ETIQUETA_HIP_POSQ}`));
+      assert.ok(!getPendientesBreve().some(x => x.fase === '4b'));
+      assert.equal(PQ.pautaHipPosq(p.cq), 'Seguir el protocolo del cirujano: Carga parcial 4 semanas');
+    });
+    withState({ ...POSQ(), region: 'rodilla', activeHypotheses: [] }, () => {
+      assert.ok(PQ.pautaHipPosq(buildPhysiQPayload().cq).startsWith(PQ.TEXTO_SIN_PROTOCOLO));
+    });
+    withState({ mecanismo: 'Insidioso', region: 'rodilla', activeHypotheses: ['ro1'] }, () => {
+      assert.ok(!buildPhysiQPayload().h.some(x => x.pq));
+    });
+  });
+
+  test('«Tratada con la cirugía»: con Post-quirúrgico en cualquier hipótesis; deja de contar al cambiar el mecanismo', () => {
+    withState({ ...POSQ({ intervencion: 'PTC' }), region: 'cadera', activeHypotheses: ['ca1'],
+      testResults: { ca1: { 0: 'pos' } }, hypothesisScores: {} }, () => {
+      assert.ok(P4B.casillaTratadaHTML('ca1').includes('Tratada con la cirugía'));
+      marcarTratada('ca1', true);
+      assert.ok(esTratada('ca1'));
+      assert.equal(state.hypothesisScores.ca1.label, PQ.ETIQUETA_TRATADA);
+      assert.ok(buildInformeFisioterapiaText().includes(`· ${HYPOTHESES.ca1.name} (intervenida quirúrgicamente)`));
+      state.mecanismo = 'Insidioso';
+      P4B.sincronizarTratadas();
+      assert.ok(!esTratada('ca1'), 'sin Post-quirúrgico la marca no cuenta');
+      assert.equal(P4B.casillaTratadaHTML('ca1'), '');
+      assert.notEqual(state.hypothesisScores.ca1.label, PQ.ETIQUETA_TRATADA, 'vuelve la puntuación de sus tests');
+      assert.ok(state.derivacionResuelta.ca1, 'la marca se conserva');
+      state.mecanismo = 'Post-quirúrgico';
+      P4B.sincronizarTratadas();
+      assert.ok(esTratada('ca1'));
+    });
+  });
+
+  test('pq1 en el informe con IA: condición de salud con el protocolo como pauta', () => {
+    const c = IN.contextoValoracion({ p: 'X', br: [], sq: [], pn: {}, h: [{ name: 'Postoperatorio: PTC', pq: true }] }, r => r, null);
+    assert.ok(c.includes('Postoperatorio: PTC (la cirugía es la condición de salud, no una hipótesis por confirmar)'));
+    withState({ ...POSQ({ intervencion: 'PTC', protocolo: 'Verbal' }), region: 'cadera', activeHypotheses: ['ca1'],
+      testResults: {}, hypothesisScores: {}, treeAnswers: {} }, () => {
+      const a = IA.construirAmpliado();
+      assert.equal(a.pautas[0].hipotesis, 'Postoperatorio: PTC');
+      assert.equal(a.pautas[0].posquirurgica, true);
+      assert.equal(a.pautas[0].prom, HIP_POSQUIRURGICA.promPorRegion.cadera);
+      const t = IN.bloquesAmpliados(a).join('\n');
+      assert.ok(t.includes('Postoperatorio: PTC:\n    · Pauta: Seguir el protocolo del cirujano.'));
     });
   });
 
@@ -2174,7 +2265,7 @@ console.log('\npaciente posquirúrgico');
       hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: {} }, () => {
       const a = IA.construirAmpliado();
       assert.deepEqual(a.tests, [], 'los tests de una tratada no aplican');
-      assert.deepEqual(a.pautas.map(x => [x.derivar, x.tratada, x.operada]), [[false, true, true]]);
+      assert.deepEqual(a.pautas.filter(x => !x.posquirurgica).map(x => [x.derivar, x.tratada, x.operada]), [[false, true, true]]);
     });
   });
 
@@ -2224,7 +2315,7 @@ console.log('\npaciente posquirúrgico');
 
   test('cribado posquirúrgico: el mecanismo repinta el cribado conservando las respuestas', () => {
     const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
-    assert.match(src, /if \(groupId === 'mecanismo'\) \{\n    _pintarCirugiaUI\(\);[\s\S]{0,200}_repintarCribado\(\);/);
+    assert.match(src, /if \(groupId === 'mecanismo'\) \{\n    _pintarCirugiaUI\(\);[\s\S]{0,400}_repintarCribado\(\);/);
     const reparto = src.slice(src.indexOf('function _repintarCribado'), src.indexOf('function buildSistemicoQuestions'));
     assert.ok(reparto.indexOf('savedAnswers') < reparto.indexOf('buildSistemicoQuestions(state.region)'), 'guarda antes de repintar');
   });
