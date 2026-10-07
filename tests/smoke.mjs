@@ -929,6 +929,53 @@ async function recorrerGrabadora(browser, errors) {
   return r;
 }
 
+// Aviso de silencio (grabadora.js mide el nivel con un AnalyserNode): con un
+// micrófono mudo (un WAV de silencio como dispositivo falso) la píldora pasa a
+// ⚠ y sale el aviso; con el tono del micrófono falso normal, nunca. Las dos
+// grabaciones van en paralelo para no sumar dos esperas de ~9 s.
+async function checkGrabadoraSilencio(errors) {
+  const dir = mkdtempSync(join(tmpdir(), 'physiq-silencio-'));
+  const wav = join(dir, 'silencio.wav');
+  const datos = 16000 * 2 * 20;   // 20 s, 16 kHz, mono, 16 bits, todo ceros
+  const cab = Buffer.alloc(44);
+  cab.write('RIFF', 0); cab.writeUInt32LE(36 + datos, 4); cab.write('WAVE', 8); cab.write('fmt ', 12);
+  cab.writeUInt32LE(16, 16); cab.writeUInt16LE(1, 20); cab.writeUInt16LE(1, 22); cab.writeUInt32LE(16000, 24);
+  cab.writeUInt32LE(32000, 28); cab.writeUInt16LE(2, 32); cab.writeUInt16LE(16, 34); cab.write('data', 36); cab.writeUInt32LE(datos, 40);
+  writeFileSync(wav, Buffer.concat([cab, Buffer.alloc(datos)]));
+  const grabar9s = async extra => {
+    const browser = await chromium.launch({ args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', ...extra] });
+    try {
+      const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+      await context.grantPermissions(['microphone']);
+      await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
+      await mockWorkerYTurnstile(context, ['x']);
+      const page = await context.newPage();
+      page.on('pageerror', err => errors.push(`pageerror (silencio): ${err.message}`));
+      await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+      await page.waitForSelector('#grabBtn', { state: 'visible' });
+      await page.click('#grabBtn');
+      await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+      await page.waitForTimeout(9500);
+      const r = await page.evaluate(() => {
+        const b = document.getElementById('grabBtn');
+        return { aviso: b.classList.contains('grab-aviso'), title: b.title, toast: document.getElementById('appToast')?.textContent || '' };
+      });
+      await page.click('#grabDescBtn');
+      await page.click('#confirmAction');
+      return r;
+    } finally { await browser.close().catch(() => {}); }
+  };
+  try {
+    const [mudo, tono] = await Promise.all([grabar9s(['--use-file-for-fake-audio-capture=' + wav]), grabar9s([])]);
+    const r = {
+      mudoAvisa: mudo.aviso && /No se oye nada/.test(mudo.title) && /No se oye nada/.test(mudo.toast),
+      tonoNoAvisa: !tono.aviso && !/No se oye nada/.test(tono.title),
+    };
+    r.ok = Object.values(r).every(v => v === true);
+    return r;
+  } catch (e) { return { ok: false, error: e.message.split('\n')[0] }; }
+}
+
 async function recorrerGrabadoraRaton(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await context.grantPermissions(['microphone']);
@@ -1070,6 +1117,9 @@ async function main() {
   console.log('\nGrabación desde la cabecera (micrófono falso de Chromium):');
   const grab = await checkGrabadoraCabecera(errors);
   console.log(`  ${grab.ok ? '✓' : '✗'} toque = empezar/pausa/reanudar, pulsación larga y papelera descartan, sigue por todas las fases, «Generar» la cierra y la usa; reiniciar avisa y descarta`);
+  const silencio = await checkGrabadoraSilencio(errors);
+  console.log(`  ${silencio.ok ? '✓' : '✗'} micrófono mudo → píldora ⚠ y aviso «No se oye nada»; con sonido, ningún aviso`);
+  if (!silencio.ok) console.log('    ', JSON.stringify(silencio));
 
   const realErrors = errors.filter(e => !KNOWN_NOISE.some(n => e.includes(n)));
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
@@ -1078,7 +1128,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
