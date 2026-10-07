@@ -303,6 +303,8 @@ Then it branches on hub context:
 
 Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclajeHabito` — not mandatory, included in payload as `pn`.
 
+**Folded parts of the phase 5 hypothesis cards** (to cut scrolling): the pauta is a `<details class="pauta-det">` whose summary shows its first sentence (`partirPrimeraFrase()`: up to the first period followed by a capital, so «rec. 1.3.1» / «p. ej.» don't cut it; a first sentence under 40 characters takes the next one too; a long one is clamped to 3 lines by CSS), with «Ver pauta completa ▾» and «Ocultar pauta ▴»; a one-sentence pauta isn't folded. «🧭 Pronóstico y derivación» is a closed `<details class="pronostico-det">`. Tests: those done (pos/neg) stay visible, the «Sin datos» ones go together in a closed `<details class="tests-sin-datos">` («2 tests sin hacer» / «Ningún test realizado»). **Never folded** (safety): the card header, «🚑 Derivación» (`DOSIS_DERIVAR`), «Ya diagnosticada y tratada» and the post-surgical note (unit test). On `beforeprint` every closed `<details>` in `#phase5` opens and `afterprint` restores them, so printouts are complete. `📋 Notas`/`📄 Informe` are built from the data, not the screen, so folding doesn't affect them. Whole hypotheses are not folded (considered; left for later).
+
 ## Key functions (`app.js`)
 
 | Function | Purpose |
