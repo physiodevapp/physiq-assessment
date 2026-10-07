@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **303** referencias de literatura, con **1267** usos.
+- **303** referencias de literatura, con **1268** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **32** de 303 referencias del registro revisadas. Ver «Estado de revisión».
+- **58** de 303 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 487 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -46,7 +46,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 
 | Referencia | Afecta a | Usos | Última revisión |
 |---|---|---|---|
-| [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · texto | 4 | **sin revisar** |
 | [Litaker 2000](#litaker-2000) | puntuación 4b | 1 | **sin revisar** |
 | [Solomon 2001](#solomon-2001) | puntuación 4b · texto | 3 | **sin revisar** |
@@ -58,7 +57,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [O'Driscoll 2007](#odriscoll-2007) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | **sin revisar** |
 | [Laslett 2008](#laslett-2008) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
-| [van der Windt 2010](#van-der-windt-2010) | puntuación 4b · test 4b sin puntuar | 3 | **sin revisar** |
 | [Zhang 2010](#zhang-2010) | puntuación 4b | 3 | **sin revisar** |
 | [Hegedus 2012](#hegedus-2012) | puntuación 4b · test 4b sin puntuar · texto | 9 | **sin revisar** |
 | [Apelby-Albrecht 2013](#apelby-albrecht-2013) | puntuación 4b | 1 | **sin revisar** |
@@ -69,7 +67,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Smith 2015](#smith-2015) | puntuación 4b | 2 | **sin revisar** |
 | [Décary 2018](#décary-2018) | puntuación 4b | 6 | **sin revisar** |
 | [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · texto | 18 | **sin revisar** |
-| [Cook 2019](#cook-2019) | puntuación 4b | 2 | **sin revisar** |
 | [Park 2019](#park-2019) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
 | [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | **sin revisar** |
 | [Getsoian 2020](#getsoian-2020) | puntuación 4b | 1 | **sin revisar** |
@@ -104,14 +101,12 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rathleff 2020](#rathleff-2020) | pauta | 1 | **sin revisar** |
 | [Serner 2020](#serner-2020) | pauta | 1 | **sin revisar** |
 | [Martin 2021](#martin-2021) | pauta | 2 | **sin revisar** |
-| [Ammendolia 2022](#ammendolia-2022) | pauta · texto | 2 | **sin revisar** |
 | [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · texto | 3 | **sin revisar** |
 | [Enseki 2023](#enseki-2023) | pauta · test 4b sin puntuar | 5 | **sin revisar** |
 | [Koc 2023](#koc-2023) | pauta | 1 | **sin revisar** |
 | [Siemensma 2023](#siemensma-2023) | pauta | 1 | **sin revisar** |
 | [Chimenti 2024](#chimenti-2024) | pauta | 1 | **sin revisar** |
 | [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) | pauta | 1 | **sin revisar** |
-| [Trager 2024](#trager-2024) | pauta | 1 | **sin revisar** |
 | [Balcarek 2025](#balcarek-2025) | pauta | 1 | **sin revisar** |
 | [Bateman 2025](#bateman-2025) | pauta | 1 | **sin revisar** |
 | [Caliandro 2025](#caliandro-2025) | pauta | 1 | **sin revisar** |
@@ -141,7 +136,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Walton 2004](#walton-2004) | test 4b sin puntuar · texto | 5 | **sin revisar** |
 | [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · texto | 4 | **sin revisar** |
 | [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) | test 4b sin puntuar | 1 | **sin revisar** |
-| [Laslett 2006](#laslett-2006) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Dorf 2007](#dorf-2007) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Jull 2007](#jull-2007) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Kim 2007](#kim-2007) | test 4b sin puntuar · texto | 2 | **sin revisar** |
@@ -157,9 +151,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sman 2015](#sman-2015) | test 4b sin puntuar · texto | 4 | **sin revisar** |
 | [Uysal 2015](#uysal-2015) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Carro 2016](#carro-2016) | test 4b sin puntuar | 2 | **sin revisar** |
-| [Dobbs 2016](#dobbs-2016) | test 4b sin puntuar | 1 | **sin revisar** |
 | [Mendonça 2016](#mendonça-2016) | test 4b sin puntuar | 1 | **sin revisar** |
-| [Tawa 2017](#tawa-2017) | test 4b sin puntuar | 2 | **sin revisar** |
 | [Krill 2018](#krill-2018) | test 4b sin puntuar · texto | 2 | **sin revisar** |
 | [Mastromarchi 2021](#mastromarchi-2021) | test 4b sin puntuar | 4 | **sin revisar** |
 | [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · texto | 4 | **sin revisar** |
@@ -184,7 +176,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Barcelos 2014](#barcelos-2014) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Goebel 2018](#goebel-2018) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [HerniaSurge 2018](#herniasurge-2018) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Finucane 2020](#finucane-2020) | razonamiento fase 2 | 10 | **sin revisar** |
 | [Kim y Chang 2021](#kim-y-chang-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Cabre 2022](#cabre-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Goodfriend 2022](#goodfriend-2022) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -203,7 +194,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Davis y Silberman 2023](#davis-y-silberman-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Dookie y Joseph 2023](#dookie-y-joseph-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Gheewala 2023](#gheewala-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Jayarangaiah 2023](#jayarangaiah-2023) | razonamiento fase 2 | 10 | **sin revisar** |
 | [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Johns 2023](#johns-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -214,9 +204,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Leib 2023](#leib-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Leslie 2023](#leslie-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Malik 2023](#malik-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Malik y Herron 2023](#malik-y-herron-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 | 5 | **sin revisar** |
 | [McClary y Massey 2023](#mcclary-y-massey-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [McMordie 2023](#mcmordie-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) | razonamiento fase 2 | 6 | **sin revisar** |
@@ -226,11 +214,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Pope 2023](#pope-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Raj 2023](#raj-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Rider y Marra 2023](#rider-y-marra-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Rowe 2023](#rowe-2023) | razonamiento fase 2 | 4 | **sin revisar** |
 | [Rupp y Leslie 2023](#rupp-y-leslie-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Rushton 2023](#rushton-2023) | razonamiento fase 2 | 4 | **sin revisar** |
-| [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 5 | **sin revisar** |
 | [Schick y Sternard 2023](#schick-y-sternard-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sekhon 2023](#sekhon-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sevy 2023](#sevy-2023) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -243,7 +228,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Waheed 2023](#waheed-2023) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Wenker y Quint 2023](#wenker-y-quint-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Ziu 2023](#ziu-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Belyayeva 2024](#belyayeva-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Bodman 2024](#bodman-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Brotman 2024](#brotman-2024) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -254,8 +238,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hall 2024](#hall-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hantzidiamantis 2024](#hantzidiamantis-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Hunter 2024](#hunter-2024) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Lassiter 2024](#lassiter-2024) | razonamiento fase 2 | 5 | **sin revisar** |
-| [Leslie 2024](#leslie-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lezak 2024](#lezak-2024) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Lotfollahzadeh 2024](#lotfollahzadeh-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Menger 2024](#menger-2024) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -270,7 +252,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Benjamin y Lui 2025](#benjamin-y-lui-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Budha 2025](#budha-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Daley 2025](#daley-2025) | razonamiento fase 2 | 4 | **sin revisar** |
-| [Gill 2025](#gill-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Grant y John 2025](#grant-y-john-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Guthmiller 2025](#guthmiller-2025) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Hall 2025](#hall-2025) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -281,19 +262,15 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Leslie 2025](#leslie-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Lleva 2025](#lleva-2025) | razonamiento fase 2 | 3 | **sin revisar** |
-| [Margetis y Gillis 2025](#margetis-y-gillis-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Nori y Stretanski 2025](#nori-y-stretanski-2025) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Pangia 2025](#pangia-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Patel 2025](#patel-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Shams 2025](#shams-2025) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Shaw 2025](#shaw-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Suha 2025](#suha-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Tavakoli 2025](#tavakoli-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Awidi y Babiker 2026](#awidi-y-babiker-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Bhatti 2026](#bhatti-2026) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Consoli y Carlson 2026](#consoli-y-carlson-2026) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Deeb y Maher 2026](#deeb-y-maher-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Denault y Launico 2026](#denault-y-launico-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Farmer y Matto 2026](#farmer-y-matto-2026) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -306,26 +283,26 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Moore y Tafti 2026](#moore-y-tafti-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sabry y Li 2026](#sabry-y-li-2026) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Seaman y Bergman 2026](#seaman-y-bergman-2026) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Sendrea 2026](#sendrea-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Stern 2026](#stern-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Vijayan y Maher 2026](#vijayan-y-maher-2026) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Wróblewski 2026](#wróblewski-2026) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Zemaitis 2026](#zemaitis-2026) | razonamiento fase 2 | 6 | **sin revisar** |
 | [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) | texto | 1 | **sin revisar** |
 | [Seaberg 1998](#seaberg-1998) | texto | 1 | **sin revisar** |
 | [Hutchison 2013](#hutchison-2013) | texto | 1 | **sin revisar** |
 | [Großterlinden 2016](#großterlinden-2016) | texto | 1 | **sin revisar** |
 | [Frey 2017](#frey-2017) | texto | 1 | **sin revisar** |
+| [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | 2026-10 · Sustituida por van der Windt 2010 (revisión Cochrane del mismo grupo, con Devillé como autor; PDF del usuario): SLR y SLR cruzado de lu3 pasan a sus cifras agrupadas con LR publicadas. Se menciona como dato anterior. |
 | [Bachmann 2004](#bachmann-2004) | puntuación 4b · razonamiento fase 2 | 2 | 2026-10 · Hay dos revisiones sistemáticas posteriores: Sims 2020 (LR− 0,07) y Kazemi 2023 (18 estudios, 6702 adultos; LR− 0,12). Por la regla de conflictos (mismo nivel, la más reciente), Kazemi 2023 pasa a dar las cifras de ro11 y de ro_t1; Bachmann se cita como concordante. |
 | [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: PubMed (tests clínicos de inestabilidad lumbar, revisiones sistemáticas). Ferrari 2015 (Chiropr Man Therap, 10.1186/s12998-015-0058-7) confirma que solo Fritz 2005 estudió la precisión del test de inestabilidad en prono; Thomas 2026 (Cureus, 10.7759/cureus.108817, búsqueda hasta 12/2025) sigue citando su regla «flexión ≥ 53° o sin hipomovilidad» (LR+ 4,3) sin replicación externa. Leídas enteras en PMC. Estudios sueltos posteriores (Seyedhoseinpoor 2022, Areeudomwong 2020, Chatprem 2021) no leídos en texto completo. |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | 2026-10 · Sin cambios: ya superada por Han 2023, que es la que da las cifras; solo se menciona como dato anterior. |
 | [Lequesne 2008](#lequesne-2008) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en el resumen y en la tabla 2 de Kinsella 2024. La E se midió frente a controles sin dolor de cadera (casos y controles), lo que la infla: la derotación externa resistida pasa a hallazgo. |
 | [Suri 2010](#suri-2010) | puntuación 4b | 2 | 2026-10 · Parcial: el Romberg de lu4 pasa a Cook 2019 (revisión posterior, mismos datos de Katz 1995, LR+ 4,06); la marcha con base amplia sigue con Suri 2010 porque Cook 2019 no da su cifra. |
+| [van der Windt 2010](#van-der-windt-2010) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Sin cambios: PubMed (revisiones de la exploración física en ciática o hernia discal desde 2011). Scaia 2012 (J Back Musculoskelet Rehabil, 7 estudios del SLR) no agrupa; Al Nezari 2013 (Spine J) trata la exploración neurológica, no el SLR; Tawa 2017 (BMC Musculoskelet Disord, leída entera en PMC) no hace metaanálisis y da una media del SLR (S 0,84, E 0,78) con patrones de referencia mezclados. La Cochrane, con metaanálisis y referencia quirúrgica, sigue siendo la mejor. |
 | [Cook 2011](#cook-2011) | puntuación 4b | 1 | 2026-10 · Sin cambios en las cifras: Cook 2019 (revisión sistemática, PDF del usuario) la incluye solo con sus ítems sueltos, sin el clúster, y le asigna riesgo de sesgo alto (QUADAS-2); no hay validación posterior del clúster. El aviso se añade a la cita. |
 | [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | 2026-10 · Sin cambios: PubMed (RAPIDH, validación o precisión diagnóstica; publicaciones de Genevay) no encuentra ninguna validación externa de los criterios RAPIDH. |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
+| [Cook 2019](#cook-2019) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Sin cambios: PubMed (revisiones sistemáticas de precisión diagnóstica de la historia y la exploración en estenosis lumbar desde 2019) solo encuentra Wang 2024 (J Med Internet Res) y Yang 2024 (Spine), de inteligencia artificial sobre imagen, no de exploración clínica. |
 | [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
 | [Pålsson 2020](#pålsson-2020) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015). |
 | [Saueressig 2021](#saueressig-2021) | puntuación 4b | 1 | 2026-10 · Sin cambios: PubMed (clústeres de provocación sacroilíaca, revisiones sistemáticas) no encuentra ninguna posterior; solo una carta sobre su método (Vraa 2022, JOSPT 52(1):49–50). Han 2023, posterior, es la que da la LR del clúster. |
@@ -336,18 +313,41 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hölmich 1999](#hölmich-1999) | pauta | 1 | 2026-10 · Texto completo leído: la pauta de ca16 coincide con el panel 1 y los métodos. Corregido el trote (pasadas las 6 primeras semanas) y añadida la población (varones de 18 a 50 años). No se encontró un ensayo posterior que lo sustituya. |
 | [Al-Subahi 2017](#al-subahi-2017) | pauta | 1 | 2026-10 · Complementada: Trager 2024 (J Man Manip Ther, revisión sistemática con metaanálisis de 16 ensayos, PDF del usuario) actualiza el efecto de la terapia manual sacroilíaca (discapacidad: efecto moderado, certeza baja; dolor: sin efecto demostrado, certeza muy baja; ninguna técnica superior). Al-Subahi se mantiene para el ejercicio de estabilización, la duración de los programas y el vendaje. |
 | [George 2021](#george-2021) | pauta | 8 | 2026-10 · Sin cambios: PubMed (guías de práctica clínica de lumbalgia en JOSPT y de la APTA desde 2021) no encuentra una revisión posterior de esta guía. |
+| [Ammendolia 2022](#ammendolia-2022) | pauta · texto | 2 | 2026-10 · Sin cambios: es la actualización de la revisión Cochrane de 2013 y la más reciente que encontró la búsqueda en PubMed (tratamiento no quirúrgico de la estenosis lumbar) al incorporarla en 2026-10. |
 | [Munakomi 2023](#munakomi-2023) | pauta · razonamiento fase 2 · texto | 4 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 13 de agosto de 2023 (PubMed). Se añade a la pauta de lu4 Ammendolia 2022 (revisión sistemática del tratamiento no quirúrgico de la estenosis, leída entera en PMC). |
+| [Trager 2024](#trager-2024) | pauta | 1 | 2026-10 · Sin cambios: es la revisión más reciente que encontró la búsqueda en PubMed (terapia manual en el dolor sacroilíaco) al incorporarla en 2026-10. |
 | [Altman 1991](#altman-1991) | test 4b sin puntuar · texto | 2 | 2026-10 · S 86 % / E 75 % del árbol clínico comprobadas en el resumen, pero son de la muestra de desarrollo; en atención primaria los criterios no se sostienen (Bierma-Zeinstra 1999, Reijman 2004) y no hay S/E de ese ámbito. Los criterios ACR de cadera (ca1) pasan a hallazgo, sin puntuar. |
 | [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) | test 4b sin puntuar | 2 | 2026-10 · Texto completo no conseguido. Según Reiman 2015 (tabla 3), el estudio no publicó S ni E del test de Thomas («NA»): las calcularon los autores del metaanálisis. Serie de casos con riesgo de sesgo alto; Narvani 2003 no lo confirma. El Thomas pasa a hallazgo en labrum. |
 | [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído (PubMed 10332979): el texto completo no es accesible. No da S ni E de los criterios clínicos. |
 | [Narvani 2003](#narvani-2003) | test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: chasquido S 100 %, E 85 % y «Thomas ni sensible ni específico» comprobados en el resumen. |
 | [Reijman 2004](#reijman-2004) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído: en PMC (PMC1754907) el cuerpo es un PDF escaneado que no se pudo descargar. |
+| [Laslett 2006](#laslett-2006) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: Han 2023 (revisión sistemática, revisada 2026-10) la recoge: los criterios de Revel no se replican y no se pueden agrupar. |
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
 | [Majlesi 2008](#majlesi-2008) | test 4b sin puntuar | 1 | 2026-10 · Cifras sin cambios, con aviso: van der Windt 2010 (Cochrane) recoge solo dos estudios del Slump y señala que la especificidad de Majlesi puede estar inflada por su diseño de casos y controles (controles con RM normal); el otro estudio dio S 0,44, E 0,58. PubMed (2026-10): ninguna revisión posterior del Slump. Por decisión del usuario (2026-10), el Slump pasa a hallazgo: sus cifras quedan en el criterio y no puntúa. |
 | [Reiman 2015](#reiman-2015) | test 4b sin puntuar · texto | 8 | 2026-10 · Texto completo leído (tablas 3 y 4): cifras correctas, pero el FADDIR agrupado sale de pacientes operados (probabilidad previa 90 %) y los propios autores concluyen que ningún test cambia de forma significativa la probabilidad. El FADDIR pasa a hallazgo en SIFA (con Pålsson 2020) y en labrum. Revisiones posteriores (Shanmugaraj 2020, Fernandes 2022, Dhillon 2025) no dan un valor agrupado mejor. |
+| [Dobbs 2016](#dobbs-2016) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: Cook 2019 (PDF del usuario) recoge el test de extensión modificado con las mismas cifras (S 0,92, E 0,40, LR− 0,20, IC hasta 1,36; n = 30, referencia RM). PubMed (revisiones de tests clínicos de estenosis lumbar desde 2019) no encuentra nada posterior. |
+| [Tawa 2017](#tawa-2017) | test 4b sin puntuar | 2 | 2026-10 · Parcial: leída entera en PMC. Reflejos sin cambios. La sensibilidad S 61 %, E 63 % es la mejor de 5 estudios y la del único con referencia quirúrgica (Albeck 1996), no de RM como dice el resumen: se corrige la cita. Pendiente: Al Nezari 2013 (Spine J, 10.1016/j.spinee.2013.02.007, metaanálisis, búsqueda hasta 2011) agrupa sensibilidad S 0,40, E 0,59 (cirugía) y reflejos S 0,29, E 0,78, LR+ 1,02–1,26 (resumen de PubMed); falta el PDF para decidir. Ninguno de los dos tests puntúa con ninguna de las dos cifras. |
 | [Wong 2022](#wong-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras. |
 | [Adib 2023](#adib-2023) | test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015). |
 | [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo. |
+| [Finucane 2020](#finucane-2020) | razonamiento fase 2 | 10 | 2026-10 · Sin cambios: PubMed (autor Finucane LM, «red flags») no encuentra una versión posterior del marco IFOMPT. |
+| [Jayarangaiah 2023](#jayarangaiah-2023) | razonamiento fase 2 | 10 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Malik 2023](#malik-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Rider y Marra 2023](#rider-y-marra-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Rowe 2023](#rowe-2023) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de marzo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 30 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Lassiter 2024](#lassiter-2024) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Leslie 2024](#leslie-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Gill 2025](#gill-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de noviembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Margetis y Gillis 2025](#margetis-y-gillis-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de marzo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Shaw 2025](#shaw-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Consoli y Carlson 2026](#consoli-y-carlson-2026) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de junio de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Sendrea 2026](#sendrea-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior. |
+| [Wróblewski 2026](#wróblewski-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior. |
+| [Zemaitis 2026](#zemaitis-2026) | razonamiento fase 2 | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de enero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Altman 1986](#altman-1986) | texto | 2 | 2026-10 · Sustituida por Peat 2006 en los criterios del ACR de rodilla (ro1): su S 95 % / E 69 % sale de la muestra de desarrollo, no del ámbito de un fisio. Solo queda citada como contexto en el texto del test. |
 
 ## 1. Tarjetas de consulta
@@ -698,7 +698,7 @@ Autores: Ammendolia, Hofkirchner, Plener, Bussières, Schneider, Young, Furlan, 
 Título: *Non-operative treatment for lumbar spinal stenosis with neurogenic claudication: an updated systematic review*  
 Publicación: BMJ Open 12(1):e057724  
 DOI: 10.1136/bmjopen-2021-057724  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: es la actualización de la revisión Cochrane de 2013 y la más reciente que encontró la búsqueda en PubMed (tratamiento no quirúrgico de la estenosis lumbar) al incorporarla en 2026-10.  
 Nota: Texto completo en PMC8772406, leído entero (2026-10). Pauta de lu4.
 
 Citada como:
@@ -717,7 +717,7 @@ Autores: Anastasopoulou y Gillespie
 Título: *Paget Bone Disease*  
 Publicación: StatPearls [Internet], NBK430805 (act. 2026-08-17)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2026 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -734,7 +734,7 @@ Autores: Antunes, Tian y Copelin
 Título: *Upper Gastrointestinal Bleeding*  
 Publicación: StatPearls [Internet], NBK470300 (act. 2024-08-17)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -1405,7 +1405,7 @@ Autores: Consoli y Carlson
 Título: *Endometriosis*  
 Publicación: StatPearls [Internet], NBK567777 (act. 2026-06-17)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de junio de 2026 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -1455,18 +1455,20 @@ Autores: Cook, Cook, Reiman, Joshi, Richardson y Garcia
 Título: *Systematic review of diagnostic accuracy of patient history, clinical findings, and physical tests in the diagnosis of lumbar spinal stenosis*  
 Publicación: Eur Spine J 29(1):93–112  
 DOI: 10.1007/s00586-019-06048-4  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: PubMed (revisiones sistemáticas de precisión diagnóstica de la historia y la exploración en estenosis lumbar desde 2019) solo encuentra Wang 2024 (J Med Internet Res) y Yang 2024 (Spine), de inteligencia artificial sobre imagen, no de exploración clínica.  
 Nota: PDF del usuario (2026-10), leído entero. Romberg de lu4 (tabla 5) y riesgo de sesgo de Cook 2011.
 
 Citada como:
 
-1. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; LR+ IC 95 %: 1,29–12,76; riesgo de sesgo bajo). Antes: Suri 2010, LR+ 4,2
-2. Cook 2011 (n = 1448). 4 de 5: S 6 %, E 98 %; ninguno: S 96 %. Cook 2019 (revisión sistemática) le asigna riesgo de sesgo alto (QUADAS-2)
+1. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; referencia: diagnóstico del médico experto; LR+ IC 95 %: 1,29–12,76; riesgo de sesgo bajo). Antes: Suri 2010, LR+ 4,2
+2. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; referencia: diagnóstico del médico experto; LR+ 1,64, IC 95 %: 0,91–2,96; riesgo de sesgo bajo). Versión modificada: Dobbs 2016 (Manual Therapy, n = 30; referencia: RM)
+3. Cook 2011 (n = 1448). 4 de 5: S 6 %, E 98 %; ninguno: S 96 %. Cook 2019 (revisión sistemática) le asigna riesgo de sesgo alto (QUADAS-2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Romberg alterado» | 4b · cita bajo el test | 1 |
-| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Cluster «Cluster de Cook (anamnesis y observación)» | 4b · cita del cluster | 2 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Test de extensión lumbar de 30 s» | 4b · cita bajo el test | 2 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Cluster «Cluster de Cook (anamnesis y observación)» | 4b · cita del cluster | 3 |
 
 ### Culvenor 2019
 
@@ -1715,11 +1717,11 @@ Citada como:
 
 Publicación: Manual Therapy  
 DOI: 10.1016/j.math.2016.05.332  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: Cook 2019 (PDF del usuario) recoge el test de extensión modificado con las mismas cifras (S 0,92, E 0,40, LR− 0,20, IC hasta 1,36; n = 30, referencia RM). PubMed (revisiones de tests clínicos de estenosis lumbar desde 2019) no encuentra nada posterior.
 
 Citada como:
 
-1. Katz 1995, datos citados en Dobbs 2016 (Manual Therapy; referencia: RM)
+1. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; referencia: diagnóstico del médico experto; LR+ 1,64, IC 95 %: 0,91–2,96; riesgo de sesgo bajo). Versión modificada: Dobbs 2016 (Manual Therapy, n = 30; referencia: RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1918,7 +1920,7 @@ Autores: Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Be
 Título: *International Framework for Red Flags for Potential Serious Spinal Pathologies*  
 Publicación: IFOMPT, marzo de 2020 (documento completo); artículo en J Orthop Sports Phys Ther 50(7):350–372  
 DOI: 10.2519/jospt.2020.9971  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: PubMed (autor Finucane LM, «red flags») no encuentra una versión posterior del marco IFOMPT.  
 Nota: Se leyó el documento completo del marco IFOMPT; las páginas citadas son las suyas, no las del artículo de JOSPT.
 
 Citada como:
@@ -2077,7 +2079,7 @@ Autores: Gill, Leslie y Minter
 Título: *Acute Cystitis*  
 Publicación: StatPearls [Internet], NBK459322 (act. 2025-11-28)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de noviembre de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -2840,7 +2842,7 @@ Autores: Jayarangaiah, Kemp y Theetha Kariyanna
 Título: *Bone Metastasis*  
 Publicación: StatPearls [Internet], NBK507911 (act. 2023-07-31)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de rodilla. Releído en la sesión de tobillo y pie (2026-10): razonamiento del cribado de tobillo y pie. Releído en la sesión de codo (2026-10): razonamiento del cribado de codo.
 
 Citada como:
@@ -3045,13 +3047,13 @@ Citada como:
 
 Publicación: —  
 DOI: 10.1002/art.1780380910  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita.  
 Nota: Citado a través de Dobbs 2016.
 
 Citada como:
 
-1. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; LR+ IC 95 %: 1,29–12,76; riesgo de sesgo bajo). Antes: Suri 2010, LR+ 4,2
-2. Katz 1995, datos citados en Dobbs 2016 (Manual Therapy; referencia: RM)
+1. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; referencia: diagnóstico del médico experto; LR+ IC 95 %: 1,29–12,76; riesgo de sesgo bajo). Antes: Suri 2010, LR+ 4,2
+2. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; referencia: diagnóstico del médico experto; LR+ 1,64, IC 95 %: 0,91–2,96; riesgo de sesgo bajo). Versión modificada: Dobbs 2016 (Manual Therapy, n = 30; referencia: RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -3435,7 +3437,7 @@ Citada como:
 
 Publicación: —  
 DOI: 10.1016/j.spinee.2006.01.004  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: Han 2023 (revisión sistemática, revisada 2026-10) la recoge: los criterios de Revel no se replican y no se pueden agrupar.
 
 Citada como:
 
@@ -3472,7 +3474,7 @@ Autores: Lassiter, Bhutta y Allam
 Título: *Inflammatory Back Pain and Spondyloarthropathies*  
 Publicación: StatPearls [Internet], NBK539753 (act. 2024-02-26)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -3549,7 +3551,7 @@ Autores: Leslie, Sajjad y Singh
 Título: *Nocturia*  
 Publicación: StatPearls [Internet], NBK518987 (act. 2024-02-17)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -4617,7 +4619,7 @@ Autores: Malik, Gnanapandithan y Singh
 Título: *Peptic Ulcer Disease*  
 Publicación: StatPearls [Internet], NBK534792 (act. 2023-06-05)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -4678,7 +4680,7 @@ Autores: Margetis y Gillis
 Título: *Spondylolisthesis*  
 Publicación: StatPearls [Internet], NBK430767 (act. 2025-03-28)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de marzo de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -4745,7 +4747,7 @@ Autores: May y Marappa-Ganeshan
 Título: *Stress Fractures*  
 Publicación: StatPearls [Internet], NBK554538 (act. 2023-07-10)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído en la sesión de tobillo y pie (2026-10): razonamiento del cribado de tobillo y pie.
 
 Citada como:
@@ -5907,7 +5909,7 @@ Autores: Rider y Marra
 Título: *Cauda Equina and Conus Medullaris Syndromes*  
 Publicación: StatPearls [Internet], NBK537200 (act. 2023-08-07)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -5977,7 +5979,7 @@ Autores: Rowe, Koller y Sharma
 Título: *Physiology, Bone Remodeling*  
 Publicación: StatPearls [Internet], NBK499863 (act. 2023-03-17)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de marzo de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído en la sesión de tobillo y pie (2026-10): razonamiento del cribado de tobillo y pie.
 
 Citada como:
@@ -6093,7 +6095,7 @@ Autores: Sanvictores, Jozsa y Tadi
 Título: *Neuroanatomy, Autonomic Nervous System Visceral Afferent Fibers and Pain*  
 Publicación: StatPearls [Internet], NBK560843 (act. 2023-07-30)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 30 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -6230,7 +6232,7 @@ Autores: Sendrea, Periferakis, Periferakis, Xefteris, Troumpata, Periferakis, Sc
 Título: *Infectious Spondylodiscitis of Bacterial Causes in Adults: Epidemiology, Pathophysiology, Diagnostic and Treatment Challenges*  
 Publicación: Microorganisms 14(5):1110  
 DOI: 10.3390/microorganisms14051110  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior.  
 Nota: Revisión narrativa; texto completo en PMC13210327, leído en PubMed Central (2026-10). Razonamiento de l_inf1 (infección vertebral, lumbar).
 
 Citada como:
@@ -6333,7 +6335,7 @@ Autores: Shaw, Loree y Oropallo
 Título: *Abdominal Aortic Aneurysm*  
 Publicación: StatPearls [Internet], NBK470237 (act. 2025-01-19)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -6534,7 +6536,7 @@ DOI: 10.1001/jama.2010.1833
 Citada como:
 
 1. Suri 2010 (JAMA, revisión RCE; IC 95 %: 1,9–95)
-2. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; LR+ IC 95 %: 1,29–12,76; riesgo de sesgo bajo). Antes: Suri 2010, LR+ 4,2
+2. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; referencia: diagnóstico del médico experto; LR+ IC 95 %: 1,29–12,76; riesgo de sesgo bajo). Antes: Suri 2010, LR+ 4,2
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -6562,12 +6564,12 @@ Citada como:
 
 Publicación: —  
 DOI: 10.1186/s12891-016-1383-2  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Parcial: leída entera en PMC. Reflejos sin cambios. La sensibilidad S 61 %, E 63 % es la mejor de 5 estudios y la del único con referencia quirúrgica (Albeck 1996), no de RM como dice el resumen: se corrige la cita. Pendiente: Al Nezari 2013 (Spine J, 10.1016/j.spinee.2013.02.007, metaanálisis, búsqueda hasta 2011) agrupa sensibilidad S 0,40, E 0,59 (cirugía) y reflejos S 0,29, E 0,78, LR+ 1,02–1,26 (resumen de PubMed); falta el PDF para decidir. Ninguno de los dos tests puntúa con ninguna de las dos cifras.
 
 Citada como:
 
 1. Tawa 2017 (revisión sistemática)
-2. Tawa 2017 (revisión sistemática; referencia: RM)
+2. Tawa 2017 (revisión sistemática sin metaanálisis: es la mejor cifra de 5 estudios, la del único con referencia quirúrgica; los de referencia RM dan menos sensibilidad)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -6618,7 +6620,7 @@ Autores: Trager, Baumann, Rogers, Tidd, Orellana, Preston y Baldwin
 Título: *Efficacy of manual therapy for sacroiliac joint pain syndrome: a systematic review and meta-analysis of randomized controlled trials*  
 Publicación: J Man Manip Ther 32(6):561–572  
 DOI: 10.1080/10669817.2024.2316420  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: es la revisión más reciente que encontró la búsqueda en PubMed (terapia manual en el dolor sacroilíaco) al incorporarla en 2026-10.  
 Nota: PDF del usuario (2026-10), leído entero. Pauta de lu8.
 
 Citada como:
@@ -6687,7 +6689,7 @@ Autores: van der Windt, Simons, Riphagen, Ammendolia, Verhagen, Laslett, Devill�
 Título: *Physical examination for lumbar radiculopathy due to disc herniation in patients with low-back pain*  
 Publicación: Cochrane Database Syst Rev 2010, n.º 2, CD007431  
 DOI: 10.1002/14651858.CD007431.pub2  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: PubMed (revisiones de la exploración física en ciática o hernia discal desde 2011). Scaia 2012 (J Back Musculoskelet Rehabil, 7 estudios del SLR) no agrupa; Al Nezari 2013 (Spine J) trata la exploración neurológica, no el SLR; Tawa 2017 (BMC Musculoskelet Disord, leída entera en PMC) no hace metaanálisis y da una media del SLR (S 0,84, E 0,78) con patrones de referencia mezclados. La Cochrane, con metaanálisis y referencia quirúrgica, sigue siendo la mejor.  
 Nota: PDF del usuario (2026-10), leído entero. SLR y SLR cruzado de lu3 (tabla de resultados) y límites del Slump.
 
 Citada como:
@@ -6930,7 +6932,7 @@ Autores: Wróblewski, Wróblewska, Szukalska, Karczewska, Lichwala, Samborska, B
 Título: *Current Perspectives on Urolithiasis: Pathogenesis, Clinical Management, and Treatment*  
 Publicación: Cureus 18(1):e101141  
 DOI: 10.7759/cureus.101141  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior.  
 Nota: Revisión narrativa; texto completo en PMC12883049, leído en PubMed Central (2026-10). Razonamiento de l_u4 (cólico renal, lumbar).
 
 Citada como:
@@ -6978,7 +6980,7 @@ Autores: Zemaitis, Boll, Kato y Golla
 Título: *Peripheral Arterial Disease*  
 Publicación: StatPearls [Internet], NBK430745 (act. 2026-01-31)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de enero de 2026 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de rodilla. Releído en la sesión de tobillo y pie (2026-10): razonamiento del cribado de tobillo y pie.
 
 Citada como:
