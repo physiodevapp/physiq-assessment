@@ -1852,7 +1852,9 @@ test('prompt: reglas de la revisión con informes reales, en las dos plantillas'
       // El ejemplo antiguo («niega inicialmente…, aunque en consulta refiere…») se copiaba tal cual, fuente incluida
       assert.ok(!/niega inicialmente|en consulta refiere/.test(p), `${nombre}: el ejemplo no nombra la fuente`);
       assert.match(p, /no es una discrepancia: recógelo tal cual. No escribas que algo «no se menciona», «no se confirma»/, `${nombre}: lo que solo consta en una fuente no es discrepancia`);
-      assert.match(p, /otra zona u otro lado.*UNA vez como dato referido.*No le añadas plan, seguimiento, prevención/, `${nombre}: el otro lado, sin plan inventado`);
+      assert.match(p, /otra zona u otro lado.*UNA vez como algo que refiere el paciente.*nunca en Pruebas Clínicas.*No le añadas plan, seguimiento, prevención/, `${nombre}: el otro lado, referido y sin plan inventado`);
+      assert.match(p, /no escribas que la «confirman»/, `${nombre}: los tests apoyan, no confirman`);
+      assert.match(p, /El pronóstico y «Cuándo reconsiderar o derivar» son información para el fisioterapeuta/, `${nombre}: el pronóstico no se convierte en plan`);
     }
   }
   // Códigos CIF: limitados en la ficha (tiene sección propia); el narrativo, sin códigos
@@ -2552,6 +2554,18 @@ console.log('\nrevisión automática del informe con IA');
       'Sin dolor nocturno inicialmente referido.'])
       assert.ok(ids(f).includes('fuentes'), f);
     assert.ok(!ids('Acude a consulta por dolor en el hombro derecho.').includes('fuentes'), '«acude a consulta» es correcto');
+    assert.ok(ids('La exploración confirma la hipótesis de lesión labral.').includes('confirma'));
+    for (const f of ['Hipótesis de trabajo, pendiente de confirmar.', 'Restricciones a confirmar con el cirujano.',
+      'La exploración confirma dolor anterior durante la sentadilla.', 'Los tests no confirman la hipótesis.'])
+      assert.ok(!ids(f).includes('confirma'), f);
+  });
+  test('revisión: edad repetida y criterio de reconsiderar fuera de Seguimiento', () => {
+    assert.ok(ids('Paciente de 52 años. ### Factores Personales Hombre de 52 años.').includes('repetido'));
+    assert.ok(!ids(limpio).includes('repetido'));
+    const fuera = '## CONCLUSIONES\nEjercicio. Si a las 12 semanas no mejora, reconsiderar el diagnóstico.\n## SEGUIMIENTO FUNCIONAL\nKujala.';
+    assert.ok(ids(fuera).includes('seguimiento-fuera'));
+    assert.ok(!ids('## CONCLUSIONES\nEjercicio.\n## SEGUIMIENTO FUNCIONAL\nSi no mejora en 12 semanas, reconsiderar.').includes('seguimiento-fuera'));
+    assert.ok(!ids(fuera, { plantilla: 'breve' }).includes('seguimiento-fuera'), 'la ficha no tiene Seguimiento');
     assert.ok(ids('Hallazgos propios de la fase de consolidación.').includes('fisiopatologia'));
     assert.ok(ids('Secuelas esperables de la cirugía.').includes('fisiopatologia'));
   });
