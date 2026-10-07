@@ -2422,6 +2422,9 @@ console.log('\nversión desplegada');
     assert.match(src, /fetch\(u, \{ cache: 'reload' \}\)/);
     // y el panel ofrece comprobarlo a mano
     assert.match(src, /id="sessionVersionComprobar">Comprobar</);
+    // con versión nueva, el mismo hueco: «Actualizar» en naranja, sin texto aparte
+    assert.match(src, /session-version-btn-nueva" id="sessionVersionRecargar"[^>]*>Actualizar</);
+    assert.doesNotMatch(src, /hay una más reciente/);
   });
 
   test('sw.js no sirve ni guarda version.json desde la caché', () => {
