@@ -2048,12 +2048,13 @@ console.log('\npaciente posquirúrgico');
     const c = IN.contextoValoracion(d, r => r, null);
     assert.ok(c.includes('Cirugía (paciente posquirúrgico):\n  · Intervención: Osteosíntesis\n  · Fecha: 01/12/2025 (4 semanas)'));
     assert.ok(c.includes('restricciones pendientes de confirmar con el cirujano'));
-    assert.ok(c.includes('Luxación Bloqueada o Fractura (ya diagnosticada y tratada por el médico: no se deriva)'));
+    assert.ok(c.includes('Luxación Bloqueada o Fractura (diagnóstico ya confirmado y tratado por el médico: es un antecedente)'));
+    assert.ok(!c.includes('no se deriva'), 'nada que invite a escribir «no se deriva»');
     const prompt = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
     assert.ok(prompt.includes('Paciente operado (si los datos incluyen «Cirugía»)'));
     assert.ok(prompt.includes('no está marcada como ya diagnosticada y tratada se deriva'));
     const t = IN.bloquesAmpliados({ pautas: [{ hipotesis: 'Fractura', derivar: false, tratada: true, operada: true, pauta: '', fuente: '', prom: '' }] }).join('\n');
-    assert.ok(t.includes('Ya diagnosticada e intervenida: no se deriva') && !t.includes('Derivar: sin tratamiento'));
+    assert.ok(t.includes('Diagnóstico ya confirmado e intervenido: el plan sigue el protocolo del cirujano') && !t.includes('Derivar: sin tratamiento') && !t.includes('no se deriva'));
     withState({ ...POSQ({ intervencion: 'ORIF' }), region: 'hombro', activeHypotheses: ['h11'], testResults: { h11: { 0: 'pos' } },
       hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: {} }, () => {
       const a = IA.construirAmpliado();
