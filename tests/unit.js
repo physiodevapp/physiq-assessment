@@ -1525,7 +1525,7 @@ test('conexión cortada al generar: pantalla apagada / segundo plano, no un erro
 test('cancelar la generación pide confirmación y el diálogo se cierra solo si la generación acaba', () => {
   const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
   const cancelar = src.slice(src.indexOf('function iaCancelar'), src.indexOf('function cancelarGeneracion'));
-  assert.match(cancelar, /showConfirmBanner\('Cancelar la generación'[\s\S]*'Sí, cancelar', cancelarGeneracion, \{ cancelLabel: 'Seguir' \}\)/);
+  assert.match(cancelar, /showConfirmBanner\('Cancelar la generación'[\s\S]*<span class="btn-text-full">Sí, cancelar<\/span><span class="btn-text-short">Cancelar<\/span>',\s*cancelarGeneracion, \{ cancelLabel: 'Seguir' \}\)/);
   assert.doesNotMatch(cancelar, /ctrl\.abort/, 'el botón ya no corta sin confirmar');
   const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
   assert.match(gen, /finally \{[\s\S]*_cerrarDlgCancelar\?\.\(\);/);

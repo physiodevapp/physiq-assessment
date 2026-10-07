@@ -733,7 +733,10 @@ function iaCancelar() {
   if (!_gen) return;
   _cerrarDlgCancelar = showConfirmBanner('Cancelar la generación',
     'Se perderá lo que lleva escrito el informe. El audio se conserva y podrás volver a generarlo.',
-    'Sí, cancelar', cancelarGeneracion, { cancelLabel: 'Seguir' });
+    // «Sí, cancelar» se queda en «Cancelar» por debajo de 480 px, para que el
+    // botón no ocupe dos líneas
+    '<span class="btn-text-full">Sí, cancelar</span><span class="btn-text-short">Cancelar</span>',
+    cancelarGeneracion, { cancelLabel: 'Seguir' });
 }
 
 function cancelarGeneracion() {
