@@ -202,4 +202,4 @@ Diseño y las 8 decisiones clínicas en `docs/posquirurgico.md`; detalle técnic
 - [x] Revisión clínica del usuario (2026-10)
 - [ ] Probar con un caso real de operado, sobre todo el 📄 Informe y el informe con IA
 - [ ] physiq-report: leer `cq` y `dt` del payload (otro repositorio; hasta entonces su informe no sabe de la cirugía ni de la marca «ya tratada»)
-- Posible mejora, no pendiente: una hipótesis genérica de «rehabilitación posquirúrgica». Hoy, en cadera y lumbar (prótesis, artrodesis), el árbol da las hipótesis mecánicas habituales y el plan se supedita al protocolo.
+- [ ] Hipótesis posquirúrgica genérica (`pq1`): planteada en `docs/posquirurgico.md` («Propuesta: hipótesis posquirúrgica genérica»), con 5 decisiones abiertas. Sin código hasta que se cierren. Motivo: tras una prótesis, el árbol da la artrosis de esa articulación (`ca1`, `ro1`, `h10`, `tp24`) como hipótesis, con su pauta.
