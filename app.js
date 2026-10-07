@@ -5,8 +5,13 @@
 import { state } from './state.js';
 import { SYSTEMIC_SCREENING, HYPOTHESES, DOSIS_DERIVAR, PHASE_DEFS, PHASE_NAV_IDS, NRS_LABELS, NRS_CLASSES, QUICK_PHRASES } from './data.js';
 import { initCIFTree, getDerivacionesArbol } from './phase4.js';
-import { buildHypothesisCards, teardownHypObserver, restoreHypObserver } from './phase4b.js';
+import { buildHypothesisCards, teardownHypObserver, restoreHypObserver, esTratada, marcarTratada, casillaTratadaHTML } from './phase4b.js';
 import { writeSession, readSession, clearSession, updateSession } from './lib/session.js';
+import {
+  COMPLICACIONES, cirugiaVacia, esPosquirurgico, semanasCirugia, semanasTexto, conProtocolo, cirugiaPayload,
+  cqConProtocolo, fechaSemanasTexto, TEXTO_SIN_PROTOCOLO, TEXTO_PAUTA_COMPATIBLE, TEXTO_NOTA_TRAUMA, ETIQUETA_TRATADA,
+} from './lib/posquirurgico.js';
+import { VERSION_SHA, textoVersion, esVersionNueva } from './lib/version.js';
 
 // ─── SCROLL LOCK (dialogs / bottom sheets) ───────────────────
 // Reference-counted: several overlays (confirm-banner, session panel,
@@ -255,6 +260,7 @@ function _softResetApp() {
   state.signosVitales = { fc: null, fr: null, spo2: null, tas: null, tad: null };
   state.antropometria = { talla: null, peso: null };
   state.mecanismo = '';
+  state.cirugia = cirugiaVacia();
   state.cronologia = '';
   state.banderasRojas = { br1: 'NO', br2: 'NO', br3: 'NO', br4: 'NO' };
   state.riesgoPsico = '';
@@ -262,6 +268,7 @@ function _softResetApp() {
   state.psico_autoef = '';
   state.psico_emocional = '';
   state.region = '';
+  state.lado = '';
   state.sistemicoAnswers = {};
   state.sistemicoBreve = {};
   state.sistemicoAlerta = false;
@@ -271,6 +278,7 @@ function _softResetApp() {
   state.stepsCompleted = [];
   state.testResults = {};
   state.hypothesisScores = {};
+  state.derivacionResuelta = {};
   state.resultsBuilt = false;
   state.planNotes = { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' };
   state.formularioPrevio = { comun: {}, regiones: {} };
@@ -305,6 +313,7 @@ function _softResetApp() {
 
   // Phase 2 DOM
   document.querySelectorAll('.region-card').forEach(c => c.classList.remove('selected'));
+  _pintarLado();
   ['sistemaTabs', 'sistemaPanels', 'urgenciaRegion'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.innerHTML = '';
@@ -348,6 +357,7 @@ function _softResetApp() {
     history.replaceState({ phase: 1 }, '');
   }
   _pintarModoUI();   // el modo se conserva, pero el bucle de .option-btn de arriba quitó su selección
+  _pintarCirugiaUI();
   updateResetBtnVisibility();
 }
 
@@ -384,6 +394,10 @@ function abrirFormularioPrevio(slot) {
 }
 function resumenFormularioPrevio() {
   return _fpMod ? _fpMod.resumenFormularioPrevio() : [];
+}
+// Lo mismo agrupado y sin «No sé», para el informe con IA (informe-ia.js)
+function resumenFormularioIA() {
+  return _fpMod ? _fpMod.resumenFormularioIA() : [];
 }
 
 // ─── INFORME NARRATIVO CON IA (informe-ia.js, solo standalone) ───
@@ -492,7 +506,7 @@ function injectQuickInputBar(fieldId, phrases) {
 }
 
 function initQuickInputBars() {
-  ['motivoConsulta', 'signoComparable'].forEach(id => injectQuickInputBar(id));
+  ['motivoConsulta', 'signoComparable', 'cirIntervencion', 'cirRestricciones'].forEach(id => injectQuickInputBar(id));
 }
 
 // A chip's phrase already sitting in the field is spent: dim it and block
@@ -631,6 +645,11 @@ function selectOption(groupId, btn, value) {
   if (groupId === 'psico_miedo' || groupId === 'psico_autoef' || groupId === 'psico_emocional') {
     updatePsicoRecomendacion();
   }
+  if (groupId === 'mecanismo') {
+    _pintarCirugiaUI();
+    // El sistema posquirúrgico aparece o desaparece del cribado ya pintado
+    if (state.region && document.getElementById('sistemaPanels')?.children.length) _repintarCribado();
+  }
   saveSession();
 }
 
@@ -694,6 +713,98 @@ function collectPhase1() {
   state.motivoConsulta = document.getElementById('motivoConsulta').value;
 }
 
+// ─── PACIENTE POSQUIRÚRGICO (docs/posquirurgico.md) ──────────
+// Con mecanismo Post-quirúrgico aparece la tarjeta «Cirugía» y el resto de
+// la app supedita el plan al protocolo del cirujano. Lo visual cuelga de
+// body.posquirurgico (CSS .solo-posq); los datos de la tarjeta se conservan
+// si se cambia el mecanismo, pero ningún resumen los usa mientras no sea
+// Post-quirúrgico.
+function _pintarCirugiaUI() {
+  document.body.classList.toggle('posquirurgico', esPosquirurgico(state.mecanismo));
+  const cir = state.cirugia;
+  const set = (id, v) => { const el = document.getElementById(id); if (el && el.value !== String(v ?? '')) el.value = v ?? ''; };
+  set('cirIntervencion', cir.intervencion);
+  set('cirFecha', cir.fecha);
+  set('cirSemanas', cir.semanasAprox);
+  set('cirRestricciones', cir.restricciones);
+  set('cirCompOtra', cir.complicacionOtra);
+  document.querySelectorAll('#cirProtocolo .option-btn').forEach(b => {
+    b.classList.toggle('selected', b.textContent.trim() === cir.protocolo);
+  });
+  const comp = document.getElementById('cirComplicaciones');
+  if (comp) {
+    comp.innerHTML = COMPLICACIONES.map(c =>
+      `<button type="button" class="option-btn${cir.complicaciones.includes(c.id) ? ' selected' : ''}" onclick="toggleCirComplicacion('${c.id}')">${c.label}</button>`
+    ).join('');
+  }
+  _pintarCirugiaDerivados();
+}
+
+// Lo que depende de varios campos: semanas calculadas y aviso sin protocolo.
+function _pintarCirugiaDerivados() {
+  const sem = document.getElementById('cirSemanasTxt');
+  if (sem) {
+    const n = semanasCirugia(state.cirugia);
+    sem.textContent = n == null ? '' : `${semanasTexto(n)} desde la cirugía${state.cirugia.fecha ? '' : ' (aprox.)'}`;
+  }
+  const aviso = document.getElementById('cirSinProtocolo');
+  if (aviso) {
+    aviso.innerHTML = state.cirugia.protocolo === 'No hay'
+      ? `<div class="alert alert-warning" style="margin-top:10px;"><span class="alert-icon">⚠️</span><div>${TEXTO_SIN_PROTOCOLO} antes de progresar carga o rango.</div></div>`
+      : '';
+  }
+}
+
+function updateCirugia(campo, valor) {
+  if (campo === 'semanasAprox') valor = valor === '' ? null : Number(valor);
+  state.cirugia[campo] = valor;
+  if (campo === 'fecha' || campo === 'semanasAprox') _pintarCirugiaDerivados();
+  saveSession();
+}
+
+function selectCirProtocolo(btn, valor) {
+  state.cirugia.protocolo = state.cirugia.protocolo === valor ? '' : valor;
+  document.querySelectorAll('#cirProtocolo .option-btn').forEach(b => {
+    b.classList.toggle('selected', b.textContent.trim() === state.cirugia.protocolo);
+  });
+  _pintarCirugiaDerivados();
+  saveSession();
+}
+
+// «Ninguna» excluye a las demás, y marcar cualquier otra quita «Ninguna».
+function toggleCirComplicacion(id) {
+  const actual = state.cirugia.complicaciones;
+  let nuevas;
+  if (actual.includes(id)) nuevas = actual.filter(x => x !== id);
+  else if (id === 'ninguna') nuevas = ['ninguna'];
+  else nuevas = [...actual.filter(x => x !== 'ninguna'), id];
+  state.cirugia.complicaciones = nuevas;
+  _pintarCirugiaUI();
+  saveSession();
+}
+
+// Payload `cq` (null fuera del posquirúrgico).
+function getCirugiaPayload() {
+  return cirugiaPayload(state.mecanismo, state.cirugia);
+}
+
+// «Ya diagnosticada y tratada» (casilla en la 4b y en la fase 5; decisión 5).
+// No depende del mecanismo: también vale para una fractura con yeso o una
+// gota ya en tratamiento.
+function toggleDiagnosticoTratado(hId, valor) {
+  marcarTratada(hId, valor);
+  const cards = document.getElementById('hypothesisCards');
+  if (cards && cards.children.length) {
+    const abierta = document.getElementById(`hypcard_${hId}`)?.classList.contains('open');
+    teardownHypObserver();
+    buildHypothesisCards();
+    if (abierta) window.toggleHypCard?.(hId);
+  }
+  const results = document.getElementById('resultsContent');
+  if (results && results.children.length) buildResults();
+  saveSession();
+}
+
 // ─── MODO BREVE (consulta de aseguradora, 10 min) ────────────
 // docs/modo-breve.md. El modo solo cambia qué se muestra y cómo se resume:
 // banderas rojas, urgencias y árbol CIF funcionan igual en los dos modos.
@@ -753,8 +864,8 @@ function getPendientesBreve() {
   const pendientes = [];
   const data = SYSTEMIC_SCREENING[state.region];
   if (data) {
-    const porEmbudo = data.sistemas.filter(s => state.sistemicoBreve[s.id] === 'NO').map(s => s.nombre);
-    const sinCribar = data.sistemas.filter(s => !state.sistemicoBreve[s.id]).map(s => s.nombre);
+    const porEmbudo = sistemasActivos().filter(s => state.sistemicoBreve[s.id] === 'NO').map(s => s.nombre);
+    const sinCribar = sistemasActivos().filter(s => !state.sistemicoBreve[s.id]).map(s => s.nombre);
     if (porEmbudo.length) pendientes.push({ fase: 2, texto: `Cribado sistémico solo por embudo (sin preguntas una a una): ${porEmbudo.join(', ')}` });
     if (sinCribar.length) pendientes.push({ fase: 2, texto: `Sistemas sin cribar: ${sinCribar.join(', ')}` });
   } else if (state.maxVisitedIdx >= 1) {
@@ -762,10 +873,13 @@ function getPendientesBreve() {
   }
   if (state.irritabilidadDirecta) pendientes.push({ fase: 3, texto: 'Irritabilidad estimada sin la matriz' });
   const sinTests = state.activeHypotheses
-    .filter(h => HYPOTHESES[h] && !Object.values(state.testResults[h] || {}).some(r => r === 'pos' || r === 'neg'))
+    .filter(h => HYPOTHESES[h] && !esTratada(h) && !Object.values(state.testResults[h] || {}).some(r => r === 'pos' || r === 'neg'))
     .map(h => HYPOTHESES[h].name);
   if (sinTests.length) pendientes.push({ fase: '4b', texto: `Tests de confirmación sin hacer: ${sinTests.join(', ')}` });
   if (!resumenFormularioPrevio().length) pendientes.push({ fase: 1, texto: 'Formulario previo sin rellenar' });
+  if (esPosquirurgico(state.mecanismo) && !conProtocolo(state.cirugia)) {
+    pendientes.push({ fase: 1, ancla: 'cardCirugia', texto: `${TEXTO_SIN_PROTOCOLO} (sin protocolo)` });
+  }
   return pendientes;
 }
 
@@ -793,7 +907,8 @@ function completarPendientesBreve() {
   if (!primero) return;
   if (primero.fase === 1) {
     if (state.currentPhase !== 1) goToPhase(1);
-    abrirFormularioPrevio('comun');
+    if (primero.ancla) document.getElementById(primero.ancla)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else abrirFormularioPrevio('comun');
     return;
   }
   const idx = { 2: 1, 3: 2, '4b': 4 }[primero.fase];
@@ -912,14 +1027,64 @@ function applyRegionChange(regionId, card) {
     paintNav(1);
   }
   state.region = regionId;
+  _pintarLado();
   buildSistemicoQuestions(regionId);
   precargarFormularioPrevio();
   saveSession();
 }
 
+// Sistemas que se ven en la región: el posquirúrgico (`soloPosquirurgico`)
+// solo con mecanismo Post-quirúrgico, y de cada sistema solo las preguntas de
+// esa región (`regiones`; sin él, todas). Todo lo que lee el cribado (alerta,
+// urgencias, payload, pendientes) pasa por aquí, así que una respuesta de un
+// sistema que ya no se ve no cuenta.
+function sistemasActivos(regionId = state.region) {
+  const data = SYSTEMIC_SCREENING[regionId];
+  if (!data) return [];
+  return data.sistemas
+    .filter(sis => !sis.soloPosquirurgico || esPosquirurgico(state.mecanismo))
+    .map(sis => sis.preguntas.some(q => q.regiones)
+      ? { ...sis, preguntas: sis.preguntas.filter(q => !q.regiones || q.regiones.includes(regionId)) }
+      : sis);
+}
+
+// Respuestas del cribado de las preguntas que se ven ahora.
+function _respuestasActivas() {
+  const ids = new Set(sistemasActivos().flatMap(sis => sis.preguntas.map(q => q.id)));
+  return Object.entries(state.sistemicoAnswers).filter(([id]) => ids.has(id));
+}
+
+// Repinta el cribado conservando las respuestas (restaurar sesión, cambiar el
+// mecanismo con la región ya elegida); las preguntas nuevas empiezan en NO.
+function _repintarCribado() {
+  if (!state.region) return;
+  const savedAnswers = { ...state.sistemicoAnswers };
+  const savedBreve = { ...(state.sistemicoBreve || {}) };
+  buildSistemicoQuestions(state.region);
+  Object.assign(state.sistemicoAnswers, savedAnswers);
+  state.sistemicoBreve = savedBreve;
+  Object.entries(state.sistemicoAnswers).forEach(([qId, answer]) => {
+    const sq2 = document.getElementById(`sq2_${qId}`);
+    if (!sq2) return;
+    sq2.querySelectorAll('.sq-btn').forEach(btn => {
+      const m = (btn.getAttribute('onclick') || '').match(/'(SI|NO)'/);
+      if (m) btn.classList.toggle('selected', m[1] === answer);
+    });
+  });
+  sistemasActivos().forEach(sis => {
+    const alerta = sis.preguntas.some(q => state.sistemicoAnswers[q.id] === 'SI');
+    document.getElementById(`tab_${sis.id}`)?.classList.toggle('has-alert', alerta);
+    document.getElementById(`acc_${sis.id}`)?.classList.toggle('has-alert', alerta);
+  });
+  evaluarCriteriosCompuestos(state.region);
+  sistemasActivos().forEach(sis => _pintarEmbudo(sis.id));
+  updateSistemicoAlert();
+}
+
 function buildSistemicoQuestions(regionId) {
   const data = SYSTEMIC_SCREENING[regionId];
   if (!data) return;
+  const sistemas = sistemasActivos(regionId);
 
   const wrap = document.getElementById('sistemicoQuestions');
   const tabsContainer = document.getElementById('sistemaTabs');
@@ -935,7 +1100,7 @@ function buildSistemicoQuestions(regionId) {
   state.sistemicoBreve = {};
 
   // Initialize all answers to NO
-  data.sistemas.forEach(sis => {
+  sistemas.forEach(sis => {
     sis.preguntas.forEach(q => { state.sistemicoAnswers[q.id] = 'NO'; });
   });
 
@@ -951,13 +1116,13 @@ function buildSistemicoQuestions(regionId) {
   accordion.innerHTML = '';
 
   // Build tabs + panels + accordion rows
-  data.sistemas.forEach((sis, idx) => {
+  sistemas.forEach((sis, idx) => {
     // ── DESKTOP: Tab
     const tab = document.createElement('button');
     tab.className = 'sistema-tab' + (idx === 0 ? ' active' : '');
     tab.id = `tab_${sis.id}`;
     tab.innerHTML = `<span class="tab-dot"></span>${sis.icon} ${sis.nombre}<span class="embudo-estado" title="Cribado por embudo: sin hallazgos">✓</span>`;
-    tab.onclick = () => activeSistemaTab(sis.id, data.sistemas);
+    tab.onclick = () => activeSistemaTab(sis.id, sistemas);
     tabsContainer.appendChild(tab);
 
     // Build shared panel HTML
@@ -976,7 +1141,7 @@ function buildSistemicoQuestions(regionId) {
     row.className = 'sistema-accordion-row';
     row.id = `acc_${sis.id}`;
     row.innerHTML = `
-      <div class="sistema-accordion-header" onclick="toggleAccordionRow('${sis.id}', '${data.sistemas.map(s=>s.id).join(',')}')">
+      <div class="sistema-accordion-header" onclick="toggleAccordionRow('${sis.id}', '${sistemas.map(s=>s.id).join(',')}')">
         <span class="sistema-accordion-icon">${sis.icon}</span>
         <span class="sistema-accordion-name">${sis.nombre}<span class="embudo-estado" title="Cribado por embudo: sin hallazgos">✓</span></span>
         <span class="sistema-accordion-alert"></span>
@@ -1004,7 +1169,7 @@ function buildSistemicoQuestions(regionId) {
 
   wrap.style.display = 'block';
   evaluarCriteriosCompuestos(regionId);
-  data.sistemas.forEach(sis => _pintarEmbudo(sis.id));
+  sistemas.forEach(sis => _pintarEmbudo(sis.id));
   updateSistemicoAlert();
 }
 
@@ -1056,7 +1221,7 @@ function buildSistemaHTML(sis) {
     html += `
       <div class="sq2${q.alerta ? ' alerta-high' : ''}${q.urgencia ? ' sq2-urg' : ''}" id="sq2_${q.id}">
         <div class="sq2-badge${q.alerta ? ' alerta' : ''}">${qi + 1}</div>
-        <div class="sq2-text">${q.text}${urgBadge}${q.urgencia ? `<span class="sq2-urg-msg">🚨 ${q.urgencia}</span>` : ''}${razonamientoInlineHTML(sis, q)}</div>
+        <div class="sq2-text">${q.text}${urgBadge}${q.urgencia ? `<span class="sq2-urg-msg">🚨 ${q.urgencia}</span>` : ''}${q.notaPosquirurgica ? `<div class="nota-posq solo-posq">🏥 ${TEXTO_NOTA_TRAUMA}</div>` : ''}${razonamientoInlineHTML(sis, q)}</div>
         <div class="sq-btns">
           <button class="sq-btn si" onclick="selectSistQ(this,'${q.id}','SI',${q.alerta},'${sis.id}')">SÍ</button>
           <button class="sq-btn no selected" onclick="selectSistQ(this,'${q.id}','NO',${q.alerta},'${sis.id}')">NO</button>
@@ -1491,8 +1656,7 @@ function selectSistQ(btn, id, value, isAlerta, sisId) {
   // Update tab and accordion alert indicators for this system
   const tab = document.getElementById(`tab_${sisId}`);
   const accRow = document.getElementById(`acc_${sisId}`);
-  const data = SYSTEMIC_SCREENING[state.region];
-  const sis = data?.sistemas.find(s => s.id === sisId);
+  const sis = sistemasActivos().find(s => s.id === sisId);
   if (sis) {
     const hasAlert = sis.preguntas.some(q => state.sistemicoAnswers[q.id] === 'SI');
     if (tab) tab.classList.toggle('has-alert', hasAlert);
@@ -1511,7 +1675,7 @@ function selectSistQ(btn, id, value, isAlerta, sisId) {
 // sistema no tiene ninguna respuesta SÍ: «sin hallazgos» no puede convivir
 // con un hallazgo marcado.
 function selectEmbudo(sisId, value) {
-  const sis = SYSTEMIC_SCREENING[state.region]?.sistemas.find(s => s.id === sisId);
+  const sis = sistemasActivos().find(s => s.id === sisId);
   if (!sis) return;
   if (value === 'NO' && sis.preguntas.some(q => state.sistemicoAnswers[q.id] === 'SI')) {
     showToast('Este sistema tiene respuestas SÍ: cámbielas a NO antes de marcarlo sin hallazgos', 'warning');
@@ -1527,7 +1691,7 @@ function selectEmbudo(sisId, value) {
 // embudo es SÍ o si alguna no urgente ya se respondió SÍ (nunca se esconde
 // un hallazgo).
 function _pintarEmbudo(sisId) {
-  const sis = SYSTEMIC_SCREENING[state.region]?.sistemas.find(s => s.id === sisId);
+  const sis = sistemasActivos().find(s => s.id === sisId);
   if (!sis) return;
   const v = state.sistemicoBreve[sisId];
   const abierto = v === 'SI' || sis.preguntas.some(q => !q.urgencia && state.sistemicoAnswers[q.id] === 'SI');
@@ -1554,16 +1718,14 @@ function renderUrgenciaRegion(data) {
 
 // Preguntas del cribado con `urgencia` respondidas SÍ en la región actual.
 function getUrgenciasActivas() {
-  const data = SYSTEMIC_SCREENING[state.region];
-  if (!data) return [];
-  return data.sistemas.flatMap(sis => sis.preguntas)
+  return sistemasActivos().flatMap(sis => sis.preguntas)
     .filter(q => q.urgencia && state.sistemicoAnswers[q.id] === 'SI')
     .map(q => q.urgencia);
 }
 
 function updateSistemicoAlert() {
   const alertDiv = document.getElementById('sistemicoAlert');
-  const hasPositive = Object.values(state.sistemicoAnswers).includes('SI');
+  const hasPositive = _respuestasActivas().some(([, v]) => v === 'SI');
   state.sistemicoAlerta = hasPositive;
   const urgencias = getUrgenciasActivas();
   // Una urgencia nunca lleva el mensaje de «watchful waiting»: aviso propio, arriba.
@@ -1572,8 +1734,8 @@ function updateSistemicoAlert() {
       <div><strong>Derivación urgente hoy.</strong> No continuar con la valoración mecánica.
         ${urgencias.map(u => `<div>· ${u}</div>`).join('')}</div>
     </div>` : '';
-  const soloUrgencias = urgencias.length && !Object.entries(state.sistemicoAnswers)
-    .some(([id, v]) => v === 'SI' && !SYSTEMIC_SCREENING[state.region]?.sistemas.some(s => s.preguntas.some(q => q.id === id && q.urgencia)));
+  const soloUrgencias = urgencias.length && !_respuestasActivas()
+    .some(([id, v]) => v === 'SI' && !sistemasActivos().some(s => s.preguntas.some(q => q.id === id && q.urgencia)));
   if (hasPositive && soloUrgencias) {
     alertDiv.style.display = 'block';
     alertDiv.innerHTML = urgHtml;
@@ -1726,10 +1888,8 @@ function getSistemicoAffirmativeTexts() {
     .filter(([, v]) => v === 'SI')
     .map(([id]) => id);
   if (!affirmativeIds.length || !state.region) return [];
-  const regionData = SYSTEMIC_SCREENING[state.region];
-  if (!regionData) return [];
   const texts = [];
-  regionData.sistemas.forEach(sis => {
+  sistemasActivos().forEach(sis => {
     (sis.preguntas || []).forEach(q => {
       if (affirmativeIds.includes(q.id)) texts.push(q.text);
     });
@@ -1741,6 +1901,53 @@ function getSistemicoAffirmativeTexts() {
 function nombreRegion(r) {
   const n = r.replace(/_/g, ' y ');
   return n.charAt(0).toUpperCase() + n.slice(1);
+}
+
+const _escHTML = t => String(t ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// Texto de la pauta de una hipótesis «Derivar» marcada como tratada.
+function _textoTratada(cq) {
+  if (!cq) return 'Diagnóstico médico ya confirmado y tratado: sin derivación por esta hipótesis.';
+  return `Ya intervenida: seguir el protocolo del cirujano${cq.re ? ` (${_escHTML(cq.re)})` : ''}.`;
+}
+
+// Recuadro de la fase 5 con la cirugía (docs/posquirurgico.md, punto 4).
+function _cirugiaResultadosHTML(cq) {
+  const cabecera = [cq.iv && _escHTML(cq.iv), fechaSemanasTexto(cq), cq.pr && `Protocolo: ${cq.pr.toLowerCase()}`].filter(Boolean).join(' · ');
+  const conProt = cqConProtocolo(cq);
+  return `
+    <div class="alert ${conProt ? 'alert-info' : 'alert-warning'}" style="margin-bottom:1rem;">
+      <span class="alert-icon">🏥</span>
+      <div><strong>Paciente posquirúrgico.</strong>${cabecera ? ` ${cabecera}` : ''}
+        ${cq.re ? `<div>Restricciones: ${_escHTML(cq.re)}</div>` : ''}
+        ${cq.co.length ? `<div>Complicaciones: ${_escHTML(cq.co.join(', '))}</div>` : ''}
+        <div>${conProt
+          ? 'El plan se supedita al protocolo del cirujano: donde una pauta de abajo difiera, prevalece el protocolo.'
+          : `${TEXTO_SIN_PROTOCOLO} antes de progresar carga o rango.`}</div>
+      </div>
+    </div>`;
+}
+
+// Región con el lado afectado, si se indicó: 'Hombro (derecho)'.
+function regionConLado(r, lado) {
+  if (!r) return '—';
+  return lado ? `${nombreRegion(r)} (${lado.toLowerCase()})` : nombreRegion(r);
+}
+
+// «Central» solo tiene sentido en la columna.
+const REGIONES_COLUMNA = ['cervical', 'lumbar'];
+
+// Selector de lado (fase 2): visible con una región elegida; «Central» solo en
+// columna (si se cambia a otra región con «Central» marcado, se borra).
+function _pintarLado() {
+  const wrap = document.getElementById('ladoWrap');
+  if (!wrap) return;
+  wrap.hidden = !state.region;
+  const columna = REGIONES_COLUMNA.includes(state.region);
+  wrap.querySelector('.lado-central')?.toggleAttribute('hidden', !columna);
+  if (state.lado === 'Central' && !columna) state.lado = '';
+  wrap.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  _restoreOptionBtnGroup('lado', state.lado);
 }
 
 function buildResults() {
@@ -1788,6 +1995,10 @@ function buildResults() {
     </div>`;
   }
 
+  // ── Paciente posquirúrgico: el plan se supedita al protocolo del cirujano
+  const cq = getCirugiaPayload();
+  if (cq) container.innerHTML += _cirugiaResultadosHTML(cq);
+
   // ── Header summary
   container.innerHTML += `
   <div class="summary-section">
@@ -1810,7 +2021,7 @@ function buildResults() {
   container.innerHTML += `
   <div class="summary-section">
     <div class="summary-section-title">📊 SINSS — Caracterización del Cuadro</div>
-    <div class="summary-row"><span class="summary-label">Región valorada</span><span class="summary-value">${state.region ? nombreRegion(state.region) : '—'}</span></div>
+    <div class="summary-row"><span class="summary-label">Región valorada</span><span class="summary-value">${regionConLado(state.region, state.lado)}</span></div>
     <div class="summary-row"><span class="summary-label">Severidad (EVN)</span><span class="summary-value">${state.severidad}/10</span></div>
     <div class="summary-row"><span class="summary-label">Irritabilidad</span><span class="summary-value">${state.irritabilidadNivel || '—'}${state.irritabilidadDirecta && state.irritabilidadNivel ? ' (estimada, sin matriz)' : ''}</span></div>
     <div class="summary-row"><span class="summary-label">Naturaleza</span><span class="summary-value">${state.naturaleza || '—'}</span></div>
@@ -1834,6 +2045,7 @@ function buildResults() {
     sorted.forEach((item, rank) => {
       const { id, hyp, score } = item;
       const scoreInfo = state.hypothesisScores[id];
+      const tratada = esTratada(id);
       const colorClass = scoreInfo?.colorClass || 'hyp-orange';
       const colorMap = { 'hyp-green': '#38d9a9', 'hyp-orange': '#ff9f43', 'hyp-red': '#ff6b6b', 'hyp-neutral': '#8b95a7' };
       const rankEmoji = ['🥇','🥈','🥉'][rank] || `${rank+1}º`;
@@ -1861,18 +2073,20 @@ function buildResults() {
           <span style="font-weight:600; color:${dotColor}; font-size:0.95rem;">${rankEmoji} ${hyp.name}</span>
           <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--text3);">${scoreInfo?.label || 'Sin evaluar'}</span>
         </div>
+        ${casillaTratadaHTML(id)}
         <div style="margin-bottom:1rem;">
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px;">Tests Realizados</div>
-          ${testsHtml}
+          ${tratada ? '<div style="font-size:0.8rem; color:var(--text3);">No aplicables: diagnóstico ya confirmado.</div>' : testsHtml}
         </div>
         <div style="margin-bottom:1rem;">
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">PROM Recomendado</div>
           <span class="prom-badge">${hyp.prom}</span>
         </div>
         <div>
-          <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent2); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">${hyp.dosis === DOSIS_DERIVAR ? '🚑 Derivación' : hyp.dosisFuente ? '💊 Pauta de Tratamiento' : '💊 Dosis Día 1 (Baja Fricción)'}</div>
-          <div class="exercise-box">${hyp.dosis || '<em style="color:var(--text3)">Sin dosis de referencia: a criterio del clínico.</em>'}</div>
-          ${hyp.dosis && hyp.dosisFuente ? `<div class="test-source" style="margin:4px 0 0;">${hyp.dosisFuente}</div>` : ''}
+          <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent2); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">${tratada ? ETIQUETA_TRATADA : hyp.dosis === DOSIS_DERIVAR ? '🚑 Derivación' : hyp.dosisFuente ? '💊 Pauta de Tratamiento' : '💊 Dosis Día 1 (Baja Fricción)'}</div>
+          <div class="exercise-box">${tratada ? _textoTratada(cq) : hyp.dosis || '<em style="color:var(--text3)">Sin dosis de referencia: a criterio del clínico.</em>'}</div>
+          ${!tratada && hyp.dosis && hyp.dosisFuente ? `<div class="test-source" style="margin:4px 0 0;">${hyp.dosisFuente}</div>` : ''}
+          ${cq && !tratada && hyp.dosis && hyp.dosis !== DOSIS_DERIVAR ? `<div class="nota-posq" style="margin-top:6px;">🏥 ${TEXTO_PAUTA_COMPATIBLE}</div>` : ''}
         </div>
         ${hyp.pronostico ? `<div style="margin-top:1rem;">
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">🧭 Pronóstico y derivación</div>
@@ -2146,7 +2360,21 @@ function _showSessionState(st) {
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h9M5 4V2h3v2M3.5 4l.5 7h5l.5-7"/></svg>
           </button>
         </div>
-      </div>`;
+      </div>
+      <div class="session-io">
+        <button type="button" class="session-io-btn" id="sessionExport"${state.maxVisitedIdx > 0 ? '' : ' disabled'}>⬇ Exportar</button>
+        <button type="button" class="session-io-btn" id="sessionImport">⬆ Importar</button>
+        <input type="file" id="sessionImportFile" accept=".json,application/json" hidden>
+      </div>
+      <div class="session-io-nota">Valoración completa en un archivo .json, con los datos clínicos y el nombre del paciente.${state.maxVisitedIdx > 0 ? '' : ' Se puede exportar a partir de la fase 2.'}</div>
+      <div class="session-version" id="sessionVersion">${_versionPanelHTML()}</div>`;
+    panel.querySelector('#sessionExport').onclick = exportarValoracionArchivo;
+    panel.querySelector('#sessionImport').onclick = () => panel.querySelector('#sessionImportFile').click();
+    panel.querySelector('#sessionImportFile').onchange = e => {
+      const f = e.target.files?.[0];
+      e.target.value = '';
+      if (f) importarValoracionArchivo(f);
+    };
     const input = panel.querySelector('#patientName');
     input.value = state.patient || '';
     input.addEventListener('keydown', e => { if (e.key === 'Enter') closeSessionPanel(); });
@@ -2161,6 +2389,7 @@ function _showSessionState(st) {
       saveSession();
     });
     panel.querySelector('#sessionPanelClear').onclick = () => _showSessionState('delete');
+    panel.querySelector('#sessionVersionRecargar')?.addEventListener('click', recargarVersionNueva);
     setTimeout(() => input.focus(), 60);
 
   } else if (st === 'delete') {
@@ -2183,6 +2412,131 @@ function _showSessionState(st) {
       clearSession().then(() => { _sessionCh.postMessage({ type: 'SESSION_CLEAR' }); });
     };
   }
+}
+
+// ─── Exportar / importar la valoración (.json) ─────────────────
+// Para repetir pruebas con los mismos datos (p. ej. regenerar el informe
+// narrativo tras cambiar el prompt). Lógica pura en lib/valoracion-json.js,
+// cargado solo al usarlo. Importar guarda el estado como sesión y recarga: lo
+// restaura el mismo código que al abrir la app.
+let _importando = false;   // bloquea saveSession(): el DOM aún tiene la valoración anterior
+
+async function exportarValoracionArchivo() {
+  saveSession();   // vuelca al estado lo último escrito (motivo, signo comparable…)
+  try {
+    const VJ = await import('./lib/valoracion-json.js');
+    const ahora = new Date();
+    const nombre = VJ.nombreArchivo(state.patient, ahora);
+    const archivo = new File([JSON.stringify(VJ.exportarValoracion(state, ahora), null, 2)], nombre, { type: 'application/json' });
+    // En el móvil, la hoja de compartir permite guardarlo en Archivos/Drive
+    if (window.matchMedia?.('(pointer: coarse)').matches && navigator.canShare?.({ files: [archivo] })) {
+      try { await navigator.share({ files: [archivo], title: nombre }); return; }
+      catch (e) { if (e?.name === 'AbortError') return; }
+    }
+    const url = URL.createObjectURL(archivo);
+    const a = Object.assign(document.createElement('a'), { href: url, download: nombre });
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast(`✓ Valoración exportada: ${nombre}`, 'success');
+  } catch {
+    showToast('No se ha podido exportar la valoración.', 'warning');
+  }
+}
+
+async function importarValoracionArchivo(file) {
+  let r;
+  try {
+    const VJ = await import('./lib/valoracion-json.js');
+    r = VJ.leerImportacion(await file.text(), Object.keys(SYSTEMIC_SCREENING));
+  } catch {
+    showToast('No se ha podido leer el archivo.', 'warning');
+    return;
+  }
+  if (!r.ok) { showToast(r.error, 'warning'); return; }
+  closeSessionPanel();
+  const quien = r.paciente ? `de «${r.paciente}»` : 'sin nombre de paciente';
+  const cuando = r.exportado ? `, exportada el ${new Date(r.exportado).toLocaleDateString('es-ES')}` : '';
+  showConfirmBanner('Importar valoración',
+    `Se sustituirá la valoración en curso por la del archivo (${quien}${cuando}).${_avisoAudioSesion()}`,
+    'Importar', () => _aplicarImportacion(r));
+}
+
+async function _aplicarImportacion(r) {
+  _importando = true;
+  try { await _grabMod?.descartarTodo(); } catch { /* el audio no impide importar */ }
+  await clearSession();   // sin restos de la sesión anterior (payload final, ROM…)
+  await writeSession({ patient: r.paciente, date: new Date().toLocaleDateString('es-ES'), assessmentState: r.assessmentState });
+  location.reload();
+}
+
+// ─── Versión desplegada ────────────────────────────────────────
+// La versión cargada (lib/version.js, la escribe deploy-to-hub.yml) se ve al
+// pie del panel de sesión. Al arrancar y al volver a la app se pide
+// version.json sin caché: si es otra, un aviso ofrece recargar. Sirve para
+// saber, tras un merge, si ya ha llegado el despliegue a este dispositivo.
+let _versionNueva = null;          // { sha, fecha } publicada, si es distinta de la cargada
+let _versionComprobada = 0;        // ms de la última comprobación (máx. una por minuto)
+let _versionAvisoCerrado = '';     // sha cuyo aviso se cerró: no se vuelve a mostrar
+
+function _versionPanelHTML() {
+  const actual = `Versión ${textoVersion()}`;
+  if (!_versionNueva) return actual;
+  return `${actual} · <span class="session-version-nueva">hay una más reciente</span>
+    <button type="button" class="session-version-btn" id="sessionVersionRecargar">Recargar</button>`;
+}
+
+async function comprobarVersion() {
+  if (VERSION_SHA === 'dev') return;   // sin despliegue que comparar (local)
+  if (Date.now() - _versionComprobada < 60000) return;
+  _versionComprobada = Date.now();
+  let publicada;
+  try {
+    const r = await fetch(`./version.json?t=${Date.now()}`, { cache: 'no-store' });
+    if (!r.ok) return;
+    publicada = await r.json();
+  } catch { return; }   // sin conexión: nada que decir
+  if (!esVersionNueva(publicada)) return;
+  _versionNueva = publicada;
+  const v = document.getElementById('sessionVersion');
+  if (v) {
+    v.innerHTML = _versionPanelHTML();
+    v.querySelector('#sessionVersionRecargar')?.addEventListener('click', recargarVersionNueva);
+  }
+  _mostrarAvisoVersion();
+}
+
+function _mostrarAvisoVersion() {
+  if (!_versionNueva || _versionAvisoCerrado === _versionNueva.sha) return;
+  if (document.getElementById('versionAviso')) return;
+  const aviso = document.createElement('div');
+  aviso.id = 'versionAviso';
+  aviso.className = 'version-aviso';
+  aviso.setAttribute('role', 'status');
+  aviso.innerHTML = `<span class="version-aviso-texto">Hay una versión nueva</span>
+    <button type="button" class="version-aviso-btn" id="versionAvisoRecargar">Recargar</button>
+    <button type="button" class="version-aviso-cerrar" id="versionAvisoCerrar" aria-label="Cerrar aviso" title="Ahora no">×</button>`;
+  document.body.appendChild(aviso);
+  aviso.querySelector('#versionAvisoRecargar').onclick = recargarVersionNueva;
+  aviso.querySelector('#versionAvisoCerrar').onclick = () => {
+    _versionAvisoCerrado = _versionNueva?.sha || '';
+    aviso.remove();
+  };
+}
+
+// Recargar guarda la sesión, pero solo se guarda con nombre de paciente: sin
+// él, una valoración empezada se perdería, así que se pide confirmación.
+function recargarVersionNueva() {
+  const recargar = () => { saveSession(); setTimeout(() => location.reload(), 150); };
+  if (!(state.patient || '').trim() && _hasAssessmentData()) {
+    closeSessionPanel();
+    showConfirmBanner('Recargar la app',
+      'La valoración en curso no tiene nombre de paciente, así que no está guardada y se perderá al recargar. Para conservarla, escribe un nombre en el panel de sesión antes de recargar.',
+      'Recargar igualmente', () => location.reload());
+    return;
+  }
+  recargar();
 }
 
 function toggleSessionPanel() {
@@ -2315,11 +2669,13 @@ function buildPhysiQPayload() {
   return {
     p:  state.patient ?? '',
     r:  state.region,
+    la: state.lado || '',
     d:  new Date().toLocaleDateString('es-ES'),
     mo: state.motivoConsulta,
     sv: state.signosVitales,
     an: { ...state.antropometria, imc: calcImc(state.antropometria.peso, state.antropometria.talla) },
     me: state.mecanismo,
+    ...(getCirugiaPayload() ? { cq: getCirugiaPayload() } : {}),
     cr: state.cronologia,
     rp: state.riesgoPsico,
     nr: state.severidad ?? 0,
@@ -2335,7 +2691,8 @@ function buildPhysiQPayload() {
           name: HYPOTHESES[id]?.name ?? id,
           sc:   state.hypothesisScores[id]?.label ?? 'Sin evaluar',
           lr:   state.hypothesisScores[id]?.totalLR ?? null,
-          tr:   state.testResults[id] ?? {}
+          tr:   state.testResults[id] ?? {},
+          ...(esTratada(id) ? { dt: true } : {})
         })),
     pn: state.planNotes,
     fp: resumenFormularioPrevio(),
@@ -2346,6 +2703,15 @@ function buildPhysiQPayload() {
 }
 
 
+// 📋 Notas: una línea con todo lo de la tarjeta «Cirugía».
+function _lineaCirugiaNotas(cq) {
+  const partes = [cq.iv || 'intervención sin detallar', fechaSemanasTexto(cq),
+    cq.pr ? `Protocolo: ${cq.pr.toLowerCase()}` : '', cq.re ? `Restricciones: ${cq.re}` : '',
+    cq.co.length ? `Complicaciones: ${cq.co.join(', ')}` : ''].filter(Boolean);
+  if (!cqConProtocolo(cq)) partes.push(TEXTO_SIN_PROTOCOLO);
+  return `🏥 CIRUGÍA: ${partes.join(' · ')}`;
+}
+
 function buildContextSummaryText() {
   const d = buildPhysiQPayload();
   const hyps = (d.h || []).map(h => `  · ${h.name} — ${h.sc}`).join('\n');
@@ -2353,7 +2719,7 @@ function buildContextSummaryText() {
     ? `\n⏱ ${TEXTO_VALORACION_BREVE}${d.pe?.length ? `\nPendiente:\n${d.pe.map(x => `  · ${x}`).join('\n')}` : ''}`
     : '';
   return `VALORACIÓN PhysiQ-Assessment${d.p ? `\nPaciente: ${d.p}` : ''}${breve}
-Región: ${d.r ? nombreRegion(d.r) : '—'} · NRS: ${d.nr}/10 · Irritabilidad: ${d.ir}
+Región: ${regionConLado(d.r, d.la)} · NRS: ${d.nr}/10 · Irritabilidad: ${d.ir}${d.cq ? `\n${_lineaCirugiaNotas(d.cq)}` : ''}
 Cribado sistémico: ${d.si ? 'POSITIVO ⚠️' : 'Negativo'}${d.ur?.length ? `\n🚨 DERIVACIÓN URGENTE: ${d.ur.join(' · ')}` : ''}${d.dv?.length ? `\n🩺 DERIVACIÓN MÉDICA (árbol CIF): ${d.dv.join(' · ')}` : ''}
 Hipótesis:
 ${hyps}${d.fp?.length ? `\nFormulario previo:\n${d.fp.map(x => `  · ${x.q} → ${x.a}`).join('\n')}` : ''}
@@ -2374,13 +2740,13 @@ function copyContextToClipboard() {
 // pasted straight into a letterhead template and handed over as-is.
 function buildInformeFisioterapiaText() {
   const d = buildPhysiQPayload();
-  const region = d.r ? nombreRegion(d.r) : '—';
+  const region = regionConLado(d.r, d.la);
 
   const hyps = [...d.h].sort((a, b) => (b.lr ?? 1) - (a.lr ?? 1));
   const breve = d.md === 'breve';
   const sinConfirmar = breve && hyps.some(h => !Object.values(h.tr || {}).some(r => r === 'pos' || r === 'neg'));
   const impresion = hyps.length
-    ? hyps.map(h => `  · ${h.name}`).join('\n')
+    ? hyps.map(h => `  · ${h.name}${h.dt ? (d.cq ? ' (intervenida quirúrgicamente)' : ' (diagnosticada y tratada)') : ''}`).join('\n')
     : '  · Pendiente de completar la valoración diagnóstica.';
 
   const seguridad = d.br.length
@@ -2392,6 +2758,16 @@ function buildInformeFisioterapiaText() {
   const derivacion = d.dv?.length
     ? `\n\nSe recomienda valoración médica:\n${d.dv.map(m => `  · ${m}`).join('\n')}`
     : '';
+
+  // Paciente posquirúrgico: antecedente y plan supeditado al protocolo
+  const cq = d.cq;
+  const antecedenteQx = cq
+    ? `\n\nANTECEDENTE QUIRÚRGICO\n  · Intervención: ${cq.iv || '—'}${fechaSemanasTexto(cq) ? `\n  · Fecha: ${fechaSemanasTexto(cq)}` : ''}${cq.co.length ? `\n  · Complicaciones: ${cq.co.join(', ')}` : ''}`
+    : '';
+  const planQx = !cq ? ''
+    : cqConProtocolo(cq)
+      ? `\n  · El tratamiento sigue el protocolo y las restricciones indicadas por el cirujano${cq.re ? `: ${cq.re}` : '.'}`
+      : `\n  · ${TEXTO_SIN_PROTOCOLO}.${cq.re ? ` Restricciones referidas: ${cq.re}` : ''}`;
 
   // Solo lo marcado con `informe` en formularios/*.js — nunca el formulario entero
   const fpInf = informeFormularioPrevio();
@@ -2405,7 +2781,7 @@ Región valorada: ${region}${breve ? `\n\n${TEXTO_VALORACION_BREVE}` : ''}
 
 MOTIVO DE CONSULTA
 ${d.mo || '—'}
-Mecanismo de inicio: ${d.me || '—'} · Evolución: ${d.cr || '—'}${bloqueFp('SEGÚN REFIERE EL PACIENTE', fpInf.historia)}${bloqueFp('ANTECEDENTES REFERIDOS POR EL PACIENTE', fpInf.antecedentes)}
+Mecanismo de inicio: ${d.me || '—'} · Evolución: ${d.cr || '—'}${antecedenteQx}${bloqueFp('SEGÚN REFIERE EL PACIENTE', fpInf.historia)}${bloqueFp('ANTECEDENTES REFERIDOS POR EL PACIENTE', fpInf.antecedentes)}
 
 VALORACIÓN
 Intensidad del dolor referida: ${d.nr}/10
@@ -2419,7 +2795,7 @@ ${seguridad}${sistemico}${derivacion}
 IMPRESIÓN CLÍNICA${sinConfirmar ? ' (hipótesis de trabajo, pendiente de confirmar)' : ''}
 ${impresion}
 
-PLAN DE TRATAMIENTO Y RECOMENDACIONES
+PLAN DE TRATAMIENTO Y RECOMENDACIONES${planQx}
   · Señal para detener el ejercicio: ${d.pn?.variableControl || '—'}
   · Evolución esperada a las 24h: ${d.pn?.ventanaRecuperacion || '—'}
   · Cómo incorporarlo a la rutina: ${d.pn?.anclajeHabito || '—'}
@@ -2471,6 +2847,7 @@ function _hasAssessmentData() {
     || state.edadPaciente !== null
     || _hasVitalsData()
     || !!state.mecanismo
+    || !!state.cirugia?.intervencion
     || !!state.cronologia
     || !!state.riesgoPsico
     || !!state.psico_miedo
@@ -2485,6 +2862,7 @@ function updateResetBtnVisibility() {
 }
 
 function saveSession() {
+  if (_importando) return;
   const patientEl = document.getElementById('patientName');
   if (patientEl) state.patient = patientEl.value;
   const motivoEl = document.getElementById('motivoConsulta');
@@ -2554,6 +2932,11 @@ function _restoreSessionDOM() {
   updateImcColor();
 
   ['mecanismo', 'cronologia', 'riesgoPsico'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
+  // Sesiones anteriores al posquirúrgico: sin cirugia / derivacionResuelta
+  state.cirugia = { ...cirugiaVacia(), ...(state.cirugia || {}) };
+  if (!state.derivacionResuelta) state.derivacionResuelta = {};
+  _pintarCirugiaUI();
+  _pintarLado();
 
   Object.entries(state.banderasRojas).forEach(([brId, val]) => {
     document.querySelectorAll('#banderasRojas .sq-btn').forEach(btn => {
@@ -2582,22 +2965,7 @@ function _restoreSessionDOM() {
     document.querySelectorAll('.region-card').forEach(card => {
       card.classList.toggle('selected', (card.getAttribute('onclick') || '').includes(`'${state.region}'`));
     });
-    const savedAnswers = { ...state.sistemicoAnswers };
-    const savedBreve = { ...(state.sistemicoBreve || {}) };
-    buildSistemicoQuestions(state.region);
-    Object.assign(state.sistemicoAnswers, savedAnswers);
-    state.sistemicoBreve = savedBreve;
-    Object.entries(savedAnswers).forEach(([qId, answer]) => {
-      const sq2 = document.getElementById(`sq2_${qId}`);
-      if (!sq2) return;
-      sq2.querySelectorAll('.sq-btn').forEach(btn => {
-        const m = (btn.getAttribute('onclick') || '').match(/'(SI|NO)'/);
-        if (m) btn.classList.toggle('selected', m[1] === answer);
-      });
-    });
-    evaluarCriteriosCompuestos(state.region);
-    SYSTEMIC_SCREENING[state.region]?.sistemas.forEach(sis => _pintarEmbudo(sis.id));
-    updateSistemicoAlert();
+    _repintarCribado();
     const btnSinss = document.getElementById('btnContinuarSinss');
     if (btnSinss) btnSinss.disabled = false;
   }
@@ -2708,6 +3076,8 @@ document.addEventListener('DOMContentLoaded', () => {
   _setupSessionPanelDrag();
   // Init quick-input chips + dictation for static text fields
   initQuickInputBars();
+  // Tarjeta «Cirugía»: chips de complicaciones (se repinta al restaurar sesión)
+  _pintarCirugiaUI();
   // Formulario previo: contador de la fase 1 (se vuelve a llamar tras restaurar sesión)
   precargarFormularioPrevio();
 
@@ -2720,6 +3090,7 @@ document.addEventListener('DOMContentLoaded', () => {
       saveSession();
       _closeAllOverlays();
     }
+    else comprobarVersion();
   });
 
   document.getElementById('patientName')?.addEventListener('blur', saveSession);
@@ -2761,6 +3132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(() => {});
 }
+comprobarVersion();
 
 // ─── HUB INTEGRATION ─────────────────────────────────────────
 // physiq-assessment runs inside an iframe in the PhysiQ hub. Moved here (was
@@ -2856,7 +3228,7 @@ _iniciarGrabadora();
 // ─── PUBLIC API ──────────────────────────────────────────────
 // Named exports for phase4.js / phase4b.js (which import these directly) and
 // for tests/unit.js.
-export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
+export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, resumenFormularioIA, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML,
   precargarFormularioPrevio, nombreRegion, showToast,
   injectQuickInputBar, lockBodyScroll, unlockBodyScroll };
@@ -2872,6 +3244,7 @@ Object.assign(window, {
   toggleAccordionRow, toggleDictation, toggleImpact, togglePhaseSheet, toggleSessionPanel,
   cycleThemePref, selectModo, toggleBreveVerTodo, completarPendientesBreve, selectEmbudo, selectIrritabDirecta, verResultadosSinConfirmar,
   updateEdadPaciente, updateVital, updateVitalColor, updateResetBtnVisibility,
+  updateCirugia, selectCirProtocolo, toggleCirComplicacion, toggleDiagnosticoTratado,
 });
 
 // ========= SWIPE-TO-DISMISS BOTTOM SHEET =========

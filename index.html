@@ -47,6 +47,8 @@
     <!-- Grabación de la sesión (grabadora.js): solo standalone y con licencia -->
     <div class="grab-wrap">
       <button id="grabBtn" class="btn-record grab-btn" onclick="grabBtnClick()" type="button" aria-label="Grabar la sesión" title="Grabar la sesión"></button>
+      <!-- Con ratón (sin pulsación larga): descartar la grabación en curso -->
+      <button id="grabDescBtn" class="btn-record grab-desc" onclick="grabDescartar()" type="button" aria-label="Descartar grabación" title="Descartar grabación"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
     </div>
     <button class="btn-reset" onclick="resetApp()">↺ <span class="btn-reset-text">Reiniciar</span></button>
     <button id="sessionBtn" class="session-btn" onclick="toggleSessionPanel()" aria-label="Sesión" title="Sesión"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg></button>
@@ -199,6 +201,45 @@
       <button class="option-btn" onclick="selectOption('mecanismo', this, 'Traumático')">⚡ Traumático</button>
       <button class="option-btn" onclick="selectOption('mecanismo', this, 'Insidioso')">🌱 Insidioso</button>
       <button class="option-btn" onclick="selectOption('mecanismo', this, 'Post-quirúrgico')">🏥 Post-quirúrgico</button>
+    </div>
+  </div>
+
+  <!-- Paciente posquirúrgico (docs/posquirurgico.md): visible con body.posquirurgico -->
+  <div class="card solo-posq" id="cardCirugia">
+    <div class="card-title">Cirugía</div>
+    <div class="plan-note-hint">El plan y los informes se supeditan al protocolo del cirujano.</div>
+    <div class="form-group">
+      <label class="form-label" for="cirIntervencion">Intervención</label>
+      <textarea class="form-input" id="cirIntervencion" rows="2" placeholder="Ej: Osteosíntesis de maléolo peroneo derecho" oninput="updateCirugia('intervencion', this.value)"></textarea>
+    </div>
+    <div class="vitals-row">
+      <div class="form-group">
+        <label class="form-label" for="cirFecha">Fecha de la cirugía</label>
+        <input type="date" class="form-input" id="cirFecha" oninput="updateCirugia('fecha', this.value)">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="cirSemanas">O semanas aprox.</label>
+        <input type="number" class="form-input" id="cirSemanas" min="0" max="520" step="1" placeholder="Ej: 6" oninput="updateCirugia('semanasAprox', this.value)">
+      </div>
+    </div>
+    <div class="cir-semanas" id="cirSemanasTxt"></div>
+    <div class="form-group">
+      <div class="form-label">Protocolo del cirujano</div>
+      <div class="option-group option-group-full" id="cirProtocolo">
+        <button class="option-btn" onclick="selectCirProtocolo(this, 'Escrito')">Escrito</button>
+        <button class="option-btn" onclick="selectCirProtocolo(this, 'Verbal')">Verbal</button>
+        <button class="option-btn" onclick="selectCirProtocolo(this, 'No hay')">No hay</button>
+      </div>
+      <div id="cirSinProtocolo"></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="cirRestricciones">Restricciones y protocolo</label>
+      <textarea class="form-input" id="cirRestricciones" rows="2" placeholder="Carga, rango, inmovilización, precauciones, plazos…" oninput="updateCirugia('restricciones', this.value)"></textarea>
+    </div>
+    <div class="form-group">
+      <div class="form-label">Complicaciones</div>
+      <div class="option-group cir-complicaciones" id="cirComplicaciones"></div>
+      <input type="text" class="form-input cir-comp-otra" id="cirCompOtra" placeholder="Otra (texto libre)" oninput="updateCirugia('complicacionOtra', this.value)">
     </div>
   </div>
 
@@ -398,6 +439,15 @@
       <div class="region-card" onclick="selectRegion('tobillo_pie', this)">
         <div class="region-name">Tobillo y pie</div>
         <div class="region-sub">Tobillo, retropié y pie</div>
+      </div>
+    </div>
+    <div class="lado-wrap" id="ladoWrap" hidden>
+      <div class="field-label">Lado afectado <span class="lado-opcional">(opcional)</span></div>
+      <div class="option-group lado-group" id="lado">
+        <button class="option-btn" onclick="selectOption('lado', this, 'Derecho')">Derecho</button>
+        <button class="option-btn" onclick="selectOption('lado', this, 'Izquierdo')">Izquierdo</button>
+        <button class="option-btn" onclick="selectOption('lado', this, 'Bilateral')">Bilateral</button>
+        <button class="option-btn lado-central" onclick="selectOption('lado', this, 'Central')">Central</button>
       </div>
     </div>
   </div>
@@ -634,7 +684,7 @@
   <div id="cifTree"></div>
   <div class="nav-buttons">
     <button class="btn btn-secondary" onclick="goToPhase(3)">← Anterior</button>
-    <button class="btn btn-primary btn-disabled-until-ready" id="btnGoConfirm" onclick="goToPhase('4b')" disabled>Continuar → Hipótesis</button>
+    <button class="btn btn-primary btn-disabled-until-ready" id="btnGoConfirm" onclick="goToPhase('4b')" disabled><span class="btn-hip-full">Continuar → Hipótesis</span><span class="btn-hip-short">Hipótesis →</span></button>
     <button class="btn btn-secondary breve-only-inline" id="btnSinConfirmar" onclick="verResultadosSinConfirmar()"><span class="btn-sc-full">Resultados sin confirmar →</span><span class="btn-sc-short">Sin tests →</span></button>
   </div>
 </div>

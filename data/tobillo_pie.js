@@ -14,7 +14,7 @@
 // en su criterio. La tarjeta no da dosis («Dosis y progresión no están en la
 // guía»): dosis '' en todas.
 // ============================================================
-import { SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
+import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
 
 // ── Fase 2 · SYSTEMIC_SCREENING.tobillo_pie
 // Árbol, nodo 1 (cinco P, monoartritis con fiebre, debilidad simétrica con
@@ -32,6 +32,7 @@ export const screening = {
     ]
   },
   sistemas: [
+    SIS_POSQUIRURGICO,   // solo con mecanismo Post-quirúrgico (docs/posquirurgico.md)
     {
       // Tarjeta tobillo y pie (guía de consulta): URGENCIA (compartimental y neurovascular,
       // rotura del Aquiles, Ottawa) y BANDERAS «Lisfranc», «Fractura de calcáneo»,
@@ -47,7 +48,7 @@ export const screening = {
       ],
       banderasAmarillas: [],
       preguntas: [
-        { id: 'tp_t1', urgencia: 'Sospecha de síndrome compartimental o compromiso neurovascular tras lesión del mediopié: cirugía urgente, derivación hoy.', text: '¿Tras una lesión grave del mediopié, tiene el pie pálido o frío, dormido u hormigueante, sin pulso, o un dolor desproporcionado (cinco P)?', alerta: true, s1: true,
+        { id: 'tp_t1', notaPosquirurgica: true, urgencia: 'Sospecha de síndrome compartimental o compromiso neurovascular tras lesión del mediopié: cirugía urgente, derivación hoy.', text: '¿Tras una lesión grave del mediopié, tiene el pie pálido o frío, dormido u hormigueante, sin pulso, o un dolor desproporcionado (cinco P)?', alerta: true, s1: true,
           razonamiento: {
             porque: 'Los músculos del pie y de la pierna están encerrados en compartimentos de fascia que casi no se estiran. Tras una lesión grave (una fractura-luxación de Lisfranc, un aplastamiento), la hinchazón o el sangrado suben la presión dentro del compartimento: primero se frena la salida de la sangre venosa y, si la presión supera a la arterial, también la entrada, y nervios y músculos se quedan sin oxígeno. Además, al luxarse el 2.º metatarsiano puede caer el flujo arterial del pie. De ahí el dolor desproporcionado, el hormigueo, la palidez y la frialdad.',
             peso: 'Es una urgencia quirúrgica: con la fasciotomía en las primeras 6 horas la función se recupera casi por completo; a las 12 horas, solo dos tercios quedan con función normal, y en los casos muy tardíos puede acabar en amputación (Torlincasi). No hay que esperar a ver las cinco P: salvo el hormigueo, que puede ser precoz, son signos tardíos, y el pulso puede seguir palpándose con la extremidad muy comprometida. Los primeros datos son un compartimento tenso, «como de madera», y un dolor desproporcionado que al principio aparece sobre todo al estirar los músculos de forma pasiva (Torlincasi; en el pie, al mover pasivamente los dedos, Stern). Con este cuadro tras una lesión del mediopié, derivación urgente hoy (Lluch).',
@@ -377,7 +378,7 @@ export const screening = {
               { texto: 'NICE CG147 — NICE, «Peripheral arterial disease: diagnosis and management» (2012, actualizada el 11 de diciembre de 2020), recomendaciones 1.3.1–1.3.4.', url: 'https://www.nice.org.uk/guidance/cg147' }
             ]
           } },
-        { id: 'tp_v2', urgencia: 'Posible TVP: calcular Wells; con 2 o más, derivar hoy (NICE NG158: ecografía en 4 horas; riesgo de embolia pulmonar).', text: '¿Tras una inmovilización, una férula, estar encamado o una cirugía reciente, tiene la pantorrilla o toda la pierna hinchada, caliente o dolorosa? (Posible TVP: calcular Wells; ≥2 → probable.)', alerta: true,
+        { id: 'tp_v2', urgencia: 'Posible TVP: derivar hoy (NICE NG158: con Wells ≥2, ecografía en 4 horas; con 1 o menos, dímero D en 4 horas; riesgo de embolia pulmonar).', text: '¿Tras una inmovilización, una férula, estar encamado o una cirugía reciente, tiene la pantorrilla o toda la pierna hinchada, caliente o dolorosa? (Posible TVP: calcular Wells; ≥2 → probable.)', alerta: true,
           razonamiento: {
             porque: 'Tras una inmovilización, una férula, el encamamiento o una cirugía, la sangre de las venas de la pierna se estanca porque deja de funcionar la bomba de la pantorrilla, y la cirugía o el traumatismo dañan la pared venosa y aumentan la coagulabilidad: es la tríada de Virchow. Se forma un coágulo, casi siempre empezando en las venas de la pantorrilla, que dificulta el retorno y da hinchazón, calor y dolor en esa pierna. El riesgo es que se suelte y llegue al pulmón.',
             peso: 'Pesa mucho por lo que está en juego: la embolia pulmonar puede ser la primera manifestación (Goodman). Pero la clínica sola engaña: hasta la mitad de las TVP no da signos específicos, y ningún signo, solo o combinado, basta para confirmarla o descartarla (Waheed); el signo de Homans es poco sensible y poco específico (Goodman). Por eso NICE pide calcular la escala de Wells de dos niveles: con 2 puntos o más la TVP es probable y hay que hacer una ecografía, con el resultado en 4 horas si es posible; con 1 o menos, un dímero D. Toda fractura de tobillo debería tener valorado su riesgo de TVP (Hermena y Slane). Con sospecha, derivar sin demora a quien pueda confirmarla o descartarla.',

@@ -24,6 +24,10 @@
 //
 // Usage: node tests/smoke.mjs [url]   (defaults to http://localhost:3000)
 
+import { mkdtempSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+
 let chromium;
 try {
   ({ chromium } = await import('playwright'));
@@ -42,7 +46,7 @@ try {
 
 const BASE_URL = process.argv[2] || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
-const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'lib/session.js',
+const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'lib/session.js', 'lib/posquirurgico.js',
   'data/comun.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
@@ -93,6 +97,7 @@ async function walkRegion(page, region) {
 
   await page.click(`[onclick="selectRegion('${region}', this)"]`);
   await page.waitForTimeout(150);
+  const sinPosq = (await page.$('#tab_transversal_posquirurgico')) === null;
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
 
@@ -117,7 +122,7 @@ async function walkRegion(page, region) {
   await page.waitForTimeout(150);
 
   const finalPhase = await page.evaluate(() => state.currentPhase);
-  return { region, treeResult, finalPhase };
+  return { region, treeResult, finalPhase, sinPosq };
 }
 
 // Same golden path in modo breve (docs/modo-breve.md), again by real clicks:
@@ -177,6 +182,152 @@ async function walkRegionBreve(page, region) {
   return { region, ok, treeResult, screening, fase5, naturalezaOculta };
 }
 
+// Paciente posquirúrgico (docs/posquirurgico.md), por clics reales en cada
+// región: con mecanismo Post-quirúrgico aparece la tarjeta «Cirugía» (y se
+// oculta al quitarlo), las notas bajo las preguntas de traumatismo se ven en
+// la fase 2, y la fase 5 abre con el recuadro del protocolo del cirujano.
+async function walkRegionPosq(page, region) {
+  await page.fill('#motivoConsulta', `Dolor de ${region} tras la cirugía`);
+  const oculta = !(await page.isVisible('#cardCirugia'));
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  const visible = await page.isVisible('#cardCirugia');
+  await page.fill('#cirIntervencion', `Cirugía de ${region}`);
+  await page.fill('#cirSemanas', '6');
+  await page.click('#cirProtocolo .option-btn:has-text("Escrito")');
+  await page.fill('#cirRestricciones', 'Sin carga hasta la semana 8');
+  await page.click('#cirComplicaciones .option-btn:has-text("Ninguna")');
+  const semanas = await page.textContent('#cirSemanasTxt');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+
+  await page.click(`[onclick="selectRegion('${region}', this)"]`);
+  await page.waitForTimeout(150);
+  const notas = await page.evaluate(() => {
+    const els = [...document.querySelectorAll('#sistemaPanels .nota-posq')];
+    return { total: els.length, visibles: els.filter(el => getComputedStyle(el).display !== 'none').length };
+  });
+  // Sistema posquirúrgico: primera pestaña, con las preguntas de la región
+  const cribado = await page.evaluate(() => ({
+    primera: document.querySelector('#sistemaTabs .sistema-tab')?.id,
+    preguntas: [...document.querySelectorAll('#panel_transversal_posquirurgico .sq2')].map(el => el.id.replace('sq2_', '')),
+  }));
+  const esperadas = ['lumbar', 'cervical'].includes(region)
+    ? ['pq_herida', 'pq_tvp', 'pq_tep']
+    : ['pq_herida', ['hombro', 'codo'].includes(region) ? 'pq_tvp_ms' : 'pq_tvp', 'pq_tep',
+      ...(['codo', 'rodilla', 'tobillo_pie'].includes(region) ? ['pq_compart'] : []), 'pq_sdrc', 'pq_nervio'];
+  const cribadoOk = cribado.primera === 'tab_transversal_posquirurgico' && JSON.stringify(cribado.preguntas) === JSON.stringify(esperadas);
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.fill('#signoComparable', 'Flexión');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const treeResult = await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  const fase5 = await page.evaluate(() => {
+    const t = document.getElementById('resultsContent').textContent;
+    return { phase: state.currentPhase, recuadro: t.includes('Paciente posquirúrgico') && t.includes('Sin carga hasta la semana 8'),
+      cq: state.cirugia.protocolo === 'Escrito' && state.cirugia.semanasAprox === 6 };
+  });
+  const ok = cribadoOk && oculta && visible && semanas.startsWith('6 semanas') && notas.visibles === notas.total
+    && treeResult.treeCompleteShown && fase5.phase === 5 && fase5.recuadro && fase5.cq;
+  return { region, ok, cribado, oculta, visible, semanas, notas, treeResult, fase5 };
+}
+
+// Cambiar el mecanismo con el cribado ya pintado (lumbar): Post-quirúrgico
+// añade el sistema y conserva lo contestado; quitarlo lo retira y su urgencia
+// deja de contar aunque la respuesta siga guardada.
+async function checkCambioMecanismo(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.fill('#motivoConsulta', 'Lumbalgia');
+  await page.click('#mecanismo .option-btn:has-text("Insidioso")');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  const qNormal = await page.evaluate(() => document.querySelector('#sistemaPanels .sistema-panel.active .sq2')?.id.replace('sq2_', ''));
+  await page.click(`#sistemaPanels .sistema-panel.active #sq2_${qNormal} .sq-btn.si`);
+  const antes = (await page.$('#tab_transversal_posquirurgico')) === null;
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  const con = await page.evaluate(q => ({
+    tab: !!document.getElementById('tab_transversal_posquirurgico'),
+    conservada: state.sistemicoAnswers[q] === 'SI' && !!document.querySelector(`#sq2_${q} .sq-btn.si.selected`),
+  }), qNormal);
+  await page.click('#tab_transversal_posquirurgico');
+  await page.click('#panel_transversal_posquirurgico #sq2_pq_herida .sq-btn.si');
+  const urgencia = await page.evaluate(() => document.getElementById('sistemicoAlert').textContent.includes('Derivación urgente'));
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#mecanismo .option-btn:has-text("Traumático")');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  const sin = await page.evaluate(() => ({
+    tab: !!document.getElementById('tab_transversal_posquirurgico'),
+    urgencia: document.getElementById('sistemicoAlert').textContent.includes('Derivación urgente'),
+    alerta: state.sistemicoAlerta,
+  }));
+  const ok = antes && con.tab && con.conservada && urgencia && !sin.tab && !sin.urgencia && sin.alerta === true;
+  return { ok, antes, con, urgencia, sin };
+}
+
+// Hombro operado de una fractura: h_step2b «traumatismo previo» activa h11
+// («Derivar»). Marcada «ya diagnosticada y tratada» en la 4b, la fase 5 no
+// pide derivación y dice que se siga el protocolo del cirujano.
+async function checkHombroTratada(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.fill('#motivoConsulta', 'Rigidez tras fractura de húmero operada');
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  await page.fill('#cirIntervencion', 'Osteosíntesis de húmero proximal');
+  await page.click('#cirProtocolo .option-btn:has-text("Verbal")');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('hombro', this)"]`);
+  await page.waitForTimeout(150);
+  const notaTrauma = await page.evaluate(() => getComputedStyle(document.querySelector('#sq2_h_t1 .nota-posq')).display !== 'none');
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
+  await elegir('h_step1', 2);
+  await elegir('h_step2', 0);
+  await elegir('h_step2b', 0);          // traumatismo previo → h11
+  await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  await page.click('#hypcard_h11 .hypothesis-header');
+  await page.waitForTimeout(150);
+  await page.click('#hypcard_h11 .dx-tratada input');
+  await page.waitForTimeout(150);
+  const en4b = await page.evaluate(() => ({
+    marcada: !!state.derivacionResuelta.h11,
+    etiqueta: document.getElementById('score_h11').textContent,
+    abierta: document.getElementById('hypcard_h11').classList.contains('open'),
+    testsPlegados: !!document.querySelector('#hypcard_h11 details.dx-tratada-tests:not([open])'),
+  }));
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  const fase5 = await page.evaluate(() => {
+    const t = document.getElementById('resultsContent').textContent;
+    return { sinDerivacion: !t.includes('🚑 Derivación'), protocolo: t.includes('Ya intervenida: seguir el protocolo del cirujano'),
+      casillaMarcada: !!document.querySelector('#resultsContent .dx-tratada input:checked') };
+  });
+  const ok = notaTrauma && en4b.marcada && en4b.etiqueta.includes('Diagnosticada y tratada') && en4b.abierta && en4b.testsPlegados
+    && fase5.sinDerivacion && fase5.protocolo && fase5.casillaMarcada;
+  return { ok, notaTrauma, en4b, fase5 };
+}
+
 // Razonamiento del cribado (fase 2, docs/razonamiento-cribado.md): nivel 1
 // («¿Por qué?», <details>) y nivel 2 («Ampliar →»). Escritorio: panel lateral
 // sin velo — se puede seguir contestando SÍ/NO con él abierto, «Ampliar» en
@@ -206,6 +357,43 @@ const razonEstado = page => page.evaluate(() => {
     scrollX: document.documentElement.scrollWidth > innerWidth,
   };
 });
+
+// Lado afectado (fase 2): aparece al elegir región, «Central» solo en columna,
+// se guarda en el estado y cabe a 320 px sin desbordar.
+async function checkLado(page) {
+  await page.setViewportSize({ width: 320, height: 640 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const r = {};
+  r.ocultoSinRegion = await page.evaluate(() => document.getElementById('ladoWrap').hidden);
+  await irAFase2(page, 'hombro');
+  const estado = () => page.evaluate(() => {
+    const w = document.getElementById('ladoWrap');
+    const c = w.querySelector('.lado-central');
+    const rw = w.getBoundingClientRect();
+    return {
+      visible: !w.hidden && rw.height > 0,
+      central: !c.hidden && c.getBoundingClientRect().width > 0,
+      cabe: [...w.querySelectorAll('.option-btn')].filter(b => !b.hidden).every(b => {
+        const rb = b.getBoundingClientRect();
+        return rb.left >= rw.left - 1 && rb.right <= rw.right + 1 && b.scrollWidth <= b.clientWidth;
+      }) && document.documentElement.scrollWidth <= innerWidth,
+      lado: state.lado,
+    };
+  });
+  const h = await estado();
+  r.visibleConRegion = h.visible;
+  r.sinCentralEnHombro = !h.central;
+  r.cabe320 = h.cabe;
+  await page.click('#lado .option-btn:has-text("Derecho")');
+  r.guarda = (await estado()).lado === 'Derecho';
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  const l = await estado();
+  r.centralEnLumbar = l.central && l.cabe;
+  r.ok = r.ocultoSinRegion && r.visibleConRegion && r.sinCentralEnHombro && r.cabe320 && r.guarda && r.centralEnLumbar;
+  await page.setViewportSize({ width: 1280, height: 900 });
+  return r;
+}
 
 // Derivación pedida por el árbol (`derivacion` en una opción de CIF_TREES):
 // lumbar, paso 1 NO y paso 2 VASCULAR. Comprueba el aviso bajo el paso, en el
@@ -343,6 +531,81 @@ async function mockWorkerYTurnstile(context, captura) {
   });
 }
 
+// Exportar / importar la valoración (panel de sesión, lib/valoracion-json.js):
+// lumbar completo con nombre → exportar (descarga real) → borrar sesión →
+// importar el archivo → tras la recarga vuelve todo, en la fase 5. Y a 320 px
+// los dos botones caben sin cortar el texto.
+async function checkExportarImportar(browser, errors, tmpDir) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 }, acceptDownloads: true });
+  await context.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json',
+    body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo', email: 'demo' }, demoOnly: false }),
+  }));
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (exportar): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (exportar): ${msg.text()}`); });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const r = {};
+
+  await page.click('#sessionBtn');
+  r.exportarDesactivadoAlEmpezar = await page.isDisabled('#sessionExport');
+  await page.fill('#patientName', 'Prueba Exportación');
+  await page.keyboard.press('Enter');
+  await walkRegion(page, 'lumbar');
+  const antes = await page.evaluate(() => JSON.stringify({ p: state.patient, r: state.region, t: state.treeAnswers, f: state.currentPhase, m: state.motivoConsulta, s: state.signoComparable }));
+
+  await page.click('#sessionBtn');
+  const [descarga] = await Promise.all([page.waitForEvent('download'), page.click('#sessionExport')]);
+  r.nombreArchivo = descarga.suggestedFilename();
+  const ruta = `${tmpDir}/${r.nombreArchivo}`;
+  await descarga.saveAs(ruta);
+
+  // Borrar sesión (el panel sigue abierto tras exportar): la app vuelve a la fase 1 vacía
+  r.panelSigueAbierto = await page.isVisible('#sessionPanelClear');
+  await page.click('#sessionPanelClear');
+  await page.click('#confirmAction');
+  await page.waitForTimeout(200);
+  r.borrada = await page.evaluate(() => state.currentPhase === 1 && !state.region);
+
+  // Importar: confirmación → recarga → restaurado
+  await page.click('#sessionBtn');
+  await page.setInputFiles('#sessionImportFile', ruta);
+  await page.waitForSelector('#confirmBanner');
+  await Promise.all([page.waitForEvent('load'), page.click('#confirmAction')]);
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(300);
+  const despues = await page.evaluate(() => JSON.stringify({ p: state.patient, r: state.region, t: state.treeAnswers, f: state.currentPhase, m: state.motivoConsulta, s: state.signoComparable }));
+  r.restaurado = antes === despues;
+  r.fase5Visible = await page.isVisible('#phase5');
+
+  // Un archivo que no es una valoración: aviso y nada cambia
+  const malo = `${tmpDir}/no-es-valoracion.json`;
+  writeFileSync(malo, JSON.stringify({ app: 'otra' }));
+  await page.click('#sessionBtn');
+  await page.setInputFiles('#sessionImportFile', malo);
+  await page.waitForTimeout(300);
+  r.rechazaMalo = !(await page.isVisible('#confirmBanner')) && (await page.evaluate(() => state.region)) === 'lumbar';
+  await page.evaluate(() => closeSessionPanel());
+
+  // 320 px: los dos botones dentro del panel y sin texto cortado
+  await page.setViewportSize({ width: 320, height: 640 });
+  await page.click('#sessionBtn');
+  r.caben320 = await page.evaluate(() => {
+    const panel = document.getElementById('sessionPanel').getBoundingClientRect();
+    return ['sessionExport', 'sessionImport'].every(id => {
+      const b = document.getElementById(id);
+      const rb = b.getBoundingClientRect();
+      return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth && rb.height >= 40;
+    });
+  });
+
+  await context.close();
+  r.ok = r.exportarDesactivadoAlEmpezar && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
+    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320;
+  return r;
+}
+
 async function checkInformeNarrativo(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
@@ -401,7 +664,7 @@ async function checkInformeNarrativo(browser, errors) {
   const cuerpo = Buffer.from(captura[1] || '', 'latin1').toString('utf8');
   r.peticion = cuerpo.includes('name="file"') && cuerpo.includes('DATOS DE VALORACI') && cuerpo.includes('{{TRANSCRIPT}}') && cuerpo.includes('name="whisperHint"');
   // Datos ampliados: el recorrido del árbol CIF va en el prompt
-  r.promptAmpliado = cuerpo.includes('Razonamiento clínico (árbol de decisión CIF') && /name="maxTokens"\r\n\r\n7000/.test(cuerpo);
+  r.promptAmpliado = cuerpo.includes('Recorrido de la exploración (pregunta clínica') && /name="maxTokens"\r\n\r\n7000/.test(cuerpo);
   // El informe llega plegado, con las acciones a la vista
   r.resultadoPlegado = await page.evaluate(() => {
     const det = document.getElementById('iaResultadoDet');
@@ -459,38 +722,60 @@ async function checkInformeNarrativo(browser, errors) {
 }
 
 // Grabación desde la cabecera (grabadora.js), con el micrófono falso de
-// Chromium: empieza en la fase 1, sigue visible por todas las fases, la tarjeta
-// de la fase 5 la ve en curso (y no deja generar), «Parar y usar» la deja como
-// audio de la sesión; pausa/reanudar y «Grabar de nuevo» desde el menú; y
-// «Reiniciar» avisa del audio y lo descarta.
+// Chromium. Táctil (390 px): un toque empieza, otro pausa (con el aviso de la
+// pulsación larga) y otro reanuda; la pulsación larga pide descartar; sigue
+// por todas las fases; la tarjeta de la fase 5 la ve en curso sin «Parar» y
+// «Generar» la cierra y la usa; con un audio adjunto el menú solo ofrece
+// descartarlo; «Reiniciar» avisa y descarta. Con ratón: la papelera descarta.
 async function checkGrabadoraCabecera(errors) {
   const browser = await chromium.launch({ args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'] });
   // Con una grabación en marcha la página tiene beforeunload: si algo falla, el
   // navegador debe cerrarse igual o el proceso no termina nunca.
-  try { return await recorrerGrabadora(browser, errors); }
+  try {
+    const tactil = await recorrerGrabadora(browser, errors);
+    const raton = await recorrerGrabadoraRaton(browser, errors);
+    const r = { ...tactil, ...raton };
+    r.ok = Object.values(r).every(v => v === true);
+    return r;
+  }
   catch (e) { return { ok: false, error: e.message.split('\n')[0] }; }
   finally { await browser.close().catch(() => {}); }
 }
 
+const metaAudioIDB = page => page.evaluate(() => new Promise(res => {
+  const rq = indexedDB.open('physiq', 3);
+  rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result); };
+}));
+
+async function pulsacionLarga(page, sel) {
+  const b = await page.locator(sel).boundingBox();
+  await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2);
+  await page.mouse.down();
+  await page.waitForTimeout(900);
+  await page.mouse.up();
+}
+
 async function recorrerGrabadora(browser, errors) {
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
   await context.grantPermissions(['microphone']);
   await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
-  await mockWorkerYTurnstile(context, ['x']);
+  const captura = ['x'];
+  await mockWorkerYTurnstile(context, captura);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (grabadora): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (grabadora): ${msg.text()}`); });
-  const btn = () => page.evaluate(() => { const b = document.getElementById('grabBtn'); return { clases: b.className, texto: b.textContent.trim() }; });
+  const clases = () => page.evaluate(() => document.getElementById('grabBtn').className);
+  const esperaClase = (c, si = true) => page.waitForFunction(([c, si]) => document.getElementById('grabBtn').classList.contains(c) === si, [c, si]);
   const r = {};
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
   await page.waitForSelector('#grabBtn', { state: 'visible' });
   r.botonVisible = true;
 
   await page.click('#grabBtn');                        // fase 1: un toque empieza
-  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await esperaClase('recording');
   await page.waitForTimeout(1200);
-  const b1 = await btn();
-  r.pildora = /\d\d:\d\d/.test(b1.texto);
+  r.pildora = /\d\d:\d\d/.test(await page.textContent('#grabBtn'));
+  r.sinPapeleraEnTactil = !(await page.isVisible('#grabDescBtn'));
   // A 390 px, grabando y también con el chip del modo breve (solo CSS: la clase
   // del body basta para medirlo): ni el logo pisa los botones ni se salen.
   const cabeceraCabe = () => page.evaluate(() => {
@@ -505,46 +790,90 @@ async function recorrerGrabadora(browser, errors) {
   await page.evaluate(() => document.body.classList.remove('modo-breve'));
   r.cabeceraSinDesbordar = sinBreve && conBreve;
 
+  // Toque = pausa (con el aviso de la pulsación larga, sin menú) / reanudar
+  await page.click('#grabBtn');
+  await esperaClase('paused');
+  r.toquePausa = await page.isHidden('#grabMenu');
+  r.avisoPulsacionLarga = ((await page.textContent('#appToast').catch(() => '')) || '').includes('mantén pulsado');
+  await page.click('#grabBtn');
+  await esperaClase('recording');
+  r.toqueReanuda = true;
+
+  // Pulsación larga = confirmación de descartar; cancelarla deja todo igual
+  await pulsacionLarga(page, '#grabBtn');
+  await page.waitForSelector('#confirmBanner');
+  r.largaPideDescartar = (await page.textContent('#confirmBanner')).includes('Descartar');
+  await page.click('#confirmCancel');
+  await page.waitForTimeout(300);
+  r.cancelarNoPausa = (await clases()).includes('recording');
+
   await walkRegion(page, 'lumbar');                    // la consulta sigue grabando
-  r.siguePorLasFases = (await btn()).clases.includes('recording');
+  r.siguePorLasFases = (await clases()).includes('recording');
   await page.waitForSelector('#iaAudio .ia-grabando');
   r.tarjetaVeEnCurso = true;
-  r.generarBloqueado = await page.evaluate(() => document.getElementById('iaGenerar').disabled);
+  r.tarjetaSinParar = (await page.locator('#iaAudio button:has-text("Parar")').count()) === 0;
+  await page.waitForSelector('#iaConsent input[type=checkbox]');
+  r.consentMientrasGraba = await page.evaluate(() => document.getElementById('iaGenerar').disabled);
+  await page.check('#iaConsent input[type=checkbox]');
+  await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+  const antes = captura.length;
+  await page.click('#iaGenerar');                       // cierra la grabación y la usa
+  await page.waitForFunction(n => document.querySelector('#iaResultado')?.textContent.includes('CONDICIÓN DE SALUD') || false, antes, { timeout: 15000 });
+  r.generarCierraYUsa = captura.length === antes + 1 && /name="file"/.test(captura[captura.length - 1]);
+  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));
+  r.audioBorradoTrasInforme = (await metaAudioIDB(page)) === undefined;
 
-  await page.click('#iaAudio button:has-text("Parar y usar")');
-  await page.waitForSelector('#iaAudio .ia-reproductor');
-  r.audioEnTarjeta = (await btn()).clases.includes('recorded');
-  r.audioEnIDB = await page.evaluate(() => new Promise(res => {
-    const rq = indexedDB.open('physiq', 3);
-    rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(!!g.result?.chunks); };
-  }));
-
-  // Menú: con audio → «Grabar de nuevo» (confirmación) → pausa y reanudar → parar
+  // Con un audio adjunto (cerrado): el menú solo ofrece ir al informe y descartar
+  await page.setInputFiles('#iaArchivo', { name: 'consulta.webm', mimeType: 'audio/webm', buffer: Buffer.alloc(2048, 1) });
+  await esperaClase('recorded');
   await page.click('#grabBtn');
-  r.menuConAudio = await page.isVisible('#grabMenu :text("Grabar de nuevo")');
-  await page.click('#grabMenu button:has-text("Grabar de nuevo")');
+  const menu = await page.textContent('#grabMenu');
+  r.menuConAudio = menu.includes('Descartar') && !menu.includes('Grabar de nuevo') && !menu.includes('Parar');
+  await page.click('#grabMenu button:has-text("Descartar")');
   await page.click('#confirmAction');
-  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await esperaClase('recorded', false);
+  r.descartaAdjunto = (await metaAudioIDB(page)) === undefined;
+
+  // Reiniciar con una grabación en curso: la confirmación avisa y la descarta
   await page.click('#grabBtn');
-  await page.click('#grabMenu button:has-text("Pausa")');
-  r.pausa = (await btn()).clases.includes('paused');
-  await page.click('#grabMenu button:has-text("Reanudar")');
-  r.reanuda = (await btn()).clases.includes('recording');
+  await esperaClase('recording');
   await page.waitForTimeout(600);
-  await page.click('#grabMenu button:has-text("Parar")');
-  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recorded'));
-  r.paraDesdeMenu = true;
-
-  // Reiniciar: la confirmación avisa del audio y, al aceptar, se descarta
   await page.click('.btn-reset');
-  r.avisoEnReinicio = (await page.textContent('#confirmBanner')).includes('audio grabado de la sesión');
+  r.avisoEnReinicio = (await page.textContent('#confirmBanner')).includes('grabación en curso');
   await page.click('#confirmAction');
-  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('recorded'));
-  r.descartadoAlReiniciar = await page.evaluate(() => new Promise(res => {
-    const rq = indexedDB.open('physiq', 3);
-    rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result === undefined); };
-  }));
-  r.ok = Object.values(r).every(v => v === true);
+  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));
+  await page.waitForTimeout(300);
+  r.descartadoAlReiniciar = (await metaAudioIDB(page)) === undefined && !(await clases()).includes('recorded');
+  await context.close();
+  return r;
+}
+
+async function recorrerGrabadoraRaton(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['microphone']);
+  await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
+  await mockWorkerYTurnstile(context, ['x']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (grabadora ratón): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (grabadora ratón): ${msg.text()}`); });
+  const r = {};
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.waitForSelector('#grabBtn', { state: 'visible' });
+  r.ratonSinPapeleraSinGrabar = !(await page.isVisible('#grabDescBtn'));
+  await page.click('#grabBtn');
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+  await page.waitForTimeout(800);
+  r.ratonPapeleraVisible = await page.isVisible('#grabDescBtn');
+  await page.click('#grabBtn');
+  await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('paused'));
+  r.ratonSinAvisoPulsacion = !((await page.textContent('#appToast').catch(() => '')) || '').includes('mantén pulsado');
+  await page.click('#grabDescBtn');
+  r.ratonPapeleraConfirma = (await page.textContent('#confirmBanner')).includes('Descartar');
+  await page.click('#confirmAction');
+  await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));
+  await page.waitForTimeout(300);
+  r.ratonDescartado = (await metaAudioIDB(page)) === undefined && !(await page.isVisible('#grabDescBtn'));
+  await context.close();
   return r;
 }
 
@@ -593,7 +922,7 @@ async function main() {
     if (results.length > 0) await page.goto(BASE_URL, { waitUntil: 'networkidle' });
     const r = await walkRegion(page, region);
     const t = r.treeResult;
-    const ok = t.treeCompleteShown && r.finalPhase === 5;
+    const ok = t.treeCompleteShown && r.finalPhase === 5 && r.sinPosq;
     console.log(`  ${ok ? '✓' : '✗'} ${region.padEnd(9)} -> ${t.answeredSteps} pasos, ${t.activeHypotheses} hipótesis, árbol completo: ${t.treeCompleteShown}, fase alcanzada: ${r.finalPhase}`);
     results.push(r);
   }
@@ -607,6 +936,19 @@ async function main() {
     console.log(`  ${r.ok ? '✓' : '✗'} ${region.padEnd(9)} -> embudo NO en ${sc.embudoNo} sistemas, urgentes visibles ${sc.urgVisibles}/${sc.urgTotal}, no urgentes visibles ${sc.noUrgVisibles}, fase ${r.fase5.phase}, transparencia: ${r.fase5.transparencia}`);
     breveResults.push(r);
   }
+
+  console.log(`\nPaciente posquirúrgico (tarjeta «Cirugía», notas de traumatismo, protocolo en la fase 5) for all ${REGIONS.length} regions...`);
+  const posqResults = [];
+  for (const region of REGIONS) {
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    const r = await walkRegionPosq(page, region);
+    console.log(`  ${r.ok ? '✓' : '✗'} ${region.padEnd(9)} -> tarjeta ${r.visible ? 'visible' : 'oculta'}, «${r.semanas}», cribado posquirúrgico ${r.cribado.preguntas.join(' ')}, notas de traumatismo visibles ${r.notas.visibles}/${r.notas.total}, fase ${r.fase5.phase}`);
+    posqResults.push(r);
+  }
+  const hombroTratada = await checkHombroTratada(page);
+  const cambioMec = await checkCambioMecanismo(page);
+  console.log(`  ${cambioMec.ok ? '✓' : '✗'} cambiar el mecanismo con el cribado pintado añade o quita el sistema, conserva las respuestas y su urgencia deja de contar`);
+  console.log(`  ${hombroTratada.ok ? '✓' : '✗'} hombro h_step2b → h11 «ya diagnosticada y tratada»: sin derivación en la fase 5, protocolo del cirujano`);
 
   // Exercise the mobile phase-sheet button (the last real bug found,
   // PHASE_NAV_IDS) once, on whichever region the loop above ended on.
@@ -622,9 +964,18 @@ async function main() {
   const razonMov = await checkRazonamientoMovil(page);
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
+  console.log('\nLado afectado (fase 2):');
+  const lado = await checkLado(page);
+  console.log(`  ${lado.ok ? '✓' : '✗'} aparece al elegir región, «Central» solo en columna, se guarda, cabe a 320 px`);
+
   console.log('\nDerivación del árbol (lumbar, VASCULAR):');
   const deriv = await checkDerivacionVascular(page);
   console.log(`  ${deriv.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
+
+  console.log('\nExportar / importar la valoración (panel de sesión):');
+  const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
+  const expImp = await checkExportarImportar(browser, errors, tmpDir);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px`);
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
@@ -634,15 +985,16 @@ async function main() {
 
   console.log('\nGrabación desde la cabecera (micrófono falso de Chromium):');
   const grab = await checkGrabadoraCabecera(errors);
-  console.log(`  ${grab.ok ? '✓' : '✗'} empieza en la fase 1, sigue por todas, la fase 5 la ve y la para; menú; reiniciar avisa y descarta`);
+  console.log(`  ${grab.ok ? '✓' : '✗'} toque = empezar/pausa/reanudar, pulsación larga y papelera descartan, sigue por todas las fases, «Generar» la cierra y la usa; reiniciar avisa y descarta`);
 
   const realErrors = errors.filter(e => !KNOWN_NOISE.some(n => e.includes(n)));
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
   realErrors.forEach(e => console.log('  -', e));
 
-  const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
+  const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
-  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && grab.ok && realErrors.length === 0;
+  const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && cambioMec.ok;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
@@ -653,7 +1005,15 @@ async function main() {
   if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
   if (!deriv.ok) console.log('\nDerivación del árbol:', JSON.stringify(deriv));
   if (!informeIA.ok) console.log('\nInforme narrativo:', JSON.stringify(informeIA));
+  if (!expImp.ok) console.log('\nExportar / importar:', JSON.stringify(expImp));
+  if (!lado.ok) console.log('\nLado afectado:', JSON.stringify(lado));
   if (!grab.ok) console.log('\nGrabadora:', JSON.stringify(grab));
+  if (!posqOk) {
+    console.log('\nPosquirúrgico failures:');
+    posqResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
+    if (!hombroTratada.ok) console.log('  -', JSON.stringify(hombroTratada));
+    if (!cambioMec.ok) console.log('  -', JSON.stringify(cambioMec));
+  }
   if (!breveOk) {
     console.log('\nModo breve failures:');
     breveResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));

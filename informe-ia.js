@@ -18,7 +18,9 @@
 
 import { state } from './state.js';
 import { CIF_TREES, HYPOTHESES, SYSTEMIC_SCREENING, DOSIS_DERIVAR } from './data.js';
-import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast } from './app.js';
+import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast, resumenFormularioIA } from './app.js';
+import { esTratada } from './phase4b.js';
+import { esPosquirurgico } from './lib/posquirurgico.js';
 import {
   ORCHESTRATOR_URL, TURNSTILE_SITEKEY, MAX_AUDIO_BYTES, PLANTILLAS, plantillaPorDefecto,
   getWhisperPrompt, huellaPayload, parseSSEBuffer, parseSSEBlock,
@@ -26,7 +28,7 @@ import {
 } from './lib/informe-narrativo.js';
 import { estadoLicencia, onLicencia, comprobarLicencia, probarClave, marcarSinLicencia, claveGuardada, detalleLicencia } from './lib/licencia-ia.js';
 import {
-  onGrabadora, audioActual, estadoGrabacion, fijarArchivo, quitarAudio, pausar, reanudar, parar, fmtTiempo, fmtMB,
+  onGrabadora, audioActual, estadoGrabacion, idAudio, cerrarGrabacion, fijarArchivo, quitarAudio, fmtTiempo, fmtMB,
 } from './grabadora.js';
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -37,7 +39,8 @@ let _root = null;
 let _mostrarClave = false;
 let _claveMsg = '';
 let _consentido = false;
-let _audioConsentido = null;     // el consentimiento vale para un audio concreto
+let _audioConsentido = null;     // el consentimiento vale para un audio concreto (idAudio())
+let _cerrando = false;           // «Generar» está cerrando la grabación en curso
 let _gen = null;                 // generación en curso: { texto, transcripcion, fase, ctrl }
 let _plantilla = null;           // 'narrativo' | 'breve' elegida a mano; null = la del tipo de consulta
 let _resultadoAbierto = false;   // el informe generado se muestra plegado hasta que se abre
@@ -284,13 +287,21 @@ export function construirAmpliado() {
   for (const id of state.activeHypotheses || []) {
     const h = HYPOTHESES[id];
     if (!h) continue;
+    // «Ya diagnosticada y tratada»: ni derivación ni tests (no aplican)
+    if (esTratada(id)) {
+      pautas.push({ hipotesis: h.name, derivar: false, tratada: true, operada: esPosquirurgico(state.mecanismo), pauta: '', fuente: '', prom: h.prom || '' });
+      continue;
+    }
     const res = state.testResults?.[id] || {};
-    const items = (h.tests || []).map((t, idx) => RESULTADO[res[idx]] ? {
+    // El «Gesto testigo (①) y medida objetiva (②)» no es una prueba y no
+    // guarda ningún valor: solo daba una frase vacía («se registraron gestos
+    // testigo…»). No va al prompt.
+    const items = (h.tests || []).map((t, idx) => !RESULTADO[res[idx]] || /^Gesto testigo/.test(t.name) ? null : {
       test: t.name, resultado: RESULTADO[res[idx]],
       ...(t.cluster && h.clusters?.[t.cluster] ? { cluster: h.clusters[t.cluster].nombre } : {}),
       ...(t.tipo === 'pronostico' ? { pronostico: true } : {}),
-    } : null).filter(Boolean);
-    if (items.length) tests.push({ hipotesis: h.name, items });
+    }).filter(Boolean);
+    if (items.length) tests.push({ hipotesis: h.name, ...(h.dosis === DOSIS_DERIVAR ? { derivar: true } : {}), items });
     pautas.push({
       hipotesis: h.name,
       derivar: h.dosis === DOSIS_DERIVAR,
@@ -321,6 +332,9 @@ export function construirAmpliado() {
     irritabilidad: state.irritabilidadDirecta ? null : (state.irritabilidad || null),
     psico: state.riesgoPsico === 'Alto' ? PSICO.filter(([k]) => state[k]).map(([k, q]) => ({ q, a: state[k] })) : [],
     criterios, arbol, tests, pautas,
+    // Formulario previo agrupado por sección del informe y sin «No sé»
+    // (sustituye en el prompt al `fp` del payload)
+    formulario: resumenFormularioIA(),
   };
 }
 
@@ -356,6 +370,7 @@ function iaDescartarInforme() {
 
 // ── Audio de la sesión ───────────────────────────────────────────────────────
 // Se graba desde la cabecera (grabadora.js); aquí se ve, se adjunta o se quita.
+// Una grabación en curso no se para aquí: «Generar informe» la cierra y la usa.
 function pintarAudio() {
   const el = $('iaAudio');
   const g = estadoGrabacion();
@@ -367,12 +382,7 @@ function pintarAudio() {
         <span class="ia-crono" id="iaCrono">${fmtTiempo(g.duracionMs)}</span>
       </div>
       ${g.sinSenal ? '<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>El micrófono no está dando señal.</div></div>' : ''}
-      <div class="ia-acciones">
-        <button class="phase5-copy-btn" onclick="iaPararGrabacion()">■ Parar y usar</button>
-        ${g.fase === 'pausado'
-          ? '<button class="phase5-copy-btn" onclick="iaReanudarGrabacion()">▶ Reanudar</button>'
-          : '<button class="phase5-copy-btn" onclick="iaPausarGrabacion()">⏸ Pausa</button>'}
-      </div>`;
+      <div class="ia-audio-pista">Al generar el informe, la grabación se cierra y se usa. Para pausarla o reanudarla, toca la píldora de la cabecera.</div>`;
     return;
   }
   const audio = audioActual();
@@ -386,7 +396,7 @@ function pintarAudio() {
       <div class="ia-audio-info">${etiqueta} · ${fmtMB(audio.blob.size)}${audio.recuperado ? ' <span class="ia-recuperado">(recuperado)</span>' : ''}</div>
       <audio class="ia-reproductor" controls preload="metadata" src="${audio.url}"></audio>
       ${grande ? `<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>El audio supera los 25 MB que admite la transcripción. Usa un archivo más corto o comprimido.</div></div>` : ''}
-      <div class="ia-acciones"><button class="phase5-copy-btn ia-btn-descartar" onclick="iaQuitarAudio()">Quitar audio</button></div>`;
+      <div class="ia-acciones"><button class="phase5-copy-btn ia-btn-descartar" onclick="iaQuitarAudio()">Descartar audio</button></div>`;
     return;
   }
   el.innerHTML = `
@@ -403,10 +413,6 @@ function actualizarCronoTarjeta() {
   if (c) c.textContent = fmtTiempo(estadoGrabacion().duracionMs);
 }
 
-function iaPararGrabacion() { parar(); }
-function iaPausarGrabacion() { pausar(); }
-function iaReanudarGrabacion() { reanudar(); }
-
 async function iaArchivo(input) {
   const file = input.files?.[0];
   input.value = '';
@@ -414,17 +420,17 @@ async function iaArchivo(input) {
 }
 
 function iaQuitarAudio() {
-  showConfirmBanner('Quitar audio', 'Se borrará el audio de la sesión. El informe podrá generarse solo con los datos de la valoración.', 'Quitar', quitarAudio);
+  showConfirmBanner('Descartar audio', 'Se borrará el audio de la sesión. El informe podrá generarse solo con los datos de la valoración.', 'Descartar', quitarAudio);
 }
 
 // ── Consentimiento y botón de generar ────────────────────────────────────────
 function consentido() {
-  return _consentido && _audioConsentido === audioActual();
+  return _consentido && _audioConsentido === idAudio();
 }
 
 function pintarConsent() {
   const el = $('iaConsent');
-  if (!audioActual() || estadoGrabacion().fase !== 'parado') { el.innerHTML = ''; return; }
+  if (idAudio() === null) { el.innerHTML = ''; return; }
   el.innerHTML = `
     <label class="ia-consent">
       <input type="checkbox" ${consentido() ? 'checked' : ''} onchange="iaConsent(this.checked)">
@@ -432,15 +438,14 @@ function pintarConsent() {
     </label>`;
 }
 
-function iaConsent(v) { _consentido = !!v; _audioConsentido = audioActual(); pintarBoton(); }
+function iaConsent(v) { _consentido = !!v; _audioConsentido = idAudio(); pintarBoton(); }
 
 function motivoBloqueo() {
   const audio = audioActual();
   if (estadoLicencia() !== 'real') return 'licencia';
-  if (_gen) return 'generando';
-  if (estadoGrabacion().fase !== 'parado') return 'Para la grabación antes de generar el informe.';
+  if (_gen || _cerrando) return 'generando';
   if (audio && audio.blob.size > MAX_AUDIO_BYTES) return 'El audio supera los 25 MB.';
-  if (audio && !consentido()) return 'Marca el consentimiento del paciente para enviar el audio.';
+  if (idAudio() !== null && !consentido()) return 'Marca el consentimiento del paciente para enviar el audio.';
   if (!_turnstileToken) return _turnstileFallo ? 'turnstile' : 'Completa la verificación de seguridad.';
   return '';
 }
@@ -549,6 +554,13 @@ class ModoDemo extends Error {}
 
 async function iaGenerar() {
   if (motivoBloqueo()) { pintarBoton(); return; }
+  // Generar es el final de la consulta: la grabación en curso se cierra aquí.
+  if (estadoGrabacion().fase !== 'parado') {
+    _cerrando = true;
+    pintarBoton();
+    try { await cerrarGrabacion(); } finally { _cerrando = false; }
+    if (audioActual()?.blob.size > MAX_AUDIO_BYTES) { pintar(); return; }
+  }
   saveSession();   // vuelca al estado lo último escrito (notas del plan, etc.)
   const datos = buildPhysiQPayload();
   const ampliado = construirAmpliado();
@@ -598,7 +610,7 @@ async function iaGenerar() {
       conAudio,
       plantilla,
       huella: huellaPayload({ ...datos, _ampliado: ampliado }),
-      datos: { p: datos.p, d: datos.d, r: datos.r, ed: ampliado.edad },
+      datos: { p: datos.p, d: datos.d, r: datos.r, la: datos.la, ed: ampliado.edad },
     };
     saveSession();
     // Con el informe guardado, el audio ya no hace falta en el dispositivo.
@@ -670,6 +682,6 @@ export function resetInformeIA() {
 // Exposed for inline onclick/onchange attributes in the HTML strings above.
 Object.assign(window, {
   iaMostrarClave, iaGuardarClave, iaReintentarLicencia,
-  iaPararGrabacion, iaPausarGrabacion, iaReanudarGrabacion, iaArchivo, iaQuitarAudio, iaConsent,
+  iaArchivo, iaQuitarAudio, iaConsent,
   iaGenerar, iaCancelar, iaCompartir, iaCopiar, iaDescartarInforme, iaPlantilla,
 });

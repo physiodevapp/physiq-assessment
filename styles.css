@@ -493,6 +493,16 @@
     flex-wrap: wrap;
     gap: 8px;
   }
+  /* Lado afectado (fase 2, bajo la región): botones a partes iguales que
+     pasan a dos filas en pantallas estrechas en vez de desbordar. */
+  .lado-wrap { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .lado-wrap[hidden] { display: none; }
+  .lado-opcional { text-transform: none; letter-spacing: 0; }
+  .lado-group .option-btn { flex: 1 1 calc(25% - 8px); min-width: 72px; min-height: 40px; text-align: center; padding: 8px 6px; }
+  /* Con «Central» (columna) son cuatro: en pantalla estrecha, 2×2 en vez de 3 + 1 */
+  @media (max-width: 420px) {
+    .lado-group:has(.lado-central:not([hidden])) .option-btn { flex-basis: calc(50% - 4px); }
+  }
   .option-btn {
     background: var(--surface2);
     border: 1px solid var(--border2);
@@ -2067,6 +2077,15 @@
   .session-panel-clear{display:none;background:none;border:1px solid var(--red);border-radius:8px;padding:8px;cursor:pointer;color:var(--red);flex-shrink:0;align-items:center;justify-content:center;align-self:stretch;transition:opacity 0.2s;}
   .session-panel-clear:hover{opacity:0.7;}
   .session-panel.has-session .session-panel-clear{display:flex;}
+  /* Exportar / importar: dos botones a partes iguales, sin desbordar a 320 px */
+  .session-io{display:flex;gap:8px;margin-top:14px;}
+  .session-io-btn{flex:1 1 0;min-width:0;min-height:40px;background:none;border:1px solid var(--border2);border-radius:8px;padding:8px;color:var(--text2);font-family:inherit;font-size:0.82rem;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:border-color 0.2s,color 0.2s;}
+  .session-io-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
+  .session-io-btn:disabled{opacity:0.45;cursor:default;}
+  .session-io-nota{margin-top:8px;font-size:0.72rem;line-height:1.4;color:var(--text3);}
+  .session-version{margin-top:14px;padding-top:10px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text3);display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;}
+  .session-version-nueva{color:var(--orange);}
+  .session-version-btn{background:none;border:1px solid var(--accent);border-radius:6px;padding:2px 8px;color:var(--accent);font-family:inherit;font-size:inherit;cursor:pointer;}
   .in-hub .theme-btn{display:none;}
   body:not(.in-hub) .btn-translate{display:none;}
   .session-panel-handle{display:none;width:36px;height:4px;background:var(--border2);border-radius:2px;margin:0 auto 14px;touch-action:none;}
@@ -2187,11 +2206,15 @@
 
 /* Fase 4: «Resultados sin confirmar» solo cuando el árbol está completo */
 #btnGoConfirm:disabled ~ #btnSinConfirmar { opacity: 0.4; pointer-events: none; }
-.btn-sc-short { display: none; }
+.btn-sc-short, .btn-hip-short { display: none; }
 @media (max-width: 768px) {
   .modo-breve .nav-buttons #btnSinConfirmar { flex: 1; }
   .btn-sc-full { display: none; }
   .btn-sc-short { display: inline; }
+  /* Con tres botones (solo en breve), «Continuar → Hipótesis» ocupaba dos
+     líneas: se acorta como «Sin tests →», con la flecha al final. */
+  .modo-breve .btn-hip-full { display: none; }
+  .modo-breve .btn-hip-short { display: inline; }
 }
 
 /* Fase 2: embudo por sistema */
@@ -2463,11 +2486,34 @@
 
 /* ── Grabación de la sesión en la cabecera (grabadora.js) ──────────────────
    Reutiliza .btn-record (estados recording/paused/recorded). Visible solo
-   fuera del hub y con licencia, o mientras haya una grabación en marcha. */
-.grab-wrap { position: relative; display: none; }
+   fuera del hub y con licencia, o mientras haya una grabación en marcha.
+   Toque = pausa/reanudar; pulsación larga = descartar (grab-manteniendo
+   rellena la píldora mientras se mantiene); con ratón, la papelera. */
+.grab-wrap { position: relative; display: none; align-items: center; gap: 4px; }
 body.ia-licencia:not(.in-hub) .grab-wrap,
-body.grab-activa:not(.in-hub) .grab-wrap { display: block; }
-.grab-btn { padding: 5px 8px; position: relative; color: var(--text3); }
+body.grab-activa:not(.in-hub) .grab-wrap { display: flex; }
+.grab-btn {
+  padding: 5px 8px; position: relative; overflow: hidden; color: var(--text3);
+  -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: manipulation;
+}
+.grab-btn::after {
+  content: ''; position: absolute; inset: 0; background: var(--red); opacity: 0.22;
+  transform: scaleX(0); transform-origin: left; pointer-events: none;
+}
+.grab-btn.grab-manteniendo::after { transform: scaleX(1); transition: transform 0.6s linear; }
+/* La pausa tiene que verse: una pausa sin querer que pase desapercibida deja
+   parte de la consulta sin grabar. */
+.grab-btn.grab-pildora.paused { background: color-mix(in srgb, var(--orange) 14%, transparent); }
+.grab-btn.paused .grab-pausa { animation: grabParpadeo 1.4s ease-in-out infinite; }
+@keyframes grabParpadeo { 50% { opacity: 0.25; } }
+@media (prefers-reduced-motion: reduce) {
+  .grab-btn.paused .grab-pausa { animation: none; }
+  .grab-btn.grab-manteniendo::after { transition: none; }
+}
+.grab-desc { display: none; padding: 5px 7px; color: var(--text3); }
+@media (hover: hover) and (pointer: fine) {
+  body.grab-activa .grab-desc { display: flex; }
+}
 .grab-btn.grab-pildora { font-variant-numeric: tabular-nums; }
 .grab-btn.grab-aviso { border-color: var(--orange); color: var(--orange); }
 .grab-crono { font-family: 'DM Mono', monospace; }
@@ -2512,3 +2558,46 @@ body.grab-activa:not(.in-hub) .grab-wrap { display: block; }
 .ia-error { margin-top: 0.8rem; }
 .ia-error-salida { margin-top: 6px; }
 .ia-error-original { margin-top: 6px; font-family: 'DM Mono', monospace; font-size: 0.7rem; opacity: 0.75; overflow-wrap: anywhere; }
+
+/* ── Paciente posquirúrgico (docs/posquirurgico.md) ───────────
+   Todo lo que solo existe con mecanismo Post-quirúrgico cuelga de
+   body.posquirurgico (_pintarCirugiaUI en app.js), como .modo-breve. */
+.solo-posq { display: none; }
+body.posquirurgico .solo-posq { display: block; }
+.cir-semanas:not(:empty) { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); margin: -4px 0 12px; }
+.cir-complicaciones { flex-wrap: wrap; }
+.cir-complicaciones .option-btn { width: auto; flex: 0 0 auto; padding: 8px 12px; font-size: 0.8rem; min-height: 40px; }
+.cir-comp-otra { margin-top: 8px; }
+.nota-posq { margin: 6px 0 2px; font-size: 0.78rem; line-height: 1.45; color: var(--text2); border-left: 2px solid var(--accent); padding-left: 8px; }
+.dx-tratada { display: flex; gap: 10px; align-items: flex-start; margin: 0 0 1rem; padding: 10px 12px; font-size: 0.85rem; color: var(--text); line-height: 1.45; cursor: pointer; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius); }
+.dx-tratada input { margin-top: 3px; accent-color: var(--accent); flex-shrink: 0; }
+.dx-tratada-ayuda { display: block; font-size: 0.75rem; color: var(--text3); margin-top: 2px; }
+.dx-tratada-tests > summary { cursor: pointer; font-size: 0.8rem; color: var(--text3); margin-bottom: 8px; }
+
+/* Aviso «Hay una versión nueva» (comprobarVersion, app.js): arriba, bajo la
+   cabecera y la barra de fases fijas (abajo están los botones de navegación
+   fijos del móvil). */
+.version-aviso {
+  position: fixed; top: 125px; left: 50%; transform: translateX(-50%);
+  z-index: 150; display: flex; align-items: center; gap: 10px;
+  max-width: calc(100vw - 32px);
+  background: var(--surface3); border: 1px solid var(--accent); border-radius: 10px;
+  padding: 6px 6px 6px 14px; box-shadow: var(--modal-shadow);
+  font-size: 0.8rem; color: var(--text); animation: versionAvisoIn 0.25s ease;
+}
+@keyframes versionAvisoIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.version-aviso-texto { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.version-aviso-btn {
+  background: var(--accent); color: var(--bg); border: none; border-radius: 7px;
+  padding: 6px 12px; font-family: inherit; font-size: 0.8rem; font-weight: 600; cursor: pointer; flex-shrink: 0;
+}
+.version-aviso-cerrar {
+  background: none; border: none; color: var(--text3); font-size: 1.1rem; line-height: 1;
+  padding: 4px 6px; cursor: pointer; flex-shrink: 0;
+}
+@media (max-width: 768px) { .version-aviso { top: 104px; } }
+@media (max-width: 480px) { .version-aviso { top: 98px; } }
+@media (max-height: 500px) and (max-width: 900px) { .version-aviso { top: 91px; } }

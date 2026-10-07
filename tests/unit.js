@@ -192,6 +192,8 @@ const BASE_STATE = {
   hypothesisScores: { h2: { totalLR: 3.7, label: '🟠 Peso moderado (LR× 3.7)', colorClass: 'hyp-orange' } },
   testResults:      { h2: { 0: 'pos', 1: 'neg' } },
   planNotes:        { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' },
+  cirugia:          { intervencion: '', fecha: '', semanasAprox: null, protocolo: '', restricciones: '', complicaciones: [], complicacionOtra: '' },
+  derivacionResuelta: {},
 };
 
 function withState(patch, fn) {
@@ -293,7 +295,7 @@ test('region not set → []', () => {
 test('affirmative answer for known region returns non-empty array', () => {
   // Find a real question id from the hombro screening data
   const sis = SYSTEMIC_SCREENING['hombro'];
-  const firstQid = sis?.sistemas?.[0]?.preguntas?.[0]?.id || null;
+  const firstQid = sis?.sistemas?.find(x => !x.soloPosquirurgico)?.preguntas?.[0]?.id || null;   // el posquirúrgico solo se ve con su mecanismo
   if (firstQid) {
     withState({ sistemicoAnswers: { [firstQid]: 'SI' }, region: 'hombro' }, () => {
       const texts = getSistemicoAffirmativeTexts();
@@ -883,9 +885,13 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
   });
 });
 
-test('cadera: fractura de estrés del cuello femoral, artritis séptica y torsión testicular son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.cadera.sistemas.flatMap(s => s.preguntas);
-  ['ca_os1', 'ca_in1', 'ca_u3'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+test('cadera: TVP, torsión testicular, fractura de estrés del cuello femoral y artritis séptica son urgencias (y ninguna otra)', () => {
+  const qs = SYSTEMIC_SCREENING.cadera.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_v2']);
+  // ca_v2 junta TVP y calambres: la urgencia dice que los calambres solos no lo son,
+  // y deriva hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8)
+  assert.match(qs.find(q => q.id === 'ca_v2').urgencia, /no los calambres solos/);
+  assert.match(qs.find(q => q.id === 'ca_v2').urgencia, /1 o menos, dímero D/);
   withState({ region: 'cadera', sistemicoAnswers: { ca_os1: 'SI', ca_in1: 'NO', ca_u3: 'NO' } }, () => {
     assert.equal(buildPhysiQPayload().ur.length, 1);
   });
@@ -938,7 +944,7 @@ test('ca10: thigh thrust y compresión puntúan solos (Laslett 2005) y el cluste
 });
 
 test('cervical: disección, IVB, fractura tras traumatismo y cefalea de alarma son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.cervical.sistemas.flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
   withState({ region: 'cervical', sistemicoAnswers: { cv_ar1: 'NO', cv_ar2: 'SI', cv_ar3: 'NO', cv_ar4: 'NO' } }, () => {
     assert.equal(buildPhysiQPayload().ur.length, 1);
@@ -964,7 +970,7 @@ test('cervical: el FRT puntúa solo positivo (un negativo no descarta una cervic
 });
 
 test('rodilla: bursa séptica, aparato extensor, luxación y neurovascular son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.rodilla.sistemas.flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['r1', 'r_v2', 'r_i3', 'ro_t2', 'ro_t3', 'ro_t4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
 });
 
@@ -990,7 +996,7 @@ test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y de
 });
 
 test('hombro: urgencias: h_g1 (ectópico) y h_t1 (fractura o luxación); la bisagra reparte congelado, artrosis GH y luxación/fractura', () => {
-  const qs = SYSTEMIC_SCREENING.hombro.sistemas.flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.hombro.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   assert.equal(SYSTEMIC_SCREENING.hombro.urgencia, undefined);
   assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['h_g1', 'h_t1']);
   ['h_t1', 'h_i1', 'h_n1'].forEach(id => assert.ok(qs.find(q => q.id === id), id));
@@ -1053,8 +1059,10 @@ test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan'
 });
 
 test('tobillo y pie: cinco P, artritis infecciosa y debilidad simétrica con arreflexia son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['tp_t1', 'tp_i1', 'tp_n1'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+  // TVP: derivar hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8), igual que ca_v2 de cadera
+  assert.match(qs.find(q => q.id === 'tp_v2').urgencia, /derivar hoy.*1 o menos, dímero D/);
 });
 
 test('tobillo y pie: solo puntúan Thompson, hueco palpable, Ottawa (LR−) y Molloy', () => {
@@ -1140,7 +1148,7 @@ test('hipótesis de derivación: texto fijo, sin fuente, y solo las decididas', 
 // ── Modo breve ────────────────────────────────────────────────────────────────
 console.log('\nmodo breve');
 
-const LUMBAR_SIS = SYSTEMIC_SCREENING.lumbar.sistemas;
+const LUMBAR_SIS = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.soloPosquirurgico);   // fuera del posquirúrgico no se ve
 
 test('modo completo → sin pendientes, md "completo" y sin campo pe', () => {
   withState({}, () => {
@@ -1327,7 +1335,7 @@ test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar»
 });
 
 test('razonamiento: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
-  const muestra = preguntasConRazon.find(p => p.region !== 'comun' && SYSTEMIC_SCREENING[p.region]);
+  const muestra = preguntasConRazon.find(p => p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico);
   if (!muestra) return;   // aún no hay ninguna pregunta con razonamiento
   const { region, q, r } = muestra;
   withState({ region, sistemicoAnswers: { [q.id]: 'SI' }, sistemicoAlerta: true }, () => {
@@ -1560,6 +1568,136 @@ test('plantillas: narrativo y ficha breve, por defecto según el tipo de consult
   assert.equal(IN.informeTruncado('## PRESENTACIÓN CLÍNICA\nA.\n## HALLAZGOS Y CODIFICACIÓN CIF\nB.', 'breve'), true);
 });
 
+test('prompt: el bloque de datos no lleva puntuaciones, notas del plan vacías ni nombres que inviten a citarlo', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', br: [], sq: [], dv: ['Sospecha de fractura: derivar'],
+    h: [{ name: 'Síndrome subacromial', sc: '🟠 Peso moderado (LR× 2.0) · 2/2 hallazgos compatibles' }],
+    pn: { variableControl: '', ventanaRecuperacion: '24 h', anclajeHabito: '  ' } };
+  const amp = { edad: 52, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [],
+    arbol: [{ pregunta: '¿Traumatismo previo?', respuesta: 'SÍ' }], tests: [], pautas: [] };
+  const ctx = IN.contextoValoracion(d, r => r, amp);
+  assert.ok(ctx.includes('Síndrome subacromial'));
+  for (const x of ['LR×', 'Peso moderado', 'hallazgos compatibles', 'Variable de control', 'Anclaje de hábito', 'árbol', 'Razonamiento clínico', 'Formulario previo'])
+    assert.ok(!ctx.includes(x), `sin «${x}»`);
+  assert.ok(ctx.includes('Ventana de recuperación: 24 h'), 'las notas con texto sí van');
+  assert.ok(ctx.includes('Recorrido de la exploración'));
+  assert.ok(!IN.contextoValoracion({ ...d, pn: {} }, r => r, null).includes('Notas del plan'), 'sin notas, sin bloque');
+});
+
+test('prompt: etiquetas internas limpias, IMC redondeado y comprobaciones de «Derivar»', () => {
+  assert.equal(IN.limpiarEtiqueta('Luxación Bloqueada o Fractura (→ Rx)'), 'Luxación Bloqueada o Fractura');
+  assert.equal(IN.limpiarEtiqueta('SÍ — Traumatismo previo → luxación bloqueada o fractura → Rx'), 'SÍ — Traumatismo previo — orienta a: luxación bloqueada o fractura; Rx');
+  assert.equal(IN.limpiarEtiqueta('Gesto testigo (①) y medida objetiva (②)'), 'Gesto testigo y medida objetiva');
+  assert.equal(IN.limpiarEtiqueta('Arco doloroso'), 'Arco doloroso');
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', br: [], sq: [], pn: {}, an: { talla: 171.2, peso: 64, imc: 21.83596820683029 },
+    h: [{ name: 'Luxación Bloqueada o Fractura (→ Rx)' }] };
+  const amp = { edad: null, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [], arbol: [], pautas: [],
+    tests: [
+      { hipotesis: 'Luxación Bloqueada o Fractura (→ Rx)', derivar: true, items: [{ test: 'Fractura', resultado: 'negativo' }] },
+      { hipotesis: 'Síndrome subacromial', items: [{ test: 'Arco doloroso', resultado: 'positivo' }] },
+    ] };
+  const ctx = IN.contextoValoracion(d, r => r, amp);
+  assert.ok(ctx.includes('IMC 21.8') && !ctx.includes('21.835'), 'IMC con un decimal');
+  assert.ok(!ctx.includes('(→') && !ctx.includes('①'), 'sin etiquetas internas');
+  assert.match(ctx, /Luxación Bloqueada o Fractura — comprobaciones de una hipótesis que se deriva: .*un resultado negativo no la descarta/);
+});
+
+test('construirAmpliado: el gesto testigo no va y las hipótesis «Derivar» se marcan', () => {
+  withState({ region: 'hombro', activeHypotheses: ['h11', 'h2'],
+    testResults: { h11: { 0: 'neg' }, h2: { 0: 'pos', 5: 'pos' } } }, () => {
+    const a = IA.construirAmpliado();
+    const h11 = a.tests.find(t => t.hipotesis === HYPOTHESES.h11.name);
+    const h2 = a.tests.find(t => t.hipotesis === HYPOTHESES.h2.name);
+    assert.equal(h11.derivar, true);
+    assert.ok(!('derivar' in h2));
+    assert.ok(/^Gesto testigo/.test(HYPOTHESES.h2.tests[5].name), 'h2[5] sigue siendo el gesto testigo');
+    assert.ok(!h2.items.some(i => /^Gesto testigo/.test(i.test)), 'el gesto testigo no va al prompt (no lleva valor)');
+    assert.equal(h2.items.length, 1);
+  });
+});
+
+const FM = await import('../formulario.js');
+const ESQUEMAS_FP = [['comun', (await import('../formularios/comun.js')).default],
+  ...await Promise.all(FM.REGIONES_CON_FORMULARIO.map(async r => [r, (await import(`../formularios/${r}.js`)).default]))];
+await FM.cargarEsquemaRegion('hombro');
+test('formulario para la IA: todo item lleva un grupo `ia` válido', () => {
+  const esquemas = ESQUEMAS_FP;
+  for (const [r, e] of esquemas) for (const sec of e.secciones) for (const it of sec.items)
+    assert.ok(FM.GRUPOS_IA.includes(it.ia), `${r}.${it.id}: ia «${it.ia}»`);
+  assert.deepEqual(IN.GRUPOS_FORMULARIO.map(([g]) => g), FM.GRUPOS_IA, 'mismos grupos en formulario.js y en el prompt');
+});
+
+test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de matriz)', () => {
+  withState({ region: 'hombro', formularioPrevio: { comun: { evolucion: 'No sabría decir', despierta: 'Sí' }, regiones: { hombro: {
+    provoca: { elevar: 'Sí', cruzar: 'No sé' }, nota: { fuerza: 'Sí', crujidos: 'No' },
+    antecedentes: { tiroides: 'No sé' }, actividades: ['Nadar', 'No sabría decir'], lanza: 'No sabría decir' } } } }, () => {
+    const f = FM.resumenFormularioIA();
+    const txt = JSON.stringify(f);
+    assert.ok(!/No sé|No sabría decir/.test(txt), 'sin «No sé»');
+    assert.ok(!f.some(x => /tiroides|Si lanza|Desde que empezó/.test(x.q + x.a)), 'sin items que solo tenían «No sé»');
+    const g = q => f.find(x => x.q.includes(q))?.g;
+    assert.equal(g('¿Le aparece o le aumenta'), 'actividades');
+    assert.equal(g('¿Nota alguna'), 'sintomas');
+    assert.equal(g('¿Le despierta'), 'sintomas');
+    assert.equal(g('En el trabajo'), 'contexto');
+    const bloque = IN.bloqueFormulario(f);
+    assert.ok(bloque.indexOf('Síntomas que refiere') < bloque.indexOf('Actividades y posturas'), 'grupos en orden');
+    assert.match(bloque, /van en Limitaciones en las Actividades\):\n    · ¿Le aparece o le aumenta el dolor al…\? → Levantar el brazo, por delante o por un lado: Sí\n/);
+    const amp = IA.construirAmpliado();
+    assert.deepEqual(amp.formulario, f);
+    const ctx = IN.contextoValoracion(buildPhysiQPayload(), r => r, amp);
+    assert.ok(ctx.includes('agrupado por la sección del informe'));
+    assert.ok(!ctx.includes('(pregunta → respuesta):\n  · '), 'con datos ampliados no va el fp plano');
+  });
+});
+
+test('prompt: «No sé» nunca como negación, sin negativos inventados, cada dato en su sección', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.match(p, /«No sé» o «No sabría decir»: no las menciones de ninguna forma; ni como negación/);
+    assert.match(p, /No afirmes negativos que no estén en los datos/);
+    assert.match(p, /no la apoya|no la apoyan/, 'coherencia: «Derivar» con comprobaciones negativas');
+  }
+  const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(narr, /La intensidad y la irritabilidad van en Dolor/);
+  assert.match(narr, /Las actividades que provocan el dolor van en Limitaciones/);
+  assert.match(narr, /se dice aquí y solo aquí/);
+  assert.match(narr, /sin suponer cómo podría afectarle/);
+  assert.match(narr, /por falta de mejoría \(aquí y solo aquí\)/);
+  assert.ok(!narr.includes('plan y pauta, y al final el seguimiento'), 'en el narrativo el seguimiento tiene su propia sección');
+});
+
+test('prompt: sin fisiopatología inventada, ejemplos negativos en Limitaciones, criterio de reevaluación solo en Seguimiento', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.match(p, /No añadas causas, mecanismos, secuelas ni fases de curación o de recuperación que no estén en los datos/);
+    assert.match(p, /«secuela esperada»/);
+    assert.match(p, /Si hay protocolo \(escrito o verbal\), sigue sus restricciones tal como constan: no pidas confirmarlo/);
+    assert.match(p, /Cada recomendación del plan aparece una sola vez/);
+  }
+  const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(narr, /Si aquí aparece fuerza, crujidos, bloqueos.*está mal/);
+  assert.match(narr, /ni frases para decir que algo no se hizo, no se midió o «no se dispone de…»/);
+  assert.match(narr, /va en Seguimiento, aunque venga dentro del texto de la pauta/);
+});
+
+test('prompt: sin datos personales deducidos, sin citar las notas del plan, derivación descartada sin mencionar', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.match(p, /edad, sexo y lado afectado \(derecho, izquierdo\) solo si constan en los datos; nunca los deduzcas/);
+    assert.match(p, /ni como desconocimiento \(«desconoce si…»\)/);
+    assert.match(p, /no escribas que «descartan» nada/);
+    assert.match(p, /«notas del plan» ni el nombre de sus campos/);
+    assert.match(p, /si indica que no procede .*no menciones esa derivación en ningún punto/);
+  }
+  const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(narr, /NO escribas el nombre del paciente ni la fecha en ningún punto del texto/);
+  assert.match(narr, /los síntomas que refiere o niega van en Dolor/);
+  assert.match(narr, /sin nombrar los tests/);
+});
+
 test('prompt: reglas de la revisión con informes reales, en las dos plantillas', () => {
   const d = { p: 'X', r: 'lumbar', d: '01/01/2026', h: [], br: [], sq: [], pn: {} };
   for (const conAudio of [true, false]) {
@@ -1574,9 +1712,21 @@ test('prompt: reglas de la revisión con informes reales, en las dos plantillas'
       assert.match(p, /Reglas pronósticas.*nunca las uses para reforzar ni descartar/, `${nombre}: regla pronóstica`);
       assert.match(p, /Derivaciones:.*UNA sola vez, al principio/, `${nombre}: derivación una vez, al principio del plan`);
       assert.match(p, /no decidas por tu cuenta si se espera/, `${nombre}: derivación no urgente sin decidir el momento`);
-      assert.match(p, /mejor omitir un código que poner uno dudoso/, `${nombre}: códigos CIF limitados`);
+      assert.match(p, /Derivar».*aunque sus tests clínicos hayan salido negativos/, `${nombre}: «Derivar» se mantiene con tests negativos`);
+      assert.match(p, /no cites cocientes de probabilidad/, `${nombre}: sin jerga de puntuación`);
+      assert.match(p, /No crees secciones ni subsecciones/, `${nombre}: sin secciones inventadas`);
+      assert.match(p, /no interpretes ni justifiques la discrepancia/, `${nombre}: discrepancias sin interpretar`);
     }
   }
+  // Códigos CIF: limitados en la ficha (tiene sección propia); el narrativo, sin códigos
+  const ficha = IN.PLANTILLAS.breve.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(ficha, /mejor omitir un código que poner uno dudoso/, 'ficha: códigos CIF limitados');
+  assert.match(narr, /sin códigos alfanuméricos/, 'narrativo: sin códigos CIF');
+  // Narrativo de valoración inicial: fuera las subsecciones que solo producían «no se realizó…»
+  for (const x of ['Función Cardiorrespiratoria', 'Control Motor', '#### Equilibrio', '6MWT', 'EQ-5D', 'Limitación Funcional Global'])
+    assert.ok(!narr.includes(x), `narrativo: sin «${x}»`);
+  assert.match(narr, /«\[solo si…\]» se omiten por completo, título incluido/);
   // El tope de tokens solo evita cortes: holgado respecto a las palabras pedidas (~1,6 tokens/palabra en español con códigos)
   for (const pl of Object.values(IN.PLANTILLAS)) assert.ok(pl.maxTokens >= pl.palabras * 3, `${pl.nombre}: tope de tokens holgado`);
 });
@@ -1703,6 +1853,354 @@ console.log('\nlicencia del informe narrativo (motivo del error)');
     });
   }
   test('licencia: con respuesta válida el estado es el del worker', () => assert.equal(real.estado, 'real'));
+}
+
+// ── Lado afectado (fase 2) ─────────────────────────────────────────────────────
+console.log('\nlado afectado');
+const IN_INFORME = await import('../lib/informe-narrativo.js');
+test('lado: viaja en el payload (la) y sale en 📋 Notas, 📄 Informe y el informe con IA', () => {
+  withState({ region: 'hombro', lado: 'Derecho' }, () => {
+    const d = buildPhysiQPayload();
+    assert.equal(d.la, 'Derecho');
+    assert.match(buildContextSummaryText(), /Región: Hombro \(derecho\)/);
+    assert.match(buildInformeFisioterapiaText(), /Región valorada: Hombro \(derecho\)/);
+    const IN2 = IN_INFORME;
+    assert.match(IN2.buildNarrativePrompt(d, { conAudio: false, nombreRegion: r => r.charAt(0).toUpperCase() + r.slice(1) }), /Región valorada: Hombro \(derecho\)/);
+    assert.match(IN2.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'hombro', la: 'Derecho' }, r => 'Hombro'), /Región valorada: Hombro \(derecho\)/);
+  });
+  withState({ region: 'hombro', lado: '' }, () => {
+    assert.equal(buildPhysiQPayload().la, '');
+    assert.match(buildInformeFisioterapiaText(), /Región valorada: Hombro\n/);
+  });
+});
+
+test('lado: el reinicio lo borra y «Central» solo existe en la columna', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  assert.match(html, /id="ladoWrap" hidden/);
+  for (const v of ['Derecho', 'Izquierdo', 'Bilateral', 'Central']) assert.ok(html.includes(`selectOption('lado', this, '${v}')`), v);
+  const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  const reset = src.slice(src.indexOf('function _softResetApp()'), src.indexOf('function _softResetApp()') + 3000);
+  assert.ok(reset.includes("state.lado = '';"), '_softResetApp borra el lado');
+  assert.match(src, /const REGIONES_COLUMNA = \['cervical', 'lumbar'\]/);
+  assert.match(src, /if \(state.lado === 'Central' && !columna\) state.lado = '';/);
+});
+
+// ── Exportar / importar la valoración (lib/valoracion-json.js) ────────────────
+console.log('\nexportar / importar valoración');
+{
+  const VJ = await import('../lib/valoracion-json.js');
+  const regiones = Object.keys(SYSTEMIC_SCREENING);
+  const ahora = new Date(2026, 9, 6, 12, 0);
+  const base = { ...JSON.parse(JSON.stringify(state)), patient: 'José Pérez', region: 'hombro', maxVisitedIdx: 5, currentPhase: 5,
+    treeAnswers: { h_step1: 'trauma' }, testResults: { h11: { 0: 'neg' } }, planNotes: { variableControl: 'ROM', ventanaRecuperacion: '', anclajeHabito: '' },
+    formularioPrevio: { comun: { desde_cuando: 'hace mes y medio' }, regiones: { hombro: { luxacion: 'No' } } },
+    informeIA: { texto: 'informe viejo', datos: {} } };
+
+  test('exportar → importar devuelve el mismo estado, sin el informe con IA', () => {
+    const texto = JSON.stringify(VJ.exportarValoracion(base, ahora));
+    const r = VJ.leerImportacion(texto, regiones);
+    assert.ok(r.ok, r.error);
+    const { informeIA, ...esperado } = base;
+    assert.deepEqual(r.assessmentState, esperado);
+    assert.equal(r.paciente, 'José Pérez');
+    assert.ok(!('informeIA' in r.assessmentState) && !texto.includes('informe viejo'));
+  });
+
+  test('exportar: encabezado del archivo y nombre sin acentos', () => {
+    const e = VJ.exportarValoracion(base, ahora);
+    assert.equal(e.app, 'physiq-assessment');
+    assert.equal(e.tipo, 'valoracion');
+    assert.equal(e.version, VJ.VERSION);
+    assert.equal(VJ.nombreArchivo('José Pérez', ahora), 'valoracion-jose-perez-2026-10-06.json');
+    assert.equal(VJ.nombreArchivo('', ahora), 'valoracion-sin-nombre-2026-10-06.json');
+    assert.equal(VJ.hayValoracion({ maxVisitedIdx: 0 }), false);
+    assert.equal(VJ.hayValoracion(base), true);
+  });
+
+  test('importar: rechaza archivos que no son una valoración restaurable, sin lanzar', () => {
+    const conEstado = cambios => JSON.stringify({ ...VJ.exportarValoracion(base, ahora), ...cambios });
+    const conAS = cambios => JSON.stringify({ ...VJ.exportarValoracion(base, ahora), assessmentState: { ...base, ...cambios } });
+    const casos = [
+      ['no es JSON', 'hola', /JSON válido/],
+      ['otra app', conEstado({ app: 'physiq-motion' }), /no es una valoración/],
+      ['versión futura', conEstado({ version: VJ.VERSION + 1 }), /versión más nueva/],
+      ['sin estado', conEstado({ assessmentState: null }), /no contiene/],
+      ['sin pasar de la fase 1', conAS({ maxVisitedIdx: 0 }), /fase 1/],
+      ['fase inválida', conAS({ currentPhase: 7 }), /fase guardada/],
+      ['región desconocida', conAS({ region: 'muñeca' }), /región/],
+    ];
+    for (const [nombre, texto, error] of casos) {
+      const r = VJ.leerImportacion(texto, regiones);
+      assert.equal(r.ok, false, nombre);
+      assert.match(r.error, error, nombre);
+    }
+  });
+
+  test('importar: app.js bloquea saveSession() mientras importa y recarga para restaurar', () => {
+    const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    assert.match(src, /function saveSession\(\) \{\n  if \(_importando\) return;/, 'saveSession no debe pisar lo importado con el DOM anterior');
+    const aplicar = src.slice(src.indexOf('async function _aplicarImportacion'), src.indexOf('function toggleSessionPanel'));
+    assert.ok(aplicar.indexOf('_importando = true') < aplicar.indexOf('writeSession'), 'el bloqueo va antes de escribir');
+    assert.ok(aplicar.indexOf('clearSession()') < aplicar.indexOf('writeSession'), 'sin restos de la sesión anterior');
+    assert.match(aplicar, /location\.reload\(\)/);
+    assert.ok(!/import .*valoracion-json/.test(src), 'el módulo se carga con import() solo al usarlo');
+  });
+
+  test('deploy: lib/valoracion-json.js se copia al hub', () => {
+    const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
+    assert.ok(wf.includes('lib/valoracion-json.js'));
+  });
+}
+
+// ── Paciente posquirúrgico (docs/posquirurgico.md) ───────────────────────────
+console.log('\npaciente posquirúrgico');
+{
+  const PQ = await import('../lib/posquirurgico.js');
+  const { esTratada, marcarTratada } = await import('../phase4b.js');
+  const { getDerivacionesArbol } = await import('../phase4.js');
+  const HOY = new Date(2026, 9, 6);   // 6 oct 2026
+  const cir = (extra = {}) => ({ ...PQ.cirugiaVacia(), ...extra });
+  const POSQ = (extra = {}) => ({ mecanismo: 'Post-quirúrgico', cirugia: cir(extra), derivacionResuelta: {} });
+  const await_comun = await import('../data/comun.js');
+
+  test('semanas: desde la fecha (al vuelo), o las aproximadas sin fecha; nunca negativas', () => {
+    assert.equal(PQ.semanasCirugia(cir({ fecha: '2026-08-25' }), HOY), 6);
+    assert.equal(PQ.semanasCirugia(cir({ fecha: '2026-10-06' }), HOY), 0);
+    assert.equal(PQ.semanasCirugia(cir({ fecha: '2026-12-01' }), HOY), 0);
+    assert.equal(PQ.semanasCirugia(cir({ semanasAprox: 4 }), HOY), 4);
+    assert.equal(PQ.semanasCirugia(cir({ fecha: '2026-09-29', semanasAprox: 20 }), HOY), 1, 'la fecha manda');
+    assert.equal(PQ.semanasCirugia(cir(), HOY), null);
+    assert.ok(!('semanas' in state.cirugia), 'las semanas calculadas no se guardan');
+  });
+
+  test('cq: solo con mecanismo Post-quirúrgico, con complicaciones y protocolo legibles', () => {
+    const c = cir({ intervencion: 'PTR derecha', fecha: '2026-08-25', protocolo: 'Escrito', restricciones: 'Carga parcial',
+      complicaciones: ['tvp', 'nervio'], complicacionOtra: 'Dehiscencia leve' });
+    assert.equal(PQ.cirugiaPayload('Traumático', c, HOY), null);
+    assert.deepEqual(PQ.cirugiaPayload('Post-quirúrgico', c, HOY),
+      { iv: 'PTR derecha', fe: '25/08/2026', se: 6, pr: 'Escrito', re: 'Carga parcial', co: ['TVP / TEP', 'Lesión nerviosa', 'Dehiscencia leve'] });
+    withState(POSQ({ intervencion: 'PTR' }), () => assert.equal(buildPhysiQPayload().cq.iv, 'PTR'));
+    withState({ mecanismo: 'Insidioso', cirugia: cir({ intervencion: 'PTR' }), derivacionResuelta: {} }, () => {
+      assert.ok(!('cq' in buildPhysiQPayload()), 'fuera del posquirúrgico, la tarjeta no viaja');
+      assert.ok(!buildContextSummaryText().includes('CIRUGÍA'));
+      assert.ok(!buildInformeFisioterapiaText().includes('ANTECEDENTE QUIRÚRGICO'));
+    });
+  });
+
+  test('📋 Notas y 📄 Informe: cirugía, protocolo y plan supeditado', () => {
+    withState(POSQ({ intervencion: 'Osteosíntesis de maléolo', protocolo: 'Verbal', restricciones: 'Sin carga 6 semanas' }), () => {
+      const n = buildContextSummaryText(), i = buildInformeFisioterapiaText();
+      assert.match(n, /🏥 CIRUGÍA: Osteosíntesis de maléolo · Protocolo: verbal · Restricciones: Sin carga 6 semanas/);
+      assert.ok(!n.includes(PQ.TEXTO_SIN_PROTOCOLO));
+      assert.match(i, /ANTECEDENTE QUIRÚRGICO\n  · Intervención: Osteosíntesis de maléolo/);
+      assert.match(i, /PLAN DE TRATAMIENTO Y RECOMENDACIONES\n  · El tratamiento sigue el protocolo y las restricciones indicadas por el cirujano: Sin carga 6 semanas/);
+    });
+    for (const protocolo of ['', 'No hay']) {
+      withState(POSQ({ intervencion: 'LCA', protocolo }), () => {
+        assert.ok(buildContextSummaryText().includes(PQ.TEXTO_SIN_PROTOCOLO), `Notas, protocolo «${protocolo}»`);
+        assert.match(buildInformeFisioterapiaText(), new RegExp(`RECOMENDACIONES\\n  · ${PQ.TEXTO_SIN_PROTOCOLO}\\.`));
+      });
+    }
+  });
+
+  test('modo breve: sin protocolo del cirujano es un pendiente (y lleva a la tarjeta)', () => {
+    withState({ ...POSQ({ protocolo: 'No hay' }), modo: 'breve' }, () => {
+      const p = getPendientesBreve().find(x => x.ancla === 'cardCirugia');
+      assert.ok(p && p.fase === 1 && p.texto.includes(PQ.TEXTO_SIN_PROTOCOLO));
+    });
+    withState({ ...POSQ({ protocolo: 'Escrito' }), modo: 'breve' }, () => {
+      assert.ok(!getPendientesBreve().some(x => x.ancla === 'cardCirugia'));
+    });
+    withState({ ...POSQ({ protocolo: 'No hay' }), modo: 'completo' }, () => assert.deepEqual(getPendientesBreve(), []));
+  });
+
+  test('«ya diagnosticada y tratada»: h11 sin derivación ni puntuación en payload, Notas, Informe y pendientes', () => {
+    const patch = { ...POSQ({ intervencion: 'Osteosíntesis de húmero proximal', protocolo: 'Escrito' }),
+      activeHypotheses: ['h11'], testResults: { h11: { 0: 'pos' } }, hypothesisScores: {}, modo: 'breve' };
+    withState(patch, () => {
+      assert.ok(!esTratada('h11'));
+      marcarTratada('h11', true);
+      assert.ok(esTratada('h11'));
+      const p = buildPhysiQPayload();
+      assert.equal(p.h[0].dt, true);
+      assert.equal(p.h[0].sc, PQ.ETIQUETA_TRATADA);
+      assert.ok(buildInformeFisioterapiaText().includes(`· ${HYPOTHESES.h11.name} (intervenida quirúrgicamente)`));
+      assert.ok(!getPendientesBreve().some(x => x.fase === '4b'), 'sus tests no aplican: no son un pendiente');
+      marcarTratada('h11', false);
+      assert.ok(!esTratada('h11'));
+      assert.ok(!('dt' in buildPhysiQPayload().h[0]));
+      assert.notEqual(state.hypothesisScores.h11.label, PQ.ETIQUETA_TRATADA, 'al desmarcar vuelve la puntuación de sus tests');
+    });
+    withState({ ...patch, mecanismo: 'Traumático' }, () => {
+      marcarTratada('h11', true);
+      assert.ok(buildInformeFisioterapiaText().includes(`· ${HYPOTHESES.h11.name} (diagnosticada y tratada)`), 'disponible sin cirugía');
+    });
+  });
+
+  test('«ya diagnosticada y tratada»: solo hipótesis «Derivar»', () => {
+    withState({ derivacionResuelta: {}, activeHypotheses: ['h2'], hypothesisScores: {} }, () => {
+      marcarTratada('h2', true);
+      assert.ok(!esTratada('h2'));
+      assert.deepEqual(state.derivacionResuelta, {});
+    });
+  });
+
+  test('árbol: solo codo co_step1 FRACTURA es resoluble, y marcada sale de dv', () => {
+    const resolubles = [];
+    for (const [r, t] of Object.entries(CIF_TREES)) for (const st of t.steps) for (const o of st.options) {
+      if (o.resoluble) { resolubles.push(`${r}/${st.id}/${o.value}`); assert.ok(o.derivacion, 'resoluble sin derivacion'); }
+    }
+    assert.deepEqual(resolubles, ['codo/co_step1/fractura']);
+    withState({ region: 'codo', treeAnswers: { co_step1: 'fractura' }, derivacionResuelta: {} }, () => {
+      assert.equal(getDerivacionesArbol().length, 1);
+      state.derivacionResuelta.co_step1 = true;
+      assert.deepEqual(getDerivacionesArbol(), []);
+      assert.deepEqual(buildPhysiQPayload().dv, []);
+      assert.ok(!buildInformeFisioterapiaText().includes('Se recomienda valoración médica'));
+    });
+    withState({ region: 'lumbar', treeAnswers: { lu_step2: 'vascular' }, derivacionResuelta: { lu_step2: true } }, () => {
+      assert.equal(getDerivacionesArbol().length, 1, 'la claudicación vascular no se resuelve');
+    });
+  });
+
+  test('preguntas de traumatismo: nota posquirúrgica solo en las decididas, visible por CSS', () => {
+    const conNota = [];
+    for (const [r, d] of Object.entries(SYSTEMIC_SCREENING)) for (const sis of d.sistemas) for (const q of sis.preguntas) {
+      if (q.notaPosquirurgica) {
+        conNota.push(q.id);
+        const html = buildSistemaHTML(sis);
+        assert.ok(html.includes(`<div class="nota-posq solo-posq">🏥 ${PQ.TEXTO_NOTA_TRAUMA}</div>`), `${r}/${q.id}`);
+      }
+    }
+    assert.deepEqual(conNota.sort(), ['co_t1', 'co_t2', 'cv_ar3', 'h_t1', 'ro_t2', 'ro_t3', 'ro_t4', 'tp_t1']);
+    const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
+    assert.match(css, /\.solo-posq \{ display: none; \}\nbody\.posquirurgico \.solo-posq \{ display: block; \}/);
+  });
+
+  test('informe con IA: bloque «Cirugía», regla del protocolo y hipótesis tratada sin derivar', () => {
+    const d = { p: 'X', r: 'hombro', d: '01/01/2026', br: [], sq: [], pn: {},
+      h: [{ name: 'Luxación Bloqueada o Fractura (→ Rx)', dt: true }],
+      cq: { iv: 'Osteosíntesis', fe: '01/12/2025', se: 4, pr: '', re: '', co: [] } };
+    const c = IN.contextoValoracion(d, r => r, null);
+    assert.ok(c.includes('Cirugía (paciente posquirúrgico):\n  · Intervención: Osteosíntesis\n  · Fecha: 01/12/2025 (4 semanas)'));
+    assert.ok(c.includes('restricciones pendientes de confirmar con el cirujano'));
+    assert.ok(c.includes('Luxación Bloqueada o Fractura (diagnóstico ya confirmado y tratado por el médico: es un antecedente)'));
+    assert.ok(!c.includes('no se deriva'), 'nada que invite a escribir «no se deriva»');
+    const prompt = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.ok(prompt.includes('Paciente operado (si los datos incluyen «Cirugía»)'));
+    assert.ok(prompt.includes('no está marcada como ya diagnosticada y tratada se deriva'));
+    const t = IN.bloquesAmpliados({ pautas: [{ hipotesis: 'Fractura', derivar: false, tratada: true, operada: true, pauta: '', fuente: '', prom: '' }] }).join('\n');
+    assert.ok(t.includes('Diagnóstico ya confirmado e intervenido: el plan sigue el protocolo del cirujano') && !t.includes('Derivar: sin tratamiento') && !t.includes('no se deriva'));
+    withState({ ...POSQ({ intervencion: 'ORIF' }), region: 'hombro', activeHypotheses: ['h11'], testResults: { h11: { 0: 'pos' } },
+      hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: {} }, () => {
+      const a = IA.construirAmpliado();
+      assert.deepEqual(a.tests, [], 'los tests de una tratada no aplican');
+      assert.deepEqual(a.pautas.map(x => [x.derivar, x.tratada, x.operada]), [[false, true, true]]);
+    });
+  });
+
+  test('huella del informe con IA: las semanas desde la cirugía no la cambian; la intervención sí', () => {
+    const base = { p: 'X', d: '01/01/2026', cq: { iv: 'PTR', fe: '', se: 4, pr: 'Escrito', re: '', co: [] } };
+    assert.equal(IN.huellaPayload(base), IN.huellaPayload({ ...base, d: '15/01/2026', cq: { ...base.cq, se: 6 } }));
+    assert.notEqual(IN.huellaPayload(base), IN.huellaPayload({ ...base, cq: { ...base.cq, iv: 'PTC' } }));
+  });
+
+  test('cribado posquirúrgico: el mismo sistema, el primero, en las 7 regiones; preguntas y urgencias decididas', () => {
+    const { SIS_POSQUIRURGICO: SIS } = await_comun;
+    for (const [r, d] of Object.entries(SYSTEMIC_SCREENING)) assert.equal(d.sistemas[0], SIS, r);
+    assert.deepEqual(SIS.preguntas.map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_compart', 'pq_sdrc', 'pq_nervio']);
+    assert.deepEqual(SIS.preguntas.filter(q => q.urgencia).map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_compart', 'pq_nervio']);
+    const regiones = Object.keys(SYSTEMIC_SCREENING);
+    for (const q of SIS.preguntas) (q.regiones || []).forEach(r => assert.ok(regiones.includes(r), `${q.id}: región ${r}`));
+    // Cada región ve una sola pregunta de TVP
+    for (const r of regiones) assert.equal(SIS.preguntas.filter(q => q.id.startsWith('pq_tvp') && (!q.regiones || q.regiones.includes(r))).length, 1, r);
+    assert.ok(SIS.preguntas.every(q => q.razonamiento?.porque && q.razonamiento?.peso && q.razonamiento?.fuentes?.length), 'todas con razonamiento');
+  });
+
+  test('cribado posquirúrgico: solo cuenta con mecanismo Post-quirúrgico y con las preguntas de la región', () => {
+    const urg = id => SYSTEMIC_SCREENING.hombro.sistemas[0].preguntas.find(q => q.id === id).urgencia;
+    const base = { region: 'hombro', sistemicoAnswers: { pq_herida: 'SI', pq_tvp_ms: 'SI', pq_tvp: 'SI', pq_sdrc: 'SI' }, sistemicoAlerta: true };
+    withState({ ...base, mecanismo: 'Traumático', cirugia: cir(), derivacionResuelta: {} }, () => {
+      const p = buildPhysiQPayload();
+      assert.deepEqual(p.ur, [], 'sin Post-quirúrgico no hay urgencias del sistema');
+      assert.deepEqual(p.sq, []);
+    });
+    withState({ ...base, ...POSQ() }, () => {
+      const p = buildPhysiQPayload();
+      assert.deepEqual(p.ur, [urg('pq_herida'), urg('pq_tvp_ms')], 'hombro ve pq_tvp_ms, no pq_tvp');
+      assert.equal(p.sq.length, 3, 'herida, TVP del brazo y SDRC');
+    });
+    withState({ ...base, ...POSQ(), region: 'lumbar' }, () => {
+      const p = buildPhysiQPayload();
+      assert.deepEqual(p.ur.length, 2, 'lumbar: herida y pq_tvp');
+      assert.ok(!p.sq.some(t => t.includes('roce de la ropa')), 'el SDRC no se pregunta en lumbar');
+    });
+    withState({ ...base, ...POSQ(), modo: 'breve', sistemicoBreve: {} }, () => {
+      assert.ok(getPendientesBreve().find(x => x.texto.startsWith('Sistemas sin cribar')).texto.includes('Posquirúrgico'));
+    });
+    withState({ ...base, mecanismo: 'Insidioso', cirugia: cir(), derivacionResuelta: {}, modo: 'breve', sistemicoBreve: {} }, () => {
+      assert.ok(!getPendientesBreve().find(x => x.texto.startsWith('Sistemas sin cribar')).texto.includes('Posquirúrgico'));
+    });
+  });
+
+  test('cribado posquirúrgico: el mecanismo repinta el cribado conservando las respuestas', () => {
+    const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    assert.match(src, /if \(groupId === 'mecanismo'\) \{\n    _pintarCirugiaUI\(\);[\s\S]{0,200}_repintarCribado\(\);/);
+    const reparto = src.slice(src.indexOf('function _repintarCribado'), src.indexOf('function buildSistemicoQuestions'));
+    assert.ok(reparto.indexOf('savedAnswers') < reparto.indexOf('buildSistemicoQuestions(state.region)'), 'guarda antes de repintar');
+  });
+
+  test('integración: window, tarjeta en index.html y deploy', () => {
+    for (const f of ['updateCirugia', 'selectCirProtocolo', 'toggleCirComplicacion', 'toggleDiagnosticoTratado', 'toggleDerivacionArbolResuelta'])
+      assert.equal(typeof window[f], 'function', f);
+    const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+    assert.match(html, /<div class="card solo-posq" id="cardCirugia">/);
+    const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
+    assert.ok(wf.includes('lib/posquirurgico.js'));
+  });
+}
+
+// ── Versión desplegada (lib/version.js) ─────────────────────────────────────
+console.log('\nversión desplegada');
+{
+  const V = await import('../lib/version.js');
+
+  test('en el repo la versión es dev y no se compara con nada', () => {
+    assert.equal(V.VERSION_SHA, 'dev');
+    assert.equal(V.VERSION_FECHA, '');
+    assert.equal(V.textoVersion(), 'dev');
+    assert.equal(V.esVersionNueva({ sha: 'a1b2c3d' }), false);
+  });
+
+  test('textoVersion: sha y fecha local; sin fecha válida, solo el sha', () => {
+    const t = V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z');
+    assert.match(t, /^a1b2c3d · .*2026/);
+    assert.equal(V.textoVersion('a1b2c3d', ''), 'a1b2c3d');
+    assert.equal(V.textoVersion('a1b2c3d', 'basura'), 'a1b2c3d');
+  });
+
+  test('esVersionNueva: solo un sha válido y distinto del cargado', () => {
+    assert.equal(V.esVersionNueva({ sha: 'ffffff0' }, 'a1b2c3d'), true);
+    assert.equal(V.esVersionNueva({ sha: 'a1b2c3d' }, 'a1b2c3d'), false);
+    for (const raro of [null, {}, { sha: '' }, { sha: 'dev' }, { sha: '<b>x</b>' }, { sha: 42 }])
+      assert.equal(V.esVersionNueva(raro, 'a1b2c3d'), false, JSON.stringify(raro));
+  });
+
+  test('deploy: copia lib/version.js, sustituye las dos líneas y publica version.json', () => {
+    const src = readFileSync(new URL('../lib/version.js', import.meta.url), 'utf8');
+    assert.match(src, /^export const VERSION_SHA = 'dev';$/m, 'deploy-to-hub.yml busca esta línea exacta');
+    assert.match(src, /^export const VERSION_FECHA = '';$/m, 'deploy-to-hub.yml busca esta línea exacta');
+    const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
+    assert.ok(/cp lib\/[^\n]*lib\/version\.js[^\n]*physiq-hub\/assessment\/lib\//.test(wf), 'lib/version.js se copia al hub');
+    assert.ok(wf.includes("s/^export const VERSION_SHA = 'dev';$/"));
+    assert.ok(wf.includes("s/^export const VERSION_FECHA = '';$/"));
+    assert.ok(wf.includes('physiq-hub/assessment/version.json'));
+  });
+
+  test('sw.js no sirve ni guarda version.json desde la caché', () => {
+    const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
+    assert.match(sw, /if \(url\.pathname\.endsWith\('\/version\.json'\)\) return;/);
+  });
 }
 
 // ── Summary ───────────────────────────────────────────────────────────────────
