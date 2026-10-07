@@ -46,7 +46,7 @@ try {
 
 const BASE_URL = process.argv[2] || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
-const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'lib/session.js',
+const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'lib/session.js', 'lib/posquirurgico.js',
   'data/comun.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
@@ -97,6 +97,7 @@ async function walkRegion(page, region) {
 
   await page.click(`[onclick="selectRegion('${region}', this)"]`);
   await page.waitForTimeout(150);
+  const sinPosq = (await page.$('#tab_transversal_posquirurgico')) === null;
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
 
@@ -121,7 +122,7 @@ async function walkRegion(page, region) {
   await page.waitForTimeout(150);
 
   const finalPhase = await page.evaluate(() => state.currentPhase);
-  return { region, treeResult, finalPhase };
+  return { region, treeResult, finalPhase, sinPosq };
 }
 
 // Same golden path in modo breve (docs/modo-breve.md), again by real clicks:
@@ -179,6 +180,152 @@ async function walkRegionBreve(page, region) {
     && screening.noUrgVisibles === 0 && screening.urgVisibles === screening.urgTotal && screening.embudoNo === sisIds.length
     && (treeResult.activeHypotheses === 0 || fase5.pendienteTests);
   return { region, ok, treeResult, screening, fase5, naturalezaOculta };
+}
+
+// Paciente posquirúrgico (docs/posquirurgico.md), por clics reales en cada
+// región: con mecanismo Post-quirúrgico aparece la tarjeta «Cirugía» (y se
+// oculta al quitarlo), las notas bajo las preguntas de traumatismo se ven en
+// la fase 2, y la fase 5 abre con el recuadro del protocolo del cirujano.
+async function walkRegionPosq(page, region) {
+  await page.fill('#motivoConsulta', `Dolor de ${region} tras la cirugía`);
+  const oculta = !(await page.isVisible('#cardCirugia'));
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  const visible = await page.isVisible('#cardCirugia');
+  await page.fill('#cirIntervencion', `Cirugía de ${region}`);
+  await page.fill('#cirSemanas', '6');
+  await page.click('#cirProtocolo .option-btn:has-text("Escrito")');
+  await page.fill('#cirRestricciones', 'Sin carga hasta la semana 8');
+  await page.click('#cirComplicaciones .option-btn:has-text("Ninguna")');
+  const semanas = await page.textContent('#cirSemanasTxt');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+
+  await page.click(`[onclick="selectRegion('${region}', this)"]`);
+  await page.waitForTimeout(150);
+  const notas = await page.evaluate(() => {
+    const els = [...document.querySelectorAll('#sistemaPanels .nota-posq')];
+    return { total: els.length, visibles: els.filter(el => getComputedStyle(el).display !== 'none').length };
+  });
+  // Sistema posquirúrgico: primera pestaña, con las preguntas de la región
+  const cribado = await page.evaluate(() => ({
+    primera: document.querySelector('#sistemaTabs .sistema-tab')?.id,
+    preguntas: [...document.querySelectorAll('#panel_transversal_posquirurgico .sq2')].map(el => el.id.replace('sq2_', '')),
+  }));
+  const esperadas = ['lumbar', 'cervical'].includes(region)
+    ? ['pq_herida', 'pq_tvp', 'pq_tep']
+    : ['pq_herida', ['hombro', 'codo'].includes(region) ? 'pq_tvp_ms' : 'pq_tvp', 'pq_tep',
+      ...(['codo', 'rodilla', 'tobillo_pie'].includes(region) ? ['pq_compart'] : []), 'pq_sdrc', 'pq_nervio'];
+  const cribadoOk = cribado.primera === 'tab_transversal_posquirurgico' && JSON.stringify(cribado.preguntas) === JSON.stringify(esperadas);
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.fill('#signoComparable', 'Flexión');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const treeResult = await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  const fase5 = await page.evaluate(() => {
+    const t = document.getElementById('resultsContent').textContent;
+    return { phase: state.currentPhase, recuadro: t.includes('Paciente posquirúrgico') && t.includes('Sin carga hasta la semana 8'),
+      cq: state.cirugia.protocolo === 'Escrito' && state.cirugia.semanasAprox === 6 };
+  });
+  const ok = cribadoOk && oculta && visible && semanas.startsWith('6 semanas') && notas.visibles === notas.total
+    && treeResult.treeCompleteShown && fase5.phase === 5 && fase5.recuadro && fase5.cq;
+  return { region, ok, cribado, oculta, visible, semanas, notas, treeResult, fase5 };
+}
+
+// Cambiar el mecanismo con el cribado ya pintado (lumbar): Post-quirúrgico
+// añade el sistema y conserva lo contestado; quitarlo lo retira y su urgencia
+// deja de contar aunque la respuesta siga guardada.
+async function checkCambioMecanismo(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.fill('#motivoConsulta', 'Lumbalgia');
+  await page.click('#mecanismo .option-btn:has-text("Insidioso")');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  const qNormal = await page.evaluate(() => document.querySelector('#sistemaPanels .sistema-panel.active .sq2')?.id.replace('sq2_', ''));
+  await page.click(`#sistemaPanels .sistema-panel.active #sq2_${qNormal} .sq-btn.si`);
+  const antes = (await page.$('#tab_transversal_posquirurgico')) === null;
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  const con = await page.evaluate(q => ({
+    tab: !!document.getElementById('tab_transversal_posquirurgico'),
+    conservada: state.sistemicoAnswers[q] === 'SI' && !!document.querySelector(`#sq2_${q} .sq-btn.si.selected`),
+  }), qNormal);
+  await page.click('#tab_transversal_posquirurgico');
+  await page.click('#panel_transversal_posquirurgico #sq2_pq_herida .sq-btn.si');
+  const urgencia = await page.evaluate(() => document.getElementById('sistemicoAlert').textContent.includes('Derivación urgente'));
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#mecanismo .option-btn:has-text("Traumático")');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  const sin = await page.evaluate(() => ({
+    tab: !!document.getElementById('tab_transversal_posquirurgico'),
+    urgencia: document.getElementById('sistemicoAlert').textContent.includes('Derivación urgente'),
+    alerta: state.sistemicoAlerta,
+  }));
+  const ok = antes && con.tab && con.conservada && urgencia && !sin.tab && !sin.urgencia && sin.alerta === true;
+  return { ok, antes, con, urgencia, sin };
+}
+
+// Hombro operado de una fractura: h_step2b «traumatismo previo» activa h11
+// («Derivar»). Marcada «ya diagnosticada y tratada» en la 4b, la fase 5 no
+// pide derivación y dice que se siga el protocolo del cirujano.
+async function checkHombroTratada(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.fill('#motivoConsulta', 'Rigidez tras fractura de húmero operada');
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  await page.fill('#cirIntervencion', 'Osteosíntesis de húmero proximal');
+  await page.click('#cirProtocolo .option-btn:has-text("Verbal")');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('hombro', this)"]`);
+  await page.waitForTimeout(150);
+  const notaTrauma = await page.evaluate(() => getComputedStyle(document.querySelector('#sq2_h_t1 .nota-posq')).display !== 'none');
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
+  await elegir('h_step1', 2);
+  await elegir('h_step2', 0);
+  await elegir('h_step2b', 0);          // traumatismo previo → h11
+  await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  await page.click('#hypcard_h11 .hypothesis-header');
+  await page.waitForTimeout(150);
+  await page.click('#hypcard_h11 .dx-tratada input');
+  await page.waitForTimeout(150);
+  const en4b = await page.evaluate(() => ({
+    marcada: !!state.derivacionResuelta.h11,
+    etiqueta: document.getElementById('score_h11').textContent,
+    abierta: document.getElementById('hypcard_h11').classList.contains('open'),
+    testsPlegados: !!document.querySelector('#hypcard_h11 details.dx-tratada-tests:not([open])'),
+  }));
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  const fase5 = await page.evaluate(() => {
+    const t = document.getElementById('resultsContent').textContent;
+    return { sinDerivacion: !t.includes('🚑 Derivación'), protocolo: t.includes('Ya intervenida: seguir el protocolo del cirujano'),
+      casillaMarcada: !!document.querySelector('#resultsContent .dx-tratada input:checked') };
+  });
+  const ok = notaTrauma && en4b.marcada && en4b.etiqueta.includes('Diagnosticada y tratada') && en4b.abierta && en4b.testsPlegados
+    && fase5.sinDerivacion && fase5.protocolo && fase5.casillaMarcada;
+  return { ok, notaTrauma, en4b, fase5 };
 }
 
 // Razonamiento del cribado (fase 2, docs/razonamiento-cribado.md): nivel 1
@@ -775,7 +922,7 @@ async function main() {
     if (results.length > 0) await page.goto(BASE_URL, { waitUntil: 'networkidle' });
     const r = await walkRegion(page, region);
     const t = r.treeResult;
-    const ok = t.treeCompleteShown && r.finalPhase === 5;
+    const ok = t.treeCompleteShown && r.finalPhase === 5 && r.sinPosq;
     console.log(`  ${ok ? '✓' : '✗'} ${region.padEnd(9)} -> ${t.answeredSteps} pasos, ${t.activeHypotheses} hipótesis, árbol completo: ${t.treeCompleteShown}, fase alcanzada: ${r.finalPhase}`);
     results.push(r);
   }
@@ -789,6 +936,19 @@ async function main() {
     console.log(`  ${r.ok ? '✓' : '✗'} ${region.padEnd(9)} -> embudo NO en ${sc.embudoNo} sistemas, urgentes visibles ${sc.urgVisibles}/${sc.urgTotal}, no urgentes visibles ${sc.noUrgVisibles}, fase ${r.fase5.phase}, transparencia: ${r.fase5.transparencia}`);
     breveResults.push(r);
   }
+
+  console.log(`\nPaciente posquirúrgico (tarjeta «Cirugía», notas de traumatismo, protocolo en la fase 5) for all ${REGIONS.length} regions...`);
+  const posqResults = [];
+  for (const region of REGIONS) {
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    const r = await walkRegionPosq(page, region);
+    console.log(`  ${r.ok ? '✓' : '✗'} ${region.padEnd(9)} -> tarjeta ${r.visible ? 'visible' : 'oculta'}, «${r.semanas}», cribado posquirúrgico ${r.cribado.preguntas.join(' ')}, notas de traumatismo visibles ${r.notas.visibles}/${r.notas.total}, fase ${r.fase5.phase}`);
+    posqResults.push(r);
+  }
+  const hombroTratada = await checkHombroTratada(page);
+  const cambioMec = await checkCambioMecanismo(page);
+  console.log(`  ${cambioMec.ok ? '✓' : '✗'} cambiar el mecanismo con el cribado pintado añade o quita el sistema, conserva las respuestas y su urgencia deja de contar`);
+  console.log(`  ${hombroTratada.ok ? '✓' : '✗'} hombro h_step2b → h11 «ya diagnosticada y tratada»: sin derivación en la fase 5, protocolo del cirujano`);
 
   // Exercise the mobile phase-sheet button (the last real bug found,
   // PHASE_NAV_IDS) once, on whichever region the loop above ended on.
@@ -831,9 +991,10 @@ async function main() {
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
   realErrors.forEach(e => console.log('  -', e));
 
-  const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5);
+  const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
-  const pass = modulesOk && regionsOk && breveOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && realErrors.length === 0;
+  const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && cambioMec.ok;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
@@ -847,6 +1008,12 @@ async function main() {
   if (!expImp.ok) console.log('\nExportar / importar:', JSON.stringify(expImp));
   if (!lado.ok) console.log('\nLado afectado:', JSON.stringify(lado));
   if (!grab.ok) console.log('\nGrabadora:', JSON.stringify(grab));
+  if (!posqOk) {
+    console.log('\nPosquirúrgico failures:');
+    posqResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
+    if (!hombroTratada.ok) console.log('  -', JSON.stringify(hombroTratada));
+    if (!cambioMec.ok) console.log('  -', JSON.stringify(cambioMec));
+  }
   if (!breveOk) {
     console.log('\nModo breve failures:');
     breveResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
