@@ -58,7 +58,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [O'Driscoll 2007](#odriscoll-2007) | puntuación 4b · texto | 2 | **sin revisar** |
 | [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | **sin revisar** |
 | [Laslett 2008](#laslett-2008) | puntuación 4b · test 4b sin puntuar · texto | 3 | **sin revisar** |
-| [van der Windt 2010](#van-der-windt-2010) | puntuación 4b | 3 | **sin revisar** |
+| [van der Windt 2010](#van-der-windt-2010) | puntuación 4b · test 4b sin puntuar | 3 | **sin revisar** |
 | [Zhang 2010](#zhang-2010) | puntuación 4b | 3 | **sin revisar** |
 | [Hegedus 2012](#hegedus-2012) | puntuación 4b · test 4b sin puntuar · texto | 9 | **sin revisar** |
 | [Apelby-Albrecht 2013](#apelby-albrecht-2013) | puntuación 4b | 1 | **sin revisar** |
@@ -322,7 +322,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: PubMed (tests clínicos de inestabilidad lumbar, revisiones sistemáticas). Ferrari 2015 (Chiropr Man Therap, 10.1186/s12998-015-0058-7) confirma que solo Fritz 2005 estudió la precisión del test de inestabilidad en prono; Thomas 2026 (Cureus, 10.7759/cureus.108817, búsqueda hasta 12/2025) sigue citando su regla «flexión ≥ 53° o sin hipomovilidad» (LR+ 4,3) sin replicación externa. Leídas enteras en PMC. Estudios sueltos posteriores (Seyedhoseinpoor 2022, Areeudomwong 2020, Chatprem 2021) no leídos en texto completo. |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | 2026-10 · Sin cambios: ya superada por Han 2023, que es la que da las cifras; solo se menciona como dato anterior. |
 | [Lequesne 2008](#lequesne-2008) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en el resumen y en la tabla 2 de Kinsella 2024. La E se midió frente a controles sin dolor de cadera (casos y controles), lo que la infla: la derotación externa resistida pasa a hallazgo. |
-| [Majlesi 2008](#majlesi-2008) | puntuación 4b | 1 | 2026-10 · Cifras sin cambios, con aviso: van der Windt 2010 (Cochrane) recoge solo dos estudios del Slump y señala que la especificidad de Majlesi puede estar inflada por su diseño de casos y controles (controles con RM normal); el otro estudio dio S 0,44, E 0,58. PubMed (2026-10): ninguna revisión posterior del Slump. Pendiente de decisión del usuario si debe seguir puntuando. |
 | [Suri 2010](#suri-2010) | puntuación 4b | 2 | 2026-10 · Parcial: el Romberg de lu4 pasa a Cook 2019 (revisión posterior, mismos datos de Katz 1995, LR+ 4,06); la marcha con base amplia sigue con Suri 2010 porque Cook 2019 no da su cifra. |
 | [Cook 2011](#cook-2011) | puntuación 4b | 1 | 2026-10 · Sin cambios en las cifras: Cook 2019 (revisión sistemática, PDF del usuario) la incluye solo con sus ítems sueltos, sin el clúster, y le asigna riesgo de sesgo alto (QUADAS-2); no hay validación posterior del clúster. El aviso se añade a la cita. |
 | [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | 2026-10 · Sin cambios: PubMed (RAPIDH, validación o precisión diagnóstica; publicaciones de Genevay) no encuentra ninguna validación externa de los criterios RAPIDH. |
@@ -344,6 +343,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Narvani 2003](#narvani-2003) | test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: chasquido S 100 %, E 85 % y «Thomas ni sensible ni específico» comprobados en el resumen. |
 | [Reijman 2004](#reijman-2004) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído: en PMC (PMC1754907) el cuerpo es un PDF escaneado que no se pudo descargar. |
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
+| [Majlesi 2008](#majlesi-2008) | test 4b sin puntuar | 1 | 2026-10 · Cifras sin cambios, con aviso: van der Windt 2010 (Cochrane) recoge solo dos estudios del Slump y señala que la especificidad de Majlesi puede estar inflada por su diseño de casos y controles (controles con RM normal); el otro estudio dio S 0,44, E 0,58. PubMed (2026-10): ninguna revisión posterior del Slump. Por decisión del usuario (2026-10), el Slump pasa a hallazgo: sus cifras quedan en el criterio y no puntúa. |
 | [Reiman 2015](#reiman-2015) | test 4b sin puntuar · texto | 8 | 2026-10 · Texto completo leído (tablas 3 y 4): cifras correctas, pero el FADDIR agrupado sale de pacientes operados (probabilidad previa 90 %) y los propios autores concluyen que ningún test cambia de forma significativa la probabilidad. El FADDIR pasa a hallazgo en SIFA (con Pålsson 2020) y en labrum. Revisiones posteriores (Shanmugaraj 2020, Fernandes 2022, Dhillon 2025) no dan un valor agrupado mejor. |
 | [Wong 2022](#wong-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras. |
 | [Adib 2023](#adib-2023) | test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015). |
@@ -4601,7 +4601,7 @@ Citada como:
 
 Publicación: —  
 DOI: 10.1097/rhu.0b013e31816b2f99  
-Última revisión: 2026-10 · Cifras sin cambios, con aviso: van der Windt 2010 (Cochrane) recoge solo dos estudios del Slump y señala que la especificidad de Majlesi puede estar inflada por su diseño de casos y controles (controles con RM normal); el otro estudio dio S 0,44, E 0,58. PubMed (2026-10): ninguna revisión posterior del Slump. Pendiente de decisión del usuario si debe seguir puntuando.
+Última revisión: 2026-10 · Cifras sin cambios, con aviso: van der Windt 2010 (Cochrane) recoge solo dos estudios del Slump y señala que la especificidad de Majlesi puede estar inflada por su diseño de casos y controles (controles con RM normal); el otro estudio dio S 0,44, E 0,58. PubMed (2026-10): ninguna revisión posterior del Slump. Por decisión del usuario (2026-10), el Slump pasa a hallazgo: sus cifras quedan en el criterio y no puntúa.
 
 Citada como:
 
