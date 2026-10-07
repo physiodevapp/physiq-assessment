@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **306** referencias de literatura, con **1273** usos.
+- **310** referencias de literatura, con **1280** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **65** de 306 referencias del registro revisadas. Ver «Estado de revisión».
+- **73** de 310 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 487 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -166,14 +166,10 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE NG158](#nice-ng158) | razonamiento fase 2 · texto | 22 | **sin revisar** |
 | [NICE NG38](#nice-ng38) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG89](#nice-ng89) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Downie 2013](#downie-2013) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Henschke 2013](#henschke-2013) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Barcelos 2014](#barcelos-2014) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Goebel 2018](#goebel-2018) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [HerniaSurge 2018](#herniasurge-2018) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kim y Chang 2021](#kim-y-chang-2021) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Cabre 2022](#cabre-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Goodfriend 2022](#goodfriend-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kalakonda 2022](#kalakonda-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rhodes 2022](#rhodes-2022) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -333,10 +329,17 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Wong 2022](#wong-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras. |
 | [Adib 2023](#adib-2023) | test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015). |
 | [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo. |
+| [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | 2026-10 · Complementada: PubMed (cauda equina, revisiones sistemáticas desde 2012) no encuentra una revisión de precisión diagnóstica posterior. Galliker 2020 (Am J Med, PDF del usuario) aporta el único estudio en urgencias (silla de montar LR+ 3,1, esfínteres LR+ 2,1) y Hennessy 2025 (Eur Spine J, PDF del usuario) revisa 9 guías: RM urgente y radiculopatía bilateral como señal clave. Ambos se añaden a `l6`. Tabrah 2022 (tacto rectal) y Boktor 2023 (residuo posmiccional) no leídos: tratan pruebas que no hace el fisioterapeuta. |
+| [Downie 2013](#downie-2013) | razonamiento fase 2 | 2 | 2026-10 · Complementada: PubMed (banderas rojas de cáncer o fractura en lumbalgia, revisiones desde 2014). Williams 2023 (Cochrane de fractura) es una reedición con búsqueda hasta 2012, no más reciente. Verhagen 2017 (Pain, PDF del usuario) confirma que el antecedente de cáncer es la única bandera de malignidad informativa (LR+ 15,3), y Galliker 2020 (Am J Med, PDF del usuario) añade los datos de urgencias (LR+ 5,9; 27,9 con sospecha clínica): se añaden a `l2`. Sin cambios para fractura (`l_e4`). Maselli 2022 (Disabil Rehabil, dolor toracolumbar) no leída. |
+| [Henschke 2013](#henschke-2013) | razonamiento fase 2 | 2 | 2026-10 · Complementada: Verhagen 2017 (Pain, PDF del usuario) apoya sus conclusiones con una búsqueda más amplia; el dolor nocturno solo se midió en un estudio (LR+ 0,7). Galliker 2020 (Am J Med, PDF del usuario) aporta el dato de urgencias (LR+ 2,2). Ambos se añaden a `l_on2`. |
+| [Verhagen 2017](#verhagen-2017) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: PubMed (banderas rojas de malignidad en lumbalgia, revisiones desde 2017) solo encuentra Galliker 2020 (urgencias), que se cita junto a ella. |
 | [Finucane 2020](#finucane-2020) | razonamiento fase 2 | 10 | 2026-10 · Sin cambios: PubMed (autor Finucane LM, «red flags») no encuentra una versión posterior del marco IFOMPT. |
+| [Galliker 2020](#galliker-2020) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: PubMed (banderas rojas en lumbalgia en urgencias, revisiones desde 2020) no encuentra ninguna posterior. |
+| [Cabre 2022](#cabre-2022) | razonamiento fase 2 | 1 | 2026-10 · Complementada: el consenso del COI de 2023 (Mountjoy 2023, Br J Sports Med, PDF del usuario) actualiza el marco: REDs en ambos sexos y la fractura de estrés del sacro o la pelvis como de alto riesgo. Se añade a `l_e6`; la cifra de 4,5 veces más lesiones óseas sigue citando Cabre. |
 | [Jayarangaiah 2023](#jayarangaiah-2023) | razonamiento fase 2 | 10 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Malik 2023](#malik-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Mountjoy 2023](#mountjoy-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: es el consenso vigente del COI (el anterior es de 2018). |
 | [Rider y Marra 2023](#rider-y-marra-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Rowe 2023](#rowe-2023) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de marzo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 30 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -344,6 +347,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Lassiter 2024](#lassiter-2024) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leslie 2024](#leslie-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Gill 2025](#gill-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de noviembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Hennessy 2025](#hennessy-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: publicada en 2025, búsqueda hasta junio de 2024; PubMed no encuentra una revisión de guías posterior. |
 | [Margetis y Gillis 2025](#margetis-y-gillis-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de marzo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shaw 2025](#shaw-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -569,7 +573,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Bodman 2024](#bodman-2024) · [Brotman 2024](#brotman-2024) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cibulka 2017](#cibulka-2017) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Gomes 2022](#gomes-2022) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Hegedus 2012](#hegedus-2012) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hölmich 1999](#hölmich-1999) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Khalil 2025](#khalil-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2005](#laslett-2005) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patil 2024](#patil-2024) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Pope 2023](#pope-2023) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Stern 2026](#stern-2026) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Truong 2023](#truong-2023) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [Vandeputte 2026](#vandeputte-2026) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018)
+[Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Bodman 2024](#bodman-2024) · [Brotman 2024](#brotman-2024) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Cibulka 2017](#cibulka-2017) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Gomes 2022](#gomes-2022) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Hegedus 2012](#hegedus-2012) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hölmich 1999](#hölmich-1999) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Khalil 2025](#khalil-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2005](#laslett-2005) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patil 2024](#patil-2024) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Pope 2023](#pope-2023) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Stern 2026](#stern-2026) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Truong 2023](#truong-2023) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018)
 
 ### Adib 2023
 
@@ -1214,7 +1218,7 @@ Autores: Cabre, Moore, Smith-Ryan y Hackney
 Título: *Relative Energy Deficiency in Sport (RED-S): Scientific, Clinical, and Practical Implications for the Female Athlete*  
 Publicación: Dtsch Z Sportmed 73(7):225–234  
 DOI: 10.5960/dzsm.2022.546  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Complementada: el consenso del COI de 2023 (Mountjoy 2023, Br J Sports Med, PDF del usuario) actualiza el marco: REDs en ambos sexos y la fractura de estrés del sacro o la pelvis como de alto riesgo. Se añade a `l_e6`; la cifra de 4,5 veces más lesiones óseas sigue citando Cabre.  
 Nota: Texto completo en PMC9724109. Razonamiento del cribado lumbar (l_e6).
 
 Citada como:
@@ -1789,7 +1793,7 @@ Autores: Downie, Williams, Henschke, Hancock, Ostelo, de Vet, Macaskill, Irwig, 
 Título: *Red flags to screen for malignancy and fracture in patients with low back pain: systematic review*  
 Publicación: BMJ 347:f7095  
 DOI: 10.1136/bmj.f7095  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Complementada: PubMed (banderas rojas de cáncer o fractura en lumbalgia, revisiones desde 2014). Williams 2023 (Cochrane de fractura) es una reedición con búsqueda hasta 2012, no más reciente. Verhagen 2017 (Pain, PDF del usuario) confirma que el antecedente de cáncer es la única bandera de malignidad informativa (LR+ 15,3), y Galliker 2020 (Am J Med, PDF del usuario) añade los datos de urgencias (LR+ 5,9; 27,9 con sospecha clínica): se añaden a `l2`. Sin cambios para fractura (`l_e4`). Maselli 2022 (Disabil Rehabil, dolor toracolumbar) no leída.  
 Nota: Texto completo en PMC3898572. Resume las dos revisiones Cochrane de banderas rojas (malignidad y fractura).
 
 Citada como:
@@ -1866,7 +1870,7 @@ Autores: Fairbank, Hashimoto, Dailey, Patel y Dettori
 Título: *Does patient history and physical examination predict MRI proven cauda equina syndrome?*  
 Publicación: Evid Based Spine Care J 2(4):27–33  
 DOI: 10.1055/s-0031-1274754  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Complementada: PubMed (cauda equina, revisiones sistemáticas desde 2012) no encuentra una revisión de precisión diagnóstica posterior. Galliker 2020 (Am J Med, PDF del usuario) aporta el único estudio en urgencias (silla de montar LR+ 3,1, esfínteres LR+ 2,1) y Hennessy 2025 (Eur Spine J, PDF del usuario) revisa 9 guías: RM urgente y radiculopatía bilateral como señal clave. Ambos se añaden a `l6`. Tabrah 2022 (tacto rectal) y Boktor 2023 (residuo posmiccional) no leídos: tratan pruebas que no hace el fisioterapeuta.  
 Nota: Texto completo en PMC3506147.
 
 Citada como:
@@ -2019,6 +2023,25 @@ Citada como:
 | Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria» | 4b · cita bajo el test | 2 |
 | Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Test de inestabilidad en prono» | 4b · cita bajo el test | 3 |
 | Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Movimientos aberrantes en la flexo-extensión» | 4b · cita bajo el test | 4 |
+
+### Galliker 2020
+
+Autores: Galliker, Scherer, Trippolini, Rasmussen-Barr, LoMartire y Wertli  
+Título: *Low Back Pain in the Emergency Department: Prevalence of Serious Spinal Pathologies and Diagnostic Accuracy of Red Flags – A Systematic Review*  
+Publicación: Am J Med 133(1):60–72.e14  
+DOI: 10.1016/j.amjmed.2019.06.005  
+Última revisión: 2026-10 · Sin cambios: PubMed (banderas rojas en lumbalgia en urgencias, revisiones desde 2020) no encuentra ninguna posterior.  
+Nota: PDF del usuario (2026-10, manuscrito aceptado), leído entero. Preguntas `l2`, `l_on2` y `l6`.
+
+Citada como:
+
+1. Galliker 2020 — Galliker, Scherer, Trippolini, Rasmussen-Barr, LoMartire y Wertli, «Low Back Pain in the Emergency Department: Prevalence of Serious Spinal Pathologies and Diagnostic Accuracy of Red Flags – A Systematic Review», Am J Med 2020;133(1):60–72.e14, resultados y tabla suplementaria de precisión diagnóstica.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
 ### Genevay 2017
 
@@ -2732,13 +2755,30 @@ Citada como:
 | Hombro | h5 · Lesión Labral Superior (SLAP) | Test «Biceps Load Test II» (en `criterio`) | 4b · mención en el texto | 2 |
 | Hombro | h5 · Lesión Labral Superior (SLAP) | Test «Biceps Load Test II» | 4b · cita bajo el test | 3 |
 
+### Hennessy 2025
+
+Autores: Hennessy, Devitt, Synnott y Timlin  
+Título: *Assessment and early investigation of cauda equina syndrome- a systematic review of existing international guidelines and summary of the current evidence*  
+Publicación: Eur Spine J 34(4):1545–1551  
+DOI: 10.1007/s00586-025-08732-0  
+Última revisión: 2026-10 · Sin cambios: publicada en 2025, búsqueda hasta junio de 2024; PubMed no encuentra una revisión de guías posterior.  
+Nota: PDF del usuario (2026-10), leído entero. Pregunta `l6`.
+
+Citada como:
+
+1. Hennessy 2025 — Hennessy, Devitt, Synnott y Timlin, «Assessment and early investigation of cauda equina syndrome – a systematic review of existing international guidelines and summary of the current evidence», Eur Spine J 2025;34(4):1545–1551, tabla 1 y discusión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
+
 ### Henschke 2013
 
 Autores: Henschke, Maher, Ostelo, de Vet, Macaskill e Irwig  
 Título: *Red flags to screen for malignancy in patients with low-back pain*  
 Publicación: Cochrane Database Syst Rev (2):CD008686  
 DOI: 10.1002/14651858.CD008686.pub2  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Complementada: Verhagen 2017 (Pain, PDF del usuario) apoya sus conclusiones con una búsqueda más amplia; el dolor nocturno solo se midió en un estudio (LR+ 0,7). Galliker 2020 (Am J Med, PDF del usuario) aporta el dato de urgencias (LR+ 2,2). Ambos se añaden a `l_on2`.  
 Nota: Leído el resumen y las conclusiones de los autores (PMC10631455); las cifras de esta revisión se citan a través de Downie 2013.
 
 Citada como:
@@ -5087,6 +5127,23 @@ Citada como:
 |---|---|---|---|---|
 | Tobillo y pie | — | Pregunta `tp_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 
+### Mountjoy 2023
+
+Autores: Mountjoy, Ackerman, Bailey, Burke, Constantini, Hackney, Heikura, Melin, Pensgaard, Stellingwerff, Sundgot-Borgen, Torstveit, Jacobsen, Verhagen, Budgett, Engebretsen y Erdener  
+Título: *2023 International Olympic Committee's (IOC) consensus statement on Relative Energy Deficiency in Sport (REDs)*  
+Publicación: Br J Sports Med 57(17):1073–1098  
+DOI: 10.1136/bjsports-2023-106994  
+Última revisión: 2026-10 · Sin cambios: es el consenso vigente del COI (el anterior es de 2018).  
+Nota: PDF del usuario (2026-10), leído en lo relativo a salud ósea y a la herramienta REDs CAT2 (tabla 4). Pregunta `l_e6`.
+
+Citada como:
+
+1. Mountjoy 2023 — Mountjoy, Ackerman, Bailey, Burke, Constantini, Hackney et al., «2023 International Olympic Committee's (IOC) consensus statement on Relative Energy Deficiency in Sport (REDs)», Br J Sports Med 2023;57(17):1073–1098, tabla 4 (herramienta REDs CAT2), p. 1083.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
+
 ### Munakomi 2023
 
 Autores: Munakomi, Foris y Varacallo  
@@ -6795,6 +6852,24 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Verhagen 2017
+
+Autores: Verhagen, Downie, Maher y Koes  
+Título: *Most red flags for malignancy in low back pain guidelines lack empirical support: a systematic review*  
+Publicación: Pain 158(10):1860–1868  
+DOI: 10.1097/j.pain.0000000000000998  
+Última revisión: 2026-10 · Sin cambios: PubMed (banderas rojas de malignidad en lumbalgia, revisiones desde 2017) solo encuentra Galliker 2020 (urgencias), que se cita junto a ella.  
+Nota: PDF del usuario (2026-10), leído entero. Preguntas `l2` y `l_on2` (tabla 1).
+
+Citada como:
+
+1. Verhagen 2017 — Verhagen, Downie, Maher y Koes, «Most red flags for malignancy in low back pain guidelines lack empirical support; a systematic review», Pain 2017;158(10):1860–1868, tabla 1.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 
 ### Vijayan y Mabrouk 2026
 
