@@ -2400,6 +2400,20 @@ console.log('\nversión desplegada');
     assert.ok(wf.includes('physiq-hub/assessment/version.json'));
   });
 
+  test('la comprobación no provoca un bucle de «Hay una versión nueva» tras recargar', () => {
+    const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    // version.json por su URL normal, como el código: un ?t= único lo traía
+    // nuevo mientras lib/version.js seguía en caché
+    assert.match(src, /fetch\('\.\/version\.json', \{ cache: 'no-store' \}\)/);
+    assert.doesNotMatch(src, /version\.json\?t=/);
+    // «Recargar» vuelve a pedir los archivos propios antes de recargar
+    const rec = src.slice(src.indexOf('function recargarVersionNueva'), src.indexOf('function toggleSessionPanel'));
+    assert.match(rec, /await _refrescarArchivosApp\(\);\s*location\.reload\(\);/);
+    assert.match(src, /fetch\(u, \{ cache: 'reload' \}\)/);
+    // y el panel ofrece comprobarlo a mano
+    assert.match(src, /id="sessionVersionComprobar">Comprobar</);
+  });
+
   test('sw.js no sirve ni guarda version.json desde la caché', () => {
     const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
     assert.match(sw, /if \(url\.pathname\.endsWith\('\/version\.json'\)\) return;/);
