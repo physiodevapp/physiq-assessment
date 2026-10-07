@@ -1717,6 +1717,40 @@ test('prompt: sin fisiopatología inventada, ejemplos negativos en Limitaciones,
   assert.match(narr, /va en Seguimiento, aunque venga dentro del texto de la pauta/);
 });
 
+test('ficha breve: sin nombre en el texto, CIF solo b/d, reparto de palabras, y sin «lo no explorado dilo una vez»', () => {
+  const d = { p: 'X', r: 'rodilla', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  const f = IN.PLANTILLAS.breve.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(f, /Tampoco escribas el nombre del paciente ni la fecha en ningún punto del texto/);
+  assert.match(f, /solo de funciones corporales \(b\) y de actividades y participación \(d\)/);
+  assert.match(f, /No uses códigos de factores ambientales \(e\)/);
+  assert.match(f, /PRESENTACIÓN CLÍNICA \d+, HALLAZGOS Y CODIFICACIÓN CIF \d+, OBJETIVOS Y PLAN \d+/);
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.ok(!/dilo UNA sola vez, en una frase, donde se describe la exploración/.test(p), 'sin la regla que invitaba a «no se realizó…»');
+    assert.match(p, /Lo que no consta \(mediciones, fuerza, escalas, pruebas no realizadas…\) no se menciona/);
+  }
+  // Modo breve: decir una vez que es breve y qué queda pendiente, sin dar por completo lo pendiente
+  const ctx = IN.contextoValoracion({ ...d, md: 'breve', pe: ['Cribado sistémico solo por embudo'] }, r => r, null);
+  assert.match(ctx, /Dilo UNA vez en el informe, en una frase, junto con lo que queda pendiente de completar/);
+  assert.match(ctx, /Pendiente de completar:\n  · Cribado sistémico solo por embudo/);
+});
+
+test('sexo: opcional, en la cabecera del prompt y del informe compartido, con concordancia; nunca en el payload', () => {
+  withState({ region: 'rodilla', sexo: 'Mujer', edadPaciente: 34 }, () => {
+    const d = buildPhysiQPayload();
+    assert.ok(!('sexo' in d) && !('sx' in d), 'el payload (contrato con physiq-report) no cambia');
+    const amp = IA.construirAmpliado();
+    assert.equal(amp.sexo, 'Mujer');
+    assert.match(IN.contextoValoracion(d, r => r, amp), /Edad: 34 años · Sexo: mujer · Región/);
+  });
+  withState({ region: 'rodilla', sexo: '' }, () => {
+    assert.ok(!/Sexo:/.test(IN.contextoValoracion(buildPhysiQPayload(), r => r, IA.construirAmpliado())), 'sin sexo, sin línea');
+  });
+  assert.match(IN.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'rodilla', ed: 34, sx: 'Mujer' }, r => 'Rodilla'), /Edad: 34 años\nSexo: Mujer/);
+  const p = IN.PLANTILLAS.breve.prompt({ p: 'X', r: 'rodilla', d: '01/01/2026', h: [], br: [], sq: [], pn: {} }, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(p, /Si consta el sexo, concuerda el género con él .*si no consta, redacta sin marcar el género/);
+});
+
 test('prompt: sin datos personales deducidos, sin citar las notas del plan, derivación descartada sin mencionar', () => {
   const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
   for (const pl of Object.values(IN.PLANTILLAS)) {
