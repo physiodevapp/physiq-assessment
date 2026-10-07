@@ -1849,6 +1849,10 @@ test('prompt: reglas de la revisión con informes reales, en las dos plantillas'
       assert.match(p, /no cites cocientes de probabilidad/, `${nombre}: sin jerga de puntuación`);
       assert.match(p, /No crees secciones ni subsecciones/, `${nombre}: sin secciones inventadas`);
       assert.match(p, /no interpretes ni justifiques la discrepancia/, `${nombre}: discrepancias sin interpretar`);
+      // El ejemplo antiguo («niega inicialmente…, aunque en consulta refiere…») se copiaba tal cual, fuente incluida
+      assert.ok(!/niega inicialmente|en consulta refiere/.test(p), `${nombre}: el ejemplo no nombra la fuente`);
+      assert.match(p, /no es una discrepancia: recógelo tal cual. No escribas que algo «no se menciona», «no se confirma»/, `${nombre}: lo que solo consta en una fuente no es discrepancia`);
+      assert.match(p, /otra zona u otro lado.*UNA vez como dato referido.*No le añadas plan, seguimiento, prevención/, `${nombre}: el otro lado, sin plan inventado`);
     }
   }
   // Códigos CIF: limitados en la ficha (tiene sección propia); el narrativo, sin códigos
@@ -2525,6 +2529,13 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!ids('Dolor de 4 sobre 10 y control a 4/10.').includes('nrs'));
     // Un rango (irritabilidad «4-6/10») no valida el 6 suelto
     assert.ok(ids('Dolor de 6/10.', { datos: { ir: 'Media (4-6/10)' } }).includes('nrs'));
+    // Con audio: el pico «un 8 de 10» (o «ocho de diez») dicho en la consulta vale
+    assert.ok(!ids('Llega a 8 sobre 10 al correr.', { transcripcion: 'llega a un 8 de 10' }).includes('nrs'));
+    assert.ok(!ids('Llega a 8/10 al correr.', { transcripcion: 'llega a un ocho de diez' }).includes('nrs'));
+    assert.ok(ids('Llega a 9/10 al correr.', { transcripcion: 'llega a un 8 de 10' }).includes('nrs'));
+    // El otro lado dicho en la consulta: punto medio a comprobar, no contradicción
+    const otro = rev('También molestias en el hombro izquierdo.', { transcripcion: 'el izquierdo también me molesta' });
+    assert.ok(otro.some(x => x.id === 'lado-otro' && x.nivel === 'medio') && !otro.some(x => x.id === 'lado'));
   });
   test('revisión: reglas de redacción (nombre, fecha, jerga, descarta, relleno, fuentes, secuelas)', () => {
     assert.ok(ids('Pedro Flores refiere dolor.').includes('nombre'));
@@ -2536,6 +2547,11 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!ids('No se identifican banderas rojas.').includes('relleno'), '«No se identifican» no es «No sé»');
     assert.ok(ids('Según el formulario, refiere dolor.').includes('fuentes'));
     assert.ok(ids('Según la variable de control, parar a 4/10.').includes('fuentes'));
+    for (const f of ['Según el cuestionario inicial, refiere dolor.', 'Este dato no se confirma en la conversación clínica.',
+      'Dolor al sentarse, aunque no se menciona en consulta.', 'Niega dolor nocturno, aunque en consulta refiere despertares.',
+      'Sin dolor nocturno inicialmente referido.'])
+      assert.ok(ids(f).includes('fuentes'), f);
+    assert.ok(!ids('Acude a consulta por dolor en el hombro derecho.').includes('fuentes'), '«acude a consulta» es correcto');
     assert.ok(ids('Hallazgos propios de la fase de consolidación.').includes('fisiopatologia'));
     assert.ok(ids('Secuelas esperables de la cirugía.').includes('fisiopatologia'));
   });
