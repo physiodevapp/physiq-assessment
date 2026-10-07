@@ -364,6 +364,18 @@ async function checkLado(page) {
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
   const r = {};
+  // Sexo (fase 1, junto a la edad): se guarda, un segundo toque lo borra, cabe a 320 px
+  await page.click('#sexo .option-btn:has-text("Mujer")');
+  r.sexo = await page.evaluate(() => {
+    const g = document.getElementById('sexo').getBoundingClientRect();
+    const cabe = [...document.querySelectorAll('#sexo .option-btn')].every(b => {
+      const rb = b.getBoundingClientRect();
+      return rb.width > 0 && rb.left >= g.left - 1 && rb.right <= g.right + 1;
+    }) && document.documentElement.scrollWidth <= innerWidth;
+    return state.sexo === 'Mujer' && cabe;
+  });
+  await page.click('#sexo .option-btn:has-text("Mujer")');
+  r.sexo = r.sexo && await page.evaluate(() => state.sexo === '');
   r.ocultoSinRegion = await page.evaluate(() => document.getElementById('ladoWrap').hidden);
   await irAFase2(page, 'hombro');
   const estado = () => page.evaluate(() => {
@@ -390,7 +402,7 @@ async function checkLado(page) {
   await page.waitForTimeout(150);
   const l = await estado();
   r.centralEnLumbar = l.central && l.cabe;
-  r.ok = r.ocultoSinRegion && r.visibleConRegion && r.sinCentralEnHombro && r.cabe320 && r.guarda && r.centralEnLumbar;
+  r.ok = r.sexo && r.ocultoSinRegion && r.visibleConRegion && r.sinCentralEnHombro && r.cabe320 && r.guarda && r.centralEnLumbar;
   await page.setViewportSize({ width: 1280, height: 900 });
   return r;
 }
@@ -964,9 +976,9 @@ async function main() {
   const razonMov = await checkRazonamientoMovil(page);
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
-  console.log('\nLado afectado (fase 2):');
+  console.log('\nSexo (fase 1) y lado afectado (fase 2):');
   const lado = await checkLado(page);
-  console.log(`  ${lado.ok ? '✓' : '✗'} aparece al elegir región, «Central» solo en columna, se guarda, cabe a 320 px`);
+  console.log(`  ${lado.ok ? '✓' : '✗'} sexo se guarda y se borra con un segundo toque; lado aparece al elegir región, «Central» solo en columna; todo cabe a 320 px`);
 
   console.log('\nDerivación del árbol (lumbar, VASCULAR):');
   const deriv = await checkDerivacionVascular(page);
