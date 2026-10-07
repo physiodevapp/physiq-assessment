@@ -13,5 +13,9 @@ const VJ = await import('../lib/valoracion-json.js');
 const r = VJ.leerImportacion(readFileSync(archivo, 'utf8'));
 if (!r.ok) { console.error(r.error); process.exit(1); }
 Object.assign(state, r.assessmentState);
+// El formulario previo (fp y su versión agrupada) lo lee app.js de formulario.js,
+// que carga con import() dinámico: hay que esperarlo con el esquema de la región
+// ya cargado, o el prompt sale sin él.
+await app.precargarFormularioPrevio();
 const datos = app.buildPhysiQPayload();
 console.log(IN.PLANTILLAS[plantilla].prompt(datos, { conAudio, nombreRegion: app.nombreRegion, ampliado: ia.construirAmpliado() }));
