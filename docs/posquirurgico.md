@@ -134,7 +134,7 @@ Con mecanismo Post-quirúrgico:
 
 ## Hipótesis posquirúrgica genérica (octubre 2026)
 
-Estado: **decisiones cerradas e implementado** (el usuario aceptó las cinco recomendaciones). No va a `main` hasta que el usuario lo confirme.
+Estado: **decisiones cerradas e implementado** (el usuario aceptó las cinco recomendaciones) y en `main` (PR 205).
 
 Implementado, con dos diferencias técnicas respecto a lo planteado (el comportamiento es el decidido):
 - `pq1` (`HIP_POSQUIRURGICA`, `data/comun.js`) **no está en `HYPOTHESES`**: esa colección es la de las hipótesis regionales, y sus tests de integridad exigen región y tests. `hipotesis(id)` (`phase4b.js`) la devuelve con el nombre (`nombreHipPosq`) y el PROM de la región (`promPorRegion`).
