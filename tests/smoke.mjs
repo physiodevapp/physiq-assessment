@@ -214,7 +214,8 @@ async function walkRegionPosq(page, region) {
   }));
   const esperadas = ['lumbar', 'cervical'].includes(region)
     ? ['pq_herida', 'pq_tvp', 'pq_tep']
-    : ['pq_herida', ['hombro', 'codo'].includes(region) ? 'pq_tvp_ms' : 'pq_tvp', 'pq_tep', 'pq_sdrc', 'pq_nervio'];
+    : ['pq_herida', ['hombro', 'codo'].includes(region) ? 'pq_tvp_ms' : 'pq_tvp', 'pq_tep',
+      ...(['codo', 'rodilla', 'tobillo_pie'].includes(region) ? ['pq_compart'] : []), 'pq_sdrc', 'pq_nervio'];
   const cribadoOk = cribado.primera === 'tab_transversal_posquirurgico' && JSON.stringify(cribado.preguntas) === JSON.stringify(esperadas);
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);

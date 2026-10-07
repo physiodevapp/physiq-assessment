@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **297** referencias de literatura, con **1252** usos.
+- **297** referencias de literatura, con **1253** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **19** de 297 referencias del registro revisadas. Ver «Estado de revisión».
 - **3** de 487 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -245,7 +245,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Shamrock 2023](#shamrock-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Singleton y Hefner 2023](#singleton-y-hefner-2023) | razonamiento fase 2 | 5 | **sin revisar** |
 | [Smidt y Massey 2023](#smidt-y-massey-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Torlincasi 2023](#torlincasi-2023) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Torlincasi 2023](#torlincasi-2023) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Truong 2023](#truong-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Waheed 2023](#waheed-2023) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Wenker y Quint 2023](#wenker-y-quint-2023) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -2057,13 +2057,13 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `pq_sdrc` · Posquirúrgico | 2 · razonamiento del cribado | 2 |
 | Todas (sistemas comunes) | — | Pregunta `pq_nervio` · Posquirúrgico | 2 · razonamiento del cribado | 2 |
-| Hombro | — | `sistemas.0.preguntas.5.urgencia` | 2 · mención en el texto | 1 |
-| Cadera | — | `sistemas.0.preguntas.5.urgencia` | 2 · mención en el texto | 1 |
-| Cervical | — | `sistemas.0.preguntas.5.urgencia` | 2 · mención en el texto | 1 |
-| Lumbar | — | `sistemas.0.preguntas.5.urgencia` | 2 · mención en el texto | 1 |
-| Rodilla | — | `sistemas.0.preguntas.5.urgencia` | 2 · mención en el texto | 1 |
-| Codo | — | `sistemas.0.preguntas.5.urgencia` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | `sistemas.0.preguntas.5.urgencia` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.0.preguntas.6.urgencia` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.0.preguntas.6.urgencia` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.0.preguntas.6.urgencia` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.0.preguntas.6.urgencia` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.0.preguntas.6.urgencia` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.0.preguntas.6.urgencia` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.0.preguntas.6.urgencia` | 2 · mención en el texto | 1 |
 
 ### Gomes 2022
 
@@ -6513,7 +6513,7 @@ Título: *Acute Compartment Syndrome*
 Publicación: StatPearls [Internet], NBK448124 (act. 2023-01-16)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de rodilla. Releído en la sesión de tobillo y pie (2026-10): razonamiento del cribado de tobillo y pie.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de rodilla. Releído en la sesión de tobillo y pie (2026-10): razonamiento del cribado de tobillo y pie. Releído entero en la sesión del cribado posquirúrgico (2026-10), PDF del usuario: razonamiento de pq_compart.
 
 Citada como:
 
@@ -6521,6 +6521,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `pq_compart` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 

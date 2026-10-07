@@ -280,7 +280,7 @@ export const SIS_HEMATOLOGICO = {
 // Fuentes leídas en la sesión (2026-10): Zabaglo 2024 y NICE NG125 (herida),
 // NICE NG158 y NG89 y Vyas 2024 (TVP y embolia), Guthmiller 2025 y Goebel 2018
 // (SDRC; guía del Royal College of Physicians, que también respalda la
-// pregunta del nervio). El síndrome compartimental queda pendiente de fuente.
+// pregunta del nervio) y Torlincasi 2023 (síndrome compartimental).
 const PQ_MIEMBROS = ['hombro', 'codo', 'cadera', 'rodilla', 'tobillo_pie'];
 const PQ_CITA = {
   zabaglo: { texto: 'Zabaglo 2024 — Zabaglo, Leslie y Sharman, «Postoperative Wound Infections», StatPearls [Internet], NCBI Bookshelf, última actualización 5 de marzo de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK560533/' },
@@ -289,6 +289,7 @@ const PQ_CITA = {
   ng89: { texto: 'NICE NG89 — NICE, «Venous thromboembolism in over 16s: reducing the risk of hospital-acquired deep vein thrombosis or pulmonary embolism» (2018, actualizada el 13 de agosto de 2019), recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3.', url: 'https://www.nice.org.uk/guidance/ng89' },
   vyas: { texto: 'Vyas 2024 — Vyas, Sankari y Goyal, «Acute Pulmonary Embolism», StatPearls [Internet], NCBI Bookshelf, última actualización 11 de diciembre de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK560551/' },
   guthmiller: { texto: 'Guthmiller 2025 — Guthmiller, Dua, Dey y Varacallo, «Complex Regional Pain Syndrome», StatPearls [Internet], NCBI Bookshelf, última actualización 4 de mayo de 2025.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430719/' },
+  torlincasi: { texto: 'Torlincasi 2023 — Torlincasi, Lopez y Waseem, «Acute Compartment Syndrome», StatPearls [Internet], NCBI Bookshelf, última actualización 16 de enero de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK448124/' },
   goebel: { texto: 'Goebel 2018 — Goebel, Barker, Turner-Stokes et al., «Complex regional pain syndrome in adults: UK guidelines for diagnosis, referral and management in primary and secondary care», 2.ª ed. (Royal College of Physicians, 2018), pp. 1–3 (introducción y tabla 1), 6–12 (atención primaria y fisioterapia), 13–16 (práctica quirúrgica), 45–46 (apéndice 4) y 51–54 (apéndice 7).', url: 'https://www.rcp.ac.uk/media/4uijppdz/complex-regional-pain-syndrome-in-adults-second-edition_0.pdf' },
 };
 
@@ -317,6 +318,7 @@ export const SIS_POSQUIRURGICO = {
     'En las 48–72 horas siguientes, dolor desproporcionado con piel oscura, ampollas, crepitación o signos de sepsis (infección necrotizante: urgencia quirúrgica)',
     'Pierna hinchada, caliente o dolorosa (TVP)',
     'Falta de aire brusca, dolor en el pecho al respirar, tos con sangre o síncope (embolia pulmonar)',
+    'Dolor desproporcionado que va a más, sobre todo al estirar los dedos, con el compartimento tenso, en las horas siguientes a la lesión, la operación o un yeso o vendaje (síndrome compartimental)',
     'Dolor quemante, hormigueo, adormecimiento o debilidad nuevos en el territorio de un nervio (posible lesión nerviosa)'
   ],
   banderasAmarillas: [
@@ -359,6 +361,23 @@ export const SIS_POSQUIRURGICO = {
         },
         fuentes: ['Vyas 2024', 'NICE NG158'],
         citas: [PQ_CITA.vyas, PQ_CITA.ng158]
+      } },
+    { id: 'pq_compart', regiones: ['codo', 'rodilla', 'tobillo_pie'], urgencia: 'Posible síndrome compartimental: a urgencias sin demora (la fasciotomía, idealmente en las primeras 6 horas).', text: '¿Desde la operación, o desde que le pusieron un yeso, una férula o un vendaje, tiene un dolor intenso y desproporcionado que va a más, sobre todo al estirar los dedos, con la zona muy tensa, hormigueo o adormecimiento?', alerta: true,
+      razonamiento: {
+        porque: 'Los músculos de los miembros están en compartimentos cerrados por fascias que no ceden. Si el contenido aumenta (sangrado o edema tras una fractura o una operación) o algo aprieta desde fuera (un yeso, una férula o un vendaje circular), sube la presión dentro: primero se frena la salida de la sangre venosa y después la entrada arterial, y el músculo y el nervio se quedan sin oxígeno. Da un dolor desproporcionado que aumenta al estirar los músculos del compartimento, la zona tensa «como madera» y hormigueo; si sigue, el tejido se necrosa.',
+        peso: 'Es una urgencia quirúrgica, y el tiempo lo decide todo: con la fasciotomía en las primeras 6 horas la función del miembro se recupera casi del todo; a las 12 horas, solo dos tercios quedan con función normal, y en los casos muy tardíos puede acabar en amputación (Torlincasi). Suele aparecer en pocas horas, hasta 48 horas después de la causa: la lesión, la operación o un yeso o vendaje apretado. El primer signo objetivo es el compartimento tenso, y el dolor, al principio, puede aparecer solo al estirarlo pasivamente. De las «cinco P» (dolor, ausencia de pulso, parestesias, parálisis, palidez), todas salvo las parestesias son tardías, y un pulso palpable no lo descarta. Los signos clínicos tienen una sensibilidad y una especificidad limitadas, así que la exploración se repite (Torlincasi). Ante la sospecha, a urgencias sin demora.',
+        detalle: 'Quién y cuándo (Torlincasi): el 75 % se asocia a fracturas; la de la diáfisis de la tibia es la causa más frecuente (lo sufre el 1–10 % de esas fracturas), seguida de la del radio distal. También tras lesiones de partes blandas, aplastamiento, lesiones vasculares, quemaduras, reperfusión, trastornos de la coagulación, infecciones, yesos o férulas mal colocados, vendajes circulares apretados, actividad deportiva intensa y una mala postura durante la cirugía. En niños, las fracturas supracondíleas del húmero y las del antebrazo. Más frecuente en varones menores de 35 años. Sin fractura, el riesgo de diagnosticarlo tarde y de complicaciones es mayor. Una fractura abierta no lo evita: la herida de la piel no descomprime los compartimentos.\n\nDónde: el compartimento anterior de la pierna es el más frecuente; también el antebrazo, el muslo, el glúteo, el hombro, la mano y el pie (Torlincasi).\n\nQué explorar (Torlincasi): la piel (lesiones, hinchazón, color), la tensión, la temperatura y el dolor a la palpación del compartimento, los pulsos, la sensibilidad y la discriminación de dos puntos y la fuerza, siempre en el territorio de ese compartimento, y repetirlo, porque progresa rápido. La presión normal de un compartimento es menor de 10 mmHg; con 30 o más, o con una diferencia de 30 o menos entre la presión diastólica y la del compartimento, está indicada la fasciotomía; una sola medida normal no lo descarta. Mientras se consulta con cirugía, se retiran los yesos, vendajes o apósitos que compriman y el miembro se mantiene a la altura del corazón, sin elevarlo.\n\nCon qué se confunde (Torlincasi): TVP, celulitis, gangrena gaseosa, rabdomiólisis y lesiones vasculares periféricas. Secuelas si llega tarde: contracturas (Volkmann), lesión nerviosa con adormecimiento o debilidad, rabdomiólisis, insuficiencia renal, infección y, en algunos casos, la muerte.',
+        fisiologia: {
+          pasos: [
+            'La fascia que rodea cada compartimento muscular es fina e inextensible: no deja que el contenido se expanda deprisa (Torlincasi).',
+            'Si aumenta el líquido dentro (sangrado, edema) o algo restringe el espacio desde fuera (yeso, vendaje), sube la presión del compartimento (Torlincasi).',
+            'Primero cae la salida venosa y sube la presión en los capilares venosos; si la presión del compartimento supera la arterial, cae también la entrada de sangre (Torlincasi).',
+            'Músculo y nervio se quedan sin oxígeno: dolor desproporcionado, que aumenta al estirarlos, y hormigueo (Torlincasi).',
+            'Si la isquemia se prolonga, la necrosis es irreversible (Torlincasi).'
+          ]
+        },
+        fuentes: ['Torlincasi 2023'],
+        citas: [PQ_CITA.torlincasi]
       } },
     { id: 'pq_sdrc', regiones: PQ_MIEMBROS, text: '¿Tiene un dolor continuo y desproporcionado para la operación, con cambios de color, temperatura, sudoración o hinchazón en la zona, o le duele incluso el roce de la ropa?', alerta: true,
       razonamiento: {

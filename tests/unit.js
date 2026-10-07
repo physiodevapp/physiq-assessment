@@ -2012,8 +2012,8 @@ console.log('\npaciente posquirúrgico');
   test('cribado posquirúrgico: el mismo sistema, el primero, en las 7 regiones; preguntas y urgencias decididas', () => {
     const { SIS_POSQUIRURGICO: SIS } = await_comun;
     for (const [r, d] of Object.entries(SYSTEMIC_SCREENING)) assert.equal(d.sistemas[0], SIS, r);
-    assert.deepEqual(SIS.preguntas.map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_sdrc', 'pq_nervio']);
-    assert.deepEqual(SIS.preguntas.filter(q => q.urgencia).map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_nervio']);
+    assert.deepEqual(SIS.preguntas.map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_compart', 'pq_sdrc', 'pq_nervio']);
+    assert.deepEqual(SIS.preguntas.filter(q => q.urgencia).map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_compart', 'pq_nervio']);
     const regiones = Object.keys(SYSTEMIC_SCREENING);
     for (const q of SIS.preguntas) (q.regiones || []).forEach(r => assert.ok(regiones.includes(r), `${q.id}: región ${r}`));
     // Cada región ve una sola pregunta de TVP
