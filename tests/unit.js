@@ -1673,6 +1673,10 @@ test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de
     assert.match(bloque, /van en Limitaciones en las Actividades\):\n    · ¿Le aparece o le aumenta el dolor al…\? → Levantar el brazo, por delante o por un lado: Sí\n/);
     const amp = IA.construirAmpliado();
     assert.deepEqual(amp.formulario, f);
+    // `iaTexto`: nombre clínico solo para la IA (tradujo la fila como «dedos en resorte»)
+    state.formularioPrevio.regiones.hombro.antecedentes = { dupuytren: 'No' };
+    assert.ok(FM.resumenFormularioIA().some(x => x.a === 'Contractura de Dupuytren (dedos que se quedan doblados hacia la palma): No'));
+    assert.ok(FM.resumenFormularioPrevio().some(x => x.a === 'Dedos que se le quedan doblados hacia la palma: No'), 'el resumen normal sigue con el texto del papel');
     const ctx = IN.contextoValoracion(buildPhysiQPayload(), r => r, amp);
     assert.ok(ctx.includes('agrupado por la sección del informe'));
     assert.ok(!ctx.includes('(pregunta → respuesta):\n  · '), 'con datos ampliados no va el fp plano');
@@ -1690,7 +1694,9 @@ test('prompt: «No sé» nunca como negación, sin negativos inventados, cada da
   const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
   assert.match(narr, /La intensidad y la irritabilidad van en Dolor/);
   assert.match(narr, /Las actividades que provocan el dolor van en Limitaciones/);
-  assert.match(narr, /se dice aquí y solo aquí/);
+  assert.match(narr, /dilo aquí y solo aquí, como «no muestra hallazgos que sugieran…», sin nombrar estructuras ni síndromes que no estén en los datos/);
+  assert.match(narr, /Si no las hay, describe los hallazgos sin mencionar que faltan mediciones/);
+  assert.ok(!/Lo que se descarta de otra región/.test(narr), "la indicación ya no invita a «descartar»");
   assert.match(narr, /sin suponer cómo podría afectarle/);
   assert.match(narr, /por falta de mejoría \(aquí y solo aquí\)/);
   assert.ok(!narr.includes('plan y pauta, y al final el seguimiento'), 'en el narrativo el seguimiento tiene su propia sección');
@@ -1701,7 +1707,7 @@ test('prompt: sin fisiopatología inventada, ejemplos negativos en Limitaciones,
   for (const pl of Object.values(IN.PLANTILLAS)) {
     const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
     assert.match(p, /No añadas causas, mecanismos, secuelas ni fases de curación o de recuperación que no estén en los datos/);
-    assert.match(p, /«secuela esperada»/);
+    assert.match(p, /tampoco atribuyas los hallazgos a secuelas ni a la evolución esperable/);
     assert.match(p, /Si hay protocolo \(escrito o verbal\), sigue sus restricciones tal como constan: no pidas confirmarlo/);
     assert.match(p, /Cada recomendación del plan aparece una sola vez/);
   }
@@ -1887,6 +1893,7 @@ console.log('\nlicencia del informe narrativo (motivo del error)');
 // ── Lado afectado (fase 2) ─────────────────────────────────────────────────────
 console.log('\nlado afectado');
 const IN_INFORME = await import('../lib/informe-narrativo.js');
+const { ladoTexto } = await import('../lib/region.js');
 test('lado: viaja en el payload (la) y sale en 📋 Notas, 📄 Informe y el informe con IA', () => {
   withState({ region: 'hombro', lado: 'Derecho' }, () => {
     const d = buildPhysiQPayload();
@@ -1897,6 +1904,15 @@ test('lado: viaja en el payload (la) y sale en 📋 Notas, 📄 Informe y el inf
     assert.match(IN2.buildNarrativePrompt(d, { conAudio: false, nombreRegion: r => r.charAt(0).toUpperCase() + r.slice(1) }), /Región valorada: Hombro \(derecho\)/);
     assert.match(IN2.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'hombro', la: 'Derecho' }, r => 'Hombro'), /Región valorada: Hombro \(derecho\)/);
   });
+  // Concordancia con la región: «Rodilla (izquierda)», no «(izquierdo)»
+  withState({ region: 'rodilla', lado: 'Izquierdo' }, () => {
+    assert.match(buildContextSummaryText(), /Región: Rodilla \(izquierda\)/);
+    assert.match(buildInformeFisioterapiaText(), /Región valorada: Rodilla \(izquierda\)/);
+    assert.equal(IN_INFORME.regionTexto(buildPhysiQPayload(), r => 'Rodilla'), 'Rodilla (izquierda)');
+  });
+  for (const [r, l, esperado] of [['cadera', 'Derecho', 'derecha'], ['lumbar', 'Izquierdo', 'izquierda'], ['cervical', 'Central', 'central'],
+    ['rodilla', 'Bilateral', 'bilateral'], ['hombro', 'Izquierdo', 'izquierdo'], ['codo', 'Derecho', 'derecho'], ['tobillo_pie', 'Izquierdo', 'izquierdo']])
+    assert.equal(ladoTexto(r, l), esperado, `${r} ${l}`);
   withState({ region: 'hombro', lado: '' }, () => {
     assert.equal(buildPhysiQPayload().la, '');
     assert.match(buildInformeFisioterapiaText(), /Región valorada: Hombro\n/);
