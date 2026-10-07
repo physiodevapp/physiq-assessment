@@ -19,12 +19,14 @@
 import { state } from './state.js';
 import { CIF_TREES, HYPOTHESES, SYSTEMIC_SCREENING, DOSIS_DERIVAR } from './data.js';
 import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast, resumenFormularioIA } from './app.js';
-import { esTratada } from './phase4b.js';
-import { esPosquirurgico } from './lib/posquirurgico.js';
+import { esTratada, hipotesis, hipotesisActivas } from './phase4b.js';
+import { esPosquirurgico, cirugiaPayload, pautaHipPosq } from './lib/posquirurgico.js';
+import { revisarInforme } from './lib/revision-informe.js';
 import {
   ORCHESTRATOR_URL, TURNSTILE_SITEKEY, MAX_AUDIO_BYTES, PLANTILLAS, plantillaPorDefecto,
   getWhisperPrompt, huellaPayload, parseSSEBuffer, parseSSEBlock,
-  informeTruncado, markdownAHtml, textoParaCompartir, extensionAudio, errorLegible,
+  informeTruncado, markdownAHtml, textoParaCompartir, extensionAudio, errorLegible, errorConexion,
+  transcripcionSinVoz, TEXTO_SIN_VOZ,
 } from './lib/informe-narrativo.js';
 import { estadoLicencia, onLicencia, comprobarLicencia, probarClave, marcarSinLicencia, claveGuardada, detalleLicencia } from './lib/licencia-ia.js';
 import {
@@ -227,6 +229,7 @@ function pintarResultado() {
   const plantilla = PLANTILLAS[inf.plantilla] || PLANTILLAS.narrativo;
   el.innerHTML = `
     <div id="iaAvisoHuella"></div>
+    <div id="iaRevision"></div>
     ${informeTruncado(inf.texto, inf.plantilla) ? '<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>El informe parece incompleto: la última sección no se ha generado. Puedes generarlo de nuevo.</div></div>' : ''}
     <details class="ia-resultado-det" id="iaResultadoDet"${_resultadoAbierto ? ' open' : ''}>
       <summary>
@@ -245,6 +248,32 @@ function pintarResultado() {
   refrescarHuella();
 }
 
+// Revisión automática (lib/revision-informe.js): compara el texto con los
+// datos actuales de la valoración y lista «puntos a revisar». Sin red ni IA;
+// se recalcula con la huella, así que sigue los cambios de la valoración.
+function pintarRevision() {
+  const el = $('iaRevision');
+  const inf = state.informeIA;
+  if (!el || !inf?.texto) return;
+  let puntos;
+  try {
+    puntos = revisarInforme(inf.texto, {
+      datos: buildPhysiQPayload(), ampliado: construirAmpliado(), plantilla: inf.plantilla || 'narrativo',
+      transcripcion: inf.conAudio ? inf.transcripcion : '', nombreRegion,
+    });
+  } catch { el.innerHTML = ''; return; }   // una regla rota nunca tumba la tarjeta
+  if (!puntos.length) {
+    el.innerHTML = '<div class="ia-revision ia-revision-ok">✓ Sin incidencias en las comprobaciones automáticas. Revisa el informe antes de compartirlo.</div>';
+    return;
+  }
+  const altos = puntos.some(p => p.nivel === 'alto');
+  el.innerHTML = `<details class="ia-revision${altos ? ' ia-revision-alta' : ''}"${altos ? ' open' : ''}>
+      <summary>⚠ ${puntos.length} ${puntos.length === 1 ? 'punto' : 'puntos'} a revisar en el informe</summary>
+      <ul>${puntos.map(p => `<li class="ia-rev-${p.nivel}">${esc(p.mensaje)}${p.cita ? `<span class="ia-rev-cita">«${esc(p.cita)}»</span>` : ''}</li>`).join('')}</ul>
+      <div class="ia-rev-nota">Comprobaciones automáticas del texto frente a la valoración: pueden señalar algo correcto. No cambian el informe.</div>
+    </details>`;
+}
+
 const contarPalabras = t => (String(t || '').replace(/[#|*-]/g, ' ').match(/\S+/g) || []).length;
 
 function refrescarHuella() {
@@ -255,6 +284,7 @@ function refrescarHuella() {
   el.innerHTML = cambio
     ? '<div class="alert alert-warning"><span class="alert-icon">✎</span><div>La valoración ha cambiado desde que se generó este informe. Genera uno nuevo si quieres que lo refleje.</div></div>'
     : '';
+  pintarRevision();
 }
 let _huellaTimer = null;
 function _refrescarHuellaDiferido() {
@@ -284,9 +314,15 @@ export function construirAmpliado() {
 
   const tests = [];
   const pautas = [];
-  for (const id of state.activeHypotheses || []) {
-    const h = HYPOTHESES[id];
+  for (const id of hipotesisActivas()) {
+    const h = hipotesis(id);
     if (!h) continue;
+    // Posquirúrgica genérica (`pq1`): la cirugía es la condición de salud; sin
+    // tests, y la pauta es el protocolo del cirujano
+    if (h.posquirurgica) {
+      pautas.push({ hipotesis: h.name, derivar: false, posquirurgica: true, pauta: pautaHipPosq(cirugiaPayload(state.mecanismo, state.cirugia)), fuente: '', prom: h.prom || '' });
+      continue;
+    }
     // «Ya diagnosticada y tratada»: ni derivación ni tests (no aplican)
     if (esTratada(id)) {
       pautas.push({ hipotesis: h.name, derivar: false, tratada: true, operada: esPosquirurgico(state.mecanismo), pauta: '', fuente: '', prom: h.prom || '' });
@@ -326,6 +362,7 @@ export function construirAmpliado() {
 
   return {
     edad: state.edadPaciente ?? null,
+    sexo: state.sexo || '',
     signoComparable: (state.signoComparable || '').trim(),
     estabilidad: state.estabilidad || '',
     // Con el nivel elegido directamente (modo breve) la matriz no se rellenó
@@ -381,7 +418,8 @@ function pintarAudio() {
         <span>${g.fase === 'pausado' ? 'Grabación en pausa' : 'Grabación en curso'}</span>
         <span class="ia-crono" id="iaCrono">${fmtTiempo(g.duracionMs)}</span>
       </div>
-      ${g.sinSenal ? '<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>El micrófono no está dando señal.</div></div>' : ''}
+      ${g.sinSenal ? '<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>El micrófono no está dando señal.</div></div>'
+        : g.silencio ? '<div class="alert alert-warning ia-aviso-silencio"><span class="alert-icon">⚠️</span><div>No se oye nada en la grabación. Revisa que el navegador use el micrófono correcto y que no esté silenciado; si no, el informe saldrá sin lo hablado.</div></div>' : ''}
       <div class="ia-audio-pista">Al generar el informe, la grabación se cierra y se usa. Para pausarla o reanudarla, toca la píldora de la cabecera.</div>`;
     return;
   }
@@ -517,6 +555,7 @@ function pintarProgreso() {
     <details class="ia-vivo" id="iaVivo"${_vivoAbierto ? ' open' : ''}><summary>Ver mientras se escribe</summary>
       <div class="ia-informe" id="iaVistaPrevia">${markdownAHtml(_gen.texto)}</div>
     </details>
+    <div class="ia-nota-pantalla">Mantén la pantalla encendida y la app abierta hasta que termine: si el móvil se bloquea o cambias de app, la generación se corta.</div>
     <div class="ia-acciones"><button class="phase5-copy-btn ia-btn-descartar" onclick="iaCancelar()">Cancelar</button></div>`;
   $('iaVivo').addEventListener('toggle', e => {
     _vivoAbierto = e.target.open;
@@ -551,6 +590,30 @@ function refrescarVistaPrevia() {
 }
 
 class ModoDemo extends Error {}
+// Whisper devolvió una transcripción sin voz (silencio o texto de relleno
+// como «Subtítulos realizados por la comunidad de Amara.org»): se corta antes
+// de redactar, para no gastar un informe que ignoraría el audio.
+class SinVoz extends Error {}
+
+// Pantalla encendida mientras se genera (como al grabar, grabadora.js): el
+// bloqueo automático de la pantalla suspende la página y corta el stream. El
+// navegador suelta el wake lock al ocultar la página; al volver se pide otra
+// vez, y se apunta que hubo un paso por segundo plano para explicar el fallo.
+let _wakeLockGen = null;
+function pedirWakeLockGen() {
+  navigator.wakeLock?.request('screen').then(l => {
+    if (_gen) _wakeLockGen = l; else l.release().catch(() => {});
+  }).catch(() => {});
+}
+function soltarWakeLockGen() {
+  _wakeLockGen?.release?.().catch(() => {});
+  _wakeLockGen = null;
+}
+document.addEventListener('visibilitychange', () => {
+  if (!_gen) return;
+  if (document.visibilityState === 'hidden') _gen.oculto = true;
+  else pedirWakeLockGen();
+});
 
 async function iaGenerar() {
   if (motivoBloqueo()) { pintarBoton(); return; }
@@ -580,8 +643,9 @@ async function iaGenerar() {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 300000);
   _error = null;
-  _gen = { texto: '', transcripcion: '', fase: conAudio ? 'transcribiendo' : 'redactando', ctrl };
+  _gen = { texto: '', transcripcion: '', fase: conAudio ? 'transcribiendo' : 'redactando', ctrl, oculto: false, conAudio };
   _vivoAbierto = false;
+  pedirWakeLockGen();
   pintar();
 
   const token = consumirToken();
@@ -610,7 +674,7 @@ async function iaGenerar() {
       conAudio,
       plantilla,
       huella: huellaPayload({ ...datos, _ampliado: ampliado }),
-      datos: { p: datos.p, d: datos.d, r: datos.r, la: datos.la, ed: ampliado.edad },
+      datos: { p: datos.p, d: datos.d, r: datos.r, la: datos.la, ed: ampliado.edad, sx: ampliado.sexo },
     };
     saveSession();
     // Con el informe guardado, el audio ya no hace falta en el dispositivo.
@@ -620,17 +684,25 @@ async function iaGenerar() {
     _resultadoAbierto = false;
     showToast('✓ Informe narrativo generado', 'success');
   } catch (err) {
-    if (err instanceof ModoDemo) {
+    if (err instanceof SinVoz) {
+      // Se conserva el audio: se puede escuchar, quitar o reintentar.
+      _error = { texto: TEXTO_SIN_VOZ, original: '', sinAudio: true };
+      showToast('El audio no contiene voz reconocible.', 'warning');
+    } else if (err instanceof ModoDemo) {
       marcarSinLicencia();
       showToast('Este navegador no tiene una licencia PhysiQ válida.', 'warning');
     } else if (err.name === 'AbortError') {
       if (!_gen?.cancelado) showToast('Tiempo de espera agotado. Inténtalo de nuevo.', 'warning');
     } else {
-      _error = errorLegible(err.message);
+      // El audio no se toca: solo se borra con el informe ya guardado.
+      _error = errorConexion(err, { seOculto: !!_gen?.oculto || document.visibilityState === 'hidden' }) || errorLegible(err.message);
       showToast('No se ha podido generar el informe.', 'warning');
     }
   } finally {
     clearTimeout(timer);
+    soltarWakeLockGen();
+    _cerrarDlgCancelar?.();   // la generación ya acabó: no queda nada que cancelar
+    _cerrarDlgCancelar = null;
     ctrl.abort();   // suelta el stream si se salió antes de leerlo entero (p. ej. modo demo)
     _gen = null;
     pintar();
@@ -642,7 +714,11 @@ async function leerStream(res) {
   const decoder = new TextDecoder();
   let buf = '';
   const procesar = ev => {
-    if (ev.type === 'transcript') { _gen.transcripcion = ev.data.text ?? ''; _gen.fase = 'redactando'; refrescarVistaPrevia(); }
+    if (ev.type === 'transcript') {
+      _gen.transcripcion = ev.data.text ?? '';
+      if (_gen.conAudio && transcripcionSinVoz(_gen.transcripcion)) throw new SinVoz();
+      _gen.fase = 'redactando'; refrescarVistaPrevia();
+    }
     else if (ev.type === 'report_chunk') { _gen.texto += ev.data.text ?? ''; refrescarVistaPrevia(); }
     else if (ev.type === 'error') throw new Error(ev.data.message || 'Error desconocido');
     else if (ev.type === 'done') return true;
@@ -662,7 +738,23 @@ async function leerStream(res) {
   }
 }
 
+// «Cancelar» pide confirmación: lo escrito se pierde y repetir es esperar
+// otra vez (y probablemente volver a pagar las APIs), y en el móvil el botón
+// queda bajo el texto que se va escribiendo. Mientras el diálogo está abierto
+// la generación sigue; si acaba (bien o con error), el diálogo se cierra solo.
+let _cerrarDlgCancelar = null;
 function iaCancelar() {
+  if (!_gen) return;
+  _cerrarDlgCancelar = showConfirmBanner('Cancelar la generación',
+    'Se perderá lo que lleva escrito el informe. El audio se conserva y podrás volver a generarlo.',
+    // «Sí, cancelar» se queda en «Cancelar» por debajo de 480 px, para que el
+    // botón no ocupe dos líneas
+    '<span class="btn-text-full">Sí, cancelar</span><span class="btn-text-short">Cancelar</span>',
+    cancelarGeneracion, { cancelLabel: 'Seguir' });
+}
+
+function cancelarGeneracion() {
+  _cerrarDlgCancelar = null;
   if (!_gen) return;
   _gen.cancelado = true;
   _gen.ctrl.abort();

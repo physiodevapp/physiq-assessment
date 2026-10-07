@@ -1505,6 +1505,91 @@ test('errores de los servicios en español, con el original y la salida sin audi
   assert.equal(propio.original, '');
 });
 
+test('conexión cortada al generar: pantalla apagada / segundo plano, no un error de la API', () => {
+  const red = m => Object.assign(new TypeError(m), {});
+  // Los textos reales de iOS, Chrome y Firefox
+  for (const m of ['Load failed', 'Failed to fetch', 'network error', 'NetworkError when attempting to fetch resource.', 'The network connection was lost.']) {
+    const e = IN.errorConexion(red(m), { seOculto: true });
+    assert.equal(e?.texto, IN.TEXTO_CONEXION_SEGUNDO_PLANO, m);
+    assert.equal(e.original, m);
+    assert.equal(e.sinAudio, false);
+  }
+  assert.equal(IN.errorConexion(red('Failed to fetch')).texto, IN.TEXTO_CONEXION_PERDIDA);
+  // No son cortes: errores de la API (Error, aunque hablen de conexión) y fallos de código
+  assert.equal(IN.errorConexion(new Error('Claude: connection reset by peer'), { seOculto: true }), null);
+  assert.equal(IN.errorConexion(new Error('Error del servidor (500)'), { seOculto: true }), null);
+  assert.equal(IN.errorConexion(new TypeError("Cannot read properties of undefined (reading 'text')"), { seOculto: true }), null);
+  assert.equal(IN.errorConexion(null), null);
+});
+
+test('cancelar la generación pide confirmación y el diálogo se cierra solo si la generación acaba', () => {
+  const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+  const cancelar = src.slice(src.indexOf('function iaCancelar'), src.indexOf('function cancelarGeneracion'));
+  assert.match(cancelar, /showConfirmBanner\('Cancelar la generación'[\s\S]*<span class="btn-text-full">Sí, cancelar<\/span><span class="btn-text-short">Cancelar<\/span>',\s*cancelarGeneracion, \{ cancelLabel: 'Seguir' \}\)/);
+  assert.doesNotMatch(cancelar, /ctrl\.abort/, 'el botón ya no corta sin confirmar');
+  const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
+  assert.match(gen, /finally \{[\s\S]*_cerrarDlgCancelar\?\.\(\);/);
+  // showConfirmBanner: botón de cerrar configurable y cierre desde fuera idempotente
+  const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  assert.match(app, /\$\{opts\.cancelLabel \|\| 'Cancelar'\}/);
+  assert.match(app, /if \(!overlay\.isConnected\) return;[\s\S]{0,300}return dismiss;/);
+});
+
+test('transcripción sin voz: silencio o texto de relleno de Whisper', () => {
+  // Lo que Whisper devuelve con un audio en silencio
+  for (const t of ['', '   ', 'Subtítulos realizados por la comunidad de Amara.org',
+    'Subtítulos realizados por la comunidad de Amara.org Subtítulos realizados por la comunidad de Amara.org',
+    '¡Suscríbete! Gracias por ver el vídeo.', 'Thank you for watching.', 'Hola. Hola. Hola. Hola.',
+    'Gracias por ver. Gracias por ver. Gracias por ver.'])
+    assert.equal(IN.transcripcionSinVoz(t), true, t);
+  // Una consulta real, aunque sea corta o acabe con relleno
+  for (const t of ['Me duele la rodilla izquierda desde hace dos meses, sobre todo al correr.',
+    'Buenos días, Lucía. Cuéntame qué te pasa. Me duele la rodilla. Subtítulos realizados por la comunidad de Amara.org',
+    'Sí. No. Al bajar escaleras me duele por delante.'])
+    assert.equal(IN.transcripcionSinVoz(t), false, t);
+  assert.match(IN.TEXTO_SIN_VOZ, /micrófono/);
+});
+
+test('al generar: una transcripción sin voz corta antes de redactar y conserva el audio', () => {
+  const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+  const stream = src.slice(src.indexOf('async function leerStream'), src.indexOf('function iaCancelar'));
+  // Solo con audio: sin audio la transcripción vacía es lo esperado
+  assert.match(stream, /_gen\.conAudio && transcripcionSinVoz\(_gen\.transcripcion\)\) throw new SinVoz\(\)/);
+  const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
+  const captura = gen.slice(gen.indexOf('} catch (err) {'), gen.lastIndexOf('} finally {'));
+  assert.match(captura, /err instanceof SinVoz[\s\S]*texto: TEXTO_SIN_VOZ[^}]*sinAudio: true/);
+  assert.ok(captura.length > 100);
+  assert.doesNotMatch(captura, /quitarAudio/);
+  // Sale por el catch sin guardar informe; el finally aborta el stream
+  assert.match(gen, /finally \{[\s\S]*ctrl\.abort\(\)/);
+});
+
+const G_SILENCIO = await import('../grabadora.js');
+test('grabadora: aviso de silencio solo grabando, antes al empezar que a media consulta', () => {
+  const G = G_SILENCIO;
+  assert.equal(G.silencioDetectado({ huboSonido: false, msSinSonido: G.SILENCIO_INICIO_MS - 500 }), false);
+  assert.equal(G.silencioDetectado({ huboSonido: false, msSinSonido: G.SILENCIO_INICIO_MS }), true);
+  assert.equal(G.silencioDetectado({ huboSonido: true, msSinSonido: G.SILENCIO_INICIO_MS }), false);
+  assert.equal(G.silencioDetectado({ huboSonido: true, msSinSonido: G.SILENCIO_MS }), true);
+  assert.ok(G.SILENCIO_MS > G.SILENCIO_INICIO_MS);
+  const src = readFileSync(new URL('../grabadora.js', import.meta.url), 'utf8');
+  const medir = src.slice(src.indexOf('function medirNivel'), src.indexOf('export function pausar'));
+  assert.match(medir, /g\.pausado \|\| n\.ctx\.state !== 'running'\) return/, 'en pausa o sin medir, nunca avisa');
+  assert.match(src, /rec\.onstop = \(\) => \{[\s\S]{0,80}pararNivel\(g\)/, 'el AudioContext se cierra con la grabación');
+});
+
+test('al generar: pantalla encendida, aviso visible y corte explicado sin borrar el audio', () => {
+  const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+  const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
+  assert.match(gen, /pedirWakeLockGen\(\);/);
+  assert.match(gen, /finally \{[\s\S]*soltarWakeLockGen\(\);/);
+  assert.match(gen, /errorConexion\(err, \{ seOculto: [^}]*\}\) \|\| errorLegible\(err\.message\)/);
+  // El audio solo se quita tras guardar el informe, nunca en el catch
+  const captura = gen.slice(gen.indexOf('} catch (err) {'), gen.lastIndexOf('} finally {'));
+  assert.doesNotMatch(captura, /quitarAudio/);
+  assert.match(src, /class="ia-nota-pantalla">Mantén la pantalla encendida/);
+});
+
 test('extensión del audio según el tipo MIME', () => {
   assert.equal(IN.extensionAudio('audio/webm;codecs=opus'), 'webm');
   assert.equal(IN.extensionAudio('audio/mp4'), 'm4a');
@@ -1644,6 +1729,10 @@ test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de
     assert.match(bloque, /van en Limitaciones en las Actividades\):\n    · ¿Le aparece o le aumenta el dolor al…\? → Levantar el brazo, por delante o por un lado: Sí\n/);
     const amp = IA.construirAmpliado();
     assert.deepEqual(amp.formulario, f);
+    // `iaTexto`: nombre clínico solo para la IA (tradujo la fila como «dedos en resorte»)
+    state.formularioPrevio.regiones.hombro.antecedentes = { dupuytren: 'No' };
+    assert.ok(FM.resumenFormularioIA().some(x => x.a === 'Contractura de Dupuytren (dedos que se quedan doblados hacia la palma): No'));
+    assert.ok(FM.resumenFormularioPrevio().some(x => x.a === 'Dedos que se le quedan doblados hacia la palma: No'), 'el resumen normal sigue con el texto del papel');
     const ctx = IN.contextoValoracion(buildPhysiQPayload(), r => r, amp);
     assert.ok(ctx.includes('agrupado por la sección del informe'));
     assert.ok(!ctx.includes('(pregunta → respuesta):\n  · '), 'con datos ampliados no va el fp plano');
@@ -1661,7 +1750,9 @@ test('prompt: «No sé» nunca como negación, sin negativos inventados, cada da
   const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
   assert.match(narr, /La intensidad y la irritabilidad van en Dolor/);
   assert.match(narr, /Las actividades que provocan el dolor van en Limitaciones/);
-  assert.match(narr, /se dice aquí y solo aquí/);
+  assert.match(narr, /dilo aquí y solo aquí, como «no muestra hallazgos que sugieran…», sin nombrar estructuras ni síndromes que no estén en los datos/);
+  assert.match(narr, /Si no las hay, describe los hallazgos sin mencionar que faltan mediciones/);
+  assert.ok(!/Lo que se descarta de otra región/.test(narr), "la indicación ya no invita a «descartar»");
   assert.match(narr, /sin suponer cómo podría afectarle/);
   assert.match(narr, /por falta de mejoría \(aquí y solo aquí\)/);
   assert.ok(!narr.includes('plan y pauta, y al final el seguimiento'), 'en el narrativo el seguimiento tiene su propia sección');
@@ -1672,7 +1763,7 @@ test('prompt: sin fisiopatología inventada, ejemplos negativos en Limitaciones,
   for (const pl of Object.values(IN.PLANTILLAS)) {
     const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
     assert.match(p, /No añadas causas, mecanismos, secuelas ni fases de curación o de recuperación que no estén en los datos/);
-    assert.match(p, /«secuela esperada»/);
+    assert.match(p, /tampoco atribuyas los hallazgos a secuelas ni a la evolución esperable/);
     assert.match(p, /Si hay protocolo \(escrito o verbal\), sigue sus restricciones tal como constan: no pidas confirmarlo/);
     assert.match(p, /Cada recomendación del plan aparece una sola vez/);
   }
@@ -1680,6 +1771,48 @@ test('prompt: sin fisiopatología inventada, ejemplos negativos en Limitaciones,
   assert.match(narr, /Si aquí aparece fuerza, crujidos, bloqueos.*está mal/);
   assert.match(narr, /ni frases para decir que algo no se hizo, no se midió o «no se dispone de…»/);
   assert.match(narr, /va en Seguimiento, aunque venga dentro del texto de la pauta/);
+});
+
+test('ficha breve: sin nombre en el texto, CIF solo b/d, reparto de palabras, y sin «lo no explorado dilo una vez»', () => {
+  const d = { p: 'X', r: 'rodilla', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  const f = IN.PLANTILLAS.breve.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(f, /Tampoco escribas el nombre del paciente ni la fecha en ningún punto del texto/);
+  assert.match(f, /elegidos SOLO de esta lista .*si ningún código de la lista encaja, no pongas código: b134 funciones del sueño; /);
+  assert.match(f, /d4101 ponerse en cuclillas; d4102/);
+  // Lista cerrada: códigos b/d con forma válida, sin repetidos, todos en el prompt de la ficha y ninguno en el narrativo
+  const cods = IN.CODIGOS_CIF.map(([c]) => c);
+  assert.equal(new Set(cods).size, cods.length, 'sin códigos repetidos');
+  for (const [c, t] of IN.CODIGOS_CIF) {
+    assert.match(c, /^[bd]\d{3,5}$/, c);
+    assert.ok(t && f.includes(`${c} ${t}`), `${c} en el prompt`);
+  }
+  assert.ok(!IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null }).includes('b134 funciones del sueño'), 'el narrativo no lleva códigos');
+  assert.match(f, /PRESENTACIÓN CLÍNICA \d+, HALLAZGOS Y CODIFICACIÓN CIF \d+, OBJETIVOS Y PLAN \d+/);
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
+    assert.ok(!/dilo UNA sola vez, en una frase, donde se describe la exploración/.test(p), 'sin la regla que invitaba a «no se realizó…»');
+    assert.match(p, /Lo que no consta \(mediciones, fuerza, escalas, pruebas no realizadas…\) no se menciona/);
+  }
+  // Modo breve: decir una vez que es breve y qué queda pendiente, sin dar por completo lo pendiente
+  const ctx = IN.contextoValoracion({ ...d, md: 'breve', pe: ['Cribado sistémico solo por embudo'] }, r => r, null);
+  assert.match(ctx, /Dilo UNA vez en el informe, en una frase, junto con lo que queda pendiente de completar/);
+  assert.match(ctx, /Pendiente de completar:\n  · Cribado sistémico solo por embudo/);
+});
+
+test('sexo: opcional, en la cabecera del prompt y del informe compartido, con concordancia; nunca en el payload', () => {
+  withState({ region: 'rodilla', sexo: 'Mujer', edadPaciente: 34 }, () => {
+    const d = buildPhysiQPayload();
+    assert.ok(!('sexo' in d) && !('sx' in d), 'el payload (contrato con physiq-report) no cambia');
+    const amp = IA.construirAmpliado();
+    assert.equal(amp.sexo, 'Mujer');
+    assert.match(IN.contextoValoracion(d, r => r, amp), /Edad: 34 años · Sexo: mujer · Región/);
+  });
+  withState({ region: 'rodilla', sexo: '' }, () => {
+    assert.ok(!/Sexo:/.test(IN.contextoValoracion(buildPhysiQPayload(), r => r, IA.construirAmpliado())), 'sin sexo, sin línea');
+  });
+  assert.match(IN.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'rodilla', ed: 34, sx: 'Mujer' }, r => 'Rodilla'), /Edad: 34 años\nSexo: Mujer/);
+  const p = IN.PLANTILLAS.breve.prompt({ p: 'X', r: 'rodilla', d: '01/01/2026', h: [], br: [], sq: [], pn: {} }, { conAudio: false, nombreRegion: r => r, ampliado: null });
+  assert.match(p, /Si consta el sexo, concuerda el género con él .*si no consta, redacta sin marcar el género/);
 });
 
 test('prompt: sin datos personales deducidos, sin citar las notas del plan, derivación descartada sin mencionar', () => {
@@ -1716,12 +1849,16 @@ test('prompt: reglas de la revisión con informes reales, en las dos plantillas'
       assert.match(p, /no cites cocientes de probabilidad/, `${nombre}: sin jerga de puntuación`);
       assert.match(p, /No crees secciones ni subsecciones/, `${nombre}: sin secciones inventadas`);
       assert.match(p, /no interpretes ni justifiques la discrepancia/, `${nombre}: discrepancias sin interpretar`);
+      // El ejemplo antiguo («niega inicialmente…, aunque en consulta refiere…») se copiaba tal cual, fuente incluida
+      assert.ok(!/niega inicialmente|en consulta refiere/.test(p), `${nombre}: el ejemplo no nombra la fuente`);
+      assert.match(p, /no es una discrepancia: recógelo tal cual. No escribas que algo «no se menciona», «no se confirma»/, `${nombre}: lo que solo consta en una fuente no es discrepancia`);
+      assert.match(p, /otra zona u otro lado.*UNA vez como dato referido.*No le añadas plan, seguimiento, prevención/, `${nombre}: el otro lado, sin plan inventado`);
     }
   }
   // Códigos CIF: limitados en la ficha (tiene sección propia); el narrativo, sin códigos
   const ficha = IN.PLANTILLAS.breve.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
   const narr = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: false, nombreRegion: r => r, ampliado: null });
-  assert.match(ficha, /mejor omitir un código que poner uno dudoso/, 'ficha: códigos CIF limitados');
+  assert.match(ficha, /si ningún código de la lista encaja, no pongas código/, 'ficha: códigos CIF limitados');
   assert.match(narr, /sin códigos alfanuméricos/, 'narrativo: sin códigos CIF');
   // Narrativo de valoración inicial: fuera las subsecciones que solo producían «no se realizó…»
   for (const x of ['Función Cardiorrespiratoria', 'Control Motor', '#### Equilibrio', '6MWT', 'EQ-5D', 'Limitación Funcional Global'])
@@ -1858,6 +1995,7 @@ console.log('\nlicencia del informe narrativo (motivo del error)');
 // ── Lado afectado (fase 2) ─────────────────────────────────────────────────────
 console.log('\nlado afectado');
 const IN_INFORME = await import('../lib/informe-narrativo.js');
+const { ladoTexto } = await import('../lib/region.js');
 test('lado: viaja en el payload (la) y sale en 📋 Notas, 📄 Informe y el informe con IA', () => {
   withState({ region: 'hombro', lado: 'Derecho' }, () => {
     const d = buildPhysiQPayload();
@@ -1868,6 +2006,15 @@ test('lado: viaja en el payload (la) y sale en 📋 Notas, 📄 Informe y el inf
     assert.match(IN2.buildNarrativePrompt(d, { conAudio: false, nombreRegion: r => r.charAt(0).toUpperCase() + r.slice(1) }), /Región valorada: Hombro \(derecho\)/);
     assert.match(IN2.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'hombro', la: 'Derecho' }, r => 'Hombro'), /Región valorada: Hombro \(derecho\)/);
   });
+  // Concordancia con la región: «Rodilla (izquierda)», no «(izquierdo)»
+  withState({ region: 'rodilla', lado: 'Izquierdo' }, () => {
+    assert.match(buildContextSummaryText(), /Región: Rodilla \(izquierda\)/);
+    assert.match(buildInformeFisioterapiaText(), /Región valorada: Rodilla \(izquierda\)/);
+    assert.equal(IN_INFORME.regionTexto(buildPhysiQPayload(), r => 'Rodilla'), 'Rodilla (izquierda)');
+  });
+  for (const [r, l, esperado] of [['cadera', 'Derecho', 'derecha'], ['lumbar', 'Izquierdo', 'izquierda'], ['cervical', 'Central', 'central'],
+    ['rodilla', 'Bilateral', 'bilateral'], ['hombro', 'Izquierdo', 'izquierdo'], ['codo', 'Derecho', 'derecho'], ['tobillo_pie', 'Izquierdo', 'izquierdo']])
+    assert.equal(ladoTexto(r, l), esperado, `${r} ${l}`);
   withState({ region: 'hombro', lado: '' }, () => {
     assert.equal(buildPhysiQPayload().la, '');
     assert.match(buildInformeFisioterapiaText(), /Región valorada: Hombro\n/);
@@ -2022,13 +2169,14 @@ console.log('\npaciente posquirúrgico');
       marcarTratada('h11', true);
       assert.ok(esTratada('h11'));
       const p = buildPhysiQPayload();
-      assert.equal(p.h[0].dt, true);
-      assert.equal(p.h[0].sc, PQ.ETIQUETA_TRATADA);
+      const h11 = p.h.find(x => x.id === 'h11');
+      assert.equal(h11.dt, true);
+      assert.equal(h11.sc, PQ.ETIQUETA_TRATADA);
       assert.ok(buildInformeFisioterapiaText().includes(`· ${HYPOTHESES.h11.name} (intervenida quirúrgicamente)`));
       assert.ok(!getPendientesBreve().some(x => x.fase === '4b'), 'sus tests no aplican: no son un pendiente');
       marcarTratada('h11', false);
       assert.ok(!esTratada('h11'));
-      assert.ok(!('dt' in buildPhysiQPayload().h[0]));
+      assert.ok(!('dt' in buildPhysiQPayload().h.find(x => x.id === 'h11')));
       assert.notEqual(state.hypothesisScores.h11.label, PQ.ETIQUETA_TRATADA, 'al desmarcar vuelve la puntuación de sus tests');
     });
     withState({ ...patch, mecanismo: 'Traumático' }, () => {
@@ -2037,11 +2185,101 @@ console.log('\npaciente posquirúrgico');
     });
   });
 
-  test('«ya diagnosticada y tratada»: solo hipótesis «Derivar»', () => {
+  test('«ya diagnosticada y tratada»: sin Post-quirúrgico, solo hipótesis «Derivar»', () => {
     withState({ derivacionResuelta: {}, activeHypotheses: ['h2'], hypothesisScores: {} }, () => {
       marcarTratada('h2', true);
       assert.ok(!esTratada('h2'));
       assert.deepEqual(state.derivacionResuelta, {});
+    });
+  });
+
+  // ── Hipótesis posquirúrgica genérica `pq1` (docs/posquirurgico.md, «Propuesta»)
+  const P4B = await import('../phase4b.js');
+  const { HIP_POSQUIRURGICA } = await import('../data.js');
+
+  test('pq1: solo con Post-quirúrgico, la primera, fuera de HYPOTHESES y de ningún árbol', () => {
+    assert.ok(!HYPOTHESES.pq1, 'no es una hipótesis regional');
+    for (const t of Object.values(CIF_TREES)) for (const st of t.steps) for (const o of st.options) {
+      assert.ok(!(o.hypothesis || []).includes('pq1'), `${st.id}: ningún árbol la activa`);
+    }
+    withState({ ...POSQ(), region: 'cadera', activeHypotheses: ['ca1', 'ca2'] }, () => {
+      assert.deepEqual(P4B.hipotesisActivas(), ['pq1', 'ca1', 'ca2']);
+      assert.deepEqual(state.activeHypotheses, ['ca1', 'ca2'], 'no se guarda en el estado del árbol');
+    });
+    withState({ mecanismo: 'Insidioso', region: 'cadera', activeHypotheses: ['ca1'] }, () => {
+      assert.deepEqual(P4B.hipotesisActivas(), ['ca1']);
+    });
+    withState({ ...POSQ(), region: 'cadera', activeHypotheses: [] }, () => {
+      assert.deepEqual(P4B.hipotesisActivas(), ['pq1'], 'también sin hipótesis del árbol');
+    });
+  });
+
+  test('pq1: nombre con la intervención y PROM que la región ya usa', () => {
+    withState({ ...POSQ({ intervencion: 'PTC derecha' }), region: 'cadera' }, () => {
+      const h = P4B.hipotesis('pq1');
+      assert.equal(h.name, 'Postoperatorio: PTC derecha');
+      assert.deepEqual(h.tests, []);
+      assert.equal(h.dosis, '');
+    });
+    withState({ ...POSQ(), region: 'cadera' }, () => assert.equal(P4B.hipotesis('pq1').name, PQ.NOMBRE_HIP_POSQ));
+    assert.deepEqual(Object.keys(HIP_POSQUIRURGICA.promPorRegion).sort(), Object.keys(CIF_TREES).sort());
+    for (const [r, prom] of Object.entries(HIP_POSQUIRURGICA.promPorRegion)) {
+      assert.ok(Object.values(HYPOTHESES).some(h => h.region === r && h.prom === prom), `${r}: «${prom}» no es un PROM de la región`);
+    }
+  });
+
+  test('pq1: en payload (pq), Notas e Informe la primera, sin puntuación ni pendiente en breve', () => {
+    withState({ ...POSQ({ intervencion: 'PTR', protocolo: 'Escrito', restricciones: 'Carga parcial 4 semanas' }), region: 'rodilla',
+      activeHypotheses: ['ro1'], testResults: { ro1: { 0: 'pos' } }, hypothesisScores: { ro1: { totalLR: 3, label: 'x' } }, modo: 'breve' }, () => {
+      const p = buildPhysiQPayload();
+      assert.deepEqual(p.h[0], { id: 'pq1', name: 'Postoperatorio: PTR', sc: PQ.ETIQUETA_HIP_POSQ, lr: null, tr: {}, pq: true });
+      assert.equal(p.h[1].id, 'ro1');
+      const inf = buildInformeFisioterapiaText();
+      assert.ok(inf.includes('IMPRESIÓN CLÍNICA\n  · Postoperatorio: PTR\n'), 'la primera en la impresión clínica');
+      assert.ok(!inf.includes('pendiente de confirmar)'), 'pq1 no deja la impresión «sin confirmar»');
+      assert.ok(buildContextSummaryText().includes(`· Postoperatorio: PTR — ${PQ.ETIQUETA_HIP_POSQ}`));
+      assert.ok(!getPendientesBreve().some(x => x.fase === '4b'));
+      assert.equal(PQ.pautaHipPosq(p.cq), 'Seguir el protocolo del cirujano: Carga parcial 4 semanas');
+    });
+    withState({ ...POSQ(), region: 'rodilla', activeHypotheses: [] }, () => {
+      assert.ok(PQ.pautaHipPosq(buildPhysiQPayload().cq).startsWith(PQ.TEXTO_SIN_PROTOCOLO));
+    });
+    withState({ mecanismo: 'Insidioso', region: 'rodilla', activeHypotheses: ['ro1'] }, () => {
+      assert.ok(!buildPhysiQPayload().h.some(x => x.pq));
+    });
+  });
+
+  test('«Tratada con la cirugía»: con Post-quirúrgico en cualquier hipótesis; deja de contar al cambiar el mecanismo', () => {
+    withState({ ...POSQ({ intervencion: 'PTC' }), region: 'cadera', activeHypotheses: ['ca1'],
+      testResults: { ca1: { 0: 'pos' } }, hypothesisScores: {} }, () => {
+      assert.ok(P4B.casillaTratadaHTML('ca1').includes('Tratada con la cirugía'));
+      marcarTratada('ca1', true);
+      assert.ok(esTratada('ca1'));
+      assert.equal(state.hypothesisScores.ca1.label, PQ.ETIQUETA_TRATADA);
+      assert.ok(buildInformeFisioterapiaText().includes(`· ${HYPOTHESES.ca1.name} (intervenida quirúrgicamente)`));
+      state.mecanismo = 'Insidioso';
+      P4B.sincronizarTratadas();
+      assert.ok(!esTratada('ca1'), 'sin Post-quirúrgico la marca no cuenta');
+      assert.equal(P4B.casillaTratadaHTML('ca1'), '');
+      assert.notEqual(state.hypothesisScores.ca1.label, PQ.ETIQUETA_TRATADA, 'vuelve la puntuación de sus tests');
+      assert.ok(state.derivacionResuelta.ca1, 'la marca se conserva');
+      state.mecanismo = 'Post-quirúrgico';
+      P4B.sincronizarTratadas();
+      assert.ok(esTratada('ca1'));
+    });
+  });
+
+  test('pq1 en el informe con IA: condición de salud con el protocolo como pauta', () => {
+    const c = IN.contextoValoracion({ p: 'X', br: [], sq: [], pn: {}, h: [{ name: 'Postoperatorio: PTC', pq: true }] }, r => r, null);
+    assert.ok(c.includes('Postoperatorio: PTC (la cirugía es la condición de salud, no una hipótesis por confirmar)'));
+    withState({ ...POSQ({ intervencion: 'PTC', protocolo: 'Verbal' }), region: 'cadera', activeHypotheses: ['ca1'],
+      testResults: {}, hypothesisScores: {}, treeAnswers: {} }, () => {
+      const a = IA.construirAmpliado();
+      assert.equal(a.pautas[0].hipotesis, 'Postoperatorio: PTC');
+      assert.equal(a.pautas[0].posquirurgica, true);
+      assert.equal(a.pautas[0].prom, HIP_POSQUIRURGICA.promPorRegion.cadera);
+      const t = IN.bloquesAmpliados(a).join('\n');
+      assert.ok(t.includes('Postoperatorio: PTC:\n    · Pauta: Seguir el protocolo del cirujano.'));
     });
   });
 
@@ -2095,7 +2333,7 @@ console.log('\npaciente posquirúrgico');
       hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: {} }, () => {
       const a = IA.construirAmpliado();
       assert.deepEqual(a.tests, [], 'los tests de una tratada no aplican');
-      assert.deepEqual(a.pautas.map(x => [x.derivar, x.tratada, x.operada]), [[false, true, true]]);
+      assert.deepEqual(a.pautas.filter(x => !x.posquirurgica).map(x => [x.derivar, x.tratada, x.operada]), [[false, true, true]]);
     });
   });
 
@@ -2145,7 +2383,7 @@ console.log('\npaciente posquirúrgico');
 
   test('cribado posquirúrgico: el mecanismo repinta el cribado conservando las respuestas', () => {
     const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
-    assert.match(src, /if \(groupId === 'mecanismo'\) \{\n    _pintarCirugiaUI\(\);[\s\S]{0,200}_repintarCribado\(\);/);
+    assert.match(src, /if \(groupId === 'mecanismo'\) \{\n    _pintarCirugiaUI\(\);[\s\S]{0,400}_repintarCribado\(\);/);
     const reparto = src.slice(src.indexOf('function _repintarCribado'), src.indexOf('function buildSistemicoQuestions'));
     assert.ok(reparto.indexOf('savedAnswers') < reparto.indexOf('buildSistemicoQuestions(state.region)'), 'guarda antes de repintar');
   });
@@ -2157,6 +2395,39 @@ console.log('\npaciente posquirúrgico');
     assert.match(html, /<div class="card solo-posq" id="cardCirugia">/);
     const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
     assert.ok(wf.includes('lib/posquirurgico.js'));
+  });
+}
+
+// ── Fase 5: pauta, pronóstico y tests sin hacer plegados ─────────────────────
+console.log('\nfase 5 plegable');
+{
+  const { partirPrimeraFrase } = await import('../app.js');
+
+  test('partirPrimeraFrase: corta en el primer punto seguido de mayúscula, no en «rec. 1.3.1» ni «p. ej.»', () => {
+    assert.deepEqual(partirPrimeraFrase('Ejercicio terapéutico supervisado y progresivo (B). Tras la cirugía, más.'), { primera: 'Ejercicio terapéutico supervisado y progresivo (B).', resto: 'Tras la cirugía, más.' });
+    assert.deepEqual(partirPrimeraFrase('Ejercicio adaptado, recomendación firme (rec. 1.3.1). Valorar sesiones.'), { primera: 'Ejercicio adaptado, recomendación firme (rec. 1.3.1).', resto: 'Valorar sesiones.' });
+    assert.deepEqual(partirPrimeraFrase('Cargas (p. ej. sentadilla) progresivas.'), { primera: 'Cargas (p. ej. sentadilla) progresivas.', resto: '' });
+    assert.deepEqual(partirPrimeraFrase('Una sola frase.'), { primera: 'Una sola frase.', resto: '' });
+    // Menos de 40 caracteres: se le suma la siguiente frase
+    assert.deepEqual(partirPrimeraFrase('Estadios I–II. Plantillas a medida y estiramientos. Además, fuerza.'),
+      { primera: 'Estadios I–II. Plantillas a medida y estiramientos.', resto: 'Además, fuerza.' });
+  });
+
+  test('todas las pautas reales se parten sin perder texto y con una primera frase con contenido', () => {
+    for (const h of Object.values(HYPOTHESES)) {
+      if (!h.dosis || h.dosis === DOSIS_DERIVAR) continue;
+      const { primera, resto } = partirPrimeraFrase(h.dosis);
+      assert.equal(`${primera} ${resto}`.replace(/\s+/g, ' ').trim(), h.dosis.replace(/\s+/g, ' ').trim(), h.id);
+      assert.ok(primera.length >= 40 || !resto, `${h.id}: primera frase demasiado corta («${primera}»)`);
+    }
+  });
+
+  test('lo que es seguridad no se pliega: la pauta «Derivar» y la nota posquirúrgica quedan fuera del <details>', () => {
+    const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    assert.match(src, /!tratada && hyp\.dosis && hyp\.dosis !== DOSIS_DERIVAR\s*\? _pautaPlegableHTML/);
+    const tarjeta = src.slice(src.indexOf('_pautaPlegableHTML(hyp.dosis'), src.indexOf('🧭 Pronóstico y derivación'));
+    assert.match(tarjeta, /\}`\}\s*\$\{cq && !tratada[^\n]*TEXTO_PAUTA_COMPATIBLE/, 'la nota posquirúrgica va después del bloque de la pauta, no dentro');
+    assert.match(src, /addEventListener\('beforeprint'[\s\S]{0,200}#phase5 details:not\(\[open\]\)/, 'al imprimir se despliega');
   });
 }
 
@@ -2173,8 +2444,10 @@ console.log('\nversión desplegada');
   });
 
   test('textoVersion: sha y fecha local; sin fecha válida, solo el sha', () => {
-    const t = V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z');
-    assert.match(t, /^a1b2c3d · .*2026/);
+    // El año solo cuando no es el actual
+    assert.doesNotMatch(V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z', new Date('2026-12-01')), /2026/);
+    assert.match(V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z', new Date('2026-12-01')), /^a1b2c3d · 7 oct/);
+    assert.match(V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z', new Date('2027-01-02')), /^a1b2c3d · .*2026/);
     assert.equal(V.textoVersion('a1b2c3d', ''), 'a1b2c3d');
     assert.equal(V.textoVersion('a1b2c3d', 'basura'), 'a1b2c3d');
   });
@@ -2197,9 +2470,124 @@ console.log('\nversión desplegada');
     assert.ok(wf.includes('physiq-hub/assessment/version.json'));
   });
 
+  test('la comprobación no provoca un bucle de «Hay una versión nueva» tras recargar', () => {
+    const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    // version.json por su URL normal, como el código: un ?t= único lo traía
+    // nuevo mientras lib/version.js seguía en caché
+    assert.match(src, /fetch\('\.\/version\.json', \{ cache: 'no-store' \}\)/);
+    assert.doesNotMatch(src, /version\.json\?t=/);
+    // «Recargar» vuelve a pedir los archivos propios antes de recargar
+    const rec = src.slice(src.indexOf('function recargarVersionNueva'), src.indexOf('function toggleSessionPanel'));
+    assert.match(rec, /await _refrescarArchivosApp\(\);\s*location\.reload\(\);/);
+    assert.match(src, /fetch\(u, \{ cache: 'reload' \}\)/);
+    // y el panel ofrece comprobarlo a mano
+    assert.match(src, /id="sessionVersionComprobar">Comprobar</);
+    // con versión nueva, el mismo hueco: «Actualizar» en naranja, sin texto aparte
+    assert.match(src, /session-version-btn-nueva" id="sessionVersionRecargar"[^>]*>Actualizar</);
+    assert.doesNotMatch(src, /hay una más reciente/);
+    // el aviso flotante usa la misma palabra que el panel
+    assert.match(src, /id="versionAvisoRecargar">Actualizar</);
+  });
+
   test('sw.js no sirve ni guarda version.json desde la caché', () => {
     const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
     assert.match(sw, /if \(url\.pathname\.endsWith\('\/version\.json'\)\) return;/);
+  });
+}
+
+// ── Revisión automática del informe (lib/revision-informe.js) ────────────────
+console.log('\nrevisión automática del informe con IA');
+{
+  const RI = await import('../lib/revision-informe.js');
+  const base = { p: 'Pedro Flores', d: '07/10/2026', r: 'hombro', la: 'Derecho', nr: 4, br: [], sq: [], pn: { variableControl: 'Parar si supera 4/10.' }, md: 'completo',
+    h: [{ name: 'Lesión Labral Superior (SLAP)' }, { name: 'Luxación Bloqueada o Fractura (→ Rx)', dt: true }, { name: 'Postoperatorio: clavo', pq: true }],
+    fp: [{ s: 'Hombro', q: '¿Le han dicho alguna vez que tiene…?', a: 'Diabetes o el azúcar alto: No · Problemas de tiroides: No sé' }] };
+  const amp = { edad: 52, sexo: 'Hombre', pautas: [] };
+  const rev = (t, o = {}) => RI.revisarInforme(t, { datos: { ...base, ...o.datos }, ampliado: { ...amp, ...o.ampliado }, plantilla: o.plantilla || 'narrativo', transcripcion: o.transcripcion || '' });
+  const ids = (t, o) => rev(t, o).map(p => p.id);
+  const limpio = 'Paciente de 52 años con dolor en el hombro derecho de 4/10. La lesión labral superior queda apoyada por los tests.';
+
+  test('revisión: un informe correcto no da puntos', () => {
+    assert.deepEqual(rev(limpio), []);
+  });
+  test('revisión: derivaciones que faltan son de nivel alto y van primero', () => {
+    const p = rev(limpio + ' Se recomienda descansar.', { datos: { ur: ['TVP: urgencias'] }, ampliado: { pautas: [{ hipotesis: 'Fractura', derivar: true }] } });
+    assert.equal(p[0].nivel, 'alto');
+    assert.ok(p.some(x => x.id === 'derivacion-urgente') && p.some(x => x.id === 'derivar-hipotesis'));
+    assert.ok(!ids(limpio + ' Se deriva a urgencias hoy.', { datos: { ur: ['x'] } }).includes('derivacion-urgente'));
+    assert.ok(!ids(limpio, { ampliado: { pautas: [{ hipotesis: 'Fractura', derivar: true, tratada: true }] } }).includes('derivar-hipotesis'), 'tratada: no se exige derivar');
+  });
+  test('revisión: lado, edad, sexo y NRS que contradicen la valoración', () => {
+    assert.ok(ids('Dolor en el hombro izquierdo.').includes('lado'));
+    assert.ok(ids('Hombro derecho.', { datos: { la: '' } }).includes('lado-no-consta'));
+    assert.ok(!ids('Hombro derecho.', { datos: { la: '' }, transcripcion: 'me duele el derecho' }).includes('lado-no-consta'), 'lo dijo en consulta');
+    assert.ok(ids('Paciente de 43 años.').includes('edad'));
+    assert.ok(ids('Paciente de 43 años.', { ampliado: { edad: null } }).includes('edad-no-consta'));
+    assert.ok(ids('Mujer de 52 años.').includes('sexo'));
+    assert.ok(ids('Varón de 52 años.', { ampliado: { sexo: '' } }).includes('sexo-no-consta'));
+    assert.ok(ids('Dolor de 6/10.').includes('nrs'));
+    assert.ok(!ids('Dolor de 4 sobre 10 y control a 4/10.').includes('nrs'));
+    // Un rango (irritabilidad «4-6/10») no valida el 6 suelto
+    assert.ok(ids('Dolor de 6/10.', { datos: { ir: 'Media (4-6/10)' } }).includes('nrs'));
+    // Con audio: el pico «un 8 de 10» (o «ocho de diez») dicho en la consulta vale
+    assert.ok(!ids('Llega a 8 sobre 10 al correr.', { transcripcion: 'llega a un 8 de 10' }).includes('nrs'));
+    assert.ok(!ids('Llega a 8/10 al correr.', { transcripcion: 'llega a un ocho de diez' }).includes('nrs'));
+    assert.ok(ids('Llega a 9/10 al correr.', { transcripcion: 'llega a un 8 de 10' }).includes('nrs'));
+    // El otro lado dicho en la consulta: punto medio a comprobar, no contradicción
+    const otro = rev('También molestias en el hombro izquierdo.', { transcripcion: 'el izquierdo también me molesta' });
+    assert.ok(otro.some(x => x.id === 'lado-otro' && x.nivel === 'medio') && !otro.some(x => x.id === 'lado'));
+  });
+  test('revisión: reglas de redacción (nombre, fecha, jerga, descarta, relleno, fuentes, secuelas)', () => {
+    assert.ok(ids('Pedro Flores refiere dolor.').includes('nombre'));
+    assert.ok(ids('Valorado el 07/10/2026.').includes('fecha'));
+    assert.ok(ids('El test tiene un LR+ de 3.').includes('jerga'));
+    assert.ok(ids('La exploración permite descartar origen cervical.').includes('descarta'));
+    assert.ok(!ids('Las comprobaciones no la descartan.').includes('descarta'), '«no la descartan» es correcto');
+    assert.ok(ids('No se dispone de goniometría.').includes('relleno'));
+    assert.ok(!ids('No se identifican banderas rojas.').includes('relleno'), '«No se identifican» no es «No sé»');
+    assert.ok(ids('Según el formulario, refiere dolor.').includes('fuentes'));
+    assert.ok(ids('Según la variable de control, parar a 4/10.').includes('fuentes'));
+    for (const f of ['Según el cuestionario inicial, refiere dolor.', 'Este dato no se confirma en la conversación clínica.',
+      'Dolor al sentarse, aunque no se menciona en consulta.', 'Niega dolor nocturno, aunque en consulta refiere despertares.',
+      'Sin dolor nocturno inicialmente referido.'])
+      assert.ok(ids(f).includes('fuentes'), f);
+    assert.ok(!ids('Acude a consulta por dolor en el hombro derecho.').includes('fuentes'), '«acude a consulta» es correcto');
+    assert.ok(ids('Hallazgos propios de la fase de consolidación.').includes('fisiopatologia'));
+    assert.ok(ids('Secuelas esperables de la cirugía.').includes('fisiopatologia'));
+  });
+  test('revisión: «No sé» convertido en negativo', () => {
+    const p = rev(limpio + ' No refiere diabetes ni problemas tiroideos.');
+    const n = p.find(x => x.id === 'no-se');
+    assert.ok(n && /tiroides/.test(n.mensaje), JSON.stringify(p));
+    assert.ok(!ids(limpio + ' No refiere diabetes.').includes('no-se'), 'la diabetes sí se contestó «No»');
+  });
+  test('revisión: códigos CIF según la plantilla', () => {
+    assert.ok(ids('Dolor (b28016) al correr (d4552).', { plantilla: 'breve' }).every(i => i !== 'cif'));
+    assert.match(rev('Dolor al entrenar (e1101).', { plantilla: 'breve' }).find(x => x.id === 'cif').mensaje, /e1101/);
+    assert.ok(ids('Dolor (b28016).', { plantilla: 'narrativo' }).includes('cif'), 'el narrativo no lleva códigos');
+  });
+  test('revisión: hipótesis sin nombrar (no las tratadas ni la posquirúrgica), modo breve y longitud', () => {
+    const p = rev('Paciente de 52 años con dolor en el hombro derecho.');
+    assert.match(p.find(x => x.id === 'hipotesis').mensaje, /Lesión Labral Superior \(SLAP\)/);
+    assert.ok(!/Luxación|Postoperatorio/.test(p.find(x => x.id === 'hipotesis').mensaje));
+    assert.ok(ids(limpio, { datos: { md: 'breve' } }).includes('breve'));
+    assert.ok(!ids(limpio + ' Valoración breve; queda pendiente el cribado.', { datos: { md: 'breve' } }).includes('breve'));
+    assert.ok(ids(limpio + ' palabra'.repeat(950), { plantilla: 'breve' }).includes('longitud'));
+  });
+  test('revisión: cabecera y pie compartidos se quitan; cita la frase', () => {
+    const t = RI.quitarCabeceraYPie('INFORME DE FISIOTERAPIA\nPaciente: Pedro Flores\nEdad: 52 años\nFecha: 07/10/2026\n\nTexto.\n\n—\nInforme generado con PhysiQ-Assessment el 07/10/2026 (redacción asistida por IA).');
+    assert.equal(t, 'Texto.');
+    assert.equal(RI.fraseEn('Uno. Dos tres. Cuatro.', 6), 'Dos tres.');
+  });
+  test('revisión: se pinta en la tarjeta, nunca en el payload ni en los resúmenes, y se despliega', () => {
+    const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+    assert.match(src, /import \{ revisarInforme \} from '\.\/lib\/revision-informe\.js';/);
+    assert.match(src, /<div id="iaRevision"><\/div>/);
+    assert.match(src, /catch \{ el\.innerHTML = ''; return; \}/, 'una regla rota no tumba la tarjeta');
+    const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
+    assert.ok(/cp lib\/[^\n]*lib\/revision-informe\.js[^\n]*physiq-hub\/assessment\/lib\//.test(wf), 'lib/revision-informe.js se copia al hub');
+    const appSrc = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    assert.ok(!/revision-informe/.test(appSrc), 'app.js no la carga (solo la tarjeta, fuera del hub)');
   });
 }
 

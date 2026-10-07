@@ -226,16 +226,83 @@ async function walkRegionPosq(page, region) {
   const treeResult = await walkCifTreeToCompletion(page);
   await page.click('#btnGoConfirm');
   await page.waitForTimeout(150);
+  // Hipótesis posquirúrgica genérica: la primera tarjeta, con la intervención
+  const pq1 = await page.evaluate(r => {
+    const card = document.querySelector('#hypothesisCards .hypothesis-card');
+    return card?.id === 'hypcard_pq1' && card.textContent.includes(`Postoperatorio: Cirugía de ${r}`) && !card.querySelector('.test-item, .test-btn');
+  }, region);
   await page.click('#phase4b button:has-text("Ver Resultados")');
   await page.waitForTimeout(150);
-  const fase5 = await page.evaluate(() => {
+  const fase5 = await page.evaluate(r => {
     const t = document.getElementById('resultsContent').textContent;
+    const hip = t.slice(t.indexOf('Hipótesis'));
     return { phase: state.currentPhase, recuadro: t.includes('Paciente posquirúrgico') && t.includes('Sin carga hasta la semana 8'),
-      cq: state.cirugia.protocolo === 'Escrito' && state.cirugia.semanasAprox === 6 };
-  });
+      cq: state.cirugia.protocolo === 'Escrito' && state.cirugia.semanasAprox === 6,
+      pq1: hip.includes(`🏥 Postoperatorio: Cirugía de ${r}`) && hip.includes('Seguir el protocolo del cirujano: Sin carga hasta la semana 8') };
+  }, region);
   const ok = cribadoOk && oculta && visible && semanas.startsWith('6 semanas') && notas.visibles === notas.total
-    && treeResult.treeCompleteShown && fase5.phase === 5 && fase5.recuadro && fase5.cq;
-  return { region, ok, cribado, oculta, visible, semanas, notas, treeResult, fase5 };
+    && treeResult.treeCompleteShown && pq1 && fase5.phase === 5 && fase5.recuadro && fase5.cq && fase5.pq1;
+  return { region, ok, cribado, oculta, visible, semanas, notas, treeResult, pq1, fase5 };
+}
+
+// Cadera con prótesis: el árbol da la artrosis (ca_step2 → ca1). Con
+// Post-quirúrgico, «Tratada con la cirugía» la saca de la pauta y de los
+// tests; `pq1` va la primera. Al pasar el mecanismo a Insidioso, `pq1` y la
+// casilla desaparecen y la artrosis vuelve a puntuar.
+async function checkCaderaProtesis(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.fill('#motivoConsulta', 'Rehabilitación tras prótesis de cadera');
+  await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+  await page.fill('#cirIntervencion', 'PTC derecha');
+  await page.click('#cirProtocolo .option-btn:has-text("Escrito")');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('cadera', this)"]`);
+  await page.waitForTimeout(150);
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
+  await elegir('ca_step1', 2);
+  await elegir('ca_step1b', 1);
+  await elegir('ca_step2', 0);          // perfil degenerativo → ca1, artrosis
+  await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  const orden = await page.evaluate(() => [...document.querySelectorAll('#hypothesisCards .hypothesis-card')].map(c => c.id.replace('hypcard_', '')));
+  await page.click('#hypcard_ca1 .hypothesis-header');
+  await page.waitForTimeout(150);
+  const casilla = await page.textContent('#hypcard_ca1 .dx-tratada');
+  await page.click('#hypcard_ca1 .dx-tratada input');
+  await page.waitForTimeout(150);
+  const en4b = await page.evaluate(() => ({ marcada: !!state.derivacionResuelta.ca1, etiqueta: document.getElementById('score_ca1').textContent }));
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  const fase5 = await page.evaluate(async () => {
+    const { buildInformeFisioterapiaText } = await import('./app.js');
+    const t = document.getElementById('resultsContent').textContent;
+    return { pq1: t.indexOf('Postoperatorio: PTC derecha') >= 0 && t.indexOf('Postoperatorio: PTC derecha') < t.indexOf('Artrosis de Cadera'),
+      intervenida: t.includes('Ya intervenida: seguir el protocolo del cirujano'),
+      informe: buildInformeFisioterapiaText().includes('Artrosis de Cadera (intervenida quirúrgicamente)') };
+  });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#mecanismo .option-btn:has-text("Insidioso")');
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(150);
+  const sinPosq = await page.evaluate(() => ({
+    pq1: !!document.getElementById('hypcard_pq1'),
+    casilla: !!document.querySelector('#hypcard_ca1 .dx-tratada'),
+    etiqueta: document.getElementById('score_ca1')?.textContent || '',
+  }));
+  const ok = orden[0] === 'pq1' && orden.includes('ca1') && casilla.includes('Tratada con la cirugía')
+    && en4b.marcada && en4b.etiqueta.includes('Diagnosticada y tratada')
+    && fase5.pq1 && fase5.intervenida && fase5.informe
+    && !sinPosq.pq1 && !sinPosq.casilla && !sinPosq.etiqueta.includes('Diagnosticada y tratada');
+  return { ok, orden, casilla, en4b, fase5, sinPosq };
 }
 
 // Cambiar el mecanismo con el cribado ya pintado (lumbar): Post-quirúrgico
@@ -364,6 +431,18 @@ async function checkLado(page) {
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
   const r = {};
+  // Sexo (fase 1, junto a la edad): se guarda, un segundo toque lo borra, cabe a 320 px
+  await page.click('#sexo .option-btn:has-text("Mujer")');
+  r.sexo = await page.evaluate(() => {
+    const g = document.getElementById('sexo').getBoundingClientRect();
+    const cabe = [...document.querySelectorAll('#sexo .option-btn')].every(b => {
+      const rb = b.getBoundingClientRect();
+      return rb.width > 0 && rb.left >= g.left - 1 && rb.right <= g.right + 1;
+    }) && document.documentElement.scrollWidth <= innerWidth;
+    return state.sexo === 'Mujer' && cabe;
+  });
+  await page.click('#sexo .option-btn:has-text("Mujer")');
+  r.sexo = r.sexo && await page.evaluate(() => state.sexo === '');
   r.ocultoSinRegion = await page.evaluate(() => document.getElementById('ladoWrap').hidden);
   await irAFase2(page, 'hombro');
   const estado = () => page.evaluate(() => {
@@ -390,7 +469,7 @@ async function checkLado(page) {
   await page.waitForTimeout(150);
   const l = await estado();
   r.centralEnLumbar = l.central && l.cabe;
-  r.ok = r.ocultoSinRegion && r.visibleConRegion && r.sinCentralEnHombro && r.cabe320 && r.guarda && r.centralEnLumbar;
+  r.ok = r.sexo && r.ocultoSinRegion && r.visibleConRegion && r.sinCentralEnHombro && r.cabe320 && r.guarda && r.centralEnLumbar;
   await page.setViewportSize({ width: 1280, height: 900 });
   return r;
 }
@@ -670,6 +749,8 @@ async function checkInformeNarrativo(browser, errors) {
     const det = document.getElementById('iaResultadoDet');
     return !!det && !det.open && det.querySelector('summary').textContent.includes('Narrativo');
   }) && await page.isVisible('#iaResultado button:has-text("Compartir")');
+  // Revisión automática: aparece sola bajo el informe (puntos o «sin incidencias»)
+  r.revision = await page.evaluate(() => !!document.querySelector('#iaRevision .ia-revision'));
   r.guardado = await page.evaluate(() => !!state.informeIA?.texto && state.informeIA.conAudio === true
     && state.informeIA.transcripcion.includes('simulada'));
   r.audioBorrado = await page.evaluate(() => new Promise(res => {
@@ -708,7 +789,7 @@ async function checkInformeNarrativo(browser, errors) {
   const ctxHub = await browser.newContext();
   const hub = await ctxHub.newPage();
   const pedidos = [];
-  hub.on('request', q => { if (/informe-ia\.js|informe-narrativo\.js|grabadora\.js|licencia-ia\.js/.test(q.url())) pedidos.push(q.url()); });
+  hub.on('request', q => { if (/informe-ia\.js|informe-narrativo\.js|revision-informe\.js|grabadora\.js|licencia-ia\.js/.test(q.url())) pedidos.push(q.url()); });
   await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
   await hub.waitForTimeout(1500);
   const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
@@ -848,6 +929,53 @@ async function recorrerGrabadora(browser, errors) {
   return r;
 }
 
+// Aviso de silencio (grabadora.js mide el nivel con un AnalyserNode): con un
+// micrófono mudo (un WAV de silencio como dispositivo falso) la píldora pasa a
+// ⚠ y sale el aviso; con el tono del micrófono falso normal, nunca. Las dos
+// grabaciones van en paralelo para no sumar dos esperas de ~9 s.
+async function checkGrabadoraSilencio(errors) {
+  const dir = mkdtempSync(join(tmpdir(), 'physiq-silencio-'));
+  const wav = join(dir, 'silencio.wav');
+  const datos = 16000 * 2 * 20;   // 20 s, 16 kHz, mono, 16 bits, todo ceros
+  const cab = Buffer.alloc(44);
+  cab.write('RIFF', 0); cab.writeUInt32LE(36 + datos, 4); cab.write('WAVE', 8); cab.write('fmt ', 12);
+  cab.writeUInt32LE(16, 16); cab.writeUInt16LE(1, 20); cab.writeUInt16LE(1, 22); cab.writeUInt32LE(16000, 24);
+  cab.writeUInt32LE(32000, 28); cab.writeUInt16LE(2, 32); cab.writeUInt16LE(16, 34); cab.write('data', 36); cab.writeUInt32LE(datos, 40);
+  writeFileSync(wav, Buffer.concat([cab, Buffer.alloc(datos)]));
+  const grabar9s = async extra => {
+    const browser = await chromium.launch({ args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', ...extra] });
+    try {
+      const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+      await context.grantPermissions(['microphone']);
+      await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
+      await mockWorkerYTurnstile(context, ['x']);
+      const page = await context.newPage();
+      page.on('pageerror', err => errors.push(`pageerror (silencio): ${err.message}`));
+      await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+      await page.waitForSelector('#grabBtn', { state: 'visible' });
+      await page.click('#grabBtn');
+      await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
+      await page.waitForTimeout(9500);
+      const r = await page.evaluate(() => {
+        const b = document.getElementById('grabBtn');
+        return { aviso: b.classList.contains('grab-aviso'), title: b.title, toast: document.getElementById('appToast')?.textContent || '' };
+      });
+      await page.click('#grabDescBtn');
+      await page.click('#confirmAction');
+      return r;
+    } finally { await browser.close().catch(() => {}); }
+  };
+  try {
+    const [mudo, tono] = await Promise.all([grabar9s(['--use-file-for-fake-audio-capture=' + wav]), grabar9s([])]);
+    const r = {
+      mudoAvisa: mudo.aviso && /No se oye nada/.test(mudo.title) && /No se oye nada/.test(mudo.toast),
+      tonoNoAvisa: !tono.aviso && !/No se oye nada/.test(tono.title),
+    };
+    r.ok = Object.values(r).every(v => v === true);
+    return r;
+  } catch (e) { return { ok: false, error: e.message.split('\n')[0] }; }
+}
+
 async function recorrerGrabadoraRaton(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await context.grantPermissions(['microphone']);
@@ -946,9 +1074,12 @@ async function main() {
     posqResults.push(r);
   }
   const hombroTratada = await checkHombroTratada(page);
+  const caderaProtesis = await checkCaderaProtesis(page);
   const cambioMec = await checkCambioMecanismo(page);
   console.log(`  ${cambioMec.ok ? '✓' : '✗'} cambiar el mecanismo con el cribado pintado añade o quita el sistema, conserva las respuestas y su urgencia deja de contar`);
   console.log(`  ${hombroTratada.ok ? '✓' : '✗'} hombro h_step2b → h11 «ya diagnosticada y tratada»: sin derivación en la fase 5, protocolo del cirujano`);
+  console.log(`  ${caderaProtesis.ok ? '✓' : '✗'} cadera con prótesis: pq1 la primera, ca1 «tratada con la cirugía»; con Insidioso, sin pq1 ni casilla`);
+  if (!caderaProtesis.ok) console.log('    ', JSON.stringify(caderaProtesis));
 
   // Exercise the mobile phase-sheet button (the last real bug found,
   // PHASE_NAV_IDS) once, on whichever region the loop above ended on.
@@ -964,9 +1095,9 @@ async function main() {
   const razonMov = await checkRazonamientoMovil(page);
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
-  console.log('\nLado afectado (fase 2):');
+  console.log('\nSexo (fase 1) y lado afectado (fase 2):');
   const lado = await checkLado(page);
-  console.log(`  ${lado.ok ? '✓' : '✗'} aparece al elegir región, «Central» solo en columna, se guarda, cabe a 320 px`);
+  console.log(`  ${lado.ok ? '✓' : '✗'} sexo se guarda y se borra con un segundo toque; lado aparece al elegir región, «Central» solo en columna; todo cabe a 320 px`);
 
   console.log('\nDerivación del árbol (lumbar, VASCULAR):');
   const deriv = await checkDerivacionVascular(page);
@@ -979,13 +1110,16 @@ async function main() {
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
-  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado y copiado, nada en el hub`);
+  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y copiado, nada en el hub`);
 
   await browser.close();
 
   console.log('\nGrabación desde la cabecera (micrófono falso de Chromium):');
   const grab = await checkGrabadoraCabecera(errors);
   console.log(`  ${grab.ok ? '✓' : '✗'} toque = empezar/pausa/reanudar, pulsación larga y papelera descartan, sigue por todas las fases, «Generar» la cierra y la usa; reiniciar avisa y descarta`);
+  const silencio = await checkGrabadoraSilencio(errors);
+  console.log(`  ${silencio.ok ? '✓' : '✗'} micrófono mudo → píldora ⚠ y aviso «No se oye nada»; con sonido, ningún aviso`);
+  if (!silencio.ok) console.log('    ', JSON.stringify(silencio));
 
   const realErrors = errors.filter(e => !KNOWN_NOISE.some(n => e.includes(n)));
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
@@ -993,8 +1127,8 @@ async function main() {
 
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
-  const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && realErrors.length === 0;
+  const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');

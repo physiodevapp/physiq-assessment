@@ -5,13 +5,15 @@
 import { state } from './state.js';
 import { SYSTEMIC_SCREENING, HYPOTHESES, DOSIS_DERIVAR, PHASE_DEFS, PHASE_NAV_IDS, NRS_LABELS, NRS_CLASSES, QUICK_PHRASES } from './data.js';
 import { initCIFTree, getDerivacionesArbol } from './phase4.js';
-import { buildHypothesisCards, teardownHypObserver, restoreHypObserver, esTratada, marcarTratada, casillaTratadaHTML } from './phase4b.js';
+import { buildHypothesisCards, teardownHypObserver, restoreHypObserver, esTratada, marcarTratada, casillaTratadaHTML, hipotesis, hipotesisActivas, sincronizarTratadas } from './phase4b.js';
 import { writeSession, readSession, clearSession, updateSession } from './lib/session.js';
 import {
   COMPLICACIONES, cirugiaVacia, esPosquirurgico, semanasCirugia, semanasTexto, conProtocolo, cirugiaPayload,
   cqConProtocolo, fechaSemanasTexto, TEXTO_SIN_PROTOCOLO, TEXTO_PAUTA_COMPATIBLE, TEXTO_NOTA_TRAUMA, ETIQUETA_TRATADA,
+  ETIQUETA_HIP_POSQ, pautaHipPosq,
 } from './lib/posquirurgico.js';
 import { VERSION_SHA, textoVersion, esVersionNueva } from './lib/version.js';
+import { ladoTexto } from './lib/region.js';
 
 // ─── SCROLL LOCK (dialogs / bottom sheets) ───────────────────
 // Reference-counted: several overlays (confirm-banner, session panel,
@@ -257,6 +259,7 @@ function _softResetApp() {
   state.treeModified = false;
   state.motivoConsulta = '';
   state.edadPaciente = null;
+  state.sexo = '';
   state.signosVitales = { fc: null, fr: null, spo2: null, tas: null, tad: null };
   state.antropometria = { talla: null, peso: null };
   state.mecanismo = '';
@@ -295,6 +298,7 @@ function _softResetApp() {
   if (mConsulta) mConsulta.value = '';
   const edadEl = document.getElementById('edadPaciente');
   if (edadEl) edadEl.value = '';
+  document.querySelectorAll('#sexo .option-btn').forEach(b => b.classList.remove('selected'));
   ['vitalFc', 'vitalFr', 'vitalSpo2', 'vitalTas', 'vitalTad', 'vitalTalla', 'vitalPeso'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { el.value = ''; el.classList.remove('vital-green', 'vital-orange', 'vital-red'); }
@@ -647,6 +651,9 @@ function selectOption(groupId, btn, value) {
   }
   if (groupId === 'mecanismo') {
     _pintarCirugiaUI();
+    // `pq1` y la casilla «Tratada con la cirugía» dependen del mecanismo
+    sincronizarTratadas();
+    _invalidar4b();
     // El sistema posquirúrgico aparece o desaparece del cribado ya pintado
     if (state.region && document.getElementById('sistemaPanels')?.children.length) _repintarCribado();
   }
@@ -755,15 +762,24 @@ function _pintarCirugiaDerivados() {
   }
 }
 
+// La tarjeta de `pq1` en la 4b lleva la intervención, el protocolo y las
+// restricciones: se vacía para que se reconstruya al volver a la 4b.
+function _invalidar4b() {
+  const cards = document.getElementById('hypothesisCards');
+  if (cards) cards.innerHTML = '';
+}
+
 function updateCirugia(campo, valor) {
   if (campo === 'semanasAprox') valor = valor === '' ? null : Number(valor);
   state.cirugia[campo] = valor;
+  if (campo === 'intervencion' || campo === 'restricciones') _invalidar4b();
   if (campo === 'fecha' || campo === 'semanasAprox') _pintarCirugiaDerivados();
   saveSession();
 }
 
 function selectCirProtocolo(btn, valor) {
   state.cirugia.protocolo = state.cirugia.protocolo === valor ? '' : valor;
+  _invalidar4b();
   document.querySelectorAll('#cirProtocolo .option-btn').forEach(b => {
     b.classList.toggle('selected', b.textContent.trim() === state.cirugia.protocolo);
   });
@@ -1905,10 +1921,65 @@ function nombreRegion(r) {
 
 const _escHTML = t => String(t ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+// Fase 5, tarjeta de hipótesis: la pauta y el pronóstico se pliegan para
+// reducir el scroll. La pauta deja a la vista su primera frase; lo que es
+// seguridad (🚑 Derivación, «ya diagnosticada y tratada», la nota
+// posquirúrgica) nunca se pliega. Al imprimir se despliega todo (ver
+// _desplegarParaImprimir).
+// Primera frase: hasta el primer punto seguido de espacio y mayúscula (o «, ¿,
+// paréntesis), así «rec. 1.3.1» o «p. ej.» no la cortan.
+// Una frase de menos de 40 caracteres («Estadios I–II.») no dice nada sola: se
+// le suma la siguiente. Una muy larga se recorta a 3 líneas por CSS.
+// → { primera, resto } (resto '' si la pauta es una sola frase)
+function partirPrimeraFrase(texto) {
+  const t = String(texto || '').trim();
+  const re = /[.!?](?=\s+[A-ZÁÉÍÓÚÑ¿«(])/g;
+  let m;
+  while ((m = re.exec(t))) {
+    const fin = m.index + 1;
+    if (fin >= 40) return { primera: t.slice(0, fin), resto: t.slice(fin).trim() };
+  }
+  return { primera: t, resto: '' };
+}
+
+function _pautaPlegableHTML(dosis, fuente) {
+  const { primera, resto } = partirPrimeraFrase(dosis);
+  const fuenteHTML = fuente ? `<div class="test-source" style="margin:4px 0 0;">${fuente}</div>` : '';
+  if (!resto) return `<div class="exercise-box">${dosis}</div>${fuenteHTML}`;
+  return `<details class="pauta-det">
+    <summary class="exercise-box"><span class="pauta-det-primera">${primera}</span><span class="pauta-det-mas">Ver pauta completa</span></summary>
+    <div class="pauta-det-resto">${resto}</div>
+    ${fuenteHTML}
+    <button type="button" class="pauta-det-menos" onclick="const d=this.closest('details'); d.open=false; d.scrollIntoView({block:'nearest'})">Ocultar pauta ▴</button>
+  </details>`;
+}
+
 // Texto de la pauta de una hipótesis «Derivar» marcada como tratada.
 function _textoTratada(cq) {
   if (!cq) return 'Diagnóstico médico ya confirmado y tratado: sin derivación por esta hipótesis.';
   return `Ya intervenida: seguir el protocolo del cirujano${cq.re ? ` (${_escHTML(cq.re)})` : ''}.`;
+}
+
+// Tarjeta de `pq1` en la fase 5: sin tests ni puntuación; la pauta es el
+// protocolo del cirujano. Va la primera, sin medalla de puesto.
+function _hipPosqResultadosHTML(hyp, cq) {
+  const color = '#8b95a7';
+  return `
+      <div style="background:var(--surface2); border:1px solid ${color}33; border-radius:var(--radius-lg); padding:1.2rem; margin-bottom:1rem;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:1rem;">
+          <span style="width:12px;height:12px;border-radius:50%;background:${color};flex-shrink:0;"></span>
+          <span style="font-weight:600; color:var(--text); font-size:0.95rem;">🏥 ${_escHTML(hyp.name)}</span>
+          <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--text3);">${ETIQUETA_HIP_POSQ}</span>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">PROM Recomendado</div>
+          <span class="prom-badge">${hyp.prom}</span>
+        </div>
+        <div>
+          <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent2); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">🏥 Protocolo del cirujano</div>
+          <div class="exercise-box">${_escHTML(pautaHipPosq(cq))}</div>
+        </div>
+      </div>`;
 }
 
 // Recuadro de la fase 5 con la cirugía (docs/posquirurgico.md, punto 4).
@@ -1931,7 +2002,7 @@ function _cirugiaResultadosHTML(cq) {
 // Región con el lado afectado, si se indicó: 'Hombro (derecho)'.
 function regionConLado(r, lado) {
   if (!r) return '—';
-  return lado ? `${nombreRegion(r)} (${lado.toLowerCase()})` : nombreRegion(r);
+  return lado ? `${nombreRegion(r)} (${ladoTexto(r, lado)})` : nombreRegion(r);
 }
 
 // «Central» solo tiene sentido en la columna.
@@ -1963,11 +2034,11 @@ function buildResults() {
     btnFinalizar.title = inHub ? '' : 'Comparte el resumen clínico por email, WhatsApp, etc.';
   }
 
-  // Sort hypotheses by score
-  const sorted = [...state.activeHypotheses]
-    .map(h => ({ id: h, score: state.hypothesisScores[h]?.totalLR || 1, hyp: HYPOTHESES[h] }))
+  // Sort hypotheses by score (`pq1`, la posquirúrgica, siempre la primera)
+  const sorted = hipotesisActivas()
+    .map(h => ({ id: h, score: state.hypothesisScores[h]?.totalLR || 1, hyp: hipotesis(h) }))
     .filter(x => x.hyp)
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => (b.hyp.posquirurgica ? 1 : 0) - (a.hyp.posquirurgica ? 1 : 0) || b.score - a.score);
 
   const brAffirmative = Object.entries(state.banderasRojas)
     .filter(([, v]) => v === 'SI')
@@ -2044,16 +2115,18 @@ function buildResults() {
   } else {
     sorted.forEach((item, rank) => {
       const { id, hyp, score } = item;
+      if (hyp.posquirurgica) { hypHtml += _hipPosqResultadosHTML(hyp, cq); return; }
       const scoreInfo = state.hypothesisScores[id];
       const tratada = esTratada(id);
       const colorClass = scoreInfo?.colorClass || 'hyp-orange';
       const colorMap = { 'hyp-green': '#38d9a9', 'hyp-orange': '#ff9f43', 'hyp-red': '#ff6b6b', 'hyp-neutral': '#8b95a7' };
-      const rankEmoji = ['🥇','🥈','🥉'][rank] || `${rank+1}º`;
+      const puesto = rank - (sorted[0]?.hyp.posquirurgica ? 1 : 0);
+      const rankEmoji = ['🥇','🥈','🥉'][puesto] || `${puesto+1}º`;
       const dotColor = colorMap[colorClass] || '#ff9f43';
 
       // Tests summary
       const results = state.testResults[id] || {};
-      const testsHtml = hyp.tests.map((t, i) => {
+      const filaTest = (t, i) => {
         const res = results[i];
         const resLabel = res === 'pos' ? '<span style="color:var(--green)">✓ Positivo</span>' : res === 'neg' ? '<span style="color:var(--red)">✗ Negativo</span>' : '<span style="color:var(--text3)">Sin datos</span>';
         const statsStr = [t.sn && `Sn:${t.sn}`, t.sp && `Sp:${t.sp}`, t.lr_pos && `LR+:${t.lr_pos}`, t.lr_neg && `LR-:${t.lr_neg}`].filter(Boolean).join(' | ');
@@ -2064,7 +2137,14 @@ function buildResults() {
           </div>
           ${statsStr ? `<div style="color:var(--text3); font-size:0.7rem; font-family:'DM Mono',monospace; margin-top:2px;">${statsStr}</div>` : ''}
         </div>`;
-      }).join('');
+      };
+      // Los tests hechos (pos/neg), a la vista; los «Sin datos», juntos y plegados
+      const hechos = hyp.tests.map((t, i) => [t, i]).filter(([, i]) => results[i] === 'pos' || results[i] === 'neg');
+      const sinHacer = hyp.tests.map((t, i) => [t, i]).filter(([, i]) => results[i] !== 'pos' && results[i] !== 'neg');
+      const testsHtml = hechos.map(([t, i]) => filaTest(t, i)).join('')
+        + (sinHacer.length ? `<details class="tests-sin-datos"><summary>${sinHacer.length === hyp.tests.length ? 'Ningún test realizado' : sinHacer.length === 1 ? '1 test sin hacer' : `${sinHacer.length} tests sin hacer`}</summary>
+            ${sinHacer.map(([t, i]) => filaTest(t, i)).join('')}
+          </details>` : '');
 
       hypHtml += `
       <div style="background:var(--surface2); border:1px solid ${dotColor}33; border-radius:var(--radius-lg); padding:1.2rem; margin-bottom:1rem;">
@@ -2084,16 +2164,18 @@ function buildResults() {
         </div>
         <div>
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent2); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">${tratada ? ETIQUETA_TRATADA : hyp.dosis === DOSIS_DERIVAR ? '🚑 Derivación' : hyp.dosisFuente ? '💊 Pauta de Tratamiento' : '💊 Dosis Día 1 (Baja Fricción)'}</div>
-          <div class="exercise-box">${tratada ? _textoTratada(cq) : hyp.dosis || '<em style="color:var(--text3)">Sin dosis de referencia: a criterio del clínico.</em>'}</div>
-          ${!tratada && hyp.dosis && hyp.dosisFuente ? `<div class="test-source" style="margin:4px 0 0;">${hyp.dosisFuente}</div>` : ''}
+          ${!tratada && hyp.dosis && hyp.dosis !== DOSIS_DERIVAR
+            ? _pautaPlegableHTML(hyp.dosis, hyp.dosisFuente)
+            : `<div class="exercise-box">${tratada ? _textoTratada(cq) : hyp.dosis || '<em style="color:var(--text3)">Sin dosis de referencia: a criterio del clínico.</em>'}</div>
+          ${!tratada && hyp.dosis && hyp.dosisFuente ? `<div class="test-source" style="margin:4px 0 0;">${hyp.dosisFuente}</div>` : ''}`}
           ${cq && !tratada && hyp.dosis && hyp.dosis !== DOSIS_DERIVAR ? `<div class="nota-posq" style="margin-top:6px;">🏥 ${TEXTO_PAUTA_COMPATIBLE}</div>` : ''}
         </div>
-        ${hyp.pronostico ? `<div style="margin-top:1rem;">
-          <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">🧭 Pronóstico y derivación</div>
+        ${hyp.pronostico ? `<details class="pronostico-det" style="margin-top:1rem;">
+          <summary style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase;">🧭 Pronóstico y derivación</summary>
           <div style="font-size:0.8rem; color:var(--text2); line-height:1.6;">${hyp.pronostico.horizonte}</div>
           ${hyp.pronostico.derivacion ? `<div style="font-size:0.8rem; color:var(--text2); line-height:1.6; margin-top:4px;"><strong>Derivar si:</strong> ${hyp.pronostico.derivacion}</div>` : ''}
           ${hyp.pronostico.fuente ? `<div class="test-source" style="margin:4px 0 0;">${hyp.pronostico.fuente}</div>` : ''}
-        </div>` : ''}
+        </details>` : ''}
       </div>`;
     });
   }
@@ -2286,7 +2368,11 @@ function buildPhaseSheetList() {
 }
 
 // ─── CONFIRM BANNER (reemplaza confirm() nativo) ─────────────
-function showConfirmBanner(title, text, actionLabel, onConfirm) {
+// opts.cancelLabel cambia el texto del botón de cerrar («Cancelar» por
+// defecto). Devuelve una función que cierra el diálogo sin confirmar, para
+// quien necesite cerrarlo desde fuera (p. ej. si lo que se iba a confirmar ya
+// no tiene sentido); no hace nada si ya está cerrado.
+function showConfirmBanner(title, text, actionLabel, onConfirm, opts = {}) {
   const existing = document.getElementById('confirmBanner');
   if (existing) existing.remove();
   const overlay = document.createElement('div');
@@ -2297,16 +2383,20 @@ function showConfirmBanner(title, text, actionLabel, onConfirm) {
       <div class="confirm-box-title">${title}</div>
       <div class="confirm-box-text">${text}</div>
       <div class="confirm-box-btns">
-        <button class="confirm-btn-cancel" id="confirmCancel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Cancelar</button>
+        <button class="confirm-btn-cancel" id="confirmCancel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> ${opts.cancelLabel || 'Cancelar'}</button>
         <button class="confirm-btn-ok" id="confirmAction"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg> ${actionLabel}</button>
       </div>
     </div>`;
   document.body.appendChild(overlay);
   lockBodyScroll();
   window.parent.postMessage({ type: 'PHYSIQ_WIDGET_HIDE' }, '*');
-  const dismiss = () => { overlay.remove(); unlockBodyScroll(); window.parent.postMessage({ type: 'PHYSIQ_WIDGET_SHOW' }, '*'); };
+  const dismiss = () => {
+    if (!overlay.isConnected) return;
+    overlay.remove(); unlockBodyScroll(); window.parent.postMessage({ type: 'PHYSIQ_WIDGET_SHOW' }, '*');
+  };
   document.getElementById('confirmCancel').onclick = dismiss;
   document.getElementById('confirmAction').onclick = () => { dismiss(); onConfirm(); };
+  return dismiss;
 }
 
 
@@ -2389,7 +2479,7 @@ function _showSessionState(st) {
       saveSession();
     });
     panel.querySelector('#sessionPanelClear').onclick = () => _showSessionState('delete');
-    panel.querySelector('#sessionVersionRecargar')?.addEventListener('click', recargarVersionNueva);
+    _engancharVersionPanel(panel);
     setTimeout(() => input.focus(), 60);
 
   } else if (st === 'delete') {
@@ -2473,37 +2563,68 @@ async function _aplicarImportacion(r) {
 
 // ─── Versión desplegada ────────────────────────────────────────
 // La versión cargada (lib/version.js, la escribe deploy-to-hub.yml) se ve al
-// pie del panel de sesión. Al arrancar y al volver a la app se pide
-// version.json sin caché: si es otra, un aviso ofrece recargar. Sirve para
-// saber, tras un merge, si ya ha llegado el despliegue a este dispositivo.
+// pie del panel de sesión. Al arrancar, al volver a la app y con «Comprobar»
+// del panel se pide version.json: si es otra, un aviso ofrece recargar. Sirve
+// para saber, tras un merge, si ya ha llegado el despliegue a este dispositivo.
+//
+// version.json se pide por su URL normal (sin ?t=…), igual que el código: así
+// los dos salen del mismo estado del servidor y de la CDN de GitHub Pages
+// (~10 min). Con un ?t= único, version.json llegaba nuevo mientras
+// lib/version.js seguía en caché, y el aviso volvía a salir tras recargar.
 let _versionNueva = null;          // { sha, fecha } publicada, si es distinta de la cargada
 let _versionComprobada = 0;        // ms de la última comprobación (máx. una por minuto)
 let _versionAvisoCerrado = '';     // sha cuyo aviso se cerró: no se vuelve a mostrar
+const _CLAVE_RECARGA = 'physiq-assessment-recarga';   // sessionStorage: sha por el que ya se recargó
+
+function _shaRecargado() { try { return sessionStorage.getItem(_CLAVE_RECARGA) || ''; } catch { return ''; } }
+function _anotarRecarga(sha) { try { sha ? sessionStorage.setItem(_CLAVE_RECARGA, sha) : sessionStorage.removeItem(_CLAVE_RECARGA); } catch { /* sin almacenamiento: solo se pierde el aviso de «aún publicándose» */ } }
+// Ya se recargó por esta versión y sigue sin llegar: aún se está publicando.
+const _versionPendiente = () => !!_versionNueva && _shaRecargado() === _versionNueva.sha;
 
 function _versionPanelHTML() {
-  const actual = `Versión ${textoVersion()}`;
-  if (!_versionNueva) return actual;
-  return `${actual} · <span class="session-version-nueva">hay una más reciente</span>
-    <button type="button" class="session-version-btn" id="sessionVersionRecargar">Recargar</button>`;
+  // Una línea: versión a la izquierda y un solo botón a la derecha, que es
+  // «Comprobar» o, con una versión más nueva publicada, «Actualizar» en naranja
+  // (el aviso flotante ya lo explica, así que no se repite en texto).
+  // Versión y fecha no se parten por dentro: si no caben, la fecha baja entera.
+  const [sha, fecha] = textoVersion().split(' · ');
+  const actual = `<span class="nw">Versión ${sha}</span>${fecha ? ` · <span class="nw">${fecha}</span>` : ''}`;
+  const boton = _versionNueva
+    ? `<button type="button" class="session-version-btn session-version-btn-nueva" id="sessionVersionRecargar" title="${_versionPendiente() ? 'La versión nueva aún se está publicando: prueba en unos minutos' : 'Hay una versión nueva'}">Actualizar</button>`
+    : '<button type="button" class="session-version-btn" id="sessionVersionComprobar">Comprobar</button>';
+  return `<span class="session-version-txt">${actual}</span>${boton}`;
 }
 
-async function comprobarVersion() {
-  if (VERSION_SHA === 'dev') return;   // sin despliegue que comparar (local)
-  if (Date.now() - _versionComprobada < 60000) return;
+function _engancharVersionPanel(v) {
+  v.querySelector('#sessionVersionRecargar')?.addEventListener('click', recargarVersionNueva);
+  v.querySelector('#sessionVersionComprobar')?.addEventListener('click', () => comprobarVersion({ manual: true }));
+}
+
+// manual: desde «Comprobar» del panel — sin el límite de una por minuto y
+// diciendo siempre el resultado.
+async function comprobarVersion({ manual = false } = {}) {
+  if (VERSION_SHA === 'dev') { if (manual) showToast('Versión de desarrollo: no hay despliegue con el que comparar.', 'warning'); return; }
+  if (!manual && Date.now() - _versionComprobada < 60000) return;
   _versionComprobada = Date.now();
   let publicada;
   try {
-    const r = await fetch(`./version.json?t=${Date.now()}`, { cache: 'no-store' });
-    if (!r.ok) return;
+    const r = await fetch('./version.json', { cache: 'no-store' });
+    if (!r.ok) throw new Error(String(r.status));
     publicada = await r.json();
-  } catch { return; }   // sin conexión: nada que decir
-  if (!esVersionNueva(publicada)) return;
+  } catch {   // sin conexión: nada que decir, salvo si se pidió a mano
+    if (manual) showToast('No se ha podido comprobar la versión (¿sin conexión?).', 'warning');
+    return;
+  }
+  if (!esVersionNueva(publicada)) {
+    _versionNueva = null;
+    _anotarRecarga('');
+    document.getElementById('versionAviso')?.remove();
+    if (manual) showToast(`✓ Estás en la última versión (${textoVersion()})`, 'success');
+    return;
+  }
   _versionNueva = publicada;
   const v = document.getElementById('sessionVersion');
-  if (v) {
-    v.innerHTML = _versionPanelHTML();
-    v.querySelector('#sessionVersionRecargar')?.addEventListener('click', recargarVersionNueva);
-  }
+  if (v) { v.innerHTML = _versionPanelHTML(); _engancharVersionPanel(v); }
+  if (manual) _versionAvisoCerrado = '';
   _mostrarAvisoVersion();
 }
 
@@ -2514,8 +2635,8 @@ function _mostrarAvisoVersion() {
   aviso.id = 'versionAviso';
   aviso.className = 'version-aviso';
   aviso.setAttribute('role', 'status');
-  aviso.innerHTML = `<span class="version-aviso-texto">Hay una versión nueva</span>
-    <button type="button" class="version-aviso-btn" id="versionAvisoRecargar">Recargar</button>
+  aviso.innerHTML = `<span class="version-aviso-texto">${_versionPendiente() ? 'La versión nueva aún se está publicando: prueba en unos minutos' : 'Hay una versión nueva'}</span>
+    <button type="button" class="version-aviso-btn" id="versionAvisoRecargar">Actualizar</button>
     <button type="button" class="version-aviso-cerrar" id="versionAvisoCerrar" aria-label="Cerrar aviso" title="Ahora no">×</button>`;
   document.body.appendChild(aviso);
   aviso.querySelector('#versionAvisoRecargar').onclick = recargarVersionNueva;
@@ -2525,15 +2646,43 @@ function _mostrarAvisoVersion() {
   };
 }
 
+// Antes de recargar se vuelven a pedir al servidor (cache: 'reload') los
+// archivos propios que ha cargado esta página, para que la caché HTTP del
+// navegador no sirva el código anterior aunque la página no esté bajo el
+// service worker. Como mucho 4 s: si tarda, se recarga igual.
+async function _refrescarArchivosApp() {
+  const urls = [...new Set(performance.getEntriesByType('resource').map(e => e.name))].filter(u => {
+    try {
+      const x = new URL(u);
+      return x.origin === location.origin && /\.(js|css)$/.test(x.pathname);
+    } catch { return false; }
+  });
+  try { await navigator.serviceWorker?.getRegistration().then(r => r?.update()); } catch { /* sin SW */ }
+  await Promise.race([
+    Promise.allSettled(urls.map(u => fetch(u, { cache: 'reload' }))),
+    new Promise(r => setTimeout(r, 4000)),
+  ]);
+}
+
 // Recargar guarda la sesión, pero solo se guarda con nombre de paciente: sin
-// él, una valoración empezada se perdería, así que se pide confirmación.
+// él, una valoración empezada se perdería, así que se pide confirmación. Se
+// anota por qué versión se recarga: si tras recargar sigue sin llegar, el
+// aviso dice que aún se está publicando en vez de repetir «Hay una versión
+// nueva» una y otra vez.
 function recargarVersionNueva() {
-  const recargar = () => { saveSession(); setTimeout(() => location.reload(), 150); };
+  const recargar = async () => {
+    saveSession();
+    _anotarRecarga(_versionNueva?.sha || '');
+    const btn = document.getElementById('versionAvisoRecargar');
+    if (btn) { btn.disabled = true; btn.textContent = 'Actualizando…'; }
+    await _refrescarArchivosApp();
+    location.reload();
+  };
   if (!(state.patient || '').trim() && _hasAssessmentData()) {
     closeSessionPanel();
-    showConfirmBanner('Recargar la app',
-      'La valoración en curso no tiene nombre de paciente, así que no está guardada y se perderá al recargar. Para conservarla, escribe un nombre en el panel de sesión antes de recargar.',
-      'Recargar igualmente', () => location.reload());
+    showConfirmBanner('Actualizar la app',
+      'La valoración en curso no tiene nombre de paciente, así que no está guardada y se perderá al actualizar. Para conservarla, escribe un nombre en el panel de sesión antes de actualizar.',
+      'Actualizar igualmente', recargar);
     return;
   }
   recargar();
@@ -2686,14 +2835,16 @@ function buildPhysiQPayload() {
     sq: getSistemicoAffirmativeTexts(),
     ur: getUrgenciasActivas(),
     dv: getDerivacionesArbol(),
-    h:  state.activeHypotheses.map(id => ({
+    h:  hipotesisActivas().map(id => hipotesis(id)?.posquirurgica
+        ? { id, name: hipotesis(id).name, sc: ETIQUETA_HIP_POSQ, lr: null, tr: {}, pq: true }
+        : {
           id,
           name: HYPOTHESES[id]?.name ?? id,
           sc:   state.hypothesisScores[id]?.label ?? 'Sin evaluar',
           lr:   state.hypothesisScores[id]?.totalLR ?? null,
           tr:   state.testResults[id] ?? {},
           ...(esTratada(id) ? { dt: true } : {})
-        })),
+        }),
     pn: state.planNotes,
     fp: resumenFormularioPrevio(),
     md: state.modo === 'breve' ? 'breve' : 'completo',
@@ -2742,9 +2893,9 @@ function buildInformeFisioterapiaText() {
   const d = buildPhysiQPayload();
   const region = regionConLado(d.r, d.la);
 
-  const hyps = [...d.h].sort((a, b) => (b.lr ?? 1) - (a.lr ?? 1));
+  const hyps = [...d.h].sort((a, b) => (b.pq ? 1 : 0) - (a.pq ? 1 : 0) || (b.lr ?? 1) - (a.lr ?? 1));
   const breve = d.md === 'breve';
-  const sinConfirmar = breve && hyps.some(h => !Object.values(h.tr || {}).some(r => r === 'pos' || r === 'neg'));
+  const sinConfirmar = breve && hyps.some(h => !h.pq && !h.dt && !Object.values(h.tr || {}).some(r => r === 'pos' || r === 'neg'));
   const impresion = hyps.length
     ? hyps.map(h => `  · ${h.name}${h.dt ? (d.cq ? ' (intervenida quirúrgicamente)' : ' (diagnosticada y tratada)') : ''}`).join('\n')
     : '  · Pendiente de completar la valoración diagnóstica.';
@@ -2845,6 +2996,7 @@ function _hasAssessmentData() {
   return state.maxVisitedIdx > 0
     || !!state.motivoConsulta
     || state.edadPaciente !== null
+    || !!state.sexo
     || _hasVitalsData()
     || !!state.mecanismo
     || !!state.cirugia?.intervencion
@@ -2931,7 +3083,7 @@ function _restoreSessionDOM() {
   updateImcDisplay();
   updateImcColor();
 
-  ['mecanismo', 'cronologia', 'riesgoPsico'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
+  ['mecanismo', 'cronologia', 'riesgoPsico', 'sexo'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
   // Sesiones anteriores al posquirúrgico: sin cirugia / derivacionResuelta
   state.cirugia = { ...cirugiaVacia(), ...(state.cirugia || {}) };
   if (!state.derivacionResuelta) state.derivacionResuelta = {};
@@ -3129,6 +3281,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Al imprimir, lo plegado de la fase 5 (pauta, pronóstico, tests sin hacer)
+// sale desplegado; después se deja como estaba.
+let _plegadosImpresion = [];
+window.addEventListener('beforeprint', () => {
+  _plegadosImpresion = [...document.querySelectorAll('#phase5 details:not([open])')];
+  _plegadosImpresion.forEach(d => { d.open = true; });
+});
+window.addEventListener('afterprint', () => {
+  _plegadosImpresion.forEach(d => { d.open = false; });
+  _plegadosImpresion = [];
+});
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(() => {});
 }
@@ -3231,7 +3395,7 @@ _iniciarGrabadora();
 export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, resumenFormularioIA, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML,
   precargarFormularioPrevio, nombreRegion, showToast,
-  injectQuickInputBar, lockBodyScroll, unlockBodyScroll };
+  injectQuickInputBar, lockBodyScroll, unlockBodyScroll, partirPrimeraFrase };
 
 // Exposed on window for inline onclick/oninput attributes across index.html
 // and dynamically-generated HTML — those resolve only against the global

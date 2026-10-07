@@ -30,7 +30,7 @@ jobs:
           cp formularios/*.js physiq-hub/assessment/formularios/
           cp data/*.js physiq-hub/assessment/data/
           cp icons/icon-192.png icons/icon-512.png physiq-hub/assessment/icons/
-          cp lib/session.js lib/informe-narrativo.js lib/audio-store.js lib/licencia-ia.js lib/valoracion-json.js lib/posquirurgico.js lib/version.js physiq-hub/assessment/lib/
+          cp lib/session.js lib/informe-narrativo.js lib/audio-store.js lib/licencia-ia.js lib/valoracion-json.js lib/posquirurgico.js lib/version.js lib/region.js lib/revision-informe.js physiq-hub/assessment/lib/
 
       - name: Stamp deployed version
         # lib/version.js lleva 'dev' en el repo: aquí se sustituye por el commit
