@@ -2384,8 +2384,10 @@ console.log('\nversión desplegada');
   });
 
   test('textoVersion: sha y fecha local; sin fecha válida, solo el sha', () => {
-    const t = V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z');
-    assert.match(t, /^a1b2c3d · .*2026/);
+    // El año solo cuando no es el actual
+    assert.doesNotMatch(V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z', new Date('2026-12-01')), /2026/);
+    assert.match(V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z', new Date('2026-12-01')), /^a1b2c3d · 7 oct/);
+    assert.match(V.textoVersion('a1b2c3d', '2026-10-07T12:32:00Z', new Date('2027-01-02')), /^a1b2c3d · .*2026/);
     assert.equal(V.textoVersion('a1b2c3d', ''), 'a1b2c3d');
     assert.equal(V.textoVersion('a1b2c3d', 'basura'), 'a1b2c3d');
   });
