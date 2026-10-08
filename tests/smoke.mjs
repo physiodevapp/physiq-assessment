@@ -679,21 +679,31 @@ async function checkExportarImportar(browser, errors, tmpDir) {
     });
   });
 
-  // Fase 5 a 320 px: secciones a todo el ancho (bandas), caja de hipótesis con
-  // relleno reducido, y nada desborda en horizontal
+  // Móvil a 320 px, todas las fases: el primer nivel (cards, sistemas del
+  // cribado, preguntas del árbol, hipótesis de la 4b, secciones de la fase 5)
+  // va de borde a borde, las cajas de lectura de segundo nivel con 12 px de
+  // relleno, y nada desborda en horizontal
   await page.evaluate(() => closeSessionPanel());
   await page.waitForTimeout(200);
-  r.fase5Movil = await page.evaluate(() => {
-    const secs = [...document.querySelectorAll('#phase5 .summary-section')];
-    const banda = secs.length > 0 && secs.every(el => { const b = el.getBoundingClientRect(); return Math.round(b.left) === 0 && Math.round(b.right) === innerWidth; });
-    const hyp = document.querySelector('#phase5 .hyp5-card');
-    const relleno = !hyp || getComputedStyle(hyp).paddingLeft === '12px';
-    return banda && relleno && document.documentElement.scrollWidth <= innerWidth;
-  });
+  r.bandasMovil = {};
+  for (const f of [1, 2, 3, 4, '4b', 5]) {
+    await page.evaluate(f => goToPhase(f), f);
+    await page.waitForTimeout(250);
+    r.bandasMovil[f] = await page.evaluate(() => {
+      const fase = document.querySelector('.phase-container.active');
+      const sel = '.card, .sistema-accordion-row, .tree-question, .hypothesis-card, .summary-section';
+      const primer = [...fase.querySelectorAll(sel)].filter(el => el.getBoundingClientRect().width > 0 && !el.parentElement.closest(sel));
+      const banda = primer.length > 0 && primer.every(el => { const b = el.getBoundingClientRect(); return Math.round(b.left) === 0 && Math.round(b.right) === innerWidth; });
+      const cajas = [...fase.querySelectorAll('.sq2, .test-item, .hyp5-card')].filter(el => el.getBoundingClientRect().width > 0);
+      const relleno = cajas.every(el => getComputedStyle(el).paddingLeft === '12px');
+      return banda && relleno && document.documentElement.scrollWidth <= innerWidth;
+    });
+  }
+  r.fasesMovil = Object.values(r.bandasMovil).every(Boolean);
 
   await context.close();
   r.ok = r.exportarDesactivadoAlEmpezar && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
-    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fase5Movil;
+    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil;
   return r;
 }
 
@@ -1118,7 +1128,7 @@ async function main() {
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; fase 5 a 320 px en bandas, sin desbordar`);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
