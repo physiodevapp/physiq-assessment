@@ -27,3 +27,13 @@ Notas:
 - Lo que estos informes hacen mal y ninguna regla de texto puede ver (p. ej. en
   el de Pedro, el consejo de la bici del fisioterapeuta atribuido al cirujano)
   queda para la capa 3 (verificador con IA).
+
+## Capa 3 (verificador con IA)
+
+`esperado-capa3.json` lista, por informe, los fallos conocidos que la capa 1 no
+detecta (sacados de las revisiones de cada ronda), con fragmentos literales del
+informe. `tools/verificar-informe.mjs` pasa los informes por el verificador y
+mide cuántos detecta; con `--guardar` deja cada respuesta en `capa3/`, que
+`tests/unit.js` valida sin llamar a la API y `--respuestas` vuelve a puntuar.
+Al añadir un informe a la tabla de arriba, añádelo también a
+`esperado-capa3.json` (un test exige que estén los mismos).
