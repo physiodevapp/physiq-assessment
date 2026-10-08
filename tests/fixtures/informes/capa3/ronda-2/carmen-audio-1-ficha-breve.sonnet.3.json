@@ -1,0 +1,47 @@
+{
+  "result": {
+    "repaso": "PRESENTACIÓN CLÍNICA: he verificado dolor/intensidad NRS, síntomas referidos, baja laboral, ausencia de restricciones del cirujano, banderas rojas y cribado sistémico, lo pendiente de valoración inicial breve. HALLAZGOS Y CODIFICACIÓN CIF: he comprobado dolor anterior en flexión dorsal en carga, palpación anterior, nombre del test, cicatriz, códigos CIF, hipótesis apoyadas. OBJETIVOS Y PLAN: he revisado restricciones pendientes de confirmar, ejercicios indicados, evitar correr/saltar, criterio de control al día siguiente, escalas de seguimiento.",
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "test de Kleiger-Torg-Weiss positivo",
+        "evidencia": "Tests de confirmación realizados - Pinzamiento Anterior del Tobillo: · KTW (rodilla a la pared): positivo",
+        "mensaje": "El test realizado es KTW (rodilla a la pared), no el test de Kleiger-Torg-Weiss; son tests diferentes."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "mediante la positividad del test de Kleiger-Torg-Weiss",
+        "evidencia": "Tests de confirmación realizados - Pinzamiento Anterior del Tobillo: · KTW (rodilla a la pared): positivo",
+        "mensaje": "Repite el error: el test realizado es KTW (rodilla a la pared), no el test de Kleiger-Torg-Weiss."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "hinchazón que aumenta a lo largo del día",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "La paciente dice que «por la tarde se me hincha bastante», no que aumente a lo largo del día."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "La hinchazón vespertina sugiere afectación inflamatoria persistente",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "Esta interpretación clínica (sugiere afectación inflamatoria) no está respaldada en los datos ni en la transcripción."
+      },
+      {
+        "tipo": "repetido",
+        "nivel": "medio",
+        "cita": "Las restricciones posquirúrgicas están pendientes de confirmar con el cirujano",
+        "evidencia": "Aparece en PRESENTACIÓN («la confirmación de restricciones posquirúrgicas con el cirujano»), en HALLAZGOS («Los hallazgos... condición posquirúrgica»), en OBJETIVOS («Las restricciones posquirúrgicas están pendientes de confirmar»), y en el plan («subordinado a las restricciones que establezca el cirujano», «subordinados al protocolo posquirúrgico una vez confirmado»)",
+        "mensaje": "Las restricciones pendientes de confirmar se repiten múltiples veces en diferentes secciones."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 7147,
+    "output": 886
+  }
+}

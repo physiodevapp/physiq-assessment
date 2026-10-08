@@ -1,0 +1,47 @@
+{
+  "result": {
+    "repaso": "Condición de salud y Factores Personales: comprobada edad, sexo, actividad deportiva y aumento reciente de entrenamiento. Presentación Inicial: verificada concordancia entre versión estable del formulario y empeoramiento en la transcripción. Tratamientos Previos: comprobado reposo e ibuprofeno. Cribado de Seguridad: verificado negativo. Dolor: contrastadas cifras NRS, patrón nocturno entre formulario y transcripción, localización, irritabilidad, crujidos y síntomas negados. Pruebas Clínicas: verificados tests realizados, test de Clark no listado en datos pero sí en transcripción, rodilla derecha. Limitaciones y Restricciones: comprobadas actividades afectadas. Conclusiones y Plan: verificada coherencia con pauta PhysiQ, técnicas, plazos, criterio de dosificación, rodillera como añadido diferido, educación, reevaluación y escalas.",
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Refiere que el dolor no le despierta por la noche, aunque también describe despertares ocasionales al girarse en la cama cuando dobla mucho la rodilla.",
+        "evidencia": "Datos: ¿Le despierta por la noche? → No. Transcripción: ¿Y te despierta por la noche también el dolor? Bueno, alguna noche sí, cuando me doy la vuelta en la cama y doblo mucho la rodilla.",
+        "mensaje": "La frase presenta las dos versiones del dolor nocturno en una misma oración contradictoria («no le despierta» y «despertares ocasionales»), pero la regla indica que deben darse «juntas» sin negar la primera parte: aquí se niega explícitamente antes del «aunque»."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "Paciente de sexo femenino, 34 años de edad.",
+        "evidencia": "Transcripción: ¿Cuántos años tienes ahora? 35. Bueno, los cumplo la semana que viene. Todavía tengo 34.",
+        "mensaje": "En la transcripción la paciente aclara que cumple 35 la semana que viene, por lo que técnicamente tiene 34 años, pero la primera respuesta fue «35», creando una discrepancia que el informe debía recoger según la regla."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "El test de Clark, que consiste en la contracción isométrica del cuádriceps contra resistencia con la rodilla en extensión, provoca dolor leve.",
+        "evidencia": "Tests de confirmación realizados (solo estos; no hay otros): Dolor Patelofemoral (Síndrome): · Dolor anterior durante sentadilla: positivo · Confirmar: grupos de Décary [...]: positivo · Palpación alrededor de la FR [...]: positivo. Transcripción: Ahora te hago el test de Clark. Empuja la rodilla contra la camilla. ¿Duele? Sí, un poco.",
+        "mensaje": "El test de Clark aparece en la transcripción pero NO está listado en «Tests de confirmación realizados (solo estos; no hay otros)», por lo que su inclusión detallada en el informe contradice la instrucción de que solo se realizaron los tests listados."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "Refiere que el dolor ha permanecido estable desde el inicio, aunque también describe un empeoramiento en las dos últimas semanas coincidiendo con el aumento del volumen de entrenamiento en kilómetros.",
+        "evidencia": "Datos: Desde que empezó, el dolor va… → Igual. Transcripción: ¿Y cómo ha ido evolucionando todo desde que empezó? Al principio, igual todo el rato. Pero estas últimas dos semanas creo que va a peor, porque he subido los kilómetros.",
+        "mensaje": "Similar al dolor nocturno: presenta dos versiones contradictorias en una misma frase negando la primera («estable») antes de introducir la segunda («empeoramiento»), cuando debía dar ambas versiones de forma neutra."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "La rodilla derecha presenta molestias leves al descender escaleras, aunque de menor intensidad que la izquierda.",
+        "evidencia": "Transcripción: ¿Y la otra rodilla? La derecha también me empieza a molestar un poco al bajar escaleras, pero mucho menos.",
+        "mensaje": "La información sobre la rodilla derecha solo aparece en la transcripción y no está en los datos de valoración estructurada; aunque la transcripción es fuente válida, este hallazgo sobre la rodilla contralateral debería estar documentado en los datos clínicos estructurados para ser incluido en Pruebas Clínicas."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8871,
+    "output": 1375
+  }
+}

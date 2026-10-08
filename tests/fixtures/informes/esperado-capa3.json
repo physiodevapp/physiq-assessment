@@ -8,7 +8,6 @@
       "plantilla": "narrativo",
       "errores": [
         { "id": "lucia1-plan-rodilla-derecha", "tipo": "plan", "nivel": "alto", "descripcion": "Plan preventivo «bilateral» para la otra rodilla que nadie indicó", "fragmentos": ["mediante el mismo programa de ejercicio bilateral", "se realizará seguimiento clínico y se incorporarán medidas preventivas"] },
-        { "id": "lucia1-carrera-regular", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Frecuencia inferida: solo consta que corre", "fragmentos": ["practica carrera de forma regular", "su actividad deportiva regular de carrera"] },
         { "id": "lucia1-decary-componentes", "tipo": "lectura", "nivel": "medio", "descripcion": "Los componentes de Décary (sacados del nombre del test) dados como hallazgos uno a uno", "fragmentos": ["incluyendo concordancia con la edad"] }
       ]
     },
@@ -18,8 +17,8 @@
       "transcripcion": "lucia-audio-transcripcion.txt",
       "plantilla": "narrativo",
       "errores": [
-        { "id": "lucia2-carrera-habitual", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Frecuencia inferida: solo consta que corre", "fragmentos": ["Practica carrera de forma habitual"] },
-        { "id": "lucia2-decary-componentes", "tipo": "lectura", "nivel": "medio", "descripcion": "Los componentes de Décary dados como hallazgos uno a uno", "fragmentos": ["que incluyen edad, localización anterior del dolor"] },
+        { "id": "lucia2-decary-componentes", "tipo": "lectura", "nivel": "medio", "descripcion": "Los componentes de Décary dados como hallazgos uno a uno", "fragmentos": ["que incluyen edad, localización anterior del dolor", "dolor durante la extensión pasiva"] },
+        { "id": "lucia2-clark-tecnica", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Describe la técnica del test de Clark («contra resistencia con la rodilla en extensión») que no consta: en la consulta solo «empuja la rodilla contra la camilla»", "fragmentos": ["que consiste en la contracción isométrica del cuádriceps contra resistencia con la rodilla en extensión"] },
         { "id": "lucia2-entrenamiento-no-sostenido", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Inventa que no ha podido sostener el aumento de entrenamiento", "fragmentos": ["no ha podido sostenerse debido a la sintomatología"] },
         { "id": "lucia2-pronostico-al-paciente", "tipo": "lectura", "nivel": "medio", "descripcion": "«Cuándo reconsiderar» (hiperalgesia, modelo mecánico) explicado a la paciente como parte del plan", "fragmentos": ["Se informa a la paciente de que la patogenia es multifactorial"] }
       ]
@@ -41,10 +40,9 @@
       "errores": [
         { "id": "pedro1-bici-cirujano", "tipo": "atribucion", "nivel": "alto", "descripcion": "La bici («estática sí, carretera no») la indicó el fisio, no el cirujano; «como se le había indicado previamente» es inventado", "fragmentos": ["restringida por indicación médica", "hasta la autorización del cirujano", "tal como se le había indicado previamente"] },
         { "id": "pedro1-bici-como-hecho", "tipo": "atribucion", "nivel": "medio", "descripcion": "Un consejo escrito como algo que ya hace", "fragmentos": ["Mantiene la actividad en bicicleta estática"] },
-        { "id": "pedro1-bici-regular", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Frecuencia inferida; además ahora no la practica", "fragmentos": ["mantiene actividad física regular en bicicleta"] },
         { "id": "pedro1-parestesias-posicion", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "«relacionadas con la posición del miembro» no consta", "fragmentos": ["parestesias intermitentes relacionadas con la posición del miembro"] },
         { "id": "pedro1-miedo-clavo", "tipo": "omision", "nivel": "medio", "descripcion": "El miedo a que se mueva el clavo, dicho en la consulta, falta", "claves": ["clavo", "miedo"] },
-        { "id": "pedro1-protocolo-ambientales", "tipo": "repetido", "nivel": "medio", "descripcion": "El protocolo del cirujano en Factores Ambientales y tres sitios más", "fragmentos": ["El cirujano estableció restricciones verbales para el protocolo"] },
+        { "id": "pedro1-protocolo-ambientales", "tipo": "repetido", "nivel": "medio", "descripcion": "El protocolo del cirujano en Factores Ambientales y tres sitios más", "fragmentos": ["El cirujano estableció restricciones verbales para el protocolo", "evitar cargas pesadas con el miembro superior operado hasta la próxima revisión médica"] },
         { "id": "pedro1-labral-infrecuente", "tipo": "lectura", "nivel": "medio", "descripcion": "«Cuándo reconsiderar» (SLAP aislado infrecuente) usado para interpretar los tests", "fragmentos": ["la lesión labral aislada resulta infrecuente", "la lesión labral aislada es infrecuente"] },
         { "id": "pedro1-coordinacion-cirujano", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Coordinación con el cirujano que nadie indicó", "fragmentos": ["se coordinará con las revisiones del cirujano", "Se mantendrá comunicación con el equipo quirúrgico"] },
         { "id": "pedro1-sujetador", "tipo": "contradice", "nivel": "medio", "descripcion": "«abrochar el sujetador» en un hombre (venía del texto del formulario)", "fragmentos": ["abrochar el sujetador"] }
@@ -56,9 +54,8 @@
       "transcripcion": "pedro-audio-transcripcion.txt",
       "plantilla": "narrativo",
       "errores": [
-        { "id": "pedro2-ciclismo-habitual", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Frecuencia inferida y contradicha: echa de menos la bici, no la practica", "fragmentos": ["Practica ciclismo de manera habitual"] },
         { "id": "pedro2-desde-intervencion", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "«desde la intervención» es una suposición", "fragmentos": ["No ha podido reanudar la práctica de ciclismo de carretera desde la intervención"] },
-        { "id": "pedro2-restriccion-plan-doble", "tipo": "repetido", "nivel": "medio", "descripcion": "La restricción del cirujano dos veces dentro del plan", "fragmentos": ["sin coger peso con ese brazo según lo indicado por el cirujano"] },
+        { "id": "pedro2-restriccion-plan-doble", "tipo": "repetido", "nivel": "medio", "descripcion": "La restricción del cirujano dos veces dentro del plan", "fragmentos": ["sin coger peso con ese brazo según lo indicado por el cirujano", "establece como restricción no cargar peso con el brazo operado", "respetando la restricción de no cargar peso con el brazo operado"] },
         { "id": "pedro2-restriccion-movilidad-4", "tipo": "repetido", "nivel": "medio", "descripcion": "La restricción global de movilidad en Movilidad, Pruebas Clínicas, Conclusiones y Coherencia", "fragmentos": ["El recorrido de la exploración confirmó restricción global", "con restricción global de la movilidad pasiva glenohumeral y pérdida marcada", "La restricción global de movilidad pasiva glenohumeral con pérdida marcada"] }
       ]
     },
@@ -90,9 +87,8 @@
       "transcripcion": "javier-audio-transcripcion.txt",
       "plantilla": "narrativo",
       "errores": [
-        { "id": "javier-gimnasio-regular", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Frecuencia inferida: solo consta que hacía pesas el sábado", "fragmentos": ["Acude al gimnasio con regularidad"] },
         { "id": "javier-gimnasio-afectado", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Participación afectada que nadie dijo", "fragmentos": ["en el gimnasio también se ha visto afectada"] },
-        { "id": "javier-psico-etiquetas", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "«catastrofización», «ansiedad», «desesperanza»: dijo «agobiado» y «duermo mal»", "fragmentos": ["catastrofización ante la posibilidad", "relacionado con ansiedad", "baja autoeficacia o desesperanza"] },
+        { "id": "javier-psico-etiquetas", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "«catastrofización», «ansiedad», «desesperanza»: dijo «agobiado» y «duermo mal»", "fragmentos": ["catastrofización ante la posibilidad", "relacionado con ansiedad", "baja autoeficacia o desesperanza", "ansiedad y mala calidad del sueño"] },
         { "id": "javier-9-repetido", "tipo": "repetido", "nivel": "medio", "descripcion": "El pico de 9/10 en Presentación y en Dolor", "fragmentos": ["picos de intensidad de 9/10"] },
         { "id": "javier-derivacion-repetida", "tipo": "repetido", "nivel": "medio", "descripcion": "La derivación urgente en Cribado, plan, Coherencia y Seguimiento", "fragmentos": ["Este hallazgo requiere valoración médica urgente", "requiere valoración médica urgente antes de proseguir", "La reevaluación se realizará una vez se haya completado la valoración médica urgente"] },
         { "id": "javier-migrana-30", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Dato de pronóstico (30 % con migraña) que con la derivación urgente ya no está en los datos", "fragmentos": ["el 30 por ciento de los pacientes con cefalea cervicogénica"] }

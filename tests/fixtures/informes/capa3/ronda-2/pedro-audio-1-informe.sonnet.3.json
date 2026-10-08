@@ -1,0 +1,54 @@
+{
+  "result": {
+    "repaso": "CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES: comprobado motivo de consulta, diagnóstico médico, factores personales, factores ambientales y protocolo quirúrgico. HISTORIA CLÍNICA Y EVOLUCIÓN: comprobada presentación inicial, intervención quirúrgica, cribado de seguridad. EVALUACIÓN DE FUNCIONES Y ESTRUCTURAS CORPORALES: comprobado dolor (intensidad, características, parestesias, aprensión), movilidad, pruebas clínicas cervicales, escapulares, tests SLAP e impingement. ANÁLISIS DEL FUNCIONAMIENTO: comprobadas limitaciones en actividades y restricciones en participación. CONCLUSIONES Y PLAN: comprobado enfoque terapéutico, dosificación, actividad ciclista, coherencia con hipótesis. SEGUIMIENTO FUNCIONAL: comprobadas escalas y criterios de reevaluación.",
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Niega crujidos o roces articulares, sensaciones de enganche o bloqueo, episodios de pérdida súbita de fuerza tipo \"brazo muerto\" o parestesias intermitentes relacionadas con la posición del miembro.",
+        "evidencia": "En la transcripción: «¿Y notas hormigueos en el brazo o en la mano? Alguna noche se me duerme un poco la mano, sí, pero se me pasa al moverla.»",
+        "mensaje": "El informe niega parestesias intermitentes, pero en la consulta el paciente sí refiere que alguna noche se le duerme la mano."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "Refiere que echa de menos la práctica ciclista en carretera, aunque esta actividad se encuentra restringida por indicación médica hasta la revisión de noviembre.",
+        "evidencia": "No consta en los datos ni en la transcripción que la restricción de bici de carretera sea por indicación médica del cirujano. En la transcripción el fisioterapeuta dice: «¿Y la bici? La echo de menos. ¿Puedo volver? De momento bici estática sí, la de carretera no hasta la revisión de noviembre.»",
+        "mensaje": "Atribuye la restricción de la bici de carretera a indicación médica, cuando quien indica esto en la consulta es el fisioterapeuta."
+      },
+      {
+        "tipo": "atribucion",
+        "nivel": "alto",
+        "cita": "Se indicó al paciente que puede mantener la actividad en bicicleta estática, evitando la bicicleta de carretera hasta la autorización del cirujano en la revisión de noviembre, tal como se le había indicado previamente.",
+        "evidencia": "En la transcripción es el fisioterapeuta quien indica: «De momento bici estática sí, la de carretera no hasta la revisión de noviembre.» No consta que se le hubiera indicado previamente.",
+        "mensaje": "Atribuye la indicación sobre la bicicleta como algo ya indicado previamente y como pendiente de autorización del cirujano, cuando es el fisioterapeuta quien lo indica por primera vez en esta consulta."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "Describe episodios ocasionales de parestesia en la mano que se resuelven espontáneamente con el movimiento.",
+        "evidencia": "En la transcripción el paciente dice «se me pasa al moverla», no que se resuelva espontáneamente. Son cosas distintas: una implica acción del paciente, la otra no.",
+        "mensaje": "Describe que la parestesia se resuelve «espontáneamente», cuando el paciente dice que se le pasa «al moverla», es decir, con una acción voluntaria."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "No manifiesta aprensión o inseguridad al posicionar el brazo en elevación y rotación externa, como en el gesto de lanzamiento.",
+        "evidencia": "En la transcripción: «¿Te da miedo mover el brazo? Un poco, la verdad. Me da miedo que se me mueva el clavo si esfuerzo.»",
+        "mensaje": "Afirma que no manifiesta aprensión al mover el brazo, pero en la consulta sí refiere que le da un poco de miedo esforzar el brazo."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "La intensidad del dolor se sitúa en 4/10 en la escala numérica durante el día, aunque refiere que por la noche, al apoyar sobre el lado afectado, alcanza 6/10.",
+        "evidencia": "No consta en los datos ni en la transcripción que el dolor de 6/10 sea específicamente «al apoyar sobre el lado afectado». En la transcripción dice: «por la noche si me tumbo sobre ese lado llega a un 6 de 10», lo que indica posición de decúbito, no necesariamente el acto de apoyar.",
+        "mensaje": "Describe el dolor nocturno como «al apoyar sobre el lado afectado», interpretación no respaldada textualmente por lo que dice el paciente."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8733,
+    "output": 1467
+  }
+}

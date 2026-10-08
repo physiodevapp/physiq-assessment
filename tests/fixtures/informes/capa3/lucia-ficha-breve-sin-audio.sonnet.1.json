@@ -1,0 +1,72 @@
+{
+  "result": {
+    "afirmaciones": [
+      {
+        "cita": "habiendo aumentado recientemente la frecuencia de sus entrenamientos de carrera",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "refiere crujidos al moverse",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "La exploración reproduce el dolor característico mediante sentadilla monopodal izquierda a partir de 60° de flexión",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "la molestia tras sedestación prolongada",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      }
+    ],
+    "indicaciones": [
+      {
+        "cita": "el dolor durante el ejercicio no supere 3/10",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Dolor durante el ejercicio hasta 3/10",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      }
+    ],
+    "siglas": [
+      {
+        "sigla": "CIF",
+        "cita": "HALLAZGOS Y CODIFICACIÓN CIF",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      }
+    ],
+    "pronostico": [],
+    "plan": [
+      {
+        "cita": "el dolor durante el ejercicio no supere 3/10",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "Se reevaluará el dolor mediante escala visual analógica",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "la función con el cuestionario de Kujala",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "a las seis y doce semanas",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      }
+    ],
+    "tests_alternativas": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 6937,
+    "output": 688
+  }
+}

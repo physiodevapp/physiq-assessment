@@ -1,0 +1,67 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Refiere que el dolor ha permanecido estable desde el inicio, aunque también describe un empeoramiento en las dos últimas semanas coincidiendo con el aumento del volumen de entrenamiento en kilómetros.",
+        "evidencia": "En los datos consta: «Desde que empezó, el dolor va… → Igual». En la transcripción el fisioterapeuta pregunta «¿Y cómo ha ido evolucionando todo desde que empezó?» y la paciente responde «Al principio, igual todo el rato. Pero estas últimas dos semanas creo que va a peor, porque he subido los kilómetros.»",
+        "mensaje": "El informe dice que el dolor ha permanecido estable desde el inicio y luego menciona empeoramiento en las dos últimas semanas. Esto es contradictorio: según la transcripción, el dolor fue igual al principio pero ha empeorado en las dos últimas semanas, no ha sido estable desde el inicio."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Refiere que el dolor no le despierta por la noche, aunque también describe despertares ocasionales al girarse en la cama cuando dobla mucho la rodilla.",
+        "evidencia": "En los datos consta: «¿Le despierta por la noche? → No». En la transcripción, ante la pregunta «¿Y te despierta por la noche también el dolor?», la paciente responde: «Bueno, alguna noche sí, cuando me doy la vuelta en la cama y doblo mucho la rodilla.»",
+        "mensaje": "Hay una contradicción interna: primero afirma que el dolor no le despierta por la noche y luego dice que sí tiene despertares ocasionales. Según la transcripción, sí le despierta alguna noche al girarse."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "El test de Clark, que consiste en la contracción isométrica del cuádriceps contra resistencia con la rodilla en extensión, provoca dolor leve.",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "El test de Clark no aparece en la lista de tests de confirmación de los datos. Solo consta en la transcripción que el fisioterapeuta dice «Ahora te hago el test de Clark», pero este test no está documentado en los datos estructurados de valoración."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "paciente de 34 años",
+        "evidencia": "En la transcripción, ante la pregunta «¿Cuántos años tienes ahora?», la paciente responde: «35. Bueno, los cumplo la semana que viene. Todavía tengo 34.»",
+        "mensaje": "El informe menciona al inicio que es paciente de 34 años, pero luego en la transcripción la paciente dice que cumplirá 35 la semana que viene, lo que sugiere que aún tiene 34 años. Esto es consistente con los datos, pero la mención en Presentación Inicial contradice que en Factores Personales ya se especificó 34 años."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "dolor durante la extensión pasiva",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "El informe menciona que los criterios de Décary incluyen «dolor durante la extensión pasiva», pero este hallazgo específico no se describe en la exploración. Solo consta que el resultado global de Décary fue positivo."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "Los criterios agrupados de Décary, que incluyen edad, localización anterior del dolor, provocación con escaleras, dolor a la palpación de la faceta medial rotuliana y dolor durante la extensión pasiva, resultan positivos.",
+        "evidencia": "En los datos consta: «Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva): positivo»",
+        "mensaje": "Está enumerando los componentes individuales del test de Décary como si fueran hallazgos evaluados uno a uno, cuando en los datos solo consta el resultado global del test agrupado como positivo."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "La rodilla derecha presenta molestias leves al descender escaleras, aunque de menor intensidad que la izquierda.",
+        "evidencia": "En la transcripción consta: «¿Y la otra rodilla? La derecha también me empieza a molestar un poco al bajar escaleras, pero mucho menos.»",
+        "mensaje": "Este hallazgo sobre la rodilla derecha solo consta en la transcripción, donde la paciente lo refiere. No debería estar en la sección de Pruebas Clínicas sino en la sección de dolor o síntomas que refiere el paciente."
+      },
+      {
+        "tipo": "atribucion",
+        "nivel": "alto",
+        "cita": "Se informa a la paciente de que la patogenia es multifactorial y que se han descrito mecanismos de hiperalgesia y alteración en la modulación del dolor que el modelo puramente mecánico no explica en su totalidad",
+        "evidencia": "En los datos, en la sección «Cuándo reconsiderar o derivar» consta: «Patogenia multifactorial. Se han descrito hiperalgesia generalizada y peor modulación del dolor: el modelo mecánico no lo explica todo.»",
+        "mensaje": "Está usando información de la sección «Cuándo reconsiderar o derivar» (destinada al fisioterapeuta) como si se le hubiera explicado a la paciente, cuando no consta que esto se haya dicho en la consulta."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8377,
+    "output": 1624
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "no afecta al reposo nocturno inicialmente referido, aunque en consulta menciona despertares ocasionales",
+        "evidencia": "En los datos: «¿Le despierta por la noche? → No». En la transcripción: «Bueno, alguna noche sí, cuando me doy la vuelta en la cama y doblo mucho la rodilla».",
+        "mensaje": "El informe invierte la lógica de las fuentes: los datos iniciales registran ausencia de despertares, y la transcripción los confirma con la salvedady de posturas específicas; el informe lo presenta como negación inicial contradictoria en la consulta."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "desarrollándose progresivamente durante las últimas ocho semanas",
+        "evidencia": "En los datos: «¿Desde cuándo le pasa? → hace unos 2 meses». En la transcripción: «desde hace unos dos meses».",
+        "mensaje": "Ocho semanas equivale a ~56 días; dos meses son ~60 días. La diferencia es mínima pero el informe escribe «ocho semanas» siendo coherente solo con una duración más larga; debería ser «dos meses» como dicen paciente y datos."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "aunque durante las sesiones de carrera prolongadas alcanza 8 sobre 10",
+        "evidencia": "En la transcripción: «Normalmente un 5, pero cuando llevo un rato corriendo llega a un 8 de 10»; en los datos: NRS: 5/10.",
+        "mensaje": "El informe registra 8/10 como máximo, pero los datos estructurados consignan 5/10 como el NRS en la valoración. La transcripción distingue intensidad habitual (5/10) y máxima durante carrera (8/10); el informe mezcla ambos sin claridad sobre cuál es el resultado de la valoración."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "No refiere dolor en sedestación prolongada según el cuestionario inicial, aunque esta información no se menciona en consulta.",
+        "evidencia": "En los datos: «¿Está mucho rato sentado? → Sí». La transcripción no aborda sedestación. El informe contradice los datos al afirmar que el paciente niega dolor en sedestación prolongada.",
+        "mensaje": "Los datos muestran que la sedestación prolongada SÍ aumenta el dolor, pero el informe lo niega; esta aclaración posterior («aunque esta información no se menciona en consulta») sugiere confusión en la lectura de los datos."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "La aplicación de los grupos de criterios de Décary resulta positiva, incluyendo concordancia con la edad, la localización del dolor, la provocación con escaleras, la sensibilidad de la faceta medial y la respuesta a la extensión pasiva.",
+        "evidencia": "En los datos: «Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva): positivo». El informe detalla cada componente como si fueran hallazgos explorados uno a uno, cuando los datos solo registran el resultado global del test.",
+        "mensaje": "El informe desgrana los componentes del criterio agrupado de Décary como hallazgos separados, cuando el registro solo certifica que «el grupo» fue positivo en global."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "con mayor sensibilidad en la faceta medial",
+        "evidencia": "En los datos, bajo «Palpación alrededor de la FR, sobre todo de las facetas: positivo», no consta especificación de faceta medial. En la transcripción, el paciente dice «ahí por dentro duele» tras la palpación perirrotuliana, pero el fisioterapeuta no localiza explícitamente la faceta medial.",
+        "mensaje": "El informe especifica «mayor sensibilidad en la faceta medial» sin respaldo explícito en los hallazgos de palpación registrados."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "Según el cuestionario inicial, la sedestación prolongada provocaría o aumentaría el dolor, aunque este dato no se confirma en la conversación clínica.",
+        "evidencia": "En los datos: «¿Está mucho rato sentado? → Sí». En la transcripción no se aborda. El informe ya había negado este dato antes; ahora vuelve a hacerlo.",
+        "mensaje": "El informe contradice los datos al negar que la sedestación prolongada aumente el dolor; los datos registran que sí lo hace."
+      },
+      {
+        "tipo": "repetido",
+        "nivel": "medio",
+        "cita": "correr distancias superiores a 20 minutos",
+        "evidencia": "La limitación para correr más de 20 minutos aparece en: (1) «Limitaciones en las Actividades» («refiere limitación funcional para correr distancias superiores a 20 minutos»), (2) «Análisis del Funcionamiento: Limitaciones en la Actividad» («La paciente refiere limitación funcional para correr distancias superiores a 20 minutos»), y (3) se alude a ella nuevamente en «Restricciones en la Participación».",
+        "mensaje": "La restricción de 20 minutos se repite innecesariamente en múltiples secciones de análisis funcional."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "Ocasionalmente utiliza ibuprofeno de forma preventiva antes de las sesiones de carrera.",
+        "evidencia": "En la transcripción: «Un ibuprofeno antes de correr, algunos días». Esto indica un uso actual durante la consulta (presente), no un antecedente pasado.",
+        "mensaje": "El informe coloca el uso de ibuprofeno en Factores Personales como si fuera un hábito de salud general, cuando en realidad es una práctica actual de automedicación para el cuadro actual."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8681,
+    "output": 1721
+  }
+}

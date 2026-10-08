@@ -1,0 +1,81 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "El abordaje incluirá manipulación o movilización cervical y cervicotorácica combinada con programa de ejercicio terapéutico que integre estiramiento, fortalecimiento y trabajo de resistencia de la musculatura cervical y de la cintura escapular.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Con derivación urgente no debe haber plan de tratamiento. Los datos indican que la pauta se decidirá después de la valoración médica."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Se incorporará entrenamiento específico de flexión craneocervical con biofeedback de presión, comenzando con el dispositivo inflado a 20 mmHg y progresando en escalones de 2 mmHg (desde 22 hasta 30 mmHg), con apoyos repetidos de 5 a 10 segundos en cada nivel",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Con derivación urgente no deben especificarse técnicas ni dosis concretas de tratamiento."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Antes de aplicar manipulación cervical, se realizará el cribado vascular siguiendo el protocolo del marco IFOMPT.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Con derivación urgente no deben incluirse acciones de tratamiento, ni siquiera condicionadas o de cribado previo."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "como hemorragia subaracnoidea u otras causas graves de cefalea secundaria",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "No debe nombrarse diagnósticos específicos que el médico deba descartar. Los datos solo indican derivación a urgencias."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Una vez completada la valoración médica urgente y descartada patología intracraneal aguda, el plan de tratamiento propuesto se basará en las recomendaciones de la guía de práctica clínica de la APTA para cefalea cervicogénica en fase crónica.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "No debe incluirse plan de tratamiento condicionado («una vez completada/descartada...»). Solo debe constar la derivación urgente."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Dada la elevada puntuación en el cribado psicosocial, será necesario integrar componentes de educación en neurociencia del dolor, estrategias de afrontamiento activo y modificación de creencias catastrofistas",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Con derivación urgente no deben incluirse componentes del plan de tratamiento."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Se abordarán pautas de higiene postural y gestión de cargas durante la jornada laboral frente al ordenador.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Con derivación urgente no deben incluirse pautas de tratamiento."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "Acude al gimnasio con regularidad.",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "La frecuencia 'con regularidad' no consta. Solo se menciona que hacía pesas el sábado en el gimnasio."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "catastrofización ante la posibilidad de provocar daño al girar el cuello",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "La catastrofización no aparece como hallazgo del cribado psicosocial. Solo constan miedo al movimiento, componente emocional y baja autoeficacia dudosa."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "dado que el 30 por ciento de los pacientes con cefalea cervicogénica cumplen también criterios diagnósticos de migraña",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "Este dato estadístico no consta en los datos ni en la transcripción."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 7676,
+    "output": 1574
+  }
+}

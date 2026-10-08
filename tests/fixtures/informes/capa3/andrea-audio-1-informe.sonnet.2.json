@@ -1,0 +1,194 @@
+{
+  "result": {
+    "tests_alternativas": [
+      {
+        "test": "PA unilateral dolorosa o con menos movilidad",
+        "cita": "dolor y disminución de la movilidad en la palpación posteroanterior unilateral",
+        "afirma_las_dos": true
+      }
+    ],
+    "indicaciones": [
+      {
+        "cita": "el dolor durante el ejercicio no supere la intensidad de 5/10 ni persista más de 24 horas",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Que el dolor no pase de 5/10 durante el ejercicio ni dure más de 24 horas",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "realizar los ejercicios al regresar del paseo matutino con el perro",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Hacer los ejercicios al volver del paseo de la mañana",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "continuar con los paseos, fraccionando la actividad en tramos cortos",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "sigue paseando, pero en tramos cortos",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "realizando pausas cuando aparezca la sensación de carga en las extremidades inferiores",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Parando cuando se te carguen las piernas",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "Mantiene actividad física regular mediante paseos diarios con el perro",
+        "quien_la_dio": "paciente",
+        "evidencia": "Pasear al perro todos los días",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": true
+      }
+    ],
+    "afirmaciones": [
+      {
+        "cita": "Niega dolor que le despierte por la noche, aunque últimamente refiere algún despertar ocasional al cambiar de postura",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "hace unos días llegó a 8/10 tras permanecer mucho tiempo de pie",
+        "clase": "actividad",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "sensación de carga en las pantorrillas",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "dolor en rangos finales o en posturas sostenidas, con sensación de fallo",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "sugiere un componente de claudicación vascular más que neurógeno",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "se aprecia restricción de la movilidad",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "al trabajar en la cocina",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "ha reducido progresivamente la duración de los paseos diarios con el perro",
+        "clase": "participación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "actividad que constituye su principal forma de ejercicio físico",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "proceso crónico de naturaleza nociceptiva",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      }
+    ],
+    "siglas": [],
+    "pronostico": [
+      {
+        "cita": "Se reevaluará la respuesta al tratamiento conservador y se reconsiderará la derivación para valoración de denervación por radiofrecuencia",
+        "uso": "seguimiento"
+      }
+    ],
+    "plan": [
+      {
+        "cita": "ejercicio terapéutico dirigido a la activación específica de la musculatura del tronco y al control del movimiento lumbar",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "movilización articular y de tejidos blandos",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "ejercicios de activación del tronco y de control del movimiento",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "el dolor durante el ejercicio no supere la intensidad de 5/10",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "ni persista más de 24 horas tras la sesión",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "realizar los ejercicios al regresar del paseo matutino",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "continuar con los paseos, fraccionando la actividad en tramos cortos",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "realizando pausas cuando aparezca la sensación de carga",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "movilización articular y técnicas de tejidos blandos en la región lumbar",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "integradas en un programa multimodal que incluye el ejercicio como componente central",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "educación sobre el dolor lumbar crónico",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "abordando específicamente las preocupaciones respecto a la evolución del cuadro",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "ofreciendo información basada en la evidencia sobre el pronóstico y las opciones terapéuticas",
+        "elemento": "técnica",
+        "origen": "no consta"
+      },
+      {
+        "cita": "reducir el nivel de preocupación y favorecer la adherencia al tratamiento activo",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "uso del Índice de Discapacidad de Oswestry o del Cuestionario de Discapacidad de Roland-Morris",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "diferencia mínima clínicamente importante de 8,5 puntos y de 2,5 a 6,8 puntos",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9874,
+    "output": 2192
+  }
+}

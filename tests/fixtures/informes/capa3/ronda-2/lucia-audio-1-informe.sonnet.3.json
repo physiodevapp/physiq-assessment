@@ -1,0 +1,68 @@
+{
+  "result": {
+    "repaso": "Condición de salud y Factores Personales: comprobada la edad, el contexto deportivo y el incremento de entrenamiento. Historia Clínica: comprobada la evolución referida y las discrepancias entre formulario y consulta sobre dolor nocturno y sedestación. Cribado: verificado. Dolor: verificados los valores de EVA y las discrepancias entre fuentes. Pruebas Clínicas: comprobados los tests realizados. Limitaciones: verificadas las actividades afectadas según ambas fuentes. Restricciones: comprobadas. Conclusiones y Plan: verificado el contenido frente a la pauta de PhysiQ y lo dicho en consulta. Coherencia con hipótesis: revisada. Seguimiento: comprobado.",
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Mujer de 34 años físicamente activa",
+        "evidencia": "Transcripción: «¿Cuántos años tienes ahora? 35. Bueno, los cumplo la semana que viene. Todavía tengo 34.»",
+        "mensaje": "El informe dice que tiene 34 años, pero en la transcripción la paciente aclara que cumple 35 la semana que viene, por lo que técnicamente está más cerca de los 35 años."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "La intensidad del dolor se sitúa en 5 sobre 10 en condiciones habituales, aunque durante las sesiones de carrera prolongadas alcanza 8 sobre 10",
+        "evidencia": "Transcripción: «¿Y cuánto te duele, de 0 a 10? Normalmente un 5, pero cuando llevo un rato corriendo llega a un 8 de 10.»",
+        "mensaje": "La cifra de 8/10 durante la carrera solo consta en la transcripción, pero los datos estructurados dan NRS: 5/10 sin mencionar el 8/10; el informe debía dar ambas versiones explícitamente en una frase según la regla de discrepancias."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "La paciente niega inicialmente dolor nocturno, aunque en consulta refiere que le despierta ocasionalmente al girar en la cama y flexionar la rodilla.",
+        "evidencia": "Datos: «¿Le despierta por la noche? → No». Transcripción: «¿Y te despierta por la noche también el dolor? Bueno, alguna noche sí, cuando me doy la vuelta en la cama y doblo mucho la rodilla.»",
+        "mensaje": "Esta frase sí da las dos versiones unidas, cumpliendo la regla de discrepancias; no es un error."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "Inicialmente la sintomatología se mantenía estable en intensidad, pero durante las dos últimas semanas refiere empeoramiento coincidente con el incremento del volumen de entrenamiento.",
+        "evidencia": "Datos estructurados: «Evolución reciente del cuadro: Estable». Transcripción: «¿Y cómo ha ido evolucionando todo desde que empezó? Al principio, igual todo el rato. Pero estas últimas dos semanas creo que va a peor, porque he subido los kilómetros.»",
+        "mensaje": "El informe refleja la discrepancia entre datos (estable) y transcripción (peor últimas dos semanas); debía dar ambas versiones en una frase."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "No refiere dolor en sedestación prolongada según el cuestionario inicial, aunque esta información no se menciona en consulta.",
+        "evidencia": "Datos: «¿Le aparece o le aumenta el dolor al…? → Estar mucho rato sentado: Sí». En la transcripción no se menciona.",
+        "mensaje": "El informe afirma que NO refiere dolor en sedestación según el cuestionario, cuando los datos indican que SÍ le aumenta el dolor al estar mucho rato sentado."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "Según el cuestionario inicial, la sedestación prolongada provocaría o aumentaría el dolor, aunque este dato no se confirma en la conversación clínica.",
+        "evidencia": "Datos: «¿Le aparece o le aumenta el dolor al…? → Estar mucho rato sentado: Sí»",
+        "mensaje": "Esta segunda mención sí refleja correctamente los datos (sedestación prolongada aumenta el dolor según cuestionario); la frase anterior en la sección Dolor era la contradictoria."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "Ocasionalmente utiliza ibuprofeno de forma preventiva antes de las sesiones de carrera.",
+        "evidencia": "Transcripción: «¿Y tomas algo para el dolor? Un ibuprofeno antes de correr, algunos días.»",
+        "mensaje": "El informe dice que lo toma «de forma preventiva», pero en la transcripción solo dice que toma ibuprofeno antes de correr algunos días; la intención preventiva es una interpretación no respaldada explícitamente."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "En cuanto a la rodilla derecha, que presenta molestias leves e incipientes durante el descenso de escaleras, se realizará seguimiento clínico y se incorporarán medidas preventivas mediante el mismo programa de ejercicio bilateral",
+        "evidencia": "Transcripción: «¿Y la otra rodilla? La derecha también me empieza a molestar un poco al bajar escaleras, pero mucho menos.» No consta en los datos ni en la transcripción que el fisioterapeuta haya indicado seguimiento ni medidas preventivas para la rodilla derecha.",
+        "mensaje": "El plan para la rodilla derecha (seguimiento clínico y ejercicio bilateral preventivo) no consta en lo que dijo el fisioterapeuta en consulta ni en la pauta de PhysiQ."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9175,
+    "output": 1708
+  }
+}

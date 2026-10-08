@@ -1,0 +1,47 @@
+{
+  "result": {
+    "repaso": "Condición de salud y Factores Personales: verificada hipertensión, medicación, actividad física, preocupación quirúrgica, signos vitales y antropometría. Presentación Inicial y Antecedentes: verificado inicio hace ocho meses, instauración insidiosa, episodio previo hace cinco años, evolución a peor, ausencia de traumatismos. Tratamientos Previos: verificado calor/frío e ibuprofeno con alivio parcial. Cribado de Seguridad: verificado cribado negativo. Dolor: verificada localización central, intensidad actual 5/10, pico 7/10 en última semana, pico 8/10 tras estar de pie, empeora al final del día, irradiación negada, alivio en decúbito supino con flexión, signo comparable en extensión + rotación derecha. Movilidad y Pruebas Clínicas: verificados hallazgos de exploración, tests de inestabilidad y facetario, claudicación vascular. Limitaciones y Restricciones: verificadas dificultades para caminar >15 min, estar de pie en cocina, levantarse de silla, extensión, síntomas en pantorrillas. Conclusiones y Plan: verificada derivación a atención primaria para valoración vascular, ejercicios de control y activación del tronco, movilización articular, criterios de dosificación, timing de ejercicios, educación. Seguimiento: verificadas escalas ODI/RMDQ y criterios de reconsideración según NICE.",
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Niega dolor que le despierte por la noche, aunque últimamente refiere algún despertar ocasional al cambiar de postura durante la noche.",
+        "evidencia": "Transcripción: «¿Y te despierta el dolor por la noche? Antes no, pero últimamente alguna noche me despierto al darme la vuelta en la cama.» — La paciente SÍ refiere dolor nocturno actual.",
+        "mensaje": "El informe dice que niega dolor nocturno cuando en realidad sí lo refiere últimamente; la frase debería indicar claramente que ahora sí tiene dolor nocturno ocasional, no negarlo."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Refiere que en la última semana el dolor alcanzó 7/10 y hace unos días llegó a 8/10 tras permanecer mucho tiempo de pie.",
+        "evidencia": "Transcripción: «La semana pasada llegó a un 8 de 10, un día que estuve mucho rato de pie.» — Solo menciona 8/10 la semana pasada, no 7/10.",
+        "mensaje": "El informe menciona dos picos de dolor (7/10 y 8/10) cuando la paciente solo refirió uno: 8/10 la semana pasada."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "Se aplicará movilización articular y técnicas de tejidos blandos en la región lumbar, integradas en un programa multimodal que incluye el ejercicio como componente central.",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "El informe afirma que se aplicará movilización articular y técnicas de tejidos blandos, pero el fisioterapeuta no mencionó esto en la consulta ni consta como indicación en los datos."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "Se proporciona educación sobre el dolor lumbar crónico, abordando específicamente las preocupaciones respecto a la evolución del cuadro y ofreciendo información basada en la evidencia sobre el pronóstico y las opciones terapéuticas",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "El informe describe educación proporcionada sobre pronóstico y opciones terapéuticas, pero esto no consta en la transcripción de la consulta."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "Refiere dificultad para caminar más de diez o quince minutos",
+        "evidencia": "Datos: «¿Qué ha dejado de hacer, o hace peor, por este problema? — 1ª cosa → Caminar más de un cuarto de hora» — Un cuarto de hora son 15 minutos, no «diez o quince».",
+        "mensaje": "Los datos indican que la dificultad es para caminar más de 15 minutos (un cuarto de hora), no «diez o quince minutos»."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9506,
+    "output": 1299
+  }
+}

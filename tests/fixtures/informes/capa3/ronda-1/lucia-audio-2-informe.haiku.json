@@ -1,0 +1,46 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "Refiere que el dolor no le despierta por la noche, aunque también describe despertares ocasionales al girarse en la cama cuando dobla mucho la rodilla.",
+        "evidencia": "En la transcripción: paciente preguntada «¿Y te despierta por la noche también el dolor?» responde «Bueno, alguna noche sí, cuando me doy la vuelta en la cama y doblo mucho la rodilla». En los datos estructurados, a la pregunta «¿Le despierta por la noche?» la respuesta es «No».",
+        "mensaje": "El informe presenta como dato dos versiones contradictorias (primero niega el despertar, después lo afirma) sin aclarar que es una discrepancia entre la respuesta inicial de la consulta y lo que luego amplía al describir la modalidad."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "alto",
+        "cita": "El test de Clark, que consiste en la contracción isométrica del cuádriceps contra resistencia con la rodilla en extensión, provoca dolor leve.",
+        "evidencia": "En la transcripción, el fisioterapeuta dice «Ahora te hago el test de Clark. Empuja la rodilla contra la camilla. ¿Duele? Sí, un poco». En los datos estructurados solo consta el resultado global «Dolor anterior durante sentadilla: positivo» y no aparece ningún «test de Clark» por nombre en los tests de confirmación realizados.",
+        "mensaje": "Se describe un test («Clark») y se detalla su técnica (contracción isométrica contra resistencia), pero ni el nombre ni los detalles constan en los datos estructurados de tests realizados; además, la técnica descrita como isométrica «contra resistencia» no corresponde a la maniobra transcrita."
+      },
+      {
+        "tipo": "atribucion",
+        "nivel": "alto",
+        "cita": "Se informa a la paciente de que la patogenia es multifactorial y que se han descrito mecanismos de hiperalgesia y alteración en la modulación del dolor que el modelo puramente mecánico no explica en su totalidad",
+        "evidencia": "En los datos de PhysiQ figura: «Cuándo reconsiderar o derivar: Patogenia multifactorial. Se han descrito hiperalgesia generalizada y peor modulación del dolor: el modelo mecánico no lo explica todo». Esta sección es instrucción para el fisioterapeuta sobre cuándo reconsiderar, no un consejo que conste comunicado al paciente en la transcripción.",
+        "mensaje": "Se presenta como información comunicada al paciente algo que figura en los datos como instrucción clínica para el seguimiento, no consta que se haya explicado así en la consulta."
+      },
+      {
+        "tipo": "omision",
+        "nivel": "medio",
+        "cita": "",
+        "evidencia": "En la transcripción, el paciente refiere: «Normalmente un 5, pero cuando llevo un rato corriendo llega a un 8 de 10». En los datos: «NRS: 5/10». El informe recoge ambos valores (5/10 en condiciones habituales y 8/10 tras periodos prolongados de carrera) pero no consta en los datos estructurados ni en la nota del formulario que la valoración estructurada haya registrado el 8/10 como parte de la escala NRS.",
+        "mensaje": "El valor de NRS 8/10 aparece solo en la transcripción; aunque el informe lo menciona, debería dejar claro que es información de la consulta, no de los datos estructurados."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "Los criterios agrupados de Décary, que incluyen edad, localización anterior del dolor, provocación con escaleras, dolor a la palpación de la faceta medial rotuliana y dolor durante la extensión pasiva, resultan positivos.",
+        "evidencia": "En los datos estructurados consta: «Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva): positivo». El resultado es global «positivo»; el informe lista los cinco componentes como si cada uno fuera un elemento separado hallado, cuando solo consta el resultado agrupado.",
+        "mensaje": "Se enumeran los componentes de un criterio agrupado de forma que puede interpretarse que cada uno fue hallado por separado, cuando solo consta el resultado global positivo."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8377,
+    "output": 1217
+  }
+}
