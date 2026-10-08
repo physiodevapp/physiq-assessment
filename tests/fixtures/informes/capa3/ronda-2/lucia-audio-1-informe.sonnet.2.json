@@ -1,0 +1,82 @@
+{
+  "result": {
+    "repaso": "Condición de salud y Factores Personales: He verificado la edad, actividad deportiva, incremento de entrenamiento, uso de ibuprofeno y riesgo psicosocial. Presentación Inicial y Antecedentes: He comprobado el inicio insidioso, duración, dolor nocturno (versiones del formulario y consulta), y el empeoramiento reciente. Tratamientos Previos: He verificado el reposo relativo. Cribado de Seguridad: Confirmado negativo. Dolor: He revisado intensidad (5/10 habitual, 8/10 corriendo), irritabilidad, naturaleza nociceptiva, dolor en reposo, factores agravantes (cuclillas, escaleras, correr, sedestación prolongada), ausencias de síntomas, crujidos y signo comparable. Pruebas Clínicas: He verificado exploración de cadera y lumbar negativas, localización anterior/retrorrotuliana, tests positivos (sentadilla monopodal, Décary, palpación facetas, Clark). Limitaciones en las Actividades: He comprobado correr >20 min, bajar escaleras, sentadilla, subir escaleras, sedestación prolongada. Restricciones en la Participación: Verificada la afectación de la actividad deportiva regular. Conclusiones y Plan: He revisado la hipótesis de dolor patelofemoral, el programa de ejercicio (cuádriceps y cadera, 6-12 semanas, dosificación del dolor ≤3/10), educación sobre cargas, no usar vendajes/rodilleras inicialmente (valorar a 6-12 semanas), desaconsejar infiltraciones y prudencia con analgésicos, seguimiento de rodilla derecha. Coherencia con hipótesis: Verificada. Seguimiento Funcional: He comprobado escalas recomendadas, reevaluaciones a 6 y 12 semanas, y reconsideración del diagnóstico si no mejora a las 12 semanas.",
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Mujer de 34 años físicamente activa",
+        "evidencia": "Transcripción: '¿Cuántos años tienes ahora? 35. Bueno, los cumplo la semana que viene. Todavía tengo 34.'",
+        "mensaje": "El informe afirma categóricamente que tiene 34 años, pero en la consulta la paciente aclara que cumple 35 la semana siguiente, por lo que está próxima a cumplir 35 años. Los datos estructurados también registran 34 años, pero la transcripción aporta información adicional que matiza este dato."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "no afecta al reposo nocturno inicialmente referido, aunque en consulta menciona despertares ocasionales",
+        "evidencia": "Datos: '¿Le despierta por la noche? → No'. Transcripción: '¿Y te despierta por la noche también el dolor? Bueno, alguna noche sí, cuando me doy la vuelta en la cama y doblo mucho la rodilla.'",
+        "mensaje": "La frase implica que inicialmente no había dolor nocturno pero luego apareció, cuando en realidad son dos versiones del mismo momento actual: el formulario dice 'No' y en la consulta dice 'alguna noche sí'. Las dos versiones deben presentarse juntas sin implicar cambio temporal."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Inicialmente la sintomatología se mantenía estable en intensidad, pero durante las dos últimas semanas refiere empeoramiento",
+        "evidencia": "Datos: 'Desde que empezó, el dolor va… → Igual'. Transcripción: 'Al principio, igual todo el rato. Pero estas últimas dos semanas creo que va a peor, porque he subido los kilómetros.'",
+        "mensaje": "El informe presenta 'inicialmente estable' como referido al inicio del cuadro hace 2 meses, pero la transcripción dice 'Al principio, igual todo el rato' refiriéndose a que el dolor era constante (no variable según la actividad), no a la evolución temporal. La evolución sí ha empeorado las últimas dos semanas según la consulta, pero los datos estructurados dicen 'Igual', creando discrepancia que debía presentarse unida."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "No refiere dolor en sedestación prolongada según el cuestionario inicial, aunque esta información no se menciona en consulta.",
+        "evidencia": "Datos: '¿Le aparece o le aumenta el dolor al…? → Estar mucho rato sentado: Sí'",
+        "mensaje": "El informe afirma que NO refiere dolor en sedestación prolongada según el cuestionario, pero los datos indican claramente 'Estar mucho rato sentado: Sí'. Es el dato opuesto."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "Según el cuestionario inicial, la sedestación prolongada provocaría o aumentaría el dolor, aunque este dato no se confirma en la conversación clínica.",
+        "evidencia": "Datos: '¿Le aparece o le aumenta el dolor al…? → Estar mucho rato sentado: Sí'",
+        "mensaje": "Tras contradecir el dato previamente, aquí lo corrige pero añade 'no se confirma en la conversación clínica' como si hubiera discrepancia. En la transcripción no se pregunta sobre sedestación, por lo que no hay contradicción que señalar: lo que consta solo en los datos se recoge tal cual."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "En cuanto a la rodilla derecha, que presenta molestias leves e incipientes durante el descenso de escaleras, se realizará seguimiento clínico y se incorporarán medidas preventivas mediante el mismo programa de ejercicio bilateral",
+        "evidencia": "Transcripción: '¿Y la otra rodilla? La derecha también me empieza a molestar un poco al bajar escaleras, pero mucho menos.' No consta en la pauta de PhysiQ ni en las indicaciones del fisioterapeuta ninguna acción específica de seguimiento o tratamiento bilateral para la rodilla derecha.",
+        "mensaje": "El plan de seguimiento y tratamiento bilateral para la rodilla derecha no fue indicado por el fisioterapeuta en la consulta ni consta en la pauta de PhysiQ. La paciente solo menciona la molestia, pero el fisioterapeuta no propone acción alguna al respecto."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "La aplicación de los grupos de criterios de Décary resulta positiva, incluyendo concordancia con la edad, la localización del dolor, la provocación con escaleras, la sensibilidad de la faceta medial y la respuesta a la extensión pasiva.",
+        "evidencia": "Datos: 'Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva): positivo'. Solo consta el resultado global 'positivo', no qué componentes específicos fueron positivos.",
+        "mensaje": "El informe enumera los cinco componentes del test de Décary como si cada uno hubiera sido evaluado y resultara positivo individualmente, cuando en los datos solo consta el resultado global 'positivo'. No debe desglosar componentes que no han sido registrados uno a uno."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "El test de Clark reproduce molestia leve durante la contracción isométrica del cuádriceps con compresión rotuliana.",
+        "evidencia": "Transcripción: 'Ahora te hago el test de Clark. Empuja la rodilla contra la camilla. ¿Duele? Sí, un poco.' En los datos de Tests de confirmación realizados no aparece el test de Clark, solo constan: Dolor anterior durante sentadilla (positivo), grupos de Décary (positivo) y Palpación facetas (positivo).",
+        "mensaje": "Aunque el test de Clark se menciona en la transcripción, no figura en la lista de 'Tests de confirmación realizados' de los datos estructurados, que indica explícitamente 'solo estos; no hay otros'. Existe contradicción entre las fuentes sobre si este test forma parte de la valoración documentada."
+      },
+      {
+        "tipo": "repetido",
+        "nivel": "medio",
+        "cita": "La intensidad del dolor se sitúa en 5 sobre 10 en condiciones habituales",
+        "evidencia": "El dato '5/10' aparece también en: 'Condición de Salud' (primera sección, implícito en la descripción del cuadro), aquí en 'Dolor' explícitamente, y probablemente en otros lugares del informe.",
+        "mensaje": "La cifra de dolor habitual 5/10 se repite en múltiples secciones del informe más allá de un resumen breve en conclusiones."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "con especial énfasis en el grupo posterolateral",
+        "evidencia": "Pauta PhysiQ: 'Ejercicio centrado en el cuádriceps y/o la cadera durante al menos 6 a 12 semanas'. Guía JOSPT mencionada: 'ejercicio combinado de cadera (musculatura posterolateral) y rodilla'. No consta en las indicaciones del fisioterapeuta en la consulta ('ejercicios de cuadriceps y cadera').",
+        "mensaje": "El 'especial énfasis en el grupo posterolateral' proviene de la guía JOSPT citada en la pauta de PhysiQ como contexto, pero no es una indicación específica que el fisioterapeuta haya dado en esta consulta ni parte de la pauta principal. Es interpretación del redactor sobre cómo ejecutar la pauta."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9175,
+    "output": 2710
+  }
+}

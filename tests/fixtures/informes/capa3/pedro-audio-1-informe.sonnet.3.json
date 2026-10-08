@@ -1,0 +1,291 @@
+{
+  "result": {
+    "tests_alternativas": [],
+    "indicaciones": [
+      {
+        "cita": "evitar cargas pesadas con el miembro superior operado hasta la próxima revisión médica",
+        "quien_la_dio": "cirujano",
+        "evidencia": "Sin cargas pesadas con el brazo operado hasta la próxima revisión",
+        "atribuida_en_informe": "cirujano",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "respetando la restricción de evitar cargas pesadas hasta la revisión de noviembre",
+        "quien_la_dio": "cirujano",
+        "evidencia": "Sin cargas pesadas con el brazo operado hasta la próxima revisión",
+        "atribuida_en_informe": "cirujano",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "La carga se dosificará deteniéndose si el dolor supera 4/10 durante el ejercicio",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Parar si el dolor supera 4/10 durante el ejercicio.",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "puede mantener la actividad en bicicleta estática",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "De momento bici estática sí",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": true
+      },
+      {
+        "cita": "evitando la bicicleta de carretera hasta la autorización del cirujano en la revisión de noviembre",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "la de carretera no hasta la revisión de noviembre",
+        "atribuida_en_informe": "cirujano",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "tal como se le había indicado previamente",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "la de carretera no hasta la revisión de noviembre",
+        "atribuida_en_informe": "indicación previa",
+        "como_si_ya_lo_hiciera": false
+      }
+    ],
+    "afirmaciones": [
+      {
+        "cita": "aproximadamente cuatro meses de evolución",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "el cirujano confirmó en la última revisión que el hueso ha consolidado adecuadamente",
+        "clase": "interpretación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "La siguiente revisión está programada para mediados de noviembre de 2026",
+        "clase": "participación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "mantiene actividad física regular en bicicleta",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "Realiza actividades laborales o de tiempo libre que implican trabajar con los brazos por encima de la cabeza",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "niega diabetes, contractura de Dupuytren o hiperlaxitud articular",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "transcurridas dieciséis semanas desde la cirugía",
+        "clase": "participación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "No refiere antecedentes de luxaciones del hombro ni sensación de inestabilidad previa",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "por la noche, al apoyar sobre el lado afectado, alcanza 6/10",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "Describe episodios ocasionales de parestesia en la mano que se resuelven espontáneamente con el movimiento",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "Niega crujidos o roces articulares, sensaciones de enganche o bloqueo",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "episodios de pérdida súbita de fuerza tipo \"brazo muerto\"",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "parestesias intermitentes relacionadas con la posición del miembro",
+        "clase": "síntoma",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "Refiere disminución de la fuerza en el brazo afectado",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "No manifiesta aprensión o inseguridad al posicionar el brazo en elevación y rotación externa",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "patrón compatible con el contexto traumático previo y el período posquirúrgico",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "no evidencia asimetría ni discinesia tipo \"winging\" escapular",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "compatibles con afectación labral superior",
+        "clase": "interpretación",
+        "consta_en": "pauta de PhysiQ"
+      },
+      {
+        "cita": "en el contexto posquirúrgico y con los antecedentes traumáticos, la lesión labral aislada resulta infrecuente",
+        "clase": "interpretación",
+        "consta_en": "pauta de PhysiQ"
+      },
+      {
+        "cita": "apoyan la hipótesis de síndrome de pinzamiento subacromial como componente del cuadro clínico actual",
+        "clase": "interpretación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "durante el peinado",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "gestos como abrochar el sujetador o alcanzar el bolsillo trasero",
+        "clase": "actividad",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "el dolor se reprodujo a mitad del rango de elevación anterior, localizándose en la región anterolateral",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "Refiere que echa de menos la práctica ciclista en carretera",
+        "clase": "participación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "esta actividad se encuentra restringida por indicación médica hasta la revisión de noviembre",
+        "clase": "interpretación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "Mantiene la actividad en bicicleta estática como alternativa temporal",
+        "clase": "actividad",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "con consolidación ósea confirmada por el cirujano",
+        "clase": "interpretación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "hallazgos compatibles con síndrome de pinzamiento subacromial",
+        "clase": "interpretación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "coherente con la evolución esperable en el período posquirúrgico de cuatro meses",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      }
+    ],
+    "siglas": [
+      {
+        "sigla": "SLAP",
+        "cita": "lesión labral superior tipo SLAP",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": "Lesión Labral Superior (SLAP)"
+      }
+    ],
+    "pronostico": [
+      {
+        "cita": "la lesión labral aislada es infrecuente y suele acompañar a otras condiciones",
+        "uso": "interpretar tests"
+      },
+      {
+        "cita": "Si tras doce semanas de tratamiento conservador adecuado no se observa mejoría significativa",
+        "uso": "seguimiento"
+      }
+    ],
+    "plan": [
+      {
+        "cita": "El plan terapéutico se supeditará estrictamente al protocolo posquirúrgico establecido por el cirujano",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "educación individualizada sobre el problema actual, las opciones para el manejo del dolor",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "la modificación de actividades y el automanejo",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "programa de ejercicio activo y de control motor con cargas ligeras",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "sin superar en ningún caso las restricciones quirúrgicas",
+        "elemento": "dosis",
+        "origen": "no consta"
+      },
+      {
+        "cita": "Puede complementarse con terapia manual de partes blandas del miembro superior",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "para alivio sintomático a corto plazo",
+        "elemento": "objetivo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "el uso del QuickDASH para medir la evolución funcional",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "con una diferencia mínima clínicamente importante entre 8,0 y 15,9 puntos",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "La reevaluación programada se coordinará con las revisiones del cirujano",
+        "elemento": "plazo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "permitiendo ajustar las cargas y la progresión del ejercicio en función de la autorización médica",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "valorará solicitar imagen complementaria",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "reconsiderar la derivación al médico especialista",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "Se mantendrá comunicación con el equipo quirúrgico",
+        "elemento": "técnica",
+        "origen": "no consta"
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9101,
+    "output": 3269
+  }
+}

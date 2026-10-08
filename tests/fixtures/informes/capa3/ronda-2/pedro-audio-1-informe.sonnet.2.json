@@ -1,0 +1,11 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Contextuales: verificada la cirugía, antecedente, factores personales, comorbilidades y restricciones del cirujano. Historia Clínica y Evolución: comprobada la presentación, antecedentes, intervención quirúrgica y cribado. Evaluación de Funciones y Estructuras: revisado dolor (intensidad, parestesias, características), movilidad pasiva, pruebas cervicales, tests SLAP y pinzamiento. Limitaciones y Restricciones: verificadas las actividades afectadas y la restricción ciclista. Conclusiones y Plan: comprobado el enfoque de educación, ejercicio, dosificación, terapia manual, indicación sobre la bici y seguimiento.",
+    "puntos": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8733,
+    "output": 239
+  }
+}

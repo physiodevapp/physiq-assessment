@@ -1,0 +1,288 @@
+{
+  "result": {
+    "tests_alternativas": [],
+    "indicaciones": [
+      {
+        "cita": "permitiendo dolor durante el ejercicio hasta 3 sobre 10",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Dolor durante el ejercicio hasta 3/10",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "exigiendo que haya retornado al nivel basal a la mañana siguiente",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "que haya vuelto a como estaba a la mañana siguiente",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "Se recomienda reducción temporal del volumen de carrera",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Vamos a bajar un poco el volumen",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "No se propone de inicio el uso de rodillera",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "De momento no",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "vendaje rotuliano ni ortesis plantares",
+        "quien_la_dio": "pauta de PhysiQ",
+        "evidencia": "pauta de PhysiQ",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "estas intervenciones podrán considerarse como complemento al ejercicio únicamente si tras 6 a 12 semanas",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Si en 6 a 12 semanas no hemos mejorado lo suficiente, lo valoramos",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "No se contemplan infiltraciones",
+        "quien_la_dio": "pauta de PhysiQ",
+        "evidencia": "Sin infiltraciones",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "se recomienda prudencia en el uso continuado de analgésicos",
+        "quien_la_dio": "pauta de PhysiQ",
+        "evidencia": "con prudencia con los analgésicos",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "Refiere consumo ocasional de ibuprofeno previo a las sesiones de carrera",
+        "quien_la_dio": "paciente",
+        "evidencia": "Un ibuprofeno antes de correr, algunos días",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": true
+      },
+      {
+        "cita": "Ha probado el reposo relativo como medida terapéutica inicial",
+        "quien_la_dio": "paciente",
+        "evidencia": "Reposo",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": true
+      }
+    ],
+    "afirmaciones": [
+      {
+        "cita": "empeoramiento en las dos últimas semanas coincidiendo con el aumento del volumen de entrenamiento",
+        "clase": "interpretación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "describe despertares ocasionales al girarse en la cama cuando dobla mucho la rodilla",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "pudiendo alcanzar 8 sobre 10 tras periodos prolongados de carrera",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "El test de Clark, que consiste en la contracción isométrica del cuádriceps contra resistencia",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "provoca dolor leve",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "La rodilla derecha presenta molestias leves al descender escaleras",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "El cuadro clínico ha generado restricción en la práctica deportiva habitual",
+        "clase": "participación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "impidiendo completar las sesiones de carrera planificadas",
+        "clase": "participación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "obligando a modificar el volumen de entrenamiento",
+        "clase": "participación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "El incremento reciente de días y horas de entrenamiento no ha podido sostenerse",
+        "clase": "participación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "muy característica en corredores que incrementan el volumen de entrenamiento de forma brusca",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "entidad de origen multifactorial",
+        "clase": "interpretación",
+        "consta_en": "pauta de PhysiQ"
+      },
+      {
+        "cita": "se han descrito mecanismos de hiperalgesia y alteración en la modulación del dolor",
+        "clase": "interpretación",
+        "consta_en": "pauta de PhysiQ"
+      }
+    ],
+    "siglas": [
+      {
+        "sigla": "KOOS-PF",
+        "cita": "Se recomienda el empleo de la escala Kujala, el KOOS-PF o el VISA-P",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      },
+      {
+        "sigla": "VISA-P",
+        "cita": "Se recomienda el empleo de la escala Kujala, el KOOS-PF o el VISA-P",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      }
+    ],
+    "pronostico": [
+      {
+        "cita": "la patogenia es multifactorial",
+        "uso": "explicado al paciente"
+      },
+      {
+        "cita": "se han descrito mecanismos de hiperalgesia y alteración en la modulación del dolor que el modelo puramente mecánico no explica",
+        "uso": "explicado al paciente"
+      },
+      {
+        "cita": "Si transcurridas 12 semanas no se observa mejoría significativa, será necesario reconsiderar el diagnóstico",
+        "uso": "seguimiento"
+      },
+      {
+        "cita": "Si transcurridas 12 semanas no se objetiva mejoría clínicamente relevante en dolor y función, será necesario reconsiderar el diagnóstico",
+        "uso": "seguimiento"
+      }
+    ],
+    "plan": [
+      {
+        "cita": "programa de ejercicio terapéutico centrado en el fortalecimiento del cuádriceps",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "de la musculatura de la cadera, especialmente el complejo posterolateral",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "con duración mínima de 6 a 12 semanas",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "bajo supervisión de fisioterapia al menos en parte del proceso",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "La intensidad y el volumen del ejercicio se ajustarán en función de la respuesta dolorosa",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "permitiendo dolor durante el ejercicio hasta 3 sobre 10",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "exigiendo que haya retornado al nivel basal a la mañana siguiente",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "Se priorizará la educación terapéutica sobre la naturaleza del cuadro",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "la gestión de la carga de entrenamiento",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "la importancia de la adherencia al programa de ejercicio",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "Se recomienda reducción temporal del volumen de carrera",
+        "elemento": "técnica",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "manteniendo la actividad dentro de los límites tolerables según el criterio de control de síntomas",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "No se propone de inicio el uso de rodillera, vendaje rotuliano ni ortesis plantares",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "estas intervenciones podrán considerarse como complemento al ejercicio únicamente si tras 6 a 12 semanas no se alcanza un cambio",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "informando a la paciente de la certeza muy baja de la evidencia",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "No se contemplan infiltraciones",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "se recomienda prudencia en el uso continuado de analgésicos",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "Si transcurridas 12 semanas no se observa mejoría significativa, será necesario reconsiderar el diagnóstico",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "Se recomienda el empleo de la escala Kujala, el KOOS-PF o el VISA-P",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "Se realizarán reevaluaciones del dolor mediante escala numérica",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "de la función mediante la escala seleccionada a las 6 y a las 12 semanas",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9239,
+    "output": 3351
+  }
+}

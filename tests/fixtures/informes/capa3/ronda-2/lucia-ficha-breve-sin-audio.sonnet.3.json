@@ -1,0 +1,11 @@
+{
+  "result": {
+    "repaso": "PRESENTACIÓN CLÍNICA: He verificado motivo de consulta, mecanismo, cronología, intensidad del dolor, síntomas referidos, banderas rojas, cribado sistémico, riesgo psicosocial y la declaración de que es una valoración inicial breve con elementos pendientes. HALLAZGOS Y CODIFICACIÓN CIF: He comprobado el signo comparable, los tests de confirmación realizados (sentadilla, grupos de Décary, palpación), los códigos CIF asignados a cada limitación funcional y síntoma. OBJETIVOS Y PLAN: He revisado los criterios de dosificación del dolor, las escalas de seguimiento y los plazos de reevaluación propuestos.",
+    "puntos": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 7063,
+    "output": 227
+  }
+}

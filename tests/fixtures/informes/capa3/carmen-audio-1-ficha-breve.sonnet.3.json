@@ -1,0 +1,174 @@
+{
+  "result": {
+    "tests_alternativas": [],
+    "indicaciones": [
+      {
+        "cita": "evitar actividades de carrera y salto",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "nada de correr ni saltar",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "Hasta recibir confirmación del cirujano, se establece como restricción evitar actividades de carrera y salto",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Hasta que hables con el cirujano, nada de correr ni saltar",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "si presenta mayor hinchazón o incremento del dolor, se reducirá la intensidad de los ejercicios",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Si al día siguiente el tobillo está más hinchado o duele más, bajar la carga",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      }
+    ],
+    "afirmaciones": [
+      {
+        "cita": "dificultad para doblar el tobillo, especialmente al bajar escaleras",
+        "clase": "actividad",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "hinchazón que aumenta a lo largo del día",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "El dolor se localiza en la región anterior del tobillo",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "su trabajo como camarera requiere permanecer de pie durante periodos prolongados",
+        "clase": "participación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "El cirujano no indicó restricciones específicas",
+        "clase": "interpretación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "tiene revisión programada dentro de dos semanas",
+        "clase": "participación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "llevando la rodilla hacia delante con el pie apoyado",
+        "clase": "actividad",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "test de Kleiger-Torg-Weiss positivo",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "La cicatriz quirúrgica muestra buen aspecto, cerrada y sin signos de enrojecimiento",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "dificultad para realizar flexión dorsal en carga",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "La hinchazón vespertina sugiere afectación inflamatoria persistente",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "permaneciendo de baja laboral",
+        "clase": "participación",
+        "consta_en": "transcripción"
+      }
+    ],
+    "siglas": [
+      {
+        "sigla": "CIF",
+        "cita": "HALLAZGOS Y CODIFICACIÓN CIF",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      },
+      {
+        "sigla": "FAAM",
+        "cita": "El seguimiento de la evolución se realizará mediante la escala FAAM o LEFS",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      },
+      {
+        "sigla": "LEFS",
+        "cita": "El seguimiento de la evolución se realizará mediante la escala FAAM o LEFS",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      },
+      {
+        "sigla": "KTW",
+        "cita": "test de Kleiger-Torg-Weiss",
+        "desarrollo_en_informe": "Kleiger-Torg-Weiss",
+        "desarrollo_en_datos": "KTW (rodilla a la pared)"
+      }
+    ],
+    "pronostico": [],
+    "plan": [
+      {
+        "cita": "recuperación del rango de movimiento del tobillo",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "normalización del patrón de carga y apoyo",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "programa de ejercicios dirigidos a recuperar la movilidad del tobillo derecho",
+        "elemento": "técnica",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "facilitar el apoyo con normalidad",
+        "elemento": "objetivo",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "El seguimiento de la evolución se realizará mediante la escala FAAM o LEFS",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "completar la valoración pendiente en próximas sesiones",
+        "elemento": "plazo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "reducción del dolor y la hinchazón",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "recuperación completa del rango de movimiento del tobillo",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "normalización de la marcha",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      },
+      {
+        "cita": "retorno progresivo a las actividades laborales y de la vida diaria",
+        "elemento": "objetivo",
+        "origen": "no consta"
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 7021,
+    "output": 1803
+  }
+}

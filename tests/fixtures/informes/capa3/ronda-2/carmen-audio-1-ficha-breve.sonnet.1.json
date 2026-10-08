@@ -1,0 +1,33 @@
+{
+  "result": {
+    "repaso": "PRESENTACIÓN CLÍNICA: He verificado el motivo de consulta, la cirugía, los síntomas referidos, la intensidad del dolor, la situación laboral, las indicaciones del cirujano, las banderas rojas, el cribado sistémico, el riesgo psicosocial y lo pendiente de completar. HALLAZGOS Y CODIFICACIÓN CIF: He comprobado los hallazgos de la exploración física, los tests realizados, el aspecto de la cicatriz, los códigos CIF asignados y las hipótesis respaldadas. OBJETIVOS Y PLAN: He revisado las restricciones posquirúrgicas, el plan terapéutico propuesto, las restricciones establecidas, los criterios de ajuste de carga, las escalas de seguimiento y los objetivos planteados.",
+    "puntos": [
+      {
+        "tipo": "lectura",
+        "nivel": "alto",
+        "cita": "Estos hallazgos constituyen un test de Kleiger-Torg-Weiss positivo",
+        "evidencia": "En los datos de valoración consta: «KTW (rodilla a la pared): positivo». KTW es el acrónimo del test «rodilla a la pared» (knee-to-wall), no del test de Kleiger-Torg-Weiss.",
+        "mensaje": "El test KTW (knee-to-wall, rodilla a la pared) ha sido identificado erróneamente como test de Kleiger-Torg-Weiss. Son tests diferentes."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "La hinchazón vespertina sugiere afectación inflamatoria persistente.",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "La interpretación de que la hinchazón vespertina «sugiere afectación inflamatoria persistente» no está respaldada en los datos ni en la transcripción."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Los objetivos a medio plazo contemplan la reducción del dolor y la hinchazón, la recuperación completa del rango de movimiento del tobillo, la normalización de la marcha y el retorno progresivo a las actividades laborales y de la vida diaria",
+        "evidencia": "En la pauta de PhysiQ no se especifican estos objetivos concretos a medio plazo. En las «Indicaciones del fisioterapeuta para el plan» solo consta: «Si al día siguiente el tobillo está más hinchado o duele más, bajar la carga».",
+        "mensaje": "Los objetivos a medio plazo detallados (reducción del dolor, recuperación completa del rango de movimiento, normalización de la marcha, retorno laboral) no constan en la pauta de PhysiQ ni fueron indicados por el fisioterapeuta en la consulta."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 7147,
+    "output": 797
+  }
+}

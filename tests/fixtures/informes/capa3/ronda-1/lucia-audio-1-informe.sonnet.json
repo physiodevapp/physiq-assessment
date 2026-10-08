@@ -1,0 +1,81 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "aunque en consulta menciona despertares ocasionales al adoptar posturas de flexión máxima durante el sueño",
+        "evidencia": "En los DATOS: '¿Le despierta por la noche? → No'. En la TRANSCRIPCIÓN: '¿Y te despierta por la noche también el dolor? Bueno, alguna noche sí, cuando me doy la vuelta en la cama y doblo mucho la rodilla.'",
+        "mensaje": "El informe presenta el dolor nocturno como algo que 'inicialmente se niega pero luego se menciona en consulta', cuando en realidad los datos dicen 'No' y la transcripción dice 'Bueno, alguna noche sí'. Debe presentar ambas versiones como discrepancia, no como secuencia temporal."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "La intensidad del dolor se sitúa en 5 sobre 10 en condiciones habituales, aunque durante las sesiones de carrera prolongadas alcanza 8 sobre 10",
+        "evidencia": "En los DATOS: 'NRS: 5/10'. En la TRANSCRIPCIÓN: '¿Y cuánto te duele, de 0 a 10? Normalmente un 5, pero cuando llevo un rato corriendo llega a un 8 de 10.'",
+        "mensaje": "El informe indica que el dolor alcanza 8/10 durante la carrera, pero esta cifra solo aparece en la transcripción, no en los datos estructurados donde consta 5/10. Debe presentar ambas versiones como discrepancia."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Inicialmente la sintomatología se mantenía estable en intensidad, pero durante las dos últimas semanas refiere empeoramiento coincidente con el incremento del volumen de entrenamiento",
+        "evidencia": "En los DATOS: 'Desde que empezó, el dolor va… → Igual'. En la TRANSCRIPCIÓN: 'Al principio, igual todo el rato. Pero estas últimas dos semanas creo que va a peor, porque he subido los kilómetros.'",
+        "mensaje": "El informe presenta una evolución temporal ('Inicialmente... pero durante las dos últimas semanas...') cuando debe presentar las dos versiones juntas como discrepancia: en datos consta 'Igual' y en consulta refiere empeoramiento las últimas dos semanas."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "¿Cuántos años tienes ahora? 35. Bueno, los cumplo la semana que viene. Todavía tengo 34.",
+        "evidencia": "En la TRANSCRIPCIÓN: '¿Cuántos años tienes ahora? 35. Bueno, los cumplo la semana que viene. Todavía tengo 34.' En los DATOS: 'Edad: 34 años'.",
+        "mensaje": "La paciente inicialmente dice '35' en la transcripción antes de corregirse a '34'. El informe debe reflejar esta discrepancia entre lo que dijo primero y lo que consta en datos."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "No refiere dolor en sedestación prolongada según el cuestionario inicial, aunque esta información no se menciona en consulta",
+        "evidencia": "En los DATOS: '¿Le aparece o le aumenta el dolor al…? → Estar mucho rato sentado: Sí'",
+        "mensaje": "El informe dice que 'No refiere dolor en sedestación prolongada', pero en los datos consta 'Estar mucho rato sentado: Sí'. Es una contradicción directa."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "En cuanto a la rodilla derecha, que presenta molestias leves e incipientes durante el descenso de escaleras, se realizará seguimiento clínico y se incorporarán medidas preventivas mediante el mismo programa de ejercicio bilateral",
+        "evidencia": "En la TRANSCRIPCIÓN: '¿Y la otra rodilla? La derecha también me empieza a molestar un poco al bajar escaleras, pero mucho menos.' No consta ninguna indicación del fisioterapeuta sobre seguimiento o ejercicio bilateral para la rodilla derecha.",
+        "mensaje": "El informe incluye un plan de seguimiento y ejercicio bilateral para la rodilla derecha, pero el fisioterapeuta no indica nada de esto en la transcripción, solo pregunta por ella."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "se estructurando progresivamente el volumen y la intensidad en función de la tolerancia al dolor",
+        "evidencia": "No consta en los datos ni en la transcripción que el fisioterapeuta haya indicado 'estructurar progresivamente' el volumen e intensidad. Solo indica: 'Dolor durante el ejercicio hasta 3/10 y que haya vuelto a como estaba a la mañana siguiente.'",
+        "mensaje": "El informe especifica 'estructurar progresivamente el volumen y la intensidad', pero el fisioterapeuta solo da el criterio de dolor (3/10 y vuelta a línea basal), no habla de progresión estructurada."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "La aplicación de los grupos de criterios de Décary resulta positiva, incluyendo concordancia con la edad, la localización del dolor, la provocación con escaleras, la sensibilidad de la faceta medial y la respuesta a la extensión pasiva",
+        "evidencia": "En los DATOS: 'Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva): positivo'. Solo consta el resultado global 'positivo', no cada componente por separado.",
+        "mensaje": "El informe desglosa los componentes del test de Décary como hallazgos individuales ('incluyendo concordancia con...'), pero en los datos solo consta el resultado global 'positivo', sin detallar cada elemento."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "El test de Clark reproduce molestia leve durante la contracción isométrica del cuádriceps con compresión rotuliana",
+        "evidencia": "En la TRANSCRIPCIÓN: 'Ahora te hago el test de Clark. Empuja la rodilla contra la camilla. ¿Duele? Sí, un poco.' No se especifica que sea 'molestia leve', solo 'Sí, un poco'.",
+        "mensaje": "El informe califica el resultado del test de Clark como 'molestia leve', pero la paciente solo dice 'Sí, un poco', sin que el fisioterapeuta caracterice la intensidad como leve."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "con especial énfasis en el grupo posterolateral",
+        "evidencia": "No consta en los datos ni en la transcripción. El fisioterapeuta dice: 'Vamos a bajar un poco el volumen y a hacer ejercicios de cuadriceps y cadera durante unas semanas.' No menciona énfasis específico en grupo posterolateral.",
+        "mensaje": "El informe especifica 'especial énfasis en el grupo posterolateral', pero el fisioterapeuta solo menciona 'cuadriceps y cadera' sin especificar qué grupos musculares de la cadera ni con qué énfasis."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8681,
+    "output": 1995
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "Test de Kleiger-Torg-Weiss",
+        "evidencia": "Los datos citan «KTW (rodilla a la pared)» sin desarrollar la sigla como «Kleiger-Torg-Weiss». El desarrollo del nombre no aparece en los datos.",
+        "mensaje": "La sigla KTW no se desarrolla como «Kleiger-Torg-Weiss» en los datos; se cita solo como «KTW (rodilla a la pared)»."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "La hinchazón vespertina sugiere afectación inflamatoria persistente.",
+        "evidencia": "La paciente refiere «se me hincha bastante» y «por la tarde se me hincha bastante», pero no consta que sea «vespertina» en sentido de que necesariamente persista inflamación patológica, ni que «sugiera» inflamación en el análisis clínico del fisioterapeuta; es una observación de síntomas sin interpretación causal explícita.",
+        "mensaje": "Se interpreta la hinchazón matutinal-vespertina como «afectación inflamatoria persistente» sin respaldo en los hallazgos clínicos documentados ni en la valoración del fisioterapeuta."
+      },
+      {
+        "tipo": "repetido",
+        "nivel": "medio",
+        "cita": "Hasta recibir confirmación del cirujano, se establece como restricción evitar actividades de carrera y salto.",
+        "evidencia": "La restricción aparece también en «Hasta que hables con el cirujano, nada de correr ni saltar» en la transcripción y se repite posteriormente con contenido similar en el plan.",
+        "mensaje": "La restricción de «evitar carrera y salto» se menciona en múltiples ocasiones (plan terapéutico, control posterior) de forma redundante."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 6653,
+    "output": 556
+  }
+}

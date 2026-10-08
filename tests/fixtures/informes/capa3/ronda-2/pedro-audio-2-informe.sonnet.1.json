@@ -1,0 +1,11 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Personales: verificado diagnóstico médico, cirugía, datos antropométricos, actividades y miedo referido. Presentación Inicial: verificado mecanismo traumático, cronología subaguda y negación de luxaciones. Dolor: comprobada intensidad, localización, comportamiento nocturno y síntomas asociados. Movilidad y Fuerza: verificadas restricción global, pérdida de rotación externa y percepción de falta de fuerza. Pruebas Clínicas: comprobados tests realizados y resultados. Limitaciones y Restricciones: verificadas actividades que provocan dolor y afectación del ciclismo. Plan de Tratamiento: comprobado respeto al protocolo del cirujano, ejercicio activo de fuerza, dosificación del dolor, educación e indicación sobre bicicleta estática. Seguimiento: verificada escala QuickDASH y criterios de derivación.",
+    "puntos": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8523,
+    "output": 287
+  }
+}

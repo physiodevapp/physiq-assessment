@@ -1,0 +1,11 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Contextuales: verificado diagnóstico médico, fecha de cirugía, consolidación ósea, factores personales y antropometría. Intervención Quirúrgica: comprobada fecha, protocolo y restricciones del cirujano. Cribado de Seguridad: confirmado negativo. Historia Clínica y Evolución: revisados antecedentes y tratamientos previos. Evaluación de Funciones y Estructuras Corporales: contrastado dolor diurno/nocturno, parestesias, movilidad, fuerza y pruebas clínicas. Limitaciones en la Actividad y Restricciones en la Participación: verificadas actividades dolorosas y restricción del ciclismo. Conclusiones y Plan de Tratamiento: comprobado programa de ejercicio, educación, dosificación y actividad física adaptada. Seguimiento Funcional: revisado QuickDASH y criterios de reconsideración.",
+    "puntos": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8523,
+    "output": 292
+  }
+}

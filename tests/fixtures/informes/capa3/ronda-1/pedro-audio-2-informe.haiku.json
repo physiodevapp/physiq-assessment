@@ -1,0 +1,53 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "aunque también describe despertares ocasionales al girarse en la cama",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "Se describe que el paciente «despierta al girarse en la cama» pero solo refiere que por la noche al tumbarse sobre ese lado le duele más (hasta 6/10). No hay constancia de despertares."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "No se refieren tratamientos específicos previos a esta consulta, más allá de las indicaciones posquirúrgicas del equipo médico.",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "Se afirma que no hay tratamientos previos «más allá de indicaciones posquirúrgicas», pero no consta que el paciente haya recibido ningún tratamiento posquirúrgico específico antes de esta consulta; solo tiene las indicaciones del cirujano (no cargar peso)."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "Alguna noche se me duerme un poco la mano, sí, pero se me pasa al moverla.",
+        "evidencia": "El informe escribe: «No refiere hormigueo, aunque alguna noche nota la mano dormida, que cede al moverla» cuando el dato es que refiere parestesias nocturnas transitorias, no «no refiere hormigueo».",
+        "mensaje": "El paciente sí refiere síntomas parestésicos (mano dormida), aunque transitorios. La afirmación «No refiere hormigueo» contradice lo que después se dice («alguna noche nota la mano dormida»); ambas frases no pueden coexistir sin aclaración."
+      },
+      {
+        "tipo": "omision",
+        "nivel": "alto",
+        "cita": "",
+        "evidencia": "Transcripción: «¿Te da miedo mover el brazo? Un poco, la verdad. Me da miedo que se me mueva el clavo si esfuerzo.»",
+        "mensaje": "Se omite la preocupación específica del paciente sobre el movimiento del clavo, aunque el informe menciona genéricamente «cierto miedo a que se mueva el material de osteosíntesis» en Factores Personales pero no lo desarrolla como factor psicosocial relevante en la evaluación del miedo al movimiento."
+      },
+      {
+        "tipo": "atribucion",
+        "nivel": "alto",
+        "cita": "Se propone un programa de ejercicio activo de fuerza con cargas ligeras, centrado en la mejora del control motor y la recuperación funcional progresiva del hombro derecho, sin coger peso con ese brazo según lo indicado por el cirujano.",
+        "evidencia": "Transcripción (fisioterapeuta): «vamos a hacer ejercicio activo de fuerza con cargas ligeras sin coger peso con ese brazo, como te dijo el cirujano.»",
+        "mensaje": "Se mezclan indicación del cirujano (no coger peso) con la propuesta del fisioterapeuta (ejercicio activo de fuerza con cargas ligeras), como si ambas vinieran del cirujano. El cirujano solo indicó «nada de cargar peso»; el ejercicio activo es propuesta del fisioterapeuta."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Se incluirá educación individualizada sobre el manejo del dolor, la modificación de la actividad y el automanejo.",
+        "evidencia": "Pauta PhysiQ para Impingement: «Educación individualizada y centrada en el paciente sobre su problema, las opciones para manejar el dolor, la modificación de la actividad y el automanejo (C)»",
+        "mensaje": "La educación viene de la pauta de la guía para Impingement (con nivel C), no de una indicación específica del fisioterapeuta en esta consulta. Debe atribuirse correctamente o dejarse implícita en el plan basado en guía."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8029,
+    "output": 1136
+  }
+}

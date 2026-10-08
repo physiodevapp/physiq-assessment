@@ -1,0 +1,53 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "test de Kleiger-Torg-Weiss positivo",
+        "evidencia": "KTW (rodilla a la pared): positivo",
+        "mensaje": "El test se llama KTW (rodilla a la pared) según los datos, no Kleiger-Torg-Weiss; Kleiger es un test diferente para inestabilidad sindesmótica."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Los hallazgos de la exploración clínica apoyan la condición posquirúrgica de osteosíntesis y refuerzan la hipótesis de pinzamiento anterior del tobillo mediante la positividad del test de Kleiger-Torg-Weiss",
+        "evidencia": "KTW (rodilla a la pared): positivo",
+        "mensaje": "Se repite el error del nombre del test: es KTW (rodilla a la pared), no Kleiger-Torg-Weiss."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "hinchazón que aumenta a lo largo del día",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "El paciente dice que por la tarde se hincha bastante, pero no que aumente progresivamente a lo largo del día."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "La hinchazón vespertina sugiere afectación inflamatoria persistente",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "Esta interpretación clínica (sugiere afectación inflamatoria) no consta en los datos ni fue expresada por el fisioterapeuta."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "El dolor se localiza en la región anterior del tobillo y presenta una intensidad de cuatro sobre diez",
+        "evidencia": "Transcripción: «¿Por la mañana poco? Un 3. A última hora llega a 5 de 10.» Datos: NRS: 4/10",
+        "mensaje": "El informe da solo el 4/10 de los datos cuando el paciente en la consulta especifica 3 por la mañana y 5 a última hora; debía reconciliar ambas fuentes dando las dos versiones."
+      },
+      {
+        "tipo": "repetido",
+        "nivel": "medio",
+        "cita": "El cirujano no indicó restricciones específicas",
+        "evidencia": "Aparece en PRESENTACIÓN CLÍNICA, luego en HALLAZGOS como 'pendientes de confirmar con el cirujano', y de nuevo en OBJETIVOS Y PLAN como 'restricciones posquirúrgicas están pendientes de confirmar con el cirujano'",
+        "mensaje": "La ausencia de restricciones del cirujano se menciona tres veces en diferentes secciones del informe."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 6653,
+    "output": 850
+  }
+}

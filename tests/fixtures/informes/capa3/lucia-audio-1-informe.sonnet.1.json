@@ -1,0 +1,270 @@
+{
+  "result": {
+    "tests_alternativas": [],
+    "indicaciones": [
+      {
+        "cita": "Durante la ejecución de los ejercicios, se considera aceptable una intensidad de dolor de hasta 3 sobre 10",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Durante los ejercicios el dolor puede llegar a un 3 sobre 10",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "siempre que el día siguiente la sintomatología haya retornado a la línea basal",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "a la mañana siguiente tiene que estar como antes",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "Se instruirá a la paciente sobre la necesidad de modular temporalmente el volumen de carrera",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Vamos a bajar un poco el volumen",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "evitando incrementos bruscos de la distancia o frecuencia de entrenamiento",
+        "quien_la_dio": "pauta de PhysiQ",
+        "evidencia": "no consta",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "No se recomienda de inicio el uso de vendajes, rodilleras u ortesis plantares",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "¿y la rodillera que me recomendó una amiga? De momento no.",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "Se desaconsejan las infiltraciones",
+        "quien_la_dio": "pauta de PhysiQ",
+        "evidencia": "Sin infiltraciones",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "se recomienda prudencia con el uso continuado de analgésicos antiinflamatorios",
+        "quien_la_dio": "pauta de PhysiQ",
+        "evidencia": "con prudencia con los analgésicos",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "Ocasionalmente utiliza ibuprofeno de forma preventiva antes de las sesiones de carrera",
+        "quien_la_dio": "paciente",
+        "evidencia": "Un ibuprofeno antes de correr, algunos días",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": true
+      }
+    ],
+    "afirmaciones": [
+      {
+        "cita": "aunque en consulta menciona despertares ocasionales al adoptar posturas de flexión máxima durante el sueño",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "durante las dos últimas semanas refiere empeoramiento coincidente con el incremento del volumen de entrenamiento",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "durante las sesiones de carrera prolongadas alcanza 8 sobre 10",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "No refiere dolor en sedestación prolongada según el cuestionario inicial",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "Refiere presencia de crujidos o chasquidos articulares durante el movimiento",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "Niega sensación de bloqueo articular, episodios de enganche, fallos o cedidas de la rodilla",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "luxaciones rotulianas, hinchazón o tirantez poplítea, y parestesias o disestesias",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "No presenta rigidez matutina al levantarse",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "el movimiento del tobillo no reproduce la sintomatología de rodilla",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "Según el cuestionario inicial, la sedestación prolongada provocaría o aumentaría el dolor",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "La presentación insidiosa coincidente con el incremento del volumen de entrenamiento",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "orientan hacia una disfunción patelofemoral sin compromiso de otras estructuras intraarticulares",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "la rodilla derecha, que presenta molestias leves e incipientes durante el descenso de escaleras",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "se incorporarán medidas preventivas mediante el mismo programa de ejercicio bilateral",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "con el objetivo de evitar la progresión sintomática",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      }
+    ],
+    "siglas": [
+      {
+        "sigla": "KOOS-PF",
+        "cita": "la subescala KOOS-PF",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      },
+      {
+        "sigla": "VISA-P",
+        "cita": "la escala VISA-P",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      }
+    ],
+    "pronostico": [
+      {
+        "cita": "será necesario reconsiderar el diagnóstico",
+        "uso": "seguimiento"
+      },
+      {
+        "cita": "la patogenia del síndrome es multifactorial",
+        "uso": "explicado al paciente"
+      },
+      {
+        "cita": "factores como la hiperalgesia generalizada o alteraciones en la modulación central del dolor",
+        "uso": "seguimiento"
+      }
+    ],
+    "plan": [
+      {
+        "cita": "programa de ejercicio terapéutico dirigido al fortalecimiento del cuádriceps y de la musculatura de la cadera",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "con especial énfasis en el grupo posterolateral",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "El programa deberá extenderse durante un mínimo de 6 a 12 semanas",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "con supervisión fisioterápica al menos parcial",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "estructurando progresivamente el volumen y la intensidad en función de la tolerancia al dolor",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "en caso contrario, se ajustará a la baja la carga de trabajo",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "La educación terapéutica constituye un pilar fundamental del tratamiento",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "especialmente en lo relativo a la gestión de las cargas de entrenamiento",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "la comprensión de la naturaleza multifactorial del cuadro",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "estos recursos se valorarán únicamente como coadyuvantes al ejercicio si transcurridas 6 a 12 semanas",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "informando a la paciente sobre la limitada evidencia que respalda su eficacia",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "se realizará seguimiento clínico",
+        "elemento": "otra zona o lado",
+        "origen": "no consta"
+      },
+      {
+        "cita": "se incorporarán medidas preventivas mediante el mismo programa de ejercicio bilateral",
+        "elemento": "otra zona o lado",
+        "origen": "no consta"
+      },
+      {
+        "cita": "Se recomienda la aplicación de la escala Kujala o, alternativamente, la subescala KOOS-PF o la escala VISA-P",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "Se programarán reevaluaciones a las 6 y a las 12 semanas del inicio del tratamiento",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "valorando la intensidad del dolor mediante escala visual analógica",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "la función mediante la escala seleccionada",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "Si transcurridas 12 semanas de tratamiento no se observa mejoría clínicamente significativa",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "valorar la derivación para pruebas de imagen u opinión especializada",
+        "elemento": "objetivo",
+        "origen": "pauta de PhysiQ"
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9543,
+    "output": 3115
+  }
+}

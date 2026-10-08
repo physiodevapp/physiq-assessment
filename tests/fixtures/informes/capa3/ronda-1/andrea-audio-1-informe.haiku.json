@@ -1,0 +1,53 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "lectura",
+        "nivel": "alto",
+        "cita": "la palpación posteroanterior unilateral en la región paravertebral derecha reproduce dolor y se aprecia restricción de la movilidad",
+        "evidencia": "Los datos dicen «PA unilateral dolorosa o con menos movilidad: positivo». La «o» indica que el test puede ser positivo con dolor solo, con restricción solo, o con ambos. El informe afirma ambas simultáneamente como hallazgo único.",
+        "mensaje": "El resultado del test se describe como si tuviera dos componentes cuando solo consta su resultado global positivo."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "Se aplicará movilización articular y técnicas de tejidos blandos en la región lumbar",
+        "evidencia": "No consta en los datos ni en la transcripción que el fisioterapeuta haya indicado movilización articular o técnicas de tejidos blandos. El fisioterapeuta solo indicó «ejercicios para controlar el movimiento de la espalda y fortalecer el tronco».",
+        "mensaje": "El plan incluye técnicas (movilización articular y tejidos blandos) que no fueron indicadas por el fisioterapeuta."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Refiere que en la última semana el dolor alcanzó 7/10 y hace unos días llegó a 8/10",
+        "evidencia": "En la transcripción: «La semana pasada llegó a un 8 de 10, un día que estuve mucho rato de pie». No consta que llegara a 7/10.",
+        "mensaje": "La intensidad máxima en la última semana fue de 8/10, no de 7/10 y luego 8/10 en días distintos."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "Niega dolor que le despierte por la noche, aunque últimamente refiere algún despertar ocasional al cambiar de postura durante la noche",
+        "evidencia": "En los datos: «¿Le despierta por la noche? → No». En la transcripción: «Antes no, pero últimamente alguna noche me despierta al darme la vuelta en la cama». El informe funde ambas fuentes pero las datos estructurados registraron un «No» sin recoger la aclaración de la transcripción.",
+        "mensaje": "Los datos estructurados dicen que el dolor no despierta al paciente, pero la transcripción recoge que últimamente sí lo hace al cambiar de postura. Prevalecen los datos del fisioterapeuta, que registró «No»."
+      },
+      {
+        "tipo": "omision",
+        "nivel": "alto",
+        "cita": "",
+        "evidencia": "Derivación médica indicada en la exploración: «Sospecha de claudicación vascular (los síntomas al caminar ceden con solo pararse de pie): derivación médica para valorar la circulación de las piernas». En la transcripción: «lo que me cuentas de las pantorrillas al caminar quiero que lo vea tu médico de cabecera para que te mire la circulación de las piernas».",
+        "mensaje": "Se menciona la derivación en las conclusiones pero no consta de forma clara que deba realizarse o quién debe hacerla en el apartado de plan."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Se reevaluará la respuesta al tratamiento conservador y se reconsiderará la derivación para valoración de denervación por radiofrecuencia en caso de ausencia de mejoría funcional significativa",
+        "evidencia": "Datos: «Cuándo reconsiderar o derivar: NICE: considerar derivar para valoración de denervación por radiofrecuencia si el tratamiento no quirúrgico no ha funcionado...». Este párrafo es información para el fisioterapeuta (criterios de reconsideración), no indicaciones del plan para el paciente o seguimiento a registrar en el informe de este modo.",
+        "mensaje": "Los criterios de reconsideración de la guía se presentan como parte del plan de seguimiento del informe."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9012,
+    "output": 1162
+  }
+}

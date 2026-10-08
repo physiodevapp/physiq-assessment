@@ -1,0 +1,11 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Contextuales: verificado que edad, inicio, cronología y patrón de dolor coinciden con datos; comprobado el dolor nocturno con las dos versiones. Factores Personales: verificada actividad de carrera y aumento de volumen; comprobado uso de ibuprofeno. Presentación Inicial y Antecedentes: verificado inicio insidioso, primer episodio, dolor nocturno con dos versiones y empeoramiento reciente. Tratamientos Previos: verificado reposo relativo. Cribado: verificadas banderas rojas negativas. Dolor: verificadas intensidades (5/10 habitual y 8/10 al correr), irritabilidad, naturaleza, crujidos y síntomas negados; comprobado signo comparable. Pruebas Clínicas: verificados tests de Décary y palpación facetas. Limitaciones en Actividades: verificadas actividades afectadas (correr >20min, bajar escaleras, sentadilla, subir escaleras); revisada sedestación prolongada. Restricciones en Participación: verificado impacto en carrera. Conclusiones y Plan: verificado diagnóstico, programa de ejercicio 6-12 semanas, criterio dolor 3/10, educación, vendaje/rodillera solo si no mejora 6-12 semanas, desaconsejar infiltraciones; comprobada mención a rodilla derecha. Coherencia con hipótesis: verificada consistencia con datos. Seguimiento: verificadas escalas y reevaluaciones a 6 y 12 semanas.",
+    "puntos": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9175,
+    "output": 447
+  }
+}

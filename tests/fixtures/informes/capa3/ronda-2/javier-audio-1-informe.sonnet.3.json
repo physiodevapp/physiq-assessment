@@ -1,0 +1,75 @@
+{
+  "result": {
+    "repaso": "Condición de salud y factores contextuales: comprobado contexto laboral y antropometría. Factores personales: comprobado IMC, constantes y perfil psicosocial. Historia clínica: comprobado inicio, evolución, características cefalea y síntomas acompañantes. Tratamientos previos: comprobado paracetamol. Cribado de seguridad: comprobado banderas rojas negativas y cribado sistémico positivo. Dolor: comprobado intensidad, irritabilidad y signo comparable. Movilidad: comprobado ROM y PAIVMs. Pruebas clínicas: comprobado CFRT positivo y exploración craneocervical. Limitaciones y restricciones: comprobado sedestación laboral y gimnasio. Conclusiones y plan: comprobado derivación urgente indicada. Seguimiento funcional: comprobado NDI y MCID.",
+    "puntos": [
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "El abordaje incluirá manipulación o movilización cervical y cervicotorácica combinada con programa de ejercicio terapéutico que integre estiramiento, fortalecimiento y trabajo de resistencia de la musculatura cervical y de la cintura escapular.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan detalla técnicas de tratamiento cuando la pauta indica derivación urgente y que no se proponga tratamiento, ni siquiera condicionado."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Se incorporará entrenamiento específico de flexión craneocervical con biofeedback de presión, comenzando con el dispositivo inflado a 20 mmHg y progresando en escalones de 2 mmHg (desde 22 hasta 30 mmHg), con apoyos repetidos de 5 a 10 segundos en cada nivel",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan describe dosis específicas de ejercicio cuando la pauta prohíbe proponer técnicas o dosis antes de la valoración médica."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Antes de aplicar manipulación cervical, se realizará el cribado vascular siguiendo el protocolo del marco IFOMPT.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan menciona cribado vascular para manipulación cuando no debe proponerse tratamiento antes de la valoración médica urgente."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Dada la elevada puntuación en el cribado psicosocial, será necesario integrar componentes de educación en neurociencia del dolor, estrategias de afrontamiento activo y modificación de creencias catastrofistas",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan propone abordaje psicosocial específico cuando la pauta indica que no se propongan técnicas antes de la valoración médica."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "catastrofización ante la posibilidad de provocar daño al girar el cuello",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "Se menciona catastrofización específica ante girar el cuello, pero los datos solo recogen «Miedo al movimiento → Sí» sin ese detalle concreto."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "Se observan indicios dudosos de baja autoeficacia o desesperanza.",
+        "evidencia": "Cribado psicosocial detallado: Baja autoeficacia → Dudoso",
+        "mensaje": "Los datos mencionan «Baja autoeficacia → Dudoso», no «baja autoeficacia o desesperanza»; la desesperanza no consta."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "ansiedad y mala calidad del sueño",
+        "evidencia": "Transcripción: «estoy muy agobiado con el trabajo. Duermo mal.» Datos: Componente emocional → Sí",
+        "mensaje": "El informe interpreta el componente emocional como «ansiedad» específicamente, pero los datos solo indican «Componente emocional → Sí»."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "Si tras la intervención de fisioterapia no se obtiene mejoría en la cefalea con el tratamiento dirigido a la región cervical, será necesario reconsiderar otras formas de cefalea, incluyendo la valoración de la articulación temporomandibular y la posible coexistencia de migraña",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "Se propone reconsiderar ATM y migraña como acción de seguimiento, pero no consta en la pauta de PhysiQ ni en las fuentes."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Se abordarán pautas de higiene postural y gestión de cargas durante la jornada laboral frente al ordenador.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan incluye pautas de higiene postural cuando no debe proponerse tratamiento antes de la valoración médica."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8170,
+    "output": 1704
+  }
+}
