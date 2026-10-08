@@ -125,8 +125,8 @@ Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y n
 
 | Id | Hipótesis | Tipo | Fuente | Estado |
 |---|---|---|---|---|
-| ca1 | Artrosis | A | Cibulka 2017 (guía APTA) + NICE NG226 | ✅ Grados APTA y frecuencia (ejercicio 1–5/semana, 6–12 semanas); donde chocan (terapia manual, ultrasonido) prevalece NICE, más reciente |
-| ca2 | SIFA | B | Enseki 2023 (guía APTA) + consenso de Zúrich + Griffin 2018 | ✅ Multimodal (B) con sus grados, al menos 3 meses; sin series |
+| ca1 | Artrosis | A | Koc 2025 (guía APTA, revisión 2025; sustituye a Cibulka 2017) + NICE NG226 | ✅ Grados APTA y dosis (ejercicio 1–5/semana, 30–120 min, 5–16 semanas); donde chocan (punción seca, ultrasonido) se dan las dos posturas (2026-10) |
+| ca2 | SIFA | B | Enseki 2023 (guía APTA) + consenso de Zúrich + Griffin 2018 + Kemp 2026 (PhysioFIRST) | ✅ Multimodal (B) con sus grados, al menos 3 meses; sin series |
 | ca3 | Labrum | B | Enseki 2023 + consenso de Zúrich + Kemp 2020 | ✅ Multimodal (B, recomendado en particular para SIFA y labrum), al menos 3 meses |
 | ca4 | Tendinopatía glútea | A | Mellor 2018 (LEAP) + Mellor 2016 (protocolo) | ✅ Pauta completa de 8 semanas |
 | ca5 | Debilidad de abductores | D | — | Vaciada (era un déficit, no un diagnóstico; cifras sin fuente) |
