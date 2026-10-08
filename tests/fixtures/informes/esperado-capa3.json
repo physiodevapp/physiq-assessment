@@ -88,7 +88,7 @@
       "plantilla": "narrativo",
       "errores": [
         { "id": "javier-gimnasio-afectado", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Participación afectada que nadie dijo", "fragmentos": ["en el gimnasio también se ha visto afectada"] },
-        { "id": "javier-psico-etiquetas", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "«catastrofización», «ansiedad», «desesperanza»: dijo «agobiado» y «duermo mal»", "fragmentos": ["catastrofización ante la posibilidad", "relacionado con ansiedad", "baja autoeficacia o desesperanza"] },
+        { "id": "javier-psico-etiquetas", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "«catastrofización», «ansiedad», «desesperanza»: dijo «agobiado» y «duermo mal»", "fragmentos": ["catastrofización ante la posibilidad", "relacionado con ansiedad", "baja autoeficacia o desesperanza", "ansiedad y mala calidad del sueño"] },
         { "id": "javier-9-repetido", "tipo": "repetido", "nivel": "medio", "descripcion": "El pico de 9/10 en Presentación y en Dolor", "fragmentos": ["picos de intensidad de 9/10"] },
         { "id": "javier-derivacion-repetida", "tipo": "repetido", "nivel": "medio", "descripcion": "La derivación urgente en Cribado, plan, Coherencia y Seguimiento", "fragmentos": ["Este hallazgo requiere valoración médica urgente", "requiere valoración médica urgente antes de proseguir", "La reevaluación se realizará una vez se haya completado la valoración médica urgente"] },
         { "id": "javier-migrana-30", "tipo": "no-respaldado", "nivel": "medio", "descripcion": "Dato de pronóstico (30 % con migraña) que con la derivación urgente ya no está en los datos", "fragmentos": ["el 30 por ciento de los pacientes con cefalea cervicogénica"] }

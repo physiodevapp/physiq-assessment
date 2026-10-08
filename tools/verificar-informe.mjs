@@ -86,6 +86,7 @@ async function llamar(modelo, prompt) {
     body: JSON.stringify({
       model: MODELOS[modelo],
       max_tokens: VI.MAX_TOKENS_VERIFICACION,
+      temperature: 0,   // misma respuesta para el mismo informe (con el valor por defecto, 1, un informe daba 0 puntos en una llamada y 6 en otra)
       tools: [{ name: 'resultado', description: 'Devuelve el resultado de la revisión.', input_schema: VI.ESQUEMA_VERIFICACION }],
       tool_choice: { type: 'tool', name: 'resultado' },
       messages: [{ role: 'user', content: prompt }],
@@ -94,7 +95,7 @@ async function llamar(modelo, prompt) {
   const out = await res.json();
   if (!res.ok) throw new Error(`Claude: ${out.error?.message || res.status}`);
   const tool = out.content?.find(b => b.type === 'tool_use');
-  return { result: tool?.input ?? { puntos: [] }, truncated: out.stop_reason === 'max_tokens', usage: { input: out.usage?.input_tokens ?? 0, output: out.usage?.output_tokens ?? 0 } };
+  return { result: tool?.input ?? {}, truncated: out.stop_reason === 'max_tokens', usage: { input: out.usage?.input_tokens ?? 0, output: out.usage?.output_tokens ?? 0 } };
 }
 
 const base = c => c.informe.replace(/\.txt$/, '');

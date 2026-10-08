@@ -37,8 +37,17 @@ mide cuántos detecta; con `--guardar` deja cada respuesta en `capa3/`, que
 `tests/unit.js` valida sin llamar a la API y `--respuestas` vuelve a puntuar.
 Con `--veces N` pasa cada informe N veces (`capa3/<informe>.<modelo>.<n>.json`)
 y resume la media y la peor pasada: la respuesta cambia mucho de una llamada a
-otra. `capa3/ronda-1/` guarda la primera medición (prompt anterior, una pasada
-de Sonnet y una de Haiku), para comparar.
+otra. `capa3/ronda-1/` guarda la primera medición (una pasada de Sonnet y una
+de Haiku) y `capa3/ronda-2/` la segunda (Sonnet ×3, prompt «busca fallos»
+calibrado), para comparar; `--respuestas` las sigue leyendo.
+
+Desde la ronda 3 el verificador no busca fallos: rellena seis listas de
+extracción (tests con «o», indicaciones y quién las dio, afirmaciones sin
+respaldo literal, siglas, uso del pronóstico, origen de cada elemento del plan)
+y los puntos se derivan en código. Las repeticiones, omisiones, códigos CIF,
+componentes de un criterio y cifras reconciliadas quedan fuera por diseño: 11
+de los 29 fallos de `esperado-capa3.json`. La ronda 3 está sin medir: la cuenta
+se quedó sin saldo tras dos llamadas, y las dos se truncaron en 4000 tokens.
 
 Cuando una regla de la capa 1 pasa a cubrir un fallo, ese fallo sale de
 `esperado-capa3.json` (la lista es lo que la capa 1 no ve): así salieron las
