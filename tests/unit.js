@@ -1024,6 +1024,10 @@ test('hombro: clusters del manguito (Park, Litaker) sin contar dos veces; ningú
   // El cluster A absorbe drop arm, signo de retraso en RE y cluster B (la debilidad en RE va en los dos)
   assert.ok(Math.abs(calcLRScore(h3, { [iA]: 'pos', [iDrop]: 'pos', [iLag]: 'pos', [iB]: 'pos' }).totalLR - 15.57) < 0.001);
   assert.ok(Math.abs(calcLRScore(h3, { [iB]: 'pos' }).totalLR - 5.0) < 0.001); // validación, no la 9,84 de derivación
+  // Retraso en RI: solo el positivo (LR− 0,04 de un estudio de 37 pacientes, no reproducida en otros)
+  const iIR = i('Internal Rotation Lag');
+  assert.ok(Math.abs(calcLRScore(h3, { [iIR]: 'pos' }).totalLR - 5.6) < 0.001);
+  assert.equal(calcLRScore(h3, { [iIR]: 'neg' }).totalLR, 1);
   const h7 = HYPOTHESES.h7;
   // Aducción cruzada (Chronopoulos, casos y controles, frente a Cadogan 2013 en atención primaria: LR+ 0,86),
   // O'Brien (Chronopoulos frente a Walton, contradictorios), palpación y Paxinos (Walton, 10 controles): hallazgos
