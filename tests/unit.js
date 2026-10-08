@@ -1577,6 +1577,15 @@ test('al generar: una transcripción sin voz corta antes de redactar y conserva 
   assert.match(gen, /finally \{[\s\S]*ctrl\.abort\(\)/);
 });
 
+test('grabadora: en el móvil se pausa al pasar a segundo plano y avisa al volver', () => {
+  const src = readFileSync(new URL('../grabadora.js', import.meta.url), 'utf8');
+  const vis = src.slice(src.indexOf("addEventListener('visibilitychange'"), src.indexOf("addEventListener('beforeunload'"));
+  // Oculta: pausa solo grabando, sin pausa previa y sin ratón (móvil); en el ordenador no
+  assert.match(vis, /if \(_grab && !_grab\.pausado && !conRaton\(\)\) \{ pausar\(\); _grab\.pausaAuto = true; \}/);
+  // Visible: aviso solo si la pausó la app y sigue en pausa
+  assert.match(vis, /if \(_grab\?\.pausaAuto\) \{[\s\S]*if \(_grab\.pausado\) showToast\('Grabación en pausa: la app pasó a segundo plano/);
+});
+
 const G_SILENCIO = await import('../grabadora.js');
 test('grabadora: aviso de silencio solo grabando, antes al empezar que a media consulta', () => {
   const G = G_SILENCIO;
