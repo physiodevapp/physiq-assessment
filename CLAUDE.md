@@ -239,7 +239,7 @@ When modifying clinical content, keep `data/` isolated from logic — this separ
 - `IntersectionObserver` — contextual banners on scroll in Phase 2 and 4b
 
 ### Dialogs
-Use `showConfirmBanner(title, text, actionLabel, callback, opts?)` — never use the native `confirm()` or `alert()`. `opts.cancelLabel` changes the dismiss button's text («Cancelar» by default; use it when «Cancelar» would clash with the action, e.g. «Seguir» / «Sí, cancelar» for the AI generation; `.btn-text-full`/`.btn-text-short` work inside `.confirm-box-btns` too, so «Sí, cancelar» becomes «Cancelar» under 480 px). It returns a `dismiss()` that closes the dialog without confirming and does nothing if it's already closed — for when what was being confirmed stops making sense (the AI generation finishing while «¿Cancelar?» is open).
+Use `showConfirmBanner(title, text, actionLabel, callback, opts?)` — never use the native `confirm()` or `alert()`. `opts.cancelLabel` changes the dismiss button's text («Cancelar» by default; use it when «Cancelar» would clash with the action, e.g. «Seguir» / «Sí, cancelar» for the AI generation; `.btn-text-full`/`.btn-text-short` work inside `.confirm-box-btns` too, so «Sí, cancelar» becomes «Cancelar» under 480 px). Tapping the scrim or pressing Escape does the same as the dismiss button, never the action (only a tap that starts and ends on the scrim counts, so selecting text in the box and releasing outside doesn't close it; Android Back is deliberately left out, since it navigates phases). It returns a `dismiss()` that closes the dialog without confirming and does nothing if it's already closed — for when what was being confirmed stops making sense (the AI generation finishing while «¿Cancelar?» is open).
 
 ## Theme
 
