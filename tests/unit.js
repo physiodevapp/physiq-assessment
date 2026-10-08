@@ -1870,6 +1870,29 @@ test('tobillo: el KTW lleva su nombre (desarrolló la sigla como un test inexist
   assert.ok(!Object.values(HYPOTHESES).some(h => h.tests.some(t => /\bKTW\b(?! \(rodilla a la pared\))/.test(t.name))), 'ningún test con la sigla sola');
 });
 
+test('prompt: derivación urgente sin pautas, cifras sin clasificar, psicosocial sin etiquetas diagnósticas (decimocuarta revisión)', () => {
+  const a = { pautas: [{ hipotesis: 'Cefalea Cervicogénica', pauta: 'Biofeedback de 20 a 30 mmHg', fuente: 'APTA', prom: 'NDI', pronostico: { derivacion: 'El 30 % cumple criterios de migraña' } }] };
+  const normal = IN.bloquesAmpliados(a).join('\n');
+  assert.ok(normal.includes('Biofeedback de 20 a 30 mmHg'));
+  const urg = IN.bloquesAmpliados(a, { urgente: true }).join('\n');
+  assert.ok(!/mmHg|migraña|APTA/.test(urg), 'con derivación urgente no van pautas, fuentes ni pronóstico');
+  assert.match(urg, /^Plan: derivación urgente\. La pauta de fisioterapia se decidirá después de la valoración médica/m);
+  assert.ok(urg.includes('Escala recomendada para el seguimiento:\n  · Cefalea Cervicogénica: NDI'));
+  const d = { p: 'X', r: 'cervical', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {}, ur: ['Cefalea con signos de alarma: derivación a urgencias hoy.'] };
+  assert.ok(IN.contextoValoracion(d, r => r, a).includes('Plan: derivación urgente'), 'contextoValoracion pasa la urgencia');
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
+    assert.ok(p.includes('Con una derivación urgente no escribas ningún plan de tratamiento'));
+    assert.ok(p.includes('No nombres los diagnósticos que el médico deberá descartar'));
+    assert.ok(p.includes('se dan tal cual, sin clasificarlas'));
+  }
+  withState({ region: 'cervical', riesgoPsico: 'Alto', psico_miedo: 'Sí', psico_autoef: 'Dudoso', psico_emocional: 'Sí' }, () => {
+    const t = IN.bloquesAmpliados(IA.construirAmpliado()).join('\n');
+    assert.match(t, /Cribado psicosocial detallado:\n  · Miedo al movimiento → Sí\n  · Baja autoeficacia → Dudoso\n  · Componente emocional → Sí/);
+    assert.ok(!/ansiedad|depresión|catastrofización/.test(t), 'sin etiquetas diagnósticas');
+  });
+});
+
 test('formulario de hombro: «llevar la mano a la espalda» sin el sujetador para la IA', () => {
   withState({ region: 'hombro', formularioPrevio: { comun: {}, regiones: { hombro: { provoca: { espalda: 'Sí' } } } } }, () => {
     assert.ok(FM.resumenFormularioIA().some(x => x.a === 'Llevar la mano a la espalda: Sí'));
@@ -2804,6 +2827,19 @@ console.log('\nrevisión automática del informe con IA');
     assert.match(rev(cir).find(x => x.id === 'repetido')?.mensaje || '', /cirujano aparece 3 veces/);
     assert.ok(!ids('Restricciones pendientes de confirmar con el cirujano. Ejercicio.').includes('repetido'));
   });
+  test('revisión: plan con derivación urgente, diagnósticos que no constan e IMC clasificado', () => {
+    const plan = '## CONCLUSIONES Y PLAN DE TRATAMIENTO\nSe deriva a urgencias hoy. Después, manipulación cervical y ejercicio terapéutico.\n## SEGUIMIENTO FUNCIONAL\nNDI.';
+    const p = rev(plan, { datos: { ur: ['Cefalea con signos de alarma: derivación a urgencias hoy.'] } });
+    assert.ok(p.some(x => x.id === 'plan-urgente' && x.nivel === 'alto'), JSON.stringify(p));
+    assert.ok(!ids(plan).includes('plan-urgente'), 'sin derivación urgente, el plan es normal');
+    assert.ok(!ids('## CONCLUSIONES Y PLAN DE TRATAMIENTO\nSe deriva a urgencias hoy; se retomará la valoración tras la valoración médica.', { datos: { ur: ['x'] } }).includes('plan-urgente'));
+    assert.match(rev('Para descartar hemorragia subaracnoidea o patología intracraneal.').find(x => x.id === 'diagnostico')?.mensaje || '', /«hemorragia», «intracraneal»/);
+    assert.ok(!ids('Antecedente de cáncer de mama.', { transcripcion: 'tuve un cáncer de mama' }).includes('diagnostico'), 'lo dijo en consulta');
+    assert.ok(!ids('Requiere valoración médica urgente para descartar otras causas.').includes('descarta'), 'descartar en una frase de valoración médica es correcto');
+    assert.ok(ids('IMC de 25,2 (normopeso).', { datos: { an: { imc: 25.2 } } }).includes('imc'));
+    assert.ok(!ids('IMC de 25,2 (sobrepeso).', { datos: { an: { imc: 25.2 } } }).includes('imc'));
+    assert.ok(!ids('IMC de 22 (normopeso).', { datos: { an: { imc: 22 } } }).includes('imc'));
+  });
   test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
     const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
     const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
@@ -2815,6 +2851,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'repetido', 'estructura']],
       ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero']],
       ['valoracion-carmen-vidal-tobillo-breve.json', 'carmen-audio-1-ficha-breve.txt', 'carmen-audio-transcripcion.txt', ['relleno', 'fuentes', 'repetido']],
+      ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['plan-urgente', 'diagnostico', 'imc']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
