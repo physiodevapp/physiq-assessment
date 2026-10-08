@@ -701,9 +701,38 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   }
   r.fasesMovil = Object.values(r.bandasMovil).every(Boolean);
 
+  // Aviso de versión con la barra fija de contexto visible (sistema en la
+  // fase 2, hipótesis en la 4b): debe quedar debajo de ella, no tapado
+  await page.evaluate(() => {
+    const a = document.createElement('div');
+    a.id = 'versionAvisoPrueba'; a.className = 'version-aviso';
+    a.innerHTML = '<span class="version-aviso-texto">Hay una versión nueva</span><button class="version-aviso-btn">Actualizar</button>';
+    document.body.appendChild(a);
+  });
+  const avisoBajoBarra = async (barra, cabecera, tarjeta) => {
+    await page.evaluate(([cab, tar]) => {
+      document.querySelector(cab).click();
+      const t = document.querySelector(tar);
+      scrollTo(0, t.getBoundingClientRect().top + scrollY + 300);
+    }, [cabecera, tarjeta]);
+    await page.waitForTimeout(500);
+    return page.evaluate(barra => {
+      const b = document.getElementById(barra), a = document.getElementById('versionAvisoPrueba');
+      if (getComputedStyle(b).display === 'none') return false;
+      return a.getBoundingClientRect().top >= b.getBoundingClientRect().bottom;
+    }, barra);
+  };
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(300);
+  r.avisoFase2 = await avisoBajoBarra('sisContextBanner', '.sistema-accordion-row .sistema-accordion-header', '.sistema-accordion-row.open');
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(300);
+  r.avisoFase4b = await avisoBajoBarra('hypContextBanner', '.hypothesis-card:not(.open) .hypothesis-header', '.hypothesis-card.open');
+  await page.evaluate(() => document.getElementById('versionAvisoPrueba').remove());
+
   await context.close();
   r.ok = r.exportarDesactivadoAlEmpezar && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
-    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil;
+    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil && r.avisoFase2 && r.avisoFase4b;
   return r;
 }
 
@@ -1128,7 +1157,7 @@ async function main() {
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar; aviso de versión bajo la barra fija (fases 2 y 4b)${expImp.avisoFase2 && expImp.avisoFase4b ? '' : ` [fase 2: ${expImp.avisoFase2}, 4b: ${expImp.avisoFase4b}]`}${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
