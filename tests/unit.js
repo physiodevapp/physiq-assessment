@@ -1522,14 +1522,30 @@ test('conexión cortada al generar: pantalla apagada / segundo plano, no un erro
   assert.equal(IN.errorConexion(null), null);
 });
 
+test('borrar sesión usa el diálogo común y, si se cancela, vuelve al panel de sesión', () => {
+  const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  const f = app.slice(app.indexOf('function promptClearSession'), app.indexOf('function _borrarSesion'));
+  assert.match(f, /closeSessionPanel\(\);[\s\S]*showConfirmBanner\('Borrar sesión',[\s\S]*'Borrar sesión', _borrarSesion,/);
+  assert.match(f, /onCancel: \(\) => \{ if \(panelAbierto\) toggleSessionPanel\(\); \}/);
+  assert.match(f, /_escHTML\(nombre\)/, 'el nombre del paciente se escapa');
+  assert.doesNotMatch(app, /st === 'delete'/, 'el panel ya no pinta su propia confirmación');
+  assert.match(app, /#sessionPanelClear'\)\.onclick = promptClearSession;/);
+  // El campo del nombre sigue en el DOM: se vacía, o saveSession() lo devolvería al estado
+  const borrar = app.slice(app.indexOf('function _borrarSesion'), app.indexOf('function _borrarSesion') + 800);
+  assert.match(borrar, /state\.patient = '';[\s\S]*getElementById\('patientName'\)[\s\S]*campo\.value = '';/);
+});
+
 test('diálogos: el velo y Escape cierran como el botón de cerrar, nunca hacen la acción', () => {
   const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
   const f = app.slice(app.indexOf('function showConfirmBanner'), app.indexOf('// ─── SESSION PANEL'));
   // Velo: solo un toque que empieza y acaba en el velo, y llama a dismiss (no a onConfirm)
   assert.match(f, /pointerdown', e => \{ empiezaEnVelo = e\.target === overlay; \}/);
-  assert.match(f, /click', e => \{ if \(e\.target === overlay && empiezaEnVelo\) dismiss\(\); \}/);
+  assert.match(f, /click', e => \{ if \(e\.target === overlay && empiezaEnVelo\) cancelar\(\); \}/);
   // Escape cierra, y el listener se quita al cerrar o si otro código retira el diálogo
-  assert.match(f, /e\.key === 'Escape'\) \{ e\.preventDefault\(\); dismiss\(\); \}/);
+  assert.match(f, /e\.key === 'Escape'\) \{ e\.preventDefault\(\); cancelar\(\); \}/);
+  // Cancelar a mano llama a opts.onCancel; el dismiss() devuelto (cierre desde el código) no
+  assert.match(f, /const cancelar = \(\) => \{ if \(!overlay\.isConnected\) return; dismiss\(\); opts\.onCancel\?\.\(\); \};/);
+  assert.match(f, /getElementById\('confirmCancel'\)\.onclick = cancelar;/);
   assert.match(f, /const dismiss = \(\) => \{\s*document\.removeEventListener\('keydown', alTeclado\);/);
   assert.match(f, /if \(!overlay\.isConnected\) \{ document\.removeEventListener\('keydown', alTeclado\); return; \}/);
   assert.equal((f.match(/onConfirm\(\)/g) || []).length, 1, 'solo el botón de acción confirma');
@@ -1979,8 +1995,8 @@ test('grabadora: un reinicio llegado de otra pestaña no descarta el audio de es
   assert.ok(!/descartarTodo|_descartarAudioSesion/.test(cuerpo('_softResetApp')), '_softResetApp no puede tocar el audio (también corre por SESSION_RESET/SESSION_CLEAR remotos)');
   assert.ok(/_descartarAudioSesion\(\)/.test(cuerpo('resetApp')), 'reiniciar valoración (confirmado aquí) sí lo descarta');
   assert.ok(/_avisoAudioSesion\(\)/.test(cuerpo('resetApp')), 'y lo avisa en la confirmación');
-  const borrar = src.slice(src.indexOf("} else if (st === 'delete') {"), src.indexOf("} else if (st === 'delete') {") + 1500);
-  assert.ok(/_avisoAudioSesion\(\)/.test(borrar) && /_descartarAudioSesion\(\)/.test(borrar), 'borrar sesión: avisa y descarta');
+  assert.ok(/_avisoAudioSesion\(\)/.test(cuerpo('promptClearSession')), 'borrar sesión: avisa en la confirmación');
+  assert.ok(/_descartarAudioSesion\(\)/.test(cuerpo('_borrarSesion')), 'y descarta al confirmar');
 });
 
 // ── Licencia: motivo legible cuando /validate no responde (lib/licencia-ia.js) ─
