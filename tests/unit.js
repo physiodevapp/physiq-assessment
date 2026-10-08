@@ -1522,6 +1522,14 @@ test('conexión cortada al generar: pantalla apagada / segundo plano, no un erro
   assert.equal(IN.errorConexion(null), null);
 });
 
+test('fase 5: cabecera de hipótesis en dos filas (nombre; etiqueta debajo) y un solo 🏥 en el postoperatorio', () => {
+  const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  assert.equal((app.match(/_cabeceraHipHTML\(/g) || []).length, 3, 'definición + tarjeta normal + postoperatorio');
+  assert.match(app, /_cabeceraHipHTML\(color, '', `🏥 \$\{_escHTML\(hyp\.name\)\}`, ETIQUETA_HIP_POSQ\.replace\(\/\^🏥\\s\*\/, ''\)/);
+  const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
+  assert.match(css, /\.hyp5-cab \{ display: flex; align-items: flex-start;/, 'el punto se alinea con la primera línea');
+});
+
 test('borrar sesión usa el diálogo común y, si se cancela, vuelve al panel de sesión', () => {
   const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
   const f = app.slice(app.indexOf('function promptClearSession'), app.indexOf('function _borrarSesion'));
