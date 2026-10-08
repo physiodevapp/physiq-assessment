@@ -276,6 +276,8 @@ IDB (`lib/session.js`) is the persistence layer for session/clinical data — no
 ### Responsive layout
 Mobile uses card layouts and bottom phase bar; desktop uses tables and horizontal nav.
 
+**Narrow screens (≤480 px): one rule for every phase** (user decision, for consistency between phases). First level → full-width band: `.main .card`, `.sistema-accordion-row` (phase 2), `.tree-question` (phase 4), `.hypothesis-card` (4b) and `.summary-section` (phase 5; the AI card `.ia-card` is a `.card`) get a negative side margin equal to `.main`'s padding (1rem) and lose their side borders and radius. Second level keeps its frame; the reading boxes (`.sq2`, `.test-item`, `.hyp5-card`, `.exercise-box`, `.pauta-det-resto`) drop to 12 px padding. Alerts and the modo breve box stay inset. A new top-level block must be added to that selector (same `@media (max-width: 480px)` block of `styles.css`). The 4b hypothesis name wraps to two lines there instead of an ellipsis. The smoke test checks at 320 px, phase by phase, that every first-level block spans the viewport, the reading boxes have 12 px padding and nothing overflows.
+
 ## BroadcastChannel protocol
 
 All satellites use `const _sessionCh = new BroadcastChannel('physiq-session')`.
@@ -308,7 +310,7 @@ Plan notes fields in phase 5: `variableControl`, `ventanaRecuperacion`, `anclaje
 
 **Folded parts of the phase 5 hypothesis cards** (to cut scrolling): the pauta is a `<details class="pauta-det">` whose summary shows its first sentence (`partirPrimeraFrase()`: up to the first period followed by a capital, so «rec. 1.3.1» / «p. ej.» don't cut it; a first sentence under 40 characters takes the next one too; a long one is clamped to 3 lines by CSS), with «Ver pauta completa ▾» and «Ocultar pauta ▴»; a one-sentence pauta isn't folded. «🧭 Pronóstico y derivación» is a closed `<details class="pronostico-det">`. Tests: those done (pos/neg) stay visible, the «Sin datos» ones go together in a closed `<details class="tests-sin-datos">` («2 tests sin hacer» / «Ningún test realizado»). **Never folded** (safety): the card header, «🚑 Derivación» (`DOSIS_DERIVAR`), «Ya diagnosticada y tratada» and the post-surgical note (unit test). On `beforeprint` every closed `<details>` in `#phase5` opens and `afterprint` restores them, so printouts are complete. `📋 Notas`/`📄 Informe` are built from the data, not the screen, so folding doesn't affect them. Whole hypotheses are not folded (considered; left for later).
 
-**Phase 5 on narrow screens (≤480 px, `#phase5` only)**: phase 5 is a reading view with up to four nested frames (section → hypothesis → pauta), which left the pauta text ~290 px wide on a phone. There, the top-level blocks (`.summary-section`, the AI card `.ia-card`) go full width as bands (negative side margin equal to `.main`'s padding, no side borders or radius) and the hypothesis box (`.hyp5-card`) and the pauta (`.exercise-box`, `.pauta-det-resto`) drop to 12 px padding; alerts and the modo breve box stay inset. The other phases keep floating cards on purpose (user decision; extend later if it works). The smoke test checks at 320 px that the sections span the viewport, `.hyp5-card` has 12 px padding and nothing overflows.
+**Phase 5 on narrow screens**: see «Responsive layout» — phase 5 was the first phase moved to full-width bands, since its four nested frames left the pauta text ~290 px wide on a phone.
 
 ## Key functions (`app.js`)
 
