@@ -679,9 +679,21 @@ async function checkExportarImportar(browser, errors, tmpDir) {
     });
   });
 
+  // Fase 5 a 320 px: secciones a todo el ancho (bandas), caja de hipótesis con
+  // relleno reducido, y nada desborda en horizontal
+  await page.evaluate(() => closeSessionPanel());
+  await page.waitForTimeout(200);
+  r.fase5Movil = await page.evaluate(() => {
+    const secs = [...document.querySelectorAll('#phase5 .summary-section')];
+    const banda = secs.length > 0 && secs.every(el => { const b = el.getBoundingClientRect(); return Math.round(b.left) === 0 && Math.round(b.right) === innerWidth; });
+    const hyp = document.querySelector('#phase5 .hyp5-card');
+    const relleno = !hyp || getComputedStyle(hyp).paddingLeft === '12px';
+    return banda && relleno && document.documentElement.scrollWidth <= innerWidth;
+  });
+
   await context.close();
   r.ok = r.exportarDesactivadoAlEmpezar && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
-    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320;
+    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fase5Movil;
   return r;
 }
 
@@ -1106,7 +1118,7 @@ async function main() {
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px`);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; fase 5 a 320 px en bandas, sin desbordar`);
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
