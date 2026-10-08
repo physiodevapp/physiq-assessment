@@ -1831,6 +1831,20 @@ test('prompt: los ejemplos no son del caso y solo muestran la forma; estructura 
   assert.ok(!/recorrido de la exploración y/.test(n), 'las instrucciones ya no usan el nombre del bloque');
 });
 
+test('prompt: sin ejemplos con género, tests con «o», picos sin reconciliar, Movilidad opcional (duodécima revisión)', () => {
+  const d = { p: 'X', r: 'lumbar', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
+    assert.ok(!/«sentada»|«sentado»|«la paciente»/.test(p), 'sin ejemplos con género que copiar');
+    assert.ok(p.includes('no afirmes las dos'));
+    assert.ok(p.includes('no cambies fechas ni circunstancias para que encajen'));
+    assert.ok(p.includes('No añadas diagnósticos diferenciales que no estén en los datos'));
+  }
+  const n = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
+  assert.ok(n.includes('### Movilidad\n[Solo si hay hallazgos de movilidad distintos del signo comparable'));
+  assert.ok(n.includes('lo que no le empeora no se enumera aquí'));
+});
+
 test('formulario de hombro: «llevar la mano a la espalda» sin el sujetador para la IA', () => {
   withState({ region: 'hombro', formularioPrevio: { comun: {}, regiones: { hombro: { provoca: { espalda: 'Sí' } } } } }, () => {
     assert.ok(FM.resumenFormularioIA().some(x => x.a === 'Llevar la mano a la espalda: Sí'));
@@ -1907,11 +1921,12 @@ test('sexo: opcional, en la cabecera del prompt y del informe compartido, con co
     assert.match(IN.contextoValoracion(d, r => r, amp), /Edad: 34 años · Sexo: mujer · Región/);
   });
   withState({ region: 'rodilla', sexo: '' }, () => {
-    assert.ok(!/Sexo:/.test(IN.contextoValoracion(buildPhysiQPayload(), r => r, IA.construirAmpliado())), 'sin sexo, sin línea');
+    assert.match(IN.contextoValoracion(buildPhysiQPayload(), r => r, IA.construirAmpliado()), /Sexo: no consta \(no lo deduzcas del nombre; redacta sin marcar el género\)/, 'sin sexo, la línea lo dice');
+    assert.ok(!/Sexo:/.test(IN.contextoValoracion(buildPhysiQPayload(), r => r, null)), 'sin datos ampliados (payload de report), sin línea');
   });
   assert.match(IN.textoParaCompartir('## A\nB.', { p: 'X', d: '01/01/2026', r: 'rodilla', ed: 34, sx: 'Mujer' }, r => 'Rodilla'), /Edad: 34 años\nSexo: Mujer/);
   const p = IN.PLANTILLAS.breve.prompt({ p: 'X', r: 'rodilla', d: '01/01/2026', h: [], br: [], sq: [], pn: {} }, { conAudio: false, nombreRegion: r => r, ampliado: null });
-  assert.match(p, /Si consta el sexo, concuerda el género con él .*si no consta, redacta sin marcar el género/);
+  assert.match(p, /Si consta el sexo, concuerda el género con él.*si no consta, redacta sin marcar el género/);
 });
 
 test('prompt: sin datos personales deducidos, sin citar las notas del plan, derivación descartada sin mencionar', () => {
@@ -2740,6 +2755,20 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(ids('No se refieren tratamientos específicos previos.').includes('relleno'));
     assert.ok(ids('El conjunto de hallazgos es coherente con el escenario posquirúrgico.').includes('atribucion'));
   });
+  test('revisión: sin sexo registrado, el género no se marca', () => {
+    const sin = { ampliado: { sexo: '' } };
+    for (const f of ['Niega dolor al permanecer sentada.', 'Las preocupaciones de la paciente.', 'El paciente refiere dolor.'])
+      assert.ok(ids(f, sin).includes('genero'), f);
+    assert.ok(!ids('Su hermano fue operado de la columna. Paciente de 63 años.', sin).includes('genero'), 'un familiar operado o «Paciente de…» no marcan el género');
+    assert.ok(!ids('Niega dolor al permanecer sentado.').includes('genero'), 'con sexo registrado no se mira');
+  });
+  test('revisión: «se deriva… para descartar» y «Cuestionario de Roland-Morris» no son fallos', () => {
+    assert.ok(!ids('Se deriva al médico para valorar la circulación y descartar claudicación vascular.').includes('descarta'));
+    assert.ok(ids('La exploración permite descartar origen cervical.').includes('descarta'));
+    assert.ok(!ids('Se recomienda el Cuestionario de Discapacidad de Roland-Morris.').includes('fuentes'));
+    assert.ok(!ids('Se usará el cuestionario de Oswestry.').includes('fuentes'));
+    assert.ok(ids('Según el cuestionario inicial, refiere dolor.').includes('fuentes'));
+  });
   test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
     const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
     const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
@@ -2749,6 +2778,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-lucia-romero-breve.json', 'lucia-ficha-breve-sin-audio.txt', null, ['fuentes']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'discrepancia-separada', 'repetido']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'repetido', 'estructura']],
+      ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
