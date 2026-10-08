@@ -2840,6 +2840,19 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!ids('IMC de 25,2 (sobrepeso).', { datos: { an: { imc: 25.2 } } }).includes('imc'));
     assert.ok(!ids('IMC de 22 (normopeso).', { datos: { an: { imc: 22 } } }).includes('imc'));
   });
+  test('revisión: frecuencia inferida de una actividad («con regularidad», «de forma habitual»)', () => {
+    const fq = (texto, fuente = '') => RI.frecuenciaInferida(texto, fuente);
+    assert.equal(fq('Practica ciclismo de manera habitual.')?.actividad, 'el ciclismo');
+    assert.equal(fq('Acude al gimnasio con regularidad.')?.actividad, 'el gimnasio');
+    assert.equal(fq('Mantiene actividad física regular en bicicleta.')?.actividad, 'el ciclismo');
+    assert.equal(fq('Practica carrera de forma regular.', '· ¿hace a menudo alguna de estas cosas? (puede marcar varias) → Correr'), null, 'el formulario da la frecuencia (pregunta y respuesta en la misma línea)');
+    assert.equal(fq('Sale en bici con regularidad.', '¿Sales en bici? Sí, cada domingo.'), null, 'la consulta da la frecuencia');
+    assert.ok(fq('Acude al gimnasio con regularidad.', 'Trabajo con los brazos por encima de la cabeza a menudo. El sábado, haciendo pesas en el gimnasio, me dio'), 'una frecuencia de otra actividad no vale');
+    assert.equal(fq('La intensidad habitual del dolor es 6/10.'), null, 'sin actividad no cuenta');
+    assert.equal(fq('Practica ciclismo.'), null, 'sin frecuencia no cuenta');
+    assert.equal(fq('Dolor en condiciones habituales durante la carrera.'), null, '«condiciones habituales» no es una frecuencia');
+    assert.ok(ids('Practica ciclismo de manera habitual.').includes('frecuencia'));
+  });
   test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
     const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
     const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
@@ -2847,11 +2860,11 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-lucia-romero-audio.json', 'lucia-audio-1-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'repetido', 'fuentes', 'discrepancia-separada']],
       ['valoracion-lucia-romero-audio.json', 'lucia-audio-2-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'confirma', 'repetido', 'seguimiento-fuera']],
       ['valoracion-lucia-romero-breve.json', 'lucia-ficha-breve-sin-audio.txt', null, ['fuentes']],
-      ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'discrepancia-separada', 'repetido']],
-      ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'repetido', 'estructura']],
+      ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'frecuencia', 'discrepancia-separada', 'repetido']],
+      ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'frecuencia', 'repetido', 'estructura']],
       ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero']],
       ['valoracion-carmen-vidal-tobillo-breve.json', 'carmen-audio-1-ficha-breve.txt', 'carmen-audio-transcripcion.txt', ['relleno', 'fuentes', 'repetido']],
-      ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['plan-urgente', 'diagnostico', 'imc']],
+      ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['plan-urgente', 'frecuencia', 'diagnostico', 'imc']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -2903,6 +2916,8 @@ console.log('\nrevisión automática del informe con IA');
     assert.deepEqual(it.required, ['tipo', 'nivel', 'cita', 'evidencia', 'mensaje']);
     assert.deepEqual(it.properties.tipo.enum, Object.keys(VI.TIPOS_VERIFICACION));
     assert.equal(VI.ESQUEMA_VERIFICACION.type, 'object');
+    assert.deepEqual(VI.ESQUEMA_VERIFICACION.required, ['repaso', 'puntos'], 'el repaso por secciones va antes de los puntos');
+    assert.deepEqual(Object.keys(VI.ESQUEMA_VERIFICACION.properties), ['repaso', 'puntos']);
     assert.ok(JSON.stringify(VI.ESQUEMA_VERIFICACION).length < 10000, 'cabe en el límite de /verify');
     assert.ok(VI.MAX_TOKENS_VERIFICACION <= 4000, 'cabe en el límite de /verify');
   });
@@ -2914,6 +2929,7 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!VI.citaEnInforme('hormigueo en la pierna … Refiere dolor', inf), 'los trozos van en orden');
     assert.ok(!VI.citaEnInforme('', inf));
     assert.ok(!VI.citaEnInforme('dolor', inf), 'demasiado corta para comprobarla');
+    assert.ok(VI.citaEnInforme('Niega hormigueo en la pierna', 'y niega hormigueo en la pierna.'), 'sin distinguir mayúsculas (cita media frase con mayúscula inicial)');
   });
   test('verificación: validarPuntos descarta citas inventadas, tipos raros y repetidos; la omisión no lleva cita', () => {
     const inf = 'Practica ciclismo de manera habitual. Refiere dolor al peinarse.';
@@ -2930,6 +2946,12 @@ console.log('\nrevisión automática del informe con IA');
     assert.equal(puntos[1].nivel, 'medio', 'un nivel fuera del esquema pasa a medio');
     assert.deepEqual(descartados.map(d => d.motivo), ['cita', 'tipo', 'mensaje']);
     assert.deepEqual(VI.validarPuntos(null, inf).puntos, []);
+    assert.equal(VI.validarPuntos(null, inf).invalida, true, 'sin lista: inválida (se repite la llamada)');
+    assert.equal(VI.validarPuntos({ repaso: 'x', puntos: [] }, inf).invalida, false, 'lista vacía: válida');
+    const comoTexto = VI.validarPuntos({ puntos: JSON.stringify([{ tipo: 'no-respaldado', nivel: 'medio', cita: 'Practica ciclismo de manera habitual', evidencia: 'x', mensaje: 'y' }]) }, inf);
+    assert.equal(comoTexto.puntos.length, 1, '`puntos` como texto JSON se lee');
+    assert.equal(comoTexto.invalida, false);
+    assert.equal(VI.validarPuntos({ puntos: '[{"tipo": "contradice", "cita": "tipo "brazo muerto""}]' }, inf).invalida, true, 'texto con comillas sin escapar: inválida');
     const muchos = Array.from({ length: 20 }, (_, i) => ({ tipo: 'omision', nivel: 'medio', cita: '', evidencia: `dato ${i}`, mensaje: `falta ${i}` }));
     assert.equal(VI.validarPuntos({ puntos: muchos }, inf).puntos.length, VI.MAX_PUNTOS_VERIFICACION);
   });
@@ -2949,6 +2971,34 @@ console.log('\nrevisión automática del informe con IA');
     assert.deepEqual(r.fallados, ['otro']);
     assert.equal(r.redundantes.length, 1);
     assert.deepEqual(r.sinEtiquetar.map(p => p.cita), ['Algo nuevo']);
+    // Con los puntos de la capa 1 (no solo sus citas), una frase distinta de la misma familia ya está cubierta
+    const capa1 = [
+      { id: 'plan-urgente', mensaje: 'x', cita: 'El abordaje incluirá manipulación cervical.' },
+      { id: 'diagnostico', mensaje: 'Nombra diagnósticos que no están en los datos: «hemorragia».', cita: 'Otra frase.' },
+      { id: 'repetido', mensaje: 'La edad (34 años) aparece 3 veces; va una sola vez, en Factores Personales.', cita: 'Paciente de sexo femenino, 34 años de edad.' },
+      { id: 'discrepancia-separada', mensaje: 'Hormigueo: lo niega en una frase y lo describe en otra.', cita: 'Niega parestesias.' },
+    ];
+    const f = VI.compararConEsperados([
+      { tipo: 'plan', cita: 'Se incorporará biofeedback a 20 mmHg', mensaje: 'x', evidencia: '' },
+      { tipo: 'no-respaldado', cita: 'para descartar hemorragia subaracnoidea', mensaje: 'x', evidencia: '' },
+      { tipo: 'contradice', cita: 'paciente de 34 años', mensaje: 'x', evidencia: '' },
+      { tipo: 'no-respaldado', cita: 'Describe episodios ocasionales de parestesia en la mano', mensaje: 'x', evidencia: '' },
+      { tipo: 'no-respaldado', cita: 'Refiere dolor de 7/10 al correr', mensaje: 'x', evidencia: '' },
+    ], [], capa1);
+    assert.equal(f.redundantes.length, 4, JSON.stringify(f.sinEtiquetar));
+    assert.deepEqual(f.sinEtiquetar.map(p => p.cita), ['Refiere dolor de 7/10 al correr']);
+  });
+  test('verificación: el prompt acepta la discrepancia en una frase, la transcripción y la pauta como fuentes, y deja a la capa 1 lo suyo', () => {
+    const p = VI.promptVerificacion(datos, { informe: 'x' });
+    assert.match(p, /unidas por «aunque», «pero» o «si bien»/);
+    assert.match(p, /La transcripción es una fuente tan válida como los datos/);
+    assert.match(p, /aunque no figure en «Tests de confirmación realizados»/);
+    assert.match(p, /La pauta de PhysiQ es fuente del plan/);
+    assert.match(p, /términos con género cuando el sexo no consta/, 'el sexo registrado sí se juzga (el sujetador en un hombre)');
+    assert.match(p, /Con una derivación urgente: que el plan proponga tratamiento/, 'lo comprueba la capa 1');
+    assert.match(p, /«ocho semanas» por «dos meses»/);
+    assert.match(p, /«repaso»: antes de los puntos/);
+    assert.ok(!/«habitual», «regular», «con regularidad»\), actividad/.test(p), 'la frecuencia inferida es de la capa 1');
   });
   test('verificación: esperado-capa3.json cubre los informes reales y sus fragmentos están en cada informe', () => {
     const E = JSON.parse(readFileSync(join(dir, 'esperado-capa3.json'), 'utf8'));
