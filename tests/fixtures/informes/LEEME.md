@@ -15,6 +15,7 @@ intencionado, actualiza la tabla del test y esta.
 | `lucia-ficha-breve-sin-audio.txt` (ficha breve, modo breve) | `valoracion-lucia-romero-breve.json` | — | `fuentes` («variable de control») |
 | `pedro-audio-1-informe.txt` (narrativo, hombro posquirúrgico, 8/10, antes de #225) | `valoracion-pedro-flores-audio.json` | `pedro-audio-transcripcion.txt` | `atribucion`, `discrepancia-separada` (hormigueo), `repetido` (fecha de la cirugía) |
 | `andrea-audio-1-informe.txt` (narrativo, lumbar, sin sexo registrado, derivación médica del árbol, después de #228) | `valoracion-andrea-ruiz-lumbar.json` | `andrea-audio-transcripcion.txt` | `genero` («sentada», «la paciente» sin sexo registrado) |
+| `carmen-audio-1-ficha-breve.txt` (ficha breve con audio, tobillo posquirúrgico sin protocolo, modo breve, después de #230) | `valoracion-carmen-vidal-tobillo-breve.json` | `carmen-audio-transcripcion.txt` | `relleno` (los tests pendientes repetidos fuera de su frase), `fuentes` («En la conversación»), `repetido` (el cirujano, 3 veces) |
 | `pedro-audio-2-informe.txt` (el mismo caso, 2.ª grabación, después de #225) | `valoracion-pedro-flores-audio.json` | `pedro-audio-transcripcion.txt` | `inventado` (despertares copiados del ejemplo), `relleno` (tratamientos previos negados), `fuentes` («el recorrido de la exploración»), `atribucion` («escenario posquirúrgico»), `repetido` (fecha de la cirugía), `estructura` (Intervención Quirúrgica y Cribado de Seguridad en la primera sección) |
 
 Notas:
