@@ -10,7 +10,7 @@ import './dom-shim.mjs';
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
 const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, DOSIS_DERIVAR } = await import('../data.js');
-const { calcLRScore, parseLR, testPuntua } = await import('../phase4b.js');
+const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML } = await import('../phase4b.js');
 const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../app.js');
 const { state } = await import('../state.js');
@@ -34,6 +34,16 @@ test('all nd → Sin evaluar, totalLR=1', () => {
   assert.equal(r.colorClass, 'hyp-orange');
   assert.equal(r.totalLR,    1.0);
   assert.equal(r.evaluatedCount, 0);
+});
+
+test('etiquetaHipHTML: emoji aparte y salto tras «·»', () => {
+  const h = etiquetaHipHTML('🟢 Peso alto (LR× 5.9) · 3/3 hallazgos compatibles');
+  assert.ok(h.includes('<span class="hyp-etq-icono">🟢</span>'), h);
+  assert.ok(h.includes('<span class="hyp-etq-parte">Peso alto (LR× 5.9) ·</span> <span class="hyp-etq-parte">3/3 hallazgos compatibles</span>'), h);
+  assert.ok(etiquetaHipHTML('⚪ Sin LR aplicable').includes('<span class="hyp-etq-icono">⚪</span>'));
+  const sin = etiquetaHipHTML('Sin evaluar');
+  assert.ok(!sin.includes('hyp-etq-icono') && sin.includes('>Sin evaluar<'), sin);
+  assert.ok(etiquetaHipHTML('<b>').includes('&lt;b&gt;'));
 });
 
 test('one positive LR 3.7 → Peso moderado, hyp-orange', () => {
@@ -1709,7 +1719,7 @@ test('prompt: el bloque de datos no lleva puntuaciones, notas del plan vacías n
   for (const x of ['LR×', 'Peso moderado', 'hallazgos compatibles', 'Variable de control', 'Anclaje de hábito', 'árbol', 'Razonamiento clínico', 'Formulario previo'])
     assert.ok(!ctx.includes(x), `sin «${x}»`);
   assert.ok(ctx.includes('Ventana de recuperación: 24 h'), 'las notas con texto sí van');
-  assert.ok(ctx.includes('Recorrido de la exploración'));
+  assert.ok(ctx.includes('Hallazgos de la exploración'));
   assert.ok(!IN.contextoValoracion({ ...d, pn: {} }, r => r, null).includes('Notas del plan'), 'sin notas, sin bloque');
 });
 
@@ -1798,6 +1808,25 @@ test('prompt: discrepancias con otras palabras, lo referido no se borra, cada in
   const n = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
   assert.ok(n.includes('la cirugía y las restricciones del cirujano no van aquí'), 'Factores Ambientales');
   assert.ok(n.includes('[Solo si hay cirugía: fecha, protocolo del cirujano'), 'Intervención Quirúrgica');
+});
+
+test('prompt: los ejemplos no son del caso y solo muestran la forma; estructura en orden (undécima revisión)', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
+    assert.ok(p.includes('solo muestran la forma de escribir: nunca copies su contenido'));
+    // Los ejemplos que se copiaron tal cual (Lucía, Pedro) ya no están
+    assert.ok(!/despertares ocasionales|mano dormida|material de osteosíntesis/.test(p));
+    assert.ok(p.includes('ni cambies ninguna de sección o de orden'));
+    assert.ok(p.includes('No deduzcas la frecuencia ni la regularidad de una actividad'));
+    assert.ok(p.includes('basta con una frase que lo supedite al protocolo del cirujano'));
+    assert.ok(p.includes('«recorrido de la exploración»'), 'en la lista de fuentes que no se nombran');
+  }
+  const n = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
+  assert.ok(n.includes('Intervención Quirúrgica y Cribado de Seguridad van dentro de HISTORIA CLÍNICA Y EVOLUCIÓN'));
+  assert.ok(n.includes('Con cirugía, solo el diagnóstico que motivó la intervención'));
+  assert.ok(n.includes('los hallazgos de movilidad van solo en Movilidad'));
+  assert.ok(!/recorrido de la exploración y/.test(n), 'las instrucciones ya no usan el nombre del bloque');
 });
 
 test('formulario de hombro: «llevar la mano a la espalda» sin el sujetador para la IA', () => {
@@ -2686,6 +2715,29 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!ids('Operado el 15 de junio de 2026. Revisión en noviembre.', cq).includes('repetido'));
     assert.ok(!ids('El 15 de junio y el 15 de junio.').includes('repetido'), 'sin cirugía no se mira');
   });
+  test('revisión: síntoma copiado de un ejemplo (despertares) solo si no consta', () => {
+    const t = 'Dolor de 4/10, aunque también describe despertares ocasionales al girarse en la cama.';
+    const p = rev(t);
+    assert.ok(p[0].id === 'inventado' && p[0].nivel === 'alto', JSON.stringify(p));
+    assert.ok(!ids(t, { transcripcion: '¿Te despierta por la noche? Alguna noche sí.' }).includes('inventado'), 'lo dijo en consulta');
+    assert.ok(!ids(t, { datos: { fp: [{ s: 'General', q: '¿Le despierta el dolor por la noche?', a: 'A veces' }] } }).includes('inventado'), 'lo contestó en el formulario');
+  });
+  test('revisión: secciones fuera del orden de la plantilla (solo narrativo)', () => {
+    const bien = '## CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES\nx\n### Factores Personales\nx\n## HISTORIA CLÍNICA Y EVOLUCIÓN\n### Intervención Quirúrgica\nx\n### Cribado de Seguridad\nx';
+    assert.ok(!ids(bien).includes('estructura'));
+    const mal = '## CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES\n### Intervención Quirúrgica\nx\n### Cribado de Seguridad\nx\n## HISTORIA CLÍNICA Y EVOLUCIÓN\n### Presentación Inicial y Antecedentes\nx';
+    assert.match(rev(mal).find(x => x.id === 'estructura')?.mensaje || '', /«Intervención Quirúrgica», «Cribado de Seguridad»/);
+    assert.ok(!ids(mal, { plantilla: 'breve' }).includes('estructura'));
+    // El texto copiado (sin #) también vale: los títulos son líneas enteras
+    assert.ok(ids(mal.replace(/#+ /g, '')).includes('estructura'));
+  });
+  test('revisión: «cuestionario QuickDASH» no es una fuente; tratamientos negados y «escenario posquirúrgico»', () => {
+    assert.ok(!ids('Se utilizará el cuestionario QuickDASH para medir la evolución.').includes('fuentes'));
+    assert.ok(ids('Según el cuestionario inicial, refiere dolor.').includes('fuentes'));
+    assert.ok(ids('El recorrido de la exploración muestra restricción.').includes('fuentes'));
+    assert.ok(ids('No se refieren tratamientos específicos previos.').includes('relleno'));
+    assert.ok(ids('El conjunto de hallazgos es coherente con el escenario posquirúrgico.').includes('atribucion'));
+  });
   test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
     const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
     const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
@@ -2694,6 +2746,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-lucia-romero-audio.json', 'lucia-audio-2-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'confirma', 'repetido', 'seguimiento-fuera']],
       ['valoracion-lucia-romero-breve.json', 'lucia-ficha-breve-sin-audio.txt', null, ['fuentes']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'discrepancia-separada', 'repetido']],
+      ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'repetido', 'estructura']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
