@@ -6,6 +6,8 @@
 //
 //   ANTHROPIC_API_KEY=… node tools/verificar-informe.mjs [--modelo sonnet|haiku|ambos] [--informe <nombre.txt>] [--guardar]
 //   node tools/verificar-informe.mjs --respuestas      # sin API: puntúa las respuestas guardadas
+//   node tools/verificar-informe.mjs --clave-por-proxy # la cabecera x-api-key la añade el proxy
+//                                                      # del entorno (secreto de red), no la variable
 //
 // --guardar escribe cada respuesta en tests/fixtures/informes/capa3/<informe>.<modelo>.json;
 // --respuestas vuelve a puntuarlas sin gastar (útil tras cambiar la validación o las etiquetas).
@@ -58,7 +60,8 @@ const modelos = modeloArg === 'ambos' ? Object.keys(MODELOS) : [modeloArg];
 if (modelos.some(m => !MODELOS[m])) { console.error(`Modelo desconocido: ${modeloArg} (sonnet, haiku o ambos)`); process.exit(1); }
 const soloInforme = opcion('--informe', null);
 const clave = process.env.ANTHROPIC_API_KEY;
-if (!soloRespuestas && !clave) { console.error('Falta ANTHROPIC_API_KEY (o usa --respuestas para puntuar las guardadas).'); process.exit(1); }
+const porProxy = args.includes('--clave-por-proxy');
+if (!soloRespuestas && !clave && !porProxy) { console.error('Falta ANTHROPIC_API_KEY (o --clave-por-proxy si la añade el entorno, o --respuestas para puntuar las guardadas).'); process.exit(1); }
 
 const esperado = JSON.parse(readFileSync(join(DIR, 'esperado-capa3.json'), 'utf8'));
 const casos = esperado.informes.filter(c => !soloInforme || c.informe === soloInforme);
@@ -73,7 +76,7 @@ function contexto(c) {
 async function llamar(modelo, prompt) {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': clave, 'anthropic-version': '2023-06-01' },
+    headers: { 'Content-Type': 'application/json', ...(clave ? { 'x-api-key': clave } : {}), 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
       model: MODELOS[modelo],
       max_tokens: VI.MAX_TOKENS_VERIFICACION,
