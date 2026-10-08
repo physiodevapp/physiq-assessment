@@ -176,6 +176,9 @@
   .btn-reset { line-height: 16px; }
   .btn-reset.visible { display: inline-flex; align-items: center; gap: 0.3rem; }
   .btn-reset:hover { border-color: var(--accent); color: var(--accent); }
+  /* Icono vectorial de 16 px, como el del micrófono (antes era el carácter «↺»
+     a tamaño de texto y se veía diminuto al lado) */
+  .btn-reset-icono { flex-shrink: 0; }
 
   /* Progress bar */
   .progress-bar-wrap {
@@ -616,6 +619,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
+  /* Un botón que queda solo en la última fila ocupa toda la fila, en vez de
+     dejar un hueco (7 regiones: con 3 columnas sobra 1, con 2 también). Las
+     filas completas no cambian. */
+  .region-grid > .region-card:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
   .region-card {
     background: var(--surface2);
     border: 1px solid var(--border2);
@@ -977,6 +984,13 @@
     line-height: 1.6;
   }
   .exercise-box strong { color: var(--text); }
+
+  /* Cabecera de las tarjetas de hipótesis de la fase 5 (_cabeceraHipHTML) */
+  .hyp5-cab { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 1rem; }
+  .hyp5-punto { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 0.3rem; }
+  .hyp5-titulos { flex: 1; min-width: 0; }
+  .hyp5-nombre { font-weight: 600; font-size: 0.95rem; line-height: 1.35; }
+  .hyp5-etiqueta { margin-top: 4px; font-family: 'DM Mono', monospace; font-size: 0.7rem; line-height: 1.4; color: var(--text3); }
 
   /* Fase 5: pauta, pronóstico y tests sin hacer, plegados (app.js,
      _pautaPlegableHTML). La pauta deja a la vista su primera frase. */
@@ -1715,7 +1729,7 @@
     .logo-main { font-size: 1.2rem; }
     .logo-sub { font-size: 1.2rem; letter-spacing: -0.5px; }
     .phase-indicator { display: none; }
-    .btn-reset { padding: 5px 10px; font-size: 0.75rem; }
+    .btn-reset { padding: 5px 8px; font-size: 0.75rem; }
     .progress-bar-wrap { top: 0; z-index: 300; background: transparent; }
     .phase-nav {
       top: 55px; height: 40px; padding: 0 0.5rem;
@@ -1733,6 +1747,8 @@
     .card { padding: 1.1rem; }
     .card-title { font-size: 0.72rem; }
     .region-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .region-grid > .region-card:last-child:nth-child(3n+1) { grid-column: auto; }
+    .region-grid > .region-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
     /* A fixed 50% basis would force every row to 2 columns, splitting the
        4-item (fc/fr/spo2/edad) row across two lines — a min-basis instead
        lets it keep as many items together as fit, only wrapping what
@@ -2113,7 +2129,8 @@
   .session-version-txt{flex:1;min-width:0;line-height:1.5;}
   .session-version-txt .nw{white-space:nowrap;}
   .session-version-btn{flex-shrink:0;margin-left:auto;background:none;border:1px solid var(--accent);border-radius:6px;padding:2px 5px;color:var(--accent);font-family:inherit;font-size:inherit;cursor:pointer;}
-  .session-version-btn-nueva{border-color:var(--orange);color:var(--orange);}
+  /* Con versión nueva: relleno, como el «Actualizar» del aviso flotante (acción principal) */
+  .session-version-btn-nueva{background:var(--accent);border-color:var(--accent);color:var(--bg);}
   @media (max-width:360px){ .session-version{font-size:0.64rem;} }
   .in-hub .theme-btn{display:none;}
   body:not(.in-hub) .btn-translate{display:none;}

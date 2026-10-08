@@ -1954,6 +1954,21 @@ function _pautaPlegableHTML(dosis, fuente) {
   </details>`;
 }
 
+// Cabecera de una tarjeta de hipótesis de la fase 5, en dos filas: punto +
+// nombre (el punto alineado con la primera línea, el nombre con todo el ancho)
+// y, debajo, la etiqueta de peso alineada con el nombre. En una sola fila, con
+// nombres largos el nombre y la etiqueta se partían en columnas estrechas y el
+// punto quedaba a media altura.
+function _cabeceraHipHTML(color, sombra, nombreHTML, etiqueta, colorNombre) {
+  return `<div class="hyp5-cab">
+          <span class="hyp5-punto" style="background:${color};${sombra}"></span>
+          <div class="hyp5-titulos">
+            <div class="hyp5-nombre" style="color:${colorNombre};">${nombreHTML}</div>
+            <div class="hyp5-etiqueta">${etiqueta}</div>
+          </div>
+        </div>`;
+}
+
 // Texto de la pauta de una hipótesis «Derivar» marcada como tratada.
 function _textoTratada(cq) {
   if (!cq) return 'Diagnóstico médico ya confirmado y tratado: sin derivación por esta hipótesis.';
@@ -1966,11 +1981,7 @@ function _hipPosqResultadosHTML(hyp, cq) {
   const color = '#8b95a7';
   return `
       <div style="background:var(--surface2); border:1px solid ${color}33; border-radius:var(--radius-lg); padding:1.2rem; margin-bottom:1rem;">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:1rem;">
-          <span style="width:12px;height:12px;border-radius:50%;background:${color};flex-shrink:0;"></span>
-          <span style="font-weight:600; color:var(--text); font-size:0.95rem;">🏥 ${_escHTML(hyp.name)}</span>
-          <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--text3);">${ETIQUETA_HIP_POSQ}</span>
-        </div>
+        ${_cabeceraHipHTML(color, '', `🏥 ${_escHTML(hyp.name)}`, ETIQUETA_HIP_POSQ.replace(/^🏥\s*/, ''), 'var(--text)')}
         <div style="margin-bottom:1rem;">
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">PROM Recomendado</div>
           <span class="prom-badge">${hyp.prom}</span>
@@ -2148,11 +2159,7 @@ function buildResults() {
 
       hypHtml += `
       <div style="background:var(--surface2); border:1px solid ${dotColor}33; border-radius:var(--radius-lg); padding:1.2rem; margin-bottom:1rem;">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:1rem;">
-          <span style="width:12px;height:12px;border-radius:50%;background:${dotColor};flex-shrink:0;box-shadow:0 0 8px ${dotColor}66;"></span>
-          <span style="font-weight:600; color:${dotColor}; font-size:0.95rem;">${rankEmoji} ${hyp.name}</span>
-          <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--text3);">${scoreInfo?.label || 'Sin evaluar'}</span>
-        </div>
+        ${_cabeceraHipHTML(dotColor, `box-shadow:0 0 8px ${dotColor}66;`, `${rankEmoji} ${hyp.name}`, scoreInfo?.label || 'Sin evaluar', dotColor)}
         ${casillaTratadaHTML(id)}
         <div style="margin-bottom:1rem;">
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px;">Tests Realizados</div>
@@ -2369,7 +2376,7 @@ function buildPhaseSheetList() {
 
 // ─── CONFIRM BANNER (reemplaza confirm() nativo) ─────────────
 // opts.cancelLabel cambia el texto del botón de cerrar («Cancelar» por
-// defecto). Devuelve una función que cierra el diálogo sin confirmar, para
+// defecto); opts.onCancel se llama al cancelar (botón, velo o Escape). Devuelve una función que cierra el diálogo sin confirmar, para
 // quien necesite cerrarlo desde fuera (p. ej. si lo que se iba a confirmar ya
 // no tiene sentido); no hace nada si ya está cerrado.
 function showConfirmBanner(title, text, actionLabel, onConfirm, opts = {}) {
@@ -2390,11 +2397,27 @@ function showConfirmBanner(title, text, actionLabel, onConfirm, opts = {}) {
   document.body.appendChild(overlay);
   lockBodyScroll();
   window.parent.postMessage({ type: 'PHYSIQ_WIDGET_HIDE' }, '*');
+  // Tocar el velo o pulsar Escape = el botón de cerrar: nunca la acción. Solo
+  // cuenta un toque que empieza y acaba en el velo (no seleccionar texto del
+  // recuadro y soltar fuera). Se quita el listener de teclado al cerrar, también
+  // si otro código retira el diálogo (_closeAllOverlays, otro diálogo encima).
+  const alTeclado = e => {
+    if (!overlay.isConnected) { document.removeEventListener('keydown', alTeclado); return; }
+    if (e.key === 'Escape') { e.preventDefault(); cancelar(); }
+  };
   const dismiss = () => {
+    document.removeEventListener('keydown', alTeclado);
     if (!overlay.isConnected) return;
     overlay.remove(); unlockBodyScroll(); window.parent.postMessage({ type: 'PHYSIQ_WIDGET_SHOW' }, '*');
   };
-  document.getElementById('confirmCancel').onclick = dismiss;
+  // Cancelar a mano (botón, velo o Escape) llama a opts.onCancel; el dismiss()
+  // devuelto, para cerrarlo desde el código, no.
+  const cancelar = () => { if (!overlay.isConnected) return; dismiss(); opts.onCancel?.(); };
+  let empiezaEnVelo = false;
+  overlay.addEventListener('pointerdown', e => { empiezaEnVelo = e.target === overlay; });
+  overlay.addEventListener('click', e => { if (e.target === overlay && empiezaEnVelo) cancelar(); });
+  document.addEventListener('keydown', alTeclado);
+  document.getElementById('confirmCancel').onclick = cancelar;
   document.getElementById('confirmAction').onclick = () => { dismiss(); onConfirm(); };
   return dismiss;
 }
@@ -2478,29 +2501,10 @@ function _showSessionState(st) {
       panel.classList.toggle('has-session', !!name);
       saveSession();
     });
-    panel.querySelector('#sessionPanelClear').onclick = () => _showSessionState('delete');
+    panel.querySelector('#sessionPanelClear').onclick = promptClearSession;
     _engancharVersionPanel(panel);
     setTimeout(() => input.focus(), 60);
 
-  } else if (st === 'delete') {
-    panel.innerHTML = `
-      <div class="session-panel-handle"></div>
-      <div class="session-panel-title">${label || 'Sin sesión activa'}</div>
-      <div class="confirm-box-text" style="margin:12px 0 0;">¿Borrar y empezar de nuevo?${_avisoAudioSesion()}</div>
-      <div class="confirm-box-btns" style="margin-top:1rem;">
-        <button class="confirm-btn-cancel" id="confirmCancel">Cancelar</button>
-        <button class="confirm-btn-ok" id="confirmAction">Borrar sesión</button>
-      </div>`;
-    panel.querySelector('#confirmCancel').onclick = () => _showSessionState('edit');
-    panel.querySelector('#confirmAction').onclick = () => {
-      closeSessionPanel();
-      _descartarAudioSesion();
-      _sessionGen++; _sessionCleared = true;
-      state.patient = '';
-      updateSessionChip(null);
-      _softResetApp(); goToPhase(1);
-      clearSession().then(() => { _sessionCh.postMessage({ type: 'SESSION_CLEAR' }); });
-    };
   }
 }
 
@@ -2583,8 +2587,9 @@ const _versionPendiente = () => !!_versionNueva && _shaRecargado() === _versionN
 
 function _versionPanelHTML() {
   // Una línea: versión a la izquierda y un solo botón a la derecha, que es
-  // «Comprobar» o, con una versión más nueva publicada, «Actualizar» en naranja
-  // (el aviso flotante ya lo explica, así que no se repite en texto).
+  // «Comprobar» (contorno) o, con una versión más nueva publicada, «Actualizar»
+  // en azul relleno, como el del aviso flotante (que ya lo explica, así que no
+  // se repite en texto).
   // Versión y fecha no se parten por dentro: si no caben, la fecha baja entera.
   const [sha, fecha] = textoVersion().split(' · ');
   const actual = `<span class="nw">Versión ${sha}</span>${fecha ? ` · <span class="nw">${fecha}</span>` : ''}`;
@@ -2795,14 +2800,30 @@ function updateSessionChip(session) {
   _updateSessionPanelTitle();
 }
 
+// «Borrar sesión»: el mismo diálogo centrado que el resto de confirmaciones
+// (iconos, velo, Escape). Se cierra el panel de sesión mientras tanto; si se
+// cancela, se vuelve a abrir, que es donde estaba quien pulsó la papelera.
 function promptClearSession() {
-  _showSessionState('delete');
-  const overlay = document.getElementById('sessionPanelOverlay');
-  if (overlay && !overlay.classList.contains('open')) {
-    overlay.classList.add('open');
-    lockBodyScroll();
-    window.parent.postMessage({ type: 'PHYSIQ_WIDGET_HIDE' }, '*');
-  }
+  const panelAbierto = document.getElementById('sessionPanelOverlay')?.classList.contains('open');
+  closeSessionPanel();
+  const nombre = (state.patient || '').trim();
+  showConfirmBanner('Borrar sesión',
+    `Se borrarán todos los datos${nombre ? ` de «${_escHTML(nombre)}»` : ' de la valoración'} y la app volverá al inicio.${_avisoAudioSesion()}`,
+    'Borrar sesión', _borrarSesion,
+    { onCancel: () => { if (panelAbierto) toggleSessionPanel(); } });
+}
+
+function _borrarSesion() {
+  _descartarAudioSesion();
+  _sessionGen++; _sessionCleared = true;
+  state.patient = '';
+  // El panel sigue en el DOM con el nombre escrito, y saveSession() vuelca ese
+  // campo al estado: hay que vaciarlo o el nombre volvería.
+  const campo = document.getElementById('patientName');
+  if (campo) campo.value = '';
+  updateSessionChip(null);
+  _softResetApp(); goToPhase(1);
+  clearSession().then(() => { _sessionCh.postMessage({ type: 'SESSION_CLEAR' }); });
 }
 
 // ─── PHYSIQ EXPORT ───────────────────────────────────────────

@@ -1,6 +1,7 @@
 'use strict';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import './dom-shim.mjs';
@@ -1522,6 +1523,43 @@ test('conexión cortada al generar: pantalla apagada / segundo plano, no un erro
   assert.equal(IN.errorConexion(null), null);
 });
 
+test('fase 5: cabecera de hipótesis en dos filas (nombre; etiqueta debajo) y un solo 🏥 en el postoperatorio', () => {
+  const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  assert.equal((app.match(/_cabeceraHipHTML\(/g) || []).length, 3, 'definición + tarjeta normal + postoperatorio');
+  assert.match(app, /_cabeceraHipHTML\(color, '', `🏥 \$\{_escHTML\(hyp\.name\)\}`, ETIQUETA_HIP_POSQ\.replace\(\/\^🏥\\s\*\/, ''\)/);
+  const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
+  assert.match(css, /\.hyp5-cab \{ display: flex; align-items: flex-start;/, 'el punto se alinea con la primera línea');
+});
+
+test('borrar sesión usa el diálogo común y, si se cancela, vuelve al panel de sesión', () => {
+  const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  const f = app.slice(app.indexOf('function promptClearSession'), app.indexOf('function _borrarSesion'));
+  assert.match(f, /closeSessionPanel\(\);[\s\S]*showConfirmBanner\('Borrar sesión',[\s\S]*'Borrar sesión', _borrarSesion,/);
+  assert.match(f, /onCancel: \(\) => \{ if \(panelAbierto\) toggleSessionPanel\(\); \}/);
+  assert.match(f, /_escHTML\(nombre\)/, 'el nombre del paciente se escapa');
+  assert.doesNotMatch(app, /st === 'delete'/, 'el panel ya no pinta su propia confirmación');
+  assert.match(app, /#sessionPanelClear'\)\.onclick = promptClearSession;/);
+  // El campo del nombre sigue en el DOM: se vacía, o saveSession() lo devolvería al estado
+  const borrar = app.slice(app.indexOf('function _borrarSesion'), app.indexOf('function _borrarSesion') + 800);
+  assert.match(borrar, /state\.patient = '';[\s\S]*getElementById\('patientName'\)[\s\S]*campo\.value = '';/);
+});
+
+test('diálogos: el velo y Escape cierran como el botón de cerrar, nunca hacen la acción', () => {
+  const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  const f = app.slice(app.indexOf('function showConfirmBanner'), app.indexOf('// ─── SESSION PANEL'));
+  // Velo: solo un toque que empieza y acaba en el velo, y llama a dismiss (no a onConfirm)
+  assert.match(f, /pointerdown', e => \{ empiezaEnVelo = e\.target === overlay; \}/);
+  assert.match(f, /click', e => \{ if \(e\.target === overlay && empiezaEnVelo\) cancelar\(\); \}/);
+  // Escape cierra, y el listener se quita al cerrar o si otro código retira el diálogo
+  assert.match(f, /e\.key === 'Escape'\) \{ e\.preventDefault\(\); cancelar\(\); \}/);
+  // Cancelar a mano llama a opts.onCancel; el dismiss() devuelto (cierre desde el código) no
+  assert.match(f, /const cancelar = \(\) => \{ if \(!overlay\.isConnected\) return; dismiss\(\); opts\.onCancel\?\.\(\); \};/);
+  assert.match(f, /getElementById\('confirmCancel'\)\.onclick = cancelar;/);
+  assert.match(f, /const dismiss = \(\) => \{\s*document\.removeEventListener\('keydown', alTeclado\);/);
+  assert.match(f, /if \(!overlay\.isConnected\) \{ document\.removeEventListener\('keydown', alTeclado\); return; \}/);
+  assert.equal((f.match(/onConfirm\(\)/g) || []).length, 1, 'solo el botón de acción confirma');
+});
+
 test('cancelar la generación pide confirmación y el diálogo se cierra solo si la generación acaba', () => {
   const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
   const cancelar = src.slice(src.indexOf('function iaCancelar'), src.indexOf('function cancelarGeneracion'));
@@ -1532,7 +1570,7 @@ test('cancelar la generación pide confirmación y el diálogo se cierra solo si
   // showConfirmBanner: botón de cerrar configurable y cierre desde fuera idempotente
   const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
   assert.match(app, /\$\{opts\.cancelLabel \|\| 'Cancelar'\}/);
-  assert.match(app, /if \(!overlay\.isConnected\) return;[\s\S]{0,300}return dismiss;/);
+  assert.match(app, /if \(!overlay\.isConnected\) return;[\s\S]{0,1500}return dismiss;/);
 });
 
 test('transcripción sin voz: silencio o texto de relleno de Whisper', () => {
@@ -1562,6 +1600,15 @@ test('al generar: una transcripción sin voz corta antes de redactar y conserva 
   assert.doesNotMatch(captura, /quitarAudio/);
   // Sale por el catch sin guardar informe; el finally aborta el stream
   assert.match(gen, /finally \{[\s\S]*ctrl\.abort\(\)/);
+});
+
+test('grabadora: en el móvil se pausa al pasar a segundo plano y avisa al volver', () => {
+  const src = readFileSync(new URL('../grabadora.js', import.meta.url), 'utf8');
+  const vis = src.slice(src.indexOf("addEventListener('visibilitychange'"), src.indexOf("addEventListener('beforeunload'"));
+  // Oculta: pausa solo grabando, sin pausa previa y sin ratón (móvil); en el ordenador no
+  assert.match(vis, /if \(_grab && !_grab\.pausado && !conRaton\(\)\) \{ pausar\(\); _grab\.pausaAuto = true; \}/);
+  // Visible: aviso solo si la pausó la app y sigue en pausa
+  assert.match(vis, /if \(_grab\?\.pausaAuto\) \{[\s\S]*if \(_grab\.pausado\) showToast\('Grabación en pausa: la app pasó a segundo plano/);
 });
 
 const G_SILENCIO = await import('../grabadora.js');
@@ -1739,6 +1786,29 @@ test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de
   });
 });
 
+test('prompt: discrepancias con otras palabras, lo referido no se borra, cada indicación a quien la dio (décima revisión)', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
+    assert.ok(p.includes('También es una discrepancia cuando lo cuenta con otras palabras'));
+    assert.ok(p.includes('no borra lo que refiere el paciente'));
+    assert.ok(p.includes('Atribuye cada indicación a quien la dio'));
+    assert.ok(p.includes('sin usarlos para interpretar los hallazgos o los tests'));
+    assert.ok(p.includes('No añadas coordinación, comunicación ni reevaluaciones con otros profesionales'));
+    assert.ok(p.includes('La cirugía y sus restricciones no son factores ambientales'));
+  }
+  const n = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
+  assert.ok(n.includes('la cirugía y las restricciones del cirujano no van aquí'), 'Factores Ambientales');
+  assert.ok(n.includes('[Solo si hay cirugía: fecha, protocolo del cirujano'), 'Intervención Quirúrgica');
+});
+
+test('formulario de hombro: «llevar la mano a la espalda» sin el sujetador para la IA', () => {
+  withState({ region: 'hombro', formularioPrevio: { comun: {}, regiones: { hombro: { provoca: { espalda: 'Sí' } } } } }, () => {
+    assert.ok(FM.resumenFormularioIA().some(x => x.a === 'Llevar la mano a la espalda: Sí'));
+    assert.ok(FM.resumenFormularioPrevio().some(x => x.a.includes('(sujetador, bolsillo)')), 'el papel no cambia');
+  });
+});
+
 test('prompt: «No sé» nunca como negación, sin negativos inventados, cada dato en su sección', () => {
   const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
   for (const pl of Object.values(IN.PLANTILLAS)) {
@@ -1852,7 +1922,9 @@ test('prompt: reglas de la revisión con informes reales, en las dos plantillas'
       // El ejemplo antiguo («niega inicialmente…, aunque en consulta refiere…») se copiaba tal cual, fuente incluida
       assert.ok(!/niega inicialmente|en consulta refiere/.test(p), `${nombre}: el ejemplo no nombra la fuente`);
       assert.match(p, /no es una discrepancia: recógelo tal cual. No escribas que algo «no se menciona», «no se confirma»/, `${nombre}: lo que solo consta en una fuente no es discrepancia`);
-      assert.match(p, /otra zona u otro lado.*UNA vez como dato referido.*No le añadas plan, seguimiento, prevención/, `${nombre}: el otro lado, sin plan inventado`);
+      assert.match(p, /otra zona u otro lado.*UNA vez como algo que refiere el paciente.*nunca en Pruebas Clínicas.*No le añadas plan, seguimiento, prevención/, `${nombre}: el otro lado, referido y sin plan inventado`);
+      assert.match(p, /no escribas que la «confirman»/, `${nombre}: los tests apoyan, no confirman`);
+      assert.match(p, /El pronóstico y «Cuándo reconsiderar o derivar» son información para el fisioterapeuta/, `${nombre}: el pronóstico no se convierte en plan`);
     }
   }
   // Códigos CIF: limitados en la ficha (tiene sección propia); el narrativo, sin códigos
@@ -1955,8 +2027,8 @@ test('grabadora: un reinicio llegado de otra pestaña no descarta el audio de es
   assert.ok(!/descartarTodo|_descartarAudioSesion/.test(cuerpo('_softResetApp')), '_softResetApp no puede tocar el audio (también corre por SESSION_RESET/SESSION_CLEAR remotos)');
   assert.ok(/_descartarAudioSesion\(\)/.test(cuerpo('resetApp')), 'reiniciar valoración (confirmado aquí) sí lo descarta');
   assert.ok(/_avisoAudioSesion\(\)/.test(cuerpo('resetApp')), 'y lo avisa en la confirmación');
-  const borrar = src.slice(src.indexOf("} else if (st === 'delete') {"), src.indexOf("} else if (st === 'delete') {") + 1500);
-  assert.ok(/_avisoAudioSesion\(\)/.test(borrar) && /_descartarAudioSesion\(\)/.test(borrar), 'borrar sesión: avisa y descarta');
+  assert.ok(/_avisoAudioSesion\(\)/.test(cuerpo('promptClearSession')), 'borrar sesión: avisa en la confirmación');
+  assert.ok(/_descartarAudioSesion\(\)/.test(cuerpo('_borrarSesion')), 'y descarta al confirmar');
 });
 
 // ── Licencia: motivo legible cuando /validate no responde (lib/licencia-ia.js) ─
@@ -2337,6 +2409,17 @@ console.log('\npaciente posquirúrgico');
     });
   });
 
+  test('informe con IA: el recorrido avisa cuando lo que «orienta a» ya está tratado', () => {
+    withState({ ...POSQ({ intervencion: 'Clavo', protocolo: 'Verbal' }), region: 'hombro', activeHypotheses: ['h11'], testResults: {},
+      hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: { h_step2b: 'trauma' } }, () => {
+      const a = IA.construirAmpliado();
+      assert.equal(a.arbol.find(x => /Traumatismo previo/.test(x.respuesta))?.tratada, true);
+      assert.match(IN.bloquesAmpliados(a).join('\n'), /orienta a: luxación bloqueada o fractura; Rx \(ya diagnosticada y tratada: es un antecedente\)/);
+      state.derivacionResuelta = {};
+      assert.ok(!IA.construirAmpliado().arbol.some(x => x.tratada), 'sin marcar, sin aviso');
+    });
+  });
+
   test('huella del informe con IA: las semanas desde la cirugía no la cambian; la intervención sí', () => {
     const base = { p: 'X', d: '01/01/2026', cq: { iv: 'PTR', fe: '', se: 4, pr: 'Escrito', re: '', co: [] } };
     assert.equal(IN.huellaPayload(base), IN.huellaPayload({ ...base, d: '15/01/2026', cq: { ...base.cq, se: 6 } }));
@@ -2552,6 +2635,18 @@ console.log('\nrevisión automática del informe con IA');
       'Sin dolor nocturno inicialmente referido.'])
       assert.ok(ids(f).includes('fuentes'), f);
     assert.ok(!ids('Acude a consulta por dolor en el hombro derecho.').includes('fuentes'), '«acude a consulta» es correcto');
+    assert.ok(ids('La exploración confirma la hipótesis de lesión labral.').includes('confirma'));
+    for (const f of ['Hipótesis de trabajo, pendiente de confirmar.', 'Restricciones a confirmar con el cirujano.',
+      'La exploración confirma dolor anterior durante la sentadilla.', 'Los tests no confirman la hipótesis.'])
+      assert.ok(!ids(f).includes('confirma'), f);
+  });
+  test('revisión: edad repetida y criterio de reconsiderar fuera de Seguimiento', () => {
+    assert.ok(ids('Paciente de 52 años. ### Factores Personales Hombre de 52 años.').includes('repetido'));
+    assert.ok(!ids(limpio).includes('repetido'));
+    const fuera = '## CONCLUSIONES\nEjercicio. Si a las 12 semanas no mejora, reconsiderar el diagnóstico.\n## SEGUIMIENTO FUNCIONAL\nKujala.';
+    assert.ok(ids(fuera).includes('seguimiento-fuera'));
+    assert.ok(!ids('## CONCLUSIONES\nEjercicio.\n## SEGUIMIENTO FUNCIONAL\nSi no mejora en 12 semanas, reconsiderar.').includes('seguimiento-fuera'));
+    assert.ok(!ids(fuera, { plantilla: 'breve' }).includes('seguimiento-fuera'), 'la ficha no tiene Seguimiento');
     assert.ok(ids('Hallazgos propios de la fase de consolidación.').includes('fisiopatologia'));
     assert.ok(ids('Secuelas esperables de la cirugía.').includes('fisiopatologia'));
   });
@@ -2573,6 +2668,42 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(ids(limpio, { datos: { md: 'breve' } }).includes('breve'));
     assert.ok(!ids(limpio + ' Valoración breve; queda pendiente el cribado.', { datos: { md: 'breve' } }).includes('breve'));
     assert.ok(ids(limpio + ' palabra'.repeat(950), { plantilla: 'breve' }).includes('longitud'));
+  });
+  test('revisión: hallazgos atribuidos a la evolución esperable', () => {
+    assert.ok(ids('La rigidez es coherente con la evolución esperable en el período posquirúrgico.').includes('atribucion'));
+    assert.ok(ids('Restricción compatible con el período posquirúrgico.').includes('atribucion'));
+    assert.ok(!ids('Restricción global de la movilidad pasiva, compatible con el contexto traumático previo.').includes('atribucion'), 'el trauma viene del recorrido');
+  });
+  test('revisión: discrepancia escrita en dos frases (y no cuando va en una)', () => {
+    const p = rev('Describe episodios ocasionales de parestesia en la mano. Niega crujidos, bloqueos o parestesias intermitentes.');
+    assert.match(p.find(x => x.id === 'discrepancia-separada')?.mensaje || '', /^Hormigueo/);
+    assert.ok(ids('No refiere dolor en sedestación prolongada. La sedestación prolongada aumenta el dolor.').includes('discrepancia-separada'));
+    assert.ok(!ids('Refiere que el dolor no le despierta por la noche, aunque también describe despertares ocasionales al girarse.').includes('discrepancia-separada'), 'las dos versiones juntas es lo correcto');
+    assert.ok(!ids('No refiere hormigueo, aunque alguna noche nota la mano dormida.').includes('discrepancia-separada'));
+    assert.ok(!ids('Dolor de 6/10 por la noche. Realiza la sentadilla sin dolor.').includes('discrepancia-separada'), '«sentadilla» no es sedestación');
+  });
+  test('revisión: fecha de la cirugía repetida', () => {
+    const cq = { datos: { cq: { fe: '15/06/2026' } } };
+    assert.ok(ids('Operado el 15 de junio de 2026. ### Intervención Quirúrgica Se realizó el 15/06/2026.', cq).includes('repetido'));
+    assert.ok(!ids('Operado el 15 de junio de 2026. Revisión en noviembre.', cq).includes('repetido'));
+    assert.ok(!ids('El 15 de junio y el 15 de junio.').includes('repetido'), 'sin cirugía no se mira');
+  });
+  test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
+    const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
+    const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
+    const casos = [
+      ['valoracion-lucia-romero-audio.json', 'lucia-audio-1-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'repetido', 'fuentes', 'discrepancia-separada']],
+      ['valoracion-lucia-romero-audio.json', 'lucia-audio-2-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'confirma', 'repetido', 'seguimiento-fuera']],
+      ['valoracion-lucia-romero-breve.json', 'lucia-ficha-breve-sin-audio.txt', null, ['fuentes']],
+      ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'discrepancia-separada', 'repetido']],
+    ];
+    for (const [json, informe, trans, esperados] of casos) {
+      const args = [herramienta, join(dir, json), join(dir, informe)];
+      if (trans) args.push('--transcripcion', join(dir, trans));
+      const salida = execFileSync(process.execPath, args, { encoding: 'utf8' });
+      const ids = [...salida.matchAll(/^\[(?:ALTO|MEDIO)\] ([\w-]+):/gm)].map(m => m[1]);
+      assert.deepEqual(ids, esperados, `${informe}\n${salida}`);
+    }
   });
   test('revisión: cabecera y pie compartidos se quitan; cita la frase', () => {
     const t = RI.quitarCabeceraYPie('INFORME DE FISIOTERAPIA\nPaciente: Pedro Flores\nEdad: 52 años\nFecha: 07/10/2026\n\nTexto.\n\n—\nInforme generado con PhysiQ-Assessment el 07/10/2026 (redacción asistida por IA).');
