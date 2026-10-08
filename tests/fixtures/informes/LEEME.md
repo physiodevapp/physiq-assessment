@@ -46,8 +46,11 @@ extracción (tests con «o», indicaciones y quién las dio, afirmaciones sin
 respaldo literal, siglas, uso del pronóstico, origen de cada elemento del plan)
 y los puntos se derivan en código. Las repeticiones, omisiones, códigos CIF,
 componentes de un criterio y cifras reconciliadas quedan fuera por diseño: 11
-de los 29 fallos de `esperado-capa3.json`. La ronda 3 está sin medir: la cuenta
-se quedó sin saldo tras dos llamadas, y las dos se truncaron en 4000 tokens.
+de los 29 fallos de `esperado-capa3.json`. Ronda 3 (Sonnet ×3, `temperature: 0`, respuestas en
+`capa3/`): detecta de media 9,3/29 (32 %), 3/4 altos en las tres pasadas y 3,4
+puntos sin etiquetar por informe (4,5 en la peor). No cumple el criterio
+acordado (≥ 50 %, 3/4 altos, ≤ 1 sin etiquetar por informe): la capa 3 queda
+aparcada.
 
 Cuando una regla de la capa 1 pasa a cubrir un fallo, ese fallo sale de
 `esperado-capa3.json` (la lista es lo que la capa 1 no ve): así salieron las

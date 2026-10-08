@@ -2952,11 +2952,12 @@ console.log('\nrevisión automática del informe con IA');
       plan: [
         { cita: 'programa de ejercicio bilateral', elemento: 'otra zona o lado', origen: 'no consta', evidencia: 'no consta' },
         { cita: 'ejercicio de cuádriceps', elemento: 'técnica', origen: 'pauta de PhysiQ', evidencia: 'x' },
+        { cita: 'el mismo programa para la otra rodilla', elemento: 'otra zona o lado', origen: 'fisioterapeuta' },
       ],
     });
     assert.deepEqual(p.map(x => `${x.tipo}:${x.nivel}`), [
       'lectura:alto', 'atribucion:alto', 'atribucion:alto', 'atribucion:medio',
-      'no-respaldado:medio', 'lectura:alto', 'lectura:medio', 'plan:alto',
+      'no-respaldado:medio', 'lectura:alto', 'lectura:medio', 'plan:alto', 'plan:alto',
     ]);
     assert.match(p[1].mensaje, /la dio el fisioterapeuta y el informe la atribuye al médico/);
   });

@@ -1,0 +1,273 @@
+{
+  "result": {
+    "afirmaciones": [
+      {
+        "cita": "jornadas laborales prolongadas frente al ordenador",
+        "clase": "actividad",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "Acude al gimnasio con regularidad",
+        "clase": "actividad",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "catastrofización ante la posibilidad de provocar daño al girar el cuello",
+        "clase": "interpretación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "componente emocional significativo relacionado con ansiedad",
+        "clase": "interpretación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "mala calidad del sueño",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "cefalea unilateral del mismo lado que el paciente describe como opresiva, similar a una cinta apretada",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "el sábado previo a la consulta experimentó de manera súbita un dolor de cabeza de intensidad extrema",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "mientras realizaba ejercicio con pesas en el gimnasio",
+        "clase": "actividad",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "describiéndolo como el peor dolor de cabeza de su vida",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "Desde ese episodio, el dolor no ha cedido por completo",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "La rotación presenta una restricción precoz y es asimétrica respecto al lado contralateral",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "limitación funcional al mantener posturas prolongadas en sedestación durante la jornada laboral",
+        "clase": "participación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "empeoramiento progresivo del dolor cervical y la cefalea a medida que avanza el día",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "El cuadro interfiere significativamente con su desempeño laboral",
+        "clase": "participación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "La práctica de ejercicio físico en el gimnasio también se ha visto afectada",
+        "clase": "participación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "como hemorragia subaracnoidea u otras causas graves de cefalea secundaria",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "La naturaleza crónica del cuadro, el patrón de empeoramiento progresivo",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "configuran un cuadro complejo que requerirá un abordaje multimodal",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "el 30 por ciento de los pacientes con cefalea cervicogénica cumplen también criterios diagnósticos de migraña",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "La remisión de la cefalea tras el tratamiento del cuello constituirá un apoyo diagnóstico adicional",
+        "clase": "interpretación",
+        "consta_en": "no consta"
+      }
+    ],
+    "indicaciones": [
+      {
+        "cita": "derivación urgente a los servicios de urgencias hospitalarias en el día de hoy",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Quiero que vayas a urgencias al salir de aquí",
+        "atribuida_en_informe": "fisioterapeuta",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "El tratamiento de fisioterapia quedará suspendido hasta que se complete la valoración médica",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Cuando te hayan visto, si todo está bien, retomamos",
+        "atribuida_en_informe": "fisioterapeuta",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "pautas de higiene postural y gestión de cargas durante la jornada laboral frente al ordenador",
+        "quien_la_dio": "no consta",
+        "evidencia": "no consta",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      }
+    ],
+    "siglas": [
+      {
+        "sigla": "APTA",
+        "cita": "las recomendaciones de la guía de práctica clínica de la APTA",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      },
+      {
+        "sigla": "IFOMPT",
+        "cita": "siguiendo el protocolo del marco IFOMPT",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      },
+      {
+        "sigla": "NDI",
+        "cita": "Neck Disability Index",
+        "desarrollo_en_informe": "Neck Disability Index",
+        "desarrollo_en_datos": "Neck Disability Index"
+      },
+      {
+        "sigla": "MCID",
+        "cita": "NDI (MCID: 7.5–18 puntos)",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      },
+      {
+        "sigla": "PSFS",
+        "cita": "NDI (MCID: 7.5–18 puntos) / PSFS",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      }
+    ],
+    "pronostico": [
+      {
+        "cita": "Si tras la intervención de fisioterapia no se obtiene mejoría en la cefalea",
+        "uso": "seguimiento"
+      },
+      {
+        "cita": "será necesario reconsiderar otras formas de cefalea, incluyendo la valoración de la articulación temporomandibular",
+        "uso": "seguimiento"
+      },
+      {
+        "cita": "el 30 por ciento de los pacientes con cefalea cervicogénica cumplen también criterios diagnósticos de migraña",
+        "uso": "seguimiento"
+      }
+    ],
+    "plan": [
+      {
+        "cita": "derivación urgente a los servicios de urgencias hospitalarias en el día de hoy",
+        "elemento": "plazo",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "manipulación o movilización cervical y cervicotorácica",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "programa de ejercicio terapéutico que integre estiramiento, fortalecimiento y trabajo de resistencia",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "musculatura cervical y de la cintura escapular",
+        "elemento": "otra zona o lado",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "entrenamiento específico de flexión craneocervical con biofeedback de presión",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "comenzando con el dispositivo inflado a 20 mmHg",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "progresando en escalones de 2 mmHg (desde 22 hasta 30 mmHg)",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "con apoyos repetidos de 5 a 10 segundos en cada nivel",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "evitando la activación excesiva del esternocleidomastoideo y los escalenos",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "así como la retracción cefálica",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "El entrenamiento se iniciará en el nivel inferior al del fallo identificado",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "Antes de aplicar manipulación cervical, se realizará el cribado vascular siguiendo el protocolo del marco IFOMPT",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "integrar componentes de educación en neurociencia del dolor",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "estrategias de afrontamiento activo",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "modificación de creencias catastrofistas sobre el movimiento cervical",
+        "elemento": "objetivo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "con el objetivo de promover la autoeficacia y reducir el miedo al movimiento",
+        "elemento": "objetivo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "pautas de higiene postural y gestión de cargas durante la jornada laboral",
+        "elemento": "técnica",
+        "origen": "no consta"
+      },
+      {
+        "cita": "cambio clínicamente significativo situado entre 7,5 y 18 puntos",
+        "elemento": "objetivo",
+        "origen": "pauta de PhysiQ"
+      }
+    ],
+    "tests_alternativas": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8538,
+    "output": 3027
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "result": {
+    "tests_alternativas": [],
+    "indicaciones": [
+      {
+        "cita": "el dolor durante el ejercicio no supere 3/10",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Dolor durante el ejercicio hasta 3/10",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      }
+    ],
+    "afirmaciones": [
+      {
+        "cita": "habiendo aumentado recientemente la frecuencia de sus entrenamientos de carrera",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "refiere crujidos al moverse",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "La exploración reproduce el dolor característico mediante sentadilla monopodal izquierda",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "La exploración confirma dolor anterior de rodilla durante la sentadilla",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "la palpación de las facetas rotulianas resulta positiva",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "Los grupos de criterios de Décary para dolor patelofemoral resultan positivos",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "limitación funcional (d4552) para correr",
+        "clase": "participación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "para descender escaleras (d4551)",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "El dolor al ponerse en cuclillas (d4103)",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "la molestia tras sedestación prolongada (d4153)",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      }
+    ],
+    "siglas": [
+      {
+        "sigla": "CIF",
+        "cita": "HALLAZGOS Y CODIFICACIÓN CIF",
+        "desarrollo_en_informe": "",
+        "desarrollo_en_datos": ""
+      }
+    ],
+    "pronostico": [],
+    "plan": [
+      {
+        "cita": "el dolor durante el ejercicio no supere 3/10",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "Se reevaluará el dolor mediante escala visual analógica",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "la función con el cuestionario de Kujala",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "a las seis y doce semanas",
+        "elemento": "plazo",
+        "origen": "pauta de PhysiQ"
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 6937,
+    "output": 973
+  }
+}

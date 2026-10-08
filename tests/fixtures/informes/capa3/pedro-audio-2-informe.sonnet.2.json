@@ -1,0 +1,163 @@
+{
+  "result": {
+    "tests_alternativas": [],
+    "indicaciones": [
+      {
+        "cita": "no cargar peso con el brazo operado hasta la revisión de mediados de noviembre",
+        "quien_la_dio": "cirujano",
+        "evidencia": "nada de cargar peso con ese brazo hasta la próxima revisión",
+        "atribuida_en_informe": "cirujano",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "deteniéndose la actividad si supera 4 sobre 10",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "Parar si el dolor supera 4/10 durante el ejercicio.",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      },
+      {
+        "cita": "puede realizar bicicleta estática, pero no ciclismo de carretera hasta la revisión de noviembre",
+        "quien_la_dio": "fisioterapeuta",
+        "evidencia": "De momento bici estática sí, la de carretera no hasta la revisión",
+        "atribuida_en_informe": "sin atribuir",
+        "como_si_ya_lo_hiciera": false
+      }
+    ],
+    "afirmaciones": [
+      {
+        "cita": "aumentando a 6 sobre 10 por la noche si se recuesta sobre ese lado",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "despertares ocasionales al girarse en la cama",
+        "clase": "síntoma",
+        "consta_en": "no consta"
+      },
+      {
+        "cita": "alguna noche nota la mano dormida, que cede al moverla",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "dolor a mitad del recorrido, en la región anterior y lateral del hombro",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "percepción de falta de fuerza en el brazo derecho",
+        "clase": "síntoma",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "cierto miedo a que se mueva el material de osteosíntesis si fuerza",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "realizar actividades laborales o recreativas que implican trabajar con los brazos por encima de la cabeza",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "Practica ciclismo de manera habitual",
+        "clase": "actividad",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "No ha podido reanudar la práctica de ciclismo de carretera desde la intervención quirúrgica",
+        "clase": "participación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "actividad que refiere echar de menos",
+        "clase": "participación",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "mejoría progresiva respecto al período inicial",
+        "clase": "síntoma",
+        "consta_en": "transcripción"
+      },
+      {
+        "cita": "hallazgo compatible con el antecedente de fractura ya diagnosticada y tratada",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      },
+      {
+        "cita": "hallazgos clínicos son compatibles con síndrome de pinzamiento subacromial y lesión labral superior",
+        "clase": "interpretación",
+        "consta_en": "datos"
+      }
+    ],
+    "siglas": [],
+    "pronostico": [
+      {
+        "cita": "Si transcurrido un máximo de doce semanas de tratamiento conservador adecuado no se observa mejoría suficiente",
+        "uso": "seguimiento"
+      },
+      {
+        "cita": "se reconsiderará la solicitud de pruebas de imagen y la derivación al médico especialista",
+        "uso": "seguimiento"
+      }
+    ],
+    "plan": [
+      {
+        "cita": "debe supeditarse al protocolo del cirujano",
+        "elemento": "objetivo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "respetando la restricción de no cargar peso con el brazo operado",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "programa de ejercicio activo de fuerza con cargas ligeras",
+        "elemento": "técnica",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "centrado en la mejora del control motor y la recuperación funcional progresiva",
+        "elemento": "objetivo",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "sin coger peso con ese brazo según lo indicado por el cirujano",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "se monitorizará el nivel de dolor, deteniéndose la actividad si supera 4 sobre 10",
+        "elemento": "dosis",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "educación individualizada sobre el manejo del dolor, la modificación de la actividad y el automanejo",
+        "elemento": "técnica",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "puede realizar bicicleta estática, pero no ciclismo de carretera hasta la revisión de noviembre",
+        "elemento": "técnica",
+        "origen": "fisioterapeuta"
+      },
+      {
+        "cita": "El volumen, la progresión y la dosificación de las intervenciones quedan a criterio clínico",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      },
+      {
+        "cita": "ajustándose a la tolerancia del paciente y a las restricciones del protocolo posquirúrgico",
+        "elemento": "dosis",
+        "origen": "pauta de PhysiQ"
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8891,
+    "output": 1687
+  }
+}
