@@ -2878,6 +2878,19 @@ console.log('\nrevisión automática del informe con IA');
       assert.deepEqual(ids, esperados, `${informe}\n${salida}`);
     }
   });
+  test('revisión: «Antes de compartir, comprueba» — atribución y otra zona siempre; tests con «o» solo si se hicieron', () => {
+    const sin = RI.comprobacionesManuales({ ampliado: { tests: [{ hipotesis: 'X', items: [{ test: 'Test de Neer', resultado: 'positivo' }] }] } });
+    assert.equal(sin.length, 2);
+    assert.match(sin[0], /atribuye a quien la dio/);
+    assert.match(sin[1], /otra zona o el otro lado/);
+    const con = RI.comprobacionesManuales({ ampliado: { tests: [
+      { hipotesis: 'A', items: [{ test: 'PA unilateral dolorosa o con menos movilidad', resultado: 'positivo' }] },
+      { hipotesis: 'B', items: [{ test: 'PA unilateral dolorosa o con menos movilidad', resultado: 'positivo' }] },
+    ] } });
+    assert.equal(con.length, 3);
+    assert.equal((con[1].match(/«PA unilateral/g) || []).length, 1, 'cada test una sola vez');
+    assert.equal(RI.comprobacionesManuales().length, 2, 'sin datos ampliados no rompe');
+  });
   test('revisión: cabecera y pie compartidos se quitan; cita la frase', () => {
     const t = RI.quitarCabeceraYPie('INFORME DE FISIOTERAPIA\nPaciente: Pedro Flores\nEdad: 52 años\nFecha: 07/10/2026\n\nTexto.\n\n—\nInforme generado con PhysiQ-Assessment el 07/10/2026 (redacción asistida por IA).');
     assert.equal(t, 'Texto.');
@@ -2885,7 +2898,7 @@ console.log('\nrevisión automática del informe con IA');
   });
   test('revisión: se pinta en la tarjeta, nunca en el payload ni en los resúmenes, y se despliega', () => {
     const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
-    assert.match(src, /import \{ revisarInforme \} from '\.\/lib\/revision-informe\.js';/);
+    assert.match(src, /import \{ revisarInforme, comprobacionesManuales \} from '\.\/lib\/revision-informe\.js';/);
     assert.match(src, /<div id="iaRevision"><\/div>/);
     assert.match(src, /catch \{ el\.innerHTML = ''; return; \}/, 'una regla rota no tumba la tarjeta');
     const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');

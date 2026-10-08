@@ -802,6 +802,7 @@ async function checkInformeNarrativo(browser, errors) {
   }) && await page.isVisible('#iaResultado button:has-text("Compartir")');
   // Revisión automática: aparece sola bajo el informe (puntos o «sin incidencias»)
   r.revision = await page.evaluate(() => !!document.querySelector('#iaRevision .ia-revision'));
+  r.comprobar = await page.evaluate(() => document.querySelectorAll('#iaComprobar .ia-comprobar li').length >= 2);
   r.guardado = await page.evaluate(() => !!state.informeIA?.texto && state.informeIA.conAudio === true
     && state.informeIA.transcripcion.includes('simulada'));
   r.audioBorrado = await page.evaluate(() => new Promise(res => {
