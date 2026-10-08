@@ -1,0 +1,186 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-08T16:00:00.000Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Javier Soto",
+    "motivoConsulta": "Dolor de cuello y de cabeza en el lado derecho desde hace meses.",
+    "edadPaciente": 38,
+    "sexo": "Hombre",
+    "signosVitales": {
+      "fc": 72,
+      "fr": null,
+      "spo2": null,
+      "tas": 128,
+      "tad": 82
+    },
+    "antropometria": {
+      "talla": 178,
+      "peso": 80
+    },
+    "mecanismo": "Insidioso",
+    "cronologia": "Crónico (>3 meses)",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Alto",
+    "psico_miedo": "Sí",
+    "psico_autoef": "Dudoso",
+    "psico_emocional": "Sí",
+    "region": "cervical",
+    "lado": "Derecho",
+    "sistemicoAnswers": {
+      "cv4": "NO",
+      "cv1": "NO",
+      "cv5": "NO",
+      "cv2": "NO",
+      "cv_c2": "NO",
+      "cv_p1": "NO",
+      "cv_p2": "NO",
+      "cv3": "NO",
+      "cv_r2": "NO",
+      "cv_gi1": "NO",
+      "cv_gi2": "NO",
+      "cv_ar1": "NO",
+      "cv_ar2": "NO",
+      "cv_ar3": "NO",
+      "cv_ar4": "SI",
+      "cv_n1": "NO",
+      "cv_n2": "NO",
+      "cv_n3": "NO",
+      "cv_in1": "NO",
+      "cv_in2": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": true,
+    "sistemicoBreve": {},
+    "severidad": 6,
+    "irritabilidad": {
+      "dolor": "Media (4-6/10)",
+      "reposo": "Intermitente",
+      "movimiento": "Antes del final del rango",
+      "discapacidad": "Moderada",
+      "tolerancia": "Moderada"
+    },
+    "irritabilidadNivel": "Moderada",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Nociceptiva",
+    "estabilidad": "Empeora",
+    "signoComparable": "La rotación a la derecha con flexión cervical reproduce la cefalea derecha.",
+    "activeHypotheses": [
+      "ce4",
+      "ce1",
+      "ce14"
+    ],
+    "treeAnswers": {
+      "ce_step1": "no",
+      "ce_step2": "no",
+      "ce_step3": "no",
+      "ce_step4": "cefalea",
+      "ce_step4b": "no",
+      "ce_step5": "movilidad",
+      "ce_step6": "craneocervical"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "ce4": {
+        "0": "pos",
+        "1": "nd",
+        "2": "nd",
+        "3": "nd",
+        "4": "nd"
+      },
+      "ce1": {
+        "0": "nd",
+        "1": "nd"
+      },
+      "ce14": {
+        "0": "nd",
+        "1": "nd",
+        "2": "nd",
+        "3": "nd",
+        "4": "nd"
+      }
+    },
+    "hypothesisScores": {
+      "ce4": {
+        "totalLR": 5,
+        "label": "🟢 Peso alto (LR× 5.0)",
+        "colorClass": "hyp-green"
+      },
+      "ce1": {
+        "totalLR": 1,
+        "label": "Sin evaluar",
+        "colorClass": "hyp-orange"
+      },
+      "ce14": {
+        "totalLR": 1,
+        "label": "Sin evaluar",
+        "colorClass": "hyp-orange"
+      }
+    },
+    "derivacionResuelta": {},
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "",
+      "ventanaRecuperacion": "",
+      "anclajeHabito": ""
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "Hace unos seis meses",
+        "inicio": "Poco a poco",
+        "evolucion": "A peor",
+        "despierta": "No",
+        "dolor_max_semana": 9,
+        "probado": [
+          "Medicación"
+        ],
+        "probado_sirvio": "El paracetamol, poco"
+      },
+      "regiones": {
+        "cervical": {
+          "brazo_mover": "No",
+          "cefalea": "Sí",
+          "cef_lado": "Sí, siempre en el mismo lado",
+          "cef_cuello": "Sí",
+          "cef_desencadena": "Sí",
+          "cef_como": "Aprieta, como una cinta",
+          "cef_actividad": "No",
+          "cef_aura": "No",
+          "cef_atm": "No",
+          "mareo": "No"
+        }
+      }
+    },
+    "rom": null,
+    "informeIA": null
+  }
+}
