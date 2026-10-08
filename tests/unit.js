@@ -1,6 +1,7 @@
 'use strict';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import './dom-shim.mjs';
@@ -1785,6 +1786,29 @@ test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de
   });
 });
 
+test('prompt: discrepancias con otras palabras, lo referido no se borra, cada indicación a quien la dio (décima revisión)', () => {
+  const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
+    assert.ok(p.includes('También es una discrepancia cuando lo cuenta con otras palabras'));
+    assert.ok(p.includes('no borra lo que refiere el paciente'));
+    assert.ok(p.includes('Atribuye cada indicación a quien la dio'));
+    assert.ok(p.includes('sin usarlos para interpretar los hallazgos o los tests'));
+    assert.ok(p.includes('No añadas coordinación, comunicación ni reevaluaciones con otros profesionales'));
+    assert.ok(p.includes('La cirugía y sus restricciones no son factores ambientales'));
+  }
+  const n = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
+  assert.ok(n.includes('la cirugía y las restricciones del cirujano no van aquí'), 'Factores Ambientales');
+  assert.ok(n.includes('[Solo si hay cirugía: fecha, protocolo del cirujano'), 'Intervención Quirúrgica');
+});
+
+test('formulario de hombro: «llevar la mano a la espalda» sin el sujetador para la IA', () => {
+  withState({ region: 'hombro', formularioPrevio: { comun: {}, regiones: { hombro: { provoca: { espalda: 'Sí' } } } } }, () => {
+    assert.ok(FM.resumenFormularioIA().some(x => x.a === 'Llevar la mano a la espalda: Sí'));
+    assert.ok(FM.resumenFormularioPrevio().some(x => x.a.includes('(sujetador, bolsillo)')), 'el papel no cambia');
+  });
+});
+
 test('prompt: «No sé» nunca como negación, sin negativos inventados, cada dato en su sección', () => {
   const d = { p: 'X', r: 'hombro', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
   for (const pl of Object.values(IN.PLANTILLAS)) {
@@ -2385,6 +2409,17 @@ console.log('\npaciente posquirúrgico');
     });
   });
 
+  test('informe con IA: el recorrido avisa cuando lo que «orienta a» ya está tratado', () => {
+    withState({ ...POSQ({ intervencion: 'Clavo', protocolo: 'Verbal' }), region: 'hombro', activeHypotheses: ['h11'], testResults: {},
+      hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: { h_step2b: 'trauma' } }, () => {
+      const a = IA.construirAmpliado();
+      assert.equal(a.arbol.find(x => /Traumatismo previo/.test(x.respuesta))?.tratada, true);
+      assert.match(IN.bloquesAmpliados(a).join('\n'), /orienta a: luxación bloqueada o fractura; Rx \(ya diagnosticada y tratada: es un antecedente\)/);
+      state.derivacionResuelta = {};
+      assert.ok(!IA.construirAmpliado().arbol.some(x => x.tratada), 'sin marcar, sin aviso');
+    });
+  });
+
   test('huella del informe con IA: las semanas desde la cirugía no la cambian; la intervención sí', () => {
     const base = { p: 'X', d: '01/01/2026', cq: { iv: 'PTR', fe: '', se: 4, pr: 'Escrito', re: '', co: [] } };
     assert.equal(IN.huellaPayload(base), IN.huellaPayload({ ...base, d: '15/01/2026', cq: { ...base.cq, se: 6 } }));
@@ -2633,6 +2668,42 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(ids(limpio, { datos: { md: 'breve' } }).includes('breve'));
     assert.ok(!ids(limpio + ' Valoración breve; queda pendiente el cribado.', { datos: { md: 'breve' } }).includes('breve'));
     assert.ok(ids(limpio + ' palabra'.repeat(950), { plantilla: 'breve' }).includes('longitud'));
+  });
+  test('revisión: hallazgos atribuidos a la evolución esperable', () => {
+    assert.ok(ids('La rigidez es coherente con la evolución esperable en el período posquirúrgico.').includes('atribucion'));
+    assert.ok(ids('Restricción compatible con el período posquirúrgico.').includes('atribucion'));
+    assert.ok(!ids('Restricción global de la movilidad pasiva, compatible con el contexto traumático previo.').includes('atribucion'), 'el trauma viene del recorrido');
+  });
+  test('revisión: discrepancia escrita en dos frases (y no cuando va en una)', () => {
+    const p = rev('Describe episodios ocasionales de parestesia en la mano. Niega crujidos, bloqueos o parestesias intermitentes.');
+    assert.match(p.find(x => x.id === 'discrepancia-separada')?.mensaje || '', /^Hormigueo/);
+    assert.ok(ids('No refiere dolor en sedestación prolongada. La sedestación prolongada aumenta el dolor.').includes('discrepancia-separada'));
+    assert.ok(!ids('Refiere que el dolor no le despierta por la noche, aunque también describe despertares ocasionales al girarse.').includes('discrepancia-separada'), 'las dos versiones juntas es lo correcto');
+    assert.ok(!ids('No refiere hormigueo, aunque alguna noche nota la mano dormida.').includes('discrepancia-separada'));
+    assert.ok(!ids('Dolor de 6/10 por la noche. Realiza la sentadilla sin dolor.').includes('discrepancia-separada'), '«sentadilla» no es sedestación');
+  });
+  test('revisión: fecha de la cirugía repetida', () => {
+    const cq = { datos: { cq: { fe: '15/06/2026' } } };
+    assert.ok(ids('Operado el 15 de junio de 2026. ### Intervención Quirúrgica Se realizó el 15/06/2026.', cq).includes('repetido'));
+    assert.ok(!ids('Operado el 15 de junio de 2026. Revisión en noviembre.', cq).includes('repetido'));
+    assert.ok(!ids('El 15 de junio y el 15 de junio.').includes('repetido'), 'sin cirugía no se mira');
+  });
+  test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
+    const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
+    const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
+    const casos = [
+      ['valoracion-lucia-romero-audio.json', 'lucia-audio-1-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'repetido', 'fuentes', 'discrepancia-separada']],
+      ['valoracion-lucia-romero-audio.json', 'lucia-audio-2-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'confirma', 'repetido', 'seguimiento-fuera']],
+      ['valoracion-lucia-romero-breve.json', 'lucia-ficha-breve-sin-audio.txt', null, ['fuentes']],
+      ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'discrepancia-separada', 'repetido']],
+    ];
+    for (const [json, informe, trans, esperados] of casos) {
+      const args = [herramienta, join(dir, json), join(dir, informe)];
+      if (trans) args.push('--transcripcion', join(dir, trans));
+      const salida = execFileSync(process.execPath, args, { encoding: 'utf8' });
+      const ids = [...salida.matchAll(/^\[(?:ALTO|MEDIO)\] ([\w-]+):/gm)].map(m => m[1]);
+      assert.deepEqual(ids, esperados, `${informe}\n${salida}`);
+    }
   });
   test('revisión: cabecera y pie compartidos se quitan; cita la frase', () => {
     const t = RI.quitarCabeceraYPie('INFORME DE FISIOTERAPIA\nPaciente: Pedro Flores\nEdad: 52 años\nFecha: 07/10/2026\n\nTexto.\n\n—\nInforme generado con PhysiQ-Assessment el 07/10/2026 (redacción asistida por IA).');

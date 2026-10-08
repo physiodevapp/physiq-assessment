@@ -1,0 +1,192 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-07T17:54:55.008Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Lucía Romero",
+    "motivoConsulta": "Dolor en la parte delantera de la rodilla izquierda al correr y al bajar escaleras desde hace unos dos meses.",
+    "edadPaciente": 34,
+    "sexo": "Mujer",
+    "signosVitales": {
+      "fc": null,
+      "fr": null,
+      "spo2": null,
+      "tas": null,
+      "tad": null
+    },
+    "antropometria": {
+      "talla": null,
+      "peso": null
+    },
+    "mecanismo": "Insidioso",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "cronologia": "Subagudo",
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Bajo",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "rodilla",
+    "lado": "Izquierdo",
+    "sistemicoAnswers": {
+      "r_v1": "NO",
+      "r_v2": "NO",
+      "r_v3": "NO",
+      "r1": "NO",
+      "r_i2": "NO",
+      "r_i3": "NO",
+      "r2": "NO",
+      "r3": "NO",
+      "r4": "NO",
+      "ro_t1": "NO",
+      "ro_t2": "NO",
+      "ro_t3": "NO",
+      "ro_t4": "NO",
+      "ro_t5": "NO",
+      "ro_t6": "NO",
+      "ro_p1": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {},
+    "severidad": 5,
+    "irritabilidad": {
+      "dolor": "Media (4-6/10)",
+      "reposo": "Ausente",
+      "movimiento": "Al final del rango",
+      "discapacidad": "Mínima",
+      "tolerancia": "Moderada"
+    },
+    "irritabilidadNivel": "Baja",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Nociceptiva",
+    "estabilidad": "Estable",
+    "signoComparable": "Sentadilla monopodal izquierda: dolor anterior a partir de unos 60° de flexión.",
+    "activeHypotheses": [
+      "ro3"
+    ],
+    "treeAnswers": {
+      "ro_step1": "no",
+      "ro_step2": "no",
+      "ro_step2b": "no",
+      "ro_step2c": "no",
+      "ro_step3": "pf",
+      "ro_step4": "no",
+      "ro_step5": "no",
+      "ro_step6": "no",
+      "ro_step7": "no"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "ro3": {
+        "0": "pos",
+        "1": "pos",
+        "3": "pos"
+      }
+    },
+    "hypothesisScores": {
+      "ro3": {
+        "totalLR": 8.7,
+        "label": "🟢 Peso alto (LR× 8.7) · 2/2 hallazgos compatibles",
+        "colorClass": "hyp-green",
+        "evaluatedCount": 3,
+        "informativos": 1,
+        "hallazgos": 2,
+        "hallazgosPos": 2
+      }
+    },
+    "derivacionResuelta": {},
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Dolor durante el ejercicio hasta 3/10 y que haya vuelto a como estaba a la mañana siguiente.",
+      "ventanaRecuperacion": "",
+      "anclajeHabito": ""
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "hace unos 2 meses",
+        "desencadenante": "No, empezó poco a poco sin causa clara",
+        "inicio": "Poco a poco",
+        "primera_vez": "Sí",
+        "evolucion": "Igual",
+        "peor_momento_dia": [
+          "Durante el día, según lo que haga"
+        ],
+        "despierta": "No",
+        "tiempo_calmarse": "Unas horas",
+        "actividad_1": "Correr más de 20 minutos",
+        "actividad_2": "Bajar escaleras",
+        "probado": [
+          "Reposo"
+        ],
+        "probado_sirvio": "Un poco, pero vuelve al correr"
+      },
+      "regiones": {
+        "rodilla": {
+          "provoca": {
+            "cuclillas": "Sí",
+            "escaleras": "Sí",
+            "arrodillarse": "No sé",
+            "sentado": "Sí",
+            "caminar": "No",
+            "correr": "Sí",
+            "saltar": "No sé",
+            "pivotar": "No",
+            "de_pie": "No"
+          },
+          "reposo": "No",
+          "nota": {
+            "trabada": "No",
+            "engancha": "No",
+            "falla": "No",
+            "rotula": "No",
+            "miedo_girar": "No",
+            "crujidos": "Sí",
+            "detras": "No",
+            "hormigueo": "No"
+          },
+          "rigidez": "No",
+          "tobillo": "No",
+          "actividad": [
+            "Correr"
+          ],
+          "cambios": [
+            "Entreno más días u horas"
+          ],
+          "dolor_deporte": [
+            "Acaba obligándome a bajar el ritmo o a parar"
+          ]
+        }
+      }
+    },
+    "rom": null
+  }
+}
