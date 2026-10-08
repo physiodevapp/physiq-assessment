@@ -1,0 +1,21 @@
+INFORME DE FISIOTERAPIA
+Paciente: Lucía Romero
+Edad: 34 años
+Sexo: Mujer
+Fecha: 7/10/2026
+Región valorada: Rodilla (izquierda)
+
+PRESENTACIÓN CLÍNICA
+
+Mujer de 34 años que consulta por dolor en la zona anterior de la rodilla izquierda, de aparición progresiva hace aproximadamente dos meses, sin traumatismo desencadenante. Refiere dolor de intensidad 5/10 que se presenta principalmente al correr y al descender escaleras, habiendo aumentado recientemente la frecuencia de sus entrenamientos de carrera. Niega bloqueos, fallos de estabilidad, luxación rotuliana o síntomas neurológicos, aunque refiere crujidos al moverse. No se identifican banderas rojas y el cribado sistémico abreviado resulta negativo, con bajo riesgo psicosocial. Dado que se trata de una valoración inicial breve, quedan pendientes de completar el cribado sistémico detallado, la cuantificación precisa de la irritabilidad mediante matriz y los tests de confirmación específicos para plica sinovial medial.
+
+HALLAZGOS Y CODIFICACIÓN CIF
+
+La exploración reproduce el dolor característico mediante sentadilla monopodal izquierda a partir de 60° de flexión. La exploración confirma dolor anterior de rodilla durante la sentadilla (b28016) y la palpación de las facetas rotulianas resulta positiva. Los grupos de criterios de Décary para dolor patelofemoral resultan positivos, reforzando esta hipótesis. La paciente presenta limitación funcional (d4552) para correr y para descender escaleras (d4551). El dolor al ponerse en cuclillas (d4103), y la molestia tras sedestación prolongada (d4153) constituyen hallazgos significativos.
+
+OBJETIVOS Y PLAN
+
+Se establecerá como variable de control que el dolor durante el ejercicio no supere 3/10. Se reevaluará el dolor mediante escala visual analógica y la función con el cuestionario de Kujala a las seis y doce semanas.
+
+—
+Informe generado con PhysiQ-Assessment el 7/10/2026 (redacción asistida por IA).
