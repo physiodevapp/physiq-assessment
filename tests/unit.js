@@ -1,6 +1,6 @@
 'use strict';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -2875,6 +2875,111 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(/cp lib\/[^\n]*lib\/revision-informe\.js[^\n]*physiq-hub\/assessment\/lib\//.test(wf), 'lib/revision-informe.js se copia al hub');
     const appSrc = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
     assert.ok(!/revision-informe/.test(appSrc), 'app.js no la carga (solo la tarjeta, fuera del hub)');
+  });
+}
+
+// ── Verificador con IA (capa 3, lib/verificacion-informe.js) ─────────────────
+{
+  const VI = await import('../lib/verificacion-informe.js');
+  const RI = await import('../lib/revision-informe.js');
+  const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
+  const datos = { p: 'Ana Pérez', d: '8/10/2026', r: 'rodilla', la: 'Izquierdo', mo: 'Dolor al correr', nr: 5, h: [{ name: 'Dolor Patelofemoral' }] };
+
+  test('verificación: el prompt lleva datos, transcripción e informe; sin audio lo dice', () => {
+    const p = VI.promptVerificacion(datos, { transcripcion: 'Me duele al bajar escaleras.', informe: 'TEXTO DEL INFORME' });
+    assert.match(p, /## DATOS DE VALORACIÓN ESTRUCTURADA/);
+    assert.match(p, /Motivo de consulta: Dolor al correr/);
+    assert.match(p, /TRANSCRIPCIÓN DE LA CONSULTA:\nMe duele al bajar escaleras\./);
+    assert.match(p, /INFORME A REVISAR:\nTEXTO DEL INFORME/);
+    assert.match(VI.promptVerificacion(datos, { informe: 'x' }), /No hubo audio/);
+    for (const t of Object.keys(VI.TIPOS_VERIFICACION)) assert.match(p, new RegExp(`^- ${t}:`, 'm'), `el prompt explica el tipo ${t}`);
+  });
+  test('verificación: los códigos CIF solo en la ficha breve', () => {
+    assert.ok(!/b28016/.test(VI.promptVerificacion(datos, { informe: 'x' })));
+    assert.match(VI.promptVerificacion(datos, { informe: 'x', plantilla: 'breve' }), /d4103 sentarse/);
+  });
+  test('verificación: el esquema obliga a los cinco campos y sus tipos son los del prompt', () => {
+    const it = VI.ESQUEMA_VERIFICACION.properties.puntos.items;
+    assert.deepEqual(it.required, ['tipo', 'nivel', 'cita', 'evidencia', 'mensaje']);
+    assert.deepEqual(it.properties.tipo.enum, Object.keys(VI.TIPOS_VERIFICACION));
+    assert.equal(VI.ESQUEMA_VERIFICACION.type, 'object');
+    assert.ok(JSON.stringify(VI.ESQUEMA_VERIFICACION).length < 10000, 'cabe en el límite de /verify');
+    assert.ok(VI.MAX_TOKENS_VERIFICACION <= 4000, 'cabe en el límite de /verify');
+  });
+  test('verificación: la cita debe estar en el informe (markdown, comillas, espacios y «…» no cuentan)', () => {
+    const inf = '## Dolor\nRefiere **dolor** «punzante»   al correr.\nNiega hormigueo en la pierna derecha.';
+    assert.ok(VI.citaEnInforme('Refiere dolor "punzante" al correr', inf));
+    assert.ok(VI.citaEnInforme('Refiere dolor «punzante» … hormigueo en la pierna', inf));
+    assert.ok(!VI.citaEnInforme('Refiere dolor punzante al caminar', inf), 'una paráfrasis no vale');
+    assert.ok(!VI.citaEnInforme('hormigueo en la pierna … Refiere dolor', inf), 'los trozos van en orden');
+    assert.ok(!VI.citaEnInforme('', inf));
+    assert.ok(!VI.citaEnInforme('dolor', inf), 'demasiado corta para comprobarla');
+  });
+  test('verificación: validarPuntos descarta citas inventadas, tipos raros y repetidos; la omisión no lleva cita', () => {
+    const inf = 'Practica ciclismo de manera habitual. Refiere dolor al peinarse.';
+    const { puntos, descartados } = VI.validarPuntos({ puntos: [
+      { tipo: 'no-respaldado', nivel: 'medio', cita: 'Practica ciclismo de manera habitual', evidencia: 'No consta', mensaje: 'Frecuencia inferida' },
+      { tipo: 'no-respaldado', nivel: 'medio', cita: 'Practica ciclismo de manera habitual.', evidencia: 'No consta', mensaje: 'Repetido' },
+      { tipo: 'contradice', nivel: 'alto', cita: 'Refiere dolor al ducharse', evidencia: 'x', mensaje: 'Cita inventada' },
+      { tipo: 'estilo', nivel: 'medio', cita: 'Refiere dolor al peinarse', evidencia: 'x', mensaje: 'Tipo fuera del esquema' },
+      { tipo: 'omision', nivel: 'urgente', cita: 'algo que no está', evidencia: 'Me da miedo que se mueva el clavo', mensaje: 'Falta el miedo al clavo' },
+      { tipo: 'atribucion', nivel: 'medio', cita: 'Refiere dolor al peinarse', evidencia: 'x', mensaje: '' },
+    ] }, inf);
+    assert.deepEqual(puntos.map(p => p.tipo), ['no-respaldado', 'omision']);
+    assert.equal(puntos[1].cita, '', 'la omisión pierde la cita');
+    assert.equal(puntos[1].nivel, 'medio', 'un nivel fuera del esquema pasa a medio');
+    assert.deepEqual(descartados.map(d => d.motivo), ['cita', 'tipo', 'mensaje']);
+    assert.deepEqual(VI.validarPuntos(null, inf).puntos, []);
+    const muchos = Array.from({ length: 20 }, (_, i) => ({ tipo: 'omision', nivel: 'medio', cita: '', evidencia: `dato ${i}`, mensaje: `falta ${i}` }));
+    assert.equal(VI.validarPuntos({ puntos: muchos }, inf).puntos.length, VI.MAX_PUNTOS_VERIFICACION);
+  });
+  test('verificación: compararConEsperados separa aciertos, lo que ya marca la capa 1 y lo sin etiquetar', () => {
+    const errores = [
+      { id: 'bici', nivel: 'alto', fragmentos: ['restringida por indicación médica'] },
+      { id: 'clavo', nivel: 'medio', claves: ['clavo'] },
+      { id: 'otro', nivel: 'medio', fragmentos: ['nunca citado'] },
+    ];
+    const r = VI.compararConEsperados([
+      { tipo: 'atribucion', cita: 'esta actividad se encuentra restringida por indicación médica hasta noviembre', mensaje: 'x', evidencia: '' },
+      { tipo: 'omision', cita: '', mensaje: 'Falta el miedo', evidencia: 'que se me mueva el clavo' },
+      { tipo: 'repetido', cita: 'La osteosíntesis se realizó el 15 de junio', mensaje: 'x', evidencia: '' },
+      { tipo: 'no-respaldado', cita: 'Algo nuevo', mensaje: 'x', evidencia: '' },
+    ], errores, ['La osteosíntesis se realizó el 15 de junio de 2026.']);
+    assert.deepEqual(r.detectados.sort(), ['bici', 'clavo']);
+    assert.deepEqual(r.fallados, ['otro']);
+    assert.equal(r.redundantes.length, 1);
+    assert.deepEqual(r.sinEtiquetar.map(p => p.cita), ['Algo nuevo']);
+  });
+  test('verificación: esperado-capa3.json cubre los informes reales y sus fragmentos están en cada informe', () => {
+    const E = JSON.parse(readFileSync(join(dir, 'esperado-capa3.json'), 'utf8'));
+    const enTabla = readFileSync(fileURLToPath(import.meta.url), 'utf8').match(/\['valoracion-[^\n]+/g).map(l => l.match(/'([\w-]+\.txt)'/)?.[1]).filter(Boolean);
+    assert.deepEqual(E.informes.map(c => c.informe).sort(), [...new Set(enTabla)].sort(), 'los mismos informes que «revisión: informes reales»');
+    const ids = new Set();
+    for (const c of E.informes) {
+      const texto = RI.quitarCabeceraYPie(readFileSync(join(dir, c.informe), 'utf8'));
+      assert.ok(existsSync(join(dir, c.valoracion)), c.valoracion);
+      if (c.transcripcion) assert.ok(existsSync(join(dir, c.transcripcion)), c.transcripcion);
+      assert.ok(['narrativo', 'breve'].includes(c.plantilla));
+      for (const e of c.errores) {
+        assert.ok(!ids.has(e.id), `id repetido: ${e.id}`); ids.add(e.id);
+        assert.ok(VI.TIPOS_VERIFICACION[e.tipo], `${e.id}: tipo ${e.tipo}`);
+        assert.ok(['alto', 'medio'].includes(e.nivel), `${e.id}: nivel`);
+        assert.ok((e.fragmentos || []).length || (e.claves || []).length, `${e.id}: sin fragmentos ni claves`);
+        for (const f of e.fragmentos || []) assert.ok(VI.citaEnInforme(f, texto), `${e.id}: «${f}» no está en ${c.informe}`);
+      }
+    }
+  });
+  test('verificación: las respuestas guardadas (capa3/) se validan sin romper', () => {
+    const dResp = join(dir, 'capa3');
+    if (!existsSync(dResp)) return;
+    const E = JSON.parse(readFileSync(join(dir, 'esperado-capa3.json'), 'utf8'));
+    for (const f of readdirSync(dResp).filter(n => n.endsWith('.json'))) {
+      const c = E.informes.find(x => f.startsWith(x.informe.replace(/\.txt$/, '') + '.'));
+      assert.ok(c, `${f} no corresponde a ningún informe de esperado-capa3.json`);
+      const r = JSON.parse(readFileSync(join(dResp, f), 'utf8'));
+      const { puntos } = VI.validarPuntos(r.result, RI.quitarCabeceraYPie(readFileSync(join(dir, c.informe), 'utf8')));
+      for (const p of puntos) assert.ok(p.tipo === 'omision' || p.cita, f);
+    }
   });
 }
 
