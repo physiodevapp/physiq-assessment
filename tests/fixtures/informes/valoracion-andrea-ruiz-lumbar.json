@@ -1,0 +1,198 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-08T12:00:00.000Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Andrea Ruiz",
+    "motivoConsulta": "Dolor lumbar que va a más desde hace unos meses; le cuesta caminar y estar de pie.",
+    "edadPaciente": 63,
+    "sexo": "",
+    "signosVitales": {
+      "fc": 78,
+      "fr": null,
+      "spo2": null,
+      "tas": 150,
+      "tad": 92
+    },
+    "antropometria": {
+      "talla": 165,
+      "peso": 72
+    },
+    "mecanismo": "Insidioso",
+    "cronologia": "Crónico (>3 meses)",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Medio",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "lumbar",
+    "lado": "Central",
+    "sistemicoAnswers": {
+      "l2": "NO",
+      "l_on2": "NO",
+      "l4": "NO",
+      "l6": "NO",
+      "l_u3a": "NO",
+      "l_u3b": "NO",
+      "l_u4": "NO",
+      "l1": "NO",
+      "l3": "NO",
+      "l_gi2": "NO",
+      "l5": "NO",
+      "l5c": "NO",
+      "l5d": "NO",
+      "l_e2": "NO",
+      "l_e3": "NO",
+      "l_e4": "NO",
+      "l_e5": "NO",
+      "l_e6": "NO",
+      "l_e7": "NO",
+      "l_v1": "NO",
+      "l_v2": "NO",
+      "l_v3": "NO",
+      "l_inf1": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {},
+    "severidad": 5,
+    "irritabilidad": {
+      "dolor": "Media (4-6/10)",
+      "reposo": "Intermitente",
+      "movimiento": "Antes del final del rango",
+      "discapacidad": "Moderada",
+      "tolerancia": "Moderada"
+    },
+    "irritabilidadNivel": "Moderada",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Nociceptiva",
+    "estabilidad": "Empeora",
+    "signoComparable": "La extensión con rotación a la derecha reproduce el dolor lumbar.",
+    "activeHypotheses": [
+      "lu2",
+      "lu7"
+    ],
+    "treeAnswers": {
+      "lu_step1": "no",
+      "lu_step2": "vascular",
+      "lu_step3": "inestable",
+      "lu_step4": "faceta"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "lu2": {
+        "0": "neg",
+        "1": "pos",
+        "2": "neg"
+      },
+      "lu7": {
+        "0": "pos",
+        "1": "pos",
+        "2": "pos"
+      }
+    },
+    "hypothesisScores": {
+      "lu2": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 1/3 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      },
+      "lu7": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 3/3 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      }
+    },
+    "derivacionResuelta": {},
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Que el dolor no pase de 5/10 durante el ejercicio ni dure más de 24 horas después.",
+      "ventanaRecuperacion": "",
+      "anclajeHabito": "Hacer los ejercicios al volver del paseo de la mañana."
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "Hace unos ocho meses",
+        "desencadenante": "No, empezó poco a poco sin causa clara",
+        "inicio": "Poco a poco",
+        "primera_vez": "No, ya me había pasado antes",
+        "episodio_previo": "Hace cinco años; le duró unas semanas",
+        "evolucion": "A peor",
+        "peor_momento_dia": [
+          "Al final del día"
+        ],
+        "despierta": "No",
+        "dolor_max_semana": 7,
+        "tiempo_calmarse": "Unas horas",
+        "actividad_1": "Caminar más de un cuarto de hora",
+        "actividad_2": "Estar de pie en la cocina",
+        "probado": [
+          "Calor o frío",
+          "Medicación"
+        ],
+        "probado_sirvio": "El ibuprofeno, un poco",
+        "enfermedades": "Hipertensión",
+        "medicacion": "Enalapril; ibuprofeno cuando le duele mucho"
+      },
+      "regiones": {
+        "lumbar": {
+          "pierna_hasta": "No, se queda en la espalda",
+          "cambia_lado": "No",
+          "pierna_tipo": [
+            "No tengo dolor de pierna"
+          ],
+          "debilidad": "No",
+          "empeora": {
+            "toser": "No",
+            "sentado": "No",
+            "levantarse": "Sí",
+            "agacharse": "No",
+            "atras": "Sí",
+            "de_pie": "Sí",
+            "caminando": "Sí"
+          },
+          "que_alivia": "Basta con pararme quieto de pie",
+          "bici_carro": "No lo he probado",
+          "postura_alivio": "Sí",
+          "postura_alivio__detalle": "Tumbarse boca arriba con las piernas dobladas",
+          "cadera": "No",
+          "embarazo": "No procede",
+          "traumatismo": "No",
+          "deporte": "Pasear al perro todos los días; ha tenido que acortar los paseos",
+          "algo_mas": "Le preocupa acabar operándose, como su hermano"
+        }
+      }
+    },
+    "rom": null,
+    "informeIA": null
+  }
+}
