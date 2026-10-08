@@ -1718,7 +1718,8 @@ test('prompt: el bloque de datos no lleva puntuaciones, notas del plan vacías n
   assert.ok(ctx.includes('Síndrome subacromial'));
   for (const x of ['LR×', 'Peso moderado', 'hallazgos compatibles', 'Variable de control', 'Anclaje de hábito', 'árbol', 'Razonamiento clínico', 'Formulario previo'])
     assert.ok(!ctx.includes(x), `sin «${x}»`);
-  assert.ok(ctx.includes('Ventana de recuperación: 24 h'), 'las notas con texto sí van');
+  assert.ok(ctx.includes('Recuperación entre sesiones: 24 h'), 'las notas con texto sí van, con etiqueta neutra');
+  assert.ok(!ctx.includes('Ventana de recuperación'), 'sin el nombre del campo');
   assert.ok(ctx.includes('Hallazgos de la exploración'));
   assert.ok(!IN.contextoValoracion({ ...d, pn: {} }, r => r, null).includes('Notas del plan'), 'sin notas, sin bloque');
 });
@@ -1841,6 +1842,32 @@ test('prompt: sin ejemplos con género, tests con «o», picos sin reconciliar, 
   const n = IN.PLANTILLAS.narrativo.prompt(d, { conAudio: true, nombreRegion: r => r, ampliado: null });
   assert.ok(n.includes('### Movilidad\n[Solo si hay hallazgos de movilidad distintos del signo comparable'));
   assert.ok(n.includes('lo que no le empeora no se enumera aquí'));
+});
+
+test('prompt: siglas, cirujano una vez, notas sin nombre de campo, embudo (decimotercera revisión)', () => {
+  const base = { p: 'X', r: 'tobillo_pie', d: '01/01/2026', h: [{ name: 'H' }], br: [], sq: [], pn: {} };
+  for (const pl of Object.values(IN.PLANTILLAS)) {
+    const p = pl.prompt(base, { conAudio: true, nombreRegion: r => r, ampliado: null });
+    assert.ok(p.includes('no desarrolles una sigla que los datos no desarrollan'));
+    assert.ok(p.includes('y no lo repitas en ninguna otra parte (ni en la presentación, ni en lo pendiente, ni en los objetivos)'));
+    assert.ok(p.includes('«en la conversación», «en consulta»'));
+    assert.ok(p.includes('No atribuyas un síntoma a un mecanismo'));
+  }
+  const breve = { ...base, md: 'breve', cq: { iv: 'ORIF', fe: '30/07/2026', se: 10, pr: '', re: '', co: [] },
+    pe: ['Cribado sistémico solo por embudo (sin preguntas una a una): Vascular', 'Formulario previo sin rellenar', 'Restricciones pendientes de confirmar con el cirujano (sin protocolo)'] };
+  const c = IN.contextoValoracion(breve, r => r, null);
+  assert.ok(!/Pendiente de completar:[\s\S]*cirujano/.test(c), 'con cirugía, la lista de pendientes no repite al cirujano');
+  assert.ok(c.includes('Formulario previo sin rellenar'));
+  assert.ok(c.includes('lo pendiente se dice solo en esa frase'));
+  assert.match(c, /Cribado sistémico: sin hallazgos en el embudo \(cribado abreviado\)/);
+  assert.match(IN.contextoValoracion({ ...base, md: 'breve', pe: ['Formulario previo sin rellenar'] }, r => r, null), /Cribado sistémico: Negativo/, 'sin embudo, como siempre');
+  assert.match(IN.contextoValoracion({ ...base, pn: { variableControl: 'Dolor < 4/10', anclajeHabito: 'Tras el paseo' } }, r => r, null),
+    /Indicaciones del fisioterapeuta para el plan:\n  · Para dosificar la carga: Dolor < 4\/10\n  · Cuándo hacer los ejercicios: Tras el paseo/);
+});
+
+test('tobillo: el KTW lleva su nombre (desarrolló la sigla como un test inexistente)', () => {
+  assert.ok(HYPOTHESES.tp20.tests.some(t => t.name === 'KTW (rodilla a la pared)'));
+  assert.ok(!Object.values(HYPOTHESES).some(h => h.tests.some(t => /\bKTW\b(?! \(rodilla a la pared\))/.test(t.name))), 'ningún test con la sigla sola');
 });
 
 test('formulario de hombro: «llevar la mano a la espalda» sin el sujetador para la IA', () => {
@@ -2767,6 +2794,16 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!ids('Se usará el cuestionario de Oswestry.').includes('fuentes'));
     assert.ok(ids('Según el cuestionario inicial, refiere dolor.').includes('fuentes'));
   });
+  test('revisión: «en la conversación», el formulario pendiente en modo breve y el cirujano repetido', () => {
+    assert.ok(ids('En la conversación precisa que el dolor es de 4/10.').includes('fuentes'));
+    const pend = 'Valoración breve: quedan pendientes el cribado detallado y el formulario previo.';
+    assert.ok(!ids(pend, { datos: { md: 'breve' } }).includes('fuentes'), 'en modo breve, el formulario pendiente es un pendiente');
+    assert.ok(ids(pend + ' La variable de control es el dolor.', { datos: { md: 'breve' } }).includes('fuentes'), 'sigue buscando después');
+    assert.ok(ids(pend).includes('fuentes'), 'fuera de modo breve sigue contando');
+    const cir = 'Pendiente de confirmar con el cirujano. Se supedita a lo que confirme el cirujano. Una vez confirmado con el cirujano, se progresará.';
+    assert.match(rev(cir).find(x => x.id === 'repetido')?.mensaje || '', /cirujano aparece 3 veces/);
+    assert.ok(!ids('Restricciones pendientes de confirmar con el cirujano. Ejercicio.').includes('repetido'));
+  });
   test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
     const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
     const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
@@ -2777,6 +2814,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'discrepancia-separada', 'repetido']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'repetido', 'estructura']],
       ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero']],
+      ['valoracion-carmen-vidal-tobillo-breve.json', 'carmen-audio-1-ficha-breve.txt', 'carmen-audio-transcripcion.txt', ['relleno', 'fuentes', 'repetido']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
