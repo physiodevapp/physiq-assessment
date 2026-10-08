@@ -1,0 +1,26 @@
+{
+  "result": {
+    "repaso": "PRESENTACIÓN CLÍNICA: Verificado el motivo de consulta, la cirugía, los síntomas referidos, la intensidad del dolor, la situación laboral, las banderas rojas, el cribado sistémico, el riesgo psicosocial y los pendientes de valoración inicial breve.\nHALLAZGOS Y CODIFICACIÓN CIF: Comprobado el signo comparable, los tests realizados, el aspecto de la cicatriz, los códigos CIF y las hipótesis que apoyan los hallazgos.\nOBJETIVOS Y PLAN: Verificado el plan de ejercicios, las restricciones, la variable de control, la escala de seguimiento y los objetivos.",
+    "puntos": [
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "Estos hallazgos constituyen un test de Kleiger-Torg-Weiss positivo",
+        "evidencia": "En los datos consta: «KTW (rodilla a la pared): positivo». KTW es «knee to wall» (rodilla a la pared), no el test de Kleiger-Torg-Weiss.",
+        "mensaje": "KTW significa «knee to wall» (rodilla a la pared), no test de Kleiger-Torg-Weiss."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "Los hallazgos de la exploración clínica apoyan la condición posquirúrgica de osteosíntesis y refuerzan la hipótesis de pinzamiento anterior del tobillo mediante la positividad del test de Kleiger-Torg-Weiss",
+        "evidencia": "En los datos consta: «KTW (rodilla a la pared): positivo». KTW es «knee to wall» (rodilla a la pared), no el test de Kleiger-Torg-Weiss.",
+        "mensaje": "KTW significa «knee to wall» (rodilla a la pared), no test de Kleiger-Torg-Weiss. Este error se repite en dos ocasiones."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 7147,
+    "output": 582
+  }
+}

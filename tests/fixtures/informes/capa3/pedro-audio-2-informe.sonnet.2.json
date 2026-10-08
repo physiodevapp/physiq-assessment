@@ -1,0 +1,26 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Contextuales: verificada la consolidación ósea, los factores personales, la intervención quirúrgica y el cribado de seguridad. Presentación Inicial y Antecedentes: comprobado el mecanismo traumático y la negación de luxaciones. Dolor: revisada la intensidad, características del dolor nocturno y diurno, parestesias nocturnas, y el signo comparable. Movilidad: verificada la restricción global con pérdida marcada de rotación externa. Fuerza Muscular: comprobada la percepción de falta de fuerza y hallazgos en pruebas resistidas. Pruebas Clínicas: revisados los tests para lesión labral y pinzamiento subacromial. Limitaciones en las Actividades: verificadas las actividades que provocan dolor. Restricciones en la Participación: comprobada la imposibilidad de practicar ciclismo de carretera. Conclusiones y Plan: revisado el plan de ejercicio activo, las restricciones posquirúrgicas, la dosificación del dolor, y las indicaciones sobre bicicleta estática. Seguimiento Funcional: verificado el uso del QuickDASH y los criterios de reconsideración.",
+    "puntos": [
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "aumentando a 6 sobre 10 por la noche si se recuesta sobre ese lado, aunque también describe despertares ocasionales al girarse en la cama",
+        "evidencia": "Transcripción: «por la noche si me tumbo sobre ese lado llega a un 6 de 10». No se menciona despertares al girarse en la cama.",
+        "mensaje": "Se añaden despertares al girarse en la cama que el paciente no refiere; solo menciona dolor de 6/10 al tumbarse sobre ese lado."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "No refiere hormigueo, aunque alguna noche nota la mano dormida, que cede al moverla.",
+        "evidencia": "Transcripción: Fisio pregunta «¿Y notas hormigueos en el brazo o en la mano?» Paciente: «Alguna noche se me duerme un poco la mano, sí, pero se me pasa al moverla.» Datos: en respuesta a «Hormigueo en el brazo o la mano que va y viene: No»",
+        "mensaje": "El informe afirma «No refiere hormigueo» cuando en la transcripción el paciente sí refiere que alguna noche se le duerme la mano (parestesia nocturna); hay discrepancia entre datos y transcripción que debe mostrarse, pero no negarse."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8523,
+    "output": 767
+  }
+}

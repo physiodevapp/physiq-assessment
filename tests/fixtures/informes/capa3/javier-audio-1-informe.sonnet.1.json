@@ -1,0 +1,54 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Contextuales: verificado que datos demográficos, IMC, signos vitales y factores psicosociales coinciden con los datos. Presentación Inicial y Antecedentes: comprobado inicio, evolución, características de la cefalea, síntomas negados y episodio súbito del sábado. Tratamientos Previos: verificado paracetamol con alivio escaso. Cribado de Seguridad: confirmado cribado sistémico positivo y derivación urgente. Dolor: verificada intensidad, irritabilidad, naturaleza y signo comparable. Movilidad: confirmada limitación rotación derecha y hipomovilidad C0-C3. Pruebas Clínicas: verificado test de flexión-rotación cervical positivo y hallazgos negativos. Limitaciones y Restricciones: comprobadas posturas laborales y afectación del gimnasio. Conclusiones y Plan: verificada derivación urgente, suspensión del tratamiento de fisioterapia y análisis de hipótesis. Seguimiento: revisado NDI y criterios de reconsideración.",
+    "puntos": [
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "El abordaje incluirá manipulación o movilización cervical y cervicotorácica combinada con programa de ejercicio terapéutico que integre estiramiento, fortalecimiento y trabajo de resistencia de la musculatura cervical y de la cintura escapular.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El informe propone un plan de tratamiento detallado con técnicas específicas cuando la pauta indica expresamente no proponer tratamiento ni técnicas mientras no se complete la valoración médica urgente."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Se incorporará entrenamiento específico de flexión craneocervical con biofeedback de presión, comenzando con el dispositivo inflado a 20 mmHg y progresando en escalones de 2 mmHg (desde 22 hasta 30 mmHg), con apoyos repetidos de 5 a 10 segundos en cada nivel",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Se describen dosis específicas de tratamiento (presiones, escalones, tiempos) cuando la pauta prohíbe expresamente proponer técnicas o dosis."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Antes de aplicar manipulación cervical, se realizará el cribado vascular siguiendo el protocolo del marco IFOMPT.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Se incluye un plan condicionado sobre cribado vascular antes de manipulación cuando la pauta indica expresamente no proponer tratamiento condicionado."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Dada la elevada puntuación en el cribado psicosocial, será necesario integrar componentes de educación en neurociencia del dolor, estrategias de afrontamiento activo y modificación de creencias catastrofistas",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Se proponen componentes de tratamiento psicosocial cuando la pauta prohíbe proponer cualquier tratamiento."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Se abordarán pautas de higiene postural y gestión de cargas durante la jornada laboral frente al ordenador.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Se incluyen pautas de higiene postural en el plan cuando está indicado no proponer ningún tratamiento."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Una vez completada la valoración médica urgente y descartada patología intracraneal aguda, el plan de tratamiento propuesto se basará en las recomendaciones de la guía de práctica clínica de la APTA",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "Se propone un plan condicionado basado en guías de práctica clínica cuando la pauta prohíbe explícitamente proponer tratamiento condicionado."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8170,
+    "output": 1463
+  }
+}

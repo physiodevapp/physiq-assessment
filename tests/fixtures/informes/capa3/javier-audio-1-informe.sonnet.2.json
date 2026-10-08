@@ -1,0 +1,61 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Contextuales: verificado el IMC, FC, TA, actividad laboral con ordenador, gimnasio y cribado psicosocial de alto riesgo. Presentación Inicial y Antecedentes: comprobado inicio insidioso, evolución a peor, cefalea unilateral derecha opresiva, episodio súbito del sábado con dolor extremo, negación de síntomas neurológicos y nocturnos. Tratamientos Previos: confirmado paracetamol con poco alivio. Cribado de Seguridad: verificada la alerta positiva de cefalea con signos de alarma y derivación urgente indicada. Dolor: comprobado NRS 6/10, picos de 9/10, irritabilidad moderada, naturaleza nociceptiva y signo comparable. Movilidad: verificada limitación en rotación derecha y hipomovilidad C0-C3. Pruebas Clínicas: confirmado test de flexión-rotación cervical positivo y hallazgos de restricción C1-C2. Limitaciones y Restricciones: verificado impacto en jornada laboral y gimnasio. Conclusiones y Plan: comprobada derivación urgente indicada correctamente, suspensión del tratamiento de fisioterapia. Plan de tratamiento propuesto después de valoración médica: detectado contenido técnico detallado. Coherencia: revisada argumentación de las hipótesis. Seguimiento: verificado NDI recomendado.",
+    "puntos": [
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "El abordaje incluirá manipulación o movilización cervical y cervicotorácica combinada con programa de ejercicio terapéutico que integre estiramiento, fortalecimiento y trabajo de resistencia de la musculatura cervical y de la cintura escapular.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan describe técnicas específicas de tratamiento (manipulación, movilización, ejercicio terapéutico) cuando la pauta indica claramente no proponer tratamiento ni técnicas, ni siquiera condicionados."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Se incorporará entrenamiento específico de flexión craneocervical con biofeedback de presión, comenzando con el dispositivo inflado a 20 mmHg y progresando en escalones de 2 mmHg (desde 22 hasta 30 mmHg), con apoyos repetidos de 5 a 10 segundos en cada nivel",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan incluye dosis específicas y protocolos detallados cuando la pauta indica explícitamente no proponer dosis ni tratamiento condicionado."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Antes de aplicar manipulación cervical, se realizará el cribado vascular siguiendo el protocolo del marco IFOMPT.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan describe procedimientos concretos de cribado vascular y aplicación de manipulación cuando no debía proponerse tratamiento condicionado."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Dada la elevada puntuación en el cribado psicosocial, será necesario integrar componentes de educación en neurociencia del dolor, estrategias de afrontamiento activo y modificación de creencias catastrofistas sobre el movimiento cervical",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan propone intervenciones psicoeducativas específicas cuando la pauta indica que no se proponga tratamiento hasta después de la valoración médica."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Se abordarán pautas de higiene postural y gestión de cargas durante la jornada laboral frente al ordenador.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan incluye pautas de higiene postural cuando no debía proponerse ningún tratamiento condicionado."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "catastrofización ante la posibilidad de provocar daño al girar el cuello",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "El término 'catastrofización' no aparece en los datos; solo consta 'miedo al movimiento' y 'componente emocional'."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "medio",
+        "cita": "Una vez completada la valoración médica urgente y descartada patología intracraneal aguda, el plan de tratamiento propuesto se basará en las recomendaciones de la guía de práctica clínica de la APTA para cefalea cervicogénica en fase crónica.",
+        "evidencia": "Plan: derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados («una vez descartado…»).",
+        "mensaje": "El plan describe un tratamiento futuro condicionado basándose en guías específicas cuando la pauta prohíbe expresamente proponer tratamientos condicionados."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8170,
+    "output": 1706
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "aumentando a 6 sobre 10 por la noche si se recuesta sobre ese lado",
+        "evidencia": "Transcripción: «Durante el día un 4 o más o menos, pero por la noche si me tumbo sobre ese lado llega a un 6 de 10.»",
+        "mensaje": "El informe dice que el dolor aumenta a 6/10 por la noche al recostarse sobre ese lado, pero el paciente refirió que por la noche llega a 6/10 (no que aumenta a ese valor desde otro)."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "aunque también describe despertares ocasionales al girarse en la cama",
+        "evidencia": "No consta en los datos ni en la transcripción",
+        "mensaje": "No consta que el paciente refiera despertares al girarse en la cama."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "No refiere hormigueo, aunque alguna noche nota la mano dormida, que cede al moverla.",
+        "evidencia": "Datos: «¿Y notas hormigueos en el brazo o en la mano? → Alguna noche se me duerme un poco la mano, sí, pero se me pasa al moverla.» La pregunta formulada era sobre hormigueo/mano dormida.",
+        "mensaje": "El informe dice 'No refiere hormigueo' pero luego dice que nota la mano dormida; mano dormida es la respuesta del paciente a la pregunta sobre hormigueos."
+      },
+      {
+        "tipo": "repetido",
+        "nivel": "medio",
+        "cita": "no cargar peso con el brazo operado hasta la próxima revisión programada para mediados de noviembre",
+        "evidencia": "Aparece en Factores Personales («miedo a que se mueva el material»), Intervención Quirúrgica («no cargar peso... hasta mediados de noviembre»), y Conclusiones y Plan («respetando la restricción de no cargar peso... hasta la revisión de mediados de noviembre»).",
+        "mensaje": "La restricción de no cargar peso hasta la revisión de noviembre se repite en tres secciones distintas."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8029,
+    "output": 654
+  }
+}

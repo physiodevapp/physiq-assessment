@@ -1,0 +1,11 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Contextuales: comprobado edad, HTA, enalapril, ibuprofeno, signos vitales, IMC, preocupación por cirugía, paseos con el perro acortados, riesgo psicosocial medio. Presentación Inicial y Antecedentes: comprobado inicio hace 8 meses, insidioso, sin traumatismo, episodio previo hace 5 años que duró unas semanas, empeoramiento progresivo, sin antecedentes de cirugía. Tratamientos Previos: comprobado calor/frío e ibuprofeno con alivio parcial. Cribado de Seguridad: comprobado banderas rojas y cribado sistémico negativos. Dolor: comprobado localización central, NRS 5/10 hoy, 7/10 última semana según formulario, 8/10 tras estar de pie según consulta, empeora al final del día, alivio con decúbito supino con flexión, signo comparable extensión + rotación derecha, irritabilidad moderada, sin irradiación, sin cambio de lado. Movilidad: comprobado extensión + rotación derecha reproduce dolor. Pruebas Clínicas: comprobado hallazgos de claudicación vascular, patrón de dolor en rangos finales con sensación de fallo, palpación PA unilateral dolorosa derecha, tests de inestabilidad y facetario. Limitaciones en las Actividades: comprobado dificultad para caminar más de 10-15 minutos con carga en pantorrillas, dificultad de pie en cocina, dolor al levantarse, con extensión, de pie parado, sin dolor con tos/estornudo ni sentado ni en flexión. Restricciones en la Participación: comprobado reducción de paseos con el perro. Conclusiones y Plan: comprobado derivación a atención primaria para valoración vascular, inicio de ejercicio sin esperar, ejercicio de activación de tronco y control de movimiento, criterio de dolor ≤5/10 y <24h, hacer ejercicios tras paseo matutino, continuar paseos fraccionados, técnicas de terapia manual, educación. Seguimiento Funcional: comprobado ODI/RMDQ con MCID, criterios de reconsideración para radiofrecuencia.",
+    "puntos": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 9506,
+    "output": 650
+  }
+}

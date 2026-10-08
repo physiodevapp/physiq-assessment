@@ -1,0 +1,67 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Una vez completada la valoración médica urgente y descartada patología intracraneal aguda, el plan de tratamiento propuesto se basará en las recomendaciones de la guía de práctica clínica de la APTA para cefalea cervicogénica en fase crónica. El abordaje incluirá manipulación o movilización cervical y cervicotorácica combinada con programa de ejercicio terapéutico que integre estiramiento, fortalecimiento y trabajo de resistencia de la musculatura cervical y de la cintura escapular.",
+        "evidencia": "Plan en datos de valoración: «derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados».",
+        "mensaje": "Se describe un plan de tratamiento específico (manipulación, movilización, ejercicio terapéutico) condicionado («una vez completada la valoración médica»), cuando la pauta de valoración prohíbe explícitamente proponer técnicas, dosis ni condicionados ante una derivación urgente."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Se incorporará entrenamiento específico de flexión craneocervical con biofeedback de presión, comenzando con el dispositivo inflado a 20 mmHg y progresando en escalones de 2 mmHg (desde 22 hasta 30 mmHg), con apoyos repetidos de 5 a 10 segundos en cada nivel",
+        "evidencia": "Plan en datos de valoración: «derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis».",
+        "mensaje": "Se prescriben técnicas concretas con dosis precisas (presiones en mmHg, progresiones, tiempos de apoyo), cuando la pauta de valoración prohíbe explícitamente proponer tratamiento y dosis ante una derivación urgente."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Dada la elevada puntuación en el cribado psicosocial, será necesario integrar componentes de educación en neurociencia del dolor, estrategias de afrontamiento activo y modificación de creencias catastrofistas sobre el movimiento cervical",
+        "evidencia": "Plan en datos de valoración: «derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis, tampoco condicionados».",
+        "mensaje": "Se propone un tratamiento psicosocial (educación, estrategias de afrontamiento) cuando ante derivación urgente no debe haber plan de tratamiento."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Se abordarán pautas de higiene postural y gestión de cargas durante la jornada laboral frente al ordenador.",
+        "evidencia": "Plan en datos de valoración: «derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis».",
+        "mensaje": "Se proponen pautas de higiene postural y gestión de cargas cuando ante derivación urgente no debe haber plan de tratamiento."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Antes de aplicar manipulación cervical, se realizará el cribado vascular siguiendo el protocolo del marco IFOMPT.",
+        "evidencia": "Plan en datos de valoración: «derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no propongas tratamiento, técnicas ni dosis».",
+        "mensaje": "Se prescribe un protocolo de cribado vascular antes de manipulación cuando ante derivación urgente no debe haber plan de tratamiento."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "se indica derivación urgente a los servicios de urgencias hospitalarias en el día de hoy para descartar patología intracraneal aguda, como hemorragia subaracnoidea u otras causas graves de cefalea secundaria",
+        "evidencia": "Datos de valoración: «DERIVACIÓN URGENTE indicada en el cribado (debe constar en el informe): Cefalea con signos de alarma: derivación a urgencias hoy.» La indicación de los servicios de urgencias y la especificación de «patología intracraneal aguda» y «hemorragia subaracnoidea» no constan en los datos de valoración.",
+        "mensaje": "Se especifica la derivación urgente a «servicios de urgencias hospitalarias» para descartar «patología intracraneal aguda, como hemorragia subaracnoidea» cuando los datos de valoración solo indican «derivación a urgencias hoy» sin especificar diagnósticos diferenciales a descartar."
+      },
+      {
+        "tipo": "plan",
+        "nivel": "alto",
+        "cita": "Si tras la intervención de fisioterapia no se obtiene mejoría en la cefalea con el tratamiento dirigido a la región cervical, será necesario reconsiderar otras formas de cefalea, incluyendo la valoración de la articulación temporomandibular y la posible coexistencia de migraña, dado que el 30 por ciento de los pacientes con cefalea cervicogénica cumplen también criterios diagnósticos de migraña.",
+        "evidencia": "Plan en datos de valoración: «derivación urgente. La pauta de fisioterapia se decidirá después de la valoración médica: no proponjas tratamiento, técnicas ni dosis, tampoco condicionados». Esta sección es un plan de tratamiento condicional y una guía de cuándo reconsiderar, que no corresponde incluir ante una derivación urgente.",
+        "mensaje": "Se incluye un plan condicional de intervención de fisioterapia («si tras la intervención... será necesario reconsiderar») cuando ante derivación urgente no debe haber plan de tratamiento ni condicionados."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "alto",
+        "cita": "sin mecanismo traumático identificable",
+        "evidencia": "Datos de valoración. Mecanismo: Insidioso. Traumatismo es un tipo específico de mecanismo (latigazo), no sinónimo de «mecanismo de instauración». El mecanismo es insidioso, no hay datos de traumatismo, pero el informe inventa una «falta de mecanismo traumático identificable» que va más allá de lo que consta.",
+        "mensaje": "Se describe «sin mecanismo traumático identificable» de forma que sugiere búsqueda activa, cuando los datos solo consignan «Mecanismo: Insidioso» sin referencia a ausencia de traumatismo."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 7676,
+    "output": 1857
+  }
+}

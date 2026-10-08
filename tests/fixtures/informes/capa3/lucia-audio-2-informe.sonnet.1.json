@@ -1,0 +1,47 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Contextuales: verificada edad, actividad física y factores personales. Presentación Inicial y Antecedentes: comprobada la descripción del inicio, evolución y antecedentes. Dolor: cotejada intensidad, localización, comportamiento nocturno, irritabilidad y síntomas asociados. Pruebas Clínicas: revisados tests realizados y hallazgos de exploración. Limitaciones y Restricciones: verificadas actividades afectadas y participación. Plan de Tratamiento: comprobada coherencia con pauta PhysiQ y indicaciones del fisioterapeuta.",
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Refiere que el dolor ha permanecido estable desde el inicio, aunque también describe un empeoramiento en las dos últimas semanas coincidiendo con el aumento del volumen de entrenamiento en kilómetros.",
+        "evidencia": "DATOS: Evolución reciente del cuadro: Estable. TRANSCRIPCIÓN: «¿Y cómo ha ido evolucionando todo desde que empezó? Al principio, igual todo el rato. Pero estas últimas dos semanas creo que va a peor, porque he subido los kilómetros.»",
+        "mensaje": "El informe presenta como contradicción («permanecido estable» vs «empeoramiento en las dos últimas semanas») lo que son dos momentos distintos: estable hasta hace dos semanas, luego peor. No es contradictorio; la redacción con «aunque» sugiere conflicto donde no lo hay, pero no es un error de contenido según las reglas (una frase que da las dos versiones con «aunque» es correcta). Retirar este punto."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Refiere que el dolor no le despierta por la noche, aunque también describe despertares ocasionales al girarse en la cama cuando dobla mucho la rodilla.",
+        "evidencia": "DATOS: ¿Le despierta por la noche? → No. TRANSCRIPCIÓN: «¿Y te despierta por la noche también el dolor? Bueno, alguna noche sí, cuando me doy la vuelta en la cama y doblo mucho la rodilla.»",
+        "mensaje": "El informe presenta correctamente ambas versiones (formulario dice No, consulta dice Sí alguna noche) en una sola frase con «aunque». Esto cumple la regla de discrepancias. No es error. Retirar este punto."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "medio",
+        "cita": "paciente de 34 años",
+        "evidencia": "TRANSCRIPCIÓN: «¿Cuántos años tienes ahora? 35. Bueno, los cumplo la semana que viene. Todavía tengo 34.» DATOS: Edad: 34 años.",
+        "mensaje": "La edad es 34 años según los datos y la transcripción (aclara que aún tiene 34). El informe lo recoge correctamente. No es error. Retirar este punto."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "La rodilla derecha presenta molestias leves al descender escaleras, aunque de menor intensidad que la izquierda.",
+        "evidencia": "TRANSCRIPCIÓN: «¿Y la otra rodilla? La derecha también me empieza a molestar un poco al bajar escaleras, pero mucho menos.»",
+        "mensaje": "Las molestias en rodilla derecha están respaldadas por la transcripción. No es error. Retirar este punto."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "El test de Clark, que consiste en la contracción isométrica del cuádriceps contra resistencia con la rodilla en extensión, provoca dolor leve.",
+        "evidencia": "TRANSCRIPCIÓN: «Ahora te hago el test de Clark. Empuja la rodilla contra la camilla. ¿Duele? Sí, un poco.» No consta este test en la lista de Tests de confirmación realizados.",
+        "mensaje": "El test de Clark aparece en la transcripción con resultado positivo («Sí, un poco»). Está respaldado por la transcripción, que es fuente válida. No es error. Retirar este punto."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8871,
+    "output": 1204
+  }
+}

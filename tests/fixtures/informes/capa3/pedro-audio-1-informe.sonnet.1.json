@@ -1,0 +1,54 @@
+{
+  "result": {
+    "repaso": "Condición de Salud y Factores Contextuales: comprobado diagnóstico médico, antecedente de fractura, factores personales, comorbilidades, signos vitales y restricciones del cirujano. Historia Clínica y Evolución: verificados antecedentes, intervención quirúrgica, cronología y cribado de seguridad. Evaluación de Funciones y Estructuras Corporales: contrastada intensidad del dolor, parestesias, irritabilidad, signo comparable, movilidad, pruebas cervicales y tests clínicos. Limitaciones en la Actividad: comprobadas actividades que reproducen dolor. Restricciones en la Participación: verificada restricción de ciclismo. Conclusiones y Plan: revisado plan terapéutico, dosificación, seguimiento funcional y coordinación con cirujano.",
+    "puntos": [
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Describe episodios ocasionales de parestesia en la mano que se resuelven espontáneamente con el movimiento.",
+        "evidencia": "Dolor → Niega: Hormigueo en el brazo o la mano que va y viene: No. En la transcripción el paciente dice «Alguna noche se me duerme un poco la mano, sí, pero se me pasa al moverla» cuando el fisioterapeuta pregunta «¿Y notas hormigueos en el brazo o en la mano?»",
+        "mensaje": "El informe dice que el paciente niega parestesias intermitentes en la sección Dolor, pero luego describe «episodios ocasionales de parestesia en la mano». Los datos registran que niega hormigueos que van y vienen; en la consulta refiere adormecimiento nocturno ocasional de la mano."
+      },
+      {
+        "tipo": "contradice",
+        "nivel": "alto",
+        "cita": "Niega crujidos o roces articulares, sensaciones de enganche o bloqueo, episodios de pérdida súbita de fuerza tipo \"brazo muerto\" o parestesias intermitentes relacionadas con la posición del miembro.",
+        "evidencia": "En la transcripción el paciente dice «Alguna noche se me duerme un poco la mano, sí, pero se me pasa al moverla» cuando se le pregunta «¿Y notas hormigueos en el brazo o en la mano?»",
+        "mensaje": "El informe dice que el paciente niega parestesias intermitentes, pero en la consulta refiere adormecimiento nocturno ocasional de la mano que cede con movimiento."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "alto",
+        "cita": "No manifiesta aprensión o inseguridad al posicionar el brazo en elevación y rotación externa, como en el gesto de lanzamiento.",
+        "evidencia": "En la transcripción: «¿Te da miedo mover el brazo? Un poco, la verdad. Me da miedo que se me mueva el clavo si esfuerzo.»",
+        "mensaje": "El informe dice que no manifiesta aprensión, pero en la consulta el paciente refiere miedo a mover el brazo por temor a que se mueva el clavo."
+      },
+      {
+        "tipo": "atribucion",
+        "nivel": "alto",
+        "cita": "Se indicó al paciente que puede mantener la actividad en bicicleta estática, evitando la bicicleta de carretera hasta la autorización del cirujano en la revisión de noviembre, tal como se le había indicado previamente.",
+        "evidencia": "En la transcripción el fisioterapeuta dice: «De momento bici estática sí, la de carretera no hasta la revisión de noviembre». No consta que esta indicación se le hubiera dado previamente.",
+        "mensaje": "El informe atribuye la indicación sobre la bicicleta a algo ya indicado previamente, cuando es el fisioterapeuta quien la da por primera vez en esta consulta."
+      },
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "con consolidación ósea confirmada por el cirujano",
+        "evidencia": "En la transcripción el paciente dice: «El traumatólogo me dijo en la última revisión que el hueso ya ha soldado bien». Es el traumatólogo quien lo confirmó, no consta que sea el cirujano.",
+        "mensaje": "El informe atribuye la confirmación de consolidación al cirujano, pero el paciente refiere que fue el traumatólogo quien se lo dijo."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "La restricción global de movilidad pasiva, especialmente en rotación externa, es coherente con la evolución esperable en el período posquirúrgico de cuatro meses tras osteosíntesis por fractura de húmero proximal.",
+        "evidencia": "En la pauta de PhysiQ, el texto «Cuándo reconsiderar o derivar» y «Pronóstico» son para el fisioterapeuta, no para interpretar los hallazgos o explicar al paciente. La atribución de hallazgos a la evolución esperable no debe señalarse según las instrucciones.",
+        "mensaje": "No procede señalar (se excluye según reglas: atribuir hallazgos a evolución esperable)."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 8733,
+    "output": 1454
+  }
+}

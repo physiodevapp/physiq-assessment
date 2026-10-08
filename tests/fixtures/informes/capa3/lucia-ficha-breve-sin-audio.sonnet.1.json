@@ -1,0 +1,11 @@
+{
+  "result": {
+    "repaso": "Presentación Clínica: He verificado el mecanismo de inicio, cronología, síntomas referidos, intensidad del dolor, actividades desencadenantes, síntomas negados, banderas rojas, cribado sistémico y lo pendiente de completar. Hallazgos y Codificación CIF: He comprobado el signo comparable, los tests realizados, los resultados positivos y la correspondencia de los códigos CIF con los hallazgos descritos. Objetivos y Plan: He revisado los criterios de dosificación, las escalas de seguimiento y los plazos de reevaluación propuestos.",
+    "puntos": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 7063,
+    "output": 204
+  }
+}

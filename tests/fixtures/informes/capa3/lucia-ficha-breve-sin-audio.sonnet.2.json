@@ -1,0 +1,11 @@
+{
+  "result": {
+    "repaso": "PRESENTACIÓN CLÍNICA: He verificado el mecanismo, cronología, síntomas referidos, banderas rojas, cribado sistémico, riesgo psicosocial, y lo pendiente de completar. HALLAZGOS Y CODIFICACIÓN CIF: He comprobado el signo comparable, los tests realizados, los códigos CIF asignados a cada hallazgo y las limitaciones funcionales descritas. OBJETIVOS Y PLAN: He revisado los criterios de dosificación, las escalas de seguimiento y los plazos de reevaluación propuestos.",
+    "puntos": []
+  },
+  "truncated": false,
+  "usage": {
+    "input": 7063,
+    "output": 192
+  }
+}

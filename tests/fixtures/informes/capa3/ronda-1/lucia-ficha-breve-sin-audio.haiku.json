@@ -1,0 +1,32 @@
+{
+  "result": {
+    "puntos": [
+      {
+        "tipo": "no-respaldado",
+        "nivel": "medio",
+        "cita": "habiendo aumentado recientemente la frecuencia de sus entrenamientos de carrera",
+        "evidencia": "En los últimos meses, ¿ha cambiado algo? → Entreno más días u horas",
+        "mensaje": "El aumento de entrenamientos se refiere a los últimos meses, no explícitamente a un cambio reciente; sin embargo, el informe interpreta como cambio temporal reciente lo que los datos presentan solo como cambio general en el tiempo."
+      },
+      {
+        "tipo": "lectura",
+        "nivel": "medio",
+        "cita": "Los grupos de criterios de Décary para dolor patelofemoral resultan positivos",
+        "evidencia": "Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva): positivo",
+        "mensaje": "Los datos registran un único resultado positivo consolidado de los criterios de Décary, no enumera los componentes individuales como si hubieran sido evaluados por separado."
+      },
+      {
+        "tipo": "omision",
+        "nivel": "medio",
+        "cita": "",
+        "evidencia": "Crujidos, chasquidos o resaltes al moverla: Sí",
+        "mensaje": "El informe menciona que refiere crujidos pero no integra este hallazgo en la sección de hallazgos o en el plan; es un síntoma reportado que no se desarrolla en la codificación CIF."
+      }
+    ]
+  },
+  "truncated": false,
+  "usage": {
+    "input": 6569,
+    "output": 441
+  }
+}
