@@ -1,0 +1,193 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-08T21:33:56.696Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Daniel Ortega",
+    "motivoConsulta": "Dolor en la ingle derecha al chutar y al subir al coche desde hace unas siete semanas.",
+    "edadPaciente": 27,
+    "sexo": "Hombre",
+    "signosVitales": {
+      "fc": 58,
+      "fr": null,
+      "spo2": null,
+      "tas": null,
+      "tad": null
+    },
+    "antropometria": {
+      "talla": 180,
+      "peso": 76
+    },
+    "mecanismo": "Insidioso",
+    "cronologia": "Subagudo",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Bajo",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "cadera",
+    "lado": "Derecho",
+    "sistemicoAnswers": {
+      "c5": "NO",
+      "ca_on2": "NO",
+      "ca_on3": "NO",
+      "ca_on4": "NO",
+      "c2": "NO",
+      "ca_v2": "NO",
+      "ca_v3": "NO",
+      "c3": "NO",
+      "ca_u2": "NO",
+      "ca_u3": "NO",
+      "ca_u4": "NO",
+      "c4": "NO",
+      "ca_gi2": "NO",
+      "ca_gi3": "NO",
+      "ca_os1": "NO",
+      "ca_os2": "NO",
+      "ca_os3": "NO",
+      "ca_os4": "NO",
+      "ca_in1": "NO",
+      "ca_in2": "NO",
+      "ca_in3": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {},
+    "severidad": 4,
+    "irritabilidad": {
+      "dolor": "Media (4-6/10)",
+      "reposo": "Ausente",
+      "movimiento": "Al final del rango",
+      "discapacidad": "Leve",
+      "tolerancia": "Moderada"
+    },
+    "irritabilidadNivel": "Baja",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Nociceptiva",
+    "estabilidad": "Estable",
+    "signoComparable": "La extensión pasiva de la cadera derecha en Thomas modificado reproduce el dolor inguinal.",
+    "activeHypotheses": [
+      "ca17"
+    ],
+    "treeAnswers": {
+      "ca_step1": "no",
+      "ca_step1b": "no",
+      "ca_step2": "no",
+      "ca_step3": "no",
+      "ca_step4": "no",
+      "ca_step5": "no",
+      "ca_step6": "psoas",
+      "ca_step7": "no"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "ca17": {
+        "0": "pos",
+        "1": "neg",
+        "2": "pos"
+      }
+    },
+    "hypothesisScores": {
+      "ca17": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 2/3 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      }
+    },
+    "derivacionResuelta": {},
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Dolor hasta 3/10 durante el ejercicio y que al día siguiente esté igual o mejor.",
+      "ventanaRecuperacion": "48 horas entre sesiones de fuerza.",
+      "anclajeHabito": ""
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "Hace unas siete semanas",
+        "desencadenante": "No, empezó poco a poco sin causa clara",
+        "inicio": "Poco a poco",
+        "primera_vez": "Sí",
+        "evolucion": "Va y viene",
+        "peor_momento_dia": [
+          "Durante el día, según lo que haga"
+        ],
+        "despierta": "No",
+        "dolor_max_semana": 6,
+        "tiempo_calmarse": "Unas horas",
+        "actividad_1": "Chutar con la derecha",
+        "actividad_2": "Subir al coche",
+        "probado": [
+          "Reposo",
+          "Medicación"
+        ],
+        "probado_sirvio": "Al descansar mejora, pero vuelve al jugar",
+        "medicacion": "Ibuprofeno algunos días"
+      },
+      "regiones": {
+        "cadera": {
+          "provoca": {
+            "agacharse": "Sí",
+            "coche": "Sí",
+            "calzarse": "No",
+            "levantarse": "No",
+            "caminar": "No",
+            "escaleras": "Sí",
+            "lado": "No",
+            "cruzar": "No",
+            "una_pierna": "No",
+            "separar": "No",
+            "toser": "No"
+          },
+          "nota": {
+            "chasquido": "Sí",
+            "bloqueo": "No",
+            "falla": "No",
+            "quemazon": "No",
+            "rigidez": "No sé"
+          },
+          "infancia": "No",
+          "deporte": "Fútbol en una liga amateur",
+          "dias": "3 o 4",
+          "cambios": [
+            "Entreno más fuerte"
+          ],
+          "gesto": "No",
+          "cuando_duele": [
+            "Al acabar",
+            "Con descanso mejora, pero vuelve al retomar"
+          ]
+        }
+      }
+    },
+    "rom": null
+  }
+}

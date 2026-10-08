@@ -1680,8 +1680,8 @@ test('datos ampliados: edad, fase 3, árbol, tests, criterios y pauta solo cuand
   const t = IN.bloquesAmpliados(a).join('\n');
   for (const x of ['Signo comparable', 'Flexión lumbar', 'Empeorando', 'tolerancia al estrés físico Baja', 'Miedo al movimiento → Sí',
     'Dolor lumbar inflamatorio (2/4)', '¿SLR positivo? → SÍ — SLR <60°', 'Slump: positivo (parte del cluster «Cluster de Laslett»)',
-    'CPR Flynn: negativo (regla pronóstica', 'Pauta: Movilidad neural', 'Fuente: NICE NG59', 'Pronóstico: 6-12 semanas',
-    'Cuándo reconsiderar o derivar: Déficit progresivo', 'seguimiento: ODI', 'Derivar: sin tratamiento']) assert.ok(t.includes(x), `falta «${x}»`);
+    'CPR Flynn: negativo (regla pronóstica', 'Pauta: Movilidad neural', 'Fuente: NICE NG59', 'Pronóstico (contexto para el fisioterapeuta: no es plan ni explicación al paciente): 6-12 semanas',
+    'Cuándo reconsiderar o derivar (contexto para el fisioterapeuta: no es plan ni explicación al paciente): Déficit progresivo', 'seguimiento: ODI', 'Derivar: sin tratamiento']) assert.ok(t.includes(x), `falta «${x}»`);
   const vacio = { edad: null, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [], arbol: [], tests: [], pautas: [] };
   assert.deepEqual(IN.bloquesAmpliados(vacio), [], 'sin datos, ningún bloque');
   assert.deepEqual(IN.bloquesAmpliados(null), []);
@@ -1806,7 +1806,7 @@ test('prompt: discrepancias con otras palabras, lo referido no se borra, cada in
     assert.ok(p.includes('También es una discrepancia cuando lo cuenta con otras palabras'));
     assert.ok(p.includes('no borra lo que refiere el paciente'));
     assert.ok(p.includes('Atribuye cada indicación a quien la dio'));
-    assert.ok(p.includes('sin usarlos para interpretar los hallazgos o los tests'));
+    assert.ok(p.includes('no los uses para interpretar los hallazgos o los tests'));
     assert.ok(p.includes('No añadas coordinación, comunicación ni reevaluaciones con otros profesionales'));
     assert.ok(p.includes('La cirugía y sus restricciones no son factores ambientales'));
   }
@@ -2020,7 +2020,7 @@ test('prompt: reglas de la revisión con informes reales, en las dos plantillas'
       assert.match(p, /no es una discrepancia: recógelo tal cual. No escribas que algo «no se menciona», «no se confirma»/, `${nombre}: lo que solo consta en una fuente no es discrepancia`);
       assert.match(p, /otra zona u otro lado.*UNA vez como algo que refiere el paciente.*nunca en Pruebas Clínicas.*No le añadas plan, seguimiento, prevención/, `${nombre}: el otro lado, referido y sin plan inventado`);
       assert.match(p, /no escribas que la «confirman»/, `${nombre}: los tests apoyan, no confirman`);
-      assert.match(p, /El pronóstico y «Cuándo reconsiderar o derivar» son información para el fisioterapeuta/, `${nombre}: el pronóstico no se convierte en plan`);
+      assert.match(p, /El pronóstico y «Cuándo reconsiderar o derivar» son contexto para el fisioterapeuta: no los conviertas en acciones del plan, criterios de vuelta a la actividad/, `${nombre}: el pronóstico no se convierte en plan`);
     }
   }
   // Códigos CIF: limitados en la ficha (tiene sección propia); el narrativo, sin códigos
@@ -2712,6 +2712,11 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!ids('Llega a 8 sobre 10 al correr.', { transcripcion: 'llega a un 8 de 10' }).includes('nrs'));
     assert.ok(!ids('Llega a 8/10 al correr.', { transcripcion: 'llega a un ocho de diez' }).includes('nrs'));
     assert.ok(ids('Llega a 9/10 al correr.', { transcripcion: 'llega a un 8 de 10' }).includes('nrs'));
+    // …y la respuesta suelta tras «¿cuánto te duele de 0 a 10?» (Daniel: «llegó a un 7»)
+    const tr10 = '¿Cuánto te duele de 0 a 10? Ahora un 4. El domingo pasado, después del partido, llegó a un 7. ¿Notas algún ruido?';
+    assert.ok(!ids('Tras el partido llegó a 7 sobre 10.', { transcripcion: tr10 }).includes('nrs'));
+    assert.ok(ids('Tras el partido llegó a 9 sobre 10.', { transcripcion: tr10 }).includes('nrs'));
+    assert.ok(ids('Llega a 9/10.', { transcripcion: 'Me lo dijo un 9 de cada diez médicos.' }).includes('nrs'), 'sin la pregunta, «un 9» no cuenta');
     // El otro lado dicho en la consulta: punto medio a comprobar, no contradicción
     const otro = rev('También molestias en el hombro izquierdo.', { transcripcion: 'el izquierdo también me molesta' });
     assert.ok(otro.some(x => x.id === 'lado-otro' && x.nivel === 'medio') && !otro.some(x => x.id === 'lado'));
@@ -2844,6 +2849,39 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!ids('IMC de 25,2 (sobrepeso).', { datos: { an: { imc: 25.2 } } }).includes('imc'));
     assert.ok(!ids('IMC de 22 (normopeso).', { datos: { an: { imc: 22 } } }).includes('imc'));
   });
+  test('revisión: «para descartar» algo que no consta y negativos en Limitaciones (decimoquinta revisión)', () => {
+    const dx = ids(limpio + ' Si no mejora, ecografía para descartar bursitis o comunicación de la vaina.');
+    assert.ok(dx.includes('descartar-inventado'));
+    assert.ok(!dx.includes('descarta'), 'la misma frase no sale dos veces');
+    assert.ok(!ids(limpio + ' Se pide ecografía para descartar bursitis.', { transcripcion: 'creo que es una bursitis' }).includes('descartar-inventado'), 'consta en la consulta');
+    assert.ok(!ids(limpio + ' Se pedirá valoración para descartar otras causas de dolor persistente.').includes('descartar-inventado'), 'palabras genéricas');
+    assert.ok(!ids(limpio + ' La exploración permite descartar origen cervical.').includes('descartar-inventado'), 'solo «para descartar»');
+    const lim = '## ANÁLISIS DEL FUNCIONAMIENTO\n### Limitaciones en las Actividades\nLe cuesta chutar. No refiere limitación al caminar ni al calzarse.\n### Restricciones en la Participación\nFútbol.';
+    assert.ok(ids(lim).includes('limitaciones-negativas'));
+    assert.ok(ids(lim.replace('No refiere limitación al caminar ni al calzarse.', 'Niega dolor al toser.')).includes('limitaciones-negativas'));
+    assert.ok(!ids(lim.replace('No refiere limitación al caminar ni al calzarse.', '')).includes('limitaciones-negativas'));
+    assert.ok(!ids('### Dolor\nNiega dolor al toser.\n### Limitaciones en las Actividades\nLe cuesta chutar.\n### Restricciones en la Participación\nX.').includes('limitaciones-negativas'), 'en Dolor sí van');
+    assert.ok(!ids(lim, { plantilla: 'breve' }).includes('limitaciones-negativas'));
+  });
+  test('prompt: tests con «o» marcados, pronóstico como contexto, tiempos e imagen (decimoquinta revisión)', () => {
+    const b = IN.bloquesAmpliados({ tests: [{ hipotesis: 'Psoas', items: [
+      { test: 'Palpación dolorosa supra o infrainguinal', resultado: 'positivo' },
+      { test: 'Flexión resistida o extensión pasiva en Thomas modificado', resultado: 'negativo' },
+      { test: 'Test de Thomas', resultado: 'positivo' }] }] }).join('\n');
+    assert.match(b, /supra o infrainguinal: positivo \(positivo si se cumple al menos una de las alternativas: descríbelo con las mismas palabras, sin afirmar las dos\)/);
+    assert.ok(!/Thomas modificado: negativo \(positivo si/.test(b), 'solo los positivos');
+    assert.ok(!/Test de Thomas: positivo \(/.test(b), 'solo los que tienen alternativas');
+    const p = IN.PLANTILLAS.narrativo.prompt({ p: 'X', h: [{ name: 'H' }] }, { conAudio: true });
+    assert.match(p, /«hace X» se refiere al día de la consulta/);
+    assert.match(p, /Pruebas de imagen y derivaciones: recógelas solo como las indicó el fisioterapeuta, sin añadir qué se busca con ellas/);
+  });
+  test('formulario para la IA: en las matrices de actividades solo van las filas «Sí»', () => {
+    const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
+    const p = execFileSync(process.execPath, [join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'prompt-desde-json.mjs'), join(dir, 'valoracion-daniel-ortega-cadera.json'), 'narrativo'], { encoding: 'utf8' });
+    assert.match(p, /Agacharse o sentarse en una silla baja: Sí/);
+    assert.ok(!/Caminar: No/.test(p) && !/Cruzar las piernas: No/.test(p), 'los «No» de actividades no van');
+    assert.match(p, /se engancha o se bloquea: No/, 'los «No» de síntomas sí van');
+  });
   test('revisión: frecuencia inferida de una actividad («con regularidad», «de forma habitual»)', () => {
     const fq = (texto, fuente = '') => RI.frecuenciaInferida(texto, fuente);
     assert.equal(fq('Practica ciclismo de manera habitual.')?.actividad, 'el ciclismo');
@@ -2862,13 +2900,14 @@ console.log('\nrevisión automática del informe con IA');
     const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
     const casos = [
       ['valoracion-lucia-romero-audio.json', 'lucia-audio-1-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'repetido', 'fuentes', 'discrepancia-separada']],
-      ['valoracion-lucia-romero-audio.json', 'lucia-audio-2-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'confirma', 'repetido', 'seguimiento-fuera']],
+      ['valoracion-lucia-romero-audio.json', 'lucia-audio-2-informe.txt', 'lucia-audio-transcripcion.txt', ['lado-otro', 'confirma', 'repetido', 'seguimiento-fuera', 'limitaciones-negativas']],
       ['valoracion-lucia-romero-breve.json', 'lucia-ficha-breve-sin-audio.txt', null, ['fuentes']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'frecuencia', 'discrepancia-separada', 'repetido']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'frecuencia', 'repetido', 'estructura']],
-      ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero']],
+      ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero', 'limitaciones-negativas']],
       ['valoracion-carmen-vidal-tobillo-breve.json', 'carmen-audio-1-ficha-breve.txt', 'carmen-audio-transcripcion.txt', ['relleno', 'fuentes', 'repetido']],
       ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['plan-urgente', 'frecuencia', 'diagnostico', 'imc']],
+      ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
