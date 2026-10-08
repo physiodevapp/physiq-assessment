@@ -229,6 +229,7 @@ When modifying clinical content, keep `data/` isolated from logic — this separ
 - `.option-btn` — single-select button groups; active state uses class `selected`. Groups with no meaningful default (`selectOption`: mecanismo, cronología, naturaleza, estabilidad, psico_*; `selectPsico`: riesgoPsico) deselect back to `''` on a second click of the already-selected option. Groups that already default to a real value (`selectSQ`/`selectSistQ`, SI/NO screening — pre-selected `NO`) don't: there's no meaningful "unanswered" state to toggle back to, so switching to the other option is already a one-click undo.
 - `.accordion-row` — collapsible system panels in Phase 2 (managed by `setupSisObserver`)
 - `.hyp-card` — hypothesis test panels in Phase 4b (managed by `setupHypObserver`)
+- `.hyp-etq` — the hypothesis score label («🟢 Peso alto (LR× 5.9) · 3/3 hallazgos compatibles»), painted by `etiquetaHipHTML()` (`phase4b.js`) in the 4b header (`#score_<id>`) and the phase 5 card (`.hyp5-etiqueta`): the leading emoji goes in its own column, so a wrapped label keeps a hanging indent like the title's dot, and each `·`-separated part is `nowrap`, so the break falls after the `·`. Display only: `hypothesisScores[id].label` stays plain text with the emoji (`📋 Notas`, payload `sc`). Set the score with `innerHTML = etiquetaHipHTML(label)`, never `textContent`
 - `.card` / `.card-title` — standard card containers
 - `.alert .alert-{danger|warning|info|success}` — inline alert banners
 - Color coding: green = normal, orange = caution/yellow flag, red = alert/red flag

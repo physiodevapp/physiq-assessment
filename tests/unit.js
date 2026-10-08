@@ -10,7 +10,7 @@ import './dom-shim.mjs';
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
 const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, DOSIS_DERIVAR } = await import('../data.js');
-const { calcLRScore, parseLR, testPuntua } = await import('../phase4b.js');
+const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML } = await import('../phase4b.js');
 const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../app.js');
 const { state } = await import('../state.js');
@@ -34,6 +34,16 @@ test('all nd → Sin evaluar, totalLR=1', () => {
   assert.equal(r.colorClass, 'hyp-orange');
   assert.equal(r.totalLR,    1.0);
   assert.equal(r.evaluatedCount, 0);
+});
+
+test('etiquetaHipHTML: emoji aparte y salto tras «·»', () => {
+  const h = etiquetaHipHTML('🟢 Peso alto (LR× 5.9) · 3/3 hallazgos compatibles');
+  assert.ok(h.includes('<span class="hyp-etq-icono">🟢</span>'), h);
+  assert.ok(h.includes('<span class="hyp-etq-parte">Peso alto (LR× 5.9) ·</span> <span class="hyp-etq-parte">3/3 hallazgos compatibles</span>'), h);
+  assert.ok(etiquetaHipHTML('⚪ Sin LR aplicable').includes('<span class="hyp-etq-icono">⚪</span>'));
+  const sin = etiquetaHipHTML('Sin evaluar');
+  assert.ok(!sin.includes('hyp-etq-icono') && sin.includes('>Sin evaluar<'), sin);
+  assert.ok(etiquetaHipHTML('<b>').includes('&lt;b&gt;'));
 });
 
 test('one positive LR 3.7 → Peso moderado, hyp-orange', () => {
