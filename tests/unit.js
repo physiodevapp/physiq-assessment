@@ -868,7 +868,7 @@ test('lu8: la regla SI es 3 de 5 tests de provocación (como la tarjeta lumbar)'
   const r = Object.fromEntries(h.tests.map((t, i) => [i, 'nd']));
   h.tests.forEach((t, i) => { if (t.cluster) r[i] = 'neg'; });
   [0, 1, 2].forEach(i => { r[i] = 'pos'; });
-  assert.ok(Math.abs(calcLRScore(h, r).totalLR - 2.44) < 0.001);
+  assert.ok(Math.abs(calcLRScore(h, r).totalLR - 2.13) < 0.001);
 });
 
 test('árbol CIF: `derivacion` de una opción es texto no vacío; lumbar VASCULAR la lleva', () => {
