@@ -1,0 +1,69 @@
+INFORME DE FISIOTERAPIA
+Paciente: Tomás Ibáñez
+Edad: 47 años
+Sexo: Hombre
+Fecha: 9/10/2026
+Región valorada: Cervical (derecha)
+
+CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES
+
+Consulta por dolor cervical del lado derecho que se irradia hacia el brazo derecho hasta el antebrazo, de tres semanas de evolución e inicio insidioso.
+
+Factores Personales
+
+Paciente de 47 años, sexo masculino. Desempeña actividad laboral administrativa con exposición prolongada al trabajo con ordenador. Talla 178 cm, peso 84 kg, índice de masa corporal 26.5. Frecuencia cardíaca 70 latidos por minuto, tensión arterial 128/80 mmHg. Medicación actual: ibuprofeno a demanda para el dolor. Riesgo psicosocial bajo.
+
+HISTORIA CLÍNICA Y EVOLUCIÓN
+
+Presentación Inicial y Antecedentes
+
+El cuadro comenzó hace tres semanas de forma gradual, sin mecanismo traumático identificado. Refiere que el inicio del dolor se relaciona con mantener posturas prolongadas en el entorno laboral. Manifiesta haber presentado un episodio previo de tortícolis hace dos años que se resolvió en el transcurso de una semana. Desde el inicio del cuadro actual, la sintomatología se ha mantenido estable.
+
+Tratamientos Previos
+
+Ha mantenido reposo relativo y ha utilizado antiinflamatorios no esteroideos (ibuprofeno), con alivio parcial del dolor. Acudió a urgencias hace dos semanas, donde se realizó una radiografía que evidenció cambios compatibles con artrosis cervical. El médico de cabecera prescribió pregabalina e indicó el uso de collarín cervical durante algunos días.
+
+Cribado de Seguridad
+
+La exploración no muestra hallazgos que sugieran compromiso medular ni afectación sistémica. El cribado de banderas rojas resultó negativo.
+
+EVALUACIÓN DE FUNCIONES Y ESTRUCTURAS CORPORALES
+
+Dolor
+
+La intensidad del dolor en el momento de la valoración se sitúa en 5 sobre 10 en la escala numérica. Refiere que antes de la consulta el dolor no le despertaba por la noche, aunque durante la presente consulta manifiesta que esta semana el dolor del brazo le ha despertado en dos ocasiones nocturnas. En el peor momento de la última semana, el dolor alcanzó 8 sobre 10, mientras que al final de la jornada laboral alcanza 7 sobre 10. La irritabilidad del cuadro se clasifica como moderada: el dolor en reposo es intermitente, aparece antes del final del rango articular con el movimiento, y cuando se exacerba requiere varias horas para retornar al nivel basal. El dolor del brazo se describe con características de descarga eléctrica, y el paciente manifiesta que los movimientos del cuello provocan la irradiación del dolor hacia el miembro superior. Refiere alivio con los cambios posturales y con el movimiento. Niega cefaleas, mareos o sensación de inestabilidad. La naturaleza del dolor se clasifica como neuropática. El signo comparable es la extensión cervical combinada con rotación derecha, que reproduce el dolor irradiado hacia el brazo derecho hasta el antebrazo. Refiere también molestias en la zona lumbar, región que no fue explorada en esta valoración.
+
+Pruebas Clínicas
+
+Los hallazgos de la exploración apoyan la hipótesis de dolor radicular cervical. La maniobra de provocación neural del miembro superior, con sesgo hacia el nervio mediano (ULNT1), resultó positiva y mostró cambios con la diferenciación estructural. El movimiento cervical de extensión con rotación derecha reproduce la irradiación del dolor hacia el brazo. El paciente describe rasgos neuropáticos en forma de descargas eléctricas.
+
+Los hallazgos también son compatibles con disfunción articular cervical. La movilidad intervertebral pasiva accesoria de los segmentos cervicales altos (C0-C3) muestra hipomvilidad y respuesta dolorosa.
+
+ANÁLISIS DEL FUNCIONAMIENTO: LIMITACIONES EN LA ACTIVIDAD Y RESTRICCIONES EN LA PARTICIPACIÓN
+
+Limitaciones en las Actividades
+
+Refiere dificultad para trabajar con el ordenador y para conducir debido al dolor. La sintomatología se exacerba al mantener posturas prolongadas y con los movimientos del cuello.
+
+Restricciones en la Participación
+
+La actividad laboral como administrativo se encuentra afectada por la limitación en el uso del ordenador de forma prolongada.
+
+CONCLUSIONES Y PLAN DE TRATAMIENTO
+
+El cuadro clínico presenta un dolor cervical de predominio radicular, con irradiación al miembro superior derecho hasta el antebrazo, de tres semanas de evolución. Los hallazgos de la exploración son compatibles con dolor radicular cervical en fase aguda y con disfunción articular de la columna cervical alta. Se propone un abordaje basado en ejercicio terapéutico graduado, orientado a favorecer la movilización neural y la estabilización cervical, junto con modificaciones en la organización de las actividades laborales.
+
+Se ha indicado suspender el uso del collarín cervical y favorecer el movimiento controlado del cuello. El programa de ejercicio domiciliario incluye retracciones cervicales y deslizamientos neurales del miembro superior, con una dosificación de 10 repeticiones en 3 series al día, a realizar al finalizar la jornada laboral y antes del descanso nocturno. Se establece como criterio de dosificación que el dolor irradiado no supere 5 sobre 10 durante la ejecución de los ejercicios y que la irradiación no descienda más allá del codo. Se recomienda establecer pausas cada 45 minutos durante el trabajo con ordenador para favorecer cambios posturales y movilización cervical activa.
+
+La fisioterapia se programará dos veces por semana durante un periodo de seis semanas, con un total de 12 sesiones. El tratamiento se centrará en ejercicios de movilización y estabilización de la musculatura cervical superficial y profunda, sin terapia manual, ajustado a la irritabilidad del cuadro. Se enfatiza la importancia de mantener la actividad laboral y el movimiento dentro de los límites tolerables.
+
+Coherencia con hipótesis de valoración
+
+Los hallazgos de la exploración refuerzan la hipótesis de dolor radicular cervical, con presencia de provocación neural positiva con diferenciación estructural, reproducción del dolor del brazo con movimientos cervicales específicos y descripción de rasgos neuropáticos. Los hallazgos también apoyan la presencia de disfunción articular en la columna cervical alta, con hipomvilidad y dolor en las movilizaciones accesorias de los segmentos C0-C3. Ambas condiciones pueden coexistir y contribuir al cuadro clínico actual.
+
+SEGUIMIENTO FUNCIONAL
+
+Se utilizará el Neck Disability Index (NDI) para cuantificar la evolución funcional, con un cambio mínimo clínicamente importante de 7.5 a 18 puntos. Si tras seis semanas de tratamiento conservador no se observa mejoría significativa en la sintomatología del brazo, se valorará conjuntamente con el médico de cabecera la necesidad de reconsiderar el abordaje terapéutico.
+
+—
+Informe generado con PhysiQ-Assessment el 9/10/2026 (redacción asistida por IA).

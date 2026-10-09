@@ -598,6 +598,32 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "tomas-dictado-1-informe.txt",
+      "valoracion": "valoracion-tomas-ibanez-cervical.json",
+      "transcripcion": "tomas-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "tomas1-series",
+          "tipo": "plan",
+          "nivel": "medio",
+          "descripcion": "«10 repeticiones en 3 series al día»: el fisio dictó diez repeticiones tres veces al día",
+          "fragmentos": [
+            "10 repeticiones en 3 series al día"
+          ]
+        },
+        {
+          "id": "tomas1-artrosis",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«le dijeron que tenía algo de artrosis» pasa a «una radiografía que evidenció cambios compatibles con artrosis cervical»",
+          "fragmentos": [
+            "evidenció cambios compatibles con artrosis cervical"
+          ]
+        }
+      ]
     }
   ]
 }
