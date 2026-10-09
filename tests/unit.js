@@ -3215,6 +3215,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-marta-gil-rodilla.json', 'marta-dictado-2-informe.txt', 'marta-dictado-2-transcripcion.txt', ['lado-otro', 'genero', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
       ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-1-informe.txt', 'sergio-dictado-transcripcion.txt', ['lado-otro', 'indicacion-omitida', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
       ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-2-informe.txt', 'sergio-dictado-2-transcripcion.txt', ['lado-otro', 'indicacion-omitida', 'descarta', 'repetido', 'fuentes', 'fisiopatologia', 'atribucion', 'constantes', 'imagen-motivo']],
+      ['valoracion-rosa-martin-hombro.json', 'rosa-dictado-1-informe.txt', 'rosa-dictado-1-transcripcion.txt', ['lado-otro', 'genero', 'fuentes']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
