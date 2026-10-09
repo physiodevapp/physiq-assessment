@@ -16,6 +16,7 @@
 // se descarta — el informe de ejemplo del worker es de un paciente ficticio y
 // no puede mezclarse con una valoración real.
 
+import { ramaPauta } from './lib/pauta.js';
 import { state } from './state.js';
 import { CIF_TREES, HYPOTHESES, SYSTEMIC_SCREENING, DOSIS_DERIVAR } from './data.js';
 import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast, resumenFormularioIA, compartirTexto, registrarValoracionCompleta } from './app.js';
@@ -376,7 +377,9 @@ export function construirAmpliado() {
       // Si lo que la respuesta «orienta a» ya está diagnosticado y tratado, que
       // el prompt lo sepa (si no, lo lee como una sospecha abierta)
       const tratada = (op?.hypothesis || []).some(h => esTratada(h));
-      return { pregunta: st.question, respuesta: op?.label || state.treeAnswers[st.id], ...(tratada ? { tratada: true } : {}) };
+      // `iaPregunta`/`iaTexto`: el texto del paso o de la opción solo para el
+      // prompt, cuando el de pantalla lleva cifras o patrones didácticos
+      return { pregunta: st.iaPregunta || st.question, respuesta: op?.iaTexto || op?.label || state.treeAnswers[st.id], ...(tratada ? { tratada: true } : {}) };
     });
 
   const tests = [];
@@ -408,7 +411,9 @@ export function construirAmpliado() {
     pautas.push({
       hipotesis: h.name,
       derivar: h.dosis === DOSIS_DERIVAR,
-      pauta: h.dosis === DOSIS_DERIVAR ? '' : (h.dosis || ''),
+      // Con ramas (lib/pauta.js), solo la de este caso: con la pauta entera de ro2
+      // copió la rama degenerativa en una rotura traumática
+      pauta: h.dosis === DOSIS_DERIVAR ? '' : (ramaPauta(h, state)?.texto || h.dosis || ''),
       fuente: h.dosisFuente || '',
       ...(h.pronostico ? { pronostico: h.pronostico } : {}),
       prom: h.prom || '',
