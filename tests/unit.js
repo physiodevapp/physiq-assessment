@@ -1108,11 +1108,12 @@ test('tobillo y pie: solo puntúan Thompson, hueco palpable, Ottawa (LR−) y Mo
   assert.equal(lr('tp3', 'Thompson (Simmonds)', 'neg'), 0.04);
   assert.equal(lr('tp3', 'Hueco palpable', 'pos'), 6.64);
   assert.equal(lr('tp3', 'Hueco palpable', 'neg'), 0.3);
-  // Bachmann 2003: solo descarta (las dos reglas juntas); el positivo es hallazgo
-  assert.equal(lr('tp5', 'Reglas de Ottawa de tobillo y de pie', 'neg'), 0.21);
+  // Beckenkamp 2017 (bivariante), estudios con radiografía a todos: solo descarta
+  // (las dos reglas juntas, LR− 0,082); el positivo es hallazgo
+  assert.equal(lr('tp5', 'Reglas de Ottawa de tobillo y de pie', 'neg'), 0.082);
   assert.equal(lr('tp5', 'Reglas de Ottawa de tobillo y de pie', 'pos'), 1);
-  // Bachmann 2003: regla del tobillo sola, LR− 0,08; el positivo no puntúa
-  assert.equal(lr('tp37', 'Regla de Ottawa de tobillo', 'neg'), 0.08);
+  // Beckenkamp 2017: regla del tobillo sola, LR− 0,030; el positivo no puntúa
+  assert.equal(lr('tp37', 'Regla de Ottawa de tobillo', 'neg'), 0.03);
   assert.equal(lr('tp37', 'Regla de Ottawa de tobillo', 'pos'), 1);
   // Molloy 2003: LR calculadas de S 94,8 % y E 88 %
   assert.ok(Math.abs(lr('tp20', 'Signo de pinzamiento de Molloy', 'pos') - 7.9) < 0.01);
