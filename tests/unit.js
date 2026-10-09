@@ -2874,6 +2874,35 @@ console.log('\npaquete de revisión del informe con IA');
     assert.match(ficheros[2].texto, /sin incidencias/);
     assert.equal(PR.ficherosPaquete({ inf: { ...viejo, conAudio: true, transcripcion: 'Hola' }, informe: 'T', state: st, ahora }).ficheros[1].nombre, 'daniel-ortega-audio-ficha-breve.txt');
   });
+  const RV = await import('../lib/revision-informe.js');
+  test('revisados: la clave es regla + frase citada; el recuento separa puntos, altos y comprobaciones', () => {
+    const comprob = ['Atribución de cada indicación.', 'Otra zona o lado.'];
+    const vacio = RV.resumenRevisados(puntos, comprob, undefined);
+    assert.deepEqual([vacio.total, vacio.pendientes, vacio.altosPendientes, vacio.puntosPendientes, vacio.comprobacionesPendientes], [4, 4, 1, 2, 2]);
+    const marcados = [RV.clavePunto(puntos[1]), RV.claveComprobacion(comprob[0])];
+    const r = RV.resumenRevisados(puntos, comprob, marcados);
+    assert.deepEqual([r.pendientes, r.altosPendientes, r.puntosPendientes, r.comprobacionesPendientes], [2, 0, 1, 1]);
+    // La misma regla con otra frase es otro punto: no hereda la marca
+    const otra = { ...puntos[0], cita: 'normotenso' };
+    assert.notEqual(RV.clavePunto(otra), RV.clavePunto(puntos[0]));
+    assert.equal(RV.resumenRevisados([otra], [], [RV.clavePunto(puntos[0])]).puntosPendientes, 1);
+    // Sin cita (omisión): la clave usa el mensaje
+    assert.equal(RV.clavePunto(puntos[1]), 'p|urgencia|Falta la derivación.');
+  });
+  test('revisados: el paquete marca lo revisado en revision.txt; un informe nuevo empieza sin marcas', () => {
+    const conMarcas = { ...inf, revisados: [RV.clavePunto(puntos[0]), RV.claveComprobacion('Cada indicación…')] };
+    const rev = PR.ficherosPaquete({ inf: conMarcas, informe: 'T', state: st, puntos, comprobaciones: ['Cada indicación…', 'Otra zona.'], ahora })
+      .ficheros.find(f => f.nombre === 'revision.txt').texto;
+    assert.match(rev, /marcados como revisados: 1/);
+    assert.match(rev, /^\[MEDIO\] constantes: Clasifica las constantes\. \[revisado\]$/m);
+    assert.match(rev, /^\[ALTO\] urgencia: Falta la derivación\.$/m);
+    assert.match(rev, /^- Cada indicación… \[revisado\]$/m);
+    assert.match(rev, /^- Otra zona\.$/m);
+    const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+    const nuevo = src.slice(src.indexOf('state.informeIA = {'), src.indexOf('};', src.indexOf('state.informeIA = {')));
+    assert.ok(nuevo && !/revisados/.test(nuevo), 'el informe recién generado no arrastra marcas');
+    assert.equal(typeof globalThis.iaMarcarRevisado, 'function');
+  });
   test('paquete: la tarjeta guarda el prompt y la versión al generar, y el botón está expuesto', () => {
     const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
     assert.match(src, /prompt,\s+\/\/ el exacto que se envió/);
@@ -3206,9 +3235,9 @@ console.log('\nrevisión automática del informe con IA');
   });
   test('revisión: se pinta en la tarjeta, nunca en el payload ni en los resúmenes, y se despliega', () => {
     const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
-    assert.match(src, /import \{ revisarInforme, comprobacionesManuales \} from '\.\/lib\/revision-informe\.js';/);
+    assert.match(src, /import \{ revisarInforme, comprobacionesManuales[^}]*\} from '\.\/lib\/revision-informe\.js';/);
     assert.match(src, /<div id="iaRevision"><\/div>/);
-    assert.match(src, /catch \{ el\.innerHTML = ''; return; \}/, 'una regla rota no tumba la tarjeta');
+    assert.match(src, /catch \{ el\.innerHTML = '';( _rev\w+ = \[\];)? return; \}/, 'una regla rota no tumba la tarjeta');
     const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
     assert.ok(/cp lib\/[^\n]*lib\/revision-informe\.js[^\n]*physiq-hub\/assessment\/lib\//.test(wf), 'lib/revision-informe.js se copia al hub');
     const appSrc = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
