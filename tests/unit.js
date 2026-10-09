@@ -1681,6 +1681,7 @@ test('informeIA nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
 });
 
 const IA = await import('../informe-ia.js');
+const P = await import('../lib/pauta.js');
 
 test('datos ampliados: edad, fase 3, árbol, tests, criterios y pauta solo cuando hay datos', () => {
   const a = {
@@ -2666,10 +2667,59 @@ console.log('\nfase 5 plegable');
     }
   });
 
+  test('pauta por situación (lib/pauta.js): las ramas solo reparten frases de `dosis` y se eligen por el árbol o el mecanismo', () => {
+    const conRamas = Object.values(HYPOTHESES).filter(h => h.dosisRamas);
+    assert.deepEqual(conRamas.map(h => h.id), ['ro2'], 'hoy solo ro2 (decisión del usuario, 2026-10)');
+    for (const h of conRamas) {
+      const partes = [...h.dosisRamas.map(r => r.texto), h.dosisComun || ''];
+      const enRamas = partes.flatMap(P.frasesPauta);
+      for (const f of enRamas) assert.ok(h.dosis.includes(f), `${h.id}: «${f.slice(0, 60)}…» no está en dosis`);
+      for (const f of P.frasesPauta(h.dosis).filter(f => f.length >= 20))
+        assert.ok(enRamas.includes(f), `${h.id}: «${f.slice(0, 60)}…» de dosis no está en ninguna rama`);
+      for (const r of h.dosisRamas) {
+        assert.ok(r.titulo && r.texto && (r.si?.mecanismo || r.si?.arbol), `${h.id}: rama incompleta`);
+        for (const [paso, valor] of Object.entries(r.si.arbol || {})) {
+          const st = CIF_TREES[h.region].steps.find(s => s.id === paso);
+          const op = st?.options.find(o => o.value === valor);
+          assert.ok(op && op.hypothesis.includes(h.id), `${h.id}: ${paso}=${valor} debe existir y activar la hipótesis`);
+        }
+      }
+    }
+    const ro2 = HYPOTHESES.ro2;
+    assert.equal(P.ramaPauta(ro2, { mecanismo: 'Traumático', treeAnswers: { ro_step1: 'menisco', ro_step5: 'menisco' } }).rama.titulo, 'Rotura traumática, sin cirugía', 'la del paso 1 manda');
+    assert.equal(P.ramaPauta(ro2, { mecanismo: 'Insidioso', treeAnswers: { ro_step6: 'menisco' } }).rama.titulo, 'Lesión degenerativa, sin cirugía');
+    assert.equal(P.ramaPauta(ro2, { mecanismo: 'Post-quirúrgico', treeAnswers: { ro_step1: 'menisco' } }).rama.titulo, 'Tras una meniscectomía parcial');
+    assert.equal(P.ramaPauta(ro2, { mecanismo: '', treeAnswers: {} }), null, 'sin rama que encaje, la pauta entera');
+    assert.ok(P.ramaPauta(ro2, { treeAnswers: { ro_step1: 'menisco' } }).texto.endsWith(ro2.dosisComun));
+    assert.ok(!/electroestimulación/i.test(P.ramaPauta(ro2, { treeAnswers: { ro_step1: 'menisco' } }).texto), 'la traumática no lleva la electroestimulación');
+  });
+
+  test('pauta: los criterios de «derivar si no mejora» van en «Cuándo reconsiderar o derivar», no en la pauta', () => {
+    for (const id of ['ro2', 'h2', 'ce3']) {
+      assert.ok(!/\bderivar\b[^.]*\b(no mejora|persisten|siguen siendo)/i.test(HYPOTHESES[id].dosis), `${id}: sin criterio de no mejoría en la pauta`);
+      assert.match(HYPOTHESES[id].pronostico.derivacion, /[Dd]erivar[^.]*(no mejoran|persisten|siguen siendo intensos)/, `${id}: el criterio está en el pronóstico`);
+    }
+  });
+
+  test('pauta: la fase 5 pone delante la rama del caso y el informe con IA recibe solo esa', () => {
+    withState({ region: 'rodilla', mecanismo: 'Traumático', activeHypotheses: ['ro2'], treeAnswers: { ro_step1: 'menisco', ro_step5: 'menisco' }, testResults: {} }, () => {
+      const p = IA.construirAmpliado().pautas.find(x => x.hipotesis === HYPOTHESES.ro2.name);
+      assert.ok(p.pauta.startsWith('Rotura traumática'), p.pauta.slice(0, 40));
+      assert.ok(!/electroestimulación|Tras una meniscectomía/.test(p.pauta));
+    });
+    withState({ region: 'rodilla', mecanismo: '', activeHypotheses: ['ro2'], treeAnswers: {}, testResults: {} }, () => {
+      assert.equal(IA.construirAmpliado().pautas.find(x => x.hipotesis === HYPOTHESES.ro2.name).pauta, HYPOTHESES.ro2.dosis);
+    });
+    const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+    assert.match(src, /function _pautaConRamasHTML\(hyp\)[\s\S]{0,300}if \(!r\) return _pautaPlegableHTML\(hyp\.dosis, hyp\.dosisFuente\)/, 'sin rama, como antes');
+    assert.match(src, /Para este caso: \$\{r\.rama\.titulo\}/);
+    assert.match(src, /<details class="pauta-otras">/);
+  });
+
   test('lo que es seguridad no se pliega: la pauta «Derivar» y la nota posquirúrgica quedan fuera del <details>', () => {
     const src = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
-    assert.match(src, /!tratada && hyp\.dosis && hyp\.dosis !== DOSIS_DERIVAR\s*\? _pautaPlegableHTML/);
-    const tarjeta = src.slice(src.indexOf('_pautaPlegableHTML(hyp.dosis'), src.indexOf('🧭 Pronóstico y derivación'));
+    assert.match(src, /!tratada && hyp\.dosis && hyp\.dosis !== DOSIS_DERIVAR\s*\? _pautaConRamasHTML\(hyp\)/);
+    const tarjeta = src.slice(src.indexOf('? _pautaConRamasHTML(hyp)'), src.indexOf('🧭 Pronóstico y derivación'));
     assert.match(tarjeta, /\}`\}\s*\$\{cq && !tratada[^\n]*TEXTO_PAUTA_COMPATIBLE/, 'la nota posquirúrgica va después del bloque de la pauta, no dentro');
     assert.match(src, /addEventListener\('beforeprint'[\s\S]{0,200}#phase5 details:not\(\[open\]\)/, 'al imprimir se despliega');
   });
