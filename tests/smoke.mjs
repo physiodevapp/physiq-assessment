@@ -909,6 +909,10 @@ async function checkInformeNarrativo(browser, errors) {
   const casillas = page.locator('#iaRevision .ia-rev-check, #iaComprobar .ia-rev-check');
   const nCasillas = await casillas.count();
   for (let i = 0; i < nCasillas; i++) await casillas.nth(i).check();
+  // Marcar no cierra la caja de puntos (antes el «input» de la casilla
+  // repintaba la tarjeta 400 ms después y la caja volvía cerrada)
+  await page.waitForTimeout(700);
+  r.cajaSigueAbierta = await page.evaluate(() => { const d = document.querySelector('#iaRevision details'); return !d || d.open; });
   r.revisadosMarcados = nCasillas >= 2 && await page.evaluate(n => {
     const det = document.querySelector('#iaRevision details.ia-revision');
     return state.informeIA.revisados.length === n
