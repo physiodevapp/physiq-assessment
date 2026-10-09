@@ -805,6 +805,13 @@ async function checkInformeNarrativo(browser, errors) {
   // Revisión automática: aparece sola bajo el informe (puntos o «sin incidencias»)
   r.revision = await page.evaluate(() => !!document.querySelector('#iaRevision .ia-revision'));
   r.comprobar = await page.evaluate(() => document.querySelectorAll('#iaComprobar .ia-comprobar li').length >= 2);
+  // «⬇ Paquete de revisión»: al final, justo tras la fila de acciones clínicas y
+  // fuera de ella, con el texto completo
+  r.paquetePosicion = await page.evaluate(() => {
+    const p = document.querySelector('#iaResultado .ia-rev-paquete');
+    return !!p && p.previousElementSibling?.classList.contains('ia-acciones') && !p.nextElementSibling
+      && p.textContent.includes('Paquete de revisión');
+  });
   // «⬇ Paquete de revisión»: un .zip con informe, transcripción, puntos, valoración y prompt
   const [zipDescarga] = await Promise.all([page.waitForEvent('download'), page.click('#iaResultado .ia-rev-paquete button')]);
   const zipBytes = await new Promise((res, rej) => zipDescarga.createReadStream().then(st => {
