@@ -529,6 +529,33 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "sergio-dictado-1-informe.txt",
+      "valoracion": "valoracion-sergio-navarro-tobillo.json",
+      "transcripcion": "sergio-dictado-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "sergio-pinza",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "«La exploración mediante pinza confirma dolor entre los 2 y 6 centímetros»: la pista de la opción del árbol leída como prueba hecha (ronda 19: iaSinPista)",
+          "fragmentos": [
+            "La exploración mediante pinza confirma dolor entre los 2 y 6 centímetros"
+          ]
+        },
+        {
+          "id": "sergio-medico-omitido",
+          "tipo": "omision",
+          "nivel": "medio",
+          "descripcion": "Omite que el médico de cabecera le dijo que dejara de correr, que choca con la indicación del fisio de seguir corriendo suave",
+          "claves": [
+            "dejara de correr",
+            "médico de cabecera"
+          ]
+        }
+      ]
     }
   ]
 }

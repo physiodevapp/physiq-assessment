@@ -1,0 +1,185 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-09T15:42:17.180Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Sergio Navarro",
+    "motivoConsulta": "Dolor en el tendón de Aquiles derecho al correr desde hace unos dos meses.",
+    "edadPaciente": 45,
+    "sexo": "Hombre",
+    "signosVitales": {
+      "fc": 56,
+      "fr": null,
+      "spo2": null,
+      "tas": 124,
+      "tad": 78
+    },
+    "antropometria": {
+      "talla": 178,
+      "peso": 74
+    },
+    "mecanismo": "Insidioso",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "cronologia": "Subagudo",
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Bajo",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "tobillo_pie",
+    "lado": "Derecho",
+    "sistemicoAnswers": {
+      "tp_t1": "NO",
+      "tp_t2": "NO",
+      "tp_t3": "NO",
+      "tp_t4": "NO",
+      "tp_t5": "NO",
+      "tp_o1": "NO",
+      "tp_o2": "NO",
+      "tp_i1": "NO",
+      "tp_i2": "NO",
+      "tp_c1": "NO",
+      "tp_c2": "NO",
+      "tp_v1": "NO",
+      "tp_v2": "NO",
+      "tp_n1": "NO",
+      "tp_n2": "NO",
+      "tp_n3": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {},
+    "severidad": 3,
+    "irritabilidad": {
+      "dolor": "Baja (≤3/10)",
+      "reposo": "Ausente",
+      "movimiento": "Al final del rango",
+      "discapacidad": "Mínima",
+      "tolerancia": "Moderada"
+    },
+    "irritabilidadNivel": "Baja",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Nociceptiva",
+    "estabilidad": "Estable",
+    "signoComparable": "Elevación de talón a una pierna: dolor en la porción media del tendón derecho a partir de la décima repetición.",
+    "activeHypotheses": [
+      "tp8"
+    ],
+    "treeAnswers": {
+      "tp_step1": "no",
+      "tp_step4": "no",
+      "tp_step5": "no",
+      "tp_step6": "aquiles_media",
+      "tp_step7": "no",
+      "tp_step8": "no",
+      "tp_step9": "no",
+      "tp_step10": "no",
+      "tp_step11": "no",
+      "tp_step12": "no",
+      "tp_step13": "no"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "tp8": {
+        "0": "pos"
+      }
+    },
+    "hypothesisScores": {
+      "tp8": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 1/1 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      }
+    },
+    "derivacionResuelta": {},
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Dolor hasta 3/10 al correr y que al día siguiente esté igual o mejor.",
+      "ventanaRecuperacion": "48 horas entre días de carrera.",
+      "anclajeHabito": ""
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "Hace unos dos meses",
+        "desencadenante": "No, empezó poco a poco sin causa clara",
+        "inicio": "Poco a poco",
+        "primera_vez": "Sí",
+        "evolucion": "Igual",
+        "despierta": "No",
+        "dolor_max_semana": 5,
+        "actividad_1": "Correr",
+        "actividad_2": "Subir escaleras",
+        "probado": [
+          "Reposo",
+          "Medicación"
+        ],
+        "probado_sirvio": "Con reposo mejora, pero vuelve al correr",
+        "medicacion": "Ibuprofeno algunos días"
+      },
+      "regiones": {
+        "tobillo_pie": {
+          "provoca": {
+            "primeros_pasos": "Sí",
+            "sentado": "Sí",
+            "descalzo": "No sé",
+            "puntillas": "Sí",
+            "agacharse": "No",
+            "correr": "Sí",
+            "saltar": "No sé",
+            "irregular": "No",
+            "bici": "No",
+            "zapatos": "No"
+          },
+          "dia_despues": "No sabría decir",
+          "calentar": "Se me pasa al calentar",
+          "tacon": "No lo he notado",
+          "nota": {
+            "falla": "No",
+            "crujidos": "No",
+            "hinchazon": "No",
+            "trabado": "No",
+            "hormigueo": "No",
+            "canica": "No",
+            "bulto": "No"
+          },
+          "rigidez": "Sí, se me pasa en menos de una hora",
+          "actividad": [
+            "Correr"
+          ],
+          "cambios": [
+            "Entreno más días u horas"
+          ]
+        }
+      }
+    },
+    "rom": null
+  }
+}
