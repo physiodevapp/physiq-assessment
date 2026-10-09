@@ -72,6 +72,7 @@
     --lime: #5f7d0f;
     --scrim: rgba(19,26,41,0.38);
     --modal-shadow: 0 20px 60px rgba(19,26,41,0.22);
+    color-scheme: light;   /* native controls (checkboxes, date inputs) in light style */
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -524,7 +525,10 @@
     max-width: 100%;
     line-height: 1.3;
   }
-  .option-btn:hover { border-color: var(--accent); color: var(--text); }
+  /* :hover solo con ratón: en táctil se queda pegado en el último botón tocado
+     y un botón recién deseleccionado parecía seguir marcado (borde de color).
+     Igual en .nrs-btn, .test-result-btn, .fp-escala-btn y .region-card. */
+  @media (hover: hover) { .option-btn:hover { border-color: var(--accent); color: var(--text); } }
   .option-btn.selected {
     background: rgba(79,156,249,0.12);
     border-color: var(--accent);
@@ -632,7 +636,7 @@
     transition: all 0.2s;
     text-align: center;
   }
-  .region-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  @media (hover: hover) { .region-card:hover { border-color: var(--accent); transform: translateY(-2px); } }
   .region-card.selected {
     background: rgba(79,156,249,0.1);
     border-color: var(--accent);
@@ -905,11 +909,10 @@
   .test-result-btn.pos.selected { background: rgba(56,217,169,0.12); border-color: var(--green); color: var(--green); }
   .test-result-btn.neg.selected { background: rgba(255,107,107,0.12); border-color: var(--red); color: var(--red); }
   .test-result-btn.nd.selected { background: rgba(90,110,138,0.2); border-color: var(--text3); color: var(--text2); }
-  .test-result-btn:hover { border-color: var(--text2); color: var(--text2); }
+  @media (hover: hover) { .test-result-btn:hover { border-color: var(--text2); color: var(--text2); } }
 
-  /* Phase 5 header actions — "Copiar informe" (patient/GP) vs "Copiar notas"
-     (clinician shorthand); full wording on wider screens, short single-word
-     labels under 480px so both buttons + the title fit without overflowing. */
+  /* Small outlined action buttons (AI report card: «Descartar», «Adjuntar
+     audio», «Reintentar»…); .btn-text-full/-short swap under 480px. */
   .phase5-copy-btn {
     background: none;
     border: 1px solid var(--border2);
@@ -1018,6 +1021,12 @@
   .pronostico-det > summary, .tests-sin-datos > summary { cursor: pointer; }
   .pronostico-det[open] > summary { margin-bottom: 6px; }
   .tests-sin-datos > summary { font-size: 0.75rem; color: var(--text3); padding: 6px 0; }
+  /* Pauta partida por situación (_pautaConRamasHTML): título de la rama de este
+     caso y las otras plegadas */
+  .pauta-rama-tit { font-size: 0.75rem; font-weight: 600; color: var(--text2); margin-bottom: 4px; }
+  .pauta-otras { margin-top: 8px; }
+  .pauta-otras > summary { cursor: pointer; font-size: 0.75rem; color: var(--text3); padding: 6px 0; }
+  .pauta-otra { font-size: 0.8rem; color: var(--text2); line-height: 1.55; padding: 6px 0 8px; border-top: 1px solid var(--border); }
 
   /* Print button */
   .btn-print {
@@ -1630,7 +1639,7 @@
     align-items: center;
     justify-content: center;
   }
-  .nrs-btn:hover { border-color: var(--text3); color: var(--text); }
+  @media (hover: hover) { .nrs-btn:hover { border-color: var(--text3); color: var(--text); } }
   /* Color gradient: 0-2 green, 3-4 yellow-green, 5-6 yellow, 7-8 orange, 9-10 red */
   .nrs-btn.nrs-0, .nrs-btn.nrs-1, .nrs-btn.nrs-2 {
     border-color: rgba(56,217,169,0.3);
@@ -2219,7 +2228,7 @@
   align-items: center;
   justify-content: center;
 }
-.fp-escala-btn:hover { border-color: var(--text3); color: var(--text); }
+@media (hover: hover) { .fp-escala-btn:hover { border-color: var(--text3); color: var(--text); } }
 .fp-escala-btn.sev-b0 { border-color: rgba(56,217,169,0.3); }
 .fp-escala-btn.sev-b1 { border-color: rgba(180,220,80,0.3); }
 .fp-escala-btn.sev-b2 { border-color: rgba(255,212,59,0.3); }
@@ -2533,12 +2542,39 @@
 .ia-revision li.ia-rev-alto { color: var(--red); }
 .ia-rev-cita { display: block; color: var(--text3); font-style: italic; margin-top: 0.15rem; overflow-wrap: anywhere; }
 .ia-rev-nota { font-size: 0.72rem; color: var(--text3); }
+/* Marcas «Revisado» (iaMarcarRevisado, informe-ia.js): la casilla a la
+   izquierda; un punto marcado se atenúa con ✓, nunca se oculta. Las cajas
+   pasan a verde cuando todo está marcado. */
+.ia-revision ul, .ia-comprobar ul { list-style: none; padding-left: 0; }
+.ia-rev-item { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
+.ia-rev-check { flex-shrink: 0; width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--green); cursor: pointer; }
+.ia-rev-hecho > .ia-rev-item > span { opacity: 0.55; }
+.ia-revision li.ia-rev-alto.ia-rev-hecho { color: var(--text2); }
+.ia-revision-hecha { border-left-color: var(--green); }
+.ia-comprobar-cuenta { font-weight: 400; color: var(--text3); font-family: 'DM Mono', monospace; font-size: 0.72rem; white-space: nowrap; }
+.ia-comprobar-hecha { border-left-color: var(--green); }
+.ia-comprobar-hecha .ia-comprobar-cuenta { color: var(--green); }
 
 /* Tipo de informe (narrativo / ficha breve) */
 .ia-plantilla { margin-bottom: 1rem; }
 .ia-plantilla-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
 .ia-plantilla-palabras { font-size: 0.72rem; color: var(--text3); margin-left: 4px; }
 .ia-plantilla .option-btn.selected .ia-plantilla-palabras { color: inherit; opacity: 0.75; }
+.ia-op-corto { display: none; }
+/* Selectores «Tipo de informe» y «Qué hay en el audio» en pantalla estrecha:
+   dos columnas iguales, como un selector de dos opciones, con la etiqueta en
+   dos líneas (nombre + detalle), para que quepan en una fila a 320 px. */
+@media (max-width: 480px) {
+  .ia-plantilla-opciones { display: grid; grid-template-columns: 1fr 1fr; }
+  .ia-plantilla-opciones .option-btn {
+    width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; line-height: 1.25; padding: 8px 6px; white-space: normal;
+  }
+  .ia-plantilla-opciones .ia-op-full { display: none; }
+  .ia-plantilla-opciones .ia-op-corto { display: contents; }
+  .ia-plantilla-opciones .ia-op-sub { display: block; margin: 2px 0 0; font-size: 0.72rem; color: var(--text3); font-weight: 400; }
+  .ia-plantilla-opciones .option-btn.selected .ia-op-sub { color: inherit; opacity: 0.75; }
+}
 
 /* Informe generado: plegado, con título y metadatos en la cabecera */
 .ia-resultado-det {
@@ -2625,6 +2661,22 @@ body.grab-activa:not(.in-hub) .grab-wrap { display: flex; }
 .grab-menu-nota { font-size: 0.78rem; color: var(--text2); margin-top: 8px; line-height: 1.4; }
 .grab-menu-aviso { font-size: 0.78rem; color: var(--alert-warning-text); margin-top: 8px; line-height: 1.4; }
 .grab-menu-acciones { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+/* «📤 Compartir» de la fase 5 (abrirMenuCompartir, app.js): hoja inferior en
+   móvil y diálogo centrado en ancho, con la caja y el velo del panel de sesión
+   (.session-panel-overlay / .session-panel); aquí solo las opciones. */
+.compartir-opciones { display: flex; flex-direction: column; gap: 8px; }
+.compartir-op {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%;
+  padding: 12px 14px; min-height: 52px; text-align: left; cursor: pointer;
+  background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius);
+  color: var(--text); font-family: inherit; font-size: 0.9rem;
+}
+.compartir-op-nombre { font-weight: 500; }
+.compartir-op-sub { font-size: 0.78rem; color: var(--text3); }
+.compartir-op-aviso { color: var(--alert-warning-text); }
+.compartir-op-aviso.alto { color: var(--red); }
+.compartir-panel:focus { outline: none; }
+@media (hover: hover) { .compartir-op:hover { border-color: var(--accent); } }
 .ia-audio-pista { font-size: 0.8rem; color: var(--text3); margin-top: 4px; line-height: 1.45; }
 .ia-licencia-motivo { margin-top: 4px; font-size: 0.8rem; opacity: 0.9; }
 /* Con una grabación en marcha la cabecera lleva un elemento más (la píldora
@@ -2695,3 +2747,15 @@ body.posquirurgico .solo-posq { display: block; }
 @media (max-width: 480px) {
   body:has(.sis-context-banner.visible, .hyp-context-banner.visible) .version-aviso { top: 133px; }
 }
+.ia-consejos-dictado { margin: 8px 0 0; padding-left: 1.2rem; font-size: 0.8rem; color: var(--text2); line-height: 1.45; }
+.ia-consejos-dictado li + li { margin-top: 3px; }
+#iaModoAudio { margin-top: 1rem; }
+#iaModoAudio:empty { margin: 0; }
+.ia-acciones:has(+ .ia-rev-paquete) { margin-bottom: 0; }
+.ia-rev-paquete { margin-top: 4px; }
+.ia-rev-paquete-btn {
+  background: none; border: none; padding: 0; min-height: 40px; cursor: pointer;
+  font-family: inherit; font-size: 0.8rem; color: var(--text3);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.ia-rev-paquete-btn:hover { color: var(--text2); }

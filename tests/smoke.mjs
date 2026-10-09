@@ -614,6 +614,77 @@ async function mockWorkerYTurnstile(context, captura) {
 // lumbar completo con nombre → exportar (descarga real) → borrar sesión →
 // importar el archivo → tras la recarga vuelve todo, en la fase 5. Y a 320 px
 // los dos botones caben sin cortar el texto.
+// Táctil: un segundo toque deselecciona (sexo, NRS) y el NRS sin marcar llega
+// al payload como null («no registrado»), nunca como 0. El :hover de los botones
+// de opción solo vale con ratón (@media (hover: hover)): en un teléfono real se
+// queda pegado y un botón recién deseleccionado parecía seguir marcado. El tap
+// emulado no reproduce ese :hover pegado, así que se comprueban las reglas CSS.
+async function checkBotonesTactil(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (táctil): ${err.message}`));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const r = {};
+  r.hoverSoloConRaton = await page.evaluate(() => {
+    const clases = ['.option-btn', '.nrs-btn', '.test-result-btn', '.fp-escala-btn', '.region-card'];
+    const sueltas = [];
+    const recorrer = (reglas, conHover) => {
+      for (const regla of reglas) {
+        if (regla.cssRules && regla.media) recorrer(regla.cssRules, conHover || /hover:\s*hover/.test(regla.media.mediaText));
+        else if (regla.selectorText && clases.some(c => regla.selectorText.includes(`${c}:hover`)) && !conHover) sueltas.push(regla.selectorText);
+      }
+    };
+    for (const hoja of document.styleSheets) { try { recorrer(hoja.cssRules, false); } catch { /* hoja externa */ } }
+    return sueltas.length === 0 || sueltas;
+  });
+  const dobleToque = async (sel) => {
+    const btn = page.locator(sel).first();
+    await btn.scrollIntoViewIfNeeded();
+    await btn.tap();
+    await page.waitForTimeout(100);
+    await btn.tap();
+    await page.waitForTimeout(100);
+  };
+  await dobleToque('#sexo .option-btn');
+  r.sexoVacio = await page.evaluate(() => state.sexo === '' && !document.querySelector('#sexo .selected'));
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForTimeout(300);
+  await dobleToque('.nrs-btn:nth-child(5)');
+  r.nrsVacio = await page.evaluate(() => state.severidad === null && !document.querySelector('.nrs-btn.selected')
+    && document.getElementById('nrsLabel').textContent.includes('Sin seleccionar'));
+  await page.evaluate(() => goToPhase(1));   // salir de la fase 3 ya no lo convierte en 0
+  r.nrNull = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().nr === null);
+  // Compartir en táctil: la hoja de compartir del sistema (aquí simulada), no el portapapeles
+  r.compartirTactil = await page.evaluate(async () => {
+    let compartido = null;
+    navigator.share = async d => { compartido = d; };
+    await (await import('./app.js')).compartirTexto('texto de prueba', { titulo: 't', copiado: 'c' });
+    return compartido?.text === 'texto de prueba';
+  });
+  // «📤 Compartir» en móvil: hoja inferior pegada abajo; el atrás la cierra sin
+  // cambiar de fase; tocar el velo también la cierra (y no deja la fase atrás)
+  await page.evaluate(() => { state.region = 'lumbar'; buildResults(); goToPhase(5); });
+  await page.waitForTimeout(300);
+  await page.tap('#btnCompartir');
+  await page.waitForSelector('#compartirOverlay.open');
+  await page.waitForTimeout(400);   // animación de entrada
+  r.hojaAbajo = await page.evaluate(() => {
+    const b = document.getElementById('compartirPanel').getBoundingClientRect();
+    return Math.abs(b.bottom - innerHeight) < 2 && b.left === 0 && Math.abs(b.width - innerWidth) < 2;
+  });
+  await page.goBack();
+  await page.waitForTimeout(300);
+  r.atrasCierraHoja = await page.evaluate(() => !document.getElementById('compartirOverlay').classList.contains('open') && state.currentPhase === 5);
+  await page.tap('#btnCompartir');
+  await page.waitForSelector('#compartirOverlay.open');
+  await page.touchscreen.tap(195, 60);
+  await page.waitForTimeout(400);
+  r.veloCierraHoja = await page.evaluate(() => !document.getElementById('compartirOverlay').classList.contains('open') && state.currentPhase === 5);
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function checkExportarImportar(browser, errors, tmpDir) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 }, acceptDownloads: true });
   await context.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
@@ -753,6 +824,24 @@ async function checkInformeNarrativo(browser, errors) {
   const r = { sinBotonSinLicencia };
   r.sinLicencia = await page.isVisible('#iaLicencia :text("Disponible con licencia PhysiQ")');
   r.generadorOculto = await page.evaluate(() => document.getElementById('iaGenerador').hidden);
+  // Fase 5: un solo «📤 Compartir» abajo, con menú (paciente / notas; sin
+  // informe IA no hay opción IA, y fuera del hub no hay «Enviar al informe»)
+  const leerPortapapeles = () => page.evaluate(() => navigator.clipboard.readText());
+  r.sinBotonesCabecera = (await page.locator('#phase5 .phase-header button').count()) === 0;
+  await page.click('#btnCompartir');
+  await page.waitForSelector('#compartirOverlay');
+  r.menuSinIA = await page.evaluate(() => {
+    const ops = [...document.querySelectorAll('#compartirOverlay .compartir-op-nombre')].map(e => e.textContent);
+    return ops.join('|') === 'Para el paciente / médico|Notas clínicas';
+  });
+  await page.click('#compartirOverlay .compartir-op:has-text("Para el paciente")');
+  await page.waitForTimeout(200);
+  r.informePaciente = !(await page.isVisible('#compartirOverlay')) && (await leerPortapapeles()).includes('IMPRESIÓN CLÍNICA');
+  await page.click('#btnCompartir');
+  await page.click('#compartirOverlay .compartir-op:has-text("Notas clínicas")');
+  await page.waitForTimeout(200);
+  r.notasCopiadas = (await leerPortapapeles()).startsWith('VALORACIÓN PhysiQ-Assessment');
+  r.valoracionRegistrada = await page.evaluate(async () => !!(await (await import('./lib/session.js')).readSession())?.assessment?.r);
 
   // «Introducir clave»: una mala no se guarda, la buena sí y activa la tarjeta
   await page.click('#iaLicencia button:has-text("Introducir clave")');
@@ -793,26 +882,104 @@ async function checkInformeNarrativo(browser, errors) {
   await page.waitForSelector('#iaResultado .ia-resultado-det', { state: 'attached' });
   const cuerpo = Buffer.from(captura[1] || '', 'latin1').toString('utf8');
   r.peticion = cuerpo.includes('name="file"') && cuerpo.includes('DATOS DE VALORACI') && cuerpo.includes('{{TRANSCRIPT}}') && cuerpo.includes('name="whisperHint"');
+  // Modo del audio: con audio sale el selector, por defecto diálogo (sin dictado en el prompt)
+  r.modoAudioDialogo = !cuerpo.includes('DICTADO DEL FISIOTERAPEUTA') && cuerpo.includes('TRANSCRIPCIÓN DE LA SESIÓN');
   // Datos ampliados: el recorrido del árbol CIF va en el prompt
   r.promptAmpliado = cuerpo.includes('Hallazgos de la exploración (pregunta clínica') && /name="maxTokens"\r\n\r\n7000/.test(cuerpo);
   // El informe llega plegado, con las acciones a la vista
   r.resultadoPlegado = await page.evaluate(() => {
     const det = document.getElementById('iaResultadoDet');
     return !!det && !det.open && det.querySelector('summary').textContent.includes('Narrativo');
-  }) && await page.isVisible('#iaResultado button:has-text("Compartir")');
+  }) && await page.isVisible('#iaResultado button:has-text("Descartar")');
   // Revisión automática: aparece sola bajo el informe (puntos o «sin incidencias»)
   r.revision = await page.evaluate(() => !!document.querySelector('#iaRevision .ia-revision'));
   r.comprobar = await page.evaluate(() => document.querySelectorAll('#iaComprobar .ia-comprobar li').length >= 2);
+  // Marcar «Revisado»: cada punto y cada comprobación; el punto se queda a la
+  // vista atenuado, las cabeceras cuentan, sobrevive a un repintado y el menú
+  // de «Compartir» pasa de «sin revisar» a «revisados»
+  const subIA = async () => {
+    await page.click('#btnCompartir');
+    await page.waitForSelector('#compartirOverlay.open');
+    const t = await page.locator('#compartirOverlay .compartir-op:has-text("Informe clínico") .compartir-op-sub').textContent();
+    await page.keyboard.press('Escape');
+    return t;
+  };
+  r.menuSinRevisar = /sin revisar/.test(await subIA());
+  await page.evaluate(() => document.querySelector('#iaRevision details')?.setAttribute('open', ''));
+  const casillas = page.locator('#iaRevision .ia-rev-check, #iaComprobar .ia-rev-check');
+  const nCasillas = await casillas.count();
+  for (let i = 0; i < nCasillas; i++) await casillas.nth(i).check();
+  // Marcar no cierra la caja de puntos (antes el «input» de la casilla
+  // repintaba la tarjeta 400 ms después y la caja volvía cerrada)
+  await page.waitForTimeout(700);
+  r.cajaSigueAbierta = await page.evaluate(() => { const d = document.querySelector('#iaRevision details'); return !d || d.open; });
+  r.revisadosMarcados = nCasillas >= 2 && await page.evaluate(n => {
+    const det = document.querySelector('#iaRevision details.ia-revision');
+    return state.informeIA.revisados.length === n
+      && document.querySelectorAll('#iaRevision li.ia-rev-hecho, #iaComprobar li.ia-rev-hecho').length === n
+      && (!det || (det.querySelector('summary').textContent.startsWith('✓') && det.classList.contains('ia-revision-hecha')))
+      && document.querySelector('#iaComprobar .ia-comprobar').classList.contains('ia-comprobar-hecha');
+  }, nCasillas);
+  await page.evaluate(() => buildResults());
+  await page.waitForSelector('#iaComprobar .ia-rev-check');
+  r.revisadosTrasRepintar = (await page.locator('#iaRevision .ia-rev-check:checked, #iaComprobar .ia-rev-check:checked').count()) === nCasillas;
+  r.menuRevisado = /revisado/.test(await subIA()) && !/sin revisar/.test(await subIA());
+  await page.evaluate(() => document.querySelector('#iaRevision details')?.setAttribute('open', ''));
+  await casillas.first().uncheck();
+  r.menuDeNuevoPendiente = /1 de \d+ puntos sin revisar/.test(await subIA());
+  // «⬇ Paquete de revisión»: al final, justo tras la fila de acciones clínicas y
+  // fuera de ella, con el texto completo
+  r.paquetePosicion = await page.evaluate(() => {
+    const p = document.querySelector('#iaResultado .ia-rev-paquete');
+    return !!p && p.previousElementSibling?.classList.contains('ia-acciones') && !p.nextElementSibling
+      && p.textContent.includes('Paquete de revisión');
+  });
+  // «⬇ Paquete de revisión»: un .zip con informe, transcripción, puntos, valoración y prompt
+  const [zipDescarga] = await Promise.all([page.waitForEvent('download'), page.click('#iaResultado .ia-rev-paquete button')]);
+  const zipBytes = await new Promise((res, rej) => zipDescarga.createReadStream().then(st => {
+    const trozos = []; st.on('data', c => trozos.push(c)); st.on('end', () => res(Buffer.concat(trozos))); st.on('error', rej);
+  }, rej));
+  const zipTexto = zipBytes.toString('latin1');
+  r.paqueteRevision = /^revision-informe-.+\.zip$/.test(zipDescarga.suggestedFilename()) && zipTexto.startsWith('PK\x03\x04')
+    && ['info.txt', '-audio-informe.txt', '-audio-transcripcion.txt', 'revision.txt', 'prompt.txt'].every(n => zipTexto.includes(n))
+    && /valoracion-[a-z0-9-]+\.json/.test(zipTexto) && zipTexto.includes('DATOS DE VALORACI');
   r.guardado = await page.evaluate(() => !!state.informeIA?.texto && state.informeIA.conAudio === true
     && state.informeIA.transcripcion.includes('simulada'));
   r.audioBorrado = await page.evaluate(() => new Promise(res => {
     const rq = indexedDB.open('physiq', 3);
     rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result === undefined); };
   }));
-  await page.click('#iaResultado button:has-text("Copiar")');
+  // Compartir está solo en «📤 Compartir» de abajo: la tarjeta IA deja «Descartar»
+  r.tarjetaSoloDescartar = await page.evaluate(() =>
+    [...document.querySelectorAll('#iaResultado .ia-acciones button')].map(b => b.textContent.trim()).join('|') === 'Descartar');
+  // Con informe IA el menú ofrece los tres documentos; Escape lo cierra
+  await page.click('#btnCompartir');
+  await page.waitForSelector('#compartirOverlay');
+  r.menuInforme = (await page.locator('#compartirOverlay .compartir-op').count()) === 3;
+  await page.keyboard.press('Escape');
+  r.menuEscCierra = !(await page.isVisible('#compartirOverlay'));
+  // En pantalla ancha es un diálogo centrado (≤ 420 px), no una hoja
+  const vista = page.viewportSize();
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.click('#btnCompartir');
+  await page.waitForSelector('#compartirOverlay.open');
+  await page.waitForTimeout(300);   // animación de entrada
+  r.dialogoCentrado = await page.evaluate(() => {
+    const b = document.getElementById('compartirPanel').getBoundingClientRect();
+    return Math.abs((b.left + b.right) / 2 - innerWidth / 2) < 2 && Math.abs((b.top + b.bottom) / 2 - innerHeight / 2) < 2 && b.width <= 420;
+  });
+  await page.keyboard.press('Escape');
+  await page.setViewportSize(vista);
+  await page.click('#btnCompartir');
+  await page.click('#compartirOverlay .compartir-op:has-text("Para el paciente")');
   await page.waitForTimeout(200);
-  const copiado = await page.evaluate(() => navigator.clipboard.readText());
-  r.copiado = copiado.startsWith('INFORME DE FISIOTERAPIA') && copiado.includes('CONDICIÓN DE SALUD') && !copiado.includes('##');
+  const paciente = await leerPortapapeles();
+  r.menuPaciente = paciente.includes('IMPRESIÓN CLÍNICA') && !paciente.includes('CONDICIÓN DE SALUD') && !(await page.isVisible('#compartirOverlay'));
+  await page.click('#btnCompartir');
+  await page.click('#compartirOverlay .compartir-op:has-text("Informe clínico")');
+  await page.waitForTimeout(200);
+  const copiado = await leerPortapapeles();
+  r.menuIA = copiado.startsWith('INFORME DE FISIOTERAPIA') && copiado.includes('CONDICIÓN DE SALUD') && !copiado.includes('##');
   r.sinScrollX = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
 
   // Un fallo de la API se queda en la tarjeta, en español y con el original
@@ -848,6 +1015,11 @@ async function checkInformeNarrativo(browser, errors) {
   await frame.evaluate(() => { buildResults(); goToPhase(5); });
   await hub.waitForTimeout(500);
   r.hubSinModulo = pedidos.length === 0 && await frame.evaluate(() => document.body.classList.contains('in-hub') && document.getElementById('informeIA').innerHTML === '');
+  // En el hub, el menú de «📤 Compartir» añade «Enviar al informe» (sin opción IA)
+  await frame.click('#btnCompartir');
+  await frame.waitForSelector('#compartirOverlay');
+  r.hubMenu = await frame.evaluate(() => [...document.querySelectorAll('#compartirOverlay .compartir-op-nombre')]
+    .map(e => e.textContent).join('|') === 'Para el paciente / médico|Notas clínicas|Enviar al informe');
   await ctxHub.close();
 
   r.ok = Object.entries(r).every(([, v]) => v === true);
@@ -949,10 +1121,31 @@ async function recorrerGrabadora(browser, errors) {
   r.consentMientrasGraba = await page.evaluate(() => document.getElementById('iaGenerar').disabled);
   await page.check('#iaConsent input[type=checkbox]');
   await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+  // Dictado del fisio: consejos a la vista, cabecera y pista de Whisper propias
+  r.selectorModoAudio = await page.evaluate(() => document.querySelector('#iaModoAudio .option-btn.selected')?.textContent.includes('diálogo'));
+  // A 320 px, «Tipo de informe» y «Qué hay en el audio»: dos botones del mismo
+  // ancho en una sola fila, sin texto cortado
+  const vp = page.viewportSize();
+  await page.setViewportSize({ width: 320, height: vp.height });
+  await page.waitForTimeout(200);
+  r.selectoresEstrechos = await page.evaluate(() => ['iaPlantilla', 'iaModoAudio'].every(id => {
+    const bs = [...document.querySelectorAll(`#${id} .ia-plantilla-opciones .option-btn`)];
+    if (bs.length !== 2) return false;
+    const [a, b] = bs.map(x => x.getBoundingClientRect());
+    return Math.abs(a.top - b.top) < 1 && Math.abs(a.width - b.width) < 1 && b.right <= innerWidth
+      && bs.every(x => x.scrollWidth <= x.clientWidth && x.scrollHeight <= x.clientHeight + 1);
+  }));
+  await page.setViewportSize(vp);
+  await page.waitForTimeout(200);
+  await page.click('#iaModoAudio .option-btn:has-text("Dictado")');
+  r.consejosDictado = await page.evaluate(() => document.querySelectorAll('#iaModoAudio .ia-consejos-dictado li').length === 3);
   const antes = captura.length;
   await page.click('#iaGenerar');                       // cierra la grabación y la usa
   await page.waitForFunction(n => document.querySelector('#iaResultado')?.textContent.includes('CONDICIÓN DE SALUD') || false, antes, { timeout: 15000 });
   r.generarCierraYUsa = captura.length === antes + 1 && /name="file"/.test(captura[captura.length - 1]);
+  const cuerpoDictado = Buffer.from(captura[captura.length - 1] || '', 'latin1').toString('utf8');
+  r.promptDictado = cuerpoDictado.includes('DICTADO DEL FISIOTERAPEUTA') && cuerpoDictado.includes('Dictado de un fisioterapeuta')
+    && await page.evaluate(() => state.informeIA?.dictado === true && document.querySelector('#iaResultadoDet summary').textContent.includes('con dictado'));
   await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));
   r.audioBorradoTrasInforme = (await metaAudioIDB(page)) === undefined;
 
@@ -1155,6 +1348,10 @@ async function main() {
   const deriv = await checkDerivacionVascular(page);
   console.log(`  ${deriv.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
 
+  console.log('\nBotones en táctil (segundo toque y :hover):');
+  const tactil = await checkBotonesTactil(browser, errors);
+  console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema; «Compartir» es una hoja inferior que se cierra con atrás o tocando el velo${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
+
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
@@ -1162,7 +1359,7 @@ async function main() {
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
-  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y copiado, nada en el hub`);
+  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y compartido; fase 5: un solo «Compartir» abajo con menú (paciente, IA si la hay, notas; «Enviar al informe» en el hub); nada de IA en el hub`);
 
   await browser.close();
 
@@ -1180,7 +1377,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');

@@ -643,8 +643,11 @@ export const tree = {
       tag: 'Paso 1 — Cribado Proximal (Clearing)',
       question: '¿El dolor se reproduce con movimientos cervicales, compresión axial o palpación de la primera costilla?',
       options: [
-        { label: 'SÍ — Reproducción con movimientos cervicales (test de Spurling o similar)', value: 'cervical', next: null, hypothesis: ['h6'] },
-        { label: 'SÍ — Restricción de movilidad en 1ª costilla y dolor en zona de transición', value: '1costilla', next: null, hypothesis: ['h9'] },
+        { label: 'SÍ — Reproducción con movimientos cervicales (test de Spurling o similar)', value: 'cervical', next: null, hypothesis: ['h6'],
+          // iaTexto: solo para el informe con IA (revisión de los árboles, 2026-10): la conclusión, sin los criterios del patrón
+          iaTexto: 'SÍ — Se reproduce con los movimientos cervicales (orienta a: origen cervical)' },
+        { label: 'SÍ — Restricción de movilidad en 1ª costilla y dolor en zona de transición', value: '1costilla', next: null, hypothesis: ['h9'],
+          iaTexto: 'SÍ — Restricción de la 1.ª costilla (orienta a: 1.ª costilla)' },
         { label: 'NO — No se reproduce con cervical ni 1ª costilla', value: 'no', next: 'h_step2', hypothesis: [] }
       ]
     },
@@ -666,7 +669,9 @@ export const tree = {
       tag: 'Paso 2b — Rigidez activa = pasiva',
       question: 'La movilidad pasiva GH (sobre todo la RE) está limitada igual que la activa. ¿Hubo traumatismo previo?',
       options: [
-        { label: 'SÍ — Traumatismo previo → luxación bloqueada o fractura → Rx', value: 'trauma', next: null, hypothesis: ['h11'] },
+        { label: 'SÍ — Traumatismo previo → luxación bloqueada o fractura → Rx', value: 'trauma', next: null, hypothesis: ['h11'],
+          // iaEntera: al informe con IA va entera, porque lo que sigue al guion es el diagnóstico
+          iaEntera: true },
         { label: 'NO — Mayor edad + crepitación → artrosis GH (Rx)', value: 'artrosis', next: null, hypothesis: ['h10'] },
         { label: 'NO — Resto → hombro congelado', value: 'congelado', next: null, hypothesis: ['h1'] }
       ]
@@ -732,11 +737,11 @@ export const hypotheses = {
     id: 'h2', region: 'hombro', num: '②',
     name: 'Síndrome de Pinzamiento Subacromial (Impingement)',
     prom: 'QuickDASH (MCID: 8.0–15.9 puntos)',
-    dosis: 'Educación individualizada y centrada en el paciente sobre su problema, las opciones para manejar el dolor, la modificación de la actividad y el automanejo (C). Tratamiento inicial: programa de ejercicio activo, de control motor o de fuerza con cargas variadas (A); la carga alta no ha demostrado ser mejor que la baja, y el ejercicio supervisado no supera al de casa. Puede añadirse terapia manual vertebral o del miembro superior (partes blandas, movilización o manipulación) para aliviar el dolor a corto plazo (B) y vendaje como complemento del ejercicio (D). No usar ultrasonido terapéutico (B; C en la tendinopatía calcificada, donde pueden usarse ondas de choque o láser, C). Adaptaciones ergonómicas si el dolor es laboral (C). Si no mejora en un máximo de 12 semanas de tratamiento conservador adecuado, puede pedirse imagen (F) y derivar al médico especialista si el dolor o la discapacidad siguen siendo intensos (F). La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico.',
+    dosis: 'Educación individualizada y centrada en el paciente sobre su problema, las opciones para manejar el dolor, la modificación de la actividad y el automanejo (C). Tratamiento inicial: programa de ejercicio activo, de control motor o de fuerza con cargas variadas (A); la carga alta no ha demostrado ser mejor que la baja, y el ejercicio supervisado no supera al de casa. Puede añadirse terapia manual vertebral o del miembro superior (partes blandas, movilización o manipulación) para aliviar el dolor a corto plazo (B) y vendaje como complemento del ejercicio (D). No usar ultrasonido terapéutico (B; C en la tendinopatía calcificada, donde pueden usarse ondas de choque o láser, C). Adaptaciones ergonómicas si el dolor es laboral (C). La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico.',
     dosisFuente: 'Desmeules 2025, J Orthop Sports Phys Ther 55(4):235–274 (guía de práctica clínica; incluye el síndrome de dolor subacromial dentro de la tendinopatía del manguito; letra = grado de la recomendación, tal como la da la guía)',
     pronostico: {
       horizonte: 'Una rotura completa del supraespinoso en ecografía aumenta la probabilidad, pero la imagen no mejora la capacidad de descartarlo.',
-      derivacion: 'Dolor en reposo: puede indicar bursitis o proceso inflamatorio que tolere mal el movimiento vigoroso → dosificar. La idea de «espacio subacromial estrecho» es controvertida.',
+      derivacion: 'Dolor en reposo: puede indicar bursitis o proceso inflamatorio que tolere mal el movimiento vigoroso → dosificar. La idea de «espacio subacromial estrecho» es controvertida. Si no mejora en un máximo de 12 semanas de tratamiento conservador adecuado, puede pedirse imagen y derivar al médico especialista si el dolor o la discapacidad siguen siendo intensos (Desmeules 2025, grado F).',
       fuente: 'Lluch 2020, cap. 3.1 (Struyf), pp. 53–54'
     },
     tests: [

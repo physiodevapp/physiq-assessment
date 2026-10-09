@@ -14,6 +14,7 @@ import {
 } from './lib/posquirurgico.js';
 import { VERSION_SHA, textoVersion, esVersionNueva } from './lib/version.js';
 import { ladoTexto } from './lib/region.js';
+import { ramaPauta } from './lib/pauta.js';
 
 // ─── SCROLL LOCK (dialogs / bottom sheets) ───────────────────
 // Reference-counted: several overlays (confirm-banner, session panel,
@@ -71,10 +72,12 @@ _sessionCh.onmessage = ({ data }) => {
 };
 
 window.addEventListener('popstate', e => {
-  // Sheet del razonamiento (fase 2, móvil): el atrás lo cierra sin cambiar de
-  // fase, y nuestro propio history.back() al cerrarlo con × no navega.
-  if (_razonPopIgnorar) { _razonPopIgnorar = false; return; }
+  // Sheets del razonamiento (fase 2) y de compartir (fase 5), en móvil: el
+  // atrás los cierra sin cambiar de fase, y nuestro propio history.back() al
+  // cerrarlos de otra forma no navega.
+  if (_popIgnorar) { _popIgnorar = false; return; }
   if (_razonHistorial) { cerrarRazonamiento({ desdeHistorial: true }); return; }
+  if (_compartirHistorial) { cerrarMenuCompartir({ desdeHistorial: true }); return; }
   if (_pendingBackNav) {
     // history.go() de limpieza de stack aterrizó; reemplazar y actualizar profundidad
     const { phase: p, idx: i } = _pendingBackNav;
@@ -1303,7 +1306,7 @@ function buildSistemaHTML(sis) {
 const _esMovil = () => window.matchMedia ? window.matchMedia('(max-width: 768px)').matches : false;
 let _razonOrigen = null;       // botón «Ampliar» que abrió el panel (para devolverle el foco)
 let _razonHistorial = false;   // el sheet móvil empujó una entrada al historial
-let _razonPopIgnorar = false;  // el próximo popstate es nuestro history.back(), no el usuario
+let _popIgnorar = false;      // el próximo popstate es nuestro history.back() (razonamiento o compartir), no el usuario
 
 function razonamientoInlineHTML(sis, q) {
   const r = q.razonamiento;
@@ -1399,7 +1402,7 @@ function cerrarRazonamiento({ desdeHistorial = false, sinHistorial = false } = {
   if (eraModal) { unlockBodyScroll(); window.parent.postMessage({ type: 'PHYSIQ_WIDGET_SHOW' }, '*'); }
   if (_razonHistorial) {
     _razonHistorial = false;
-    if (!desdeHistorial && !sinHistorial) { _razonPopIgnorar = true; history.back(); }
+    if (!desdeHistorial && !sinHistorial) { _popIgnorar = true; history.back(); }
   }
   if (_razonOrigen && document.contains(_razonOrigen) && !sinHistorial) _razonOrigen.focus({ preventScroll: true });
   _razonOrigen = null;
@@ -1769,12 +1772,15 @@ function updateSistemicoAlert() {
 // ─── PHASE 3 HELPERS ─────────────────────────────────────────
 
 
+// Un segundo toque sobre el número marcado lo deja «no registrado» (null):
+// el NRS es opcional y un 0 por defecto llegaba a los resúmenes como dato.
 function selectNRS(btn, val) {
+  const quitar = state.severidad === val;
   document.querySelectorAll('.nrs-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  state.severidad = val;
+  if (!quitar) btn.classList.add('selected');
+  state.severidad = quitar ? null : val;
   const label = document.getElementById('nrsLabel');
-  if (label) label.textContent = `${val}/10 — ${NRS_LABELS[val]}`;
+  if (label) label.textContent = quitar ? '— Sin seleccionar —' : `${val}/10 — ${NRS_LABELS[val]}`;
   saveSession();
 }
 
@@ -1883,7 +1889,6 @@ function renderIrritabResumen(nivel) {
 }
 
 function collectPhase3() {
-  state.severidad = state.severidad ?? 0;
   state.signoComparable = document.getElementById('signoComparable').value;
 }
 
@@ -1952,6 +1957,20 @@ function _pautaPlegableHTML(dosis, fuente) {
     ${fuenteHTML}
     <button type="button" class="pauta-det-menos" onclick="const d=this.closest('details'); d.open=false; d.scrollIntoView({block:'nearest'})">Ocultar pauta ▴</button>
   </details>`;
+}
+
+// Pauta partida por situación (lib/pauta.js): la rama que encaja con este caso
+// delante, con su título, y las demás plegadas en «Otras situaciones». Sin rama
+// que encaje (o sin ramas), la pauta entera como siempre.
+function _pautaConRamasHTML(hyp) {
+  const r = ramaPauta(hyp, state);
+  if (!r) return _pautaPlegableHTML(hyp.dosis, hyp.dosisFuente);
+  const otras = r.otras.length
+    ? `<details class="pauta-otras"><summary>Otras situaciones (${r.otras.length})</summary>
+        ${r.otras.map(o => `<div class="pauta-otra"><div class="pauta-rama-tit">${o.titulo}</div>${o.texto}</div>`).join('')}
+      </details>`
+    : '';
+  return `<div class="pauta-rama-tit">Para este caso: ${r.rama.titulo}</div>${_pautaPlegableHTML(r.texto, hyp.dosisFuente)}${otras}`;
 }
 
 // Cabecera de una tarjeta de hipótesis de la fase 5, en dos filas: punto +
@@ -2036,15 +2055,6 @@ function buildResults() {
   const container = document.getElementById('resultsContent');
   container.innerHTML = '';
 
-  // Outside the hub there's no report app to relay the assessment to — offer
-  // sharing it directly instead of the hub-only "enviado al informe" flow.
-  const btnFinalizar = document.getElementById('btnFinalizar');
-  if (btnFinalizar) {
-    const inHub = document.body.classList.contains('in-hub');
-    btnFinalizar.textContent = inHub ? 'Finalizar valoración →' : '📤 Compartir informe';
-    btnFinalizar.title = inHub ? '' : 'Comparte el resumen clínico por email, WhatsApp, etc.';
-  }
-
   // Sort hypotheses by score (`pq1`, la posquirúrgica, siempre la primera)
   const sorted = hipotesisActivas()
     .map(h => ({ id: h, score: state.hypothesisScores[h]?.totalLR || 1, hyp: hipotesis(h) }))
@@ -2104,7 +2114,7 @@ function buildResults() {
   <div class="summary-section">
     <div class="summary-section-title">📊 SINSS — Caracterización del Cuadro</div>
     <div class="summary-row"><span class="summary-label">Región valorada</span><span class="summary-value">${regionConLado(state.region, state.lado)}</span></div>
-    <div class="summary-row"><span class="summary-label">Severidad (EVN)</span><span class="summary-value">${state.severidad}/10</span></div>
+    <div class="summary-row"><span class="summary-label">Severidad (EVN)</span><span class="summary-value">${state.severidad != null ? `${state.severidad}/10` : 'No registrada'}</span></div>
     <div class="summary-row"><span class="summary-label">Irritabilidad</span><span class="summary-value">${state.irritabilidadNivel || '—'}${state.irritabilidadDirecta && state.irritabilidadNivel ? ' (estimada, sin matriz)' : ''}</span></div>
     <div class="summary-row"><span class="summary-label">Naturaleza</span><span class="summary-value">${state.naturaleza || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Estabilidad</span><span class="summary-value">${state.estabilidad || '—'}</span></div>
@@ -2172,7 +2182,7 @@ function buildResults() {
         <div>
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent2); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">${tratada ? ETIQUETA_TRATADA : hyp.dosis === DOSIS_DERIVAR ? '🚑 Derivación' : hyp.dosisFuente ? '💊 Pauta de Tratamiento' : '💊 Dosis Día 1 (Baja Fricción)'}</div>
           ${!tratada && hyp.dosis && hyp.dosis !== DOSIS_DERIVAR
-            ? _pautaPlegableHTML(hyp.dosis, hyp.dosisFuente)
+            ? _pautaConRamasHTML(hyp)
             : `<div class="exercise-box">${tratada ? _textoTratada(cq) : hyp.dosis || '<em style="color:var(--text3)">Sin dosis de referencia: a criterio del clínico.</em>'}</div>
           ${!tratada && hyp.dosis && hyp.dosisFuente ? `<div class="test-source" style="margin:4px 0 0;">${hyp.dosisFuente}</div>` : ''}`}
           ${cq && !tratada && hyp.dosis && hyp.dosis !== DOSIS_DERIVAR ? `<div class="nota-posq" style="margin-top:6px;">🏥 ${TEXTO_PAUTA_COMPATIBLE}</div>` : ''}
@@ -2241,37 +2251,24 @@ function buildResults() {
   _montarInformeIA();
 }
 
-function finalizarValoracion() {
-  const btn = document.getElementById('btnFinalizar');
+// Guarda la valoración completa en IDB y la anuncia por BroadcastChannel:
+// physiq-report la lee de IDB al abrirse aunque nadie escuche ahora. Lo hace
+// cada opción de «📤 Compartir» (y, en el hub, «Enviar al informe»).
+export function registrarValoracionCompleta() {
   const _assessmentPayload = buildPhysiQPayload();
-  const now = new Date();
-  // Always persist — physiq-report reads this from IDB on its own load too,
-  // independent of the broadcast below, so this is never wasted even when
-  // nothing is listening for the broadcast right now (standalone use).
-  writeSession({ assessment: _assessmentPayload, patient: state.patient || '', date: now.toLocaleDateString('es-ES') })
+  writeSession({ assessment: _assessmentPayload, patient: state.patient || '', date: new Date().toLocaleDateString('es-ES') })
     .then(session => {
       if (session) updateSessionChip(session);
       _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT', assessment: _assessmentPayload });
     });
+}
 
-  // Outside the hub there's no report app around to relay to — share the
-  // patient/GP-facing report directly (not the clinician shorthand) instead
-  // of the "enviado al informe" confirmation.
-  if (!document.body.classList.contains('in-hub')) {
-    const text = buildInformeFisioterapiaText();
-    if (navigator.share) {
-      navigator.share({ title: 'Informe de valoración — PhysiQ-Assessment', text }).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(text).then(() => showToast('✓ Informe copiado al portapapeles', 'success'));
-    }
-    return;
-  }
-
-  if (btn) {
-    btn.textContent = '✓ Enviado al informe';
-    btn.disabled = true;
-    setTimeout(() => { btn.textContent = 'Finalizar valoración →'; btn.disabled = false; }, 3000);
-  }
+// Hub: «Enviar al informe» del menú de «📤 Compartir». physiq-report lo lee
+// de IDB; la navegación hasta él es cosa del hub.
+function finalizarValoracion() {
+  cerrarMenuCompartir();
+  registrarValoracionCompleta();
+  showToast('✓ Valoración enviada al informe', 'success');
 }
 
 // Modo breve: de la fase 4 a los resultados sin pasar por la 4b. Las
@@ -2708,6 +2705,7 @@ function toggleSessionPanel() {
 // showing when the user returns.
 function _closeAllOverlays() {
   cerrarRazonamiento({ sinHistorial: true });
+  cerrarMenuCompartir({ sinHistorial: true });
   closePhaseSheet();
   closeSessionPanel();
   const banner = document.getElementById('confirmBanner');
@@ -2848,7 +2846,7 @@ function buildPhysiQPayload() {
     ...(getCirugiaPayload() ? { cq: getCirugiaPayload() } : {}),
     cr: state.cronologia,
     rp: state.riesgoPsico,
-    nr: state.severidad ?? 0,
+    nr: state.severidad ?? null,   // null = no registrado (nunca un 0 por defecto)
     ir: state.irritabilidadNivel && state.irritabilidadDirecta ? `${state.irritabilidadNivel} (estimada)` : state.irritabilidadNivel,
     na: state.naturaleza,
     si: state.sistemicoAlerta,
@@ -2891,7 +2889,7 @@ function buildContextSummaryText() {
     ? `\n⏱ ${TEXTO_VALORACION_BREVE}${d.pe?.length ? `\nPendiente:\n${d.pe.map(x => `  · ${x}`).join('\n')}` : ''}`
     : '';
   return `VALORACIÓN PhysiQ-Assessment${d.p ? `\nPaciente: ${d.p}` : ''}${breve}
-Región: ${regionConLado(d.r, d.la)} · NRS: ${d.nr}/10 · Irritabilidad: ${d.ir}${d.cq ? `\n${_lineaCirugiaNotas(d.cq)}` : ''}
+Región: ${regionConLado(d.r, d.la)} · NRS: ${d.nr != null ? `${d.nr}/10` : 'no registrado'} · Irritabilidad: ${d.ir}${d.cq ? `\n${_lineaCirugiaNotas(d.cq)}` : ''}
 Cribado sistémico: ${d.si ? 'POSITIVO ⚠️' : 'Negativo'}${d.ur?.length ? `\n🚨 DERIVACIÓN URGENTE: ${d.ur.join(' · ')}` : ''}${d.dv?.length ? `\n🩺 DERIVACIÓN MÉDICA (árbol CIF): ${d.dv.join(' · ')}` : ''}
 Hipótesis:
 ${hyps}${d.fp?.length ? `\nFormulario previo:\n${d.fp.map(x => `  · ${x.q} → ${x.a}`).join('\n')}` : ''}
@@ -2900,10 +2898,24 @@ Ventana recuperación: ${d.pn?.ventanaRecuperacion || '—'}
 Anclaje hábito: ${d.pn?.anclajeHabito || '—'}`;
 }
 
-function copyContextToClipboard() {
-  navigator.clipboard.writeText(buildContextSummaryText()).then(() => {
-    showCopyFeedback();
-  });
+// Compartir y copiar son una sola acción: en táctil (fuera del hub) la hoja de
+// compartir del sistema, que ya incluye «Copiar»; con ratón, o en el hub (el
+// iframe suele bloquear navigator.share), se copia y se avisa. Mismo criterio
+// que «⬇ Exportar».
+export async function compartirTexto(text, { titulo, copiado }) {
+  if (!_enHub() && window.matchMedia?.('(pointer: coarse)').matches && navigator.share) {
+    try { await navigator.share({ title: titulo, text }); return; }
+    catch (e) { if (e?.name === 'AbortError') return; }
+  }
+  try { await navigator.clipboard.writeText(text); showToast(copiado, 'success'); }
+  catch { showToast('No se ha podido copiar el texto.', 'warning'); }
+}
+
+// «Notas clínicas» del menú de «📤 Compartir»: el resumen clínico abreviado
+function compartirNotas() {
+  cerrarMenuCompartir();
+  registrarValoracionCompleta();
+  compartirTexto(buildContextSummaryText(), { titulo: 'Notas clínicas — PhysiQ-Assessment', copiado: '✓ Notas clínicas copiadas al portapapeles' });
 }
 
 // Same underlying data as buildContextSummaryText(), but reworded for a
@@ -2956,8 +2968,7 @@ ${d.mo || '—'}
 Mecanismo de inicio: ${d.me || '—'} · Evolución: ${d.cr || '—'}${antecedenteQx}${bloqueFp('SEGÚN REFIERE EL PACIENTE', fpInf.historia)}${bloqueFp('ANTECEDENTES REFERIDOS POR EL PACIENTE', fpInf.antecedentes)}
 
 VALORACIÓN
-Intensidad del dolor referida: ${d.nr}/10
-Irritabilidad del cuadro: ${d.ir || '—'}
+${d.nr != null ? `Intensidad del dolor referida: ${d.nr}/10\n` : ''}Irritabilidad del cuadro: ${d.ir || '—'}
 Naturaleza del dolor: ${d.na || '—'}
 Riesgo psicosocial: ${d.rp || '—'}
 
@@ -2976,15 +2987,78 @@ PLAN DE TRATAMIENTO Y RECOMENDACIONES${planQx}
 Informe generado con PhysiQ-Assessment el ${d.d}.`;
 }
 
-function copyInformeFisioterapia() {
-  navigator.clipboard.writeText(buildInformeFisioterapiaText()).then(() => {
-    showToast('✓ Informe copiado — listo para pegar en tu plantilla', 'success');
-  });
+// «📤 Compartir» (barra inferior de la fase 5): un solo botón y un menú con
+// cada documento — son para lectores distintos, así que siempre se elige.
+// Cada opción registra la valoración completa (registrarValoracionCompleta).
+function compartirInformePaciente() {
+  cerrarMenuCompartir();
+  registrarValoracionCompleta();
+  compartirTexto(buildInformeFisioterapiaText(), { titulo: 'Informe de fisioterapia — PhysiQ-Assessment', copiado: '✓ Informe copiado — listo para pegar en tu plantilla' });
 }
 
-function showCopyFeedback() {
-  showToast('✓ Contexto clínico copiado al portapapeles', 'success');
+const _opcionCompartir = (accion, nombre, sub) => `
+    <button type="button" class="compartir-op" onclick="${accion}()">
+      <span class="compartir-op-nombre">${nombre}</span>
+      <span class="compartir-op-sub">${sub}</span>
+    </button>`;
+
+// Hoja inferior en móvil / diálogo centrado en ancho (mismo patrón y CSS que
+// el panel de sesión). En móvil empuja una entrada al historial, como el
+// panel del razonamiento: el atrás de Android la cierra sin cambiar de fase.
+let _compartirHistorial = false;
+async function abrirMenuCompartir() {
+  const overlay = document.getElementById('compartirOverlay');
+  if (!overlay || overlay.classList.contains('open')) return;
+  const conIA = !_enHub() && !!state.informeIA?.texto;
+  // Puntos automáticos + «Antes de compartir», y cuántos siguen sin marcar
+  let rev = { total: 0, pendientes: 0, altosPendientes: 0 };
+  if (conIA) { try { rev = (await _cargarInformeIA()).estadoRevisionIA(); } catch { /* sin recuento */ } }
+  const detalleIA = rev.pendientes
+    ? `<span class="compartir-op-aviso${rev.altosPendientes ? ' alto' : ''}">⚠ ${rev.pendientes === rev.total ? rev.total : `${rev.pendientes} de ${rev.total}`} ${rev.total === 1 ? 'punto' : 'puntos'} sin revisar</span>`
+    : rev.total ? `✓ ${rev.total === 1 ? 'Punto revisado' : `${rev.total} puntos revisados`}` : 'Documentación clínica';
+  document.getElementById('compartirOpciones').innerHTML =
+    _opcionCompartir('compartirInformePaciente', 'Para el paciente / médico', 'Informe de fisioterapia en lenguaje llano')
+    + (conIA ? _opcionCompartir('compartirInformeIA', 'Informe clínico (IA)', detalleIA) : '')
+    + _opcionCompartir('compartirNotas', 'Notas clínicas', 'Resumen abreviado para ti, con puntuaciones')
+    + (_enHub() ? _opcionCompartir('finalizarValoracion', 'Enviar al informe', 'Deja la valoración lista en physiq-report') : '');
+  overlay.classList.add('open');
+  document.getElementById('btnCompartir')?.setAttribute('aria-expanded', 'true');
+  lockBodyScroll();
+  window.parent.postMessage({ type: 'PHYSIQ_WIDGET_HIDE' }, '*');
+  if (_esMovil()) {
+    history.pushState({ phase: state.currentPhase, compartir: true }, '');
+    _compartirHistorial = true;
+  }
+  document.getElementById('compartirPanel').focus({ preventScroll: true });
 }
+
+// `desdeHistorial`: lo llama el popstate del atrás. `sinHistorial`: cierre
+// forzado (el hub nos oculta) sin tocar el historial.
+function cerrarMenuCompartir({ desdeHistorial = false, sinHistorial = false } = {}) {
+  const overlay = document.getElementById('compartirOverlay');
+  if (!overlay?.classList.contains('open')) return;
+  overlay.classList.remove('open');
+  const panel = document.getElementById('compartirPanel');
+  panel.style.transform = ''; panel.style.transition = '';
+  unlockBodyScroll();
+  window.parent.postMessage({ type: 'PHYSIQ_WIDGET_SHOW' }, '*');
+  if (_compartirHistorial) {
+    _compartirHistorial = false;
+    if (!desdeHistorial && !sinHistorial) { _popIgnorar = true; history.back(); }
+  }
+  const btn = document.getElementById('btnCompartir');
+  btn?.setAttribute('aria-expanded', 'false');
+  if (!sinHistorial) btn?.focus({ preventScroll: true });
+}
+
+function compartirInformeIA() {
+  cerrarMenuCompartir();
+  _cargarInformeIA().then(m => m.compartirInformeIA()).catch(() => {});
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('compartirOverlay')?.classList.contains('open')) cerrarMenuCompartir();
+});
 
 function showToast(message, tone) {
   const existing = document.getElementById('appToast');
@@ -3422,8 +3496,8 @@ export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, resumenFo
 // and dynamically-generated HTML — those resolve only against the global
 // scope, never a module's private scope.
 Object.assign(window, {
-  abrirFormularioPrevio, abrirRazonamiento, cerrarRazonamiento, irACronologia, appendQuickPhrase, buildResults, closePhaseSheet, closeSessionPanel, copyContextToClipboard,
-  copyInformeFisioterapia, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
+  abrirFormularioPrevio, abrirRazonamiento, cerrarRazonamiento, irACronologia, appendQuickPhrase, buildResults, closePhaseSheet, closeSessionPanel, compartirNotas,
+  abrirMenuCompartir, cerrarMenuCompartir, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
   navStepClick, promptClearSession, resetApp, saveSession, scrollToActiveSisHeader, selectIrritab,
   selectIrritabSync, selectNRS, selectOption, selectPsico, selectRegion, selectSQ, selectSistQ,
   toggleAccordionRow, toggleDictation, toggleImpact, togglePhaseSheet, toggleSessionPanel,
@@ -3493,5 +3567,7 @@ Object.assign(window, {
   if (sheet) initSwipe(sheet, closePhaseSheet);
   const razon = document.getElementById('razonPanel');
   if (razon) initSwipe(razon, () => cerrarRazonamiento(), _esMovil);
+  const compartir = document.getElementById('compartirPanel');
+  if (compartir) initSwipe(compartir, () => cerrarMenuCompartir(), _esMovil);
 }());
 

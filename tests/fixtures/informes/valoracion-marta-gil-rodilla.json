@@ -1,0 +1,181 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-09T13:33:01.014Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Marta Gil",
+    "motivoConsulta": "Dolor en la rodilla izquierda desde un partido de pádel.",
+    "edadPaciente": 38,
+    "sexo": "Mujer",
+    "signosVitales": {
+      "fc": 68,
+      "fr": null,
+      "spo2": null,
+      "tas": 118,
+      "tad": 76
+    },
+    "antropometria": {
+      "talla": 165,
+      "peso": 62
+    },
+    "mecanismo": "Traumático",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "cronologia": "Agudo (<6 semanas)",
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Bajo",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "rodilla",
+    "lado": "Izquierdo",
+    "sistemicoAnswers": {
+      "r_v1": "NO",
+      "r_v2": "NO",
+      "r_v3": "NO",
+      "r1": "NO",
+      "r_i2": "NO",
+      "r_i3": "NO",
+      "r2": "NO",
+      "r3": "NO",
+      "r4": "NO",
+      "ro_t1": "NO",
+      "ro_t2": "NO",
+      "ro_t3": "NO",
+      "ro_t4": "NO",
+      "ro_t5": "NO",
+      "ro_t6": "NO",
+      "ro_p1": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {},
+    "severidad": 4,
+    "irritabilidad": {
+      "dolor": "Media (4-6/10)",
+      "reposo": "Ausente",
+      "movimiento": "Antes del final del rango",
+      "discapacidad": "Moderada",
+      "tolerancia": "Moderada"
+    },
+    "irritabilidadNivel": "Moderada",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Nociceptiva",
+    "estabilidad": "Estable",
+    "signoComparable": "Sentadilla profunda: dolor medial a mitad de recorrido.",
+    "activeHypotheses": [
+      "ro2"
+    ],
+    "treeAnswers": {
+      "ro_step1": "menisco",
+      "ro_step1b": "no",
+      "ro_step2": "no",
+      "ro_step2b": "no",
+      "ro_step2c": "no",
+      "ro_step3": "no",
+      "ro_step4": "no",
+      "ro_step5": "menisco",
+      "ro_step6": "no",
+      "ro_step7": "no"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "ro2": {
+        "0": "pos",
+        "1": "pos"
+      }
+    },
+    "hypothesisScores": {
+      "ro2": {
+        "totalLR": 12.8,
+        "label": "🟢 Peso alto (LR× 12.8)",
+        "colorClass": "hyp-green"
+      }
+    },
+    "derivacionResuelta": {},
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Dolor hasta 3/10 al caminar y que al día siguiente esté igual o mejor.",
+      "ventanaRecuperacion": "",
+      "anclajeHabito": ""
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "Hace tres semanas",
+        "desencadenante": "Sí",
+        "desencadenante__detalle": "Girando en pádel",
+        "inicio": "De golpe",
+        "primera_vez": "Sí",
+        "evolucion": "A mejor",
+        "despierta": "No sabría decir",
+        "dolor_max_semana": 6,
+        "actividad_1": "Jugar al pádel",
+        "actividad_2": "Bajar escaleras",
+        "probado": [
+          "Calor o frío"
+        ],
+        "probado_sirvio": "Un poco"
+      },
+      "regiones": {
+        "rodilla": {
+          "que_paso": [
+            "Giré o cambié de dirección con el pie apoyado"
+          ],
+          "chasquido": "No sabría decir",
+          "pudo_seguir": "No, tuve que parar",
+          "hinchazon": "Sí, horas después: esa noche o a la mañana siguiente",
+          "provoca": {
+            "cuclillas": "Sí",
+            "escaleras": "Sí",
+            "arrodillarse": "No sé",
+            "sentado": "No",
+            "caminar": "No",
+            "correr": "No sé",
+            "saltar": "No sé",
+            "pivotar": "Sí",
+            "de_pie": "No"
+          },
+          "reposo": "No",
+          "nota": {
+            "trabada": "No",
+            "engancha": "Sí",
+            "falla": "No",
+            "rotula": "No",
+            "miedo_girar": "Sí",
+            "crujidos": "No",
+            "detras": "No",
+            "hormigueo": "No"
+          }
+        }
+      }
+    },
+    "rom": null
+  }
+}

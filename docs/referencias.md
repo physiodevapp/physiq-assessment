@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **328** referencias de literatura, con **1336** usos.
+- **328** referencias de literatura, con **1339** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **277** de 328 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -160,7 +160,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Mellor 2016](#mellor-2016) | pauta | 1 | 2026-10 · Sin cambios: protocolo del ensayo LEAP (ver Mellor 2018); las revisiones posteriores (Wang 2025, Cordeiro 2024) no dan una progresión de ejercicios más detallada. |
 | [van Dijk 2016](#van-dijk-2016) | pauta | 1 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las recomendaciones citadas coinciden con su apartado final. Los 143 tobillos son de deportistas profesionales y universitarios (su tabla 1), no solo profesionales: corregido en tp2. PubMed (2026-10): ningún consenso posterior sobre el tratamiento conservador de la lesión aislada. |
 | [Al-Subahi 2017](#al-subahi-2017) | pauta | 1 | 2026-10 · Complementada: Trager 2024 (J Man Manip Ther, revisión sistemática con metaanálisis de 16 ensayos, PDF del usuario) actualiza el efecto de la terapia manual sacroilíaca (discapacidad: efecto moderado, certeza baja; dolor: sin efecto demostrado, certeza muy baja; ninguna técnica superior). Al-Subahi se mantiene para el ejercicio de estabilización, la duración de los programas y el vendaje. |
-| [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · texto | 29 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
+| [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · texto | 30 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
 | [Logerstedt 2017](#logerstedt-2017) | pauta | 4 | 2026-10 · Sin cambios: PubMed (guías de JOSPT de rodilla desde 2017) no encuentra revisión de la guía de esguince de ligamentos; lo posterior son consensos quirúrgicos (esquina posterolateral, 2025; reconstrucción del LCA, 2026), de menos peso y sobre otra pregunta. |
 | [Griffin 2018](#griffin-2018) | pauta | 1 | 2026-10 · Sin cambios: sigue siendo el ensayo de artroscopia frente a fisioterapia de la pauta de ca2; PubMed (SIFA y fisioterapia desde 2022) solo añade el ensayo PhysioFIRST (Kemp 2026), que compara dos programas de fisioterapia. |
 | [Logerstedt 2018](#logerstedt-2018) | pauta | 1 | 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso). |
@@ -180,12 +180,12 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) | pauta | 1 | 2026-10 · Sin cambios: hay una revisión posterior, Ferrero 2026 (Orthop Res Rev, 24 estudios, resumen leído), que concluye que la rehabilitación estructurada es la primera opción y que ningún tratamiento puede recomendarse sobre otro por la heterogeneidad; no contradice la pauta de ro6. |
 | [Trager 2024](#trager-2024) | pauta | 1 | 2026-10 · Sin cambios: es la revisión más reciente que encontró la búsqueda en PubMed (terapia manual en el dolor sacroilíaco) al incorporarla en 2026-10. |
 | [Balcarek 2025](#balcarek-2025) | pauta | 1 | 2026-10 · Sin cambios: PubMed (consensos y guías de primera luxación de rótula desde 2024) no encuentra nada posterior; el consenso de 2024 para adolescentes (J Pediatr Orthop) es anterior. |
-| [Desmeules 2025](#desmeules-2025) | pauta · test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: guía de 2025; búsqueda en PubMed (2026-10) sin versión posterior. Sigue como pauta de h2 y h3. |
+| [Desmeules 2025](#desmeules-2025) | pauta · test 4b sin puntuar · texto | 5 | 2026-10 · Sin cambios: guía de 2025; búsqueda en PubMed (2026-10) sin versión posterior. Sigue como pauta de h2 y h3. |
 | [Koc 2025](#koc-2025) | pauta | 1 | 2026-10 · Sustituye a Cibulka 2017 (revisión 2017 de la misma guía) en la pauta de ca1. PDF del usuario leído (2026-10; trae CPG1 y CPG10–CPG31, todas las intervenciones; faltan el resumen, la introducción, los métodos y el diagnóstico, CPG2–CPG9). Cambios frente a 2017: ejercicio (A) 1–5 veces por semana, 30–120 min, 5–16 semanas, incluido el acuático; terapia manual (A) con distracción longitudinal y movilización con movimiento; punción seca nueva (A); educación con afrontamiento del dolor por internet (B); pérdida de peso de C a B; ultrasonido de B a D. Donde choca con NICE NG226 (punción seca, ultrasonido) se dan las dos posturas (decisión del usuario). |
 | [Liu 2025](#liu-2025) | pauta | 1 | 2026-10 · Leída en PMC (2026-10). Sus análisis de dosis son subgrupos separados (tipo, frecuencia, duración) que nunca se combinan: «multimodal 1–2 veces por semana durante 5–8 semanas» para el FAAM se apoya en un solo ensayo, hecho 3 veces por semana, y «terapia manual ≤4 semanas» para el CAIT en uno o dos. Se quita de tp21 esa orientación de dosis y queda el efecto global (CAIT +4,6 y FAAM de actividades diarias +7,7, certeza moderada). |
 | [Lopes 2025](#lopes-2025) | pauta | 1 | 2026-10 · Sin cambios: es la revisión Cochrane más reciente; el metaanálisis en red posterior (BMC Sports Sci Med Rehabil, 2026) no la sustituye en la pauta, que sigue la guía holandesa (Ophey 2025). |
 | [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
-| [Prill 2025](#prill-2025) | pauta | 1 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
+| [Prill 2025](#prill-2025) | pauta · texto | 2 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
 | [Pringels 2025](#pringels-2025) | pauta · texto | 2 | 2026-10 · Añadida (leída entera en PMC) en la pauta de tp9: ensayo aleatorizado de 42 deportistas con tendinopatía insercional; limitar la dorsiflexión mejoró el VISA-A 12,9 puntos más (IC 95 % 6,2–19,6) a las 12 semanas y 10,4 (3,7–17,1) a las 24. |
 | [Rich 2025](#rich-2025) | pauta · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: es el ensayo más reciente sobre tendinopatía proximal de isquiotibiales (PubMed, revisiones y ensayos desde 2024). |
 | [Salamh 2025](#salamh-2025) | pauta · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: consenso de 2025; búsqueda en PubMed (2026-10) sin guía ni consenso posterior sobre el hombro congelado. |
@@ -1201,13 +1201,14 @@ Citada como:
 8. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 379–380 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A19)
 9. Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Lluch 2020, cap. 5.3 (Jull y Falla), p. 378 (test de flexión craneocervical para dosificar)
 10. Lluch 2020, cap. 5.3 (Jull y Falla), p. 380 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
-11. Blanpied 2017 (J Orthop Sports Phys Ther 47(7), pp. A13–A14, tabla 6)
-12. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 372–373 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), pp. A13–A14, tabla 6)
-13. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
-14. Lluch 2020, cap. 5.3 (Jull y Falla), p. 375 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
-15. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A15)
-16. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A20)
-17. Kuijper 2009, BMJ 339:b3883 (ensayo aleatorizado, n = 205; la lista de ejercicios está en su apéndice web, no revisado) · Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación)
+11. Ante cualquier duda de afectación medular → derivar. El aura migrañosa puede presentarse como pérdida de fuerza en el brazo antes de la cefalea, hasta 60 min. Derivar si los síntomas no mejoran o empeoran (Blanpied 2017).
+12. Blanpied 2017 (J Orthop Sports Phys Ther 47(7), pp. A13–A14, tabla 6)
+13. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 372–373 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), pp. A13–A14, tabla 6)
+14. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
+15. Lluch 2020, cap. 5.3 (Jull y Falla), p. 375 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
+16. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A15)
+17. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A20)
+18. Kuijper 2009, BMJ 339:b3883 (ensayo aleatorizado, n = 205; la lista de ejercicios está en su apéndice web, no revisado) · Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1222,23 +1223,24 @@ Citada como:
 | Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Reposicionamiento Cabeza-Neutro» | 4b · cita bajo el test | 8 |
 | Cervical | ce2 · Disfunción Neuromuscular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 9 |
 | Cervical | ce3 · Radiculopatía Cervical | Test «Reflejos tendinosos (bíceps C6, tríceps C7)» | 4b · cita bajo el test | 10 |
+| Cervical | ce3 · Radiculopatía Cervical | Pronóstico (en `derivacion`) | 5 · mención en el texto | 11 |
 | Cervical | ce3 · Radiculopatía Cervical | Pauta de tratamiento | 5 · cita de la pauta | 3 |
 | Cervical | ce4 · Cefalea Cervicogénica | Test «PAIVM C0-C3 (segmento C1-C2 más sintomático)» | 4b · cita bajo el test | 6 |
 | Cervical | ce4 · Cefalea Cervicogénica | Pauta de tratamiento | 5 · cita de la pauta | 9 |
-| Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Test «Factores de riesgo de evolución persistente (WAD agudo o subagudo)» | 4b · cita bajo el test | 11 |
-| Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Test «Síntomas de hiperalerta / PTSD» | 4b · cita bajo el test | 12 |
+| Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Test «Factores de riesgo de evolución persistente (WAD agudo o subagudo)» | 4b · cita bajo el test | 12 |
+| Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Test «Síntomas de hiperalerta / PTSD» | 4b · cita bajo el test | 13 |
 | Cervical | ce5 · Trastornos Asociados a Latigazo Cervical (WAD) | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Cervical | ce6 · Debilidad Muscular Cérvico-Escapular | Test «Fuerza de Flexión Cervical (dinamometría)» | 4b · cita bajo el test | 13 |
-| Cervical | ce6 · Debilidad Muscular Cérvico-Escapular | Test «Fuerza de Extensión Cervical (dinamometría)» | 4b · cita bajo el test | 13 |
+| Cervical | ce6 · Debilidad Muscular Cérvico-Escapular | Test «Fuerza de Flexión Cervical (dinamometría)» | 4b · cita bajo el test | 14 |
+| Cervical | ce6 · Debilidad Muscular Cérvico-Escapular | Test «Fuerza de Extensión Cervical (dinamometría)» | 4b · cita bajo el test | 14 |
 | Cervical | ce6 · Debilidad Muscular Cérvico-Escapular | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Cervical | ce7 · Dolor Mecánico Cervical Inespecífico Crónico | Test «ROM Cervical Activo (reducción en todas las direcciones)» | 4b · cita bajo el test | 14 |
+| Cervical | ce7 · Dolor Mecánico Cervical Inespecífico Crónico | Test «ROM Cervical Activo (reducción en todas las direcciones)» | 4b · cita bajo el test | 15 |
 | Cervical | ce7 · Dolor Mecánico Cervical Inespecífico Crónico | Test «Test de reposicionamiento cabeza-neutro» | 4b · cita bajo el test | 8 |
 | Cervical | ce7 · Dolor Mecánico Cervical Inespecífico Crónico | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Signo de Hoffmann» | 4b · cita bajo el test | 15 |
+| Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Signo de Hoffmann» | 4b · cita bajo el test | 16 |
 | Cervical | ce9 · Disfunción Postural Cérvico-Torácica | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Test «Test de resistencia de flexores cervicales profundos» | 4b · cita bajo el test | 16 |
+| Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Test «Test de resistencia de flexores cervicales profundos» | 4b · cita bajo el test | 17 |
 | Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Cervical | ce12 · Dolor Radicular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 17 |
+| Cervical | ce12 · Dolor Radicular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 18 |
 | Cervical | ce14 · Dolor Cervical Idiopático | Pauta de tratamiento | 5 · cita de la pauta | 3 |
 
 ### Bodman 2024
@@ -1799,17 +1801,19 @@ Nota: PDF aportado por el usuario. Incluye tendinopatía del manguito con o sin 
 
 Citada como:
 
-1. Desmeules 2025, J Orthop Sports Phys Ther 55(4):235–274 (guía de práctica clínica; incluye el síndrome de dolor subacromial dentro de la tendinopatía del manguito; letra = grado de la recomendación, tal como la da la guía)
-2. Desmeules 2025, J Orthop Sports Phys Ther 55(4):235–274 (guía de práctica clínica; incluye la rotura parcial y excluye la completa; letra = grado de la recomendación, tal como la da la guía) · Alentorn-Geli 2026, Knee Surg Sports Traumatol Arthrosc 34:3040–3051 (consenso formal de la ESSKA-ESA, parte 2: tratamiento y vuelta al deporte; letra = grado de la recomendación, tal como la da el consenso; ninguna llega a A)
-3. Asimetría visual en la elevación del brazo: ángulo inferior, borde medial o espina escapular prominentes. Las medidas de la movilidad escapular son poco fiables y de validez limitada, y no deben usarse para medir objetivamente la movilidad escapular dinámica (Desmeules 2025, recomendación 6, A). La discinesia se asocia al SAPS, pero no se ha demostrado que cause el dolor (Lluch 2020). Sin S ni E; no puntúa.
-4. Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274, recomendación 6) · Lluch 2020, cap. 3.1 (Struyf), pp. 53–54
+1. Dolor en reposo: puede indicar bursitis o proceso inflamatorio que tolere mal el movimiento vigoroso → dosificar. La idea de «espacio subacromial estrecho» es controvertida. Si no mejora en un máximo de 12 semanas de tratamiento conservador adecuado, puede pedirse imagen y derivar al médico especialista si el dolor o la discapacidad siguen siendo intensos (Desmeules 2025, grado F).
+2. Desmeules 2025, J Orthop Sports Phys Ther 55(4):235–274 (guía de práctica clínica; incluye el síndrome de dolor subacromial dentro de la tendinopatía del manguito; letra = grado de la recomendación, tal como la da la guía)
+3. Desmeules 2025, J Orthop Sports Phys Ther 55(4):235–274 (guía de práctica clínica; incluye la rotura parcial y excluye la completa; letra = grado de la recomendación, tal como la da la guía) · Alentorn-Geli 2026, Knee Surg Sports Traumatol Arthrosc 34:3040–3051 (consenso formal de la ESSKA-ESA, parte 2: tratamiento y vuelta al deporte; letra = grado de la recomendación, tal como la da el consenso; ninguna llega a A)
+4. Asimetría visual en la elevación del brazo: ángulo inferior, borde medial o espina escapular prominentes. Las medidas de la movilidad escapular son poco fiables y de validez limitada, y no deben usarse para medir objetivamente la movilidad escapular dinámica (Desmeules 2025, recomendación 6, A). La discinesia se asocia al SAPS, pero no se ha demostrado que cause el dolor (Lluch 2020). Sin S ni E; no puntúa.
+5. Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274, recomendación 6) · Lluch 2020, cap. 3.1 (Struyf), pp. 53–54
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
-| Hombro | h3 · Rotura del Manguito Rotador | Pauta de tratamiento | 5 · cita de la pauta | 2 |
-| Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» (en `criterio`) | 4b · mención en el texto | 3 |
-| Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» | 4b · cita bajo el test | 4 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Pronóstico (en `derivacion`) | 5 · mención en el texto | 1 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+| Hombro | h3 · Rotura del Manguito Rotador | Pauta de tratamiento | 5 · cita de la pauta | 3 |
+| Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» (en `criterio`) | 4b · mención en el texto | 4 |
+| Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» | 4b · cita bajo el test | 5 |
 
 ### Devereaux y ElMaraghy 2013
 
@@ -3652,7 +3656,7 @@ DOI: 10.1136/bmj.b3883
 
 Citada como:
 
-1. Aguda: ejercicios de movilización y estabilización, láser y collarín a corto plazo (C); el collarín, solo poco tiempo, en la fase aguda y si no alivian otros tratamientos. Crónica: tracción cervical mecánica intermitente (la continua no ha mostrado beneficio) combinada con estiramientos y fortalecimiento más movilización o manipulación cervical y torácica (B); educación para seguir con la actividad laboral y el ejercicio (B). Vigilar la irritabilidad y ajustar la terapia manual y el ejercicio; derivar si los síntomas no mejoran o empeoran. Para la fase aguda hay una pauta con volumen de un ensayo (Kuijper 2009) en «Dolor radicular cervical». La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico, ajustado a la irritabilidad.
+1. Aguda: ejercicios de movilización y estabilización, láser y collarín a corto plazo (C); el collarín, solo poco tiempo, en la fase aguda y si no alivian otros tratamientos. Crónica: tracción cervical mecánica intermitente (la continua no ha mostrado beneficio) combinada con estiramientos y fortalecimiento más movilización o manipulación cervical y torácica (B); educación para seguir con la actividad laboral y el ejercicio (B). Vigilar la irritabilidad y ajustar la terapia manual y el ejercicio. Para la fase aguda hay una pauta con volumen de un ensayo (Kuijper 2009) en «Dolor radicular cervical». La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico, ajustado a la irritabilidad.
 2. Kuijper 2009, BMJ 339:b3883 (ensayo aleatorizado, n = 205; la lista de ejercicios está en su apéndice web, no revisado) · Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -6060,11 +6064,13 @@ Nota: Texto completo leído en PMC (2026-10). Consenso formal de 67 expertos (ci
 
 Citada como:
 
-1. Prill 2025, Knee Surg Sports Traumatol Arthrosc 33(8):3014–3024 (consenso formal EU-US de rehabilitación del menisco, ESSKA-AOSSM-AASPT, parte II: tratamiento sin cirugía; grados A a D, de más respaldo científico a opinión de expertos); Logerstedt 2018, J Orthop Sports Phys Ther 48(2):A1–A50 (guía de práctica clínica APTA, lesiones de menisco y de cartílago articular: tras la meniscectomía; deja el tratamiento sin cirugía para su próxima revisión; letra = grado de la recomendación, tal como la da la guía); AAOS 2024 (guía de práctica clínica de patología meniscal aislada aguda, opciones «Physical Therapy» e «Indications for Acute Surgical Intervention»)
+1. Tras una meniscectomía parcial por rotura degenerativa, el riesgo de artrosis radiográfica con síntomas a los 16 años es 7 veces el de controles emparejados (por rotura traumática, 2,7, sin significación). Solo el 30 % periférico está vascularizado, y disminuye con la edad. Jóvenes: mejores candidatos a reparación. Derivar al traumatólogo si persisten el dolor, la rigidez o el derrame recurrentes, la inestabilidad funcional, los síntomas mecánicos o aparecen síntomas neurológicos inesperados (Prill 2025, grado C).
+2. Prill 2025, Knee Surg Sports Traumatol Arthrosc 33(8):3014–3024 (consenso formal EU-US de rehabilitación del menisco, ESSKA-AOSSM-AASPT, parte II: tratamiento sin cirugía; grados A a D, de más respaldo científico a opinión de expertos); Logerstedt 2018, J Orthop Sports Phys Ther 48(2):A1–A50 (guía de práctica clínica APTA, lesiones de menisco y de cartílago articular: tras la meniscectomía; deja el tratamiento sin cirugía para su próxima revisión; letra = grado de la recomendación, tal como la da la guía); AAOS 2024 (guía de práctica clínica de patología meniscal aislada aguda, opciones «Physical Therapy» e «Indications for Acute Surgical Intervention»)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Rodilla | ro2 · Lesión Meniscal | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+| Rodilla | ro2 · Lesión Meniscal | Pronóstico (en `derivacion`) | 5 · mención en el texto | 1 |
+| Rodilla | ro2 · Lesión Meniscal | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
 ### Pringels 2025
 

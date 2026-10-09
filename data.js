@@ -41,6 +41,8 @@ export const SYSTEMIC_SCREENING = Object.fromEntries(
 //         id: string,                // único dentro del árbol (id del <div> renderizado)
 //         tag: string,                // etiqueta corta ("Paso N — ...")
 //         question: string,           // texto de la pregunta
+//         iaPregunta?: string,        // opcional: la pregunta solo para el prompt del
+//                                      // informe con IA, sin cifras ni citas (rodilla ro_step1b)
 //         options: [
 //           {
 //             label: string,          // texto del botón
@@ -60,6 +62,13 @@ export const SYSTEMIC_SCREENING = Object.fromEntries(
 //                                      // fase 2). Se pinta bajo el paso, al completar el
 //                                      // árbol, en fase 5, 📋 Notas, 📄 Informe y payload `dv`
 //                                      // (getDerivacionesArbol, phase4.js). El recorrido sigue.
+//             iaTexto?: string        // opcional: la opción solo para el prompt del informe con
+//                                      // IA. Por defecto el prompt recibe solo la conclusión (lo que
+//                                      // hay antes de « — »; textoOpcionIA, lib/informe-narrativo.js);
+//                                      // iaTexto hace falta cuando eso no basta (varios «SÍ» en la
+//                                      // misma pregunta, «descripción — posible X»)
+//             iaEntera?: true         // opcional: al prompt va la etiqueta entera, porque lo que
+//                                      // sigue al guion es el diagnóstico («5.º MT — Fractura»)
 //             resoluble?: true        // opcional, solo con `derivacion`: admite «Ya
 //                                      // diagnosticada y tratada» (state.derivacionResuelta
 //                                      // [step.id]); marcada, la derivación no sale en ningún
@@ -93,6 +102,11 @@ export const CIF_TREES = Object.fromEntries(
 //     prom: string,               // PROM recomendado (texto libre)
 //     dosis: string,              // pauta de tratamiento (texto libre); '' = a criterio del clínico
 //     dosisFuente?: string,       // cita de la pauta (guía o ensayo), se muestra bajo la dosis en fase 5; solo con dosis
+//     dosisRamas?: [{ si: { mecanismo?, arbol?: { [stepId]: value } }, titulo, texto }],
+//                                // la pauta partida por situación (lib/pauta.js): la primera
+//                                // rama que encaja va delante en fase 5 y sola al informe con
+//                                // IA; los textos son frases de `dosis` (test). Hoy: ro2
+//     dosisComun?: string,        // con dosisRamas: lo que vale para todas (va tras la rama)
 //     pronostico?: { horizonte, derivacion, fuente },   // se muestra en fase 5
 //     clusters?: { [id]: { nombre, umbralPos, lr_pos, umbralNeg, lr_neg, sn?, sp?, fuente } },
 //     tests: [

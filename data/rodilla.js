@@ -492,13 +492,21 @@ export const tree = {
       tag: 'Paso 1 — Antecedente Traumático Agudo',
       question: '¿Hubo un evento lesivo reciente con inflamación inmediata? Rodilla aguda traumática: ¿qué mecanismo cuenta?',
       options: [
-        { label: 'SÍ — Sensación de "pop", derrame articular rápido e inestabilidad (posible LCA)', value: 'lca', next: null, hypothesis: ['ro4'] },
-        { label: 'SÍ — Trauma rotacional con síntomas de bloqueo o chasquidos (posible Menisco)', value: 'menisco', next: null, hypothesis: ['ro2'] },
-        { label: 'SÍ — Valgo con el pie fijo → LCM (mirar LCA y menisco medial)', value: 'lcm', next: null, hypothesis: ['ro8'] },
-        { label: 'SÍ — Golpe en tibia anterior con rodilla flexionada (salpicadero) → LCP y EPL', value: 'lcp', next: null, hypothesis: ['ro9'] },
-        { label: 'SÍ — Golpe anteromedial o varo cerca de la extensión → LLE y EPL', value: 'lle', next: null, hypothesis: ['ro10'] },
-        { label: 'SÍ — La rótula «se salió», aprensión al trasladarla lateralmente → INESTABILIDAD ROTULIANA', value: 'rotula', next: null, hypothesis: ['ro12'] },
-        { label: 'SÍ — Golpe directo anterior, dolor con extensión resistida, escalón palpable → FRACTURA', value: 'fractura', next: null, hypothesis: ['ro11'] },
+        { label: 'SÍ — Sensación de "pop", derrame articular rápido e inestabilidad (posible LCA)', value: 'lca', next: null, hypothesis: ['ro4'],
+          // iaTexto: solo para el informe con IA, sin los síntomas ni signos del patrón (ronda 18: escribió que Marta tuvo bloqueo y chasquidos)
+          iaTexto: 'SÍ — Mecanismo traumático que orienta a lesión del LCA' },
+        { label: 'SÍ — Trauma rotacional con síntomas de bloqueo o chasquidos (posible Menisco)', value: 'menisco', next: null, hypothesis: ['ro2'],
+          iaTexto: 'SÍ — Trauma rotacional (orienta a: menisco)' },
+        { label: 'SÍ — Valgo con el pie fijo → LCM (mirar LCA y menisco medial)', value: 'lcm', next: null, hypothesis: ['ro8'],
+          iaTexto: 'SÍ — Valgo con el pie fijo (orienta a: LCM)' },
+        { label: 'SÍ — Golpe en tibia anterior con rodilla flexionada (salpicadero) → LCP y EPL', value: 'lcp', next: null, hypothesis: ['ro9'],
+          iaTexto: 'SÍ — Golpe en la tibia anterior con la rodilla flexionada (orienta a: LCP y esquina posterolateral)' },
+        { label: 'SÍ — Golpe anteromedial o varo cerca de la extensión → LLE y EPL', value: 'lle', next: null, hypothesis: ['ro10'],
+          iaTexto: 'SÍ — Golpe anteromedial o varo cerca de la extensión (orienta a: LLE y esquina posterolateral)' },
+        { label: 'SÍ — La rótula «se salió», aprensión al trasladarla lateralmente → INESTABILIDAD ROTULIANA', value: 'rotula', next: null, hypothesis: ['ro12'],
+          iaTexto: 'SÍ — Refiere que la rótula «se salió» (orienta a: inestabilidad rotuliana)' },
+        { label: 'SÍ — Golpe directo anterior, dolor con extensión resistida, escalón palpable → FRACTURA', value: 'fractura', next: null, hypothesis: ['ro11'],
+          iaTexto: 'SÍ — Golpe directo anterior (orienta a: fractura)' },
         { label: 'NO — Dolor de inicio insidioso o crónico', value: 'no', next: 'ro_step2', hypothesis: [] }
       ]
     },
@@ -508,6 +516,8 @@ export const tree = {
       id: 'ro_step1b',
       tag: 'Paso 1b — Regla de Ottawa y Aparato Extensor',
       question: '¿Algún criterio de Ottawa (≥55 años · cabeza del peroné · rótula aislada · no flexiona 90° · no carga cuatro pasos)? Y en toda rodilla traumática con dolor anterior, elevación de la pierna extendida. Alternativa a Ottawa: Pittsburgh — contusión o caída MÁS (<12 o >50 años, o no puede caminar); S ≈99 % con E ≈60 %, pide menos radiografías (Seaberg y Jackson 1994; Seaberg 1998).',
+      // Solo para el informe con IA: sin las cifras de S/E ni las citas, que el prompt no lleva en ningún otro sitio
+      iaPregunta: '¿Algún criterio de Ottawa (≥55 años · cabeza del peroné · rótula aislada · no flexiona 90° · no carga cuatro pasos)? Y en toda rodilla traumática con dolor anterior, elevación de la pierna extendida.',
       options: [
         { label: 'OTTAWA POSITIVO — DERIVAR PARA RADIOGRAFÍA antes de seguir explorando', value: 'ottawa', next: null, hypothesis: ['ro11'] },
         { label: 'NO ELEVA LA PIERNA EXTENDIDA — Aparato extensor, que Ottawa no detecta: derivar hoy', value: 'extensor', next: null, hypothesis: [] },
@@ -530,7 +540,9 @@ export const tree = {
       question: '¿Niño o adolescente con dolor de rodilla sin mecanismo conocido? → EXPLORAR PRIMERO LA CADERA (epifisiólisis, Perthes). Solo si el cribado es normal, seguir en la rodilla.',
       options: [
         { label: 'SÍ — Cribado de cadera alterado: derivar (epifisiólisis, Perthes)', value: 'cadera_alterada', next: null, hypothesis: [] },
-        { label: 'SÍ — Cribado de cadera normal: seguir en la rodilla', value: 'cadera_normal', next: null, hypothesis: [] },
+        { label: 'SÍ — Cribado de cadera normal: seguir en la rodilla', value: 'cadera_normal', next: null, hypothesis: [],
+          // iaTexto: solo para el informe con IA (revisión de los árboles, 2026-10): la conclusión, sin los criterios del patrón
+          iaTexto: 'SÍ — Niño o adolescente con cribado de cadera normal' },
         { label: 'NO — Adulto, o hay mecanismo conocido', value: 'no', next: null, hypothesis: [] }
       ]
     },
@@ -638,11 +650,25 @@ export const hypotheses = {
     id: 'ro2', region: 'rodilla', num: '②',
     name: 'Lesión Meniscal',
     prom: 'KOOS (MCID: 7–36 pts según subescala)',
-    dosis: 'Sin cirugía. Lesión degenerativa con síntomas: el tratamiento no quirúrgico con fisioterapia es la primera opción, con resultados comparables a la meniscectomía parcial (A); el consenso quirúrgico previo pide 3 a 6 meses antes de plantear la cirugía. Terapia manual y movilización articular, ejercicios de movilidad, fuerza progresiva de rodilla y cadera y entrenamiento neuromuscular, con un programa en casa además del supervisado; puede añadirse electroestimulación neuromuscular (B). Rotura traumática: el ejercicio es una opción tan viable como la cirugía (A); en rodillas estables, un programa supervisado de 12 semanas de entrenamiento neuromuscular y de fuerza (miembro inferior, equilibrio, cadera y tronco) con educación dio resultados parecidos a la cirugía con la misma rehabilitación (un solo ensayo, B). Las roturas en asa de cubo, las radiales completas, las de la raíz y las lesiones en rampa extensas en jóvenes pueden necesitar cirugía temprana (D). En la rotura aguda aislada, la guía AAOS reserva la fisioterapia como primer tratamiento a la no desplazada que no se puede reparar, y propone cirugía precoz si está desplazada o limita el rango, o si es reparable y da síntomas (opciones de consenso, sin evidencia suficiente). Derivar al traumatólogo si persisten el dolor, la rigidez o el derrame recurrentes, la inestabilidad funcional, los síntomas mecánicos o aparecen síntomas neurológicos inesperados (C). Tras una meniscectomía parcial: ejercicio supervisado en consulta más un programa en casa cuya progresión supervisa el fisioterapeuta, con la educación necesaria (B), y electroestimulación neuromuscular para la fuerza del cuádriceps (B). Ninguna de las dos fuentes fija series ni repeticiones: el volumen queda a criterio del clínico.',
+    dosis: 'Sin cirugía. Lesión degenerativa con síntomas: el tratamiento no quirúrgico con fisioterapia es la primera opción, con resultados comparables a la meniscectomía parcial (A); el consenso quirúrgico previo pide 3 a 6 meses antes de plantear la cirugía. Terapia manual y movilización articular, ejercicios de movilidad, fuerza progresiva de rodilla y cadera y entrenamiento neuromuscular, con un programa en casa además del supervisado; puede añadirse electroestimulación neuromuscular (B). Rotura traumática: el ejercicio es una opción tan viable como la cirugía (A); en rodillas estables, un programa supervisado de 12 semanas de entrenamiento neuromuscular y de fuerza (miembro inferior, equilibrio, cadera y tronco) con educación dio resultados parecidos a la cirugía con la misma rehabilitación (un solo ensayo, B). Las roturas en asa de cubo, las radiales completas, las de la raíz y las lesiones en rampa extensas en jóvenes pueden necesitar cirugía temprana (D). En la rotura aguda aislada, la guía AAOS reserva la fisioterapia como primer tratamiento a la no desplazada que no se puede reparar, y propone cirugía precoz si está desplazada o limita el rango, o si es reparable y da síntomas (opciones de consenso, sin evidencia suficiente). Tras una meniscectomía parcial: ejercicio supervisado en consulta más un programa en casa cuya progresión supervisa el fisioterapeuta, con la educación necesaria (B), y electroestimulación neuromuscular para la fuerza del cuádriceps (B). Ninguna de las dos fuentes fija series ni repeticiones: el volumen queda a criterio del clínico.',
+    // Ramas de la pauta (lib/pauta.js): la primera que encaja es la de este caso.
+    // Por la opción del árbol (decisión del usuario, 2026-10): «menisco» en la
+    // rodilla aguda traumática (paso 1) → traumática; en el dolor persistente
+    // medial o lateral → degenerativa. Con mecanismo Post-quirúrgico, la de tras
+    // la meniscectomía. Los textos son frases de `dosis`, sin cambios.
+    dosisRamas: [
+      { si: { mecanismo: 'Post-quirúrgico' }, titulo: 'Tras una meniscectomía parcial',
+        texto: 'Tras una meniscectomía parcial: ejercicio supervisado en consulta más un programa en casa cuya progresión supervisa el fisioterapeuta, con la educación necesaria (B), y electroestimulación neuromuscular para la fuerza del cuádriceps (B).' },
+      { si: { arbol: { ro_step1: 'menisco' } }, titulo: 'Rotura traumática, sin cirugía',
+        texto: 'Rotura traumática: el ejercicio es una opción tan viable como la cirugía (A); en rodillas estables, un programa supervisado de 12 semanas de entrenamiento neuromuscular y de fuerza (miembro inferior, equilibrio, cadera y tronco) con educación dio resultados parecidos a la cirugía con la misma rehabilitación (un solo ensayo, B). Las roturas en asa de cubo, las radiales completas, las de la raíz y las lesiones en rampa extensas en jóvenes pueden necesitar cirugía temprana (D). En la rotura aguda aislada, la guía AAOS reserva la fisioterapia como primer tratamiento a la no desplazada que no se puede reparar, y propone cirugía precoz si está desplazada o limita el rango, o si es reparable y da síntomas (opciones de consenso, sin evidencia suficiente).' },
+      { si: { arbol: { ro_step5: 'menisco', ro_step6: 'menisco' } }, titulo: 'Lesión degenerativa, sin cirugía',
+        texto: 'Lesión degenerativa con síntomas: el tratamiento no quirúrgico con fisioterapia es la primera opción, con resultados comparables a la meniscectomía parcial (A); el consenso quirúrgico previo pide 3 a 6 meses antes de plantear la cirugía. Terapia manual y movilización articular, ejercicios de movilidad, fuerza progresiva de rodilla y cadera y entrenamiento neuromuscular, con un programa en casa además del supervisado; puede añadirse electroestimulación neuromuscular (B).' },
+    ],
+    dosisComun: 'Ninguna de las dos fuentes fija series ni repeticiones: el volumen queda a criterio del clínico.',
     dosisFuente: 'Prill 2025, Knee Surg Sports Traumatol Arthrosc 33(8):3014–3024 (consenso formal EU-US de rehabilitación del menisco, ESSKA-AOSSM-AASPT, parte II: tratamiento sin cirugía; grados A a D, de más respaldo científico a opinión de expertos); Logerstedt 2018, J Orthop Sports Phys Ther 48(2):A1–A50 (guía de práctica clínica APTA, lesiones de menisco y de cartílago articular: tras la meniscectomía; deja el tratamiento sin cirugía para su próxima revisión; letra = grado de la recomendación, tal como la da la guía); AAOS 2024 (guía de práctica clínica de patología meniscal aislada aguda, opciones «Physical Therapy» e «Indications for Acute Surgical Intervention»)',
     pronostico: {
       horizonte: 'RM o artroscopia. En roturas degenerativas, la meniscectomía parcial NO ha demostrado más beneficio que la fisioterapia.',
-      derivacion: 'Tras una meniscectomía parcial por rotura degenerativa, el riesgo de artrosis radiográfica con síntomas a los 16 años es 7 veces el de controles emparejados (por rotura traumática, 2,7, sin significación). Solo el 30 % periférico está vascularizado, y disminuye con la edad. Jóvenes: mejores candidatos a reparación.',
+      derivacion: 'Tras una meniscectomía parcial por rotura degenerativa, el riesgo de artrosis radiográfica con síntomas a los 16 años es 7 veces el de controles emparejados (por rotura traumática, 2,7, sin significación). Solo el 30 % periférico está vascularizado, y disminuye con la edad. Jóvenes: mejores candidatos a reparación. Derivar al traumatólogo si persisten el dolor, la rigidez o el derrame recurrentes, la inestabilidad funcional, los síntomas mecánicos o aparecen síntomas neurológicos inesperados (Prill 2025, grado C).',
       fuente: 'Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209–210; Englund 2003 (Arthritis Rheum 48:2178–87; 155 meniscectomías frente a 68 controles, 16 años; RR 7,0, IC 95 %: 2,1–23,5)'
     },
     tests: [

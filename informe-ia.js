@@ -16,17 +16,19 @@
 // se descarta — el informe de ejemplo del worker es de un paciente ficticio y
 // no puede mezclarse con una valoración real.
 
+import { ramaPauta } from './lib/pauta.js';
 import { state } from './state.js';
 import { CIF_TREES, HYPOTHESES, SYSTEMIC_SCREENING, DOSIS_DERIVAR } from './data.js';
-import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast, resumenFormularioIA } from './app.js';
+import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast, resumenFormularioIA, compartirTexto, registrarValoracionCompleta } from './app.js';
 import { esTratada, hipotesis, hipotesisActivas } from './phase4b.js';
 import { esPosquirurgico, cirugiaPayload, pautaHipPosq } from './lib/posquirurgico.js';
-import { revisarInforme, comprobacionesManuales } from './lib/revision-informe.js';
+import { revisarInforme, comprobacionesManuales, clavePunto, claveComprobacion, resumenRevisados } from './lib/revision-informe.js';
+import { VERSION_SHA } from './lib/version.js';
 import {
-  ORCHESTRATOR_URL, TURNSTILE_SITEKEY, MAX_AUDIO_BYTES, PLANTILLAS, plantillaPorDefecto,
+  ORCHESTRATOR_URL, TURNSTILE_SITEKEY, MAX_AUDIO_BYTES, PLANTILLAS, plantillaPorDefecto, MODOS_AUDIO,
   getWhisperPrompt, huellaPayload, parseSSEBuffer, parseSSEBlock,
   informeTruncado, markdownAHtml, textoParaCompartir, extensionAudio, errorLegible, errorConexion,
-  transcripcionSinVoz, TEXTO_SIN_VOZ,
+  transcripcionSinVoz, TEXTO_SIN_VOZ, textoOpcionIA,
 } from './lib/informe-narrativo.js';
 import { estadoLicencia, onLicencia, comprobarLicencia, probarClave, marcarSinLicencia, claveGuardada, detalleLicencia } from './lib/licencia-ia.js';
 import {
@@ -45,6 +47,7 @@ let _audioConsentido = null;     // el consentimiento vale para un audio concret
 let _cerrando = false;           // «Generar» está cerrando la grabación en curso
 let _gen = null;                 // generación en curso: { texto, transcripcion, fase, ctrl }
 let _plantilla = null;           // 'narrativo' | 'breve' elegida a mano; null = la del tipo de consulta
+let _modoAudio = 'dialogo';      // 'dialogo' | 'dictado': quién habla en el audio; dura lo que la página
 let _resultadoAbierto = false;   // el informe generado se muestra plegado hasta que se abre
 let _vivoAbierto = false;        // «Ver mientras se escribe», mientras dura una generación
 let _error = null;               // último fallo al generar: errorLegible() — se muestra hasta el siguiente intento
@@ -87,6 +90,7 @@ function esqueleto() {
       <summary id="iaGenSummary">Generar un informe nuevo</summary>
       <div id="iaPlantilla" class="ia-plantilla"></div>
       <div id="iaAudio"></div>
+      <div id="iaModoAudio" class="ia-plantilla"></div>
       <div id="iaConsent"></div>
       <div class="alert alert-info ia-privacidad"><span class="alert-icon">🔒</span><div>Al generar, los datos de esta valoración y el audio (si lo hay) se envían a OpenAI (transcripción) y a Anthropic (redacción) a través del servidor de PhysiQ. Revisa el informe antes de compartirlo.</div></div>
       <div id="iaTurnstile" class="ia-turnstile"></div>
@@ -235,16 +239,15 @@ function pintarResultado() {
     <details class="ia-resultado-det" id="iaResultadoDet"${_resultadoAbierto ? ' open' : ''}>
       <summary>
         <span class="ia-resultado-titulo">📄 ${esc(plantilla.nombre)}</span>
-        <span class="ia-meta">${esc(fecha)} · ${inf.conAudio ? 'con audio' : 'sin audio'} · ${contarPalabras(inf.texto)} palabras</span>
+        <span class="ia-meta">${esc(fecha)} · ${inf.conAudio ? (inf.dictado ? 'con dictado' : 'con audio') : 'sin audio'} · ${contarPalabras(inf.texto)} palabras</span>
       </summary>
       <div class="ia-informe">${markdownAHtml(inf.texto)}</div>
-      ${inf.transcripcion && inf.conAudio ? `<details class="ia-transcripcion"><summary>Transcripción del audio</summary><div class="ia-transcripcion-texto">${esc(inf.transcripcion)}</div></details>` : ''}
+      ${inf.transcripcion && inf.conAudio ? `<details class="ia-transcripcion"><summary>${inf.dictado ? 'Transcripción del dictado' : 'Transcripción del audio'}</summary><div class="ia-transcripcion-texto">${esc(inf.transcripcion)}</div></details>` : ''}
     </details>
     <div class="ia-acciones">
-      <button class="phase5-copy-btn" onclick="iaCompartir()">📤 Compartir</button>
-      <button class="phase5-copy-btn" onclick="iaCopiar()">Copiar</button>
       <button class="phase5-copy-btn ia-btn-descartar" onclick="iaDescartarInforme()">Descartar</button>
-    </div>`;
+    </div>
+    ${BOTON_PAQUETE}`;
   $('iaResultadoDet').addEventListener('toggle', e => { _resultadoAbierto = e.target.open; });
   refrescarHuella();
 }
@@ -252,39 +255,151 @@ function pintarResultado() {
 // Revisión automática (lib/revision-informe.js): compara el texto con los
 // datos actuales de la valoración y lista «puntos a revisar». Sin red ni IA;
 // se recalcula con la huella, así que sigue los cambios de la valoración.
+function puntosRevision(inf) {
+  return revisarInforme(inf.texto, {
+    datos: buildPhysiQPayload(), ampliado: construirAmpliado(), plantilla: inf.plantilla || 'narrativo',
+    transcripcion: inf.conAudio ? inf.transcripcion : '', nombreRegion,
+  });
+}
+
+// Herramienta de soporte, no parte del flujo revisar → leer → compartir: al
+// final, en su propia línea y con aspecto de enlace, para que no se tome por
+// otra forma de compartir con el paciente. Siempre con el texto completo.
+const BOTON_PAQUETE = `<div class="ia-rev-paquete"><button type="button" class="ia-rev-paquete-btn" onclick="iaPaqueteRevision()"
+    title="Descarga un .zip con el informe, la transcripción, los puntos a revisar y la valoración, para revisar el informe. Contiene datos clínicos y el nombre del paciente.">⬇ Paquete de revisión</button></div>`;
+
+// Lo pintado ahora, para marcar «Revisado» por índice sin repintar la caja
+// (que perdería si estaba abierta o cerrada)
+let _revPuntos = [];
+let _revAbierta = null;    // abierta/cerrada a mano; null = por defecto (abierta con un alto sin revisar)
+let _revComprob = [];
+const _revisados = () => new Set(state.informeIA?.revisados || []);
+
+function casillaRevisado(tipo, i, hecho) {
+  return `<input type="checkbox" class="ia-rev-check"${hecho ? ' checked' : ''} onchange="iaMarcarRevisado(this.checked,'${tipo}',${i})" aria-label="Revisado">`;
+}
+
 function pintarRevision() {
   const el = $('iaRevision');
   const inf = state.informeIA;
   if (!el || !inf?.texto) return;
   pintarComprobaciones();
   let puntos;
-  try {
-    puntos = revisarInforme(inf.texto, {
-      datos: buildPhysiQPayload(), ampliado: construirAmpliado(), plantilla: inf.plantilla || 'narrativo',
-      transcripcion: inf.conAudio ? inf.transcripcion : '', nombreRegion,
-    });
-  } catch { el.innerHTML = ''; return; }   // una regla rota nunca tumba la tarjeta
+  try { puntos = puntosRevision(inf); }
+  catch { el.innerHTML = ''; _revPuntos = []; return; }   // una regla rota nunca tumba la tarjeta
+  _revPuntos = puntos;
   if (!puntos.length) {
     el.innerHTML = '<div class="ia-revision ia-revision-ok">✓ Sin incidencias en las comprobaciones automáticas. Revisa el informe antes de compartirlo.</div>';
     return;
   }
-  const altos = puntos.some(p => p.nivel === 'alto');
-  el.innerHTML = `<details class="ia-revision${altos ? ' ia-revision-alta' : ''}"${altos ? ' open' : ''}>
-      <summary>⚠ ${puntos.length} ${puntos.length === 1 ? 'punto' : 'puntos'} a revisar en el informe</summary>
-      <ul>${puntos.map(p => `<li class="ia-rev-${p.nivel}">${esc(p.mensaje)}${p.cita ? `<span class="ia-rev-cita">«${esc(p.cita)}»</span>` : ''}</li>`).join('')}</ul>
-      <div class="ia-rev-nota">Comprobaciones automáticas del texto frente a la valoración: pueden señalar algo correcto. No cambian el informe.</div>
+  const hechos = _revisados();
+  const { altosPendientes } = resumenRevisados(puntos, [], inf.revisados);
+  const abierta = _revAbierta ?? altosPendientes > 0;
+  el.innerHTML = `<details class="ia-revision"${abierta ? ' open' : ''}>
+      <summary></summary>
+      <ul>${puntos.map((p, i) => {
+        const hecho = hechos.has(clavePunto(p));
+        return `<li class="ia-rev-${p.nivel}${hecho ? ' ia-rev-hecho' : ''}"><label class="ia-rev-item">${casillaRevisado('p', i, hecho)}<span>${esc(p.mensaje)}${p.cita ? `<span class="ia-rev-cita">«${esc(p.cita)}»</span>` : ''}</span></label></li>`;
+      }).join('')}</ul>
+      <div class="ia-rev-nota">Comprobaciones automáticas del texto frente a la valoración: pueden señalar algo correcto. No cambian el informe. Marca cada una como revisada cuando la hayas mirado.</div>
     </details>`;
+  el.querySelector('details.ia-revision').addEventListener('toggle', e => { _revAbierta = e.target.open; });
+  cabeceraRevision();
+}
+
+// «⚠ 3 puntos a revisar» → «⚠ 1 de 3 sin revisar» → «✓ 3 puntos revisados».
+// Rojo mientras quede uno alto sin revisar; un punto marcado nunca se oculta.
+function cabeceraRevision() {
+  const det = $('iaRevision')?.querySelector('details.ia-revision');
+  if (!det) return;
+  const r = resumenRevisados(_revPuntos, [], state.informeIA?.revisados);
+  const n = r.puntos;
+  det.querySelector('summary').textContent = !r.puntosPendientes
+    ? `✓ ${n} ${n === 1 ? 'punto revisado' : 'puntos revisados'}`
+    : r.puntosPendientes === n
+      ? `⚠ ${n} ${n === 1 ? 'punto' : 'puntos'} a revisar en el informe`
+      : `⚠ ${r.puntosPendientes} de ${n} sin revisar`;
+  det.classList.toggle('ia-revision-alta', r.altosPendientes > 0);
+  det.classList.toggle('ia-revision-hecha', !r.puntosPendientes);
+}
+
+function cabeceraComprobaciones() {
+  const box = $('iaComprobar')?.querySelector('.ia-comprobar');
+  if (!box) return;
+  const r = resumenRevisados([], _revComprob, state.informeIA?.revisados);
+  box.querySelector('.ia-comprobar-cuenta').textContent = r.comprobacionesPendientes
+    ? `${r.comprobaciones - r.comprobacionesPendientes} de ${r.comprobaciones}` : '✓ todo comprobado';
+  box.classList.toggle('ia-comprobar-hecha', !r.comprobacionesPendientes);
+}
+
+// Marca o desmarca un punto («p») o una comprobación («c»). Se guarda con la
+// sesión, dentro del informe: uno nuevo empieza sin marcas.
+function iaMarcarRevisado(marcado, tipo, i) {
+  const inf = state.informeIA;
+  const clave = tipo === 'p' ? (_revPuntos[i] && clavePunto(_revPuntos[i])) : (_revComprob[i] != null && claveComprobacion(_revComprob[i]));
+  if (!inf || !clave) return;
+  const hechos = _revisados();
+  if (marcado) hechos.add(clave); else hechos.delete(clave);
+  inf.revisados = [...hechos];
+  saveSession();
+  const li = $(tipo === 'p' ? 'iaRevision' : 'iaComprobar')?.querySelectorAll('li')[i];
+  li?.classList.toggle('ia-rev-hecho', marcado);
+  if (tipo === 'p') cabeceraRevision(); else cabeceraComprobaciones();
+}
+
+// «⬇ Paquete de revisión»: .zip con el informe, la transcripción, los puntos,
+// la valoración y el prompt (lib/paquete-revision.js). Módulos cargados al usarlo.
+async function iaPaqueteRevision() {
+  const inf = state.informeIA;
+  if (!inf?.texto) return;
+  saveSession();
+  try {
+    const [{ crearZip }, { ficherosPaquete }] = await Promise.all([import('./lib/zip.js'), import('./lib/paquete-revision.js')]);
+    let puntos = [], comprobaciones = [];
+    try { puntos = puntosRevision(inf); } catch { /* sin puntos: el resto del paquete sigue valiendo */ }
+    try { comprobaciones = comprobacionesManuales({ ampliado: construirAmpliado(), formularioYAudio: !!inf.conAudio && !!buildPhysiQPayload().fp?.length }); } catch { /* ídem */ }
+    const ahora = new Date();
+    const { nombre, ficheros } = ficherosPaquete({
+      inf, informe: textoInforme(), state, puntos, comprobaciones,
+      nombrePlantilla: (PLANTILLAS[inf.plantilla] || PLANTILLAS.narrativo).nombre,
+      versionActual: VERSION_SHA, cambiado: !!inf.huella && inf.huella !== huellaActual(), ahora,
+    });
+    const archivo = new File([crearZip(ficheros, ahora)], nombre, { type: 'application/zip' });
+    // En el móvil, la hoja de compartir permite mandarlo o guardarlo en Archivos
+    if (window.matchMedia?.('(pointer: coarse)').matches && navigator.canShare?.({ files: [archivo] })) {
+      try { await navigator.share({ files: [archivo], title: nombre }); return; }
+      catch (e) { if (e?.name === 'AbortError') return; }
+    }
+    const url = URL.createObjectURL(archivo);
+    const a = Object.assign(document.createElement('a'), { href: url, download: nombre });
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast(`✓ Paquete de revisión descargado: ${nombre}`, 'success');
+  } catch {
+    showToast('No se ha podido preparar el paquete de revisión.', 'warning');
+  }
 }
 
 // Lo que el clínico mira a ojo antes de compartir (comprobacionesManuales):
-// siempre visible, aparte de los puntos automáticos.
+// siempre visible, aparte de los puntos automáticos; cada una se marca igual.
 function pintarComprobaciones() {
   const el = $('iaComprobar');
   if (!el) return;
   let items;
-  try { items = comprobacionesManuales({ ampliado: construirAmpliado() }); } catch { el.innerHTML = ''; return; }
-  el.innerHTML = `<div class="ia-comprobar"><div class="ia-comprobar-titulo">☑ Antes de compartir, comprueba:</div>
-      <ul>${items.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`;
+  try {
+    const inf = state.informeIA;
+    items = comprobacionesManuales({ ampliado: construirAmpliado(), formularioYAudio: !!inf?.conAudio && !!buildPhysiQPayload().fp?.length });
+  } catch { el.innerHTML = ''; _revComprob = []; return; }
+  _revComprob = items;
+  const hechos = _revisados();
+  el.innerHTML = `<div class="ia-comprobar"><div class="ia-comprobar-titulo">☑ Antes de compartir, comprueba: <span class="ia-comprobar-cuenta"></span></div>
+      <ul>${items.map((t, i) => {
+        const hecho = hechos.has(claveComprobacion(t));
+        return `<li class="${hecho ? 'ia-rev-hecho' : ''}"><label class="ia-rev-item">${casillaRevisado('c', i, hecho)}<span>${esc(t)}</span></label></li>`;
+      }).join('')}</ul></div>`;
+  cabeceraComprobaciones();
 }
 
 const contarPalabras = t => (String(t || '').replace(/[#|*-]/g, ' ').match(/\S+/g) || []).length;
@@ -300,7 +415,10 @@ function refrescarHuella() {
   pintarRevision();
 }
 let _huellaTimer = null;
-function _refrescarHuellaDiferido() {
+function _refrescarHuellaDiferido(e) {
+  // Las casillas «Revisado» y demás controles de la tarjeta no son datos de la
+  // valoración: repintar por ellas cerraba la caja de puntos al marcar uno
+  if (e?.target?.closest?.('#informeIA')) return;
   clearTimeout(_huellaTimer);
   _huellaTimer = setTimeout(refrescarHuella, 400);
 }
@@ -327,8 +445,14 @@ export function construirAmpliado() {
       // Si lo que la respuesta «orienta a» ya está diagnosticado y tratado, que
       // el prompt lo sepa (si no, lo lee como una sospecha abierta)
       const tratada = (op?.hypothesis || []).some(h => esTratada(h));
-      return { pregunta: st.question, respuesta: op?.label || state.treeAnswers[st.id], ...(tratada ? { tratada: true } : {}) };
-    });
+      // `iaPregunta` y textoOpcionIA() (lib/informe-narrativo.js): al prompt va
+      // la conclusión de la opción, no su detalle (pistas, criterios, umbrales);
+      // el NINGUNO de un paso de zona no va
+      const respuesta = op ? textoOpcionIA(op) : state.treeAnswers[st.id];
+      if (respuesta == null) return null;
+      return { pregunta: st.iaPregunta || st.question, respuesta, ...(tratada ? { tratada: true } : {}) };
+    })
+    .filter(Boolean);
 
   const tests = [];
   const pautas = [];
@@ -359,7 +483,9 @@ export function construirAmpliado() {
     pautas.push({
       hipotesis: h.name,
       derivar: h.dosis === DOSIS_DERIVAR,
-      pauta: h.dosis === DOSIS_DERIVAR ? '' : (h.dosis || ''),
+      // Con ramas (lib/pauta.js), solo la de este caso: con la pauta entera de ro2
+      // copió la rama degenerativa en una rotura traumática
+      pauta: h.dosis === DOSIS_DERIVAR ? '' : (ramaPauta(h, state)?.texto || h.dosis || ''),
       fuente: h.dosisFuente || '',
       ...(h.pronostico ? { pronostico: h.pronostico } : {}),
       prom: h.prom || '',
@@ -400,19 +526,25 @@ function textoInforme() {
   return textoParaCompartir(state.informeIA?.texto || '', state.informeIA?.datos || buildPhysiQPayload(), nombreRegion);
 }
 
+// Compartir y copiar en una sola acción (compartirTexto, app.js): hoja de
+// compartir en táctil, copiar con ratón. Desde el menú de «📤 Compartir» de la
+// barra inferior de la fase 5 (compartirInformeIA).
 function iaCompartir() {
-  const text = textoInforme();
-  if (navigator.share) {
-    navigator.share({ title: 'Informe de fisioterapia — PhysiQ-Assessment', text }).catch(() => {});
-  } else {
-    iaCopiar();
-  }
+  registrarValoracionCompleta();
+  compartirTexto(textoInforme(), { titulo: 'Informe de fisioterapia — PhysiQ-Assessment', copiado: '✓ Informe narrativo copiado al portapapeles' });
 }
+export function compartirInformeIA() { if (state.informeIA?.texto) iaCompartir(); }
 
-function iaCopiar() {
-  navigator.clipboard.writeText(textoInforme())
-    .then(() => showToast('✓ Informe narrativo copiado al portapapeles', 'success'))
-    .catch(() => showToast('No se pudo copiar el informe.', 'warning'));
+// Para el menú de «📤 Compartir»: puntos y comprobaciones, y cuántos quedan
+// sin marcar como revisados (resumenRevisados)
+export function estadoRevisionIA() {
+  const inf = state.informeIA;
+  const vacio = resumenRevisados();
+  if (!inf?.texto) return vacio;
+  let puntos = [], comprobaciones = [];
+  try { puntos = puntosRevision(inf); } catch { /* sin puntos */ }
+  try { comprobaciones = comprobacionesManuales({ ampliado: construirAmpliado(), formularioYAudio: !!inf.conAudio && !!buildPhysiQPayload().fp?.length }); } catch { /* sin comprobaciones */ }
+  return resumenRevisados(puntos, comprobaciones, inf.revisados);
 }
 
 function iaDescartarInforme() {
@@ -457,7 +589,7 @@ function pintarAudio() {
   }
   el.innerHTML = `
     <div class="ia-audio-vacio">Audio de la sesión <span class="ia-opcional">(opcional)</span></div>
-    <div class="ia-audio-pista">Graba la consulta con el botón 🎙 de la cabecera, en cualquier fase, o adjunta un archivo.</div>
+    <div class="ia-audio-pista">Graba la consulta con el botón 🎙 de la cabecera, en cualquier fase, o adjunta un archivo. También puedes dictarla tú al terminar.</div>
     <div class="ia-acciones">
       <button class="phase5-copy-btn" onclick="document.getElementById(\'iaArchivo\').click()">📎 Adjuntar audio</button>
       <input type="file" id="iaArchivo" accept="audio/*,.m4a,.mp3,.wav,.webm,.ogg,.mp4" hidden onchange="iaArchivo(this)">
@@ -477,6 +609,30 @@ async function iaArchivo(input) {
 
 function iaQuitarAudio() {
   showConfirmBanner('Descartar audio', 'Se borrará el audio de la sesión. El informe podrá generarse solo con los datos de la valoración.', 'Descartar', quitarAudio);
+}
+
+// Diálogo de la consulta o dictado del fisio: solo cambia cómo lee el prompt
+// la transcripción (y la pista de Whisper). Se elige con un audio a la vista.
+function pintarModoAudio() {
+  const el = $('iaModoAudio');
+  if (!el) return;
+  if (idAudio() === null) { el.innerHTML = ''; return; }
+  el.innerHTML = `
+    <div class="ia-plantilla-label">Qué hay en el audio</div>
+    <div class="option-group ia-plantilla-opciones">
+      ${Object.entries(MODOS_AUDIO).map(([k, m]) => `<button type="button" class="option-btn${k === _modoAudio ? ' selected' : ''}" onclick="iaModoAudio('${k}')"><span class="ia-op-full">${esc(m.nombre)}</span><span class="ia-op-corto"><span class="ia-op-nombre">${esc(m.corto)}</span><span class="ia-op-sub">${esc(m.sub)}</span></span></button>`).join('')}
+    </div>
+    ${_modoAudio === 'dictado' ? `<ul class="ia-consejos-dictado">
+      <li>Di también lo que no has hecho («la palpación por debajo no la he hecho»).</li>
+      <li>Presenta tus indicaciones como tuyas («mis indicaciones como fisio son…») y lo del paciente con «refiere».</li>
+      <li>Da cada cifra con su momento («hoy un 4 sobre 10; tras el partido del domingo, un 7»).</li>
+    </ul>` : ''}`;
+}
+
+function iaModoAudio(k) {
+  if (!MODOS_AUDIO[k]) return;
+  _modoAudio = k;
+  pintarModoAudio();
 }
 
 // ── Consentimiento y botón de generar ────────────────────────────────────────
@@ -535,6 +691,7 @@ function pintarGenerador() {
   if (!activo) return;
   pintarPlantilla();
   pintarAudio();
+  pintarModoAudio();
   pintarConsent();
   pintarBoton();
   pintarError();
@@ -551,7 +708,7 @@ function pintarPlantilla() {
   el.innerHTML = `
     <div class="ia-plantilla-label">Tipo de informe</div>
     <div class="option-group ia-plantilla-opciones">
-      ${Object.entries(PLANTILLAS).map(([k, p]) => `<button type="button" class="option-btn${k === actual ? ' selected' : ''}" onclick="iaPlantilla('${k}')">${esc(p.nombre)} <span class="ia-plantilla-palabras">~${p.palabras} palabras</span></button>`).join('')}
+      ${Object.entries(PLANTILLAS).map(([k, p]) => `<button type="button" class="option-btn${k === actual ? ' selected' : ''}" onclick="iaPlantilla('${k}')"><span class="ia-op-nombre">${esc(p.nombre)}</span> <span class="ia-plantilla-palabras ia-op-sub">~${p.palabras} palabras</span></button>`).join('')}
     </div>`;
 }
 
@@ -654,8 +811,10 @@ async function iaGenerar() {
     const nombre = audio.meta?.origen === 'archivo' && audio.meta?.nombre ? audio.meta.nombre : `sesion.${ext}`;
     fd.append('file', audio.blob, nombre);
   }
-  fd.append('whisperHint', getWhisperPrompt(datos.r));
-  fd.append('prompt', PLANTILLAS[plantilla].prompt(datos, { conAudio, nombreRegion, ampliado }));
+  const dictado = conAudio && _modoAudio === 'dictado';
+  fd.append('whisperHint', getWhisperPrompt(datos.r, { dictado }));
+  const prompt = PLANTILLAS[plantilla].prompt(datos, { conAudio, nombreRegion, ampliado, dictado });
+  fd.append('prompt', prompt);
   fd.append('maxTokens', String(PLANTILLAS[plantilla].maxTokens));
 
   const ctrl = new AbortController();
@@ -690,7 +849,10 @@ async function iaGenerar() {
       transcripcion: conAudio ? _gen.transcripcion : '',
       fecha: new Date().toISOString(),
       conAudio,
+      ...(dictado ? { dictado: true } : {}),
       plantilla,
+      prompt,                 // el exacto que se envió, para el paquete de revisión
+      version: VERSION_SHA,
       huella: huellaPayload({ ...datos, _ampliado: ampliado }),
       datos: { p: datos.p, d: datos.d, r: datos.r, la: datos.la, ed: ampliado.edad, sx: ampliado.sexo },
     };
@@ -700,6 +862,7 @@ async function iaGenerar() {
     const det = $('iaGenerador');
     if (det) det.open = false;
     _resultadoAbierto = false;
+    _revAbierta = null;   // informe nuevo: la caja de puntos vuelve a su apertura por defecto
     showToast('✓ Informe narrativo generado', 'success');
   } catch (err) {
     if (err instanceof SinVoz) {
@@ -793,5 +956,5 @@ export function resetInformeIA() {
 Object.assign(window, {
   iaMostrarClave, iaGuardarClave, iaReintentarLicencia,
   iaArchivo, iaQuitarAudio, iaConsent,
-  iaGenerar, iaCancelar, iaCompartir, iaCopiar, iaDescartarInforme, iaPlantilla,
+  iaGenerar, iaCancelar, iaDescartarInforme, iaPlantilla, iaModoAudio, iaPaqueteRevision, iaMarcarRevisado,
 });
