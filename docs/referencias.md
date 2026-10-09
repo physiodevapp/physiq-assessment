@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **328** referencias de literatura, con **1339** usos.
+- **328** referencias de literatura, con **1340** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **277** de 328 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -155,7 +155,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kulig 2009](#kulig-2009) | pauta | 1 | 2026-10 · PDF leído entero (2026-10): revisiones semanales durante 10 semanas, no 12; las P = 0,036–0,048 comparan los tres grupos a la vez y los autores no pueden concluir que el excéntrico supere al concéntrico. Corregido en tp14; se añade Houck 2015 como contraste. DOI corregido: el anterior era de otro artículo. |
 | [Kelley 2013](#kelley-2013) | pauta · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10) sin revisión de la guía de capsulitis adhesiva de JOSPT; sigue vigente junto con el consenso Salamh 2025. |
 | [Reid 2014](#reid-2014) | pauta | 1 | 2026-10 · Pauta corregida: PDF del usuario leído entero (2026-10). 86 pacientes con mareo cervicogénico crónico (3 meses o más; vértigo, migraña, insuficiencia vertebrobasilar y otras causas excluidas con otoneurólogo); 2–6 sesiones en 6 semanas; técnicas, repeticiones y ejercicios en casa coinciden con ce13. Corregido: la frecuencia del mareo bajó frente a placebo solo a las 12 semanas (la intensidad, al terminar y a las 12 semanas), y los ejercicios en casa empiezan tras la 2.ª sesión. Revisión posterior: Carrasco-Uribarren 2025 (BMC Musculoskelet Disord, 6 ensayos; leído el resumen) apoya con certeza baja o muy baja la terapia manual de la cervical alta, sin una pauta con volumen mejor. |
-| [Warden 2014](#warden-2014) | pauta | 1 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las localizaciones de riesgo (tabla 1), las dos fases y el programa de carrera de la tabla 3 coinciden con la pauta de tp33. PubMed (2026-10): sin protocolo validado posterior. |
+| [Warden 2014](#warden-2014) | pauta · pronóstico | 2 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las localizaciones de riesgo (tabla 1), las dos fases y el programa de carrera de la tabla 3 coinciden con la pauta de tp33. PubMed (2026-10): sin protocolo validado posterior. Se añade a tp32 un pronóstico con la tabla 1 (base del 2.º metatarsiano, alto riesgo) y la p. 755 (RM de elección). |
 | [Houck 2015](#houck-2015) | pauta · texto | 2 | 2026-10 · Añadida (PDF del usuario, leído entero) como contraste de Kulig 2009 en tp14: 39 aleatorizados (36 analizados), estadio II; el fortalecimiento en casa de intensidad moderada con banda elástica no añadió beneficio en el FFI ni en la fuerza a la ortesis con estiramiento. |
 | [Mellor 2016](#mellor-2016) | pauta | 1 | 2026-10 · Sin cambios: protocolo del ensayo LEAP (ver Mellor 2018); las revisiones posteriores (Wang 2025, Cordeiro 2024) no dan una progresión de ejercicios más detallada. |
 | [van Dijk 2016](#van-dijk-2016) | pauta | 1 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las recomendaciones citadas coinciden con su apartado final. Los 143 tobillos son de deportistas profesionales y universitarios (su tabla 1), no solo profesionales: corregido en tp2. PubMed (2026-10): ningún consenso posterior sobre el tratamiento conservador de la lesión aislada. |
@@ -7345,16 +7345,18 @@ Citada como:
 
 Publicación: J Orthop Sports Phys Ther 44(10):749–65  
 DOI: 10.2519/jospt.2014.5334  
-Última revisión: 2026-10 · Sin cambios: PDF leído entero (2026-10); las localizaciones de riesgo (tabla 1), las dos fases y el programa de carrera de la tabla 3 coinciden con la pauta de tp33. PubMed (2026-10): sin protocolo validado posterior.  
+Última revisión: 2026-10 · Sin cambios: PDF leído entero (2026-10); las localizaciones de riesgo (tabla 1), las dos fases y el programa de carrera de la tabla 3 coinciden con la pauta de tp33. PubMed (2026-10): sin protocolo validado posterior. Se añade a tp32 un pronóstico con la tabla 1 (base del 2.º metatarsiano, alto riesgo) y la p. 755 (RM de elección).  
 Nota: Comentario clínico (nivel 5) sobre las fracturas de estrés en corredores; PDF aportado por el usuario.
 
 Citada como:
 
-1. Warden 2014, J Orthop Sports Phys Ther 44(10):749–65 (comentario clínico; nivel de evidencia 5; programa de carrera de su tabla 3)
+1. Warden 2014, J Orthop Sports Phys Ther 44(10):749–65, p. 755 y tabla 1
+2. Warden 2014, J Orthop Sports Phys Ther 44(10):749–65 (comentario clínico; nivel de evidencia 5; programa de carrera de su tabla 3)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Pronóstico | 5 · cita del pronóstico | 1 |
+| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
 ### Wenker y Quint 2023
 
