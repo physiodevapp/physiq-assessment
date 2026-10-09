@@ -101,7 +101,7 @@ function lugar(hyp, ruta, testPuntua) {
   const [a, b, c] = ruta;
   if (a === 'tests') {
     const t = hyp.tests[b];
-    if (c !== 'fuente') return { donde: `Test «${t.name}» (en \`${c}\`)`, fase: '4b · mención en el texto', efecto: 'texto' };
+    if (c !== 'fuente') return { donde: `Test «${t.name}» (en \`${ruta.slice(2).join('.')}\`)`, fase: '4b · mención en el texto', efecto: 'texto' };
     return { donde: `Test «${t.name}»`, fase: '4b · cita bajo el test', efecto: testPuntua(hyp, t) ? 'puntuación 4b' : 'test 4b sin puntuar' };
   }
   if (a === 'clusters') {

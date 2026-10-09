@@ -1,0 +1,3824 @@
+{
+ "h1|Abducción pasiva glenohumeral <80°": {
+  "frases": [
+   "Abducción pasiva glenohumeral limitada, junto a una rotación externa limitada igual en activo que en pasivo.",
+   "Hallazgo:",
+   "el «VPP 83–100 %» que figuraba aquí no tenía fuente y se ha quitado;",
+   "lo que más discrimina es la restricción igual activa y pasiva con radiografía normal (criterio de Bunker)."
+  ],
+  "retiradas": [
+   "Hallazgo:",
+   "el «VPP 83–100 %» que figuraba aquí no tenía fuente y se ha quitado;"
+  ]
+ },
+ "h1|Test de Rotación Externa (brazo neutro al lado, codo 90°)": {
+  "frases": [
+   "Positivo si la RE pasiva con el brazo al lado pierde más del 50 % respecto al lado sano o queda por debajo de 30°:",
+   "es el criterio que se ha usado en los estudios para definir la capsulitis, junto a una pérdida de movilidad mayor del 25 % en al menos 2 planos (Kelley 2013, p.",
+   "A9).",
+   "La pérdida de movilidad pasiva en varios planos, sobre todo de RE con el brazo al lado y en distintos grados de abducción, es un hallazgo significativo para orientar el tratamiento (Kelley 2013, E).",
+   "El consenso de 2025 asocia al hombro congelado una RE pasiva más limitada que las demás direcciones (100 %) y cada vez más limitada al aumentar la abducción (100 %).",
+   "Lluch 2020:",
+   "la RE está reducida de forma constante en neutro y a 90° de abducción, aunque la RI suele ser la más afectada cerca de 90°.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "h1|Restricción equivalente activa y pasiva (criterio de Bunker)": {
+  "frases": [
+   "Restricción equivalente de movilidad activa y pasiva:",
+   "es el dato que más discrimina.",
+   "La RE se considera la más afectada, pero la RI suele estar muy limitada con el brazo cerca de 90° de abducción.",
+   "Criterio de Bunker:",
+   "restricción igual de RE activa y pasiva + Rx esencialmente normal.",
+   "No usar en hombro congelado:",
+   "test específicos de MR, labrum o AC — casi siempre salen positivos al tensar una cápsula sensibilizada."
+  ]
+ },
+ "h1|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Final del rango de RE pasiva → EVA (más útil cuando dolor > rigidez).",
+   "② RE pasiva en grados a 0° de abducción y RI a 90° de abducción (más útil cuando rigidez > dolor)."
+  ]
+ },
+ "h1|Test del dolor en la coracoides": {
+  "frases": [
+   "Dolor a la palpación de la apófisis coracoides:",
+   "se ha descrito como un hallazgo muy presente en el hombro congelado, pero hace falta más investigación sobre su valor.",
+   "Sin S ni E en el capítulo;",
+   "no puntúa."
+  ]
+ },
+ "h1|Identificadores clínicos de fase precoz (Walmsley)": {
+  "frases": [
+   "Ocho identificadores de consenso para el congelado precoz (dolor nocturno marcado, dolor con movimientos rápidos, no poder tumbarse sobre ese hombro, dolor fácil con el movimiento, inicio después de los 35 años, pérdida global de movilidad activa y pasiva, dolor al final del rango en todas las direcciones, pérdida global de movilidad pasiva glenohumeral).",
+   "En el estudio de seguimiento ninguno resultó válido para detectarlo:",
+   "no usar para confirmar."
+  ]
+ },
+ "h2|Arco doloroso": {
+  "frases": [
+   "Dolor durante la elevación activa entre 60° y 120°.",
+   "Metaanálisis de 4 estudios (n = 756):",
+   "LR+ 2,25 (IC 1,24–4,08), LR− 0,62 (IC 0,37–1,03), modelo bivariante.",
+   "Sirve algo para confirmar;",
+   "un negativo es solo un hallazgo.",
+   "Un metaanálisis posterior (Zhao 2024, 6 estudios, bivariante) da LR+ 1,57 (1,07–2,31), LR− 0,63, pero su tabla 2×2 de Park 2005 suma 718 pacientes de un estudio de 552:",
+   "se mantiene la cifra de Hegedus."
+  ]
+ },
+ "h2|Test de Hawkins-Kennedy": {
+  "frases": [
+   "Flexión de hombro a 90°, rotación interna forzada.",
+   "Positivo si reproduce dolor subacromial.",
+   "Metaanálisis de 7 estudios (n = 944):",
+   "LR+ 1,84 (IC 1,49–2,26), LR− 0,35 (IC 0,27–0,46), modelo bivariante.",
+   "Sirve para descartar;",
+   "un positivo es solo un hallazgo.",
+   "Zhao 2024 (8 estudios, bivariante, con los errores de extracción del arco doloroso) da LR+ 1,64 (1,22–2,19), LR− 0,53 (0,39–0,71)."
+  ]
+ },
+ "h2|Test de Neer": {
+  "frases": [
+   "Elevación pasiva en el plano escapular con rotación interna.",
+   "Combinar test para el SAPS apenas mejora la precisión (Lluch 2020, cap.",
+   "3.1, p.",
+   "54).",
+   "Metaanálisis de 7 estudios (n = 946):",
+   "LR+ 1,79 (IC 1,24–2,58), LR− 0,47 (IC 0,39–0,56), modelo bivariante.",
+   "Sirve para descartar;",
+   "un positivo es solo un hallazgo.",
+   "Zhao 2024 (7 estudios, bivariante) da LR+ 1,54 (1,09–2,18), LR− 0,47 (0,41–0,54)."
+  ]
+ },
+ "h2|Test de Resistencia a Rotación Externa": {
+  "frases": [
+   "Contracción isométrica de rotación externa contra resistencia, codo a 90°.",
+   "Positivo si reproduce dolor.",
+   "LR+ 2,6 (IC 95 % 1,8–3,6), LR− 0,49 (0,33–0,72) para patología del manguito, un solo estudio (203 pacientes, ecografía);",
+   "con el arco doloroso, el hallazgo más útil según la revisión.",
+   "Para el pinzamiento con artroscopia como referencia, un estudio de bajo riesgo de sesgo recogido por Hegedus 2012 da LR+ 4,39 y LR− 0,50."
+  ]
+ },
+ "h2|Regla clínica de SAPS": {
+  "frases": [
+   "Descartar primero capsulitis (RE pasiva), origen cervical y dolor postraumático.",
+   "Dolor o debilidad al elevar el brazo;",
+   "el dolor debe reproducirse de forma consistente con los test resistidos.",
+   "Regla clínica:",
+   "SAPS probable si no hay pérdida de RE pasiva y hay dolor anterior, lesión por sobreesfuerzo y ausencia de síntomas en RE final en abducción."
+  ]
+ },
+ "h2|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Elevación en el plano de la escápula o RE resistida que reproduce el dolor → EVA.",
+   "② Fuerza isométrica en RE con dinamómetro si se dispone (brazo junto al cuerpo, codo a 90°) o grados de elevación activa hasta el dolor."
+  ]
+ },
+ "h3|Test de Lata Vacía (Empty Can)": {
+  "frases": [
+   "Resistencia a abducción con el brazo a 90° en el plano escapular y rotación interna (pulgar hacia abajo).",
+   "Positivo:",
+   "dolor o debilidad.",
+   "Agrupado de 3 estudios para patología del manguito:",
+   "LR+ 1,3 (0,97–1,6), LR− 0,64 (0,33–1,3);",
+   "no sirve ni para confirmar ni para descartar."
+  ]
+ },
+ "h3|Test de Lata Llena (Full Can)": {
+  "frases": [
+   "Resistencia a abducción con el brazo a 90° y rotación externa (pulgar hacia arriba).",
+   "Positivo:",
+   "dolor o debilidad.",
+   "Cuenta como hallazgo en esta hipótesis:",
+   "S 75 %, E 68 %, LR+ 2,4 (1,5–3,8), LR− 0,37 (0,23–0,60), un solo estudio y para patología del manguito en general, no para rotura;",
+   "para rotura están los signos de retraso y los clusters de Park y Litaker."
+  ]
+ },
+ "h3|External Rotation Lag Sign": {
+  "frases": [
+   "Imposibilidad de mantener la rotación externa pasivamente colocada.",
+   "Para rotura completa:",
+   "LR+ 7,2 (IC 95 % 1,7–31), LR− 0,57 (0,35–0,92), un solo estudio (37 pacientes, ecografía);",
+   "un negativo no descarta.",
+   "En otro estudio de bajo riesgo de sesgo recogido por Hegedus 2012 da LR+ 28 para la rotura completa del supraespinoso.",
+   "Si el nervio supraescapular está paralizado, los test del supraespinoso y del infraespinoso salen positivos con el manguito intacto;",
+   "distinguirlo exige más que la clínica y la atrofia (Lluch 2020, cap.",
+   "3.1, pp.",
+   "66–67)."
+  ]
+ },
+ "h3|Internal Rotation Lag Sign": {
+  "frases": [
+   "Mano en la espalda, codo a 90°:",
+   "imposibilidad de mantenerla separada de la espalda.",
+   "Explora el subescapular.",
+   "Para rotura completa:",
+   "S 97 %, E 83 %, LR+ 5,6 (IC 95 % 2,6–12), LR− 0,04 (0,0–0,58), un solo estudio (37 pacientes, ecografía).",
+   "Solo puntúa positivo:",
+   "la LR− tan baja no se reproduce en otros estudios recogidos por Hegedus 2012 (LR− 0,64 para la rotura del subescapular, con bajo riesgo de sesgo;",
+   "0,79 para la rotura completa del supraespinoso), y Zhao 2024, que agrupa 4 estudios mezclando las dos roturas, da LR− 0,77.",
+   "Un negativo es solo un hallazgo.",
+   "S y E solo aquí, para que no se recalcule la LR−."
+  ],
+  "retiradas": [
+   "S y E solo aquí, para que no se recalcule la LR−."
+  ]
+ },
+ "h3|Drop Arm Test": {
+  "frases": [
+   "El brazo abducido a 90° no puede mantenerse — cae.",
+   "Cuenta como hallazgo:",
+   "S 24 %, E 93 %, LR+ 3,3 con IC 95 % 1,0–11 (incluye el 1), LR− 0,82, y para patología del manguito en general, no para rotura (un solo estudio).",
+   "Dentro del cluster A de Park sí aporta."
+  ]
+ },
+ "h3|Inspección": {
+  "frases": [
+   "Brazo en cabestrillo, escápula en rotación inferior o inclinación anterior, cabeza humeral anteriorizada."
+  ]
+ },
+ "h3|Cluster A, confirmar: arco doloroso + drop arm + debilidad en RE, los tres positivos": {
+  "frases": [
+   "Rotura COMPLETA si los tres son positivos:",
+   "50 de 153 roturas completas frente a 4 de 195 controles (348 operados con los tres test hechos) → LR+ 15,57 (con dos de tres, LR+ 3,57).",
+   "La combinación sale de una regresión logística en la misma muestra, sin grupo de validación (en Litaker, la LR bajó de 9,84 a 5,0 al validarla), y Hermans 2013 clasifica el estudio como de nivel IV.",
+   "Arco doloroso:",
+   "dolor o enganche entre 60° y 120° de elevación activa en el plano de la escápula, al subir o al bajar.",
+   "Drop arm:",
+   "al bajar el brazo desde la elevación completa, cae de golpe o duele mucho.",
+   "Debilidad en RE (infraespinoso):",
+   "codo a 90° junto al cuerpo, rotación neutra;",
+   "positivo si cede por debilidad o dolor, o si hay signo de retraso en RE.",
+   "Población quirúrgica (controles:",
+   "otras cirugías de hombro, incluida la bursitis y la rotura parcial).",
+   "Si puntúa, el drop arm, el signo de retraso en RE y el cluster B no suman aparte."
+  ]
+ },
+ "h3|Cluster A, descartar: arco doloroso, drop arm y debilidad en RE, los tres negativos (si se cumple, marcar «Negativo»)": {
+  "frases": [
+   "Los tres negativos:",
+   "14 de 153 roturas completas frente a 114 de 195 controles → LR− 0,16 para rotura completa.",
+   "Misma técnica que el cluster A de confirmar.",
+   "Un positivo aquí es solo un hallazgo."
+  ]
+ },
+ "h3|Cluster B: debilidad en RE + edad ≥65 (puntuación de Litaker ≥4)": {
+  "frases": [
+   "Puntuación:",
+   "debilidad en RE 2 puntos + edad ≥65 años 2 + dolor nocturno 1;",
+   "positivo con ≥4, así que basta con debilidad en RE y edad ≥65 (el dolor nocturno no hace falta).",
+   "Debilidad en RE:",
+   "brazos junto al cuerpo, codos a 90°, pulgares arriba y 20° de rotación interna;",
+   "resistir el empuje hacia dentro.",
+   "Dolor nocturno:",
+   "se duerme, pero el dolor le despierta.",
+   "LR+ 9,8 en el grupo de derivación (43 de 131 frente a 2 de 60);",
+   "en el de validación baja a 5,0 (52 de 146 frente a 5 de 70, calculada de la tabla 4):",
+   "se usa esta, como dice la tarjeta.",
+   "Lluch 2020 (cap.",
+   "3.1, p.",
+   "66) da LR 9,84 con los tres positivos:",
+   "es la cifra del grupo de derivación.",
+   "Rotura parcial o completa por artrografía, en una consulta de cirugía de hombro.",
+   "No publica LR−."
+  ]
+ },
+ "h3|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Elevación activa o arco doloroso → EVA.",
+   "② Fuerza isométrica en RE con dinamómetro si se dispone (brazo junto al cuerpo, codo a 90°) o grados de elevación activa."
+  ]
+ },
+ "h3|Signo de Hornblower": {
+  "frases": [
+   "Un signo positivo puede indicar degeneración del redondo menor (por ejemplo, infiltración grasa).",
+   "El capítulo no da S ni E;",
+   "no puntúa."
+  ]
+ },
+ "h4|Test de Aprehensión": {
+  "frases": [
+   "Criterio:",
+   "APREHENSIÓN (no solo dolor).",
+   "Brazo a 90° abducción + rotación externa progresiva.",
+   "El paciente siente que el hombro \"se va a salir\".",
+   "Metaanálisis de 2 estudios (n = 409;",
+   "modelo univariante de efectos aleatorios):",
+   "LR+ 17,21 (IC 10,02–29,55), LR− 0,39 (IC 0,22–0,68)."
+  ]
+ },
+ "h4|Test de Recolocación (Jobe)": {
+  "frases": [
+   "Tras el test de aprehensión, se aplica fuerza posterior en la cabeza humeral.",
+   "Positivo si desaparece la aprehensión.",
+   "Metaanálisis de 3 estudios (n = 509;",
+   "modelo univariante de efectos aleatorios), con heterogeneidad significativa:",
+   "S 64,6 %, E 90,2 %, LR+ 5,48 (IC 0,56–53,8), LR− 0,55 (IC 0,24–1,27).",
+   "Los dos intervalos incluyen el 1:",
+   "no puntúa (S y E solo aquí, para que no se recalcule la LR)."
+  ],
+  "retiradas": [
+   "no puntúa (S y E solo aquí, para que no se recalcule la LR)."
+  ]
+ },
+ "h4|Test de Liberación/Release/Surprise": {
+  "frases": [
+   "Se retira la fuerza de recolocación súbitamente — reaparece la aprehensión.",
+   "Metaanálisis de 2 estudios (n = 128;",
+   "modelo univariante de efectos aleatorios):",
+   "S 81,8 %, E 86,1 %, LR+ 5,42 (IC 0,96–30,52), LR− 0,25 (IC 0,08–0,78).",
+   "Solo puntúa negativo:",
+   "el IC de la LR+ incluye el 1.",
+   "Es el test de los tres que mejor descarta."
+  ]
+ },
+ "h4|Anterior: aprensión, recolocación y sorpresa en conjunto": {
+  "frases": [
+   "Aprensión, recolocación y sorpresa (S y E >72 %).",
+   "Interpretar la aprensión, no el dolor.",
+   "Cada test ya puntúa por separado arriba;",
+   "esta fila no multiplica."
+  ]
+ },
+ "h4|Posterior: Jerk, Kim y signo de pinzamiento posterior agrupados": {
+  "frases": [
+   "No usar un test aislado;",
+   "agrupar Jerk, Kim y signo de pinzamiento posterior junto con la historia."
+  ]
+ },
+ "h4|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Aprensión de 0 a 10 en abducción + RE;",
+   "en posterior, la posición provocadora.",
+   "② Fuerza isométrica de RE y RI con dinamómetro si se dispone, siempre en la misma posición."
+  ]
+ },
+ "h4|Inestabilidad multidireccional: surco + tests en una dirección": {
+  "frases": [
+   "Diagnóstico clínico propuesto:",
+   "signo del surco positivo (inestabilidad inferior) y, al menos en una dirección (anterior o posterior), 2 de 3 tests positivos:",
+   "cajón anterior y posterior a 10–30° de abducción, cajón anterior y posterior a 80–120° de abducción, y aprensión anterior y posterior.",
+   "Los síntomas suelen aparecer en el rango medio del movimiento;",
+   "puede haber atrofia generalizada y discinesia, y síntomas neurológicos pasajeros.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "h5|Test de O'Brien (Active Compression)": {
+  "frases": [
+   "Flexión a 90°, aducción horizontal 10°, rotación interna (pulgar abajo) — resistencia.",
+   "Luego igual con rotación externa.",
+   "Positivo:",
+   "dolor que desaparece o disminuye en supinación.",
+   "Lluch 2020 (cap.",
+   "3.1, p.",
+   "63):",
+   "ningún hallazgo físico es específico;",
+   "sirve para sostener la hipótesis, no para confirmarla.",
+   "Metaanálisis de 6 estudios (n = 782), sin el estudio original de O’Brien, que distorsionaba el resultado:",
+   "S 0,67, E 0,37, LR+ 1,06 (IC 0,90–1,25), LR− 0,89 (IC 0,67–1,20).",
+   "No puntúa:",
+   "antes multiplicaba por el extremo bajo de «3–50», sin fuente."
+  ],
+  "retiradas": [
+   "No puntúa:",
+   "antes multiplicaba por el extremo bajo de «3–50», sin fuente."
+  ]
+ },
+ "h5|Biceps Load Test II": {
+  "frases": [
+   "En supino, brazo elevado a 120° y en rotación externa máxima, codo a 90° y antebrazo en supinación;",
+   "el paciente flexiona el codo contra resistencia.",
+   "Positivo si esa flexión resistida provoca dolor.",
+   "La LR+ alta es del estudio de sus creadores (S 89,7 %, E 96,9 %, n = 127, 15–52 años, excluidos luxación y hombro rígido);",
+   "en los dos estudios independientes recogidos por Hegedus 2012, S 30–55 % y E 53–78 %, y la revisión concluye que hay «menos optimismo».",
+   "Cuenta como hallazgo:",
+   "la LR+ 26 solo se sostiene en el estudio de sus creadores."
+  ]
+ },
+ "h5|Test de Resistencia a Rotación Interna": {
+  "frases": [
+   "Resistencia a rotación interna en abducción.",
+   "Cuenta como hallazgo:",
+   "el estudio original no es de SLAP.",
+   "En pacientes con signo de pinzamiento positivo distingue patología intraarticular en general (cualquier lesión dentro de la articulación) del pinzamiento subacromial (S 88 %, E 96 %, n = 115, un solo autor).",
+   "Aplicar esa LR a SLAP mide otra condición."
+  ]
+ },
+ "h5|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Gesto por encima de la cabeza que reproduce el síntoma mecánico → EVA.",
+   "② Fuerza isométrica de RE y RI con dinamómetro si se dispone, siempre en la misma posición."
+  ]
+ },
+ "h6|Test de Spurling (Compresión Foraminal)": {
+  "frases": [
+   "Reproducción del dolor de hombro con extensión + inclinación lateral ipsilateral + compresión axial.",
+   "En el dolor de hombro cervicogénico el dolor se reproduce con las pruebas de la columna cervical y la movilidad pasiva glenohumeral no está limitada, lo que lo distingue del hombro congelado (Lluch 2020, tabla 2).",
+   "El Spurling se ha estudiado para la radiculopatía cervical (S 0,50, E 0,86–0,93;",
+   "revisión de Rubinstein recogida por Blanpied 2017), no para el dolor referido al hombro:",
+   "aquí no puntúa."
+  ]
+ },
+ "h6|Movilidad Glenohumeral Pasiva (PROM)": {
+  "frases": [
+   "PROM glenohumeral preservado:",
+   "diferencia el origen cervical del capsular primario.",
+   "En la tabla de diagnóstico diferencial de Lluch 2020, el dolor de hombro cervicogénico no restringe la movilidad pasiva glenohumeral, mientras que el hombro congelado y la luxación bloqueada restringen la activa y la pasiva.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "h7|Test de Aducción Cruzada (Cross-body Adduction)": {
+  "frases": [
+   "Brazo a 90° de flexión, aducción horizontal pasiva cruzando el cuerpo.",
+   "Positivo si duele en la parte superior del hombro, cerca de la AC.",
+   "Cuenta como hallazgo.",
+   "En un estudio retrospectivo de casos y controles da S 77 % (27 de 35) y E 79 % (410 de 518), de las que saldrían LR+ 3,7 y LR− 0,29;",
+   "pero los casos se definieron por dolor a la palpación de la AC e infiltración positiva, y los controles eran otras cirugías de hombro.",
+   "En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 64 %, E 26 %, LR+ 0,86, LR− 1,39:",
+   "no discrimina.",
+   "La revisión de Krill 2018 deja fuera el primero por ser de nivel III.",
+   "Lluch 2020 (cap.",
+   "3.1, p.",
+   "61) dice «S >67 %».",
+   "S y E solo aquí, para que no se recalcule la LR."
+  ],
+  "retiradas": [
+   "S y E solo aquí, para que no se recalcule la LR."
+  ]
+ },
+ "h7|Palpación directa de la articulación AC": {
+  "frases": [
+   "Reproduce dolor localizado en la articulación AC.",
+   "S 96 % (27 de 28), E 10 % (1 de 10):",
+   "si no duele, hace poco probable el cuadro;",
+   "si duele, no lo confirma (LR+ 1,07).",
+   "La LR− calculada (0,36) descansa en un solo control sin dolor a la palpación, así que no puntúa:",
+   "S y E van solo aquí.",
+   "Población:",
+   "pacientes que ya señalan el dolor en la zona AC (prevalencia 74 %);",
+   "referencia:",
+   "alivio ≥50 % con infiltración de la AC guiada por imagen."
+  ],
+  "retiradas": [
+   "S y E van solo aquí."
+  ]
+ },
+ "h7|Paxinos + gammagrafía ósea combinados": {
+  "frases": [
+   "Los test AC por separado son débiles:",
+   "Paxinos + gammagrafía ósea, los dos positivos, dan LR+ 55;",
+   "los dos negativos, LR− 0,03 (17 de 28 con dolor AC tenían los dos positivos y ninguno de 9 sin él;",
+   "ninguno de 28 los dos negativos).",
+   "LR calculadas sumando 0,1 a cada casilla, con 9 controles.",
+   "La gammagrafía no se hace en consulta:",
+   "es un hallazgo, no puntúa."
+  ]
+ },
+ "h7|Movilidad pasiva sin restricción; posible escalón": {
+  "frases": [
+   "Movilidad pasiva sin restricción;",
+   "posible escalón."
+  ]
+ },
+ "h7|Compresión activa (O’Brien) para la AC": {
+  "frases": [
+   "Brazo a 90° de flexión y 10° de aducción;",
+   "resistir un empuje hacia abajo con el pulgar hacia abajo y después hacia arriba.",
+   "Positivo si el dolor está en la AC con el pulgar abajo y baja o desaparece con el pulgar arriba;",
+   "dolor en otro sitio = negativo.",
+   "Evidencia contradictoria, así que no puntúa:",
+   "Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2);",
+   "Walton 2004 (prospectivo, referencia:",
+   "infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6).",
+   "En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15).",
+   "Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013;",
+   "deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad;",
+   "Lluch 2020 (cap.",
+   "3.1, p.",
+   "61) lo resume como «S y E >90 %», cifra que la revisión no respalda."
+  ]
+ },
+ "h7|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Aducción horizontal → EVA.",
+   "② Grados de aducción horizontal hasta la aparición del dolor, en la misma posición."
+  ]
+ },
+ "h7|Test de Paxinos": {
+  "frases": [
+   "Sentado, brazo junto al cuerpo.",
+   "Pulgar bajo la cara posterolateral del acromion empujando hacia arriba y delante;",
+   "índice y medio sobre la mitad de la clavícula empujando hacia abajo.",
+   "Positivo si aparece o aumenta el dolor en la AC.",
+   "S 79 %, E 50 % (LR+ 1,58).",
+   "Hallazgo:",
+   "la LR− calculada (0,42) sale de 10 controles."
+  ]
+ },
+ "h8|Observación visual de asimetría escapular (winging, tilting)": {
+  "frases": [
+   "Asimetría visual en la elevación del brazo:",
+   "ángulo inferior, borde medial o espina escapular prominentes.",
+   "Las medidas de la movilidad escapular son poco fiables y de validez limitada, y no deben usarse para medir objetivamente la movilidad escapular dinámica (Desmeules 2025, recomendación 6, A).",
+   "La discinesia se asocia al SAPS, pero no se ha demostrado que cause el dolor (Lluch 2020).",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "h8|Test de Asistencia Escapular": {
+  "frases": [
+   "Mejoría de síntomas o ROM cuando el examinador estabiliza manualmente la escápula durante la elevación.",
+   "La discinesia es frecuentemente secundaria a otras patologías.",
+   "No se ha demostrado que cause el dolor:",
+   "el dolor de hombro también es muy frecuente sin discinesia, y su valor para predecir dolor futuro es escaso (en deportistas, un 43 % más de riesgo en un metaanálisis;",
+   "en otros estudios, ninguno)."
+  ]
+ },
+ "h9|Palpación posteroanterior de 1ª costilla": {
+  "frases": [
+   "Restricción de movilidad de primera costilla a la palpación posteroanterior.",
+   "En un Delphi de 12 expertos en terapia manual hubo consenso en que el movimiento accesorio posteroanterior doloroso y restringido de la 1.ª costilla, y su palpación dolorosa, ayudan a identificar su disfunción;",
+   "es opinión de expertos y los autores piden estudiar su fiabilidad y validez.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "h9|Test de elevación del brazo post-movilización": {
+  "frases": [
+   "Mejoría de la elevación del brazo tras movilización de la primera costilla.",
+   "En un Delphi de 12 expertos en terapia manual hubo consenso en que la mejoría tras movilizar la 1.ª costilla apoya su disfunción (el consenso habla de mejoría en general, no de la elevación del brazo en concreto);",
+   "es opinión de expertos, sin fiabilidad ni validez estudiadas.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "h10|Mayor edad + crepitación con rigidez activa = pasiva": {
+  "frases": [
+   "Mayor edad, dolor progresivo más largo y a menudo menos intenso, crepitación, posible atrofia.",
+   "Rx simple la muestra."
+  ]
+ },
+ "h11|Test de aprensión ósea y percusión olécranon-manubrio": {
+  "frases": [
+   "Solo con la Rx ya hecha:",
+   "con traumatismo previo y rigidez activa y pasiva, no explorar más hasta tenerla.",
+   "Test de aprensión ósea;",
+   "signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero)."
+  ]
+ },
+ "ca1|Criterio clínico combinado: Edad ≥45 + dolor en actividad + rigidez <1h": {
+  "frases": [
+   "Hallazgo:",
+   "la S 95 % / E 69 % que figuraba son de los criterios clínicos de artrosis de rodilla (Altman 1986), no de cadera.",
+   "El criterio más parecido para cadera es el diagnóstico clínico de NICE (edad >45, dolor con la actividad, sin rigidez matutina o ≤30 min), que no aporta sensibilidad ni especificidad.",
+   "Rigidez matutina <60 min ausente sí orienta en contra (LR− 0,22–0,65)."
+  ]
+ },
+ "ca1|Aducción de cadera disminuida": {
+  "frases": [
+   "Pérdida de aducción pasiva comparada con el lado sano.",
+   "Normal, es el hallazgo que más aleja la artrosis."
+  ]
+ },
+ "ca1|Rotación Interna disminuida (<24°)": {
+  "frases": [
+   "Rotación interna pasiva de cadera menor de 24° (o 15° menos que lado sano).",
+   "El umbral es de la tarjeta:",
+   "en los estudios, «disminuida» con goniómetro o frente al lado sano."
+  ]
+ },
+ "ca1|Dolor posterior con sentadilla profunda": {
+  "frases": [
+   "Alta especificidad.",
+   "Dolor posterior al realizar una sentadilla profunda.",
+   "Negativa no descarta."
+  ]
+ },
+ "ca1|Debilidad de abductores": {
+  "frases": [
+   "Debilidad de la abducción de cadera frente al lado sano.",
+   "Alta especificidad;",
+   "normal no descarta."
+  ]
+ },
+ "ca1|Criterios clínicos ACR (árbol de clasificación)": {
+  "frases": [
+   "Dolor de cadera y, además:",
+   "(1) RI ≥15°, dolor en la RI, rigidez matutina ≤60 min y edad >50 años;",
+   "o bien (2) RI <15° y VSG ≤45 mm/h (sin VSG:",
+   "flexión ≤115°).",
+   "La tarjeta cita solo la rama (1).",
+   "En la muestra en la que se crearon (201 pacientes con dolor de cadera, frente a artritis reumatoide, espondiloartropatía y otras causas) daban S 86 % · E 75 % (Altman 1991), pero no puntúa:",
+   "en atención primaria, en pacientes de 50 años o más, los criterios clínicos no concuerdan con los criterios del ACR que incluyen radiografía (kappa ≤ 0,11;",
+   "Bierma-Zeinstra 1999), y una revisión los da por poco fiables en ese ámbito (Reijman 2004).",
+   "La rotación interna disminuida, que forma parte del árbol, sí tiene cifras de atención primaria y puntúa sola."
+  ]
+ },
+ "ca1|Apoyo monopodal (30 s)": {
+  "frases": [
+   "De pie, levanta una pierna flexionando cadera y rodilla y se apoya solo en la afectada.",
+   "Positivo:",
+   "reproduce su dolor antes de 30 s, comparado con el otro lado.",
+   "LR+ y LR− cercanas a 1:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca2|Test FADDIR (Flexión-Aducción-Rotación Interna)": {
+  "frases": [
+   "Cadera a 90° de flexión, aducción completa y rotación interna máxima.",
+   "Positivo:",
+   "dolor conocido, bloqueo, chasquido o enganche.",
+   "En pacientes derivados con sospecha de SIFA, S 80 %, E 24 % (LR− 0,83):",
+   "no puntúa.",
+   "Un negativo orienta algo en contra, pero no descarta.",
+   "El valor agrupado de Reiman 2015 (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93."
+  ]
+ },
+ "ca2|Test FABER (Flexión-Abducción-Rotación Externa)": {
+  "frases": [
+   "Supino, en posición de 4:",
+   "el tobillo sobre la rodilla contraria;",
+   "se estabiliza la EIAS contraria y se baja la rodilla hasta el final del rango con ligera sobrepresión.",
+   "Positivo:",
+   "reproduce su dolor conocido o dolor en otra región.",
+   "Ninguna revisión sistemática ha analizado su exactitud (la técnica varía entre estudios);",
+   "un Delphi dio un 67 % de consenso sobre su utilidad clínica."
+  ]
+ },
+ "ca2|Rotación Interna de cadera en posición neutra <24°": {
+  "frases": [
+   "Alta especificidad para SIFA cuando es positivo.",
+   "En el estudio no se midieron grados:",
+   "prono, cadera en extensión, positivo = RI disminuida (con o sin dolor) según el examinador;",
+   "el umbral de 24° es de la tarjeta.",
+   "Fiabilidad moderada (kappa 0,43).",
+   "Negativa no descarta (S 29 %)."
+  ]
+ },
+ "ca2|Dolor inguinal": {
+  "frases": [
+   "Sin dolor inguinal, FAIS y labrum son improbables."
+  ]
+ },
+ "ca2|Test de flexión-rotación interna": {
+  "frases": [
+   "Supino, cadera a 90° de flexión y rotación interna.",
+   "Positivo:",
+   "dolor conocido, bloqueo, chasquido o enganche.",
+   "Metaanálisis:",
+   "S 96 %, E 25 %, LR− 0,15, pero con IC 95 % hasta 1,99 (27 pacientes):",
+   "la tarjeta lo usa para descartar, la evidencia aún no lo sostiene."
+  ]
+ },
+ "ca2|Test de Thomas": {
+  "frases": [
+   "Supino con ambas caderas en flexión completa;",
+   "se sujeta la contralateral en flexión y la afectada se lleva a extensión completa fuera del borde de la camilla.",
+   "Positivo:",
+   "dolor conocido, bloqueo, chasquido o enganche (en el estudio:",
+   "chasquido palpable o dolor).",
+   "Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral.",
+   "Su evidencia es para rotura labral, no para SIFA, y ni allí puntúa (ver la hipótesis de labrum):",
+   "aquí cuenta como hallazgo."
+  ]
+ },
+ "ca3|Test de Arlington": {
+  "frases": [
+   "Maniobra específica de provocación labral.",
+   "Estudio:",
+   "S 94 %, E 33 % (IC 95 % de la E:",
+   "16–56 %), VPP 95 %, VPN 26 %;",
+   "con un 93 % de roturas solo hubo unos 17 controles, así que cuenta como hallazgo."
+  ]
+ },
+ "ca3|Test de Torsión/Twist": {
+  "frases": [
+   "Estudio:",
+   "S 68 %, E 72 % (IC 95 % de la E:",
+   "49–88 %), VPP 97 %;",
+   "con un 93 % de roturas solo hubo unos 17 controles, así que cuenta como hallazgo."
+  ]
+ },
+ "ca3|Combinación FADDIR + FABER + Elevación pierna recta resistida": {
+  "frases": [
+   "Positivo:",
+   "los tres provocan dolor.",
+   "Estudio:",
+   "S 94 %, E 100 %, pero con un área bajo la curva de 0,879 que no cuadra con esas cifras, en candidatos a artroscopia (casi todos con rotura) y sin el número de controles:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca3|Chasquido doloroso": {
+  "frases": [
+   "Chasquido en la cadera asociado al dolor inguinal.",
+   "Sin él, la rotura es improbable.",
+   "Estudio:",
+   "S 100 % (IC 95 %:",
+   "48–100 %), E 85 % (IC 55–98 %), sin LR publicada;",
+   "con S 100 % la LR− calculada sería 0 y anularía la hipótesis, y con solo 4 roturas el intervalo es muy amplio:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca3|Test de flexión-rotación interna": {
+  "frases": [
+   "Supino, cadera a 90° de flexión y rotación interna.",
+   "Positivo:",
+   "dolor conocido, bloqueo, chasquido o enganche.",
+   "Metaanálisis:",
+   "S 96 %, E 25 %, LR− 0,15, pero con IC 95 % hasta 1,99 (27 pacientes):",
+   "la tarjeta lo usa para descartar, la evidencia aún no lo sostiene."
+  ]
+ },
+ "ca3|FADDIR (valor agrupado)": {
+  "frases": [
+   "Flexión, aducción y rotación interna.",
+   "Positivo:",
+   "dolor conocido, bloqueo, chasquido o enganche (que reproduzca el chasquido cuenta como positivo).",
+   "No puntúa:",
+   "el valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93;",
+   "con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1.",
+   "En otra serie, S 43 %, E 56 % (Adib 2023).",
+   "Un negativo no descarta la rotura."
+  ]
+ },
+ "ca3|Test de Thomas": {
+  "frases": [
+   "Si la sospecha persiste.",
+   "Supino con ambas caderas en flexión completa;",
+   "se sujeta la contralateral en flexión y la afectada se lleva a extensión completa fuera del borde de la camilla.",
+   "Positivo:",
+   "dolor conocido, bloqueo, chasquido o enganche (en el estudio:",
+   "chasquido palpable o dolor).",
+   "Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral.",
+   "No puntúa:",
+   "el S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original;",
+   "lo calcularon los autores del metaanálisis de Reiman 2015 a partir de una serie de 59 casos operados, con riesgo de sesgo alto.",
+   "En Narvani 2003 no fue ni sensible ni específico (positivo en 1 de 4 roturas)."
+  ]
+ },
+ "ca3|Longitud de paso": {
+  "frases": [
+   "Observar la longitud de paso."
+  ]
+ },
+ "ca4|Palpación del trocánter mayor / tendón glúteo": {
+  "frases": [
+   "Decúbito lateral, caderas a ~60° de flexión:",
+   "dolor a la palpación de las inserciones del glúteo medio o menor en el trocánter mayor.",
+   "Negativa orienta en contra;",
+   "positiva confirma poco por sí sola.",
+   "Hacer después la abducción resistida:",
+   "con las dos negativas, la probabilidad baja del 59 % (media de los estudios) al 14 %;",
+   "con las dos positivas, sube al 96 %."
+  ]
+ },
+ "ca4|Apoyo Monopodal <30 segundos (Single-Leg Stance)": {
+  "frases": [
+   "Positivo:",
+   "reproduce el dolor lateral de cadera antes de 30 s de apoyo sobre la pierna afectada.",
+   "Todos los positivos tenían tendinopatía en la RM (LR+ 12,2), pero con IC 95 % de 0,8 a 191,5 (15 pacientes sin tendinopatía):",
+   "aún no puntúa.",
+   "El valor agrupado (LR+ 87,8, IC 3,0–2587) depende de un estudio con controles sin dolor de cadera (Lequesne 2008);",
+   "certeza muy baja.",
+   "Negativo no descarta (S 38 %)."
+  ]
+ },
+ "ca4|Test de Abducción Resistida de Cadera": {
+  "frases": [
+   "Abducción isométrica resistida con la cadera abducida (≤45°);",
+   "en la versión de Grimaldi, desde aducción completa, que carga más el tendón.",
+   "Positivo:",
+   "reproduce el dolor lateral.",
+   "Tras la palpación:",
+   "con las dos positivas, la probabilidad sube del 59 % (media de los estudios) al 96 %;",
+   "con las dos negativas, baja al 14 %."
+  ]
+ },
+ "ca4|Marcha de Trendelenburg": {
+  "frases": [
+   "Signo visual de insuficiencia del glúteo medio.",
+   "Caída pélvica contralateral al apoyo.",
+   "Valor agrupado:",
+   "S 35 %, E 99 %, LR+ 53 con IC 0,21–13 496, LR− 0,65;",
+   "certeza muy baja:",
+   "no puntúa."
+  ]
+ },
+ "ca4|Derotación externa resistida": {
+  "frases": [
+   "Supino, cadera a 90° en RE;",
+   "el paciente vuelve a neutro contra resistencia.",
+   "Positivo:",
+   "reproduce su dolor.",
+   "Si es negativo, repetir en prono con la cadera en extensión.",
+   "No puntúa:",
+   "en pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017).",
+   "Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7;",
+   "certeza muy baja)."
+  ]
+ },
+ "ca5|Test de Trendelenburg": {
+  "frases": [
+   "De pie sobre una pierna:",
+   "la pelvis cae hacia el lado de la pierna levantada.",
+   "La disfunción del glúteo medio da una inclinación pélvica contralateral al apoyo (Trendelenburg) o una inclinación del tronco hacia el lado de apoyo (Duchenne);",
+   "observar el apoyo monopodal revela estos déficits de control en el plano frontal.",
+   "Sin cifras de exactitud para la debilidad de abductores:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca5|Dinamometría manual (HHD) de abductores": {
+  "frases": [
+   "Fiabilidad suficiente para medir fuerza abductora.",
+   "Comparar con lado contralateral."
+  ]
+ },
+ "ca5|Test de paso lateral + marcha en tándem combinados": {
+  "frases": [
+   "Observación del paso lateral y de la marcha en tándem.",
+   "Sin datos de exactitud con fuente:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca6|Test de Sentadilla Monopodal (Single-Leg Squat)": {
+  "frases": [
+   "Calidad del movimiento:",
+   "buscar inclinación lateral, rotación o inclinación del tronco, y flexión o valgo de rodilla.",
+   "Una revisión sistemática respalda su validez y fiabilidad en deportistas con dolor de cadera e ingle;",
+   "fiabilidad entre examinadores moderada a excelente (0,603–0,939) en el dolor de cadera no artrósico.",
+   "Sin S ni E:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca6|Test de Step-Down": {
+  "frases": [
+   "Calidad del movimiento al bajar de un escalón:",
+   "la disfunción del glúteo medio puede dar Trendelenburg y valgo de rodilla al bajar escaleras.",
+   "Fiabilidad entre examinadores moderada a excelente (0,745–0,943) en el dolor de cadera no artrósico.",
+   "Sin S ni E:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca6|Marcha de Trendelenburg (observación)": {
+  "frases": [
+   "Inclinación del tronco hacia el lado de apoyo o caída pélvica contralateral."
+  ]
+ },
+ "ca7|Test de estiramiento del piriforme en sedestación": {
+  "frases": [
+   "Sentado:",
+   "el examinador extiende la rodilla y lleva la cadera flexionada a aducción y rotación interna mientras palpa 1 cm lateral al isquion y, más arriba, la escotadura ciática.",
+   "Positivo:",
+   "reproduce su dolor posterior.",
+   "Junto con el test activo del piriforme es, según la revisión, el más sensible y específico para el atrapamiento del ciático, sobre todo combinados;",
+   "no da cifras.",
+   "Cuenta como hallazgo."
+  ]
+ },
+ "ca7|Dolor con sedestación prolongada (>20 min)": {
+  "frases": [
+   "No tolera estar sentado más de 20 a 30 minutos, uno de los síntomas del síndrome glúteo profundo (con dolor glúteo o retrotrocantéreo, dolor de tipo ciático, cojera y dolor nocturno que mejora durante el día).",
+   "Poco específico:",
+   "estar sentado también provoca el dolor de la tendinopatía proximal de isquiotibiales y de la artrosis de cadera.",
+   "Cuenta como hallazgo."
+  ]
+ },
+ "ca8|Test de marcha con zancada larga (Long-Stride Walking Test)": {
+  "frases": [
+   "Caminar con pasos exagerados reproduce su dolor lateral al isquion;",
+   "al repetirlo con pasos cortos debería ceder.",
+   "Cifras publicadas:",
+   "S 94 % (IC 95 % 69–99), E 85 % (IC 54–97), LR+ 6,12 (IC 1,70–22,01), LR− 0,07 (IC 0,01–0,48), de un solo estudio retrospectivo, sin cegar, de casos y controles y con 30 pacientes (referencia:",
+   "alivio con infiltración o cirugía), citado por la revisión:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca9|Sensibilidad a la palpación sobre tuberosidad isquiática": {
+  "frases": [
+   "Puede doler a la palpación del isquion.",
+   "Si el dolor está sobre el isquion (y no lateral a él, como en el pinzamiento isquiofemoral), y sobre todo si duele al estar sentado, orienta a tendinopatía proximal de isquiotibiales.",
+   "Sin S ni E:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca9|Dolor con test de fuerza de isquiotibiales": {
+  "frases": [
+   "Reproduce su dolor isquiático al cargar los isquiotibiales, sobre todo en estiramiento:",
+   "flexión de rodilla resistida con la cadera a 90°, plancha supina a una pierna o puente a una pierna con la rodilla flexionada.",
+   "En el ensayo de Rich 2025 se exigía que 3 de 4 pruebas de carga o compresión reprodujeran el dolor.",
+   "Sin S ni E:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ca10|Test de Compresión Pélvica": {
+  "frases": [
+   "Decúbito lateral;",
+   "presión hacia la camilla sobre la cresta ilíaca de arriba.",
+   "Positivo:",
+   "reproduce su dolor conocido.",
+   "Solo, no puntúa:",
+   "en el estudio de los creadores del cluster daba LR+ 2,20 (IC 95 % 1,18–4,09) y LR− 0,46 (IC 0,20–0,87) con 48 pacientes no consecutivos (16 con bloqueo positivo), pero agrupado en 2 estudios (83 pacientes) queda en LR+ 1,79 (IC 1,03–3,11) y LR− 0,74 (IC 0,52–1,05).",
+   "Cuenta dentro del cluster de Laslett."
+  ]
+ },
+ "ca10|Test de Patrick (FABER)": {
+  "frases": [
+   "Flexión, abducción y rotación externa (posición de 4).",
+   "Como provocación sacroilíaca no tiene exactitud propia:",
+   "formó parte de la batería de 6 tests de uno de los dos estudios que compara Laslett 2008, no de la de Laslett 2005 ni del cluster de 5 tests.",
+   "En la cadera se usa sobre todo como test intraarticular (ver el FABER del SIFA).",
+   "Cuenta como hallazgo."
+  ]
+ },
+ "ca10|Dolor no limitado a la línea media ni por encima de L5": {
+  "frases": [
+   "Dolor no limitado a la línea media ni por encima de L5:",
+   "en el estudio de validación de los tests de provocación sacroilíaca se excluyó a quien solo tenía dolor en la línea media o simétrico por encima de L5.",
+   "Es un dato de localización del dolor;",
+   "la sensibilidad a la palpación no se ha estudiado.",
+   "Con la prueba del dedo, el dolor se señala inferomedial a la EIPS."
+  ]
+ },
+ "ca10|Cluster de Laslett: 3 o más de 5 tests de provocación positivos": {
+  "frases": [
+   "Distracción, compresión, thigh thrust, Gaenslen y sacral thrust;",
+   "positivo si 3 o más reproducen su dolor.",
+   "LR+ 2,13 (IC 95 % 1,2–3,9), LR− 0,33 (IC 0,11–0,72), certeza muy baja (GRADE):",
+   "positivo orienta poco;",
+   "negativo descarta mejor.",
+   "Si los síntomas no se centralizan con movimientos repetidos, la especificidad sube (del 78 % al 87 % en el estudio de los creadores):",
+   "los positivos con centralización (dolor discal) son falsos positivos.",
+   "Lluch cita S 85–94 %, E 79 %;",
+   "la cifra de la revisión de Laslett de 2008 (S 91 %, E 78 %;",
+   "LR+ 4,16, LR− 0,12) es de un solo estudio (Laslett 2003, 48 pacientes, doble bloqueo), y el de 2005, con 6 tests, daba S 94 %, E 78 %.",
+   "Otra revisión, sin aclarar el modelo y con dos publicaciones de la misma población, da LR+ 2,44 y LR− 0,31 (Han 2023).",
+   "Regla alternativa del estudio de 2005, sin Gaenslen:",
+   "2 o más positivos de 4 (distracción, thigh thrust, compresión y sacral thrust) dan S 88 %, E 78 %, LR+ 4,0 (IC 2,13–8,08), LR− 0,16 (IC 0,04–0,47);",
+   "orden propuesto:",
+   "thigh thrust y distracción primero, y si los dos son positivos no hace falta seguir;",
+   "con uno positivo, compresión y, si es negativa, sacral thrust.",
+   "En ese estudio, con todos los tests negativos se descartaba la sacroilíaca."
+  ]
+ },
+ "ca10|Thigh thrust": {
+  "frases": [
+   "Supino, mano caudal bajo el sacro, cadera a 90° de flexión:",
+   "carga longitudinal por el fémur hasta 30 s (si no duele, 3–5 empujes).",
+   "Positivo:",
+   "reproduce su dolor.",
+   "Solo, no puntúa:",
+   "en el estudio de los creadores del cluster era el más sensible de la batería (S 88 %, E 69 %, LR+ 2,80, LR− 0,18;",
+   "48 pacientes no consecutivos, 16 con bloqueo positivo), pero agrupado en 5 estudios (415 pacientes) queda en S 54 %, E 54 %, LR+ 1,13 (IC 95 % 0,83–1,55) y LR− 0,91 (IC 0,67–1,22).",
+   "Cuenta dentro del cluster de Laslett."
+  ]
+ },
+ "ca10|Prueba del dedo (Fortin)": {
+  "frases": [
+   "El paciente señala con la punta del dedo el dolor inferomedial a la EIPS, al menos 2 veces en el mismo punto.",
+   "Si el dolor no está en esa zona, el dolor sacroilíaco es muy improbable."
+  ]
+ },
+ "ca11|Palpación del grupo sospechoso (primero)": {
+  "frases": [
+   "Palpar PRIMERO:",
+   "si no duele, se descarta (exactitud >90 % en aductores y flexores).",
+   "Aductores (unos 2/3 de las lesiones agudas de la ingle, sobre todo el aductor largo), recto femoral, ilíaco y psoas."
+  ]
+ },
+ "ca11|Resistencia del grupo sospechoso": {
+  "frases": [
+   "Después de palpar:",
+   "squeeze a 0° o flexión resistida a 90°.",
+   "Cuenta si reproduce su dolor en el mismo sitio."
+  ]
+ },
+ "ca11|Estiramiento del grupo sospechoso": {
+  "frases": [
+   "Cuenta si reproduce su dolor en el mismo sitio."
+  ]
+ },
+ "ca12|Log roll": {
+  "frases": [
+   "Más RE en el lado afectado, o el borde lateral del pie toca la camilla → laxitud capsular anterior o retroversión."
+  ]
+ },
+ "ca12|Movilidad aumentada": {
+  "frases": [
+   "Movilidad AUMENTADA en inestabilidad.",
+   "Sin síntoma específico:",
+   "descartar lo intraarticular con flexión-RI y FADDIR."
+  ]
+ },
+ "ca12|Episodio de fallo": {
+  "frases": [
+   "Al menos un episodio de fallo."
+  ]
+ },
+ "ca13|Cribado intraarticular y Thomas positivos": {
+  "frases": [
+   "Flexión-RI, FADDIR y Thomas."
+  ]
+ },
+ "ca13|Dolor en reposo y nocturno con síntomas mecánicos": {
+  "frases": [
+   "Dolor en reposo y nocturno acompañado de síntomas mecánicos."
+  ]
+ },
+ "ca13|Rigidez": {
+  "frases": [
+   "Rigidez de cadera."
+  ]
+ },
+ "ca13|IMC >25": {
+  "frases": [
+   "Índice de masa corporal mayor de 25."
+  ]
+ },
+ "ca14|Tinel del femorocutáneo (meralgia)": {
+  "frases": [
+   "Meralgia (la más frecuente):",
+   "Tinel 1 cm medial e inferior a la EIAS;",
+   "parestesias anterolaterales del muslo."
+  ]
+ },
+ "ca14|Neurodinámico del femorocutáneo": {
+  "frases": [
+   "Reproduce los síntomas anterolaterales del muslo."
+  ]
+ },
+ "ca14|Obturador: neurodinámico, sensibilidad del muslo medial y fuerza de aductores": {
+  "frases": [
+   "A ser posible tras el deporte."
+  ]
+ },
+ "ca14|Arch and twist de pie": {
+  "frases": [
+   "Ilioinguinal, iliohipogástrico y genitofemoral, cuyos neurodinámicos no están bien descritos.",
+   "De pie, hiperextensión de tronco rotando hacia el lado contrario y hacia el del dolor.",
+   "Positivo:",
+   "reproduce el dolor al rotar al lado contrario y se alivia al rotar hacia el mismo lado."
+  ]
+ },
+ "ca14|Pudendo: dolor perineal al sentarse o en bici": {
+  "frases": [
+   "Dolor en el periné, sobre todo sentado o en bici (en mujeres, también en las relaciones sexuales), sin déficit sensitivo objetivo."
+  ]
+ },
+ "ca15|Dolor multifocal, referido y extenso": {
+  "frases": [
+   "Sin criterios clínicos validados.",
+   "Coexiste con la patología intraarticular y hace los síntomas vagos y cambiantes:",
+   "NO excluye patología estructural."
+  ]
+ },
+ "ca15|Dolor en las AVD": {
+  "frases": [
+   "Dolor en las actividades de la vida diaria."
+  ]
+ },
+ "ca15|Fatiga y mal sueño": {
+  "frases": [
+   "Fatiga y mal sueño."
+  ]
+ },
+ "ca15|Dificultades de memoria": {
+  "frases": [
+   "Dificultades de memoria."
+  ]
+ },
+ "ca15|Más comorbilidad; intolerancia al estrés, ansiedad o depresión": {
+  "frases": [
+   "Más comorbilidad;",
+   "intolerancia al estrés, ansiedad o depresión."
+  ]
+ },
+ "ca16|Palpación dolorosa de aductores + squeeze doloroso": {
+  "frases": [
+   "Necesario para el diagnóstico (ambos)."
+  ]
+ },
+ "ca16|Estiramiento pasivo de aductores": {
+  "frases": [
+   "Más probable si reproduce el dolor."
+  ]
+ },
+ "ca17|Palpación dolorosa supra o infrainguinal": {
+  "frases": [
+   "Necesario para el diagnóstico."
+  ]
+ },
+ "ca17|Flexión resistida con cadera y rodilla a 90°": {
+  "frases": [
+   "Más probable si reproduce el dolor."
+  ]
+ },
+ "ca17|Flexión resistida o extensión pasiva en Thomas modificado": {
+  "frases": [
+   "Más probable si reproduce el dolor.",
+   "La extensión pasiva en Thomas modificado es a la vez el test de Thomas para patología intraarticular:",
+   "interpretarlo junto con la palpación del psoas y la historia."
+  ]
+ },
+ "ca18|Dolor en la región del canal + palpación dolorosa del canal, sin hernia palpable": {
+  "frases": [
+   "Necesario para el diagnóstico.",
+   "Explorar de pie y con tos:",
+   "una hernia palpable excluye este diagnóstico."
+  ]
+ },
+ "ca18|Sit-up recto u oblicuo resistido": {
+  "frases": [
+   "Más probable si reproduce el dolor."
+  ]
+ },
+ "ca18|Valsalva, tos o estornudo": {
+  "frases": [
+   "Más probable si reproduce el dolor."
+  ]
+ },
+ "ca18|Flexión resistida en Thomas modificado": {
+  "frases": [
+   "Más probable si reproduce el dolor."
+  ]
+ },
+ "ca19|Palpación dolorosa de la sínfisis y el hueso adyacente": {
+  "frases": [
+   "Necesario para el diagnóstico."
+  ]
+ },
+ "ca19|Resistencia abdominal y squeeze": {
+  "frases": [
+   "Más probable si reproduce el dolor.",
+   "No hay test de resistencia específico."
+  ]
+ },
+ "ce1|PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3": {
+  "frases": [
+   "Movilización segmentaria posteroanterior.",
+   "Positivo si hipomóvil y reproduce síntomas.",
+   "La fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical es pobre o regular (revisión de 7 artículos).",
+   "Cuenta como hallazgo:",
+   "las cifras que tenía (κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9, LR− 0,43–0,49) son del PAIVM C0–C3 para la cefalea cervicogénica (Blanpied 2017, p.",
+   "A19), no para el déficit de movilidad, que no tiene patrón de referencia;",
+   "y la evidencia publicada del PAIVM en el dolor cervical es para dolor facetario confirmado con bloqueo de rama medial (S 90 %, E 73 %)."
+  ]
+ },
+ "ce1|ROM Cervical Activo con CROM": {
+  "frases": [
+   "Limitación de la movilidad cervical que reproduce el dolor al final del recorrido activo y pasivo:",
+   "hallazgo esperado en el dolor de cuello con déficit de movilidad.",
+   "Una revisión de 46 estudios de fiabilidad y 21 de validez encontró fiabilidad y validez «buenas» para el CROM, el inclinómetro simple y el goniómetro Spin-T, pero 32 de los 46 estudios eran en personas sin dolor.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce2|Test de Flexión Craneocervical (CCFT) con biofeedback de presión": {
+  "frases": [
+   "Supino, rodillas flexionadas, cabeza y cuello en neutro;",
+   "biofeedback de presión inflado a 20 mmHg bajo la región cervical alta.",
+   "El paciente hace flexión craneocervical para subir la presión en cinco escalones de 2 mmHg (22–30).",
+   "Se anota hasta qué escalón la hace con el gesto correcto, sin activar en exceso el esternocleidomastoideo ni los escalenos y sin sustituirla por una retracción.",
+   "Tiene fiabilidad inter- e intraterapeuta y validez de contenido establecidas.",
+   "Un CCFT positivo es hallazgo esperado en el dolor de cuello con alteración de la coordinación del movimiento.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce2|Test de Reposicionamiento Cabeza-Neutro": {
+  "frases": [
+   "Con los ojos cerrados, el paciente vuelve a la posición de partida tras una rotación o una extensión activas;",
+   "se mide el error con un láser en una diana, al menos 3 veces por movimiento, y se promedia.",
+   "Un error mayor de 4–5° indica déficit del sentido de posición cervical.",
+   "Una revisión de alta calidad encontró que quienes tienen dolor de cuello crónico idiopático lo hacen peor que las personas sin dolor, pero no hay estudios de precisión diagnóstica del test.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce3|Test de Spurling (Compresión Foraminal)": {
+  "frases": [
+   "Alta especificidad para CONFIRMAR diagnóstico.",
+   "Extensión + inclinación lateral ipsilateral + compresión axial.",
+   "Positivo:",
+   "reproduce dolor radicular en el brazo."
+  ]
+ },
+ "ce3|Upper Limb Neurodynamic Test (ULNT) 1": {
+  "frases": [
+   "Sesgo mediano.",
+   "Positivo si reproduce los síntomas del paciente y estos cambian con la diferenciación estructural (inclinación cervical contralateral o ipsilateral, o movimiento distal):",
+   "es el criterio de los 3 estudios agrupados.",
+   "LR agrupadas de 3 estudios (clínica más RM como referencia):",
+   "LR+ 2,45 (IC 95 % 1,79–3,36), LR− 0,42 (0,30–0,59);",
+   "certeza muy baja (GRADE).",
+   "Por separado:",
+   "LR+ 3,32, 2,46 y 1,95.",
+   "Con solo 3 estudios el modelo se interpretó como de efecto fijo, y los autores avisan de que las cifras valen para esas poblaciones (atención especializada).",
+   "Otra revisión que suma estudios con electromiograma o conducción nerviosa como referencia y con cualquier reproducción de síntomas como positivo, sin diferenciación estructural, da LR+ 1,51 y LR− 0,53 (5 estudios);",
+   "en esa misma revisión, los ULNT con diferenciación estructural dan LR+ 2,71 y LR− 0,50.",
+   "Combinación de 4 ULNT (1 positivo):",
+   "S 97 %, E 51 %, LR+ 1,99, LR− 0,06 (0,02–0,25)."
+  ]
+ },
+ "ce3|Shoulder Abduction Relief Test": {
+  "frases": [
+   "El paciente coloca la mano ipsilateral sobre la cabeza — si alivia el dolor radicular, positivo.",
+   "Cuenta como hallazgo (decisión del usuario, 2026-10).",
+   "El agrupado de 2 estudios da S 49 %, E 76 %, LR+ 2,08 (IC 95 % 1,32–3,27) y LR− 0,66, certeza muy baja, pero solo pasa de 2 por el estudio antiguo:",
+   "este no publica tabla 2×2, analiza lados y no pacientes (la prueba se hizo en 22 de 31 pacientes enviados a mielografía;",
+   "14 lados de cada lado) y tiene riesgo de sesgo alto.",
+   "El estudio de riesgo bajo (134 pacientes consecutivos, clínica más RM) da por sí solo S 50 %, E 75 %, LR+ 1,88 (1,22–2,91) y LR− 0,64.",
+   "Una variante pasiva (el examinador mantiene la mano sobre la cabeza 5 s) dio LR+ 2,05 y LR− 0,36 en un solo estudio de 85 pacientes.",
+   "Un negativo no descarta.",
+   "S y E solo aquí, para que no se recalcule la LR."
+  ]
+ },
+ "ce3|Reflejos tendinosos (bíceps C6, tríceps C7)": {
+  "frases": [
+   "Parte de la exploración neurológica (sensibilidad, fuerza y reflejos), indicada cuando se sospecha radiculopatía con conducción comprometida.",
+   "Puede haber déficit sensitivo, de fuerza o de reflejos ligado a la raíz afectada.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce3|Exploración neurológica: sensibilidad, fuerza y reflejos del miembro superior": {
+  "frases": [
+   "Siempre que se sospeche conducción comprometida.",
+   "Sensibilidad a vibración y temperatura:",
+   "buscar hipoestesia.",
+   "Comparar con el lado sano.",
+   "Si falla la médula (no la raíz) → derivar."
+  ]
+ },
+ "ce3|Fuerza del grupo débil con dinamómetro de mano (② medida objetiva)": {
+  "frases": [
+   "Fuerza del grupo muscular débil con dinamómetro de mano, en la misma posición y frente al lado sano."
+  ]
+ },
+ "ce3|Combinación de 4 ULNT (ULNT1 y ULNT2a mediano, ULNT2b radial, ULNT3 cubital)": {
+  "frases": [
+   "Positivo si al menos uno de los cuatro reproduce los síntomas.",
+   "Sirve sobre todo para descartar:",
+   "los cuatro negativos dan LR− 0,06 (IC 95 % 0,02–0,25);",
+   "uno positivo da LR+ 1,99 (1,57–2,52), que no puntúa.",
+   "Contiene el ULNT1:",
+   "si esta combinación aporta su LR, la del ULNT1 suelto deja de contar.",
+   "2 estudios, certeza muy baja (GRADE);",
+   "por separado, LR− 0,04 (51 pacientes) y 0,08 (85 pacientes).",
+   "En los dos, cada ULNT se da por positivo si reproduce los síntomas y estos cambian con la diferenciación estructural."
+  ]
+ },
+ "ce4|Test de Flexión-Rotación Cervical (CFRT)": {
+  "frases": [
+   "Punto de corte:",
+   "≤30° de rotación con cuello en flexión máxima (valor normal >42°).",
+   "ICC 0.95-0.97 para fiabilidad test-retest.",
+   "Evidencia de certeza moderada.",
+   "El test con mayor fiabilidad y precisión diagnóstica según revisión sistemática, y su limitación se correlaciona con el índice de cefalea.",
+   "Precaución:",
+   "el patrón de referencia de casi todos los estudios es la exploración manual (fiabilidad pobre, κ 0,28), así que las LR probablemente están sobrestimadas;",
+   "el rango baja con la edad (explica el 27,9 % de la varianza), con dolor durante la cefalea y a ojo (mejor con goniómetro o CROM);",
+   "también sale positivo en migraña, más en la crónica.",
+   "Que reproduzca su cefalea podría mejorar la precisión (solo un estudio lo usó).",
+   "Solo puntúa positivo:",
+   "el metaanálisis da S 83 %, E 83 % y LR− 0,2, pero el FRT explora C1–C2 (el metaanálisis lo valida para cervicogénica con origen en C1–C2) y una cervicogénica de C2–C3 o C3–C4 confirmada por bloqueo puede darlo normal, así que un FRT negativo no la descarta (S y E van solo aquí para que no se recalcule la LR−).",
+   "El metaanálisis considera positivo <45° a cualquier lado;",
+   "en sus estudios, la rotación media era de 24,5° en el lado sintomático de la cervicogénica frente a 39,1° en otras cefaleas y lados asintomáticos."
+  ]
+ },
+ "ce4|PAIVM C0-C3 (segmento C1-C2 más sintomático)": {
+  "frases": [
+   "Movilidad pasiva intervertebral de C0 a C3;",
+   "el segmento sintomático más frecuente es C1–C2.",
+   "Una revisión de calidad aceptable (Rubio-Ochoa, citada por la guía) da para la cefalea cervicogénica κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9 y LR− 0,43–0,49.",
+   "Hallazgo esperado:",
+   "la cefalea se reproduce al provocar los segmentos cervicales altos implicados.",
+   "No puntúa (decisión del usuario):",
+   "el FRT ya aporta la LR de la hipótesis con un metaanálisis más reciente (Demont 2022), el patrón de referencia de estos estudios es la propia exploración manual, de fiabilidad pobre, y la guía califica de pobre a regular la fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical."
+  ]
+ },
+ "ce4|Cluster: ROM cervical + PAIVM + CCFT": {
+  "frases": [
+   "Patrón de disfunción articular dolorosa palpable en C0–C4 + menos extensión cervical + más actividad del ECM en el CCFT (EMG).",
+   "En la validación cruzada identificó 17 de 18 cervicogénicas (S 94,4 %) y ninguna falsa entre 112 sin cervicogénica (E 100 %).",
+   "El artículo lo resume como «S 100 %, E 94 %», con las etiquetas cambiadas respecto a su propia tabla.",
+   "Cuenta como hallazgo:",
+   "con E 100 % la LR+ sería infinita;",
+   "es una función discriminante (pesos continuos, no «tres positivos»), en una sola muestra, que incluye controles sin cefalea, con el tipo de cefalea clasificado por cuestionario (no por bloqueo) y con el CCFT medido por EMG;",
+   "los autores piden validarlo.",
+   "Frente a bloqueos anestésicos controlados de C2–C3 y C3–C4 (30 pacientes con cefalea y dolor de cuello), el modelo con menos extensión, disfunción articular dolorosa en C2–C4, peor CCFT y FRT sin limitación fue el que mejor predijo la respuesta al bloqueo, pero sin S ni E."
+  ]
+ },
+ "ce4|Examen manual cervical alto": {
+  "frases": [
+   "Buscar reproducción y resolución de la cefalea.",
+   "① Gesto testigo:",
+   "postura o movimiento cervical que desencadena la cefalea, o presión manual mantenida en el segmento alto que la reproduce → EVA de la cefalea.",
+   "② Grados del FRT hacia el lado limitado, en supino con flexión cervical completa."
+  ]
+ },
+ "ce4|Rasgos de cervicogénica frente a migraña y tensional (tabla orientativa)": {
+  "frases": [
+   "Cervicogénica:",
+   "al menos 1 por semana de media, duración variable;",
+   "unilateral sin cambio de lado, no pulsátil, empieza en el cuello, la desencadenan movimientos o posturas cervicales;",
+   "dolor o rigidez cervical.",
+   "Migraña:",
+   "al menos 5 crisis de 4 a 72 h;",
+   "2 de 4:",
+   "moderada o grave, unilateral, pulsátil, empeora con la actividad habitual;",
+   "foto y fonofobia, o náuseas o vómitos;",
+   "pródromos, aura (subgrupo) 5–60 min.",
+   "Tensional:",
+   "30 min a 7 días;",
+   "2 de 4:",
+   "bilateral, opresiva no pulsátil, leve o moderada, no empeora con la actividad;",
+   "como mucho uno entre fotofobia, fonofobia o náusea leve.",
+   "No sobreestimes el cuello:",
+   "el dolor de cuello acompañante no confirma nada (lo refiere hasta el 70 % de quienes tienen cefalea frecuente);",
+   "en cervicogénica persistente, el 44,1 % tenía signos claros de ATM.",
+   "Descartar abuso de medicación:",
+   "analgésicos no más de 10–15 días al mes."
+  ]
+ },
+ "ce5|ROM Cervical Activo (reducción significativa)": {
+  "frases": [
+   "En el latigazo cervical, los síntomas y signos suelen ser más frecuentes y en general más graves en todos los parámetros físicos que en el dolor de cuello idiopático.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce5|Factores de riesgo de evolución persistente (WAD agudo o subagudo)": {
+  "frases": [
+   "Con confianza alta o moderada, en las primeras 6 semanas:",
+   "dolor intenso (escala 0–10:",
+   "6 o más), discapacidad alta (NDI:",
+   "más del 30 %), catastrofismo (Pain Catastrophizing Scale:",
+   "20 o más), estrés postraumático alto (IES-R:",
+   "33 o más) e hiperalgesia al frío.",
+   "La guía cita una regla de predicción del pronóstico derivada y validada, sin detallarla.",
+   "Pronóstico, no diagnóstico:",
+   "no puntúa."
+  ]
+ },
+ "ce5|Síntomas de hiperalerta / PTSD": {
+  "frases": [
+   "Los síntomas significativos de estrés postraumático, sobre todo los de hiperalerta, predicen peor recuperación funcional a medio y largo plazo en el latigazo cervical.",
+   "Para el pronóstico, la guía propone la IES-R (33 o más) y aclara que se usa para predecir la cronicidad, no para diagnosticar un trastorno de estrés postraumático.",
+   "En la IES-R, muchos pacientes responden las preguntas de sueño pensando en el dolor.",
+   "Pronóstico, no diagnóstico:",
+   "no puntúa."
+  ]
+ },
+ "ce5|Hielo sobre la nuca (hiperalgesia al frío)": {
+  "frases": [
+   "Prono, bolsa con dos cubitos 10 s sobre la nuca a cada lado;",
+   "el paciente puntúa el dolor de 0 a 10.",
+   ">5/10 → hiperalgesia al frío (S 42 %, E 95 %, LR+ 8,44, IC 95 % 6,3–11,3;",
+   "LR− 0,61).",
+   "Un dolor ≤1/10 la hace improbable (>1:",
+   "LR− 0,18).",
+   "La LR es para detectar hiperalgesia al frío, no para diagnosticar el latigazo:",
+   "no entra en la puntuación.",
+   "La hiperalgesia al frío temprana predice peor evolución.",
+   "Fractura e inestabilidad ya descartadas;",
+   "dosificar la exploración."
+  ]
+ },
+ "ce5|Reposición articular (si hay mareo o inestabilidad)": {
+  "frases": [
+   "Error medio de reposición con láser.",
+   "Síntomas en brazo → ULNT1 y neurológico."
+  ]
+ },
+ "ce5|Rotación cervical activa sentado (② medida objetiva)": {
+  "frases": [
+   "Misma silla y apoyo (grados).",
+   "① Gesto testigo:",
+   "movimiento activo más doloroso o limitado (p.",
+   "ej.",
+   "rotación hacia el peor lado) → EVA."
+  ]
+ },
+ "ce6|Fuerza de Flexión Cervical (dinamometría)": {
+  "frases": [
+   "Fuerza de los flexores del cuello con dinamómetro de mano;",
+   "sin él, una indicación general con contracciones antigravitatorias repetidas, por ejemplo levantar la cabeza de la camilla en supino.",
+   "Déficits de fuerza y resistencia de la musculatura del cuello:",
+   "hallazgo esperado en la alteración de la coordinación del movimiento y en la cefalea cervicogénica.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce6|Fuerza de Extensión Cervical (dinamometría)": {
+  "frases": [
+   "Fuerza de los extensores del cuello con dinamómetro de mano, o extensión antigravitatoria manteniendo la posición craneocervical neutra, o un Biering-Sorensen modificado.",
+   "Déficits de fuerza de la musculatura cervicoescapulotorácica:",
+   "posibles en el dolor de cuello subagudo o crónico con déficit de movilidad.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce7|ROM Cervical Activo (reducción en todas las direcciones)": {
+  "frases": [
+   "Explorar los tres planos (flexión-extensión, rotación axial, inclinación lateral) en las tres regiones (craneocervical, cervical, cervicotorácica):",
+   "recorrido, patrón de restricción, dolor durante el movimiento y calidad.",
+   "Limitación con dolor al final del recorrido:",
+   "hallazgo esperado en el déficit de movilidad.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce7|Test de reposicionamiento cabeza-neutro": {
+  "frases": [
+   "Un error mayor de 4–5° al volver a la posición de partida con los ojos cerrados indica déficit del sentido de posición cervical.",
+   "Quienes tienen dolor de cuello crónico idiopático lo hacen peor que las personas sin dolor, pero no hay estudios de precisión diagnóstica del test.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce8|Signo de Hoffmann": {
+  "frases": [
+   "Mano relajada;",
+   "se percute hacia abajo la falange distal del dedo medio.",
+   "Positivo:",
+   "flexión involuntaria del pulgar o del índice, que sugiere afectación de la vía corticoespinal.",
+   "Un estudio citado encontró que 3 de 5 hallazgos (Hoffmann, reflejo supinador invertido, Babinski, alteración de la marcha y más de 45 años) elevan la probabilidad postest de mielopatía por encima del 90 %.",
+   "La guía advierte que las pruebas clínicas de mielopatía tienen sensibilidad baja:",
+   "no sirven para descartarla;",
+   "la resonancia ayuda al diagnóstico.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce8|Clonus de tobillo/muñeca": {
+  "frases": [
+   "Contracciones rítmicas involuntarias al mantener la dorsiflexión pasiva del pie.",
+   "El clonus, el Babinski y el reflejo supinador invertido tienen especificidad alta;",
+   "ningún signo aislado basta, cuenta el conjunto.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce8|Evaluación de marcha (alteración)": {
+  "frases": [
+   "Buscar alteración del equilibrio o espasticidad;",
+   "observar la marcha en tándem:",
+   "muchos pacientes no mantienen la base estrecha antes de que aparezca la debilidad.",
+   "Los primeros síntomas pueden ser sutiles (torpeza de manos o leve alteración del equilibrio) y, en mayores de 45 años, deben hacer pensar en una resonancia cervical aunque la fuerza sea normal.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce8|Hiperreflexia (ROT aumentados)": {
+  "frases": [
+   "Reflejos bicipital, tricipital, braquiorradial, rotuliano y aquíleo.",
+   "La hiperreflexia generalizada y el signo de Trömner son los más sensibles.",
+   "Ningún signo aislado basta.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce9|Evaluación postural de cabeza adelantada (Forward Head Posture)": {
+  "frases": [
+   "Observar de pie y sentado:",
+   "algunas desviaciones, como la cabeza adelantada, solo se ven sentado.",
+   "Las desviaciones de la postura ideal son muy frecuentes en personas sin dolor, así que su relevancia se comprueba cambiando la postura y viendo si cambian los síntomas o la movilidad.",
+   "Con la espalda hundida al sentarse, la cabeza adelantada aumenta la actividad de los extensores del cuello.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce9|Evaluación de cifosis torácica": {
+  "frases": [
+   "Se anota la posición de las regiones lumbar y torácica y cómo se endereza el paciente desde la sedestación relajada.",
+   "La posición escapular se analiza sabiendo que varía mucho en personas sin dolor;",
+   "si se sospecha que influye, colocar pasivamente la escápula en una orientación más neutra y ver el cambio inmediato en el dolor o en la movilidad del cuello.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce10|Palpación de 1ª costilla (sensibilidad y restricción)": {
+  "frases": [
+   "Palpación dolorosa de la 1.ª costilla y movimientos accesorios (caudal, anteroposterior, posteroanterior) dolorosos y restringidos.",
+   "En un Delphi de 12 expertos en terapia manual hubo consenso en que estos hallazgos ayudan a identificar su disfunción;",
+   "es opinión de expertos y los autores piden estudiar su fiabilidad y validez.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce10|Restricción de rotación cervical ipsilateral": {
+  "frases": [
+   "Rotación cervical activa hacia el lado afectado dolorosa y restringida.",
+   "En un Delphi de 12 expertos en terapia manual hubo consenso en este hallazgo, pero también en la rotación contralateral dolorosa y restringida, y no en que todos los movimientos cervicales lo estén;",
+   "es opinión de expertos, sin fiabilidad ni validez estudiadas.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce11|Test de resistencia de flexores cervicales profundos": {
+  "frases": [
+   "En supino, flexión craneocervical combinada con flexión cervical para levantar la cabeza de la camilla, mantenida como prueba cronometrada;",
+   "sirve para medir la resistencia y seguir su mejora con el entrenamiento.",
+   "La guía recomienda incluir los tests de resistencia de los flexores del cuello para identificar la alteración de la coordinación del movimiento (B).",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce11|Evaluación de fatiga en actividades funcionales prolongadas": {
+  "frases": [
+   "Pedir al paciente que muestre la actividad o la postura que le provoca el dolor y observar el control del movimiento y la carga sobre el cuello;",
+   "probar a modificar la postura y ver el efecto inmediato en el dolor.",
+   "La cabeza adelantada con espalda hundida aumenta la actividad de los extensores, y la cabeza flexionada con dispositivos de mano aumenta su demanda mecánica, lo que puede llevar a fatiga, isquemia y dolor.",
+   "Sin S ni E;",
+   "no puntúa."
+  ]
+ },
+ "ce12|ULNT1 (sesgo mediano) con diferenciación estructural": {
+  "frases": [
+   "Positivo si reproduce los síntomas y estos cambian con la diferenciación estructural.",
+   "Es el más estudiado (el capítulo no da cifras;",
+   "las agrupadas del ULNT1 son para radiculopatía y puntúan allí).",
+   "Si hay adormecimiento o debilidad, pasar a la radiculopatía."
+  ]
+ },
+ "ce12|Movilidad cervical que dispara el dolor de brazo": {
+  "frases": [
+   "Qué movimiento dispara el dolor de brazo y cuánto se tolera.",
+   "① Gesto testigo:",
+   "movimiento cervical que dispara el dolor de brazo (p.",
+   "ej.",
+   "extensión), o ULNT1 hasta una posición fija → EVA del brazo."
+  ]
+ },
+ "ce12|Grados de extensión de codo en el ULNT1 (② medida objetiva)": {
+  "frases": [
+   "Grados de extensión de codo en el ULNT1 en que aparecen los síntomas, con hombro, muñeca y cuello en posición fija."
+  ]
+ },
+ "ce12|Rasgos neuropáticos (quemazón o descargas)": {
+  "frases": [
+   "Que el dolor llegue al hombro o al brazo no lo convierte en radicular:",
+   "C4–5 se refiere a cuello y hombro, y C5–6 a C7–T1 a cuello, hombro y brazo.",
+   "Separan los rasgos neuropáticos y la diferenciación estructural del ULNT1."
+  ]
+ },
+ "ce13|Descartar lo vascular (5 D y 3 N, disección)": {
+  "frases": [
+   "Primero descartar lo vascular.",
+   "Si hay signos vasculares → urgencias hoy (fase 2)."
+  ]
+ },
+ "ce13|Sentido de posición articular (error de reposición)": {
+  "frases": [
+   "Ojos cerrados, rotación a cada lado y extensión, y volver a la posición natural.",
+   "Error >4–5° = déficit.",
+   "Con láser en cinta de cabeza y diana, al menos 3 intentos por movimiento y hacer la media."
+  ]
+ },
+ "ce13|Movimiento o postura que desencadena el mareo (① gesto testigo)": {
+  "frases": [
+   "Movimiento o postura cervical que desencadena el mareo → EVA del mareo.",
+   "② Error medio de reposición en grados por movimiento (rotación derecha, izquierda, extensión), sentado a la misma distancia de la diana."
+  ]
+ },
+ "ce14|Tarea provocadora (① gesto testigo)": {
+  "frases": [
+   "Que muestre la actividad que le duele;",
+   "modificar la postura y ver el efecto inmediato.",
+   "Tarea o postura provocadora que el paciente demuestra (rotación al lado del dolor, mirar al techo, postura de ordenador un tiempo fijo) → EVA."
+  ]
+ },
+ "ce14|Movilidad activa en los tres planos y las tres regiones": {
+  "frases": [
+   "Extensión:",
+   "la cabeza debe pasar por detrás del plano de los hombros.",
+   "Rotación:",
+   "giro libre en los primeros 30° = craneocervical sin gran alteración;",
+   "restricción precoz → problema craneocervical.",
+   "② Rotación cervical activa hacia el lado limitado, sentado con la espalda apoyada (inclinómetro)."
+  ]
+ },
+ "ce14|Test de flexión-rotación (FRT) si es craneocervical": {
+  "frases": [
+   "FRT <30° o 10° de asimetría → craneocervical (C1–2).",
+   "② Si es craneocervical:",
+   "grados del FRT en supino.",
+   "Su evidencia diagnóstica es para cefalea cervicogénica:",
+   "aquí cuenta como hallazgo."
+  ]
+ },
+ "ce14|Extensión-rotación": {
+  "frases": [
+   "Positiva + disfunción segmentaria palpable y dolorosa → faceta cervical."
+  ]
+ },
+ "ce14|Examen manual segmentario": {
+  "frases": [
+   "Disfunción segmentaria palpable y dolorosa.",
+   "La palpación va la última."
+  ]
+ },
+ "lu1|Regla de Predicción Clínica de Flynn (4/5 criterios)": {
+  "frases": [
+   "Criterios:",
+   "síntomas <16 días, sin dolor distal a rodilla, FABQ trabajo <19 pts, ≥1 segmento hipomóvil, ≥1 cadera con >35° rotación interna.",
+   "Predice la respuesta a la manipulación, no diagnostica la disfunción.",
+   "Validada en un ensayo de 131 pacientes (mediana de 27 días de evolución):",
+   "con manipulación, LR+ 13,2 (IC 95 %:",
+   "3,4–52,1) de éxito a la semana.",
+   "En una validación independiente (239 pacientes de atención primaria con lumbalgia aguda de menos de 6 semanas, tratados sobre todo con movilización sin thrust) no identificó a quién beneficiaba más la manipulación;",
+   "los positivos mejoraron algo más con cualquier tratamiento.",
+   "Una revisión sistemática de 9 validaciones concluye que ser positivo predice menos discapacidad con manipulación (con o sin thrust), pero las pruebas de que señale a quién beneficia más la manipulación que otro tratamiento son limitadas, y ningún estudio ha comprobado que usarla mejore los resultados."
+  ]
+ },
+ "lu1|Evaluación de hipomovilidad segmentaria lumbar (PAIVM)": {
+  "frases": [
+   "Prono:",
+   "presión posteroanterior con la eminencia hipotenar sobre cada apófisis espinosa lumbar;",
+   "cada segmento se juzga normal, hipomóvil o hipermóvil, y se anota si duele.",
+   "Positivo:",
+   "al menos un segmento hipomóvil (criterio de la regla de Flynn).",
+   "Fiabilidad entre examinadores κ 0,38 (IC 95 %:",
+   "0,22–0,54) y sin patrón de referencia para la disfunción segmentaria:",
+   "es un hallazgo, no confirma la hipótesis.",
+   "Sola, predice poco la respuesta a la manipulación (S 97 %, E 23 %, LR+ 1,26).",
+   "Que no haya hipomovilidad orienta a ② (primer test)."
+  ]
+ },
+ "lu2|Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria": {
+  "frases": [
+   "Positivo si se cumple cualquiera de las dos.",
+   "Predice inestabilidad radiológica en flexo-extensión (referencia radiográfica, no clínica)."
+  ]
+ },
+ "lu2|Test de inestabilidad en prono": {
+  "frases": [
+   "Prono con el tronco sobre la camilla y pies en el suelo:",
+   "PA dolorosa que deja de doler al levantar los pies (activación de extensores)."
+  ]
+ },
+ "lu2|Movimientos aberrantes en la flexo-extensión": {
+  "frases": [
+   "Durante la flexión y la extensión lumbar activas:",
+   "«instability catch», arco doloroso, subir apoyando las manos en los muslos (signo de Gowers) o inversión del ritmo lumbopélvico.",
+   "No se asoció con la inestabilidad radiológica (17,9 % frente a 9,5 %, no significativo) y su fiabilidad entre examinadores fue κ −0,07:",
+   "solo orienta."
+  ]
+ },
+ "lu3|Test de Elevación de Pierna Recta (SLR) ipsilateral": {
+  "frases": [
+   "Positivo:",
+   "reproduce el dolor de pierna (por debajo de la rodilla), no solo el lumbar;",
+   "en los estudios agrupados, a cualquier ángulo.",
+   "Útil sobre todo negativo, para descartar;",
+   "un positivo aislado aporta poco.",
+   "Cifras de pacientes derivados a cirugía (prevalencia de hernia del 58–98 %);",
+   "en los estudios con imagen, más cercanos a atención primaria, rindió peor y no se agruparon."
+  ]
+ },
+ "lu3|SLR Contralateral (Lasègue cruzado)": {
+  "frases": [
+   "Positivo:",
+   "dolor radicular ipsilateral al elevar la pierna contralateral.",
+   "Útil sobre todo positivo."
+  ]
+ },
+ "lu3|Test de Slump": {
+  "frases": [
+   "Sedestación con flexión de tronco y cuello, extensión de rodilla y dorsiflexión.",
+   "Positivo:",
+   "reproduce el dolor de pierna y se alivia al extender el cuello.",
+   "Más sensible que el SLR si se sospecha hernia discal.",
+   "No puntúa:",
+   "la única cifra favorable (S 84 %, E 83 %) es de un estudio de casos y controles con controles de RM normal, que puede inflar la especificidad;",
+   "otro estudio dio S 44 %, E 58 % con dolor por debajo de la rodilla como criterio."
+  ]
+ },
+ "lu3|Criterios RAPIDH (5 criterios)": {
+  "frases": [
+   "AUC 0.91.",
+   "Criterios:",
+   "distribución monoradicular, dolor unilateral en pierna, SLR+ <60°, debilidad motora unilateral, reflejo aquíleo asimétrico.",
+   "Incluye el SLR:",
+   "si se puntúa RAPIDH, el SLR no suma aparte."
+  ]
+ },
+ "lu4|Síntomas bilaterales": {
+  "frases": [
+   "Dolor o síntomas en ambas piernas."
+  ]
+ },
+ "lu4|Dolor de pierna mayor que el dolor lumbar": {
+  "frases": [
+   "El paciente refiere más dolor en la pierna que en la espalda."
+  ]
+ },
+ "lu4|Dolor al caminar o estar de pie": {
+  "frases": [
+   "Los síntomas aparecen o empeoran al caminar o permanecer de pie."
+  ]
+ },
+ "lu4|Alivio al sentarse": {
+  "frases": [
+   "Los síntomas ceden al sentarse (si ceden solo con pararse de pie, sospechar claudicación vascular)."
+  ]
+ },
+ "lu4|Edad > 48 años": {
+  "frases": [
+   "Positivo si el paciente tiene más de 48 años."
+  ]
+ },
+ "lu4|Marcha con base amplia": {
+  "frases": [
+   "Observación de la marcha:",
+   "aumento de la base de sustentación.",
+   "Muy específica, poco sensible."
+  ]
+ },
+ "lu4|Romberg alterado": {
+  "frases": [
+   "Alteración del equilibrio en bipedestación con pies juntos y ojos cerrados."
+  ]
+ },
+ "lu4|Déficits sensoriales (L3-S1)": {
+  "frases": [
+   "Pinchazo y vibración en L3–S1, comparando con el lado sano.",
+   "En la estenosis la exploración neurológica suele ser normal;",
+   "a veces hay déficits motores o sensitivos leves en la raíz L5."
+  ]
+ },
+ "lu4|Test de extensión lumbar de 30 s": {
+  "frases": [
+   "De pie, extensión lumbar mantenida 30 s.",
+   "Positivo:",
+   "aparece o aumenta el dolor en el muslo (por debajo del pliegue glúteo), no solo el lumbar.",
+   "No informativo por sí solo.",
+   "Una versión modificada (hasta 60 s, más extensión + inclinación hacia el lado sintomático) da S 92 %, E 40 %, LR− 0,2, pero con IC 95 % hasta 1,36 en 30 pacientes:",
+   "no sirve aún para descartar."
+  ]
+ },
+ "lu5|Fuerza por miotomas L1–S2": {
+  "frases": [
+   "La debilidad es el signo más importante.",
+   "Comparar siempre con el lado sano.",
+   "Interpretar junto a reflejos y sensibilidad, nunca aislado."
+  ]
+ },
+ "lu5|Reflejos rotuliano (L3–L4) y aquíleo (L5–S1)": {
+  "frases": [
+   "Reflejo disminuido o abolido frente al lado sano.",
+   "Agrupado en 7 estudios con referencia quirúrgica:",
+   "S 29 %, E 78 %, LR+ 1,26 (IC 95 %:",
+   "1,01–1,58);",
+   "con RM al nivel concreto (3 estudios), S 25 %, E 75 %.",
+   "Algún estudio suelto da E de hasta 0,93.",
+   "No informativo por sí solo."
+  ]
+ },
+ "lu5|Sensibilidad (algodón, diapasón, pinchazo)": {
+  "frases": [
+   "Algodón, diapasón sobre prominencia ósea y pinchazo, comparando con el lado sano.",
+   "Agrupado en 6 estudios con referencia quirúrgica:",
+   "S 40 %, E 59 %, LR+ 1,10 (IC 95 %:",
+   "0,87–1,38);",
+   "con RM, S 32 %, E 72 %.",
+   "El mejor estudio suelto da S 61 %, E 63 %.",
+   "No informativo por sí solo."
+  ]
+ },
+ "lu6|Centralización con movimientos repetidos": {
+  "frases": [
+   "Desaparecen los síntomas distales con movimientos repetidos al final del rango.",
+   "Que no centralice no descarta el origen discal.",
+   "La especificidad baja con discapacidad grave o malestar psicológico."
+  ]
+ },
+ "lu6|Preferencia direccional": {
+  "frases": [
+   "Movimientos repetidos al final del rango o posturas mantenidas que alivian de forma duradera o aumentan la movilidad."
+  ]
+ },
+ "lu6|Observación: espalda plana o shift lateral": {
+  "frases": [
+   "Pérdida de lordosis o desviación lateral del tronco."
+  ]
+ },
+ "lu7|Dolor en extensión, inclinación o rotación hacia el lado del dolor": {
+  "frases": [
+   "Criterios clínicos tipo Revel.",
+   "Ningún test clínico ha resultado informativo para el origen facetario:",
+   "el único test informativo agrupado es la captación facetaria en SPECT (LR+ 2,80, LR− 0,44), una prueba de imagen, no de consulta."
+  ]
+ },
+ "lu7|PA unilateral dolorosa o con menos movilidad": {
+  "frases": [
+   "PA sobre la faceta o la transversa;",
+   "espasmo ipsilateral."
+  ]
+ },
+ "lu7|Sin signos radiculares y sin alivio con repetidos": {
+  "frases": [
+   "Ausencia de signos radiculares;",
+   "espalda en flexión, sin shift;",
+   "los repetidos no suelen aliviar."
+  ]
+ },
+ "lu8|Distracción": {
+  "frases": [
+   "Supino:",
+   "presión posterolateral sobre ambas EIAS.",
+   "Positivo:",
+   "reproduce el dolor conocido."
+  ]
+ },
+ "lu8|Thrust de muslo": {
+  "frases": [
+   "Supino, cadera a 90°:",
+   "presión axial sobre el fémur.",
+   "Positivo:",
+   "reproduce el dolor conocido."
+  ]
+ },
+ "lu8|Compresión": {
+  "frases": [
+   "Decúbito lateral:",
+   "presión vertical sobre la cresta ilíaca.",
+   "Positivo:",
+   "reproduce el dolor conocido."
+  ]
+ },
+ "lu8|Thrust sacro": {
+  "frases": [
+   "Prono:",
+   "presión PA sobre el centro del sacro.",
+   "Positivo:",
+   "reproduce el dolor conocido."
+  ]
+ },
+ "lu8|No centraliza con movimientos repetidos": {
+  "frases": [
+   "Descartar antes origen lumbar buscando preferencia direccional.",
+   "No usar tests de disfunción de movimiento SI (baja fiabilidad y validez)."
+  ]
+ },
+ "lu8|Gaenslen": {
+  "frases": [
+   "Supino al borde de la camilla:",
+   "una cadera en flexión máxima y la otra en extensión fuera de la camilla, con presión sobre ambas.",
+   "Positivo:",
+   "reproduce el dolor conocido."
+  ]
+ },
+ "lu8|Ausencia de dolor lumbar en la línea media": {
+  "frases": [
+   "Positivo si el paciente no refiere dolor en la línea media lumbar.",
+   "Su LR− (0,35) tiene un IC 95 % que llega a 1,01:",
+   "no se usa para descartar."
+  ]
+ },
+ "lu9|Banda tensa palpable": {
+  "frases": [
+   "Criterio mínimo.",
+   "Sin patrón de referencia diagnóstico.",
+   "La palpación tiene fiabilidad baja entre examinadores:",
+   "κ 0,34 (IC 95 %:",
+   "0,24–0,43) para el nódulo en banda tensa;",
+   "concuerdan más los examinadores con experiencia (κ 0,42 frente a 0,15).",
+   "Los criterios más reproducibles son el dolor local a la presión (κ 0,68) y que el paciente reconozca el dolor (κ 0,58)."
+  ]
+ },
+ "lu9|Punto hipersensible dentro de la banda": {
+  "frases": [
+   "Criterio mínimo."
+  ]
+ },
+ "lu9|El paciente reconoce el dolor provocado": {
+  "frases": [
+   "Criterio mínimo, con o sin dolor referido.",
+   "Es de los criterios más reproducibles entre examinadores (κ 0,58).",
+   "Hallazgo acompañante hasta descartar lo anterior."
+  ]
+ },
+ "ro1|Criterio combinado: Edad ≥45 + dolor en actividad + rigidez <30 min": {
+  "frases": [
+   "Hallazgo:",
+   "es el diagnóstico clínico de NICE (edad ≥45, dolor con la actividad, sin rigidez matutina o ≤30 min), que no aporta sensibilidad ni especificidad.",
+   "La S 95 % / E 69 % que figuraba es la que se daba a los criterios clínicos del ACR, que ya están en esta hipótesis."
+  ]
+ },
+ "ro1|Crepitación articular": {
+  "frases": [
+   "Alta sensibilidad pero poco específica.",
+   "Crepitación al movimiento pasivo de la rodilla.",
+   "Fiabilidad entre examinadores baja (kappa 0,23)."
+  ]
+ },
+ "ro1|Agrandamiento óseo": {
+  "frases": [
+   "Alta especificidad.",
+   "Osteofitos palpables en los márgenes articulares."
+  ]
+ },
+ "ro1|Restricción de ROM": {
+  "frases": [
+   "Alta especificidad cuando está presente;",
+   "normal no descarta."
+  ]
+ },
+ "ro1|Criterios clínicos del ACR": {
+  "frases": [
+   "Dolor de rodilla la mayoría de los días del mes previo MÁS al menos 3 de — edad >50, rigidez <30 min, crepitación, dolor óseo a la palpación, aumento de tamaño óseo, sin calor palpable.",
+   "Son criterios de clasificación:",
+   "la S 95 % / E 69 % que figuraba sale de la muestra en la que se crearon (pacientes de reumatología, frente a artritis reumatoide y otras causas;",
+   "Altman 1986).",
+   "En población de 50 años o más con dolor de rodilla caen a S 41 % · E 75 % (LR+ 1,6 · LR− 0,8):",
+   "casi no cambian la probabilidad.",
+   "Reflejan sobre todo la artrosis avanzada:",
+   "si no se cumplen, no la descartes.",
+   "No puntúa, así que el criterio combinado, la crepitación y el agrandamiento óseo cuentan por separado."
+  ]
+ },
+ "ro1|Rango disminuido, hinchazón persistente, debilidad de cuádriceps": {
+  "frases": [
+   "Rango disminuido, hinchazón persistente, debilidad de cuádriceps."
+  ]
+ },
+ "ro1|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Subir o bajar un escalón, o levantarse de la silla → EVA.",
+   "② Sit-to-stand de 30 s con silla, brazos y apoyo fijos;",
+   "o flexión en supino con goniómetro."
+  ]
+ },
+ "ro2|Test de McMurray": {
+  "frases": [
+   "Rotación tibial + extensión de rodilla desde posición de flexión completa.",
+   "Positivo:",
+   "chasquido o dolor en línea articular.",
+   "S IC 95 %:",
+   "45–74 %;",
+   "E IC 69–92 %;",
+   "LR+ IC 1,7–5,9;",
+   "LR− IC 0,34–0,81 (heterogeneidad I² 51 %).",
+   "Negativo apenas baja la probabilidad (LR− 0,52):",
+   "no descarta la rotura.",
+   "En contra:",
+   "Solomon 2001 (JAMA) da LR+ 1,3 (IC 0,9–1,7) y LR− 0,8."
+  ]
+ },
+ "ro2|Sensibilidad a la palpación de la línea articular": {
+  "frases": [
+   "Dolor a la palpación directa de la línea articular medial o lateral.",
+   "S IC 95 %:",
+   "73–90 %;",
+   "E IC 61–94 %;",
+   "LR+ IC 2,1–7,5;",
+   "LR− IC 0,12–0,44 (heterogeneidad alta, I² 83 %).",
+   "En contra:",
+   "Solomon 2001 (JAMA) da LR+ 0,9 y LR− 1,1."
+  ]
+ },
+ "ro2|Combinación de tests clínicos": {
+  "frases": [
+   "Valoración global del examinador (historia + exploración) para rotura meniscal:",
+   "rinde mejor que cada maniobra suelta (McMurray LR+ 1,3;",
+   "línea articular 0,9 en la misma revisión).",
+   "5 estudios con artroscopia:",
+   "S media 77 %, E media 91 %.",
+   "Más reciente, Rana 2026 (Br Med Bull 159:ldag023;",
+   "6 y 7 estudios con exploración compuesta, todos con RM y artroscopia en el mismo paciente) da S 85 % y E 95 % en el menisco medial y S 75 % y E 93 % en el lateral, pero sin LR, con agrupación univariante, exploraciones hechas por cirujanos ortopédicos y pacientes que iban a artroscopia:",
+   "no sustituye a estas LR.",
+   "La guía AAOS 2024 recomienda la exploración combinada (interlínea, McMurray, Thessaly) con fuerza moderada, sin cifras agrupadas."
+  ]
+ },
+ "ro2|Combinación traumática: traumatismo + dolor medial o difuso + palpación de la interlínea medial": {
+  "frases": [
+   "Historia de caída o pivote en el traumatismo inicial + dolor medial aislado o difuso + palpación dolorosa de la interlínea medial → S 0,91 · E 0,90 · LR+ 8,9 (IC 6,1–13,1) · LR− 0,10 (IC 0,03–0,28).",
+   "Grupo derivado sin validación externa (validación interna por bootstrap:",
+   "LR+ 7,0, LR− 0,19).",
+   "Si puntúa, la palpación de la interlínea no suma aparte."
+  ]
+ },
+ "ro2|Combinación degenerativa: inicio progresivo + dolor medial aislado + uno de tres": {
+  "frases": [
+   "Inicio progresivo + dolor medial aislado + dolor al pivotar (leve a grave), o bien inicio progresivo + dolor medial aislado + sin valgo ni varo o flexión pasiva completa → S 0,58 · E 0,91 · LR+ 6,4 (IC 4,0–10,4).",
+   "Sirve para confirmar, no para descartar:",
+   "la LR− 0,10 del artículo es de otros grupos de reglas (de descarte), no de este.",
+   "Grupo derivado sin validación externa (bootstrap:",
+   "LR+ 5,6)."
+  ]
+ },
+ "ro2|Test de Thessaly": {
+  "frases": [
+   "El capítulo lo cita entre las pruebas de rotura meniscal, junto con la palpación de la interlínea y el McMurray, sin describir la técnica ni dar cifras.",
+   "A 20° de flexión, el metaanálisis da S 75 % (IC 53–89 %), E 87 % (IC 65–96 %), LR+ 5,6 (IC 1,5–21,0) y LR− 0,28 (IC 0,11–0,71), pero con heterogeneidad muy alta (I² 94 %), y el estudio de los creadores del test da cifras muy superiores a las de los demás.",
+   "La guía AAOS 2024 deja fuera ese estudio por no cumplir sus criterios de inclusión y, en uno de alta calidad, recoge S 64 % y E 53 %:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ro2|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Flexión máxima con sobrepresión o cuclilla parcial → EVA.",
+   "② Grados de flexión hasta la aparición del dolor, en supino con la cadera a 90°."
+  ]
+ },
+ "ro3|Dolor anterior durante sentadilla": {
+  "frases": [
+   "Alta sensibilidad:",
+   "sin dolor en sentadilla, el dolor femoropatelar es poco probable.",
+   "Dolor retrorrotuliano o perirotuliano durante la sentadilla.",
+   "Positiva confirma poco.",
+   "S IC 95 %:",
+   "79–96 %;",
+   "E IC 31–69 %;",
+   "LR+ IC 1,3–2,3;",
+   "LR− IC 0,1–0,4.",
+   "Cifras de un solo estudio, no agrupadas:",
+   "la revisión solo pudo hacer metaanálisis de otro test."
+  ]
+ },
+ "ro3|Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva)": {
+  "frases": [
+   "Positivo si se cumple uno de los dos grupos.",
+   "Grupo 1:",
+   "menos de 40 años Y (dolor anterior aislado O dolor a la palpación de la faceta rotuliana medial).",
+   "Grupo 2:",
+   "de 40 a 58 años Y dolor anterior aislado o difuso Y dificultad leve o moderada para bajar escaleras Y dolor a la palpación de la faceta medial Y extensión pasiva completa (comparada a ojo con el lado sano).",
+   "→ S 0,64 · E 0,93 · LR+ 8,70 (IC 95 %:",
+   "5,20–14,58;",
+   "bootstrap 14,28).",
+   "No publica LR−:",
+   "sirve para confirmar.",
+   "Grupos derivados sin validación externa, que los autores piden antes del uso clínico."
+  ]
+ },
+ "ro3|Descartar: grupos de Décary (si se cumple alguno, marcar «Negativo»)": {
+  "frases": [
+   "Se cumple si hay uno de los tres grupos.",
+   "Grupo 1:",
+   "menos de 58 años Y dolor medial, lateral o posterior aislado Y sin dolor a la palpación de las facetas medial ni lateral.",
+   "Grupo 2:",
+   "menos de 58 años Y dolor difuso o lateral Y dolor a la palpación de la faceta medial o lateral Y extensión pasiva restringida.",
+   "Grupo 3:",
+   "58 años o más.",
+   "→ descarta el dolor femoropatelar:",
+   "S 0,92 · E 0,65 · LR− 0,12 (IC 95 %:",
+   "0,06–0,27;",
+   "bootstrap 0,05).",
+   "No publica LR+:",
+   "un resultado positivo es solo un hallazgo.",
+   "Grupos derivados sin validación externa."
+  ]
+ },
+ "ro3|Palpación alrededor de la FR, sobre todo de las facetas": {
+  "frases": [
+   "La sentadilla es el test clínico propuesto;",
+   "progresar la carga según irritabilidad:",
+   "monopodal, step-down o más repeticiones.",
+   "Palpación alrededor de la FR, sobre todo de las facetas."
+  ]
+ },
+ "ro3|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Sentadilla bilateral o monopodal, o bajada de escalón, hasta donde tolere → EVA.",
+   "② Step-down desde escalón de altura fija:",
+   "repeticiones en 30 s sin aumentar el dolor, o grados de flexión sin dolor."
+  ]
+ },
+ "ro4|Test de Lachman": {
+  "frases": [
+   "Rodilla en 30° de flexión, traslación anterior de tibia con estabilización distal del fémur.",
+   "Positivo:",
+   "traslación anterior aumentada o sin punto firme.",
+   "S IC 95 %:",
+   "73–87 %;",
+   "E IC 73–92 %;",
+   "LR+ IC 2,82–10,80;",
+   "LR− IC 0,15–0,35.",
+   "Rinde peor pasadas 3 semanas de la lesión (S 70 %, E 77 %) y en roturas completas (S 68 %, E 79 %).",
+   "Los metaanálisis univariantes dan cifras más altas, que esta revisión considera sobrestimadas."
+  ]
+ },
+ "ro4|Test de Cajón Anterior": {
+  "frases": [
+   "Rodilla a 90° de flexión.",
+   "Traslación anterior de tibia.",
+   "S IC 95 %:",
+   "77–88 %;",
+   "E IC 64–95 %;",
+   "LR+ IC 2,32–15,30;",
+   "LR− IC 0,14–0,30.",
+   "En esta revisión rinde igual que el Lachman."
+  ]
+ },
+ "ro4|Test de Pivot Shift": {
+  "frases": [
+   "Roto-subluxación de la tibia con extensión + valgo + rotación interna.",
+   "El más específico y el que más sube la probabilidad si es positivo (LR+ IC 95 %:",
+   "5,43–19,30), pero el menos sensible:",
+   "negativo, apenas la baja (LR− IC 0,40–0,56).",
+   "S IC 47–62 %;",
+   "E IC 88–97 %."
+  ]
+ },
+ "ro4|Lever Sign Test": {
+  "frases": [
+   "Puño debajo de la rodilla — si el LCA está roto, el talón no se eleva.",
+   "S IC 95 %:",
+   "68–92 %;",
+   "E IC 83–95 %;",
+   "LR+ IC 5,01–17,30;",
+   "LR− IC 0,09–0,34.",
+   "El que mejor descarta de los cuatro;",
+   "en lesiones de menos de 3 semanas fue el más exacto.",
+   "Concordante, Hesmerg 2024 (Knee 47:81–91;",
+   "23 estudios sin anestesia, sin el de su creador):",
+   "S 79 %, E 92 %, LR+ 9,9, LR− 0,22.",
+   "Hu 2024 (J Orthop Surg Res 19:155;",
+   "12 estudios, con el del creador) da E 78 % y LR+ 3,1."
+  ]
+ },
+ "ro4|Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo": {
+  "frases": [
+   "Mecanismo de pivote + derrame inmediato tras el traumatismo + Lachman positivo → rotura COMPLETA:",
+   "S 0,82 · E 0,95 · LR+ 17,5 (IC 9,8–31,5;",
+   "bootstrap 12,4).",
+   "No publica LR−:",
+   "sirve para confirmar.",
+   "Si puntúa, el Lachman no suma aparte."
+  ]
+ },
+ "ro4|Descartar: sin mecanismo de pivote ni chasquido + Lachman o pivot shift negativos (si se cumple, marcar «Negativo»)": {
+  "frases": [
+   "Historia negativa de pivote o de chasquido en el traumatismo Y Lachman o pivot shift negativos → descarta rotura parcial o completa:",
+   "S 0,93 · E 0,87 · LR− 0,08 (IC 0,03–0,24;",
+   "bootstrap 0,11).",
+   "No publica LR+:",
+   "un resultado positivo es solo un hallazgo.",
+   "Si puntúa, el Lachman y el pivot shift no suman aparte."
+  ]
+ },
+ "ro4|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Apoyo monopodal o bajada de un escalón → EVA.",
+   "Si predomina la inestabilidad, anotar episodios de fallo por semana.",
+   "② Déficit de extensión activa frente al lado sano, en supino con el talón sobre una toalla (grados)."
+  ]
+ },
+ "ro5|Dolor localizado en polo inferior de rótula + palpación del tendón": {
+  "frases": [
+   "Diagnóstico clínico:",
+   "dolor en el polo inferior de la rótula que depende de la carga Y, además, palpación dolorosa del polo inferior, test de Royal London positivo o dolor en el polo inferior en la sentadilla monopodal declinada.",
+   "La precisión diagnóstica de la historia y la exploración no se conoce.",
+   "En tendones con síntomas, la palpación es moderadamente sensible pero poco específica frente a la ecografía;",
+   "en deportistas sin síntomas, un dolor leve a la palpación es normal."
+  ]
+ },
+ "ro5|Dolor durante sentadilla en tabla inclinada (decline squat)": {
+  "frases": [
+   "Sentadilla monopodal sobre plano declinado:",
+   "dolor en el polo inferior de la rótula.",
+   "Es uno de los criterios diagnósticos de la guía holandesa.",
+   "En 43 deportistas de competición (86 tendones, con y sin dolor), positiva tuvo LR+ 4,2 (IC 95 %:",
+   "2,3–7,1), pero para alteraciones del tendón en la ecografía, no para el diagnóstico de tendinopatía:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ro5|Ecografía o RM (si se dispone de informe)": {
+  "frases": [
+   "Imagen confirmatoria si no hay respuesta al tratamiento.",
+   "Engrosamientos y cambios de señal en el tendón.",
+   "Estudio:",
+   "ecografía S 87 %, E 82 %;",
+   "RM S 57 %, E 82 %, pero frente a controles asintomáticos (confirma un diagnóstico clínico ya hecho):",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ro5|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Sentadilla monopodal sobre plano inclinado (o el escalón que tolere) → EVA.",
+   "② Repeticiones de sentadilla monopodal, mismo plano y cadencia, hasta el umbral de dolor;",
+   "o grados de flexión antes del dolor."
+  ]
+ },
+ "ro6|Test de Ober": {
+  "frases": [
+   "Decúbito lateral, cadera en abducción-extensión, rodilla 90°.",
+   "Positivo si la rodilla no alcanza la camilla o hay dolor.",
+   "Valora la flexibilidad de la cintilla y del tensor de la fascia lata;",
+   "su sensibilidad y especificidad son desconocidas:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ro6|Test de Compresión de Noble": {
+  "frases": [
+   "Compresión de la BIT sobre el cóndilo femoral lateral a 30° de flexión.",
+   "Positivo si reproduce el dolor característico.",
+   "Su sensibilidad y especificidad son desconocidas:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ro6|Palpación a lo largo de la cintilla": {
+  "frases": [
+   "Dolor localizado a la palpación a lo largo de la cintilla, sobre todo cerca del epicóndilo lateral y sobre el tubérculo de Gerdy."
+  ]
+ },
+ "ro6|Step-down lateral": {
+  "frases": [
+   "Dificultad o Trendelenburg."
+  ]
+ },
+ "ro6|Test de Thomas": {
+  "frases": [
+   "Junto con el Noble y el Ober, provoca el dolor o valora la flexibilidad de la cintilla y del tensor de la fascia lata;",
+   "su sensibilidad y especificidad son desconocidas:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "ro6|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Step-down lateral, o la carrera o pedaleo reproducidos en consulta → EVA.",
+   "② Repeticiones de step-down lateral con altura fija hasta el umbral de dolor;",
+   "o minutos de carrera hasta el dolor."
+  ]
+ },
+ "ro7|Dolor y tumefacción en cara medial de rodilla (inserción pata de ganso)": {
+  "frases": [
+   "Dolor en la cara medial de la tibia proximal, sobre la inserción de la pata de ganso.",
+   "Diagnóstico clínico;",
+   "no se ha encontrado ningún estudio de precisión diagnóstica.",
+   "Puede imitar una rotura del menisco medial:",
+   "en una serie de RM de rodillas con dolor, la presentación más frecuente fue dolor a lo largo de la interlínea medial (prevalencia de la bursitis:",
+   "2,5 %)."
+  ]
+ },
+ "ro7|Ecografía o RMN confirmatoria": {
+  "frases": [
+   "La imagen confirma la bursitis.",
+   "En la ecografía de pacientes con artrosis sintomática de rodilla aparece en el 20 % de las rodillas, más en mujeres y a más edad, y mayor cuanto más avanzada la artrosis."
+  ]
+ },
+ "ro7|Flexión de rodilla en carga y palpación de la pata de ganso": {
+  "frases": [
+   "Dolor reproducido con la flexión de rodilla EN CARGA y con la palpación de la pata de ganso (cara medial superior de la tibia)."
+  ]
+ },
+ "ro7|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Flexión de rodilla en carga (bajar un escalón) o palpación de la pata de ganso → EVA.",
+   "② Repeticiones de subida y bajada de un escalón de altura fija hasta el umbral de dolor."
+  ]
+ },
+ "ro8|Valgo forzado a 30° de flexión + mecanismo de la entrevista": {
+  "frases": [
+   "Valgo forzado a 30° de flexión.",
+   "Combinar el mecanismo de la entrevista (al menos uno de:",
+   "traumatismo por fuerza externa sobre la pierna, traumatismo en rotación) con dolor Y laxitud en el test → S 0,56 · E 0,91 · LR+ 6,4 (IC 2,7–15,2) · LR− 0,5 (IC 0,3–0,8).",
+   "Atención primaria, 18–65 años, dentro de las 5 semanas del traumatismo."
+  ]
+ },
+ "ro8|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Valgo forzado a 30°, o el gesto de apoyo o giro que reproduce el dolor → EVA.",
+   "② Arco de flexión activa indoloro, con goniómetro en supino con la cadera a 0°."
+  ]
+ },
+ "ro9|Cajón posterior a 90° de flexión": {
+  "frases": [
+   "Carga tibial posterior comparando con la rodilla sana.",
+   "Grados:",
+   "I <5 mm · II 5–10 mm · III >10 mm."
+  ]
+ },
+ "ro9|Signo del sag posterior": {
+  "frases": [
+   "Supino, rodillas a 90° y pies apoyados;",
+   "hundimiento de la tibia proximal visto de lado."
+  ]
+ },
+ "ro9|Test activo del cuádriceps": {
+  "frases": [
+   "Supino, rodilla a 90° y pie fijo contra la camilla;",
+   "contracción del cuádriceps.",
+   "Positivo:",
+   "la tibia, subluxada hacia atrás, se desplaza 2 mm o más hacia delante.",
+   "El cajón posterior es la prueba con mejor sensibilidad y especificidad, sin cifras en el capítulo."
+  ]
+ },
+ "ro9|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Arrodillarse o bajar un escalón → EVA.",
+   "② Grados de flexión activa tolerados sin dolor, en sedestación al borde de la camilla."
+  ]
+ },
+ "ro10|Hinchazón y equimosis laterales; palpación dolorosa del ligamento": {
+  "frases": [
+   "Hinchazón y equimosis laterales en fase aguda;",
+   "palpación dolorosa del ligamento."
+  ]
+ },
+ "ro10|Varo forzado a unos 30° de flexión": {
+  "frases": [
+   "Laxitud y pérdida del tope firme;",
+   "repetir a 0° para valorar el LCA.",
+   "NO usar como prueba de descarte:",
+   "S 25 %, sin E publicada;",
+   "un test negativo no descarta la lesión de LLE/EPL."
+  ]
+ },
+ "ro10|Marcha con empuje en varo": {
+  "frases": [
+   "Observación de la marcha."
+  ]
+ },
+ "ro10|Test del dial (esquina posterolateral)": {
+  "frases": [
+   "Prono, comparar la rotación externa de las dos rodillas:",
+   "más de 10° de diferencia con la rodilla a 30° de flexión indica lesión de la esquina posterolateral."
+  ]
+ },
+ "ro10|Cajón posterolateral": {
+  "frases": [
+   "Fuerza posterior y torsión en rotación externa con el pie a 15° de rotación externa.",
+   "Positivo:",
+   "más rotación externa que en el otro lado."
+  ]
+ },
+ "ro10|Test de recurvatum": {
+  "frases": [
+   "Rodilla en extensión, se estabiliza el muslo y se levanta el primer dedo del pie:",
+   "positivo si el talón sube más (hiperextensión) que en el otro lado."
+  ]
+ },
+ "ro10|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Varo forzado a 30° o el gesto en carga que provoca el fallo → EVA.",
+   "② Tiempo de apoyo monopodal tolerado sin dolor ni fallo, descalzo y sin apoyo de manos."
+  ]
+ },
+ "ro11|Regla de Ottawa antes de nada": {
+  "frases": [
+   "Radiografía si hay ALGUNO de los cinco:",
+   "≥55 años · dolor a la palpación de la cabeza del peroné · dolor aislado a la palpación de la rótula · no flexiona hasta 90° · no carga cuatro pasos.",
+   "Positiva = algún criterio;",
+   "negativa = ninguno.",
+   "Revisión sistemática más reciente (18 estudios, 6702 adultos):",
+   "S 98 % (IC 95 %:",
+   "96–99 %), E 43 % (IC 42–45 %), LR− 0,12 (IC 0,05–0,26):",
+   "una regla negativa descarta la fractura y baja esta hipótesis;",
+   "una positiva (LR+ 1,56) no la confirma y cuenta como hallazgo, pero obliga a la radiografía (paso 1b del árbol).",
+   "Las dos revisiones anteriores dan cifras parecidas (LR− 0,05 y 0,07).",
+   "Solo en lesión aguda y en adultos (las revisiones no incluyen niños).",
+   "Detecta fracturas, no roturas del aparato extensor:",
+   "la elevación de la pierna extendida se explora aparte."
+  ]
+ },
+ "ro11|Rótula: dolor localizado, escalón, dolor con extensión resistida": {
+  "frases": [
+   "Dolor localizado, posible escalón, dolor con extensión resistida, marcha con rodilla rígida."
+  ]
+ },
+ "ro11|Meseta: dolor exquisito sobre el foco y función neurovascular": {
+  "frases": [
+   "Hinchada y enrojecida, dolor exquisito sobre el foco, rango limitado, cojera marcada;",
+   "valorar SIEMPRE la función neurovascular."
+  ]
+ },
+ "ro11|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① No procede en fase aguda:",
+   "derivar.",
+   "Tras el alta traumatológica, el gesto que reproduce el dolor → EVA.",
+   "② Tras el alta:",
+   "déficit de extensión activa frente al lado sano (grados), o tiempo de apoyo monopodal."
+  ]
+ },
+ "ro12|Tests de estrés tibiofemoral normales": {
+  "frases": [
+   "Si hay traumatismo, diferenciar de la inestabilidad tibiofemoral:",
+   "los test de estrés tibiofemoral deben ser normales."
+  ]
+ },
+ "ro12|Movilidad rotuliana excesiva": {
+  "frases": [
+   "La movilidad rotuliana estará aumentada en al menos una dirección.",
+   "Movilidad excesiva:",
+   "el borde medial de la rótula llega al borde lateral del surco troclear."
+  ]
+ },
+ "ro12|Test de aprensión": {
+  "frases": [
+   "Aprensión al trasladar la rótula lateralmente."
+  ]
+ },
+ "ro12|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① El gesto que provoca la aprensión o el fallo → EVA;",
+   "si no hay dolor, episodios de fallo por semana.",
+   "② Fuerza de extensión frente al lado sano, en sedestación a 60° de flexión, siempre con la misma prueba."
+  ]
+ },
+ "ro13|Observación: genu recurvatum": {
+  "frases": [
+   "Suelen estar de pie en hiperextensión (genu recurvatum)."
+  ]
+ },
+ "ro13|Test de Hoffa": {
+  "frases": [
+   "Rodilla pasiva entre 30 y 60°, presión firme sobre el cuerpo graso bajo la rótula, medial o lateral al tendón, y llevar pasivamente a extensión final.",
+   "Positivo si reproduce el dolor familiar.",
+   "Repetir al otro lado del tendón."
+  ]
+ },
+ "ro13|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Contracción isométrica del cuádriceps en extensión completa, o el test de Hoffa → EVA.",
+   "② Grados de extensión pasiva tolerados sin dolor, en supino con el talón elevado sobre una toalla."
+  ]
+ },
+ "ro14|Fiebre >37,7 °C (séptica → urgencia)": {
+  "frases": [
+   "PRIMERO diferenciar séptica de aséptica:",
+   "la fiebre >37,7 °C solo se ha descrito en la séptica → urgencia (fase 2)."
+  ]
+ },
+ "ro14|Hinchazón en la propia bursa y arrodillarse intolerable": {
+  "frases": [
+   "Aséptica:",
+   "dolor localizado, hinchazón EN LA PROPIA BURSA (no difusa), dolor con flexión activa y pasiva, arrodillarse intolerable.",
+   "Integridad articular normal."
+  ]
+ },
+ "ro14|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Apoyar la rodilla en el suelo, o la flexión activa máxima → EVA.",
+   "② Grados de flexión activa hasta la aparición del dolor, en sedestación al borde de la camilla."
+  ]
+ },
+ "ro15|Cadera primero": {
+  "frases": [
+   "PRIMERO la cadera (epifisiólisis, Perthes:",
+   "paso 2b)."
+  ]
+ },
+ "ro15|Palpación de la tuberosidad tibial o del polo inferior de la rótula": {
+  "frases": [
+   "Tuberosidad tibial dolorosa y visiblemente aumentada (Osgood-Schlatter), o polo inferior de la rótula doloroso sin dolor a lo largo del tendón (Sinding-Larsen)."
+  ]
+ },
+ "ro15|Sentadillas, escaleras, step-down, saltos y extensión resistida": {
+  "frases": [
+   "Sentadillas, escaleras, step-down y saltos dolorosos.",
+   "Extensión resistida dolorosa y débil."
+  ]
+ },
+ "ro15|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Bajada de escalón o sentadilla monopodal → EVA.",
+   "② Fuerza de extensión resistida en sedestación a 60° frente al lado sano, o repeticiones de step-down con altura fija."
+  ]
+ },
+ "ro16|Palpación de la zona afectada": {
+  "frases": [
+   "Depende de la estabilidad.",
+   "Dolor a la palpación de la articulación en la zona afectada."
+  ]
+ },
+ "ro16|Marcha antiálgica": {
+  "frases": [
+   "Marcha antiálgica con menos flexión en la respuesta de carga."
+  ]
+ },
+ "ro16|Signos de inestabilidad: derrame y bloqueo": {
+  "frases": [
+   "Si es inestable:",
+   "derrame y signos mecánicos de bloqueo con rango disminuido → imagen (radiografía de elección) y derivación:",
+   "las lesiones inestables y los cuerpos libres son indicación quirúrgica."
+  ]
+ },
+ "ro16|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Cuclilla o el gesto de impacto que reproduce el dolor → EVA.",
+   "② Grados de flexión activa en supino hasta el dolor o el tope mecánico."
+  ]
+ },
+ "ro17|Test de provocación de la plica rotuliana medial": {
+  "frases": [
+   "Es la mejor forma de diagnosticarlo en consulta.",
+   "Técnica (test MPP):",
+   "supino, rodilla extendida;",
+   "presión con el pulgar sobre la porción inferomedial de la femororrotuliana y, manteniéndola, flexionar a 90°.",
+   "Positivo:",
+   "dolor en extensión que desaparece o disminuye mucho a 90°;",
+   "comparar con el otro lado.",
+   "Kim 2007 da S 89,5 % · E 88,7 % frente a artroscopia (la tarjeta redondea a S 0,90 · E 0,89 · LR+ 8,18 · LR− 0,11), pero no puntúa:",
+   "toda la especificidad sale de los controles con dolor en la interlínea lateral.",
+   "En el grupo con dolor anteromedial, las 13 rodillas sin plica patológica (7 pinzamientos de franjas sinoviales de la grasa de Hoffa, 5 sinovitis localizadas, 1 lesión de cartílago) dieron el test positivo:",
+   "E 0 de 13 en el diagnóstico diferencial real.",
+   "Además, nivel III, no consecutivos y test hecho por su autor sin cegamiento.",
+   "Cuenta como hallazgo compatible."
+  ]
+ },
+ "ro17|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① El test de provocación de la plica, o la flexión repetida que reproduce el chasquido → EVA.",
+   "② Grados de flexión activa hasta el dolor o el enganche, en sedestación al borde de la camilla."
+  ]
+ },
+ "ro18|Presión directa sobre la cabeza del peroné y movilidad accesoria": {
+  "frases": [
+   "Dolor lateral que aumenta con la presión directa sobre la cabeza del peroné o con la movilidad accesoria."
+  ]
+ },
+ "ro18|Movimiento de rodilla con isquiotibiales en tensión y movimiento de tobillo": {
+  "frases": [
+   "Movimiento de rodilla doloroso sobre todo con los isquiotibiales en tensión, y movimiento de tobillo doloroso."
+  ]
+ },
+ "ro18|Cabeza del peroné prominente, hipermovilidad o luxación": {
+  "frases": [
+   "Cabeza del peroné prominente;",
+   "hipermovilidad o luxación franca."
+  ]
+ },
+ "ro18|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Presión directa sobre la cabeza del peroné, o el gesto en carga que reproduce el dolor → EVA.",
+   "② Grados de flexión activa en prono hasta el dolor, y flexión dorsal de tobillo frente al lado sano."
+  ]
+ },
+ "ro19|Marcha en steppage": {
+  "frases": [
+   "Observación de la marcha."
+  ]
+ },
+ "ro19|Sensibilidad en la cara lateral inferior de la pierna y el dorso del pie": {
+  "frases": [
+   "Sensibilidad alterada en la cara lateral inferior de la pierna y el dorso del pie."
+  ]
+ },
+ "ro19|Fuerza de eversión y de flexión dorsal de tobillo y dedos": {
+  "frases": [
+   "Debilidad de eversión y de flexión dorsal de tobillo y dedos."
+  ]
+ },
+ "ro19|Tinel cerca de la cabeza del peroné": {
+  "frases": [
+   "Tinel o dolor a la palpación cerca de la cabeza del peroné."
+  ]
+ },
+ "ro19|Prueba neurodinámica con sesgo peroneo": {
+  "frases": [
+   "Slump o elevación de la pierna recta con sesgo hacia el nervio peroneo:",
+   "probablemente positiva, reproduce quemazón, dolor lancinante o disestesia distal."
+  ]
+ },
+ "ro19|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Si hay dolor, la posición o prueba que lo reproduce (cruzar las piernas, cuclillas, neurodinámica) → EVA.",
+   "② Fuerza de flexión dorsal frente al lado sano, misma posición;",
+   "o repeticiones de elevación del antepié en bipedestación."
+  ]
+ },
+ "ro20|Signos de patología meniscal o condral": {
+  "frases": [
+   "La exploración suele mostrar signos de patología meniscal o condral.",
+   "Descartada siempre la TVP."
+  ]
+ },
+ "ro20|Signo de Foucher": {
+  "frases": [
+   "Si es palpable:",
+   "firme en extensión completa y blando con la rodilla flexionada."
+  ]
+ },
+ "ro20|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Extensión final de rodilla o flexión máxima → EVA.",
+   "② Grados de flexión activa en prono hasta el tope o el dolor."
+  ]
+ },
+ "co1|Test de Cozen (extensión resistida de muñeca)": {
+  "frases": [
+   "Reproducción del dolor en epicóndilo lateral con extensión resistida de muñeca.",
+   "Solo hay sensibilidad (sin especificidad publicada):",
+   "un Cozen negativo hace menos probable la epicondilalgia, pero sin LR no puntúa."
+  ]
+ },
+ "co1|Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)": {
+  "frases": [
+   "Prensión máxima con el codo a 90° de flexión y en extensión completa:",
+   "en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia).",
+   "Cuenta como hallazgo:",
+   "los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral.",
+   "Cifras de Dorf 2007 en Zwerus 2018 (tabla 4;",
+   "40 pacientes, brazo sano como control):",
+   "caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21);",
+   "≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24);",
+   "≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24)."
+  ]
+ },
+ "co1|Test de Thomsen (= test de Cozen)": {
+  "frases": [
+   "Otro nombre del test de Cozen:",
+   "la guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)».",
+   "No es una prueba distinta:",
+   "marcar solo una de las dos para no contar dos veces el mismo hallazgo."
+  ]
+ },
+ "co1|Fuerza de prensión sin dolor (dinamómetro)": {
+  "frases": [
+   "En decúbito supino con el antebrazo pronado, el paciente aprieta el dinamómetro despacio y para al primer dolor;",
+   "se compara con el lado sano.",
+   "El capítulo la prefiere a la prensión máxima (que en la epicondilalgia puede estar alterada o no) por su buena precisión diagnóstica, su sensibilidad al cambio y su relación con los cuestionarios del paciente, pero no da cifras:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "co2|Dolor a la palpación del epicóndilo medial": {
+  "frases": [
+   "Dolor reproducible a la palpación directa del epicóndilo medial o tendón común flexor-pronador."
+  ]
+ },
+ "co2|Dolor con flexión resistida de antebrazo y pronación": {
+  "frases": [
+   "Reproducción del dolor con resistencia a la flexión de muñeca y/o pronación del antebrazo."
+  ]
+ },
+ "co2|Ecografía (si se dispone de informe)": {
+  "frases": [
+   "Ecografía convencional (no sonoelastografía):",
+   "foco hipo o anecoico, tendón no visible, calcificación o irregularidad cortical.",
+   "Cuenta como hallazgo:",
+   "S 95,2 %, E 92 %, pero el patrón de referencia fue el propio diagnóstico clínico de un fisiatra y se comparó con 25 codos sin la patología, un diseño que infla la precisión y no mide si la ecografía añade algo al diagnóstico clínico."
+  ]
+ },
+ "co2|Test de Polk (medial)": {
+  "frases": [
+   "Sentado, con el codo a unos 100° de flexión y el antebrazo en supinación, el paciente coge y levanta un objeto de unos 2,5 kg (p.",
+   "ej., un libro);",
+   "positivo si duele el epicóndilo medial.",
+   "Sin estudios de precisión.",
+   "Ojo:",
+   "Lluch llama Polk a la flexión activa de la muñeca sin resistencia;",
+   "la descripción de aquí es la de la tabla 5 de Zwerus, de donde la toma el capítulo (ref.",
+   "9)."
+  ]
+ },
+ "co3|Test de ROM activo en 4 direcciones": {
+  "frases": [
+   "Extensión completa, flexión, pronación y supinación comparadas con el lado sano.",
+   "Sin cifras para la rigidez:",
+   "la «S 99 %» que tenía es del test de extensión del codo para descartar fractura tras traumatismo (Appelboam 2008:",
+   "no extender del todo el codo → radiografía;",
+   "S 96,8 %), otra condición."
+  ]
+ },
+ "co3|Limitación activa Y pasiva comparada con lado sano": {
+  "frases": [
+   "Sin datos de precisión.",
+   "La sensación final orienta:",
+   "un tope firme e indoloro sugiere un bloqueo óseo;",
+   "uno blando, una contractura capsular y muscular;",
+   "crepitación o dolor, fractura, sinovitis, cuerpos libres o degeneración."
+  ]
+ },
+ "co4|Ecografía dinámica con estrés en valgo": {
+  "frases": [
+   "Delta de apertura articular >1.0 mm comparado con lado contralateral."
+  ]
+ },
+ "co4|RM con artrograma": {
+  "frases": [
+   "Especificidad del 91 % en la cohorte de Roedl."
+  ]
+ },
+ "co4|Test de valgo móvil (moving valgus stress test)": {
+  "frases": [
+   "Reproducción del dolor medial con estrés en valgo dinámico.",
+   "En el único estudio (O'Driscoll 2005;",
+   "Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %).",
+   "Test de valgo móvil (O'Driscoll 2005):",
+   "hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida;",
+   "positivo si reproduce el dolor medial, máximo entre 120° y 70°.",
+   "En 21 pacientes operados:",
+   "S 100 % (17/17), E 75 % (3 de 4 controles).",
+   "Lluch 2020 (p.",
+   "86) da las cifras invertidas (S 75 %, E 100 %).",
+   "Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1);",
+   "es el texto de la revisión el que las invierte, y de ahí las copia Lluch.",
+   "Cuenta como hallazgo:",
+   "la especificidad sale de solo 4 controles y el IC de la LR+ incluye el 1.",
+   "La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión."
+  ]
+ },
+ "co4|Test de valgo estático (dolor)": {
+  "frases": [
+   "Sentado, codo a 70° de flexión y antebrazo en supinación máxima;",
+   "estrés en valgo comparado con el otro codo;",
+   "positivo si reproduce el dolor medial.",
+   "Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°.",
+   "El dolor es más sensible y la laxitud, más específica (Lluch).",
+   "En O'Driscoll 2005 (Zwerus, tabla 4):",
+   "S 64,7 %, E 50 % (solo 4 controles), LR+ 1,29 (IC 0,46–3,66), LR− 0,71:",
+   "no cambia la probabilidad, cuenta como hallazgo."
+  ]
+ },
+ "co4|Test de valgo estático (laxitud)": {
+  "frases": [
+   "La misma maniobra, valorando la apertura medial o la falta de tope firme frente al otro codo.",
+   "En O'Driscoll 2005 (Zwerus, tabla 4):",
+   "S 18,8 %, E 100 % (solo 4 controles;",
+   "la LR+ no se puede calcular), LR− 0,81:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "co4|Dolor a la palpación justo distal al epicóndilo medial": {
+  "frases": [
+   "Palpación del ligamento colateral medial justo distal al epicóndilo medial.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co5|Test de cajón posterolateral / Test de pivote lateral": {
+  "frases": [
+   "Pivot shift:",
+   "en supino, brazo por encima de la cabeza, hombro en rotación externa completa y antebrazo en supinación;",
+   "carga axial y valgo mientras se lleva el codo de extensión a flexión;",
+   "positivo si la radiohumeral se reduce con un resalte palpable.",
+   "Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular;",
+   "sin especificidad publicada en el capítulo.",
+   "El dato es de Regan y Lapner, recogido en Zwerus 2018:",
+   "8 pacientes, todos con la lesión y sin controles, así que no hay especificidad posible."
+  ]
+ },
+ "co5|Dolor lateral a la palpación (complejo colateral lateral)": {
+  "frases": [
+   "Dolor a la palpación de la cara lateral del codo.",
+   "El capítulo de Lluch no describe la palpación del complejo colateral lateral (su tabla 1 da el estrés en varo, el push-up y la recolocación en la mesa) y avisa de que su lesión puede confundirse con la epicondilalgia lateral, en la que la palpación lateral también duele y no es específica.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co5|Test de flexión en suelo (push-up) con el antebrazo en supinación": {
+  "frases": [
+   "El paciente hace una flexión de brazos con el antebrazo en supinación máxima y otra en pronación máxima;",
+   "positivo si la aprensión o la subluxación aparecen al extender el codo en supinación.",
+   "En Zwerus 2018 (tabla 4;",
+   "Regan y Lapner):",
+   "S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles;",
+   "sin especificidad:",
+   "cuenta como hallazgo.",
+   "Lluch da el 88–100 % para este test y el de recolocación juntos."
+  ]
+ },
+ "co5|Test de recolocación en la mesa (table-top relocation)": {
+  "frases": [
+   "Con el brazo apoyado en el borde de la mesa, el codo hacia fuera y el antebrazo en supinación, el paciente flexiona el codo cargando peso:",
+   "aparecen aprensión y dolor hacia los 40° de flexión.",
+   "Se repite con el examinador presionando la cabeza del radio para evitar la subluxación posterior;",
+   "positivo si los síntomas se alivian.",
+   "En Zwerus 2018 (tabla 4;",
+   "Arvind y Hargreaves):",
+   "S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles;",
+   "sin especificidad:",
+   "cuenta como hallazgo."
+  ]
+ },
+ "co5|Dolor y laxitud con estrés en varo": {
+  "frases": [
+   "Estrés en varo comparado con el otro codo;",
+   "en la lesión del complejo colateral lateral reproduce dolor y laxitud.",
+   "Tras una luxación, la estabilidad se explora con estrés en varo y valgo a 30° de flexión y con el pivot shift.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co6|Dolor posterolateral en línea articular radiocapitelar a la palpación": {
+  "frases": [
+   "Presente en el 83.3% de los casos confirmados artroscópicamente."
+  ]
+ },
+ "co6|Test de plica radiocapitelar posterolateral": {
+  "frases": [
+   "Pulgar en la cara posterolateral de la radiocapitelar y antebrazo en pronación;",
+   "empezar con el codo extendido y flexionar manteniendo la presión.",
+   "Positivo si el dolor a baja flexión desaparece claramente por encima de 90°.",
+   "S 83,3 % (IC 95 % 62,6–95,3), E 87,5 %:",
+   "24 plicas confirmadas por artroscopia frente a 56 epicondilalgias laterales (el diferencial real).",
+   "Estudio retrospectivo de los creadores del test.",
+   "La RM identificó la plica en el 70,8 %."
+  ]
+ },
+ "co6|PEPPER (palpación-extensión de la radiocapitelar)": {
+  "frases": [
+   "Posterior Elbow Pain by Palpation-Extension of the Radiocapitellar joint:",
+   "compresión de la cara posterior de la cabeza del radio mientras se extiende el codo;",
+   "positivo si reproduce el dolor posterolateral.",
+   "Solo fue preciso para la condropatía de la cabeza del radio;",
+   "el capítulo no da cifras y no se ha estudiado en una población más amplia con dolor de codo."
+  ]
+ },
+ "co6|SALT (supinación y dolor anterolateral)": {
+  "frases": [
+   "Supination and Antero-Lateral pain Test:",
+   "compresión de la cara anterior de la cabeza del radio, deslizando el dedo sobre ella, mientras se supina el codo;",
+   "positivo si reproduce el dolor anterolateral.",
+   "Sensibilidad alta pero especificidad baja para la laxitud del ligamento colateral lateral y los hallazgos intraarticulares;",
+   "sin cifras en el capítulo."
+  ]
+ },
+ "co6|Test de flexión-pronación": {
+  "frases": [
+   "Pronación del antebrazo mientras se flexiona y extiende el codo;",
+   "positivo si aparece un chasquido doloroso.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co6|Deslizamientos accesorios de la cabeza del radio": {
+  "frases": [
+   "Dolor e hipomovilidad con los deslizamientos accesorios de la cabeza del radio;",
+   "también movimientos combinados (flexión-pronación-abducción, extensión-abducción) para buscar hipomovilidad, hipermovilidad o dolor.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co7|Test del Gancho (Hook Test)": {
+  "frases": [
+   "Con el codo en 90° de flexión activa y antebrazo supinado, se intenta \"enganchar\" el tendón del bíceps con el dedo índice.",
+   "Imposible si hay rotura.",
+   "Puntúa solo cuando es normal:",
+   "en la cohorte de Devereaux y ElMaraghy (48 pacientes con sospecha de rotura, confirmada con cirugía o RM), S 81 %, E 100 % (IC 54–100:",
+   "solo 6 sin rotura completa), LR− 0,19 (IC 0,10–0,36);",
+   "la LR+ no se puede calcular.",
+   "En O'Driscoll 2007 (45 operados, el brazo sano como control) dio S y E del 100 %."
+  ]
+ },
+ "co7|Pérdida del contorno normal del brazo y tendón distal no palpable": {
+  "frases": [
+   "En la rotura puede verse hinchazón y una pérdida sutil del contorno normal del brazo, y el tendón distal no se palpa.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co7|Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva": {
+  "frases": [
+   "Codo apoyado a 90° de flexión;",
+   "se palpa el vientre del bíceps mientras se prona y supina pasivamente el antebrazo:",
+   "si el músculo sube con la supinación y baja con la pronación, el tendón distal está íntegro.",
+   "Puntúa solo cuando es normal:",
+   "en la misma cohorte de Devereaux y ElMaraghy (48 pacientes), S 95,2 %, E 100 % (IC 54–100:",
+   "solo 6 sin rotura completa), LR− 0,05 (IC 0,01–0,18).",
+   "Si se hacen los dos, sustituye al Hook test (absorbe):",
+   "son los mismos pacientes y no se cuentan dos veces."
+  ]
+ },
+ "co8|Test de Tinel en túnel cubital": {
+  "frases": [
+   "Lluch lo incluye entre las pruebas de provocación «muy útiles» para la neuropatía cubital, pero sin cifras propias (las LR+ 27–41 que da para ese grupo no se han podido comprobar;",
+   "ver el test de flexión del codo).",
+   "Percusión sobre el nervio cubital en el surco epitrócleo-olecraniano.",
+   "Positivo:",
+   "parestesias en 4º y 5º dedo."
+  ]
+ },
+ "co8|Evaluación de subluxación del nervio cubital": {
+  "frases": [
+   "Con flexo-extensión de codo — el nervio cubital puede subluxarse sobre el epicóndilo medial."
+  ]
+ },
+ "co8|Electrodiagnóstico (velocidad de conducción nerviosa)": {
+  "frases": [
+   "Ayuda a confirmar las neuropatías de fibra gruesa, como la cubital, pero puede no detectar una neuropatía de fibra fina (fibras Aδ y C);",
+   "las pruebas sensitivas cuantitativas valoran las dos.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co8|Test de flexión del codo": {
+  "frases": [
+   "Flexión pasiva mantenida del codo durante 60 segundos;",
+   "positivo si reproduce las parestesias en el territorio cubital.",
+   "En Ochi 2012 (55 nervios con túnel cubital frente a 123 controles sin síntomas, de un solo cirujano), a los 5 segundos:",
+   "S 25 %, E 100 %.",
+   "Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch).",
+   "Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012.",
+   "Cuenta como hallazgo:",
+   "con controles sin síntomas la especificidad se sobrestima."
+  ]
+ },
+ "co8|Test de rotación interna del hombro con flexión del codo (SIRT)": {
+  "frases": [
+   "Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo neutro y muñeca y dedos extendidos;",
+   "positivo si reproduce los síntomas en 10 segundos.",
+   "Ochi 2011 (25 pacientes;",
+   "54 controles sin síntomas y 14 con otras neuropatías):",
+   "a los 10 segundos, S 80 % y ningún control positivo.",
+   "Ochi 2012, a los 5 segundos:",
+   "S 58 %, E 100 %.",
+   "Cuenta como hallazgo:",
+   "estudios de casos y controles del autor del test."
+  ]
+ },
+ "co8|Test de rotación interna del hombro con flexión máxima del codo (SIREFT)": {
+  "frases": [
+   "Como el SIRT (hombro en 90° de abducción, 10° de flexión y rotación interna máxima), pero con el codo en flexión máxima, el antebrazo en supinación máxima y la muñeca y los dedos en extensión máxima;",
+   "positivo si reproduce o agrava los síntomas en el territorio cubital en menos de 5 segundos.",
+   "Ochi 2012:",
+   "S 87 % (48/55), E 98 % (121/123), LR+ 42,5 publicada;",
+   "más sensible que el test de flexión y el SIRT de 5 segundos.",
+   "Cuenta como hallazgo:",
+   "casos y controles, con controles sin síntomas de un solo cirujano, y el propio estudio advierte de que el desfiladero torácico y otros diagnósticos podrían dar positivo."
+  ]
+ },
+ "co9|Dolor en antebrazo proximal (NO en epicóndilo lateral)": {
+  "frases": [
+   "Localización más distal que la epicondilalgia lateral.",
+   "Puede coexistir con ella."
+  ]
+ },
+ "co9|Dolor con extensión resistida del 3er dedo": {
+  "frases": [
+   "Sin datos de precisión para la neuropatía radial.",
+   "Ojo:",
+   "el capítulo de codo de Lluch recoge la extensión resistida del tercer dedo (test de Maudsley) como prueba de la epicondilalgia lateral, no de la neuropatía radial, así que no distingue entre las dos."
+  ]
+ },
+ "co9|Dolor con supinación resistida con el codo extendido": {
+  "frases": [
+   "Reproduce el dolor en el dorso del antebrazo proximal.",
+   "Precisión diagnóstica no estudiada."
+  ]
+ },
+ "co9|Neurodinámica del nervio radial (ULNT radial)": {
+  "frases": [
+   "Depresión de la cintura escapular, extensión del codo, rotación interna del hombro, pronación, flexión de la muñeca y abducción del hombro;",
+   "positivo si reproduce los síntomas (al menos en parte) y cambian con la diferenciación estructural (soltar la depresión escapular o inclinar el cuello)."
+  ]
+ },
+ "co9|Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)": {
+  "frases": [
+   "Síndrome motor puro:",
+   "debilidad para extender los dedos y, en menor grado, la muñeca, típicamente sin síntomas sensitivos.",
+   "Lo distingue del túnel radial, que da dolor sin debilidad."
+  ]
+ },
+ "co10|Dolor con la extensión activa o resistida del codo": {
+  "frases": [
+   "Reproduce el dolor posterior.",
+   "Más frecuente en varones, lanzadores, culturistas y ciclistas de montaña;",
+   "los síntomas suelen seguir a un aumento brusco de la actividad.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co10|Dolor a la palpación de la inserción del tríceps": {
+  "frases": [
+   "Sin datos de precisión."
+  ]
+ },
+ "co10|Defecto palpable e hinchazón (rotura)": {
+  "frases": [
+   "En la rotura:",
+   "defecto palpable e hinchazón, tras una lesión aguda o un golpe directo;",
+   "preguntar por anabolizantes.",
+   "No hay pruebas diagnósticas específicas descritas:",
+   "el diagnóstico concluyente puede requerir ecografía o RM."
+  ]
+ },
+ "co10|Test de compresión del tríceps (triceps squeeze test)": {
+  "frases": [
+   "Sentado, con el antebrazo colgando sobre el respaldo de una silla y el codo a 90°;",
+   "el examinador aprieta con firmeza el vientre del tríceps;",
+   "si el codo no se extiende, sugiere una rotura completa.",
+   "Descrito en libros de texto, sin estudios de precisión."
+  ]
+ },
+ "co11|Dolor en la extensión terminal del codo": {
+  "frases": [
+   "Dolor provocado por la extensión del codo, en el deportista joven (en lanzadores, sobre todo en la fase de seguimiento o desaceleración) o en el mayor.",
+   "Puede asociar laxitud del ligamento colateral medial en el estrés en valgo.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co11|Déficit fijo de extensión": {
+  "frases": [
+   "Puede haber un flexo fijo;",
+   "un tope duro a la extensión sugiere un cuerpo libre o un osteofito posterior.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co11|Arm bar test": {
+  "frases": [
+   "De pie, con el hombro en 90° de flexión y rotación interna completa y el índice apoyado en el hombro del examinador, que presiona sobre el húmero distal para extender del todo el codo;",
+   "positivo si reproduce dolor posteromedial.",
+   "Sin estudios de precisión."
+  ]
+ },
+ "co11|Test de sobrecarga en valgo (valgus overload)": {
+  "frases": [
+   "Desde 20–30° de flexión, el examinador extiende con fuerza el codo mientras aplica valgo;",
+   "positivo si reproduce dolor posteromedial.",
+   "Sin estudios de precisión."
+  ]
+ },
+ "co12|Dolor con la extensión del codo, sin traumatismo": {
+  "frases": [
+   "Dolor en la extensión terminal del codo en lanzadores, típicamente sin antecedente de traumatismo.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co12|Pérdida de la extensión terminal": {
+  "frases": [
+   "Puede faltar la extensión terminal.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co12|TC (si la radiografía no es concluyente)": {
+  "frases": [
+   "La radiografía simple puede no ser concluyente:",
+   "se necesita una TC.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co13|Dolor a la palpación del pronador redondo": {
+  "frases": [
+   "Dolor en la cara anterior del codo y el antebrazo, con parestesias sobre todo del 1.º al 3.º dedo.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co13|Síntomas con la pronación resistida con el codo extendido": {
+  "frases": [
+   "Sin datos de precisión."
+  ]
+ },
+ "co13|Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo": {
+  "frases": [
+   "Sin datos de precisión."
+  ]
+ },
+ "co13|Neurodinámica del nervio mediano (ULNT mediano)": {
+  "frases": [
+   "Depresión de la cintura escapular, abducción del hombro, supinación, extensión de la muñeca y extensión del codo;",
+   "positivo si reproduce los síntomas (al menos en parte) y cambian con la diferenciación estructural (soltar la depresión escapular o inclinar el cuello)."
+  ]
+ },
+ "co13|Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)": {
+  "frases": [
+   "Síndrome motor puro, con solo una molestia vaga en el antebrazo.",
+   "Las lesiones del interóseo anterior pueden ser idiopáticas y en general no son compresivas."
+  ]
+ },
+ "co14|Tirón del brazo extendido en un menor de 5 años, sin caída": {
+  "frases": [
+   "Dolor brusco, pérdida de movimiento y angustia al intentar moverlo, sin antecedente de caída;",
+   "a menudo sin hinchazón, deformidad ni hematoma.",
+   "Hay que descartar una fractura o una infección."
+  ]
+ },
+ "co14|Dolor y limitación de la pronación y de la extensión del codo": {
+  "frases": [
+   "Sin datos de precisión."
+  ]
+ },
+ "co15|Dolor medial con el lanzamiento en un deportista con el esqueleto inmaduro": {
+  "frases": [
+   "Inestabilidad crónica en valgo por lanzamientos repetidos:",
+   "apofisitis o fractura por avulsión del epicóndilo medial;",
+   "puede asociar osteocondritis disecante de la cabeza del radio o del capítulo.",
+   "Preguntar por cambios de entrenamiento y de material.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co15|Dolor y laxitud con el estrés en valgo o el valgo móvil": {
+  "frases": [
+   "Mismos hallazgos que la lesión del ligamento colateral medial del adulto.",
+   "Sin datos de precisión en el niño."
+  ]
+ },
+ "co16|Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años": {
+  "frases": [
+   "Empeora con la actividad y cede con el reposo (Panner).",
+   "La osteocondritis disecante se presenta como un dolor lateral insidioso con antecedente de traumatismos repetidos.",
+   "Sin datos de precisión."
+  ]
+ },
+ "co16|Imagen: radiografía o RM": {
+  "frases": [
+   "La radiografía puede mostrar desmineralización, esclerosis o fragmentación;",
+   "la RM es más sensible para el diagnóstico precoz."
+  ]
+ },
+ "tp1|Reglas de Ottawa (si no carga)": {
+  "frases": [
+   "Si no carga:",
+   "Ottawa antes de nada."
+  ]
+ },
+ "tp1|LPAA: palpar y estirar": {
+  "frases": [
+   "Priorizar LPAA (palpar y estirar:",
+   "flexión plantar con inversión y rotación interna).",
+   "Reproducir el dolor conocido indica lesión de ese ligamento."
+  ]
+ },
+ "tp1|LPC: palpar y estirar": {
+  "frases": [
+   "LPC (palpar y estirar:",
+   "inversión del retropié con el tobillo en flexión dorsal).",
+   "Reproducir el dolor conocido indica lesión de ese ligamento."
+  ]
+ },
+ "tp1|Cajón anterior (a los 4–6 días)": {
+  "frases": [
+   "Cajón anterior con mejor S y E a los 4–6 días;",
+   "sin signo del surco, el LPAA no está roto del todo.",
+   "No puntúa:",
+   "van Dijk 1996 (160 inversiones;",
+   "referencia:",
+   "cirugía o artrografía) da para la exploración diferida completa (día 5:",
+   "hinchazón, hematoma, palpación y cajón) S 96 %, E 84 %, pero para el cajón solo el texto (S 86 %, E 74 %) no cuadra con su propia tabla, y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos."
+  ]
+ },
+ "tp1|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Estiramiento pasivo del LPAA o apoyo monopodal → EVA.",
+   "② Tiempo de apoyo monopodal descalzo sin dolor;",
+   "cuando tolere carga, KTW en cm frente al lado sano."
+  ]
+ },
+ "tp2|Palpación del LTPAI": {
+  "frases": [
+   "Palpación del LTPAI (la más sensible).",
+   "Si las dos reproducen el dolor conocido, sospechar lesión.",
+   "Sin cifras en el capítulo.",
+   "No puntúa:",
+   "la palpación del LTPAI sola da resultados contradictorios (Frey 2017:",
+   "S 95 %, E 86 %;",
+   "Großterlinden 2016:",
+   "S 43 %, E 52 %;",
+   "recogidos en Netterström-Wedin 2021).",
+   "La LR− 0,28 (IC 0,09–0,89) de Sman 2015 es de otra cosa:",
+   "dolor en cualquiera de cinco estructuras de la sindesmosis (S 92 %, E 29 %)."
+  ]
+ },
+ "tp2|Squeeze test": {
+  "frases": [
+   "squeeze test (la más específica).",
+   "Si las dos reproducen el dolor conocido, sospechar lesión.",
+   "Sin cifras en el capítulo.",
+   "No puntúa:",
+   "Sman 2015 (RM de referencia) da S 26 %, E 88 %, LR+ 2,15 (IC 0,86–5,39);",
+   "agrupado en Netterström-Wedin 2021 (4 estudios, 428 participantes), S 32 %, E 85 %, LR+ 3,16 (IC 0,95–10,49), LR− 0,77.",
+   "Los dos intervalos de la LR+ cruzan el 1."
+  ]
+ },
+ "tp2|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Squeeze test o flexión dorsal en carga → EVA.",
+   "② KTW en cm frente al lado sano, cuando tolere la carga."
+  ]
+ },
+ "tp3|Thompson (Simmonds)": {
+  "frases": [
+   "Thompson:",
+   "prono, pie fuera de la camilla;",
+   "al comprimir la pantorrilla el tobillo no se mueve → S 96 % · E 93 % → derivación preferente.",
+   "Maffulli 1998:",
+   "133 roturas confirmadas en cirugía y 28 controles con lesión posterior sin rotura (26 negativos;",
+   "2 dudosos contados como falsos positivos).",
+   "LR de Reiman 2014 con esos datos:",
+   "LR+ 13,71 (IC 95 % 3,54–51,24), LR− 0,04 (0,02–0,10).",
+   "Límite:",
+   "la especificidad sale de solo 28 controles."
+  ]
+ },
+ "tp3|Hueco palpable": {
+  "frases": [
+   "Hueco palpable, que se pierde con el tiempo.",
+   "Maffulli 1998 (paciente despierto):",
+   "S 73 %, E 89 %;",
+   "LR de Reiman 2014:",
+   "LR+ 6,64 (IC 95 % 2,32–19,91), LR− 0,30 (0,23–0,40).",
+   "Es otro test que Thompson, pero en el mismo paciente:",
+   "si los dos son positivos, el peso conjunto puede estar algo sobrestimado."
+  ]
+ },
+ "tp3|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① y ② No procede:",
+   "derivar.",
+   "Tras el alta, el gesto que reproduce → EVA y ETM a tempo fijo frente al lado sano."
+  ]
+ },
+ "tp4|Neurovascular y cinco P": {
+  "frases": [
+   "Neurovascular y cinco P.",
+   "Cinco P:",
+   "palidez · dolor desproporcionado · parestesias · sin pulso · frialdad."
+  ]
+ },
+ "tp4|Equimosis plantar": {
+  "frases": [
+   "Equimosis plantar patognomónica (falta en esguinces aislados, tarda 24–48 h)."
+  ]
+ },
+ "tp4|Dolor en todo el ancho del mediopié": {
+  "frases": [
+   "Dolor en todo el ancho del mediopié."
+  ]
+ },
+ "tp4|1.º y 2.º MT en direcciones opuestas": {
+  "frases": [
+   "1.º y 2.º MT en direcciones opuestas → dolor."
+  ]
+ },
+ "tp4|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① y ② No procede en fase aguda:",
+   "derivar.",
+   "Tras el alta, despegue o ETM → EVA;",
+   "ETM a tempo fijo."
+  ]
+ },
+ "tp5|Reglas de Ottawa de tobillo y de pie": {
+  "frases": [
+   "TOBILLO → radiografía si dolor en la zona maleolar Y alguno:",
+   "dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta.",
+   "PIE → radiografía si dolor en el mediopié Y alguno:",
+   "dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos.",
+   "Solo descarta:",
+   "Bachmann 2003 (27 estudios, 15 581 pacientes) da LR− 0,08 aplicando solo la regla del tobillo o solo la del pie, pero 0,21 (IC 95 % 0,12–0,38) en los estudios que aplican las dos juntas, que es como se usan aquí (se toma la más prudente).",
+   "El positivo es un hallazgo:",
+   "en adultos, LR+ 1,47 (IC 1,11–1,93;",
+   "Gomes 2022)."
+  ]
+ },
+ "tp5|5.º MT: dolor en la base": {
+  "frases": [
+   "5.º MT:",
+   "dolor en la base en todos los tipos;",
+   "en la espiral, a lo largo del hueso."
+  ]
+ },
+ "tp5|Calcáneo: talón doloroso con equimosis": {
+  "frases": [
+   "Calcáneo:",
+   "talón doloroso, hinchado, con equimosis."
+  ]
+ },
+ "tp5|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① y ② No procede en fase aguda:",
+   "derivar."
+  ]
+ },
+ "tp6|Hinchazón y equimosis perimaleolar medial": {
+  "frases": [
+   "Hinchazón y equimosis perimaleolar medial."
+  ]
+ },
+ "tp6|Resalte con la flexión dorsal y plantar": {
+  "frases": [
+   "Se subluxa hacia delante con la flexión dorsal y se recoloca con la plantar."
+  ]
+ },
+ "tp6|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Flexión dorsal y plantar activa que provoca el resalte → EVA.",
+   "② Sin medida propia:",
+   "derivar para confirmar."
+  ]
+ },
+ "tp7|Test de pinzamiento posterior": {
+  "frases": [
+   "Dolor conocido con la flexión plantar pasiva o el test de pinzamiento posterior (flexión plantar comprimiendo el calcáneo contra la tibia):",
+   "confirma."
+  ]
+ },
+ "tp7|Hinchazón y dolor por detrás del astrágalo": {
+  "frases": [
+   "Hinchazón a ambos lados del Aquiles;",
+   "dolor por detrás del astrágalo."
+  ]
+ },
+ "tp7|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Test de pinzamiento posterior o media punta en carga → EVA.",
+   "② ETM a tempo fijo hasta dolor o pérdida de técnica, frente al lado sano;",
+   "o KTW en cm."
+  ]
+ },
+ "tp8|Batería progresiva de carga": {
+  "frases": [
+   "Batería progresiva:",
+   "ETM bipodal → monopodal → saltos bipodales → monopodales, hasta reproducir;",
+   "dolor localizado (1–2 dedos).",
+   "EVA en cada escalón.",
+   "Aquiles:",
+   "la palpación no ayuda al diagnóstico.",
+   "No puntúa:",
+   "la única cifra de estos gestos es de Hutchison 2013 (estudio piloto, 10 tendinopatías;",
+   "en Reiman 2014):",
+   "ETM monopodal S 22 %, E 93 %, LR+ 3,14;",
+   "salto S 43 %, E 87 %, LR+ 3,31, sin intervalo de confianza publicado."
+  ]
+ },
+ "tp8|Descarga en el salto": {
+  "frases": [
+   "Vigilar las estrategias de descarga:",
+   "suele aterrizar con el pie plano;",
+   "pedirle que salte con el talón elevado aumenta el dolor."
+  ]
+ },
+ "tp8|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Primer escalón de la batería que reproduce → EVA.",
+   "② Repeticiones de ETM monopodal a tempo fijo en el suelo, hasta dolor o fatiga, frente al lado sano."
+  ]
+ },
+ "tp9|Dolor con carga y flexión dorsal": {
+  "frases": [
+   "Dolor con carga y flexión dorsal, menos en flexión plantar."
+  ]
+ },
+ "tp9|Salto con el talón elevado frente a aterrizaje": {
+  "frases": [
+   "Menos dolor al saltar con el talón elevado, más al aterrizar con el talón abajo y la rodilla flexionada."
+  ]
+ },
+ "tp9|ETM monopodal sobre plano inclinado": {
+  "frases": [
+   "ETM monopodal sobre plano inclinado como provocación."
+  ]
+ },
+ "tp9|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① ETM monopodal desde flexión dorsal en el borde de un step → EVA.",
+   "② Repeticiones de ETM monopodal a tempo fijo en suelo plano, hasta dolor o fatiga."
+  ]
+ },
+ "tp10|Crepitación en flexión plantar y dorsal": {
+  "frases": [
+   "Crepitación en la flexión plantar y dorsal;",
+   "dolor más difuso."
+  ]
+ },
+ "tp10|ETM en rango amplio": {
+  "frases": [
+   "Duelen las ETM (rango amplio);",
+   "el salto puede doler menos."
+  ]
+ },
+ "tp10|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Flexión plantar y dorsal activas repetidas en prono sobre la camilla → EVA.",
+   "② Repeticiones de ETM monopodal en todo el rango, a tempo fijo, hasta el dolor."
+  ]
+ },
+ "tp11|ETM sobre un step en todo el rango": {
+  "frases": [
+   "Dolor con la ETM desde flexión dorsal completa hasta flexión plantar completa sobre un step."
+  ]
+ },
+ "tp11|Marcha descalzo": {
+  "frases": [
+   "Dolor medial del Aquiles caminando descalzo."
+  ]
+ },
+ "tp11|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① ETM monopodal sobre un step desde flexión dorsal completa → EVA.",
+   "② Repeticiones de ETM monopodal a tempo fijo en suelo plano, hasta el dolor."
+  ]
+ },
+ "tp12|Tinel a lo largo del sural": {
+  "frases": [
+   "Tinel a lo largo del sural."
+  ]
+ },
+ "tp12|Palpación en prono con flexión dorsal pasiva": {
+  "frases": [
+   "Palpación en prono con flexión dorsal pasiva:",
+   "una diferencia entre lados, con el perfil clínico, hace sospechar."
+  ]
+ },
+ "tp12|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Prueba neurodinámica con sesgo del sural → EVA.",
+   "② Grados de flexión dorsal (o de la articulación de la prueba) hasta los síntomas, misma posición."
+  ]
+ },
+ "tp13|Dolor superficial e hinchazón a la presión": {
+  "frases": [
+   "Dolor superficial e hinchazón en el talón posterior que aumentan con la presión."
+  ]
+ },
+ "tp13|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Presión sobre la bursa o contrafuerte del zapato → EVA.",
+   "② Sin medida de capacidad:",
+   "no depende de la carga.",
+   "Basta ①."
+  ]
+ },
+ "tp14|Dolor retromaleolar medial": {
+  "frases": [
+   "Dolor por detrás y por debajo del maléolo medial."
+  ]
+ },
+ "tp14|Inversión resistida": {
+  "frases": [
+   "Dolor conocido y debilidad relativa en la inversión resistida."
+  ]
+ },
+ "tp14|ETM: el retropié no va a varo": {
+  "frases": [
+   "ETM:",
+   "el retropié no va a varo;",
+   "en fases avanzadas no inicia."
+  ]
+ },
+ "tp14|«Demasiados dedos»": {
+  "frases": [
+   "«Demasiados dedos»."
+  ]
+ },
+ "tp14|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① ETM monopodal (inicio del despegue) o inversión resistida → EVA.",
+   "② Repeticiones de ETM monopodal a tempo fijo con el retropié a varo, frente al lado sano."
+  ]
+ },
+ "tp15|Flexoextensión del primer dedo en flexión plantar completa": {
+  "frases": [
+   "Flexión dorsal y plantar activas del primer dedo con el tobillo en flexión plantar completa:",
+   "reproduce."
+  ]
+ },
+ "tp15|Crepitación e hinchazón en la vaina": {
+  "frases": [
+   "Crepitación e hinchazón en la vaina, posteromedial."
+  ]
+ },
+ "tp15|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Flexoextensión activa del primer dedo con el tobillo en flexión plantar completa → EVA.",
+   "② Repeticiones de ETM monopodal a tempo fijo hasta el dolor, frente al lado sano."
+  ]
+ },
+ "tp16|Tinel a lo largo del túnel": {
+  "frases": [
+   "Tinel a lo largo del túnel."
+  ]
+ },
+ "tp16|Hinchazón en el túnel o la subastragalina posterior": {
+  "frases": [
+   "Hinchazón en el túnel o en la subastragalina posterior, proximal al sustentaculum tali."
+  ]
+ },
+ "tp16|Explorar el FHL": {
+  "frases": [
+   "Explorar el FHL, que puede ser la fuente."
+  ]
+ },
+ "tp16|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Tinel o la posición que reproduce → EVA.",
+   "② Grados de flexión dorsal con eversión hasta los síntomas, misma posición."
+  ]
+ },
+ "tp17|Dolor óseo a la palpación": {
+  "frases": [
+   "Dolor óseo a la palpación;",
+   "puede haber derrame."
+  ]
+ },
+ "tp17|Calcáneo: compresión medial y lateral a la vez": {
+  "frases": [
+   "Calcáneo:",
+   "compresión medial y lateral a la vez."
+  ]
+ },
+ "tp17|Astrágalo: hinchazón en el seno del tarso o posterior": {
+  "frases": [
+   "Astrágalo:",
+   "hinchazón en el seno del tarso o posterior."
+  ]
+ },
+ "tp17|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Carga monopodal o marcha → EVA.",
+   "Sin saltos ni series.",
+   "② Minutos de marcha en cinta sin dolor, a velocidad e inclinación fijas."
+  ]
+ },
+ "tp18|Palpación del seno del tarso": {
+  "frases": [
+   "Dolor conocido a la palpación del seno del tarso"
+  ]
+ },
+ "tp18|Estrés en inversión de la subastragalina o KTW (rodilla a la pared) con pronación": {
+  "frases": [
+   "a menudo también con el estrés en inversión de la subastragalina o el KTW con pronación excesiva."
+  ]
+ },
+ "tp18|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Palpación del seno del tarso o KTW con pronación → EVA.",
+   "② KTW en cm frente al lado sano."
+  ]
+ },
+ "tp19|Dolor retromaleolar lateral": {
+  "frases": [
+   "Dolor localizado sobre los tendones por detrás del maléolo lateral."
+  ]
+ },
+ "tp19|Subluxación de los peroneos": {
+  "frases": [
+   "Posible subluxación por encima y por delante del maléolo."
+  ]
+ },
+ "tp19|Crepitación e hinchazón": {
+  "frases": [
+   "Crepitación e hinchazón si hay peritendón."
+  ]
+ },
+ "tp19|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Eversión resistida o el gesto en carga que reproduce → EVA.",
+   "② Repeticiones de ETM monopodal a tempo fijo, frente al lado sano."
+  ]
+ },
+ "tp20|KTW (rodilla a la pared)": {
+  "frases": [
+   "El KTW reproduce el dolor y muestra limitación."
+  ]
+ },
+ "tp20|Palpación anterior": {
+  "frases": [
+   "Hinchazón y palpación dolorosa y engrosada:",
+   "interlínea anterior, astragaloescafoidea, seno del tarso, LTPAI, LPAA."
+  ]
+ },
+ "tp20|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Zancada o KTW en carga → EVA.",
+   "② KTW en cm frente al lado sano."
+  ]
+ },
+ "tp20|Signo de pinzamiento de Molloy": {
+  "frases": [
+   "Pulgar sobre la gotera anterolateral con el pie en flexión plantar y, sin soltar, llevar a flexión dorsal completa.",
+   "Positivo si la maniobra combinada provoca dolor o aumenta el que daba la presión sola.",
+   "Molloy 2003, 73 pacientes con artroscopia:",
+   "37 verdaderos positivos, 4 falsos positivos (adherencias, artrosis), 2 falsos negativos, 30 verdaderos negativos → S 94,8 %, E 88 % (LR calculadas).",
+   "Límites:",
+   "todos ya iban a artroscopia (sin inestabilidad mecánica), el mismo cirujano exploraba y decidía operar, y valida el pinzamiento sinovial anterolateral, no el óseo."
+  ]
+ },
+ "tp21|Hinchazón articular": {
+  "frases": [
+   "Hinchazón articular."
+  ]
+ },
+ "tp21|Cajón anterior: signo del surco": {
+  "frases": [
+   "Laxitud tibioastragalina (signo del surco en el cajón anterior → rotura completa del LPAA probable)"
+  ]
+ },
+ "tp21|Laxitud subastragalina": {
+  "frases": [
+   "subastragalina (inversión excesiva del retropié frente al lado sano)."
+  ]
+ },
+ "tp21|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① El gesto que provoca aprensión o fallo → EVA;",
+   "si no hay dolor, fallos por semana.",
+   "② Tiempo de apoyo monopodal descalzo, ojos abiertos, sin manos, frente al lado sano."
+  ]
+ },
+ "tp22|Hinchazón y dolor a la palpación": {
+  "frases": [
+   "Hinchazón y dolor a la palpación."
+  ]
+ },
+ "tp22|Laxitud del LPAA y del LPC": {
+  "frases": [
+   "Puede haber laxitud del LPAA y del LPC."
+  ]
+ },
+ "tp22|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① El gesto en carga que reproduce (zancada, apoyo monopodal) → EVA.",
+   "② KTW en cm frente al lado sano."
+  ]
+ },
+ "tp23|Movilidad subastragalina y mediotarsiana": {
+  "frases": [
+   "Restricción de la movilidad subastragalina, a menudo también mediotarsiana."
+  ]
+ },
+ "tp23|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Inversión y eversión del retropié, o el gesto en carga que reproduce → EVA.",
+   "② Grados de inversión y eversión del retropié frente al lado sano, misma posición."
+  ]
+ },
+ "tp24|Perfil clínico": {
+  "frases": [
+   "Diagnóstico clínico:",
+   "más de 45 años, dolor con el uso, rigidez de menos de 30 min."
+  ]
+ },
+ "tp24|Palpación de la interlínea": {
+  "frases": [
+   "Dolor a la palpación de la interlínea;",
+   "según la evolución, rango limitado, derrame, deformidad, debilidad;",
+   "tumefacción ósea periarticular."
+  ]
+ },
+ "tp24|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Bajar un escalón o zancada → EVA.",
+   "② KTW en cm, o grados de flexión dorsal de la 1.ª MTF si es la afectada."
+  ]
+ },
+ "tp25|Palpación de la cúpula astragalina en flexión plantar": {
+  "frases": [
+   "Dolor a la palpación de la cara anterior de la cúpula astragalina con el pie en flexión plantar completa."
+  ]
+ },
+ "tp25|Hinchazón, derrame, crepitación": {
+  "frases": [
+   "Hinchazón, derrame, crepitación."
+  ]
+ },
+ "tp25|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① El gesto de impacto o carga que reproduce → EVA.",
+   "② KTW en cm frente al lado sano."
+  ]
+ },
+ "tp26|Palpación de la tuberosidad medial del calcáneo": {
+  "frases": [
+   "Dolor conocido a la palpación de la inserción de la fascia en la tuberosidad medial del calcáneo."
+  ]
+ },
+ "tp26|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Primeros pasos tras estar sentado, o palpación de la tuberosidad → EVA.",
+   "② Minutos de marcha en cinta sin aumento del dolor, velocidad fija;",
+   "o ETM a tempo fijo."
+  ]
+ },
+ "tp27|Palpación posterolateral del talón": {
+  "frases": [
+   "Dolor a la palpación de la región posterolateral del talón."
+  ]
+ },
+ "tp27|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Apoyo del talón en la marcha o palpación posterolateral → EVA.",
+   "② Minutos de marcha en cinta sin dolor, velocidad fija."
+  ]
+ },
+ "tp28|Tinel sobre el nervio calcáneo medial": {
+  "frases": [
+   "Tinel justo proximal al origen de la fascia en la tuberosidad medial, o a lo largo del nervio calcáneo medial."
+  ]
+ },
+ "tp28|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Tinel o la carga que reproduce → EVA.",
+   "② Minutos de marcha en cinta hasta los síntomas, velocidad fija."
+  ]
+ },
+ "tp29|Aguda: palpación calcaneocuboidea": {
+  "frases": [
+   "Aguda:",
+   "dolor en calcaneocuboidea dorsal, ligamento bifurcado, apófisis anterior del calcáneo o ligamentos cubometatarsianos."
+  ]
+ },
+ "tp29|Gradual: interlíneas del cuboides": {
+  "frases": [
+   "Gradual:",
+   "dolor en las interlíneas del cuboides hacia las bases del 4.º–5.º MT."
+  ]
+ },
+ "tp29|Carga del antepié e inicio de la ETM": {
+  "frases": [
+   "Caminar, cargar el antepié y el inicio de la ETM dan dolor agudo."
+  ]
+ },
+ "tp29|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Inicio de la ETM, o presión plantar sobre el cuboides → EVA.",
+   "② Repeticiones de ETM monopodal a tempo fijo hasta el dolor, frente al lado sano."
+  ]
+ },
+ "tp30|Punto N": {
+  "frases": [
+   "Punto N doloroso frente al lado sano:",
+   "navicular hasta que se demuestre lo contrario."
+  ]
+ },
+ "tp30|Dolor puntual sobre cuboides o cuñas": {
+  "frases": [
+   "Dolor puntual sobre cuboides o cuñas."
+  ]
+ },
+ "tp30|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Marcha o carga monopodal → EVA.",
+   "Sin saltos.",
+   "② Minutos de marcha en cinta sin dolor, velocidad e inclinación fijas."
+  ]
+ },
+ "tp31|Equimosis e hinchazón en la interlínea": {
+  "frases": [
+   "Dirigida por la historia.",
+   "Equimosis tras esguince o fractura;",
+   "hinchazón en la interlínea."
+  ]
+ },
+ "tp31|Rango de la 1.ª MTF frente al lado sano": {
+  "frases": [
+   "Rango frente al lado sano (flexión dorsal normal ≈60°;",
+   "danza y gimnasia hasta 90°)."
+  ]
+ },
+ "tp31|Dolor sobre los sesamoideos": {
+  "frases": [
+   "Dolor sobre los sesamoideos."
+  ]
+ },
+ "tp31|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Flexión dorsal de la 1.ª MTF en carga (media punta, despegue) → EVA.",
+   "② Grados de flexión dorsal pasiva de la 1.ª MTF con goniómetro, primer radio estabilizado, frente al lado sano."
+  ]
+ },
+ "tp32|Palpación de la base del 2.º MT y de Lisfranc": {
+  "frases": [
+   "Dolor a la palpación de la base del 2.º MT y de la articulación de Lisfranc.",
+   "Mediotarsiana posiblemente rígida."
+  ]
+ },
+ "tp32|Estrés frente a sinovitis": {
+  "frases": [
+   "Estrés o fractura de estrés de la base del 2.º MT:",
+   "dolor nocturno, sin efecto de calentamiento.",
+   "Sinovitis:",
+   "sin dolor nocturno, con efecto de calentamiento."
+  ]
+ },
+ "tp32|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Media punta, o palpación de la base del 2.º MT → EVA.",
+   "② Repeticiones de ETM monopodal a tempo fijo hasta el dolor."
+  ]
+ },
+ "tp33|Dolor puntual sobre el cuello": {
+  "frases": [
+   "Dolor puntual sobre el cuello."
+  ]
+ },
+ "tp33|Carga axial del MT": {
+  "frases": [
+   "La carga axial del MT provoca dolor en la lesión ósea, menos en la de partes blandas."
+  ]
+ },
+ "tp33|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Marcha o carga del antepié → EVA.",
+   "② Minutos de marcha en cinta sin dolor, velocidad fija."
+  ]
+ },
+ "tp34|Palpación del espacio con compresión de los metatarsianos": {
+  "frases": [
+   "Dolor a la palpación directa del espacio (sobre todo 3.º–4.º);",
+   "posible chasquido al palpar mientras se comprimen los metatarsianos.",
+   "No puntúa:",
+   "la compresión pulgar-índice del espacio (Mahadevan 2015) tiene S 96 %, pero su especificidad sale de un solo pie sin Morton;",
+   "el chasquido de Mulder da LR+ 2,19 (IC 0,45–10,60;",
+   "Dando, en Pitcher 2024)."
+  ]
+ },
+ "tp34|Diferencial del antepié": {
+  "frases": [
+   "Morton frente a metatarsalgia (callosidad, colapso del arco), Freiberg (14–18 años, cabeza del MT) y estrés de MT (dolor más dorsal)."
+  ]
+ },
+ "tp34|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① Palpación del espacio con compresión transversal → EVA.",
+   "② Minutos de marcha en cinta hasta los síntomas, mismo calzado y velocidad."
+  ]
+ },
+ "tp35|Articulación roja, hinchada y muy dolorosa": {
+  "frases": [
+   "Articulación roja, hinchada, muy dolorosa al tacto y al movimiento;",
+   "puede parecer una dactilitis."
+  ]
+ },
+ "tp35|Suele estar sistémicamente bien": {
+  "frases": [
+   "Suele estar sistémicamente bien, aunque un brote agudo puede dar fiebre y leucocitosis y confundirse con una artritis séptica:",
+   "solo el líquido articular las separa.",
+   "Tofos en la gota de larga evolución."
+  ]
+ },
+ "tp35|Gesto testigo (①) y medida objetiva (②)": {
+  "frases": [
+   "① y ② No procede en la crisis:",
+   "derivar para confirmar.",
+   "Con fiebre y malestar → artritis infecciosa:",
+   "urgencia."
+  ]
+ },
+ "tp36|Sever: inserción del Aquiles (8–12 años)": {
+  "frases": [
+   "Inserción del Aquiles (8–12 años) → SEVER"
+  ]
+ },
+ "tp36|Iselin: base del 5.º MT (8–13 años)": {
+  "frases": [
+   "base del 5.º MT (8–13) → ISELIN"
+  ]
+ },
+ "tp36|Navicular: apofisitis del tibial posterior o Köhler": {
+  "frases": [
+   "navicular → APOFISITIS DEL TIBIAL POSTERIOR o KÖHLER (menores de 10, cojera)"
+  ]
+ },
+ "tp36|Freiberg: cabeza del 2.º–4.º MT (14–18 años)": {
+  "frases": [
+   "cabeza del 2.º–4.º MT (14–18) → FREIBERG"
+  ]
+ },
+ "tp37|Regla de Ottawa de tobillo": {
+  "frases": [
+   "Radiografía si dolor en la zona maleolar Y alguno:",
+   "dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta.",
+   "Solo descarta:",
+   "aplicando solo la regla del tobillo, Bachmann 2003 (27 estudios, 15 581 pacientes) da LR− 0,08 (IC 95 % 0,03–0,18).",
+   "El positivo es un hallazgo:",
+   "la regla es muy sensible y poco específica.",
+   "Excluidas embarazadas y personas que no pueden seguir la prueba."
+  ]
+ },
+ "tp37|No carga cuatro pasos": {
+  "frases": [
+   "No poder cargar cuatro pasos, justo tras la lesión y en consulta, indica una lesión más grave."
+  ]
+ },
+ "tp37|Palpar el peroné hasta la rodilla": {
+  "frases": [
+   "Dolor en el peroné proximal:",
+   "posible fractura de Maisonneuve."
+  ]
+ },
+ "tp37|Estado neurovascular": {
+  "frases": [
+   "Pulsos pedio y tibial posterior.",
+   "Un pie pálido y frío indica un compromiso vascular crítico."
+  ]
+ }
+}
