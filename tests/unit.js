@@ -229,9 +229,25 @@ test('patient null → p = ""', () => {
   });
 });
 
-test('severidad null → nr = 0', () => {
+// NRS sin marcar = «no registrado»: null en el payload (nunca un 0 por
+// defecto, que llegaba a los resúmenes como dato) y un 0 marcado sigue siendo 0
+const { contextoValoracion: ctxNRS } = await import('../lib/informe-narrativo.js');
+test('severidad null → nr = null (no registrado); 0 marcado → 0', () => {
   withState({ severidad: null }, () => {
-    assert.equal(buildPhysiQPayload().nr, 0);
+    const d = buildPhysiQPayload();
+    assert.equal(d.nr, null);
+    assert.ok('nr' in d, 'el campo sigue en el payload (contrato de physiq-report)');
+    assert.ok(buildContextSummaryText().includes('NRS: no registrado'));
+    const inf = buildInformeFisioterapiaText();
+    assert.ok(!inf.includes('Intensidad del dolor') && !/null|undefined/.test(inf), 'el Informe omite la línea');
+    assert.ok(ctxNRS(d).includes('NRS: no registrado'));
+  });
+  withState({ severidad: 0 }, () => {
+    const d = buildPhysiQPayload();
+    assert.equal(d.nr, 0);
+    assert.ok(buildContextSummaryText().includes('NRS: 0/10'));
+    assert.ok(buildInformeFisioterapiaText().includes('Intensidad del dolor referida: 0/10'));
+    assert.ok(ctxNRS(d).includes('NRS: 0/10'));
   });
 });
 

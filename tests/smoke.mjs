@@ -614,6 +614,51 @@ async function mockWorkerYTurnstile(context, captura) {
 // lumbar completo con nombre → exportar (descarga real) → borrar sesión →
 // importar el archivo → tras la recarga vuelve todo, en la fase 5. Y a 320 px
 // los dos botones caben sin cortar el texto.
+// Táctil: un segundo toque deselecciona (sexo, NRS) y el NRS sin marcar llega
+// al payload como null («no registrado»), nunca como 0. El :hover de los botones
+// de opción solo vale con ratón (@media (hover: hover)): en un teléfono real se
+// queda pegado y un botón recién deseleccionado parecía seguir marcado. El tap
+// emulado no reproduce ese :hover pegado, así que se comprueban las reglas CSS.
+async function checkBotonesTactil(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (táctil): ${err.message}`));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const r = {};
+  r.hoverSoloConRaton = await page.evaluate(() => {
+    const clases = ['.option-btn', '.nrs-btn', '.test-result-btn', '.fp-escala-btn', '.region-card'];
+    const sueltas = [];
+    const recorrer = (reglas, conHover) => {
+      for (const regla of reglas) {
+        if (regla.cssRules && regla.media) recorrer(regla.cssRules, conHover || /hover:\s*hover/.test(regla.media.mediaText));
+        else if (regla.selectorText && clases.some(c => regla.selectorText.includes(`${c}:hover`)) && !conHover) sueltas.push(regla.selectorText);
+      }
+    };
+    for (const hoja of document.styleSheets) { try { recorrer(hoja.cssRules, false); } catch { /* hoja externa */ } }
+    return sueltas.length === 0 || sueltas;
+  });
+  const dobleToque = async (sel) => {
+    const btn = page.locator(sel).first();
+    await btn.scrollIntoViewIfNeeded();
+    await btn.tap();
+    await page.waitForTimeout(100);
+    await btn.tap();
+    await page.waitForTimeout(100);
+  };
+  await dobleToque('#sexo .option-btn');
+  r.sexoVacio = await page.evaluate(() => state.sexo === '' && !document.querySelector('#sexo .selected'));
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForTimeout(300);
+  await dobleToque('.nrs-btn:nth-child(5)');
+  r.nrsVacio = await page.evaluate(() => state.severidad === null && !document.querySelector('.nrs-btn.selected')
+    && document.getElementById('nrsLabel').textContent.includes('Sin seleccionar'));
+  await page.evaluate(() => goToPhase(1));   // salir de la fase 3 ya no lo convierte en 0
+  r.nrNull = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().nr === null);
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function checkExportarImportar(browser, errors, tmpDir) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 }, acceptDownloads: true });
   await context.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
@@ -969,6 +1014,20 @@ async function recorrerGrabadora(browser, errors) {
   await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
   // Dictado del fisio: consejos a la vista, cabecera y pista de Whisper propias
   r.selectorModoAudio = await page.evaluate(() => document.querySelector('#iaModoAudio .option-btn.selected')?.textContent.includes('diálogo'));
+  // A 320 px, «Tipo de informe» y «Qué hay en el audio»: dos botones del mismo
+  // ancho en una sola fila, sin texto cortado
+  const vp = page.viewportSize();
+  await page.setViewportSize({ width: 320, height: vp.height });
+  await page.waitForTimeout(200);
+  r.selectoresEstrechos = await page.evaluate(() => ['iaPlantilla', 'iaModoAudio'].every(id => {
+    const bs = [...document.querySelectorAll(`#${id} .ia-plantilla-opciones .option-btn`)];
+    if (bs.length !== 2) return false;
+    const [a, b] = bs.map(x => x.getBoundingClientRect());
+    return Math.abs(a.top - b.top) < 1 && Math.abs(a.width - b.width) < 1 && b.right <= innerWidth
+      && bs.every(x => x.scrollWidth <= x.clientWidth && x.scrollHeight <= x.clientHeight + 1);
+  }));
+  await page.setViewportSize(vp);
+  await page.waitForTimeout(200);
   await page.click('#iaModoAudio .option-btn:has-text("Dictado")');
   r.consejosDictado = await page.evaluate(() => document.querySelectorAll('#iaModoAudio .ia-consejos-dictado li').length === 3);
   const antes = captura.length;
@@ -1180,6 +1239,10 @@ async function main() {
   const deriv = await checkDerivacionVascular(page);
   console.log(`  ${deriv.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
 
+  console.log('\nBotones en táctil (segundo toque y :hover):');
+  const tactil = await checkBotonesTactil(browser, errors);
+  console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
+
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
@@ -1205,7 +1268,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
