@@ -572,6 +572,32 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "rosa-dictado-1-informe.txt",
+      "valoracion": "valoracion-rosa-martin-hombro.json",
+      "transcripcion": "rosa-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosa1-crol-hecho",
+          "tipo": "atribucion",
+          "nivel": "medio",
+          "descripcion": "«También refiere que ha suspendido la práctica de crol»: es la indicación del fisio («le he dicho que deje el crol»), escrita como algo que la paciente ya hizo",
+          "fragmentos": [
+            "ha suspendido la práctica de crol"
+          ]
+        },
+        {
+          "id": "rosa1-fuerza-una-version",
+          "tipo": "omision",
+          "nivel": "medio",
+          "descripcion": "Da solo la versión de la consulta (brazo flojo al tender la ropa); la del formulario (le falta fuerza: No) desaparece",
+          "claves": [
+            "fuerza"
+          ]
+        }
+      ]
     }
   ]
 }
