@@ -661,6 +661,25 @@ async function checkBotonesTactil(browser, errors) {
     await (await import('./app.js')).compartirTexto('texto de prueba', { titulo: 't', copiado: 'c' });
     return compartido?.text === 'texto de prueba';
   });
+  // «📤 Compartir» en móvil: hoja inferior pegada abajo; el atrás la cierra sin
+  // cambiar de fase; tocar el velo también la cierra (y no deja la fase atrás)
+  await page.evaluate(() => { state.region = 'lumbar'; buildResults(); goToPhase(5); });
+  await page.waitForTimeout(300);
+  await page.tap('#btnCompartir');
+  await page.waitForSelector('#compartirOverlay.open');
+  await page.waitForTimeout(400);   // animación de entrada
+  r.hojaAbajo = await page.evaluate(() => {
+    const b = document.getElementById('compartirPanel').getBoundingClientRect();
+    return Math.abs(b.bottom - innerHeight) < 2 && b.left === 0 && Math.abs(b.width - innerWidth) < 2;
+  });
+  await page.goBack();
+  await page.waitForTimeout(300);
+  r.atrasCierraHoja = await page.evaluate(() => !document.getElementById('compartirOverlay').classList.contains('open') && state.currentPhase === 5);
+  await page.tap('#btnCompartir');
+  await page.waitForSelector('#compartirOverlay.open');
+  await page.touchscreen.tap(195, 60);
+  await page.waitForTimeout(400);
+  r.veloCierraHoja = await page.evaluate(() => !document.getElementById('compartirOverlay').classList.contains('open') && state.currentPhase === 5);
   await context.close();
   r.ok = Object.values(r).every(v => v === true);
   return r;
@@ -810,16 +829,16 @@ async function checkInformeNarrativo(browser, errors) {
   const leerPortapapeles = () => page.evaluate(() => navigator.clipboard.readText());
   r.sinBotonesCabecera = (await page.locator('#phase5 .phase-header button').count()) === 0;
   await page.click('#btnCompartir');
-  await page.waitForSelector('#informeMenu');
+  await page.waitForSelector('#compartirOverlay');
   r.menuSinIA = await page.evaluate(() => {
-    const ops = [...document.querySelectorAll('#informeMenu .informe-menu-nombre')].map(e => e.textContent);
+    const ops = [...document.querySelectorAll('#compartirOverlay .compartir-op-nombre')].map(e => e.textContent);
     return ops.join('|') === 'Para el paciente / médico|Notas clínicas';
   });
-  await page.click('#informeMenu .informe-menu-op:has-text("Para el paciente")');
+  await page.click('#compartirOverlay .compartir-op:has-text("Para el paciente")');
   await page.waitForTimeout(200);
-  r.informePaciente = !(await page.isVisible('#informeMenu')) && (await leerPortapapeles()).includes('IMPRESIÓN CLÍNICA');
+  r.informePaciente = !(await page.isVisible('#compartirOverlay')) && (await leerPortapapeles()).includes('IMPRESIÓN CLÍNICA');
   await page.click('#btnCompartir');
-  await page.click('#informeMenu .informe-menu-op:has-text("Notas clínicas")');
+  await page.click('#compartirOverlay .compartir-op:has-text("Notas clínicas")');
   await page.waitForTimeout(200);
   r.notasCopiadas = (await leerPortapapeles()).startsWith('VALORACIÓN PhysiQ-Assessment');
   r.valoracionRegistrada = await page.evaluate(async () => !!(await (await import('./lib/session.js')).readSession())?.assessment?.r);
@@ -902,17 +921,29 @@ async function checkInformeNarrativo(browser, errors) {
     [...document.querySelectorAll('#iaResultado .ia-acciones button')].map(b => b.textContent.trim()).join('|') === 'Descartar');
   // Con informe IA el menú ofrece los tres documentos; Escape lo cierra
   await page.click('#btnCompartir');
-  await page.waitForSelector('#informeMenu');
-  r.menuInforme = (await page.locator('#informeMenu .informe-menu-op').count()) === 3;
+  await page.waitForSelector('#compartirOverlay');
+  r.menuInforme = (await page.locator('#compartirOverlay .compartir-op').count()) === 3;
   await page.keyboard.press('Escape');
-  r.menuEscCierra = !(await page.isVisible('#informeMenu'));
+  r.menuEscCierra = !(await page.isVisible('#compartirOverlay'));
+  // En pantalla ancha es un diálogo centrado (≤ 420 px), no una hoja
+  const vista = page.viewportSize();
+  await page.setViewportSize({ width: 1280, height: 900 });
   await page.click('#btnCompartir');
-  await page.click('#informeMenu .informe-menu-op:has-text("Para el paciente")');
+  await page.waitForSelector('#compartirOverlay.open');
+  await page.waitForTimeout(300);   // animación de entrada
+  r.dialogoCentrado = await page.evaluate(() => {
+    const b = document.getElementById('compartirPanel').getBoundingClientRect();
+    return Math.abs((b.left + b.right) / 2 - innerWidth / 2) < 2 && Math.abs((b.top + b.bottom) / 2 - innerHeight / 2) < 2 && b.width <= 420;
+  });
+  await page.keyboard.press('Escape');
+  await page.setViewportSize(vista);
+  await page.click('#btnCompartir');
+  await page.click('#compartirOverlay .compartir-op:has-text("Para el paciente")');
   await page.waitForTimeout(200);
   const paciente = await leerPortapapeles();
-  r.menuPaciente = paciente.includes('IMPRESIÓN CLÍNICA') && !paciente.includes('CONDICIÓN DE SALUD') && !(await page.isVisible('#informeMenu'));
+  r.menuPaciente = paciente.includes('IMPRESIÓN CLÍNICA') && !paciente.includes('CONDICIÓN DE SALUD') && !(await page.isVisible('#compartirOverlay'));
   await page.click('#btnCompartir');
-  await page.click('#informeMenu .informe-menu-op:has-text("Informe clínico")');
+  await page.click('#compartirOverlay .compartir-op:has-text("Informe clínico")');
   await page.waitForTimeout(200);
   const copiado = await leerPortapapeles();
   r.menuIA = copiado.startsWith('INFORME DE FISIOTERAPIA') && copiado.includes('CONDICIÓN DE SALUD') && !copiado.includes('##');
@@ -953,8 +984,8 @@ async function checkInformeNarrativo(browser, errors) {
   r.hubSinModulo = pedidos.length === 0 && await frame.evaluate(() => document.body.classList.contains('in-hub') && document.getElementById('informeIA').innerHTML === '');
   // En el hub, el menú de «📤 Compartir» añade «Enviar al informe» (sin opción IA)
   await frame.click('#btnCompartir');
-  await frame.waitForSelector('#informeMenu');
-  r.hubMenu = await frame.evaluate(() => [...document.querySelectorAll('#informeMenu .informe-menu-nombre')]
+  await frame.waitForSelector('#compartirOverlay');
+  r.hubMenu = await frame.evaluate(() => [...document.querySelectorAll('#compartirOverlay .compartir-op-nombre')]
     .map(e => e.textContent).join('|') === 'Para el paciente / médico|Notas clínicas|Enviar al informe');
   await ctxHub.close();
 
@@ -1286,7 +1317,7 @@ async function main() {
 
   console.log('\nBotones en táctil (segundo toque y :hover):');
   const tactil = await checkBotonesTactil(browser, errors);
-  console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
+  console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema; «Compartir» es una hoja inferior que se cierra con atrás o tocando el velo${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
 
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
