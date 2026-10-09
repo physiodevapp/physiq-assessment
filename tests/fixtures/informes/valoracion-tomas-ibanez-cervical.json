@@ -1,0 +1,189 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-09T21:22:23.173Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Tomás Ibáñez",
+    "motivoConsulta": "Dolor de cuello que le baja por el brazo derecho desde hace unas tres semanas.",
+    "edadPaciente": 47,
+    "sexo": "Hombre",
+    "signosVitales": {
+      "fc": 70,
+      "fr": null,
+      "spo2": null,
+      "tas": 128,
+      "tad": 80
+    },
+    "antropometria": {
+      "talla": 178,
+      "peso": 84
+    },
+    "mecanismo": "Insidioso",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "cronologia": "Agudo (<6 semanas)",
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Bajo",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "cervical",
+    "lado": "Derecho",
+    "sistemicoAnswers": {
+      "cv4": "NO",
+      "cv1": "NO",
+      "cv5": "NO",
+      "cv2": "NO",
+      "cv_c2": "NO",
+      "cv_p1": "NO",
+      "cv_p2": "NO",
+      "cv3": "NO",
+      "cv_r2": "NO",
+      "cv_gi1": "NO",
+      "cv_gi2": "NO",
+      "cv_ar1": "NO",
+      "cv_ar2": "NO",
+      "cv_ar3": "NO",
+      "cv_ar4": "NO",
+      "cv_n1": "NO",
+      "cv_n2": "NO",
+      "cv_n3": "NO",
+      "cv_in1": "NO",
+      "cv_in2": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {},
+    "severidad": 6,
+    "irritabilidad": {
+      "dolor": "Media (4-6/10)",
+      "reposo": "Intermitente",
+      "movimiento": "Antes del final del rango",
+      "discapacidad": "Moderada",
+      "tolerancia": "Moderada"
+    },
+    "irritabilidadNivel": "Moderada",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Neuropática",
+    "estabilidad": "Estable",
+    "signoComparable": "Extensión con rotación derecha del cuello: reproduce el dolor del brazo derecho hasta el antebrazo.",
+    "activeHypotheses": [
+      "ce12",
+      "ce1"
+    ],
+    "treeAnswers": {
+      "ce_step1": "no",
+      "ce_step2": "no",
+      "ce_step3": "si",
+      "ce_step3b": "radicular",
+      "ce_step4": "no",
+      "ce_step4b": "no",
+      "ce_step5": "movilidad",
+      "ce_step6": "no"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "ce12": {
+        "0": "pos",
+        "1": "pos",
+        "3": "pos"
+      },
+      "ce1": {
+        "0": "pos"
+      }
+    },
+    "hypothesisScores": {
+      "ce12": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 3/3 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      },
+      "ce1": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 1/1 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      }
+    },
+    "derivacionResuelta": {},
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Que el dolor del brazo no pase de 5/10 con los ejercicios ni baje más allá del codo.",
+      "ventanaRecuperacion": "",
+      "anclajeHabito": "Al llegar del trabajo y antes de dormir."
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "Hace unas tres semanas",
+        "desencadenante": "No, empezó poco a poco sin causa clara",
+        "inicio": "Poco a poco",
+        "primera_vez": "No, ya me había pasado antes",
+        "episodio_previo": "Hace dos años, una tortícolis que se le pasó en una semana",
+        "evolucion": "Igual",
+        "peor_momento_dia": [
+          "Al final del día"
+        ],
+        "despierta": "No",
+        "dolor_max_semana": 8,
+        "tiempo_calmarse": "Unas horas",
+        "actividad_1": "Trabajar con el ordenador",
+        "actividad_2": "Conducir",
+        "probado": [
+          "Reposo",
+          "Medicación"
+        ],
+        "probado_sirvio": "El ibuprofeno le quita algo el dolor",
+        "enfermedades": "Ninguna",
+        "medicacion": "Ibuprofeno cuando le duele"
+      },
+      "regiones": {
+        "cervical": {
+          "desencadenante": [
+            "Estar mucho rato en una postura, en el trabajo o en casa"
+          ],
+          "brazo_mover": "Sí",
+          "brazo_como": [
+            "Como descargas"
+          ],
+          "brazo_atras": "No sabría decir",
+          "fuerza": "No",
+          "cefalea": "No",
+          "mareo": "No",
+          "empeora": {
+            "postura": "Sí",
+            "mover": "Sí"
+          },
+          "alivia": "Sí",
+          "rapidos": "No"
+        }
+      }
+    },
+    "rom": null
+  }
+}
