@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import './dom-shim.mjs';
@@ -2199,10 +2200,19 @@ test('deploy-to-hub copia los archivos del informe narrativo', () => {
   const fuentes = [...readdirSync(raiz).filter(f => f.endsWith('.js')).map(f => [f, '']), ...readdirSync(join(raiz, 'lib')).filter(f => f.endsWith('.js')).map(f => [f, 'lib/'])];
   const usados = new Set();
   for (const [f, dir] of fuentes) {
-    for (const m of readFileSync(join(raiz, dir, f), 'utf8').matchAll(/(?:from|import\()\s*'\.\/((?:lib\/)?[\w-]+\.js)'/g))
+    for (const m of readFileSync(join(raiz, dir, f), 'utf8').matchAll(/(?:from|import\(?)\s*'\.\/((?:lib\/)?[\w-]+\.js)'/g))
       usados.add(dir === 'lib/' ? `lib/${m[1]}` : m[1]);
   }
   for (const f of [...usados].filter(f => f.startsWith('lib/'))) assert.ok(wf.includes(f), `deploy-to-hub.yml no copia ${f}`);
+});
+
+// lib/reglas-informe.js es idéntico en physiq-report: si cambia aquí, cópialo
+// allí tal cual y actualiza esta huella en los dos tests/unit.js.
+const HUELLA_REGLAS_INFORME = '39a6ab702f3a22643c3e63422cc2e3c3e76441da9c0594723df9c0cd14b5590c';
+test('reglas compartidas: lib/reglas-informe.js no ha cambiado sin copiarlo a physiq-report', () => {
+  const raiz = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const h = createHash('sha256').update(readFileSync(join(raiz, 'lib/reglas-informe.js'))).digest('hex');
+  assert.equal(h, HUELLA_REGLAS_INFORME, 'lib/reglas-informe.js ha cambiado: cópialo igual a physiq-report y actualiza la huella en los dos repos');
 });
 
 test('grabadora: app.js solo la carga fuera del hub', () => {
