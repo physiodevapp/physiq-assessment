@@ -10,7 +10,7 @@ import './dom-shim.mjs';
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
 const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, DOSIS_DERIVAR } = await import('../data.js');
-const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML, pesoTest, PESO_TEST, buildTestItem, lrEfectiva, fuenteCorta } = await import('../phase4b.js');
+const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML, pesoTest, PESO_TEST, buildTestItem, lrEfectiva, fuenteCorta, claveRegistro, enlaceCita } = await import('../phase4b.js');
 const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../app.js');
 const { state } = await import('../state.js');
@@ -1456,6 +1456,24 @@ test('tarjeta del test: «cuánto pesa» siempre, «Ampliar» solo con razonamie
 test('fuenteCorta: autor y año de cada cita', () => {
   assert.equal(fuenteCorta('Hegedus 2012 (Br J Sports Med 46:964–978; tabla 3) · Zhao 2024 (BMC, tabla 3)'), 'Hegedus 2012 · Zhao 2024');
   assert.equal(fuenteCorta('Lluch 2020, cap. 3.1 (Struyf), p. 54'), 'Lluch 2020, cap. 3.1');
+});
+
+test('fuentes del panel: cada cita de un test con razonamiento se resuelve en el registro y se enlaza con su url o su DOI', () => {
+  for (const { hId, t } of TODOS_TESTS) {
+    if (!t.razonamiento) continue;
+    for (const c of (t.razonamiento.citas || (t.fuente ? t.fuente.split(' · ') : []))) {
+      const texto = typeof c === 'string' ? c : c.texto;
+      const k = claveRegistro(texto, REFERENCIAS);
+      assert.ok(k, `${hId} «${t.name}»: «${texto}» no empieza por ninguna clave del registro`);
+      const r = REFERENCIAS[k];
+      const e = enlaceCita(texto, REFERENCIAS);
+      if (r.url) assert.equal(e.url, r.url);
+      else if (r.doi) assert.equal(e.url, `https://doi.org/${r.doi}`);
+      else assert.equal(e, texto, 'sin url ni DOI, sin enlace');
+    }
+  }
+  assert.equal(claveRegistro('Malik y Herron 2023 (StatPearls)', { 'Malik 2023': {}, 'Malik y Herron 2023': {} }), 'Malik y Herron 2023');
+  assert.equal(claveRegistro('Kim 20011', { 'Kim 2001': {} }), null);
 });
 
 test('razonamiento de los tests: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {

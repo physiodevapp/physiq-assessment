@@ -550,6 +550,7 @@ async function checkTestsAmpliar(page) {
   const a = await razonEstado(page);
   r.kicker = await page.textContent('#razonPanel .razon-kicker');
   r.detalle = await page.evaluate(() => document.getElementById('razonContenido').textContent.includes('Metaanálisis de 7 estudios'));
+  r.enlace = await page.evaluate(() => document.querySelector('#razonContenido .razon-enlace')?.href || '');
   await page.click('#hypcard_h2 .test-item >> nth=0 >> .test-result-btn.pos');
   r.marcaConPanel = await page.evaluate(() => state.testResults.h2?.[0] === 'pos');
   await page.click('#phase4b button:has-text("Ver Resultados")');
@@ -567,7 +568,7 @@ async function checkTestsAmpliar(page) {
   const d = await razonEstado(page);
   r.movil = c.abierto && c.velo && !c.scrollX && !d.abierto && d.fase === '4b';
   r.ok = r.peso === 'Sirve para descartar; un positivo es solo un hallazgo.' && r.criterioCorto
-    && r.kicker === 'Test · por qué y evidencia' && r.detalle && r.marcaConPanel && r.escritorio && r.movil;
+    && r.kicker === 'Test · por qué y evidencia' && r.detalle && r.enlace.startsWith('https://doi.org/10.1136/bjsports-2012-091066') && r.marcaConPanel && r.escritorio && r.movil;
   if (!r.ok) Object.assign(r, { a, b, c, d });
   await page.setViewportSize({ width: 1280, height: 900 });
   return r;

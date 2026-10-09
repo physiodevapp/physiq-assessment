@@ -320,14 +320,42 @@ export function buildTestItem(hId, test, idx) {
 
 // Panel «Ampliar» de un test: el mismo de la fase 2 (abrirPanelRazon, app.js).
 // Fuentes: las `citas` del razonamiento si las hay; si no, la `fuente` del
-// test partida por « · ».
-export function abrirRazonamientoTest(btn, hId, idx) {
+// test partida por « · ». Cada cita se enlaza («Abrir ↗») con la url del
+// registro (data/referencias.js) o, sin ella, con su DOI: el registro se
+// carga con import() la primera vez que se abre el panel, y si falla el
+// panel se abre igual, sin enlaces.
+let _registro = null;
+async function registroReferencias() {
+  if (!_registro) _registro = import('./data/referencias.js').then(m => m.REFERENCIAS).catch(() => ({}));
+  return _registro;
+}
+
+// Clave del registro con la que empieza una cita («Hegedus 2012 (Br J…)» →
+// 'Hegedus 2012'; «Lluch 2020, cap. 3.1 (Struyf)» → 'Lluch 2020'): la más
+// larga, para no confundir 'Malik 2023' con 'Malik y Herron 2023'.
+export function claveRegistro(cita, REF) {
+  let mejor = null;
+  for (const k of Object.keys(REF)) {
+    if (cita.startsWith(k) && !/^[\p{L}\d]/u.test(cita.slice(k.length)) && (!mejor || k.length > mejor.length)) mejor = k;
+  }
+  return mejor;
+}
+
+export function enlaceCita(cita, REF) {
+  if (typeof cita !== 'string') return cita;
+  const r = REF[claveRegistro(cita, REF)];
+  const url = r?.url || (r?.doi ? `https://doi.org/${r.doi}` : null);
+  return url ? { texto: cita, url } : cita;
+}
+
+export async function abrirRazonamientoTest(btn, hId, idx) {
   const hyp = HYPOTHESES[hId];
   const test = hyp?.tests[idx];
   const r = test?.razonamiento;
   if (!r) return;
+  const REF = await registroReferencias();
   const parrafos = (r.detalle || '').split('\n\n').filter(Boolean).map(p => `<p>${p}</p>`).join('');
-  const citas = r.citas || (test.fuente ? test.fuente.split(' · ') : []);
+  const citas = (r.citas || (test.fuente ? test.fuente.split(' · ') : [])).map(c => enlaceCita(c, REF));
   abrirPanelRazon({
     btn, kicker: 'Test · por qué y evidencia', titulo: test.name,
     html: `

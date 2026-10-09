@@ -433,7 +433,9 @@
    "los dos negativos, LR− 0,03 (17 de 28 con dolor AC tenían los dos positivos y ninguno de 9 sin él;",
    "ninguno de 28 los dos negativos).",
    "LR calculadas sumando 0,1 a cada casilla, con 9 controles.",
-   "La gammagrafía no se hace en consulta:",
+   "La gammagrafía no se hace en consulta:"
+  ],
+  "retiradas": [
    "es un hallazgo, no puntúa."
   ]
  },
