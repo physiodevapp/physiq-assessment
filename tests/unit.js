@@ -1789,8 +1789,8 @@ test('construirAmpliado: iaPregunta / iaTexto del árbol sustituyen al texto de 
   });
   withState({ region: 'tobillo_pie', treeAnswers: { tp_step1: 'no', tp_step6: 'aquiles_media', tp_step7: 'no' }, activeHypotheses: [] }, () => {
     const r = IA.construirAmpliado().arbol.map(x => x.respuesta);
-    assert.ok(r.includes('AQUILES PORCIÓN MEDIA'), 'iaSinPista: solo el nombre, sin «Pinza, 2–6 cm» (Sergio, ronda 19)');
-    assert.ok(r.includes('NINGUNO — Sin dolor medial o nada de esto lo explica'), 'el NINGUNO va entero');
+    assert.ok(r.includes('AQUILES PORCIÓN MEDIA'), 'solo la conclusión, sin «Pinza, 2–6 cm» (Sergio, ronda 19)');
+    assert.ok(!r.some(x => /Sin dolor medial/.test(x)), 'el NINGUNO de un paso de zona no se envía');
   });
   withState({ region: 'rodilla', treeAnswers: { ro_step1: 'menisco' }, activeHypotheses: [] }, () => {
     assert.equal(IA.construirAmpliado().arbol[0].respuesta, 'SÍ — Trauma rotacional (orienta a: menisco)', 'sin «síntomas de bloqueo o chasquidos» (Marta, ronda 18)');
@@ -1801,6 +1801,24 @@ test('construirAmpliado: iaPregunta / iaTexto del árbol sustituyen al texto de 
     const p = IA.construirAmpliado().arbol[0].pregunta;
     assert.ok(p.startsWith('¿Algún criterio de Ottawa') && !/Pittsburgh|%|Seaberg/.test(p));
   });
+});
+
+test('prompt: textoOpcionIA envía la conclusión; NO, derivaciones, iaEntera e iaTexto enteros; el NINGUNO de zona no va', () => {
+  const t = IN.textoOpcionIA;
+  assert.equal(t({ label: 'SÍ — Test de Spurling positivo, ULNT1 positivo o alivio' }), 'SÍ');
+  assert.equal(t({ label: 'HOFFA — Recurvatum, test de Hoffa' }), 'HOFFA');
+  assert.equal(t({ label: 'NO — FADDIR y flexión-RI negativos' }), 'NO — FADDIR y flexión-RI negativos');
+  assert.equal(t({ label: 'THOMPSON POSITIVO — Rotura del Aquiles: derivación preferente' }), 'THOMPSON POSITIVO — Rotura del Aquiles: derivación preferente');
+  assert.equal(t({ label: '5.º MT — Fractura', iaEntera: true }), '5.º MT — Fractura');
+  assert.equal(t({ label: 'SÍ — A o B', iaTexto: 'SÍ — Orienta a X' }), 'SÍ — Orienta a X');
+  assert.equal(t({ label: 'NINGUNO — Sin dolor medial o nada de esto lo explica' }), null);
+  assert.equal(t({ label: 'NINGUNO — Ottawa negativo y eleva la pierna extendida' }), 'NINGUNO — Ottawa negativo y eleva la pierna extendida', 'un NINGUNO de seguridad sí va');
+  assert.equal(t({ label: 'MENISCO MEDIAL' }), 'MENISCO MEDIAL');
+  // Las preguntas con varios «SÍ» llevan iaTexto, o el prompt no sabría cuál fue
+  for (const [r, tr] of Object.entries(CIF_TREES)) for (const st of tr.steps) {
+    const sis = st.options.filter(o => !o.iaTexto && !o.iaEntera && t(o) === 'SÍ');
+    assert.ok(sis.length <= 1, `${r}.${st.id}: varias opciones llegarían como «SÍ» a secas`);
+  }
 });
 
 test('prompt: ninguna línea de «Hallazgos de la exploración» lleva cifras de S/E, «veces» ni citas', () => {
@@ -2126,7 +2144,7 @@ test('construirAmpliado: lee el estado de las cinco fases', () => {
     assert.equal(a.signoComparable, 'Flexión');
     assert.deepEqual(a.irritabilidad, { dolor: 'Alto' });
     assert.deepEqual(a.psico.map(x => x.a), ['Sí', 'No'], 'solo lo contestado');
-    assert.deepEqual(a.arbol, [{ pregunta: lu.question, respuesta: lu.options[0].label }]);
+    assert.deepEqual(a.arbol, [{ pregunta: lu.question, respuesta: 'SÍ' }], 'solo la conclusión, sin los criterios «SLR <60° o Slump»');
     const t8 = a.tests.find(t => t.hipotesis === lu8.name);
     assert.equal(t8.items.length, 1, '«nd» no cuenta como realizado');
     assert.equal(t8.items[0].resultado, 'positivo');
@@ -3160,6 +3178,12 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(rv('Al pivotar nota que la rodilla se le iba. Niega que le falle o ceda.').includes('discrepancia-separada'));
     assert.ok(!rv('Niega mareo o inestabilidad. El test de inestabilidad en prono es positivo.').includes('discrepancia-separada'), '«inestabilidad» suelta no es un fallo articular');
     assert.ok(!rv('La flexión no la refuerza pero tampoco la descarta.').includes('descarta'));
+    const conTr2 = (texto, transcripcion) => RI.revisarInforme(texto, { datos: { p: 'X', r: 'tobillo_pie', d: '01/01/2026', br: [], sq: [], pn: {}, h: [] }, transcripcion }).map(p => p.id);
+    assert.ok(conTr2('Toma ibuprofeno.', 'Su médico de cabecera le dijo que dejara de correr.').includes('indicacion-omitida'));
+    assert.ok(!conTr2('El médico de cabecera le indicó dejar de correr.', 'Su médico de cabecera le dijo que dejara de correr.').includes('indicacion-omitida'));
+    assert.ok(rv('Signos vitales dentro de parámetros esperables.').includes('constantes'));
+    assert.ok(rv('Se valorará una ecografía para una valoración más detallada.').includes('imagen-motivo'));
+    assert.ok(rv('En consulta, comenta que nota el tendón hinchado.').includes('fuentes'));
     assert.ok(rv('Refiere que nota el tendón hinchado. Niega hinchazón en el pie.').includes('discrepancia-separada'), 'hinchazón');
     assert.ok(rv('En caso de no observarse mejoría en 12 semanas, se pedirá una ecografía.\n## SEGUIMIENTO FUNCIONAL\nVISA-A.').includes('seguimiento-fuera'));
     assert.ok(rv('El izquierdo, aspecto que no ha sido explorado.').includes('relleno'));
@@ -3188,7 +3212,8 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-2-informe.txt', 'daniel-dictado-2-transcripcion.txt', ['lado-otro', 'no-se', 'formulario-contradicho', 'test-propiedades']],
       ['valoracion-marta-gil-rodilla.json', 'marta-dictado-1-informe.txt', 'marta-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'relleno', 'frecuencia', 'discrepancia-separada']],
       ['valoracion-marta-gil-rodilla.json', 'marta-dictado-2-informe.txt', 'marta-dictado-2-transcripcion.txt', ['lado-otro', 'genero', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
-      ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-1-informe.txt', 'sergio-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
+      ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-1-informe.txt', 'sergio-dictado-transcripcion.txt', ['lado-otro', 'indicacion-omitida', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
+      ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-2-informe.txt', 'sergio-dictado-2-transcripcion.txt', ['lado-otro', 'indicacion-omitida', 'descarta', 'repetido', 'fuentes', 'fisiopatologia', 'atribucion', 'constantes', 'imagen-motivo']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
