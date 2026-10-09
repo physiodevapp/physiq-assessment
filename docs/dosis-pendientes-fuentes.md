@@ -82,7 +82,7 @@ Leyenda:
 ## Tobillo y pie (`tp1`–`tp37`)
 | Id | Hipótesis | Tipo | Fuente a pedir | Qué comprobar |
 |---|---|---|---|---|
-| tp1 | Esguince lateral agudo | ✅ **Hecho** | Martin 2021, JOSPT 51(4):CPG1–CPG80 (versión publicada, orthopt.org) | En `data/tobillo_pie.js` con los grados. La guía dice expresamente que no se puede recomendar modalidad ni volumen de ejercicio; el único número es la inmovilización ≤10 días en los graves |
+| tp1 | Esguince lateral agudo | ✅ **Hecho** | Martin 2021, JOSPT 51(4):CPG1–CPG80 (versión publicada, orthopt.org) | En `data/tobillo_pie.js` con los grados. La guía dice expresamente que no se puede recomendar modalidad ni volumen de ejercicio; el único número es la inmovilización ≤10 días en los graves. Revisión de referencias (2026-10, PDF leído entero): «puede estar indicada» la inmovilización, terapia manual con sus objetivos y vuelta al trabajo o al deporte (B) añadida |
 | tp2 | Sindesmosis | ✅ **Hecho** (2026-10) | van Dijk 2016, KSSTA 24(4):1217–27 (consenso ESSKA-AFAS, nivel IV; PDF del usuario, leído entero con su compañero de clasificación, KSSTA 24(4):1200–16) | Solo la estable (deltoideo íntegro): 3 semanas sin carga, bota de marcha 3 semanas y propiocepción desde el fin de la descarga. La inestable se deriva (cirugía). El usuario aceptó un consenso de cirujanos de nivel IV como fuente (2026-10) |
 | tp3 | Rotura del Aquiles | C | — | Derivar. El tratamiento funcional frente a la cirugía lo decide traumatología |
 | tp4 | Lisfranc | C | — | Derivar |
@@ -90,24 +90,24 @@ Leyenda:
 | tp6 | Luxación del tibial posterior | C | — | Derivar |
 | tp7 | Pinzamiento posterior | D | — | — |
 | tp8 | Aquiles, porción media | ✅ **Hecho** | Chimenti 2024, JOSPT 54(12):CPG1–CPG32 (versión publicada, orthopt.org) | **Corrección:** la guía de 2024 dice **al menos 3 veces por semana** (grado E), no 2: el «2» del fragmento era la recomendación de 2018 (grado F). Frecuencia, sesiones y duración no parecen cambiar el resultado |
-| tp9 | Aquiles insercional | ✅ **Hecho** (evidencia baja) | Jonsson 2008, BJSM 42:746–749 (PDF del usuario; piloto sin grupo control) | Excéntrico sin dorsiflexión, rodilla extendida, 3 × 15 dos veces al día, 7 días/semana, 12 semanas, con dolor permitido y carga en mochila |
+| tp9 | Aquiles insercional | ✅ **Hecho** (evidencia baja) | Jonsson 2008, BJSM 42:746–749 (PDF del usuario; piloto sin grupo control) | Excéntrico sin dorsiflexión, rodilla extendida, 3 × 15 dos veces al día, 7 días/semana, 12 semanas, con dolor buscado y carga en mochila. Revisión 2026-10: el dolor de 70 a 21 es solo de los 18 satisfechos (los otros 9, de 78 a 58); se añade Pringels 2025 (ensayo aleatorizado, n = 42, BJSM 59(9):640–50) como respaldo de no cargar en dorsiflexión, manteniendo la pauta de Jonsson (decisión del usuario) |
 | tp10 | Vaina del Aquiles | D | — | — |
 | tp11 | Plantar delgado | D | — | — |
 | tp12 | Nervio sural | D | — | — |
 | tp13 | Bursitis calcánea superficial | D | — | — |
-| tp14 | Tendinopatía del tibial posterior | ✅ **Hecho** | Kulig 2009, Phys Ther 89(1):26–37 (PDF del usuario; ensayo aleatorizado, n = 36) | Plantillas + estiramiento 3 × 30 s 2/día + aducción resistida del pie con flexión plantar 3 × 15 2/día, 12 semanas. Ojo: usó un aparato de muelles específico (TibPost Loader); la dosis lo dice |
+| tp14 | Tendinopatía del tibial posterior | ✅ **Hecho** | Kulig 2009, Phys Ther 89(1):26–37 (PDF del usuario; ensayo aleatorizado, n = 36) | Plantillas + estiramiento 3 × 30 s 2/día + aducción resistida del pie con flexión plantar 3 × 15 2/día, 12 semanas. Ojo: usó un aparato de muelles específico (TibPost Loader); la dosis lo dice. Revisión 2026-10: revisiones semanales 10 semanas; no se puede decir que el excéntrico supere al concéntrico; Houck 2015 (Foot Ankle Int 36(9):1006–16) añadido como contraste: fortalecimiento en casa de intensidad moderada sin beneficio añadido |
 | tp15 | Flexor largo del primer dedo | D | — | — |
 | tp16 | Túnel del tarso | D | — | — |
 | tp17 | Fractura de estrés (maléolo medial, astrágalo, calcáneo) | C | Warden 2014, JOSPT 44(10):749–765 | Clasificación de alto y bajo riesgo: el maléolo medial es de alto riesgo, así que derivar y descargar. Copiar la pauta de vuelta a la carrera solo para las de bajo riesgo |
 | tp18 | Seno del tarso | D | — | — |
 | tp19 | Peroneos | D | — | — |
 | tp20 | Pinzamiento anterior | D | — | — |
-| tp21 | Inestabilidad crónica | ✅ **Hecho** | Martin 2021 · Liu 2025 · McKeon 2008, Med Sci Sports Exerc 40(10):1810–1819 (PDF del usuario) | La guía no fija dosis; Liu, orientativo; McKeon da el protocolo concreto (12 sesiones de 20 min en 4 semanas, saltos a estabilización con 7 niveles) |
+| tp21 | Inestabilidad crónica | ✅ **Hecho** | Martin 2021 · Liu 2025 · McKeon 2008, Med Sci Sports Exerc 40(10):1810–1819 (PDF del usuario) | La guía no fija dosis; McKeon da el protocolo concreto (12 sesiones de 20 min en 4 semanas, saltos a estabilización con 7 niveles). Revisión 2026-10: se quita la orientación de dosis de Liu 2025 (subgrupos separados; el multimodal para el FAAM es un solo ensayo hecho 3 veces/semana) y queda su efecto global; tobillera no como tratamiento único para el equilibrio (B), sí para prevenir la recidiva; McKeon precisado (qué mejoró y qué no) |
 | tp22 | Sinovitis postraumática | D | — | — |
 | tp23 | Coalición tarsiana | C | — | Derivar si hay rigidez o espasmo peroneo |
 | tp24 | Artrosis de tobillo o pie | D | — | — |
 | tp25 | Osteocondritis del astrágalo | C/D | — | — |
-| tp26 | Dolor plantar crónico del talón | ✅ **Hecho** | Koc 2023, JOSPT 53(12):CPG1–CPG39 (versión publicada: `Heel_Pain_Plantar_Fasciitis_revision_2023_1_.pdf` en orthopt.org) | **Ojo:** `Heel_Pain_Plantar_Fasciitis_Revision_2023.pdf` en orthopt.org es el **borrador** para revisión y difiere (p. ej. ejercicio C en el borrador, B en la publicada). Parámetros de la tabla de intervención: vendaje 1 a ≤6 semanas, férula nocturna 1–3 meses, láser 2–3 puntos con dosis por punto, punción seca 1–6 sesiones. La dosis del estiramiento no está establecida |
+| tp26 | Dolor plantar crónico del talón | ✅ **Hecho** | Koc 2023, JOSPT 53(12):CPG1–CPG39 (versión publicada: `Heel_Pain_Plantar_Fasciitis_revision_2023_1_.pdf` en orthopt.org) | **Ojo:** `Heel_Pain_Plantar_Fasciitis_Revision_2023.pdf` en orthopt.org es el **borrador** para revisión y difiere (p. ej. ejercicio C en el borrador, B en la publicada). Parámetros de la tabla de intervención: vendaje 1 a ≤6 semanas, férula nocturna 1–3 meses, láser 2–3 puntos con dosis por punto, punción seca 1–6 sesiones. La dosis del estiramiento no está establecida. Revisión 2026-10: «plantillas nunca solas» es grado B (combinarlas, C); férula para el dolor sistemático con los primeros pasos |
 | tp27 | Almohadilla grasa del talón | D | — | — |
 | tp28 | Atrapamiento nervioso del talón | D | — | — |
 | tp29 | Calcaneocuboidea y cubometatarsiana | D | — | — |
