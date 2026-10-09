@@ -2107,6 +2107,16 @@ test('app.js solo carga informe-ia.js fuera del hub', () => {
 test('deploy-to-hub copia los archivos del informe narrativo', () => {
   const wf = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github/workflows/deploy-to-hub.yml'), 'utf8');
   for (const f of ['informe-ia.js', 'grabadora.js', 'lib/informe-narrativo.js', 'lib/audio-store.js', 'lib/licencia-ia.js']) assert.ok(wf.includes(f), `falta ${f}`);
+  // Todo lib/*.js que la app importa (estático o con import()) se despliega:
+  // un fichero olvidado solo falla en producción (paquete de revisión: zip.js)
+  const raiz = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const fuentes = [...readdirSync(raiz).filter(f => f.endsWith('.js')).map(f => [f, '']), ...readdirSync(join(raiz, 'lib')).filter(f => f.endsWith('.js')).map(f => [f, 'lib/'])];
+  const usados = new Set();
+  for (const [f, dir] of fuentes) {
+    for (const m of readFileSync(join(raiz, dir, f), 'utf8').matchAll(/(?:from|import\()\s*'\.\/((?:lib\/)?[\w-]+\.js)'/g))
+      usados.add(dir === 'lib/' ? `lib/${m[1]}` : m[1]);
+  }
+  for (const f of [...usados].filter(f => f.startsWith('lib/'))) assert.ok(wf.includes(f), `deploy-to-hub.yml no copia ${f}`);
 });
 
 test('grabadora: app.js solo la carga fuera del hub', () => {
@@ -2677,6 +2687,86 @@ console.log('\nversión desplegada');
 }
 
 // ── Revisión automática del informe (lib/revision-informe.js) ────────────────
+console.log('\npaquete de revisión del informe con IA');
+{
+  const Z = await import('../lib/zip.js');
+  const PR = await import('../lib/paquete-revision.js');
+  const await_VJ = await import('../lib/valoracion-json.js');
+  const VJ_LEER = t => await_VJ.leerImportacion(t, Object.keys(SYSTEMIC_SCREENING));
+  // Lector mínimo del zip «stored» para comprobar lo que escribe lib/zip.js
+  const leerZip = bytes => {
+    const dv = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    const dec = new TextDecoder();
+    const fin = bytes.length - 22;
+    assert.equal(dv.getUint32(fin, true), 0x06054b50, 'fin del directorio central');
+    const n = dv.getUint16(fin + 10, true);
+    let p = dv.getUint32(fin + 16, true);
+    const out = [];
+    for (let i = 0; i < n; i++) {
+      assert.equal(dv.getUint32(p, true), 0x02014b50, 'entrada central');
+      assert.equal(dv.getUint16(p + 8, true) & 0x0800, 0x0800, 'nombres en UTF-8');
+      const crc = dv.getUint32(p + 16, true), tam = dv.getUint32(p + 20, true), ln = dv.getUint16(p + 28, true), off = dv.getUint32(p + 42, true);
+      const nombre = dec.decode(bytes.subarray(p + 46, p + 46 + ln));
+      assert.equal(dv.getUint32(off, true), 0x04034b50, 'cabecera local');
+      const ini = off + 30 + dv.getUint16(off + 26, true);
+      const datos = bytes.subarray(ini, ini + tam);
+      assert.equal(Z.crc32(datos), crc, `CRC de ${nombre}`);
+      out.push({ nombre, texto: dec.decode(datos) });
+      p += 46 + ln;
+    }
+    return out;
+  };
+  test('zip: los ficheros vuelven tal cual, con acentos en nombre y contenido y CRC correcto', () => {
+    const f = [{ nombre: 'lucía-informe.txt', texto: 'Dolor en la ingle, ñandú\n' }, { nombre: 'vacio.txt', texto: '' }, { nombre: 'b.json', texto: '{"a":1}' }];
+    assert.deepEqual(leerZip(Z.crearZip(f, new Date(2026, 9, 9, 10, 30))), f);
+    assert.equal(Z.crc32(new TextEncoder().encode('123456789')), 0xCBF43926, 'CRC-32 de referencia');
+  });
+  const ahora = new Date(2026, 9, 9, 10, 30);
+  const st = { ...JSON.parse(JSON.stringify(state)), patient: 'Daniel Ortega', region: 'cadera', maxVisitedIdx: 5, currentPhase: 5 };
+  const inf = { texto: '## CONDICIÓN DE SALUD\n\nTexto.', transcripcion: 'Daniel refiere dolor.', fecha: '2026-10-09T08:00:00Z', conAudio: true, dictado: true,
+    plantilla: 'narrativo', prompt: 'PROMPT EXACTO', version: 'abc1234', huella: 'x' };
+  const puntos = [{ id: 'constantes', nivel: 'medio', mensaje: 'Clasifica las constantes.', cita: 'dentro de parámetros habituales' }, { id: 'urgencia', nivel: 'alto', mensaje: 'Falta la derivación.' }];
+  test('paquete: nombres como en tests/fixtures/informes, comandos para reproducir y la valoración importable', () => {
+    const { nombre, ficheros } = PR.ficherosPaquete({ inf, informe: 'INFORME DE FISIOTERAPIA\nPaciente: Daniel Ortega\n\nTexto.', state: { ...st, informeIA: inf }, puntos,
+      comprobaciones: ['Cada indicación…'], nombrePlantilla: 'Narrativo', versionActual: 'def5678', ahora });
+    assert.equal(nombre, 'revision-informe-daniel-ortega-2026-10-09.zip');
+    assert.deepEqual(ficheros.map(f => f.nombre), ['info.txt', 'daniel-ortega-dictado-informe.txt', 'daniel-ortega-dictado-transcripcion.txt', 'revision.txt', 'valoracion-daniel-ortega.json', 'prompt.txt']);
+    const de = n => ficheros.find(f => f.nombre === n).texto;
+    assert.match(de('info.txt'), /node tools\/revisar-informe\.mjs valoracion-daniel-ortega\.json daniel-ortega-dictado-informe\.txt narrativo --transcripcion daniel-ortega-dictado-transcripcion\.txt/);
+    assert.match(de('info.txt'), /node tools\/prompt-desde-json\.mjs valoracion-daniel-ortega\.json narrativo --dictado/);
+    assert.match(de('info.txt'), /versión abc1234/);
+    assert.match(de('info.txt'), /versión def5678/);
+    assert.match(de('info.txt'), /Audio: dictado del fisioterapeuta/);
+    assert.match(de('info.txt'), /2 puntos \(1 de nivel alto\)/);
+    assert.equal(de('prompt.txt'), 'PROMPT EXACTO');
+    const r = VJ_LEER(de('valoracion-daniel-ortega.json'));
+    assert.ok(r.ok, r.error);
+    assert.ok(!('informeIA' in r.assessmentState), 'sin el informe, como «⬇ Exportar»');
+    assert.match(de('revision.txt'), /^\[MEDIO\] constantes: Clasifica las constantes\.\n   «dentro de parámetros habituales»/m, 'mismo formato que tools/revisar-informe.mjs');
+    assert.match(de('revision.txt'), /ANTES DE COMPARTIR, COMPRUEBA\n- Cada indicación…/);
+    assert.ok(leerZip(Z.crearZip(ficheros, ahora)).length === 6, 'el zip sale entero');
+  });
+  test('paquete: sin audio, sin prompt guardado (informe anterior) y sin puntos', () => {
+    const viejo = { texto: 'T', fecha: '', conAudio: false, plantilla: 'breve' };
+    const { ficheros } = PR.ficherosPaquete({ inf: viejo, informe: 'T', state: st, ahora });
+    assert.deepEqual(ficheros.map(f => f.nombre), ['info.txt', 'daniel-ortega-sin-audio-ficha-breve.txt', 'revision.txt', 'valoracion-daniel-ortega.json']);
+    const info = ficheros[0].texto;
+    assert.match(info, /Prompt: no guardado/);
+    assert.match(info, /no registrada/);
+    assert.match(info, /revisar-informe\.mjs valoracion-daniel-ortega\.json daniel-ortega-sin-audio-ficha-breve\.txt breve\n/);
+    assert.match(info, /prompt-desde-json\.mjs valoracion-daniel-ortega\.json breve\n/);
+    assert.match(ficheros[2].texto, /sin incidencias/);
+    assert.equal(PR.ficherosPaquete({ inf: { ...viejo, conAudio: true, transcripcion: 'Hola' }, informe: 'T', state: st, ahora }).ficheros[1].nombre, 'daniel-ortega-audio-ficha-breve.txt');
+  });
+  test('paquete: la tarjeta guarda el prompt y la versión al generar, y el botón está expuesto', () => {
+    const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+    assert.match(src, /prompt,\s+\/\/ el exacto que se envió/);
+    assert.match(src, /version: VERSION_SHA,/);
+    assert.match(src, /import\('\.\/lib\/zip\.js'\)/, 'zip con import() dinámico: solo al usarlo');
+    assert.equal(typeof globalThis.iaPaqueteRevision, 'function');
+  });
+}
+
 console.log('\nrevisión automática del informe con IA');
 {
   const RI = await import('../lib/revision-informe.js');

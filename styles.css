@@ -2699,3 +2699,4 @@ body.posquirurgico .solo-posq { display: block; }
 .ia-consejos-dictado li + li { margin-top: 3px; }
 #iaModoAudio { margin-top: 1rem; }
 #iaModoAudio:empty { margin: 0; }
+.ia-rev-paquete { display: flex; justify-content: flex-end; margin: -0.3rem 0 0.8rem; }

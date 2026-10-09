@@ -805,6 +805,15 @@ async function checkInformeNarrativo(browser, errors) {
   // Revisión automática: aparece sola bajo el informe (puntos o «sin incidencias»)
   r.revision = await page.evaluate(() => !!document.querySelector('#iaRevision .ia-revision'));
   r.comprobar = await page.evaluate(() => document.querySelectorAll('#iaComprobar .ia-comprobar li').length >= 2);
+  // «⬇ Paquete de revisión»: un .zip con informe, transcripción, puntos, valoración y prompt
+  const [zipDescarga] = await Promise.all([page.waitForEvent('download'), page.click('#iaResultado .ia-rev-paquete button')]);
+  const zipBytes = await new Promise((res, rej) => zipDescarga.createReadStream().then(st => {
+    const trozos = []; st.on('data', c => trozos.push(c)); st.on('end', () => res(Buffer.concat(trozos))); st.on('error', rej);
+  }, rej));
+  const zipTexto = zipBytes.toString('latin1');
+  r.paqueteRevision = /^revision-informe-.+\.zip$/.test(zipDescarga.suggestedFilename()) && zipTexto.startsWith('PK\x03\x04')
+    && ['info.txt', '-audio-informe.txt', '-audio-transcripcion.txt', 'revision.txt', 'prompt.txt'].every(n => zipTexto.includes(n))
+    && /valoracion-[a-z0-9-]+\.json/.test(zipTexto) && zipTexto.includes('DATOS DE VALORACI');
   r.guardado = await page.evaluate(() => !!state.informeIA?.texto && state.informeIA.conAudio === true
     && state.informeIA.transcripcion.includes('simulada'));
   r.audioBorrado = await page.evaluate(() => new Promise(res => {
