@@ -98,7 +98,7 @@ Leyenda:
 | tp14 | Tendinopatía del tibial posterior | ✅ **Hecho** | Kulig 2009, Phys Ther 89(1):26–37 (PDF del usuario; ensayo aleatorizado, n = 36) | Plantillas + estiramiento 3 × 30 s 2/día + aducción resistida del pie con flexión plantar 3 × 15 2/día, 12 semanas. Ojo: usó un aparato de muelles específico (TibPost Loader); la dosis lo dice. Revisión 2026-10: revisiones semanales 10 semanas; no se puede decir que el excéntrico supere al concéntrico; Houck 2015 (Foot Ankle Int 36(9):1006–16) añadido como contraste: fortalecimiento en casa de intensidad moderada sin beneficio añadido |
 | tp15 | Flexor largo del primer dedo | D | — | — |
 | tp16 | Túnel del tarso | D | — | — |
-| tp17 | Fractura de estrés (maléolo medial, astrágalo, calcáneo) | C | Warden 2014, JOSPT 44(10):749–765 | Clasificación de alto y bajo riesgo: el maléolo medial es de alto riesgo, así que derivar y descargar. Copiar la pauta de vuelta a la carrera solo para las de bajo riesgo |
+| tp17 | Fractura de estrés (maléolo medial, astrágalo, calcáneo) | ✅ Derivar (`DOSIS_DERIVAR`) | Warden 2014, JOSPT 44(10):749–765, tabla 1 | Ya en `data/` como derivación. En la tabla 1 de Warden, el maléolo medial y la apófisis lateral del astrágalo son de alto riesgo y el calcáneo de bajo riesgo; la pauta de vuelta a la carrera (tp33) no se copia aquí |
 | tp18 | Seno del tarso | D | — | — |
 | tp19 | Peroneos | D | — | — |
 | tp20 | Pinzamiento anterior | D | — | — |
@@ -111,9 +111,9 @@ Leyenda:
 | tp27 | Almohadilla grasa del talón | D | — | — |
 | tp28 | Atrapamiento nervioso del talón | D | — | — |
 | tp29 | Calcaneocuboidea y cubometatarsiana | D | — | — |
-| tp30 | Fractura de estrés del mediopié | C | Warden 2014 | El navicular es de alto riesgo: derivar y descargar |
+| tp30 | Fractura de estrés del mediopié | ✅ Derivar (`DOSIS_DERIVAR`) | Warden 2014, tabla 1 | Ya en `data/` como derivación. El navicular es de alto riesgo |
 | tp31 | 1.ª metatarsofalángica | D | — | — |
-| tp32 | Base del 2.º metatarsiano | C/D | Warden 2014 | Es de alto riesgo si se trata de fractura de estrés |
+| tp32 | Base del 2.º metatarsiano | C/D | Warden 2014, p. 755 y tabla 1 | Sin dosis (puede ser sinovitis, Lisfranc o fractura de estrés). Desde 2026-10, `pronostico` dice que, si es una fractura de estrés, es de alto riesgo: derivar para confirmarla con imagen (RM de elección) y no aplicarle la vuelta a la carrera de tp33 |
 | tp33 | Fractura de marcha (cuello del metatarsiano) | ✅ **Hecho** (2026-10) | Warden 2014, JOSPT 44(10):749–65 (comentario clínico, nivel 5; PDF del usuario, leído entero) | Diáfisis del 2.º–4.º MT = bajo riesgo (tabla 1). Fase 1 de actividad modificada guiada por el dolor y factores de riesgo; fase 2 con el programa graduado de carrera de su tabla 3 |
 | tp34 | Neuroma de Morton | D | — | — |
 | tp35 | Gota | C | — | Derivación médica. No es competencia de fisioterapia tratar la crisis |
