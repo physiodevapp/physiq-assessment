@@ -23,7 +23,7 @@ import { esTratada, hipotesis, hipotesisActivas } from './phase4b.js';
 import { esPosquirurgico, cirugiaPayload, pautaHipPosq } from './lib/posquirurgico.js';
 import { revisarInforme, comprobacionesManuales } from './lib/revision-informe.js';
 import {
-  ORCHESTRATOR_URL, TURNSTILE_SITEKEY, MAX_AUDIO_BYTES, PLANTILLAS, plantillaPorDefecto,
+  ORCHESTRATOR_URL, TURNSTILE_SITEKEY, MAX_AUDIO_BYTES, PLANTILLAS, plantillaPorDefecto, MODOS_AUDIO,
   getWhisperPrompt, huellaPayload, parseSSEBuffer, parseSSEBlock,
   informeTruncado, markdownAHtml, textoParaCompartir, extensionAudio, errorLegible, errorConexion,
   transcripcionSinVoz, TEXTO_SIN_VOZ,
@@ -45,6 +45,7 @@ let _audioConsentido = null;     // el consentimiento vale para un audio concret
 let _cerrando = false;           // «Generar» está cerrando la grabación en curso
 let _gen = null;                 // generación en curso: { texto, transcripcion, fase, ctrl }
 let _plantilla = null;           // 'narrativo' | 'breve' elegida a mano; null = la del tipo de consulta
+let _modoAudio = 'dialogo';      // 'dialogo' | 'dictado': quién habla en el audio; dura lo que la página
 let _resultadoAbierto = false;   // el informe generado se muestra plegado hasta que se abre
 let _vivoAbierto = false;        // «Ver mientras se escribe», mientras dura una generación
 let _error = null;               // último fallo al generar: errorLegible() — se muestra hasta el siguiente intento
@@ -87,6 +88,7 @@ function esqueleto() {
       <summary id="iaGenSummary">Generar un informe nuevo</summary>
       <div id="iaPlantilla" class="ia-plantilla"></div>
       <div id="iaAudio"></div>
+      <div id="iaModoAudio" class="ia-plantilla"></div>
       <div id="iaConsent"></div>
       <div class="alert alert-info ia-privacidad"><span class="alert-icon">🔒</span><div>Al generar, los datos de esta valoración y el audio (si lo hay) se envían a OpenAI (transcripción) y a Anthropic (redacción) a través del servidor de PhysiQ. Revisa el informe antes de compartirlo.</div></div>
       <div id="iaTurnstile" class="ia-turnstile"></div>
@@ -235,10 +237,10 @@ function pintarResultado() {
     <details class="ia-resultado-det" id="iaResultadoDet"${_resultadoAbierto ? ' open' : ''}>
       <summary>
         <span class="ia-resultado-titulo">📄 ${esc(plantilla.nombre)}</span>
-        <span class="ia-meta">${esc(fecha)} · ${inf.conAudio ? 'con audio' : 'sin audio'} · ${contarPalabras(inf.texto)} palabras</span>
+        <span class="ia-meta">${esc(fecha)} · ${inf.conAudio ? (inf.dictado ? 'con dictado' : 'con audio') : 'sin audio'} · ${contarPalabras(inf.texto)} palabras</span>
       </summary>
       <div class="ia-informe">${markdownAHtml(inf.texto)}</div>
-      ${inf.transcripcion && inf.conAudio ? `<details class="ia-transcripcion"><summary>Transcripción del audio</summary><div class="ia-transcripcion-texto">${esc(inf.transcripcion)}</div></details>` : ''}
+      ${inf.transcripcion && inf.conAudio ? `<details class="ia-transcripcion"><summary>${inf.dictado ? 'Transcripción del dictado' : 'Transcripción del audio'}</summary><div class="ia-transcripcion-texto">${esc(inf.transcripcion)}</div></details>` : ''}
     </details>
     <div class="ia-acciones">
       <button class="phase5-copy-btn" onclick="iaCompartir()">📤 Compartir</button>
@@ -282,7 +284,10 @@ function pintarComprobaciones() {
   const el = $('iaComprobar');
   if (!el) return;
   let items;
-  try { items = comprobacionesManuales({ ampliado: construirAmpliado() }); } catch { el.innerHTML = ''; return; }
+  try {
+    const inf = state.informeIA;
+    items = comprobacionesManuales({ ampliado: construirAmpliado(), formularioYAudio: !!inf?.conAudio && !!buildPhysiQPayload().fp?.length });
+  } catch { el.innerHTML = ''; return; }
   el.innerHTML = `<div class="ia-comprobar"><div class="ia-comprobar-titulo">☑ Antes de compartir, comprueba:</div>
       <ul>${items.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`;
 }
@@ -457,7 +462,7 @@ function pintarAudio() {
   }
   el.innerHTML = `
     <div class="ia-audio-vacio">Audio de la sesión <span class="ia-opcional">(opcional)</span></div>
-    <div class="ia-audio-pista">Graba la consulta con el botón 🎙 de la cabecera, en cualquier fase, o adjunta un archivo.</div>
+    <div class="ia-audio-pista">Graba la consulta con el botón 🎙 de la cabecera, en cualquier fase, o adjunta un archivo. También puedes dictarla tú al terminar.</div>
     <div class="ia-acciones">
       <button class="phase5-copy-btn" onclick="document.getElementById(\'iaArchivo\').click()">📎 Adjuntar audio</button>
       <input type="file" id="iaArchivo" accept="audio/*,.m4a,.mp3,.wav,.webm,.ogg,.mp4" hidden onchange="iaArchivo(this)">
@@ -477,6 +482,30 @@ async function iaArchivo(input) {
 
 function iaQuitarAudio() {
   showConfirmBanner('Descartar audio', 'Se borrará el audio de la sesión. El informe podrá generarse solo con los datos de la valoración.', 'Descartar', quitarAudio);
+}
+
+// Diálogo de la consulta o dictado del fisio: solo cambia cómo lee el prompt
+// la transcripción (y la pista de Whisper). Se elige con un audio a la vista.
+function pintarModoAudio() {
+  const el = $('iaModoAudio');
+  if (!el) return;
+  if (idAudio() === null) { el.innerHTML = ''; return; }
+  el.innerHTML = `
+    <div class="ia-plantilla-label">Qué hay en el audio</div>
+    <div class="option-group ia-plantilla-opciones">
+      ${Object.entries(MODOS_AUDIO).map(([k, m]) => `<button type="button" class="option-btn${k === _modoAudio ? ' selected' : ''}" onclick="iaModoAudio('${k}')">${esc(m.nombre)}</button>`).join('')}
+    </div>
+    ${_modoAudio === 'dictado' ? `<ul class="ia-consejos-dictado">
+      <li>Di también lo que no has hecho («la palpación por debajo no la he hecho»).</li>
+      <li>Presenta tus indicaciones como tuyas («mis indicaciones como fisio son…») y lo del paciente con «refiere».</li>
+      <li>Da cada cifra con su momento («hoy un 4 sobre 10; tras el partido del domingo, un 7»).</li>
+    </ul>` : ''}`;
+}
+
+function iaModoAudio(k) {
+  if (!MODOS_AUDIO[k]) return;
+  _modoAudio = k;
+  pintarModoAudio();
 }
 
 // ── Consentimiento y botón de generar ────────────────────────────────────────
@@ -535,6 +564,7 @@ function pintarGenerador() {
   if (!activo) return;
   pintarPlantilla();
   pintarAudio();
+  pintarModoAudio();
   pintarConsent();
   pintarBoton();
   pintarError();
@@ -654,8 +684,9 @@ async function iaGenerar() {
     const nombre = audio.meta?.origen === 'archivo' && audio.meta?.nombre ? audio.meta.nombre : `sesion.${ext}`;
     fd.append('file', audio.blob, nombre);
   }
-  fd.append('whisperHint', getWhisperPrompt(datos.r));
-  fd.append('prompt', PLANTILLAS[plantilla].prompt(datos, { conAudio, nombreRegion, ampliado }));
+  const dictado = conAudio && _modoAudio === 'dictado';
+  fd.append('whisperHint', getWhisperPrompt(datos.r, { dictado }));
+  fd.append('prompt', PLANTILLAS[plantilla].prompt(datos, { conAudio, nombreRegion, ampliado, dictado }));
   fd.append('maxTokens', String(PLANTILLAS[plantilla].maxTokens));
 
   const ctrl = new AbortController();
@@ -690,6 +721,7 @@ async function iaGenerar() {
       transcripcion: conAudio ? _gen.transcripcion : '',
       fecha: new Date().toISOString(),
       conAudio,
+      ...(dictado ? { dictado: true } : {}),
       plantilla,
       huella: huellaPayload({ ...datos, _ampliado: ampliado }),
       datos: { p: datos.p, d: datos.d, r: datos.r, la: datos.la, ed: ampliado.edad, sx: ampliado.sexo },
@@ -793,5 +825,5 @@ export function resetInformeIA() {
 Object.assign(window, {
   iaMostrarClave, iaGuardarClave, iaReintentarLicencia,
   iaArchivo, iaQuitarAudio, iaConsent,
-  iaGenerar, iaCancelar, iaCompartir, iaCopiar, iaDescartarInforme, iaPlantilla,
+  iaGenerar, iaCancelar, iaCompartir, iaCopiar, iaDescartarInforme, iaPlantilla, iaModoAudio,
 });

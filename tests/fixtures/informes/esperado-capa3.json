@@ -406,6 +406,51 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "daniel-dictado-1-informe.txt",
+      "valoracion": "valoracion-daniel-ortega-cadera.json",
+      "transcripcion": "daniel-dictado-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "daniel-dictado-chasquido-discrepancia",
+          "tipo": "omision",
+          "nivel": "medio",
+          "descripcion": "Formulario: chasquido que le duele; dictado: no le duele. Solo da la versión del dictado",
+          "claves": [
+            "chasquido"
+          ]
+        },
+        {
+          "id": "daniel-dictado-pico-dolor",
+          "tipo": "omision",
+          "nivel": "medio",
+          "descripcion": "Formulario: peor dolor de la última semana 6/10; dictado: 7/10 tras el partido del domingo. Solo da el 7",
+          "claves": [
+            "6/10",
+            "6 sobre 10"
+          ]
+        },
+        {
+          "id": "daniel-dictado-flexion-plural",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«las pruebas de flexión resistida» en plural: solo se hizo una (la de Thomas no se hizo)",
+          "fragmentos": [
+            "la negatividad de las pruebas de flexión resistida"
+          ]
+        },
+        {
+          "id": "daniel-dictado-tratamientos-repetidos",
+          "tipo": "repetido",
+          "nivel": "medio",
+          "descripcion": "Tratamientos Previos repite el reposo y el ibuprofeno de Presentación Inicial",
+          "fragmentos": [
+            "Ha realizado reposo relativo y ha utilizado ibuprofeno ocasionalmente"
+          ]
+        }
+      ]
     }
   ]
 }

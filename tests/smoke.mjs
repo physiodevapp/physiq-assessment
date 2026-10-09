@@ -793,6 +793,8 @@ async function checkInformeNarrativo(browser, errors) {
   await page.waitForSelector('#iaResultado .ia-resultado-det', { state: 'attached' });
   const cuerpo = Buffer.from(captura[1] || '', 'latin1').toString('utf8');
   r.peticion = cuerpo.includes('name="file"') && cuerpo.includes('DATOS DE VALORACI') && cuerpo.includes('{{TRANSCRIPT}}') && cuerpo.includes('name="whisperHint"');
+  // Modo del audio: con audio sale el selector, por defecto diálogo (sin dictado en el prompt)
+  r.modoAudioDialogo = !cuerpo.includes('DICTADO DEL FISIOTERAPEUTA') && cuerpo.includes('TRANSCRIPCIÓN DE LA SESIÓN');
   // Datos ampliados: el recorrido del árbol CIF va en el prompt
   r.promptAmpliado = cuerpo.includes('Hallazgos de la exploración (pregunta clínica') && /name="maxTokens"\r\n\r\n7000/.test(cuerpo);
   // El informe llega plegado, con las acciones a la vista
@@ -949,10 +951,17 @@ async function recorrerGrabadora(browser, errors) {
   r.consentMientrasGraba = await page.evaluate(() => document.getElementById('iaGenerar').disabled);
   await page.check('#iaConsent input[type=checkbox]');
   await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+  // Dictado del fisio: consejos a la vista, cabecera y pista de Whisper propias
+  r.selectorModoAudio = await page.evaluate(() => document.querySelector('#iaModoAudio .option-btn.selected')?.textContent.includes('diálogo'));
+  await page.click('#iaModoAudio .option-btn:has-text("Dictado")');
+  r.consejosDictado = await page.evaluate(() => document.querySelectorAll('#iaModoAudio .ia-consejos-dictado li').length === 3);
   const antes = captura.length;
   await page.click('#iaGenerar');                       // cierra la grabación y la usa
   await page.waitForFunction(n => document.querySelector('#iaResultado')?.textContent.includes('CONDICIÓN DE SALUD') || false, antes, { timeout: 15000 });
   r.generarCierraYUsa = captura.length === antes + 1 && /name="file"/.test(captura[captura.length - 1]);
+  const cuerpoDictado = Buffer.from(captura[captura.length - 1] || '', 'latin1').toString('utf8');
+  r.promptDictado = cuerpoDictado.includes('DICTADO DEL FISIOTERAPEUTA') && cuerpoDictado.includes('Dictado de un fisioterapeuta')
+    && await page.evaluate(() => state.informeIA?.dictado === true && document.querySelector('#iaResultadoDet summary').textContent.includes('con dictado'));
   await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));
   r.audioBorradoTrasInforme = (await metaAudioIDB(page)) === undefined;
 

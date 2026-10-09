@@ -1678,9 +1678,11 @@ test('datos ampliados: edad, fase 3, árbol, tests, criterios y pauta solo cuand
              { hipotesis: 'Fractura', derivar: true, pauta: '', fuente: '', prom: '' }],
   };
   const t = IN.bloquesAmpliados(a).join('\n');
+  // El horizonte del pronóstico no se envía: el informe lo convertía en plan (Daniel: ecografía «para valorar líquido…»)
+  assert.ok(!t.includes('6-12 semanas') && !/· Pronóstico/.test(t), 'sin la línea «Pronóstico»');
   for (const x of ['Signo comparable', 'Flexión lumbar', 'Empeorando', 'tolerancia al estrés físico Baja', 'Miedo al movimiento → Sí',
     'Dolor lumbar inflamatorio (2/4)', '¿SLR positivo? → SÍ — SLR <60°', 'Slump: positivo (parte del cluster «Cluster de Laslett»)',
-    'CPR Flynn: negativo (regla pronóstica', 'Pauta: Movilidad neural', 'Fuente: NICE NG59', 'Pronóstico (contexto para el fisioterapeuta: no es plan ni explicación al paciente): 6-12 semanas',
+    'CPR Flynn: negativo (regla pronóstica', 'Pauta: Movilidad neural', 'Fuente: NICE NG59',
     'Cuándo reconsiderar o derivar (contexto para el fisioterapeuta: no es plan ni explicación al paciente): Déficit progresivo', 'seguimiento: ODI', 'Derivar: sin tratamiento']) assert.ok(t.includes(x), `falta «${x}»`);
   const vacio = { edad: null, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [], arbol: [], tests: [], pautas: [] };
   assert.deepEqual(IN.bloquesAmpliados(vacio), [], 'sin datos, ningún bloque');
@@ -1806,7 +1808,7 @@ test('prompt: discrepancias con otras palabras, lo referido no se borra, cada in
     assert.ok(p.includes('También es una discrepancia cuando lo cuenta con otras palabras'));
     assert.ok(p.includes('no borra lo que refiere el paciente'));
     assert.ok(p.includes('Atribuye cada indicación a quien la dio'));
-    assert.ok(p.includes('no los uses para interpretar los hallazgos o los tests'));
+    assert.ok(p.includes('no lo uses para interpretar los hallazgos o los tests'));
     assert.ok(p.includes('No añadas coordinación, comunicación ni reevaluaciones con otros profesionales'));
     assert.ok(p.includes('La cirugía y sus restricciones no son factores ambientales'));
   }
@@ -2020,7 +2022,7 @@ test('prompt: reglas de la revisión con informes reales, en las dos plantillas'
       assert.match(p, /no es una discrepancia: recógelo tal cual. No escribas que algo «no se menciona», «no se confirma»/, `${nombre}: lo que solo consta en una fuente no es discrepancia`);
       assert.match(p, /otra zona u otro lado.*UNA vez como algo que refiere el paciente.*nunca en Pruebas Clínicas.*No le añadas plan, seguimiento, prevención/, `${nombre}: el otro lado, referido y sin plan inventado`);
       assert.match(p, /no escribas que la «confirman»/, `${nombre}: los tests apoyan, no confirman`);
-      assert.match(p, /El pronóstico y «Cuándo reconsiderar o derivar» son contexto para el fisioterapeuta: no los conviertas en acciones del plan, criterios de vuelta a la actividad/, `${nombre}: el pronóstico no se convierte en plan`);
+      assert.match(p, /«Cuándo reconsiderar o derivar» es contexto para el fisioterapeuta: no lo conviertas en acciones del plan, criterios de vuelta a la actividad/, `${nombre}: el pronóstico no se convierte en plan`);
     }
   }
   // Códigos CIF: limitados en la ficha (tiene sección propia); el narrativo, sin códigos
@@ -2875,6 +2877,23 @@ console.log('\nrevisión automática del informe con IA');
     assert.match(p, /«hace X» se refiere al día de la consulta/);
     assert.match(p, /Pruebas de imagen y derivaciones: recógelas solo como las indicó el fisioterapeuta, sin añadir qué se busca con ellas/);
   });
+  test('prompt: modo dictado — cabecera, quién habla y pista de Whisper (decimosexta revisión)', () => {
+    const d = { p: 'X', h: [{ name: 'H' }] };
+    for (const [k, pl] of Object.entries(IN.PLANTILLAS)) {
+      const dic = pl.prompt(d, { conAudio: true, dictado: true });
+      assert.match(dic, /DICTADO DEL FISIOTERAPEUTA \(transcripción de lo que narra el fisioterapeuta/, `${k}: cabecera del dictado`);
+      assert.match(dic, /En él habla solo el fisioterapeuta: lo que dice en primera persona.*son sus hallazgos e indicaciones; lo que introduce con «refiere», «dice» o «comenta» es lo que refiere el paciente/, `${k}: quién habla`);
+      assert.match(dic, /no la he hecho»\) no se hizo/, `${k}: lo no hecho no se describe`);
+      const dia = pl.prompt(d, { conAudio: true });
+      assert.ok(!/DICTADO/.test(dia) && /La transcripción complementa/.test(dia), `${k}: el diálogo no cambia`);
+      assert.ok(!/DICTADO/.test(pl.prompt(d, { conAudio: false, dictado: true })), `${k}: sin audio no hay dictado`);
+      assert.match(dic, /«dictado»/, `${k}: «dictado» entre las fuentes que no se nombran`);
+    }
+    assert.match(IN.getWhisperPrompt('cadera', { dictado: true }), /^Dictado de un fisioterapeuta.*Thomas modificado/);
+    assert.ok(!/Dictado/.test(IN.getWhisperPrompt('cadera')), 'sin dictado, la pista de siempre');
+    assert.match(IN.getWhisperPrompt('cadera'), /Ingle, dolor inguinal, psoas ilíaco, Thomas modificado/);
+    assert.deepEqual(Object.keys(IN.MODOS_AUDIO), ['dialogo', 'dictado']);
+  });
   test('formulario para la IA: en las matrices de actividades solo van las filas «Sí»', () => {
     const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
     const p = execFileSync(process.execPath, [join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'prompt-desde-json.mjs'), join(dir, 'valoracion-daniel-ortega-cadera.json'), 'narrativo'], { encoding: 'utf8' });
@@ -2907,7 +2926,8 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero', 'limitaciones-negativas']],
       ['valoracion-carmen-vidal-tobillo-breve.json', 'carmen-audio-1-ficha-breve.txt', 'carmen-audio-transcripcion.txt', ['relleno', 'fuentes', 'repetido']],
       ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['plan-urgente', 'frecuencia', 'diagnostico', 'imc']],
-      ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas']],
+      ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas', 'imagen-motivo']],
+      ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-1-informe.txt', 'daniel-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'constantes', 'imagen-motivo']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -2916,6 +2936,20 @@ console.log('\nrevisión automática del informe con IA');
       const ids = [...salida.matchAll(/^\[(?:ALTO|MEDIO)\] ([\w-]+):/gm)].map(m => m[1]);
       assert.deepEqual(ids, esperados, `${informe}\n${salida}`);
     }
+  });
+  test('revisión: constantes clasificadas, motivo de la imagen añadido, «en caso de ausencia de mejoría» (decimosexta revisión)', () => {
+    assert.ok(ids('Presenta signos vitales dentro de parámetros habituales, con una frecuencia cardíaca de 58 lpm.').includes('constantes'));
+    assert.ok(ids('Paciente normotenso.').includes('constantes'));
+    assert.ok(!ids('Frecuencia cardíaca de 58 lpm y tensión arterial de 120/80 mmHg.').includes('constantes'), 'las cifras solas no');
+    const ecoInventada = 'Si no mejora, se solicitará una ecografía para valorar la presencia de líquido alrededor del tendón.';
+    assert.ok(ids(ecoInventada, { transcripcion: 'Si en unas 6 semanas no mejora, pediremos una ecografía.' }).includes('imagen-motivo'));
+    assert.ok(!ids(ecoInventada, { transcripcion: 'Pediremos una ecografía para ver si hay líquido.' }).includes('imagen-motivo'), 'el motivo lo dio el fisio');
+    assert.ok(!ids('Se solicitará una ecografía.').includes('imagen-motivo'), 'sin motivo no cuenta');
+    const seg = t => RI.revisarInforme(`## CONCLUSIONES Y PLAN DE TRATAMIENTO\n\n${t}\n\n## SEGUIMIENTO FUNCIONAL\n\nSe usará la HAGOS.`).map(p => p.id);
+    assert.ok(seg('En caso de ausencia de mejoría en seis semanas, se solicitará ecografía.').includes('seguimiento-fuera'));
+    assert.ok(seg('Si no mejora, se pedirá una ecografía.').includes('seguimiento-fuera'));
+    assert.ok(!seg('La ausencia de mejoría con movimientos repetidos es compatible con origen facetario.').includes('seguimiento-fuera'), 'un hallazgo no es el criterio');
+    assert.ok(ids('Según el dictado, refiere dolor.').includes('fuentes'), '«dictado» nombra la fuente');
   });
   test('revisión: «Antes de compartir, comprueba» — atribución y otra zona siempre; tests con «o» solo si se hicieron', () => {
     const sin = RI.comprobacionesManuales({ ampliado: { tests: [{ hipotesis: 'X', items: [{ test: 'Test de Neer', resultado: 'positivo' }] }] } });
@@ -2929,6 +2963,9 @@ console.log('\nrevisión automática del informe con IA');
     assert.equal(con.length, 3);
     assert.equal((con[1].match(/«PA unilateral/g) || []).length, 1, 'cada test una sola vez');
     assert.equal(RI.comprobacionesManuales().length, 2, 'sin datos ampliados no rompe');
+    const disc = RI.comprobacionesManuales({ formularioYAudio: true });
+    assert.equal(disc.length, 3);
+    assert.match(disc[2], /difiere del formulario previo.*las dos versiones/, 'con formulario y audio, las discrepancias');
   });
   test('revisión: cabecera y pie compartidos se quitan; cita la frase', () => {
     const t = RI.quitarCabeceraYPie('INFORME DE FISIOTERAPIA\nPaciente: Pedro Flores\nEdad: 52 años\nFecha: 07/10/2026\n\nTexto.\n\n—\nInforme generado con PhysiQ-Assessment el 07/10/2026 (redacción asistida por IA).');
