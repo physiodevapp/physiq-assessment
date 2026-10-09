@@ -512,6 +512,50 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "marta-dictado-2-informe.txt",
+      "valoracion": "valoracion-marta-gil-rodilla.json",
+      "transcripcion": "marta-dictado-2-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "marta2-bloqueo-chasquidos",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Copia otra vez la etiqueta de ro_step1 («trauma rotacional con síntomas de bloqueo o chasquidos») y la da como confirmada, contra el formulario (ronda 18: iaTexto en ro_step1)",
+          "fragmentos": [
+            "confirma un mecanismo de trauma rotacional con síntomas de bloqueo o chasquidos"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "sergio-dictado-1-informe.txt",
+      "valoracion": "valoracion-sergio-navarro-tobillo.json",
+      "transcripcion": "sergio-dictado-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "sergio-pinza",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "«La exploración mediante pinza confirma dolor entre los 2 y 6 centímetros»: la pista de la opción del árbol leída como prueba hecha (ronda 19: iaSinPista)",
+          "fragmentos": [
+            "La exploración mediante pinza confirma dolor entre los 2 y 6 centímetros"
+          ]
+        },
+        {
+          "id": "sergio-medico-omitido",
+          "tipo": "omision",
+          "nivel": "medio",
+          "descripcion": "Omite que el médico de cabecera le dijo que dejara de correr, que choca con la indicación del fisio de seguir corriendo suave",
+          "claves": [
+            "dejara de correr",
+            "médico de cabecera"
+          ]
+        }
+      ]
     }
   ]
 }

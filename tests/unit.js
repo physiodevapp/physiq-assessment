@@ -1787,6 +1787,16 @@ test('construirAmpliado: iaPregunta / iaTexto del árbol sustituyen al texto de 
     assert.ok(r.includes('NO — El dolor no parece referido desde la columna lumbar ni la sacroilíaca'));
     assert.ok(r.includes('NO — Perfil no degenerativo'));
   });
+  withState({ region: 'tobillo_pie', treeAnswers: { tp_step1: 'no', tp_step6: 'aquiles_media', tp_step7: 'no' }, activeHypotheses: [] }, () => {
+    const r = IA.construirAmpliado().arbol.map(x => x.respuesta);
+    assert.ok(r.includes('AQUILES PORCIÓN MEDIA'), 'iaSinPista: solo el nombre, sin «Pinza, 2–6 cm» (Sergio, ronda 19)');
+    assert.ok(r.includes('NINGUNO — Sin dolor medial o nada de esto lo explica'), 'el NINGUNO va entero');
+  });
+  withState({ region: 'rodilla', treeAnswers: { ro_step1: 'menisco' }, activeHypotheses: [] }, () => {
+    assert.equal(IA.construirAmpliado().arbol[0].respuesta, 'SÍ — Trauma rotacional (orienta a: menisco)', 'sin «síntomas de bloqueo o chasquidos» (Marta, ronda 18)');
+  });
+  for (const o of CIF_TREES.rodilla.steps.find(s => s.id === 'ro_step1').options.filter(o => o.value !== 'no'))
+    assert.ok(o.iaTexto && !/bloqueo|chasquido|derrame|aprensión|escalón|pop/i.test(o.iaTexto), `ro_step1.${o.value}: iaTexto sin síntomas ni signos`);
   withState({ region: 'rodilla', treeAnswers: { ro_step1b: 'no' }, activeHypotheses: [] }, () => {
     const p = IA.construirAmpliado().arbol[0].pregunta;
     assert.ok(p.startsWith('¿Algún criterio de Ottawa') && !/Pittsburgh|%|Seaberg/.test(p));
@@ -1814,6 +1824,9 @@ test('prompt: aviso de patrón en los hallazgos; recordatorio de discrepancias j
   assert.ok(IN.buildFichaBrevePrompt(d, { conAudio: true, ampliado: amp }).includes(IN.RECORDATORIO_DISCREPANCIAS));
   assert.ok(!IN.buildNarrativePrompt(d, { conAudio: false, ampliado: amp }).includes(IN.RECORDATORIO_DISCREPANCIAS));
   assert.match(IN.buildNarrativePrompt(d, { conAudio: true, dictado: true, ampliado: amp }), /«no la ha hecho»/, 'el dictado avisa del «he» → «ha» de Whisper');
+  assert.ok(IN.buildNarrativePrompt(d, { conAudio: true, ampliado: amp }).includes(IN.AVISO_NIEGA), 'con audio, el aviso va en la indicación de Dolor');
+  assert.ok(!IN.buildNarrativePrompt(d, { conAudio: false, ampliado: amp }).includes(IN.AVISO_NIEGA));
+  assert.ok(!IN.buildNarrativePrompt(d, { conAudio: false, ampliado: amp }).includes('persona atendida'), 'sin el ejemplo neutro que copiaba aunque constara el sexo');
 });
 
 const FM = await import('../formulario.js');
@@ -3147,6 +3160,16 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(rv('Al pivotar nota que la rodilla se le iba. Niega que le falle o ceda.').includes('discrepancia-separada'));
     assert.ok(!rv('Niega mareo o inestabilidad. El test de inestabilidad en prono es positivo.').includes('discrepancia-separada'), '«inestabilidad» suelta no es un fallo articular');
     assert.ok(!rv('La flexión no la refuerza pero tampoco la descarta.').includes('descarta'));
+    assert.ok(rv('Refiere que nota el tendón hinchado. Niega hinchazón en el pie.').includes('discrepancia-separada'), 'hinchazón');
+    assert.ok(rv('En caso de no observarse mejoría en 12 semanas, se pedirá una ecografía.\n## SEGUIMIENTO FUNCIONAL\nVISA-A.').includes('seguimiento-fuera'));
+    assert.ok(rv('El izquierdo, aspecto que no ha sido explorado.').includes('relleno'));
+    const conTr = (texto, transcripcion) => RI.revisarInforme(texto, { datos: { p: 'X', r: 'tobillo_pie', d: '01/01/2026', br: [], sq: [], pn: {}, h: [], nr: 3 }, transcripcion }).map(p => p.id);
+    assert.ok(!conTr('Los primeros pasos duelen (4/10).', 'Ahora el dolor está en un 2 sobre 10; corriendo llega a un 5 y por la mañana los primeros pasos a un 4.').includes('nrs'), '«un 4» tras una cifra «sobre 10»');
+    assert.ok(conTr('Los primeros pasos duelen (7/10).', 'Ahora el dolor está en un 2 sobre 10; corriendo llega a un 5.').includes('nrs'), 'una cifra que no se dijo sigue saltando');
+    assert.ok(rv('Niega episodios de fallo o de que la rodilla cede. Al pivotar, la rodilla se le iba.').includes('discrepancia-separada'), '«episodios de fallo», «la rodilla cede»');
+    const conSexo = texto => RI.revisarInforme(texto, { datos: { p: 'X', r: 'rodilla', d: '01/01/2026', br: [], sq: [], pn: {}, h: [] }, ampliado: { sexo: 'Mujer' } }).map(p => p.id);
+    assert.ok(conSexo('La persona atendida eleva la pierna extendida.').includes('genero'));
+    assert.ok(!rv('La persona atendida eleva la pierna extendida.').includes('genero'), 'sin sexo registrado, la fórmula neutra es lo correcto');
   });
   test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
     const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
@@ -3163,7 +3186,9 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas', 'imagen-motivo']],
       ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-1-informe.txt', 'daniel-dictado-transcripcion.txt', ['lado-otro', 'formulario-contradicho', 'seguimiento-fuera', 'constantes', 'imagen-motivo']],
       ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-2-informe.txt', 'daniel-dictado-2-transcripcion.txt', ['lado-otro', 'no-se', 'formulario-contradicho', 'test-propiedades']],
-      ['valoracion-marta-gil-rodilla.json', 'marta-dictado-1-informe.txt', 'marta-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'frecuencia', 'discrepancia-separada']],
+      ['valoracion-marta-gil-rodilla.json', 'marta-dictado-1-informe.txt', 'marta-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'relleno', 'frecuencia', 'discrepancia-separada']],
+      ['valoracion-marta-gil-rodilla.json', 'marta-dictado-2-informe.txt', 'marta-dictado-2-transcripcion.txt', ['lado-otro', 'genero', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
+      ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-1-informe.txt', 'sergio-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
