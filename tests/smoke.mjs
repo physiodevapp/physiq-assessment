@@ -1014,6 +1014,20 @@ async function recorrerGrabadora(browser, errors) {
   await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
   // Dictado del fisio: consejos a la vista, cabecera y pista de Whisper propias
   r.selectorModoAudio = await page.evaluate(() => document.querySelector('#iaModoAudio .option-btn.selected')?.textContent.includes('diálogo'));
+  // A 320 px, «Tipo de informe» y «Qué hay en el audio»: dos botones del mismo
+  // ancho en una sola fila, sin texto cortado
+  const vp = page.viewportSize();
+  await page.setViewportSize({ width: 320, height: vp.height });
+  await page.waitForTimeout(200);
+  r.selectoresEstrechos = await page.evaluate(() => ['iaPlantilla', 'iaModoAudio'].every(id => {
+    const bs = [...document.querySelectorAll(`#${id} .ia-plantilla-opciones .option-btn`)];
+    if (bs.length !== 2) return false;
+    const [a, b] = bs.map(x => x.getBoundingClientRect());
+    return Math.abs(a.top - b.top) < 1 && Math.abs(a.width - b.width) < 1 && b.right <= innerWidth
+      && bs.every(x => x.scrollWidth <= x.clientWidth && x.scrollHeight <= x.clientHeight + 1);
+  }));
+  await page.setViewportSize(vp);
+  await page.waitForTimeout(200);
   await page.click('#iaModoAudio .option-btn:has-text("Dictado")');
   r.consejosDictado = await page.evaluate(() => document.querySelectorAll('#iaModoAudio .ia-consejos-dictado li').length === 3);
   const antes = captura.length;

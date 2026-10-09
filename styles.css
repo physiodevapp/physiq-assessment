@@ -2542,6 +2542,21 @@
 .ia-plantilla-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
 .ia-plantilla-palabras { font-size: 0.72rem; color: var(--text3); margin-left: 4px; }
 .ia-plantilla .option-btn.selected .ia-plantilla-palabras { color: inherit; opacity: 0.75; }
+.ia-op-corto { display: none; }
+/* Selectores «Tipo de informe» y «Qué hay en el audio» en pantalla estrecha:
+   dos columnas iguales, como un selector de dos opciones, con la etiqueta en
+   dos líneas (nombre + detalle), para que quepan en una fila a 320 px. */
+@media (max-width: 480px) {
+  .ia-plantilla-opciones { display: grid; grid-template-columns: 1fr 1fr; }
+  .ia-plantilla-opciones .option-btn {
+    width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; line-height: 1.25; padding: 8px 6px; white-space: normal;
+  }
+  .ia-plantilla-opciones .ia-op-full { display: none; }
+  .ia-plantilla-opciones .ia-op-corto { display: contents; }
+  .ia-plantilla-opciones .ia-op-sub { display: block; margin: 2px 0 0; font-size: 0.72rem; color: var(--text3); font-weight: 400; }
+  .ia-plantilla-opciones .option-btn.selected .ia-op-sub { color: inherit; opacity: 0.75; }
+}
 
 /* Informe generado: plegado, con título y metadatos en la cabecera */
 .ia-resultado-det {
