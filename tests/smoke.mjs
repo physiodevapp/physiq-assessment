@@ -959,6 +959,39 @@ async function checkInformeNarrativo(browser, errors) {
   // Revisión automática: aparece sola bajo el informe (puntos o «sin incidencias»)
   r.revision = await page.evaluate(() => !!document.querySelector('#iaRevision .ia-revision'));
   r.comprobar = await page.evaluate(() => document.querySelectorAll('#iaComprobar .ia-comprobar li').length >= 2);
+  // Marcar «Revisado»: cada punto y cada comprobación; el punto se queda a la
+  // vista atenuado, las cabeceras cuentan, sobrevive a un repintado y el menú
+  // de «Compartir» pasa de «sin revisar» a «revisados»
+  const subIA = async () => {
+    await page.click('#btnCompartir');
+    await page.waitForSelector('#compartirOverlay.open');
+    const t = await page.locator('#compartirOverlay .compartir-op:has-text("Informe clínico") .compartir-op-sub').textContent();
+    await page.keyboard.press('Escape');
+    return t;
+  };
+  r.menuSinRevisar = /sin revisar/.test(await subIA());
+  await page.evaluate(() => document.querySelector('#iaRevision details')?.setAttribute('open', ''));
+  const casillas = page.locator('#iaRevision .ia-rev-check, #iaComprobar .ia-rev-check');
+  const nCasillas = await casillas.count();
+  for (let i = 0; i < nCasillas; i++) await casillas.nth(i).check();
+  // Marcar no cierra la caja de puntos (antes el «input» de la casilla
+  // repintaba la tarjeta 400 ms después y la caja volvía cerrada)
+  await page.waitForTimeout(700);
+  r.cajaSigueAbierta = await page.evaluate(() => { const d = document.querySelector('#iaRevision details'); return !d || d.open; });
+  r.revisadosMarcados = nCasillas >= 2 && await page.evaluate(n => {
+    const det = document.querySelector('#iaRevision details.ia-revision');
+    return state.informeIA.revisados.length === n
+      && document.querySelectorAll('#iaRevision li.ia-rev-hecho, #iaComprobar li.ia-rev-hecho').length === n
+      && (!det || (det.querySelector('summary').textContent.startsWith('✓') && det.classList.contains('ia-revision-hecha')))
+      && document.querySelector('#iaComprobar .ia-comprobar').classList.contains('ia-comprobar-hecha');
+  }, nCasillas);
+  await page.evaluate(() => buildResults());
+  await page.waitForSelector('#iaComprobar .ia-rev-check');
+  r.revisadosTrasRepintar = (await page.locator('#iaRevision .ia-rev-check:checked, #iaComprobar .ia-rev-check:checked').count()) === nCasillas;
+  r.menuRevisado = /revisado/.test(await subIA()) && !/sin revisar/.test(await subIA());
+  await page.evaluate(() => document.querySelector('#iaRevision details')?.setAttribute('open', ''));
+  await casillas.first().uncheck();
+  r.menuDeNuevoPendiente = /1 de \d+ puntos sin revisar/.test(await subIA());
   // «⬇ Paquete de revisión»: al final, justo tras la fila de acciones clínicas y
   // fuera de ella, con el texto completo
   r.paquetePosicion = await page.evaluate(() => {

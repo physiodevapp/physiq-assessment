@@ -529,6 +529,49 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "sergio-dictado-1-informe.txt",
+      "valoracion": "valoracion-sergio-navarro-tobillo.json",
+      "transcripcion": "sergio-dictado-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "sergio-pinza",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "«La exploración mediante pinza confirma dolor entre los 2 y 6 centímetros»: la pista de la opción del árbol leída como prueba hecha (ronda 19: iaSinPista)",
+          "fragmentos": [
+            "La exploración mediante pinza confirma dolor entre los 2 y 6 centímetros"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "sergio-dictado-2-informe.txt",
+      "valoracion": "valoracion-sergio-navarro-tobillo.json",
+      "transcripcion": "sergio-dictado-2-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "sergio2-informado-mejoria",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«Se ha informado de que la mejoría esperable en la VISA-A es de 18 a 21 puntos»: la cifra viene de la pauta de tp8 y nadie se lo explicó al paciente",
+          "fragmentos": [
+            "Se ha informado de que la mejoría esperable en la escala VISA-A"
+          ]
+        },
+        {
+          "id": "sergio2-hinchazon-una-version",
+          "tipo": "omision",
+          "nivel": "medio",
+          "descripcion": "Da solo la versión de la consulta (tendón hinchado al final del día); la del formulario (hinchazón: No) desaparece",
+          "claves": [
+            "hinchazón"
+          ]
+        }
+      ]
     }
   ]
 }

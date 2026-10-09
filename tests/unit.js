@@ -1877,6 +1877,11 @@ test('construirAmpliado: iaPregunta / iaTexto del árbol sustituyen al texto de 
     assert.ok(r.includes('NO — El dolor no parece referido desde la columna lumbar ni la sacroilíaca'));
     assert.ok(r.includes('NO — Perfil no degenerativo'));
   });
+  withState({ region: 'tobillo_pie', treeAnswers: { tp_step1: 'no', tp_step6: 'aquiles_media', tp_step7: 'no' }, activeHypotheses: [] }, () => {
+    const r = IA.construirAmpliado().arbol.map(x => x.respuesta);
+    assert.ok(r.includes('AQUILES PORCIÓN MEDIA'), 'solo la conclusión, sin «Pinza, 2–6 cm» (Sergio, ronda 19)');
+    assert.ok(!r.some(x => /Sin dolor medial/.test(x)), 'el NINGUNO de un paso de zona no se envía');
+  });
   withState({ region: 'rodilla', treeAnswers: { ro_step1: 'menisco' }, activeHypotheses: [] }, () => {
     assert.equal(IA.construirAmpliado().arbol[0].respuesta, 'SÍ — Trauma rotacional (orienta a: menisco)', 'sin «síntomas de bloqueo o chasquidos» (Marta, ronda 18)');
   });
@@ -1886,6 +1891,24 @@ test('construirAmpliado: iaPregunta / iaTexto del árbol sustituyen al texto de 
     const p = IA.construirAmpliado().arbol[0].pregunta;
     assert.ok(p.startsWith('¿Algún criterio de Ottawa') && !/Pittsburgh|%|Seaberg/.test(p));
   });
+});
+
+test('prompt: textoOpcionIA envía la conclusión; NO, derivaciones, iaEntera e iaTexto enteros; el NINGUNO de zona no va', () => {
+  const t = IN.textoOpcionIA;
+  assert.equal(t({ label: 'SÍ — Test de Spurling positivo, ULNT1 positivo o alivio' }), 'SÍ');
+  assert.equal(t({ label: 'HOFFA — Recurvatum, test de Hoffa' }), 'HOFFA');
+  assert.equal(t({ label: 'NO — FADDIR y flexión-RI negativos' }), 'NO — FADDIR y flexión-RI negativos');
+  assert.equal(t({ label: 'THOMPSON POSITIVO — Rotura del Aquiles: derivación preferente' }), 'THOMPSON POSITIVO — Rotura del Aquiles: derivación preferente');
+  assert.equal(t({ label: '5.º MT — Fractura', iaEntera: true }), '5.º MT — Fractura');
+  assert.equal(t({ label: 'SÍ — A o B', iaTexto: 'SÍ — Orienta a X' }), 'SÍ — Orienta a X');
+  assert.equal(t({ label: 'NINGUNO — Sin dolor medial o nada de esto lo explica' }), null);
+  assert.equal(t({ label: 'NINGUNO — Ottawa negativo y eleva la pierna extendida' }), 'NINGUNO — Ottawa negativo y eleva la pierna extendida', 'un NINGUNO de seguridad sí va');
+  assert.equal(t({ label: 'MENISCO MEDIAL' }), 'MENISCO MEDIAL');
+  // Las preguntas con varios «SÍ» llevan iaTexto, o el prompt no sabría cuál fue
+  for (const [r, tr] of Object.entries(CIF_TREES)) for (const st of tr.steps) {
+    const sis = st.options.filter(o => !o.iaTexto && !o.iaEntera && t(o) === 'SÍ');
+    assert.ok(sis.length <= 1, `${r}.${st.id}: varias opciones llegarían como «SÍ» a secas`);
+  }
 });
 
 test('prompt: ninguna línea de «Hallazgos de la exploración» lleva cifras de S/E, «veces» ni citas', () => {
@@ -2211,7 +2234,7 @@ test('construirAmpliado: lee el estado de las cinco fases', () => {
     assert.equal(a.signoComparable, 'Flexión');
     assert.deepEqual(a.irritabilidad, { dolor: 'Alto' });
     assert.deepEqual(a.psico.map(x => x.a), ['Sí', 'No'], 'solo lo contestado');
-    assert.deepEqual(a.arbol, [{ pregunta: lu.question, respuesta: lu.options[0].label }]);
+    assert.deepEqual(a.arbol, [{ pregunta: lu.question, respuesta: 'SÍ' }], 'solo la conclusión, sin los criterios «SLR <60° o Slump»');
     const t8 = a.tests.find(t => t.hipotesis === lu8.name);
     assert.equal(t8.items.length, 1, '«nd» no cuenta como realizado');
     assert.equal(t8.items[0].resultado, 'positivo');
@@ -2959,6 +2982,35 @@ console.log('\npaquete de revisión del informe con IA');
     assert.match(ficheros[2].texto, /sin incidencias/);
     assert.equal(PR.ficherosPaquete({ inf: { ...viejo, conAudio: true, transcripcion: 'Hola' }, informe: 'T', state: st, ahora }).ficheros[1].nombre, 'daniel-ortega-audio-ficha-breve.txt');
   });
+  const RV = await import('../lib/revision-informe.js');
+  test('revisados: la clave es regla + frase citada; el recuento separa puntos, altos y comprobaciones', () => {
+    const comprob = ['Atribución de cada indicación.', 'Otra zona o lado.'];
+    const vacio = RV.resumenRevisados(puntos, comprob, undefined);
+    assert.deepEqual([vacio.total, vacio.pendientes, vacio.altosPendientes, vacio.puntosPendientes, vacio.comprobacionesPendientes], [4, 4, 1, 2, 2]);
+    const marcados = [RV.clavePunto(puntos[1]), RV.claveComprobacion(comprob[0])];
+    const r = RV.resumenRevisados(puntos, comprob, marcados);
+    assert.deepEqual([r.pendientes, r.altosPendientes, r.puntosPendientes, r.comprobacionesPendientes], [2, 0, 1, 1]);
+    // La misma regla con otra frase es otro punto: no hereda la marca
+    const otra = { ...puntos[0], cita: 'normotenso' };
+    assert.notEqual(RV.clavePunto(otra), RV.clavePunto(puntos[0]));
+    assert.equal(RV.resumenRevisados([otra], [], [RV.clavePunto(puntos[0])]).puntosPendientes, 1);
+    // Sin cita (omisión): la clave usa el mensaje
+    assert.equal(RV.clavePunto(puntos[1]), 'p|urgencia|Falta la derivación.');
+  });
+  test('revisados: el paquete marca lo revisado en revision.txt; un informe nuevo empieza sin marcas', () => {
+    const conMarcas = { ...inf, revisados: [RV.clavePunto(puntos[0]), RV.claveComprobacion('Cada indicación…')] };
+    const rev = PR.ficherosPaquete({ inf: conMarcas, informe: 'T', state: st, puntos, comprobaciones: ['Cada indicación…', 'Otra zona.'], ahora })
+      .ficheros.find(f => f.nombre === 'revision.txt').texto;
+    assert.match(rev, /marcados como revisados: 1/);
+    assert.match(rev, /^\[MEDIO\] constantes: Clasifica las constantes\. \[revisado\]$/m);
+    assert.match(rev, /^\[ALTO\] urgencia: Falta la derivación\.$/m);
+    assert.match(rev, /^- Cada indicación… \[revisado\]$/m);
+    assert.match(rev, /^- Otra zona\.$/m);
+    const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
+    const nuevo = src.slice(src.indexOf('state.informeIA = {'), src.indexOf('};', src.indexOf('state.informeIA = {')));
+    assert.ok(nuevo && !/revisados/.test(nuevo), 'el informe recién generado no arrastra marcas');
+    assert.equal(typeof globalThis.iaMarcarRevisado, 'function');
+  });
   test('paquete: la tarjeta guarda el prompt y la versión al generar, y el botón está expuesto', () => {
     const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
     assert.match(src, /prompt,\s+\/\/ el exacto que se envió/);
@@ -3216,6 +3268,18 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(rv('Al pivotar nota que la rodilla se le iba. Niega que le falle o ceda.').includes('discrepancia-separada'));
     assert.ok(!rv('Niega mareo o inestabilidad. El test de inestabilidad en prono es positivo.').includes('discrepancia-separada'), '«inestabilidad» suelta no es un fallo articular');
     assert.ok(!rv('La flexión no la refuerza pero tampoco la descarta.').includes('descarta'));
+    const conTr2 = (texto, transcripcion) => RI.revisarInforme(texto, { datos: { p: 'X', r: 'tobillo_pie', d: '01/01/2026', br: [], sq: [], pn: {}, h: [] }, transcripcion }).map(p => p.id);
+    assert.ok(conTr2('Toma ibuprofeno.', 'Su médico de cabecera le dijo que dejara de correr.').includes('indicacion-omitida'));
+    assert.ok(!conTr2('El médico de cabecera le indicó dejar de correr.', 'Su médico de cabecera le dijo que dejara de correr.').includes('indicacion-omitida'));
+    assert.ok(rv('Signos vitales dentro de parámetros esperables.').includes('constantes'));
+    assert.ok(rv('Se valorará una ecografía para una valoración más detallada.').includes('imagen-motivo'));
+    assert.ok(rv('En consulta, comenta que nota el tendón hinchado.').includes('fuentes'));
+    assert.ok(rv('Refiere que nota el tendón hinchado. Niega hinchazón en el pie.').includes('discrepancia-separada'), 'hinchazón');
+    assert.ok(rv('En caso de no observarse mejoría en 12 semanas, se pedirá una ecografía.\n## SEGUIMIENTO FUNCIONAL\nVISA-A.').includes('seguimiento-fuera'));
+    assert.ok(rv('El izquierdo, aspecto que no ha sido explorado.').includes('relleno'));
+    const conTr = (texto, transcripcion) => RI.revisarInforme(texto, { datos: { p: 'X', r: 'tobillo_pie', d: '01/01/2026', br: [], sq: [], pn: {}, h: [], nr: 3 }, transcripcion }).map(p => p.id);
+    assert.ok(!conTr('Los primeros pasos duelen (4/10).', 'Ahora el dolor está en un 2 sobre 10; corriendo llega a un 5 y por la mañana los primeros pasos a un 4.').includes('nrs'), '«un 4» tras una cifra «sobre 10»');
+    assert.ok(conTr('Los primeros pasos duelen (7/10).', 'Ahora el dolor está en un 2 sobre 10; corriendo llega a un 5.').includes('nrs'), 'una cifra que no se dijo sigue saltando');
     assert.ok(rv('Niega episodios de fallo o de que la rodilla cede. Al pivotar, la rodilla se le iba.').includes('discrepancia-separada'), '«episodios de fallo», «la rodilla cede»');
     const conSexo = texto => RI.revisarInforme(texto, { datos: { p: 'X', r: 'rodilla', d: '01/01/2026', br: [], sq: [], pn: {}, h: [] }, ampliado: { sexo: 'Mujer' } }).map(p => p.id);
     assert.ok(conSexo('La persona atendida eleva la pierna extendida.').includes('genero'));
@@ -3236,8 +3300,10 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas', 'imagen-motivo']],
       ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-1-informe.txt', 'daniel-dictado-transcripcion.txt', ['lado-otro', 'formulario-contradicho', 'seguimiento-fuera', 'constantes', 'imagen-motivo']],
       ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-2-informe.txt', 'daniel-dictado-2-transcripcion.txt', ['lado-otro', 'no-se', 'formulario-contradicho', 'test-propiedades']],
-      ['valoracion-marta-gil-rodilla.json', 'marta-dictado-1-informe.txt', 'marta-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'frecuencia', 'discrepancia-separada']],
+      ['valoracion-marta-gil-rodilla.json', 'marta-dictado-1-informe.txt', 'marta-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'relleno', 'frecuencia', 'discrepancia-separada']],
       ['valoracion-marta-gil-rodilla.json', 'marta-dictado-2-informe.txt', 'marta-dictado-2-transcripcion.txt', ['lado-otro', 'genero', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
+      ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-1-informe.txt', 'sergio-dictado-transcripcion.txt', ['lado-otro', 'indicacion-omitida', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
+      ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-2-informe.txt', 'sergio-dictado-2-transcripcion.txt', ['lado-otro', 'indicacion-omitida', 'descarta', 'repetido', 'fuentes', 'fisiopatologia', 'atribucion', 'constantes', 'imagen-motivo']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -3284,9 +3350,9 @@ console.log('\nrevisión automática del informe con IA');
   });
   test('revisión: se pinta en la tarjeta, nunca en el payload ni en los resúmenes, y se despliega', () => {
     const src = readFileSync(new URL('../informe-ia.js', import.meta.url), 'utf8');
-    assert.match(src, /import \{ revisarInforme, comprobacionesManuales \} from '\.\/lib\/revision-informe\.js';/);
+    assert.match(src, /import \{ revisarInforme, comprobacionesManuales[^}]*\} from '\.\/lib\/revision-informe\.js';/);
     assert.match(src, /<div id="iaRevision"><\/div>/);
-    assert.match(src, /catch \{ el\.innerHTML = ''; return; \}/, 'una regla rota no tumba la tarjeta');
+    assert.match(src, /catch \{ el\.innerHTML = '';( _rev\w+ = \[\];)? return; \}/, 'una regla rota no tumba la tarjeta');
     const wf = readFileSync(new URL('../.github/workflows/deploy-to-hub.yml', import.meta.url), 'utf8');
     assert.ok(/cp lib\/[^\n]*lib\/revision-informe\.js[^\n]*physiq-hub\/assessment\/lib\//.test(wf), 'lib/revision-informe.js se copia al hub');
     const appSrc = readFileSync(new URL('../app.js', import.meta.url), 'utf8');

@@ -22,13 +22,13 @@ import { CIF_TREES, HYPOTHESES, SYSTEMIC_SCREENING, DOSIS_DERIVAR } from './data
 import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast, resumenFormularioIA, compartirTexto, registrarValoracionCompleta } from './app.js';
 import { esTratada, hipotesis, hipotesisActivas } from './phase4b.js';
 import { esPosquirurgico, cirugiaPayload, pautaHipPosq } from './lib/posquirurgico.js';
-import { revisarInforme, comprobacionesManuales } from './lib/revision-informe.js';
+import { revisarInforme, comprobacionesManuales, clavePunto, claveComprobacion, resumenRevisados } from './lib/revision-informe.js';
 import { VERSION_SHA } from './lib/version.js';
 import {
   ORCHESTRATOR_URL, TURNSTILE_SITEKEY, MAX_AUDIO_BYTES, PLANTILLAS, plantillaPorDefecto, MODOS_AUDIO,
   getWhisperPrompt, huellaPayload, parseSSEBuffer, parseSSEBlock,
   informeTruncado, markdownAHtml, textoParaCompartir, extensionAudio, errorLegible, errorConexion,
-  transcripcionSinVoz, TEXTO_SIN_VOZ,
+  transcripcionSinVoz, TEXTO_SIN_VOZ, textoOpcionIA,
 } from './lib/informe-narrativo.js';
 import { estadoLicencia, onLicencia, comprobarLicencia, probarClave, marcarSinLicencia, claveGuardada, detalleLicencia } from './lib/licencia-ia.js';
 import {
@@ -268,6 +268,17 @@ function puntosRevision(inf) {
 const BOTON_PAQUETE = `<div class="ia-rev-paquete"><button type="button" class="ia-rev-paquete-btn" onclick="iaPaqueteRevision()"
     title="Descarga un .zip con el informe, la transcripción, los puntos a revisar y la valoración, para revisar el informe. Contiene datos clínicos y el nombre del paciente.">⬇ Paquete de revisión</button></div>`;
 
+// Lo pintado ahora, para marcar «Revisado» por índice sin repintar la caja
+// (que perdería si estaba abierta o cerrada)
+let _revPuntos = [];
+let _revAbierta = null;    // abierta/cerrada a mano; null = por defecto (abierta con un alto sin revisar)
+let _revComprob = [];
+const _revisados = () => new Set(state.informeIA?.revisados || []);
+
+function casillaRevisado(tipo, i, hecho) {
+  return `<input type="checkbox" class="ia-rev-check"${hecho ? ' checked' : ''} onchange="iaMarcarRevisado(this.checked,'${tipo}',${i})" aria-label="Revisado">`;
+}
+
 function pintarRevision() {
   const el = $('iaRevision');
   const inf = state.informeIA;
@@ -275,17 +286,65 @@ function pintarRevision() {
   pintarComprobaciones();
   let puntos;
   try { puntos = puntosRevision(inf); }
-  catch { el.innerHTML = ''; return; }   // una regla rota nunca tumba la tarjeta
+  catch { el.innerHTML = ''; _revPuntos = []; return; }   // una regla rota nunca tumba la tarjeta
+  _revPuntos = puntos;
   if (!puntos.length) {
     el.innerHTML = '<div class="ia-revision ia-revision-ok">✓ Sin incidencias en las comprobaciones automáticas. Revisa el informe antes de compartirlo.</div>';
     return;
   }
-  const altos = puntos.some(p => p.nivel === 'alto');
-  el.innerHTML = `<details class="ia-revision${altos ? ' ia-revision-alta' : ''}"${altos ? ' open' : ''}>
-      <summary>⚠ ${puntos.length} ${puntos.length === 1 ? 'punto' : 'puntos'} a revisar en el informe</summary>
-      <ul>${puntos.map(p => `<li class="ia-rev-${p.nivel}">${esc(p.mensaje)}${p.cita ? `<span class="ia-rev-cita">«${esc(p.cita)}»</span>` : ''}</li>`).join('')}</ul>
-      <div class="ia-rev-nota">Comprobaciones automáticas del texto frente a la valoración: pueden señalar algo correcto. No cambian el informe.</div>
+  const hechos = _revisados();
+  const { altosPendientes } = resumenRevisados(puntos, [], inf.revisados);
+  const abierta = _revAbierta ?? altosPendientes > 0;
+  el.innerHTML = `<details class="ia-revision"${abierta ? ' open' : ''}>
+      <summary></summary>
+      <ul>${puntos.map((p, i) => {
+        const hecho = hechos.has(clavePunto(p));
+        return `<li class="ia-rev-${p.nivel}${hecho ? ' ia-rev-hecho' : ''}"><label class="ia-rev-item">${casillaRevisado('p', i, hecho)}<span>${esc(p.mensaje)}${p.cita ? `<span class="ia-rev-cita">«${esc(p.cita)}»</span>` : ''}</span></label></li>`;
+      }).join('')}</ul>
+      <div class="ia-rev-nota">Comprobaciones automáticas del texto frente a la valoración: pueden señalar algo correcto. No cambian el informe. Marca cada una como revisada cuando la hayas mirado.</div>
     </details>`;
+  el.querySelector('details.ia-revision').addEventListener('toggle', e => { _revAbierta = e.target.open; });
+  cabeceraRevision();
+}
+
+// «⚠ 3 puntos a revisar» → «⚠ 1 de 3 sin revisar» → «✓ 3 puntos revisados».
+// Rojo mientras quede uno alto sin revisar; un punto marcado nunca se oculta.
+function cabeceraRevision() {
+  const det = $('iaRevision')?.querySelector('details.ia-revision');
+  if (!det) return;
+  const r = resumenRevisados(_revPuntos, [], state.informeIA?.revisados);
+  const n = r.puntos;
+  det.querySelector('summary').textContent = !r.puntosPendientes
+    ? `✓ ${n} ${n === 1 ? 'punto revisado' : 'puntos revisados'}`
+    : r.puntosPendientes === n
+      ? `⚠ ${n} ${n === 1 ? 'punto' : 'puntos'} a revisar en el informe`
+      : `⚠ ${r.puntosPendientes} de ${n} sin revisar`;
+  det.classList.toggle('ia-revision-alta', r.altosPendientes > 0);
+  det.classList.toggle('ia-revision-hecha', !r.puntosPendientes);
+}
+
+function cabeceraComprobaciones() {
+  const box = $('iaComprobar')?.querySelector('.ia-comprobar');
+  if (!box) return;
+  const r = resumenRevisados([], _revComprob, state.informeIA?.revisados);
+  box.querySelector('.ia-comprobar-cuenta').textContent = r.comprobacionesPendientes
+    ? `${r.comprobaciones - r.comprobacionesPendientes} de ${r.comprobaciones}` : '✓ todo comprobado';
+  box.classList.toggle('ia-comprobar-hecha', !r.comprobacionesPendientes);
+}
+
+// Marca o desmarca un punto («p») o una comprobación («c»). Se guarda con la
+// sesión, dentro del informe: uno nuevo empieza sin marcas.
+function iaMarcarRevisado(marcado, tipo, i) {
+  const inf = state.informeIA;
+  const clave = tipo === 'p' ? (_revPuntos[i] && clavePunto(_revPuntos[i])) : (_revComprob[i] != null && claveComprobacion(_revComprob[i]));
+  if (!inf || !clave) return;
+  const hechos = _revisados();
+  if (marcado) hechos.add(clave); else hechos.delete(clave);
+  inf.revisados = [...hechos];
+  saveSession();
+  const li = $(tipo === 'p' ? 'iaRevision' : 'iaComprobar')?.querySelectorAll('li')[i];
+  li?.classList.toggle('ia-rev-hecho', marcado);
+  if (tipo === 'p') cabeceraRevision(); else cabeceraComprobaciones();
 }
 
 // «⬇ Paquete de revisión»: .zip con el informe, la transcripción, los puntos,
@@ -324,7 +383,7 @@ async function iaPaqueteRevision() {
 }
 
 // Lo que el clínico mira a ojo antes de compartir (comprobacionesManuales):
-// siempre visible, aparte de los puntos automáticos.
+// siempre visible, aparte de los puntos automáticos; cada una se marca igual.
 function pintarComprobaciones() {
   const el = $('iaComprobar');
   if (!el) return;
@@ -332,9 +391,15 @@ function pintarComprobaciones() {
   try {
     const inf = state.informeIA;
     items = comprobacionesManuales({ ampliado: construirAmpliado(), formularioYAudio: !!inf?.conAudio && !!buildPhysiQPayload().fp?.length });
-  } catch { el.innerHTML = ''; return; }
-  el.innerHTML = `<div class="ia-comprobar"><div class="ia-comprobar-titulo">☑ Antes de compartir, comprueba:</div>
-      <ul>${items.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`;
+  } catch { el.innerHTML = ''; _revComprob = []; return; }
+  _revComprob = items;
+  const hechos = _revisados();
+  el.innerHTML = `<div class="ia-comprobar"><div class="ia-comprobar-titulo">☑ Antes de compartir, comprueba: <span class="ia-comprobar-cuenta"></span></div>
+      <ul>${items.map((t, i) => {
+        const hecho = hechos.has(claveComprobacion(t));
+        return `<li class="${hecho ? 'ia-rev-hecho' : ''}"><label class="ia-rev-item">${casillaRevisado('c', i, hecho)}<span>${esc(t)}</span></label></li>`;
+      }).join('')}</ul></div>`;
+  cabeceraComprobaciones();
 }
 
 const contarPalabras = t => (String(t || '').replace(/[#|*-]/g, ' ').match(/\S+/g) || []).length;
@@ -350,7 +415,10 @@ function refrescarHuella() {
   pintarRevision();
 }
 let _huellaTimer = null;
-function _refrescarHuellaDiferido() {
+function _refrescarHuellaDiferido(e) {
+  // Las casillas «Revisado» y demás controles de la tarjeta no son datos de la
+  // valoración: repintar por ellas cerraba la caja de puntos al marcar uno
+  if (e?.target?.closest?.('#informeIA')) return;
   clearTimeout(_huellaTimer);
   _huellaTimer = setTimeout(refrescarHuella, 400);
 }
@@ -377,10 +445,14 @@ export function construirAmpliado() {
       // Si lo que la respuesta «orienta a» ya está diagnosticado y tratado, que
       // el prompt lo sepa (si no, lo lee como una sospecha abierta)
       const tratada = (op?.hypothesis || []).some(h => esTratada(h));
-      // `iaPregunta`/`iaTexto`: el texto del paso o de la opción solo para el
-      // prompt, cuando el de pantalla lleva cifras o patrones didácticos
-      return { pregunta: st.iaPregunta || st.question, respuesta: op?.iaTexto || op?.label || state.treeAnswers[st.id], ...(tratada ? { tratada: true } : {}) };
-    });
+      // `iaPregunta` y textoOpcionIA() (lib/informe-narrativo.js): al prompt va
+      // la conclusión de la opción, no su detalle (pistas, criterios, umbrales);
+      // el NINGUNO de un paso de zona no va
+      const respuesta = op ? textoOpcionIA(op) : state.treeAnswers[st.id];
+      if (respuesta == null) return null;
+      return { pregunta: st.iaPregunta || st.question, respuesta, ...(tratada ? { tratada: true } : {}) };
+    })
+    .filter(Boolean);
 
   const tests = [];
   const pautas = [];
@@ -463,14 +535,16 @@ function iaCompartir() {
 }
 export function compartirInformeIA() { if (state.informeIA?.texto) iaCompartir(); }
 
-// Para el menú de «📤 Compartir»: cuántos puntos a revisar tiene el informe IA
+// Para el menú de «📤 Compartir»: puntos y comprobaciones, y cuántos quedan
+// sin marcar como revisados (resumenRevisados)
 export function estadoRevisionIA() {
   const inf = state.informeIA;
-  if (!inf?.texto) return { puntos: 0, altos: 0 };
-  try {
-    const p = puntosRevision(inf);
-    return { puntos: p.length, altos: p.filter(x => x.nivel === 'alto').length };
-  } catch { return { puntos: 0, altos: 0 }; }
+  const vacio = resumenRevisados();
+  if (!inf?.texto) return vacio;
+  let puntos = [], comprobaciones = [];
+  try { puntos = puntosRevision(inf); } catch { /* sin puntos */ }
+  try { comprobaciones = comprobacionesManuales({ ampliado: construirAmpliado(), formularioYAudio: !!inf.conAudio && !!buildPhysiQPayload().fp?.length }); } catch { /* sin comprobaciones */ }
+  return resumenRevisados(puntos, comprobaciones, inf.revisados);
 }
 
 function iaDescartarInforme() {
@@ -788,6 +862,7 @@ async function iaGenerar() {
     const det = $('iaGenerador');
     if (det) det.open = false;
     _resultadoAbierto = false;
+    _revAbierta = null;   // informe nuevo: la caja de puntos vuelve a su apertura por defecto
     showToast('✓ Informe narrativo generado', 'success');
   } catch (err) {
     if (err instanceof SinVoz) {
@@ -881,5 +956,5 @@ export function resetInformeIA() {
 Object.assign(window, {
   iaMostrarClave, iaGuardarClave, iaReintentarLicencia,
   iaArchivo, iaQuitarAudio, iaConsent,
-  iaGenerar, iaCancelar, iaDescartarInforme, iaPlantilla, iaModoAudio, iaPaqueteRevision,
+  iaGenerar, iaCancelar, iaDescartarInforme, iaPlantilla, iaModoAudio, iaPaqueteRevision, iaMarcarRevisado,
 });
