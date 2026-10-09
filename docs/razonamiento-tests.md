@@ -29,6 +29,9 @@ razonamiento: {
 ### Notas de mantenimiento
 Lo que solo explica una decisión de datos («S y E solo aquí, para que no se recalcule la LR−», «el VPP que figuraba aquí no tenía fuente y se ha quitado») sale del texto visible y pasa a un comentario `// Nota de mantenimiento, retirada del criterio visible: «…»` encima del test en `data/<región>.js`, y a `retiradas` de ese test en la instantánea.
 
+### Frases que repiten «cuánto pesa»
+Las frases escritas a mano que solo dan el veredicto que ya genera `pesoTest()` («Sirve para descartar; un positivo es solo un hallazgo», «un negativo no descarta», «no puntúa», «Cuenta como hallazgo.») se quitan del detalle (decisión del usuario, 2026-10, al revisar hombro): el panel ya muestra la frase generada justo encima. Van a `retiradas` de la instantánea, sin comentario en `data/`. Se quedan las que dan una razón («Evidencia contradictoria, así que no puntúa», «Solo puntúa positivo: la LR− tan baja no se reproduce…», «Los dos intervalos incluyen el 1») y «Sin S ni E», que explica por qué no hay LR.
+
 ## Salvaguarda: nada se pierde al recortar
 `tests/fixtures/criterios-4b.json` guarda, para cada test (`<hipótesis>|<nombre>`), los trozos de su texto (cortados tras «.», «;» o «:»; `tests/criterios.mjs`). `tests/unit.js` («criterios 4b: nada se pierde») exige que cada trozo siga, literal, en el `criterio` o en `razonamiento.detalle` (sin distinguir mayúsculas ni el signo final, para poder cortar «…30°:» como «…30°.»), salvo los de `retiradas`. Añadir texto es libre. Si el test falla:
 - una frase se perdió al mover texto → vuelve a ponerla;
@@ -37,7 +40,7 @@ Lo que solo explica una decisión de datos («S y E solo aquí, para que no se r
 
 ## Procedimiento por región
 **Fase 1 — recortar el criterio** (mover texto, sin buscar fuentes):
-1. Listar los trozos de cada test de la región (`trozos()` de `tests/criterios.mjs`) y decidir qué se queda visible (técnica, positivo, avisos de consulta), qué va al detalle y qué es nota de mantenimiento.
+1. Listar los trozos de cada test de la región (`trozos()` de `tests/criterios.mjs`) y decidir qué se queda visible (técnica, positivo, avisos de consulta), qué va al detalle, qué es nota de mantenimiento y qué solo repite «cuánto pesa» (se quita).
 2. Aplicar con cuidado de no reescribir: solo mover trozos, y como mucho añadir un sujeto al principio del detalle cuando el trozo empieza por «es…».
 3. `node tests/unit.js` (incluye «nada se pierde»), `node tests/gen-referencias.mjs` (las menciones movidas salen como «en `razonamiento.detalle`») y `node tests/smoke.mjs`.
 4. Tabla de revisión para el usuario (test · visible · al panel · retirado). No se fusiona hasta que la valide.
