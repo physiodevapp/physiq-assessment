@@ -1,10 +1,11 @@
 // Reproduce el prompt exacto del «🎙 Informe narrativo» a partir de una
 // valoración exportada (.json del panel de sesión). Herramienta de revisión.
-//   node tools/prompt-desde-json.mjs <valoracion.json> [narrativo|breve] [--audio]
+//   node tools/prompt-desde-json.mjs <valoracion.json> [narrativo|breve] [--audio | --dictado]
 import { readFileSync } from 'node:fs';
 import '../tests/dom-shim.mjs';
 const [archivo, plantilla = 'narrativo', ...resto] = process.argv.slice(2);
-const conAudio = resto.includes('--audio');
+const dictado = resto.includes('--dictado');   // audio dictado por el fisio (implica audio)
+const conAudio = dictado || resto.includes('--audio');
 const { state } = await import('../state.js');
 const app = await import('../app.js');
 const ia = await import('../informe-ia.js');
@@ -18,4 +19,4 @@ Object.assign(state, r.assessmentState);
 // ya cargado, o el prompt sale sin él.
 await app.precargarFormularioPrevio();
 const datos = app.buildPhysiQPayload();
-console.log(IN.PLANTILLAS[plantilla].prompt(datos, { conAudio, nombreRegion: app.nombreRegion, ampliado: ia.construirAmpliado() }));
+console.log(IN.PLANTILLAS[plantilla].prompt(datos, { conAudio, dictado, nombreRegion: app.nombreRegion, ampliado: ia.construirAmpliado() }));
