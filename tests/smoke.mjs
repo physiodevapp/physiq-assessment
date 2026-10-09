@@ -654,6 +654,13 @@ async function checkBotonesTactil(browser, errors) {
     && document.getElementById('nrsLabel').textContent.includes('Sin seleccionar'));
   await page.evaluate(() => goToPhase(1));   // salir de la fase 3 ya no lo convierte en 0
   r.nrNull = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().nr === null);
+  // Compartir en táctil: la hoja de compartir del sistema (aquí simulada), no el portapapeles
+  r.compartirTactil = await page.evaluate(async () => {
+    let compartido = null;
+    navigator.share = async d => { compartido = d; };
+    await (await import('./app.js')).compartirTexto('texto de prueba', { titulo: 't', copiado: 'c' });
+    return compartido?.text === 'texto de prueba';
+  });
   await context.close();
   r.ok = Object.values(r).every(v => v === true);
   return r;
@@ -798,6 +805,17 @@ async function checkInformeNarrativo(browser, errors) {
   const r = { sinBotonSinLicencia };
   r.sinLicencia = await page.isVisible('#iaLicencia :text("Disponible con licencia PhysiQ")');
   r.generadorOculto = await page.evaluate(() => document.getElementById('iaGenerador').hidden);
+  // Fase 5 fuera del hub: sin «Compartir informe» abajo; «📄 Informe» sin informe
+  // IA comparte directamente el del paciente (con ratón, copia), «📋 Notas» las notas
+  const leerPortapapeles = () => page.evaluate(() => navigator.clipboard.readText());
+  r.sinBotonAbajo = !(await page.isVisible('#btnFinalizar'));
+  await page.click('#btnInforme');
+  await page.waitForTimeout(200);
+  r.informeDirecto = !(await page.isVisible('#informeMenu')) && (await leerPortapapeles()).includes('IMPRESIÓN CLÍNICA');
+  await page.click('#btnNotas');
+  await page.waitForTimeout(200);
+  r.notasCopiadas = (await leerPortapapeles()).startsWith('VALORACIÓN PhysiQ-Assessment');
+  r.valoracionRegistrada = await page.evaluate(async () => !!(await (await import('./lib/session.js')).readSession())?.assessment?.r);
 
   // «Introducir clave»: una mala no se guarda, la buena sí y activa la tarjeta
   await page.click('#iaLicencia button:has-text("Introducir clave")');
@@ -872,10 +890,28 @@ async function checkInformeNarrativo(browser, errors) {
     const rq = indexedDB.open('physiq', 3);
     rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result === undefined); };
   }));
-  await page.click('#iaResultado button:has-text("Copiar")');
+  // Copiar y compartir son una sola acción: con ratón, «📤 Compartir» copia
+  r.sinBotonCopiar = (await page.locator('#iaResultado button:has-text("Copiar")').count()) === 0;
+  await page.evaluate(() => navigator.clipboard.writeText(''));
+  await page.click('#iaResultado .ia-acciones button:has-text("Compartir")');
   await page.waitForTimeout(200);
-  const copiado = await page.evaluate(() => navigator.clipboard.readText());
+  const copiado = await leerPortapapeles();
   r.copiado = copiado.startsWith('INFORME DE FISIOTERAPIA') && copiado.includes('CONDICIÓN DE SALUD') && !copiado.includes('##');
+  // Con informe IA, «📄 Informe» pregunta cuál: paciente/médico o clínico (IA)
+  await page.click('#btnInforme');
+  await page.waitForSelector('#informeMenu');
+  r.menuInforme = (await page.locator('#informeMenu .informe-menu-op').count()) === 2;
+  await page.keyboard.press('Escape');
+  r.menuEscCierra = !(await page.isVisible('#informeMenu'));
+  await page.click('#btnInforme');
+  await page.click('#informeMenu .informe-menu-op:has-text("Para el paciente")');
+  await page.waitForTimeout(200);
+  const paciente = await leerPortapapeles();
+  r.menuPaciente = paciente.includes('IMPRESIÓN CLÍNICA') && !paciente.includes('CONDICIÓN DE SALUD') && !(await page.isVisible('#informeMenu'));
+  await page.click('#btnInforme');
+  await page.click('#informeMenu .informe-menu-op:has-text("Informe clínico")');
+  await page.waitForTimeout(200);
+  r.menuIA = (await leerPortapapeles()).includes('CONDICIÓN DE SALUD');
   r.sinScrollX = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
 
   // Un fallo de la API se queda en la tarjeta, en español y con el original
@@ -1241,7 +1277,7 @@ async function main() {
 
   console.log('\nBotones en táctil (segundo toque y :hover):');
   const tactil = await checkBotonesTactil(browser, errors);
-  console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
+  console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
 
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
@@ -1250,7 +1286,7 @@ async function main() {
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
-  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y copiado, nada en el hub`);
+  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y compartido; fase 5: «Informe» (con elección si hay IA) y «Notas», sin botón abajo; nada en el hub`);
 
   await browser.close();
 
