@@ -805,14 +805,21 @@ async function checkInformeNarrativo(browser, errors) {
   const r = { sinBotonSinLicencia };
   r.sinLicencia = await page.isVisible('#iaLicencia :text("Disponible con licencia PhysiQ")');
   r.generadorOculto = await page.evaluate(() => document.getElementById('iaGenerador').hidden);
-  // Fase 5 fuera del hub: sin «Compartir informe» abajo; «📄 Informe» sin informe
-  // IA comparte directamente el del paciente (con ratón, copia), «📋 Notas» las notas
+  // Fase 5: un solo «📤 Compartir» abajo, con menú (paciente / notas; sin
+  // informe IA no hay opción IA, y fuera del hub no hay «Enviar al informe»)
   const leerPortapapeles = () => page.evaluate(() => navigator.clipboard.readText());
-  r.sinBotonAbajo = !(await page.isVisible('#btnFinalizar'));
-  await page.click('#btnInforme');
+  r.sinBotonesCabecera = (await page.locator('#phase5 .phase-header button').count()) === 0;
+  await page.click('#btnCompartir');
+  await page.waitForSelector('#informeMenu');
+  r.menuSinIA = await page.evaluate(() => {
+    const ops = [...document.querySelectorAll('#informeMenu .informe-menu-nombre')].map(e => e.textContent);
+    return ops.join('|') === 'Para el paciente / médico|Notas clínicas';
+  });
+  await page.click('#informeMenu .informe-menu-op:has-text("Para el paciente")');
   await page.waitForTimeout(200);
-  r.informeDirecto = !(await page.isVisible('#informeMenu')) && (await leerPortapapeles()).includes('IMPRESIÓN CLÍNICA');
-  await page.click('#btnNotas');
+  r.informePaciente = !(await page.isVisible('#informeMenu')) && (await leerPortapapeles()).includes('IMPRESIÓN CLÍNICA');
+  await page.click('#btnCompartir');
+  await page.click('#informeMenu .informe-menu-op:has-text("Notas clínicas")');
   await page.waitForTimeout(200);
   r.notasCopiadas = (await leerPortapapeles()).startsWith('VALORACIÓN PhysiQ-Assessment');
   r.valoracionRegistrada = await page.evaluate(async () => !!(await (await import('./lib/session.js')).readSession())?.assessment?.r);
@@ -864,7 +871,7 @@ async function checkInformeNarrativo(browser, errors) {
   r.resultadoPlegado = await page.evaluate(() => {
     const det = document.getElementById('iaResultadoDet');
     return !!det && !det.open && det.querySelector('summary').textContent.includes('Narrativo');
-  }) && await page.isVisible('#iaResultado button:has-text("Compartir")');
+  }) && await page.isVisible('#iaResultado button:has-text("Descartar")');
   // Revisión automática: aparece sola bajo el informe (puntos o «sin incidencias»)
   r.revision = await page.evaluate(() => !!document.querySelector('#iaRevision .ia-revision'));
   r.comprobar = await page.evaluate(() => document.querySelectorAll('#iaComprobar .ia-comprobar li').length >= 2);
@@ -890,28 +897,25 @@ async function checkInformeNarrativo(browser, errors) {
     const rq = indexedDB.open('physiq', 3);
     rq.onsuccess = () => { const g = rq.result.transaction('audio').objectStore('audio').get('assessment-meta'); g.onsuccess = () => res(g.result === undefined); };
   }));
-  // Copiar y compartir son una sola acción: con ratón, «📤 Compartir» copia
-  r.sinBotonCopiar = (await page.locator('#iaResultado button:has-text("Copiar")').count()) === 0;
-  await page.evaluate(() => navigator.clipboard.writeText(''));
-  await page.click('#iaResultado .ia-acciones button:has-text("Compartir")');
-  await page.waitForTimeout(200);
-  const copiado = await leerPortapapeles();
-  r.copiado = copiado.startsWith('INFORME DE FISIOTERAPIA') && copiado.includes('CONDICIÓN DE SALUD') && !copiado.includes('##');
-  // Con informe IA, «📄 Informe» pregunta cuál: paciente/médico o clínico (IA)
-  await page.click('#btnInforme');
+  // Compartir está solo en «📤 Compartir» de abajo: la tarjeta IA deja «Descartar»
+  r.tarjetaSoloDescartar = await page.evaluate(() =>
+    [...document.querySelectorAll('#iaResultado .ia-acciones button')].map(b => b.textContent.trim()).join('|') === 'Descartar');
+  // Con informe IA el menú ofrece los tres documentos; Escape lo cierra
+  await page.click('#btnCompartir');
   await page.waitForSelector('#informeMenu');
-  r.menuInforme = (await page.locator('#informeMenu .informe-menu-op').count()) === 2;
+  r.menuInforme = (await page.locator('#informeMenu .informe-menu-op').count()) === 3;
   await page.keyboard.press('Escape');
   r.menuEscCierra = !(await page.isVisible('#informeMenu'));
-  await page.click('#btnInforme');
+  await page.click('#btnCompartir');
   await page.click('#informeMenu .informe-menu-op:has-text("Para el paciente")');
   await page.waitForTimeout(200);
   const paciente = await leerPortapapeles();
   r.menuPaciente = paciente.includes('IMPRESIÓN CLÍNICA') && !paciente.includes('CONDICIÓN DE SALUD') && !(await page.isVisible('#informeMenu'));
-  await page.click('#btnInforme');
+  await page.click('#btnCompartir');
   await page.click('#informeMenu .informe-menu-op:has-text("Informe clínico")');
   await page.waitForTimeout(200);
-  r.menuIA = (await leerPortapapeles()).includes('CONDICIÓN DE SALUD');
+  const copiado = await leerPortapapeles();
+  r.menuIA = copiado.startsWith('INFORME DE FISIOTERAPIA') && copiado.includes('CONDICIÓN DE SALUD') && !copiado.includes('##');
   r.sinScrollX = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
 
   // Un fallo de la API se queda en la tarjeta, en español y con el original
@@ -947,6 +951,11 @@ async function checkInformeNarrativo(browser, errors) {
   await frame.evaluate(() => { buildResults(); goToPhase(5); });
   await hub.waitForTimeout(500);
   r.hubSinModulo = pedidos.length === 0 && await frame.evaluate(() => document.body.classList.contains('in-hub') && document.getElementById('informeIA').innerHTML === '');
+  // En el hub, el menú de «📤 Compartir» añade «Enviar al informe» (sin opción IA)
+  await frame.click('#btnCompartir');
+  await frame.waitForSelector('#informeMenu');
+  r.hubMenu = await frame.evaluate(() => [...document.querySelectorAll('#informeMenu .informe-menu-nombre')]
+    .map(e => e.textContent).join('|') === 'Para el paciente / médico|Notas clínicas|Enviar al informe');
   await ctxHub.close();
 
   r.ok = Object.entries(r).every(([, v]) => v === true);
@@ -1286,7 +1295,7 @@ async function main() {
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
-  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y compartido; fase 5: «Informe» (con elección si hay IA) y «Notas», sin botón abajo; nada en el hub`);
+  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y compartido; fase 5: un solo «Compartir» abajo con menú (paciente, IA si la hay, notas; «Enviar al informe» en el hub); nada de IA en el hub`);
 
   await browser.close();
 
