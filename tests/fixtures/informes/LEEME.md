@@ -19,7 +19,9 @@ intencionado, actualiza la tabla del test y esta.
 | `javier-audio-1-informe.txt` (narrativo, cervical, derivación urgente, riesgo psicosocial alto, después de #233) | `valoracion-javier-soto-cervical.json` | `javier-audio-transcripcion.txt` | `plan-urgente` (plan con dosis pese a la urgencia), `frecuencia` («Acude al gimnasio con regularidad»), `diagnostico` («neoplásicos», «intracraneal», «hemorragia»), `imc` («normopeso» con 25,2) |
 | `pedro-audio-2-informe.txt` (el mismo caso, 2.ª grabación, después de #225) | `valoracion-pedro-flores-audio.json` | `pedro-audio-transcripcion.txt` | `inventado` (despertares copiados del ejemplo), `relleno` (tratamientos previos negados), `fuentes` («el recorrido de la exploración»), `atribucion` («escenario posquirúrgico»), `frecuencia` («Practica ciclismo de manera habitual»), `repetido` (fecha de la cirugía), `estructura` (Intervención Quirúrgica y Cribado de Seguridad en la primera sección) |
 | `daniel-audio-1-informe.txt` (narrativo, cadera, dolor inguinal del psoas, primer informe de cadera, después de #240) | `valoracion-daniel-ortega-cadera.json` | `daniel-audio-transcripcion.txt` | `descartar-inventado` («ecografía para descartar bursitis»), `seguimiento-fuera`, `limitaciones-negativas`, `imagen-motivo` («prueba de imagen… y derivación médica para descartar otras causas») |
-| `daniel-dictado-1-informe.txt` (el mismo caso dictado por el fisio al terminar, después de #242, antes del modo dictado) | `valoracion-daniel-ortega-cadera.json` | `daniel-dictado-transcripcion.txt` | `lado-otro` (informativo: lo dice una vez y sin plan), `seguimiento-fuera` («En caso de ausencia de mejoría…» en el plan), `constantes` («dentro de parámetros habituales»), `imagen-motivo` («ecografía… para valorar la presencia de líquido…», del pronóstico) |
+| `daniel-dictado-1-informe.txt` (el mismo caso dictado por el fisio al terminar, después de #242, antes del modo dictado) | `valoracion-daniel-ortega-cadera.json` | `daniel-dictado-transcripcion.txt` | `lado-otro` (informativo: lo dice una vez y sin plan), `formulario-contradicho` (chasquido «que no resulta doloroso»; el formulario dice que le duele), `seguimiento-fuera` («En caso de ausencia de mejoría…» en el plan), `constantes` («dentro de parámetros habituales»), `imagen-motivo` («ecografía… para valorar la presencia de líquido…», del pronóstico) |
+| `daniel-dictado-2-informe.txt` (el mismo dictado leído otra vez, ya con el modo «Dictado del fisioterapeuta», después de #243) | `valoracion-daniel-ortega-cadera.json` | `daniel-dictado-2-transcripcion.txt` | `lado-otro` (informativo), `no-se` («ausencia de rigidez matutina», sacada del paso «perfil degenerativo → NO»), `formulario-contradicho` (el chasquido, por tercera vez en una sola versión), `test-propiedades` («el más específico») |
+| `marta-dictado-1-informe.txt` (narrativo, rodilla izquierda, lesión meniscal, caso de prueba dictado, después de #243) | `valoracion-marta-gil-rodilla.json` | `marta-dictado-transcripcion.txt` | `lado-otro` (informativo), `seguimiento-fuera` (la resonancia en Tratamientos Previos), `frecuencia` («práctica deportiva habitual, el pádel»), `discrepancia-separada` (fallo articular: «se le iba» en Presentación, «niega que le falle» en Dolor) |
 
 Notas:
 - `lucia-audio-transcripcion.txt` es la exacta de la 1.ª grabación; la de la 2.ª
@@ -35,6 +37,12 @@ Notas:
   diálogo, el dictado arregló la atribución de las indicaciones y lo que no se
   hizo («por debajo no la he hecho»); parte de la mejora es de la ronda 15, que
   ya estaba desplegada.
+- `daniel-dictado-2-transcripcion.txt` y `marta-dictado-transcripcion.txt`
+  salen del paquete de revisión. Whisper escribió «no la ha hecho» / «no la ha
+  explorado» donde se leyó «he». En la de Marta falta una frase del guion
+  («Yo le he indicado que puede caminar…»), así que la bici y el pádel quedan
+  como indicación del médico de cabecera: atribuirlos al médico es correcto;
+  la resonancia («pediremos») no.
 - Lo que estos informes hacen mal y ninguna regla de texto puede ver (p. ej. en
   el de Pedro, el consejo de la bici del fisioterapeuta atribuido al cirujano)
   queda para la capa 3 (verificador con IA).

@@ -1778,6 +1778,43 @@ test('construirAmpliado: el gesto testigo no va y las hipótesis «Derivar» se 
   });
 });
 
+test('construirAmpliado: iaPregunta / iaTexto del árbol sustituyen al texto de pantalla solo en el prompt', () => {
+  withState({ region: 'cadera', treeAnswers: { ca_step1: 'no', ca_step2: 'no' }, activeHypotheses: [] }, () => {
+    const arbol = IA.construirAmpliado().arbol;
+    const r = arbol.map(x => x.respuesta).join('\n');
+    assert.ok(!/cojera|rotación interna|síntomas mecánicos/.test(r), 'sin la cojera, la RI ni los síntomas mecánicos de las etiquetas');
+    assert.ok(r.includes('NO — El dolor no parece referido desde la columna lumbar ni la sacroilíaca'));
+    assert.ok(r.includes('NO — Perfil no degenerativo'));
+  });
+  withState({ region: 'rodilla', treeAnswers: { ro_step1b: 'no' }, activeHypotheses: [] }, () => {
+    const p = IA.construirAmpliado().arbol[0].pregunta;
+    assert.ok(p.startsWith('¿Algún criterio de Ottawa') && !/Pittsburgh|%|Seaberg/.test(p));
+  });
+});
+
+test('prompt: ninguna línea de «Hallazgos de la exploración» lleva cifras de S/E, «veces» ni citas', () => {
+  const mal = /%|\(unas? \d+ veces\)|\b(19|20)\d\d\b|\b[SE] ≈|\bLR\b/;
+  for (const [r, t] of Object.entries(CIF_TREES)) for (const st of t.steps) {
+    assert.ok(!mal.test(IN.limpiarEtiqueta(st.iaPregunta || st.question)), `${r}.${st.id}: pregunta`);
+    for (const o of st.options) assert.ok(!mal.test(IN.limpiarEtiqueta(o.iaTexto || o.label)), `${r}.${st.id}.${o.value}: opción`);
+  }
+});
+
+test('prompt: aviso de patrón en los hallazgos; recordatorio de discrepancias junto al formulario solo con audio', () => {
+  const d = { p: 'X', r: 'rodilla', d: '01/01/2026', br: [], sq: [], pn: {}, h: [] };
+  const amp = { arbol: [{ pregunta: '¿Mecanismo?', respuesta: 'SÍ — Trauma rotacional con síntomas de bloqueo o chasquidos' }],
+    formulario: [{ g: 'sintomas', q: '¿Nota alguna de estas cosas?', a: 'Le falla o cede: No' }], tests: [], pautas: [], psico: [], criterios: [] };
+  const sin = IN.contextoValoracion(d, r => r, amp);
+  const con = IN.contextoValoracion(d, r => r, amp, { conAudio: true });
+  assert.ok(sin.includes(IN.AVISO_HALLAZGOS) && con.includes(IN.AVISO_HALLAZGOS));
+  assert.ok(!sin.includes(IN.RECORDATORIO_DISCREPANCIAS), 'sin audio no hay nada con qué discrepar');
+  assert.ok(con.includes(IN.RECORDATORIO_DISCREPANCIAS));
+  assert.ok(IN.buildNarrativePrompt(d, { conAudio: true, ampliado: amp }).includes(IN.RECORDATORIO_DISCREPANCIAS));
+  assert.ok(IN.buildFichaBrevePrompt(d, { conAudio: true, ampliado: amp }).includes(IN.RECORDATORIO_DISCREPANCIAS));
+  assert.ok(!IN.buildNarrativePrompt(d, { conAudio: false, ampliado: amp }).includes(IN.RECORDATORIO_DISCREPANCIAS));
+  assert.match(IN.buildNarrativePrompt(d, { conAudio: true, dictado: true, ampliado: amp }), /«no la ha hecho»/, 'el dictado avisa del «he» → «ha» de Whisper');
+});
+
 const FM = await import('../formulario.js');
 const ESQUEMAS_FP = [['comun', (await import('../formularios/comun.js')).default],
   ...await Promise.all(FM.REGIONES_CON_FORMULARIO.map(async r => [r, (await import(`../formularios/${r}.js`)).default]))];
@@ -3020,6 +3057,18 @@ console.log('\nrevisión automática del informe con IA');
     assert.equal(fq('Dolor en condiciones habituales durante la carrera.'), null, '«condiciones habituales» no es una frecuencia');
     assert.ok(ids('Practica ciclismo de manera habitual.').includes('frecuencia'));
   });
+  test('revisión: formulario contradicho, propiedades de un test, fallo articular separado', () => {
+    const fp = [{ s: 'Rodilla', q: '¿Nota alguna de estas cosas?', a: 'Un chasquido o un clic que le duele: Sí · Le falla o cede: No' }];
+    const rv = texto => RI.revisarInforme(texto, { datos: { p: 'X', r: 'cadera', d: '01/01/2026', br: [], sq: [], pn: {}, h: [], fp } }).map(p => p.id);
+    assert.ok(rv('Refiere un chasquido por delante de la cadera que no le duele.').includes('formulario-contradicho'));
+    assert.ok(!rv('Refiere un chasquido doloroso por delante de la cadera.').includes('formulario-contradicho'));
+    assert.ok(!rv('Refiere un chasquido que le duele, aunque hoy dice que no le duele.').includes('formulario-contradicho'), 'las dos versiones en una frase');
+    assert.ok(!rv('Refiere un chasquido al subir la pierna, y niega dolor en reposo.').includes('formulario-contradicho'), 'la negación es de otra cláusula');
+    assert.ok(rv('El test de Thomas es el más específico.').includes('test-propiedades'));
+    assert.ok(rv('Al pivotar nota que la rodilla se le iba. Niega que le falle o ceda.').includes('discrepancia-separada'));
+    assert.ok(!rv('Niega mareo o inestabilidad. El test de inestabilidad en prono es positivo.').includes('discrepancia-separada'), '«inestabilidad» suelta no es un fallo articular');
+    assert.ok(!rv('La flexión no la refuerza pero tampoco la descarta.').includes('descarta'));
+  });
   test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
     const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
     const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
@@ -3033,7 +3082,9 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-carmen-vidal-tobillo-breve.json', 'carmen-audio-1-ficha-breve.txt', 'carmen-audio-transcripcion.txt', ['relleno', 'fuentes', 'repetido']],
       ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['plan-urgente', 'frecuencia', 'diagnostico', 'imc']],
       ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas', 'imagen-motivo']],
-      ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-1-informe.txt', 'daniel-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'constantes', 'imagen-motivo']],
+      ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-1-informe.txt', 'daniel-dictado-transcripcion.txt', ['lado-otro', 'formulario-contradicho', 'seguimiento-fuera', 'constantes', 'imagen-motivo']],
+      ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-2-informe.txt', 'daniel-dictado-2-transcripcion.txt', ['lado-otro', 'no-se', 'formulario-contradicho', 'test-propiedades']],
+      ['valoracion-marta-gil-rodilla.json', 'marta-dictado-1-informe.txt', 'marta-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'frecuencia', 'discrepancia-separada']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];

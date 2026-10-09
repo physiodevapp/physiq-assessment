@@ -414,15 +414,6 @@
       "plantilla": "narrativo",
       "errores": [
         {
-          "id": "daniel-dictado-chasquido-discrepancia",
-          "tipo": "omision",
-          "nivel": "medio",
-          "descripcion": "Formulario: chasquido que le duele; dictado: no le duele. Solo da la versión del dictado",
-          "claves": [
-            "chasquido"
-          ]
-        },
-        {
           "id": "daniel-dictado-pico-dolor",
           "tipo": "omision",
           "nivel": "medio",
@@ -448,6 +439,76 @@
           "descripcion": "Tratamientos Previos repite el reposo y el ibuprofeno de Presentación Inicial",
           "fragmentos": [
             "Ha realizado reposo relativo y ha utilizado ibuprofeno ocasionalmente"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "daniel-dictado-2-informe.txt",
+      "valoracion": "valoracion-daniel-ortega-cadera.json",
+      "transcripcion": "daniel-dictado-2-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "daniel-dictado2-cojera",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Cojera y rotación interna limitada como hallazgos: venían de la etiqueta didáctica de ca_step1 («la cojera (unas 7 veces)…»); no se exploraron (ronda 17: iaTexto)",
+          "fragmentos": [
+            "la presencia de un patrón de cojera y la limitación de la rotación interna orientan hacia un origen coxofemoral"
+          ]
+        },
+        {
+          "id": "daniel-dictado2-plan-repetido",
+          "tipo": "repetido",
+          "nivel": "medio",
+          "descripcion": "El «enfoque terapéutico» copia la pauta y el párrafo siguiente repite estiramiento y fuerza",
+          "fragmentos": [
+            "El enfoque terapéutico se dirige al manejo conservador mediante estiramiento del psoas ilíaco"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "marta-dictado-1-informe.txt",
+      "valoracion": "valoracion-marta-gil-rodilla.json",
+      "transcripcion": "marta-dictado-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "marta-bloqueo-chasquidos",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "«síntomas de bloqueo o chasquidos» sacados de la etiqueta de la opción del árbol; el formulario dice trabada: No y chasquido: No sabría decir",
+          "fragmentos": [
+            "El mecanismo lesional consistió en un trauma rotacional con síntomas de bloqueo o chasquidos"
+          ]
+        },
+        {
+          "id": "marta-resonancia-medico",
+          "tipo": "atribucion",
+          "nivel": "alto",
+          "descripcion": "La resonancia la pide el fisio («pediremos»); el informe la atribuye al médico de cabecera e inventa una valoración médica programada",
+          "fragmentos": [
+            "La valoración médica ya programada a las cuatro semanas, con solicitud de resonancia magnética si no hay mejoría, se mantendrá según lo indicado por el médico de cabecera"
+          ]
+        },
+        {
+          "id": "marta-pauta-degenerativa",
+          "tipo": "plan",
+          "nivel": "medio",
+          "descripcion": "Plan con la rama degenerativa de la pauta (terapia manual, electroestimulación) en una rotura traumática de 38 años",
+          "fragmentos": [
+            "Puede añadirse electroestimulación neuromuscular para favorecer la activación del cuádriceps"
+          ]
+        },
+        {
+          "id": "marta-derivacion-plan",
+          "tipo": "repetido",
+          "nivel": "medio",
+          "descripcion": "El criterio «derivar al traumatólogo si persisten…» de la pauta va en el plan y otra vez en Seguimiento",
+          "fragmentos": [
+            "se planteará la derivación al traumatólogo"
           ]
         }
       ]
