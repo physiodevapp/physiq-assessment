@@ -1501,9 +1501,9 @@ test('razonamiento de los tests: nunca entra en el payload, 📋 Notas ni 📄 I
   });
 });
 
-test('hombro: criterio visible corto (≤ 600 caracteres; los clusters llevan la técnica de cada componente)', () => {
+test('hombro y rodilla: criterio visible corto (≤ 600 caracteres; los clusters llevan la técnica de cada componente)', () => {
   for (const { hId, h, t } of TODOS_TESTS) {
-    if (h.region !== 'hombro') continue;
+    if (!['hombro', 'rodilla'].includes(h.region)) continue;
     assert.ok(t.criterio.length <= 600, `${hId} «${t.name}»: ${t.criterio.length} caracteres`);
   }
 });
