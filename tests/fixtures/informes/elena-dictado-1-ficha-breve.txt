@@ -1,0 +1,25 @@
+INFORME DE FISIOTERAPIA
+Paciente: Elena Castro
+Edad: 41 años
+Sexo: Mujer
+Fecha: 10/10/2026
+Región valorada: Lumbar (derecha)
+
+PRESENTACIÓN CLÍNICA
+
+La paciente es una mujer de 41 años que trabaja como reponedora en un supermercado y consulta por dolor en la zona lumbar derecha que inició hace diez días, tras recoger una caja del suelo en el trabajo, notando un pinchazo de aparición súbita. Comenta que el año pasado tuvo algo parecido que se resolvió en una semana. Desde el inicio, el dolor ha mejorado progresivamente. En el momento de la exploración refiere una intensidad de 4/10, aunque en la última semana alcanzó 8/10 en el peor momento, especialmente al agacharse. El dolor le empeora al levantarse por la mañana, aunque se recupera en unos minutos tras la provocación. No presenta dolor nocturno que le despierte. Refiere dificultad para agacharse y para permanecer de pie durante períodos prolongados. Su médico de cabecera le recetó un relajante muscular nocturno, que le permite dormir mejor, y le dio una semana de baja laboral. También menciona que a veces le molesta la rodilla derecha al subir escaleras, zona que no se exploró. Niega enfermedades importantes previas.
+
+HALLAZGOS Y CODIFICACIÓN CIF
+
+El cribado de banderas rojas fue negativo y el cribado sistémico abreviado por embudo no mostró hallazgos que sugieran patología de origen sistémico. Dado que se realizó una valoración inicial breve, quedan pendientes de completar el cribado sistémico completo con todas las categorías y la confirmación de la irritabilidad mediante matriz. La exploración física reveló dolor lumbar derecho (b28013) reproducible mediante extensión con rotación hacia el lado derecho en bipedestación. El patrón de dolor lumbar predominante fue agudo con rigidez (b7800), sin irradiación predominante a la pierna. La presión anteroposterior unilateral en L4-L5 derecha resultó dolorosa. La evaluación de hipomovilidad segmentaria lumbar mediante presiones accesorias intervertebrales pasivas fue positiva, apoyando déficit de movilidad en segmentos lumbares (b7100). Se cumplieron 4 de los 5 criterios de la regla de predicción clínica de Flynn, lo que predice buena respuesta al tratamiento con manipulación articular. Las pruebas específicas para dolor facetario, incluyendo dolor en extensión con rotación hacia el lado del dolor y presión anteroposterior unilateral dolorosa, resultaron positivas. La paciente presenta limitaciones funcionales para agacharse (d4105) y permanecer de pie (d4154) durante períodos prolongados, con restricción en su actividad laboral remunerada (d850).
+
+Condición de Salud: Las hipótesis de trabajo principales son disfunción segmentaria lumbosacra con déficit de movilidad y dolor lumbar facetario. Los hallazgos de la exploración refuerzan ambas hipótesis: la hipomovilidad segmentaria y el cumplimiento de 4 criterios de Flynn apoyan la primera, mientras que el patrón de dolor en extensión-rotación y la presión unilateral dolorosa apoyan el componente facetario.
+
+Factores Personales: Actualmente toma relajante muscular por las noches según prescripción médica.
+
+OBJETIVOS Y PLAN
+
+El objetivo principal es reducir el dolor lumbar derecho y recuperar la capacidad funcional para las actividades laborales y de la vida diaria, especialmente la flexión del tronco y la bipedestación prolongada. El plan de tratamiento incluye movilización articular lumbar en las próximas sesiones, según la pauta de grado A para lumbalgia aguda. Se han indicado dos paseos diarios de 20 minutos cada uno y ejercicios de flexión lumbar en decúbito supino, 10 repeticiones cada dos horas, como parte del enfoque de ejercicios repetidos en la dirección que mejore la movilidad. Se ha recomendado evitar la carga de peso hasta la próxima sesión. La dosificación de la carga se guiará por mantener el dolor durante la actividad por debajo de 5/10 al caminar, verificando que al día siguiente esté igual o mejor. Se informará y animará a mantener la actividad habitual en la medida que lo permitan los síntomas. Se realizará seguimiento de la evolución mediante la escala numérica de dolor. Si transcurridas 4 semanas no se observa mejoría clínica, se comentará el caso con su médico de cabecera para reconsiderar el abordaje terapéutico.
+
+—
+Informe generado con PhysiQ-Assessment el 10/10/2026 (redacción asistida por IA).
