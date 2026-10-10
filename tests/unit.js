@@ -3351,6 +3351,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-2-ficha-breve.txt', 'elena-dictado-2-transcripcion.txt', ['pronostica', 'fuentes']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-3-ficha-breve.txt', 'elena-dictado-3-transcripcion.txt', []],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-4-ficha-breve.txt', 'elena-dictado-4-transcripcion.txt', []],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-5-ficha-breve.txt', 'elena-dictado-5-transcripcion.txt', ['nrs-omitido']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];

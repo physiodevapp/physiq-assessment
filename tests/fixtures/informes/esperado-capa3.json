@@ -755,6 +755,41 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "elena-dictado-5-ficha-breve.txt",
+      "valoracion": "valoracion-elena-castro-lumbar.json",
+      "transcripcion": "elena-dictado-5-transcripcion.txt",
+      "plantilla": "breve",
+      "errores": [
+        {
+          "id": "elena5-episodio-una-version",
+          "tipo": "contradice",
+          "nivel": "medio",
+          "descripcion": "Contradice el formulario (primera vez: Sí) con una sola versión: «No se trata del primer episodio»",
+          "fragmentos": [
+            "No se trata del primer episodio"
+          ]
+        },
+        {
+          "id": "elena5-quehaceres",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Limitación en los quehaceres de la casa (d640) que no consta",
+          "fragmentos": [
+            "los quehaceres de la casa (d640)"
+          ]
+        },
+        {
+          "id": "elena5-patron-invertido",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "Convierte el patrón descartado del árbol («mejora al sentarse o inclinarse hacia adelante») en un hallazgo negativo invertido",
+          "fragmentos": [
+            "ni empeora con la sedestación o mejora con la flexión anterior"
+          ]
+        }
+      ]
     }
   ]
 }
