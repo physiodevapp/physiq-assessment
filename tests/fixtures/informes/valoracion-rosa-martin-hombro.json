@@ -1,0 +1,202 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-09T20:38:11.597Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Rosa Martín",
+    "motivoConsulta": "Dolor en el hombro derecho al levantar el brazo desde hace unos cuatro meses.",
+    "edadPaciente": 52,
+    "sexo": "Mujer",
+    "signosVitales": {
+      "fc": 72,
+      "fr": null,
+      "spo2": null,
+      "tas": 130,
+      "tad": 82
+    },
+    "antropometria": {
+      "talla": 162,
+      "peso": 68
+    },
+    "mecanismo": "Insidioso",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "cronologia": "Crónico (>3 meses)",
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Bajo",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "hombro",
+    "lado": "Derecho",
+    "sistemicoAnswers": {
+      "h3": "NO",
+      "h4": "NO",
+      "h6": "NO",
+      "h1": "NO",
+      "h2": "NO",
+      "h_c3": "NO",
+      "h5": "NO",
+      "h_p2": "NO",
+      "h_p3": "NO",
+      "h_r1": "NO",
+      "h_r2": "NO",
+      "h_g1": "NO",
+      "h_g2": "NO",
+      "h_gi1": "NO",
+      "h_gi2": "NO",
+      "h_gi3": "NO",
+      "h_t1": "NO",
+      "h_i1": "NO",
+      "h_n1": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {},
+    "severidad": 4,
+    "irritabilidad": {
+      "dolor": "Media (4-6/10)",
+      "reposo": "Intermitente",
+      "movimiento": "Al final del rango",
+      "discapacidad": "Moderada",
+      "tolerancia": "Moderada"
+    },
+    "irritabilidadNivel": "Moderada",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Nociceptiva",
+    "estabilidad": "Estable",
+    "signoComparable": "Elevación del brazo derecho en el plano de la escápula: dolor entre los 70 y los 120 grados.",
+    "activeHypotheses": [
+      "h2",
+      "h8"
+    ],
+    "treeAnswers": {
+      "h_step1": "no",
+      "h_step2": "no",
+      "h_step3": "no",
+      "h_step4": "dolor_fuerza",
+      "h_step5": "si"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "h2": {
+        "0": "pos",
+        "1": "pos",
+        "3": "pos"
+      },
+      "h8": {
+        "0": "pos",
+        "1": "pos"
+      }
+    },
+    "hypothesisScores": {
+      "h2": {
+        "totalLR": 5.8500000000000005,
+        "label": "🟢 Peso alto (LR× 5.9) · 1/1 hallazgos compatibles",
+        "colorClass": "hyp-green"
+      },
+      "h8": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 2/2 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      }
+    },
+    "derivacionResuelta": {},
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Dolor hasta 4/10 durante los ejercicios y que al día siguiente esté igual o mejor.",
+      "ventanaRecuperacion": "48 horas entre sesiones de fuerza.",
+      "anclajeHabito": ""
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "Hace unos cuatro meses",
+        "desencadenante": "No, empezó poco a poco sin causa clara",
+        "inicio": "Poco a poco",
+        "primera_vez": "Sí",
+        "evolucion": "A peor",
+        "peor_momento_dia": [
+          "Por la noche"
+        ],
+        "despierta": "Sí",
+        "despierta_postura": "Sí, cambiando de postura mejora",
+        "dolor_max_semana": 7,
+        "tiempo_calmarse": "Unas horas",
+        "actividad_1": "Pintar techos y paredes",
+        "actividad_2": "Tender la ropa",
+        "probado": [
+          "Medicación",
+          "Calor o frío"
+        ],
+        "probado_sirvio": "El ibuprofeno alivia un poco",
+        "enfermedades": "Hipotiroidismo",
+        "medicacion": "Eutirox"
+      },
+      "regiones": {
+        "hombro": {
+          "provoca": {
+            "elevar": "Sí",
+            "encima": "Sí",
+            "peinarse": "Sí",
+            "espalda": "No",
+            "cruzar": "No",
+            "empujar": "No sé",
+            "brusco": "Sí"
+          },
+          "limita": "Sobre todo el dolor",
+          "nota": {
+            "fuerza": "No",
+            "crujidos": "No",
+            "engancha": "No",
+            "muerto": "No",
+            "hormigueo": "No sé"
+          },
+          "cuello": "No cambia",
+          "miedo": "No",
+          "salido": "No",
+          "antecedentes": {
+            "diabetes": "No",
+            "tiroides": "Sí",
+            "dupuytren": "No",
+            "laxitud": "No sé"
+          },
+          "actividades": [
+            "Trabajar con los brazos por encima de la cabeza"
+          ],
+          "deporte": "Natación",
+          "cambios": [
+            "No ha cambiado nada"
+          ]
+        }
+      }
+    },
+    "rom": null
+  }
+}
