@@ -209,3 +209,20 @@ Diseño y las 8 decisiones clínicas en `docs/posquirurgico.md`; detalle técnic
 - [ ] Probar con un caso real de operado, sobre todo el 📄 Informe y el informe con IA
 - [ ] physiq-report: leer `cq` y `dt` del payload (otro repositorio; hasta entonces su informe no sabe de la cirugía ni de la marca «ya tratada»)
 - [x] Hipótesis posquirúrgica genérica (`pq1`): decisiones cerradas (las 5 recomendaciones) e implementada; ver `docs/posquirurgico.md`, «Hipótesis posquirúrgica genérica». Motivo: tras una prótesis, el árbol daba la artrosis de esa articulación (`ca1`, `ro1`, `h10`, `tp24`) con su pauta; ahora se marca «Tratada con la cirugía». En `main` con la PR 205.
+
+## Fase H — «¿Por qué?» de los tests de la fase 4b
+
+Diseño, esquema, salvaguarda y procedimiento: `docs/razonamiento-tests.md` (léelo entero antes de empezar una región). Una región por sesión. Fase 1 = recortar el `criterio` (mover texto, sin fuentes nuevas); fase 2 = el «por qué», solo en los tests que puntúan y con los artículos completos.
+
+- [x] Interfaz (2026-10): «cuánto pesa» generado y siempre visible (`pesoTest()`), «Ampliar →» con el panel de la fase 2 (`abrirPanelRazon()`), fuente corta con «Ampliar», notas de mantenimiento a comentarios
+- [x] Salvaguarda: `tests/fixtures/criterios-4b.json` (los 484 tests) + «criterios 4b: nada se pierde» en `tests/unit.js`; `tests/gen-criterios-snapshot.mjs`
+
+| Orden | Región | Tests | Criterio > 300 car. | Puntúan | Fase 1 (recorte) | Revisión usuario | Fase 2 («por qué») | Notas |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Hombro | 49 | 30 | 11 | [x] | [x] | [x] | Piloto. 34 tests repartidos, 6 notas de mantenimiento a comentarios (h1 abducción, h3 IRLS, h4 recolocación, h5 O’Brien, h7 aducción cruzada y palpación AC); revisado por el usuario (2026-10), que pidió quitar del panel las frases que repiten «cuánto pesa» (15 tests); después, enlaces «Abrir ↗» en las fuentes del panel (url o DOI del registro) y criterio visible de «Paxinos + gammagrafía» con su positivo; fase 2 («por qué») en 8 tests con 6 artículos leídos enteros (arco doloroso, Hawkins, Neer, los dos signos de retraso, aprehensión, recolocación y sorpresa), revisado por el usuario (2026-10), que aceptó las tres recomendaciones: en Hawkins y Neer prevalece Yamamoto 2009 sobre Pappas 2006 (mismo nivel, más reciente; de Pappas solo el contacto con el glenoides), el test de sorpresa pasa al criterio de positivo de Gross y Distefano 1997 (dolor súbito, aumento claro del dolor o reproducción de los síntomas al soltar; antes «reaparece la aprehensión») y la recolocación conserva su «por qué» aunque no puntúa; después, rotación externa resistida con Lluch 2020 (cap. 3.1, p. 54); los clusters A y B quedan sin «por qué» (el capítulo solo los enumera). Hombro cerrado salvo eso; sin cambios en LR ni puntuación |
+| 2 | Rodilla | 90 | 18 | 19 | [ ] | [ ] | [ ] | La que más tests puntúan: primera de la fase 2 tras hombro |
+| — | Cervical | 48 | 25 | 3 | [ ] | [ ] | [ ] | |
+| — | Cadera | 74 | 22 | 8 | [ ] | [ ] | [ ] | |
+| — | Codo | 63 | 19 | 5 | [ ] | [ ] | [ ] | |
+| — | Tobillo y pie | 123 | 9 | 5 | [ ] | [ ] | [ ] | |
+| — | Lumbar | 37 | 7 | 18 | [ ] | [ ] | [ ] | |

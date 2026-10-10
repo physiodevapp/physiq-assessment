@@ -10,7 +10,7 @@ import './dom-shim.mjs';
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
 const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, DOSIS_DERIVAR } = await import('../data.js');
-const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML } = await import('../phase4b.js');
+const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML, pesoTest, PESO_TEST, buildTestItem, lrEfectiva, fuenteCorta, claveRegistro, enlaceCita, citasTest } = await import('../phase4b.js');
 const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../app.js');
 const { state } = await import('../state.js');
@@ -1384,6 +1384,126 @@ test('razonamiento: los sistemas comunes son el mismo objeto en todas las region
   for (const id of ids) {
     const instancias = new Set(Object.values(SYSTEMIC_SCREENING).flatMap(d => d.sistemas.filter(s => s.id === id)));
     assert.ok(instancias.size <= 1, `${id}: ${instancias.size} copias distintas`);
+  }
+});
+
+// ── «¿Por qué?» de los tests de la fase 4b (docs/razonamiento-tests.md) ─────
+console.log('\nrazonamiento de los tests (fase 4b)');
+const { frasesPerdidas } = await import('./criterios.mjs');
+const SNAP_CRITERIOS = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'criterios-4b.json'), 'utf8'));
+const TODOS_TESTS = Object.entries(HYPOTHESES).flatMap(([hId, h]) => h.tests.map((t, i) => ({ hId, h, t, i })));
+
+test('criterios 4b: nada se pierde al recortar (cada frase sigue en el criterio o en razonamiento.detalle)', () => {
+  const { perdidas, sinSnap, sobrantes } = frasesPerdidas(HYPOTHESES, SNAP_CRITERIOS);
+  const msg = [
+    ...perdidas.map(p => `  perdida en ${p.test}: «${p.frase}»`),
+    ...sinSnap.map(k => `  sin instantánea: ${k}`),
+    ...sobrantes.map(k => `  instantánea de un test que ya no existe: ${k}`),
+  ];
+  assert.equal(msg.length, 0, `\n${msg.join('\n')}\n  Si el cambio es a propósito: node tests/gen-criterios-snapshot.mjs (ver su cabecera)`);
+});
+
+test('razonamiento de un test: solo porque / detalle / fuentes / citas, textos no vacíos', () => {
+  for (const { hId, t } of TODOS_TESTS) {
+    const r = t.razonamiento;
+    if (!r) continue;
+    const extra = Object.keys(r).filter(k => !['porque', 'detalle', 'fuentes', 'citas'].includes(k));
+    assert.deepEqual(extra, [], `${hId} «${t.name}»: campos fuera del esquema`);
+    assert.ok(r.porque || r.detalle, `${hId} «${t.name}»: razonamiento vacío`);
+    for (const k of ['porque', 'detalle']) if (k in r) assert.ok(typeof r[k] === 'string' && r[k].trim(), `${hId} «${t.name}»: ${k} vacío`);
+    // «Cuánto pesa» se genera (pesoTest): no se escribe a mano
+    assert.ok(!('peso' in r), `${hId} «${t.name}»: peso no va en data/`);
+  }
+});
+
+test('«¿Por qué?» de un test: con fuentes del registro, y cada cita empieza por una de ellas y cada fuente tiene su cita', () => {
+  for (const { hId, t } of TODOS_TESTS) {
+    const r = t.razonamiento;
+    if (!r?.porque) { assert.ok(!r?.fuentes && !r?.citas, `${hId} «${t.name}»: fuentes sin «por qué»`); continue; }
+    assert.ok(r.fuentes?.length, `${hId} «${t.name}»: «por qué» sin fuentes`);
+    for (const k of r.fuentes) assert.ok(REFERENCIAS[k], `${hId} «${t.name}»: ${k} no está en el registro`);
+    const textos = (r.citas || []).map(c => (typeof c === 'string' ? c : c.texto));
+    for (const c of textos) assert.ok(r.fuentes.some(k => c.startsWith(k)), `${hId} «${t.name}»: «${c}» no empieza por una de sus fuentes`);
+    for (const k of r.fuentes) assert.ok(textos.some(c => c.startsWith(k)), `${hId} «${t.name}»: ${k} sin cita completa`);
+  }
+});
+
+test('pesoTest: coherente con la puntuación en los 484 tests (testPuntua)', () => {
+  const suman = new Set([PESO_TEST.ambos, PESO_TEST.pos, PESO_TEST.neg, PESO_TEST.cluster]);
+  for (const { hId, h, t, i } of TODOS_TESTS) {
+    const frase = pesoTest(h, t, i);
+    const base = Object.values(PESO_TEST).find(v => frase.startsWith(v));
+    assert.ok(base, `${hId} «${t.name}»: frase desconocida «${frase}»`);
+    assert.equal(suman.has(base), testPuntua(h, t), `${hId} «${t.name}»: «${frase}» frente a testPuntua`);
+    if (!t.cluster && t.tipo !== 'pronostico') {
+      const lr = lrEfectiva(t);
+      if (base === PESO_TEST.pos) assert.ok(lr.posUtil && !lr.negUtil, `${hId} «${t.name}»`);
+      if (base === PESO_TEST.neg) assert.ok(lr.negUtil && !lr.posUtil, `${hId} «${t.name}»`);
+    }
+  }
+});
+
+test('pesoTest: casos sueltos y `absorbe`', () => {
+  assert.equal(pesoTest({ tests: [] }, { lr_pos: '6', lr_neg: '0.2' }, 0), PESO_TEST.ambos);
+  assert.equal(pesoTest({ tests: [] }, { lr_neg: '0.35', lr_pos: '1.8' }, 0), PESO_TEST.neg);
+  assert.equal(pesoTest({ tests: [] }, {}, 0), PESO_TEST.sinLR);
+  assert.equal(pesoTest({ tests: [] }, { lr_pos: '1.3', lr_neg: '0.64' }, 0), PESO_TEST.debil);
+  assert.equal(pesoTest({ tests: [] }, { lr_pos: '6', tipo: 'pronostico' }, 0), PESO_TEST.pronostico);
+  const hyp = { tests: [{ name: 'SLR', lr_neg: '0.3' }, { name: 'RAPIDH: compuesto', lr_pos: '5', absorbe: [0] }] };
+  assert.equal(pesoTest(hyp, hyp.tests[0], 0), `${PESO_TEST.neg} No suma aparte si puntúa «RAPIDH».`);
+  assert.equal(pesoTest(hyp, hyp.tests[1], 1), PESO_TEST.pos);
+});
+
+test('tarjeta del test: «cuánto pesa» siempre, «Ampliar» solo con razonamiento, sin la etiqueta «Sin LR publicada»', () => {
+  for (const { hId, h, t, i } of TODOS_TESTS) {
+    const html = buildTestItem(hId, t, i);
+    assert.ok(html.includes(`<div class="test-peso">${pesoTest(h, t, i)}</div>`), `${hId} «${t.name}»: falta el peso`);
+    assert.equal(html.includes(`abrirRazonamientoTest(this,'${hId}',${i})`), !!t.razonamiento, `${hId} «${t.name}»: Ampliar`);
+    assert.equal(html.includes('class="razon"'), !!t.razonamiento?.porque, `${hId} «${t.name}»: ¿Por qué?`);
+    assert.ok(!html.includes('stat-badge no-data'), `${hId} «${t.name}»: badge redundante`);
+    // con «Ampliar», autor y año en la tarjeta (la cita entera, en el panel); sin él, la cita entera
+    if (t.fuente) assert.ok(html.includes(t.razonamiento ? fuenteCorta(t.fuente) : t.fuente), `${hId} «${t.name}»: fuente`);
+  }
+});
+
+test('fuenteCorta: autor y año de cada cita', () => {
+  assert.equal(fuenteCorta('Hegedus 2012 (Br J Sports Med 46:964–978; tabla 3) · Zhao 2024 (BMC, tabla 3)'), 'Hegedus 2012 · Zhao 2024');
+  assert.equal(fuenteCorta('Lluch 2020, cap. 3.1 (Struyf), p. 54'), 'Lluch 2020, cap. 3.1');
+});
+
+test('fuentes del panel: cada cita de un test con razonamiento se resuelve en el registro y se enlaza con su url o su DOI', () => {
+  for (const { hId, t } of TODOS_TESTS) {
+    if (!t.razonamiento) continue;
+    for (const c of citasTest(t)) {
+      const texto = typeof c === 'string' ? c : c.texto;
+      const k = claveRegistro(texto, REFERENCIAS);
+      assert.ok(k, `${hId} «${t.name}»: «${texto}» no empieza por ninguna clave del registro`);
+      const r = REFERENCIAS[k];
+      const e = enlaceCita(texto, REFERENCIAS);
+      if (r.url) assert.equal(e.url, r.url);
+      else if (r.doi) assert.equal(e.url, `https://doi.org/${r.doi}`);
+      else assert.equal(e, texto, 'sin url ni DOI, sin enlace');
+    }
+  }
+  assert.equal(claveRegistro('Malik y Herron 2023 (StatPearls)', { 'Malik 2023': {}, 'Malik y Herron 2023': {} }), 'Malik y Herron 2023');
+  assert.equal(claveRegistro('Kim 20011', { 'Kim 2001': {} }), null);
+});
+
+test('razonamiento de los tests: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
+  const muestra = TODOS_TESTS.find(x => x.t.razonamiento?.detalle && x.h.region === 'hombro');
+  if (!muestra) return;
+  const { hId, h, t, i } = muestra;
+  withState({ region: h.region, activeHypotheses: [hId], testResults: { [hId]: { [i]: 'pos' } } }, () => {
+    for (const txt of [JSON.stringify(buildPhysiQPayload()), buildContextSummaryText(), buildInformeFisioterapiaText()]) {
+      assert.ok(!txt.includes(t.razonamiento.detalle.slice(0, 40)), 'detalle filtrado a un resumen');
+    }
+  });
+});
+
+test('hombro: criterio visible corto (≤ 600 caracteres; los clusters llevan la técnica de cada componente)', () => {
+  for (const { hId, h, t } of TODOS_TESTS) {
+    if (h.region !== 'hombro') continue;
+    assert.ok(t.criterio.length <= 600, `${hId} «${t.name}»: ${t.criterio.length} caracteres`);
   }
 });
 
