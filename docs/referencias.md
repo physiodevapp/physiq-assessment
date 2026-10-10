@@ -2135,7 +2135,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Regla de Predicción Clínica de Flynn (4/5 criterios)» | 4b · cita bajo el test | 1 |
-| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM)» | 4b · cita bajo el test | 2 |
+| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM, movimientos intervertebrales accesorios pasivos)» | 4b · cita bajo el test | 2 |
 
 ### Frey 2017
 
@@ -2167,7 +2167,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM)» | 4b · cita bajo el test | 1 |
+| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM, movimientos intervertebrales accesorios pasivos)» | 4b · cita bajo el test | 1 |
 | Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria» | 4b · cita bajo el test | 2 |
 | Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Test de inestabilidad en prono» | 4b · cita bajo el test | 3 |
 | Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Movimientos aberrantes en la flexo-extensión» | 4b · cita bajo el test | 4 |
