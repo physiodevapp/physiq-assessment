@@ -1901,6 +1901,18 @@ test('construirAmpliado: el gesto testigo no va y las hipótesis «Derivar» se 
   });
 });
 
+test('construirAmpliado: una derivación del árbol ya resuelta llega como antecedente, sin «derivación médica»', () => {
+  withState({ region: 'codo', treeAnswers: { co_step1: 'fractura', co_step2: 'si' }, activeHypotheses: ['co3'], derivacionResuelta: { co_step1: true } }, () => {
+    const l = IA.construirAmpliado().arbol[0];
+    assert.equal(l.respuesta, 'FRACTURA / LUXACIÓN');
+    assert.equal(l.tratada, true);
+    assert.match(IN.bloquesAmpliados({ arbol: [l] }).join('\n'), /FRACTURA \/ LUXACIÓN \(ya diagnosticada y tratada: es un antecedente\)/);
+  });
+  withState({ region: 'codo', treeAnswers: { co_step1: 'fractura' }, activeHypotheses: [], derivacionResuelta: {} }, () => {
+    assert.match(IA.construirAmpliado().arbol[0].respuesta, /derivación médica/, 'sin marcar, la derivación sigue');
+  });
+});
+
 test('construirAmpliado: iaPregunta / iaTexto del árbol sustituyen al texto de pantalla solo en el prompt', () => {
   withState({ region: 'cadera', treeAnswers: { ca_step1: 'no', ca_step2: 'no' }, activeHypotheses: [] }, () => {
     const arbol = IA.construirAmpliado().arbol;
@@ -2861,6 +2873,9 @@ console.log('\nfase 5 plegable');
       assert.ok(!/\bderivar\b[^.]*\b(no mejora|persisten|siguen siendo)/i.test(HYPOTHESES[id].dosis), `${id}: sin criterio de no mejoría en la pauta`);
       assert.match(HYPOTHESES[id].pronostico.derivacion, /[Dd]erivar[^.]*(no mejoran|persisten|siguen siendo intensos)/, `${id}: el criterio está en el pronóstico`);
     }
+    // co3: el criterio es de cirugía, no de derivación (Andrés, codo)
+    assert.ok(!/cirugía/.test(HYPOTHESES.co3.dosis), 'co3: sin criterios de cirugía en la pauta');
+    assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
   test('pauta: la fase 5 pone delante la rama del caso y el informe con IA recibe solo esa', () => {
