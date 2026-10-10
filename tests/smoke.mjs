@@ -727,6 +727,13 @@ async function checkBotonesTactil(browser, errors) {
     await (await import('./app.js')).compartirTexto('texto de prueba', { titulo: 't', copiado: 'c' });
     return compartido?.text === 'texto de prueba';
   });
+  // Abrir el panel de sesión no pone el foco en el nombre (en el móvil sacaba
+  // el teclado sin que se fuera a escribir)
+  await page.tap('#sessionBtn');
+  await page.waitForSelector('#sessionPanelOverlay.open');
+  await page.waitForTimeout(200);
+  r.sesionSinFoco = await page.evaluate(() => document.activeElement?.id !== 'patientName');
+  await page.evaluate(() => closeSessionPanel());
   // «📤 Compartir» en móvil: hoja inferior pegada abajo; el atrás la cierra sin
   // cambiar de fase; tocar el velo también la cierra (y no deja la fase atrás)
   await page.evaluate(() => { state.region = 'lumbar'; buildResults(); goToPhase(5); });

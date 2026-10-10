@@ -3190,10 +3190,11 @@
    "Cajón anterior con mejor S y E a los 4–6 días;",
    "sin signo del surco, el LPAA no está roto del todo.",
    "No puntúa:",
-   "van Dijk 1996 (160 inversiones;",
+   "van Dijk 1996 (160 pacientes con una inversión, un tobillo cada uno;",
    "referencia:",
-   "cirugía o artrografía) da para la exploración diferida completa (día 5:",
-   "hinchazón, hematoma, palpación y cajón) S 96 %, E 84 %, pero para el cajón solo el texto (S 86 %, E 74 %) no cuadra con su propia tabla, y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos."
+   "hallazgo quirúrgico, o seguimiento a 6 meses en los 25 no operados) da para la exploración diferida completa (días 4–7:",
+   "hinchazón, hematoma, palpación y cajón) S 96 %, E 84 %, pero para el cajón solo el texto (S 86 %, E 74 %) no cuadra con su propia tabla II (S 74 %, 90 de 122;",
+   "E 66–74 % según cómo se cuenten los dudosos), y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos."
   ]
  },
  "tp1|Gesto testigo (①) y medida objetiva (②)": {
@@ -3209,11 +3210,11 @@
    "Si las dos reproducen el dolor conocido, sospechar lesión.",
    "Sin cifras en el capítulo.",
    "No puntúa:",
-   "la palpación del LTPAI sola da resultados contradictorios (Frey 2017:",
+   "la palpación del LTPAI sola da resultados contradictorios (Frey 2017, solo un resumen de congreso:",
    "S 95 %, E 86 %;",
    "Großterlinden 2016:",
-   "S 43 %, E 52 %;",
-   "recogidos en Netterström-Wedin 2021).",
+   "S 42 %, E 52 %;",
+   "recogidos en Netterström-Wedin 2021, sin cifra agrupada).",
    "La LR− 0,28 (IC 0,09–0,89) de Sman 2015 es de otra cosa:",
    "dolor en cualquiera de cinco estructuras de la sindesmosis (S 92 %, E 29 %)."
   ]
@@ -3225,7 +3226,7 @@
    "Sin cifras en el capítulo.",
    "No puntúa:",
    "Sman 2015 (RM de referencia) da S 26 %, E 88 %, LR+ 2,15 (IC 0,86–5,39);",
-   "agrupado en Netterström-Wedin 2021 (4 estudios, 428 participantes), S 32 %, E 85 %, LR+ 3,16 (IC 0,95–10,49), LR− 0,77.",
+   "agrupado en Netterström-Wedin 2021 (4 estudios, 428 participantes, modelo univariante), S 32 %, E 85 %, LR+ 3,16 (IC 0,95–10,49), LR− 0,77.",
    "Los dos intervalos de la LR+ cruzan el 1."
   ]
  },
@@ -3245,8 +3246,11 @@
    "2 dudosos contados como falsos positivos).",
    "LR de Reiman 2014 con esos datos:",
    "LR+ 13,71 (IC 95 % 3,54–51,24), LR− 0,04 (0,02–0,10).",
-   "Límite:",
-   "la especificidad sale de solo 28 controles."
+   "Es el único estudio.",
+   "Límites:",
+   "diseño de casos y controles (los casos entraron por diagnóstico clínico y los controles los descartó clínicamente el mismo autor antes de la ecografía o la RM), así que la precisión probablemente está sobrestimada;",
+   "la especificidad sale de solo 28 controles.",
+   "Aun así, el IC de la LR+ no baja de 3,5."
   ]
  },
  "tp3|Hueco palpable": {
@@ -3256,6 +3260,7 @@
    "S 73 %, E 89 %;",
    "LR de Reiman 2014:",
    "LR+ 6,64 (IC 95 % 2,32–19,91), LR− 0,30 (0,23–0,40).",
+   "Mismo estudio y mismos límites que Thompson (casos y controles).",
    "Es otro test que Thompson, pero en el mismo paciente:",
    "si los dos son positivos, el peso conjunto puede estar algo sobrestimado."
   ]
@@ -3303,11 +3308,16 @@
    "dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta.",
    "PIE → radiografía si dolor en el mediopié Y alguno:",
    "dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos.",
-   "Solo descarta:",
-   "Bachmann 2003 (27 estudios, 15 581 pacientes) da LR− 0,08 aplicando solo la regla del tobillo o solo la del pie, pero 0,21 (IC 95 % 0,12–0,38) en los estudios que aplican las dos juntas, que es como se usan aquí (se toma la más prudente).",
+   "Solo descarta, y no explora el calcáneo:",
+   "la regla del pie solo mira la base del 5.º MT y el navicular.",
+   "Beckenkamp 2017 (66 estudios, modelo bivariante), en los estudios que aplican las dos reglas juntas, como aquí:",
+   "LR− 0,09 (IC 95 % 0,06–0,13) con todos (31 estudios) y 0,08 (0,04–0,16) en los 22 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos);",
+   "en adultos, 0,12 (0,07–0,19).",
+   "Bachmann 2003 (univariante, niños y adultos) daba 0,17 (0,10–0,30) para la evaluación conjunta.",
+   "Las dos revisiones incluyen los estudios de los creadores de la regla.",
    "El positivo es un hallazgo:",
-   "en adultos, LR+ 1,47 (IC 1,11–1,93;",
-   "Gomes 2022)."
+   "LR+ 1,48 (1,30–1,68;",
+   "Beckenkamp 2017)."
   ]
  },
  "tp5|5.º MT: dolor en la base": {
@@ -3372,12 +3382,15 @@
    "dolor localizado (1–2 dedos).",
    "EVA en cada escalón.",
    "Aquiles:",
-   "la palpación no ayuda al diagnóstico.",
+   "el dolor a la palpación de la porción media es uno de los criterios diagnósticos de la guía APTA (Chimenti 2024), que no da cifras de su exactitud.",
    "No puntúa:",
-   "la única cifra de estos gestos es de Hutchison 2013 (estudio piloto, 10 tendinopatías;",
+   "la única cifra de estos gestos es de Hutchison 2013 (21 participantes, 10 con tendinopatía en la ecografía;",
+   "agrupa las exploraciones de 3 clínicos, no pacientes;",
    "en Reiman 2014):",
-   "ETM monopodal S 22 %, E 93 %, LR+ 3,14;",
-   "salto S 43 %, E 87 %, LR+ 3,31, sin intervalo de confianza publicado."
+   "ETM monopodal S 22 %, E 93 %;",
+   "salto S 43 %, E 87 %.",
+   "Las LR (3,14 y 3,31) no las publica el artículo:",
+   "las calcula Reiman de S y E redondeadas, sin intervalo de confianza."
   ]
  },
  "tp8|Descarga en el salto": {
@@ -3630,7 +3643,12 @@
    "Molloy 2003, 73 pacientes con artroscopia:",
    "37 verdaderos positivos, 4 falsos positivos (adherencias, artrosis), 2 falsos negativos, 30 verdaderos negativos → S 94,8 %, E 88 % (LR calculadas).",
    "Límites:",
-   "todos ya iban a artroscopia (sin inestabilidad mecánica), el mismo cirujano exploraba y decidía operar, y valida el pinzamiento sinovial anterolateral, no el óseo."
+   "es el único estudio y lo firman los creadores del signo (búsqueda en PubMed, 2026-10:",
+   "sin validación posterior);",
+   "todos ya iban a artroscopia (sin inestabilidad mecánica);",
+   "el mismo cirujano exploraba y hacía o supervisaba la artroscopia, sin cegamiento;",
+   "y valida el pinzamiento sinovial anterolateral, no el óseo.",
+   "La LR+ calculada (7,9) seguiría por encima de 2 aunque estuviera muy sobrestimada."
   ]
  },
  "tp21|Hinchazón articular": {
@@ -3919,9 +3937,13 @@
    "Radiografía si dolor en la zona maleolar Y alguno:",
    "dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta.",
    "Solo descarta:",
-   "aplicando solo la regla del tobillo, Bachmann 2003 (27 estudios, 15 581 pacientes) da LR− 0,08 (IC 95 % 0,03–0,18).",
+   "Beckenkamp 2017 (66 estudios, modelo bivariante), regla del tobillo:",
+   "LR− 0,018 (IC 95 % 0,005–0,059) con todos (34 estudios) y 0,030 (0,009–0,099) en los 25 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos);",
+   "en los 3 estudios de riesgo de sesgo bajo, 0,11 (0,02–0,79).",
+   "Bachmann 2003 (univariante, niños y adultos) daba 0,08 (0,03–0,18).",
+   "Las dos revisiones incluyen los estudios de los creadores de la regla.",
    "El positivo es un hallazgo:",
-   "la regla es muy sensible y poco específica.",
+   "LR+ 1,53 (1,38–1,70).",
    "Excluidas embarazadas y personas que no pueden seguir la prueba."
   ]
  },
