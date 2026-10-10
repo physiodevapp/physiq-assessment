@@ -10,7 +10,7 @@ import './dom-shim.mjs';
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
 const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, DOSIS_DERIVAR } = await import('../data.js');
-const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML, pesoTest, PESO_TEST, buildTestItem, lrEfectiva, fuenteCorta, claveRegistro, enlaceCita } = await import('../phase4b.js');
+const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML, pesoTest, PESO_TEST, buildTestItem, lrEfectiva, fuenteCorta, claveRegistro, enlaceCita, citasTest } = await import('../phase4b.js');
 const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../app.js');
 const { state } = await import('../state.js');
@@ -1415,6 +1415,18 @@ test('razonamiento de un test: solo porque / detalle / fuentes / citas, textos n
   }
 });
 
+test('«¿Por qué?» de un test: con fuentes del registro, y cada cita empieza por una de ellas y cada fuente tiene su cita', () => {
+  for (const { hId, t } of TODOS_TESTS) {
+    const r = t.razonamiento;
+    if (!r?.porque) { assert.ok(!r?.fuentes && !r?.citas, `${hId} «${t.name}»: fuentes sin «por qué»`); continue; }
+    assert.ok(r.fuentes?.length, `${hId} «${t.name}»: «por qué» sin fuentes`);
+    for (const k of r.fuentes) assert.ok(REFERENCIAS[k], `${hId} «${t.name}»: ${k} no está en el registro`);
+    const textos = (r.citas || []).map(c => (typeof c === 'string' ? c : c.texto));
+    for (const c of textos) assert.ok(r.fuentes.some(k => c.startsWith(k)), `${hId} «${t.name}»: «${c}» no empieza por una de sus fuentes`);
+    for (const k of r.fuentes) assert.ok(textos.some(c => c.startsWith(k)), `${hId} «${t.name}»: ${k} sin cita completa`);
+  }
+});
+
 test('pesoTest: coherente con la puntuación en los 484 tests (testPuntua)', () => {
   const suman = new Set([PESO_TEST.ambos, PESO_TEST.pos, PESO_TEST.neg, PESO_TEST.cluster]);
   for (const { hId, h, t, i } of TODOS_TESTS) {
@@ -1461,7 +1473,7 @@ test('fuenteCorta: autor y año de cada cita', () => {
 test('fuentes del panel: cada cita de un test con razonamiento se resuelve en el registro y se enlaza con su url o su DOI', () => {
   for (const { hId, t } of TODOS_TESTS) {
     if (!t.razonamiento) continue;
-    for (const c of (t.razonamiento.citas || (t.fuente ? t.fuente.split(' · ') : []))) {
+    for (const c of citasTest(t)) {
       const texto = typeof c === 'string' ? c : c.texto;
       const k = claveRegistro(texto, REFERENCIAS);
       assert.ok(k, `${hId} «${t.name}»: «${texto}» no empieza por ninguna clave del registro`);

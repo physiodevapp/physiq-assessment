@@ -218,7 +218,7 @@ Diseño, esquema, salvaguarda y procedimiento: `docs/razonamiento-tests.md` (lé
 
 | Orden | Región | Tests | Criterio > 300 car. | Puntúan | Fase 1 (recorte) | Revisión usuario | Fase 2 («por qué») | Notas |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Hombro | 49 | 30 | 11 | [x] | [x] | [ ] | Piloto. 34 tests repartidos, 6 notas de mantenimiento a comentarios (h1 abducción, h3 IRLS, h4 recolocación, h5 O’Brien, h7 aducción cruzada y palpación AC); revisado por el usuario (2026-10), que pidió quitar del panel las frases que repiten «cuánto pesa» (15 tests); después, enlaces «Abrir ↗» en las fuentes del panel (url o DOI del registro) y criterio visible de «Paxinos + gammagrafía» con su positivo; sin cambios en LR ni puntuación |
+| 1 | Hombro | 49 | 30 | 11 | [x] | [x] | [~] | Piloto. 34 tests repartidos, 6 notas de mantenimiento a comentarios (h1 abducción, h3 IRLS, h4 recolocación, h5 O’Brien, h7 aducción cruzada y palpación AC); revisado por el usuario (2026-10), que pidió quitar del panel las frases que repiten «cuánto pesa» (15 tests); después, enlaces «Abrir ↗» en las fuentes del panel (url o DOI del registro) y criterio visible de «Paxinos + gammagrafía» con su positivo; fase 2 («por qué») en 8 tests con 6 artículos leídos enteros (arco doloroso, Hawkins, Neer, los dos signos de retraso, aprehensión, recolocación y sorpresa), pendiente de revisión del usuario; faltan rotación externa resistida y los clusters A y B; sin cambios en LR ni puntuación |
 | 2 | Rodilla | 90 | 18 | 19 | [ ] | [ ] | [ ] | La que más tests puntúan: primera de la fase 2 tras hombro |
 | — | Cervical | 48 | 25 | 3 | [ ] | [ ] | [ ] | |
 | — | Cadera | 74 | 22 | 8 | [ ] | [ ] | [ ] | |

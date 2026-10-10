@@ -118,7 +118,7 @@ function lugar(hyp, ruta, testPuntua) {
   if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto', efecto: 'texto' };
   return { donde: `\`${ruta.join('.')}\``, fase: '—', efecto: 'texto' };
 }
-const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'texto'];
+const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento 4b', 'texto'];
 
 function recorrer(obj, ruta, fn) {
   if (typeof obj === 'string') return fn(obj, ruta);
@@ -151,12 +151,24 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERE
   for (const hyp of Object.values(HYPOTHESES)) {
     for (const campo of ['tests', 'clusters', 'pronostico', 'dosis', 'dosisFuente']) {
       recorrer(hyp[campo], [campo], (texto, ruta) => {
+        // «¿Por qué?» de un test: sus fuentes se recogen abajo, por clave; el
+        // `detalle` (texto movido del criterio) se sigue contando aquí.
+        if (ruta[2] === 'razonamiento' && ruta[3] !== 'detalle') return;
         for (const { tipo, clave } of clavesDe(texto, alias)) {
           const uso = { region: hyp.region, hyp: `${hyp.id} · ${hyp.name}`, ...lugar(hyp, ruta, testPuntua) };
           anotar(tipo === 'tarjeta' ? tarjetas : lit, clave, texto, uso);
         }
       });
     }
+    // «¿Por qué?» de los tests (fase 4b): `razonamiento.fuentes` son claves del
+    // registro, como en la fase 2; «citada como» = la cita que empieza por ella.
+    hyp.tests.forEach(t => {
+      for (const clave of t.razonamiento?.fuentes || []) {
+        const cita = (t.razonamiento.citas || []).map(c => (typeof c === 'string' ? c : c.texto)).find(c => c.startsWith(clave)) || clave;
+        anotar(lit, clave, cita, { region: hyp.region, hyp: `${hyp.id} · ${hyp.name}`, donde: `Test «${t.name}» («¿Por qué?»)`,
+          fase: '4b · razonamiento del test', efecto: 'razonamiento 4b' });
+      }
+    });
     hyp.tests.forEach(t => {
       if (t.fuente || (t.cluster && hyp.clusters?.[t.cluster]?.fuente)) return;   // la del cluster cubre a sus miembros
       const cifras = [t.sn && `S ${t.sn}`, t.sp && `E ${t.sp}`, t.lr_pos && `LR+ ${t.lr_pos}`, t.lr_neg && `LR− ${t.lr_neg}`].filter(Boolean);
@@ -294,6 +306,7 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     '«Afecta a»: «puntuación 4b» = respalda un test o cluster que puntúa; «test 4b sin puntuar» = el test se ve',
     'pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que dispara una alerta de derivación;',
     '«razonamiento fase 2» = respalda el «¿Por qué?» de una pregunta de cribado (no cambia ninguna alerta);',
+    '«razonamiento 4b» = respalda el «¿Por qué?» de un test de la fase 4b (no cambia la puntuación);',
     '«texto» = solo se menciona.', '',
     '| Referencia | Afecta a | Usos | Última revisión |', '|---|---|---|---|',
     ...filas.map(f => `| [${f.k}](#${ancla(f.r.tarjetas ? '1. Tarjetas de consulta' : f.k)}) | ${f.efectos.join(' · ') || '—'} | ${f.n} | ${f.r.revision ? `${f.r.revision.fecha} · ${esc(f.r.revision.resultado)}` : '**sin revisar**'} |`), '');

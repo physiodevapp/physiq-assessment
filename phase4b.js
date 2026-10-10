@@ -295,7 +295,8 @@ export function buildTestItem(hId, test, idx) {
     ? `<button type="button" class="razon-ampliar" onclick="abrirRazonamientoTest(this,'${hId}',${idx})">Ampliar →</button>` : '';
   const porque = r?.porque ? `<details class="razon">
       <summary>ⓘ ¿Por qué?</summary>
-      <div class="razon-cuerpo"><p><span class="razon-etq">Por qué</span> ${r.porque}</p></div>
+      <div class="razon-cuerpo"><p><span class="razon-etq">Por qué</span> ${r.porque}</p>
+        ${r.fuentes?.length ? `<div class="razon-pie">— ${r.fuentes.join(' · ')}</div>` : ''}</div>
     </details>` : '';
   // Con «Ampliar», la tarjeta lleva solo autor y año; la cita completa está en el panel
   const fuenteTxt = ampliar && test.fuente ? fuenteCorta(test.fuente) : test.fuente || '';
@@ -319,8 +320,8 @@ export function buildTestItem(hId, test, idx) {
 }
 
 // Panel «Ampliar» de un test: el mismo de la fase 2 (abrirPanelRazon, app.js).
-// Fuentes: las `citas` del razonamiento si las hay; si no, la `fuente` del
-// test partida por « · ». Cada cita se enlaza («Abrir ↗») con la url del
+// Fuentes: la `fuente` del test partida por « · » y, después, las `citas` del
+// «por qué» que no estén ya. Cada cita se enlaza («Abrir ↗») con la url del
 // registro (data/referencias.js) o, sin ella, con su DOI: el registro se
 // carga con import() la primera vez que se abre el panel, y si falla el
 // panel se abre igual, sin enlaces.
@@ -341,6 +342,12 @@ export function claveRegistro(cita, REF) {
   return mejor;
 }
 
+export function citasTest(test) {
+  const propias = test.fuente ? test.fuente.split(' · ') : [];
+  const textos = new Set(propias);
+  return [...propias, ...(test.razonamiento?.citas || []).filter(c => !textos.has(typeof c === 'string' ? c : c.texto))];
+}
+
 export function enlaceCita(cita, REF) {
   if (typeof cita !== 'string') return cita;
   const r = REF[claveRegistro(cita, REF)];
@@ -355,7 +362,7 @@ export async function abrirRazonamientoTest(btn, hId, idx) {
   if (!r) return;
   const REF = await registroReferencias();
   const parrafos = (r.detalle || '').split('\n\n').filter(Boolean).map(p => `<p>${p}</p>`).join('');
-  const citas = (r.citas || (test.fuente ? test.fuente.split(' · ') : [])).map(c => enlaceCita(c, REF));
+  const citas = citasTest(test).map(c => enlaceCita(c, REF));
   abrirPanelRazon({
     btn, kicker: 'Test · por qué y evidencia', titulo: test.name,
     html: `
