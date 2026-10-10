@@ -728,15 +728,6 @@
       "plantilla": "breve",
       "errores": [
         {
-          "id": "elena4-nrs-momento",
-          "tipo": "no-respaldado",
-          "nivel": "medio",
-          "descripcion": "Pone al 7/10 de la fase 3 (sin momento) el de «la última semana», cuyo peor dolor fue 8/10",
-          "fragmentos": [
-            "en la última semana ha llegado a 7/10"
-          ]
-        },
-        {
           "id": "elena4-episodio-una-version",
           "tipo": "omision",
           "nivel": "medio",
@@ -787,6 +778,51 @@
           "descripcion": "Convierte el patrón descartado del árbol («mejora al sentarse o inclinarse hacia adelante») en un hallazgo negativo invertido",
           "fragmentos": [
             "ni empeora con la sedestación o mejora con la flexión anterior"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "andres-dictado-1-informe.txt",
+      "valoracion": "valoracion-andres-molina-codo.json",
+      "transcripcion": "andres-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "andres1-evolucion-una-version",
+          "tipo": "omision",
+          "nivel": "medio",
+          "descripcion": "Evolución solo en la versión del dictado («mejoría progresiva»); la del formulario («Igual») desaparece",
+          "claves": [
+            "igual"
+          ]
+        },
+        {
+          "id": "andres1-bilateral",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«Comparada con el lado sano» leída como «déficit bilateral»",
+          "fragmentos": [
+            "con déficit bilateral en ambos tipos de movilidad"
+          ]
+        },
+        {
+          "id": "andres1-causa-inmovilizacion",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Causa que no consta: rigidez «secundaria a la inmovilización», «inmovilización prolongada» (cabestrillo 3 semanas)",
+          "fragmentos": [
+            "secundaria a la inmovilización tras una fractura",
+            "El contexto de inmovilización prolongada"
+          ]
+        },
+        {
+          "id": "andres1-participacion-especulada",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Restricción en la participación especulada",
+          "fragmentos": [
+            "obligándole a adaptar sus tareas"
           ]
         }
       ]

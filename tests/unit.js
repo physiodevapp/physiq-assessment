@@ -3365,8 +3365,9 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-1-ficha-breve.txt', 'elena-dictado-1-transcripcion.txt', ['pronostica', 'nrs-omitido', 'estructura', 'relleno']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-2-ficha-breve.txt', 'elena-dictado-2-transcripcion.txt', ['pronostica', 'fuentes']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-3-ficha-breve.txt', 'elena-dictado-3-transcripcion.txt', []],
-      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-4-ficha-breve.txt', 'elena-dictado-4-transcripcion.txt', []],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-4-ficha-breve.txt', 'elena-dictado-4-transcripcion.txt', ['nrs-momento']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-5-ficha-breve.txt', 'elena-dictado-5-transcripcion.txt', ['nrs-omitido']],
+      ['valoracion-andres-molina-codo.json', 'andres-dictado-1-informe.txt', 'andres-dictado-1-transcripcion.txt', ['nrs-momento', 'reconsiderar-copiado', 'seguimiento-fuera', 'relleno']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -3415,6 +3416,18 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!/valoración|consulta/.test(IN.NOTA_NRS), 'la nota del NRS no nombra de dónde sale la cifra');
     assert.match(IN.NOTA_NRS, /no le pongas el de otra cifra/, 'ronda 25: el 7 de Elena‑4 tomó el momento «última semana» del 8');
     assert.ok(ids('El dolor era de 7/10, aunque durante la consulta refirió un 4/10.').includes('fuentes'));
+  });
+  test('revisión: NRS con un momento que no tiene, plazo de «Cuándo reconsiderar» copiado, «no se observa ganancia» (ronda 26)', () => {
+    assert.ok(ids('La intensidad del dolor en reposo es de 3/10.', { datos: { nr: 3 } }).includes('nrs-momento'));
+    assert.ok(!ids('Dolor de 3/10; al estirar llega a 5/10.', { datos: { nr: 3 } }).includes('nrs-momento'), 'sin momento, bien');
+    assert.ok(!ids('En reposo, 2/10; la intensidad registrada es 3/10.', { datos: { nr: 3 } }).includes('nrs-momento'), 'el momento es de otra cifra');
+    assert.ok(!ids('En la última semana llegó a 8/10.', { datos: { nr: 8 }, transcripcion: 'Esta semana llegó a un 8 de 10.' }).includes('nrs-momento'), 'el audio da ese momento para esa cifra');
+    const amp = { pautas: [{ hipotesis: 'Rigidez', pronostico: { derivacion: 'Si no mejora más tras 3–6 meses, valorar la cirugía.' } }] };
+    assert.ok(ids('Si tras 3 a 6 meses no mejora, se valorará la cirugía.', { ampliado: amp }).includes('reconsiderar-copiado'));
+    assert.ok(!ids('Si tras 3 a 6 meses no mejora, se valorará la cirugía.', { ampliado: amp, transcripcion: 'Si en 3 a 6 meses no mejora, lo veremos.' }).includes('reconsiderar-copiado'), 'lo dijo el fisio');
+    assert.ok(!ids('Reevaluación en 6 semanas.', { ampliado: amp }).includes('reconsiderar-copiado'));
+    const seg = x => RI.revisarInforme(`## CONCLUSIONES Y PLAN DE TRATAMIENTO\n\n${x}\n\n## SEGUIMIENTO FUNCIONAL\n\nSe usará el QuickDASH.`).map(p => p.id);
+    assert.ok(seg('Si en 6 semanas no se observa ganancia de extensión, se comentará con el traumatólogo.').includes('seguimiento-fuera'));
   });
   test('revisión: constantes clasificadas, motivo de la imagen añadido, «en caso de ausencia de mejoría» (decimosexta revisión)', () => {
     assert.ok(ids('Presenta signos vitales dentro de parámetros habituales, con una frecuencia cardíaca de 58 lpm.').includes('constantes'));
