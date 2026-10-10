@@ -650,6 +650,32 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "elena-dictado-2-ficha-breve.txt",
+      "valoracion": "valoracion-elena-castro-lumbar.json",
+      "transcripcion": "elena-dictado-2-transcripcion.txt",
+      "plantilla": "breve",
+      "errores": [
+        {
+          "id": "elena2-episodio-una-version",
+          "tipo": "contradice",
+          "nivel": "medio",
+          "descripcion": "Da solo la versión de la consulta y la justifica contra el formulario (es la primera vez: Sí): «por lo que no es la primera vez»",
+          "fragmentos": [
+            "por lo que no es la primera vez que presenta este cuadro"
+          ]
+        },
+        {
+          "id": "elena2-informado-como-hecho",
+          "tipo": "atribucion",
+          "nivel": "medio",
+          "descripcion": "Un consejo de la pauta (mantener la actividad habitual) escrito como algo ya hecho en la sesión; nadie lo dictó",
+          "fragmentos": [
+            "Se ha informado de la importancia de mantener la actividad habitual"
+          ]
+        }
+      ]
     }
   ]
 }

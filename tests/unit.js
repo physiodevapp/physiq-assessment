@@ -1821,7 +1821,7 @@ test('datos ampliados: edad, fase 3, árbol, tests, criterios y pauta solo cuand
   assert.ok(!t.includes('6-12 semanas') && !/· Pronóstico/.test(t), 'sin la línea «Pronóstico»');
   for (const x of ['Signo comparable', 'Flexión lumbar', 'Empeorando', 'tolerancia al estrés físico Baja', 'Miedo al movimiento → Sí',
     'Dolor lumbar inflamatorio (2/4)', '¿SLR positivo? → SÍ — SLR <60°', 'Slump: positivo (parte del cluster «Cluster de Laslett»)',
-    'CPR Flynn: negativo (regla pronóstica', 'Pauta: Movilidad neural', 'Fuente: NICE NG59',
+    'Reglas pronósticas (predicen', '  · CPR Flynn: negativo', 'Pauta: Movilidad neural', 'Fuente: NICE NG59',
     'Cuándo reconsiderar o derivar (contexto para el fisioterapeuta: no es plan ni explicación al paciente): Déficit progresivo', 'seguimiento: ODI', 'Derivar: sin tratamiento']) assert.ok(t.includes(x), `falta «${x}»`);
   const vacio = { edad: null, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [], arbol: [], tests: [], pautas: [] };
   assert.deepEqual(IN.bloquesAmpliados(vacio), [], 'sin datos, ningún bloque');
@@ -3348,6 +3348,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-rosa-martin-hombro.json', 'rosa-dictado-1-informe.txt', 'rosa-dictado-1-transcripcion.txt', ['lado-otro', 'genero', 'fuentes']],
       ['valoracion-tomas-ibanez-cervical.json', 'tomas-dictado-1-informe.txt', 'tomas-dictado-1-transcripcion.txt', ['nrs-omitido', 'relleno', 'fuentes']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-1-ficha-breve.txt', 'elena-dictado-1-transcripcion.txt', ['pronostica', 'nrs-omitido', 'estructura', 'relleno']],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-2-ficha-breve.txt', 'elena-dictado-2-transcripcion.txt', ['pronostica', 'fuentes']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -3379,6 +3380,21 @@ console.log('\nrevisión automática del informe con IA');
     const noct = 'No presenta dolor nocturno que le despierte. Toma un relajante muscular nocturno, que le permite dormir mejor.';
     assert.ok(!ids(noct).includes('discrepancia-separada'), 'un relajante nocturno no es dolor nocturno');
     assert.ok(ids('No presenta dolor nocturno. Refiere que el dolor por la noche le despierta dos veces.').includes('discrepancia-separada'));
+  });
+  test('prompt: las reglas pronósticas en un bloque propio, fuera de los tests de la hipótesis; NRS sin pistas de procedencia (ronda 24)', () => {
+    const a = { tests: [
+      { hipotesis: 'Disfunción segmentaria', items: [{ test: 'Regla de Flynn', resultado: 'positivo', pronostico: true }, { test: 'PAIVM', resultado: 'positivo' }] },
+      { hipotesis: 'Solo pronóstico', items: [{ test: 'Regla de Hicks', resultado: 'positivo', pronostico: true }] }] };
+    const bl = IN.bloquesAmpliados(a);
+    const tests = bl.find(x => x.startsWith('Tests de confirmación'));
+    const pron = bl.find(x => x.startsWith('Reglas pronósticas'));
+    assert.ok(tests.includes('PAIVM: positivo') && !/Flynn|Hicks|Solo pronóstico/.test(tests), 'ninguna regla pronóstica entre los tests');
+    assert.ok(pron.includes('· Regla de Flynn: positivo') && pron.includes('· Regla de Hicks: positivo'));
+    assert.ok(!/Disfunción segmentaria|Solo pronóstico/.test(pron), 'sin la hipótesis a la que pertenecía');
+    const solo = IN.bloquesAmpliados({ tests: [a.tests[1]] });
+    assert.ok(!solo.some(x => x.startsWith('Tests de confirmación')), 'sin tests diagnósticos, no hay bloque vacío');
+    assert.ok(!/valoración|consulta/.test(IN.NOTA_NRS), 'la nota del NRS no nombra de dónde sale la cifra');
+    assert.ok(ids('El dolor era de 7/10, aunque durante la consulta refirió un 4/10.').includes('fuentes'));
   });
   test('revisión: constantes clasificadas, motivo de la imagen añadido, «en caso de ausencia de mejoría» (decimosexta revisión)', () => {
     assert.ok(ids('Presenta signos vitales dentro de parámetros habituales, con una frecuencia cardíaca de 58 lpm.').includes('constantes'));
