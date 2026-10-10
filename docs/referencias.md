@@ -610,15 +610,15 @@ Nota: PDF completo del usuario leído (2026-10; 41 páginas, primera edición). 
 
 Citada como:
 
-1. Valoración global del examinador (historia + exploración) para rotura meniscal: rinde mejor que cada maniobra suelta (McMurray LR+ 1,3; línea articular 0,9 en la misma revisión). 5 estudios con artroscopia: S media 77 %, E media 91 %. Más reciente, Rana 2026 (Br Med Bull 159:ldag023; 6 y 7 estudios con exploración compuesta, todos con RM y artroscopia en el mismo paciente) da S 85 % y E 95 % en el menisco medial y S 75 % y E 93 % en el lateral, pero sin LR, con agrupación univariante, exploraciones hechas por cirujanos ortopédicos y pacientes que iban a artroscopia: no sustituye a estas LR. La guía AAOS 2024 recomienda la exploración combinada (interlínea, McMurray, Thessaly) con fuerza moderada, sin cifras agrupadas.
-2. El capítulo lo cita entre las pruebas de rotura meniscal, junto con la palpación de la interlínea y el McMurray, sin describir la técnica ni dar cifras. A 20° de flexión, el metaanálisis da S 75 % (IC 53–89 %), E 87 % (IC 65–96 %), LR+ 5,6 (IC 1,5–21,0) y LR− 0,28 (IC 0,11–0,71), pero con heterogeneidad muy alta (I² 94 %), y el estudio de los creadores del test da cifras muy superiores a las de los demás. La guía AAOS 2024 deja fuera ese estudio por no cumplir sus criterios de inclusión y, en uno de alta calidad, recoge S 64 % y E 53 %: cuenta como hallazgo.
+1. Rinde mejor que cada maniobra suelta (McMurray LR+ 1,3; línea articular 0,9 en la misma revisión). 5 estudios con artroscopia: S media 77 %, E media 91 %. Más reciente, Rana 2026 (Br Med Bull 159:ldag023; 6 y 7 estudios con exploración compuesta, todos con RM y artroscopia en el mismo paciente) da S 85 % y E 95 % en el menisco medial y S 75 % y E 93 % en el lateral, pero sin LR, con agrupación univariante, exploraciones hechas por cirujanos ortopédicos y pacientes que iban a artroscopia: no sustituye a estas LR. La guía AAOS 2024 recomienda la exploración combinada (interlínea, McMurray, Thessaly) con fuerza moderada, sin cifras agrupadas.
+2. A 20° de flexión, el metaanálisis da S 75 % (IC 53–89 %), E 87 % (IC 65–96 %), LR+ 5,6 (IC 1,5–21,0) y LR− 0,28 (IC 0,11–0,71), pero con heterogeneidad muy alta (I² 94 %), y el estudio de los creadores del test da cifras muy superiores a las de los demás. La guía AAOS 2024 deja fuera ese estudio por no cumplir sus criterios de inclusión y, en uno de alta calidad, recoge S 64 % y E 53 %.
 3. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209 y 220; Smith 2015 (Evid Based Med 20:88–97; metaanálisis bivariante, tabla 3); AAOS 2024 (guía de práctica clínica de patología meniscal aislada aguda, recomendación de exploración física)
 4. Prill 2025, Knee Surg Sports Traumatol Arthrosc 33(8):3014–3024 (consenso formal EU-US de rehabilitación del menisco, ESSKA-AOSSM-AASPT, parte II: tratamiento sin cirugía; grados A a D, de más respaldo científico a opinión de expertos); Logerstedt 2018, J Orthop Sports Phys Ther 48(2):A1–A50 (guía de práctica clínica APTA, lesiones de menisco y de cartílago articular: tras la meniscectomía; deja el tratamiento sin cirugía para su próxima revisión; letra = grado de la recomendación, tal como la da la guía); AAOS 2024 (guía de práctica clínica de patología meniscal aislada aguda, opciones «Physical Therapy» e «Indications for Acute Surgical Intervention»)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» (en `criterio`) | 4b · mención en el texto | 1 |
-| Rodilla | ro2 · Lesión Meniscal | Test «Test de Thessaly» (en `criterio`) | 4b · mención en el texto | 2 |
+| Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Rodilla | ro2 · Lesión Meniscal | Test «Test de Thessaly» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Test de Thessaly» | 4b · cita bajo el test | 3 |
 | Rodilla | ro2 · Lesión Meniscal | Pauta de tratamiento | 5 · cita de la pauta | 4 |
 
@@ -757,12 +757,12 @@ Nota: Texto completo no consultado (Wiley, de pago): el resumen de PubMed no da 
 Citada como:
 
 1. Hallazgo: la S 95 % / E 69 % que figuraba son de los criterios clínicos de artrosis de rodilla (Altman 1986), no de cadera. El criterio más parecido para cadera es el diagnóstico clínico de NICE (edad >45, dolor con la actividad, sin rigidez matutina o ≤30 min), que no aporta sensibilidad ni especificidad. Rigidez matutina <60 min ausente sí orienta en contra (LR− 0,22–0,65).
-2. Dolor de rodilla la mayoría de los días del mes previo MÁS al menos 3 de — edad >50, rigidez <30 min, crepitación, dolor óseo a la palpación, aumento de tamaño óseo, sin calor palpable. Son criterios de clasificación: la S 95 % / E 69 % que figuraba sale de la muestra en la que se crearon (pacientes de reumatología, frente a artritis reumatoide y otras causas; Altman 1986). En población de 50 años o más con dolor de rodilla caen a S 41 % · E 75 % (LR+ 1,6 · LR− 0,8): casi no cambian la probabilidad. Reflejan sobre todo la artrosis avanzada: si no se cumplen, no la descartes. No puntúa, así que el criterio combinado, la crepitación y el agrandamiento óseo cuentan por separado.
+2. Son criterios de clasificación: la S 95 % / E 69 % que figuraba sale de la muestra en la que se crearon (pacientes de reumatología, frente a artritis reumatoide y otras causas; Altman 1986). En población de 50 años o más con dolor de rodilla caen a S 41 % · E 75 % (LR+ 1,6 · LR− 0,8): casi no cambian la probabilidad. Reflejan sobre todo la artrosis avanzada: si no se cumplen, no la descartes.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca1 · Artrosis de Cadera | Test «Criterio clínico combinado: Edad ≥45 + dolor en actividad + rigidez <1h» (en `criterio`) | 4b · mención en el texto | 1 |
-| Rodilla | ro1 · Artrosis de Rodilla | Test «Criterios clínicos del ACR» (en `criterio`) | 4b · mención en el texto | 2 |
+| Rodilla | ro1 · Artrosis de Rodilla | Test «Criterios clínicos del ACR» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 
 ### Altman 1991
 
@@ -3050,11 +3050,11 @@ Nota: PDF del usuario leído entero (2026-10). 23 estudios; sin anestesia y sin 
 
 Citada como:
 
-1. Puño debajo de la rodilla — si el LCA está roto, el talón no se eleva. S IC 95 %: 68–92 %; E IC 83–95 %; LR+ IC 5,01–17,30; LR− IC 0,09–0,34. El que mejor descarta de los cuatro; en lesiones de menos de 3 semanas fue el más exacto. Concordante, Hesmerg 2024 (Knee 47:81–91; 23 estudios sin anestesia, sin el de su creador): S 79 %, E 92 %, LR+ 9,9, LR− 0,22. Hu 2024 (J Orthop Surg Res 19:155; 12 estudios, con el del creador) da E 78 % y LR+ 3,1.
+1. S IC 95 %: 68–92 %; E IC 83–95 %; LR+ IC 5,01–17,30; LR− IC 0,09–0,34. El que mejor descarta de los cuatro; en lesiones de menos de 3 semanas fue el más exacto. Concordante, Hesmerg 2024 (Knee 47:81–91; 23 estudios sin anestesia, sin el de su creador): S 79 %, E 92 %, LR+ 9,9, LR− 0,22. Hu 2024 (J Orthop Surg Res 19:155; 12 estudios, con el del creador) da E 78 % y LR+ 3,1.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Lever Sign Test» (en `criterio`) | 4b · mención en el texto | 1 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Lever Sign Test» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
 ### Hölmich 1999
 
@@ -3081,11 +3081,11 @@ Nota: Texto completo leído en PMC (2026-10). 12 estudios, 1365 personas, modelo
 
 Citada como:
 
-1. Puño debajo de la rodilla — si el LCA está roto, el talón no se eleva. S IC 95 %: 68–92 %; E IC 83–95 %; LR+ IC 5,01–17,30; LR− IC 0,09–0,34. El que mejor descarta de los cuatro; en lesiones de menos de 3 semanas fue el más exacto. Concordante, Hesmerg 2024 (Knee 47:81–91; 23 estudios sin anestesia, sin el de su creador): S 79 %, E 92 %, LR+ 9,9, LR− 0,22. Hu 2024 (J Orthop Surg Res 19:155; 12 estudios, con el del creador) da E 78 % y LR+ 3,1.
+1. S IC 95 %: 68–92 %; E IC 83–95 %; LR+ IC 5,01–17,30; LR− IC 0,09–0,34. El que mejor descarta de los cuatro; en lesiones de menos de 3 semanas fue el más exacto. Concordante, Hesmerg 2024 (Knee 47:81–91; 23 estudios sin anestesia, sin el de su creador): S 79 %, E 92 %, LR+ 9,9, LR− 0,22. Hu 2024 (J Orthop Surg Res 19:155; 12 estudios, con el del creador) da E 78 % y LR+ 3,1.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Lever Sign Test» (en `criterio`) | 4b · mención en el texto | 1 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Lever Sign Test» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
 ### Hunter 2024
 
@@ -3563,12 +3563,12 @@ DOI: 10.1016/j.arthro.2007.06.016
 
 Citada como:
 
-1. Es la mejor forma de diagnosticarlo en consulta. Técnica (test MPP): supino, rodilla extendida; presión con el pulgar sobre la porción inferomedial de la femororrotuliana y, manteniéndola, flexionar a 90°. Positivo: dolor en extensión que desaparece o disminuye mucho a 90°; comparar con el otro lado. Kim 2007 da S 89,5 % · E 88,7 % frente a artroscopia (la tarjeta redondea a S 0,90 · E 0,89 · LR+ 8,18 · LR− 0,11), pero no puntúa: toda la especificidad sale de los controles con dolor en la interlínea lateral. En el grupo con dolor anteromedial, las 13 rodillas sin plica patológica (7 pinzamientos de franjas sinoviales de la grasa de Hoffa, 5 sinovitis localizadas, 1 lesión de cartílago) dieron el test positivo: E 0 de 13 en el diagnóstico diferencial real. Además, nivel III, no consecutivos y test hecho por su autor sin cegamiento. Cuenta como hallazgo compatible.
+1. El test de provocación es la mejor forma de diagnosticarlo en consulta. Kim 2007 da S 89,5 % · E 88,7 % frente a artroscopia (la tarjeta redondea a S 0,90 · E 0,89 · LR+ 8,18 · LR− 0,11), pero no puntúa: toda la especificidad sale de los controles con dolor en la interlínea lateral. En el grupo con dolor anteromedial, las 13 rodillas sin plica patológica (7 pinzamientos de franjas sinoviales de la grasa de Hoffa, 5 sinovitis localizadas, 1 lesión de cartílago) dieron el test positivo: E 0 de 13 en el diagnóstico diferencial real. Además, nivel III, no consecutivos y test hecho por su autor sin cegamiento.
 2. Kim 2007 (Arthroscopy; 172 rodillas, referencia: artroscopia); técnica: Kim 2004
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Rodilla | ro17 · Plica Sinovial Medial | Test «Test de provocación de la plica rotuliana medial» (en `criterio`) | 4b · mención en el texto | 1 |
+| Rodilla | ro17 · Plica Sinovial Medial | Test «Test de provocación de la plica rotuliana medial» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Rodilla | ro17 · Plica Sinovial Medial | Test «Test de provocación de la plica rotuliana medial» | 4b · cita bajo el test | 2 |
 
 ### Kim y Chang 2021
@@ -6200,11 +6200,11 @@ Nota: PDF del usuario leído entero (2026-10). 10 estudios (1643 rodillas) con e
 
 Citada como:
 
-1. Valoración global del examinador (historia + exploración) para rotura meniscal: rinde mejor que cada maniobra suelta (McMurray LR+ 1,3; línea articular 0,9 en la misma revisión). 5 estudios con artroscopia: S media 77 %, E media 91 %. Más reciente, Rana 2026 (Br Med Bull 159:ldag023; 6 y 7 estudios con exploración compuesta, todos con RM y artroscopia en el mismo paciente) da S 85 % y E 95 % en el menisco medial y S 75 % y E 93 % en el lateral, pero sin LR, con agrupación univariante, exploraciones hechas por cirujanos ortopédicos y pacientes que iban a artroscopia: no sustituye a estas LR. La guía AAOS 2024 recomienda la exploración combinada (interlínea, McMurray, Thessaly) con fuerza moderada, sin cifras agrupadas.
+1. Rinde mejor que cada maniobra suelta (McMurray LR+ 1,3; línea articular 0,9 en la misma revisión). 5 estudios con artroscopia: S media 77 %, E media 91 %. Más reciente, Rana 2026 (Br Med Bull 159:ldag023; 6 y 7 estudios con exploración compuesta, todos con RM y artroscopia en el mismo paciente) da S 85 % y E 95 % en el menisco medial y S 75 % y E 93 % en el lateral, pero sin LR, con agrupación univariante, exploraciones hechas por cirujanos ortopédicos y pacientes que iban a artroscopia: no sustituye a estas LR. La guía AAOS 2024 recomienda la exploración combinada (interlínea, McMurray, Thessaly) con fuerza moderada, sin cifras agrupadas.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» (en `criterio`) | 4b · mención en el texto | 1 |
+| Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
 ### Rathbone 2017
 
@@ -6994,14 +6994,14 @@ DOI: 10.1001/jama.286.13.1610
 
 Citada como:
 
-1. Rotación tibial + extensión de rodilla desde posición de flexión completa. Positivo: chasquido o dolor en línea articular. S IC 95 %: 45–74 %; E IC 69–92 %; LR+ IC 1,7–5,9; LR− IC 0,34–0,81 (heterogeneidad I² 51 %). Negativo apenas baja la probabilidad (LR− 0,52): no descarta la rotura. En contra: Solomon 2001 (JAMA) da LR+ 1,3 (IC 0,9–1,7) y LR− 0,8.
-2. Dolor a la palpación directa de la línea articular medial o lateral. S IC 95 %: 73–90 %; E IC 61–94 %; LR+ IC 2,1–7,5; LR− IC 0,12–0,44 (heterogeneidad alta, I² 83 %). En contra: Solomon 2001 (JAMA) da LR+ 0,9 y LR− 1,1.
+1. S IC 95 %: 45–74 %; E IC 69–92 %; LR+ IC 1,7–5,9; LR− IC 0,34–0,81 (heterogeneidad I² 51 %). Negativo apenas baja la probabilidad (LR− 0,52). En contra: Solomon 2001 (JAMA) da LR+ 1,3 (IC 0,9–1,7) y LR− 0,8.
+2. S IC 95 %: 73–90 %; E IC 61–94 %; LR+ IC 2,1–7,5; LR− IC 0,12–0,44 (heterogeneidad alta, I² 83 %). En contra: Solomon 2001 (JAMA) da LR+ 0,9 y LR− 1,1.
 3. Solomon 2001 (JAMA 286:1610–20, Rational Clinical Examination); LR+ IC 95 %: 1,4–5,1; LR− IC 0,2–0,7
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Rodilla | ro2 · Lesión Meniscal | Test «Test de McMurray» (en `criterio`) | 4b · mención en el texto | 1 |
-| Rodilla | ro2 · Lesión Meniscal | Test «Sensibilidad a la palpación de la línea articular» (en `criterio`) | 4b · mención en el texto | 2 |
+| Rodilla | ro2 · Lesión Meniscal | Test «Test de McMurray» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Rodilla | ro2 · Lesión Meniscal | Test «Sensibilidad a la palpación de la línea articular» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» | 4b · cita bajo el test | 3 |
 
 ### Speer 1994

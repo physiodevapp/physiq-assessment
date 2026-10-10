@@ -7,12 +7,14 @@
 //     trozos numerados (cortados como en tests/criterios.mjs).
 //
 //   node tools/repartir-criterios.mjs aplicar <región> <plan.json>
-//     plan = { "<hipótesis>#<índice>": { "k": [trozos visibles], "r": [trozos retirados] } }
-//     Los trozos que no están en k ni en r van a razonamiento.detalle. En cada
+//     plan = { "<hipótesis>#<índice>": { "k": [visibles], "r": [notas de mantenimiento], "x": [repiten «cuánto pesa»] } }
+//     Los trozos que no están en k, r ni x van a razonamiento.detalle. En cada
 //     salto entre trozos no consecutivos cierra la frase con punto y empieza
 //     la siguiente en mayúscula. Los de r pasan a un comentario «Nota de
 //     mantenimiento» encima del test y a `retiradas` de
-//     tests/fixtures/criterios-4b.json. Solo toca tests sin razonamiento.
+//     tests/fixtures/criterios-4b.json. Los de x (frases que solo repiten el
+//     veredicto que ya genera pesoTest()) van a `retiradas`, sin comentario.
+//     Solo toca tests sin razonamiento.
 //
 // Después: node tests/unit.js («criterios 4b: nada se pierde»),
 // node tests/gen-referencias.mjs y node tests/smoke.mjs.
@@ -68,8 +70,8 @@ for (const [clave, p] of Object.entries(plan)) {
   if (!t || HYPOTHESES[hId].region !== region) throw new Error(`${clave}: no es un test de ${region}`);
   if (t.razonamiento) throw new Error(`${clave}: ya tiene razonamiento`);
   const ch = trozos(t.criterio);
-  const r = p.r || [];
-  const det = ch.map((_, i) => i).filter(i => !p.k.includes(i) && !r.includes(i));
+  const r = p.r || [], x = p.x || [];
+  const det = ch.map((_, i) => i).filter(i => !p.k.includes(i) && !r.includes(i) && !x.includes(i));
   const nuevo = unir(ch, p.k);
   const detalle = det.length ? unir(ch, det) : '';
   const viejo = `criterio: '${esc(t.criterio)}'`;
@@ -82,6 +84,10 @@ for (const [clave, p] of Object.entries(plan)) {
     src = src.slice(0, ini) + `${sangria}// Nota de mantenimiento, retirada del criterio visible: «${r.map(i => ch[i]).join(' ')}»\n` + src.slice(ini);
     const k = `${hId}|${t.name}`;
     fx[k].retiradas = [...(fx[k].retiradas || []), ...r.map(i => ch[i])];
+  }
+  if (x.length) {
+    const k = `${hId}|${t.name}`;
+    fx[k].retiradas = [...(fx[k].retiradas || []), ...x.map(i => ch[i])];
   }
 }
 writeFileSync(archivo, src);
