@@ -624,6 +624,32 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "elena-dictado-1-ficha-breve.txt",
+      "valoracion": "valoracion-elena-castro-lumbar.json",
+      "transcripcion": "elena-dictado-1-transcripcion.txt",
+      "plantilla": "breve",
+      "errores": [
+        {
+          "id": "elena1-pa-anteroposterior",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "Desarrolla la sigla PA como «anteroposterior» (es posteroanterior)",
+          "fragmentos": [
+            "presión anteroposterior unilateral"
+          ]
+        },
+        {
+          "id": "elena1-episodio-una-version",
+          "tipo": "omision",
+          "nivel": "medio",
+          "descripcion": "Da solo la versión de la consulta (el año pasado tuvo algo parecido); la del formulario (es la primera vez: Sí) desaparece",
+          "claves": [
+            "primera vez"
+          ]
+        }
+      ]
     }
   ]
 }

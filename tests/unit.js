@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import './dom-shim.mjs';
@@ -2319,10 +2320,19 @@ test('deploy-to-hub copia los archivos del informe narrativo', () => {
   const fuentes = [...readdirSync(raiz).filter(f => f.endsWith('.js')).map(f => [f, '']), ...readdirSync(join(raiz, 'lib')).filter(f => f.endsWith('.js')).map(f => [f, 'lib/'])];
   const usados = new Set();
   for (const [f, dir] of fuentes) {
-    for (const m of readFileSync(join(raiz, dir, f), 'utf8').matchAll(/(?:from|import\()\s*'\.\/((?:lib\/)?[\w-]+\.js)'/g))
+    for (const m of readFileSync(join(raiz, dir, f), 'utf8').matchAll(/(?:from|import\(?)\s*'\.\/((?:lib\/)?[\w-]+\.js)'/g))
       usados.add(dir === 'lib/' ? `lib/${m[1]}` : m[1]);
   }
   for (const f of [...usados].filter(f => f.startsWith('lib/'))) assert.ok(wf.includes(f), `deploy-to-hub.yml no copia ${f}`);
+});
+
+// lib/reglas-informe.js es idéntico en physiq-report: si cambia aquí, cópialo
+// allí tal cual y actualiza esta huella en los dos tests/unit.js.
+const HUELLA_REGLAS_INFORME = '9382d3b1c166673555f70b9a5c9909b2f804a191c37e266984a948f6e3d854bf';
+test('reglas compartidas: lib/reglas-informe.js no ha cambiado sin copiarlo a physiq-report', () => {
+  const raiz = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const h = createHash('sha256').update(readFileSync(join(raiz, 'lib/reglas-informe.js'))).digest('hex');
+  assert.equal(h, HUELLA_REGLAS_INFORME, 'lib/reglas-informe.js ha cambiado: cópialo igual a physiq-report y actualiza la huella en los dos repos');
 });
 
 test('grabadora: app.js solo la carga fuera del hub', () => {
@@ -3336,7 +3346,8 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-1-informe.txt', 'sergio-dictado-transcripcion.txt', ['lado-otro', 'indicacion-omitida', 'seguimiento-fuera', 'relleno', 'discrepancia-separada']],
       ['valoracion-sergio-navarro-tobillo.json', 'sergio-dictado-2-informe.txt', 'sergio-dictado-2-transcripcion.txt', ['lado-otro', 'indicacion-omitida', 'descarta', 'repetido', 'fuentes', 'fisiopatologia', 'atribucion', 'constantes', 'imagen-motivo']],
       ['valoracion-rosa-martin-hombro.json', 'rosa-dictado-1-informe.txt', 'rosa-dictado-1-transcripcion.txt', ['lado-otro', 'genero', 'fuentes']],
-      ['valoracion-tomas-ibanez-cervical.json', 'tomas-dictado-1-informe.txt', 'tomas-dictado-1-transcripcion.txt', ['relleno', 'fuentes']],
+      ['valoracion-tomas-ibanez-cervical.json', 'tomas-dictado-1-informe.txt', 'tomas-dictado-1-transcripcion.txt', ['nrs-omitido', 'relleno', 'fuentes']],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-1-ficha-breve.txt', 'elena-dictado-1-transcripcion.txt', ['pronostica', 'nrs-omitido', 'estructura', 'relleno']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -3345,6 +3356,29 @@ console.log('\nrevisión automática del informe con IA');
       const ids = [...salida.matchAll(/^\[(?:ALTO|MEDIO)\] ([\w-]+):/gm)].map(m => m[1]);
       assert.deepEqual(ids, esperados, `${informe}\n${salida}`);
     }
+  });
+  test('prompt: aviso de reglas pronósticas en la coherencia y NRS que debe constar (ronda 23)', () => {
+    const d = { p: 'X', nr: 7, h: [{ name: 'Disfunción segmentaria' }] };
+    for (const pr of [IN.buildNarrativePrompt(d, {}), IN.buildFichaBrevePrompt(d, {})]) {
+      assert.ok(pr.includes(IN.AVISO_PRONOSTICA), 'aviso de Flynn donde se escribe el contraste');
+      assert.ok(pr.includes(`NRS: 7/10 ${IN.NOTA_NRS}`));
+    }
+    assert.ok(IN.buildNarrativePrompt({ ...d, nr: null }, {}).includes('NRS: no registrado'));
+    assert.ok(IN.buildNarrativePrompt(d, {}).includes('sin decir si se exploró o no'), 'otra zona: sin decir si se exploró');
+  });
+  test('revisión: Flynn como apoyo, NRS omitido, subapartados en la ficha, dolor nocturno (ronda 23)', () => {
+    assert.ok(ids('La hipomovilidad y el cumplimiento de 4 criterios de Flynn apoyan la primera hipótesis.').includes('pronostica'));
+    assert.ok(!ids('Cumple 4 de los 5 criterios de Flynn, lo que predice buena respuesta a la manipulación.').includes('pronostica'), 'presentada como pronóstica, bien');
+    assert.ok(!ids('La regla de Flynn no apoya la hipótesis: es pronóstica.').includes('pronostica'), 'negada, bien');
+    assert.ok(ids('Dolor actual de 4/10 y de 8/10 al agacharse.', { datos: { nr: 7 } }).includes('nrs-omitido'));
+    assert.ok(!ids('Dolor de 7/10 en la valoración y de 4/10 ahora.', { datos: { nr: 7 } }).includes('nrs-omitido'));
+    assert.ok(!ids('Refiere dolor al agacharse.', { datos: { nr: 7 } }).includes('nrs-omitido'), 'sin ninguna cifra no salta');
+    const sub = 'HALLAZGOS\n\nCondición de Salud: Las hipótesis son dos.';
+    assert.ok(ids(sub, { plantilla: 'breve' }).includes('estructura'));
+    assert.ok(!ids(sub, { plantilla: 'narrativo' }).includes('estructura'), 'en el narrativo son subsecciones de verdad (otra regla)');
+    const noct = 'No presenta dolor nocturno que le despierte. Toma un relajante muscular nocturno, que le permite dormir mejor.';
+    assert.ok(!ids(noct).includes('discrepancia-separada'), 'un relajante nocturno no es dolor nocturno');
+    assert.ok(ids('No presenta dolor nocturno. Refiere que el dolor por la noche le despierta dos veces.').includes('discrepancia-separada'));
   });
   test('revisión: constantes clasificadas, motivo de la imagen añadido, «en caso de ausencia de mejoría» (decimosexta revisión)', () => {
     assert.ok(ids('Presenta signos vitales dentro de parámetros habituales, con una frecuencia cardíaca de 58 lpm.').includes('constantes'));
