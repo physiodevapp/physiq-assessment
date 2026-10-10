@@ -508,6 +508,72 @@ async function checkDerivacionVascular(page) {
   return { ok: bajoPaso && enCompleto && enFase5, bajoPaso, enCompleto, enFase5 };
 }
 
+// «¿Por qué?» de los tests (fase 4b, docs/razonamiento-tests.md): hombro con
+// h2 (pinzamiento). Bajo los badges, la frase de «cuánto pesa»; «Ampliar →»
+// abre el mismo panel de la fase 2 con el detalle del test. Escritorio: panel
+// lateral sin velo, se puede marcar un test con él abierto, ir a la fase 5 lo
+// cierra. 390 px: bottom sheet con velo y atrás lo cierra sin salir de la 4b.
+async function irA4bHombro(page) {
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.fill('#motivoConsulta', 'Dolor de hombro al elevar el brazo');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('hombro', this)"]`);
+  await page.waitForTimeout(150);
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  const elegir = async (stepId, idx) => { await page.click(`#opts_${stepId} .option-btn >> nth=${idx}`); await page.waitForTimeout(120); };
+  await elegir('h_step1', 2);
+  await elegir('h_step2', 1);
+  await elegir('h_step3', 4);
+  await elegir('h_step4', 0);
+  await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  const abierta = await page.evaluate(() => document.getElementById('hypcard_h2')?.classList.contains('open'));
+  if (!abierta) { await page.click('#hypcard_h2 .hypothesis-header'); await page.waitForTimeout(200); }
+}
+async function checkTestsAmpliar(page) {
+  const r = {};
+  const hawkins = '#hypcard_h2 .test-item:has(.test-name:text-is("Test de Hawkins-Kennedy"))';
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await irA4bHombro(page);
+  r.peso = await page.textContent(`${hawkins} .test-peso`);
+  r.criterioCorto = (await page.textContent(`${hawkins} .test-criterion`)).length < 120;
+  await page.click(`${hawkins} .razon-ampliar`);
+  await page.waitForTimeout(400);
+  const a = await razonEstado(page);
+  r.kicker = await page.textContent('#razonPanel .razon-kicker');
+  r.detalle = await page.evaluate(() => document.getElementById('razonContenido').textContent.includes('Metaanálisis de 7 estudios'));
+  r.enlace = await page.evaluate(() => document.querySelector('#razonContenido .razon-enlace')?.href || '');
+  await page.click('#hypcard_h2 .test-item >> nth=0 >> .test-result-btn.pos');
+  r.marcaConPanel = await page.evaluate(() => state.testResults.h2?.[0] === 'pos');
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(300);
+  const b = await razonEstado(page);
+  r.escritorio = a.abierto && a.visible && !a.velo && a.pregunta === 'Test de Hawkins-Kennedy' && !b.abierto && b.fase === 5;
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await irA4bHombro(page);
+  await page.click(`${hawkins} .razon-ampliar`);
+  await page.waitForTimeout(400);
+  const c = await razonEstado(page);
+  await page.goBack();
+  await page.waitForTimeout(400);
+  const d = await razonEstado(page);
+  r.movil = c.abierto && c.velo && !c.scrollX && !d.abierto && d.fase === '4b';
+  r.ok = r.peso === 'Sirve para descartar; un positivo es solo un hallazgo.' && r.criterioCorto
+    && r.kicker === 'Test · por qué y evidencia' && r.detalle && r.enlace.startsWith('https://doi.org/10.1136/bjsports-2012-091066') && r.marcaConPanel && r.escritorio && r.movil;
+  if (!r.ok) Object.assign(r, { a, b, c, d });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  return r;
+}
+
 async function checkRazonamientoEscritorio(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
@@ -661,6 +727,13 @@ async function checkBotonesTactil(browser, errors) {
     await (await import('./app.js')).compartirTexto('texto de prueba', { titulo: 't', copiado: 'c' });
     return compartido?.text === 'texto de prueba';
   });
+  // Abrir el panel de sesión no pone el foco en el nombre (en el móvil sacaba
+  // el teclado sin que se fuera a escribir)
+  await page.tap('#sessionBtn');
+  await page.waitForSelector('#sessionPanelOverlay.open');
+  await page.waitForTimeout(200);
+  r.sesionSinFoco = await page.evaluate(() => document.activeElement?.id !== 'patientName');
+  await page.evaluate(() => closeSessionPanel());
   // «📤 Compartir» en móvil: hoja inferior pegada abajo; el atrás la cierra sin
   // cambiar de fase; tocar el velo también la cierra (y no deja la fase atrás)
   await page.evaluate(() => { state.region = 'lumbar'; buildResults(); goToPhase(5); });
@@ -1340,6 +1413,10 @@ async function main() {
   const razonMov = await checkRazonamientoMovil(page);
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
+  console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
+  const testsAmpliar = await checkTestsAmpliar(page);
+  console.log(`  ${testsAmpliar.ok ? '✓' : '✗'} «cuánto pesa» bajo los badges, criterio corto, «Ampliar» abre el panel del test (lateral sin velo; sheet con velo a 390 px que atrás cierra sin salir de la 4b), ir a la fase 5 lo cierra`);
+
   console.log('\nSexo (fase 1) y lado afectado (fase 2):');
   const lado = await checkLado(page);
   console.log(`  ${lado.ok ? '✓' : '✗'} sexo se guarda y se borra con un segundo toque; lado aparece al elegir región, «Central» solo en columna; todo cabe a 320 px`);
@@ -1377,7 +1454,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && testsAmpliar.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
@@ -1386,6 +1463,7 @@ async function main() {
   }
   if (!razonEsc.ok) console.log('\nRazonamiento escritorio:', JSON.stringify(razonEsc));
   if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
+  if (!testsAmpliar.ok) console.log('\nTests 4b «Ampliar»:', JSON.stringify(testsAmpliar));
   if (!deriv.ok) console.log('\nDerivación del árbol:', JSON.stringify(deriv));
   if (!informeIA.ok) console.log('\nInforme narrativo:', JSON.stringify(informeIA));
   if (!expImp.ok) console.log('\nExportar / importar:', JSON.stringify(expImp));
