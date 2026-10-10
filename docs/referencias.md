@@ -15,7 +15,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 - **338** referencias de literatura, con **1378** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **328** de 338 referencias del registro revisadas. Ver «Estado de revisión».
+- **331** de 338 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -48,9 +48,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | Referencia | Afecta a | Usos | Última revisión |
 |---|---|---|---|
 | [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 119 | **sin revisar** |
-| [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 89 | **sin revisar** |
-| [NICE NG158](#nice-ng158) | razonamiento fase 2 · texto | 22 | **sin revisar** |
-| [Goebel 2018](#goebel-2018) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Kessel y Watson 1977](#kessel-y-watson-1977) | razonamiento 4b · texto | 2 | **sin revisar** |
 | [Speer 1994](#speer-1994) | razonamiento 4b · texto | 4 | **sin revisar** |
 | [Hertel 1996](#hertel-1996) | razonamiento 4b · texto | 4 | **sin revisar** |
@@ -173,6 +170,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE NG19](#nice-ng19) | pronóstico · razonamiento fase 2 | 2 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 26 de agosto de 2015, última actualización el 11 de octubre de 2019 (en 2023 revisó la evidencia sobre la estratificación del riesgo sin cambiarla; en 2024, un cambio menor de antibióticos). Las recomendaciones citadas dicen lo que recoge la app. |
 | [Englund 2003](#englund-2003) | pronóstico | 1 | 2026-10 · Sin cambios: PDF del usuario leído; 155 pacientes, 68 controles, RR 7,0 (2,1–23,5) por rotura degenerativa y 2,7 (0,9–7,7) por traumática coinciden. Las revisiones posteriores (PubMed, meniscectomía y artrosis desde 2015) tratan otros desenlaces (prótesis, rodilla tras el LCA) y no sustituyen esta cifra. |
 | [Culvenor 2019](#culvenor-2019) | pronóstico | 1 | 2026-10 · Sin cambios: texto completo leído en PMC; 63 estudios, 5397 rodillas y, con 40 años o más, defectos de cartílago 43 % y roturas de menisco 19 % coinciden. PubMed (prevalencia de hallazgos en la RM de rodillas sin síntomas, revisiones desde 2019) no encuentra ninguna posterior. |
+| [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 89 | 2026-10 · Sin cambios: no se encuentra ninguna edición posterior (búsqueda de 2026-10; ZERAPI, ISBN 9788493918743). Los capítulos que cita la app se leyeron enteros en las sesiones de cada región. |
 | [Hermena y Slane 2025](#hermena-y-slane-2025) | pronóstico · test 4b sin puntuar · razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 15 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Viikari-Juntura 1989](#viikari-juntura-1989) | test 4b sin puntuar | 1 | 2026-10 · Añadida: PDF del usuario leído entero (2026-10). 43 pacientes enviados a mielografía; la SART se hizo desde el paciente 13 (22 de 31 pacientes; 14 lados de cada lado, tabla 1). Analiza lados y raíces, no pacientes, y no publica tablas 2×2: da sensibilidades por lado (tabla 3) y especificidad del 100 % y 80 % para signos neurológicos y radiológicos. Thoomes 2026 lo agrupa como «n = 13» con celdas que suman 28. |
 | [Altman 1991](#altman-1991) | test 4b sin puntuar · texto | 2 | 2026-10 · S 86 % / E 75 % del árbol clínico comprobadas en el resumen, pero son de la muestra de desarrollo; en atención primaria los criterios no se sostienen (Bierma-Zeinstra 1999, Reijman 2004) y no hay S/E de ese ámbito. Los criterios ACR de cadera (ca1) pasan a hallazgo, sin puntuar. |
@@ -236,6 +234,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE CG147](#nice-cg147) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 8 de agosto de 2012, última actualización el 11 de diciembre de 2020. |
 | [NICE NG125](#nice-ng125) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 19 de agosto de 2020; la revisión de vigilancia de 2023 recomendó actualizarla, pero NICE decidió no hacerlo (31 de mayo de 2023). Las recomendaciones 1.1.3 y 1.4.9 dicen lo que recoge el razonamiento (consultado en nice.org.uk en 2026-10). |
 | [NICE NG126](#nice-ng126) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian. |
+| [NICE NG158](#nice-ng158) | razonamiento fase 2 · texto | 22 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 2 de agosto de 2023, y la revisión del 1 de mayo de 2026 decidió no actualizarla. Las recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18 y las tablas 1 y 2 (escalas de Wells de dos niveles) dicen lo que recoge el razonamiento de ca_v2, r_v2, tp_v2, pq_tvp, pq_tvp_ms y pq_tep (consultado en nice.org.uk en 2026-10). |
 | [NICE NG38](#nice-ng38) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 17 de febrero de 2016, sin actualizaciones; la recomendación 1.2.2 dice lo que recoge la app. |
 | [NICE NG89](#nice-ng89) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 13 de agosto de 2019, y la revisión de vigilancia del 18 de septiembre de 2024 decidió no actualizarla. Las recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3 dicen lo que recoge el razonamiento (duraciones de la profilaxis y umbrales de 90 minutos; consultado en nice.org.uk en 2026-10). |
 | [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | 2026-10 · Complementada: PubMed (cauda equina, revisiones sistemáticas desde 2012) no encuentra una revisión de precisión diagnóstica posterior. Galliker 2020 (Am J Med, PDF del usuario) aporta el único estudio en urgencias (silla de montar LR+ 3,1, esfínteres LR+ 2,1) y Hennessy 2025 (Eur Spine J, PDF del usuario) revisa 9 guías: RM urgente y radiculopatía bilateral como señal clave. Ambos se añaden a `l6`. Tabrah 2022 (tacto rectal) y Boktor 2023 (residuo posmiccional) no leídos: tratan pruebas que no hace el fisioterapeuta. |
@@ -243,6 +242,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Henschke 2013](#henschke-2013) | razonamiento fase 2 | 2 | 2026-10 · Complementada: Verhagen 2017 (Pain, PDF del usuario) apoya sus conclusiones con una búsqueda más amplia; el dolor nocturno solo se midió en un estudio (LR+ 0,7). Galliker 2020 (Am J Med, PDF del usuario) aporta el dato de urgencias (LR+ 2,2). Ambos se añaden a `l_on2`. |
 | [Barcelos 2014](#barcelos-2014) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10). Lo posterior son casos clínicos y revisiones de casos (leídos los resúmenes): Heck 2026 (Int J Pediatr Otorhinolaryngol, revisión sistemática de 13 casos de luxación occipito-atloaxoidea por Grisel diagnosticado tarde; media de 5,9 meses hasta el diagnóstico), Cirrincione 2026 (Curr Opin Pediatr, revisión narrativa: con diagnóstico precoz basta tratamiento no quirúrgico) y Koru 2025 (Clin Rheumatol, Grisel sin infección en enfermedades reumáticas). Coinciden con el razonamiento de la pregunta (derivar pronto, el retraso empeora el tratamiento); no lo cambian. |
 | [Verhagen 2017](#verhagen-2017) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: PubMed (banderas rojas de malignidad en lumbalgia, revisiones desde 2017) solo encuentra Galliker 2020 (urgencias), que se cita junto a ella. |
+| [Goebel 2018](#goebel-2018) | razonamiento fase 2 · texto | 9 | 2026-10 · Sin cambios: la 2.ª edición (2018) sigue siendo la vigente en la página del Royal College of Physicians (búsqueda de 2026-10), aunque preveía revisarse en julio de 2023. La «concise guidance» de Clinical Medicine es de 2011 (Turner-Stokes y Goebel), anterior. PubMed (2026-10) no encuentra ninguna guía británica posterior; la de la American Society of Interventional Pain Physicians (Pain Physician, 2025) es de diagnóstico intervencionista. |
 | [HerniaSurge 2018](#herniasurge-2018) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: su actualización (Stabilini 2023, BJS Open 7(5):zrad080, PMC10588975, leída en 2026-10) revisa técnicas de reparación, malla y hernia oculta contralateral, no el diagnóstico ni la epidemiología. Cifras del razonamiento de ca_gi3 comprobadas en PMC: exploración S 0,745, E 0,963 (cap. 3, un estudio de cohortes); hernia inguinal 9–12 veces más en hombres y femoral unas 4 veces más en mujeres (cap. 16; la reparación, 8–10 veces más en hombres, cap. 2); factores de riesgo del resumen. |
 | [Finucane 2020](#finucane-2020) | razonamiento fase 2 | 10 | 2026-10 · Sin cambios: PubMed (autor Finucane LM, «red flags») no encuentra una versión posterior del marco IFOMPT. |
 | [Galliker 2020](#galliker-2020) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: PubMed (banderas rojas en lumbalgia en urgencias, revisiones desde 2020) no encuentra ninguna posterior. |
@@ -392,7 +392,7 @@ Autores: Lluch, López-Cubas, Jones, Jull, Hall y Lewis
 Título: *Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders*  
 Publicación: ZERAPI  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: no se encuentra ninguna edición posterior (búsqueda de 2026-10; ZERAPI, ISBN 9788493918743). Los capítulos que cita la app se leyeron enteros en las sesiones de cada región.  
 Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro. Capítulos leídos enteros (PDF escaneado del usuario) y citados directamente como fuente, con capítulo y páginas: cap. 5.1 (Fondevila Suárez, lumbar, pp. 295–326: pronósticos de lu3–lu8, tests de lu5–lu9 y l_e7) caps. 5.3 y 5.3.1 (cervical) cap. 4.1, subcaps. 4.1.1–4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg, cadera, pp. 123–189, bibliografía incluida; releído entero en 2026-10: pronósticos y tests de cadera y razonamiento del cribado de cadera) cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan, rodilla, pp. 191–234, bibliografía incluida: pronósticos y tests de rodilla y razonamiento del cribado de rodilla; el capítulo no tiene tabla de banderas rojas) y cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook, tobillo y pie, pp. 235–291, bibliografía incluida: 112 de las 147 citas de pronósticos y tests de tobillo y pie y razonamiento del cribado de tobillo y pie; sus banderas rojas están en la p. 287) y cap. 3.2 (Coombes y Bisset, codo, pp. 81–103, bibliografía incluida: 10 tests de codo y razonamiento del cribado de codo; sin tabla de banderas rojas).
 
 Las tarjetas de consulta están en el repo [physiodevapp/guia-de-consulta](https://github.com/physiodevapp/guia-de-consulta),
@@ -2309,7 +2309,7 @@ Autores: Goebel, Barker, Turner-Stokes et al. (Guideline Development Panel)
 Título: *Complex regional pain syndrome in adults: UK guidelines for diagnosis, referral and management in primary and secondary care, 2.ª ed.*  
 Publicación: Royal College of Physicians, Londres, 2018 (ISBN 978-1-86016-721-8); revisión prevista en julio de 2023  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: la 2.ª edición (2018) sigue siendo la vigente en la página del Royal College of Physicians (búsqueda de 2026-10), aunque preveía revisarse en julio de 2023. La «concise guidance» de Clinical Medicine es de 2011 (Turner-Stokes y Goebel), anterior. PubMed (2026-10) no encuentra ninguna guía británica posterior; la de la American Society of Interventional Pain Physicians (Pain Physician, 2025) es de diagnóstico intervencionista.  
 Nota: Guía de consenso de expertos de 28 organizaciones británicas (entre ellas la Chartered Society of Physiotherapy). PDF del usuario (2026-10): leídas la introducción, atención primaria, fisioterapia y terapia ocupacional, práctica quirúrgica (pp. 1–17) y los apéndices 4 y 7. Razonamiento del cribado posquirúrgico (pq_sdrc, pq_nervio). La red del entorno no llega a rcp.ac.uk.
 
 Citada como:
@@ -4092,7 +4092,7 @@ Autores: Lluch, López-Cubas, Jones, Jull, Hall y Lewis
 Título: *Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders*  
 Publicación: ZERAPI  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: no se encuentra ninguna edición posterior (búsqueda de 2026-10; ZERAPI, ISBN 9788493918743). Los capítulos que cita la app se leyeron enteros en las sesiones de cada región.  
 Nota: Base de las guías clínicas de cada región, de las que son extracto las tarjetas de consulta (repo guia-de-consulta). Los capítulos que citan los pies de las tarjetas (Struyf y Powell y Lewis, cap. 3, en hombro; Fondevila Suárez, cap. 5, en lumbar) son de este libro. Capítulos leídos enteros (PDF escaneado del usuario) y citados directamente como fuente, con capítulo y páginas: cap. 5.1 (Fondevila Suárez, lumbar, pp. 295–326: pronósticos de lu3–lu8, tests de lu5–lu9 y l_e7) caps. 5.3 y 5.3.1 (cervical) cap. 4.1, subcaps. 4.1.1–4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg, cadera, pp. 123–189, bibliografía incluida; releído entero en 2026-10: pronósticos y tests de cadera y razonamiento del cribado de cadera) cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan, rodilla, pp. 191–234, bibliografía incluida: pronósticos y tests de rodilla y razonamiento del cribado de rodilla; el capítulo no tiene tabla de banderas rojas) y cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook, tobillo y pie, pp. 235–291, bibliografía incluida: 112 de las 147 citas de pronósticos y tests de tobillo y pie y razonamiento del cribado de tobillo y pie; sus banderas rojas están en la p. 287) y cap. 3.2 (Coombes y Bisset, codo, pp. 81–103, bibliografía incluida: 10 tests de codo y razonamiento del cribado de codo; sin tabla de banderas rojas).
 
 Citada como:
@@ -5640,7 +5640,7 @@ Citada como:
 
 Publicación: Guía NICE «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 2 de agosto de 2023, y la revisión del 1 de mayo de 2026 decidió no actualizarla. Las recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18 y las tablas 1 y 2 (escalas de Wells de dos niveles) dicen lo que recoge el razonamiento de ca_v2, r_v2, tp_v2, pq_tvp, pq_tvp_ms y pq_tep (consultado en nice.org.uk en 2026-10).  
 Nota: Leídas las recomendaciones 1.1.1–1.1.4 y la tabla 1 (escala de Wells de dos niveles) en nice.org.uk (2026-10). Razonamiento del cribado de cadera (ca_v2) y de rodilla (r_v2); releídas en la sesión de rodilla (2026-10). Releídas en la sesión de tobillo y pie (2026-10): razonamiento de tp_v2. Releídas en la sesión del cribado posquirúrgico (2026-10), con la tabla 2 (Wells de la embolia) y las recomendaciones 1.1.15–1.1.18: razonamiento de pq_tvp, pq_tvp_ms y pq_tep.
 
 Citada como:
