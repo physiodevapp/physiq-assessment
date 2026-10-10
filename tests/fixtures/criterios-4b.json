@@ -576,6 +576,10 @@
    "la S 95 % / E 69 % que figuraba son de los criterios clínicos de artrosis de rodilla (Altman 1986), no de cadera.",
    "El criterio más parecido para cadera es el diagnóstico clínico de NICE (edad >45, dolor con la actividad, sin rigidez matutina o ≤30 min), que no aporta sensibilidad ni especificidad.",
    "Rigidez matutina <60 min ausente sí orienta en contra (LR− 0,22–0,65)."
+  ],
+  "retiradas": [
+   "Hallazgo:",
+   "la S 95 % / E 69 % que figuraba son de los criterios clínicos de artrosis de rodilla (Altman 1986), no de cadera."
   ]
  },
  "ca1|Aducción de cadera disminuida": {
@@ -625,6 +629,9 @@
    "reproduce su dolor antes de 30 s, comparado con el otro lado.",
    "LR+ y LR− cercanas a 1:",
    "cuenta como hallazgo."
+  ],
+  "retiradas": [
+   "cuenta como hallazgo."
   ]
  },
  "ca2|Test FADDIR (Flexión-Aducción-Rotación Interna)": {
@@ -636,6 +643,10 @@
    "no puntúa.",
    "Un negativo orienta algo en contra, pero no descarta.",
    "El valor agrupado de Reiman 2015 (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93."
+  ],
+  "retiradas": [
+   "no puntúa.",
+   "Un negativo orienta algo en contra, pero no descarta."
   ]
  },
  "ca2|Test FABER (Flexión-Abducción-Rotación Externa)": {
@@ -656,6 +667,9 @@
    "prono, cadera en extensión, positivo = RI disminuida (con o sin dolor) según el examinador;",
    "el umbral de 24° es de la tarjeta.",
    "Fiabilidad moderada (kappa 0,43).",
+   "Negativa no descarta (S 29 %)."
+  ],
+  "retiradas": [
    "Negativa no descarta (S 29 %)."
   ]
  },
@@ -684,6 +698,9 @@
    "Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral.",
    "Su evidencia es para rotura labral, no para SIFA, y ni allí puntúa (ver la hipótesis de labrum):",
    "aquí cuenta como hallazgo."
+  ],
+  "retiradas": [
+   "aquí cuenta como hallazgo."
   ]
  },
  "ca3|Test de Arlington": {
@@ -710,6 +727,9 @@
    "Estudio:",
    "S 94 %, E 100 %, pero con un área bajo la curva de 0,879 que no cuadra con esas cifras, en candidatos a artroscopia (casi todos con rotura) y sin el número de controles:",
    "cuenta como hallazgo."
+  ],
+  "retiradas": [
+   "cuenta como hallazgo."
   ]
  },
  "ca3|Chasquido doloroso": {
@@ -720,6 +740,9 @@
    "S 100 % (IC 95 %:",
    "48–100 %), E 85 % (IC 55–98 %), sin LR publicada;",
    "con S 100 % la LR− calculada sería 0 y anularía la hipótesis, y con solo 4 roturas el intervalo es muy amplio:",
+   "cuenta como hallazgo."
+  ],
+  "retiradas": [
    "cuenta como hallazgo."
   ]
  },
@@ -743,6 +766,10 @@
    "con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1.",
    "En otra serie, S 43 %, E 56 % (Adib 2023).",
    "Un negativo no descarta la rotura."
+  ],
+  "retiradas": [
+   "No puntúa:",
+   "Un negativo no descarta la rotura."
   ]
  },
  "ca3|Test de Thomas": {
@@ -758,6 +785,9 @@
    "el S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original;",
    "lo calcularon los autores del metaanálisis de Reiman 2015 a partir de una serie de 59 casos operados, con riesgo de sesgo alto.",
    "En Narvani 2003 no fue ni sensible ni específico (positivo en 1 de 4 roturas)."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "ca3|Longitud de paso": {
@@ -774,6 +804,10 @@
    "Hacer después la abducción resistida:",
    "con las dos negativas, la probabilidad baja del 59 % (media de los estudios) al 14 %;",
    "con las dos positivas, sube al 96 %."
+  ],
+  "retiradas": [
+   "Negativa orienta en contra;",
+   "positiva confirma poco por sí sola."
   ]
  },
  "ca4|Apoyo Monopodal <30 segundos (Single-Leg Stance)": {
@@ -784,6 +818,10 @@
    "aún no puntúa.",
    "El valor agrupado (LR+ 87,8, IC 3,0–2587) depende de un estudio con controles sin dolor de cadera (Lequesne 2008);",
    "certeza muy baja.",
+   "Negativo no descarta (S 38 %)."
+  ],
+  "retiradas": [
+   "aún no puntúa.",
    "Negativo no descarta (S 38 %)."
   ]
  },
@@ -819,6 +857,9 @@
    "en pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017).",
    "Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7;",
    "certeza muy baja)."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "ca5|Test de Trendelenburg": {
@@ -828,6 +869,9 @@
    "La disfunción del glúteo medio da una inclinación pélvica contralateral al apoyo (Trendelenburg) o una inclinación del tronco hacia el lado de apoyo (Duchenne);",
    "observar el apoyo monopodal revela estos déficits de control en el plano frontal.",
    "Sin cifras de exactitud para la debilidad de abductores:",
+   "cuenta como hallazgo."
+  ],
+  "retiradas": [
    "cuenta como hallazgo."
   ]
  },
@@ -852,6 +896,9 @@
    "fiabilidad entre examinadores moderada a excelente (0,603–0,939) en el dolor de cadera no artrósico.",
    "Sin S ni E:",
    "cuenta como hallazgo."
+  ],
+  "retiradas": [
+   "cuenta como hallazgo."
   ]
  },
  "ca6|Test de Step-Down": {
@@ -860,6 +907,9 @@
    "la disfunción del glúteo medio puede dar Trendelenburg y valgo de rodilla al bajar escaleras.",
    "Fiabilidad entre examinadores moderada a excelente (0,745–0,943) en el dolor de cadera no artrósico.",
    "Sin S ni E:",
+   "cuenta como hallazgo."
+  ],
+  "retiradas": [
    "cuenta como hallazgo."
   ]
  },
@@ -877,6 +927,9 @@
    "Junto con el test activo del piriforme es, según la revisión, el más sensible y específico para el atrapamiento del ciático, sobre todo combinados;",
    "no da cifras.",
    "Cuenta como hallazgo."
+  ],
+  "retiradas": [
+   "Cuenta como hallazgo."
   ]
  },
  "ca7|Dolor con sedestación prolongada (>20 min)": {
@@ -884,6 +937,9 @@
    "No tolera estar sentado más de 20 a 30 minutos, uno de los síntomas del síndrome glúteo profundo (con dolor glúteo o retrotrocantéreo, dolor de tipo ciático, cojera y dolor nocturno que mejora durante el día).",
    "Poco específico:",
    "estar sentado también provoca el dolor de la tendinopatía proximal de isquiotibiales y de la artrosis de cadera.",
+   "Cuenta como hallazgo."
+  ],
+  "retiradas": [
    "Cuenta como hallazgo."
   ]
  },
@@ -895,6 +951,9 @@
    "S 94 % (IC 95 % 69–99), E 85 % (IC 54–97), LR+ 6,12 (IC 1,70–22,01), LR− 0,07 (IC 0,01–0,48), de un solo estudio retrospectivo, sin cegar, de casos y controles y con 30 pacientes (referencia:",
    "alivio con infiltración o cirugía), citado por la revisión:",
    "cuenta como hallazgo."
+  ],
+  "retiradas": [
+   "cuenta como hallazgo."
   ]
  },
  "ca9|Sensibilidad a la palpación sobre tuberosidad isquiática": {
@@ -902,6 +961,9 @@
    "Puede doler a la palpación del isquion.",
    "Si el dolor está sobre el isquion (y no lateral a él, como en el pinzamiento isquiofemoral), y sobre todo si duele al estar sentado, orienta a tendinopatía proximal de isquiotibiales.",
    "Sin S ni E:",
+   "cuenta como hallazgo."
+  ],
+  "retiradas": [
    "cuenta como hallazgo."
   ]
  },
@@ -911,6 +973,9 @@
    "flexión de rodilla resistida con la cadera a 90°, plancha supina a una pierna o puente a una pierna con la rodilla flexionada.",
    "En el ensayo de Rich 2025 se exigía que 3 de 4 pruebas de carga o compresión reprodujeran el dolor.",
    "Sin S ni E:",
+   "cuenta como hallazgo."
+  ],
+  "retiradas": [
    "cuenta como hallazgo."
   ]
  },
@@ -923,6 +988,9 @@
    "Solo, no puntúa:",
    "en el estudio de los creadores del cluster daba LR+ 2,20 (IC 95 % 1,18–4,09) y LR− 0,46 (IC 0,20–0,87) con 48 pacientes no consecutivos (16 con bloqueo positivo), pero agrupado en 2 estudios (83 pacientes) queda en LR+ 1,79 (IC 1,03–3,11) y LR− 0,74 (IC 0,52–1,05).",
    "Cuenta dentro del cluster de Laslett."
+  ],
+  "retiradas": [
+   "Solo, no puntúa:"
   ]
  },
  "ca10|Test de Patrick (FABER)": {
@@ -931,6 +999,9 @@
    "Como provocación sacroilíaca no tiene exactitud propia:",
    "formó parte de la batería de 6 tests de uno de los dos estudios que compara Laslett 2008, no de la de Laslett 2005 ni del cluster de 5 tests.",
    "En la cadera se usa sobre todo como test intraarticular (ver el FABER del SIFA).",
+   "Cuenta como hallazgo."
+  ],
+  "retiradas": [
    "Cuenta como hallazgo."
   ]
  },
@@ -962,6 +1033,10 @@
    "thigh thrust y distracción primero, y si los dos son positivos no hace falta seguir;",
    "con uno positivo, compresión y, si es negativa, sacral thrust.",
    "En ese estudio, con todos los tests negativos se descartaba la sacroilíaca."
+  ],
+  "retiradas": [
+   "positivo orienta poco;",
+   "negativo descarta mejor."
   ]
  },
  "ca10|Thigh thrust": {
@@ -974,6 +1049,9 @@
    "en el estudio de los creadores del cluster era el más sensible de la batería (S 88 %, E 69 %, LR+ 2,80, LR− 0,18;",
    "48 pacientes no consecutivos, 16 con bloqueo positivo), pero agrupado en 5 estudios (415 pacientes) queda en S 54 %, E 54 %, LR+ 1,13 (IC 95 % 0,83–1,55) y LR− 0,91 (IC 0,67–1,22).",
    "Cuenta dentro del cluster de Laslett."
+  ],
+  "retiradas": [
+   "Solo, no puntúa:"
   ]
  },
  "ca10|Prueba del dedo (Fortin)": {

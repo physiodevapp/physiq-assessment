@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **349** referencias de literatura, con **1434** usos.
+- **349** referencias de literatura, con **1433** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **333** de 349 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -386,7 +386,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Vijayan y Maher 2026](#vijayan-y-maher-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 21 de febrero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Wróblewski 2026](#wróblewski-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior. |
 | [Zemaitis 2026](#zemaitis-2026) | razonamiento fase 2 | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de enero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Altman 1986](#altman-1986) | texto | 2 | 2026-10 · Sustituida por Peat 2006 en los criterios del ACR de rodilla (ro1): su S 95 % / E 69 % sale de la muestra de desarrollo, no del ámbito de un fisio. Solo queda citada como contexto en el texto del test. |
+| [Altman 1986](#altman-1986) | texto | 1 | 2026-10 · Sustituida por Peat 2006 en los criterios del ACR de rodilla (ro1): su S 95 % / E 69 % sale de la muestra de desarrollo, no del ámbito de un fisio. Solo queda citada como contexto en el texto del test. |
 | [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) | texto | 1 | 2026-10 · Sin cambios: estudio de creación de la regla; ver Seaberg 1998. |
 | [Seaberg 1998](#seaberg-1998) | texto | 1 | 2026-10 · Sin cambios: PubMed (regla de Pittsburgh de rodilla desde 2015) no encuentra ninguna revisión sistemática ni validación posterior. |
 | [Hutchison 2013](#hutchison-2013) | texto | 1 | 2026-10 · PDF leído entero (2026-10): no es un estudio piloto (piloto fue el entrenamiento previo de los examinadores); 21 participantes, 10 con tendinopatía en la ecografía; agrupa las exploraciones de 3 clínicos; no publica LR. Corregido en tp8. |
@@ -652,14 +652,14 @@ DOI: 10.1177/03635465221149748
 Citada como:
 
 1. Adib 2023 (Am J Sports Med; retrospectivo, evaluado por el autor de los tests; referencia: artro-RM)
-2. Flexión, aducción y rotación interna. Positivo: dolor conocido, bloqueo, chasquido o enganche (que reproduzca el chasquido cuenta como positivo). No puntúa: el valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93; con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1. En otra serie, S 43 %, E 56 % (Adib 2023). Un negativo no descarta la rotura.
+2. El valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93; con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1. En otra serie, S 43 %, E 56 % (Adib 2023).
 3. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09). Adib 2023 (Am J Sports Med; retrospectivo; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Arlington» | 4b · cita bajo el test | 1 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Torsión/Twist» | 4b · cita bajo el test | 1 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» (en `criterio`) | 4b · mención en el texto | 2 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» | 4b · cita bajo el test | 3 |
 
 ### Adigun 2023
@@ -777,13 +777,11 @@ Nota: Texto completo no consultado (Wiley, de pago): el resumen de PubMed no da 
 
 Citada como:
 
-1. Hallazgo: la S 95 % / E 69 % que figuraba son de los criterios clínicos de artrosis de rodilla (Altman 1986), no de cadera. El criterio más parecido para cadera es el diagnóstico clínico de NICE (edad >45, dolor con la actividad, sin rigidez matutina o ≤30 min), que no aporta sensibilidad ni especificidad. Rigidez matutina <60 min ausente sí orienta en contra (LR− 0,22–0,65).
-2. Son criterios de clasificación: la S 95 % / E 69 % que figuraba sale de la muestra en la que se crearon (pacientes de reumatología, frente a artritis reumatoide y otras causas; Altman 1986). En población de 50 años o más con dolor de rodilla caen a S 41 % · E 75 % (LR+ 1,6 · LR− 0,8): casi no cambian la probabilidad. Reflejan sobre todo la artrosis avanzada: si no se cumplen, no la descartes.
+1. Son criterios de clasificación: la S 95 % / E 69 % que figuraba sale de la muestra en la que se crearon (pacientes de reumatología, frente a artritis reumatoide y otras causas; Altman 1986). En población de 50 años o más con dolor de rodilla caen a S 41 % · E 75 % (LR+ 1,6 · LR− 0,8): casi no cambian la probabilidad. Reflejan sobre todo la artrosis avanzada: si no se cumplen, no la descartes.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca1 · Artrosis de Cadera | Test «Criterio clínico combinado: Edad ≥45 + dolor en actividad + rigidez <1h» (en `criterio`) | 4b · mención en el texto | 1 |
-| Rodilla | ro1 · Artrosis de Rodilla | Test «Criterios clínicos del ACR» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Rodilla | ro1 · Artrosis de Rodilla | Test «Criterios clínicos del ACR» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
 ### Altman 1991
 
@@ -794,12 +792,12 @@ Nota: Texto completo no consultado (Wiley, de pago): la «validación cruzada S 
 
 Citada como:
 
-1. Dolor de cadera y, además: (1) RI ≥15°, dolor en la RI, rigidez matutina ≤60 min y edad >50 años; o bien (2) RI <15° y VSG ≤45 mm/h (sin VSG: flexión ≤115°). La tarjeta cita solo la rama (1). En la muestra en la que se crearon (201 pacientes con dolor de cadera, frente a artritis reumatoide, espondiloartropatía y otras causas) daban S 86 % · E 75 % (Altman 1991), pero no puntúa: en atención primaria, en pacientes de 50 años o más, los criterios clínicos no concuerdan con los criterios del ACR que incluyen radiografía (kappa ≤ 0,11; Bierma-Zeinstra 1999), y una revisión los da por poco fiables en ese ámbito (Reijman 2004). La rotación interna disminuida, que forma parte del árbol, sí tiene cifras de atención primaria y puntúa sola.
+1. La tarjeta cita solo la rama (1). En la muestra en la que se crearon (201 pacientes con dolor de cadera, frente a artritis reumatoide, espondiloartropatía y otras causas) daban S 86 % · E 75 % (Altman 1991), pero no puntúa: en atención primaria, en pacientes de 50 años o más, los criterios clínicos no concuerdan con los criterios del ACR que incluyen radiografía (kappa ≤ 0,11; Bierma-Zeinstra 1999), y una revisión los da por poco fiables en ese ámbito (Reijman 2004). La rotación interna disminuida, que forma parte del árbol, sí tiene cifras de atención primaria y puntúa sola.
 2. Altman 1991 (Arthritis Rheum 34:505–14, criterios ACR; n = 201 con dolor de cadera, controles con dolor de cadera de otra causa). En atención primaria: Bierma-Zeinstra 1999 (J Rheumatol 26:1129–33; n = 227 de 50 años o más, derivados a radiografía por su médico de cabecera) y Reijman 2004 (Ann Rheum Dis 63:226–32, revisión sistemática de definiciones de artrosis de cadera)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» | 4b · cita bajo el test | 2 |
 
 ### Ammendolia 2022
@@ -1201,12 +1199,12 @@ DOI: —
 
 Citada como:
 
-1. Dolor de cadera y, además: (1) RI ≥15°, dolor en la RI, rigidez matutina ≤60 min y edad >50 años; o bien (2) RI <15° y VSG ≤45 mm/h (sin VSG: flexión ≤115°). La tarjeta cita solo la rama (1). En la muestra en la que se crearon (201 pacientes con dolor de cadera, frente a artritis reumatoide, espondiloartropatía y otras causas) daban S 86 % · E 75 % (Altman 1991), pero no puntúa: en atención primaria, en pacientes de 50 años o más, los criterios clínicos no concuerdan con los criterios del ACR que incluyen radiografía (kappa ≤ 0,11; Bierma-Zeinstra 1999), y una revisión los da por poco fiables en ese ámbito (Reijman 2004). La rotación interna disminuida, que forma parte del árbol, sí tiene cifras de atención primaria y puntúa sola.
+1. La tarjeta cita solo la rama (1). En la muestra en la que se crearon (201 pacientes con dolor de cadera, frente a artritis reumatoide, espondiloartropatía y otras causas) daban S 86 % · E 75 % (Altman 1991), pero no puntúa: en atención primaria, en pacientes de 50 años o más, los criterios clínicos no concuerdan con los criterios del ACR que incluyen radiografía (kappa ≤ 0,11; Bierma-Zeinstra 1999), y una revisión los da por poco fiables en ese ámbito (Reijman 2004). La rotación interna disminuida, que forma parte del árbol, sí tiene cifras de atención primaria y puntúa sola.
 2. Altman 1991 (Arthritis Rheum 34:505–14, criterios ACR; n = 201 con dolor de cadera, controles con dolor de cadera de otra causa). En atención primaria: Bierma-Zeinstra 1999 (J Rheumatol 26:1129–33; n = 227 de 50 años o más, derivados a radiografía por su médico de cabecera) y Reijman 2004 (Ann Rheum Dis 63:226–32, revisión sistemática de definiciones de artrosis de cadera)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» | 4b · cita bajo el test | 2 |
 
 ### Biz 2019
@@ -2750,14 +2748,14 @@ Citada como:
 
 1. Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 2 estudios, certeza baja; LR+ IC 95 %: 1,37–4,30; LR− IC 0,15–0,43). Solo Grimaldi 2017 (BJSM; n = 65, referencia: RM): S 80 %, E 47 %
 2. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM). Agrupado: Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 2 estudios, certeza muy baja)
-3. Supino, cadera a 90° en RE; el paciente vuelve a neutro contra resistencia. Positivo: reproduce su dolor. Si es negativo, repetir en prono con la cadera en extensión. No puntúa: en pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017). Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7; certeza muy baja).
+3. En pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017). Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7; certeza muy baja).
 4. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM; versión con aducción añadida), según Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3, tabla 2). Lequesne 2008 (Arthritis Rheum; n = 17 con SDTM refractario de 13 meses de media, frente a 38 caderas sin dolor; referencia: RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Palpación del trocánter mayor / tendón glúteo» | 4b · cita bajo el test | 1 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» | 4b · cita bajo el test | 2 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» (en `criterio`) | 4b · mención en el texto | 3 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 4 |
 
 ### Grimaldi 2026
@@ -2916,7 +2914,7 @@ DOI: 10.1016/j.eclinm.2023.101960
 Citada como:
 
 1. Laslett 2005 (Man Ther 10:207–218, tabla 2; referencia: bloqueo anestésico intraarticular). Agrupado: Han 2023 (eClinicalMedicine 59:101960, revisión sistemática, tabla 1)
-2. Distracción, compresión, thigh thrust, Gaenslen y sacral thrust; positivo si 3 o más reproducen su dolor. LR+ 2,13 (IC 95 % 1,2–3,9), LR− 0,33 (IC 0,11–0,72), certeza muy baja (GRADE): positivo orienta poco; negativo descarta mejor. Si los síntomas no se centralizan con movimientos repetidos, la especificidad sube (del 78 % al 87 % en el estudio de los creadores): los positivos con centralización (dolor discal) son falsos positivos. Lluch cita S 85–94 %, E 79 %; la cifra de la revisión de Laslett de 2008 (S 91 %, E 78 %; LR+ 4,16, LR− 0,12) es de un solo estudio (Laslett 2003, 48 pacientes, doble bloqueo), y el de 2005, con 6 tests, daba S 94 %, E 78 %. Otra revisión, sin aclarar el modelo y con dos publicaciones de la misma población, da LR+ 2,44 y LR− 0,31 (Han 2023). Regla alternativa del estudio de 2005, sin Gaenslen: 2 o más positivos de 4 (distracción, thigh thrust, compresión y sacral thrust) dan S 88 %, E 78 %, LR+ 4,0 (IC 2,13–8,08), LR− 0,16 (IC 0,04–0,47); orden propuesto: thigh thrust y distracción primero, y si los dos son positivos no hace falta seguir; con uno positivo, compresión y, si es negativa, sacral thrust. En ese estudio, con todos los tests negativos se descartaba la sacroilíaca.
+2. LR+ 2,13 (IC 95 % 1,2–3,9), LR− 0,33 (IC 0,11–0,72), certeza muy baja (GRADE). Lluch cita S 85–94 %, E 79 %; la cifra de la revisión de Laslett de 2008 (S 91 %, E 78 %; LR+ 4,16, LR− 0,12) es de un solo estudio (Laslett 2003, 48 pacientes, doble bloqueo), y el de 2005, con 6 tests, daba S 94 %, E 78 %. Otra revisión, sin aclarar el modelo y con dos publicaciones de la misma población, da LR+ 2,44 y LR− 0,31 (Han 2023). Regla alternativa del estudio de 2005, sin Gaenslen: 2 o más positivos de 4 (distracción, thigh thrust, compresión y sacral thrust) dan S 88 %, E 78 %, LR+ 4,0 (IC 2,13–8,08), LR− 0,16 (IC 0,04–0,47); orden propuesto: thigh thrust y distracción primero, y si los dos son positivos no hace falta seguir; con uno positivo, compresión y, si es negativa, sacral thrust. En ese estudio, con todos los tests negativos se descartaba la sacroilíaca.
 3. Saueressig 2021 (J Orthop Sports Phys Ther 51:422–431; metaanálisis bivariante, 5 estudios de 34 a 60 pacientes con dolor lumbar crónico y sospecha de dolor sacroilíaco; referencia: bloqueo anestésico intraarticular; incluye el estudio de los creadores, Laslett 2003). Laslett 2008 (J Man Manip Ther 16:142–152); Laslett 2005 (Man Ther 10:207–218, tablas 4–6 y fig. 7); Han 2023 (eClinicalMedicine 59:101960, tabla 1: 6 estudios); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
 4. Laslett 2005 (Man Ther 10:207–218, tabla 2; referencia: bloqueo anestésico intraarticular). Agrupado: Han 2023 (eClinicalMedicine 59:101960, revisión sistemática, tabla 1); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 153–154
 5. Han 2023 (eClinicalMedicine, revisión sistemática, 4 estudios; LR+ IC 95 %: 1,44–6,50; referencia: discografía). Antes: Hancock 2007, LR+ 2,8
@@ -2927,7 +2925,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Compresión Pélvica» | 4b · cita bajo el test | 1 |
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» (en `criterio`) | 4b · mención en el texto | 2 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 3 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Thigh thrust» | 4b · cita bajo el test | 4 |
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Centralización con movimientos repetidos» | 4b · cita bajo el test | 5 |
@@ -3969,13 +3967,13 @@ Nota: DOI comprobado en Crossref (2026-10). Estudio de los creadores del cluster
 
 Citada como:
 
-1. Distracción, compresión, thigh thrust, Gaenslen y sacral thrust; positivo si 3 o más reproducen su dolor. LR+ 2,13 (IC 95 % 1,2–3,9), LR− 0,33 (IC 0,11–0,72), certeza muy baja (GRADE): positivo orienta poco; negativo descarta mejor. Si los síntomas no se centralizan con movimientos repetidos, la especificidad sube (del 78 % al 87 % en el estudio de los creadores): los positivos con centralización (dolor discal) son falsos positivos. Lluch cita S 85–94 %, E 79 %; la cifra de la revisión de Laslett de 2008 (S 91 %, E 78 %; LR+ 4,16, LR− 0,12) es de un solo estudio (Laslett 2003, 48 pacientes, doble bloqueo), y el de 2005, con 6 tests, daba S 94 %, E 78 %. Otra revisión, sin aclarar el modelo y con dos publicaciones de la misma población, da LR+ 2,44 y LR− 0,31 (Han 2023). Regla alternativa del estudio de 2005, sin Gaenslen: 2 o más positivos de 4 (distracción, thigh thrust, compresión y sacral thrust) dan S 88 %, E 78 %, LR+ 4,0 (IC 2,13–8,08), LR− 0,16 (IC 0,04–0,47); orden propuesto: thigh thrust y distracción primero, y si los dos son positivos no hace falta seguir; con uno positivo, compresión y, si es negativa, sacral thrust. En ese estudio, con todos los tests negativos se descartaba la sacroilíaca.
+1. LR+ 2,13 (IC 95 % 1,2–3,9), LR− 0,33 (IC 0,11–0,72), certeza muy baja (GRADE). Lluch cita S 85–94 %, E 79 %; la cifra de la revisión de Laslett de 2008 (S 91 %, E 78 %; LR+ 4,16, LR− 0,12) es de un solo estudio (Laslett 2003, 48 pacientes, doble bloqueo), y el de 2005, con 6 tests, daba S 94 %, E 78 %. Otra revisión, sin aclarar el modelo y con dos publicaciones de la misma población, da LR+ 2,44 y LR− 0,31 (Han 2023). Regla alternativa del estudio de 2005, sin Gaenslen: 2 o más positivos de 4 (distracción, thigh thrust, compresión y sacral thrust) dan S 88 %, E 78 %, LR+ 4,0 (IC 2,13–8,08), LR− 0,16 (IC 0,04–0,47); orden propuesto: thigh thrust y distracción primero, y si los dos son positivos no hace falta seguir; con uno positivo, compresión y, si es negativa, sacral thrust. En ese estudio, con todos los tests negativos se descartaba la sacroilíaca.
 2. Saueressig 2021 (J Orthop Sports Phys Ther 51:422–431; metaanálisis bivariante, 5 estudios de 34 a 60 pacientes con dolor lumbar crónico y sospecha de dolor sacroilíaco; referencia: bloqueo anestésico intraarticular; incluye el estudio de los creadores, Laslett 2003). Laslett 2008 (J Man Manip Ther 16:142–152); Laslett 2005 (Man Ther 10:207–218, tablas 4–6 y fig. 7); Han 2023 (eClinicalMedicine 59:101960, tabla 1: 6 estudios); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
 3. Saueressig 2021 (J Orthop Sports Phys Ther 51:422–431; metaanálisis bivariante, 5 estudios; LR+ IC 95 %: 1,2–3,9, LR− 0,11–0,72; referencia: bloqueo anestésico intraarticular; incluye el estudio de los creadores, Laslett 2003): certeza muy baja (GRADE); descarta mejor de lo que confirma. Misma regla que la tarjeta lumbar: 3 de 5 positivos. Han 2023 (eClinicalMedicine, revisión sistemática, 6 estudios, sin aclarar el modelo y con dos publicaciones de la misma población): LR+ 2,44, LR− 0,31
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 2 |
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Cluster «Tests de provocación SI (3 de 5)» | 4b · cita del cluster | 3 |
 
@@ -3991,7 +3989,7 @@ Nota: PDF aportado por el usuario. Ref. 99 de Lluch 2020, cap. 4.1: origen de la
 Citada como:
 
 1. Laslett 2005 (Man Ther 10:207–218, tabla 2; referencia: bloqueo anestésico intraarticular). Agrupado: Han 2023 (eClinicalMedicine 59:101960, revisión sistemática, tabla 1)
-2. Flexión, abducción y rotación externa (posición de 4). Como provocación sacroilíaca no tiene exactitud propia: formó parte de la batería de 6 tests de uno de los dos estudios que compara Laslett 2008, no de la de Laslett 2005 ni del cluster de 5 tests. En la cadera se usa sobre todo como test intraarticular (ver el FABER del SIFA). Cuenta como hallazgo.
+2. Como provocación sacroilíaca no tiene exactitud propia: formó parte de la batería de 6 tests de uno de los dos estudios que compara Laslett 2008, no de la de Laslett 2005 ni del cluster de 5 tests. En la cadera se usa sobre todo como test intraarticular (ver el FABER del SIFA).
 3. Laslett 2008 (J Man Manip Ther 16:142–152, tabla 1). Laslett 2005 (Man Ther 10:207–218)
 4. Laslett 2005 (Man Ther 10:207–218, criterios de exclusión). Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
 5. Saueressig 2021 (J Orthop Sports Phys Ther 51:422–431; metaanálisis bivariante, 5 estudios de 34 a 60 pacientes con dolor lumbar crónico y sospecha de dolor sacroilíaco; referencia: bloqueo anestésico intraarticular; incluye el estudio de los creadores, Laslett 2003). Laslett 2008 (J Man Manip Ther 16:142–152); Laslett 2005 (Man Ther 10:207–218, tablas 4–6 y fig. 7); Han 2023 (eClinicalMedicine 59:101960, tabla 1: 6 estudios); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
@@ -4000,7 +3998,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Compresión Pélvica» | 4b · cita bajo el test | 1 |
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Patrick (FABER)» (en `criterio`) | 4b · mención en el texto | 2 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Patrick (FABER)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Patrick (FABER)» | 4b · cita bajo el test | 3 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Dolor no limitado a la línea media ni por encima de L5» | 4b · cita bajo el test | 4 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 5 |
@@ -4031,13 +4029,13 @@ Nota: Texto completo en PMC2582421. Revisión narrativa. Recoge la cifra del clu
 
 Citada como:
 
-1. Flexión, abducción y rotación externa (posición de 4). Como provocación sacroilíaca no tiene exactitud propia: formó parte de la batería de 6 tests de uno de los dos estudios que compara Laslett 2008, no de la de Laslett 2005 ni del cluster de 5 tests. En la cadera se usa sobre todo como test intraarticular (ver el FABER del SIFA). Cuenta como hallazgo.
+1. Como provocación sacroilíaca no tiene exactitud propia: formó parte de la batería de 6 tests de uno de los dos estudios que compara Laslett 2008, no de la de Laslett 2005 ni del cluster de 5 tests. En la cadera se usa sobre todo como test intraarticular (ver el FABER del SIFA).
 2. Laslett 2008 (J Man Manip Ther 16:142–152, tabla 1). Laslett 2005 (Man Ther 10:207–218)
 3. Saueressig 2021 (J Orthop Sports Phys Ther 51:422–431; metaanálisis bivariante, 5 estudios de 34 a 60 pacientes con dolor lumbar crónico y sospecha de dolor sacroilíaco; referencia: bloqueo anestésico intraarticular; incluye el estudio de los creadores, Laslett 2003). Laslett 2008 (J Man Manip Ther 16:142–152); Laslett 2005 (Man Ther 10:207–218, tablas 4–6 y fig. 7); Han 2023 (eClinicalMedicine 59:101960, tabla 1: 6 estudios); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Patrick (FABER)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Patrick (FABER)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Patrick (FABER)» | 4b · cita bajo el test | 2 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 3 |
 
@@ -4109,16 +4107,16 @@ DOI: 10.1002/art.23354
 
 Citada como:
 
-1. Positivo: reproduce el dolor lateral de cadera antes de 30 s de apoyo sobre la pierna afectada. Todos los positivos tenían tendinopatía en la RM (LR+ 12,2), pero con IC 95 % de 0,8 a 191,5 (15 pacientes sin tendinopatía): aún no puntúa. El valor agrupado (LR+ 87,8, IC 3,0–2587) depende de un estudio con controles sin dolor de cadera (Lequesne 2008); certeza muy baja. Negativo no descarta (S 38 %).
+1. Todos los positivos tenían tendinopatía en la RM (LR+ 12,2), pero con IC 95 % de 0,8 a 191,5 (15 pacientes sin tendinopatía). El valor agrupado (LR+ 87,8, IC 3,0–2587) depende de un estudio con controles sin dolor de cadera (Lequesne 2008); certeza muy baja.
 2. Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 5 estudios, certeza baja; LR+ IC 95 %: 3,19–11,61; LR− IC 0,33–0,63). Incluye un estudio con controles sin dolor de cadera (Lequesne 2008)
-3. Supino, cadera a 90° en RE; el paciente vuelve a neutro contra resistencia. Positivo: reproduce su dolor. Si es negativo, repetir en prono con la cadera en extensión. No puntúa: en pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017). Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7; certeza muy baja).
+3. En pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017). Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7; certeza muy baja).
 4. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM; versión con aducción añadida), según Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3, tabla 2). Lequesne 2008 (Arthritis Rheum; n = 17 con SDTM refractario de 13 meses de media, frente a 38 caderas sin dolor; referencia: RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» | 4b · cita bajo el test | 2 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» (en `criterio`) | 4b · mención en el texto | 3 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 4 |
 
 ### Leslie 2023
@@ -5767,13 +5765,13 @@ DOI: 10.1007/s00167-003-0390-7
 Citada como:
 
 1. Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
-2. Si la sospecha persiste. Supino con ambas caderas en flexión completa; se sujeta la contralateral en flexión y la afectada se lleva a extensión completa fuera del borde de la camilla. Positivo: dolor conocido, bloqueo, chasquido o enganche (en el estudio: chasquido palpable o dolor). Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral. No puntúa: el S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original; lo calcularon los autores del metaanálisis de Reiman 2015 a partir de una serie de 59 casos operados, con riesgo de sesgo alto. En Narvani 2003 no fue ni sensible ni específico (positivo en 1 de 4 roturas).
+2. El S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original; lo calcularon los autores del metaanálisis de Reiman 2015 a partir de una serie de 59 casos operados, con riesgo de sesgo alto. En Narvani 2003 no fue ni sensible ni específico (positivo en 1 de 4 roturas).
 3. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Chasquido doloroso» | 4b · cita bajo el test | 1 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» (en `criterio`) | 4b · mención en el texto | 2 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» | 4b · cita bajo el test | 3 |
 
 ### Netterström-Wedin 2021
@@ -6580,12 +6578,12 @@ DOI: 10.1136/ard.2003.010348
 
 Citada como:
 
-1. Dolor de cadera y, además: (1) RI ≥15°, dolor en la RI, rigidez matutina ≤60 min y edad >50 años; o bien (2) RI <15° y VSG ≤45 mm/h (sin VSG: flexión ≤115°). La tarjeta cita solo la rama (1). En la muestra en la que se crearon (201 pacientes con dolor de cadera, frente a artritis reumatoide, espondiloartropatía y otras causas) daban S 86 % · E 75 % (Altman 1991), pero no puntúa: en atención primaria, en pacientes de 50 años o más, los criterios clínicos no concuerdan con los criterios del ACR que incluyen radiografía (kappa ≤ 0,11; Bierma-Zeinstra 1999), y una revisión los da por poco fiables en ese ámbito (Reijman 2004). La rotación interna disminuida, que forma parte del árbol, sí tiene cifras de atención primaria y puntúa sola.
+1. La tarjeta cita solo la rama (1). En la muestra en la que se crearon (201 pacientes con dolor de cadera, frente a artritis reumatoide, espondiloartropatía y otras causas) daban S 86 % · E 75 % (Altman 1991), pero no puntúa: en atención primaria, en pacientes de 50 años o más, los criterios clínicos no concuerdan con los criterios del ACR que incluyen radiografía (kappa ≤ 0,11; Bierma-Zeinstra 1999), y una revisión los da por poco fiables en ese ámbito (Reijman 2004). La rotación interna disminuida, que forma parte del árbol, sí tiene cifras de atención primaria y puntúa sola.
 2. Altman 1991 (Arthritis Rheum 34:505–14, criterios ACR; n = 201 con dolor de cadera, controles con dolor de cadera de otra causa). En atención primaria: Bierma-Zeinstra 1999 (J Rheumatol 26:1129–33; n = 227 de 50 años o más, derivados a radiografía por su médico de cabecera) y Reijman 2004 (Ann Rheum Dis 63:226–32, revisión sistemática de definiciones de artrosis de cadera)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» | 4b · cita bajo el test | 2 |
 
 ### Reiman 2014
@@ -6619,23 +6617,23 @@ DOI: 10.1136/bjsports-2014-094302
 
 Citada como:
 
-1. Cadera a 90° de flexión, aducción completa y rotación interna máxima. Positivo: dolor conocido, bloqueo, chasquido o enganche. En pacientes derivados con sospecha de SIFA, S 80 %, E 24 % (LR− 0,83): no puntúa. Un negativo orienta algo en contra, pero no descarta. El valor agrupado de Reiman 2015 (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93.
+1. En pacientes derivados con sospecha de SIFA, S 80 %, E 24 % (LR− 0,83). El valor agrupado de Reiman 2015 (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93.
 2. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc; 69 caderas de 63 pacientes derivados a atención especializada, 35 con SIFA; referencia: síntomas + morfología cam/pincer + respuesta a infiltración intraarticular; S IC 95 %: 67–93 %, E IC 9–38 %). Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09)
 3. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral: 2 estudios, n = 27)
 4. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med)
 5. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09). Adib 2023 (Am J Sports Med; retrospectivo; referencia: artro-RM)
-6. Si la sospecha persiste. Supino con ambas caderas en flexión completa; se sujeta la contralateral en flexión y la afectada se lleva a extensión completa fuera del borde de la camilla. Positivo: dolor conocido, bloqueo, chasquido o enganche (en el estudio: chasquido palpable o dolor). Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral. No puntúa: el S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original; lo calcularon los autores del metaanálisis de Reiman 2015 a partir de una serie de 59 casos operados, con riesgo de sesgo alto. En Narvani 2003 no fue ni sensible ni específico (positivo en 1 de 4 roturas).
+6. El S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original; lo calcularon los autores del metaanálisis de Reiman 2015 a partir de una serie de 59 casos operados, con riesgo de sesgo alto. En Narvani 2003 no fue ni sensible ni específico (positivo en 1 de 4 roturas).
 7. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med). En contra: Narvani 2003 (Knee Surg Sports Traumatol Arthrosc; 18 deportistas con dolor inguinal, 4 roturas; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» | 4b · cita bajo el test | 2 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test de flexión-rotación interna» | 4b · cita bajo el test | 3 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test de Thomas» | 4b · cita bajo el test | 4 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de flexión-rotación interna» | 4b · cita bajo el test | 3 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» | 4b · cita bajo el test | 5 |
-| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» (en `criterio`) | 4b · mención en el texto | 6 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» | 4b · cita bajo el test | 7 |
 
 ### Rennie y Saifuddin 2005
@@ -6683,13 +6681,13 @@ Nota: Texto completo en PMC12657663. El protocolo detallado de fisioterapia est�
 
 Citada como:
 
-1. Reproduce su dolor isquiático al cargar los isquiotibiales, sobre todo en estiramiento: flexión de rodilla resistida con la cadera a 90°, plancha supina a una pierna o puente a una pierna con la rodilla flexionada. En el ensayo de Rich 2025 se exigía que 3 de 4 pruebas de carga o compresión reprodujeran el dolor. Sin S ni E: cuenta como hallazgo.
+1. En el ensayo de Rich 2025 se exigía que 3 de 4 pruebas de carga o compresión reprodujeran el dolor. Sin S ni E.
 2. Grimaldi 2026 (Musculoskelet Sci Pract 84:103592, revisión narrativa, tabla 1). Rich 2025 (Am J Sports Med 53:3396–3407, apéndice, tabla A1: criterios de inclusión)
 3. Rich 2025, Am J Sports Med 53:3396–3407 (ensayo aleatorizado, n = 100, fisioterapia frente a ondas de choque, los dos con la misma educación)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca9 · Tendinopatía Proximal de Isquiotibiales | Test «Dolor con test de fuerza de isquiotibiales» (en `criterio`) | 4b · mención en el texto | 1 |
+| Cadera | ca9 · Tendinopatía Proximal de Isquiotibiales | Test «Dolor con test de fuerza de isquiotibiales» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca9 · Tendinopatía Proximal de Isquiotibiales | Test «Dolor con test de fuerza de isquiotibiales» | 4b · cita bajo el test | 2 |
 | Cadera | ca9 · Tendinopatía Proximal de Isquiotibiales | Pauta de tratamiento | 5 · cita de la pauta | 3 |
 
