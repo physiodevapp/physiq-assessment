@@ -676,6 +676,50 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "elena-dictado-3-ficha-breve.txt",
+      "valoracion": "valoracion-elena-castro-lumbar.json",
+      "transcripcion": "elena-dictado-3-transcripcion.txt",
+      "plantilla": "breve",
+      "errores": [
+        {
+          "id": "elena3-primera-consulta",
+          "tipo": "contradice",
+          "nivel": "medio",
+          "descripcion": "Reinterpreta «¿Es la primera vez que le pasa? → Sí» como primera consulta de fisioterapia para que encaje con el episodio del año pasado",
+          "fragmentos": [
+            "Se trata de su primera consulta de fisioterapia por este problema"
+          ]
+        },
+        {
+          "id": "elena3-paivm-desarrollada",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "Desarrolla la sigla PAIVM como «presiones accesorias intervertebrales pasivas» (son movimientos)",
+          "fragmentos": [
+            "presiones accesorias intervertebrales pasivas revela hipomovilidad"
+          ]
+        },
+        {
+          "id": "elena3-levantar-objetos",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Limitación para levantar objetos (d4300) que no consta; solo la indicación de no cargar peso y el mecanismo",
+          "fragmentos": [
+            "así como para levantar objetos (d4300)"
+          ]
+        },
+        {
+          "id": "elena3-cada-dos-semanas",
+          "tipo": "plan",
+          "nivel": "medio",
+          "descripcion": "Frecuencia de seguimiento inventada",
+          "fragmentos": [
+            "con valoraciones cada 2 semanas durante el primer mes"
+          ]
+        }
+      ]
     }
   ]
 }
