@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **332** referencias de literatura, con **1357** usos.
+- **338** referencias de literatura, con **1378** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **328** de 332 referencias del registro revisadas. Ver «Estado de revisión».
+- **328** de 338 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -42,6 +42,7 @@ primero las que mueven la puntuación de la fase 4b, luego pauta y pronóstico (
 «Afecta a»: «puntuación 4b» = respalda un test o cluster que puntúa; «test 4b sin puntuar» = el test se ve
 pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que dispara una alerta de derivación;
 «razonamiento fase 2» = respalda el «¿Por qué?» de una pregunta de cribado (no cambia ninguna alerta);
+«razonamiento 4b» = respalda el «¿Por qué?» de un test de la fase 4b (no cambia la puntuación);
 «texto» = solo se menciona.
 
 | Referencia | Afecta a | Usos | Última revisión |
@@ -50,6 +51,12 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 89 | **sin revisar** |
 | [NICE NG158](#nice-ng158) | razonamiento fase 2 · texto | 22 | **sin revisar** |
 | [Goebel 2018](#goebel-2018) | razonamiento fase 2 · texto | 9 | **sin revisar** |
+| [Kessel y Watson 1977](#kessel-y-watson-1977) | razonamiento 4b · texto | 2 | **sin revisar** |
+| [Speer 1994](#speer-1994) | razonamiento 4b · texto | 4 | **sin revisar** |
+| [Hertel 1996](#hertel-1996) | razonamiento 4b · texto | 4 | **sin revisar** |
+| [Gross y Distefano 1997](#gross-y-distefano-1997) | razonamiento 4b · texto | 2 | **sin revisar** |
+| [Pappas 2006](#pappas-2006) | razonamiento 4b · texto | 4 | **sin revisar** |
+| [Yamamoto 2009](#yamamoto-2009) | razonamiento 4b · texto | 4 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | 2026-10 · Sustituida por van der Windt 2010 (revisión Cochrane del mismo grupo, con Devillé como autor; PDF del usuario): SLR y SLR cruzado de lu3 pasan a sus cifras agrupadas con LR publicadas. Se menciona como dato anterior. |
@@ -596,7 +603,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Bodman 2024](#bodman-2024) · [Brotman 2024](#brotman-2024) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grondin 2026](#grondin-2026) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Hegedus 2012](#hegedus-2012) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hesmerg 2024](#hesmerg-2024) · [Hölmich 1999](#hölmich-1999) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Khalil 2025](#khalil-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patil 2024](#patil-2024) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Pope 2023](#pope-2023) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Stern 2026](#stern-2026) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Truong 2023](#truong-2023) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
+[AAOS 2024](#aaos-2024) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Bodman 2024](#bodman-2024) · [Brotman 2024](#brotman-2024) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Hegedus 2012](#hegedus-2012) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hölmich 1999](#hölmich-1999) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patil 2024](#patil-2024) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Pope 2023](#pope-2023) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Speer 1994](#speer-1994) · [Stern 2026](#stern-2026) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Truong 2023](#truong-2023) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Yamamoto 2009](#yamamoto-2009) · [Zabaglo 2024](#zabaglo-2024) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -1212,7 +1219,7 @@ DOI: 10.2519/jospt.2017.0302
 
 Citada como:
 
-1. Reproducción del dolor de hombro con extensión + inclinación lateral ipsilateral + compresión axial. En el dolor de hombro cervicogénico el dolor se reproduce con las pruebas de la columna cervical y la movilidad pasiva glenohumeral no está limitada, lo que lo distingue del hombro congelado (Lluch 2020, tabla 2). El Spurling se ha estudiado para la radiculopatía cervical (S 0,50, E 0,86–0,93; revisión de Rubinstein recogida por Blanpied 2017), no para el dolor referido al hombro: aquí no puntúa.
+1. En el dolor de hombro cervicogénico el dolor se reproduce con las pruebas de la columna cervical y la movilidad pasiva glenohumeral no está limitada, lo que lo distingue del hombro congelado (Lluch 2020, tabla 2). El Spurling se ha estudiado para la radiculopatía cervical (S 0,50, E 0,86–0,93; revisión de Rubinstein recogida por Blanpied 2017), no para el dolor referido al hombro.
 2. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A19)
 3. Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía)
 4. Movilización segmentaria posteroanterior. Positivo si hipomóvil y reproduce síntomas. La fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical es pobre o regular (revisión de 7 artículos). Cuenta como hallazgo: las cifras que tenía (κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9, LR− 0,43–0,49) son del PAIVM C0–C3 para la cefalea cervicogénica (Blanpied 2017, p. A19), no para el déficit de movilidad, que no tiene patrón de referencia; y la evidencia publicada del PAIVM en el dolor cervical es para dolor facetario confirmado con bloqueo de rama medial (S 90 %, E 73 %).
@@ -1233,7 +1240,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» | 4b · cita bajo el test | 2 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Pauta de tratamiento | 5 · cita de la pauta | 3 |
 | Cervical | ce1 · Disfunción Articular Cervical | Test «PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3» (en `criterio`) | 4b · mención en el texto | 4 |
@@ -1344,16 +1351,16 @@ Nota: Contexto de los tests de la AC de h7 (tabla 4).
 
 Citada como:
 
-1. Brazo a 90° de flexión, aducción horizontal pasiva cruzando el cuerpo. Positivo si duele en la parte superior del hombro, cerca de la AC. Cuenta como hallazgo. En un estudio retrospectivo de casos y controles da S 77 % (27 de 35) y E 79 % (410 de 518), de las que saldrían LR+ 3,7 y LR− 0,29; pero los casos se definieron por dolor a la palpación de la AC e infiltración positiva, y los controles eran otras cirugías de hombro. En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 64 %, E 26 %, LR+ 0,86, LR− 1,39: no discrimina. La revisión de Krill 2018 deja fuera el primero por ser de nivel III. Lluch 2020 (cap. 3.1, p. 61) dice «S >67 %». S y E solo aquí, para que no se recalcule la LR.
+1. En un estudio retrospectivo de casos y controles da S 77 % (27 de 35) y E 79 % (410 de 518), de las que saldrían LR+ 3,7 y LR− 0,29; pero los casos se definieron por dolor a la palpación de la AC e infiltración positiva, y los controles eran otras cirugías de hombro. En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 64 %, E 26 %, LR+ 0,86, LR− 1,39: no discrimina. La revisión de Krill 2018 deja fuera el primero por ser de nivel III. Lluch 2020 (cap. 3.1, p. 61) dice «S >67 %».
 2. Chronopoulos 2004 (Am J Sports Med 32:655–661, tabla 3; 35 lesiones AC crónicas aisladas frente a 580 controles quirúrgicos) · Cadogan 2013 (BMC Musculoskelet Disord 14:156, tabla 4) · Krill 2018 (Phys Sportsmed 46:98–104, revisión sistemática; tabla 3)
-3. Brazo a 90° de flexión y 10° de aducción; resistir un empuje hacia abajo con el pulgar hacia abajo y después hacia arriba. Positivo si el dolor está en la AC con el pulgar abajo y baja o desaparece con el pulgar arriba; dolor en otro sitio = negativo. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
+3. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
 4. Chronopoulos 2004 (Am J Sports Med 32:655–661, tabla 3) · Walton 2004 (J Bone Joint Surg Am) · Cadogan 2013 (BMC Musculoskelet Disord 14:156, tabla 4) · Krill 2018 (Phys Sportsmed 46:98–104, revisión sistemática; tablas 3 y 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» | 4b · cita bajo el test | 2 |
-| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `criterio`) | 4b · mención en el texto | 3 |
+| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» | 4b · cita bajo el test | 4 |
 
 ### Caliandro 2025
@@ -1508,13 +1515,13 @@ Nota: Mismo cirujano y misma base de datos quirúrgica (Johns Hopkins) que Park 
 Citada como:
 
 1. Chronopoulos 2004 (Am J Sports Med 32:655–661, tabla 3; 35 lesiones AC crónicas aisladas frente a 580 controles quirúrgicos) · Cadogan 2013 (BMC Musculoskelet Disord 14:156, tabla 4) · Krill 2018 (Phys Sportsmed 46:98–104, revisión sistemática; tabla 3)
-2. Brazo a 90° de flexión y 10° de aducción; resistir un empuje hacia abajo con el pulgar hacia abajo y después hacia arriba. Positivo si el dolor está en la AC con el pulgar abajo y baja o desaparece con el pulgar arriba; dolor en otro sitio = negativo. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
+2. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
 3. Chronopoulos 2004 (Am J Sports Med 32:655–661, tabla 3) · Walton 2004 (J Bone Joint Surg Am) · Cadogan 2013 (BMC Musculoskelet Disord 14:156, tabla 4) · Krill 2018 (Phys Sportsmed 46:98–104, revisión sistemática; tablas 3 y 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» | 4b · cita bajo el test | 1 |
-| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `criterio`) | 4b · mención en el texto | 2 |
+| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» | 4b · cita bajo el test | 3 |
 
 ### Consenso de Zúrich IHiPRN
@@ -1827,7 +1834,7 @@ Citada como:
 1. Dolor en reposo: puede indicar bursitis o proceso inflamatorio que tolere mal el movimiento vigoroso → dosificar. La idea de «espacio subacromial estrecho» es controvertida. Si no mejora en un máximo de 12 semanas de tratamiento conservador adecuado, puede pedirse imagen y derivar al médico especialista si el dolor o la discapacidad siguen siendo intensos (Desmeules 2025, grado F).
 2. Desmeules 2025, J Orthop Sports Phys Ther 55(4):235–274 (guía de práctica clínica; incluye el síndrome de dolor subacromial dentro de la tendinopatía del manguito; letra = grado de la recomendación, tal como la da la guía)
 3. Desmeules 2025, J Orthop Sports Phys Ther 55(4):235–274 (guía de práctica clínica; incluye la rotura parcial y excluye la completa; letra = grado de la recomendación, tal como la da la guía) · Alentorn-Geli 2026, Knee Surg Sports Traumatol Arthrosc 34:3040–3051 (consenso formal de la ESSKA-ESA, parte 2: tratamiento y vuelta al deporte; letra = grado de la recomendación, tal como la da el consenso; ninguna llega a A)
-4. Asimetría visual en la elevación del brazo: ángulo inferior, borde medial o espina escapular prominentes. Las medidas de la movilidad escapular son poco fiables y de validez limitada, y no deben usarse para medir objetivamente la movilidad escapular dinámica (Desmeules 2025, recomendación 6, A). La discinesia se asocia al SAPS, pero no se ha demostrado que cause el dolor (Lluch 2020). Sin S ni E; no puntúa.
+4. Las medidas de la movilidad escapular son poco fiables y de validez limitada, y no deben usarse para medir objetivamente la movilidad escapular dinámica (Desmeules 2025, recomendación 6, A). La discinesia se asocia al SAPS, pero no se ha demostrado que cause el dolor (Lluch 2020). Sin S ni E.
 5. Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274, recomendación 6) · Lluch 2020, cap. 3.1 (Struyf), pp. 53–54
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -1835,7 +1842,7 @@ Citada como:
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Pronóstico (en `derivacion`) | 5 · mención en el texto | 1 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 | Hombro | h3 · Rotura del Manguito Rotador | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» (en `criterio`) | 4b · mención en el texto | 4 |
+| Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
 | Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» | 4b · cita bajo el test | 5 |
 
 ### Devereaux y ElMaraghy 2013
@@ -2705,6 +2712,27 @@ Citada como:
 | Cervical | ce3 · Radiculopatía Cervical | Test «Shoulder Abduction Relief Test» | 4b · cita bajo el test | 1 |
 | Cervical | ce3 · Radiculopatía Cervical | Test «Combinación de 4 ULNT (ULNT1 y ULNT2a mediano, ULNT2b radial, ULNT3 cubital)» | 4b · cita bajo el test | 2 |
 
+### Gross y Distefano 1997
+
+Autores: Gross y Distefano  
+Título: *Anterior release test. A new test for occult shoulder instability*  
+Publicación: Clin Orthop Relat Res (339):105–108  
+DOI: 10.1097/00003086-199706000-00014  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Estudio de los creadores del test de sorpresa (release): 100 hombros que iban a cirugía, un solo explorador; 82 tras excluir la inestabilidad asociada a otro diagnóstico. Positivo = dolor súbito, aumento claro del dolor o reproducción de los síntomas al soltar. «¿Por qué?» del test de sorpresa (h4).
+
+Citada como:
+
+1. Metaanálisis de 2 estudios (n = 128; modelo univariante de efectos aleatorios): S 81,8 %, E 86,1 %, LR+ 5,42 (IC 0,96–30,52), LR− 0,25 (IC 0,08–0,78). Solo puntúa negativo: el IC de la LR+ incluye el 1. Es el test de los tres que mejor descarta.
+
+En el estudio de sus creadores (Gross y Distefano 1997; 82 hombros que iban a cirugía, un solo explorador), el test era positivo con un dolor súbito, un aumento claro del dolor o la reproducción de los síntomas del paciente al soltar; 12 de los 14 con subluxación oculta dieron positivo. Excluyeron a los que tenían la inestabilidad junto a otro diagnóstico.
+2. Gross y Distefano 1997 (Clin Orthop Relat Res (339):105–108; 82 hombros operados)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Test de Liberación/Release/Surprise» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Test de Liberación/Release/Surprise» («¿Por qué?») | 4b · razonamiento del test | 2 |
+
 ### Großterlinden 2016
 
 Publicación: Knee Surg Sports Traumatol Arthrosc 24:1180–6  
@@ -2893,14 +2921,18 @@ Citada como:
 
 1. Hegedus 2012 (Br J Sports Med 46:964–978; metaanálisis HSROC/bivariante, tabla 3) · Zhao 2024 (BMC Musculoskelet Disord 25:1028, tabla 3 y fig. 3)
 2. Hegedus 2012 (Br J Sports Med 46:964–978; metaanálisis HSROC/bivariante, tabla 3) · Zhao 2024 (BMC Musculoskelet Disord 25:1028, tabla 3)
-3. Contracción isométrica de rotación externa contra resistencia, codo a 90°. Positivo si reproduce dolor. LR+ 2,6 (IC 95 % 1,8–3,6), LR− 0,49 (0,33–0,72) para patología del manguito, un solo estudio (203 pacientes, ecografía); con el arco doloroso, el hallazgo más útil según la revisión. Para el pinzamiento con artroscopia como referencia, un estudio de bajo riesgo de sesgo recogido por Hegedus 2012 da LR+ 4,39 y LR− 0,50.
+3. LR+ 2,6 (IC 95 % 1,8–3,6), LR− 0,49 (0,33–0,72) para patología del manguito, un solo estudio (203 pacientes, ecografía); con el arco doloroso, el hallazgo más útil según la revisión. Para el pinzamiento con artroscopia como referencia, un estudio de bajo riesgo de sesgo recogido por Hegedus 2012 da LR+ 4,39 y LR− 0,50.
 4. Hermans 2013 (JAMA 310:837–847, revisión sistemática; tabla 3, patología del manguito) · Hegedus 2012 (Br J Sports Med 46:964–978, tabla 1)
-5. Imposibilidad de mantener la rotación externa pasivamente colocada. Para rotura completa: LR+ 7,2 (IC 95 % 1,7–31), LR− 0,57 (0,35–0,92), un solo estudio (37 pacientes, ecografía); un negativo no descarta. En otro estudio de bajo riesgo de sesgo recogido por Hegedus 2012 da LR+ 28 para la rotura completa del supraespinoso. Si el nervio supraescapular está paralizado, los test del supraespinoso y del infraespinoso salen positivos con el manguito intacto; distinguirlo exige más que la clínica y la atrofia (Lluch 2020, cap. 3.1, pp. 66–67).
-6. Mano en la espalda, codo a 90°: imposibilidad de mantenerla separada de la espalda. Explora el subescapular. Para rotura completa: S 97 %, E 83 %, LR+ 5,6 (IC 95 % 2,6–12), LR− 0,04 (0,0–0,58), un solo estudio (37 pacientes, ecografía). Solo puntúa positivo: la LR− tan baja no se reproduce en otros estudios recogidos por Hegedus 2012 (LR− 0,64 para la rotura del subescapular, con bajo riesgo de sesgo; 0,79 para la rotura completa del supraespinoso), y Zhao 2024, que agrupa 4 estudios mezclando las dos roturas, da LR− 0,77. Un negativo es solo un hallazgo. S y E solo aquí, para que no se recalcule la LR−.
+5. Para rotura completa: LR+ 7,2 (IC 95 % 1,7–31), LR− 0,57 (0,35–0,92), un solo estudio (37 pacientes, ecografía). En otro estudio de bajo riesgo de sesgo recogido por Hegedus 2012 da LR+ 28 para la rotura completa del supraespinoso. Si el nervio supraescapular está paralizado, los test del supraespinoso y del infraespinoso salen positivos con el manguito intacto; distinguirlo exige más que la clínica y la atrofia (Lluch 2020, cap. 3.1, pp. 66–67).
+
+Técnica original: paciente sentado de espaldas; codo a 90°, hombro a 20° de elevación en el plano de la escápula y en rotación externa máxima menos 5° (para evitar el rebote elástico); se suelta la muñeca sujetando el codo y se mide el retraso a los 5° más cercanos. En la serie original, 5–10° en 16 de 17 roturas aisladas del supraespinoso y 10–15° en las 11 roturas del supraespinoso y el infraespinoso. Si la movilidad pasiva está reducida (p. ej., por contractura capsular), el retraso puede quedar oculto (falso negativo); si la rotación externa pasiva está aumentada, como en la rotura del subescapular, puede salir positivo sin rotura de los rotadores externos (Hertel 1996).
+6. Explora el subescapular. Para rotura completa: S 97 %, E 83 %, LR+ 5,6 (IC 95 % 2,6–12), LR− 0,04 (0,0–0,58), un solo estudio (37 pacientes, ecografía). Solo puntúa positivo: la LR− tan baja no se reproduce en otros estudios recogidos por Hegedus 2012 (LR− 0,64 para la rotura del subescapular, con bajo riesgo de sesgo; 0,79 para la rotura completa del supraespinoso), y Zhao 2024, que agrupa 4 estudios mezclando las dos roturas, da LR− 0,77.
+
+Técnica original: paciente sentado de espaldas; codo a 90°, hombro a 20° de elevación y 20° de extensión; se separa el dorso de la mano de la zona lumbar hasta casi la rotación interna completa y se suelta la muñeca sujetando el codo. En la serie original, retraso de 5° en 4 de 5 roturas parciales del subescapular y de 5–10° en las 8 completas; detectó roturas parciales que el lift-off no veía. Las mismas limitaciones del signo de retraso en rotación externa: una movilidad pasiva reducida puede ocultarlo (Hertel 1996).
 7. Hermans 2013 (JAMA 310:837–847, revisión sistemática; tabla 3, rotura completa) · Hegedus 2012 (Br J Sports Med 46:964–978, tablas 1 y 2) · Zhao 2024 (BMC Musculoskelet Disord 25:1028, tabla 2 y fig. 2)
 8. Hegedus 2012 (Br J Sports Med 46:964–978; metaanálisis DerSimonian-Laird, tabla 3)
 9. Hegedus 2012 (Br J Sports Med; metaanálisis, tabla 3)
-10. En supino, brazo elevado a 120° y en rotación externa máxima, codo a 90° y antebrazo en supinación; el paciente flexiona el codo contra resistencia. Positivo si esa flexión resistida provoca dolor. La LR+ alta es del estudio de sus creadores (S 89,7 %, E 96,9 %, n = 127, 15–52 años, excluidos luxación y hombro rígido); en los dos estudios independientes recogidos por Hegedus 2012, S 30–55 % y E 53–78 %, y la revisión concluye que hay «menos optimismo». Cuenta como hallazgo: la LR+ 26 solo se sostiene en el estudio de sus creadores.
+10. La LR+ alta es del estudio de sus creadores (S 89,7 %, E 96,9 %, n = 127, 15–52 años, excluidos luxación y hombro rígido); en los dos estudios independientes recogidos por Hegedus 2012, S 30–55 % y E 53–78 %, y la revisión concluye que hay «menos optimismo». Cuenta como hallazgo: la LR+ 26 solo se sostiene en el estudio de sus creadores.
 11. Kim 2001 (Arthroscopy 17:160–164) · Hegedus 2012 (Br J Sports Med 46:964–978, tabla 2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -2908,16 +2940,16 @@ Citada como:
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» | 4b · cita bajo el test | 1 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Hawkins-Kennedy» | 4b · cita bajo el test | 2 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» | 4b · cita bajo el test | 2 |
-| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Resistencia a Rotación Externa» (en `criterio`) | 4b · mención en el texto | 3 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Resistencia a Rotación Externa» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Resistencia a Rotación Externa» | 4b · cita bajo el test | 4 |
-| Hombro | h3 · Rotura del Manguito Rotador | Test «External Rotation Lag Sign» (en `criterio`) | 4b · mención en el texto | 5 |
-| Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» (en `criterio`) | 4b · mención en el texto | 6 |
+| Hombro | h3 · Rotura del Manguito Rotador | Test «External Rotation Lag Sign» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
+| Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» | 4b · cita bajo el test | 7 |
 | Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Test de Aprehensión» | 4b · cita bajo el test | 8 |
 | Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Test de Recolocación (Jobe)» | 4b · cita bajo el test | 9 |
 | Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Test de Liberación/Release/Surprise» | 4b · cita bajo el test | 9 |
 | Hombro | h5 · Lesión Labral Superior (SLAP) | Test «Test de O'Brien (Active Compression)» | 4b · cita bajo el test | 9 |
-| Hombro | h5 · Lesión Labral Superior (SLAP) | Test «Biceps Load Test II» (en `criterio`) | 4b · mención en el texto | 10 |
+| Hombro | h5 · Lesión Labral Superior (SLAP) | Test «Biceps Load Test II» (en `razonamiento.detalle`) | 4b · mención en el texto | 10 |
 | Hombro | h5 · Lesión Labral Superior (SLAP) | Test «Biceps Load Test II» | 4b · cita bajo el test | 11 |
 
 ### Hennessy 2025
@@ -2968,7 +3000,7 @@ Citada como:
 3. Hermans 2013 (JAMA 310:837–847, revisión sistemática; tabla 3, patología del manguito)
 4. Hermans 2013 (JAMA 310:837–847, revisión sistemática; tabla 3, rotura completa)
 5. Hermans 2013 (JAMA 310:837–847, revisión sistemática; tabla 3, rotura completa) · Hegedus 2012 (Br J Sports Med 46:964–978, tablas 1 y 2) · Zhao 2024 (BMC Musculoskelet Disord 25:1028, tabla 2 y fig. 2)
-6. Rotura COMPLETA si los tres son positivos: 50 de 153 roturas completas frente a 4 de 195 controles (348 operados con los tres test hechos) → LR+ 15,57 (con dos de tres, LR+ 3,57). La combinación sale de una regresión logística en la misma muestra, sin grupo de validación (en Litaker, la LR bajó de 9,84 a 5,0 al validarla), y Hermans 2013 clasifica el estudio como de nivel IV. Arco doloroso: dolor o enganche entre 60° y 120° de elevación activa en el plano de la escápula, al subir o al bajar. Drop arm: al bajar el brazo desde la elevación completa, cae de golpe o duele mucho. Debilidad en RE (infraespinoso): codo a 90° junto al cuerpo, rotación neutra; positivo si cede por debilidad o dolor, o si hay signo de retraso en RE. Población quirúrgica (controles: otras cirugías de hombro, incluida la bursitis y la rotura parcial). Si puntúa, el drop arm, el signo de retraso en RE y el cluster B no suman aparte.
+6. Rotura completa con los tres positivos: 50 de 153 roturas completas frente a 4 de 195 controles (348 operados con los tres test hechos) → LR+ 15,57 (con dos de tres, LR+ 3,57). La combinación sale de una regresión logística en la misma muestra, sin grupo de validación (en Litaker, la LR bajó de 9,84 a 5,0 al validarla), y Hermans 2013 clasifica el estudio como de nivel IV. Población quirúrgica (controles: otras cirugías de hombro, incluida la bursitis y la rotura parcial).
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -2978,7 +3010,7 @@ Citada como:
 | Hombro | h3 · Rotura del Manguito Rotador | Test «External Rotation Lag Sign» | 4b · cita bajo el test | 4 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» | 4b · cita bajo el test | 5 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Drop Arm Test» | 4b · cita bajo el test | 3 |
-| Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster A, confirmar: arco doloroso + drop arm + debilidad en RE, los tres positivos» (en `criterio`) | 4b · mención en el texto | 6 |
+| Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster A, confirmar: arco doloroso + drop arm + debilidad en RE, los tres positivos» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
 
 ### Hermena y Slane 2025
 
@@ -3020,6 +3052,32 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
+
+### Hertel 1996
+
+Autores: Hertel, Ballmer, Lambert y Gerber  
+Título: *Lag signs in the diagnosis of rotator cuff rupture*  
+Publicación: J Shoulder Elbow Surg 5(4):307–313  
+DOI: 10.1016/s1058-2746(96)80058-9  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Descripción original de los signos de retraso en rotación externa e interna y del drop sign: 100 pacientes consecutivos con pinzamiento, operados. «¿Por qué?» de los dos signos de retraso (h3).
+
+Citada como:
+
+1. Para rotura completa: LR+ 7,2 (IC 95 % 1,7–31), LR− 0,57 (0,35–0,92), un solo estudio (37 pacientes, ecografía). En otro estudio de bajo riesgo de sesgo recogido por Hegedus 2012 da LR+ 28 para la rotura completa del supraespinoso. Si el nervio supraescapular está paralizado, los test del supraespinoso y del infraespinoso salen positivos con el manguito intacto; distinguirlo exige más que la clínica y la atrofia (Lluch 2020, cap. 3.1, pp. 66–67).
+
+Técnica original: paciente sentado de espaldas; codo a 90°, hombro a 20° de elevación en el plano de la escápula y en rotación externa máxima menos 5° (para evitar el rebote elástico); se suelta la muñeca sujetando el codo y se mide el retraso a los 5° más cercanos. En la serie original, 5–10° en 16 de 17 roturas aisladas del supraespinoso y 10–15° en las 11 roturas del supraespinoso y el infraespinoso. Si la movilidad pasiva está reducida (p. ej., por contractura capsular), el retraso puede quedar oculto (falso negativo); si la rotación externa pasiva está aumentada, como en la rotura del subescapular, puede salir positivo sin rotura de los rotadores externos (Hertel 1996).
+2. Explora el subescapular. Para rotura completa: S 97 %, E 83 %, LR+ 5,6 (IC 95 % 2,6–12), LR− 0,04 (0,0–0,58), un solo estudio (37 pacientes, ecografía). Solo puntúa positivo: la LR− tan baja no se reproduce en otros estudios recogidos por Hegedus 2012 (LR− 0,64 para la rotura del subescapular, con bajo riesgo de sesgo; 0,79 para la rotura completa del supraespinoso), y Zhao 2024, que agrupa 4 estudios mezclando las dos roturas, da LR− 0,77.
+
+Técnica original: paciente sentado de espaldas; codo a 90°, hombro a 20° de elevación y 20° de extensión; se separa el dorso de la mano de la zona lumbar hasta casi la rotación interna completa y se suelta la muñeca sujetando el codo. En la serie original, retraso de 5° en 4 de 5 roturas parciales del subescapular y de 5–10° en las 8 completas; detectó roturas parciales que el lift-off no veía. Las mismas limitaciones del signo de retraso en rotación externa: una movilidad pasiva reducida puede ocultarlo (Hertel 1996).
+3. Hertel 1996 (J Shoulder Elbow Surg 5(4):307–313; pp. 308 y 311–313)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | h3 · Rotura del Manguito Rotador | Test «External Rotation Lag Sign» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Hombro | h3 · Rotura del Manguito Rotador | Test «External Rotation Lag Sign» («¿Por qué?») | 4b · razonamiento del test | 3 |
+| Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Hesmerg 2024
 
@@ -3410,13 +3468,13 @@ Nota: PDF aportado por el usuario. Guía APTA de capsulitis adhesiva (Lluch 2020
 
 Citada como:
 
-1. Positivo si la RE pasiva con el brazo al lado pierde más del 50 % respecto al lado sano o queda por debajo de 30°: es el criterio que se ha usado en los estudios para definir la capsulitis, junto a una pérdida de movilidad mayor del 25 % en al menos 2 planos (Kelley 2013, p. A9). La pérdida de movilidad pasiva en varios planos, sobre todo de RE con el brazo al lado y en distintos grados de abducción, es un hallazgo significativo para orientar el tratamiento (Kelley 2013, E). El consenso de 2025 asocia al hombro congelado una RE pasiva más limitada que las demás direcciones (100 %) y cada vez más limitada al aumentar la abducción (100 %). Lluch 2020: la RE está reducida de forma constante en neutro y a 90° de abducción, aunque la RI suele ser la más afectada cerca de 90°. Sin S ni E; no puntúa.
+1. Es el criterio que se ha usado en los estudios para definir la capsulitis, junto a una pérdida de movilidad mayor del 25 % en al menos 2 planos (Kelley 2013, p. A9). La pérdida de movilidad pasiva en varios planos, sobre todo de RE con el brazo al lado y en distintos grados de abducción, es un hallazgo significativo para orientar el tratamiento (Kelley 2013, E). El consenso de 2025 asocia al hombro congelado una RE pasiva más limitada que las demás direcciones (100 %) y cada vez más limitada al aumentar la abducción (100 %). Lluch 2020: la RE está reducida de forma constante en neutro y a 90° de abducción, aunque la RI suele ser la más afectada cerca de 90°. Sin S ni E.
 2. Kelley 2013 (J Orthop Sports Phys Ther 43(5):A1–A31, pp. A9 y A26) · Salamh 2025 (J Man Manip Ther 33(4):309–320, tabla 2) · Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 72
 3. Kelley 2013, J Orthop Sports Phys Ther 43(5):A1–A31 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Salamh 2025, J Man Manip Ther 33(4):309–320 (consenso Delphi de 14 expertos; % = acuerdo del panel; es opinión de expertos, no evidencia de eficacia)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» | 4b · cita bajo el test | 2 |
 | Hombro | h1 · Capsulitis Adhesiva | Pauta de tratamiento | 5 · cita de la pauta | 3 |
 
@@ -3453,6 +3511,27 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Kessel y Watson 1977
+
+Autores: Kessel y Watson  
+Título: *The painful arc syndrome. Clinical classification as a guide to management*  
+Publicación: J Bone Joint Surg Br 59(2):166–172  
+DOI: 10.1302/0301-620X.59B2.873977  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). 97 pacientes con arco doloroso; lesión localizada con anestésico local y, en una muestra, contraste. «¿Por qué?» del arco doloroso (h2).
+
+Citada como:
+
+1. Metaanálisis de 4 estudios (n = 756): LR+ 2,25 (IC 1,24–4,08), LR− 0,62 (IC 0,37–1,03), modelo bivariante. Un metaanálisis posterior (Zhao 2024, 6 estudios, bivariante) da LR+ 1,57 (1,07–2,31), LR− 0,63, pero su tabla 2×2 de Park 2005 suma 718 pacientes de un estudio de 552: se mantiene la cifra de Hegedus.
+
+En 97 pacientes con arco doloroso, con la lesión localizada por anestésico local (y contraste en una muestra), la lesión estaba en tercios aproximados en el manguito posterior, en el subescapular y en el supraespinoso, este casi siempre con la acromioclavicular degenerada: el arco no señala un tendón concreto. En el tipo posterior el dolor aumentaba con la rotación interna, y en el anterior con la rotación externa (Kessel y Watson 1977).
+2. Kessel y Watson 1977 (J Bone Joint Surg Br 59(2):166–172; fig. 1 y tabla I)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» («¿Por qué?») | 4b · razonamiento del test | 2 |
 
 ### Khalil 2025
 
@@ -3667,16 +3746,16 @@ Nota: Texto completo leído en PMC (efetch, 2026-10). Lo cita Lluch 2020 (cap. 3
 
 Citada como:
 
-1. Brazo a 90° de flexión, aducción horizontal pasiva cruzando el cuerpo. Positivo si duele en la parte superior del hombro, cerca de la AC. Cuenta como hallazgo. En un estudio retrospectivo de casos y controles da S 77 % (27 de 35) y E 79 % (410 de 518), de las que saldrían LR+ 3,7 y LR− 0,29; pero los casos se definieron por dolor a la palpación de la AC e infiltración positiva, y los controles eran otras cirugías de hombro. En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 64 %, E 26 %, LR+ 0,86, LR− 1,39: no discrimina. La revisión de Krill 2018 deja fuera el primero por ser de nivel III. Lluch 2020 (cap. 3.1, p. 61) dice «S >67 %». S y E solo aquí, para que no se recalcule la LR.
+1. En un estudio retrospectivo de casos y controles da S 77 % (27 de 35) y E 79 % (410 de 518), de las que saldrían LR+ 3,7 y LR− 0,29; pero los casos se definieron por dolor a la palpación de la AC e infiltración positiva, y los controles eran otras cirugías de hombro. En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 64 %, E 26 %, LR+ 0,86, LR− 1,39: no discrimina. La revisión de Krill 2018 deja fuera el primero por ser de nivel III. Lluch 2020 (cap. 3.1, p. 61) dice «S >67 %».
 2. Chronopoulos 2004 (Am J Sports Med 32:655–661, tabla 3; 35 lesiones AC crónicas aisladas frente a 580 controles quirúrgicos) · Cadogan 2013 (BMC Musculoskelet Disord 14:156, tabla 4) · Krill 2018 (Phys Sportsmed 46:98–104, revisión sistemática; tabla 3)
-3. Brazo a 90° de flexión y 10° de aducción; resistir un empuje hacia abajo con el pulgar hacia abajo y después hacia arriba. Positivo si el dolor está en la AC con el pulgar abajo y baja o desaparece con el pulgar arriba; dolor en otro sitio = negativo. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
+3. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
 4. Chronopoulos 2004 (Am J Sports Med 32:655–661, tabla 3) · Walton 2004 (J Bone Joint Surg Am) · Cadogan 2013 (BMC Musculoskelet Disord 14:156, tabla 4) · Krill 2018 (Phys Sportsmed 46:98–104, revisión sistemática; tablas 3 y 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» | 4b · cita bajo el test | 2 |
-| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `criterio`) | 4b · mención en el texto | 3 |
+| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» | 4b · cita bajo el test | 4 |
 
 ### Kuijper 2009
@@ -4019,30 +4098,34 @@ Nota: Base de las guías clínicas de cada región, de las que son extracto las 
 Citada como:
 
 1. Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 73
-2. Positivo si la RE pasiva con el brazo al lado pierde más del 50 % respecto al lado sano o queda por debajo de 30°: es el criterio que se ha usado en los estudios para definir la capsulitis, junto a una pérdida de movilidad mayor del 25 % en al menos 2 planos (Kelley 2013, p. A9). La pérdida de movilidad pasiva en varios planos, sobre todo de RE con el brazo al lado y en distintos grados de abducción, es un hallazgo significativo para orientar el tratamiento (Kelley 2013, E). El consenso de 2025 asocia al hombro congelado una RE pasiva más limitada que las demás direcciones (100 %) y cada vez más limitada al aumentar la abducción (100 %). Lluch 2020: la RE está reducida de forma constante en neutro y a 90° de abducción, aunque la RI suele ser la más afectada cerca de 90°. Sin S ni E; no puntúa.
+2. Es el criterio que se ha usado en los estudios para definir la capsulitis, junto a una pérdida de movilidad mayor del 25 % en al menos 2 planos (Kelley 2013, p. A9). La pérdida de movilidad pasiva en varios planos, sobre todo de RE con el brazo al lado y en distintos grados de abducción, es un hallazgo significativo para orientar el tratamiento (Kelley 2013, E). El consenso de 2025 asocia al hombro congelado una RE pasiva más limitada que las demás direcciones (100 %) y cada vez más limitada al aumentar la abducción (100 %). Lluch 2020: la RE está reducida de forma constante en neutro y a 90° de abducción, aunque la RI suele ser la más afectada cerca de 90°. Sin S ni E.
 3. Kelley 2013 (J Orthop Sports Phys Ther 43(5):A1–A31, pp. A9 y A26) · Salamh 2025 (J Man Manip Ther 33(4):309–320, tabla 2) · Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 72
 4. Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 72–73
 5. Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 71
 6. Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 69–73
-7. Elevación pasiva en el plano escapular con rotación interna. Combinar test para el SAPS apenas mejora la precisión (Lluch 2020, cap. 3.1, p. 54). Metaanálisis de 7 estudios (n = 946): LR+ 1,79 (IC 1,24–2,58), LR− 0,47 (IC 0,39–0,56), modelo bivariante. Sirve para descartar; un positivo es solo un hallazgo. Zhao 2024 (7 estudios, bivariante) da LR+ 1,54 (1,09–2,18), LR− 0,47 (0,41–0,54).
+7. Combinar test para el SAPS apenas mejora la precisión (Lluch 2020, cap. 3.1, p. 54). Metaanálisis de 7 estudios (n = 946): LR+ 1,79 (IC 1,24–2,58), LR− 0,47 (IC 0,39–0,56), modelo bivariante. Zhao 2024 (7 estudios, bivariante) da LR+ 1,54 (1,09–2,18), LR− 0,47 (0,41–0,54).
+
+En cadáver (8 hombros), la presión bajo el ligamento coracoacromial al elevar fue mayor con rotación interna que en rotación neutra o externa, y la del acromion, mayor que en rotación externa (Yamamoto 2009). En RM abierta con 8 voluntarios sanos, en la posición de Neer el supraespinoso contactó con el glenoides posterosuperior en todos (Pappas 2006).
 8. Lluch 2020, cap. 3.1 (Struyf), p. 54
 9. Lluch 2020, cap. 3.1 (Struyf), pp. 53–54
-10. Imposibilidad de mantener la rotación externa pasivamente colocada. Para rotura completa: LR+ 7,2 (IC 95 % 1,7–31), LR− 0,57 (0,35–0,92), un solo estudio (37 pacientes, ecografía); un negativo no descarta. En otro estudio de bajo riesgo de sesgo recogido por Hegedus 2012 da LR+ 28 para la rotura completa del supraespinoso. Si el nervio supraescapular está paralizado, los test del supraespinoso y del infraespinoso salen positivos con el manguito intacto; distinguirlo exige más que la clínica y la atrofia (Lluch 2020, cap. 3.1, pp. 66–67).
+10. Para rotura completa: LR+ 7,2 (IC 95 % 1,7–31), LR− 0,57 (0,35–0,92), un solo estudio (37 pacientes, ecografía). En otro estudio de bajo riesgo de sesgo recogido por Hegedus 2012 da LR+ 28 para la rotura completa del supraespinoso. Si el nervio supraescapular está paralizado, los test del supraespinoso y del infraespinoso salen positivos con el manguito intacto; distinguirlo exige más que la clínica y la atrofia (Lluch 2020, cap. 3.1, pp. 66–67).
+
+Técnica original: paciente sentado de espaldas; codo a 90°, hombro a 20° de elevación en el plano de la escápula y en rotación externa máxima menos 5° (para evitar el rebote elástico); se suelta la muñeca sujetando el codo y se mide el retraso a los 5° más cercanos. En la serie original, 5–10° en 16 de 17 roturas aisladas del supraespinoso y 10–15° en las 11 roturas del supraespinoso y el infraespinoso. Si la movilidad pasiva está reducida (p. ej., por contractura capsular), el retraso puede quedar oculto (falso negativo); si la rotación externa pasiva está aumentada, como en la rotura del subescapular, puede salir positivo sin rotura de los rotadores externos (Hertel 1996).
 11. Lluch 2020, cap. 3.1 (Struyf), p. 66
-12. Puntuación: debilidad en RE 2 puntos + edad ≥65 años 2 + dolor nocturno 1; positivo con ≥4, así que basta con debilidad en RE y edad ≥65 (el dolor nocturno no hace falta). Debilidad en RE: brazos junto al cuerpo, codos a 90°, pulgares arriba y 20° de rotación interna; resistir el empuje hacia dentro. Dolor nocturno: se duerme, pero el dolor le despierta. LR+ 9,8 en el grupo de derivación (43 de 131 frente a 2 de 60); en el de validación baja a 5,0 (52 de 146 frente a 5 de 70, calculada de la tabla 4): se usa esta, como dice la tarjeta. Lluch 2020 (cap. 3.1, p. 66) da LR 9,84 con los tres positivos: es la cifra del grupo de derivación. Rotura parcial o completa por artrografía, en una consulta de cirugía de hombro. No publica LR−.
+12. LR+ 9,8 en el grupo de derivación (43 de 131 frente a 2 de 60); en el de validación baja a 5,0 (52 de 146 frente a 5 de 70, calculada de la tabla 4): se usa esta, como dice la tarjeta. Lluch 2020 (cap. 3.1, p. 66) da LR 9,84 con los tres positivos: es la cifra del grupo de derivación. Rotura parcial o completa por artrografía, en una consulta de cirugía de hombro. No publica LR−.
 13. Lluch 2020, cap. 3.1 (Struyf), pp. 66–67
 14. Lluch 2020, cap. 3.1 (Struyf), pp. 58–59
 15. Lluch 2020, cap. 3.1 (Struyf), p. 59
-16. Flexión a 90°, aducción horizontal 10°, rotación interna (pulgar abajo) — resistencia. Luego igual con rotación externa. Positivo: dolor que desaparece o disminuye en supinación. Lluch 2020 (cap. 3.1, p. 63): ningún hallazgo físico es específico; sirve para sostener la hipótesis, no para confirmarla. Metaanálisis de 6 estudios (n = 782), sin el estudio original de O’Brien, que distorsionaba el resultado: S 0,67, E 0,37, LR+ 1,06 (IC 0,90–1,25), LR− 0,89 (IC 0,67–1,20). No puntúa: antes multiplicaba por el extremo bajo de «3–50», sin fuente.
+16. Lluch 2020 (cap. 3.1, p. 63): ningún hallazgo físico es específico; sirve para sostener la hipótesis, no para confirmarla. Metaanálisis de 6 estudios (n = 782), sin el estudio original de O’Brien, que distorsionaba el resultado: S 0,67, E 0,37, LR+ 1,06 (IC 0,90–1,25), LR− 0,89 (IC 0,67–1,20).
 17. Lluch 2020, cap. 3.1 (Struyf), pp. 63–64
-18. Reproducción del dolor de hombro con extensión + inclinación lateral ipsilateral + compresión axial. En el dolor de hombro cervicogénico el dolor se reproduce con las pruebas de la columna cervical y la movilidad pasiva glenohumeral no está limitada, lo que lo distingue del hombro congelado (Lluch 2020, tabla 2). El Spurling se ha estudiado para la radiculopatía cervical (S 0,50, E 0,86–0,93; revisión de Rubinstein recogida por Blanpied 2017), no para el dolor referido al hombro: aquí no puntúa.
+18. En el dolor de hombro cervicogénico el dolor se reproduce con las pruebas de la columna cervical y la movilidad pasiva glenohumeral no está limitada, lo que lo distingue del hombro congelado (Lluch 2020, tabla 2). El Spurling se ha estudiado para la radiculopatía cervical (S 0,50, E 0,86–0,93; revisión de Rubinstein recogida por Blanpied 2017), no para el dolor referido al hombro.
 19. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A19)
-20. PROM glenohumeral preservado: diferencia el origen cervical del capsular primario. En la tabla de diagnóstico diferencial de Lluch 2020, el dolor de hombro cervicogénico no restringe la movilidad pasiva glenohumeral, mientras que el hombro congelado y la luxación bloqueada restringen la activa y la pasiva. Sin S ni E; no puntúa.
+20. En la tabla de diagnóstico diferencial de Lluch 2020, el dolor de hombro cervicogénico no restringe la movilidad pasiva glenohumeral, mientras que el hombro congelado y la luxación bloqueada restringen la activa y la pasiva. Sin S ni E.
 21. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
-22. Brazo a 90° de flexión, aducción horizontal pasiva cruzando el cuerpo. Positivo si duele en la parte superior del hombro, cerca de la AC. Cuenta como hallazgo. En un estudio retrospectivo de casos y controles da S 77 % (27 de 35) y E 79 % (410 de 518), de las que saldrían LR+ 3,7 y LR− 0,29; pero los casos se definieron por dolor a la palpación de la AC e infiltración positiva, y los controles eran otras cirugías de hombro. En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 64 %, E 26 %, LR+ 0,86, LR− 1,39: no discrimina. La revisión de Krill 2018 deja fuera el primero por ser de nivel III. Lluch 2020 (cap. 3.1, p. 61) dice «S >67 %». S y E solo aquí, para que no se recalcule la LR.
-23. Brazo a 90° de flexión y 10° de aducción; resistir un empuje hacia abajo con el pulgar hacia abajo y después hacia arriba. Positivo si el dolor está en la AC con el pulgar abajo y baja o desaparece con el pulgar arriba; dolor en otro sitio = negativo. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
+22. En un estudio retrospectivo de casos y controles da S 77 % (27 de 35) y E 79 % (410 de 518), de las que saldrían LR+ 3,7 y LR− 0,29; pero los casos se definieron por dolor a la palpación de la AC e infiltración positiva, y los controles eran otras cirugías de hombro. En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 64 %, E 26 %, LR+ 0,86, LR− 1,39: no discrimina. La revisión de Krill 2018 deja fuera el primero por ser de nivel III. Lluch 2020 (cap. 3.1, p. 61) dice «S >67 %».
+23. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
 24. Lluch 2020, cap. 3.1 (Struyf), p. 61 · Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
-25. Asimetría visual en la elevación del brazo: ángulo inferior, borde medial o espina escapular prominentes. Las medidas de la movilidad escapular son poco fiables y de validez limitada, y no deben usarse para medir objetivamente la movilidad escapular dinámica (Desmeules 2025, recomendación 6, A). La discinesia se asocia al SAPS, pero no se ha demostrado que cause el dolor (Lluch 2020). Sin S ni E; no puntúa.
+25. Las medidas de la movilidad escapular son poco fiables y de validez limitada, y no deben usarse para medir objetivamente la movilidad escapular dinámica (Desmeules 2025, recomendación 6, A). La discinesia se asocia al SAPS, pero no se ha demostrado que cause el dolor (Lluch 2020). Sin S ni E.
 26. Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274, recomendación 6) · Lluch 2020, cap. 3.1 (Struyf), pp. 53–54
 27. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75; Tarjeta de consulta hombro (guía clínica de hombro, ap. 5)
 28. Lluch 2020, cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 170
@@ -4340,35 +4423,36 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | h1 · Capsulitis Adhesiva | Test «Abducción pasiva glenohumeral <80°» | 4b · cita bajo el test | 1 |
-| Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» (en `criterio`) | 4b · mención en el texto | 2 |
+| Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» | 4b · cita bajo el test | 3 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Restricción equivalente activa y pasiva (criterio de Bunker)» | 4b · cita bajo el test | 4 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Test del dolor en la coracoides» | 4b · cita bajo el test | 1 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Identificadores clínicos de fase precoz (Walmsley)» | 4b · cita bajo el test | 5 |
 | Hombro | h1 · Capsulitis Adhesiva | Pronóstico | 5 · cita del pronóstico | 6 |
-| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» (en `criterio`) | 4b · mención en el texto | 7 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» (en `razonamiento.detalle`) | 4b · mención en el texto | 7 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Regla clínica de SAPS» | 4b · cita bajo el test | 8 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Pronóstico | 5 · cita del pronóstico | 9 |
-| Hombro | h3 · Rotura del Manguito Rotador | Test «External Rotation Lag Sign» (en `criterio`) | 4b · mención en el texto | 10 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Resistencia a Rotación Externa» («¿Por qué?») | 4b · razonamiento del test | 8 |
+| Hombro | h3 · Rotura del Manguito Rotador | Test «External Rotation Lag Sign» (en `razonamiento.detalle`) | 4b · mención en el texto | 10 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Inspección» | 4b · cita bajo el test | 11 |
-| Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster B: debilidad en RE + edad ≥65 (puntuación de Litaker ≥4)» (en `criterio`) | 4b · mención en el texto | 12 |
+| Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster B: debilidad en RE + edad ≥65 (puntuación de Litaker ≥4)» (en `razonamiento.detalle`) | 4b · mención en el texto | 12 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Signo de Hornblower» | 4b · cita bajo el test | 11 |
 | Hombro | h3 · Rotura del Manguito Rotador | Pronóstico | 5 · cita del pronóstico | 13 |
 | Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Anterior: aprensión, recolocación y sorpresa en conjunto» | 4b · cita bajo el test | 14 |
 | Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Posterior: Jerk, Kim y signo de pinzamiento posterior agrupados» | 4b · cita bajo el test | 15 |
 | Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Inestabilidad multidireccional: surco + tests en una dirección» | 4b · cita bajo el test | 14 |
 | Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Pronóstico | 5 · cita del pronóstico | 14 |
-| Hombro | h5 · Lesión Labral Superior (SLAP) | Test «Test de O'Brien (Active Compression)» (en `criterio`) | 4b · mención en el texto | 16 |
+| Hombro | h5 · Lesión Labral Superior (SLAP) | Test «Test de O'Brien (Active Compression)» (en `razonamiento.detalle`) | 4b · mención en el texto | 16 |
 | Hombro | h5 · Lesión Labral Superior (SLAP) | Pronóstico | 5 · cita del pronóstico | 17 |
-| Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» (en `criterio`) | 4b · mención en el texto | 18 |
+| Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» (en `razonamiento.detalle`) | 4b · mención en el texto | 18 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» | 4b · cita bajo el test | 19 |
-| Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Movilidad Glenohumeral Pasiva (PROM)» (en `criterio`) | 4b · mención en el texto | 20 |
+| Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Movilidad Glenohumeral Pasiva (PROM)» (en `razonamiento.detalle`) | 4b · mención en el texto | 20 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Movilidad Glenohumeral Pasiva (PROM)» | 4b · cita bajo el test | 21 |
-| Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» (en `criterio`) | 4b · mención en el texto | 22 |
+| Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» (en `razonamiento.detalle`) | 4b · mención en el texto | 22 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Movilidad pasiva sin restricción; posible escalón» | 4b · cita bajo el test | 21 |
-| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `criterio`) | 4b · mención en el texto | 23 |
+| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `razonamiento.detalle`) | 4b · mención en el texto | 23 |
 | Hombro | h7 · Artropatía Acromioclavicular | Pronóstico | 5 · cita del pronóstico | 24 |
-| Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» (en `criterio`) | 4b · mención en el texto | 25 |
+| Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» (en `razonamiento.detalle`) | 4b · mención en el texto | 25 |
 | Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» | 4b · cita bajo el test | 26 |
 | Hombro | h8 · Discinesia Escapular | Test «Test de Asistencia Escapular» | 4b · cita bajo el test | 9 |
 | Hombro | h10 · Artrosis Glenohumeral | Test «Mayor edad + crepitación con rigidez activa = pasiva» | 4b · cita bajo el test | 21 |
@@ -4488,7 +4572,7 @@ Citada como:
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Preferencia direccional» | 4b · cita bajo el test | 86 |
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Observación: espalda plana o shift lateral» | 4b · cita bajo el test | 87 |
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Pronóstico | 5 · cita del pronóstico | 88 |
-| Lumbar | lu7 · Dolor Lumbar Facetario | Test «PA unilateral dolorosa o con menos movilidad» | 4b · cita bajo el test | 89 |
+| Lumbar | lu7 · Dolor Lumbar Facetario | Test «PA (posteroanterior) unilateral dolorosa o con menos movilidad» | 4b · cita bajo el test | 89 |
 | Lumbar | lu7 · Dolor Lumbar Facetario | Test «Sin signos radiculares y sin alivio con repetidos» | 4b · cita bajo el test | 90 |
 | Lumbar | lu7 · Dolor Lumbar Facetario | Pronóstico | 5 · cita del pronóstico | 91 |
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «No centraliza con movimientos repetidos» | 4b · cita bajo el test | 92 |
@@ -5931,6 +6015,32 @@ Citada como:
 | Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 | Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 
+### Pappas 2006
+
+Autores: Pappas, Blemker, Beaulieu, McAdams, Whalen y Gold  
+Título: *In vivo anatomy of the Neer and Hawkins sign positions for shoulder impingement*  
+Publicación: J Shoulder Elbow Surg 15(1):40–49  
+DOI: 10.1016/j.jse.2005.04.007  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). RM abierta en 8 voluntarios sanos en las posiciones de Neer y Hawkins. Choca con Yamamoto 2009 (mismo nivel, posterior) en qué tendón contacta con el arco en cada posición: para ese dato se cita Yamamoto 2009; de Pappas, el contacto con el glenoides. «¿Por qué?» de Hawkins y Neer (h2).
+
+Citada como:
+
+1. Metaanálisis de 7 estudios (n = 944): LR+ 1,84 (IC 1,49–2,26), LR− 0,35 (IC 0,27–0,46), modelo bivariante. Zhao 2024 (8 estudios, bivariante, con los errores de extracción del arco doloroso) da LR+ 1,64 (1,22–2,19), LR− 0,53 (0,39–0,71).
+
+En cadáver (8 hombros, presión subacromial medida), el contacto del lado del húmero en la posición de Hawkins fue el subescapular sobre el troquín, y en la de Neer el supraespinoso sobre el troquíter: los dos tests no reproducen el mismo mecanismo (Yamamoto 2009). En RM abierta con 8 voluntarios sanos, en la posición de Hawkins el supraespinoso contactó con el glenoides posterosuperior y el subescapular con el glenoides anterior en todos (Pappas 2006).
+2. Combinar test para el SAPS apenas mejora la precisión (Lluch 2020, cap. 3.1, p. 54). Metaanálisis de 7 estudios (n = 946): LR+ 1,79 (IC 1,24–2,58), LR− 0,47 (IC 0,39–0,56), modelo bivariante. Zhao 2024 (7 estudios, bivariante) da LR+ 1,54 (1,09–2,18), LR− 0,47 (0,41–0,54).
+
+En cadáver (8 hombros), la presión bajo el ligamento coracoacromial al elevar fue mayor con rotación interna que en rotación neutra o externa, y la del acromion, mayor que en rotación externa (Yamamoto 2009). En RM abierta con 8 voluntarios sanos, en la posición de Neer el supraespinoso contactó con el glenoides posterosuperior en todos (Pappas 2006).
+3. Pappas 2006 (J Shoulder Elbow Surg 15(1):40–49; RM abierta en 8 voluntarios sanos)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Hawkins-Kennedy» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Hawkins-Kennedy» («¿Por qué?») | 4b · razonamiento del test | 3 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
 ### Paquin 2022
 
 Publicación: Arch Physiother 12:26  
@@ -5953,12 +6063,14 @@ DOI: 10.2106/jbjs.d.02335
 
 Citada como:
 
-1. Dolor durante la elevación activa entre 60° y 120°. Metaanálisis de 4 estudios (n = 756): LR+ 2,25 (IC 1,24–4,08), LR− 0,62 (IC 0,37–1,03), modelo bivariante. Sirve algo para confirmar; un negativo es solo un hallazgo. Un metaanálisis posterior (Zhao 2024, 6 estudios, bivariante) da LR+ 1,57 (1,07–2,31), LR− 0,63, pero su tabla 2×2 de Park 2005 suma 718 pacientes de un estudio de 552: se mantiene la cifra de Hegedus.
+1. Metaanálisis de 4 estudios (n = 756): LR+ 2,25 (IC 1,24–4,08), LR− 0,62 (IC 0,37–1,03), modelo bivariante. Un metaanálisis posterior (Zhao 2024, 6 estudios, bivariante) da LR+ 1,57 (1,07–2,31), LR− 0,63, pero su tabla 2×2 de Park 2005 suma 718 pacientes de un estudio de 552: se mantiene la cifra de Hegedus.
+
+En 97 pacientes con arco doloroso, con la lesión localizada por anestésico local (y contraste en una muestra), la lesión estaba en tercios aproximados en el manguito posterior, en el subescapular y en el supraespinoso, este casi siempre con la acromioclavicular degenerada: el arco no señala un tendón concreto. En el tipo posterior el dolor aumentaba con la rotación interna, y en el anterior con la rotación externa (Kessel y Watson 1977).
 2. Park 2005 (J Bone Joint Surg Am; n = 552 operados con artroscopia, 215 roturas completas; tabla V)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» (en `criterio`) | 4b · mención en el texto | 1 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster A, confirmar: arco doloroso + drop arm + debilidad en RE, los tres positivos» | 4b · cita bajo el test | 2 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster A, descartar: arco doloroso, drop arm y debilidad en RE, los tres negativos (si se cumple, marcar «Negativo»)» | 4b · cita bajo el test | 2 |
 
@@ -7004,6 +7116,32 @@ Citada como:
 | Rodilla | ro2 · Lesión Meniscal | Test «Sensibilidad a la palpación de la línea articular» (en `criterio`) | 4b · mención en el texto | 2 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» | 4b · cita bajo el test | 3 |
 
+### Speer 1994
+
+Autores: Speer, Hannafin, Altchek y Warren  
+Título: *An evaluation of the shoulder relocation test*  
+Publicación: Am J Sports Med 22(2):177–183  
+DOI: 10.1177/036354659402200205  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). 100 pacientes operados; aprehensión y dolor valorados por separado, la aprehensión solo si el paciente la confirmaba de palabra. «¿Por qué?» de la aprehensión y la recolocación (h4).
+
+Citada como:
+
+1. Metaanálisis de 2 estudios (n = 409; modelo univariante de efectos aleatorios): LR+ 17,21 (IC 10,02–29,55), LR− 0,39 (IC 0,22–0,68).
+
+En 100 operados (Speer 1994), solo los pacientes con inestabilidad anterior refirieron aprehensión, pero no todos: el 63 % en 90° de abducción y 90° de rotación externa, y el 74 % al empujar además la cabeza hacia delante. Con una luxación completa previa la refirieron muchos más que sin ella (89 % frente a 26 % en 90°/90°): sin luxación previa, muchos refieren dolor en lugar de aprehensión. El dolor en esa posición apareció en el 82 % de los pacientes del manguito. Speer contó como aprehensión solo la que el paciente confirmaba de palabra, no el gesto.
+2. Metaanálisis de 3 estudios (n = 509; modelo univariante de efectos aleatorios), con heterogeneidad significativa: S 64,6 %, E 90,2 %, LR+ 5,48 (IC 0,56–53,8), LR− 0,55 (IC 0,24–1,27). Los dos intervalos incluyen el 1.
+
+En 100 operados (Speer 1994), con el dolor como respuesta la recolocación fue positiva en el 54 % de las inestabilidades anteriores y en el 56 % del manguito; con la aprehensión, solo en las inestabilidades. Aplicaron la fuerza hacia atrás a la altura de la inserción del deltoides, no en la cara anterior del hombro, para que la presión de la mano no se confundiera con el dolor del hombro.
+3. Speer 1994 (Am J Sports Med 22(2):177–183; 100 operados, tabla 2 y discusión)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Test de Aprehensión» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Test de Recolocación (Jobe)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Test de Aprehensión» («¿Por qué?») | 4b · razonamiento del test | 3 |
+| Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Test «Test de Recolocación (Jobe)» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
 ### Stern 2026
 
 Autores: Stern, Bergman y Singh  
@@ -7400,14 +7538,14 @@ Citada como:
 
 1. Walton 2004 (J Bone Joint Surg Am; 38 con dolor localizado en la AC, 28 con respuesta a la infiltración; tabla I)
 2. Walton 2004 (J Bone Joint Surg Am; 38 con dolor localizado en la AC, 28 con respuesta a la infiltración; tablas I y IV)
-3. Brazo a 90° de flexión y 10° de aducción; resistir un empuje hacia abajo con el pulgar hacia abajo y después hacia arriba. Positivo si el dolor está en la AC con el pulgar abajo y baja o desaparece con el pulgar arriba; dolor en otro sitio = negativo. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
+3. Evidencia contradictoria, así que no puntúa: Chronopoulos 2004 (casos y controles, 17 casos y 308 controles quirúrgicos) da S 41 %, E 95 % (LR+ 8,2); Walton 2004 (prospectivo, referencia: infiltración de la AC, 28 casos y 10 controles) da S 16 %, E 90 % (LR+ 1,6). En atención primaria (Cadogan 2013, 153 pacientes consecutivos, bloqueo de la AC guiado por fluoroscopia) da S 14 %, E 92 %, LR+ 1,73 (0,53–5,15). Combinado con el Paxinos y hechos en serie (los dos positivos), la revisión de Krill 2018 (Walton 2004 y Cadogan 2013; deja fuera a Chronopoulos 2004 por ser de nivel III) da S 11 %, E 96 % y LR+ 2,71, la mejor de las combinaciones, y concluye que ninguna cambia más que poco la probabilidad; Lluch 2020 (cap. 3.1, p. 61) lo resume como «S y E >90 %», cifra que la revisión no respalda.
 4. Chronopoulos 2004 (Am J Sports Med 32:655–661, tabla 3) · Walton 2004 (J Bone Joint Surg Am) · Cadogan 2013 (BMC Musculoskelet Disord 14:156, tabla 4) · Krill 2018 (Phys Sportsmed 46:98–104, revisión sistemática; tablas 3 y 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Palpación directa de la articulación AC» | 4b · cita bajo el test | 1 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Paxinos + gammagrafía ósea combinados» | 4b · cita bajo el test | 2 |
-| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `criterio`) | 4b · mención en el texto | 3 |
+| Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» | 4b · cita bajo el test | 4 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Paxinos» | 4b · cita bajo el test | 2 |
 
@@ -7541,6 +7679,32 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
+### Yamamoto 2009
+
+Autores: Yamamoto, Muraki, Sperling, Steinmann, Itoi, Cofield y An  
+Título: *Impingement mechanisms of the Neer and Hawkins signs*  
+Publicación: J Shoulder Elbow Surg 18(6):942–947  
+DOI: 10.1016/j.jse.2009.02.012  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). 8 hombros de cadáver sin patología del manguito; presión subacromial con sensor. «¿Por qué?» de Hawkins y Neer (h2).
+
+Citada como:
+
+1. Metaanálisis de 7 estudios (n = 944): LR+ 1,84 (IC 1,49–2,26), LR− 0,35 (IC 0,27–0,46), modelo bivariante. Zhao 2024 (8 estudios, bivariante, con los errores de extracción del arco doloroso) da LR+ 1,64 (1,22–2,19), LR− 0,53 (0,39–0,71).
+
+En cadáver (8 hombros, presión subacromial medida), el contacto del lado del húmero en la posición de Hawkins fue el subescapular sobre el troquín, y en la de Neer el supraespinoso sobre el troquíter: los dos tests no reproducen el mismo mecanismo (Yamamoto 2009). En RM abierta con 8 voluntarios sanos, en la posición de Hawkins el supraespinoso contactó con el glenoides posterosuperior y el subescapular con el glenoides anterior en todos (Pappas 2006).
+2. Combinar test para el SAPS apenas mejora la precisión (Lluch 2020, cap. 3.1, p. 54). Metaanálisis de 7 estudios (n = 946): LR+ 1,79 (IC 1,24–2,58), LR− 0,47 (IC 0,39–0,56), modelo bivariante. Zhao 2024 (7 estudios, bivariante) da LR+ 1,54 (1,09–2,18), LR− 0,47 (0,41–0,54).
+
+En cadáver (8 hombros), la presión bajo el ligamento coracoacromial al elevar fue mayor con rotación interna que en rotación neutra o externa, y la del acromion, mayor que en rotación externa (Yamamoto 2009). En RM abierta con 8 voluntarios sanos, en la posición de Neer el supraespinoso contactó con el glenoides posterosuperior en todos (Pappas 2006).
+3. Yamamoto 2009 (J Shoulder Elbow Surg 18(6):942–947; 8 hombros de cadáver)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Hawkins-Kennedy» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Hawkins-Kennedy» («¿Por qué?») | 4b · razonamiento del test | 3 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
 ### Zabaglo 2024
 
 Autores: Zabaglo, Leslie y Sharman  
@@ -7623,23 +7787,31 @@ Nota: Segunda cifra del arco doloroso, el Hawkins y el Neer de h2.
 
 Citada como:
 
-1. Dolor durante la elevación activa entre 60° y 120°. Metaanálisis de 4 estudios (n = 756): LR+ 2,25 (IC 1,24–4,08), LR− 0,62 (IC 0,37–1,03), modelo bivariante. Sirve algo para confirmar; un negativo es solo un hallazgo. Un metaanálisis posterior (Zhao 2024, 6 estudios, bivariante) da LR+ 1,57 (1,07–2,31), LR− 0,63, pero su tabla 2×2 de Park 2005 suma 718 pacientes de un estudio de 552: se mantiene la cifra de Hegedus.
+1. Metaanálisis de 4 estudios (n = 756): LR+ 2,25 (IC 1,24–4,08), LR− 0,62 (IC 0,37–1,03), modelo bivariante. Un metaanálisis posterior (Zhao 2024, 6 estudios, bivariante) da LR+ 1,57 (1,07–2,31), LR− 0,63, pero su tabla 2×2 de Park 2005 suma 718 pacientes de un estudio de 552: se mantiene la cifra de Hegedus.
+
+En 97 pacientes con arco doloroso, con la lesión localizada por anestésico local (y contraste en una muestra), la lesión estaba en tercios aproximados en el manguito posterior, en el subescapular y en el supraespinoso, este casi siempre con la acromioclavicular degenerada: el arco no señala un tendón concreto. En el tipo posterior el dolor aumentaba con la rotación interna, y en el anterior con la rotación externa (Kessel y Watson 1977).
 2. Hegedus 2012 (Br J Sports Med 46:964–978; metaanálisis HSROC/bivariante, tabla 3) · Zhao 2024 (BMC Musculoskelet Disord 25:1028, tabla 3 y fig. 3)
-3. Flexión de hombro a 90°, rotación interna forzada. Positivo si reproduce dolor subacromial. Metaanálisis de 7 estudios (n = 944): LR+ 1,84 (IC 1,49–2,26), LR− 0,35 (IC 0,27–0,46), modelo bivariante. Sirve para descartar; un positivo es solo un hallazgo. Zhao 2024 (8 estudios, bivariante, con los errores de extracción del arco doloroso) da LR+ 1,64 (1,22–2,19), LR− 0,53 (0,39–0,71).
+3. Metaanálisis de 7 estudios (n = 944): LR+ 1,84 (IC 1,49–2,26), LR− 0,35 (IC 0,27–0,46), modelo bivariante. Zhao 2024 (8 estudios, bivariante, con los errores de extracción del arco doloroso) da LR+ 1,64 (1,22–2,19), LR− 0,53 (0,39–0,71).
+
+En cadáver (8 hombros, presión subacromial medida), el contacto del lado del húmero en la posición de Hawkins fue el subescapular sobre el troquín, y en la de Neer el supraespinoso sobre el troquíter: los dos tests no reproducen el mismo mecanismo (Yamamoto 2009). En RM abierta con 8 voluntarios sanos, en la posición de Hawkins el supraespinoso contactó con el glenoides posterosuperior y el subescapular con el glenoides anterior en todos (Pappas 2006).
 4. Hegedus 2012 (Br J Sports Med 46:964–978; metaanálisis HSROC/bivariante, tabla 3) · Zhao 2024 (BMC Musculoskelet Disord 25:1028, tabla 3)
-5. Elevación pasiva en el plano escapular con rotación interna. Combinar test para el SAPS apenas mejora la precisión (Lluch 2020, cap. 3.1, p. 54). Metaanálisis de 7 estudios (n = 946): LR+ 1,79 (IC 1,24–2,58), LR− 0,47 (IC 0,39–0,56), modelo bivariante. Sirve para descartar; un positivo es solo un hallazgo. Zhao 2024 (7 estudios, bivariante) da LR+ 1,54 (1,09–2,18), LR− 0,47 (0,41–0,54).
-6. Mano en la espalda, codo a 90°: imposibilidad de mantenerla separada de la espalda. Explora el subescapular. Para rotura completa: S 97 %, E 83 %, LR+ 5,6 (IC 95 % 2,6–12), LR− 0,04 (0,0–0,58), un solo estudio (37 pacientes, ecografía). Solo puntúa positivo: la LR− tan baja no se reproduce en otros estudios recogidos por Hegedus 2012 (LR− 0,64 para la rotura del subescapular, con bajo riesgo de sesgo; 0,79 para la rotura completa del supraespinoso), y Zhao 2024, que agrupa 4 estudios mezclando las dos roturas, da LR− 0,77. Un negativo es solo un hallazgo. S y E solo aquí, para que no se recalcule la LR−.
+5. Combinar test para el SAPS apenas mejora la precisión (Lluch 2020, cap. 3.1, p. 54). Metaanálisis de 7 estudios (n = 946): LR+ 1,79 (IC 1,24–2,58), LR− 0,47 (IC 0,39–0,56), modelo bivariante. Zhao 2024 (7 estudios, bivariante) da LR+ 1,54 (1,09–2,18), LR− 0,47 (0,41–0,54).
+
+En cadáver (8 hombros), la presión bajo el ligamento coracoacromial al elevar fue mayor con rotación interna que en rotación neutra o externa, y la del acromion, mayor que en rotación externa (Yamamoto 2009). En RM abierta con 8 voluntarios sanos, en la posición de Neer el supraespinoso contactó con el glenoides posterosuperior en todos (Pappas 2006).
+6. Explora el subescapular. Para rotura completa: S 97 %, E 83 %, LR+ 5,6 (IC 95 % 2,6–12), LR− 0,04 (0,0–0,58), un solo estudio (37 pacientes, ecografía). Solo puntúa positivo: la LR− tan baja no se reproduce en otros estudios recogidos por Hegedus 2012 (LR− 0,64 para la rotura del subescapular, con bajo riesgo de sesgo; 0,79 para la rotura completa del supraespinoso), y Zhao 2024, que agrupa 4 estudios mezclando las dos roturas, da LR− 0,77.
+
+Técnica original: paciente sentado de espaldas; codo a 90°, hombro a 20° de elevación y 20° de extensión; se separa el dorso de la mano de la zona lumbar hasta casi la rotación interna completa y se suelta la muñeca sujetando el codo. En la serie original, retraso de 5° en 4 de 5 roturas parciales del subescapular y de 5–10° en las 8 completas; detectó roturas parciales que el lift-off no veía. Las mismas limitaciones del signo de retraso en rotación externa: una movilidad pasiva reducida puede ocultarlo (Hertel 1996).
 7. Hermans 2013 (JAMA 310:837–847, revisión sistemática; tabla 3, rotura completa) · Hegedus 2012 (Br J Sports Med 46:964–978, tablas 1 y 2) · Zhao 2024 (BMC Musculoskelet Disord 25:1028, tabla 2 y fig. 2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» (en `criterio`) | 4b · mención en el texto | 1 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» | 4b · cita bajo el test | 2 |
-| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Hawkins-Kennedy» (en `criterio`) | 4b · mención en el texto | 3 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Hawkins-Kennedy» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Hawkins-Kennedy» | 4b · cita bajo el test | 4 |
-| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» (en `criterio`) | 4b · mención en el texto | 5 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» | 4b · cita bajo el test | 4 |
-| Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» (en `criterio`) | 4b · mención en el texto | 6 |
+| Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» | 4b · cita bajo el test | 7 |
 
 ### Ziu 2023
