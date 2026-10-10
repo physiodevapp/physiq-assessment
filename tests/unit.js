@@ -1821,7 +1821,7 @@ test('datos ampliados: edad, fase 3, árbol, tests, criterios y pauta solo cuand
   assert.ok(!t.includes('6-12 semanas') && !/· Pronóstico/.test(t), 'sin la línea «Pronóstico»');
   for (const x of ['Signo comparable', 'Flexión lumbar', 'Empeorando', 'tolerancia al estrés físico Baja', 'Miedo al movimiento → Sí',
     'Dolor lumbar inflamatorio (2/4)', '¿SLR positivo? → SÍ — SLR <60°', 'Slump: positivo (parte del cluster «Cluster de Laslett»)',
-    'CPR Flynn: negativo (regla pronóstica', 'Pauta: Movilidad neural', 'Fuente: NICE NG59',
+    'Reglas pronósticas (predicen', '  · CPR Flynn: negativo (regla pronóstica, no diagnóstica)', 'Pauta: Movilidad neural', 'Fuente: NICE NG59',
     'Cuándo reconsiderar o derivar (contexto para el fisioterapeuta: no es plan ni explicación al paciente): Déficit progresivo', 'seguimiento: ODI', 'Derivar: sin tratamiento']) assert.ok(t.includes(x), `falta «${x}»`);
   const vacio = { edad: null, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [], arbol: [], tests: [], pautas: [] };
   assert.deepEqual(IN.bloquesAmpliados(vacio), [], 'sin datos, ningún bloque');
@@ -1898,6 +1898,18 @@ test('construirAmpliado: el gesto testigo no va y las hipótesis «Derivar» se 
     assert.ok(/^Gesto testigo/.test(HYPOTHESES.h2.tests[5].name), 'h2[5] sigue siendo el gesto testigo');
     assert.ok(!h2.items.some(i => /^Gesto testigo/.test(i.test)), 'el gesto testigo no va al prompt (no lleva valor)');
     assert.equal(h2.items.length, 1);
+  });
+});
+
+test('construirAmpliado: una derivación del árbol ya resuelta llega como antecedente, sin «derivación médica»', () => {
+  withState({ region: 'codo', treeAnswers: { co_step1: 'fractura', co_step2: 'si' }, activeHypotheses: ['co3'], derivacionResuelta: { co_step1: true } }, () => {
+    const l = IA.construirAmpliado().arbol[0];
+    assert.equal(l.respuesta, 'FRACTURA / LUXACIÓN');
+    assert.equal(l.tratada, true);
+    assert.match(IN.bloquesAmpliados({ arbol: [l] }).join('\n'), /FRACTURA \/ LUXACIÓN \(ya diagnosticada y tratada: es un antecedente\)/);
+  });
+  withState({ region: 'codo', treeAnswers: { co_step1: 'fractura' }, activeHypotheses: [], derivacionResuelta: {} }, () => {
+    assert.match(IA.construirAmpliado().arbol[0].respuesta, /derivación médica/, 'sin marcar, la derivación sigue');
   });
 });
 
@@ -2861,6 +2873,9 @@ console.log('\nfase 5 plegable');
       assert.ok(!/\bderivar\b[^.]*\b(no mejora|persisten|siguen siendo)/i.test(HYPOTHESES[id].dosis), `${id}: sin criterio de no mejoría en la pauta`);
       assert.match(HYPOTHESES[id].pronostico.derivacion, /[Dd]erivar[^.]*(no mejoran|persisten|siguen siendo intensos)/, `${id}: el criterio está en el pronóstico`);
     }
+    // co3: el criterio es de cirugía, no de derivación (Andrés, codo)
+    assert.ok(!/cirugía/.test(HYPOTHESES.co3.dosis), 'co3: sin criterios de cirugía en la pauta');
+    assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
   test('pauta: la fase 5 pone delante la rama del caso y el informe con IA recibe solo esa', () => {
@@ -3348,6 +3363,10 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-rosa-martin-hombro.json', 'rosa-dictado-1-informe.txt', 'rosa-dictado-1-transcripcion.txt', ['lado-otro', 'genero', 'fuentes']],
       ['valoracion-tomas-ibanez-cervical.json', 'tomas-dictado-1-informe.txt', 'tomas-dictado-1-transcripcion.txt', ['nrs-omitido', 'relleno', 'fuentes']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-1-ficha-breve.txt', 'elena-dictado-1-transcripcion.txt', ['pronostica', 'nrs-omitido', 'estructura', 'relleno']],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-2-ficha-breve.txt', 'elena-dictado-2-transcripcion.txt', ['pronostica', 'fuentes']],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-3-ficha-breve.txt', 'elena-dictado-3-transcripcion.txt', []],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-4-ficha-breve.txt', 'elena-dictado-4-transcripcion.txt', []],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-5-ficha-breve.txt', 'elena-dictado-5-transcripcion.txt', ['nrs-omitido']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -3379,6 +3398,23 @@ console.log('\nrevisión automática del informe con IA');
     const noct = 'No presenta dolor nocturno que le despierte. Toma un relajante muscular nocturno, que le permite dormir mejor.';
     assert.ok(!ids(noct).includes('discrepancia-separada'), 'un relajante nocturno no es dolor nocturno');
     assert.ok(ids('No presenta dolor nocturno. Refiere que el dolor por la noche le despierta dos veces.').includes('discrepancia-separada'));
+  });
+  test('prompt: las reglas pronósticas en un bloque propio, fuera de los tests de la hipótesis; NRS sin pistas de procedencia (ronda 24)', () => {
+    const a = { tests: [
+      { hipotesis: 'Disfunción segmentaria', items: [{ test: 'Regla de Flynn', resultado: 'positivo', pronostico: true }, { test: 'PAIVM', resultado: 'positivo' }] },
+      { hipotesis: 'Solo pronóstico', items: [{ test: 'Regla de Hicks', resultado: 'positivo', pronostico: true }] }] };
+    const bl = IN.bloquesAmpliados(a);
+    const tests = bl.find(x => x.startsWith('Tests de confirmación'));
+    const pron = bl.find(x => x.startsWith('Reglas pronósticas'));
+    assert.ok(tests.includes('PAIVM: positivo') && !/Flynn|Hicks|Solo pronóstico/.test(tests), 'ninguna regla pronóstica entre los tests');
+    assert.ok(pron.includes('· Regla de Flynn: positivo (regla pronóstica, no diagnóstica)') && pron.includes('· Regla de Hicks: positivo'));
+    assert.ok(IN.AVISO_PRONOSTICA.includes('«regla pronóstica, no diagnóstica»'), 'el aviso remite a la marca que llevan las líneas');
+    assert.ok(!/Disfunción segmentaria|Solo pronóstico/.test(pron), 'sin la hipótesis a la que pertenecía');
+    const solo = IN.bloquesAmpliados({ tests: [a.tests[1]] });
+    assert.ok(!solo.some(x => x.startsWith('Tests de confirmación')), 'sin tests diagnósticos, no hay bloque vacío');
+    assert.ok(!/valoración|consulta/.test(IN.NOTA_NRS), 'la nota del NRS no nombra de dónde sale la cifra');
+    assert.match(IN.NOTA_NRS, /no le pongas el de otra cifra/, 'ronda 25: el 7 de Elena‑4 tomó el momento «última semana» del 8');
+    assert.ok(ids('El dolor era de 7/10, aunque durante la consulta refirió un 4/10.').includes('fuentes'));
   });
   test('revisión: constantes clasificadas, motivo de la imagen añadido, «en caso de ausencia de mejoría» (decimosexta revisión)', () => {
     assert.ok(ids('Presenta signos vitales dentro de parámetros habituales, con una frecuencia cardíaca de 58 lpm.').includes('constantes'));

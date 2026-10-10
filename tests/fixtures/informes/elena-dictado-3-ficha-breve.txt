@@ -1,0 +1,21 @@
+INFORME DE FISIOTERAPIA
+Paciente: Elena Castro
+Edad: 41 años
+Sexo: Mujer
+Fecha: 10/10/2026
+Región valorada: Lumbar (derecha)
+
+PRESENTACIÓN CLÍNICA
+
+La paciente, de 41 años, acude por dolor en la zona lumbar derecha que inició hace diez días al recoger una caja del suelo en su trabajo como reponedora de supermercado, manifestándose de forma súbita. Refiere que el año pasado tuvo un episodio similar que se resolvió en una semana. Desde el inicio, el dolor ha ido mejorando progresivamente. En la valoración inicial registró una intensidad de 7/10, aunque al iniciar la consulta refiere encontrarse en 4/10; el dolor alcanza 8/10 al agacharse. El empeoramiento de los síntomas revierte en unos minutos. Refiere mayor molestia al levantarse, sin dolor nocturno que le despierte. Ha dejado de agacharse y de permanecer de pie durante periodos prolongados. Su médico de cabecera le prescribió relajante muscular, que le ayuda a dormir mejor, y le concedió una semana de baja laboral. Comenta además que a veces le molesta la rodilla derecha al subir escaleras. No refiere otras enfermedades importantes. Se trata de su primera consulta de fisioterapia por este problema.
+
+HALLAZGOS Y CODIFICACIÓN CIF
+
+En la exploración se identifica dolor en la región lumbar derecha (b28013) que aumenta con la extensión asociada a rotación hacia el lado del dolor, reproduciendo los síntomas con este movimiento comparable. La presión posteroanterior unilateral sobre L4-L5 derecha resulta dolorosa. La evaluación de la movilidad segmentaria lumbar mediante presiones accesorias intervertebrales pasivas revela hipomovilidad. La paciente presenta limitación funcional para inclinarse (d4105) y para permanecer de pie (d4154) de forma prolongada, así como para levantar objetos (d4300), lo que repercute en su desempeño laboral remunerado (d850). La regla de predicción clínica de Flynn, orientada a predecir la respuesta a la manipulación lumbar, resulta positiva al cumplir 4 de los 5 criterios. El cribado de banderas rojas no muestra hallazgos que sugieran patología grave de base. Se trata de una valoración inicial breve, quedando pendiente de completar el cribado sistémico detallado para los sistemas oncológico, urogenital, gastrointestinal, espondiloartropatías, vascular, infeccioso vertebral, endocrino-metabólico y hematológico, así como la cuantificación objetiva de la irritabilidad mediante matriz. Los hallazgos de la exploración refuerzan las hipótesis de trabajo recibidas: el patrón de dolor con la extensión y rotación homolateral y la respuesta dolorosa a la presión posteroanterior unilateral apoyan la hipótesis de dolor lumbar facetario, mientras que la hipomovilidad segmentaria lumbar constatada mediante presiones accesorias intervertebrales pasivas respalda la sospecha de disfunción segmentaria lumbosacra con déficit de movilidad.
+
+OBJETIVOS Y PLAN
+
+El objetivo principal es reducir el dolor lumbar derecho y recuperar la capacidad funcional para las actividades laborales y de la vida diaria, permitiendo retomar la flexión de tronco y la bipedestación prolongada sin limitación. Se propone un plan de tratamiento multimodal basado en movilización articular lumbar, con o sin thrust, dentro de un programa que incluya ejercicio terapéutico, según las recomendaciones de grado A para lumbalgia aguda. Se han indicado ejercicios de flexión en decúbito, 10 repeticiones cada dos horas, junto con caminatas de 20 minutos dos veces al día, con el criterio de dosificación de mantener el dolor por debajo de 5/10 durante la actividad y verificar que al día siguiente permanezca igual o mejor. Se recomienda evitar la carga de peso hasta la próxima sesión. En la siguiente sesión se iniciarán movilizaciones articulares lumbares. Se utilizará la escala de discapacidad de Oswestry o la escala numérica del dolor para el seguimiento de la evolución, con valoraciones cada 2 semanas durante el primer mes. Si no se observa mejoría significativa en 4 semanas, se coordinará con su médico para reconsiderar el abordaje terapéutico.
+
+—
+Informe generado con PhysiQ-Assessment el 10/10/2026 (redacción asistida por IA).
