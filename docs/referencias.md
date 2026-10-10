@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **332** referencias de literatura, con **1352** usos.
+- **332** referencias de literatura, con **1353** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **235** de 332 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -4372,6 +4372,7 @@ Técnica original: paciente sentado de espaldas; codo a 90°, hombro a 20° de e
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» (en `razonamiento.detalle`) | 4b · mención en el texto | 7 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Regla clínica de SAPS» | 4b · cita bajo el test | 8 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Pronóstico | 5 · cita del pronóstico | 9 |
+| Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Resistencia a Rotación Externa» («¿Por qué?») | 4b · razonamiento del test | 8 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «External Rotation Lag Sign» (en `razonamiento.detalle`) | 4b · mención en el texto | 10 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Inspección» | 4b · cita bajo el test | 11 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster B: debilidad en RE + edad ≥65 (puntuación de Litaker ≥4)» (en `razonamiento.detalle`) | 4b · mención en el texto | 12 |
