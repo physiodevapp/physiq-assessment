@@ -1069,8 +1069,19 @@ async function checkInformeNarrativo(browser, errors) {
   // Ficha breve: su propio límite y su propia última sección
   await page.click('#iaPlantilla .option-btn:has-text("Ficha breve")');
   await page.waitForFunction(() => !document.getElementById('iaGenerar').disabled);
+  // Mientras se genera, la línea de progreso dice qué tipo de informe es
+  // (el selector no está a la vista y el título de la tarjeta es común)
+  await page.evaluate(() => {
+    window._progresos = [];
+    new MutationObserver(() => {
+      const t = document.getElementById('iaProgresoTexto')?.textContent;
+      if (t) window._progresos.push(t);
+    }).observe(document.getElementById('informeIA'), { subtree: true, childList: true, characterData: true });
+  });
   await page.click('#iaGenerar');
   await page.waitForFunction(() => state.informeIA?.plantilla === 'breve');
+  r.progresoConTipo = await page.evaluate(() => window._progresos.length > 0 && window._progresos.every(t => t.startsWith('Ficha breve · '))
+    && document.querySelector('#informeIA .ia-titulo').textContent.trim() === '🎙 Informe con IA');
   const cuerpoFicha = Buffer.from(captura[3] || '', 'latin1').toString('utf8');
   r.fichaBreve = cuerpoFicha.includes('## OBJETIVOS Y PLAN') && /name="maxTokens"\r\n\r\n2500/.test(cuerpoFicha)
     && await page.evaluate(() => document.querySelector('#iaResultadoDet summary').textContent.includes('Ficha breve')

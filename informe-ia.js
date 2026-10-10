@@ -82,7 +82,7 @@ export function montarInformeIA(root) {
 function esqueleto() {
   return `
   <div class="card ia-card">
-    <div class="card-title ia-titulo">🎙 Informe narrativo <span class="ia-etiqueta">IA</span></div>
+    <div class="card-title ia-titulo">🎙 Informe con IA</div>
     <p class="ia-intro">Informe clínico narrativo (modelo CIF), como el de PhysiQ-Report, redactado a partir de los datos de esta valoración y, si lo añades, del audio de la sesión.</p>
     <div id="iaLicencia"></div>
     <div id="iaResultado"></div>
@@ -444,11 +444,15 @@ export function construirAmpliado() {
       const op = st.options.find(o => o.value === state.treeAnswers[st.id]);
       // Si lo que la respuesta «orienta a» ya está diagnosticado y tratado, que
       // el prompt lo sepa (si no, lo lee como una sospecha abierta)
-      const tratada = (op?.hypothesis || []).some(h => esTratada(h));
+      // Lo mismo con una derivación del árbol marcada «Ya diagnosticada y
+      // tratada» (opción `resoluble`, p. ej. codo co_step1): sin esto el prompt
+      // recibía «Sospecha de fractura o luxación: derivación médica» y la pedía
+      const resuelta = !!(op?.resoluble && state.derivacionResuelta?.[st.id]);
+      const tratada = resuelta || (op?.hypothesis || []).some(h => esTratada(h));
       // `iaPregunta` y textoOpcionIA() (lib/informe-narrativo.js): al prompt va
       // la conclusión de la opción, no su detalle (pistas, criterios, umbrales);
       // el NINGUNO de un paso de zona no va
-      const respuesta = op ? textoOpcionIA(op) : state.treeAnswers[st.id];
+      const respuesta = resuelta ? op.label.split(' — ')[0] : op ? textoOpcionIA(op) : state.treeAnswers[st.id];
       if (respuesta == null) return null;
       return { pregunta: st.iaPregunta || st.question, respuesta, ...(tratada ? { tratada: true } : {}) };
     })
@@ -531,7 +535,7 @@ function textoInforme() {
 // barra inferior de la fase 5 (compartirInformeIA).
 function iaCompartir() {
   registrarValoracionCompleta();
-  compartirTexto(textoInforme(), { titulo: 'Informe de fisioterapia — PhysiQ-Assessment', copiado: '✓ Informe narrativo copiado al portapapeles' });
+  compartirTexto(textoInforme(), { titulo: 'Informe de fisioterapia — PhysiQ-Assessment', copiado: '✓ Informe con IA copiado al portapapeles' });
 }
 export function compartirInformeIA() { if (state.informeIA?.texto) iaCompartir(); }
 
@@ -738,8 +742,14 @@ function pintarProgreso() {
   });
 }
 
+// Con el tipo delante: mientras se genera el selector no está a la vista y
+// el título de la tarjeta es el mismo para los dos tipos
 function textoProgreso() {
   if (!_gen) return '';
+  return `${esc((PLANTILLAS[_gen.plantilla] || PLANTILLAS.narrativo).nombre)} · ${faseProgreso()}`;
+}
+
+function faseProgreso() {
   if (_gen.fase === 'transcribiendo') return 'Transcribiendo el audio…';
   const n = contarPalabras(_gen.texto);
   if (!n) return 'Redactando el informe…';
@@ -820,7 +830,7 @@ async function iaGenerar() {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 300000);
   _error = null;
-  _gen = { texto: '', transcripcion: '', fase: conAudio ? 'transcribiendo' : 'redactando', ctrl, oculto: false, conAudio };
+  _gen = { texto: '', transcripcion: '', fase: conAudio ? 'transcribiendo' : 'redactando', ctrl, oculto: false, conAudio, plantilla };
   _vivoAbierto = false;
   pedirWakeLockGen();
   pintar();
@@ -863,7 +873,7 @@ async function iaGenerar() {
     if (det) det.open = false;
     _resultadoAbierto = false;
     _revAbierta = null;   // informe nuevo: la caja de puntos vuelve a su apertura por defecto
-    showToast('✓ Informe narrativo generado', 'success');
+    showToast('✓ Informe con IA generado', 'success');
   } catch (err) {
     if (err instanceof SinVoz) {
       // Se conserva el audio: se puede escuchar, quitar o reintentar.
