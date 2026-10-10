@@ -3350,6 +3350,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-1-ficha-breve.txt', 'elena-dictado-1-transcripcion.txt', ['pronostica', 'nrs-omitido', 'estructura', 'relleno']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-2-ficha-breve.txt', 'elena-dictado-2-transcripcion.txt', ['pronostica', 'fuentes']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-3-ficha-breve.txt', 'elena-dictado-3-transcripcion.txt', []],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-4-ficha-breve.txt', 'elena-dictado-4-transcripcion.txt', []],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -3396,6 +3397,7 @@ console.log('\nrevisión automática del informe con IA');
     const solo = IN.bloquesAmpliados({ tests: [a.tests[1]] });
     assert.ok(!solo.some(x => x.startsWith('Tests de confirmación')), 'sin tests diagnósticos, no hay bloque vacío');
     assert.ok(!/valoración|consulta/.test(IN.NOTA_NRS), 'la nota del NRS no nombra de dónde sale la cifra');
+    assert.match(IN.NOTA_NRS, /no le pongas el de otra cifra/, 'ronda 25: el 7 de Elena‑4 tomó el momento «última semana» del 8');
     assert.ok(ids('El dolor era de 7/10, aunque durante la consulta refirió un 4/10.').includes('fuentes'));
   });
   test('revisión: constantes clasificadas, motivo de la imagen añadido, «en caso de ausencia de mejoría» (decimosexta revisión)', () => {

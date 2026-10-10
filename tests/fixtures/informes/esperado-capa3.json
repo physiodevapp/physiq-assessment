@@ -720,6 +720,41 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "elena-dictado-4-ficha-breve.txt",
+      "valoracion": "valoracion-elena-castro-lumbar.json",
+      "transcripcion": "elena-dictado-4-transcripcion.txt",
+      "plantilla": "breve",
+      "errores": [
+        {
+          "id": "elena4-nrs-momento",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Pone al 7/10 de la fase 3 (sin momento) el de «la última semana», cuyo peor dolor fue 8/10",
+          "fragmentos": [
+            "en la última semana ha llegado a 7/10"
+          ]
+        },
+        {
+          "id": "elena4-episodio-una-version",
+          "tipo": "omision",
+          "nivel": "medio",
+          "descripcion": "Solo la versión del dictado (el año pasado tuvo algo parecido); la del formulario (primera vez: Sí) desaparece",
+          "claves": [
+            "primera vez"
+          ]
+        },
+        {
+          "id": "elena4-repetido",
+          "tipo": "repetido",
+          "nivel": "medio",
+          "descripcion": "La extensión con rotación y la PA dolorosa se repiten en Hallazgos",
+          "fragmentos": [
+            "La exploración confirma dolor en extensión con rotación hacia el lado sintomático y presión posteroanterior unilateral dolorosa"
+          ]
+        }
+      ]
     }
   ]
 }
