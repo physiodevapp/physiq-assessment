@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **328** referencias de literatura, con **1340** usos.
+- **332** referencias de literatura, con **1357** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **277** de 328 referencias del registro revisadas. Ver «Estado de revisión».
+- **328** de 332 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -46,57 +46,10 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 
 | Referencia | Afecta a | Usos | Última revisión |
 |---|---|---|---|
-| [O'Driscoll 2007](#odriscoll-2007) | puntuación 4b · texto | 2 | **sin revisar** |
-| [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) | puntuación 4b | 2 | **sin revisar** |
-| [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · texto | 18 | **sin revisar** |
-| [Park 2019](#park-2019) | puntuación 4b · test 4b sin puntuar | 2 | **sin revisar** |
-| [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | **sin revisar** |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 119 | **sin revisar** |
-| [Rinkel 2013](#rinkel-2013) | pauta | 2 | **sin revisar** |
-| [Biz 2019](#biz-2019) | pauta | 1 | **sin revisar** |
-| [Cascia 2019](#cascia-2019) | pauta | 1 | **sin revisar** |
-| [Lubiatowski 2020](#lubiatowski-2020) | pauta | 1 | **sin revisar** |
-| [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · texto | 3 | **sin revisar** |
-| [Siemensma 2023](#siemensma-2023) | pauta | 1 | **sin revisar** |
-| [Bateman 2025](#bateman-2025) | pauta | 1 | **sin revisar** |
-| [Caliandro 2025](#caliandro-2025) | pauta | 1 | **sin revisar** |
-| [Quzli 2025](#quzli-2025) | pauta | 1 | **sin revisar** |
-| [Wistow 2025](#wistow-2025) | pauta | 1 | **sin revisar** |
-| [See 2026](#see-2026) | pauta | 1 | **sin revisar** |
 | [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 89 | **sin revisar** |
-| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · texto | 4 | **sin revisar** |
-| [Dorf 2007](#dorf-2007) | test 4b sin puntuar · texto | 2 | **sin revisar** |
-| [Appelboam 2008](#appelboam-2008) | test 4b sin puntuar · razonamiento fase 2 · texto | 6 | **sin revisar** |
-| [Park 2008](#park-2008) | test 4b sin puntuar | 1 | **sin revisar** |
-| [Ochi 2011](#ochi-2011) | test 4b sin puntuar · texto | 2 | **sin revisar** |
-| [Ochi 2012](#ochi-2012) | test 4b sin puntuar · texto | 6 | **sin revisar** |
-| [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | **sin revisar** |
-| [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) | razonamiento fase 2 | 3 | **sin revisar** |
-| [NICE NG125](#nice-ng125) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG158](#nice-ng158) | razonamiento fase 2 · texto | 22 | **sin revisar** |
-| [NICE NG89](#nice-ng89) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Goebel 2018](#goebel-2018) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [Rhodes 2022](#rhodes-2022) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Adigun 2023](#adigun-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Chen 2023](#chen-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [King y Lowery 2023](#king-y-lowery-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Sevy 2023](#sevy-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Shahid 2023](#shahid-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Brotman 2024](#brotman-2024) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Fariduddin 2024](#fariduddin-2024) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Hantzidiamantis 2024](#hantzidiamantis-2024) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Patil 2024](#patil-2024) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Rout 2024](#rout-2024) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Vyas 2024](#vyas-2024) | razonamiento fase 2 | 3 | **sin revisar** |
-| [Zabaglo 2024](#zabaglo-2024) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Kaur 2025](#kaur-2025) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Khalil 2025](#khalil-2025) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Lleva 2025](#lleva-2025) | razonamiento fase 2 | 3 | **sin revisar** |
-| [Pangia 2025](#pangia-2025) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Denault y Launico 2026](#denault-y-launico-2026) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | 2026-10 · Sustituida por van der Windt 2010 (revisión Cochrane del mismo grupo, con Devillé como autor; PDF del usuario): SLR y SLR cruzado de lu3 pasan a sus cifras agrupadas con LR publicadas. Se menciona como dato anterior. |
@@ -110,6 +63,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Laslett 2005](#laslett-2005) | puntuación 4b · test 4b sin puntuar · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF releído entero (2026-10); tabla 2 (compresión LR+ 2,20, LR− 0,46; thigh thrust LR+ 2,80, LR− 0,18; LR publicadas, método score) y tablas 4–6 coinciden con las citas. Es un solo estudio de los creadores (48 pacientes no consecutivos, crónicos, 16 con bloqueo positivo). Agrupados en Han 2023 el thigh thrust (5 estudios) y la compresión (2) no llegan a LR+ 2 ni a LR− 0,5: los dos pasan a hallazgo en ca10 (decisión del usuario, 2026-10). Saueressig 2021 no la agrupa por ser la misma población que Laslett 2003. |
 | [Park 2005](#park-2005) | puntuación 4b · texto | 3 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla V: 50 de 153 roturas completas frente a 4 de 195 controles con los tres test positivos (LR+ 15,57) y 14 de 153 frente a 114 de 195 con los tres negativos (LR 0,16), en 348 operados con los tres test hechos. La combinación sale de una regresión logística en la misma muestra, sin validación; ninguno de los artículos que lo citan (Europe PMC) la valida. Hermans 2013 lo clasifica como nivel IV y Hanchard 2013 (Cochrane) lo deja pendiente de clasificar. |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | 2026-10 · Sin cambios: ya superada por Han 2023, que es la que da las cifras; solo se menciona como dato anterior. |
+| [O'Driscoll 2007](#odriscoll-2007) | puntuación 4b · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Tabla 1: hook test anormal en 33 de 33 roturas completas e intacto en 12 de 12 parciales, todas operadas; los 45 brazos sanos fueron un control aparte. Es una revisión retrospectiva del registro quirúrgico del creador del test (un solo cirujano). En co7 se corrige que la E sale de las roturas parciales, no del brazo sano, y pasa a contraste: el hook test puntúa ahora con Zwerus 2022. |
 | [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | 2026-10 · Sin cambios: PDF del usuario leído; S 0,56, E 0,91, LR+ 6,4 (2,7–15,2) y LR− 0,5 (0,3–0,8) de la combinación coinciden con la tabla 5 (un solo fisioterapeuta exploró a todos los pacientes). PubMed (exploración clínica del LCM de rodilla, revisiones sistemáticas desde 2008) no encuentra ningún estudio ni revisión posterior de precisión diagnóstica de la exploración. |
 | [Laslett 2008](#laslett-2008) | puntuación 4b · test 4b sin puntuar · texto | 3 | 2026-10 · Revisión narrativa, no un agrupado: PDF releído entero (2026-10). El S 91 % / E 78 % del cluster (E 87 % sin centralización; LR+ 4,16, LR− 0,12) lo toma de un solo estudio, su ref. 52 (Laslett 2003, Aust J Physiother). El cluster de ca10 pasa a las LR de Saueressig 2021 (decisión del usuario, 2026-10); Laslett 2008 queda citada para el contexto y la tabla 1. |
 | [Lequesne 2008](#lequesne-2008) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en el resumen y en la tabla 2 de Kinsella 2024. La E se midió frente a controles sin dolor de cadera (casos y controles), lo que la infla: la derotación externa resistida pasa a hallazgo. |
@@ -120,16 +74,20 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Cook 2011](#cook-2011) | puntuación 4b | 1 | 2026-10 · Sin cambios en las cifras: Cook 2019 (revisión sistemática, PDF del usuario) la incluye solo con sus ítems sueltos, sin el clúster, y le asigna riesgo de sesgo alto (QUADAS-2); no hay validación posterior del clúster. El aviso se añade a la cita. |
 | [Hegedus 2012](#hegedus-2012) | puntuación 4b · test 4b sin puntuar · texto | 14 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Las cifras de h2, h4 y h5 coinciden con su tabla 3. Pinzamiento con modelo HSROC/bivariante; aprehensión, recolocación y sorpresa con DerSimonian-Laird univariante (la aprehensión agrupa 2 estudios, n = 409, que por tamaño son Farber 2006 y Lo 2004, dos poblaciones distintas). El metaanálisis posterior de Zhao 2024 (bivariante, más estudios) da LR más bajas para el pinzamiento, pero tiene errores de extracción (la tabla 2×2 del arco doloroso de Park 2005 suma 718 pacientes de 552): se mantiene Hegedus y Zhao va como segunda cifra. Gismervik 2017 (efectos fijos, 2 estudios por test) y Hanchard 2013 (Cochrane, sin agrupar) no aportan nada mejor. |
 | [Apelby-Albrecht 2013](#apelby-albrecht-2013) | puntuación 4b | 1 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). 51 pacientes analizados de 58 reclutados (7 excluidos), referencia: neurocirujano con historia, exploración y RM de los 6 meses previos. Positivo de cada ULNT: síntomas reproducidos, cambio con diferenciación estructural y diferencia entre lados; combinación positiva si al menos 1 de 4. Tablas 4 y 5 coinciden con lo que extrae Thoomes 2026 (ULNT1 29/35 y 12/16; combinación 34/35 y 11/16). |
+| [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) | puntuación 4b · texto | 4 | 2026-10 · Sustituida en la puntuación por Zwerus 2022: PDF del usuario leído entero (2026-10). Tabla 3: hook test S 81 % (8 falsos negativos de 42) y E 100 %, PFP S 95 % (2 de 42; la tabla imprime «9») y E 100 %, de las que salen LR− 0,19 y 0,05. Solo 6 pacientes sin rotura completa, el método de confirmación dependía del resultado de los tests (cirugía si eran positivos, RM si negativos), se excluyó a 9 que no aceptaron confirmarlo y el cirujano no estaba ciego. Queda como contraste en co7. |
 | [Hermans 2013](#hermans-2013) | puntuación 4b · test 4b sin puntuar · texto | 7 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Las cifras de h2 y h3 coinciden con su tabla 3 (la tabla 2, citada antes, solo describe los test). Los signos de retraso salen de un solo estudio (Miller 2008, 37 pacientes, 46 hombros, ecografía); la RE resistida de otro (Salaffi 2010, 203, ecografía); el empty can, de 3 estudios con modelo univariante de efectos aleatorios. Clasifica Park 2005 y Litaker 2000 como nivel IV. El agrupado posterior de Zhao 2024 mezcla roturas del subescapular y del supraespinoso en el signo de retraso en RI. |
 | [Nunes 2013](#nunes-2013) | puntuación 4b | 1 | 2026-10 · Cita corregida (PDF del usuario): la revisión solo hizo metaanálisis del test de aprensión rotuliana; la cifra de la sentadilla (S 91 %, E 50 %, LR+ 1,8, LR− 0,2, tabla 3) es de un solo estudio, Cook 2010, que pasa a citarse. Mismas cifras, sin cambio de puntuación. PubMed (revisiones de tests clínicos de dolor femoropatelar desde 2013) no encuentra ninguna posterior. |
 | [Reiman 2014](#reiman-2014) | puntuación 4b · test 4b sin puntuar · texto | 6 | 2026-10 · Sin cambios: leído en PMC (2026-10). Las cifras de rotura salen de un solo estudio (Maffulli 1998), sin agrupar; las LR las calcula Reiman. Las LR de los tests de carga de Hutchison 2013 están calculadas de S y E redondeadas y sin IC (se dice en tp8). PubMed (2026-10): ninguna revisión posterior. |
 | [Smith 2015](#smith-2015) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Cifras actualizadas en ro2 (PDF del usuario, tabla 3): el metaanálisis es bivariante y publica LR, que antes no se usaban (se calculaban desde S y E): McMurray LR+ 3,2, LR− 0,52; interlínea LR+ 4,0, LR− 0,23. Con ellas el McMurray negativo deja de puntuar. Thessaly a 20° (S 75 %, E 87 %, I² 94 %) añadido como hallazgo. PubMed (metaanálisis de McMurray, interlínea y Thessaly desde 2015) no encuentra ninguno posterior; Rana 2026 solo agrupa la exploración compuesta. |
+| [Roedl 2016](#roedl-2016) | puntuación 4b · texto | 4 | 2026-10 · Añadida (antes se citaba como «Roedl», sin año, a través de Campbell 2020): PDF del usuario leído entero, con su fe de erratas (Radiology 280(1):328, que solo corrige que el estrés en valgo se aplicó a mano y no con el aparato Telos). Retrospectivo, 144 jugadores de béisbol consecutivos con dolor medial del codo y cirugía o artroscopia como referencia (de 257 con las dos pruebas). Tabla 2: ecografía de estrés >1,0 mm, 51 de 53 roturas y 74 de 91 sin rotura (umbral fijado de antemano por un estudio en cadáver); artro-RM, 43 de 53 y 83 de 91. La unidad son pacientes. Sin LR publicadas. Cifras de co4 sin cambios. |
 | [Beckenkamp 2017](#beckenkamp-2017) | puntuación 4b · texto | 4 | 2026-10 · Añadida (PDF del usuario, leído entero): 66 estudios, modelo bivariante. Sustituye a Bachmann 2003 en la LR− de tp5 y tp37 (subgrupo con radiografía a todos los pacientes) y a Gomes 2022 en la LR+ del positivo. PubMed (2026-10): Sharifi Razavi 2026 (Arch Acad Emerg Med; 43 estudios en adultos, LR− 0,13) es posterior, pero copia errores de extracción de Gomes 2022 y mezcla tobillo y pie: no se usa. |
 | [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | 2026-10 · Sin cambios: PubMed (RAPIDH, validación o precisión diagnóstica; publicaciones de Genevay) no encuentra ninguna validación externa de los criterios RAPIDH. |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
 | [Décary 2018](#décary-2018) | puntuación 4b | 6 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
+| [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · texto | 18 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
 | [Cook 2019](#cook-2019) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Sin cambios: PubMed (revisiones sistemáticas de precisión diagnóstica de la historia y la exploración en estenosis lumbar desde 2019) solo encuentra Wang 2024 (J Med Internet Res) y Yang 2024 (Spine), de inteligencia artificial sobre imagen, no de exploración clínica. |
 | [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
+| [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Revisión sistemática de 15 estudios sin metaanálisis; la ecografía de estrés y la comparación con la artro-RM salen de un solo estudio, Roedl 2016, que pasa a citarse directamente en co4. PubMed (2026-10): ninguna revisión posterior de la imagen del ligamento colateral cubital del codo (Rashidi 2021 es del pulgar). |
 | [Getsoian 2020](#getsoian-2020) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). 30 analizados de 60 reclutados; bloqueos controlados de C2–C3 y C3–C4. Un FRT con más rotación (menos limitación de C1–C2) se asocia a respuesta al bloqueo (tabla 2), lo que respalda que un FRT normal no descarta la cervicogénica de C2–C4. Valida además el patrón de Jull 2007 (menos extensión, disfunción articular dolorosa, peor CCFT) frente a bloqueos, sin S ni E (regresión LASSO; separación casi completa). |
 | [Pålsson 2020](#pålsson-2020) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015). |
 | [Sims 2020](#sims-2020) | puntuación 4b · razonamiento fase 2 | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (antes solo el resumen); S 0,99, E 0,49, LR+ 1,86 y LR− 0,07 (0,02–0,24), 8 estudios y 7385 adultos, con modelo bivariante. Sigue citada como concordante con Kazemi 2023 (decisión del usuario). |
@@ -138,6 +96,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Demont 2022](#demont-2022) | puntuación 4b · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios en las cifras: manuscrito aceptado (PDF del usuario) leído entero (2026-10). FRT: 4 estudios de cohorte prospectivos (Ogince 2007, Hall 2008, Hall 2010a y 2010b; todos del grupo que propuso el test), 182 participantes, modelos bivariante y HSROC (metandi): S 83 % (70–92), E 83 % (71–91), LR+ 5,0 (2,6–9,5), LR− 0,2 (0,1–0,4), certeza moderada (rebajada por sesgo de selección); positivo con menos de 45°; 24,5° frente a 39,1° (tabla 6). Coincide con ce4, que sigue puntuando solo en positivo. Riesgo de sesgo alto (PROBAST, análisis) de Jull 2007 y Getsoian 2020, como cita la app. PubMed (2026-10): ninguna revisión posterior de precisión diagnóstica del FRT; Anarte-Lazo 2021 (BMC Musculoskelet Disord, PMC) solo compara medias (17,7° menos en cervicogénica que en migraña). |
 | [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). Artículo de opinión: punto de corte inconsistente, factores de confusión (dolor, edad: 27,9 % de la varianza; estimación a ojo; FRT positivo en migraña) y patrón de referencia (exploración manual, κ 0,28), por lo que las LR del FRT probablemente están sobrestimadas. Coincide con lo citado en ce4. |
 | [Sokal 2022](#sokal-2022) | puntuación 4b | 4 | 2026-10 · Sin cambios: texto completo leído en PMC; las cifras de la tabla 4 (modelo bivariante) coinciden en los cuatro tests de ro4. Hay dos metaanálisis posteriores solo del Lever: Hesmerg 2024 (23 estudios, sin el del creador; S 79 %, E 92 %, LR+ 9,9, LR− 0,22; agrupación univariante de S y E) concuerda, y Hu 2024 (12 estudios, con el del creador) da E 78 %. Se citan en el criterio; por el método (bivariante, LCA sin otras lesiones ligamentosas) sigue mandando Sokal. |
+| [Zwerus 2022](#zwerus-2022) | puntuación 4b · texto | 4 | 2026-10 · Añadida y pasa a dar las cifras de co7 (decisión del usuario): texto completo leído en PMC (2026-10). Cohorte prospectiva de 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal (2017–2020, dos hospitales), 42 roturas completas; referencia, cirugía en el 79 % y RM o ecografía en el resto; los cirujanos no estaban ciegos en la cirugía. La unidad son pacientes. Tabla 2 (total): hook test S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30; PFP S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34, publicadas. En la tabla, la fila de la palpación de las roturas agudas y crónicas repite la del total (errata sin efecto en la app). No es del grupo que creó los tests. |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar · texto | 8 | 2026-10 · Sin cambios: PubMed (precisión diagnóstica de la exploración clínica para origen discal, facetario o sacroilíaco, revisiones sistemáticas desde 2023) no encuentra ninguna revisión posterior de tests clínicos; Manchikanti 2026 (Pain Physician) trata de bloqueos facetarios, no de exploración. Tabla 1 releída en PMC en la sesión de cadera (2026-10): agrupa con Meta-DiSc 1.4, efectos aleatorios, sin decir si es univariante o bivariante; ≥3 tests positivos, 6 estudios, 276 pacientes, LR+ 2,44, LR− 0,31; thigh thrust 5 estudios, LR+ 1,13, LR− 0,91; compresión 2 estudios, LR+ 1,79, LR− 0,74. En ca10 da las cifras agrupadas de los tests sueltos; el cluster de ca10 y de lu8 usa Saueressig 2021 (bivariante), y Han 2023 queda como segunda cifra. |
 | [Kazemi 2023](#kazemi-2023) | puntuación 4b · razonamiento fase 2 | 2 | 2026-10 · Sin cambios: texto completo leído en PMC; S 98 %, E 43 %, LR+ 1,56 y LR− 0,12 (0,05–0,26) coinciden. Agrupa con un modelo univariante (Meta-DiSc, DerSimonian-Laird), y Sims 2020 es bivariante; se mantiene por decisión del usuario (más estudios y LR− más conservadora) y se anota el modelo en la cita. PubMed (revisiones de la regla de Ottawa de rodilla desde 2020) no encuentra ninguna posterior. |
 | [Kinsella 2024](#kinsella-2024) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Texto completo leído (tablas 2 y 3). En el texto el LR+ de la abducción resistida aparece como 13,39, que en la tabla 3 es la DOR; se usa el LR+ de la tabla (6,09). |
@@ -154,6 +113,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kuijper 2009](#kuijper-2009) | pauta · texto | 2 | 2026-10 · Sin cambios en la pauta: texto completo leído en PMC (2026-10). Coincide con ce12 (fisioterapia 2 veces por semana 6 semanas, «hands off», ejercicios graduados y en casa; collarín semirrígido 3 semanas más 3 de retirada; 12 mm más de mejora del dolor de brazo a las 6 semanas). Se añade que a los 6 meses no hubo diferencias con esperar. PubMed (2026-10): revisiones posteriores sobre terapia manual en la radiculopatía cervical (p. ej., Xu y Ling 2025, metaanálisis en red de 8 ensayos) sin una pauta con volumen mejor. |
 | [Kulig 2009](#kulig-2009) | pauta | 1 | 2026-10 · PDF leído entero (2026-10): revisiones semanales durante 10 semanas, no 12; las P = 0,036–0,048 comparan los tres grupos a la vez y los autores no pueden concluir que el excéntrico supere al concéntrico. Corregido en tp14; se añade Houck 2015 como contraste. DOI corregido: el anterior era de otro artículo. |
 | [Kelley 2013](#kelley-2013) | pauta · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10) sin revisión de la guía de capsulitis adhesiva de JOSPT; sigue vigente junto con el consenso Salamh 2025. |
+| [Rinkel 2013](#rinkel-2013) | pauta | 2 | 2026-10 · Sin cambios: PDF del usuario releído (2026-10). Su «ensayo de bajo riesgo de sesgo» del túnel cubital es el mismo único ensayo que recogen Caliandro 2025 y Bateman 2025 (Bateman lo califica de alto riesgo); se corrige la pauta de co8 para no presentarlo como tres pruebas. |
 | [Reid 2014](#reid-2014) | pauta | 1 | 2026-10 · Pauta corregida: PDF del usuario leído entero (2026-10). 86 pacientes con mareo cervicogénico crónico (3 meses o más; vértigo, migraña, insuficiencia vertebrobasilar y otras causas excluidas con otoneurólogo); 2–6 sesiones en 6 semanas; técnicas, repeticiones y ejercicios en casa coinciden con ce13. Corregido: la frecuencia del mareo bajó frente a placebo solo a las 12 semanas (la intensidad, al terminar y a las 12 semanas), y los ejercicios en casa empiezan tras la 2.ª sesión. Revisión posterior: Carrasco-Uribarren 2025 (BMC Musculoskelet Disord, 6 ensayos; leído el resumen) apoya con certeza baja o muy baja la terapia manual de la cervical alta, sin una pauta con volumen mejor. |
 | [Warden 2014](#warden-2014) | pauta · pronóstico | 2 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las localizaciones de riesgo (tabla 1), las dos fases y el programa de carrera de la tabla 3 coinciden con la pauta de tp33. PubMed (2026-10): sin protocolo validado posterior. Se añade a tp32 un pronóstico con la tabla 1 (base del 2.º metatarsiano, alto riesgo) y la p. 755 (RM de elección). |
 | [Houck 2015](#houck-2015) | pauta · texto | 2 | 2026-10 · Añadida (PDF del usuario, leído entero) como contraste de Kulig 2009 en tp14: 39 aleatorizados (36 analizados), estadio II; el fortalecimiento en casa de intensidad moderada con banda elástica no añadió beneficio en el FFI ni en la fuerza a la ortesis con estiramiento. |
@@ -165,21 +125,29 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Griffin 2018](#griffin-2018) | pauta | 1 | 2026-10 · Sin cambios: sigue siendo el ensayo de artroscopia frente a fisioterapia de la pauta de ca2; PubMed (SIFA y fisioterapia desde 2022) solo añade el ensayo PhysioFIRST (Kemp 2026), que compara dos programas de fisioterapia. |
 | [Logerstedt 2018](#logerstedt-2018) | pauta | 1 | 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso). |
 | [Mellor 2018](#mellor-2018) | pauta | 1 | 2026-10 · Sin cambios: PubMed (tendinopatía glútea o dolor trocantéreo con ejercicio o educación desde 2022). El metaanálisis en red de Wang 2025 (J Orthop Surg Res 20:126, 19 ensayos, PMC11783921) sitúa el ejercicio primero para dolor y función, y el de Cordeiro 2024 (Sci Rep 14:3343, PMC10858207) lo encuentra mejor que la intervención mínima (certeza baja) e igual que la infiltración en dolor; ninguno da una pauta mejor que la del LEAP. Leídos en PMC (2026-10). |
+| [Biz 2019](#biz-2019) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). PubMed (2026-10): Gopinatth 2023 (Am J Sports Med, metaanálisis de la vuelta al deporte sin cirugía, 79,7 %) y Buchanan 2025 (Sports Health, protocolos, casi todos posquirúrgicos) son posteriores; Gopinatth no se pudo leer y Buchanan no aporta una pauta conservadora mejor. |
+| [Cascia 2019](#cascia-2019) | pauta | 1 | 2026-10 · Sin cambios en la conclusión: texto completo leído en PMC (2026-10; antes solo el resumen). Programas de 6 a 12–14 semanas (tabla 3) y 5 de las 7 series con infiltración de plasma rico en plaquetas: se añade a la pauta de co4. |
 | [Willy 2019](#willy-2019) | pauta | 1 | 2026-10 · Sin cambios: la guía holandesa (Ophey 2025), posterior y del mismo nivel, ya manda donde discrepan; no hay revisión de la guía de JOSPT. |
 | [Kemp 2020](#kemp-2020) | pauta | 1 | 2026-10 · Sin cambios: PubMed (dolor de cadera relacionado con la articulación y fisioterapia, revisiones sistemáticas desde 2021) no encuentra una revisión posterior de las intervenciones; el ensayo PhysioFIRST (Kemp 2026), posterior, se suma a la pauta de ca2. |
+| [Lubiatowski 2020](#lubiatowski-2020) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La resección fue artroscópica en 280 de 288 y los criterios de eficacia eran poco claros: se precisa en co6. PubMed (2026-10): nada posterior sobre el tratamiento de la plica del codo (Cui 2026 es de pronóstico con RM). |
 | [Rathleff 2020](#rathleff-2020) | pauta | 2 | 2026-10 · Sin cambios: la revisión posterior de tratamientos de Osgood-Schlatter (Ndjonko 2026, Orthop J Sports Med, revisión de alcance, nivel 4) no aporta ningún ensayo ni pauta mejor. |
 | [Serner 2020](#serner-2020) | pauta | 1 | 2026-10 · Sin cambios: la revisión sistemática más reciente sobre la lesión aguda del aductor (Farrell, Hatem y Bharam 2023, Am J Sports Med 51(13):3591–3603, doi 10.1177/03635465221140923; PDF del usuario leído entero, 2026-10) la incluye (ref. 40) y no aporta otra pauta: 30 estudios, síntesis narrativa sin metaanálisis; las roturas parciales se trataron siempre sin cirugía, con vuelta al deporte en 1–7 semanas. Da las medias de Serner 2020 (sin dolor a las 1,9 semanas, entrenamiento completo a las 6,9; recaída al año 7,4 %); la pauta de ca11 usa las medianas por grado del propio artículo. |
 | [George 2021](#george-2021) | pauta | 8 | 2026-10 · Sin cambios: PubMed (guías de práctica clínica de lumbalgia en JOSPT y de la APTA desde 2021) no encuentra una revisión posterior de esta guía. |
 | [Martin 2021](#martin-2021) | pauta | 2 | 2026-10 · Sin cambios de fondo: PDF leído entero (2026-10); las letras citadas coinciden. Se matizan en tp1 la inmovilización («puede estar indicada») y la terapia manual (con sus objetivos), y se añade la vuelta al trabajo o al deporte (B); en tp21, la tobillera o el vendaje no como tratamiento único para mejorar el equilibrio (B), pero sí para prevenir la recidiva. Es la revisión de 2021 (revisión prevista en 2025); PubMed (2026-10): sin versión posterior de la APTA. |
 | [Ammendolia 2022](#ammendolia-2022) | pauta · texto | 2 | 2026-10 · Sin cambios: es la actualización de la revisión Cochrane de 2013 y la más reciente que encontró la búsqueda en PubMed (tratamiento no quirúrgico de la estenosis lumbar) al incorporarla en 2026-10. |
+| [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo). |
 | [Enseki 2023](#enseki-2023) | pauta · test 4b sin puntuar | 5 | 2026-10 · Sin cambios: es la revisión vigente de la guía APTA de dolor de cadera no artrósico; PubMed (2026-10) no encuentra una posterior (la revisión de 2025 es la de artrosis, Koc 2025). |
 | [Koc 2023](#koc-2023) | pauta | 1 | 2026-10 · PDF leído entero (2026-10). Corregido en tp26: «plantillas nunca solas» es grado B (la C es combinarlas con otros tratamientos); la férula nocturna es para el dolor sistemático con los primeros pasos; los rangos del estiramiento, por estructura. Es la revisión más reciente de la APTA (en 2025 solo hay un comentario, Riel 2025, y la respuesta de los autores). |
 | [Munakomi 2023](#munakomi-2023) | pauta · razonamiento fase 2 · texto | 4 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 13 de agosto de 2023 (PubMed). Se añade a la pauta de lu4 Ammendolia 2022 (revisión sistemática del tratamiento no quirúrgico de la estenosis, leída entera en PMC). |
+| [Siemensma 2023](#siemensma-2023) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La pauta de férulas es «por la literatura y la experiencia propia» de los autores; se dice así en co3. |
 | [AAOS 2024](#aaos-2024) | pauta · test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: es la guía más reciente de la rotura meniscal aguda aislada; coherente con Prill 2025 y con Smith 2015. |
 | [Chimenti 2024](#chimenti-2024) | pauta · texto | 2 | 2026-10 · Sin cambios de fondo: PDF leído entero (2026-10); grados y cifras de la pauta de tp8 coinciden (se reformula la del láser y el ultrasonido). La guía usa el dolor a la palpación de la porción media como criterio diagnóstico: se corrige en tp8 la frase «la palpación no ayuda al diagnóstico». Es la revisión más reciente de la APTA. |
 | [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) | pauta | 1 | 2026-10 · Sin cambios: hay una revisión posterior, Ferrero 2026 (Orthop Res Rev, 24 estudios, resumen leído), que concluye que la rehabilitación estructurada es la primera opción y que ningún tratamiento puede recomendarse sobre otro por la heterogeneidad; no contradice la pauta de ro6. |
 | [Trager 2024](#trager-2024) | pauta | 1 | 2026-10 · Sin cambios: es la revisión más reciente que encontró la búsqueda en PubMed (terapia manual en el dolor sacroilíaco) al incorporarla en 2026-10. |
+| [Wallis 2024](#wallis-2024) | pauta · texto | 2 | 2026-10 · Añadida (texto completo leído en PMC, 2026-10): 23 ensayos y 1612 participantes, búsqueda hasta enero de 2024. Terapia manual, ejercicio o ambos frente a intervención mínima: dolor −0,53/10 y discapacidad −5/100 al final del tratamiento, certeza baja, probablemente sin relevancia clínica y sin mantenerse; ejercicio solo, poco o ningún efecto en el dolor; añadir terapia manual al ejercicio, −2,56/10 al final del tratamiento. Contraste de la pauta de co1 (decisión del usuario). |
 | [Balcarek 2025](#balcarek-2025) | pauta | 1 | 2026-10 · Sin cambios: PubMed (consensos y guías de primera luxación de rótula desde 2024) no encuentra nada posterior; el consenso de 2024 para adolescentes (J Pediatr Orthop) es anterior. |
+| [Bateman 2025](#bateman-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10; antes solo el resumen). Un solo ensayo, con alto riesgo de sesgo (RoB 2; 51 analizados de 70), el mismo que recogen Caliandro 2025 y Rinkel 2013; se dice en co8. |
+| [Caliandro 2025](#caliandro-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10; antes solo el resumen). Su ensayo de información frente a férula o deslizamiento neural es el mismo que recogen Rinkel 2013 y Bateman 2025; se corrige la pauta de co8. Es la revisión más reciente (PubMed, 2026-10). |
 | [Desmeules 2025](#desmeules-2025) | pauta · test 4b sin puntuar · texto | 5 | 2026-10 · Sin cambios: guía de 2025; búsqueda en PubMed (2026-10) sin versión posterior. Sigue como pauta de h2 y h3. |
 | [Koc 2025](#koc-2025) | pauta | 1 | 2026-10 · Sustituye a Cibulka 2017 (revisión 2017 de la misma guía) en la pauta de ca1. PDF del usuario leído (2026-10; trae CPG1 y CPG10–CPG31, todas las intervenciones; faltan el resumen, la introducción, los métodos y el diagnóstico, CPG2–CPG9). Cambios frente a 2017: ejercicio (A) 1–5 veces por semana, 30–120 min, 5–16 semanas, incluido el acuático; terapia manual (A) con distracción longitudinal y movilización con movimiento; punción seca nueva (A); educación con afrontamiento del dolor por internet (B); pérdida de peso de C a B; ultrasonido de B a D. Donde choca con NICE NG226 (punción seca, ultrasonido) se dan las dos posturas (decisión del usuario). |
 | [Liu 2025](#liu-2025) | pauta | 1 | 2026-10 · Leída en PMC (2026-10). Sus análisis de dosis son subgrupos separados (tipo, frecuencia, duración) que nunca se combinan: «multimodal 1–2 veces por semana durante 5–8 semanas» para el FAAM se apoya en un solo ensayo, hecho 3 veces por semana, y «terapia manual ≤4 semanas» para el CAIT en uno o dos. Se quita de tp21 esa orientación de dosis y queda el efecto global (CAIT +4,6 y FAAM de actividades diarias +7,7, certeza moderada). |
@@ -187,10 +155,13 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
 | [Prill 2025](#prill-2025) | pauta · texto | 2 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
 | [Pringels 2025](#pringels-2025) | pauta · texto | 2 | 2026-10 · Añadida (leída entera en PMC) en la pauta de tp9: ensayo aleatorizado de 42 deportistas con tendinopatía insercional; limitar la dorsiflexión mejoró el VISA-A 12,9 puntos más (IC 95 % 6,2–19,6) a las 12 semanas y 10,4 (3,7–17,1) a las 24. |
+| [Quzli 2025](#quzli-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
 | [Rich 2025](#rich-2025) | pauta · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: es el ensayo más reciente sobre tendinopatía proximal de isquiotibiales (PubMed, revisiones y ensayos desde 2024). |
 | [Salamh 2025](#salamh-2025) | pauta · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: consenso de 2025; búsqueda en PubMed (2026-10) sin guía ni consenso posterior sobre el hombro congelado. |
+| [Wistow 2025](#wistow-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). Se precisa que las 2–7 sesiones por semana durante 3–6 semanas son de los ensayos de hold-relax. Es posterior a la revisión de Piacenza 2024 (Musculoskelet Sci Pract), que no da una pauta mejor. |
 | [Alentorn-Geli 2026](#alentorn-geli-2026) | pauta | 2 | 2026-10 · Sin cambios: consenso de 2026, el más reciente sobre la inestabilidad anterior traumática (búsqueda en PubMed, 2026-10). |
 | [Kemp 2026](#kemp-2026) | pauta | 1 | 2026-10 · Ensayo más reciente sobre fisioterapia en el SIFA (PubMed, 2026-10); se suma a la pauta de ca2. |
+| [See 2026](#see-2026) | pauta | 1 | 2026-10 · Sin cambios: PDF del usuario releído (2026-10); 5 estudios y 143 pacientes, certeza baja a muy baja, pautas de la tabla 2 coinciden. Es la revisión más reciente sobre el excéntrico en la epicondilalgia medial (PubMed, 2026-10). |
 | [Vandeputte 2026](#vandeputte-2026) | pauta | 1 | 2026-10 · Sin cambios: es de 2026 y PubMed no encuentra una revisión posterior del dolor inguinal relacionado con el psoas ilíaco. |
 | [NICE NG19](#nice-ng19) | pronóstico · razonamiento fase 2 | 2 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 26 de agosto de 2015, última actualización el 11 de octubre de 2019 (en 2023 revisó la evidencia sobre la estratificación del riesgo sin cambiarla; en 2024, un cambio menor de antibióticos). Las recomendaciones citadas dicen lo que recoge la app. |
 | [Englund 2003](#englund-2003) | pronóstico | 1 | 2026-10 · Sin cambios: PDF del usuario leído; 155 pacientes, 68 controles, RR 7,0 (2,1–23,5) por rotura degenerativa y 2,7 (0,9–7,7) por traumática coinciden. Las revisiones posteriores (PubMed, meniscectomía y artrosis desde 2015) tratan otros desenlaces (prótesis, rodilla tras el LCA) y no sustituyen esta cifra. |
@@ -211,15 +182,21 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kim 2004](#kim-2004) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: solo describe la técnica del test MPP; la validación es Kim 2007. |
 | [Reijman 2004](#reijman-2004) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído: en PMC (PMC1754907) el cuerpo es un PDF escaneado que no se pudo descargar. |
 | [Walton 2004](#walton-2004) | test 4b sin puntuar · texto | 5 | 2026-10 · Sin cambios: el artículo no se ha leído entero; sus cifras (Paxinos S 79 %, E 50 %; palpación S 96 %, E 10 %; O’Brien S 16 %, E 90 %) coinciden con las que recogen Krill 2018 (tabla 3) y Cadogan 2013 (tabla 1), leídos enteros. Ningún test de h7 que lo cite puntúa. |
+| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4. |
 | [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PubMed (bursitis de la pata de ganso, diagnóstico y prevalencia desde 2015) no encuentra ningún estudio de precisión diagnóstica ni revisión sistemática. |
 | [Laslett 2006](#laslett-2006) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: Han 2023 (revisión sistemática, revisada 2026-10) la recoge: los criterios de Revel no se replican y no se pueden agrupar. |
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
+| [Dorf 2007](#dorf-2007) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Revisión retrospectiva de 81 pacientes con medidas del brazo afectado; las S y E por umbral (5, 8 y 10 %) salen solo de los 40 con medidas de los dos brazos, frente al brazo sano. No publica LR (las calcula Zwerus 2018). Referencia: diagnóstico clínico de los cirujanos, que probablemente veían la prensión. Se corrige la cita de co1. |
 | [Jull 2007](#jull-2007) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla 3: en la validación cruzada, 17 de 18 cervicogénicas y 112 de 112 sin cervicogénica bien clasificadas (S 94,4 %, E 100 %), con las etiquetas cambiadas en la tabla; función discriminante (tabla 2: actividad del ECM en el CCFT, extensión, disfunción manual C0–C4); tipo de cefalea por cuestionario; los autores piden validarlo. Validación posterior frente a bloqueos: Getsoian 2020, sin S ni E. |
 | [Kim 2007](#kim-2007) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios: PDF del usuario leído; 172 rodillas, tabla 2×2 51/13/6/102 y los 13 falsos positivos (7 franjas sinoviales de la grasa de Hoffa, 5 sinovitis, 1 cartílago) coinciden. PubMed (diagnóstico de la plica medial desde 2008) no encuentra ningún estudio de precisión posterior del test; lo más reciente es de RM (2026) y de tratamiento (revisión de 2025). |
 | [Warden 2007](#warden-2007) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PDF del usuario leído; 30 con tendinopatía clínica frente a 33 asintomáticos, ecografía S 87 % y RM S 57 %, E 82 % ambas, coinciden. PubMed no encuentra revisiones posteriores de precisión de la imagen en la tendinopatía rotuliana. |
+| [Appelboam 2008](#appelboam-2008) | test 4b sin puntuar · razonamiento fase 2 · texto | 6 | 2026-10 · Sin cambios: texto completo releído en PMC (PMC2600962, 2026-10). 1740 pacientes, S 96,8 %, E 48,5 %, LR− 0,03 en adultos y 0,11 en niños, riesgo de fractura con extensión completa 1,6 y 4,2 %; coinciden todas las cifras del cribado y del árbol de codo. |
 | [Hancock 2008](#hancock-2008) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: Haskins 2015 (J Clin Epidemiol, revisión sistemática, PDF del usuario) encuentra 9 validaciones de la regla: ser positivo predice menos discapacidad con manipulación con o sin thrust, pero como modificador del efecto solo la apoya Childs 2004 (Hancock 2008 no), y no hay estudios de impacto. Se añade al criterio de lu1. PubMed (reglas de predicción para manipulación lumbar desde 2012) no encuentra nada posterior. |
 | [Majlesi 2008](#majlesi-2008) | test 4b sin puntuar | 1 | 2026-10 · Cifras sin cambios, con aviso: van der Windt 2010 (Cochrane) recoge solo dos estudios del Slump y señala que la especificidad de Majlesi puede estar inflada por su diseño de casos y controles (controles con RM normal); el otro estudio dio S 0,44, E 0,58. PubMed (2026-10): ninguna revisión posterior del Slump. Por decisión del usuario (2026-10), el Slump pasa a hallazgo: sus cifras quedan en el criterio y no puntúa. |
+| [Park 2008](#park-2008) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). S 95,2 % (20 de 21 codos) y E 92 % (23 de 25 codos sin síntomas: 15 contralaterales y 10 de voluntarios); referencia, el diagnóstico clínico de un fisiatra; radiólogo ciego. Se precisan los controles en co2. |
 | [Lucas 2009](#lucas-2009) | test 4b sin puntuar | 1 | 2026-10 · Complementada: Rathbone 2017 (Clin J Pain, metaanálisis de la fiabilidad de la palpación de puntos gatillo, PDF del usuario) da κ 0,34 para el nódulo en banda tensa y confirma la fiabilidad baja; sus cifras pasan a lu9. |
+| [Ochi 2011](#ochi-2011) | test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10; antes solo el resumen). 25 codos de 25 pacientes; controles, 104 nervios de 54 voluntarios y 14 nervios de otras neuropatías. El SIRT se hace con el antebrazo y la muñeca en posición neutra y los dedos extendidos: se corrige en co8. |
+| [Ochi 2012](#ochi-2012) | test 4b sin puntuar · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF del usuario releído (2026-10). La unidad son nervios (55 de 52 pacientes frente a 123 de 64 voluntarios). La LR+ 42,5 del SIREFT está publicada en el texto, pero con su tabla (48 de 55, 121 de 123) sale ≈54; se anota en co8 (no puntúa). |
 | [Al Nezari 2013](#al-nezari-2013) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: PubMed (exploración neurológica en radiculopatía lumbar o hernia discal, revisiones desde 2013) solo encuentra Tawa 2017, posterior pero sin metaanálisis. |
 | [Cadogan 2013](#cadogan-2013) | test 4b sin puntuar · texto | 4 | 2026-10 · Añadida: texto completo leído en Europe PMC (2026-10). Estudio prospectivo en atención primaria (153 pacientes consecutivos; referencia: bloqueo de la AC guiado por fluoroscopia, ≥80 % de alivio); es uno de los 2 estudios de Krill 2018. |
 | [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla 1: dolor con el hielo más de 5/10 → S 42 %, E 95 %, LR+ 8,44 (6,3–11,3), LR− 0,61; más de 1/10 → LR− 0,18. 62 participantes con latigazo crónico (voluntarios de estudios previos), 124 lados del cuello; referencia: umbral de dolor al frío ≥13 °C; orden de los tests no aleatorizado. Coincide con ce5 (tipo pronóstico, no puntúa). PubMed (2026-10): ningún estudio posterior de precisión del test del hielo. |
@@ -234,8 +211,10 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rathbone 2017](#rathbone-2017) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: PubMed (fiabilidad de la palpación de puntos gatillo o banda tensa, revisiones sistemáticas desde 2009) no encuentra ninguna posterior. |
 | [Tawa 2017](#tawa-2017) | test 4b sin puntuar | 2 | 2026-10 · Complementada: leída entera en PMC. No hace metaanálisis; la sensibilidad S 61 %, E 63 % es el mejor estudio suelto (referencia quirúrgica, no RM como dice el resumen). Los dos tests de lu5 pasan a las cifras agrupadas de Al Nezari 2013 (metaanálisis, PDF del usuario); Tawa queda como revisión posterior. No cambia la puntuación: ningún test puntúa con ninguna de las dos cifras. |
 | [Krill 2018](#krill-2018) | test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). Incluye 2 estudios (Walton 2004 y Cadogan 2013) y deja fuera Chronopoulos 2004 por ser de nivel III; las cifras citadas en h7 están en sus tablas 3 y 4. |
+| [Park 2019](#park-2019) | test 4b sin puntuar | 2 | 2026-10 · Cifras sin cambios; el test pasa a hallazgo (decisión del usuario): texto completo leído en PMC (PMC6504535, 2026-10). 20 de 24 plicas y 7 de 56 epicondilalgias positivas (S 83,3 %, E 87,5 %), sin LR publicadas. Es retrospectivo de casos y controles (plicas operadas sin epicondilalgia frente a epicondilalgias operadas sin plica), de los creadores del test, y PubMed (2026-10) no encuentra validación posterior, como el Slump o la aducción cruzada. |
 | [Mastromarchi 2021](#mastromarchi-2021) | test 4b sin puntuar | 4 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10) sin estudios posteriores de fiabilidad ni validez de los tests de la 1.ª costilla. Sigue como opinión de expertos; no puntúa (h9 y ce10). |
 | [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Squeeze agrupado de 4 estudios con modelo univariante de efectos aleatorios (Meta-DiSc); las 2×2 suman su n; no incluye el estudio de los creadores del test. Sin cifra agrupada para la palpación del LTPAI. Se indica el modelo en tp2. |
+| [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo el resumen (el PDF recibido en 2026-10 era otro artículo y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral. |
 | [Wong 2022](#wong-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo describe la técnica, no aporta cifras. |
 | [Adib 2023](#adib-2023) | test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: S y E del Arlington y del twist comprobadas en el resumen; siguen como hallazgo. El mismo estudio da para el FADIR S 43 %, E 56 % (ver Reiman 2015). |
 | [Mohr 2024](#mohr-2024) | test 4b sin puntuar · razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -246,9 +225,12 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Grimaldi 2026](#grimaldi-2026) | test 4b sin puntuar | 5 | 2026-10 · Sin cambios: es de 2026 y PubMed no encuentra nada posterior sobre pinzamiento isquiofemoral o dolor glúteo bajo. |
 | [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo. |
 | [Menon y Rednam 2026](#menon-y-rednam-2026) | test 4b sin puntuar · razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 12 de abril de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [NICE CG147](#nice-cg147) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 8 de agosto de 2012, última actualización el 11 de diciembre de 2020. |
+| [NICE NG125](#nice-ng125) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 19 de agosto de 2020; la revisión de vigilancia de 2023 recomendó actualizarla, pero NICE decidió no hacerlo (31 de mayo de 2023). Las recomendaciones 1.1.3 y 1.4.9 dicen lo que recoge el razonamiento (consultado en nice.org.uk en 2026-10). |
 | [NICE NG126](#nice-ng126) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian. |
 | [NICE NG38](#nice-ng38) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 17 de febrero de 2016, sin actualizaciones; la recomendación 1.2.2 dice lo que recoge la app. |
+| [NICE NG89](#nice-ng89) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 13 de agosto de 2019, y la revisión de vigilancia del 18 de septiembre de 2024 decidió no actualizarla. Las recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3 dicen lo que recoge el razonamiento (duraciones de la profilaxis y umbrales de 90 minutos; consultado en nice.org.uk en 2026-10). |
 | [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | 2026-10 · Complementada: PubMed (cauda equina, revisiones sistemáticas desde 2012) no encuentra una revisión de precisión diagnóstica posterior. Galliker 2020 (Am J Med, PDF del usuario) aporta el único estudio en urgencias (silla de montar LR+ 3,1, esfínteres LR+ 2,1) y Hennessy 2025 (Eur Spine J, PDF del usuario) revisa 9 guías: RM urgente y radiculopatía bilateral como señal clave. Ambos se añaden a `l6`. Tabrah 2022 (tacto rectal) y Boktor 2023 (residuo posmiccional) no leídos: tratan pruebas que no hace el fisioterapeuta. |
 | [Downie 2013](#downie-2013) | razonamiento fase 2 | 2 | 2026-10 · Complementada: PubMed (banderas rojas de cáncer o fractura en lumbalgia, revisiones desde 2014). Williams 2023 (Cochrane de fractura) es una reedición con búsqueda hasta 2012, no más reciente. Verhagen 2017 (Pain, PDF del usuario) confirma que el antecedente de cáncer es la única bandera de malignidad informativa (LR+ 15,3), y Galliker 2020 (Am J Med, PDF del usuario) añade los datos de urgencias (LR+ 5,9; 27,9 con sospecha clínica): se añaden a `l2`. Sin cambios para fractura (`l_e4`). Maselli 2022 (Disabil Rehabil, dolor toracolumbar) no leída. |
 | [Henschke 2013](#henschke-2013) | razonamiento fase 2 | 2 | 2026-10 · Complementada: Verhagen 2017 (Pain, PDF del usuario) apoya sus conclusiones con una búsqueda más amplia; el dolor nocturno solo se midió en un estudio (LR+ 0,7). Galliker 2020 (Am J Med, PDF del usuario) aporta el dato de urgencias (LR+ 2,2). Ambos se añaden a `l_on2`. |
@@ -261,11 +243,15 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Cabre 2022](#cabre-2022) | razonamiento fase 2 | 1 | 2026-10 · Complementada: el consenso del COI de 2023 (Mountjoy 2023, Br J Sports Med, PDF del usuario) actualiza el marco: REDs en ambos sexos y la fractura de estrés del sacro o la pelvis como de alto riesgo. Se añade a `l_e6`; la cifra de 4,5 veces más lesiones óseas sigue citando Cabre. |
 | [Goodfriend 2022](#goodfriend-2022) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de diciembre de 2022 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Kalakonda 2022](#kalakonda-2022) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de septiembre de 2022 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Rhodes 2022](#rhodes-2022) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de noviembre de 2022 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Adigun 2023](#adigun-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de febrero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 3 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Ashley y Lui 2023](#ashley-y-lui-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Barney 2023](#barney-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Basit 2023](#basit-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 8 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Chauhan 2023](#chauhan-2023) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Chen 2023](#chen-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Cunha 2023](#cunha-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 8 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Davis y Shaw 2023](#davis-y-shaw-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Davis y Silberman 2023](#davis-y-silberman-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -274,9 +260,12 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Jayarangaiah 2023](#jayarangaiah-2023) | razonamiento fase 2 | 10 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Johns 2023](#johns-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Khan y Bollu 2023](#khan-y-bollu-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [King y Lowery 2023](#king-y-lowery-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Koh y Markovich 2023](#koh-y-markovich-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 24 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Lacy 2023](#lacy-2023) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leib 2023](#leib-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leslie 2023](#leslie-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Malik 2023](#malik-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -299,6 +288,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 30 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Schick y Sternard 2023](#schick-y-sternard-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Sekhon 2023](#sekhon-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Sevy 2023](#sevy-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 29 de octubre de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Shahid 2023](#shahid-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shamrock 2023](#shamrock-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 17 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Singleton y Hefner 2023](#singleton-y-hefner-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de febrero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Smidt y Massey 2023](#smidt-y-massey-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 29 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -310,10 +301,13 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Belyayeva 2024](#belyayeva-2024) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Bodman 2024](#bodman-2024) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 25 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Brotman 2024](#brotman-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Durer 2024](#durer-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 8 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Fariduddin 2024](#fariduddin-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de junio de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Feller 2024](#feller-2024) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). 29 guías, 12 con banderas rojas; casi todas basadas en razonamiento (nivel 5), sin datos de precisión salvo la regla canadiense; acuerdo escaso (kappa de Fleiss 0,15 para cáncer). Coincide con lo citado. PubMed (2026-10): ninguna revisión posterior de banderas rojas en el dolor de cuello. |
 | [Greenwood 2024](#greenwood-2024) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 11 de diciembre de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Hall 2024](#hall-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de noviembre de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Hantzidiamantis 2024](#hantzidiamantis-2024) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 30 de abril de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Hunter 2024](#hunter-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de noviembre de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Lassiter 2024](#lassiter-2024) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leslie 2024](#leslie-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -322,8 +316,12 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Menger 2024](#menger-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 11 de mayo de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Mohseni 2024](#mohseni-2024) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 27 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Nandhagopal 2024](#nandhagopal-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de mayo de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Patil 2024](#patil-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 18 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Regunath y Oba 2024](#regunath-y-oba-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Rishor-Olney 2024](#rishor-olney-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Rout 2024](#rout-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de junio de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Vyas 2024](#vyas-2024) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 11 de diciembre de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Zabaglo 2024](#zabaglo-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de marzo de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Benjamin y Lui 2025](#benjamin-y-lui-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Budha 2025](#budha-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10). Lo posterior son casos clínicos y revisiones de casos (leídos los resúmenes): Heck 2026 (Int J Pediatr Otorhinolaryngol, revisión sistemática de 13 casos de luxación occipito-atloaxoidea por Grisel diagnosticado tarde; media de 5,9 meses hasta el diagnóstico), Cirrincione 2026 (Curr Opin Pediatr, revisión narrativa: con diagnóstico precoz basta tratamiento no quirúrgico) y Koru 2025 (Clin Rheumatol, Grisel sin infección en enfermedades reumáticas). Coinciden con el razonamiento de la pregunta (derivar pronto, el retraso empeora el tratamiento); no lo cambian. |
 | [Daley 2025](#daley-2025) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -334,10 +332,14 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hennessy 2025](#hennessy-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: publicada en 2025, búsqueda hasta junio de 2024; PubMed no encuentra una revisión de guías posterior. |
 | [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de junio de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Jones 2025](#jones-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 6 de julio de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Kaur 2025](#kaur-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Khalil 2025](#khalil-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de noviembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leslie 2025](#leslie-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 30 de noviembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Lleva 2025](#lleva-2025) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Margetis y Gillis 2025](#margetis-y-gillis-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de marzo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Nori y Stretanski 2025](#nori-y-stretanski-2025) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Pangia 2025](#pangia-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Patel 2025](#patel-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de mayo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shams 2025](#shams-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shaw 2025](#shaw-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -349,6 +351,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Bhatti 2026](#bhatti-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 31 de enero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Consoli y Carlson 2026](#consoli-y-carlson-2026) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de junio de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Deeb y Maher 2026](#deeb-y-maher-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 19 de abril de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Denault y Launico 2026](#denault-y-launico-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Farmer y Matto 2026](#farmer-y-matto-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 9 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Gillen 2026](#gillen-2026) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de junio de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Jain 2026](#jain-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de julio de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -371,6 +374,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hutchison 2013](#hutchison-2013) | texto | 1 | 2026-10 · PDF leído entero (2026-10): no es un estudio piloto (piloto fue el entrenamiento previo de los examinadores); 21 participantes, 10 con tendinopatía en la ecografía; agrupa las exploraciones de 3 clínicos; no publica LR. Corregido en tp8. |
 | [Großterlinden 2016](#großterlinden-2016) | texto | 1 | 2026-10 · PDF leído entero (2026-10): la palpación del LTPAI da S 41,7 % y E 52,5 % (tabla 4), con RM de 3 T en menos de 24 h y 14 lesiones en 96 pacientes; el 43 % de antes era el valor recalculado por Netterström-Wedin 2021. Corregido en tp2. |
 | [Frey 2017](#frey-2017) | texto | 1 | 2026-10 · Sin cambios: se sigue citando a través de Netterström-Wedin 2021 (PDF leído), que lo recoge como resumen de congreso con verificación parcial (RM solo si la ecografía mostraba rotura del LTPAI); se indica en tp2. |
+| [Baylor 2023](#baylor-2023) | texto | 1 | 2026-10 · Añadida como contraste (solo el resumen; no se consiguió el PDF): prospectivo, 28 operados de 64 con imagen; hook test S 96 %, E 67 %, kappa 0,71. Población solo quirúrgica, con muy pocos sin rotura completa: no da las cifras de co7. |
 | [Hesmerg 2024](#hesmerg-2024) | texto | 1 | 2026-10 · Sin cambios: es la revisión más reciente y amplia del Lever; concuerda con Sokal 2022, que sigue dando las cifras de ro4 por el método. |
 | [Hu 2024](#hu-2024) | texto | 1 | 2026-10 · Sin cambios: discrepa de Sokal 2022 y de Hesmerg 2024 en la especificidad; incluye el estudio del creador del test y atribuye a Hegedus unas cifras del Lever que no son suyas. Solo se cita en el criterio. |
 | [Rana 2026](#rana-2026) | texto | 1 | 2026-10 · Sin cambios: es la revisión más reciente de la exploración clínica compuesta del menisco; por decisión del usuario no sustituye a Solomon 2001 (sin LR, agrupación univariante, cirujanos ortopédicos, pacientes que iban a artroscopia). |
@@ -592,7 +596,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Beckenkamp 2017](#beckenkamp-2017) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Bodman 2024](#bodman-2024) · [Brotman 2024](#brotman-2024) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grondin 2026](#grondin-2026) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Hegedus 2012](#hegedus-2012) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hesmerg 2024](#hesmerg-2024) · [Hölmich 1999](#hölmich-1999) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Khalil 2025](#khalil-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patil 2024](#patil-2024) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Pope 2023](#pope-2023) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Stern 2026](#stern-2026) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Truong 2023](#truong-2023) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018)
+[AAOS 2024](#aaos-2024) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Bodman 2024](#bodman-2024) · [Brotman 2024](#brotman-2024) · [Budha 2025](#budha-2025) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grondin 2026](#grondin-2026) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Hegedus 2012](#hegedus-2012) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hesmerg 2024](#hesmerg-2024) · [Hölmich 1999](#hölmich-1999) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Khalil 2025](#khalil-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lequesne 2008](#lequesne-2008) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Narvani 2003](#narvani-2003) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patil 2024](#patil-2024) · [Peat 2006](#peat-2006) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Pitcher 2024](#pitcher-2024) · [Pope 2023](#pope-2023) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Stern 2026](#stern-2026) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thoomes 2026](#thoomes-2026) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Truong 2023](#truong-2023) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2022](#wong-2022) · [Wróblewski 2026](#wróblewski-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -642,7 +646,7 @@ Autores: Adigun, Nguyen, Fox y Anastasopoulou
 Título: *Acromegaly*  
 Publicación: StatPearls [Internet], NBK431086 (act. 2023-02-02)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de febrero de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -852,7 +856,7 @@ Autores: Appelboam, Reuben, Benger et al.
 Título: *Elbow extension test to rule out elbow fracture: multicentre, prospective validation and observational study of diagnostic accuracy in adults and children*  
 Publicación: BMJ 337:a2428  
 DOI: 10.1136/bmj.a2428  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: texto completo releído en PMC (PMC2600962, 2026-10). 1740 pacientes, S 96,8 %, E 48,5 %, LR− 0,03 en adultos y 0,11 en niños, riesgo de fractura con extensión completa 1,6 y 4,2 %; coinciden todas las cifras del cribado y del árbol de codo.  
 Nota: Texto completo leído en Europe PMC (PMC2600962) en la sesión de codo (2026-10): prueba de extensión del codo en el sistema traumático del cribado de codo (co_t1, co_t2) y en la derivación de co_step1. Ya se citaba como aclaración en co3.
 
 Citada como:
@@ -1028,16 +1032,33 @@ Autores: Bateman, Swaile y Tambe
 Título: *Effectiveness of night splints for cubital tunnel syndrome - A systematic review*  
 Publicación: Hand Ther 30(3):105–112  
 DOI: 10.1177/17589983251336157  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: texto completo leído en PMC (2026-10; antes solo el resumen). Un solo ensayo, con alto riesgo de sesgo (RoB 2; 51 analizados de 70), el mismo que recogen Caliandro 2025 y Rinkel 2013; se dice en co8.  
 Nota: Revisión sistemática (RoB 2, ROBINS-I y GRADE). Solo el resumen de los autores (Europe PMC no da el texto completo). Leído en la sesión de dosis de codo (2026-10). Pauta de co8: evidencia insuficiente sobre la férula nocturna (certeza muy baja). Más reciente que Natroshvili 2023 (mismo nivel), que no se cita.
 
 Citada como:
 
-1. Caliandro 2025, Cochrane Database Syst Rev (4):CD006839 (revisión Cochrane, 15 ensayos; solo el resumen) · Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Bateman 2025, Hand Ther 30(3):105–112 (revisión sistemática con GRADE; solo el resumen)
+1. Caliandro 2025, Cochrane Database Syst Rev (4):CD006839 (revisión Cochrane, 15 ensayos) · Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Bateman 2025, Hand Ther 30(3):105–112 (revisión sistemática con RoB 2 y GRADE)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Baylor 2023
+
+Autores: Baylor, Rae, Manzar, Pallis, Olsen, Akoon y Grandizio  
+Título: *Reliability and Validity of the Hook Test for Diagnosis of Distal Biceps Tendon Ruptures*  
+Publicación: J Hand Surg Am 48(11):1091–1097  
+DOI: 10.1016/j.jhsa.2023.07.004  
+Última revisión: 2026-10 · Añadida como contraste (solo el resumen; no se consiguió el PDF): prospectivo, 28 operados de 64 con imagen; hook test S 96 %, E 67 %, kappa 0,71. Población solo quirúrgica, con muy pocos sin rotura completa: no da las cifras de co7.  
+Nota: Leído en la sesión de referencias de codo (2026-10). Resumen en PubMed (PMID 37578400). Hook test de co7.
+
+Citada como:
+
+1. Con el codo en 90° de flexión y el antebrazo supinado, se intenta "enganchar" el tendón del bíceps con el dedo índice desde el lado lateral. Positivo (rotura completa) si no hay una estructura en cordón que enganchar; si engancha pero duele, orienta a rotura parcial. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). En las roturas de menos de un mes, S 86 %; en las crónicas, 57 %: la cicatriz o una aponeurosis bicipital íntegra pueden dar un cordón que engancha. Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `criterio`) | 4b · mención en el texto | 1 |
 
 ### Beckenkamp 2017
 
@@ -1068,7 +1089,7 @@ Autores: Beloor Suresh y Asuncion
 Título: *Myasthenia Gravis*  
 Publicación: StatPearls [Internet], NBK559331 (act. 2023-08-08)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 8 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -1172,12 +1193,12 @@ Autores: Biz, Crimì, Belluzzi, Maschio, Baracco, Volpin y Ruggieri
 Título: *Conservative Versus Surgical Management of Elbow Medial Ulnar Collateral Ligament Injury: A Systematic Review*  
 Publicación: Orthop Surg 11(6):974–984  
 DOI: 10.1111/os.12571  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). PubMed (2026-10): Gopinatth 2023 (Am J Sports Med, metaanálisis de la vuelta al deporte sin cirugía, 79,7 %) y Buchanan 2025 (Sports Health, protocolos, casi todos posquirúrgicos) son posteriores; Gopinatth no se pudo leer y Buchanan no aporta una pauta conservadora mejor.  
 Nota: Revisión sistemática de 15 estudios, casi todos de nivel IV; texto completo leído en Europe PMC. Leído en la sesión de dosis de codo (2026-10). Pauta de co4.
 
 Citada como:
 
-1. Biz 2019, Orthop Surg 11(6):974–984 (revisión sistemática de 15 estudios, casi todos de nivel IV) · Cascia 2019, Sports Health 11(4):367–374 (revisión sistemática de 7 series retrospectivas, nivel 4; solo el resumen)
+1. Biz 2019, Orthop Surg 11(6):974–984 (revisión sistemática de 15 estudios, casi todos de nivel IV) · Cascia 2019, Sports Health 11(4):367–374 (revisión sistemática de 7 series retrospectivas, nivel 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1267,7 +1288,7 @@ Autores: Brotman, Moreno-Escobar, Joseph, Munakomi y Pawar
 Título: *Amyotrophic Lateral Sclerosis*  
 Publicación: StatPearls [Internet], NBK556151 (act. 2024-02-12)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -1341,12 +1362,12 @@ Autores: Caliandro, La Torre, Padua, Giannini, Reale y Padua
 Título: *Treatment for ulnar neuropathy at the elbow*  
 Publicación: Cochrane Database Syst Rev 2025(4):CD006839  
 DOI: 10.1002/14651858.CD006839.pub5  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: texto completo leído en PMC (2026-10; antes solo el resumen). Su ensayo de información frente a férula o deslizamiento neural es el mismo que recogen Rinkel 2013 y Bateman 2025; se corrige la pauta de co8. Es la revisión más reciente (PubMed, 2026-10).  
 Nota: Revisión Cochrane (15 ensayos, 970 participantes; búsqueda hasta julio de 2022). Solo el resumen de los autores: el texto completo no es accesible desde la red de la sesión. Leído en la sesión de dosis de codo (2026-10). Pauta de co8.
 
 Citada como:
 
-1. Caliandro 2025, Cochrane Database Syst Rev (4):CD006839 (revisión Cochrane, 15 ensayos; solo el resumen) · Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Bateman 2025, Hand Ther 30(3):105–112 (revisión sistemática con GRADE; solo el resumen)
+1. Caliandro 2025, Cochrane Database Syst Rev (4):CD006839 (revisión Cochrane, 15 ensayos) · Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Bateman 2025, Hand Ther 30(3):105–112 (revisión sistemática con RoB 2 y GRADE)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1354,15 +1375,17 @@ Citada como:
 
 ### Campbell 2020
 
-Publicación: Am J Sports Med 48:2819–2827  
+Autores: Campbell, McGhee, Freedman y Tjoumakaris  
+Título: *Diagnostic Imaging of Ulnar Collateral Ligament Injury: A Systematic Review*  
+Publicación: Am J Sports Med 48(11):2819–2827  
 DOI: 10.1177/0363546520937302  
-Última revisión: **sin revisar**  
-Nota: Recoge los datos de Roedl (sin año en la cita).
+Última revisión: 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Revisión sistemática de 15 estudios sin metaanálisis; la ecografía de estrés y la comparación con la artro-RM salen de un solo estudio, Roedl 2016, que pasa a citarse directamente en co4. PubMed (2026-10): ninguna revisión posterior de la imagen del ligamento colateral cubital del codo (Rashidi 2021 es del pulgar).  
+Nota: PDF aportado por el usuario. Recoge los datos de Roedl 2016 (imagen de co4).
 
 Citada como:
 
-1. Roedl, recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática; 144 pacientes, referencia intraoperatoria, positivo con apertura ≥1,0 mm frente al lado sano; para rotura completa, umbral de 2,5 mm: S 95 %, E 89 %)
-2. Roedl, recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática; 144 pacientes, referencia intraoperatoria; la misma precisión que la ecografía convencional en esa cohorte; otros estudios de la revisión, S 81–100 %, E 91–100 %)
+1. Roedl 2016 (Radiology 279(3):827–837; retrospectivo, 144 jugadores de béisbol con dolor medial del codo, todos con cirugía o artroscopia como referencia; tabla 2: 51 de 53 roturas y 74 de 91 sin rotura; positivo con apertura >1,0 mm frente al lado sano, umbral fijado de antemano por un estudio en cadáver; para rotura completa, umbral de 2,5 mm sacado de la curva ROC: S 95 %, E 89 %), recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática sin metaanálisis: es el único estudio de la ecografía de estrés)
+2. Roedl 2016 (Radiology 279(3):827–837; retrospectivo, 144 jugadores de béisbol, todos con cirugía o artroscopia; tabla 2: 43 de 53 roturas y 83 de 91 sin rotura, la misma precisión que la ecografía convencional en esa cohorte), recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática sin metaanálisis; otros estudios de la revisión, S 81–100 %, E 91–100 %)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1394,12 +1417,12 @@ Autores: Cascia, Picha, Hettrich y Uhl
 Título: *Considerations of Conservative Treatment After a Partial Ulnar Collateral Ligament Injury in Overhead Athletes: A Systematic Review*  
 Publicación: Sports Health 11(4):367–374  
 DOI: 10.1177/1941738119853589  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios en la conclusión: texto completo leído en PMC (2026-10; antes solo el resumen). Programas de 6 a 12–14 semanas (tabla 3) y 5 de las 7 series con infiltración de plasma rico en plaquetas: se añade a la pauta de co4.  
 Nota: Revisión sistemática de 7 series retrospectivas (nivel 4). Solo el resumen de los autores (Europe PMC no da el texto completo). Leído en la sesión de dosis de codo (2026-10). Pauta de co4.
 
 Citada como:
 
-1. Biz 2019, Orthop Surg 11(6):974–984 (revisión sistemática de 15 estudios, casi todos de nivel IV) · Cascia 2019, Sports Health 11(4):367–374 (revisión sistemática de 7 series retrospectivas, nivel 4; solo el resumen)
+1. Biz 2019, Orthop Surg 11(6):974–984 (revisión sistemática de 15 estudios, casi todos de nivel IV) · Cascia 2019, Sports Health 11(4):367–374 (revisión sistemática de 7 series retrospectivas, nivel 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1431,7 +1454,7 @@ Autores: Chen, Sabir y Al Khalili
 Título: *Physiology, Osmoregulation and Excretion*  
 Publicación: StatPearls [Internet], NBK541108 (act. 2023-05-01)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -1742,7 +1765,7 @@ Autores: Deeb y Maher
 Título: *Raynaud Disease*  
 Publicación: StatPearls [Internet], NBK499833 (act. 2026-09-13)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo. Mismos autores y año que «Deeb y Maher 2026» (Psoriatic Arthritis); la clave lleva el tema entre paréntesis para distinguirlas (decisión del usuario).
 
 Citada como:
@@ -1779,7 +1802,7 @@ Autores: Denault y Launico
 Título: *Physiology, Platelet*  
 Publicación: StatPearls [Internet], NBK470328 (act. 2026-09-14)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -1821,18 +1844,22 @@ Autores: Devereaux y ElMaraghy
 Título: *Improving the rapid and reliable diagnosis of complete distal biceps tendon rupture: a nuanced approach to the clinical examination*  
 Publicación: Am J Sports Med 41(9):1998–2004  
 DOI: 10.1177/0363546513493383  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sustituida en la puntuación por Zwerus 2022: PDF del usuario leído entero (2026-10). Tabla 3: hook test S 81 % (8 falsos negativos de 42) y E 100 %, PFP S 95 % (2 de 42; la tabla imprime «9») y E 100 %, de las que salen LR− 0,19 y 0,05. Solo 6 pacientes sin rotura completa, el método de confirmación dependía del resultado de los tests (cirugía si eran positivos, RM si negativos), se excluyó a 9 que no aceptaron confirmarlo y el cirujano no estaba ciego. Queda como contraste en co7.  
 Nota: Leído en la sesión de codo (2026-10). Resumen en PubMed (PMID 23804587) y cifras de Zwerus 2018, tabla 4. Hook test y pronación pasiva de co7 (codo).
 
 Citada como:
 
-1. Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; cohorte), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; resumen en PubMed) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
-2. Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; cohorte), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
+1. Con el codo en 90° de flexión y el antebrazo supinado, se intenta "enganchar" el tendón del bíceps con el dedo índice desde el lado lateral. Positivo (rotura completa) si no hay una estructura en cordón que enganchar; si engancha pero duele, orienta a rotura parcial. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). En las roturas de menos de un mes, S 86 %; en las crónicas, 57 %: la cicatriz o una aponeurosis bicipital íntegra pueden dar un cordón que engancha. Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+2. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
+3. Codo apoyado a 90° de flexión; se palpa el vientre del bíceps mientras se prona y supina pasivamente el antebrazo: si el músculo sube con la supinación y baja con la pronación, el tendón distal está íntegro; si no se mueve, rotura completa. Cifras de Zwerus 2022 (tabla 2; los mismos 86 pacientes): S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34 (publicadas); menos sensible en las roturas de menos de un mes (S 67 %). Si también se hace el Hook test, solo cuenta el Hook test. Contraste: en Devereaux y ElMaraghy 2013 (solo 6 sin rotura completa, verificación según el resultado de los tests) dio S 95,2 %, E 100 %, LR− 0,05.
+4. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 1 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 2 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 2 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 4 |
 
 ### Devillé 2000
 
@@ -1884,14 +1911,16 @@ Citada como:
 
 ### Dorf 2007
 
+Autores: Dorf, Chhabra, Golish, McGinty y Pannunzio  
+Título: *Effect of Elbow Position on Grip Strength in the Evaluation of Lateral Epicondylitis*  
 Publicación: J Hand Surg Am 32:882–886  
 DOI: 10.1016/j.jhsa.2007.04.010  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Revisión retrospectiva de 81 pacientes con medidas del brazo afectado; las S y E por umbral (5, 8 y 10 %) salen solo de los 40 con medidas de los dos brazos, frente al brazo sano. No publica LR (las calcula Zwerus 2018). Referencia: diagnóstico clínico de los cirujanos, que probablemente veían la prensión. Se corrige la cita de co1.
 
 Citada como:
 
-1. Prensión máxima con el codo a 90° de flexión y en extensión completa: en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia). Cuenta como hallazgo: los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007 en Zwerus 2018 (tabla 4; 40 pacientes, brazo sano como control): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24).
-2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen, casi con seguridad: Dorf 2007 (J Hand Surg Am 32:882–886; retrospectivo, 81 pacientes; una diferencia del 8 % entre flexión y extensión distinguió el brazo afectado del sano con un 83 % de precisión) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+1. Prensión máxima con el codo a 90° de flexión y en extensión completa: en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia). Cuenta como hallazgo: los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1998,7 +2027,7 @@ Autores: Fariduddin, Haq y Bansal
 Título: *Hypothyroid Myopathy*  
 Publicación: StatPearls [Internet], NBK519513 (act. 2024-06-07)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de junio de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -2823,10 +2852,10 @@ Citada como:
 
 Autores: Hantzidiamantis, Awosika y Lappin  
 Título: *Physiology, Glucose*  
-Publicación: StatPearls [Internet], NBK545201 (2024)  
+Publicación: StatPearls [Internet], NBK545201 (act. 2024-04-30)  
 DOI: —  
-Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF en modo lectura aportado por el usuario, sin fecha visible: el año sale del índice de Europe PMC.
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 30 de abril de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF en modo lectura aportado por el usuario, sin fecha visible: la fecha de actualización sale de PubMed.
 
 Citada como:
 
@@ -3272,7 +3301,7 @@ Autores: Kaplan y Kanwal
 Título: *Thoracic Outlet Syndrome*  
 Publicación: StatPearls [Internet], NBK557450 (act. 2023-04-10)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -3286,14 +3315,16 @@ Citada como:
 
 ### Karanasios 2022
 
+Autores: Karanasios, Korakakis, Moutzouri, Drakonaki, Koci, Pantazopoulou, Tsepis y Gioftsos  
+Título: *Diagnostic accuracy of examination tests for lateral elbow tendinopathy (LET) – A systematic review*  
 Publicación: J Hand Ther 35:541–551  
 DOI: 10.1016/j.jht.2021.02.002  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: solo el resumen (el PDF recibido en 2026-10 era otro artículo y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral.
 
 Citada como:
 
 1. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce)
-2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen, casi con seguridad: Dorf 2007 (J Hand Surg Am 32:882–886; retrospectivo, 81 pacientes; una diferencia del 8 % entre flexión y extensión distinguió el brazo afectado del sano con un 83 % de precisión) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -3337,7 +3368,7 @@ Autores: Kaur, Gandhi y Sharma
 Título: *Physiology, Cortisol*  
 Publicación: StatPearls [Internet], NBK538239 (act. 2025-12-01)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -3429,7 +3460,7 @@ Autores: Khalil, Marwaha y Bollu
 Título: *Physiology, Neuromuscular Junction*  
 Publicación: StatPearls [Internet], NBK470413 (act. 2025-02-17)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -3544,7 +3575,7 @@ Autores: King y Lowery
 Título: *Physiology, Cardiac Output*  
 Publicación: StatPearls [Internet], NBK470455 (act. 2023-07-17)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -3703,7 +3734,7 @@ Autores: LaPelusa y Dave
 Título: *Physiology, Hemostasis*  
 Publicación: StatPearls [Internet], NBK545263 (act. 2023-05-01)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -3963,7 +3994,7 @@ Autores: Lleva, Munakomi, Sun y Chang
 Título: *Ulnar Neuropathy*  
 Publicación: StatPearls [Internet], NBK534226 (act. 2025-12-13)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -4132,9 +4163,9 @@ Citada como:
 143. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101
 144. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
 145. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 90 (medir la movilidad activa y pasiva del codo y el antebrazo y la sensación final; sin datos de precisión)
-146. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados: S 100 % (17/17), E 75 % (3 de 4 controles). Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 controles y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
-147. O'Driscoll 2005 (Am J Sports Med 33:231–239; resumen en PubMed) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-148. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+146. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+147. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+148. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
 149. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 101
 150. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 151. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83, 85 y 100
@@ -4143,14 +4174,14 @@ Citada como:
 154. Park 2019 (Medicine 98:e15497): punto de máximo dolor en la línea radiocapitelar en 20 de 24 · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83–84 y 100 (dolor localizado en la línea radiohumeral posterolateral: sospechar un problema intraarticular)
 155. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 89 y 100
 156. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89
-157. Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; cohorte), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; resumen en PubMed) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
+157. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
 158. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 102
-159. Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; cohorte), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
+159. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
 160. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
 161. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92 (la subluxación no es diagnóstica de neuropatía cubital)
 162. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92
-163. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-164. Ochi 2011 (J Hand Surg Am 36:782–787; resumen en PubMed) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+163. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1) · Ochi 2011 (J Hand Surg Am 36:782–787) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+164. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
 165. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100
 166. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100
 167. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100
@@ -4815,7 +4846,7 @@ Autores: Lubiatowski, Wałecka, Dzianach, Stefaniak y Romanowski
 Título: *Synovial plica of the elbow and its clinical relevance*  
 Publicación: EFORT Open Rev 5(9):549–557  
 DOI: 10.1302/2058-5241.5.200027  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La resección fue artroscópica en 280 de 288 y los criterios de eficacia eran poco claros: se precisa en co6. PubMed (2026-10): nada posterior sobre el tratamiento de la plica del codo (Cui 2026 es de pronóstico con RM).  
 Nota: Revisión narrativa con tabla de 19 series de resección; texto completo leído en Europe PMC. Leído en la sesión de dosis de codo (2026-10). Pauta de co6.
 
 Citada como:
@@ -4832,14 +4863,14 @@ Autores: Lucado, Day, Vincent, MacDermid, Fedorczyk, Grewal y Martin
 Título: *Lateral Elbow Pain and Muscle Function Impairments. Clinical Practice Guidelines*  
 Publicación: J Orthop Sports Phys Ther 52(12):CPG1–CPG111  
 DOI: 10.2519/jospt.2022.0302  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo).  
 Nota: Guía de práctica clínica APTA (literatura hasta noviembre de 2021); PDF completo descargado de orthopt.org. Leído en la sesión de dosis de codo (2026-10). Pauta de co1. También da las MCID del PRTEE (7 y 11 puntos) y del DASH (10,2), y dice que no hay estudios del QuickDASH en la epicondilalgia lateral.
 
 Citada como:
 
 1. Otro nombre del test de Cozen: la guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)». No es una prueba distinta: marcar solo una de las dos para no contar dos veces el mismo hallazgo.
 2. Lucado 2022 (J Orthop Sports Phys Ther 52(12):CPG1–CPG111, apéndice E)
-3. Lucado 2022, J Orthop Sports Phys Ther 52(12):CPG1–CPG111 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía)
+3. Lucado 2022, J Orthop Sports Phys Ther 52(12):CPG1–CPG111 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Wallis 2024, Cochrane Database Syst Rev (5):CD013042 (revisión Cochrane, 23 ensayos, certeza baja)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -5495,7 +5526,7 @@ Citada como:
 
 Publicación: Guía NICE «Surgical site infections: prevention and treatment» (11 de abril de 2019, actualizada el 19 de agosto de 2020)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 19 de agosto de 2020; la revisión de vigilancia de 2023 recomendó actualizarla, pero NICE decidió no hacerlo (31 de mayo de 2023). Las recomendaciones 1.1.3 y 1.4.9 dicen lo que recoge el razonamiento (consultado en nice.org.uk en 2026-10).  
 Nota: PDF del usuario, leído entero (2026-10). Trata sobre todo la prevención; para reconocer la infección aporta la definición («Terms used in this guideline»), la frecuencia («Context») y las recomendaciones 1.1.3 y 1.4.9. Razonamiento del cribado posquirúrgico (pq_herida).
 
 Citada como:
@@ -5647,7 +5678,7 @@ Citada como:
 
 Publicación: Guía NICE «Venous thromboembolism in over 16s: reducing the risk of hospital-acquired deep vein thrombosis or pulmonary embolism» (21 de marzo de 2018, actualizada el 13 de agosto de 2019)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 13 de agosto de 2019, y la revisión de vigilancia del 18 de septiembre de 2024 decidió no actualizarla. Las recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3 dicen lo que recoge el razonamiento (duraciones de la profilaxis y umbrales de 90 minutos; consultado en nice.org.uk en 2026-10).  
 Nota: PDF del usuario (2026-10): leídas las recomendaciones 1.1–1.3 y 1.10–1.15 (riesgo, información al alta y profilaxis por tipo de cirugía). Razonamiento del cribado posquirúrgico (pq_tvp, pq_tvp_ms).
 
 Citada como:
@@ -5698,22 +5729,25 @@ Autores: O'Driscoll, Lawton y Smith
 Título: *The "moving valgus stress test" for medial collateral ligament tears of the elbow*  
 Publicación: Am J Sports Med 33(2):231–239  
 DOI: 10.1177/0363546504267804  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4.  
 Nota: Resumen en PubMed (PMID 15701609; no está en PMC). Comprobación de las cifras que da Lluch 2020, cap. 3.2, p. 86, invertidas. Test de valgo dinámico de co4 (codo).
 
 Citada como:
 
-1. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados: S 100 % (17/17), E 75 % (3 de 4 controles). Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 controles y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
-2. O'Driscoll 2005 (Am J Sports Med 33:231–239; resumen en PubMed) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-3. Sentado, codo a 70° de flexión y antebrazo en supinación máxima; estrés en valgo comparado con el otro codo; positivo si reproduce el dolor medial. Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°. El dolor es más sensible y la laxitud, más específica (Lluch). En O'Driscoll 2005 (Zwerus, tabla 4): S 64,7 %, E 50 % (solo 4 controles), LR+ 1,29 (IC 0,46–3,66), LR− 0,71: no cambia la probabilidad, cuenta como hallazgo.
-4. La misma maniobra, valorando la apertura medial o la falta de tope firme frente al otro codo. En O'Driscoll 2005 (Zwerus, tabla 4): S 18,8 %, E 100 % (solo 4 controles; la LR+ no se puede calcular), LR− 0,81: cuenta como hallazgo.
+1. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+2. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+3. Sentado, codo a 70° de flexión y antebrazo en supinación máxima; estrés en valgo comparado con el otro codo; positivo si reproduce el dolor medial. Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°. El dolor es más sensible y la laxitud, más específica (Lluch). En O'Driscoll 2005, que lo exploró a 30°, 60°, 70° o 90° sin un ángulo único: S 64,7 % (11 de 17), E 50 % (2 de 4 sin lesión); LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4): no cambia la probabilidad, cuenta como hallazgo.
+4. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+5. La misma maniobra, valorando la apertura medial o la falta de tope firme frente al otro codo. En O'Driscoll 2005: S 18,8 % (3 de 16), E 100 % (4 de 4 sin lesión; la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4): cuenta como hallazgo.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `criterio`) | 4b · mención en el texto | 1 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 2 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» (en `criterio`) | 4b · mención en el texto | 3 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» (en `criterio`) | 4b · mención en el texto | 4 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 4 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» (en `criterio`) | 4b · mención en el texto | 5 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 4 |
 
 ### O'Driscoll 2007
 
@@ -5721,13 +5755,13 @@ Autores: O'Driscoll, Goncalves y Dietz
 Título: *The hook test for distal biceps tendon avulsion*  
 Publicación: Am J Sports Med 35(11):1865–1869  
 DOI: 10.1177/0363546507305016  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Tabla 1: hook test anormal en 33 de 33 roturas completas e intacto en 12 de 12 parciales, todas operadas; los 45 brazos sanos fueron un control aparte. Es una revisión retrospectiva del registro quirúrgico del creador del test (un solo cirujano). En co7 se corrige que la E sale de las roturas parciales, no del brazo sano, y pasa a contraste: el hook test puntúa ahora con Zwerus 2022.  
 Nota: Leído en la sesión de codo (2026-10). Resumen en PubMed (PMID 17687121). Hook test de co7 (codo).
 
 Citada como:
 
-1. Con el codo en 90° de flexión activa y antebrazo supinado, se intenta "enganchar" el tendón del bíceps con el dedo índice. Imposible si hay rotura. Puntúa solo cuando es normal: en la cohorte de Devereaux y ElMaraghy (48 pacientes con sospecha de rotura, confirmada con cirugía o RM), S 81 %, E 100 % (IC 54–100: solo 6 sin rotura completa), LR− 0,19 (IC 0,10–0,36); la LR+ no se puede calcular. En O'Driscoll 2007 (45 operados, el brazo sano como control) dio S y E del 100 %.
-2. Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; cohorte), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; resumen en PubMed) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
+1. Con el codo en 90° de flexión y el antebrazo supinado, se intenta "enganchar" el tendón del bíceps con el dedo índice desde el lado lateral. Positivo (rotura completa) si no hay una estructura en cordón que enganchar; si engancha pero duele, orienta a rotura parcial. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). En las roturas de menos de un mes, S 86 %; en las crónicas, 57 %: la cicatriz o una aponeurosis bicipital íntegra pueden dar un cordón que engancha. Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+2. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -5740,18 +5774,22 @@ Autores: Ochi, Horiuchi, Tanabe, Morita, Takeda y Ninomiya
 Título: *Comparison of shoulder internal rotation test with the elbow flexion test in the diagnosis of cubital tunnel syndrome*  
 Publicación: J Hand Surg Am 36(5):782–787  
 DOI: 10.1016/j.jhsa.2010.12.019  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10; antes solo el resumen). 25 codos de 25 pacientes; controles, 104 nervios de 54 voluntarios y 14 nervios de otras neuropatías. El SIRT se hace con el antebrazo y la muñeca en posición neutra y los dedos extendidos: se corrige en co8.  
 Nota: Leído en la sesión de codo (2026-10). Solo el resumen en PubMed (PMID 21349657; no está en PMC). SIRT de co8 (codo).
 
 Citada como:
 
-1. Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo neutro y muñeca y dedos extendidos; positivo si reproduce los síntomas en 10 segundos. Ochi 2011 (25 pacientes; 54 controles sin síntomas y 14 con otras neuropatías): a los 10 segundos, S 80 % y ningún control positivo. Ochi 2012, a los 5 segundos: S 58 %, E 100 %. Cuenta como hallazgo: estudios de casos y controles del autor del test.
-2. Ochi 2011 (J Hand Surg Am 36:782–787; resumen en PubMed) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+1. Flexión máxima del codo con el antebrazo en supinación completa y la muñeca en extensión, mantenida; positivo si reproduce las parestesias en el territorio cubital. En Ochi 2012 (55 nervios de 52 pacientes con túnel cubital frente a 123 nervios de 64 voluntarios sin síntomas, de un solo cirujano), a los 5 segundos: S 25 %, E 100 %; en Ochi 2011, a los 10 segundos, S 36 %. Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch). Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012. Cuenta como hallazgo: con controles sin síntomas la especificidad se sobrestima.
+2. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1) · Ochi 2011 (J Hand Surg Am 36:782–787) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+3. Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo y muñeca en posición neutra y dedos extendidos; positivo si reproduce los síntomas en 10 segundos. Ochi 2011 (25 codos de 25 pacientes; como controles, 104 nervios de 54 voluntarios sin síntomas y 14 nervios de 14 pacientes con otras neuropatías): a los 10 segundos, S 80 % y ningún control positivo. Ochi 2012, a los 5 segundos: S 58 %, E 100 %. Cuenta como hallazgo: estudios de casos y controles del autor del test.
+4. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» (en `criterio`) | 4b · mención en el texto | 1 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» | 4b · cita bajo el test | 2 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» | 4b · cita bajo el test | 2 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» | 4b · cita bajo el test | 4 |
 
 ### Ochi 2012
 
@@ -5759,16 +5797,16 @@ Autores: Ochi, Horiuchi, Tanabe, Waseda, Kaneko y Koyanagi
 Título: *Shoulder internal rotation elbow flexion test for diagnosing cubital tunnel syndrome*  
 Publicación: J Shoulder Elbow Surg 21(6):777–781  
 DOI: 10.1016/j.jse.2011.10.015  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios en las cifras: PDF del usuario releído (2026-10). La unidad son nervios (55 de 52 pacientes frente a 123 de 64 voluntarios). La LR+ 42,5 del SIREFT está publicada en el texto, pero con su tabla (48 de 55, 121 de 123) sale ≈54; se anota en co8 (no puntúa).  
 Nota: Leído en la sesión de codo (2026-10). PDF aportado por el usuario. Tests de provocación de co8 (codo).
 
 Citada como:
 
-1. Flexión pasiva mantenida del codo durante 60 segundos; positivo si reproduce las parestesias en el territorio cubital. En Ochi 2012 (55 nervios con túnel cubital frente a 123 controles sin síntomas, de un solo cirujano), a los 5 segundos: S 25 %, E 100 %. Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch). Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012. Cuenta como hallazgo: con controles sin síntomas la especificidad se sobrestima.
-2. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-3. Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo neutro y muñeca y dedos extendidos; positivo si reproduce los síntomas en 10 segundos. Ochi 2011 (25 pacientes; 54 controles sin síntomas y 14 con otras neuropatías): a los 10 segundos, S 80 % y ningún control positivo. Ochi 2012, a los 5 segundos: S 58 %, E 100 %. Cuenta como hallazgo: estudios de casos y controles del autor del test.
-4. Ochi 2011 (J Hand Surg Am 36:782–787; resumen en PubMed) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-5. Como el SIRT (hombro en 90° de abducción, 10° de flexión y rotación interna máxima), pero con el codo en flexión máxima, el antebrazo en supinación máxima y la muñeca y los dedos en extensión máxima; positivo si reproduce o agrava los síntomas en el territorio cubital en menos de 5 segundos. Ochi 2012: S 87 % (48/55), E 98 % (121/123), LR+ 42,5 publicada; más sensible que el test de flexión y el SIRT de 5 segundos. Cuenta como hallazgo: casos y controles, con controles sin síntomas de un solo cirujano, y el propio estudio advierte de que el desfiladero torácico y otros diagnósticos podrían dar positivo.
+1. Flexión máxima del codo con el antebrazo en supinación completa y la muñeca en extensión, mantenida; positivo si reproduce las parestesias en el territorio cubital. En Ochi 2012 (55 nervios de 52 pacientes con túnel cubital frente a 123 nervios de 64 voluntarios sin síntomas, de un solo cirujano), a los 5 segundos: S 25 %, E 100 %; en Ochi 2011, a los 10 segundos, S 36 %. Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch). Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012. Cuenta como hallazgo: con controles sin síntomas la especificidad se sobrestima.
+2. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1) · Ochi 2011 (J Hand Surg Am 36:782–787) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+3. Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo y muñeca en posición neutra y dedos extendidos; positivo si reproduce los síntomas en 10 segundos. Ochi 2011 (25 codos de 25 pacientes; como controles, 104 nervios de 54 voluntarios sin síntomas y 14 nervios de 14 pacientes con otras neuropatías): a los 10 segundos, S 80 % y ningún control positivo. Ochi 2012, a los 5 segundos: S 58 %, E 100 %. Cuenta como hallazgo: estudios de casos y controles del autor del test.
+4. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+5. Como el SIRT (hombro en 90° de abducción, 10° de flexión y rotación interna máxima), pero con el codo en flexión máxima, el antebrazo en supinación máxima y la muñeca y los dedos en extensión máxima; positivo si reproduce o agrava los síntomas en el territorio cubital en menos de 5 segundos. Ochi 2012 (nervios, no pacientes): S 87 % (48 de 55), E 98 % (121 de 123), LR+ 42,5 publicada en el texto, aunque con los datos de su tabla sale ≈54; más sensible que el test de flexión y el SIRT de 5 segundos. Cuenta como hallazgo: casos y controles, con voluntarios sin síntomas como controles, de un solo cirujano, y el propio estudio advierte de que el desfiladero torácico y otros diagnósticos podrían dar positivo.
 6. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -5881,7 +5919,7 @@ Autores: Pangia, Taqi y Rizvi
 Título: *Olecranon Bursitis*  
 Publicación: StatPearls [Internet], NBK470291 (act. 2025-12-13)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -5926,9 +5964,11 @@ Citada como:
 
 ### Park 2008
 
+Autores: Park, Lee y Lee  
+Título: *Diagnostic Value of Ultrasonography for Clinical Medial Epicondylitis*  
 Publicación: Arch Phys Med Rehabil 89:738–742  
 DOI: 10.1016/j.apmr.2007.09.048  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). S 95,2 % (20 de 21 codos) y E 92 % (23 de 25 codos sin síntomas: 15 contralaterales y 10 de voluntarios); referencia, el diagnóstico clínico de un fisiatra; radiólogo ciego. Se precisan los controles en co2.
 
 Citada como:
 
@@ -5940,14 +5980,16 @@ Citada como:
 
 ### Park 2019
 
-Publicación: Medicine 98:e15497  
+Autores: Park, Kim, Chun, Yoon, Choi y Jung  
+Título: *Clinical and diagnostic outcomes in arthroscopic treatment for posterolateral plicae impingement within the radiocapitellar joint*  
+Publicación: Medicine 98(18):e15497  
 DOI: 10.1097/md.0000000000015497  
-Última revisión: **sin revisar**
+Última revisión: 2026-10 · Cifras sin cambios; el test pasa a hallazgo (decisión del usuario): texto completo leído en PMC (PMC6504535, 2026-10). 20 de 24 plicas y 7 de 56 epicondilalgias positivas (S 83,3 %, E 87,5 %), sin LR publicadas. Es retrospectivo de casos y controles (plicas operadas sin epicondilalgia frente a epicondilalgias operadas sin plica), de los creadores del test, y PubMed (2026-10) no encuentra validación posterior, como el Slump o la aducción cruzada.
 
 Citada como:
 
 1. Park 2019 (Medicine 98:e15497): punto de máximo dolor en la línea radiocapitelar en 20 de 24 · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83–84 y 100 (dolor localizado en la línea radiohumeral posterolateral: sospechar un problema intraarticular)
-2. Park 2019 (Medicine 98:e15497; retrospectivo, n = 24 frente a 56)
+2. Park 2019 (Medicine 98(18):e15497; retrospectivo de casos y controles, n = 24 frente a 56; texto)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -5977,7 +6019,7 @@ Autores: Patil, Rehman, Anastasopoulou y Jialal
 Título: *Hypothyroidism*  
 Publicación: StatPearls [Internet], NBK519536 (act. 2024-02-18)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 18 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -6096,7 +6138,7 @@ Autores: Quzli, Elheet y Quzali
 Título: *Posterolateral Rotatory Instability of the Elbow: A Practice-Focused Narrative Review*  
 Publicación: Cureus 17(11):e96151  
 DOI: 10.7759/cureus.96151  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral.  
 Nota: Revisión narrativa (fuentes elegidas por relevancia, sin protocolo); texto completo leído en Europe PMC. Leído en la sesión de dosis de codo (2026-10). Pauta de co5, presentada como opinión.
 
 Citada como:
@@ -6296,7 +6338,7 @@ Autores: Rhodes, Denault y Varacallo
 Título: *Physiology, Oxygen Transport*  
 Publicación: StatPearls [Internet], NBK538336 (act. 2022-11-14)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de noviembre de 2022 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -6351,13 +6393,13 @@ Autores: Rinkel, Schreuders, Koes y Huisstede
 Título: *Current evidence for effectiveness of interventions for cubital tunnel syndrome, radial tunnel syndrome, instability, or bursitis of the elbow: a systematic review*  
 Publicación: Clin J Pain 29(12):1087–1096  
 DOI: 10.1097/AJP.0b013e31828b8e7d  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: PDF del usuario releído (2026-10). Su «ensayo de bajo riesgo de sesgo» del túnel cubital es el mismo único ensayo que recogen Caliandro 2025 y Bateman 2025 (Bateman lo califica de alto riesgo); se corrige la pauta de co8 para no presentarlo como tres pruebas.  
 Nota: Revisión sistemática (1 revisión y 6 ensayos; búsqueda hasta enero de 2012). PDF aportado por el usuario. Leído en la sesión de dosis de codo (2026-10). Pautas de co5 y co8; sin ningún ensayo del túnel radial (co9, sin pauta).
 
 Citada como:
 
 1. Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Quzli 2025, Cureus 17(11):e96151 (revisión narrativa, sin protocolo: opinión de los autores)
-2. Caliandro 2025, Cochrane Database Syst Rev (4):CD006839 (revisión Cochrane, 15 ensayos; solo el resumen) · Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Bateman 2025, Hand Ther 30(3):105–112 (revisión sistemática con GRADE; solo el resumen)
+2. Caliandro 2025, Cochrane Database Syst Rev (4):CD006839 (revisión Cochrane, 15 ensayos) · Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Bateman 2025, Hand Ther 30(3):105–112 (revisión sistemática con RoB 2 y GRADE)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -6381,13 +6423,36 @@ Citada como:
 |---|---|---|---|---|
 | Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 
+### Roedl 2016
+
+Autores: Roedl, Gonzalez, Zoga, Morrison, Nevalainen, Ciccotti y Nazarian  
+Título: *Potential Utility of a Combined Approach with US and MR Arthrography to Image Medial Elbow Pain in Baseball Players*  
+Publicación: Radiology 279(3):827–837  
+DOI: 10.1148/radiol.2015151256  
+Última revisión: 2026-10 · Añadida (antes se citaba como «Roedl», sin año, a través de Campbell 2020): PDF del usuario leído entero, con su fe de erratas (Radiology 280(1):328, que solo corrige que el estrés en valgo se aplicó a mano y no con el aparato Telos). Retrospectivo, 144 jugadores de béisbol consecutivos con dolor medial del codo y cirugía o artroscopia como referencia (de 257 con las dos pruebas). Tabla 2: ecografía de estrés >1,0 mm, 51 de 53 roturas y 74 de 91 sin rotura (umbral fijado de antemano por un estudio en cadáver); artro-RM, 43 de 53 y 83 de 91. La unidad son pacientes. Sin LR publicadas. Cifras de co4 sin cambios.  
+Nota: Leído en la sesión de referencias de codo (2026-10). Imagen del ligamento colateral cubital de co4.
+
+Citada como:
+
+1. Diferencia de apertura de la articulación cubitotroclear entre reposo y valgo manual (codo a unos 30°) mayor de 1,0 mm frente al codo sano. En Roedl 2016, S 96 %, E 81 % (LR calculadas ≈5,1 y ≈0,05), en lanzadores con la apertura del brazo dominante ya algo aumentada (0,5 mm de media sin rotura).
+2. Roedl 2016 (Radiology 279(3):827–837; retrospectivo, 144 jugadores de béisbol con dolor medial del codo, todos con cirugía o artroscopia como referencia; tabla 2: 51 de 53 roturas y 74 de 91 sin rotura; positivo con apertura >1,0 mm frente al lado sano, umbral fijado de antemano por un estudio en cadáver; para rotura completa, umbral de 2,5 mm sacado de la curva ROC: S 95 %, E 89 %), recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática sin metaanálisis: es el único estudio de la ecografía de estrés)
+3. Lectura de la artro-RM con una rotura parcial o completa del ligamento. En la cohorte de Roedl 2016, S 81 %, E 91 % (LR calculadas ≈9,0 y ≈0,21); la RM detectó mejor las roturas del tercio medio y distal y la ecografía convencional, las proximales.
+4. Roedl 2016 (Radiology 279(3):827–837; retrospectivo, 144 jugadores de béisbol, todos con cirugía o artroscopia; tabla 2: 43 de 53 roturas y 83 de 91 sin rotura, la misma precisión que la ecografía convencional en esa cohorte), recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática sin metaanálisis; otros estudios de la revisión, S 81–100 %, E 91–100 %)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» | 4b · cita bajo el test | 2 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» | 4b · cita bajo el test | 4 |
+
 ### Rout 2024
 
 Autores: Rout, Reynolds y Zito  
 Título: *Neutropenia*  
 Publicación: StatPearls [Internet], NBK507702 (act. 2024-06-07)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de junio de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
 
 Citada como:
@@ -6625,7 +6690,7 @@ Autores: See, Loo y Jaafar
 Título: *Eccentric exercise therapy for medial epicondylitis: A systematic review of clinical outcomes*  
 Publicación: Complement Ther Med 98:103364  
 DOI: 10.1016/j.ctim.2026.103364  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: PDF del usuario releído (2026-10); 5 estudios y 143 pacientes, certeza baja a muy baja, pautas de la tabla 2 coinciden. Es la revisión más reciente sobre el excéntrico en la epicondilalgia medial (PubMed, 2026-10).  
 Nota: Revisión sistemática (5 estudios, 143 pacientes; GRADE bajo a muy bajo). PDF aportado por el usuario. Leído en la sesión de dosis de codo (2026-10). Pauta de co2.
 
 Citada como:
@@ -6693,7 +6758,7 @@ Autores: Sevy, Sina y Varacallo
 Título: *Carpal Tunnel Syndrome*  
 Publicación: StatPearls [Internet], NBK448179 (act. 2023-10-29)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 29 de octubre de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de codo.
 
 Citada como:
@@ -6710,7 +6775,7 @@ Autores: Shahid, Ashraf y Sharma
 Título: *Physiology, Thyroid Hormone*  
 Publicación: StatPearls [Internet], NBK500006 (act. 2023-06-05)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído en la sesión de codo (2026-10): razonamiento del cribado de codo.
 
 Citada como:
@@ -6779,7 +6844,7 @@ Autores: Siemensma, van der Windt, van Es, Colaris y Eygendaal
 Título: *Management of the stiff elbow: a literature review*  
 Publicación: EFORT Open Rev 8(5):351–360  
 DOI: 10.1530/EOR-23-0039  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La pauta de férulas es «por la literatura y la experiencia propia» de los autores; se dice así en co3.  
 Nota: Revisión narrativa; texto completo leído en Europe PMC. Leído en la sesión de dosis de codo (2026-10). Pauta de co3 (indicación del tratamiento conservador y uso de las férulas, esto último opinión de los autores).
 
 Citada como:
@@ -7274,7 +7339,7 @@ Autores: Vyas, Sankari y Goyal
 Título: *Acute Pulmonary Embolism*  
 Publicación: StatPearls [Internet], NBK560551 (act. 2024-12-11)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 11 de diciembre de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado posquirúrgico (pq_tvp, pq_tvp_ms y pq_tep).
 
 Citada como:
@@ -7305,6 +7370,25 @@ Citada como:
 | Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 1 |
+
+### Wallis 2024
+
+Autores: Wallis, Bourne, Jessup, Johnston, Frydman, Cyril y Buchbinder  
+Título: *Manual therapy and exercise for lateral elbow pain*  
+Publicación: Cochrane Database Syst Rev 2024(5):CD013042  
+DOI: 10.1002/14651858.CD013042.pub2  
+Última revisión: 2026-10 · Añadida (texto completo leído en PMC, 2026-10): 23 ensayos y 1612 participantes, búsqueda hasta enero de 2024. Terapia manual, ejercicio o ambos frente a intervención mínima: dolor −0,53/10 y discapacidad −5/100 al final del tratamiento, certeza baja, probablemente sin relevancia clínica y sin mantenerse; ejercicio solo, poco o ningún efecto en el dolor; añadir terapia manual al ejercicio, −2,56/10 al final del tratamiento. Contraste de la pauta de co1 (decisión del usuario).  
+Nota: Revisión Cochrane, posterior a Lucado 2022. Pauta de co1.
+
+Citada como:
+
+1. Ejercicio resistido de los extensores de la muñeca (isométrico, concéntrico o excéntrico) en la epicondilalgia subaguda o crónica (B), combinado con otras intervenciones, como la terapia manual (B). La guía sugiere 3 series de 15 repeticiones durante 6–12 semanas (evidencia moderada y opinión de expertos), con cargas que no agraven los síntomas, progresando de isométrico a isotónico y de isotónico a excéntrico según la tolerancia; ningún estudio describe cómo fijar ni progresar la carga, y los estiramientos solos parecen menos eficaces a medio plazo que los estiramientos más fortalecimiento. Movilización o manipulación local del codo para el dolor y la fuerza de prensión sin dolor a corto plazo (B); de la columna cervical o torácica o de la muñeca como complemento si hay déficits en esas zonas (C). Fortalecimiento escapular si hay déficits (C). Punción seca tendinosa o de puntos gatillo (B). Movilización de partes blandas en la crónica (C). Vendaje rígido para el dolor inmediato en la epicondilalgia irritable (B); kinesiotape dentro de un programa multimodal (C). Ortesis de contrafuerza o de muñeca durante la actividad si esta agrava los síntomas (F); sin recomendación a medio y largo plazo (D). Láser (C). Sin fonoforesis con hidrocortisona, prednisolona o diclofenaco (C). Ultrasonido aislado y masaje transverso profundo: sin recomendación por evidencia contradictoria (D). Adaptaciones ergonómicas (E). En actividades de alta demanda (trabajo, deporte, música), vuelta por fases (F). Una revisión Cochrane posterior a la guía (Wallis 2024: 23 ensayos, búsqueda hasta enero de 2024) da menos respaldo al ejercicio y la terapia manual: frente a una intervención mínima reducen poco el dolor (0,5 puntos sobre 10) y la discapacidad (5 sobre 100) al final del tratamiento, probablemente sin relevancia clínica y sin que se mantenga; el ejercicio solo apenas cambia el dolor, y añadir terapia manual al ejercicio lo reduce más al final del tratamiento; certeza baja en todo.
+2. Lucado 2022, J Orthop Sports Phys Ther 52(12):CPG1–CPG111 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Wallis 2024, Cochrane Database Syst Rev (5):CD013042 (revisión Cochrane, 23 ensayos, certeza baja)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Dosis (en el texto) | 5 · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
 ### Walton 2004
 
@@ -7412,7 +7496,7 @@ Autores: Wistow, Newman, Hannink y Barker
 Título: *Investigating the effectiveness of stretching interventions on post-traumatic elbow stiffness: a systematic review*  
 Publicación: JSES Int 9(6):2146–2155  
 DOI: 10.1016/j.jseint.2025.06.015  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). Se precisa que las 2–7 sesiones por semana durante 3–6 semanas son de los ensayos de hold-relax. Es posterior a la revisión de Piacenza 2024 (Musculoskelet Sci Pract), que no da una pauta mejor.  
 Nota: Revisión sistemática (9 estudios, 312 participantes; sin metaanálisis); texto completo leído en Europe PMC. Leído en la sesión de dosis de codo (2026-10). Pauta de co3.
 
 Citada como:
@@ -7463,7 +7547,7 @@ Autores: Zabaglo, Leslie y Sharman
 Título: *Postoperative Wound Infections*  
 Publicación: StatPearls [Internet], NBK560533 (act. 2024-03-05)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de marzo de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado posquirúrgico (pq_herida).
 
 Citada como:
@@ -7581,24 +7665,24 @@ Autores: Zwerus, Somford, Maissan, Heisen, Eygendaal y van den Bekerom
 Título: *Physical examination of the elbow, what is the evidence? A systematic literature review*  
 Publicación: Br J Sports Med 52(19):1253–1260 (en línea en 2017)  
 DOI: 10.1136/bjsports-2016-096712  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7.  
 Nota: Leído en la sesión de codo (2026-10). PDF aportado por el usuario. La revisión que cita Lluch 2020, cap. 3.2 (ref. 9). Ojo: su texto invierte la S y la E del valgo móvil; la tabla 4 las da bien. Tests de co1, co4, co5 y co7 (codo).
 
 Citada como:
 
-1. Prensión máxima con el codo a 90° de flexión y en extensión completa: en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia). Cuenta como hallazgo: los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007 en Zwerus 2018 (tabla 4; 40 pacientes, brazo sano como control): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24).
-2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen, casi con seguridad: Dorf 2007 (J Hand Surg Am 32:882–886; retrospectivo, 81 pacientes; una diferencia del 8 % entre flexión y extensión distinguió el brazo afectado del sano con un 83 % de precisión) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+1. Prensión máxima con el codo a 90° de flexión y en extensión completa: en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia). Cuenta como hallazgo: los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
+2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 3. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
-4. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados: S 100 % (17/17), E 75 % (3 de 4 controles). Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 controles y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
-5. O'Driscoll 2005 (Am J Sports Med 33:231–239; resumen en PubMed) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-6. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+4. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+5. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+6. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
 7. Pivot shift: en supino, brazo por encima de la cabeza, hombro en rotación externa completa y antebrazo en supinación; carga axial y valgo mientras se lleva el codo de extensión a flexión; positivo si la radiohumeral se reduce con un resalte palpable. Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular; sin especificidad publicada en el capítulo. El dato es de Regan y Lapner, recogido en Zwerus 2018: 8 pacientes, todos con la lesión y sin controles, así que no hay especificidad posible.
 8. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 9. El paciente hace una flexión de brazos con el antebrazo en supinación máxima y otra en pronación máxima; positivo si la aprensión o la subluxación aparecen al extender el codo en supinación. En Zwerus 2018 (tabla 4; Regan y Lapner): S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles; sin especificidad: cuenta como hallazgo. Lluch da el 88–100 % para este test y el de recolocación juntos.
-10. Con el brazo apoyado en el borde de la mesa, el codo hacia fuera y el antebrazo en supinación, el paciente flexiona el codo cargando peso: aparecen aprensión y dolor hacia los 40° de flexión. Se repite con el examinador presionando la cabeza del radio para evitar la subluxación posterior; positivo si los síntomas se alivian. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles; sin especificidad: cuenta como hallazgo.
+10. Con el brazo apoyado en el borde de la mesa, el codo hacia fuera y el antebrazo en supinación, el paciente flexiona el codo cargando peso: aparecen aprensión y dolor hacia los 40° de flexión. Se repite con el examinador presionando la cabeza del radio para evitar la subluxación posterior; positivo si los síntomas se alivian. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles, con el pivot shift como referencia y diseño poco claro (tabla 3); sin especificidad: cuenta como hallazgo.
 11. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-12. Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; cohorte), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; resumen en PubMed) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
-13. Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; cohorte), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
+12. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
+13. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
 14. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
 15. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
 
@@ -7622,6 +7706,29 @@ Citada como:
 | Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Test de compresión del tríceps (triceps squeeze test)» | 4b · cita bajo el test | 14 |
 | Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 15 |
 | Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 15 |
+
+### Zwerus 2022
+
+Autores: Zwerus, van Deurzen, van den Bekerom, The y Eygendaal  
+Título: *Distal Biceps Tendon Ruptures: Diagnostic Strategy Through Physical Examination*  
+Publicación: Am J Sports Med 50(14):3956–3962  
+DOI: 10.1177/03635465221129874  
+Última revisión: 2026-10 · Añadida y pasa a dar las cifras de co7 (decisión del usuario): texto completo leído en PMC (2026-10). Cohorte prospectiva de 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal (2017–2020, dos hospitales), 42 roturas completas; referencia, cirugía en el 79 % y RM o ecografía en el resto; los cirujanos no estaban ciegos en la cirugía. La unidad son pacientes. Tabla 2 (total): hook test S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30; PFP S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34, publicadas. En la tabla, la fila de la palpación de las roturas agudas y crónicas repite la del total (errata sin efecto en la app). No es del grupo que creó los tests.  
+Nota: Leído en la sesión de referencias de codo (2026-10). Hook test y pronación pasiva de co7.
+
+Citada como:
+
+1. Con el codo en 90° de flexión y el antebrazo supinado, se intenta "enganchar" el tendón del bíceps con el dedo índice desde el lado lateral. Positivo (rotura completa) si no hay una estructura en cordón que enganchar; si engancha pero duele, orienta a rotura parcial. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). En las roturas de menos de un mes, S 86 %; en las crónicas, 57 %: la cicatriz o una aponeurosis bicipital íntegra pueden dar un cordón que engancha. Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+2. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
+3. Codo apoyado a 90° de flexión; se palpa el vientre del bíceps mientras se prona y supina pasivamente el antebrazo: si el músculo sube con la supinación y baja con la pronación, el tendón distal está íntegro; si no se mueve, rotura completa. Cifras de Zwerus 2022 (tabla 2; los mismos 86 pacientes): S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34 (publicadas); menos sensible en las roturas de menos de un mes (S 67 %). Si también se hace el Hook test, solo cuenta el Hook test. Contraste: en Devereaux y ElMaraghy 2013 (solo 6 sin rotura completa, verificación según el resultado de los tests) dio S 95,2 %, E 100 %, LR− 0,05.
+4. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 2 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 4 |
 
 ## 3. Otras fuentes del contenido
 
