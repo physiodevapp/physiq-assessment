@@ -2615,11 +2615,11 @@
    "en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia).",
    "Cuenta como hallazgo:",
    "los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral.",
-   "Cifras de Dorf 2007 en Zwerus 2018 (tabla 4;",
-   "40 pacientes, brazo sano como control):",
+   "Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4):",
    "caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21);",
    "≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24);",
-   "≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24)."
+   "≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24).",
+   "El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión."
   ]
  },
  "co1|Test de Thomsen (= test de Cozen)": {
@@ -2653,7 +2653,8 @@
    "Ecografía convencional (no sonoelastografía):",
    "foco hipo o anecoico, tendón no visible, calcificación o irregularidad cortical.",
    "Cuenta como hallazgo:",
-   "S 95,2 %, E 92 %, pero el patrón de referencia fue el propio diagnóstico clínico de un fisiatra y se comparó con 25 codos sin la patología, un diseño que infla la precisión y no mide si la ecografía añade algo al diagnóstico clínico."
+   "S 95,2 %, E 92 %, pero el patrón de referencia fue el propio diagnóstico clínico de un fisiatra y se comparó con 25 codos sin síntomas (15 contralaterales de los propios pacientes y 10 de voluntarios), un diseño que infla la precisión y no mide si la ecografía añade algo al diagnóstico clínico.",
+   "Los casos eran 21 codos de 18 pacientes, y el radiólogo no conocía los datos clínicos."
   ]
  },
  "co2|Test de Polk (medial)": {
@@ -2688,12 +2689,15 @@
  },
  "co4|Ecografía dinámica con estrés en valgo": {
   "frases": [
-   "Delta de apertura articular >1.0 mm comparado con lado contralateral."
+   "Diferencia de apertura de la articulación cubitotroclear entre reposo y valgo manual (codo a unos 30°) mayor de 1,0 mm frente al codo sano.",
+   "En Roedl 2016, S 96 %, E 81 % (LR calculadas ≈5,1 y ≈0,05), en lanzadores con la apertura del brazo dominante ya algo aumentada (0,5 mm de media sin rotura)."
   ]
  },
  "co4|RM con artrograma": {
   "frases": [
-   "Especificidad del 91 % en la cohorte de Roedl."
+   "Lectura de la artro-RM con una rotura parcial o completa del ligamento.",
+   "En la cohorte de Roedl 2016, S 81 %, E 91 % (LR calculadas ≈9,0 y ≈0,21);",
+   "la RM detectó mejor las roturas del tercio medio y distal y la ecografía convencional, las proximales."
   ]
  },
  "co4|Test de valgo móvil (moving valgus stress test)": {
@@ -2704,14 +2708,15 @@
    "Test de valgo móvil (O'Driscoll 2005):",
    "hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida;",
    "positivo si reproduce el dolor medial, máximo entre 120° y 70°.",
-   "En 21 pacientes operados:",
-   "S 100 % (17/17), E 75 % (3 de 4 controles).",
+   "En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva):",
+   "S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía).",
+   "O'Driscoll no publica LR.",
    "Lluch 2020 (p.",
    "86) da las cifras invertidas (S 75 %, E 100 %).",
    "Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1);",
    "es el texto de la revisión el que las invierte, y de ahí las copia Lluch.",
    "Cuenta como hallazgo:",
-   "la especificidad sale de solo 4 controles y el IC de la LR+ incluye el 1.",
+   "la especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1.",
    "La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión."
   ]
  },
@@ -2722,17 +2727,18 @@
    "positivo si reproduce el dolor medial.",
    "Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°.",
    "El dolor es más sensible y la laxitud, más específica (Lluch).",
-   "En O'Driscoll 2005 (Zwerus, tabla 4):",
-   "S 64,7 %, E 50 % (solo 4 controles), LR+ 1,29 (IC 0,46–3,66), LR− 0,71:",
+   "En O'Driscoll 2005, que lo exploró a 30°, 60°, 70° o 90° sin un ángulo único:",
+   "S 64,7 % (11 de 17), E 50 % (2 de 4 sin lesión);",
+   "LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4):",
    "no cambia la probabilidad, cuenta como hallazgo."
   ]
  },
  "co4|Test de valgo estático (laxitud)": {
   "frases": [
    "La misma maniobra, valorando la apertura medial o la falta de tope firme frente al otro codo.",
-   "En O'Driscoll 2005 (Zwerus, tabla 4):",
-   "S 18,8 %, E 100 % (solo 4 controles;",
-   "la LR+ no se puede calcular), LR− 0,81:",
+   "En O'Driscoll 2005:",
+   "S 18,8 % (3 de 16), E 100 % (4 de 4 sin lesión;",
+   "la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4):",
    "cuenta como hallazgo."
   ]
  },
@@ -2781,7 +2787,7 @@
    "positivo si los síntomas se alivian.",
    "En Zwerus 2018 (tabla 4;",
    "Arvind y Hargreaves):",
-   "S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles;",
+   "S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles, con el pivot shift como referencia y diseño poco claro (tabla 3);",
    "sin especificidad:",
    "cuenta como hallazgo."
   ]
@@ -2804,10 +2810,12 @@
    "Pulgar en la cara posterolateral de la radiocapitelar y antebrazo en pronación;",
    "empezar con el codo extendido y flexionar manteniendo la presión.",
    "Positivo si el dolor a baja flexión desaparece claramente por encima de 90°.",
-   "S 83,3 % (IC 95 % 62,6–95,3), E 87,5 %:",
-   "24 plicas confirmadas por artroscopia frente a 56 epicondilalgias laterales (el diferencial real).",
-   "Estudio retrospectivo de los creadores del test.",
-   "La RM identificó la plica en el 70,8 %."
+   "Cuenta como hallazgo.",
+   "En el único estudio, de los creadores del test, dio S 83,3 % (20 de 24;",
+   "IC 95 % 62,6–95,3) y E 87,5 % (49 de 56;",
+   "IC 75,9–94,8), de las que saldrían LR+ ≈6,7 y LR− ≈0,19 (no publicadas), pero es retrospectivo de casos y controles:",
+   "24 plicas confirmadas en la artroscopia (sin epicondilalgia) frente a 56 epicondilalgias laterales operadas (sin plica), un diseño que infla la precisión, y no hay validación posterior.",
+   "La RM identificó la plica en el 70,8 % de los casos."
   ]
  },
  "co6|PEPPER (palpación-extensión de la radiocapitelar)": {
@@ -2844,13 +2852,23 @@
  },
  "co7|Test del Gancho (Hook Test)": {
   "frases": [
-   "Con el codo en 90° de flexión activa y antebrazo supinado, se intenta \"enganchar\" el tendón del bíceps con el dedo índice.",
-   "Imposible si hay rotura.",
-   "Puntúa solo cuando es normal:",
-   "en la cohorte de Devereaux y ElMaraghy (48 pacientes con sospecha de rotura, confirmada con cirugía o RM), S 81 %, E 100 % (IC 54–100:",
-   "solo 6 sin rotura completa), LR− 0,19 (IC 0,10–0,36);",
-   "la LR+ no se puede calcular.",
-   "En O'Driscoll 2007 (45 operados, el brazo sano como control) dio S y E del 100 %."
+   "Con el codo en 90° de flexión y el antebrazo supinado, se intenta \"enganchar\" el tendón del bíceps con el dedo índice desde el lado lateral.",
+   "Positivo (rotura completa) si no hay una estructura en cordón que enganchar;",
+   "si engancha pero duele, orienta a rotura parcial.",
+   "Cifras de Zwerus 2022 (tabla 2):",
+   "86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto;",
+   "S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas).",
+   "En las roturas de menos de un mes, S 86 %;",
+   "en las crónicas, 57 %:",
+   "la cicatriz o una aponeurosis bicipital íntegra pueden dar un cordón que engancha.",
+   "Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe):",
+   "son los mismos pacientes y no se cuentan dos veces.",
+   "Contraste:",
+   "Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19;",
+   "O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas;",
+   "el brazo sano, control aparte), S y E del 100 %;",
+   "Baylor 2023 (prospectivo, 28 operados;",
+   "solo el resumen), S 96 %, E 67 %."
   ]
  },
  "co7|Pérdida del contorno normal del brazo y tendón distal no palpable": {
@@ -2863,12 +2881,15 @@
   "frases": [
    "Codo apoyado a 90° de flexión;",
    "se palpa el vientre del bíceps mientras se prona y supina pasivamente el antebrazo:",
-   "si el músculo sube con la supinación y baja con la pronación, el tendón distal está íntegro.",
-   "Puntúa solo cuando es normal:",
-   "en la misma cohorte de Devereaux y ElMaraghy (48 pacientes), S 95,2 %, E 100 % (IC 54–100:",
-   "solo 6 sin rotura completa), LR− 0,05 (IC 0,01–0,18).",
-   "Si se hacen los dos, sustituye al Hook test (absorbe):",
-   "son los mismos pacientes y no se cuentan dos veces."
+   "si el músculo sube con la supinación y baja con la pronación, el tendón distal está íntegro;",
+   "si no se mueve, rotura completa.",
+   "Cifras de Zwerus 2022 (tabla 2;",
+   "los mismos 86 pacientes):",
+   "S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34 (publicadas);",
+   "menos sensible en las roturas de menos de un mes (S 67 %).",
+   "Si también se hace el Hook test, solo cuenta el Hook test.",
+   "Contraste:",
+   "en Devereaux y ElMaraghy 2013 (solo 6 sin rotura completa, verificación según el resultado de los tests) dio S 95,2 %, E 100 %, LR− 0,05."
   ]
  },
  "co8|Test de Tinel en túnel cubital": {
@@ -2894,10 +2915,11 @@
  },
  "co8|Test de flexión del codo": {
   "frases": [
-   "Flexión pasiva mantenida del codo durante 60 segundos;",
+   "Flexión máxima del codo con el antebrazo en supinación completa y la muñeca en extensión, mantenida;",
    "positivo si reproduce las parestesias en el territorio cubital.",
-   "En Ochi 2012 (55 nervios con túnel cubital frente a 123 controles sin síntomas, de un solo cirujano), a los 5 segundos:",
-   "S 25 %, E 100 %.",
+   "En Ochi 2012 (55 nervios de 52 pacientes con túnel cubital frente a 123 nervios de 64 voluntarios sin síntomas, de un solo cirujano), a los 5 segundos:",
+   "S 25 %, E 100 %;",
+   "en Ochi 2011, a los 10 segundos, S 36 %.",
    "Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch).",
    "Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012.",
    "Cuenta como hallazgo:",
@@ -2906,10 +2928,10 @@
  },
  "co8|Test de rotación interna del hombro con flexión del codo (SIRT)": {
   "frases": [
-   "Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo neutro y muñeca y dedos extendidos;",
+   "Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo y muñeca en posición neutra y dedos extendidos;",
    "positivo si reproduce los síntomas en 10 segundos.",
-   "Ochi 2011 (25 pacientes;",
-   "54 controles sin síntomas y 14 con otras neuropatías):",
+   "Ochi 2011 (25 codos de 25 pacientes;",
+   "como controles, 104 nervios de 54 voluntarios sin síntomas y 14 nervios de 14 pacientes con otras neuropatías):",
    "a los 10 segundos, S 80 % y ningún control positivo.",
    "Ochi 2012, a los 5 segundos:",
    "S 58 %, E 100 %.",
@@ -2921,11 +2943,11 @@
   "frases": [
    "Como el SIRT (hombro en 90° de abducción, 10° de flexión y rotación interna máxima), pero con el codo en flexión máxima, el antebrazo en supinación máxima y la muñeca y los dedos en extensión máxima;",
    "positivo si reproduce o agrava los síntomas en el territorio cubital en menos de 5 segundos.",
-   "Ochi 2012:",
-   "S 87 % (48/55), E 98 % (121/123), LR+ 42,5 publicada;",
+   "Ochi 2012 (nervios, no pacientes):",
+   "S 87 % (48 de 55), E 98 % (121 de 123), LR+ 42,5 publicada en el texto, aunque con los datos de su tabla sale ≈54;",
    "más sensible que el test de flexión y el SIRT de 5 segundos.",
    "Cuenta como hallazgo:",
-   "casos y controles, con controles sin síntomas de un solo cirujano, y el propio estudio advierte de que el desfiladero torácico y otros diagnósticos podrían dar positivo."
+   "casos y controles, con voluntarios sin síntomas como controles, de un solo cirujano, y el propio estudio advierte de que el desfiladero torácico y otros diagnósticos podrían dar positivo."
   ]
  },
  "co9|Dolor en antebrazo proximal (NO en epicóndilo lateral)": {
