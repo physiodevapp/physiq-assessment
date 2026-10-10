@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **348** referencias de literatura, con **1429** usos.
+- **348** referencias de literatura, con **1432** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **333** de 348 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -66,7 +66,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | 2026-10 · Sustituida por van der Windt 2010 (revisión Cochrane del mismo grupo, con Devillé como autor; PDF del usuario): SLR y SLR cruzado de lu3 pasan a sus cifras agrupadas con LR publicadas. Se menciona como dato anterior. |
 | [Litaker 2000](#litaker-2000) | puntuación 4b | 1 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). La LR 5,0 del grupo de validación sale de la tabla 4 (52 de 146 frente a 5 de 70); 9,84 es la del grupo de derivación. Sigue siendo un solo estudio retrospectivo de un cirujano, con artrografía como referencia; no se encontró validación externa entre los artículos que lo citan (Europe PMC). Hanchard 2013 (Cochrane) lo excluye; Zhao 2024 lo usa solo para el Hawkins. |
-| [Solomon 2001](#solomon-2001) | puntuación 4b · texto | 3 | 2026-10 · Sin cambios: PDF del usuario leído; combinación LR+ 2,7 (1,4–5,1), LR− 0,4 (0,2–0,7), McMurray 1,3 / 0,8 e interlínea 0,9 / 1,1 coinciden con el resumen y la tabla 5. Hay una revisión posterior de la exploración compuesta, Rana 2026 (S 85 %, E 95 % en el menisco medial, sin LR): por decisión del usuario sigue mandando Solomon y Rana se cita en el criterio. |
+| [Solomon 2001](#solomon-2001) | puntuación 4b · razonamiento 4b · texto | 4 | 2026-10 · Sin cambios: PDF del usuario leído; combinación LR+ 2,7 (1,4–5,1), LR− 0,4 (0,2–0,7), McMurray 1,3 / 0,8 e interlínea 0,9 / 1,1 coinciden con el resumen y la tabla 5. Hay una revisión posterior de la exploración compuesta, Rana 2026 (S 85 %, E 95 % en el menisco medial, sin LR): por decisión del usuario sigue mandando Solomon y Rana se cita en el criterio. |
 | [Bachmann 2003](#bachmann-2003) | puntuación 4b · razonamiento fase 2 · texto | 6 | 2026-10 · Sustituida en la puntuación por Beckenkamp 2017 (tp5 y tp37); queda como contraste y en el razonamiento de tp_t2, cuyas cifras (las del resumen) coinciden. PDF leído entero (2026-10): LR− con efectos aleatorios univariantes (sensibilidad con bootstrap), niños y adultos juntos, incluye los estudios de Stiell (creador de la regla). El 0,21 que usaba tp5 no era «los estudios que aplican las dos reglas juntas», sino el estrato prospectivo aplicado después de 48 h de la tabla 1; la evaluación conjunta con todos los estudios es 0,17 (0,10–0,30) en la tabla 4. |
 | [Laslett 2003](#laslett-2003) | puntuación 4b · texto | 3 | 2026-10 · No leída directamente: sus cifras se toman de Laslett 2008 (ref. 52) y de Saueressig 2021 (fig. 3: S 0,91, E 0,78), que la incluye en su metaanálisis. Ambas leídas en PDF (2026-10). |
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10), 37 verdaderos positivos, 4 falsos positivos, 2 falsos negativos y 30 verdaderos negativos en 73 pacientes. Único estudio, de los creadores del signo, sin cegamiento; PubMed (2026-10): sin validación posterior (Liu 1997, leído, valida otra cosa: una combinación de 5 de 6 hallazgos en 22 pacientes). Sigue puntuando (decisión del usuario), con los límites en el criterio de tp20. |
@@ -95,7 +95,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Beckenkamp 2017](#beckenkamp-2017) | puntuación 4b · texto | 4 | 2026-10 · Añadida (PDF del usuario, leído entero): 66 estudios, modelo bivariante. Sustituye a Bachmann 2003 en la LR− de tp5 y tp37 (subgrupo con radiografía a todos los pacientes) y a Gomes 2022 en la LR+ del positivo. PubMed (2026-10): Sharifi Razavi 2026 (Arch Acad Emerg Med; 43 estudios en adultos, LR− 0,13) es posterior, pero copia errores de extracción de Gomes 2022 y mezcla tobillo y pie: no se usa. |
 | [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | 2026-10 · Sin cambios: PubMed (RAPIDH, validación o precisión diagnóstica; publicaciones de Genevay) no encuentra ninguna validación externa de los criterios RAPIDH. |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · texto | 4 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
-| [Décary 2018](#décary-2018) | puntuación 4b · razonamiento 4b · texto | 20 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
+| [Décary 2018](#décary-2018) | puntuación 4b · razonamiento 4b · texto | 22 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
 | [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · texto | 18 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
 | [Cook 2019](#cook-2019) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Sin cambios: PubMed (revisiones sistemáticas de precisión diagnóstica de la historia y la exploración en estenosis lumbar desde 2019) solo encuentra Wang 2024 (J Med Internet Res) y Yang 2024 (Spine), de inteligencia artificial sobre imagen, no de exploración clínica. |
 | [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
@@ -627,6 +627,8 @@ Nota: PDF completo del usuario leído (2026-10; 41 páginas, primera edición). 
 Citada como:
 
 1. Rinde mejor que cada maniobra suelta (McMurray LR+ 1,3; línea articular 0,9 en la misma revisión). 5 estudios con artroscopia: S media 77 %, E media 91 %. Más reciente, Rana 2026 (Br Med Bull 159:ldag023; 6 y 7 estudios con exploración compuesta, todos con RM y artroscopia en el mismo paciente) da S 85 % y E 95 % en el menisco medial y S 75 % y E 93 % en el lateral, pero sin LR, con agrupación univariante, exploraciones hechas por cirujanos ortopédicos y pacientes que iban a artroscopia: no sustituye a estas LR. La guía AAOS 2024 recomienda la exploración combinada (interlínea, McMurray, Thessaly) con fuerza moderada, sin cifras agrupadas.
+
+Los estudios no detallan cómo se combinaba la exploración: es la valoración global de cirujanos ortopédicos, que los autores toman como el límite superior de lo que cabe esperar. 4 de los 5 estudios son de nivel 4 (pacientes no consecutivos), y dos no incluían pacientes sin rotura. El tipo de pacientes (agudos o crónicos) cambia el rendimiento de las maniobras.
 2. El capítulo lo cita entre las pruebas de rotura meniscal, junto con la palpación de la interlínea y el McMurray, sin describir la técnica ni dar cifras. A 20° de flexión, el metaanálisis da S 75 % (IC 53–89 %), E 87 % (IC 65–96 %), LR+ 5,6 (IC 1,5–21,0) y LR− 0,28 (IC 0,11–0,71), pero con heterogeneidad muy alta (I² 94 %), y el estudio de los creadores del test da cifras muy superiores a las de los demás. La guía AAOS 2024 deja fuera ese estudio por no cumplir sus criterios de inclusión y, en uno de alta calidad, recoge S 64 % y E 53 %.
 
 En el estudio original, a 5° de flexión rindió menos que a 20°; se excluyeron las rodillas con menos de 4 semanas desde la lesión, porque duelen demasiado para explorarlas (Karachalios 2005). En Décary 2018 (PM&R) es el examinador quien gira el tronco del paciente, y el dolor rotuliano al flexionar no cuenta como positivo.
@@ -1794,22 +1796,23 @@ En el estudio original, a 5° de flexión rindió menos que a 20°; se excluyero
 10. Décary 2018 (PM R 10:472–482; tablas 6 y 7 y discusión)
 11. Décary 2018 (Arch Phys Med Rehabil 99:607–614; n = 279 consultas por la rodilla, 75 con dolor femoropatelar; referencia: diagnóstico compuesto de médico experto con radiografía y, si hacía falta, RM; tabla 3)
 12. Décary 2018 (Arch Phys Med Rehabil 99:607–614; n = 279 consultas por la rodilla, 75 con dolor femoropatelar; referencia: diagnóstico compuesto de médico experto con radiografía y, si hacía falta, RM; tabla 4)
-13. S IC 95 %: 73–87 %; E IC 73–92 %; LR+ IC 2,82–10,80; LR− IC 0,15–0,35. Rinde peor pasadas 3 semanas de la lesión (S 70 %, E 77 %) y en roturas completas (S 68 %, E 79 %). Los metaanálisis univariantes dan cifras más altas, que esta revisión considera sobrestimadas.
+13. Décary 2018 (Arch Phys Med Rehabil 99:607–614; introducción, resultados y discusión)
+14. S IC 95 %: 73–87 %; E IC 73–92 %; LR+ IC 2,82–10,80; LR− IC 0,15–0,35. Rinde peor pasadas 3 semanas de la lesión (S 70 %, E 77 %) y en roturas completas (S 68 %, E 79 %). Los metaanálisis univariantes dan cifras más altas, que esta revisión considera sobrestimadas.
 
 Técnica original: rodilla entre la extensión completa y 15° de flexión, con la pierna en ligera rotación externa; una mano fija el fémur y la otra lleva la tibia hacia delante con el pulgar en la interlínea anteromedial. Positivo: traslación con tope blando; vista de lado, se borra la pendiente del tendón rotuliano; si queda la duda, el ligamento está roto. En esa serie, los falsos negativos fueron asas de cubo incarceradas que bloqueaban la traslación (Torg 1976). Butler 1980 sitúa el Lachman a 30°, y Décary 2018 (PLoS One) a 15–30°, comparando con el lado sano. Con las fuerzas pequeñas de la exploración, las restricciones secundarias, el derrame y la contractura muscular pueden frenar la traslación aunque el LCA esté roto (Butler 1980).
-14. S IC 95 %: 77–88 %; E IC 64–95 %; LR+ IC 2,32–15,30; LR− IC 0,14–0,30. En esta revisión rinde igual que el Lachman.
+15. S IC 95 %: 77–88 %; E IC 64–95 %; LR+ IC 2,32–15,30; LR− IC 0,14–0,30. En esta revisión rinde igual que el Lachman.
 
 Con las fuerzas pequeñas de la exploración, las restricciones secundarias (cintilla iliotibial, cápsulas, ligamentos colaterales) pueden bloquear el cajón con el LCA roto; con el tiempo se distienden y el cajón se hace positivo (Butler 1980). En la serie de Torg, la mitad de las roturas del LCA con desgarro del menisco interno tenían el cajón negativo antes de la meniscectomía, y todas positivo después (Torg 1976). En Décary 2018 (PLoS One) el cajón dio el doble de falsos negativos que el Lachman, quizá por los desgarros meniscales asociados.
-15. El más específico y el que más sube la probabilidad si es positivo (LR+ IC 95 %: 5,43–19,30), pero el menos sensible: negativo, apenas la baja (LR− IC 0,40–0,56). S IC 47–62 %; E IC 88–97 %.
+16. El más específico y el que más sube la probabilidad si es positivo (LR+ IC 95 %: 5,43–19,30), pero el menos sensible: negativo, apenas la baja (LR− IC 0,40–0,56). S IC 47–62 %; E IC 88–97 %.
 
 En cadáver (29 rodillas), al cortar solo el LCA el resalte apareció en 7 de 20; en las otras 13 la rotación interna aumentó y se redujo de forma gradual, sin resalte, lo que el autor atribuye a un platillo externo más plano o a la magnitud del valgo aplicado. Si se corta también la cintilla iliotibial, la tibia queda en rotación interna y el resalte desaparece (Matsumoto 1990). Técnica en Décary 2018 (PLoS One): rodilla extendida en rotación interna, ligero valgo y flexión lenta; positivo si en los primeros 30° se ve o se palpa la subluxación del platillo externo, comparando con el lado sano.
-16. S 0,82 · E 0,95 · LR+ 17,5 (IC 9,8–31,5; bootstrap 12,4). No publica LR−.
+17. S 0,82 · E 0,95 · LR+ 17,5 (IC 9,8–31,5; bootstrap 12,4). No publica LR−.
 
 En esta serie, el 77 % llevaba más de 3 meses desde el traumatismo, lo que facilita la exploración (Décary 2018, PLoS One, discusión).
-17. Décary 2018 (PLoS One; n = 279, 22 roturas completas; referencia: diagnóstico compuesto de médico experto con RM)
-18. Décary 2018 (PLoS One; n = 279, 43 roturas parciales o completas; referencia: diagnóstico compuesto de médico experto con RM)
-19. Décary 2018 (PLoS One 13:e0198797; discusión)
-20. Décary 2018 (PLoS One 13:e0198797; tabla 7 y discusión)
+18. Décary 2018 (PLoS One; n = 279, 22 roturas completas; referencia: diagnóstico compuesto de médico experto con RM)
+19. Décary 2018 (PLoS One; n = 279, 43 roturas parciales o completas; referencia: diagnóstico compuesto de médico experto con RM)
+20. Décary 2018 (PLoS One 13:e0198797; discusión)
+21. Décary 2018 (PLoS One 13:e0198797; tabla 7 y discusión)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1825,14 +1828,16 @@ En esta serie, el 77 % llevaba más de 3 meses desde el traumatismo, lo que faci
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación degenerativa: inicio progresivo + dolor medial aislado + uno de tres» («¿Por qué?») | 4b · razonamiento del test | 10 |
 | Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva)» | 4b · cita bajo el test | 11 |
 | Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Descartar: grupos de Décary (si se cumple alguno, marcar «Negativo»)» | 4b · cita bajo el test | 12 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Test de Lachman» (en `razonamiento.detalle`) | 4b · mención en el texto | 13 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Test de Cajón Anterior» (en `razonamiento.detalle`) | 4b · mención en el texto | 14 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Test de Pivot Shift» (en `razonamiento.detalle`) | 4b · mención en el texto | 15 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo» (en `razonamiento.detalle`) | 4b · mención en el texto | 16 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo» | 4b · cita bajo el test | 17 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Descartar: sin mecanismo de pivote ni chasquido + Lachman o pivot shift negativos (si se cumple, marcar «Negativo»)» | 4b · cita bajo el test | 18 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo» («¿Por qué?») | 4b · razonamiento del test | 19 |
-| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Descartar: sin mecanismo de pivote ni chasquido + Lachman o pivot shift negativos (si se cumple, marcar «Negativo»)» («¿Por qué?») | 4b · razonamiento del test | 20 |
+| Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Confirmar: grupos de Décary (edad, localización del dolor, escaleras, faceta medial, extensión pasiva)» («¿Por qué?») | 4b · razonamiento del test | 13 |
+| Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Test «Descartar: grupos de Décary (si se cumple alguno, marcar «Negativo»)» («¿Por qué?») | 4b · razonamiento del test | 13 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Test de Lachman» (en `razonamiento.detalle`) | 4b · mención en el texto | 14 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Test de Cajón Anterior» (en `razonamiento.detalle`) | 4b · mención en el texto | 15 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Test de Pivot Shift» (en `razonamiento.detalle`) | 4b · mención en el texto | 16 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo» (en `razonamiento.detalle`) | 4b · mención en el texto | 17 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo» | 4b · cita bajo el test | 18 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Descartar: sin mecanismo de pivote ni chasquido + Lachman o pivot shift negativos (si se cumple, marcar «Negativo»)» | 4b · cita bajo el test | 19 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo» («¿Por qué?») | 4b · razonamiento del test | 20 |
+| Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Descartar: sin mecanismo de pivote ni chasquido + Lachman o pivot shift negativos (si se cumple, marcar «Negativo»)» («¿Por qué?») | 4b · razonamiento del test | 21 |
 
 ### Deeb y Maher 2026
 
@@ -6477,6 +6482,8 @@ Citada como:
 
 1. Rinde mejor que cada maniobra suelta (McMurray LR+ 1,3; línea articular 0,9 en la misma revisión). 5 estudios con artroscopia: S media 77 %, E media 91 %. Más reciente, Rana 2026 (Br Med Bull 159:ldag023; 6 y 7 estudios con exploración compuesta, todos con RM y artroscopia en el mismo paciente) da S 85 % y E 95 % en el menisco medial y S 75 % y E 93 % en el lateral, pero sin LR, con agrupación univariante, exploraciones hechas por cirujanos ortopédicos y pacientes que iban a artroscopia: no sustituye a estas LR. La guía AAOS 2024 recomienda la exploración combinada (interlínea, McMurray, Thessaly) con fuerza moderada, sin cifras agrupadas.
 
+Los estudios no detallan cómo se combinaba la exploración: es la valoración global de cirujanos ortopédicos, que los autores toman como el límite superior de lo que cabe esperar. 4 de los 5 estudios son de nivel 4 (pacientes no consecutivos), y dos no incluían pacientes sin rotura. El tipo de pacientes (agudos o crónicos) cambia el rendimiento de las maniobras.
+
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
@@ -7342,12 +7349,14 @@ Técnica original: desde la flexión máxima (talón cerca del glúteo), llevar 
 
 En la serie original, el dolor en el centro del ligamento lateral interno, donde sus fibras profundas se unen al menisco, era más fiable que en las inserciones anterior y posterior, donde pueden doler muchos otros tejidos; la intensidad del dolor no indica la gravedad de la lesión (McMurray 1942, p. 410). En Décary 2018 (PM&R) se palpó en supino con la rodilla a 90°, positiva si reproducía los síntomas comparada con el lado sano; sola no fue válida y solo ayudó dentro del grupo traumático, porque los desgarros degenerativos y la artrosis también la dan positiva a menudo.
 3. Solomon 2001 (JAMA 286:1610–20, Rational Clinical Examination); LR+ IC 95 %: 1,4–5,1; LR− IC 0,2–0,7
+4. Solomon 2001 (JAMA 286:1610–20; resultados, tabla 4, limitaciones y conclusión)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro2 · Lesión Meniscal | Test «Test de McMurray» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Sensibilidad a la palpación de la línea articular» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» | 4b · cita bajo el test | 3 |
+| Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» («¿Por qué?») | 4b · razonamiento del test | 4 |
 
 ### Speer 1994
 
