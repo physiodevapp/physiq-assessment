@@ -6,6 +6,8 @@
 // _initHubIntegration() call). A static `import './dom-shim.mjs'` at the top
 // of the importing file runs this before any other code in that file,
 // including its own later `await import(...)` calls.
+// lib/licencia-ia.js no toca el DOM al cargarse: se puede importar antes del shim.
+import { REINTENTO } from '../lib/licencia-ia.js';
 function makeEl() {
   return {
     className: '', textContent: '', innerHTML: '', id: '',
@@ -52,3 +54,5 @@ globalThis.IntersectionObserver = class { observe() {} unobserve() {} disconnect
 // Sin red en los tests: fuera del hub app.js arranca la grabadora, que consulta
 // la licencia al worker (lib/licencia-ia.js). Así nunca sale una petición real.
 globalThis.fetch = () => Promise.reject(new Error('sin red en los tests'));
+// …y sin la pausa de 1,5 s del reintento automático, que aquí siempre falla.
+REINTENTO.ms = 0;

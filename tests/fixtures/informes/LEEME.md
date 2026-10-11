@@ -3,7 +3,8 @@
 Informes generados por la tarjeta «🎙 Informe narrativo», copiados desde la app
 (con la cabecera y el pie locales, que `tools/revisar-informe.mjs` quita), junto
 con la valoración exportada y, si hubo audio, la transcripción. `tests/unit.js`
-(«revisión: informes reales») pasa cada uno por `tools/revisar-informe.mjs` y
+(«revisión: informes reales», tabla en `tests/unit/revision-informe.mjs`) pasa
+cada uno por `tools/revisar-informe.mjs` (su `revisarArchivos()`) y
 compara los puntos con los esperados: una regla nueva o cambiada no puede quitar
 un acierto ni añadir un falso positivo sin que el test lo diga. Si el cambio es
 intencionado, actualiza la tabla del test y esta.
