@@ -97,6 +97,22 @@ test('base64 payload size < 4096 chars', () => {
   });
 });
 
+// 📋 Notas y 📄 Informe son funciones puras del payload (lib/resumenes.js):
+// no leen `state`, así que con el mismo payload dan el mismo texto que app.js.
+const RES = await import('../../lib/resumenes.js');
+test('lib/resumenes.js: textoNotas / textoInformePaciente salen solo del payload', () => {
+  withState({ lado: 'Derecho', modo: 'breve' }, () => {
+    const d = buildPhysiQPayload();
+    const notas = buildContextSummaryText(), informe = buildInformeFisioterapiaText();
+    withState({ patient: 'Otra persona', region: 'rodilla' }, () => {
+      assert.equal(RES.textoNotas(d), notas);
+      assert.equal(RES.textoInformePaciente(d), informe);
+    });
+    assert.match(notas, /Región: Hombro \(derecho\)/);
+    assert.ok(informe.includes(RES.TEXTO_VALORACION_BREVE));
+  });
+});
+
 // ── getSistemicoAffirmativeTexts ──────────────────────────────────────────────
 console.log('\ngetSistemicoAffirmativeTexts');
 
