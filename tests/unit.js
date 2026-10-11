@@ -1970,6 +1970,16 @@ test('prompt: ninguna línea de «Hallazgos de la exploración» lleva cifras de
   }
 });
 
+test('prompt: ninguna pregunta del árbol que llega al prompt lleva una instrucción para el fisioterapeuta', () => {
+  // «Descartar antes lo vascular», «Palpar primero», «→ DERIVAR…»: el informe podía leerlas como algo hecho;
+  // la instrucción se queda en pantalla y al prompt va `iaPregunta`
+  const instruccion = /descart|palpar|revisar siempre|→|deriv|malignidad|explorar primero/i;
+  for (const [r, t] of Object.entries(CIF_TREES)) for (const st of t.steps)
+    assert.ok(!instruccion.test(IN.limpiarEtiqueta(st.iaPregunta || st.question)), `${r}.${st.id}: ${st.iaPregunta || st.question}`);
+  const tp5 = CIF_TREES.tobillo_pie.steps.find(s => s.id === 'tp_step5');
+  assert.match(tp5.iaPregunta, /no reproduce/, 'la opción «NO — … sí reproduce» responde a la pregunta en negativo');
+});
+
 test('prompt: aviso de patrón en los hallazgos; recordatorio de discrepancias junto al formulario solo con audio', () => {
   const d = { p: 'X', r: 'rodilla', d: '01/01/2026', br: [], sq: [], pn: {}, h: [] };
   const amp = { arbol: [{ pregunta: '¿Mecanismo?', respuesta: 'SÍ — Trauma rotacional con síntomas de bloqueo o chasquidos' }],
@@ -3376,6 +3386,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-5-ficha-breve.txt', 'elena-dictado-5-transcripcion.txt', ['nrs-omitido']],
       ['valoracion-andres-molina-codo.json', 'andres-dictado-1-informe.txt', 'andres-dictado-1-transcripcion.txt', ['nrs-momento', 'reconsiderar-copiado', 'seguimiento-fuera', 'relleno']],
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-1-ficha-breve.txt', 'pablo-dictado-1-transcripcion.txt', ['nrs-momento', 'fisiopatologia']],
+      ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-2-ficha-breve.txt', 'pablo-dictado-2-transcripcion.txt', ['relleno']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -3445,6 +3456,10 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(ids('Niega hinchazón. Refiere que la rodilla está hinchada al final del día.').includes('discrepancia-separada'));
     assert.ok(ids('La EVN en reposo es de 2/10.', { datos: { nr: 2 } }).includes('nrs-momento'), 'la nota nombra «reposo», pero no lo respalda');
     assert.ok(!ids('EVN de 2/10 en la valoración.', { datos: { nr: 2 } }).includes('nrs-momento'));
+  });
+  test('revisión: «durante la consulta» solo es una fuente con un verbo de lo que cuenta el paciente (ronda 28)', () => {
+    assert.ok(ids('El dolor era de 7/10, aunque durante la consulta refirió un 4/10.').includes('fuentes'), 'Elena‑2');
+    assert.ok(!ids('Puente de glúteos, ejercicio enseñado durante la consulta de hoy.').includes('fuentes'), 'Pablo‑2: cuándo se hizo, no de dónde sale');
   });
   test('revisión: constantes clasificadas, motivo de la imagen añadido, «en caso de ausencia de mejoría» (decimosexta revisión)', () => {
     assert.ok(ids('Presenta signos vitales dentro de parámetros habituales, con una frecuencia cardíaca de 58 lpm.').includes('constantes'));
