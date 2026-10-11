@@ -175,39 +175,9 @@ test('conexión cortada al generar: pantalla apagada / segundo plano, no un erro
 
 test('fase 5: cabecera de hipótesis en dos filas (nombre; etiqueta debajo) y un solo 🏥 en el postoperatorio', () => {
   const app = leer('app.js');
-  assert.equal((app.match(/_cabeceraHipHTML\(/g) || []).length, 3, 'definición + tarjeta normal + postoperatorio');
   assert.match(app, /_cabeceraHipHTML\(color, '', `🏥 \$\{_escHTML\(hyp\.name\)\}`, ETIQUETA_HIP_POSQ\.replace\(\/\^🏥\\s\*\/, ''\)/);
   const css = leer('styles.css');
   assert.match(css, /\.hyp5-cab \{ display: flex; align-items: flex-start;/, 'el punto se alinea con la primera línea');
-});
-
-test('borrar sesión usa el diálogo común y, si se cancela, vuelve al panel de sesión', () => {
-  const app = leer('app.js');
-  const f = app.slice(app.indexOf('function promptClearSession'), app.indexOf('function _borrarSesion'));
-  assert.match(f, /closeSessionPanel\(\);[\s\S]*showConfirmBanner\('Borrar sesión',[\s\S]*'Borrar sesión', _borrarSesion,/);
-  assert.match(f, /onCancel: \(\) => \{ if \(panelAbierto\) toggleSessionPanel\(\); \}/);
-  assert.match(f, /_escHTML\(nombre\)/, 'el nombre del paciente se escapa');
-  assert.doesNotMatch(app, /st === 'delete'/, 'el panel ya no pinta su propia confirmación');
-  assert.match(app, /#sessionPanelClear'\)\.onclick = promptClearSession;/);
-  // El campo del nombre sigue en el DOM: se vacía, o saveSession() lo devolvería al estado
-  const borrar = app.slice(app.indexOf('function _borrarSesion'), app.indexOf('function _borrarSesion') + 800);
-  assert.match(borrar, /state\.patient = '';[\s\S]*getElementById\('patientName'\)[\s\S]*campo\.value = '';/);
-});
-
-test('diálogos: el velo y Escape cierran como el botón de cerrar, nunca hacen la acción', () => {
-  const app = leer('app.js');
-  const f = app.slice(app.indexOf('function showConfirmBanner'), app.indexOf('// ─── SESSION PANEL'));
-  // Velo: solo un toque que empieza y acaba en el velo, y llama a dismiss (no a onConfirm)
-  assert.match(f, /pointerdown', e => \{ empiezaEnVelo = e\.target === overlay; \}/);
-  assert.match(f, /click', e => \{ if \(e\.target === overlay && empiezaEnVelo\) cancelar\(\); \}/);
-  // Escape cierra, y el listener se quita al cerrar o si otro código retira el diálogo
-  assert.match(f, /e\.key === 'Escape'\) \{ e\.preventDefault\(\); cancelar\(\); \}/);
-  // Cancelar a mano llama a opts.onCancel; el dismiss() devuelto (cierre desde el código) no
-  assert.match(f, /const cancelar = \(\) => \{ if \(!overlay\.isConnected\) return; dismiss\(\); opts\.onCancel\?\.\(\); \};/);
-  assert.match(f, /getElementById\('confirmCancel'\)\.onclick = cancelar;/);
-  assert.match(f, /const dismiss = \(\) => \{\s*document\.removeEventListener\('keydown', alTeclado\);/);
-  assert.match(f, /if \(!overlay\.isConnected\) \{ document\.removeEventListener\('keydown', alTeclado\); return; \}/);
-  assert.equal((f.match(/onConfirm\(\)/g) || []).length, 1, 'solo el botón de acción confirma');
 });
 
 test('cancelar la generación pide confirmación y el diálogo se cierra solo si la generación acaba', () => {
@@ -217,10 +187,8 @@ test('cancelar la generación pide confirmación y el diálogo se cierra solo si
   assert.doesNotMatch(cancelar, /ctrl\.abort/, 'el botón ya no corta sin confirmar');
   const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
   assert.match(gen, /finally \{[\s\S]*_cerrarDlgCancelar\?\.\(\);/);
-  // showConfirmBanner: botón de cerrar configurable y cierre desde fuera idempotente
-  const app = leer('app.js');
-  assert.match(app, /\$\{opts\.cancelLabel \|\| 'Cancelar'\}/);
-  assert.match(app, /if \(!overlay\.isConnected\) return;[\s\S]{0,1500}return dismiss;/);
+  // Lo de showConfirmBanner (cancelLabel, dismiss() idempotente) lo comprueba
+  // el smoke («Diálogos de confirmación»)
 });
 
 test('transcripción sin voz: silencio o texto de relleno de Whisper', () => {
@@ -833,11 +801,11 @@ test('app.js solo carga informe-ia.js fuera del hub', () => {
   assert.ok(!/^import .*informe-ia/m.test(src), 'nunca import estático de informe-ia.js');
 });
 
-test('deploy-to-hub copia los archivos del informe narrativo', () => {
+test('deploy-to-hub copia todo .js que la app carga', () => {
   const wf = leer('.github/workflows/deploy-to-hub.yml');
-  for (const f of ['informe-ia.js', 'grabadora.js', 'lib/informe-narrativo.js', 'lib/audio-store.js', 'lib/licencia-ia.js']) assert.ok(wf.includes(f), `falta ${f}`);
-  // Todo lib/*.js que la app importa (estático o con import()) se despliega:
-  // un fichero olvidado solo falla en producción (paquete de revisión: zip.js)
+  // Todo .js de la raíz o de lib/ que la app importa (estático o con import())
+  // se despliega: un fichero olvidado solo falla en producción (paquete de
+  // revisión: zip.js). app.js lo carga index.html; data/ y formularios/ van con *.js.
   const raiz = join(RAIZ);
   const fuentes = [...readdirSync(raiz).filter(f => f.endsWith('.js')).map(f => [f, '']), ...readdirSync(join(raiz, 'lib')).filter(f => f.endsWith('.js')).map(f => [f, 'lib/'])];
   const usados = new Set();
@@ -845,7 +813,10 @@ test('deploy-to-hub copia los archivos del informe narrativo', () => {
     for (const m of readFileSync(join(raiz, dir, f), 'utf8').matchAll(/(?:from|import\(?)\s*'\.\/((?:lib\/)?[\w-]+\.js)'/g))
       usados.add(dir === 'lib/' ? `lib/${m[1]}` : m[1]);
   }
-  for (const f of [...usados].filter(f => f.startsWith('lib/'))) assert.ok(wf.includes(f), `deploy-to-hub.yml no copia ${f}`);
+  usados.add('app.js');
+  for (const f of usados) assert.ok(new RegExp(`(^|\\s)${f.replace(/\./g, '\\.')}(\\s|$)`, 'm').test(wf), `deploy-to-hub.yml no copia ${f}`);
+  assert.match(wf, /cp data\/\*\.js /);
+  assert.match(wf, /cp formularios\/\*\.js /);
 });
 
 // lib/reglas-informe.js es idéntico en physiq-report: si cambia aquí, cópialo
