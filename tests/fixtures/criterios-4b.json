@@ -576,8 +576,6 @@
  },
  "ca1|Criterio clínico combinado: Edad ≥45 + dolor en actividad + rigidez <1h": {
   "frases": [
-   "Hallazgo:",
-   "la S 95 % / E 69 % que figuraba son de los criterios clínicos de artrosis de rodilla (Altman 1986), no de cadera.",
    "El criterio más parecido para cadera es el diagnóstico clínico de NICE (edad >45, dolor con la actividad, sin rigidez matutina o ≤30 min), que no aporta sensibilidad ni especificidad.",
    "Rigidez matutina <60 min ausente sí orienta en contra (LR− 0,22–0,65)."
   ],
@@ -589,14 +587,31 @@
  "ca1|Aducción de cadera disminuida": {
   "frases": [
    "Pérdida de aducción pasiva comparada con el lado sano.",
-   "Normal, es el hallazgo que más aleja la artrosis."
+   "Normal, es el hallazgo que más aleja la artrosis.",
+   "La cifra sale de un solo estudio, en atención primaria (Metcalfe 2019, tabla 2).",
+   "Se mide con goniómetro o comparando con el lado sano;",
+   "como la artrosis suele ser bilateral, conviene saber reconocer el rango normal (Metcalfe 2019).",
+   "Aducción normal:",
+   "25° (Lluch 2020, p.",
+   "158).",
+   "Birrell 2001 (p.",
+   "511) no estudió la aducción porque su fiabilidad entre examinadores no había sido aceptable."
   ]
  },
  "ca1|Rotación Interna disminuida (<24°)": {
   "frases": [
    "Rotación interna pasiva de cadera menor de 24° (o 15° menos que lado sano).",
    "El umbral es de la tarjeta:",
-   "en los estudios, «disminuida» con goniómetro o frente al lado sano."
+   "en los estudios, «disminuida» con goniómetro o frente al lado sano.",
+   "En Birrell 2001 (mayores de 40 años, 36 consultas de atención primaria del Reino Unido), la restricción por debajo del segundo quintil en los tres planos estudiados (RI, RE y flexión) dio LR 5,0 para la artrosis leve a moderada y 4,4 para la grave;",
+   "ajustando por edad, sexo e IMC, la restricción de la RI siguió siendo la más asociada a la artrosis grave (OR 46,8;",
+   "IC 95 % 5,2–420).",
+   "La flexión fue el plano que menos discriminó.",
+   "El patrón capsular de Cyriax (más pérdida de RI que de flexión y de abducción) no entró en la regla de predicción de Sutlive 2008 (discusión, p.",
+   "547), en línea con otros estudios que lo cuestionan.",
+   "RI normal:",
+   "35–45° con la cadera a 0° de flexión y 30° a 90° (Lluch 2020, p.",
+   "158)."
   ]
  },
  "ca1|Dolor posterior con sentadilla profunda": {
@@ -610,7 +625,14 @@
   "frases": [
    "Debilidad de la abducción de cadera frente al lado sano.",
    "Alta especificidad;",
-   "normal no descarta."
+   "normal no descarta.",
+   "Revisión sistemática de 13 estudios transversales, casi todos de artrosis avanzada en lista de espera de prótesis (Loureiro 2013):",
+   "los 2 que compararon la fuerza de abducción con controles la hallaron claramente menor (tamaño del efecto mayor de 1), pero en 3 de 4 estudios el tamaño de los abductores no difería entre la pierna afectada y la contraria.",
+   "Zacharias 2016 (20 pacientes con artrosis unilateral y 20 controles de la misma edad y sexo) midió con RM solo el tejido muscular, sin la grasa, y ajustó por el peso:",
+   "los glúteos medio, menor y mayor eran más pequeños en el lado afectado que en el contrario y que en los controles, pero solo en la artrosis de grado 3;",
+   "el glúteo menor tenía más grasa, y la fuerza de abducción y de rotación interna era menor.",
+   "Los autores explican que la revisión no hallara atrofia de los abductores por los métodos de sus estudios:",
+   "grasa sin excluir, muestras pequeñas, sin ajustar por el peso o con artrosis bilateral."
   ]
  },
  "ca1|Criterios clínicos ACR (árbol de clasificación)": {
@@ -631,8 +653,7 @@
    "De pie, levanta una pierna flexionando cadera y rodilla y se apoya solo en la afectada.",
    "Positivo:",
    "reproduce su dolor antes de 30 s, comparado con el otro lado.",
-   "LR+ y LR− cercanas a 1:",
-   "cuenta como hallazgo."
+   "LR+ y LR− cercanas a 1."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -643,10 +664,11 @@
    "Cadera a 90° de flexión, aducción completa y rotación interna máxima.",
    "Positivo:",
    "dolor conocido, bloqueo, chasquido o enganche.",
-   "En pacientes derivados con sospecha de SIFA, S 80 %, E 24 % (LR− 0,83):",
-   "no puntúa.",
-   "Un negativo orienta algo en contra, pero no descarta.",
-   "El valor agrupado de Reiman 2015 (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93."
+   "En pacientes derivados con sospecha de SIFA, S 80 %, E 24 % (LR− 0,83).",
+   "El valor agrupado de Reiman 2015 (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93.",
+   "Prueba de pinzamiento de Ganz 2003:",
+   "supino, la cadera se lleva pasivamente a unos 90° de flexión con aducción y rotación interna;",
+   "en su serie casi siempre era positiva."
   ],
   "retiradas": [
    "no puntúa.",
@@ -666,12 +688,16 @@
  },
  "ca2|Rotación Interna de cadera en posición neutra <24°": {
   "frases": [
-   "Alta especificidad para SIFA cuando es positivo.",
-   "En el estudio no se midieron grados:",
-   "prono, cadera en extensión, positivo = RI disminuida (con o sin dolor) según el examinador;",
+   "Prono, cadera en extensión, positivo = RI disminuida (con o sin dolor) según el examinador;",
    "el umbral de 24° es de la tarjeta.",
+   "Alta especificidad para SIFA cuando es positivo.",
+   "En el estudio no se midieron grados.",
    "Fiabilidad moderada (kappa 0,43).",
-   "Negativa no descarta (S 29 %)."
+   "Técnica de Pålsson 2020:",
+   "en prono, RI pasiva con la cadera en posición neutra;",
+   "positivo si el examinador la juzga disminuida, con o sin dolor.",
+   "La sensibilidad baja puede deberse a que cuesta detectar restricciones pequeñas o a que no todos los pacientes con SIFA tienen la movilidad reducida.",
+   "En la serie de Ganz 2003 (más de 600 luxaciones quirúrgicas de cadera), la exploración mostraba a menudo limitación, sobre todo de la RI y de la aducción en flexión."
   ],
   "retiradas": [
    "Negativa no descarta (S 29 %)."
@@ -700,8 +726,7 @@
    "dolor conocido, bloqueo, chasquido o enganche (en el estudio:",
    "chasquido palpable o dolor).",
    "Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral.",
-   "Su evidencia es para rotura labral, no para SIFA, y ni allí puntúa (ver la hipótesis de labrum):",
-   "aquí cuenta como hallazgo."
+   "Su evidencia es para rotura labral, no para SIFA, y ni allí puntúa (ver la hipótesis de labrum)."
   ],
   "retiradas": [
    "aquí cuenta como hallazgo."
@@ -729,8 +754,7 @@
    "Positivo:",
    "los tres provocan dolor.",
    "Estudio:",
-   "S 94 %, E 100 %, pero con un área bajo la curva de 0,879 que no cuadra con esas cifras, en candidatos a artroscopia (casi todos con rotura) y sin el número de controles:",
-   "cuenta como hallazgo."
+   "S 94 %, E 100 %, pero con un área bajo la curva de 0,879 que no cuadra con esas cifras, en candidatos a artroscopia (casi todos con rotura) y sin el número de controles."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -743,8 +767,7 @@
    "Estudio:",
    "S 100 % (IC 95 %:",
    "48–100 %), E 85 % (IC 55–98 %), sin LR publicada;",
-   "con S 100 % la LR− calculada sería 0 y anularía la hipótesis, y con solo 4 roturas el intervalo es muy amplio:",
-   "cuenta como hallazgo."
+   "con S 100 % la LR− calculada sería 0 y anularía la hipótesis, y con solo 4 roturas el intervalo es muy amplio."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -765,11 +788,12 @@
    "Flexión, aducción y rotación interna.",
    "Positivo:",
    "dolor conocido, bloqueo, chasquido o enganche (que reproduzca el chasquido cuenta como positivo).",
-   "No puntúa:",
-   "el valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93;",
+   "El valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93;",
    "con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1.",
    "En otra serie, S 43 %, E 56 % (Adib 2023).",
-   "Un negativo no descarta la rotura."
+   "Prueba de pinzamiento de Ganz 2003:",
+   "supino, la cadera se lleva pasivamente a unos 90° de flexión con aducción y rotación interna;",
+   "en su serie casi siempre era positiva."
   ],
   "retiradas": [
    "No puntúa:",
@@ -785,8 +809,7 @@
    "dolor conocido, bloqueo, chasquido o enganche (en el estudio:",
    "chasquido palpable o dolor).",
    "Si la cadera no llega a neutro, indica acortamiento de flexores, no lesión labral.",
-   "No puntúa:",
-   "el S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original;",
+   "El S 89 % / E 92 % (LR+ 11,1) no lo publicó el estudio original;",
    "lo calcularon los autores del metaanálisis de Reiman 2015 a partir de una serie de 59 casos operados, con riesgo de sesgo alto.",
    "En Narvani 2003 no fue ni sensible ni específico (positivo en 1 de 4 roturas)."
   ],
@@ -803,11 +826,16 @@
   "frases": [
    "Decúbito lateral, caderas a ~60° de flexión:",
    "dolor a la palpación de las inserciones del glúteo medio o menor en el trocánter mayor.",
-   "Negativa orienta en contra;",
-   "positiva confirma poco por sí sola.",
-   "Hacer después la abducción resistida:",
-   "con las dos negativas, la probabilidad baja del 59 % (media de los estudios) al 14 %;",
-   "con las dos positivas, sube al 96 %."
+   "Hacer después la abducción resistida.",
+   "Con las dos negativas, la probabilidad baja del 59 % (media de los estudios) al 14 %;",
+   "con las dos positivas, sube al 96 %.",
+   "Técnica de Grimaldi 2017:",
+   "decúbito lateral con el lado sintomático arriba, caderas a ~60° de flexión y rodillas juntas;",
+   "positivo si duelen las inserciones del glúteo medio o menor en las caras anterior, lateral o posterosuperior del trocánter.",
+   "En esa serie, 8 de los 15 pacientes sin tendinopatía en la RM tenían la palpación dolorosa;",
+   "en Lequesne 2008, con controles sin dolor de cadera, la especificidad fue del 66 %.",
+   "La RM detecta la tendinopatía, pero no dice si es la fuente del dolor:",
+   "20 de los 50 pacientes con tendinopatía en la RM no tenían el diagnóstico clínico (palpación más otro test positivo)."
   ],
   "retiradas": [
    "Negativa orienta en contra;",
@@ -818,11 +846,15 @@
   "frases": [
    "Positivo:",
    "reproduce el dolor lateral de cadera antes de 30 s de apoyo sobre la pierna afectada.",
-   "Todos los positivos tenían tendinopatía en la RM (LR+ 12,2), pero con IC 95 % de 0,8 a 191,5 (15 pacientes sin tendinopatía):",
-   "aún no puntúa.",
+   "Todos los positivos tenían tendinopatía en la RM (LR+ 12,2), pero con IC 95 % de 0,8 a 191,5 (15 pacientes sin tendinopatía).",
    "El valor agrupado (LR+ 87,8, IC 3,0–2587) depende de un estudio con controles sin dolor de cadera (Lequesne 2008);",
    "certeza muy baja.",
-   "Negativo no descarta (S 38 %)."
+   "Técnica de Grimaldi 2017:",
+   "de pie, de lado junto a una pared, con la pierna afectada más lejos y un dedo de la mano del lado sano en la pared a la altura del hombro, para el equilibrio;",
+   "se levanta el pie del lado de la pared con la cadera en neutro y la rodilla a 90°, hasta 30 s.",
+   "Positivo:",
+   "reproduce el dolor lateral en esos 30 s.",
+   "La versión que solo mide cuánto tiempo se aguanta el equilibrio no distingue la tendinopatía glútea de la artrosis de cadera (Grimaldi y Fearon 2015)."
   ],
   "retiradas": [
    "aún no puntúa.",
@@ -837,7 +869,15 @@
    "reproduce el dolor lateral.",
    "Tras la palpación:",
    "con las dos positivas, la probabilidad sube del 59 % (media de los estudios) al 96 %;",
-   "con las dos negativas, baja al 14 %."
+   "con las dos negativas, baja al 14 %.",
+   "Técnica de Grimaldi 2017 (aducción con abducción isométrica resistida):",
+   "decúbito lateral en diagonal sobre la camilla, cadera y rodilla de abajo a 80–90° de flexión;",
+   "el examinador lleva la pierna de arriba, con la rodilla extendida, en rotación neutra y 0° de extensión, a aducción completa en el plano frontal con sobrepresión, estabilizando la pelvis, y el paciente empuja el muslo hacia arriba contra su mano.",
+   "Positivo:",
+   "dolor en la región del trocánter por encima de 2/10.",
+   "En esa serie, la aducción pasiva sola tuvo LR+ 1,5 y con resistencia 5,7 (IC 95 % 0,83–39,13).",
+   "La compresión de la cintilla sobre el trocánter pasa de 4 N a 0° de aducción a 36 N a 10° y 106 N a 40°.",
+   "Los tests que dependen de la resistencia que aplica el examinador pueden variar entre examinadores y de un día a otro (Grimaldi y Fearon 2015)."
   ]
  },
  "ca4|Marcha de Trendelenburg": {
@@ -857,8 +897,7 @@
    "Positivo:",
    "reproduce su dolor.",
    "Si es negativo, repetir en prono con la cadera en extensión.",
-   "No puntúa:",
-   "en pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017).",
+   "En pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017).",
    "Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7;",
    "certeza muy baja)."
   ],
@@ -872,8 +911,7 @@
    "la pelvis cae hacia el lado de la pierna levantada.",
    "La disfunción del glúteo medio da una inclinación pélvica contralateral al apoyo (Trendelenburg) o una inclinación del tronco hacia el lado de apoyo (Duchenne);",
    "observar el apoyo monopodal revela estos déficits de control en el plano frontal.",
-   "Sin cifras de exactitud para la debilidad de abductores:",
-   "cuenta como hallazgo."
+   "Sin cifras de exactitud para la debilidad de abductores."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -898,8 +936,7 @@
    "buscar inclinación lateral, rotación o inclinación del tronco, y flexión o valgo de rodilla.",
    "Una revisión sistemática respalda su validez y fiabilidad en deportistas con dolor de cadera e ingle;",
    "fiabilidad entre examinadores moderada a excelente (0,603–0,939) en el dolor de cadera no artrósico.",
-   "Sin S ni E:",
-   "cuenta como hallazgo."
+   "Sin S ni E."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -910,8 +947,7 @@
    "Calidad del movimiento al bajar de un escalón:",
    "la disfunción del glúteo medio puede dar Trendelenburg y valgo de rodilla al bajar escaleras.",
    "Fiabilidad entre examinadores moderada a excelente (0,745–0,943) en el dolor de cadera no artrósico.",
-   "Sin S ni E:",
-   "cuenta como hallazgo."
+   "Sin S ni E."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -929,8 +965,7 @@
    "Positivo:",
    "reproduce su dolor posterior.",
    "Junto con el test activo del piriforme es, según la revisión, el más sensible y específico para el atrapamiento del ciático, sobre todo combinados;",
-   "no da cifras.",
-   "Cuenta como hallazgo."
+   "no da cifras."
   ],
   "retiradas": [
    "Cuenta como hallazgo."
@@ -940,8 +975,7 @@
   "frases": [
    "No tolera estar sentado más de 20 a 30 minutos, uno de los síntomas del síndrome glúteo profundo (con dolor glúteo o retrotrocantéreo, dolor de tipo ciático, cojera y dolor nocturno que mejora durante el día).",
    "Poco específico:",
-   "estar sentado también provoca el dolor de la tendinopatía proximal de isquiotibiales y de la artrosis de cadera.",
-   "Cuenta como hallazgo."
+   "estar sentado también provoca el dolor de la tendinopatía proximal de isquiotibiales y de la artrosis de cadera."
   ],
   "retiradas": [
    "Cuenta como hallazgo."
@@ -953,8 +987,7 @@
    "al repetirlo con pasos cortos debería ceder.",
    "Cifras publicadas:",
    "S 94 % (IC 95 % 69–99), E 85 % (IC 54–97), LR+ 6,12 (IC 1,70–22,01), LR− 0,07 (IC 0,01–0,48), de un solo estudio retrospectivo, sin cegar, de casos y controles y con 30 pacientes (referencia:",
-   "alivio con infiltración o cirugía), citado por la revisión:",
-   "cuenta como hallazgo."
+   "alivio con infiltración o cirugía), citado por la revisión."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -964,8 +997,7 @@
   "frases": [
    "Puede doler a la palpación del isquion.",
    "Si el dolor está sobre el isquion (y no lateral a él, como en el pinzamiento isquiofemoral), y sobre todo si duele al estar sentado, orienta a tendinopatía proximal de isquiotibiales.",
-   "Sin S ni E:",
-   "cuenta como hallazgo."
+   "Sin S ni E."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -976,8 +1008,7 @@
    "Reproduce su dolor isquiático al cargar los isquiotibiales, sobre todo en estiramiento:",
    "flexión de rodilla resistida con la cadera a 90°, plancha supina a una pierna o puente a una pierna con la rodilla flexionada.",
    "En el ensayo de Rich 2025 se exigía que 3 de 4 pruebas de carga o compresión reprodujeran el dolor.",
-   "Sin S ni E:",
-   "cuenta como hallazgo."
+   "Sin S ni E."
   ],
   "retiradas": [
    "cuenta como hallazgo."
@@ -989,9 +1020,8 @@
    "presión hacia la camilla sobre la cresta ilíaca de arriba.",
    "Positivo:",
    "reproduce su dolor conocido.",
-   "Solo, no puntúa:",
-   "en el estudio de los creadores del cluster daba LR+ 2,20 (IC 95 % 1,18–4,09) y LR− 0,46 (IC 0,20–0,87) con 48 pacientes no consecutivos (16 con bloqueo positivo), pero agrupado en 2 estudios (83 pacientes) queda en LR+ 1,79 (IC 1,03–3,11) y LR− 0,74 (IC 0,52–1,05).",
-   "Cuenta dentro del cluster de Laslett."
+   "Cuenta dentro del cluster de Laslett.",
+   "En el estudio de los creadores del cluster daba LR+ 2,20 (IC 95 % 1,18–4,09) y LR− 0,46 (IC 0,20–0,87) con 48 pacientes no consecutivos (16 con bloqueo positivo), pero agrupado en 2 estudios (83 pacientes) queda en LR+ 1,79 (IC 1,03–3,11) y LR− 0,74 (IC 0,52–1,05)."
   ],
   "retiradas": [
    "Solo, no puntúa:"
@@ -1002,8 +1032,7 @@
    "Flexión, abducción y rotación externa (posición de 4).",
    "Como provocación sacroilíaca no tiene exactitud propia:",
    "formó parte de la batería de 6 tests de uno de los dos estudios que compara Laslett 2008, no de la de Laslett 2005 ni del cluster de 5 tests.",
-   "En la cadera se usa sobre todo como test intraarticular (ver el FABER del SIFA).",
-   "Cuenta como hallazgo."
+   "En la cadera se usa sobre todo como test intraarticular (ver el FABER del SIFA)."
   ],
   "retiradas": [
    "Cuenta como hallazgo."
@@ -1011,22 +1040,20 @@
  },
  "ca10|Dolor no limitado a la línea media ni por encima de L5": {
   "frases": [
-   "Dolor no limitado a la línea media ni por encima de L5:",
-   "en el estudio de validación de los tests de provocación sacroilíaca se excluyó a quien solo tenía dolor en la línea media o simétrico por encima de L5.",
+   "Dolor no limitado a la línea media ni por encima de L5.",
+   "Con la prueba del dedo, el dolor se señala inferomedial a la EIPS.",
+   "En el estudio de validación de los tests de provocación sacroilíaca se excluyó a quien solo tenía dolor en la línea media o simétrico por encima de L5.",
    "Es un dato de localización del dolor;",
-   "la sensibilidad a la palpación no se ha estudiado.",
-   "Con la prueba del dedo, el dolor se señala inferomedial a la EIPS."
+   "la sensibilidad a la palpación no se ha estudiado."
   ]
  },
  "ca10|Cluster de Laslett: 3 o más de 5 tests de provocación positivos": {
   "frases": [
    "Distracción, compresión, thigh thrust, Gaenslen y sacral thrust;",
    "positivo si 3 o más reproducen su dolor.",
-   "LR+ 2,13 (IC 95 % 1,2–3,9), LR− 0,33 (IC 0,11–0,72), certeza muy baja (GRADE):",
-   "positivo orienta poco;",
-   "negativo descarta mejor.",
    "Si los síntomas no se centralizan con movimientos repetidos, la especificidad sube (del 78 % al 87 % en el estudio de los creadores):",
    "los positivos con centralización (dolor discal) son falsos positivos.",
+   "LR+ 2,13 (IC 95 % 1,2–3,9), LR− 0,33 (IC 0,11–0,72), certeza muy baja (GRADE).",
    "Lluch cita S 85–94 %, E 79 %;",
    "la cifra de la revisión de Laslett de 2008 (S 91 %, E 78 %;",
    "LR+ 4,16, LR− 0,12) es de un solo estudio (Laslett 2003, 48 pacientes, doble bloqueo), y el de 2005, con 6 tests, daba S 94 %, E 78 %.",
@@ -1036,7 +1063,13 @@
    "orden propuesto:",
    "thigh thrust y distracción primero, y si los dos son positivos no hace falta seguir;",
    "con uno positivo, compresión y, si es negativa, sacral thrust.",
-   "En ese estudio, con todos los tests negativos se descartaba la sacroilíaca."
+   "En ese estudio, con todos los tests negativos se descartaba la sacroilíaca.",
+   "Definiciones de Laslett 2005:",
+   "el dolor conocido es el que el paciente señala en el dibujo como motivo de consulta;",
+   "un test es positivo si produce o aumenta ese dolor, que hay que distinguir de otros síntomas que provoque el test.",
+   "En esa serie, los 16 pacientes con bloqueo positivo tenían al menos un test positivo, y 15 de ellos dos o más;",
+   "el thigh thrust fue el más sensible y la distracción el más específico.",
+   "El dolor que provoca un test puede sumarse al de los siguientes y confundir su lectura."
   ],
   "retiradas": [
    "positivo orienta poco;",
@@ -1049,10 +1082,9 @@
    "carga longitudinal por el fémur hasta 30 s (si no duele, 3–5 empujes).",
    "Positivo:",
    "reproduce su dolor.",
-   "Solo, no puntúa:",
-   "en el estudio de los creadores del cluster era el más sensible de la batería (S 88 %, E 69 %, LR+ 2,80, LR− 0,18;",
-   "48 pacientes no consecutivos, 16 con bloqueo positivo), pero agrupado en 5 estudios (415 pacientes) queda en S 54 %, E 54 %, LR+ 1,13 (IC 95 % 0,83–1,55) y LR− 0,91 (IC 0,67–1,22).",
-   "Cuenta dentro del cluster de Laslett."
+   "Cuenta dentro del cluster de Laslett.",
+   "En el estudio de los creadores del cluster era el más sensible de la batería (S 88 %, E 69 %, LR+ 2,80, LR− 0,18;",
+   "48 pacientes no consecutivos, 16 con bloqueo positivo), pero agrupado en 5 estudios (415 pacientes) queda en S 54 %, E 54 %, LR+ 1,13 (IC 95 % 0,83–1,55) y LR− 0,91 (IC 0,67–1,22)."
   ],
   "retiradas": [
    "Solo, no puntúa:"
@@ -1724,11 +1756,14 @@
    "cada segmento se juzga normal, hipomóvil o hipermóvil, y se anota si duele.",
    "Positivo:",
    "al menos un segmento hipomóvil (criterio de la regla de Flynn).",
+   "Que no haya hipomovilidad orienta a ② (primer test).",
    "Fiabilidad entre examinadores κ 0,38 (IC 95 %:",
-   "0,22–0,54) y sin patrón de referencia para la disfunción segmentaria:",
-   "es un hallazgo, no confirma la hipótesis.",
+   "0,22–0,54) y sin patrón de referencia para la disfunción segmentaria.",
    "Sola, predice poco la respuesta a la manipulación (S 97 %, E 23 %, LR+ 1,26).",
-   "Que no haya hipomovilidad orienta a ② (primer test)."
+   "En la serie de Fritz (49 pacientes), la hipomovilidad fue κ 0,38, la hipermovilidad κ 0,48 y el dolor durante la prueba κ 0,57;",
+   "que no hubiera ningún segmento hipomóvil fue el mejor predictor aislado de inestabilidad radiológica (LR+ 9,0).",
+   "Los autores apuntan que los pacientes sin hipomovilidad podrían responder mejor a los ejercicios de estabilización, y los hipomóviles, a la manipulación, como en la regla de Flynn;",
+   "lo primero está sin comprobar (Fritz 2005)."
   ],
   "retiradas": [
    "es un hallazgo, no confirma la hipótesis."
@@ -1737,7 +1772,13 @@
  "lu2|Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria": {
   "frases": [
    "Positivo si se cumple cualquiera de las dos.",
-   "Predice inestabilidad radiológica en flexo-extensión (referencia radiográfica, no clínica)."
+   "Predice inestabilidad radiológica en flexo-extensión (referencia radiográfica, no clínica).",
+   "En 49 pacientes derivados a radiografía en flexo-extensión por sospecha de inestabilidad (el 57 % la tenía según los criterios de White y Panjabi), cada hallazgo por separado dio LR+ 9,0 (IC 95 %:",
+   "1,3–63,9) la falta de hipomovilidad y LR+ 4,8 (IC 1,6–14,0) la flexión lumbar mayor de 53°.",
+   "Con los dos a la vez no hubo falsos positivos (LR+ 12,8, IC 0,79–211,6).",
+   "Sin ninguno de los dos, LR− 0,22 (IC 0,10–0,50), que los autores también consideran útil.",
+   "La flexión se midió con un inclinómetro (método de Waddell).",
+   "Los autores piden replicar el estudio por lo anchos que son los intervalos."
   ]
  },
  "lu2|Test de inestabilidad en prono": {
@@ -1750,8 +1791,7 @@
   "frases": [
    "Durante la flexión y la extensión lumbar activas:",
    "«instability catch», arco doloroso, subir apoyando las manos en los muslos (signo de Gowers) o inversión del ritmo lumbopélvico.",
-   "No se asoció con la inestabilidad radiológica (17,9 % frente a 9,5 %, no significativo) y su fiabilidad entre examinadores fue κ −0,07:",
-   "solo orienta."
+   "No se asoció con la inestabilidad radiológica (17,9 % frente a 9,5 %, no significativo) y su fiabilidad entre examinadores fue κ −0,07."
   ],
   "retiradas": [
    "solo orienta."
@@ -1762,10 +1802,14 @@
    "Positivo:",
    "reproduce el dolor de pierna (por debajo de la rodilla), no solo el lumbar;",
    "en los estudios agrupados, a cualquier ángulo.",
-   "Útil sobre todo negativo, para descartar;",
-   "un positivo aislado aporta poco.",
    "Cifras de pacientes derivados a cirugía (prevalencia de hernia del 58–98 %);",
-   "en los estudios con imagen, más cercanos a atención primaria, rindió peor y no se agruparon."
+   "en los estudios con imagen, más cercanos a atención primaria, rindió peor y no se agruparon.",
+   "En 6 cadáveres, la rotación interna de la cadera con la pierna extendida tensó el plexo sacro, que se desplazó hasta 1 cm hacia el agujero ciático mayor.",
+   "En 442 pacientes, de los 31 con signos neurológicos y alguna prueba de sensibilización positiva, la rotación interna fue positiva en 27, la flexión dorsal en 20 y la flexión del cuello en 13;",
+   "los autores no la consideran mejor que la flexión dorsal, y ninguna de las tres localiza por sí sola el origen de la tensión.",
+   "Recomiendan explorar con la cadera en rotación neutra, el tronco sin inclinación lateral y el cuello controlado, porque la rotación de la cadera y la postura del cuello y del tronco cambian la tensión de las raíces.",
+   "Un dolor de cadera con la rotación interna puede venir del piriforme, y uno de pantorrilla con la flexión dorsal, del propio músculo:",
+   "pueden simular tensión de la raíz (Breig y Troup 1979)."
   ],
   "retiradas": [
    "Útil sobre todo negativo, para descartar;",
@@ -1776,7 +1820,8 @@
   "frases": [
    "Positivo:",
    "dolor radicular ipsilateral al elevar la pierna contralateral.",
-   "Útil sobre todo positivo."
+   "Es el signo de Fajersztajn, que Woodhall y Hayes describieron en 1950.",
+   "Para Breig y Troup, cuando el SLR de la pierna sana, la flexión del cuello en sedestación y las pruebas de sensibilización evocan el dolor en la pierna afectada, hay poca duda sobre el lugar de la lesión que tensa la raíz (Breig y Troup 1979)."
   ],
   "retiradas": [
    "Útil sobre todo positivo."
@@ -1788,8 +1833,7 @@
    "Positivo:",
    "reproduce el dolor de pierna y se alivia al extender el cuello.",
    "Más sensible que el SLR si se sospecha hernia discal.",
-   "No puntúa:",
-   "la única cifra favorable (S 84 %, E 83 %) es de un estudio de casos y controles con controles de RM normal, que puede inflar la especificidad;",
+   "La única cifra favorable (S 84 %, E 83 %) es de un estudio de casos y controles con controles de RM normal, que puede inflar la especificidad;",
    "otro estudio dio S 44 %, E 58 % con dolor por debajo de la rodilla como criterio."
   ],
   "retiradas": [
@@ -1798,48 +1842,93 @@
  },
  "lu3|Criterios RAPIDH (5 criterios)": {
   "frases": [
-   "AUC 0.91.",
-   "Criterios:",
-   "distribución monoradicular, dolor unilateral en pierna, SLR+ <60°, debilidad motora unilateral, reflejo aquíleo asimétrico.",
-   "Incluye el SLR:",
-   "si se puntúa RAPIDH, el SLR no suma aparte."
+   "Puntos:",
+   "dolor de pierna con distribución de una sola raíz, 6;",
+   "SLR positivo entre 0 y 60° (o estiramiento femoral positivo), 4;",
+   "aquíleo disminuido en un solo lado, 4;",
+   "debilidad motora en un solo lado, 3;",
+   "dolor en una sola pierna referido por el paciente, 3.",
+   "Positivo:",
+   "11 puntos o más de 20.",
+   "Los autores los desarrollaron como criterios de clasificación para seleccionar pacientes en investigación, buscando una especificidad alta, y advierten que no deben usarse como herramienta diagnóstica, porque pueden dejar fuera las presentaciones atípicas;",
+   "en la práctica clínica, donde la sensibilidad importa tanto, harían falta otros criterios (Genevay 2017).",
+   "Por eso aquí no puntúan.",
+   "Con 11 puntos o más, S 70,6 % (IC 95 %:",
+   "59,6–79,7) y E 90,4 % (IC 83,2–94,9);",
+   "área bajo la curva 0,90 (0,91 con el modelo completo, sin redondear los pesos).",
+   "Referencia:",
+   "el diagnóstico de especialistas de columna con una confianza de 7 sobre 10 o más, casi siempre con RM o TC, en 209 pacientes de consultas de columna de cinco países (89 con dolor radicular por hernia, 63 con claudicación neurógena y 57 con dolor lumbar inespecífico con dolor referido a la pierna);",
+   "sin validación externa.",
+   "El dolor de una sola raíz es el ítem más subjetivo y depende de la experiencia del examinador.",
+   "Como incluye el aquíleo, favorece la raíz S1 frente a las demás (Genevay 2017)."
   ]
  },
  "lu4|Síntomas bilaterales": {
   "frases": [
-   "Dolor o síntomas en ambas piernas."
+   "Dolor o síntomas en ambas piernas.",
+   "Según el lugar de la compresión, la estenosis central puede ser bilateral, y la lateral o radicular es unilateral (Lluch 2020, cap.",
+   "5.1, p.",
+   "311)."
   ]
  },
  "lu4|Dolor de pierna mayor que el dolor lumbar": {
   "frases": [
-   "El paciente refiere más dolor en la pierna que en la espalda."
+   "El paciente refiere más dolor en la pierna que en la espalda.",
+   "En la serie de Cook (1448 pacientes consecutivos de una unidad de cirugía de columna, 40 % con estenosis), los cirujanos exigían para el diagnóstico más dolor de pierna que lumbar, empeoramiento al estar de pie o caminar y alivio al sentarse, así que estos datos formaban parte de la referencia:",
+   "los autores reconocen el riesgo de sesgo de incorporación (Cook 2011)."
   ]
  },
  "lu4|Dolor al caminar o estar de pie": {
   "frases": [
-   "Los síntomas aparecen o empeoran al caminar o permanecer de pie."
+   "Los síntomas aparecen o empeoran al caminar o permanecer de pie.",
+   "En la serie de Cook (1448 pacientes consecutivos de una unidad de cirugía de columna, 40 % con estenosis), los cirujanos exigían para el diagnóstico más dolor de pierna que lumbar, empeoramiento al estar de pie o caminar y alivio al sentarse, así que estos datos formaban parte de la referencia:",
+   "los autores reconocen el riesgo de sesgo de incorporación (Cook 2011).",
+   "En esa serie, el dolor al caminar o estar de pie fue poco discriminativo por separado;",
+   "los autores lo atribuyen a que el formulario juntaba caminar y estar de pie y permitía marcar otras actividades (Cook 2011)."
   ]
  },
  "lu4|Alivio al sentarse": {
   "frases": [
-   "Los síntomas ceden al sentarse (si ceden solo con pararse de pie, sospechar claudicación vascular)."
+   "Los síntomas ceden al sentarse (si ceden solo con pararse de pie, sospechar claudicación vascular).",
+   "En la serie de Cook (1448 pacientes consecutivos de una unidad de cirugía de columna, 40 % con estenosis), los cirujanos exigían para el diagnóstico más dolor de pierna que lumbar, empeoramiento al estar de pie o caminar y alivio al sentarse, así que estos datos formaban parte de la referencia:",
+   "los autores reconocen el riesgo de sesgo de incorporación (Cook 2011).",
+   "En la serie de Katz, no tener ningún dolor al sentarse fue muy específico de estenosis (E 93 %, S 46 %) (Katz 1995).",
+   "Los síntomas de la claudicación neurógena no mejoran al pararse, como en la vascular, sino al flexionar el tronco hacia delante;",
+   "por eso estos pacientes pueden recorrer distancias largas con andador o en bicicleta (Lluch 2020, cap.",
+   "5.1, p.",
+   "312)."
   ]
  },
  "lu4|Edad > 48 años": {
   "frases": [
-   "Positivo si el paciente tiene más de 48 años."
+   "Positivo si el paciente tiene más de 48 años.",
+   "Katz y Harris sitúan el inicio típico de la estenosis degenerativa entre los 60 y los 90 años, y el de la congénita, por pedículos cortos, entre los 20 y los 40 (Katz y Harris 2008).",
+   "Lluch, más reciente, la da como frecuente desde la quinta década y causa principal de cirugía lumbar por encima de los 65 años en la central y desde los 40 en la lateral (Lluch 2020, cap.",
+   "5.1, p.",
+   "312)."
   ]
  },
  "lu4|Marcha con base amplia": {
   "frases": [
    "Observación de la marcha:",
    "aumento de la base de sustentación.",
-   "Muy específica, poco sensible."
+   "Muy específica, poco sensible.",
+   "En la serie de Katz (93 pacientes de 40 años o más con dolor lumbar en tres consultas especializadas;",
+   "referencia:",
+   "el diagnóstico del médico experto, con imagen compatible en todos los que la tenían), la marcha con base amplia fue el hallazgo más específico:",
+   "S 43 %, E 97 %, LR+ 14,3.",
+   "Fue uno de los cuatro datos que se asociaron de forma independiente con el diagnóstico, con la edad, no tener dolor al sentarse y el dolor de muslo tras 30 s de extensión.",
+   "Los autores señalan que hasta entonces no se había estudiado y que, al venir de consultas de referencia, debe confirmarse en otros ámbitos (Katz 1995)."
   ]
  },
  "lu4|Romberg alterado": {
   "frases": [
-   "Alteración del equilibrio en bipedestación con pies juntos y ojos cerrados."
+   "Alteración del equilibrio en bipedestación con pies juntos y ojos cerrados.",
+   "Técnica de Katz:",
+   "Romberg modificado, pies juntos y ojos cerrados durante 10 s;",
+   "alterado si el paciente necesita movimientos compensadores para mantener los pies en el sitio.",
+   "En su serie, S 39 %, E 91 %, LR+ 4,3;",
+   "con la marcha con base amplia, fue uno de los dos hallazgos más específicos de la exploración (Katz 1995)."
   ]
  },
  "lu4|Déficits sensoriales (L3-S1)": {
@@ -1854,9 +1943,11 @@
    "De pie, extensión lumbar mantenida 30 s.",
    "Positivo:",
    "aparece o aumenta el dolor en el muslo (por debajo del pliegue glúteo), no solo el lumbar.",
-   "No informativo por sí solo.",
    "Una versión modificada (hasta 60 s, más extensión + inclinación hacia el lado sintomático) da S 92 %, E 40 %, LR− 0,2, pero con IC 95 % hasta 1,36 en 30 pacientes:",
-   "no sirve aún para descartar."
+   "no sirve aún para descartar.",
+   "En la serie original de Katz (93 pacientes de 40 años o más), el dolor de muslo tras 30 s de extensión dio S 51 %, E 69 %, LR 1,6;",
+   "aun así, fue uno de los cuatro datos que se asociaron de forma independiente con el diagnóstico, con la edad, no tener dolor al sentarse y la marcha con base amplia.",
+   "Los autores lo leen, junto con el alivio al sentarse, como apoyo a que la flexión agranda el canal y la extensión lo estrecha (Katz 1995)."
   ],
   "retiradas": [
    "No informativo por sí solo."
@@ -1876,8 +1967,7 @@
    "S 29 %, E 78 %, LR+ 1,26 (IC 95 %:",
    "1,01–1,58);",
    "con RM al nivel concreto (3 estudios), S 25 %, E 75 %.",
-   "Algún estudio suelto da E de hasta 0,93.",
-   "No informativo por sí solo."
+   "Algún estudio suelto da E de hasta 0,93."
   ],
   "retiradas": [
    "No informativo por sí solo."
@@ -1890,8 +1980,7 @@
    "S 40 %, E 59 %, LR+ 1,10 (IC 95 %:",
    "0,87–1,38);",
    "con RM, S 32 %, E 72 %.",
-   "El mejor estudio suelto da S 61 %, E 63 %.",
-   "No informativo por sí solo."
+   "El mejor estudio suelto da S 61 %, E 63 %."
   ],
   "retiradas": [
    "No informativo por sí solo."
@@ -1900,8 +1989,17 @@
  "lu6|Centralización con movimientos repetidos": {
   "frases": [
    "Desaparecen los síntomas distales con movimientos repetidos al final del rango.",
-   "Que no centralice no descarta el origen discal.",
-   "La especificidad baja con discapacidad grave o malestar psicológico."
+   "La especificidad baja con discapacidad grave o malestar psicológico.",
+   "La preferencia direccional es la dirección del movimiento lumbar en la que, tras una serie de movimientos repetidos al final del rango o posturas mantenidas, los síntomas se alivian de forma duradera o aumenta la movilidad, aunque no cambie necesariamente su localización;",
+   "cuando lleva a abolir los síntomas distales se llama centralización.",
+   "Encontrar una preferencia direccional también predice buen pronóstico en el dolor lumbar inespecífico, sobre todo en el de larga evolución (Lluch 2020, cap.",
+   "5.1, p.",
+   "317).",
+   "McKenzie propuso como mecanismo el desplazamiento del contenido del disco (Laslett 2005, Spine J).",
+   "En 69 pacientes crónicos con discografía de provocación como referencia, la centralización en una sola exploración dio S 40 %, E 94 %, LR+ 6,9 (IC 95 % 1,0–47,3);",
+   "sin discapacidad grave ni malestar psicológico la especificidad fue del 100 %, con malestar del 89 % y con discapacidad grave (Roland-Morris ≥ 19) del 80 %, y entonces la centralización orienta pero no basta.",
+   "Los autores lo definieron como la abolición o reducción clara del dolor de la zona más distal (nalga, muslo, pantorrilla o pie) y advierten que la centralización puede tardar días en aparecer (Laslett 2005, Spine J).",
+   "En otra serie de la misma clínica, todos los pacientes que centralizaron tenían la discografía positiva (S 47 %, E 100 %, 24 pacientes) y ninguno con dolor facetario centralizó (Young 2003)."
   ],
   "retiradas": [
    "Que no centralice no descarta el origen discal."
@@ -1942,7 +2040,11 @@
    "Supino:",
    "presión posterolateral sobre ambas EIAS.",
    "Positivo:",
-   "reproduce el dolor conocido."
+   "reproduce el dolor conocido.",
+   "En el estudio de los creadores del cluster fue el test más específico y el de mayor valor predictivo positivo (S 60 %, E 81 %, LR+ 3,20, LR− 0,49;",
+   "48 pacientes no consecutivos y crónicos, 16 con bloqueo anestésico positivo).",
+   "Los autores proponen empezar por la distracción y el thigh thrust (Laslett 2005).",
+   "Si el dolor es intenso con cualquier movimiento (una hernia aguda, una fractura), cualquier test lo provoca y el resultado no se interpreta (Laslett 2005)."
   ]
  },
  "lu8|Thrust de muslo": {
@@ -1950,7 +2052,11 @@
    "Supino, cadera a 90°:",
    "presión axial sobre el fémur.",
    "Positivo:",
-   "reproduce el dolor conocido."
+   "reproduce el dolor conocido.",
+   "En el estudio de los creadores del cluster era el más sensible de la batería (S 88 %, E 69 %, LR+ 2,80, LR− 0,18;",
+   "48 pacientes no consecutivos y crónicos, 16 con bloqueo anestésico positivo), pero agrupado en 5 estudios (415 pacientes) queda en S 54 %, E 54 %, LR+ 1,13 (IC 95 % 0,83–1,55) y LR− 0,91 (IC 0,67–1,22) (Han 2023).",
+   "Los autores del estudio original proponen empezar por el thigh thrust y la distracción (Laslett 2005).",
+   "Si el dolor es intenso con cualquier movimiento (una hernia aguda, una fractura), cualquier test lo provoca y el resultado no se interpreta (Laslett 2005)."
   ]
  },
  "lu8|Compresión": {
@@ -1958,7 +2064,9 @@
    "Decúbito lateral:",
    "presión vertical sobre la cresta ilíaca.",
    "Positivo:",
-   "reproduce el dolor conocido."
+   "reproduce el dolor conocido.",
+   "En el estudio de los creadores del cluster daba LR+ 2,20 (IC 95 % 1,18–4,09) y LR− 0,46 (IC 0,20–0,87) (48 pacientes no consecutivos y crónicos, 16 con bloqueo anestésico positivo), pero agrupado en 2 estudios (83 pacientes) queda en LR+ 1,79 (IC 1,03–3,11) y LR− 0,74 (IC 0,52–1,05) (Han 2023).",
+   "Si el dolor es intenso con cualquier movimiento (una hernia aguda, una fractura), cualquier test lo provoca y el resultado no se interpreta (Laslett 2005)."
   ]
  },
  "lu8|Thrust sacro": {
@@ -1966,7 +2074,9 @@
    "Prono:",
    "presión PA sobre el centro del sacro.",
    "Positivo:",
-   "reproduce el dolor conocido."
+   "reproduce el dolor conocido.",
+   "En el estudio de los creadores del cluster daba S 63 %, E 75 %, LR+ 2,50 y LR− 0,50 (48 pacientes no consecutivos y crónicos, 16 con bloqueo anestésico positivo), y con la distracción, el thigh thrust y la compresión mejoraba la capacidad diagnóstica de la batería (Laslett 2005).",
+   "Si el dolor es intenso con cualquier movimiento (una hernia aguda, una fractura), cualquier test lo provoca y el resultado no se interpreta (Laslett 2005)."
   ]
  },
  "lu8|No centraliza con movimientos repetidos": {
@@ -1980,14 +2090,32 @@
    "Supino al borde de la camilla:",
    "una cadera en flexión máxima y la otra en extensión fuera de la camilla, con presión sobre ambas.",
    "Positivo:",
-   "reproduce el dolor conocido."
+   "reproduce el dolor conocido.",
+   "En el estudio de los creadores del cluster daba, del lado derecho, S 53 %, E 71 %, LR+ 1,84, y del izquierdo, S 50 %, E 77 %, LR+ 2,21 (48 pacientes no consecutivos y crónicos, 16 con bloqueo anestésico positivo).",
+   "Fue el único que no mejoró la capacidad diagnóstica de la batería:",
+   "según los autores, se puede omitir, y dos positivos de los otros cuatro rinden casi como tres de los seis (LR+ 4,0 frente a 4,29) (Laslett 2005).",
+   "Si el dolor es intenso con cualquier movimiento (una hernia aguda, una fractura), cualquier test lo provoca y el resultado no se interpreta (Laslett 2005)."
   ]
  },
  "lu8|Ausencia de dolor lumbar en la línea media": {
   "frases": [
    "Positivo si el paciente no refiere dolor en la línea media lumbar.",
    "Su LR− (0,35) tiene un IC 95 % que llega a 1,01:",
-   "no se usa para descartar."
+   "no se usa para descartar.",
+   "En un estudio retrospectivo, con dolor en la línea media la probabilidad de que fuera discogénico era del 73 %, y sin él la de que no lo fuera, del 96 % (Lluch 2020, cap.",
+   "5.1, p.",
+   "315).",
+   "Es DePalma 2011:",
+   "170 casos de una unidad de columna con el origen confirmado por discografía o bloqueos, en los que el paciente señalaba con un dedo su dolor más intenso;",
+   "refería dolor en la línea media el 96 % de los discogénicos, el 15 % de los facetarios y el 13 % de los sacroilíacos.",
+   "Los autores no hicieron todas las pruebas a todos los pacientes:",
+   "empezaban por la más probable según la localización, lo que puede sesgar los resultados (DePalma 2011).",
+   "En otra serie, los pacientes con dolor sacroilíaco confirmado por bloqueo casi nunca tenían dolor a la altura de la espinosa de L5 o por encima, y el 80 % de los discogénicos tenía dolor en la línea media (Young 2003).",
+   "Se considera paramedial la zona a más de un través de dedo de la línea de las espinosas.",
+   "Desde el área de Fortin el dolor puede referirse a la nalga, la ingle y la cara posterolateral de la pierna, hasta el pie;",
+   "casi nunca a la tuberosidad isquiática (Lluch 2020, cap.",
+   "5.1, pp.",
+   "315, 318 y 320–321)."
   ]
  },
  "lu9|Banda tensa palpable": {
@@ -2009,8 +2137,8 @@
  "lu9|El paciente reconoce el dolor provocado": {
   "frases": [
    "Criterio mínimo, con o sin dolor referido.",
-   "Es de los criterios más reproducibles entre examinadores (κ 0,58).",
-   "Hallazgo acompañante hasta descartar lo anterior."
+   "Hallazgo acompañante hasta descartar lo anterior.",
+   "Es de los criterios más reproducibles entre examinadores (κ 0,58)."
   ]
  },
  "ro1|Criterio combinado: Edad ≥45 + dolor en actividad + rigidez <30 min": {

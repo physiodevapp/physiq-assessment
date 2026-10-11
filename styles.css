@@ -162,25 +162,6 @@
     letter-spacing: 1px;
   }
 
-  .btn-reset {
-    display: none;
-    background: transparent;
-    border: 1px solid var(--border2);
-    color: var(--text2);
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-reset { line-height: 16px; }
-  .btn-reset.visible { display: inline-flex; align-items: center; gap: 0.3rem; }
-  .btn-reset:hover { border-color: var(--accent); color: var(--accent); }
-  /* Icono vectorial de 16 px, como el del micrófono (antes era el carácter «↺»
-     a tamaño de texto y se veía diminuto al lado) */
-  .btn-reset-icono { flex-shrink: 0; }
-
   /* Progress bar */
   .progress-bar-wrap {
     position: fixed;
@@ -1757,7 +1738,6 @@
     .logo-main { font-size: 1.2rem; }
     .logo-sub { font-size: 1.2rem; letter-spacing: -0.5px; }
     .phase-indicator { display: none; }
-    .btn-reset { padding: 5px 8px; font-size: 0.75rem; }
     .progress-bar-wrap { top: 0; z-index: 300; background: transparent; }
     .phase-nav {
       top: 55px; height: 40px; padding: 0 0.5rem;
@@ -2130,7 +2110,6 @@
   @media (max-width: 768px) {
     .translate-tooltip { display: none; }
     body:has(.translate-banner.visible) .main { margin-top: calc(94px + 38px); }
-    .btn-reset-text { display: none; }
     .btn-record-text { display: none; }
     .btn-record { padding: 6px 8px; }
     .header-right { gap: 0.5rem; }
@@ -2151,7 +2130,6 @@
     .logo-sub-word { display: none; }
     .logo-sub-initial { display: inline; }
     .header-right.recording-active .btn-record { padding: 4px 6px; }
-    .header-right.recording-active .btn-reset { padding: 4px 6px; }
   }
   .session-btn{display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--text3);padding:6px;flex-shrink:0;transition:color 0.2s;}
   .session-btn.active{color:var(--accent);}
@@ -2165,6 +2143,11 @@
   .session-panel-clear:hover{opacity:0.7;}
   .session-panel.has-session .session-panel-clear{display:flex;}
   /* Exportar / importar: dos botones a partes iguales, sin desbordar a 320 px */
+  /* «Reiniciar valoración» (antes en la cabecera): borra los datos clínicos, conserva el nombre */
+  .session-reset-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:40px;margin-top:14px;background:none;border:1px solid var(--border2);border-radius:8px;padding:8px;color:var(--text2);font-family:inherit;font-size:0.82rem;cursor:pointer;white-space:nowrap;transition:border-color 0.2s,color 0.2s;}
+  .session-reset-btn:hover:not(:disabled){border-color:var(--red);color:var(--red);}
+  .session-reset-btn:disabled{opacity:0.45;cursor:default;}
+  .session-reset-btn svg{flex-shrink:0;}
   .session-io{display:flex;gap:8px;margin-top:14px;}
   .session-io-btn{flex:1 1 0;min-width:0;min-height:40px;background:none;border:1px solid var(--border2);border-radius:8px;padding:8px;color:var(--text2);font-family:inherit;font-size:0.82rem;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:border-color 0.2s,color 0.2s;}
   .session-io-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
@@ -2739,6 +2722,19 @@ body.grab-activa:not(.in-hub) .grab-wrap { display: flex; }
 .compartir-op-aviso.alto { color: var(--red); }
 .compartir-panel:focus { outline: none; }
 @media (hover: hover) { .compartir-op:hover { border-color: var(--accent); } }
+/* «✨ Preguntar a la IA» (cabecera, abrirPreguntaIA en app.js): misma caja y
+   velo que el panel de sesión. Solo standalone. */
+.in-hub .pregunta-ia-btn { display: none; }
+.pregunta-panel:focus { outline: none; }
+.pregunta-texto { width: 100%; resize: vertical; min-height: 84px; line-height: 1.45; touch-action: pan-y; }
+.pregunta-aviso { margin-top: 8px; font-size: 0.76rem; line-height: 1.4; color: var(--alert-warning-text); }
+.pregunta-destinos { margin-top: 14px; flex-wrap: nowrap; }
+.pregunta-destinos .option-btn { flex: 1 1 0; min-width: 0; min-height: 40px; padding: 8px 4px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pregunta-ventaja { margin-top: 8px; font-size: 0.78rem; line-height: 1.4; color: var(--text2); min-height: 3.3em; }
+.pregunta-ir { display: flex; align-items: center; justify-content: center; margin-top: 14px; min-height: 44px; text-decoration: none; text-align: center; }
+.pregunta-ir[aria-disabled="true"] { opacity: 0.45; box-shadow: none; transform: none; cursor: default; }
+.pregunta-nota { margin-top: 10px; font-size: 0.7rem; line-height: 1.4; color: var(--text3); }
+@media print { .pregunta-ia-btn { display: none !important; } }
 .ia-audio-pista { font-size: 0.8rem; color: var(--text3); margin-top: 4px; line-height: 1.45; }
 .ia-licencia-motivo { margin-top: 4px; font-size: 0.8rem; opacity: 0.9; }
 /* Con una grabación en marcha la cabecera lleva un elemento más (la píldora
@@ -2773,9 +2769,11 @@ body.posquirurgico .solo-posq { display: block; }
 .dx-tratada-ayuda { display: block; font-size: 0.75rem; color: var(--text3); margin-top: 2px; }
 .dx-tratada-tests > summary { cursor: pointer; font-size: 0.8rem; color: var(--text3); margin-bottom: 8px; }
 
-/* Aviso «Hay una versión nueva» (comprobarVersion, app.js): arriba, bajo la
-   cabecera y la barra de fases fijas (abajo están los botones de navegación
-   fijos del móvil). */
+/* Aviso «Hay una versión nueva» (comprobarVersion, app.js). En escritorio,
+   arriba, bajo la cabecera fija. En móvil (≤768 px), snackbar a todo el ancho
+   justo encima de los botones de navegación fijos (--nav-alto, medido por
+   _colocarAvisoVersion): al alcance del pulgar, sin tapar el título de la fase
+   ni pelearse con las barras de contexto de arriba (fases 2 y 4b). */
 .version-aviso {
   position: fixed; top: 125px; left: 50%; transform: translateX(-50%);
   z-index: 150; display: flex; align-items: center; gap: 10px;
@@ -2797,17 +2795,48 @@ body.posquirurgico .solo-posq { display: block; }
   background: none; border: none; color: var(--text3); font-size: 1.1rem; line-height: 1;
   padding: 4px 6px; cursor: pointer; flex-shrink: 0;
 }
-@media (max-width: 768px) { .version-aviso { top: 104px; } }
-@media (max-width: 480px) { .version-aviso { top: 98px; } }
-@media (max-height: 500px) and (max-width: 900px) { .version-aviso { top: 91px; } }
-/* Con la barra fija de contexto visible (sistema en la fase 2, hipótesis en la
-   4b; solo ≤768 px, una línea de 39 px) el aviso baja justo debajo, en vez de
-   quedar tapado por ella (z-index 200 > 150) o taparla si se subiera. */
 @media (max-width: 768px) {
-  body:has(.sis-context-banner.visible, .hyp-context-banner.visible) .version-aviso { top: 139px; }
+  .version-aviso {
+    top: auto; bottom: calc(var(--nav-alto, 0px) + 10px); left: 16px; right: 16px;
+    transform: none; width: auto; max-width: none; z-index: 190;
+    gap: 8px; padding: 6px 4px 6px 16px; border-radius: 12px; font-size: 0.9rem;
+    animation-name: versionAvisoInAbajo;
+  }
+  .version-aviso-texto { flex: 1; }
+  .version-aviso-btn { min-height: 44px; padding: 0 16px; font-size: 0.9rem; border-radius: 9px; }
+  .version-aviso-cerrar { min-width: 44px; min-height: 44px; font-size: 1.4rem; }
+  /* Con el teclado abierto la barra de abajo deja de estar donde se espera y el
+     aviso taparía lo que se escribe: se oculta mientras se edita un campo. */
+  body:has(:is(textarea, input:not([type=checkbox], [type=radio], [type=file])):focus) .version-aviso { display: none; }
 }
-@media (max-width: 480px) {
-  body:has(.sis-context-banner.visible, .hyp-context-banner.visible) .version-aviso { top: 133px; }
+@media (min-width: 769px) and (max-height: 500px) and (max-width: 900px) { .version-aviso { top: 91px; } }
+/* Texto corto en móviles estrechos: «Hay una versión nueva» no cabe en una
+   línea junto al botón y la «×» de 44 px por debajo de ~380 px */
+.version-aviso-corto { display: none; }
+@media (max-width: 379px) {
+  .version-aviso-largo { display: none; }
+  .version-aviso-corto { display: inline; }
+}
+/* Estado «Actualizando…»: sin botones, con un indicador que gira */
+.version-aviso.version-aviso-actualizando { padding-top: 10px; padding-bottom: 10px; padding-right: 16px; }
+@media (max-width: 768px) {
+  .version-aviso.version-aviso-actualizando { min-height: 56px; }
+}
+.version-aviso-giro {
+  width: 16px; height: 16px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%;
+  border: 2px solid var(--border2); border-top-color: var(--accent);
+  animation: versionAvisoGiro 0.8s linear infinite;
+}
+@keyframes versionAvisoGiro { to { transform: rotate(360deg); } }
+@keyframes versionAvisoInAbajo {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Punto en el icono de sesión: hay versión nueva y el aviso se cerró */
+.session-btn { position: relative; }
+.session-btn.version-nueva::after {
+  content: ''; position: absolute; top: 3px; right: 3px; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px var(--bg);
 }
 .ia-consejos-dictado { margin: 8px 0 0; padding-left: 1.2rem; font-size: 0.8rem; color: var(--text2); line-height: 1.45; }
 .ia-consejos-dictado li + li { margin-top: 3px; }

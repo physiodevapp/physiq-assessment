@@ -16,7 +16,7 @@ import { VERSION_SHA, textoVersion, esVersionNueva } from './lib/version.js';
 import { nombreRegion, regionConLado } from './lib/region.js';
 import { TEXTO_VALORACION_BREVE, textoNotas, textoInformePaciente } from './lib/resumenes.js';
 import { ramaPauta } from './lib/pauta.js';
-import { initAmpliarIA, iaParrafoHTML, ctxCribado, attrIA } from './ampliar-ia.js';
+import { initAmpliarIA, iaParrafoHTML, ctxCribado, attrIA, DESTINOS_IA, NOTA_CUENTAS, destinoIA, guardarDestinoIA, promptPregunta, urlIA } from './ampliar-ia.js';
 
 // ─── SCROLL LOCK (dialogs / bottom sheets) ───────────────────
 // Reference-counted: several overlays (confirm-banner, session panel,
@@ -80,6 +80,7 @@ window.addEventListener('popstate', e => {
   if (_popIgnorar) { _popIgnorar = false; return; }
   if (_razonHistorial) { cerrarRazonamiento({ desdeHistorial: true }); return; }
   if (_compartirHistorial) { cerrarMenuCompartir({ desdeHistorial: true }); return; }
+  if (_preguntaHistorial) { cerrarPreguntaIA({ desdeHistorial: true }); return; }
   if (_pendingBackNav) {
     // history.go() de limpieza de stack aterrizó; reemplazar y actualizar profundidad
     const { phase: p, idx: i } = _pendingBackNav;
@@ -174,6 +175,7 @@ function goToPhase(n) {
   paintNav(idx);
 
   document.getElementById(phases[idx]).classList.add('active');
+  if (document.getElementById('versionAviso')) _colocarAvisoVersion();
   state.currentPhase = n;
   if (n === 3) _pintarEstadioCronologia();
   updateMobilePhaseBar(n);
@@ -367,10 +369,13 @@ function _softResetApp() {
   }
   _pintarModoUI();   // el modo se conserva, pero el bucle de .option-btn de arriba quitó su selección
   _pintarCirugiaUI();
-  updateResetBtnVisibility();
 }
 
+// «Reiniciar valoración» vive en el panel de sesión (antes, en la cabecera):
+// como «Borrar sesión», cierra el panel mientras pregunta y lo reabre si se cancela.
 function resetApp() {
+  const panelAbierto = document.getElementById('sessionPanelOverlay')?.classList.contains('open');
+  closeSessionPanel();
   showConfirmBanner(
     '↺ Reiniciar valoración completa',
     'Se perderán los datos clínicos de la valoración. El nombre del paciente se conservará.' + _avisoAudioSesion(),
@@ -379,7 +384,8 @@ function resetApp() {
       _descartarAudioSesion();
       _softResetApp(); goToPhase(1);
       _sessionCh.postMessage({ type: 'SESSION_RESET', patient: state.patient || '' });
-    }
+    },
+    { onCancel: () => { if (panelAbierto) toggleSessionPanel(); } }
   );
 }
 
@@ -2383,8 +2389,10 @@ function buildPhaseSheetList() {
 // quien necesite cerrarlo desde fuera (p. ej. si lo que se iba a confirmar ya
 // no tiene sentido); no hace nada si ya está cerrado.
 function showConfirmBanner(title, text, actionLabel, onConfirm, opts = {}) {
+  // Un diálogo nuevo sustituye al que hubiera: su bloqueo de scroll se libera
+  // aquí, porque ya no se cerrará por su dismiss()
   const existing = document.getElementById('confirmBanner');
-  if (existing) existing.remove();
+  if (existing) { existing.remove(); unlockBodyScroll(); }
   const overlay = document.createElement('div');
   overlay.className = 'confirm-banner';
   overlay.id = 'confirmBanner';
@@ -2477,6 +2485,8 @@ function _showSessionState(st) {
           </button>
         </div>
       </div>
+      <button type="button" class="session-reset-btn" id="sessionReset"${_hasAssessmentData() ? '' : ' disabled'}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Reiniciar valoración</button>
+      <div class="session-io-nota">Borra los datos clínicos y conserva el nombre del paciente.</div>
       <div class="session-io">
         <button type="button" class="session-io-btn" id="sessionExport"${state.maxVisitedIdx > 0 ? '' : ' disabled'}>⬇ Exportar</button>
         <button type="button" class="session-io-btn" id="sessionImport">⬆ Importar</button>
@@ -2484,6 +2494,7 @@ function _showSessionState(st) {
       </div>
       <div class="session-io-nota">Valoración completa en un archivo .json, con los datos clínicos y el nombre del paciente.${state.maxVisitedIdx > 0 ? '' : ' Se puede exportar a partir de la fase 2.'}</div>
       <div class="session-version" id="sessionVersion">${_versionPanelHTML()}</div>`;
+    panel.querySelector('#sessionReset').onclick = resetApp;
     panel.querySelector('#sessionExport').onclick = exportarValoracionArchivo;
     panel.querySelector('#sessionImport').onclick = () => panel.querySelector('#sessionImportFile').click();
     panel.querySelector('#sessionImportFile').onchange = e => {
@@ -2625,6 +2636,7 @@ async function comprobarVersion({ manual = false } = {}) {
     _versionNueva = null;
     _anotarRecarga('');
     document.getElementById('versionAviso')?.remove();
+    _puntoVersionSesion(false);
     if (manual) showToast(`✓ Estás en la última versión (${textoVersion()})`, 'success');
     return;
   }
@@ -2635,14 +2647,34 @@ async function comprobarVersion({ manual = false } = {}) {
   _mostrarAvisoVersion();
 }
 
+// En móvil (≤768 px) el aviso es un snackbar abajo, justo encima de los
+// botones de navegación fijos: al alcance del pulgar y sin tapar el título de
+// la fase. Su altura cambia con el ancho y la fase, así que se mide.
+function _colocarAvisoVersion() {
+  const nav = document.querySelector('.phase-container.active .nav-buttons');
+  const fija = nav && getComputedStyle(nav).position === 'fixed' && nav.offsetHeight > 0;
+  document.documentElement.style.setProperty('--nav-alto', fija ? `${nav.offsetHeight}px` : '0px');
+}
+
+// Punto azul en el icono de sesión mientras haya una versión nueva y el aviso
+// esté cerrado: el panel tiene su botón «Actualizar», así que no se pierde.
+function _puntoVersionSesion(on) {
+  const b = document.getElementById('sessionBtn');
+  if (!b) return;
+  b.classList.toggle('version-nueva', on);
+  b.title = b.ariaLabel = on ? 'Sesión · hay una versión nueva' : 'Sesión';
+}
+
 function _mostrarAvisoVersion() {
   if (!_versionNueva || _versionAvisoCerrado === _versionNueva.sha) return;
   if (document.getElementById('versionAviso')) return;
+  _puntoVersionSesion(false);
+  _colocarAvisoVersion();
   const aviso = document.createElement('div');
   aviso.id = 'versionAviso';
   aviso.className = 'version-aviso';
   aviso.setAttribute('role', 'status');
-  aviso.innerHTML = `<span class="version-aviso-texto">${_versionPendiente() ? 'La versión nueva aún se está publicando: prueba en unos minutos' : 'Hay una versión nueva'}</span>
+  aviso.innerHTML = `<span class="version-aviso-texto">${_versionPendiente() ? 'La versión nueva aún se está publicando: prueba en unos minutos' : '<span class="version-aviso-largo">Hay una versión nueva</span><span class="version-aviso-corto">Versión nueva</span>'}</span>
     <button type="button" class="version-aviso-btn" id="versionAvisoRecargar">Actualizar</button>
     <button type="button" class="version-aviso-cerrar" id="versionAvisoCerrar" aria-label="Cerrar aviso" title="Ahora no">×</button>`;
   document.body.appendChild(aviso);
@@ -2650,7 +2682,23 @@ function _mostrarAvisoVersion() {
   aviso.querySelector('#versionAvisoCerrar').onclick = () => {
     _versionAvisoCerrado = _versionNueva?.sha || '';
     aviso.remove();
+    _puntoVersionSesion(true);
   };
+}
+window.addEventListener('resize', () => { if (document.getElementById('versionAviso')) _colocarAvisoVersion(); });
+
+// Mientras se recarga, el aviso es solo un estado («⟳ Actualizando…», una
+// línea en cualquier ancho): el botón y la «×» ya no sirven, porque la app se
+// va a recargar igualmente.
+function _avisoActualizando() {
+  const aviso = document.getElementById('versionAviso');
+  if (aviso) {
+    aviso.classList.add('version-aviso-actualizando');
+    aviso.setAttribute('aria-busy', 'true');
+    aviso.innerHTML = '<span class="version-aviso-giro" aria-hidden="true"></span><span class="version-aviso-texto">Actualizando…</span>';
+  }
+  const b = document.getElementById('sessionVersionRecargar');
+  if (b) { b.disabled = true; b.textContent = 'Actualizando…'; }
 }
 
 // Antes de recargar se vuelven a pedir al servidor (cache: 'reload') los
@@ -2680,8 +2728,7 @@ function recargarVersionNueva() {
   const recargar = async () => {
     saveSession();
     _anotarRecarga(_versionNueva?.sha || '');
-    const btn = document.getElementById('versionAvisoRecargar');
-    if (btn) { btn.disabled = true; btn.textContent = 'Actualizando…'; }
+    _avisoActualizando();
     await _refrescarArchivosApp();
     location.reload();
   };
@@ -2711,6 +2758,7 @@ function toggleSessionPanel() {
 function _closeAllOverlays() {
   cerrarRazonamiento({ sinHistorial: true });
   cerrarMenuCompartir({ sinHistorial: true });
+  cerrarPreguntaIA({ sinHistorial: true });
   closePhaseSheet();
   closeSessionPanel();
   const banner = document.getElementById('confirmBanner');
@@ -2981,6 +3029,107 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && document.getElementById('compartirOverlay')?.classList.contains('open')) cerrarMenuCompartir();
 });
 
+// ─── PREGUNTAR A LA IA (cabecera, solo standalone) ──────────────
+// Pregunta libre del clínico, en cualquier fase: abre Perplexity, Google (modo
+// IA) o Claude en otra pestaña con la pregunta. Lo único que se añade del caso
+// es la región («Contexto: valoración de hombro»), nunca datos del paciente;
+// el aviso del diálogo pide no escribirlos. Mismo patrón que «📤 Compartir»:
+// hoja inferior con atrás en móvil, diálogo centrado en ancho. El destino
+// elegido es el mismo que el de «Ampliar con IA» (localStorage).
+let _preguntaHistorial = false;
+let _preguntaDestino = null;
+const _ctxPregunta = () => (state.region ? nombreRegion(state.region).toLowerCase() : '');
+
+function _pintarPreguntaIA() {
+  const d = _preguntaDestino;
+  document.getElementById('preguntaDestinos').innerHTML = Object.entries(DESTINOS_IA).map(([k, x]) =>
+    `<button type="button" class="option-btn${k === d ? ' selected' : ''}" role="radio" aria-checked="${k === d}" data-destino="${k}">${x.nombre.replace(/ \(.*\)$/, '')}</button>`).join('');
+  document.getElementById('preguntaVentaja').textContent = DESTINOS_IA[d].ventaja;
+  const ir = document.getElementById('preguntaIr');
+  ir.textContent = `Preguntar en ${DESTINOS_IA[d].nombre.replace(/ \(.*\)$/, '')} ↗`;
+  const ctx = _ctxPregunta();
+  document.getElementById('preguntaNota').textContent =
+    `Se envía tu pregunta${ctx ? ` y la región («valoración de ${ctx}»)` : ''}, y se pide que use fuentes científicas y las enlace. ${NOTA_CUENTAS}`;
+  _actualizarPreguntaIr();
+}
+
+function _actualizarPreguntaIr() {
+  const ir = document.getElementById('preguntaIr');
+  const q = document.getElementById('preguntaTexto').value.trim();
+  ir.setAttribute('aria-disabled', q.length < 3 ? 'true' : 'false');
+  ir.href = q.length < 3 ? '#' : urlIA(_preguntaDestino, promptPregunta({ contexto: _ctxPregunta(), pregunta: q }));
+}
+
+function abrirPreguntaIA() {
+  const overlay = document.getElementById('preguntaOverlay');
+  if (!overlay || overlay.classList.contains('open') || _enHub()) return;
+  _preguntaDestino = destinoIA();
+  _pintarPreguntaIA();
+  overlay.classList.add('open');
+  document.getElementById('preguntaIABtn')?.setAttribute('aria-expanded', 'true');
+  lockBodyScroll();
+  if (_esMovil()) {
+    history.pushState({ phase: state.currentPhase, pregunta: true }, '');
+    _preguntaHistorial = true;
+  }
+  _ajustarPreguntaTeclado();
+  document.getElementById('preguntaTexto').focus({ preventScroll: true });
+}
+
+function cerrarPreguntaIA({ desdeHistorial = false, sinHistorial = false } = {}) {
+  const overlay = document.getElementById('preguntaOverlay');
+  if (!overlay?.classList.contains('open')) return;
+  overlay.classList.remove('open');
+  overlay.style.paddingBottom = '';
+  const panel = document.getElementById('preguntaPanel');
+  panel.style.transform = ''; panel.style.transition = '';
+  unlockBodyScroll();
+  if (_preguntaHistorial) {
+    _preguntaHistorial = false;
+    if (!desdeHistorial && !sinHistorial) { _popIgnorar = true; history.back(); }
+  }
+  const btn = document.getElementById('preguntaIABtn');
+  btn?.setAttribute('aria-expanded', 'false');
+  if (!sinHistorial) btn?.focus({ preventScroll: true });
+}
+
+// Con el teclado abierto en móvil, la hoja se apoya encima de él en vez de
+// quedar tapada (iOS no encoge el viewport de diseño, solo el visual).
+function _ajustarPreguntaTeclado() {
+  const overlay = document.getElementById('preguntaOverlay');
+  const vv = window.visualViewport;
+  if (!overlay?.classList.contains('open') || !vv) return;
+  const teclado = Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop));
+  overlay.style.paddingBottom = _esMovil() && teclado > 0 ? `${teclado}px` : '';
+}
+window.visualViewport?.addEventListener('resize', _ajustarPreguntaTeclado);
+
+document.getElementById('preguntaTexto')?.addEventListener('input', _actualizarPreguntaIr);
+document.getElementById('preguntaTexto')?.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' || e.shiftKey || e.isComposing) return;
+  e.preventDefault();
+  document.getElementById('preguntaIr').click();
+});
+document.getElementById('preguntaDestinos')?.addEventListener('click', e => {
+  const b = e.target instanceof Element ? e.target.closest('[data-destino]') : null;
+  if (!b) return;
+  _preguntaDestino = b.dataset.destino;
+  guardarDestinoIA(_preguntaDestino);
+  _pintarPreguntaIA();
+});
+// <a target="_blank"> con el href ya calculado: el navegador no lo bloquea
+// como haría con un window.open. Vacía, no navega y devuelve el foco al texto.
+document.getElementById('preguntaIr')?.addEventListener('click', e => {
+  const texto = document.getElementById('preguntaTexto');
+  _actualizarPreguntaIr();
+  if (texto.value.trim().length < 3) { e.preventDefault(); texto.focus(); return; }
+  guardarDestinoIA(_preguntaDestino);
+  setTimeout(() => { texto.value = ''; cerrarPreguntaIA(); }, 0);
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('preguntaOverlay')?.classList.contains('open')) cerrarPreguntaIA();
+});
+
 function showToast(message, tone) {
   const existing = document.getElementById('appToast');
   if (existing) existing.remove();
@@ -3025,10 +3174,6 @@ function _hasAssessmentData() {
     || resumenFormularioPrevio().length > 0;
 }
 
-function updateResetBtnVisibility() {
-  document.querySelector('.btn-reset')?.classList.toggle('visible', _hasAssessmentData());
-}
-
 function saveSession() {
   if (_importando) return;
   const patientEl = document.getElementById('patientName');
@@ -3042,7 +3187,7 @@ function saveSession() {
   if (state.currentPhase === 1 && state.modo === 'breve') renderBrevePendientes();
   // After a clear, block writes until a patient name is entered
   if (_sessionCleared) {
-    if (!state.patient) { updateResetBtnVisibility(); return; }
+    if (!state.patient) return;
     _sessionCleared = false;
   }
   if (state.patient) {
@@ -3063,7 +3208,6 @@ function saveSession() {
         _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_STATE', assessmentState: { ...state } });
       });
   }
-  updateResetBtnVisibility();
 }
 
 function _restoreOptionBtnGroup(groupId, val) {
@@ -3293,7 +3437,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (session.rom && !state.rom) state.rom = session.rom;
     _updateSessionPanelTitle();
-    updateResetBtnVisibility();
   });
 });
 
@@ -3419,12 +3562,12 @@ export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, resumenFo
 // scope, never a module's private scope.
 Object.assign(window, {
   abrirFormularioPrevio, abrirRazonamiento, cerrarRazonamiento, irACronologia, appendQuickPhrase, buildResults, closePhaseSheet, closeSessionPanel, compartirNotas,
-  abrirMenuCompartir, cerrarMenuCompartir, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
+  abrirMenuCompartir, cerrarMenuCompartir, abrirPreguntaIA, cerrarPreguntaIA, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
   navStepClick, promptClearSession, resetApp, saveSession, scrollToActiveSisHeader, selectIrritab,
   selectIrritabSync, selectNRS, selectOption, selectPsico, selectRegion, selectSQ, selectSistQ,
   toggleAccordionRow, toggleDictation, toggleImpact, togglePhaseSheet, toggleSessionPanel,
   cycleThemePref, selectModo, toggleBreveVerTodo, completarPendientesBreve, selectEmbudo, selectIrritabDirecta, verResultadosSinConfirmar,
-  updateEdadPaciente, updateVital, updateVitalColor, updateResetBtnVisibility,
+  updateEdadPaciente, updateVital, updateVitalColor,
   updateCirugia, selectCirProtocolo, toggleCirComplicacion, toggleDiagnosticoTratado,
 });
 
@@ -3491,5 +3634,7 @@ Object.assign(window, {
   if (razon) initSwipe(razon, () => cerrarRazonamiento(), _esMovil);
   const compartir = document.getElementById('compartirPanel');
   if (compartir) initSwipe(compartir, () => cerrarMenuCompartir(), _esMovil);
+  const pregunta = document.getElementById('preguntaPanel');
+  if (pregunta) initSwipe(pregunta, () => cerrarPreguntaIA(), _esMovil);
 }());
 

@@ -765,14 +765,14 @@ async function checkAmpliarIA(browser) {
   r.barra = barra.visible && barra.dentro && barra.texto.includes('Perplexity') && b.q.includes(`«${elegido}»`);
   r.huecoRaton = barra.hueco === 8 || barra.hueco;
 
-  // ▾ → menú con las dos IA y su ventaja; elegir Google se recuerda
+  // ▾ → menú con las tres IA y su ventaja; elegir Google se recuerda
   await seleccionar(`${sq} .razon-cuerpo p`);
   await page.waitForTimeout(400);
   await page.click('#iaBarra .ia-elegir');
   r.menu = await page.evaluate(() => {
     const m = document.getElementById('iaMenu');
     const ops = [...m.querySelectorAll('.ia-menu-op')];
-    return !m.hidden && ops.length === 2 && ops[0].classList.contains('actual')
+    return !m.hidden && ops.length === 3 && ops[0].classList.contains('actual')
       && ops.every(o => o.querySelector('.ia-menu-desc').textContent.length > 40)
       && m.textContent.includes('nunca datos del paciente');
   });
@@ -868,6 +868,120 @@ async function checkAmpliarIA(browser) {
   return r;
 }
 
+// «✨ Preguntar a la IA» (cabecera, solo standalone): pregunta libre en
+// cualquier fase. El prompt lleva la pregunta, la región si ya la hay y la
+// frase de fuentes, nunca el nombre, la edad ni el motivo; vacía no navega;
+// Claude se recuerda; Escape cierra; en el móvil es una hoja inferior que el
+// atrás cierra sin cambiar de fase; a 320 px los tres destinos caben; en el
+// hub no hay botón.
+async function checkPreguntaIA(browser, errors) {
+  const r = {};
+  const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (pregunta IA): ${err.message}`));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.evaluate(() => {
+    localStorage.removeItem('physiq-assessment-ia-destino');
+    window.__iaHrefs = [];
+    // En captura: el panel del diálogo corta la propagación del click
+    window.addEventListener('click', e => {
+      const a = e.target.closest?.('a[target="_blank"]');
+      if (a) { e.preventDefault(); setTimeout(() => window.__iaHrefs.push(a.getAttribute('href') === '#' ? '' : a.href), 0); }
+    }, true);
+  });
+  const ultimo = () => page.evaluate(() => {
+    const h = window.__iaHrefs.at(-1) || '';
+    return { n: window.__iaHrefs.filter(Boolean).length, host: h.split('?')[0], q: decodeURIComponent((h.split('q=')[1] || '').replace(/\+/g, ' ')) };
+  });
+  const abierto = () => page.evaluate(() => document.getElementById('preguntaOverlay').classList.contains('open'));
+  await page.click('#sessionBtn');
+  await page.fill('#patientName', 'Paciente Secreta');
+  await page.keyboard.press('Enter');
+  await page.fill('#edadPaciente', '47');
+
+  // Fase 1, sin región: botón en la cabecera, diálogo centrado, Perplexity por defecto
+  await page.click('#preguntaIABtn');
+  r.dialogo = await page.evaluate(() => {
+    const p = document.getElementById('preguntaPanel').getBoundingClientRect();
+    const sel = document.querySelector('#preguntaDestinos .option-btn.selected');
+    return document.getElementById('preguntaOverlay').classList.contains('open') && p.width <= 420 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
+      && document.querySelectorAll('#preguntaDestinos .option-btn').length === 3 && sel?.dataset.destino === 'perplexity'
+      && document.activeElement?.id === 'preguntaTexto' && document.getElementById('preguntaIr').getAttribute('aria-disabled') === 'true'
+      && document.querySelector('.pregunta-aviso').textContent.includes('No escribas datos que identifiquen al paciente');
+  });
+  await page.click('#preguntaIr', { force: true });   // aria-disabled: Playwright no lo pulsaría
+  await page.waitForTimeout(150);
+  r.vaciaNoNavega = (await ultimo()).n === 0 && await abierto();
+  await page.fill('#preguntaTexto', '¿Hawkins o Neer?');
+  await page.click('#preguntaIr');
+  await page.waitForTimeout(150);
+  const a = await ultimo();
+  r.fase1 = a.host === 'https://www.perplexity.ai/search'
+    && a.q.startsWith('Soy fisioterapeuta. Mi pregunta: «¿Hawkins o Neer?». Busca información solo en fuentes científicas o académicas')
+    && a.q.endsWith('Cita las fuentes con enlace.') && !(await abierto())
+    && await page.evaluate(() => document.getElementById('preguntaTexto').value === '');
+
+  // Fase 2 (lumbar): región como contexto; Claude se recuerda; Enter envía
+  await irAFase2(page, 'lumbar');
+  await page.click('#preguntaIABtn');
+  await page.click('#preguntaDestinos [data-destino="claude"]');
+  r.claudeAviso = await page.evaluate(() => document.getElementById('preguntaVentaja').textContent.includes('cuenta')
+    && document.getElementById('preguntaIr').textContent.includes('Claude')
+    && localStorage.getItem('physiq-assessment-ia-destino') === 'claude');
+  await page.fill('#preguntaTexto', 'Dosis de ejercicio en lumbalgia crónica');
+  await page.press('#preguntaTexto', 'Enter');
+  await page.waitForTimeout(150);
+  const b = await ultimo();
+  r.fase2 = b.n === 2 && b.host === 'https://claude.ai/new' && b.q.includes('Contexto: valoración de lumbar. Mi pregunta: «Dosis de ejercicio en lumbalgia crónica».')
+    && !b.q.includes('Secreta') && !b.q.includes('47') && !b.q.includes('razonamiento');
+  await page.waitForTimeout(100);
+  await page.click('#preguntaIABtn');
+  r.escape = await page.evaluate(() => document.querySelector('#preguntaDestinos .option-btn.selected')?.dataset.destino === 'claude');
+  await page.keyboard.press('Escape');
+  r.escape = r.escape && !(await abierto());
+  await context.close();
+
+  // Móvil táctil: hoja inferior a todo el ancho; atrás la cierra en la misma fase
+  const ctxMovil = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const movil = await ctxMovil.newPage();
+  movil.on('pageerror', err => errors.push(`pageerror (pregunta IA móvil): ${err.message}`));
+  await movil.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await irAFase2(movil, 'hombro');
+  await movil.tap('#preguntaIABtn');
+  await movil.waitForTimeout(400);
+  const hoja = await movil.evaluate(() => {
+    const p = document.getElementById('preguntaPanel').getBoundingClientRect();
+    return Math.round(p.width) === innerWidth && Math.round(p.bottom) === innerHeight;
+  });
+  await movil.goBack();
+  await movil.waitForTimeout(300);
+  r.movil = hoja && await movil.evaluate(() => !document.getElementById('preguntaOverlay').classList.contains('open') && state.currentPhase === 2);
+  // 320 px: los tres destinos y el botón caben sin cortar
+  await movil.setViewportSize({ width: 320, height: 640 });
+  await movil.tap('#preguntaIABtn');
+  await movil.waitForTimeout(400);
+  r.caben320 = await movil.evaluate(() => {
+    const panel = document.getElementById('preguntaPanel').getBoundingClientRect();
+    return [...document.querySelectorAll('#preguntaDestinos .option-btn'), document.getElementById('preguntaIr')].every(b => {
+      const rb = b.getBoundingClientRect();
+      return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth;
+    }) && document.documentElement.scrollWidth <= innerWidth;
+  });
+  await ctxMovil.close();
+
+  // Hub: sin botón
+  const ctxHub = await browser.newContext();
+  const hub = await ctxHub.newPage();
+  await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
+  await hub.waitForTimeout(1500);
+  const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
+  r.hub = await frame.evaluate(() => getComputedStyle(document.getElementById('preguntaIABtn')).display === 'none');
+  await ctxHub.close();
+
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 // Informe narrativo con IA (informe-ia.js, solo standalone). Sin coste: el
 // worker (/validate y POST /) y Turnstile se simulan con page.route. Cubre:
 // sin licencia → tarjeta desactivada; «Introducir clave»; una respuesta en
@@ -943,19 +1057,139 @@ async function checkDialogos(browser, errors) {
   for (const [etiqueta, borra, cancelLabel] of ACCIONES_DIALOGO) {
     const m = await page.evaluate(async ([etiqueta, borra, cancelLabel]) => {
       const { showConfirmBanner } = await import('./app.js');
-      showConfirmBanner('Título', 'Texto del diálogo.', etiqueta, () => {}, { borra, cancelLabel });
+      const cerrar = showConfirmBanner('Título', 'Texto del diálogo.', etiqueta, () => {}, { borra, cancelLabel });
       const caja = document.querySelector('.confirm-box-btns').getBoundingClientRect();
       const botones = [...document.querySelectorAll('.confirm-box-btns button')];
       const unaLinea = botones.every(b => b.getBoundingClientRect().height < 40 && b.scrollWidth <= b.clientWidth);
       const dentro = botones.every(b => { const q = b.getBoundingClientRect(); return q.left >= caja.left - 0.5 && q.right <= caja.right + 0.5; });
       const papelera = !!document.querySelector('#confirmAction svg');
-      document.getElementById('confirmBanner').remove();
+      cerrar();
       return { unaLinea, dentro, papelera };
     }, [etiqueta, borra, cancelLabel]);
     if (!m.unaLinea || !m.dentro || m.papelera !== borra) r.fallos.push({ etiqueta: etiqueta.replace(/<[^>]+>/g, ' ').trim(), ...m });
   }
-  r.ok = r.fallos.length === 0;
+
+  // Cerrar: Escape, un toque en el velo y el botón de cerrar cancelan (llaman a
+  // opts.onCancel); solo el botón de acción hace la acción. Seleccionar texto
+  // del recuadro y soltar en el velo no cierra. El dismiss() devuelto cierra
+  // sin onCancel y, si el diálogo ya no está, no hace nada.
+  const abrir = (opts = {}) => page.evaluate(async opts => {
+    const { showConfirmBanner } = await import('./app.js');
+    window._dlg = { accion: 0, cancelar: 0 };
+    window._dlgDismiss = showConfirmBanner('Título', 'Texto del diálogo para seleccionar.', 'Borrar',
+      () => { window._dlg.accion++; }, { ...opts, onCancel: () => { window._dlg.cancelar++; } });
+  }, opts);
+  const estado = () => page.evaluate(() => ({ abierto: !!document.getElementById('confirmBanner'), ...window._dlg }));
+  const es = (e, abierto, accion, cancelar) => e.abierto === abierto && e.accion === accion && e.cancelar === cancelar;
+  const cierre = {};
+  await abrir();
+  await page.keyboard.press('Escape');
+  cierre.escape = es(await estado(), false, 0, 1);
+  await abrir();
+  await page.mouse.click(5, 650);
+  cierre.velo = es(await estado(), false, 0, 1);
+  await abrir();
+  const texto = await page.locator('.confirm-box-text').boundingBox();
+  await page.mouse.move(texto.x + 5, texto.y + texto.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(5, 650, { steps: 4 });
+  await page.mouse.up();
+  cierre.seleccionarYSoltarEnVelo = es(await estado(), true, 0, 0);
+  await page.evaluate(() => window._dlgDismiss());
+  await abrir();
+  await page.click('#confirmCancel');
+  cierre.botonCerrar = es(await estado(), false, 0, 1);
+  await abrir({ cancelLabel: 'Seguir' });
+  cierre.cancelLabel = (await page.textContent('#confirmCancel')).trim() === 'Seguir';
+  await page.click('#confirmAction');
+  cierre.accion = es(await estado(), false, 1, 0);
+  // dismiss() con el panel de sesión abierto debajo: cierra sin onCancel; el
+  // segundo no hace nada (ni desbloquea el scroll que el panel sigue usando) y
+  // Escape ya no llama a onCancel
+  await page.evaluate(() => toggleSessionPanel());
+  await abrir();
+  await page.evaluate(() => { window._dlgDismiss(); window._dlgDismiss(); });
+  await page.keyboard.press('Escape');
+  cierre.dismiss = es(await estado(), false, 0, 0)
+    && await page.evaluate(() => document.body.style.overflow === 'hidden');
+  await page.evaluate(() => closeSessionPanel());
+  // Un diálogo encima de otro: Escape cancela solo el de arriba, y el dismiss()
+  // del de abajo (p. ej. al acabar la generación con IA) no cierra el de arriba;
+  // al cerrar el de arriba la página vuelve a hacer scroll
+  cierre.apilados = await page.evaluate(async () => {
+    const { showConfirmBanner } = await import('./app.js');
+    const c = { a: 0, b: 0 };
+    showConfirmBanner('A', 'a', 'X', () => {}, { onCancel: () => { c.a++; } });
+    showConfirmBanner('B', 'b', 'X', () => {}, { onCancel: () => { c.b++; } });
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    const conScroll = () => document.body.style.overflow === '';
+    const escapeSoloArriba = !document.getElementById('confirmBanner') && c.a === 0 && c.b === 1 && conScroll();
+    const dA = showConfirmBanner('A', 'a', 'X', () => {}, { onCancel: () => { c.a++; } });
+    showConfirmBanner('B', 'b', 'X', () => {}, { onCancel: () => { c.b++; } });
+    dA();
+    const bSigue = document.querySelector('#confirmBanner .confirm-box-title')?.textContent === 'B';
+    document.getElementById('confirmCancel').click();
+    return escapeSoloArriba && bSigue && c.a === 0 && c.b === 2 && conScroll();
+  });
+  r.cierre = cierre;
+  r.ok = r.fallos.length === 0 && Object.values(cierre).every(v => v === true);
   await context.close();
+  return r;
+}
+
+// Fase 5, lo plegado de las tarjetas de hipótesis: la pauta de ro2 con rama
+// pone delante «Para este caso» y pliega las otras; lo que es seguridad (la
+// pauta «Derivar» y la nota de compatibilidad con el protocolo del cirujano)
+// nunca queda dentro de un <details>; al imprimir se despliega todo y después
+// vuelve a como estaba.
+async function checkFase5Plegado(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 5 plegado): ${err.message}`));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const fase5 = (datos, id, mirar) => page.evaluate(async ([datos, id, mirar]) => {
+    const { HYPOTHESES, DOSIS_DERIVAR } = await import('./data.js');
+    Object.assign(state, { mecanismo: '', treeAnswers: {}, testResults: {}, derivacionResuelta: {} }, datos);
+    buildResults(); goToPhase(5);
+    const hyp = HYPOTHESES[id];
+    const tarjeta = [...document.querySelectorAll('#resultsContent .hyp5-card')].find(c => c.querySelector('.hyp5-nombre')?.textContent.includes(hyp.name));
+    if (!tarjeta) return null;
+    const visibleSinPlegar = el => !!el && el.checkVisibility() && !el.closest('details');
+    const rama = tarjeta.querySelector('.pauta-rama-tit');
+    const otras = tarjeta.querySelector('details.pauta-otras');
+    if (mirar === 'rama') return { rama: rama && visibleSinPlegar(rama) ? rama.textContent : null, otrasCerradas: !!otras && !otras.open };
+    if (mirar === 'derivar') {
+      const caja = [...tarjeta.querySelectorAll('.exercise-box')].find(b => b.textContent.includes(DOSIS_DERIVAR));
+      return { etiqueta: tarjeta.textContent.includes('🚑 Derivación'), sinPlegar: visibleSinPlegar(caja) };
+    }
+    const { TEXTO_PAUTA_COMPATIBLE } = await import('./lib/posquirurgico.js');
+    const nota = [...tarjeta.querySelectorAll('.nota-posq')].find(n => n.textContent.includes(TEXTO_PAUTA_COMPATIBLE));
+    return { sinPlegar: visibleSinPlegar(nota) };
+  }, [datos, id, mirar]);
+  const r = {};
+  const rodilla = { region: 'rodilla', activeHypotheses: ['ro2'] };
+  const conRama = await fase5({ ...rodilla, mecanismo: 'Traumático', treeAnswers: { ro_step1: 'menisco' } }, 'ro2', 'rama');
+  r.rama = conRama?.rama === 'Para este caso: Rotura traumática, sin cirugía' && conRama.otrasCerradas;
+  const sinRama = await fase5(rodilla, 'ro2', 'rama');
+  r.sinRama = !!sinRama && sinRama.rama === null && !sinRama.otrasCerradas;
+  const derivar = await fase5({ region: 'codo', activeHypotheses: ['co7'] }, 'co7', 'derivar');
+  r.derivar = !!derivar?.etiqueta && derivar.sinPlegar;
+  const cirugia = { intervencion: 'Meniscectomía parcial', fecha: '', semanasAprox: 4, protocolo: 'Escrito', restricciones: 'Sin pivotar 6 semanas', complicaciones: ['Ninguna'], complicacionOtra: '' };
+  const posq = await fase5({ ...rodilla, mecanismo: 'Post-quirúrgico', cirugia }, 'ro2', 'posq');
+  r.notaPosq = !!posq?.sinPlegar;
+  // Imprimir: todo desplegado; después, cada <details> como estaba (uno abierto a mano sigue abierto)
+  r.imprimir = await page.evaluate(() => {
+    const todos = [...document.querySelectorAll('#phase5 details')];
+    todos[0].open = true;
+    const antes = todos.map(d => d.open);
+    if (antes.every(Boolean)) return 'no hay nada plegado';
+    dispatchEvent(new Event('beforeprint'));
+    const desplegado = todos.every(d => d.open);
+    dispatchEvent(new Event('afterprint'));
+    return desplegado && todos.every((d, i) => d.open === antes[i]);
+  });
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
   return r;
 }
 
@@ -1047,9 +1281,20 @@ async function checkExportarImportar(browser, errors, tmpDir) {
 
   await page.click('#sessionBtn');
   r.exportarDesactivadoAlEmpezar = await page.isDisabled('#sessionExport');
+  // «Reiniciar valoración» está en el panel (ya no en la cabecera) y sin datos no se puede usar
+  r.reiniciarEnPanel = !(await page.$('.app-header .btn-reset, .app-header [onclick^="resetApp"]'))
+    && await page.isDisabled('#sessionReset');
   await page.fill('#patientName', 'Prueba Exportación');
   await page.keyboard.press('Enter');
   await walkRegion(page, 'lumbar');
+  // Con datos se activa; cancelar la confirmación vuelve al panel sin borrar nada
+  await page.click('#sessionBtn');
+  await page.click('#sessionReset');
+  await page.click('#confirmCancel');
+  await page.waitForTimeout(200);
+  r.reiniciarCancelaVuelvePanel = await page.isVisible('#sessionReset')
+    && await page.evaluate(() => state.region === 'lumbar');
+  await page.evaluate(() => closeSessionPanel());
   const antes = await page.evaluate(() => JSON.stringify({ p: state.patient, r: state.region, t: state.treeAnswers, f: state.currentPhase, m: state.motivoConsulta, s: state.signoComparable }));
 
   await page.click('#sessionBtn');
@@ -1058,12 +1303,49 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   const ruta = `${tmpDir}/${r.nombreArchivo}`;
   await descarga.saveAs(ruta);
 
-  // Borrar sesión (el panel sigue abierto tras exportar): la app vuelve a la fase 1 vacía
+  // Borrar sesión (el panel sigue abierto tras exportar): cierra el panel y abre
+  // el diálogo común con el nombre; cancelar (Escape, velo o botón) vuelve a
+  // abrir el panel sin borrar nada; confirmar vuelve a la fase 1 vacía, también
+  // el campo del nombre (si no, saveSession() lo devolvería al estado)
   r.panelSigueAbierto = await page.isVisible('#sessionPanelClear');
-  await page.click('#sessionPanelClear');
+  const panelAbierto = () => page.evaluate(() => document.getElementById('sessionPanelOverlay').classList.contains('open'));
+  const pedirBorrar = async () => {
+    if (!(await panelAbierto())) await page.click('#sessionBtn');   // si cancelar no lo reabrió, ya consta como fallo
+    await page.click('#sessionPanelClear');
+    await page.waitForSelector('#confirmBanner');
+    return !(await panelAbierto()) && (await page.textContent('#confirmBanner .confirm-box-text')).includes('«Prueba Exportación»');
+  };
+  const cancelado = async () => {
+    await page.waitForTimeout(150);
+    return !(await page.isVisible('#confirmBanner')) && await panelAbierto()
+      && await page.evaluate(() => state.patient === 'Prueba Exportación' && state.region === 'lumbar');
+  };
+  r.borrarCancelar = {};
+  r.borrarCancelar.dialogo = await pedirBorrar();
+  await page.keyboard.press('Escape');
+  r.borrarCancelar.escape = await cancelado();
+  await pedirBorrar();
+  await page.mouse.click(5, 880);
+  r.borrarCancelar.velo = await cancelado();
+  await pedirBorrar();
+  await page.click('#confirmCancel');
+  r.borrarCancelar.boton = await cancelado();
+  await pedirBorrar();
   await page.click('#confirmAction');
   await page.waitForTimeout(200);
-  r.borrada = await page.evaluate(() => state.currentPhase === 1 && !state.region);
+  r.borrada = await page.evaluate(async () => {
+    (await import('./app.js')).saveSession();
+    return state.currentPhase === 1 && !state.region && state.patient === '' && document.getElementById('patientName').value === '';
+  });
+  // El nombre va escapado en el texto del diálogo
+  r.nombreEscapado = await page.evaluate(() => {
+    state.patient = '<b>X</b>';
+    promptClearSession();
+    const ok = document.querySelector('#confirmBanner .confirm-box-text').textContent.includes('«<b>X</b>»');
+    document.getElementById('confirmCancel').click();
+    state.patient = '';
+    return ok;
+  });
 
   // Importar: confirmación → recarga → restaurado
   await page.click('#sessionBtn');
@@ -1090,7 +1372,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   await page.click('#sessionBtn');
   r.caben320 = await page.evaluate(() => {
     const panel = document.getElementById('sessionPanel').getBoundingClientRect();
-    return ['sessionExport', 'sessionImport'].every(id => {
+    return ['sessionReset', 'sessionExport', 'sessionImport'].every(id => {
       const b = document.getElementById(id);
       const rb = b.getBoundingClientRect();
       return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth && rb.height >= 40;
@@ -1119,38 +1401,117 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   }
   r.fasesMovil = Object.values(r.bandasMovil).every(Boolean);
 
-  // Aviso de versión con la barra fija de contexto visible (sistema en la
-  // fase 2, hipótesis en la 4b): debe quedar debajo de ella, no tapado
-  await page.evaluate(() => {
-    const a = document.createElement('div');
-    a.id = 'versionAvisoPrueba'; a.className = 'version-aviso';
-    a.innerHTML = '<span class="version-aviso-texto">Hay una versión nueva</span><button class="version-aviso-btn">Actualizar</button>';
-    document.body.appendChild(a);
-  });
-  const avisoBajoBarra = async (barra, cabecera, tarjeta) => {
-    await page.evaluate(([cab, tar]) => {
-      document.querySelector(cab).click();
-      const t = document.querySelector(tar);
-      scrollTo(0, t.getBoundingClientRect().top + scrollY + 300);
-    }, [cabecera, tarjeta]);
-    await page.waitForTimeout(500);
-    return page.evaluate(barra => {
-      const b = document.getElementById(barra), a = document.getElementById('versionAvisoPrueba');
-      if (getComputedStyle(b).display === 'none') return false;
-      return a.getBoundingClientRect().top >= b.getBoundingClientRect().bottom;
-    }, barra);
-  };
-  await page.evaluate(() => goToPhase(2));
-  await page.waitForTimeout(300);
-  r.avisoFase2 = await avisoBajoBarra('sisContextBanner', '.sistema-accordion-row .sistema-accordion-header', '.sistema-accordion-row.open');
-  await page.evaluate(() => goToPhase('4b'));
-  await page.waitForTimeout(300);
-  r.avisoFase4b = await avisoBajoBarra('hypContextBanner', '.hypothesis-card:not(.open) .hypothesis-header', '.hypothesis-card.open');
-  await page.evaluate(() => document.getElementById('versionAvisoPrueba').remove());
-
   await context.close();
-  r.ok = r.exportarDesactivadoAlEmpezar && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
-    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil && r.avisoFase2 && r.avisoFase4b;
+  r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
+    && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil;
+  return r;
+}
+
+// Aviso «Hay una versión nueva» con la versión desplegada simulada
+// (lib/version.js sellado y version.json distinto, con page.route). En móvil:
+// snackbar abajo, justo encima de los botones de navegación fijos (en todas
+// las fases, también con la barra de contexto de la 2), sin tapar la barra de
+// fases, con zonas táctiles de 44 px y sin desbordar a 320 px; oculto
+// mientras se escribe; «×» lo cierra y deja el punto en el icono de sesión.
+// En escritorio, arriba como siempre.
+async function checkAvisoVersion(browser, errors) {
+  const r = {};
+  const preparar = async (viewport) => {
+    const context = await browser.newContext({ viewport });
+    await context.route('**/lib/version.js', async route => {
+      const res = await route.fetch();
+      const txt = (await res.text()).replace("VERSION_SHA = 'dev'", "VERSION_SHA = 'aaaaaaa'");
+      route.fulfill({ response: res, body: txt });
+    });
+    await context.route('**/version.json', route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ sha: 'bbbbbbb', fecha: '2026-10-11T10:00:00Z' }) }));
+    const page = await context.newPage();
+    page.on('pageerror', err => errors.push(`pageerror (aviso versión): ${err.message}`));
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#versionAviso', { timeout: 5000 }).catch(() => {});
+    return { context, page };
+  };
+  const medir = page => page.evaluate(() => {
+    const a = document.getElementById('versionAviso');
+    if (!a || getComputedStyle(a).display === 'none') return null;
+    const q = a.getBoundingClientRect();
+    const nav = document.querySelector('.phase-container.active .nav-buttons').getBoundingClientRect();
+    const barra = document.querySelector('.mobile-phase-bar').getBoundingClientRect();
+    const btns = [...a.querySelectorAll('button')].map(b => b.getBoundingClientRect());
+    return {
+      encimaNav: q.bottom <= nav.top + 0.5 && nav.top - q.bottom <= 16,
+      bajoBarra: q.top >= barra.bottom,
+      ancho: Math.round(q.left) === 16 && Math.round(innerWidth - q.right) === 16,
+      tactil: btns.every(b => b.height >= 43.5 && b.width >= 43.5),
+      sinDesbordar: document.documentElement.scrollWidth <= innerWidth && a.scrollWidth <= a.clientWidth + 1,
+    };
+  });
+  const bien = m => !!m && Object.values(m).every(Boolean);
+
+  // Móvil 390 px: todas las fases
+  let { context, page } = await preparar({ width: 390, height: 844 });
+  r.movil = {};
+  for (const f of [1, 2, 3, 4, '4b', 5]) {
+    await page.evaluate(f => { if (f !== 1) { state.region = state.region || 'hombro'; } goToPhase(f); }, f);
+    await page.waitForTimeout(600);   // tras el fadeUp de la fase (0.4 s): con transform, la barra fija se mueve
+    r.movil[f] = await medir(page);
+  }
+  // Fase 2 con la barra de contexto del sistema visible
+  await page.evaluate(() => goToPhase(2));
+  await page.evaluate(() => {
+    document.querySelector('.sistema-accordion-row .sistema-accordion-header')?.click();
+    const t = document.querySelector('.sistema-accordion-row.open');
+    if (t) scrollTo(0, t.getBoundingClientRect().top + scrollY + 300);
+  });
+  await page.waitForTimeout(500);
+  r.movilContexto = await medir(page);
+  // Escribiendo en un campo: oculto
+  await page.evaluate(() => goToPhase(1));
+  await page.focus('#motivoConsulta');
+  r.ocultoAlEscribir = await page.evaluate(() => getComputedStyle(document.getElementById('versionAviso')).display === 'none');
+  await page.evaluate(() => document.activeElement.blur());
+  // «×»: se va y deja el punto en el icono de sesión
+  await page.click('#versionAvisoCerrar');
+  r.cerrado = await page.evaluate(() => !document.getElementById('versionAviso')
+    && document.getElementById('sessionBtn').classList.contains('version-nueva')
+    && getComputedStyle(document.getElementById('sessionBtn'), '::after').content !== 'none');
+  await context.close();
+
+  // 320 px: cabe
+  ({ context, page } = await preparar({ width: 320, height: 640 }));
+  r.estrecho = await medir(page);
+  await context.close();
+
+  // Una sola línea a 320, 360 y 390 px, tanto con «Actualizar» como mientras
+  // actualiza («⟳ Actualizando…», sin botón ni «×»). El clic y la medida van en
+  // el mismo evaluate: recargarVersionNueva() pinta el estado antes de su
+  // primer await, y luego recarga la página.
+  r.unaLinea = {};
+  for (const w of [320, 360, 390]) {
+    ({ context, page } = await preparar({ width: w, height: 700 }));
+    r.unaLinea[w] = await page.evaluate(() => {
+      const linea = () => {
+        const t = document.querySelector('#versionAviso .version-aviso-texto');
+        return !!t && t.getBoundingClientRect().height <= parseFloat(getComputedStyle(t).lineHeight) * 1.2 + 1;
+      };
+      const antes = linea();
+      document.getElementById('versionAvisoRecargar').click();
+      const a = document.getElementById('versionAviso');
+      return { antes, durante: linea() && !a.querySelector('button') && a.getAttribute('aria-busy') === 'true' };
+    });
+    await context.close();
+  }
+
+  // Escritorio: arriba, centrado
+  ({ context, page } = await preparar({ width: 1280, height: 800 }));
+  r.escritorio = await page.evaluate(() => {
+    const a = document.getElementById('versionAviso');
+    if (!a) return false;
+    const q = a.getBoundingClientRect();
+    return q.top < 200 && Math.abs((q.left + q.right) / 2 - innerWidth / 2) < 2;
+  });
+  await context.close();
+
+  r.ok = Object.values(r.movil).every(bien) && bien(r.movilContexto) && r.ocultoAlEscribir && r.cerrado && bien(r.estrecho) && Object.values(r.unaLinea).every(x => x.antes && x.durante) && r.escritorio;
   return r;
 }
 
@@ -1524,7 +1885,9 @@ async function recorrerGrabadora(browser, errors) {
   await page.click('#grabBtn');
   await esperaClase('recording');
   await page.waitForTimeout(600);
-  await page.click('.btn-reset');
+  // «Reiniciar valoración» está en el panel de sesión, no en la cabecera
+  await page.click('#sessionBtn');
+  await page.click('#sessionReset');
   r.avisoEnReinicio = (await page.textContent('#confirmBanner')).includes('grabación en curso');
   await page.click('#confirmAction');
   await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));
@@ -1703,6 +2066,9 @@ async function main() {
   const ampliarIA = await checkAmpliarIA(browser);
   console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
 
+  const preguntaIA = await checkPreguntaIA(browser, errors);
+  console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, Claude se recuerda, Escape cierra; hoja inferior en móvil que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
+
   console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
   const testsAmpliar = await checkTestsAmpliar(page);
   console.log(`  ${testsAmpliar.ok ? '✓' : '✗'} «cuánto pesa» bajo los badges, criterio corto, «Ampliar» abre el panel del test (lateral sin velo; sheet con velo a 390 px que atrás cierra sin salir de la 4b), ir a la fase 5 lo cierra`);
@@ -1723,14 +2089,22 @@ async function main() {
   const tactil = await checkBotonesTactil(browser, errors);
   console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema; «Compartir» es una hoja inferior que se cierra con atrás o tocando el velo${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
 
-  console.log('\nDiálogos de confirmación a 320 px:');
+  console.log('\nDiálogos de confirmación (320 px):');
   const dialogos = await checkDialogos(browser, errors);
-  console.log(`  ${dialogos.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar${dialogos.ok ? '' : ' ' + JSON.stringify(dialogos.fallos)}`);
+  console.log(`  ${dialogos.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar; Escape, el velo y «Cancelar» cancelan sin hacer la acción (seleccionar y soltar en el velo no cierra); dismiss() cierra sin onCancel y es idempotente${dialogos.ok ? '' : ' ' + JSON.stringify({ fallos: dialogos.fallos, cierre: dialogos.cierre })}`);
+
+  console.log('\nFase 5: pauta por situación y lo que nunca se pliega:');
+  const plegado = await checkFase5Plegado(browser, errors);
+  console.log(`  ${plegado.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba${plegado.ok ? '' : ' ' + JSON.stringify(plegado)}`);
 
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar; aviso de versión bajo la barra fija (fases 2 y 4b)${expImp.avisoFase2 && expImp.avisoFase4b ? '' : ` [fase 2: ${expImp.avisoFase2}, 4b: ${expImp.avisoFase4b}]`}${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
+
+  console.log('\nAviso de versión nueva (versión desplegada simulada):');
+  const avisoVersion = await checkAvisoVersion(browser, errors);
+  console.log(`  ${avisoVersion.ok ? '✓' : '✗'} móvil: abajo, encima de los botones de navegación en todas las fases (también con la barra de contexto), 44 px táctiles, cabe a 320 px, una línea a 320/360/390 px también mientras actualiza, oculto al escribir; «×» deja el punto en el icono de sesión; escritorio: arriba${avisoVersion.ok ? '' : ' ' + JSON.stringify(avisoVersion)}`);
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
@@ -1752,7 +2126,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && avisoVersion.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
