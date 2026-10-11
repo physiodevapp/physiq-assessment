@@ -861,6 +861,23 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "pablo-dictado-2-ficha-breve.txt",
+      "valoracion": "valoracion-pablo-serrano-rodilla.json",
+      "transcripcion": "pablo-dictado-2-transcripcion.txt",
+      "plantilla": "breve",
+      "errores": [
+        {
+          "id": "pablo2-fallo-real",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "Introduce una distinción que el formulario no hace («Le falla o cede: No» pasa a «niega episodios de fallo real»)",
+          "fragmentos": [
+            "niega episodios de fallo real"
+          ]
+        }
+      ]
     }
   ]
 }
