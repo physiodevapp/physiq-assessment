@@ -691,15 +691,16 @@ async function checkRazonamientoMovil(page) {
   await page.click(`${acc} #sq2_${RAZON_Q1} .razon-ampliar`);
   await page.waitForTimeout(400);
   const c = await razonEstado(page);
-  await page.click('#razonCerrar');
+  const sinCruz = await page.isHidden('#razonCerrar');   // sin ✕ en móvil, como los demás sheets
+  await page.mouse.click(10, 10);            // toque en el velo (por encima del sheet)
   await page.waitForTimeout(500);
   const d = await razonEstado(page);
   await page.goBack();                       // sin entrada colgando: este atrás ya va a la fase 1
   await page.waitForTimeout(400);
   const fase = await page.evaluate(() => state.currentPhase);
   const ok = a.abierto && a.visible && a.velo && a.alto > a.vh * 0.7 && !a.scrollX
-    && !b.abierto && b.fase === 2 && c.abierto && !d.abierto && d.fase === 2 && fase === 1;
-  return { ok, a, b, c, d, faseTrasAtras: fase };
+    && !b.abierto && b.fase === 2 && c.abierto && sinCruz && !d.abierto && d.fase === 2 && fase === 1;
+  return { ok, a, b, c, d, sinCruz, faseTrasAtras: fase };
 }
 
 // «Ampliar con IA» (ampliar-ia.js): el enlace «✨ IA ↗» de un párrafo abre
@@ -1290,7 +1291,17 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   // Con datos se activa; cancelar la confirmación vuelve al panel sin borrar nada
   await page.click('#sessionBtn');
   await page.click('#sessionReset');
+  // Relevo de velos sin parpadeo: el velo del diálogo no se funde desde
+  // transparente (solo entra el recuadro), ni el del panel al volver
+  const velo = sel => page.evaluate(s => {
+    const el = document.querySelector(s);
+    return { relevo: el.classList.contains('relevo'), anim: getComputedStyle(el).animationName };
+  }, sel);
+  const ida = await velo('#confirmBanner');
   await page.click('#confirmCancel');
+  const vuelta = await velo('#sessionPanelOverlay');
+  r.relevoSinParpadeo = ida.relevo && ida.anim === 'none' && vuelta.relevo && vuelta.anim === 'none';
+  if (!r.relevoSinParpadeo) r.relevo = { ida, vuelta };
   await page.waitForTimeout(200);
   r.reiniciarCancelaVuelvePanel = await page.isVisible('#sessionReset')
     && await page.evaluate(() => state.region === 'lumbar');
@@ -1402,7 +1413,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   r.fasesMovil = Object.values(r.bandasMovil).every(Boolean);
 
   await context.close();
-  r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
+  r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && r.relevoSinParpadeo && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
     && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil;
   return r;
 }
@@ -2061,7 +2072,7 @@ async function main() {
   const razonEsc = await checkRazonamientoEscritorio(page);
   console.log(`  ${razonEsc.ok ? '✓' : '✗'} escritorio: panel lateral sin velo, SÍ con el panel abierto, cambia de pregunta, Escape cierra`);
   const razonMov = await checkRazonamientoMovil(page);
-  console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
+  console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, sin ✕ (cierra el velo), sin entrada colgando`);
 
   const ampliarIA = await checkAmpliarIA(browser);
   console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
@@ -2100,7 +2111,7 @@ async function main() {
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; panel → diálogo y vuelta sin parpadeo de velo; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
 
   console.log('\nAviso de versión nueva (versión desplegada simulada):');
   const avisoVersion = await checkAvisoVersion(browser, errors);
