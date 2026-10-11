@@ -46,7 +46,7 @@ try {
 
 const BASE_URL = process.argv[2] || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
-const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'lib/session.js', 'lib/posquirurgico.js',
+const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'ampliar-ia.js', 'lib/session.js', 'lib/posquirurgico.js',
   'data/comun.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
@@ -625,6 +625,131 @@ async function checkRazonamientoMovil(page) {
   const ok = a.abierto && a.visible && a.velo && a.alto > a.vh * 0.7 && !a.scrollX
     && !b.abierto && b.fase === 2 && c.abierto && !d.abierto && d.fase === 2 && fase === 1;
   return { ok, a, b, c, d, faseTrasAtras: fase };
+}
+
+// «Ampliar con IA» (ampliar-ia.js): el enlace «✨ IA ↗» de un párrafo abre
+// Perplexity con el párrafo, el contexto y la frase de fuentes, sin datos del
+// paciente; seleccionar texto del «¿Por qué?» saca la barra flotante (fuera
+// del razonamiento, no); la ▾ abre el menú con la ventaja de cada destino y
+// elegir Google se recuerda; el panel «Ampliar» lleva el suyo; Escape cierra
+// el menú sin cerrar el panel. En el hub no hay barra ni enlaces visibles.
+// Las pestañas nuevas no se abren: un listener en window (después del de la
+// app, que fija el href) guarda el href y cancela la navegación.
+async function checkAmpliarIA(browser) {
+  const r = {};
+  const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const page = await context.newPage();
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.evaluate(() => { localStorage.removeItem('physiq-assessment-ia-destino'); });
+  await page.fill('#edadPaciente', '47').catch(() => {});
+  await irAFase2(page, 'lumbar');
+  await page.evaluate(() => {
+    window.__iaHrefs = [];
+    window.addEventListener('click', e => {
+      const a = e.target.closest?.('a[target="_blank"]');
+      if (a) { window.__iaHrefs.push(a.href); e.preventDefault(); }
+    });
+  });
+  const ultimoPrompt = () => page.evaluate(() => {
+    const h = window.__iaHrefs.at(-1) || '';
+    return { host: h.split('?')[0], q: decodeURIComponent((h.split('q=')[1] || '').replace(/\+/g, ' ')) };
+  });
+  const sq = `#panel_${RAZON_SIS} #sq2_${RAZON_Q1}`;
+  await page.click(`${sq} details.razon > summary`);
+  await page.click(`${sq} .ia-parrafo-ir`);
+  const a = await ultimoPrompt();
+  const porque = await page.evaluate(s => {
+    const p = document.querySelector(`${s} .razon-cuerpo p`).cloneNode(true);
+    p.querySelectorAll('.razon-etq, .ia-parrafo').forEach(e => e.remove());
+    return p.textContent.replace(/\s+/g, ' ').trim();
+  }, sq);
+  r.parrafo = a.host === 'https://www.perplexity.ai/search' && a.q.includes(porque.slice(0, 60))
+    && a.q.includes('pregunta de cribado') && a.q.includes('(región lumbar)')
+    && a.q.includes('Busca información solo en fuentes científicas o académicas') && !a.q.includes('Dolor de lumbar') && !a.q.includes('Por qué');
+
+  // Selección dentro del «¿Por qué?» → barra flotante con ese texto
+  const seleccionar = sel => page.evaluate(s => {
+    const p = document.querySelector(s);
+    const nodo = [...p.childNodes].find(n => n.nodeType === 3 && n.textContent.trim().length > 30);
+    const rg = document.createRange();
+    rg.setStart(nodo, 1); rg.setEnd(nodo, Math.min(nodo.length, 40));
+    getSelection().removeAllRanges(); getSelection().addRange(rg);
+    return rg.toString().replace(/\s+/g, ' ').trim();
+  }, sel);
+  const elegido = await seleccionar(`${sq} .razon-cuerpo p`);
+  await page.waitForTimeout(400);
+  const barra = await page.evaluate(() => {
+    const b = document.getElementById('iaBarra');
+    const rc = b.getBoundingClientRect();
+    return { visible: !b.hidden && rc.width > 0, dentro: rc.left >= 0 && rc.right <= innerWidth, texto: b.querySelector('.ia-barra-ir').textContent };
+  });
+  await page.click('#iaBarra .ia-barra-ir');
+  const b = await ultimoPrompt();
+  r.barra = barra.visible && barra.dentro && barra.texto.includes('Perplexity') && b.q.includes(`«${elegido}»`);
+
+  // ▾ → menú con las dos IA y su ventaja; elegir Google se recuerda
+  await seleccionar(`${sq} .razon-cuerpo p`);
+  await page.waitForTimeout(400);
+  await page.click('#iaBarra .ia-elegir');
+  r.menu = await page.evaluate(() => {
+    const m = document.getElementById('iaMenu');
+    const ops = [...m.querySelectorAll('.ia-menu-op')];
+    return !m.hidden && ops.length === 2 && ops[0].classList.contains('actual')
+      && ops.every(o => o.querySelector('.ia-menu-desc').textContent.length > 40)
+      && m.textContent.includes('nunca datos del paciente');
+  });
+  await page.click('#iaMenu .ia-menu-op[data-destino="google"]');
+  const c = await ultimoPrompt();
+  await page.waitForTimeout(100);
+  r.google = c.host === 'https://www.google.com/search' && (await page.evaluate(() => window.__iaHrefs.at(-1))).includes('udm=50')
+    && await page.evaluate(() => localStorage.getItem('physiq-assessment-ia-destino') === 'google' && document.getElementById('iaMenu').hidden);
+  await page.click(`${sq} .ia-parrafo-ir`);
+  r.recordado = (await ultimoPrompt()).host === 'https://www.google.com/search';
+
+  // Selección fuera del razonamiento → sin barra
+  await page.evaluate(() => getSelection().removeAllRanges());
+  await page.waitForTimeout(600);
+  await page.evaluate(() => {
+    const t = document.querySelector('#phase2 .phase-title, #phase2 h2, #phase2 .card-title');
+    const rg = document.createRange(); rg.selectNodeContents(t);
+    getSelection().removeAllRanges(); getSelection().addRange(rg);
+  });
+  await page.waitForTimeout(600);
+  r.fuera = await page.evaluate(() => document.getElementById('iaBarra').hidden);
+
+  // Panel «Ampliar»: contexto y un «✨ IA» por párrafo; Escape cierra el menú, no el panel
+  await page.click(`${sq} .razon-ampliar`);
+  await page.waitForTimeout(400);
+  r.panel = await page.evaluate(() => {
+    const c = document.getElementById('razonContenido');
+    return !!c.dataset.iaCtx && c.querySelectorAll('.ia-parrafo').length >= 2;
+  });
+  await page.click('#razonContenido .ia-parrafo .ia-elegir');
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(200);
+  r.escape = await page.evaluate(() => document.getElementById('iaMenu').hidden && document.getElementById('razonPanel').classList.contains('open'));
+  await context.close();
+
+  // Hub: sin barra y sin enlaces visibles
+  const ctxHub = await browser.newContext();
+  const hub = await ctxHub.newPage();
+  await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
+  await hub.waitForTimeout(1500);
+  const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
+  await frame.fill('#motivoConsulta', 'Dolor lumbar (hub)');
+  await frame.click('#mecanismo .option-btn >> nth=0');
+  await frame.click('#cronologia .option-btn >> nth=0');
+  await frame.click('#phase1 .btn-primary');
+  await frame.waitForTimeout(150);
+  await frame.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await frame.waitForTimeout(200);
+  await frame.click(`${sq} details.razon > summary`);
+  r.hub = await frame.evaluate(s => !document.getElementById('iaBarra')
+    && getComputedStyle(document.querySelector(`${s} .ia-parrafo`)).display === 'none', sq);
+  await ctxHub.close();
+
+  r.ok = Object.entries(r).every(([, v]) => v === true);
+  return r;
 }
 
 // Informe narrativo con IA (informe-ia.js, solo standalone). Sin coste: el
@@ -1459,6 +1584,9 @@ async function main() {
   const razonMov = await checkRazonamientoMovil(page);
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
+  const ampliarIA = await checkAmpliarIA(browser);
+  console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; el menú ▾ explica cada IA y recuerda Google; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
+
   console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
   const testsAmpliar = await checkTestsAmpliar(page);
   console.log(`  ${testsAmpliar.ok ? '✓' : '✗'} «cuánto pesa» bajo los badges, criterio corto, «Ampliar» abre el panel del test (lateral sin velo; sheet con velo a 390 px que atrás cierra sin salir de la 4b), ir a la fase 5 lo cierra`);
@@ -1504,7 +1632,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && testsAmpliar.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && testsAmpliar.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
