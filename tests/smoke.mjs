@@ -925,20 +925,22 @@ async function checkDialogos(browser, errors) {
     && await page.evaluate(() => document.body.style.overflow === 'hidden');
   await page.evaluate(() => closeSessionPanel());
   // Un diálogo encima de otro: Escape cancela solo el de arriba, y el dismiss()
-  // del de abajo (p. ej. al acabar la generación con IA) no cierra el de arriba
+  // del de abajo (p. ej. al acabar la generación con IA) no cierra el de arriba;
+  // al cerrar el de arriba la página vuelve a hacer scroll
   cierre.apilados = await page.evaluate(async () => {
     const { showConfirmBanner } = await import('./app.js');
     const c = { a: 0, b: 0 };
     showConfirmBanner('A', 'a', 'X', () => {}, { onCancel: () => { c.a++; } });
     showConfirmBanner('B', 'b', 'X', () => {}, { onCancel: () => { c.b++; } });
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-    const escapeSoloArriba = !document.getElementById('confirmBanner') && c.a === 0 && c.b === 1;
+    const conScroll = () => document.body.style.overflow === '';
+    const escapeSoloArriba = !document.getElementById('confirmBanner') && c.a === 0 && c.b === 1 && conScroll();
     const dA = showConfirmBanner('A', 'a', 'X', () => {}, { onCancel: () => { c.a++; } });
     showConfirmBanner('B', 'b', 'X', () => {}, { onCancel: () => { c.b++; } });
     dA();
     const bSigue = document.querySelector('#confirmBanner .confirm-box-title')?.textContent === 'B';
     document.getElementById('confirmCancel').click();
-    return escapeSoloArriba && bSigue && c.a === 0 && c.b === 2;
+    return escapeSoloArriba && bSigue && c.a === 0 && c.b === 2 && conScroll();
   });
   r.cierre = cierre;
   r.ok = r.fallos.length === 0 && Object.values(cierre).every(v => v === true);
