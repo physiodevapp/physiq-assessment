@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **365** referencias de literatura, con **1543** usos.
+- **365** referencias de literatura, con **1548** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **359** de 365 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -53,7 +53,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) | razonamiento 4b · texto | 6 | **sin revisar** |
 | [Zacharias 2016](#zacharias-2016) | razonamiento 4b · texto | 2 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
-| [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 8 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
+| [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | 2026-10 · Sustituida por van der Windt 2010 (revisión Cochrane del mismo grupo, con Devillé como autor; PDF del usuario): SLR y SLR cruzado de lu3 pasan a sus cifras agrupadas con LR publicadas. Se menciona como dato anterior. |
 | [Litaker 2000](#litaker-2000) | puntuación 4b | 1 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). La LR 5,0 del grupo de validación sale de la tabla 4 (52 de 146 frente a 5 de 70); 9,84 es la del grupo de derivación. Sigue siendo un solo estudio retrospectivo de un cirujano, con artrografía como referencia; no se encontró validación externa entre los artículos que lo citan (Europe PMC). Hanchard 2013 (Cochrane) lo excluye; Zhao 2024 lo usa solo para el Hawkins. |
@@ -62,7 +62,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Laslett 2003](#laslett-2003) | puntuación 4b · texto | 3 | 2026-10 · No leída directamente: sus cifras se toman de Laslett 2008 (ref. 52) y de Saueressig 2021 (fig. 3: S 0,91, E 0,78), que la incluye en su metaanálisis. Ambas leídas en PDF (2026-10). |
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10), 37 verdaderos positivos, 4 falsos positivos, 2 falsos negativos y 30 verdaderos negativos en 73 pacientes. Único estudio, de los creadores del signo, sin cegamiento; PubMed (2026-10): sin validación posterior (Liu 1997, leído, valida otra cosa: una combinación de 5 de 6 hallazgos en 22 pacientes). Sigue puntuando (decisión del usuario), con los límites en el criterio de tp20. |
 | [Bachmann 2004](#bachmann-2004) | puntuación 4b · razonamiento fase 2 | 2 | 2026-10 · Hay dos revisiones sistemáticas posteriores: Sims 2020 (LR− 0,07) y Kazemi 2023 (18 estudios, 6702 adultos; LR− 0,12). Por la regla de conflictos (mismo nivel, la más reciente), Kazemi 2023 pasa a dar las cifras de ro11 y de ro_t1; Bachmann se cita como concordante. |
-| [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar · razonamiento 4b | 5 | 2026-10 · Sin cambios: PubMed (tests clínicos de inestabilidad lumbar, revisiones sistemáticas). Ferrari 2015 (Chiropr Man Therap, 10.1186/s12998-015-0058-7) confirma que solo Fritz 2005 estudió la precisión del test de inestabilidad en prono; Thomas 2026 (Cureus, 10.7759/cureus.108817, búsqueda hasta 12/2025) sigue citando su regla «flexión ≥ 53° o sin hipomovilidad» (LR+ 4,3) sin replicación externa. Leídas enteras en PMC. Estudios sueltos posteriores (Seyedhoseinpoor 2022, Areeudomwong 2020, Chatprem 2021) no leídos en texto completo. |
+| [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 7 | 2026-10 · Sin cambios: PubMed (tests clínicos de inestabilidad lumbar, revisiones sistemáticas). Ferrari 2015 (Chiropr Man Therap, 10.1186/s12998-015-0058-7) confirma que solo Fritz 2005 estudió la precisión del test de inestabilidad en prono; Thomas 2026 (Cureus, 10.7759/cureus.108817, búsqueda hasta 12/2025) sigue citando su regla «flexión ≥ 53° o sin hipomovilidad» (LR+ 4,3) sin replicación externa. Leídas enteras en PMC. Estudios sueltos posteriores (Seyedhoseinpoor 2022, Areeudomwong 2020, Chatprem 2021) no leídos en texto completo. |
 | [Laslett 2005](#laslett-2005) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 21 | 2026-10 · Sin cambios en las cifras: PDF releído entero (2026-10); tabla 2 (compresión LR+ 2,20, LR− 0,46; thigh thrust LR+ 2,80, LR− 0,18; LR publicadas, método score) y tablas 4–6 coinciden con las citas. Es un solo estudio de los creadores (48 pacientes no consecutivos, crónicos, 16 con bloqueo positivo). Agrupados en Han 2023 el thigh thrust (5 estudios) y la compresión (2) no llegan a LR+ 2 ni a LR− 0,5: los dos pasan a hallazgo en ca10 (decisión del usuario, 2026-10). Saueressig 2021 no la agrupa por ser la misma población que Laslett 2003. |
 | [Park 2005](#park-2005) | puntuación 4b · texto | 3 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla V: 50 de 153 roturas completas frente a 4 de 195 controles con los tres test positivos (LR+ 15,57) y 14 de 153 frente a 114 de 195 con los tres negativos (LR 0,16), en 348 operados con los tres test hechos. La combinación sale de una regresión logística en la misma muestra, sin validación; ninguno de los artículos que lo citan (Europe PMC) la valida. Hermans 2013 lo clasifica como nivel IV y Hanchard 2013 (Cochrane) lo deja pendiente de clasificar. |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | 2026-10 · Sin cambios: ya superada por Han 2023, que es la que da las cifras; solo se menciona como dato anterior. |
@@ -391,7 +391,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Young 2003](#young-2003) | razonamiento 4b · texto | 4 | 2026-10 · Añadida (2026-10): PDF del usuario leído entero; DOI comprobado en PubMed. 81 pacientes crónicos con bloqueos o discografía (bloqueos únicos, sin confirmar). Dolor sacroilíaco: casi nunca a la altura de L5 o por encima (dolor en la línea media OR 0,3); 80 % de los discogénicos con dolor en la línea media. Centralización frente a discografía: S 0,47, E 1,00 (24 pacientes); ningún facetario centralizó. |
 | [Karachalios 2005](#karachalios-2005) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF releído entero (2026-10). Corregido: el mecanismo (separar los fragmentos, dolor de la parte externa inervada) es una deducción de los autores; el 3,3 % de empeoramientos y el bloqueo se dieron en rodillas no agudas, porque las de menos de 4 semanas estaban excluidas; los controles eran 197 voluntarios sin síntomas de rodilla. PubMed (2026-10): ninguna revisión posterior a Smith 2015 y AAOS 2024, que ya se citan. |
 | [Pappas 2006](#pappas-2006) | razonamiento 4b · texto | 4 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). RM abierta en 8 varones sanos de 19–21 años; contacto del supraespinoso con el glenoides posterosuperior en los 8 en Neer y en Hawkins y del subescapular con el glenoides anterior en los 8 en Hawkins (7 de 8 en Neer); en Neer, ningún contacto del manguito con el acromion. Crossref: DOI, volumen y páginas correctos. Leschinger 2017 (37 sanos, posterior) da el contacto con el glenoides en 30 de 37 en Neer y el contacto con el acromion en 25 de 37: se añade al detalle del Neer junto a Pappas. De Pappas se sigue citando solo el contacto con el glenoides (decisión del usuario, 2026-10). |
-| [Katz y Harris 2008](#katz-y-harris-2008) | razonamiento 4b · texto | 8 | 2026-10 · Añadida (2026-10): PDF del usuario leído entero; DOI comprobado en Crossref. Revisión clínica («Clinical practice»), no un estudio de precisión diagnóstica: la app la usa solo para el mecanismo. Fisiopatología (p. 819): la extensión lumbar reduce la sección del canal central y de los agujeros de conjunción y aumenta la presión sobre las vénulas de las raíces (congestión e isquemia), lo que explicaría que los síntomas cedan al flexionar; mecanismo no del todo aclarado. Exploración (p. 820): la marcha con base amplia y el Romberg reflejan la afectación de las fibras propioceptivas de los cordones posteriores; déficits a veces bilaterales y polirradiculares; la claudicación vascular no depende de la postura y empeora al caminar cuesta arriba. |
+| [Katz y Harris 2008](#katz-y-harris-2008) | razonamiento 4b · texto | 9 | 2026-10 · Añadida (2026-10): PDF del usuario leído entero; DOI comprobado en Crossref. Revisión clínica («Clinical practice»), no un estudio de precisión diagnóstica: la app la usa solo para el mecanismo. Fisiopatología (p. 819): la extensión lumbar reduce la sección del canal central y de los agujeros de conjunción y aumenta la presión sobre las vénulas de las raíces (congestión e isquemia), lo que explicaría que los síntomas cedan al flexionar; mecanismo no del todo aclarado. Exploración (p. 820): la marcha con base amplia y el Romberg reflejan la afectación de las fibras propioceptivas de los cordones posteriores; déficits a veces bilaterales y polirradiculares; la claudicación vascular no depende de la postura y empeora al caminar cuesta arriba. |
 | [Yamamoto 2009](#yamamoto-2009) | razonamiento 4b · texto | 4 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). 8 hombros de cadáver (media 75 años) sin rotura del manguito, músculos retirados salvo el manguito, sensor de presión bajo el arco; tablas II y III y figs. 3–5 coinciden con lo citado. Crossref: DOI, volumen y páginas correctos. PubMed (2026-10): Leschinger 2017 (RM abierta, 37 sanos, posterior) confirma en vivo el contacto del supraespinoso con el acromion en la posición de Neer (25 de 37) y se añade al detalle del Neer; en su posición de Hawkins solo hay 15° de rotación interna, así que no se usa para el Hawkins y se mantiene Yamamoto para qué tendón contacta con el arco (decisión del usuario, 2026-10). Tucker 2011 (un solo cadáver) y Hallström 2008 (cinemática) no aportan nada mejor. |
 | [Blonna 2010](#blonna-2010) | razonamiento 4b · texto | 2 | 2026-10 · Añadida (2026-10): PDF del usuario leído entero. 10 voluntarios sanos; EMG de superficie e intramuscular y retraso medido con sistema optoelectrónico antes y después de bloquear el supraespinoso con toxina botulínica. Tabla I: a 20° de elevación, contribución del supraespinoso 20 % y del infraespinoso 74 %; retraso medio de 1° a 4° (1–9°) tras el bloqueo, sin cambio en aducción. Es posterior a Hurschler 2004 (cadáver), que no lo halló, y del mismo nivel: prevalece. Crossref: DOI, volumen y páginas correctos. |
 | [DePalma 2011](#depalma-2011) | razonamiento 4b · texto | 2 | 2026-10 · Añadida (2026-10): PDF del usuario leído entero; DOI comprobado en PubMed. Revisión retrospectiva de 170 casos con el origen confirmado (discografía, doble bloqueo facetario, bloqueo sacroilíaco); pruebas en secuencia según la localización, no todas a todos (sesgo que los autores reconocen). Tabla 3: dolor en la línea media S 95,8 % para el disco, 15,4 % facetas, 12,9 % sacroilíaca; para la sacroilíaca, LR+ del dolor en la línea media 0,202 y LR− 2,421 (1,824–3,145). Es la ref. 106 de Lluch 2020, cap. 5.1 (73 % y 96 %, p. 315). |
@@ -2394,23 +2394,29 @@ Título: *Accuracy of the clinical examination to predict radiographic instabili
 Publicación: Eur Spine J 14(8):743–750  
 DOI: 10.1007/s00586-004-0803-4  
 Última revisión: 2026-10 · Sin cambios: PubMed (tests clínicos de inestabilidad lumbar, revisiones sistemáticas). Ferrari 2015 (Chiropr Man Therap, 10.1186/s12998-015-0058-7) confirma que solo Fritz 2005 estudió la precisión del test de inestabilidad en prono; Thomas 2026 (Cureus, 10.7759/cureus.108817, búsqueda hasta 12/2025) sigue citando su regla «flexión ≥ 53° o sin hipomovilidad» (LR+ 4,3) sin replicación externa. Leídas enteras en PMC. Estudios sueltos posteriores (Seyedhoseinpoor 2022, Areeudomwong 2020, Chatprem 2021) no leídos en texto completo.  
-Nota: PDF aportado por el usuario, leído entero (2026-10; PMC3489248 sin texto en la API). Cohorte prospectiva de 49 pacientes derivados a radiografía en flexo-extensión; referencia: criterios de White y Panjabi. Tabla 4: falta de hipomovilidad LR+ 9,0 (1,3–63,9), flexión lumbar > 53° LR+ 4,8 (1,6–14,0); tabla 5: al menos una de las dos, S 0,82, E 0,81, LR+ 4,3 (1,8–10,6), LR− 0,22 (0,10–0,50); las dos, LR+ 12,8 (0,79–211,6). Tabla 3: κ de la hipomovilidad 0,38, del test de inestabilidad en prono 0,57, de los movimientos aberrantes −0,07. «¿Por qué?» de lu2 (flexión ≥ 53° o sin hipomovilidad).
+Nota: PDF aportado por el usuario, leído entero (2026-10; PMC3489248 sin texto en la API). Cohorte prospectiva de 49 pacientes derivados a radiografía en flexo-extensión; referencia: criterios de White y Panjabi. Tabla 4: falta de hipomovilidad LR+ 9,0 (1,3–63,9), flexión lumbar > 53° LR+ 4,8 (1,6–14,0); tabla 5: al menos una de las dos, S 0,82, E 0,81, LR+ 4,3 (1,8–10,6), LR− 0,22 (0,10–0,50); las dos, LR+ 12,8 (0,79–211,6). Tabla 3: κ de la hipomovilidad 0,38, de la hipermovilidad 0,48, del dolor durante la prueba 0,57, del test de inestabilidad en prono 0,69 y de los movimientos aberrantes −0,07. «¿Por qué?» de lu2 (flexión ≥ 53° o sin hipomovilidad).
 
 Citada como:
 
-1. Fritz 2005 (técnica y fiabilidad, tabla 3) · Flynn 2002 (variable de la regla, tabla 5)
-2. Fritz 2005 (tabla 5; IC 95 % del LR+: 1,8–10,6; del LR−: 0,10–0,50)
-3. Fritz 2005 (referencia: inestabilidad radiológica)
-4. Fritz 2005 (tablas 2 y 3; referencia: inestabilidad radiológica)
-5. Fritz 2005 (Eur Spine J 14(8):743–750; 49 pacientes; tablas 2, 4 y 5 y discusión, pp. 748–749)
+1. Fiabilidad entre examinadores κ 0,38 (IC 95 %: 0,22–0,54) y sin patrón de referencia para la disfunción segmentaria. Sola, predice poco la respuesta a la manipulación (S 97 %, E 23 %, LR+ 1,26).
+
+En la serie de Fritz (49 pacientes), la hipomovilidad fue κ 0,38, la hipermovilidad κ 0,48 y el dolor durante la prueba κ 0,57; que no hubiera ningún segmento hipomóvil fue el mejor predictor aislado de inestabilidad radiológica (LR+ 9,0). Los autores apuntan que los pacientes sin hipomovilidad podrían responder mejor a los ejercicios de estabilización, y los hipomóviles, a la manipulación, como en la regla de Flynn; lo primero está sin comprobar (Fritz 2005).
+2. Fritz 2005 (técnica y fiabilidad, tabla 3) · Flynn 2002 (variable de la regla, tabla 5)
+3. Fritz 2005 (Eur Spine J 14(8):743–750; métodos, tablas 3 y 4 y discusión, pp. 745–748)
+4. Fritz 2005 (tabla 5; IC 95 % del LR+: 1,8–10,6; del LR−: 0,10–0,50)
+5. Fritz 2005 (referencia: inestabilidad radiológica)
+6. Fritz 2005 (tablas 2 y 3; referencia: inestabilidad radiológica)
+7. Fritz 2005 (Eur Spine J 14(8):743–750; 49 pacientes; tablas 2, 4 y 5 y discusión, pp. 748–749)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM, movimientos intervertebrales accesorios pasivos)» | 4b · cita bajo el test | 1 |
-| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria» | 4b · cita bajo el test | 2 |
-| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Test de inestabilidad en prono» | 4b · cita bajo el test | 3 |
-| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Movimientos aberrantes en la flexo-extensión» | 4b · cita bajo el test | 4 |
-| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria» («¿Por qué?») | 4b · razonamiento del test | 5 |
+| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM, movimientos intervertebrales accesorios pasivos)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM, movimientos intervertebrales accesorios pasivos)» | 4b · cita bajo el test | 2 |
+| Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM, movimientos intervertebrales accesorios pasivos)» («¿Por qué?») | 4b · razonamiento del test | 3 |
+| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria» | 4b · cita bajo el test | 4 |
+| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Test de inestabilidad en prono» | 4b · cita bajo el test | 5 |
+| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Movimientos aberrantes en la flexo-extensión» | 4b · cita bajo el test | 6 |
+| Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria» («¿Por qué?») | 4b · razonamiento del test | 7 |
 
 ### Galliker 2020
 
@@ -3825,8 +3831,12 @@ Los síntomas de la claudicación neurógena no mejoran al pararse, como en la v
 2. En la serie de Katz (93 pacientes de 40 años o más con dolor lumbar en tres consultas especializadas; referencia: el diagnóstico del médico experto, con imagen compatible en todos los que la tenían), la marcha con base amplia fue el hallazgo más específico: S 43 %, E 97 %, LR+ 14,3. Fue uno de los cuatro datos que se asociaron de forma independiente con el diagnóstico, con la edad, no tener dolor al sentarse y el dolor de muslo tras 30 s de extensión. Los autores señalan que hasta entonces no se había estudiado y que, al venir de consultas de referencia, debe confirmarse en otros ámbitos (Katz 1995).
 3. Técnica de Katz: Romberg modificado, pies juntos y ojos cerrados durante 10 s; alterado si el paciente necesita movimientos compensadores para mantener los pies en el sitio. En su serie, S 39 %, E 91 %, LR+ 4,3; con la marcha con base amplia, fue uno de los dos hallazgos más específicos de la exploración (Katz 1995).
 4. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; referencia: diagnóstico del médico experto; LR+ IC 95 %: 1,29–12,76; riesgo de sesgo bajo). Antes: Suri 2010, LR+ 4,2
-5. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; referencia: diagnóstico del médico experto; LR+ 1,64, IC 95 %: 0,91–2,96; riesgo de sesgo bajo). Versión modificada: Dobbs 2016 (Manual Therapy, n = 30; referencia: RM)
-6. Katz 1995 (Arthritis Rheum 38(9):1236–1241; 93 pacientes; tabla 1 y discusión, pp. 1237–1239)
+5. Una versión modificada (hasta 60 s, más extensión + inclinación hacia el lado sintomático) da S 92 %, E 40 %, LR− 0,2, pero con IC 95 % hasta 1,36 en 30 pacientes: no sirve aún para descartar.
+
+En la serie original de Katz (93 pacientes de 40 años o más), el dolor de muslo tras 30 s de extensión dio S 51 %, E 69 %, LR 1,6; aun así, fue uno de los cuatro datos que se asociaron de forma independiente con el diagnóstico, con la edad, no tener dolor al sentarse y la marcha con base amplia. Los autores lo leen, junto con el alivio al sentarse, como apoyo a que la flexión agranda el canal y la extensión lo estrecha (Katz 1995).
+6. Cook 2019 (Eur Spine J, revisión sistemática; datos de Katz 1995, n = 75; referencia: diagnóstico del médico experto; LR+ 1,64, IC 95 %: 0,91–2,96; riesgo de sesgo bajo). Versión modificada: Dobbs 2016 (Manual Therapy, n = 30; referencia: RM)
+7. Katz 1995 (Arthritis Rheum 38(9):1236–1241; 93 pacientes; tabla 1 y discusión, pp. 1237–1239)
+8. Katz 1995 (Arthritis Rheum 38(9):1236–1241; 93 pacientes; métodos, tablas 1 y 2 y discusión, pp. 1237–1239)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -3834,10 +3844,12 @@ Los síntomas de la claudicación neurógena no mejoran al pararse, como en la v
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Marcha con base amplia» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Romberg alterado» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Romberg alterado» | 4b · cita bajo el test | 4 |
-| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Test de extensión lumbar de 30 s» | 4b · cita bajo el test | 5 |
-| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Alivio al sentarse» («¿Por qué?») | 4b · razonamiento del test | 6 |
-| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Marcha con base amplia» («¿Por qué?») | 4b · razonamiento del test | 6 |
-| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Romberg alterado» («¿Por qué?») | 4b · razonamiento del test | 6 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Test de extensión lumbar de 30 s» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Test de extensión lumbar de 30 s» | 4b · cita bajo el test | 6 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Alivio al sentarse» («¿Por qué?») | 4b · razonamiento del test | 7 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Marcha con base amplia» («¿Por qué?») | 4b · razonamiento del test | 7 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Romberg alterado» («¿Por qué?») | 4b · razonamiento del test | 7 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Test de extensión lumbar de 30 s» («¿Por qué?») | 4b · razonamiento del test | 8 |
 
 ### Katz y Harris 2008
 
@@ -3852,6 +3864,7 @@ Citada como:
 
 1. Katz y Harris sitúan el inicio típico de la estenosis degenerativa entre los 60 y los 90 años, y el de la congénita, por pedículos cortos, entre los 20 y los 40 (Katz y Harris 2008). Lluch, más reciente, la da como frecuente desde la quinta década y causa principal de cirugía lumbar por encima de los 65 años en la central y desde los 40 en la lateral (Lluch 2020, cap. 5.1, p. 312).
 2. Katz y Harris 2008 (N Engl J Med 358(8):818–825; revisión clínica; pp. 818–820)
+3. Katz y Harris 2008 (N Engl J Med 358(8):818–825; revisión clínica; pp. 819–820)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -3863,6 +3876,7 @@ Citada como:
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Edad > 48 años» («¿Por qué?») | 4b · razonamiento del test | 2 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Marcha con base amplia» («¿Por qué?») | 4b · razonamiento del test | 2 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Romberg alterado» («¿Por qué?») | 4b · razonamiento del test | 2 |
+| Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Test de extensión lumbar de 30 s» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Kaur 2025
 
