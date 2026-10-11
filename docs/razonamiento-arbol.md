@@ -47,6 +47,15 @@ No cambia `question`, `iaPregunta`, `options`, `next` ni lo que activa cada opci
 - Si una fuente habla de una población más amplia que la del paso, el «por qué» lo dice (`lu_step1b`: la revisión sobre centralización que recoge Delitto 2012 es de dolor de columna en general, no solo radicular).
 - Una guía extensa se puede citar por las secciones leídas enteras, diciendo cuáles en la cita (George 2021: resumen de recomendaciones y sistemas de clasificación).
 
+## Decisiones de cervical (2026-10, validadas por el usuario)
+- Lo que el árbol dice sin respaldo en ninguna fuente leída no se comenta ni se cambia: «y es peor que el del cuello» (`ce_step3`); «reciente» (`ce_step2`); «hombro/escápula» en la opción de la 1.ª costilla (`ce_step4`: el Delphi habla de la base del cuello, la zona cervicotorácica y el trapecio, y no establece que el cuadro exista); las opciones fuerza, resistencia y postural (`ce_step5`), que la guía de la APTA no separa de la coordinación del movimiento, y «lordosis reducida».
+- Si los criterios de una opción no definen el cuadro, el «por qué» dice qué son: en `ce_step2`, el movimiento muy reducido y la hiperalerta son rasgos más marcados en el latigazo, y la hiperalerta tiene valor pronóstico.
+- FRT: entre la guía de la APTA (estudios aislados, sensibilidad 0,90–0,95) y el metaanálisis de Demont 2022 (0,83 y 0,83, certeza moderada), del mismo nivel, gana el más reciente. El corte se da como varía según la fuente (menos de 30° o 10° de asimetría en Lluch, menos de 32° en la guía), con las medias del metaanálisis.
+- Contribución del cuello en la migraña: el capítulo de cefalea de Lluch (más reciente, narrativo) y Jull 2007 (anterior, estudio con voluntarios) no coinciden; se dicen los dos (regla 3 de conflictos).
+- Si una revisión resume mal un estudio primario leído, se citan las cifras del original (Jiang 2024 resume la regla de Cook y Brown 2010 como «ninguno o solo uno»; el artículo dice ninguno de cinco).
+- Una opción que la fuente matiza se deja igual y el matiz va en el detalle: el aura (`ce_step3b`) también puede empezar después de la cefalea o darse sin ella (ICHD-3); la cefalea cervicogénica «unilateral» (`ce_step4`) es un rasgo orientativo, y en Getsoian 2020 solo el 20 % de los que respondieron al bloqueo la tenía.
+- Una clasificación extensa (ICHD-3) se cita por las secciones leídas, como las guías.
+
 ## Reglas
 - **Fuentes**: las mismas que en las fases F y H, con el mismo orden de prioridad (más peso de evidencia y, a igual peso, la más actual). Para cada región, primero el capítulo de Lluch 2020 que ya está leído (lumbar: cap. 5.1, Fondevila Suárez). Después, las guías y revisiones que el paso ya cita o en las que se basa, leídas enteras (PDF del usuario cuando no sean de acceso abierto). Toda referencia nueva entra en `data/referencias.js` con su DOI verificado, y después se ejecuta `node tests/gen-referencias.mjs`.
 - **No inventar**: si la fuente no explica por qué el paso va en ese orden, no se dice. Se puede explicar qué separa el paso sin justificar el orden.
