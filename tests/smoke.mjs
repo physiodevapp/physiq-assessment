@@ -685,6 +685,39 @@ async function mockWorkerYTurnstile(context, captura) {
 // de opción solo vale con ratón (@media (hover: hover)): en un teléfono real se
 // queda pegado y un botón recién deseleccionado parecía seguir marcado. El tap
 // emulado no reproduce ese :hover pegado, así que se comprueban las reglas CSS.
+// Diálogo común (showConfirmBanner) a 320 px: los dos botones en una sola
+// línea, dentro del recuadro, con todas las etiquetas de acción que usa la app;
+// la papelera solo en las acciones que borran o descartan (opts.borra).
+const ACCIONES_DIALOGO = [
+  ['Reiniciar', true], ['Pasar a completa', false], ['Cambiar región', true], ['Importar', true],
+  ['Actualizar', false], ['Borrar sesión', true], ['Limpiar', true], ['Descartar', true],
+  ['<span class="btn-text-full">Sí, cancelar</span><span class="btn-text-short">Cancelar</span>', true, 'Seguir'],
+];
+async function checkDialogos(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 320, height: 700 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (diálogos): ${err.message}`));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const r = { fallos: [] };
+  for (const [etiqueta, borra, cancelLabel] of ACCIONES_DIALOGO) {
+    const m = await page.evaluate(async ([etiqueta, borra, cancelLabel]) => {
+      const { showConfirmBanner } = await import('./app.js');
+      showConfirmBanner('Título', 'Texto del diálogo.', etiqueta, () => {}, { borra, cancelLabel });
+      const caja = document.querySelector('.confirm-box-btns').getBoundingClientRect();
+      const botones = [...document.querySelectorAll('.confirm-box-btns button')];
+      const unaLinea = botones.every(b => b.getBoundingClientRect().height < 40 && b.scrollWidth <= b.clientWidth);
+      const dentro = botones.every(b => { const q = b.getBoundingClientRect(); return q.left >= caja.left - 0.5 && q.right <= caja.right + 0.5; });
+      const papelera = !!document.querySelector('#confirmAction svg');
+      document.getElementById('confirmBanner').remove();
+      return { unaLinea, dentro, papelera };
+    }, [etiqueta, borra, cancelLabel]);
+    if (!m.unaLinea || !m.dentro || m.papelera !== borra) r.fallos.push({ etiqueta: etiqueta.replace(/<[^>]+>/g, ' ').trim(), ...m });
+  }
+  r.ok = r.fallos.length === 0;
+  await context.close();
+  return r;
+}
+
 async function checkBotonesTactil(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
   const page = await context.newPage();
@@ -1442,6 +1475,10 @@ async function main() {
   const tactil = await checkBotonesTactil(browser, errors);
   console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema; «Compartir» es una hoja inferior que se cierra con atrás o tocando el velo${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
 
+  console.log('\nDiálogos de confirmación a 320 px:');
+  const dialogos = await checkDialogos(browser, errors);
+  console.log(`  ${dialogos.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar${dialogos.ok ? '' : ' ' + JSON.stringify(dialogos.fallos)}`);
+
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
@@ -1467,7 +1504,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && testsAmpliar.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && testsAmpliar.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
