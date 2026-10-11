@@ -1057,19 +1057,139 @@ async function checkDialogos(browser, errors) {
   for (const [etiqueta, borra, cancelLabel] of ACCIONES_DIALOGO) {
     const m = await page.evaluate(async ([etiqueta, borra, cancelLabel]) => {
       const { showConfirmBanner } = await import('./app.js');
-      showConfirmBanner('Título', 'Texto del diálogo.', etiqueta, () => {}, { borra, cancelLabel });
+      const cerrar = showConfirmBanner('Título', 'Texto del diálogo.', etiqueta, () => {}, { borra, cancelLabel });
       const caja = document.querySelector('.confirm-box-btns').getBoundingClientRect();
       const botones = [...document.querySelectorAll('.confirm-box-btns button')];
       const unaLinea = botones.every(b => b.getBoundingClientRect().height < 40 && b.scrollWidth <= b.clientWidth);
       const dentro = botones.every(b => { const q = b.getBoundingClientRect(); return q.left >= caja.left - 0.5 && q.right <= caja.right + 0.5; });
       const papelera = !!document.querySelector('#confirmAction svg');
-      document.getElementById('confirmBanner').remove();
+      cerrar();
       return { unaLinea, dentro, papelera };
     }, [etiqueta, borra, cancelLabel]);
     if (!m.unaLinea || !m.dentro || m.papelera !== borra) r.fallos.push({ etiqueta: etiqueta.replace(/<[^>]+>/g, ' ').trim(), ...m });
   }
-  r.ok = r.fallos.length === 0;
+
+  // Cerrar: Escape, un toque en el velo y el botón de cerrar cancelan (llaman a
+  // opts.onCancel); solo el botón de acción hace la acción. Seleccionar texto
+  // del recuadro y soltar en el velo no cierra. El dismiss() devuelto cierra
+  // sin onCancel y, si el diálogo ya no está, no hace nada.
+  const abrir = (opts = {}) => page.evaluate(async opts => {
+    const { showConfirmBanner } = await import('./app.js');
+    window._dlg = { accion: 0, cancelar: 0 };
+    window._dlgDismiss = showConfirmBanner('Título', 'Texto del diálogo para seleccionar.', 'Borrar',
+      () => { window._dlg.accion++; }, { ...opts, onCancel: () => { window._dlg.cancelar++; } });
+  }, opts);
+  const estado = () => page.evaluate(() => ({ abierto: !!document.getElementById('confirmBanner'), ...window._dlg }));
+  const es = (e, abierto, accion, cancelar) => e.abierto === abierto && e.accion === accion && e.cancelar === cancelar;
+  const cierre = {};
+  await abrir();
+  await page.keyboard.press('Escape');
+  cierre.escape = es(await estado(), false, 0, 1);
+  await abrir();
+  await page.mouse.click(5, 650);
+  cierre.velo = es(await estado(), false, 0, 1);
+  await abrir();
+  const texto = await page.locator('.confirm-box-text').boundingBox();
+  await page.mouse.move(texto.x + 5, texto.y + texto.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(5, 650, { steps: 4 });
+  await page.mouse.up();
+  cierre.seleccionarYSoltarEnVelo = es(await estado(), true, 0, 0);
+  await page.evaluate(() => window._dlgDismiss());
+  await abrir();
+  await page.click('#confirmCancel');
+  cierre.botonCerrar = es(await estado(), false, 0, 1);
+  await abrir({ cancelLabel: 'Seguir' });
+  cierre.cancelLabel = (await page.textContent('#confirmCancel')).trim() === 'Seguir';
+  await page.click('#confirmAction');
+  cierre.accion = es(await estado(), false, 1, 0);
+  // dismiss() con el panel de sesión abierto debajo: cierra sin onCancel; el
+  // segundo no hace nada (ni desbloquea el scroll que el panel sigue usando) y
+  // Escape ya no llama a onCancel
+  await page.evaluate(() => toggleSessionPanel());
+  await abrir();
+  await page.evaluate(() => { window._dlgDismiss(); window._dlgDismiss(); });
+  await page.keyboard.press('Escape');
+  cierre.dismiss = es(await estado(), false, 0, 0)
+    && await page.evaluate(() => document.body.style.overflow === 'hidden');
+  await page.evaluate(() => closeSessionPanel());
+  // Un diálogo encima de otro: Escape cancela solo el de arriba, y el dismiss()
+  // del de abajo (p. ej. al acabar la generación con IA) no cierra el de arriba;
+  // al cerrar el de arriba la página vuelve a hacer scroll
+  cierre.apilados = await page.evaluate(async () => {
+    const { showConfirmBanner } = await import('./app.js');
+    const c = { a: 0, b: 0 };
+    showConfirmBanner('A', 'a', 'X', () => {}, { onCancel: () => { c.a++; } });
+    showConfirmBanner('B', 'b', 'X', () => {}, { onCancel: () => { c.b++; } });
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    const conScroll = () => document.body.style.overflow === '';
+    const escapeSoloArriba = !document.getElementById('confirmBanner') && c.a === 0 && c.b === 1 && conScroll();
+    const dA = showConfirmBanner('A', 'a', 'X', () => {}, { onCancel: () => { c.a++; } });
+    showConfirmBanner('B', 'b', 'X', () => {}, { onCancel: () => { c.b++; } });
+    dA();
+    const bSigue = document.querySelector('#confirmBanner .confirm-box-title')?.textContent === 'B';
+    document.getElementById('confirmCancel').click();
+    return escapeSoloArriba && bSigue && c.a === 0 && c.b === 2 && conScroll();
+  });
+  r.cierre = cierre;
+  r.ok = r.fallos.length === 0 && Object.values(cierre).every(v => v === true);
   await context.close();
+  return r;
+}
+
+// Fase 5, lo plegado de las tarjetas de hipótesis: la pauta de ro2 con rama
+// pone delante «Para este caso» y pliega las otras; lo que es seguridad (la
+// pauta «Derivar» y la nota de compatibilidad con el protocolo del cirujano)
+// nunca queda dentro de un <details>; al imprimir se despliega todo y después
+// vuelve a como estaba.
+async function checkFase5Plegado(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 5 plegado): ${err.message}`));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const fase5 = (datos, id, mirar) => page.evaluate(async ([datos, id, mirar]) => {
+    const { HYPOTHESES, DOSIS_DERIVAR } = await import('./data.js');
+    Object.assign(state, { mecanismo: '', treeAnswers: {}, testResults: {}, derivacionResuelta: {} }, datos);
+    buildResults(); goToPhase(5);
+    const hyp = HYPOTHESES[id];
+    const tarjeta = [...document.querySelectorAll('#resultsContent .hyp5-card')].find(c => c.querySelector('.hyp5-nombre')?.textContent.includes(hyp.name));
+    if (!tarjeta) return null;
+    const visibleSinPlegar = el => !!el && el.checkVisibility() && !el.closest('details');
+    const rama = tarjeta.querySelector('.pauta-rama-tit');
+    const otras = tarjeta.querySelector('details.pauta-otras');
+    if (mirar === 'rama') return { rama: rama && visibleSinPlegar(rama) ? rama.textContent : null, otrasCerradas: !!otras && !otras.open };
+    if (mirar === 'derivar') {
+      const caja = [...tarjeta.querySelectorAll('.exercise-box')].find(b => b.textContent.includes(DOSIS_DERIVAR));
+      return { etiqueta: tarjeta.textContent.includes('🚑 Derivación'), sinPlegar: visibleSinPlegar(caja) };
+    }
+    const { TEXTO_PAUTA_COMPATIBLE } = await import('./lib/posquirurgico.js');
+    const nota = [...tarjeta.querySelectorAll('.nota-posq')].find(n => n.textContent.includes(TEXTO_PAUTA_COMPATIBLE));
+    return { sinPlegar: visibleSinPlegar(nota) };
+  }, [datos, id, mirar]);
+  const r = {};
+  const rodilla = { region: 'rodilla', activeHypotheses: ['ro2'] };
+  const conRama = await fase5({ ...rodilla, mecanismo: 'Traumático', treeAnswers: { ro_step1: 'menisco' } }, 'ro2', 'rama');
+  r.rama = conRama?.rama === 'Para este caso: Rotura traumática, sin cirugía' && conRama.otrasCerradas;
+  const sinRama = await fase5(rodilla, 'ro2', 'rama');
+  r.sinRama = !!sinRama && sinRama.rama === null && !sinRama.otrasCerradas;
+  const derivar = await fase5({ region: 'codo', activeHypotheses: ['co7'] }, 'co7', 'derivar');
+  r.derivar = !!derivar?.etiqueta && derivar.sinPlegar;
+  const cirugia = { intervencion: 'Meniscectomía parcial', fecha: '', semanasAprox: 4, protocolo: 'Escrito', restricciones: 'Sin pivotar 6 semanas', complicaciones: ['Ninguna'], complicacionOtra: '' };
+  const posq = await fase5({ ...rodilla, mecanismo: 'Post-quirúrgico', cirugia }, 'ro2', 'posq');
+  r.notaPosq = !!posq?.sinPlegar;
+  // Imprimir: todo desplegado; después, cada <details> como estaba (uno abierto a mano sigue abierto)
+  r.imprimir = await page.evaluate(() => {
+    const todos = [...document.querySelectorAll('#phase5 details')];
+    todos[0].open = true;
+    const antes = todos.map(d => d.open);
+    if (antes.every(Boolean)) return 'no hay nada plegado';
+    dispatchEvent(new Event('beforeprint'));
+    const desplegado = todos.every(d => d.open);
+    dispatchEvent(new Event('afterprint'));
+    return desplegado && todos.every((d, i) => d.open === antes[i]);
+  });
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
   return r;
 }
 
@@ -1183,12 +1303,49 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   const ruta = `${tmpDir}/${r.nombreArchivo}`;
   await descarga.saveAs(ruta);
 
-  // Borrar sesión (el panel sigue abierto tras exportar): la app vuelve a la fase 1 vacía
+  // Borrar sesión (el panel sigue abierto tras exportar): cierra el panel y abre
+  // el diálogo común con el nombre; cancelar (Escape, velo o botón) vuelve a
+  // abrir el panel sin borrar nada; confirmar vuelve a la fase 1 vacía, también
+  // el campo del nombre (si no, saveSession() lo devolvería al estado)
   r.panelSigueAbierto = await page.isVisible('#sessionPanelClear');
-  await page.click('#sessionPanelClear');
+  const panelAbierto = () => page.evaluate(() => document.getElementById('sessionPanelOverlay').classList.contains('open'));
+  const pedirBorrar = async () => {
+    if (!(await panelAbierto())) await page.click('#sessionBtn');   // si cancelar no lo reabrió, ya consta como fallo
+    await page.click('#sessionPanelClear');
+    await page.waitForSelector('#confirmBanner');
+    return !(await panelAbierto()) && (await page.textContent('#confirmBanner .confirm-box-text')).includes('«Prueba Exportación»');
+  };
+  const cancelado = async () => {
+    await page.waitForTimeout(150);
+    return !(await page.isVisible('#confirmBanner')) && await panelAbierto()
+      && await page.evaluate(() => state.patient === 'Prueba Exportación' && state.region === 'lumbar');
+  };
+  r.borrarCancelar = {};
+  r.borrarCancelar.dialogo = await pedirBorrar();
+  await page.keyboard.press('Escape');
+  r.borrarCancelar.escape = await cancelado();
+  await pedirBorrar();
+  await page.mouse.click(5, 880);
+  r.borrarCancelar.velo = await cancelado();
+  await pedirBorrar();
+  await page.click('#confirmCancel');
+  r.borrarCancelar.boton = await cancelado();
+  await pedirBorrar();
   await page.click('#confirmAction');
   await page.waitForTimeout(200);
-  r.borrada = await page.evaluate(() => state.currentPhase === 1 && !state.region);
+  r.borrada = await page.evaluate(async () => {
+    (await import('./app.js')).saveSession();
+    return state.currentPhase === 1 && !state.region && state.patient === '' && document.getElementById('patientName').value === '';
+  });
+  // El nombre va escapado en el texto del diálogo
+  r.nombreEscapado = await page.evaluate(() => {
+    state.patient = '<b>X</b>';
+    promptClearSession();
+    const ok = document.querySelector('#confirmBanner .confirm-box-text').textContent.includes('«<b>X</b>»');
+    document.getElementById('confirmCancel').click();
+    state.patient = '';
+    return ok;
+  });
 
   // Importar: confirmación → recarga → restaurado
   await page.click('#sessionBtn');
@@ -1275,7 +1432,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
 
   await context.close();
   r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
-    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil && r.avisoFase2 && r.avisoFase4b;
+    && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil && r.avisoFase2 && r.avisoFase4b;
   return r;
 }
 
@@ -1853,14 +2010,18 @@ async function main() {
   const tactil = await checkBotonesTactil(browser, errors);
   console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema; «Compartir» es una hoja inferior que se cierra con atrás o tocando el velo${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
 
-  console.log('\nDiálogos de confirmación a 320 px:');
+  console.log('\nDiálogos de confirmación (320 px):');
   const dialogos = await checkDialogos(browser, errors);
-  console.log(`  ${dialogos.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar${dialogos.ok ? '' : ' ' + JSON.stringify(dialogos.fallos)}`);
+  console.log(`  ${dialogos.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar; Escape, el velo y «Cancelar» cancelan sin hacer la acción (seleccionar y soltar en el velo no cierra); dismiss() cierra sin onCancel y es idempotente${dialogos.ok ? '' : ' ' + JSON.stringify({ fallos: dialogos.fallos, cierre: dialogos.cierre })}`);
+
+  console.log('\nFase 5: pauta por situación y lo que nunca se pliega:');
+  const plegado = await checkFase5Plegado(browser, errors);
+  console.log(`  ${plegado.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba${plegado.ok ? '' : ' ' + JSON.stringify(plegado)}`);
 
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar; aviso de versión bajo la barra fija (fases 2 y 4b)${expImp.avisoFase2 && expImp.avisoFase4b ? '' : ` [fase 2: ${expImp.avisoFase2}, 4b: ${expImp.avisoFase4b}]`}${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar; aviso de versión bajo la barra fija (fases 2 y 4b)${expImp.avisoFase2 && expImp.avisoFase4b ? '' : ` [fase 2: ${expImp.avisoFase2}, 4b: ${expImp.avisoFase4b}]`}${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
@@ -1882,7 +2043,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
