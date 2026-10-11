@@ -64,7 +64,7 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
-  test('pauta: la fase 5 pone delante la rama del caso y el informe con IA recibe solo esa', () => {
+  test('pauta: el informe con IA recibe solo la rama del caso; sin rama, la pauta entera', () => {
     withState({ region: 'rodilla', mecanismo: 'Traumático', activeHypotheses: ['ro2'], treeAnswers: { ro_step1: 'menisco', ro_step5: 'menisco' }, testResults: {} }, () => {
       const p = IA.construirAmpliado().pautas.find(x => x.hipotesis === HYPOTHESES.ro2.name);
       assert.ok(p.pauta.startsWith('Rotura traumática'), p.pauta.slice(0, 40));
@@ -73,18 +73,8 @@ console.log('\nfase 5 plegable');
     withState({ region: 'rodilla', mecanismo: '', activeHypotheses: ['ro2'], treeAnswers: {}, testResults: {} }, () => {
       assert.equal(IA.construirAmpliado().pautas.find(x => x.hipotesis === HYPOTHESES.ro2.name).pauta, HYPOTHESES.ro2.dosis);
     });
-    const src = leer('app.js');
-    assert.match(src, /function _pautaConRamasHTML\(hyp\)[\s\S]{0,300}if \(!r\) return _pautaPlegableHTML\(hyp\.dosis, hyp\.dosisFuente\)/, 'sin rama, como antes');
-    assert.match(src, /Para este caso: \$\{r\.rama\.titulo\}/);
-    assert.match(src, /<details class="pauta-otras">/);
-  });
-
-  test('lo que es seguridad no se pliega: la pauta «Derivar» y la nota posquirúrgica quedan fuera del <details>', () => {
-    const src = leer('app.js');
-    assert.match(src, /!tratada && hyp\.dosis && hyp\.dosis !== DOSIS_DERIVAR\s*\? _pautaConRamasHTML\(hyp\)/);
-    const tarjeta = src.slice(src.indexOf('? _pautaConRamasHTML(hyp)'), src.indexOf('🧭 Pronóstico y derivación'));
-    assert.match(tarjeta, /\}`\}\s*\$\{cq && !tratada[^\n]*TEXTO_PAUTA_COMPATIBLE/, 'la nota posquirúrgica va después del bloque de la pauta, no dentro');
-    assert.match(src, /addEventListener\('beforeprint'[\s\S]{0,200}#phase5 details:not\(\[open\]\)/, 'al imprimir se despliega');
+    // Lo que pinta la fase 5 («Para este caso», ramas plegadas) lo comprueba el
+    // smoke («Fase 5: pauta por situación…»)
   });
 }
 

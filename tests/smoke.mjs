@@ -946,6 +946,62 @@ async function checkDialogos(browser, errors) {
   return r;
 }
 
+// Fase 5, lo plegado de las tarjetas de hipótesis: la pauta de ro2 con rama
+// pone delante «Para este caso» y pliega las otras; lo que es seguridad (la
+// pauta «Derivar» y la nota de compatibilidad con el protocolo del cirujano)
+// nunca queda dentro de un <details>; al imprimir se despliega todo y después
+// vuelve a como estaba.
+async function checkFase5Plegado(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 5 plegado): ${err.message}`));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const fase5 = (datos, id, mirar) => page.evaluate(async ([datos, id, mirar]) => {
+    const { HYPOTHESES, DOSIS_DERIVAR } = await import('./data.js');
+    Object.assign(state, { mecanismo: '', treeAnswers: {}, testResults: {}, derivacionResuelta: {} }, datos);
+    buildResults(); goToPhase(5);
+    const hyp = HYPOTHESES[id];
+    const tarjeta = [...document.querySelectorAll('#resultsContent .hyp5-card')].find(c => c.querySelector('.hyp5-nombre')?.textContent.includes(hyp.name));
+    if (!tarjeta) return null;
+    const visibleSinPlegar = el => !!el && el.checkVisibility() && !el.closest('details');
+    const rama = tarjeta.querySelector('.pauta-rama-tit');
+    const otras = tarjeta.querySelector('details.pauta-otras');
+    if (mirar === 'rama') return { rama: rama && visibleSinPlegar(rama) ? rama.textContent : null, otrasCerradas: !!otras && !otras.open };
+    if (mirar === 'derivar') {
+      const caja = [...tarjeta.querySelectorAll('.exercise-box')].find(b => b.textContent.includes(DOSIS_DERIVAR));
+      return { etiqueta: tarjeta.textContent.includes('🚑 Derivación'), sinPlegar: visibleSinPlegar(caja) };
+    }
+    const { TEXTO_PAUTA_COMPATIBLE } = await import('./lib/posquirurgico.js');
+    const nota = [...tarjeta.querySelectorAll('.nota-posq')].find(n => n.textContent.includes(TEXTO_PAUTA_COMPATIBLE));
+    return { sinPlegar: visibleSinPlegar(nota) };
+  }, [datos, id, mirar]);
+  const r = {};
+  const rodilla = { region: 'rodilla', activeHypotheses: ['ro2'] };
+  const conRama = await fase5({ ...rodilla, mecanismo: 'Traumático', treeAnswers: { ro_step1: 'menisco' } }, 'ro2', 'rama');
+  r.rama = conRama?.rama === 'Para este caso: Rotura traumática, sin cirugía' && conRama.otrasCerradas;
+  const sinRama = await fase5(rodilla, 'ro2', 'rama');
+  r.sinRama = !!sinRama && sinRama.rama === null && !sinRama.otrasCerradas;
+  const derivar = await fase5({ region: 'codo', activeHypotheses: ['co7'] }, 'co7', 'derivar');
+  r.derivar = !!derivar?.etiqueta && derivar.sinPlegar;
+  const cirugia = { intervencion: 'Meniscectomía parcial', fecha: '', semanasAprox: 4, protocolo: 'Escrito', restricciones: 'Sin pivotar 6 semanas', complicaciones: ['Ninguna'], complicacionOtra: '' };
+  const posq = await fase5({ ...rodilla, mecanismo: 'Post-quirúrgico', cirugia }, 'ro2', 'posq');
+  r.notaPosq = !!posq?.sinPlegar;
+  // Imprimir: todo desplegado; después, cada <details> como estaba (uno abierto a mano sigue abierto)
+  r.imprimir = await page.evaluate(() => {
+    const todos = [...document.querySelectorAll('#phase5 details')];
+    todos[0].open = true;
+    const antes = todos.map(d => d.open);
+    if (antes.every(Boolean)) return 'no hay nada plegado';
+    dispatchEvent(new Event('beforeprint'));
+    const desplegado = todos.every(d => d.open);
+    dispatchEvent(new Event('afterprint'));
+    return desplegado && todos.every((d, i) => d.open === antes[i]);
+  });
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function checkBotonesTactil(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
   const page = await context.newPage();
@@ -1747,6 +1803,10 @@ async function main() {
   const dialogos = await checkDialogos(browser, errors);
   console.log(`  ${dialogos.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar; Escape, el velo y «Cancelar» cancelan sin hacer la acción (seleccionar y soltar en el velo no cierra); dismiss() cierra sin onCancel y es idempotente${dialogos.ok ? '' : ' ' + JSON.stringify({ fallos: dialogos.fallos, cierre: dialogos.cierre })}`);
 
+  console.log('\nFase 5: pauta por situación y lo que nunca se pliega:');
+  const plegado = await checkFase5Plegado(browser, errors);
+  console.log(`  ${plegado.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba${plegado.ok ? '' : ' ' + JSON.stringify(plegado)}`);
+
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
@@ -1772,7 +1832,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && testsAmpliar.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && testsAmpliar.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
