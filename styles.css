@@ -2424,8 +2424,10 @@
     display: block; width: 36px; height: 4px; flex-shrink: 0;
     background: var(--border2); border-radius: 2px; margin: 10px auto 0;
   }
-  .razon-head { padding-top: 0.6rem; }
-  .razon-cerrar { top: 0.4rem; }
+  /* Sin ✕ en móvil, como los demás sheets: se cierra con el asa (deslizar),
+     el velo, Atrás o Escape. En escritorio no hay velo ni asa y la ✕ se queda. */
+  .razon-head { padding: 0.6rem 1.2rem 0.8rem; }
+  .razon-cerrar { display: none; }
   .razon > summary { font-size: 0.8rem; padding: 6px 0; }
   .razon-cuerpo { font-size: 0.85rem; }
   .razon-ampliar { font-size: 0.8rem; padding: 6px 0 6px 6px; }
