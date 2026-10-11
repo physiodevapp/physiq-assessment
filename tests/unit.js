@@ -16,6 +16,9 @@ const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativ
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../app.js');
 const { state } = await import('../state.js');
 const { rebuildHypotheses, pruneTreeFrom, resolveOptionTargets } = await import('../phase4.js');
+// Se importa aquí, antes de que ningún test toque `state`: guarda el estado
+// recién cargado como punto de partida de cada revisión («informes reales»).
+const { revisarArchivos, formatearPuntos } = await import('../tools/revisar-informe.mjs');
 
 // ── Test runner ───────────────────────────────────────────────────────────────
 let passed = 0, failed = 0;
@@ -3419,7 +3422,7 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(conSexo('La persona atendida eleva la pierna extendida.').includes('genero'));
     assert.ok(!rv('La persona atendida eleva la pierna extendida.').includes('genero'), 'sin sexo registrado, la fórmula neutra es lo correcto');
   });
-  test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
+  {
     const dir = join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'informes');
     const herramienta = join(dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'revisar-informe.mjs');
     const casos = [
@@ -3449,14 +3452,27 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-1-ficha-breve.txt', 'pablo-dictado-1-transcripcion.txt', ['nrs-momento', 'fisiopatologia']],
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-2-ficha-breve.txt', 'pablo-dictado-2-transcripcion.txt', ['relleno']],
     ];
+    // En este mismo proceso (revisarArchivos(), lo que hace la herramienta),
+    // no un `node` por informe; luego se deja `state` como estaba.
+    const antes = structuredClone(state);
+    const revisados = [];
     for (const [json, informe, trans, esperados] of casos) {
-      const args = [herramienta, join(dir, json), join(dir, informe)];
-      if (trans) args.push('--transcripcion', join(dir, trans));
-      const salida = execFileSync(process.execPath, args, { encoding: 'utf8' });
-      const ids = [...salida.matchAll(/^\[(?:ALTO|MEDIO)\] ([\w-]+):/gm)].map(m => m[1]);
-      assert.deepEqual(ids, esperados, `${informe}\n${salida}`);
+      const r = await revisarArchivos(join(dir, json), join(dir, informe), { transcripcion: trans ? readFileSync(join(dir, trans), 'utf8') : '' });
+      revisados.push([informe, r, esperados]);
     }
-  });
+    for (const k of Object.keys(state)) delete state[k];
+    Object.assign(state, antes);
+    test('revisión: informes reales (tests/fixtures/informes) dan los puntos esperados', () => {
+      for (const [informe, r, esperados] of revisados)
+        assert.deepEqual(r.puntos.map(p => p.id), esperados, `${informe}\n${formatearPuntos(r)}`);
+    });
+    // La línea de órdenes de la herramienta, con un caso: misma salida que la función
+    const [json, informe, trans] = casos[0];
+    const salida = execFileSync(process.execPath, [herramienta, join(dir, json), join(dir, informe), '--transcripcion', join(dir, trans)], { encoding: 'utf8' });
+    test('revisión: tools/revisar-informe.mjs desde la línea de órdenes da lo mismo que revisarArchivos()', () => {
+      assert.equal(salida, formatearPuntos(revisados[0][1]));
+    });
+  }
   test('prompt: aviso de reglas pronósticas en la coherencia y NRS que debe constar (ronda 23)', () => {
     const d = { p: 'X', nr: 7, h: [{ name: 'Disfunción segmentaria' }] };
     for (const pr of [IN.buildNarrativePrompt(d, {}), IN.buildFichaBrevePrompt(d, {})]) {
