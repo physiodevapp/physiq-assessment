@@ -1729,6 +1729,9 @@
    "es un hallazgo, no confirma la hipótesis.",
    "Sola, predice poco la respuesta a la manipulación (S 97 %, E 23 %, LR+ 1,26).",
    "Que no haya hipomovilidad orienta a ② (primer test)."
+  ],
+  "retiradas": [
+   "es un hallazgo, no confirma la hipótesis."
   ]
  },
  "lu2|Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria": {
@@ -1749,6 +1752,9 @@
    "«instability catch», arco doloroso, subir apoyando las manos en los muslos (signo de Gowers) o inversión del ritmo lumbopélvico.",
    "No se asoció con la inestabilidad radiológica (17,9 % frente a 9,5 %, no significativo) y su fiabilidad entre examinadores fue κ −0,07:",
    "solo orienta."
+  ],
+  "retiradas": [
+   "solo orienta."
   ]
  },
  "lu3|Test de Elevación de Pierna Recta (SLR) ipsilateral": {
@@ -1760,12 +1766,19 @@
    "un positivo aislado aporta poco.",
    "Cifras de pacientes derivados a cirugía (prevalencia de hernia del 58–98 %);",
    "en los estudios con imagen, más cercanos a atención primaria, rindió peor y no se agruparon."
+  ],
+  "retiradas": [
+   "Útil sobre todo negativo, para descartar;",
+   "un positivo aislado aporta poco."
   ]
  },
  "lu3|SLR Contralateral (Lasègue cruzado)": {
   "frases": [
    "Positivo:",
    "dolor radicular ipsilateral al elevar la pierna contralateral.",
+   "Útil sobre todo positivo."
+  ],
+  "retiradas": [
    "Útil sobre todo positivo."
   ]
  },
@@ -1778,6 +1791,9 @@
    "No puntúa:",
    "la única cifra favorable (S 84 %, E 83 %) es de un estudio de casos y controles con controles de RM normal, que puede inflar la especificidad;",
    "otro estudio dio S 44 %, E 58 % con dolor por debajo de la rodilla como criterio."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "lu3|Criterios RAPIDH (5 criterios)": {
@@ -1841,6 +1857,9 @@
    "No informativo por sí solo.",
    "Una versión modificada (hasta 60 s, más extensión + inclinación hacia el lado sintomático) da S 92 %, E 40 %, LR− 0,2, pero con IC 95 % hasta 1,36 en 30 pacientes:",
    "no sirve aún para descartar."
+  ],
+  "retiradas": [
+   "No informativo por sí solo."
   ]
  },
  "lu5|Fuerza por miotomas L1–S2": {
@@ -1859,6 +1878,9 @@
    "con RM al nivel concreto (3 estudios), S 25 %, E 75 %.",
    "Algún estudio suelto da E de hasta 0,93.",
    "No informativo por sí solo."
+  ],
+  "retiradas": [
+   "No informativo por sí solo."
   ]
  },
  "lu5|Sensibilidad (algodón, diapasón, pinchazo)": {
@@ -1870,6 +1892,9 @@
    "con RM, S 32 %, E 72 %.",
    "El mejor estudio suelto da S 61 %, E 63 %.",
    "No informativo por sí solo."
+  ],
+  "retiradas": [
+   "No informativo por sí solo."
   ]
  },
  "lu6|Centralización con movimientos repetidos": {
@@ -1877,6 +1902,9 @@
    "Desaparecen los síntomas distales con movimientos repetidos al final del rango.",
    "Que no centralice no descarta el origen discal.",
    "La especificidad baja con discapacidad grave o malestar psicológico."
+  ],
+  "retiradas": [
+   "Que no centralice no descarta el origen discal."
   ]
  },
  "lu6|Preferencia direccional": {
