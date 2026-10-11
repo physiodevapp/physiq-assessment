@@ -1970,6 +1970,16 @@ test('prompt: ninguna línea de «Hallazgos de la exploración» lleva cifras de
   }
 });
 
+test('prompt: ninguna pregunta del árbol que llega al prompt lleva una instrucción para el fisioterapeuta', () => {
+  // «Descartar antes lo vascular», «Palpar primero», «→ DERIVAR…»: el informe podía leerlas como algo hecho;
+  // la instrucción se queda en pantalla y al prompt va `iaPregunta`
+  const instruccion = /descart|palpar|revisar siempre|→|deriv|malignidad|explorar primero/i;
+  for (const [r, t] of Object.entries(CIF_TREES)) for (const st of t.steps)
+    assert.ok(!instruccion.test(IN.limpiarEtiqueta(st.iaPregunta || st.question)), `${r}.${st.id}: ${st.iaPregunta || st.question}`);
+  const tp5 = CIF_TREES.tobillo_pie.steps.find(s => s.id === 'tp_step5');
+  assert.match(tp5.iaPregunta, /no reproduce/, 'la opción «NO — … sí reproduce» responde a la pregunta en negativo');
+});
+
 test('prompt: aviso de patrón en los hallazgos; recordatorio de discrepancias junto al formulario solo con audio', () => {
   const d = { p: 'X', r: 'rodilla', d: '01/01/2026', br: [], sq: [], pn: {}, h: [] };
   const amp = { arbol: [{ pregunta: '¿Mecanismo?', respuesta: 'SÍ — Trauma rotacional con síntomas de bloqueo o chasquidos' }],
