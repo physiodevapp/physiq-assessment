@@ -709,6 +709,18 @@ async function checkAmpliarIA(browser) {
   await page.click(`${sq} .ia-parrafo-ir`);
   r.recordado = (await ultimoPrompt()).host === 'https://www.google.com/search';
 
+  // Menú cerrado sin elegir tras perder la selección (en el móvil, el toque en
+  // la ▾ la quita): la barra no se queda flotando. Con el menú abierto sigue.
+  await seleccionar(`${sq} .razon-cuerpo p`);
+  await page.waitForTimeout(400);
+  await page.click('#iaBarra .ia-elegir');
+  await page.evaluate(() => getSelection().removeAllRanges());
+  await page.waitForTimeout(1000);
+  const conMenu = await page.evaluate(() => !document.getElementById('iaBarra').hidden && !document.getElementById('iaMenu').hidden);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(1000);
+  r.barraNoQueda = conMenu && await page.evaluate(() => document.getElementById('iaBarra').hidden && document.getElementById('iaMenu').hidden);
+
   // Selección fuera del razonamiento → sin barra
   await page.evaluate(() => getSelection().removeAllRanges());
   await page.waitForTimeout(600);
@@ -1614,7 +1626,7 @@ async function main() {
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
   const ampliarIA = await checkAmpliarIA(browser);
-  console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
+  console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
 
   console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
   const testsAmpliar = await checkTestsAmpliar(page);
