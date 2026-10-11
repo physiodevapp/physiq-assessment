@@ -826,6 +826,41 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "pablo-dictado-1-ficha-breve.txt",
+      "valoracion": "valoracion-pablo-serrano-rodilla.json",
+      "transcripcion": "pablo-dictado-1-transcripcion.txt",
+      "plantilla": "breve",
+      "errores": [
+        {
+          "id": "pablo1-saltos",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Restricción de saltos atribuida al protocolo, que no la incluye",
+          "fragmentos": [
+            "restricción absoluta temporal de carrera (d4552) y saltos (d4553) según protocolo quirúrgico"
+          ]
+        },
+        {
+          "id": "pablo1-cesion-objetivada",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "«Sin episodios objetivados de cesión», como si se hubiera explorado, repitiendo la discrepancia en otra sección",
+          "fragmentos": [
+            "aunque sin episodios objetivados de cesión (b7150)"
+          ]
+        },
+        {
+          "id": "pablo1-cribado-especifico",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "Llama «específico» a un cribado abreviado por embudo",
+          "fragmentos": [
+            "no identificó banderas rojas en el cribado específico"
+          ]
+        }
+      ]
     }
   ]
 }
