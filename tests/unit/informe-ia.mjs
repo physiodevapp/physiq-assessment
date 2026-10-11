@@ -193,22 +193,6 @@ test('borrar sesión usa el diálogo común y, si se cancela, vuelve al panel de
   assert.match(borrar, /state\.patient = '';[\s\S]*getElementById\('patientName'\)[\s\S]*campo\.value = '';/);
 });
 
-test('diálogos: el velo y Escape cierran como el botón de cerrar, nunca hacen la acción', () => {
-  const app = leer('app.js');
-  const f = app.slice(app.indexOf('function showConfirmBanner'), app.indexOf('// ─── SESSION PANEL'));
-  // Velo: solo un toque que empieza y acaba en el velo, y llama a dismiss (no a onConfirm)
-  assert.match(f, /pointerdown', e => \{ empiezaEnVelo = e\.target === overlay; \}/);
-  assert.match(f, /click', e => \{ if \(e\.target === overlay && empiezaEnVelo\) cancelar\(\); \}/);
-  // Escape cierra, y el listener se quita al cerrar o si otro código retira el diálogo
-  assert.match(f, /e\.key === 'Escape'\) \{ e\.preventDefault\(\); cancelar\(\); \}/);
-  // Cancelar a mano llama a opts.onCancel; el dismiss() devuelto (cierre desde el código) no
-  assert.match(f, /const cancelar = \(\) => \{ if \(!overlay\.isConnected\) return; dismiss\(\); opts\.onCancel\?\.\(\); \};/);
-  assert.match(f, /getElementById\('confirmCancel'\)\.onclick = cancelar;/);
-  assert.match(f, /const dismiss = \(\) => \{\s*document\.removeEventListener\('keydown', alTeclado\);/);
-  assert.match(f, /if \(!overlay\.isConnected\) \{ document\.removeEventListener\('keydown', alTeclado\); return; \}/);
-  assert.equal((f.match(/onConfirm\(\)/g) || []).length, 1, 'solo el botón de acción confirma');
-});
-
 test('cancelar la generación pide confirmación y el diálogo se cierra solo si la generación acaba', () => {
   const src = leer('informe-ia.js');
   const cancelar = src.slice(src.indexOf('function iaCancelar'), src.indexOf('function cancelarGeneracion'));
@@ -216,10 +200,8 @@ test('cancelar la generación pide confirmación y el diálogo se cierra solo si
   assert.doesNotMatch(cancelar, /ctrl\.abort/, 'el botón ya no corta sin confirmar');
   const gen = src.slice(src.indexOf('async function iaGenerar'), src.indexOf('async function leerStream'));
   assert.match(gen, /finally \{[\s\S]*_cerrarDlgCancelar\?\.\(\);/);
-  // showConfirmBanner: botón de cerrar configurable y cierre desde fuera idempotente
-  const app = leer('app.js');
-  assert.match(app, /\$\{opts\.cancelLabel \|\| 'Cancelar'\}/);
-  assert.match(app, /if \(!overlay\.isConnected\) return;[\s\S]{0,1500}return dismiss;/);
+  // Lo de showConfirmBanner (cancelLabel, dismiss() idempotente) lo comprueba
+  // el smoke («Diálogos de confirmación»)
 });
 
 test('transcripción sin voz: silencio o texto de relleno de Whisper', () => {

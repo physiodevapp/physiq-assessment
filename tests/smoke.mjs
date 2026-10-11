@@ -868,18 +868,80 @@ async function checkDialogos(browser, errors) {
   for (const [etiqueta, borra, cancelLabel] of ACCIONES_DIALOGO) {
     const m = await page.evaluate(async ([etiqueta, borra, cancelLabel]) => {
       const { showConfirmBanner } = await import('./app.js');
-      showConfirmBanner('Título', 'Texto del diálogo.', etiqueta, () => {}, { borra, cancelLabel });
+      const cerrar = showConfirmBanner('Título', 'Texto del diálogo.', etiqueta, () => {}, { borra, cancelLabel });
       const caja = document.querySelector('.confirm-box-btns').getBoundingClientRect();
       const botones = [...document.querySelectorAll('.confirm-box-btns button')];
       const unaLinea = botones.every(b => b.getBoundingClientRect().height < 40 && b.scrollWidth <= b.clientWidth);
       const dentro = botones.every(b => { const q = b.getBoundingClientRect(); return q.left >= caja.left - 0.5 && q.right <= caja.right + 0.5; });
       const papelera = !!document.querySelector('#confirmAction svg');
-      document.getElementById('confirmBanner').remove();
+      cerrar();
       return { unaLinea, dentro, papelera };
     }, [etiqueta, borra, cancelLabel]);
     if (!m.unaLinea || !m.dentro || m.papelera !== borra) r.fallos.push({ etiqueta: etiqueta.replace(/<[^>]+>/g, ' ').trim(), ...m });
   }
-  r.ok = r.fallos.length === 0;
+
+  // Cerrar: Escape, un toque en el velo y el botón de cerrar cancelan (llaman a
+  // opts.onCancel); solo el botón de acción hace la acción. Seleccionar texto
+  // del recuadro y soltar en el velo no cierra. El dismiss() devuelto cierra
+  // sin onCancel y, si el diálogo ya no está, no hace nada.
+  const abrir = (opts = {}) => page.evaluate(async opts => {
+    const { showConfirmBanner } = await import('./app.js');
+    window._dlg = { accion: 0, cancelar: 0 };
+    window._dlgDismiss = showConfirmBanner('Título', 'Texto del diálogo para seleccionar.', 'Borrar',
+      () => { window._dlg.accion++; }, { ...opts, onCancel: () => { window._dlg.cancelar++; } });
+  }, opts);
+  const estado = () => page.evaluate(() => ({ abierto: !!document.getElementById('confirmBanner'), ...window._dlg }));
+  const es = (e, abierto, accion, cancelar) => e.abierto === abierto && e.accion === accion && e.cancelar === cancelar;
+  const cierre = {};
+  await abrir();
+  await page.keyboard.press('Escape');
+  cierre.escape = es(await estado(), false, 0, 1);
+  await abrir();
+  await page.mouse.click(5, 650);
+  cierre.velo = es(await estado(), false, 0, 1);
+  await abrir();
+  const texto = await page.locator('.confirm-box-text').boundingBox();
+  await page.mouse.move(texto.x + 5, texto.y + texto.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(5, 650, { steps: 4 });
+  await page.mouse.up();
+  cierre.seleccionarYSoltarEnVelo = es(await estado(), true, 0, 0);
+  await page.evaluate(() => window._dlgDismiss());
+  await abrir();
+  await page.click('#confirmCancel');
+  cierre.botonCerrar = es(await estado(), false, 0, 1);
+  await abrir({ cancelLabel: 'Seguir' });
+  cierre.cancelLabel = (await page.textContent('#confirmCancel')).trim() === 'Seguir';
+  await page.click('#confirmAction');
+  cierre.accion = es(await estado(), false, 1, 0);
+  // dismiss() con el panel de sesión abierto debajo: cierra sin onCancel; el
+  // segundo no hace nada (ni desbloquea el scroll que el panel sigue usando) y
+  // Escape ya no llama a onCancel
+  await page.evaluate(() => toggleSessionPanel());
+  await abrir();
+  await page.evaluate(() => { window._dlgDismiss(); window._dlgDismiss(); });
+  await page.keyboard.press('Escape');
+  cierre.dismiss = es(await estado(), false, 0, 0)
+    && await page.evaluate(() => document.body.style.overflow === 'hidden');
+  await page.evaluate(() => closeSessionPanel());
+  // Un diálogo encima de otro: Escape cancela solo el de arriba, y el dismiss()
+  // del de abajo (p. ej. al acabar la generación con IA) no cierra el de arriba
+  cierre.apilados = await page.evaluate(async () => {
+    const { showConfirmBanner } = await import('./app.js');
+    const c = { a: 0, b: 0 };
+    showConfirmBanner('A', 'a', 'X', () => {}, { onCancel: () => { c.a++; } });
+    showConfirmBanner('B', 'b', 'X', () => {}, { onCancel: () => { c.b++; } });
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    const escapeSoloArriba = !document.getElementById('confirmBanner') && c.a === 0 && c.b === 1;
+    const dA = showConfirmBanner('A', 'a', 'X', () => {}, { onCancel: () => { c.a++; } });
+    showConfirmBanner('B', 'b', 'X', () => {}, { onCancel: () => { c.b++; } });
+    dA();
+    const bSigue = document.querySelector('#confirmBanner .confirm-box-title')?.textContent === 'B';
+    document.getElementById('confirmCancel').click();
+    return escapeSoloArriba && bSigue && c.a === 0 && c.b === 2;
+  });
+  r.cierre = cierre;
+  r.ok = r.fallos.length === 0 && Object.values(cierre).every(v => v === true);
   await context.close();
   return r;
 }
@@ -1644,9 +1706,9 @@ async function main() {
   const tactil = await checkBotonesTactil(browser, errors);
   console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema; «Compartir» es una hoja inferior que se cierra con atrás o tocando el velo${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
 
-  console.log('\nDiálogos de confirmación a 320 px:');
+  console.log('\nDiálogos de confirmación (320 px):');
   const dialogos = await checkDialogos(browser, errors);
-  console.log(`  ${dialogos.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar${dialogos.ok ? '' : ' ' + JSON.stringify(dialogos.fallos)}`);
+  console.log(`  ${dialogos.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar; Escape, el velo y «Cancelar» cancelan sin hacer la acción (seleccionar y soltar en el velo no cierra); dismiss() cierra sin onCancel y es idempotente${dialogos.ok ? '' : ' ' + JSON.stringify({ fallos: dialogos.fallos, cierre: dialogos.cierre })}`);
 
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
