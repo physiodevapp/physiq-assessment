@@ -1279,6 +1279,9 @@
    "las cifras que tenía (κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9, LR− 0,43–0,49) son del PAIVM C0–C3 para la cefalea cervicogénica (Blanpied 2017, p.",
    "A19), no para el déficit de movilidad, que no tiene patrón de referencia;",
    "y la evidencia publicada del PAIVM en el dolor cervical es para dolor facetario confirmado con bloqueo de rama medial (S 90 %, E 73 %)."
+  ],
+  "retiradas": [
+   "Cuenta como hallazgo:"
   ]
  },
  "ce1|ROM Cervical Activo con CROM": {
@@ -1287,6 +1290,9 @@
    "hallazgo esperado en el dolor de cuello con déficit de movilidad.",
    "Una revisión de 46 estudios de fiabilidad y 21 de validez encontró fiabilidad y validez «buenas» para el CROM, el inclinómetro simple y el goniómetro Spin-T, pero 32 de los 46 estudios eran en personas sin dolor.",
    "Sin S ni E;",
+   "no puntúa."
+  ],
+  "retiradas": [
    "no puntúa."
   ]
  },
@@ -1300,6 +1306,9 @@
    "Un CCFT positivo es hallazgo esperado en el dolor de cuello con alteración de la coordinación del movimiento.",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce2|Test de Reposicionamiento Cabeza-Neutro": {
@@ -1310,6 +1319,9 @@
    "Una revisión de alta calidad encontró que quienes tienen dolor de cuello crónico idiopático lo hacen peor que las personas sin dolor, pero no hay estudios de precisión diagnóstica del test.",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce3|Test de Spurling (Compresión Foraminal)": {
@@ -1318,6 +1330,9 @@
    "Extensión + inclinación lateral ipsilateral + compresión axial.",
    "Positivo:",
    "reproduce dolor radicular en el brazo."
+  ],
+  "retiradas": [
+   "Alta especificidad para CONFIRMAR diagnóstico."
   ]
  },
  "ce3|Upper Limb Neurodynamic Test (ULNT) 1": {
@@ -1348,6 +1363,11 @@
    "Una variante pasiva (el examinador mantiene la mano sobre la cabeza 5 s) dio LR+ 2,05 y LR− 0,36 en un solo estudio de 85 pacientes.",
    "Un negativo no descarta.",
    "S y E solo aquí, para que no se recalcule la LR."
+  ],
+  "retiradas": [
+   "Cuenta como hallazgo (decisión del usuario, 2026-10).",
+   "S y E solo aquí, para que no se recalcule la LR.",
+   "Un negativo no descarta."
   ]
  },
  "ce3|Reflejos tendinosos (bíceps C6, tríceps C7)": {
@@ -1355,6 +1375,9 @@
    "Parte de la exploración neurológica (sensibilidad, fuerza y reflejos), indicada cuando se sospecha radiculopatía con conducción comprometida.",
    "Puede haber déficit sensitivo, de fuerza o de reflejos ligado a la raíz afectada.",
    "Sin S ni E;",
+   "no puntúa."
+  ],
+  "retiradas": [
    "no puntúa."
   ]
  },
@@ -1382,7 +1405,10 @@
    "si esta combinación aporta su LR, la del ULNT1 suelto deja de contar.",
    "2 estudios, certeza muy baja (GRADE);",
    "por separado, LR− 0,04 (51 pacientes) y 0,08 (85 pacientes).",
-   "En los dos, cada ULNT se da por positivo si reproduce los síntomas y estos cambian con la diferenciación estructural."
+   "En los dos estudios, cada ULNT se da por positivo si reproduce los síntomas y estos cambian con la diferenciación estructural."
+  ],
+  "retiradas": [
+   "Sirve sobre todo para descartar:"
   ]
  },
  "ce4|Test de Flexión-Rotación Cervical (CFRT)": {
@@ -1398,9 +1424,12 @@
    "también sale positivo en migraña, más en la crónica.",
    "Que reproduzca su cefalea podría mejorar la precisión (solo un estudio lo usó).",
    "Solo puntúa positivo:",
-   "el metaanálisis da S 83 %, E 83 % y LR− 0,2, pero el FRT explora C1–C2 (el metaanálisis lo valida para cervicogénica con origen en C1–C2) y una cervicogénica de C2–C3 o C3–C4 confirmada por bloqueo puede darlo normal, así que un FRT negativo no la descarta (S y E van solo aquí para que no se recalcule la LR−).",
+   "el metaanálisis da S 83 %, E 83 % y LR− 0,2, pero el FRT explora C1–C2 (el metaanálisis lo valida para cervicogénica con origen en C1–C2) y una cervicogénica de C2–C3 o C3–C4 confirmada por bloqueo puede darlo normal, así que un FRT negativo no la descarta.",
    "El metaanálisis considera positivo <45° a cualquier lado;",
    "en sus estudios, la rotación media era de 24,5° en el lado sintomático de la cervicogénica frente a 39,1° en otras cefaleas y lados asintomáticos."
+  ],
+  "retiradas": [
+   "(S y E van solo aquí para que no se recalcule la LR−)"
   ]
  },
  "ce4|PAIVM C0-C3 (segmento C1-C2 más sintomático)": {
@@ -1412,6 +1441,9 @@
    "la cefalea se reproduce al provocar los segmentos cervicales altos implicados.",
    "No puntúa (decisión del usuario):",
    "el FRT ya aporta la LR de la hipótesis con un metaanálisis más reciente (Demont 2022), el patrón de referencia de estos estudios es la propia exploración manual, de fiabilidad pobre, y la guía califica de pobre a regular la fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical."
+  ],
+  "retiradas": [
+   "No puntúa (decisión del usuario):"
   ]
  },
  "ce4|Cluster: ROM cervical + PAIVM + CCFT": {
@@ -1424,6 +1456,9 @@
    "es una función discriminante (pesos continuos, no «tres positivos»), en una sola muestra, que incluye controles sin cefalea, con el tipo de cefalea clasificado por cuestionario (no por bloqueo) y con el CCFT medido por EMG;",
    "los autores piden validarlo.",
    "Frente a bloqueos anestésicos controlados de C2–C3 y C3–C4 (30 pacientes con cefalea y dolor de cuello), el modelo con menos extensión, disfunción articular dolorosa en C2–C4, peor CCFT y FRT sin limitación fue el que mejor predijo la respuesta al bloqueo, pero sin S ni E."
+  ],
+  "retiradas": [
+   "Cuenta como hallazgo:"
   ]
  },
  "ce4|Examen manual cervical alto": {
@@ -1463,6 +1498,9 @@
    "En el latigazo cervical, los síntomas y signos suelen ser más frecuentes y en general más graves en todos los parámetros físicos que en el dolor de cuello idiopático.",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce5|Factores de riesgo de evolución persistente (WAD agudo o subagudo)": {
@@ -1476,6 +1514,10 @@
    "La guía cita una regla de predicción del pronóstico derivada y validada, sin detallarla.",
    "Pronóstico, no diagnóstico:",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa.",
+   "Pronóstico, no diagnóstico:"
   ]
  },
  "ce5|Síntomas de hiperalerta / PTSD": {
@@ -1483,6 +1525,10 @@
    "Los síntomas significativos de estrés postraumático, sobre todo los de hiperalerta, predicen peor recuperación funcional a medio y largo plazo en el latigazo cervical.",
    "Para el pronóstico, la guía propone la IES-R (33 o más) y aclara que se usa para predecir la cronicidad, no para diagnosticar un trastorno de estrés postraumático.",
    "En la IES-R, muchos pacientes responden las preguntas de sueño pensando en el dolor.",
+   "Pronóstico, no diagnóstico:",
+   "no puntúa."
+  ],
+  "retiradas": [
    "Pronóstico, no diagnóstico:",
    "no puntúa."
   ]
@@ -1500,6 +1546,9 @@
    "La hiperalgesia al frío temprana predice peor evolución.",
    "Fractura e inestabilidad ya descartadas;",
    "dosificar la exploración."
+  ],
+  "retiradas": [
+   "no entra en la puntuación."
   ]
  },
  "ce5|Reposición articular (si hay mareo o inestabilidad)": {
@@ -1525,6 +1574,9 @@
    "hallazgo esperado en la alteración de la coordinación del movimiento y en la cefalea cervicogénica.",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce6|Fuerza de Extensión Cervical (dinamometría)": {
@@ -1533,6 +1585,9 @@
    "Déficits de fuerza de la musculatura cervicoescapulotorácica:",
    "posibles en el dolor de cuello subagudo o crónico con déficit de movilidad.",
    "Sin S ni E;",
+   "no puntúa."
+  ],
+  "retiradas": [
    "no puntúa."
   ]
  },
@@ -1544,6 +1599,9 @@
    "hallazgo esperado en el déficit de movilidad.",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce7|Test de reposicionamiento cabeza-neutro": {
@@ -1551,6 +1609,9 @@
    "Un error mayor de 4–5° al volver a la posición de partida con los ojos cerrados indica déficit del sentido de posición cervical.",
    "Quienes tienen dolor de cuello crónico idiopático lo hacen peor que las personas sin dolor, pero no hay estudios de precisión diagnóstica del test.",
    "Sin S ni E;",
+   "no puntúa."
+  ],
+  "retiradas": [
    "no puntúa."
   ]
  },
@@ -1566,6 +1627,9 @@
    "la resonancia ayuda al diagnóstico.",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce8|Clonus de tobillo/muñeca": {
@@ -1574,6 +1638,9 @@
    "El clonus, el Babinski y el reflejo supinador invertido tienen especificidad alta;",
    "ningún signo aislado basta, cuenta el conjunto.",
    "Sin S ni E;",
+   "no puntúa."
+  ],
+  "retiradas": [
    "no puntúa."
   ]
  },
@@ -1585,6 +1652,9 @@
    "Los primeros síntomas pueden ser sutiles (torpeza de manos o leve alteración del equilibrio) y, en mayores de 45 años, deben hacer pensar en una resonancia cervical aunque la fuerza sea normal.",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce8|Hiperreflexia (ROT aumentados)": {
@@ -1593,6 +1663,9 @@
    "La hiperreflexia generalizada y el signo de Trömner son los más sensibles.",
    "Ningún signo aislado basta.",
    "Sin S ni E;",
+   "no puntúa."
+  ],
+  "retiradas": [
    "no puntúa."
   ]
  },
@@ -1604,6 +1677,9 @@
    "Con la espalda hundida al sentarse, la cabeza adelantada aumenta la actividad de los extensores del cuello.",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce9|Evaluación de cifosis torácica": {
@@ -1612,6 +1688,9 @@
    "La posición escapular se analiza sabiendo que varía mucho en personas sin dolor;",
    "si se sospecha que influye, colocar pasivamente la escápula en una orientación más neutra y ver el cambio inmediato en el dolor o en la movilidad del cuello.",
    "Sin S ni E;",
+   "no puntúa."
+  ],
+  "retiradas": [
    "no puntúa."
   ]
  },
@@ -1622,6 +1701,9 @@
    "es opinión de expertos y los autores piden estudiar su fiabilidad y validez.",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce10|Restricción de rotación cervical ipsilateral": {
@@ -1630,6 +1712,9 @@
    "En un Delphi de 12 expertos en terapia manual hubo consenso en este hallazgo, pero también en la rotación contralateral dolorosa y restringida, y no en que todos los movimientos cervicales lo estén;",
    "es opinión de expertos, sin fiabilidad ni validez estudiadas.",
    "Sin S ni E;",
+   "no puntúa."
+  ],
+  "retiradas": [
    "no puntúa."
   ]
  },
@@ -1640,6 +1725,9 @@
    "La guía recomienda incluir los tests de resistencia de los flexores del cuello para identificar la alteración de la coordinación del movimiento (B).",
    "Sin S ni E;",
    "no puntúa."
+  ],
+  "retiradas": [
+   "no puntúa."
   ]
  },
  "ce11|Evaluación de fatiga en actividades funcionales prolongadas": {
@@ -1648,6 +1736,9 @@
    "probar a modificar la postura y ver el efecto inmediato en el dolor.",
    "La cabeza adelantada con espalda hundida aumenta la actividad de los extensores, y la cabeza flexionada con dispositivos de mano aumenta su demanda mecánica, lo que puede llevar a fatiga, isquemia y dolor.",
    "Sin S ni E;",
+   "no puntúa."
+  ],
+  "retiradas": [
    "no puntúa."
   ]
  },
@@ -1722,6 +1813,9 @@
    "② Si es craneocervical:",
    "grados del FRT en supino.",
    "Su evidencia diagnóstica es para cefalea cervicogénica:",
+   "aquí cuenta como hallazgo."
+  ],
+  "retiradas": [
    "aquí cuenta como hallazgo."
   ]
  },
