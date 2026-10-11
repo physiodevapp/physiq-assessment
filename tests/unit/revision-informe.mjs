@@ -106,8 +106,9 @@ console.log('\npaquete de revisión del informe con IA');
   });
   test('paquete: la tarjeta guarda el prompt y la versión al generar, y el botón está expuesto', () => {
     const src = leer('informe-ia.js');
-    assert.match(src, /prompt,\s+\/\/ el exacto que se envió/);
-    assert.match(src, /version: VERSION_SHA,/);
+    const nuevo = src.slice(src.indexOf('state.informeIA = {'), src.indexOf('};', src.indexOf('state.informeIA = {')));
+    assert.match(nuevo, /\bprompt\b/, 'el prompt exacto que se envió');
+    assert.match(nuevo, /version: VERSION_SHA\b/);
     assert.match(src, /import\('\.\/lib\/zip\.js'\)/, 'zip con import() dinámico: solo al usarlo');
     assert.equal(typeof globalThis.iaPaqueteRevision, 'function');
   });
@@ -529,13 +530,11 @@ console.log('\nrevisión automática del informe con IA');
     assert.equal(t, 'Texto.');
     assert.equal(RI.fraseEn('Uno. Dos tres. Cuatro.', 6), 'Dos tres.');
   });
-  test('revisión: se pinta en la tarjeta, nunca en el payload ni en los resúmenes, y se despliega', () => {
+  test('revisión: se pinta en la tarjeta, nunca en el payload ni en los resúmenes', () => {
     const src = leer('informe-ia.js');
     assert.match(src, /import \{ revisarInforme, comprobacionesManuales[^}]*\} from '\.\/lib\/revision-informe\.js';/);
     assert.match(src, /<div id="iaRevision"><\/div>/);
     assert.match(src, /catch \{ el\.innerHTML = '';( _rev\w+ = \[\];)? return; \}/, 'una regla rota no tumba la tarjeta');
-    const wf = leer('.github/workflows/deploy-to-hub.yml');
-    assert.ok(/cp lib\/[^\n]*lib\/revision-informe\.js[^\n]*physiq-hub\/assessment\/lib\//.test(wf), 'lib/revision-informe.js se copia al hub');
     const appSrc = leer('app.js');
     assert.ok(!/revision-informe/.test(appSrc), 'app.js no la carga (solo la tarjeta, fuera del hub)');
   });

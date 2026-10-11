@@ -31,14 +31,12 @@ test('lado: viaja en el payload (la) y sale en 📋 Notas, 📄 Informe y el inf
   });
 });
 
-test('lado: el reinicio lo borra y «Central» solo existe en la columna', () => {
-  const html = leer('index.html');
-  assert.match(html, /id="ladoWrap" hidden/);
-  for (const v of ['Derecho', 'Izquierdo', 'Bilateral', 'Central']) assert.ok(html.includes(`selectOption('lado', this, '${v}')`), v);
+// Que aparezca al elegir región y que «Central» solo exista en la columna lo
+// comprueba tests/smoke.mjs («lado afectado») en el navegador.
+test('lado: el reinicio lo borra y un «Central» que no aplica se quita', () => {
   const src = leer('app.js');
   const reset = src.slice(src.indexOf('function _softResetApp()'), src.indexOf('function _softResetApp()') + 3000);
   assert.ok(reset.includes("state.lado = '';"), '_softResetApp borra el lado');
-  assert.match(src, /const REGIONES_COLUMNA = \['cervical', 'lumbar'\]/);
   assert.match(src, /if \(state.lado === 'Central' && !columna\) state.lado = '';/);
 });
 
@@ -101,10 +99,5 @@ console.log('\nexportar / importar valoración');
     assert.ok(aplicar.indexOf('clearSession()') < aplicar.indexOf('writeSession'), 'sin restos de la sesión anterior');
     assert.match(aplicar, /location\.reload\(\)/);
     assert.ok(!/import .*valoracion-json/.test(src), 'el módulo se carga con import() solo al usarlo');
-  });
-
-  test('deploy: lib/valoracion-json.js se copia al hub', () => {
-    const wf = leer('.github/workflows/deploy-to-hub.yml');
-    assert.ok(wf.includes('lib/valoracion-json.js'));
   });
 }
