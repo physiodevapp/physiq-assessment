@@ -1,0 +1,21 @@
+INFORME DE FISIOTERAPIA
+Paciente: Pablo Serrano
+Edad: 29 años
+Sexo: Hombre
+Fecha: 11/10/2026
+Región valorada: Rodilla (derecha)
+
+PRESENTACIÓN CLÍNICA
+
+Varón de 29 años, profesor de educación física, que acude para rehabilitación tras reconstrucción del ligamento cruzado anterior de rodilla derecha con injerto de isquiotibiales realizada hace ocho semanas. La lesión inicial ocurrió en junio durante un partido de fútbol, al realizar un giro con el pie apoyado, notando un chasquido inmediato que le obligó a detener la actividad. La rodilla se hinchó de forma precoz tras el mecanismo lesional. Refiere que el dolor ha ido mejorando progresivamente desde la intervención. Aporta protocolo escrito del cirujano que establece restricciones específicas: prohibición de carrera hasta la semana doce, de extensión de rodilla en cadena abierta entre 90 y 45 grados hasta la semana doce, y de deportes con giros hasta los nueve meses. Ha realizado seis semanas de fisioterapia en otro centro tras la cirugía. El dolor actual en reposo se sitúa en 2/10, con picos de 4/10 en el peor momento de la última semana, especialmente al final del día. No presenta dolor nocturno ni en reposo, y cuando alguna actividad incrementa las molestias, estas ceden rápidamente. Refiere molestias al bajar escaleras y al ponerse en cuclillas. Comenta que al bajar escaleras a veces nota que la rodilla le falla un poco, manifestando evitación de giros sobre esa pierna por temor a que ceda, aunque niega fallos reales, bloqueos, enganches, desplazamientos rotulianos, chasquidos al movimiento, hinchazón posterior o síntomas neurológicos en la extremidad. Ha dejado de jugar al fútbol y presenta dificultad para bajar escaleras. No refiere otras enfermedades previas ni toma medicación actualmente. La herida quirúrgica se encuentra bien cerrada.
+
+HALLAZGOS Y CODIFICACIÓN CIF
+
+La valoración inicial breve no identificó banderas rojas en el cribado específico, con criterios de Ottawa negativos y capacidad preservada de elevación de la pierna extendida. El perfil clínico no orienta a proceso degenerativo. La exploración de cadera y columna lumbar no reproduce el dolor de rodilla. El signo comparable seleccionado consiste en bajar un escalón con la pierna derecha, maniobra que provoca molestia en la cara anterior de la rodilla (b28015). Se constata limitación en la capacidad de descender escaleras (d4551), ponerse en cuclillas (d4101) y practicar deportes (d9201), con restricción absoluta temporal de carrera (d4552) y saltos (d4553) según protocolo quirúrgico. El paciente refiere sensación de inestabilidad subjetiva al bajar escaleras, con evitación de giros por temor al fallo articular, aunque sin episodios objetivados de cesión (b7150). Esta valoración inicial abreviada establece las hipótesis de trabajo sin confirmación completa mediante tests específicos, quedando pendiente para la próxima sesión completar el cribado sistémico con preguntas específicas por sistemas y la determinación formal de irritabilidad mediante matriz. Los hallazgos apoyan el curso postoperatorio habitual tras reconstrucción del ligamento cruzado anterior, compatible con la condición de salud intervenida quirúrgicamente, sin complicaciones aparentes en esta fase de consolidación.
+
+OBJETIVOS Y PLAN
+
+El objetivo principal se centra en recuperar la funcionalidad de la rodilla dentro del marco del protocolo quirúrgico establecido, respetando estrictamente las restricciones temporales vigentes. El plan de tratamiento se supedita al protocolo del cirujano y se pauta ejercicio terapéutico progresivo consistente en sentadillas hasta 90 grados, tres series de diez repeticiones en días alternos, bicicleta estática durante veinte minutos diarios, y puente de glúteos, ejercicio enseñado durante esta sesión. La dosificación de carga se establece permitiendo molestia hasta 3/10 durante los ejercicios, siempre que no aparezca hinchazón al día siguiente. Se utilizará la escala KOOS-12 para el seguimiento de la evolución funcional. Si transcurridas cuatro semanas persiste la sensación de fallo referida, se comentará la situación con el cirujano para valoración conjunta. La próxima sesión completará los aspectos pendientes de la valoración inicial.
+
+—
+Informe generado con PhysiQ-Assessment el 11/10/2026 (redacción asistida por IA).
