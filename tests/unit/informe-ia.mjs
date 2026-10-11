@@ -180,19 +180,6 @@ test('fase 5: cabecera de hipótesis en dos filas (nombre; etiqueta debajo) y un
   assert.match(css, /\.hyp5-cab \{ display: flex; align-items: flex-start;/, 'el punto se alinea con la primera línea');
 });
 
-test('borrar sesión usa el diálogo común y, si se cancela, vuelve al panel de sesión', () => {
-  const app = leer('app.js');
-  const f = app.slice(app.indexOf('function promptClearSession'), app.indexOf('function _borrarSesion'));
-  assert.match(f, /closeSessionPanel\(\);[\s\S]*showConfirmBanner\('Borrar sesión',[\s\S]*'Borrar sesión', _borrarSesion,/);
-  assert.match(f, /onCancel: \(\) => \{ if \(panelAbierto\) toggleSessionPanel\(\); \}/);
-  assert.match(f, /_escHTML\(nombre\)/, 'el nombre del paciente se escapa');
-  assert.doesNotMatch(app, /st === 'delete'/, 'el panel ya no pinta su propia confirmación');
-  assert.match(app, /#sessionPanelClear'\)\.onclick = promptClearSession;/);
-  // El campo del nombre sigue en el DOM: se vacía, o saveSession() lo devolvería al estado
-  const borrar = app.slice(app.indexOf('function _borrarSesion'), app.indexOf('function _borrarSesion') + 800);
-  assert.match(borrar, /state\.patient = '';[\s\S]*getElementById\('patientName'\)[\s\S]*campo\.value = '';/);
-});
-
 test('cancelar la generación pide confirmación y el diálogo se cierra solo si la generación acaba', () => {
   const src = leer('informe-ia.js');
   const cancelar = src.slice(src.indexOf('function iaCancelar'), src.indexOf('function cancelarGeneracion'));

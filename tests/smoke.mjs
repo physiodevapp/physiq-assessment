@@ -1045,12 +1045,49 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   const ruta = `${tmpDir}/${r.nombreArchivo}`;
   await descarga.saveAs(ruta);
 
-  // Borrar sesión (el panel sigue abierto tras exportar): la app vuelve a la fase 1 vacía
+  // Borrar sesión (el panel sigue abierto tras exportar): cierra el panel y abre
+  // el diálogo común con el nombre; cancelar (Escape, velo o botón) vuelve a
+  // abrir el panel sin borrar nada; confirmar vuelve a la fase 1 vacía, también
+  // el campo del nombre (si no, saveSession() lo devolvería al estado)
   r.panelSigueAbierto = await page.isVisible('#sessionPanelClear');
-  await page.click('#sessionPanelClear');
+  const panelAbierto = () => page.evaluate(() => document.getElementById('sessionPanelOverlay').classList.contains('open'));
+  const pedirBorrar = async () => {
+    if (!(await panelAbierto())) await page.click('#sessionBtn');   // si cancelar no lo reabrió, ya consta como fallo
+    await page.click('#sessionPanelClear');
+    await page.waitForSelector('#confirmBanner');
+    return !(await panelAbierto()) && (await page.textContent('#confirmBanner .confirm-box-text')).includes('«Prueba Exportación»');
+  };
+  const cancelado = async () => {
+    await page.waitForTimeout(150);
+    return !(await page.isVisible('#confirmBanner')) && await panelAbierto()
+      && await page.evaluate(() => state.patient === 'Prueba Exportación' && state.region === 'lumbar');
+  };
+  r.borrarCancelar = {};
+  r.borrarCancelar.dialogo = await pedirBorrar();
+  await page.keyboard.press('Escape');
+  r.borrarCancelar.escape = await cancelado();
+  await pedirBorrar();
+  await page.mouse.click(5, 880);
+  r.borrarCancelar.velo = await cancelado();
+  await pedirBorrar();
+  await page.click('#confirmCancel');
+  r.borrarCancelar.boton = await cancelado();
+  await pedirBorrar();
   await page.click('#confirmAction');
   await page.waitForTimeout(200);
-  r.borrada = await page.evaluate(() => state.currentPhase === 1 && !state.region);
+  r.borrada = await page.evaluate(async () => {
+    (await import('./app.js')).saveSession();
+    return state.currentPhase === 1 && !state.region && state.patient === '' && document.getElementById('patientName').value === '';
+  });
+  // El nombre va escapado en el texto del diálogo
+  r.nombreEscapado = await page.evaluate(() => {
+    state.patient = '<b>X</b>';
+    promptClearSession();
+    const ok = document.querySelector('#confirmBanner .confirm-box-text').textContent.includes('«<b>X</b>»');
+    document.getElementById('confirmCancel').click();
+    state.patient = '';
+    return ok;
+  });
 
   // Importar: confirmación → recarga → restaurado
   await page.click('#sessionBtn');
@@ -1137,7 +1174,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
 
   await context.close();
   r.ok = r.exportarDesactivadoAlEmpezar && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
-    && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil && r.avisoFase2 && r.avisoFase4b;
+    && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil && r.avisoFase2 && r.avisoFase4b;
   return r;
 }
 
@@ -1713,7 +1750,7 @@ async function main() {
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar; aviso de versión bajo la barra fija (fases 2 y 4b)${expImp.avisoFase2 && expImp.avisoFase4b ? '' : ` [fase 2: ${expImp.avisoFase2}, 4b: ${expImp.avisoFase4b}]`}${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar; aviso de versión bajo la barra fija (fases 2 y 4b)${expImp.avisoFase2 && expImp.avisoFase4b ? '' : ` [fase 2: ${expImp.avisoFase2}, 4b: ${expImp.avisoFase4b}]`}${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
