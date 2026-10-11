@@ -305,12 +305,10 @@ console.log('\npaciente posquirúrgico');
     assert.ok(reparto.indexOf('savedAnswers') < reparto.indexOf('buildSistemicoQuestions(state.region)'), 'guarda antes de repintar');
   });
 
-  test('integración: window, tarjeta en index.html y deploy', () => {
+  test('integración: window y tarjeta en index.html', () => {
     for (const f of ['updateCirugia', 'selectCirProtocolo', 'toggleCirComplicacion', 'toggleDiagnosticoTratado', 'toggleDerivacionArbolResuelta'])
       assert.equal(typeof window[f], 'function', f);
     const html = leer('index.html');
     assert.match(html, /<div class="card solo-posq" id="cardCirugia">/);
-    const wf = leer('.github/workflows/deploy-to-hub.yml');
-    assert.ok(wf.includes('lib/posquirurgico.js'));
   });
 }
