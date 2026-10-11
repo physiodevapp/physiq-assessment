@@ -33,6 +33,13 @@ razonamiento: {
 ```
 No cambia `question`, `iaPregunta`, `options`, `next` ni lo que activa cada opción: la navegación y las hipótesis quedan igual.
 
+## Implementado en el piloto (lumbar, 2026-10)
+- `razonamientoPasoHTML(step, region)` (`phase4.js`), llamado desde `renderStep`: el `<details class="razon">` entre la pregunta y las opciones (antes del recuadro «📝 Refiere el paciente»), con las claves de las fuentes al pie y «Ampliar →» si hay `detalle`. Estilo de las fases 2 y 4b; en `styles.css`, la pregunta cede su margen inferior al `<details>`.
+- `abrirRazonamientoPaso(btn, stepId)` (`phase4.js`, expuesta en `window`): el panel compartido (`abrirPanelRazon()`) con Por qué, En detalle y Fuentes (`citas`, o las claves de `fuentes`), enlazadas con `enlaceCita()` y `registroReferencias()` de `phase4b.js`. «↺ Reiniciar árbol» lo cierra; cambiar de fase también, como siempre.
+- `ctxArbol(region, pregunta)` (`ampliar-ia.js`): contexto de «✨ IA» con `iaPregunta` si existe (la pregunta sin la instrucción para el fisioterapeuta).
+- `tests/referencias.mjs` cuenta `razonamiento.fuentes` de los pasos como «razonamiento fase 4».
+- Tests unitarios: forma del campo y fuentes en el registro; «¿Por qué?» solo en pasos que lo tienen y «Ampliar» solo con `detalle`; contexto IA con `iaPregunta`; un marcador en todos los pasos de las 7 regiones no llega al payload, a `📋 Notas`, a `📄 Informe`, a los datos ampliados ni a los dos prompts del informe con IA. Smoke (`checkArbolRazon`, lumbar `lu_step1`): el `<details>` va entre la pregunta y las opciones, se abre sin contestar el paso, «✨ IA» lleva el contexto del paso, «Ampliar» abre el panel (lateral sin velo, se contesta con él abierto; sheet con velo a 390 px que atrás cierra sin salir de la fase 4). El recorrido del árbol del smoke pulsa solo `.option-group .option-btn`.
+
 ## Reglas
 - **Fuentes**: las mismas que en las fases F y H, con el mismo orden de prioridad (más peso de evidencia y, a igual peso, la más actual). Para cada región, primero el capítulo de Lluch 2020 que ya está leído (lumbar: cap. 5.1, Fondevila Suárez). Después, las guías y revisiones que el paso ya cita o en las que se basa, leídas enteras (PDF del usuario cuando no sean de acceso abierto). Toda referencia nueva entra en `data/referencias.js` con su DOI verificado, y después se ejecuta `node tests/gen-referencias.mjs`.
 - **No inventar**: si la fuente no explica por qué el paso va en ese orden, no se dice. Se puede explicar qué separa el paso sin justificar el orden.

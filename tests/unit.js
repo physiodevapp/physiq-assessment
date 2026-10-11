@@ -15,7 +15,7 @@ const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML, pesoTest, PESO_TEST, 
 const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../app.js');
 const { state } = await import('../state.js');
-const { rebuildHypotheses, pruneTreeFrom, resolveOptionTargets } = await import('../phase4.js');
+const { rebuildHypotheses, pruneTreeFrom, resolveOptionTargets, razonamientoPasoHTML } = await import('../phase4.js');
 
 // ── Test runner ───────────────────────────────────────────────────────────────
 let passed = 0, failed = 0;
@@ -2003,6 +2003,81 @@ test('construirAmpliado: iaPregunta / iaTexto del árbol sustituyen al texto de 
     const p = IA.construirAmpliado().arbol[0].pregunta;
     assert.ok(p.startsWith('¿Algún criterio de Ottawa') && !/Pittsburgh|%|Seaberg/.test(p));
   });
+});
+
+// ── «¿Por qué esta pregunta?» de los pasos del árbol (fase 4) ────────────────
+// docs/razonamiento-arbol.md. Campo opcional por paso: porque + fuentes del
+// registro (+ detalle, citas); nunca en el payload, los resúmenes ni el prompt.
+console.log('\nrazonamiento del árbol CIF (fase 4)');
+const PASOS_CON_RAZON = Object.entries(CIF_TREES).flatMap(([region, t]) => t.steps.filter(s => s.razonamiento).map(step => ({ region, step, r: step.razonamiento })));
+
+test('razonamiento del árbol: solo porque / detalle / fuentes / citas; porque y fuentes no vacíos, todas en el registro', () => {
+  for (const { region, step, r } of PASOS_CON_RAZON) {
+    const k = `${region}/${step.id}`;
+    for (const c of Object.keys(r)) assert.ok(['porque', 'detalle', 'fuentes', 'citas'].includes(c), `${k}: campo «${c}» fuera del esquema`);
+    assert.ok(noVacio(r.porque), `${k}: porque vacío`);
+    if ('detalle' in r) assert.ok(noVacio(r.detalle), `${k}: detalle vacío`);
+    assert.ok(Array.isArray(r.fuentes) && r.fuentes.length > 0, `${k}: sin fuentes`);
+    for (const f of r.fuentes) assert.ok(REFERENCIAS[f], `${k}: «${f}» no está en el registro`);
+    if (!r.citas) continue;
+    for (const c of r.citas.map(textoCita)) assert.ok(r.fuentes.some(f => c.startsWith(f)), `${k}: cita sin fuente: ${c}`);
+    for (const f of r.fuentes) assert.ok(r.citas.map(textoCita).some(c => c.startsWith(f)), `${k}: fuente sin cita: ${f}`);
+    for (const c of r.citas.filter(c => typeof c !== 'string')) {
+      assert.deepEqual(Object.keys(c).sort(), ['texto', 'url'], `${k}: cita con campos raros`);
+      assert.equal(c.url, REFERENCIAS[r.fuentes.find(f => c.texto.startsWith(f))]?.url, `${k}: url distinta de la del registro`);
+    }
+  }
+});
+
+test('razonamiento del árbol: «¿Por qué esta pregunta?» solo en pasos que lo tienen, «Ampliar» solo con detalle, contexto IA del paso', () => {
+  const cuenta = (h, t) => h.split(t).length - 1;
+  for (const [region, t] of Object.entries(CIF_TREES)) {
+    for (const step of t.steps) {
+      const html = razonamientoPasoHTML(step, region);
+      const r = step.razonamiento;
+      assert.equal(html.includes('class="razon"'), !!r, `${region}/${step.id}: ¿Por qué?`);
+      assert.equal(html.includes(`abrirRazonamientoPaso(this,'${step.id}')`), !!r?.detalle, `${region}/${step.id}: Ampliar`);
+      assert.equal(cuenta(html, 'data-ia-ctx='), r ? 1 : 0, `${region}/${step.id}: data-ia-ctx`);
+      assert.equal(cuenta(html, 'class="ia-parrafo"'), r ? 1 : 0, `${region}/${step.id}: «✨ IA»`);
+    }
+  }
+  // Con un razonamiento de prueba: el contexto usa iaPregunta (sin la instrucción para el fisio)
+  const paso = { ...CIF_TREES.lumbar.steps.find(s => s.id === 'lu_step4'), razonamiento: { porque: 'x', detalle: 'y', fuentes: ['Lluch 2020'] } };
+  const html = razonamientoPasoHTML(paso, 'lumbar');
+  assert.ok(html.includes(ampliarIA.attrIA(ampliarIA.ctxArbol('lumbar', '¿Qué patrón encaja mejor?'))), 'contexto con iaPregunta');
+  assert.ok(!html.includes('Revisar siempre cadera'), 'sin la instrucción de la pregunta en el contexto');
+});
+
+test('razonamiento del árbol: nunca entra en el payload, 📋 Notas, 📄 Informe ni el prompt del informe con IA', () => {
+  // Marcador en todos los pasos de todas las regiones (con o sin razonamiento
+  // real), recorrido completo por la primera opción, y nada debe filtrarse.
+  const MARCA = 'MARCA-RAZONAMIENTO-ARBOL';
+  const guardados = new Map();
+  for (const t of Object.values(CIF_TREES)) for (const s of t.steps) {
+    guardados.set(s, s.razonamiento);
+    s.razonamiento = { porque: `${MARCA} porque`, detalle: `${MARCA} detalle`, fuentes: ['Lluch 2020'], citas: [`Lluch 2020 ${MARCA}`] };
+  }
+  try {
+    for (const [region, t] of Object.entries(CIF_TREES)) {
+      const treeAnswers = Object.fromEntries(t.steps.map(s => [s.id, s.options[0].value]));
+      const activeHypotheses = [...new Set(t.steps.flatMap(s => s.options[0].hypothesis))];
+      withState({ region, treeAnswers, activeHypotheses }, () => {
+        const payload = buildPhysiQPayload();
+        const ampliado = IA.construirAmpliado();
+        const textos = [JSON.stringify(payload), buildContextSummaryText(), buildInformeFisioterapiaText(), JSON.stringify(ampliado),
+          IN.buildNarrativePrompt(payload, { conAudio: false, ampliado }), IN.buildFichaBrevePrompt(payload, { conAudio: false, ampliado })];
+        assert.ok(textos[3].includes(t.steps[0].iaPregunta || t.steps[0].question.slice(0, 20)), `${region}: control, la pregunta sí va en el prompt`);
+        for (const x of textos) assert.ok(!x.includes(MARCA), `${region}: razonamiento del árbol filtrado`);
+      });
+    }
+  } finally {
+    for (const [s, r] of guardados) { if (r === undefined) delete s.razonamiento; else s.razonamiento = r; }
+  }
+});
+
+test('ampliar con IA: ctxArbol nombra el paso del árbol y la región', () => {
+  assert.equal(ampliarIA.ctxArbol('tobillo_pie', '¿Dolor <b>medial</b>?'), 'el paso del árbol de decisión clínica (modelo CIF) «¿Dolor medial?» (región tobillo y pie)');
+  assert.equal(ampliarIA.ctxArbol(undefined, '¿X?'), 'el paso del árbol de decisión clínica (modelo CIF) «¿X?»');
 });
 
 test('prompt: textoOpcionIA envía la conclusión; NO, derivaciones, iaEntera e iaTexto enteros; el NINGUNO de zona no va', () => {

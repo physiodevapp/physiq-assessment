@@ -235,11 +235,11 @@ Diseño, esquema, salvaguarda y procedimiento: `docs/razonamiento-tests.md` (lé
 
 Diseño, esquema, reglas y procedimiento: `docs/razonamiento-arbol.md` (léelo entero antes de empezar una región). Una región por sesión. Cada paso del árbol lleva un «ⓘ ¿Por qué esta pregunta?» que explica qué separa el paso, por qué va en ese punto y qué implica cada respuesta. Solo con fuente leída, y con «Ampliar →» cuando haya detalle; el «✨ IA» (`ampliar-ia.js`) viene incluido. La navegación, las opciones y las hipótesis no cambian, y nunca entra en el payload, los resúmenes ni el prompt del informe con IA. Abierta en 2026-10, a propuesta del usuario, tras «Ampliar con IA» (PR 282 y 284).
 
-- [ ] Interfaz (en el piloto): `razonamiento` en los pasos, `<details>` en `renderStep`, «Ampliar» con `abrirPanelRazon()`, `ctxArbol` en `ampliar-ia.js`, tests unitarios y de navegador, `CLAUDE.md`
+- [x] Interfaz (en el piloto): `razonamiento` en los pasos, `<details>` en `renderStep`, «Ampliar» con `abrirPanelRazon()`, `ctxArbol` en `ampliar-ia.js`, tests unitarios y de navegador, `CLAUDE.md`
 
 | Orden | Región | Pasos | Fuentes leídas | Razonamientos | Revisión usuario | Notas |
 |---|---|---|---|---|---|---|
-| 1 | Lumbar + interfaz | 6 | [ ] | [ ] | [ ] | Piloto. Lluch 2020, cap. 5.1 (Fondevila Suárez), ya leído en las fases D, F y H |
+| 1 | Lumbar + interfaz | 6 | [ ] | [ ] | [ ] | Piloto. Lluch 2020, cap. 5.1 (Fondevila Suárez, pp. 295–326), PDF escaneado del usuario releído entero en la sesión; Petersen 2017 (revisión sistemática, acceso abierto, nueva en el registro). 5 de 6 pasos redactados; `lu_step3` (déficit de movilidad frente a coordinación) pendiente de Delitto 2012: ni el capítulo ni Petersen explican esa separación |
 | 2 | Cervical | 8 | [ ] | [ ] | [ ] | |
 | 3 | Hombro | 6 | [ ] | [ ] | [ ] | |
 | 4 | Cadera | 9 | [ ] | [ ] | [ ] | |

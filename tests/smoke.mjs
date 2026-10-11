@@ -65,7 +65,7 @@ async function walkCifTreeToCompletion(page) {
   for (let i = 0; i < 20; i++) {
     const lastStep = page.locator('#cifTree .tree-question').last();
     if (await lastStep.count() === 0) break;
-    const opt = lastStep.locator('.option-btn, button').first();
+    const opt = lastStep.locator('.option-group .option-btn').first();
     if (await opt.count() === 0) break;
     await opt.click().catch(() => {});
     await page.waitForTimeout(100);
@@ -569,6 +569,81 @@ async function checkTestsAmpliar(page) {
   r.movil = c.abierto && c.velo && !c.scrollX && !d.abierto && d.fase === '4b';
   r.ok = r.peso === 'Sirve para descartar; un positivo es solo un hallazgo.' && r.criterioCorto
     && r.kicker === 'Test · por qué y evidencia' && r.detalle && r.enlace.startsWith('https://doi.org/10.1136/bjsports-2012-091066') && r.marcaConPanel && r.escritorio && r.movil;
+  if (!r.ok) Object.assign(r, { a, b, c, d });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  return r;
+}
+
+// «¿Por qué esta pregunta?» de los pasos del árbol (fase 4,
+// docs/razonamiento-arbol.md), en lumbar: se abre sin marcar ninguna opción,
+// «✨ IA» lleva el contexto del paso, «Ampliar →» abre el panel compartido con
+// las fuentes enlazadas y, sin velo, se puede contestar el paso con él
+// abierto. 390 px: sheet con velo que atrás cierra sin salir de la fase 4.
+const ARBOL_PASO = 'lu_step1';
+async function irAFase4Lumbar(page) {
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await irAFase2(page, 'lumbar');
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(200);
+}
+async function checkArbolRazon(page) {
+  const r = {};
+  const paso = `#${ARBOL_PASO}`;
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await irAFase4Lumbar(page);
+  await page.evaluate(() => {
+    window.__iaHrefs = [];
+    window.addEventListener('click', e => {
+      const a = e.target.closest?.('a[target="_blank"]');
+      if (a) { window.__iaHrefs.push(a.href); e.preventDefault(); }
+    });
+  });
+  // El <details> va entre la pregunta y las opciones
+  r.orden = await page.evaluate(s => {
+    const d = document.querySelector(`${s} > details.razon`);
+    return !!d && d.previousElementSibling?.classList.contains('tree-question-text')
+      && !!(d.compareDocumentPosition(document.querySelector(`${s} .option-group`)) & Node.DOCUMENT_POSITION_FOLLOWING);
+  }, paso);
+  await page.click(`${paso} details.razon > summary`);
+  r.inline = await page.isVisible(`${paso} .razon-cuerpo`);
+  r.sinRespuesta = await page.evaluate(s => Object.keys(state.treeAnswers).length === 0
+    && !document.querySelector(`${s} .option-btn.selected`) && document.querySelectorAll('#cifTree .tree-question').length === 1, paso);
+  await page.click(`${paso} .ia-parrafo-ir`);
+  r.ia = await page.evaluate(() => {
+    const q = decodeURIComponent(((window.__iaHrefs.at(-1) || '').split('q=')[1] || '').replace(/\+/g, ' '));
+    return q.includes('paso del árbol de decisión clínica') && q.includes('(región lumbar)') && !q.includes('(razonamiento)');
+  });
+  await page.click(`${paso} .razon-ampliar`);
+  await page.waitForTimeout(400);
+  const a = await razonEstado(page);
+  r.kicker = await page.textContent('#razonPanel .razon-kicker');
+  r.panel = await page.evaluate(() => {
+    const c = document.getElementById('razonContenido');
+    return { ia: (c.dataset.iaCtx || '').includes('paso del árbol'), enlace: !!c.querySelector('.razon-enlace[href^="https://"]'),
+      secciones: [...c.querySelectorAll('.razon-seccion > .razon-etq')].map(e => e.textContent) };
+  });
+  r.pregunta = a.pregunta === await page.evaluate(s => document.querySelector(`${s} .tree-question-text`).textContent, paso);
+  await page.click(`#opts_${ARBOL_PASO} .option-btn >> nth=0`);
+  await page.waitForTimeout(150);
+  const b = await razonEstado(page);
+  r.contestaConPanel = await page.evaluate(s => state.treeAnswers[s] !== undefined, ARBOL_PASO) && b.abierto;
+  r.escritorio = a.abierto && a.visible && !a.velo && r.kicker === '¿Por qué esta pregunta?' && r.panel.ia && r.panel.enlace
+    && r.panel.secciones.join('|') === 'Por qué|En detalle|Fuentes';
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await irAFase4Lumbar(page);
+  await page.click(`${paso} details.razon > summary`);
+  await page.click(`${paso} .razon-ampliar`);
+  await page.waitForTimeout(400);
+  const c = await razonEstado(page);
+  await page.goBack();
+  await page.waitForTimeout(400);
+  const d = await razonEstado(page);
+  r.movil = c.abierto && c.velo && !c.scrollX && !d.abierto && d.fase === 4;
+  r.ok = r.orden && r.inline && r.sinRespuesta && r.ia && r.pregunta && r.contestaConPanel && r.escritorio && r.movil;
   if (!r.ok) Object.assign(r, { a, b, c, d });
   await page.setViewportSize({ width: 1280, height: 900 });
   return r;
@@ -1620,6 +1695,10 @@ async function main() {
   const testsAmpliar = await checkTestsAmpliar(page);
   console.log(`  ${testsAmpliar.ok ? '✓' : '✗'} «cuánto pesa» bajo los badges, criterio corto, «Ampliar» abre el panel del test (lateral sin velo; sheet con velo a 390 px que atrás cierra sin salir de la 4b), ir a la fase 5 lo cierra`);
 
+  console.log('\n«¿Por qué esta pregunta?» del árbol (fase 4, lumbar):');
+  const arbolRazon = await checkArbolRazon(page);
+  console.log(`  ${arbolRazon.ok ? '✓' : '✗'} entre la pregunta y las opciones, se abre sin contestar el paso, «✨ IA» con el contexto del paso, «Ampliar» abre el panel (Por qué, En detalle, Fuentes enlazadas; lateral sin velo, se contesta con él abierto; sheet con velo a 390 px que atrás cierra sin salir de la fase 4)${arbolRazon.ok ? '' : ' ' + JSON.stringify(arbolRazon)}`);
+
   console.log('\nSexo (fase 1) y lado afectado (fase 2):');
   const lado = await checkLado(page);
   console.log(`  ${lado.ok ? '✓' : '✗'} sexo se guarda y se borra con un segundo toque; lado aparece al elegir región, «Central» solo en columna; todo cabe a 320 px`);
@@ -1661,7 +1740,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && testsAmpliar.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');

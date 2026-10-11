@@ -118,7 +118,7 @@ function lugar(hyp, ruta, testPuntua) {
   if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto', efecto: 'texto' };
   return { donde: `\`${ruta.join('.')}\``, fase: '—', efecto: 'texto' };
 }
-const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento 4b', 'texto'];
+const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento fase 4', 'razonamiento 4b', 'texto'];
 
 function recorrer(obj, ruta, fn) {
   if (typeof obj === 'string') return fn(obj, ruta);
@@ -206,6 +206,19 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERE
           anotar(lit, clave, cita, { region: reg, hyp: '—', donde: `Pregunta \`${q.id}\` · ${sis.nombre}`,
             fase: '2 · razonamiento del cribado', efecto: 'razonamiento fase 2' });
         }
+      }
+    }
+  }
+
+  // «¿Por qué esta pregunta?» de los pasos del árbol (fase 4,
+  // docs/razonamiento-arbol.md): como en la fase 2, claves del registro.
+  for (const [region, tree] of Object.entries(CIF_TREES)) {
+    for (const step of tree.steps || []) {
+      const r = step.razonamiento;
+      for (const clave of r?.fuentes || []) {
+        const cita = (r.citas || []).map(c => (typeof c === 'string' ? c : c.texto)).find(c => c.startsWith(clave)) || clave;
+        anotar(lit, clave, cita, { region, hyp: '—', donde: `Paso \`${step.id}\` del árbol («¿Por qué esta pregunta?»)`,
+          fase: '4 · razonamiento del árbol', efecto: 'razonamiento fase 4' });
       }
     }
   }
@@ -306,6 +319,7 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     '«Afecta a»: «puntuación 4b» = respalda un test o cluster que puntúa; «test 4b sin puntuar» = el test se ve',
     'pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que dispara una alerta de derivación;',
     '«razonamiento fase 2» = respalda el «¿Por qué?» de una pregunta de cribado (no cambia ninguna alerta);',
+    '«razonamiento fase 4» = respalda el «¿Por qué esta pregunta?» de un paso del árbol CIF (no cambia la navegación ni las hipótesis);',
     '«razonamiento 4b» = respalda el «¿Por qué?» de un test de la fase 4b (no cambia la puntuación);',
     '«texto» = solo se menciona.', '',
     '| Referencia | Afecta a | Usos | Última revisión |', '|---|---|---|---|',
