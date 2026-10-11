@@ -1338,8 +1338,10 @@
  "ce3|Upper Limb Neurodynamic Test (ULNT) 1": {
   "frases": [
    "Sesgo mediano.",
-   "Positivo si reproduce los síntomas del paciente y estos cambian con la diferenciación estructural (inclinación cervical contralateral o ipsilateral, o movimiento distal):",
-   "es el criterio de los 3 estudios agrupados.",
+   "Secuencia:",
+   "fijación de la cintura escapular, abducción del hombro, extensión de muñeca y dedos, supinación, rotación externa del hombro y extensión del codo.",
+   "Positivo si reproduce los síntomas del paciente y estos cambian con la diferenciación estructural (inclinación cervical contralateral o ipsilateral, o movimiento distal).",
+   "Es el criterio de los 3 estudios agrupados.",
    "LR agrupadas de 3 estudios (clínica más RM como referencia):",
    "LR+ 2,45 (IC 95 % 1,79–3,36), LR− 0,42 (0,30–0,59);",
    "certeza muy baja (GRADE).",
@@ -1349,7 +1351,12 @@
    "Otra revisión que suma estudios con electromiograma o conducción nerviosa como referencia y con cualquier reproducción de síntomas como positivo, sin diferenciación estructural, da LR+ 1,51 y LR− 0,53 (5 estudios);",
    "en esa misma revisión, los ULNT con diferenciación estructural dan LR+ 2,71 y LR− 0,50.",
    "Combinación de 4 ULNT (1 positivo):",
-   "S 97 %, E 51 %, LR+ 1,99, LR− 0,06 (0,02–0,25)."
+   "S 97 %, E 51 %, LR+ 1,99, LR− 0,06 (0,02–0,25).",
+   "Ningún ULNT carga una raíz aislada.",
+   "El rango de movimiento y la resistencia no sirven como criterio de positivo:",
+   "varían mucho entre personas y el error de medida es grande (diferencia mínima detectable de 14° a 28°).",
+   "Con el criterio de reproducir los síntomas y cambiar con la diferenciación, la fiabilidad entre examinadores del ULNT1 fue moderada (κ 0,54).",
+   "Un electromiograma o un estudio de conducción, usados como referencia, pueden dar por sano a un paciente con el nervio mecanosensible y la conducción conservada, lo que puede sesgar la precisión publicada (Nee 2012)."
   ]
  },
  "ce3|Shoulder Abduction Relief Test": {
@@ -1397,15 +1404,22 @@
  },
  "ce3|Combinación de 4 ULNT (ULNT1 y ULNT2a mediano, ULNT2b radial, ULNT3 cubital)": {
   "frases": [
+   "ULNT1 (mediano):",
+   "fijación de la cintura escapular, abducción del hombro, extensión de muñeca y dedos, supinación, rotación externa y extensión del codo.",
+   "ULNT2a (mediano):",
+   "descenso de la cintura escapular, extensión del codo, rotación externa y supinación, extensión de muñeca y dedos, abducción.",
+   "ULNT2b (radial):",
+   "descenso de la cintura escapular, extensión del codo, rotación interna y pronación, flexión de muñeca y dedos, abducción.",
+   "ULNT3 (cubital):",
+   "extensión de muñeca y dedos, pronación, flexión del codo, rotación externa, descenso de la cintura escapular, abducción.",
    "Positivo si al menos uno de los cuatro reproduce los síntomas.",
-   "Sirve sobre todo para descartar:",
-   "los cuatro negativos dan LR− 0,06 (IC 95 % 0,02–0,25);",
+   "En los dos estudios, cada ULNT se da por positivo si reproduce los síntomas y estos cambian con la diferenciación estructural.",
+   "Los cuatro negativos dan LR− 0,06 (IC 95 % 0,02–0,25);",
    "uno positivo da LR+ 1,99 (1,57–2,52), que no puntúa.",
    "Contiene el ULNT1:",
    "si esta combinación aporta su LR, la del ULNT1 suelto deja de contar.",
    "2 estudios, certeza muy baja (GRADE);",
-   "por separado, LR− 0,04 (51 pacientes) y 0,08 (85 pacientes).",
-   "En los dos estudios, cada ULNT se da por positivo si reproduce los síntomas y estos cambian con la diferenciación estructural."
+   "por separado, LR− 0,04 (51 pacientes) y 0,08 (85 pacientes)."
   ],
   "retiradas": [
    "Sirve sobre todo para descartar:"
@@ -1413,20 +1427,37 @@
  },
  "ce4|Test de Flexión-Rotación Cervical (CFRT)": {
   "frases": [
+   "Supino y relajado:",
+   "flexión cervical pasiva completa, con el occipucio contra el abdomen del examinador, y rotación pasiva de la cabeza a cada lado hasta un tope firme o el inicio del dolor.",
+   "Positivo:",
+   "hacia un lado, el rango se estima más de 10° por debajo de los 44° esperados (criterio de los estudios que dan la LR).",
    "Punto de corte:",
    "≤30° de rotación con cuello en flexión máxima (valor normal >42°).",
+   "El rango baja con la edad (explica el 27,9 % de la varianza), con dolor durante la cefalea y a ojo (mejor con goniómetro o CROM);",
+   "también sale positivo en migraña, más en la crónica.",
    "ICC 0.95-0.97 para fiabilidad test-retest.",
    "Evidencia de certeza moderada.",
    "El test con mayor fiabilidad y precisión diagnóstica según revisión sistemática, y su limitación se correlaciona con el índice de cefalea.",
    "Precaución:",
-   "el patrón de referencia de casi todos los estudios es la exploración manual (fiabilidad pobre, κ 0,28), así que las LR probablemente están sobrestimadas;",
-   "el rango baja con la edad (explica el 27,9 % de la varianza), con dolor durante la cefalea y a ojo (mejor con goniómetro o CROM);",
-   "también sale positivo en migraña, más en la crónica.",
+   "el patrón de referencia de casi todos los estudios es la exploración manual (fiabilidad pobre, κ 0,28), así que las LR probablemente están sobrestimadas.",
    "Que reproduzca su cefalea podría mejorar la precisión (solo un estudio lo usó).",
    "Solo puntúa positivo:",
    "el metaanálisis da S 83 %, E 83 % y LR− 0,2, pero el FRT explora C1–C2 (el metaanálisis lo valida para cervicogénica con origen en C1–C2) y una cervicogénica de C2–C3 o C3–C4 confirmada por bloqueo puede darlo normal, así que un FRT negativo no la descarta.",
    "El metaanálisis considera positivo <45° a cualquier lado;",
-   "en sus estudios, la rotación media era de 24,5° en el lado sintomático de la cervicogénica frente a 39,1° en otras cefaleas y lados asintomáticos."
+   "en sus estudios, la rotación media era de 24,5° en el lado sintomático de la cervicogénica frente a 39,1° en otras cefaleas y lados asintomáticos.",
+   "Técnica y positivo de los estudios originales:",
+   "en supino, flexión cervical completa con el occipucio contra el abdomen del examinador y rotación pasiva a cada lado hasta un tope firme o el inicio del dolor;",
+   "el examinador da el test por positivo si estima el rango más de 10° por debajo de los 44° esperados.",
+   "Con goniómetro, el corte de la curva ROC fue de 32° frente a personas sanas y migraña con aura, de 33° frente a personas sanas y cefalea de otro nivel, y de 30° frente a migraña sin aura y cefaleas mixtas;",
+   "este último es el que da Lluch.",
+   "La definición «<45°» del metaanálisis no coincide con la de los cuatro estudios que agrupa ni con su propia media de 39° sin cervicogénica.",
+   "En la serie original, los 24 pacientes con el origen en C1–C2 dieron el test positivo y los 4 con el origen en C2–C3, negativo;",
+   "la cefalea de otro nivel limitó el rango solo 4°, y los autores no descartan que otros segmentos contribuyan algo al giro.",
+   "Normal, unos 44° a cada lado;",
+   "hacia el lado de la cefalea, entre 20° y 30° según la serie.",
+   "La medición en RM se hizo en 19 mujeres jóvenes sanas, y los autores avisan de que no se puede extrapolar a personas mayores.",
+   "Tras una hora de práctica, los examinadores sin experiencia midieron 5–9° más, porque no llevaban el cuello a la flexión completa;",
+   "para ellos, una asimetría de más de 10° entre lados orienta mejor que el valor absoluto."
   ],
   "retiradas": [
    "(S y E van solo aquí para que no se recalcule la LR−)"
