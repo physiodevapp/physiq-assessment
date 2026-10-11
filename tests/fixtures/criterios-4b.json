@@ -1798,11 +1798,25 @@
  },
  "lu3|Criterios RAPIDH (5 criterios)": {
   "frases": [
-   "AUC 0.91.",
-   "Criterios:",
-   "distribución monoradicular, dolor unilateral en pierna, SLR+ <60°, debilidad motora unilateral, reflejo aquíleo asimétrico.",
-   "Incluye el SLR:",
-   "si se puntúa RAPIDH, el SLR no suma aparte."
+   "Puntos:",
+   "dolor de pierna con distribución de una sola raíz, 6;",
+   "SLR positivo entre 0 y 60° (o estiramiento femoral positivo), 4;",
+   "aquíleo disminuido en un solo lado, 4;",
+   "debilidad motora en un solo lado, 3;",
+   "dolor en una sola pierna referido por el paciente, 3.",
+   "Positivo:",
+   "11 puntos o más de 20.",
+   "Los autores los desarrollaron como criterios de clasificación para seleccionar pacientes en investigación, buscando una especificidad alta, y advierten que no deben usarse como herramienta diagnóstica, porque pueden dejar fuera las presentaciones atípicas;",
+   "en la práctica clínica, donde la sensibilidad importa tanto, harían falta otros criterios (Genevay 2017).",
+   "Por eso aquí no puntúan.",
+   "Con 11 puntos o más, S 70,6 % (IC 95 %:",
+   "59,6–79,7) y E 90,4 % (IC 83,2–94,9);",
+   "área bajo la curva 0,90 (0,91 con el modelo completo, sin redondear los pesos).",
+   "Referencia:",
+   "el diagnóstico de especialistas de columna con una confianza de 7 sobre 10 o más, casi siempre con RM o TC, en 209 pacientes de consultas de columna de cinco países (89 con dolor radicular por hernia, 63 con claudicación neurógena y 57 con dolor lumbar inespecífico con dolor referido a la pierna);",
+   "sin validación externa.",
+   "El dolor de una sola raíz es el ítem más subjetivo y depende de la experiencia del examinador.",
+   "Como incluye el aquíleo, favorece la raíz S1 frente a las demás (Genevay 2017)."
   ]
  },
  "lu4|Síntomas bilaterales": {
