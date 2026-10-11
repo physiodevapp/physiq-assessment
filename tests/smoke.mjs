@@ -681,11 +681,14 @@ async function checkAmpliarIA(browser) {
   const barra = await page.evaluate(() => {
     const b = document.getElementById('iaBarra');
     const rc = b.getBoundingClientRect();
-    return { visible: !b.hidden && rc.width > 0, dentro: rc.left >= 0 && rc.right <= innerWidth, texto: b.querySelector('.ia-barra-ir').textContent };
+    const sel = getSelection().getRangeAt(0).getBoundingClientRect();
+    return { visible: !b.hidden && rc.width > 0, dentro: rc.left >= 0 && rc.right <= innerWidth, texto: b.querySelector('.ia-barra-ir').textContent,
+      hueco: Math.round(rc.top - sel.bottom) };
   });
   await page.click('#iaBarra .ia-barra-ir');
   const b = await ultimoPrompt();
   r.barra = barra.visible && barra.dentro && barra.texto.includes('Perplexity') && b.q.includes(`«${elegido}»`);
+  r.huecoRaton = barra.hueco === 8 || barra.hueco;
 
   // ▾ → menú con las dos IA y su ventaja; elegir Google se recuerda
   await seleccionar(`${sq} .razon-cuerpo p`);
@@ -729,6 +732,32 @@ async function checkAmpliarIA(browser) {
   await page.waitForTimeout(200);
   r.escape = await page.evaluate(() => document.getElementById('iaMenu').hidden && document.getElementById('razonPanel').classList.contains('open'));
   await context.close();
+
+  // Táctil (390 px): la barra queda 32 px bajo la selección, libre de los
+  // marcadores nativos de selección
+  const ctxTactil = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const movil = await ctxTactil.newPage();
+  await movil.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await irAFase2(movil, 'lumbar');
+  const acc = `#acc_${RAZON_SIS}`;
+  await movil.click(`${acc} .sistema-accordion-header`);
+  await movil.waitForTimeout(200);
+  await movil.click(`${acc} #sq2_${RAZON_Q1} details.razon > summary`);
+  await movil.evaluate(s => {
+    const p = document.querySelector(s);
+    p.scrollIntoView({ block: 'center' });
+    const nodo = [...p.childNodes].find(n => n.nodeType === 3 && n.textContent.trim().length > 30);
+    const rg = document.createRange(); rg.setStart(nodo, 1); rg.setEnd(nodo, 30);
+    getSelection().removeAllRanges(); getSelection().addRange(rg);
+  }, `${acc} #sq2_${RAZON_Q1} .razon-cuerpo p`);
+  await movil.waitForTimeout(400);
+  const t = await movil.evaluate(() => {
+    const b = document.getElementById('iaBarra').getBoundingClientRect();
+    const sel = getSelection().getRangeAt(0).getBoundingClientRect();
+    return { visible: !document.getElementById('iaBarra').hidden, hueco: Math.round(b.top - sel.bottom), dentro: b.left >= 0 && b.right <= innerWidth };
+  });
+  r.huecoTactil = t.visible && t.dentro && t.hueco === 32 || t;
+  await ctxTactil.close();
 
   // Hub: sin barra y sin enlaces visibles
   const ctxHub = await browser.newContext();
@@ -1585,7 +1614,7 @@ async function main() {
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
   const ampliarIA = await checkAmpliarIA(browser);
-  console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; el menú ▾ explica cada IA y recuerda Google; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
+  console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
 
   console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
   const testsAmpliar = await checkTestsAmpliar(page);
