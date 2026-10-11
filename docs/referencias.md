@@ -1277,7 +1277,7 @@ Citada como:
 1. En el dolor de hombro cervicogénico el dolor se reproduce con las pruebas de la columna cervical y la movilidad pasiva glenohumeral no está limitada, lo que lo distingue del hombro congelado (Lluch 2020, tabla 2). El Spurling se ha estudiado para la radiculopatía cervical (S 0,50, E 0,86–0,93; revisión de Rubinstein recogida por Blanpied 2017), no para el dolor referido al hombro.
 2. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A19)
 3. Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía)
-4. Movilización segmentaria posteroanterior. Positivo si hipomóvil y reproduce síntomas. La fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical es pobre o regular (revisión de 7 artículos). Cuenta como hallazgo: las cifras que tenía (κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9, LR− 0,43–0,49) son del PAIVM C0–C3 para la cefalea cervicogénica (Blanpied 2017, p. A19), no para el déficit de movilidad, que no tiene patrón de referencia; y la evidencia publicada del PAIVM en el dolor cervical es para dolor facetario confirmado con bloqueo de rama medial (S 90 %, E 73 %).
+4. La fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical es pobre o regular (revisión de 7 artículos). Las cifras que tenía (κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9, LR− 0,43–0,49) son del PAIVM C0–C3 para la cefalea cervicogénica (Blanpied 2017, p. A19), no para el déficit de movilidad, que no tiene patrón de referencia; y la evidencia publicada del PAIVM en el dolor cervical es para dolor facetario confirmado con bloqueo de rama medial (S 90 %, E 73 %).
 5. Williams 2025 (J Man Manip Ther, revisión de revisiones sistemáticas): evidencia del PAIVM frente a bloqueo facetario · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A19)
 6. Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A19) · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
 7. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 377–378 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
@@ -1298,7 +1298,7 @@ Citada como:
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» | 4b · cita bajo el test | 2 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Cervical | ce1 · Disfunción Articular Cervical | Test «PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3» (en `criterio`) | 4b · mención en el texto | 4 |
+| Cervical | ce1 · Disfunción Articular Cervical | Test «PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
 | Cervical | ce1 · Disfunción Articular Cervical | Test «PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3» | 4b · cita bajo el test | 5 |
 | Cervical | ce1 · Disfunción Articular Cervical | Test «ROM Cervical Activo con CROM» | 4b · cita bajo el test | 6 |
 | Cervical | ce1 · Disfunción Articular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 3 |
@@ -2033,13 +2033,13 @@ DOI: 10.1016/j.msksp.2022.102640
 Citada como:
 
 1. Demont 2022 (Musculoskelet Sci Pract, metaanálisis, 4 estudios, n = 182; frente a cefalea facetaria cervical baja, migraña, cefaleas concomitantes o asintomáticos; certeza moderada. S IC 95 %: 70–92 %; E IC 95 %: 71–91 %; LR+ IC 2,6–9,5; LR− IC 0,1–0,4; 4 estudios de cohorte prospectivos de Hall y Ogince, 2007–2010, el grupo que propuso el test; modelo bivariante y HSROC; riesgo de sesgo por la selección de pacientes). FRT normal en cervicogénica de C2–C3/C3–C4: Getsoian 2020 (BMJ Open, bloqueos diagnósticos controlados), citado en Demont 2022. Precauciones: Paquin 2022 (Arch Physiother 12:26, artículo de opinión)
-2. Movilidad pasiva intervertebral de C0 a C3; el segmento sintomático más frecuente es C1–C2. Una revisión de calidad aceptable (Rubio-Ochoa, citada por la guía) da para la cefalea cervicogénica κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9 y LR− 0,43–0,49. Hallazgo esperado: la cefalea se reproduce al provocar los segmentos cervicales altos implicados. No puntúa (decisión del usuario): el FRT ya aporta la LR de la hipótesis con un metaanálisis más reciente (Demont 2022), el patrón de referencia de estos estudios es la propia exploración manual, de fiabilidad pobre, y la guía califica de pobre a regular la fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical.
+2. Una revisión de calidad aceptable (Rubio-Ochoa, citada por la guía) da para la cefalea cervicogénica κ 0,53–0,72, S 59–65 %, E 78–87 %, LR+ 2,9–4,9 y LR− 0,43–0,49. El FRT ya aporta la LR de la hipótesis con un metaanálisis más reciente (Demont 2022), el patrón de referencia de estos estudios es la propia exploración manual, de fiabilidad pobre, y la guía califica de pobre a regular la fiabilidad entre examinadores de la movilidad pasiva intervertebral cervical.
 3. Jull 2007 (Cephalalgia 27:793–802, parte 1; 18 cervicogénicas frente a 22 migrañas, 33 tensionales y 57 controles, n = 130; tabla 3). Riesgo de sesgo alto según Demont 2022 (PROBAST). Validación frente a bloqueos: Getsoian 2020 (BMJ Open, tabla 2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cervical | ce4 · Cefalea Cervicogénica | Test «Test de Flexión-Rotación Cervical (CFRT)» | 4b · cita bajo el test | 1 |
-| Cervical | ce4 · Cefalea Cervicogénica | Test «PAIVM C0-C3 (segmento C1-C2 más sintomático)» (en `criterio`) | 4b · mención en el texto | 2 |
+| Cervical | ce4 · Cefalea Cervicogénica | Test «PAIVM C0-C3 (segmento C1-C2 más sintomático)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Cervical | ce4 · Cefalea Cervicogénica | Test «Cluster: ROM cervical + PAIVM + CCFT» | 4b · cita bajo el test | 3 |
 
 ### Denault y Launico 2026
