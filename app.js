@@ -16,7 +16,7 @@ import { VERSION_SHA, textoVersion, esVersionNueva } from './lib/version.js';
 import { nombreRegion, regionConLado } from './lib/region.js';
 import { TEXTO_VALORACION_BREVE, textoNotas, textoInformePaciente } from './lib/resumenes.js';
 import { ramaPauta } from './lib/pauta.js';
-import { initAmpliarIA, iaParrafoHTML, ctxCribado, attrIA } from './ampliar-ia.js';
+import { initAmpliarIA, iaParrafoHTML, ctxCribado, attrIA, DESTINOS_IA, NOTA_CUENTAS, destinoIA, guardarDestinoIA, promptPregunta, urlIA } from './ampliar-ia.js';
 
 // ─── SCROLL LOCK (dialogs / bottom sheets) ───────────────────
 // Reference-counted: several overlays (confirm-banner, session panel,
@@ -80,6 +80,7 @@ window.addEventListener('popstate', e => {
   if (_popIgnorar) { _popIgnorar = false; return; }
   if (_razonHistorial) { cerrarRazonamiento({ desdeHistorial: true }); return; }
   if (_compartirHistorial) { cerrarMenuCompartir({ desdeHistorial: true }); return; }
+  if (_preguntaHistorial) { cerrarPreguntaIA({ desdeHistorial: true }); return; }
   if (_pendingBackNav) {
     // history.go() de limpieza de stack aterrizó; reemplazar y actualizar profundidad
     const { phase: p, idx: i } = _pendingBackNav;
@@ -2718,6 +2719,7 @@ function toggleSessionPanel() {
 function _closeAllOverlays() {
   cerrarRazonamiento({ sinHistorial: true });
   cerrarMenuCompartir({ sinHistorial: true });
+  cerrarPreguntaIA({ sinHistorial: true });
   closePhaseSheet();
   closeSessionPanel();
   const banner = document.getElementById('confirmBanner');
@@ -2986,6 +2988,107 @@ function compartirInformeIA() {
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && document.getElementById('compartirOverlay')?.classList.contains('open')) cerrarMenuCompartir();
+});
+
+// ─── PREGUNTAR A LA IA (cabecera, solo standalone) ──────────────
+// Pregunta libre del clínico, en cualquier fase: abre Perplexity, Google (modo
+// IA) o Claude en otra pestaña con la pregunta. Lo único que se añade del caso
+// es la región («Contexto: valoración de hombro»), nunca datos del paciente;
+// el aviso del diálogo pide no escribirlos. Mismo patrón que «📤 Compartir»:
+// hoja inferior con atrás en móvil, diálogo centrado en ancho. El destino
+// elegido es el mismo que el de «Ampliar con IA» (localStorage).
+let _preguntaHistorial = false;
+let _preguntaDestino = null;
+const _ctxPregunta = () => (state.region ? nombreRegion(state.region).toLowerCase() : '');
+
+function _pintarPreguntaIA() {
+  const d = _preguntaDestino;
+  document.getElementById('preguntaDestinos').innerHTML = Object.entries(DESTINOS_IA).map(([k, x]) =>
+    `<button type="button" class="option-btn${k === d ? ' selected' : ''}" role="radio" aria-checked="${k === d}" data-destino="${k}">${x.nombre.replace(/ \(.*\)$/, '')}</button>`).join('');
+  document.getElementById('preguntaVentaja').textContent = DESTINOS_IA[d].ventaja;
+  const ir = document.getElementById('preguntaIr');
+  ir.textContent = `Preguntar en ${DESTINOS_IA[d].nombre.replace(/ \(.*\)$/, '')} ↗`;
+  const ctx = _ctxPregunta();
+  document.getElementById('preguntaNota').textContent =
+    `Se envía tu pregunta${ctx ? ` y la región («valoración de ${ctx}»)` : ''}, y se pide que use fuentes científicas y las enlace. ${NOTA_CUENTAS}`;
+  _actualizarPreguntaIr();
+}
+
+function _actualizarPreguntaIr() {
+  const ir = document.getElementById('preguntaIr');
+  const q = document.getElementById('preguntaTexto').value.trim();
+  ir.setAttribute('aria-disabled', q.length < 3 ? 'true' : 'false');
+  ir.href = q.length < 3 ? '#' : urlIA(_preguntaDestino, promptPregunta({ contexto: _ctxPregunta(), pregunta: q }));
+}
+
+function abrirPreguntaIA() {
+  const overlay = document.getElementById('preguntaOverlay');
+  if (!overlay || overlay.classList.contains('open') || _enHub()) return;
+  _preguntaDestino = destinoIA();
+  _pintarPreguntaIA();
+  overlay.classList.add('open');
+  document.getElementById('preguntaIABtn')?.setAttribute('aria-expanded', 'true');
+  lockBodyScroll();
+  if (_esMovil()) {
+    history.pushState({ phase: state.currentPhase, pregunta: true }, '');
+    _preguntaHistorial = true;
+  }
+  _ajustarPreguntaTeclado();
+  document.getElementById('preguntaTexto').focus({ preventScroll: true });
+}
+
+function cerrarPreguntaIA({ desdeHistorial = false, sinHistorial = false } = {}) {
+  const overlay = document.getElementById('preguntaOverlay');
+  if (!overlay?.classList.contains('open')) return;
+  overlay.classList.remove('open');
+  overlay.style.paddingBottom = '';
+  const panel = document.getElementById('preguntaPanel');
+  panel.style.transform = ''; panel.style.transition = '';
+  unlockBodyScroll();
+  if (_preguntaHistorial) {
+    _preguntaHistorial = false;
+    if (!desdeHistorial && !sinHistorial) { _popIgnorar = true; history.back(); }
+  }
+  const btn = document.getElementById('preguntaIABtn');
+  btn?.setAttribute('aria-expanded', 'false');
+  if (!sinHistorial) btn?.focus({ preventScroll: true });
+}
+
+// Con el teclado abierto en móvil, la hoja se apoya encima de él en vez de
+// quedar tapada (iOS no encoge el viewport de diseño, solo el visual).
+function _ajustarPreguntaTeclado() {
+  const overlay = document.getElementById('preguntaOverlay');
+  const vv = window.visualViewport;
+  if (!overlay?.classList.contains('open') || !vv) return;
+  const teclado = Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop));
+  overlay.style.paddingBottom = _esMovil() && teclado > 0 ? `${teclado}px` : '';
+}
+window.visualViewport?.addEventListener('resize', _ajustarPreguntaTeclado);
+
+document.getElementById('preguntaTexto')?.addEventListener('input', _actualizarPreguntaIr);
+document.getElementById('preguntaTexto')?.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' || e.shiftKey || e.isComposing) return;
+  e.preventDefault();
+  document.getElementById('preguntaIr').click();
+});
+document.getElementById('preguntaDestinos')?.addEventListener('click', e => {
+  const b = e.target instanceof Element ? e.target.closest('[data-destino]') : null;
+  if (!b) return;
+  _preguntaDestino = b.dataset.destino;
+  guardarDestinoIA(_preguntaDestino);
+  _pintarPreguntaIA();
+});
+// <a target="_blank"> con el href ya calculado: el navegador no lo bloquea
+// como haría con un window.open. Vacía, no navega y devuelve el foco al texto.
+document.getElementById('preguntaIr')?.addEventListener('click', e => {
+  const texto = document.getElementById('preguntaTexto');
+  _actualizarPreguntaIr();
+  if (texto.value.trim().length < 3) { e.preventDefault(); texto.focus(); return; }
+  guardarDestinoIA(_preguntaDestino);
+  setTimeout(() => { texto.value = ''; cerrarPreguntaIA(); }, 0);
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('preguntaOverlay')?.classList.contains('open')) cerrarPreguntaIA();
 });
 
 function showToast(message, tone) {
@@ -3420,7 +3523,7 @@ export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, resumenFo
 // scope, never a module's private scope.
 Object.assign(window, {
   abrirFormularioPrevio, abrirRazonamiento, cerrarRazonamiento, irACronologia, appendQuickPhrase, buildResults, closePhaseSheet, closeSessionPanel, compartirNotas,
-  abrirMenuCompartir, cerrarMenuCompartir, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
+  abrirMenuCompartir, cerrarMenuCompartir, abrirPreguntaIA, cerrarPreguntaIA, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
   navStepClick, promptClearSession, resetApp, saveSession, scrollToActiveSisHeader, selectIrritab,
   selectIrritabSync, selectNRS, selectOption, selectPsico, selectRegion, selectSQ, selectSistQ,
   toggleAccordionRow, toggleDictation, toggleImpact, togglePhaseSheet, toggleSessionPanel,
@@ -3492,5 +3595,7 @@ Object.assign(window, {
   if (razon) initSwipe(razon, () => cerrarRazonamiento(), _esMovil);
   const compartir = document.getElementById('compartirPanel');
   if (compartir) initSwipe(compartir, () => cerrarMenuCompartir(), _esMovil);
+  const pregunta = document.getElementById('preguntaPanel');
+  if (pregunta) initSwipe(pregunta, () => cerrarPreguntaIA(), _esMovil);
 }());
 

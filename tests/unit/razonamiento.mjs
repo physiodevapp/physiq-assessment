@@ -264,11 +264,37 @@ test('ampliar con IA: fragmento recortado, URLs de Perplexity y Google (modo IA)
   assert.ok(urlIA('google', promptIA({ contexto: 'x'.repeat(200), texto: 'á'.repeat(5000) })).length < 8000);
 });
 
-test('ampliar con IA: destino por defecto Perplexity; cada destino explica su ventaja', () => {
-  const { destinoIA, DESTINOS_IA } = ampliarIA;
+test('ampliar con IA: destino por defecto Perplexity; cada destino explica su ventaja; Claude avisa de la cuenta', () => {
+  const { destinoIA, DESTINOS_IA, DESTINO_IA_DEFECTO, NOTA_CUENTAS, urlIA } = ampliarIA;
   assert.equal(destinoIA(), 'perplexity');
-  assert.deepEqual(Object.keys(DESTINOS_IA), ['perplexity', 'google']);
+  assert.deepEqual(Object.keys(DESTINOS_IA), ['perplexity', 'google', 'claude']);
   for (const d of Object.values(DESTINOS_IA)) assert.ok(d.nombre && d.ventaja.length > 40);
+  // Claude pide sesión: nunca por defecto, y su ventaja y la nota lo dicen
+  assert.ok(DESTINOS_IA.claude.cuenta && !DESTINOS_IA[DESTINO_IA_DEFECTO].cuenta);
+  assert.ok(/cuenta/.test(DESTINOS_IA.claude.ventaja), DESTINOS_IA.claude.ventaja);
+  assert.equal(NOTA_CUENTAS, 'Perplexity y Google son gratis y sin cuenta; Claude pide cuenta (gratuita). Todas permiten seguir preguntando.');
+  assert.equal(urlIA('claude', 'a & b?'), `https://claude.ai/new?q=${encodeURIComponent('a & b?')}`);
+});
+
+test('preguntar a la IA: pregunta libre con los mismos añadidos, la región como único contexto', () => {
+  const { promptPregunta, INSTRUCCION_FUENTES, MAX_TEXTO_IA } = ampliarIA;
+  assert.equal(promptPregunta({ contexto: 'hombro', pregunta: '  ¿Hawkins o\n Neer? ' }),
+    `Soy fisioterapeuta. Contexto: valoración de hombro. Mi pregunta: «¿Hawkins o Neer?». ${INSTRUCCION_FUENTES} Cita las fuentes con enlace.`);
+  // Sin región (fase 1): sin contexto; sin el enfoque fisiológico del razonamiento
+  const sin = promptPregunta({ contexto: '', pregunta: 'Dosis de excéntricos' });
+  assert.ok(sin.startsWith('Soy fisioterapeuta. Mi pregunta: «Dosis de excéntricos».'), sin);
+  assert.ok(!/fisiopatología|fragmento/.test(sin), sin);
+  assert.ok(promptPregunta({ contexto: '', pregunta: 'p '.repeat(1000) }).length < MAX_TEXTO_IA + 300);
+});
+
+test('preguntar a la IA: el contexto es solo la región, nada del estado del paciente', () => {
+  const src = leer('app.js');
+  const ctx = src.match(/const _ctxPregunta = \(\) => ([^;]+);/);
+  assert.ok(ctx, 'existe _ctxPregunta');
+  assert.equal(ctx[1].trim(), "(state.region ? nombreRegion(state.region).toLowerCase() : '')");
+  // promptPregunta solo se llama con ese contexto y el texto del diálogo
+  const llamadas = src.match(/promptPregunta\(\{[^}]*\}\)/g) || [];
+  assert.ok(llamadas.length > 0 && llamadas.every(l => l === 'promptPregunta({ contexto: _ctxPregunta(), pregunta: q })'), llamadas.join(' | '));
 });
 
 test('ampliar con IA: el módulo no importa nada (no puede leer datos del paciente)', () => {

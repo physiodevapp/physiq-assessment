@@ -2718,6 +2718,19 @@ body.grab-activa:not(.in-hub) .grab-wrap { display: flex; }
 .compartir-op-aviso.alto { color: var(--red); }
 .compartir-panel:focus { outline: none; }
 @media (hover: hover) { .compartir-op:hover { border-color: var(--accent); } }
+/* «✨ Preguntar a la IA» (cabecera, abrirPreguntaIA en app.js): misma caja y
+   velo que el panel de sesión. Solo standalone. */
+.in-hub .pregunta-ia-btn { display: none; }
+.pregunta-panel:focus { outline: none; }
+.pregunta-texto { width: 100%; resize: vertical; min-height: 84px; line-height: 1.45; touch-action: pan-y; }
+.pregunta-aviso { margin-top: 8px; font-size: 0.76rem; line-height: 1.4; color: var(--alert-warning-text); }
+.pregunta-destinos { margin-top: 14px; flex-wrap: nowrap; }
+.pregunta-destinos .option-btn { flex: 1 1 0; min-width: 0; min-height: 40px; padding: 8px 4px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pregunta-ventaja { margin-top: 8px; font-size: 0.78rem; line-height: 1.4; color: var(--text2); min-height: 3.3em; }
+.pregunta-ir { display: flex; align-items: center; justify-content: center; margin-top: 14px; min-height: 44px; text-decoration: none; text-align: center; }
+.pregunta-ir[aria-disabled="true"] { opacity: 0.45; box-shadow: none; transform: none; cursor: default; }
+.pregunta-nota { margin-top: 10px; font-size: 0.7rem; line-height: 1.4; color: var(--text3); }
+@media print { .pregunta-ia-btn { display: none !important; } }
 .ia-audio-pista { font-size: 0.8rem; color: var(--text3); margin-top: 4px; line-height: 1.45; }
 .ia-licencia-motivo { margin-top: 4px; font-size: 0.8rem; opacity: 0.9; }
 /* Con una grabación en marcha la cabecera lleva un elemento más (la píldora
