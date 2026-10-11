@@ -14,7 +14,8 @@
 //     mantenimiento» encima del test y a `retiradas` de
 //     tests/fixtures/criterios-4b.json. Los de x (frases que solo repiten el
 //     veredicto que ya genera pesoTest()) van a `retiradas`, sin comentario.
-//     Solo toca tests sin razonamiento.
+//     Solo toca tests sin razonamiento. El criterio se busca dentro del bloque
+//     de su hipótesis, así que dos hipótesis pueden repetir el mismo test.
 //
 // Después: node tests/unit.js («criterios 4b: nada se pierde»),
 // node tests/gen-referencias.mjs y node tests/smoke.mjs.
@@ -75,10 +76,16 @@ for (const [clave, p] of Object.entries(plan)) {
   const nuevo = unir(ch, p.k);
   const detalle = det.length ? unir(ch, det) : '';
   const viejo = `criterio: '${esc(t.criterio)}'`;
-  if (src.split(viejo).length !== 2) throw new Error(`${clave}: criterio no encontrado una sola vez en ${archivo}`);
-  src = src.replace(viejo, `criterio: '${esc(nuevo)}'` + (detalle ? `, razonamiento: { detalle: '${esc(detalle)}' }` : ''));
+  // Se busca dentro del bloque de su hipótesis: dos hipótesis pueden repetir
+  // el mismo test con el mismo criterio (cadera: flexión-rotación interna).
+  const iniH = src.search(new RegExp(`\\n  ${hId}: \\{`));
+  const sigH = src.slice(iniH + 1).search(/\n  \w+: \{/);
+  const finH = sigH < 0 ? src.length : iniH + 1 + sigH;
+  const pos = src.indexOf(viejo, iniH);
+  if (iniH < 0 || pos < 0 || pos > finH || (src.indexOf(viejo, pos + 1) >= 0 && src.indexOf(viejo, pos + 1) < finH))
+    throw new Error(`${clave}: criterio no encontrado una sola vez en ${hId} (${archivo})`);
+  src = src.slice(0, pos) + `criterio: '${esc(nuevo)}'` + (detalle ? `, razonamiento: { detalle: '${esc(detalle)}' }` : '') + src.slice(pos + viejo.length);
   if (r.length) {
-    const pos = src.indexOf(`criterio: '${esc(nuevo)}'`);
     const ini = src.lastIndexOf('\n', pos) + 1;
     const sangria = src.slice(ini).match(/^\s*/)[0];
     src = src.slice(0, ini) + `${sangria}// Nota de mantenimiento, retirada del criterio visible: «${r.map(i => ch[i]).join(' ')}»\n` + src.slice(ini);

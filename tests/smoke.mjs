@@ -50,7 +50,7 @@ const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js'
   'data/comun.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
-// and VALID_REGIONS in tests/unit.js — add a new region to all three.
+// and VALID_REGIONS in tests/unit/comun.mjs — add a new region to all three.
 const REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo', 'tobillo_pie'];
 
 // Click the *last* rendered step each time — earlier steps stay in the DOM
@@ -783,6 +783,18 @@ async function checkAmpliarIA(browser) {
     && await page.evaluate(() => localStorage.getItem('physiq-assessment-ia-destino') === 'google' && document.getElementById('iaMenu').hidden);
   await page.click(`${sq} .ia-parrafo-ir`);
   r.recordado = (await ultimoPrompt()).host === 'https://www.google.com/search';
+
+  // Menú cerrado sin elegir tras perder la selección (en el móvil, el toque en
+  // la ▾ la quita): la barra no se queda flotando. Con el menú abierto sigue.
+  await seleccionar(`${sq} .razon-cuerpo p`);
+  await page.waitForTimeout(400);
+  await page.click('#iaBarra .ia-elegir');
+  await page.evaluate(() => getSelection().removeAllRanges());
+  await page.waitForTimeout(1000);
+  const conMenu = await page.evaluate(() => !document.getElementById('iaBarra').hidden && !document.getElementById('iaMenu').hidden);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(1000);
+  r.barraNoQueda = conMenu && await page.evaluate(() => document.getElementById('iaBarra').hidden && document.getElementById('iaMenu').hidden);
 
   // Selección fuera del razonamiento → sin barra
   await page.evaluate(() => getSelection().removeAllRanges());
@@ -1689,7 +1701,7 @@ async function main() {
   console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
 
   const ampliarIA = await checkAmpliarIA(browser);
-  console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
+  console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
 
   console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
   const testsAmpliar = await checkTestsAmpliar(page);
