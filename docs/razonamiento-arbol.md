@@ -1,0 +1,48 @@
+# «¿Por qué?» de los pasos del árbol CIF (fase 4)
+
+Proyecto de contenido y de interfaz: que cada paso del árbol CIF de la fase 4 explique **por qué se hace esa pregunta en ese punto**, es decir, qué separa y hacia dónde apunta cada respuesta. Hoy el árbol dice *qué* preguntar, pero no *por qué*. Es el mismo sistema de las fases 2 (`docs/razonamiento-cribado.md`) y 4b (`docs/razonamiento-tests.md`), adaptado al árbol. Es material de apoyo al clínico: nunca entra en el payload, en los resúmenes (`📋 Notas`, `📄 Informe`) ni en el prompt del informe con IA.
+
+**Una región por sesión.** El estado por región está en `MIGRATION_PLAN.md`, Fase I. El piloto es lumbar, que tiene 6 pasos y es la región de referencia. El diseño de abajo es una propuesta para validar con el usuario en el piloto; lo que él decida se apunta aquí.
+
+## Diseño propuesto (2026-10, a validar en el piloto)
+
+En cada paso del árbol (`renderStep`, `phase4.js`), de arriba abajo:
+
+1. La pregunta del paso, como siempre.
+2. **«ⓘ ¿Por qué esta pregunta?»** (`<details class="razon">` cerrado, el mismo estilo que en las fases 2 y 4b), debajo de la pregunta y antes de las opciones. Contenido (`razonamiento.porque`, 1–3 frases):
+   - qué hipótesis separa el paso;
+   - por qué va en este punto del orden (p. ej., lo radicular antes que lo mecánico);
+   - qué implica cada respuesta.
+
+   Al pie, las fuentes (claves del registro). **Solo con fuente leída; sin fuente, no hay campo** y no se pinta nada.
+3. **«Ampliar →»** (solo con `detalle`): abre el panel compartido (`abrirPanelRazon()`, `app.js`) con Por qué, En detalle y Fuentes, cada fuente con su «Abrir ↗» a la `url` o al DOI del registro.
+4. Las opciones, sin cambios.
+
+Una explicación **por paso, no por opción**, para no llenar de texto los botones. Si una opción necesita aclaración, va dentro del «por qué» del paso.
+
+**«✨ IA»** (`ampliar-ia.js`) viene incluido: basta con poner `data-ia-ctx` en el `.razon-cuerpo` del paso y pasar `ia` a `abrirPanelRazon()`. Hace falta un `ctxArbol(region, pregunta)` nuevo en `ampliar-ia.js`, con su test, al lado de `ctxCribado` y `ctxTest`.
+
+### Esquema (`data/<región>.js`, en cada paso de `tree`)
+```js
+razonamiento: {
+  porque:   string,               // con fuente leída; si no, no existe
+  detalle?: string,               // párrafos separados por \n\n (panel «Ampliar»)
+  fuentes:  [clave],              // claves de data/referencias.js
+  citas?:   [string | { texto, url }],  // cita completa con capítulo/páginas, cada una empezando por su clave
+}
+```
+No cambia `question`, `iaPregunta`, `options`, `next` ni lo que activa cada opción: la navegación y las hipótesis quedan igual.
+
+## Reglas
+- **Fuentes**: las mismas que en las fases F y H, con el mismo orden de prioridad (más peso de evidencia y, a igual peso, la más actual). Para cada región, primero el capítulo de Lluch 2020 que ya está leído (lumbar: cap. 5.1, Fondevila Suárez). Después, las guías y revisiones que el paso ya cita o en las que se basa, leídas enteras (PDF del usuario cuando no sean de acceso abierto). Toda referencia nueva entra en `data/referencias.js` con su DOI verificado, y después se ejecuta `node tests/gen-referencias.mjs`.
+- **No inventar**: si la fuente no explica por qué el paso va en ese orden, no se dice. Se puede explicar qué separa el paso sin justificar el orden.
+- **Tono**: el de las fases 2 y 4b. Frases cortas, para el clínico, sin jerga de puntuación (LR, pesos), que en el árbol no aplica.
+- **Nunca en el payload, los resúmenes ni el prompt del informe con IA**: el prompt sigue leyendo solo `question`/`iaPregunta` y las opciones. Lo comprueba un test unitario.
+
+## Procedimiento por región
+1. Leer el árbol de la región en `data/<región>.js` y, para cada paso, qué hipótesis activan sus opciones.
+2. Leer las fuentes (Lluch 2020 de la región y lo que cite cada paso) y redactar `porque`, más `detalle` si hay material.
+3. `node tests/unit.js` (incluye la instantánea de navegación del árbol, que no debe cambiar), `node tests/gen-referencias.mjs` y `node tests/smoke.mjs`.
+4. Tabla de revisión para el usuario (paso · pregunta · por qué · fuentes). No se fusiona hasta que la valide.
+
+**Solo en el piloto (lumbar)**, además: el campo en `renderStep`, el `<details>` y el «Ampliar», `ctxArbol` en `ampliar-ia.js`, los tests (unitario: razonamiento solo en pasos que lo tienen, nunca en payload/resúmenes/prompt, fuentes en el registro; smoke: el «¿Por qué?» se abre sin marcar ninguna opción, «Ampliar» abre el panel, «✨ IA» lleva el contexto del árbol) y la actualización de `CLAUDE.md`.
