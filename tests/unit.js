@@ -3375,6 +3375,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-4-ficha-breve.txt', 'elena-dictado-4-transcripcion.txt', ['nrs-momento']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-5-ficha-breve.txt', 'elena-dictado-5-transcripcion.txt', ['nrs-omitido']],
       ['valoracion-andres-molina-codo.json', 'andres-dictado-1-informe.txt', 'andres-dictado-1-transcripcion.txt', ['nrs-momento', 'reconsiderar-copiado', 'seguimiento-fuera', 'relleno']],
+      ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-1-ficha-breve.txt', 'pablo-dictado-1-transcripcion.txt', ['nrs-momento', 'fisiopatologia']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -3420,8 +3421,10 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!/Disfunción segmentaria|Solo pronóstico/.test(pron), 'sin la hipótesis a la que pertenecía');
     const solo = IN.bloquesAmpliados({ tests: [a.tests[1]] });
     assert.ok(!solo.some(x => x.startsWith('Tests de confirmación')), 'sin tests diagnósticos, no hay bloque vacío');
-    assert.ok(!/valoración|consulta/.test(IN.NOTA_NRS), 'la nota del NRS no nombra de dónde sale la cifra');
-    assert.match(IN.NOTA_NRS, /no le pongas el de otra cifra/, 'ronda 25: el 7 de Elena‑4 tomó el momento «última semana» del 8');
+    // Ronda 27: sin momento, el modelo se lo inventaba (Elena‑4, Andrés, Pablo: «en reposo»); ahora lleva el suyo
+    assert.match(IN.NOTA_NRS, /EVN de N\/10 en la valoración/);
+    assert.match(IN.NOTA_NRS, /sin atribuirle otro momento/);
+    assert.ok(!/consulta/.test(IN.NOTA_NRS), 'sin «consulta» (Elena‑2 escribió «durante la consulta»)');
     assert.ok(ids('El dolor era de 7/10, aunque durante la consulta refirió un 4/10.').includes('fuentes'));
   });
   test('revisión: NRS con un momento que no tiene, plazo de «Cuándo reconsiderar» copiado, «no se observa ganancia» (ronda 26)', () => {
@@ -3435,6 +3438,13 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!ids('Reevaluación en 6 semanas.', { ampliado: amp }).includes('reconsiderar-copiado'));
     const seg = x => RI.revisarInforme(`## CONCLUSIONES Y PLAN DE TRATAMIENTO\n\n${x}\n\n## SEGUIMIENTO FUNCIONAL\n\nSe usará el QuickDASH.`).map(p => p.id);
     assert.ok(seg('Si en 6 semanas no se observa ganancia de extensión, se comentará con el traumatólogo.').includes('seguimiento-fuera'));
+  });
+  test('revisión: la hinchazón con localización no es la hinchazón general; la nota del NRS no respalda momentos (ronda 27)', () => {
+    const t = 'Niega bloqueos e hinchazón posterior. Se pautan ejercicios siempre que haya hinchazón leve al día siguiente.';
+    assert.ok(!ids(t).includes('discrepancia-separada'), 'Pablo: «hinchazón posterior» frente a la general');
+    assert.ok(ids('Niega hinchazón. Refiere que la rodilla está hinchada al final del día.').includes('discrepancia-separada'));
+    assert.ok(ids('La EVN en reposo es de 2/10.', { datos: { nr: 2 } }).includes('nrs-momento'), 'la nota nombra «reposo», pero no lo respalda');
+    assert.ok(!ids('EVN de 2/10 en la valoración.', { datos: { nr: 2 } }).includes('nrs-momento'));
   });
   test('revisión: constantes clasificadas, motivo de la imagen añadido, «en caso de ausencia de mejoría» (decimosexta revisión)', () => {
     assert.ok(ids('Presenta signos vitales dentro de parámetros habituales, con una frecuencia cardíaca de 58 lpm.').includes('constantes'));
