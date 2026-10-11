@@ -59,12 +59,12 @@ git commit -m "short imperative title" -m "description when needed"
 
 ## File Architecture
 
-Source lives in the project root, plus `lib/` (session IDB helper), `data/` (clinical content, one file per region) and `formularios/` (one form schema per file).
+Source lives in the project root, plus `lib/` (pure helpers and small modules: session IDB, summaries, AI report, post-surgical, version…; see the table), `data/` (clinical content, one file per region) and `formularios/` (one form schema per file).
 
 | File | Role |
 |------|------|
-| `index.html` | DOM structure only (~530 lines) |
-| `styles.css` | All CSS — variables, layout, components, responsive breakpoints (~1852 lines) |
+| `index.html` | DOM structure only |
+| `styles.css` | All CSS — variables, layout, components, responsive breakpoints (a single file on purpose, see below) |
 | `state.js` | The global `state` object — its own module so every other file can import a single shared instance |
 | `app.js` | Application logic, navigation, event handlers, UI rendering (phases 1–3, 5) — the module root |
 | `phase4.js` | Phase 4 algorithm: CIF decision tree (`initCIFTree`, `renderStep`, `selectTreeOption`, `pruneTreeFrom`, `rebuildHypotheses`, `checkTreeComplete`, `showTreeComplete`) |
@@ -106,11 +106,11 @@ Every file that defines functions referenced from an inline `onclick`/`oninput` 
 
 `tests/unit.js` is only the entry point: it runs the topic files `tests/unit/<tema>.mjs` in order (one per area — `puntuacion`, `payload`, `datos`, `formulario`, `cribado`, `razonamiento`, `informe-ia`, `lado-y-exportar`, `posquirurgico`, `fase5-y-version`, `revision-informe`, `verificacion`) and prints the summary; a new topic is a new file plus one line in that list. `tests/unit/comun.mjs` holds what they share: the real modules, loaded via dynamic `import()` after setting up DOM/`window`/`navigator` shims on `globalThis` (`tests/dom-shim.mjs`, see it for the exact shim set), the mini-runner `test()`, `BASE_STATE`/`withState()`, `VALID_REGIONS` and `leer(...ruta)` (reads a repo file from the root) — `globalThis.window = globalThis`, so the `window.x = x` exposure lines above also land as real globals the test file can read back. `package.json` sets `"type": "module"` so Node treats `.js` files as ES modules (still no bundler, no dependencies).
 
-`styles.css` is intentionally kept as a single file (~1852 lines) even though it spans multiple concerns (base tokens, layout, per-phase components, responsive breakpoints). Splitting it by concern or by phase would scatter rules without a clear seam — CSS variables like `--accent` and `--surface` are used everywhere, so any split would introduce cross-file dependencies immediately. A single file also makes it trivial to grep any class and know exactly where to edit it.
+`styles.css` is intentionally kept as a single file even though it spans multiple concerns (base tokens, layout, per-phase components, responsive breakpoints). Splitting it by concern or by phase would scatter rules without a clear seam — CSS variables like `--accent` and `--surface` are used everywhere, so any split would introduce cross-file dependencies immediately. A single file also makes it trivial to grep any class and know exactly where to edit it.
 
 ## State Management
 
-A single global `state` object in `app.js` holds the entire session. There is no reactive framework — UI updates are manual DOM manipulation triggered after state mutations.
+A single global `state` object (`state.js`, imported by every module) holds the entire session. There is no reactive framework — UI updates are manual DOM manipulation triggered after state mutations.
 
 `collectPhase3()` must be called before leaving Phase 3 to persist its inputs to state.
 
@@ -392,7 +392,7 @@ Full record (every prompt and review rule with the report review that motivated 
 
 ## Audio recording
 
-Audio recording was removed from this satellite entirely. The `RecorderEngine` lives in the PhysiQ hub (`physiq/index.html`) and persists across all satellites. The hub widget (bottom-center, z-index 300) controls start/pause/stop/discard and saves audio to IDB key `'pending'` in the `physiq` database. The hub broadcasts recorder state via `BroadcastChannel('physiq-recorder')`; satellites can listen if they need to react to recording state.
+**In the hub** this satellite records nothing: the `RecorderEngine` lives in the PhysiQ hub (`physiq/index.html`) and persists across all satellites. The hub widget (bottom-center, z-index 300) controls start/pause/stop/discard and saves audio to IDB key `'pending'` in the `physiq` database. The hub broadcasts recorder state via `BroadcastChannel('physiq-recorder')`; satellites can listen if they need to react to recording state. **Outside the hub** (standalone) the app has its own session recording from the header, for the AI report: `grabadora.js`, see «Audio» under «Informe narrativo con IA (standalone)».
 
 ## Hub integration
 
