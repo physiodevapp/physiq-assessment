@@ -691,15 +691,16 @@ async function checkRazonamientoMovil(page) {
   await page.click(`${acc} #sq2_${RAZON_Q1} .razon-ampliar`);
   await page.waitForTimeout(400);
   const c = await razonEstado(page);
-  await page.click('#razonCerrar');
+  const sinCruz = await page.isHidden('#razonCerrar');   // sin ✕ en móvil, como los demás sheets
+  await page.mouse.click(10, 10);            // toque en el velo (por encima del sheet)
   await page.waitForTimeout(500);
   const d = await razonEstado(page);
   await page.goBack();                       // sin entrada colgando: este atrás ya va a la fase 1
   await page.waitForTimeout(400);
   const fase = await page.evaluate(() => state.currentPhase);
   const ok = a.abierto && a.visible && a.velo && a.alto > a.vh * 0.7 && !a.scrollX
-    && !b.abierto && b.fase === 2 && c.abierto && !d.abierto && d.fase === 2 && fase === 1;
-  return { ok, a, b, c, d, faseTrasAtras: fase };
+    && !b.abierto && b.fase === 2 && c.abierto && sinCruz && !d.abierto && d.fase === 2 && fase === 1;
+  return { ok, a, b, c, d, sinCruz, faseTrasAtras: fase };
 }
 
 // «Ampliar con IA» (ampliar-ia.js): el enlace «✨ IA ↗» de un párrafo abre
@@ -2061,7 +2062,7 @@ async function main() {
   const razonEsc = await checkRazonamientoEscritorio(page);
   console.log(`  ${razonEsc.ok ? '✓' : '✗'} escritorio: panel lateral sin velo, SÍ con el panel abierto, cambia de pregunta, Escape cierra`);
   const razonMov = await checkRazonamientoMovil(page);
-  console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, × sin entrada colgando`);
+  console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, sin ✕ (cierra el velo), sin entrada colgando`);
 
   const ampliarIA = await checkAmpliarIA(browser);
   console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
