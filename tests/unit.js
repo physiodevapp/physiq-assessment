@@ -1656,6 +1656,13 @@ test('errores de los servicios en español, con el original y la salida sin audi
   assert.equal(propio.original, '');
 });
 
+test('línea de progreso: sección en minúscula salvo las siglas', () => {
+  assert.equal(IN.seccionLegible('HALLAZGOS Y CODIFICACIÓN CIF'), 'Hallazgos y codificación CIF');
+  assert.equal(IN.seccionLegible('## CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES'), 'Condición de salud y factores contextuales');
+  assert.equal(IN.seccionLegible('OBJETIVOS Y PLAN'), 'Objetivos y plan');
+  assert.equal(IN.seccionLegible(''), '');
+});
+
 test('conexión cortada al generar: pantalla apagada / segundo plano, no un error de la API', () => {
   const red = m => Object.assign(new TypeError(m), {});
   // Los textos reales de iOS, Chrome y Firefox
