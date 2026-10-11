@@ -1481,6 +1481,26 @@ async function checkAvisoVersion(browser, errors) {
   r.estrecho = await medir(page);
   await context.close();
 
+  // Una sola línea a 320, 360 y 390 px, tanto con «Actualizar» como mientras
+  // actualiza («⟳ Actualizando…», sin botón ni «×»). El clic y la medida van en
+  // el mismo evaluate: recargarVersionNueva() pinta el estado antes de su
+  // primer await, y luego recarga la página.
+  r.unaLinea = {};
+  for (const w of [320, 360, 390]) {
+    ({ context, page } = await preparar({ width: w, height: 700 }));
+    r.unaLinea[w] = await page.evaluate(() => {
+      const linea = () => {
+        const t = document.querySelector('#versionAviso .version-aviso-texto');
+        return !!t && t.getBoundingClientRect().height <= parseFloat(getComputedStyle(t).lineHeight) * 1.2 + 1;
+      };
+      const antes = linea();
+      document.getElementById('versionAvisoRecargar').click();
+      const a = document.getElementById('versionAviso');
+      return { antes, durante: linea() && !a.querySelector('button') && a.getAttribute('aria-busy') === 'true' };
+    });
+    await context.close();
+  }
+
   // Escritorio: arriba, centrado
   ({ context, page } = await preparar({ width: 1280, height: 800 }));
   r.escritorio = await page.evaluate(() => {
@@ -1491,7 +1511,7 @@ async function checkAvisoVersion(browser, errors) {
   });
   await context.close();
 
-  r.ok = Object.values(r.movil).every(bien) && bien(r.movilContexto) && r.ocultoAlEscribir && r.cerrado && bien(r.estrecho) && r.escritorio;
+  r.ok = Object.values(r.movil).every(bien) && bien(r.movilContexto) && r.ocultoAlEscribir && r.cerrado && bien(r.estrecho) && Object.values(r.unaLinea).every(x => x.antes && x.durante) && r.escritorio;
   return r;
 }
 
@@ -2084,7 +2104,7 @@ async function main() {
 
   console.log('\nAviso de versión nueva (versión desplegada simulada):');
   const avisoVersion = await checkAvisoVersion(browser, errors);
-  console.log(`  ${avisoVersion.ok ? '✓' : '✗'} móvil: abajo, encima de los botones de navegación en todas las fases (también con la barra de contexto), 44 px táctiles, cabe a 320 px, oculto al escribir; «×» deja el punto en el icono de sesión; escritorio: arriba${avisoVersion.ok ? '' : ' ' + JSON.stringify(avisoVersion)}`);
+  console.log(`  ${avisoVersion.ok ? '✓' : '✗'} móvil: abajo, encima de los botones de navegación en todas las fases (también con la barra de contexto), 44 px táctiles, cabe a 320 px, una línea a 320/360/390 px también mientras actualiza, oculto al escribir; «×» deja el punto en el icono de sesión; escritorio: arriba${avisoVersion.ok ? '' : ' ' + JSON.stringify(avisoVersion)}`);
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
