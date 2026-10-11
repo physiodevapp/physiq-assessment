@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **360** referencias de literatura, con **1469** usos.
+- **360** referencias de literatura, con **1483** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **354** de 360 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -48,9 +48,9 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | Referencia | Afecta a | Usos | Última revisión |
 |---|---|---|---|
 | [Birrell 2001](#birrell-2001) | razonamiento 4b · texto | 3 | **sin revisar** |
-| [Ganz 2003](#ganz-2003) | razonamiento 4b · texto | 2 | **sin revisar** |
+| [Ganz 2003](#ganz-2003) | razonamiento 4b · texto | 6 | **sin revisar** |
 | [Loureiro 2013](#loureiro-2013) | razonamiento 4b · texto | 2 | **sin revisar** |
-| [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) | razonamiento 4b · texto | 3 | **sin revisar** |
+| [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) | razonamiento 4b · texto | 6 | **sin revisar** |
 | [Zacharias 2016](#zacharias-2016) | razonamiento 4b · texto | 2 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
@@ -63,7 +63,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Molloy 2003](#molloy-2003) | puntuación 4b · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10), 37 verdaderos positivos, 4 falsos positivos, 2 falsos negativos y 30 verdaderos negativos en 73 pacientes. Único estudio, de los creadores del signo, sin cegamiento; PubMed (2026-10): sin validación posterior (Liu 1997, leído, valida otra cosa: una combinación de 5 de 6 hallazgos en 22 pacientes). Sigue puntuando (decisión del usuario), con los límites en el criterio de tp20. |
 | [Bachmann 2004](#bachmann-2004) | puntuación 4b · razonamiento fase 2 | 2 | 2026-10 · Hay dos revisiones sistemáticas posteriores: Sims 2020 (LR− 0,07) y Kazemi 2023 (18 estudios, 6702 adultos; LR− 0,12). Por la regla de conflictos (mismo nivel, la más reciente), Kazemi 2023 pasa a dar las cifras de ro11 y de ro_t1; Bachmann se cita como concordante. |
 | [Fritz 2005](#fritz-2005) | puntuación 4b · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: PubMed (tests clínicos de inestabilidad lumbar, revisiones sistemáticas). Ferrari 2015 (Chiropr Man Therap, 10.1186/s12998-015-0058-7) confirma que solo Fritz 2005 estudió la precisión del test de inestabilidad en prono; Thomas 2026 (Cureus, 10.7759/cureus.108817, búsqueda hasta 12/2025) sigue citando su regla «flexión ≥ 53° o sin hipomovilidad» (LR+ 4,3) sin replicación externa. Leídas enteras en PMC. Estudios sueltos posteriores (Seyedhoseinpoor 2022, Areeudomwong 2020, Chatprem 2021) no leídos en texto completo. |
-| [Laslett 2005](#laslett-2005) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 8 | 2026-10 · Sin cambios en las cifras: PDF releído entero (2026-10); tabla 2 (compresión LR+ 2,20, LR− 0,46; thigh thrust LR+ 2,80, LR− 0,18; LR publicadas, método score) y tablas 4–6 coinciden con las citas. Es un solo estudio de los creadores (48 pacientes no consecutivos, crónicos, 16 con bloqueo positivo). Agrupados en Han 2023 el thigh thrust (5 estudios) y la compresión (2) no llegan a LR+ 2 ni a LR− 0,5: los dos pasan a hallazgo en ca10 (decisión del usuario, 2026-10). Saueressig 2021 no la agrupa por ser la misma población que Laslett 2003. |
+| [Laslett 2005](#laslett-2005) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios en las cifras: PDF releído entero (2026-10); tabla 2 (compresión LR+ 2,20, LR− 0,46; thigh thrust LR+ 2,80, LR− 0,18; LR publicadas, método score) y tablas 4–6 coinciden con las citas. Es un solo estudio de los creadores (48 pacientes no consecutivos, crónicos, 16 con bloqueo positivo). Agrupados en Han 2023 el thigh thrust (5 estudios) y la compresión (2) no llegan a LR+ 2 ni a LR− 0,5: los dos pasan a hallazgo en ca10 (decisión del usuario, 2026-10). Saueressig 2021 no la agrupa por ser la misma población que Laslett 2003. |
 | [Park 2005](#park-2005) | puntuación 4b · texto | 3 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla V: 50 de 153 roturas completas frente a 4 de 195 controles con los tres test positivos (LR+ 15,57) y 14 de 153 frente a 114 de 195 con los tres negativos (LR 0,16), en 348 operados con los tres test hechos. La combinación sale de una regresión logística en la misma muestra, sin validación; ninguno de los artículos que lo citan (Europe PMC) la valida. Hermans 2013 lo clasifica como nivel IV y Hanchard 2013 (Cochrane) lo deja pendiente de clasificar. |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | 2026-10 · Sin cambios: ya superada por Han 2023, que es la que da las cifras; solo se menciona como dato anterior. |
 | [O'Driscoll 2007](#odriscoll-2007) | puntuación 4b · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Tabla 1: hook test anormal en 33 de 33 roturas completas e intacto en 12 de 12 parciales, todas operadas; los 45 brazos sanos fueron un control aparte. Es una revisión retrospectiva del registro quirúrgico del creador del test (un solo cirujano). En co7 se corrige que la E sale de las roturas parciales, no del brazo sano, y pasa a contraste: el hook test puntúa ahora con Zwerus 2022. |
@@ -85,14 +85,14 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Roedl 2016](#roedl-2016) | puntuación 4b · texto | 4 | 2026-10 · Añadida (antes se citaba como «Roedl», sin año, a través de Campbell 2020): PDF del usuario leído entero, con su fe de erratas (Radiology 280(1):328, que solo corrige que el estrés en valgo se aplicó a mano y no con el aparato Telos). Retrospectivo, 144 jugadores de béisbol consecutivos con dolor medial del codo y cirugía o artroscopia como referencia (de 257 con las dos pruebas). Tabla 2: ecografía de estrés >1,0 mm, 51 de 53 roturas y 74 de 91 sin rotura (umbral fijado de antemano por un estudio en cadáver); artro-RM, 43 de 53 y 83 de 91. La unidad son pacientes. Sin LR publicadas. Cifras de co4 sin cambios. |
 | [Beckenkamp 2017](#beckenkamp-2017) | puntuación 4b · texto | 4 | 2026-10 · Añadida (PDF del usuario, leído entero): 66 estudios, modelo bivariante. Sustituye a Bachmann 2003 en la LR− de tp5 y tp37 (subgrupo con radiografía a todos los pacientes) y a Gomes 2022 en la LR+ del positivo. PubMed (2026-10): Sharifi Razavi 2026 (Arch Acad Emerg Med; 43 estudios en adultos, LR− 0,13) es posterior, pero copia errores de extracción de Gomes 2022 y mezcla tobillo y pie: no se usa. |
 | [Genevay 2017](#genevay-2017) | puntuación 4b | 1 | 2026-10 · Sin cambios: PubMed (RAPIDH, validación o precisión diagnóstica; publicaciones de Genevay) no encuentra ninguna validación externa de los criterios RAPIDH. |
-| [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 8 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
+| [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 11 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
 | [Décary 2018](#décary-2018) | puntuación 4b · razonamiento 4b · texto | 22 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
 | [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · texto | 18 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
 | [Cook 2019](#cook-2019) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Sin cambios: PubMed (revisiones sistemáticas de precisión diagnóstica de la historia y la exploración en estenosis lumbar desde 2019) solo encuentra Wang 2024 (J Med Internet Res) y Yang 2024 (Spine), de inteligencia artificial sobre imagen, no de exploración clínica. |
 | [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar · texto | 6 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
 | [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Revisión sistemática de 15 estudios sin metaanálisis; la ecografía de estrés y la comparación con la artro-RM salen de un solo estudio, Roedl 2016, que pasa a citarse directamente en co4. PubMed (2026-10): ninguna revisión posterior de la imagen del ligamento colateral cubital del codo (Rashidi 2021 es del pulgar). |
 | [Getsoian 2020](#getsoian-2020) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). 30 analizados de 60 reclutados; bloqueos controlados de C2–C3 y C3–C4. Un FRT con más rotación (menos limitación de C1–C2) se asocia a respuesta al bloqueo (tabla 2), lo que respalda que un FRT normal no descarta la cervicogénica de C2–C4. Valida además el patrón de Jull 2007 (menos extensión, disfunción articular dolorosa, peor CCFT) frente a bloqueos, sin S ni E (regresión LASSO; separación casi completa). |
-| [Pålsson 2020](#pålsson-2020) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 4 | 2026-10 · Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015). |
+| [Pålsson 2020](#pålsson-2020) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 6 | 2026-10 · Sin cambios: texto completo leído (PMC7511272); RI en neutro S 29 % (13–44), E 94 % (86–100), kappa 0,43. El mismo estudio da para el FADIR S 80 %, E 24 % (ver Reiman 2015). |
 | [Sims 2020](#sims-2020) | puntuación 4b · razonamiento fase 2 | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (antes solo el resumen); S 0,99, E 0,49, LR+ 1,86 y LR− 0,07 (0,02–0,24), 8 estudios y 7385 adultos, con modelo bivariante. Sigue citada como concordante con Kazemi 2023 (decisión del usuario). |
 | [Saueressig 2021](#saueressig-2021) | puntuación 4b | 2 | 2026-10 · Sin cambios: PubMed (clústeres de provocación sacroilíaca, revisiones sistemáticas) no encuentra ninguna posterior; solo una carta sobre su método (Vraa 2022, JOSPT 52(1):49–50). PDF leído entero en la sesión de cadera (2026-10): metaanálisis bivariante (Reitsma, paquete mada), 5 estudios con doble o simple bloqueo; incluye el estudio de los creadores (Laslett 2003) y excluye Laslett 2005 por ser la misma población. S 0,83, E 0,59, LR+ 2,13 (1,2–3,9), LR− 0,33 (0,11–0,72), certeza muy baja. Pasa a ser la fuente del cluster de ca10 y de lu8 (decisión del usuario, se prefiere el bivariante como en ro4). |
 | [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) | puntuación 4b · test 4b sin puntuar | 2 | 2026-10 · Añadida: PDF del usuario leído entero (2026-10). 134 pacientes consecutivos con sospecha de radiculopatía, clínica de un neurocirujano más RM. Tabla 4: SART S 0,50, E 0,75, LR+ 1,88 (1,22–2,91), LR− 0,64 (N = 131); ULNT1 S 0,67, E 0,67, LR+ 1,95, LR− 0,48 (N = 130); Spurling S 0,59, E 0,84, LR+ 3,46, LR− 0,47. Estudio de riesgo bajo de Thoomes 2026; con él la SART pasa a hallazgo. |
@@ -664,6 +664,8 @@ Citada como:
 
 1. Adib 2023 (Am J Sports Med; retrospectivo, evaluado por el autor de los tests; referencia: artro-RM)
 2. El valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93; con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1. En otra serie, S 43 %, E 56 % (Adib 2023).
+
+Prueba de pinzamiento de Ganz 2003: supino, la cadera se lleva pasivamente a unos 90° de flexión con aducción y rotación interna; en su serie casi siempre era positiva.
 3. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09). Adib 2023 (Am J Sports Med; retrospectivo; referencia: artro-RM)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
@@ -2368,15 +2370,26 @@ Nota: PDF aportado por el usuario, leído entero (2026-10). «¿Por qué?» de l
 
 Citada como:
 
-1. Alta especificidad para SIFA cuando es positivo. En el estudio no se midieron grados. Fiabilidad moderada (kappa 0,43).
+1. En pacientes derivados con sospecha de SIFA, S 80 %, E 24 % (LR− 0,83). El valor agrupado de Reiman 2015 (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93.
+
+Prueba de pinzamiento de Ganz 2003: supino, la cadera se lleva pasivamente a unos 90° de flexión con aducción y rotación interna; en su serie casi siempre era positiva.
+2. Alta especificidad para SIFA cuando es positivo. En el estudio no se midieron grados. Fiabilidad moderada (kappa 0,43).
 
 Técnica de Pålsson 2020: en prono, RI pasiva con la cadera en posición neutra; positivo si el examinador la juzga disminuida, con o sin dolor. La sensibilidad baja puede deberse a que cuesta detectar restricciones pequeñas o a que no todos los pacientes con SIFA tienen la movilidad reducida. En la serie de Ganz 2003 (más de 600 luxaciones quirúrgicas de cadera), la exploración mostraba a menudo limitación, sobre todo de la RI y de la aducción en flexión.
-2. Ganz 2003 (Clin Orthop Relat Res 417:112–120; exploración, p. 112, y mecanismo, p. 113)
+3. Ganz 2003 (Clin Orthop Relat Res 417:112–120; exploración, p. 112)
+4. Ganz 2003 (Clin Orthop Relat Res 417:112–120; exploración, p. 112, y mecanismo, p. 113)
+5. El valor agrupado (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93; con artro-RM como referencia el LR− es 0,45 y su IC cruza el 1. En otra serie, S 43 %, E 56 % (Adib 2023).
+
+Prueba de pinzamiento de Ganz 2003: supino, la cadera se lleva pasivamente a unos 90° de flexión con aducción y rotación interna; en su serie casi siempre era positiva.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» («¿Por qué?») | 4b · razonamiento del test | 2 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» («¿Por qué?») | 4b · razonamiento del test | 3 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» («¿Por qué?») | 4b · razonamiento del test | 4 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Genevay 2017
 
@@ -2849,24 +2862,31 @@ Citada como:
 
 Técnica de Grimaldi 2017: decúbito lateral con el lado sintomático arriba, caderas a ~60° de flexión y rodillas juntas; positivo si duelen las inserciones del glúteo medio o menor en las caras anterior, lateral o posterosuperior del trocánter. En esa serie, 8 de los 15 pacientes sin tendinopatía en la RM tenían la palpación dolorosa; en Lequesne 2008, con controles sin dolor de cadera, la especificidad fue del 66 %. La RM detecta la tendinopatía, pero no dice si es la fuente del dolor: 20 de los 50 pacientes con tendinopatía en la RM no tenían el diagnóstico clínico (palpación más otro test positivo).
 2. Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 2 estudios, certeza baja; LR+ IC 95 %: 1,37–4,30; LR− IC 0,15–0,43). Solo Grimaldi 2017 (BJSM; n = 65, referencia: RM): S 80 %, E 47 %
-3. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM). Agrupado: Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 2 estudios, certeza muy baja)
-4. Tras la palpación: con las dos positivas, la probabilidad sube del 59 % (media de los estudios) al 96 %; con las dos negativas, baja al 14 %.
+3. Todos los positivos tenían tendinopatía en la RM (LR+ 12,2), pero con IC 95 % de 0,8 a 191,5 (15 pacientes sin tendinopatía). El valor agrupado (LR+ 87,8, IC 3,0–2587) depende de un estudio con controles sin dolor de cadera (Lequesne 2008); certeza muy baja.
+
+Técnica de Grimaldi 2017: de pie, de lado junto a una pared, con la pierna afectada más lejos y un dedo de la mano del lado sano en la pared a la altura del hombro, para el equilibrio; se levanta el pie del lado de la pared con la cadera en neutro y la rodilla a 90°, hasta 30 s. Positivo: reproduce el dolor lateral en esos 30 s. La versión que solo mide cuánto tiempo se aguanta el equilibrio no distingue la tendinopatía glútea de la artrosis de cadera (Grimaldi y Fearon 2015).
+4. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM). Agrupado: Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 2 estudios, certeza muy baja)
+5. Tras la palpación: con las dos positivas, la probabilidad sube del 59 % (media de los estudios) al 96 %; con las dos negativas, baja al 14 %.
 
 Técnica de Grimaldi 2017 (aducción con abducción isométrica resistida): decúbito lateral en diagonal sobre la camilla, cadera y rodilla de abajo a 80–90° de flexión; el examinador lleva la pierna de arriba, con la rodilla extendida, en rotación neutra y 0° de extensión, a aducción completa en el plano frontal con sobrepresión, estabilizando la pelvis, y el paciente empuja el muslo hacia arriba contra su mano. Positivo: dolor en la región del trocánter por encima de 2/10. En esa serie, la aducción pasiva sola tuvo LR+ 1,5 y con resistencia 5,7 (IC 95 % 0,83–39,13). La compresión de la cintilla sobre el trocánter pasa de 4 N a 0° de aducción a 36 N a 10° y 106 N a 40°. Los tests que dependen de la resistencia que aplica el examinador pueden variar entre examinadores y de un día a otro (Grimaldi y Fearon 2015).
-5. En pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017). Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7; certeza muy baja).
-6. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM; versión con aducción añadida), según Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3, tabla 2). Lequesne 2008 (Arthritis Rheum; n = 17 con SDTM refractario de 13 meses de media, frente a 38 caderas sin dolor; referencia: RM)
-7. Grimaldi 2017 (Br J Sports Med 51(6):519–24; métodos, tabla 2 y discusión)
+6. En pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017). Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7; certeza muy baja).
+7. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM; versión con aducción añadida), según Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3, tabla 2). Lequesne 2008 (Arthritis Rheum; n = 17 con SDTM refractario de 13 meses de media, frente a 38 caderas sin dolor; referencia: RM)
+8. Grimaldi 2017 (Br J Sports Med 51(6):519–24; métodos, tabla 2 y discusión)
+9. Grimaldi 2017 (Br J Sports Med 51(6):519–24; introducción y métodos, pp. 1–2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Palpación del trocánter mayor / tendón glúteo» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Palpación del trocánter mayor / tendón glúteo» | 4b · cita bajo el test | 2 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» | 4b · cita bajo el test | 3 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 6 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Palpación del trocánter mayor / tendón glúteo» («¿Por qué?») | 4b · razonamiento del test | 7 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» («¿Por qué?») | 4b · razonamiento del test | 7 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» | 4b · cita bajo el test | 4 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 7 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Palpación del trocánter mayor / tendón glúteo» («¿Por qué?») | 4b · razonamiento del test | 8 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» («¿Por qué?») | 4b · razonamiento del test | 9 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» («¿Por qué?») | 4b · razonamiento del test | 8 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» («¿Por qué?») | 4b · razonamiento del test | 9 |
 
 ### Grimaldi 2026
 
@@ -2904,17 +2924,24 @@ Nota: PDF del manuscrito aceptado aportado por el usuario, leído entero (2026-1
 
 Citada como:
 
-1. Tras la palpación: con las dos positivas, la probabilidad sube del 59 % (media de los estudios) al 96 %; con las dos negativas, baja al 14 %.
+1. Todos los positivos tenían tendinopatía en la RM (LR+ 12,2), pero con IC 95 % de 0,8 a 191,5 (15 pacientes sin tendinopatía). El valor agrupado (LR+ 87,8, IC 3,0–2587) depende de un estudio con controles sin dolor de cadera (Lequesne 2008); certeza muy baja.
+
+Técnica de Grimaldi 2017: de pie, de lado junto a una pared, con la pierna afectada más lejos y un dedo de la mano del lado sano en la pared a la altura del hombro, para el equilibrio; se levanta el pie del lado de la pared con la cadera en neutro y la rodilla a 90°, hasta 30 s. Positivo: reproduce el dolor lateral en esos 30 s. La versión que solo mide cuánto tiempo se aguanta el equilibrio no distingue la tendinopatía glútea de la artrosis de cadera (Grimaldi y Fearon 2015).
+2. Tras la palpación: con las dos positivas, la probabilidad sube del 59 % (media de los estudios) al 96 %; con las dos negativas, baja al 14 %.
 
 Técnica de Grimaldi 2017 (aducción con abducción isométrica resistida): decúbito lateral en diagonal sobre la camilla, cadera y rodilla de abajo a 80–90° de flexión; el examinador lleva la pierna de arriba, con la rodilla extendida, en rotación neutra y 0° de extensión, a aducción completa en el plano frontal con sobrepresión, estabilizando la pelvis, y el paciente empuja el muslo hacia arriba contra su mano. Positivo: dolor en la región del trocánter por encima de 2/10. En esa serie, la aducción pasiva sola tuvo LR+ 1,5 y con resistencia 5,7 (IC 95 % 0,83–39,13). La compresión de la cintilla sobre el trocánter pasa de 4 N a 0° de aducción a 36 N a 10° y 106 N a 40°. Los tests que dependen de la resistencia que aplica el examinador pueden variar entre examinadores y de un día a otro (Grimaldi y Fearon 2015).
-2. Grimaldi y Fearon 2015 (J Orthop Sports Phys Ther 45(11):910–922; manuscrito aceptado, «Pathoanatomy», pp. 4–5)
-3. Grimaldi y Fearon 2015 (J Orthop Sports Phys Ther 45(11):910–922; manuscrito aceptado, pp. 9 y 11–14)
+3. Grimaldi y Fearon 2015 (J Orthop Sports Phys Ther 45(11):910–922; manuscrito aceptado, «Pathoanatomy», pp. 4–5)
+4. Grimaldi y Fearon 2015 (J Orthop Sports Phys Ther 45(11):910–922; manuscrito aceptado, pp. 9–10 y 14)
+5. Grimaldi y Fearon 2015 (J Orthop Sports Phys Ther 45(11):910–922; manuscrito aceptado, pp. 9 y 11–14)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Palpación del trocánter mayor / tendón glúteo» («¿Por qué?») | 4b · razonamiento del test | 2 |
-| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» («¿Por qué?») | 4b · razonamiento del test | 3 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Palpación del trocánter mayor / tendón glúteo» («¿Por qué?») | 4b · razonamiento del test | 3 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Apoyo Monopodal <30 segundos (Single-Leg Stance)» («¿Por qué?») | 4b · razonamiento del test | 4 |
+| Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» («¿Por qué?») | 4b · razonamiento del test | 5 |
+| Cadera | ca5 · Debilidad de Abductores de Cadera | Test «Test de Trendelenburg» («¿Por qué?») | 4b · razonamiento del test | 4 |
 
 ### Grondin 2026
 
@@ -4161,7 +4188,8 @@ Citada como:
 Definiciones de Laslett 2005: el dolor conocido es el que el paciente señala en el dibujo como motivo de consulta; un test es positivo si produce o aumenta ese dolor, que hay que distinguir de otros síntomas que provoque el test. En esa serie, los 16 pacientes con bloqueo positivo tenían al menos un test positivo, y 15 de ellos dos o más; el thigh thrust fue el más sensible y la distracción el más específico. El dolor que provoca un test puede sumarse al de los siguientes y confundir su lectura.
 6. Saueressig 2021 (J Orthop Sports Phys Ther 51:422–431; metaanálisis bivariante, 5 estudios de 34 a 60 pacientes con dolor lumbar crónico y sospecha de dolor sacroilíaco; referencia: bloqueo anestésico intraarticular; incluye el estudio de los creadores, Laslett 2003). Laslett 2008 (J Man Manip Ther 16:142–152); Laslett 2005 (Man Ther 10:207–218, tablas 4–6 y fig. 7); Han 2023 (eClinicalMedicine 59:101960, tabla 1: 6 estudios); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 153
 7. Laslett 2005 (Man Ther 10:207–218, tabla 2; referencia: bloqueo anestésico intraarticular). Agrupado: Han 2023 (eClinicalMedicine 59:101960, revisión sistemática, tabla 1); Lluch 2020, cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 153–154
-8. Laslett 2005 (Man Ther 10(3):207–218; introducción, p. 208; definiciones, p. 209; resultados y discusión, pp. 213–215)
+8. Laslett 2005 (Man Ther 10(3):207–218; introducción, p. 208)
+9. Laslett 2005 (Man Ther 10(3):207–218; introducción, p. 208; definiciones, p. 209; resultados y discusión, pp. 213–215)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -4172,7 +4200,9 @@ Definiciones de Laslett 2005: el dolor conocido es el que el paciente señala en
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» | 4b · cita bajo el test | 6 |
 | Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Thigh thrust» | 4b · cita bajo el test | 7 |
-| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» («¿Por qué?») | 4b · razonamiento del test | 8 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Test de Compresión Pélvica» («¿Por qué?») | 4b · razonamiento del test | 8 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Cluster de Laslett: 3 o más de 5 tests de provocación positivos» («¿Por qué?») | 4b · razonamiento del test | 9 |
+| Cadera | ca10 · Dolor Articular Sacroilíaco | Test «Thigh thrust» («¿Por qué?») | 4b · razonamiento del test | 8 |
 
 ### Laslett 2006
 
@@ -4283,6 +4313,8 @@ Citada como:
 
 Técnica de Grimaldi 2017: decúbito lateral con el lado sintomático arriba, caderas a ~60° de flexión y rodillas juntas; positivo si duelen las inserciones del glúteo medio o menor en las caras anterior, lateral o posterosuperior del trocánter. En esa serie, 8 de los 15 pacientes sin tendinopatía en la RM tenían la palpación dolorosa; en Lequesne 2008, con controles sin dolor de cadera, la especificidad fue del 66 %. La RM detecta la tendinopatía, pero no dice si es la fuente del dolor: 20 de los 50 pacientes con tendinopatía en la RM no tenían el diagnóstico clínico (palpación más otro test positivo).
 2. Todos los positivos tenían tendinopatía en la RM (LR+ 12,2), pero con IC 95 % de 0,8 a 191,5 (15 pacientes sin tendinopatía). El valor agrupado (LR+ 87,8, IC 3,0–2587) depende de un estudio con controles sin dolor de cadera (Lequesne 2008); certeza muy baja.
+
+Técnica de Grimaldi 2017: de pie, de lado junto a una pared, con la pierna afectada más lejos y un dedo de la mano del lado sano en la pared a la altura del hombro, para el equilibrio; se levanta el pie del lado de la pared con la cadera en neutro y la rodilla a 90°, hasta 30 s. Positivo: reproduce el dolor lateral en esos 30 s. La versión que solo mide cuánto tiempo se aguanta el equilibrio no distingue la tendinopatía glútea de la artrosis de cadera (Grimaldi y Fearon 2015).
 3. Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3: 5 estudios, certeza baja; LR+ IC 95 %: 3,19–11,61; LR− IC 0,33–0,63). Incluye un estudio con controles sin dolor de cadera (Lequesne 2008)
 4. En pacientes con dolor lateral de cadera, S 44 %, E 93 %, LR+ 6,6 con IC 0,97–45 (Grimaldi 2017). Las cifras altas (S 88 %, E 97 %) son de un estudio con controles sin dolor de cadera (Lequesne 2008), que también sostiene el valor agrupado (LR+ 16,5, IC 2,95–92,7; certeza muy baja).
 5. Grimaldi 2017 (BJSM; n = 65 con dolor lateral de cadera, referencia: RM; versión con aducción añadida), según Kinsella 2024 (J Orthop Sports Phys Ther 54:26–49; metaanálisis, 6 estudios, 272 participantes con dolor lateral de cadera; tabla 3, tabla 2). Lequesne 2008 (Arthritis Rheum; n = 17 con SDTM refractario de 13 meses de media, frente a 38 caderas sin dolor; referencia: RM)
@@ -6434,14 +6466,17 @@ Citada como:
 
 Técnica de Pålsson 2020: en prono, RI pasiva con la cadera en posición neutra; positivo si el examinador la juzga disminuida, con o sin dolor. La sensibilidad baja puede deberse a que cuesta detectar restricciones pequeñas o a que no todos los pacientes con SIFA tienen la movilidad reducida. En la serie de Ganz 2003 (más de 600 luxaciones quirúrgicas de cadera), la exploración mostraba a menudo limitación, sobre todo de la RI y de la aducción en flexión.
 3. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc; 69 caderas de 63 pacientes derivados a atención especializada, 35 con SIFA; referencia: síntomas + morfología cam/pincer + respuesta a infiltración intraarticular). S IC 95 %: 13–44 %; E IC 86–100 %
-4. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc 28(10):3382–92; métodos y discusión)
+4. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc 28(10):3382–92; discusión)
+5. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc 28(10):3382–92; métodos y discusión)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» | 4b · cita bajo el test | 1 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» | 4b · cita bajo el test | 3 |
-| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» («¿Por qué?») | 4b · razonamiento del test | 4 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test FADDIR (Flexión-Aducción-Rotación Interna)» («¿Por qué?») | 4b · razonamiento del test | 4 |
+| Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» («¿Por qué?») | 4b · razonamiento del test | 5 |
+| Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» («¿Por qué?») | 4b · razonamiento del test | 4 |
 
 ### Pana y Saggu 2023
 
@@ -6874,6 +6909,8 @@ DOI: 10.1136/bjsports-2014-094302
 Citada como:
 
 1. En pacientes derivados con sospecha de SIFA, S 80 %, E 24 % (LR− 0,83). El valor agrupado de Reiman 2015 (S 99 %, E 5 %, LR− 0,14) sale de pacientes ya operados, con una probabilidad previa del 90 % y un IC del LR− que llega a 0,93.
+
+Prueba de pinzamiento de Ganz 2003: supino, la cadera se lleva pasivamente a unos 90° de flexión con aducción y rotación interna; en su serie casi siempre era positiva.
 2. Pålsson 2020 (Knee Surg Sports Traumatol Arthrosc; 69 caderas de 63 pacientes derivados a atención especializada, 35 con SIFA; referencia: síntomas + morfología cam/pincer + respuesta a infiltración intraarticular; S IC 95 %: 67–93 %, E IC 9–38 %). Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral, tabla 4: 4 estudios, n = 319, referencia: cirugía, probabilidad previa 90 %; LR− IC 95 %: 0,02–0,93; con artro-RM como referencia, 4 estudios, n = 188: LR− 0,45, IC 0,19–1,09)
 3. Reiman 2015 (BJSM, metaanálisis de FAIS/rotura labral: 2 estudios, n = 27)
 4. McCarthy y Busconi 1995 (Can J Surg; serie de 59 casos con dolor de cadera refractario; referencia: artroscopia, rotura labral), S y E calculadas por los autores de Reiman 2015. Riesgo de sesgo alto. Técnica: Wong 2022 (Curr Rev Musculoskelet Med)
