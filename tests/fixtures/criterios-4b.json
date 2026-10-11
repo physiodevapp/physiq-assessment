@@ -1922,7 +1922,8 @@
    "Alta sensibilidad pero poco específica.",
    "Fiabilidad entre examinadores baja (kappa 0,23).",
    "En 888 mujeres de 45 a 60 años (estudio de Rotterdam), la crepitación se definió como un ruido de roce audible o una vibración palpable con la mano del examinador sobre la rótula, durante la flexión y la extensión activas.",
-   "La asociación más fuerte fue con las lesiones del cartílago femoropatelar (OR 5,49;",
+   "En las rodillas sin artrosis en la RM (1518 rodillas de 824 mujeres;",
+   "estudio transversal), la asociación más fuerte fue con las lesiones del cartílago femoropatelar (OR 5,49;",
    "IC 3,79–7,94);",
    "con ninguna lesión tibiofemoral fue significativa.",
    "Un estudio previo que la exploró en movimiento pasivo, en pacientes con dolor, solo la asoció a los osteofitos femoropatelares (Schiphof 2014)."
@@ -1938,7 +1939,13 @@
  },
  "ro1|Restricción de ROM": {
   "frases": [
-   "Alta especificidad cuando está presente."
+   "Alta especificidad cuando está presente.",
+   "Estudio transversal (cohorte CHECK, 497 personas con síntomas de rodilla de una cohorte de artrosis sintomática inicial), que no permite conclusiones causales.",
+   "Flexión activa asistida con goniómetro:",
+   "media 132° (DE 10).",
+   "Con agrandamiento óseo, la flexión era unos 7° menor a igualdad del resto de factores, aunque solo lo tenía el 3,8 %;",
+   "los osteofitos graves aparecían en el 12,9 %.",
+   "El modelo explica una cuarta parte de la variación de la flexión (R² 0,26)."
   ],
   "retiradas": [
    "normal no descarta."
@@ -1989,8 +1996,8 @@
    "cambiando la flexión se recorre el segmento posterior, desde su mitad hasta la inserción posterior.",
    "Más allá de los 90°, hacia la extensión, la presión sobre el menisco es tan baja que la exploración no es fiable.",
    "En niños y en adultos con meniscos laxos hay chasquidos sin lesión, pero sin dolor ni sensación conocida.",
-   "En pacientes muy musculados puede costar rotar la pierna (McMurray 1942, pp.",
-   "412–413).",
+   "En pacientes muy musculados puede costar rotar la pierna (McMurray 1942, p.",
+   "413).",
    "En Décary 2018 (PM&R) se llevó hasta la extensión completa y contaba como positivo el chasquido o la reproducción de los síntomas con la rotación."
   ],
   "retiradas": [
@@ -2007,7 +2014,7 @@
    "LR− IC 0,12–0,44 (heterogeneidad alta, I² 83 %).",
    "En contra:",
    "Solomon 2001 (JAMA) da LR+ 0,9 y LR− 1,1.",
-   "En la serie original, el dolor en el centro del ligamento lateral interno, donde sus fibras profundas se unen al menisco, era más fiable que en las inserciones anterior y posterior, donde pueden doler muchos otros tejidos;",
+   "Según McMurray, el dolor en el centro del ligamento lateral interno, donde sus fibras profundas se unen al menisco, era más fiable que en las inserciones anterior y posterior, donde pueden doler muchos otros tejidos;",
    "la intensidad del dolor no indica la gravedad de la lesión (McMurray 1942, p.",
    "410).",
    "En Décary 2018 (PM&R) se palpó en supino con la rodilla a 90°, positiva si reproducía los síntomas comparada con el lado sano;",
@@ -2024,7 +2031,11 @@
    "Más reciente, Rana 2026 (Br Med Bull 159:ldag023;",
    "6 y 7 estudios con exploración compuesta, todos con RM y artroscopia en el mismo paciente) da S 85 % y E 95 % en el menisco medial y S 75 % y E 93 % en el lateral, pero sin LR, con agrupación univariante, exploraciones hechas por cirujanos ortopédicos y pacientes que iban a artroscopia:",
    "no sustituye a estas LR.",
-   "La guía AAOS 2024 recomienda la exploración combinada (interlínea, McMurray, Thessaly) con fuerza moderada, sin cifras agrupadas."
+   "La guía AAOS 2024 recomienda la exploración combinada (interlínea, McMurray, Thessaly) con fuerza moderada, sin cifras agrupadas.",
+   "Los estudios no detallan cómo se combinaba la exploración:",
+   "es la valoración global de cirujanos ortopédicos, que los autores toman como el límite superior de lo que cabe esperar.",
+   "4 de los 5 estudios son de nivel 4 (pacientes no consecutivos), y dos no incluían pacientes sin rotura.",
+   "El tipo de pacientes (agudos o crónicos) cambia el rendimiento de las maniobras."
   ]
  },
  "ro2|Combinación traumática: traumatismo + dolor medial o difuso + palpación de la interlínea medial": {
@@ -2060,13 +2071,14 @@
    "primero con la pierna sana.",
    "Positivo si reproduce el dolor del paciente en la interlínea medial o lateral (a veces con sensación de bloqueo o enganche);",
    "el dolor delante de la rótula al flexionar no cuenta.",
-   "No en la rodilla aguda (menos de 4 semanas):",
-   "en el estudio original un 3,3 % empeoró y una rodilla se bloqueó.",
+   "No en la rodilla aguda (menos de 4 semanas), que el estudio original excluyó por el dolor;",
+   "aun sin ellas, un 3,3 % empeoró y una rodilla se bloqueó.",
    "El capítulo lo cita entre las pruebas de rotura meniscal, junto con la palpación de la interlínea y el McMurray, sin describir la técnica ni dar cifras.",
    "A 20° de flexión, el metaanálisis da S 75 % (IC 53–89 %), E 87 % (IC 65–96 %), LR+ 5,6 (IC 1,5–21,0) y LR− 0,28 (IC 0,11–0,71), pero con heterogeneidad muy alta (I² 94 %), y el estudio de los creadores del test da cifras muy superiores a las de los demás.",
    "La guía AAOS 2024 deja fuera ese estudio por no cumplir sus criterios de inclusión y, en uno de alta calidad, recoge S 64 % y E 53 %.",
    "En el estudio original, a 5° de flexión rindió menos que a 20°;",
-   "se excluyeron las rodillas con menos de 4 semanas desde la lesión, porque duelen demasiado para explorarlas (Karachalios 2005).",
+   "se excluyeron las rodillas con menos de 4 semanas desde la lesión, porque duelen demasiado para explorarlas;",
+   "los controles eran 197 voluntarios sin ningún síntoma de rodilla, no pacientes con dolor de rodilla sin rotura (Karachalios 2005).",
    "En Décary 2018 (PM&R) es el examinador quien gira el tronco del paciente, y el dolor rotuliano al flexionar no cuenta como positivo."
   ],
   "retiradas": [
@@ -2107,7 +2119,13 @@
    "5,20–14,58;",
    "bootstrap 14,28).",
    "No publica LR−.",
-   "Grupos derivados sin validación externa, que los autores piden antes del uso clínico."
+   "Grupos derivados sin validación externa, que los autores piden antes del uso clínico.",
+   "Otros datos que se asocian a este dolor (compresión o movilización dolorosa de la rótula, signo de Clark, crepitación, dolor en la sentadilla o al bajar un escalón) no entraron en los grupos, probablemente porque también aparecen en los demás problemas de rodilla de la cohorte, que además era mayor y más crónica que la de estudios previos (el 72 % llevaba 12 meses o más con dolor).",
+   "Los grupos aciertan con el 64 % de los casos y el 65 % de los no casos:",
+   "el error restante refleja lo heterogéneo del cuadro.",
+   "Acuerdo entre examinadores (PABAK):",
+   "palpación de las facetas 0,63 y 0,62;",
+   "extensión pasiva 0,86."
   ],
   "retiradas": [
    "sirve para confirmar."
@@ -2126,7 +2144,8 @@
    "0,06–0,27;",
    "bootstrap 0,05).",
    "No publica LR+.",
-   "Grupos derivados sin validación externa."
+   "Grupos derivados sin validación externa.",
+   "La artrosis femoropatelar (Kellgren-Lawrence 1 o más en la radiografía) se clasificó como otro diagnóstico."
   ],
   "retiradas": [
    "→ descarta el dolor femoropatelar:",
@@ -2184,7 +2203,7 @@
    "En esta revisión rinde igual que el Lachman.",
    "Con las fuerzas pequeñas de la exploración, las restricciones secundarias (cintilla iliotibial, cápsulas, ligamentos colaterales) pueden bloquear el cajón con el LCA roto;",
    "con el tiempo se distienden y el cajón se hace positivo (Butler 1980).",
-   "En la serie de Torg, la mitad de las roturas del LCA con desgarro del menisco interno tenían el cajón negativo antes de la meniscectomía, y todas positivo después (Torg 1976).",
+   "En la serie de Torg, de las 93 roturas del LCA con desgarro del menisco interno y sin laxitud en valgo, el cajón fue negativo en 42 y dudoso en 14 antes de la meniscectomía, y positivo en todas después (Torg 1976).",
    "En Décary 2018 (PLoS One) el cajón dio el doble de falsos negativos que el Lachman, quizá por los desgarros meniscales asociados."
   ]
  },
@@ -2198,7 +2217,7 @@
    "E IC 88–97 %.",
    "En cadáver (29 rodillas), al cortar solo el LCA el resalte apareció en 7 de 20;",
    "en las otras 13 la rotación interna aumentó y se redujo de forma gradual, sin resalte, lo que el autor atribuye a un platillo externo más plano o a la magnitud del valgo aplicado.",
-   "Si se corta también la cintilla iliotibial, la tibia queda en rotación interna y el resalte desaparece (Matsumoto 1990).",
+   "Si se corta también la cintilla iliotibial (en el montaje, un ligamento artificial que la sustituía), la tibia queda en rotación interna y el resalte desaparece (Matsumoto 1990).",
    "Técnica en Décary 2018 (PLoS One):",
    "rodilla extendida en rotación interna, ligero valgo y flexión lenta;",
    "positivo si en los primeros 30° se ve o se palpa la subluxación del platillo externo, comparando con el lado sano."
@@ -2219,7 +2238,8 @@
    "S 79 %, E 92 %, LR+ 9,9, LR− 0,22.",
    "Hu 2024 (J Orthop Surg Res 19:155;",
    "12 estudios, con el del creador) da E 78 % y LR+ 3,1.",
-   "En el estudio de su creador (400 pacientes con rotura del LCA en la RM, un solo explorador que hacía todos los tests), el lever sign coincidió con la RM en las roturas parciales y completas, agudas y crónicas, y fue negativo en las 400 rodillas sanas;",
+   "En el estudio de su creador (400 pacientes con rotura del LCA en la RM, sin lesiones meniscales, de cartílago ni de otros ligamentos;",
+   "un solo explorador que hacía todos los tests), el lever sign coincidió con la RM en las roturas parciales y completas, agudas y crónicas, y fue negativo en las 400 rodillas sanas;",
    "esa especificidad no se confirmó con artroscopia, y los otros tests no se hicieron en las rodillas sanas (Lelli 2016)."
   ]
  },
