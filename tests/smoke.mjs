@@ -1291,7 +1291,17 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   // Con datos se activa; cancelar la confirmación vuelve al panel sin borrar nada
   await page.click('#sessionBtn');
   await page.click('#sessionReset');
+  // Relevo de velos sin parpadeo: el velo del diálogo no se funde desde
+  // transparente (solo entra el recuadro), ni el del panel al volver
+  const velo = sel => page.evaluate(s => {
+    const el = document.querySelector(s);
+    return { relevo: el.classList.contains('relevo'), anim: getComputedStyle(el).animationName };
+  }, sel);
+  const ida = await velo('#confirmBanner');
   await page.click('#confirmCancel');
+  const vuelta = await velo('#sessionPanelOverlay');
+  r.relevoSinParpadeo = ida.relevo && ida.anim === 'none' && vuelta.relevo && vuelta.anim === 'none';
+  if (!r.relevoSinParpadeo) r.relevo = { ida, vuelta };
   await page.waitForTimeout(200);
   r.reiniciarCancelaVuelvePanel = await page.isVisible('#sessionReset')
     && await page.evaluate(() => state.region === 'lumbar');
@@ -1403,7 +1413,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   r.fasesMovil = Object.values(r.bandasMovil).every(Boolean);
 
   await context.close();
-  r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
+  r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && r.relevoSinParpadeo && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
     && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil;
   return r;
 }
@@ -2101,7 +2111,7 @@ async function main() {
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; panel → diálogo y vuelta sin parpadeo de velo; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
 
   console.log('\nAviso de versión nueva (versión desplegada simulada):');
   const avisoVersion = await checkAvisoVersion(browser, errors);
