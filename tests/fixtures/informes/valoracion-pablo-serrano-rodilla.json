@@ -1,0 +1,201 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-11T07:25:33.146Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "breve",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Pablo Serrano",
+    "motivoConsulta": "Rehabilitación tras la reconstrucción del ligamento cruzado anterior de la rodilla derecha hace ocho semanas.",
+    "edadPaciente": 29,
+    "sexo": "Hombre",
+    "signosVitales": {
+      "fc": null,
+      "fr": null,
+      "spo2": null,
+      "tas": null,
+      "tad": null
+    },
+    "antropometria": {
+      "talla": null,
+      "peso": null
+    },
+    "mecanismo": "Post-quirúrgico",
+    "cirugia": {
+      "intervencion": "Reconstrucción del ligamento cruzado anterior con injerto de isquiotibiales",
+      "fecha": "2026-08-15",
+      "semanasAprox": null,
+      "protocolo": "Escrito",
+      "restricciones": "Sin carrera hasta la semana 12; sin extensión de rodilla en cadena abierta entre 90° y 45° hasta la semana 12; sin deportes con giros hasta los 9 meses",
+      "complicaciones": [
+        "ninguna"
+      ],
+      "complicacionOtra": ""
+    },
+    "cronologia": "Subagudo",
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Bajo",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "rodilla",
+    "lado": "Derecho",
+    "sistemicoAnswers": {
+      "pq_herida": "NO",
+      "pq_tvp": "NO",
+      "pq_tep": "NO",
+      "pq_compart": "NO",
+      "pq_sdrc": "NO",
+      "pq_nervio": "NO",
+      "r_v1": "NO",
+      "r_v2": "NO",
+      "r_v3": "NO",
+      "r1": "NO",
+      "r_i2": "NO",
+      "r_i3": "NO",
+      "r2": "NO",
+      "r3": "NO",
+      "r4": "NO",
+      "ro_t1": "NO",
+      "ro_t2": "NO",
+      "ro_t3": "NO",
+      "ro_t4": "NO",
+      "ro_t5": "NO",
+      "ro_t6": "NO",
+      "ro_p1": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {
+      "transversal_posquirurgico": "NO",
+      "ro_vascular": "NO",
+      "ro_infecciosa": "NO",
+      "ro_oncologico": "NO",
+      "ro_trauma": "NO",
+      "ro_pediatrico": "NO",
+      "transversal_endocrino": "NO",
+      "transversal_hematologico": "NO"
+    },
+    "severidad": 2,
+    "irritabilidad": {
+      "dolor": "",
+      "reposo": "",
+      "movimiento": "",
+      "discapacidad": "",
+      "tolerancia": ""
+    },
+    "irritabilidadNivel": "Baja",
+    "irritabilidadDirecta": true,
+    "naturaleza": "",
+    "estabilidad": "",
+    "signoComparable": "Bajar un escalón con la pierna derecha: molestia en la cara anterior de la rodilla.",
+    "activeHypotheses": [
+      "ro4"
+    ],
+    "treeAnswers": {
+      "ro_step1": "lca",
+      "ro_step1b": "no",
+      "ro_step2": "no",
+      "ro_step2b": "no",
+      "ro_step2c": "no",
+      "ro_step3": "no",
+      "ro_step4": "no",
+      "ro_step5": "no",
+      "ro_step6": "no",
+      "ro_step7": "no"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {},
+    "hypothesisScores": {},
+    "derivacionResuelta": {
+      "ro4": true
+    },
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Molestia hasta 3/10 con los ejercicios y sin hinchazón al día siguiente.",
+      "ventanaRecuperacion": "",
+      "anclajeHabito": ""
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "Se lesionó en junio; le operaron hace ocho semanas",
+        "desencadenante": "Sí",
+        "desencadenante__detalle": "Un giro jugando al fútbol",
+        "inicio": "De golpe",
+        "primera_vez": "Sí",
+        "evolucion": "A mejor",
+        "peor_momento_dia": [
+          "Al final del día"
+        ],
+        "despierta": "No",
+        "dolor_max_semana": 4,
+        "tiempo_calmarse": "Se pasa enseguida",
+        "actividad_1": "Bajar escaleras",
+        "actividad_2": "Jugar al fútbol",
+        "probado": [
+          "Fisioterapia",
+          "Ejercicio"
+        ],
+        "probado_sirvio": "Seis semanas de fisioterapia en otro centro",
+        "enfermedades": "Ninguna",
+        "operaciones": "Ligamento cruzado anterior de la rodilla derecha, hace ocho semanas",
+        "medicacion": "Ninguna"
+      },
+      "regiones": {
+        "rodilla": {
+          "que_paso": [
+            "Giré o cambié de dirección con el pie apoyado"
+          ],
+          "chasquido": "Sí",
+          "pudo_seguir": "No, tuve que parar",
+          "hinchazon": "Sí, enseguida, al poco de pasar",
+          "provoca": {
+            "cuclillas": "Sí",
+            "escaleras": "Sí",
+            "arrodillarse": "No sé",
+            "sentado": "No",
+            "caminar": "No",
+            "correr": "No sé",
+            "saltar": "No sé",
+            "pivotar": "No sé",
+            "de_pie": "No"
+          },
+          "reposo": "No",
+          "nota": {
+            "trabada": "No",
+            "engancha": "No",
+            "falla": "No",
+            "rotula": "No",
+            "miedo_girar": "Sí",
+            "crujidos": "No",
+            "detras": "No",
+            "hormigueo": "No"
+          },
+          "actividad": [
+            "Correr",
+            "Deportes con saltos"
+          ]
+        }
+      }
+    },
+    "rom": null
+  }
+}

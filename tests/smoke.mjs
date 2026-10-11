@@ -1081,7 +1081,9 @@ async function checkInformeNarrativo(browser, errors) {
   await page.click('#iaGenerar');
   await page.waitForFunction(() => state.informeIA?.plantilla === 'breve');
   r.progresoConTipo = await page.evaluate(() => window._progresos.length > 0 && window._progresos.every(t => t.startsWith('Ficha breve · '))
-    && document.querySelector('#informeIA .ia-titulo').textContent.trim() === '🎙 Informe con IA');
+    && document.querySelector('#informeIA .ia-titulo').textContent.trim() === '🎙 Informe con IA'
+    // El texto de la tarjeta no nombra un tipo
+    && !/narrativo/i.test(document.querySelector('#informeIA .ia-intro').textContent));
   const cuerpoFicha = Buffer.from(captura[3] || '', 'latin1').toString('utf8');
   r.fichaBreve = cuerpoFicha.includes('## OBJETIVOS Y PLAN') && /name="maxTokens"\r\n\r\n2500/.test(cuerpoFicha)
     && await page.evaluate(() => document.querySelector('#iaResultadoDet summary').textContent.includes('Ficha breve')

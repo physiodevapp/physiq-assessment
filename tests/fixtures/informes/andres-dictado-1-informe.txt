@@ -1,0 +1,73 @@
+INFORME DE FISIOTERAPIA
+Paciente: Andrés Molina
+Edad: 52 años
+Sexo: Hombre
+Fecha: 10/10/2026
+Región valorada: Codo (izquierdo)
+
+CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES
+
+Consulta por rigidez y dolor en el codo izquierdo de siete semanas de evolución, tras una caída sobre la mano izquierda que provocó una fractura de la cabeza del radio no desplazada. El cuadro se encuentra en fase subaguda, con limitación funcional moderada que interfiere con las actividades laborales y de la vida diaria.
+
+Condición de Salud (Diagnóstico Médico)
+
+Fractura de la cabeza del radio izquierda no desplazada, diagnosticada en urgencias y tratada de forma conservadora con inmovilización durante tres semanas. La radiografía de control de la semana pasada confirmó la consolidación ósea. El traumatólogo indicó movilización sin restricciones y evitar cargas superiores a 2 kilogramos hasta las 10 semanas desde la lesión.
+
+Factores Personales
+
+Varón de 52 años de edad, cocinero de profesión. Como antecedente médico relevante presenta hipertensión arterial en tratamiento farmacológico con enalapril. Los signos vitales registrados muestran una frecuencia cardíaca de 76 latidos por minuto y una tensión arterial de 135/85 mmHg. Las medidas antropométricas incluyen una talla de 175 cm, un peso de 82 kg y un índice de masa corporal de 26,8. El riesgo psicosocial se valora como bajo, sin signos de preocupación excesiva ni factores que puedan interferir negativamente en la recuperación.
+
+HISTORIA CLÍNICA Y EVOLUCIÓN
+
+Presentación Inicial y Antecedentes
+
+El cuadro se inició hace siete semanas tras un traumatismo directo. El paciente resbaló en la cocina de su lugar de trabajo y cayó sobre la mano izquierda extendida. El dolor y la limitación funcional aparecieron de forma inmediata. Es la primera vez que presenta un problema de este tipo en el codo izquierdo. Desde que se retiró el cabestrillo, la evolución ha sido favorable, con mejoría progresiva aunque persiste la limitación de la movilidad y el dolor asociado al movimiento final. Refiere que a veces le molesta el hombro izquierdo al ponerse la chaqueta.
+
+Tratamientos Previos
+
+Ha realizado reposo relativo durante la fase de inmovilización y ha tomado paracetamol como analgésico, con alivio parcial de los síntomas.
+
+Cribado de Seguridad
+
+El cribado de banderas rojas resultó negativo, sin hallazgos que sugieran patología sistémica, infección, fractura reciente no consolidada ni compromiso neurovascular relevante. El cribado sistémico también fue negativo.
+
+EVALUACIÓN DE FUNCIONES Y ESTRUCTURAS CORPORALES
+
+Dolor
+
+La intensidad del dolor en reposo es de 3/10 en la escala numérica de calificación. Durante la exploración, al forzar la extensión pasiva completa del codo, el dolor alcanza 5/10. El paciente refiere que el dolor es peor al levantarse por la mañana. Cuando algo le empeora el dolor, este vuelve al nivel basal en unos minutos. No refiere dolor nocturno que le despierte. El dolor se clasifica como de baja irritabilidad y de naturaleza nociceptiva. El signo comparable consiste en la extensión pasiva final del codo izquierdo, que reproduce dolor en la cara anterior del codo con una sensación final elástica.
+
+Movilidad
+
+La exploración de la movilidad activa muestra una flexión de 115 grados, con un déficit de extensión de 30 grados respecto a la extensión completa. Los movimientos de pronación y supinación también están limitados en el rango final, acompañados de dolor. En la exploración pasiva se observa la misma magnitud de limitación que en la movilidad activa, con sensación final elástica en todos los movimientos restringidos. La restricción afecta de forma global a todos los movimientos del codo (flexión, extensión, pronación y supinación), de forma dolorosa.
+
+Pruebas Clínicas
+
+La exploración física confirma una restricción global y dolorosa de todos los movimientos del codo izquierdo. El test de rango de movimiento activo en las cuatro direcciones principales (flexión, extensión, pronación y supinación) resultó positivo para limitación. La comparación de la limitación activa y pasiva con el lado sano también resultó positiva, con déficit bilateral en ambos tipos de movilidad. La sensación final elástica en todos los movimientos sugiere una afectación de las partes blandas periarticulares. Estos hallazgos son compatibles con rigidez postraumática del codo secundaria a contractura capsular y de tejidos blandos. La exploración del hombro izquierdo no se realizó durante la sesión.
+
+ANÁLISIS DEL FUNCIONAMIENTO: LIMITACIONES EN LA ACTIVIDAD Y RESTRICCIONES EN LA PARTICIPACIÓN
+
+Limitaciones en las Actividades
+
+El paciente refiere dificultades para llevar las sartenes en su trabajo como cocinero, así como para lavarse la cara y peinarse. Estas actividades requieren un rango de flexión y extensión del codo que actualmente no alcanza o que provoca dolor al intentarlas.
+
+Restricciones en la Participación
+
+La limitación funcional del codo interfiere directamente con el desempeño de su actividad laboral como cocinero, obligándole a adaptar sus tareas y evitando aquellas que requieren mayor movilidad o fuerza del miembro superior izquierdo.
+
+CONCLUSIONES Y PLAN DE TRATAMIENTO
+
+El cuadro clínico corresponde a una rigidez postraumática del codo izquierdo secundaria a la inmovilización tras una fractura de la cabeza del radio, actualmente consolidada. La limitación global y dolorosa de la movilidad, tanto activa como pasiva, con sensación final elástica, apoya el diagnóstico de contractura capsular y de partes blandas. El abordaje terapéutico se centrará en la recuperación progresiva del rango de movimiento mediante técnicas de estiramiento y movilización, así como en la reintegración funcional del miembro superior en las actividades de la vida diaria y laborales, respetando las restricciones de carga indicadas por el traumatólogo.
+
+El plan de tratamiento incluye la realización de estiramientos mantenidos de contracción-relajación (hold-relax) en flexión y extensión del codo, con una pauta de 5 repeticiones, 3 veces al día, después de cada comida. La intensidad se dosificará permitiendo un dolor de hasta 4/10 durante la ejecución de los estiramientos, siempre que el dolor disminuya en menos de una hora tras finalizar el ejercicio. Se recomienda el uso funcional del brazo en las tareas domésticas, evitando cargas superiores a 2 kilogramos hasta las 10 semanas desde la lesión, de acuerdo con las indicaciones del traumatólogo. En la próxima sesión se iniciarán movilizaciones manuales del codo para complementar el tratamiento autoaplicado. Si en 6 semanas no se observa ganancia de extensión, se comentará la evolución con el traumatólogo para valorar otras opciones terapéuticas.
+
+Coherencia con hipótesis de valoración
+
+Los hallazgos de la exploración refuerzan la hipótesis de rigidez del codo por contractura postraumática o capsular. La presencia de limitación global y dolorosa de todos los movimientos del codo, tanto en la exploración activa como pasiva, junto con la sensación final elástica y la comparación positiva con el lado sano, son coherentes con esta condición. El contexto de inmovilización prolongada tras una fractura de la cabeza del radio consolida la hipótesis de afectación secundaria de las estructuras periarticulares.
+
+SEGUIMIENTO FUNCIONAL
+
+Se recomienda el uso del Oxford Elbow Score o del QuickDASH como herramienta de medición objetiva de la evolución funcional del codo. La reevaluación clínica se programará en 6 semanas para valorar la ganancia de rango de movimiento, especialmente la extensión. Si tras 3 a 6 meses de tratamiento conservador adecuado no se observa mejoría significativa, se reconsiderará la derivación para valoración de otras opciones terapéuticas, incluida la cirugía en caso necesario.
+
+—
+Informe generado con PhysiQ-Assessment el 10/10/2026 (redacción asistida por IA).

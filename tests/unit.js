@@ -1656,6 +1656,13 @@ test('errores de los servicios en español, con el original y la salida sin audi
   assert.equal(propio.original, '');
 });
 
+test('línea de progreso: sección en minúscula salvo las siglas', () => {
+  assert.equal(IN.seccionLegible('HALLAZGOS Y CODIFICACIÓN CIF'), 'Hallazgos y codificación CIF');
+  assert.equal(IN.seccionLegible('## CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES'), 'Condición de salud y factores contextuales');
+  assert.equal(IN.seccionLegible('OBJETIVOS Y PLAN'), 'Objetivos y plan');
+  assert.equal(IN.seccionLegible(''), '');
+});
+
 test('conexión cortada al generar: pantalla apagada / segundo plano, no un error de la API', () => {
   const red = m => Object.assign(new TypeError(m), {});
   // Los textos reales de iOS, Chrome y Firefox
@@ -1961,6 +1968,16 @@ test('prompt: ninguna línea de «Hallazgos de la exploración» lleva cifras de
     assert.ok(!mal.test(IN.limpiarEtiqueta(st.iaPregunta || st.question)), `${r}.${st.id}: pregunta`);
     for (const o of st.options) assert.ok(!mal.test(IN.limpiarEtiqueta(o.iaTexto || o.label)), `${r}.${st.id}.${o.value}: opción`);
   }
+});
+
+test('prompt: ninguna pregunta del árbol que llega al prompt lleva una instrucción para el fisioterapeuta', () => {
+  // «Descartar antes lo vascular», «Palpar primero», «→ DERIVAR…»: el informe podía leerlas como algo hecho;
+  // la instrucción se queda en pantalla y al prompt va `iaPregunta`
+  const instruccion = /descart|palpar|revisar siempre|→|deriv|malignidad|explorar primero/i;
+  for (const [r, t] of Object.entries(CIF_TREES)) for (const st of t.steps)
+    assert.ok(!instruccion.test(IN.limpiarEtiqueta(st.iaPregunta || st.question)), `${r}.${st.id}: ${st.iaPregunta || st.question}`);
+  const tp5 = CIF_TREES.tobillo_pie.steps.find(s => s.id === 'tp_step5');
+  assert.match(tp5.iaPregunta, /no reproduce/, 'la opción «NO — … sí reproduce» responde a la pregunta en negativo');
 });
 
 test('prompt: aviso de patrón en los hallazgos; recordatorio de discrepancias junto al formulario solo con audio', () => {
@@ -3365,8 +3382,11 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-1-ficha-breve.txt', 'elena-dictado-1-transcripcion.txt', ['pronostica', 'nrs-omitido', 'estructura', 'relleno']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-2-ficha-breve.txt', 'elena-dictado-2-transcripcion.txt', ['pronostica', 'fuentes']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-3-ficha-breve.txt', 'elena-dictado-3-transcripcion.txt', []],
-      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-4-ficha-breve.txt', 'elena-dictado-4-transcripcion.txt', []],
+      ['valoracion-elena-castro-lumbar.json', 'elena-dictado-4-ficha-breve.txt', 'elena-dictado-4-transcripcion.txt', ['nrs-momento']],
       ['valoracion-elena-castro-lumbar.json', 'elena-dictado-5-ficha-breve.txt', 'elena-dictado-5-transcripcion.txt', ['nrs-omitido']],
+      ['valoracion-andres-molina-codo.json', 'andres-dictado-1-informe.txt', 'andres-dictado-1-transcripcion.txt', ['nrs-momento', 'reconsiderar-copiado', 'seguimiento-fuera', 'relleno']],
+      ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-1-ficha-breve.txt', 'pablo-dictado-1-transcripcion.txt', ['nrs-momento', 'fisiopatologia']],
+      ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-2-ficha-breve.txt', 'pablo-dictado-2-transcripcion.txt', ['relleno']],
     ];
     for (const [json, informe, trans, esperados] of casos) {
       const args = [herramienta, join(dir, json), join(dir, informe)];
@@ -3412,9 +3432,34 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(!/Disfunción segmentaria|Solo pronóstico/.test(pron), 'sin la hipótesis a la que pertenecía');
     const solo = IN.bloquesAmpliados({ tests: [a.tests[1]] });
     assert.ok(!solo.some(x => x.startsWith('Tests de confirmación')), 'sin tests diagnósticos, no hay bloque vacío');
-    assert.ok(!/valoración|consulta/.test(IN.NOTA_NRS), 'la nota del NRS no nombra de dónde sale la cifra');
-    assert.match(IN.NOTA_NRS, /no le pongas el de otra cifra/, 'ronda 25: el 7 de Elena‑4 tomó el momento «última semana» del 8');
+    // Ronda 27: sin momento, el modelo se lo inventaba (Elena‑4, Andrés, Pablo: «en reposo»); ahora lleva el suyo
+    assert.match(IN.NOTA_NRS, /EVN de N\/10 en la valoración/);
+    assert.match(IN.NOTA_NRS, /sin atribuirle otro momento/);
+    assert.ok(!/consulta/.test(IN.NOTA_NRS), 'sin «consulta» (Elena‑2 escribió «durante la consulta»)');
     assert.ok(ids('El dolor era de 7/10, aunque durante la consulta refirió un 4/10.').includes('fuentes'));
+  });
+  test('revisión: NRS con un momento que no tiene, plazo de «Cuándo reconsiderar» copiado, «no se observa ganancia» (ronda 26)', () => {
+    assert.ok(ids('La intensidad del dolor en reposo es de 3/10.', { datos: { nr: 3 } }).includes('nrs-momento'));
+    assert.ok(!ids('Dolor de 3/10; al estirar llega a 5/10.', { datos: { nr: 3 } }).includes('nrs-momento'), 'sin momento, bien');
+    assert.ok(!ids('En reposo, 2/10; la intensidad registrada es 3/10.', { datos: { nr: 3 } }).includes('nrs-momento'), 'el momento es de otra cifra');
+    assert.ok(!ids('En la última semana llegó a 8/10.', { datos: { nr: 8 }, transcripcion: 'Esta semana llegó a un 8 de 10.' }).includes('nrs-momento'), 'el audio da ese momento para esa cifra');
+    const amp = { pautas: [{ hipotesis: 'Rigidez', pronostico: { derivacion: 'Si no mejora más tras 3–6 meses, valorar la cirugía.' } }] };
+    assert.ok(ids('Si tras 3 a 6 meses no mejora, se valorará la cirugía.', { ampliado: amp }).includes('reconsiderar-copiado'));
+    assert.ok(!ids('Si tras 3 a 6 meses no mejora, se valorará la cirugía.', { ampliado: amp, transcripcion: 'Si en 3 a 6 meses no mejora, lo veremos.' }).includes('reconsiderar-copiado'), 'lo dijo el fisio');
+    assert.ok(!ids('Reevaluación en 6 semanas.', { ampliado: amp }).includes('reconsiderar-copiado'));
+    const seg = x => RI.revisarInforme(`## CONCLUSIONES Y PLAN DE TRATAMIENTO\n\n${x}\n\n## SEGUIMIENTO FUNCIONAL\n\nSe usará el QuickDASH.`).map(p => p.id);
+    assert.ok(seg('Si en 6 semanas no se observa ganancia de extensión, se comentará con el traumatólogo.').includes('seguimiento-fuera'));
+  });
+  test('revisión: la hinchazón con localización no es la hinchazón general; la nota del NRS no respalda momentos (ronda 27)', () => {
+    const t = 'Niega bloqueos e hinchazón posterior. Se pautan ejercicios siempre que haya hinchazón leve al día siguiente.';
+    assert.ok(!ids(t).includes('discrepancia-separada'), 'Pablo: «hinchazón posterior» frente a la general');
+    assert.ok(ids('Niega hinchazón. Refiere que la rodilla está hinchada al final del día.').includes('discrepancia-separada'));
+    assert.ok(ids('La EVN en reposo es de 2/10.', { datos: { nr: 2 } }).includes('nrs-momento'), 'la nota nombra «reposo», pero no lo respalda');
+    assert.ok(!ids('EVN de 2/10 en la valoración.', { datos: { nr: 2 } }).includes('nrs-momento'));
+  });
+  test('revisión: «durante la consulta» solo es una fuente con un verbo de lo que cuenta el paciente (ronda 28)', () => {
+    assert.ok(ids('El dolor era de 7/10, aunque durante la consulta refirió un 4/10.').includes('fuentes'), 'Elena‑2');
+    assert.ok(!ids('Puente de glúteos, ejercicio enseñado durante la consulta de hoy.').includes('fuentes'), 'Pablo‑2: cuándo se hizo, no de dónde sale');
   });
   test('revisión: constantes clasificadas, motivo de la imagen añadido, «en caso de ausencia de mejoría» (decimosexta revisión)', () => {
     assert.ok(ids('Presenta signos vitales dentro de parámetros habituales, con una frecuencia cardíaca de 58 lpm.').includes('constantes'));

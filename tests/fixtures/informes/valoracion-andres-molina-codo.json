@@ -1,0 +1,142 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-10T20:16:43.752Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Andrés Molina",
+    "motivoConsulta": "Rigidez y dolor en el codo izquierdo tras una fractura de la cabeza del radio hace siete semanas.",
+    "edadPaciente": 52,
+    "sexo": "Hombre",
+    "signosVitales": {
+      "fc": 76,
+      "fr": null,
+      "spo2": null,
+      "tas": 135,
+      "tad": 85
+    },
+    "antropometria": {
+      "talla": 175,
+      "peso": 82
+    },
+    "mecanismo": "Traumático",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "cronologia": "Subagudo",
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Bajo",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "codo",
+    "lado": "Izquierdo",
+    "sistemicoAnswers": {
+      "co_t1": "NO",
+      "co_t2": "NO",
+      "co4a": "NO",
+      "co4a_uni": "NO",
+      "co4a_prog": "NO",
+      "co4b": "NO",
+      "co3": "NO",
+      "co_e2b": "NO",
+      "co1": "NO",
+      "co2": "NO",
+      "co_e1": "NO",
+      "co_e2a": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {},
+    "severidad": 3,
+    "irritabilidad": {
+      "dolor": "Baja (≤3/10)",
+      "reposo": "Ausente",
+      "movimiento": "Al final del rango",
+      "discapacidad": "Moderada",
+      "tolerancia": "Alta"
+    },
+    "irritabilidadNivel": "Baja",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Nociceptiva",
+    "estabilidad": "Estable",
+    "signoComparable": "Extensión pasiva final del codo izquierdo: dolor en la cara anterior con sensación final elástica.",
+    "activeHypotheses": [
+      "co3"
+    ],
+    "treeAnswers": {
+      "co_step1": "fractura",
+      "co_step2": "si"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "co3": {
+        "0": "pos",
+        "1": "pos"
+      }
+    },
+    "hypothesisScores": {
+      "co3": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 2/2 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      }
+    },
+    "derivacionResuelta": {
+      "co_step1": true
+    },
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Dolor hasta 4/10 durante los estiramientos y que baje en menos de una hora.",
+      "ventanaRecuperacion": "",
+      "anclajeHabito": "Después de cada comida."
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "Hace siete semanas",
+        "desencadenante": "Sí",
+        "desencadenante__detalle": "Resbaló en la cocina y cayó sobre la mano",
+        "inicio": "De golpe",
+        "primera_vez": "Sí",
+        "evolucion": "Igual",
+        "peor_momento_dia": [
+          "Al levantarme"
+        ],
+        "despierta": "No",
+        "dolor_max_semana": 5,
+        "tiempo_calmarse": "Unos minutos",
+        "actividad_1": "Llevar las sartenes en el trabajo",
+        "actividad_2": "Lavarse la cara y peinarse",
+        "probado": [
+          "Reposo",
+          "Medicación"
+        ],
+        "probado_sirvio": "El paracetamol le alivia algo",
+        "enfermedades": "Hipertensión",
+        "medicacion": "Enalapril"
+      },
+      "regiones": {}
+    },
+    "rom": null
+  }
+}
