@@ -1401,38 +1401,97 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   }
   r.fasesMovil = Object.values(r.bandasMovil).every(Boolean);
 
-  // Aviso de versión con la barra fija de contexto visible (sistema en la
-  // fase 2, hipótesis en la 4b): debe quedar debajo de ella, no tapado
-  await page.evaluate(() => {
-    const a = document.createElement('div');
-    a.id = 'versionAvisoPrueba'; a.className = 'version-aviso';
-    a.innerHTML = '<span class="version-aviso-texto">Hay una versión nueva</span><button class="version-aviso-btn">Actualizar</button>';
-    document.body.appendChild(a);
-  });
-  const avisoBajoBarra = async (barra, cabecera, tarjeta) => {
-    await page.evaluate(([cab, tar]) => {
-      document.querySelector(cab).click();
-      const t = document.querySelector(tar);
-      scrollTo(0, t.getBoundingClientRect().top + scrollY + 300);
-    }, [cabecera, tarjeta]);
-    await page.waitForTimeout(500);
-    return page.evaluate(barra => {
-      const b = document.getElementById(barra), a = document.getElementById('versionAvisoPrueba');
-      if (getComputedStyle(b).display === 'none') return false;
-      return a.getBoundingClientRect().top >= b.getBoundingClientRect().bottom;
-    }, barra);
-  };
-  await page.evaluate(() => goToPhase(2));
-  await page.waitForTimeout(300);
-  r.avisoFase2 = await avisoBajoBarra('sisContextBanner', '.sistema-accordion-row .sistema-accordion-header', '.sistema-accordion-row.open');
-  await page.evaluate(() => goToPhase('4b'));
-  await page.waitForTimeout(300);
-  r.avisoFase4b = await avisoBajoBarra('hypContextBanner', '.hypothesis-card:not(.open) .hypothesis-header', '.hypothesis-card.open');
-  await page.evaluate(() => document.getElementById('versionAvisoPrueba').remove());
-
   await context.close();
   r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
-    && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil && r.avisoFase2 && r.avisoFase4b;
+    && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil;
+  return r;
+}
+
+// Aviso «Hay una versión nueva» con la versión desplegada simulada
+// (lib/version.js sellado y version.json distinto, con page.route). En móvil:
+// snackbar abajo, justo encima de los botones de navegación fijos (en todas
+// las fases, también con la barra de contexto de la 2), sin tapar la barra de
+// fases, con zonas táctiles de 44 px y sin desbordar a 320 px; oculto
+// mientras se escribe; «×» lo cierra y deja el punto en el icono de sesión.
+// En escritorio, arriba como siempre.
+async function checkAvisoVersion(browser, errors) {
+  const r = {};
+  const preparar = async (viewport) => {
+    const context = await browser.newContext({ viewport });
+    await context.route('**/lib/version.js', async route => {
+      const res = await route.fetch();
+      const txt = (await res.text()).replace("VERSION_SHA = 'dev'", "VERSION_SHA = 'aaaaaaa'");
+      route.fulfill({ response: res, body: txt });
+    });
+    await context.route('**/version.json', route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ sha: 'bbbbbbb', fecha: '2026-10-11T10:00:00Z' }) }));
+    const page = await context.newPage();
+    page.on('pageerror', err => errors.push(`pageerror (aviso versión): ${err.message}`));
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#versionAviso', { timeout: 5000 }).catch(() => {});
+    return { context, page };
+  };
+  const medir = page => page.evaluate(() => {
+    const a = document.getElementById('versionAviso');
+    if (!a || getComputedStyle(a).display === 'none') return null;
+    const q = a.getBoundingClientRect();
+    const nav = document.querySelector('.phase-container.active .nav-buttons').getBoundingClientRect();
+    const barra = document.querySelector('.mobile-phase-bar').getBoundingClientRect();
+    const btns = [...a.querySelectorAll('button')].map(b => b.getBoundingClientRect());
+    return {
+      encimaNav: q.bottom <= nav.top + 0.5 && nav.top - q.bottom <= 16,
+      bajoBarra: q.top >= barra.bottom,
+      ancho: Math.round(q.left) === 16 && Math.round(innerWidth - q.right) === 16,
+      tactil: btns.every(b => b.height >= 43.5 && b.width >= 43.5),
+      sinDesbordar: document.documentElement.scrollWidth <= innerWidth && a.scrollWidth <= a.clientWidth + 1,
+    };
+  });
+  const bien = m => !!m && Object.values(m).every(Boolean);
+
+  // Móvil 390 px: todas las fases
+  let { context, page } = await preparar({ width: 390, height: 844 });
+  r.movil = {};
+  for (const f of [1, 2, 3, 4, '4b', 5]) {
+    await page.evaluate(f => { if (f !== 1) { state.region = state.region || 'hombro'; } goToPhase(f); }, f);
+    await page.waitForTimeout(600);   // tras el fadeUp de la fase (0.4 s): con transform, la barra fija se mueve
+    r.movil[f] = await medir(page);
+  }
+  // Fase 2 con la barra de contexto del sistema visible
+  await page.evaluate(() => goToPhase(2));
+  await page.evaluate(() => {
+    document.querySelector('.sistema-accordion-row .sistema-accordion-header')?.click();
+    const t = document.querySelector('.sistema-accordion-row.open');
+    if (t) scrollTo(0, t.getBoundingClientRect().top + scrollY + 300);
+  });
+  await page.waitForTimeout(500);
+  r.movilContexto = await medir(page);
+  // Escribiendo en un campo: oculto
+  await page.evaluate(() => goToPhase(1));
+  await page.focus('#motivoConsulta');
+  r.ocultoAlEscribir = await page.evaluate(() => getComputedStyle(document.getElementById('versionAviso')).display === 'none');
+  await page.evaluate(() => document.activeElement.blur());
+  // «×»: se va y deja el punto en el icono de sesión
+  await page.click('#versionAvisoCerrar');
+  r.cerrado = await page.evaluate(() => !document.getElementById('versionAviso')
+    && document.getElementById('sessionBtn').classList.contains('version-nueva')
+    && getComputedStyle(document.getElementById('sessionBtn'), '::after').content !== 'none');
+  await context.close();
+
+  // 320 px: cabe
+  ({ context, page } = await preparar({ width: 320, height: 640 }));
+  r.estrecho = await medir(page);
+  await context.close();
+
+  // Escritorio: arriba, centrado
+  ({ context, page } = await preparar({ width: 1280, height: 800 }));
+  r.escritorio = await page.evaluate(() => {
+    const a = document.getElementById('versionAviso');
+    if (!a) return false;
+    const q = a.getBoundingClientRect();
+    return q.top < 200 && Math.abs((q.left + q.right) / 2 - innerWidth / 2) < 2;
+  });
+  await context.close();
+
+  r.ok = Object.values(r.movil).every(bien) && bien(r.movilContexto) && r.ocultoAlEscribir && r.cerrado && bien(r.estrecho) && r.escritorio;
   return r;
 }
 
@@ -2021,7 +2080,11 @@ async function main() {
   console.log('\nExportar / importar la valoración (panel de sesión):');
   const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
   const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar; aviso de versión bajo la barra fija (fases 2 y 4b)${expImp.avisoFase2 && expImp.avisoFase4b ? '' : ` [fase 2: ${expImp.avisoFase2}, 4b: ${expImp.avisoFase4b}]`}${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
+  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
+
+  console.log('\nAviso de versión nueva (versión desplegada simulada):');
+  const avisoVersion = await checkAvisoVersion(browser, errors);
+  console.log(`  ${avisoVersion.ok ? '✓' : '✗'} móvil: abajo, encima de los botones de navegación en todas las fases (también con la barra de contexto), 44 px táctiles, cabe a 320 px, oculto al escribir; «×» deja el punto en el icono de sesión; escritorio: arriba${avisoVersion.ok ? '' : ' ' + JSON.stringify(avisoVersion)}`);
 
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
@@ -2043,7 +2106,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && avisoVersion.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
