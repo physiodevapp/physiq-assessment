@@ -1405,7 +1405,7 @@
    "si esta combinación aporta su LR, la del ULNT1 suelto deja de contar.",
    "2 estudios, certeza muy baja (GRADE);",
    "por separado, LR− 0,04 (51 pacientes) y 0,08 (85 pacientes).",
-   "En los dos, cada ULNT se da por positivo si reproduce los síntomas y estos cambian con la diferenciación estructural."
+   "En los dos estudios, cada ULNT se da por positivo si reproduce los síntomas y estos cambian con la diferenciación estructural."
   ],
   "retiradas": [
    "Sirve sobre todo para descartar:"
@@ -1424,9 +1424,12 @@
    "también sale positivo en migraña, más en la crónica.",
    "Que reproduzca su cefalea podría mejorar la precisión (solo un estudio lo usó).",
    "Solo puntúa positivo:",
-   "el metaanálisis da S 83 %, E 83 % y LR− 0,2, pero el FRT explora C1–C2 (el metaanálisis lo valida para cervicogénica con origen en C1–C2) y una cervicogénica de C2–C3 o C3–C4 confirmada por bloqueo puede darlo normal, así que un FRT negativo no la descarta (S y E van solo aquí para que no se recalcule la LR−).",
+   "el metaanálisis da S 83 %, E 83 % y LR− 0,2, pero el FRT explora C1–C2 (el metaanálisis lo valida para cervicogénica con origen en C1–C2) y una cervicogénica de C2–C3 o C3–C4 confirmada por bloqueo puede darlo normal, así que un FRT negativo no la descarta.",
    "El metaanálisis considera positivo <45° a cualquier lado;",
    "en sus estudios, la rotación media era de 24,5° en el lado sintomático de la cervicogénica frente a 39,1° en otras cefaleas y lados asintomáticos."
+  ],
+  "retiradas": [
+   "(S y E van solo aquí para que no se recalcule la LR−)"
   ]
  },
  "ce4|PAIVM C0-C3 (segmento C1-C2 más sintomático)": {
@@ -1513,7 +1516,8 @@
    "no puntúa."
   ],
   "retiradas": [
-   "no puntúa."
+   "no puntúa.",
+   "Pronóstico, no diagnóstico:"
   ]
  },
  "ce5|Síntomas de hiperalerta / PTSD": {
