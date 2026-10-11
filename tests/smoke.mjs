@@ -972,9 +972,20 @@ async function checkExportarImportar(browser, errors, tmpDir) {
 
   await page.click('#sessionBtn');
   r.exportarDesactivadoAlEmpezar = await page.isDisabled('#sessionExport');
+  // «Reiniciar valoración» está en el panel (ya no en la cabecera) y sin datos no se puede usar
+  r.reiniciarEnPanel = !(await page.$('.app-header .btn-reset, .app-header [onclick^="resetApp"]'))
+    && await page.isDisabled('#sessionReset');
   await page.fill('#patientName', 'Prueba Exportación');
   await page.keyboard.press('Enter');
   await walkRegion(page, 'lumbar');
+  // Con datos se activa; cancelar la confirmación vuelve al panel sin borrar nada
+  await page.click('#sessionBtn');
+  await page.click('#sessionReset');
+  await page.click('#confirmCancel');
+  await page.waitForTimeout(200);
+  r.reiniciarCancelaVuelvePanel = await page.isVisible('#sessionReset')
+    && await page.evaluate(() => state.region === 'lumbar');
+  await page.evaluate(() => closeSessionPanel());
   const antes = await page.evaluate(() => JSON.stringify({ p: state.patient, r: state.region, t: state.treeAnswers, f: state.currentPhase, m: state.motivoConsulta, s: state.signoComparable }));
 
   await page.click('#sessionBtn');
@@ -1015,7 +1026,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   await page.click('#sessionBtn');
   r.caben320 = await page.evaluate(() => {
     const panel = document.getElementById('sessionPanel').getBoundingClientRect();
-    return ['sessionExport', 'sessionImport'].every(id => {
+    return ['sessionReset', 'sessionExport', 'sessionImport'].every(id => {
       const b = document.getElementById(id);
       const rb = b.getBoundingClientRect();
       return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth && rb.height >= 40;
@@ -1074,7 +1085,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   await page.evaluate(() => document.getElementById('versionAvisoPrueba').remove());
 
   await context.close();
-  r.ok = r.exportarDesactivadoAlEmpezar && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
+  r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
     && r.borrada && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil && r.avisoFase2 && r.avisoFase4b;
   return r;
 }
@@ -1449,7 +1460,9 @@ async function recorrerGrabadora(browser, errors) {
   await page.click('#grabBtn');
   await esperaClase('recording');
   await page.waitForTimeout(600);
-  await page.click('.btn-reset');
+  // «Reiniciar valoración» está en el panel de sesión, no en la cabecera
+  await page.click('#sessionBtn');
+  await page.click('#sessionReset');
   r.avisoEnReinicio = (await page.textContent('#confirmBanner')).includes('grabación en curso');
   await page.click('#confirmAction');
   await page.waitForFunction(() => !document.getElementById('grabBtn').classList.contains('grab-pildora'));

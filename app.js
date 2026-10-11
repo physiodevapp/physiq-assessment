@@ -367,10 +367,13 @@ function _softResetApp() {
   }
   _pintarModoUI();   // el modo se conserva, pero el bucle de .option-btn de arriba quitó su selección
   _pintarCirugiaUI();
-  updateResetBtnVisibility();
 }
 
+// «Reiniciar valoración» vive en el panel de sesión (antes, en la cabecera):
+// como «Borrar sesión», cierra el panel mientras pregunta y lo reabre si se cancela.
 function resetApp() {
+  const panelAbierto = document.getElementById('sessionPanelOverlay')?.classList.contains('open');
+  closeSessionPanel();
   showConfirmBanner(
     '↺ Reiniciar valoración completa',
     'Se perderán los datos clínicos de la valoración. El nombre del paciente se conservará.' + _avisoAudioSesion(),
@@ -379,7 +382,8 @@ function resetApp() {
       _descartarAudioSesion();
       _softResetApp(); goToPhase(1);
       _sessionCh.postMessage({ type: 'SESSION_RESET', patient: state.patient || '' });
-    }
+    },
+    { onCancel: () => { if (panelAbierto) toggleSessionPanel(); } }
   );
 }
 
@@ -2477,6 +2481,8 @@ function _showSessionState(st) {
           </button>
         </div>
       </div>
+      <button type="button" class="session-reset-btn" id="sessionReset"${_hasAssessmentData() ? '' : ' disabled'}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Reiniciar valoración</button>
+      <div class="session-io-nota">Borra los datos clínicos y conserva el nombre del paciente.</div>
       <div class="session-io">
         <button type="button" class="session-io-btn" id="sessionExport"${state.maxVisitedIdx > 0 ? '' : ' disabled'}>⬇ Exportar</button>
         <button type="button" class="session-io-btn" id="sessionImport">⬆ Importar</button>
@@ -2484,6 +2490,7 @@ function _showSessionState(st) {
       </div>
       <div class="session-io-nota">Valoración completa en un archivo .json, con los datos clínicos y el nombre del paciente.${state.maxVisitedIdx > 0 ? '' : ' Se puede exportar a partir de la fase 2.'}</div>
       <div class="session-version" id="sessionVersion">${_versionPanelHTML()}</div>`;
+    panel.querySelector('#sessionReset').onclick = resetApp;
     panel.querySelector('#sessionExport').onclick = exportarValoracionArchivo;
     panel.querySelector('#sessionImport').onclick = () => panel.querySelector('#sessionImportFile').click();
     panel.querySelector('#sessionImportFile').onchange = e => {
@@ -3025,10 +3032,6 @@ function _hasAssessmentData() {
     || resumenFormularioPrevio().length > 0;
 }
 
-function updateResetBtnVisibility() {
-  document.querySelector('.btn-reset')?.classList.toggle('visible', _hasAssessmentData());
-}
-
 function saveSession() {
   if (_importando) return;
   const patientEl = document.getElementById('patientName');
@@ -3042,7 +3045,7 @@ function saveSession() {
   if (state.currentPhase === 1 && state.modo === 'breve') renderBrevePendientes();
   // After a clear, block writes until a patient name is entered
   if (_sessionCleared) {
-    if (!state.patient) { updateResetBtnVisibility(); return; }
+    if (!state.patient) return;
     _sessionCleared = false;
   }
   if (state.patient) {
@@ -3063,7 +3066,6 @@ function saveSession() {
         _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_STATE', assessmentState: { ...state } });
       });
   }
-  updateResetBtnVisibility();
 }
 
 function _restoreOptionBtnGroup(groupId, val) {
@@ -3293,7 +3295,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (session.rom && !state.rom) state.rom = session.rom;
     _updateSessionPanelTitle();
-    updateResetBtnVisibility();
   });
 });
 
@@ -3424,7 +3425,7 @@ Object.assign(window, {
   selectIrritabSync, selectNRS, selectOption, selectPsico, selectRegion, selectSQ, selectSistQ,
   toggleAccordionRow, toggleDictation, toggleImpact, togglePhaseSheet, toggleSessionPanel,
   cycleThemePref, selectModo, toggleBreveVerTodo, completarPendientesBreve, selectEmbudo, selectIrritabDirecta, verResultadosSinConfirmar,
-  updateEdadPaciente, updateVital, updateVitalColor, updateResetBtnVisibility,
+  updateEdadPaciente, updateVital, updateVitalColor,
   updateCirugia, selectCirProtocolo, toggleCirComplicacion, toggleDiagnosticoTratado,
 });
 
