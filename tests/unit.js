@@ -1508,6 +1508,67 @@ test('hombro y rodilla: criterio visible corto (≤ 600 caracteres; los clusters
   }
 });
 
+// ── Ampliar con IA (ampliar-ia.js) ───────────────────────────────────────────
+console.log('\nampliar con IA (razonamiento de fases 2 y 4b)');
+const ampliarIA = await import('../ampliar-ia.js');
+
+test('ampliar con IA: el prompt lleva el contexto, el fragmento y la frase de fuentes literal', () => {
+  const { promptIA, ctxCribado, ctxTest, INSTRUCCION_FUENTES } = ampliarIA;
+  assert.equal(INSTRUCCION_FUENTES, 'Busca información solo en fuentes científicas o académicas como PubMed, revistas científicas, libros de medicina o fisiología o fuentes institucionales universitarias.');
+  const p = promptIA({ contexto: ctxCribado('tobillo_pie', '¿Dolor <b>nocturno</b>?'), texto: '  La  isquemia\n produce dolor. ' });
+  assert.ok(p.includes('la pregunta de cribado de banderas rojas «¿Dolor nocturno?» (región tobillo y pie)'), p);
+  assert.ok(p.includes('«La isquemia produce dolor.»'), p);
+  assert.ok(p.includes(INSTRUCCION_FUENTES) && p.endsWith('Cita las fuentes con enlace.'), p);
+  assert.equal(ctxTest('hombro', 'Hawkins-Kennedy', 'Tendinopatía del manguito'), 'el test clínico «Hawkins-Kennedy» para la hipótesis «Tendinopatía del manguito» (región hombro)');
+  assert.equal(ctxTest(undefined, 'Hawkins-Kennedy'), 'el test clínico «Hawkins-Kennedy»');
+});
+
+test('ampliar con IA: fragmento recortado, URLs de Perplexity y Google (modo IA) codificadas', () => {
+  const { recortarTextoIA, MAX_TEXTO_IA, urlIA, promptIA } = ampliarIA;
+  const largo = recortarTextoIA('palabra '.repeat(300));
+  assert.ok(largo.length <= MAX_TEXTO_IA + 1 && largo.endsWith('palabra…'), largo.slice(-20));
+  const q = promptIA({ contexto: '', texto: 'a & b? «c» 100%' });
+  assert.equal(urlIA('perplexity', q), `https://www.perplexity.ai/search?q=${encodeURIComponent(q)}`);
+  assert.equal(urlIA('google', q), `https://www.google.com/search?udm=50&q=${encodeURIComponent(q)}`);
+  assert.equal(urlIA('otro', q), urlIA('perplexity', q), 'destino desconocido → Perplexity');
+  // el prompt más largo posible cabe en la URL
+  assert.ok(urlIA('google', promptIA({ contexto: 'x'.repeat(200), texto: 'á'.repeat(5000) })).length < 8000);
+});
+
+test('ampliar con IA: destino por defecto Perplexity; cada destino explica su ventaja', () => {
+  const { destinoIA, DESTINOS_IA } = ampliarIA;
+  assert.equal(destinoIA(), 'perplexity');
+  assert.deepEqual(Object.keys(DESTINOS_IA), ['perplexity', 'google']);
+  for (const d of Object.values(DESTINOS_IA)) assert.ok(d.nombre && d.ventaja.length > 40);
+});
+
+test('ampliar con IA: el módulo no importa nada (no puede leer datos del paciente)', () => {
+  const src = readFileSync(new URL('../ampliar-ia.js', import.meta.url), 'utf8');
+  assert.ok(!/^\s*import\b/m.test(src) && !/\bimport\(/.test(src), 'ampliar-ia.js no importa módulos');
+  assert.ok(!/\bstate\b/.test(src.replace(/\/\/.*$/gm, '')), 'ampliar-ia.js no toca state');
+  assert.equal(ampliarIA.attrIA('«a» "b" <c> & d'), '«a» &quot;b&quot; &lt;c&gt; &amp; d');
+});
+
+test('ampliar con IA: solo el razonamiento lleva data-ia-ctx y «✨ IA» (fase 2 y tarjetas 4b)', () => {
+  const cuenta = (h, t) => h.split(t).length - 1;
+  for (const [region, data] of Object.entries(SYSTEMIC_SCREENING)) {
+    withState({ region }, () => {
+      for (const sis of data.sistemas) {
+        const html = buildSistemaHTML(sis);
+        const n = sis.preguntas.filter(q => q.razonamiento).length;
+        assert.equal(cuenta(html, 'data-ia-ctx='), n, `${region}/${sis.id}`);
+        assert.equal(cuenta(html, 'class="ia-parrafo"'), n, `${region}/${sis.id}`);
+      }
+    });
+  }
+  for (const { hId, t, i } of TODOS_TESTS) {
+    const html = buildTestItem(hId, t, i);
+    const n = t.razonamiento?.porque ? 1 : 0;
+    assert.equal(cuenta(html, 'data-ia-ctx='), n, `${hId} «${t.name}»`);
+    assert.equal(cuenta(html, 'class="ia-parrafo"'), n, `${hId} «${t.name}»`);
+  }
+});
+
 Object.assign(state, BASE_STATE);   // deja el modo en completo para lo que venga detrás
 
 // ── Informe narrativo con IA (lib/informe-narrativo.js, informe-ia.js) ───────
