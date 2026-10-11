@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **375** referencias de literatura, con **1624** usos.
+- **375** referencias de literatura, con **1628** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **359** de 375 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -135,7 +135,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Mellor 2016](#mellor-2016) | pauta | 1 | 2026-10 · Sin cambios: protocolo del ensayo LEAP (ver Mellor 2018); las revisiones posteriores (Wang 2025, Cordeiro 2024) no dan una progresión de ejercicios más detallada. |
 | [van Dijk 2016](#van-dijk-2016) | pauta | 1 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las recomendaciones citadas coinciden con su apartado final. Los 143 tobillos son de deportistas profesionales y universitarios (su tabla 1), no solo profesionales: corregido en tp2. PubMed (2026-10): ningún consenso posterior sobre el tratamiento conservador de la lesión aislada. |
 | [Al-Subahi 2017](#al-subahi-2017) | pauta | 1 | 2026-10 · Complementada: Trager 2024 (J Man Manip Ther, revisión sistemática con metaanálisis de 16 ensayos, PDF del usuario) actualiza el efecto de la terapia manual sacroilíaca (discapacidad: efecto moderado, certeza baja; dolor: sin efecto demostrado, certeza muy baja; ninguna técnica superior). Al-Subahi se mantiene para el ejercicio de estabilización, la duración de los programas y el vendaje. |
-| [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · razonamiento fase 4 · texto | 37 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
+| [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · razonamiento fase 4 · texto | 38 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
 | [Logerstedt 2017](#logerstedt-2017) | pauta | 4 | 2026-10 · Sin cambios: PubMed (guías de JOSPT de rodilla desde 2017) no encuentra revisión de la guía de esguince de ligamentos; lo posterior son consensos quirúrgicos (esquina posterolateral, 2025; reconstrucción del LCA, 2026), de menos peso y sobre otra pregunta. |
 | [Griffin 2018](#griffin-2018) | pauta | 1 | 2026-10 · Sin cambios: sigue siendo el ensayo de artroscopia frente a fisioterapia de la pauta de ca2; PubMed (SIFA y fisioterapia desde 2022) solo añade el ensayo PhysioFIRST (Kemp 2026), que compara dos programas de fisioterapia. |
 | [Logerstedt 2018](#logerstedt-2018) | pauta | 1 | 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso). |
@@ -163,7 +163,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Balcarek 2025](#balcarek-2025) | pauta | 1 | 2026-10 · Sin cambios: PubMed (consensos y guías de primera luxación de rótula desde 2024) no encuentra nada posterior; el consenso de 2024 para adolescentes (J Pediatr Orthop) es anterior. |
 | [Bateman 2025](#bateman-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10; antes solo el resumen). Un solo ensayo, con alto riesgo de sesgo (RoB 2; 51 analizados de 70), el mismo que recogen Caliandro 2025 y Rinkel 2013; se dice en co8. |
 | [Caliandro 2025](#caliandro-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10; antes solo el resumen). Su ensayo de información frente a férula o deslizamiento neural es el mismo que recogen Rinkel 2013 y Bateman 2025; se corrige la pauta de co8. Es la revisión más reciente (PubMed, 2026-10). |
-| [Desmeules 2025](#desmeules-2025) | pauta · test 4b sin puntuar · texto | 5 | 2026-10 · Sin cambios: guía de 2025; búsqueda en PubMed (2026-10) sin versión posterior. Sigue como pauta de h2 y h3. |
+| [Desmeules 2025](#desmeules-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · texto | 8 | 2026-10 · Sin cambios: guía de 2025; búsqueda en PubMed (2026-10) sin versión posterior. Sigue como pauta de h2 y h3. |
 | [Koc 2025](#koc-2025) | pauta | 1 | 2026-10 · Sustituye a Cibulka 2017 (revisión 2017 de la misma guía) en la pauta de ca1. PDF del usuario leído (2026-10; trae CPG1 y CPG10–CPG31, todas las intervenciones; faltan el resumen, la introducción, los métodos y el diagnóstico, CPG2–CPG9). Cambios frente a 2017: ejercicio (A) 1–5 veces por semana, 30–120 min, 5–16 semanas, incluido el acuático; terapia manual (A) con distracción longitudinal y movilización con movimiento; punción seca nueva (A); educación con afrontamiento del dolor por internet (B); pérdida de peso de C a B; ultrasonido de B a D. Donde choca con NICE NG226 (punción seca, ultrasonido) se dan las dos posturas (decisión del usuario). |
 | [Liu 2025](#liu-2025) | pauta | 1 | 2026-10 · Leída en PMC (2026-10). Sus análisis de dosis son subgrupos separados (tipo, frecuencia, duración) que nunca se combinan: «multimodal 1–2 veces por semana durante 5–8 semanas» para el FAAM se apoya en un solo ensayo, hecho 3 veces por semana, y «terapia manual ≤4 semanas» para el CAIT en uno o dos. Se quita de tp21 esa orientación de dosis y queda el efecto global (CAIT +4,6 y FAAM de actividades diarias +7,7, certeza moderada). |
 | [Lopes 2025](#lopes-2025) | pauta | 1 | 2026-10 · Sin cambios: es la revisión Cochrane más reciente; el metaanálisis en red posterior (BMC Sports Sci Med Rehabil, 2026) no la sustituye en la pauta, que sigue la guía holandesa (Ophey 2025). |
@@ -1317,19 +1317,21 @@ Citada como:
 16. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A15)
 17. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A20)
 18. Kuijper 2009, BMJ 339:b3883 (ensayo aleatorizado, n = 205; la lista de ejercicios está en su apéndice web, no revisado) · Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación)
-19. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); curso clínico, p. A12; diagnóstico diferencial, p. A15, y modelo de clasificación, p. A21)
-20. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); curso clínico y pronóstico, pp. A12–A14 y tabla 6; diagnóstico diferencial e imagen, pp. A15–A17; modelo de clasificación, pp. A21–A22)
-21. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); exploración, p. A19, y modelo de clasificación, p. A22)
-22. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); curso clínico, p. A13)
-23. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); exploración, pp. A19–A20, y modelo de clasificación, p. A22)
-24. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); imagen, p. A16; exploración y clasificación, pp. A19–A24)
-25. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); exploración, p. A19)
+19. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); exploración, p. A19, y modelo de clasificación, pp. A21–A22)
+20. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); curso clínico, p. A12; diagnóstico diferencial, p. A15, y modelo de clasificación, p. A21)
+21. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); curso clínico y pronóstico, pp. A12–A14 y tabla 6; diagnóstico diferencial e imagen, pp. A15–A17; modelo de clasificación, pp. A21–A22)
+22. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); exploración, p. A19, y modelo de clasificación, p. A22)
+23. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); curso clínico, p. A13)
+24. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); exploración, pp. A19–A20, y modelo de clasificación, p. A22)
+25. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); imagen, p. A16; exploración y clasificación, pp. A19–A24)
+26. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); exploración, p. A19)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» | 4b · cita bajo el test | 2 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Pauta de tratamiento | 5 · cita de la pauta | 3 |
+| Hombro | — | Paso `h_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 19 |
 | Cervical | ce1 · Disfunción Articular Cervical | Test «PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3» (en `criterio`) | 4b · mención en el texto | 4 |
 | Cervical | ce1 · Disfunción Articular Cervical | Test «PAIVM (Movilidad Intervertebral Pasiva Accesoria) C0-C3» | 4b · cita bajo el test | 5 |
 | Cervical | ce1 · Disfunción Articular Cervical | Test «ROM Cervical Activo con CROM» | 4b · cita bajo el test | 6 |
@@ -1357,13 +1359,13 @@ Citada como:
 | Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Pauta de tratamiento | 5 · cita de la pauta | 3 |
 | Cervical | ce12 · Dolor Radicular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 18 |
 | Cervical | ce14 · Dolor Cervical Idiopático | Pauta de tratamiento | 5 · cita de la pauta | 3 |
-| Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 19 |
-| Cervical | — | Paso `ce_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 20 |
-| Cervical | — | Paso `ce_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 21 |
-| Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 22 |
-| Cervical | — | Paso `ce_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 23 |
-| Cervical | — | Paso `ce_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 24 |
-| Cervical | — | Paso `ce_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 25 |
+| Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 20 |
+| Cervical | — | Paso `ce_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 21 |
+| Cervical | — | Paso `ce_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 22 |
+| Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 23 |
+| Cervical | — | Paso `ce_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 24 |
+| Cervical | — | Paso `ce_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 25 |
+| Cervical | — | Paso `ce_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 26 |
 
 ### Blonna 2010
 
@@ -2188,6 +2190,9 @@ Citada como:
 3. Desmeules 2025, J Orthop Sports Phys Ther 55(4):235–274 (guía de práctica clínica; incluye la rotura parcial y excluye la completa; letra = grado de la recomendación, tal como la da la guía) · Alentorn-Geli 2026, Knee Surg Sports Traumatol Arthrosc 34:3040–3051 (consenso formal de la ESSKA-ESA, parte 2: tratamiento y vuelta al deporte; letra = grado de la recomendación, tal como la da el consenso; ninguna llega a A)
 4. Las medidas de la movilidad escapular son poco fiables y de validez limitada, y no deben usarse para medir objetivamente la movilidad escapular dinámica (Desmeules 2025, recomendación 6, A). La discinesia se asocia al SAPS, pero no se ha demostrado que cause el dolor (Lluch 2020). Sin S ni E.
 5. Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274, recomendación 6) · Lluch 2020, cap. 3.1 (Struyf), pp. 53–54
+6. Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274; guía de práctica clínica, leídos el resumen de recomendaciones y la sección 1 de valoración: recomendaciones 1 y 2)
+7. Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274; guía de práctica clínica, leídos el resumen de recomendaciones, los rasgos patoanatómicos y la sección 1 de valoración: recomendación 5 y valor diagnóstico de la imagen)
+8. Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274; guía de práctica clínica, leídos el resumen de recomendaciones, los rasgos patoanatómicos y la sección 1 de valoración: recomendación 6)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -2196,6 +2201,9 @@ Citada como:
 | Hombro | h3 · Rotura del Manguito Rotador | Pauta de tratamiento | 5 · cita de la pauta | 3 |
 | Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
 | Hombro | h8 · Discinesia Escapular | Test «Observación visual de asimetría escapular (winging, tilting)» | 4b · cita bajo el test | 5 |
+| Hombro | — | Paso `h_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
+| Hombro | — | Paso `h_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
+| Hombro | — | Paso `h_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 8 |
 
 ### Devereaux y ElMaraghy 2013
 
