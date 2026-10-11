@@ -239,7 +239,7 @@ Diseño, esquema, reglas y procedimiento: `docs/razonamiento-arbol.md` (léelo e
 
 | Orden | Región | Pasos | Fuentes leídas | Razonamientos | Revisión usuario | Notas |
 |---|---|---|---|---|---|---|
-| 1 | Lumbar + interfaz | 6 | [x] | [x] | [ ] | Piloto. Lluch 2020, cap. 5.1 (Fondevila Suárez, pp. 295–326), PDF escaneado del usuario releído entero en la sesión; Petersen 2017 (revisión sistemática, acceso abierto) y Delitto 2012 (guía APTA, PDF del usuario hasta las recomendaciones), nuevas en el registro; Fritz 2005, Flynn 2002, Childs 2004, Munakomi 2023 y Zemaitis 2026 (PDF del usuario, enteros); George 2021 solo el resumen de recomendaciones y la sección de clasificación. Los 6 pasos redactados; pendiente de la revisión del usuario |
+| 1 | Lumbar + interfaz | 6 | [x] | [x] | [x] | Piloto. Lluch 2020, cap. 5.1 (Fondevila Suárez, pp. 295–326), PDF escaneado del usuario releído entero en la sesión; Petersen 2017 (revisión sistemática, acceso abierto) y Delitto 2012 (guía APTA, PDF del usuario hasta las recomendaciones), nuevas en el registro; Fritz 2005, Flynn 2002, Childs 2004, Munakomi 2023 y Zemaitis 2026 (PDF del usuario, enteros); George 2021 solo el resumen de recomendaciones y la sección de clasificación. Los 6 pasos redactados y validados por el usuario (2026-10); decisiones en `docs/razonamiento-arbol.md` |
 | 2 | Cervical | 8 | [ ] | [ ] | [ ] | |
 | 3 | Hombro | 6 | [ ] | [ ] | [ ] | |
 | 4 | Cadera | 9 | [ ] | [ ] | [ ] | |
