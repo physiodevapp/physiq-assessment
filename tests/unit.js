@@ -2418,7 +2418,7 @@ test('deploy-to-hub copia los archivos del informe narrativo', () => {
 
 // lib/reglas-informe.js es idéntico en physiq-report: si cambia aquí, cópialo
 // allí tal cual y actualiza esta huella en los dos tests/unit.js.
-const HUELLA_REGLAS_INFORME = '9382d3b1c166673555f70b9a5c9909b2f804a191c37e266984a948f6e3d854bf';
+const HUELLA_REGLAS_INFORME = 'd4b2256d15abc49b32db822e2cb10794a4150e5ef509242b8cde030262c52008';
 test('reglas compartidas: lib/reglas-informe.js no ha cambiado sin copiarlo a physiq-report', () => {
   const raiz = join(dirname(fileURLToPath(import.meta.url)), '..');
   const h = createHash('sha256').update(readFileSync(join(raiz, 'lib/reglas-informe.js'))).digest('hex');
@@ -3360,7 +3360,7 @@ console.log('\nrevisión automática del informe con IA');
       const dic = pl.prompt(d, { conAudio: true, dictado: true });
       assert.match(dic, /DICTADO DEL FISIOTERAPEUTA \(transcripción de lo que narra el fisioterapeuta/, `${k}: cabecera del dictado`);
       assert.match(dic, /En él habla solo el fisioterapeuta: lo que dice en primera persona.*son sus hallazgos e indicaciones; lo que introduce con «refiere», «dice» o «comenta» es lo que refiere el paciente/, `${k}: quién habla`);
-      assert.match(dic, /no la he hecho»\) no se hizo/, `${k}: lo no hecho no se describe`);
+      assert.match(dic, /«no la he hecho», «ese no lo he explorado»\) no se hizo y no aparece en el informe de ninguna forma: ni como realizado ni para decir que no se hizo/, `${k}: lo no hecho no se describe ni se dice que no se hizo (ronda 29)`);
       const dia = pl.prompt(d, { conAudio: true });
       assert.ok(!/DICTADO/.test(dia) && /La transcripción complementa/.test(dia), `${k}: el diálogo no cambia`);
       assert.ok(!/DICTADO/.test(pl.prompt(d, { conAudio: false, dictado: true })), `${k}: sin audio no hay dictado`);
