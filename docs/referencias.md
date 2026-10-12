@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **386** referencias de literatura, con **1718** usos.
+- **386** referencias de literatura, con **1757** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **365** de 386 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -84,7 +84,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Park 2005](#park-2005) | puntuación 4b · texto | 3 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla V: 50 de 153 roturas completas frente a 4 de 195 controles con los tres test positivos (LR+ 15,57) y 14 de 153 frente a 114 de 195 con los tres negativos (LR 0,16), en 348 operados con los tres test hechos. La combinación sale de una regresión logística en la misma muestra, sin validación; ninguno de los artículos que lo citan (Europe PMC) la valida. Hermans 2013 lo clasifica como nivel IV y Hanchard 2013 (Cochrane) lo deja pendiente de clasificar. |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | 2026-10 · Sin cambios: ya superada por Han 2023, que es la que da las cifras; solo se menciona como dato anterior. |
 | [O'Driscoll 2007](#odriscoll-2007) | puntuación 4b · razonamiento 4b · texto | 3 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Tabla 1: hook test anormal en 33 de 33 roturas completas e intacto en 12 de 12 parciales, todas operadas; los 45 brazos sanos fueron un control aparte. Es una revisión retrospectiva del registro quirúrgico del creador del test (un solo cirujano). En co7 se corrige que la E sale de las roturas parciales, no del brazo sano, y pasa a contraste: el hook test puntúa ahora con Zwerus 2022. |
-| [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | 2026-10 · Sin cambios: PDF del usuario leído; S 0,56, E 0,91, LR+ 6,4 (2,7–15,2) y LR− 0,5 (0,3–0,8) de la combinación coinciden con la tabla 5 (un solo fisioterapeuta exploró a todos los pacientes). PubMed (exploración clínica del LCM de rodilla, revisiones sistemáticas desde 2008) no encuentra ningún estudio ni revisión posterior de precisión diagnóstica de la exploración. |
+| [Kastelein 2008](#kastelein-2008) | puntuación 4b · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: PDF del usuario leído; S 0,56, E 0,91, LR+ 6,4 (2,7–15,2) y LR− 0,5 (0,3–0,8) de la combinación coinciden con la tabla 5 (un solo fisioterapeuta exploró a todos los pacientes). PubMed (exploración clínica del LCM de rodilla, revisiones sistemáticas desde 2008) no encuentra ningún estudio ni revisión posterior de precisión diagnóstica de la exploración. |
 | [Laslett 2008](#laslett-2008) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 4 | 2026-10 · Revisión narrativa, no un agrupado: PDF releído entero (2026-10). El S 91 % / E 78 % del cluster (E 87 % sin centralización; LR+ 4,16, LR− 0,12) lo toma de un solo estudio, su ref. 52 (Laslett 2003, Aust J Physiother). El cluster de ca10 pasa a las LR de Saueressig 2021 (decisión del usuario, 2026-10); Laslett 2008 queda citada para el contexto y la tabla 1. |
 | [Lequesne 2008](#lequesne-2008) | puntuación 4b · test 4b sin puntuar · texto | 5 | 2026-10 · Cifras comprobadas en el resumen y en la tabla 2 de Kinsella 2024. La E se midió frente a controles sin dolor de cadera (casos y controles), lo que la infla: la derotación externa resistida pasa a hallazgo. |
 | [Cook 2010](#cook-2010) | puntuación 4b | 1 | 2026-10 · Sin cambios: PubMed (pruebas clínicas de dolor femoropatelar desde 2013) no encuentra ninguna revisión sistemática posterior que agrupe la sentadilla. |
@@ -102,7 +102,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Roedl 2016](#roedl-2016) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Añadida (antes se citaba como «Roedl», sin año, a través de Campbell 2020): PDF del usuario leído entero, con su fe de erratas (Radiology 280(1):328, que solo corrige que el estrés en valgo se aplicó a mano y no con el aparato Telos). Retrospectivo, 144 jugadores de béisbol consecutivos con dolor medial del codo y cirugía o artroscopia como referencia (de 257 con las dos pruebas). Tabla 2: ecografía de estrés >1,0 mm, 51 de 53 roturas y 74 de 91 sin rotura (umbral fijado de antemano por un estudio en cadáver); artro-RM, 43 de 53 y 83 de 91. La unidad son pacientes. Sin LR publicadas. Cifras de co4 sin cambios. |
 | [Beckenkamp 2017](#beckenkamp-2017) | puntuación 4b · texto | 4 | 2026-10 · Añadida (PDF del usuario, leído entero): 66 estudios, modelo bivariante. Sustituye a Bachmann 2003 en la LR− de tp5 y tp37 (subgrupo con radiografía a todos los pacientes) y a Gomes 2022 en la LR+ del positivo. PubMed (2026-10): Sharifi Razavi 2026 (Arch Acad Emerg Med; 43 estudios en adultos, LR− 0,13) es posterior, pero copia errores de extracción de Gomes 2022 y mezcla tobillo y pie: no se usa. |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 11 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
-| [Décary 2018](#décary-2018) | puntuación 4b · razonamiento 4b · texto | 22 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
+| [Décary 2018](#décary-2018) | puntuación 4b · razonamiento fase 4 · razonamiento 4b · texto | 25 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
 | [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · texto | 18 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
 | [Cook 2019](#cook-2019) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Sin cambios: PubMed (revisiones sistemáticas de precisión diagnóstica de la historia y la exploración en estenosis lumbar desde 2019) solo encuentra Wang 2024 (J Med Internet Res) y Yang 2024 (Spine), de inteligencia artificial sobre imagen, no de exploración clínica. |
 | [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 8 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
@@ -117,7 +117,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sokal 2022](#sokal-2022) | puntuación 4b | 4 | 2026-10 · Sin cambios: texto completo leído en PMC; las cifras de la tabla 4 (modelo bivariante) coinciden en los cuatro tests de ro4. Hay dos metaanálisis posteriores solo del Lever: Hesmerg 2024 (23 estudios, sin el del creador; S 79 %, E 92 %, LR+ 9,9, LR− 0,22; agrupación univariante de S y E) concuerda, y Hu 2024 (12 estudios, con el del creador) da E 78 %. Se citan en el criterio; por el método (bivariante, LCA sin otras lesiones ligamentosas) sigue mandando Sokal. |
 | [Zwerus 2022](#zwerus-2022) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Añadida y pasa a dar las cifras de co7 (decisión del usuario): texto completo leído en PMC (2026-10). Cohorte prospectiva de 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal (2017–2020, dos hospitales), 42 roturas completas; referencia, cirugía en el 79 % y RM o ecografía en el resto; los cirujanos no estaban ciegos en la cirugía. La unidad son pacientes. Tabla 2 (total): hook test S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30; PFP S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34, publicadas. En la tabla, la fila de la palpación de las roturas agudas y crónicas repite la del total (errata sin efecto en la app). No es del grupo que creó los tests. |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 12 | 2026-10 · Sin cambios: PubMed (precisión diagnóstica de la exploración clínica para origen discal, facetario o sacroilíaco, revisiones sistemáticas desde 2023) no encuentra ninguna revisión posterior de tests clínicos; Manchikanti 2026 (Pain Physician) trata de bloqueos facetarios, no de exploración. Tabla 1 releída en PMC en la sesión de cadera (2026-10): agrupa con Meta-DiSc 1.4, efectos aleatorios, sin decir si es univariante o bivariante; ≥3 tests positivos, 6 estudios, 276 pacientes, LR+ 2,44, LR− 0,31; thigh thrust 5 estudios, LR+ 1,13, LR− 0,91; compresión 2 estudios, LR+ 1,79, LR− 0,74. En ca10 da las cifras agrupadas de los tests sueltos; el cluster de ca10 y de lu8 usa Saueressig 2021 (bivariante), y Han 2023 queda como segunda cifra. |
-| [Kazemi 2023](#kazemi-2023) | puntuación 4b · razonamiento fase 2 | 2 | 2026-10 · Sin cambios: texto completo leído en PMC; S 98 %, E 43 %, LR+ 1,56 y LR− 0,12 (0,05–0,26) coinciden. Agrupa con un modelo univariante (Meta-DiSc, DerSimonian-Laird), y Sims 2020 es bivariante; se mantiene por decisión del usuario (más estudios y LR− más conservadora) y se anota el modelo en la cita. PubMed (revisiones de la regla de Ottawa de rodilla desde 2020) no encuentra ninguna posterior. |
+| [Kazemi 2023](#kazemi-2023) | puntuación 4b · razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: texto completo leído en PMC; S 98 %, E 43 %, LR+ 1,56 y LR− 0,12 (0,05–0,26) coinciden. Agrupa con un modelo univariante (Meta-DiSc, DerSimonian-Laird), y Sims 2020 es bivariante; se mantiene por decisión del usuario (más estudios y LR− más conservadora) y se anota el modelo en la cita. PubMed (revisiones de la regla de Ottawa de rodilla desde 2020) no encuentra ninguna posterior. |
 | [Kinsella 2024](#kinsella-2024) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Texto completo leído (tablas 2 y 3). En el texto el LR+ de la abducción resistida aparece como 13,39, que en la tabla 3 es la DOR; se usa el LR+ de la tabla (6,09). |
 | [Zhao 2024](#zhao-2024) | puntuación 4b · razonamiento fase 4 · texto | 9 | 2026-10 · Añadida: texto completo y figuras leídos en Europe PMC (2026-10). Metaanálisis con modelo bivariante (paquete mada) para S, E y LR. Errores de extracción: la tabla 2×2 del arco doloroso de Park 2005 suma 718 pacientes de 552, incluye el arco doloroso de Silva 2008 aunque su tabla 1 no lo recoge, y cuenta dos veces la cohorte ROW (Jain 2017 y Jain 2018) en el Jobe y otros tests; el signo de retraso en RI mezcla roturas del subescapular y del supraespinoso. Por eso va como segunda cifra, no sustituye a Hegedus 2012. |
 | [Albert-Lucena 2025](#albert-lucena-2025) | puntuación 4b | 1 | 2026-10 · Añadida: PDF del usuario leído entero (2026-10). 12 estudios (5 de radiculopatía cervical). ULNT1 en radiculopatía: 5 estudios, modelo bivariante, S 0,73, E 0,52, LR+ 1,51, LR− 0,53, I² 0,89, certeza muy baja (tabla 5). Incluye Wainner 2003 (referencia EMG) y Ghasemi 2013 (conducción nerviosa, cualquier reproducción del dolor), sin diferenciación estructural; la metarregresión (apartado 3.6.4) da, con diferenciación estructural, LR+ 2,71 y LR− 0,50. Para la combinación de 4 ULNT recoge solo Apelby-Albrecht 2013 (omite Grondin). Contraste del ULNT1 de ce3, que sigue con Thoomes 2026 (decisión del usuario). |
@@ -126,7 +126,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rudwaleit 2006](#rudwaleit-2006) | cribado fase 2 · razonamiento fase 2 | 5 | 2026-10 · Añadida (PDF del usuario, leído entero): es el estudio de origen del criterio de dolor lumbar inflamatorio del cribado lumbar (Goodman 2018, cap. 14, da las mismas cifras). Tabla 5: con 2 de 4 (rigidez matutina de más de 30 minutos, mejora con el ejercicio y no con el reposo, despertar en la segunda mitad de la noche, dolor glúteo alternante), S 70,3 %, E 81,2 %, LR+ 3,7; con 3 o 4, S 33,6 %, E 97,3 %, LR+ 12,4 (IC 4,0–39,7). Estudio exploratorio sin validación: 213 menores de 50 años con dolor lumbar de más de 3 meses (101 con espondilitis anquilosante ya establecida, media de 12,9 años de dolor, y 112 con lumbalgia mecánica), muestra de conveniencia no consecutiva; los propios autores piden validarlo en la enfermedad precoz. |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 119 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
 | [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) | pauta · texto | 4 | 2026-10 · Sin cambios: PubMed (SIFA y fisioterapia, consensos y revisiones desde 2022) no encuentra un consenso posterior del IHiPRN; el ensayo PhysioFIRST (Kemp 2026) se suma a la pauta de ca2 sin contradecirlo. |
-| [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). |
+| [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), última actualización 29 de julio de 2026; las recomendaciones citadas (1.2.1, 1.2.6, 1.2.7 —corregida en 2026—, 1.3.1–1.3.3 y 1.3.6) dicen lo que recoge la app. |
 | [Hölmich 1999](#hölmich-1999) | pauta | 1 | 2026-10 · Texto completo leído: la pauta de ca16 coincide con el panel 1 y los métodos. Corregido el trote (pasadas las 6 primeras semanas) y añadida la población (varones de 18 a 50 años). No se encontró un ensayo posterior que lo sustituya. |
 | [Jonsson 2008](#jonsson-2008) | pauta | 1 | 2026-10 · PDF leído entero (2026-10): el dolor en carga de 70 a 21 es solo de los 18 pacientes satisfechos (los otros 9, de 78 a 58); diagnóstico clínico con alteración en la ecografía; el ejercicio debe doler. Corregido en tp9. PubMed (2026-10): se añade Pringels 2025 (ensayo aleatorizado) como respaldo del principio de no cargar en dorsiflexión; la pauta sigue siendo la de Jonsson (decisión del usuario). |
@@ -142,13 +142,13 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [van Dijk 2016](#van-dijk-2016) | pauta | 1 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las recomendaciones citadas coinciden con su apartado final. Los 143 tobillos son de deportistas profesionales y universitarios (su tabla 1), no solo profesionales: corregido en tp2. PubMed (2026-10): ningún consenso posterior sobre el tratamiento conservador de la lesión aislada. |
 | [Al-Subahi 2017](#al-subahi-2017) | pauta | 1 | 2026-10 · Complementada: Trager 2024 (J Man Manip Ther, revisión sistemática con metaanálisis de 16 ensayos, PDF del usuario) actualiza el efecto de la terapia manual sacroilíaca (discapacidad: efecto moderado, certeza baja; dolor: sin efecto demostrado, certeza muy baja; ninguna técnica superior). Al-Subahi se mantiene para el ejercicio de estabilización, la duración de los programas y el vendaje. |
 | [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · razonamiento fase 4 · texto | 38 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
-| [Logerstedt 2017](#logerstedt-2017) | pauta | 4 | 2026-10 · Sin cambios: PubMed (guías de JOSPT de rodilla desde 2017) no encuentra revisión de la guía de esguince de ligamentos; lo posterior son consensos quirúrgicos (esquina posterolateral, 2025; reconstrucción del LCA, 2026), de menos peso y sobre otra pregunta. |
+| [Logerstedt 2017](#logerstedt-2017) | pauta · razonamiento fase 4 | 7 | 2026-10 · Sin cambios: PubMed (guías de JOSPT de rodilla desde 2017) no encuentra revisión de la guía de esguince de ligamentos; lo posterior son consensos quirúrgicos (esquina posterolateral, 2025; reconstrucción del LCA, 2026), de menos peso y sobre otra pregunta. |
 | [Griffin 2018](#griffin-2018) | pauta | 1 | 2026-10 · Sin cambios: sigue siendo el ensayo de artroscopia frente a fisioterapia de la pauta de ca2; PubMed (SIFA y fisioterapia desde 2022) solo añade el ensayo PhysioFIRST (Kemp 2026), que compara dos programas de fisioterapia. |
-| [Logerstedt 2018](#logerstedt-2018) | pauta | 1 | 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso). |
+| [Logerstedt 2018](#logerstedt-2018) | pauta · razonamiento fase 4 | 7 | 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso). |
 | [Mellor 2018](#mellor-2018) | pauta | 1 | 2026-10 · Sin cambios: PubMed (tendinopatía glútea o dolor trocantéreo con ejercicio o educación desde 2022). El metaanálisis en red de Wang 2025 (J Orthop Surg Res 20:126, 19 ensayos, PMC11783921) sitúa el ejercicio primero para dolor y función, y el de Cordeiro 2024 (Sci Rep 14:3343, PMC10858207) lo encuentra mejor que la intervención mínima (certeza baja) e igual que la infiltración en dolor; ninguno da una pauta mejor que la del LEAP. Leídos en PMC (2026-10). |
 | [Biz 2019](#biz-2019) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). PubMed (2026-10): Gopinatth 2023 (Am J Sports Med, metaanálisis de la vuelta al deporte sin cirugía, 79,7 %) y Buchanan 2025 (Sports Health, protocolos, casi todos posquirúrgicos) son posteriores; Gopinatth no se pudo leer y Buchanan no aporta una pauta conservadora mejor. |
 | [Cascia 2019](#cascia-2019) | pauta | 1 | 2026-10 · Sin cambios en la conclusión: texto completo leído en PMC (2026-10; antes solo el resumen). Programas de 6 a 12–14 semanas (tabla 3) y 5 de las 7 series con infiltración de plasma rico en plaquetas: se añade a la pauta de co4. |
-| [Willy 2019](#willy-2019) | pauta | 1 | 2026-10 · Sin cambios: la guía holandesa (Ophey 2025), posterior y del mismo nivel, ya manda donde discrepan; no hay revisión de la guía de JOSPT. |
+| [Willy 2019](#willy-2019) | pauta · razonamiento fase 4 | 7 | 2026-10 · Sin cambios: la guía holandesa (Ophey 2025), posterior y del mismo nivel, ya manda donde discrepan; no hay revisión de la guía de JOSPT. |
 | [Kemp 2020](#kemp-2020) | pauta | 1 | 2026-10 · Sin cambios: PubMed (dolor de cadera relacionado con la articulación y fisioterapia, revisiones sistemáticas desde 2021) no encuentra una revisión posterior de las intervenciones; el ensayo PhysioFIRST (Kemp 2026), posterior, se suma a la pauta de ca2. |
 | [Lubiatowski 2020](#lubiatowski-2020) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La resección fue artroscópica en 280 de 288 y los criterios de eficacia eran poco claros: se precisa en co6. PubMed (2026-10): nada posterior sobre el tratamiento de la plica del codo (Cui 2026 es de pronóstico con RM). |
 | [Rathleff 2020](#rathleff-2020) | pauta | 2 | 2026-10 · Sin cambios: la revisión posterior de tratamientos de Osgood-Schlatter (Ndjonko 2026, Orthop J Sports Med, revisión de alcance, nivel 4) no aporta ningún ensayo ni pauta mejor. |
@@ -173,7 +173,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Koc 2025](#koc-2025) | pauta · razonamiento fase 4 | 3 | 2026-10 · Sustituye a Cibulka 2017 (revisión 2017 de la misma guía) en la pauta de ca1. PDF del usuario leído (2026-10; trae CPG1 y CPG10–CPG31, todas las intervenciones; faltan el resumen, la introducción, los métodos y el diagnóstico, CPG2–CPG9). Cambios frente a 2017: ejercicio (A) 1–5 veces por semana, 30–120 min, 5–16 semanas, incluido el acuático; terapia manual (A) con distracción longitudinal y movilización con movimiento; punción seca nueva (A); educación con afrontamiento del dolor por internet (B); pérdida de peso de C a B; ultrasonido de B a D. Donde choca con NICE NG226 (punción seca, ultrasonido) se dan las dos posturas (decisión del usuario). |
 | [Liu 2025](#liu-2025) | pauta | 1 | 2026-10 · Leída en PMC (2026-10). Sus análisis de dosis son subgrupos separados (tipo, frecuencia, duración) que nunca se combinan: «multimodal 1–2 veces por semana durante 5–8 semanas» para el FAAM se apoya en un solo ensayo, hecho 3 veces por semana, y «terapia manual ≤4 semanas» para el CAIT en uno o dos. Se quita de tp21 esa orientación de dosis y queda el efecto global (CAIT +4,6 y FAAM de actividades diarias +7,7, certeza moderada). |
 | [Lopes 2025](#lopes-2025) | pauta | 1 | 2026-10 · Sin cambios: es la revisión Cochrane más reciente; el metaanálisis en red posterior (BMC Sports Sci Med Rehabil, 2026) no la sustituye en la pauta, que sigue la guía holandesa (Ophey 2025). |
-| [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar | 4 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
+| [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 | 5 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
 | [Prill 2025](#prill-2025) | pauta · texto | 2 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
 | [Pringels 2025](#pringels-2025) | pauta · texto | 2 | 2026-10 · Añadida (leída entera en PMC) en la pauta de tp9: ensayo aleatorizado de 42 deportistas con tendinopatía insercional; limitar la dorsiflexión mejoró el VISA-A 12,9 puntos más (IC 95 % 6,2–19,6) a las 12 semanas y 10,4 (3,7–17,1) a las 24. |
 | [Quzli 2025](#quzli-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
@@ -210,7 +210,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
 | [Dorf 2007](#dorf-2007) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Revisión retrospectiva de 81 pacientes con medidas del brazo afectado; las S y E por umbral (5, 8 y 10 %) salen solo de los 40 con medidas de los dos brazos, frente al brazo sano. No publica LR (las calcula Zwerus 2018). Referencia: diagnóstico clínico de los cirujanos, que probablemente veían la prensión. Se corrige la cita de co1. |
 | [Jull 2007](#jull-2007) | test 4b sin puntuar · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla 3: en la validación cruzada, 17 de 18 cervicogénicas y 112 de 112 sin cervicogénica bien clasificadas (S 94,4 %, E 100 %), con las etiquetas cambiadas en la tabla; función discriminante (tabla 2: actividad del ECM en el CCFT, extensión, disfunción manual C0–C4); tipo de cefalea por cuestionario; los autores piden validarlo. Validación posterior frente a bloqueos: Getsoian 2020, sin S ni E. |
-| [Kim 2007](#kim-2007) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios: PDF del usuario leído; 172 rodillas, tabla 2×2 51/13/6/102 y los 13 falsos positivos (7 franjas sinoviales de la grasa de Hoffa, 5 sinovitis, 1 cartílago) coinciden. PubMed (diagnóstico de la plica medial desde 2008) no encuentra ningún estudio de precisión posterior del test; lo más reciente es de RM (2026) y de tratamiento (revisión de 2025). |
+| [Kim 2007](#kim-2007) | test 4b sin puntuar · razonamiento fase 4 · texto | 3 | 2026-10 · Sin cambios: PDF del usuario leído; 172 rodillas, tabla 2×2 51/13/6/102 y los 13 falsos positivos (7 franjas sinoviales de la grasa de Hoffa, 5 sinovitis, 1 cartílago) coinciden. PubMed (diagnóstico de la plica medial desde 2008) no encuentra ningún estudio de precisión posterior del test; lo más reciente es de RM (2026) y de tratamiento (revisión de 2025). |
 | [Warden 2007](#warden-2007) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PDF del usuario leído; 30 con tendinopatía clínica frente a 33 asintomáticos, ecografía S 87 % y RM S 57 %, E 82 % ambas, coinciden. PubMed no encuentra revisiones posteriores de precisión de la imagen en la tendinopatía rotuliana. |
 | [Appelboam 2008](#appelboam-2008) | test 4b sin puntuar · razonamiento fase 2 · texto | 5 | 2026-10 · Sin cambios: texto completo releído en PMC (PMC2600962, 2026-10). 1740 pacientes, S 96,8 %, E 48,5 %, LR− 0,03 en adultos y 0,11 en niños, riesgo de fractura con extensión completa 1,6 y 4,2 %; coinciden todas las cifras del cribado y del árbol de codo. |
 | [Hancock 2008](#hancock-2008) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: Haskins 2015 (J Clin Epidemiol, revisión sistemática, PDF del usuario) encuentra 9 validaciones de la regla: ser positivo predice menos discapacidad con manipulación con o sin thrust, pero como modificador del efecto solo la apoya Childs 2004 (Hancock 2008 no), y no hay estudios de impacto. Se añade al criterio de lu1. PubMed (reglas de predicción para manipulación lumbar desde 2012) no encuentra nada posterior. |
@@ -252,7 +252,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE CG147](#nice-cg147) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 8 de agosto de 2012, última actualización el 11 de diciembre de 2020. |
 | [NICE NG125](#nice-ng125) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 19 de agosto de 2020; la revisión de vigilancia de 2023 recomendó actualizarla, pero NICE decidió no hacerlo (31 de mayo de 2023). Las recomendaciones 1.1.3 y 1.4.9 dicen lo que recoge el razonamiento (consultado en nice.org.uk en 2026-10). |
 | [NICE NG126](#nice-ng126) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian. |
-| [NICE NG158](#nice-ng158) | razonamiento fase 2 · texto | 22 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 2 de agosto de 2023, y la revisión del 1 de mayo de 2026 decidió no actualizarla. Las recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18 y las tablas 1 y 2 (escalas de Wells de dos niveles) dicen lo que recoge el razonamiento de ca_v2, r_v2, tp_v2, pq_tvp, pq_tvp_ms y pq_tep (consultado en nice.org.uk en 2026-10). |
+| [NICE NG158](#nice-ng158) | razonamiento fase 2 · razonamiento fase 4 · texto | 23 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 2 de agosto de 2023, y la revisión del 1 de mayo de 2026 decidió no actualizarla. Las recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18 y las tablas 1 y 2 (escalas de Wells de dos niveles) dicen lo que recoge el razonamiento de ca_v2, r_v2, tp_v2, pq_tvp, pq_tvp_ms y pq_tep (consultado en nice.org.uk en 2026-10). |
 | [NICE NG38](#nice-ng38) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 17 de febrero de 2016, sin actualizaciones; la recomendación 1.2.2 dice lo que recoge la app. |
 | [NICE NG89](#nice-ng89) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 13 de agosto de 2019, y la revisión de vigilancia del 18 de septiembre de 2024 decidió no actualizarla. Las recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3 dicen lo que recoge el razonamiento (duraciones de la profilaxis y umbrales de 90 minutos; consultado en nice.org.uk en 2026-10). |
 | [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | 2026-10 · Complementada: PubMed (cauda equina, revisiones sistemáticas desde 2012) no encuentra una revisión de precisión diagnóstica posterior. Galliker 2020 (Am J Med, PDF del usuario) aporta el único estudio en urgencias (silla de montar LR+ 3,1, esfínteres LR+ 2,1) y Hennessy 2025 (Eur Spine J, PDF del usuario) revisa 9 guías: RM urgente y radiculopatía bilateral como señal clave. Ambos se añaden a `l6`. Tabrah 2022 (tacto rectal) y Boktor 2023 (residuo posmiccional) no leídos: tratan pruebas que no hace el fisioterapeuta. |
@@ -393,6 +393,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Vijayan y Maher 2026](#vijayan-y-maher-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 21 de febrero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Wróblewski 2026](#wróblewski-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior. |
 | [Zemaitis 2026](#zemaitis-2026) | razonamiento fase 2 · razonamiento fase 4 | 7 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de enero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Stiell 1995](#stiell-1995) | razonamiento fase 4 · razonamiento 4b · texto | 4 | 2026-10 · Sin cambios: PDF releído entero (2026-10). Derivación (1047 adultos, regla de 5 criterios con S 1,0 y E 0,54). Corregido en la app: el criterio de carga es no haber podido cargar ni inmediatamente tras la lesión ni en urgencias (cuatro pasos), como en el original (decisión del usuario, 2026-10; antes «no carga cuatro pasos»). Las revisiones sistemáticas posteriores (Bachmann 2004, Sims 2020, Kazemi 2023) ya se citan y dan las cifras de ro11; PubMed (2026-10): ninguna más reciente. |
+| [Seaberg 1998](#seaberg-1998) | razonamiento fase 4 · texto | 3 | 2026-10 · Sin cambios: PubMed (regla de Pittsburgh de rodilla desde 2015) no encuentra ninguna revisión sistemática ni validación posterior. |
 | [Laslett 2005 (centralización)](#laslett-2005-centralización) | razonamiento 4b | 1 | 2026-10 · Añadida (2026-10): PDF del usuario leído entero; DOI comprobado en Crossref. 107 pacientes crónicos consecutivos con discografía de provocación (69 con la exploración completa; prevalencia de discografía positiva 75 %). Tabla 3: S 40 %, E 94 %, LR+ 6,9 (1,0–47,3); sin malestar E 100 %, con malestar 89 %; sin discapacidad grave E 100 %, con discapacidad grave (Roland-Morris ≥ 19) 80 %. Respalda el aviso visible de la centralización (lu6), que no cambia. Mismo autor y año que el de Man Ther: clave con sufijo, como «Deeb y Maher 2026 (Raynaud)». |
 | [McMurray 1942](#mcmurray-1942) | razonamiento 4b · texto | 4 | 2026-10 · Sin cambios: PDF releído entero (2026-10). Es una conferencia clínica sin cifras de precisión; la app no lo presenta como estudio diagnóstico. Corregido: la técnica está en la p. 413 (no 412–413) y lo que dice de la palpación (más fiable en el centro del ligamento lateral interno) es su opinión, no un resultado de la serie. PubMed (2026-10): la precisión del McMurray sigue con Smith 2015; nada posterior. |
 | [Torg 1976](#torg-1976) | razonamiento 4b · texto | 4 | 2026-10 · Sin cambios en lo que se le atribuye: PDF releído entero (2026-10). Es una serie retrospectiva de 250 rodillas operadas, sin cegamiento ni cálculo de sensibilidad o especificidad; la app no lo presenta como estudio de precisión (las cifras del Lachman y del cajón son de Sokal 2022). Corregido: el cajón fue negativo en 42 y dudoso en 14 de las 93 roturas del LCA con desgarro del menisco interno y sin laxitud en valgo (no «la mitad» de todas), y páginas de las citas. PubMed (2026-10): nada posterior cambia la técnica; el ángulo del Lachman sigue a Décary 2018 (decisión del usuario); Sakane 1997 (cadáver con robot, solo el resumen) concuerda en que la fuerza en el LCA ante una carga anterior es máxima hacia los 15° de flexión. |
@@ -401,7 +403,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Butler 1980](#butler-1980) | razonamiento 4b · texto | 4 | 2026-10 · Sin cambios: PDF releído entero (2026-10). Estudio en cadáver (14 rodillas, cajón en un solo plano sin rotación, sin músculos), no de precisión diagnóstica; la app no lo presenta como tal. Tabla I: el LCA aporta el 85,1 % de la resistencia a 90° (11 rodillas) y el 87,2 % a 30° (3 rodillas); restricciones secundarias por separado < 3 %, y en conjunto pueden bloquear el test con fuerzas manuales pequeñas, igual que el derrame y el espasmo. Precisado: que se distiendan con el tiempo y el cajón se vuelva positivo es interpretación de los autores. PubMed (2026-10): Sakane 1997 (cadáver con robot, solo el resumen) concuerda, con la fuerza en el LCA máxima hacia los 15°; nada lo contradice. |
 | [Matsumoto 1990](#matsumoto-1990) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios: PDF releído entero (2026-10). Estudio en cadáver (29 rodillas, valgo constante de 12,5 Nm), no de precisión diagnóstica; la app no lo presenta como tal. Precisado: la cintilla iliotibial del montaje era un ligamento artificial. PubMed (2026-10): Kanamori 2000 (cadáver con robot) y Tanaka 2012 (revisión) —solo los resúmenes— concuerdan en el papel del LCA cerca de la extensión y añaden estabilizadores secundarios (menisco externo, cápsula anterolateral, cintilla) y factores que bajan el grado del resalte (defensa del paciente, lesión del LCM). |
 | [Speer 1994](#speer-1994) | razonamiento 4b · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF del usuario releído entero (2026-10). 100 operados con un solo diagnóstico, dos exploradores, rotación externa de 90° (no máxima). Todas las cifras citadas coinciden con el texto y la tabla 2. Se corrige el detalle de la aprehensión: que sin luxación previa se refiera dolor en lugar de aprehensión es una hipótesis de los autores; el dato es 58 % frente a 37 % de dolor. Crossref: DOI, volumen y páginas correctos. PubMed (2026-10): Law 2022 (Malays Orthop J, leído entero en PMC) halla aprehensión solo dolorosa en el 16,8 % de 155 operados de Bankart, sin controles, así que no cambia que cuente la aprehensión y no el dolor; Lo 2004 ya está en el metaanálisis de Hegedus 2012. |
-| [Stiell 1995](#stiell-1995) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios: PDF releído entero (2026-10). Derivación (1047 adultos, regla de 5 criterios con S 1,0 y E 0,54). Corregido en la app: el criterio de carga es no haber podido cargar ni inmediatamente tras la lesión ni en urgencias (cuatro pasos), como en el original (decisión del usuario, 2026-10; antes «no carga cuatro pasos»). Las revisiones sistemáticas posteriores (Bachmann 2004, Sims 2020, Kazemi 2023) ya se citan y dan las cifras de ro11; PubMed (2026-10): ninguna más reciente. |
 | [Hertel 1996](#hertel-1996) | razonamiento 4b · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF del usuario releído entero (2026-10). 100 pacientes consecutivos con pinzamiento, todos operados; se excluyó a los que tenían la movilidad pasiva limitada (se añade al detalle). En la serie, 1 de las 19 roturas parciales del supraespinoso dio 5° de retraso: el «¿Por qué?» pasa de «no lo producen» a «casi nunca lo producen». Crossref: DOI, volumen y páginas correctos. PubMed (2026-10): Hurschler 2004 (cadáver con robot, PDF del usuario) concluye que el signo apenas detecta la pérdida del supraespinoso a 20°; Blonna 2010 (en vivo, posterior, mismo nivel, PDF del usuario) lo rebate y se añade al detalle. Castoldi 2009 (con Hertel, 406 hombros, solo resumen) da S 56 % y E 98 % para la rotura aislada del supraespinoso y retraso de 7° a 26° según el tamaño, en la misma línea. |
 | [Stiell 1996](#stiell-1996) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios: PDF releído entero (2026-10). Validación (1096 adultos): S 1,0 (0,94–1,0), E 0,49 (0,46–0,52); situaciones en que no es fiable (intoxicación, traumatismo craneal, varias lesiones dolorosas, paraplejia, sensibilidad disminuida) e instrucción de volver si no mejora en 5 a 7 días coinciden con la app. Revisiones posteriores: ver Stiell 1995. |
 | [Gross y Distefano 1997](#gross-y-distefano-1997) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). 100 hombros explorados antes de la cirugía por un solo explorador, ciego al diagnóstico; 18 excluidos por tener la inestabilidad junto a otro diagnóstico (17 de ellos positivos); en los 82 restantes, S 91,9 % y E 88,9 % (tabla 1, no se usan: la app usa el agrupado de Hegedus 2012); 12 de 14 subluxaciones ocultas positivas. Criterio de positivo y explicación del test coinciden con lo citado. Crossref: DOI, volumen y páginas correctos. PubMed (2026-10): solo Lo 2004 lo estudia después, y está en el metaanálisis de Hegedus 2012. |
@@ -425,7 +426,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Couch 2025](#couch-2025) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios: es la revisión sistemática más reciente de la crepitación de rodilla (búsqueda hasta marzo de 2024; PubMed, 2026-10, nada posterior). |
 | [Altman 1986](#altman-1986) | texto | 1 | 2026-10 · Sustituida por Peat 2006 en los criterios del ACR de rodilla (ro1): su S 95 % / E 69 % sale de la muestra de desarrollo, no del ámbito de un fisio. Solo queda citada como contexto en el texto del test. |
 | [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) | texto | 1 | 2026-10 · Sin cambios: estudio de creación de la regla; ver Seaberg 1998. |
-| [Seaberg 1998](#seaberg-1998) | texto | 1 | 2026-10 · Sin cambios: PubMed (regla de Pittsburgh de rodilla desde 2015) no encuentra ninguna revisión sistemática ni validación posterior. |
 | [Holla 2012](#holla-2012) | texto | 1 | 2026-10 · Sin cambios: es el único estudio de la precisión de la flexión de rodilla en la artrosis inicial (PubMed, 2026-10). Se cita en el detalle de la restricción de movilidad (ro1) como contraste a Zhang 2010, sin cambiar la puntuación: otra población (artrosis sintomática inicial) y otra referencia (hallazgos radiográficos). |
 | [Hutchison 2013](#hutchison-2013) | texto | 1 | 2026-10 · PDF leído entero (2026-10): no es un estudio piloto (piloto fue el entrenamiento previo de los examinadores); 21 participantes, 10 con tendinopatía en la ecografía; agrupa las exploraciones de 3 clínicos; no publica LR. Corregido en tp8. |
 | [Großterlinden 2016](#großterlinden-2016) | texto | 1 | 2026-10 · PDF leído entero (2026-10): la palpación del LTPAI da S 41,7 % y E 52,5 % (tabla 4), con RM de 3 T en menos de 24 h y 14 lesiones en 96 pacientes; el 43 % de antes era el valor recalculado por Netterström-Wedin 2021. Corregido en tp2. |
@@ -2074,6 +2074,9 @@ En esta serie, el 77 % llevaba más de 3 meses desde el traumatismo, lo que faci
 19. Décary 2018 (PLoS One; n = 279, 43 roturas parciales o completas; referencia: diagnóstico compuesto de médico experto con RM)
 20. Décary 2018 (PLoS One 13:e0198797; discusión)
 21. Décary 2018 (PLoS One 13:e0198797; tabla 7 y discusión)
+22. Décary 2018 (PLoS One 13:e0198797, LCA: tablas 2, 3, 5 y 6 y discusión; PM R 10:472–482, menisco: resultados y discusión)
+23. Décary 2018 (PM R 10:472–482; resultados)
+24. Décary 2018 (PM R 10:472–482; resultados y discusión)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -2099,6 +2102,9 @@ En esta serie, el 77 % llevaba más de 3 meses desde el traumatismo, lo que faci
 | Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Descartar: sin mecanismo de pivote ni chasquido + Lachman o pivot shift negativos (si se cumple, marcar «Negativo»)» | 4b · cita bajo el test | 19 |
 | Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Confirmar: mecanismo de pivote + derrame inmediato + Lachman positivo» («¿Por qué?») | 4b · razonamiento del test | 20 |
 | Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Descartar: sin mecanismo de pivote ni chasquido + Lachman o pivot shift negativos (si se cumple, marcar «Negativo»)» («¿Por qué?») | 4b · razonamiento del test | 21 |
+| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 22 |
+| Rodilla | — | Paso `ro_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 23 |
+| Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 24 |
 
 ### Deeb y Maher 2026
 
@@ -4096,10 +4102,12 @@ DOI: 10.1016/j.amjmed.2008.05.041
 Citada como:
 
 1. Kastelein 2008 (Am J Med; n = 134, 35 con lesión del LCM; referencia: RM)
+2. Kastelein 2008 (Am J Med 121:982–988; tablas 2, 3 y 5 y discusión)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro8 · Lesión del Ligamento Colateral Medial (LCM) | Test «Valgo forzado a 30° de flexión + mecanismo de la entrevista» | 4b · cita bajo el test | 1 |
+| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
 ### Katz 1995
 
@@ -4196,11 +4204,13 @@ Citada como:
 
 1. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 197; Kazemi 2023 (Arch Acad Emerg Med 11:e30; revisión sistemática con metaanálisis univariante, 18 estudios, 6702 adultos); Sims 2020 (Eur Radiol 30:4438–46; metaanálisis bivariante, 8 estudios, 7385 adultos: S 99 %, E 49 %, LR− 0,07); Bachmann 2004 (Ann Intern Med 140:121–4; 6 estudios, 4249 adultos: S 98,5 %, E 48,6 %, LR− 0,05)
 2. Kazemi 2023 — Kazemi, Khorram, Fayyazishishavan y cols., «Diagnostic Accuracy of Ottawa Knee Rule for Diagnosis of Fracture in Patients with Knee Trauma; a Systematic Review and Meta-analysis», Arch Acad Emerg Med 2023;11(1):e30.
+3. Kazemi 2023 (Arch Acad Emerg Med 11(1):e30; revisión sistemática con metaanálisis univariante, 18 estudios, 6702 adultos: resultados y discusión)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Regla de Ottawa antes de nada» | 4b · cita bajo el test | 1 |
 | Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 2 |
+| Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
 ### Kelley 2013
 
@@ -4397,11 +4407,13 @@ Citada como:
 
 1. El test de provocación es la mejor forma de diagnosticarlo en consulta. Kim 2007 da S 89,5 % · E 88,7 % frente a artroscopia (la tarjeta redondea a S 0,90 · E 0,89 · LR+ 8,18 · LR− 0,11), pero no puntúa: toda la especificidad sale de los controles con dolor en la interlínea lateral. En el grupo con dolor anteromedial, las 13 rodillas sin plica patológica (7 pinzamientos de franjas sinoviales de la grasa de Hoffa, 5 sinovitis localizadas, 1 lesión de cartílago) dieron el test positivo: E 0 de 13 en el diagnóstico diferencial real. Además, nivel III, no consecutivos y test hecho por su autor sin cegamiento.
 2. Kim 2007 (Arthroscopy; 172 rodillas, referencia: artroscopia); técnica: Kim 2004
+3. Kim 2007 (Arthroscopy 23(12):1303–1308; métodos, resultados y discusión)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro17 · Plica Sinovial Medial | Test «Test de provocación de la plica rotuliana medial» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Rodilla | ro17 · Plica Sinovial Medial | Test «Test de provocación de la plica rotuliana medial» | 4b · cita bajo el test | 2 |
+| Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
 ### Kim y Chang 2021
 
@@ -5378,6 +5390,15 @@ En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pa
 377. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 306 y 309–311
 378. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 302–303 y 312–313
 379. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 297–299, 314–324 y tabla 6, p. 323
+380. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 195–198, 206–209, 216, 219 y 221
+381. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 210–211
+382. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201, 213 y 214 (tabla 2)
+383. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 213–214 (tabla 2) y 225 (tabla 4)
+384. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191–194, 204 (tabla 1), 211–212 y 215
+385. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 195–205 (tabla 1) y 206
+386. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209–214
+387. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216–218 y 220 (tabla 3)
+388. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 221–225 (tabla 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -5676,6 +5697,16 @@ En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pa
 | Rodilla | — | Pregunta `ro_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 330 |
 | Rodilla | — | Pregunta `ro_t6` · Traumático / Mecánico | 2 · razonamiento del cribado | 331 |
 | Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 332 |
+| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 380 |
+| Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 140 |
+| Rodilla | — | Paso `ro_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 381 |
+| Rodilla | — | Paso `ro_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 382 |
+| Rodilla | — | Paso `ro_step2c` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 383 |
+| Rodilla | — | Paso `ro_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 384 |
+| Rodilla | — | Paso `ro_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 385 |
+| Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 386 |
+| Rodilla | — | Paso `ro_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 387 |
+| Rodilla | — | Paso `ro_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 388 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 162 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Fuerza de prensión sin dolor (dinamómetro)» | 4b · cita bajo el test | 163 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 164 |
@@ -5902,6 +5933,9 @@ Nota: Guía de práctica clínica APTA; PDF completo de orthopt.org leído (resu
 Citada como:
 
 1. Logerstedt 2017, J Orthop Sports Phys Ther 47(11):A1–A47 (guía de práctica clínica APTA, esguince de ligamentos de rodilla; letra = grado de la recomendación, tal como la da la guía: A evidencia fuerte, C débil, F opinión de expertos)
+2. Logerstedt 2017 (J Orthop Sports Phys Ther 47(11); guía de la APTA de esguince de ligamentos de rodilla, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, diagnóstico y clasificación, diagnóstico diferencial e imagen, pp. A2 y A7–A16)
+3. Logerstedt 2017 (J Orthop Sports Phys Ther 47(11); guía de la APTA de esguince de ligamentos de rodilla, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, diagnóstico y clasificación, diagnóstico diferencial e imagen, imagen, p. A16)
+4. Logerstedt 2017 (J Orthop Sports Phys Ther 47(11); guía de la APTA de esguince de ligamentos de rodilla, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, diagnóstico y clasificación, diagnóstico diferencial e imagen, diagnóstico y clasificación, p. A12)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -5909,6 +5943,9 @@ Citada como:
 | Rodilla | ro8 · Lesión del Ligamento Colateral Medial (LCM) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Rodilla | ro9 · Lesión del Ligamento Cruzado Posterior (LCP) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Rodilla | ro10 · Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+| Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+| Rodilla | — | Paso `ro_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 
 ### Logerstedt 2018
 
@@ -5922,10 +5959,21 @@ Nota: Guía de práctica clínica APTA; PDF completo de orthopt.org leído (resu
 Citada como:
 
 1. Prill 2025, Knee Surg Sports Traumatol Arthrosc 33(8):3014–3024 (consenso formal EU-US de rehabilitación del menisco, ESSKA-AOSSM-AASPT, parte II: tratamiento sin cirugía; grados A a D, de más respaldo científico a opinión de expertos); Logerstedt 2018, J Orthop Sports Phys Ther 48(2):A1–A50 (guía de práctica clínica APTA, lesiones de menisco y de cartílago articular: tras la meniscectomía; deja el tratamiento sin cirugía para su próxima revisión; letra = grado de la recomendación, tal como la da la guía); AAOS 2024 (guía de práctica clínica de patología meniscal aislada aguda, opciones «Physical Therapy» e «Indications for Acute Surgical Intervention»)
+2. Logerstedt 2018 (J Orthop Sports Phys Ther 48(2); guía de la APTA de lesiones de menisco y cartílago, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, factores de riesgo, diagnóstico y clasificación, diagnóstico diferencial e imagen, pp. A2 y A6–A19)
+3. Logerstedt 2018 (J Orthop Sports Phys Ther 48(2); guía de la APTA de lesiones de menisco y cartílago, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, factores de riesgo, diagnóstico y clasificación, diagnóstico diferencial e imagen, imagen, p. A19)
+4. Logerstedt 2018 (J Orthop Sports Phys Ther 48(2); guía de la APTA de lesiones de menisco y cartílago, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, factores de riesgo, diagnóstico y clasificación, diagnóstico diferencial e imagen, diagnóstico y clasificación, pp. A15–A16)
+5. Logerstedt 2018 (J Orthop Sports Phys Ther 48(2); guía de la APTA de lesiones de menisco y cartílago, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, factores de riesgo, diagnóstico y clasificación, diagnóstico diferencial e imagen, factores de riesgo, p. A12, e imagen, p. A19)
+6. Logerstedt 2018 (J Orthop Sports Phys Ther 48(2); guía de la APTA de lesiones de menisco y cartílago, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, factores de riesgo, diagnóstico y clasificación, diagnóstico diferencial e imagen, incidencia, p. A7, y diagnóstico y clasificación, p. A15)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro2 · Lesión Meniscal | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+| Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+| Rodilla | — | Paso `ro_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+| Rodilla | — | Paso `ro_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
+| Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
+| Rodilla | — | Paso `ro_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 
 ### Lopes 2025
 
@@ -6801,6 +6849,7 @@ Citada como:
 4. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y 1.1.8, y tabla 1 (escala de Wells de dos niveles).
 5. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y tabla 1 (escala de Wells de dos niveles).
 6. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.8 y tabla 1 (escala de Wells de dos niveles).
+7. NICE NG158 (2020; recomendaciones 1.1.1 y 1.1.2, leídas en nice.org.uk en 2026-10)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -6820,6 +6869,7 @@ Citada como:
 | Rodilla | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 5 |
+| Rodilla | — | Paso `ro_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
 | Codo | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
@@ -6856,6 +6906,8 @@ Citada como:
 2. Koc 2025, J Orthop Sports Phys Ther 55(11):CPG1–CPG31 (guía de práctica clínica APTA, revisión de 2025; letra = grado de la recomendación, tal como la da la guía) · NICE NG226 (rec. 1.3.1–1.3.11; donde chocan, se dan las dos posturas)
 3. NICE NG226 (2022)
 4. NICE NG226 (2022; recomendaciones 1.3.1–1.3.11, leídas en nice.org.uk en 2026-10; NICE marca la fuerza con el verbo: «offer» = recomendación firme, «consider» = más débil, «do not offer» = no hacer)
+5. NICE NG226 (2022; recomendaciones 1.1.1 y 1.1.2 y su justificación, leídas en nice.org.uk en 2026-10)
+6. NICE NG226 (2022; recomendación 1.1.1, leída en nice.org.uk en 2026-10)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -6863,6 +6915,8 @@ Citada como:
 | Cadera | ca1 · Artrosis de Cadera | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Criterio combinado: Edad ≥45 + dolor en actividad + rigidez <30 min» | 4b · cita bajo el test | 3 |
 | Rodilla | ro1 · Artrosis de Rodilla | Pauta de tratamiento | 5 · cita de la pauta | 4 |
+| Rodilla | — | Paso `ro_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
+| Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 
 ### NICE NG38
 
@@ -7146,6 +7200,7 @@ Citada como:
 2. Ophey 2025 (Knee Surg Sports Traumatol Arthrosc 33:457–469; guía multidisciplinar holandesa, módulo 4; certeza GRADE muy baja); Cook 2001 (Br J Sports Med 35:65–9; 326 tendones de jóvenes jugadores de baloncesto; referencia: ecografía)
 3. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 192–193; Ophey 2025 (Knee Surg Sports Traumatol Arthrosc 33:457–469; guía multidisciplinar holandesa, módulo 4; certeza GRADE muy baja); Mendonça 2016 (J Orthop Sports Phys Ther 46:673–80; 43 deportistas de competición de voleibol, baloncesto, fútbol y carrera, con y sin dolor en el tendón rotuliano; referencia: ecografía)
 4. Ophey 2025, Knee Surg Sports Traumatol Arthrosc 33:457–469 (guía multidisciplinar holandesa, módulos 5–7; certeza GRADE muy baja) · Lopes 2025, Cochrane Database Syst Rev 5:CD013078 (revisión sistemática, 7 ensayos, 211 deportistas)
+5. Ophey 2025 (Knee Surg Sports Traumatol Arthrosc 33(2):457–469; guía multidisciplinar holandesa, leídos el resumen, la terminología y el módulo 4, diagnóstico de la tendinopatía rotuliana)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -7153,6 +7208,7 @@ Citada como:
 | Rodilla | ro5 · Tendinopatía Rotuliana | Test «Dolor localizado en polo inferior de rótula + palpación del tendón» | 4b · cita bajo el test | 2 |
 | Rodilla | ro5 · Tendinopatía Rotuliana | Test «Dolor durante sentadilla en tabla inclinada (decline squat)» | 4b · cita bajo el test | 3 |
 | Rodilla | ro5 · Tendinopatía Rotuliana | Pauta de tratamiento | 5 · cita de la pauta | 4 |
+| Rodilla | — | Paso `ro_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 
 ### Pak y Kim 2023
 
@@ -8088,10 +8144,14 @@ Nota: Leído el resumen de PubMed (2026-10): Pittsburgh S 99 % (IC 94–100), E 
 Citada como:
 
 1. ¿Algún criterio de Ottawa (≥55 años · cabeza del peroné · rótula aislada · no flexiona 90° · no cargó cuatro pasos ni tras la lesión ni en la consulta)? Y en toda rodilla traumática con dolor anterior, elevación de la pierna extendida. Alternativa a Ottawa: Pittsburgh — contusión o caída MÁS (<12 o >50 años, o no puede caminar); S ≈99 % con E ≈60 %, pide menos radiografías (Seaberg y Jackson 1994; Seaberg 1998).
+2. Seaberg 1998 (Ann Emerg Med 32(1):8–13; tabla 2)
+3. Seaberg 1998 (Ann Emerg Med 32(1):8–13; 934 pacientes de 3 servicios de urgencias: figura, tablas 3 y 4 y discusión)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | — | `steps.1.question` | 4 · mención en el texto | 1 |
+| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+| Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
 ### Seaberg y Jackson 1994
 
@@ -8540,11 +8600,15 @@ Citada como:
 
 Cargar es pasar el peso dos veces a cada pierna (cuatro pasos), aunque cojee; se valora después de palpar y sin forzar. La regla no es fiable con intoxicación, traumatismo craneal, varias lesiones dolorosas, paraplejia o sensibilidad disminuida en la pierna, y no se ha probado en menores de 18 años. Al no pedir radiografía, indicar que vuelva si el dolor o la marcha no mejoran en 5 a 7 días. No detecta las lesiones de partes blandas (Stiell 1995 y Stiell 1996). En la derivación (1047 adultos), el 38 % de las fracturas fueron en mayores de 55 años, que eran el 14 % de la muestra, y el 65 % de los fracturados no flexionaba a 90° (Stiell 1995).
 2. Stiell 1995 (Ann Emerg Med 26(4):405–413; derivación, 1047 adultos; discusión)
+3. Stiell 1995 (Ann Emerg Med 26(4):405–413; tabla 1 y discusión)
+4. Stiell 1995 (Ann Emerg Med 26(4):405–413; derivación de la regla: métodos, resultados y discusión)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Regla de Ottawa antes de nada» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Regla de Ottawa antes de nada» («¿Por qué?») | 4b · razonamiento del test | 2 |
+| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+| Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 
 ### Stiell 1996
 
@@ -9139,10 +9203,21 @@ Nota: Guía de práctica clínica APTA; PDF del usuario (2026-10): resumen de re
 Citada como:
 
 1. Ophey 2025, Knee Surg Sports Traumatol Arthrosc 33:457–469 (guía multidisciplinar holandesa, módulos 1–3; certeza GRADE como la da la guía) · Willy 2019, J Orthop Sports Phys Ther 49(9):CPG1–CPG95 (guía de práctica clínica APTA, resumen de recomendaciones, pp. CPG2–CPG3; letra = grado de la recomendación)
+2. Willy 2019 (J Orthop Sports Phys Ther 49(9); guía de la APTA de dolor femoropatelar, leídos el resumen de recomendaciones, prevalencia, diagnóstico y diagnóstico diferencial, p. CPG22)
+3. Willy 2019 (J Orthop Sports Phys Ther 49(9); guía de la APTA de dolor femoropatelar, leídos el resumen de recomendaciones, prevalencia, diagnóstico y diagnóstico diferencial, diagnóstico diferencial médico, p. CPG21)
+4. Willy 2019 (J Orthop Sports Phys Ther 49(9); guía de la APTA de dolor femoropatelar, leídos el resumen de recomendaciones, prevalencia, diagnóstico y diagnóstico diferencial, diagnóstico diferencial musculoesquelético, pp. CPG21–CPG22)
+5. Willy 2019 (J Orthop Sports Phys Ther 49(9); guía de la APTA de dolor femoropatelar, leídos el resumen de recomendaciones, prevalencia, diagnóstico y diagnóstico diferencial, pp. CPG2, CPG4, CPG14–CPG15 y CPG22)
+6. Willy 2019 (J Orthop Sports Phys Ther 49(9); guía de la APTA de dolor femoropatelar, leídos el resumen de recomendaciones, prevalencia, diagnóstico y diagnóstico diferencial, diagnóstico diferencial musculoesquelético, p. CPG22)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+| Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+| Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+| Rodilla | — | Paso `ro_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+| Rodilla | — | Paso `ro_step2c` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
+| Rodilla | — | Paso `ro_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
+| Rodilla | — | Paso `ro_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 
 ### Wistow 2025
 
