@@ -169,7 +169,7 @@ test('tejidos: leyenda de fases con nombre entero y rango corto, una entrada por
 });
 
 test('tejidos, Fase J 1: subtipos de esguince lateral de tobillo con los plazos de Bergman 2025 y Vuurberg 2018', () => {
-  const st = Object.fromEntries(subtipos.map(x => [x.id, x]));
+  const st = Object.fromEntries(subtipos.filter(x => x.id.startsWith('tobillo_')).map(x => [x.id, x]));
   // Bergman 2025: I 1–2 sem → «4–14 d»; II 3–6 sem → «3–4 s»–«5–8 s»; III 6–12 sem → «5–8 s»–«2–3 m»;
   // reparación: 12–16 sem (Vuurberg 2018) / 3–4 meses (Bergman) → «2–3 m»–«3–6 m»
   assert.deepEqual([st.tobillo_lateral_g1.desde, st.tobillo_lateral_g1.hasta], [1, 1]);
@@ -180,4 +180,19 @@ test('tejidos, Fase J 1: subtipos de esguince lateral de tobillo con los plazos 
   // Cada subtipo cae dentro (o casi) de su fila madre de grado: no se sale del rango del wiki por delante
   const madre = id => filas.find(f => f.subtipos?.some(x => x.id === id));
   for (const x of Object.values(st)) assert.ok(x.desde >= madre(x.id).desde, `${x.id} empieza antes que su fila`);
+});
+
+test('tejidos, Fase J 2: subtipos de rodilla (LCM grado I, LCA sin cirugía, LCA reconstruido) con sus fuentes', () => {
+  const st = Object.fromEntries(subtipos.map(x => [x.id, x]));
+  // Naqvi y Sherman 2023: LCM grado I, vuelta al juego en 10–14 días → «4–14 d»
+  assert.deepEqual([st.rodilla_lcm_g1.desde, st.rodilla_lcm_g1.hasta, st.rodilla_lcm_g1.fuentes], [1, 1, ['Naqvi y Sherman 2023']]);
+  // Evans 2023: sin cirugía, fase aguda + 12 semanas de fisioterapia → «3–4 s» a «2–3 m»
+  assert.deepEqual([st.rodilla_lca_conservador.desde, st.rodilla_lca_conservador.hasta], [2, 4]);
+  // Evans 2023: reconstruido, 6–12 meses de vuelta al deporte; injerto hasta 18 meses o más → «6m–1a» a «2a»
+  assert.deepEqual([st.rodilla_lca_reconstruido.desde, st.rodilla_lca_reconstruido.hasta], [6, 7]);
+  // Cuelgan de la fila que les toca: LCM de grado I, LCA sin cirugía de grado III, reconstruido del injerto
+  const madre = id => filas.find(f => f.subtipos?.some(x => x.id === id)).id;
+  assert.deepEqual(['rodilla_lcm_g1', 'rodilla_lca_conservador', 'rodilla_lca_reconstruido'].map(madre), ['ligamento_g1', 'ligamento_g3', 'injerto']);
+  // Sin plazo en la fuente, no hay subtipo de LCM grado II ni III
+  assert.ok(!subtipos.some(x => /lcm_g[23]/.test(x.id)));
 });

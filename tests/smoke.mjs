@@ -1093,15 +1093,16 @@ async function checkTiemposTejido(browser, errors) {
   await page.click('#tejidosCuerpo button.tej-grupo[data-grupo="hueso"]');
   r.grupoVuelveATodos = soloHueso === 'hueso' && await barras() === nFilas;
   // Subtipos (Fase J): plegados bajo su fila; al desplegarlos se ven con su barra
-  r.subtipos = await page.evaluate(() => {
+  const nSubG3 = TIEMPOS_TEJIDO.grupos.find(g => g.id === 'ligamento').filas.find(f => f.id === 'ligamento_g3').subtipos.length;
+  r.subtipos = await page.evaluate(nSub => {
     const d = document.querySelector('#tejidosCuerpo [data-tejido="ligamento_g3"] + details.tej-subtipos');
     if (!d || d.open) return false;
     // Dentro de un <details> cerrado, Chromium conserva el tamaño (content-visibility): se mira la visibilidad
     const ocultas = [...d.querySelectorAll('.tej-subfila')].every(x => !x.checkVisibility());
     d.open = true;
     const filasSub = [...d.querySelectorAll('.tej-subfila')];
-    return ocultas && filasSub.length === 2 && filasSub.every(x => x.checkVisibility() && x.querySelector('.tej-barra').getBoundingClientRect().width > 0);
-  });
+    return ocultas && filasSub.length === nSub && filasSub.every(x => x.checkVisibility() && x.querySelector('.tej-barra').getBoundingClientRect().width > 0);
+  }, nSubG3);
   await page.mouse.click(10, 10);   // velo
   r.velo = !(await abierto());
   r.sinPayload = await page.evaluate(async () => !/tejid|Remodelaci/i.test(JSON.stringify((await import('./app.js')).buildPhysiQPayload())));
