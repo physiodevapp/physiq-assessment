@@ -85,6 +85,8 @@ test('tiemposTejidoHTML: una barra por fila, «pendiente de fuente» donde toca,
   assert.equal((posq.match(/class="tej-hoy-etq"/g) || []).length, 1);
   assert.ok(posq.includes('Hoy · 6 semanas tras la cirugía'));
   assert.ok(tiemposTejidoHTML(T, { posquirurgico: true }).includes('tarjeta «Cirugía»'));
+  // Tira de fases en el eje fijo: una por fase, con su color
+  assert.equal((sin.match(/class="tej-eje-fase tej-fase-/g) || []).length, T.fases.length);
   // Barras en su columna (grid-column de inicio y fin+1)
   const g2 = posq.match(/data-tejido="ligamento_g2".*?grid-column:(\d+) \/ (\d+)/);
   assert.deepEqual([+g2[1], +g2[2]], [3, 6]);
