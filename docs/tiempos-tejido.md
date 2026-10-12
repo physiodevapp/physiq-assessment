@@ -137,7 +137,7 @@ Revisado y aprobado por el usuario tal cual (2026-10), incluido no pintar la inm
 - **Protección**, barra rayada en «5–8 s»: 2 semanas de inmovilización estricta y movilidad pasiva protegida hasta la 6.ª semana, con grado A en roturas pequeñas o medianas; 6 semanas de inmovilización si preocupa la cicatrización. A las 6 semanas la reparación conserva solo el 19–30 % de su resistencia normal.
 - **Rehabilitación**, barra de contorno (programa) en «3–6 m»: movilidad activa desde la 6.ª semana, fuerza desde la 12.ª y fortalecimiento avanzado de la 20.ª a la 26.ª, solo para alta demanda. El trabajo específico de deporte o trabajo puede empezar hacia los 4–5 meses, y el tendón no se acerca a su resistencia normal hasta los 6 meses como pronto.
 
-Pendiente de revisión por el usuario.
+Revisado y aprobado por el usuario tal cual (2026-10).
 
 ## Qué mide cada barra (2026-10)
 
