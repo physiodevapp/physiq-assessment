@@ -84,6 +84,31 @@ Grupo `menisco`, entre ligamento y hueso. El wiki no tenía fila de menisco, as�
 
 Gravedad: moderada en las tres primeras filas y grave en la sutura. Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Fase J, 4: fracturas por localización (2026-10)
+
+Doce subtipos bajo la fila «Fractura», sacados de los 8 capítulos de StatPearls del registro (PDF del usuario, releídos enteros). Casi ninguno da el tiempo de consolidación completa: dan el de inmovilización, descarga o vuelta a la función, y la nota de cada subtipo dice cuál.
+
+| Subtipo | Barra | Fuente y plazo |
+|---|---|---|
+| Tobillo, estable sin cirugía | 5–8 s | Hermena y Slane 2025: función previa a las 6–8 semanas |
+| Tobillo, operada | 5–8 s | Ídem: carga completa a las 6–8 semanas; la recuperación completa, más larga y sin plazo |
+| 5.º metatarsiano, avulsión (zona 1) | 3–4 s a 5–8 s | Smidt y Massey 2023: carga según tolerancia en 3–6 semanas |
+| 5.º metatarsiano, Jones (zona 2) sin cirugía | 5–8 s | Ídem: 6–8 semanas sin carga |
+| 5.º metatarsiano, estrés (zona 3) | 2–3 m a 3–6 m | Ídem: hasta 20 semanas |
+| Otros metatarsianos, no desplazadas | 3–4 s a 5–8 s | Agrawal y Tiwari 2023: 4–6 semanas de yeso de marcha |
+| Calcáneo, extraarticular | 2–3 m | Seaman y Bergman 2026: 10–12 semanas de inmovilización |
+| Calcáneo, intraarticular desplazada | 2 a (grave) | Ídem: recuperación de 12–18 meses |
+| Navicular, por estrés | 5–8 s | Gheewala 2023: 6–8 semanas de inmovilización |
+| Rótula, sin cirugía | 5–8 s | Mabrouk y Pilson 2026: 6–8 semanas en extensión |
+| Meseta tibial, sin cirugía | 2–3 m a 3–6 m | Malik y Herron 2023: consolidación hasta las 12 semanas, función a las 16–20 o más |
+| Meseta tibial, operada | 2–3 m (grave) | Ídem: 6 semanas sin carga y 6 de carga parcial |
+
+No se pintan, porque su capítulo no da plazo: el húmero proximal (Pencle y Varacallo 2023: solo péndulos a los 10–14 días), la rótula operada y la fractura traumática del navicular. Las fracturas por estrés del 5.º metatarsiano y del navicular van aquí porque su capítulo es el de la localización; la fila general «Fractura de estrés» (fila 5) queda para May y Marappa-Ganeshan 2023.
+
+Al releer el registro apareció un error de la Fase J 1: la nota de los plazos del esguince de tobillo estaba en Agrawal y Tiwari 2023, no en Bergman 2025. Corregido.
+
+Pendiente de revisión por el usuario.
+
 ## Filtro sin «Todos», en una fila (2026-10)
 
 Decisión del usuario. Se quita la pastilla «Todos»: volver a tocar la pastilla activa la desmarca y se ven todos los tejidos, con la misma regla que el resto de grupos de opciones de la app (mecanismo, cronología, NRS). El título de cada grupo hace lo mismo. Las pastillas van en una sola fila que se desliza en horizontal cuando no caben (a 320 px, y cuando la Fase J añada grupos como nervio periférico), con un degradado en el lado por el que quedan más (`_bordesFiltroTejidos()`, `app.js`). Al abrir el panel con un filtro guardado, la pastilla activa queda a la vista. Se descartó un desplegable: escala igual de bien, pero esconde las opciones y cuesta un toque más. Si algún día hubiera más de unas 8 categorías, se replantea (agrupar, o desplegable).

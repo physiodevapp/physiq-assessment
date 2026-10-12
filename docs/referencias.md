@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **399** referencias de literatura, con **1895** usos.
+- **399** referencias de literatura, con **1907** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **374** de 399 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -192,7 +192,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Englund 2003](#englund-2003) | pronóstico | 1 | 2026-10 · Sin cambios: PDF del usuario leído; 155 pacientes, 68 controles, RR 7,0 (2,1–23,5) por rotura degenerativa y 2,7 (0,9–7,7) por traumática coinciden. Las revisiones posteriores (PubMed, meniscectomía y artrosis desde 2015) tratan otros desenlaces (prótesis, rodilla tras el LCA) y no sustituyen esta cifra. |
 | [Culvenor 2019](#culvenor-2019) | pronóstico | 1 | 2026-10 · Sin cambios: texto completo leído en PMC; 63 estudios, 5397 rodillas y, con 40 años o más, defectos de cartílago 43 % y roturas de menisco 19 % coinciden. PubMed (prevalencia de hallazgos en la RM de rodillas sin síntomas, revisiones desde 2019) no encuentra ninguna posterior. |
 | [Lluch 2020](#1-tarjetas-de-consulta) | pronóstico · test 4b sin puntuar | 89 | 2026-10 · Sin cambios: no se encuentra ninguna edición posterior (búsqueda de 2026-10; ZERAPI, ISBN 9788493918743). Los capítulos que cita la app se leyeron enteros en las sesiones de cada región. |
-| [Hermena y Slane 2025](#hermena-y-slane-2025) | pronóstico · test 4b sin puntuar · razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 15 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Hermena y Slane 2025](#hermena-y-slane-2025) | pronóstico · test 4b sin puntuar · razonamiento fase 2 · tiempos de tejido | 7 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 15 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Viikari-Juntura 1989](#viikari-juntura-1989) | test 4b sin puntuar | 1 | 2026-10 · Añadida: PDF del usuario leído entero (2026-10). 43 pacientes enviados a mielografía; la SART se hizo desde el paciente 13 (22 de 31 pacientes; 14 lados de cada lado, tabla 1). Analiza lados y raíces, no pacientes, y no publica tablas 2×2: da sensibilidades por lado (tabla 3) y especificidad del 100 % y 80 % para signos neurológicos y radiológicos. Thoomes 2026 lo agrupa como «n = 13» con celdas que suman 28. |
 | [Altman 1991](#altman-1991) | test 4b sin puntuar · razonamiento fase 4 · texto | 3 | 2026-10 · S 86 % / E 75 % del árbol clínico comprobadas en el resumen, pero son de la muestra de desarrollo; en atención primaria los criterios no se sostienen (Bierma-Zeinstra 1999, Reijman 2004) y no hay S/E de ese ámbito. Los criterios ACR de cadera (ca1) pasan a hallazgo, sin puntuar. |
 | [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) | test 4b sin puntuar · razonamiento fase 4 | 3 | 2026-10 · Texto completo no conseguido. Según Reiman 2015 (tabla 3), el estudio no publicó S ni E del test de Thomas («NA»): las calcularon los autores del metaanálisis. Serie de casos con riesgo de sesgo alto; Narvani 2003 no lo confirma. El Thomas pasa a hallazgo en labrum. |
@@ -274,7 +274,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kalakonda 2022](#kalakonda-2022) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de septiembre de 2022 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Rhodes 2022](#rhodes-2022) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de noviembre de 2022 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Adigun 2023](#adigun-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de febrero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 3 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) | razonamiento fase 2 · tiempos de tejido | 3 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 3 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Ashley y Lui 2023](#ashley-y-lui-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Barney 2023](#barney-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Basit 2023](#basit-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -285,7 +285,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Davis y Shaw 2023](#davis-y-shaw-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Davis y Silberman 2023](#davis-y-silberman-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Dookie y Joseph 2023](#dookie-y-joseph-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Gheewala 2023](#gheewala-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Gheewala 2023](#gheewala-2023) | razonamiento fase 2 · tiempos de tejido | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Jayarangaiah 2023](#jayarangaiah-2023) | razonamiento fase 2 | 10 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Johns 2023](#johns-2023) | razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -298,7 +298,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Leib 2023](#leib-2023) | razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leslie 2023](#leslie-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Malik 2023](#malik-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Malik y Herron 2023](#malik-y-herron-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Malik y Herron 2023](#malik-y-herron-2023) | razonamiento fase 2 · tiempos de tejido | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McClary y Massey 2023](#mcclary-y-massey-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McMordie 2023](#mcmordie-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -321,7 +321,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Shahid 2023](#shahid-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shamrock 2023](#shamrock-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 17 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Singleton y Hefner 2023](#singleton-y-hefner-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de febrero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Smidt y Massey 2023](#smidt-y-massey-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 29 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Smidt y Massey 2023](#smidt-y-massey-2023) | razonamiento fase 2 · tiempos de tejido | 4 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 29 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Torlincasi 2023](#torlincasi-2023) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Truong 2023](#truong-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Waheed 2023](#waheed-2023) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -385,12 +385,12 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Gillen 2026](#gillen-2026) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de junio de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Jain 2026](#jain-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de julio de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Jogu 2026](#jogu-2026) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 15 de mayo de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) | razonamiento fase 2 · tiempos de tejido | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) | razonamiento fase 2 · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 15 de febrero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Menon y Cassaro 2026](#menon-y-cassaro-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Moore y Tafti 2026](#moore-y-tafti-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 15 de febrero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Sabry y Li 2026](#sabry-y-li-2026) | razonamiento fase 2 · razonamiento fase 4 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de marzo de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Seaman y Bergman 2026](#seaman-y-bergman-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 11 de agosto de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Seaman y Bergman 2026](#seaman-y-bergman-2026) | razonamiento fase 2 · tiempos de tejido | 3 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 11 de agosto de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Sendrea 2026](#sendrea-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior. |
 | [Stern 2026](#stern-2026) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 4 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -742,14 +742,16 @@ Título: *Metatarsal Fractures*
 Publicación: StatPearls [Internet], NBK574512 (act. 2023-08-03)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo sigue en su versión del 3 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie. Releído entero (2026-10) para los subtipos de tobillo del panel ⏱: «Short-Term Prognosis» y «Return-to-Sport Timeline» (grado I, 1–2 semanas; II, 3–6; III, 6–12 o más; tras la reparación, 3–4 meses).
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie. Releído entero (2026-10) para los subtipos de fractura del panel ⏱: metatarsianos no desplazados, 4–6 semanas de bota o yeso de marcha.
 
 Citada como:
 
 1. Agrawal y Tiwari 2023 — Agrawal y Tiwari, «Metatarsal Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de agosto de 2023.
+2. Agrawal y Tiwari 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Otros metatarsianos, no desplazadas» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
 | Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 1 |
 
@@ -1291,7 +1293,7 @@ Título: *Acute Ankle Sprain*
 Publicación: StatPearls [Internet], NBK459212 (act. 2025-08-02)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo sigue en su versión del 2 de agosto de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie. Releído entero (2026-10) para los subtipos de tobillo del panel ⏱: «Short-Term Prognosis» y «Return-to-Sport Timeline» (grado I, 1–2 semanas; II, 3–6; III, 6–12 o más; tras la reparación, 3–4 meses).
 
 Citada como:
 
@@ -2854,14 +2856,16 @@ Título: *Tarsal Navicular Fractures*
 Publicación: StatPearls [Internet], NBK542221 (act. 2023-07-10)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo sigue en su versión del 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie. Releído entero (2026-10) para los subtipos de fractura del panel ⏱: fractura de estrés, 6–8 semanas de inmovilización y carga protegida; la traumática no tiene plazo en el capítulo.
 
 Citada como:
 
 1. Gheewala 2023 — Gheewala, Arain y Rosenbaum, «Tarsal Navicular Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 10 de julio de 2023.
+2. Gheewala 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Navicular, por estrés» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
 | Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 1 |
 
 ### Gill 2025
@@ -3737,7 +3741,7 @@ Título: *Ankle Fracture*
 Publicación: StatPearls [Internet], NBK542324 (act. 2025-02-15)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo sigue en su versión del 15 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie. Releído entero (2026-10) para los subtipos de fractura del panel ⏱: tobillo estable sin cirugía, vuelta a la función previa a las 6–8 semanas; tras la osteosíntesis, carga completa a las 6–8 semanas.
 
 Citada como:
 
@@ -3745,9 +3749,12 @@ Citada como:
 2. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»)
 3. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»); NICE NG19, rec. 1.7.1
 4. Hermena y Slane 2025 — Hermena y Slane, «Ankle Fracture», StatPearls [Internet], NCBI Bookshelf, última actualización 15 de febrero de 2025.
+5. Hermena y Slane 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Tobillo, estable sin cirugía» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 5 |
+| Todas (tiempos de tejido) | — | Subtipo «Tobillo, operada (osteosíntesis)» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 5 |
 | Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «No carga cuatro pasos» | 4b · cita bajo el test | 1 |
 | Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Estado neurovascular» | 4b · cita bajo el test | 2 |
 | Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Pronóstico | 5 · cita del pronóstico | 3 |
@@ -6405,14 +6412,16 @@ Título: *Patellar Fractures*
 Publicación: StatPearls [Internet], NBK513330 (act. 2026-09-14)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de rodilla.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de rodilla. Releído entero (2026-10) para los subtipos de fractura del panel ⏱: sin cirugía, 6–8 semanas de inmovilización en extensión y fuerza contra resistencia hacia las 6 semanas; tras la cirugía no da plazo.
 
 Citada como:
 
 1. Mabrouk y Pilson 2026 — Mabrouk y Pilson, «Patellar Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026.
+2. Mabrouk y Pilson 2026
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Rótula, sin cirugía» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
 | Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 
 ### Mabrouk y Siwiec 2026
@@ -6519,14 +6528,17 @@ Título: *Tibial Plateau Fractures*
 Publicación: StatPearls [Internet], NBK470593 (act. 2023-04-22)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Clave con los dos primeros autores para no confundirla con Malik 2023 (úlcera péptica), del mismo año. Razonamiento del cribado de rodilla.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Clave con los dos primeros autores para no confundirla con Malik 2023 (úlcera péptica), del mismo año. Razonamiento del cribado de rodilla. Releído entero (2026-10) para los subtipos de fractura del panel ⏱: sin cirugía, consolidación radiográfica hasta las 12 semanas y función completa a las 16–20 semanas o más; tras la cirugía, 6 semanas sin carga y 6 de carga parcial.
 
 Citada como:
 
 1. Malik y Herron 2023 — Malik, Herron, Mabrouk y Rosenberg, «Tibial Plateau Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 22 de abril de 2023.
+2. Malik y Herron 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Meseta tibial, sin cirugía» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
+| Todas (tiempos de tejido) | — | Subtipo «Meseta tibial, operada» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
 | Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 
@@ -7834,7 +7846,7 @@ Título: *Proximal Humerus Fracture*
 Publicación: StatPearls [Internet], NBK470346 (act. 2023-08-04)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de hombro.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de hombro. Releído entero (2026-10) para los subtipos de fractura del panel ⏱: no da plazo de consolidación (solo péndulos a los 10–14 días): no se pinta.
 
 Citada como:
 
@@ -8594,14 +8606,17 @@ Título: *Calcaneus Fractures*
 Publicación: StatPearls [Internet], NBK430861 (act. 2026-08-11)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo sigue en su versión del 11 de agosto de 2026 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie. Releído entero (2026-10) para los subtipos de fractura del panel ⏱: extraarticular, 10–12 semanas de inmovilización; intraarticular desplazada, recuperación de 12–18 meses.
 
 Citada como:
 
 1. Seaman y Bergman 2026 — Seaman y Bergman, «Calcaneus Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 11 de agosto de 2026.
+2. Seaman y Bergman 2026
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Calcáneo, extraarticular» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
+| Todas (tiempos de tejido) | — | Subtipo «Calcáneo, intraarticular desplazada» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
 | Tobillo y pie | — | Pregunta `tp_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 
 ### See 2026
@@ -8865,14 +8880,18 @@ Título: *5th Metatarsal Fracture*
 Publicación: StatPearls [Internet], NBK544369 (act. 2023-05-29)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo sigue en su versión del 29 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie. Releído entero (2026-10) para los subtipos de fractura del panel ⏱: avulsión (zona 1), carga según tolerancia en 3–6 semanas; Jones (zona 2), 6–8 semanas sin carga; zona 3 (estrés), hasta 20 semanas.
 
 Citada como:
 
 1. Smidt y Massey 2023 — Smidt y Massey, «5th Metatarsal Fracture», StatPearls [Internet], NCBI Bookshelf, última actualización 29 de mayo de 2023.
+2. Smidt y Massey 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «5.º metatarsiano, avulsión de la base (zona 1)» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
+| Todas (tiempos de tejido) | — | Subtipo «5.º metatarsiano, Jones (zona 2) sin cirugía» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
+| Todas (tiempos de tejido) | — | Subtipo «5.º metatarsiano, diáfisis por estrés (zona 3)» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 2 |
 | Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 
 ### Smith 2015
