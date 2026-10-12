@@ -246,3 +246,17 @@ Diseño, esquema, reglas y procedimiento: `docs/razonamiento-arbol.md` (léelo e
 | 5 | Rodilla | 10 | [ ] | [ ] | [ ] | |
 | 6 | Tobillo y pie | 13 | [ ] | [ ] | [ ] | |
 | 7 | Codo | 5 | [ ] | [ ] | [ ] | Sin tarjeta de guía de consulta: Lluch 2020, cap. 3.2 (Coombes y Bisset) |
+
+## Fase J — Condiciones especiales: hipermovilidad / Ehlers-Danlos (piloto)
+
+Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transversal como la del paciente posquirúrgico: tarjeta en la fase 1 (No consta · Diagnosticada · Sospecha), sistema de la fase 2 que solo aparece si se activa, aviso en los tests de laxitud de la fase 4b (sin cambiar su LR) y recuadro en la fase 5. El árbol CIF y el motor de puntuación no se tocan. Criterio de entrada para otras condiciones: que cambien la seguridad o la interpretación de la valoración.
+
+- [x] Decisiones clínicas cerradas (las 5 recomendaciones, 2026-10)
+- [ ] Leer enteras Malfait 2017, Hakim y Grahame 2003, Byers 2017 y Engelbert 2017 (no están en PMC: PDF del usuario) y corregir lo marcado «(a verificar)»
+- [ ] Revisión clínica del usuario: tests con `laxitud`, texto del aviso, preguntas del subtipo vascular, recuadro de la fase 5
+- [ ] Fase 1: tarjeta «Hipermovilidad» (`state.hipermovilidad`, `body.hipermovilidad`)
+- [ ] Fase 2: `SIS_HIPERMOVILIDAD` (cuestionario de 5 preguntas, escala de Beighton, subtipo vascular) con razonamiento
+- [ ] Fase 4b: campo `laxitud: true` y aviso
+- [ ] Fase 5, 📋 Notas, 📄 Informe, payload `hm`, informe con IA, pendiente en modo breve
+- [ ] physiq-report: leer `hm` del payload (otro repositorio)
+- [ ] Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)
