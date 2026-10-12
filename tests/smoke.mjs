@@ -1044,7 +1044,7 @@ async function checkTiemposTejido(browser, errors) {
   await page.click('button.option-btn:has-text("Post-quirúrgico")');
   await page.fill('#cirSemanas', '6');
   await page.click('#tejidosBtn');
-  r.hoy = await page.evaluate(n => document.querySelectorAll('#tejidosCuerpo .tej-hoy').length === n + 1
+  r.hoy = await page.evaluate(n => document.querySelectorAll('#tejidosCuerpo .tej-hoy').length === n
     && document.querySelector('.tej-hoy-texto')?.textContent.includes('6 semanas tras la cirugía'), nFilas);
   // Con scroll hasta abajo, el eje de tiempo sigue pegado arriba del cuerpo
   r.ejeFijo = await page.evaluate(nFases => {
@@ -1102,7 +1102,8 @@ async function checkTiemposTejido(browser, errors) {
     const panel = document.getElementById('tejidosPanel').getBoundingClientRect();
     return document.documentElement.scrollWidth <= innerWidth
       && [...document.querySelectorAll('#tejidosCuerpo .tej-pista, #tejidosCuerpo .tej-nombre')].every(e => { const b = e.getBoundingClientRect(); return b.left >= panel.left - 1 && b.right <= panel.right + 1; })
-      && [...document.querySelectorAll('.tej-col, .tej-filtro-btn')].every(c => c.scrollWidth <= c.clientWidth);
+      && [...document.querySelectorAll('.tej-col, .tej-filtro-btn, .tej-fase-ley')].every(c => c.scrollWidth <= c.clientWidth)
+      && [...document.querySelectorAll('.tej-fase-ley')].every(c => { const b = c.getBoundingClientRect(); return b.left >= panel.left && b.right <= panel.right + 1; });
   });
   await ctxMovil.close();
 
