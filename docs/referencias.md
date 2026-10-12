@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **391** referencias de literatura, con **1746** usos.
+- **391** referencias de literatura, con **1747** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **370** de 391 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -67,7 +67,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) | razonamiento 4b · texto | 6 | **sin revisar** |
 | [Zacharias 2016](#zacharias-2016) | razonamiento 4b · texto | 2 | **sin revisar** |
 | [Snyder-Mackler 2012](#snyder-mackler-2012) | tiempos de tejido | 10 | **sin revisar** |
-| [Wu 2017](#wu-2017) | tiempos de tejido | 1 | **sin revisar** |
+| [Wu 2017](#wu-2017) | tiempos de tejido | 2 | **sin revisar** |
 | [Wallace 2023](#wallace-2023) | tiempos de tejido | 3 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
@@ -9361,6 +9361,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Fase de reparación «Remodelación (tendón)» | cabecera · tiempos de tejido | 1 |
 
 ### Yamamoto 2009
 

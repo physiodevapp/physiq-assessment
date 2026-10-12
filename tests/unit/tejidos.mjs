@@ -1,13 +1,14 @@
 // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera: data/tejidos.js,
 // lib/tejidos.js, docs/tiempos-tejido.md). Se ejecuta desde tests/unit.js.
 import { assert, leer, test, TIEMPOS_TEJIDO } from './comun.mjs';
-const { posicionDia, marcaHoy, tiemposTejidoHTML } = await import('../../lib/tejidos.js');
+const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles } = await import('../../lib/tejidos.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 
 console.log('\ntiempos de tejido');
 
 const T = TIEMPOS_TEJIDO;
 const filas = T.grupos.flatMap(g => g.filas);
+const subtipos = filas.flatMap(f => f.subtipos || []);
 const n = T.columnas.length;
 
 test('tejidos: columnas con `hasta` creciente; filas con rango dentro del eje y gravedad conocida', () => {
@@ -102,4 +103,55 @@ test('tiempos de tejido: solo consulta — ni payload, ni resúmenes, ni informe
   assert.equal(usos, 4, 'import de data.js, import de lib/tejidos.js y la llamada en abrirTiemposTejido()');
   const cuerpo = app.slice(app.indexOf('function buildPhysiQPayload'), app.indexOf('function buildPhysiQPayload') + 6000);
   assert.ok(!/tejid/i.test(cuerpo));
+});
+
+test('tejidos: grupos con id único; subtipos (si los hay) con la forma de una fila, fuente o pendiente, y dentro del eje', () => {
+  const ids = T.grupos.map(g => g.id);
+  assert.ok(ids.every(Boolean) && new Set(ids).size === ids.length && !ids.includes('todos'), 'ids de grupo');
+  for (const st of subtipos) {
+    assert.ok(Number.isInteger(st.desde) && Number.isInteger(st.hasta) && st.desde >= 0 && st.hasta < n && st.desde <= st.hasta, `rango de ${st.id}`);
+    assert.ok(!st.gravedad || st.gravedad in T.gravedades, `gravedad de ${st.id}`);
+    assert.ok(st.fuentes.length || st.pendiente === true, `${st.id}: sin fuente ni pendiente`);
+    for (const k of st.fuentes) assert.ok(REFERENCIAS[k], `${st.id}: «${k}» no está en el registro`);
+  }
+  const todos = [...filas, ...subtipos].map(f => f.id);
+  assert.equal(new Set(todos).size, todos.length, 'ids de fila y subtipo repetidos');
+});
+
+test('tejidos: la remodelación del tendón sigue más allá del año (Wu 2017) y se pinta como parcial', () => {
+  const f = T.fases.find(x => x.id === 'remodelacion_tendon');
+  assert.deepEqual([f.desdeDia, f.hastaDia, f.fuentes], [365, 730, ['Wu 2017']]);
+  assert.ok(f.tejido);
+  const h = tiemposTejidoHTML(T);
+  assert.ok(/tej-eje-fase tej-fase-remodelacion_tendon tej-fase-parcial/.test(h));
+  assert.ok(h.includes('remodelación (tendón), de 1 año a 2 años'));
+});
+
+test('tiemposTejidoHTML: filtro por tejido (pastillas, títulos de grupo que filtran y vuelven a «Todos»)', () => {
+  assert.equal(gruposVisibles(T.grupos, 'todos').length, T.grupos.length);
+  assert.equal(gruposVisibles(T.grupos, 'no-existe').length, T.grupos.length);
+  assert.deepEqual(gruposVisibles(T.grupos, 'ligamento').map(g => g.id), ['ligamento']);
+  const todos = tiemposTejidoHTML(T);
+  assert.equal((todos.match(/class="tej-filtro-btn/g) || []).length, T.grupos.length + 1);
+  assert.ok(/class="tej-filtro-btn activo" data-filtro-tejido="todos" aria-pressed="true"/.test(todos));
+  assert.ok(todos.includes('class="tej-grupo" data-filtro-tejido="ligamento"'));
+  const lig = tiemposTejidoHTML(T, { filtro: 'ligamento' });
+  const nLig = T.grupos.find(g => g.id === 'ligamento').filas.length;
+  assert.equal((lig.match(/class="tej-barra /g) || []).length, nLig);
+  assert.ok(/class="tej-filtro-btn activo" data-filtro-tejido="ligamento" aria-pressed="true"/.test(lig));
+  assert.ok(lig.includes('class="tej-grupo" data-filtro-tejido="todos"'), 'el título del grupo filtrado vuelve a «Todos»');
+  // El eje, la franja de fases y la línea «Hoy» siguen con cualquier filtro
+  assert.ok(lig.includes('tej-eje') && lig.includes('tej-fases'));
+  assert.ok(tiemposTejidoHTML(T, { filtro: 'ligamento', posquirurgico: true, semanas: 6 }).includes('class="tej-hoy-etq"'));
+});
+
+test('tiemposTejidoHTML: los subtipos se pintan plegados bajo su fila, con la gravedad de la fila si no traen la suya', () => {
+  const datos = structuredClone(T);
+  const g2 = datos.grupos.find(g => g.id === 'ligamento').filas.find(f => f.id === 'ligamento_g2');
+  g2.subtipos = [{ id: 'x_tobillo', nombre: 'Prueba tobillo', desde: 2, hasta: 3, fuentes: [], pendiente: true }];
+  const h = tiemposTejidoHTML(datos);
+  assert.ok(h.includes('<details class="tej-subtipos"><summary>1 subtipo de esguince grado ii</summary>'));
+  assert.ok(/class="tej-fila tej-subfila" data-tejido="x_tobillo".*?tej-barra tej-moderada/.test(h));
+  // Sin subtipos, nada
+  assert.ok(!tiemposTejidoHTML(T).includes('tej-subtipos') || subtipos.length > 0);
 });
