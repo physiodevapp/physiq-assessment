@@ -22,11 +22,22 @@
 //
 // Optional: `npm i -D playwright` once, if you want it as a local devDependency instead.
 //
-// Usage: node tests/smoke.mjs [url]   (defaults to http://localhost:3000)
+// Usage: node tests/smoke.mjs [url] [--solo a,b] [--lista] [--secciones N] [--paralelo N]
+//   url            defaults to http://localhost:3000 (or SMOKE_URL)
+//   --lista        prints the section ids
+//   --solo a,b     runs only those sections (module loading is always checked);
+//                  the result line says PARCIAL — a full run is still due before main
+//   --secciones N  sections at once (default 3); --paralelo N  pages at once in
+//                  the per-region walks (default 7). Use 1 for both to run fully
+//                  serially if a failure looks timing-related.
+// Each section prints its own time, so the slow ones are visible.
 
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { AsyncLocalStorage } from 'node:async_hooks';
+
+const salidaActual = new AsyncLocalStorage();
 
 let chromium;
 try {
@@ -44,7 +55,7 @@ try {
   }
 }
 
-const BASE_URL = process.argv[2] || process.env.SMOKE_URL || 'http://localhost:3000';
+const BASE_URL = process.argv.slice(2).find(a => !a.startsWith('--') && /^https?:/.test(a)) || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
 const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'ampliar-ia.js', 'lib/session.js', 'lib/posquirurgico.js',
   'data/comun.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
@@ -52,6 +63,15 @@ const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy no
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
 // and VALID_REGIONS in tests/unit/comun.mjs — add a new region to all three.
 const REGIONS = ['hombro', 'cadera', 'cervical', 'lumbar', 'rodilla', 'codo', 'tobillo_pie'];
+
+// Carga la app dentro de un iframe (como en el hub) y espera a que termine de
+// cargar y se haya marcado como «in-hub», en vez de una pausa fija.
+async function cargarEnHub(hub) {
+  await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`, { waitUntil: 'networkidle' });
+  const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
+  await frame.waitForFunction(() => document.body.classList.contains('in-hub'));
+  return frame;
+}
 
 // Click the *last* rendered step each time — earlier steps stay in the DOM
 // (answered options remain clickable, to allow changing an answer), so
@@ -850,9 +870,7 @@ async function checkAmpliarIA(browser) {
   // Hub: sin barra y sin enlaces visibles
   const ctxHub = await browser.newContext();
   const hub = await ctxHub.newPage();
-  await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
-  await hub.waitForTimeout(1500);
-  const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
+  const frame = await cargarEnHub(hub);
   await frame.fill('#motivoConsulta', 'Dolor lumbar (hub)');
   await frame.click('#mecanismo .option-btn >> nth=0');
   await frame.click('#cronologia .option-btn >> nth=0');
@@ -973,9 +991,7 @@ async function checkPreguntaIA(browser, errors) {
   // Hub: sin botón
   const ctxHub = await browser.newContext();
   const hub = await ctxHub.newPage();
-  await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
-  await hub.waitForTimeout(1500);
-  const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
+  const frame = await cargarEnHub(hub);
   r.hub = await frame.evaluate(() => getComputedStyle(document.getElementById('preguntaIABtn')).display === 'none');
   await ctxHub.close();
 
@@ -1109,9 +1125,7 @@ async function checkTiemposTejido(browser, errors) {
   // Hub: el botón sí está (consulta pura, sin red)
   const ctxHub = await browser.newContext();
   const hub = await ctxHub.newPage();
-  await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
-  await hub.waitForTimeout(1500);
-  const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
+  const frame = await cargarEnHub(hub);
   r.hub = await frame.evaluate(() => getComputedStyle(document.getElementById('tejidosBtn')).display !== 'none');
   await ctxHub.close();
 
@@ -1877,9 +1891,7 @@ async function checkInformeNarrativo(browser, errors) {
   const hub = await ctxHub.newPage();
   const pedidos = [];
   hub.on('request', q => { if (/informe-ia\.js|informe-narrativo\.js|revision-informe\.js|grabadora\.js|licencia-ia\.js/.test(q.url())) pedidos.push(q.url()); });
-  await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
-  await hub.waitForTimeout(1500);
-  const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
+  const frame = await cargarEnHub(hub);
   await frame.evaluate(() => { buildResults(); goToPhase(5); });
   await hub.waitForTimeout(500);
   r.hubSinModulo = pedidos.length === 0 && await frame.evaluate(() => document.body.classList.contains('in-hub') && document.getElementById('informeIA').innerHTML === '');
@@ -1893,6 +1905,10 @@ async function checkInformeNarrativo(browser, errors) {
   r.ok = Object.entries(r).every(([, v]) => v === true);
   return r;
 }
+
+// Texto del toast sin esperar: page.textContent() espera a que exista el
+// elemento hasta el timeout por defecto (30 s) si nunca se ha mostrado.
+const textoToast = page => page.evaluate(() => document.getElementById('appToast')?.textContent || '');
 
 // Grabación desde la cabecera (grabadora.js), con el micrófono falso de
 // Chromium. Táctil (390 px): un toque empieza, otro pausa (con el aviso de la
@@ -1967,7 +1983,7 @@ async function recorrerGrabadora(browser, errors) {
   await page.click('#grabBtn');
   await esperaClase('paused');
   r.toquePausa = await page.isHidden('#grabMenu');
-  r.avisoPulsacionLarga = ((await page.textContent('#appToast').catch(() => '')) || '').includes('mantén pulsado');
+  r.avisoPulsacionLarga = (await textoToast(page)).includes('mantén pulsado');
   await page.click('#grabBtn');
   await esperaClase('recording');
   r.toqueReanuda = true;
@@ -2109,7 +2125,7 @@ async function recorrerGrabadoraRaton(browser, errors) {
   r.ratonPapeleraVisible = await page.isVisible('#grabDescBtn');
   await page.click('#grabBtn');
   await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('paused'));
-  r.ratonSinAvisoPulsacion = !((await page.textContent('#appToast').catch(() => '')) || '').includes('mantén pulsado');
+  r.ratonSinAvisoPulsacion = !(await textoToast(page)).includes('mantén pulsado');
   await page.click('#grabDescBtn');
   r.ratonPapeleraConfirma = (await page.textContent('#confirmBanner')).includes('Descartar');
   await page.click('#confirmAction');
@@ -2120,20 +2136,52 @@ async function recorrerGrabadoraRaton(browser, errors) {
   return r;
 }
 
-async function main() {
-  const browser = await chromium.launch();
-  const page = await browser.newPage();
-  const errors = [];
-  const moduleStatus = {};
+// Opciones de línea de órdenes (véase la cabecera del archivo):
+//   [url]               por defecto http://localhost:3000 (o SMOKE_URL)
+//   --solo a,b          ejecuta solo esas secciones (o SMOKE_SOLO=a,b)
+//   --lista             lista las secciones y sale
+//   --paralelo N        páginas a la vez en los recorridos por región (o SMOKE_PARALELO; 1 = en serie)
+//   --secciones N       secciones a la vez (o SMOKE_SECCIONES; 1 = en serie, útil si algo falla por tiempos)
+function leerOpciones(argv) {
+  const o = { url: null, solo: process.env.SMOKE_SOLO || '', lista: false, paralelo: Number(process.env.SMOKE_PARALELO) || REGIONS.length,
+    secciones: Number(process.env.SMOKE_SECCIONES) || 3 };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    const [clave, valorIgual] = a.split(/=(.*)/s);
+    const valor = () => valorIgual ?? argv[++i] ?? '';
+    if (clave === '--solo') o.solo = valor();
+    else if (clave === '--paralelo') o.paralelo = Math.max(1, Number(valor()) || 1);
+    else if (clave === '--secciones') o.secciones = Math.max(1, Number(valor()) || 1);
+    else if (a === '--lista') o.lista = true;
+    else if (!a.startsWith('--')) o.url = a;
+    else { console.error(`Opción desconocida: ${a}`); process.exit(2); }
+  }
+  o.solo = o.solo.split(',').map(x => x.trim()).filter(Boolean);
+  return o;
+}
 
+// Ejecuta fn sobre cada elemento con como mucho n a la vez; devuelve los
+// resultados en el mismo orden que los elementos.
+async function enParalelo(items, n, fn) {
+  const out = new Array(items.length);
+  let siguiente = 0;
+  const trabajador = async () => {
+    while (siguiente < items.length) { const i = siguiente++; out[i] = await fn(items[i], i); }
+  };
+  await Promise.all(Array.from({ length: Math.min(n, items.length) }, trabajador));
+  return out;
+}
+
+// Una página nueva (contexto propio, así que su IDB no se cruza con otras)
+// con los mismos escuchas de errores y el mismo /validate simulado.
+async function nuevaPagina(browser, errors, moduleStatus) {
+  const page = await browser.newPage();
   page.on('pageerror', err => errors.push(`pageerror: ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error') errors.push(`console: ${msg.text()}`); });
-  page.on('response', res => {
-    const url = res.url();
-    const match = MODULE_FILES.find(f => url.endsWith('/' + f));
+  if (moduleStatus) page.on('response', res => {
+    const match = MODULE_FILES.find(f => res.url().endsWith('/' + f));
     if (match) moduleStatus[match] = res.status();
   });
-
   // Standalone, la fase 5 monta la tarjeta del informe narrativo, que consulta
   // /validate al llegar: aquí responde siempre «demo» para que ningún recorrido
   // llame al worker real (checkInformeNarrativo usa su propio contexto).
@@ -2142,10 +2190,213 @@ async function main() {
     contentType: 'application/json',
     body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo', email: 'demo' }, demoOnly: false }),
   }));
+  return page;
+}
 
+// Recorre las 7 regiones con `walk`, varias a la vez (una página por
+// trabajador, recargada para cada región: `patient` nunca se rellena, así que
+// saveSession() no escribe en IDB y cada carga empieza limpia en la fase 1).
+async function porRegiones(ctx, walk) {
+  const paginas = [];
+  const res = await enParalelo(REGIONS, ctx.paralelo, async (region) => {
+    let page = paginas.pop() || await nuevaPagina(ctx.browser, ctx.errors);
+    try {
+      await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+      return await walk(page, region);
+    } finally { paginas.push(page); }
+  });
+  await Promise.all(paginas.map(p => p.context().close()));
+  return res;
+}
+
+// Cada sección devuelve true si pasa; imprime su propio detalle.
+// `id` es lo que se pasa a --solo.
+const SECCIONES = [
+  { id: 'regiones', titulo: `Walking through phases 1-5 for all ${REGIONS.length} regions...`, run: async (ctx) => {
+    const results = await porRegiones(ctx, walkRegion);
+    results.forEach((r, i) => {
+      const t = r.treeResult;
+      const ok = t.treeCompleteShown && r.finalPhase === 5 && r.sinPosq;
+      console.log(`  ${ok ? '✓' : '✗'} ${REGIONS[i].padEnd(9)} -> ${t.answeredSteps} pasos, ${t.activeHypotheses} hipótesis, árbol completo: ${t.treeCompleteShown}, fase alcanzada: ${r.finalPhase}`);
+    });
+    const ok = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
+    if (!ok) {
+      console.log('\nRegions that did not complete / reach phase 5:');
+      results.filter(r => !(r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq)).forEach(r => console.log('  -', JSON.stringify(r)));
+    }
+    return ok;
+  } },
+
+  { id: 'breve', titulo: `Modo breve (embudo, irritabilidad directa, resultados sin confirmar) for all ${REGIONS.length} regions...`, run: async (ctx) => {
+    const res = await porRegiones(ctx, walkRegionBreve);
+    res.forEach((r, i) => {
+      const sc = r.screening;
+      console.log(`  ${r.ok ? '✓' : '✗'} ${REGIONS[i].padEnd(9)} -> embudo NO en ${sc.embudoNo} sistemas, urgentes visibles ${sc.urgVisibles}/${sc.urgTotal}, no urgentes visibles ${sc.noUrgVisibles}, fase ${r.fase5.phase}, transparencia: ${r.fase5.transparencia}`);
+    });
+    const ok = res.every(r => r.ok);
+    if (!ok) { console.log('\nModo breve failures:'); res.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r))); }
+    return ok;
+  } },
+
+  { id: 'posquirurgico', titulo: `Paciente posquirúrgico (tarjeta «Cirugía», notas de traumatismo, protocolo en la fase 5) for all ${REGIONS.length} regions...`, run: async (ctx) => {
+    const res = await porRegiones(ctx, walkRegionPosq);
+    res.forEach((r, i) => {
+      console.log(`  ${r.ok ? '✓' : '✗'} ${REGIONS[i].padEnd(9)} -> tarjeta ${r.visible ? 'visible' : 'oculta'}, «${r.semanas}», cribado posquirúrgico ${r.cribado.preguntas.join(' ')}, notas de traumatismo visibles ${r.notas.visibles}/${r.notas.total}, fase ${r.fase5.phase}`);
+    });
+    // Los tres casos sueltos, cada uno en su página y a la vez.
+    const [hombroTratada, caderaProtesis, cambioMec] = await Promise.all([checkHombroTratada, checkCaderaProtesis, checkCambioMecanismo].map(async check => {
+      const page = await nuevaPagina(ctx.browser, ctx.errors);
+      try { return await check(page); } finally { await page.context().close(); }
+    }));
+    console.log(`  ${cambioMec.ok ? '✓' : '✗'} cambiar el mecanismo con el cribado pintado añade o quita el sistema, conserva las respuestas y su urgencia deja de contar`);
+    console.log(`  ${hombroTratada.ok ? '✓' : '✗'} hombro h_step2b → h11 «ya diagnosticada y tratada»: sin derivación en la fase 5, protocolo del cirujano`);
+    console.log(`  ${caderaProtesis.ok ? '✓' : '✗'} cadera con prótesis: pq1 la primera, ca1 «tratada con la cirugía»; con Insidioso, sin pq1 ni casilla`);
+    const ok = res.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
+    if (!ok) {
+      console.log('\nPosquirúrgico failures:');
+      res.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
+      [hombroTratada, caderaProtesis, cambioMec].filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
+    }
+    return ok;
+  } },
+
+  // The mobile phase-sheet button (the last real bug found, PHASE_NAV_IDS).
+  // Toda la barra de fase es el botón (se pulsa por la izquierda, sobre el título).
+  { id: 'barra-fase', titulo: 'Barra de fase en móvil:', run: async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await page.click('#mobilePhaseBar', { position: { x: 60, y: 20 } }).catch(() => {});
+    await page.waitForTimeout(150);
+    const sheetOpen = await page.evaluate(() => document.getElementById('phaseSheet')?.classList.contains('open')
+      && document.getElementById('mobilePhaseBar').getAttribute('aria-expanded') === 'true');
+    console.log(`  ${sheetOpen ? '✓' : '✗'} Phase sheet opens from the phase bar: ${sheetOpen}`);
+    await page.evaluate(() => closePhaseSheet());
+    const barraFase = await checkBarraFase(page);
+    console.log(`  ${barraFase.ok ? '✓' : '✗'} barra de fase en móvil: botón entero sin caja en «≡», aria-expanded vuelve a false al cerrar; chip «Breve» en la barra (no en la cabecera) en móvil y en la cabecera en escritorio; cabe a 320 px${barraFase.ok ? '' : ' ' + JSON.stringify(barraFase)}`);
+    return sheetOpen === true && barraFase.ok;
+  } },
+
+  { id: 'cribado', titulo: 'Razonamiento del cribado (lumbar):', run: async ({ page }) => {
+    const razonEsc = await checkRazonamientoEscritorio(page);
+    console.log(`  ${razonEsc.ok ? '✓' : '✗'} escritorio: panel lateral sin velo, SÍ con el panel abierto, cambia de pregunta, Escape cierra`);
+    const razonMov = await checkRazonamientoMovil(page);
+    console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, sin ✕ (cierra el velo), sin entrada colgando`);
+    if (!razonEsc.ok) console.log('\nRazonamiento escritorio:', JSON.stringify(razonEsc));
+    if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
+    return razonEsc.ok && razonMov.ok;
+  } },
+
+  { id: 'ia', titulo: '«✨ Ampliar con IA» y «✨ Preguntar a la IA»:', run: async ({ browser, errors }) => {
+    const ampliarIA = await checkAmpliarIA(browser);
+    console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
+    const preguntaIA = await checkPreguntaIA(browser, errors);
+    console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, Claude se recuerda, Escape cierra; hoja inferior en móvil que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
+    return ampliarIA.ok && preguntaIA.ok;
+  } },
+
+  { id: 'tejidos', titulo: '«⏱ Tiempos de recuperación»:', run: async ({ browser, errors }) => {
+    const tejidos = await checkTiemposTejido(browser, errors);
+    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido que se recuerda y título de grupo que vuelve a «Todos», sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+    return tejidos.ok;
+  } },
+
+  { id: 'tests-4b', titulo: '«¿Por qué?» de los tests (fase 4b, hombro):', run: async ({ page }) => {
+    const r = await checkTestsAmpliar(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} «cuánto pesa» bajo los badges, criterio corto, «Ampliar» abre el panel del test (lateral sin velo; sheet con velo a 390 px que atrás cierra sin salir de la 4b), ir a la fase 5 lo cierra`);
+    if (!r.ok) console.log('\nTests 4b «Ampliar»:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'arbol', titulo: '«¿Por qué esta pregunta?» del árbol (fase 4, lumbar):', run: async ({ page }) => {
+    const r = await checkArbolRazon(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} entre la pregunta y las opciones, se abre sin contestar el paso, «✨ IA» con el contexto del paso, «Ampliar» abre el panel (Por qué, En detalle, Fuentes enlazadas; lateral sin velo, se contesta con él abierto; sheet con velo a 390 px que atrás cierra sin salir de la fase 4)${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'lado', titulo: 'Sexo (fase 1) y lado afectado (fase 2):', run: async ({ page }) => {
+    const r = await checkLado(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} sexo se guarda y se borra con un segundo toque; lado aparece al elegir región, «Central» solo en columna; todo cabe a 320 px`);
+    if (!r.ok) console.log('\nLado afectado:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'derivacion', titulo: 'Derivación del árbol (lumbar, VASCULAR):', run: async ({ page }) => {
+    const r = await checkDerivacionVascular(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
+    if (!r.ok) console.log('\nDerivación del árbol:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'tactil', titulo: 'Botones en táctil (segundo toque y :hover):', run: async ({ browser, errors }) => {
+    const r = await checkBotonesTactil(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema; «Compartir» es una hoja inferior que se cierra con atrás o tocando el velo${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'dialogos', titulo: 'Diálogos de confirmación (320 px):', run: async ({ browser, errors }) => {
+    const r = await checkDialogos(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar; Escape, el velo y «Cancelar» cancelan sin hacer la acción (seleccionar y soltar en el velo no cierra); dismiss() cierra sin onCancel y es idempotente${r.ok ? '' : ' ' + JSON.stringify({ fallos: r.fallos, cierre: r.cierre })}`);
+    return r.ok;
+  } },
+
+  { id: 'fase5', titulo: 'Fase 5: pauta por situación y lo que nunca se pliega:', run: async ({ browser, errors }) => {
+    const r = await checkFase5Plegado(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'exportar', titulo: 'Exportar / importar la valoración (panel de sesión):', run: async ({ browser, errors }) => {
+    const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
+    const r = await checkExportarImportar(browser, errors, tmpDir);
+    console.log(`  ${r.ok ? '✓' : '✗'} exportar descarga ${r.nombreArchivo}; panel → diálogo y vuelta sin parpadeo de velo; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${r.fasesMovil ? '' : ' ' + JSON.stringify(r.bandasMovil)}`);
+    if (!r.ok) console.log('\nExportar / importar:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'version', titulo: 'Aviso de versión nueva (versión desplegada simulada):', run: async ({ browser, errors }) => {
+    const r = await checkAvisoVersion(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} móvil: abajo, encima de los botones de navegación en todas las fases (también con la barra de contexto), 44 px táctiles, cabe a 320 px, una línea a 320/360/390 px también mientras actualiza, oculto al escribir; «×» deja el punto en el icono de sesión; escritorio: arriba${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'informe-ia', titulo: 'Informe narrativo con IA (worker y Turnstile simulados):', run: async ({ browser, errors }) => {
+    const r = await checkInformeNarrativo(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y compartido; fase 5: un solo «Compartir» abajo con menú (paciente, IA si la hay, notas; «Enviar al informe» en el hub); nada de IA en el hub`);
+    if (!r.ok) console.log('\nInforme narrativo:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  // Lanza sus propios navegadores (micrófono falso); la grabación con sonido
+  // y la del micrófono mudo van a la vez.
+  { id: 'grabacion', titulo: 'Grabación desde la cabecera (micrófono falso de Chromium):', run: async ({ errors }) => {
+    const [grab, silencio] = await Promise.all([checkGrabadoraCabecera(errors), checkGrabadoraSilencio(errors)]);
+    console.log(`  ${grab.ok ? '✓' : '✗'} toque = empezar/pausa/reanudar, pulsación larga y papelera descartan, sigue por todas las fases, «Generar» la cierra y la usa; reiniciar avisa y descarta`);
+    console.log(`  ${silencio.ok ? '✓' : '✗'} micrófono mudo → píldora ⚠ y aviso «No se oye nada»; con sonido, ningún aviso`);
+    if (!grab.ok) console.log('\nGrabadora:', JSON.stringify(grab));
+    if (!silencio.ok) console.log('    ', JSON.stringify(silencio));
+    return grab.ok && silencio.ok;
+  } },
+];
+
+async function main() {
+  const op = leerOpciones(process.argv.slice(2));
+  if (op.lista) { SECCIONES.forEach(s => console.log(`${s.id.padEnd(14)} ${s.titulo}`)); return; }
+  const desconocidas = op.solo.filter(id => !SECCIONES.some(s => s.id === id));
+  if (desconocidas.length) {
+    console.error(`Sección desconocida: ${desconocidas.join(', ')}. Secciones: ${SECCIONES.map(s => s.id).join(', ')}`);
+    process.exit(2);
+  }
+  const elegidas = op.solo.length ? SECCIONES.filter(s => op.solo.includes(s.id)) : SECCIONES;
+  const inicio = Date.now();
+
+  const browser = await chromium.launch();
+  const errors = [];
+  const moduleStatus = {};
+  const page = await nuevaPagina(browser, errors, moduleStatus);
+
+  // Siempre: que cada módulo cargue (también comprueba que el servidor responde).
   console.log(`Loading ${BASE_URL} ...`);
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
-
   console.log('\nModule file responses:');
   let modulesOk = true;
   for (const f of MODULE_FILES) {
@@ -2155,157 +2406,44 @@ async function main() {
     console.log(`  ${ok ? '✓' : '✗'} ${f} -> ${status ?? 'never requested'}`);
   }
 
-  console.log(`\nWalking through phases 1-5 for all ${REGIONS.length} regions...`);
-  const results = [];
-  for (const region of REGIONS) {
-    // Fresh load per region instead of resetting in-page state: `patient`
-    // is never filled here, so saveSession() never writes to IDB (it's
-    // gated on a non-empty patient name — see CLAUDE.md), meaning a plain
-    // reload always starts phase 1 clean with nothing to restore.
-    if (results.length > 0) await page.goto(BASE_URL, { waitUntil: 'networkidle' });
-    const r = await walkRegion(page, region);
-    const t = r.treeResult;
-    const ok = t.treeCompleteShown && r.finalPhase === 5 && r.sinPosq;
-    console.log(`  ${ok ? '✓' : '✗'} ${region.padEnd(9)} -> ${t.answeredSteps} pasos, ${t.activeHypotheses} hipótesis, árbol completo: ${t.treeCompleteShown}, fase alcanzada: ${r.finalPhase}`);
-    results.push(r);
-  }
-
-  console.log(`\nModo breve (embudo, irritabilidad directa, resultados sin confirmar) for all ${REGIONS.length} regions...`);
-  const breveResults = [];
-  for (const region of REGIONS) {
-    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
-    const r = await walkRegionBreve(page, region);
-    const sc = r.screening;
-    console.log(`  ${r.ok ? '✓' : '✗'} ${region.padEnd(9)} -> embudo NO en ${sc.embudoNo} sistemas, urgentes visibles ${sc.urgVisibles}/${sc.urgTotal}, no urgentes visibles ${sc.noUrgVisibles}, fase ${r.fase5.phase}, transparencia: ${r.fase5.transparencia}`);
-    breveResults.push(r);
-  }
-
-  console.log(`\nPaciente posquirúrgico (tarjeta «Cirugía», notas de traumatismo, protocolo en la fase 5) for all ${REGIONS.length} regions...`);
-  const posqResults = [];
-  for (const region of REGIONS) {
-    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
-    const r = await walkRegionPosq(page, region);
-    console.log(`  ${r.ok ? '✓' : '✗'} ${region.padEnd(9)} -> tarjeta ${r.visible ? 'visible' : 'oculta'}, «${r.semanas}», cribado posquirúrgico ${r.cribado.preguntas.join(' ')}, notas de traumatismo visibles ${r.notas.visibles}/${r.notas.total}, fase ${r.fase5.phase}`);
-    posqResults.push(r);
-  }
-  const hombroTratada = await checkHombroTratada(page);
-  const caderaProtesis = await checkCaderaProtesis(page);
-  const cambioMec = await checkCambioMecanismo(page);
-  console.log(`  ${cambioMec.ok ? '✓' : '✗'} cambiar el mecanismo con el cribado pintado añade o quita el sistema, conserva las respuestas y su urgencia deja de contar`);
-  console.log(`  ${hombroTratada.ok ? '✓' : '✗'} hombro h_step2b → h11 «ya diagnosticada y tratada»: sin derivación en la fase 5, protocolo del cirujano`);
-  console.log(`  ${caderaProtesis.ok ? '✓' : '✗'} cadera con prótesis: pq1 la primera, ca1 «tratada con la cirugía»; con Insidioso, sin pq1 ni casilla`);
-  if (!caderaProtesis.ok) console.log('    ', JSON.stringify(caderaProtesis));
-
-  // Exercise the mobile phase-sheet button (the last real bug found,
-  // PHASE_NAV_IDS) once, on whichever region the loop above ended on.
-  // Toda la barra de fase es el botón (se pulsa por la izquierda, sobre el título).
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.click('#mobilePhaseBar', { position: { x: 60, y: 20 } }).catch(() => {});
-  await page.waitForTimeout(150);
-  const sheetOpen = await page.evaluate(() => document.getElementById('phaseSheet')?.classList.contains('open')
-    && document.getElementById('mobilePhaseBar').getAttribute('aria-expanded') === 'true');
-  console.log(`\nPhase sheet opens from the phase bar: ${sheetOpen}`);
-  await page.evaluate(() => closePhaseSheet());
-  const barraFase = await checkBarraFase(page);
-  console.log(`  ${barraFase.ok ? '✓' : '✗'} barra de fase en móvil: botón entero sin caja en «≡», aria-expanded vuelve a false al cerrar; chip «Breve» en la barra (no en la cabecera) en móvil y en la cabecera en escritorio; cabe a 320 px${barraFase.ok ? '' : ' ' + JSON.stringify(barraFase)}`);
-
-  console.log('\nRazonamiento del cribado (lumbar):');
-  const razonEsc = await checkRazonamientoEscritorio(page);
-  console.log(`  ${razonEsc.ok ? '✓' : '✗'} escritorio: panel lateral sin velo, SÍ con el panel abierto, cambia de pregunta, Escape cierra`);
-  const razonMov = await checkRazonamientoMovil(page);
-  console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, sin ✕ (cierra el velo), sin entrada colgando`);
-
-  const ampliarIA = await checkAmpliarIA(browser);
-  console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
-
-  const preguntaIA = await checkPreguntaIA(browser, errors);
-  console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, Claude se recuerda, Escape cierra; hoja inferior en móvil que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
-
-  const tejidos = await checkTiemposTejido(browser, errors);
-  console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido que se recuerda y título de grupo que vuelve a «Todos», sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
-
-  console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
-  const testsAmpliar = await checkTestsAmpliar(page);
-  console.log(`  ${testsAmpliar.ok ? '✓' : '✗'} «cuánto pesa» bajo los badges, criterio corto, «Ampliar» abre el panel del test (lateral sin velo; sheet con velo a 390 px que atrás cierra sin salir de la 4b), ir a la fase 5 lo cierra`);
-
-  console.log('\n«¿Por qué esta pregunta?» del árbol (fase 4, lumbar):');
-  const arbolRazon = await checkArbolRazon(page);
-  console.log(`  ${arbolRazon.ok ? '✓' : '✗'} entre la pregunta y las opciones, se abre sin contestar el paso, «✨ IA» con el contexto del paso, «Ampliar» abre el panel (Por qué, En detalle, Fuentes enlazadas; lateral sin velo, se contesta con él abierto; sheet con velo a 390 px que atrás cierra sin salir de la fase 4)${arbolRazon.ok ? '' : ' ' + JSON.stringify(arbolRazon)}`);
-
-  console.log('\nSexo (fase 1) y lado afectado (fase 2):');
-  const lado = await checkLado(page);
-  console.log(`  ${lado.ok ? '✓' : '✗'} sexo se guarda y se borra con un segundo toque; lado aparece al elegir región, «Central» solo en columna; todo cabe a 320 px`);
-
-  console.log('\nDerivación del árbol (lumbar, VASCULAR):');
-  const deriv = await checkDerivacionVascular(page);
-  console.log(`  ${deriv.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
-
-  console.log('\nBotones en táctil (segundo toque y :hover):');
-  const tactil = await checkBotonesTactil(browser, errors);
-  console.log(`  ${tactil.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema; «Compartir» es una hoja inferior que se cierra con atrás o tocando el velo${tactil.ok ? '' : ' ' + JSON.stringify(tactil)}`);
-
-  console.log('\nDiálogos de confirmación (320 px):');
-  const dialogos = await checkDialogos(browser, errors);
-  console.log(`  ${dialogos.ok ? '✓' : '✗'} los botones caben en una línea con todas las etiquetas; papelera solo al borrar o descartar; Escape, el velo y «Cancelar» cancelan sin hacer la acción (seleccionar y soltar en el velo no cierra); dismiss() cierra sin onCancel y es idempotente${dialogos.ok ? '' : ' ' + JSON.stringify({ fallos: dialogos.fallos, cierre: dialogos.cierre })}`);
-
-  console.log('\nFase 5: pauta por situación y lo que nunca se pliega:');
-  const plegado = await checkFase5Plegado(browser, errors);
-  console.log(`  ${plegado.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba${plegado.ok ? '' : ' ' + JSON.stringify(plegado)}`);
-
-  console.log('\nExportar / importar la valoración (panel de sesión):');
-  const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
-  const expImp = await checkExportarImportar(browser, errors, tmpDir);
-  console.log(`  ${expImp.ok ? '✓' : '✗'} exportar descarga ${expImp.nombreArchivo}; panel → diálogo y vuelta sin parpadeo de velo; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${expImp.fasesMovil ? '' : ' ' + JSON.stringify(expImp.bandasMovil)}`);
-
-  console.log('\nAviso de versión nueva (versión desplegada simulada):');
-  const avisoVersion = await checkAvisoVersion(browser, errors);
-  console.log(`  ${avisoVersion.ok ? '✓' : '✗'} móvil: abajo, encima de los botones de navegación en todas las fases (también con la barra de contexto), 44 px táctiles, cabe a 320 px, una línea a 320/360/390 px también mientras actualiza, oculto al escribir; «×» deja el punto en el icono de sesión; escritorio: arriba${avisoVersion.ok ? '' : ' ' + JSON.stringify(avisoVersion)}`);
-
-  console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
-  const informeIA = await checkInformeNarrativo(browser, errors);
-  console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y compartido; fase 5: un solo «Compartir» abajo con menú (paciente, IA si la hay, notas; «Enviar al informe» en el hub); nada de IA en el hub`);
-
+  // Cada sección corre con su propia página y su salida se guarda aparte
+  // (AsyncLocalStorage) y se imprime entera al acabar, en el orden de la lista.
+  const salidas = new Map();
+  const logOriginal = console.log;
+  console.log = (...a) => { const buf = salidaActual.getStore(); if (buf) buf.push(a.join(' ')); else logOriginal(...a); };
+  let impresas = 0;
+  const imprimirListas = () => {
+    while (impresas < elegidas.length && salidas.has(elegidas[impresas].id)) logOriginal(salidas.get(elegidas[impresas++].id).join('\n'));
+  };
+  const fallidas = [];
+  await enParalelo(elegidas, op.secciones, async (s) => {
+    const buf = [`\n${s.titulo}`];
+    await salidaActual.run(buf, async () => {
+      const t0 = Date.now();
+      const page = await nuevaPagina(browser, errors);
+      let ok;
+      try { ok = await s.run({ browser, page, errors, paralelo: op.paralelo }); }
+      catch (e) { ok = false; console.log(`  ✗ excepción: ${e.message.split('\n')[0]}`); }
+      finally { await page.context().close().catch(() => {}); }
+      console.log(`  (${s.id}: ${((Date.now() - t0) / 1000).toFixed(1)} s)`);
+      if (!ok) fallidas.push(s.id);
+    });
+    salidas.set(s.id, buf);
+    imprimirListas();
+  });
+  console.log = logOriginal;
+  fallidas.sort((a, b) => elegidas.findIndex(s => s.id === a) - elegidas.findIndex(s => s.id === b));
   await browser.close();
-
-  console.log('\nGrabación desde la cabecera (micrófono falso de Chromium):');
-  const grab = await checkGrabadoraCabecera(errors);
-  console.log(`  ${grab.ok ? '✓' : '✗'} toque = empezar/pausa/reanudar, pulsación larga y papelera descartan, sigue por todas las fases, «Generar» la cierra y la usa; reiniciar avisa y descarta`);
-  const silencio = await checkGrabadoraSilencio(errors);
-  console.log(`  ${silencio.ok ? '✓' : '✗'} micrófono mudo → píldora ⚠ y aviso «No se oye nada»; con sonido, ningún aviso`);
-  if (!silencio.ok) console.log('    ', JSON.stringify(silencio));
 
   const realErrors = errors.filter(e => !KNOWN_NOISE.some(n => e.includes(n)));
   console.log(`\n${realErrors.length ? '✗' : '✓'} Console/page errors: ${realErrors.length}`);
   realErrors.forEach(e => console.log('  -', e));
 
-  const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
-  const breveOk = breveResults.every(r => r.ok);
-  const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && barraFase.ok && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && tejidos.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && avisoVersion.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
-  console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
-  if (!regionsOk) {
-    console.log('\nRegions that did not complete / reach phase 5:');
-    results.filter(r => !(r.treeResult.treeCompleteShown && r.finalPhase === 5))
-      .forEach(r => console.log('  -', JSON.stringify(r)));
-  }
-  if (!razonEsc.ok) console.log('\nRazonamiento escritorio:', JSON.stringify(razonEsc));
-  if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
-  if (!testsAmpliar.ok) console.log('\nTests 4b «Ampliar»:', JSON.stringify(testsAmpliar));
-  if (!deriv.ok) console.log('\nDerivación del árbol:', JSON.stringify(deriv));
-  if (!informeIA.ok) console.log('\nInforme narrativo:', JSON.stringify(informeIA));
-  if (!expImp.ok) console.log('\nExportar / importar:', JSON.stringify(expImp));
-  if (!lado.ok) console.log('\nLado afectado:', JSON.stringify(lado));
-  if (!grab.ok) console.log('\nGrabadora:', JSON.stringify(grab));
-  if (!posqOk) {
-    console.log('\nPosquirúrgico failures:');
-    posqResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
-    if (!hombroTratada.ok) console.log('  -', JSON.stringify(hombroTratada));
-    if (!cambioMec.ok) console.log('  -', JSON.stringify(cambioMec));
-  }
-  if (!breveOk) {
-    console.log('\nModo breve failures:');
-    breveResults.filter(r => !r.ok).forEach(r => console.log('  -', JSON.stringify(r)));
-  }
+  const pass = modulesOk && fallidas.length === 0 && realErrors.length === 0;
+  const parcial = elegidas.length < SECCIONES.length;
+  const resumen = parcial ? ` (PARCIAL: ${elegidas.map(s => s.id).join(', ')}; no sustituye a la ejecución completa antes de main)` : '';
+  console.log(`\n${pass ? '✓ SMOKE TEST PASSED' : '✗ SMOKE TEST FAILED'}${resumen} · ${((Date.now() - inicio) / 1000).toFixed(0)} s`);
+  if (fallidas.length) console.log(`Secciones con fallos: ${fallidas.join(', ')}  (repetir con --solo ${fallidas.join(',')})`);
   process.exit(pass ? 0 : 1);
 }
 
