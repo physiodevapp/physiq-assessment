@@ -3708,6 +3708,9 @@
    "hallazgo quirúrgico, o seguimiento a 6 meses en los 25 no operados) da para la exploración diferida completa (días 4–7:",
    "hinchazón, hematoma, palpación y cajón) S 96 %, E 84 %, pero para el cajón solo el texto (S 86 %, E 74 %) no cuadra con su propia tabla II (S 74 %, 90 de 122;",
    "E 66–74 % según cómo se cuenten los dudosos), y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp1|Gesto testigo (①) y medida objetiva (②)": {
@@ -3730,6 +3733,9 @@
    "recogidos en Netterström-Wedin 2021, sin cifra agrupada).",
    "La LR− 0,28 (IC 0,09–0,89) de Sman 2015 es de otra cosa:",
    "dolor en cualquiera de cinco estructuras de la sindesmosis (S 92 %, E 29 %)."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp2|Squeeze test": {
@@ -3741,6 +3747,9 @@
    "Sman 2015 (RM de referencia) da S 26 %, E 88 %, LR+ 2,15 (IC 0,86–5,39);",
    "agrupado en Netterström-Wedin 2021 (4 estudios, 428 participantes, modelo univariante), S 32 %, E 85 %, LR+ 3,16 (IC 0,95–10,49), LR− 0,77.",
    "Los dos intervalos de la LR+ cruzan el 1."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp2|Gesto testigo (①) y medida objetiva (②)": {
@@ -3904,6 +3913,9 @@
    "salto S 43 %, E 87 %.",
    "Las LR (3,14 y 3,31) no las publica el artículo:",
    "las calcula Reiman de S y E redondeadas, sin intervalo de confianza."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp8|Descarga en el salto": {
@@ -4391,6 +4403,9 @@
    "la compresión pulgar-índice del espacio (Mahadevan 2015) tiene S 96 %, pero su especificidad sale de un solo pie sin Morton;",
    "el chasquido de Mulder da LR+ 2,19 (IC 0,45–10,60;",
    "Dando, en Pitcher 2024)."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp34|Diferencial del antepié": {
@@ -4458,6 +4473,9 @@
    "El positivo es un hallazgo:",
    "LR+ 1,53 (1,38–1,70).",
    "Excluidas embarazadas y personas que no pueden seguir la prueba."
+  ],
+  "retiradas": [
+   "Solo descarta:"
   ]
  },
  "tp37|No carga cuatro pasos": {
