@@ -216,3 +216,24 @@ test('tejidos, Fase J 3: grupo «Menisco» propio, con los plazos de Prill 2025 
   assert.equal((html.match(/class="tej-bloque"/g) || []).length, 1);
   assert.equal((html.match(/class="tej-barra /g) || []).length, g.filas.length);
 });
+
+test('tejidos, Fase J 4: subtipos de fractura por localización, con los plazos de sus capítulos de StatPearls', () => {
+  const madre = filas.find(f => f.id === 'fractura');
+  const st = Object.fromEntries(madre.subtipos.map(x => [x.id, x]));
+  const rango = id => [st[id].desde, st[id].hasta];
+  // 6–8 semanas → «5–8 s»: tobillo (Hermena y Slane 2025), Jones (Smidt y Massey 2023),
+  // navicular por estrés (Gheewala 2023), rótula sin cirugía (Mabrouk y Pilson 2026)
+  for (const id of ['fx_tobillo_estable', 'fx_tobillo_cirugia', 'fx_quinto_jones', 'fx_navicular_estres', 'fx_rotula_conservador']) assert.deepEqual(rango(id), [3, 3], id);
+  // 3–6 y 4–6 semanas → «3–4 s» a «5–8 s»
+  assert.deepEqual(rango('fx_quinto_avulsion'), [2, 3]);
+  assert.deepEqual(rango('fx_metatarsianos'), [2, 3]);
+  // Calcáneo: extraarticular 10–12 semanas → «2–3 m»; intraarticular 12–18 meses → «2a»
+  assert.deepEqual(rango('fx_calcaneo_extra'), [4, 4]);
+  assert.deepEqual(rango('fx_calcaneo_intra'), [7, 7]);
+  // Meseta sin cirugía: 12 semanas a 16–20 → «2–3 m» a «3–6 m»; zona 3 hasta 20 semanas, igual
+  assert.deepEqual(rango('fx_meseta_conservador'), [4, 5]);
+  assert.deepEqual(rango('fx_quinto_estres'), [4, 5]);
+  // Sin plazo en su capítulo, no se pintan: húmero proximal, rótula operada, navicular traumática
+  assert.ok(!madre.subtipos.some(x => /humero|rotula_cirugia|navicular_trauma/.test(x.id)));
+  for (const x of madre.subtipos) assert.ok(x.fuentes.length === 1 && x.nota, x.id);
+});
