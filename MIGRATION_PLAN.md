@@ -252,7 +252,8 @@ Diseño, esquema, reglas y procedimiento: `docs/razonamiento-arbol.md` (léelo e
 Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transversal como la del paciente posquirúrgico: tarjeta en la fase 1 (No consta · Diagnosticada · Sospecha), sistema de la fase 2 que solo aparece si se activa, aviso en los tests de laxitud de la fase 4b (sin cambiar su LR) y recuadro en la fase 5. El árbol CIF y el motor de puntuación no se tocan. Criterio de entrada para otras condiciones: que cambien la seguridad o la interpretación de la valoración.
 
 - [x] Decisiones clínicas cerradas (las 5 recomendaciones, 2026-10)
-- [ ] Leer enteras Malfait 2017, Hakim y Grahame 2003, Byers 2017 y Engelbert 2017 (no están en PMC: PDF del usuario) y corregir lo marcado «(a verificar)»
+- [x] Leer enteras Malfait 2017, Byers 2017 y Engelbert 2017 (PDF del usuario, 2026-10). Hakim y Grahame 2003 se cita a través de la tabla III de Malfait 2017. Cortes de Beighton corregidos (≥6 prepúberes y adolescentes, ≥5 hasta los 50, ≥4 por encima)
+- [ ] Decisión del usuario: el aviso de laxitud de la fase 4b no tiene fuente directa en las tres leídas (buscar una o redactarlo solo como regla de técnica)
 - [ ] Revisión clínica del usuario: tests con `laxitud`, texto del aviso, preguntas del subtipo vascular, recuadro de la fase 5
 - [ ] Fase 1: tarjeta «Hipermovilidad» (`state.hipermovilidad`, `body.hipermovilidad`)
 - [ ] Fase 2: `SIS_HIPERMOVILIDAD` (cuestionario de 5 preguntas, escala de Beighton, subtipo vascular) con razonamiento
