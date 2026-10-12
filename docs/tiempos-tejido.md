@@ -82,7 +82,7 @@ Grupo `menisco`, entre ligamento y hueso. El wiki no tenía fila de menisco, as�
   - Tras la meniscectomía, los menores de 30 años y los deportistas de élite vuelven antes de 2 meses (54 días en Kim) y los mayores de 30 hacia los 3 meses (89 días). Los déficits de los primeros 6 meses pueden tardar hasta 2 años en resolverse.
   - Tras la sutura, carga progresiva precoz y vuelta progresiva precoz a la actividad (grado C).
 
-Gravedad: moderada en las tres primeras filas y grave en la sutura. Pendiente de revisión por el usuario.
+Gravedad: moderada en las tres primeras filas y grave en la sutura. Revisado y aprobado por el usuario tal cual (2026-10).
 
 ## Filtro sin «Todos», en una fila (2026-10)
 
