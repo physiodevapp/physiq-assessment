@@ -1060,7 +1060,7 @@ async function checkTiemposTejido(browser, errors) {
   await page.click('button.option-btn:has-text("Post-quirúrgico")');
   await page.fill('#cirSemanas', '6');
   await page.click('#tejidosBtn');
-  r.hoy = await page.evaluate(n => document.querySelectorAll('#tejidosCuerpo .tej-hoy').length === n + 1
+  r.hoy = await page.evaluate(n => document.querySelectorAll('#tejidosCuerpo .tej-hoy').length === n
     && document.querySelector('.tej-hoy-texto')?.textContent.includes('6 semanas tras la cirugía'), nFilas);
   // Con scroll hasta abajo, el eje de tiempo sigue pegado arriba del cuerpo
   r.ejeFijo = await page.evaluate(nFases => {
@@ -1073,16 +1073,23 @@ async function checkTiemposTejido(browser, errors) {
     return c.scrollTop > 0 && Math.abs(eje.top - c.getBoundingClientRect().top) < 2
       && tira.length === nFases && colores.size === 3 && tira.every(t => { const b = t.getBoundingClientRect(); return b.top >= eje.top && b.bottom <= eje.bottom + 1; });
   }, nFases);
-  // Filtro por tejido: «Ligamento» deja solo sus barras, se recuerda al reabrir,
-  // y su título de grupo vuelve a «Todos»
-  await page.click('#tejidosCuerpo .tej-filtro-btn[data-filtro-tejido="ligamento"]');
+  // Filtro por tejido (sin «Todos»): «Ligamento» deja solo sus barras, se recuerda
+  // al reabrir, volver a tocarla desmarca, y el título de un grupo filtra y desfiltra
   const barras = () => page.evaluate(() => document.querySelectorAll('#tejidosCuerpo .tej-barra').length);
-  r.filtro = await barras() === nLig && await page.evaluate(() => document.querySelector('#tejidosCuerpo .tej-filtro-btn[aria-pressed="true"]')?.dataset.filtroTejido === 'ligamento');
+  const pastilla = g => `#tejidosCuerpo .tej-filtro-btn[data-grupo="${g}"]`;
+  r.sinTodos = await page.evaluate(() => ![...document.querySelectorAll('#tejidosCuerpo .tej-filtro-btn')].some(b => b.textContent === 'Todos'));
+  await page.click(pastilla('ligamento'));
+  r.filtro = await barras() === nLig && await page.evaluate(s => document.querySelector(s)?.getAttribute('aria-pressed') === 'true'
+    && document.activeElement === document.querySelector(s), pastilla('ligamento'));
   await page.keyboard.press('Escape');
   await page.click('#tejidosBtn');
   r.filtroRecordado = await barras() === nLig;
-  await page.click('#tejidosCuerpo button.tej-grupo');
-  r.grupoVuelveATodos = await barras() === nFilas;
+  await page.click(pastilla('ligamento'));
+  r.segundoToqueDesmarca = await barras() === nFilas && await page.evaluate(() => !document.querySelector('#tejidosCuerpo .tej-filtro-btn.activo'));
+  await page.click('#tejidosCuerpo button.tej-grupo[data-grupo="hueso"]');
+  const soloHueso = await page.evaluate(() => [...document.querySelectorAll('#tejidosCuerpo .tej-bloque')].map(b => b.dataset.grupo).join());
+  await page.click('#tejidosCuerpo button.tej-grupo[data-grupo="hueso"]');
+  r.grupoVuelveATodos = soloHueso === 'hueso' && await barras() === nFilas;
   await page.mouse.click(10, 10);   // velo
   r.velo = !(await abierto());
   r.sinPayload = await page.evaluate(async () => !/tejid|Remodelaci/i.test(JSON.stringify((await import('./app.js')).buildPhysiQPayload())));
@@ -1118,7 +1125,10 @@ async function checkTiemposTejido(browser, errors) {
     const panel = document.getElementById('tejidosPanel').getBoundingClientRect();
     return document.documentElement.scrollWidth <= innerWidth
       && [...document.querySelectorAll('#tejidosCuerpo .tej-pista, #tejidosCuerpo .tej-nombre')].every(e => { const b = e.getBoundingClientRect(); return b.left >= panel.left - 1 && b.right <= panel.right + 1; })
-      && [...document.querySelectorAll('.tej-col, .tej-filtro-btn')].every(c => c.scrollWidth <= c.clientWidth);
+      && [...document.querySelectorAll('.tej-col, .tej-filtro-btn, .tej-fase-ley')].every(c => c.scrollWidth <= c.clientWidth)
+      // Pastillas en una sola fila (se desliza si no caben), nunca en dos
+      && new Set([...document.querySelectorAll('.tej-filtro-btn')].map(b => Math.round(b.getBoundingClientRect().top))).size === 1
+      && [...document.querySelectorAll('.tej-fase-ley')].every(c => { const b = c.getBoundingClientRect(); return b.left >= panel.left && b.right <= panel.right + 1; });
   });
   await ctxMovil.close();
 
@@ -1673,6 +1683,69 @@ async function checkAvisoVersion(browser, errors) {
   await context.close();
 
   r.ok = Object.values(r.movil).every(bien) && bien(r.movilContexto) && r.ocultoAlEscribir && r.cerrado && bien(r.estrecho) && Object.values(r.unaLinea).every(x => x.antes && x.durante) && r.escritorio;
+  return r;
+}
+
+// Aviso inferior (showToast): en móvil, banda a todo el ancho encima de los
+// botones de navegación fijos (sin taparlos), una frase en ≤2 líneas, y
+// encima del aviso de versión nueva si está; en escritorio, píldora centrada
+// que no se parte por tener solo medio viewport de ancho.
+async function checkToast(browser, errors) {
+  const r = {};
+  const medir = page => page.evaluate(() => {
+    const t = document.getElementById('appToast');
+    if (!t) return null;
+    t.style.animation = 'none';
+    const q = t.getBoundingClientRect();
+    const nav = document.querySelector('.phase-container.active .nav-buttons')?.getBoundingClientRect();
+    const fija = getComputedStyle(document.querySelector('.phase-container.active .nav-buttons')).position === 'fixed';
+    const v = document.getElementById('versionAviso')?.getBoundingClientRect();
+    return {
+      w: innerWidth, left: Math.round(q.left), right: Math.round(innerWidth - q.right),
+      encimaNav: !fija || q.bottom <= nav.top + 0.5,
+      lineas: Math.round((t.clientHeight - parseFloat(getComputedStyle(t).paddingTop) - parseFloat(getComputedStyle(t).paddingBottom)) / parseFloat(getComputedStyle(t).lineHeight)),
+      altura: q.height, sobreVersion: !v || q.bottom <= v.top + 0.5,
+      fuente: parseFloat(getComputedStyle(t).fontSize),
+      noCapturaToques: getComputedStyle(t).pointerEvents === 'none',
+      sinDesbordar: document.documentElement.scrollWidth <= innerWidth,
+    };
+  });
+  const corto = 'En pausa · mantén pulsado para descartar la grabación';
+  for (const w of [320, 390]) {
+    const context = await browser.newContext({ viewport: { width: w, height: 700 }, hasTouch: true });
+    const page = await context.newPage();
+    page.on('pageerror', err => errors.push(`pageerror (toast ${w}): ${err.message}`));
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    r[w] = {};
+    for (const f of [1, 5]) {
+      await page.evaluate(f => { if (f !== 1) state.region = 'hombro'; goToPhase(f); }, f);
+      await page.waitForTimeout(600);
+      await page.evaluate(async m => (await import('./app.js')).showToast(m), corto);
+      const m = await medir(page);
+      r[w][f] = m && m.left === 16 && m.right === 16 && m.encimaNav && m.fuente >= 14 && m.noCapturaToques && m.sinDesbordar && (w < 390 || m.lineas <= 2) ? true : m;
+    }
+    // Con el aviso de versión nueva abajo, el toast va encima
+    await page.evaluate(() => {
+      goToPhase(1);
+      const a = document.createElement('div');
+      a.id = 'versionAviso'; a.className = 'version-aviso';
+      a.innerHTML = '<span class="version-aviso-texto">Versión nueva</span><button class="version-aviso-btn">Actualizar</button>';
+      document.body.appendChild(a);
+    });
+    await page.waitForTimeout(600);
+    await page.evaluate(async () => (await import('./app.js')).showToast('✓ Copiado'));
+    const m = await medir(page);
+    r[w].conVersion = m && m.sobreVersion ? true : m;
+    await context.close();
+  }
+  const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  const page = await context.newPage();
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.evaluate(async m => (await import('./app.js')).showToast(m, 'warning'), corto);
+  const m = await medir(page);
+  r.escritorio = m && m.lineas === 1 && Math.abs(m.left - m.right) <= 1 ? true : m;
+  await context.close();
+  r.ok = [320, 390].every(w => Object.values(r[w]).every(x => x === true)) && r.escritorio === true;
   return r;
 }
 
@@ -2296,7 +2369,7 @@ const SECCIONES = [
 
   { id: 'tejidos', titulo: '«⏱ Tiempos de recuperación»:', run: async ({ browser, errors }) => {
     const tejidos = await checkTiemposTejido(browser, errors);
-    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido que se recuerda y título de grupo que vuelve a «Todos», sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos), sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
   } },
 
@@ -2356,6 +2429,12 @@ const SECCIONES = [
   { id: 'version', titulo: 'Aviso de versión nueva (versión desplegada simulada):', run: async ({ browser, errors }) => {
     const r = await checkAvisoVersion(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} móvil: abajo, encima de los botones de navegación en todas las fases (también con la barra de contexto), 44 px táctiles, cabe a 320 px, una línea a 320/360/390 px también mientras actualiza, oculto al escribir; «×» deja el punto en el icono de sesión; escritorio: arriba${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'toast', titulo: 'Avisos inferiores (showToast):', run: async ({ browser, errors }) => {
+    const r = await checkToast(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} móvil (320/390 px): banda a 16 px de los bordes encima de los botones de navegación, sin captar toques, ≥14 px de letra, un mensaje de una frase en ≤2 líneas a 390 px (antes 3 en media pantalla), encima del aviso de versión nueva; escritorio: píldora centrada en una línea${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

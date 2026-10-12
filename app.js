@@ -3167,6 +3167,19 @@ function _pintarTiemposTejido() {
   document.getElementById('tejidosCuerpo').innerHTML = tiemposTejidoHTML(TIEMPOS_TEJIDO, {
     posquirurgico, semanas: posquirurgico ? semanasCirugia(state.cirugia) : null, filtro: _filtroTejidos(),
   });
+  const fila = document.querySelector('#tejidosCuerpo .tej-filtro');
+  if (!fila) return;
+  // La pastilla activa, a la vista aunque esté al final de la fila
+  const activa = fila.querySelector('.tej-filtro-btn.activo');
+  if (activa) fila.scrollLeft = Math.max(0, activa.offsetLeft - fila.offsetLeft - 16);
+  _bordesFiltroTejidos(fila);
+  fila.addEventListener('scroll', () => _bordesFiltroTejidos(fila), { passive: true });
+}
+// Degradado en el lado por el que quedan pastillas fuera de la vista
+function _bordesFiltroTejidos(fila) {
+  const max = fila.scrollWidth - fila.clientWidth;
+  fila.classList.toggle('mas-izda', fila.scrollLeft > 2);
+  fila.classList.toggle('mas-dcha', fila.scrollLeft < max - 2);
 }
 document.getElementById('tejidosCuerpo')?.addEventListener('click', e => {
   const b = e.target instanceof Element ? e.target.closest('[data-filtro-tejido]') : null;
@@ -3175,7 +3188,8 @@ document.getElementById('tejidosCuerpo')?.addEventListener('click', e => {
   _pintarTiemposTejido();
   const cuerpo = document.getElementById('tejidosCuerpo');
   cuerpo.scrollTop = 0;
-  cuerpo.querySelector(`.tej-filtro-btn[data-filtro-tejido="${b.dataset.filtroTejido}"]`)?.focus({ preventScroll: true });
+  // El foco vuelve a la pastilla de ese tejido (también si se tocó su título de grupo)
+  cuerpo.querySelector(`.tej-filtro-btn[data-grupo="${b.dataset.grupo}"]`)?.focus({ preventScroll: true });
 });
 
 function abrirTiemposTejido() {
@@ -3215,21 +3229,21 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && document.getElementById('tejidosOverlay')?.classList.contains('open')) cerrarTiemposTejido();
 });
 
+// Aviso inferior. Estilos en styles.css (.app-toast): en móvil, banda a todo
+// el ancho justo encima de los botones de navegación fijos (--nav-alto) y, si
+// está el aviso de versión nueva, encima de este (--toast-sobre).
 function showToast(message, tone) {
   const existing = document.getElementById('appToast');
   if (existing) existing.remove();
-  const color = tone === 'warning' ? 'var(--orange)' : 'var(--accent2)';
+  _colocarAvisoVersion();
+  const aviso = document.getElementById('versionAviso');
+  const altoAviso = aviso && aviso.offsetHeight > 0 && getComputedStyle(aviso).position === 'fixed'
+    && aviso.getBoundingClientRect().top > window.innerHeight / 2 ? aviso.offsetHeight + 8 : 0;
+  document.documentElement.style.setProperty('--toast-sobre', `${altoAviso}px`);
   const toast = document.createElement('div');
   toast.id = 'appToast';
-  toast.style.cssText = `
-    position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
-    background:var(--surface3); border:1px solid ${color};
-    color:${color}; font-size:0.8rem; font-family:'Outfit',sans-serif;
-    padding:10px 20px; border-radius:8px; z-index:9999;
-    max-width:calc(100vw - 32px); text-align:center;
-    box-shadow:0 4px 16px rgba(0,0,0,0.4);
-    animation:toastUp 0.25s ease;
-  `;
+  toast.className = tone === 'warning' ? 'app-toast app-toast-warning' : 'app-toast';
+  toast.setAttribute('role', 'status');
   toast.textContent = message;
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), tone === 'warning' ? 3500 : 2500);
