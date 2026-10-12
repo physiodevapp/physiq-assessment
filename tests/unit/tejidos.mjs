@@ -237,3 +237,51 @@ test('tejidos, Fase J 4: subtipos de fractura por localización, con los plazos 
   assert.ok(!madre.subtipos.some(x => /humero|rotula_cirugia|navicular_trauma/.test(x.id)));
   for (const x of madre.subtipos) assert.ok(x.fuentes.length === 1 && x.nota, x.id);
 });
+
+test('tejidos, Fase J 5: fila «Fractura de estrés» con subtipos de bajo y alto riesgo (Hoenig 2023, Robertson y Wood 2017)', () => {
+  const f = filas.find(x => x.id === 'fractura_estres');
+  assert.ok(f && T.grupos.find(g => g.id === 'hueso').filas.includes(f), 'la fila está en hueso');
+  const st = Object.fromEntries(f.subtipos.map(x => [x.id, x]));
+  const col = id => [st[id].desde, st[id].hasta];
+  // Hoenig 2023, días medios: 44 y 56 → «5–8 s»; 77–86 → «2–3 m»; 106–127 → «3–6 m»
+  for (const id of ['estres_tibia_posteromedial', 'estres_perone']) assert.deepEqual(col(id), [3, 3], id);
+  for (const id of ['estres_pubis', 'estres_metatarsianos', 'estres_femur_diafisis', 'estres_quinto']) assert.deepEqual(col(id), [4, 4], id);
+  for (const id of ['estres_maleolo_medial', 'estres_cuello_femoral', 'estres_navicular']) assert.deepEqual(col(id), [5, 5], id);
+  // Robertson y Wood 2017: tibia anterior, 7 meses → «6m–1a»
+  assert.deepEqual(col('estres_tibia_anterior'), [6, 6]);
+  // Alto riesgo (Robertson y Wood 2017) = grave; bajo riesgo hereda la gravedad de la fila
+  for (const x of f.subtipos) assert.equal(x.gravedad === 'grave', /alto riesgo/.test(x.nombre), x.id);
+  assert.ok(f.subtipos.every(x => x.desde >= f.desde && x.hasta <= f.hasta));
+});
+
+test('tejidos: toda fila y subtipo dice qué mide su barra (`mide`), y se pinta con su relleno o su marca', () => {
+  const todas = filas.flatMap(f => [f, ...(f.subtipos || [])]);
+  for (const x of todas) assert.ok(T.medidas[x.mide], `${x.id}: «mide» falta o no está en medidas`);
+  for (const [k, m] of Object.entries(T.medidas)) assert.ok(['liso', 'rayado', 'contorno'].includes(m.relleno) && m.etiqueta, k);
+  // Las que comparten relleno liso con la vuelta al deporte llevan marca, para no confundirse con ella
+  for (const [k, m] of Object.entries(T.medidas)) if (k !== 'deporte' && m.relleno === 'liso') assert.ok(m.marca, `${k} sin marca`);
+  // Clasificación revisada por el usuario (2026-10): las filas del wiki, sin especificar; la rotura de
+  // tendón, biología; programas; protección (casi todas las fracturas por localización)
+  const de = id => todas.find(x => x.id === id).mide;
+  for (const id of ['tendinopatia', 'doms', 'musculo_g1', 'ligamento_g1', 'injerto', 'fractura']) assert.equal(de(id), 'sinEspecificar', id);
+  assert.equal(de('tendon_rotura'), 'biologia');
+  for (const id of ['rodilla_lca_conservador', 'menisco_traumatica_conservador', 'menisco_degenerativa_conservador']) assert.equal(de(id), 'programa', id);
+  for (const id of ['fx_quinto_jones', 'fx_calcaneo_extra', 'fx_rotula_conservador', 'fx_meseta_cirugia']) assert.equal(de(id), 'proteccion', id);
+  for (const id of ['tobillo_lateral_g1', 'menisco_sutura', 'fx_calcaneo_intra', 'estres_navicular']) assert.equal(de(id), 'deporte', id);
+  const html = tiemposTejidoHTML(T);
+  assert.equal((html.match(/class="tej-barra [^"]*tej-relleno-/g) || []).length, todas.length, 'cada barra con su relleno');
+  assert.ok(/data-tejido="fx_quinto_jones"[^]*?tej-relleno-rayado/.test(html));
+  assert.ok(html.includes('Qué mide la barra:'));
+});
+
+test('tejidos, Fase J 6: subtipos de Aquiles bajo la rotura de tendón (Shamrock 2023)', () => {
+  const madre = filas.find(f => f.id === 'tendon_rotura');
+  const st = Object.fromEntries((madre.subtipos || []).map(x => [x.id, x]));
+  // Sin cirugía: bota hasta las 8–12 semanas → «5–8 s» a «2–3 m», protección
+  assert.deepEqual([st.aquiles_conservador.desde, st.aquiles_conservador.hasta, st.aquiles_conservador.mide], [3, 4, 'proteccion']);
+  // Reparado: impacto y vuelta al deporte desde los 6 meses → «6m–1a»
+  assert.deepEqual([st.aquiles_cirugia.desde, st.aquiles_cirugia.hasta, st.aquiles_cirugia.mide], [6, 6, 'deporte']);
+  for (const x of madre.subtipos) assert.deepEqual(x.fuentes, ['Shamrock 2023'], x.id);
+  // El manguito rotador no se pinta hasta tener su fuente leída
+  assert.ok(!madre.subtipos.some(x => /manguito/.test(x.id)));
+});

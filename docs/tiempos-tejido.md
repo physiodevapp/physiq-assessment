@@ -109,6 +109,45 @@ Al releer el registro apareció un error de la Fase J 1: la nota de los plazos d
 
 Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Fase J, 5: fractura de estrés (2026-10)
+
+Fila nueva «Fractura de estrés» en hueso («5–8 s» a «6m–1a», moderada), con 10 subtipos por localización. Fuentes, en PDF del usuario, leídas enteras:
+
+- **Hoenig 2023** (Br J Sports Med; revisión sistemática y metaanálisis de 76 estudios, nueva en el registro): tiempo medio de vuelta al deporte por localización, de las tablas 1A y 1B del suplemento. Tibia posteromedial 44 días, peroné 56, pubis 77, metatarsianos 1.º–4.º 78, 5.º metatarsiano 82, diáfisis femoral 86, maléolo medial 106, cuello femoral 107 y navicular 127. También da la tasa de vuelta y de complicaciones. De la tibia anterior no hay tiempo agrupado.
+- **Robertson y Wood 2017** (World J Orthop; revisión narrativa de acceso abierto, nueva en el registro): la lista de alto riesgo (tibia anterior, base del 5.º metatarsiano, maléolo medial, cuello femoral lateral, navicular y sesamoideos) y la tibia anterior incompleta, con vuelta al deporte a los 7 meses con o sin cirugía.
+- **May y Marappa-Ganeshan 2023** (StatPearls): solo la regla general, que va en la nota de la fila. En bajo riesgo, 2–6 semanas de reposo relativo o descarga y vuelta gradual; en alto riesgo no da plazo.
+
+Cada subtipo lleva «(bajo riesgo)» o «(alto riesgo)» en el nombre; los de alto riesgo, en color grave. La barra es la vuelta al deporte media, no la consolidación. El navicular y el 5.º metatarsiano también salen en «Fractura» con el plazo de inmovilización de su capítulo (Fase J, 4), y la nota del navicular lo dice. Los sesamoideos y el astrágalo no se pintan: Hoenig no da tiempo agrupado para ellos.
+
+Revisado y aprobado por el usuario tal cual (2026-10).
+
+## Fase J, 6: Aquiles (2026-10)
+
+Dos subtipos bajo «Rotura / reparación de tendón». La fuente es **Shamrock 2023** (StatPearls, «Achilles Tendon Rupture», PDF del usuario leído entero).
+
+- **Aquiles sin cirugía**: barra rayada de protección, de «5–8 s» a «2–3 m». Sigue el programa funcional de Glazebrook y Rubinger que cita el capítulo: 0–2 semanas sin carga, después bota con alzas y carga progresiva, y la bota se retira entre las 8 y las 12 semanas. La nota recoge la rerrotura: del 10 al 40 % en estudios antiguos, frente al 1–2 % con cirugía; la evidencia de nivel 1 más reciente no encuentra diferencia.
+- **Aquiles reparado**: barra lisa de vuelta al deporte, en «6m–1a». El capítulo da ejercicio de bajo impacto los primeros 6 meses y de alto impacto después, hacia la vuelta al deporte. En deportistas profesionales, más del 30 % no vuelve a jugar.
+
+La inmovilización tras la cirugía (2–4 semanas) no se pinta: la frase del capítulo está mal redactada y mezcla los dos tratamientos. El **manguito rotador reparado** queda pendiente de su fuente, el consenso de la ASSET (Thigpen 2016, J Shoulder Elbow Surg, sin acceso abierto).
+
+Revisado y aprobado por el usuario tal cual (2026-10), incluido no pintar la inmovilización tras la cirugía.
+
+## Qué mide cada barra (2026-10)
+
+Decisión del usuario. Las fuentes dan plazos de cosas distintas, y antes solo la nota lo decía, así que barras como la de la fractura de Jones (6–8 semanas sin carga) y la del 5.º metatarsiano por estrés (82 días hasta volver al deporte) parecían comparables. Cada fila y cada subtipo lleva ahora `mide`, que es una clave de `medidas` (`data/tejidos.js`). El color sigue siendo la gravedad, porque un segundo código de color daría 4 × 4 combinaciones ilegibles; la medida va en el relleno:
+
+| `mide` | Relleno | Dónde |
+|---|---|---|
+| `deporte` (vuelta al deporte o a la función) | liso | esguince de tobillo, LCM grado I, LCA reconstruido, meniscectomía, sutura, tobillo estable, calcáneo intraarticular, meseta sin cirugía, toda la fractura de estrés |
+| `proteccion` (inmovilización o descarga) | rayado | el resto de fracturas por localización |
+| `programa` (duración del programa) | contorno | LCA sin cirugía, rotura de menisco traumática y lesión degenerativa |
+| `biologia` | liso + etiqueta «biología» | rotura de tendón (Wu 2017) |
+| `sinEspecificar` | liso + etiqueta «sin especificar» | las filas del wiki (Snyder-Mackler 2012) |
+
+La clasificación sale de las citas que ya estaban en los comentarios; no se ha releído ninguna fuente. Debajo de la leyenda de gravedad, «Qué mide la barra» muestra cada relleno en gris neutro y las dos etiquetas. En el wiki es igual. En su tabla de móvil solo se ven los rellenos, porque el nombre corto de la barra no tiene sitio para la etiqueta. Un test unitario obliga a que todas las filas y subtipos lleven `mide` y fija la clasificación.
+
+Revisado y aprobado por el usuario tal cual (2026-10). Eso incluye los tres casos dudosos: tobillo operada como protección (la fuente da la carga completa, no la vuelta al deporte), meseta tibial sin cirugía como vuelta a la función (la barra llega a la función completa) y 5.º metatarsiano zona 3 como protección (hasta 20 semanas de inmovilización).
+
 ## Filtro sin «Todos», en una fila (2026-10)
 
 Decisión del usuario. Se quita la pastilla «Todos»: volver a tocar la pastilla activa la desmarca y se ven todos los tejidos, con la misma regla que el resto de grupos de opciones de la app (mecanismo, cronología, NRS). El título de cada grupo hace lo mismo. Las pastillas van en una sola fila que se desliza en horizontal cuando no caben (a 320 px, y cuando la Fase J añada grupos como nervio periférico), con un degradado en el lado por el que quedan más (`_bordesFiltroTejidos()`, `app.js`). Al abrir el panel con un filtro guardado, la pastilla activa queda a la vista. Se descartó un desplegable: escala igual de bien, pero esconde las opciones y cuesta un toque más. Si algún día hubiera más de unas 8 categorías, se replantea (agrupar, o desplegable).

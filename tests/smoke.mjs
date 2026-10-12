@@ -1235,6 +1235,14 @@ async function checkTiemposTejido(browser, errors) {
   r.menisco = await barras() === nMen && await page.evaluate(() => [...document.querySelectorAll('#tejidosCuerpo .tej-bloque')].map(b => b.dataset.grupo).join() === 'menisco');
   await page.click(pastilla('menisco'));
   r.menisco = r.menisco && await barras() === nFilas;
+  // Qué mide la barra: rayado (protección) y contorno (programa) se ven distintos del liso
+  r.mide = await page.evaluate(() => {
+    const est = id => getComputedStyle(document.querySelector(`#tejidosCuerpo [data-tejido="${id}"] .tej-barra`));
+    const liso = est('menisco_sutura'), rayado = est('fx_quinto_jones'), contorno = est('menisco_traumatica_conservador');
+    return liso.backgroundImage === 'none' && rayado.backgroundImage.includes('repeating-linear-gradient')
+      && contorno.backgroundColor === 'rgba(0, 0, 0, 0)' && contorno.boxShadow.includes('inset')
+      && !!document.querySelector('#tejidosCuerpo .tej-leyenda-mide');
+  });
   // Subtipos (Fase J): plegados bajo su fila; al desplegarlos se ven con su barra
   const nSubG3 = TIEMPOS_TEJIDO.grupos.find(g => g.id === 'ligamento').filas.find(f => f.id === 'ligamento_g3').subtipos.length;
   r.subtipos = await page.evaluate(nSub => {
@@ -2525,7 +2533,7 @@ const SECCIONES = [
 
   { id: 'tejidos', titulo: '«⏱ Tiempos de recuperación»:', run: async ({ browser, errors }) => {
     const tejidos = await checkTiemposTejido(browser, errors);
-    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), subtipos plegados que se despliegan, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
   } },
 

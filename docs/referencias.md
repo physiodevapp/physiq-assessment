@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **403** referencias de literatura, con **1957** usos.
+- **411** referencias de literatura, con **2002** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **374** de 403 referencias del registro revisadas. Ver «Estado de revisión».
+- **374** de 411 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -59,22 +59,30 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Davies 2018](#davies-2018) | razonamiento fase 4 | 1 | **sin revisar** |
 | [IHS 2018](#ihs-2018) | razonamiento fase 4 | 2 | **sin revisar** |
 | [Carter 2023](#carter-2023) | razonamiento fase 4 | 1 | **sin revisar** |
+| [Dididze 2023](#dididze-2023) | razonamiento fase 4 | 1 | **sin revisar** |
+| [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) | razonamiento fase 4 | 1 | **sin revisar** |
+| [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) | razonamiento fase 4 | 1 | **sin revisar** |
+| [Shamrock y Das 2023](#shamrock-y-das-2023) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Smith y Varacallo 2023](#smith-y-varacallo-2023) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Trammell 2023](#trammell-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Wood 2023](#wood-2023) | razonamiento fase 4 | 1 | **sin revisar** |
+| [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) | razonamiento fase 4 | 1 | **sin revisar** |
+| [Wood 2023](#wood-2023) | razonamiento fase 4 | 2 | **sin revisar** |
 | [AlDahas 2024](#aldahas-2024) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Jiang 2024](#jiang-2024) | razonamiento fase 4 | 2 | **sin revisar** |
 | [Smith y Varacallo 2024](#smith-y-varacallo-2024) | razonamiento fase 4 | 1 | **sin revisar** |
 | [De Hertogh 2025](#de-hertogh-2025) | razonamiento fase 4 | 1 | **sin revisar** |
+| [Li 2026](#li-2026) | razonamiento fase 4 | 2 | **sin revisar** |
 | [Birrell 2001](#birrell-2001) | razonamiento 4b · texto | 3 | **sin revisar** |
 | [Ganz 2003](#ganz-2003) | razonamiento 4b · texto | 6 | **sin revisar** |
 | [Loureiro 2013](#loureiro-2013) | razonamiento 4b · texto | 2 | **sin revisar** |
 | [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) | razonamiento 4b · texto | 6 | **sin revisar** |
 | [Zacharias 2016](#zacharias-2016) | razonamiento 4b · texto | 2 | **sin revisar** |
 | [Snyder-Mackler 2012](#snyder-mackler-2012) | tiempos de tejido | 10 | **sin revisar** |
+| [Robertson y Wood 2017](#robertson-y-wood-2017) | tiempos de tejido | 6 | **sin revisar** |
 | [Wu 2017](#wu-2017) | tiempos de tejido | 2 | **sin revisar** |
 | [Vuurberg 2018](#vuurberg-2018) | tiempos de tejido | 2 | **sin revisar** |
 | [Evans 2023](#evans-2023) | tiempos de tejido | 2 | **sin revisar** |
+| [Hoenig 2023](#hoenig-2023) | tiempos de tejido | 11 | **sin revisar** |
 | [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) | tiempos de tejido | 1 | **sin revisar** |
 | [Wallace 2023](#wallace-2023) | tiempos de tejido | 3 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
@@ -111,7 +119,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Beckenkamp 2017](#beckenkamp-2017) | puntuación 4b · razonamiento fase 2 · razonamiento fase 4 · texto | 7 | 2026-10 · Añadida (PDF del usuario, leído entero): 66 estudios, modelo bivariante. Sustituye a Bachmann 2003 en la LR− de tp5 y tp37 (subgrupo con radiografía a todos los pacientes) y a Gomes 2022 en la LR+ del positivo; desde 2026-10 da también las cifras del razonamiento de tp_t2 (fase 2), con Bachmann como concordante. PubMed (2026-10): Sharifi Razavi 2026 (Arch Acad Emerg Med; 43 estudios en adultos, LR− 0,13) es posterior, pero copia errores de extracción de Gomes 2022 y mezcla tobillo y pie: no se usa. |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 11 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
 | [Décary 2018](#décary-2018) | puntuación 4b · razonamiento fase 4 · razonamiento 4b · texto | 25 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
-| [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · texto | 18 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
+| [Zwerus 2018](#zwerus-2018) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 20 | 2026-10 · Sin cambios: PDF del usuario releído entero (2026-10). Tablas 3, 4 y 5 coinciden con todas las citas de codo (hook test, PFP, valgo móvil y estático, push-up, recolocación en la mesa, pivot shift, prensión de Dorf, Polk). No agrupa (todos los estudios con riesgo de sesgo alto o incierto). En la recolocación en la mesa se añade que la referencia fue el pivot shift. Para el bíceps distal hay un estudio posterior del mismo grupo, Zwerus 2022, que pasa a dar las cifras de co7. |
 | [Cook 2019](#cook-2019) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Sin cambios: PubMed (revisiones sistemáticas de precisión diagnóstica de la historia y la exploración en estenosis lumbar desde 2019) solo encuentra Wang 2024 (J Med Internet Res) y Yang 2024 (Spine), de inteligencia artificial sobre imagen, no de exploración clínica. |
 | [Metcalfe 2019](#metcalfe-2019) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 8 | 2026-10 · Sin cambios: texto completo leído (PMC7583647); S, E, LR+ y LR− con sus IC coinciden en los cinco usos. Es la revisión más reciente sobre exploración clínica de la artrosis de cadera. |
 | [Campbell 2020](#campbell-2020) | puntuación 4b | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Revisión sistemática de 15 estudios sin metaanálisis; la ecografía de estrés y la comparación con la artro-RM salen de un solo estudio, Roedl 2016, que pasa a citarse directamente en co4. PubMed (2026-10): ninguna revisión posterior de la imagen del ligamento colateral cubital del codo (Rashidi 2021 es del pulgar). |
@@ -123,7 +131,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Demont 2022](#demont-2022) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 4 | 2026-10 · Sin cambios en las cifras: manuscrito aceptado (PDF del usuario) leído entero (2026-10). FRT: 4 estudios de cohorte prospectivos (Ogince 2007, Hall 2008, Hall 2010a y 2010b; todos del grupo que propuso el test), 182 participantes, modelos bivariante y HSROC (metandi): S 83 % (70–92), E 83 % (71–91), LR+ 5,0 (2,6–9,5), LR− 0,2 (0,1–0,4), certeza moderada (rebajada por sesgo de selección); positivo con menos de 45°; 24,5° frente a 39,1° (tabla 6). Coincide con ce4, que sigue puntuando solo en positivo. Riesgo de sesgo alto (PROBAST, análisis) de Jull 2007 y Getsoian 2020, como cita la app. PubMed (2026-10): ninguna revisión posterior de precisión diagnóstica del FRT; Anarte-Lazo 2021 (BMC Musculoskelet Disord, PMC) solo compara medias (17,7° menos en cervicogénica que en migraña). |
 | [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). Artículo de opinión: punto de corte inconsistente, factores de confusión (dolor, edad: 27,9 % de la varianza; estimación a ojo; FRT positivo en migraña) y patrón de referencia (exploración manual, κ 0,28), por lo que las LR del FRT probablemente están sobrestimadas. Coincide con lo citado en ce4. |
 | [Sokal 2022](#sokal-2022) | puntuación 4b | 4 | 2026-10 · Sin cambios: texto completo leído en PMC; las cifras de la tabla 4 (modelo bivariante) coinciden en los cuatro tests de ro4. Hay dos metaanálisis posteriores solo del Lever: Hesmerg 2024 (23 estudios, sin el del creador; S 79 %, E 92 %, LR+ 9,9, LR− 0,22; agrupación univariante de S y E) concuerda, y Hu 2024 (12 estudios, con el del creador) da E 78 %. Se citan en el criterio; por el método (bivariante, LCA sin otras lesiones ligamentosas) sigue mandando Sokal. |
-| [Zwerus 2022](#zwerus-2022) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Añadida y pasa a dar las cifras de co7 (decisión del usuario): texto completo leído en PMC (2026-10). Cohorte prospectiva de 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal (2017–2020, dos hospitales), 42 roturas completas; referencia, cirugía en el 79 % y RM o ecografía en el resto; los cirujanos no estaban ciegos en la cirugía. La unidad son pacientes. Tabla 2 (total): hook test S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30; PFP S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34, publicadas. En la tabla, la fila de la palpación de las roturas agudas y crónicas repite la del total (errata sin efecto en la app). No es del grupo que creó los tests. |
+| [Zwerus 2022](#zwerus-2022) | puntuación 4b · razonamiento fase 4 · razonamiento 4b · texto | 7 | 2026-10 · Añadida y pasa a dar las cifras de co7 (decisión del usuario): texto completo leído en PMC (2026-10). Cohorte prospectiva de 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal (2017–2020, dos hospitales), 42 roturas completas; referencia, cirugía en el 79 % y RM o ecografía en el resto; los cirujanos no estaban ciegos en la cirugía. La unidad son pacientes. Tabla 2 (total): hook test S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30; PFP S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34, publicadas. En la tabla, la fila de la palpación de las roturas agudas y crónicas repite la del total (errata sin efecto en la app). No es del grupo que creó los tests. |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 12 | 2026-10 · Sin cambios: PubMed (precisión diagnóstica de la exploración clínica para origen discal, facetario o sacroilíaco, revisiones sistemáticas desde 2023) no encuentra ninguna revisión posterior de tests clínicos; Manchikanti 2026 (Pain Physician) trata de bloqueos facetarios, no de exploración. Tabla 1 releída en PMC en la sesión de cadera (2026-10): agrupa con Meta-DiSc 1.4, efectos aleatorios, sin decir si es univariante o bivariante; ≥3 tests positivos, 6 estudios, 276 pacientes, LR+ 2,44, LR− 0,31; thigh thrust 5 estudios, LR+ 1,13, LR− 0,91; compresión 2 estudios, LR+ 1,79, LR− 0,74. En ca10 da las cifras agrupadas de los tests sueltos; el cluster de ca10 y de lu8 usa Saueressig 2021 (bivariante), y Han 2023 queda como segunda cifra. |
 | [Kazemi 2023](#kazemi-2023) | puntuación 4b · razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: texto completo leído en PMC; S 98 %, E 43 %, LR+ 1,56 y LR− 0,12 (0,05–0,26) coinciden. Agrupa con un modelo univariante (Meta-DiSc, DerSimonian-Laird), y Sims 2020 es bivariante; se mantiene por decisión del usuario (más estudios y LR− más conservadora) y se anota el modelo en la cita. PubMed (revisiones de la regla de Ottawa de rodilla desde 2020) no encuentra ninguna posterior. |
 | [Kinsella 2024](#kinsella-2024) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Texto completo leído (tablas 2 y 3). En el texto el LR+ de la abducción resistida aparece como 13,39, que en la tabla 3 es la DOR; se usa el LR+ de la tabla (6,09). |
@@ -158,17 +166,17 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Cascia 2019](#cascia-2019) | pauta | 1 | 2026-10 · Sin cambios en la conclusión: texto completo leído en PMC (2026-10; antes solo el resumen). Programas de 6 a 12–14 semanas (tabla 3) y 5 de las 7 series con infiltración de plasma rico en plaquetas: se añade a la pauta de co4. |
 | [Willy 2019](#willy-2019) | pauta · razonamiento fase 4 | 7 | 2026-10 · Sin cambios: la guía holandesa (Ophey 2025), posterior y del mismo nivel, ya manda donde discrepan; no hay revisión de la guía de JOSPT. |
 | [Kemp 2020](#kemp-2020) | pauta | 1 | 2026-10 · Sin cambios: PubMed (dolor de cadera relacionado con la articulación y fisioterapia, revisiones sistemáticas desde 2021) no encuentra una revisión posterior de las intervenciones; el ensayo PhysioFIRST (Kemp 2026), posterior, se suma a la pauta de ca2. |
-| [Lubiatowski 2020](#lubiatowski-2020) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La resección fue artroscópica en 280 de 288 y los criterios de eficacia eran poco claros: se precisa en co6. PubMed (2026-10): nada posterior sobre el tratamiento de la plica del codo (Cui 2026 es de pronóstico con RM). |
+| [Lubiatowski 2020](#lubiatowski-2020) | pauta · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La resección fue artroscópica en 280 de 288 y los criterios de eficacia eran poco claros: se precisa en co6. PubMed (2026-10): nada posterior sobre el tratamiento de la plica del codo (Cui 2026 es de pronóstico con RM). |
 | [Rathleff 2020](#rathleff-2020) | pauta | 2 | 2026-10 · Sin cambios: la revisión posterior de tratamientos de Osgood-Schlatter (Ndjonko 2026, Orthop J Sports Med, revisión de alcance, nivel 4) no aporta ningún ensayo ni pauta mejor. |
 | [Serner 2020](#serner-2020) | pauta | 1 | 2026-10 · Sin cambios: la revisión sistemática más reciente sobre la lesión aguda del aductor (Farrell, Hatem y Bharam 2023, Am J Sports Med 51(13):3591–3603, doi 10.1177/03635465221140923; PDF del usuario leído entero, 2026-10) la incluye (ref. 40) y no aporta otra pauta: 30 estudios, síntesis narrativa sin metaanálisis; las roturas parciales se trataron siempre sin cirugía, con vuelta al deporte en 1–7 semanas. Da las medias de Serner 2020 (sin dolor a las 1,9 semanas, entrenamiento completo a las 6,9; recaída al año 7,4 %); la pauta de ca11 usa las medianas por grado del propio artículo. |
 | [George 2021](#george-2021) | pauta · razonamiento fase 4 | 9 | 2026-10 · Sin cambios: PubMed (guías de práctica clínica de lumbalgia en JOSPT y de la APTA desde 2021) no encuentra una revisión posterior de esta guía. |
 | [Martin 2021](#martin-2021) | pauta · razonamiento fase 4 · tiempos de tejido | 8 | 2026-10 · Sin cambios de fondo: PDF leído entero (2026-10); las letras citadas coinciden. Se matizan en tp1 la inmovilización («puede estar indicada») y la terapia manual (con sus objetivos), y se añade la vuelta al trabajo o al deporte (B); en tp21, la tobillera o el vendaje no como tratamiento único para mejorar el equilibrio (B), pero sí para prevenir la recidiva. Es la revisión de 2021 (revisión prevista en 2025); PubMed (2026-10): sin versión posterior de la APTA. |
 | [Ammendolia 2022](#ammendolia-2022) | pauta · texto | 2 | 2026-10 · Sin cambios: es la actualización de la revisión Cochrane de 2013 y la más reciente que encontró la búsqueda en PubMed (tratamiento no quirúrgico de la estenosis lumbar) al incorporarla en 2026-10. |
-| [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo). |
+| [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · razonamiento fase 4 · texto | 5 | 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo). |
 | [Enseki 2023](#enseki-2023) | pauta · test 4b sin puntuar · razonamiento fase 4 | 8 | 2026-10 · Sin cambios: es la revisión vigente de la guía APTA de dolor de cadera no artrósico; PubMed (2026-10) no encuentra una posterior (la revisión de 2025 es la de artrosis, Koc 2025). |
 | [Koc 2023](#koc-2023) | pauta · razonamiento fase 4 | 3 | 2026-10 · PDF leído entero (2026-10). Corregido en tp26: «plantillas nunca solas» es grado B (la C es combinarlas con otros tratamientos); la férula nocturna es para el dolor sistemático con los primeros pasos; los rangos del estiramiento, por estructura. Es la revisión más reciente de la APTA (en 2025 solo hay un comentario, Riel 2025, y la respuesta de los autores). |
 | [Munakomi 2023](#munakomi-2023) | pauta · razonamiento fase 2 · razonamiento fase 4 · texto | 5 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 13 de agosto de 2023 (PubMed). Se añade a la pauta de lu4 Ammendolia 2022 (revisión sistemática del tratamiento no quirúrgico de la estenosis, leída entera en PMC). |
-| [Siemensma 2023](#siemensma-2023) | pauta · pronóstico | 2 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La pauta de férulas es «por la literatura y la experiencia propia» de los autores; se dice así en co3. |
+| [Siemensma 2023](#siemensma-2023) | pauta · pronóstico · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La pauta de férulas es «por la literatura y la experiencia propia» de los autores; se dice así en co3. |
 | [AAOS 2024](#aaos-2024) | pauta · test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: es la guía más reciente de la rotura meniscal aguda aislada; coherente con Prill 2025 y con Smith 2015. |
 | [Chimenti 2024](#chimenti-2024) | pauta · razonamiento fase 4 · texto | 5 | 2026-10 · Sin cambios de fondo: PDF leído entero (2026-10); grados y cifras de la pauta de tp8 coinciden (se reformula la del láser y el ultrasonido). La guía usa el dolor a la palpación de la porción media como criterio diagnóstico: se corrige en tp8 la frase «la palpación no ayuda al diagnóstico». Es la revisión más reciente de la APTA. |
 | [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) | pauta | 1 | 2026-10 · Sin cambios: hay una revisión posterior, Ferrero 2026 (Orthop Res Rev, 24 estudios, resumen leído), que concluye que la rehabilitación estructurada es la primera opción y que ningún tratamiento puede recomendarse sobre otro por la heterogeneidad; no contradice la pauta de ro6. |
@@ -184,7 +192,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 | 5 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
 | [Prill 2025](#prill-2025) | pauta · tiempos de tejido · texto | 6 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
 | [Pringels 2025](#pringels-2025) | pauta · texto | 2 | 2026-10 · Añadida (leída entera en PMC) en la pauta de tp9: ensayo aleatorizado de 42 deportistas con tendinopatía insercional; limitar la dorsiflexión mejoró el VISA-A 12,9 puntos más (IC 95 % 6,2–19,6) a las 12 semanas y 10,4 (3,7–17,1) a las 24. |
-| [Quzli 2025](#quzli-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
+| [Quzli 2025](#quzli-2025) | pauta · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
 | [Rich 2025](#rich-2025) | pauta · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: es el ensayo más reciente sobre tendinopatía proximal de isquiotibiales (PubMed, revisiones y ensayos desde 2024). |
 | [Salamh 2025](#salamh-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 | 4 | 2026-10 · Sin cambios: consenso de 2025; búsqueda en PubMed (2026-10) sin guía ni consenso posterior sobre el hombro congelado. |
 | [Wistow 2025](#wistow-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). Se precisa que las 2–7 sesiones por semana durante 3–6 semanas son de los ensayos de hold-relax. Es posterior a la revisión de Piacenza 2024 (Musculoskelet Sci Pract), que no da una pauta mejor. |
@@ -212,7 +220,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kim 2004](#kim-2004) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: solo describe la técnica del test MPP; la validación es Kim 2007. |
 | [Reijman 2004](#reijman-2004) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído: en PMC (PMC1754907) el cuerpo es un PDF escaneado que no se pudo descargar. |
 | [Walton 2004](#walton-2004) | test 4b sin puntuar · texto | 5 | 2026-10 · Sin cambios: el artículo no se ha leído entero; sus cifras (Paxinos S 79 %, E 50 %; palpación S 96 %, E 10 %; O’Brien S 16 %, E 90 %) coinciden con las que recogen Krill 2018 (tabla 3) y Cadogan 2013 (tabla 1), leídos enteros. Ningún test de h7 que lo cite puntúa. |
-| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4. |
+| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 11 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4. |
 | [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PubMed (bursitis de la pata de ganso, diagnóstico y prevalencia desde 2015) no encuentra ningún estudio de precisión diagnóstica ni revisión sistemática. |
 | [Laslett 2006](#laslett-2006) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: Han 2023 (revisión sistemática, revisada 2026-10) la recoge: los criterios de Revel no se replican y no se pueden agrupar. |
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
@@ -220,7 +228,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Jull 2007](#jull-2007) | test 4b sin puntuar · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla 3: en la validación cruzada, 17 de 18 cervicogénicas y 112 de 112 sin cervicogénica bien clasificadas (S 94,4 %, E 100 %), con las etiquetas cambiadas en la tabla; función discriminante (tabla 2: actividad del ECM en el CCFT, extensión, disfunción manual C0–C4); tipo de cefalea por cuestionario; los autores piden validarlo. Validación posterior frente a bloqueos: Getsoian 2020, sin S ni E. |
 | [Kim 2007](#kim-2007) | test 4b sin puntuar · razonamiento fase 4 · texto | 3 | 2026-10 · Sin cambios: PDF del usuario leído; 172 rodillas, tabla 2×2 51/13/6/102 y los 13 falsos positivos (7 franjas sinoviales de la grasa de Hoffa, 5 sinovitis, 1 cartílago) coinciden. PubMed (diagnóstico de la plica medial desde 2008) no encuentra ningún estudio de precisión posterior del test; lo más reciente es de RM (2026) y de tratamiento (revisión de 2025). |
 | [Warden 2007](#warden-2007) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PDF del usuario leído; 30 con tendinopatía clínica frente a 33 asintomáticos, ecografía S 87 % y RM S 57 %, E 82 % ambas, coinciden. PubMed no encuentra revisiones posteriores de precisión de la imagen en la tendinopatía rotuliana. |
-| [Appelboam 2008](#appelboam-2008) | test 4b sin puntuar · razonamiento fase 2 · texto | 5 | 2026-10 · Sin cambios: texto completo releído en PMC (PMC2600962, 2026-10). 1740 pacientes, S 96,8 %, E 48,5 %, LR− 0,03 en adultos y 0,11 en niños, riesgo de fractura con extensión completa 1,6 y 4,2 %; coinciden todas las cifras del cribado y del árbol de codo. |
+| [Appelboam 2008](#appelboam-2008) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 · texto | 6 | 2026-10 · Sin cambios: texto completo releído en PMC (PMC2600962, 2026-10). 1740 pacientes, S 96,8 %, E 48,5 %, LR− 0,03 en adultos y 0,11 en niños, riesgo de fractura con extensión completa 1,6 y 4,2 %; coinciden todas las cifras del cribado y del árbol de codo. |
 | [Hancock 2008](#hancock-2008) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: Haskins 2015 (J Clin Epidemiol, revisión sistemática, PDF del usuario) encuentra 9 validaciones de la regla: ser positivo predice menos discapacidad con manipulación con o sin thrust, pero como modificador del efecto solo la apoya Childs 2004 (Hancock 2008 no), y no hay estudios de impacto. Se añade al criterio de lu1. PubMed (reglas de predicción para manipulación lumbar desde 2012) no encuentra nada posterior. |
 | [Majlesi 2008](#majlesi-2008) | test 4b sin puntuar | 1 | 2026-10 · Cifras sin cambios, con aviso: van der Windt 2010 (Cochrane) recoge solo dos estudios del Slump y señala que la especificidad de Majlesi puede estar inflada por su diseño de casos y controles (controles con RM normal); el otro estudio dio S 0,44, E 0,58. PubMed (2026-10): ninguna revisión posterior del Slump. Por decisión del usuario (2026-10), el Slump pasa a hallazgo: sus cifras quedan en el criterio y no puntúa. |
 | [Park 2008](#park-2008) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). S 95,2 % (20 de 21 codos) y E 92 % (23 de 25 codos sin síntomas: 15 contralaterales y 10 de voluntarios); referencia, el diagnóstico clínico de un fisiatra; radiólogo ciego. Se precisan los controles en co2. |
@@ -242,7 +250,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rathbone 2017](#rathbone-2017) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: PubMed (fiabilidad de la palpación de puntos gatillo o banda tensa, revisiones sistemáticas desde 2009) no encuentra ninguna posterior. |
 | [Tawa 2017](#tawa-2017) | test 4b sin puntuar | 2 | 2026-10 · Complementada: leída entera en PMC. No hace metaanálisis; la sensibilidad S 61 %, E 63 % es el mejor estudio suelto (referencia quirúrgica, no RM como dice el resumen). Los dos tests de lu5 pasan a las cifras agrupadas de Al Nezari 2013 (metaanálisis, PDF del usuario); Tawa queda como revisión posterior. No cambia la puntuación: ningún test puntúa con ninguna de las dos cifras. |
 | [Krill 2018](#krill-2018) | test 4b sin puntuar · razonamiento fase 4 · texto | 5 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). Incluye 2 estudios (Walton 2004 y Cadogan 2013) y deja fuera Chronopoulos 2004 por ser de nivel III; las cifras citadas en h7 están en sus tablas 3 y 4. |
-| [Park 2019](#park-2019) | test 4b sin puntuar · razonamiento 4b · texto | 8 | 2026-10 · Cifras sin cambios; el test pasa a hallazgo (decisión del usuario): texto completo leído en PMC (PMC6504535, 2026-10). 20 de 24 plicas y 7 de 56 epicondilalgias positivas (S 83,3 %, E 87,5 %), sin LR publicadas. Es retrospectivo de casos y controles (plicas operadas sin epicondilalgia frente a epicondilalgias operadas sin plica), de los creadores del test, y PubMed (2026-10) no encuentra validación posterior, como el Slump o la aducción cruzada. |
+| [Park 2019](#park-2019) | test 4b sin puntuar · razonamiento fase 4 · razonamiento 4b · texto | 9 | 2026-10 · Cifras sin cambios; el test pasa a hallazgo (decisión del usuario): texto completo leído en PMC (PMC6504535, 2026-10). 20 de 24 plicas y 7 de 56 epicondilalgias positivas (S 83,3 %, E 87,5 %), sin LR publicadas. Es retrospectivo de casos y controles (plicas operadas sin epicondilalgia frente a epicondilalgias operadas sin plica), de los creadores del test, y PubMed (2026-10) no encuentra validación posterior, como el Slump o la aducción cruzada. |
 | [Mastromarchi 2021](#mastromarchi-2021) | test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10) sin estudios posteriores de fiabilidad ni validez de los tests de la 1.ª costilla. Sigue como opinión de expertos; no puntúa (h9 y ce10). |
 | [Netterström-Wedin 2021](#netterström-wedin-2021) | test 4b sin puntuar · razonamiento fase 4 · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Squeeze agrupado de 4 estudios con modelo univariante de efectos aleatorios (Meta-DiSc); las 2×2 suman su n; no incluye el estudio de los creadores del test. Sin cifra agrupada para la palpación del LTPAI. Se indica el modelo en tp2. |
 | [Karanasios 2022](#karanasios-2022) | test 4b sin puntuar | 2 | 2026-10 · Sin cambios: solo el resumen (el PDF recibido en 2026-10 era otro artículo y no hay copia en acceso abierto según Unpaywall). El resumen respalda lo citado: 24 estudios, 97 % con riesgo de sesgo alto o incierto, 2 de exploración física, Cozen S 91 %, prensión S 78–83 % y E 80–90 %. PubMed (2026-10): ninguna revisión posterior de la precisión de la exploración en la epicondilalgia lateral. |
@@ -303,7 +311,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Leslie 2023](#leslie-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Malik 2023](#malik-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Malik y Herron 2023](#malik-y-herron-2023) | razonamiento fase 2 · tiempos de tejido | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 · razonamiento fase 4 | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido | 7 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McClary y Massey 2023](#mcclary-y-massey-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McMordie 2023](#mcmordie-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) | razonamiento fase 2 | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -323,7 +331,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sekhon 2023](#sekhon-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Sevy 2023](#sevy-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 29 de octubre de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shahid 2023](#shahid-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Shamrock 2023](#shamrock-2023) | razonamiento fase 2 · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 17 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Shamrock 2023](#shamrock-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido | 4 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 17 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Singleton y Hefner 2023](#singleton-y-hefner-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de febrero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Smidt y Massey 2023](#smidt-y-massey-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido | 6 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 29 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Torlincasi 2023](#torlincasi-2023) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -369,7 +377,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Khalil 2025](#khalil-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de noviembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leslie 2025](#leslie-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 30 de noviembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Lleva 2025](#lleva-2025) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Lleva 2025](#lleva-2025) | razonamiento fase 2 · razonamiento fase 4 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Margetis y Gillis 2025](#margetis-y-gillis-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de marzo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Nori y Stretanski 2025](#nori-y-stretanski-2025) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Pangia 2025](#pangia-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -672,7 +680,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dobbs 2016](#dobbs-2016) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Hegedus 2012](#hegedus-2012) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Lim 2013](#lim-2013) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Matsumoto 1990](#matsumoto-1990) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patil 2024](#patil-2024) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Petersen 2017](#petersen-2017) · [Pitcher 2024](#pitcher-2024) · [Pope 2023](#pope-2023) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rudwaleit 2006](#rudwaleit-2006) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Snyder-Mackler 2012](#snyder-mackler-2012) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Speer 1994](#speer-1994) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Young 2003](#young-2003) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
+[AAOS 2024](#aaos-2024) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Hegedus 2012](#hegedus-2012) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2026](#li-2026) · [Lim 2013](#lim-2013) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Matsumoto 1990](#matsumoto-1990) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patil 2024](#patil-2024) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Petersen 2017](#petersen-2017) · [Pitcher 2024](#pitcher-2024) · [Pope 2023](#pope-2023) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rudwaleit 2006](#rudwaleit-2006) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Snyder-Mackler 2012](#snyder-mackler-2012) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Speer 1994](#speer-1994) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Young 2003](#young-2003) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -968,6 +976,7 @@ Citada como:
 2. Caída o golpe reciente y el codo no llega a estirarse del todo: casi un 50 % de fracturas (Appelboam 2008; Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
 3. Sospecha de fractura o luxación tras un traumatismo (deformidad, o el codo no llega a estirarse del todo: casi un 50 % de fracturas en Appelboam 2008): derivación médica para radiografía; antes, explorar la sensibilidad, el color y la temperatura de la mano.
 4. Appelboam 2008 — Appelboam, Reuben, Benger et al., «Elbow extension test to rule out elbow fracture: multicentre, prospective validation and observational study of diagnostic accuracy in adults and children», BMJ 337:a2428 (estudio prospectivo multicéntrico, 1740 pacientes).
+5. Appelboam 2008 (BMJ 337:a2428; estudio prospectivo multicéntrico, 1740 pacientes; leído entero en Europe PMC; tablas 1 a 3)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -976,6 +985,7 @@ Citada como:
 | Codo | — | `steps.0.options.1.derivacion` | 4 · mención en el texto | 3 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
+| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 
 ### Arrigoni 2017
 
@@ -2427,6 +2437,23 @@ Citada como:
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «Test de Elevación de Pierna Recta (SLR) ipsilateral» | 4b · cita bajo el test | 1 |
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «SLR Contralateral (Lasègue cruzado)» | 4b · cita bajo el test | 2 |
 
+### Dididze 2023
+
+Autores: Dididze, Tafti y Sherman  
+Título: *Pronator Teres Syndrome*  
+Publicación: StatPearls [Internet], NBK526090 (act. 2023-07-03)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
+
+Citada como:
+
+1. Dididze 2023 (StatPearls, NBK526090, act. 2023-07-03: introducción, epidemiología, historia y exploración, evaluación y diagnóstico diferencial)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+
 ### Dobbs 2016
 
 Publicación: Manual Therapy  
@@ -3862,6 +3889,50 @@ En contra, Norris 2025 (Orthop J Sports Med 13(5):23259671251334775; estudio pro
 |---|---|---|---|---|
 | Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Lever Sign Test» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
+### Hodge y Schroeder 2023
+
+Autores: Hodge y Schroeder  
+Título: *Medial Epicondyle Apophysitis (Little League Elbow)*  
+Publicación: StatPearls [Internet], NBK570592 (act. 2023-03-27)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
+
+Citada como:
+
+1. Hodge y Schroeder 2023 (StatPearls, NBK570592, act. 2023-03-27: introducción, epidemiología, fisiopatología, historia y exploración y diagnóstico diferencial)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+
+### Hoenig 2023
+
+Autores: Hoenig, Eissele, Strahl, Popp, Stürznickel, Ackerman, Hollander, Warden, Frosch, Tenforde y Rolvien  
+Título: *Return to sport following low-risk and high-risk bone stress injuries: a systematic review and meta-analysis*  
+Publicación: Br J Sports Med 57(7):427–432  
+DOI: 10.1136/bjsports-2022-106328  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario con el material suplementario, leído entero (2026-10). 76 estudios, 2974 lesiones óseas por estrés de miembro inferior y pelvis en deportistas. Tiempo medio de vuelta al deporte por localización (metaanálisis, tablas 1A y 1B del suplemento): tibia posteromedial 44 días, peroné 56, pubis 77, metatarsianos 1.º–4.º 78, 5.º metatarsiano 82, diáfisis femoral 86, maléolo medial 106, cuello femoral 107, navicular 127. Más del 90 % vuelve al deporte. Fila «Fractura de estrés» de los tiempos de tejido.
+
+Citada como:
+
+1. Hoenig 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Tibia posteromedial (bajo riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Peroné (bajo riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Pubis (bajo riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Metatarsianos 1.º–4.º (bajo riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Diáfisis femoral (bajo riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «5.º metatarsiano (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Maléolo medial (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Cuello femoral (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Navicular (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Tibia anterior (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+
 ### Holla 2011
 
 Autores: Holla, Steultjens, van der Leeden, Roorda, Bierma-Zeinstra, den Broeder y Dekker  
@@ -5154,6 +5225,25 @@ Citada como:
 | Rodilla | — | Paso `ro_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 | Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 1 |
 
+### Li 2026
+
+Autores: Li, Hammad y Kaiser  
+Título: *Medial Epicondylitis (Golfer's Elbow)*  
+Publicación: StatPearls [Internet], NBK519000 (act. 2026-01-02)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
+
+Citada como:
+
+1. Li 2026 (StatPearls, NBK519000, act. 2026-01-02: historia y exploración)
+2. Li 2026 (StatPearls, NBK519000, act. 2026-01-02: introducción, etiología, epidemiología e historia y exploración)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
 ### Lim 2013
 
 Autores: Lim  
@@ -5215,12 +5305,14 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 Citada como:
 
 1. Lleva 2025 — Lleva, Munakomi, Sun y Chang, «Ulnar Neuropathy», StatPearls [Internet], NCBI Bookshelf, última actualización 13 de diciembre de 2025.
+2. Lleva 2025 (StatPearls, NBK534226, act. 2025-12-13: etiología, historia y exploración y diagnóstico diferencial)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
 | Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
 | Codo | — | Pregunta `co_e1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
 ### Lluch 2020
 
@@ -5694,19 +5786,24 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 413. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 209–214
 414. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216–218 y 220 (tabla 3)
 415. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 221–225 (tabla 4)
-416. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235–236 y 255
-417. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237, 245, 255–257, 268 y 272–273
-418. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247, 249, 254–255, 262–263 y 269–271
-419. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 269, 275 y 284–287 (tablas 6, 7 y 10)
-420. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 254 (tabla 3) y 287
-421. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 236–246 (tabla 1)
-422. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 246–253 (tabla 2)
-423. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–254 (tabla 3) y 257–258
-424. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 258–259
-425. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253 y 265–268 (tabla 5)
-426. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253, 263 y 268–273 (tabla 6)
-427. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 274–282 (tablas 7–9)
-428. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 260–264 (tabla 4) y 284–285
+416. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85, 93–95, 100 y 102
+417. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81–82 y 89–90
+418. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–92 y 100–102
+419. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81–86, 89 y 100–103
+420. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81, 85–89 y 100–101
+421. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235–236 y 255
+422. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237, 245, 255–257, 268 y 272–273
+423. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247, 249, 254–255, 262–263 y 269–271
+424. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 269, 275 y 284–287 (tablas 6, 7 y 10)
+425. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 254 (tabla 3) y 287
+426. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 236–246 (tabla 1)
+427. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 246–253 (tabla 2)
+428. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–254 (tabla 3) y 257–258
+429. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 258–259
+430. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253 y 265–268 (tabla 5)
+431. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253, 263 y 268–273 (tabla 6)
+432. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 274–282 (tablas 7–9)
+433. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 260–264 (tabla 4) y 284–285
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -6102,6 +6199,11 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 363 |
 | Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 364 |
 | Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 365 |
+| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 416 |
+| Codo | — | Paso `co_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 417 |
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 418 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 419 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 420 |
 | Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Reglas de Ottawa (si no carga)» | 4b · cita bajo el test | 219 |
 | Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPAA: palpar y estirar» | 4b · cita bajo el test | 220 |
 | Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPC: palpar y estirar» | 4b · cita bajo el test | 220 |
@@ -6290,19 +6392,19 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 378 |
 | Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 378 |
 | Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 377 |
-| Tobillo y pie | — | Paso `tp_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 416 |
-| Tobillo y pie | — | Paso `tp_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 417 |
-| Tobillo y pie | — | Paso `tp_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 418 |
-| Tobillo y pie | — | Paso `tp_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 419 |
-| Tobillo y pie | — | Paso `tp_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 420 |
-| Tobillo y pie | — | Paso `tp_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 421 |
-| Tobillo y pie | — | Paso `tp_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 422 |
-| Tobillo y pie | — | Paso `tp_step8` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 423 |
-| Tobillo y pie | — | Paso `tp_step9` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 424 |
-| Tobillo y pie | — | Paso `tp_step10` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 425 |
-| Tobillo y pie | — | Paso `tp_step11` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 426 |
-| Tobillo y pie | — | Paso `tp_step12` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 427 |
-| Tobillo y pie | — | Paso `tp_step13` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 428 |
+| Tobillo y pie | — | Paso `tp_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 421 |
+| Tobillo y pie | — | Paso `tp_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 422 |
+| Tobillo y pie | — | Paso `tp_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 423 |
+| Tobillo y pie | — | Paso `tp_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 424 |
+| Tobillo y pie | — | Paso `tp_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 425 |
+| Tobillo y pie | — | Paso `tp_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 426 |
+| Tobillo y pie | — | Paso `tp_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 427 |
+| Tobillo y pie | — | Paso `tp_step8` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 428 |
+| Tobillo y pie | — | Paso `tp_step9` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 429 |
+| Tobillo y pie | — | Paso `tp_step10` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 430 |
+| Tobillo y pie | — | Paso `tp_step11` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 431 |
+| Tobillo y pie | — | Paso `tp_step12` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 432 |
+| Tobillo y pie | — | Paso `tp_step13` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 433 |
 
 ### Logerstedt 2017
 
@@ -6430,10 +6532,12 @@ Nota: Revisión narrativa con tabla de 19 series de resección; texto completo l
 Citada como:
 
 1. Lubiatowski 2020, EFORT Open Rev 5(9):549–557 (revisión narrativa)
+2. Lubiatowski 2020 (EFORT Open Rev 5(9):549–557; revisión narrativa de series de casos; leída entera en Europe PMC; tabla 2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
 ### Lucado 2022
 
@@ -6449,12 +6553,16 @@ Citada como:
 1. La guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)».
 2. Lucado 2022 (J Orthop Sports Phys Ther 52(12):CPG1–CPG111, apéndice E)
 3. Lucado 2022, J Orthop Sports Phys Ther 52(12):CPG1–CPG111 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Wallis 2024, Cochrane Database Syst Rev (5):CD013042 (revisión Cochrane, 23 ensayos, certeza baja)
+4. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leído el diagnóstico diferencial, p. CPG13)
+5. Lucado 2022 (J Orthop Sports Phys Ther 52(12); guía de la APTA de dolor lateral del codo, PDF completo en orthopt.org; leídos el diagnóstico y la clasificación y el diagnóstico diferencial, pp. CPG12–CPG13)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» | 4b · cita bajo el test | 2 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Pauta de tratamiento | 5 · cita de la pauta | 3 |
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 
 ### Lucas 2009
 
@@ -6747,15 +6855,17 @@ Título: *Stress Fractures*
 Publicación: StatPearls [Internet], NBK554538 (act. 2023-07-10)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído en la sesión de tobillo y pie (2026-10): razonamiento del cribado de tobillo y pie.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído en la sesión de tobillo y pie (2026-10): razonamiento del cribado de tobillo y pie. Releído entero (2026-10) para la fila «Fractura de estrés» del panel ⏱: bajo riesgo, 2–6 semanas de reposo relativo o descarga y vuelta gradual; alto riesgo, sin plazo (cirugía y traumatología).
 
 Citada como:
 
 1. May y Marappa-Ganeshan 2023 — May y Marappa-Ganeshan, «Stress Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 10 de julio de 2023.
 2. May y Marappa-Ganeshan 2023 (StatPearls, NBK554538, act. 2023-07-10: introducción, etiología, epidemiología, historia y exploración, evaluación y tratamiento (localizaciones de alto y bajo riesgo))
+3. May y Marappa-Ganeshan 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 3 |
 | Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
@@ -7167,6 +7277,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Rodilla, ligamento colateral medial» de «Esguince grado I» (Ligamento) | cabecera · tiempos de tejido | 1 |
 
+### Nardi y Schaefer 2023
+
+Autores: Nardi y Schaefer  
+Título: *Nursemaid Elbow*  
+Publicación: StatPearls [Internet], NBK430777 (act. 2023-08-14)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
+
+Citada como:
+
+1. Nardi y Schaefer 2023 (StatPearls, NBK430777, act. 2023-08-14: introducción, etiología, epidemiología, fisiopatología, historia y exploración, evaluación y diagnóstico diferencial)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+
 ### Narvani 2003
 
 Publicación: Knee Surg Sports Traumatol Arthrosc 11(6):403–8  
@@ -7511,6 +7638,7 @@ En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pa
 7. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–238
 8. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 236 y 238
 9. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–233
+10. O'Driscoll 2005 (Am J Sports Med 33(2):231–239; PDF del usuario, leído entero; tablas 1 y 2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -7524,6 +7652,7 @@ En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pa
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» («¿Por qué?») | 4b · razonamiento del test | 7 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» («¿Por qué?») | 4b · razonamiento del test | 8 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» («¿Por qué?») | 4b · razonamiento del test | 9 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 10 |
 
 ### O'Driscoll 2007
 
@@ -7840,6 +7969,7 @@ En la serie de Antuna y O'Driscoll que recoge Park 2019, el chasquido aparecía 
 6. Park 2019 (Medicine 98(18):e15497), introducción, resultados y discusión
 7. Park 2019 (Medicine 98(18):e15497), métodos (2.2), resultados (3.1) y discusión
 8. Park 2019 (Medicine 98(18):e15497), discusión
+9. Park 2019 (Medicine 98(18):e15497; serie retrospectiva de 24 casos; leídos en Europe PMC el resumen, los métodos y los resultados)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -7851,6 +7981,7 @@ En la serie de Antuna y O'Driscoll que recoge Park 2019, el chasquido aparecía 
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» («¿Por qué?») | 4b · razonamiento del test | 6 |
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de plica radiocapitelar posterolateral» («¿Por qué?») | 4b · razonamiento del test | 7 |
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» («¿Por qué?») | 4b · razonamiento del test | 8 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 9 |
 
 ### Patel 2025
 
@@ -8054,10 +8185,12 @@ Nota: Revisión narrativa (fuentes elegidas por relevancia, sin protocolo); text
 Citada como:
 
 1. Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Quzli 2025, Cureus 17(11):e96151 (revisión narrativa, sin protocolo: opinión de los autores)
+2. Quzli 2025 (Cureus 17(11):e96151; revisión narrativa sin protocolo; leídas en Europe PMC la epidemiología, la presentación clínica y la exploración)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
 ### Raj 2023
 
@@ -8371,6 +8504,28 @@ Citada como:
 |---|---|---|---|---|
 | Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Paso `ro_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Robertson y Wood 2017
+
+Autores: Robertson y Wood  
+Título: *Lower limb stress fractures in sport: Optimising their management and outcome*  
+Publicación: World J Orthop 8(3):242–255  
+DOI: 10.5312/wjo.v8.i3.242  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa de acceso abierto; PDF del usuario, leído entero (2026-10). Alto riesgo: diáfisis tibial anterior, base del 5.º metatarsiano, maléolo medial, cuello femoral lateral, navicular y sesamoideos del hallux. Tibia anterior incompleta: vuelta al deporte a los 7 meses con o sin cirugía. Fila «Fractura de estrés» de los tiempos de tejido.
+
+Citada como:
+
+1. Robertson y Wood 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «5.º metatarsiano (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Maléolo medial (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Cuello femoral (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Navicular (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Tibia anterior (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
 
 ### Roedl 2016
 
@@ -8819,17 +8974,37 @@ Título: *Achilles Tendon Rupture*
 Publicación: StatPearls [Internet], NBK430844 (act. 2023-08-17)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo sigue en su versión del 17 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Razonamiento del cribado de tobillo y pie. Releído entero (2026-10) para los subtipos de Aquiles del panel ⏱: sin cirugía, bota hasta las 8–12 semanas (Glazebrook y Rubinger); tras la reparación, impacto desde los 6 meses.
 
 Citada como:
 
 1. Shamrock 2023 — Shamrock, Dreyer y Varacallo, «Achilles Tendon Rupture», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de agosto de 2023.
 2. Shamrock 2023 (StatPearls, NBK430844, act. 2023-08-17: introducción)
+3. Shamrock 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Aquiles, sin cirugía» de «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 3 |
+| Todas (tiempos de tejido) | — | Subtipo «Aquiles, reparado» de «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 3 |
 | Tobillo y pie | — | Pregunta `tp_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Paso `tp_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Shamrock y Das 2023
+
+Autores: Shamrock y Das  
+Título: *Radial Tunnel Syndrome*  
+Publicación: StatPearls [Internet], NBK555937 (act. 2023-08-14)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Dos autores en la clave porque Shamrock 2023 (rotura del Aquiles) ya existía. Razonamiento del árbol CIF de codo (fase 4).
+
+Citada como:
+
+1. Shamrock y Das 2023 (StatPearls, NBK555937, act. 2023-08-14: introducción, epidemiología, fisiopatología, historia y exploración, evaluación y diagnóstico diferencial)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
 
 ### Shams 2025
 
@@ -8878,11 +9053,13 @@ Citada como:
 
 1. Siemensma 2023, EFORT Open Rev 8(5):351–360 (revisión narrativa)
 2. Wistow 2025, JSES Int 9(6):2146–2155 (revisión sistemática, 9 estudios y 312 participantes, sin metaanálisis) · Siemensma 2023, EFORT Open Rev 8(5):351–360 (revisión narrativa)
+3. Siemensma 2023 (EFORT Open Rev 8(5):351–360; revisión narrativa; leída entera en Europe PMC; etiología, evaluación y tratamiento conservador)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Pronóstico | 5 · cita del pronóstico | 1 |
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+| Codo | — | Paso `co_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
 ### Sims 2020
 
@@ -9901,6 +10078,23 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 
+### Wheeler y DeCastro 2023
+
+Autores: Wheeler y DeCastro  
+Título: *Posterior Interosseous Nerve Syndrome*  
+Publicación: StatPearls [Internet], NBK541046 (act. 2023-05-01)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
+
+Citada como:
+
+1. Wheeler y DeCastro 2023 (StatPearls, NBK541046, act. 2023-05-01: introducción, etiología, historia y exploración y diagnóstico diferencial)
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+
 ### Williams 2025
 
 Publicación: J Man Manip Ther  
@@ -9988,15 +10182,17 @@ Título: *Osteochondritis Dissecans*
 Publicación: StatPearls [Internet], NBK526091 (act. 2023-08-08)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo general de StatPearls (NCBI Bookshelf), no específico del astrágalo; PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de tobillo y pie (fase 4).
+Nota: Capítulo general de StatPearls (NCBI Bookshelf), no específico del astrágalo ni del codo; PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de tobillo y pie y de codo (fase 4).
 
 Citada como:
 
-1. Wood 2023 (StatPearls, NBK526091, act. 2023-08-08: capítulo general de osteocondritis disecante: introducción, etiología, epidemiología e historia y exploración)
+1. Wood 2023 (StatPearls, NBK526091, act. 2023-08-08: capítulo general de osteocondritis disecante, no del codo; epidemiología e historia y exploración)
+2. Wood 2023 (StatPearls, NBK526091, act. 2023-08-08: capítulo general de osteocondritis disecante: introducción, etiología, epidemiología e historia y exploración)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Tobillo y pie | — | Paso `tp_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+| Tobillo y pie | — | Paso `tp_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
 ### Wróblewski 2026
 
@@ -10279,6 +10475,8 @@ En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pa
 13. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
 14. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
 15. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
+16. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero)
+17. Zwerus 2018 (Br J Sports Med 52(19):1253–1260; revisión sistemática; PDF del usuario, leído entero; tablas 4 y 5)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -10300,6 +10498,8 @@ En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pa
 | Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Test de compresión del tríceps (triceps squeeze test)» | 4b · cita bajo el test | 14 |
 | Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 15 |
 | Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 15 |
+| Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 16 |
+| Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 17 |
 
 ### Zwerus 2022
 
@@ -10326,6 +10526,7 @@ Técnica en Zwerus 2022 (tabla 1): sentado, con el codo a 90°, el explorador fi
 4. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
 5. Zwerus 2022 (Am J Sports Med 50(14):3956–3962), introducción y tabla 1
 6. Zwerus 2022 (Am J Sports Med 50(14):3956–3962), introducción, discusión y tablas 1 y 2
+7. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, 86 pacientes; leído entero en Europe PMC; tabla 2)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -10335,6 +10536,7 @@ Técnica en Zwerus 2022 (tabla 1): sentado, con el codo a 90°, el explorador fi
 | Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 4 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» («¿Por qué?») | 4b · razonamiento del test | 5 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» («¿Por qué?») | 4b · razonamiento del test | 6 |
+| Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
 
 ## 3. Otras fuentes del contenido
 
