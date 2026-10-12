@@ -800,7 +800,7 @@ export const hypotheses = {
       fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 240–241'
     },
     tests: [
-      { name: 'Test de pinzamiento posterior', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor conocido con la flexión plantar pasiva o el test de pinzamiento posterior (flexión plantar comprimiendo el calcáneo contra la tibia): confirma.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 239–240' },
+      { name: 'Test de pinzamiento posterior', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Dolor conocido con la flexión plantar pasiva o el test de pinzamiento posterior (flexión plantar comprimiendo el calcáneo contra la tibia).', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 239–240' },
       { name: 'Hinchazón y dolor por detrás del astrágalo', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Hinchazón a ambos lados del Aquiles; dolor por detrás del astrágalo.', fuente: 'Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 239' },
       { name: 'Gesto testigo (①) y medida objetiva (②)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: '① Test de pinzamiento posterior o media punta en carga → EVA. ② ETM a tempo fijo hasta dolor o pérdida de técnica, frente al lado sano; o KTW en cm.', fuente: 'Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5)' }
     ]
