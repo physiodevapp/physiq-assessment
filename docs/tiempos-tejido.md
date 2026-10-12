@@ -20,14 +20,14 @@ El panel lee `state.mecanismo` y `state.cirugia` para pintar, nada más. No entr
 | `lib/tejidos.js` | Funciones puras: `posicionDia()` (día → posición en el eje no lineal), `marcaHoy()`, `tiemposTejidoHTML()` |
 | `app.js` | `abrirTiemposTejido()` / `cerrarTiemposTejido()` |
 | `index.html` | Botón de la cabecera y `#tejidosOverlay` |
-| `styles.css` | Bloque «Tiempos de recuperación de tejidos» y tokens `--tej-*` (tema claro y oscuro) |
+| `styles.css` | Bloque «Tiempos de recuperación de tejidos» y tokens `--tej-*` (tema claro y oscuro). El eje de tiempo (`.tej-eje`) es `sticky`: se queda fijo arriba al hacer scroll dentro del panel (petición del usuario, 2026-10) |
 
 El eje no es lineal: tiene las 8 columnas del wiki (de 1–3 días a 2 años), todas del mismo ancho. Cada columna tiene `hasta` (su último día), y con eso se colocan la franja de fases y la línea «Hoy» dentro de la columna, de forma lineal entre su primer y su último día.
 
 ## Correcciones respecto al wiki
 
 - **Un solo color por fila.** En el wiki, la versión de escritorio pintaba la rotura muscular de grado III y el esguince de grado III con dos intensidades, y la de móvil con una. Ahora cada fila tiene una sola gravedad: mínima, leve, moderada o grave/reconstrucción. Los rangos de columnas de las filas del wiki no cambian (un test lo fija).
-- **«Tendinopatía / Ruptura» se separa en dos filas.** «Tendinopatía» conserva el rango del wiki, con una nota: no es un plazo de cicatrización, sino de adaptación a la carga. «Rotura / reparación de tendón» es nueva (de 2–3 meses a 1 año) y va marcada «pendiente de fuente».
+- **«Tendinopatía / Ruptura» se separa en dos filas.** «Tendinopatía» conserva el rango del wiki, con una nota: no es un plazo de cicatrización, sino de adaptación a la carga. «Rotura / reparación de tendón» es nueva: va de 5–8 semanas a 2 años, según Wu 2017 (Wu, Nerlich y Docheva, *EFORT Open Rev* 2(7):332; acceso abierto, leído entero, 2026-10). Wu dice que la remodelación «empieza a las 6–8 semanas de la lesión y dura alrededor de 1–2 años, según la edad y el estado del paciente», y que el tendón curado no suele recuperar las propiedades mecánicas del sano. Es biología de la curación y no plazos de vuelta a la actividad, y así lo dice la nota de la fila. Al principio iba de 2–3 meses a 1 año, marcada «pendiente de fuente».
 - **«Dolor inducido por ejercicio»** pasa a llamarse «Dolor muscular tardío (DOMS)». El wiki usaba los dos nombres según la pantalla.
 - **Leyenda de colores.** El wiki no tenía.
 - **Franja de fases de reparación**, nueva: inflamatoria (días 0–5), proliferativa (día 5 a semana 3) y remodelación (semana 3 a 1 año). La fuente es Wallace 2023 (StatPearls, «Wound Healing Phases»; PDF del usuario, leído entero, 2026-10). Ese capítulo habla de heridas de la piel, así que el panel lo presenta como modelo general, con un aviso de que en tendón, ligamento y hueso los tiempos varían. Del capítulo salen estos datos: inflamatoria «varios días»; colágeno nuevo «hacia los días 5–7»; proliferativa «varias semanas»; remodelación desde «la semana 3» y «hasta 12 meses»; resistencia máxima de una incisión a las 11–14 semanas, con una cicatriz de ~80 % de la resistencia original.
@@ -36,7 +36,7 @@ El eje no es lineal: tiene las 8 columnas del wiki (de 1–3 días a 2 años), t
 ## Pendiente
 
 - **Fuente del wiki sin verificar** (`'Snyder-Mackler 2012'` en `data/referencias.js`). Es probablemente el cap. 3, «Developing Treatment Pathways», de Andrews, Harrelson y Wilk, *Physical Rehabilitation of the Injured Athlete*, 4.ª ed. (Elsevier, 2012). Coinciden el título y el año, pero no está confirmado que el capítulo sea de Snyder-Mackler. El usuario no tiene el libro (2026-10), así que las filas que la citan siguen siendo las del wiki sin verificar.
-- **Fuente para la rotura de tendón**, que sigue «pendiente de fuente». Las revisiones de acceso abierto encontradas tratan la biología de la cicatrización, no los plazos clínicos. Al añadir una fuente: clave en el registro, en `fuentes` de la fila, quitar `pendiente` y ejecutar `node tests/gen-referencias.mjs`.
+- **Fila nueva sin fuente**: va con `pendiente: true` hasta tener una fuente leída. Al añadirla: clave en el registro, en `fuentes` de la fila, quitar `pendiente` y ejecutar `node tests/gen-referencias.mjs`. Hoy ninguna fila está pendiente.
 - **Revisar las gravedades.** El color de la fractura (moderada) y el del tendón vienen de la intensidad que usaba el wiki, que no tenía leyenda.
 - **Ampliación** (opción descartada para la primera versión): cartílago y menisco (zona vascular y avascular), fractura de estrés, nervio periférico, y la ligamentización del injerto de LCA más allá del año.
 
