@@ -893,9 +893,22 @@ async function checkAmpliarIA(browser) {
 // Claude se recuerda; Escape cierra; en el móvil es una hoja inferior que el
 // atrás cierra sin cambiar de fase; a 320 px los tres destinos caben; en el
 // hub no hay botón.
+// Dictado simulado: Chromium headless no trae SpeechRecognition. Cada start()
+// deja la instancia en window.__dictado para emitir resultados a mano.
+const DICTADO_FALSO = () => {
+  window.__dictados = [];
+  window.SpeechRecognition = class {
+    start() { this.activo = true; window.__dictado = this; window.__dictados.push(this); }
+    stop() { this.activo = false; this.onend?.(); }
+    abort() { this.activo = false; this.abortado = true; this.onend?.(); }
+    decir(t) { this.onresult?.({ results: [[{ transcript: t }]] }); }
+  };
+};
+
 async function checkPreguntaIA(browser, errors) {
   const r = {};
   const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  await context.addInitScript(DICTADO_FALSO);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (pregunta IA): ${err.message}`));
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
@@ -926,8 +939,40 @@ async function checkPreguntaIA(browser, errors) {
     return document.getElementById('preguntaOverlay').classList.contains('open') && p.width <= 420 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
       && document.querySelectorAll('#preguntaDestinos .option-btn').length === 3 && sel?.dataset.destino === 'perplexity'
       && document.activeElement?.id === 'preguntaTexto' && document.getElementById('preguntaIr').getAttribute('aria-disabled') === 'true'
-      && document.querySelector('.pregunta-aviso').textContent.includes('No escribas datos que identifiquen al paciente');
+      && document.querySelector('.pregunta-aviso').textContent.includes('No escribas ni dictes datos que identifiquen al paciente');
   });
+  // 🎤 junto al título: lo dictado llena el texto y activa «Preguntar»;
+  // cerrar corta el dictado y un resultado tardío ya no escribe
+  await page.click('#preguntaCabecera .mic-btn');
+  r.dictado = await page.evaluate(() => {
+    const btn = document.querySelector('#preguntaCabecera .mic-btn');
+    const tit = document.getElementById('preguntaTitulo').getBoundingClientRect();
+    const b = btn.getBoundingClientRect();
+    const escuchando = btn.classList.contains('listening') && window.__dictado?.activo;
+    window.__dictado.decir('Diferencia entre Hawkins y Neer');
+    return escuchando && Math.abs((b.top + b.height / 2) - (tit.top + tit.height / 2)) < 4
+      && document.getElementById('preguntaTexto').value === 'Diferencia entre Hawkins y Neer'
+      && document.getElementById('preguntaIr').getAttribute('aria-disabled') === 'false';
+  });
+  await page.keyboard.press('Escape');
+  r.dictadoCierra = await page.evaluate(() => {
+    const rec = window.__dictado;
+    rec.decir('tarde');
+    return rec.abortado && !document.querySelector('#preguntaCabecera .mic-btn').classList.contains('listening')
+      && !document.getElementById('preguntaTexto').value.includes('tarde');
+  });
+  // Con la sesión grabándose, el 🎤 está desactivado
+  await page.evaluate(() => document.body.classList.add('grab-activa'));
+  await page.click('#preguntaIABtn');
+  r.dictadoGrabando = await page.evaluate(() => {
+    const btn = document.querySelector('#preguntaCabecera .mic-btn');
+    const n = window.__dictados.length;
+    btn.click();
+    return btn.disabled && window.__dictados.length === n;
+  });
+  await page.keyboard.press('Escape');
+  await page.evaluate(() => { document.body.classList.remove('grab-activa'); document.getElementById('preguntaTexto').value = ''; });
+  await page.click('#preguntaIABtn');
   await page.click('#preguntaIr', { force: true });   // aria-disabled: Playwright no lo pulsaría
   await page.waitForTimeout(150);
   r.vaciaNoNavega = (await ultimo()).n === 0 && await abierto();
@@ -962,6 +1007,7 @@ async function checkPreguntaIA(browser, errors) {
 
   // Móvil táctil: hoja inferior a todo el ancho; atrás la cierra en la misma fase
   const ctxMovil = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  await ctxMovil.addInitScript(DICTADO_FALSO);
   const movil = await ctxMovil.newPage();
   movil.on('pageerror', err => errors.push(`pageerror (pregunta IA móvil): ${err.message}`));
   await movil.goto(BASE_URL, { waitUntil: 'networkidle' });
@@ -970,7 +1016,9 @@ async function checkPreguntaIA(browser, errors) {
   await movil.waitForTimeout(400);
   const hoja = await movil.evaluate(() => {
     const p = document.getElementById('preguntaPanel').getBoundingClientRect();
-    return Math.round(p.width) === innerWidth && Math.round(p.bottom) === innerHeight;
+    // Sin foco en el texto: el teclado no se despliega solo
+    return Math.round(p.width) === innerWidth && Math.round(p.bottom) === innerHeight
+      && document.activeElement?.id === 'preguntaPanel';
   });
   await movil.goBack();
   await movil.waitForTimeout(300);
@@ -981,7 +1029,7 @@ async function checkPreguntaIA(browser, errors) {
   await movil.waitForTimeout(400);
   r.caben320 = await movil.evaluate(() => {
     const panel = document.getElementById('preguntaPanel').getBoundingClientRect();
-    return [...document.querySelectorAll('#preguntaDestinos .option-btn'), document.getElementById('preguntaIr')].every(b => {
+    return [...document.querySelectorAll('#preguntaDestinos .option-btn'), document.getElementById('preguntaIr'), document.querySelector('#preguntaCabecera .mic-btn')].every(b => {
       const rb = b.getBoundingClientRect();
       return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth;
     }) && document.documentElement.scrollWidth <= innerWidth;
@@ -2382,7 +2430,7 @@ const SECCIONES = [
     const ampliarIA = await checkAmpliarIA(browser);
     console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
     const preguntaIA = await checkPreguntaIA(browser, errors);
-    console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, Claude se recuerda, Escape cierra; hoja inferior en móvil que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
+    console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, 🎤 junto al título que llena el texto, se corta al cerrar y se desactiva grabando, Claude se recuerda, Escape cierra; hoja inferior en móvil sin teclado al abrir que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
     return ampliarIA.ok && preguntaIA.ok;
   } },
 
