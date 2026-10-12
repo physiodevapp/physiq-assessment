@@ -96,6 +96,16 @@ No cambia `question`, `iaPregunta`, `options`, `next` ni lo que activa cada opci
 - Lo que el árbol dice sin respaldo en ninguna fuente leída no se comenta ni se cambia: el nivel «derivación preferente» de `tp_step2` (las fuentes piden derivar, Stern 2026 todo Lisfranc al traumatólogo, pero ninguna dice «preferente»).
 - Un capítulo general que no trata la localización del paso se cita diciéndolo (Wood 2023, osteocondritis disecante en general, en `tp_step4`).
 
+## Decisiones de codo (2026-10, validadas por el usuario)
+- Codo no tiene tarjeta de guía de consulta: el capítulo de Lluch (cap. 3.2, Coombes y Bisset) se cita directamente y llegó con la bibliografía.
+- Si el capítulo resume mal un estudio leído, se cita el original: el test de valgo en movimiento tiene una sensibilidad del 100 % y una especificidad del 75 % (O'Driscoll 2005, con solo 4 pacientes sin lesión), no las cifras invertidas de Lluch (p. 86), copiadas del texto de Zwerus 2018, cuyas tablas dan las del original. Es la misma lectura que la ficha 4b de `co4`.
+- Conflicto entre textos narrativos resuelto por fecha (regla 2): el punto de dolor máximo del túnel radial está entre 2 y 5 cm distal al epicóndilo lateral (Shamrock y Das, 2023-08), no a 4–6 cm (Lluch, tabla 1) ni a 3–5 cm (Wheeler y DeCastro, 2023-05).
+- Un capítulo general que no trata la localización del paso se cita diciéndolo, como en tobillo y pie: Wood 2023 (osteocondritis disecante en general) en `co_step1`.
+- Los matices que chocan con una opción van en el detalle sin tocarla: el codo rígido suele doler poco salvo al final del recorrido, el dolor en reposo sugiere infección y la revisión de Siemensma deja fuera la pronosupinación (frente a «restricción global y dolorosa», `co_step2`); el valgo estático solo detecta el 65 % de las lesiones del ligamento colateral medial (frente a «dolor al estrés en valgo», `co_step5`); la plica da síntomas mecánicos en menos de la mitad de los casos (frente a «Bloqueo/Chasquido», `co_step5`).
+- Lo que el árbol dice sin respaldo en ninguna fuente leída no se comenta ni se cambia: «dolor quemante» (`co_step3`) y la «debilidad en flexión» de la opción del bíceps (`co_step1`; las fuentes respaldan la debilidad de la supinación como signo, y la pérdida de fuerza de flexión solo como consecuencia de no operar).
+- Las «LR+ 27–41» que Lluch da a los tests del cubital no se usan (no están en Ochi 2012, como ya dice la ficha 4b de `co8`); los tests se remiten a la fase 4b.
+- Con codo se cierra la Fase I: las 7 regiones tienen el «¿Por qué esta pregunta?» en todos sus pasos.
+
 ## Reglas
 - **Fuentes**: las mismas que en las fases F y H, con el mismo orden de prioridad (más peso de evidencia y, a igual peso, la más actual). Para cada región, primero el capítulo de Lluch 2020 que ya está leído (lumbar: cap. 5.1, Fondevila Suárez). Después, las guías y revisiones que el paso ya cita o en las que se basa, leídas enteras (PDF del usuario cuando no sean de acceso abierto). Toda referencia nueva entra en `data/referencias.js` con su DOI verificado, y después se ejecuta `node tests/gen-referencias.mjs`.
 - **No inventar**: si la fuente no explica por qué el paso va en ese orden, no se dice. Se puede explicar qué separa el paso sin justificar el orden.
