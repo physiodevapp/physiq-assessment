@@ -1672,6 +1672,69 @@ async function checkAvisoVersion(browser, errors) {
   return r;
 }
 
+// Aviso inferior (showToast): en móvil, banda a todo el ancho encima de los
+// botones de navegación fijos (sin taparlos), una frase en ≤2 líneas, y
+// encima del aviso de versión nueva si está; en escritorio, píldora centrada
+// que no se parte por tener solo medio viewport de ancho.
+async function checkToast(browser, errors) {
+  const r = {};
+  const medir = page => page.evaluate(() => {
+    const t = document.getElementById('appToast');
+    if (!t) return null;
+    t.style.animation = 'none';
+    const q = t.getBoundingClientRect();
+    const nav = document.querySelector('.phase-container.active .nav-buttons')?.getBoundingClientRect();
+    const fija = getComputedStyle(document.querySelector('.phase-container.active .nav-buttons')).position === 'fixed';
+    const v = document.getElementById('versionAviso')?.getBoundingClientRect();
+    return {
+      w: innerWidth, left: Math.round(q.left), right: Math.round(innerWidth - q.right),
+      encimaNav: !fija || q.bottom <= nav.top + 0.5,
+      lineas: Math.round((t.clientHeight - parseFloat(getComputedStyle(t).paddingTop) - parseFloat(getComputedStyle(t).paddingBottom)) / parseFloat(getComputedStyle(t).lineHeight)),
+      altura: q.height, sobreVersion: !v || q.bottom <= v.top + 0.5,
+      fuente: parseFloat(getComputedStyle(t).fontSize),
+      noCapturaToques: getComputedStyle(t).pointerEvents === 'none',
+      sinDesbordar: document.documentElement.scrollWidth <= innerWidth,
+    };
+  });
+  const corto = 'En pausa · mantén pulsado para descartar la grabación';
+  for (const w of [320, 390]) {
+    const context = await browser.newContext({ viewport: { width: w, height: 700 }, hasTouch: true });
+    const page = await context.newPage();
+    page.on('pageerror', err => errors.push(`pageerror (toast ${w}): ${err.message}`));
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    r[w] = {};
+    for (const f of [1, 5]) {
+      await page.evaluate(f => { if (f !== 1) state.region = 'hombro'; goToPhase(f); }, f);
+      await page.waitForTimeout(600);
+      await page.evaluate(async m => (await import('./app.js')).showToast(m), corto);
+      const m = await medir(page);
+      r[w][f] = m && m.left === 16 && m.right === 16 && m.encimaNav && m.fuente >= 14 && m.noCapturaToques && m.sinDesbordar && (w < 390 || m.lineas <= 2) ? true : m;
+    }
+    // Con el aviso de versión nueva abajo, el toast va encima
+    await page.evaluate(() => {
+      goToPhase(1);
+      const a = document.createElement('div');
+      a.id = 'versionAviso'; a.className = 'version-aviso';
+      a.innerHTML = '<span class="version-aviso-texto">Versión nueva</span><button class="version-aviso-btn">Actualizar</button>';
+      document.body.appendChild(a);
+    });
+    await page.waitForTimeout(600);
+    await page.evaluate(async () => (await import('./app.js')).showToast('✓ Copiado'));
+    const m = await medir(page);
+    r[w].conVersion = m && m.sobreVersion ? true : m;
+    await context.close();
+  }
+  const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  const page = await context.newPage();
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.evaluate(async m => (await import('./app.js')).showToast(m, 'warning'), corto);
+  const m = await medir(page);
+  r.escritorio = m && m.lineas === 1 && Math.abs(m.left - m.right) <= 1 ? true : m;
+  await context.close();
+  r.ok = [320, 390].every(w => Object.values(r[w]).every(x => x === true)) && r.escritorio === true;
+  return r;
+}
+
 async function checkInformeNarrativo(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
@@ -2271,6 +2334,10 @@ async function main() {
   const avisoVersion = await checkAvisoVersion(browser, errors);
   console.log(`  ${avisoVersion.ok ? '✓' : '✗'} móvil: abajo, encima de los botones de navegación en todas las fases (también con la barra de contexto), 44 px táctiles, cabe a 320 px, una línea a 320/360/390 px también mientras actualiza, oculto al escribir; «×» deja el punto en el icono de sesión; escritorio: arriba${avisoVersion.ok ? '' : ' ' + JSON.stringify(avisoVersion)}`);
 
+  console.log('\nAvisos inferiores (showToast):');
+  const toast = await checkToast(browser, errors);
+  console.log(`  ${toast.ok ? '✓' : '✗'} móvil (320/390 px): banda a 16 px de los bordes encima de los botones de navegación, sin captar toques, ≥14 px de letra, un mensaje de una frase en ≤2 líneas a 390 px (antes 3 en media pantalla), encima del aviso de versión nueva; escritorio: píldora centrada en una línea${toast.ok ? '' : ' ' + JSON.stringify(toast)}`);
+
   console.log('\nInforme narrativo con IA (worker y Turnstile simulados):');
   const informeIA = await checkInformeNarrativo(browser, errors);
   console.log(`  ${informeIA.ok ? '✓' : '✗'} licencia/clave, demo descartado, consentimiento con audio, SSE → informe guardado, revisado y compartido; fase 5: un solo «Compartir» abajo con menú (paciente, IA si la hay, notas; «Enviar al informe» en el hub); nada de IA en el hub`);
@@ -2291,7 +2358,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && barraFase.ok && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && tejidos.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && avisoVersion.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && barraFase.ok && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && tejidos.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && avisoVersion.ok && toast.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
