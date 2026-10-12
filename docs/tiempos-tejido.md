@@ -64,7 +64,7 @@ Tres subtipos. Fuentes, en PDF del usuario y leídas enteras:
 - **Evans 2023** (StatPearls, «Anterior Cruciate Ligament Knee Injury»; nueva). Sin cirugía (baja demanda, sin giros ni saltos, roturas parciales): «12 weeks of supervised physiotherapy» tras la fase aguda. Se pinta de «3–4 s» a «2–3 m», bajo el grado III, con la nota de que es la duración del programa y no cicatrización. Reconstruido: vuelta a la actividad o al deporte a los 6–12 meses de media, y el injerto «up to 18 months or more» en incorporarse. Se pinta de «6m–1a» a «2a», bajo «Injerto».
 - **Logerstedt 2017** (guía JOSPT). No da plazos: la vuelta al deporte es por criterios. Al año, sin derrame, sin inestabilidad y con IKDC > 93 %, la vuelta al deporte es «more than 14 times more likely» (PLR = 14,54). Solo va en la nota del reconstruido.
 
-Pendiente: revisión clínica del usuario, sobre todo la barra del LCA sin cirugía (duración del programa, no un plazo del tejido).
+Revisado y aprobado por el usuario tal cual (2026-10), incluida la barra del LCA sin cirugía como duración del programa.
 
 ## Menisco, grupo propio (2026-10)
 
