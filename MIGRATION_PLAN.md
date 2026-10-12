@@ -268,4 +268,6 @@ Orden propuesto: primero lo más frecuente en las hipótesis de la app y con fue
 | 8 | Tendinopatía | Rotuliana, aquílea (insercional y porción media), epicondilalgia lateral, glútea | Ophey 2025, Lopes 2025, Pringels 2025, Lucado 2022, Grimaldi y Fearon 2015 (en el registro) | [ ] | [ ] | [ ] | No hay plazo de cicatrización sino duración de los programas de carga: valorar si se pinta como barra o como nota |
 | 9 | Fila nueva «Nervio periférico» | Neuropraxia; axonotmesis (≈1 mm/día) | Ashley y Lui 2023 (StatPearls «Physiology, Nerve»), Lezak 2024 (en el registro) | [ ] | [ ] | [ ] | La axonotmesis depende de la distancia: quizá nota en vez de barra |
 
+Qué mide cada barra (`mide`: vuelta al deporte, protección, programa, biología o sin especificar; relleno liso, rayado o contorno; decisión del usuario, 2026-10): hecho para todas las filas y subtipos de las filas 1–5. Toda fila o subtipo nuevo lo necesita (test unitario). Diseño: `docs/tiempos-tejido.md`.
+
 Después, cuando haya subtipos: abrir el panel ya filtrado por la hipótesis activa (p. ej. un esguince de tobillo → «Ligamento» con su subtipo desplegado). Requiere asignar cada hipótesis a su fila o subtipo; se deja para el final.
