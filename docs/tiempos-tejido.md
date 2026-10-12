@@ -130,7 +130,7 @@ Dos subtipos bajo «Rotura / reparación de tendón». La fuente es **Shamrock 2
 
 La inmovilización tras la cirugía (2–4 semanas) no se pinta: la frase del capítulo está mal redactada y mezcla los dos tratamientos. El **manguito rotador reparado** queda pendiente de su fuente, el consenso de la ASSET (Thigpen 2016, J Shoulder Elbow Surg, sin acceso abierto).
 
-Pendiente de revisión por el usuario.
+Revisado y aprobado por el usuario tal cual (2026-10), incluido no pintar la inmovilización tras la cirugía.
 
 ## Qué mide cada barra (2026-10)
 
