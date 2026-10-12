@@ -269,3 +269,22 @@ Orden propuesto: primero lo más frecuente en las hipótesis de la app y con fue
 | 9 | Fila nueva «Nervio periférico» | Neuropraxia; axonotmesis (≈1 mm/día) | Ashley y Lui 2023 (StatPearls «Physiology, Nerve»), Lezak 2024 (en el registro) | [ ] | [ ] | [ ] | La axonotmesis depende de la distancia: quizá nota en vez de barra |
 
 Después, cuando haya subtipos: abrir el panel ya filtrado por la hipótesis activa (p. ej. un esguince de tobillo → «Ligamento» con su subtipo desplegado). Requiere asignar cada hipótesis a su fila o subtipo; se deja para el final.
+
+## Fase K — «Anatomía» de los tests de la fase 4b (enlaces a Kenhub)
+
+Diseño, esquema y procedimiento: `docs/anatomia-kenhub.md` (léelo entero antes de empezar). Una región por sesión, con revisión clínica del usuario antes de `main`. Cada test de la 4b puede llevar `anatomia: ['<clave>']`, con claves de `data/anatomia.js`. Debajo de la fuente se pinta un enlace a Kenhub por estructura, y el panel «Ampliar» repite la lista. Solo standalone, nada del paciente en la URL, nunca en payload, resúmenes ni prompt. Abierta en 2026-10, a propuesta del usuario.
+
+- [x] Registro `data/anatomia.js`, pintado en la tarjeta y en el panel, CSS (oculto en el hub y al imprimir), tests (`tests/unit/anatomia.mjs`, smoke `--solo anatomia`)
+- [ ] Abrir de verdad cada URL del registro: se comprobaron en el índice de búsqueda porque `www.kenhub.com` no era accesible desde el entorno. Con `www.kenhub.com` en *Allowed domains*, `curl` a cada una y ver si hay versión en español
+
+| Región | Estructuras y tests | Slugs comprobados | Revisión usuario | Notas |
+|---|---|---|---|---|
+| Hombro (piloto) | [x] 42 de 49 tests, 19 estructuras | [x] índice de búsqueda | [ ] | Sin campo los genéricos (gesto testigo; identificadores de Walmsley). El labrum no tiene artículo propio en Kenhub: enlaza «Articulación glenohumeral» con `nota`. En h4 (inestabilidad) basta la articulación glenohumeral, cuyo artículo trata cápsula, ligamentos y labrum |
+| Rodilla | [ ] | [ ] | [ ] | |
+| Cadera | [ ] | [ ] | [ ] | |
+| Lumbar | [ ] | [ ] | [ ] | |
+| Cervical | [ ] | [ ] | [ ] | `columna_cervical` ya existe (hombro h6) |
+| Codo | [ ] | [ ] | [ ] | `biceps_braquial` ya existe (hombro h5) |
+| Tobillo y pie | [ ] | [ ] | [ ] | |
+
+Después, si se ve útil: un enlace a la estructura principal en la cabecera de la hipótesis (4b).
