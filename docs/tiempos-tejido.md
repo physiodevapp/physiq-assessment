@@ -119,7 +119,7 @@ Fila nueva «Fractura de estrés» en hueso («5–8 s» a «6m–1a», moderada
 
 Cada subtipo lleva «(bajo riesgo)» o «(alto riesgo)» en el nombre; los de alto riesgo, en color grave. La barra es la vuelta al deporte media, no la consolidación. El navicular y el 5.º metatarsiano también salen en «Fractura» con el plazo de inmovilización de su capítulo (Fase J, 4), y la nota del navicular lo dice. Los sesamoideos y el astrágalo no se pintan: Hoenig no da tiempo agrupado para ellos.
 
-Pendiente de revisión por el usuario.
+Revisado y aprobado por el usuario tal cual (2026-10).
 
 ## Filtro sin «Todos», en una fila (2026-10)
 
