@@ -274,14 +274,17 @@ test('tejidos: toda fila y subtipo dice qué mide su barra (`mide`), y se pinta 
   assert.ok(html.includes('Qué mide la barra:'));
 });
 
-test('tejidos, Fase J 6: subtipos de Aquiles bajo la rotura de tendón (Shamrock 2023)', () => {
+test('tejidos, Fase J 6: subtipos de Aquiles y manguito rotador bajo la rotura de tendón (Shamrock 2023, Thigpen 2016)', () => {
   const madre = filas.find(f => f.id === 'tendon_rotura');
   const st = Object.fromEntries((madre.subtipos || []).map(x => [x.id, x]));
   // Sin cirugía: bota hasta las 8–12 semanas → «5–8 s» a «2–3 m», protección
   assert.deepEqual([st.aquiles_conservador.desde, st.aquiles_conservador.hasta, st.aquiles_conservador.mide], [3, 4, 'proteccion']);
   // Reparado: impacto y vuelta al deporte desde los 6 meses → «6m–1a»
   assert.deepEqual([st.aquiles_cirugia.desde, st.aquiles_cirugia.hasta, st.aquiles_cirugia.mide], [6, 6, 'deporte']);
-  for (const x of madre.subtipos) assert.deepEqual(x.fuentes, ['Shamrock 2023'], x.id);
-  // El manguito rotador no se pinta hasta tener su fuente leída
-  assert.ok(!madre.subtipos.some(x => /manguito/.test(x.id)));
+  for (const x of madre.subtipos.filter(x => x.id.startsWith('aquiles_'))) assert.deepEqual(x.fuentes, ['Shamrock 2023'], x.id);
+  // Manguito rotador reparado (Thigpen 2016): protección hasta la 6.ª semana → «5–8 s»;
+  // rehabilitación hasta las 20–26 semanas → «3–6 m», como programa
+  assert.deepEqual([st.manguito_proteccion.desde, st.manguito_proteccion.hasta, st.manguito_proteccion.mide], [3, 3, 'proteccion']);
+  assert.deepEqual([st.manguito_programa.desde, st.manguito_programa.hasta, st.manguito_programa.mide], [5, 5, 'programa']);
+  for (const id of ['manguito_proteccion', 'manguito_programa']) assert.deepEqual(st[id].fuentes, ['Thigpen 2016'], id);
 });
