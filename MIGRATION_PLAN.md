@@ -275,11 +275,12 @@ Después, cuando haya subtipos: abrir el panel ya filtrado por la hipótesis act
 Diseño, esquema y procedimiento: `docs/anatomia-kenhub.md` (léelo entero antes de empezar). Una región por sesión, con revisión clínica del usuario antes de `main`. Cada test de la 4b puede llevar `anatomia: ['<clave>']`, con claves de `data/anatomia.js`. Debajo de la fuente se pinta un enlace a Kenhub por estructura, y el panel «Ampliar» repite la lista. Solo standalone, nada del paciente en la URL, nunca en payload, resúmenes ni prompt. Abierta en 2026-10, a propuesta del usuario.
 
 - [x] Registro `data/anatomia.js`, pintado en la tarjeta y en el panel, CSS (oculto en el hub y al imprimir), tests (`tests/unit/anatomia.mjs`, smoke `--solo anatomia`)
-- [ ] Abrir de verdad cada URL del registro: se comprobaron en el índice de búsqueda porque `www.kenhub.com` no era accesible desde el entorno. Con `www.kenhub.com` en *Allowed domains*, `curl` a cada una y ver si hay versión en español
+- [x] Abrir de verdad cada URL del registro (2026-10, con `www.kenhub.com` en *Allowed domains*): las 19 dan 200 con su título. 16 tienen versión en español (`/es/library/anatomia-es/…`); sin ella, la bursa subacromial y los ligamentos coracoacromial y coracohumeral. Kenhub responde `X-Frame-Options: SAMEORIGIN`: el iframe está descartado
+- [ ] Decidir si se enlaza la versión en español cuando existe (`kenhubEs` opcional, con la inglesa como respaldo)
 
 | Región | Estructuras y tests | Slugs comprobados | Revisión usuario | Notas |
 |---|---|---|---|---|
-| Hombro (piloto) | [x] 42 de 49 tests, 19 estructuras | [x] índice de búsqueda | [ ] | Sin campo los genéricos (gesto testigo; identificadores de Walmsley). El labrum no tiene artículo propio en Kenhub: enlaza «Articulación glenohumeral» con `nota`. En h4 (inestabilidad) basta la articulación glenohumeral, cuyo artículo trata cápsula, ligamentos y labrum |
+| Hombro (piloto) | [x] 42 de 49 tests, 19 estructuras | [x] abiertas con `curl` (200) | [ ] | Sin campo los genéricos (gesto testigo; identificadores de Walmsley). El labrum no tiene artículo propio en Kenhub: enlaza «Articulación glenohumeral» con `nota`. En h4 (inestabilidad) basta la articulación glenohumeral, cuyo artículo trata cápsula, ligamentos y labrum |
 | Rodilla | [ ] | [ ] | [ ] | |
 | Cadera | [ ] | [ ] | [ ] | |
 | Lumbar | [ ] | [ ] | [ ] | |

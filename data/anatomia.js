@@ -9,8 +9,8 @@
 // `anatomia: ['<clave>']`:
 //   nombre — lo que se lee en el enlace (español).
 //   kenhub — slug del artículo en inglés: la URL es
-//            KENHUB_BASE + kenhub. Cada slug se ha comprobado que existe
-//            (índice de búsqueda, 2026-10); la versión en español de
+//            KENHUB_BASE + kenhub. Cada slug se ha abierto y da 200 con el
+//            título de la estructura (2026-10); la versión en español de
 //            Kenhub tiene otros slugs y no todos los artículos.
 //   nota?  — cuando la estructura no tiene artículo propio y se enlaza
 //            el que la trata (se ve en el `title` del enlace).

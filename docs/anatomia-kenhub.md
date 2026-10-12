@@ -12,7 +12,7 @@ Debajo de la fuente de cada test de la fase 4b hay una línea «ANATOMÍA Suprae
 
 ## Por qué un enlace y no Kenhub dentro de la app
 
-Se descartó el iframe. Kenhub, como casi cualquier sitio con suscripción, casi seguro bloquea que lo incrusten (`X-Frame-Options`/CSP). Esto no está verificado, porque `www.kenhub.com` no era accesible desde el entorno de desarrollo. Aunque lo permitiera, el inicio de sesión en un iframe de otro dominio falla en Safari/iOS por las cookies de terceros, y en un móvil una web completa dentro de un panel es incómoda. Con un `<a target="_blank" rel="noopener noreferrer">` no hace falta JavaScript, y no hay `window.open`.
+Se descartó el iframe. Kenhub prohíbe que lo incrusten: sus páginas responden `X-Frame-Options: SAMEORIGIN` (comprobado, 2026-10), así que dentro de la app no se vería nada. Aunque lo permitiera, el inicio de sesión en un iframe de otro dominio falla en Safari/iOS por las cookies de terceros, y en un móvil una web completa dentro de un panel es incómoda. Con un `<a target="_blank" rel="noopener noreferrer">` no hace falta JavaScript, y no hay `window.open`.
 
 ## Cuenta de Kenhub
 
@@ -42,7 +42,7 @@ export const ESTRUCTURAS = {
 ```
 
 - `nombre`: lo que se lee en el enlace, en español.
-- `kenhub`: el slug del artículo **en inglés**. La versión en español de Kenhub (`/es/library/anatomia/…`) tiene otros slugs y no todos los artículos, así que se usa la inglesa, que siempre existe (el texto lo traduce el navegador). Si algún día se quieren los de español, se añadiría un campo `kenhubEs` opcional con su base.
+- `kenhub`: el slug del artículo **en inglés**. La versión en español de Kenhub (`https://www.kenhub.com/es/library/anatomia-es/<slug>`) tiene otros slugs y no todos los artículos: de las 19 estructuras de hombro, 16 la tienen y 3 no (bursa subacromial y ligamentos coracoacromial y coracohumeral). Cada artículo en inglés la anuncia en su `<link rel="alternate" hreflang="es">`. Por ahora se usa la inglesa, que siempre existe. Para enlazar la española habría que añadir un campo `kenhubEs` opcional, con la inglesa como respaldo.
 - `nota` (opcional): cuando la estructura no tiene artículo propio y se enlaza el que la trata. Se ve en el `title` del enlace.
 
 Las claves son genéricas y se comparten entre regiones (`escapula`, `columna_cervical`…). Antes de crear una, se mira si ya existe.
@@ -58,7 +58,7 @@ Las claves son genéricas y se comparten entre regiones (`escapula`, `columna_ce
    node -e "import('./data/<region>.js').then(m=>{for(const [id,h] of Object.entries(m.hypotheses)){console.log(id,h.name);h.tests.forEach((t,i)=>console.log('  ',i,t.name))}})"
    ```
 2. **Decidir las estructuras de cada test**: qué tejido carga, comprime o explora según su `criterio` y su `razonamiento`. Si un test no tiene una estructura clara, se deja sin campo.
-3. **Comprobar cada slug nuevo** antes de añadirlo. Se abre `https://www.kenhub.com/en/library/anatomy/<slug>` (con `curl` si `www.kenhub.com` está en los *Allowed domains* del entorno), o se busca en el índice web, restringido a `kenhub.com`, que la URL exacta aparece como artículo de la biblioteca. **Nunca se inventa un slug**: si no se encuentra el artículo propio, se enlaza el de la estructura que lo contiene, con `nota`, como el labrum.
+3. **Comprobar cada slug nuevo** antes de añadirlo. `www.kenhub.com` está en los *Allowed domains* del entorno (2026-10), así que basta con `curl -sSL -o pagina.html -w "%{http_code} %{url_effective}" -A "Mozilla/5.0" https://www.kenhub.com/en/library/anatomy/<slug>`: tiene que dar 200 sin redirección a otra página, y el `<title>` tiene que ser el de la estructura. La versión en español sale del `hreflang="es"` de esa misma página. Si `curl` no llega, se puede buscar en el índice web, restringido a `kenhub.com`, que la URL exacta aparece como artículo de la biblioteca. **Nunca se inventa un slug**: si no se encuentra el artículo propio, se enlaza el de la estructura que lo contiene, con `nota`, como el labrum.
 4. **Añadir** las estructuras nuevas a `ESTRUCTURAS` (agrupadas bajo un comentario con la región) y el campo `anatomia` a los tests. Para muchos tests compensa un script de una sola vez que inserte `anatomia: [...]` detrás del `name` de cada test por hipótesis e índice, y que compruebe el resultado importando el módulo.
 5. **Tests**:
    - `node tests/unit.js`, tema «anatomía»: claves existentes, sin artículo repetido dentro de un test, ninguna estructura sin usar, nada en payload, resúmenes ni prompt. Al terminar la región, se añade su lista de tests sin `anatomia` como el test del piloto («hombro… salvo los genéricos»), para que un test nuevo de la región no se quede sin anatomía sin que nadie lo vea.
@@ -85,4 +85,4 @@ Las claves son genéricas y se comparten entre regiones (`escapula`, `columna_ce
 | h10 Artrosis | → art. glenohumeral |
 | h11 Luxación / fractura | → húmero + art. glenohumeral |
 
-Slugs comprobados en el índice de búsqueda (2026-10). `www.kenhub.com` no era accesible desde el entorno, así que queda pendiente abrir cada URL de verdad (Fase K).
+Las 19 URLs se abrieron de verdad (2026-10): todas dan 200, sin redirección, con el título de la estructura. El artículo de la articulación glenohumeral trata el labrum (lo nombra 15 veces), lo que confirma el enlace con `nota`.
