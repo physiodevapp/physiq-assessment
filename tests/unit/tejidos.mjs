@@ -40,7 +40,9 @@ test('tejidos: las fases de reparación son contiguas y caben en el eje', () => 
 test('tejidos: las filas que salen de la tabla del wiki conservan su rango (escritorio del wiki)', () => {
   // Índices de columna de la tabla «Tiempos de Tejido» de physiq-wiki (fb3acbf)
   const WIKI = { tendinopatia: [2, 5], doms: [0, 0], musculo_g1: [1, 2], musculo_g2: [2, 3], musculo_g3: [2, 4],
-    ligamento_g1: [1, 2], ligamento_g2: [2, 4], ligamento_g3: [3, 5], injerto: [4, 6], fractura: [2, 5] };
+    ligamento_g1: [1, 2], ligamento_g2: [2, 4], ligamento_g3: [3, 5], injerto: [4, 6], fractura: [2, 5],
+    // No es del wiki: de Wu 2017 (remodelación desde las 6–8 semanas, 1–2 años)
+    tendon_rotura: [3, 7] };
   for (const [id, [a, b]] of Object.entries(WIKI)) {
     const f = filas.find(x => x.id === id);
     assert.deepEqual([f.desde, f.hasta], [a, b], id);
