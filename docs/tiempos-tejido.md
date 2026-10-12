@@ -109,6 +109,18 @@ Al releer el registro apareció un error de la Fase J 1: la nota de los plazos d
 
 Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Fase J, 5: fractura de estrés (2026-10)
+
+Fila nueva «Fractura de estrés» en hueso («5–8 s» a «6m–1a», moderada), con 10 subtipos por localización. Fuentes, en PDF del usuario, leídas enteras:
+
+- **Hoenig 2023** (Br J Sports Med; revisión sistemática y metaanálisis de 76 estudios, nueva en el registro): tiempo medio de vuelta al deporte por localización, de las tablas 1A y 1B del suplemento. Tibia posteromedial 44 días, peroné 56, pubis 77, metatarsianos 1.º–4.º 78, 5.º metatarsiano 82, diáfisis femoral 86, maléolo medial 106, cuello femoral 107 y navicular 127. También da la tasa de vuelta y de complicaciones. De la tibia anterior no hay tiempo agrupado.
+- **Robertson y Wood 2017** (World J Orthop; revisión narrativa de acceso abierto, nueva en el registro): la lista de alto riesgo (tibia anterior, base del 5.º metatarsiano, maléolo medial, cuello femoral lateral, navicular y sesamoideos) y la tibia anterior incompleta, con vuelta al deporte a los 7 meses con o sin cirugía.
+- **May y Marappa-Ganeshan 2023** (StatPearls): solo la regla general, que va en la nota de la fila. En bajo riesgo, 2–6 semanas de reposo relativo o descarga y vuelta gradual; en alto riesgo no da plazo.
+
+Cada subtipo lleva «(bajo riesgo)» o «(alto riesgo)» en el nombre; los de alto riesgo, en color grave. La barra es la vuelta al deporte media, no la consolidación. El navicular y el 5.º metatarsiano también salen en «Fractura» con el plazo de inmovilización de su capítulo (Fase J, 4), y la nota del navicular lo dice. Los sesamoideos y el astrágalo no se pintan: Hoenig no da tiempo agrupado para ellos.
+
+Pendiente de revisión por el usuario.
+
 ## Filtro sin «Todos», en una fila (2026-10)
 
 Decisión del usuario. Se quita la pastilla «Todos»: volver a tocar la pastilla activa la desmarca y se ven todos los tejidos, con la misma regla que el resto de grupos de opciones de la app (mecanismo, cronología, NRS). El título de cada grupo hace lo mismo. Las pastillas van en una sola fila que se desliza en horizontal cuando no caben (a 320 px, y cuando la Fase J añada grupos como nervio periférico), con un degradado en el lado por el que quedan más (`_bordesFiltroTejidos()`, `app.js`). Al abrir el panel con un filtro guardado, la pastilla activa queda a la vista. Se descartó un desplegable: escala igual de bien, pero esconde las opciones y cuesta un toque más. Si algún día hubiera más de unas 8 categorías, se replantea (agrupar, o desplegable).

@@ -237,3 +237,19 @@ test('tejidos, Fase J 4: subtipos de fractura por localización, con los plazos 
   assert.ok(!madre.subtipos.some(x => /humero|rotula_cirugia|navicular_trauma/.test(x.id)));
   for (const x of madre.subtipos) assert.ok(x.fuentes.length === 1 && x.nota, x.id);
 });
+
+test('tejidos, Fase J 5: fila «Fractura de estrés» con subtipos de bajo y alto riesgo (Hoenig 2023, Robertson y Wood 2017)', () => {
+  const f = filas.find(x => x.id === 'fractura_estres');
+  assert.ok(f && T.grupos.find(g => g.id === 'hueso').filas.includes(f), 'la fila está en hueso');
+  const st = Object.fromEntries(f.subtipos.map(x => [x.id, x]));
+  const col = id => [st[id].desde, st[id].hasta];
+  // Hoenig 2023, días medios: 44 y 56 → «5–8 s»; 77–86 → «2–3 m»; 106–127 → «3–6 m»
+  for (const id of ['estres_tibia_posteromedial', 'estres_perone']) assert.deepEqual(col(id), [3, 3], id);
+  for (const id of ['estres_pubis', 'estres_metatarsianos', 'estres_femur_diafisis', 'estres_quinto']) assert.deepEqual(col(id), [4, 4], id);
+  for (const id of ['estres_maleolo_medial', 'estres_cuello_femoral', 'estres_navicular']) assert.deepEqual(col(id), [5, 5], id);
+  // Robertson y Wood 2017: tibia anterior, 7 meses → «6m–1a»
+  assert.deepEqual(col('estres_tibia_anterior'), [6, 6]);
+  // Alto riesgo (Robertson y Wood 2017) = grave; bajo riesgo hereda la gravedad de la fila
+  for (const x of f.subtipos) assert.equal(x.gravedad === 'grave', /alto riesgo/.test(x.nombre), x.id);
+  assert.ok(f.subtipos.every(x => x.desde >= f.desde && x.hasta <= f.hasta));
+});
