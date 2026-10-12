@@ -54,7 +54,7 @@ Cuatro subtipos bajo las filas de esguince del wiki: «Tobillo, ligamento latera
 - **Vuurberg 2018** (guía holandesa, BJSM; nueva en el registro). Tabla 7, que la guía de Martin reproduce como figura 2. No usa grados: vuelta completa al trabajo y al deporte a las 3–4 semanas en la «distorsión», a las 6–8 en la «rotura parcial o total» y a las 12–16 tras la cirugía. Va en la nota del grado II (contrasta con los 3–6 de Bergman) y en la reparación.
 - **Martin 2021** (guía JOSPT). Del pronóstico solo se usa un dato: un 5–33 % sigue con dolor al año o más (nota del grado III).
 
-Semanas → columnas del eje: 1–2 semanas = «4–14 d»; 3–6 = «3–4 s» y «5–8 s»; 6–12 = «5–8 s» y «2–3 m»; 12–16 = «2–3 m» y «3–6 m». Un test fija los cuatro rangos. El resumen plegable pasa a «Ver N subtipos», porque «de esguince grado iii» en minúsculas estropeaba el número romano. Pendiente: revisión clínica del usuario.
+Semanas → columnas del eje: 1–2 semanas = «4–14 d»; 3–6 = «3–4 s» y «5–8 s»; 6–12 = «5–8 s» y «2–3 m»; 12–16 = «2–3 m» y «3–6 m». Un test fija los cuatro rangos. El resumen plegable pasa a «Ver N subtipos», porque «de esguince grado iii» en minúsculas estropeaba el número romano. Revisado y aprobado por el usuario tal cual (2026-10): la barra del grado II sigue a Bergman y la reparación cuelga del grado III.
 
 ## Menisco, grupo propio (2026-10)
 
