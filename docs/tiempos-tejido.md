@@ -44,7 +44,45 @@ El eje no es lineal: tiene las 8 columnas del wiki (de 1–3 días a 2 años), t
 
 - **Filtro**: encima del diagrama, unas pastillas «Todos · Tendón · Músculo · Ligamento · Hueso» (`data-filtro-tejido`). El título de cada grupo («LIGAMENTO») también filtra, y si el grupo ya está filtrado vuelve a «Todos». El eje fijo, la tira y la franja de fases y la línea «Hoy» se ven con cualquier filtro. La elección se recuerda en el dispositivo (`localStorage['physiq-assessment-tejidos-filtro']`, con try/catch; es una preferencia de interfaz, como el tema). A 320 px las pastillas pasan a dos líneas sin cortarse.
 - **Remodelación más allá del año**: la tira se cortaba al año (Wallace 2023: «hasta 12 meses»), pero la barra del tendón sigue hasta los 2 años. Ahora hay una cuarta fase, «Remodelación (tendón)», del año 1 al 2, que cita a Wu 2017 y lleva `tejido: 'tendón'`; se pinta más clara (`.tej-fase-parcial`) porque no vale para todos los tejidos.
-- **Subtipos**: una fila puede llevar `subtipos`, con la misma forma que una fila; sin `gravedad`, toman la de la fila madre. Se pintan plegados bajo ella en un `<details>` («N subtipos de …»). La estructura y su validación (`tests/unit/tejidos.mjs`) están hechas, pero no hay ningún subtipo todavía: cada uno necesita su propia fuente leída. Propuesta de qué subtipos abordar y en qué orden, con sus fuentes candidatas: `MIGRATION_PLAN.md`, **Fase J**.
+- **Subtipos**: una fila puede llevar `subtipos`, con la misma forma que una fila; sin `gravedad`, toman la de la fila madre. Se pintan plegados bajo ella en un `<details>` («Ver N subtipos»). La estructura y su validación (`tests/unit/tejidos.mjs`) están hechas, pero no hay ningún subtipo todavía: cada uno necesita su propia fuente leída. Propuesta de qué subtipos abordar y en qué orden, con sus fuentes candidatas: `MIGRATION_PLAN.md`, **Fase J**.
+
+## Fase J, 1: esguince lateral de tobillo (2026-10)
+
+Cuatro subtipos bajo las filas de esguince del wiki: «Tobillo, ligamento lateral» en los grados I, II y III, y «Tobillo, reparación quirúrgica» bajo el grado III. Fuentes, en PDF del usuario y leídas enteras:
+
+- **Bergman 2025** (StatPearls, «Acute Ankle Sprain», act. 2025-08-02). Apartados «Short-Term Prognosis» y «Return-to-Sport Timeline»: grado I, 1–2 semanas; grado II, 3–6; grado III, 6–12 o más, a veces con cirugía por inestabilidad persistente; tras la reparación, vuelta al juego hacia los 3–4 meses. Es la fuente de los rangos, porque es la única que gradúa.
+- **Vuurberg 2018** (guía holandesa, BJSM; nueva en el registro). Tabla 7, que la guía de Martin reproduce como figura 2. No usa grados: vuelta completa al trabajo y al deporte a las 3–4 semanas en la «distorsión», a las 6–8 en la «rotura parcial o total» y a las 12–16 tras la cirugía. Va en la nota del grado II (contrasta con los 3–6 de Bergman) y en la reparación.
+- **Martin 2021** (guía JOSPT). Del pronóstico solo se usa un dato: un 5–33 % sigue con dolor al año o más (nota del grado III).
+
+Semanas → columnas del eje: 1–2 semanas = «4–14 d»; 3–6 = «3–4 s» y «5–8 s»; 6–12 = «5–8 s» y «2–3 m»; 12–16 = «2–3 m» y «3–6 m». Un test fija los cuatro rangos. El resumen plegable pasa a «Ver N subtipos», porque «de esguince grado iii» en minúsculas estropeaba el número romano. Revisado y aprobado por el usuario tal cual (2026-10): la barra del grado II sigue a Bergman y la reparación cuelga del grado III.
+
+## Fase J, 2: ligamentos de rodilla (2026-10)
+
+Tres subtipos. Fuentes, en PDF del usuario y leídas enteras:
+
+- **Naqvi y Sherman 2023** (StatPearls, «Medial Collateral Ligament Knee Injury»; nueva en el registro). Grado I: «return to play within ten to 14 days» → subtipo «Rodilla, ligamento colateral medial» bajo el grado I, en «4–14 d». El grado II tiene «more variable timelines» y se decide por criterios (fuerza igual en las dos piernas, sin dolor al valgo). El grado III se trata con o sin cirugía, sin plazo. Esos dos no se pintan: no hay rango que poner.
+- **Evans 2023** (StatPearls, «Anterior Cruciate Ligament Knee Injury»; nueva). Sin cirugía (baja demanda, sin giros ni saltos, roturas parciales): «12 weeks of supervised physiotherapy» tras la fase aguda. Se pinta de «3–4 s» a «2–3 m», bajo el grado III, con la nota de que es la duración del programa y no cicatrización. Reconstruido: vuelta a la actividad o al deporte a los 6–12 meses de media, y el injerto «up to 18 months or more» en incorporarse. Se pinta de «6m–1a» a «2a», bajo «Injerto».
+- **Logerstedt 2017** (guía JOSPT). No da plazos: la vuelta al deporte es por criterios. Al año, sin derrame, sin inestabilidad y con IKDC > 93 %, la vuelta al deporte es «more than 14 times more likely» (PLR = 14,54). Solo va en la nota del reconstruido.
+
+Revisado y aprobado por el usuario tal cual (2026-10), incluida la barra del LCA sin cirugía como duración del programa.
+
+## Menisco, grupo propio (2026-10)
+
+Decisión del usuario: el menisco irá como grupo propio («Menisco», con su pastilla en el filtro), no como subtipo de ligamento. Es fibrocartílago, con otra biología y otra vascularización, y sus tratamientos (conservador, meniscectomía, sutura) tienen plazos propios. El grupo se crea con su primera fila con fuente leída, nunca vacío. Fase J, fila 3.
+
+## Fase J, 3: menisco (2026-10)
+
+Grupo `menisco`, entre ligamento y hueso. El wiki no tenía fila de menisco, así que no hay fila madre: cada fila es un tratamiento y no lleva subtipos. «Conservador» se parte en dos filas porque la fuente separa la rotura traumática de la lesión degenerativa, con plazos y grados distintos. Fuentes, en PDF del usuario:
+
+- **Prill 2025** (consenso formal EU-US de rehabilitación del menisco, parte II; leído entero):
+  - Rotura traumática con rodilla estable: un programa de 12 semanas de ejercicio neuromuscular supervisado da resultados parecidos a la cirugía (grado B). Se pinta en «2–3 m» como duración del programa, no como cicatrización. La nota añade que las roturas de la raíz o radiales agudas pueden beneficiarse de cirugía precoz (es de la discusión, sin grado).
+  - Lesión degenerativa: la fisioterapia es el primer tratamiento (grado A), durante 3–6 meses antes de plantear la cirugía. Se pinta en «3–6 m».
+  - Vuelta al deporte: 4–12 semanas tras la meniscectomía parcial («3–4 s» a «2–3 m») y 6–9 meses tras la sutura («6m–1a»), ambos de grado C. En los estudios, la vuelta al juego tras una sutura aislada va de 3,3 a 10 meses.
+- **Logerstedt 2018** (guía JOSPT de menisco y cartílago; leídos el pronóstico y las intervenciones):
+  - Tras la meniscectomía, los menores de 30 años y los deportistas de élite vuelven antes de 2 meses (54 días en Kim) y los mayores de 30 hacia los 3 meses (89 días). Los déficits de los primeros 6 meses pueden tardar hasta 2 años en resolverse.
+  - Tras la sutura, carga progresiva precoz y vuelta progresiva precoz a la actividad (grado C).
+
+Gravedad: moderada en las tres primeras filas y grave en la sutura. Revisado y aprobado por el usuario tal cual (2026-10).
 
 ## Filtro sin «Todos», en una fila (2026-10)
 

@@ -3708,6 +3708,9 @@
    "hallazgo quirúrgico, o seguimiento a 6 meses en los 25 no operados) da para la exploración diferida completa (días 4–7:",
    "hinchazón, hematoma, palpación y cajón) S 96 %, E 84 %, pero para el cajón solo el texto (S 86 %, E 74 %) no cuadra con su propia tabla II (S 74 %, 90 de 122;",
    "E 66–74 % según cómo se cuenten los dudosos), y lo que valida es rotura frente a ligamentos intactos, no esguince frente a otros diagnósticos."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp1|Gesto testigo (①) y medida objetiva (②)": {
@@ -3730,17 +3733,41 @@
    "recogidos en Netterström-Wedin 2021, sin cifra agrupada).",
    "La LR− 0,28 (IC 0,09–0,89) de Sman 2015 es de otra cosa:",
    "dolor en cualquiera de cinco estructuras de la sindesmosis (S 92 %, E 29 %)."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp2|Squeeze test": {
   "frases": [
-   "squeeze test (la más específica).",
+   "Squeeze test (la más específica).",
    "Si las dos reproducen el dolor conocido, sospechar lesión.",
+   "Antes, descartar fractura de tibia o peroné, síndrome compartimental, celulitis o contusión de la pierna.",
    "Sin cifras en el capítulo.",
-   "No puntúa:",
    "Sman 2015 (RM de referencia) da S 26 %, E 88 %, LR+ 2,15 (IC 0,86–5,39);",
    "agrupado en Netterström-Wedin 2021 (4 estudios, 428 participantes, modelo univariante), S 32 %, E 85 %, LR+ 3,16 (IC 0,95–10,49), LR− 0,77.",
-   "Los dos intervalos de la LR+ cruzan el 1."
+   "Los dos intervalos de la LR+ cruzan el 1.",
+   "Técnica (Lluch 2020, p.",
+   "262, fig.",
+   "17):",
+   "tibia estabilizada, compresión de la parte proximal del peroné contra la tibia;",
+   "positivo, el dolor distal que reproduce el dolor conocido.",
+   "Si la palpación y la compresión son positivas, el capítulo pide imagen:",
+   "la RM es muy precisa para el esguince agudo de la sindesmosis (hasta el 95 %, p.",
+   "263).",
+   "Origen (Hopkinson 1990):",
+   "revisión retrospectiva de 1344 esguinces en cadetes de West Point;",
+   "15 tobillos (13 pacientes) con afectación de la sindesmosis, todos con el test positivo en la primera exploración, y 9 de los 10 revisados con calcificación del ligamento interóseo a los meses.",
+   "Los autores no pudieron calcular su sensibilidad ni su especificidad.",
+   "Lo usaban como cribado en todos los esguinces:",
+   "si era positivo, anticipaba una recuperación más larga (55 días frente a 28 de los esguinces graves) y pedía radiografías de estrés en rotación externa y abducción para buscar una diástasis latente;",
+   "las radiografías iniciales eran normales.",
+   "El test solo sugiere un esguince de la sindesmosis después de descartar otras lesiones de la pierna que también duelen al apretar:",
+   "fractura de tibia o peroné, síndrome compartimental, celulitis o contusiones.",
+   "Según los autores, el mecanismo que más a menudo lesiona la sindesmosis es la rotación externa."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp2|Gesto testigo (①) y medida objetiva (②)": {
@@ -3768,6 +3795,7 @@
  },
  "tp3|Hueco palpable": {
   "frases": [
+   "Prono, con los tobillos fuera de la camilla, palpar con suavidad el trayecto del tendón y comparar con el lado sano.",
    "Hueco palpable, que se pierde con el tiempo.",
    "Maffulli 1998 (paciente despierto):",
    "S 73 %, E 89 %;",
@@ -3775,7 +3803,13 @@
    "LR+ 6,64 (IC 95 % 2,32–19,91), LR− 0,30 (0,23–0,40).",
    "Mismo estudio y mismos límites que Thompson (casos y controles).",
    "Es otro test que Thompson, pero en el mismo paciente:",
-   "si los dos son positivos, el peso conjunto puede estar algo sobrestimado."
+   "si los dos son positivos, el peso conjunto puede estar algo sobrestimado.",
+   "Técnica (Maffulli 1998):",
+   "paciente en prono con los tobillos fuera de la camilla;",
+   "se palpa con suavidad el trayecto del tendón y se anota si hay hueco o no, con el tendón sano como control.",
+   "Con anestesia, la S subió al 81 % (diferencia no significativa).",
+   "En esa serie, de pacientes vistos en las 4 primeras semanas, el tiempo desde la lesión solo mostró una tendencia, no significativa, a no encontrar el hueco con el paciente despierto.",
+   "En la serie de Thompson y Doherty 1962, había una depresión sobre el tendón en 38 de 47 roturas, y la rotura solía estar entre unos 2 y 6 cm por encima del calcáneo."
   ]
  },
  "tp3|Gesto testigo (①) y medida objetiva (②)": {
@@ -3820,9 +3854,11 @@
    "TOBILLO → radiografía si dolor en la zona maleolar Y alguno:",
    "dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta.",
    "PIE → radiografía si dolor en el mediopié Y alguno:",
-   "dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos.",
+   "dolor óseo en la base del 5.º MT · en el navicular · no carga cuatro pasos, ni justo tras la lesión ni en consulta.",
    "Solo descarta, y no explora el calcáneo:",
    "la regla del pie solo mira la base del 5.º MT y el navicular.",
+   "Con cautela si hay varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea;",
+   "en niños, solo a partir de los 6 años.",
    "Beckenkamp 2017 (66 estudios, modelo bivariante), en los estudios que aplican las dos reglas juntas, como aquí:",
    "LR− 0,09 (IC 95 % 0,06–0,13) con todos (31 estudios) y 0,08 (0,04–0,16) en los 22 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos);",
    "en adultos, 0,12 (0,07–0,19).",
@@ -3830,7 +3866,27 @@
    "Las dos revisiones incluyen los estudios de los creadores de la regla.",
    "El positivo es un hallazgo:",
    "LR+ 1,48 (1,30–1,68;",
-   "Beckenkamp 2017)."
+   "Beckenkamp 2017).",
+   "Derivación (Stiell 1992):",
+   "750 adultos con un traumatismo cerrado agudo del tobillo en dos urgencias universitarias;",
+   "los médicos recogieron 32 variables clínicas antes de la radiografía, y en 100 pacientes un segundo médico repitió la exploración sin conocer la primera.",
+   "Solo entraron en el modelo las variables asociadas a fractura en las que los dos coincidían bien (kappa > 0,6).",
+   "Fractura significativa:",
+   "un fragmento de más de 3 mm, porque las avulsiones menores no se inmovilizaban.",
+   "La hinchazón se asociaba a fractura, pero se dejó fuera porque depende del tiempo desde la lesión y los médicos coincidían menos en ella.",
+   "El dolor óseo del maléolo medial es poco frecuente, pero cuando está indica un riesgo alto de fractura.",
+   "La regla original incluía también la edad de 55 años o más (el 34 % de las fracturas maleolares en el 13 % de los pacientes, probablemente por osteoporosis según los autores) y el dolor óseo del cuboides.",
+   "Al refinarla (Stiell 1993, 1032 pacientes), los dos criterios resultaron innecesarios para detectar todas las fracturas y se quitaron, y la regla del pie pasó a incluir el mismo criterio de carga que la del tobillo.",
+   "La regla refinada detectó, en 453 pacientes nuevos, las 50 fracturas maleolares y las 19 del mediopié.",
+   "Cómo se valora la carga (Stiell 1993):",
+   "poder pasar el peso dos veces a cada pierna (cuatro pasos), aunque cojee;",
+   "se valora después de palpar los huesos y sin forzar al paciente.",
+   "Ante una deformidad o una fractura evidente no hace falta la regla.",
+   "Cautela con varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea;",
+   "la regla no se desarrolló ni se probó en menores de 18 años, y se excluyó a las embarazadas.",
+   "En niños de más de 6 años, varios estudios respaldan su uso, con una sensibilidad del 98,5 % (Lluch 2020, p.",
+   "257).",
+   "Si el dolor y la marcha no mejoran en unos días, hay que volver a valorar."
   ]
  },
  "tp5|5.º MT: dolor en la base": {
@@ -3873,6 +3929,9 @@
   "frases": [
    "Dolor conocido con la flexión plantar pasiva o el test de pinzamiento posterior (flexión plantar comprimiendo el calcáneo contra la tibia):",
    "confirma."
+  ],
+  "retiradas": [
+   "confirma."
   ]
  },
  "tp7|Hinchazón y dolor por detrás del astrágalo": {
@@ -3904,6 +3963,9 @@
    "salto S 43 %, E 87 %.",
    "Las LR (3,14 y 3,31) no las publica el artículo:",
    "las calcula Reiman de S y E redondeadas, sin intervalo de confianza."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp8|Descarga en el salto": {
@@ -4391,6 +4453,9 @@
    "la compresión pulgar-índice del espacio (Mahadevan 2015) tiene S 96 %, pero su especificidad sale de un solo pie sin Morton;",
    "el chasquido de Mulder da LR+ 2,19 (IC 0,45–10,60;",
    "Dando, en Pitcher 2024)."
+  ],
+  "retiradas": [
+   "No puntúa:"
   ]
  },
  "tp34|Diferencial del antepié": {
@@ -4449,7 +4514,9 @@
   "frases": [
    "Radiografía si dolor en la zona maleolar Y alguno:",
    "dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta.",
-   "Solo descarta:",
+   "Excluidas embarazadas y personas que no pueden seguir la prueba.",
+   "Con cautela si hay varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea;",
+   "en niños, solo a partir de los 6 años.",
    "Beckenkamp 2017 (66 estudios, modelo bivariante), regla del tobillo:",
    "LR− 0,018 (IC 95 % 0,005–0,059) con todos (34 estudios) y 0,030 (0,009–0,099) en los 25 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos);",
    "en los 3 estudios de riesgo de sesgo bajo, 0,11 (0,02–0,79).",
@@ -4457,7 +4524,29 @@
    "Las dos revisiones incluyen los estudios de los creadores de la regla.",
    "El positivo es un hallazgo:",
    "LR+ 1,53 (1,38–1,70).",
-   "Excluidas embarazadas y personas que no pueden seguir la prueba."
+   "Derivación (Stiell 1992):",
+   "750 adultos con un traumatismo cerrado agudo del tobillo en dos urgencias universitarias;",
+   "los médicos recogieron 32 variables clínicas antes de la radiografía, y en 100 pacientes un segundo médico repitió la exploración sin conocer la primera.",
+   "Solo entraron en el modelo las variables asociadas a fractura en las que los dos coincidían bien (kappa > 0,6).",
+   "Fractura significativa:",
+   "un fragmento de más de 3 mm, porque las avulsiones menores no se inmovilizaban.",
+   "La hinchazón se asociaba a fractura, pero se dejó fuera porque depende del tiempo desde la lesión y los médicos coincidían menos en ella.",
+   "El dolor óseo del maléolo medial es poco frecuente, pero cuando está indica un riesgo alto de fractura.",
+   "La regla original incluía también la edad de 55 años o más (el 34 % de las fracturas maleolares en el 13 % de los pacientes, probablemente por osteoporosis según los autores) y el dolor óseo del cuboides.",
+   "Al refinarla (Stiell 1993, 1032 pacientes), los dos criterios resultaron innecesarios para detectar todas las fracturas y se quitaron, y la regla del pie pasó a incluir el mismo criterio de carga que la del tobillo.",
+   "La regla refinada detectó, en 453 pacientes nuevos, las 50 fracturas maleolares y las 19 del mediopié.",
+   "Cómo se valora la carga (Stiell 1993):",
+   "poder pasar el peso dos veces a cada pierna (cuatro pasos), aunque cojee;",
+   "se valora después de palpar los huesos y sin forzar al paciente.",
+   "Ante una deformidad o una fractura evidente no hace falta la regla.",
+   "Cautela con varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea;",
+   "la regla no se desarrolló ni se probó en menores de 18 años, y se excluyó a las embarazadas.",
+   "En niños de más de 6 años, varios estudios respaldan su uso, con una sensibilidad del 98,5 % (Lluch 2020, p.",
+   "257).",
+   "Si el dolor y la marcha no mejoran en unos días, hay que volver a valorar."
+  ],
+  "retiradas": [
+   "Solo descarta:"
   ]
  },
  "tp37|No carga cuatro pasos": {
