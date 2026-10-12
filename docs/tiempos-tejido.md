@@ -128,9 +128,16 @@ Dos subtipos bajo «Rotura / reparación de tendón». La fuente es **Shamrock 2
 - **Aquiles sin cirugía**: barra rayada de protección, de «5–8 s» a «2–3 m». Sigue el programa funcional de Glazebrook y Rubinger que cita el capítulo: 0–2 semanas sin carga, después bota con alzas y carga progresiva, y la bota se retira entre las 8 y las 12 semanas. La nota recoge la rerrotura: del 10 al 40 % en estudios antiguos, frente al 1–2 % con cirugía; la evidencia de nivel 1 más reciente no encuentra diferencia.
 - **Aquiles reparado**: barra lisa de vuelta al deporte, en «6m–1a». El capítulo da ejercicio de bajo impacto los primeros 6 meses y de alto impacto después, hacia la vuelta al deporte. En deportistas profesionales, más del 30 % no vuelve a jugar.
 
-La inmovilización tras la cirugía (2–4 semanas) no se pinta: la frase del capítulo está mal redactada y mezcla los dos tratamientos. El **manguito rotador reparado** queda pendiente de su fuente, el consenso de la ASSET (Thigpen 2016, J Shoulder Elbow Surg, sin acceso abierto).
+La inmovilización tras la cirugía (2–4 semanas) no se pinta: la frase del capítulo está mal redactada y mezcla los dos tratamientos.
 
 Revisado y aprobado por el usuario tal cual (2026-10), incluido no pintar la inmovilización tras la cirugía.
+
+**Manguito rotador reparado** (2026-10). La fuente es **Thigpen 2016**, el consenso de la ASSET tras la reparación artroscópica (PDF del usuario, leído entero, nuevo en el registro). Es nivel V, opinión de expertos, con grado SORT en algunas recomendaciones. Lleva dos subtipos bajo la rotura de tendón:
+
+- **Protección**, barra rayada en «5–8 s»: 2 semanas de inmovilización estricta y movilidad pasiva protegida hasta la 6.ª semana, con grado A en roturas pequeñas o medianas; 6 semanas de inmovilización si preocupa la cicatrización. A las 6 semanas la reparación conserva solo el 19–30 % de su resistencia normal.
+- **Rehabilitación**, barra de contorno (programa) en «3–6 m»: movilidad activa desde la 6.ª semana, fuerza desde la 12.ª y fortalecimiento avanzado de la 20.ª a la 26.ª, solo para alta demanda. El trabajo específico de deporte o trabajo puede empezar hacia los 4–5 meses, y el tendón no se acerca a su resistencia normal hasta los 6 meses como pronto.
+
+Revisado y aprobado por el usuario tal cual (2026-10).
 
 ## Qué mide cada barra (2026-10)
 
