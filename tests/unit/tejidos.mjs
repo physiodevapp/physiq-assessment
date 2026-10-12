@@ -196,3 +196,23 @@ test('tejidos, Fase J 2: subtipos de rodilla (LCM grado I, LCA sin cirugía, LCA
   // Sin plazo en la fuente, no hay subtipo de LCM grado II ni III
   assert.ok(!subtipos.some(x => /lcm_g[23]/.test(x.id)));
 });
+
+test('tejidos, Fase J 3: grupo «Menisco» propio, con los plazos de Prill 2025 y Logerstedt 2018', () => {
+  const g = T.grupos.find(x => x.id === 'menisco');
+  assert.ok(g && g.filas.length, 'el grupo existe y no está vacío');
+  // Va como grupo propio, entre ligamento y hueso; nada de menisco bajo ligamento
+  assert.deepEqual(T.grupos.map(x => x.id), ['tendon', 'musculo', 'ligamento', 'menisco', 'hueso']);
+  assert.ok(!T.grupos.find(x => x.id === 'ligamento').filas.flatMap(f => [f, ...(f.subtipos || [])]).some(f => /menisc/i.test(f.id)));
+  const f = Object.fromEntries(g.filas.map(x => [x.id, x]));
+  // Prill 2025: traumática, 12 semanas → «2–3 m»; degenerativa, 3–6 meses → «3–6 m»;
+  // meniscectomía 4–12 semanas → «3–4 s» a «2–3 m»; sutura 6–9 meses → «6m–1a»
+  assert.deepEqual([f.menisco_traumatica_conservador.desde, f.menisco_traumatica_conservador.hasta], [4, 4]);
+  assert.deepEqual([f.menisco_degenerativa_conservador.desde, f.menisco_degenerativa_conservador.hasta], [5, 5]);
+  assert.deepEqual([f.menisco_meniscectomia.desde, f.menisco_meniscectomia.hasta], [2, 4]);
+  assert.deepEqual([f.menisco_sutura.desde, f.menisco_sutura.hasta], [6, 6]);
+  for (const x of g.filas) assert.ok(x.fuentes.includes('Prill 2025') && !x.pendiente, x.id);
+  // El filtro muestra solo el menisco
+  const html = tiemposTejidoHTML(T, { filtro: 'menisco' });
+  assert.equal((html.match(/class="tej-bloque"/g) || []).length, 1);
+  assert.equal((html.match(/class="tej-barra /g) || []).length, g.filas.length);
+});
