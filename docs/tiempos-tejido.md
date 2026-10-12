@@ -135,6 +135,8 @@ Decisión del usuario. Las fuentes dan plazos de cosas distintas, y antes solo l
 
 La clasificación sale de las citas que ya estaban en los comentarios; no se ha releído ninguna fuente. Debajo de la leyenda de gravedad, «Qué mide la barra» muestra cada relleno en gris neutro y las dos etiquetas. En el wiki es igual. En su tabla de móvil solo se ven los rellenos, porque el nombre corto de la barra no tiene sitio para la etiqueta. Un test unitario obliga a que todas las filas y subtipos lleven `mide` y fija la clasificación.
 
+Revisado y aprobado por el usuario tal cual (2026-10). Eso incluye los tres casos dudosos: tobillo operada como protección (la fuente da la carga completa, no la vuelta al deporte), meseta tibial sin cirugía como vuelta a la función (la barra llega a la función completa) y 5.º metatarsiano zona 3 como protección (hasta 20 semanas de inmovilización).
+
 ## Filtro sin «Todos», en una fila (2026-10)
 
 Decisión del usuario. Se quita la pastilla «Todos»: volver a tocar la pastilla activa la desmarca y se ven todos los tejidos, con la misma regla que el resto de grupos de opciones de la app (mecanismo, cronología, NRS). El título de cada grupo hace lo mismo. Las pastillas van en una sola fila que se desliza en horizontal cuando no caben (a 320 px, y cuando la Fase J añada grupos como nervio periférico), con un degradado en el lado por el que quedan más (`_bordesFiltroTejidos()`, `app.js`). Al abrir el panel con un filtro guardado, la pastilla activa queda a la vista. Se descartó un desplegable: escala igual de bien, pero esconde las opciones y cuesta un toque más. Si algún día hubiera más de unas 8 categorías, se replantea (agrupar, o desplegable).
