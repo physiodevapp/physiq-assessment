@@ -1044,7 +1044,7 @@ async function checkTiemposTejido(browser, errors) {
   await page.click('button.option-btn:has-text("Post-quirúrgico")');
   await page.fill('#cirSemanas', '6');
   await page.click('#tejidosBtn');
-  r.hoy = await page.evaluate(n => document.querySelectorAll('#tejidosCuerpo .tej-hoy').length === n + 1
+  r.hoy = await page.evaluate(n => document.querySelectorAll('#tejidosCuerpo .tej-hoy').length === n
     && document.querySelector('.tej-hoy-texto')?.textContent.includes('6 semanas tras la cirugía'), nFilas);
   // Con scroll hasta abajo, el eje de tiempo sigue pegado arriba del cuerpo
   r.ejeFijo = await page.evaluate(nFases => {
@@ -1057,16 +1057,23 @@ async function checkTiemposTejido(browser, errors) {
     return c.scrollTop > 0 && Math.abs(eje.top - c.getBoundingClientRect().top) < 2
       && tira.length === nFases && colores.size === 3 && tira.every(t => { const b = t.getBoundingClientRect(); return b.top >= eje.top && b.bottom <= eje.bottom + 1; });
   }, nFases);
-  // Filtro por tejido: «Ligamento» deja solo sus barras, se recuerda al reabrir,
-  // y su título de grupo vuelve a «Todos»
-  await page.click('#tejidosCuerpo .tej-filtro-btn[data-filtro-tejido="ligamento"]');
+  // Filtro por tejido (sin «Todos»): «Ligamento» deja solo sus barras, se recuerda
+  // al reabrir, volver a tocarla desmarca, y el título de un grupo filtra y desfiltra
   const barras = () => page.evaluate(() => document.querySelectorAll('#tejidosCuerpo .tej-barra').length);
-  r.filtro = await barras() === nLig && await page.evaluate(() => document.querySelector('#tejidosCuerpo .tej-filtro-btn[aria-pressed="true"]')?.dataset.filtroTejido === 'ligamento');
+  const pastilla = g => `#tejidosCuerpo .tej-filtro-btn[data-grupo="${g}"]`;
+  r.sinTodos = await page.evaluate(() => ![...document.querySelectorAll('#tejidosCuerpo .tej-filtro-btn')].some(b => b.textContent === 'Todos'));
+  await page.click(pastilla('ligamento'));
+  r.filtro = await barras() === nLig && await page.evaluate(s => document.querySelector(s)?.getAttribute('aria-pressed') === 'true'
+    && document.activeElement === document.querySelector(s), pastilla('ligamento'));
   await page.keyboard.press('Escape');
   await page.click('#tejidosBtn');
   r.filtroRecordado = await barras() === nLig;
-  await page.click('#tejidosCuerpo button.tej-grupo');
-  r.grupoVuelveATodos = await barras() === nFilas;
+  await page.click(pastilla('ligamento'));
+  r.segundoToqueDesmarca = await barras() === nFilas && await page.evaluate(() => !document.querySelector('#tejidosCuerpo .tej-filtro-btn.activo'));
+  await page.click('#tejidosCuerpo button.tej-grupo[data-grupo="hueso"]');
+  const soloHueso = await page.evaluate(() => [...document.querySelectorAll('#tejidosCuerpo .tej-bloque')].map(b => b.dataset.grupo).join());
+  await page.click('#tejidosCuerpo button.tej-grupo[data-grupo="hueso"]');
+  r.grupoVuelveATodos = soloHueso === 'hueso' && await barras() === nFilas;
   await page.mouse.click(10, 10);   // velo
   r.velo = !(await abierto());
   r.sinPayload = await page.evaluate(async () => !/tejid|Remodelaci/i.test(JSON.stringify((await import('./app.js')).buildPhysiQPayload())));
@@ -1102,7 +1109,10 @@ async function checkTiemposTejido(browser, errors) {
     const panel = document.getElementById('tejidosPanel').getBoundingClientRect();
     return document.documentElement.scrollWidth <= innerWidth
       && [...document.querySelectorAll('#tejidosCuerpo .tej-pista, #tejidosCuerpo .tej-nombre')].every(e => { const b = e.getBoundingClientRect(); return b.left >= panel.left - 1 && b.right <= panel.right + 1; })
-      && [...document.querySelectorAll('.tej-col, .tej-filtro-btn')].every(c => c.scrollWidth <= c.clientWidth);
+      && [...document.querySelectorAll('.tej-col, .tej-filtro-btn, .tej-fase-ley')].every(c => c.scrollWidth <= c.clientWidth)
+      // Pastillas en una sola fila (se desliza si no caben), nunca en dos
+      && new Set([...document.querySelectorAll('.tej-filtro-btn')].map(b => Math.round(b.getBoundingClientRect().top))).size === 1
+      && [...document.querySelectorAll('.tej-fase-ley')].every(c => { const b = c.getBoundingClientRect(); return b.left >= panel.left && b.right <= panel.right + 1; });
   });
   await ctxMovil.close();
 
@@ -2222,7 +2232,7 @@ async function main() {
   console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, Claude se recuerda, Escape cierra; hoja inferior en móvil que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
 
   const tejidos = await checkTiemposTejido(browser, errors);
-  console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido que se recuerda y título de grupo que vuelve a «Todos», sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+  console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos), sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
 
   console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
   const testsAmpliar = await checkTestsAmpliar(page);

@@ -46,6 +46,14 @@ El eje no es lineal: tiene las 8 columnas del wiki (de 1–3 días a 2 años), t
 - **Remodelación más allá del año**: la tira se cortaba al año (Wallace 2023: «hasta 12 meses»), pero la barra del tendón sigue hasta los 2 años. Ahora hay una cuarta fase, «Remodelación (tendón)», del año 1 al 2, que cita a Wu 2017 y lleva `tejido: 'tendón'`; se pinta más clara (`.tej-fase-parcial`) porque no vale para todos los tejidos.
 - **Subtipos**: una fila puede llevar `subtipos`, con la misma forma que una fila; sin `gravedad`, toman la de la fila madre. Se pintan plegados bajo ella en un `<details>` («N subtipos de …»). La estructura y su validación (`tests/unit/tejidos.mjs`) están hechas, pero no hay ningún subtipo todavía: cada uno necesita su propia fuente leída. Propuesta de qué subtipos abordar y en qué orden, con sus fuentes candidatas: `MIGRATION_PLAN.md`, **Fase J**.
 
+## Filtro sin «Todos», en una fila (2026-10)
+
+Decisión del usuario. Se quita la pastilla «Todos»: volver a tocar la pastilla activa la desmarca y se ven todos los tejidos, con la misma regla que el resto de grupos de opciones de la app (mecanismo, cronología, NRS). El título de cada grupo hace lo mismo. Las pastillas van en una sola fila que se desliza en horizontal cuando no caben (a 320 px, y cuando la Fase J añada grupos como nervio periférico), con un degradado en el lado por el que quedan más (`_bordesFiltroTejidos()`, `app.js`). Al abrir el panel con un filtro guardado, la pastilla activa queda a la vista. Se descartó un desplegable: escala igual de bien, pero esconde las opciones y cuesta un toque más. Si algún día hubiera más de unas 8 categorías, se replantea (agrupar, o desplegable).
+
+## Leyenda de fases en vez de franja (2026-10)
+
+La franja «Fases de reparación» llevaba el nombre de cada fase dentro de su tramo, y en móvil se cortaba («Inflama…», «Prolifera…»): inflamatoria y proliferativa ocupan una columna cada una, unos 45 px. Como la tira de colores del eje fijo ya muestra dónde cae cada fase, la franja se sustituye por una leyenda que se ajusta en líneas: muestra de color, nombre entero y rango corto (`rangoFase()`: «días 0–5», «día 5–sem. 3», «sem. 3–1 año», «1–2 años»). La tira dice dónde y la leyenda dice qué. El párrafo de debajo deja de repetir los rangos y se queda con la nota (modelo de la herida cutánea, resistencia del 80 %). La línea «Hoy» sigue en el eje y en cada barra. El wiki tiene la misma leyenda (decisión del usuario).
+
 ## Pruebas
 
 - `node tests/unit.js`, tema «tiempos de tejido»: integridad de los datos, rangos del wiki fijados, `posicionDia`/`marcaHoy`, HTML (barras, «pendiente de fuente», línea «Hoy») y que no llegue a resúmenes ni informes.
