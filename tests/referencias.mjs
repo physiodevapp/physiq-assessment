@@ -232,6 +232,12 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPO
         anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Fila «${f.nombre}» (${g.tejido})`,
           fase: 'cabecera · tiempos de tejido', efecto: 'tiempos de tejido' });
       }
+      for (const st of f.subtipos || []) {
+        for (const clave of st.fuentes || []) {
+          anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Subtipo «${st.nombre}» de «${f.nombre}» (${g.tejido})`,
+            fase: 'cabecera · tiempos de tejido', efecto: 'tiempos de tejido' });
+        }
+      }
     }
   }
   for (const f of TIEMPOS_TEJIDO?.fases || []) {
