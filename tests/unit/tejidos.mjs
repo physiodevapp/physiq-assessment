@@ -73,7 +73,8 @@ test('marcaHoy: semanas → posición y texto; sin semanas, nada', () => {
 
 test('tiemposTejidoHTML: una barra por fila, «pendiente de fuente» donde toca, línea «Hoy» solo posquirúrgico con semanas', () => {
   const sin = tiemposTejidoHTML(T);
-  assert.equal((sin.match(/class="tej-barra /g) || []).length, filas.length);
+  // una barra por fila y por subtipo (los subtipos van plegados, pero están en el HTML)
+  assert.equal((sin.match(/class="tej-barra /g) || []).length, filas.length + subtipos.length);
   assert.ok(!sin.includes('class="tej-hoy"'));
   assert.ok(sin.includes('Con mecanismo Post-quirúrgico'));
   const pendientes = filas.filter(f => f.pendiente).length + (T.fases.some(f => !f.fuentes.length) ? 1 : 0);
@@ -82,7 +83,7 @@ test('tiemposTejidoHTML: una barra por fila, «pendiente de fuente» donde toca,
   assert.ok(!tiemposTejidoHTML(T, { semanas: 6 }).includes('class="tej-hoy"'));
   const posq = tiemposTejidoHTML(T, { posquirurgico: true, semanas: 6 });
   // una por fila (en el eje solo la etiqueta «Hoy»; la leyenda de fases no lleva línea)
-  assert.equal((posq.match(/class="tej-hoy"/g) || []).length, filas.length);
+  assert.equal((posq.match(/class="tej-hoy"/g) || []).length, filas.length + subtipos.length);
   assert.equal((posq.match(/class="tej-hoy-etq"/g) || []).length, 1);
   assert.ok(posq.includes('Hoy · 6 semanas tras la cirugía'));
   assert.ok(tiemposTejidoHTML(T, { posquirurgico: true }).includes('tarjeta «Cirugía»'));
@@ -138,7 +139,7 @@ test('tiemposTejidoHTML: filtro por tejido sin «Todos»: tocar la pastilla acti
   assert.ok(todos.includes('class="tej-filtro-btn" data-grupo="ligamento" data-filtro-tejido="ligamento" aria-pressed="false"'));
   assert.ok(todos.includes('class="tej-grupo" data-grupo="ligamento" data-filtro-tejido="ligamento"'));
   const lig = tiemposTejidoHTML(T, { filtro: 'ligamento' });
-  const nLig = T.grupos.find(g => g.id === 'ligamento').filas.length;
+  const nLig = T.grupos.find(g => g.id === 'ligamento').filas.reduce((n, f) => n + 1 + (f.subtipos?.length || 0), 0);
   assert.equal((lig.match(/class="tej-barra /g) || []).length, nLig);
   // La activa lleva aria-pressed y, al tocarla otra vez, pone 'todos'
   assert.ok(lig.includes('class="tej-filtro-btn activo" data-grupo="ligamento" data-filtro-tejido="todos" aria-pressed="true"'));
@@ -153,7 +154,7 @@ test('tiemposTejidoHTML: los subtipos se pintan plegados bajo su fila, con la gr
   const g2 = datos.grupos.find(g => g.id === 'ligamento').filas.find(f => f.id === 'ligamento_g2');
   g2.subtipos = [{ id: 'x_tobillo', nombre: 'Prueba tobillo', desde: 2, hasta: 3, fuentes: [], pendiente: true }];
   const h = tiemposTejidoHTML(datos);
-  assert.ok(h.includes('<details class="tej-subtipos"><summary>1 subtipo de esguince grado ii</summary>'));
+  assert.ok(h.includes('<details class="tej-subtipos"><summary>Ver 1 subtipo</summary>'));
   assert.ok(/class="tej-fila tej-subfila" data-tejido="x_tobillo".*?tej-barra tej-moderada/.test(h));
   // Sin subtipos, nada
   assert.ok(!tiemposTejidoHTML(T).includes('tej-subtipos') || subtipos.length > 0);
@@ -165,4 +166,18 @@ test('tejidos: leyenda de fases con nombre entero y rango corto, una entrada por
   for (const f of T.fases) assert.ok(h.includes(`<span class="tej-fase-nombre">${f.nombre}</span>`), f.id);
   assert.ok(h.includes('<span class="tej-fase-rango">días 0–5</span>') && h.includes('<span class="tej-fase-rango">sem. 3–1 año</span>'));
   assert.deepEqual([[0, 5], [5, 21], [21, 365], [365, 730]].map(([a, b]) => rangoFase(a, b)), ['días 0–5', 'día 5–sem. 3', 'sem. 3–1 año', '1–2 años']);
+});
+
+test('tejidos, Fase J 1: subtipos de esguince lateral de tobillo con los plazos de Bergman 2025 y Vuurberg 2018', () => {
+  const st = Object.fromEntries(subtipos.map(x => [x.id, x]));
+  // Bergman 2025: I 1–2 sem → «4–14 d»; II 3–6 sem → «3–4 s»–«5–8 s»; III 6–12 sem → «5–8 s»–«2–3 m»;
+  // reparación: 12–16 sem (Vuurberg 2018) / 3–4 meses (Bergman) → «2–3 m»–«3–6 m»
+  assert.deepEqual([st.tobillo_lateral_g1.desde, st.tobillo_lateral_g1.hasta], [1, 1]);
+  assert.deepEqual([st.tobillo_lateral_g2.desde, st.tobillo_lateral_g2.hasta], [2, 3]);
+  assert.deepEqual([st.tobillo_lateral_g3.desde, st.tobillo_lateral_g3.hasta], [3, 4]);
+  assert.deepEqual([st.tobillo_lateral_cirugia.desde, st.tobillo_lateral_cirugia.hasta], [4, 5]);
+  for (const x of Object.values(st)) assert.ok(x.fuentes.includes('Bergman 2025') || x.fuentes.includes('Vuurberg 2018'), x.id);
+  // Cada subtipo cae dentro (o casi) de su fila madre de grado: no se sale del rango del wiki por delante
+  const madre = id => filas.find(f => f.subtipos?.some(x => x.id === id));
+  for (const x of Object.values(st)) assert.ok(x.desde >= madre(x.id).desde, `${x.id} empieza antes que su fila`);
 });
