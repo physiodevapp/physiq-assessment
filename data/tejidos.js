@@ -13,10 +13,11 @@
 //   - una sola gravedad (color) por fila: en el wiki la versión de escritorio
 //     y la de móvil pintaban distinto las filas de grado III;
 //   - «Tendinopatía / Ruptura» separada en dos filas;
-//   - la franja de fases de reparación, nueva.
-// Lo que no sale de esa fuente lleva `pendiente: true` (o `fuentes: []` en la
-// franja de fases) y la app lo marca «pendiente de fuente» hasta que se
-// revise con una fuente leída (docs/tiempos-tejido.md, «Pendiente»).
+//   - la franja de fases de reparación, nueva (Wallace 2023).
+// La franja de fases sale de Wallace 2023 (StatPearls, PDF del usuario). Lo
+// que no sale de ninguna fuente leída lleva `pendiente: true` (o `fuentes: []`
+// en una fase) y la app lo marca «pendiente de fuente» hasta que se revise
+// (docs/tiempos-tejido.md, «Pendiente»).
 //
 // Esquema:
 //   columnas[]  { etiqueta, corta, hasta }  — eje NO lineal, como en el wiki;
@@ -28,7 +29,8 @@
 //     fila      { id, nombre, desde, hasta, gravedad, fuentes[], nota?, pendiente? }
 //               `desde`/`hasta` = índices de columna (inclusive)
 //   fases[]     { id, nombre, desdeDia, hastaDia, fuentes[] } — franja general
-//               de reparación de tejido blando, en días sobre el mismo eje
+//               de reparación, en días sobre el mismo eje; `fasesNota` y
+//               `fasesFuente`, su aviso y su cita bajo la leyenda
 //   fuentes     claves de data/referencias.js (las cuenta tests/referencias.mjs)
 
 export const TIEMPOS_TEJIDO = {
@@ -92,13 +94,19 @@ export const TIEMPOS_TEJIDO = {
     },
   ],
 
-  // Franja general de reparación de tejido blando (orientativa; los límites
-  // se solapan en la realidad). Pendiente de fuente leída.
+  // Franja general de reparación (orientativa; las fases se solapan: «the
+  // proliferative or granulation phase does not occur at a discrete time»).
+  // Wallace 2023 describe la cicatrización de heridas de la piel: es un modelo
+  // general, no los tiempos de tendón, ligamento o hueso (lo dice `fasesNota`).
+  // Inflamatoria: «usually lasts several days»; el colágeno nuevo aparece
+  // «by days 5 through 7». Proliferativa: «can last several weeks».
+  // Remodelación: «starts around week 3 and can last up to 12 months».
   fases: [
-    { id: 'inflamatoria', nombre: 'Inflamatoria', desdeDia: 0, hastaDia: 5, fuentes: [] },
-    { id: 'proliferativa', nombre: 'Proliferativa', desdeDia: 5, hastaDia: 21, fuentes: [] },
-    { id: 'remodelacion', nombre: 'Remodelación', desdeDia: 21, hastaDia: 365, fuentes: [] },
+    { id: 'inflamatoria', nombre: 'Inflamatoria', desdeDia: 0, hastaDia: 5, fuentes: ['Wallace 2023'] },
+    { id: 'proliferativa', nombre: 'Proliferativa', desdeDia: 5, hastaDia: 21, fuentes: ['Wallace 2023'] },
+    { id: 'remodelacion', nombre: 'Remodelación', desdeDia: 21, hastaDia: 365, fuentes: ['Wallace 2023'] },
   ],
+  fasesNota: 'Modelo general de la cicatrización de heridas cutáneas: en tendón, ligamento y hueso los tiempos varían (ver las barras). En una incisión, la resistencia máxima llega hacia las 11–14 semanas y la cicatriz se queda en torno al 80 % de la resistencia original.',
 
   notas: [
     'Rangos orientativos: dependen de la edad, de las enfermedades y fármacos del paciente (diabetes, tabaco, corticoides…) y de la carga que se aplique.',
@@ -106,5 +114,6 @@ export const TIEMPOS_TEJIDO = {
     'Paciente posquirúrgico: manda el protocolo del cirujano.',
   ],
 
-  fuente: 'Adaptado de Snyder-Mackler et al., «Developing Treatment Pathways», 2012 (tabla de physiq-wiki).',
+  fuente: 'Filas: adaptado de Snyder-Mackler et al., «Developing Treatment Pathways», 2012 (tabla de physiq-wiki).',
+  fasesFuente: 'Fases de reparación: Wallace, Basehore y Zito, «Wound Healing Phases», StatPearls (act. 2023).',
 };
