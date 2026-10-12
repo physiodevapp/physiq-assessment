@@ -121,6 +121,17 @@ Cada subtipo lleva «(bajo riesgo)» o «(alto riesgo)» en el nombre; los de al
 
 Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Fase J, 6: Aquiles (2026-10)
+
+Dos subtipos bajo «Rotura / reparación de tendón». La fuente es **Shamrock 2023** (StatPearls, «Achilles Tendon Rupture», PDF del usuario leído entero).
+
+- **Aquiles sin cirugía**: barra rayada de protección, de «5–8 s» a «2–3 m». Sigue el programa funcional de Glazebrook y Rubinger que cita el capítulo: 0–2 semanas sin carga, después bota con alzas y carga progresiva, y la bota se retira entre las 8 y las 12 semanas. La nota recoge la rerrotura: del 10 al 40 % en estudios antiguos, frente al 1–2 % con cirugía; la evidencia de nivel 1 más reciente no encuentra diferencia.
+- **Aquiles reparado**: barra lisa de vuelta al deporte, en «6m–1a». El capítulo da ejercicio de bajo impacto los primeros 6 meses y de alto impacto después, hacia la vuelta al deporte. En deportistas profesionales, más del 30 % no vuelve a jugar.
+
+La inmovilización tras la cirugía (2–4 semanas) no se pinta: la frase del capítulo está mal redactada y mezcla los dos tratamientos. El **manguito rotador reparado** queda pendiente de su fuente, el consenso de la ASSET (Thigpen 2016, J Shoulder Elbow Surg, sin acceso abierto).
+
+Revisado y aprobado por el usuario tal cual (2026-10), incluido no pintar la inmovilización tras la cirugía.
+
 ## Qué mide cada barra (2026-10)
 
 Decisión del usuario. Las fuentes dan plazos de cosas distintas, y antes solo la nota lo decía, así que barras como la de la fractura de Jones (6–8 semanas sin carga) y la del 5.º metatarsiano por estrés (82 días hasta volver al deporte) parecían comparables. Cada fila y cada subtipo lleva ahora `mide`, que es una clave de `medidas` (`data/tejidos.js`). El color sigue siendo la gravedad, porque un segundo código de color daría 4 × 4 combinaciones ilegibles; la medida va en el relleno:
