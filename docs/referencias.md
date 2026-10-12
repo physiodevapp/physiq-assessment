@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **399** referencias de literatura, con **1889** usos.
+- **399** referencias de literatura, con **1895** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **374** de 399 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -148,7 +148,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · razonamiento fase 4 · texto | 38 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
 | [Logerstedt 2017](#logerstedt-2017) | pauta · razonamiento fase 4 · tiempos de tejido | 8 | 2026-10 · Sin cambios: PubMed (guías de JOSPT de rodilla desde 2017) no encuentra revisión de la guía de esguince de ligamentos; lo posterior son consensos quirúrgicos (esquina posterolateral, 2025; reconstrucción del LCA, 2026), de menos peso y sobre otra pregunta. |
 | [Griffin 2018](#griffin-2018) | pauta | 1 | 2026-10 · Sin cambios: sigue siendo el ensayo de artroscopia frente a fisioterapia de la pauta de ca2; PubMed (SIFA y fisioterapia desde 2022) solo añade el ensayo PhysioFIRST (Kemp 2026), que compara dos programas de fisioterapia. |
-| [Logerstedt 2018](#logerstedt-2018) | pauta · razonamiento fase 4 | 7 | 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso). |
+| [Logerstedt 2018](#logerstedt-2018) | pauta · razonamiento fase 4 · tiempos de tejido | 9 | 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso). |
 | [Mellor 2018](#mellor-2018) | pauta | 1 | 2026-10 · Sin cambios: PubMed (tendinopatía glútea o dolor trocantéreo con ejercicio o educación desde 2022). El metaanálisis en red de Wang 2025 (J Orthop Surg Res 20:126, 19 ensayos, PMC11783921) sitúa el ejercicio primero para dolor y función, y el de Cordeiro 2024 (Sci Rep 14:3343, PMC10858207) lo encuentra mejor que la intervención mínima (certeza baja) e igual que la infiltración en dolor; ninguno da una pauta mejor que la del LEAP. Leídos en PMC (2026-10). |
 | [Biz 2019](#biz-2019) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). PubMed (2026-10): Gopinatth 2023 (Am J Sports Med, metaanálisis de la vuelta al deporte sin cirugía, 79,7 %) y Buchanan 2025 (Sports Health, protocolos, casi todos posquirúrgicos) son posteriores; Gopinatth no se pudo leer y Buchanan no aporta una pauta conservadora mejor. |
 | [Cascia 2019](#cascia-2019) | pauta | 1 | 2026-10 · Sin cambios en la conclusión: texto completo leído en PMC (2026-10; antes solo el resumen). Programas de 6 a 12–14 semanas (tabla 3) y 5 de las 7 series con infiltración de plasma rico en plaquetas: se añade a la pauta de co4. |
@@ -178,7 +178,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Liu 2025](#liu-2025) | pauta | 1 | 2026-10 · Leída en PMC (2026-10). Sus análisis de dosis son subgrupos separados (tipo, frecuencia, duración) que nunca se combinan: «multimodal 1–2 veces por semana durante 5–8 semanas» para el FAAM se apoya en un solo ensayo, hecho 3 veces por semana, y «terapia manual ≤4 semanas» para el CAIT en uno o dos. Se quita de tp21 esa orientación de dosis y queda el efecto global (CAIT +4,6 y FAAM de actividades diarias +7,7, certeza moderada). |
 | [Lopes 2025](#lopes-2025) | pauta | 1 | 2026-10 · Sin cambios: es la revisión Cochrane más reciente; el metaanálisis en red posterior (BMC Sports Sci Med Rehabil, 2026) no la sustituye en la pauta, que sigue la guía holandesa (Ophey 2025). |
 | [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 | 5 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
-| [Prill 2025](#prill-2025) | pauta · texto | 2 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
+| [Prill 2025](#prill-2025) | pauta · tiempos de tejido · texto | 6 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
 | [Pringels 2025](#pringels-2025) | pauta · texto | 2 | 2026-10 · Añadida (leída entera en PMC) en la pauta de tp9: ensayo aleatorizado de 42 deportistas con tendinopatía insercional; limitar la dorsiflexión mejoró el VISA-A 12,9 puntos más (IC 95 % 6,2–19,6) a las 12 semanas y 10,4 (3,7–17,1) a las 24. |
 | [Quzli 2025](#quzli-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
 | [Rich 2025](#rich-2025) | pauta · test 4b sin puntuar · texto | 3 | 2026-10 · Sin cambios: es el ensayo más reciente sobre tendinopatía proximal de isquiotibiales (PubMed, revisiones y ensayos desde 2024). |
@@ -6267,7 +6267,7 @@ Título: *Knee Pain and Mobility Impairments: Meniscal and Articular Cartilage L
 Publicación: J Orthop Sports Phys Ther 48(2):A1–A50  
 DOI: 10.2519/jospt.2018.0301  
 Última revisión: 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso).  
-Nota: Guía de práctica clínica APTA; PDF completo de orthopt.org leído (resumen de recomendaciones y ejercicio terapéutico, 2026-10). Pauta de ro2.
+Nota: Guía de práctica clínica APTA; PDF completo de orthopt.org leído (resumen de recomendaciones y ejercicio terapéutico, 2026-10). Pauta de ro2. PDF del usuario (2026-10), pronóstico y vuelta a la actividad: plazos de meniscectomía y sutura del grupo «Menisco» de los tiempos de tejido.
 
 Citada como:
 
@@ -6277,9 +6277,12 @@ Citada como:
 4. Logerstedt 2018 (J Orthop Sports Phys Ther 48(2); guía de la APTA de lesiones de menisco y cartílago, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, factores de riesgo, diagnóstico y clasificación, diagnóstico diferencial e imagen, diagnóstico y clasificación, pp. A15–A16)
 5. Logerstedt 2018 (J Orthop Sports Phys Ther 48(2); guía de la APTA de lesiones de menisco y cartílago, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, factores de riesgo, diagnóstico y clasificación, diagnóstico diferencial e imagen, factores de riesgo, p. A12, e imagen, p. A19)
 6. Logerstedt 2018 (J Orthop Sports Phys Ther 48(2); guía de la APTA de lesiones de menisco y cartílago, leídos el resumen de recomendaciones, incidencia, rasgos patoanatómicos, factores de riesgo, diagnóstico y clasificación, diagnóstico diferencial e imagen, incidencia, p. A7, y diagnóstico y clasificación, p. A15)
+7. Logerstedt 2018
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Meniscectomía parcial» (Menisco) | cabecera · tiempos de tejido | 7 |
+| Todas (tiempos de tejido) | — | Fila «Sutura (reparación)» (Menisco) | cabecera · tiempos de tejido | 7 |
 | Rodilla | ro2 · Lesión Meniscal | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 | Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
@@ -7908,15 +7911,20 @@ Título: *The formal EU-US Meniscus Rehabilitation 2024 Consensus: An ESSKA-AOSS
 Publicación: Knee Surg Sports Traumatol Arthrosc 33(8):3014–3024  
 DOI: 10.1002/ksa.12689  
 Última revisión: 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este.  
-Nota: Texto completo leído en PMC (2026-10). Consenso formal de 67 expertos (cirujanos y fisioterapeutas); grados A (respaldo científico alto) a D (opinión de expertos). Pauta de ro2 sin cirugía, con Logerstedt 2018 para el posoperatorio.
+Nota: Texto completo leído en PMC (2026-10). Consenso formal de 67 expertos (cirujanos y fisioterapeutas); grados A (respaldo científico alto) a D (opinión de expertos). Pauta de ro2 sin cirugía, con Logerstedt 2018 para el posoperatorio. PDF del usuario (2026-10): plazos del grupo «Menisco» de los tiempos de tejido (12 semanas en la rotura traumática, 3–6 meses en la degenerativa, vuelta al deporte a las 4–12 semanas tras la meniscectomía y a los 6–9 meses tras la sutura).
 
 Citada como:
 
 1. Tras una meniscectomía parcial por rotura degenerativa, el riesgo de artrosis radiográfica con síntomas a los 16 años es 7 veces el de controles emparejados (por rotura traumática, 2,7, sin significación). Solo el 30 % periférico está vascularizado, y disminuye con la edad. Jóvenes: mejores candidatos a reparación. Derivar al traumatólogo si persisten el dolor, la rigidez o el derrame recurrentes, la inestabilidad funcional, los síntomas mecánicos o aparecen síntomas neurológicos inesperados (Prill 2025, grado C).
 2. Prill 2025, Knee Surg Sports Traumatol Arthrosc 33(8):3014–3024 (consenso formal EU-US de rehabilitación del menisco, ESSKA-AOSSM-AASPT, parte II: tratamiento sin cirugía; grados A a D, de más respaldo científico a opinión de expertos); Logerstedt 2018, J Orthop Sports Phys Ther 48(2):A1–A50 (guía de práctica clínica APTA, lesiones de menisco y de cartílago articular: tras la meniscectomía; deja el tratamiento sin cirugía para su próxima revisión; letra = grado de la recomendación, tal como la da la guía); AAOS 2024 (guía de práctica clínica de patología meniscal aislada aguda, opciones «Physical Therapy» e «Indications for Acute Surgical Intervention»)
+3. Prill 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Rotura traumática, sin cirugía» (Menisco) | cabecera · tiempos de tejido | 3 |
+| Todas (tiempos de tejido) | — | Fila «Lesión degenerativa, sin cirugía» (Menisco) | cabecera · tiempos de tejido | 3 |
+| Todas (tiempos de tejido) | — | Fila «Meniscectomía parcial» (Menisco) | cabecera · tiempos de tejido | 3 |
+| Todas (tiempos de tejido) | — | Fila «Sutura (reparación)» (Menisco) | cabecera · tiempos de tejido | 3 |
 | Rodilla | ro2 · Lesión Meniscal | Pronóstico (en `derivacion`) | 5 · mención en el texto | 1 |
 | Rodilla | ro2 · Lesión Meniscal | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 

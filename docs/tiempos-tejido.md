@@ -70,6 +70,20 @@ Revisado y aprobado por el usuario tal cual (2026-10), incluida la barra del LCA
 
 Decisión del usuario: el menisco irá como grupo propio («Menisco», con su pastilla en el filtro), no como subtipo de ligamento. Es fibrocartílago, con otra biología y otra vascularización, y sus tratamientos (conservador, meniscectomía, sutura) tienen plazos propios. El grupo se crea con su primera fila con fuente leída, nunca vacío. Fase J, fila 3.
 
+## Fase J, 3: menisco (2026-10)
+
+Grupo `menisco`, entre ligamento y hueso. El wiki no tenía fila de menisco, así que no hay fila madre: cada fila es un tratamiento y no lleva subtipos. «Conservador» se parte en dos filas porque la fuente separa la rotura traumática de la lesión degenerativa, con plazos y grados distintos. Fuentes, en PDF del usuario:
+
+- **Prill 2025** (consenso formal EU-US de rehabilitación del menisco, parte II; leído entero):
+  - Rotura traumática con rodilla estable: un programa de 12 semanas de ejercicio neuromuscular supervisado da resultados parecidos a la cirugía (grado B). Se pinta en «2–3 m» como duración del programa, no como cicatrización. La nota añade que las roturas de la raíz o radiales agudas pueden beneficiarse de cirugía precoz (es de la discusión, sin grado).
+  - Lesión degenerativa: la fisioterapia es el primer tratamiento (grado A), durante 3–6 meses antes de plantear la cirugía. Se pinta en «3–6 m».
+  - Vuelta al deporte: 4–12 semanas tras la meniscectomía parcial («3–4 s» a «2–3 m») y 6–9 meses tras la sutura («6m–1a»), ambos de grado C. En los estudios, la vuelta al juego tras una sutura aislada va de 3,3 a 10 meses.
+- **Logerstedt 2018** (guía JOSPT de menisco y cartílago; leídos el pronóstico y las intervenciones):
+  - Tras la meniscectomía, los menores de 30 años y los deportistas de élite vuelven antes de 2 meses (54 días en Kim) y los mayores de 30 hacia los 3 meses (89 días). Los déficits de los primeros 6 meses pueden tardar hasta 2 años en resolverse.
+  - Tras la sutura, carga progresiva precoz y vuelta progresiva precoz a la actividad (grado C).
+
+Gravedad: moderada en las tres primeras filas y grave en la sutura. Revisado y aprobado por el usuario tal cual (2026-10).
+
 ## Filtro sin «Todos», en una fila (2026-10)
 
 Decisión del usuario. Se quita la pastilla «Todos»: volver a tocar la pastilla activa la desmarca y se ven todos los tejidos, con la misma regla que el resto de grupos de opciones de la app (mecanismo, cronología, NRS). El título de cada grupo hace lo mismo. Las pastillas van en una sola fila que se desliza en horizontal cuando no caben (a 320 px, y cuando la Fase J añada grupos como nervio periférico), con un degradado en el lado por el que quedan más (`_bordesFiltroTejidos()`, `app.js`). Al abrir el panel con un filtro guardado, la pastilla activa queda a la vista. Se descartó un desplegable: escala igual de bien, pero esconde las opciones y cuesta un toque más. Si algún día hubiera más de unas 8 categorías, se replantea (agrupar, o desplegable).
