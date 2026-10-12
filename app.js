@@ -3156,13 +3156,46 @@ document.addEventListener('keydown', e => {
 // hoja inferior con atrás en móvil, diálogo centrado en ancho.
 let _tejidosHistorial = false;
 
+// Filtro por tejido («Todos», «Ligamento»…): preferencia de este dispositivo,
+// como el tema o el destino de la IA (localStorage, con try/catch).
+const _CLAVE_FILTRO_TEJIDOS = 'physiq-assessment-tejidos-filtro';
+function _filtroTejidos() {
+  try { return localStorage.getItem(_CLAVE_FILTRO_TEJIDOS) || 'todos'; } catch { return 'todos'; }
+}
+function _pintarTiemposTejido() {
+  const posquirurgico = esPosquirurgico(state.mecanismo);
+  document.getElementById('tejidosCuerpo').innerHTML = tiemposTejidoHTML(TIEMPOS_TEJIDO, {
+    posquirurgico, semanas: posquirurgico ? semanasCirugia(state.cirugia) : null, filtro: _filtroTejidos(),
+  });
+  const fila = document.querySelector('#tejidosCuerpo .tej-filtro');
+  if (!fila) return;
+  // La pastilla activa, a la vista aunque esté al final de la fila
+  const activa = fila.querySelector('.tej-filtro-btn.activo');
+  if (activa) fila.scrollLeft = Math.max(0, activa.offsetLeft - fila.offsetLeft - 16);
+  _bordesFiltroTejidos(fila);
+  fila.addEventListener('scroll', () => _bordesFiltroTejidos(fila), { passive: true });
+}
+// Degradado en el lado por el que quedan pastillas fuera de la vista
+function _bordesFiltroTejidos(fila) {
+  const max = fila.scrollWidth - fila.clientWidth;
+  fila.classList.toggle('mas-izda', fila.scrollLeft > 2);
+  fila.classList.toggle('mas-dcha', fila.scrollLeft < max - 2);
+}
+document.getElementById('tejidosCuerpo')?.addEventListener('click', e => {
+  const b = e.target instanceof Element ? e.target.closest('[data-filtro-tejido]') : null;
+  if (!b) return;
+  try { localStorage.setItem(_CLAVE_FILTRO_TEJIDOS, b.dataset.filtroTejido); } catch { /* sin preferencia guardada */ }
+  _pintarTiemposTejido();
+  const cuerpo = document.getElementById('tejidosCuerpo');
+  cuerpo.scrollTop = 0;
+  // El foco vuelve a la pastilla de ese tejido (también si se tocó su título de grupo)
+  cuerpo.querySelector(`.tej-filtro-btn[data-grupo="${b.dataset.grupo}"]`)?.focus({ preventScroll: true });
+});
+
 function abrirTiemposTejido() {
   const overlay = document.getElementById('tejidosOverlay');
   if (!overlay || overlay.classList.contains('open')) return;
-  const posquirurgico = esPosquirurgico(state.mecanismo);
-  document.getElementById('tejidosCuerpo').innerHTML = tiemposTejidoHTML(TIEMPOS_TEJIDO, {
-    posquirurgico, semanas: posquirurgico ? semanasCirugia(state.cirugia) : null,
-  });
+  _pintarTiemposTejido();
   overlay.classList.add('open');
   document.getElementById('tejidosBtn')?.setAttribute('aria-expanded', 'true');
   lockBodyScroll();

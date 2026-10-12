@@ -1,13 +1,14 @@
 // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera: data/tejidos.js,
 // lib/tejidos.js, docs/tiempos-tejido.md). Se ejecuta desde tests/unit.js.
 import { assert, leer, test, TIEMPOS_TEJIDO } from './comun.mjs';
-const { posicionDia, marcaHoy, tiemposTejidoHTML } = await import('../../lib/tejidos.js');
+const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles, rangoFase } = await import('../../lib/tejidos.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 
 console.log('\ntiempos de tejido');
 
 const T = TIEMPOS_TEJIDO;
 const filas = T.grupos.flatMap(g => g.filas);
+const subtipos = filas.flatMap(f => f.subtipos || []);
 const n = T.columnas.length;
 
 test('tejidos: columnas con `hasta` creciente; filas con rango dentro del eje y gravedad conocida', () => {
@@ -80,8 +81,8 @@ test('tiemposTejidoHTML: una barra por fila, «pendiente de fuente» donde toca,
   // Sin mecanismo posquirúrgico, aunque haya semanas, no se marca nada
   assert.ok(!tiemposTejidoHTML(T, { semanas: 6 }).includes('class="tej-hoy"'));
   const posq = tiemposTejidoHTML(T, { posquirurgico: true, semanas: 6 });
-  // franja de fases + una por fila (en el eje solo la etiqueta «Hoy»)
-  assert.equal((posq.match(/class="tej-hoy"/g) || []).length, filas.length + 1);
+  // una por fila (en el eje solo la etiqueta «Hoy»; la leyenda de fases no lleva línea)
+  assert.equal((posq.match(/class="tej-hoy"/g) || []).length, filas.length);
   assert.equal((posq.match(/class="tej-hoy-etq"/g) || []).length, 1);
   assert.ok(posq.includes('Hoy · 6 semanas tras la cirugía'));
   assert.ok(tiemposTejidoHTML(T, { posquirurgico: true }).includes('tarjeta «Cirugía»'));
@@ -102,4 +103,66 @@ test('tiempos de tejido: solo consulta — ni payload, ni resúmenes, ni informe
   assert.equal(usos, 4, 'import de data.js, import de lib/tejidos.js y la llamada en abrirTiemposTejido()');
   const cuerpo = app.slice(app.indexOf('function buildPhysiQPayload'), app.indexOf('function buildPhysiQPayload') + 6000);
   assert.ok(!/tejid/i.test(cuerpo));
+});
+
+test('tejidos: grupos con id único; subtipos (si los hay) con la forma de una fila, fuente o pendiente, y dentro del eje', () => {
+  const ids = T.grupos.map(g => g.id);
+  assert.ok(ids.every(Boolean) && new Set(ids).size === ids.length && !ids.includes('todos'), 'ids de grupo');
+  for (const st of subtipos) {
+    assert.ok(Number.isInteger(st.desde) && Number.isInteger(st.hasta) && st.desde >= 0 && st.hasta < n && st.desde <= st.hasta, `rango de ${st.id}`);
+    assert.ok(!st.gravedad || st.gravedad in T.gravedades, `gravedad de ${st.id}`);
+    assert.ok(st.fuentes.length || st.pendiente === true, `${st.id}: sin fuente ni pendiente`);
+    for (const k of st.fuentes) assert.ok(REFERENCIAS[k], `${st.id}: «${k}» no está en el registro`);
+  }
+  const todos = [...filas, ...subtipos].map(f => f.id);
+  assert.equal(new Set(todos).size, todos.length, 'ids de fila y subtipo repetidos');
+});
+
+test('tejidos: la remodelación del tendón sigue más allá del año (Wu 2017) y se pinta como parcial', () => {
+  const f = T.fases.find(x => x.id === 'remodelacion_tendon');
+  assert.deepEqual([f.desdeDia, f.hastaDia, f.fuentes], [365, 730, ['Wu 2017']]);
+  assert.ok(f.tejido);
+  const h = tiemposTejidoHTML(T);
+  assert.ok(/tej-eje-fase tej-fase-remodelacion_tendon tej-fase-parcial/.test(h));
+  assert.ok(/tej-fase-ley tej-fase-remodelacion_tendon tej-fase-parcial.*?Remodelación \(tendón\)<\/span><span class="tej-fase-rango">1–2 años</.test(h));
+});
+
+test('tiemposTejidoHTML: filtro por tejido sin «Todos»: tocar la pastilla activa (o el título del grupo) vuelve a todos', () => {
+  assert.equal(gruposVisibles(T.grupos, 'todos').length, T.grupos.length);
+  assert.equal(gruposVisibles(T.grupos, 'no-existe').length, T.grupos.length);
+  assert.deepEqual(gruposVisibles(T.grupos, 'ligamento').map(g => g.id), ['ligamento']);
+  const todos = tiemposTejidoHTML(T);
+  // Una pastilla por grupo, ninguna «Todos» y ninguna activa
+  assert.equal((todos.match(/class="tej-filtro-btn/g) || []).length, T.grupos.length);
+  assert.ok(!todos.includes('>Todos<') && !todos.includes('tej-filtro-btn activo'));
+  assert.ok(todos.includes('class="tej-filtro-btn" data-grupo="ligamento" data-filtro-tejido="ligamento" aria-pressed="false"'));
+  assert.ok(todos.includes('class="tej-grupo" data-grupo="ligamento" data-filtro-tejido="ligamento"'));
+  const lig = tiemposTejidoHTML(T, { filtro: 'ligamento' });
+  const nLig = T.grupos.find(g => g.id === 'ligamento').filas.length;
+  assert.equal((lig.match(/class="tej-barra /g) || []).length, nLig);
+  // La activa lleva aria-pressed y, al tocarla otra vez, pone 'todos'
+  assert.ok(lig.includes('class="tej-filtro-btn activo" data-grupo="ligamento" data-filtro-tejido="todos" aria-pressed="true"'));
+  assert.ok(lig.includes('class="tej-grupo" data-grupo="ligamento" data-filtro-tejido="todos"'), 'el título del grupo filtrado vuelve a todos');
+  // El eje, la leyenda de fases y la línea «Hoy» siguen con cualquier filtro
+  assert.ok(lig.includes('tej-eje') && lig.includes('tej-fases'));
+  assert.ok(tiemposTejidoHTML(T, { filtro: 'ligamento', posquirurgico: true, semanas: 6 }).includes('class="tej-hoy-etq"'));
+});
+
+test('tiemposTejidoHTML: los subtipos se pintan plegados bajo su fila, con la gravedad de la fila si no traen la suya', () => {
+  const datos = structuredClone(T);
+  const g2 = datos.grupos.find(g => g.id === 'ligamento').filas.find(f => f.id === 'ligamento_g2');
+  g2.subtipos = [{ id: 'x_tobillo', nombre: 'Prueba tobillo', desde: 2, hasta: 3, fuentes: [], pendiente: true }];
+  const h = tiemposTejidoHTML(datos);
+  assert.ok(h.includes('<details class="tej-subtipos"><summary>1 subtipo de esguince grado ii</summary>'));
+  assert.ok(/class="tej-fila tej-subfila" data-tejido="x_tobillo".*?tej-barra tej-moderada/.test(h));
+  // Sin subtipos, nada
+  assert.ok(!tiemposTejidoHTML(T).includes('tej-subtipos') || subtipos.length > 0);
+});
+
+test('tejidos: leyenda de fases con nombre entero y rango corto, una entrada por fase', () => {
+  const h = tiemposTejidoHTML(T);
+  assert.equal((h.match(/<li class="tej-fase-ley /g) || []).length, T.fases.length);
+  for (const f of T.fases) assert.ok(h.includes(`<span class="tej-fase-nombre">${f.nombre}</span>`), f.id);
+  assert.ok(h.includes('<span class="tej-fase-rango">días 0–5</span>') && h.includes('<span class="tej-fase-rango">sem. 3–1 año</span>'));
+  assert.deepEqual([[0, 5], [5, 21], [21, 365], [365, 730]].map(([a, b]) => rangoFase(a, b)), ['días 0–5', 'día 5–sem. 3', 'sem. 3–1 año', '1–2 años']);
 });
