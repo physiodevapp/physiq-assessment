@@ -56,6 +56,16 @@ Cuatro subtipos bajo las filas de esguince del wiki: «Tobillo, ligamento latera
 
 Semanas → columnas del eje: 1–2 semanas = «4–14 d»; 3–6 = «3–4 s» y «5–8 s»; 6–12 = «5–8 s» y «2–3 m»; 12–16 = «2–3 m» y «3–6 m». Un test fija los cuatro rangos. El resumen plegable pasa a «Ver N subtipos», porque «de esguince grado iii» en minúsculas estropeaba el número romano. Revisado y aprobado por el usuario tal cual (2026-10): la barra del grado II sigue a Bergman y la reparación cuelga del grado III.
 
+## Fase J, 2: ligamentos de rodilla (2026-10)
+
+Tres subtipos. Fuentes, en PDF del usuario y leídas enteras:
+
+- **Naqvi y Sherman 2023** (StatPearls, «Medial Collateral Ligament Knee Injury»; nueva en el registro). Grado I: «return to play within ten to 14 days» → subtipo «Rodilla, ligamento colateral medial» bajo el grado I, en «4–14 d». El grado II tiene «more variable timelines» y se decide por criterios (fuerza igual en las dos piernas, sin dolor al valgo). El grado III se trata con o sin cirugía, sin plazo. Esos dos no se pintan: no hay rango que poner.
+- **Evans 2023** (StatPearls, «Anterior Cruciate Ligament Knee Injury»; nueva). Sin cirugía (baja demanda, sin giros ni saltos, roturas parciales): «12 weeks of supervised physiotherapy» tras la fase aguda. Se pinta de «3–4 s» a «2–3 m», bajo el grado III, con la nota de que es la duración del programa y no cicatrización. Reconstruido: vuelta a la actividad o al deporte a los 6–12 meses de media, y el injerto «up to 18 months or more» en incorporarse. Se pinta de «6m–1a» a «2a», bajo «Injerto».
+- **Logerstedt 2017** (guía JOSPT). No da plazos: la vuelta al deporte es por criterios. Al año, sin derrame, sin inestabilidad y con IKDC > 93 %, la vuelta al deporte es «more than 14 times more likely» (PLR = 14,54). Solo va en la nota del reconstruido.
+
+Revisado y aprobado por el usuario tal cual (2026-10), incluida la barra del LCA sin cirugía como duración del programa.
+
 ## Menisco, grupo propio (2026-10)
 
 Decisión del usuario: el menisco irá como grupo propio («Menisco», con su pastilla en el filtro), no como subtipo de ligamento. Es fibrocartílago, con otra biología y otra vascularización, y sus tratamientos (conservador, meniscectomía, sutura) tienen plazos propios. El grupo se crea con su primera fila con fuente leída, nunca vacío. Fase J, fila 3.
