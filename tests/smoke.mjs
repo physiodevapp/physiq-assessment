@@ -58,7 +58,7 @@ try {
 const BASE_URL = process.argv.slice(2).find(a => !a.startsWith('--') && /^https?:/.test(a)) || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
 const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'ampliar-ia.js', 'lib/session.js', 'lib/posquirurgico.js',
-  'data/comun.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
+  'data/comun.js', 'data/anatomia.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
 // and VALID_REGIONS in tests/unit/comun.mjs — add a new region to all three.
@@ -591,6 +591,69 @@ async function checkTestsAmpliar(page) {
     && r.kicker === 'Test · por qué y evidencia' && r.detalle && r.enlace.startsWith('https://doi.org/10.1136/bjsports-2012-091066') && r.marcaConPanel && r.escritorio && r.movil;
   if (!r.ok) Object.assign(r, { a, b, c, d });
   await page.setViewportSize({ width: 1280, height: 900 });
+  return r;
+}
+
+// «Anatomía» de los tests (fase 4b, hombro; docs/anatomia-kenhub.md): bajo la
+// fuente, un enlace a Kenhub por estructura (en español si existe; si no, en
+// inglés marcado «EN») que se abre en pestaña nueva; el
+// panel «Ampliar» repite la lista; cabe a 320 px; en el hub no se ve.
+async function checkAnatomia(page, browser) {
+  const r = {};
+  const hawkins = '#hypcard_h2 .test-item:has(.test-name:text-is("Test de Hawkins-Kennedy"))';
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await irA4bHombro(page);
+  r.enlaces = await page.$$eval(`${hawkins} .test-anat a`, as => as.map(a => [a.textContent, a.getAttribute('href'), a.target, a.rel]));
+  r.tarjeta = JSON.stringify(r.enlaces) === JSON.stringify([
+    ['Supraespinoso ↗', 'https://www.kenhub.com/es/library/anatomia-es/musculo-supraespinoso', '_blank', 'noopener noreferrer'],
+    ['Bursa subacromial EN ↗', 'https://www.kenhub.com/en/library/anatomy/subacromial-bursa', '_blank', 'noopener noreferrer'],
+    ['Ligamento coracoacromial EN ↗', 'https://www.kenhub.com/en/library/anatomy/coracoacromial-ligament', '_blank', 'noopener noreferrer'],
+  ]);
+  // Debajo de la fuente y antes de los botones de resultado
+  const item = () => [...document.querySelectorAll('#hypcard_h2 .test-item')]
+    .find(e => e.querySelector('.test-name').textContent === 'Test de Hawkins-Kennedy');
+  await page.evaluate(`window.__hawkins = ${item}`);
+  r.orden = await page.evaluate(() => {
+    const a = window.__hawkins().querySelector('.test-anat');
+    return a?.previousElementSibling?.classList.contains('test-source') && a.nextElementSibling?.classList.contains('test-result-btns');
+  });
+  // Al pulsar se abre una pestaña nueva con la URL (sin tocar la valoración).
+  // Kenhub no se carga en la prueba: la ruta responde con una página vacía.
+  await page.context().route('https://www.kenhub.com/**', ruta => ruta.fulfill({ contentType: 'text/html', body: '<title>Kenhub</title>' }));
+  const [popup] = await Promise.all([
+    page.context().waitForEvent('page'),
+    page.click(`${hawkins} .test-anat a >> nth=0`),
+  ]);
+  await popup.waitForLoadState();
+  r.pestanaUrl = popup.url();
+  r.pestana = r.pestanaUrl === 'https://www.kenhub.com/es/library/anatomia-es/musculo-supraespinoso';
+  await popup.close();
+  await page.context().unroute('https://www.kenhub.com/**');
+  r.sigueEn4b = await page.evaluate(() => state.currentPhase === '4b');
+  await page.click(`${hawkins} .razon-ampliar`);
+  await page.waitForSelector('#razonContenido .razon-anatomia');
+  r.panel = await page.$$eval('#razonContenido .razon-anatomia a', as => as.map(a => a.textContent));
+  r.panelOk = r.panel.length === 3 && r.panel[0] === 'Supraespinoso ↗' && r.panel[1] === 'Bursa subacromial EN ↗'
+    && await page.evaluate(() => [...document.querySelectorAll('#razonContenido .razon-etq')].map(e => e.textContent).join('|').includes('Anatomía (Kenhub)|Fuentes'));
+  await page.keyboard.press('Escape');
+  // 320 px: los enlaces caben (envuelven), sin scroll lateral
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.waitForTimeout(200);
+  r.cabe = await page.evaluate(() => {
+    const a = window.__hawkins().querySelector('.test-anat').getBoundingClientRect();
+    return a.right <= innerWidth && document.documentElement.scrollWidth <= innerWidth;
+  });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  // En el hub, oculto
+  const hub = await browser.newPage();
+  const frame = await cargarEnHub(hub);
+  r.hub = await frame.evaluate(() => {
+    const d = document.createElement('div'); d.className = 'test-anat'; d.textContent = 'x';
+    document.body.appendChild(d);
+    return getComputedStyle(d).display === 'none';
+  });
+  await hub.close();
+  r.ok = r.tarjeta && r.orden && r.pestana && r.sigueEn4b && r.panelOk && r.cabe && r.hub;
   return r;
 }
 
@@ -2478,6 +2541,13 @@ const SECCIONES = [
     const r = await checkTestsAmpliar(page);
     console.log(`  ${r.ok ? '✓' : '✗'} «cuánto pesa» bajo los badges, criterio corto, «Ampliar» abre el panel del test (lateral sin velo; sheet con velo a 390 px que atrás cierra sin salir de la 4b), ir a la fase 5 lo cierra`);
     if (!r.ok) console.log('\nTests 4b «Ampliar»:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'anatomia', titulo: '«Anatomía» de los tests (fase 4b, hombro, Kenhub):', run: async ({ page, browser }) => {
+    const r = await checkAnatomia(page, browser);
+    console.log(`  ${r.ok ? '✓' : '✗'} un enlace a Kenhub por estructura bajo la fuente (español o «EN»), en pestaña nueva sin salir de la 4b; el panel «Ampliar» los repite; cabe a 320 px; oculto en el hub`);
+    if (!r.ok) console.log('\nAnatomía:', JSON.stringify(r));
     return r.ok;
   } },
 
