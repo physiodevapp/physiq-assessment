@@ -595,7 +595,8 @@ async function checkTestsAmpliar(page) {
 }
 
 // «Anatomía» de los tests (fase 4b, hombro; docs/anatomia-kenhub.md): bajo la
-// fuente, un enlace a Kenhub por estructura que se abre en pestaña nueva; el
+// fuente, un enlace a Kenhub por estructura (en español si existe; si no, en
+// inglés marcado «EN») que se abre en pestaña nueva; el
 // panel «Ampliar» repite la lista; cabe a 320 px; en el hub no se ve.
 async function checkAnatomia(page, browser) {
   const r = {};
@@ -604,9 +605,9 @@ async function checkAnatomia(page, browser) {
   await irA4bHombro(page);
   r.enlaces = await page.$$eval(`${hawkins} .test-anat a`, as => as.map(a => [a.textContent, a.getAttribute('href'), a.target, a.rel]));
   r.tarjeta = JSON.stringify(r.enlaces) === JSON.stringify([
-    ['Supraespinoso ↗', 'https://www.kenhub.com/en/library/anatomy/supraspinatus-muscle', '_blank', 'noopener noreferrer'],
-    ['Bursa subacromial ↗', 'https://www.kenhub.com/en/library/anatomy/subacromial-bursa', '_blank', 'noopener noreferrer'],
-    ['Ligamento coracoacromial ↗', 'https://www.kenhub.com/en/library/anatomy/coracoacromial-ligament', '_blank', 'noopener noreferrer'],
+    ['Supraespinoso ↗', 'https://www.kenhub.com/es/library/anatomia-es/musculo-supraespinoso', '_blank', 'noopener noreferrer'],
+    ['Bursa subacromial EN ↗', 'https://www.kenhub.com/en/library/anatomy/subacromial-bursa', '_blank', 'noopener noreferrer'],
+    ['Ligamento coracoacromial EN ↗', 'https://www.kenhub.com/en/library/anatomy/coracoacromial-ligament', '_blank', 'noopener noreferrer'],
   ]);
   // Debajo de la fuente y antes de los botones de resultado
   const item = () => [...document.querySelectorAll('#hypcard_h2 .test-item')]
@@ -625,14 +626,14 @@ async function checkAnatomia(page, browser) {
   ]);
   await popup.waitForLoadState();
   r.pestanaUrl = popup.url();
-  r.pestana = r.pestanaUrl === 'https://www.kenhub.com/en/library/anatomy/supraspinatus-muscle';
+  r.pestana = r.pestanaUrl === 'https://www.kenhub.com/es/library/anatomia-es/musculo-supraespinoso';
   await popup.close();
   await page.context().unroute('https://www.kenhub.com/**');
   r.sigueEn4b = await page.evaluate(() => state.currentPhase === '4b');
   await page.click(`${hawkins} .razon-ampliar`);
   await page.waitForSelector('#razonContenido .razon-anatomia');
   r.panel = await page.$$eval('#razonContenido .razon-anatomia a', as => as.map(a => a.textContent));
-  r.panelOk = r.panel.length === 3 && r.panel[0] === 'Supraespinoso ↗'
+  r.panelOk = r.panel.length === 3 && r.panel[0] === 'Supraespinoso ↗' && r.panel[1] === 'Bursa subacromial EN ↗'
     && await page.evaluate(() => [...document.querySelectorAll('#razonContenido .razon-etq')].map(e => e.textContent).join('|').includes('Anatomía (Kenhub)|Fuentes'));
   await page.keyboard.press('Escape');
   // 320 px: los enlaces caben (envuelven), sin scroll lateral
@@ -2537,7 +2538,7 @@ const SECCIONES = [
 
   { id: 'anatomia', titulo: '«Anatomía» de los tests (fase 4b, hombro, Kenhub):', run: async ({ page, browser }) => {
     const r = await checkAnatomia(page, browser);
-    console.log(`  ${r.ok ? '✓' : '✗'} un enlace a Kenhub por estructura bajo la fuente, en pestaña nueva sin salir de la 4b; el panel «Ampliar» los repite; cabe a 320 px; oculto en el hub`);
+    console.log(`  ${r.ok ? '✓' : '✗'} un enlace a Kenhub por estructura bajo la fuente (español o «EN»), en pestaña nueva sin salir de la 4b; el panel «Ampliar» los repite; cabe a 320 px; oculto en el hub`);
     if (!r.ok) console.log('\nAnatomía:', JSON.stringify(r));
     return r.ok;
   } },

@@ -2,7 +2,7 @@
 // `anatomia` en cada test, docs/anatomia-kenhub.md). Se ejecuta desde tests/unit.js.
 import { assert, leer, test, HYPOTHESES, buildTestItem, buildPhysiQPayload,
   buildContextSummaryText, buildInformeFisioterapiaText, withState } from './comun.mjs';
-const { ESTRUCTURAS, KENHUB_BASE } = await import('../../data/anatomia.js');
+const { ESTRUCTURAS, KENHUB_BASE, KENHUB_BASE_ES } = await import('../../data/anatomia.js');
 const { enlacesAnatomia, anatomiaTestHTML } = await import('../../phase4b.js');
 const IA = await import('../../informe-ia.js');
 const IN = await import('../../lib/informe-narrativo.js');
@@ -12,21 +12,38 @@ console.log('\nanatomía (Kenhub, fase 4b)');
 const TODOS = Object.entries(HYPOTHESES).flatMap(([hId, h]) => h.tests.map((t, i) => ({ hId, h, t, i })));
 const CON = TODOS.filter(x => x.t.anatomia);
 
-test('anatomía: cada estructura tiene nombre y slug de Kenhub (minúsculas y guiones); la base es la biblioteca en inglés', () => {
+test('anatomía: cada estructura tiene nombre, slug inglés y, si existe, slug español (minúsculas y guiones)', () => {
   assert.equal(KENHUB_BASE, 'https://www.kenhub.com/en/library/anatomy/');
+  assert.equal(KENHUB_BASE_ES, 'https://www.kenhub.com/es/library/anatomia-es/');
+  const slug = /^[a-z0-9]+(-[a-z0-9]+)*$/;
   for (const [id, e] of Object.entries(ESTRUCTURAS)) {
     assert.match(id, /^[a-z_]+$/, `clave ${id}`);
     assert.ok(e.nombre?.trim(), `${id}: sin nombre`);
-    assert.match(e.kenhub, /^[a-z0-9]+(-[a-z0-9]+)*$/, `${id}: slug`);
-    assert.deepEqual(Object.keys(e).filter(k => !['nombre', 'kenhub', 'nota'].includes(k)), [], `${id}: campos fuera del esquema`);
+    assert.match(e.kenhub, slug, `${id}: slug inglés`);
+    if ('kenhubEs' in e) assert.match(e.kenhubEs, slug, `${id}: slug español`);
+    assert.deepEqual(Object.keys(e).filter(k => !['nombre', 'kenhub', 'kenhubEs', 'nota'].includes(k)), [], `${id}: campos fuera del esquema`);
   }
+});
+
+test('anatomía: enlaza la versión en español si existe y, si no, la inglesa marcada «EN»', () => {
+  for (const [id, e] of Object.entries(ESTRUCTURAS)) {
+    const [l] = enlacesAnatomia({ anatomia: [id] });
+    assert.equal(l.url, e.kenhubEs ? KENHUB_BASE_ES + e.kenhubEs : KENHUB_BASE + e.kenhub, id);
+    assert.equal(l.ingles, !e.kenhubEs, id);
+  }
+  // Hombro (2026-10): sin versión en español solo la bursa y los dos ligamentos
+  assert.deepEqual(Object.keys(ESTRUCTURAS).filter(id => !ESTRUCTURAS[id].kenhubEs),
+    ['bursa_subacromial', 'ligamento_coracoacromial', 'ligamento_coracohumeral']);
+  const html = anatomiaTestHTML({ anatomia: ['supraespinoso', 'bursa_subacromial'] });
+  assert.match(html, />Supraespinoso ↗<\/a>/);
+  assert.match(html, /title="Abrir en Kenhub \(sin versión en español\)">Bursa subacromial <span class="anat-idioma">EN<\/span> ↗<\/a>/);
 });
 
 test('anatomía: `anatomia` de un test es una lista no vacía de claves de ESTRUCTURAS, sin repetir artículo', () => {
   for (const { hId, t } of CON) {
     assert.ok(Array.isArray(t.anatomia) && t.anatomia.length, `${hId} «${t.name}»: lista vacía`);
     for (const id of t.anatomia) assert.ok(ESTRUCTURAS[id], `${hId} «${t.name}»: «${id}» no está en data/anatomia.js`);
-    const urls = t.anatomia.map(id => ESTRUCTURAS[id].kenhub);
+    const urls = enlacesAnatomia(t).map(e => e.url);
     assert.equal(new Set(urls).size, urls.length, `${hId} «${t.name}»: dos estructuras con el mismo artículo`);
   }
 });
@@ -47,11 +64,11 @@ test('tarjeta del test: «Anatomía» con un enlace por estructura (pestaña nue
     assert.equal(html.includes('class="test-anat"'), !!t.anatomia, `${hId} «${t.name}»`);
     for (const e of enlacesAnatomia(t)) {
       assert.ok(html.includes(`href="${e.url}" target="_blank" rel="noopener noreferrer"`), `${hId} «${t.name}»: ${e.url}`);
-      assert.ok(e.url.startsWith(KENHUB_BASE));
+      assert.ok(e.url.startsWith(e.ingles ? KENHUB_BASE : KENHUB_BASE_ES));
     }
   }
   const supra = HYPOTHESES.h3.tests[0];
-  assert.match(anatomiaTestHTML(supra), /Anatomía<\/span> <a class="anat-enlace" href="https:\/\/www\.kenhub\.com\/en\/library\/anatomy\/supraspinatus-muscle"[^>]*>Supraespinoso ↗<\/a>/);
+  assert.match(anatomiaTestHTML(supra), /Anatomía<\/span> <a class="anat-enlace" href="https:\/\/www\.kenhub\.com\/es\/library\/anatomia-es\/musculo-supraespinoso"[^>]*>Supraespinoso ↗<\/a>/);
   // La nota de una estructura sin artículo propio va en el title
   assert.match(anatomiaTestHTML(HYPOTHESES.h5.tests[0]), /title="Abrir en Kenhub · Sin artículo propio/);
 });
@@ -69,7 +86,7 @@ test('anatomía: nunca entra en el payload, 📋 Notas, 📄 Informe ni el promp
     const d = buildPhysiQPayload();
     const prompt = IN.buildNarrativePrompt(d, { conAudio: false }) + IN.bloquesAmpliados(IA.construirAmpliado()).join('\n');
     for (const txt of [JSON.stringify(d), buildContextSummaryText(), buildInformeFisioterapiaText(), prompt]) {
-      assert.ok(!/kenhub|supraspinatus|Supraespinoso ↗|Labrum glenoideo|anatomia/i.test(txt), 'anatomía filtrada a un resumen o al prompt');
+      assert.ok(!/kenhub|supraspinatus|supraespinoso-|Supraespinoso ↗|Labrum glenoideo|anatomia/i.test(txt), 'anatomía filtrada a un resumen o al prompt');
     }
   });
 });

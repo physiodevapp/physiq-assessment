@@ -10,7 +10,7 @@ import {
   nombreHipPosq, cirugiaPayload, pautaHipPosq,
 } from './lib/posquirurgico.js';
 import { iaParrafoHTML, ctxTest, attrIA } from './ampliar-ia.js';
-import { ESTRUCTURAS, KENHUB_BASE } from './data/anatomia.js';
+import { ESTRUCTURAS, KENHUB_BASE, KENHUB_BASE_ES } from './data/anatomia.js';
 
 // Hipótesis por id, incluida la posquirúrgica genérica (`pq1`), que no está en
 // HYPOTHESES: su nombre lleva la intervención y su PROM es el de la región.
@@ -281,17 +281,23 @@ export function fuenteCorta(fuente) {
 }
 
 // «Anatomía» de un test (docs/anatomia-kenhub.md): las estructuras de
-// `test.anatomia`, enlazadas a su artículo de Kenhub en una pestaña nueva.
+// `test.anatomia`, enlazadas a su artículo de Kenhub en una pestaña nueva:
+// en español si Kenhub lo tiene y, si no, en inglés (marcado «EN»).
 // Solo el nombre de la estructura va en la URL, nunca nada del paciente; si
 // hay cuenta de Kenhub con la sesión iniciada en el navegador, Kenhub
 // enseña el contenido completo. Oculto en el hub (CSS, como «Ampliar con IA»).
 export function enlacesAnatomia(test) {
   return (test.anatomia || []).map(id => ESTRUCTURAS[id]).filter(Boolean)
-    .map(e => ({ nombre: e.nombre, url: KENHUB_BASE + e.kenhub, nota: e.nota || '' }));
+    .map(e => ({
+      nombre: e.nombre, nota: e.nota || '',
+      url: e.kenhubEs ? KENHUB_BASE_ES + e.kenhubEs : KENHUB_BASE + e.kenhub,
+      ingles: !e.kenhubEs,
+    }));
 }
 function enlaceAnatomiaHTML(e) {
-  const title = `Abrir en Kenhub${e.nota ? ` · ${e.nota}` : ''}`;
-  return `<a class="anat-enlace" href="${e.url}" target="_blank" rel="noopener noreferrer" title="${title}">${e.nombre} ↗</a>`;
+  const title = `Abrir en Kenhub${e.ingles ? ' (sin versión en español)' : ''}${e.nota ? ` · ${e.nota}` : ''}`;
+  const idioma = e.ingles ? ' <span class="anat-idioma">EN</span>' : '';
+  return `<a class="anat-enlace" href="${e.url}" target="_blank" rel="noopener noreferrer" title="${title}">${e.nombre}${idioma} ↗</a>`;
 }
 export function anatomiaTestHTML(test) {
   const enlaces = enlacesAnatomia(test);
