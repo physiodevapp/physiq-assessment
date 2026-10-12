@@ -19,7 +19,8 @@
 const NOMBRE_REGION = {
   hombro: 'Hombro', cadera: 'Cadera', cervical: 'Cervical', lumbar: 'Lumbar',
   rodilla: 'Rodilla', codo: 'Codo', tobillo_pie: 'Tobillo y pie',
-  comun: 'Todas (sistemas comunes)'
+  comun: 'Todas (sistemas comunes)',
+  tejidos: 'Todas (tiempos de tejido)'
 };
 
 // Tarjetas de consulta (repo physiodevapp/guia-de-consulta). Las tarjetas son
@@ -118,7 +119,7 @@ function lugar(hyp, ruta, testPuntua) {
   if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto', efecto: 'texto' };
   return { donde: `\`${ruta.join('.')}\``, fase: '—', efecto: 'texto' };
 }
-const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento fase 4', 'razonamiento 4b', 'texto'];
+const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento fase 4', 'razonamiento 4b', 'tiempos de tejido', 'texto'];
 
 function recorrer(obj, ruta, fn) {
   if (typeof obj === 'string') return fn(obj, ruta);
@@ -133,7 +134,7 @@ const ancla = k => k.toLowerCase().replace(/[^\p{L}\d\s-]/gu, '').replace(/\s+/g
 
 // Todas las citas de data/: literatura (clave → citas y usos), tarjetas
 // (región → citas y usos), tests sin fuente y otras fuentes sin campo propio.
-export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS = {}, testPuntua }) {
+export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, REFERENCIAS = {}, testPuntua }) {
   const alias = Object.entries(REFERENCIAS).flatMap(([k, r]) => (r.citadaComo || []).map(a => [k, a]));
   const lit = new Map();        // clave → { citas: [texto], usos: [] }
   const tarjetas = new Map();   // región → { citas: [texto], usos: [] }
@@ -223,6 +224,23 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERE
     }
   }
 
+  // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera,
+  // data/tejidos.js): `fuentes` de cada fila y de cada fase, claves del registro.
+  for (const g of TIEMPOS_TEJIDO?.grupos || []) {
+    for (const f of g.filas) {
+      for (const clave of f.fuentes || []) {
+        anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Fila «${f.nombre}» (${g.tejido})`,
+          fase: 'cabecera · tiempos de tejido', efecto: 'tiempos de tejido' });
+      }
+    }
+  }
+  for (const f of TIEMPOS_TEJIDO?.fases || []) {
+    for (const clave of f.fuentes || []) {
+      anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Fase de reparación «${f.nombre}»`,
+        fase: 'cabecera · tiempos de tejido', efecto: 'tiempos de tejido' });
+    }
+  }
+
   for (const [region, scr] of Object.entries(SYSTEMIC_SCREENING)) {
     if (scr.urgencia) otras.push({ region, que: `Recuadro «${scr.urgencia.titulo}»`, fase: '2', fuente: 'Literal de la tarjeta de consulta (URGENCIA)' });
     for (const sis of scr.sistemas || []) {
@@ -259,9 +277,9 @@ function lineaRegistro(r) {
   return [xs.join('  \n'), ''];
 }
 
-export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS, testPuntua }) {
+export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, REFERENCIAS, testPuntua }) {
   const regiones = Object.keys(CIF_TREES);
-  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS, testPuntua });
+  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, REFERENCIAS, testPuntua });
   const claveBase = Object.keys(REFERENCIAS).find(k => REFERENCIAS[k].tarjetas);
 
   const L = [];
@@ -321,6 +339,7 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     '«razonamiento fase 2» = respalda el «¿Por qué?» de una pregunta de cribado (no cambia ninguna alerta);',
     '«razonamiento fase 4» = respalda el «¿Por qué esta pregunta?» de un paso del árbol CIF (no cambia la navegación ni las hipótesis);',
     '«razonamiento 4b» = respalda el «¿Por qué?» de un test de la fase 4b (no cambia la puntuación);',
+    '«tiempos de tejido» = respalda una fila del panel ⏱ «Tiempos de recuperación» de la cabecera (solo consulta);',
     '«texto» = solo se menciona.', '',
     '| Referencia | Afecta a | Usos | Última revisión |', '|---|---|---|---|',
     ...filas.map(f => `| [${f.k}](#${ancla(f.r.tarjetas ? '1. Tarjetas de consulta' : f.k)}) | ${f.efectos.join(' · ') || '—'} | ${f.n} | ${f.r.revision ? `${f.r.revision.fecha} · ${esc(f.r.revision.resultado)}` : '**sin revisar**'} |`), '');

@@ -1,5 +1,5 @@
 // Integridad de data/: hipótesis, árboles CIF, referencias, motor de la fase 4, cribado. Se ejecuta desde tests/unit.js.
-import { assert, readFileSync, join, TESTS, leer, test, HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES,
+import { assert, readFileSync, join, TESTS, leer, test, HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO,
    calcLRScore, testPuntua, state, rebuildHypotheses, pruneTreeFrom, resolveOptionTargets,
    VALID_REGIONS } from './comun.mjs';
 
@@ -207,7 +207,7 @@ console.log('\ndocs/referencias.md y data/referencias.js');
 
 const { construirReferencias, recogerCitas, problemasRegistro } = await import('../referencias.mjs');
 const { REFERENCIAS } = await import('../../data/referencias.js');
-const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS, testPuntua }), REFERENCIAS);
+const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, REFERENCIAS, testPuntua }), REFERENCIAS);
 
 test('toda referencia citada en data/ está en data/referencias.js', () => {
   assert.deepEqual(problemas.sinRegistrar, [], `${problemas.sinRegistrar.join(', ')}: añádelas al registro (clave = «Autor Año» tal como sale en la cita)`);
@@ -232,7 +232,7 @@ test('data/referencias.js: exactamente una referencia base de las tarjetas (tarj
 
 test('docs/referencias.md coincide con las citas de data/ y con el registro', () => {
   const actual = leer('docs', 'referencias.md');
-  const esperado = construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, REFERENCIAS, testPuntua });
+  const esperado = construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, REFERENCIAS, testPuntua });
   assert.ok(actual === esperado,
     'docs/referencias.md no está al día — ejecuta `node tests/gen-referencias.mjs` y comitéalo junto con el cambio');
 });
