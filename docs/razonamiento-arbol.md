@@ -74,6 +74,17 @@ No cambia `question`, `iaPregunta`, `options`, `next` ni lo que activa cada opci
 - Un estudio del que solo se ha leído el resumen de los autores se cita diciéndolo (Brown 2004, fuente de las cifras de cojera y rotación interna que da Lluch).
 - Lo que el árbol dice sin respaldo en ninguna fuente leída no se comenta ni se cambia: la «rotación interna <24°» con los 45 años (`ca_step2`), la tendinopatía de isquiotibiales de `ca_step5` (solo la mencionan Lluch y Carro) y las cifras de los tests laterales de Lluch, que no se usan sin leer la revisión más reciente (Kinsella 2024).
 
+## Decisiones de rodilla (2026-10, validadas por el usuario)
+- Si el capítulo resume mal un estudio leído, se cita el original: Lluch da al grupo de Décary pivote + derrame inmediato + Lachman una sensibilidad de 0,58 para «la rotura del LCA»; en el artículo es de 0,82 y solo para la rotura completa (el 0,58 es el del grupo pivote + chasquido). En el árbol solo se usan los datos de la historia.
+- Ottawa: la sensibilidad de 1,0 que da Lluch es la de la derivación (Stiell 1995); se cita la del metaanálisis de las validaciones (Kazemi 2023: 0,98), por la regla 1.
+- Wells: la versión de dos niveles de NICE NG158 (guía, más reciente) en vez de la de Lluch (cirugía en 4 semanas, probabilidades del 17 % y de más del 75 %), que no se cita.
+- Artrosis: `ro_step2` sigue a NICE NG226 (45 años o más, rigidez de 30 minutos como mucho); los criterios del ACR (más de 50 años) se dan en `ro_step5` «según Lluch», porque la opción los nombra.
+- Pittsburgh: por la regla 1, solo lo que dice la guía de dolor femoropatelar de la APTA (se puede aplicar a cualquier edad); no se añade la advertencia de Seaberg 1998 (55 niños, intervalos amplios) contra su uso en niños.
+- Un matiz de una guía que choca con una opción va en el detalle sin tocar la opción, como en hombro: el dolor femoropatelar se describe a cualquier edad (Willy 2019), frente al «<40 años» de `ro_step3`; el pie apoyado (Lluch, APTA) y el pie bloqueado que no quedó en el modelo de Kastelein 2008, frente al «pie fijo» del LCM; más del 60 % de los desgarros sin síntomas mecánicos (Décary), frente al «bloqueo o chasquidos» de la opción de menisco.
+- Lo que el árbol dice sin respaldo en ninguna fuente leída no se comenta ni se cambia: «2 cm distal a la meseta tibial medial» (pata de ganso, `ro_step3`).
+- El detalle de `ro_step1` va con un párrafo por opción (siete), porque cada mecanismo apunta a una estructura distinta.
+- Sin los capítulos de StatPearls del aparato extensor, la opción «no eleva la pierna extendida» de `ro_step1b` queda sin comentar (Lluch no trata el aparato extensor).
+
 ## Reglas
 - **Fuentes**: las mismas que en las fases F y H, con el mismo orden de prioridad (más peso de evidencia y, a igual peso, la más actual). Para cada región, primero el capítulo de Lluch 2020 que ya está leído (lumbar: cap. 5.1, Fondevila Suárez). Después, las guías y revisiones que el paso ya cita o en las que se basa, leídas enteras (PDF del usuario cuando no sean de acceso abierto). Toda referencia nueva entra en `data/referencias.js` con su DOI verificado, y después se ejecuta `node tests/gen-referencias.mjs`.
 - **No inventar**: si la fuente no explica por qué el paso va en ese orden, no se dice. Se puede explicar qué separa el paso sin justificar el orden.
