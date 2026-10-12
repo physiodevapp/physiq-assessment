@@ -17,6 +17,7 @@ for (const tema of [
   'fase5-y-version.mjs',
   'revision-informe.mjs',
   'verificacion.mjs',
+  'tejidos.mjs',
 ]) await import(`./unit/${tema}`);
 
 // ── Summary ───────────────────────────────────────────────────────────────────

@@ -983,6 +983,99 @@ async function checkPreguntaIA(browser, errors) {
   return r;
 }
 
+// «⏱ Tiempos de recuperación» (cabecera, cualquier fase, también en el hub):
+// diálogo centrado y ancho en escritorio con una barra por fila de
+// data/tejidos.js; sin cirugía no hay línea «Hoy»; con mecanismo
+// Post-quirúrgico y semanas (tarjeta «Cirugía», UI real) la hay; Escape
+// cierra; en el móvil es una hoja inferior que el atrás cierra sin cambiar de
+// fase, y a 320 px ni la cabecera ni el panel desbordan; en el hub, el botón
+// está. Nada entra en el payload.
+async function checkTiemposTejido(browser, errors) {
+  const r = {};
+  const { TIEMPOS_TEJIDO } = await import(new URL('../data/tejidos.js', import.meta.url));
+  const nFilas = TIEMPOS_TEJIDO.grupos.reduce((n, g) => n + g.filas.length, 0);
+  const nPend = TIEMPOS_TEJIDO.grupos.reduce((n, g) => n + g.filas.filter(f => f.pendiente).length, 0)
+    + (TIEMPOS_TEJIDO.fases.some(f => !f.fuentes.length) ? 1 : 0);
+  const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (tejidos): ${err.message}`));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const abierto = () => page.evaluate(() => document.getElementById('tejidosOverlay').classList.contains('open'));
+  await page.click('#tejidosBtn');
+  r.dialogo = await page.evaluate(([n, nPend]) => {
+    const p = document.getElementById('tejidosPanel').getBoundingClientRect();
+    return p.width > 420 && p.width <= 760 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
+      && document.querySelectorAll('#tejidosCuerpo .tej-barra').length === n
+      && !document.querySelector('#tejidosCuerpo .tej-hoy')
+      && document.querySelectorAll('#tejidosCuerpo .tej-pendiente').length === nPend;
+  }, [nFilas, nPend]);
+  await page.keyboard.press('Escape');
+  r.escape = !(await abierto());
+  // Post-quirúrgico con 6 semanas aproximadas, por la UI real
+  await page.click('button.option-btn:has-text("Post-quirúrgico")');
+  await page.fill('#cirSemanas', '6');
+  await page.click('#tejidosBtn');
+  r.hoy = await page.evaluate(n => document.querySelectorAll('#tejidosCuerpo .tej-hoy').length === n + 1
+    && document.querySelector('.tej-hoy-texto')?.textContent.includes('6 semanas tras la cirugía'), nFilas);
+  // Con scroll hasta abajo, el eje de tiempo sigue pegado arriba del cuerpo
+  r.ejeFijo = await page.evaluate(() => {
+    const c = document.getElementById('tejidosCuerpo');
+    c.scrollTop = c.scrollHeight;
+    const eje = document.querySelector('#tejidosCuerpo .tej-eje').getBoundingClientRect();
+    return c.scrollTop > 0 && Math.abs(eje.top - c.getBoundingClientRect().top) < 2;
+  });
+  await page.mouse.click(10, 10);   // velo
+  r.velo = !(await abierto());
+  r.sinPayload = await page.evaluate(async () => !/tejid|Remodelaci/i.test(JSON.stringify((await import('./app.js')).buildPhysiQPayload())));
+  await context.close();
+
+  // Móvil táctil: hoja inferior a todo el ancho; atrás la cierra en la misma fase
+  const ctxMovil = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const movil = await ctxMovil.newPage();
+  movil.on('pageerror', err => errors.push(`pageerror (tejidos móvil): ${err.message}`));
+  await movil.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await irAFase2(movil, 'rodilla');
+  await movil.tap('#tejidosBtn');
+  await movil.waitForTimeout(400);
+  const hoja = await movil.evaluate(() => {
+    const p = document.getElementById('tejidosPanel').getBoundingClientRect();
+    const t = document.getElementById('tejidosTitulo');
+    return Math.round(p.width) === innerWidth && Math.round(p.bottom) === innerHeight && t.scrollHeight <= t.clientHeight + 1;
+  });
+  await movil.goBack();
+  await movil.waitForTimeout(300);
+  r.movil = hoja && await movil.evaluate(() => !document.getElementById('tejidosOverlay').classList.contains('open') && state.currentPhase === 2);
+  // 320 px: cabecera y panel sin desbordar, etiquetas del eje enteras
+  await movil.setViewportSize({ width: 320, height: 640 });
+  await movil.evaluate(() => document.body.classList.add('modo-breve'));
+  r.cabecera320 = await movil.evaluate(() => {
+    const items = [...document.querySelectorAll('.header-right > *')].filter(e => e.offsetParent).map(e => e.getBoundingClientRect().right);
+    return Math.max(...items) <= innerWidth + 1 && document.querySelector('.logo').getBoundingClientRect().right <= document.querySelector('.header-right').getBoundingClientRect().left + 1;
+  });
+  await movil.evaluate(() => document.body.classList.remove('modo-breve'));
+  await movil.tap('#tejidosBtn');
+  await movil.waitForTimeout(400);
+  r.panel320 = await movil.evaluate(() => {
+    const panel = document.getElementById('tejidosPanel').getBoundingClientRect();
+    return document.documentElement.scrollWidth <= innerWidth
+      && [...document.querySelectorAll('#tejidosCuerpo .tej-pista, #tejidosCuerpo .tej-nombre')].every(e => { const b = e.getBoundingClientRect(); return b.left >= panel.left - 1 && b.right <= panel.right + 1; })
+      && [...document.querySelectorAll('.tej-col')].every(c => c.scrollWidth <= c.clientWidth);
+  });
+  await ctxMovil.close();
+
+  // Hub: el botón sí está (consulta pura, sin red)
+  const ctxHub = await browser.newContext();
+  const hub = await ctxHub.newPage();
+  await hub.setContent(`<iframe id="sat" src="${BASE_URL}" style="width:1000px;height:800px"></iframe>`);
+  await hub.waitForTimeout(1500);
+  const frame = hub.frames().find(f => f.url().startsWith(BASE_URL));
+  r.hub = await frame.evaluate(() => getComputedStyle(document.getElementById('tejidosBtn')).display !== 'none');
+  await ctxHub.close();
+
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 // Informe narrativo con IA (informe-ia.js, solo standalone). Sin coste: el
 // worker (/validate y POST /) y Turnstile se simulan con page.route. Cubre:
 // sin licencia → tarjeta desactivada; «Introducir clave»; una respuesta en
@@ -2080,6 +2173,9 @@ async function main() {
   const preguntaIA = await checkPreguntaIA(browser, errors);
   console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, Claude se recuerda, Escape cierra; hoja inferior en móvil que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
 
+  const tejidos = await checkTiemposTejido(browser, errors);
+  console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+
   console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
   const testsAmpliar = await checkTestsAmpliar(page);
   console.log(`  ${testsAmpliar.ok ? '✓' : '✗'} «cuánto pesa» bajo los badges, criterio corto, «Ampliar» abre el panel del test (lateral sin velo; sheet con velo a 390 px que atrás cierra sin salir de la 4b), ir a la fase 5 lo cierra`);
@@ -2137,7 +2233,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && avisoVersion.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && tejidos.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && avisoVersion.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
