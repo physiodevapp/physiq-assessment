@@ -817,6 +817,32 @@ async function checkAmpliarIA(browser) {
   await page.waitForTimeout(1000);
   r.barraNoQueda = conMenu && await page.evaluate(() => document.getElementById('iaBarra').hidden && document.getElementById('iaMenu').hidden);
 
+  // Scroll con la barra y el menú abiertos: el menú se cierra; con la
+  // selección bajo la cabecera fija, la barra se esconde (antes se quedaba
+  // clavada arriba, encima de la barra de fases) y vuelve al volver a verla.
+  await seleccionar(`${sq} .razon-cuerpo p`);
+  await page.waitForTimeout(400);
+  await page.click('#iaBarra .ia-elegir');
+  const yIni = await page.evaluate(() => scrollY);
+  await page.evaluate(s => {
+    document.body.style.paddingBottom = '2000px';  // sitio para el scroll al final de la fase
+    const r = document.querySelector(s).getBoundingClientRect();
+    scrollBy(0, r.bottom - 40);                // el texto queda bajo la cabecera
+  }, `${sq} .razon-cuerpo p`);
+  await page.waitForTimeout(300);
+  const tapada = await page.evaluate(() => ({
+    menu: document.getElementById('iaMenu').hidden, barra: document.getElementById('iaBarra').hidden,
+    seleccion: !getSelection().isCollapsed,
+  }));
+  await page.evaluate(y => { scrollTo(0, y); document.body.style.paddingBottom = ''; }, yIni);
+  await page.waitForTimeout(300);
+  const vuelve = await page.evaluate(() => {
+    const b = document.getElementById('iaBarra');
+    const cab = Math.max(...[...document.querySelectorAll('.app-header, .phase-nav')].map(e => e.getBoundingClientRect().bottom));
+    return !b.hidden && b.getBoundingClientRect().top >= cab;
+  });
+  r.scroll = (tapada.menu && tapada.barra && tapada.seleccion && vuelve) || { tapada, vuelve };
+
   // Selección fuera del razonamiento → sin barra
   await page.evaluate(() => getSelection().removeAllRanges());
   await page.waitForTimeout(600);
@@ -2380,7 +2406,7 @@ const SECCIONES = [
 
   { id: 'ia', titulo: '«✨ Ampliar con IA» y «✨ Preguntar a la IA»:', run: async ({ browser, errors }) => {
     const ampliarIA = await checkAmpliarIA(browser);
-    console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
+    console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; al hacer scroll el menú se cierra y la barra no se pinta sobre la cabecera (se esconde y vuelve); fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
     const preguntaIA = await checkPreguntaIA(browser, errors);
     console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, Claude se recuerda, Escape cierra; hoja inferior en móvil que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
     return ampliarIA.ok && preguntaIA.ok;
