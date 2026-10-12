@@ -20,7 +20,7 @@ El panel lee `state.mecanismo` y `state.cirugia` para pintar, nada más. No entr
 | `lib/tejidos.js` | Funciones puras: `posicionDia()` (día → posición en el eje no lineal), `marcaHoy()`, `tiemposTejidoHTML()` |
 | `app.js` | `abrirTiemposTejido()` / `cerrarTiemposTejido()` |
 | `index.html` | Botón de la cabecera y `#tejidosOverlay` |
-| `styles.css` | Bloque «Tiempos de recuperación de tejidos» y tokens `--tej-*` (tema claro y oscuro). El eje de tiempo (`.tej-eje`) es `sticky`: se queda fijo arriba al hacer scroll dentro del panel (petición del usuario, 2026-10) |
+| `styles.css` | Bloque «Tiempos de recuperación de tejidos» y tokens `--tej-*` (tema claro y oscuro). El eje de tiempo (`.tej-eje`) es `sticky`: se queda fijo arriba al hacer scroll dentro del panel (petición del usuario, 2026-10). Bajo sus etiquetas lleva una tira fina con los colores de las fases de reparación (`.tej-eje-fase`; naranja, verde y azul, los mismos de la franja, cuyo borde también toma el color de cada fase), para que al hacer scroll se siga viendo en qué fase cae cada columna (petición del usuario, 2026-10). El icono de la cabecera es un cronograma, no un reloj, para no confundirlo con el chip «⏱ Breve» |
 
 El eje no es lineal: tiene las 8 columnas del wiki (de 1–3 días a 2 años), todas del mismo ancho. Cada columna tiene `hasta` (su último día), y con eso se colocan la franja de fases y la línea «Hoy» dentro de la columna, de forma lineal entre su primer y su último día.
 

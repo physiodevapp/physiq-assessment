@@ -983,6 +983,33 @@ async function checkPreguntaIA(browser, errors) {
   return r;
 }
 
+// Barra de fase de móvil (user decision, 2026-10): es un solo <button> que abre
+// la hoja de fases; el «≡» va sin caja; en modo breve el chip «Breve» va al
+// principio de la barra en móvil y sigue en la cabecera en escritorio.
+async function checkBarraFase(page) {
+  const r = {};
+  r.cerrada = await page.evaluate(() => document.getElementById('mobilePhaseBar').getAttribute('aria-expanded') === 'false');
+  r.sinCaja = await page.evaluate(() => {
+    const cs = getComputedStyle(document.querySelector('.mobile-phase-menu-btn'));
+    return cs.borderTopWidth === '0px' && document.getElementById('mobilePhaseBar').tagName === 'BUTTON';
+  });
+  await page.evaluate(() => document.body.classList.add('modo-breve'));
+  const visible = sel => page.evaluate(s => { const e = document.querySelector(s); return !!e && getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0; }, sel);
+  r.chipEnBarra = await visible('#mobilePhaseBar .modo-badge') && !(await visible('.app-header .modo-badge'));
+  await page.setViewportSize({ width: 320, height: 640 });
+  r.cabe320 = await page.evaluate(() => {
+    const bar = document.getElementById('mobilePhaseBar').getBoundingClientRect();
+    return [...document.querySelectorAll('#mobilePhaseBar > :not(.sr-only)')].every(e => { const b = e.getBoundingClientRect(); return b.left >= bar.left - 1 && b.right <= bar.right + 1; })
+      && document.documentElement.scrollWidth <= innerWidth;
+  });
+  await page.setViewportSize({ width: 1280, height: 860 });
+  r.chipEnCabecera = await visible('.app-header .modo-badge') && !(await visible('#mobilePhaseBar'));
+  await page.evaluate(() => document.body.classList.remove('modo-breve'));
+  await page.setViewportSize({ width: 390, height: 844 });
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 // «⏱ Tiempos de recuperación» (cabecera, cualquier fase, también en el hub):
 // diálogo centrado y ancho en escritorio con una barra por fila de
 // data/tejidos.js; sin cirugía no hay línea «Hoy»; con mecanismo
@@ -1022,7 +1049,11 @@ async function checkTiemposTejido(browser, errors) {
     const c = document.getElementById('tejidosCuerpo');
     c.scrollTop = c.scrollHeight;
     const eje = document.querySelector('#tejidosCuerpo .tej-eje').getBoundingClientRect();
-    return c.scrollTop > 0 && Math.abs(eje.top - c.getBoundingClientRect().top) < 2;
+    // La tira de colores de las fases va en el eje fijo, así que sigue a la vista
+    const tira = [...document.querySelectorAll('#tejidosCuerpo .tej-eje .tej-eje-fase')];
+    const colores = new Set(tira.map(t => getComputedStyle(t).backgroundColor));
+    return c.scrollTop > 0 && Math.abs(eje.top - c.getBoundingClientRect().top) < 2
+      && tira.length === 3 && colores.size === 3 && tira.every(t => { const b = t.getBoundingClientRect(); return b.top >= eje.top && b.bottom <= eje.bottom + 1; });
   });
   await page.mouse.click(10, 10);   // velo
   r.velo = !(await abierto());
@@ -2155,11 +2186,16 @@ async function main() {
 
   // Exercise the mobile phase-sheet button (the last real bug found,
   // PHASE_NAV_IDS) once, on whichever region the loop above ended on.
+  // Toda la barra de fase es el botón (se pulsa por la izquierda, sobre el título).
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.click('.mobile-phase-menu-btn').catch(() => {});
+  await page.click('#mobilePhaseBar', { position: { x: 60, y: 20 } }).catch(() => {});
   await page.waitForTimeout(150);
-  const sheetOpen = await page.evaluate(() => document.getElementById('phaseSheet')?.classList.contains('open'));
-  console.log(`\nPhase sheet opens from "☰ Fases": ${sheetOpen}`);
+  const sheetOpen = await page.evaluate(() => document.getElementById('phaseSheet')?.classList.contains('open')
+    && document.getElementById('mobilePhaseBar').getAttribute('aria-expanded') === 'true');
+  console.log(`\nPhase sheet opens from the phase bar: ${sheetOpen}`);
+  await page.evaluate(() => closePhaseSheet());
+  const barraFase = await checkBarraFase(page);
+  console.log(`  ${barraFase.ok ? '✓' : '✗'} barra de fase en móvil: botón entero sin caja en «≡», aria-expanded vuelve a false al cerrar; chip «Breve» en la barra (no en la cabecera) en móvil y en la cabecera en escritorio; cabe a 320 px${barraFase.ok ? '' : ' ' + JSON.stringify(barraFase)}`);
 
   console.log('\nRazonamiento del cribado (lumbar):');
   const razonEsc = await checkRazonamientoEscritorio(page);
@@ -2174,7 +2210,7 @@ async function main() {
   console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, Claude se recuerda, Escape cierra; hoja inferior en móvil que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
 
   const tejidos = await checkTiemposTejido(browser, errors);
-  console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+  console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
 
   console.log('\n«¿Por qué?» de los tests (fase 4b, hombro):');
   const testsAmpliar = await checkTestsAmpliar(page);
@@ -2233,7 +2269,7 @@ async function main() {
   const regionsOk = results.every(r => r.treeResult.treeCompleteShown && r.finalPhase === 5 && r.sinPosq);
   const breveOk = breveResults.every(r => r.ok);
   const posqOk = posqResults.every(r => r.ok) && hombroTratada.ok && caderaProtesis.ok && cambioMec.ok;
-  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && tejidos.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && avisoVersion.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
+  const pass = modulesOk && regionsOk && breveOk && posqOk && sheetOpen === true && barraFase.ok && razonEsc.ok && razonMov.ok && ampliarIA.ok && preguntaIA.ok && tejidos.ok && testsAmpliar.ok && arbolRazon.ok && deriv.ok && informeIA.ok && expImp.ok && avisoVersion.ok && tactil.ok && dialogos.ok && plegado.ok && lado.ok && grab.ok && silencio.ok && realErrors.length === 0;
   console.log(pass ? '\n✓ SMOKE TEST PASSED' : '\n✗ SMOKE TEST FAILED');
   if (!regionsOk) {
     console.log('\nRegions that did not complete / reach phase 5:');
