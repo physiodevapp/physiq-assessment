@@ -19,6 +19,9 @@
 // en una fase) y la app lo marca «pendiente de fuente» hasta que se revise
 // (docs/tiempos-tejido.md, «Pendiente»).
 //
+// physiq-wiki tiene una copia (TISSUE_TIMES en su data.js, misma tabla): si
+// cambias una fila aquí, cámbiala también allí.
+//
 // Esquema:
 //   columnas[]  { etiqueta, corta, hasta }  — eje NO lineal, como en el wiki;
 //               `hasta` = último día que cubre la columna (bordes contiguos:
