@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **383** referencias de literatura, con **1660** usos.
+- **383** referencias de literatura, con **1687** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **365** de 383 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -80,7 +80,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Laslett 2005](#laslett-2005) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 21 | 2026-10 · Sin cambios en las cifras: PDF releído entero (2026-10); tabla 2 (compresión LR+ 2,20, LR− 0,46; thigh thrust LR+ 2,80, LR− 0,18; LR publicadas, método score) y tablas 4–6 coinciden con las citas. Es un solo estudio de los creadores (48 pacientes no consecutivos, crónicos, 16 con bloqueo positivo). Agrupados en Han 2023 el thigh thrust (5 estudios) y la compresión (2) no llegan a LR+ 2 ni a LR− 0,5: los dos pasan a hallazgo en ca10 (decisión del usuario, 2026-10). Saueressig 2021 no la agrupa por ser la misma población que Laslett 2003. |
 | [Park 2005](#park-2005) | puntuación 4b · texto | 3 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla V: 50 de 153 roturas completas frente a 4 de 195 controles con los tres test positivos (LR+ 15,57) y 14 de 153 frente a 114 de 195 con los tres negativos (LR 0,16), en 348 operados con los tres test hechos. La combinación sale de una regresión logística en la misma muestra, sin validación; ninguno de los artículos que lo citan (Europe PMC) la valida. Hermans 2013 lo clasifica como nivel IV y Hanchard 2013 (Cochrane) lo deja pendiente de clasificar. |
 | [Hancock 2007](#hancock-2007) | puntuación 4b | 1 | 2026-10 · Sin cambios: ya superada por Han 2023, que es la que da las cifras; solo se menciona como dato anterior. |
-| [O'Driscoll 2007](#odriscoll-2007) | puntuación 4b · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Tabla 1: hook test anormal en 33 de 33 roturas completas e intacto en 12 de 12 parciales, todas operadas; los 45 brazos sanos fueron un control aparte. Es una revisión retrospectiva del registro quirúrgico del creador del test (un solo cirujano). En co7 se corrige que la E sale de las roturas parciales, no del brazo sano, y pasa a contraste: el hook test puntúa ahora con Zwerus 2022. |
+| [O'Driscoll 2007](#odriscoll-2007) | puntuación 4b · razonamiento 4b · texto | 3 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Tabla 1: hook test anormal en 33 de 33 roturas completas e intacto en 12 de 12 parciales, todas operadas; los 45 brazos sanos fueron un control aparte. Es una revisión retrospectiva del registro quirúrgico del creador del test (un solo cirujano). En co7 se corrige que la E sale de las roturas parciales, no del brazo sano, y pasa a contraste: el hook test puntúa ahora con Zwerus 2022. |
 | [Kastelein 2008](#kastelein-2008) | puntuación 4b | 1 | 2026-10 · Sin cambios: PDF del usuario leído; S 0,56, E 0,91, LR+ 6,4 (2,7–15,2) y LR− 0,5 (0,3–0,8) de la combinación coinciden con la tabla 5 (un solo fisioterapeuta exploró a todos los pacientes). PubMed (exploración clínica del LCM de rodilla, revisiones sistemáticas desde 2008) no encuentra ningún estudio ni revisión posterior de precisión diagnóstica de la exploración. |
 | [Laslett 2008](#laslett-2008) | puntuación 4b · test 4b sin puntuar · texto | 3 | 2026-10 · Revisión narrativa, no un agrupado: PDF releído entero (2026-10). El S 91 % / E 78 % del cluster (E 87 % sin centralización; LR+ 4,16, LR− 0,12) lo toma de un solo estudio, su ref. 52 (Laslett 2003, Aust J Physiother). El cluster de ca10 pasa a las LR de Saueressig 2021 (decisión del usuario, 2026-10); Laslett 2008 queda citada para el contexto y la tabla 1. |
 | [Lequesne 2008](#lequesne-2008) | puntuación 4b · test 4b sin puntuar · texto | 5 | 2026-10 · Cifras comprobadas en el resumen y en la tabla 2 de Kinsella 2024. La E se midió frente a controles sin dolor de cadera (casos y controles), lo que la infla: la derotación externa resistida pasa a hallazgo. |
@@ -96,7 +96,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Nunes 2013](#nunes-2013) | puntuación 4b | 1 | 2026-10 · Cita corregida (PDF del usuario): la revisión solo hizo metaanálisis del test de aprensión rotuliana; la cifra de la sentadilla (S 91 %, E 50 %, LR+ 1,8, LR− 0,2, tabla 3) es de un solo estudio, Cook 2010, que pasa a citarse. Mismas cifras, sin cambio de puntuación. PubMed (revisiones de tests clínicos de dolor femoropatelar desde 2013) no encuentra ninguna posterior. |
 | [Reiman 2014](#reiman-2014) | puntuación 4b · test 4b sin puntuar · texto | 6 | 2026-10 · Sin cambios: leído en PMC (2026-10). Las cifras de rotura salen de un solo estudio (Maffulli 1998), sin agrupar; las LR las calcula Reiman. Las LR de los tests de carga de Hutchison 2013 están calculadas de S y E redondeadas y sin IC (se dice en tp8). PubMed (2026-10): ninguna revisión posterior. |
 | [Smith 2015](#smith-2015) | puntuación 4b · test 4b sin puntuar | 3 | 2026-10 · Cifras actualizadas en ro2 (PDF del usuario, tabla 3): el metaanálisis es bivariante y publica LR, que antes no se usaban (se calculaban desde S y E): McMurray LR+ 3,2, LR− 0,52; interlínea LR+ 4,0, LR− 0,23. Con ellas el McMurray negativo deja de puntuar. Thessaly a 20° (S 75 %, E 87 %, I² 94 %) añadido como hallazgo. PubMed (metaanálisis de McMurray, interlínea y Thessaly desde 2015) no encuentra ninguno posterior; Rana 2026 solo agrupa la exploración compuesta. |
-| [Roedl 2016](#roedl-2016) | puntuación 4b · texto | 4 | 2026-10 · Añadida (antes se citaba como «Roedl», sin año, a través de Campbell 2020): PDF del usuario leído entero, con su fe de erratas (Radiology 280(1):328, que solo corrige que el estrés en valgo se aplicó a mano y no con el aparato Telos). Retrospectivo, 144 jugadores de béisbol consecutivos con dolor medial del codo y cirugía o artroscopia como referencia (de 257 con las dos pruebas). Tabla 2: ecografía de estrés >1,0 mm, 51 de 53 roturas y 74 de 91 sin rotura (umbral fijado de antemano por un estudio en cadáver); artro-RM, 43 de 53 y 83 de 91. La unidad son pacientes. Sin LR publicadas. Cifras de co4 sin cambios. |
+| [Roedl 2016](#roedl-2016) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Añadida (antes se citaba como «Roedl», sin año, a través de Campbell 2020): PDF del usuario leído entero, con su fe de erratas (Radiology 280(1):328, que solo corrige que el estrés en valgo se aplicó a mano y no con el aparato Telos). Retrospectivo, 144 jugadores de béisbol consecutivos con dolor medial del codo y cirugía o artroscopia como referencia (de 257 con las dos pruebas). Tabla 2: ecografía de estrés >1,0 mm, 51 de 53 roturas y 74 de 91 sin rotura (umbral fijado de antemano por un estudio en cadáver); artro-RM, 43 de 53 y 83 de 91. La unidad son pacientes. Sin LR publicadas. Cifras de co4 sin cambios. |
 | [Beckenkamp 2017](#beckenkamp-2017) | puntuación 4b · texto | 4 | 2026-10 · Añadida (PDF del usuario, leído entero): 66 estudios, modelo bivariante. Sustituye a Bachmann 2003 en la LR− de tp5 y tp37 (subgrupo con radiografía a todos los pacientes) y a Gomes 2022 en la LR+ del positivo. PubMed (2026-10): Sharifi Razavi 2026 (Arch Acad Emerg Med; 43 estudios en adultos, LR− 0,13) es posterior, pero copia errores de extracción de Gomes 2022 y mezcla tobillo y pie: no se usa. |
 | [Grimaldi 2017](#grimaldi-2017) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 11 | 2026-10 · Cifras comprobadas en la tabla 2 de Kinsella 2024. La palpación y la abducción resistida pasan a las cifras agrupadas de Kinsella 2024; Grimaldi queda como dato del estudio de mayor calidad (y como fuente de la derotación, que pasa a hallazgo). |
 | [Décary 2018](#décary-2018) | puntuación 4b · razonamiento 4b · texto | 22 | 2026-10 · Sin cambios: PDF de los tres artículos leídos (PLoS One en PMC; PM&R y Arch Phys Med Rehabil, del usuario): las cifras de ro2, ro3 y ro4 coinciden con sus tablas (PM&R, tabla del grupo traumático y tabla 6; Arch Phys Med Rehabil, tablas 3 y 4; PLoS One, tablas 6 y 7), incluidas las de la validación interna por bootstrap. PubMed (publicaciones de Décary sobre rodilla desde 2018 y validaciones de grupos de historia y exploración de rodilla) no encuentra ninguna validación externa de estos grupos. |
@@ -112,7 +112,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Demont 2022](#demont-2022) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 · texto | 4 | 2026-10 · Sin cambios en las cifras: manuscrito aceptado (PDF del usuario) leído entero (2026-10). FRT: 4 estudios de cohorte prospectivos (Ogince 2007, Hall 2008, Hall 2010a y 2010b; todos del grupo que propuso el test), 182 participantes, modelos bivariante y HSROC (metandi): S 83 % (70–92), E 83 % (71–91), LR+ 5,0 (2,6–9,5), LR− 0,2 (0,1–0,4), certeza moderada (rebajada por sesgo de selección); positivo con menos de 45°; 24,5° frente a 39,1° (tabla 6). Coincide con ce4, que sigue puntuando solo en positivo. Riesgo de sesgo alto (PROBAST, análisis) de Jull 2007 y Getsoian 2020, como cita la app. PubMed (2026-10): ninguna revisión posterior de precisión diagnóstica del FRT; Anarte-Lazo 2021 (BMC Musculoskelet Disord, PMC) solo compara medias (17,7° menos en cervicogénica que en migraña). |
 | [Paquin 2022](#paquin-2022) | puntuación 4b | 1 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). Artículo de opinión: punto de corte inconsistente, factores de confusión (dolor, edad: 27,9 % de la varianza; estimación a ojo; FRT positivo en migraña) y patrón de referencia (exploración manual, κ 0,28), por lo que las LR del FRT probablemente están sobrestimadas. Coincide con lo citado en ce4. |
 | [Sokal 2022](#sokal-2022) | puntuación 4b | 4 | 2026-10 · Sin cambios: texto completo leído en PMC; las cifras de la tabla 4 (modelo bivariante) coinciden en los cuatro tests de ro4. Hay dos metaanálisis posteriores solo del Lever: Hesmerg 2024 (23 estudios, sin el del creador; S 79 %, E 92 %, LR+ 9,9, LR− 0,22; agrupación univariante de S y E) concuerda, y Hu 2024 (12 estudios, con el del creador) da E 78 %. Se citan en el criterio; por el método (bivariante, LCA sin otras lesiones ligamentosas) sigue mandando Sokal. |
-| [Zwerus 2022](#zwerus-2022) | puntuación 4b · texto | 4 | 2026-10 · Añadida y pasa a dar las cifras de co7 (decisión del usuario): texto completo leído en PMC (2026-10). Cohorte prospectiva de 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal (2017–2020, dos hospitales), 42 roturas completas; referencia, cirugía en el 79 % y RM o ecografía en el resto; los cirujanos no estaban ciegos en la cirugía. La unidad son pacientes. Tabla 2 (total): hook test S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30; PFP S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34, publicadas. En la tabla, la fila de la palpación de las roturas agudas y crónicas repite la del total (errata sin efecto en la app). No es del grupo que creó los tests. |
+| [Zwerus 2022](#zwerus-2022) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Añadida y pasa a dar las cifras de co7 (decisión del usuario): texto completo leído en PMC (2026-10). Cohorte prospectiva de 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal (2017–2020, dos hospitales), 42 roturas completas; referencia, cirugía en el 79 % y RM o ecografía en el resto; los cirujanos no estaban ciegos en la cirugía. La unidad son pacientes. Tabla 2 (total): hook test S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30; PFP S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34, publicadas. En la tabla, la fila de la palpación de las roturas agudas y crónicas repite la del total (errata sin efecto en la app). No es del grupo que creó los tests. |
 | [Han 2023](#han-2023) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 12 | 2026-10 · Sin cambios: PubMed (precisión diagnóstica de la exploración clínica para origen discal, facetario o sacroilíaco, revisiones sistemáticas desde 2023) no encuentra ninguna revisión posterior de tests clínicos; Manchikanti 2026 (Pain Physician) trata de bloqueos facetarios, no de exploración. Tabla 1 releída en PMC en la sesión de cadera (2026-10): agrupa con Meta-DiSc 1.4, efectos aleatorios, sin decir si es univariante o bivariante; ≥3 tests positivos, 6 estudios, 276 pacientes, LR+ 2,44, LR− 0,31; thigh thrust 5 estudios, LR+ 1,13, LR− 0,91; compresión 2 estudios, LR+ 1,79, LR− 0,74. En ca10 da las cifras agrupadas de los tests sueltos; el cluster de ca10 y de lu8 usa Saueressig 2021 (bivariante), y Han 2023 queda como segunda cifra. |
 | [Kazemi 2023](#kazemi-2023) | puntuación 4b · razonamiento fase 2 | 2 | 2026-10 · Sin cambios: texto completo leído en PMC; S 98 %, E 43 %, LR+ 1,56 y LR− 0,12 (0,05–0,26) coinciden. Agrupa con un modelo univariante (Meta-DiSc, DerSimonian-Laird), y Sims 2020 es bivariante; se mantiene por decisión del usuario (más estudios y LR− más conservadora) y se anota el modelo en la cita. PubMed (revisiones de la regla de Ottawa de rodilla desde 2020) no encuentra ninguna posterior. |
 | [Kinsella 2024](#kinsella-2024) | puntuación 4b · test 4b sin puntuar | 5 | 2026-10 · Texto completo leído (tablas 2 y 3). En el texto el LR+ de la abducción resistida aparece como 13,39, que en la tabla 3 es la DOR; se usa el LR+ de la tabla (6,09). |
@@ -201,7 +201,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kim 2004](#kim-2004) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: solo describe la técnica del test MPP; la validación es Kim 2007. |
 | [Reijman 2004](#reijman-2004) | test 4b sin puntuar · texto | 2 | 2026-10 · Solo resumen leído: en PMC (PMC1754907) el cuerpo es un PDF escaneado que no se pudo descargar. |
 | [Walton 2004](#walton-2004) | test 4b sin puntuar · texto | 5 | 2026-10 · Sin cambios: el artículo no se ha leído entero; sus cifras (Paxinos S 79 %, E 50 %; palpación S 96 %, E 10 %; O’Brien S 16 %, E 90 %) coinciden con las que recogen Krill 2018 (tabla 3) y Cadogan 2013 (tabla 1), leídos enteros. Ningún test de h7 que lo cite puntúa. |
-| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4. |
+| [O'Driscoll 2005](#odriscoll-2005) | test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios en las cifras: PDF del usuario leído entero (2026-10). Valgo móvil S 100 % (17 de 17) y E 75 % (3 de 4 con el ligamento íntegro en la cirugía); valgo estático con dolor 11 de 17 y 2 de 4, con laxitud 3 de 16 y 4 de 4. Retrospectivo con los 16 últimos prospectivos; no publica LR (las calcula Zwerus 2018). El valgo estático se exploró a 30°, 60°, 70° o 90°, sin un ángulo único: se corrige en co4. |
 | [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PubMed (bursitis de la pata de ganso, diagnóstico y prevalencia desde 2015) no encuentra ningún estudio de precisión diagnóstica ni revisión sistemática. |
 | [Laslett 2006](#laslett-2006) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: Han 2023 (revisión sistemática, revisada 2026-10) la recoge: los criterios de Revel no se replican y no se pueden agrupar. |
 | [Peat 2006](#peat-2006) | test 4b sin puntuar | 1 | 2026-10 · Texto completo leído (PMC1798313, tabla 3). Más recientes en la misma dirección, solo resumen: Miguel 2019 (Clin Rheumatol) y Wang 2024 (Arthritis Care Res). |
@@ -209,7 +209,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Jull 2007](#jull-2007) | test 4b sin puntuar · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). Tabla 3: en la validación cruzada, 17 de 18 cervicogénicas y 112 de 112 sin cervicogénica bien clasificadas (S 94,4 %, E 100 %), con las etiquetas cambiadas en la tabla; función discriminante (tabla 2: actividad del ECM en el CCFT, extensión, disfunción manual C0–C4); tipo de cefalea por cuestionario; los autores piden validarlo. Validación posterior frente a bloqueos: Getsoian 2020, sin S ni E. |
 | [Kim 2007](#kim-2007) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios: PDF del usuario leído; 172 rodillas, tabla 2×2 51/13/6/102 y los 13 falsos positivos (7 franjas sinoviales de la grasa de Hoffa, 5 sinovitis, 1 cartílago) coinciden. PubMed (diagnóstico de la plica medial desde 2008) no encuentra ningún estudio de precisión posterior del test; lo más reciente es de RM (2026) y de tratamiento (revisión de 2025). |
 | [Warden 2007](#warden-2007) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PDF del usuario leído; 30 con tendinopatía clínica frente a 33 asintomáticos, ecografía S 87 % y RM S 57 %, E 82 % ambas, coinciden. PubMed no encuentra revisiones posteriores de precisión de la imagen en la tendinopatía rotuliana. |
-| [Appelboam 2008](#appelboam-2008) | test 4b sin puntuar · razonamiento fase 2 · texto | 6 | 2026-10 · Sin cambios: texto completo releído en PMC (PMC2600962, 2026-10). 1740 pacientes, S 96,8 %, E 48,5 %, LR− 0,03 en adultos y 0,11 en niños, riesgo de fractura con extensión completa 1,6 y 4,2 %; coinciden todas las cifras del cribado y del árbol de codo. |
+| [Appelboam 2008](#appelboam-2008) | test 4b sin puntuar · razonamiento fase 2 · texto | 5 | 2026-10 · Sin cambios: texto completo releído en PMC (PMC2600962, 2026-10). 1740 pacientes, S 96,8 %, E 48,5 %, LR− 0,03 en adultos y 0,11 en niños, riesgo de fractura con extensión completa 1,6 y 4,2 %; coinciden todas las cifras del cribado y del árbol de codo. |
 | [Hancock 2008](#hancock-2008) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: Haskins 2015 (J Clin Epidemiol, revisión sistemática, PDF del usuario) encuentra 9 validaciones de la regla: ser positivo predice menos discapacidad con manipulación con o sin thrust, pero como modificador del efecto solo la apoya Childs 2004 (Hancock 2008 no), y no hay estudios de impacto. Se añade al criterio de lu1. PubMed (reglas de predicción para manipulación lumbar desde 2012) no encuentra nada posterior. |
 | [Majlesi 2008](#majlesi-2008) | test 4b sin puntuar | 1 | 2026-10 · Cifras sin cambios, con aviso: van der Windt 2010 (Cochrane) recoge solo dos estudios del Slump y señala que la especificidad de Majlesi puede estar inflada por su diseño de casos y controles (controles con RM normal); el otro estudio dio S 0,44, E 0,58. PubMed (2026-10): ninguna revisión posterior del Slump. Por decisión del usuario (2026-10), el Slump pasa a hallazgo: sus cifras quedan en el criterio y no puntúa. |
 | [Park 2008](#park-2008) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: PDF del usuario leído entero (2026-10). S 95,2 % (20 de 21 codos) y E 92 % (23 de 25 codos sin síntomas: 15 contralaterales y 10 de voluntarios); referencia, el diagnóstico clínico de un fisiatra; radiólogo ciego. Se precisan los controles en co2. |
@@ -938,20 +938,18 @@ Nota: Texto completo leído en Europe PMC (PMC2600962) en la sesión de codo (20
 
 Citada como:
 
-1. Extensión completa, flexión, pronación y supinación comparadas con el lado sano. Sin cifras para la rigidez: la «S 99 %» que tenía es del test de extensión del codo para descartar fractura tras traumatismo (Appelboam 2008: no extender del todo el codo → radiografía; S 96,8 %), otra condición.
-2. Appelboam 2008 (BMJ 337:a2428), solo como aclaración: su cifra es para fractura, no para rigidez
-3. Caída o golpe reciente y el codo no llega a estirarse del todo: casi un 50 % de fracturas (Appelboam 2008; Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
-4. Sospecha de fractura o luxación tras un traumatismo (deformidad, o el codo no llega a estirarse del todo: casi un 50 % de fracturas en Appelboam 2008): derivación médica para radiografía; antes, explorar la sensibilidad, el color y la temperatura de la mano.
-5. Appelboam 2008 — Appelboam, Reuben, Benger et al., «Elbow extension test to rule out elbow fracture: multicentre, prospective validation and observational study of diagnostic accuracy in adults and children», BMJ 337:a2428 (estudio prospectivo multicéntrico, 1740 pacientes).
+1. Appelboam 2008 (BMJ 337:a2428), solo como aclaración: su cifra es para fractura, no para rigidez
+2. Caída o golpe reciente y el codo no llega a estirarse del todo: casi un 50 % de fracturas (Appelboam 2008; Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
+3. Sospecha de fractura o luxación tras un traumatismo (deformidad, o el codo no llega a estirarse del todo: casi un 50 % de fracturas en Appelboam 2008): derivación médica para radiografía; antes, explorar la sensibilidad, el color y la temperatura de la mano.
+4. Appelboam 2008 — Appelboam, Reuben, Benger et al., «Elbow extension test to rule out elbow fracture: multicentre, prospective validation and observational study of diagnostic accuracy in adults and children», BMJ 337:a2428 (estudio prospectivo multicéntrico, 1740 pacientes).
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Test de ROM activo en 4 direcciones» (en `criterio`) | 4b · mención en el texto | 1 |
-| Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Test de ROM activo en 4 direcciones» | 4b · cita bajo el test | 2 |
-| Codo | — | `sistemas.1.banderasRojas.0` | 2 · mención en el texto | 3 |
-| Codo | — | `steps.0.options.1.derivacion` | 4 · mención en el texto | 4 |
-| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 5 |
-| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 5 |
+| Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Test de ROM activo en 4 direcciones» | 4b · cita bajo el test | 1 |
+| Codo | — | `sistemas.1.banderasRojas.0` | 2 · mención en el texto | 2 |
+| Codo | — | `steps.0.options.1.derivacion` | 4 · mención en el texto | 3 |
+| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
+| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
 
 ### Ashley y Lui 2023
 
@@ -1131,11 +1129,17 @@ Nota: Leído en la sesión de referencias de codo (2026-10). Resumen en PubMed (
 
 Citada como:
 
-1. Con el codo en 90° de flexión y el antebrazo supinado, se intenta "enganchar" el tendón del bíceps con el dedo índice desde el lado lateral. Positivo (rotura completa) si no hay una estructura en cordón que enganchar; si engancha pero duele, orienta a rotura parcial. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). En las roturas de menos de un mes, S 86 %; en las crónicas, 57 %: la cicatriz o una aponeurosis bicipital íntegra pueden dar un cordón que engancha. Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+1. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+
+Técnica original (O'Driscoll 2007): el paciente, sentado o de pie, flexiona activamente el codo a 90° y supina el antebrazo hasta el final; el explorador mete el índice desde el lado lateral de la fosa antecubital por debajo del borde lateral del tendón, alrededor de 1 cm o más, y tira de él hacia delante. Supinar al máximo contrae el bíceps con el braquial algo relajado y aleja de la fosa la unión musculotendinosa. El paciente no debe flexionar contra resistencia: endurece el braquial y cierra el espacio bajo el tendón (si hace falta resistencia, que sea a la supinación). Si engancha, se tira con fuerza del tendón: el dolor con el tendón íntegro sugiere una rotura parcial (9 de 12 en la serie). Se compara con el codo sano.
+
+El error más probable, según O'Driscoll, es palpar un tendón en la fosa en lugar de enganchar el dedo detrás de él, sobre todo en hombres muy musculados, en los que el tendón del braquial es grueso. La grasa abundante o la cicatriz en la fosa podrían dificultar el enganche. En Zwerus 2022, el tejido cicatricial de la rotura crónica puede tomarse por un tendón íntegro.
+
+La aponeurosis bicipital se explora aparte por el lado medial: su borde es fino, cortante y laminar, y el del tendón, grueso y en cordón. Seguía íntegra en 5 de las 33 roturas completas de O'Driscoll; si está íntegra, el tendón se retrae menos.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
 ### Beckenkamp 2017
 
@@ -2227,16 +2231,24 @@ Nota: Leído en la sesión de codo (2026-10). Resumen en PubMed (PMID 23804587) 
 
 Citada como:
 
-1. Con el codo en 90° de flexión y el antebrazo supinado, se intenta "enganchar" el tendón del bíceps con el dedo índice desde el lado lateral. Positivo (rotura completa) si no hay una estructura en cordón que enganchar; si engancha pero duele, orienta a rotura parcial. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). En las roturas de menos de un mes, S 86 %; en las crónicas, 57 %: la cicatriz o una aponeurosis bicipital íntegra pueden dar un cordón que engancha. Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+1. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+
+Técnica original (O'Driscoll 2007): el paciente, sentado o de pie, flexiona activamente el codo a 90° y supina el antebrazo hasta el final; el explorador mete el índice desde el lado lateral de la fosa antecubital por debajo del borde lateral del tendón, alrededor de 1 cm o más, y tira de él hacia delante. Supinar al máximo contrae el bíceps con el braquial algo relajado y aleja de la fosa la unión musculotendinosa. El paciente no debe flexionar contra resistencia: endurece el braquial y cierra el espacio bajo el tendón (si hace falta resistencia, que sea a la supinación). Si engancha, se tira con fuerza del tendón: el dolor con el tendón íntegro sugiere una rotura parcial (9 de 12 en la serie). Se compara con el codo sano.
+
+El error más probable, según O'Driscoll, es palpar un tendón en la fosa en lugar de enganchar el dedo detrás de él, sobre todo en hombres muy musculados, en los que el tendón del braquial es grueso. La grasa abundante o la cicatriz en la fosa podrían dificultar el enganche. En Zwerus 2022, el tejido cicatricial de la rotura crónica puede tomarse por un tendón íntegro.
+
+La aponeurosis bicipital se explora aparte por el lado medial: su borde es fino, cortante y laminar, y el del tendón, grueso y en cordón. Seguía íntegra en 5 de las 33 roturas completas de O'Driscoll; si está íntegra, el tendón se retrae menos.
 2. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
-3. Codo apoyado a 90° de flexión; se palpa el vientre del bíceps mientras se prona y supina pasivamente el antebrazo: si el músculo sube con la supinación y baja con la pronación, el tendón distal está íntegro; si no se mueve, rotura completa. Cifras de Zwerus 2022 (tabla 2; los mismos 86 pacientes): S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34 (publicadas); menos sensible en las roturas de menos de un mes (S 67 %). Si también se hace el Hook test, solo cuenta el Hook test. Contraste: en Devereaux y ElMaraghy 2013 (solo 6 sin rotura completa, verificación según el resultado de los tests) dio S 95,2 %, E 100 %, LR− 0,05.
+3. Cifras de Zwerus 2022 (tabla 2; los mismos 86 pacientes): S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34 (publicadas); menos sensible en las roturas de menos de un mes (S 67 %). Contraste: en Devereaux y ElMaraghy 2013 (solo 6 sin rotura completa, verificación según el resultado de los tests) dio S 95,2 %, E 100 %, LR− 0,05.
+
+Técnica en Zwerus 2022 (tabla 1): sentado, con el codo a 90°, el explorador fija la muñeca y palpa el vientre del bíceps mientras prona y supina pasivamente el antebrazo; si el test duele, sugiere una rotura parcial (para la rotura parcial, el PFP doloroso dio S 72,4 % y E 47,4 %). Fue menos preciso en las roturas de menos de un mes (S 66,7 %, E 50 %, con solo 2 codos sin rotura completa en ese grupo) que en las crónicas (S 81,0 %, E 78,6 %); los autores advierten que en la fase aguda el dolor y la hinchazón pueden confundir la exploración.
 4. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 2 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 4 |
 
 ### Devillé 2000
@@ -2297,12 +2309,12 @@ DOI: 10.1016/j.jhsa.2007.04.010
 
 Citada como:
 
-1. Prensión máxima con el codo a 90° de flexión y en extensión completa: en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia). Cuenta como hallazgo: los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
+1. Los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
 2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» | 4b · cita bajo el test | 2 |
 
 ### Downie 2013
@@ -5102,202 +5114,223 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 161. Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–224
 162. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100 (la precisión diagnóstica del test no se conoce)
 163. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 82 y 84
-164. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101
-165. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101
-166. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
-167. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 90 (medir la movilidad activa y pasiva del codo y el antebrazo y la sensación final; sin datos de precisión)
-168. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
-169. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-170. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-171. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 101
-172. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-173. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83, 85 y 100
-174. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-175. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 93 y 100
-176. Park 2019 (Medicine 98:e15497): punto de máximo dolor en la línea radiocapitelar en 20 de 24 · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83–84 y 100 (dolor localizado en la línea radiohumeral posterolateral: sospechar un problema intraarticular)
-177. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 89 y 100
-178. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89
-179. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
-180. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 102
-181. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
-182. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-183. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92 (la subluxación no es diagnóstica de neuropatía cubital)
-184. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92
-185. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1) · Ochi 2011 (J Hand Surg Am 36:782–787) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-186. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-187. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100
-188. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100
-189. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100
-190. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 100
-191. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 103
-192. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103
-193. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 103
-194. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85–86, 88 y 103
-195. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 103
-196. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
-197. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81 y 103
-198. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102
-199. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 102
-200. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102
-201. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 100
-202. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 100
-203. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94
-204. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 101
-205. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94 (capítulo de libro: opinión de los autores, sin ensayos)
-206. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94–95
-207. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 95
-208. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 255–256
-209. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
-210. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255; van Dijk 1996 (J Bone Joint Surg Br 78-B(6))
-211. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 238, 254–258, 260, 263 y 285
-212. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 262; Sman 2015 (Br J Sports Med, publicado en línea en 2013); Netterström-Wedin 2021 (Phys Ther Sport 49:214–26)
-213. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 263
-214. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 245, 268, 273 y 280
-215. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272
-216. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 280
-217. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 268
-218. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 249
-219. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 249
-220. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 239–240
-221. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 239
-222. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 240–241
-223. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243; Reiman 2014 (J Athl Train 49:820–9)
-224. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 243
-225. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 242 y 244
-226. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 242
-227. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243
-228. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 237
-229. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 244
-230. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 244
-231. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 243–244, 251–252 y 268
-232. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 246
-233. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248
-234. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 248–249; Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5 y 6)
-235. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 250
-236. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 250
-237. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 250–251; Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5 y 6)
-238. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 252
-239. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 252
-240. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 253
-241. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253
-242. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 257
-243. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 257–259 y 263
-244. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 258
-245. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254 y 258
-246. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 259
-247. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 260
-248. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 261
-249. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 263 y 285
-250. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 264
-251. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 260 y 264
-252. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 285
-253. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265–266
-254. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 266–267
-255. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 267
-256. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 270
-257. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 271, 276–278 y 281
-258. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253 y 271–272
-259. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 276
-260. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 277
-261. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 277
-262. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 278
-263. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 278–279
-264. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 279
-265. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252 y 279
-266. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Mahadevan 2015 (J Foot Ankle Surg 54:549–53); Pitcher 2024 (Foot Ankle Orthop 9(4))
-267. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 281
-268. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Menon y Rednam 2026 (StatPearls, «Gout»)
-269. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 286
-270. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 286
-271. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284 y 286
-272. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 284
-273. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284–287
-274. Beckenkamp 2017 (Br J Sports Med 51:504–10), tabla 1; Bachmann 2003 (BMJ 326:417), tabla 4; Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 256–257
-275. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»); Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
-276. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
-277. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
-278. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
-279. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
-280. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
-281. Caída o golpe reciente y el codo no llega a estirarse del todo: casi un 50 % de fracturas (Appelboam 2008; Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
-282. Deformidad del codo tras una caída (luxación), o mano dormida, fría o pálida: compromiso neurovascular (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 93)
-283. Niño pequeño que no mueve el brazo tras un tirón (pronación dolorosa): descartar una fractura o una infección (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
-284. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
-285. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
-286. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
-287. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
-288. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
-289. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
-290. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
-291. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
-292. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
-293. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-294. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
-295. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
-296. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
-297. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
-298. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
-299. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
-300. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
-301. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
-302. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
-303. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
-304. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
-305. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
-306. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
-307. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
-308. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
-309. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
-310. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
-311. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 224–225.
-312. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.
-313. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205.
-314. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 200.
-315. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–198 y 205–206.
-316. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–197.
-317. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219 y 221–222.
-318. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198, 217 y 223.
-319. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217–218 y 220.
-320. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198–199 y 205.
-321. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201 y 213–214.
-322. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 86, 89 y 93–94.
-323. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 81, 87 y 93–94.
-324. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 90–92 y 101.
-325. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 91–92 y 100–102.
-326. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 89–90.
-327. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100.
-328. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272.
-329. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254–257.
-330. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 241–245.
-331. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 268 y 272–273.
-332. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247–251.
-333. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 247, 252–253 y 278–280.
-334. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 252 y 287.
-335. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 280–282.
-336. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 264, 282 y 287.
-337. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235 y 287.
-338. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 285–286.
-339. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 287.
-340. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 283.
-341. Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61, y cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
-342. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 1, p. 70, y pp. 71–73 y tabla 2, p. 75
-343. Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 69, 71 y 73, tabla 2, p. 75, y p. 76
-344. Lluch 2020, cap. 3.1 (Struyf), pp. 57–59, 61 y 63–64, y cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
-345. Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 66–67
-346. Lluch 2020, cap. 3.1 (Struyf), pp. 53–54, 59 y 66, y cap. 3.1.1 (Powell y Lewis), p. 73
-347. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 368 y 382
-348. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 369–370, 373 y 382
-349. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 370–372 y 380–381
-350. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 370, 372 y 380, y cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 398–399
-351. Lluch 2020, cap. 5.3 (Jull y Falla), p. 376, y cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 397–406 y 410
-352. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 367, 370–371, 379–380 y tabla 1, p. 383
-353. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 368, 374–375 y 377–379
-354. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 366, 371 y 374–377
-355. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 299, 306–308 y 313
-356. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 298 y 317
-357. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 306 y 309–311
-358. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 302–303 y 312–313
-359. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 297–299, 314–324 y tabla 6, p. 323
+164. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 83
+165. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 101
+166. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 101
+167. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
+168. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 90 (medir la movilidad activa y pasiva del codo y el antebrazo y la sensación final; sin datos de precisión)
+169. En Roedl 2016, S 96 %, E 81 % (LR calculadas ≈5,1 y ≈0,05), en lanzadores con la apertura del brazo dominante ya algo aumentada (0,5 mm de media sin rotura).
+
+Técnica de Roedl 2016: de pie, con el codo a unos 30° de flexión sostenido por un ayudante, se mide la anchura de la cubitotroclear a la altura del haz anterior del ligamento en reposo y con el máximo valgo manual, tres veces cada una, y se resta; lo mismo en el codo sano, y la diferencia entre los dos codos es la apertura relativa. El explorador no sabía qué codo era el lesionado, y sus tres medidas difirieron 0,1 mm de mediana.
+
+El umbral de 1,0 mm se fijó antes de analizar los datos, a partir del IC 95 % (1,1–2,8 mm) de la apertura de 2,0 mm que dio cortar el ligamento en un estudio en cadáver del mismo grupo, y la curva ROC lo confirmó como el más preciso. Apertura relativa media: 0,5 mm sin rotura, 2,1 mm con rotura parcial y 3,8 mm con rotura completa. Con más de 1,5 mm, S 81 % y E 91 %; con más de 2,6 mm, E 100 % y S 53 %: umbrales sacados de la curva ROC que los autores piden confirmar en otra serie.
+
+En la radiografía con estrés en valgo, una apertura medial de más de 3 mm es compatible con inestabilidad en valgo; para las partes blandas se prefiere la RM (Lluch 2020, p. 87).
+170. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+
+Técnica original (O'Driscoll 2005): paciente erguido, hombro en 90° de abducción; desde la flexión máxima del codo se aplica un valgo moderado hasta que el hombro llega al final de la rotación externa y, manteniéndolo, se extiende el codo deprisa hasta unos 30°. Es positivo si reproduce el dolor medial que el paciente tiene con la actividad, máximo entre 120° y 70°; suele aparecer de golpe y provoca una retirada involuntaria del brazo. Se confirma repitiendo el movimiento a la inversa, de extensión a flexión, con una respuesta parecida, por lo general menor, en el mismo ángulo. Cuidado si hay síntomas en el hombro, que el test puede agravar.
+
+En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pacientes con dolor más allá de los 70° hacia la extensión necesitaron además desbridar osteofitos posteromediales. Con la exploración quirúrgica sola como referencia (15 pacientes), el test fue positivo en las 14 lesiones y negativo en el único ligamento sano. El único falso positivo de la serie tenía una degeneración del tendón flexor-pronador pegada al ligamento.
+171. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+172. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+173. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 101
+174. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81 y 85–87
+175. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+176. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85–86
+177. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+178. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83, 85 y 100
+179. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
+180. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 93 y 100
+181. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 87
+182. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88
+183. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100
+184. Park 2019 (Medicine 98:e15497): punto de máximo dolor en la línea radiocapitelar en 20 de 24 · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83–84 y 100 (dolor localizado en la línea radiohumeral posterolateral: sospechar un problema intraarticular)
+185. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 89 y 100
+186. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89
+187. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
+188. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 102
+189. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
+190. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
+191. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+192. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92 (la subluxación no es diagnóstica de neuropatía cubital)
+193. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 92
+194. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1) · Ochi 2011 (J Hand Surg Am 36:782–787) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+195. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
+196. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91–92 y 101
+197. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100
+198. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 83 y 100
+199. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 100
+200. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 100
+201. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84 y 103
+202. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 103
+203. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 103
+204. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85–86, 88 y 103
+205. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 86 y 103
+206. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 89 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5)
+207. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85, 88–89 y 103
+208. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 81 y 103
+209. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 102
+210. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 102
+211. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 91 y 102
+212. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 100
+213. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 100
+214. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94
+215. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94 y 101
+216. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94 (capítulo de libro: opinión de los autores, sin ensayos)
+217. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 94–95
+218. Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 95
+219. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 255–256
+220. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
+221. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255; van Dijk 1996 (J Bone Joint Surg Br 78-B(6))
+222. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 238, 254–258, 260, 263 y 285
+223. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 262; Sman 2015 (Br J Sports Med, publicado en línea en 2013); Netterström-Wedin 2021 (Phys Ther Sport 49:214–26)
+224. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 263
+225. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 245, 268, 273 y 280
+226. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272
+227. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 280
+228. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 268
+229. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 249
+230. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 249
+231. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 239–240
+232. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 239
+233. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 240–241
+234. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243; Reiman 2014 (J Athl Train 49:820–9)
+235. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 243
+236. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 242 y 244
+237. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 242
+238. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 243
+239. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 237
+240. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 244
+241. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 244
+242. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 243–244, 251–252 y 268
+243. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 246
+244. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 248
+245. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 248–249; Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5 y 6)
+246. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 250
+247. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 250
+248. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 250–251; Tarjeta de consulta tobillo y pie (guía clínica de tobillo y pie, ap. 5 y 6)
+249. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247 y 252
+250. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 252
+251. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 253
+252. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253
+253. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 257
+254. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 257–259 y 263
+255. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 258
+256. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254 y 258
+257. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 259
+258. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 260
+259. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 261
+260. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 263 y 285
+261. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 264
+262. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 260 y 264
+263. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 285
+264. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265–266
+265. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 266–267
+266. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 267
+267. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 270
+268. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 271, 276–278 y 281
+269. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253 y 271–272
+270. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 276
+271. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 277
+272. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 277
+273. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 278
+274. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 278–279
+275. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 279
+276. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252 y 279
+277. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Mahadevan 2015 (J Foot Ankle Surg 54:549–53); Pitcher 2024 (Foot Ankle Orthop 9(4))
+278. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 281
+279. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 281; Menon y Rednam 2026 (StatPearls, «Gout»)
+280. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 286
+281. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 286
+282. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284 y 286
+283. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 275 y 284
+284. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 284–287
+285. Beckenkamp 2017 (Br J Sports Med 51:504–10), tabla 1; Bachmann 2003 (BMJ 326:417), tabla 4; Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 256–257
+286. Hermena y Slane 2025 (StatPearls, «Ankle Fracture»); Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 255
+287. Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.
+288. Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).
+289. Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.
+290. Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.
+291. Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH
+292. Caída o golpe reciente y el codo no llega a estirarse del todo: casi un 50 % de fracturas (Appelboam 2008; Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
+293. Deformidad del codo tras una caída (luxación), o mano dormida, fría o pálida: compromiso neurovascular (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 93)
+294. Niño pequeño que no mueve el brazo tras un tirón (pronación dolorosa): descartar una fractura o una infección (Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 94)
+295. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1.1 (Powell y Lewis), pp. 73 y 75–76.
+296. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 61 y 66; cap. 3.1.1 (Powell y Lewis), pp. 70–71.
+297. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), pp. 75–76.
+298. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54.
+299. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), p. 54; cap. 3.1.1 (Powell y Lewis), p. 76.
+300. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.1 (Struyf), pp. 54 y 66–67; cap. 3.1.1 (Powell y Lewis), pp. 73 y 76.
+301. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.
+302. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 135 y 137; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+303. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147–148.
+304. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+305. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152.
+306. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 149.
+307. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 148–149.
+308. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 152; cap. 4.1.5 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 178.
+309. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 131; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 152; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 158.
+310. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 141; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 147.
+311. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.
+312. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383.
+313. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 383; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), p. 410.
+314. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), pp. 370–371 y tabla 1, p. 383.
+315. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), p. 369 y tabla 1, p. 384.
+316. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), «Serious pathology presenting with headache», p. 410.
+317. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384; cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 410–411.
+318. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.3 (Jull y Falla), tabla 1, p. 384.
+319. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 303.
+320. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), p. 301 y tabla 1, p. 303.
+321. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 5.1 (Fondevila Suárez), tabla 1, p. 304.
+322. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 224–225.
+323. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.
+324. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 203–205.
+325. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 200.
+326. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–198 y 205–206.
+327. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 196–197.
+328. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 219 y 221–222.
+329. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198, 217 y 223.
+330. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 217–218 y 220.
+331. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 198–199 y 205.
+332. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 191, 201 y 213–214.
+333. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 86, 89 y 93–94.
+334. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 81, 87 y 93–94.
+335. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 90–92 y 101.
+336. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 91–92 y 100–102.
+337. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 89–90.
+338. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 3.2 (Coombes y Bisset), pp. 90–91 y 100.
+339. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 272.
+340. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 254–257.
+341. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 237 y 241–245.
+342. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 268 y 272–273.
+343. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 247–251.
+344. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 247, 252–253 y 278–280.
+345. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235, 252 y 287.
+346. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 280–282.
+347. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 264, 282 y 287.
+348. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 235 y 287.
+349. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 265 y 285–286.
+350. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 287.
+351. Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), p. 283.
+352. Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61, y cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
+353. Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 1, p. 70, y pp. 71–73 y tabla 2, p. 75
+354. Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 69, 71 y 73, tabla 2, p. 75, y p. 76
+355. Lluch 2020, cap. 3.1 (Struyf), pp. 57–59, 61 y 63–64, y cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75
+356. Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 66–67
+357. Lluch 2020, cap. 3.1 (Struyf), pp. 53–54, 59 y 66, y cap. 3.1.1 (Powell y Lewis), p. 73
+358. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 368 y 382
+359. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 369–370, 373 y 382
+360. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 370–372 y 380–381
+361. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 370, 372 y 380, y cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 398–399
+362. Lluch 2020, cap. 5.3 (Jull y Falla), p. 376, y cap. 5.3.1 (Hall, Luedtke, von Piekartz y Fernández de las Peñas), pp. 397–406 y 410
+363. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 367, 370–371, 379–380 y tabla 1, p. 383
+364. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 368, 374–375 y 377–379
+365. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 366, 371 y 374–377
+366. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 299, 306–308 y 313
+367. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 298 y 317
+368. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 306 y 309–311
+369. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 302–303 y 312–313
+370. Lluch 2020, cap. 5.1 (Fondevila Suárez), pp. 297–299, 314–324 y tabla 6, p. 323
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -5337,23 +5370,23 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 | Hombro | h10 · Artrosis Glenohumeral | Test «Mayor edad + crepitación con rigidez activa = pasiva» | 4b · cita bajo el test | 21 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 8 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Pronóstico | 5 · cita del pronóstico | 27 |
-| Hombro | — | `sistemas.1.banderasRojas.5` | 2 · mención en el texto | 276 |
-| Hombro | — | `sistemas.7.banderasRojas.0` | 2 · mención en el texto | 277 |
-| Hombro | — | `sistemas.8.banderasRojas.0` | 2 · mención en el texto | 278 |
-| Hombro | — | `sistemas.9.banderasRojas.0` | 2 · mención en el texto | 279 |
-| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 284 |
-| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 285 |
-| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 286 |
-| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 287 |
-| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 286 |
-| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 288 |
-| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 289 |
-| Hombro | — | Paso `h_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 341 |
-| Hombro | — | Paso `h_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 342 |
-| Hombro | — | Paso `h_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 343 |
-| Hombro | — | Paso `h_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 344 |
-| Hombro | — | Paso `h_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 345 |
-| Hombro | — | Paso `h_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 346 |
+| Hombro | — | `sistemas.1.banderasRojas.5` | 2 · mención en el texto | 287 |
+| Hombro | — | `sistemas.7.banderasRojas.0` | 2 · mención en el texto | 288 |
+| Hombro | — | `sistemas.8.banderasRojas.0` | 2 · mención en el texto | 289 |
+| Hombro | — | `sistemas.9.banderasRojas.0` | 2 · mención en el texto | 290 |
+| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 295 |
+| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 296 |
+| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 297 |
+| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 298 |
+| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 297 |
+| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 299 |
+| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 300 |
+| Hombro | — | Paso `h_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 352 |
+| Hombro | — | Paso `h_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 353 |
+| Hombro | — | Paso `h_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 354 |
+| Hombro | — | Paso `h_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 355 |
+| Hombro | — | Paso `h_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 356 |
+| Hombro | — | Paso `h_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 357 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Aducción de cadera disminuida» (en `razonamiento.detalle`) | 4b · mención en el texto | 28 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Rotación Interna disminuida (<24°)» (en `razonamiento.detalle`) | 4b · mención en el texto | 29 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Apoyo monopodal (30 s)» | 4b · cita bajo el test | 30 |
@@ -5414,21 +5447,21 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Palpación dolorosa de la sínfisis y el hueso adyacente» | 4b · cita bajo el test | 63 |
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Test «Resistencia abdominal y squeeze» | 4b · cita bajo el test | 70 |
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Pronóstico | 5 · cita del pronóstico | 65 |
-| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 290 |
-| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 291 |
-| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 290 |
-| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 292 |
-| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 293 |
-| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 293 |
-| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 293 |
-| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 294 |
-| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 295 |
-| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 296 |
-| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 297 |
-| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 298 |
-| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 293 |
-| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 299 |
-| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 300 |
+| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 301 |
+| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 302 |
+| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 301 |
+| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 303 |
+| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 304 |
+| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 304 |
+| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 304 |
+| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 305 |
+| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 306 |
+| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 307 |
+| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 308 |
+| Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 309 |
+| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 304 |
+| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 310 |
+| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 311 |
 | Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Flexión Craneocervical (CCFT) con biofeedback de presión» | 4b · cita bajo el test | 71 |
 | Cervical | ce2 · Disfunción Neuromuscular Cervical | Test «Test de Reposicionamiento Cabeza-Neutro» | 4b · cita bajo el test | 72 |
 | Cervical | ce2 · Disfunción Neuromuscular Cervical | Dosis (en el texto) | 5 · mención en el texto | 73 |
@@ -5457,21 +5490,21 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 | Cervical | ce11 · Fatiga Muscular Cérvico-Escapular | Test «Evaluación de fatiga en actividades funcionales prolongadas» («¿Por qué?») | 4b · razonamiento del test | 90 |
 | Cervical | ce12 · Dolor Radicular Cervical | Test «ULNT1 (sesgo mediano) con diferenciación estructural» | 4b · cita bajo el test | 91 |
 | Cervical | ce14 · Dolor Cervical Idiopático | Test «Test de flexión-rotación (FRT) si es craneocervical» | 4b · cita bajo el test | 92 |
-| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 301 |
-| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 302 |
-| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 303 |
-| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 304 |
-| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 305 |
-| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 306 |
-| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 307 |
-| Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 347 |
-| Cervical | — | Paso `ce_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 348 |
-| Cervical | — | Paso `ce_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 349 |
-| Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 350 |
-| Cervical | — | Paso `ce_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 351 |
-| Cervical | — | Paso `ce_step4b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 352 |
-| Cervical | — | Paso `ce_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 353 |
-| Cervical | — | Paso `ce_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 354 |
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 312 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 313 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 314 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 315 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 316 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 317 |
+| Cervical | — | Pregunta `cv_n3` · Médula / Estructural | 2 · razonamiento del cribado | 318 |
+| Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 358 |
+| Cervical | — | Paso `ce_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 359 |
+| Cervical | — | Paso `ce_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 360 |
+| Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 361 |
+| Cervical | — | Paso `ce_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 362 |
+| Cervical | — | Paso `ce_step4b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 363 |
+| Cervical | — | Paso `ce_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 364 |
+| Cervical | — | Paso `ce_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 365 |
 | Lumbar | lu3 · Dolor Radicular Lumbar | Pronóstico | 5 · cita del pronóstico | 93 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Síntomas bilaterales» (en `razonamiento.detalle`) | 4b · mención en el texto | 94 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Alivio al sentarse» (en `razonamiento.detalle`) | 4b · mención en el texto | 95 |
@@ -5497,15 +5530,15 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 114 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 115 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 116 |
-| Lumbar | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 280 |
-| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 308 |
-| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 309 |
-| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 310 |
-| Lumbar | — | Paso `lu_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 355 |
-| Lumbar | — | Paso `lu_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 356 |
-| Lumbar | — | Paso `lu_step1c` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 357 |
-| Lumbar | — | Paso `lu_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 358 |
-| Lumbar | — | Paso `lu_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 359 |
+| Lumbar | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 291 |
+| Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 319 |
+| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 320 |
+| Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 321 |
+| Lumbar | — | Paso `lu_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 366 |
+| Lumbar | — | Paso `lu_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 367 |
+| Lumbar | — | Paso `lu_step1c` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 368 |
+| Lumbar | — | Paso `lu_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 369 |
+| Lumbar | — | Paso `lu_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 370 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Rango disminuido, hinchazón persistente, debilidad de cuádriceps» | 4b · cita bajo el test | 117 |
 | Rodilla | ro1 · Artrosis de Rodilla | Pronóstico | 5 · cita del pronóstico | 118 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Test de Thessaly» | 4b · cita bajo el test | 119 |
@@ -5576,211 +5609,230 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 | Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signos de patología meniscal o condral» | 4b · cita bajo el test | 160 |
 | Rodilla | ro20 · Quiste Poplíteo (Baker) | Test «Signo de Foucher» | 4b · cita bajo el test | 160 |
 | Rodilla | ro20 · Quiste Poplíteo (Baker) | Pronóstico | 5 · cita del pronóstico | 161 |
-| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 311 |
-| Rodilla | — | Pregunta `r_v3` · Vascular | 2 · razonamiento del cribado | 312 |
-| Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 313 |
-| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 314 |
-| Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 315 |
-| Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 316 |
-| Rodilla | — | Pregunta `ro_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 317 |
-| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 318 |
-| Rodilla | — | Pregunta `ro_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 319 |
-| Rodilla | — | Pregunta `ro_t6` · Traumático / Mecánico | 2 · razonamiento del cribado | 320 |
-| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 321 |
+| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 322 |
+| Rodilla | — | Pregunta `r_v3` · Vascular | 2 · razonamiento del cribado | 323 |
+| Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 324 |
+| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 325 |
+| Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 326 |
+| Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 327 |
+| Rodilla | — | Pregunta `ro_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 328 |
+| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 329 |
+| Rodilla | — | Pregunta `ro_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 330 |
+| Rodilla | — | Pregunta `ro_t6` · Traumático / Mecánico | 2 · razonamiento del cribado | 331 |
+| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 332 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 162 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Fuerza de prensión sin dolor (dinamómetro)» | 4b · cita bajo el test | 163 |
-| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor a la palpación del epicóndilo medial» | 4b · cita bajo el test | 164 |
-| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» | 4b · cita bajo el test | 165 |
-| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Test de Polk (medial)» | 4b · cita bajo el test | 166 |
-| Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Limitación activa Y pasiva comparada con lado sano» | 4b · cita bajo el test | 167 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `criterio`) | 4b · mención en el texto | 168 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 169 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 170 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 170 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Dolor a la palpación justo distal al epicóndilo medial» | 4b · cita bajo el test | 171 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» | 4b · cita bajo el test | 172 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Dolor lateral a la palpación (complejo colateral lateral)» | 4b · cita bajo el test | 173 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» | 4b · cita bajo el test | 172 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» | 4b · cita bajo el test | 174 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Dolor y laxitud con estrés en varo» | 4b · cita bajo el test | 175 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» | 4b · cita bajo el test | 176 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «PEPPER (palpación-extensión de la radiocapitelar)» | 4b · cita bajo el test | 177 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «SALT (supinación y dolor anterolateral)» | 4b · cita bajo el test | 177 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» | 4b · cita bajo el test | 178 |
-| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Deslizamientos accesorios de la cabeza del radio» | 4b · cita bajo el test | 177 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 179 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Pérdida del contorno normal del brazo y tendón distal no palpable» | 4b · cita bajo el test | 180 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 181 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de Tinel en túnel cubital» | 4b · cita bajo el test | 182 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» | 4b · cita bajo el test | 183 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Electrodiagnóstico (velocidad de conducción nerviosa)» | 4b · cita bajo el test | 184 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» | 4b · cita bajo el test | 185 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» | 4b · cita bajo el test | 186 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor en antebrazo proximal (NO en epicóndilo lateral)» | 4b · cita bajo el test | 187 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» | 4b · cita bajo el test | 188 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con supinación resistida con el codo extendido» | 4b · cita bajo el test | 189 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Neurodinámica del nervio radial (ULNT radial)» | 4b · cita bajo el test | 189 |
-| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)» | 4b · cita bajo el test | 190 |
-| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor con la extensión activa o resistida del codo» | 4b · cita bajo el test | 191 |
-| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor a la palpación de la inserción del tríceps» | 4b · cita bajo el test | 192 |
-| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Defecto palpable e hinchazón (rotura)» | 4b · cita bajo el test | 193 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Dolor en la extensión terminal del codo» | 4b · cita bajo el test | 194 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Déficit fijo de extensión» | 4b · cita bajo el test | 195 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 196 |
-| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 196 |
-| Codo | co12 · Fractura de Estrés del Olécranon | Test «Dolor con la extensión del codo, sin traumatismo» | 4b · cita bajo el test | 197 |
-| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» | 4b · cita bajo el test | 192 |
-| Codo | co12 · Fractura de Estrés del Olécranon | Test «TC (si la radiografía no es concluyente)» | 4b · cita bajo el test | 192 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Dolor a la palpación del pronador redondo» | 4b · cita bajo el test | 198 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» | 4b · cita bajo el test | 198 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» | 4b · cita bajo el test | 198 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Neurodinámica del nervio mediano (ULNT mediano)» | 4b · cita bajo el test | 199 |
-| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» | 4b · cita bajo el test | 200 |
-| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Tirón del brazo extendido en un menor de 5 años, sin caída» | 4b · cita bajo el test | 201 |
-| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» | 4b · cita bajo el test | 202 |
-| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor medial con el lanzamiento en un deportista con el esqueleto inmaduro» | 4b · cita bajo el test | 203 |
-| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» | 4b · cita bajo el test | 204 |
-| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Pauta de tratamiento | 5 · cita de la pauta | 205 |
-| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» | 4b · cita bajo el test | 206 |
-| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» | 4b · cita bajo el test | 207 |
-| Codo | — | `sistemas.1.banderasRojas.0` | 2 · mención en el texto | 281 |
-| Codo | — | `sistemas.1.banderasRojas.1` | 2 · mención en el texto | 282 |
-| Codo | — | `sistemas.1.banderasRojas.2` | 2 · mención en el texto | 283 |
-| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 322 |
-| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 323 |
-| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 324 |
-| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 325 |
-| Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 326 |
-| Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 327 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Reglas de Ottawa (si no carga)» | 4b · cita bajo el test | 208 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPAA: palpar y estirar» | 4b · cita bajo el test | 209 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPC: palpar y estirar» | 4b · cita bajo el test | 209 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Cajón anterior (a los 4–6 días)» | 4b · cita bajo el test | 210 |
-| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Pronóstico | 5 · cita del pronóstico | 211 |
-| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Palpación del LTPAI» | 4b · cita bajo el test | 212 |
-| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» | 4b · cita bajo el test | 212 |
-| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Pronóstico | 5 · cita del pronóstico | 213 |
-| Tobillo y pie | tp3 · Rotura del Aquiles | Pronóstico | 5 · cita del pronóstico | 214 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Neurovascular y cinco P» | 4b · cita bajo el test | 215 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Equimosis plantar» | 4b · cita bajo el test | 215 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Dolor en todo el ancho del mediopié» | 4b · cita bajo el test | 215 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «1.º y 2.º MT en direcciones opuestas» | 4b · cita bajo el test | 215 |
-| Tobillo y pie | tp4 · Lesión de Lisfranc | Pronóstico | 5 · cita del pronóstico | 214 |
-| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «5.º MT: dolor en la base» | 4b · cita bajo el test | 216 |
-| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Calcáneo: talón doloroso con equimosis» | 4b · cita bajo el test | 217 |
-| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Pronóstico | 5 · cita del pronóstico | 214 |
-| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Hinchazón y equimosis perimaleolar medial» | 4b · cita bajo el test | 218 |
-| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Resalte con la flexión dorsal y plantar» | 4b · cita bajo el test | 219 |
-| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Test de pinzamiento posterior» | 4b · cita bajo el test | 220 |
-| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Hinchazón y dolor por detrás del astrágalo» | 4b · cita bajo el test | 221 |
-| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Pronóstico | 5 · cita del pronóstico | 222 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» | 4b · cita bajo el test | 223 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Descarga en el salto» | 4b · cita bajo el test | 224 |
-| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Pronóstico | 5 · cita del pronóstico | 225 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Dolor con carga y flexión dorsal» | 4b · cita bajo el test | 226 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Salto con el talón elevado frente a aterrizaje» | 4b · cita bajo el test | 224 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «ETM monopodal sobre plano inclinado» | 4b · cita bajo el test | 224 |
-| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Pronóstico | 5 · cita del pronóstico | 225 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «Crepitación en flexión plantar y dorsal» | 4b · cita bajo el test | 227 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «ETM en rango amplio» | 4b · cita bajo el test | 224 |
-| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Pronóstico | 5 · cita del pronóstico | 225 |
-| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «ETM sobre un step en todo el rango» | 4b · cita bajo el test | 228 |
-| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «Marcha descalzo» | 4b · cita bajo el test | 229 |
-| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Pronóstico | 5 · cita del pronóstico | 225 |
-| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Tinel a lo largo del sural» | 4b · cita bajo el test | 228 |
-| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Palpación en prono con flexión dorsal pasiva» | 4b · cita bajo el test | 230 |
-| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Pronóstico | 5 · cita del pronóstico | 231 |
-| Tobillo y pie | tp13 · Bursitis Calcánea Superficial | Test «Dolor superficial e hinchazón a la presión» | 4b · cita bajo el test | 232 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Dolor retromaleolar medial» | 4b · cita bajo el test | 233 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Inversión resistida» | 4b · cita bajo el test | 233 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «ETM: el retropié no va a varo» | 4b · cita bajo el test | 233 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test ««Demasiados dedos»» | 4b · cita bajo el test | 219 |
-| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Pronóstico | 5 · cita del pronóstico | 234 |
-| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Flexoextensión del primer dedo en flexión plantar completa» | 4b · cita bajo el test | 235 |
-| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Crepitación e hinchazón en la vaina» | 4b · cita bajo el test | 236 |
-| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Pronóstico | 5 · cita del pronóstico | 237 |
-| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Tinel a lo largo del túnel» | 4b · cita bajo el test | 238 |
-| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Hinchazón en el túnel o la subastragalina posterior» | 4b · cita bajo el test | 239 |
-| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Explorar el FHL» | 4b · cita bajo el test | 239 |
-| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Pronóstico | 5 · cita del pronóstico | 231 |
-| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Dolor óseo a la palpación» | 4b · cita bajo el test | 240 |
-| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Calcáneo: compresión medial y lateral a la vez» | 4b · cita bajo el test | 240 |
-| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Astrágalo: hinchazón en el seno del tarso o posterior» | 4b · cita bajo el test | 240 |
-| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Pronóstico | 5 · cita del pronóstico | 241 |
-| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Palpación del seno del tarso» | 4b · cita bajo el test | 242 |
-| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Estrés en inversión de la subastragalina o KTW (rodilla a la pared) con pronación» | 4b · cita bajo el test | 242 |
-| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Pronóstico | 5 · cita del pronóstico | 243 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Dolor retromaleolar lateral» | 4b · cita bajo el test | 244 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Subluxación de los peroneos» | 4b · cita bajo el test | 245 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Crepitación e hinchazón» | 4b · cita bajo el test | 244 |
-| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Pronóstico | 5 · cita del pronóstico | 244 |
-| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «KTW (rodilla a la pared)» | 4b · cita bajo el test | 246 |
-| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «Palpación anterior» | 4b · cita bajo el test | 246 |
-| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Pronóstico | 5 · cita del pronóstico | 243 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Hinchazón articular» | 4b · cita bajo el test | 247 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Cajón anterior: signo del surco» | 4b · cita bajo el test | 248 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Laxitud subastragalina» | 4b · cita bajo el test | 248 |
-| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Pronóstico | 5 · cita del pronóstico | 248 |
-| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Hinchazón y dolor a la palpación» | 4b · cita bajo el test | 247 |
-| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Laxitud del LPAA y del LPC» | 4b · cita bajo el test | 247 |
-| Tobillo y pie | tp22 · Sinovitis Postraumática | Pronóstico | 5 · cita del pronóstico | 243 |
-| Tobillo y pie | tp23 · Coalición Tarsiana | Test «Movilidad subastragalina y mediotarsiana» | 4b · cita bajo el test | 213 |
-| Tobillo y pie | tp23 · Coalición Tarsiana | Pronóstico | 5 · cita del pronóstico | 249 |
-| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Perfil clínico» | 4b · cita bajo el test | 250 |
-| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Palpación de la interlínea» | 4b · cita bajo el test | 251 |
-| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Pronóstico | 5 · cita del pronóstico | 250 |
-| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Palpación de la cúpula astragalina en flexión plantar» | 4b · cita bajo el test | 252 |
-| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Hinchazón, derrame, crepitación» | 4b · cita bajo el test | 252 |
-| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Pronóstico | 5 · cita del pronóstico | 249 |
-| Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Test «Palpación de la tuberosidad medial del calcáneo» | 4b · cita bajo el test | 253 |
-| Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Pronóstico | 5 · cita del pronóstico | 254 |
-| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Test «Palpación posterolateral del talón» | 4b · cita bajo el test | 253 |
-| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Pronóstico | 5 · cita del pronóstico | 254 |
-| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Test «Tinel sobre el nervio calcáneo medial» | 4b · cita bajo el test | 255 |
-| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Pronóstico | 5 · cita del pronóstico | 231 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Aguda: palpación calcaneocuboidea» | 4b · cita bajo el test | 256 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Gradual: interlíneas del cuboides» | 4b · cita bajo el test | 256 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Carga del antepié e inicio de la ETM» | 4b · cita bajo el test | 256 |
-| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Pronóstico | 5 · cita del pronóstico | 257 |
-| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Punto N» | 4b · cita bajo el test | 240 |
-| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Dolor puntual sobre cuboides o cuñas» | 4b · cita bajo el test | 215 |
-| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Pronóstico | 5 · cita del pronóstico | 258 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Equimosis e hinchazón en la interlínea» | 4b · cita bajo el test | 259 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Rango de la 1.ª MTF frente al lado sano» | 4b · cita bajo el test | 260 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Dolor sobre los sesamoideos» | 4b · cita bajo el test | 261 |
-| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Pronóstico | 5 · cita del pronóstico | 257 |
-| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Palpación de la base del 2.º MT y de Lisfranc» | 4b · cita bajo el test | 262 |
-| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Estrés frente a sinovitis» | 4b · cita bajo el test | 263 |
-| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Test «Dolor puntual sobre el cuello» | 4b · cita bajo el test | 264 |
-| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Test «Carga axial del MT» | 4b · cita bajo el test | 264 |
-| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Pronóstico | 5 · cita del pronóstico | 265 |
-| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Palpación del espacio con compresión de los metatarsianos» | 4b · cita bajo el test | 266 |
-| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Diferencial del antepié» | 4b · cita bajo el test | 267 |
-| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Pronóstico | 5 · cita del pronóstico | 257 |
-| Tobillo y pie | tp35 · Gota | Test «Articulación roja, hinchada y muy dolorosa» | 4b · cita bajo el test | 267 |
-| Tobillo y pie | tp35 · Gota | Test «Suele estar sistémicamente bien» | 4b · cita bajo el test | 268 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Sever: inserción del Aquiles (8–12 años)» | 4b · cita bajo el test | 269 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Iselin: base del 5.º MT (8–13 años)» | 4b · cita bajo el test | 270 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Navicular: apofisitis del tibial posterior o Köhler» | 4b · cita bajo el test | 271 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Freiberg: cabeza del 2.º–4.º MT (14–18 años)» | 4b · cita bajo el test | 272 |
-| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Pronóstico | 5 · cita del pronóstico | 273 |
-| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Regla de Ottawa de tobillo» | 4b · cita bajo el test | 274 |
-| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «No carga cuatro pasos» | 4b · cita bajo el test | 275 |
-| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 328 |
-| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 329 |
-| Tobillo y pie | — | Pregunta `tp_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 330 |
-| Tobillo y pie | — | Pregunta `tp_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 331 |
-| Tobillo y pie | — | Pregunta `tp_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 332 |
-| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 333 |
-| Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 334 |
-| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 335 |
-| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 336 |
-| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 337 |
-| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 338 |
-| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 339 |
-| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 340 |
-| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 340 |
-| Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 339 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» («¿Por qué?») | 4b · razonamiento del test | 164 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor a la palpación del epicóndilo medial» | 4b · cita bajo el test | 165 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Dolor con flexión resistida de antebrazo y pronación» | 4b · cita bajo el test | 166 |
+| Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Test de Polk (medial)» | 4b · cita bajo el test | 167 |
+| Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Limitación activa Y pasiva comparada con lado sano» | 4b · cita bajo el test | 168 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» (en `razonamiento.detalle`) | 4b · mención en el texto | 169 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 170 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 171 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 172 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 172 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Dolor a la palpación justo distal al epicóndilo medial» | 4b · cita bajo el test | 173 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» («¿Por qué?») | 4b · razonamiento del test | 174 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» («¿Por qué?») | 4b · razonamiento del test | 175 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» («¿Por qué?») | 4b · razonamiento del test | 176 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» («¿Por qué?») | 4b · razonamiento del test | 176 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» | 4b · cita bajo el test | 177 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Dolor lateral a la palpación (complejo colateral lateral)» | 4b · cita bajo el test | 178 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» | 4b · cita bajo el test | 177 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» | 4b · cita bajo el test | 179 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Dolor y laxitud con estrés en varo» | 4b · cita bajo el test | 180 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» («¿Por qué?») | 4b · razonamiento del test | 181 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» («¿Por qué?») | 4b · razonamiento del test | 181 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» («¿Por qué?») | 4b · razonamiento del test | 182 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Dolor y laxitud con estrés en varo» («¿Por qué?») | 4b · razonamiento del test | 183 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» | 4b · cita bajo el test | 184 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «PEPPER (palpación-extensión de la radiocapitelar)» | 4b · cita bajo el test | 185 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «SALT (supinación y dolor anterolateral)» | 4b · cita bajo el test | 185 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» | 4b · cita bajo el test | 186 |
+| Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Deslizamientos accesorios de la cabeza del radio» | 4b · cita bajo el test | 185 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 187 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pérdida del contorno normal del brazo y tendón distal no palpable» | 4b · cita bajo el test | 188 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 189 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» («¿Por qué?») | 4b · razonamiento del test | 190 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de Tinel en túnel cubital» | 4b · cita bajo el test | 191 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Evaluación de subluxación del nervio cubital» | 4b · cita bajo el test | 192 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Electrodiagnóstico (velocidad de conducción nerviosa)» | 4b · cita bajo el test | 193 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» | 4b · cita bajo el test | 194 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» | 4b · cita bajo el test | 195 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» («¿Por qué?») | 4b · razonamiento del test | 196 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor en antebrazo proximal (NO en epicóndilo lateral)» | 4b · cita bajo el test | 197 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con extensión resistida del 3er dedo» | 4b · cita bajo el test | 198 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Dolor con supinación resistida con el codo extendido» | 4b · cita bajo el test | 199 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Neurodinámica del nervio radial (ULNT radial)» | 4b · cita bajo el test | 199 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)» | 4b · cita bajo el test | 200 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Neurodinámica del nervio radial (ULNT radial)» («¿Por qué?») | 4b · razonamiento del test | 199 |
+| Codo | co9 · Neuropatía Radial en el Codo (Síndrome del Túnel Radial / del Nervio Interóseo Posterior) | Test «Debilidad de la extensión de los dedos (síndrome del nervio interóseo posterior)» («¿Por qué?») | 4b · razonamiento del test | 200 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor con la extensión activa o resistida del codo» | 4b · cita bajo el test | 201 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Dolor a la palpación de la inserción del tríceps» | 4b · cita bajo el test | 202 |
+| Codo | co10 · Tendinopatía o Rotura del Tríceps | Test «Defecto palpable e hinchazón (rotura)» | 4b · cita bajo el test | 203 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Dolor en la extensión terminal del codo» | 4b · cita bajo el test | 204 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Déficit fijo de extensión» | 4b · cita bajo el test | 205 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» | 4b · cita bajo el test | 206 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» | 4b · cita bajo el test | 206 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Arm bar test» («¿Por qué?») | 4b · razonamiento del test | 207 |
+| Codo | co11 · Pinzamiento Posterior o Posteromedial (Sobrecarga en Extensión-Valgo) | Test «Test de sobrecarga en valgo (valgus overload)» («¿Por qué?») | 4b · razonamiento del test | 207 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Dolor con la extensión del codo, sin traumatismo» | 4b · cita bajo el test | 208 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «Pérdida de la extensión terminal» | 4b · cita bajo el test | 202 |
+| Codo | co12 · Fractura de Estrés del Olécranon | Test «TC (si la radiografía no es concluyente)» | 4b · cita bajo el test | 202 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Dolor a la palpación del pronador redondo» | 4b · cita bajo el test | 209 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Síntomas con la pronación resistida con el codo extendido» | 4b · cita bajo el test | 209 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad del flexor largo del pulgar, del flexor profundo del 2.º y 3.º dedo, del flexor superficial y del pronador redondo» | 4b · cita bajo el test | 209 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Neurodinámica del nervio mediano (ULNT mediano)» | 4b · cita bajo el test | 210 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» | 4b · cita bajo el test | 211 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Neurodinámica del nervio mediano (ULNT mediano)» («¿Por qué?») | 4b · razonamiento del test | 210 |
+| Codo | co13 · Neuropatía del Mediano en el Codo (Síndrome del Pronador / del Nervio Interóseo Anterior) | Test «Debilidad aislada del flexor profundo del 2.º y 3.º dedo y del flexor largo del pulgar (interóseo anterior)» («¿Por qué?») | 4b · razonamiento del test | 211 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Tirón del brazo extendido en un menor de 5 años, sin caída» | 4b · cita bajo el test | 212 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Dolor y limitación de la pronación y de la extensión del codo» | 4b · cita bajo el test | 213 |
+| Codo | co14 · Pronación Dolorosa (Subluxación de la Cabeza del Radio en el Niño) | Test «Tirón del brazo extendido en un menor de 5 años, sin caída» («¿Por qué?») | 4b · razonamiento del test | 212 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor medial con el lanzamiento en un deportista con el esqueleto inmaduro» | 4b · cita bajo el test | 214 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Test «Dolor y laxitud con el estrés en valgo o el valgo móvil» | 4b · cita bajo el test | 215 |
+| Codo | co15 · Codo de la Liga Infantil (Apofisitis o Avulsión del Epicóndilo Medial en el Lanzador Joven) | Pauta de tratamiento | 5 · cita de la pauta | 216 |
+| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» | 4b · cita bajo el test | 217 |
+| Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» | 4b · cita bajo el test | 218 |
+| Codo | — | `sistemas.1.banderasRojas.0` | 2 · mención en el texto | 292 |
+| Codo | — | `sistemas.1.banderasRojas.1` | 2 · mención en el texto | 293 |
+| Codo | — | `sistemas.1.banderasRojas.2` | 2 · mención en el texto | 294 |
+| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 333 |
+| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 334 |
+| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 335 |
+| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 336 |
+| Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 337 |
+| Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 338 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Reglas de Ottawa (si no carga)» | 4b · cita bajo el test | 219 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPAA: palpar y estirar» | 4b · cita bajo el test | 220 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «LPC: palpar y estirar» | 4b · cita bajo el test | 220 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Test «Cajón anterior (a los 4–6 días)» | 4b · cita bajo el test | 221 |
+| Tobillo y pie | tp1 · Esguince Lateral Agudo (LPAA y LPC) | Pronóstico | 5 · cita del pronóstico | 222 |
+| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Palpación del LTPAI» | 4b · cita bajo el test | 223 |
+| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» | 4b · cita bajo el test | 223 |
+| Tobillo y pie | tp2 · Lesión de la Sindesmosis | Pronóstico | 5 · cita del pronóstico | 224 |
+| Tobillo y pie | tp3 · Rotura del Aquiles | Pronóstico | 5 · cita del pronóstico | 225 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Neurovascular y cinco P» | 4b · cita bajo el test | 226 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Equimosis plantar» | 4b · cita bajo el test | 226 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «Dolor en todo el ancho del mediopié» | 4b · cita bajo el test | 226 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Test «1.º y 2.º MT en direcciones opuestas» | 4b · cita bajo el test | 226 |
+| Tobillo y pie | tp4 · Lesión de Lisfranc | Pronóstico | 5 · cita del pronóstico | 225 |
+| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «5.º MT: dolor en la base» | 4b · cita bajo el test | 227 |
+| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Test «Calcáneo: talón doloroso con equimosis» | 4b · cita bajo el test | 228 |
+| Tobillo y pie | tp5 · Fracturas del Pie (5.º MT, Calcáneo) | Pronóstico | 5 · cita del pronóstico | 225 |
+| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Hinchazón y equimosis perimaleolar medial» | 4b · cita bajo el test | 229 |
+| Tobillo y pie | tp6 · Luxación del Tibial Posterior | Test «Resalte con la flexión dorsal y plantar» | 4b · cita bajo el test | 230 |
+| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Test de pinzamiento posterior» | 4b · cita bajo el test | 231 |
+| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Test «Hinchazón y dolor por detrás del astrágalo» | 4b · cita bajo el test | 232 |
+| Tobillo y pie | tp7 · Pinzamiento Posterior del Tobillo | Pronóstico | 5 · cita del pronóstico | 233 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» | 4b · cita bajo el test | 234 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Descarga en el salto» | 4b · cita bajo el test | 235 |
+| Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Pronóstico | 5 · cita del pronóstico | 236 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Dolor con carga y flexión dorsal» | 4b · cita bajo el test | 237 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «Salto con el talón elevado frente a aterrizaje» | 4b · cita bajo el test | 235 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Test «ETM monopodal sobre plano inclinado» | 4b · cita bajo el test | 235 |
+| Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Pronóstico | 5 · cita del pronóstico | 236 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «Crepitación en flexión plantar y dorsal» | 4b · cita bajo el test | 238 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Test «ETM en rango amplio» | 4b · cita bajo el test | 235 |
+| Tobillo y pie | tp10 · Afectación de la Vaina del Aquiles | Pronóstico | 5 · cita del pronóstico | 236 |
+| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «ETM sobre un step en todo el rango» | 4b · cita bajo el test | 239 |
+| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Test «Marcha descalzo» | 4b · cita bajo el test | 240 |
+| Tobillo y pie | tp11 · Tendinopatía del Plantar Delgado | Pronóstico | 5 · cita del pronóstico | 236 |
+| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Tinel a lo largo del sural» | 4b · cita bajo el test | 239 |
+| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Test «Palpación en prono con flexión dorsal pasiva» | 4b · cita bajo el test | 241 |
+| Tobillo y pie | tp12 · Neuropatía del Nervio Sural | Pronóstico | 5 · cita del pronóstico | 242 |
+| Tobillo y pie | tp13 · Bursitis Calcánea Superficial | Test «Dolor superficial e hinchazón a la presión» | 4b · cita bajo el test | 243 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Dolor retromaleolar medial» | 4b · cita bajo el test | 244 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «Inversión resistida» | 4b · cita bajo el test | 244 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test «ETM: el retropié no va a varo» | 4b · cita bajo el test | 244 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Test ««Demasiados dedos»» | 4b · cita bajo el test | 230 |
+| Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Pronóstico | 5 · cita del pronóstico | 245 |
+| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Flexoextensión del primer dedo en flexión plantar completa» | 4b · cita bajo el test | 246 |
+| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Test «Crepitación e hinchazón en la vaina» | 4b · cita bajo el test | 247 |
+| Tobillo y pie | tp15 · Tendinopatía del Flexor Largo del Primer Dedo (FHL) | Pronóstico | 5 · cita del pronóstico | 248 |
+| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Tinel a lo largo del túnel» | 4b · cita bajo el test | 249 |
+| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Hinchazón en el túnel o la subastragalina posterior» | 4b · cita bajo el test | 250 |
+| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Test «Explorar el FHL» | 4b · cita bajo el test | 250 |
+| Tobillo y pie | tp16 · Síndrome del Túnel del Tarso | Pronóstico | 5 · cita del pronóstico | 242 |
+| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Dolor óseo a la palpación» | 4b · cita bajo el test | 251 |
+| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Calcáneo: compresión medial y lateral a la vez» | 4b · cita bajo el test | 251 |
+| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Test «Astrágalo: hinchazón en el seno del tarso o posterior» | 4b · cita bajo el test | 251 |
+| Tobillo y pie | tp17 · Fractura de Estrés del Tobillo (Maléolo Medial, Astrágalo, Calcáneo) | Pronóstico | 5 · cita del pronóstico | 252 |
+| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Palpación del seno del tarso» | 4b · cita bajo el test | 253 |
+| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Test «Estrés en inversión de la subastragalina o KTW (rodilla a la pared) con pronación» | 4b · cita bajo el test | 253 |
+| Tobillo y pie | tp18 · Síndrome del Seno del Tarso | Pronóstico | 5 · cita del pronóstico | 254 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Dolor retromaleolar lateral» | 4b · cita bajo el test | 255 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Subluxación de los peroneos» | 4b · cita bajo el test | 256 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Test «Crepitación e hinchazón» | 4b · cita bajo el test | 255 |
+| Tobillo y pie | tp19 · Tendinopatía de los Peroneos | Pronóstico | 5 · cita del pronóstico | 255 |
+| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «KTW (rodilla a la pared)» | 4b · cita bajo el test | 257 |
+| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Test «Palpación anterior» | 4b · cita bajo el test | 257 |
+| Tobillo y pie | tp20 · Pinzamiento Anterior del Tobillo | Pronóstico | 5 · cita del pronóstico | 254 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Hinchazón articular» | 4b · cita bajo el test | 258 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Cajón anterior: signo del surco» | 4b · cita bajo el test | 259 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Test «Laxitud subastragalina» | 4b · cita bajo el test | 259 |
+| Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Pronóstico | 5 · cita del pronóstico | 259 |
+| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Hinchazón y dolor a la palpación» | 4b · cita bajo el test | 258 |
+| Tobillo y pie | tp22 · Sinovitis Postraumática | Test «Laxitud del LPAA y del LPC» | 4b · cita bajo el test | 258 |
+| Tobillo y pie | tp22 · Sinovitis Postraumática | Pronóstico | 5 · cita del pronóstico | 254 |
+| Tobillo y pie | tp23 · Coalición Tarsiana | Test «Movilidad subastragalina y mediotarsiana» | 4b · cita bajo el test | 224 |
+| Tobillo y pie | tp23 · Coalición Tarsiana | Pronóstico | 5 · cita del pronóstico | 260 |
+| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Perfil clínico» | 4b · cita bajo el test | 261 |
+| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Test «Palpación de la interlínea» | 4b · cita bajo el test | 262 |
+| Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Pronóstico | 5 · cita del pronóstico | 261 |
+| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Palpación de la cúpula astragalina en flexión plantar» | 4b · cita bajo el test | 263 |
+| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Test «Hinchazón, derrame, crepitación» | 4b · cita bajo el test | 263 |
+| Tobillo y pie | tp25 · Osteocondritis Disecante del Astrágalo | Pronóstico | 5 · cita del pronóstico | 260 |
+| Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Test «Palpación de la tuberosidad medial del calcáneo» | 4b · cita bajo el test | 264 |
+| Tobillo y pie | tp26 · Dolor Plantar Crónico del Talón | Pronóstico | 5 · cita del pronóstico | 265 |
+| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Test «Palpación posterolateral del talón» | 4b · cita bajo el test | 264 |
+| Tobillo y pie | tp27 · Síndrome de la Almohadilla Grasa del Talón | Pronóstico | 5 · cita del pronóstico | 265 |
+| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Test «Tinel sobre el nervio calcáneo medial» | 4b · cita bajo el test | 266 |
+| Tobillo y pie | tp28 · Atrapamiento Nervioso del Talón | Pronóstico | 5 · cita del pronóstico | 242 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Aguda: palpación calcaneocuboidea» | 4b · cita bajo el test | 267 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Gradual: interlíneas del cuboides» | 4b · cita bajo el test | 267 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Test «Carga del antepié e inicio de la ETM» | 4b · cita bajo el test | 267 |
+| Tobillo y pie | tp29 · Lesión Calcaneocuboidea y Cubometatarsiana | Pronóstico | 5 · cita del pronóstico | 268 |
+| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Punto N» | 4b · cita bajo el test | 251 |
+| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Test «Dolor puntual sobre cuboides o cuñas» | 4b · cita bajo el test | 226 |
+| Tobillo y pie | tp30 · Fractura de Estrés del Mediopié (Navicular, Cuboides, Cuñas) | Pronóstico | 5 · cita del pronóstico | 269 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Equimosis e hinchazón en la interlínea» | 4b · cita bajo el test | 270 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Rango de la 1.ª MTF frente al lado sano» | 4b · cita bajo el test | 271 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Test «Dolor sobre los sesamoideos» | 4b · cita bajo el test | 272 |
+| Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Pronóstico | 5 · cita del pronóstico | 268 |
+| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Palpación de la base del 2.º MT y de Lisfranc» | 4b · cita bajo el test | 273 |
+| Tobillo y pie | tp32 · Dolor en la Base del 2.º Metatarsiano | Test «Estrés frente a sinovitis» | 4b · cita bajo el test | 274 |
+| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Test «Dolor puntual sobre el cuello» | 4b · cita bajo el test | 275 |
+| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Test «Carga axial del MT» | 4b · cita bajo el test | 275 |
+| Tobillo y pie | tp33 · Fractura de Estrés del Cuello de un Metatarsiano (Fractura de Marcha) | Pronóstico | 5 · cita del pronóstico | 276 |
+| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Palpación del espacio con compresión de los metatarsianos» | 4b · cita bajo el test | 277 |
+| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Test «Diferencial del antepié» | 4b · cita bajo el test | 278 |
+| Tobillo y pie | tp34 · Neuroma de Morton o Bursitis Intermetatarsiana | Pronóstico | 5 · cita del pronóstico | 268 |
+| Tobillo y pie | tp35 · Gota | Test «Articulación roja, hinchada y muy dolorosa» | 4b · cita bajo el test | 278 |
+| Tobillo y pie | tp35 · Gota | Test «Suele estar sistémicamente bien» | 4b · cita bajo el test | 279 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Sever: inserción del Aquiles (8–12 años)» | 4b · cita bajo el test | 280 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Iselin: base del 5.º MT (8–13 años)» | 4b · cita bajo el test | 281 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Navicular: apofisitis del tibial posterior o Köhler» | 4b · cita bajo el test | 282 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Test «Freiberg: cabeza del 2.º–4.º MT (14–18 años)» | 4b · cita bajo el test | 283 |
+| Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Pronóstico | 5 · cita del pronóstico | 284 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «Regla de Ottawa de tobillo» | 4b · cita bajo el test | 285 |
+| Tobillo y pie | tp37 · Fractura de Tobillo (Maleolar) | Test «No carga cuatro pasos» | 4b · cita bajo el test | 286 |
+| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 339 |
+| Tobillo y pie | — | Pregunta `tp_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 340 |
+| Tobillo y pie | — | Pregunta `tp_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 341 |
+| Tobillo y pie | — | Pregunta `tp_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 342 |
+| Tobillo y pie | — | Pregunta `tp_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 343 |
+| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 344 |
+| Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 345 |
+| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 346 |
+| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 347 |
+| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 348 |
+| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 349 |
+| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 350 |
+| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 351 |
+| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 351 |
+| Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 350 |
 
 ### Logerstedt 2017
 
@@ -5902,13 +5954,13 @@ Nota: Guía de práctica clínica APTA (literatura hasta noviembre de 2021); PDF
 
 Citada como:
 
-1. Otro nombre del test de Cozen: la guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)». No es una prueba distinta: marcar solo una de las dos para no contar dos veces el mismo hallazgo.
+1. La guía de Lucado 2022 (apéndice E) lo cita como «Thomsen test (Cozen's)».
 2. Lucado 2022 (J Orthop Sports Phys Ther 52(12):CPG1–CPG111, apéndice E)
 3. Lucado 2022, J Orthop Sports Phys Ther 52(12):CPG1–CPG111 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Wallis 2024, Cochrane Database Syst Rev (5):CD013042 (revisión Cochrane, 23 ensayos, certeza baja)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Thomsen (= test de Cozen)» | 4b · cita bajo el test | 2 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Pauta de tratamiento | 5 · cita de la pauta | 3 |
 
@@ -6872,20 +6924,32 @@ Nota: Resumen en PubMed (PMID 15701609; no está en PMC). Comprobación de las c
 
 Citada como:
 
-1. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
-2. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-3. Sentado, codo a 70° de flexión y antebrazo en supinación máxima; estrés en valgo comparado con el otro codo; positivo si reproduce el dolor medial. Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°. El dolor es más sensible y la laxitud, más específica (Lluch). En O'Driscoll 2005, que lo exploró a 30°, 60°, 70° o 90° sin un ángulo único: S 64,7 % (11 de 17), E 50 % (2 de 4 sin lesión); LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4): no cambia la probabilidad, cuenta como hallazgo.
-4. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-5. La misma maniobra, valorando la apertura medial o la falta de tope firme frente al otro codo. En O'Driscoll 2005: S 18,8 % (3 de 16), E 100 % (4 de 4 sin lesión; la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4): cuenta como hallazgo.
+1. Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°.
+2. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+
+Técnica original (O'Driscoll 2005): paciente erguido, hombro en 90° de abducción; desde la flexión máxima del codo se aplica un valgo moderado hasta que el hombro llega al final de la rotación externa y, manteniéndolo, se extiende el codo deprisa hasta unos 30°. Es positivo si reproduce el dolor medial que el paciente tiene con la actividad, máximo entre 120° y 70°; suele aparecer de golpe y provoca una retirada involuntaria del brazo. Se confirma repitiendo el movimiento a la inversa, de extensión a flexión, con una respuesta parecida, por lo general menor, en el mismo ángulo. Cuidado si hay síntomas en el hombro, que el test puede agravar.
+
+En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pacientes con dolor más allá de los 70° hacia la extensión necesitaron además desbridar osteofitos posteromediales. Con la exploración quirúrgica sola como referencia (15 pacientes), el test fue positivo en las 14 lesiones y negativo en el único ligamento sano. El único falso positivo de la serie tenía una degeneración del tendón flexor-pronador pegada al ligamento.
+3. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+4. Tradicionalmente se hace a 20–30°, pero el codo es más inestable a 70°. En O'Driscoll 2005, que lo exploró a 30°, 60°, 70° o 90° sin un ángulo único: S 64,7 % (11 de 17), E 50 % (2 de 4 sin lesión); LR+ 1,29 (IC 0,46–3,66) y LR− 0,71 calculadas por Zwerus (tabla 4).
+5. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
+6. En O'Driscoll 2005: S 18,8 % (3 de 16), E 100 % (4 de 4 sin lesión; la LR+ no se puede calcular), LR− 0,81 (Zwerus, tabla 4).
+7. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–238
+8. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 236 y 238
+9. O'Driscoll 2005 (Am J Sports Med 33(2):231–239), pp. 231–233
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `criterio`) | 4b · mención en el texto | 1 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 2 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» (en `criterio`) | 4b · mención en el texto | 3 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 4 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» (en `criterio`) | 4b · mención en el texto | 5 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 4 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 3 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 5 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 5 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» («¿Por qué?») | 4b · razonamiento del test | 7 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» («¿Por qué?») | 4b · razonamiento del test | 8 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» («¿Por qué?») | 4b · razonamiento del test | 9 |
 
 ### O'Driscoll 2007
 
@@ -6898,13 +6962,21 @@ Nota: Leído en la sesión de codo (2026-10). Resumen en PubMed (PMID 17687121).
 
 Citada como:
 
-1. Con el codo en 90° de flexión y el antebrazo supinado, se intenta "enganchar" el tendón del bíceps con el dedo índice desde el lado lateral. Positivo (rotura completa) si no hay una estructura en cordón que enganchar; si engancha pero duele, orienta a rotura parcial. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). En las roturas de menos de un mes, S 86 %; en las crónicas, 57 %: la cicatriz o una aponeurosis bicipital íntegra pueden dar un cordón que engancha. Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+1. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+
+Técnica original (O'Driscoll 2007): el paciente, sentado o de pie, flexiona activamente el codo a 90° y supina el antebrazo hasta el final; el explorador mete el índice desde el lado lateral de la fosa antecubital por debajo del borde lateral del tendón, alrededor de 1 cm o más, y tira de él hacia delante. Supinar al máximo contrae el bíceps con el braquial algo relajado y aleja de la fosa la unión musculotendinosa. El paciente no debe flexionar contra resistencia: endurece el braquial y cierra el espacio bajo el tendón (si hace falta resistencia, que sea a la supinación). Si engancha, se tira con fuerza del tendón: el dolor con el tendón íntegro sugiere una rotura parcial (9 de 12 en la serie). Se compara con el codo sano.
+
+El error más probable, según O'Driscoll, es palpar un tendón en la fosa en lugar de enganchar el dedo detrás de él, sobre todo en hombres muy musculados, en los que el tendón del braquial es grueso. La grasa abundante o la cicatriz en la fosa podrían dificultar el enganche. En Zwerus 2022, el tejido cicatricial de la rotura crónica puede tomarse por un tendón íntegro.
+
+La aponeurosis bicipital se explora aparte por el lado medial: su borde es fino, cortante y laminar, y el del tendón, grueso y en cordón. Seguía íntegra en 5 de las 33 roturas completas de O'Driscoll; si está íntegra, el tendón se retrae menos.
 2. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
+3. O'Driscoll 2007 (Am J Sports Med 35(11):1865–1869), pp. 1865–1869
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 2 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
 ### Ochi 2011
 
@@ -6917,16 +6989,16 @@ Nota: Leído en la sesión de codo (2026-10). Solo el resumen en PubMed (PMID 21
 
 Citada como:
 
-1. Flexión máxima del codo con el antebrazo en supinación completa y la muñeca en extensión, mantenida; positivo si reproduce las parestesias en el territorio cubital. En Ochi 2012 (55 nervios de 52 pacientes con túnel cubital frente a 123 nervios de 64 voluntarios sin síntomas, de un solo cirujano), a los 5 segundos: S 25 %, E 100 %; en Ochi 2011, a los 10 segundos, S 36 %. Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch). Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012. Cuenta como hallazgo: con controles sin síntomas la especificidad se sobrestima.
+1. En Ochi 2012 (55 nervios de 52 pacientes con túnel cubital frente a 123 nervios de 64 voluntarios sin síntomas, de un solo cirujano), a los 5 segundos: S 25 %, E 100 %; en Ochi 2011, a los 10 segundos, S 36 %. Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch). Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012. Con controles sin síntomas la especificidad se sobrestima.
 2. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1) · Ochi 2011 (J Hand Surg Am 36:782–787) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-3. Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo y muñeca en posición neutra y dedos extendidos; positivo si reproduce los síntomas en 10 segundos. Ochi 2011 (25 codos de 25 pacientes; como controles, 104 nervios de 54 voluntarios sin síntomas y 14 nervios de 14 pacientes con otras neuropatías): a los 10 segundos, S 80 % y ningún control positivo. Ochi 2012, a los 5 segundos: S 58 %, E 100 %. Cuenta como hallazgo: estudios de casos y controles del autor del test.
+3. Ochi 2011 (25 codos de 25 pacientes; como controles, 104 nervios de 54 voluntarios sin síntomas y 14 nervios de 14 pacientes con otras neuropatías): a los 10 segundos, S 80 % y ningún control positivo. Ochi 2012, a los 5 segundos: S 58 %, E 100 %. Estudios de casos y controles del autor del test.
 4. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» | 4b · cita bajo el test | 2 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» | 4b · cita bajo el test | 4 |
 
 ### Ochi 2012
@@ -6940,20 +7012,20 @@ Nota: Leído en la sesión de codo (2026-10). PDF aportado por el usuario. Tests
 
 Citada como:
 
-1. Flexión máxima del codo con el antebrazo en supinación completa y la muñeca en extensión, mantenida; positivo si reproduce las parestesias en el territorio cubital. En Ochi 2012 (55 nervios de 52 pacientes con túnel cubital frente a 123 nervios de 64 voluntarios sin síntomas, de un solo cirujano), a los 5 segundos: S 25 %, E 100 %; en Ochi 2011, a los 10 segundos, S 36 %. Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch). Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012. Cuenta como hallazgo: con controles sin síntomas la especificidad se sobrestima.
+1. En Ochi 2012 (55 nervios de 52 pacientes con túnel cubital frente a 123 nervios de 64 voluntarios sin síntomas, de un solo cirujano), a los 5 segundos: S 25 %, E 100 %; en Ochi 2011, a los 10 segundos, S 36 %. Según los estudios que recoge Ochi, la S es del 75 % al minuto y del 86–93 % a los 3 minutos (el rango que da Lluch). Las «LR+ 27–41» que atribuye Lluch a los tests de provocación no aparecen en Ochi 2012. Con controles sin síntomas la especificidad se sobrestima.
 2. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1) · Ochi 2011 (J Hand Surg Am 36:782–787) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-3. Hombro en 90° de abducción, rotación interna máxima y 10° de flexión, codo a 90°, antebrazo y muñeca en posición neutra y dedos extendidos; positivo si reproduce los síntomas en 10 segundos. Ochi 2011 (25 codos de 25 pacientes; como controles, 104 nervios de 54 voluntarios sin síntomas y 14 nervios de 14 pacientes con otras neuropatías): a los 10 segundos, S 80 % y ningún control positivo. Ochi 2012, a los 5 segundos: S 58 %, E 100 %. Cuenta como hallazgo: estudios de casos y controles del autor del test.
+3. Ochi 2011 (25 codos de 25 pacientes; como controles, 104 nervios de 54 voluntarios sin síntomas y 14 nervios de 14 pacientes con otras neuropatías): a los 10 segundos, S 80 % y ningún control positivo. Ochi 2012, a los 5 segundos: S 58 %, E 100 %. Estudios de casos y controles del autor del test.
 4. Ochi 2011 (J Hand Surg Am 36:782–787) · Ochi 2012 (J Shoulder Elbow Surg 21:777–781) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 92 y 101
-5. Como el SIRT (hombro en 90° de abducción, 10° de flexión y rotación interna máxima), pero con el codo en flexión máxima, el antebrazo en supinación máxima y la muñeca y los dedos en extensión máxima; positivo si reproduce o agrava los síntomas en el territorio cubital en menos de 5 segundos. Ochi 2012 (nervios, no pacientes): S 87 % (48 de 55), E 98 % (121 de 123), LR+ 42,5 publicada en el texto, aunque con los datos de su tabla sale ≈54; más sensible que el test de flexión y el SIRT de 5 segundos. Cuenta como hallazgo: casos y controles, con voluntarios sin síntomas como controles, de un solo cirujano, y el propio estudio advierte de que el desfiladero torácico y otros diagnósticos podrían dar positivo.
+5. Ochi 2012 (nervios, no pacientes): S 87 % (48 de 55), E 98 % (121 de 123), LR+ 42,5 publicada en el texto, aunque con los datos de su tabla sale ≈54; más sensible que el test de flexión y el SIRT de 5 segundos. Casos y controles, con voluntarios sin síntomas como controles, de un solo cirujano, y el propio estudio advierte de que el desfiladero torácico y otros diagnósticos podrían dar positivo.
 6. Ochi 2012 (J Shoulder Elbow Surg 21:777–781; casos y controles, tabla 1)
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de flexión del codo» | 4b · cita bajo el test | 2 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión del codo (SIRT)» | 4b · cita bajo el test | 4 |
-| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión máxima del codo (SIREFT)» (en `criterio`) | 4b · mención en el texto | 5 |
+| Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión máxima del codo (SIREFT)» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
 | Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Test «Test de rotación interna del hombro con flexión máxima del codo (SIREFT)» | 4b · cita bajo el test | 6 |
 
 ### Ogince 2007
@@ -7671,17 +7743,31 @@ Nota: Leído en la sesión de referencias de codo (2026-10). Imagen del ligament
 
 Citada como:
 
-1. Diferencia de apertura de la articulación cubitotroclear entre reposo y valgo manual (codo a unos 30°) mayor de 1,0 mm frente al codo sano. En Roedl 2016, S 96 %, E 81 % (LR calculadas ≈5,1 y ≈0,05), en lanzadores con la apertura del brazo dominante ya algo aumentada (0,5 mm de media sin rotura).
+1. En Roedl 2016, S 96 %, E 81 % (LR calculadas ≈5,1 y ≈0,05), en lanzadores con la apertura del brazo dominante ya algo aumentada (0,5 mm de media sin rotura).
+
+Técnica de Roedl 2016: de pie, con el codo a unos 30° de flexión sostenido por un ayudante, se mide la anchura de la cubitotroclear a la altura del haz anterior del ligamento en reposo y con el máximo valgo manual, tres veces cada una, y se resta; lo mismo en el codo sano, y la diferencia entre los dos codos es la apertura relativa. El explorador no sabía qué codo era el lesionado, y sus tres medidas difirieron 0,1 mm de mediana.
+
+El umbral de 1,0 mm se fijó antes de analizar los datos, a partir del IC 95 % (1,1–2,8 mm) de la apertura de 2,0 mm que dio cortar el ligamento en un estudio en cadáver del mismo grupo, y la curva ROC lo confirmó como el más preciso. Apertura relativa media: 0,5 mm sin rotura, 2,1 mm con rotura parcial y 3,8 mm con rotura completa. Con más de 1,5 mm, S 81 % y E 91 %; con más de 2,6 mm, E 100 % y S 53 %: umbrales sacados de la curva ROC que los autores piden confirmar en otra serie.
+
+En la radiografía con estrés en valgo, una apertura medial de más de 3 mm es compatible con inestabilidad en valgo; para las partes blandas se prefiere la RM (Lluch 2020, p. 87).
 2. Roedl 2016 (Radiology 279(3):827–837; retrospectivo, 144 jugadores de béisbol con dolor medial del codo, todos con cirugía o artroscopia como referencia; tabla 2: 51 de 53 roturas y 74 de 91 sin rotura; positivo con apertura >1,0 mm frente al lado sano, umbral fijado de antemano por un estudio en cadáver; para rotura completa, umbral de 2,5 mm sacado de la curva ROC: S 95 %, E 89 %), recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática sin metaanálisis: es el único estudio de la ecografía de estrés)
-3. Lectura de la artro-RM con una rotura parcial o completa del ligamento. En la cohorte de Roedl 2016, S 81 %, E 91 % (LR calculadas ≈9,0 y ≈0,21); la RM detectó mejor las roturas del tercio medio y distal y la ecografía convencional, las proximales.
+3. En la cohorte de Roedl 2016, S 81 %, E 91 % (LR calculadas ≈9,0 y ≈0,21); la RM detectó mejor las roturas del tercio medio y distal y la ecografía convencional, las proximales.
+
+En Roedl 2016 la artro-RM, leída de nuevo por dos radiólogos que no conocían la ecografía (κ 0,90 en las roturas parciales y 0,94 en las completas), vio 27 de 28 roturas del tercio medio y distal y 16 de 25 proximales; la ecografía convencional, 19 de 28 y 24 de 25. En las roturas completas, S 84 % y E 99 %; en las parciales, S 74 % y E 92 % (tabla 2). Los cirujanos conocían el informe de la artro-RM.
+
+Sumar la apertura de la ecografía de estrés (más de 1,0 mm) a ver la rotura en la artro-RM o en la ecografía convencional dio S 96 % y E 99 %, un modelo que los autores piden confirmar en otra serie.
 4. Roedl 2016 (Radiology 279(3):827–837; retrospectivo, 144 jugadores de béisbol, todos con cirugía o artroscopia; tabla 2: 43 de 53 roturas y 83 de 91 sin rotura, la misma precisión que la ecografía convencional en esa cohorte), recogido en Campbell 2020 (Am J Sports Med 48:2819–2827, revisión sistemática sin metaanálisis; otros estudios de la revisión, S 81–100 %, E 91–100 %)
+5. Roedl 2016 (Radiology 279(3):827–837), pp. 828–829, 831–834 y 836
+6. Roedl 2016 (Radiology 279(3):827–837), pp. 829–830, 833–834 y 836
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» | 4b · cita bajo el test | 2 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» | 4b · cita bajo el test | 4 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» («¿Por qué?») | 4b · razonamiento del test | 5 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» («¿Por qué?») | 4b · razonamiento del test | 6 |
 
 ### Rout 2024
 
@@ -9242,16 +9328,20 @@ Nota: Leído en la sesión de codo (2026-10). PDF aportado por el usuario. La re
 
 Citada como:
 
-1. Prensión máxima con el codo a 90° de flexión y en extensión completa: en la epicondilalgia, la fuerza cae en extensión (en el sano no cambia). Cuenta como hallazgo: los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
+1. Los intervalos no se convierten en LR, y el estudio de origen comparaba el brazo afectado con el sano del mismo paciente, no con otras causas de dolor lateral. Cifras de Dorf 2007, calculadas solo con los 40 pacientes con medidas de los dos brazos (el afectado frente al sano), con LR calculadas por Zwerus 2018 (tabla 4): caída ≥5 %, S 83 %, E 80 % (LR+ 4,2, LR− 0,21); ≥8 %, S 80 %, E 85 % (LR+ 5,3, LR− 0,24); ≥10 %, S 78 %, E 90 % (LR+ 7,7, LR− 0,24). El patrón de referencia fue el diagnóstico clínico de los cirujanos, que probablemente ya veían la fuerza de prensión.
 2. Karanasios 2022 (J Hand Ther 35:541–551; revisión sistemática, 24 estudios, 97 % con riesgo de sesgo alto o incierto; solo 2 estudios de exploración física). Estudio de origen: Dorf 2007 (J Hand Surg Am 32:882–886; revisión retrospectiva de 81 pacientes con medidas del brazo afectado, de los que 40 tenían también las del sano) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 3. Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 84
-4. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). Test de valgo móvil (O'Driscoll 2005): hombro en abducción y rotación externa, valgo mantenido con el codo en flexión completa y extensión rápida; positivo si reproduce el dolor medial, máximo entre 120° y 70°. En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. Cuenta como hallazgo: la especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+4. Reproducción del dolor medial con estrés en valgo dinámico. En el único estudio (O'Driscoll 2005; Zwerus 2018, tabla 4) fue más sensible que el valgo estático con dolor (100 % frente a 64,7 %). En 21 pacientes operados (retrospectivo, con los 16 últimos recogidos de forma prospectiva): S 100 % (17/17), E 75 % (3 de 4 pacientes con el ligamento íntegro en la cirugía). O'Driscoll no publica LR. Lluch 2020 (p. 86) da las cifras invertidas (S 75 %, E 100 %). Zwerus 2018 (tabla 4) da las mismas cifras que el original, con LR+ 4 (IC 0,7–21,8, que cruza el 1); es el texto de la revisión el que las invierte, y de ahí las copia Lluch. La especificidad sale de solo 4 pacientes sin lesión y el IC de la LR+ incluye el 1. La maniobra de ordeño es otra prueba (Zwerus 2018, tabla 5), sin estudios de precisión.
+
+Técnica original (O'Driscoll 2005): paciente erguido, hombro en 90° de abducción; desde la flexión máxima del codo se aplica un valgo moderado hasta que el hombro llega al final de la rotación externa y, manteniéndolo, se extiende el codo deprisa hasta unos 30°. Es positivo si reproduce el dolor medial que el paciente tiene con la actividad, máximo entre 120° y 70°; suele aparecer de golpe y provoca una retirada involuntaria del brazo. Se confirma repitiendo el movimiento a la inversa, de extensión a flexión, con una respuesta parecida, por lo general menor, en el mismo ángulo. Cuidado si hay síntomas en el hombro, que el test puede agravar.
+
+En la serie, el dolor fue máximo de media a 90° (entre 70° y 110°). Los 4 pacientes con dolor más allá de los 70° hacia la extensión necesitaron además desbridar osteofitos posteromediales. Con la exploración quirúrgica sola como referencia (15 pacientes), el test fue positivo en las 14 lesiones y negativo en el único ligamento sano. El único falso positivo de la serie tenía una degeneración del tendón flexor-pronador pegada al ligamento.
 5. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
 6. O'Driscoll 2005 (Am J Sports Med 33:231–239) · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tablas 4 y 5) · Lluch 2020, cap. 3.2 (Coombes y Bisset), p. 86
-7. Pivot shift: en supino, brazo por encima de la cabeza, hombro en rotación externa completa y antebrazo en supinación; carga axial y valgo mientras se lleva el codo de extensión a flexión; positivo si la radiohumeral se reduce con un resalte palpable. Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular; sin especificidad publicada en el capítulo. El dato es de Regan y Lapner, recogido en Zwerus 2018: 8 pacientes, todos con la lesión y sin controles, así que no hay especificidad posible.
+7. Sensibilidad del 38 % en el paciente despierto (100 % bajo anestesia), por la aprensión y la defensa muscular; sin especificidad publicada en el capítulo. El dato es de Regan y Lapner, recogido en Zwerus 2018: 8 pacientes, todos con la lesión y sin controles, así que no hay especificidad posible.
 8. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
-9. El paciente hace una flexión de brazos con el antebrazo en supinación máxima y otra en pronación máxima; positivo si la aprensión o la subluxación aparecen al extender el codo en supinación. En Zwerus 2018 (tabla 4; Regan y Lapner): S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles; sin especificidad: cuenta como hallazgo. Lluch da el 88–100 % para este test y el de recolocación juntos.
-10. Con el brazo apoyado en el borde de la mesa, el codo hacia fuera y el antebrazo en supinación, el paciente flexiona el codo cargando peso: aparecen aprensión y dolor hacia los 40° de flexión. Se repite con el examinador presionando la cabeza del radio para evitar la subluxación posterior; positivo si los síntomas se alivian. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles, con el pivot shift como referencia y diseño poco claro (tabla 3); sin especificidad: cuenta como hallazgo.
+9. En Zwerus 2018 (tabla 4; Regan y Lapner): S 87,5 % (IC 47,4–99,7) en 8 pacientes, todos con la lesión y sin controles; sin especificidad. Lluch da el 88–100 % para este test y el de recolocación juntos.
+10. En Zwerus 2018 (tabla 4; Arvind y Hargreaves): S 100 % (IC 63,1–100) en 8 pacientes, todos con la lesión y sin controles, con el pivot shift como referencia y diseño poco claro (tabla 3); sin especificidad.
 11. Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 87–88 y 100 · Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4)
 12. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
 13. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
@@ -9260,18 +9350,18 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» | 4b · cita bajo el test | 2 |
 | Codo | co2 · Tendinopatía Medial (Epicondilalgia Medial / Codo de Golfista) | Test «Test de Polk (medial)» | 4b · cita bajo el test | 3 |
-| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `criterio`) | 4b · mención en el texto | 4 |
+| Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo móvil (moving valgus stress test)» | 4b · cita bajo el test | 5 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (dolor)» | 4b · cita bajo el test | 6 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Test de valgo estático (laxitud)» | 4b · cita bajo el test | 6 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» (en `criterio`) | 4b · mención en el texto | 7 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» (en `razonamiento.detalle`) | 4b · mención en el texto | 7 |
 | Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de cajón posterolateral / Test de pivote lateral» | 4b · cita bajo el test | 8 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» (en `criterio`) | 4b · mención en el texto | 9 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» (en `razonamiento.detalle`) | 4b · mención en el texto | 9 |
 | Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de flexión en suelo (push-up) con el antebrazo en supinación» | 4b · cita bajo el test | 8 |
-| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» (en `criterio`) | 4b · mención en el texto | 10 |
+| Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» (en `razonamiento.detalle`) | 4b · mención en el texto | 10 |
 | Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Test «Test de recolocación en la mesa (table-top relocation)» | 4b · cita bajo el test | 11 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 12 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 13 |
@@ -9290,17 +9380,29 @@ Nota: Leído en la sesión de referencias de codo (2026-10). Hook test y pronaci
 
 Citada como:
 
-1. Con el codo en 90° de flexión y el antebrazo supinado, se intenta "enganchar" el tendón del bíceps con el dedo índice desde el lado lateral. Positivo (rotura completa) si no hay una estructura en cordón que enganchar; si engancha pero duele, orienta a rotura parcial. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). En las roturas de menos de un mes, S 86 %; en las crónicas, 57 %: la cicatriz o una aponeurosis bicipital íntegra pueden dar un cordón que engancha. Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+1. Cifras de Zwerus 2022 (tabla 2): 86 pacientes consecutivos con molestias anteriores del codo o sospecha de lesión del bíceps distal, 42 con rotura completa, confirmada con cirugía en el 79 % y con RM o ecografía en el resto; S 71,4 %, E 95,5 %, LR+ 15,71, LR− 0,30 (publicadas). Si se hacen el Hook test y la pronación pasiva, solo cuenta el Hook test (absorbe): son los mismos pacientes y no se cuentan dos veces. Contraste: Devereaux y ElMaraghy 2013 (48 pacientes, solo 6 sin rotura completa, y el método de confirmación dependía del resultado de los propios tests) dio S 81 %, E 100 %, LR− 0,19; O'Driscoll 2007, revisión retrospectiva del registro quirúrgico del creador del test (33 roturas completas frente a 12 parciales operadas; el brazo sano, control aparte), S y E del 100 %; Baylor 2023 (prospectivo, 28 operados; solo el resumen), S 96 %, E 67 %.
+
+Técnica original (O'Driscoll 2007): el paciente, sentado o de pie, flexiona activamente el codo a 90° y supina el antebrazo hasta el final; el explorador mete el índice desde el lado lateral de la fosa antecubital por debajo del borde lateral del tendón, alrededor de 1 cm o más, y tira de él hacia delante. Supinar al máximo contrae el bíceps con el braquial algo relajado y aleja de la fosa la unión musculotendinosa. El paciente no debe flexionar contra resistencia: endurece el braquial y cierra el espacio bajo el tendón (si hace falta resistencia, que sea a la supinación). Si engancha, se tira con fuerza del tendón: el dolor con el tendón íntegro sugiere una rotura parcial (9 de 12 en la serie). Se compara con el codo sano.
+
+El error más probable, según O'Driscoll, es palpar un tendón en la fosa en lugar de enganchar el dedo detrás de él, sobre todo en hombres muy musculados, en los que el tendón del braquial es grueso. La grasa abundante o la cicatriz en la fosa podrían dificultar el enganche. En Zwerus 2022, el tejido cicatricial de la rotura crónica puede tomarse por un tendón íntegro.
+
+La aponeurosis bicipital se explora aparte por el lado medial: su borde es fino, cortante y laminar, y el del tendón, grueso y en cordón. Seguía íntegra en 5 de las 33 roturas completas de O'Driscoll; si está íntegra, el tendón se retrae menos.
 2. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · O'Driscoll 2007 (Am J Sports Med 35:1865–1869; tabla 1) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 84–85 y 102
-3. Codo apoyado a 90° de flexión; se palpa el vientre del bíceps mientras se prona y supina pasivamente el antebrazo: si el músculo sube con la supinación y baja con la pronación, el tendón distal está íntegro; si no se mueve, rotura completa. Cifras de Zwerus 2022 (tabla 2; los mismos 86 pacientes): S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34 (publicadas); menos sensible en las roturas de menos de un mes (S 67 %). Si también se hace el Hook test, solo cuenta el Hook test. Contraste: en Devereaux y ElMaraghy 2013 (solo 6 sin rotura completa, verificación según el resultado de los tests) dio S 95,2 %, E 100 %, LR− 0,05.
+3. Cifras de Zwerus 2022 (tabla 2; los mismos 86 pacientes): S 73,8 %, E 77,3 %, LR+ 3,25, LR− 0,34 (publicadas); menos sensible en las roturas de menos de un mes (S 67 %). Contraste: en Devereaux y ElMaraghy 2013 (solo 6 sin rotura completa, verificación según el resultado de los tests) dio S 95,2 %, E 100 %, LR− 0,05.
+
+Técnica en Zwerus 2022 (tabla 1): sentado, con el codo a 90°, el explorador fija la muñeca y palpa el vientre del bíceps mientras prona y supina pasivamente el antebrazo; si el test duele, sugiere una rotura parcial (para la rotura parcial, el PFP doloroso dio S 72,4 % y E 47,4 %). Fue menos preciso en las roturas de menos de un mes (S 66,7 %, E 50 %, con solo 2 codos sin rotura completa en ese grupo) que en las crónicas (S 81,0 %, E 78,6 %); los autores advierten que en la fase aguda el dolor y la hinchazón pueden confundir la exploración.
 4. Zwerus 2022 (Am J Sports Med 50(14):3956–3962; cohorte prospectiva, tabla 2) · Devereaux y ElMaraghy 2013 (Am J Sports Med 41:1998–2004; tabla 3), recogido en Zwerus 2018 (Br J Sports Med 52:1253–1260; revisión sistemática, tabla 4) · Lluch 2020, cap. 3.2 (Coombes y Bisset), pp. 85 y 102
+5. Zwerus 2022 (Am J Sports Med 50(14):3956–3962), introducción y tabla 1
+6. Zwerus 2022 (Am J Sports Med 50(14):3956–3962), introducción, discusión y tablas 1 y 2
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `criterio`) | 4b · mención en el texto | 1 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» | 4b · cita bajo el test | 2 |
-| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» (en `criterio`) | 4b · mención en el texto | 3 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 4 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» («¿Por qué?») | 4b · razonamiento del test | 5 |
+| Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» («¿Por qué?») | 4b · razonamiento del test | 6 |
 
 ## 3. Otras fuentes del contenido
 
