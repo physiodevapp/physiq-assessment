@@ -3740,13 +3740,31 @@
  },
  "tp2|Squeeze test": {
   "frases": [
-   "squeeze test (la más específica).",
+   "Squeeze test (la más específica).",
    "Si las dos reproducen el dolor conocido, sospechar lesión.",
+   "Antes, descartar fractura de tibia o peroné, síndrome compartimental, celulitis o contusión de la pierna.",
    "Sin cifras en el capítulo.",
-   "No puntúa:",
    "Sman 2015 (RM de referencia) da S 26 %, E 88 %, LR+ 2,15 (IC 0,86–5,39);",
    "agrupado en Netterström-Wedin 2021 (4 estudios, 428 participantes, modelo univariante), S 32 %, E 85 %, LR+ 3,16 (IC 0,95–10,49), LR− 0,77.",
-   "Los dos intervalos de la LR+ cruzan el 1."
+   "Los dos intervalos de la LR+ cruzan el 1.",
+   "Técnica (Lluch 2020, p.",
+   "262, fig.",
+   "17):",
+   "tibia estabilizada, compresión de la parte proximal del peroné contra la tibia;",
+   "positivo, el dolor distal que reproduce el dolor conocido.",
+   "Si la palpación y la compresión son positivas, el capítulo pide imagen:",
+   "la RM es muy precisa para el esguince agudo de la sindesmosis (hasta el 95 %, p.",
+   "263).",
+   "Origen (Hopkinson 1990):",
+   "revisión retrospectiva de 1344 esguinces en cadetes de West Point;",
+   "15 tobillos (13 pacientes) con afectación de la sindesmosis, todos con el test positivo en la primera exploración, y 9 de los 10 revisados con calcificación del ligamento interóseo a los meses.",
+   "Los autores no pudieron calcular su sensibilidad ni su especificidad.",
+   "Lo usaban como cribado en todos los esguinces:",
+   "si era positivo, anticipaba una recuperación más larga (55 días frente a 28 de los esguinces graves) y pedía radiografías de estrés en rotación externa y abducción para buscar una diástasis latente;",
+   "las radiografías iniciales eran normales.",
+   "El test solo sugiere un esguince de la sindesmosis después de descartar otras lesiones de la pierna que también duelen al apretar:",
+   "fractura de tibia o peroné, síndrome compartimental, celulitis o contusiones.",
+   "Según los autores, el mecanismo que más a menudo lesiona la sindesmosis es la rotación externa."
   ],
   "retiradas": [
    "No puntúa:"
@@ -3840,7 +3858,7 @@
    "Solo descarta, y no explora el calcáneo:",
    "la regla del pie solo mira la base del 5.º MT y el navicular.",
    "Con cautela si hay varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea;",
-   "no probada en menores de 18 años.",
+   "en niños, solo a partir de los 6 años.",
    "Beckenkamp 2017 (66 estudios, modelo bivariante), en los estudios que aplican las dos reglas juntas, como aquí:",
    "LR− 0,09 (IC 95 % 0,06–0,13) con todos (31 estudios) y 0,08 (0,04–0,16) en los 22 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos);",
    "en adultos, 0,12 (0,07–0,19).",
@@ -3866,6 +3884,8 @@
    "Ante una deformidad o una fractura evidente no hace falta la regla.",
    "Cautela con varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea;",
    "la regla no se desarrolló ni se probó en menores de 18 años, y se excluyó a las embarazadas.",
+   "En niños de más de 6 años, varios estudios respaldan su uso, con una sensibilidad del 98,5 % (Lluch 2020, p.",
+   "257).",
    "Si el dolor y la marcha no mejoran en unos días, hay que volver a valorar."
   ]
  },
@@ -4496,7 +4516,7 @@
    "dolor óseo en los 6 cm distales del borde posterior de la tibia o punta del maléolo medial · ídem del peroné o punta del maléolo lateral · no carga cuatro pasos, ni justo tras la lesión ni en consulta.",
    "Excluidas embarazadas y personas que no pueden seguir la prueba.",
    "Con cautela si hay varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea;",
-   "no probada en menores de 18 años.",
+   "en niños, solo a partir de los 6 años.",
    "Beckenkamp 2017 (66 estudios, modelo bivariante), regla del tobillo:",
    "LR− 0,018 (IC 95 % 0,005–0,059) con todos (34 estudios) y 0,030 (0,009–0,099) en los 25 en que se radiografió a todos los pacientes, que es la que se usa (evita el sesgo de verificar solo a los positivos);",
    "en los 3 estudios de riesgo de sesgo bajo, 0,11 (0,02–0,79).",
@@ -4521,6 +4541,8 @@
    "Ante una deformidad o una fractura evidente no hace falta la regla.",
    "Cautela con varias lesiones dolorosas, alteración de la conciencia, intoxicación, paraplejia o enfermedad ósea;",
    "la regla no se desarrolló ni se probó en menores de 18 años, y se excluyó a las embarazadas.",
+   "En niños de más de 6 años, varios estudios respaldan su uso, con una sensibilidad del 98,5 % (Lluch 2020, p.",
+   "257).",
    "Si el dolor y la marcha no mejoran en unos días, hay que volver a valorar."
   ],
   "retiradas": [
