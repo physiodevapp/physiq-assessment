@@ -127,20 +127,23 @@ test('tejidos: la remodelación del tendón sigue más allá del año (Wu 2017) 
   assert.ok(/tej-fase-ley tej-fase-remodelacion_tendon tej-fase-parcial.*?Remodelación \(tendón\)<\/span><span class="tej-fase-rango">1–2 años</.test(h));
 });
 
-test('tiemposTejidoHTML: filtro por tejido (pastillas, títulos de grupo que filtran y vuelven a «Todos»)', () => {
+test('tiemposTejidoHTML: filtro por tejido sin «Todos»: tocar la pastilla activa (o el título del grupo) vuelve a todos', () => {
   assert.equal(gruposVisibles(T.grupos, 'todos').length, T.grupos.length);
   assert.equal(gruposVisibles(T.grupos, 'no-existe').length, T.grupos.length);
   assert.deepEqual(gruposVisibles(T.grupos, 'ligamento').map(g => g.id), ['ligamento']);
   const todos = tiemposTejidoHTML(T);
-  assert.equal((todos.match(/class="tej-filtro-btn/g) || []).length, T.grupos.length + 1);
-  assert.ok(/class="tej-filtro-btn activo" data-filtro-tejido="todos" aria-pressed="true"/.test(todos));
-  assert.ok(todos.includes('class="tej-grupo" data-filtro-tejido="ligamento"'));
+  // Una pastilla por grupo, ninguna «Todos» y ninguna activa
+  assert.equal((todos.match(/class="tej-filtro-btn/g) || []).length, T.grupos.length);
+  assert.ok(!todos.includes('>Todos<') && !todos.includes('tej-filtro-btn activo'));
+  assert.ok(todos.includes('class="tej-filtro-btn" data-grupo="ligamento" data-filtro-tejido="ligamento" aria-pressed="false"'));
+  assert.ok(todos.includes('class="tej-grupo" data-grupo="ligamento" data-filtro-tejido="ligamento"'));
   const lig = tiemposTejidoHTML(T, { filtro: 'ligamento' });
   const nLig = T.grupos.find(g => g.id === 'ligamento').filas.length;
   assert.equal((lig.match(/class="tej-barra /g) || []).length, nLig);
-  assert.ok(/class="tej-filtro-btn activo" data-filtro-tejido="ligamento" aria-pressed="true"/.test(lig));
-  assert.ok(lig.includes('class="tej-grupo" data-filtro-tejido="todos"'), 'el título del grupo filtrado vuelve a «Todos»');
-  // El eje, la franja de fases y la línea «Hoy» siguen con cualquier filtro
+  // La activa lleva aria-pressed y, al tocarla otra vez, pone 'todos'
+  assert.ok(lig.includes('class="tej-filtro-btn activo" data-grupo="ligamento" data-filtro-tejido="todos" aria-pressed="true"'));
+  assert.ok(lig.includes('class="tej-grupo" data-grupo="ligamento" data-filtro-tejido="todos"'), 'el título del grupo filtrado vuelve a todos');
+  // El eje, la leyenda de fases y la línea «Hoy» siguen con cualquier filtro
   assert.ok(lig.includes('tej-eje') && lig.includes('tej-fases'));
   assert.ok(tiemposTejidoHTML(T, { filtro: 'ligamento', posquirurgico: true, semanas: 6 }).includes('class="tej-hoy-etq"'));
 });

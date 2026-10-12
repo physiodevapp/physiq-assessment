@@ -2911,11 +2911,18 @@ body.posquirurgico .solo-posq { display: block; }
 .tej-grupo { display: block; width: 100%; margin-top: 8px; padding: 0 0 3px; background: none; border: none; border-bottom: 1px solid var(--border); text-align: left; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
 .tej-bloque { display: flex; flex-direction: column; gap: 6px; }
 /* Filtro por tejido (encima del diagrama) */
-.tej-filtro { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.tej-filtro { display: flex; flex-wrap: nowrap; gap: 6px; margin: 0 0 12px; overflow-x: auto; scrollbar-width: none; touch-action: pan-x pan-y; overscroll-behavior-x: contain; }
+.tej-filtro::-webkit-scrollbar { display: none; }
+.tej-filtro-btn { flex: 0 0 auto; }
+/* Degradado en el borde por el que quedan pastillas fuera (clases que pone app.js) */
+.tej-filtro.mas-dcha { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+.tej-filtro.mas-izda { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 28px), transparent); }
+.tej-filtro.mas-izda.mas-dcha { -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent); }
 .tej-filtro-btn { min-height: 32px; padding: 4px 12px; border-radius: 16px; border: 1px solid var(--border2); background: var(--surface2); color: var(--text2); font-family: inherit; font-size: 0.78rem; cursor: pointer; }
 .tej-filtro-btn.activo { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
 @media (hover: hover) { .tej-filtro-btn:hover { border-color: var(--accent); } }
-@media (max-width: 480px) { .tej-filtro-btn { padding: 4px 10px; font-size: 0.74rem; white-space: nowrap; } }
+@media (max-width: 480px) { .tej-filtro-btn { padding: 4px 10px; font-size: 0.74rem; } }
+.tej-filtro-btn { white-space: nowrap; }
 /* Subtipos de una fila, plegados bajo ella (estructura lista; se llenan en la Fase J) */
 .tej-subtipos > summary { cursor: pointer; font-size: 0.72rem; color: var(--text3); padding: 2px 0; }
 .tej-subtipos[open] > summary { margin-bottom: 4px; }
