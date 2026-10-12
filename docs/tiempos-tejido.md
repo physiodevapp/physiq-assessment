@@ -107,7 +107,7 @@ No se pintan, porque su capítulo no da plazo: el húmero proximal (Pencle y Var
 
 Al releer el registro apareció un error de la Fase J 1: la nota de los plazos del esguince de tobillo estaba en Agrawal y Tiwari 2023, no en Bergman 2025. Corregido.
 
-Pendiente de revisión por el usuario.
+Revisado y aprobado por el usuario tal cual (2026-10).
 
 ## Filtro sin «Todos», en una fila (2026-10)
 
