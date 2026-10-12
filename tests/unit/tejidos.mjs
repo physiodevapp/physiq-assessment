@@ -273,3 +273,15 @@ test('tejidos: toda fila y subtipo dice qué mide su barra (`mide`), y se pinta 
   assert.ok(/data-tejido="fx_quinto_jones"[^]*?tej-relleno-rayado/.test(html));
   assert.ok(html.includes('Qué mide la barra:'));
 });
+
+test('tejidos, Fase J 6: subtipos de Aquiles bajo la rotura de tendón (Shamrock 2023)', () => {
+  const madre = filas.find(f => f.id === 'tendon_rotura');
+  const st = Object.fromEntries((madre.subtipos || []).map(x => [x.id, x]));
+  // Sin cirugía: bota hasta las 8–12 semanas → «5–8 s» a «2–3 m», protección
+  assert.deepEqual([st.aquiles_conservador.desde, st.aquiles_conservador.hasta, st.aquiles_conservador.mide], [3, 4, 'proteccion']);
+  // Reparado: impacto y vuelta al deporte desde los 6 meses → «6m–1a»
+  assert.deepEqual([st.aquiles_cirugia.desde, st.aquiles_cirugia.hasta, st.aquiles_cirugia.mide], [6, 6, 'deporte']);
+  for (const x of madre.subtipos) assert.deepEqual(x.fuentes, ['Shamrock 2023'], x.id);
+  // El manguito rotador no se pinta hasta tener su fuente leída
+  assert.ok(!madre.subtipos.some(x => /manguito/.test(x.id)));
+});
