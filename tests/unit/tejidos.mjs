@@ -253,3 +253,23 @@ test('tejidos, Fase J 5: fila «Fractura de estrés» con subtipos de bajo y alt
   for (const x of f.subtipos) assert.equal(x.gravedad === 'grave', /alto riesgo/.test(x.nombre), x.id);
   assert.ok(f.subtipos.every(x => x.desde >= f.desde && x.hasta <= f.hasta));
 });
+
+test('tejidos: toda fila y subtipo dice qué mide su barra (`mide`), y se pinta con su relleno o su marca', () => {
+  const todas = filas.flatMap(f => [f, ...(f.subtipos || [])]);
+  for (const x of todas) assert.ok(T.medidas[x.mide], `${x.id}: «mide» falta o no está en medidas`);
+  for (const [k, m] of Object.entries(T.medidas)) assert.ok(['liso', 'rayado', 'contorno'].includes(m.relleno) && m.etiqueta, k);
+  // Las que comparten relleno liso con la vuelta al deporte llevan marca, para no confundirse con ella
+  for (const [k, m] of Object.entries(T.medidas)) if (k !== 'deporte' && m.relleno === 'liso') assert.ok(m.marca, `${k} sin marca`);
+  // Clasificación revisada por el usuario (2026-10): las filas del wiki, sin especificar; la rotura de
+  // tendón, biología; programas; protección (casi todas las fracturas por localización)
+  const de = id => todas.find(x => x.id === id).mide;
+  for (const id of ['tendinopatia', 'doms', 'musculo_g1', 'ligamento_g1', 'injerto', 'fractura']) assert.equal(de(id), 'sinEspecificar', id);
+  assert.equal(de('tendon_rotura'), 'biologia');
+  for (const id of ['rodilla_lca_conservador', 'menisco_traumatica_conservador', 'menisco_degenerativa_conservador']) assert.equal(de(id), 'programa', id);
+  for (const id of ['fx_quinto_jones', 'fx_calcaneo_extra', 'fx_rotula_conservador', 'fx_meseta_cirugia']) assert.equal(de(id), 'proteccion', id);
+  for (const id of ['tobillo_lateral_g1', 'menisco_sutura', 'fx_calcaneo_intra', 'estres_navicular']) assert.equal(de(id), 'deporte', id);
+  const html = tiemposTejidoHTML(T);
+  assert.equal((html.match(/class="tej-barra [^"]*tej-relleno-/g) || []).length, todas.length, 'cada barra con su relleno');
+  assert.ok(/data-tejido="fx_quinto_jones"[^]*?tej-relleno-rayado/.test(html));
+  assert.ok(html.includes('Qué mide la barra:'));
+});

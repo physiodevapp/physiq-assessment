@@ -121,6 +121,22 @@ Cada subtipo lleva «(bajo riesgo)» o «(alto riesgo)» en el nombre; los de al
 
 Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Qué mide cada barra (2026-10)
+
+Decisión del usuario. Las fuentes dan plazos de cosas distintas, y antes solo la nota lo decía, así que barras como la de la fractura de Jones (6–8 semanas sin carga) y la del 5.º metatarsiano por estrés (82 días hasta volver al deporte) parecían comparables. Cada fila y cada subtipo lleva ahora `mide`, que es una clave de `medidas` (`data/tejidos.js`). El color sigue siendo la gravedad, porque un segundo código de color daría 4 × 4 combinaciones ilegibles; la medida va en el relleno:
+
+| `mide` | Relleno | Dónde |
+|---|---|---|
+| `deporte` (vuelta al deporte o a la función) | liso | esguince de tobillo, LCM grado I, LCA reconstruido, meniscectomía, sutura, tobillo estable, calcáneo intraarticular, meseta sin cirugía, toda la fractura de estrés |
+| `proteccion` (inmovilización o descarga) | rayado | el resto de fracturas por localización |
+| `programa` (duración del programa) | contorno | LCA sin cirugía, rotura de menisco traumática y lesión degenerativa |
+| `biologia` | liso + etiqueta «biología» | rotura de tendón (Wu 2017) |
+| `sinEspecificar` | liso + etiqueta «sin especificar» | las filas del wiki (Snyder-Mackler 2012) |
+
+La clasificación sale de las citas que ya estaban en los comentarios; no se ha releído ninguna fuente. Debajo de la leyenda de gravedad, «Qué mide la barra» muestra cada relleno en gris neutro y las dos etiquetas. En el wiki es igual. En su tabla de móvil solo se ven los rellenos, porque el nombre corto de la barra no tiene sitio para la etiqueta. Un test unitario obliga a que todas las filas y subtipos lleven `mide` y fija la clasificación.
+
+Revisado y aprobado por el usuario tal cual (2026-10). Eso incluye los tres casos dudosos: tobillo operada como protección (la fuente da la carga completa, no la vuelta al deporte), meseta tibial sin cirugía como vuelta a la función (la barra llega a la función completa) y 5.º metatarsiano zona 3 como protección (hasta 20 semanas de inmovilización).
+
 ## Filtro sin «Todos», en una fila (2026-10)
 
 Decisión del usuario. Se quita la pastilla «Todos»: volver a tocar la pastilla activa la desmarca y se ven todos los tejidos, con la misma regla que el resto de grupos de opciones de la app (mecanismo, cronología, NRS). El título de cada grupo hace lo mismo. Las pastillas van en una sola fila que se desliza en horizontal cuando no caben (a 320 px, y cuando la Fase J añada grupos como nervio periférico), con un degradado en el lado por el que quedan más (`_bordesFiltroTejidos()`, `app.js`). Al abrir el panel con un filtro guardado, la pastilla activa queda a la vista. Se descartó un desplegable: escala igual de bien, pero esconde las opciones y cuesta un toque más. Si algún día hubiera más de unas 8 categorías, se replantea (agrupar, o desplegable).
