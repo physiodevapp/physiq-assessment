@@ -37,7 +37,7 @@ operado» de la Fase G: la prepara.
 | Complicaciones | Infección (superficial de la herida, resuelta) |
 | Cribado | `pq_sdrc` SÍ, `ca_in3` SÍ; el resto NO |
 | Fase 3 | NRS 4/10, irritabilidad moderada (matriz), nociceptiva, mejorando |
-| Árbol | No lumbar/sacroilíaca → sin evento → perfil degenerativo (`ca1`) → intraarticular NO → cara externa: debilidad (`ca5`) → resto NO |
+| Árbol | No lumbar/sacroilíaca → sin evento → perfil degenerativo (`ca1`) → intraarticular NO EXPLORADO → cara externa: debilidad (`ca5`) → resto NO |
 | Hipótesis | `pq1` (postoperatorio), `ca1` marcada «Tratada con la cirugía», `ca5` con Trendelenburg y dinamometría positivos |
 | Psicosocial | Riesgo medio: miedo a que se le salga la prótesis |
 
@@ -118,11 +118,11 @@ Léelo en primera persona, como fisioterapeuta, al final de la consulta:
 4. **Pie frío y amoratado**: un hallazgo a vigilar que se comentará con el
    cirujano. No debe decir que tiene un síndrome de dolor regional complejo
    ni tratarlo como urgente.
-5. **FADDIR**: el dictado dice que no se hizo, pero el árbol obliga a
-   contestar el paso intraarticular y en los datos consta «NO — FADDIR y
-   flexión-RI negativos». El informe **no** debe decir que fue negativo. Si lo
-   dice, es una contradicción de los datos y no del modelo: el paso no tiene
-   opción «no explorado».
+5. **FADDIR**: el dictado dice que no se hizo, y en el árbol el paso
+   intraarticular está contestado «No explorado» (opción añadida en la ronda
+   31; antes había que contestar «negativos» y el informe daba el origen
+   intraarticular por improbable). El informe **no** debe decir que fue
+   negativo ni que el origen intraarticular es improbable.
 6. **Plan**: los isométricos y los paseos, sin nada que contradiga las
    precauciones de luxación (sentadilla profunda, cruzar las piernas, rotación
    interna, conducir antes de la semana 6).
