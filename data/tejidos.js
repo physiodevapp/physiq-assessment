@@ -192,6 +192,41 @@ export const TIEMPOS_TEJIDO = {
               nota: 'Entrenamiento completo a los 52–84 días de media (6–9 semanas en el programa, que retrasa unas 3 semanas la carga excéntrica). Recayó el 57 % en la serie de 2016.' },
           ],
         },
+        // Ampliación (2026-10), PDF del usuario leídos. Gemelo y sóleo: Prakash 2018 (100
+        // deportistas, gradación por la lesión del tejido conectivo en la RM, tabla 2): grado 0
+        // (edema sin rotura de fibras) 8 días de media, 1 (rotura de fibras sin lesión del tejido
+        // conectivo) 17, 2 (con lesión del tendón, aponeurosis o epimisio, sin retracción) 25,
+        // 3 (con retracción) 48. Pedret 2015 (sóleo, 61 deportistas de élite): 29 días de media;
+        // aponeurosis central 44, lateral 19. Green 2020 (149 lesiones, fútbol australiano): 19
+        // días sin lesión de la aponeurosis y 31 con lesión grave. Pedret 2026 (revisión): la
+        // vuelta se decide por criterios, no por plazos fijos. Recto femoral: Knapik 2023
+        // (revisión sistemática, 132 deportistas, rotura completa o avulsión proximal): 11,7
+        // semanas sin cirugía (5,5–15,2) y 22,1 con cirugía (14–37,6). Aductores: Forsythe 2025
+        // (1706 lesiones, liga de fútbol de EE. UU.): 14,4 días de media (2010–2015) y 19,7
+        // (2016–2021); la osteítis de pubis suma unos 37 días. Días → columnas: 8 = «4–14d» (1);
+        // 17–28 = «3–4s» (2); 31–56 = «5–8s» (3); 82 = «2–3m» (4); 155 = «3–6m» (5).
+        { id: 'gemelo_soleo', mide: 'deporte', nombre: 'Gemelo y sóleo (por la lesión del tejido conectivo)', desde: 1, hasta: 3, gravedad: 'moderada', fuentes: ['Prakash 2018', 'Pedret 2015', 'Green 2020', 'Pedret 2026'],
+          nota: 'Vuelta al deporte en deportistas, según lo que muestre la RM. En el sóleo, 29 días de media, más en la aponeurosis central (44) que en la lateral (19). La vuelta se decide por criterios clínicos y funcionales, no por el plazo.',
+          subtipos: [
+            { id: 'gemelo_g0', mide: 'deporte', nombre: 'Grado 0 (edema, sin rotura de fibras)', desde: 1, hasta: 1, fuentes: ['Prakash 2018'],
+              nota: 'Vuelta al deporte a los 8 días de media.' },
+            { id: 'gemelo_g1', mide: 'deporte', nombre: 'Grado 1 (rotura de fibras, tejido conectivo intacto)', desde: 2, hasta: 2, fuentes: ['Prakash 2018'],
+              nota: 'Vuelta al deporte a los 17 días de media.' },
+            { id: 'gemelo_g2', mide: 'deporte', nombre: 'Grado 2 (lesión del tendón o la aponeurosis, sin retracción)', desde: 2, hasta: 2, fuentes: ['Prakash 2018', 'Green 2020'],
+              nota: 'Vuelta al deporte a los 25 días de media.' },
+            { id: 'gemelo_g3', mide: 'deporte', nombre: 'Grado 3 (con retracción)', desde: 3, hasta: 3, fuentes: ['Prakash 2018', 'Green 2020'],
+              nota: 'Vuelta al deporte a los 48 días de media; con lesión grave de la aponeurosis, 31 días en otra serie.' },
+          ] },
+        { id: 'recto_femoral_proximal', mide: 'deporte', nombre: 'Recto femoral, rotura completa o avulsión proximal', desde: 4, hasta: 5, gravedad: 'grave', fuentes: ['Knapik 2023'],
+          nota: 'En deportistas, casi siempre por chutar o esprintar; se operó al 80 %. Vuelve el 93 % sin cirugía y el 100 % con cirugía.',
+          subtipos: [
+            { id: 'recto_femoral_conservador', mide: 'deporte', nombre: 'Sin cirugía', desde: 4, hasta: 4, fuentes: ['Knapik 2023'],
+              nota: 'Vuelta al deporte a las 11,7 semanas de media (de 5,5 a 15).' },
+            { id: 'recto_femoral_cirugia', mide: 'deporte', nombre: 'Operado', desde: 5, hasta: 5, fuentes: ['Knapik 2023'],
+              nota: 'Vuelta al deporte a las 22 semanas de media (de 14 a 38). Manda el protocolo del cirujano.' },
+          ] },
+        { id: 'aductores', mide: 'deporte', nombre: 'Aductores (lesión aguda, futbolistas)', desde: 1, hasta: 2, gravedad: 'leve', fuentes: ['Forsythe 2025'],
+          nota: 'Vuelta al juego a los 14–20 días de media en futbolistas profesionales; la osteítis de pubis suma unas 5 semanas. Recaen 1 de cada 5.' },
       ],
     },
     {
@@ -366,17 +401,26 @@ export const TIEMPOS_TEJIDO = {
         // day». Bogaert 2022 (metaanálisis, 18 ensayos): ejercicio, y mejor con terapia
         // cognitivo-conductual, mejora la discapacidad hasta 6 meses (evidencia baja). Khan 2026
         // (metaanálisis): la prótesis de disco lumbar vuelve antes al trabajo que la artrodesis
-        // solo en el análisis de sensibilidad; sin plazos absolutos agrupados, no se pinta.
+        // solo en el análisis de sensibilidad (se cita en la fila de la prótesis).
         // Health Quality Ontario 2019 (evaluación de tecnología, cervical, un nivel): mediana de
         // vuelta al trabajo de 48 días con prótesis (Bryan) frente a 61 con artrodesis; con
         // todas las prótesis, 13–20 días antes que la artrodesis. 48 días = «5–8s» (3);
         // 61 = «2–3m» (4).
-        { id: 'artrodesis_lumbar', mide: 'deporte', nombre: 'Artrodesis lumbar', desde: 3, hasta: 6, gravedad: 'grave', fuentes: ['Wang 2017', 'Cui 2026', 'Bogaert 2022', 'Khan 2026'],
-          nota: 'Movilización el mismo día y fisioterapia desde el 2.º. Vuelta al trabajo a las 7 semanas con cirugía mínimamente invasiva y a las 11 con abierta en un mismo estudio; según la técnica y la serie, de 3 a 11 meses. El ejercicio, mejor con terapia cognitivo-conductual, mejora la discapacidad hasta los 6 meses (evidencia baja). La prótesis de disco lumbar no tiene plazos propios en la fuente. Manda el protocolo del cirujano.' },
-        { id: 'protesis_disco_cervical', mide: 'deporte', nombre: 'Prótesis de disco cervical', desde: 3, hasta: 3, gravedad: 'moderada', fuentes: ['Health Quality Ontario 2019'],
-          nota: 'Vuelta al trabajo hacia las 7 semanas (mediana de 48 días con un modelo), 2–3 semanas antes que con la artrodesis cervical anterior. Manda el protocolo del cirujano.' },
-        { id: 'artrodesis_cervical', mide: 'deporte', nombre: 'Artrodesis cervical anterior', desde: 4, hasta: 4, gravedad: 'moderada', fuentes: ['Health Quality Ontario 2019'],
-          nota: 'Vuelta al trabajo hacia los 2 meses (mediana de 61 días en el mismo ensayo). A los 2 años, la misma tasa de empleo que con prótesis. Manda el protocolo del cirujano.' },
+        { id: 'artrodesis_lumbar', mide: 'deporte', nombre: 'Artrodesis lumbar', desde: 3, hasta: 6, gravedad: 'grave', fuentes: ['Wang 2017', 'Cui 2026', 'Bogaert 2022'],
+          nota: 'Movilización el mismo día y fisioterapia desde el 2.º. Vuelta al trabajo a las 7 semanas con cirugía mínimamente invasiva y a las 11 con abierta en un mismo estudio; según la técnica y la serie, de 3 a 11 meses. El ejercicio, mejor con terapia cognitivo-conductual, mejora la discapacidad hasta los 6 meses (evidencia baja). Manda el protocolo del cirujano.' },
+        // Prótesis de disco lumbar: Gornet 2011 (ensayo, 577 pacientes): mediana de vuelta al
+        // trabajo de 75 días frente a 96 con artrodesis anterior. Siepe 2007 (39 deportistas):
+        // vuelta al deporte el 38,5 % en 3 meses y el 30,7 % de 3 a 6, mejor rendimiento a los
+        // 5,2. Tumialán 2010 (militares): servicio sin restricciones a las 22,6 semanas (32,4 con
+        // artrodesis); cervical, 10,3 semanas con prótesis y 16,5 con artrodesis. Patel 2026
+        // (metaanálisis de 13 ensayos): resultados que convergen con la artrodesis a los 5 años.
+        // 75 días = «2–3m» (4); 22,6 semanas = «3–6m» (5).
+        { id: 'protesis_disco_lumbar', mide: 'deporte', nombre: 'Prótesis de disco lumbar', desde: 4, hasta: 5, gravedad: 'moderada', fuentes: ['Gornet 2011', 'Siepe 2007', 'Tumialán 2010', 'Patel 2026', 'Khan 2026'],
+          nota: 'Vuelta al trabajo a los 75 días de mediana, 3 semanas antes que con artrodesis anterior. Vuelve al deporte cerca del 70 % en los 6 primeros meses; a un trabajo físico exigente, hacia las 23 semanas. A los 5 años, resultados parecidos a la artrodesis. Manda el protocolo del cirujano.' },
+        { id: 'protesis_disco_cervical', mide: 'deporte', nombre: 'Prótesis de disco cervical', desde: 3, hasta: 4, gravedad: 'moderada', fuentes: ['Health Quality Ontario 2019', 'Tumialán 2010'],
+          nota: 'Vuelta al trabajo hacia las 7 semanas (mediana de 48 días con un modelo), 2–3 semanas antes que con la artrodesis cervical anterior. A un trabajo físico exigente (militares), a las 10 semanas. Manda el protocolo del cirujano.' },
+        { id: 'artrodesis_cervical', mide: 'deporte', nombre: 'Artrodesis cervical anterior', desde: 4, hasta: 5, gravedad: 'moderada', fuentes: ['Health Quality Ontario 2019', 'Tumialán 2010'],
+          nota: 'Vuelta al trabajo hacia los 2 meses (mediana de 61 días en el mismo ensayo). A un trabajo físico exigente (militares), a las 16,5 semanas. A los 2 años, la misma tasa de empleo que con prótesis. Manda el protocolo del cirujano.' },
       ],
     },
     {
@@ -466,8 +510,12 @@ export const TIEMPOS_TEJIDO = {
             // occurs». Margetis y Patel 2025 (StatPearls, vertebroplastia y cifoplastia): con
             // tratamiento conservador, «Symptoms typically resolve within 4 to 6 weeks»; la
             // cementación es para el dolor que no cede; sin plazo de recuperación tras ella.
-            { id: 'fx_vertebral_compresion', mide: 'proteccion', nombre: 'Vertebral por compresión, sin cirugía', desde: 2, hasta: 4, fuentes: ['Donnally 2025', 'Margetis y Patel 2025'],
-              nota: 'Corsé de 4 a 12 semanas, hasta que cede el dolor y la radiografía muestra la consolidación; los síntomas suelen ceder en 4–6 semanas. Si el dolor no cede, vertebroplastia o cifoplastia (sin plazo de recuperación en la fuente).' },
+            // Yuan 2016 (metaanálisis de 10 ensayos, texto completo en PMC): mejor dolor y función
+            // que el tratamiento conservador; cita a Gill 2007 (más de 5 puntos menos en la EVA en el
+            // postoperatorio inmediato) y a Liu 2013 (igual que la inyección simulada de 2 semanas
+            // a 6 meses). Sin plazo de recuperación: no se pinta una barra propia.
+            { id: 'fx_vertebral_compresion', mide: 'proteccion', nombre: 'Vertebral por compresión, sin cirugía', desde: 2, hasta: 4, fuentes: ['Donnally 2025', 'Margetis y Patel 2025', 'Yuan 2016'],
+              nota: 'Corsé de 4 a 12 semanas, hasta que cede el dolor y la radiografía muestra la consolidación; los síntomas suelen ceder en 4–6 semanas. Si el dolor no cede, vertebroplastia o cifoplastia: alivian el dolor en el postoperatorio inmediato y mejoran la función frente al tratamiento conservador, pero frente a una intervención simulada el dolor es igual (sin plazo de recuperación propio).' },
           ] },
         // Fase J, 5 (fractura de estrés): PDF del usuario leídos enteros (2026-10).
         // Hoenig 2023 (revisión sistemática y metaanálisis, 76 estudios): tiempo medio de

@@ -419,10 +419,25 @@ test('tejidos: columna operada (artrodesis lumbar y cervical, prótesis de disco
   const f = Object.fromEntries(T.grupos.find(x => x.id === 'columna').filas.map(x => [x.id, x]));
   // Wang 2017: de 7 semanas a 11 meses → «5–8s» a «6m–1a»
   assert.deepEqual([f.artrodesis_lumbar.desde, f.artrodesis_lumbar.hasta, f.artrodesis_lumbar.mide], [3, 6, 'deporte']);
-  // Health Quality Ontario 2019: 48 días con prótesis → «5–8s»; 61 con artrodesis → «2–3m»
-  assert.deepEqual([f.protesis_disco_cervical.desde, f.protesis_disco_cervical.hasta], [3, 3]);
-  assert.deepEqual([f.artrodesis_cervical.desde, f.artrodesis_cervical.hasta], [4, 4]);
+  // Health Quality Ontario 2019: trabajo a los 48 días con prótesis y 61 con artrodesis; Tumialán
+  // 2010: servicio militar sin restricciones a las 10,3 y 16,5 semanas → «5–8s» a «2–3m» y «2–3m» a «3–6m»
+  assert.deepEqual([f.protesis_disco_cervical.desde, f.protesis_disco_cervical.hasta], [3, 4]);
+  assert.deepEqual([f.artrodesis_cervical.desde, f.artrodesis_cervical.hasta], [4, 5]);
+  // Gornet 2011: 75 días; Tumialán 2010: 22,6 semanas → «2–3m» a «3–6m»
+  assert.deepEqual([f.protesis_disco_lumbar.desde, f.protesis_disco_lumbar.hasta, f.protesis_disco_lumbar.mide], [4, 5, 'deporte']);
   const fx = Object.fromEntries(T.grupos.find(x => x.id === 'hueso').filas.find(r => r.id === 'fractura').subtipos.map(x => [x.id, x]));
   // Donnally 2025: corsé 4–12 semanas → «3–4s» a «2–3m»
   assert.deepEqual([fx.fx_vertebral_compresion.desde, fx.fx_vertebral_compresion.hasta, fx.fx_vertebral_compresion.mide], [2, 4, 'proteccion']);
+});
+
+test('tejidos: gemelo y sóleo por grado (Prakash 2018), recto femoral (Knapik 2023) y aductores (Forsythe 2025)', () => {
+  const m = Object.fromEntries(T.grupos.find(x => x.id === 'musculo').filas.map(x => [x.id, x]));
+  const g = Object.fromEntries(m.gemelo_soleo.subtipos.map(x => [x.id, x]));
+  // 8, 17, 25 y 48 días → «4–14d», «3–4s», «3–4s», «5–8s»
+  assert.deepEqual(['gemelo_g0', 'gemelo_g1', 'gemelo_g2', 'gemelo_g3'].map(id => g[id].desde), [1, 2, 2, 3]);
+  const r = Object.fromEntries(m.recto_femoral_proximal.subtipos.map(x => [x.id, x]));
+  // 11,7 semanas → «2–3m»; 22,1 → «3–6m»
+  assert.deepEqual([r.recto_femoral_conservador.desde, r.recto_femoral_cirugia.desde], [4, 5]);
+  // 14–20 días → «4–14d» a «3–4s»
+  assert.deepEqual([m.aductores.desde, m.aductores.hasta, m.aductores.mide], [1, 2, 'deporte']);
 });
