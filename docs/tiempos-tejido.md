@@ -203,6 +203,10 @@ La clasificación sale de las citas que ya estaban en los comentarios; no se ha 
 
 Revisado y aprobado por el usuario tal cual (2026-10). Eso incluye los tres casos dudosos: tobillo operada como protección (la fuente da la carga completa, no la vuelta al deporte), meseta tibial sin cirugía como vuelta a la función (la barra llega a la función completa) y 5.º metatarsiano zona 3 como protección (hasta 20 semanas de inmovilización).
 
+## Un relleno por medida y leyenda en dos partes (2026-10)
+
+El usuario no entendía «sin especificar»: la etiqueta iba tras el nombre, pero la barra se pintaba lisa, igual que «Vuelta al deporte». Tampoco la leyenda: las muestras de relleno eran grises y en el diagrama las barras salen en el color de su gravedad. Cambios (decisión del usuario): cada medida tiene su propio relleno (`punteado` para biología de la reparación; `tenue`, relleno claro con borde discontinuo, para sin especificar) y desaparecen las etiquetas; la leyenda dice «Color = gravedad:» y «Relleno = qué mide la barra (en el color de su gravedad):». Un test unitario exige que no haya dos medidas con el mismo relleno. Copiado en physiq-wiki.
+
 ## Filtro sin «Todos», en una fila (2026-10)
 
 Decisión del usuario. Se quita la pastilla «Todos»: volver a tocar la pastilla activa la desmarca y se ven todos los tejidos, con la misma regla que el resto de grupos de opciones de la app (mecanismo, cronología, NRS). El título de cada grupo hace lo mismo. Las pastillas van en una sola fila que se desliza en horizontal cuando no caben (a 320 px, y cuando la Fase J añada grupos como nervio periférico), con un degradado en el lado por el que quedan más (`_bordesFiltroTejidos()`, `app.js`). Al abrir el panel con un filtro guardado, la pastilla activa queda a la vista. Se descartó un desplegable: escala igual de bien, pero esconde las opciones y cuesta un toque más. Si algún día hubiera más de unas 8 categorías, se replantea (agrupar, o desplegable).
