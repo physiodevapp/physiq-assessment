@@ -235,7 +235,7 @@ test('tejidos, Fase J 4: subtipos de fractura por localización, con los plazos 
   assert.deepEqual(rango('fx_quinto_estres'), [4, 5]);
   // Sin plazo en su capítulo, no se pintan: húmero proximal, rótula operada, navicular traumática
   assert.ok(!madre.subtipos.some(x => /humero|rotula_cirugia|navicular_trauma/.test(x.id)));
-  for (const x of madre.subtipos) assert.ok(x.fuentes.length === 1 && x.nota, x.id);
+  for (const x of madre.subtipos) assert.ok(x.fuentes.length >= 1 && x.nota, x.id);
 });
 
 test('tejidos, Fase J 5: fila «Fractura de estrés» con subtipos de bajo y alto riesgo (Hoenig 2023, Robertson y Wood 2017)', () => {
@@ -352,7 +352,7 @@ test('tejidos, Fase J 9: nervio periférico, neuropraxia con barra y axonotmesis
   assert.ok(!tiemposTejidoHTML(T, { filtro: 'hueso' }).includes('tej-grupo-nota'));
 });
 
-test('tejidos: fracturas de miembro superior (5.º metacarpiano, diáfisis de radio y cúbito) con su capítulo de StatPearls', () => {
+test('tejidos: fracturas de miembro superior (5.º metacarpiano, diáfisis de radio y cúbito, radio distal) con su fuente', () => {
   const st = Object.fromEntries(filas.find(f => f.id === 'fractura').subtipos.map(x => [x.id, x]));
   // Malik 2024: consolidación a las 4–6 semanas → «3–4s» a «5–8s»
   assert.deepEqual([st.fx_quinto_metacarpiano.desde, st.fx_quinto_metacarpiano.hasta, st.fx_quinto_metacarpiano.mide], [2, 3, 'proteccion']);
@@ -360,6 +360,12 @@ test('tejidos: fracturas de miembro superior (5.º metacarpiano, diáfisis de ra
   // Small 2022: consolidación tras la cirugía hacia los 2–3 meses → «2–3m»
   assert.deepEqual([st.fx_antebrazo_cirugia.desde, st.fx_antebrazo_cirugia.hasta, st.fx_antebrazo_cirugia.mide], [4, 4, 'proteccion']);
   assert.deepEqual(st.fx_antebrazo_cirugia.fuentes, ['Small 2022']);
+  // Mehta 2024 + Sayudo 2024: yeso 4–6 semanas (3–4 sin peor función) → «3–4s» a «5–8s»
+  assert.deepEqual([st.fx_radio_distal_yeso.desde, st.fx_radio_distal_yeso.hasta, st.fx_radio_distal_yeso.mide], [2, 3, 'proteccion']);
+  assert.deepEqual(st.fx_radio_distal_yeso.fuentes, ['Mehta 2024', 'Sayudo 2024']);
+  // Mehta 2024: protección de días a semanas; fuerza desde las 6 semanas como tarde → «4–14d» a «5–8s»
+  assert.deepEqual([st.fx_radio_distal_cirugia.desde, st.fx_radio_distal_cirugia.hasta, st.fx_radio_distal_cirugia.mide], [1, 3, 'proteccion']);
+  assert.deepEqual(st.fx_radio_distal_cirugia.fuentes, ['Mehta 2024']);
 });
 
 test('tejidos: grupo «Articulación» — luxación anterior de hombro (protección) y capsulitis adhesiva (evolución natural)', () => {

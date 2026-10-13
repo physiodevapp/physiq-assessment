@@ -361,12 +361,23 @@ export const TIEMPOS_TEJIDO = {
             // months». Small 2022 (diáfisis de radio y cúbito): en el adulto casi
             // siempre se operan; movilidad a los 5–7 días y «bone union… around 2 to 3 months
             // post-surgery. Once the bone union has been confirmed, the patient can resume
-            // most activities». Radio distal del adulto: el capítulo de StatPearls no da plazo
-            // («several weeks»); pendiente de Mehta 2024 y Sayudo 2024.
+            // most activities». Radio distal del adulto (el capítulo de StatPearls no da plazo):
+            // Mehta 2024 (guía APTA, leída entera): sin cirugía, «short arm cast for 4 to 6
+            // weeks»; tras reducción cerrada, «6 weeks of immobilization is typically
+            // sufficient to achieve bony union»; la movilidad de muñeca empieza al quitar el
+            // yeso y el fortalecimiento «around 6 to 8 weeks». Operada: protección «a few days
+            // to several weeks»; movilidad activa y actividad ligera en las 3 primeras semanas
+            // (A) y fortalecimiento submáximo desde la 2.ª (B). Sayudo 2024 (metaanálisis, 3
+            // ensayos, 252 pacientes, 61 años de media): 3–4 semanas de yeso frente a 5–6, mejor
+            // QuickDASH a las 12 semanas, 6 meses y 1 año, sin más complicaciones ni SDRC.
             { id: 'fx_quinto_metacarpiano', mide: 'proteccion', nombre: '5.º metacarpiano (del boxeador), sin cirugía', desde: 2, hasta: 3, fuentes: ['Malik 2024'],
               nota: 'Férula con movilidad precoz; consolidación clínica y radiográfica a las 4–6 semanas, con ejercicios suaves contra resistencia hacia la 4.ª. La mayoría consolida en 8 semanas, aunque la resolución completa puede tardar meses. Abiertas, rotadas o muy anguladas: a cirugía.' },
             { id: 'fx_antebrazo_cirugia', mide: 'proteccion', nombre: 'Diáfisis de radio y cúbito, operada', desde: 4, hasta: 4, fuentes: ['Small 2022'],
               nota: 'En el adulto casi siempre se operan. Movilidad de codo y antebrazo desde los 5–7 días; la mayoría de las actividades, cuando la radiografía confirma la consolidación, hacia los 2–3 meses. Manda el protocolo del cirujano.' },
+            { id: 'fx_radio_distal_yeso', mide: 'proteccion', nombre: 'Radio distal, sin cirugía (yeso)', desde: 2, hasta: 3, fuentes: ['Mehta 2024', 'Sayudo 2024'],
+              nota: 'Yeso antebraquial 4–6 semanas (6 si hubo que reducirla). Un metaanálisis de 3 ensayos encontró mejor función con 3–4 semanas que con 5–6, sin más complicaciones. Dedos, codo y hombro se mueven desde el principio; la muñeca, al quitar el yeso, y el fortalecimiento hacia las 6–8 semanas.' },
+            { id: 'fx_radio_distal_cirugia', mide: 'proteccion', nombre: 'Radio distal, operada', desde: 1, hasta: 3, fuentes: ['Mehta 2024'],
+              nota: 'Férula de unos días a varias semanas, según la estabilidad y el cirujano. La guía APTA recomienda movilidad activa de mano, muñeca y hombro y actividad ligera en las 3 primeras semanas (A) y fortalecimiento submáximo desde la 2.ª (B); el enfoque clásico espera 4–6 semanas para la muñeca y 6 para la fuerza. Manda el protocolo del cirujano.' },
           ] },
         // Fase J, 5 (fractura de estrés): PDF del usuario leídos enteros (2026-10).
         // Hoenig 2023 (revisión sistemática y metaanálisis, 76 estudios): tiempo medio de
