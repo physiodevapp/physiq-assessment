@@ -253,3 +253,49 @@ Revisado por el usuario (2026-10).
 Las 13 URLs inglesas y las 10 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `the-spinal-cord`, `zygapophyseal-joints`, `atlantoaxial-joint`, `common-carotid-artery`.
 
 Revisado por el usuario (2026-10).
+
+## Cadera
+
+26 estructuras nuevas, 18 con versión en español; reutiliza articulación de la cadera, glúteo medio (el artículo trata también el menor), cuádriceps, fémur, nervio obturador, arterias femoral y poplítea, venas del miembro inferior, riñón y estómago. Sin versión en español: labrum acetabular, trocánter mayor, cuadrado femoral, isquiotibiales (artículo «Posterior thigh muscles»), aductores de la cadera y los nervios femorocutáneo lateral, ilioinguinal e iliohipogástrico. El ligamento redondo no tiene artículo propio: lo trata el de la articulación de la cadera, que es lo que enlaza ca12. Ovarios y útero van juntos en «Órganos reproductores femeninos» (el ovario no tiene artículo propio).
+
+### Tests de la fase 4b
+
+67 de los 74 tests. Sin campo los genéricos: longitud de paso (ca3/7), IMC >25 (ca13/3) y los cinco rasgos de la sensibilización central (ca15/0–4).
+
+| Hipótesis | Tests → estructuras |
+|---|---|
+| ca1 Artrosis | criterio clínico, aducción, rotación interna, sentadilla profunda, ACR, apoyo monopodal → articulación de la cadera · debilidad de abductores → glúteo medio |
+| ca2 Pinzamiento femoroacetabular | FADDIR, flexión-RI → articulación de la cadera + labrum · FABER, RI en neutro, dolor inguinal → articulación de la cadera · Thomas → iliopsoas + cuádriceps |
+| ca3 Labrum | Arlington, Twist, FADDIR + FABER + EPR resistida, chasquido doloroso, flexión-RI, FADDIR agrupado → labrum · Thomas → iliopsoas + cuádriceps |
+| ca4 Dolor trocantérico | palpación → glúteo medio + trocánter mayor · apoyo monopodal, abducción resistida, Trendelenburg, derotación externa → glúteo medio |
+| ca5 Debilidad de abductores | Trendelenburg, dinamometría, paso lateral + tándem → glúteo medio |
+| ca6 Control neuromuscular | sentadilla monopodal, step-down, marcha de Trendelenburg → glúteo medio |
+| ca7 Glúteo profundo | estiramiento del piriforme, sedestación prolongada → piriforme + nervio ciático |
+| ca8 Pinzamiento isquiofemoral | zancada larga → cuadrado femoral + tuberosidad isquiática |
+| ca9 Tendinopatía de isquiotibiales | palpación → isquiotibiales + tuberosidad isquiática · fuerza → isquiotibiales |
+| ca10 Sacroilíaca | compresión, Patrick, dolor bajo L5, cluster de Laslett, thigh thrust, prueba del dedo → articulación sacroilíaca |
+| ca11 Lesión aguda de ingle | palpación, resistencia, estiramiento del grupo sospechoso → aductores + iliopsoas |
+| ca12 Ligamento redondo e inestabilidad | log roll, movilidad aumentada, episodio de fallo → articulación de la cadera |
+| ca13 Condropatía | cribado intraarticular + Thomas, dolor en reposo con síntomas mecánicos, rigidez → articulación de la cadera |
+| ca14 Neuropatías | Tinel y neurodinámico del femorocutáneo → nervio femorocutáneo lateral · obturador → nervio obturador + aductores · arch and twist → nervios ilioinguinal, iliohipogástrico y genitofemoral · pudendo → nervio pudendo |
+| ca16 Ingle, aductor | palpación + squeeze, estiramiento → aductores |
+| ca17 Ingle, psoas ilíaco | palpación, flexión resistida, Thomas modificado → iliopsoas |
+| ca18 Ingle, canal inguinal | dolor y palpación del canal, Valsalva → conducto inguinal · sit-up resistido → recto del abdomen + conducto inguinal · flexión resistida en Thomas → iliopsoas + conducto inguinal |
+| ca19 Ingle, pubis | palpación de la sínfisis → sínfisis del pubis · resistencia abdominal y squeeze → sínfisis + recto del abdomen + aductores |
+
+### Cribado de la fase 2
+
+20 de las 21 preguntas de sus sistemas propios. Sin campo: ca_on3 (pérdida de peso o bulto nuevo, sin estructura concreta).
+
+| Sistema | Pregunta → estructuras |
+|---|---|
+| Cáncer | c5 antecedente de cáncer, ca_on2 dolor constante y nocturno → hueso coxal + fémur · ca_on4 ganglio en la ingle → ganglios inguinales |
+| Vascular | c2 claudicación → arteria femoral · ca_v2 TVP → venas del miembro inferior · ca_v3 isquemia en reposo → arterias femoral y poplítea |
+| Urogenital | c3 orina → riñón + uréteres · ca_u2 dolor testicular o al orinar → próstata + testículos · ca_u3 torsión → testículos · ca_u4 relación con la regla → órganos reproductores femeninos |
+| Gastrointestinal | c4 molestias abdominales → iliopsoas + intestino grueso · ca_gi2 melena o sangre → estómago + intestino grueso · ca_gi3 hernia → conducto inguinal + triángulo femoral |
+| Óseo | ca_os1 fractura de estrés, ca_os2 osteonecrosis → fémur · ca_os3 epifisiolisis o avulsión → fémur + hueso coxal · ca_os4 cadera infantil → articulación de la cadera |
+| Inflamatoria | ca_in1 artritis séptica, ca_in3 cirugía o infiltración previa → articulación de la cadera · ca_in2 artritis reumatoide o espondilitis → articulación de la cadera + sacroilíaca |
+
+Las 26 URLs inglesas y las 18 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `posterior-thigh-muscles`, `the-hip-adductors`, `the-sciatic-nerve`, `the-ureters`, `the-prostate-gland`, `the-testes`, `greater-trochanter-of-femur`, `musculo-piriforme-piramidal-de-la-pelvis`.
+
+Revisado por el usuario (2026-10).

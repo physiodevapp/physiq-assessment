@@ -45,7 +45,8 @@ test('anatomía: enlaza la versión en español si existe y, si no, la inglesa m
   // inglés, 2026-10). Hombro: la bursa y los dos ligamentos; rodilla: meniscos,
   // LCA, patelofemoral, pata de ganso, tibioperonea, peroneo común y dos venas;
   // codo: radiocubital proximal y cuatro músculos del antebrazo; cervical:
-  // atlantoaxial, semiespinoso de la cabeza y suboccipitales.
+  // atlantoaxial, semiespinoso de la cabeza y suboccipitales; cadera: labrum,
+  // trocánter mayor, cuadrado femoral, isquiotibiales, aductores y tres nervios.
   assert.deepEqual(Object.keys(ESTRUCTURAS).filter(id => !ESTRUCTURAS[id].kenhubEs), [
     'bursa_subacromial', 'ligamento_coracoacromial', 'ligamento_coracohumeral',
     'menisco_medial', 'menisco_lateral', 'lca', 'art_patelofemoral', 'pata_ganso', 'art_tibioperonea',
@@ -53,6 +54,8 @@ test('anatomía: enlaza la versión en español si existe y, si no, la inglesa m
     'art_radiocubital_proximal', 'extensor_radial_corto_carpo', 'flexor_radial_carpo',
     'flexor_largo_pulgar', 'flexor_profundo_dedos',
     'art_atlantoaxial', 'semiespinoso_cabeza', 'suboccipitales',
+    'labrum_acetabular', 'trocanter_mayor', 'cuadrado_femoral', 'isquiotibiales', 'aductores_cadera',
+    'nervio_femorocutaneo', 'nervio_ilioinguinal', 'nervio_iliohipogastrico',
   ]);
   const html = anatomiaLineaHTML({ anatomia: ['supraespinoso', 'bursa_subacromial'] });
   assert.match(html, />Supraespinoso ↗<\/a>/);
@@ -126,6 +129,16 @@ test('anatomía: cervical, sin anatomía solo las filas genéricas (①/②, pro
   // Dolor nocturno, peso, cefalea de cambio brusco (arterias cerebrales), artritis inflamatoria de otras articulaciones
   const sinQ = PREGUNTAS.filter(p => p.region === 'cervical' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['cv1', 'cv5', 'cv_ar4', 'cv_in2']);
+});
+
+test('anatomía: cadera, sin anatomía solo las filas genéricas (longitud de paso, IMC, sensibilización central); cribado sin ella en 1 pregunta', () => {
+  assert.deepEqual(TODOS.filter(x => x.h.region === 'cadera' && !x.t.anatomia).map(x => `${x.hId}/${x.i}`),
+    ['ca3/7', 'ca13/3', 'ca15/0', 'ca15/1', 'ca15/2', 'ca15/3', 'ca15/4']);
+  const con = PREG_CON.filter(p => p.region === 'cadera').map(p => p.q.id);
+  assert.equal(con.length, 20);
+  // Pérdida de peso o bulto nuevo
+  const sinQ = PREGUNTAS.filter(p => p.region === 'cadera' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  assert.deepEqual(sinQ, ['ca_on3']);
 });
 
 test('fase 2: «Anatomía» dentro del «¿Por qué?» de la pregunta, solo si la tiene, con sus enlaces', () => {
