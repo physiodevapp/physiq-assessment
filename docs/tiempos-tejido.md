@@ -155,7 +155,7 @@ La tendinopatía no tiene un plazo de cicatrización. Lo que hay es la duración
 
 Lopes 2025 (Cochrane, rotuliana) no se cita, porque de ella solo está leído el resumen. La fila madre sigue siendo la del wiki, sin especificar qué mide.
 
-Pendiente de revisión por el usuario.
+Revisado y aprobado por el usuario tal cual (2026-10).
 
 ## Qué mide cada barra (2026-10)
 
