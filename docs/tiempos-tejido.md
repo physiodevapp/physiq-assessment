@@ -171,7 +171,13 @@ La prótesis de cadera añade la **vuelta al trabajo** de Pan 2024 (metaanálisi
 
 Bloque 8 de la ampliación. Grupo nuevo «Columna», entre «Articulación» y «Hueso», con tres filas `evolucion` (lo que tarda en resolverse el cuadro, no un plazo de cicatrización): **lumbalgia aguda inespecífica** («1–3d» a «2–3m»: la mitad se resuelve en 1–2 semanas y el 90 % en 6–12; Alexander 2024 y Margetis y Singh 2025, StatPearls), **radiculopatía lumbar (ciática)** («3–4s» a «6m–1a»: la mayoría en 4–6 semanas, Davis 2024; en atención primaria solo el 55 % ha mejorado la discapacidad al año, Konstantinou 2018, cohorte ATLAS; tras discectomía, 73 % sin dolor de pierna al año, Alexander 2024) y **radiculopatía cervical** («5–8s» a «2a»: más del 85 % de las agudas en 8–12 semanas, Margetis y Magnus 2025; recuperación completa a los 24–36 meses en el 83 %, Wong 2014, revisión sistemática). El grupo servirá también para la columna operada (bloque 2).
 
-Bloques siguientes, con los PDF ya recibidos: codo (luxación posterior: Waymack 2023; cabeza de radio: Patiño 2023), sindesmosis (Salameh 2022, Li R 2025), gemelo (Hsu y Chang 2023) y recto femoral (Hollabaugh 2023), columna operada (Margetis 2025, Donnally 2025, Wang 2017, Cui 2025, Bogaert 2022, Khan 2026, Health Quality Ontario 2019).
+## Ampliación: codo y sindesmosis (2026-10)
+
+Bloques 5 y 6 de la ampliación, PDF del usuario leídos enteros. **Luxación posterior de codo (simple)**, en «Articulación», `proteccion` («4–14d» a «3–4s»): férula a 90° de 5 a 10 días y luego movilidad activa; las inestables, hasta 3 semanas (Waymack y An 2023, StatPearls). **Cabeza de radio, sin cirugía**, subtipo de «Fractura», `proteccion` («4–14d» a «3–4s»): yeso o cabestrillo 2–3 semanas en las no desplazadas o poco desplazadas (Patiño y Saenz 2023, StatPearls). **Esguince de la sindesmosis**, fila nueva en «Ligamento», `deporte`, con dos subtipos: sin cirugía («5–8s», 39 días de media) y operada («2–3m», 71 días), de Salameh 2022 (metaanálisis, 1133 esguinces), con la tasa de vuelta del 96 % y la equivalencia de la sutura dinámica de Li y Sun 2026 (metaanálisis, deportistas de élite).
+
+**Gemelo y recto femoral no se pintan**: el capítulo de StatPearls del gemelo (Hsu y Chang 2023) no da plazos, y Hollabaugh 2023 agrupa la vuelta al deporte por grado BAMIC con todos los músculos juntos (isquiotibiales, cuádriceps, gemelo y sóleo), sin un tiempo por músculo. Quedan pendientes de una fuente con plazos por músculo.
+
+Bloque siguiente, con los PDF ya recibidos: columna operada (Margetis 2025, Donnally 2025, Wang 2017, Cui 2025, Bogaert 2022, Khan 2026, Health Quality Ontario 2019), en el grupo «Columna».
 
 ## Fase J, 9: nervio periférico (2026-10)
 

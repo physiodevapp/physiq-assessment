@@ -249,6 +249,20 @@ export const TIEMPOS_TEJIDO = {
             { id: 'rodilla_lca_reconstruido', mide: 'deporte', nombre: 'Rodilla, LCA reconstruido', desde: 6, hasta: 7, fuentes: ['Evans 2023', 'Logerstedt 2017'],
               nota: 'Vuelta a la actividad o al deporte a los 6–12 meses de media; el injerto puede tardar 18 meses o más en incorporarse del todo (Evans 2023). La guía JOSPT no fija plazos: al año, sin derrame, sin inestabilidad y con IKDC > 93 %, la vuelta al deporte es mucho más probable (Logerstedt 2017).' },
           ] },
+        // Sindesmosis (bloque 6 de la ampliación, 2026-10), PDF del usuario leídos enteros.
+        // Salameh 2022 (metaanálisis, 18 estudios, 1133 esguinces en deportistas): vuelta al
+        // deporte del 99 %, a los 52 días de media; 39,3 días sin cirugía y 70,9 con cirugía
+        // (más grado en los operados). Li y Sun 2026 (metaanálisis, 14 estudios, 901
+        // deportistas de élite): vuelta del 96 %, ~58 días; igual con sutura dinámica que sin
+        // cirugía (98 %). 39 días = «5–8s» (3); 71 días = «2–3m» (4).
+        { id: 'sindesmosis', mide: 'deporte', nombre: 'Esguince de la sindesmosis (alto de tobillo)', desde: 3, hasta: 4, gravedad: 'moderada', fuentes: ['Salameh 2022', 'Li y Sun 2026'],
+          nota: 'Vuelta al deporte en casi todos (96–99 %), a los 52–58 días de media en deportistas; mucho más lento que el esguince lateral.',
+          subtipos: [
+            { id: 'sindesmosis_conservador', mide: 'deporte', nombre: 'Sin cirugía', desde: 3, hasta: 3, fuentes: ['Salameh 2022'],
+              nota: 'Vuelta al deporte a los 39 días de media.' },
+            { id: 'sindesmosis_cirugia', mide: 'deporte', nombre: 'Operada (tornillo o sutura dinámica)', desde: 4, hasta: 4, fuentes: ['Salameh 2022', 'Li y Sun 2026'],
+              nota: 'Vuelta al deporte a los 71 días de media, en lesiones de más grado; con sutura dinámica, la misma tasa de vuelta (98 %) que sin cirugía. Manda el protocolo del cirujano.' },
+          ] },
       ],
     },
     {
@@ -310,6 +324,11 @@ export const TIEMPOS_TEJIDO = {
           nota: 'Cabestrillo de 1 a 6 semanas, sin pruebas de qué plazo o posición es mejor; lo mismo tras la estabilización quirúrgica. Recidiva muy alta en jóvenes (hasta el 92 % en menores de 25 con deporte de contacto). Tras una primera luxación, vuelve a su nivel el 79 % con reparación artroscópica y el 49 % sin cirugía; en plena temporada, la mayoría vuelve en unos 10 días, con más recidivas.' },
         { id: 'capsulitis_adhesiva', mide: 'evolucion', nombre: 'Capsulitis adhesiva (hombro congelado)', desde: 4, hasta: 7, gravedad: 'moderada', fuentes: ['Li 2025'],
           nota: 'De unos meses a 2–3 años: fase dolorosa (2–9 meses), rígida (4–12 meses) y de descongelación. Cerca del 80 % recupera una función normal o casi normal; un 10–20 % queda con rigidez o dolor. Más larga con diabetes o tiroidopatía.' },
+        // Waymack y An 2023 (StatPearls, luxación posterior de codo): tras la reducción, «held
+        // in 90 degrees of flexion for 5 to 10 days followed by an active range of motion»;
+        // las inestables, «up to 3 weeks of splinting»; mejor resultado con movilidad precoz.
+        { id: 'codo_luxacion_posterior', mide: 'proteccion', nombre: 'Luxación posterior de codo (simple)', desde: 1, hasta: 2, gravedad: 'moderada', fuentes: ['Waymack y An 2023'],
+          nota: 'Férula a 90° de 5 a 10 días y luego movilidad activa; las inestables, hasta 3 semanas. La movilidad precoz da mejor resultado. Con fractura de cabeza de radio y coronoides (tríada terrible), a traumatología.' },
         { id: 'protesis_rodilla', mide: 'deporte', nombre: 'Prótesis total de rodilla', desde: 5, hasta: 6, gravedad: 'moderada', fuentes: ['Magan 2021', 'Jette 2020'],
           nota: 'Fisioterapia desde las primeras 24 horas y fuerza de alta intensidad desde la 1.ª semana (guía APTA). Vuelve al deporte el 19 % a los 3 meses, el 70 % a los 6 y el 84 % al año, casi siempre a deportes de bajo impacto. Manda el protocolo del cirujano.' },
         { id: 'protesis_cadera', mide: 'deporte', nombre: 'Prótesis total de cadera', desde: 4, hasta: 5, gravedad: 'moderada', fuentes: ['Telang 2024', 'Pan 2024'],
@@ -417,6 +436,11 @@ export const TIEMPOS_TEJIDO = {
               nota: 'Yeso antebraquial 4–6 semanas (6 si hubo que reducirla). Un metaanálisis de 3 ensayos encontró mejor función con 3–4 semanas que con 5–6, sin más complicaciones. Dedos, codo y hombro se mueven desde el principio; la muñeca, al quitar el yeso, y el fortalecimiento hacia las 6–8 semanas.' },
             { id: 'fx_radio_distal_cirugia', mide: 'proteccion', nombre: 'Radio distal, operada', desde: 1, hasta: 3, fuentes: ['Mehta 2024'],
               nota: 'Férula de unos días a varias semanas, según la estabilidad y el cirujano. La guía APTA recomienda movilidad activa de mano, muñeca y hombro y actividad ligera en las 3 primeras semanas (A) y fortalecimiento submáximo desde la 2.ª (B); el enfoque clásico espera 4–6 semanas para la muñeca y 6 para la fuerza. Manda el protocolo del cirujano.' },
+            // Patiño y Saenz 2023 (StatPearls, cabeza de radio): sin cirugía (no desplazadas,
+            // escalón < 2 mm, < 30 % de superficie, angulación < 30°), yeso o cabestrillo «for
+            // two or three weeks», radiografía a la semana; 2–3 semanas = «4–14d» a «3–4s».
+            { id: 'fx_cabeza_radio', mide: 'proteccion', nombre: 'Cabeza de radio, sin cirugía', desde: 1, hasta: 2, fuentes: ['Patiño y Saenz 2023'],
+              nota: 'Yeso o cabestrillo 2–3 semanas, con flexoextensión activa precoz; solo las no desplazadas o poco desplazadas. Si bloquean el movimiento, a cirugía.' },
           ] },
         // Fase J, 5 (fractura de estrés): PDF del usuario leídos enteros (2026-10).
         // Hoenig 2023 (revisión sistemática y metaanálisis, 76 estudios): tiempo medio de

@@ -399,3 +399,18 @@ test('tejidos: grupo «Columna» — lumbalgia aguda y radiculopatías lumbar y 
   assert.deepEqual([f.radiculopatia_cervical.desde, f.radiculopatia_cervical.hasta], [3, 7]);
   assert.deepEqual(f.radiculopatia_cervical.fuentes, ['Margetis y Magnus 2025', 'Wong 2014']);
 });
+
+test('tejidos: codo (luxación posterior, cabeza de radio) y sindesmosis, con sus fuentes', () => {
+  const art = Object.fromEntries(T.grupos.find(x => x.id === 'articulacion').filas.map(x => [x.id, x]));
+  // Waymack y An 2023: férula 5–10 días, inestables hasta 3 semanas → «4–14d» a «3–4s»
+  assert.deepEqual([art.codo_luxacion_posterior.desde, art.codo_luxacion_posterior.hasta, art.codo_luxacion_posterior.mide], [1, 2, 'proteccion']);
+  const fx = Object.fromEntries(T.grupos.find(x => x.id === 'hueso').filas.find(f => f.id === 'fractura').subtipos.map(x => [x.id, x]));
+  // Patiño y Saenz 2023: yeso o cabestrillo 2–3 semanas → «4–14d» a «3–4s»
+  assert.deepEqual([fx.fx_cabeza_radio.desde, fx.fx_cabeza_radio.hasta, fx.fx_cabeza_radio.mide], [1, 2, 'proteccion']);
+  const sin = T.grupos.find(x => x.id === 'ligamento').filas.find(f => f.id === 'sindesmosis');
+  const st = Object.fromEntries(sin.subtipos.map(x => [x.id, x]));
+  // Salameh 2022: 39 días sin cirugía → «5–8s»; 71 con cirugía → «2–3m»
+  assert.deepEqual([st.sindesmosis_conservador.desde, st.sindesmosis_conservador.hasta], [3, 3]);
+  assert.deepEqual([st.sindesmosis_cirugia.desde, st.sindesmosis_cirugia.hasta], [4, 4]);
+  assert.deepEqual(sin.fuentes, ['Salameh 2022', 'Li y Sun 2026']);
+});
