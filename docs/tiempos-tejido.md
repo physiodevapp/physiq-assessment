@@ -139,6 +139,24 @@ Revisado y aprobado por el usuario tal cual (2026-10), incluido no pintar la inm
 
 Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Fase J, 8: tendinopatías (2026-10)
+
+La tendinopatía no tiene un plazo de cicatrización. Lo que hay es la duración de los programas de carga, así que los 7 subtipos bajo «Tendinopatía» van con contorno («programa»). Cada uno sale de la fuente de la pauta de su hipótesis, ya leída entera en sesiones anteriores.
+
+| Subtipo | Barra | Fuente (hipótesis) |
+|---|---|---|
+| Rotuliana | «2–3 m» | Ophey 2025 (ro5): resistencia progresiva de cuádriceps durante al menos 12 semanas |
+| Aquílea, porción media | «5–8 s» a «3–6 m» | Chimenti 2024 (tp8): de 6 semanas a 6 meses sin diferencias; VISA-A a las 12 semanas |
+| Aquílea, insercional | «2–3 m» | Jonsson 2008 y Pringels 2025 (tp9): 12 semanas |
+| Isquiotibiales, proximal | «2–3 m» | Rich 2025 (ca9): 6 sesiones en 12 semanas |
+| Glútea | «5–8 s» | Mellor 2018 (ca4): 14 sesiones en 8 semanas; éxito del 77 % a las 8 semanas y del 79 % al año |
+| Epicondilalgia lateral | «5–8 s» a «2–3 m» | Lucado 2022 (co1): 6–12 semanas |
+| Epicondilalgia medial | «2–3 m» | See 2026 (co2): los estudios, 12 semanas |
+
+Lopes 2025 (Cochrane, rotuliana) no se cita, porque de ella solo está leído el resumen. La fila madre sigue siendo la del wiki, sin especificar qué mide.
+
+Pendiente de revisión por el usuario.
+
 ## Qué mide cada barra (2026-10)
 
 Decisión del usuario. Las fuentes dan plazos de cosas distintas, y antes solo la nota lo decía, así que barras como la de la fractura de Jones (6–8 semanas sin carga) y la del 5.º metatarsiano por estrés (82 días hasta volver al deporte) parecían comparables. Cada fila y cada subtipo lleva ahora `mide`, que es una clave de `medidas` (`data/tejidos.js`). El color sigue siendo la gravedad, porque un segundo código de color daría 4 × 4 combinaciones ilegibles; la medida va en el relleno:
