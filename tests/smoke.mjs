@@ -1199,7 +1199,7 @@ async function checkTiemposTejido(browser, errors) {
   const r = {};
   const { TIEMPOS_TEJIDO } = await import(new URL('../data/tejidos.js', import.meta.url));
   // barras: una por fila y por subtipo (plegados, pero en el DOM)
-  const barrasDe = filas => filas.reduce((n, f) => n + 1 + (f.subtipos?.length || 0), 0);
+  const barrasDe = filas => filas.reduce((n, f) => n + (Number.isInteger(f.desde) ? 1 : 0) + (f.subtipos?.length || 0), 0);
   const nFilas = TIEMPOS_TEJIDO.grupos.reduce((n, g) => n + barrasDe(g.filas), 0);
   const nFases = TIEMPOS_TEJIDO.fases.length;
   const nLig = barrasDe(TIEMPOS_TEJIDO.grupos.find(g => g.id === 'ligamento').filas);
