@@ -288,3 +288,21 @@ test('tejidos, Fase J 6: subtipos de Aquiles y manguito rotador bajo la rotura d
   assert.deepEqual([st.manguito_programa.desde, st.manguito_programa.hasta, st.manguito_programa.mide], [5, 5, 'programa']);
   for (const id of ['manguito_proteccion', 'manguito_programa']) assert.deepEqual(st[id].fuentes, ['Thigpen 2016'], id);
 });
+
+test('tejidos, Fase J 8: tendinopatías como duración del programa de carga, con la fuente de su pauta', () => {
+  const madre = filas.find(f => f.id === 'tendinopatia');
+  const st = Object.fromEntries(madre.subtipos.map(x => [x.id, x]));
+  const de = id => [st[id].desde, st[id].hasta, st[id].fuentes[0]];
+  // 12 semanas → «2–3 m»; 8 → «5–8 s»; 6–12 → 3–4; 6 semanas a 6 meses → 3–5
+  assert.deepEqual(de('tendinopatia_rotuliana'), [4, 4, 'Ophey 2025']);
+  assert.deepEqual(de('tendinopatia_aquilea_media'), [3, 5, 'Chimenti 2024']);
+  assert.deepEqual(de('tendinopatia_aquilea_insercional'), [4, 4, 'Jonsson 2008']);
+  assert.deepEqual(de('tendinopatia_isquios_proximal'), [4, 4, 'Rich 2025']);
+  assert.deepEqual(de('tendinopatia_glutea'), [3, 3, 'Mellor 2018']);
+  assert.deepEqual(de('epicondilalgia_lateral'), [3, 4, 'Lucado 2022']);
+  assert.deepEqual(de('epicondilalgia_medial'), [4, 4, 'See 2026']);
+  // No hay plazo de cicatrización: todas son duración del programa
+  for (const x of madre.subtipos) assert.equal(x.mide, 'programa', x.id);
+  // Lopes 2025 solo tiene leído el resumen: no se cita aquí
+  assert.ok(!madre.subtipos.some(x => x.fuentes.includes('Lopes 2025')));
+});
