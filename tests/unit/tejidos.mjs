@@ -351,3 +351,13 @@ test('tejidos, Fase J 9: nervio periférico, neuropraxia con barra y axonotmesis
   // Grupos sin nota no pintan el párrafo
   assert.ok(!tiemposTejidoHTML(T, { filtro: 'hueso' }).includes('tej-grupo-nota'));
 });
+
+test('tejidos: fracturas de miembro superior (5.º metacarpiano, diáfisis de radio y cúbito) con su capítulo de StatPearls', () => {
+  const st = Object.fromEntries(filas.find(f => f.id === 'fractura').subtipos.map(x => [x.id, x]));
+  // Malik 2024: consolidación a las 4–6 semanas → «3–4s» a «5–8s»
+  assert.deepEqual([st.fx_quinto_metacarpiano.desde, st.fx_quinto_metacarpiano.hasta, st.fx_quinto_metacarpiano.mide], [2, 3, 'proteccion']);
+  assert.deepEqual(st.fx_quinto_metacarpiano.fuentes, ['Malik 2024']);
+  // Small y Taqi 2022: consolidación tras la cirugía hacia los 2–3 meses → «2–3m»
+  assert.deepEqual([st.fx_antebrazo_cirugia.desde, st.fx_antebrazo_cirugia.hasta, st.fx_antebrazo_cirugia.mide], [4, 4, 'proteccion']);
+  assert.deepEqual(st.fx_antebrazo_cirugia.fuentes, ['Small y Taqi 2022']);
+});

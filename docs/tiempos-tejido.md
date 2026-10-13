@@ -155,6 +155,12 @@ Sin barra: 3a y 3b (ninguna lesión y una sola en Pollock 2016) y grado 4, rotur
 
 Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Ampliación: fracturas de miembro superior (2026-10)
+
+A propuesta del usuario, tras cerrar la Fase J. Dos subtipos nuevos bajo «Fractura», los dos `proteccion`: **5.º metacarpiano (del boxeador), sin cirugía** («3–4s» a «5–8s»: consolidación clínica y radiográfica a las 4–6 semanas; Malik 2024) y **diáfisis de radio y cúbito, operada** («2–3m»: consolidación hacia los 2–3 meses, y entonces la mayoría de las actividades; Small y Taqi 2022). El **radio distal** queda pendiente: el capítulo de StatPearls (Corsino 2023, leído) solo da plazos para niños (rodete 3 semanas, tallo verde 4–6) y para el adulto dice «several weeks». Fuentes pedidas: Mehta 2024 (guía APTA) y Sayudo 2024 (metaanálisis de la duración del yeso).
+
+Bloques siguientes, con los PDF ya recibidos: hombro (luxación anterior: Pak 2023, Abdel Khalik 2025; capsulitis: Li 2025), codo (luxación posterior: Waymack 2023; cabeza de radio: Patiño 2023), sindesmosis (Salameh 2022, Li R 2025), gemelo (Hsu y Chang 2023) y recto femoral (Hollabaugh 2023), prótesis de rodilla y cadera (Jette 2020, Telang 2024; faltan los Pasqualini 2023), columna operada (Margetis 2025, Donnally 2025, Wang 2017, Cui 2025, Bogaert 2022, Khan 2026, Health Quality Ontario 2019) y lumbalgia (Margetis 2025, «Low Back Pain»).
+
 ## Fase J, 9: nervio periférico (2026-10)
 
 Grupo nuevo «Nervio periférico». Decisión del usuario: una barra para la neuropraxia y la axonotmesis como nota, porque su plazo depende de la distancia que tiene que crecer el nervio y una barra fija engañaría. Para eso los grupos admiten `nota` (texto bajo el título del grupo) con sus fuentes en `notaFuentes`, que `tests/referencias.mjs` cuenta como «Nota del grupo». PDF del usuario, leídos enteros: Sharma y Munakomi 2026 («Neurapraxia»), Hall 2026 («Axonotmesis») y Nadi 2026 («Peripheral Nerve Injury»), los tres de StatPearls; Robinson 2022 (Muscle Nerve) y Menorca 2013 (Hand Clin, manuscrito de autor).
