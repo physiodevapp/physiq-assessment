@@ -118,3 +118,94 @@ Las 19 URLs inglesas y las 16 españolas se abrieron de verdad (2026-10): todas 
 | Neurológico | h_n1 pérdida de fuerza o atrofia → plexo braquial + columna cervical |
 
 Las 11 URLs nuevas, en inglés y en español, se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Los pulmones enlazan `the-lung` (`lungs` y `lung` dan 404) y su versión española es `vision-general-de-la-anatomia-pulmonar`.
+
+Revisado por el usuario (2026-10).
+
+## Rodilla
+
+33 estructuras nuevas, 19 con versión en español. Kenhub no tiene en español los meniscos, el LCA, la articulación patelofemoral, la pata de ganso, la articulación tibioperonea, el nervio peroneo común ni las dos venas: esas se enlazan en inglés con la marca «EN». Sin artículo propio, y enlazadas a «Articulación de la rodilla» con `nota`, porque el artículo los trata: los colaterales medial y lateral (33 menciones), la bursa prerrotuliana y la grasa de Hoffa (13). El ligamento patelofemoral medial se dejó fuera, porque Kenhub solo lo nombra una vez; la inestabilidad rotuliana enlaza rótula y articulación patelofemoral. La plica medial enlaza la articulación de la rodilla, que la menciona.
+
+### Tests de la fase 4b
+
+70 de los 90 tests: todos salvo los 20 «Gesto testigo (①) y medida objetiva (②)».
+
+| Hipótesis | Tests → estructuras |
+|---|---|
+| ro1 Artrosis | criterios (NICE, ACR), crepitación, osteofitos, restricción → art. rodilla · rango, hinchazón y debilidad → art. rodilla + cuádriceps |
+| ro2 Menisco | McMurray, palpación de la interlínea, combinación global, Thessaly → menisco medial + lateral · combinaciones traumática y degenerativa (dolor medial) → menisco medial |
+| ro3 Patelofemoral | dolor en sentadilla, grupos de Décary → art. patelofemoral · palpación de las facetas → rótula + art. patelofemoral |
+| ro4 LCA | Lachman, cajón anterior, pivot shift, lever sign, clusters → LCA |
+| ro5 Tendinopatía rotuliana | dolor en el polo inferior → tendón rotuliano + rótula · decline squat, imagen → tendón rotuliano |
+| ro6 Cintilla iliotibial | Ober, Thomas → cintilla + tensor de la fascia lata · Noble → cintilla + fémur (cóndilo lateral) · palpación → cintilla · step-down lateral → glúteo medio |
+| ro7 Pata de ganso | los tres → pata de ganso |
+| ro8 LCM | valgo a 30° → colateral medial |
+| ro9 LCP | cajón posterior, sag → LCP · activo del cuádriceps → LCP + cuádriceps |
+| ro10 LLE y esquina posterolateral | hinchazón, varo a 30°, marcha en varo → colateral lateral · dial, cajón posterolateral, recurvatum → poplíteo + colateral lateral |
+| ro11 Fracturas | Ottawa → rótula + peroné + tibia · rótula → rótula · meseta (y función neurovascular) → tibia + arteria poplítea + nervio peroneo común |
+| ro12 Inestabilidad rotuliana | estrés tibiofemoral normal → art. rodilla · movilidad rotuliana, aprensión → rótula + art. patelofemoral |
+| ro13 Hoffa | recurvatum, test de Hoffa → grasa de Hoffa |
+| ro14 Bursitis pre e infrarrotuliana | fiebre (séptica), hinchazón en la bursa → bursa prerrotuliana |
+| ro15 Apofisitis | cadera primero → art. cadera · tuberosidad o polo inferior → tibia + tendón rotuliano · sentadillas y extensión resistida → tendón rotuliano + cuádriceps |
+| ro16 Osteocondral | palpación → fémur + art. rodilla · marcha, derrame y bloqueo → art. rodilla |
+| ro17 Plica | test de provocación → art. rodilla |
+| ro18 Tibioperonea proximal | presión, prominencia → art. tibioperonea + peroné · isquiotibiales en tensión → bíceps femoral + art. tibioperonea |
+| ro19 Peroneo común | steppage, sensibilidad, fuerza, neurodinámica → nervio peroneo común · Tinel → nervio peroneo común + peroné |
+| ro20 Quiste de Baker | signos meniscales → fosa poplítea + menisco medial · Foucher → fosa poplítea + semimembranoso |
+
+### Cribado de la fase 2
+
+15 de las 16 preguntas de sus sistemas propios. Sin campo solo r2 (dolor constante y nocturno, sin estructura concreta).
+
+| Sistema | Pregunta → estructuras |
+|---|---|
+| Vascular | r_v1 claudicación → arteria femoral + arteria poplítea · r_v2 TVP → venas del miembro inferior + vena poplítea · r_v3 quiste de Baker con pantorrilla → fosa poplítea + semimembranoso + gastrocnemio |
+| Infecciosa | r1 artritis séptica, r_i2 infección reciente → art. rodilla · r_i3 bursitis prerrotuliana séptica → bursa prerrotuliana |
+| Oncológico / hematológico | r3 cáncer o bulto → fémur + tibia · r4 hemartros tras golpe menor → art. rodilla |
+| Traumático | ro_t1 golpe o caída sin poder cargar → rótula + tibia · ro_t2 aparato extensor → cuádriceps + rótula + tendón rotuliano · ro_t3 luxación de alta energía → arteria poplítea + art. rodilla · ro_t4 pie frío o dormido → arteria poplítea + nervio peroneo común · ro_t5 pie caído → nervio peroneo común + peroné · ro_t6 bloqueo (osteocondritis) → fémur + art. rodilla |
+| Pediátrico | ro_p1 dolor sin traumatismo (explorar la cadera) → art. cadera + nervio obturador |
+
+Las 29 URLs inglesas y las 19 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `the-knee-joint`, `the-quadriceps-femoris-muscle`, `patellar-tendon` (no `patellar-ligament`), `iliotibial-band`, `gluteus-medius-and-minimus-muscles`, `tibiofibular-joints`, `common-fibular-nerve`.
+
+Revisado por el usuario (2026-10).
+
+## Codo
+
+18 estructuras nuevas, 10 con versión en español; reutiliza bíceps braquial, húmero, plexo braquial, columna cervical y escalenos de hombro. Sin versión en español: radiocubital proximal, extensor radial corto del carpo, flexor radial del carpo, flexor largo del pulgar y flexor profundo de los dedos. Sin artículo propio, y enlazados a «Articulación del codo» con `nota`, porque el artículo los trata: el ligamento colateral cubital (12 menciones) y el complejo colateral lateral (9). Kenhub trata radio y cúbito en un solo artículo («Radio y cúbito»), que enlaza el olécranon; la cabeza del radio tiene artículo propio. El ligamento anular no lo tiene, pero lo trata el de la articulación radiocubital proximal (y el del codo). La bursa olecraniana solo se nombra una vez: la pregunta de infección enlaza la articulación del codo.
+
+### Tests de la fase 4b
+
+Los 63 tests (codo no tiene filas de «Gesto testigo»).
+
+| Hipótesis | Tests → estructuras |
+|---|---|
+| co1 Epicondilalgia lateral | Cozen, Thomsen → extensor radial corto del carpo + húmero (epicóndilo) · prensión → extensor radial corto del carpo |
+| co2 Epicondilalgia medial | los cuatro → pronador redondo + flexor radial del carpo |
+| co3 Rigidez | movilidad activa y pasiva → art. codo |
+| co4 Colateral cubital | los seis → colateral cubital |
+| co5 Colateral lateral (IRPL) | los cinco → complejo colateral lateral |
+| co6 Radiohumeral / plica | los seis → cabeza del radio + art. codo |
+| co7 Rotura distal del bíceps | los tres → bíceps braquial |
+| co8 Túnel cubital | todos → nervio cubital; la subluxación, además, húmero |
+| co9 Túnel radial / interóseo posterior | los cinco → nervio radial + supinador |
+| co10 Tríceps | los cuatro → tríceps braquial |
+| co11 Pinzamiento posterior | los cuatro → radio y cúbito (olécranon) + art. codo |
+| co12 Fractura de estrés del olécranon | los tres → radio y cúbito |
+| co13 Síndrome del pronador / interóseo anterior | palpación y pronación resistida → pronador redondo + nervio mediano · debilidades → nervio mediano + flexor largo del pulgar + flexor profundo · neurodinámica → nervio mediano |
+| co14 Pronación dolorosa | los dos → cabeza del radio + art. radiocubital proximal (ligamento anular) |
+| co15 Codo de la liga infantil | los dos → húmero (epicóndilo medial) + colateral cubital |
+| co16 Panner / osteocondritis | los dos → húmero (capítulo) + art. codo |
+
+### Cribado de la fase 2
+
+7 de las 12 preguntas de sus sistemas propios. Sin campo, por no tener una estructura concreta: co4a (Raynaud) y co4a_prog (su evolución), co_e2b (miastenia), co2 (dolor constante y nocturno) y co_e2a (debilidad proximal).
+
+| Sistema | Pregunta → estructuras |
+|---|---|
+| Traumático | co_t1 prueba de extensión del codo → art. codo + cabeza del radio · co_t2 deformidad o mano fría → art. codo + arteria braquial + nervio mediano |
+| Vascular / neurológica | co4a_uni Raynaud en una mano → arteria subclavia + escalenos (desfiladero) · co4b zona dormida → nervio cubital · co3 debilidad progresiva → plexo braquial + columna cervical |
+| Infecciosa | co1 fiebre y calor → art. codo |
+| Endocrino | co_e1 síntomas bilaterales → nervio mediano + nervio cubital |
+
+Las 16 URLs inglesas y las 10 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. La española de la arteria subclavia es `artieria-subclavia-anatomia`, con la errata del propio Kenhub. Slugs que no se deducen: `the-radius-and-the-ulna`, `head-of-radius`, `the-ulnar-nerve`, `the-median-nerve` (pero `radial-nerve`), `the-subclavian-artery`.
+
+Revisado por el usuario (2026-10).

@@ -284,12 +284,12 @@ Diseño, esquema y procedimiento: `docs/anatomia-kenhub.md` (léelo entero antes
 
 | Región | Tests 4b | Cribado fase 2 | Slugs comprobados | Revisión usuario | Notas |
 |---|---|---|---|---|---|
-| Hombro (piloto) | [x] 42 de 49 tests, 19 estructuras | [x] 15 de 19 preguntas, 11 estructuras nuevas | [x] abiertas con `curl` (200), inglés y español | [ ] | Sin campo los genéricos (gesto testigo; identificadores de Walmsley). El labrum no tiene artículo propio en Kenhub: enlaza «Articulación glenohumeral» con `nota`. En h4 (inestabilidad) basta la articulación glenohumeral, cuyo artículo trata cápsula, ligamentos y labrum |
-| Rodilla | [ ] | [ ] | [ ] | [ ] | |
+| Hombro (piloto) | [x] 42 de 49 tests, 19 estructuras | [x] 15 de 19 preguntas, 11 estructuras nuevas | [x] abiertas con `curl` (200), inglés y español | [x] (2026-10) | Sin campo los genéricos (gesto testigo; identificadores de Walmsley). El labrum no tiene artículo propio en Kenhub: enlaza «Articulación glenohumeral» con `nota`. En h4 (inestabilidad) basta la articulación glenohumeral, cuyo artículo trata cápsula, ligamentos y labrum |
+| Rodilla | [x] 70 de 90 tests (todos salvo los 20 gesto testigo) | [x] 15 de 16 preguntas | [x] abiertas con `curl` (200), inglés y español | [x] (2026-10) | 33 estructuras nuevas (las de rodilla y, para la fase 2, vasos, nervios y cadera); 19 con versión en español. Sin artículo propio, enlazan «Articulación de la rodilla» con `nota`: colaterales medial y lateral, bursa prerrotuliana y grasa de Hoffa (el artículo los trata: 33 menciones de los colaterales, 13 de la grasa). El ligamento patelofemoral medial se dejó fuera (una sola mención en Kenhub): la inestabilidad rotuliana enlaza rótula y articulación patelofemoral. Kenhub no tiene en español los meniscos ni el LCA |
 | Cadera | [ ] | [ ] | [ ] | [ ] | |
 | Lumbar | [ ] | [ ] | [ ] | [ ] | |
 | Cervical | [ ] | [ ] | [ ] | [ ] | `columna_cervical` ya existe (hombro h6) |
-| Codo | [ ] | [ ] | [ ] | [ ] | `biceps_braquial` ya existe (hombro h5) |
+| Codo | [x] 63 de 63 tests (no tiene filas de gesto testigo) | [x] 7 de 12 preguntas | [x] abiertas con `curl` (200), inglés y español | [x] (2026-10) | 18 estructuras nuevas, 10 con versión en español; reutiliza bíceps braquial, húmero, plexo braquial, columna cervical y escalenos. Sin artículo propio, enlazan «Articulación del codo» con `nota`: colateral cubital (12 menciones) y complejo colateral lateral (9). Radio y cúbito comparten artículo en Kenhub («Radio y cúbito»); la cabeza del radio tiene el suyo. La pronación dolorosa enlaza la radiocubital proximal, cuyo artículo trata el ligamento anular |
 | Tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
 
 Después, si se ve útil: un enlace a la estructura principal en la cabecera de la hipótesis (4b).

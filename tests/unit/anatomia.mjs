@@ -41,9 +41,17 @@ test('anatomía: enlaza la versión en español si existe y, si no, la inglesa m
     assert.equal(l.url, e.kenhubEs ? KENHUB_BASE_ES + e.kenhubEs : KENHUB_BASE + e.kenhub, id);
     assert.equal(l.ingles, !e.kenhubEs, id);
   }
-  // Hombro (2026-10): sin versión en español solo la bursa y los dos ligamentos
-  assert.deepEqual(Object.keys(ESTRUCTURAS).filter(id => !ESTRUCTURAS[id].kenhubEs),
-    ['bursa_subacromial', 'ligamento_coracoacromial', 'ligamento_coracohumeral']);
+  // Sin versión en español en Kenhub (comprobado con el hreflang del artículo
+  // inglés, 2026-10). Hombro: la bursa y los dos ligamentos; rodilla: meniscos,
+  // LCA, patelofemoral, pata de ganso, tibioperonea, peroneo común y dos venas;
+  // codo: radiocubital proximal y cuatro músculos del antebrazo.
+  assert.deepEqual(Object.keys(ESTRUCTURAS).filter(id => !ESTRUCTURAS[id].kenhubEs), [
+    'bursa_subacromial', 'ligamento_coracoacromial', 'ligamento_coracohumeral',
+    'menisco_medial', 'menisco_lateral', 'lca', 'art_patelofemoral', 'pata_ganso', 'art_tibioperonea',
+    'nervio_peroneo_comun', 'venas_miembro_inferior', 'vena_poplitea',
+    'art_radiocubital_proximal', 'extensor_radial_corto_carpo', 'flexor_radial_carpo',
+    'flexor_largo_pulgar', 'flexor_profundo_dedos',
+  ]);
   const html = anatomiaLineaHTML({ anatomia: ['supraespinoso', 'bursa_subacromial'] });
   assert.match(html, />Supraespinoso ↗<\/a>/);
   assert.match(html, /title="Abrir en Kenhub \(sin versión en español\)">Bursa subacromial <span class="anat-idioma">EN<\/span> ↗<\/a>/);
@@ -85,6 +93,25 @@ test('anatomía: cribado de hombro con anatomía en las preguntas cuya derivaci�
   // Sin estructura concreta: dolor nocturno, peso, dolor constante, sistémico
   const sin = PREGUNTAS.filter(p => p.region === 'hombro' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sin, ['h4', 'h6', 'h_r2', 'h_i1']);
+});
+
+test('anatomía: rodilla, todos los tests salvo el gesto testigo; cribado sin anatomía solo en el dolor nocturno (r2)', () => {
+  const sin = TODOS.filter(x => x.h.region === 'rodilla' && !x.t.anatomia);
+  assert.ok(sin.length && sin.every(x => x.t.name.startsWith('Gesto testigo')), sin.map(x => `${x.hId}/${x.i}`).join(' '));
+  assert.equal(sin.length, 20);
+  const con = PREG_CON.filter(p => p.region === 'rodilla').map(p => p.q.id);
+  assert.deepEqual(con, ['r_v1', 'r_v2', 'r_v3', 'r1', 'r_i2', 'r_i3', 'r3', 'r4', 'ro_t1', 'ro_t2', 'ro_t3', 'ro_t4', 'ro_t5', 'ro_t6', 'ro_p1']);
+  const sinQ = PREGUNTAS.filter(p => p.region === 'rodilla' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  assert.deepEqual(sinQ, ['r2']);
+});
+
+test('anatomía: codo, todos los tests (no tiene filas de gesto testigo); cribado sin anatomía en las preguntas sin estructura concreta', () => {
+  assert.deepEqual(TODOS.filter(x => x.h.region === 'codo' && !x.t.anatomia).map(x => `${x.hId}/${x.i}`), []);
+  const con = PREG_CON.filter(p => p.region === 'codo').map(p => p.q.id);
+  assert.deepEqual(con, ['co_t1', 'co_t2', 'co4a_uni', 'co4b', 'co3', 'co1', 'co_e1']);
+  // Raynaud bilateral y su evolución, miastenia, dolor constante, debilidad proximal
+  const sinQ = PREGUNTAS.filter(p => p.region === 'codo' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  assert.deepEqual(sinQ, ['co4a', 'co4a_prog', 'co_e2b', 'co2', 'co_e2a']);
 });
 
 test('fase 2: «Anatomía» dentro del «¿Por qué?» de la pregunta, solo si la tiene, con sus enlaces', () => {
