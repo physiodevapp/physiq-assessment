@@ -209,3 +209,47 @@ Los 63 tests (codo no tiene filas de «Gesto testigo»).
 Las 16 URLs inglesas y las 10 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. La española de la arteria subclavia es `artieria-subclavia-anatomia`, con la errata del propio Kenhub. Slugs que no se deducen: `the-radius-and-the-ulna`, `head-of-radius`, `the-ulnar-nerve`, `the-median-nerve` (pero `radial-nerve`), `the-subclavian-artery`.
 
 Revisado por el usuario (2026-10).
+
+## Cervical
+
+13 estructuras nuevas, 10 con versión en español; reutiliza columna cervical, plexo braquial, escalenos, costillas, nervios mediano, radial y cubital, bíceps y tríceps, y del cribado de hombro corazón, pulmones, pleura, nervio frénico y estómago. Sin versión en español: articulación atlantoaxial, semiespinoso de la cabeza y suboccipitales. La columna craneocervical (C0–C3, C1–C2) enlaza la articulación atlantoaxial, cuyo artículo trata también el ligamento transverso del atlas (30 menciones): por eso la artritis reumatoide, el síndrome de Down y la tortícolis de Grisel la enlazan.
+
+### Tests de la fase 4b
+
+37 de los 48 tests. Sin campo los genéricos: ① gesto testigo y ② medida objetiva (ce3/5, ce5/5, ce12/1, ce12/2, ce13/2, ce14/0), los factores pronósticos del latigazo (ce5/1 riesgo de evolución persistente, ce5/2 hiperalerta, ce5/3 hiperalgesia al frío), la tabla orientativa de cefaleas (ce4/4) y la fatiga en actividades funcionales (ce11/1).
+
+| Hipótesis | Tests → estructuras |
+|---|---|
+| ce1 Disfunción articular | PAIVM C0–C3 → atlantoaxial + columna cervical · movilidad activa → columna cervical |
+| ce2 Disfunción neuromuscular | flexión craneocervical → largo del cuello · reposicionamiento → columna cervical |
+| ce3 Radiculopatía | Spurling → columna cervical + nervios espinales · ULNT1 → nervio mediano + plexo braquial · abducción del hombro → nervios espinales · reflejos → bíceps + tríceps · exploración neurológica → nervios espinales + plexo braquial · combinación de 4 ULNT → nervios mediano, radial y cubital |
+| ce4 Cefalea cervicogénica | flexión-rotación → atlantoaxial · PAIVM C0–C3 → atlantoaxial + columna cervical · cluster → columna cervical + largo del cuello · examen manual alto → atlantoaxial + suboccipitales |
+| ce5 Latigazo | movilidad activa, reposición articular → columna cervical |
+| ce6 Debilidad cérvico-escapular | flexión → largo del cuello · extensión → semiespinoso + esplenio de la cabeza |
+| ce7 Dolor crónico inespecífico | movilidad, reposicionamiento → columna cervical |
+| ce8 Mielopatía | Hoffmann, clonus, marcha, hiperreflexia → médula espinal |
+| ce9 Postura | cabeza adelantada → columna cervical · cifosis → vértebras torácicas |
+| ce10 Primera costilla | palpación → costillas + escalenos · rotación ipsilateral → costillas |
+| ce11 Fatiga | resistencia de flexores profundos → largo del cuello |
+| ce12 Dolor radicular | ULNT1 → nervio mediano + plexo braquial · rasgos neuropáticos → nervios espinales + plexo braquial |
+| ce13 Mareo cervicogénico | descartar lo vascular → arteria vertebral + carótida · error de reposición → columna cervical |
+| ce14 Dolor idiopático | movilidad, examen segmentario → columna cervical · flexión-rotación → atlantoaxial · extensión-rotación → articulaciones cigapofisarias |
+
+### Cribado de la fase 2
+
+16 de las 20 preguntas de sus sistemas propios. Sin campo: cv1 (dolor nocturno), cv5 (pérdida de peso), cv_ar4 (cefalea de cambio brusco, que apunta a las arterias cerebrales, sin artículo concreto) y cv_in2 (rigidez y otras articulaciones).
+
+| Sistema | Pregunta → estructuras |
+|---|---|
+| Cáncer | cv4 antecedente de cáncer → columna cervical |
+| Cardiovascular | cv2 sudor y dolor torácico, cv_c2 dolor con el esfuerzo → corazón |
+| Pulmonar | cv_p1 dolor al toser o respirar → pleura + nervio frénico · cv_p2 disnea → corazón + pulmones |
+| Renal | cv3 esfínteres, cv_r2 dificultad para orinar → médula espinal |
+| Gastrointestinal | cv_gi1 relación con la comida → esófago + estómago · cv_gi2 melena → estómago |
+| Arterial / traumatismo | cv_ar1 dolor súbito distinto (disección) → arteria vertebral + carótida · cv_ar2 mareo con signos de tronco → arteria vertebral · cv_ar3 traumatismo → atlantoaxial + columna cervical |
+| Médula / estructural | cv_n1 artritis reumatoide, Down, Klippel-Feil → atlantoaxial · cv_n2 distonía → esternocleidomastoideo · cv_n3 tortícolis de Grisel → atlantoaxial |
+| Inflamatoria | cv_in1 febrícula y dolor continuo → columna cervical |
+
+Las 13 URLs inglesas y las 10 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `the-spinal-cord`, `zygapophyseal-joints`, `atlantoaxial-joint`, `common-carotid-artery`.
+
+Revisado por el usuario (2026-10).
