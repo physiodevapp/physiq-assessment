@@ -299,3 +299,40 @@ Revisado por el usuario (2026-10).
 Las 26 URLs inglesas y las 18 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `posterior-thigh-muscles`, `the-hip-adductors`, `the-sciatic-nerve`, `the-ureters`, `the-prostate-gland`, `the-testes`, `greater-trochanter-of-femur`, `musculo-piriforme-piramidal-de-la-pelvis`.
 
 Revisado por el usuario (2026-10).
+
+## Lumbar
+
+11 estructuras nuevas, 8 con versión en español; reutiliza articulaciones cigapofisarias, articulación sacroilíaca, nervio ciático, nervios espinales, cuádriceps, gastrocnemio, hueso coxal, fémur, arterias femoral y poplítea, y del cribado de otras regiones riñón, uréteres, próstata, órganos reproductores femeninos, intestino grueso y estómago. Sin versión en español: canal vertebral, cono medular y cola de caballo (un solo artículo) y multífido. La aorta enlaza el artículo general (no hay uno de la aorta abdominal).
+
+### Tests de la fase 4b
+
+32 de los 37 tests. Sin campo: la regla de Flynn (lu1/0, regla pronóstica de manipulación), la edad > 48 años (lu4/4) y los tres criterios mínimos del dolor miofascial (lu9/0–2), que no nombran un músculo concreto.
+
+| Hipótesis | Tests → estructuras |
+|---|---|
+| lu1 Disfunción segmentaria | PAIVM → columna lumbar |
+| lu2 Inestabilidad | flexión ≥ 53° o sin hipomovilidad, movimientos aberrantes → columna lumbar · inestabilidad en prono → columna lumbar + multífido |
+| lu3 Dolor radicular | SLR → nervio ciático + nervios espinales · SLR cruzado → discos + nervios espinales · Slump → nervios espinales + nervio ciático · RAPIDH → nervios espinales + discos |
+| lu4 Estenosis | síntomas bilaterales, pierna > espalda, dolor al caminar o de pie, alivio al sentarse, extensión de 30 s → canal vertebral + cola de caballo · marcha con base amplia, Romberg → cola de caballo · déficits sensoriales L3–S1 → nervios espinales |
+| lu5 Radiculopatía | miotomas → nervios espinales + plexos lumbar y sacro · reflejos rotuliano y aquíleo → cuádriceps + gastrocnemio · sensibilidad → nervios espinales |
+| lu6 Discogénico | centralización, preferencia direccional, espalda plana o shift → discos intervertebrales |
+| lu7 Facetario | extensión-rotación, PA unilateral, sin signos radiculares → articulaciones cigapofisarias |
+| lu8 Sacroilíaca | distracción, thigh thrust, compresión, thrust sacro, no centraliza, Gaenslen, sin dolor en la línea media → articulación sacroilíaca |
+
+### Cribado de la fase 2
+
+Las 23 preguntas de sus sistemas propios.
+
+| Sistema | Pregunta → estructuras |
+|---|---|
+| Cáncer | l2 antecedente de cáncer, l_on2 dolor nocturno → columna lumbar |
+| Urogenital | l4 orina y fiebre, l_u4 cólico → riñón + uréteres · l6 cola de caballo → cola de caballo + vejiga · l_u3a ardor → vejiga · l_u3b nicturia → vejiga + próstata |
+| Gastrointestinal | l1 alivio al defecar → intestino grueso · l3 ciclo menstrual → órganos reproductores femeninos · l_gi2 melena o úlcera → estómago + duodeno |
+| Espondiloartropatías y hueso | l5 rigidez matutina → sacroilíaca + columna lumbar · l5c dolor alternante, l5d no alivia en reposo, l_e2 despierta de madrugada → sacroilíaca · l_e3 ciclo → órganos reproductores femeninos · l_e4 osteoporosis → columna lumbar + sacro · l_e5 Paget → hueso coxal + columna lumbar + fémur · l_e6 fractura de estrés → sacro · l_e7 espondilolisis → columna lumbar |
+| Vascular | l_v1 claudicación, l_v3 pie frío → arterias femoral y poplítea · l_v2 aneurisma → aorta |
+| Infección | l_inf1 → columna lumbar + discos |
+
+Las 11 URLs inglesas y las 8 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `lumbar-vertebrae` (español `columna-lumbar`), `the-intervertebral-discs`, `conus-medullaris-medullary-cone-and-cauda-equina`, `the-duodenum`.
+
+
+Revisado por el usuario (2026-10).
