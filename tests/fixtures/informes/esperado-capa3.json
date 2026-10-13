@@ -896,15 +896,6 @@
           ]
         },
         {
-          "id": "rosario1-sdrc-hipotesis",
-          "tipo": "no-respaldado",
-          "nivel": "alto",
-          "descripcion": "Propone un SDRC «tipo I en fase inicial» como hipótesis cuando el fisioterapeuta dijo que no cumple los criterios y solo lo deja anotado para vigilarlo",
-          "fragmentos": [
-            "Posible síndrome de dolor regional complejo tipo I en fase inicial"
-          ]
-        },
-        {
           "id": "rosario1-movilidad-inventada",
           "tipo": "no-respaldado",
           "nivel": "medio",
@@ -976,15 +967,6 @@
           ]
         },
         {
-          "id": "rosario2-sdrc-fase",
-          "tipo": "no-respaldado",
-          "nivel": "medio",
-          "descripcion": "El SDRC vuelve a «Hipótesis adicionales» con una «fase inicial» inventada; el fisioterapeuta solo lo deja para vigilar (D, segunda vez)",
-          "fragmentos": [
-            "un síndrome de dolor regional complejo en fase inicial"
-          ]
-        },
-        {
           "id": "rosario2-escala-visual",
           "tipo": "lectura",
           "nivel": "medio",
@@ -1036,15 +1018,6 @@
       "transcripcion": "rosario-dictado-4-transcripcion.txt",
       "plantilla": "narrativo",
       "errores": [
-        {
-          "id": "rosario4-sdrc-hipotesis",
-          "tipo": "no-respaldado",
-          "nivel": "medio",
-          "descripcion": "El SDRC vuelve a «Hipótesis adicionales» con una «fase inicial» inventada, aunque el fisioterapeuta dijo que no cumple los criterios y lo deja para vigilar (D, tercera vez de cuatro)",
-          "fragmentos": [
-            "Posible síndrome de dolor regional complejo en fase inicial"
-          ]
-        },
         {
           "id": "rosario4-dolor-continuo",
           "tipo": "no-respaldado",
