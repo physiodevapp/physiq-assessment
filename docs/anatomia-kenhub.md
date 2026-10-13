@@ -398,3 +398,5 @@ Revisado por el usuario (2026-10).
 
 Las 27 URLs inglesas y las 12 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `the-ankle-joint` (español `articulacion-talocrural`), `peroneus-longus-muscle` frente a `fibularis-brevis-muscle`, `tarsometatarsal-joint`, `metatarsophalangeal-mtp-joints`, `transverse-tarsal-joint`, `cuboid`, `fascias-of-the-leg-and-foot`, `talus-astragalo`.
 
+
+Revisado por el usuario (2026-10).
