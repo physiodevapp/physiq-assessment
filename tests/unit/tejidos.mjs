@@ -201,7 +201,7 @@ test('tejidos, Fase J 3: grupo «Menisco» propio, con los plazos de Prill 2025 
   const g = T.grupos.find(x => x.id === 'menisco');
   assert.ok(g && g.filas.length, 'el grupo existe y no está vacío');
   // Va como grupo propio, entre ligamento y hueso; nada de menisco bajo ligamento
-  assert.deepEqual(T.grupos.map(x => x.id), ['tendon', 'musculo', 'ligamento', 'menisco', 'hueso', 'nervio']);
+  assert.deepEqual(T.grupos.map(x => x.id), ['tendon', 'musculo', 'ligamento', 'menisco', 'articulacion', 'hueso', 'nervio']);
   assert.ok(!T.grupos.find(x => x.id === 'ligamento').filas.flatMap(f => [f, ...(f.subtipos || [])]).some(f => /menisc/i.test(f.id)));
   const f = Object.fromEntries(g.filas.map(x => [x.id, x]));
   // Prill 2025: traumática, 12 semanas → «2–3 m»; degenerativa, 3–6 meses → «3–6 m»;
@@ -235,7 +235,7 @@ test('tejidos, Fase J 4: subtipos de fractura por localización, con los plazos 
   assert.deepEqual(rango('fx_quinto_estres'), [4, 5]);
   // Sin plazo en su capítulo, no se pintan: húmero proximal, rótula operada, navicular traumática
   assert.ok(!madre.subtipos.some(x => /humero|rotula_cirugia|navicular_trauma/.test(x.id)));
-  for (const x of madre.subtipos) assert.ok(x.fuentes.length === 1 && x.nota, x.id);
+  for (const x of madre.subtipos) assert.ok(x.fuentes.length >= 1 && x.nota, x.id);
 });
 
 test('tejidos, Fase J 5: fila «Fractura de estrés» con subtipos de bajo y alto riesgo (Hoenig 2023, Robertson y Wood 2017)', () => {
@@ -257,7 +257,7 @@ test('tejidos, Fase J 5: fila «Fractura de estrés» con subtipos de bajo y alt
 test('tejidos: toda fila y subtipo dice qué mide su barra (`mide`), y se pinta con su relleno o su marca', () => {
   const todas = filas.flatMap(f => [f, ...(f.subtipos || [])]);
   for (const x of todas) assert.ok(T.medidas[x.mide], `${x.id}: «mide» falta o no está en medidas`);
-  for (const [k, m] of Object.entries(T.medidas)) assert.ok(['liso', 'rayado', 'contorno', 'punteado', 'tenue'].includes(m.relleno) && m.etiqueta, k);
+  for (const [k, m] of Object.entries(T.medidas)) assert.ok(['liso', 'rayado', 'contorno', 'punteado', 'tenue', 'degradado'].includes(m.relleno) && m.etiqueta, k);
   // Cada medida con su propio relleno: la barra misma dice qué mide (antes «biología» y «sin
   // especificar» compartían el liso con una etiqueta, y no se entendía; usuario, 2026-10)
   const rellenos = Object.values(T.medidas).map(m => m.relleno);
@@ -350,4 +350,30 @@ test('tejidos, Fase J 9: nervio periférico, neuropraxia con barra y axonotmesis
   assert.equal((html.match(/class="tej-barra /g) || []).length, 1);
   // Grupos sin nota no pintan el párrafo
   assert.ok(!tiemposTejidoHTML(T, { filtro: 'hueso' }).includes('tej-grupo-nota'));
+});
+
+test('tejidos: fracturas de miembro superior (5.º metacarpiano, diáfisis de radio y cúbito, radio distal) con su fuente', () => {
+  const st = Object.fromEntries(filas.find(f => f.id === 'fractura').subtipos.map(x => [x.id, x]));
+  // Malik 2024: consolidación a las 4–6 semanas → «3–4s» a «5–8s»
+  assert.deepEqual([st.fx_quinto_metacarpiano.desde, st.fx_quinto_metacarpiano.hasta, st.fx_quinto_metacarpiano.mide], [2, 3, 'proteccion']);
+  assert.deepEqual(st.fx_quinto_metacarpiano.fuentes, ['Malik 2024']);
+  // Small 2022: consolidación tras la cirugía hacia los 2–3 meses → «2–3m»
+  assert.deepEqual([st.fx_antebrazo_cirugia.desde, st.fx_antebrazo_cirugia.hasta, st.fx_antebrazo_cirugia.mide], [4, 4, 'proteccion']);
+  assert.deepEqual(st.fx_antebrazo_cirugia.fuentes, ['Small 2022']);
+  // Mehta 2024 + Sayudo 2024: yeso 4–6 semanas (3–4 sin peor función) → «3–4s» a «5–8s»
+  assert.deepEqual([st.fx_radio_distal_yeso.desde, st.fx_radio_distal_yeso.hasta, st.fx_radio_distal_yeso.mide], [2, 3, 'proteccion']);
+  assert.deepEqual(st.fx_radio_distal_yeso.fuentes, ['Mehta 2024', 'Sayudo 2024']);
+  // Mehta 2024: protección de días a semanas; fuerza desde las 6 semanas como tarde → «4–14d» a «5–8s»
+  assert.deepEqual([st.fx_radio_distal_cirugia.desde, st.fx_radio_distal_cirugia.hasta, st.fx_radio_distal_cirugia.mide], [1, 3, 'proteccion']);
+  assert.deepEqual(st.fx_radio_distal_cirugia.fuentes, ['Mehta 2024']);
+});
+
+test('tejidos: grupo «Articulación» — luxación anterior de hombro (protección) y capsulitis adhesiva (evolución natural)', () => {
+  const g = T.grupos.find(x => x.id === 'articulacion');
+  const f = Object.fromEntries(g.filas.map(x => [x.id, x]));
+  // Pak 2023: cabestrillo de 1 a 6 semanas → «4–14d» a «5–8s»
+  assert.deepEqual([f.hombro_luxacion_anterior.desde, f.hombro_luxacion_anterior.hasta, f.hombro_luxacion_anterior.mide], [1, 3, 'proteccion']);
+  // Li 2025: de unos meses a 2–3 años → «2–3m» a «2a», evolución natural
+  assert.deepEqual([f.capsulitis_adhesiva.desde, f.capsulitis_adhesiva.hasta, f.capsulitis_adhesiva.mide], [4, 7, 'evolucion']);
+  assert.equal(T.medidas.evolucion.relleno, 'degradado');
 });

@@ -155,6 +155,16 @@ Sin barra: 3a y 3b (ninguna lesión y una sola en Pollock 2016) y grado 4, rotur
 
 Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Ampliación: fracturas de miembro superior (2026-10)
+
+A propuesta del usuario, tras cerrar la Fase J. Dos subtipos nuevos bajo «Fractura», los dos `proteccion`: **5.º metacarpiano (del boxeador), sin cirugía** («3–4s» a «5–8s»: consolidación clínica y radiográfica a las 4–6 semanas; Malik 2024) y **diáfisis de radio y cúbito, operada** («2–3m»: consolidación hacia los 2–3 meses, y entonces la mayoría de las actividades; Small 2022). El **radio distal** del adulto no tiene plazo en su capítulo de StatPearls (Corsino 2023 solo los da para niños), así que sale de la guía APTA (Mehta 2024) y de un metaanálisis de la duración del yeso (Sayudo 2024), en dos subtipos `proteccion`: **sin cirugía (yeso)**, «3–4s» a «5–8s» (yeso 4–6 semanas; 3–4 semanas dieron mejor función que 5–6, sin más complicaciones), y **operada**, «4–14d» a «5–8s» (férula de días a semanas; movilidad activa en las 3 primeras semanas, grado A, y fortalecimiento submáximo desde la 2.ª, grado B; el enfoque clásico espera 4–6 semanas).
+
+## Ampliación: grupo «Articulación» y medida «evolución natural» (2026-10)
+
+Grupo nuevo «Articulación», para lo que afecta a la cápsula o a la articulación entera y no a un ligamento aislado. **Luxación anterior de hombro** (`proteccion`, «4–14d» a «5–8s»): cabestrillo de 1 a 6 semanas, también tras la cirugía, sin pruebas de qué plazo o posición es mejor (Pak y Kim 2023); la nota da la recidiva en jóvenes y la vuelta al nivel previo con y sin reparación de Bankart (Abdel Khalik 2025, metaanálisis, que cita a Buss 2004 para los 10 días en temporada). **Capsulitis adhesiva** («2–3m» a «2a»): de unos meses a 2–3 años, con sus tres fases en la nota (Li 2025). Como no es una lesión que cicatriza, sino lo que dura la enfermedad hasta resolverse, lleva una medida nueva, `evolucion` («Evolución natural (hasta que se resuelve)»), con relleno `degradado`, que también servirá para la lumbalgia.
+
+Bloques siguientes, con los PDF ya recibidos: codo (luxación posterior: Waymack 2023; cabeza de radio: Patiño 2023), sindesmosis (Salameh 2022, Li R 2025), gemelo (Hsu y Chang 2023) y recto femoral (Hollabaugh 2023), prótesis de rodilla y cadera (Jette 2020, Telang 2024; faltan los Pasqualini 2023), columna operada (Margetis 2025, Donnally 2025, Wang 2017, Cui 2025, Bogaert 2022, Khan 2026, Health Quality Ontario 2019) y lumbalgia (Margetis 2025, «Low Back Pain»).
+
 ## Fase J, 9: nervio periférico (2026-10)
 
 Grupo nuevo «Nervio periférico». Decisión del usuario: una barra para la neuropraxia y la axonotmesis como nota, porque su plazo depende de la distancia que tiene que crecer el nervio y una barra fija engañaría. Para eso los grupos admiten `nota` (texto bajo el título del grupo) con sus fuentes en `notaFuentes`, que `tests/referencias.mjs` cuenta como «Nota del grupo». PDF del usuario, leídos enteros: Sharma y Munakomi 2026 («Neurapraxia»), Hall 2026 («Axonotmesis») y Nadi 2026 («Peripheral Nerve Injury»), los tres de StatPearls; Robinson 2022 (Muscle Nerve) y Menorca 2013 (Hand Clin, manuscrito de autor).
