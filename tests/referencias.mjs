@@ -227,6 +227,10 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPO
   // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera,
   // data/tejidos.js): `fuentes` de cada fila y de cada fase, claves del registro.
   for (const g of TIEMPOS_TEJIDO?.grupos || []) {
+    for (const clave of g.notaFuentes || []) {
+      anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Nota del grupo «${g.tejido}»`,
+        fase: 'cabecera · tiempos de tejido', efecto: 'tiempos de tejido' });
+    }
     for (const f of g.filas) {
       for (const clave of f.fuentes || []) {
         anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Fila «${f.nombre}» (${g.tejido})`,
