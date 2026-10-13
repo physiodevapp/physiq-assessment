@@ -299,3 +299,104 @@ Revisado por el usuario (2026-10).
 Las 26 URLs inglesas y las 18 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `posterior-thigh-muscles`, `the-hip-adductors`, `the-sciatic-nerve`, `the-ureters`, `the-prostate-gland`, `the-testes`, `greater-trochanter-of-femur`, `musculo-piriforme-piramidal-de-la-pelvis`.
 
 Revisado por el usuario (2026-10).
+
+## Lumbar
+
+11 estructuras nuevas, 8 con versión en español; reutiliza articulaciones cigapofisarias, articulación sacroilíaca, nervio ciático, nervios espinales, cuádriceps, gastrocnemio, hueso coxal, fémur, arterias femoral y poplítea, y del cribado de otras regiones riñón, uréteres, próstata, órganos reproductores femeninos, intestino grueso y estómago. Sin versión en español: canal vertebral, cono medular y cola de caballo (un solo artículo) y multífido. La aorta enlaza el artículo general (no hay uno de la aorta abdominal).
+
+### Tests de la fase 4b
+
+32 de los 37 tests. Sin campo: la regla de Flynn (lu1/0, regla pronóstica de manipulación), la edad > 48 años (lu4/4) y los tres criterios mínimos del dolor miofascial (lu9/0–2), que no nombran un músculo concreto.
+
+| Hipótesis | Tests → estructuras |
+|---|---|
+| lu1 Disfunción segmentaria | PAIVM → columna lumbar |
+| lu2 Inestabilidad | flexión ≥ 53° o sin hipomovilidad, movimientos aberrantes → columna lumbar · inestabilidad en prono → columna lumbar + multífido |
+| lu3 Dolor radicular | SLR → nervio ciático + nervios espinales · SLR cruzado → discos + nervios espinales · Slump → nervios espinales + nervio ciático · RAPIDH → nervios espinales + discos |
+| lu4 Estenosis | síntomas bilaterales, pierna > espalda, dolor al caminar o de pie, alivio al sentarse, extensión de 30 s → canal vertebral + cola de caballo · marcha con base amplia, Romberg → cola de caballo · déficits sensoriales L3–S1 → nervios espinales |
+| lu5 Radiculopatía | miotomas → nervios espinales + plexos lumbar y sacro · reflejos rotuliano y aquíleo → cuádriceps + gastrocnemio · sensibilidad → nervios espinales |
+| lu6 Discogénico | centralización, preferencia direccional, espalda plana o shift → discos intervertebrales |
+| lu7 Facetario | extensión-rotación, PA unilateral, sin signos radiculares → articulaciones cigapofisarias |
+| lu8 Sacroilíaca | distracción, thigh thrust, compresión, thrust sacro, no centraliza, Gaenslen, sin dolor en la línea media → articulación sacroilíaca |
+
+### Cribado de la fase 2
+
+Las 23 preguntas de sus sistemas propios.
+
+| Sistema | Pregunta → estructuras |
+|---|---|
+| Cáncer | l2 antecedente de cáncer, l_on2 dolor nocturno → columna lumbar |
+| Urogenital | l4 orina y fiebre, l_u4 cólico → riñón + uréteres · l6 cola de caballo → cola de caballo + vejiga · l_u3a ardor → vejiga · l_u3b nicturia → vejiga + próstata |
+| Gastrointestinal | l1 alivio al defecar → intestino grueso · l3 ciclo menstrual → órganos reproductores femeninos · l_gi2 melena o úlcera → estómago + duodeno |
+| Espondiloartropatías y hueso | l5 rigidez matutina → sacroilíaca + columna lumbar · l5c dolor alternante, l5d no alivia en reposo, l_e2 despierta de madrugada → sacroilíaca · l_e3 ciclo → órganos reproductores femeninos · l_e4 osteoporosis → columna lumbar + sacro · l_e5 Paget → hueso coxal + columna lumbar + fémur · l_e6 fractura de estrés → sacro · l_e7 espondilolisis → columna lumbar |
+| Vascular | l_v1 claudicación, l_v3 pie frío → arterias femoral y poplítea · l_v2 aneurisma → aorta |
+| Infección | l_inf1 → columna lumbar + discos |
+
+Las 11 URLs inglesas y las 8 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `lumbar-vertebrae` (español `columna-lumbar`), `the-intervertebral-discs`, `conus-medullaris-medullary-cone-and-cauda-equina`, `the-duodenum`.
+
+
+Revisado por el usuario (2026-10).
+
+## Tobillo y pie
+
+27 estructuras nuevas, 12 con versión en español; reutiliza tibia, peroné, articulación tibioperonea (su artículo trata la sindesmosis), gastrocnemio, nervios espinales, nervio peroneo común, arterias femoral y poplítea y venas del miembro inferior. Sin versión en español: LPAA, articulaciones subastragalina, mediotarsiana, tarsometatarsianas y metatarsofalángicas, cuboides, cuñas, metatarsianos, arcos del pie, tendón de Aquiles, flexor largo del primer dedo, peroneos largo y corto, fascias de la pierna y el pie, y arteria dorsal del pie. Lo que no tiene artículo propio enlaza el que lo trata: el seno del tarso, la subastragalina; la fascia plantar y los compartimentos, las fascias de la pierna y el pie; el túnel del tarso y el nervio calcáneo inferior, el nervio tibial; Lisfranc, las tarsometatarsianas; los sesamoideos, las metatarsofalángicas; la calcaneocuboidea, la mediotarsiana. El neuroma de Morton enlaza los metatarsianos (los nervios digitales plantares no tienen artículo).
+
+### Tests de la fase 4b
+
+86 de los 123 tests. Sin campo los 35 de gesto testigo (①/②) y dos filas genéricas: «Suele estar sistémicamente bien» (tp35/1, gota) y «No carga cuatro pasos» (tp37/1).
+
+| Hipótesis | Tests → estructuras |
+|---|---|
+| tp1 Esguince lateral | Ottawa → peroné + tibia + navicular + metatarsianos · LPAA → LPAA · LPC → LPC · cajón anterior → LPAA + tobillo |
+| tp2 Sindesmosis | palpación del LTPAI, squeeze → articulación tibioperonea |
+| tp3 Rotura del Aquiles | Thompson → Aquiles + gastrocnemio + sóleo · hueco palpable → Aquiles |
+| tp4 Lisfranc | neurovascular y cinco P → arteria dorsal del pie + fascias · equimosis plantar, dolor del mediopié → tarsometatarsianas · 1.º y 2.º MT opuestos → tarsometatarsianas + metatarsianos |
+| tp5 Fracturas del pie | Ottawa → peroné + tibia + navicular + metatarsianos · 5.º MT → metatarsianos · calcáneo → calcáneo |
+| tp6 Luxación del tibial posterior | hinchazón medial, resalte → tibial posterior |
+| tp7 Pinzamiento posterior | test de pinzamiento → astrágalo + tobillo · dolor tras el astrágalo → astrágalo |
+| tp8, tp10 Aquiles porción media y vaina | batería de carga, descarga en el salto, crepitación, ETM en rango amplio → Aquiles |
+| tp9 Aquiles insercional | dolor en flexión dorsal, salto, plano inclinado → Aquiles + calcáneo |
+| tp11 Plantar delgado | ETM en todo el rango, marcha descalzo → plantar delgado |
+| tp12 Nervio sural | Tinel, palpación con flexión dorsal → nervio sural |
+| tp13 Bursitis calcánea superficial | dolor superficial → Aquiles + calcáneo |
+| tp14 Tibial posterior | dolor retromaleolar, inversión resistida, ETM sin varo → tibial posterior · «demasiados dedos» → tibial posterior + arcos |
+| tp15 FHL | flexoextensión del primer dedo, crepitación → flexor largo del primer dedo |
+| tp16 Túnel del tarso | Tinel → nervio tibial · hinchazón → nervio tibial + subastragalina · FHL → flexor largo del primer dedo |
+| tp17 Fractura de estrés del tobillo | dolor óseo → tibia + astrágalo + calcáneo · compresión del calcáneo → calcáneo · seno del tarso o posterior → astrágalo |
+| tp18 Seno del tarso | palpación, estrés en inversión o KTW → subastragalina |
+| tp19 Peroneos | dolor retromaleolar, subluxación, crepitación → peroneos largo y corto |
+| tp20 Pinzamiento anterior | KTW, palpación anterior, Molloy → tobillo |
+| tp21 Inestabilidad crónica | hinchazón → tobillo · signo del surco → LPAA + tobillo · laxitud subastragalina → subastragalina + LPC |
+| tp22 Sinovitis postraumática | hinchazón → tobillo · laxitud → LPAA + LPC |
+| tp23 Coalición tarsiana | movilidad → subastragalina + mediotarsiana |
+| tp24 Artrosis | perfil clínico, interlínea → tobillo |
+| tp25 Osteocondritis del astrágalo | palpación de la cúpula → astrágalo · derrame → astrágalo + tobillo |
+| tp26 Dolor plantar del talón | tuberosidad medial → fascias + calcáneo |
+| tp27 Almohadilla grasa | palpación posterolateral → calcáneo |
+| tp28 Atrapamiento nervioso del talón | Tinel → nervio tibial |
+| tp29 Calcaneocuboidea | aguda → mediotarsiana + cuboides · gradual → cuboides + metatarsianos · carga del antepié → cuboides |
+| tp30 Fractura de estrés del mediopié | punto N → navicular · cuboides o cuñas → cuboides + cuñas |
+| tp31 1.ª MTF | equimosis, rango, sesamoideos → metatarsofalángicas |
+| tp32 Base del 2.º MT | palpación → metatarsianos + tarsometatarsianas · estrés o sinovitis → metatarsianos |
+| tp33 Fractura de marcha | dolor en el cuello, carga axial → metatarsianos |
+| tp34 Morton | palpación del espacio → metatarsianos · diferencial del antepié → metatarsianos + metatarsofalángicas |
+| tp35 Gota | articulación roja → metatarsofalángicas |
+| tp36 Apofisitis pediátricas | Sever → calcáneo + Aquiles · Iselin → metatarsianos + peroneo corto · navicular → navicular + tibial posterior · Freiberg → metatarsianos |
+| tp37 Fractura maleolar | Ottawa → tibia + peroné · peroné proximal → peroné · neurovascular → arterias dorsal del pie y tibial posterior |
+
+### Cribado de la fase 2
+
+11 de las 16 preguntas de sus sistemas propios. Sin campo: tp_o2 (varias fracturas de estrés: RED-S, endocrino), tp_i2 (artritis inflamatoria de varias articulaciones), tp_c1 (síntomas generales), tp_c2 (osteoma osteoide, sin hueso concreto) y tp_n3 (SDRC).
+
+| Sistema | Pregunta → estructuras |
+|---|---|
+| Traumatismo | tp_t1 cinco P → fascias (compartimentos) + arteria dorsal del pie · tp_t2 no carga cuatro pasos → tibia + peroné · tp_t3 Aquiles → Aquiles · tp_t4 Lisfranc o calcáneo → tarsometatarsianas + calcáneo · tp_t5 arco aplanado o primer dedo → tibial posterior + arcos + flexor largo del primer dedo |
+| Óseo | tp_o1 fractura de estrés → metatarsianos + huesos del tarso |
+| Infecciosa | tp_i1 artritis séptica → tobillo |
+| Vascular | tp_v1 claudicación → arterias femoral y poplítea · tp_v2 TVP → venas del miembro inferior |
+| Neurológico | tp_n1 Guillain-Barré → nervios espinales · tp_n2 polineuropatía o pie caído → nervios peroneo común y tibial |
+
+Las 27 URLs inglesas y las 12 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `the-ankle-joint` (español `articulacion-talocrural`), `peroneus-longus-muscle` frente a `fibularis-brevis-muscle`, `tarsometatarsal-joint`, `metatarsophalangeal-mtp-joints`, `transverse-tarsal-joint`, `cuboid`, `fascias-of-the-leg-and-foot`, `talus-astragalo`.
+
+
+Revisado por el usuario (2026-10).

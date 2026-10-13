@@ -1,0 +1,203 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-13T10:03:16.139Z",
+  "assessmentState": {
+    "currentPhase": 5,
+    "modo": "completo",
+    "maxVisitedIdx": 5,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Rosario Gómez",
+    "motivoConsulta": "Rehabilitación tras una prótesis total de cadera izquierda hace cinco semanas.",
+    "edadPaciente": 68,
+    "sexo": "Mujer",
+    "signosVitales": {
+      "fc": 74,
+      "fr": null,
+      "spo2": 97,
+      "tas": 138,
+      "tad": 82
+    },
+    "antropometria": {
+      "talla": 160,
+      "peso": 72
+    },
+    "mecanismo": "Post-quirúrgico",
+    "cirugia": {
+      "intervencion": "Prótesis total de cadera izquierda por artrosis, abordaje posterior",
+      "fecha": "2026-09-08",
+      "semanasAprox": null,
+      "protocolo": "Escrito",
+      "restricciones": "Precauciones de luxación hasta la semana 6: no flexionar la cadera más de 90°, no cruzar las piernas y no girar la pierna hacia dentro; carga completa según tolerancia con bastón en la mano derecha; no conducir hasta la semana 6",
+      "complicaciones": [
+        "infeccion"
+      ],
+      "complicacionOtra": ""
+    },
+    "cronologia": "Agudo (<6 semanas)",
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Medio",
+    "psico_miedo": "Sí",
+    "psico_autoef": "Dudoso",
+    "psico_emocional": "No",
+    "region": "cadera",
+    "lado": "Izquierdo",
+    "sistemicoAnswers": {
+      "pq_herida": "NO",
+      "pq_tvp": "NO",
+      "pq_tep": "NO",
+      "pq_sdrc": "SI",
+      "pq_nervio": "NO",
+      "c5": "NO",
+      "ca_on2": "NO",
+      "ca_on3": "NO",
+      "ca_on4": "NO",
+      "c2": "NO",
+      "ca_v2": "NO",
+      "ca_v3": "NO",
+      "c3": "NO",
+      "ca_u2": "NO",
+      "ca_u3": "NO",
+      "ca_u4": "NO",
+      "c4": "NO",
+      "ca_gi2": "NO",
+      "ca_gi3": "NO",
+      "ca_os1": "NO",
+      "ca_os2": "NO",
+      "ca_os3": "NO",
+      "ca_os4": "NO",
+      "ca_in1": "NO",
+      "ca_in2": "NO",
+      "ca_in3": "SI",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": true,
+    "sistemicoBreve": {},
+    "severidad": 4,
+    "irritabilidad": {
+      "dolor": "Media (4-6/10)",
+      "reposo": "Intermitente",
+      "movimiento": "Al final del rango",
+      "discapacidad": "Moderada",
+      "tolerancia": "Moderada"
+    },
+    "irritabilidadNivel": "Moderada",
+    "irritabilidadDirecta": false,
+    "naturaleza": "Nociceptiva",
+    "estabilidad": "Mejora",
+    "signoComparable": "Apoyo monopodal sobre la pierna izquierda: cae la pelvis del lado derecho y aparece dolor lateral de 4/10.",
+    "activeHypotheses": [
+      "ca1",
+      "ca5"
+    ],
+    "treeAnswers": {
+      "ca_step1": "no",
+      "ca_step1b": "no",
+      "ca_step2": "si",
+      "ca_step3": "no",
+      "ca_step4": "debilidad",
+      "ca_step5": "no",
+      "ca_step6": "no",
+      "ca_step7": "no"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "ca5": {
+        "0": "pos",
+        "1": "pos",
+        "2": "nd"
+      }
+    },
+    "hypothesisScores": {
+      "ca1": {
+        "totalLR": 1,
+        "label": "🏥 Diagnosticada y tratada",
+        "colorClass": "hyp-neutral"
+      },
+      "ca5": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 2/2 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      }
+    },
+    "derivacionResuelta": {
+      "ca1": true
+    },
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Dolor hasta 4/10 durante los ejercicios, que vuelva a lo habitual en una hora y que la hinchazón del pie no aumente al día siguiente.",
+      "ventanaRecuperacion": "",
+      "anclajeHabito": "Isométricos de glúteo después del desayuno y de la cena."
+    },
+    "formularioPrevio": {
+      "comun": {
+        "desde_cuando": "La operaron el 8 de septiembre; antes llevaba unos cuatro años con dolor de cadera por artrosis",
+        "desencadenante": "No, empezó poco a poco sin causa clara",
+        "inicio": "Poco a poco",
+        "primera_vez": "Sí",
+        "evolucion": "A mejor",
+        "peor_momento_dia": [
+          "Al final del día",
+          "Por la noche"
+        ],
+        "despierta": "Sí",
+        "despierta_postura": "Sí, cambiando de postura mejora",
+        "dolor_max_semana": 6,
+        "tiempo_calmarse": "Unos minutos",
+        "actividad_1": "Caminar más de diez minutos",
+        "actividad_2": "Ponerse los calcetines y los zapatos",
+        "actividad_3": "Subir y bajar escaleras",
+        "probado": [
+          "Medicación",
+          "Ejercicio"
+        ],
+        "probado_sirvio": "El paracetamol y los ejercicios del folleto del hospital",
+        "enfermedades": "Hipertensión",
+        "operaciones": "Prótesis total de cadera izquierda el 8 de septiembre de 2026",
+        "medicacion": "Enalapril y paracetamol; terminó la heparina la semana pasada"
+      },
+      "regiones": {
+        "cadera": {
+          "provoca": {
+            "agacharse": "No sé",
+            "coche": "Sí",
+            "calzarse": "Sí",
+            "levantarse": "Sí",
+            "caminar": "Sí",
+            "escaleras": "Sí",
+            "lado": "Sí",
+            "cruzar": "No sé",
+            "una_pierna": "Sí",
+            "separar": "No",
+            "toser": "No"
+          },
+          "nota": {
+            "chasquido": "No",
+            "bloqueo": "No",
+            "falla": "No",
+            "quemazon": "No",
+            "rigidez": "Sí"
+          },
+          "infancia": "No"
+        }
+      }
+    },
+    "rom": null
+  }
+}

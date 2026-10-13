@@ -46,7 +46,9 @@ test('anatomía: enlaza la versión en español si existe y, si no, la inglesa m
   // LCA, patelofemoral, pata de ganso, tibioperonea, peroneo común y dos venas;
   // codo: radiocubital proximal y cuatro músculos del antebrazo; cervical:
   // atlantoaxial, semiespinoso de la cabeza y suboccipitales; cadera: labrum,
-  // trocánter mayor, cuadrado femoral, isquiotibiales, aductores y tres nervios.
+  // trocánter mayor, cuadrado femoral, isquiotibiales, aductores y tres nervios;
+  // lumbar: canal vertebral, cola de caballo y multífido; tobillo y pie: LPAA,
+  // cuatro articulaciones, cuboides, cuñas, metatarsianos, arcos, Aquiles, tres músculos, fascias y la pedia.
   assert.deepEqual(Object.keys(ESTRUCTURAS).filter(id => !ESTRUCTURAS[id].kenhubEs), [
     'bursa_subacromial', 'ligamento_coracoacromial', 'ligamento_coracohumeral',
     'menisco_medial', 'menisco_lateral', 'lca', 'art_patelofemoral', 'pata_ganso', 'art_tibioperonea',
@@ -56,6 +58,10 @@ test('anatomía: enlaza la versión en español si existe y, si no, la inglesa m
     'art_atlantoaxial', 'semiespinoso_cabeza', 'suboccipitales',
     'labrum_acetabular', 'trocanter_mayor', 'cuadrado_femoral', 'isquiotibiales', 'aductores_cadera',
     'nervio_femorocutaneo', 'nervio_ilioinguinal', 'nervio_iliohipogastrico',
+    'canal_vertebral', 'cola_caballo', 'multifido',
+    'lpaa', 'art_subastragalina', 'art_mediotarsiana', 'art_tarsometatarsianas', 'art_mtf',
+    'cuboides', 'cuneiformes', 'metatarsianos', 'arcos_pie', 'aquiles', 'flexor_largo_primer_dedo',
+    'peroneo_largo', 'peroneo_corto', 'fascias_pierna_pie', 'arteria_pedia',
   ]);
   const html = anatomiaLineaHTML({ anatomia: ['supraespinoso', 'bursa_subacromial'] });
   assert.match(html, />Supraespinoso ↗<\/a>/);
@@ -139,6 +145,28 @@ test('anatomía: cadera, sin anatomía solo las filas genéricas (longitud de pa
   // Pérdida de peso o bulto nuevo
   const sinQ = PREGUNTAS.filter(p => p.region === 'cadera' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['ca_on3']);
+});
+
+test('anatomía: lumbar, sin anatomía solo las filas genéricas (regla de Flynn, edad, criterios miofasciales); cribado completo', () => {
+  // Flynn es una regla pronóstica; los tres criterios miofasciales no nombran un músculo
+  assert.deepEqual(TODOS.filter(x => x.h.region === 'lumbar' && !x.t.anatomia).map(x => `${x.hId}/${x.i}`),
+    ['lu1/0', 'lu4/4', 'lu9/0', 'lu9/1', 'lu9/2']);
+  const con = PREG_CON.filter(p => p.region === 'lumbar').map(p => p.q.id);
+  assert.equal(con.length, 23);
+  const sinQ = PREGUNTAS.filter(p => p.region === 'lumbar' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  assert.deepEqual(sinQ, []);
+});
+
+test('anatomía: tobillo y pie, todos los tests salvo el gesto testigo y dos filas genéricas; cribado sin ella en 5 preguntas', () => {
+  // «Suele estar sistémicamente bien» (gota) y «No carga cuatro pasos» (fractura maleolar)
+  const sin = TODOS.filter(x => x.h.region === 'tobillo_pie' && !x.t.anatomia);
+  assert.deepEqual(sin.filter(x => !x.t.name.startsWith('Gesto testigo')).map(x => `${x.hId}/${x.i}`), ['tp35/1', 'tp37/1']);
+  assert.equal(sin.length, 37);
+  const con = PREG_CON.filter(p => p.region === 'tobillo_pie').map(p => p.q.id);
+  assert.equal(con.length, 11);
+  // Varias fracturas de estrés (RED-S), artritis inflamatoria, síntomas generales, osteoma osteoide, SDRC
+  const sinQ = PREGUNTAS.filter(p => p.region === 'tobillo_pie' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  assert.deepEqual(sinQ, ['tp_o2', 'tp_i2', 'tp_c1', 'tp_c2', 'tp_n3']);
 });
 
 test('fase 2: «Anatomía» dentro del «¿Por qué?» de la pregunta, solo si la tiene, con sus enlaces', () => {

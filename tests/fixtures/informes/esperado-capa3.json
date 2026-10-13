@@ -878,6 +878,140 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "rosario-dictado-1-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera.json",
+      "transcripcion": "rosario-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario1-cribado-pregunta",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Lee las preguntas del cribado en SÍ como si el paciente hubiera referido cada parte: sudoración, dolor continuo y desproporcionado, que no cede en reposo (nadie lo dijo)",
+          "fragmentos": [
+            "con cambios de color, temperatura y sudoración en la zona",
+            "no cede en reposo y ha tenido una infección reciente"
+          ]
+        },
+        {
+          "id": "rosario1-sdrc-hipotesis",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Propone un SDRC «tipo I en fase inicial» como hipótesis cuando el fisioterapeuta dijo que no cumple los criterios y solo lo deja anotado para vigilarlo",
+          "fragmentos": [
+            "Posible síndrome de dolor regional complejo tipo I en fase inicial"
+          ]
+        },
+        {
+          "id": "rosario1-rigidez-arbol",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "«Rigidez matutina de menos de una hora» sacada de la pregunta del árbol de un paso ya tratado (perfil degenerativo); el formulario solo dice «rigidez: Sí»",
+          "fragmentos": [
+            "Refiere rigidez por la mañana que se le pasa en menos de una hora"
+          ]
+        },
+        {
+          "id": "rosario1-movilidad-inventada",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Da por hecha una exploración de la movilidad que no consta",
+          "fragmentos": [
+            "La exploración de la movilidad de la cadera se ha realizado dentro de los límites permitidos"
+          ]
+        },
+        {
+          "id": "rosario1-confirmada",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«Queda confirmada» la debilidad de abductores con dos tests sin LR (hallazgos compatibles); la regla «confirma» solo cita otra frase",
+          "fragmentos": [
+            "La debilidad de los abductores de cadera queda confirmada"
+          ]
+        },
+        {
+          "id": "rosario1-escala-visual",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "El NRS pasa a «escala visual numérica» (mezcla la EVA con la escala numérica)",
+          "fragmentos": [
+            "en la escala visual numérica"
+          ]
+        },
+        {
+          "id": "rosario1-derivacion-inventada",
+          "tipo": "plan",
+          "nivel": "medio",
+          "descripcion": "Añade una «valoración médica adicional» si el pie empeora; el fisioterapeuta solo dijo que lo comentará con el cirujano en la revisión",
+          "fragmentos": [
+            "se reconsiderará la necesidad de valoración médica adicional"
+          ]
+        },
+        {
+          "id": "rosario1-ambientales-relleno",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Factores Ambientales sin datos rellenado con una negación («No se registran barreras…»)",
+          "fragmentos": [
+            "No se registran barreras arquitectónicas ni del entorno"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "rosario-dictado-2-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera.json",
+      "transcripcion": "rosario-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario2-cribado-pregunta",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Otra vez las preguntas del cribado en SÍ leídas enteras como hallazgos: dolor continuo y desproporcionado, que no cede en reposo (generado antes de la ronda 30)",
+          "fragmentos": [
+            "que no cede en reposo tras infección reciente"
+          ]
+        },
+        {
+          "id": "rosario2-rigidez-arbol",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "«Rigidez matutina de menos de una hora» sacada de la pregunta del paso ya tratado (antes de la ronda 30)",
+          "fragmentos": [
+            "Presenta rigidez matutina que se resuelve en menos de una hora"
+          ]
+        },
+        {
+          "id": "rosario2-perfil-arbol",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "El paso del perfil degenerativo de la artrosis tratada contado como prueba clínica (antes de la ronda 30)",
+          "fragmentos": [
+            "El perfil clínico previo a la cirugía fue compatible con artrosis de cadera"
+          ]
+        },
+        {
+          "id": "rosario2-sdrc-fase",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "El SDRC vuelve a «Hipótesis adicionales» con una «fase inicial» inventada; el fisioterapeuta solo lo deja para vigilar (D, segunda vez)",
+          "fragmentos": [
+            "un síndrome de dolor regional complejo en fase inicial"
+          ]
+        },
+        {
+          "id": "rosario2-escala-visual",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "El NRS vuelve a ser «escala visual numérica»",
+          "fragmentos": [
+            "escala visual numérica"
+          ]
+        }
+      ]
     }
   ]
 }

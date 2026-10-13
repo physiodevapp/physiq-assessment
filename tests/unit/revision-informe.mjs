@@ -196,6 +196,14 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(n && /tiroides/.test(n.mensaje), JSON.stringify(p));
     assert.ok(!ids(limpio + ' No refiere diabetes.').includes('no-se'), 'la diabetes sí se contestó «No»');
   });
+  test('revisión: «No sé» frente a las restricciones del cirujano (ronda 30)', () => {
+    const fp = [{ s: 'Cadera', q: '¿Le aparece o le aumenta el dolor al…?', a: 'Caminar: Sí · Cruzar las piernas: No sé' }];
+    const cq = { iv: 'Prótesis', fe: '', se: 5, pr: 'Escrito', re: 'Precauciones de luxación: no flexionar más de 90°, no cruzar las piernas', co: [] };
+    const t = limpio + ' El protocolo indica no flexionar más de 90 grados, no cruzar las piernas.';
+    assert.ok(!ids(t, { datos: { fp, cq } }).includes('no-se'), 'cita la restricción, no niega el síntoma');
+    assert.ok(ids(t + ' Niega dolor al cruzar las piernas.', { datos: { fp, cq } }).includes('no-se'), 'la negación del síntoma sigue saliendo');
+    assert.ok(ids(t, { datos: { fp } }).includes('no-se'), 'sin cirugía, la frase sigue contando');
+  });
   test('revisión: códigos CIF según la plantilla', () => {
     assert.ok(ids('Dolor (b28016) al correr (d4552).', { plantilla: 'breve' }).every(i => i !== 'cif'));
     assert.match(rev('Dolor al entrenar (e1101).', { plantilla: 'breve' }).find(x => x.id === 'cif').mensaje, /e1101/);
@@ -408,6 +416,8 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-andres-molina-codo.json', 'andres-dictado-1-informe.txt', 'andres-dictado-1-transcripcion.txt', ['nrs-momento', 'reconsiderar-copiado', 'seguimiento-fuera', 'relleno']],
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-1-ficha-breve.txt', 'pablo-dictado-1-transcripcion.txt', ['nrs-momento', 'fisiopatologia']],
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-2-ficha-breve.txt', 'pablo-dictado-2-transcripcion.txt', ['relleno']],
+      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-1-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'confirma', 'atribucion', 'repetido']],
+      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-2-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'diagnostico']],
     ];
     // En este mismo proceso (revisarArchivos(), lo que hace la herramienta),
     // no un `node` por informe; luego se deja `state` como estaba.
@@ -430,6 +440,12 @@ console.log('\nrevisión automática del informe con IA');
       assert.equal(salida, formatearPuntos(revisados[0][1]));
     });
   }
+  test('prompt: las preguntas del cribado en SÍ llevan el aviso de que no todas sus partes son hallazgos (ronda 30)', () => {
+    const d = { p: 'X', si: true, sq: ['¿Tiene un dolor continuo, con sudoración o hinchazón?'] };
+    for (const pr of [IN.buildNarrativePrompt(d, {}), IN.buildFichaBrevePrompt(d, {})])
+      assert.ok(pr.includes(`Alertas sistémicas positivas (${IN.AVISO_SQ}):`), 'aviso junto a las preguntas');
+    assert.ok(!IN.buildNarrativePrompt({ p: 'X', sq: [] }, {}).includes(IN.AVISO_SQ), 'sin preguntas en SÍ, sin aviso');
+  });
   test('prompt: aviso de reglas pronósticas en la coherencia y NRS que debe constar (ronda 23)', () => {
     const d = { p: 'X', nr: 7, h: [{ name: 'Disfunción segmentaria' }] };
     for (const pr of [IN.buildNarrativePrompt(d, {}), IN.buildFichaBrevePrompt(d, {})]) {
