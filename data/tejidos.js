@@ -357,6 +357,26 @@ export const TIEMPOS_TEJIDO = {
           nota: 'La mayoría se resuelve en 4–6 semanas, más despacio con déficit neurológico. En atención primaria, solo el 55 % ha mejorado su discapacidad al año. Tras discectomía, el 73 % no tiene dolor de pierna al año.' },
         { id: 'radiculopatia_cervical', mide: 'evolucion', nombre: 'Radiculopatía cervical', desde: 3, hasta: 7, gravedad: 'moderada', fuentes: ['Margetis y Magnus 2025', 'Wong 2014'],
           nota: 'Más del 85 % de las agudas se resuelve en 8–12 semanas. La mejoría importante llega en los primeros 4–6 meses y la recuperación completa, a los 2–3 años en el 83 %; puede recidivar con menos intensidad.' },
+        // Columna operada (bloque 2 de la ampliación, 2026-10), PDF del usuario leídos. Son
+        // vuelta al trabajo (`deporte` = vuelta a la función), no consolidación. Wang 2017
+        // (revisión sistemática, 36 estudios): TLIF mínimamente invasiva 7 semanas frente a 11
+        // abierta (Parker 2013); según la técnica y la serie, de 3,6 a 10,9 meses; mediana de
+        // 96 días tras ALIF abierta (Gornet). Cui 2026 (síntesis de la mejor evidencia):
+        // movilización el mismo día de la cirugía y fisioterapia «from the second postoperative
+        // day». Bogaert 2022 (metaanálisis, 18 ensayos): ejercicio, y mejor con terapia
+        // cognitivo-conductual, mejora la discapacidad hasta 6 meses (evidencia baja). Khan 2026
+        // (metaanálisis): la prótesis de disco lumbar vuelve antes al trabajo que la artrodesis
+        // solo en el análisis de sensibilidad; sin plazos absolutos agrupados, no se pinta.
+        // Health Quality Ontario 2019 (evaluación de tecnología, cervical, un nivel): mediana de
+        // vuelta al trabajo de 48 días con prótesis (Bryan) frente a 61 con artrodesis; con
+        // todas las prótesis, 13–20 días antes que la artrodesis. 48 días = «5–8s» (3);
+        // 61 = «2–3m» (4).
+        { id: 'artrodesis_lumbar', mide: 'deporte', nombre: 'Artrodesis lumbar', desde: 3, hasta: 6, gravedad: 'grave', fuentes: ['Wang 2017', 'Cui 2026', 'Bogaert 2022', 'Khan 2026'],
+          nota: 'Movilización el mismo día y fisioterapia desde el 2.º. Vuelta al trabajo a las 7 semanas con cirugía mínimamente invasiva y a las 11 con abierta en un mismo estudio; según la técnica y la serie, de 3 a 11 meses. El ejercicio, mejor con terapia cognitivo-conductual, mejora la discapacidad hasta los 6 meses (evidencia baja). La prótesis de disco lumbar no tiene plazos propios en la fuente. Manda el protocolo del cirujano.' },
+        { id: 'protesis_disco_cervical', mide: 'deporte', nombre: 'Prótesis de disco cervical', desde: 3, hasta: 3, gravedad: 'moderada', fuentes: ['Health Quality Ontario 2019'],
+          nota: 'Vuelta al trabajo hacia las 7 semanas (mediana de 48 días con un modelo), 2–3 semanas antes que con la artrodesis cervical anterior. Manda el protocolo del cirujano.' },
+        { id: 'artrodesis_cervical', mide: 'deporte', nombre: 'Artrodesis cervical anterior', desde: 4, hasta: 4, gravedad: 'moderada', fuentes: ['Health Quality Ontario 2019'],
+          nota: 'Vuelta al trabajo hacia los 2 meses (mediana de 61 días en el mismo ensayo). A los 2 años, la misma tasa de empleo que con prótesis. Manda el protocolo del cirujano.' },
       ],
     },
     {
@@ -441,6 +461,13 @@ export const TIEMPOS_TEJIDO = {
             // two or three weeks», radiografía a la semana; 2–3 semanas = «4–14d» a «3–4s».
             { id: 'fx_cabeza_radio', mide: 'proteccion', nombre: 'Cabeza de radio, sin cirugía', desde: 1, hasta: 2, fuentes: ['Patiño y Saenz 2023'],
               nota: 'Yeso o cabestrillo 2–3 semanas, con flexoextensión activa precoz; solo las no desplazadas o poco desplazadas. Si bloquean el movimiento, a cirugía.' },
+            // Donnally 2025 (StatPearls, fracturas vertebrales por compresión): «Bracing for 4 to
+            // 12 weeks is typical, discontinued when pain resolves and radiographic healing
+            // occurs». Margetis y Patel 2025 (StatPearls, vertebroplastia y cifoplastia): con
+            // tratamiento conservador, «Symptoms typically resolve within 4 to 6 weeks»; la
+            // cementación es para el dolor que no cede; sin plazo de recuperación tras ella.
+            { id: 'fx_vertebral_compresion', mide: 'proteccion', nombre: 'Vertebral por compresión, sin cirugía', desde: 2, hasta: 4, fuentes: ['Donnally 2025', 'Margetis y Patel 2025'],
+              nota: 'Corsé de 4 a 12 semanas, hasta que cede el dolor y la radiografía muestra la consolidación; los síntomas suelen ceder en 4–6 semanas. Si el dolor no cede, vertebroplastia o cifoplastia (sin plazo de recuperación en la fuente).' },
           ] },
         // Fase J, 5 (fractura de estrés): PDF del usuario leídos enteros (2026-10).
         // Hoenig 2023 (revisión sistemática y metaanálisis, 76 estudios): tiempo medio de

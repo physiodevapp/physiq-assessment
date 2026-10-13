@@ -177,7 +177,11 @@ Bloques 5 y 6 de la ampliación, PDF del usuario leídos enteros. **Luxación po
 
 **Gemelo y recto femoral no se pintan**: el capítulo de StatPearls del gemelo (Hsu y Chang 2023) no da plazos, y Hollabaugh 2023 agrupa la vuelta al deporte por grado BAMIC con todos los músculos juntos (isquiotibiales, cuádriceps, gemelo y sóleo), sin un tiempo por músculo. Quedan pendientes de una fuente con plazos por músculo.
 
-Bloque siguiente, con los PDF ya recibidos: columna operada (Margetis 2025, Donnally 2025, Wang 2017, Cui 2025, Bogaert 2022, Khan 2026, Health Quality Ontario 2019), en el grupo «Columna».
+## Ampliación: columna operada (2026-10)
+
+Bloque 2 de la ampliación, PDF del usuario leídos. Tres filas `deporte` (vuelta al trabajo, no consolidación) en «Columna»: **artrodesis lumbar** («5–8s» a «6m–1a»: 7 semanas mínimamente invasiva y 11 abierta en un mismo estudio, de 3 a 11 meses según técnica y serie; Wang 2017; movilización el mismo día y fisioterapia desde el 2.º, Cui 2026; ejercicio, mejor con terapia cognitivo-conductual, hasta 6 meses, Bogaert 2022), **prótesis de disco cervical** («5–8s», mediana de 48 días) y **artrodesis cervical anterior** («2–3m», 61 días), las dos de Health Quality Ontario 2019. La **prótesis de disco lumbar** no se pinta: Khan 2026 solo compara con la artrodesis, sin plazos absolutos agrupados (lo dice la nota de la artrodesis). **Fractura vertebral por compresión, sin cirugía**, subtipo de «Fractura», `proteccion` («3–4s» a «2–3m»): corsé de 4 a 12 semanas (Donnally 2025); los síntomas suelen ceder en 4–6 semanas y la **vertebroplastia/cifoplastia** queda para el dolor que no cede, sin plazo de recuperación en su capítulo (Margetis y Patel 2025), así que tampoco se pinta.
+
+Con esto quedan hechos todos los bloques de la ampliación salvo gemelo y recto femoral (sin plazos por músculo en sus fuentes).
 
 ## Fase J, 9: nervio periférico (2026-10)
 

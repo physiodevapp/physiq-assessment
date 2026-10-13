@@ -390,7 +390,7 @@ test('tejidos: prótesis de rodilla y de cadera en «Articulación», como vuelt
 
 test('tejidos: grupo «Columna» — lumbalgia aguda y radiculopatías lumbar y cervical, como evolución natural', () => {
   const f = Object.fromEntries(T.grupos.find(x => x.id === 'columna').filas.map(x => [x.id, x]));
-  for (const x of Object.values(f)) assert.equal(x.mide, 'evolucion', x.id);
+  for (const id of ['lumbalgia_aguda', 'radiculopatia_lumbar', 'radiculopatia_cervical']) assert.equal(f[id].mide, 'evolucion', id);
   // Alexander 2024: la mitad en 1–2 semanas, el 90 % en 6–12 → «1–3d» a «2–3m»
   assert.deepEqual([f.lumbalgia_aguda.desde, f.lumbalgia_aguda.hasta], [0, 4]);
   // Davis 2024: la mayoría en 4–6 semanas; Konstantinou 2018: 55 % mejora al año → «3–4s» a «6m–1a»
@@ -413,4 +413,16 @@ test('tejidos: codo (luxación posterior, cabeza de radio) y sindesmosis, con su
   assert.deepEqual([st.sindesmosis_conservador.desde, st.sindesmosis_conservador.hasta], [3, 3]);
   assert.deepEqual([st.sindesmosis_cirugia.desde, st.sindesmosis_cirugia.hasta], [4, 4]);
   assert.deepEqual(sin.fuentes, ['Salameh 2022', 'Li y Sun 2026']);
+});
+
+test('tejidos: columna operada (artrodesis lumbar y cervical, prótesis de disco cervical) y fractura vertebral por compresión', () => {
+  const f = Object.fromEntries(T.grupos.find(x => x.id === 'columna').filas.map(x => [x.id, x]));
+  // Wang 2017: de 7 semanas a 11 meses → «5–8s» a «6m–1a»
+  assert.deepEqual([f.artrodesis_lumbar.desde, f.artrodesis_lumbar.hasta, f.artrodesis_lumbar.mide], [3, 6, 'deporte']);
+  // Health Quality Ontario 2019: 48 días con prótesis → «5–8s»; 61 con artrodesis → «2–3m»
+  assert.deepEqual([f.protesis_disco_cervical.desde, f.protesis_disco_cervical.hasta], [3, 3]);
+  assert.deepEqual([f.artrodesis_cervical.desde, f.artrodesis_cervical.hasta], [4, 4]);
+  const fx = Object.fromEntries(T.grupos.find(x => x.id === 'hueso').filas.find(r => r.id === 'fractura').subtipos.map(x => [x.id, x]));
+  // Donnally 2025: corsé 4–12 semanas → «3–4s» a «2–3m»
+  assert.deepEqual([fx.fx_vertebral_compresion.desde, fx.fx_vertebral_compresion.hasta, fx.fx_vertebral_compresion.mide], [2, 4, 'proteccion']);
 });
