@@ -312,8 +312,32 @@ export const TIEMPOS_TEJIDO = {
           nota: 'De unos meses a 2–3 años: fase dolorosa (2–9 meses), rígida (4–12 meses) y de descongelación. Cerca del 80 % recupera una función normal o casi normal; un 10–20 % queda con rigidez o dolor. Más larga con diabetes o tiroidopatía.' },
         { id: 'protesis_rodilla', mide: 'deporte', nombre: 'Prótesis total de rodilla', desde: 5, hasta: 6, gravedad: 'moderada', fuentes: ['Magan 2021', 'Jette 2020'],
           nota: 'Fisioterapia desde las primeras 24 horas y fuerza de alta intensidad desde la 1.ª semana (guía APTA). Vuelve al deporte el 19 % a los 3 meses, el 70 % a los 6 y el 84 % al año, casi siempre a deportes de bajo impacto. Manda el protocolo del cirujano.' },
-        { id: 'protesis_cadera', mide: 'deporte', nombre: 'Prótesis total de cadera', desde: 4, hasta: 5, gravedad: 'moderada', fuentes: ['Telang 2024'],
-          nota: 'La mayoría vuelve a su deporte en los primeros 6 meses y la mitad en los 3 primeros, sobre todo a deportes de bajo impacto. Los cirujanos lo permiten a las 6–12 semanas o a los 3 meses, y no hay pruebas de que más actividad acorte la vida de la prótesis. Manda el protocolo del cirujano.' },
+        { id: 'protesis_cadera', mide: 'deporte', nombre: 'Prótesis total de cadera', desde: 4, hasta: 5, gravedad: 'moderada', fuentes: ['Telang 2024', 'Pan 2024'],
+          nota: 'La mayoría vuelve a su deporte en los primeros 6 meses y la mitad en los 3 primeros, sobre todo a deportes de bajo impacto. Los cirujanos lo permiten a las 6–12 semanas o a los 3 meses, y no hay pruebas de que más actividad acorte la vida de la prótesis. Vuelta al trabajo, con pocos datos (vía anterior): 30–60 % a los 3 meses y 87 % al año. Manda el protocolo del cirujano.' },
+      ],
+    },
+    // Columna (bloque 8 de la ampliación, 2026-10): no son plazos de cicatrización, sino lo que
+    // tarda en resolverse el cuadro, así que todas las filas son `evolucion`. PDF del usuario
+    // leídos enteros. Alexander 2024 (StatPearls, radiculopatía lumbosacra, archivado): de la
+    // lumbalgia, «Roughly half of cases resolve within 1 to 2 weeks, with 90% resolving within
+    // 6 to 12 weeks»; tras discectomía, 73 % sin dolor de pierna al año. Margetis y Singh 2025
+    // (StatPearls, lumbalgia): aguda < 6 semanas, crónica > 12; «Most acute cases resolve
+    // within several weeks». Davis 2024 (StatPearls, ciática): «Most cases of sciatica resolve
+    // in less than 4 to 6 weeks», más lenta con déficit neurológico. Konstantinou 2018
+    // (cohorte ATLAS, atención primaria, 609 pacientes): mejora de la discapacidad del 55 % al
+    // año. Margetis y Magnus 2025 (StatPearls, radiculopatía cervical): «Over 85% of acute
+    // cervical radiculopathy resolves without any specific treatments within 8 to 12 weeks».
+    // Wong 2014 (revisión sistemática): mejoría importante en los primeros 4–6 meses y
+    // recuperación completa a los 24–36 meses en ~83 %; recurrencias en el 22 % de una serie.
+    {
+      id: 'columna', tejido: 'Columna',
+      filas: [
+        { id: 'lumbalgia_aguda', mide: 'evolucion', nombre: 'Lumbalgia aguda inespecífica', desde: 0, hasta: 4, gravedad: 'leve', fuentes: ['Alexander 2024', 'Margetis y Singh 2025'],
+          nota: 'La mitad se resuelve en 1–2 semanas y el 90 % en 6–12. Pasa a crónica a partir de las 12 semanas; más probable con episodios previos, dolor intenso, depresión, miedo al movimiento o síntomas en la pierna.' },
+        { id: 'radiculopatia_lumbar', mide: 'evolucion', nombre: 'Radiculopatía lumbar (ciática)', desde: 2, hasta: 6, gravedad: 'moderada', fuentes: ['Davis 2024', 'Konstantinou 2018', 'Alexander 2024'],
+          nota: 'La mayoría se resuelve en 4–6 semanas, más despacio con déficit neurológico. En atención primaria, solo el 55 % ha mejorado su discapacidad al año. Tras discectomía, el 73 % no tiene dolor de pierna al año.' },
+        { id: 'radiculopatia_cervical', mide: 'evolucion', nombre: 'Radiculopatía cervical', desde: 3, hasta: 7, gravedad: 'moderada', fuentes: ['Margetis y Magnus 2025', 'Wong 2014'],
+          nota: 'Más del 85 % de las agudas se resuelve en 8–12 semanas. La mejoría importante llega en los primeros 4–6 meses y la recuperación completa, a los 2–3 años en el 83 %; puede recidivar con menos intensidad.' },
       ],
     },
     {

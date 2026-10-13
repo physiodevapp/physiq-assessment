@@ -165,7 +165,13 @@ Grupo nuevo «Articulación», para lo que afecta a la cápsula o a la articulac
 
 **Prótesis** (bloque 1 de la ampliación; los dos artículos de Pasqualini 2023 no estaban disponibles), dos filas más en «Articulación», las dos `deporte`: **prótesis total de rodilla** («3–6m» a «6m–1a»: vuelve al deporte el 19 % a los 3 meses, el 70 % a los 6 y el 84 % al año; Magan 2021, metaanálisis; la guía APTA, Jette 2020, aporta el inicio de la fisioterapia en 24 horas y la fuerza de alta intensidad en la 1.ª semana, pero no plazos) y **prótesis total de cadera** («2–3m» a «3–6m»: la mayoría vuelve en 6 meses y la mitad en 3; los cirujanos permiten el deporte a las 6–12 semanas o a los 3 meses; Telang 2024, revisión sistemática).
 
-Bloques siguientes, con los PDF ya recibidos: codo (luxación posterior: Waymack 2023; cabeza de radio: Patiño 2023), sindesmosis (Salameh 2022, Li R 2025), gemelo (Hsu y Chang 2023) y recto femoral (Hollabaugh 2023), columna operada (Margetis 2025, Donnally 2025, Wang 2017, Cui 2025, Bogaert 2022, Khan 2026, Health Quality Ontario 2019) y lumbalgia (Margetis 2025, «Low Back Pain»).
+La prótesis de cadera añade la **vuelta al trabajo** de Pan 2024 (metaanálisis de la vía anterior directa, PDF del usuario): 30–60 % a los 3 meses y 87 % al año, con pocos datos.
+
+## Ampliación: grupo «Columna» (2026-10)
+
+Bloque 8 de la ampliación. Grupo nuevo «Columna», entre «Articulación» y «Hueso», con tres filas `evolucion` (lo que tarda en resolverse el cuadro, no un plazo de cicatrización): **lumbalgia aguda inespecífica** («1–3d» a «2–3m»: la mitad se resuelve en 1–2 semanas y el 90 % en 6–12; Alexander 2024 y Margetis y Singh 2025, StatPearls), **radiculopatía lumbar (ciática)** («3–4s» a «6m–1a»: la mayoría en 4–6 semanas, Davis 2024; en atención primaria solo el 55 % ha mejorado la discapacidad al año, Konstantinou 2018, cohorte ATLAS; tras discectomía, 73 % sin dolor de pierna al año, Alexander 2024) y **radiculopatía cervical** («5–8s» a «2a»: más del 85 % de las agudas en 8–12 semanas, Margetis y Magnus 2025; recuperación completa a los 24–36 meses en el 83 %, Wong 2014, revisión sistemática). El grupo servirá también para la columna operada (bloque 2).
+
+Bloques siguientes, con los PDF ya recibidos: codo (luxación posterior: Waymack 2023; cabeza de radio: Patiño 2023), sindesmosis (Salameh 2022, Li R 2025), gemelo (Hsu y Chang 2023) y recto femoral (Hollabaugh 2023), columna operada (Margetis 2025, Donnally 2025, Wang 2017, Cui 2025, Bogaert 2022, Khan 2026, Health Quality Ontario 2019).
 
 ## Fase J, 9: nervio periférico (2026-10)
 

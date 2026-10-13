@@ -201,7 +201,7 @@ test('tejidos, Fase J 3: grupo «Menisco» propio, con los plazos de Prill 2025 
   const g = T.grupos.find(x => x.id === 'menisco');
   assert.ok(g && g.filas.length, 'el grupo existe y no está vacío');
   // Va como grupo propio, entre ligamento y hueso; nada de menisco bajo ligamento
-  assert.deepEqual(T.grupos.map(x => x.id), ['tendon', 'musculo', 'ligamento', 'menisco', 'articulacion', 'hueso', 'nervio']);
+  assert.deepEqual(T.grupos.map(x => x.id), ['tendon', 'musculo', 'ligamento', 'menisco', 'articulacion', 'columna', 'hueso', 'nervio']);
   assert.ok(!T.grupos.find(x => x.id === 'ligamento').filas.flatMap(f => [f, ...(f.subtipos || [])]).some(f => /menisc/i.test(f.id)));
   const f = Object.fromEntries(g.filas.map(x => [x.id, x]));
   // Prill 2025: traumática, 12 semanas → «2–3 m»; degenerativa, 3–6 meses → «3–6 m»;
@@ -378,12 +378,24 @@ test('tejidos: grupo «Articulación» — luxación anterior de hombro (protecc
   assert.equal(T.medidas.evolucion.relleno, 'degradado');
 });
 
-test('tejidos: prótesis de rodilla y de cadera en «Articulación», como vuelta al deporte (Magan 2021, Jette 2020, Telang 2024)', () => {
+test('tejidos: prótesis de rodilla y de cadera en «Articulación», como vuelta al deporte (Magan 2021, Jette 2020, Telang 2024, Pan 2024)', () => {
   const f = Object.fromEntries(T.grupos.find(x => x.id === 'articulacion').filas.map(x => [x.id, x]));
   // Magan 2021: 70 % a los 6 meses, 84 % al año → «3–6m» a «6m–1a»
   assert.deepEqual([f.protesis_rodilla.desde, f.protesis_rodilla.hasta, f.protesis_rodilla.mide], [5, 6, 'deporte']);
   assert.deepEqual(f.protesis_rodilla.fuentes, ['Magan 2021', 'Jette 2020']);
   // Telang 2024: la mitad en 3 meses, la mayoría en 6 → «2–3m» a «3–6m»
   assert.deepEqual([f.protesis_cadera.desde, f.protesis_cadera.hasta, f.protesis_cadera.mide], [4, 5, 'deporte']);
-  assert.deepEqual(f.protesis_cadera.fuentes, ['Telang 2024']);
+  assert.deepEqual(f.protesis_cadera.fuentes, ['Telang 2024', 'Pan 2024']);
+});
+
+test('tejidos: grupo «Columna» — lumbalgia aguda y radiculopatías lumbar y cervical, como evolución natural', () => {
+  const f = Object.fromEntries(T.grupos.find(x => x.id === 'columna').filas.map(x => [x.id, x]));
+  for (const x of Object.values(f)) assert.equal(x.mide, 'evolucion', x.id);
+  // Alexander 2024: la mitad en 1–2 semanas, el 90 % en 6–12 → «1–3d» a «2–3m»
+  assert.deepEqual([f.lumbalgia_aguda.desde, f.lumbalgia_aguda.hasta], [0, 4]);
+  // Davis 2024: la mayoría en 4–6 semanas; Konstantinou 2018: 55 % mejora al año → «3–4s» a «6m–1a»
+  assert.deepEqual([f.radiculopatia_lumbar.desde, f.radiculopatia_lumbar.hasta], [2, 6]);
+  // Margetis y Magnus 2025: > 85 % en 8–12 semanas; Wong 2014: completa a los 24–36 meses → «5–8s» a «2a»
+  assert.deepEqual([f.radiculopatia_cervical.desde, f.radiculopatia_cervical.hasta], [3, 7]);
+  assert.deepEqual(f.radiculopatia_cervical.fuentes, ['Margetis y Magnus 2025', 'Wong 2014']);
 });
