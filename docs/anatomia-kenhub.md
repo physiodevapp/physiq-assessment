@@ -118,3 +118,50 @@ Las 19 URLs inglesas y las 16 españolas se abrieron de verdad (2026-10): todas 
 | Neurológico | h_n1 pérdida de fuerza o atrofia → plexo braquial + columna cervical |
 
 Las 11 URLs nuevas, en inglés y en español, se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Los pulmones enlazan `the-lung` (`lungs` y `lung` dan 404) y su versión española es `vision-general-de-la-anatomia-pulmonar`.
+
+Revisado por el usuario (2026-10).
+
+## Rodilla
+
+33 estructuras nuevas, 19 con versión en español. Kenhub no tiene en español los meniscos, el LCA, la articulación patelofemoral, la pata de ganso, la articulación tibioperonea, el nervio peroneo común ni las dos venas: esas se enlazan en inglés con la marca «EN». Sin artículo propio, y enlazadas a «Articulación de la rodilla» con `nota`, porque el artículo los trata: los colaterales medial y lateral (33 menciones), la bursa prerrotuliana y la grasa de Hoffa (13). El ligamento patelofemoral medial se dejó fuera, porque Kenhub solo lo nombra una vez; la inestabilidad rotuliana enlaza rótula y articulación patelofemoral. La plica medial enlaza la articulación de la rodilla, que la menciona.
+
+### Tests de la fase 4b
+
+70 de los 90 tests: todos salvo los 20 «Gesto testigo (①) y medida objetiva (②)».
+
+| Hipótesis | Tests → estructuras |
+|---|---|
+| ro1 Artrosis | criterios (NICE, ACR), crepitación, osteofitos, restricción → art. rodilla · rango, hinchazón y debilidad → art. rodilla + cuádriceps |
+| ro2 Menisco | McMurray, palpación de la interlínea, combinación global, Thessaly → menisco medial + lateral · combinaciones traumática y degenerativa (dolor medial) → menisco medial |
+| ro3 Patelofemoral | dolor en sentadilla, grupos de Décary → art. patelofemoral · palpación de las facetas → rótula + art. patelofemoral |
+| ro4 LCA | Lachman, cajón anterior, pivot shift, lever sign, clusters → LCA |
+| ro5 Tendinopatía rotuliana | dolor en el polo inferior → tendón rotuliano + rótula · decline squat, imagen → tendón rotuliano |
+| ro6 Cintilla iliotibial | Ober, Thomas → cintilla + tensor de la fascia lata · Noble → cintilla + fémur (cóndilo lateral) · palpación → cintilla · step-down lateral → glúteo medio |
+| ro7 Pata de ganso | los tres → pata de ganso |
+| ro8 LCM | valgo a 30° → colateral medial |
+| ro9 LCP | cajón posterior, sag → LCP · activo del cuádriceps → LCP + cuádriceps |
+| ro10 LLE y esquina posterolateral | hinchazón, varo a 30°, marcha en varo → colateral lateral · dial, cajón posterolateral, recurvatum → poplíteo + colateral lateral |
+| ro11 Fracturas | Ottawa → rótula + peroné + tibia · rótula → rótula · meseta (y función neurovascular) → tibia + arteria poplítea + nervio peroneo común |
+| ro12 Inestabilidad rotuliana | estrés tibiofemoral normal → art. rodilla · movilidad rotuliana, aprensión → rótula + art. patelofemoral |
+| ro13 Hoffa | recurvatum, test de Hoffa → grasa de Hoffa |
+| ro14 Bursitis pre e infrarrotuliana | fiebre (séptica), hinchazón en la bursa → bursa prerrotuliana |
+| ro15 Apofisitis | cadera primero → art. cadera · tuberosidad o polo inferior → tibia + tendón rotuliano · sentadillas y extensión resistida → tendón rotuliano + cuádriceps |
+| ro16 Osteocondral | palpación → fémur + art. rodilla · marcha, derrame y bloqueo → art. rodilla |
+| ro17 Plica | test de provocación → art. rodilla |
+| ro18 Tibioperonea proximal | presión, prominencia → art. tibioperonea + peroné · isquiotibiales en tensión → bíceps femoral + art. tibioperonea |
+| ro19 Peroneo común | steppage, sensibilidad, fuerza, neurodinámica → nervio peroneo común · Tinel → nervio peroneo común + peroné |
+| ro20 Quiste de Baker | signos meniscales → fosa poplítea + menisco medial · Foucher → fosa poplítea + semimembranoso |
+
+### Cribado de la fase 2
+
+15 de las 16 preguntas de sus sistemas propios. Sin campo solo r2 (dolor constante y nocturno, sin estructura concreta).
+
+| Sistema | Pregunta → estructuras |
+|---|---|
+| Vascular | r_v1 claudicación → arteria femoral + arteria poplítea · r_v2 TVP → venas del miembro inferior + vena poplítea · r_v3 quiste de Baker con pantorrilla → fosa poplítea + semimembranoso + gastrocnemio |
+| Infecciosa | r1 artritis séptica, r_i2 infección reciente → art. rodilla · r_i3 bursitis prerrotuliana séptica → bursa prerrotuliana |
+| Oncológico / hematológico | r3 cáncer o bulto → fémur + tibia · r4 hemartros tras golpe menor → art. rodilla |
+| Traumático | ro_t1 golpe o caída sin poder cargar → rótula + tibia · ro_t2 aparato extensor → cuádriceps + rótula + tendón rotuliano · ro_t3 luxación de alta energía → arteria poplítea + art. rodilla · ro_t4 pie frío o dormido → arteria poplítea + nervio peroneo común · ro_t5 pie caído → nervio peroneo común + peroné · ro_t6 bloqueo (osteocondritis) → fémur + art. rodilla |
+| Pediátrico | ro_p1 dolor sin traumatismo (explorar la cadera) → art. cadera + nervio obturador |
+
+Las 29 URLs inglesas y las 19 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `the-knee-joint`, `the-quadriceps-femoris-muscle`, `patellar-tendon` (no `patellar-ligament`), `iliotibial-band`, `gluteus-medius-and-minimus-muscles`, `tibiofibular-joints`, `common-fibular-nerve`.
