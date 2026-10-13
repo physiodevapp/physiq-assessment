@@ -251,3 +251,5 @@ Revisado por el usuario (2026-10).
 | Inflamatoria | cv_in1 febrícula y dolor continuo → columna cervical |
 
 Las 13 URLs inglesas y las 10 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `the-spinal-cord`, `zygapophyseal-joints`, `atlantoaxial-joint`, `common-carotid-artery`.
+
+Revisado por el usuario (2026-10).
