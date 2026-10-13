@@ -437,6 +437,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-2-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'hipotesis-no-cumple', 'diagnostico']],
       ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-3-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno']],
       ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-4-informe.txt', 'rosario-dictado-4-transcripcion.txt', ['lado-otro', 'atribucion', 'hipotesis-no-cumple']],
+      ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-5-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno', 'repetido']],
     ];
     // En este mismo proceso (revisarArchivos(), lo que hace la herramienta),
     // no un `node` por informe; luego se deja `state` como estaba.
