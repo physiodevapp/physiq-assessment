@@ -261,6 +261,16 @@ console.log('\npaciente posquirúrgico');
     });
   });
 
+  test('cadera ca_step3: «No explorado» sigue a la cara externa sin hipótesis y no dice que las pruebas fueran negativas (ronda 31)', () => {
+    withState({ ...POSQ({ intervencion: 'Prótesis total de cadera', protocolo: 'Escrito' }), region: 'cadera', activeHypotheses: [], testResults: {},
+      hypothesisScores: {}, derivacionResuelta: {}, treeAnswers: { ca_step1: 'no', ca_step1b: 'no', ca_step2: 'no', ca_step3: 'no_explorado' } }, () => {
+      const op = CIF_TREES.cadera.steps.find(s => s.id === 'ca_step3').options.find(o => o.value === 'no_explorado');
+      assert.equal(op.next, 'ca_step4'); assert.deepEqual(op.hypothesis, []);
+      const txt = IN.bloquesAmpliados(IA.construirAmpliado()).join('\n');
+      assert.match(txt, /No explorado/);
+      assert.ok(!/negativos|improbable/.test(txt.split('\n').find(l => /No explorado/.test(l))), 'sin «negativos» ni «improbable»');
+    });
+  });
   test('huella del informe con IA: las semanas desde la cirugía no la cambian; la intervención sí', () => {
     const base = { p: 'X', d: '01/01/2026', cq: { iv: 'PTR', fe: '', se: 4, pr: 'Escrito', re: '', co: [] } };
     assert.equal(IN.huellaPayload(base), IN.huellaPayload({ ...base, d: '15/01/2026', cq: { ...base.cq, se: 6 } }));
