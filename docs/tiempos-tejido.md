@@ -167,6 +167,8 @@ Grupo nuevo «Nervio periférico». Decisión del usuario: una barra para la neu
 
 Ashley y Lui 2023 («Physiology, Nerve», ya en el registro) no se cita: su PDF no estaba en esta sesión y las otras cinco fuentes cubren lo necesario.
 
+Revisado y aprobado por el usuario tal cual (2026-10).
+
 ## Fase J, 8: tendinopatías (2026-10)
 
 La tendinopatía no tiene un plazo de cicatrización. Lo que hay es la duración de los programas de carga, así que los 7 subtipos bajo «Tendinopatía» van con contorno («programa»). Cada uno sale de la fuente de la pauta de su hipótesis, ya leída entera en sesiones anteriores.
