@@ -334,3 +334,5 @@ Las 23 preguntas de sus sistemas propios.
 
 Las 11 URLs inglesas y las 8 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `lumbar-vertebrae` (español `columna-lumbar`), `the-intervertebral-discs`, `conus-medullaris-medullary-cone-and-cauda-equina`, `the-duodenum`.
 
+
+Revisado por el usuario (2026-10).
