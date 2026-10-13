@@ -1279,6 +1279,26 @@ async function checkTiemposTejido(browser, errors) {
     const filasSub = [...d.querySelectorAll('.tej-subfila')];
     return ocultas && filasSub.length === nSub && filasSub.every(x => x.checkVisibility() && x.querySelector('.tej-barra').getBoundingClientRect().width > 0);
   }, nSubG3);
+  // Tarjeta de una barra: tocarla dice su gravedad, qué mide y su plazo junto a ella;
+  // la misma barra la cierra, Escape la cierra sin cerrar el panel, desplazar también
+  const info = () => page.evaluate(() => { const i = document.getElementById('tejInfo'); return i && !i.hidden ? i.textContent : ''; });
+  const barraSel = '#tejidosCuerpo .tej-barra[data-barra="menisco_sutura"]';
+  await page.click(barraSel);
+  const tInfo = await info();
+  r.infoBarra = /Gravedad/.test(tInfo) && tInfo.includes(TIEMPOS_TEJIDO.medidas.deporte.etiqueta) && /Plazo/.test(tInfo)
+    && await page.evaluate(s => {
+      const b = document.querySelector(s).getBoundingClientRect(), i = document.getElementById('tejInfo').getBoundingClientRect();
+      return document.querySelector(s).getAttribute('aria-expanded') === 'true' && Math.abs(i.top - b.bottom) < 20;
+    }, barraSel);
+  await page.click(barraSel);
+  r.infoBarra = r.infoBarra && !(await info());
+  await page.click(barraSel);
+  await page.keyboard.press('Escape');
+  r.infoBarra = r.infoBarra && !(await info()) && await abierto()
+    && await page.evaluate(s => document.activeElement === document.querySelector(s), barraSel);
+  await page.click(barraSel);
+  await page.evaluate(() => { document.getElementById('tejidosCuerpo').scrollTop -= 200; });
+  await page.waitForFunction(() => document.getElementById('tejInfo').hidden);
   await page.mouse.click(10, 10);   // velo
   r.velo = !(await abierto());
   r.sinPayload = await page.evaluate(async () => !/tejid|Remodelaci/i.test(JSON.stringify((await import('./app.js')).buildPhysiQPayload())));
@@ -1319,6 +1339,19 @@ async function checkTiemposTejido(browser, errors) {
       && new Set([...document.querySelectorAll('.tej-filtro-btn')].map(b => Math.round(b.getBoundingClientRect().top))).size === 1
       && [...document.querySelectorAll('.tej-fase-ley')].every(c => { const b = c.getBoundingClientRect(); return b.left >= panel.left && b.right <= panel.right + 1; });
   });
+  // Tarjeta de una barra en táctil a 320 px: dentro de la pantalla con 16 px de margen;
+  // tocar fuera (texto del panel) la cierra y el panel sigue abierto
+  await movil.evaluate(() => document.querySelector('#tejidosCuerpo .tej-barra[data-barra="nervio_neurapraxia"]').scrollIntoView({ block: 'center' }));
+  await movil.tap('#tejidosCuerpo .tej-barra[data-barra="nervio_neurapraxia"]');
+  r.infoBarra320 = await movil.evaluate(() => {
+    const i = document.getElementById('tejInfo');
+    if (!i || i.hidden) return false;
+    const b = i.getBoundingClientRect();
+    return b.left >= 15 && b.right <= innerWidth - 15 && b.top >= 0 && b.bottom <= innerHeight && document.documentElement.scrollWidth <= innerWidth;
+  });
+  await movil.tap('#tejidosTitulo');
+  r.infoBarra320 = r.infoBarra320 && await movil.evaluate(() => document.getElementById('tejInfo').hidden
+    && document.getElementById('tejidosOverlay').classList.contains('open'));
   await ctxMovil.close();
 
   // Hub: el botón sí está (consulta pura, sin red)
