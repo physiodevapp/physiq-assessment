@@ -243,14 +243,21 @@ console.log('\npaciente posquirúrgico');
     });
   });
 
-  test('informe con IA: el recorrido avisa cuando lo que «orienta a» ya está tratado', () => {
+  test('informe con IA: el paso cuyo «orienta a» ya está tratado no va al prompt (ronda 30)', () => {
     withState({ ...POSQ({ intervencion: 'Clavo', protocolo: 'Verbal' }), region: 'hombro', activeHypotheses: ['h11'], testResults: {},
       hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: { h_step2b: 'trauma' } }, () => {
-      const a = IA.construirAmpliado();
-      assert.equal(a.arbol.find(x => /Traumatismo previo/.test(x.respuesta))?.tratada, true);
-      assert.match(IN.bloquesAmpliados(a).join('\n'), /orienta a: luxación bloqueada o fractura; Rx \(ya diagnosticada y tratada: es un antecedente\)/);
+      assert.ok(!IA.construirAmpliado().arbol.some(x => /Traumatismo previo/.test(x.respuesta)), 'tratada: el paso no va');
       state.derivacionResuelta = {};
-      assert.ok(!IA.construirAmpliado().arbol.some(x => x.tratada), 'sin marcar, sin aviso');
+      const a = IA.construirAmpliado();
+      assert.ok(a.arbol.some(x => /Traumatismo previo/.test(x.respuesta)), 'sin marcar, el paso va');
+      assert.ok(!a.arbol.some(x => x.tratada), 'sin marcar, sin aviso');
+    });
+    // Rosario: prótesis de cadera, ca1 tratada; el perfil degenerativo ya no va, la debilidad de abductores sí
+    withState({ ...POSQ({ intervencion: 'Prótesis total de cadera', protocolo: 'Escrito' }), region: 'cadera', activeHypotheses: ['ca1', 'ca5'], testResults: {},
+      hypothesisScores: {}, derivacionResuelta: { ca1: true }, treeAnswers: { ca_step1: 'no', ca_step1b: 'no', ca_step2: 'si', ca_step3: 'no', ca_step4: 'debilidad' } }, () => {
+      const txt = IN.bloquesAmpliados(IA.construirAmpliado()).join('\n');
+      assert.ok(!/perfil es degenerativo|rigidez matutina/i.test(txt), 'sin el paso de la artrosis tratada');
+      assert.match(txt, /Debilidad de abductores/i);
     });
   });
 
