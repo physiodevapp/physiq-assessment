@@ -2436,6 +2436,105 @@ async function enParalelo(items, n, fn) {
 
 // Una página nueva (contexto propio, así que su IDB no se cruza con otras)
 // con los mismos escuchas de errores y el mismo /validate simulado.
+// Bandas de contexto del formulario previo (fases 1 y 2) y del sistema abierto
+// (fase 2): se ven solo con la cabecera bajo la banda y el bloque aún en
+// pantalla, nunca dos a la vez; «↑ volver» lleva a la cabecera; caben a 320 px.
+async function checkBandaFormulario(page) {
+  const bandas = () => page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(() => {
+    const ver = id => document.getElementById(id).classList.contains('visible');
+    r({ fp: ver('fpContextBanner'), sis: ver('sisContextBanner'),
+      nombre: document.getElementById('fpBannerName').textContent,
+      cont: document.getElementById('fpBannerCont').textContent });
+  }))));
+  const irA = y => page.evaluate(y => window.scrollTo({ top: y, behavior: 'instant' }), y);
+  // y de la página donde la cabecera del formulario ya ha pasado bajo la banda
+  // y el formulario sigue ocupando la pantalla (o justo pasado su final)
+  const posiciones = sel => page.evaluate(sel => {
+    const det = document.querySelector(sel);
+    const r = det.getBoundingClientRect();
+    return { dentro: r.top + scrollY + 300, fuera: r.bottom + scrollY + 50 };
+  }, sel);
+  const res = {};
+  for (const [ancho, alto] of [[390, 844], [1280, 860]]) {
+    const k = `w${ancho}`;
+    await page.setViewportSize({ width: ancho, height: alto });
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await page.click('#fpDet_comun > summary');
+    await page.waitForSelector('#fpBody_comun .fp-text, #fpBody_comun button');
+    const pos = await posiciones('#fpDet_comun');
+    const antes = await bandas();
+    await irA(pos.dentro);
+    const dentro = await bandas();
+    const contSummary = await page.textContent('#fpCont_comun');
+    await irA(pos.fuera);
+    const fuera = await bandas();
+    await irA(pos.dentro);
+    await page.click('#fpContextBanner .context-banner-back');
+    await page.waitForFunction(() => {
+      const s = document.querySelector('#fpDet_comun > summary').getBoundingClientRect();
+      const t = parseFloat(getComputedStyle(document.getElementById('fpContextBanner')).top);
+      return s.top >= t - 1 && s.top < t + 40;
+    }, null, { timeout: 3000 }).then(() => true, () => false).then(v => { res[`${k}_volver`] = v; });
+    const trasVolver = await bandas();
+    await irA(pos.dentro);
+    await page.evaluate(() => { document.getElementById('fpDet_comun').open = false; });
+    const cerrado = await bandas();
+    // Fase 2: formulario regional abierto + un sistema abierto debajo (el acordeón
+    // de sistemas, y con él su banda, solo existe en ≤768 px)
+    await irA(0);
+    await irAFase2(page, 'lumbar');
+    await page.click('#fpDet_region > summary');
+    await page.waitForSelector('#fpBody_region .fp-text, #fpBody_region button');
+    await page.evaluate(() => [...document.querySelectorAll('#sistemicoQuestions .sistema-accordion-header')]
+      .find(h => h.offsetParent)?.click());
+    await page.waitForTimeout(100);
+    const altoPag = await page.evaluate(() => document.documentElement.scrollHeight);
+    let dos = false, vioFp = false, vioSis = false, nombreRegion = '';
+    for (let y = 0; y < altoPag; y += 60) {
+      await irA(y);
+      const b = await bandas();
+      if (b.fp && b.sis) dos = true;
+      if (b.fp) { vioFp = true; nombreRegion = b.nombre; }
+      if (b.sis) vioSis = true;
+    }
+    // La banda del sistema se va al dejar atrás el sistema abierto
+    const filaPasada = await page.evaluate(() => {
+      const r = document.querySelector('.sistema-accordion-row.open');
+      return r ? r.getBoundingClientRect().bottom + scrollY + 50 : null;
+    });
+    let trasSistema = { sis: false };
+    if (filaPasada !== null) {
+      // Espacio extra al final: si no, el scroll se queda corto cuando el sistema es de los últimos
+      await page.evaluate(() => { document.body.style.paddingBottom = '2000px'; });
+      await irA(filaPasada); trasSistema = await bandas();
+      await page.evaluate(() => { document.body.style.paddingBottom = ''; });
+    }
+    // Al cambiar de fase la banda no se queda
+    await irA((await posiciones('#fpDet_region')).dentro);
+    const enF2 = await bandas();
+    await page.evaluate(() => goToPhase(1));
+    const trasFase = await bandas();
+    res[k] = { antes, dentro, contSummary, fuera, trasVolver, cerrado, trasSistema, dos, vioFp, vioSis, nombreRegion, enF2, trasFase };
+    res[`${k}_ok`] = !antes.fp && dentro.fp && /General/.test(dentro.nombre) && dentro.cont === contSummary
+      && !fuera.fp && res[`${k}_volver`] && !trasVolver.fp && !cerrado.fp
+      && !trasSistema.sis && !dos && vioFp && (vioSis || ancho > 768) && /Lumbar/.test(nombreRegion) && enF2.fp && !trasFase.fp && !trasFase.sis;
+  }
+  // 320 px: la banda cabe en una línea, sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.click('#fpDet_comun > summary');
+  await page.waitForSelector('#fpBody_comun .fp-text, #fpBody_comun button');
+  await irA((await posiciones('#fpDet_comun')).dentro);
+  const b320 = await bandas();
+  res.cabe320 = b320.fp && await page.evaluate(() => {
+    const b = document.getElementById('fpContextBanner');
+    const btn = b.querySelector('.context-banner-back').getBoundingClientRect();
+    return b.scrollWidth <= b.clientWidth && btn.right <= innerWidth && b.offsetHeight < 60;
+  });
+  res.ok = res.w390_ok && res.w1280_ok && res.cabe320;
+  return res;
+}
+
 async function nuevaPagina(browser, errors, moduleStatus) {
   const page = await browser.newPage();
   page.on('pageerror', err => errors.push(`pageerror: ${err.message}`));
@@ -2536,6 +2635,12 @@ const SECCIONES = [
     const barraFase = await checkBarraFase(page);
     console.log(`  ${barraFase.ok ? '✓' : '✗'} barra de fase en móvil: botón entero sin caja en «≡», aria-expanded vuelve a false al cerrar; chip «Breve» en la barra (no en la cabecera) en móvil y en la cabecera en escritorio; cabe a 320 px${barraFase.ok ? '' : ' ' + JSON.stringify(barraFase)}`);
     return sheetOpen === true && barraFase.ok;
+  } },
+
+  { id: 'banda-formulario', titulo: 'Bandas de contexto del formulario previo y del cribado:', run: async ({ page }) => {
+    const r = await checkBandaFormulario(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} formulario previo (fases 1 y 2, 390 y 1280 px): la banda aparece con la cabecera fuera, con nombre y contador, se va al pasar el formulario, al cerrarlo y al cambiar de fase; «↑ volver» lleva a la cabecera; formulario regional y sistema abierto nunca a la vez, y la del sistema se va al dejarlo atrás; cabe a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
   } },
 
   { id: 'cribado', titulo: 'Razonamiento del cribado (lumbar):', run: async ({ page }) => {
