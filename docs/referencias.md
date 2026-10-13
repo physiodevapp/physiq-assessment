@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **427** referencias de literatura, con **2044** usos.
+- **459** referencias de literatura, con **2091** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **374** de 427 referencias del registro revisadas. Ver «Estado de revisión».
+- **374** de 459 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -77,29 +77,61 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Loureiro 2013](#loureiro-2013) | razonamiento 4b · texto | 2 | **sin revisar** |
 | [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) | razonamiento 4b · texto | 6 | **sin revisar** |
 | [Zacharias 2016](#zacharias-2016) | razonamiento 4b · texto | 2 | **sin revisar** |
+| [Siepe 2007](#siepe-2007) | tiempos de tejido | 1 | **sin revisar** |
+| [Tumialán 2010](#tumialán-2010) | tiempos de tejido | 3 | **sin revisar** |
+| [Gornet 2011](#gornet-2011) | tiempos de tejido | 1 | **sin revisar** |
 | [Snyder-Mackler 2012](#snyder-mackler-2012) | tiempos de tejido | 10 | **sin revisar** |
 | [Menorca 2013](#menorca-2013) | tiempos de tejido | 1 | **sin revisar** |
 | [Pollock 2014](#pollock-2014) | tiempos de tejido | 1 | **sin revisar** |
+| [Wong 2014](#wong-2014) | tiempos de tejido | 1 | **sin revisar** |
+| [Pedret 2015](#pedret-2015) | tiempos de tejido | 1 | **sin revisar** |
 | [Pollock 2016](#pollock-2016) | tiempos de tejido | 6 | **sin revisar** |
 | [Thigpen 2016](#thigpen-2016) | tiempos de tejido | 2 | **sin revisar** |
+| [Yuan 2016](#yuan-2016) | tiempos de tejido | 1 | **sin revisar** |
 | [Robertson y Wood 2017](#robertson-y-wood-2017) | tiempos de tejido | 6 | **sin revisar** |
+| [Wang 2017](#wang-2017) | tiempos de tejido | 1 | **sin revisar** |
 | [Wu 2017](#wu-2017) | tiempos de tejido | 2 | **sin revisar** |
+| [Konstantinou 2018](#konstantinou-2018) | tiempos de tejido | 1 | **sin revisar** |
+| [Prakash 2018](#prakash-2018) | tiempos de tejido | 5 | **sin revisar** |
 | [Vuurberg 2018](#vuurberg-2018) | tiempos de tejido | 2 | **sin revisar** |
+| [Health Quality Ontario 2019](#health-quality-ontario-2019) | tiempos de tejido | 2 | **sin revisar** |
 | [Macdonald 2019](#macdonald-2019) | tiempos de tejido | 4 | **sin revisar** |
+| [Green 2020](#green-2020) | tiempos de tejido | 3 | **sin revisar** |
+| [Jette 2020](#jette-2020) | tiempos de tejido | 1 | **sin revisar** |
+| [Magan 2021](#magan-2021) | tiempos de tejido | 1 | **sin revisar** |
+| [Bogaert 2022](#bogaert-2022) | tiempos de tejido | 1 | **sin revisar** |
 | [Robinson 2022](#robinson-2022) | tiempos de tejido | 2 | **sin revisar** |
+| [Salameh 2022](#salameh-2022) | tiempos de tejido | 3 | **sin revisar** |
 | [Small 2022](#small-2022) | tiempos de tejido | 1 | **sin revisar** |
 | [Evans 2023](#evans-2023) | tiempos de tejido | 2 | **sin revisar** |
 | [Hoenig 2023](#hoenig-2023) | tiempos de tejido | 11 | **sin revisar** |
 | [Hollabaugh 2023](#hollabaugh-2023) | tiempos de tejido | 6 | **sin revisar** |
+| [Knapik 2023](#knapik-2023) | tiempos de tejido | 3 | **sin revisar** |
 | [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) | tiempos de tejido | 1 | **sin revisar** |
+| [Patiño y Saenz 2023](#patiño-y-saenz-2023) | tiempos de tejido | 1 | **sin revisar** |
 | [Wallace 2023](#wallace-2023) | tiempos de tejido | 3 | **sin revisar** |
+| [Waymack y An 2023](#waymack-y-an-2023) | tiempos de tejido | 1 | **sin revisar** |
+| [Alexander 2024](#alexander-2024) | tiempos de tejido | 2 | **sin revisar** |
+| [Davis 2024](#davis-2024) | tiempos de tejido | 1 | **sin revisar** |
 | [Malik 2024](#malik-2024) | tiempos de tejido | 1 | **sin revisar** |
 | [Mehta 2024](#mehta-2024) | tiempos de tejido | 2 | **sin revisar** |
+| [Pan 2024](#pan-2024) | tiempos de tejido | 1 | **sin revisar** |
 | [Sayudo 2024](#sayudo-2024) | tiempos de tejido | 1 | **sin revisar** |
+| [Telang 2024](#telang-2024) | tiempos de tejido | 1 | **sin revisar** |
 | [Abdel Khalik 2025](#abdel-khalik-2025) | tiempos de tejido | 1 | **sin revisar** |
+| [Donnally 2025](#donnally-2025) | tiempos de tejido | 1 | **sin revisar** |
+| [Forsythe 2025](#forsythe-2025) | tiempos de tejido | 1 | **sin revisar** |
 | [Li 2025](#li-2025) | tiempos de tejido | 1 | **sin revisar** |
+| [Margetis y Magnus 2025](#margetis-y-magnus-2025) | tiempos de tejido | 1 | **sin revisar** |
+| [Margetis y Patel 2025](#margetis-y-patel-2025) | tiempos de tejido | 1 | **sin revisar** |
+| [Margetis y Singh 2025](#margetis-y-singh-2025) | tiempos de tejido | 1 | **sin revisar** |
+| [Cui 2026](#cui-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Hall 2026](#hall-2026) | tiempos de tejido | 1 | **sin revisar** |
+| [Khan 2026](#khan-2026) | tiempos de tejido | 1 | **sin revisar** |
+| [Li y Sun 2026](#li-y-sun-2026) | tiempos de tejido | 2 | **sin revisar** |
 | [Nadi 2026](#nadi-2026) | tiempos de tejido | 2 | **sin revisar** |
+| [Patel 2026](#patel-2026) | tiempos de tejido | 1 | **sin revisar** |
+| [Pedret 2026](#pedret-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
@@ -696,7 +728,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Grant y John 2025](#grant-y-john-2025) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Hegedus 2012](#hegedus-2012) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Lim 2013](#lim-2013) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Maffulli 1998](#maffulli-1998) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Matsumoto 1990](#matsumoto-1990) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patil 2024](#patil-2024) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Petersen 2017](#petersen-2017) · [Pitcher 2024](#pitcher-2024) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rudwaleit 2006](#rudwaleit-2006) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Snyder-Mackler 2012](#snyder-mackler-2012) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Speer 1994](#speer-1994) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Young 2003](#young-2003) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
+[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Balcarek 2025](#balcarek-2025) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Lim 2013](#lim-2013) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Majlesi 2008](#majlesi-2008) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Matsumoto 1990](#matsumoto-1990) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Petersen 2017](#petersen-2017) · [Pitcher 2024](#pitcher-2024) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rudwaleit 2006](#rudwaleit-2006) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Snyder-Mackler 2012](#snyder-mackler-2012) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Speer 1994](#speer-1994) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Telang 2024](#telang-2024) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -889,6 +921,24 @@ Citada como:
 |---|---|---|---|---|
 | Hombro | h3 · Rotura del Manguito Rotador | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Hombro | h4 · Inestabilidad Glenohumeral (Anterior o Posterior) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+
+### Alexander 2024
+
+Autores: Alexander, Weisbrod y Varacallo  
+Título: *Lumbosacral Radiculopathy (Archived)*  
+Publicación: StatPearls [Internet], NBK430837 (act. 2024-02-27; archivado)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Capítulo archivado («for historical reference only»). Lumbalgia: la mitad se resuelve en 1–2 semanas y el 90 % en 6–12; tras discectomía, 73 % sin dolor de pierna al año. Lumbalgia aguda y radiculopatía lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Alexander 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Lumbalgia aguda inespecífica» (Columna) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Fila «Radiculopatía lumbar (ciática)» (Columna) | cabecera · tiempos de tejido | 1 |
 
 ### Altman 1986
 
@@ -1551,6 +1601,23 @@ Citada como:
 | Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 1 |
 
+### Bogaert 2022
+
+Autores: Bogaert, Thys, Depreitere, Dankaerts, Amerijckx, Van Wambeke, Jacobs, Boonen, Brumagne, Moke, Schelfaut, Spriet, Peers, Swinnen y Janssens  
+Título: *Rehabilitation to improve outcomes of lumbar fusion surgery: a systematic review with meta-analysis*  
+Publicación: Eur Spine J 31:1525–1545  
+DOI: 10.1007/s00586-022-07158-2  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis (18 ensayos, 1402 pacientes); PDF aportado por el usuario, leído (2026-10). Ejercicio mejor que la atención habitual, y multimodal (con terapia cognitivo-conductual) mejor que el ejercicio solo, hasta 6 meses (evidencia baja). Artrodesis lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Bogaert 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Artrodesis lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
+
 ### Breig y Troup 1979
 
 Autores: Breig y Troup  
@@ -2078,6 +2145,23 @@ Una revisión sistemática posterior (103 estudios; datos transversales, certeza
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Crepitación articular» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Crepitación articular» («¿Por qué?») | 4b · razonamiento del test | 2 |
 
+### Cui 2026
+
+Autores: Cui, Bao, Chen, Guo, Deng, Cui, Song y Wang  
+Título: *Summary of the best evidence for early mobilization after lumbar spinal fusion surgery: a systematic review*  
+Publicación: BMC Surg 26:7  
+DOI: 10.1186/s12893-025-03398-3  
+Última revisión: **sin revisar**  
+Nota: Síntesis de la mejor evidencia; PDF aportado por el usuario, leído (2026-10). Movilización precoz el mismo día de la cirugía y fisioterapia desde el 2.º día. Artrodesis lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Cui 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Artrodesis lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
+
 ### Culvenor 2019
 
 Autores: Culvenor, Øiestad, Hart, Stefanik, Guermazi y Crossley  
@@ -2149,6 +2233,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+
+### Davis 2024
+
+Autores: Davis, Taqi y Vasudevan  
+Título: *Sciatica*  
+Publicación: StatPearls [Internet], NBK507908 (act. 2024-01-04)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. La mayoría se resuelve en menos de 4–6 semanas; más lenta con déficit neurológico. Radiculopatía lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Davis 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Radiculopatía lumbar (ciática)» (Columna) | cabecera · tiempos de tejido | 1 |
 
 ### Davis y Shaw 2023
 
@@ -2503,6 +2604,23 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Test «Test de extensión lumbar de 30 s» | 4b · cita bajo el test | 1 |
 
+### Donnally 2025
+
+Autores: Donnally, Margetis y Varacallo  
+Título: *Vertebral Compression Fractures*  
+Publicación: StatPearls [Internet], NBK448171 (act. 2025-05-04)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Corsé de 4 a 12 semanas, hasta que cede el dolor y consolida. Fractura vertebral por compresión en los tiempos de tejido.
+
+Citada como:
+
+1. Donnally 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Vertebral por compresión, sin cirugía» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 1 |
+
 ### Dookie y Joseph 2023
 
 Autores: Dookie y Joseph  
@@ -2774,6 +2892,23 @@ Citada como:
 | Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Regla de Predicción Clínica de Flynn (4/5 criterios)» | 4b · cita bajo el test | 1 |
 | Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM, movimientos intervertebrales accesorios pasivos)» | 4b · cita bajo el test | 2 |
 | Lumbar | — | Paso `lu_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+
+### Forsythe 2025
+
+Autores: Forsythe, Hand, Bohn, Hand, Chang, Khazi-Syed, Borque y McCullough  
+Título: *Adductor Injuries in Major League Soccer: A 10-Year Analysis of Injury Rate and Return to Play, and Performance Metrics by Player Position*  
+Publicación: Orthop J Sports Med 13(8):23259671251360436  
+DOI: 10.1177/23259671251360436  
+Última revisión: **sin revisar**  
+Nota: Cohorte (1706 lesiones de aductores, liga de fútbol de EE. UU., 2010–2021); PDF aportado por el usuario, leído (2026-10). Vuelta a los 14,4 días (2010–2015) y 19,7 (2016–2021) de media; osteítis de pubis, unos 37 días más; recidiva del 21–23 %. Aductores en los tiempos de tejido.
+
+Citada como:
+
+1. Forsythe 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Aductores (lesión aguda, futbolistas)» (Músculo) | cabecera · tiempos de tejido | 1 |
 
 ### Frey 2017
 
@@ -3293,6 +3428,23 @@ Citada como:
 | Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 114 |
 | Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 115 |
 
+### Gornet 2011
+
+Autores: Gornet, Burkus, Dryer y Peloza  
+Título: *Lumbar disc arthroplasty with Maverick disc versus stand-alone interbody fusion: a prospective, randomized, controlled, multicenter investigational device exemption trial*  
+Publicación: Spine 36(25):E1600–E1611  
+DOI: 10.1097/BRS.0b013e318217668f  
+Última revisión: **sin revisar**  
+Nota: Ensayo aleatorizado (577 pacientes); PDF aportado por el usuario, leído (2026-10). Mediana de vuelta al trabajo de 75 días con prótesis frente a 96 con artrodesis anterior. Prótesis de disco lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Gornet 2011
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis de disco lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
+
 ### Grant y John 2025
 
 Autores: Grant y John  
@@ -3309,6 +3461,25 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | — | Pregunta `h_gi2` · GI / Hepático | 2 · razonamiento del cribado | 1 |
+
+### Green 2020
+
+Autores: Green, Lin, McClelland, Semciw, Schache, Rotstein, Cook y Pizzari  
+Título: *Return to Play and Recurrence After Calf Muscle Strain Injuries in Elite Australian Football Players*  
+Publicación: Am J Sports Med 48(13):3306–3315  
+DOI: 10.1177/0363546520959327  
+Última revisión: **sin revisar**  
+Nota: Casos y controles (149 lesiones del registro de la liga australiana); PDF aportado por el usuario, leído (2026-10). Vuelta a los 19 días sin lesión de la aponeurosis y a los 31 con lesión grave; la recidiva depende más de la edad y de lesiones previas que de la RM. Gemelo y sóleo en los tiempos de tejido.
+
+Citada como:
+
+1. Green 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Grado 2 (lesión del tendón o la aponeurosis, sin retracción)» de «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Grado 3 (con retracción)» de «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
 
 ### Greenwood 2024
 
@@ -3735,6 +3906,24 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Regla de Predicción Clínica de Flynn (4/5 criterios)» | 4b · cita bajo el test | 1 |
+
+### Health Quality Ontario 2019
+
+Autores: Health Quality Ontario  
+Título: *Cervical Artificial Disc Replacement Versus Fusion for Cervical Degenerative Disc Disease: A Health Technology Assessment*  
+Publicación: Ont Health Technol Assess Ser 19(3):1–223  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Evaluación de tecnología sanitaria (Ontario, febrero de 2019); PDF aportado por el usuario en tres partes, leído (2026-10). Un nivel: vuelta al trabajo con mediana de 48 días con prótesis (Bryan) frente a 61 con artrodesis; con todas las prótesis, 13–20 días antes; a los 2 años, tasas de empleo parecidas. Prótesis de disco y artrodesis cervical en los tiempos de tejido.
+
+Citada como:
+
+1. Health Quality Ontario 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis de disco cervical» (Columna) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Fila «Artrodesis cervical anterior» (Columna) | cabecera · tiempos de tejido | 1 |
 
 ### Hegedus 2012
 
@@ -4250,6 +4439,23 @@ Citada como:
 | Hombro | — | Pregunta `h_g2` · Ginecológico | 2 · razonamiento del cribado | 1 |
 | Cadera | — | Pregunta `ca_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
+### Jette 2020
+
+Autores: Jette, Hunter, Burkett, Langham, Logerstedt, Piuzzi, Poirier, Radach, Ritter, Scalzitti, Stevens-Lapsley, Tompkins y Zeni  
+Título: *Physical Therapist Management of Total Knee Arthroplasty*  
+Publicación: Phys Ther 100(9):1603–1631  
+DOI: 10.1093/ptj/pzaa099  
+Última revisión: **sin revisar**  
+Nota: Guía de práctica clínica de la APTA; PDF aportado por el usuario, leído (resumen de recomendaciones, 2026-10). Fisioterapia en las primeras 24 horas y fuerza de alta intensidad en los 7 primeros días; no da plazos de recuperación. Fila de prótesis de rodilla en los tiempos de tejido.
+
+Citada como:
+
+1. Jette 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis total de rodilla» (Articulación) | cabecera · tiempos de tejido | 1 |
+
 ### Jiang 2024
 
 Autores: Jiang, Davies, Zipser, Margetis, Martin, Matsoukas y cols. (AO Spine RECODE-DCM)  
@@ -4676,6 +4882,23 @@ Citada como:
 | Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
 | Codo | — | Pregunta `co_e2b` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
 
+### Khan 2026
+
+Autores: Khan, Naseem, Khan, Saif, Khattak, Muneeb, Khan, Ul Haq y Khattak  
+Título: *Lumbar total disc replacement versus anterior and transforaminal lumbar interbody fusion: a systematic review and meta-analysis of clinical and radiological outcomes*  
+Publicación: J Clin Neurosci 143:111742  
+DOI: 10.1016/j.jocn.2025.111742  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis; PDF aportado por el usuario, leído (2026-10). Vuelta al trabajo antes con prótesis de disco lumbar que con artrodesis solo en el análisis de sensibilidad; sin plazos absolutos agrupados. Prótesis de disco lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Khan 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis de disco lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
+
 ### Khan y Bollu 2023
 
 Autores: Khan y Bollu  
@@ -4833,6 +5056,25 @@ Citada como:
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Marcha de Trendelenburg» | 4b · cita bajo el test | 4 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 5 |
 
+### Knapik 2023
+
+Autores: Knapik, Alter, Ganapathy, Smith, Brophy y Matava  
+Título: *Isolated, Full-Thickness Proximal Rectus Femoris Injury in Competitive Athletes: A Systematic Review of Injury Characteristics and Return to Play*  
+Publicación: Orthop J Sports Med 11(1):23259671221144984  
+DOI: 10.1177/23259671221144984  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática (18 estudios, 132 deportistas); PDF aportado por el usuario, leído (2026-10). Vuelta al deporte a las 11,7 semanas sin cirugía y a las 22,1 con cirugía. Recto femoral en los tiempos de tejido.
+
+Citada como:
+
+1. Knapik 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Recto femoral, rotura completa o avulsión proximal» (Músculo) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Sin cirugía» de «Recto femoral, rotura completa o avulsión proximal» (Músculo) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Operado» de «Recto femoral, rotura completa o avulsión proximal» (Músculo) | cabecera · tiempos de tejido | 1 |
+
 ### Koc 2023
 
 Publicación: J Orthop Sports Phys Ther 53(12):CPG1–CPG39  
@@ -4888,6 +5130,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 1 |
+
+### Konstantinou 2018
+
+Autores: Konstantinou, Dunn, Ogollah, Lewis, van der Windt y Hay, en nombre del ATLAS study team  
+Título: *Prognosis of sciatica and back-related leg pain in primary care: the ATLAS cohort*  
+Publicación: Spine J 18(6):1030–1040  
+DOI: 10.1016/j.spinee.2017.10.071  
+Última revisión: **sin revisar**  
+Nota: Cohorte prospectiva en atención primaria (609 pacientes); manuscrito aceptado aportado por el usuario, leído (2026-10). Mejora de la discapacidad (≥ 30 % en el RMDQ) del 55 % a los 12 meses, igual en el subgrupo con ciática. Radiculopatía lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Konstantinou 2018
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Radiculopatía lumbar (ciática)» (Columna) | cabecera · tiempos de tejido | 1 |
 
 ### Krill 2018
 
@@ -5336,6 +5595,24 @@ Citada como:
 |---|---|---|---|---|
 | Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
 | Codo | — | Paso `co_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Li y Sun 2026
+
+Autores: Li, Sun, Qi y Xu  
+Título: *Return-to-sport rate and time in elite athletes after ankle syndesmosis injuries: a systematic review and meta-analysis*  
+Publicación: J Orthop Surg Res 21:69  
+DOI: 10.1186/s13018-025-06566-6  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis (14 estudios, 901 deportistas de élite); PDF aportado por el usuario, leído (2026-10). Vuelta del 96 % a los ~58 días; 98 % tanto con sutura dinámica como sin cirugía. Dos autores en la clave porque Li 2026 ya existía. Esguince de la sindesmosis en los tiempos de tejido.
+
+Citada como:
+
+1. Li y Sun 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Esguince de la sindesmosis (alto de tobillo)» (Ligamento) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Operada (tornillo o sutura dinámica)» de «Esguince de la sindesmosis (alto de tobillo)» (Ligamento) | cabecera · tiempos de tejido | 1 |
 
 ### Lim 2013
 
@@ -6761,6 +7038,23 @@ Técnica (Maffulli 1998): paciente en prono con los tobillos fuera de la camilla
 | Tobillo y pie | tp3 · Rotura del Aquiles | Test «Thompson (Simmonds)» («¿Por qué?») | 4b · razonamiento del test | 4 |
 | Tobillo y pie | tp3 · Rotura del Aquiles | Test «Hueco palpable» («¿Por qué?») | 4b · razonamiento del test | 5 |
 
+### Magan 2021
+
+Autores: Magan, Baawa-Ameyaw, Kayani, Radhakrishnan, Ronca y Haddad  
+Título: *Time for return to sport following total knee arthroplasty: a meta-analysis*  
+Publicación: Arch Orthop Trauma Surg (publicado en línea en 2021)  
+DOI: 10.1007/s00402-021-04180-9  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis (9 estudios, 1307 pacientes); PDF aportado por el usuario, leído entero (2026-10). Vuelta al deporte del 18,7 % a los 3 meses, 70 % a los 6 y 84 % a los 12; 87,9 % a los 14 meses de media. Fila de prótesis de rodilla en los tiempos de tejido.
+
+Citada como:
+
+1. Magan 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis total de rodilla» (Articulación) | cabecera · tiempos de tejido | 1 |
+
 ### Mahadevan 2015
 
 Publicación: J Foot Ankle Surg 54:549–53  
@@ -6892,6 +7186,57 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
+
+### Margetis y Magnus 2025
+
+Autores: Margetis, Magnus y Mesfin  
+Título: *Cervical Radiculopathy*  
+Publicación: StatPearls [Internet], NBK441828 (act. 2025-08-06)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Dos autores en la clave para no confundirse con los otros capítulos de Margetis de 2025. Más del 85 % de las agudas se resuelve en 8–12 semanas; a los 3 años, el 83 % recupera una función satisfactoria. Radiculopatía cervical en los tiempos de tejido.
+
+Citada como:
+
+1. Margetis y Magnus 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Radiculopatía cervical» (Columna) | cabecera · tiempos de tejido | 1 |
+
+### Margetis y Patel 2025
+
+Autores: Margetis, Patel, Petrone y Carter  
+Título: *Percutaneous Vertebroplasty and Kyphoplasty*  
+Publicación: StatPearls [Internet], NBK525963 (act. 2025-04-06)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Dos autores en la clave para no confundirse con los otros capítulos de Margetis de 2025. Con tratamiento conservador, los síntomas suelen ceder en 4–6 semanas; la cementación es para el dolor que no cede; sin plazo de recuperación tras ella. Fractura vertebral por compresión en los tiempos de tejido.
+
+Citada como:
+
+1. Margetis y Patel 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Vertebral por compresión, sin cirugía» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 1 |
+
+### Margetis y Singh 2025
+
+Autores: Margetis, Singh, Casiano y Varacallo  
+Título: *Low Back Pain: Evaluation and Management*  
+Publicación: StatPearls [Internet], NBK538173 (act. 2025-12-13)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Dos autores en la clave para no confundirse con los otros capítulos de Margetis de 2025. Aguda < 6 semanas, crónica > 12; la mayoría de las agudas se resuelve en unas semanas; factores de cronificación. Lumbalgia aguda en los tiempos de tejido.
+
+Citada como:
+
+1. Margetis y Singh 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Lumbalgia aguda inespecífica» (Columna) | cabecera · tiempos de tejido | 1 |
 
 ### Martin 2021
 
@@ -8028,6 +8373,23 @@ Técnica de Pålsson 2020: en prono, RI pasiva con la cadera en posición neutra
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Rotación Interna de cadera en posición neutra <24°» («¿Por qué?») | 4b · razonamiento del test | 5 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» («¿Por qué?») | 4b · razonamiento del test | 4 |
 
+### Pan 2024
+
+Autores: Pan, Clark, Simon, Oeding, Couch, Taunton y Hevesi  
+Título: *How do Rates of Return to Sports Following Direct Anterior Approach Total Hip Arthroplasty Compare to Other Approaches? A Systematic Review and Meta-analysis*  
+Publicación: Orthop Rev (Pavia) 16:124486  
+DOI: 10.52965/001c.124486  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis (prótesis de cadera por vía anterior directa); PDF aportado por el usuario, leído (2026-10). Vuelta al deporte del 76 %; vuelta al trabajo del 30–60 % a los 3 meses y del 87 % al año (un solo estudio). Prótesis de cadera en los tiempos de tejido.
+
+Citada como:
+
+1. Pan 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis total de cadera» (Articulación) | cabecera · tiempos de tejido | 1 |
+
 ### Pana y Saggu 2023
 
 Autores: Pana y Saggu  
@@ -8191,6 +8553,23 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 
+### Patel 2026
+
+Autores: Patel, Mendonca, Nischal, Kale, Hines, Heller, Jallo, Harrop y Prasad  
+Título: *Total disc replacement versus lumbar interbody fusion for degenerative disc disease: a meta-analysis of randomized controlled trials*  
+Publicación: Neurosurg Focus 61(1):E11  
+DOI: 10.3171/2026.3.FOCUS2630  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 13 ensayos (2349 pacientes); PDF aportado por el usuario, leído (2026-10). Menos complicaciones y reintervenciones con prótesis; dolor y discapacidad convergen con la artrodesis a los 5 años; vuelta al trabajo parecida. Prótesis de disco lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Patel 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis de disco lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
+
 ### Patil 2024
 
 Autores: Patil, Rehman, Anastasopoulou y Jialal  
@@ -8207,6 +8586,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | — | Pregunta `co_e1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+
+### Patiño y Saenz 2023
+
+Autores: Patiño y Saenz  
+Título: *Radial Head Fractures*  
+Publicación: StatPearls [Internet], NBK448140 (act. 2023-06-26)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Sin cirugía, yeso o cabestrillo 2–3 semanas; criterios de cirugía (bloqueo, escalón > 2 mm, > 30 % de superficie). Fractura de cabeza de radio en los tiempos de tejido.
+
+Citada como:
+
+1. Patiño y Saenz 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Cabeza de radio, sin cirugía» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 1 |
 
 ### Peat 2006
 
@@ -8244,6 +8640,40 @@ En la serie de Antuna y O'Driscoll que recoge Park 2019, el chasquido aparecía 
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» («¿Por qué?») | 4b · razonamiento del test | 2 |
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
+### Pedret 2015
+
+Autores: Pedret, Rodas, Balius, Capdevila, Bossy, Vernooij y Alomar  
+Título: *Return to Play After Soleus Muscle Injuries*  
+Publicación: Orthop J Sports Med 3(7):2325967115595802  
+DOI: 10.1177/2325967115595802  
+Última revisión: **sin revisar**  
+Nota: Serie de casos (61 deportistas de élite, 44 lesiones del sóleo con RM); PDF aportado por el usuario, leído (2026-10). Recuperación de 29 días de media; aponeurosis central 44, lateral 19. Gemelo y sóleo en los tiempos de tejido.
+
+Citada como:
+
+1. Pedret 2015
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
+
+### Pedret 2026
+
+Autores: Pedret, Palermi, Mechó, Frutos, Rovira, Vicente y Balius  
+Título: *Calf Injuries: An Anatomy-Based Approach to Diagnosis, Management and Return to Sport*  
+Publicación: Curr Rev Musculoskelet Med 19:64  
+DOI: 10.1007/s12178-026-10059-2  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa; PDF aportado por el usuario, leído (2026-10). La rehabilitación y la vuelta al deporte se guían por criterios, no por plazos fijos; no hay criterios validados específicos del gemelo. Gemelo y sóleo en los tiempos de tejido.
+
+Citada como:
+
+1. Pedret 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
 
 ### Pencle y Varacallo 2023
 
@@ -8360,6 +8790,27 @@ Citada como:
 |---|---|---|---|---|
 | Rodilla | — | Pregunta `ro_t2` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Prakash 2018
+
+Autores: Prakash, Entwisle, Schneider, Brukner y Connell  
+Título: *Connective tissue injury in calf muscle tears and return to play: MRI correlation*  
+Publicación: Br J Sports Med 52(14):929–933  
+DOI: 10.1136/bjsports-2017-098362  
+Última revisión: **sin revisar**  
+Nota: Serie retrospectiva (100 deportistas, 114 lesiones de gemelo y sóleo); PDF aportado por el usuario (versión en línea de 2017), leído (2026-10). Gradación 0–3 por la lesión del tejido conectivo en la RM; vuelta al deporte de 8, 17, 25 y 48 días de media. Gemelo y sóleo en los tiempos de tejido.
+
+Citada como:
+
+1. Prakash 2018
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Grado 0 (edema, sin rotura de fibras)» de «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Grado 1 (rotura de fibras, tejido conectivo intacto)» de «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Grado 2 (lesión del tendón o la aponeurosis, sin retracción)» de «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Grado 3 (con retracción)» de «Gemelo y sóleo (por la lesión del tejido conectivo)» (Músculo) | cabecera · tiempos de tejido | 1 |
 
 ### Prill 2025
 
@@ -8937,6 +9388,25 @@ Citada como:
 | Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Paso `ro_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
+### Salameh 2022
+
+Autores: Salameh, Hantouly, Rayyan, Dabbas, Toubasi, Hartnett y Blankenhorn  
+Título: *Return to Play After Isolated Syndesmotic Ligamentous Injury in Athletes: A Systematic Review and Meta-analysis*  
+Publicación: Foot Ankle Orthop 7(2)  
+DOI: 10.1177/24730114221096482  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis (18 estudios, 1133 esguinces); PDF aportado por el usuario, leído (2026-10). Vuelta al deporte del 99 % a los 52 días de media: 39 sin cirugía y 71 con cirugía. Esguince de la sindesmosis en los tiempos de tejido.
+
+Citada como:
+
+1. Salameh 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Esguince de la sindesmosis (alto de tobillo)» (Ligamento) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Sin cirugía» de «Esguince de la sindesmosis (alto de tobillo)» (Ligamento) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Subtipo «Operada (tornillo o sutura dinámica)» de «Esguince de la sindesmosis (alto de tobillo)» (Ligamento) | cabecera · tiempos de tejido | 1 |
+
 ### Salamh 2025
 
 Autores: Salamh, Stoner, Ruley, Zhu, Bateman, Chester, Da Baets, Gibson, Hollmann, Kelley, Lewis, McClure, McCreesh, Mertens, Michener, Seitz, Struyf, Zuckerman y King  
@@ -9348,6 +9818,23 @@ Citada como:
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Pronóstico | 5 · cita del pronóstico | 1 |
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 | Codo | — | Paso `co_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+
+### Siepe 2007
+
+Autores: Siepe, Wiechert, Khattab, Korge y Mayer  
+Título: *Total lumbar disc replacement in athletes: clinical results, return to sport and athletic performance*  
+Publicación: Eur Spine J 16(7):1001–1013  
+DOI: 10.1007/s00586-006-0257-y  
+Última revisión: **sin revisar**  
+Nota: Serie prospectiva (39 deportistas); PDF aportado por el usuario, leído (2026-10). Vuelta al deporte del 38,5 % en 3 meses y del 30,7 % de 3 a 6; mejor rendimiento a los 5,2 meses; vuelve el 94,9 %. Prótesis de disco lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Siepe 2007
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis de disco lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
 
 ### Sims 2020
 
@@ -9869,6 +10356,23 @@ Citada como:
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Reflejos rotuliano (L3–L4) y aquíleo (L5–S1)» | 4b · cita bajo el test | 1 |
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Sensibilidad (algodón, diapasón, pinchazo)» | 4b · cita bajo el test | 2 |
 
+### Telang 2024
+
+Autores: Telang, Hoveidaei, Mayfield, Lieberman, Mont y Heckmann  
+Título: *Are Activity Restrictions Necessary After Total Hip Arthroplasty: A Systematic Review*  
+Publicación: Arthroplasty Today 30:101576  
+DOI: 10.1016/j.artd.2024.101576  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática (28 estudios); PDF aportado por el usuario, leído (2026-10). La mayoría vuelve al deporte en los primeros 6 meses, la mitad en los 3 primeros; más actividad, supervivencia igual o mejor de la prótesis. Fila de prótesis de cadera en los tiempos de tejido.
+
+Citada como:
+
+1. Telang 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis total de cadera» (Articulación) | cabecera · tiempos de tejido | 1 |
+
 ### Thigpen 2016
 
 Autores: Thigpen, Shaffer, Gaunt, Leggin, Williams y Wilcox  
@@ -10037,6 +10541,25 @@ Citada como:
 |---|---|---|---|---|
 | Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 | Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
+
+### Tumialán 2010
+
+Autores: Tumialán, Ponton, Garvin y Gluf  
+Título: *Arthroplasty in the military: a preliminary experience with ProDisc-C and ProDisc-L*  
+Publicación: Neurosurg Focus 28(5):E18  
+DOI: 10.3171/2010.1.FOCUS102  
+Última revisión: **sin revisar**  
+Nota: Serie retrospectiva (militares en activo, 12 por grupo); PDF aportado por el usuario, leído (2026-10). Servicio sin restricciones: lumbar, 22,6 semanas con prótesis y 32,4 con artrodesis; cervical, 10,3 y 16,5. Prótesis de disco lumbar y cervical y artrodesis cervical en los tiempos de tejido.
+
+Citada como:
+
+1. Tumialán 2010
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Prótesis de disco lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Fila «Prótesis de disco cervical» (Columna) | cabecera · tiempos de tejido | 1 |
+| Todas (tiempos de tejido) | — | Fila «Artrodesis cervical anterior» (Columna) | cabecera · tiempos de tejido | 1 |
 
 ### Uysal 2015
 
@@ -10326,6 +10849,23 @@ Citada como:
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» | 4b · cita bajo el test | 4 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Paxinos» | 4b · cita bajo el test | 2 |
 
+### Wang 2017
+
+Autores: Wang, Borgman, Vertuani y Nilsson  
+Título: *A systematic literature review of time to return to work and narcotic use after lumbar spinal fusion using minimal invasive and open surgery techniques*  
+Publicación: BMC Health Serv Res 17:446  
+DOI: 10.1186/s12913-017-2398-6  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática (36 estudios); PDF aportado por el usuario, leído (2026-10). Vuelta al trabajo tras artrodesis lumbar: 7 semanas mínimamente invasiva frente a 11 abierta (Parker 2013); de 3,6 a 10,9 meses según técnica y serie. Artrodesis lumbar en los tiempos de tejido.
+
+Citada como:
+
+1. Wang 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Artrodesis lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
+
 ### Warden 2007
 
 Publicación: Am J Sports Med 35:427–36  
@@ -10362,6 +10902,23 @@ Citada como:
 | Tobillo y pie | — | Paso `tp_step10` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 | Tobillo y pie | — | Paso `tp_step11` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 | Tobillo y pie | — | Paso `tp_step12` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+
+### Waymack y An 2023
+
+Autores: Waymack y An  
+Título: *Posterior Elbow Dislocation*  
+Publicación: StatPearls [Internet], NBK470574 (act. 2023-07-17)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Férula a 90° de 5 a 10 días y luego movilidad activa; inestables, hasta 3 semanas. Luxación posterior de codo en los tiempos de tejido.
+
+Citada como:
+
+1. Waymack y An 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Luxación posterior de codo (simple)» (Articulación) | cabecera · tiempos de tejido | 1 |
 
 ### Weir 2015
 
@@ -10480,6 +11037,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Wong 2014
+
+Autores: Wong, Côté, Quesnele, Stern y Mior  
+Título: *The course and prognostic factors of symptomatic cervical disc herniation with radiculopathy: a systematic review of the literature*  
+Publicación: Spine J 14(8):1781–1789  
+DOI: 10.1016/j.spinee.2014.02.032  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática con síntesis de la mejor evidencia (3 estudios de bajo riesgo de sesgo); manuscrito aceptado aportado por el usuario, leído (2026-10). Mejoría importante en los primeros 4–6 meses; recuperación completa a los 24–36 meses en ~83 %; recurrencias moderadas en 5 de 23 de una serie. Radiculopatía cervical en los tiempos de tejido.
+
+Citada como:
+
+1. Wong 2014
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Radiculopatía cervical» (Columna) | cabecera · tiempos de tejido | 1 |
 
 ### Wong 2022
 
@@ -10604,6 +11178,23 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 | Lumbar | lu6 · Dolor Lumbar Discogénico | Test «Centralización con movimientos repetidos» («¿Por qué?») | 4b · razonamiento del test | 2 |
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 4 |
+
+### Yuan 2016
+
+Autores: Yuan, Hsu y Lai  
+Título: *Vertebroplasty and balloon kyphoplasty versus conservative treatment for osteoporotic vertebral compression fractures: A meta-analysis*  
+Publicación: Medicine (Baltimore) 95(31):e4491  
+DOI: 10.1097/MD.0000000000004491  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 10 ensayos (1254 pacientes); texto completo leído en PMC (2026-10). Mejor dolor y función que el tratamiento conservador; recoge que frente a la inyección simulada el dolor es igual de 2 semanas a 6 meses (Liu 2013) y la bajada de más de 5 puntos en el postoperatorio inmediato (Gill 2007). Fractura vertebral por compresión en los tiempos de tejido.
+
+Citada como:
+
+1. Yuan 2016
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Vertebral por compresión, sin cirugía» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 1 |
 
 ### Zabaglo 2024
 
