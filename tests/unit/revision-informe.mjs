@@ -196,6 +196,18 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(n && /tiroides/.test(n.mensaje), JSON.stringify(p));
     assert.ok(!ids(limpio + ' No refiere diabetes.').includes('no-se'), 'la diabetes sí se contestó «No»');
   });
+  test('revisión: diagnóstico que «no cumple los criterios» propuesto como hipótesis adicional (ronda 32)', () => {
+    const trans = 'No cumple todos los criterios de un síndrome de dolor regional complejo pero lo dejo anotado para vigilarlo.';
+    const p = rev(limpio + '\n### Hipótesis adicionales a valorar\nPosible síndrome de dolor regional complejo en fase inicial.\n## SEGUIMIENTO FUNCIONAL\nReevaluar.', { transcripcion: trans }).find(x => x.id === 'hipotesis-no-cumple');
+    assert.ok(p && /síndrome de dolor regional complejo/.test(p.mensaje), 'nombre con acentos en el mensaje');
+    assert.ok(!ids(limpio + '\n## CONCLUSIONES\nLos cambios del pie se vigilarán y se comentarán con el cirujano.', { transcripcion: trans }).includes('hipotesis-no-cumple'), 'como hallazgo a vigilar, no salta');
+    assert.ok(!ids(limpio + '\n### Hipótesis adicionales a valorar\nPosible síndrome de dolor regional complejo.').includes('hipotesis-no-cumple'), 'sin el «no cumple» en la consulta, no salta');
+  });
+  test('prompt: lo que «no cumple los criterios» no va en Hipótesis adicionales (ronda 32)', () => {
+    const pr = IN.buildNarrativePrompt({ p: 'X', h: [{ name: 'Debilidad de abductores' }] }, { conAudio: true, dictado: true });
+    assert.ok(pr.includes(IN.AVISO_NO_CUMPLE));
+    assert.ok(pr.includes('no cumple los criterios de un diagnóstico no va aquí'));
+  });
   test('revisión: «sin aumento del edema» es un criterio, no niega la hinchazón (ronda 31)', () => {
     const t = limpio + ' Refiere edema del pie al final del día. La carga se dosifica sin aumento del edema del pie al día siguiente.';
     assert.ok(!ids(t).includes('discrepancia-separada'), 'criterio de carga');
@@ -421,9 +433,10 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-andres-molina-codo.json', 'andres-dictado-1-informe.txt', 'andres-dictado-1-transcripcion.txt', ['nrs-momento', 'reconsiderar-copiado', 'seguimiento-fuera', 'relleno']],
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-1-ficha-breve.txt', 'pablo-dictado-1-transcripcion.txt', ['nrs-momento', 'fisiopatologia']],
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-2-ficha-breve.txt', 'pablo-dictado-2-transcripcion.txt', ['relleno']],
-      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-1-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'confirma', 'atribucion', 'repetido']],
-      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-2-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'diagnostico']],
+      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-1-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'confirma', 'atribucion', 'hipotesis-no-cumple', 'repetido']],
+      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-2-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'hipotesis-no-cumple', 'diagnostico']],
       ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-3-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno']],
+      ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-4-informe.txt', 'rosario-dictado-4-transcripcion.txt', ['lado-otro', 'atribucion', 'hipotesis-no-cumple']],
     ];
     // En este mismo proceso (revisarArchivos(), lo que hace la herramienta),
     // no un `node` por informe; luego se deja `state` como estaba.
