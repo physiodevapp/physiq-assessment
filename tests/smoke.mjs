@@ -594,7 +594,8 @@ async function checkTestsAmpliar(page) {
   return r;
 }
 
-// «Anatomía» de los tests (fase 4b, hombro; docs/anatomia-kenhub.md): bajo la
+// «Anatomía» de los tests (fase 4b, hombro; docs/anatomia-kenhub.md) y de las
+// preguntas de cribado de la fase 2 (dentro de su «¿Por qué?»): en la 4b, bajo la
 // fuente, un enlace a Kenhub por estructura (en español si existe; si no, en
 // inglés marcado «EN») que se abre en pestaña nueva; el
 // panel «Ampliar» repite la lista; cabe a 320 px; en el hub no se ve.
@@ -644,6 +645,30 @@ async function checkAnatomia(page, browser) {
     return a.right <= innerWidth && document.documentElement.scrollWidth <= innerWidth;
   });
   await page.setViewportSize({ width: 1280, height: 900 });
+  // Fase 2 (cribado de hombro): «Anatomía» dentro del «¿Por qué?» de la
+  // pregunta pleurítica (h5) y en su panel «Ampliar»
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await irAFase2(page, 'hombro');
+  await page.click('#tab_h_pulmonar');
+  const h5 = '#panel_h_pulmonar #sq2_h5';
+  await page.click(`${h5} details.razon > summary`);
+  r.fase2 = await page.$$eval(`${h5} .razon-cuerpo .test-anat a`, as => as.map(a => [a.textContent, a.getAttribute('href'), a.target]));
+  r.fase2Visible = await page.isVisible(`${h5} .razon-cuerpo .test-anat`);
+  r.fase2Ok = r.fase2Visible && JSON.stringify(r.fase2) === JSON.stringify([
+    ['Pleura ↗', 'https://www.kenhub.com/es/library/anatomia-es/pleura-es', '_blank'],
+    ['Diafragma ↗', 'https://www.kenhub.com/es/library/anatomia-es/diafragma-es', '_blank'],
+    ['Nervio frénico ↗', 'https://www.kenhub.com/es/library/anatomia-es/nervio-frenico', '_blank'],
+  ]);
+  // Una pregunta sin anatomía (h4, dolor nocturno) no lleva la línea
+  await page.click('#tab_h_cancer');
+  await page.click('#panel_h_cancer #sq2_h4 details.razon > summary');
+  r.fase2Sin = await page.evaluate(() => !document.querySelector('#panel_h_cancer #sq2_h4 .test-anat'));
+  await page.click('#tab_h_pulmonar');
+  await page.click(`${h5} .razon-ampliar`);
+  await page.waitForSelector('#razonContenido .razon-anatomia');
+  r.fase2Panel = await page.$$eval('#razonContenido .razon-anatomia a', as => as.map(a => a.textContent));
+  r.fase2PanelOk = r.fase2Panel.join('|') === 'Pleura ↗|Diafragma ↗|Nervio frénico ↗';
+  await page.keyboard.press('Escape');
   // En el hub, oculto
   const hub = await browser.newPage();
   const frame = await cargarEnHub(hub);
@@ -653,7 +678,7 @@ async function checkAnatomia(page, browser) {
     return getComputedStyle(d).display === 'none';
   });
   await hub.close();
-  r.ok = r.tarjeta && r.orden && r.pestana && r.sigueEn4b && r.panelOk && r.cabe && r.hub;
+  r.ok = r.tarjeta && r.orden && r.pestana && r.sigueEn4b && r.panelOk && r.cabe && r.hub && r.fase2Ok && r.fase2Sin && r.fase2PanelOk;
   return r;
 }
 
@@ -2544,9 +2569,9 @@ const SECCIONES = [
     return r.ok;
   } },
 
-  { id: 'anatomia', titulo: '«Anatomía» de los tests (fase 4b, hombro, Kenhub):', run: async ({ page, browser }) => {
+  { id: 'anatomia', titulo: '«Anatomía» en Kenhub (hombro: tests de la 4b y cribado de la fase 2):', run: async ({ page, browser }) => {
     const r = await checkAnatomia(page, browser);
-    console.log(`  ${r.ok ? '✓' : '✗'} un enlace a Kenhub por estructura bajo la fuente (español o «EN»), en pestaña nueva sin salir de la 4b; el panel «Ampliar» los repite; cabe a 320 px; oculto en el hub`);
+    console.log(`  ${r.ok ? '✓' : '✗'} un enlace a Kenhub por estructura bajo la fuente (español o «EN»), en pestaña nueva sin salir de la 4b; el panel «Ampliar» los repite; cabe a 320 px; en la fase 2, dentro del «¿Por qué?» de la pregunta y en su «Ampliar»; oculto en el hub`);
     if (!r.ok) console.log('\nAnatomía:', JSON.stringify(r));
     return r.ok;
   } },
