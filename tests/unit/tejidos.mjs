@@ -201,7 +201,7 @@ test('tejidos, Fase J 3: grupo «Menisco» propio, con los plazos de Prill 2025 
   const g = T.grupos.find(x => x.id === 'menisco');
   assert.ok(g && g.filas.length, 'el grupo existe y no está vacío');
   // Va como grupo propio, entre ligamento y hueso; nada de menisco bajo ligamento
-  assert.deepEqual(T.grupos.map(x => x.id), ['tendon', 'musculo', 'ligamento', 'menisco', 'hueso']);
+  assert.deepEqual(T.grupos.map(x => x.id), ['tendon', 'musculo', 'ligamento', 'menisco', 'hueso', 'nervio']);
   assert.ok(!T.grupos.find(x => x.id === 'ligamento').filas.flatMap(f => [f, ...(f.subtipos || [])]).some(f => /menisc/i.test(f.id)));
   const f = Object.fromEntries(g.filas.map(x => [x.id, x]));
   // Prill 2025: traumática, 12 semanas → «2–3 m»; degenerativa, 3–6 meses → «3–6 m»;
@@ -328,4 +328,23 @@ test('tejidos, Fase J 7: isquiotibiales por la clasificación BAMIC (Pollock 201
   // Sin barra: 3a, 3b y grado 4 (sin lesiones o con una sola en las fuentes)
   assert.ok(!f.subtipos.some(x => /3a|3b|4/.test(x.nombre)));
   assert.ok(f.subtipos.every(x => x.desde >= f.desde && x.hasta <= f.hasta));
+});
+
+test('tejidos, Fase J 9: nervio periférico, neuropraxia con barra y axonotmesis como nota del grupo (1 mm/día)', () => {
+  const g = T.grupos.find(x => x.id === 'nervio');
+  assert.ok(g && g.tejido === 'Nervio periférico');
+  // Neuropraxia: de días (deportistas, < 1 semana) a 3 meses → «1–3d» a «2–3m»
+  const f = g.filas.find(x => x.id === 'nervio_neurapraxia');
+  assert.deepEqual([f.desde, f.hasta, f.mide, f.gravedad], [0, 4, 'deporte', 'leve']);
+  assert.ok(f.fuentes.includes('Sharma y Munakomi 2026'));
+  // Axonotmesis: sin barra (depende de la distancia), solo la nota del grupo
+  assert.equal(g.filas.length, 1);
+  assert.ok(!g.filas.some(x => /axonotmesis/i.test(x.nombre)));
+  assert.ok(/Axonotmesis/.test(g.nota) && /1 mm al día/.test(g.nota) && /3 meses/.test(g.nota) && /Neurotmesis/.test(g.nota));
+  assert.ok(g.notaFuentes.length && g.notaFuentes.every(k => REFERENCIAS[k]), 'notaFuentes en el registro');
+  const html = tiemposTejidoHTML(T, { filtro: 'nervio' });
+  assert.ok(html.includes('class="tej-grupo-nota"') && html.includes('sin barra'));
+  assert.equal((html.match(/class="tej-barra /g) || []).length, 1);
+  // Grupos sin nota no pintan el párrafo
+  assert.ok(!tiemposTejidoHTML(T, { filtro: 'hueso' }).includes('tej-grupo-nota'));
 });

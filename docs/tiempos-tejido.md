@@ -155,6 +155,20 @@ Sin barra: 3a y 3b (ninguna lesión y una sola en Pollock 2016) y grado 4, rotur
 
 Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Fase J, 9: nervio periférico (2026-10)
+
+Grupo nuevo «Nervio periférico». Decisión del usuario: una barra para la neuropraxia y la axonotmesis como nota, porque su plazo depende de la distancia que tiene que crecer el nervio y una barra fija engañaría. Para eso los grupos admiten `nota` (texto bajo el título del grupo) con sus fuentes en `notaFuentes`, que `tests/referencias.mjs` cuenta como «Nota del grupo». PDF del usuario, leídos enteros: Sharma y Munakomi 2026 («Neurapraxia»), Hall 2026 («Axonotmesis») y Nadi 2026 («Peripheral Nerve Injury»), los tres de StatPearls; Robinson 2022 (Muscle Nerve) y Menorca 2013 (Hand Clin, manuscrito de autor).
+
+| Qué | Cómo | Fuente |
+|---|---|---|
+| Neuropraxia (Sunderland I) | barra «1–3d» a «2–3m», leve, `deporte` (vuelta a la función) | De días a semanas (Nadi); la mitad de las de deporte, menos de 1 semana fuera, y casi todas antes de los 3 meses (Sharma y Munakomi; Robinson, tabla 1) |
+| Axonotmesis (Sunderland II–IV) | nota del grupo, sin barra | Cruza la lesión en 8–15 días y luego ≈1 mm/día, más rápido en aplastamientos, jóvenes y segmentos proximales (Robinson); 0,5–3 mm/día (Nadi); 1–3 y 1–2 (Hall); 2–3 proximal y 1–2 distal (Menorca). Músculo reinervable 1 año (Hall, Menorca) a 18–24 meses (Robinson); la recuperación motora se estanca a los 18–24 meses (Robinson). Sin recuperación a los 3 meses, derivar (Hall, «rule of 3s»; Nadi, 3–4 meses) |
+| Neurotmesis (Sunderland V) | en la misma nota | No se recupera sin cirugía (Nadi, Robinson) |
+
+Ashley y Lui 2023 («Physiology, Nerve», ya en el registro) no se cita: su PDF no estaba en esta sesión y las otras cinco fuentes cubren lo necesario.
+
+Revisado y aprobado por el usuario tal cual (2026-10).
+
 ## Fase J, 8: tendinopatías (2026-10)
 
 La tendinopatía no tiene un plazo de cicatrización. Lo que hay es la duración de los programas de carga, así que los 7 subtipos bajo «Tendinopatía» van con contorno («programa»). Cada uno sale de la fuente de la pauta de su hipótesis, ya leída entera en sesiones anteriores.
