@@ -289,7 +289,7 @@ Diseño, esquema y procedimiento: `docs/anatomia-kenhub.md` (léelo entero antes
 | Cadera | [ ] | [ ] | [ ] | [ ] | |
 | Lumbar | [ ] | [ ] | [ ] | [ ] | |
 | Cervical | [ ] | [ ] | [ ] | [ ] | `columna_cervical` ya existe (hombro h6) |
-| Codo | [x] 63 de 63 tests (no tiene filas de gesto testigo) | [x] 7 de 12 preguntas | [x] abiertas con `curl` (200), inglés y español | [ ] | 18 estructuras nuevas, 10 con versión en español; reutiliza bíceps braquial, húmero, plexo braquial, columna cervical y escalenos. Sin artículo propio, enlazan «Articulación del codo» con `nota`: colateral cubital (12 menciones) y complejo colateral lateral (9). Radio y cúbito comparten artículo en Kenhub («Radio y cúbito»); la cabeza del radio tiene el suyo. La pronación dolorosa enlaza la radiocubital proximal, cuyo artículo trata el ligamento anular |
+| Codo | [x] 63 de 63 tests (no tiene filas de gesto testigo) | [x] 7 de 12 preguntas | [x] abiertas con `curl` (200), inglés y español | [x] (2026-10) | 18 estructuras nuevas, 10 con versión en español; reutiliza bíceps braquial, húmero, plexo braquial, columna cervical y escalenos. Sin artículo propio, enlazan «Articulación del codo» con `nota`: colateral cubital (12 menciones) y complejo colateral lateral (9). Radio y cúbito comparten artículo en Kenhub («Radio y cúbito»); la cabeza del radio tiene el suyo. La pronación dolorosa enlaza la radiocubital proximal, cuyo artículo trata el ligamento anular |
 | Tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
 
 Después, si se ve útil: un enlace a la estructura principal en la cabecera de la hipótesis (4b).

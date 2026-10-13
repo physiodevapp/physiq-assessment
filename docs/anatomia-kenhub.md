@@ -207,3 +207,5 @@ Los 63 tests (codo no tiene filas de «Gesto testigo»).
 | Endocrino | co_e1 síntomas bilaterales → nervio mediano + nervio cubital |
 
 Las 16 URLs inglesas y las 10 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. La española de la arteria subclavia es `artieria-subclavia-anatomia`, con la errata del propio Kenhub. Slugs que no se deducen: `the-radius-and-the-ulna`, `head-of-radius`, `the-ulnar-nerve`, `the-median-nerve` (pero `radial-nerve`), `the-subclavian-artery`.
+
+Revisado por el usuario (2026-10).
