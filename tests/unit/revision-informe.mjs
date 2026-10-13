@@ -196,6 +196,11 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(n && /tiroides/.test(n.mensaje), JSON.stringify(p));
     assert.ok(!ids(limpio + ' No refiere diabetes.').includes('no-se'), 'la diabetes sí se contestó «No»');
   });
+  test('revisión: «sin aumento del edema» es un criterio, no niega la hinchazón (ronda 31)', () => {
+    const t = limpio + ' Refiere edema del pie al final del día. La carga se dosifica sin aumento del edema del pie al día siguiente.';
+    assert.ok(!ids(t).includes('discrepancia-separada'), 'criterio de carga');
+    assert.ok(ids(limpio + ' Refiere edema del pie al final del día. Niega hinchazón.').includes('discrepancia-separada'), 'la negación sigue contando');
+  });
   test('revisión: «No sé» frente a las restricciones del cirujano (ronda 30)', () => {
     const fp = [{ s: 'Cadera', q: '¿Le aparece o le aumenta el dolor al…?', a: 'Caminar: Sí · Cruzar las piernas: No sé' }];
     const cq = { iv: 'Prótesis', fe: '', se: 5, pr: 'Escrito', re: 'Precauciones de luxación: no flexionar más de 90°, no cruzar las piernas', co: [] };
@@ -418,7 +423,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-2-ficha-breve.txt', 'pablo-dictado-2-transcripcion.txt', ['relleno']],
       ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-1-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'confirma', 'atribucion', 'repetido']],
       ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-2-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'diagnostico']],
-      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-3-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno', 'discrepancia-separada']],
+      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-3-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno']],
     ];
     // En este mismo proceso (revisarArchivos(), lo que hace la herramienta),
     // no un `node` por informe; luego se deja `state` como estaba.
@@ -441,6 +446,10 @@ console.log('\nrevisión automática del informe con IA');
       assert.equal(salida, formatearPuntos(revisados[0][1]));
     });
   }
+  test('prompt: aviso del cribado sin copiar la pregunta y EVN sin desarrollar (ronda 31)', () => {
+    assert.match(IN.AVISO_SQ, /No copies ni parafrasees el texto de la pregunta/);
+    assert.match(IN.NOTA_NRS, /sigla sin desarrollar/);
+  });
   test('prompt: las preguntas del cribado en SÍ llevan el aviso de que no todas sus partes son hallazgos (ronda 30)', () => {
     const d = { p: 'X', si: true, sq: ['¿Tiene un dolor continuo, con sudoración o hinchazón?'] };
     for (const pr of [IN.buildNarrativePrompt(d, {}), IN.buildFichaBrevePrompt(d, {})])
