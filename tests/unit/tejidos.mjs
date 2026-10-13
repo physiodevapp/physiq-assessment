@@ -1,7 +1,7 @@
 // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera: data/tejidos.js,
 // lib/tejidos.js, docs/tiempos-tejido.md). Se ejecuta desde tests/unit.js.
 import { assert, leer, test, TIEMPOS_TEJIDO } from './comun.mjs';
-const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles, rangoFase } = await import('../../lib/tejidos.js');
+const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles, rangoFase, buscarFila, infoBarraHTML } = await import('../../lib/tejidos.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 
 console.log('\ntiempos de tejido');
@@ -101,7 +101,7 @@ test('tiempos de tejido: solo consulta — ni payload, ni resúmenes, ni informe
   // En app.js solo lo usa el panel
   const app = leer('app.js');
   const usos = [...app.matchAll(/TIEMPOS_TEJIDO|tiemposTejidoHTML/g)].length;
-  assert.equal(usos, 4, 'import de data.js, import de lib/tejidos.js y la llamada en abrirTiemposTejido()');
+  assert.equal(usos, 5, 'import de data.js, import de lib/tejidos.js, la llamada en abrirTiemposTejido() y la tarjeta de una barra');
   const cuerpo = app.slice(app.indexOf('function buildPhysiQPayload'), app.indexOf('function buildPhysiQPayload') + 6000);
   assert.ok(!/tejid/i.test(cuerpo));
 });
@@ -440,4 +440,30 @@ test('tejidos: gemelo y sóleo por grado (Prakash 2018), recto femoral (Knapik 2
   assert.deepEqual([r.recto_femoral_conservador.desde, r.recto_femoral_cirugia.desde], [4, 5]);
   // 14–20 días → «4–14d» a «3–4s»
   assert.deepEqual([m.aductores.desde, m.aductores.hasta, m.aductores.mide], [1, 2, 'deporte']);
+});
+
+test('tejidos: cada barra es un botón que abre su tarjeta (gravedad, qué mide, plazo), también la de un subtipo', () => {
+  const h = tiemposTejidoHTML(T);
+  const ids = [...h.matchAll(/<button type="button" class="tej-barra[^"]*" data-mide="[^"]*" data-barra="([^"]+)"/g)].map(m => m[1]);
+  assert.equal(ids.length, filas.length + subtipos.length);
+  // Ni `title` (el tooltip del navegador taparía la tarjeta) ni role="img"
+  assert.ok(!/class="tej-barra[^>]*(title=|role="img")/.test(h));
+  for (const id of ids) assert.ok(infoBarraHTML(T, id).includes('tej-info-nombre'), id);
+  assert.equal(infoBarraHTML(T, 'no_existe'), '');
+  // Fila madre: sin línea de madre; gravedad, medida y plazo con las etiquetas de los datos
+  const f = filas.find(x => x.subtipos?.length && x.mide === 'deporte' && x.desde !== x.hasta);
+  const hf = infoBarraHTML(T, f.id);
+  assert.ok(!hf.includes('tej-info-madre'));
+  assert.ok(hf.includes(`tej-ley-muestra tej-${f.gravedad}"`) && hf.includes(`>${T.gravedades[f.gravedad]}<`));
+  assert.ok(hf.includes(`tej-relleno-liso" aria-hidden="true"></span>${T.medidas.deporte.etiqueta}`));
+  assert.ok(hf.includes(`De ${T.columnas[f.desde].etiqueta} a ${T.columnas[f.hasta].etiqueta}`));
+  // Subtipo sin gravedad propia: la de su fila madre, y el nombre de la madre encima
+  const datos = structuredClone(T);
+  const g2 = datos.grupos.find(g => g.id === 'ligamento').filas.find(x => x.id === 'ligamento_g2');
+  g2.subtipos = [{ id: 'x_sub', mide: 'proteccion', nombre: 'Prueba', desde: 2, hasta: 2, fuentes: [] }];
+  assert.deepEqual([buscarFila(datos, 'x_sub').gravedad, buscarFila(datos, 'x_sub').madre.id], [g2.gravedad, 'ligamento_g2']);
+  const hs = infoBarraHTML(datos, 'x_sub');
+  assert.ok(hs.includes(`<div class="tej-info-madre">${g2.nombre}</div>`));
+  assert.ok(hs.includes(`tej-ley-muestra tej-${g2.gravedad} tej-relleno-rayado"`));
+  assert.ok(hs.includes(`>${T.columnas[2].etiqueta}</dd>`.replace(/^>./, c => c.toUpperCase())));
 });
