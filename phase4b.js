@@ -10,6 +10,7 @@ import {
   nombreHipPosq, cirugiaPayload, pautaHipPosq,
 } from './lib/posquirurgico.js';
 import { iaParrafoHTML, ctxTest, attrIA } from './ampliar-ia.js';
+import { ESTRUCTURAS, KENHUB_BASE, KENHUB_BASE_ES } from './data/anatomia.js';
 
 // Hipótesis por id, incluida la posquirúrgica genérica (`pq1`), que no está en
 // HYPOTHESES: su nombre lleva la intervención y su PROM es el de la región.
@@ -279,6 +280,42 @@ export function fuenteCorta(fuente) {
   return fuente.split(' · ').map(c => c.split(' (')[0].trim()).join(' · ');
 }
 
+// «Anatomía» de un test de la 4b o de una pregunta de cribado de la fase 2
+// (docs/anatomia-kenhub.md): las estructuras de su `anatomia`, enlazadas a su
+// artículo de Kenhub en una pestaña nueva:
+// en español si Kenhub lo tiene y, si no, en inglés (marcado «EN»).
+// Solo el nombre de la estructura va en la URL, nunca nada del paciente; si
+// hay cuenta de Kenhub con la sesión iniciada en el navegador, Kenhub
+// enseña el contenido completo. Oculto en el hub (CSS, como «Ampliar con IA»).
+export function enlacesAnatomia(item) {
+  return (item.anatomia || []).map(id => ESTRUCTURAS[id]).filter(Boolean)
+    .map(e => ({
+      nombre: e.nombre, nota: e.nota || '',
+      url: e.kenhubEs ? KENHUB_BASE_ES + e.kenhubEs : KENHUB_BASE + e.kenhub,
+      ingles: !e.kenhubEs,
+    }));
+}
+function enlaceAnatomiaHTML(e) {
+  const title = `Abrir en Kenhub${e.ingles ? ' (sin versión en español)' : ''}${e.nota ? ` · ${e.nota}` : ''}`;
+  const idioma = e.ingles ? ' <span class="anat-idioma">EN</span>' : '';
+  return `<a class="anat-enlace" href="${e.url}" target="_blank" rel="noopener noreferrer" title="${title}">${e.nombre}${idioma} ↗</a>`;
+}
+// Línea «ANATOMÍA a ↗ · b ↗» (tarjeta del test; «¿Por qué?» de la fase 2)
+export function anatomiaLineaHTML(item) {
+  const enlaces = enlacesAnatomia(item);
+  return enlaces.length
+    ? `<div class="test-anat"><span class="test-anat-etq">Anatomía</span> ${enlaces.map(enlaceAnatomiaHTML).join('<span class="test-anat-sep"> · </span>')}</div>`
+    : '';
+}
+// Sección «Anatomía (Kenhub)» del panel «Ampliar»
+export function anatomiaPanelHTML(item) {
+  const enlaces = enlacesAnatomia(item);
+  return enlaces.length
+    ? `<div class="razon-seccion razon-anatomia"><div class="razon-etq">Anatomía (Kenhub)</div>
+      <ul>${enlaces.map(e => `<li>${enlaceAnatomiaHTML(e)}</li>`).join('')}</ul></div>`
+    : '';
+}
+
 export function buildTestItem(hId, test, idx) {
   const hyp = HYPOTHESES[hId];
   const lr = lrEfectiva(test);
@@ -312,6 +349,7 @@ export function buildTestItem(hId, test, idx) {
     <div class="test-criterion">${test.criterio}</div>
     ${porque}
     ${fuente}
+    ${anatomiaLineaHTML(test)}
     <div class="test-result-btns">
       <button class="test-result-btn pos ${savedResult==='pos'?'selected':''}" onclick="setTestResult('${hId}',${idx},'pos',this)">✓ Positivo</button>
       <button class="test-result-btn neg ${savedResult==='neg'?'selected':''}" onclick="setTestResult('${hId}',${idx},'neg',this)">✗ Negativo</button>
@@ -371,6 +409,7 @@ export async function abrirRazonamientoTest(btn, hId, idx) {
     ${r.porque ? `<div class="razon-seccion"><div class="razon-etq">Por qué</div><p>${r.porque}${iaParrafoHTML()}</p></div>` : ''}
     <div class="razon-seccion"><div class="razon-etq">Cuánto pesa</div><p>${pesoTest(hyp, test, idx)}</p></div>
     ${parrafos ? `<div class="razon-seccion"><div class="razon-etq">En detalle</div>${parrafos}</div>` : ''}
+    ${anatomiaPanelHTML(test)}
     ${citas.length ? `<div class="razon-seccion razon-fuentes"><div class="razon-etq">Fuentes</div>
       <ul>${citas.map(razonCitaHTML).join('')}</ul></div>` : ''}`,
   });
