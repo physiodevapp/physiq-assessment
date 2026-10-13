@@ -44,13 +44,15 @@ test('anatomía: enlaza la versión en español si existe y, si no, la inglesa m
   // Sin versión en español en Kenhub (comprobado con el hreflang del artículo
   // inglés, 2026-10). Hombro: la bursa y los dos ligamentos; rodilla: meniscos,
   // LCA, patelofemoral, pata de ganso, tibioperonea, peroneo común y dos venas;
-  // codo: radiocubital proximal y cuatro músculos del antebrazo.
+  // codo: radiocubital proximal y cuatro músculos del antebrazo; cervical:
+  // atlantoaxial, semiespinoso de la cabeza y suboccipitales.
   assert.deepEqual(Object.keys(ESTRUCTURAS).filter(id => !ESTRUCTURAS[id].kenhubEs), [
     'bursa_subacromial', 'ligamento_coracoacromial', 'ligamento_coracohumeral',
     'menisco_medial', 'menisco_lateral', 'lca', 'art_patelofemoral', 'pata_ganso', 'art_tibioperonea',
     'nervio_peroneo_comun', 'venas_miembro_inferior', 'vena_poplitea',
     'art_radiocubital_proximal', 'extensor_radial_corto_carpo', 'flexor_radial_carpo',
     'flexor_largo_pulgar', 'flexor_profundo_dedos',
+    'art_atlantoaxial', 'semiespinoso_cabeza', 'suboccipitales',
   ]);
   const html = anatomiaLineaHTML({ anatomia: ['supraespinoso', 'bursa_subacromial'] });
   assert.match(html, />Supraespinoso ↗<\/a>/);
@@ -112,6 +114,18 @@ test('anatomía: codo, todos los tests (no tiene filas de gesto testigo); cribad
   // Raynaud bilateral y su evolución, miastenia, dolor constante, debilidad proximal
   const sinQ = PREGUNTAS.filter(p => p.region === 'codo' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['co4a', 'co4a_prog', 'co_e2b', 'co2', 'co_e2a']);
+});
+
+test('anatomía: cervical, sin anatomía solo las filas genéricas (①/②, pronóstico, tabla de cefaleas); cribado sin ella en 4 preguntas', () => {
+  // ① gesto testigo / ② medida objetiva, factores pronósticos del latigazo (riesgo,
+  // hiperalerta, hiperalgesia al frío), tabla orientativa de cefaleas, fatiga funcional
+  assert.deepEqual(TODOS.filter(x => x.h.region === 'cervical' && !x.t.anatomia).map(x => `${x.hId}/${x.i}`),
+    ['ce3/5', 'ce4/4', 'ce5/1', 'ce5/2', 'ce5/3', 'ce5/5', 'ce11/1', 'ce12/1', 'ce12/2', 'ce13/2', 'ce14/0']);
+  const con = PREG_CON.filter(p => p.region === 'cervical').map(p => p.q.id);
+  assert.equal(con.length, 16);
+  // Dolor nocturno, peso, cefalea de cambio brusco (arterias cerebrales), artritis inflamatoria de otras articulaciones
+  const sinQ = PREGUNTAS.filter(p => p.region === 'cervical' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  assert.deepEqual(sinQ, ['cv1', 'cv5', 'cv_ar4', 'cv_in2']);
 });
 
 test('fase 2: «Anatomía» dentro del «¿Por qué?» de la pregunta, solo si la tiene, con sus enlaces', () => {
