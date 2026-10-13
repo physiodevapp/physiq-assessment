@@ -167,3 +167,45 @@ Revisado por el usuario (2026-10).
 Las 29 URLs inglesas y las 19 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `the-knee-joint`, `the-quadriceps-femoris-muscle`, `patellar-tendon` (no `patellar-ligament`), `iliotibial-band`, `gluteus-medius-and-minimus-muscles`, `tibiofibular-joints`, `common-fibular-nerve`.
 
 Revisado por el usuario (2026-10).
+
+## Codo
+
+18 estructuras nuevas, 10 con versión en español; reutiliza bíceps braquial, húmero, plexo braquial, columna cervical y escalenos de hombro. Sin versión en español: radiocubital proximal, extensor radial corto del carpo, flexor radial del carpo, flexor largo del pulgar y flexor profundo de los dedos. Sin artículo propio, y enlazados a «Articulación del codo» con `nota`, porque el artículo los trata: el ligamento colateral cubital (12 menciones) y el complejo colateral lateral (9). Kenhub trata radio y cúbito en un solo artículo («Radio y cúbito»), que enlaza el olécranon; la cabeza del radio tiene artículo propio. El ligamento anular no lo tiene, pero lo trata el de la articulación radiocubital proximal (y el del codo). La bursa olecraniana solo se nombra una vez: la pregunta de infección enlaza la articulación del codo.
+
+### Tests de la fase 4b
+
+Los 63 tests (codo no tiene filas de «Gesto testigo»).
+
+| Hipótesis | Tests → estructuras |
+|---|---|
+| co1 Epicondilalgia lateral | Cozen, Thomsen → extensor radial corto del carpo + húmero (epicóndilo) · prensión → extensor radial corto del carpo |
+| co2 Epicondilalgia medial | los cuatro → pronador redondo + flexor radial del carpo |
+| co3 Rigidez | movilidad activa y pasiva → art. codo |
+| co4 Colateral cubital | los seis → colateral cubital |
+| co5 Colateral lateral (IRPL) | los cinco → complejo colateral lateral |
+| co6 Radiohumeral / plica | los seis → cabeza del radio + art. codo |
+| co7 Rotura distal del bíceps | los tres → bíceps braquial |
+| co8 Túnel cubital | todos → nervio cubital; la subluxación, además, húmero |
+| co9 Túnel radial / interóseo posterior | los cinco → nervio radial + supinador |
+| co10 Tríceps | los cuatro → tríceps braquial |
+| co11 Pinzamiento posterior | los cuatro → radio y cúbito (olécranon) + art. codo |
+| co12 Fractura de estrés del olécranon | los tres → radio y cúbito |
+| co13 Síndrome del pronador / interóseo anterior | palpación y pronación resistida → pronador redondo + nervio mediano · debilidades → nervio mediano + flexor largo del pulgar + flexor profundo · neurodinámica → nervio mediano |
+| co14 Pronación dolorosa | los dos → cabeza del radio + art. radiocubital proximal (ligamento anular) |
+| co15 Codo de la liga infantil | los dos → húmero (epicóndilo medial) + colateral cubital |
+| co16 Panner / osteocondritis | los dos → húmero (capítulo) + art. codo |
+
+### Cribado de la fase 2
+
+7 de las 12 preguntas de sus sistemas propios. Sin campo, por no tener una estructura concreta: co4a (Raynaud) y co4a_prog (su evolución), co_e2b (miastenia), co2 (dolor constante y nocturno) y co_e2a (debilidad proximal).
+
+| Sistema | Pregunta → estructuras |
+|---|---|
+| Traumático | co_t1 prueba de extensión del codo → art. codo + cabeza del radio · co_t2 deformidad o mano fría → art. codo + arteria braquial + nervio mediano |
+| Vascular / neurológica | co4a_uni Raynaud en una mano → arteria subclavia + escalenos (desfiladero) · co4b zona dormida → nervio cubital · co3 debilidad progresiva → plexo braquial + columna cervical |
+| Infecciosa | co1 fiebre y calor → art. codo |
+| Endocrino | co_e1 síntomas bilaterales → nervio mediano + nervio cubital |
+
+Las 16 URLs inglesas y las 10 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. La española de la arteria subclavia es `artieria-subclavia-anatomia`, con la errata del propio Kenhub. Slugs que no se deducen: `the-radius-and-the-ulna`, `head-of-radius`, `the-ulnar-nerve`, `the-median-nerve` (pero `radial-nerve`), `the-subclavian-artery`.
+
+Revisado por el usuario (2026-10).
