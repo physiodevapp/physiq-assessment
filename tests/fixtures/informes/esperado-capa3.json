@@ -959,6 +959,59 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "rosario-dictado-2-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera.json",
+      "transcripcion": "rosario-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario2-cribado-pregunta",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Otra vez las preguntas del cribado en SÍ leídas enteras como hallazgos: dolor continuo y desproporcionado, que no cede en reposo (generado antes de la ronda 30)",
+          "fragmentos": [
+            "que no cede en reposo tras infección reciente"
+          ]
+        },
+        {
+          "id": "rosario2-rigidez-arbol",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "«Rigidez matutina de menos de una hora» sacada de la pregunta del paso ya tratado (antes de la ronda 30)",
+          "fragmentos": [
+            "Presenta rigidez matutina que se resuelve en menos de una hora"
+          ]
+        },
+        {
+          "id": "rosario2-perfil-arbol",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "El paso del perfil degenerativo de la artrosis tratada contado como prueba clínica (antes de la ronda 30)",
+          "fragmentos": [
+            "El perfil clínico previo a la cirugía fue compatible con artrosis de cadera"
+          ]
+        },
+        {
+          "id": "rosario2-sdrc-fase",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "El SDRC vuelve a «Hipótesis adicionales» con una «fase inicial» inventada; el fisioterapeuta solo lo deja para vigilar (D, segunda vez)",
+          "fragmentos": [
+            "un síndrome de dolor regional complejo en fase inicial"
+          ]
+        },
+        {
+          "id": "rosario2-escala-visual",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "El NRS vuelve a ser «escala visual numérica»",
+          "fragmentos": [
+            "escala visual numérica"
+          ]
+        }
+      ]
     }
   ]
 }
