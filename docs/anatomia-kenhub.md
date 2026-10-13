@@ -297,3 +297,5 @@ Revisado por el usuario (2026-10).
 | Inflamatoria | ca_in1 artritis séptica, ca_in3 cirugía o infiltración previa → articulación de la cadera · ca_in2 artritis reumatoide o espondilitis → articulación de la cadera + sacroilíaca |
 
 Las 26 URLs inglesas y las 18 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `posterior-thigh-muscles`, `the-hip-adductors`, `the-sciatic-nerve`, `the-ureters`, `the-prostate-gland`, `the-testes`, `greater-trochanter-of-femur`, `musculo-piriforme-piramidal-de-la-pelvis`.
+
+Revisado por el usuario (2026-10).
