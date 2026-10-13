@@ -1028,6 +1028,50 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "rosario-dictado-5-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera-2.json",
+      "transcripcion": "rosario-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario5-plan-miedo",
+          "tipo": "plan",
+          "nivel": "medio",
+          "descripcion": "Añade al plan abordar el miedo a la luxación con educación y refuerzo de la confianza; el fisioterapeuta solo repasó las precauciones para levantarse",
+          "fragmentos": [
+            "Se abordará el miedo a la luxación mediante educación sobre las precauciones"
+          ]
+        },
+        {
+          "id": "rosario5-evolucion-esperada",
+          "tipo": "atribucion",
+          "nivel": "medio",
+          "descripcion": "«Evolución favorable dentro de lo esperado para la quinta semana»: la regla `atribucion` no ve esta forma",
+          "fragmentos": [
+            "con evolución favorable dentro de lo esperado para la quinta semana posquirúrgica"
+          ]
+        },
+        {
+          "id": "rosario5-confirmada",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«Queda confirmada» la debilidad de abductores con dos tests sin LR",
+          "fragmentos": [
+            "La debilidad de abductores de cadera queda confirmada"
+          ]
+        },
+        {
+          "id": "rosario5-infeccion-condicion",
+          "tipo": "repetido",
+          "nivel": "medio",
+          "descripcion": "La infección y el estado de la herida en Condición de Salud, que solo lleva el diagnóstico que motivó la cirugía, y otra vez en Intervención Quirúrgica",
+          "fragmentos": [
+            "En la segunda semana posquirúrgica presentó una infección superficial de la herida que fue tratada con antibiótico oral por su médico de cabecera"
+          ]
+        }
+      ]
     }
   ]
 }
