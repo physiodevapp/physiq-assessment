@@ -2499,6 +2499,12 @@ async function checkBandaFormulario(page) {
     await irA(pos.dentro);
     const dentro = await bandas();
     const contSummary = await page.textContent('#fpCont_comun');
+    // Responder sin hacer scroll: el contador de la banda se actualiza igual
+    // (el.click() no desplaza la página, a diferencia de page.click)
+    await page.evaluate(() => [...document.querySelectorAll('#fpBody_comun button')]
+      .find(b => { const r = b.getBoundingClientRect(); return r.top > 200 && r.bottom < innerHeight; })?.click());
+    const respondido = await bandas();
+    const contRespondido = await page.textContent('#fpCont_comun');
     await irA(pos.fuera);
     const fuera = await bandas();
     await irA(pos.dentro);
@@ -2547,8 +2553,9 @@ async function checkBandaFormulario(page) {
     const enF2 = await bandas();
     await page.evaluate(() => goToPhase(1));
     const trasFase = await bandas();
-    res[k] = { antes, dentro, contSummary, fuera, trasVolver, cerrado, trasSistema, dos, vioFp, vioSis, nombreRegion, enF2, trasFase };
+    res[k] = { antes, dentro, contSummary, respondido, contRespondido, fuera, trasVolver, cerrado, trasSistema, dos, vioFp, vioSis, nombreRegion, enF2, trasFase };
     res[`${k}_ok`] = !antes.fp && dentro.fp && /General/.test(dentro.nombre) && dentro.cont === contSummary
+      && respondido.fp && contRespondido !== contSummary && respondido.cont === contRespondido
       && !fuera.fp && res[`${k}_volver`] && !trasVolver.fp && !cerrado.fp
       && !trasSistema.sis && !dos && vioFp && (vioSis || ancho > 768) && /Lumbar/.test(nombreRegion) && enF2.fp && !trasFase.fp && !trasFase.sis;
   }
@@ -2672,7 +2679,7 @@ const SECCIONES = [
 
   { id: 'banda-formulario', titulo: 'Bandas de contexto del formulario previo y del cribado:', run: async ({ page }) => {
     const r = await checkBandaFormulario(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} formulario previo (fases 1 y 2, 390 y 1280 px): la banda aparece con la cabecera fuera, con nombre y contador, se va al pasar el formulario, al cerrarlo y al cambiar de fase; «↑ volver» lleva a la cabecera; formulario regional y sistema abierto nunca a la vez, y la del sistema se va al dejarlo atrás; cabe a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} formulario previo (fases 1 y 2, 390 y 1280 px): la banda aparece con la cabecera fuera, con nombre y contador (que se actualiza al responder sin hacer scroll), se va al pasar el formulario, al cerrarlo y al cambiar de fase; «↑ volver» lleva a la cabecera; formulario regional y sistema abierto nunca a la vez, y la del sistema se va al dejarlo atrás; cabe a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
