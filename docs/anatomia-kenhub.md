@@ -165,3 +165,5 @@ Revisado por el usuario (2026-10).
 | Pediátrico | ro_p1 dolor sin traumatismo (explorar la cadera) → art. cadera + nervio obturador |
 
 Las 29 URLs inglesas y las 19 españolas se abrieron con `curl` (2026-10): todas dan 200, sin redirección, con el título de la estructura. Slugs que no se deducen: `the-knee-joint`, `the-quadriceps-femoris-muscle`, `patellar-tendon` (no `patellar-ligament`), `iliotibial-band`, `gluteus-medius-and-minimus-muscles`, `tibiofibular-joints`, `common-fibular-nerve`.
+
+Revisado por el usuario (2026-10).
