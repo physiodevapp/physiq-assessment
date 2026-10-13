@@ -153,6 +153,8 @@ La escala de la fila «Rotura grado I–III» no encaja con la de las fuentes: l
 
 Sin barra: 3a y 3b (ninguna lesión y una sola en Pollock 2016) y grado 4, rotura completa (ninguna). Hollabaugh 2023 atribuye a Macdonald 2019 «hasta 3 semanas» en «a», «4 a 8» en «b» y «2 a 4 meses» en «c», pero esas cifras no están en el artículo de Macdonald, así que no se usan. Los datos son de atletas de élite con RM en la primera semana, y la nota de la fila lo dice. Beattie 2023 (metaanálisis b frente a c) no se ha conseguido y no se cita.
 
+Revisado y aprobado por el usuario tal cual (2026-10).
+
 ## Fase J, 8: tendinopatías (2026-10)
 
 La tendinopatía no tiene un plazo de cicatrización. Lo que hay es la duración de los programas de carga, así que los 7 subtipos bajo «Tendinopatía» van con contorno («programa»). Cada uno sale de la fuente de la pauta de su hipótesis, ya leída entera en sesiones anteriores.
