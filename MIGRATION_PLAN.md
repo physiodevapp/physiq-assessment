@@ -300,3 +300,16 @@ Diseño, esquema y procedimiento: `docs/anatomia-kenhub.md` (léelo entero antes
 | Tobillo y pie | [x] 86 de 123 tests (todos salvo los 35 gesto testigo y dos filas genéricas) | [x] 11 de 16 preguntas | [x] abiertas con `curl` (200), inglés y español | [x] (2026-10) | 27 estructuras nuevas, 12 con versión en español; lo que no tiene artículo propio (seno del tarso, fascia plantar, túnel del tarso, Lisfranc, sesamoideos) enlaza el que lo trata. |
 
 Después, si se ve útil: un enlace a la estructura principal en la cabecera de la hipótesis (4b).
+
+---
+
+## Fase L — Fase 6 «Plan de tratamiento»
+
+Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo entero antes de empezar). Abierta en 2026-10, a propuesta del usuario. Una sesión de 50 minutos a tres niveles de carga (A/B/C, según la irritabilidad) y un plan de un mes (A: 1 sesión/semana; B: 2), con una parte sin IA (también en el hub) y una capa de IA opcional (solo standalone) que lee los datos y la transcripción, nunca el texto del informe IA. Sin plan con una derivación sin resolver. Revisión clínica del usuario antes de `main`.
+
+- [x] L1 — Documento de diseño
+- [ ] L1 — Decisiones pendientes del documento (fuente de los modificadores por irritabilidad, hipótesis sin pauta, volumen propuesto por la IA, payload, número de hipótesis)
+- [ ] L2 — Parte sin IA en lumbar (piloto)
+- [ ] L3 — Parte sin IA en las 7 regiones
+- [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)
+- [ ] L5 — Revisión automática con planes reales en los fixtures
