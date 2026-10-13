@@ -905,15 +905,6 @@
           ]
         },
         {
-          "id": "rosario1-rigidez-arbol",
-          "tipo": "no-respaldado",
-          "nivel": "medio",
-          "descripcion": "«Rigidez matutina de menos de una hora» sacada de la pregunta del árbol de un paso ya tratado (perfil degenerativo); el formulario solo dice «rigidez: Sí»",
-          "fragmentos": [
-            "Refiere rigidez por la mañana que se le pasa en menos de una hora"
-          ]
-        },
-        {
           "id": "rosario1-movilidad-inventada",
           "tipo": "no-respaldado",
           "nivel": "medio",
@@ -976,15 +967,6 @@
           ]
         },
         {
-          "id": "rosario2-rigidez-arbol",
-          "tipo": "no-respaldado",
-          "nivel": "medio",
-          "descripcion": "«Rigidez matutina de menos de una hora» sacada de la pregunta del paso ya tratado (antes de la ronda 30)",
-          "fragmentos": [
-            "Presenta rigidez matutina que se resuelve en menos de una hora"
-          ]
-        },
-        {
           "id": "rosario2-perfil-arbol",
           "tipo": "lectura",
           "nivel": "medio",
@@ -1009,6 +991,41 @@
           "descripcion": "El NRS vuelve a ser «escala visual numérica»",
           "fragmentos": [
             "escala visual numérica"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "rosario-dictado-3-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera.json",
+      "transcripcion": "rosario-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario3-cribado-pregunta",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Con AVISO_SQ (ronda 30) sigue copiando el texto de las preguntas en SÍ como lo que «refiere» la paciente, con el dolor que «no cede en reposo» que nadie dijo",
+          "fragmentos": [
+            "refiere dolor nuevo tras la cirugía de cadera que no cede en reposo"
+          ]
+        },
+        {
+          "id": "rosario3-faddir-contradice",
+          "tipo": "contradice",
+          "nivel": "alto",
+          "descripcion": "Da el origen intraarticular por improbable por la «ausencia de positividad» de unas pruebas que dice no haber hecho: el paso del árbol no tiene opción «no explorado» y obliga a contestar «FADDIR y flexión-RI negativos»",
+          "fragmentos": [
+            "La ausencia de positividad en FADDIR y flexión-rotación interna hace improbable el origen intraarticular"
+          ]
+        },
+        {
+          "id": "rosario3-escala-visual",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«EVN» del prompt desarrollada como «escala visual numérica» (tercera vez de tres; es escala verbal numérica)",
+          "fragmentos": [
+            "escala visual numérica (EVN)"
           ]
         }
       ]
