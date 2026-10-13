@@ -377,3 +377,13 @@ test('tejidos: grupo «Articulación» — luxación anterior de hombro (protecc
   assert.deepEqual([f.capsulitis_adhesiva.desde, f.capsulitis_adhesiva.hasta, f.capsulitis_adhesiva.mide], [4, 7, 'evolucion']);
   assert.equal(T.medidas.evolucion.relleno, 'degradado');
 });
+
+test('tejidos: prótesis de rodilla y de cadera en «Articulación», como vuelta al deporte (Magan 2021, Jette 2020, Telang 2024)', () => {
+  const f = Object.fromEntries(T.grupos.find(x => x.id === 'articulacion').filas.map(x => [x.id, x]));
+  // Magan 2021: 70 % a los 6 meses, 84 % al año → «3–6m» a «6m–1a»
+  assert.deepEqual([f.protesis_rodilla.desde, f.protesis_rodilla.hasta, f.protesis_rodilla.mide], [5, 6, 'deporte']);
+  assert.deepEqual(f.protesis_rodilla.fuentes, ['Magan 2021', 'Jette 2020']);
+  // Telang 2024: la mitad en 3 meses, la mayoría en 6 → «2–3m» a «3–6m»
+  assert.deepEqual([f.protesis_cadera.desde, f.protesis_cadera.hasta, f.protesis_cadera.mide], [4, 5, 'deporte']);
+  assert.deepEqual(f.protesis_cadera.fuentes, ['Telang 2024']);
+});
