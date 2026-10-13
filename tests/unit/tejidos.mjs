@@ -306,3 +306,26 @@ test('tejidos, Fase J 8: tendinopatías como duración del programa de carga, co
   // Lopes 2025 solo tiene leído el resumen: no se cita aquí
   assert.ok(!madre.subtipos.some(x => x.fuentes.includes('Lopes 2025')));
 });
+
+test('tejidos, Fase J 7: isquiotibiales por la clasificación BAMIC (Pollock 2016, Hollabaugh 2023, Macdonald 2019)', () => {
+  const f = filas.find(x => x.id === 'isquios_bamic');
+  assert.ok(f && T.grupos.find(g => g.id === 'musculo').filas.includes(f), 'la fila está en músculo');
+  assert.ok(f.fuentes.includes('Pollock 2014'), 'Pollock 2014 define la escala');
+  const st = Object.fromEntries(f.subtipos.map(x => [x.id, x]));
+  const col = id => [st[id].desde, st[id].hasta];
+  // Días medios hasta el entrenamiento completo, Pollock 2016 y Pollock 2022 (en Hollabaugh 2023):
+  // 0 = 9–10 → «4–14d»; 1 = 12–18 → 1–2; 2a/2b = 19–25 → «3–4s»; 2c = 27–35 → 2–3; 3c = 51,5–84 → 3–4
+  assert.deepEqual(col('isquios_g0'), [1, 1]);
+  assert.deepEqual(col('isquios_g1'), [1, 2]);
+  assert.deepEqual(col('isquios_g2ab'), [2, 2]);
+  assert.deepEqual(col('isquios_g2c'), [2, 3]);
+  assert.deepEqual(col('isquios_g3c'), [3, 4]);
+  // Vuelta al entrenamiento completo: deporte; las «c» llevan la recurrencia de Pollock 2016
+  for (const x of [f, ...f.subtipos]) assert.equal(x.mide, 'deporte', x.id);
+  for (const id of ['isquios_g2c', 'isquios_g3c']) assert.ok(/Recayó/.test(st[id].nota), id);
+  for (const x of f.subtipos) assert.ok(x.fuentes[0] === 'Pollock 2016' && x.nota, x.id);
+  assert.equal(st.isquios_g3c.gravedad, 'grave');
+  // Sin barra: 3a, 3b y grado 4 (sin lesiones o con una sola en las fuentes)
+  assert.ok(!f.subtipos.some(x => /3a|3b|4/.test(x.nombre)));
+  assert.ok(f.subtipos.every(x => x.desde >= f.desde && x.hasta <= f.hasta));
+});

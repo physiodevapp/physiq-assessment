@@ -139,6 +139,22 @@ Revisado y aprobado por el usuario tal cual (2026-10), incluido no pintar la inm
 
 Revisado y aprobado por el usuario tal cual (2026-10).
 
+## Fase J, 7: isquiotibiales por la clasificación BAMIC (2026-10)
+
+La escala de la fila «Rotura grado I–III» no encaja con la de las fuentes: las lesiones de isquiotibiales se gradúan con la British Athletics Muscle Injury Classification (BAMIC), que va del 0 al 4 por la RM y añade la localización («a» miofascial, «b» unión miotendinosa, «c» dentro del tendón). Por eso no son subtipos de los grados I–III, sino una fila nueva en «Músculo», «Isquiotibiales (clasificación BAMIC)», con sus propios subtipos. Todos son `deporte` (días hasta volver al entrenamiento completo). PDF del usuario, leídos enteros: Pollock 2014 (la clasificación, sin plazos), Pollock 2016 (tabla 3), Hollabaugh 2023 (revisión sistemática; su tabla 1 recoge los días de Pollock 2022, que no se ha leído en el original) y Macdonald 2019 (tabla 3, plazos aproximados del programa de British Athletics).
+
+| Subtipo | Barra | Días medios hasta el entrenamiento completo |
+|---|---|---|
+| Grado 0 (RM normal) | «4–14d» | 10 (Pollock 2016); 9 (Pollock 2022) |
+| Grado 1a/1b | «4–14d» a «3–4s» | 18 y 18; 12 y 17; programa de una 1a, días 5–10 |
+| Grado 2a/2b | «3–4s» | 25 y 21; 19 y 19; programa de una 2b, días 14–28 |
+| Grado 2c | «3–4s» a «5–8s» | 27; 35. Recaída del 63 % (Pollock 2016) |
+| Grado 3c | «5–8s» a «2–3m» | 84 (40–128); 51,5; programa de una 3c, semanas 6–9. Recaída del 57 % |
+
+Sin barra: 3a y 3b (ninguna lesión y una sola en Pollock 2016) y grado 4, rotura completa (ninguna). Hollabaugh 2023 atribuye a Macdonald 2019 «hasta 3 semanas» en «a», «4 a 8» en «b» y «2 a 4 meses» en «c», pero esas cifras no están en el artículo de Macdonald, así que no se usan. Los datos son de atletas de élite con RM en la primera semana, y la nota de la fila lo dice. Beattie 2023 (metaanálisis b frente a c) no se ha conseguido y no se cita.
+
+Revisado y aprobado por el usuario tal cual (2026-10).
+
 ## Fase J, 8: tendinopatías (2026-10)
 
 La tendinopatía no tiene un plazo de cicatrización. Lo que hay es la duración de los programas de carga, así que los 7 subtipos bajo «Tendinopatía» van con contorno («programa»). Cada uno sale de la fuente de la pauta de su hipótesis, ya leída entera en sesiones anteriores.
@@ -163,7 +179,7 @@ Decisión del usuario. Las fuentes dan plazos de cosas distintas, y antes solo l
 
 | `mide` | Relleno | Dónde |
 |---|---|---|
-| `deporte` (vuelta al deporte o a la función) | liso | esguince de tobillo, LCM grado I, LCA reconstruido, meniscectomía, sutura, tobillo estable, calcáneo intraarticular, meseta sin cirugía, toda la fractura de estrés |
+| `deporte` (vuelta al deporte o a la función) | liso | esguince de tobillo, LCM grado I, LCA reconstruido, meniscectomía, sutura, tobillo estable, calcáneo intraarticular, meseta sin cirugía, toda la fractura de estrés, isquiotibiales (BAMIC) |
 | `proteccion` (inmovilización o descarga) | rayado | el resto de fracturas por localización |
 | `programa` (duración del programa) | contorno | LCA sin cirugía, rotura de menisco traumática y lesión degenerativa |
 | `biologia` | liso + etiqueta «biología» | rotura de tendón (Wu 2017) |
