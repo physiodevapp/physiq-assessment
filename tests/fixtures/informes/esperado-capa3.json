@@ -1029,6 +1029,32 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "rosario-dictado-4-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera-2.json",
+      "transcripcion": "rosario-dictado-4-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario4-sdrc-hipotesis",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "El SDRC vuelve a «Hipótesis adicionales» con una «fase inicial» inventada, aunque el fisioterapeuta dijo que no cumple los criterios y lo deja para vigilar (D, tercera vez de cuatro)",
+          "fragmentos": [
+            "Posible síndrome de dolor regional complejo en fase inicial"
+          ]
+        },
+        {
+          "id": "rosario4-dolor-continuo",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Con la ronda 31 ya nombra de qué trata cada pregunta, pero le queda «dolor continuo» de la pregunta del SDRC, que la paciente no refirió",
+          "fragmentos": [
+            "refiere dolor continuo con cambios de coloración"
+          ]
+        }
+      ]
     }
   ]
 }
