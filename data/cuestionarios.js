@@ -44,6 +44,9 @@ export const GRUPOS_CUESTIONARIO = [
 
 const FRECUENCIA_2_SEMANAS = '0 = ningún día · 1 = varios días · 2 = más de la mitad de los días · 3 = casi todos los días';
 
+// FAAM: ítems de vida diaria que la validación española (Cervera-Garvi 2017) retiró
+const RETIRADOS_FAAM_SP = [2, 7, 13, 14, 18, 20];
+
 export const CUESTIONARIOS = [
   {
     id: 'phq2',
@@ -648,7 +651,7 @@ export const CUESTIONARIOS = [
     titulo: 'Capacidad funcional de pie y tobillo',
     grupo: 'tobillo_pie',
     validacionEs: 'Cervera-Garvi 2017 (J Foot Ankle Res 10:39; FAAM-Sp)',
-    instrucciones: 'Última semana. Toca el número de la casilla marcada; N/A si la actividad está limitada por algo que no es el pie o el tobillo. Las dos preguntas finales (% de función y valoración global) no puntúan.',
+    instrucciones: 'Última semana. Toca el número de la casilla marcada; N/A si la actividad está limitada por algo que no es el pie o el tobillo. Vida diaria: solo los 15 ítems validados en España; los ítems 2, 7, 13, 14, 18 y 20 de la hoja no puntúan y no aparecen. Las preguntas finales (% de función y valoración global) tampoco puntúan.',
     leyenda: '4 = sin dificultad · 3 = ligera · 2 = moderada · 1 = extrema · 0 = imposible',
     escala: { min: 0, max: 4 },
     items: [
@@ -657,20 +660,22 @@ export const CUESTIONARIOS = [
         'Ponerse de puntillas', 'Empezar a andar', 'Andar 5 minutos o menos', 'Andar unos 10 minutos', 'Andar 15 minutos o más',
         'Tareas domésticas', 'Actividades de la vida diaria', 'Cuidado personal', 'Trabajo ligero o moderado (de pie, caminando)',
         'Trabajo duro (empujar, trepar, cargar)', 'Actividades de ocio']
-        .map((t, i) => ({ n: i + 1, seccion: 'Actividades de la vida diaria', t, na: true })),
+        .map((t, i) => ({ n: i + 1, seccion: 'Actividades de la vida diaria', t, na: true }))
+        // FAAM-Sp: los 15 ítems validados (decisión del usuario, 2026-10)
+        .filter(it => !RETIRADOS_FAAM_SP.includes(it.n)),
       ...['Correr', 'Saltar', 'Aterrizar tras un salto', 'Arrancar y frenar en seco', 'Movimientos laterales',
         'Actividades de bajo impacto', 'Practicar con su técnica normal', 'Practicar su deporte el tiempo que quiera']
         .map((t, i) => ({ n: i + 22, etiquetaN: String(i + 1), seccion: 'Deporte', t, na: true })),
     ],
     total: null,
     subescalas: [
-      { id: 'avd', nombre: 'Vida diaria', items: Array.from({ length: 21 }, (_, i) => i + 1), calculo: 'porcentaje', formato: 'pct' },
+      { id: 'avd', nombre: 'Vida diaria', items: Array.from({ length: 21 }, (_, i) => i + 1).filter(n => !RETIRADOS_FAAM_SP.includes(n)), calculo: 'porcentaje', formato: 'pct' },
       { id: 'deporte', nombre: 'Deporte', items: [22, 23, 24, 25, 26, 27, 28, 29], calculo: 'porcentaje', formato: 'pct' },
     ],
     sinInterpretacion: 'Sin bandas de interpretación publicadas: sirve para comparar al paciente consigo mismo en el seguimiento',
-    interpretacionTexto: 'Porcentaje por subescala: puntos ÷ (4 × ítems contestados) × 100; 100 % = sin dificultad. Las N/A no cuentan. Martin 2005: cambio clínicamente importante de 8 puntos en vida diaria y 9 en deporte.',
+    interpretacionTexto: 'Porcentaje por subescala: puntos ÷ (4 × ítems contestados) × 100; 100 % = sin dificultad. Las N/A no cuentan.',
     fuente: 'Cervera-Garvi 2017 (versión española) · Martin 2005',
-    nota: 'La validación española se quedó con 15 ítems en vida diaria (retiró el 2, 7, 13, 14, 18 y 20) y no da fórmula para esa versión: aquí se puntúan los 21 de la hoja con la fórmula original. Los puntos intermedios (3, 2, 1) se deducen de la escala 0–4.',
+    nota: 'La validación española se quedó con 15 ítems en vida diaria (sin el 2, 7, 13, 14, 18 y 20) y no da fórmula para esa versión: se aplica la de la FAAM original a esos 15 (máximo 60). Por eso las diferencias clínicamente importantes de Martin 2005 (8 y 9 puntos, calculadas con 21 ítems) no se dan aquí. Los puntos intermedios (3, 2, 1) se deducen de la escala 0–4.',
   },
   {
     id: 'lefs',

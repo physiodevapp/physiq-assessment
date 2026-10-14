@@ -285,11 +285,14 @@ test('PRTEE: dolor (0–50) + función ÷ 2 (0–50)', () => {
 });
 
 test('FAAM: porcentaje por subescala sin las N/A; LEFS: suma 0–80', () => {
+  // Vida diaria: los 15 ítems de la FAAM-Sp (sin el 2, 7, 13, 14, 18 y 20)
+  assert.deepEqual(def('faam').subescalas[0].items, [1, 3, 4, 5, 6, 8, 9, 10, 11, 12, 15, 16, 17, 19, 21]);
+  assert.equal(def('faam').items.length, 15 + 8);
   const r = todosN('faam', 4);
-  r[1] = 0; r[2] = L.NA;          // vida diaria: 19 ítems a 4 y uno a 0 → 76/80
+  r[1] = 0; r[3] = L.NA;          // 13 ítems a 4 y uno a 0 → 52/56
   const p = L.puntuar(def('faam'), r);
   assert.equal(p.total, null);
-  assert.deepEqual(p.subescalas.map(s => s.valor), [95, 100]);
+  assert.deepEqual(p.subescalas.map(s => s.valor), [52 / 56 * 100, 100]);
   assert.equal(L.puntuar(def('lefs'), todosN('lefs', 4)).total, 80);
   assert.equal(L.totalTexto(def('lefs'), L.puntuar(def('lefs'), todosN('lefs', 2))), '40/80');
 });

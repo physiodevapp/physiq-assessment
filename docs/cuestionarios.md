@@ -194,7 +194,7 @@ Verificación de las reglas del piloto (2026-10; el proxy solo dejó leer PMC y 
 
 Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados en castellano de España. Especificación verificada por fuente; lo que no se pudo leer consta en la `nota` de cada uno.
 
-| Cuestionario | Puntuación | Decisión o duda pendiente de revisión clínica |
+| Cuestionario | Puntuación | Decisión (aceptadas por el usuario, 2026-10) o duda pendiente |
 |---|---|---|
 | ODI v1.0 | % = suma ÷ (5 × contestados) × 100; bandas de Fairbank | Etiquetas de las bandas traducidas (no se leyó la versión española); N/A en cualquier ítem, sin límite publicado |
 | Roland-Morris | Frases marcadas, 0–24 | — |
@@ -209,7 +209,7 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 | KOOS | 100 − media × 25 por subescala, sin total | Q4 de la hoja con opciones en orden dudoso: puntúa la posición |
 | Kujala | Suma 0–100 con puntos por opción | Puntos y orden de la versión inglesa; falta comprobar con la hoja española |
 | VISA-P | Puntos del apéndice de la VISA-P-SP | — |
-| FAAM | % por subescala sin N/A | La validación española se quedó con 15 ítems de vida diaria y no da fórmula; se puntúan los 21 con la fórmula original |
+| FAAM | % por subescala sin N/A | **Decidido (usuario, 2026-10):** vida diaria con los 15 ítems validados en España (sin el 2, 7, 13, 14, 18 y 20), con la fórmula original aplicada a esos 15 |
 | LEFS | Suma 0–80 | Etiquetas de la hoja de EE. UU.; no se leyó la versión española |
 
 Pendientes de añadir (puntos por respuesta sin verificar; hacen falta las hojas oficiales en español o los artículos): **VISA-A** (VISA-A-S, Hernández-Sánchez 2018: puntos del ítem 1 y de las ramas B y C del ítem 8), **CAIT** (Hiller 2006 / CAIT-Sv: puntos de cada opción) e **IdFAI** (Simon 2012 / IdFAI-Sp: pesos de cada respuesta).
