@@ -34,6 +34,12 @@ export const GRUPOS_CUESTIONARIO = [
   { id: 'autoeficacia', nombre: 'Autoeficacia' },
   { id: 'riesgo', nombre: 'Riesgo de cronicidad' },
   { id: 'neuropatico', nombre: 'Dolor neuropático' },
+  // Regionales: los PROM que recomiendan las hipótesis (badge de las fases 4b y 5)
+  { id: 'columna', nombre: 'Columna', regiones: ['lumbar', 'cervical'] },
+  { id: 'hombro_codo', nombre: 'Hombro y codo', regiones: ['hombro', 'codo'] },
+  { id: 'cadera_rodilla', nombre: 'Cadera y rodilla', regiones: ['cadera', 'rodilla'] },
+  { id: 'tobillo_pie', nombre: 'Tobillo y pie', regiones: ['tobillo_pie'] },
+  { id: 'miembro_inferior', nombre: 'Miembro inferior', regiones: ['cadera', 'rodilla', 'tobillo_pie'] },
 ];
 
 const FRECUENCIA_2_SEMANAS = '0 = ningún día · 1 = varios días · 2 = más de la mitad de los días · 3 = casi todos los días';

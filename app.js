@@ -3422,7 +3422,7 @@ function _pintarCuestionarios({ foco } = {}) {
     cuerpo.innerHTML = formularioCuestionarioHTML(def, _respuestasCuest(def.id));
   } else {
     _cuestActivo = null;
-    cuerpo.innerHTML = listaCuestionariosHTML(CUESTIONARIOS, GRUPOS_CUESTIONARIO, state.cuestionarios || {});
+    cuerpo.innerHTML = listaCuestionariosHTML(CUESTIONARIOS, GRUPOS_CUESTIONARIO, state.cuestionarios || {}, { region: state.region });
   }
   cuerpo.scrollTop = 0;
   if (foco) cuerpo.querySelector(foco)?.focus({ preventScroll: true });
@@ -3436,7 +3436,7 @@ function _tocarCuest(item, valorTxt) {
   const it = def?.items.find(x => String(x.n) === item);
   if (!it) return;
   const tipo = it.tipo || 'escala';
-  const valor = tipo === 'sino' ? valorTxt : Number(valorTxt);
+  const valor = tipo === 'sino' || valorTxt === 'na' ? valorTxt : Number(valorTxt);
   const reg = state.cuestionarios[def.id] ||= { r: {} };
   const actual = reg.r[it.n];
   if (tipo === 'marcas') {
@@ -3460,6 +3460,24 @@ function _tocarCuest(item, valorTxt) {
   saveSession();
 }
 
+// Ítems `numero` (mm de una escala visual): se guarda al teclear; vacío o
+// fuera de rango no cuenta. Solo se repinta el resultado, no el ítem, para no
+// perder el foco del campo.
+document.getElementById('cuestCuerpo')?.addEventListener('input', e => {
+  const campo = e.target instanceof HTMLInputElement && e.target.classList.contains('cuest-num') ? e.target : null;
+  const def = campo && _defCuest(_cuestActivo);
+  const n = campo?.closest('.cuest-item')?.dataset.item;
+  if (!def || !n) return;
+  const reg = state.cuestionarios[def.id] ||= { r: {} };
+  const v = campo.value === '' ? NaN : Number(campo.value);
+  if (Number.isFinite(v)) reg.r[n] = v; else delete reg.r[n];
+  if (!Object.keys(reg.r).length) delete state.cuestionarios[def.id];
+  const r = _respuestasCuest(def.id);
+  document.getElementById('cuestResultado').innerHTML = resultadoCuestionarioHTML(def, r);
+  const borrar = document.querySelector('#cuestCuerpo [data-cuest-borrar]');
+  if (borrar) borrar.disabled = !Object.keys(r).length;
+  saveSession();
+});
 document.getElementById('cuestCuerpo')?.addEventListener('click', e => {
   const t = e.target instanceof Element ? e.target : null;
   if (!t) return;

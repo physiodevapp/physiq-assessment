@@ -3105,7 +3105,12 @@ body.posquirurgico .solo-posq { display: block; }
 .cuest-ops { display: grid; gap: 6px; }
 /* Escala: una fila si cabe; 0–10 en dos filas en móvil (botones de 40 px como mínimo) */
 .cuest-ops-escala { grid-template-columns: repeat(var(--cuest-n), minmax(0, 1fr)); }
-@media (max-width: 520px) { .cuest-ops-escala[style*="--cuest-n:11"] { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .cuest-ops-escala.cuest-ops-largo { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.cuest-ops-numero { display: flex; align-items: center; gap: 10px; }
+.cuest-num { width: 6.5em; min-height: 44px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border2); background: var(--surface2); color: var(--text); font-family: 'DM Mono', monospace; font-size: 1rem; }
+.cuest-num:focus { outline: none; border-color: var(--accent); }
+.cuest-num-rango { font-size: 0.75rem; color: var(--text3); }
+.cuest-ops-numero .cuest-op { min-width: 64px; }
 .cuest-ops-sino { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .cuest-ops-texto { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 .cuest-op {
