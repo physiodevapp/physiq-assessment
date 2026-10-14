@@ -312,7 +312,7 @@ Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo enter
 - [x] L1 — Leídas Petersen 2021 (SINSS) y Barakatt 2009 (×2), de acceso libre; notas y propuesta en `docs/plan-tratamiento.md`, «Fuentes leídas»
 - [x] L1 — Leídos Zusman 1998 y Silbernagel 2007 (PDF del usuario); decisiones 11–15 aceptadas por el usuario (2026-10)
 - [x] Leído Maitland 7.ª ed., cap. 6 (pp. 97–170); decisiones 16–19 aceptadas por el usuario
-- [x] Leídos Maitland 7.ª ed., caps. 8 y 9 (pp. 183–228, salvo la 224, que falta); propuestas 20–24 pendientes del usuario
+- [x] Leídos Maitland 7.ª ed. (2005), caps. 8 y 9 (pp. 183–228, la 224 en imagen); decisiones 20–24 aceptadas por el usuario. Fuentes de L1 completas: L2 puede empezar
 - [ ] L2 — Parte sin IA en lumbar (piloto)
 - [ ] L3 — Parte sin IA en las 7 regiones
 - [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)

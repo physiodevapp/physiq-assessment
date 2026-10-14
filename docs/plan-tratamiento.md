@@ -1,6 +1,6 @@
 # Fase 6 «Plan de tratamiento» — diseño
 
-Estado: **diseño cerrado, sin implementar** (2026-10): las 15 decisiones están tomadas y las fuentes de la decisión 6 leídas; L2 puede empezar. Nada de este documento está en el código todavía. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
+Estado: **diseño cerrado, sin implementar** (2026-10): las 24 decisiones están tomadas y sus fuentes leídas; L2 puede empezar. Nada de este documento está en el código todavía. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
 
 Qué es: una fase nueva tras los resultados (fase 5) que propone **una sesión de 50 minutos a tres niveles de carga** y **un plan de un mes** en dos variantes: **A**, 1 sesión por semana, y **B**, 2 sesiones por semana. Tiene una parte sin IA, construida con lo que la app ya sabe, y una capa opcional con IA que la detalla.
 
@@ -160,7 +160,7 @@ Leídas enteras desde PubMed Central (página del artículo; la API de texto com
 18. **Bloque de reevaluación** de cada sesión: signo comparable (`signoComparable`) y la actividad que refiere el paciente como control; en la sesión 2, la reacción a la primera («D más 1»). Con una hipótesis radicular, exploración neurológica al empezar cada sesión, y deterioro → médico (p. 136).
 19. **Movilización neural vigorosa**: ≥ 2–3 días entre sesiones y reevaluar a las 24 h (p. 149). Encaja con el plan B (2 sesiones/semana) si se espacian.
 
-**Maitland's Vertebral Manipulation, 7.ª ed., cap. 8 «Selection of techniques», pp. 183–212, y cap. 9 «Application of techniques», pp. 213–228** (cap. 9 con contribución de B. C. Edwards; PDF aportado por el usuario, leídos enteros salvo **la p. 224, que falta en el PDF**). Libro de texto, opinión experta, centrado en la **movilización pasiva y la manipulación vertebral**: no es una guía de dosificación de ejercicio.
+**Maitland's Vertebral Manipulation, 7.ª ed., cap. 8 «Selection of techniques», pp. 183–212, y cap. 9 «Application of techniques», pp. 213–228** (cap. 9 con contribución de B. C. Edwards; PDF aportado por el usuario, y la p. 224, que faltaba, en imagen; leídos enteros). Libro de texto, opinión experta, centrado en la **movilización pasiva y la manipulación vertebral**: no es una guía de dosificación de ejercicio.
 - Lo que guía la técnica son los síntomas y signos con la historia del trastorno, no el nombre del diagnóstico (pp. 196–197). Para elegir hay que saber el diagnóstico, el pronóstico, la estabilidad actual, cómo afecta al paciente, si el dolor es «a lo largo del recorrido» o «al final del recorrido», si es severo o «de molestia», reciente o crónico, y las contraindicaciones (pp. 211–212).
 - **Dos formas de aplicar la técnica** (p. 203):
   - Cuando el dolor manda (limita pronto o aparece a lo largo del recorrido) y la exacerbación debe evitarse: posición sin molestias, técnica cómoda, la mayor amplitud posible sin molestia, lenta y suave, y **corta al principio, hasta conocer la respuesta a las 48 h**. Grados I y II; al bajar el dolor, grado III (pp. 203, 218).
@@ -174,9 +174,10 @@ Leídas enteras desde PubMed Central (página del artículo; la API de texto com
 - Al principio, pedir al paciente que no cambie lo demás (medicación, actividades), para saber qué efecto tiene el tratamiento (p. 219).
 - Manipulación: casi nunca al principio, nunca con una articulación muy dolorosa ni a través de un espasmo protector (pp. 201, 220, 222). Sin manipulación forzada con osteoporosis, artritis reumatoide, signos medulares, signos de dos raíces cervicales o alteraciones de vejiga, intestino o sensibilidad perineal; la movilización suave sí puede ser adecuada (pp. 222–223). Los cambios neurológicos no impiden movilizar con suavidad desde el principio (p. 223).
 - Inestabilidad o hipermovilidad: una vez sin síntomas, ejercicios de estabilización; si la movilización agrava el dolor, sustituirla por ellos (p. 225).
+- Página 224: si un paciente derivado tiene en realidad otra causa (la página empieza con la hemorragia subaracnoidea o el tumor cerebeloso como primer signo), devolverlo al médico en cuanto el dolor y los signos no mejoren con la movilización. **Vértigo**: vigilancia estrecha; puede tener origen cervical, normalmente solo cuando acompaña a una cefalea que la movilización alivia; probar con movimientos exploratorios antes de usar una técnica cervical, y **no usar ninguna técnica que produzca mareo**. **Hipermovilidad**: dos sentidos (laxitud ligamentosa general, o uno o más segmentos excesivamente móviles respecto a los vecinos); hipermóvil no es lo mismo que inestable (laxitud de los ligamentos de soporte que permite un movimiento anormal); una articulación hipermóvil dolorosa puede movilizarse, y sería la primera elección, pero no manipularse con fuerza; al tratar una articulación rígida vecina, evitar forzar la hipermóvil.
 - Registro de cada sesión (tabla 9.3, p. 226): lo que refiere el paciente comparado con la sesión anterior (con sus palabras), cambios en los signos marcados, plan con su porqué, técnica, grado, nivel, repeticiones y efecto durante su aplicación, efecto después, y el plan para la siguiente. En los de progreso lento, comparar a la semana en vez de a las 24 h.
 
-### Propuestas tras los caps. 8 y 9 (pendientes de la decisión del usuario)
+### Decisiones 20–24 (usuario, 2026-10; aceptadas como se propusieron)
 20. **Los niveles A/B/C se describen con los dos modos de Maitland, solo para la parte de terapia manual** de la pauta: A = el dolor manda (grados I–II, corta, 48 h); B = progresar hacia una molestia controlada (grado III); C = la rigidez manda (grado IV, final del recorrido), solo con irritabilidad baja y si la rigidez domina. Para el ejercicio, Maitland no dice nada: ahí siguen la pauta y la decisión 14.
 21. **Sesión 1 más ligera** que las siguientes y aviso al paciente de un posible aumento temporal de síntomas, en el plan y en el programa domiciliario (p. 219).
 22. **Reglas de seguir o cambiar en el plan del mes**: no cambiar una técnica antes de 2 sesiones si se espera mejora lenta; con mejora ≥ 75 %, no subir la dosis; sin mejora marcada con movilización en 4–5 días, replantear; sin cambio en 10–14 días, pausa y reevaluación, o devolver al médico si no sigue los patrones habituales (pp. 214, 216, 219–220, 223). Con dolor radicular severo, avisar de que la mejoría puede tardar 7–10 días (p. 217).
@@ -186,9 +187,11 @@ Leídas enteras desde PubMed Central (página del artículo; la API de texto com
 ### Decisiones 11–15 (usuario, 2026-10)
 Las cinco recomendaciones tras la lectura se aceptaron y están arriba, en «Decisiones tomadas».
 
+### Referencia completa
+Maitland GD; Hengeveld E, Banks K, English K (eds.). *Maitland's Vertebral Manipulation*. 7.ª ed. Edimburgo: Elsevier Butterworth-Heinemann; 2005. ISBN 978-0-7506-8806-2 (portada y página de créditos aportadas por el usuario). Clave prevista en `data/referencias.js`: `'Maitland 2005'`, que se añadirá cuando `data/` la cite (el test rechaza entradas que nada cita), igual que Petersen 2021, Barakatt 2009, Zusman 1998 y Silbernagel 2007.
+
 ### Pendiente de leer
-- *Maitland's Vertebral Manipulation*, 7.ª ed., p. 224 (falta en el PDF del cap. 9: vértigo e hipermovilidad).
-- Confirmar autores y año de la 7.ª ed. en la portada antes de registrarla en `data/referencias.js`.
+- Nada para L2. Con una hipótesis de mareo cervicogénico (`ce13`), la regla «no usar ninguna técnica que produzca mareo» (p. 224) se añade al plan.
 
 ## Datos
 
