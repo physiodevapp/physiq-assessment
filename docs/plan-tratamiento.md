@@ -1,6 +1,6 @@
 # Fase 6 «Plan de tratamiento» — diseño
 
-Estado: **diseño cerrado, sin implementar** (2026-10): las 24 decisiones están tomadas y sus fuentes leídas; L2 puede empezar. Nada de este documento está en el código todavía. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
+Estado: **L2 implementado, pendiente de revisión clínica** (2026-10): la parte sin IA, solo en lumbar (piloto), como fase 6 opcional de la navegación. Código: `plan.js` (interfaz), `lib/plan-tratamiento.js` (funciones puras, con tests), `data/plan-tratamiento.js` (textos y fuentes). Detalles de implementación que no estaban en las decisiones: la irritabilidad de la fase 6 se calcula solo con reposo, movimiento y tolerancia de la matriz de la fase 3 (suma 0–6: 0–2 baja, 3–5 moderada, 6 alta) y se puede cambiar; sin NRS, gravedad alta; la hipótesis radicular se detecta por su nombre; la fase 6 nunca entra en el payload, las Notas ni el Informe, y a physiq-report se le anuncia como mucho la fase 5. L3–L5 sin empezar. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
 
 Qué es: una fase nueva tras los resultados (fase 5) que propone **una sesión de 50 minutos a tres niveles de carga** y **un plan de un mes** en dos variantes: **A**, 1 sesión por semana, y **B**, 2 sesiones por semana. Tiene una parte sin IA, construida con lo que la app ya sabe, y una capa opcional con IA que la detalla.
 
