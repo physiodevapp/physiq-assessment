@@ -171,10 +171,10 @@ test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento p
     'R Falta de · pq_tep', 'R Dolor desproporcionado · pq_compart', 'R Dolor quemante, · pq_nervio', 'R Tras una · pq_nervio_col',
     'A Dolor continuo · pq_sdrc', 'A Yeso o · pq_sdrc+pq_compart']);
   assert.deepEqual(resumen(sis('transversal_endocrino')), ['R Síndrome del · propio', 'R Signos de · propio', 'R Confusión, letargo · propio',
-    'R Signos de · propio', 'R Aparición de · propio', 'R Nódulos palpables · propio',
+    'R Signos de · propio', 'R Xantomas: pápulas · propio', 'R Nódulos palpables · propio',
     'A Debilidad muscular · end_1', 'A Periartritis o · propio', 'A Cambios inexplicables · end_3', 'A Polidipsia y · end_2']);
   assert.deepEqual(resumen(sis('transversal_hematologico')), ['R Sangrado espontáneo, · hem_1', 'R Heces negras/alquitranadas · hem_4',
-    'R Episodios nuevos · propio', 'R Hemoptisis (toser · hem_4', 'R Fiebre alta, · hem_3+hem_5',
+    'R Episodios nuevos · hem_6', 'R Hemoptisis (toser · hem_4', 'R Fiebre alta, · hem_3+hem_5',
     'A Palidez en · propio', 'A Uñas cóncavas · propio', 'A Disnea rápida, · hem_2', 'A Uso crónico · propio']);
 });
 

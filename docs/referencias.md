@@ -1151,7 +1151,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Bandera roja «Episodios nuevos de dolor muscular o articular en pacientes con hemofilia» · Hematológico | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `hem_6` · Hematológico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `r4` · Oncológico / Hematológico | 2 · razonamiento del cribado | 1 |
 
 ### Bachmann 2003
@@ -1392,7 +1392,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Bandera roja «Aparición de xantomas eruptivos en tendones extensores» · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Bandera roja «Xantomas: pápulas amarillentas en las caras de extensión (eruptivos) o nódulos en los tendones extensores o el Aquiles (tendinosos)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 
 ### Beloor Suresh y Asuncion 2023
 
@@ -3317,8 +3317,8 @@ Citada como:
 34. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213 y 218–221.
 35. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213–215, 220 y 221.
 36. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 217–218 y 221.
-37. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 219–221; cap. 8, p. 306.
-38. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 218–221.
+37. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 218–221.
+38. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 219–221; cap. 8, p. 306.
 39. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213–215 y 220–221.
 40. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 214 y 220–221.
 41. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213 y 220; cap. 8, pp. 306 y 314–317.
@@ -3422,14 +3422,14 @@ Citada como:
 | Todas (sistemas comunes) | — | Bandera roja «Signos de tormenta tiroidea: taquicardia, hipertermia, agitación» · Endocrino / Metabólico | 2 · razonamiento del cribado | 28 |
 | Todas (sistemas comunes) | — | Bandera roja «Confusión, letargo o sudoración profusa sin ejercicio en diabéticos (riesgo hipoglucemia/cetoacidosis)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 29 |
 | Todas (sistemas comunes) | — | Bandera roja «Signos de depleción de potasio por diuréticos: arritmias, calambres» · Endocrino / Metabólico | 2 · razonamiento del cribado | 30 |
-| Todas (sistemas comunes) | — | Bandera roja «Aparición de xantomas eruptivos en tendones extensores» · Endocrino / Metabólico | 2 · razonamiento del cribado | 31 |
+| Todas (sistemas comunes) | — | Bandera roja «Xantomas: pápulas amarillentas en las caras de extensión (eruptivos) o nódulos en los tendones extensores o el Aquiles (tendinosos)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 31 |
 | Todas (sistemas comunes) | — | Bandera roja «Nódulos palpables supraclaviculares o fiebre inexplicable en pacientes con corticosteroides» · Endocrino / Metabólico | 2 · razonamiento del cribado | 32 |
 | Todas (sistemas comunes) | — | Bandera amarilla «Periartritis o tendinitis calcificante bilateral de hombro» · Endocrino / Metabólico | 2 · razonamiento del cribado | 33 |
 | Todas (sistemas comunes) | — | Pregunta `hem_1` · Hematológico | 2 · razonamiento del cribado | 34 |
 | Todas (sistemas comunes) | — | Pregunta `hem_2` · Hematológico | 2 · razonamiento del cribado | 35 |
 | Todas (sistemas comunes) | — | Pregunta `hem_3` · Hematológico | 2 · razonamiento del cribado | 36 |
-| Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 37 |
-| Todas (sistemas comunes) | — | Bandera roja «Episodios nuevos de dolor muscular o articular en pacientes con hemofilia» · Hematológico | 2 · razonamiento del cribado | 38 |
+| Todas (sistemas comunes) | — | Pregunta `hem_6` · Hematológico | 2 · razonamiento del cribado | 37 |
+| Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 38 |
 | Todas (sistemas comunes) | — | Bandera amarilla «Palidez en pliegues palmares, mucosas o lechos ungueales» · Hematológico | 2 · razonamiento del cribado | 39 |
 | Todas (sistemas comunes) | — | Bandera amarilla «Uñas cóncavas o quebradizas (coiloniquia — alerta de anemia ferropénica)» · Hematológico | 2 · razonamiento del cribado | 40 |
 | Todas (sistemas comunes) | — | Bandera amarilla «Uso crónico de AINEs (predispone a sangrado GI y anemia)» · Hematológico | 2 · razonamiento del cribado | 41 |
@@ -5104,7 +5104,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Bandera roja «Episodios nuevos de dolor muscular o articular en pacientes con hemofilia» · Hematológico | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `hem_6` · Hematológico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `r4` · Oncológico / Hematológico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 
@@ -11376,7 +11376,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Bandera roja «Episodios nuevos de dolor muscular o articular en pacientes con hemofilia» · Hematológico | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `hem_6` · Hematológico | 2 · razonamiento del cribado | 1 |
 
 ### Wheeler y DeCastro 2023
 

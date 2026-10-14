@@ -74,9 +74,11 @@ test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra
   });
 });
 
-test('sistemas compartidos (endocrino, hematológico): solo la sepsis neutropénica (hem_5) es urgencia; las infecciones de repetición (hem_3) no', () => {
+test('sistemas compartidos (endocrino, hematológico): solo la sepsis neutropénica (hem_5) y el sangrado en la hemofilia (hem_6) son urgencia; las infecciones de repetición (hem_3) y el sangrado fácil (hem_1) no', () => {
   const qs = [SIS_ENDOCRINO, SIS_HEMATOLOGICO].flatMap(s => s.preguntas);
-  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['hem_5']);
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['hem_5', 'hem_6']);
+  assert.match(qs.find(q => q.id === 'hem_6').urgencia, /hemofilia.*hoy.*urgencias/);
+  assert.equal(SIS_HEMATOLOGICO.banderasRojas.find(b => /hemofilia/.test(b.texto) && /dolor/.test(b.texto)).pregunta, 'hem_6');
   assert.match(qs.find(q => q.id === 'hem_5').urgencia, /sepsis neutropénica.*urgencias hoy/);
   // La bandera de fiebre en la leucopenia tiene una pregunta que dispara la urgencia
   const f = SIS_HEMATOLOGICO.banderasRojas.find(b => /leucopenia/.test(b.texto || b));
