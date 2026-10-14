@@ -69,7 +69,7 @@ Se inventarían una vez: lo que se escriba para ellos vale en todas las regiones
 ## Hallazgos fuera del «¿Por qué?»
 
 1. **Embarazo ectópico sin pregunta urgente en lumbar.** Resuelto (decisión del usuario, 2026-10): `l_e8` en lumbar y `ca_u5` en cadera, con `urgencia` y razonamiento de NICE NG126 (1.4.1–1.4.8, releída en la sesión). Están separadas de `l_e3`/`ca_u4` (dolor ligado a la regla), que siguen sin urgencia porque un SÍ por una endometriosis conocida no justifica ir a urgencias. La bandera de lumbar enlaza `l_e8`.
-2. **Banderas posquirúrgicas sin filtrar por región.** Resuelto: llevan `regiones`, igual que sus preguntas, y `sistemasActivos()` filtra preguntas y banderas. En lumbar y cervical ya no salen la compartimental, la nerviosa, la del SDRC ni la del yeso. **Pendiente de decisión del usuario:** ¿una variante de `pq_nervio` para columna (déficit neurológico nuevo tras cirugía de columna)?
+2. **Banderas posquirúrgicas sin filtrar por región.** Resuelto: llevan `regiones`, igual que sus preguntas, y `sistemasActivos()` filtra preguntas y banderas. En lumbar y cervical ya no salen la compartimental, la nerviosa, la del SDRC ni la del yeso. Para la columna, `pq_nervio_col` (lumbar y cervical, con urgencia) y su bandera, decisión del usuario (2026-10): tras cirugía de columna el déficit nuevo es de raíz o médula (hematoma epidural), no de un nervio periférico.
 3. **AINE crónicos** (l_gi y hematológico): sin pregunta nueva (recomendación aceptada). Cuando se escriba su razonamiento, que explique que dan más peso a las heces negras o a la anemia.
 
 ## Diseño (implementado, 2026-10)
@@ -96,13 +96,13 @@ Una bandera es un texto o un objeto:
 - **Razonamiento propio** (fuentes leídas en la sesión: Finucane 2020, documento completo del marco IFOMPT; Downie 2013, texto completo en PMC; NICE NG12 y NG65 en nice.org.uk):
   - Rojas: pérdida de peso inexplicada (l_cancer), fractura patológica, masa testicular, pérdida de peso o saciedad precoz (l_gi), uveítis o psoriasis, signos neurológicos con fiebre.
   - Amarillas: sin mejoría tras 1 mes (Downie), historia familiar de espondilitis anquilosante (NG65).
-- **Pendientes de fuente:** percusión costovertebral (StatPearls «Acute Pyelonephritis», Belyayeva 2024, o Goodman, en PDF) y síndrome de Leriche (Goodman, cap. vascular; el capítulo de StatPearls está archivado). NCBI Bookshelf sigue respondiendo con una comprobación anti-bots.
+- **Pendientes de fuente:** percusión costovertebral (Goodman cap. 10, urogenital; StatPearls «Acute Pyelonephritis», Belyayeva 2024, NBK519537) y síndrome de Leriche (Goodman cap. 6, cardiovascular; StatPearls «Aortoiliac Occlusive Disease», Kimyaghalam 2024, NBK559086, y «Peripheral Arterial Disease», Zemaitis 2026, NBK430745; el capítulo «Leriche Syndrome» está archivado y no se usa). NCBI Bookshelf sigue respondiendo con una comprobación anti-bots.
 - **Amarillas sin razonamiento:** dolor de espalda y abdominal al mismo nivel, AINE crónicos, dolor modificado por la ingesta, osteoporosis o corticoides, factores de riesgo cardiovascular, inmunosupresión.
-- **Revisión clínica del usuario:** pendiente, antes de `main`.
+- **Revisión clínica del usuario:** hecha (2026-10). Falta la de `pq_nervio_col`, añadida después.
 
 ## Siguientes pasos
 
-1. Revisión clínica de lumbar por el usuario.
+1. Lumbar: percusión costovertebral y Leriche cuando lleguen los PDF.
 2. Sistemas compartidos (posquirúrgico, endocrino, hematológico): razonamiento propio de sus banderas sin pregunta, una vez para todas las regiones.
 3. Resto de regiones, una por sesión: inventario, enlaces y razonamiento propio de las rojas.
 4. Amarillas, al final o nunca si no aportan.

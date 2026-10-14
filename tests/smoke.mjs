@@ -233,7 +233,7 @@ async function walkRegionPosq(page, region) {
     preguntas: [...document.querySelectorAll('#panel_transversal_posquirurgico .sq2')].map(el => el.id.replace('sq2_', '')),
   }));
   const esperadas = ['lumbar', 'cervical'].includes(region)
-    ? ['pq_herida', 'pq_tvp', 'pq_tep']
+    ? ['pq_herida', 'pq_tvp', 'pq_tep', 'pq_nervio_col']
     : ['pq_herida', ['hombro', 'codo'].includes(region) ? 'pq_tvp_ms' : 'pq_tvp', 'pq_tep',
       ...(['codo', 'rodilla', 'tobillo_pie'].includes(region) ? ['pq_compart'] : []), 'pq_sdrc', 'pq_nervio'];
   const cribadoOk = cribado.primera === 'tab_transversal_posquirurgico' && JSON.stringify(cribado.preguntas) === JSON.stringify(esperadas);
@@ -829,7 +829,11 @@ async function checkBanderas(browser) {
     return f.length === 1 && !f[0].querySelector('.flag-porque');
   });
   await page.click(`${panel} .flag-item:has-text("Embarazo ectópico") .flag-porque`);
-  await page.waitForSelector('#razonPanel.open');
+  // Esperar a que termine de entrar (con carga, la transición tarda más)
+  await page.waitForFunction(() => {
+    const p = document.getElementById('razonPanel'), r = p.getBoundingClientRect();
+    return p.classList.contains('open') && r.width > 0 && r.right <= innerWidth + 1 && getComputedStyle(p).visibility === 'visible';
+  });
   const a = await razonEstado(page);
   r.escritorio = a.abierto && a.visible && !a.velo && a.pregunta.startsWith('Embarazo ectópico')
     && await page.evaluate(() => document.querySelector('#razonPanel .razon-kicker').textContent === '¿Por qué esta bandera roja?'
@@ -866,8 +870,9 @@ async function checkBanderas(browser) {
   };
   const lu = await posq('lumbar'), ro = await posq('rodilla');
   const miembros = /compartimento|territorio de un nervio|al roce \(SDRC\)/;
-  r.posqLumbar = lu.length === 4 && !lu.some(f => miembros.test(f.t) || /Yeso/.test(f.t));
-  r.posqRodilla = ro.length === 8 && ro.filter(f => miembros.test(f.t)).every(f => f.porque);
+  r.posqLumbar = lu.length === 5 && !lu.some(f => miembros.test(f.t) || /Yeso/.test(f.t))
+    && lu.some(f => /cirugía de columna/.test(f.t) && f.porque);
+  r.posqRodilla = ro.length === 8 && !ro.some(f => /cirugía de columna/.test(f.t)) && ro.filter(f => miembros.test(f.t)).every(f => f.porque);
   r.ok = r.sinPorque && r.escritorio && r.fase1 && r.movil && r.posqLumbar && r.posqRodilla;
   if (!r.ok) Object.assign(r, { a, b, c, lu, ro });
   return r;
