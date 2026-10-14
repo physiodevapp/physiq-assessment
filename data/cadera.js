@@ -35,11 +35,12 @@ export const screening = {
           razonamiento: {
             porque: 'Son los datos de la historia que se han estudiado para detectar un cáncer en el dolor lumbar: la edad, el cáncer previo, la pérdida de peso inexplicada y la falta de mejoría en un mes. En la cadera se usan por analogía: el fémur y la pelvis están, tras las vértebras, entre los huesos donde más metastatiza un cáncer, y la próstata llega a la pelvis por su plexo venoso (Jayarangaiah).',
             peso: 'Solo el cáncer previo sube de verdad la probabilidad: en el dolor lumbar la lleva al 7–33 %, mientras que la edad, la pérdida de peso y la falta de mejoría al mes la dejan por debajo del 3 % (Downie). La mayoría tiene muchos falsos positivos y ningún estudio ha validado combinarlas (Henschke). No se deriva por una sola, salvo el cáncer previo; lo que pesa es el conjunto con los demás signos.',
-            detalle: 'Qué suma sospecha en la cadera (Goodman, cap. 16): dolor óseo al cargar peso, dolor nocturno constante que no cambia con la postura, dolor que alivia de forma desproporcionada la aspirina, fiebre, pérdida de peso, sangrados o lesiones de la piel, y ganglios inguinales o poplíteos que crecen sin doler. No mejorar con la fisioterapia, o empeorar, es otra bandera, sobre todo con un cáncer previo o sin causa conocida. Goodman pide derivación inmediata si quien ha tenido cáncer tiene ganglios sospechosos que persisten o en más de una zona.\n\nLas cifras vienen de estudios de dolor lumbar en atención primaria, donde el cáncer es raro (menos del 1 %; Downie); no hay estudios equivalentes en la cadera. La VSG y el hematocrito que cita la bandera no se explican aquí: ninguna fuente leída los respalda para la cadera.',
-            fuentes: ['Downie 2013', 'Henschke 2013', 'Goodman 2018', 'Jayarangaiah 2023'],
+            detalle: 'Qué suma sospecha en la cadera (Goodman, cap. 16): dolor óseo al cargar peso, dolor nocturno constante que no cambia con la postura, dolor que alivia de forma desproporcionada la aspirina, fiebre, pérdida de peso, sangrados o lesiones de la piel, y ganglios inguinales o poplíteos que crecen sin doler. No mejorar con la fisioterapia, o empeorar, es otra bandera, sobre todo con un cáncer previo o sin causa conocida. Goodman pide derivación inmediata si quien ha tenido cáncer tiene ganglios sospechosos que persisten o en más de una zona.\n\nLas cifras vienen de estudios de dolor lumbar en atención primaria, donde el cáncer es raro (menos del 1 %; Downie); no hay estudios equivalentes en la cadera. Lluch (p. 146) recoge que lo que más informa es el cáncer previo, la sospecha clínica del terapeuta, una VSG alta y un hematocrito bajo; los dos últimos son análisis que pide el médico. También recoge que la combinación de edad de 50 años o más, falta de mejoría al mes, pérdida de peso y cáncer previo tuvo una sensibilidad del 100 %; la revisión Cochrane, de más peso, no encontró ningún estudio que evaluara combinaciones (Henschke), así que esa cifra no se usa.',
+            fuentes: ['Downie 2013', 'Henschke 2013', 'Lluch 2020', 'Goodman 2018', 'Jayarangaiah 2023'],
             citas: [
               { texto: 'Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3898572/' },
               { texto: 'Henschke 2013 — Henschke, Maher, Ostelo et al., «Red flags to screen for malignancy in patients with low-back pain», Cochrane Database Syst Rev 2013;(2):CD008686 (resumen y conclusiones de los autores).', url: 'https://doi.org/10.1002/14651858.CD008686.pub2' },
+              'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.',
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 630–632 y 639–640.',
               { texto: 'Jayarangaiah 2023 — Jayarangaiah, Kemp y Theetha Kariyanna, «Bone Metastasis», StatPearls [Internet], NCBI Bookshelf, última actualización 31 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK507911/' }
             ]
@@ -77,7 +78,16 @@ export const screening = {
           } },
         { texto: 'Pérdida de peso inexplicada', pregunta: 'ca_on3', fase1: 'br1' },
         // Lluch 2020, cap. 4.1.3, p. 146
-        'Antecedente familiar de cáncer'
+        { texto: 'Antecedente familiar de cáncer',
+          razonamiento: {
+            porque: 'Lluch lo cuenta entre los factores de riesgo generales que hay que identificar en la entrevista, junto a la edad de 50 años o más, la falta de mejoría al mes y el cáncer previo del propio paciente: son banderas de malignidad que suelen proponer las guías clínicas. Goodman pide preguntar por el cáncer previo y familiar ante un bulto o una adenopatía en la ingle (linfoma).',
+            peso: 'Pesa poco por sí solo: las fuentes leídas no dan cifras de su valor, y lo que más informa es el cáncer previo del propio paciente (Lluch; Downie, en el dolor lumbar). Sirve para completar la historia junto a los demás datos.',
+            fuentes: ['Lluch 2020', 'Goodman 2018'],
+            citas: [
+              'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 146.',
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, p. 618.'
+            ]
+          } }
       ],
       preguntas: [
         { id: 'c5', anatomia: ['hueso_coxal', 'femur'], text: '¿Tiene antecedentes de cáncer de cualquier tipo (especialmente próstata, mama, pulmón, riñón)?', alerta: true, s1: true,
@@ -560,10 +570,11 @@ export const screening = {
           razonamiento: {
             porque: 'El sacro sufre tres tipos de fractura sin un gran traumatismo: de fatiga, por cargas repetidas sobre un hueso normal (deportistas, corredores, militares y, a veces, embarazadas o puérperas que corren); por insuficiencia, por cargas normales sobre un hueso débil (osteoporosis posmenopáusica o por corticoides, radioterapia); y patológica, sobre un tumor o una infección (Goodman).',
             peso: 'Dan dolor de cadera, lumbar, sacro, ingle o nalga, dolor a la palpación y cojera, y se confunden con un problema discal o con una metástasis (Goodman). El dolor al cargar peso es bandera roja de fractura de estrés en cualquier persona (Goodman). La radiografía es negativa al principio en dos de cada tres: si se sospecha, derivar para resonancia o gammagrafía. El sacro y las ramas púbicas son fracturas de bajo riesgo, que suelen consolidar con descarga relativa (May y Marappa-Ganeshan).',
-            detalle: 'Quién (Goodman; May y Marappa-Ganeshan): corredores y deportistas de alta intensidad, militares, mujeres (en las deportistas, la pelvis es de las localizaciones más frecuentes) y la tríada de la deportista; en el mayor, la osteoporosis, los corticoides prolongados, la radioterapia o la quimioterapia, la insuficiencia renal y el Paget. También tras una artrodesis lumbosacra de varios niveles: un dolor sacro o glúteo nuevo 1–2 semanas después, sobre todo con osteoporosis, debe estudiarse (Goodman).\n\nLas fuentes leídas no detallan la fractura de estrés del acetábulo.',
-            fuentes: ['Goodman 2018', 'May y Marappa-Ganeshan 2023'],
+            detalle: 'Quién (Goodman; May y Marappa-Ganeshan): corredores y deportistas de alta intensidad, militares, mujeres (en las deportistas, la pelvis es de las localizaciones más frecuentes) y la tríada de la deportista; en el mayor, la osteoporosis, los corticoides prolongados, la radioterapia o la quimioterapia, la insuficiencia renal y el Paget. También tras una artrodesis lumbosacra de varios niveles: un dolor sacro o glúteo nuevo 1–2 semanas después, sobre todo con osteoporosis, debe estudiarse (Goodman).\n\nAcetábulo: Lluch (tabla 2) la incluye entre las fracturas de estrés de la pelvis, pero no la detalla. Para todas, la radiografía suele ser negativa en las primeras semanas, y la gammagrafía y la resonancia son las pruebas más sensibles (Lluch).',
+            fuentes: ['Goodman 2018', 'Lluch 2020', 'May y Marappa-Ganeshan 2023'],
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 15, pp. 583–584; cap. 16, pp. 624–625.',
+              'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 147 y 149.',
               { texto: 'May y Marappa-Ganeshan 2023 — May y Marappa-Ganeshan, «Stress Fractures», StatPearls [Internet], NCBI Bookshelf, última actualización 10 de julio de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK554538/' }
             ]
           } },
@@ -676,7 +687,15 @@ export const screening = {
         { texto: 'AR y otras artropatías multiarticulares, espondilitis anquilosante', pregunta: 'ca_in2' }
       ],
       banderasAmarillas: [
-        'VSG como prueba de bajo coste antes que la RM'
+        { texto: 'VSG como prueba de bajo coste antes que la RM',
+          razonamiento: {
+            porque: 'Lluch recoge, citando a Cook (2018), una atención basada en el valor: ante la sospecha clínica de una patología grave, empezar por pruebas de bajo coste, como la VSG o la radiografía, y pedir la resonancia solo si son positivas. Entre los datos que más informan de un cáncer cuenta una VSG alta y un hematocrito bajo.',
+            peso: 'No la pide el fisioterapeuta, pero orienta la derivación. Un resultado normal no descarta la patología: por eso Lluch propone una espera vigilada, siguiendo de cerca cómo cambian los síntomas, y derivar al médico si no mejoran como se esperaba.',
+            fuentes: ['Lluch 2020'],
+            citas: [
+              'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 146 y 148.'
+            ]
+          } }
       ],
       preguntas: [
         { id: 'ca_in1', anatomia: ['art_cadera'], text: '¿Tiene fiebre o se encuentra mal en general, con la cadera muy dolorosa o hinchada, hasta el punto de no poder apoyar la pierna?', alerta: true, s1: true, urgencia: 'Sospecha de artritis séptica: derivación a urgencias hoy.',
