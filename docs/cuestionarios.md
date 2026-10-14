@@ -216,7 +216,8 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 
 **IdFAI** (añadido): puntos por respuesta del apéndice B del original (Simon 2012, *Foot Ankle Int* 33(9):755–763, aportado por el usuario); la pregunta 1 (número de esguinces) no puntúa y las 2–10 suman 0–37 (más es peor). Corte de la versión española ≥ 10,5 (Cervera-Garvi 2020, *Disabil Rehabil*, doi:10.1080/09638288.2020.1857446; AUC 0,84), ≥ 11 con puntos enteros, como el original; cambio mínimo detectable 6,4. El artículo español no trae el cuestionario: etiquetas traducidas por nosotros, pendientes de comparar con la hoja española si aparece.
 
+physiq-report lee el campo `cu` del payload (`buildClinicalContext()`, mismo bloque que `contextoValoracion()`; physiodevapp/physiq-report#89).
+
 Pendiente:
 
 - Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
-- physiq-report no lee aún el campo `cu` del payload.
