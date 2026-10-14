@@ -182,11 +182,11 @@ test('banderas: cervical, cada bandera enlazada según el inventario (docs/razon
   assert.equal(banderas.filter(f => f.pregunta).length, 35);
   assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4']);
   const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
-  assert.deepEqual(propias, ['Síncope repentino', 'Dolor de']);
-  // Pendientes de fuente (Goodman caps. 10 y 14, StatPearls); «Dolor que no cambia…» solo marca la fase 1 (br4)
+  assert.deepEqual(propias, ['Síncope repentino', 'Prueba de', 'Dolor de', 'Mielopatía cervical:']);
+  // «Dolor que no cambia…» solo marca la fase 1 (br4)
   const sinPorque = propios.flatMap(s => [...s.banderasRojas.map(f => ['R', f]), ...s.banderasAmarillas.map(f => ['A', f])])
     .filter(([, f]) => typeof f === 'string' || (!f.pregunta && !f.razonamiento)).map(([t, f]) => `${t} ${textoBandera(f).split(' ').slice(0, 2).join(' ')}`);
-  assert.deepEqual(sinPorque, ['R Prueba de', 'A Dolor que', 'R Mielopatía cervical:']);
+  assert.deepEqual(sinPorque, ['A Dolor que']);
 });
 
 test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
