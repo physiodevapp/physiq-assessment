@@ -1,0 +1,158 @@
+# Cuestionarios (PROMs y cribado psicosocial)
+
+Estado: **investigación, sin código** (2026-10). Base para decidir si la app calcula la puntuación y la interpretación de los cuestionarios que recomienda, y si ofrece una versión imprimible.
+
+## 1. Qué propone la app hoy
+
+Ningún cuestionario se rellena ni se puntúa en la app: solo se recomiendan como texto.
+
+- **Fase 1, riesgo psicosocial** (`app.js`, `selectPsico`, `updatePsicoRecomendacion`, `applyRegionChange`): Örebro (OMPSQ) para cualquier región, STarT Back para lumbar. Con `psico_*` en «Sí» o «Dudoso»: FABQ y TSK-11 (miedo-evitación), PCS (autoeficacia; ver §6), PHQ-2 → PHQ-9 (estado de ánimo). El nivel Bajo/Medio/Alto lo elige el clínico.
+- **Fases 4b y 5, `prom` de cada hipótesis** (`data/<región>.js`; badge `.prom-badge` y «Escala recomendada para el seguimiento» en el prompt del informe con IA). La MCID va dentro del texto (`'ODI (MCID: 8.5 pts) / …'`), no como dato aparte.
+
+| Región | PROMs |
+|---|---|
+| Lumbar | ODI, RMDQ, NPRS |
+| Cervical | NDI, EVA, PSFS, mJOA |
+| Hombro | SPADI, QuickDASH, DASH, ASES |
+| Codo | QuickDASH, PRTEE, DASH, Oxford Elbow Score, MEPS |
+| Cadera | HOOS, iHOT-12, HAGOS, HOS |
+| Rodilla | KOOS, KOOS-12, KOOS-PF, IKDC subjetivo, Kujala, VISA-P, LEFS, EVA |
+| Tobillo y pie | FAAM, LEFS, VISA-A, CAIT, IdFAI |
+
+## 2. Cómo se investigó y límites
+
+- Licencias: el proxy del entorno bloqueó las páginas oficiales (ePROVIDE/Mapi, IWH, Keele, koos.nu, AOSSM, Oxford University Innovation, phqscreeners.com). Las condiciones salen de los extractos del buscador sobre esas páginas y de fuentes secundarias (SRA Lab, APTA…). **Hay que confirmarlas con el titular antes de usar nada en la app o en el repo.**
+- Validaciones españolas: comprobadas en PubMed (autor, año, revista, PMID/DOI).
+- Puntos de corte marcados con * se dieron de memoria y no se reverificaron.
+- §5 recoge la revisión de los PDF de la carpeta personal del usuario (39 archivos, 2026-10).
+
+Leyenda de licencia:
+
+- 🟢 Libre para app y repo.
+- 🟡 Probablemente libre; falta confirmarlo.
+- 🟠 Sin condiciones publicadas: pedir permiso al autor.
+- 🔴 Licencia obligatoria, a menudo con tarifa, sin derecho a redistribuir.
+
+## 3. Licencias, versión española e interpretación
+
+### Psicosociales y generales
+
+| Cuestionario | Licencia | Titular | Versión española validada | Interpretación |
+|---|---|---|---|---|
+| PHQ-2 / PHQ-9 | 🟢 | Pfizer: «No permission required to reproduce, translate, display or distribute» | Diez-Quevedo 2001, *Psychosom Med*, PMID 11485122; Muñoz-Navarro 2017, *BMC Psychiatry*, PMID 28793892; Gómez-Gómez 2022, *Psychol Med*, PMID 36258639 | PHQ-2 ≥3; PHQ-9 5 / 10 / 15 / 20 (leve, moderada, moderadamente grave, grave) |
+| GAD-7 | 🟢 | Pfizer, misma nota que el PHQ | García-Campayo 2010 (no reverificado en PubMed) | 0-4 / 5-9 / 10-14 / 15-21 |
+| STarT Back | 🟡 | Keele University: libre para uso no comercial; un producto requiere contacto con la Impact Accelerator Unit | Gusi 2011, *Aten Primaria*, PMID 21296465 (solo traducción y entrevistas cognitivas) | Total ≤3 bajo; total ≥4 con subescala psicosocial (ítems 5-9) ≥4 alto; resto medio (Hill 2008) |
+| OMPSQ / OMPSQ-10 | 🟡 | Linton (Örebro University): copias gratis para uso clínico o de investigación; nada sobre software | OMPSQ-21: Cuesta-Vargas 2014, *HQLO*, PMID 25358630. **OMPSQ-10: no hay** | OMPSQ-10 ≥50*; OMPSQ-21 >105* |
+| FABQ | 🟡 | Waddell 1993; sin licencia formal | Kovacs 2006, *Spine*, PMID 16395186 | Trabajo >34*, actividad física >14* |
+| TSK-11 | 🟡 | Woby 2005 / Kori 1990; sin información | Gómez-Pérez 2011, *J Pain*, PMID 20926355 (TSK-11SV) | Sin punto de corte consensuado |
+| PCS | 🔴 | Sullivan, a través de Mapi/ePROVIDE | García Campayo 2008, *Med Clin*, PMID 19007576 (fibromialgia) | ≥30 |
+| PSFS | 🟠 | Stratford | **No hay** para dolor musculoesquelético | Sin bandas; MCID ≈2 |
+| LEFS | 🟡 | Binkley | Cruz-Díaz 2014, *Disabil Rehabil*, PMID 24593163 | Sin bandas; MCID ≈9 |
+
+### Columna y miembro superior
+
+| Cuestionario | Licencia | Titular | Versión española validada | Interpretación |
+|---|---|---|---|---|
+| RMDQ | 🟢 / 🟡 | Roland: original y traducciones de dominio público. La versión española dice «© Fundación Kovacs… libre para su uso clínico»; para otros fines, citar Kovacs 2002 | Kovacs 2002, *Spine*, PMID 11880841 | Sin bandas |
+| ODI | 🔴 | Fairbank, a través de Mapi: siempre exige acuerdo de licencia; la versión electrónica requiere revisión de capturas | Flórez 1995 y Alcántara-Bumbiedro 2006, *Rehabilitación* (no en PubMed) | 0-20 / 21-40 / 41-60 / 61-80 / 81-100 % (Fairbank 2000) |
+| NDI | 🔴 | Vernon, a través de Mapi; las fuentes discrepan sobre la gratuidad clínica | Andrade Ortega 2008, *Med Clin*, PMID 18261377; 2010, *Spine*, PMID 20110848 | Sobre 50: 0-4 / 5-14 / 15-24 / 25-34 / >34 |
+| mJOA | 🟠 | Benzel; lo puntúa el clínico | Solo un resumen de congreso (SENEC 2022) | Leve 15-17, moderada 12-14, grave ≤11 |
+| SPADI | 🟡 | Roach: «free, non-proprietary» según fuentes secundarias | Membrilla-Mesa 2015, *HQLO*, PMID 26690943; Luque-Suárez 2016, PMID 26927584 | Sin bandas |
+| DASH / QuickDASH | 🔴 | Institute for Work & Health: permiso escrito para software (categoría B, 1.250 CAD) | DASH: Hervás 2006, *Med Clin*, PMID 17040628. QuickDASH: traducción en la web del IWH, validada solo en túnel carpiano | Sin bandas |
+| ASES | 🟡 | ASES; «public domain» según fuentes secundarias | Vrotsou 2016, *HQLO*, PMID 27756317 | Sin bandas |
+| PRTEE | 🟠 | MacDermid | Gallego-Izquierdo 2020, *J Orthop Res*, PMID 32761913 | Sin bandas |
+| Oxford Elbow Score | 🔴 | Oxford University Innovation; gratis solo para «individual, small-scale practices» | **No hay** | Sin bandas |
+| MEPS | 🟠 | Mayo; lo puntúa el clínico | **No hay** | ≥90 / 75-89 / 60-74 / <60 |
+
+### Cadera, rodilla y tobillo-pie
+
+| Cuestionario | Licencia | Titular | Versión española validada | Interpretación |
+|---|---|---|---|---|
+| HOOS / HOOS-12 | 🔴 | Roos, a través de Mapi desde 2023: las clínicas pagan; la versión electrónica tiene tarifa | Solo Chile (Carmona 2025, PMID 40398581) / ninguna | Sin bandas |
+| KOOS / KOOS-12 | 🔴 | Ídem | KOOS: Vaquero 2014, *KSSTA*, PMID 23143387; Lizaur-Utilla 2019, PMID 31161609. KOOS-12: solo México | Sin bandas |
+| KOOS-PF | 🟡 | ePROVIDE: «not copyrighted» | Solo Colombia (Martínez-Cano 2021, PMID 34078455) | Sin bandas; MIC 16 |
+| HAGOS | 🟡 | ePROVIDE: «not copyrighted» | No validada; existe traducción oficial «Spanish version LK 1.0» | Sin bandas |
+| iHOT-12 | 🟠 | Griffin y otros | González-de-la-Flor 2022, *J Clin Med*, PMID 36362462 | Sin bandas |
+| HOS | 🟠 | Martin | Seijas 2014, *HQLO*, PMID 24884511 | Sin bandas; MCID 9 (AVD) / 6 (deporte) |
+| IKDC subjetivo | 🔴 | AOSSM; prohibido modificarlo | Pujol 2025, PMID 41094617 (solo traducción) | Sin bandas |
+| Kujala (AKPS) | 🟠 | Kujala | Gil-Gámez 2016, *KSSTA*, PMID 25649731 | Sin bandas; MCID 10 |
+| VISA-P / VISA-A | 🟠 | Visentini / Robinson. El VISA-P-SP lleva © JOSPT | Hernández-Sánchez 2011, PMID 21765223 / 2018, PMID 29237355 (JOSPT) | Sin bandas |
+| FAAM | 🟠 | Martin / Irrgang | Cervera-Garvi 2017, PMID 28852426; Membrilla-Mesa 2022, PMID 34716013 | Sin bandas; MCID 8 (AVD) / 9 (deporte) |
+| CAIT | 🟠 | Hiller | Cruz-Díaz 2013, PMID 23053687; Rodríguez-Fernández 2015, PMID 26292174 | ≤27 original; ≤25 (Wright 2014); ≤24* |
+| IdFAI | 🟠 | Simon; © AOFAS | Cervera-Garvi 2022, PMID 33296608; Izquierdo 2021, PMID 33582620 | ≥11* |
+
+### Conclusiones
+
+- **Los PROMs regionales más usados por la app son 🔴:** ODI, NDI, QuickDASH, KOOS-12 y HOOS-12. Alternativas libres: RMDQ para lumbar; KOOS-PF y HAGOS para rodilla y cadera (sin versión de España). Para cervical no se encontró alternativa libre al NDI.
+- **La traducción tiene sus propios derechos.** Que el artículo de validación sea de acceso abierto no permite publicar el cuestionario: hace falta el permiso del autor original y el de los traductores.
+- **Interpretación:** solo algunos tienen bandas o puntos de corte (STarT Back, OMPSQ, PHQ, GAD-7, ODI, NDI, PCS, CAIT, IdFAI, MEPS, mJOA). El resto da solo la puntuación; la app no debe inventar una interpretación.
+- **MCID:** sin una revisión posterior (la app hace una valoración única), es solo información de referencia.
+
+## 4. Imprimir desde la app
+
+No alojar los PDF en el repo: es público y se despliega en GitHub Pages, así que alojarlos es redistribuirlos, y casi ningún titular lo permite.
+
+- Para todos: un enlace «Abrir en la fuente oficial ↗» junto al badge del PROM, a la página de descarga del titular.
+- Para 🟢 (y 🟡 una vez confirmados): cuando los ítems estén en datos estructurados, generar la versión imprimible desde esos datos (una sola fuente), no mantener un PDF aparte.
+
+## 5. Revisión de los PDF del usuario (2026-10)
+
+Carpeta personal, nombres del usuario (prefijos `COL_`, `MINF_`, `MSUP_`, `TRANS_`). Los archivos no están en el repo.
+
+### Usables
+
+| Archivo | Qué es | Notas |
+|---|---|---|
+| `COL_ROLAND-MORRIS_ESP` | RMDQ, versión Kovacs 2002 | «© Fundación Kovacs», libre para uso clínico |
+| `COL_OWESTRY_ESP` | ODI **versión 1.0** (ítem 1 sobre calmantes) | Línea Flórez 1995 / Alcántara 2006. Trae «suma × 2» y la MCID de la FDA (15 puntos, para fusión); la app cita 8,5 |
+| `MINF_HAGOS_ESP` | HAGOS «Spanish version LK 1.0» | Traducción oficial de España |
+| `MINF_FAAM_ESP` | FAAM en español de España | No cita de qué validación sale |
+| `MINF_KOOS_ESP` | KOOS «Spanish version LK1.0, nov 2012» (Vaquero) | Erratas menores (S5 «¿Puedo doblar…?», orden de opciones de Q4) |
+| `MINF_VISA-P_ESP` | VISA-P-SP, apéndice de JOSPT 2011 | © JOSPT, «for personal use only» |
+| `MINF_iHOT-12_ESP` | iHOT-12Sv, escala visual 0-100 | Corregir P8 (extremos de dolor en una pregunta de preocupación), P6 y «marcha»; PDF parcialmente dañado |
+| `MSUP_SPADI_ESP` | SPADI-Sp, España | Sin instrucciones de puntuación |
+| `TRANS_TSK11_ESP` | TSK-11SV (Gómez-Pérez 2011) | — |
+| `TRANS_ÖREBRO MSK PAIN QUESTIONNAIRE_ESP` | OMPSQ-21, material suplementario de Cuesta-Vargas 2014 | — |
+| `TRANS_DN4_ESP` | DN4 (Pérez 2006) | Sin el punto de corte (≥4) |
+| `TRANS_DOLOR-S-LANSS_ESP` | S-LANSS en español | Sin cita ni puntuación ponderada |
+| `TRANS_paindDetect_ESP` | painDETECT en español | © Pfizer Pharma GmbH |
+| `TRANS_CADC_ESP` | Cuestionario de Autoeficacia en Dolor Crónico (Martín-Aragón y otros, 1999) | Ver §6 |
+
+### Para sustituir
+
+| Archivo | Problema | Usar en su lugar |
+|---|---|---|
+| `COL_IDC_ESP` (NDI) | El ítem 7 tiene 5 opciones en vez de 6: máximo 49, bandas desplazadas | Andrade Ortega 2008 |
+| `COL_STarT_ESP` | Traducción de EE. UU. (membrete de Minneapolis, puntuación en inglés) | Versión de España de la página de traducciones de Keele |
+| `MINF_EFEI_ESP` (LEFS) | Traducción de EE. UU. o Latinoamérica («cuadras», «milla») | Cruz-Díaz 2014 |
+| `MSUP_Upper-Extremity_ESP` (UEFI) | Misma familia estadounidense | — |
+| `MINF_HOOS_ESP` | 39 ítems con restos del KOOS («rodilla» dos veces; faltan P2 y P3 de dolor; S2 mal traducido; dirección de puntuación incoherente) | No hay versión de España; con licencia, Chile (Carmona 2025) |
+| `MINF_FFI_ESP` | Instrucción «de 1 a 10», escala 0-10, total entre 207 en vez de 230 | Corregir; la app no lo propone |
+| `MINF_VISA-A_ESP` | «Este cuestionario no está validado»; P6 y P8 mal | Hernández-Sánchez 2018 |
+| `MINF_VISA-H_ESP` | Copiado del VISA-P («tendinopatía rotuliana», «rodilla») | — |
+| `MINF_Pelvic-Girdle-Questionnaire_ESP` | Ítems 23-25 «Bastante (3)» en vez de (2); divide siempre entre 75 | Corregir |
+| `MINF_LLFI_ESP` | Escala 0-4; el original es Sí / En parte / No | Comprobar la versión |
+| `TRANS_PHQ-2_ESP`, `TRANS_PHQ-9_ESP`, `TRANS_GAD-7_ESP` | Versiones de EE. UU. (instrucciones en inglés en el PHQ-2) | Diez-Quevedo 2001; García-Campayo 2010 |
+
+### Solo en inglés
+
+`MINF_FADI` (antecesor del FAAM, prescindible), `MINF_VISA-G` (sin versión española encontrada), `TRANS_ÖREBRO … SHORTFORM_ESP` (pese al nombre; no hay OMPSQ-10 español validado).
+
+### Fuera de alcance
+
+`MINF_WOMAC_ESP` (🔴 Bellamy), `TRANS_EurQoL 5D_ESP` (EQ-5D-5L oficial de España, 🔴 registro en EuroQol), `TRANS_McGill_Short` (🔴), `TRANS_Inventario-de-depresion-BDI_ESP` (BDI-I/IA, 🔴 Pearson; el PHQ-9 lo cubre), `TRANS_MiniBESTest_ESP` (traducción aprobada por Horak 2017; equilibrio, lo puntúa el clínico), `TRANS_WAI_ESP` (INSST NTP 1.147; capacidad laboral), `MSUP_FMA-UE_ESP` (ictus, lo puntúa el clínico).
+
+### La app los recomienda y no están en la carpeta
+
+QuickDASH/DASH, PRTEE, ASES, Oxford Elbow Score, IKDC, Kujala, KOOS-PF, KOOS-12, HOOS-12, HOS, CAIT, IdFAI, FABQ, PCS, PSFS.
+
+## 6. Pendiente de revisión clínica
+
+- **Autoeficacia en la fase 1:** con `psico_autoef` en «Sí» o «Dudoso», la app sugiere la PCS, que mide catastrofización. El CADC (español) o el PSEQ miden autoeficacia.
+- **MCID del ODI:** la app cita 8,5 puntos; la hoja del usuario cita 15 (FDA, fusión vertebral). Revisar la fuente de cada uno.
+
+## 7. Pendiente de verificar
+
+- Condiciones oficiales de ePROVIDE (ODI, NDI, PCS, KOOS/HOOS, HAGOS, KOOS-PF), IWH (DASH/QuickDASH para una app gratuita), Keele (STarT Back), Linton (OMPSQ), Roach (SPADI), MacDermid (PRTEE), Stratford (PSFS), Fundación Kovacs (RMDQ en app y repo).
+- Puntos de corte marcados con * (FABQ, OMPSQ, CAIT ≤24, IdFAI ≥11).
+- Validación de origen de los PDF sin cita: FAAM, iHOT-12, S-LANSS, LLFI, Pelvic Girdle Questionnaire.
