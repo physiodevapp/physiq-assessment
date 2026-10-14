@@ -1,6 +1,23 @@
 # Varios síntomas (P1–P4) — diseño
 
-Estado: **propuesta, pendiente de revisión por el usuario (octubre 2026)**. Sin código todavía. Cuando se cierren las decisiones, este documento pasa a «decisiones cerradas», como `docs/modo-breve.md` y `docs/posquirurgico.md`, y se abre una fase en `MIGRATION_PLAN.md`.
+Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto), pendiente de probarlo en consulta. Seguimiento en `MIGRATION_PLAN.md`, Fase M.
+
+## Decisiones tomadas (octubre 2026)
+Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
+- **Zonas**: la tabla de abajo, como borrador; la de lumbar ya está en `data/lumbar.js` (`export const zonas`) y se revisa en consulta.
+- **NRS de P1**: un solo valor, como hasta ahora.
+- **Secundarios**: solo la nota libre, sin los chips de descripción.
+- **«Hacer principal»**: sí, intercambiando los datos.
+
+## Cómo quedó el paso 1 (lumbar)
+- **Archivos**: `sintomas.js` (tarjeta, en la raíz, import estático desde `app.js`), `lib/sintomas.js` (puro: forma, payload y textos), `ZONAS_SINTOMA` en `data.js` (solo regiones con `zonas`). Sin zonas en la región, la tarjeta no se pinta y nada cambia.
+- **Misma forma para P1 y los secundarios** (`sintomaVacio()`): así «Hacer principal» intercambia los objetos sin perder nada. Lo que P1 no muestra (NRS, irritabilidad, relación) o lo que un secundario no muestra (profundidad) se guarda igual. `descripcion` es «Descripción» en P1 y «Nota» en los secundarios.
+- **«Hacer principal»** pide confirmación: el NRS y la irritabilidad del secundario pasan a las tarjetas de P1 (irritabilidad estimada, como en modo breve), los de P1 pasan al secundario, y **las relaciones con P1 se borran** (eran con el principal anterior). No se ofrece para «otra región».
+- **Otra región**: solo dónde, lado, NRS y nota; sin irritabilidad, comportamiento ni relación (al marcarla se vacían).
+- **Quitar** un secundario vacío no pregunta; con datos, pide confirmación.
+- **Al cambiar de región** se borran, como el resto de la fase 3 (`resetPhase3UI()`).
+- **Payload**: `z1` es un objeto, no texto: `{ z, la?, pr?, pa?, de? }` (zonas en texto, lado, profundidad, comportamiento, descripción). `ss[]`: `{ n, z, la?, nr, ir?, pa?, re?, de?, or? }`. Sin datos, no hay `z1` y `ss` es `[]`.
+- **Revisión del informe con IA**: regla nueva `lado-sintoma` (medio) en vez de `lado`/`lado-otro` cuando un síntoma está en el otro lado o es bilateral; `lado-no-consta` no salta si algún síntoma tiene lado. El NRS de un secundario está en el bloque de datos, así que `nrs` lo acepta.
 
 ## Por qué
 
@@ -67,16 +84,13 @@ Más **Otra región (no valorada hoy)** con texto libre en todas. Una zona puede
 ## Estado y payload
 
 ```js
-// state.js — P1 sigue en severidad / irritabilidad* de siempre
-sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', profundidad: '', patron: '', descripcion: '' },
-sintomasSecundarios: [
-  // hasta 3 (P2–P4)
-  { zonas: [], zonaLibre: '', lado: '', otraRegion: false, nrs: null, irritabilidad: '', patron: '', relacion: '', nota: '' }
-],
+// state.js — P1 sigue en severidad / irritabilidad* de siempre; misma forma para todos (sintomaVacio())
+sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },
+sintomasSecundarios: [ /* hasta 3 (P2–P4), misma forma */ ],
 ```
 
 - `relacion`: `'juntos' | 'empeora' | 'independiente' | 'nosabe' | ''`; `patron`: `'constante' | 'intermitente' | ''`; `profundidad`: `'superficial' | 'profunda' | ''`; `nrs: null` = no registrado (nunca un 0 por defecto, como `nr`).
-- **Payload**: `z1` (zona de P1 como texto legible, `''` sin datos) y `ss[]` (secundarios: `{ n, z, nr, ir, pa, re, or }`). `nr`/`ir` no cambian. Sin secundarios, `ss` es `[]`. Los campos vacíos se omiten.
+- **Payload**: `z1` (P1, solo con datos) y `ss[]` (secundarios); forma exacta en «Cómo quedó el paso 1». `nr`/`ir` no cambian. Sin secundarios, `ss` es `[]`. Los campos vacíos se omiten.
 - **Sesiones antiguas** sin estos campos: P1 sin zona y sin secundarios, todo funciona como ahora.
 - `_softResetApp()` y `resetApp()` los vacían; la exportación/importación `.json` los lleva sin hacer nada aparte (van dentro de `state`).
 - **physiq-report** ignora `ss`/`z1` hasta que se actualice; actualizarlo es trabajo en ese repo, fuera de este diseño.
@@ -92,8 +106,8 @@ sintomasSecundarios: [
 
 ## Pruebas
 
-- **Unitarias** (`tests/unit/sintomas.mjs`): payload con y sin secundarios; sesiones antiguas; resúmenes; el plan elige el más irritable y desempata con P1; las zonas de cada región existen y sus `pasos` existen en su árbol; el NRS de un secundario no dispara la regla `nrs`; nada de esto en el payload cuando está vacío.
-- **Smoke** (sección `sintomas`): añadir hasta P4 y no más; quitar con confirmación; persistencia al recargar; pista en el paso del árbol; cabe a 320 px sin desbordar (regla de bandas ≤480 px para la tarjeta nueva).
+- **Unitarias** (`tests/unit/sintomas.mjs`, hechas en el paso 1): payload con y sin secundarios; sesiones antiguas; resúmenes; prompt; el NRS de un secundario no dispara la regla `nrs` y su lado no es una contradicción; nada de esto en el payload cuando está vacío. Pendientes para los pasos 3 y 4: los `pasos` de cada zona existen en su árbol; el plan elige el más irritable y desempata con P1.
+- **Smoke** (sección `sintomas`, hecha en el paso 1): añadir hasta P4 y no más; quitar con y sin confirmación; «Hacer principal»; persistencia al recargar; fase 5; región sin zonas sin tarjeta; cabe a 320 px. Pendiente para el paso 3: la pista en el paso del árbol.
 
 ## Por pasos
 

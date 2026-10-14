@@ -319,3 +319,18 @@ Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo enter
 - [ ] L3 — Parte sin IA en las 7 regiones
 - [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)
 - [ ] L5 — Revisión automática con planes reales en los fixtures
+
+---
+
+## Fase M — Varios síntomas (P1–P4) en la fase 3
+
+Diseño y decisiones: `docs/sintomas-multiples.md` (léelo entero antes de empezar). Abierta en 2026-10 a propuesta del usuario: el paciente pinta en el mapa corporal más de una zona y cada una tiene su intensidad y su comportamiento. P1 es la fase 3 de siempre más la zona; P2–P4, una ficha corta. Revisión clínica del usuario antes de `main`.
+
+- [x] M0 — Documento de diseño; propuestas y puntos pendientes aceptados por el usuario (2026-10)
+- [x] M1 — Paso 1 en lumbar (piloto): tarjeta «Síntomas» (`sintomas.js`, `lib/sintomas.js`, `export const zonas` en `data/lumbar.js` → `ZONAS_SINTOMA`), estado, payload (`z1`, `ss`), fase 5, `📋 Notas`, `📄 Informe`, bloque del prompt de la IA y regla de revisión `lado-sintoma`. Unit `tests/unit/sintomas.mjs`, smoke `sintomas`
+- [ ] M1 — Prueba en consulta real y revisión de las zonas de lumbar por el usuario
+- [ ] M2 — Zonas de las otras 6 regiones, una por sesión (tabla en `docs/sintomas-multiples.md`)
+- [ ] M3 — Pistas en el árbol (`pasos` en cada zona → recuadro «📝» en el paso), región a región
+- [ ] M4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente
+- [ ] M5 — physiq-report: mostrar `z1` / `ss` (otro repositorio)
+- [ ] M6 — Mapa dibujado, solo si hace falta
