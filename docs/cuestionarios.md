@@ -198,11 +198,11 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 |---|---|---|
 | ODI v1.0 | % = suma ÷ (5 × contestados) × 100; bandas de Fairbank | Etiquetas de las bandas traducidas (no se leyó la versión española); N/A en cualquier ítem, sin límite publicado |
 | Roland-Morris | Frases marcadas, 0–24 | — |
-| NDI | % del máximo; bandas de Vernon en % | Ítem 7 con 6 opciones (la hoja del usuario tiene 5); conducir admite N/A |
+| NDI | % del máximo; bandas de Vernon en % | Comprobado con Andrade Ortega 2008 (anexo): el ítem 7 tiene 6 opciones (a la hoja del usuario le falta una); «conducir» sin contestar se excluye del máximo |
 | SPADI | Dolor ÷ 50, discapacidad ÷ 80, total = media de las dos | Otras fuentes usan suma ÷ 130; se sigue la validación española |
 | ASES | (10 − EVA) × 5 + función × 5/3 | Solo el lado afectado |
-| DASH | ((suma ÷ n) − 1) × 25 | Etiquetas en el orden inglés; no se leyó el texto español |
-| PRTEE | Dolor + función ÷ 2 | Etiquetas del original; no se leyó el texto español |
+| DASH | ((suma ÷ n) − 1) × 25 | Orden comprobado con la hoja española de Rosales 2002 (los ítems 3 y 4 van al revés que en inglés) |
+| PRTEE | Dolor + función ÷ 2 | Orden comprobado con la hoja española de Hernández-Sánchez 2013 |
 | WOMAC | Suma 0–96 y subescalas | — |
 | iHOT-12 | Media de los mm (0–100) | El ítem 9 «no relevante» se excluye (deducción) |
 | HOS | % por subescala sin N/A, sin total | — |
@@ -211,7 +211,7 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 | VISA-P | Puntos del apéndice de la VISA-P-SP | — |
 | FAAM | % por subescala sin N/A | **Decidido (usuario, 2026-10):** vida diaria con los 15 ítems validados en España (sin el 2, 7, 13, 14, 18 y 20), con la fórmula original aplicada a esos 15 |
 | CAIT | Suma 0–30 con los puntos de la hoja del usuario; cortes ≤ 24 (IAC) y ≤ 27 (Hiller), con «zona dudosa» entre los dos | La hoja no dice de qué validación española sale (sus puntos coinciden con el original); «≤ 24» o «< 24» sin leer en Gribble 2014 |
-| LEFS | Suma 0–80 | Etiquetas de la hoja de EE. UU.; no se leyó la versión española |
+| LEFS | Suma 0–80 | Etiquetas de la hoja de EE. UU. (la segunda que llegó es la misma traducción); falta la versión española de Cruz-Díaz 2014 |
 
 Pendientes de añadir: **VISA-A** (hace falta la hoja de la VISA-A-S, Hernández-Sánchez 2018: la que circula dice «Este cuestionario no está validado» y da los mismos puntos a las ramas A, B y C del ítem 8) e **IdFAI** (Cervera-Garvi 2020, IdFAI-Sp, leído: rango 0–37 y corte ≥ 10,5 en la versión española, pero el artículo no incluye el cuestionario; hace falta la hoja con los puntos de cada respuesta).
 
