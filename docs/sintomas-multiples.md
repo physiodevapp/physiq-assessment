@@ -1,6 +1,6 @@
 # Varios síntomas (P1–P4) — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto) y **paso 2 empezado: cervical** (`data/cervical.js`, las 7 zonas de la tabla), pendientes de probar en consulta. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
+Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2**: cervical hecha; zonas de lumbar y cervical revisadas por el usuario (2026-10); hombro hecha (`data/hombro.js`, las 6 zonas de la tabla), pendiente de revisión. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
 
 ## Decisiones tomadas (octubre 2026)
 Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
@@ -99,7 +99,7 @@ sintomasSecundarios: [ /* hasta 3 (P2–P4), misma forma */ ],
 
 - **Fase 5**: el resumen SINSS añade una línea por síntoma («P2 · Pierna bajo la rodilla (derecha) · NRS 3 · Irritabilidad baja · solo cuando P1 empeora»).
 - **`📋 Notas`**: una línea «SÍNTOMAS:» con P1–P4 en formato compacto.
-- **`📄 Informe`** (paciente/médico): en lenguaje llano, sin jerga («Refiere además dolor en la pierna derecha, menos intenso, que aparece cuando empeora el dolor lumbar»). La otra región, como «pendiente de valorar».
+- **`📄 Informe`** (paciente/médico): en lenguaje llano, sin jerga («Refiere además dolor: por debajo del codo (lado derecho), de intensidad 2/10, que aparece y desaparece con el dolor principal»; con «dolor:» y no «dolor en», porque hay zonas como «Por debajo del codo» que no admiten «en»). La otra región, como «pendiente de valorar».
 - **Informe con IA**: un bloque «Síntomas» numerado en los datos, y en `REGLAS_COMUNES` una regla para no mezclar intensidades ni comportamientos entre síntomas. El NRS de un secundario cuenta como «figura en la valoración» para la regla `nrs` (si no, daría un falso positivo). Siguiendo la costumbre del repo, **no se añaden reglas de revisión nuevas por adelantado**: solo cuando un informe real muestre el fallo (p. ej. un NRS cambiado de síntoma), con ese informe en `tests/fixtures/informes/`.
 - **Fase 6**: decisión 7.
 - **Árbol (fase 4)**: decisión 8. Las hipótesis no cambian.

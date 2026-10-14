@@ -14,8 +14,8 @@ const OTRA = { ...vacio(), otraRegion: true, zonaLibre: 'Rodilla', lado: 'Izquie
 const conSintomas = (patch, fn) => withState({ region: 'lumbar', lado: 'Derecho', severidad: 7, irritabilidadNivel: 'Moderada',
   sintomaPrincipal: P1, sintomasSecundarios: [P2, OTRA], ...patch }, fn);
 
-test('síntomas: zonas en las regiones hechas (lumbar, cervical), ids únicos y no vacíos', () => {
-  assert.deepEqual(Object.keys(ZONAS_SINTOMA).sort(), ['cervical', 'lumbar']);
+test('síntomas: zonas en las regiones hechas (lumbar, cervical, hombro), ids únicos y no vacíos', () => {
+  assert.deepEqual(Object.keys(ZONAS_SINTOMA).sort(), ['cervical', 'hombro', 'lumbar']);
   for (const [r, zonas] of Object.entries(ZONAS_SINTOMA)) {
     assert.ok(CIF_TREES[r], r);
     const ids = zonas.map(z => z.id);
@@ -68,8 +68,8 @@ test('síntomas: 📄 Informe en lenguaje llano (sin P1, NRS ni irritabilidad), 
   conSintomas({}, () => {
     const t = buildInformeFisioterapiaText();
     assert.match(t, /Localización del dolor principal: zona lumbar, glúteo, constante/);
-    assert.match(t, /Refiere además dolor en pierna por debajo de la rodilla \(lado derecho\), de intensidad 3\/10, que aparece cuando empeora el dolor principal/);
-    assert.match(t, /Refiere también dolor en rodilla \(lado izquierdo\), pendiente de valorar/);
+    assert.match(t, /Refiere además dolor: pierna por debajo de la rodilla \(lado derecho\), de intensidad 3\/10, que aparece cuando empeora el dolor principal/);
+    assert.match(t, /Refiere también dolor: rodilla \(lado izquierdo\), pendiente de valorar/);
     const bloque = t.split('VALORACIÓN')[1].split('CRIBADO')[0];
     assert.doesNotMatch(bloque.split('Intensidad del dolor referida')[0], /\bP\d\b|NRS|irritab/i);
   });
@@ -111,6 +111,18 @@ test('síntomas: cervical — zonas en payload y 📋 Notas (región con lado «
     assert.deepEqual(d.z1, { z: 'Cuello, trapecio o escápula' });
     assert.equal(d.ss[0].z, 'Antebrazo y mano');
     assert.match(buildContextSummaryText(), /SÍNTOMAS: P1 Cuello, trapecio o escápula \| P2 Antebrazo y mano · lado derecho · NRS 4\/10/);
+  });
+});
+
+test('síntomas: hombro — zonas en payload, 📋 Notas y 📄 Informe', () => {
+  withState({ region: 'hombro', lado: 'Derecho', severidad: 5, irritabilidadNivel: 'Baja',
+    sintomaPrincipal: { ...vacio(), zonas: ['hombro_lat'], patron: 'Intermitente' },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['bajo_codo'], nrs: 2, relacion: 'juntos' }] }, () => {
+    const d = buildPhysiQPayload();
+    assert.deepEqual(d.z1, { z: 'Hombro lateral (deltoides)', pa: 'Intermitente' });
+    assert.equal(d.ss[0].z, 'Por debajo del codo');
+    assert.match(buildContextSummaryText(), /SÍNTOMAS: P1 Hombro lateral \(deltoides\) · intermitente \| P2 Por debajo del codo · NRS 2\/10 · aparece y desaparece con P1/);
+    assert.match(buildInformeFisioterapiaText(), /Refiere además dolor: por debajo del codo, de intensidad 2\/10, que aparece y desaparece con el dolor principal/);
   });
 });
 
