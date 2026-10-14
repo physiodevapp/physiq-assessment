@@ -167,11 +167,12 @@ test('banderas: cadera, cada bandera enlazada según el inventario (docs/razonam
   assert.equal(banderas.length, 45);
   assert.equal(banderas.filter(f => f.pregunta).length, 36);
   assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1']);
-  // Sin «¿Por qué?» todavía: 6 rojas (pendientes de fuente) y 3 amarillas
+  // Razonamiento propio: las 6 rojas sin pregunta y la amarilla de la edad; sin «¿Por qué?», 2 amarillas
+  const propias = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Factores de', 'Tumores óseos', 'Edad >50', 'Aneurisma aórtico:', 'Denominador común:', 'Líquido en', 'Fractura de']);
   const sinPorque = propios.flatMap(s => [...s.banderasRojas.map(f => ['R', f]), ...s.banderasAmarillas.map(f => ['A', f])])
     .filter(([, f]) => typeof f === 'string' || (!f.pregunta && !f.razonamiento)).map(([t, f]) => `${t} ${textoBandera(f).split(' ').slice(0, 2).join(' ')}`);
-  assert.deepEqual(sinPorque, ['R Factores de', 'R Tumores óseos', 'A Edad >50', 'A Antecedente familiar', 'R Aneurisma aórtico:',
-    'R Denominador común:', 'R Líquido en', 'R Fractura de', 'A VSG como']);
+  assert.deepEqual(sinPorque, ['A Antecedente familiar', 'A VSG como']);
 });
 
 test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
