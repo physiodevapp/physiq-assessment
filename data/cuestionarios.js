@@ -678,6 +678,33 @@ export const CUESTIONARIOS = [
     nota: 'La validación española se quedó con 15 ítems en vida diaria (sin el 2, 7, 13, 14, 18 y 20) y no da fórmula para esa versión: se aplica la de la FAAM original a esos 15 (máximo 60). Por eso las diferencias clínicamente importantes de Martin 2005 (8 y 9 puntos, calculadas con 21 ítems) no se dan aquí. Los puntos intermedios (3, 2, 1) se deducen de la escala 0–4.',
   },
   {
+    id: 'visaa',
+    nombre: 'VISA-A',
+    titulo: 'Tendinopatía aquílea',
+    grupo: 'tobillo_pie',
+    validacionEs: 'Hernández-Sánchez 2018 (J Orthop Sports Phys Ther 48(2):111–120; VISA-A-S)',
+    instrucciones: 'Ítems 2 a 5: toca los puntos de la casilla marcada (0 = dolor severo, 10 = sin dolor). En el 8, solo una de las tres ramas.',
+    items: [
+      { n: 1, tipo: 'opciones', t: 'Minutos de rigidez al levantarse', opciones:
+        [0, 10, 20, 30, 40, 50, 60, 70, 80, 90].map(m => ({ t: `${m} min`, v: 10 - m / 10 })).concat([{ t: '100 min o más', v: 0 }]) },
+      { n: 2, t: 'Dolor al estirar el Aquiles en el borde de un escalón', min: 0, max: 10, anclas: ['dolor severo', 'sin dolor'] },
+      { n: 3, t: 'Dolor en las 2 h tras caminar 30 min en llano (0 si no puede)', min: 0, max: 10, anclas: ['dolor severo', 'sin dolor'] },
+      { n: 4, t: 'Dolor al bajar escaleras a paso normal', min: 0, max: 10, anclas: ['dolor severo', 'sin dolor'] },
+      { n: 5, t: 'Dolor con 10 elevaciones de talón seguidas', min: 0, max: 10, anclas: ['dolor severo', 'sin dolor'] },
+      { n: 6, t: 'Saltos a una pierna sin dolor', min: 0, max: 10, anclas: ['0 saltos', '10 saltos'] },
+      { n: 7, tipo: 'opciones', t: 'Deporte o actividad física actual', opciones: [{ t: 'No', v: 0 }, { t: 'Modificado por el dolor', v: 4 }, { t: 'Sin restricciones, a menor nivel', v: 7 }, { t: 'Igual o mayor nivel', v: 10 }] },
+      { n: 8, tipo: 'opciones', t: 'Tiempo que puede entrenar (rama marcada)', opciones: [
+        { t: 'A · sin dolor: 0 min', v: 0 }, { t: 'A · 1–10 min', v: 7 }, { t: 'A · 11–20 min', v: 14 }, { t: 'A · 21–30 min', v: 21 }, { t: 'A · más de 30 min', v: 30 },
+        { t: 'B · con dolor que no le hace parar: 0 min', v: 0 }, { t: 'B · 1–10 min', v: 4 }, { t: 'B · 11–20 min', v: 10 }, { t: 'B · 21–30 min', v: 14 }, { t: 'B · más de 30 min', v: 20 },
+        { t: 'C · el dolor le hace parar: 0 min', v: 0 }, { t: 'C · 1–10 min', v: 2 }, { t: 'C · 11–20 min', v: 5 }, { t: 'C · 21–30 min', v: 7 }, { t: 'C · más de 30 min', v: 10 },
+      ] },
+    ],
+    sinInterpretacion: 'Sin puntos de corte: el original no es diagnóstico. Sirve para comparar al paciente consigo mismo (en la versión española, cambio mínimo detectable de 7 puntos)',
+    interpretacionTexto: 'Suma de 0 a 100 (100 = asintomático).',
+    fuente: 'Hernández-Sánchez 2018 (validación española) · Robinson 2001 (puntuación, reproducida con sus puntos en la versión chilena de Keller 2018)',
+    nota: 'Los puntos por respuesta salen del anexo de Keller 2018 (versión chilena), que conserva la puntuación original; no se ha podido leer la hoja de la VISA-A-S. La hoja que circula con «Este cuestionario no está validado» da los mismos puntos a las ramas A, B y C del ítem 8: está mal.',
+  },
+  {
     id: 'cait',
     nombre: 'CAIT',
     titulo: 'Inestabilidad crónica de tobillo',

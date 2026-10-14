@@ -80,6 +80,7 @@ Leyenda de licencia:
 | Kujala (AKPS) | 🟠 | Kujala | Gil-Gámez 2016, *KSSTA*, PMID 25649731 | Sin bandas; MCID 10 |
 | VISA-P / VISA-A | 🟠 | Visentini / Robinson. El VISA-P-SP lleva © JOSPT | Hernández-Sánchez 2011, PMID 21765223 / 2018, PMID 29237355 (JOSPT) | Sin bandas |
 | FAAM | 🟠 | Martin / Irrgang | Cervera-Garvi 2017, PMID 28852426; Membrilla-Mesa 2022, PMID 34716013 | Sin bandas; MCID 8 (AVD) / 9 (deporte) |
+| VISA-A | Suma 0–100; puntos por respuesta del anexo de Keller 2018 (versión chilena, misma puntuación que el original) | La validación es la española (Hernández-Sánchez 2018); de la chilena solo se toma la puntuación. La hoja «no validada» que circula da los mismos puntos a 8A, 8B y 8C: está mal |
 | CAIT | 🟠 | Hiller | Cruz-Díaz 2013, PMID 23053687; Rodríguez-Fernández 2015, PMID 26292174 | ≤27 original; ≤25 (Wright 2014); ≤24* |
 | IdFAI | 🟠 | Simon; © AOFAS | Cervera-Garvi 2022, PMID 33296608; Izquierdo 2021, PMID 33582620 | ≥11* |
 
@@ -213,10 +214,10 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 | CAIT | Suma 0–30 con los puntos de la hoja del usuario; cortes ≤ 24 (IAC) y ≤ 27 (Hiller), con «zona dudosa» entre los dos | La hoja no dice de qué validación española sale (sus puntos coinciden con el original); «≤ 24» o «< 24» sin leer en Gribble 2014 |
 | LEFS | Suma 0–80 | Etiquetas de la hoja de EE. UU. (la segunda que llegó es la misma traducción); falta la versión española de Cruz-Díaz 2014 |
 
-Pendientes de añadir: **VISA-A** (hace falta la hoja de la VISA-A-S, Hernández-Sánchez 2018: la que circula dice «Este cuestionario no está validado» y da los mismos puntos a las ramas A, B y C del ítem 8) e **IdFAI** (Cervera-Garvi 2020, IdFAI-Sp, leído: rango 0–37 y corte ≥ 10,5 en la versión española, pero el artículo no incluye el cuestionario; hace falta la hoja con los puntos de cada respuesta).
+Pendiente de añadir: **IdFAI** (Cervera-Garvi 2020, IdFAI-Sp, leído: rango 0–37 y corte ≥ 10,5 en la versión española, pero el artículo no incluye el cuestionario; hace falta la hoja con los puntos de cada respuesta).
 
 Pendiente:
 
-- Regionales: VISA-A e IdFAI (ver arriba).
+- Regionales: IdFAI (ver arriba).
 - Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
 - physiq-report no lee aún el campo `cu` del payload.

@@ -298,7 +298,7 @@ test('FAAM: porcentaje por subescala sin las N/A; LEFS: suma 0–80', () => {
 });
 
 test('cada PROM de las hipótesis (salvo escalas de dolor y los pendientes) está en la calculadora', () => {
-  const pendientes = ['VISA-A', 'IdFAI'];   // puntos por respuesta sin verificar (docs/cuestionarios.md)
+  const pendientes = ['IdFAI'];   // puntos por respuesta sin verificar (docs/cuestionarios.md)
   const ids = new Set(CUESTIONARIOS.map(d => d.id));
   for (const v of PROM_VALIDADOS_ES.filter(x => !['NPRS', 'EVA', ...pendientes].includes(x))) {
     const id = v.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -317,4 +317,12 @@ test('CAIT: máximos suman 30, mínimos 0; cortes 24 y 27', () => {
   assert.match(con(27), /^Zona dudosa/);
   assert.match(con(25), /^Zona dudosa/);
   assert.match(con(24), /^Compatible/);
+});
+
+test('VISA-A: 0–100; ítem 1 por minutos y ramas 8A/8B/8C con sus puntos', () => {
+  const d = def('visaa');
+  assert.equal(L.puntuar(d, { 1: 0, 2: 10, 3: 10, 4: 10, 5: 10, 6: 10, 7: 3, 8: 4 }).total, 100);
+  assert.equal(L.puntuar(d, { 1: 10, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 }).total, 0);
+  assert.deepEqual(d.items[0].opciones.map(o => o.v), [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]);
+  assert.deepEqual(d.items[7].opciones.map(o => o.v), [0, 7, 14, 21, 30, 0, 4, 10, 14, 20, 0, 2, 5, 7, 10]);
 });
