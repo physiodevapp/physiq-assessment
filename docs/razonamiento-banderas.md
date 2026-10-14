@@ -98,7 +98,7 @@ Una bandera es un texto o un objeto:
   - Amarillas: sin mejoría tras 1 mes (Downie), historia familiar de espondilitis anquilosante (NG65).
 - **Pendientes de fuente:** ninguna roja.
 - **Amarillas sin razonamiento:** dolor de espalda y abdominal al mismo nivel, AINE crónicos, dolor modificado por la ingesta, osteoporosis o corticoides, factores de riesgo cardiovascular, inmunosupresión.
-- **Revisión clínica del usuario:** hecha (2026-10). Falta la de `pq_nervio_col`, añadida después.
+- **Revisión clínica del usuario:** hecha (2026-10), incluidas las banderas y la pregunta `pq_nervio_col` añadidas después.
 
 ## Siguientes pasos
 

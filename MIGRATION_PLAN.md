@@ -309,11 +309,11 @@ Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero an
 - [x] Pregunta urgente de embarazo ectópico en lumbar (`l_e8`) y cadera (`ca_u5`): la bandera decía «urgencia» y ninguna pregunta la disparaba (NICE NG126)
 - [x] Banderas posquirúrgicas filtradas por región (`regiones`, igual que sus preguntas)
 - [x] Esquema, ⓘ y panel (`banderaHTML`, `razonBanderaHTML`, `abrirRazonBandera`, `app.js`), tests (`tests/unit/razonamiento.mjs`, smoke `--solo banderas`), `tests/referencias.mjs` cuenta las fuentes de las banderas
-- [x] Variante de `pq_nervio` para columna (decisión del usuario, 2026-10): `pq_nervio_col` (lumbar y cervical, urgencia; Finucane 2020, Wang 2020, Schroeder 2017) y su bandera. Texto clínico pendiente de revisión del usuario
+- [x] Variante de `pq_nervio` para columna (decisión del usuario, 2026-10): `pq_nervio_col` (lumbar y cervical, urgencia; Finucane 2020, Wang 2020, Schroeder 2017) y su bandera. Revisado por el usuario (2026-10)
 
 | Región / sistema | Enlaces (`pregunta`, `fase1`) | Razonamiento propio (rojas) | Amarillas | Revisión usuario | Notas |
 |---|---|---|---|---|---|
-| Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [x] 8 de 8 (Finucane 2020, Downie 2013, NICE NG12 y NG65, Goodman caps. 6 y 10, Belyayeva 2024, Kimyaghalam 2024, Zemaitis 2026) | [x] 2 (Downie, NG65); el resto sin hacer | [x] (2026-10); falta revisar percusión costovertebral, Leriche, la masa testicular ampliada y `pq_nervio_col` | |
+| Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [x] 8 de 8 (Finucane 2020, Downie 2013, NICE NG12 y NG65, Goodman caps. 6 y 10, Belyayeva 2024, Kimyaghalam 2024, Zemaitis 2026) | [x] 2 (Downie, NG65); el resto sin hacer | [x] (2026-10), incluidos percusión costovertebral, Leriche, la masa testicular ampliada y `pq_nervio_col` | |
 | Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 13 preguntas | [ ] | [ ] | [ ] | Una vez para todas las regiones |
 | Cadera, cervical, hombro, rodilla, codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
 
