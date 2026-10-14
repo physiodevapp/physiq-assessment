@@ -311,7 +311,8 @@ Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo enter
 - [x] L1 — Decisiones 6–10 tomadas según la recomendación (usuario, 2026-10)
 - [x] L1 — Leídas Petersen 2021 (SINSS) y Barakatt 2009 (×2), de acceso libre; notas y propuesta en `docs/plan-tratamiento.md`, «Fuentes leídas»
 - [x] L1 — Leídos Zusman 1998 y Silbernagel 2007 (PDF del usuario); decisiones 11–15 aceptadas por el usuario (2026-10)
-- [ ] Opcional: Maitland's Vertebral Manipulation, 7.ª ed. (la tiene el usuario), páginas de gravedad e irritabilidad
+- [x] Leído Maitland 7.ª ed., cap. 6 (pp. 97–170); propuestas 16–19 en `docs/plan-tratamiento.md`, pendientes del usuario
+- [ ] Maitland 7.ª ed., caps. 8 y 9 (pp. 183–228), cuando los aporte el usuario
 - [ ] L2 — Parte sin IA en lumbar (piloto)
 - [ ] L3 — Parte sin IA en las 7 regiones
 - [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)

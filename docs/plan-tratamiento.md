@@ -142,11 +142,29 @@ Leídas enteras desde PubMed Central (página del artículo; la API de texto com
 - Seguir corriendo y saltando con ese modelo no fue peor que el reposo activo durante 6 semanas; los dos grupos mejoraron igual (VISA-A-S 57 → 85 y 57 → 91 a 12 meses). «No se demostraron efectos negativos»: no prueba que sea mejor (pp. 897, 902).
 - Programa común: ejercicios diarios por fases (1–2, 2–5, 3–12 semanas y hasta 6 meses), con series y repeticiones en la tabla 3.
 
+**Maitland's Vertebral Manipulation, 7.ª ed., cap. 6 «Examination», pp. 97–170** (con una contribución de B. C. Edwards; PDF del capítulo aportado por el usuario, leído entero; el prefacio lo firman Hengeveld y Banks; confirmar autores y año en la portada antes de registrarlo). Libro de texto, opinión experta.
+- Irritabilidad: poca actividad que causa mucho dolor que tarda en calmarse. Se valora con tres datos ligados a una actividad concreta: el vigor de la actividad que lo provoca, cuánto aumentan los síntomas y cuánto tardan en volver a su nivel previo (pp. 117, 101). Ejemplo de la plancha: si media hora de planchar obliga a parar pero el dolor cede en media hora y se puede volver a planchar, la irritabilidad es menor y permite la exploración completa y algo de tratamiento el primer día sin probable exacerbación; si no cede hasta después de una noche de sueño, la exploración y el tratamiento se adaptan para evitarla (p. 117).
+- Gravedad: el dolor es «severo» si obliga a interrumpir la actividad por su intensidad. Un trastorno puede ser severo sin ser muy irritable (los síntomas ceden enseguida) y aun así pedir prudencia (pp. 101, 117). Irritabilidad y gravedad piden cuidado al explorar y **al progresar el tratamiento** (p. 117).
+- Dos formas de llevar el movimiento: **«hasta el dolor»** (solo hasta donde empieza o aumenta el dolor, y quizá un poco más para ver cómo se comporta) cuando el cuadro es irritable o severo o su naturaleza pide prudencia, y **«hasta el límite»** con sobrepresión cuando no (pp. 101, 127–128).
+- Estabilidad: si la gravedad o el lugar de los síntomas varían mucho de un día a otro, el trastorno es inestable; la exploración se modifica para no exacerbar, el tratamiento debe ser suave y la evaluación, máxima en cada sesión (pp. 101, 107).
+- Hoja de planificación (tabla 6.8, p. 124): ¿dolor severo o latente?, ¿irritable? (movimiento que lo provoca, intensidad, tiempo hasta que cede), ¿la naturaleza pide prudencia? (patología, facilidad de exacerbación, personalidad), contraindicaciones, ¿exploración suave o moderadamente firme?, objetivos a corto y largo plazo, precauciones y consejo para prevenir recurrencias.
+- Reevaluación: anotar con asterisco los datos que servirán para medir el cambio (pp. 100–101); la demostración funcional del paciente es un parámetro de control para reevaluar (p. 128); el comportamiento de los síntomas da hechos con los que medir el progreso («camina hasta la verja antes de que le duela la pierna», p. 116). A veces la evaluación completa solo es posible en la segunda sesión, cuando se ha visto la reacción a la primera («D más 1», p. 156).
+- Dolor radicular: si es severo, exploración neurológica cuidadosa y tratamiento suave (p. 137); los cambios neurológicos se reevalúan al empezar cada sesión y su deterioro se comunica al médico (p. 136).
+- Técnicas neurales: el slump rara vez es la primera técnica; si se usa con vigor, dejar 2–3 días entre sesiones y reevaluar a las 24 h, porque las estructuras del canal tardan más en recuperarse de las agujetas (p. 149).
+- Calor local: el de un trastorno mecánico desaparece o disminuye mucho tras dos sesiones de movilización; el de una enfermedad activa no cambia en dos tratamientos, y eso puede indicar que el problema no es de fisioterapia (p. 151).
+- Dolor nocturno que obliga a levantarse: investigar patología más seria (p. 117); ya lo cubre el cribado.
+
+### Propuestas tras Maitland (pendientes de la decisión del usuario)
+16. **Citar a Maitland para las definiciones y los dos modos** («hasta el dolor» / «hasta el límite»), y a Petersen 2021 para la combinación de gravedad × irritabilidad. Los escalones A/B/C quedan igual (decisión 11).
+17. **Estabilidad**: la fase 3 ya registra `estabilidad` (Mejora / Estable / Empeora). Con «Empeora», tratamiento suave, sin C, y evaluación en cada sesión (pp. 101, 107). Maitland habla de variación día a día, no de empeoramiento: se diría así.
+18. **Bloque de reevaluación** de cada sesión: signo comparable (`signoComparable`) y la actividad que refiere el paciente como control; en la sesión 2, la reacción a la primera («D más 1»). Con una hipótesis radicular, exploración neurológica al empezar cada sesión, y deterioro → médico (p. 136).
+19. **Movilización neural vigorosa**: ≥ 2–3 días entre sesiones y reevaluar a las 24 h (p. 149). Encaja con el plan B (2 sesiones/semana) si se espacian.
+
 ### Decisiones 11–15 (usuario, 2026-10)
 Las cinco recomendaciones tras la lectura se aceptaron y están arriba, en «Decisiones tomadas».
 
-### Pendiente de leer (opcional)
-- Hengeveld, Banks, *Maitland's Vertebral Manipulation*, 7.ª ed. (el usuario la tiene): las páginas de gravedad e irritabilidad que dé el índice (p. 487), o los capítulos 6 (Examination, pp. 97–170), 8 y 9 (Selection y Application of techniques, pp. 183–228) y el glosario (p. xv). Es la fuente original y podría sustituir a Petersen 2021 como cita de los escalones. Confirmar autores en la portada.
+### Pendiente de leer
+- *Maitland's Vertebral Manipulation*, 7.ª ed., capítulos 8 y 9 (Selection y Application of techniques, pp. 183–228): cómo se elige la técnica y su grado según la irritabilidad. Es lo más directamente aplicable a los niveles A/B/C. El cap. 6 ya está leído.
 
 ## Datos
 
