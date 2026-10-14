@@ -1449,6 +1449,7 @@ const ACCIONES_DIALOGO = [
   ['Reiniciar', true], ['Pasar a completa', false], ['Cambiar región', true], ['Importar', true],
   ['Actualizar', false], ['Borrar sesión', true], ['Limpiar', true], ['Descartar', true],
   ['<span class="btn-text-full">Sí, cancelar</span><span class="btn-text-short">Cancelar</span>', true, 'Seguir'],
+  ['<span class="btn-text-full">Compartir igualmente</span><span class="btn-text-short">Compartir</span>', false],
 ];
 async function checkDialogos(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 320, height: 700 } });
@@ -2604,6 +2605,135 @@ async function checkBandaFormulario(page) {
   return res;
 }
 
+// Fase 6 «Plan de tratamiento» (opcional; docs/plan-tratamiento.md): lumbar
+// por la interfaz real hasta la 5 y de ahí a la 6 con «Plan de tratamiento →».
+// Escritorio: paso 6 en la barra, hipótesis por defecto, gravedad e
+// irritabilidad marcadas y editables (con irritabilidad alta no hay C), menú
+// de compartir con los tres documentos (el de casa sin fuentes), vuelta a la
+// 5 con los resultados, y la sesión restaurada en la 6 tras recargar. Una
+// urgencia de la fase 2 bloquea el plan; otra región muestra el aviso de
+// piloto. 320 px: sin desbordar, tarjetas a todo el ancho, barra y hoja de
+// fases con la 6.
+async function checkFase6(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 6): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6): ${msg.text()}`); });
+  await page.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json', body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo' }, demoOnly: false }),
+  }));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const r = {};
+  await walkRegion(page, 'lumbar');
+  r.botonEnFase5 = await page.isVisible('#btnIrPlan');
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => state.currentPhase === 6
+    && document.getElementById('nav6').classList.contains('active')
+    && document.getElementById('phaseIndicator').textContent.includes('FASE 6')
+    && document.querySelectorAll('#planContenido .card').length === 5);
+  r.hipotesisPorDefecto = await page.evaluate(() => document.querySelectorAll('.plan-hip .option-btn.selected').length === 1 && state.planTratamiento.hipotesis.length === 1);
+  r.gravedadMarcada = await page.evaluate(() => {
+    const sel = [...document.querySelectorAll('#planContenido .option-btn.selected')].map(b => b.textContent.trim());
+    return sel.includes('Moderada');   // NRS 6 → moderada
+  });
+  const botonNivel = k => page.locator('.plan-niveles .option-btn', { hasText: new RegExp(`^${k} ·`) });
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'alta\')"]');
+  r.altaSinC = await botonNivel('C').isDisabled() && (await page.textContent('.plan-escalon-tit')).includes('Muy suave');
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
+  await botonNivel('C').click();
+  r.bajaConC = await page.evaluate(() => state.planTratamiento.nivel === 'C');
+  // Compartir: los tres documentos del plan
+  const leer = () => page.evaluate(() => navigator.clipboard.readText());
+  await page.click('#btnCompartirPlan');
+  await page.waitForSelector('#compartirOverlay.open');
+  r.tresOpciones = (await page.locator('#compartirOpciones .compartir-op').allTextContents()).map(t => t.trim().split('\n')[0].trim()).join('|') === 'Plan de sesión|Plan del mes|Programa para casa';
+  await page.click('#compartirOpciones .compartir-op >> nth=0');
+  await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+  r.sesionCopiada = (await leer()).startsWith('PLAN DE SESIÓN');
+  // Irritabilidad alta → B muy suave aunque la gravedad sea mínima
+  await page.click('.option-btn[onclick="planElegir(\'gravedad\',\'minima\')"]');
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'alta\')"]');
+  r.altaMinimaMuySuave = (await page.textContent('.plan-escalon-tit')).includes('Muy suave');
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
+  await botonNivel('C').click();
+  // Minutos editables: los rangos se recalculan y avisa si no suman 50
+  await page.fill('.plan-bloque:nth-child(3) .plan-duracion input', '20');
+  await page.dispatchEvent('.plan-bloque:nth-child(3) .plan-duracion input', 'change');
+  await page.waitForFunction(() => document.getElementById('planTotalMin')?.textContent.includes('suman 47 min'));
+  r.minutosEditables = await page.evaluate(() => [...document.querySelectorAll('.plan-bloque-min')].map(e => e.textContent.trim()).join('|') === '0–5 min|5–12 min|12–32 min|32–42 min|42–47 min'
+    && !!document.querySelector('.plan-chip'));
+  await page.fill('.plan-bloque:nth-child(3) .plan-duracion input', '23');
+  await page.dispatchEvent('.plan-bloque:nth-child(3) .plan-duracion input', 'change');
+  await page.waitForFunction(() => !document.getElementById('planTotalMin')?.textContent.includes('suman'));
+  // Sin «cuándo parar»: pide confirmación y la sección no sale
+  await page.fill('#planNotasCasa', 'Caminar 10 minutos al día');
+  await page.click('#btnCompartirPlan');
+  await page.click('#compartirOpciones .compartir-op >> nth=2');
+  await page.waitForSelector('#confirmBanner');
+  r.pideParar = (await page.textContent('#confirmBanner .confirm-box-title')).includes('Programa incompleto');
+  await page.click('#confirmAction');
+  await page.waitForFunction(() => !document.getElementById('confirmBanner'));
+  const casa = await leer();
+  r.casaLlana = casa.startsWith('PROGRAMA PARA CASA') && casa.includes('Caminar 10 minutos') && !/Maitland|Petersen|grado|Nivel/.test(casa)
+    && !casa.includes('Cuándo parar');
+  await page.fill('#planParar', 'Si aparece hormigueo en la pierna');
+  await page.click('#btnCompartirPlan');
+  await page.click('#compartirOpciones .compartir-op >> nth=2');
+  await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+  r.conParar = !(await page.$('#confirmBanner')) && (await leer()).includes('Cuándo parar:\nSi aparece hormigueo');
+  // Atrás a la 5 con sus resultados; la 6 sigue en la barra
+  await page.click('#phase6 .nav-buttons .btn-secondary');
+  r.vueltaA5 = await page.evaluate(() => state.currentPhase === 5 && document.querySelectorAll('#resultsContent .summary-section').length > 0
+    && document.getElementById('nav6').classList.contains('completed'));
+  // Sesión restaurada en la 6 tras recargar (solo se guarda con nombre)
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  // saveSession() toma el nombre del campo #patientName
+  await page.evaluate(() => { document.getElementById('patientName').value = 'Prueba Plan'; saveSession(); });
+  await page.waitForTimeout(400);
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForFunction(() => state.currentPhase === 6 && document.querySelectorAll('#planContenido .card').length === 5, null, { timeout: 8000 }).catch(() => {});
+  r.restaurada = await page.evaluate(() => state.currentPhase === 6 && state.planTratamiento?.nivel === 'C'
+    && document.querySelectorAll('#planContenido .card').length === 5 && document.querySelectorAll('#resultsContent .summary-section').length > 0);
+  // Urgencia de la fase 2: sin plan
+  r.bloqueo = await page.evaluate(() => { state.sistemicoAnswers.l6 = 'SI'; goToPhase(5); goToPhase(6); return true; })
+    && await page.waitForFunction(() => document.querySelector('#planContenido .alert-danger') && !document.querySelector('#planContenido .card'), null, { timeout: 4000 }).then(() => true).catch(() => false);
+  // Bloqueado: «📤 Compartir» no ofrece el programa para casa
+  await page.click('#btnCompartirPlan');
+  await page.waitForSelector('#compartirOverlay.open');
+  r.bloqueoSinCasa = (await page.locator('#compartirOpciones .compartir-op').allTextContents()).map(t => t.trim().split('\n')[0].trim()).join('|') === 'Plan de sesión|Plan del mes';
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+  // Sin NRS: aviso con enlace a la fase 3
+  await page.evaluate(() => { state.sistemicoAnswers = {}; state.severidad = null; state.planTratamiento.gravedad = null; goToPhase(5); goToPhase(6); });
+  await page.waitForSelector('#planContenido .plan-enlace');
+  await page.click('#planContenido .plan-enlace');
+  r.enlaceNRS = await page.waitForFunction(() => state.currentPhase === 3, null, { timeout: 4000 }).then(() => true).catch(() => false);
+  // Otra región: aviso de piloto
+  r.piloto = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = 'hombro'; goToPhase(5); goToPhase(6); return true; })
+    && await page.waitForFunction(() => document.querySelector('#planContenido .alert-info')?.textContent.includes('piloto'), null, { timeout: 4000 }).then(() => true).catch(() => false);
+  await page.evaluate(() => { state.region = 'lumbar'; goToPhase(5); goToPhase(6); });
+  await page.waitForSelector('#planContenido .card');
+  // 320 px: sin desbordar, tarjetas a todo el ancho, barra y hoja de fases
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.waitForTimeout(250);
+  r.movil320 = await page.evaluate(() => {
+    const ancho = document.documentElement.clientWidth;
+    const sinDesbordar = document.documentElement.scrollWidth <= ancho;
+    const cards = [...document.querySelectorAll('#planContenido .card')];
+    const bandas = cards.every(c => { const b = c.getBoundingClientRect(); return Math.round(b.left) <= 0 && Math.round(b.right) >= ancho; });
+    return sinDesbordar && bandas && document.getElementById('mobilePhaseLabel').textContent.includes('Fase 6');
+  });
+  await page.click('#mobilePhaseBar');
+  r.hojaFases = await page.evaluate(() => document.querySelectorAll('#phaseSheetList .phase-sheet-item').length === 7);
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function nuevaPagina(browser, errors, moduleStatus) {
   const page = await browser.newPage();
   page.on('pageerror', err => errors.push(`pageerror: ${err.message}`));
@@ -2785,6 +2915,12 @@ const SECCIONES = [
   { id: 'fase5', titulo: 'Fase 5: pauta por situación y lo que nunca se pliega:', run: async ({ browser, errors }) => {
     const r = await checkFase5Plegado(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
+    const r = await checkFase6(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; otra región → piloto; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
