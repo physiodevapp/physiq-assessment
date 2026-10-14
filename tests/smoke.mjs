@@ -825,7 +825,7 @@ async function checkBanderas(browser) {
   await page.click('#tab_l_espondilo');
   const panel = '#panel_l_espondilo';
   r.sinPorque = await page.evaluate(() => {
-    const f = [...document.querySelectorAll('#panel_l_urogenital .flag-item')].filter(el => /costovertebral/.test(el.textContent));
+    const f = [...document.querySelectorAll('#panel_l_gi .flag-item')].filter(el => /AINEs/.test(el.textContent));
     return f.length === 1 && !f[0].querySelector('.flag-porque');
   });
   await page.click(`${panel} .flag-item:has-text("Embarazo ectópico") .flag-porque`);

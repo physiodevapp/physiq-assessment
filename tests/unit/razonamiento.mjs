@@ -149,13 +149,16 @@ test('banderas: lumbar, cada bandera enlazada según el inventario (docs/razonam
     .flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => typeof f !== 'string');
   assert.equal(enlaces.filter(f => f.pregunta).length, 21);
   assert.deepEqual(enlaces.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4', 'br1']);
-  // Razonamiento propio: 6 rojas y 2 amarillas; percusión costovertebral y
-  // Leriche, pendientes de fuente (Goodman, StatPearls en PDF del usuario)
+  // Razonamiento propio: las 8 rojas sin pregunta y 2 amarillas
   const propias = SYSTEMIC_SCREENING.lumbar.sistemas.flatMap(s => [
     ...s.banderasRojas.filter(f => f.razonamiento).map(f => `R ${f.texto.split(' ').slice(0, 2).join(' ')}`),
     ...s.banderasAmarillas.filter(f => f.razonamiento).map(f => `A ${f.texto.split(' ').slice(0, 2).join(' ')}`)]);
-  assert.deepEqual(propias, ['R Pérdida de', 'R Fractura patológica', 'A Dolor lumbar', 'R Masa testicular',
-    'R Pérdida de', 'R Síntomas oculares', 'A Historia familiar', 'R Signos neurológicos']);
+  assert.deepEqual(propias, ['R Pérdida de', 'R Fractura patológica', 'A Dolor lumbar', 'R Prueba de', 'R Masa testicular',
+    'R Pérdida de', 'R Síntomas oculares', 'A Historia familiar', 'R Síndrome de', 'R Signos neurológicos']);
+  // Ninguna roja propia de lumbar sin «¿Por qué?»
+  const sinPorque = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_'))
+    .flatMap(s => s.banderasRojas).filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento));
+  assert.deepEqual(sinPorque.map(textoBandera), []);
 });
 
 test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar» solo con detalle', () => {

@@ -93,16 +93,15 @@ Una bandera es un texto o un objeto:
 ## Estado de lumbar (2026-10)
 
 - **Enlaces:** las 21 banderas que tienen pregunta en su sistema, más 3 con `fase1` (pérdida de peso ×2 → `br1`; dolor que no varía con la postura → `br4`).
-- **Razonamiento propio** (fuentes leídas en la sesión: Finucane 2020, documento completo del marco IFOMPT; Downie 2013, texto completo en PMC; NICE NG12 y NG65 en nice.org.uk):
-  - Rojas: pérdida de peso inexplicada (l_cancer), fractura patológica, masa testicular, pérdida de peso o saciedad precoz (l_gi), uveítis o psoriasis, signos neurológicos con fiebre.
+- **Razonamiento propio** (fuentes leídas en la sesión: Finucane 2020, documento completo del marco IFOMPT; Downie 2013, texto completo en PMC; NICE NG12 y NG65 en nice.org.uk; después, PDF del usuario: Goodman 2018, caps. 6 y 10, y StatPearls «Acute Pyelonephritis» (Belyayeva 2024), «Aortoiliac Occlusive Disease» (Kimyaghalam 2024) y «Peripheral Arterial Disease» (Zemaitis 2026)):
+  - Rojas, las 8 sin pregunta: pérdida de peso inexplicada (l_cancer), fractura patológica, percusión costovertebral (Goodman cap. 10, Belyayeva), masa testicular (NICE NG12 y, después, Goodman cap. 10, que explica su relación con el dolor lumbar), pérdida de peso o saciedad precoz (l_gi), uveítis o psoriasis, síndrome de Leriche (Kimyaghalam, Goodman cap. 6, Zemaitis), signos neurológicos con fiebre. Un test comprueba que ninguna roja propia de lumbar queda sin «¿Por qué?».
   - Amarillas: sin mejoría tras 1 mes (Downie), historia familiar de espondilitis anquilosante (NG65).
-- **Pendientes de fuente:** percusión costovertebral (Goodman cap. 10, urogenital; StatPearls «Acute Pyelonephritis», Belyayeva 2024, NBK519537) y síndrome de Leriche (Goodman cap. 6, cardiovascular; StatPearls «Aortoiliac Occlusive Disease», Kimyaghalam 2024, NBK559086, y «Peripheral Arterial Disease», Zemaitis 2026, NBK430745; el capítulo «Leriche Syndrome» está archivado y no se usa). NCBI Bookshelf sigue respondiendo con una comprobación anti-bots.
+- **Pendientes de fuente:** ninguna roja.
 - **Amarillas sin razonamiento:** dolor de espalda y abdominal al mismo nivel, AINE crónicos, dolor modificado por la ingesta, osteoporosis o corticoides, factores de riesgo cardiovascular, inmunosupresión.
 - **Revisión clínica del usuario:** hecha (2026-10). Falta la de `pq_nervio_col`, añadida después.
 
 ## Siguientes pasos
 
-1. Lumbar: percusión costovertebral y Leriche cuando lleguen los PDF.
 2. Sistemas compartidos (posquirúrgico, endocrino, hematológico): razonamiento propio de sus banderas sin pregunta, una vez para todas las regiones.
 3. Resto de regiones, una por sesión: inventario, enlaces y razonamiento propio de las rojas.
 4. Amarillas, al final o nunca si no aportan.
