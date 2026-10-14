@@ -354,7 +354,8 @@ Diseño y decisiones: `docs/sintomas-multiples.md` (léelo entero antes de empez
   - [x] Cervical (2026-10): las 7 zonas de la tabla en `data/cervical.js`; unit y smoke (`sintomas`) ampliados. Revisadas por el usuario (2026-10)
   - [x] Hombro (2026-10): las 6 zonas de la tabla en `data/hombro.js`; unit y smoke (`sintomas`) ampliados. Pendiente de revisión por el usuario
   - [x] Codo (2026-10): las 6 zonas de la tabla en `data/codo.js`; unit y smoke (`sintomas`) ampliados. Pendiente de revisión por el usuario
-  - [ ] Cadera · [ ] Rodilla · [ ] Tobillo y pie
+  - [x] Cadera (2026-10): las 6 zonas de la tabla en `data/cadera.js`; unit y smoke (`sintomas`) ampliados. Pendiente de revisión por el usuario
+  - [ ] Rodilla · [ ] Tobillo y pie
 - [ ] N3 — Pistas en el árbol (`pasos` en cada zona → recuadro «📝» en el paso), región a región
 - [ ] N4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente
 - [ ] N5 — physiq-report: mostrar `z1` / `ss` (otro repositorio)
