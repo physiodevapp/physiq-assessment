@@ -1,21 +1,26 @@
 # Fase 6 «Plan de tratamiento» — diseño
 
-Estado: **diseño cerrado, sin implementar** (2026-10): las 10 decisiones están tomadas; falta la fuente de la decisión 6 para empezar L2. Nada de este documento está en el código todavía. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
+Estado: **diseño cerrado, sin implementar** (2026-10): las 15 decisiones están tomadas y las fuentes de la decisión 6 leídas; L2 puede empezar. Nada de este documento está en el código todavía. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
 
 Qué es: una fase nueva tras los resultados (fase 5) que propone **una sesión de 50 minutos a tres niveles de carga** y **un plan de un mes** en dos variantes: **A**, 1 sesión por semana, y **B**, 2 sesiones por semana. Tiene una parte sin IA, construida con lo que la app ya sabe, y una capa opcional con IA que la detalla.
 
 ## Decisiones tomadas (2026-10)
 
-1. **Las tres propuestas de sesión son la misma pauta a tres niveles de carga**, no tres enfoques distintos. **A** queda por debajo de la irritabilidad registrada, **B** se ajusta a ella y **C** sube un escalón. Con irritabilidad alta, o con miedo al movimiento alto, **C no se genera** y la fase dice por qué. La irritabilidad (SINSS, fase 3) es la variable que cambia la dosis de una sesión, y ya está registrada. Diferenciar por enfoque (manual / activo / educación) obligaría a proponer abordajes que la pauta citada no cubre.
+1. **Las tres propuestas de sesión son la misma pauta a tres niveles de carga**, no tres enfoques distintos. **A** queda un escalón por debajo de lo que permiten la gravedad y la irritabilidad, **B** se ajusta a ellas y **C** sube un escalón. **C solo se genera con irritabilidad baja**; si no, la fase dice por qué (precisado por las decisiones 11–15). Diferenciar por enfoque (manual / activo / educación) obligaría a proponer abordajes que la pauta citada no cubre.
 2. **Fase 6 con una parte sin IA, más una capa de IA opcional.** La parte sin IA (esqueleto de sesión y de mes) funciona también en el hub, sin licencia ni coste, y es comprobable con tests unitarios. La IA («✨ Detallar con IA») solo funciona en standalone y rellena huecos dentro de ese marco, nunca lo cambia.
 3. **Lector: el fisio.** El plan de sesión y el del mes son para el fisio (lenguaje técnico, criterios de progresión, fuentes). La única salida para el paciente es el **programa domiciliario**, en lenguaje llano, como ya se separan `📄 Informe` y `📋 Notas`.
 4. **La IA lee los datos, nunca el texto del informe IA.** Recibe el payload, los datos ampliados (`construirAmpliado()`) y, si existe, la **transcripción** ya guardada en `state.informeIA.transcripcion`. El informe es información de segunda mano: las revisiones (rondas 1–29, `docs/informe-ia.md`) encontraron lados, NRS y frecuencias inventados, y planificar sobre él los propagaría. Reusar la transcripción además evita volver a mandar el audio a Whisper.
 5. **Con una derivación sin resolver no hay plan.** Ver «Bloqueos», abajo.
-6. **Los modificadores por irritabilidad y los criterios de progresión genéricos solo se escriben desde una fuente leída**, que aporta el usuario (como los capítulos de Lluch 2020). Candidatas: el concepto de irritabilidad de Maitland y sus revisiones (p. ej. Barakatt 2009) y el marco SINSS; ninguna está hoy en `data/referencias.js`. **Bloquea L2**: hasta tenerla, la sesión A/B/C no se implementa.
+6. **Los modificadores por irritabilidad y los criterios de progresión genéricos solo se escriben desde una fuente leída**, que aporta el usuario (como los capítulos de Lluch 2020). Candidatas: el concepto de irritabilidad de Maitland y sus revisiones (p. ej. Barakatt 2009) y el marco SINSS; ninguna está hoy en `data/referencias.js`. Leídas Petersen 2021, Barakatt 2009 (×2), Zusman 1998 y Silbernagel 2007 (ver «Fuentes leídas»); con ellas se tomaron las decisiones 11–15, y L2 ya no está bloqueada.
 7. **Hipótesis sin pauta (49 de 126).** Fase 6 da la estructura (bloques, reevaluación, PROM, pronóstico), pero la intervención dice «Pauta a criterio del fisio», y la IA tampoco la rellena. Es lo coherente con «nunca inventar una dosis».
 8. **Volumen concreto propuesto por la IA cuando la guía no lo fija** (series, repeticiones, minutos): permitido solo como «Sugerencia de la IA, sin fuente en PhysiQ», visualmente separado de la pauta citada. El programa domiciliario no se puede compartir hasta marcar sus puntos de revisión como revisados.
 9. **Fuera del payload y de physiq-report en la primera versión.** Se decide cuando el plan se haya usado en consulta.
 10. **Una hipótesis por plan por defecto, y una segunda opcional.** Con dos, la intervención principal se reparte entre ambas y el plan avisa de que el tiempo por hipótesis baja.
+11. **Los niveles dependen de gravedad × irritabilidad** (Petersen 2021). B toma el vigor y la extensión que SINSS da a esa combinación; A, un escalón menos; C, un escalón más, y **solo con irritabilidad baja** (con gravedad alta e irritabilidad baja SINSS permite llegar al límite pasivo, porque lo provocado cede rápido; con irritabilidad alta pide prudencia).
+12. **La matriz de irritabilidad de la fase 3 no se toca ahora**: está en el piloto y su nivel va al payload (`ir`) y a physiq-report. Fase 6 separa las dos dimensiones solo para sí: **gravedad** = NRS de la fase 3 con los cortes de SINSS (0–3 / 4–7 / 8–10); **irritabilidad** = solo los ítems de la matriz que la miden (dolor en reposo, movimiento, tolerancia). Con el nivel elegido directamente (modo breve) o sin NRS, usa lo que haya y lo marca «estimado». El fisio ve las dos y puede cambiarlas. Revisar la matriz (sus cortes de NRS no son los de SINSS) es una tarea aparte.
+13. **El miedo al movimiento no bloquea C**: con miedo «Sí» o riesgo psicosocial alto, fase 6 muestra un recordatorio de bandera amarilla (SINSS la incluye en «Naturaleza») y C sigue disponible. Lo leído no dice que haya que bajar la carga por el miedo; Zusman 1998 advierte, al contrario, contra confundir la prudencia del concepto de irritabilidad con una desconfianza indebida hacia el movimiento.
+14. **Criterio de progresión**: el de la pauta de la hipótesis cuando lo trae (p. ej. una de cadera: hasta 4/10 durante la actividad y sin subir más de 2/10 a las 12–24 h, `data/cadera.js`; una de rodilla: ≤ 2/10 durante la actividad y a la mañana siguiente, `data/rodilla.js`); si no, el genérico de SINSS y Zusman: al principio lo mínimo que no recaiga, reintroducir lo que agravaba cuando baja la irritabilidad, progresar al ritmo de la curación y de los síntomas, y reevaluar dentro de la sesión y entre sesiones. El modelo de monitorización del dolor (Silbernagel 2007) **no** se usa como genérico: se estudió en tendinopatía aquílea de porción media; solo podría ofrecerse en tendinopatías cuya pauta no traiga criterio, y como lo que es.
+15. **El nivel es orientativo**: fase 6 dice que el juicio de irritabilidad varía entre fisioterapeutas (Barakatt 2009: acuerdo del 71 %, kappa 0,39–0,44) y deja cambiar gravedad e irritabilidad.
 
 ## Punto de partida (medido en el código, 2026-10)
 
@@ -75,11 +80,11 @@ Los tres niveles se construyen así, todos sobre la misma pauta:
 
 | | Cuándo se genera | Modificador |
 |---|---|---|
-| **A — por debajo** | Siempre | Menos carga que la que la irritabilidad permite; más tiempo de educación |
-| **B — ajustada** | Siempre | La que corresponde a la irritabilidad registrada |
-| **C — por encima** | Solo con irritabilidad Baja y sin miedo al movimiento alto | Un escalón más de carga |
+| **A — por debajo** | Siempre | Un escalón menos de vigor y extensión que B; más tiempo de educación |
+| **B — ajustada** | Siempre | El vigor y la extensión que SINSS da a la gravedad × irritabilidad del paciente (decisión 11) |
+| **C — por encima** | Solo con irritabilidad baja (decisión 11; el miedo al movimiento no la bloquea, decisión 13) | Un escalón más |
 
-Los modificadores necesitan una fuente leída antes de escribirse (decisión 6); lo leído hasta ahora y lo que cambia está en «Fuentes leídas», abajo. Hoy la fase 3 ya muestra un texto por nivel («Proceder con precaución. Evitar técnicas de alta intensidad…»); fase 6 no debe reutilizarlo sin comprobar de dónde sale.
+Escalones de vigor y extensión (Petersen 2021; cualitativos, ninguna fuente da minutos, series ni cargas): gravedad e irritabilidad altas → solo hasta el límite activo, muy limitado; gravedad alta e irritabilidad baja → hasta el límite pasivo; gravedad baja e irritabilidad alta → prudencia al acercarse al dolor; las dos bajas → más agresivo, sin exacerbaciones innecesarias. Al principio se evita lo que agrava (Petersen 2021) y se empieza por lo mínimo que no provoque recaída (Zusman 1998). Hoy la fase 3 ya muestra un texto por nivel («Proceder con precaución. Evitar técnicas de alta intensidad…»); fase 6 no debe reutilizarlo sin comprobar de dónde sale.
 
 ### Plan de un mes (parte sin IA)
 | | Plan A — 1 sesión/semana | Plan B — 2 sesiones/semana |
@@ -89,7 +94,7 @@ Los modificadores necesitan una fuente leída antes de escribirse (decisión 6);
 | Reevaluación final | Sesión 4, con el PROM de la hipótesis (`prom`) | Sesión 8, con el mismo PROM |
 | Peso del programa domiciliario | Alto: es la mayor parte de la carga del mes | Medio |
 
-- **Progresión por criterios, no por fechas.** Del tipo «subir la carga cuando el dolor durante el ejercicio y a las 24 h no empeore». Si la pauta de la hipótesis ya trae criterios, se usan los suyos; los genéricos necesitan fuente (decisión 6; ver «Fuentes leídas»).
+- **Progresión por criterios, no por fechas** (decisión 14): el de la pauta si lo trae; si no, el genérico de SINSS y Zusman.
 - **Pronóstico**: si `pronostico.horizonte` pasa de 4 semanas, el plan dice que es el primer mes de un proceso más largo. `pronostico.derivacion` («Cuándo reconsiderar o derivar») va a la reevaluación final como criterio explícito.
 - **Post-quirúrgico**: el mes se sitúa en las semanas desde la cirugía (`semanasCirugia()`) y no adelanta nada que el protocolo no permita.
 
@@ -124,17 +129,24 @@ Leídas enteras desde PubMed Central (página del artículo; la API de texto com
 **Barakatt, Romano, Riddle y Beckett 2009.** *The Reliability of Maitland's Irritability Judgments in Patients with Low Back Pain.* J Man Manip Ther 17(3):135–40. [PMC2762835](https://pmc.ncbi.nlm.nih.gov/articles/PMC2762835/) · DOI [10.1179/jmt.2009.17.3.135](https://doi.org/10.1179/jmt.2009.17.3.135). 80 pacientes, dos fisios cada uno.
 - Acuerdo del 71 %, kappa 0,39 (todos) y 0,44 en los 48 cuyo dolor no cambió entre exploraciones (PABAK 0,43 y 0,50): fiabilidad entre baja y moderada. La irritabilidad es un juicio con margen.
 
-### Qué cambia en el diseño (propuesta, pendiente de la revisión del usuario)
-1. **Los niveles A/B/C dependen de gravedad × irritabilidad, no solo de la irritabilidad** (Petersen 2021). La gravedad sale del NRS (fase 3) con los cortes de SINSS. Ojo: la matriz de irritabilidad de la app ya mezcla gravedad (dolor ≤3 / 4–6 / ≥7, discapacidad) con irritabilidad (dolor en reposo, movimiento, tolerancia), y con cortes de NRS distintos de SINSS. Hay que decidir si fase 6 usa el nivel de la matriz tal cual o separa las dos dimensiones.
-2. **Lo que se puede escribir con fuente es cualitativo**: vigor y extensión (hasta el límite activo, hasta el pasivo, prudencia cerca del dolor, más agresivo), evitar lo que agrava al principio y reintroducirlo cuando baje la irritabilidad, reevaluar dentro de la sesión y entre sesiones. Ninguna fuente da minutos, series ni cargas.
-3. **El tipo de técnica por nivel es práctica observada, no recomendación**: Barakatt 2009 describe qué hicieron los fisios, no qué funciona. Si se usa, se dice así.
-4. **Criterio de progresión con fuente**: «reintroducir lo que agravaba cuando baja la irritabilidad» + reevaluación (Petersen 2021). Un umbral numérico de dolor (modelo de monitorización del dolor, Silbernagel 2007) sigue sin leer.
-5. **«Sin C con miedo al movimiento alto» no tiene apoyo directo** en lo leído: Petersen 2021 solo liga la gravedad alta con el miedo al movimiento como factor de mal pronóstico. Se mantiene como decisión clínica del usuario o se retira.
-6. **La fiabilidad baja del juicio** (Barakatt 2009) se dice en fase 6: el nivel es orientativo y el fisio puede cambiarlo.
+**Zusman 1998.** *Irritability.* Man Ther 3(4):195–202 (PDF del usuario, leído entero). Revisión narrativa de los mecanismos, casi todos de ciencia básica y modelos animales.
+- Definición operativa de Maitland (1977): una presentación irritable es aquella en la que muy poca actividad causa un dolor considerable que tarda mucho en ceder (p. 195).
+- Estrategia: empezar con una intervención mínima que no provoque recaída inmediata ni posterior, y después ampliar con cuidado los parámetros del movimiento (carga tensil graduada), en gran parte por ensayo y error (p. 195).
+- Advierte de no confundir esa gradación con una desconfianza indebida hacia el movimiento, la del «deja que el dolor te guíe» (p. 196).
+- Mecanismos: sensibilización química periférica (inflamación no neurógena y neurógena) y central; el estímulo mecánico puede aumentar la inflamación y el dolor, a veces con retraso (pp. 195–200).
+- El SDRC/CRPS-1 es «extremadamente irritable»: un estudio vio que el ejercicio activo empeoró todas sus variables (Veldman 1993, citado en p. 199). Relevante para `pq_sdrc` (cribado posquirúrgico).
+- Conclusión: en la irritabilidad «aguda», al principio retener todo salvo lo esencial e introducir el movimiento progresivamente al ritmo de la curación y del descenso de los síntomas; la irritabilidad «estructural» (lesión de nervio periférico) tiene otra historia natural (pp. 200–201).
 
-### Pendiente de leer
-- Silbernagel, Thomeé, Eriksson y Karlsson 2007, Am J Sports Med 35(6):897–906, DOI [10.1177/0363546506298279](https://doi.org/10.1177/0363546506298279) — sin acceso libre; hace falta el PDF. Solo si se quiere un umbral numérico de dolor para progresar (estudiado en tendinopatía de Aquiles).
-- Opcionales, citados por Petersen 2021 como origen del concepto: Hengeveld y Banks, *Maitland's Vertebral Manipulation*, 8.ª ed., Elsevier 2014 (capítulo de gravedad e irritabilidad); Zusman M, *Irritability*, Man Ther 1998;3(4):195–202.
+**Silbernagel, Thomeé, Eriksson y Karlsson 2007.** *Continued sports activity, using a pain-monitoring model, during rehabilitation in patients with Achilles tendinopathy: a randomized controlled study.* Am J Sports Med 35(6):897–906, DOI [10.1177/0363546506298279](https://doi.org/10.1177/0363546506298279) (PDF del usuario, leído entero). Ensayo aleatorizado, n = 38 (51 tendones), tendinopatía aquílea de porción media de más de 2 meses; se excluyó la insercional.
+- Modelo de monitorización del dolor (de Thomeé 1997, modificado): durante el ejercicio, dolor hasta 5/10 (EVA); después, hasta 5/10 pero desaparecido a la mañana siguiente; dolor y rigidez sin aumentar de semana en semana (p. 899).
+- Seguir corriendo y saltando con ese modelo no fue peor que el reposo activo durante 6 semanas; los dos grupos mejoraron igual (VISA-A-S 57 → 85 y 57 → 91 a 12 meses). «No se demostraron efectos negativos»: no prueba que sea mejor (pp. 897, 902).
+- Programa común: ejercicios diarios por fases (1–2, 2–5, 3–12 semanas y hasta 6 meses), con series y repeticiones en la tabla 3.
+
+### Decisiones 11–15 (usuario, 2026-10)
+Las cinco recomendaciones tras la lectura se aceptaron y están arriba, en «Decisiones tomadas».
+
+### Pendiente de leer (opcional)
+- Hengeveld, Banks, *Maitland's Vertebral Manipulation*, 7.ª ed. (el usuario la tiene): las páginas de gravedad e irritabilidad que dé el índice (p. 487), o los capítulos 6 (Examination, pp. 97–170), 8 y 9 (Selection y Application of techniques, pp. 183–228) y el glosario (p. xv). Es la fuente original y podría sustituir a Petersen 2021 como cita de los escalones. Confirmar autores en la portada.
 
 ## Datos
 
@@ -167,8 +179,8 @@ Hay que comprobar en physiq-report que un `SESSION_ASSESSMENT_PARTIAL` con `phas
 
 ## Orden de trabajo
 
-1. **L1 — este documento** (hecho; decisiones 1–10 tomadas). Falta la fuente de la decisión 6.
-2. **L2 — parte sin IA en lumbar** (piloto; empieza cuando esté la fuente de la decisión 6): bloqueos, esqueleto, compartir. Prueba en consulta real.
+1. **L1 — este documento** (hecho; decisiones 1–15 tomadas y fuentes leídas).
+2. **L2 — parte sin IA en lumbar** (piloto): bloqueos, esqueleto, compartir. Prueba en consulta real.
 3. **L3 — las 7 regiones.** Tobillo y pie (20 de 37 sin pauta) será la que más «pauta a criterio del fisio» muestre.
 4. **L4 — capa de IA**, con la ruta nueva en el worker de physiq-report.
 5. **L5 — revisión automática** con planes reales en los fixtures, como `tests/fixtures/informes/`.
