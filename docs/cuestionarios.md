@@ -1,10 +1,10 @@
 # Cuestionarios (PROMs y cribado psicosocial)
 
-Estado: **investigación, sin código** (2026-10). Base para decidir si la app calcula la puntuación y la interpretación de los cuestionarios que recomienda, y si ofrece una versión imprimible.
+Estado (2026-10): investigación hecha; **calculadora implementada** para el piloto psicosocial y de dolor (§8). Base para decidir qué cuestionarios puntúa la app y cómo.
 
 ## 1. Qué propone la app hoy
 
-Ningún cuestionario se rellena ni se puntúa en la app: solo se recomiendan como texto.
+Antes de la calculadora (§8), ningún cuestionario se puntuaba en la app: solo se recomendaban como texto.
 
 - **Fase 1, riesgo psicosocial** (`app.js`, `selectPsico`, `updatePsicoRecomendacion`, `applyRegionChange`): Örebro (OMPSQ) para cualquier región, STarT Back para lumbar. Con `psico_*` en «Sí» o «Dudoso»: FABQ y TSK-11 (miedo-evitación), PCS (autoeficacia; ver §6), PHQ-2 → PHQ-9 (estado de ánimo). El nivel Bajo/Medio/Alto lo elige el clínico.
 - **Fases 4b y 5, `prom` de cada hipótesis** (`data/<región>.js`; badge `.prom-badge` y «Escala recomendada para el seguimiento» en el prompt del informe con IA). La MCID va dentro del texto (`'ODI (MCID: 8.5 pts) / …'`), no como dato aparte.
@@ -148,11 +148,35 @@ QuickDASH/DASH, PRTEE, ASES, Oxford Elbow Score, IKDC, Kujala, KOOS-PF, KOOS-12,
 
 ## 6. Pendiente de revisión clínica
 
-- **Autoeficacia en la fase 1:** con `psico_autoef` en «Sí» o «Dudoso», la app sugiere la PCS, que mide catastrofización. El CADC (español) o el PSEQ miden autoeficacia.
-- **MCID del ODI:** la app cita 8,5 puntos; la hoja del usuario cita 15 (FDA, fusión vertebral). Revisar la fuente de cada uno.
+- **Autoeficacia en la fase 1 — resuelto (decisión del usuario, 2026-10):** la PCS mide catastrofización, así que pasa a la pregunta «miedo al movimiento o catastrofización» (`psico_miedo`, junto a FABQ y TSK-11), y la de «baja autoeficacia o desesperanza» (`psico_autoef`) sugiere el CADC (Martín-Aragón y otros, 1999), creado en España. `updatePsicoRecomendacion()`, `app.js`.
+- **MCID del ODI — resuelto (decisión del usuario, 2026-10):** se mantiene la de la app. Los 15 puntos de la hoja del usuario son el criterio de la FDA para fusión vertebral, no una MCID general.
 
 ## 7. Pendiente de verificar
 
 - Condiciones oficiales de ePROVIDE (ODI, NDI, PCS, KOOS/HOOS, HAGOS, KOOS-PF), IWH (DASH/QuickDASH para una app gratuita), Keele (STarT Back), Linton (OMPSQ), Roach (SPADI), MacDermid (PRTEE), Stratford (PSFS), Fundación Kovacs (RMDQ en app y repo).
 - Puntos de corte marcados con * (FABQ, OMPSQ, CAIT ≤24, IdFAI ≥11).
 - Validación de origen de los PDF sin cita: FAAM, iHOT-12, S-LANSS, LLFI, Pelvic Girdle Questionnaire.
+
+## 8. Calculadora (implementada, 2026-10)
+
+Decisiones del usuario (2026-10):
+
+- **Para qué:** puntuar rápido e interpretar la hoja que el paciente ya ha rellenado en papel. No sustituye al papel ni lo reproduce.
+- **Dónde:** icono en la cabecera, en cualquier fase y también en el hub (no usa red), como «⏱ Tiempos de recuperación».
+- **Entrada:** tocar el valor de cada ítem; el total, lo que falta y la interpretación se actualizan solos.
+- **Resultado:** al payload (`cu`), a 📋 Notas, a la fase 5 y al informe con IA. No al 📄 Informe para el paciente o su médico.
+- **Piloto:** psicosociales y dolor neuropático (PHQ-2, PHQ-9, GAD-7, TSK-11, CADC, STarT Back, Örebro, DN4, S-LANSS). Los regionales, después.
+
+Criterios del diseño:
+
+- **Etiquetas cortas, no el texto literal de cada ítem.** El paciente responde en su hoja; la app solo recoge lo que marcó, en el mismo orden. Así tampoco reproduce el texto con derechos, lo que reduce mucho el problema de licencias de §3: una calculadora usa el número de ítems, sus valores y la regla de puntuación, no el cuestionario.
+- **Solo reglas leídas en la fuente.** Cada cuestionario cita su `fuente`. Sin punto de corte publicado, la app lo dice («Sin punto de corte consensuado») en vez de inventar uno.
+- **Sin puntuación con ítems en blanco.** Ninguna fuente del piloto da una regla para ítems sin contestar que hayamos leído; hasta que la haya, la puntuación aparece solo con el cuestionario completo.
+- **Las alertas de seguridad no esperan.** El ítem 9 del PHQ-9 avisa en cuanto se marca, aunque falten ítems.
+- **Hojas en papel:** la calculadora sigue la versión validada. Si la hoja del usuario difiere (§5: NDI, HOOS, VISA-A…), hay que cambiar la hoja, no la calculadora.
+
+Pendiente:
+
+- Regionales (siguiente tanda): RMDQ, Oswestry, NDI (versión de Andrade Ortega), SPADI, KOOS, HAGOS, FAAM, VISA-P, iHOT-12.
+- Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
+- physiq-report no lee aún el campo `cu` del payload.

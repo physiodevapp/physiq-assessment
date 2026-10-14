@@ -58,7 +58,7 @@ try {
 const BASE_URL = process.argv.slice(2).find(a => !a.startsWith('--') && /^https?:/.test(a)) || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
 const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'ampliar-ia.js', 'lib/session.js', 'lib/posquirurgico.js',
-  'data/comun.js', 'data/anatomia.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
+  'data/comun.js', 'data/anatomia.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js', 'data/cuestionarios.js', 'lib/cuestionarios.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
 // and VALID_REGIONS in tests/unit/comun.mjs — add a new region to all three.
@@ -1195,6 +1195,97 @@ async function checkBarraFase(page) {
 // cierra; en el móvil es una hoja inferior que el atrás cierra sin cambiar de
 // fase, y a 320 px ni la cabecera ni el panel desbordan; en el hub, el botón
 // está. Nada entra en el payload.
+// Calculadora de cuestionarios (📋 de la cabecera, lib/cuestionarios.js): en
+// escritorio, diálogo centrado con un cuestionario por tarjeta; el PHQ-9 por
+// toques reales da 12/27 «moderados», la alerta del ítem 9 sale y un segundo
+// toque la quita; la tarjeta enseña el resultado; las zonas de Örebro se
+// marcan y desmarcan; «Borrar respuestas» pregunta y vuelve al cuestionario;
+// la fase 5 lo resume y Escape cierra. En móvil, hoja inferior que atrás
+// cierra sin cambiar de fase; a 320 px nada desborda y la escala 0–10 deja
+// botones de 40 px o más. También en el hub.
+async function checkCuestionarios(browser, errors) {
+  const r = {};
+  const { CUESTIONARIOS } = await import(new URL('../data/cuestionarios.js', import.meta.url));
+  const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (cuestionarios): ${err.message}`));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const abierto = () => page.evaluate(() => document.getElementById('cuestOverlay').classList.contains('open'));
+  const res = () => page.textContent('#cuestResultado');
+  const toca = (n, v) => page.click(`#cuestCuerpo .cuest-item[data-item="${n}"] .cuest-op[data-valor="${v}"]`);
+  await page.click('#cuestBtn');
+  r.dialogo = await page.evaluate(n => {
+    const p = document.getElementById('cuestPanel').getBoundingClientRect();
+    return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
+      && document.querySelectorAll('#cuestCuerpo .cuest-tarjeta').length === n;
+  }, CUESTIONARIOS.length);
+  await page.click('[data-cuest="phq9"]');
+  for (const [n, v] of [[1, 2], [2, 2], [3, 1], [4, 2], [5, 1], [6, 1], [7, 1], [8, 1]]) await toca(n, v);
+  r.incompleto = /8\/9/.test(await res()) && /Falta 1 ítem: 9/.test(await res());
+  await toca(9, 1);
+  const conAlerta = await res();
+  r.phq9 = /12\/27/.test(conAlerta) && /Síntomas depresivos moderados/.test(conAlerta) && /Ítem 9 positivo/.test(conAlerta);
+  await toca(9, 1);   // segundo toque: deselecciona
+  r.segundoToque = !/Ítem 9 positivo/.test(await res()) && /8\/9/.test(await res());
+  await toca(9, 0);
+  await page.click('[data-cuest-volver]');
+  r.tarjeta = /11\/27 · Síntomas depresivos moderados/.test(await page.textContent('[data-cuest="phq9"]'));
+  await page.click('[data-cuest="orebro"]');
+  await toca(5, 0); await toca(5, 4); await toca(5, 4);
+  r.marcas = await page.evaluate(() => JSON.stringify(window.state.cuestionarios.orebro?.r?.[5]) === '[0]');
+  // Borrar: pregunta, borra y vuelve al mismo cuestionario
+  await page.click('[data-cuest-borrar]');
+  await page.waitForSelector('#confirmBanner');
+  await page.click('#confirmAction');
+  await page.waitForFunction(() => document.getElementById('cuestOverlay').classList.contains('open'));
+  r.borrar = await page.evaluate(() => !window.state.cuestionarios.orebro && !!document.querySelector('#cuestCuerpo [data-item="25"]'));
+  await page.keyboard.press('Escape');
+  r.escape = !(await abierto());
+  // Fase 5
+  await page.evaluate(() => { Object.assign(window.state, { region: 'hombro', maxVisitedIdx: 5 }); window.buildResults(); window.goToPhase(5); });
+  r.fase5 = await page.evaluate(() => {
+    const c = document.getElementById('cuestFase5');
+    return !!c && !c.hidden && /PHQ-9: 11\/27 — Síntomas depresivos moderados/.test(c.textContent);
+  });
+  await context.close();
+
+  // Móvil: hoja inferior, atrás cierra en la misma fase; 320 px sin desbordar
+  const movil = await browser.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true });
+  const m = await movil.newPage();
+  m.on('pageerror', err => errors.push(`pageerror (cuestionarios móvil): ${err.message}`));
+  await m.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await m.tap('#cuestBtn');
+  await m.waitForSelector('#cuestOverlay.open');
+  // Tras la animación de entrada (desliza desde abajo)
+  r.hoja = await m.waitForFunction(() => {
+    const p = document.getElementById('cuestPanel').getBoundingClientRect();
+    return Math.round(p.width) === innerWidth && Math.abs(p.bottom - innerHeight) < 2;
+  }, null, { timeout: 3000 }).then(() => true, () => false);
+  await m.goBack();
+  await m.waitForFunction(() => !document.getElementById('cuestOverlay').classList.contains('open'));
+  r.atras = await m.evaluate(() => window.state.currentPhase === 1);
+  await m.setViewportSize({ width: 320, height: 700 });
+  await m.tap('#cuestBtn');
+  await m.tap('[data-cuest="cadc"]');
+  r.estrecho = await m.evaluate(() => {
+    const c = document.getElementById('cuestCuerpo');
+    const ops = [...document.querySelectorAll('#cuestCuerpo .cuest-item[data-item="1"] .cuest-op')];
+    return c.scrollWidth <= c.clientWidth && document.documentElement.scrollWidth <= innerWidth
+      && ops.length === 11 && ops.every(o => o.getBoundingClientRect().width >= 40);
+  });
+  r.cabecera = await m.evaluate(() => document.documentElement.scrollWidth <= innerWidth
+    && document.getElementById('cuestBtn').getBoundingClientRect().right <= innerWidth);
+  await movil.close();
+
+  // En el hub también (no usa red)
+  const hubCtx = await browser.newContext({ viewport: { width: 1100, height: 900 } });
+  const frame = await cargarEnHub(await hubCtx.newPage());
+  r.hub = await frame.evaluate(() => getComputedStyle(document.getElementById('cuestBtn')).display !== 'none');
+  await hubCtx.close();
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 async function checkTiemposTejido(browser, errors) {
   const r = {};
   const { TIEMPOS_TEJIDO } = await import(new URL('../data/tejidos.js', import.meta.url));
@@ -2715,6 +2806,12 @@ const SECCIONES = [
     const tejidos = await checkTiemposTejido(browser, errors);
     console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
+  } },
+
+  { id: 'cuestionarios', titulo: 'Calculadora de cuestionarios:', run: async ({ browser, errors }) => {
+    const c = await checkCuestionarios(browser, errors);
+    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; hoja inferior en móvil que atrás cierra en la misma fase; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
   } },
 
   { id: 'tests-4b', titulo: '«¿Por qué?» de los tests (fase 4b, hombro):', run: async ({ page }) => {

@@ -3,7 +3,7 @@
 // Lógica principal de la aplicación
 // ============================================================
 import { state } from './state.js';
-import { SYSTEMIC_SCREENING, HYPOTHESES, DOSIS_DERIVAR, TIEMPOS_TEJIDO, PHASE_DEFS, PHASE_NAV_IDS, NRS_LABELS, NRS_CLASSES, QUICK_PHRASES } from './data.js';
+import { SYSTEMIC_SCREENING, HYPOTHESES, DOSIS_DERIVAR, TIEMPOS_TEJIDO, CUESTIONARIOS, GRUPOS_CUESTIONARIO, PHASE_DEFS, PHASE_NAV_IDS, NRS_LABELS, NRS_CLASSES, QUICK_PHRASES } from './data.js';
 import { initCIFTree, getDerivacionesArbol } from './phase4.js';
 import { buildHypothesisCards, teardownHypObserver, restoreHypObserver, esTratada, marcarTratada, casillaTratadaHTML, hipotesis, hipotesisActivas, sincronizarTratadas, etiquetaHipHTML, anatomiaLineaHTML, anatomiaPanelHTML } from './phase4b.js';
 import { writeSession, readSession, clearSession, updateSession } from './lib/session.js';
@@ -17,6 +17,7 @@ import { nombreRegion, regionConLado } from './lib/region.js';
 import { TEXTO_VALORACION_BREVE, textoNotas, textoInformePaciente } from './lib/resumenes.js';
 import { ramaPauta } from './lib/pauta.js';
 import { tiemposTejidoHTML, infoBarraHTML } from './lib/tejidos.js';
+import { listaCuestionariosHTML, formularioCuestionarioHTML, resultadoCuestionarioHTML, itemCuestionarioHTML, resumenCuestionarios } from './lib/cuestionarios.js';
 import { initAmpliarIA, iaParrafoHTML, ctxCribado, attrIA, DESTINOS_IA, NOTA_CUENTAS, destinoIA, guardarDestinoIA, promptPregunta, urlIA } from './ampliar-ia.js';
 
 // ─── SCROLL LOCK (dialogs / bottom sheets) ───────────────────
@@ -83,6 +84,7 @@ window.addEventListener('popstate', e => {
   if (_compartirHistorial) { cerrarMenuCompartir({ desdeHistorial: true }); return; }
   if (_preguntaHistorial) { cerrarPreguntaIA({ desdeHistorial: true }); return; }
   if (_tejidosHistorial) { cerrarTiemposTejido({ desdeHistorial: true }); return; }
+  if (_cuestHistorial) { cerrarCuestionarios({ desdeHistorial: true }); return; }
   if (_pendingBackNav) {
     // history.go() de limpieza de stack aterrizó; reemplazar y actualizar profundidad
     const { phase: p, idx: i } = _pendingBackNav;
@@ -295,6 +297,8 @@ function _softResetApp() {
   state.resultsBuilt = false;
   state.planNotes = { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' };
   state.formularioPrevio = { comun: {}, regiones: {} };
+  state.cuestionarios = {};
+  _cuestActivo = null;
   precargarFormularioPrevio();   // refresca contadores y desplegables abiertos
   // Informe narrativo: cancela una generación en curso. El audio de la sesión
   // NO se toca aquí — _softResetApp() también corre por un reinicio llegado de
@@ -720,8 +724,8 @@ function updatePsicoRecomendacion() {
   const rec = document.getElementById('psicoRecomendacion');
   const { psico_miedo, psico_autoef, psico_emocional } = state;
   const tools = [];
-  if (psico_miedo === 'Sí' || psico_miedo === 'Dudoso') tools.push('FABQ (Cuestionario de Creencias de Miedo-Evitación), TSK-11 (Escala de Kinesiofobia de Tampa)');
-  if (psico_autoef === 'Sí' || psico_autoef === 'Dudoso') tools.push('PCS (Escala de Catastrofización del Dolor)');
+  if (psico_miedo === 'Sí' || psico_miedo === 'Dudoso') tools.push('FABQ (Cuestionario de Creencias de Miedo-Evitación), TSK-11 (Escala de Kinesiofobia de Tampa), PCS (Escala de Catastrofización del Dolor)');
+  if (psico_autoef === 'Sí' || psico_autoef === 'Dudoso') tools.push('CADC (Cuestionario de Autoeficacia en Dolor Crónico)');
   if (psico_emocional === 'Sí' || psico_emocional === 'Dudoso') tools.push('PHQ-2 → PHQ-9 (Cuestionario de Salud del Paciente)');
 
   if (tools.length > 0) {
@@ -2184,6 +2188,9 @@ function buildResults() {
     <div class="summary-row"><span class="summary-label">Signo comparable</span><span class="summary-value">${state.signoComparable || '—'}</span></div>
   </div>`;
 
+  // ── Cuestionarios puntuados en la calculadora (lo pinta _pintarCuestionariosFase5)
+  container.innerHTML += `<div class="summary-section" id="cuestFase5" hidden></div>`;
+
   // ── Hypotheses with tests
   let hypHtml = `<div class="summary-section"><div class="summary-section-title">${sinConfirmar ? '🎯 Hipótesis de Trabajo — Confirmación pendiente' : '🎯 Hipótesis Diagnósticas — Ordenadas por Peso Diagnóstico'}</div>`;
 
@@ -2310,6 +2317,7 @@ function buildResults() {
   // Wire chip sync last: every `container.innerHTML +=` above reparses and
   // recreates the whole subtree, which would drop listeners attached earlier.
   ['planVariableControl', 'planVentana', 'planAnclaje'].forEach(wireQuickInputBar);
+  _pintarCuestionariosFase5();
 
   _montarInformeIA();
 }
@@ -2826,6 +2834,7 @@ function _closeAllOverlays() {
   cerrarMenuCompartir({ sinHistorial: true });
   cerrarPreguntaIA({ sinHistorial: true });
   cerrarTiemposTejido({ sinHistorial: true });
+  cerrarCuestionarios({ sinHistorial: true });
   closePhaseSheet();
   closeSessionPanel();
   const banner = document.getElementById('confirmBanner');
@@ -2986,6 +2995,7 @@ function buildPhysiQPayload() {
         }),
     pn: state.planNotes,
     fp: resumenFormularioPrevio(),
+    ...(getCuestionariosPayload().length ? { cu: getCuestionariosPayload() } : {}),
     md: state.modo === 'breve' ? 'breve' : 'completo',
     ...(state.modo === 'breve' ? { pe: getPendientesBreve().map(p => p.texto) } : {}),
     ...(state.rom ? { rom: state.rom } : {})
@@ -3382,6 +3392,150 @@ function cerrarTiemposTejido({ desdeHistorial = false, sinHistorial = false } = 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && document.getElementById('tejidosOverlay')?.classList.contains('open')) cerrarTiemposTejido();
 });
+
+// ─── Calculadora de cuestionarios (cabecera, cualquier fase, también en el hub) ───
+// El paciente rellena la hoja en papel; aquí se toca el valor de cada ítem y
+// se ve la puntuación y su interpretación al momento (lib/cuestionarios.js,
+// data/cuestionarios.js). Las respuestas van en state.cuestionarios y el
+// resultado al payload (`cu`), a 📋 Notas y al informe con IA. Mismo patrón
+// que «Tiempos de recuperación»: hoja inferior con atrás en móvil, diálogo
+// centrado en ancho. Dentro, lista de cuestionarios o el de `_cuestActivo`.
+let _cuestHistorial = false;
+let _cuestActivo = null;
+
+function getCuestionariosPayload() {
+  return resumenCuestionarios(CUESTIONARIOS, state.cuestionarios || {});
+}
+
+function _defCuest(id) { return CUESTIONARIOS.find(d => d.id === id); }
+function _respuestasCuest(id) { return state.cuestionarios?.[id]?.r || {}; }
+
+function _pintarCuestionarios({ foco } = {}) {
+  const cuerpo = document.getElementById('cuestCuerpo');
+  const titulo = document.getElementById('cuestTitulo');
+  const def = _cuestActivo && _defCuest(_cuestActivo);
+  titulo.textContent = 'Cuestionarios';
+  if (def) {
+    cuerpo.innerHTML = formularioCuestionarioHTML(def, _respuestasCuest(def.id));
+  } else {
+    _cuestActivo = null;
+    cuerpo.innerHTML = listaCuestionariosHTML(CUESTIONARIOS, GRUPOS_CUESTIONARIO, state.cuestionarios || {});
+  }
+  cuerpo.scrollTop = 0;
+  if (foco) cuerpo.querySelector(foco)?.focus({ preventScroll: true });
+}
+
+// Un toque: guarda la respuesta y repinta solo ese ítem y el resultado, para
+// no perder la posición. Un segundo toque sobre la opción marcada la borra
+// (regla de la app para grupos sin valor por defecto); en `marcas`, alterna.
+function _tocarCuest(item, valorTxt) {
+  const def = _defCuest(_cuestActivo);
+  const it = def?.items.find(x => String(x.n) === item);
+  if (!it) return;
+  const tipo = it.tipo || 'escala';
+  const valor = tipo === 'sino' ? valorTxt : Number(valorTxt);
+  const reg = state.cuestionarios[def.id] ||= { r: {} };
+  const actual = reg.r[it.n];
+  if (tipo === 'marcas') {
+    const lista = Array.isArray(actual) ? [...actual] : [];
+    const i = lista.indexOf(valor);
+    if (i >= 0) lista.splice(i, 1); else lista.push(valor);
+    lista.sort((a, b) => a - b);
+    if (lista.length) reg.r[it.n] = lista; else delete reg.r[it.n];
+  } else if (actual === valor) delete reg.r[it.n];
+  else reg.r[it.n] = valor;
+  if (!Object.keys(reg.r).length) delete state.cuestionarios[def.id];
+  const r = _respuestasCuest(def.id);
+  const nodo = document.querySelector(`#cuestCuerpo .cuest-item[data-item="${it.n}"]`);
+  if (nodo) {
+    nodo.outerHTML = itemCuestionarioHTML(def, it, r[it.n]);
+    document.querySelector(`#cuestCuerpo .cuest-item[data-item="${it.n}"] .cuest-op[data-valor="${valorTxt}"]`)?.focus({ preventScroll: true });
+  }
+  document.getElementById('cuestResultado').innerHTML = resultadoCuestionarioHTML(def, r);
+  const borrar = document.querySelector('#cuestCuerpo [data-cuest-borrar]');
+  if (borrar) borrar.disabled = !Object.keys(r).length;
+  saveSession();
+}
+
+document.getElementById('cuestCuerpo')?.addEventListener('click', e => {
+  const t = e.target instanceof Element ? e.target : null;
+  if (!t) return;
+  const tarjeta = t.closest('[data-cuest]');
+  if (tarjeta) { _cuestActivo = tarjeta.dataset.cuest; _pintarCuestionarios({ foco: '.cuest-volver' }); return; }
+  if (t.closest('[data-cuest-volver]')) {
+    const antes = _cuestActivo;
+    _cuestActivo = null;
+    _pintarCuestionarios({ foco: `[data-cuest="${antes}"]` });
+    return;
+  }
+  if (t.closest('[data-cuest-borrar]')) {
+    const def = _defCuest(_cuestActivo);
+    if (!def) return;
+    cerrarCuestionarios({ sinFoco: true });
+    showConfirmBanner('Borrar respuestas', `Se borrarán las respuestas del ${def.nombre}.`, 'Borrar', () => {
+      delete state.cuestionarios[def.id];
+      saveSession();
+      abrirCuestionarios(def.id);
+    }, { onCancel: () => abrirCuestionarios(def.id) });
+    return;
+  }
+  const op = t.closest('.cuest-op');
+  const item = op?.closest('.cuest-item');
+  if (op && item) _tocarCuest(item.dataset.item, op.dataset.valor);
+});
+
+function abrirCuestionarios(id) {
+  const overlay = document.getElementById('cuestOverlay');
+  if (!overlay || overlay.classList.contains('open')) return;
+  if (typeof id === 'string' && _defCuest(id)) _cuestActivo = id;
+  _pintarCuestionarios();
+  overlay.classList.add('open');
+  document.getElementById('cuestBtn')?.setAttribute('aria-expanded', 'true');
+  lockBodyScroll();
+  window.parent.postMessage({ type: 'PHYSIQ_WIDGET_HIDE' }, '*');
+  if (_esMovil()) {
+    history.pushState({ phase: state.currentPhase, cuestionarios: true }, '');
+    _cuestHistorial = true;
+  }
+  document.getElementById('cuestPanel').focus({ preventScroll: true });
+}
+
+function cerrarCuestionarios({ desdeHistorial = false, sinHistorial = false, sinFoco = false } = {}) {
+  const overlay = document.getElementById('cuestOverlay');
+  if (!overlay?.classList.contains('open')) return;
+  overlay.classList.remove('open');
+  const panel = document.getElementById('cuestPanel');
+  panel.style.transform = ''; panel.style.transition = '';
+  unlockBodyScroll();
+  window.parent.postMessage({ type: 'PHYSIQ_WIDGET_SHOW' }, '*');
+  if (_cuestHistorial) {
+    _cuestHistorial = false;
+    if (!desdeHistorial && !sinHistorial) { _popIgnorar = true; history.back(); }
+  }
+  const btn = document.getElementById('cuestBtn');
+  btn?.setAttribute('aria-expanded', 'false');
+  if (!sinHistorial && !sinFoco) btn?.focus({ preventScroll: true });
+  // Si la fase 5 ya está pintada, su bloque de cuestionarios se pone al día
+  _pintarCuestionariosFase5();
+}
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape' || !document.getElementById('cuestOverlay')?.classList.contains('open')) return;
+  if (document.getElementById('confirmBanner')) return;
+  cerrarCuestionarios();
+});
+
+// Fase 5: los cuestionarios puntuados, con un enlace para abrir la calculadora
+function _pintarCuestionariosFase5() {
+  const caja = document.getElementById('cuestFase5');
+  if (!caja) return;
+  const lista = getCuestionariosPayload();
+  caja.hidden = !lista.length;
+  caja.innerHTML = lista.length
+    ? `<div class="summary-section-title">📑 Cuestionarios</div><ul class="cuest-f5">${lista.map(c =>
+      `<li><strong>${_escapeAttr(c.n)}</strong>: ${_escapeAttr(c.v)}${c.i ? ` — ${_escapeAttr(c.i)}` : ''}${c.a?.length ? `<div class="cuest-alerta">⚠️ ${c.a.map(_escapeAttr).join(' · ')}</div>` : ''}</li>`).join('')}</ul>`
+      + '<button type="button" class="cuest-f5-abrir" onclick="abrirCuestionarios()">Abrir la calculadora</button>'
+    : '';
+}
 
 // Aviso inferior. Estilos en styles.css (.app-toast): en móvil, banda a todo
 // el ancho justo encima de los botones de navegación fijos (--nav-alto) y, si
@@ -3815,7 +3969,7 @@ export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, resumenFo
 // scope, never a module's private scope.
 Object.assign(window, {
   abrirFormularioPrevio, abrirRazonamiento, cerrarRazonamiento, irACronologia, appendQuickPhrase, buildResults, closePhaseSheet, closeSessionPanel, compartirNotas,
-  abrirMenuCompartir, cerrarMenuCompartir, abrirPreguntaIA, cerrarPreguntaIA, abrirTiemposTejido, cerrarTiemposTejido, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
+  abrirMenuCompartir, cerrarMenuCompartir, abrirPreguntaIA, cerrarPreguntaIA, abrirTiemposTejido, cerrarTiemposTejido, abrirCuestionarios, cerrarCuestionarios, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
   navStepClick, promptClearSession, resetApp, saveSession, scrollToActiveSisHeader, scrollToFormularioPrevio, selectIrritab,
   selectIrritabSync, selectNRS, selectOption, selectPsico, selectRegion, selectSQ, selectSistQ,
   toggleAccordionRow, toggleDictation, toggleImpact, togglePhaseSheet, toggleSessionPanel,
@@ -3891,5 +4045,7 @@ Object.assign(window, {
   if (pregunta) initSwipe(pregunta, () => cerrarPreguntaIA(), _esMovil);
   const tejidos = document.getElementById('tejidosPanel');
   if (tejidos) initSwipe(tejidos, () => cerrarTiemposTejido(), _esMovil);
+  const cuest = document.getElementById('cuestPanel');
+  if (cuest) initSwipe(cuest, () => cerrarCuestionarios(), _esMovil);
 }());
 

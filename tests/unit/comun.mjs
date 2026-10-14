@@ -58,6 +58,7 @@ export const BASE_STATE = {
   planNotes:        { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' },
   cirugia:          { intervencion: '', fecha: '', semanasAprox: null, protocolo: '', restricciones: '', complicaciones: [], complicacionOtra: '' },
   derivacionResuelta: {},
+  cuestionarios:    {},
 };
 
 export function withState(patch, fn) {
