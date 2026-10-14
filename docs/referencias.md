@@ -15,7 +15,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 - **459** referencias de literatura, con **2082** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **374** de 459 referencias del registro revisadas. Ver «Estado de revisión».
+- **404** de 459 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -49,46 +49,16 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 
 | Referencia | Afecta a | Usos | Última revisión |
 |---|---|---|---|
-| [Brown 2004](#brown-2004) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Cook y Brown 2010](#cook-y-brown-2010) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Delitto 2012](#delitto-2012) | razonamiento fase 4 | 2 | **sin revisar** |
-| [Kibler 2013](#kibler-2013) | razonamiento fase 4 | 2 | **sin revisar** |
-| [Weir 2015](#weir-2015) | razonamiento fase 4 | 3 | **sin revisar** |
-| [Petersen 2017](#petersen-2017) | razonamiento fase 4 | 5 | **sin revisar** |
-| [Reiley 2017](#reiley-2017) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Davies 2018](#davies-2018) | razonamiento fase 4 | 1 | **sin revisar** |
-| [IHS 2018](#ihs-2018) | razonamiento fase 4 | 2 | **sin revisar** |
-| [Carter 2023](#carter-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Dididze 2023](#dididze-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Shamrock y Das 2023](#shamrock-y-das-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Smith y Varacallo 2023](#smith-y-varacallo-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Trammell 2023](#trammell-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Wood 2023](#wood-2023) | razonamiento fase 4 | 2 | **sin revisar** |
-| [AlDahas 2024](#aldahas-2024) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Jiang 2024](#jiang-2024) | razonamiento fase 4 | 2 | **sin revisar** |
-| [Smith y Varacallo 2024](#smith-y-varacallo-2024) | razonamiento fase 4 | 1 | **sin revisar** |
-| [De Hertogh 2025](#de-hertogh-2025) | razonamiento fase 4 | 1 | **sin revisar** |
-| [Li 2026](#li-2026) | razonamiento fase 4 | 2 | **sin revisar** |
 | [Birrell 2001](#birrell-2001) | razonamiento 4b · texto | 3 | **sin revisar** |
 | [Ganz 2003](#ganz-2003) | razonamiento 4b · texto | 6 | **sin revisar** |
-| [Loureiro 2013](#loureiro-2013) | razonamiento 4b · texto | 2 | **sin revisar** |
 | [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) | razonamiento 4b · texto | 6 | **sin revisar** |
-| [Zacharias 2016](#zacharias-2016) | razonamiento 4b · texto | 2 | **sin revisar** |
 | [Siepe 2007](#siepe-2007) | tiempos de tejido | 1 | **sin revisar** |
 | [Tumialán 2010](#tumialán-2010) | tiempos de tejido | 3 | **sin revisar** |
-| [Gornet 2011](#gornet-2011) | tiempos de tejido | 1 | **sin revisar** |
-| [Menorca 2013](#menorca-2013) | tiempos de tejido | 1 | **sin revisar** |
-| [Pollock 2014](#pollock-2014) | tiempos de tejido | 1 | **sin revisar** |
-| [Wong 2014](#wong-2014) | tiempos de tejido | 1 | **sin revisar** |
-| [Pedret 2015](#pedret-2015) | tiempos de tejido | 1 | **sin revisar** |
 | [Pollock 2016](#pollock-2016) | tiempos de tejido | 6 | **sin revisar** |
 | [Thigpen 2016](#thigpen-2016) | tiempos de tejido | 2 | **sin revisar** |
 | [Yuan 2016](#yuan-2016) | tiempos de tejido | 1 | **sin revisar** |
-| [Robertson y Wood 2017](#robertson-y-wood-2017) | tiempos de tejido | 6 | **sin revisar** |
-| [Wang 2017](#wang-2017) | tiempos de tejido | 1 | **sin revisar** |
 | [Wu 2017](#wu-2017) | tiempos de tejido | 2 | **sin revisar** |
 | [Konstantinou 2018](#konstantinou-2018) | tiempos de tejido | 1 | **sin revisar** |
 | [Prakash 2018](#prakash-2018) | tiempos de tejido | 5 | **sin revisar** |
@@ -459,6 +429,27 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Zemaitis 2026](#zemaitis-2026) | razonamiento fase 2 · razonamiento fase 4 | 7 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 31 de enero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Stiell 1995](#stiell-1995) | razonamiento fase 4 · razonamiento 4b · texto | 4 | 2026-10 · Sin cambios: PDF releído entero (2026-10). Derivación (1047 adultos, regla de 5 criterios con S 1,0 y E 0,54). Corregido en la app: el criterio de carga es no haber podido cargar ni inmediatamente tras la lesión ni en urgencias (cuatro pasos), como en el original (decisión del usuario, 2026-10; antes «no carga cuatro pasos»). Las revisiones sistemáticas posteriores (Bachmann 2004, Sims 2020, Kazemi 2023) ya se citan y dan las cifras de ro11; PubMed (2026-10): ninguna más reciente. |
 | [Seaberg 1998](#seaberg-1998) | razonamiento fase 4 · texto | 3 | 2026-10 · Sin cambios: PubMed (regla de Pittsburgh de rodilla desde 2015) no encuentra ninguna revisión sistemática ni validación posterior. |
+| [Brown 2004](#brown-2004) | razonamiento fase 4 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (hip-spine syndrome + diagnóstico, desde 2005). Lo posterior (Devin 2012, revisión; Lavadi 2024, revisión sistemática del manejo quirúrgico) no sustituye este estudio de signos clínicos para distinguir cadera de columna. |
+| [Cook y Brown 2010](#cook-y-brown-2010) | razonamiento fase 4 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (mielopatía cervical, signos clínicos/precisión diagnóstica, desde 2017). Jiang 2024 ya está en el registro y la revisión sistemática del signo de Hoffmann (Fogarty 2018) no cubre el conjunto de hallazgos de Cook. |
+| [Kibler 2013](#kibler-2013) | razonamiento fase 4 | 2 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (discinesia escapular, consenso/revisión, desde 2014). No hay un consenso posterior que lo sustituya (Kibler 2023 es una revisión narrativa del mismo grupo); Salamh 2023 cuestiona la utilidad de clasificar la discinesia y se debe tener presente al leer el «¿Por qué?». |
+| [Weir 2015](#weir-2015) | razonamiento fase 4 | 3 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (acuerdo de Doha, dolor inguinal en deportistas, desde 2016). No hay actualización del acuerdo; Heijboer 2022 y 2023 evalúan su fiabilidad y la conferencia italiana de 2023 es otro consenso, sin sustituirlo. |
+| [Petersen 2017](#petersen-2017) | razonamiento fase 4 | 5 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (clasificación del dolor lumbar, reglas diagnósticas, revisión sistemática, desde 2017). No aparece una revisión sistemática posterior de las mismas reglas diagnósticas. |
+| [Reiley 2017](#reiley-2017) | razonamiento fase 4 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (mareo cervicogénico, diagnóstico, revisión, desde 2017). Lo posterior más relevante ya está en el registro (De Hertogh 2025); Knapstad 2019 (revisión sistemática de características clínicas) es complementaria, no sustituye. |
+| [IHS 2018](#ihs-2018) | razonamiento fase 4 | 2 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (ICHD-4). No existe una 4.ª edición publicada; sigue vigente la ICHD-3 (solo hay propuestas de inclusión de entidades). |
+| [Carter 2023](#carter-2023) | razonamiento fase 4 | 1 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. |
+| [Dididze 2023](#dididze-2023) | razonamiento fase 4 | 1 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. |
+| [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) | razonamiento fase 4 | 1 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. |
+| [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) | razonamiento fase 4 | 1 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. |
+| [Shamrock y Das 2023](#shamrock-y-das-2023) | razonamiento fase 4 | 1 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. |
+| [Smith y Varacallo 2023](#smith-y-varacallo-2023) | razonamiento fase 4 | 1 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. |
+| [Trammell 2023](#trammell-2023) | razonamiento fase 4 | 1 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. |
+| [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) | razonamiento fase 4 | 1 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. |
+| [Wood 2023](#wood-2023) | razonamiento fase 4 | 2 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. Existe un capítulo aparte sobre la rodilla (Mohr 2024) que no sustituye este, que se cita como general. |
+| [AlDahas 2024](#aldahas-2024) | razonamiento fase 4 | 1 | 2026-10 · Sin cambios: publicada hace menos de dos años; búsqueda en PubMed de 2026-10 (error de posición articular cervical, propiedades de medida, desde 2024) sin ninguna revisión posterior. |
+| [Jiang 2024](#jiang-2024) | razonamiento fase 4 | 2 | 2026-10 · Sin cambios en esta referencia: publicada hace menos de dos años y es la revisión sistemática más reciente de signos clínicos de DCM (PubMed 2026-10, desde 2024). Ver la propuesta sobre la guía AO Spine 2025 en la entrada de Davies 2018. |
+| [Smith y Varacallo 2024](#smith-y-varacallo-2024) | razonamiento fase 4 | 1 | 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. |
+| [De Hertogh 2025](#de-hertogh-2025) | razonamiento fase 4 | 1 | 2026-10 · Sin cambios: publicada en 2025; búsqueda en PubMed de 2026-10 (mareo cervicogénico, desde 2025) sin nada posterior que la supere. |
+| [Li 2026](#li-2026) | razonamiento fase 4 | 2 | 2026-10 · Sin cambios: PubMed (2026-10) muestra este capítulo (act. 2026-01) como la versión vigente; la anterior (Reece 2024) está archivada. |
 | [Laslett 2005 (centralización)](#laslett-2005-centralización) | razonamiento 4b | 1 | 2026-10 · Añadida (2026-10): PDF del usuario leído entero; DOI comprobado en Crossref. 107 pacientes crónicos consecutivos con discografía de provocación (69 con la exploración completa; prevalencia de discografía positiva 75 %). Tabla 3: S 40 %, E 94 %, LR+ 6,9 (1,0–47,3); sin malestar E 100 %, con malestar 89 %; sin discapacidad grave E 100 %, con discapacidad grave (Roland-Morris ≥ 19) 80 %. Respalda el aviso visible de la centralización (lu6), que no cambia. Mismo autor y año que el de Man Ther: clave con sufijo, como «Deeb y Maher 2026 (Raynaud)». |
 | [McMurray 1942](#mcmurray-1942) | razonamiento 4b · texto | 4 | 2026-10 · Sin cambios: PDF releído entero (2026-10). Es una conferencia clínica sin cifras de precisión; la app no lo presenta como estudio diagnóstico. Corregido: la técnica está en la p. 413 (no 412–413) y lo que dice de la palpación (más fiable en el centro del ligamento lateral interno) es su opinión, no un resultado de la serie. PubMed (2026-10): la precisión del McMurray sigue con Smith 2015; nada posterior. |
 | [Thompson y Doherty 1962](#thompson-y-doherty-1962) | razonamiento 4b · texto | 4 | 2026-10 · Añadida (PDF escaneado del usuario, 4 páginas, leído entero): descripción original del test de compresión de la pantorrilla. Mecanismo en cadáver y en miembros amputados (el pie responde salvo si el sóleo se separa del tendón; menos con el 90 % cortado; nada con el tendón cortado del todo), técnica (prono con los pies fuera de la camilla, o de rodillas en una silla; tercio medio de la pantorrilla), serie de 47 roturas y un falso negativo por un plantar delgado hipertrofiado adherido al sóleo. Sin S ni E: las cifras de tp3 siguen en Maffulli 1998. |
@@ -489,14 +480,23 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Takasaki 2011](#takasaki-2011) | razonamiento 4b | 1 | 2026-10 · Añadida (2026-10): PDF del usuario leído entero; DOI comprobado en PubMed y Crossref. RM abierta en 19 mujeres sanas de 19 a 27 años. Con el cuello en flexión, la rotación baja un 16,3 % en C1–C2, un 68,1 % en C2–C3, un 61,4 % en C3–C4 y un 76,9 % por debajo de C4; C1–C2 hace el 73,5 % del giro en flexión (tabla 2, p. 170). Los autores avisan de que no se puede extrapolar a personas mayores. |
 | [Nee 2012](#nee-2012) | razonamiento 4b · texto | 3 | 2026-10 · Añadida (2026-10): PDF del usuario leído entero; DOI comprobado en PubMed y Crossref. Comentario clínico con revisión estructurada: secuencia de cada ULNT (fig. 1); los movimientos tensan, deslizan y comprimen el nervio, y en la posición final el cuello o la muñeca cambian la tensión de todo el nervio (pp. 414–416); positivo = reproducción al menos parcial de los síntomas y cambio con la diferenciación (pp. 416–418), κ 0,54 para el ULNT1; la referencia electrofisiológica puede no detectar la mecanosensibilidad sin pérdida de conducción (p. 420). Resume Wainner 2003 (LR− 0,12 con un positivo laxo); las cifras de la app siguen a Thoomes 2026. |
 | [Lim 2013](#lim-2013) | razonamiento 4b · texto | 2 | 2026-10 · Añadida: PDF del usuario leído entero (2026-10; una página, sección «Clinimetrics»). Técnica de la prensión sin dolor (supino, codo extendido y antebrazo en pronación, o sentado con el codo a 90° apoyado; parar al primer dolor; tres repeticiones), fiabilidad alta (CCI > 0,97) y relación con la discapacidad. No es un estudio de precisión diagnóstica. |
+| [Loureiro 2013](#loureiro-2013) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (artrosis de cadera, debilidad muscular/fuerza, revisión sistemática, desde 2014). No aparece una revisión sistemática posterior específica de cadera (lo hallado es de rodilla o de otras patologías). |
 | [Schiphof 2014](#schiphof-2014) | razonamiento 4b · texto | 2 | 2026-10 · Matizada por Couch 2025 (revisión sistemática, manuscrito aceptado leído): la crepitación se asocia a la artrosis radiográfica y a osteofitos, cartílago y edema óseo en la RM, y en personas con artrosis también a osteofitos tibiofemorales. El «¿Por qué?» de la crepitación (ro1) limita ahora el predominio femoropatelar a la artrosis inicial. PDF de Schiphof releído entero (2026-10); precisado que la OR 5,49 es de las 1518 rodillas sin artrosis en la RM (824 mujeres) y que el estudio es transversal, de asociación, no de precisión diagnóstica. |
 | [Claessen 2015](#claessen-2015) | razonamiento 4b · texto | 4 | 2026-10 · Añadida: texto completo leído en PMC (2026-10). Revisión sistemática de 23 casos clínicos (30 pacientes; 90 % varones, edad media 9 años). Etiología propuesta por expertos: tras los 5 años el núcleo del capítulo depende de vasos posteriores terminales, que el valgo repetido puede dañar (isquemia). Radiografía con hallazgos sutiles (infradiagnóstico); RM con señal baja en T1 y alta en T2. Enfermedad autolimitada; distinta de la osteocondritis disecante del adolescente. |
 | [Keener y Sethi 2015](#keener-y-sethi-2015) | razonamiento 4b · texto | 4 | 2026-10 · Añadida: PDF del usuario leído entero (2026-10). Revisión narrativa: mecanismo de la rotura (contracción excéntrica, caída sobre la mano extendida), factores de riesgo (anabolizantes, corticoides), la expansión lateral del tríceps puede conservar la extensión contra la gravedad con el tendón central roto, test de compresión del tríceps (en prono, como el de Thompson; original de Viegas 1990, Orthop Rev, sin DOI) y signo de la escama en la radiografía. Sin datos de precisión. |
 | [Lelli 2016](#lelli-2016) | razonamiento 4b · texto | 2 | 2026-10 · Contradicho por un estudio posterior: Norris 2025 (prospectivo y registrado, 101 pacientes, un explorador cegado) da LR+ 1,27–1,87 y LR− 0,60–0,93 con el explorador cegado y como mucho 3,02 y 0,45 sin cegar. Se cita en el detalle del lever sign (ro4) como discordante, sin cambiar la puntuación, que sigue con Sokal 2022 (decisión del usuario, 2026-10). PDF releído entero (2026-10): serie de 400 roturas confirmadas por RM (sin lesiones meniscales, de cartílago ni de otros ligamentos) y la rodilla contralateral como control, un solo explorador; precisado en la app que el menor dolor y la menor defensa son lo que creen los autores, no algo medido. |
+| [Zacharias 2016](#zacharias-2016) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (abductores de cadera, artrosis, volumen/atrofia/debilidad, desde 2014). No hay un estudio de volumen muscular por RM posterior que lo sustituya (lo hallado es sobre fuerza, grasa o rodilla). |
 | [Arrigoni 2017](#arrigoni-2017) | razonamiento 4b · texto | 4 | 2026-10 · Añadida: PDF del usuario leído entero (2026-10). Estudio piloto de los creadores del SALT y el PEPPER: 10 pacientes con epicondilalgia lateral rebelde a 6 meses de tratamiento conservador, todos con artroscopia; un solo explorador. SALT: sensible y poco específico, el más preciso para la sinovitis anterior; PEPPER: el más preciso para la condropatía de la cabeza del radio. El mecanismo de cada test es una suposición de los autores. Sin LR. |
 | [Leschinger 2017](#leschinger-2017) | razonamiento 4b · texto | 2 | 2026-10 · Añadida (2026-10): los dos artículos leídos enteros (el de Eur J Orthop Surg Traumatol, PDF del usuario, DOI 10.1007/s00590-017-1919-7; el de Biomed Res Int, en PMC, DOI 10.1155/2017/2941238; los dos comprobados en Crossref). RM abierta de 1,0 T en 37 sanos de 20–30 años, en decúbito y con férulas de yeso. En Neer (170° de flexión), contacto del supraespinoso con el acromion en 25 (14 sin y 11 con deformación) y con el glenoides posterosuperior en 30 (tabla 1 del segundo). Su posición de Hawkins lleva solo 15° de rotación interna, no la forzada del test: no se usa para el Hawkins (decisión del usuario, 2026-10). Errores internos: el resumen del segundo da 33 contactos del subescapular en Hawkins y su tabla 3, 25 (el 33 es el de Neer); el primero da distintas cifras de deformación del supraespinoso en Neer en resultados y discusión. Solo se citan las cifras que cuadran. |
 | [Pedersen 2017](#pedersen-2017) | razonamiento 4b · texto | 3 | 2026-10 · Añadida: texto completo leído en PMC (2026-10). Serie de casos de 64 artroscopias (60 pacientes) con resección de la plica radiohumeral; indicación por palpación dolorosa de la plica, ecografía y test de flexión-pronación positivo (la plica pasa por encima de la cabeza del radio). No es un estudio de precisión diagnóstica. Advierte de que el test y la ecografía no bastan para indicar la cirugía. |
 | [Couch 2025](#couch-2025) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios: es la revisión sistemática más reciente de la crepitación de rodilla (búsqueda hasta marzo de 2024; PubMed, 2026-10, nada posterior). |
+| [Gornet 2011](#gornet-2011) | tiempos de tejido | 1 | 2026-10 · Sin cambios: ensayo aleatorizado primario; las metaanálisis posteriores de prótesis frente a artrodesis lumbar (Bai 2019, Daher 2024; PubMed 2026-10) recogen este tipo de resultados y las dos más recientes ya están en el registro (Khan 2026, Patel 2026). |
+| [Menorca 2013](#menorca-2013) | tiempos de tejido | 1 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (lesión nerviosa periférica, tasa de regeneración, revisión, desde 2013). Lo más reciente utilizado ya está en el registro (Nadi 2026); nada más actual sobre la fisiología de la regeneración que la sustituya. |
+| [Pollock 2014](#pollock-2014) | tiempos de tejido | 1 | 2026-10 · Sin cambios: artículo que define la clasificación BAMIC; búsqueda en PubMed de 2026-10 (BAMIC, desde 2016) sin una versión revisada de la clasificación. Los estudios posteriores aplican la clasificación, no la modifican. |
+| [Wong 2014](#wong-2014) | tiempos de tejido | 1 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (radiculopatía cervical, historia natural/pronóstico, desde 2015). No aparece una revisión sistemática posterior del curso natural; lo hallado trata el tratamiento (p. ej. Taso 2025, quirúrgico frente a no quirúrgico). |
+| [Pedret 2015](#pedret-2015) | tiempos de tejido | 1 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (lesión del sóleo/gemelo, RM, vuelta al juego, desde 2015). La referencia posterior sobre la pantorrilla (Prakash 2018) ya está en el registro; no hay serie posterior específica del sóleo. |
+| [Robertson y Wood 2017](#robertson-y-wood-2017) | tiempos de tejido | 6 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (fracturas de estrés, vuelta al deporte, desde 2017). La revisión sistemática posterior principal (Hoenig 2023) ya está en el registro. |
+| [Wang 2017](#wang-2017) | tiempos de tejido | 1 | 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (vuelta al trabajo tras artrodesis lumbar, revisión sistemática, desde 2017). Lo posterior relevante ya está en el registro (Bogaert 2022, Cui 2026); Saltychev 2025 trata la microdiscectomía. |
 | [Altman 1986](#altman-1986) | texto | 1 | 2026-10 · Sustituida por Peat 2006 en los criterios del ACR de rodilla (ro1): su S 95 % / E 69 % sale de la muestra de desarrollo, no del ámbito de un fisio. Solo queda citada como contexto en el texto del test. |
 | [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) | texto | 1 | 2026-10 · Sin cambios: estudio de creación de la regla; ver Seaberg 1998. |
 | [Holla 2012](#holla-2012) | texto | 1 | 2026-10 · Sin cambios: es el único estudio de la precisión de la flexión de rodilla en la artrosis inicial (PubMed, 2026-10). Se cita en el detalle de la restricción de movilidad (ro1) como contraste a Zhang 2010, sin cambiar la puntuación: otra población (artrosis sintomática inicial) y otra referencia (hallazgos radiográficos). |
@@ -892,7 +892,7 @@ Autores: AlDahas, Heneghan, Althobaiti, Deane, Rushton y Falla
 Título: *Measurement properties of cervical joint position error in people with and without neck pain: a systematic review and narrative synthesis*  
 Publicación: BMC Musculoskelet Disord 25:44  
 DOI: 10.1186/s12891-023-07111-4  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: publicada hace menos de dos años; búsqueda en PubMed de 2026-10 (error de posición articular cervical, propiedades de medida, desde 2024) sin ninguna revisión posterior.  
 Nota: Revisión sistemática (COSMIN) de acceso abierto, leída entera por Europe PMC (2026-10). Razonamiento del árbol CIF cervical (fase 4).
 
 Citada como:
@@ -1666,7 +1666,7 @@ Autores: Brown, Gomez-Marin, Brookfield y Li
 Título: *Differential diagnosis of hip disease versus spine disease*  
 Publicación: Clin Orthop Relat Res (419):280–284  
 DOI: 10.1097/00003086-200402000-00044  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (hip-spine syndrome + diagnóstico, desde 2005). Lo posterior (Devin 2012, revisión; Lavadi 2024, revisión sistemática del manejo quirúrgico) no sustituye este estudio de signos clínicos para distinguir cadera de columna.  
 Nota: Leído el resumen de los autores en Europe PMC (2026-10; PMID 15021166; DOI verificado): 97 pacientes con dolor en el miembro inferior; cojera, dolor inguinal y rotación interna limitada predicen un trastorno de cadera (solo cadera, o cadera y columna) frente a solo columna. Es la ref. 62 de Lluch 2020, cap. 4.1 (pp. 157–158), que da las cifras de la cojera y la rotación interna. Razonamiento del árbol CIF de cadera (fase 4), ca_step1.
 
 Citada como:
@@ -1824,7 +1824,7 @@ Autores: Carter, Chambers y Dreyer
 Título: *Freiberg Infraction*  
 Publicación: StatPearls [Internet], NBK537308 (act. 2023-11-22)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de tobillo y pie (fase 4).
 
 Citada como:
@@ -2111,7 +2111,7 @@ Autores: Cook, Brown, Isaacs, Roman, Davis y Richardson
 Título: *Clustered clinical findings for diagnosis of cervical spine myelopathy*  
 Publicación: J Man Manip Ther 18(4):175–180  
 DOI: 10.1179/106698110X12804993427045  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (mielopatía cervical, signos clínicos/precisión diagnóstica, desde 2017). Jiang 2024 ya está en el registro y la revisión sistemática del signo de Hoffmann (Fogarty 2018) no cubre el conjunto de hallazgos de Cook.  
 Nota: PDF del usuario, leído entero (2026-10). La clave lleva los dos primeros autores porque «Cook 2010» ya es otro artículo (dolor femoropatelar). 249 pacientes de un centro de cirugía de columna, retrospectivo. Razonamiento del árbol CIF cervical (fase 4).
 
 Citada como:
@@ -2291,7 +2291,7 @@ Autores: De Hertogh, Micarelli, Reid, Malmström, Vereeck y Alessandrini
 Título: *Dizziness and neck pain: a perspective on cervicogenic dizziness exploring pathophysiology, diagnostic challenges, and therapeutic implications*  
 Publicación: Front Neurol 16:1545241  
 DOI: 10.3389/fneur.2025.1545241  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: publicada en 2025; búsqueda en PubMed de 2026-10 (mareo cervicogénico, desde 2025) sin nada posterior que la supere.  
 Nota: Artículo de perspectiva (no revisión sistemática) de acceso abierto, leído entero por Europe PMC (2026-10). Razonamiento del árbol CIF cervical (fase 4).
 
 Citada como:
@@ -2579,7 +2579,7 @@ Autores: Dididze, Tafti y Sherman
 Título: *Pronator Teres Syndrome*  
 Publicación: StatPearls [Internet], NBK526090 (act. 2023-07-03)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
 
 Citada como:
@@ -3434,7 +3434,7 @@ Autores: Gornet, Burkus, Dryer y Peloza
 Título: *Lumbar disc arthroplasty with Maverick disc versus stand-alone interbody fusion: a prospective, randomized, controlled, multicenter investigational device exemption trial*  
 Publicación: Spine 36(25):E1600–E1611  
 DOI: 10.1097/BRS.0b013e318217668f  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: ensayo aleatorizado primario; las metaanálisis posteriores de prótesis frente a artrodesis lumbar (Bai 2019, Daher 2024; PubMed 2026-10) recogen este tipo de resultados y las dos más recientes ya están en el registro (Khan 2026, Patel 2026).  
 Nota: Ensayo aleatorizado (577 pacientes); PDF aportado por el usuario, leído (2026-10). Mediana de vuelta al trabajo de 75 días con prótesis frente a 96 con artrodesis anterior. Prótesis de disco lumbar en los tiempos de tejido.
 
 Citada como:
@@ -4136,7 +4136,7 @@ Autores: Hodge y Schroeder
 Título: *Medial Epicondyle Apophysitis (Little League Elbow)*  
 Publicación: StatPearls [Internet], NBK570592 (act. 2023-03-27)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
 
 Citada como:
@@ -4348,7 +4348,7 @@ Autores: Headache Classification Committee of the International Headache Society
 Título: *The International Classification of Headache Disorders, 3rd edition (ICHD-3)*  
 Publicación: Cephalalgia 38(1):1–211  
 DOI: 10.1177/0333102417738202  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (ICHD-4). No existe una 4.ª edición publicada; sigue vigente la ICHD-3 (solo hay propuestas de inclusión de entidades).  
 Nota: PDF del usuario. Leídas solo las secciones 1 (introducción), 1.1, 1.2 y 1.2.1 (migraña), 2–2.3 (cefalea tensional) y 11.2–11.2.1 (cefalea cervicogénica) (2026-10). Razonamiento del árbol CIF cervical (fase 4).
 
 Citada como:
@@ -4462,7 +4462,7 @@ Autores: Jiang, Davies, Zipser, Margetis, Martin, Matsoukas y cols. (AO Spine RE
 Título: *The value of clinical signs in the diagnosis of degenerative cervical myelopathy: a systematic review and meta-analysis*  
 Publicación: Global Spine J 14(4):1369–1394  
 DOI: 10.1177/21925682231209869  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios en esta referencia: publicada hace menos de dos años y es la revisión sistemática más reciente de signos clínicos de DCM (PubMed 2026-10, desde 2024). Ver la propuesta sobre la guía AO Spine 2025 en la entrada de Davies 2018.  
 Nota: Revisión sistemática de acceso abierto, leída entera por Europe PMC (2026-10); 11 estudios con grupo control, sin valores agrupados. Resume mal la regla de Cook y Brown 2010 («ninguno o solo uno»): se citan las cifras del artículo original. Razonamiento del árbol CIF cervical (fase 4).
 
 Citada como:
@@ -4922,7 +4922,7 @@ Autores: Kibler, Ludewig, McClure, Michener, Bak y Sciascia
 Título: *Clinical implications of scapular dyskinesis in shoulder injury: the 2013 consensus statement from the 'Scapular Summit'*  
 Publicación: Br J Sports Med 47(14):877–885  
 DOI: 10.1136/bjsports-2013-092425  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (discinesia escapular, consenso/revisión, desde 2014). No hay un consenso posterior que lo sustituya (Kibler 2023 es una revisión narrativa del mismo grupo); Salamh 2023 cuestiona la utilidad de clasificar la discinesia y se debe tener presente al leer el «¿Por qué?».  
 Nota: PDF del usuario, leído entero sin la bibliografía (2026-10). Declaración de consenso (segunda conferencia del «Scapular Summit»), opinión de expertos apoyada en la literatura. Razonamiento del árbol CIF de hombro (fase 4).
 
 Citada como:
@@ -5583,7 +5583,7 @@ Autores: Li, Hammad y Kaiser
 Título: *Medial Epicondylitis (Golfer's Elbow)*  
 Publicación: StatPearls [Internet], NBK519000 (act. 2026-01-02)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: PubMed (2026-10) muestra este capítulo (act. 2026-01) como la versión vigente; la anterior (Reece 2024) está archivada.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
 
 Citada como:
@@ -6875,7 +6875,7 @@ Autores: Loureiro, Mills y Barrett
 Título: *Muscle weakness in hip osteoarthritis: a systematic review*  
 Publicación: Arthritis Care Res 65(3):340–352  
 DOI: 10.1002/acr.21806  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (artrosis de cadera, debilidad muscular/fuerza, revisión sistemática, desde 2014). No aparece una revisión sistemática posterior específica de cadera (lo hallado es de rodilla o de otras patologías).  
 Nota: PDF aportado por el usuario, leído entero (2026-10). «¿Por qué?» de la debilidad de abductores (ca1): debilidad de toda la pierna afectada; causas, por evidencia: atrofia, inhibición y peor calidad muscular. Abducción más débil frente a controles en 2 estudios; tamaño de los abductores sin diferencia entre piernas en 3 de 4. Casi todos los estudios, de artrosis avanzada.
 
 Citada como:
@@ -7578,7 +7578,7 @@ Autores: Menorca, Fussell y Elfar
 Título: *Nerve physiology: mechanisms of injury and recovery*  
 Publicación: Hand Clin 29(3):317–330  
 DOI: 10.1016/j.hcl.2013.04.002  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (lesión nerviosa periférica, tasa de regeneración, revisión, desde 2013). Lo más reciente utilizado ya está en el registro (Nadi 2026); nada más actual sobre la fisiología de la regeneración que la sustituya.  
 Nota: Revisión narrativa; manuscrito de autor (NIHMS679297) aportado por el usuario, leído entero (2026-10). Regeneración de 2–3 mm/día en segmentos proximales y de 1–2 mm/día en distales; brotes colaterales cuando se dañan el 20–30 % de los axones; placa motora viable hasta 1 año. Nota de la axonotmesis en los tiempos de tejido.
 
 Citada como:
@@ -7815,7 +7815,7 @@ Autores: Nardi y Schaefer
 Título: *Nursemaid Elbow*  
 Publicación: StatPearls [Internet], NBK430777 (act. 2023-08-14)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
 
 Citada como:
@@ -8647,7 +8647,7 @@ Autores: Pedret, Rodas, Balius, Capdevila, Bossy, Vernooij y Alomar
 Título: *Return to Play After Soleus Muscle Injuries*  
 Publicación: Orthop J Sports Med 3(7):2325967115595802  
 DOI: 10.1177/2325967115595802  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (lesión del sóleo/gemelo, RM, vuelta al juego, desde 2015). La referencia posterior sobre la pantorrilla (Prakash 2018) ya está en el registro; no hay serie posterior específica del sóleo.  
 Nota: Serie de casos (61 deportistas de élite, 44 lesiones del sóleo con RM); PDF aportado por el usuario, leído (2026-10). Recuperación de 29 días de media; aponeurosis central 44, lateral 19. Gemelo y sóleo en los tiempos de tejido.
 
 Citada como:
@@ -8699,7 +8699,7 @@ Autores: Petersen, Laslett y Juhl
 Título: *Clinical classification in low back pain: best-evidence diagnostic rules based on systematic reviews*  
 Publicación: BMC Musculoskelet Disord 18:188  
 DOI: 10.1186/s12891-017-1549-6  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (clasificación del dolor lumbar, reglas diagnósticas, revisión sistemática, desde 2017). No aparece una revisión sistemática posterior de las mismas reglas diagnósticas.  
 Nota: Revisión sistemática de acceso abierto, leída entera por Europe PMC (2026-10). Razonamiento del árbol CIF lumbar (fase 4).
 
 Citada como:
@@ -8739,7 +8739,7 @@ Autores: Pollock, James, Lee y Chakraverty
 Título: *British athletics muscle injury classification: a new grading system*  
 Publicación: Br J Sports Med 48(18):1347–1351  
 DOI: 10.1136/bjsports-2013-093302  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: artículo que define la clasificación BAMIC; búsqueda en PubMed de 2026-10 (BAMIC, desde 2016) sin una versión revisada de la clasificación. Los estudios posteriores aplican la clasificación, no la modifican.  
 Nota: Artículo que propone la clasificación BAMIC: grados 0–4 por la RM, con sufijo «a» miofascial, «b» miotendinosa o «c» intratendinosa. PDF del usuario, leído entero (2026-10); no da plazos. Nombres de los subtipos de isquiotibiales en los tiempos de tejido.
 
 Citada como:
@@ -8999,7 +8999,7 @@ Autores: Reiley, Vickory, Funderburg, Cesario y Clendaniel
 Título: *How to diagnose cervicogenic dizziness*  
 Publicación: Arch Physiother 7:12  
 DOI: 10.1186/s40945-017-0040-x  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (mareo cervicogénico, diagnóstico, revisión, desde 2017). Lo posterior más relevante ya está en el registro (De Hertogh 2025); Knapstad 2019 (revisión sistemática de características clínicas) es complementaria, no sustituye.  
 Nota: Revisión narrativa con opinión de experto, de acceso abierto, leída entera por Europe PMC (2026-10). Razonamiento del árbol CIF cervical (fase 4).
 
 Citada como:
@@ -9196,7 +9196,7 @@ Autores: Robertson y Wood
 Título: *Lower limb stress fractures in sport: Optimising their management and outcome*  
 Publicación: World J Orthop 8(3):242–255  
 DOI: 10.5312/wjo.v8.i3.242  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (fracturas de estrés, vuelta al deporte, desde 2017). La revisión sistemática posterior principal (Hoenig 2023) ya está en el registro.  
 Nota: Revisión narrativa de acceso abierto; PDF del usuario, leído entero (2026-10). Alto riesgo: diáfisis tibial anterior, base del 5.º metatarsiano, maléolo medial, cuello femoral lateral, navicular y sesamoideos del hallux. Tibia anterior incompleta: vuelta al deporte a los 7 meses con o sin cirugía. Fila «Fractura de estrés» de los tiempos de tejido.
 
 Citada como:
@@ -9736,7 +9736,7 @@ Autores: Shamrock y Das
 Título: *Radial Tunnel Syndrome*  
 Publicación: StatPearls [Internet], NBK555937 (act. 2023-08-14)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Dos autores en la clave porque Shamrock 2023 (rotura del Aquiles) ya existía. Razonamiento del árbol CIF de codo (fase 4).
 
 Citada como:
@@ -9982,7 +9982,7 @@ Autores: Smith y Varacallo
 Título: *Osgood-Schlatter Disease*  
 Publicación: StatPearls [Internet], NBK441995 (act. 2023-08-04)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10). La clave lleva los dos autores y el año de la última actualización del capítulo. Razonamiento del árbol CIF de rodilla (fase 4).
 
 Citada como:
@@ -9999,7 +9999,7 @@ Autores: Smith y Varacallo
 Título: *Sever Disease (Calcaneal Apophysitis)*  
 Publicación: StatPearls [Internet], NBK441928 (act. 2024-01-11)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva los dos autores y el año de la última actualización del capítulo (no confundir con Smith y Varacallo 2023, Osgood-Schlatter). Razonamiento del árbol CIF de tobillo y pie (fase 4).
 
 Citada como:
@@ -10487,7 +10487,7 @@ Autores: Trammell, Davis y Scott
 Título: *Kohler Disease*  
 Publicación: StatPearls [Internet], NBK507831 (act. 2023-08-07)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de tobillo y pie (fase 4).
 
 Citada como:
@@ -10829,7 +10829,7 @@ Autores: Wang, Borgman, Vertuani y Nilsson
 Título: *A systematic literature review of time to return to work and narcotic use after lumbar spinal fusion using minimal invasive and open surgery techniques*  
 Publicación: BMC Health Serv Res 17:446  
 DOI: 10.1186/s12913-017-2398-6  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (vuelta al trabajo tras artrodesis lumbar, revisión sistemática, desde 2017). Lo posterior relevante ya está en el registro (Bogaert 2022, Cui 2026); Saltychev 2025 trata la microdiscectomía.  
 Nota: Revisión sistemática (36 estudios); PDF aportado por el usuario, leído (2026-10). Vuelta al trabajo tras artrodesis lumbar: 7 semanas mínimamente invasiva frente a 11 abierta (Parker 2013); de 3,6 a 10,9 meses según técnica y serie. Artrodesis lumbar en los tiempos de tejido.
 
 Citada como:
@@ -10900,7 +10900,7 @@ Autores: Weir, Brukner, Delahunt, Ekstrand, Griffin, Khan, Lovell, Meyers, Musch
 Título: *Doha agreement meeting on terminology and definitions in groin pain in athletes*  
 Publicación: Br J Sports Med 49(12):768–774  
 DOI: 10.1136/bjsports-2015-094869  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (acuerdo de Doha, dolor inguinal en deportistas, desde 2016). No hay actualización del acuerdo; Heijboer 2022 y 2023 evalúan su fiabilidad y la conferencia italiana de 2023 es otro consenso, sin sustituirlo.  
 Nota: Acuerdo de Doha (consenso de 24 expertos con Delphi previo, en deportistas). Acceso abierto, leído entero por Europe PMC (2026-10; PMID 26031643; DOI verificado). Es la ref. 3 de Lluch 2020, cap. 4.1. Razonamiento del árbol CIF de cadera (fase 4), ca_step1b y ca_step6.
 
 Citada como:
@@ -10938,7 +10938,7 @@ Autores: Wheeler y DeCastro
 Título: *Posterior Interosseous Nerve Syndrome*  
 Publicación: StatPearls [Internet], NBK541046 (act. 2023-05-01)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario.  
 Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de codo (fase 4).
 
 Citada como:
@@ -11035,7 +11035,7 @@ Autores: Wong, Côté, Quesnele, Stern y Mior
 Título: *The course and prognostic factors of symptomatic cervical disc herniation with radiculopathy: a systematic review of the literature*  
 Publicación: Spine J 14(8):1781–1789  
 DOI: 10.1016/j.spinee.2014.02.032  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (radiculopatía cervical, historia natural/pronóstico, desde 2015). No aparece una revisión sistemática posterior del curso natural; lo hallado trata el tratamiento (p. ej. Taso 2025, quirúrgico frente a no quirúrgico).  
 Nota: Revisión sistemática con síntesis de la mejor evidencia (3 estudios de bajo riesgo de sesgo); manuscrito aceptado aportado por el usuario, leído (2026-10). Mejoría importante en los primeros 4–6 meses; recuperación completa a los 24–36 meses en ~83 %; recurrencias moderadas en 5 de 23 de una serie. Radiculopatía cervical en los tiempos de tejido.
 
 Citada como:
@@ -11069,7 +11069,7 @@ Autores: Wood, Davis y Carter
 Título: *Osteochondritis Dissecans*  
 Publicación: StatPearls [Internet], NBK526091 (act. 2023-08-08)  
 DOI: —  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · PubMed (2026-10, título exacto, libro StatPearls) no encuentra ninguna versión posterior del capítulo: sigue siendo la versión de la que se cita. Capítulo de consulta, no estudio primario. Existe un capítulo aparte sobre la rodilla (Mohr 2024) que no sustituye este, que se cita como general.  
 Nota: Capítulo general de StatPearls (NCBI Bookshelf), no específico del astrágalo ni del codo; PDF aportado por el usuario, leído entero (2026-10; autores, NBK y fecha comprobados en Europe PMC). La clave lleva el año de la última actualización del capítulo. Razonamiento del árbol CIF de tobillo y pie y de codo (fase 4).
 
 Citada como:
@@ -11210,7 +11210,7 @@ Autores: Zacharias, Pizzari, English, Kapakoulakis y Green
 Título: *Hip abductor muscle volume in hip osteoarthritis and matched controls*  
 Publicación: Osteoarthritis Cartilage 24(10):1727–1735  
 DOI: 10.1016/j.joca.2016.05.002  
-Última revisión: **sin revisar**  
+Última revisión: 2026-10 · Sin cambios: búsqueda en PubMed de 2026-10 (abductores de cadera, artrosis, volumen/atrofia/debilidad, desde 2014). No hay un estudio de volumen muscular por RM posterior que lo sustituya (lo hallado es sobre fuerza, grasa o rodilla).  
 Nota: PDF del manuscrito aceptado aportado por el usuario, leído entero (2026-10). «¿Por qué?» de la debilidad de abductores (ca1): con RM y sin la grasa, atrofia de los glúteos medio, menor y mayor del lado afectado solo en la artrosis de grado 3; más grasa en el glúteo menor; menos fuerza de abducción y rotación interna; atribuido al desuso.
 
 Citada como:
