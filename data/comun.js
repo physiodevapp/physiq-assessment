@@ -24,7 +24,7 @@ export const SIS_ENDOCRINO = {
   banderasAmarillas: [
     { texto: 'Debilidad muscular proximal, mialgias y fatiga sistémica inexplicada', pregunta: 'end_1' },
     'Periartritis o tendinitis calcificante bilateral de hombro',
-    'Cambios inexplicables en cabello, uñas, piel o tolerancia a la temperatura',
+    { texto: 'Cambios inexplicables en cabello, uñas, piel o tolerancia a la temperatura', pregunta: 'end_3' },
     { texto: 'Polidipsia y poliuria (sed y orina excesivas)', pregunta: 'end_2' }
   ],
   preguntas: [
@@ -159,7 +159,7 @@ export const SIS_HEMATOLOGICO = {
     { texto: 'Heces negras/alquitranadas indicativas de trombocitopenia o sangrado GI', pregunta: 'hem_4' },
     'Episodios nuevos de dolor muscular o articular en pacientes con hemofilia',
     { texto: 'Hemoptisis (toser sangre) en pacientes con hemofilia', pregunta: 'hem_4' },
-    'Fiebre alta, escalofríos y sudores por infecciones en pacientes con leucopenia'
+    { texto: 'Fiebre alta, escalofríos y sudores por infecciones en pacientes con leucopenia', pregunta: 'hem_3' }
   ],
   banderasAmarillas: [
     'Palidez en pliegues palmares, mucosas o lechos ungueales',
@@ -315,7 +315,7 @@ export const SIS_POSQUIRURGICO = {
   id: 'transversal_posquirurgico', icon: '🏥', nombre: 'Posquirúrgico', soloPosquirurgico: true,
   banderasRojas: [
     { texto: 'Herida más roja, caliente, hinchada o dolorosa, que supura o se abre, o fiebre y malestar tras la operación (infección)', pregunta: 'pq_herida' },
-    'En las 48–72 horas siguientes, dolor desproporcionado con piel oscura, ampollas, crepitación o signos de sepsis (infección necrotizante: urgencia quirúrgica)',
+    { texto: 'En las 48–72 horas siguientes, dolor desproporcionado con piel oscura, ampollas, crepitación o signos de sepsis (infección necrotizante: urgencia quirúrgica)', pregunta: 'pq_herida' },
     { texto: 'Pierna hinchada, caliente o dolorosa (TVP)', pregunta: ['pq_tvp', 'pq_tvp_ms'] },
     { texto: 'Falta de aire brusca, dolor en el pecho al respirar, tos con sangre o síncope (embolia pulmonar)', pregunta: 'pq_tep' },
     { texto: 'Dolor desproporcionado que va a más, sobre todo al estirar los dedos, con el compartimento tenso, en las horas siguientes a la lesión, la operación o un yeso o vendaje (síndrome compartimental)', regiones: ['codo', 'rodilla', 'tobillo_pie'], pregunta: 'pq_compart' },
@@ -324,7 +324,7 @@ export const SIS_POSQUIRURGICO = {
   ],
   banderasAmarillas: [
     { texto: 'Dolor continuo y desproporcionado con cambios de color, temperatura, sudoración o hinchazón, o dolor al roce (SDRC)', regiones: PQ_MIEMBROS, pregunta: 'pq_sdrc' },
-    { texto: 'Yeso o vendaje que aprieta, o dolor desproporcionado mientras se lleva o al retirarlo (aviso precoz de SDRC)', regiones: PQ_MIEMBROS }
+    { texto: 'Yeso o vendaje que aprieta, o dolor desproporcionado mientras se lleva o al retirarlo (aviso precoz de SDRC)', regiones: PQ_MIEMBROS, pregunta: ['pq_sdrc', 'pq_compart'] }
   ],
   preguntas: [
     { id: 'pq_herida', urgencia: 'Posible infección de la herida quirúrgica: que la valore hoy el cirujano o urgencias.', text: '¿Desde la operación, la herida está más roja, caliente, hinchada o dolorosa, supura o se ha abierto, o ha tenido fiebre, escalofríos o malestar general?', alerta: true,
