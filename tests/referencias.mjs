@@ -209,6 +209,20 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPO
             fase: '2 · razonamiento del cribado', efecto: 'razonamiento fase 2' });
         }
       }
+      // Banderas con razonamiento propio (docs/razonamiento-banderas.md); las
+      // que solo enlazan una pregunta (`pregunta`) ya cuentan por ella.
+      for (const [campo, nombre] of [['banderasRojas', 'Bandera roja'], ['banderasAmarillas', 'Bandera amarilla']]) {
+        (sis[campo] || []).forEach((f, i) => {
+          const r = typeof f === 'string' ? null : f.razonamiento;
+          if (!r || vistas.has(`${sis.id}.${campo}.${i}`)) return;
+          vistas.add(`${sis.id}.${campo}.${i}`);
+          for (const clave of r.fuentes || []) {
+            const cita = (r.citas || []).map(c => (typeof c === 'string' ? c : c.texto)).find(c => c.startsWith(clave)) || clave;
+            anotar(lit, clave, cita, { region: reg, hyp: '—', donde: `${nombre} «${f.texto}» · ${sis.nombre}`,
+              fase: '2 · razonamiento del cribado', efecto: 'razonamiento fase 2' });
+          }
+        });
+      }
     }
   }
 

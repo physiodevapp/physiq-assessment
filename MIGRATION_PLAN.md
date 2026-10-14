@@ -322,3 +322,21 @@ Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo enter
 - [ ] L3 — Añadir a la matriz de la fase 3 cuánto tarda el dolor en calmarse (decisión 25): sesión propia, porque cambia la fase 3 y lo que recibe physiq-report (`ir`)
 - [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)
 - [ ] L5 — Revisión automática con planes reales en los fixtures
+
+---
+
+## Fase M — «¿Por qué?» de las banderas rojas y amarillas de la fase 2
+
+Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero antes de empezar). Una región por sesión, con revisión clínica del usuario antes de `main`. Una bandera es un texto o `{ texto, regiones?, pregunta?, fase1?, razonamiento? }`. Con `pregunta` (ids del mismo sistema), su ⓘ abre el «¿Por qué?» de esa pregunta en el panel del razonamiento: no se escribe dos veces. Con `razonamiento` propio (misma forma que el de una pregunta, fuentes leídas en la sesión), abre el suyo. `fase1` pinta «· fase 1». `regiones` la oculta fuera de esas regiones, igual que a las preguntas. Abierta en 2026-10, a propuesta del usuario, tras el inventario de lumbar.
+
+- [x] Inventario de lumbar y de los tres sistemas compartidos
+- [x] Pregunta urgente de embarazo ectópico en lumbar (`l_e8`) y cadera (`ca_u5`): la bandera decía «urgencia» y ninguna pregunta la disparaba (NICE NG126)
+- [x] Banderas posquirúrgicas filtradas por región (`regiones`, igual que sus preguntas)
+- [x] Esquema, ⓘ y panel (`banderaHTML`, `razonBanderaHTML`, `abrirRazonBandera`, `app.js`), tests (`tests/unit/razonamiento.mjs`, smoke `--solo banderas`), `tests/referencias.mjs` cuenta las fuentes de las banderas
+- [x] Variante de `pq_nervio` para columna (decisión del usuario, 2026-10): `pq_nervio_col` (lumbar y cervical, urgencia; Finucane 2020, Wang 2020, Schroeder 2017) y su bandera. Revisado por el usuario (2026-10)
+
+| Región / sistema | Enlaces (`pregunta`, `fase1`) | Razonamiento propio (rojas) | Amarillas | Revisión usuario | Notas |
+|---|---|---|---|---|---|
+| Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [x] 8 de 8 (Finucane 2020, Downie 2013, NICE NG12 y NG65, Goodman caps. 6 y 10, Belyayeva 2024, Kimyaghalam 2024, Zemaitis 2026) | [x] 2 (Downie, NG65); el resto sin hacer | [x] (2026-10), incluidos percusión costovertebral, Leriche, la masa testicular ampliada y `pq_nervio_col` | |
+| Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 13 preguntas | [ ] | [ ] | [ ] | Una vez para todas las regiones |
+| Cadera, cervical, hombro, rodilla, codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
