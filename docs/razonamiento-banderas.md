@@ -115,7 +115,7 @@ Una bandera es un texto o un objeto:
   - Hipopotasemia: Goodman considera peligroso cualquier potasio por debajo de 3,5; Castro y Sharma 2025, más reciente, clasifica 3,0–3,5 como leve, a menudo sin síntomas. Se usa Castro y se mantiene de Goodman solo la recomendación de consultar antes del ejercicio (regla 2).
   - Sepsis neutropénica: NICE CG151 (fiebre de más de 38 °C) prevalece sobre la definición de Punnapuzha (38,3 °C una vez, o 38 °C durante una hora), que no se cita para ese dato (regla 1).
   - Túnel carpiano: Goodman trata todo síntoma bilateral como bandera roja, y Sevy dice que el bilateral es frecuente. No se contradicen: se dicen las dos cosas, y lo que pesa son los signos acompañantes.
-- **Revisión clínica del usuario:** pendiente.
+- **Revisión clínica del usuario:** hecha (2026-10), incluidas las preguntas `hem_5` y `hem_6` y el texto nuevo de la bandera de xantomas.
 
 ### Hallazgos de esta sesión
 
@@ -125,6 +125,6 @@ Una bandera es un texto o un objeto:
 
 ## Siguientes pasos
 
-2. Sistemas compartidos: hechos (2026-10), pendientes de revisión del usuario.
+2. Sistemas compartidos: hechos y revisados por el usuario (2026-10).
 3. Resto de regiones, una por sesión: inventario, enlaces y razonamiento propio de las rojas.
 4. Amarillas, al final o nunca si no aportan.
