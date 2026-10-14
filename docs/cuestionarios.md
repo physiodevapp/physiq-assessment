@@ -9,15 +9,17 @@ Antes de la calculadora (§8), ningún cuestionario se puntuaba en la app: solo 
 - **Fase 1, riesgo psicosocial** (`app.js`, `selectPsico`, `updatePsicoRecomendacion`, `applyRegionChange`): Örebro (OMPSQ) para cualquier región; hasta 2026-10 también STarT Back para lumbar, retirado por no tener validación en castellano de España (§8). Con `psico_*` en «Sí» o «Dudoso»: FABQ y TSK-11 (miedo-evitación), PCS (autoeficacia; ver §6), PHQ-2 → PHQ-9 (estado de ánimo). El nivel Bajo/Medio/Alto lo elige el clínico.
 - **Fases 4b y 5, `prom` de cada hipótesis** (`data/<región>.js`; badge `.prom-badge` y «Escala recomendada para el seguimiento» en el prompt del informe con IA). La MCID va dentro del texto (`'ODI (MCID: 8.5 pts) / …'`), no como dato aparte.
 
-| Región | PROMs |
-|---|---|
-| Lumbar | ODI, RMDQ, NPRS |
-| Cervical | NDI, EVA, PSFS, mJOA |
-| Hombro | SPADI, QuickDASH, DASH, ASES |
-| Codo | QuickDASH, PRTEE, DASH, Oxford Elbow Score, MEPS |
-| Cadera | HOOS, iHOT-12, HAGOS, HOS |
-| Rodilla | KOOS, KOOS-12, KOOS-PF, IKDC subjetivo, Kujala, VISA-P, LEFS, EVA |
-| Tobillo y pie | FAAM, LEFS, VISA-A, CAIT, IdFAI |
+| Región | PROMs (desde 2026-10, solo validados en castellano de España) | Antes |
+|---|---|---|
+| Lumbar | ODI, RMDQ, NPRS | Sin cambios |
+| Cervical | NDI, EVA | PSFS y mJOA retirados (sin validación de España) |
+| Hombro | SPADI, ASES, DASH | QuickDASH → DASH (el QuickDASH no tiene validación de España propia) |
+| Codo | PRTEE, DASH | QuickDASH → DASH; Oxford Elbow Score y MEPS retirados |
+| Cadera | WOMAC (artrosis), iHOT-12, HOS, LEFS, ODI (sacroilíaca) | HOOS → WOMAC en la artrosis, iHOT-12 o LEFS en el resto (ODI en el dolor sacroilíaco); HAGOS → HOS o iHOT-12 |
+| Rodilla | KOOS, Kujala, VISA-P, LEFS, EVA | KOOS-12 e IKDC subjetivo → KOOS; KOOS-PF retirado |
+| Tobillo y pie | FAAM, LEFS, VISA-A, CAIT, IdFAI | Sin cambios |
+
+Validaciones de España de los instrumentos nuevos en el badge: WOMAC, Escobar 2002 (*Clin Rheumatol* 21(6):466–471, Bilbao, PMID 12447629); DASH, Hervás 2006 (*Med Clin* 127:441–447); HOS, Seijas 2014 (*HQLO* 12:70); LEFS, Cruz-Díaz 2014 (*Disabil Rehabil* 36(23):2005–2011); ODI, Flórez 1995 y Alcántara-Bumbiedro 2006 (*Rehabilitación*). Las MCID se mantienen solo donde ya estaban; a los sustitutos no se les añade ninguna. Un test unitario («PROM de las hipótesis») solo admite los instrumentos de esta tabla.
 
 ## 2. Cómo se investigó y límites
 

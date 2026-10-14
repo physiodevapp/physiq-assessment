@@ -155,3 +155,18 @@ test('cuestionarios: el HTML escapa y pinta un botón por valor', () => {
   assert.match(L.listaCuestionariosHTML(CUESTIONARIOS, GRUPOS_CUESTIONARIO, { phq9: { r: todos('phq9', 3) } }), /27\/27 · Síntomas depresivos graves/);
   assert.doesNotMatch(L.listaCuestionariosHTML([{ ...def('phq2'), titulo: '<b>x</b>' }], GRUPOS_CUESTIONARIO), /<b>x<\/b>/);
 });
+
+// Requisito del usuario (2026-10): el PROM que recomienda cada hipótesis (badge
+// de las fases 4b y 5, pq1 incluida) solo puede ser un instrumento validado en
+// castellano de España. Lista y validación de cada uno: docs/cuestionarios.md.
+// Las escalas numéricas de dolor (NPRS, EVA) no son cuestionarios.
+const PROM_VALIDADOS_ES = ['ODI', 'RMDQ', 'NDI', 'SPADI', 'ASES', 'DASH', 'PRTEE', 'WOMAC', 'iHOT-12', 'HOS', 'LEFS', 'KOOS', 'Kujala', 'VISA-P', 'VISA-A', 'FAAM', 'CAIT', 'IdFAI', 'NPRS', 'EVA'];
+const { HYPOTHESES } = await import('../../data.js');
+const { HIP_POSQUIRURGICA } = await import('../../data/comun.js');
+test('PROM de las hipótesis: solo instrumentos validados en castellano de España', () => {
+  const proms = [...Object.values(HYPOTHESES).map(h => [h.id, h.prom]), ...Object.entries(HIP_POSQUIRURGICA.promPorRegion).map(([r, p]) => [`pq1 ${r}`, p])];
+  for (const [id, prom] of proms) {
+    const nombres = prom.replace(/\([^)]*\)/g, '').replace(/\s+—\s+[^/]*/g, '').split(/\s+(?:\/|o)\s+/).map(x => x.trim()).filter(Boolean);
+    for (const n of nombres) assert.ok(PROM_VALIDADOS_ES.some(v => n === v || n.startsWith(v + ' ')), `${id}: «${n}» no está validado en castellano de España`);
+  }
+});
