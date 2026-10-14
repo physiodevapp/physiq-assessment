@@ -192,8 +192,30 @@ Verificación de las reglas del piloto (2026-10; el proxy solo dejó leer PMC y 
 | Örebro | Cuesta-Vargas 2014, texto completo y formulario | Puntuación de cada ítem (formulario), total 210 | Bandas <105 / 105–130 / >130 según Cuesta-Vargas, que las atribuye a Linton y Boersma 2003; el corte de 90 de Linton 2003, solo en su resumen |
 | CADC | Fuentes que lo citan | 19 ítems de 0 a 10, tres dominios | Artículo original no leído: ítems por dominio (se usan los bloques de la hoja), suma o media (la app usa media 0–10) |
 
+Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados en castellano de España. Especificación verificada por fuente; lo que no se pudo leer consta en la `nota` de cada uno.
+
+| Cuestionario | Puntuación | Decisión o duda pendiente de revisión clínica |
+|---|---|---|
+| ODI v1.0 | % = suma ÷ (5 × contestados) × 100; bandas de Fairbank | Etiquetas de las bandas traducidas (no se leyó la versión española); N/A en cualquier ítem, sin límite publicado |
+| Roland-Morris | Frases marcadas, 0–24 | — |
+| NDI | % del máximo; bandas de Vernon en % | Ítem 7 con 6 opciones (la hoja del usuario tiene 5); conducir admite N/A |
+| SPADI | Dolor ÷ 50, discapacidad ÷ 80, total = media de las dos | Otras fuentes usan suma ÷ 130; se sigue la validación española |
+| ASES | (10 − EVA) × 5 + función × 5/3 | Solo el lado afectado |
+| DASH | ((suma ÷ n) − 1) × 25 | Etiquetas en el orden inglés; no se leyó el texto español |
+| PRTEE | Dolor + función ÷ 2 | Etiquetas del original; no se leyó el texto español |
+| WOMAC | Suma 0–96 y subescalas | — |
+| iHOT-12 | Media de los mm (0–100) | El ítem 9 «no relevante» se excluye (deducción) |
+| HOS | % por subescala sin N/A, sin total | — |
+| KOOS | 100 − media × 25 por subescala, sin total | Q4 de la hoja con opciones en orden dudoso: puntúa la posición |
+| Kujala | Suma 0–100 con puntos por opción | Puntos y orden de la versión inglesa; falta comprobar con la hoja española |
+| VISA-P | Puntos del apéndice de la VISA-P-SP | — |
+| FAAM | % por subescala sin N/A | La validación española se quedó con 15 ítems de vida diaria y no da fórmula; se puntúan los 21 con la fórmula original |
+| LEFS | Suma 0–80 | Etiquetas de la hoja de EE. UU.; no se leyó la versión española |
+
+Pendientes de añadir (puntos por respuesta sin verificar; hacen falta las hojas oficiales en español o los artículos): **VISA-A** (VISA-A-S, Hernández-Sánchez 2018: puntos del ítem 1 y de las ramas B y C del ítem 8), **CAIT** (Hiller 2006 / CAIT-Sv: puntos de cada opción) e **IdFAI** (Simon 2012 / IdFAI-Sp: pesos de cada respuesta).
+
 Pendiente:
 
-- Regionales (siguiente tanda), solo con validación de España: RMDQ, Oswestry, NDI (versión de Andrade Ortega), SPADI, KOOS, FAAM, VISA-P, VISA-A, iHOT-12. Quedan fuera por el requisito: HOOS (solo Chile), HAGOS (sin validación), KOOS-12 (solo México), KOOS-PF (solo Colombia), PSFS, Oxford Elbow Score y MEPS (sin versión española).
+- Regionales: VISA-A, CAIT e IdFAI (ver arriba).
 - Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
 - physiq-report no lee aún el campo `cu` del payload.
