@@ -25,21 +25,21 @@ export const screening = {
     {
       id: 'ca_cancer', icon: '🔬', nombre: 'Cáncer / Oncológico',
       banderasRojas: [
-        'Dolor óseo intenso al cargar peso o fractura patológica ante trauma menor',
-        'Dolor constante nocturno en cadera/muslo sin alivio postural',
-        'Antecedentes de cáncer de próstata, testículo, colon o riñón',
-        'Masa palpable en muslo o zona glútea',
+        { texto: 'Dolor óseo intenso al cargar peso o fractura patológica ante trauma menor', pregunta: 'ca_on2' },
+        { texto: 'Dolor constante nocturno en cadera/muslo sin alivio postural', pregunta: 'ca_on2' },
+        { texto: 'Antecedentes de cáncer de próstata, testículo, colon o riñón', pregunta: 'c5' },
+        { texto: 'Masa palpable en muslo o zona glútea', pregunta: 'ca_on3' },
         // Tarjeta cadera (guía de consulta), BANDERAS «Cáncer». Sin la «S 100 %» de la
         // combinación: ningún estudio ha evaluado combinaciones de banderas (Henschke 2013).
         'Factores de riesgo de malignidad: ≥50 años, sin mejoría en 1 mes, pérdida de peso inexplicada, cáncer previo (ninguna combinación está validada). Lo que más informa: cáncer previo, sospecha clínica, VSG elevada y hematocrito bajo',
-        'Masas o ganglios que crecen o fluctúan; avulsión ósea en un adulto mayor (descartar metástasis)',
-        'Adenopatía inguinal sin foco séptico en el miembro inferior: considerar malignidad',
+        { texto: 'Masas o ganglios que crecen o fluctúan; avulsión ósea en un adulto mayor (descartar metástasis)', pregunta: ['ca_on3', 'ca_on4'] },
+        { texto: 'Adenopatía inguinal sin foco séptico en el miembro inferior: considerar malignidad', pregunta: 'ca_on4' },
         // Lluch 2020, cap. 4.1.3, p. 147 (tabla 2); Goodman 2018, cap. 16, pp. 614 y 631–632
         'Tumores óseos primarios (osteoma osteoide: dolor sordo nocturno en el joven que alivian la actividad y, de forma desproporcionada, la aspirina; condrosarcoma, tumor de células gigantes, Ewing) y masas de partes blandas'
       ],
       banderasAmarillas: [
         'Edad >50 años con dolor insidioso en cadera',
-        'Pérdida de peso inexplicada',
+        { texto: 'Pérdida de peso inexplicada', pregunta: 'ca_on3', fase1: 'br1' },
         // Lluch 2020, cap. 4.1.3, p. 146
         'Antecedente familiar de cáncer'
       ],
@@ -149,16 +149,16 @@ export const screening = {
     {
       id: 'ca_vascular', icon: '🩸', nombre: 'Vascular',
       banderasRojas: [
-        'Claudicación: dolor que aparece a los 5-10 min de caminar y cede casi de inmediato al parar',
-        'Calambres nocturnos en pantorrilla que interrumpen el sueño profundo',
+        { texto: 'Claudicación: dolor que aparece a los 5-10 min de caminar y cede casi de inmediato al parar', pregunta: 'c2' },
+        { texto: 'Calambres nocturnos en pantorrilla que interrumpen el sueño profundo', pregunta: 'ca_v2' },
         'Aneurisma aórtico: dolor desgarrador irradiado a glúteo o parte posterior del muslo',
-        'Signos de TVP: edema, eritema, calor y dolor en pantorrilla',
+        { texto: 'Signos de TVP: edema, eritema, calor y dolor en pantorrilla', pregunta: 'ca_v2' },
         // Tarjeta cadera (guía de consulta), BANDERAS «Vascular»: sin pistas propias, regla del dolor atípico
-        'Oclusión aortoilíaca (síndrome de Leriche), enfermedad vascular periférica, variz de la safena'
+        { texto: 'Oclusión aortoilíaca (síndrome de Leriche), enfermedad vascular periférica, variz de la safena', pregunta: ['c2', 'ca_v3'] }
       ],
       banderasAmarillas: [
-        'Claudicación que empeora repentinamente',
-        'Dolor en reposo isquémico que se alivia al colgar la pierna fuera de la cama'
+        { texto: 'Claudicación que empeora repentinamente', pregunta: 'c2' },
+        { texto: 'Dolor en reposo isquémico que se alivia al colgar la pierna fuera de la cama', pregunta: 'ca_v3' }
       ],
       preguntas: [
         { id: 'c2', anatomia: ['arteria_femoral'], text: '¿El dolor aparece tras 5-10 minutos de caminar y se alivia casi de inmediato al detenerse (claudicación vascular)?', alerta: true, s1: true,
@@ -245,17 +245,17 @@ export const screening = {
     {
       id: 'ca_urogenital', icon: '🫘', nombre: 'Urogenital / Renal',
       banderasRojas: [
-        'Hematuria (sangre en orina) de cualquier cantidad',
-        'Masa testicular indolora y dura',
-        'Fiebre con dolor en flanco y escalofríos (pielonefritis)',
+        { texto: 'Hematuria (sangre en orina) de cualquier cantidad', pregunta: 'c3' },
+        { texto: 'Masa testicular indolora y dura', pregunta: 'ca_u2' },
+        { texto: 'Fiebre con dolor en flanco y escalofríos (pielonefritis)', pregunta: 'c3' },
         // Tarjeta cadera (guía de consulta), BANDERAS «Visceral, urogenital o ginecológico» y URGENCIA
-        'Litiasis renal, uretritis; prostatitis, epididimitis, torsión testicular (urgencias hoy)',
-        'Endometriosis, quiste ovárico, enfermedad inflamatoria pélvica; cáncer ginecológico, de próstata, testículo o vía urinaria',
+        { texto: 'Litiasis renal, uretritis; prostatitis, epididimitis, torsión testicular (urgencias hoy)', pregunta: ['c3', 'ca_u2', 'ca_u3'] },
+        { texto: 'Endometriosis, quiste ovárico, enfermedad inflamatoria pélvica; cáncer ginecológico, de próstata, testículo o vía urinaria', pregunta: ['ca_u4', 'ca_u2', 'c3'] },
         'Denominador común: dolor atípico, sin relación clara con la carga, nocturno o con síntomas no musculoesqueléticos'
       ],
       banderasAmarillas: [
-        'Ardor o dificultad al orinar acompañando el dolor de ingle',
-        'Dolor en ingle que no cambia con movimiento de cadera'
+        { texto: 'Ardor o dificultad al orinar acompañando el dolor de ingle', pregunta: 'c3' },
+        { texto: 'Dolor en ingle que no cambia con movimiento de cadera', pregunta: 'ca_u2' }
       ],
       preguntas: [
         { id: 'c3', anatomia: ['rinon', 'ureteres'], text: '¿Ha notado sangre en la orina, ardor o dolor al orinar, o fiebre/escalofríos?', alerta: true, s1: true,
@@ -379,18 +379,18 @@ export const screening = {
     {
       id: 'ca_gi', icon: '🫃', nombre: 'Gastrointestinal',
       banderasRojas: [
-        'Dolor en ingle/cadera que se alivia al pasar gases o defecar',
-        'Signo del psoas positivo (sospecha de apendicitis o absceso)',
-        'Fiebre y dolor abdominal simultáneo al dolor de cadera',
+        { texto: 'Dolor en ingle/cadera que se alivia al pasar gases o defecar', pregunta: 'c4' },
+        { texto: 'Signo del psoas positivo (sospecha de apendicitis o absceso)', pregunta: 'c4' },
+        { texto: 'Fiebre y dolor abdominal simultáneo al dolor de cadera', pregunta: 'c4' },
         // Tarjeta cadera (guía de consulta), BANDERAS «Hernia inguinal o femoral» y «Visceral»
-        'Apendicitis, enfermedad de Crohn, diverticulitis; cáncer digestivo, linfoma',
-        'Hernia inguinal (80 % varones: dolor, tumefacción y bulto con sensación de peso o arrastre) o femoral (unas 4 veces más en mujeres: nódulo lateral e inferior al tubérculo púbico). Palpar DE PIE el canal inguinal y, si no se nota, pedir que tosa',
+        { texto: 'Apendicitis, enfermedad de Crohn, diverticulitis; cáncer digestivo, linfoma', pregunta: ['c4', 'ca_gi2'] },
+        { texto: 'Hernia inguinal (80 % varones: dolor, tumefacción y bulto con sensación de peso o arrastre) o femoral (unas 4 veces más en mujeres: nódulo lateral e inferior al tubérculo púbico). Palpar DE PIE el canal inguinal y, si no se nota, pedir que tosa', pregunta: 'ca_gi3' },
         // Lluch 2020, cap. 4.1.3, p. 147 (tabla 2); Goodman 2018, cap. 16, pp. 617 y 639
         'Líquido en la cavidad peritoneal (ascitis por cirrosis, insuficiencia cardiaca, cáncer): abdomen distendido con dolor inguinal o lumbar; preguntar por enfermedad hepática o alcohol'
       ],
       banderasAmarillas: [
-        'Distensión abdominal acompañando el dolor de cadera',
-        'Uso crónico de AINEs'
+        { texto: 'Distensión abdominal acompañando el dolor de cadera', pregunta: 'c4' },
+        { texto: 'Uso crónico de AINEs', pregunta: 'ca_gi2' }
       ],
       preguntas: [
         { id: 'c4', anatomia: ['iliopsoas', 'intestino_grueso'], text: '¿El dolor en la ingle o cadera se acompaña de molestias, distensión abdominal o se alivia al defecar/pasar gases?', alerta: true, s1: true,
@@ -476,17 +476,17 @@ export const screening = {
       // más la URGENCIA de cuello femoral. Radiografía negativa NO descarta.
       id: 'ca_oseo', icon: '🦴', nombre: 'Óseo / Desarrollo',
       banderasRojas: [
-        'Fractura de estrés del cuello femoral: dolor inguinal vago e insidioso que empeora con la actividad, dolor al final del rango (sobre todo en RI), dolor profundo nocturno o en carga → DERIVACIÓN URGENTE',
-        'Fractura de estrés de rama púbica (corredores, mucho trabajo de aductores; el dolor NO aumenta con abducción pasiva ni aducción resistida) o de diáfisis femoral (dolor vago en muslo anterior en carga; fulcro S 88–93 %, E 13–75 %)',
+        { texto: 'Fractura de estrés del cuello femoral: dolor inguinal vago e insidioso que empeora con la actividad, dolor al final del rango (sobre todo en RI), dolor profundo nocturno o en carga → DERIVACIÓN URGENTE', pregunta: 'ca_os1' },
+        { texto: 'Fractura de estrés de rama púbica (corredores, mucho trabajo de aductores; el dolor NO aumenta con abducción pasiva ni aducción resistida) o de diáfisis femoral (dolor vago en muslo anterior en carga; fulcro S 88–93 %, E 13–75 %)', pregunta: 'ca_os1' },
         // Lluch 2020, cap. 4.1.3, p. 147 (tabla 2); Goodman 2018, cap. 15, p. 583
         'Fractura de estrés del acetábulo o del sacro (sacro: osteoporosis, embarazo o posparto, radioterapia pélvica, corticoides prolongados, deportistas y militares)',
-        'Osteonecrosis de la cabeza femoral: corticoides o alcohol prolongados, traumatismo o fractura previos, lupus y otras conectivopatías, hiperlipidemia; dolor inguinal profundo en carga',
-        'Lesiones del desarrollo: EFCF (9–16 años, durante el estirón), Perthes (4–10 años, más en varones), displasia, apofisitis púbica',
-        'Fractura por avulsión en el adolescente con tracción brusca (EIAI, EIAS, pubis, tuberosidad isquiática, trocánteres); en un adulto mayor, descartar metástasis'
+        { texto: 'Osteonecrosis de la cabeza femoral: corticoides o alcohol prolongados, traumatismo o fractura previos, lupus y otras conectivopatías, hiperlipidemia; dolor inguinal profundo en carga', pregunta: 'ca_os2' },
+        { texto: 'Lesiones del desarrollo: EFCF (9–16 años, durante el estirón), Perthes (4–10 años, más en varones), displasia, apofisitis púbica', pregunta: ['ca_os3', 'ca_os4'] },
+        { texto: 'Fractura por avulsión en el adolescente con tracción brusca (EIAI, EIAS, pubis, tuberosidad isquiática, trocánteres); en un adulto mayor, descartar metástasis', pregunta: 'ca_os3' }
       ],
       banderasAmarillas: [
-        'Perfil de fractura de estrés: corredor de fondo, militar o deportista de alta intensidad; poca forma al empezar, cambio de superficie o calzado; mujer con tríada de la deportista; corticoides prolongados',
-        'Antecedente de EFCF, Perthes o displasia: hace más probable el dolor de cadera en el joven'
+        { texto: 'Perfil de fractura de estrés: corredor de fondo, militar o deportista de alta intensidad; poca forma al empezar, cambio de superficie o calzado; mujer con tríada de la deportista; corticoides prolongados', pregunta: 'ca_os1' },
+        { texto: 'Antecedente de EFCF, Perthes o displasia: hace más probable el dolor de cadera en el joven', pregunta: 'ca_os4' }
       ],
       preguntas: [
         { id: 'ca_os1', anatomia: ['femur'], text: '¿Hace deporte de resistencia o de alta intensidad (o es militar), y el dolor de ingle empezó poco a poco, empeora al cargar peso o al hacer actividad y le duele también de noche?', alerta: true, s1: true, urgencia: 'Sospecha de fractura de estrés del cuello femoral: derivación urgente (una radiografía negativa no la descarta).',
@@ -585,8 +585,8 @@ export const screening = {
       // y URGENCIA («sospecha de artritis séptica: urgencias hoy»).
       id: 'ca_inflam', icon: '🔥', nombre: 'Inflamatoria / Infecciosa',
       banderasRojas: [
-        'Artritis séptica, osteomielitis, absceso del psoas: fiebre, malestar general, tumefacción dolorosa → urgencias hoy si se sospecha artritis séptica',
-        'AR y otras artropatías multiarticulares, espondilitis anquilosante'
+        { texto: 'Artritis séptica, osteomielitis, absceso del psoas: fiebre, malestar general, tumefacción dolorosa → urgencias hoy si se sospecha artritis séptica', pregunta: 'ca_in1' },
+        { texto: 'AR y otras artropatías multiarticulares, espondilitis anquilosante', pregunta: 'ca_in2' }
       ],
       banderasAmarillas: [
         'VSG como prueba de bajo coste antes que la RM'

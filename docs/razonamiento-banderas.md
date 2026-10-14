@@ -68,6 +68,21 @@ Se inventarían una vez: lo que se escriba para ellos vale en todas las regiones
 
 Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posquirúrgico tiene 9 banderas (`pq_nervio_col`). Cuatro «parciales» ya las explica el razonamiento de su pregunta y se enlazan (decisión del usuario): infección necrotizante en las 48–72 h → `pq_herida` (su «cuánto pesa» la describe, Zabaglo); yeso o vendaje que aprieta → `pq_sdrc` y `pq_compart` (este solo se ve en codo, rodilla y tobillo y pie); cambios de pelo, uñas, piel o temperatura → `end_3`; fiebre en la leucopenia → `hem_3` y la nueva `hem_5` (hallazgo 4). La confusión o sudoración en el diabético (parcial con `end_5`) lleva razonamiento propio: `end_5` no cubre la cetoacidosis ni qué hacer en la sesión. Codo no carga el sistema endocrino.
 
+## Cadera (2026-10)
+
+45 banderas en sus 6 sistemas propios (33 rojas, 12 amarillas), todas texto sin enlace antes de esta sesión. Repasadas una a una contra el texto completo del razonamiento de cada pregunta: muchas «parciales» por el texto de la pregunta están cubiertas por su razonamiento (p. ej., la masa testicular por `ca_u2`, el signo del psoas por `c4`, la claudicación que empeora de golpe por `c2`).
+
+- **Enlazadas (36), más `fase1: 'br1'` en la pérdida de peso:**
+  - ca_cancer: dolor óseo en carga o fractura patológica y dolor nocturno → `ca_on2`; cáncer previo → `c5`; masa en muslo o glúteo → `ca_on3`; masas o ganglios que crecen → `ca_on3` + `ca_on4`; adenopatía inguinal → `ca_on4`; pérdida de peso → `ca_on3` (y `br1`).
+  - ca_vascular: claudicación y claudicación que empeora de golpe → `c2`; calambres nocturnos y TVP → `ca_v2`; Leriche y enfermedad arterial → `c2` + `ca_v3`; dolor isquémico en reposo → `ca_v3`.
+  - ca_urogenital: hematuria, pielonefritis y ardor al orinar → `c3`; masa testicular y dolor de ingle que no cambia con la cadera → `ca_u2`; litiasis, prostatitis, epididimitis, torsión → `c3` + `ca_u2` + `ca_u3`; ginecológicas y cánceres pélvicos → `ca_u4` + `ca_u2` + `c3`.
+  - ca_gi: alivio al defecar, signo del psoas, fiebre con dolor abdominal y distensión → `c4`; apendicitis, Crohn, diverticulitis, cáncer digestivo → `c4` + `ca_gi2`; hernia → `ca_gi3`; AINE crónicos → `ca_gi2`.
+  - ca_oseo: fracturas de estrés del cuello femoral, de rama púbica o diáfisis, y perfil de riesgo → `ca_os1`; osteonecrosis → `ca_os2`; lesiones del desarrollo → `ca_os3` + `ca_os4`; avulsión → `ca_os3`; antecedente de EFCF, Perthes o displasia → `ca_os4`.
+  - ca_inflam: artritis séptica, osteomielitis, absceso del psoas → `ca_in1`; AR y espondilitis → `ca_in2`.
+- **Sin «¿Por qué?» (razonamiento propio pendiente de fuente):** rojas, los factores de riesgo de malignidad (con la VSG y el hematocrito), los tumores óseos primarios (osteoma osteoide aparte, que explica `ca_on2`), el aneurisma aórtico, el «denominador común» urogenital, la ascitis y la fractura de estrés del acetábulo o del sacro; amarillas, edad de más de 50 años con dolor insidioso, antecedente familiar de cáncer y la VSG como prueba de bajo coste.
+- **Enlaces parciales que se quedan así:** la avulsión en el adulto mayor (descartar metástasis) está en la bandera de masas de ca_cancer pero la explica `ca_os3`, de otro sistema; la variz de la safena (bandera de Leriche) no la explica ninguna pregunta.
+- **Posibles huecos de seguridad (decisión del usuario):** el aneurisma aórtico no tiene ninguna pregunta en cadera (lumbar tiene `l_v2`), y la claudicación que empeora de golpe (isquemia aguda) solo la explica el razonamiento de `c2`, sin `urgencia`.
+
 ## Hallazgos fuera del «¿Por qué?»
 
 1. **Embarazo ectópico sin pregunta urgente en lumbar.** Resuelto (decisión del usuario, 2026-10): `l_e8` en lumbar y `ca_u5` en cadera, con `urgencia` y razonamiento de NICE NG126 (1.4.1–1.4.8, releída en la sesión). Están separadas de `l_e3`/`ca_u4` (dolor ligado a la regla), que siguen sin urgencia porque un SÍ por una endometriosis conocida no justifica ir a urgencias. La bandera de lumbar enlaza `l_e8`.
