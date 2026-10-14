@@ -1,6 +1,6 @@
 # Fase 6 «Plan de tratamiento» — diseño
 
-Estado: **diseño, sin implementar** (2026-10). Nada de este documento está en el código todavía. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
+Estado: **diseño cerrado, sin implementar** (2026-10): las 10 decisiones están tomadas; falta la fuente de la decisión 6 para empezar L2. Nada de este documento está en el código todavía. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
 
 Qué es: una fase nueva tras los resultados (fase 5) que propone **una sesión de 50 minutos a tres niveles de carga** y **un plan de un mes** en dos variantes: **A**, 1 sesión por semana, y **B**, 2 sesiones por semana. Tiene una parte sin IA, construida con lo que la app ya sabe, y una capa opcional con IA que la detalla.
 
@@ -11,6 +11,11 @@ Qué es: una fase nueva tras los resultados (fase 5) que propone **una sesión d
 3. **Lector: el fisio.** El plan de sesión y el del mes son para el fisio (lenguaje técnico, criterios de progresión, fuentes). La única salida para el paciente es el **programa domiciliario**, en lenguaje llano, como ya se separan `📄 Informe` y `📋 Notas`.
 4. **La IA lee los datos, nunca el texto del informe IA.** Recibe el payload, los datos ampliados (`construirAmpliado()`) y, si existe, la **transcripción** ya guardada en `state.informeIA.transcripcion`. El informe es información de segunda mano: las revisiones (rondas 1–29, `docs/informe-ia.md`) encontraron lados, NRS y frecuencias inventados, y planificar sobre él los propagaría. Reusar la transcripción además evita volver a mandar el audio a Whisper.
 5. **Con una derivación sin resolver no hay plan.** Ver «Bloqueos», abajo.
+6. **Los modificadores por irritabilidad y los criterios de progresión genéricos solo se escriben desde una fuente leída**, que aporta el usuario (como los capítulos de Lluch 2020). Candidatas: el concepto de irritabilidad de Maitland y sus revisiones (p. ej. Barakatt 2009) y el marco SINSS; ninguna está hoy en `data/referencias.js`. **Bloquea L2**: hasta tenerla, la sesión A/B/C no se implementa.
+7. **Hipótesis sin pauta (49 de 126).** Fase 6 da la estructura (bloques, reevaluación, PROM, pronóstico), pero la intervención dice «Pauta a criterio del fisio», y la IA tampoco la rellena. Es lo coherente con «nunca inventar una dosis».
+8. **Volumen concreto propuesto por la IA cuando la guía no lo fija** (series, repeticiones, minutos): permitido solo como «Sugerencia de la IA, sin fuente en PhysiQ», visualmente separado de la pauta citada. El programa domiciliario no se puede compartir hasta marcar sus puntos de revisión como revisados.
+9. **Fuera del payload y de physiq-report en la primera versión.** Se decide cuando el plan se haya usado en consulta.
+10. **Una hipótesis por plan por defecto, y una segunda opcional.** Con dos, la intervención principal se reparte entre ambas y el plan avisa de que el tiempo por hipótesis baja.
 
 ## Punto de partida (medido en el código, 2026-10)
 
@@ -27,7 +32,7 @@ Qué es: una fase nueva tras los resultados (fase 5) que propone **una sesión d
 
 Tres consecuencias para el diseño:
 
-- **Solo la mitad de las hipótesis tiene pauta.** En las 49 con `dosis: ''` la app ya dice que la pauta es decisión del fisio, y fase 6 no puede ser la puerta trasera que la invente (ver «Decisiones pendientes», 2).
+- **Solo la mitad de las hipótesis tiene pauta.** En las 49 con `dosis: ''` la app ya dice que la pauta es decisión del fisio, y fase 6 no puede ser la puerta trasera que la invente (decisión 7).
 - **Las pautas con fuente casi nunca fijan el volumen.** Las de lumbar, por ejemplo, terminan en «Ninguna fuente fija repeticiones… el volumen queda a criterio del clínico». Por eso los tres niveles de carga **no pueden ser números calculados** a partir de la pauta: son modificadores cualitativos de la misma pauta (ver «Sesión de 50 minutos»).
 - **Lumbar es el piloto natural**: 9 de 9 hipótesis con pauta citada, y ya fue la región de referencia en Fase D y Fase I.
 
@@ -37,7 +42,7 @@ Tres consecuencias para el diseño:
 2. **Nada sin fuente se presenta como si la tuviera.** Lo que viene de la pauta citada se distingue siempre de lo que es organización de la sesión (orientativo, editable) y de lo que propone la IA (sugerencia, para revisar).
 3. **El protocolo del cirujano manda** (mismo principio que `docs/posquirurgico.md`). Con mecanismo Post-quirúrgico, el plan sigue a `pq1` y las restricciones; sin protocolo, solo estructura genérica y «Restricciones pendientes de confirmar con el cirujano».
 4. **Es una propuesta, no una prescripción.** El fisio elige, edita y firma. Proponer tratamiento va un paso más allá que redactar un informe, y la interfaz lo dice.
-5. **Fuera del payload en la primera versión.** Ni `buildPhysiQPayload()`, ni `📋 Notas`, ni `📄 Informe` cambian. physiq-report no sabe nada de fase 6 (ver «Decisiones pendientes», 4).
+5. **Fuera del payload en la primera versión.** Ni `buildPhysiQPayload()`, ni `📋 Notas`, ni `📄 Informe` cambian. physiq-report no sabe nada de fase 6 (decisión 9).
 
 ## Flujo
 
@@ -74,7 +79,7 @@ Los tres niveles se construyen así, todos sobre la misma pauta:
 | **B — ajustada** | Siempre | La que corresponde a la irritabilidad registrada |
 | **C — por encima** | Solo con irritabilidad Baja y sin miedo al movimiento alto | Un escalón más de carga |
 
-Los modificadores por irritabilidad necesitan una fuente leída antes de escribirse (ver «Decisiones pendientes», 1). Hoy la fase 3 ya muestra un texto por nivel («Proceder con precaución. Evitar técnicas de alta intensidad…»); fase 6 no debe reutilizarlo sin comprobar de dónde sale.
+Los modificadores por irritabilidad necesitan una fuente leída antes de escribirse (decisión 6). Hoy la fase 3 ya muestra un texto por nivel («Proceder con precaución. Evitar técnicas de alta intensidad…»); fase 6 no debe reutilizarlo sin comprobar de dónde sale.
 
 ### Plan de un mes (parte sin IA)
 | | Plan A — 1 sesión/semana | Plan B — 2 sesiones/semana |
@@ -84,7 +89,7 @@ Los modificadores por irritabilidad necesitan una fuente leída antes de escribi
 | Reevaluación final | Sesión 4, con el PROM de la hipótesis (`prom`) | Sesión 8, con el mismo PROM |
 | Peso del programa domiciliario | Alto: es la mayor parte de la carga del mes | Medio |
 
-- **Progresión por criterios, no por fechas.** Del tipo «subir la carga cuando el dolor durante el ejercicio y a las 24 h no empeore». Si la pauta de la hipótesis ya trae criterios, se usan los suyos; los genéricos necesitan fuente (ver «Decisiones pendientes», 1).
+- **Progresión por criterios, no por fechas.** Del tipo «subir la carga cuando el dolor durante el ejercicio y a las 24 h no empeore». Si la pauta de la hipótesis ya trae criterios, se usan los suyos; los genéricos necesitan fuente (decisión 6).
 - **Pronóstico**: si `pronostico.horizonte` pasa de 4 semanas, el plan dice que es el primer mes de un proceso más largo. `pronostico.derivacion` («Cuándo reconsiderar o derivar») va a la reevaluación final como criterio explícito.
 - **Post-quirúrgico**: el mes se sitúa en las semanas desde la cirugía (`semanasCirugia()`) y no adelanta nada que el protocolo no permita.
 
@@ -130,16 +135,8 @@ Hay que comprobar en physiq-report que un `SESSION_ASSESSMENT_PARTIAL` con `phas
 
 ## Orden de trabajo
 
-1. **L1 — este documento** y las decisiones pendientes de abajo.
-2. **L2 — parte sin IA en lumbar** (piloto): bloqueos, esqueleto, compartir. Prueba en consulta real.
+1. **L1 — este documento** (hecho; decisiones 1–10 tomadas). Falta la fuente de la decisión 6.
+2. **L2 — parte sin IA en lumbar** (piloto; empieza cuando esté la fuente de la decisión 6): bloqueos, esqueleto, compartir. Prueba en consulta real.
 3. **L3 — las 7 regiones.** Tobillo y pie (20 de 37 sin pauta) será la que más «pauta a criterio del fisio» muestre.
 4. **L4 — capa de IA**, con la ruta nueva en el worker de physiq-report.
 5. **L5 — revisión automática** con planes reales en los fixtures, como `tests/fixtures/informes/`.
-
-## Decisiones pendientes
-
-1. **Fuente de los modificadores por irritabilidad y de los criterios de progresión genéricos.** Hacen falta antes de L2; candidatas por leer: el concepto de irritabilidad de Maitland y sus revisiones (p. ej. Barakatt 2009) y el marco SINSS. Ninguna está hoy en `data/referencias.js`. **Recomendación**: que aportes el texto, como con los capítulos de Lluch 2020, y no escribir los modificadores hasta leerlo.
-2. **Hipótesis sin pauta (49 de 126).** **Recomendación**: fase 6 da la estructura (bloques, reevaluación, PROM, pronóstico) pero el contenido de la intervención dice «Pauta a criterio del fisio», y la IA tampoco lo rellena. Es lo coherente con «nunca inventar una dosis».
-3. **Volumen concreto propuesto por la IA cuando la guía no lo fija** (series, repeticiones, minutos). **Recomendación**: permitirlo solo como «Sugerencia de la IA, sin fuente en PhysiQ», visualmente separado de la pauta citada; y que el programa domiciliario no se pueda compartir hasta marcar sus puntos como revisados.
-4. **Plan en el payload y en physiq-report.** **Recomendación**: no en la primera versión; decidirlo cuando el plan se haya usado en consulta.
-5. **Una o dos hipótesis por plan.** **Recomendación**: una por defecto y una segunda opcional; con dos, la intervención principal se reparte y el plan avisa de que el tiempo por hipótesis baja.
