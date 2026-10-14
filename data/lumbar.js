@@ -26,10 +26,41 @@ export const screening = {
       banderasRojas: [
         { texto: 'Antecedentes de cáncer de próstata, colon, o cualquier tipo', pregunta: 'l2' },
         { texto: 'Dolor nocturno intenso que despierta al paciente sin alivio postural', pregunta: 'l_on2' },
-        { texto: 'Pérdida de peso inexplicada (>5 % del peso en 6 meses)', fase1: 'br1' },
-        'Fractura patológica ante trauma menor o fragilidad ósea'
+        { texto: 'Pérdida de peso inexplicada (>5 % del peso en 6 meses)', fase1: 'br1',
+          razonamiento: {
+            porque: 'Un cáncer avanzado, una infección crónica de la columna o una enfermedad sistémica consumen al organismo, y adelgazar sin proponérselo puede ser su primer signo. Finucane la incluye entre los síntomas de malignidad y de infección vertebral, y la considera significativa por encima de un 5 % del peso en 6 meses.',
+            peso: 'Sola pesa poco: Downie encuentra que, en el dolor lumbar, la pérdida de peso inexplicada deja la probabilidad de cáncer por debajo del 3 %. Pesa cuando no tiene otra explicación (dieta, ejercicio, fármacos, diabetes o hipertiroidismo), cuando sigue y cuando se suma a otras banderas, sobre todo a antecedentes de cáncer. NICE pide un TAC urgente para descartar un cáncer de páncreas a partir de los 60 años si hay pérdida de peso con dolor de espalda.',
+            detalle: 'Qué preguntar con un SÍ (Finucane): si el peso está estable, cuánto ha perdido en los últimos 3–6 meses y si sabe por qué; si ha cambiado la dieta o el ejercicio; qué medicación toma. Finucane da a esta bandera un nivel de evidencia alto en la malignidad y bajo en la infección, y en la malignidad sitúa la sospecha alta en una pérdida del 5–10 % en 3–6 meses.\n\nNICE recoge la pérdida de peso en varios cánceres: con dolor de espalda, a partir de los 60 años, TAC urgente por posible cáncer de páncreas; a partir de los 55, con dolor en la parte alta del abdomen, reflujo o dispepsia, derivación por posible cáncer de estómago.\n\nTambién se pregunta en las banderas rojas de la fase 1 (sudor nocturno o pérdida de peso inexplicada).',
+            fuentes: ['Finucane 2020', 'Downie 2013', 'NICE NG12'],
+            citas: [
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), tabla 4.2, p. 39, y sección 5 (infección), tabla 5.2, p. 48.', url: 'https://doi.org/10.2519/jospt.2020.9971' },
+              { texto: 'Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3898572/' },
+              { texto: 'NICE NG12 — NICE, «Suspected cancer: recognition and referral» (2015, actualizada el 15 de abril de 2026), recomendaciones 1.2.5 y 1.2.7.', url: 'https://www.nice.org.uk/guidance/ng12' }
+            ]
+          } },
+        { texto: 'Fractura patológica ante trauma menor o fragilidad ósea',
+          razonamiento: {
+            porque: 'Una fractura con un golpe que no debería romper el hueso indica que el hueso estaba debilitado. Lo más frecuente es la osteoporosis, pero Finucane recuerda que las metástasis y el mieloma sustituyen hueso sano por tumor y producen fracturas que en la radiografía se parecen mucho a las osteoporóticas.',
+            peso: 'Obliga a buscar la causa del hueso débil. Finucane pide una radiografía ante la sospecha de fractura y, si la historia no aclara la causa, más pruebas de imagen. NICE pide un análisis de sangre para descartar un mieloma a partir de los 60 años con dolor óseo persistente, sobre todo de espalda, o una fractura sin explicación.',
+            detalle: 'Con qué se confunde: las metástasis se instalan sobre todo en la mitad anterior del cuerpo vertebral, que se debilita y se aplasta en cuña; el mieloma puede dar fracturas parecidas a las osteoporóticas y suele presentarse algo antes que la osteoporosis y las metástasis. La radiografía no basta para distinguirlas: hay que mirar los factores de riesgo de cada una en la historia (antecedentes de cáncer, corticoides, osteoporosis, edad).\n\nQué hacer con un SÍ: preguntar por antecedentes de cáncer, pérdida de peso, dolor nocturno o en reposo, y derivar al médico para estudiar la fractura. La fractura osteoporótica por un golpe menor se pregunta en el sistema de espondiloartropatías (osteoporosis o fractura ante un golpe menor).',
+            fuentes: ['Finucane 2020', 'NICE NG12'],
+            citas: [
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura), p. 25.', url: 'https://doi.org/10.2519/jospt.2020.9971' },
+              { texto: 'NICE NG12 — NICE, «Suspected cancer: recognition and referral» (2015, actualizada el 15 de abril de 2026), recomendaciones 1.10.4 y 1.10.5.', url: 'https://www.nice.org.uk/guidance/ng12' }
+            ]
+          } }
       ],
-      banderasAmarillas: ['Dolor lumbar persistente sin mejoría tras 1 mes de tratamiento conservador'],
+      banderasAmarillas: [
+        { texto: 'Dolor lumbar persistente sin mejoría tras 1 mes de tratamiento conservador',
+          razonamiento: {
+            porque: 'Casi todos los dolores lumbares inespecíficos mejoran en semanas. Que no mejore tras un mes de tratamiento hace pensar que la causa puede no ser mecánica.',
+            peso: 'Sola pesa muy poco: Downie encuentra que, en el dolor lumbar, no mejorar tras un mes deja la probabilidad de cáncer por debajo del 3 %. Sirve para revisar el caso y buscar otras banderas, no para derivar por sí sola.',
+            fuentes: ['Downie 2013'],
+            citas: [
+              { texto: 'Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3898572/' }
+            ]
+          } }
+      ],
       preguntas: [
         { id: 'l2', anatomia: ['columna_lumbar'], text: '¿Tiene antecedentes de cáncer de cualquier tipo?', alerta: true, s1: true,
           razonamiento: {
@@ -96,7 +127,15 @@ export const screening = {
         { texto: 'Hematuria (sangre en orina)', pregunta: 'l4' },
         'Prueba de percusión positiva en ángulo costovertebral',
         { texto: 'Incontinencia intestinal/vesical o anestesia en silla de montar (síndrome de cauda equina)', pregunta: 'l6' },
-        'Masa testicular indolora'
+        { texto: 'Masa testicular indolora',
+          razonamiento: {
+            porque: 'Un bulto o un aumento de tamaño del testículo que no duele es el signo típico del cáncer de testículo, y NICE lo trata como sospecha de cáncer. Está en este sistema entre las causas urogenitales de dolor lumbar; la fuente leída no explica la relación con el dolor de espalda.',
+            peso: 'Pide derivación médica por la vía de sospecha de cáncer (NICE): un aumento de tamaño indoloro, o un cambio de forma o de consistencia del testículo. Con síntomas testiculares persistentes o sin explicación, NICE propone una ecografía urgente.',
+            fuentes: ['NICE NG12'],
+            citas: [
+              { texto: 'NICE NG12 — NICE, «Suspected cancer: recognition and referral» (2015, actualizada el 15 de abril de 2026), recomendaciones 1.6.7 y 1.6.8.', url: 'https://www.nice.org.uk/guidance/ng12' }
+            ]
+          } }
       ],
       banderasAmarillas: [
         { texto: 'Dolor lumbar constante que no varía con la postura corporal', fase1: 'br4' },
@@ -227,7 +266,17 @@ export const screening = {
         { texto: 'Dolor sacro/lumbar que se alivia al pasar gases o defecar', pregunta: 'l1' },
         { texto: 'Heces negras alquitranadas, sangre en heces', pregunta: 'l_gi2' },
         { texto: 'Dolor nocturno intenso entre medianoche y 3 am', pregunta: 'l_gi2' },
-        { texto: 'Pérdida de peso inexplicada o saciedad precoz', fase1: 'br1' }
+        { texto: 'Pérdida de peso inexplicada o saciedad precoz', fase1: 'br1',
+          razonamiento: {
+            porque: 'Adelgazar sin proponérselo, o llenarse enseguida al comer, puede indicar un cáncer digestivo o de ovario. El páncreas y el estómago están en la parte posterior del abdomen y pueden doler en la espalda; NICE recoge el dolor de espalda entre los síntomas que, junto con la pérdida de peso, hacen sospechar un cáncer de páncreas.',
+            peso: 'Pesa por la edad y por lo que la acompaña (NICE): a partir de los 60 años, pérdida de peso con dolor de espalda, dolor abdominal, diarrea, náuseas, vómitos, estreñimiento o diabetes de nueva aparición → TAC urgente por posible cáncer de páncreas; a partir de los 55, pérdida de peso con dolor en la parte alta del abdomen, reflujo o dispepsia → derivación por posible cáncer de estómago. La saciedad precoz persistente, en una mujer, sobre todo a partir de los 50, es uno de los síntomas por los que NICE pide estudiar un cáncer de ovario.',
+            detalle: 'Qué preguntar con un SÍ: cuánto peso ha perdido y en cuánto tiempo, si sabe por qué, si le cuesta tragar, si tiene ardor, reflujo o digestiones pesadas, y si los síntomas son persistentes o frecuentes. Finucane considera significativa una pérdida de más del 5 % del peso en 6 meses.\n\nLa pérdida de peso también se pregunta en las banderas rojas de la fase 1.',
+            fuentes: ['NICE NG12', 'Finucane 2020'],
+            citas: [
+              { texto: 'NICE NG12 — NICE, «Suspected cancer: recognition and referral» (2015, actualizada el 15 de abril de 2026), recomendaciones 1.2.5, 1.2.7 y 1.5.2.', url: 'https://www.nice.org.uk/guidance/ng12' },
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), tabla 4.2, p. 39.', url: 'https://doi.org/10.2519/jospt.2020.9971' }
+            ]
+          } }
       ],
       banderasAmarillas: [
         'Dolor de espalda y abdominal al mismo nivel (simultáneo o alterno)',
@@ -313,7 +362,16 @@ export const screening = {
       banderasRojas: [
         { texto: 'Rigidez matutina prolongada >30 min que mejora con actividad (espondiloartritis)', pregunta: 'l5' },
         { texto: 'Despertar por dolor en segunda mitad de la noche — patrón inflamatorio', pregunta: 'l_e2' },
-        'Síntomas oculares (uveítis) o cutáneos (psoriasis) asociados',
+        { texto: 'Síntomas oculares (uveítis) o cutáneos (psoriasis) asociados',
+          razonamiento: {
+            porque: 'La espondiloartritis axial es una enfermedad inflamatoria que no se limita a la columna: NICE recoge la uveítis y la psoriasis (también la de las uñas) entre sus manifestaciones fuera de las articulaciones. Un dolor lumbar con cualquiera de ellas hace más probable que el dolor sea inflamatorio.',
+            peso: 'La psoriasis, actual o pasada, es uno de los criterios con los que NICE decide derivar a reumatología un dolor lumbar que empezó antes de los 45 años y dura más de 3 meses (con 4 criterios o más; con 3, prueba de HLA-B27). La uveítis no cuenta en esa regla, pero NICE pide reevaluar si aparecen criterios nuevos en quien la tiene. Una uveítis anterior aguda (ojo rojo y doloroso, molestia con la luz, visión borrosa) requiere valoración oftalmológica el mismo día.',
+            detalle: 'Los otros criterios de NICE: dolor que empezó antes de los 35 años, despertar en la segunda mitad de la noche, dolor de nalgas, mejoría con el movimiento, mejoría en 48 horas con antiinflamatorios, un familiar de primer grado con espondiloartritis, artritis o entesitis actual o pasada. NICE advierte de que ningún signo aislado descarta la enfermedad, de que afecta a tantas mujeres como hombres y de que puede pasar desapercibida aunque la uveítis, la psoriasis o una enfermedad inflamatoria intestinal ya estén diagnosticadas.',
+            fuentes: ['NICE NG65'],
+            citas: [
+              { texto: 'NICE NG65 — NICE, «Spondyloarthritis in over 16s: diagnosis and management» (2017), recomendaciones 1.1.1–1.1.6 y 1.1.12.', url: 'https://www.nice.org.uk/guidance/ng65' }
+            ]
+          } },
         { texto: 'Fractura por insuficiencia: dolor lumbar súbito en paciente con osteoporosis o Paget', pregunta: 'l_e4' },
         { texto: 'Embarazo ectópico: dolor pélvico unilateral severo con sangrado (urgencia)', pregunta: 'l_e8' },
         { texto: 'Fractura sacra por estrés: mujer deportista con actividad vigorosa y repetitiva, dolor en nalga que reproduce la carrera, dieta pobre, alteraciones menstruales o fracturas de estrés previas. Signo de la nalga; la radiografía inicial suele ser normal: la confirman la gammagrafía o la RM (Goodman 2018, cap. 15)', pregunta: 'l_e6' },
@@ -322,7 +380,15 @@ export const screening = {
       banderasAmarillas: [
         { texto: 'Dolor sacroilíaco bilateral alterno', pregunta: 'l5c' },
         { texto: 'Dolor relacionado con ciclo menstrual (endometriosis)', pregunta: 'l_e3' },
-        'Historia familiar de espondilitis anquilosante',
+        { texto: 'Historia familiar de espondilitis anquilosante',
+          razonamiento: {
+            porque: 'La espondiloartritis tiene un componente hereditario: NICE recoge la historia familiar de espondiloartritis o de psoriasis como factor de riesgo.',
+            peso: 'Un familiar de primer grado con espondiloartritis es uno de los criterios con los que NICE decide derivar a reumatología un dolor lumbar que empezó antes de los 45 años y dura más de 3 meses (con 4 criterios o más; con 3, prueba de HLA-B27). Sola no basta.',
+            fuentes: ['NICE NG65'],
+            citas: [
+              { texto: 'NICE NG65 — NICE, «Spondyloarthritis in over 16s: diagnosis and management» (2017), recomendaciones 1.1.2 y 1.1.5.', url: 'https://www.nice.org.uk/guidance/ng65' }
+            ]
+          } },
         'Antecedente de osteoporosis o uso prolongado de corticosteroides (riesgo de fractura por insuficiencia)',
         { texto: 'Engrosamiento óseo palpable o deformidad (Paget)', pregunta: 'l_e5' }
       ],
@@ -653,7 +719,16 @@ export const screening = {
       id: 'l_infeccion', icon: '🦠', nombre: 'Infección vertebral',
       banderasRojas: [
         { texto: 'Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH', pregunta: 'l_inf1' },
-        'Signos neurológicos (déficit sensitivo o motor, alteraciones de vejiga o recto) junto a fiebre o malestar general'
+        { texto: 'Signos neurológicos (déficit sensitivo o motor, alteraciones de vejiga o recto) junto a fiebre o malestar general',
+          razonamiento: {
+            porque: 'La infección de la columna (discitis, absceso, tuberculosis) avanza de forma lineal, a diferencia del cáncer, que va y viene: empieza con dolor de espalda y puede acabar dando síntomas neurológicos. Finucane describe la tríada clásica de dolor de espalda, fiebre y déficit neurológico.',
+            peso: 'Con fiebre o malestar, un déficit neurológico nuevo pide derivación médica urgente: sin tratamiento a tiempo, la infección puede causar parálisis, inestabilidad de la columna o la muerte. No esperar a la tríada completa: Finucane advierte de que solo la mitad de los pacientes refiere fiebre, así que su ausencia no tranquiliza.',
+            detalle: 'Qué explorar (Finucane): dermatomas, miotomas y reflejos de las piernas, y signos de motoneurona superior. La sospecha es alta con síntomas en ambas piernas, alteración de la marcha o la coordinación, cambios en la vejiga o el intestino, o un déficit que avanza; si la debilidad es marcada (menos de 3/5) o empeora, la urgencia es mayor.\n\nFactores de riesgo que lo hacen más probable: inmunosupresión (diabetes, VIH, corticoides prolongados, alcohol), cirugía de columna (sobre todo lumbar y con revisiones), drogas por vía intravenosa, una infección reciente y el contacto con tuberculosis.',
+            fuentes: ['Finucane 2020'],
+            citas: [
+              { texto: 'Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 5 (infección), pp. 44–49.', url: 'https://doi.org/10.2519/jospt.2020.9971' }
+            ]
+          } }
       ],
       banderasAmarillas: [
         'Diabetes, corticoides prolongados u otros inmunosupresores, insuficiencia renal crónica o consumo de drogas'

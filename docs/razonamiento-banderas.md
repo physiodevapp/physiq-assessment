@@ -38,7 +38,7 @@ Clasificación de cada bandera:
 | l_espondilo | R · Dolor en la segunda mitad de la noche | C | `l_e2` |
 | l_espondilo | R · Uveítis o psoriasis | N | — |
 | l_espondilo | R · Fractura por insuficiencia | C | `l_e4` |
-| l_espondilo | R · Embarazo ectópico «(urgencia)» | P | `l_e3`, **sin `urgencia`** (ver hallazgos) |
+| l_espondilo | R · Embarazo ectópico «(urgencia)» | C | `l_e8`, nueva y con `urgencia` (antes solo `l_e3`, sin ella; ver hallazgos) |
 | l_espondilo | R · Fractura sacra por estrés | C | `l_e6` |
 | l_espondilo | R · Espondilolistesis aguda | C | `l_e7` |
 | l_espondilo | A · Dolor sacroilíaco alterno | C | `l5c` |
@@ -54,7 +54,7 @@ Clasificación de cada bandera:
 | l_infeccion | R · Signos neurológicos con fiebre | P | `l_inf1` + `l6` |
 | l_infeccion | A · Diabetes, corticoides, insuficiencia renal o drogas | P | `l_inf1` (la insuficiencia renal y las drogas no se preguntan) |
 
-**Total: 38 banderas.** 20 C · 2 F1 · 9 P · 7 N (1 de exploración).
+**Total: 38 banderas.** 21 C · 2 F1 · 8 P · 7 N (1 de exploración), contando ya `l_e8`.
 
 ### Sistemas compartidos (aparecen en otras regiones)
 
@@ -66,17 +66,43 @@ Se inventarían una vez: lo que se escriba para ellos vale en todas las regiones
 | transversal_endocrino (10) | 2 (`end_1`, `end_2`) | 2 (`end_3`, `end_5`) | 6 | túnel carpiano bilateral, tormenta tiroidea, hipopotasemia por diuréticos, xantomas *expl.*, nódulos supraclaviculares o fiebre con corticoides, tendinitis calcificante bilateral de hombro |
 | transversal_hematologico (9) | 4 (`hem_1`, `hem_2`, `hem_4` ×2) | 1 (`hem_3`) | 4 | dolor articular en hemofilia, palidez *expl.*, coiloniquia *expl.*, AINE crónicos |
 
-## Hallazgos fuera del «¿Por qué?» (para decidir aparte)
+## Hallazgos fuera del «¿Por qué?»
 
-1. **Embarazo ectópico sin pregunta urgente en lumbar.** La bandera dice «(urgencia)» y el `peso` de `l_e3` lo explica, pero `l_e3` no lleva `urgencia`. Un SÍ, por tanto, no dispara la alerta «Derivación urgente hoy». En hombro, la pregunta equivalente `h_g1` sí la lleva. Es una decisión clínica: no se ha cambiado nada.
-2. **Las banderas posquirúrgicas no se filtran por región.** `sistemasActivos()` filtra las preguntas por `regiones`, pero no las banderas. Por eso en lumbar se ven las banderas de síndrome compartimental, lesión nerviosa, SDRC y yeso apretado, mientras que sus preguntas (`pq_compart`, `pq_nervio`, `pq_sdrc`) están ocultas, porque `PQ_MIEMBROS` no incluye lumbar ni cervical. Las opciones son añadir `regiones` a las banderas o confirmar que la lista se muestra entera a propósito.
-3. **Los AINE crónicos aparecen en dos sistemas** (l_gi y hematológico) y ninguno lo pregunta.
+1. **Embarazo ectópico sin pregunta urgente en lumbar.** Resuelto (decisión del usuario, 2026-10): `l_e8` en lumbar y `ca_u5` en cadera, con `urgencia` y razonamiento de NICE NG126 (1.4.1–1.4.8, releída en la sesión). Están separadas de `l_e3`/`ca_u4` (dolor ligado a la regla), que siguen sin urgencia porque un SÍ por una endometriosis conocida no justifica ir a urgencias. La bandera de lumbar enlaza `l_e8`.
+2. **Banderas posquirúrgicas sin filtrar por región.** Resuelto: llevan `regiones`, igual que sus preguntas, y `sistemasActivos()` filtra preguntas y banderas. En lumbar y cervical ya no salen la compartimental, la nerviosa, la del SDRC ni la del yeso. **Pendiente de decisión del usuario:** ¿una variante de `pq_nervio` para columna (déficit neurológico nuevo tras cirugía de columna)?
+3. **AINE crónicos** (l_gi y hematológico): sin pregunta nueva (recomendación aceptada). Cuando se escriba su razonamiento, que explique que dan más peso a las heces negras o a la anemia.
 
-## Propuesta (pendiente de decisión del usuario)
+## Diseño (implementado, 2026-10)
 
-- **C:** convertir la cadena en `{ texto, pregunta: '<id>' }` y que la bandera muestre «→ ver pregunta», que abre el «¿Por qué?» de esa pregunta. Un test unitario comprobaría que el id existe en el mismo sistema, o en la región si la pregunta está en otro sistema. No hace falta escribir texto clínico nuevo.
-- **F1:** enlace a la tarjeta de banderas de fase 1, o nada.
-- **P y N:** `razonamiento` propio con el mismo formato que las preguntas (`docs/razonamiento-cribado.md`) y fuente leída. Primero las rojas y las de exploración.
-- Las amarillas al final.
+Una bandera es un texto o un objeto:
 
-Volumen en lumbar: 22 banderas solo necesitan un enlace (20 C y 2 F1) y 16 necesitan texto (9 P y 7 N). En los sistemas compartidos, 15 más, que sirven para todas las regiones.
+```js
+{ texto: '…',
+  regiones: ['codo', …],   // opcional: solo se ve en esas regiones (como `regiones` en una pregunta)
+  pregunta: 'l2',          // o ['l_v1', 'l_v3']: ids del MISMO sistema; su ⓘ abre el «¿Por qué?» de esa pregunta
+  fase1: 'br1',            // opcional: pinta «· fase 1» (también se pregunta en las banderas de la fase 1)
+  razonamiento: { … } }    // opcional: el suyo, con la misma forma que el de una pregunta (porque, peso, detalle?, fisiologia?, fuentes, citas?)
+```
+
+- `pregunta` y `razonamiento` no van juntos: el «¿Por qué?» se escribe una sola vez (test unitario).
+- Render: `banderaHTML()` (`app.js`) añade un ⓘ al final del texto solo si hay «¿Por qué?» que mostrar, es decir, `razonamiento` o una pregunta enlazada visible en la región. El ⓘ llama a `abrirRazonBandera()`, que abre el panel compartido del razonamiento (`abrirPanelRazon()`): lateral en escritorio y hoja inferior en móvil. Con `pregunta`, el panel muestra «Se pregunta así» + la pregunta + su razonamiento. Con `razonamiento` propio, el suyo. `razonCribadoPanelHTML()` pinta las secciones de los dos casos.
+- La parte que no tiene fuente leída en la sesión se queda sin `razonamiento`: no se inventa.
+- `tests/referencias.mjs` cuenta las `fuentes` de las banderas como «razonamiento fase 2».
+- Tests: `tests/unit/razonamiento.mjs` (forma, ids en el mismo sistema, enlace visible en cada región, ⓘ solo con «¿Por qué?», inventario de lumbar); smoke `--solo banderas`.
+
+## Estado de lumbar (2026-10)
+
+- **Enlaces:** las 21 banderas que tienen pregunta en su sistema, más 3 con `fase1` (pérdida de peso ×2 → `br1`; dolor que no varía con la postura → `br4`).
+- **Razonamiento propio** (fuentes leídas en la sesión: Finucane 2020, documento completo del marco IFOMPT; Downie 2013, texto completo en PMC; NICE NG12 y NG65 en nice.org.uk):
+  - Rojas: pérdida de peso inexplicada (l_cancer), fractura patológica, masa testicular, pérdida de peso o saciedad precoz (l_gi), uveítis o psoriasis, signos neurológicos con fiebre.
+  - Amarillas: sin mejoría tras 1 mes (Downie), historia familiar de espondilitis anquilosante (NG65).
+- **Pendientes de fuente:** percusión costovertebral (StatPearls «Acute Pyelonephritis», Belyayeva 2024, o Goodman, en PDF) y síndrome de Leriche (Goodman, cap. vascular; el capítulo de StatPearls está archivado). NCBI Bookshelf sigue respondiendo con una comprobación anti-bots.
+- **Amarillas sin razonamiento:** dolor de espalda y abdominal al mismo nivel, AINE crónicos, dolor modificado por la ingesta, osteoporosis o corticoides, factores de riesgo cardiovascular, inmunosupresión.
+- **Revisión clínica del usuario:** pendiente, antes de `main`.
+
+## Siguientes pasos
+
+1. Revisión clínica de lumbar por el usuario.
+2. Sistemas compartidos (posquirúrgico, endocrino, hematológico): razonamiento propio de sus banderas sin pregunta, una vez para todas las regiones.
+3. Resto de regiones, una por sesión: inventario, enlaces y razonamiento propio de las rojas.
+4. Amarillas, al final o nunca si no aportan.

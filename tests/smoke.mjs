@@ -824,8 +824,10 @@ async function checkBanderas(browser) {
   await irAFase2(page, 'lumbar');
   await page.click('#tab_l_espondilo');
   const panel = '#panel_l_espondilo';
-  r.sinPorque = await page.evaluate(p => [...document.querySelectorAll(`${p} .flag-item`)]
-    .filter(el => /uveítis/.test(el.textContent)).every(el => !el.querySelector('.flag-porque')), panel);
+  r.sinPorque = await page.evaluate(() => {
+    const f = [...document.querySelectorAll('#panel_l_urogenital .flag-item')].filter(el => /costovertebral/.test(el.textContent));
+    return f.length === 1 && !f[0].querySelector('.flag-porque');
+  });
   await page.click(`${panel} .flag-item:has-text("Embarazo ectópico") .flag-porque`);
   await page.waitForSelector('#razonPanel.open');
   const a = await razonEstado(page);

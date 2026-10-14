@@ -309,11 +309,11 @@ Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero an
 - [x] Pregunta urgente de embarazo ectópico en lumbar (`l_e8`) y cadera (`ca_u5`): la bandera decía «urgencia» y ninguna pregunta la disparaba (NICE NG126)
 - [x] Banderas posquirúrgicas filtradas por región (`regiones`, igual que sus preguntas)
 - [x] Esquema, ⓘ y panel (`banderaHTML`, `razonBanderaHTML`, `abrirRazonBandera`, `app.js`), tests (`tests/unit/razonamiento.mjs`, smoke `--solo banderas`), `tests/referencias.mjs` cuenta las fuentes de las banderas
-- [ ] Pendiente de decisión: ¿variante de `pq_nervio` para columna (déficit neurológico nuevo tras cirugía de columna)? Hoy `PQ_MIEMBROS` excluye lumbar y cervical
+- [ ] Pendiente de decisión del usuario: ¿variante de `pq_nervio` para columna (déficit neurológico nuevo tras cirugía de columna)? Hoy `PQ_MIEMBROS` excluye lumbar y cervical
 
 | Región / sistema | Enlaces (`pregunta`, `fase1`) | Razonamiento propio (rojas) | Amarillas | Revisión usuario | Notas |
 |---|---|---|---|---|---|
-| Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [ ] | [ ] | [ ] | |
+| Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [x] 6 de 8 (Finucane 2020, Downie 2013, NICE NG12 y NG65) | [x] 2 (Downie, NG65); el resto sin hacer | [ ] | Sin fuente leída: percusión costovertebral y Leriche (pedir PDF de Goodman o StatPearls) |
 | Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 13 preguntas | [ ] | [ ] | [ ] | Una vez para todas las regiones |
 | Cadera, cervical, hombro, rodilla, codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
 

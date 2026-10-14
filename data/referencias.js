@@ -83,6 +83,14 @@ export const REFERENCIAS = {
     publicacion: 'Guía NICE «Low back pain and sciatica in over 16s: assessment and management» (2016, actualizada en julio de 2026)', doi: '', url: 'https://www.nice.org.uk/guidance/ng59', revision: { fecha: '2026-10', resultado: 'Sin cambios: nice.org.uk leído (2026-10), última actualización 29 de julio de 2026; las recomendaciones citadas (1.2.1, 1.2.6, 1.2.7 —corregida en 2026—, 1.3.1–1.3.3 y 1.3.6) dicen lo que recoge la app.' },
     nota: 'Leídas las recomendaciones en nice.org.uk (2026-10). Pauta de lu1, lu3 y lu5–lu9; derivación de lu4 y lu7.'
   },
+  'NICE NG12': {
+    publicacion: 'Guía NICE «Suspected cancer: recognition and referral» (2015, actualizada el 15 de abril de 2026)', doi: '', url: 'https://www.nice.org.uk/guidance/ng12', revision: { fecha: '2026-10', resultado: 'Leída en nice.org.uk (2026-10), última actualización 15 de abril de 2026.' },
+    nota: 'Leídas en nice.org.uk (2026-10) las recomendaciones por localización: páncreas y estómago (1.2.4–1.2.8), ovario (1.5.2–1.5.3), testículo (1.6.7–1.6.8) y mieloma (1.10.4–1.10.5). Razonamiento de las banderas rojas de lumbar (pérdida de peso, fractura patológica, masa testicular).'
+  },
+  'NICE NG65': {
+    publicacion: 'Guía NICE «Spondyloarthritis in over 16s: diagnosis and management» (2017, actualizada el 2 de junio de 2017)', doi: '', url: 'https://www.nice.org.uk/guidance/ng65', revision: { fecha: '2026-10', resultado: 'Leída en nice.org.uk (2026-10), última actualización 2 de junio de 2017.' },
+    nota: 'Leídas en nice.org.uk (2026-10) las recomendaciones 1.1.1–1.1.13 (sospecha y derivación de la espondiloartritis). Razonamiento de las banderas de lumbar (uveítis y psoriasis, historia familiar).'
+  },
   'NICE NG126': {
     publicacion: 'Guía NICE «Ectopic pregnancy and miscarriage: diagnosis and initial management» (2019, actualizada el 17 de junio de 2026)', doi: '', url: 'https://www.nice.org.uk/guidance/ng126', revision: { fecha: '2026-10', resultado: 'Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian.' },
     nota: 'Leídas las recomendaciones 1.4.1–1.4.7 (síntomas y signos del embarazo ectópico) en nice.org.uk y en el PDF aportado por el usuario (2026-10). Razonamiento del cribado de hombro (h_g1). Releídas las 1.4.1–1.4.8 en nice.org.uk (2026-10) para las preguntas urgentes de ectópico de lumbar (l_e8) y cadera (ca_u5). Las CKS de NICE (cks.nice.org.uk) no son accesibles fuera del Reino Unido.'
