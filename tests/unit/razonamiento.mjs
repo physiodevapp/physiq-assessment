@@ -175,6 +175,20 @@ test('banderas: cadera, cada bandera enlazada según el inventario (docs/razonam
   assert.deepEqual(sinPorque, []);
 });
 
+test('banderas: cervical, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 40);
+  assert.equal(banderas.filter(f => f.pregunta).length, 35);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4']);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Síncope repentino', 'Dolor de']);
+  // Pendientes de fuente (Goodman caps. 10 y 14, StatPearls); «Dolor que no cambia…» solo marca la fase 1 (br4)
+  const sinPorque = propios.flatMap(s => [...s.banderasRojas.map(f => ['R', f]), ...s.banderasAmarillas.map(f => ['A', f])])
+    .filter(([, f]) => typeof f === 'string' || (!f.pregunta && !f.razonamiento)).map(([t, f]) => `${t} ${textoBandera(f).split(' ').slice(0, 2).join(' ')}`);
+  assert.deepEqual(sinPorque, ['R Prueba de', 'A Dolor que', 'R Mielopatía cervical:']);
+});
+
 test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
   const corto = f => f.texto.split(' ').slice(0, 2).join(' ');
   const resumen = sis => [...sis.banderasRojas.map(f => ['R', f]), ...sis.banderasAmarillas.map(f => ['A', f])]

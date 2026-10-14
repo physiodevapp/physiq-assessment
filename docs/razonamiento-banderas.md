@@ -89,6 +89,24 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
   - Aneurisma aórtico: ninguna pregunta de cadera lo pregunta (lumbar tiene `l_v2`). NICE NG156 pide pensar en una rotura ante un dolor abdominal o de espalda nuevo con colapso, sobre todo con aneurisma conocido, más de 60 años, tabaco o hipertensión, y Goodman cap. 16 lista el dolor de ingle brusco con dolor abdominal o lumbar entre sus señales. Recomendación: pregunta urgente en ca_vascular.
   - Isquemia aguda: Goodman (cap. 6, «Guidelines for Immediate Medical Attention») pide comunicar de inmediato el empeoramiento brusco de la claudicación (tromboembolia; las 6 P de inicio en menos de una hora). `c2` lo explica en su razonamiento, pero no tiene `urgencia`. Recomendación: pregunta urgente aparte en ca_vascular, sin tocar `c2` (la claudicación estable no es urgente).
 
+## Cervical (2026-10)
+
+40 banderas en sus 8 sistemas propios (31 rojas, 9 amarillas), todas texto sin enlace antes de esta sesión. Repasadas contra el razonamiento completo de cada pregunta.
+
+- **Enlazadas (35), más `fase1: 'br1'` en la pérdida de peso y `fase1: 'br4'` en el dolor que no cambia con la postura (renal, sin pregunta):**
+  - cv_cancer: cáncer previo, edad de más de 50 con inicio insidioso, fracaso tras 1 mes y ganglios duros → `cv4`; dolor nocturno → `cv1`; pérdida de peso → `cv5` (y `br1`); tumor vertebral → `cv1` + `cv4` + `cv5`.
+  - cv_cardio: cuello o mandíbula con sudor y angina de más de 20 min → `cv2`; «Cardiaco» de la tarjeta → `cv2` + `cv_c2`; amarilla del esfuerzo de piernas → `cv_c2`.
+  - cv_pulmonar: dolor al toser, fiebre y sudores, tabaquismo y cáncer con metástasis pulmonar → `cv_p1`; hemoptisis, tos y disnea → `cv_p1` + `cv_p2`.
+  - cv_renal: esfínteres → `cv3`; hematuria, fiebre y escalofríos, color u olor de la orina → `cv_r2`.
+  - cv_gi: comidas o evacuación y saciedad → `cv_gi1`; dolor nocturno con antiácidos, heces negras y AINE → `cv_gi2`.
+  - cv_arterial: disección → `cv_ar1`; insuficiencia vertebrobasilar → `cv_ar2`; fractura o inestabilidad traumática → `cv_ar3`; cefalea con signos de alarma y otras cefaleas secundarias → `cv_ar4`.
+  - cv_neuro: inestabilidad alta no traumática → `cv_n1`; distonía → `cv_n2`; Grisel → `cv_n3`.
+  - cv_inflam: infección → `cv_in1`; artritis inflamatoria → `cv_in2`.
+- **Razonamiento propio (2), con Goodman 2018 ya leído en la sesión:** síncope sin aviso (cap. 6, pp. 227 y 261: válvulas o arritmia, derivar todo síncope sin explicación; no es urgencia por sí solo) y, en amarillas, dolor de espalda y abdominal al mismo nivel (cap. 8, pp. 303–305 y 326).
+- **Pendientes de fuente (2 rojas):** percusión de Murphy positiva (Goodman cap. 10 y Belyayeva 2024) y mielopatía cervical (Goodman cap. 14 y Margetis y Donnally 2025). El test del inventario las lista hasta que tengan razonamiento.
+- **Hueco de seguridad, pendiente de decisión del usuario:** `cv2` (dolor de cuello o mandíbula con sudor, náuseas u opresión) no tiene `urgencia`, aunque su propio «cuánto pesa» dice que es una urgencia si está pasando ahora y dura 10 minutos o más. Goodman (cap. 6, «Guidelines for Immediate Medical Attention», p. 260) pide intervención médica inmediata si el dolor anginoso no cede en 20 minutos o viene con náuseas, vómitos o sudor profuso. Recomendación: pregunta urgente aparte en cv_cardio («¿Tiene ahora mismo…?», llamar al 112), sin tocar `cv2` (un antecedente de esos síntomas no justifica el 112), como se hizo con `ca_v5`. Mismo hueco, probablemente, en hombro (misma bandera).
+- **Revisión clínica del usuario:** pendiente.
+
 ## Hallazgos fuera del «¿Por qué?»
 
 1. **Embarazo ectópico sin pregunta urgente en lumbar.** Resuelto (decisión del usuario, 2026-10): `l_e8` en lumbar y `ca_u5` en cadera, con `urgencia` y razonamiento de NICE NG126 (1.4.1–1.4.8, releída en la sesión). Están separadas de `l_e3`/`ca_u4` (dolor ligado a la regla), que siguen sin urgencia porque un SÍ por una endometriosis conocida no justifica ir a urgencias. La bandera de lumbar enlaza `l_e8`.

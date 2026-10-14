@@ -38,14 +38,14 @@ export const screening = {
     {
       id: 'cv_cancer', icon: '🔬', nombre: 'Cáncer / Oncológico',
       banderasRojas: [
-        'Antecedentes de cáncer o tratamiento oncológico',
-        'Edad >50 años con inicio insidioso',
-        'Dolor nocturno constante e intenso que despierta al paciente',
-        'Fracaso del tratamiento conservador tras 1 mes sin mejoría',
-        'Pérdida de peso inexplicada (>5 % del peso en 6 meses)',
-        'Ganglios linfáticos duros, fijos e indoloros',
+        { texto: 'Antecedentes de cáncer o tratamiento oncológico', pregunta: 'cv4' },
+        { texto: 'Edad >50 años con inicio insidioso', pregunta: 'cv4' },
+        { texto: 'Dolor nocturno constante e intenso que despierta al paciente', pregunta: 'cv1' },
+        { texto: 'Fracaso del tratamiento conservador tras 1 mes sin mejoría', pregunta: 'cv4' },
+        { texto: 'Pérdida de peso inexplicada (>5 % del peso en 6 meses)', pregunta: 'cv5', fase1: 'br1' },
+        { texto: 'Ganglios linfáticos duros, fijos e indoloros', pregunta: 'cv4' },
         // Tarjeta cervical (guía de consulta), BANDERAS «Tumor vertebral»
-        'Tumor vertebral (benigno, maligno o metástasis): dolor cervical incesante que no cambia con postura, movimiento ni reposo; dolor nocturno frecuente; rigidez y pérdida de movilidad posibles; debilidad o entumecimiento si comprime médula o raíces. Malestar general: febrícula, sudor nocturno, cansancio, inapetencia'
+        { texto: 'Tumor vertebral (benigno, maligno o metástasis): dolor cervical incesante que no cambia con postura, movimiento ni reposo; dolor nocturno frecuente; rigidez y pérdida de movilidad posibles; debilidad o entumecimiento si comprime médula o raíces. Malestar general: febrícula, sudor nocturno, cansancio, inapetencia', pregunta: ['cv1', 'cv4', 'cv5'] }
       ],
       banderasAmarillas: [],
       preguntas: [
@@ -137,14 +137,23 @@ export const screening = {
     {
       id: 'cv_cardio', icon: '❤️', nombre: 'Cardiovascular',
       banderasRojas: [
-        'Dolor de cuello/mandíbula acompañado de sudores, náuseas u opresión torácica',
-        'Síncope repentino sin mareo previo',
-        'Angina no aliviada por reposo (>20 min)',
+        { texto: 'Dolor de cuello/mandíbula acompañado de sudores, náuseas u opresión torácica', pregunta: 'cv2' },
+        { texto: 'Síncope repentino sin mareo previo',
+          razonamiento: {
+            porque: 'Un síncope es una pérdida breve de conocimiento porque llega poco oxígeno al cerebro. El vasovagal, por ansiedad o estrés, y el de la tensión baja al incorporarse suelen avisar antes con mareo, aturdimiento o náuseas. Un síncope que llega sin ningún aviso orienta al corazón: un problema de una válvula o una arritmia (Goodman).',
+            peso: 'Goodman recomienda derivar al médico cualquier síncope sin explicación, porque por esas mismas causas puede haber una muerte súbita; pesa más con enfermedad del corazón o de la circulación, o con factores de riesgo de infarto o ictus. Es una derivación para estudiarlo, no una urgencia por sí sola.',
+            detalle: 'Otras causas cardiacas de síncope o de aturdimiento que da Goodman: arritmias, hipotensión ortostática, mala función del ventrículo, enfermedad coronaria e insuficiencia vertebral. La hipotensión ortostática da aturdimiento al cambiar rápido de postura tras un rato tumbado o sentado, o al hacer fuerza con presión abdominal (al defecar, al levantar peso); quien tiene estenosis aórtica lo nota con esas mismas actividades. Al empezar o ajustar fármacos del corazón, como los vasodilatadores, también puede aparecer.\n\nEn el cuello: la exploración cervical puede provocar mareo; si aparecen nistagmo, cambios en el tamaño de las pupilas o alteraciones de la vista, hay que buscar la causa (ver las preguntas de insuficiencia vertebrobasilar del sistema arterial).',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 227 y 261.'
+            ]
+          } },
+        { texto: 'Angina no aliviada por reposo (>20 min)', pregunta: 'cv2' },
         // Tarjeta cervical (guía de consulta), BANDERAS «Cardiaco»
-        'Cardiaco: dolor cervical, habitualmente anterior. No se relaciona con movimientos ni posturas del cuello'
+        { texto: 'Cardiaco: dolor cervical, habitualmente anterior. No se relaciona con movimientos ni posturas del cuello', pregunta: ['cv2', 'cv_c2'] }
       ],
       banderasAmarillas: [
-        'Dolor de espalda que empeora con esfuerzo físico de piernas'
+        { texto: 'Dolor de espalda que empeora con esfuerzo físico de piernas', pregunta: 'cv_c2' }
       ],
       preguntas: [
         { id: 'cv2', anatomia: ['corazon'], text: '¿Tiene síntomas como sudores, náuseas, o dolor en el pecho/mandíbula al mismo tiempo que el dolor de cuello/espalda?', alerta: true, s1: true,
@@ -209,13 +218,13 @@ export const screening = {
     {
       id: 'cv_pulmonar', icon: '🫁', nombre: 'Pulmonar',
       banderasRojas: [
-        'Dolor de cuello/hombro que empeora al toser, respirar profundamente o reír',
-        'Hemoptisis, tos persistente, disnea en reposo',
-        'Fiebre y sudores nocturnos (neumonía, tuberculosis)'
+        { texto: 'Dolor de cuello/hombro que empeora al toser, respirar profundamente o reír', pregunta: 'cv_p1' },
+        { texto: 'Hemoptisis, tos persistente, disnea en reposo', pregunta: ['cv_p1', 'cv_p2'] },
+        { texto: 'Fiebre y sudores nocturnos (neumonía, tuberculosis)', pregunta: 'cv_p1' }
       ],
       banderasAmarillas: [
-        'Tabaquismo prolongado',
-        'Antecedente de cáncer con potencial de metástasis pulmonar'
+        { texto: 'Tabaquismo prolongado', pregunta: 'cv_p1' },
+        { texto: 'Antecedente de cáncer con potencial de metástasis pulmonar', pregunta: 'cv_p1' }
       ],
       preguntas: [
         { id: 'cv_p1', anatomia: ['pleura', 'nervio_frenico'], text: '¿El dolor de cuello o espalda empeora al toser, reír, estornudar o respirar profundo?', alerta: true,
@@ -274,13 +283,13 @@ export const screening = {
       id: 'cv_renal', icon: '🫘', nombre: 'Renal / Urológico',
       banderasRojas: [
         'Prueba de percusión de Murphy positiva (ángulo costovertebral)',
-        'Cambio en control de esfínteres junto con dolor cervical (compresión medular)',
-        'Hematuria'
+        { texto: 'Cambio en control de esfínteres junto con dolor cervical (compresión medular)', pregunta: 'cv3' },
+        { texto: 'Hematuria', pregunta: 'cv_r2' }
       ],
       banderasAmarillas: [
-        'Dolor que no cambia con postura corporal',
-        'Fiebre y escalofríos acompañando el dolor de espalda',
-        'Cambios en el color u olor de la orina'
+        { texto: 'Dolor que no cambia con postura corporal', fase1: 'br4' },
+        { texto: 'Fiebre y escalofríos acompañando el dolor de espalda', pregunta: 'cv_r2' },
+        { texto: 'Cambios en el color u olor de la orina', pregunta: 'cv_r2' }
       ],
       preguntas: [
         { id: 'cv3', anatomia: ['medula_espinal'], text: '¿Ha notado algún cambio en su control de esfínteres (vejiga o intestino)?', alerta: true, s1: true,
@@ -340,14 +349,23 @@ export const screening = {
     {
       id: 'cv_gi', icon: '🫃', nombre: 'Gastrointestinal',
       banderasRojas: [
-        'Dolor de espalda que empeora o mejora al comer o tras una evacuación',
-        'Dolor nocturno entre la medianoche y las 3 am que cede con antiácidos (úlcera duodenal)',
-        'Heces negras/alquitranadas o vómito en posos de café (sangrado GI)'
+        { texto: 'Dolor de espalda que empeora o mejora al comer o tras una evacuación', pregunta: 'cv_gi1' },
+        { texto: 'Dolor nocturno entre la medianoche y las 3 am que cede con antiácidos (úlcera duodenal)', pregunta: 'cv_gi2' },
+        { texto: 'Heces negras/alquitranadas o vómito en posos de café (sangrado GI)', pregunta: 'cv_gi2' }
       ],
       banderasAmarillas: [
-        'Dolor de espalda y abdominal al mismo nivel de forma simultánea o alterna',
-        'Uso crónico de AINEs (riesgo de úlcera péptica)',
-        'Saciedad precoz o intolerancia a comidas grasas'
+        { texto: 'Dolor de espalda y abdominal al mismo nivel de forma simultánea o alterna',
+          razonamiento: {
+            porque: 'Un órgano del abdomen refiere su dolor a la piel y al músculo de la espalda que comparten con él segmento medular. El estómago, el duodeno, la vesícula y el esófago lo llevan a la zona dorsal, entre T3 y T6 o T7, a veces atravesando el tórax; el intestino delgado, el páncreas y el apéndice, al ombligo y a la zona lumbar a la misma altura (Goodman). Si el dolor de espalda coincide o se alterna con dolor abdominal al mismo nivel, la fuente probable es una víscera, no la columna.',
+            peso: 'Goodman pide valoración médica ante un dolor de espalda con dolor abdominal al mismo nivel. La forma alterna es la que más se escapa: primero un episodio de dolor abdominal que se pasa, después dolor de espalda, y el paciente no los relaciona si no se le pregunta.',
+            detalle: 'El caso que cuenta Goodman: un hombre mayor tratado por una contractura lumbar tras un esfuerzo, sin preguntarle por otros síntomas; llevaba 3 años con molestias digestivas y dolor lumbar, siempre alternos y nunca a la vez. Era un cáncer de colon y murió 6 semanas después. Su única bandera roja visible era la edad.\n\nQué preguntar con un SÍ: relación con las comidas o con la evacuación, sangre en las heces o heces negras, uso de AINE, y las demás preguntas de este sistema. En el cuello, la zona que importa es la dorsal alta: dolor entre las escápulas con ardor, digestiones pesadas o dolor en la boca del estómago.',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 303–305 y 326.'
+            ]
+          } },
+        { texto: 'Uso crónico de AINEs (riesgo de úlcera péptica)', pregunta: 'cv_gi2' },
+        { texto: 'Saciedad precoz o intolerancia a comidas grasas', pregunta: 'cv_gi1' }
       ],
       preguntas: [
         { id: 'cv_gi1', anatomia: ['esofago', 'estomago'], text: '¿El dolor de espalda empeora o mejora al comer, o cambia tras una evacuación intestinal?', alerta: true, s1: true,
@@ -413,11 +431,11 @@ export const screening = {
       // BANDERAS «Otras cefaleas secundarias».
       id: 'cv_arterial', icon: '🧠', nombre: 'Arterial / Traumatismo / Cefalea de alarma',
       banderasRojas: [
-        'Disección arterial (<55 a): cefalea o dolor cervical súbito, desconocido para el paciente, moderado o grave y a menudo progresivo; alteración del equilibrio o la marcha, Horner, déficit de pares craneales. Puede imitar una cefalea cervicogénica → urgencias hoy',
-        'Insuficiencia vertebrobasilar (suele ser >65 a, posible en jóvenes) · 5 D y 3 N: mareo o inestabilidad, diplopía o pérdida de campo visual, disartria o disfasia, disfagia o ronquera, caídas súbitas sin pérdida de conciencia; nistagmo espontáneo, náuseas o vómitos, entumecimiento peribucal → urgencias hoy',
-        'Fractura, subluxación o luxación (incluye la inestabilidad cervical alta traumática): traumatismo importante en persona mayor o mecanismo peligroso → urgencias hoy',
-        'Cefalea con signos de alarma: cambio súbito de calidad, intensidad o frecuencia; síntomas neurológicos nuevos; inicio súbito y grave; fiebre u otros síntomas sistémicos → urgencias hoy',
-        'Otras cefaleas secundarias: pseudotumor cerebri; arteritis temporal; sospecha de tumor, aneurisma, hemorragia, ictus o meningitis. Pseudotumor: examen ocular, TC o RM, punción lumbar. Arteria temporal: palpación, analítica, biopsia. Resto: RM y analítica'
+        { texto: 'Disección arterial (<55 a): cefalea o dolor cervical súbito, desconocido para el paciente, moderado o grave y a menudo progresivo; alteración del equilibrio o la marcha, Horner, déficit de pares craneales. Puede imitar una cefalea cervicogénica → urgencias hoy', pregunta: 'cv_ar1' },
+        { texto: 'Insuficiencia vertebrobasilar (suele ser >65 a, posible en jóvenes) · 5 D y 3 N: mareo o inestabilidad, diplopía o pérdida de campo visual, disartria o disfasia, disfagia o ronquera, caídas súbitas sin pérdida de conciencia; nistagmo espontáneo, náuseas o vómitos, entumecimiento peribucal → urgencias hoy', pregunta: 'cv_ar2' },
+        { texto: 'Fractura, subluxación o luxación (incluye la inestabilidad cervical alta traumática): traumatismo importante en persona mayor o mecanismo peligroso → urgencias hoy', pregunta: 'cv_ar3' },
+        { texto: 'Cefalea con signos de alarma: cambio súbito de calidad, intensidad o frecuencia; síntomas neurológicos nuevos; inicio súbito y grave; fiebre u otros síntomas sistémicos → urgencias hoy', pregunta: 'cv_ar4' },
+        { texto: 'Otras cefaleas secundarias: pseudotumor cerebri; arteritis temporal; sospecha de tumor, aneurisma, hemorragia, ictus o meningitis. Pseudotumor: examen ocular, TC o RM, punción lumbar. Arteria temporal: palpación, analítica, biopsia. Resto: RM y analítica', pregunta: 'cv_ar4' }
       ],
       banderasAmarillas: [],
       preguntas: [
@@ -528,9 +546,9 @@ export const screening = {
       id: 'cv_neuro', icon: '⚡', nombre: 'Médula / Estructural',
       banderasRojas: [
         'Mielopatía cervical: espondilosis avanzada que estrecha el canal y comprime la médula; más probable de mediana edad en adelante. También con tumores avanzados o malformación congénita (Klippel-Feil). Falla la conducción de la médula, no la de la raíz: exploración neurológica que incluya pruebas centrales (Babinski, dedo-nariz). La RM muestra la compresión',
-        'Inestabilidad cervical alta no traumática: erosión del ligamento transverso en AR; ausencia congénita de ligamentos; síndrome de Down; Klippel-Feil (cuello corto, asimetría facial, cefalea crónica). La queja principal puede ser una cefalea con rasgos de cervicogénica',
-        'Distonía cervical: contracciones involuntarias con postura y movimientos anómalos de la cabeza; puede doler. Observación de la postura y del movimiento',
-        'Fijación rotatoria atloaxoidea: más frecuente en niños. Tortícolis con rotación muy limitada. Puede aparecer tras amigdalitis o adenoamigdalectomía (síndrome de Grisel). Requiere derivación médica'
+        { texto: 'Inestabilidad cervical alta no traumática: erosión del ligamento transverso en AR; ausencia congénita de ligamentos; síndrome de Down; Klippel-Feil (cuello corto, asimetría facial, cefalea crónica). La queja principal puede ser una cefalea con rasgos de cervicogénica', pregunta: 'cv_n1' },
+        { texto: 'Distonía cervical: contracciones involuntarias con postura y movimientos anómalos de la cabeza; puede doler. Observación de la postura y del movimiento', pregunta: 'cv_n2' },
+        { texto: 'Fijación rotatoria atloaxoidea: más frecuente en niños. Tortícolis con rotación muy limitada. Puede aparecer tras amigdalitis o adenoamigdalectomía (síndrome de Grisel). Requiere derivación médica', pregunta: 'cv_n3' }
       ],
       banderasAmarillas: [],
       preguntas: [
@@ -610,8 +628,8 @@ export const screening = {
       // «Artritis inflamatoria».
       id: 'cv_inflam', icon: '🔥', nombre: 'Inflamatoria / Infecciosa',
       banderasRojas: [
-        'Infección (discitis, osteomielitis, absceso epidural): dolor incesante y nocturno que no alivia con reposo, postura ni movimiento; cuello rígido con pérdida de movilidad; signos neurológicos si está avanzada. Malestar general: febrícula, sudor nocturno, cansancio, inapetencia. Analítica si se sospecha (decisión médica)',
-        'Artritis inflamatoria (AR, EA): dolor y rigidez prolongada, sobre todo por la mañana. AR: visible en articulaciones periféricas. EA: empieza en lo lumbopélvico'
+        { texto: 'Infección (discitis, osteomielitis, absceso epidural): dolor incesante y nocturno que no alivia con reposo, postura ni movimiento; cuello rígido con pérdida de movilidad; signos neurológicos si está avanzada. Malestar general: febrícula, sudor nocturno, cansancio, inapetencia. Analítica si se sospecha (decisión médica)', pregunta: 'cv_in1' },
+        { texto: 'Artritis inflamatoria (AR, EA): dolor y rigidez prolongada, sobre todo por la mañana. AR: visible en articulaciones periféricas. EA: empieza en lo lumbopélvico', pregunta: 'cv_in2' }
       ],
       banderasAmarillas: [],
       preguntas: [
