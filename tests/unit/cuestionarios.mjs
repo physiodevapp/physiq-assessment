@@ -283,3 +283,22 @@ test('PRTEE: dolor (0–50) + función ÷ 2 (0–50)', () => {
   assert.deepEqual(p.subescalas.map(s => s.valor), [50, 50]);
   assert.equal(L.puntuar(def('prtee'), todosN('prtee', 4)).total, 40);
 });
+
+test('FAAM: porcentaje por subescala sin las N/A; LEFS: suma 0–80', () => {
+  const r = todosN('faam', 4);
+  r[1] = 0; r[2] = L.NA;          // vida diaria: 19 ítems a 4 y uno a 0 → 76/80
+  const p = L.puntuar(def('faam'), r);
+  assert.equal(p.total, null);
+  assert.deepEqual(p.subescalas.map(s => s.valor), [95, 100]);
+  assert.equal(L.puntuar(def('lefs'), todosN('lefs', 4)).total, 80);
+  assert.equal(L.totalTexto(def('lefs'), L.puntuar(def('lefs'), todosN('lefs', 2))), '40/80');
+});
+
+test('cada PROM de las hipótesis (salvo escalas de dolor y los pendientes) está en la calculadora', () => {
+  const pendientes = ['VISA-A', 'CAIT', 'IdFAI'];   // puntos por respuesta sin verificar (docs/cuestionarios.md)
+  const ids = new Set(CUESTIONARIOS.map(d => d.id));
+  for (const v of PROM_VALIDADOS_ES.filter(x => !['NPRS', 'EVA', ...pendientes].includes(x))) {
+    const id = v.toLowerCase().replace(/[^a-z0-9]/g, '');
+    assert.ok(ids.has(id), `«${v}» no está en la calculadora (id «${id}»)`);
+  }
+});
