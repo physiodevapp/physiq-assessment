@@ -227,3 +227,59 @@ test('VISA-P: ítems 2–6 puntúan 10 − lo marcado; total 0–100', () => {
   assert.equal(L.puntuar(d, peor).total, 0);
   assert.equal(L.rangoPuntuacion(d, d.items.map(it => it.n))[1], 100);
 });
+
+test('ODI: porcentaje sobre los ítems contestados y bandas de Fairbank', () => {
+  const d = def('odi');
+  assert.equal(L.puntuar(d, todosN('odi', 2)).total, 40);
+  assert.equal(L.puntuar(d, todosN('odi', 2)).interpretacion.etiqueta, 'Limitación funcional moderada');
+  const r = { ...todosN('odi', 3), 6: L.NA };   // 27/45
+  assert.equal(L.puntuar(d, r).total, 60);
+  assert.equal(L.resumenCuestionario(d, r).v, '60 %');
+});
+
+test('RMDQ: número de frases marcadas, 0–24', () => {
+  const r = { ...todosN('rmdq', 'no'), 1: 'si', 5: 'si', 24: 'si' };
+  assert.equal(L.puntuar(def('rmdq'), r).total, 3);
+  assert.equal(L.totalTexto(def('rmdq'), L.puntuar(def('rmdq'), r)), '3/24');
+});
+
+test('NDI: porcentaje y bandas de Vernon en %; conducir admite N/A', () => {
+  const d = def('ndi');
+  assert.equal(L.puntuar(d, todosN('ndi', 1)).total, 20);   // 10/50
+  assert.equal(L.puntuar(d, todosN('ndi', 1)).interpretacion.etiqueta, 'Discapacidad leve');
+  assert.equal(L.puntuar(d, { ...todosN('ndi', 2), 8: L.NA }).total, 40);
+  assert.equal(L.valorItem(d, d.items[0], L.NA), null, 'solo conducir admite N/A');
+  // 4/50 = 8 % → ninguna; 5/50 = 10 % → leve
+  assert.equal(L.puntuar(d, { ...todosN('ndi', 0), 1: 4 }).interpretacion.etiqueta, 'Sin discapacidad');
+  assert.equal(L.puntuar(d, { ...todosN('ndi', 0), 1: 5 }).interpretacion.etiqueta, 'Discapacidad leve');
+});
+
+test('SPADI: dolor ÷ 50, discapacidad ÷ 80 y total = media de las dos', () => {
+  const r = { ...todosN('spadi', 0), 1: 10, 2: 10, 3: 5 };   // dolor 25/50 = 50; discapacidad 0
+  const p = L.puntuar(def('spadi'), r);
+  assert.deepEqual(p.subescalas.map(s => s.valor), [50, 0]);
+  assert.equal(p.total, 25);
+  assert.match(L.resumenCuestionario(def('spadi'), r).v, /^25\/100 · Dolor: 50\/100, Discapacidad: 0\/100$/);
+});
+
+test('ASES: (10 − EVA) × 5 + función × 5/3, de 0 a 100', () => {
+  const d = def('ases');
+  const r = { ...todosN('ases', 3), 1: 0 };
+  assert.equal(L.puntuar(d, r).total, 100);
+  const r2 = { ...todosN('ases', 0), 1: 4.5 };   // dolor 27,5; función 0
+  assert.equal(L.puntuar(d, r2).total, 27.5);
+});
+
+test('DASH: ((suma ÷ n) − 1) × 25', () => {
+  assert.equal(L.puntuar(def('dash'), todosN('dash', 1)).total, 0);
+  assert.equal(L.puntuar(def('dash'), todosN('dash', 3)).total, 50);
+  assert.equal(L.puntuar(def('dash'), todosN('dash', 5)).total, 100);
+  assert.equal(def('dash').items.length, 30);
+});
+
+test('PRTEE: dolor (0–50) + función ÷ 2 (0–50)', () => {
+  const p = L.puntuar(def('prtee'), todosN('prtee', 10));
+  assert.equal(p.total, 100);
+  assert.deepEqual(p.subescalas.map(s => s.valor), [50, 50]);
+  assert.equal(L.puntuar(def('prtee'), todosN('prtee', 4)).total, 40);
+});
