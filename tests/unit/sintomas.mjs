@@ -14,8 +14,8 @@ const OTRA = { ...vacio(), otraRegion: true, zonaLibre: 'Rodilla', lado: 'Izquie
 const conSintomas = (patch, fn) => withState({ region: 'lumbar', lado: 'Derecho', severidad: 7, irritabilidadNivel: 'Moderada',
   sintomaPrincipal: P1, sintomasSecundarios: [P2, OTRA], ...patch }, fn);
 
-test('síntomas: zonas solo en el piloto (lumbar), ids únicos y no vacíos', () => {
-  assert.deepEqual(Object.keys(ZONAS_SINTOMA), ['lumbar']);
+test('síntomas: zonas en las regiones hechas (lumbar, cervical), ids únicos y no vacíos', () => {
+  assert.deepEqual(Object.keys(ZONAS_SINTOMA).sort(), ['cervical', 'lumbar']);
   for (const [r, zonas] of Object.entries(ZONAS_SINTOMA)) {
     assert.ok(CIF_TREES[r], r);
     const ids = zonas.map(z => z.id);
@@ -100,6 +100,17 @@ test('síntomas: revisión — el NRS de un secundario figura en la valoración;
     const sinOtro = { ...datos, ss: datos.ss.filter(s => !s.or) };
     assert.ok(RI.revisarInforme('Dolor en la pierna izquierda.', { datos: sinOtro }).some(p => p.id === 'lado'));
     assert.ok(RI.revisarInforme('Dolor de 5/10.', { datos }).some(p => p.id === 'nrs'));
+  });
+});
+
+test('síntomas: cervical — zonas en payload y 📋 Notas (región con lado «Central»)', () => {
+  withState({ region: 'cervical', lado: 'Central', severidad: 6, irritabilidadNivel: 'Moderada',
+    sintomaPrincipal: { ...vacio(), zonas: ['cuello', 'trapecio'] },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['antebrazo_mano'], lado: 'Derecho', nrs: 4, relacion: 'empeora' }] }, () => {
+    const d = buildPhysiQPayload();
+    assert.deepEqual(d.z1, { z: 'Cuello, trapecio o escápula' });
+    assert.equal(d.ss[0].z, 'Antebrazo y mano');
+    assert.match(buildContextSummaryText(), /SÍNTOMAS: P1 Cuello, trapecio o escápula \| P2 Antebrazo y mano · lado derecho · NRS 4\/10/);
   });
 });
 
