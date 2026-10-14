@@ -505,6 +505,29 @@
   @media (max-width: 420px) {
     .lado-group:has(.lado-central:not([hidden])) .option-btn { flex-basis: calc(50% - 4px); }
   }
+  /* Tarjeta «Síntomas» de la fase 3 (sintomas.js): P1 y hasta 3 secundarios */
+  #cardSintomas[hidden] { display: none; }
+  .sint-contador { color: var(--text3); font-weight: 400; margin-left: 6px; }
+  .sint-item { border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-top: 12px; display: flex; flex-direction: column; gap: 12px; }
+  .sint-item.sint-p1 { border-color: var(--accent); }
+  .sint-cab { display: flex; align-items: center; gap: 8px; }
+  .sint-num { font-family: 'DM Mono', monospace; font-weight: 600; color: var(--accent); }
+  .sint-tipo { font-size: 0.8rem; color: var(--text2); flex: 1; }
+  .sint-accion { background: none; border: 1px solid var(--border2); color: var(--text2); border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 0.78rem; cursor: pointer; min-height: 36px; }
+  .sint-quitar { width: 36px; padding: 0; }
+  .sint-campo { display: flex; flex-direction: column; gap: 6px; }
+  .sint-zonas .option-btn { padding: 7px 12px; font-size: 0.82rem; }
+  .sint-otra { border-style: dashed; }
+  .sint-libre { margin-top: 2px; }
+  .sint-hint { font-size: 0.78rem; color: var(--text3); }
+  .sint-tercios .option-btn, .sint-grupo:not(.lado-group):not(.sint-relacion) .option-btn { flex: 1 1 0; text-align: center; padding: 8px 6px; }
+  .sint-grupo .option-btn { white-space: nowrap; }
+  .sint-relacion .option-btn { flex: 1 1 calc(50% - 8px); text-align: center; padding: 8px 6px; }
+  .sint-nrs { display: flex; gap: 4px; }
+  .sint-nrs-btn { flex: 1 1 0; min-width: 0; min-height: 36px; padding: 0; background: var(--surface2); border: 1px solid var(--border2); border-radius: 6px; color: var(--text2); font-family: 'DM Mono', monospace; font-size: 0.8rem; cursor: pointer; }
+  .sint-nrs-btn.selected { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .sint-anadir { margin-top: 12px; width: 100%; }
+
   .option-btn {
     background: var(--surface2);
     border: 1px solid var(--border2);
@@ -1204,6 +1227,15 @@
   .flag-item:last-child { border-bottom: none; }
   .flag-dot-red { color: var(--red); flex-shrink: 0; font-size: 0.6rem; margin-top: 4px; }
   .flag-dot-yellow { color: var(--accent3); flex-shrink: 0; font-size: 0.6rem; margin-top: 4px; }
+  /* «¿Por qué?» de una bandera (docs/razonamiento-banderas.md): abre el panel del razonamiento */
+  .flag-texto { min-width: 0; }
+  .flag-fase1 { font-family: 'DM Mono', monospace; font-size: 0.66rem; color: var(--text3); white-space: nowrap; }
+  .flag-porque {
+    background: none; border: none; cursor: pointer; font: inherit; font-size: 0.85rem; line-height: 1;
+    color: var(--accent); padding: 6px 8px; margin: -6px -8px -6px -2px; vertical-align: -1px;
+  }
+  .flag-porque:hover { color: var(--text); }
+  .flag-porque:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 4px; }
 
   .flags-box {
     background: var(--surface2);
@@ -1941,7 +1973,7 @@
       border-left: none; border-right: none; border-radius: 0;
     }
     .sistema-accordion-body .card { margin: 0; }
-    .sq2, .test-item, .hyp5-card, .exercise-box { padding: 0.75rem; }
+    .sq2, .test-item, .hyp5-card, .exercise-box, .plan-escalon, .plan-bloque, .sint-item { padding: 0.75rem; }
     .pauta-det-resto { padding: 0 0.75rem 0.75rem; }
     .hypothesis-body { padding: 0 0.9rem 0.9rem; }
     /* Nombre de la hipótesis en la 4b: hasta dos líneas en vez de cortarlo */
@@ -2411,9 +2443,13 @@
 .razon-ampliar:hover { text-decoration: underline; }
 
 .razon-scrim { display: none; }
+/* Ancho en escritorio: 380 px como mínimo y, en pantallas anchas, todo el hueco
+   que deja la columna de las fases (780 px + márgenes), hasta 560 px — más
+   ancho alarga las líneas (~75 caracteres) y se lee peor. */
+:root { --razon-ancho: clamp(380px, calc(100vw - 780px - 4rem), 560px); }
 .razon-panel {
   position: fixed; z-index: 250;
-  top: 64px; right: 0; bottom: 0; width: 380px; max-width: 100vw;
+  top: 64px; right: 0; bottom: 0; width: var(--razon-ancho); max-width: 100vw;
   background: var(--surface); border-left: 1px solid var(--border2);
   box-shadow: var(--modal-shadow);
   display: flex; flex-direction: column;
@@ -2455,7 +2491,7 @@
 
 /* Escritorio: el contenido se aparta para que la pregunta no quede debajo. */
 @media (min-width: 769px) {
-  body.razon-abierto .main { padding-right: calc(380px + 1rem); }
+  body.razon-abierto .main { padding-right: calc(var(--razon-ancho) + 1rem); }
 }
 
 /* Móvil: bottom sheet (~85 % de alto) con velo. */
@@ -3134,3 +3170,72 @@ body.posquirurgico .solo-posq { display: block; }
 .cuest-f5 strong { color: var(--text); }
 .cuest-f5-abrir { margin-top: 8px; background: none; border: none; padding: 0; min-height: 40px; color: var(--accent); font-family: inherit; font-size: 0.8rem; cursor: pointer; }
 @media print { .cuest-btn, .cuest-f5-abrir { display: none !important; } }
+
+  /* ─── Fase 6 «Plan de tratamiento» (opcional; plan.js) ─────────── */
+  .phase-step-opcional .phase-step-num { border-style: dashed; }
+  .plan-entrada { display: flex; justify-content: center; margin: 1rem 0 0; }
+  .plan-entrada .btn-text-short { display: none; }
+  @media (max-width: 480px) {
+    .plan-entrada .btn-text-full { display: none; }
+    .plan-entrada .btn-text-short { display: inline; }
+    .plan-entrada .btn { width: 100%; }
+  }
+  .plan-aviso {
+    font-size: 0.8rem; color: var(--text2); line-height: 1.55;
+    border-left: 3px solid var(--accent); padding: 4px 0 4px 10px; margin: 0 0 0.75rem;
+  }
+  .plan-ayuda { font-size: 0.78rem; color: var(--text3); line-height: 1.5; margin: 0 0 0.6rem; }
+  .plan-hips { display: flex; flex-direction: column; gap: 6px; }
+  .plan-hip .option-btn { width: 100%; text-align: left; }
+  .plan-hip-no .option-btn { opacity: 0.55; cursor: not-allowed; }
+  .plan-hip-motivo { font-size: 0.72rem; color: var(--orange); margin: 2px 0 0 4px; }
+  .plan-hip-orden { color: var(--accent2); font-size: 0.75rem; }
+  .plan-campo { margin: 0.75rem 0 0; }
+  .plan-campo-et {
+    display: block; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--accent); margin: 0.9rem 0 6px;
+  }
+  .plan-calc { text-transform: none; letter-spacing: 0; color: var(--text3); font-family: 'Outfit', sans-serif; font-size: 0.75rem; }
+  .plan-niveles { margin: 0.25rem 0 0.5rem; }
+  .plan-niveles .option-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  .plan-escalon, .plan-bloque {
+    background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius);
+    padding: 1rem; margin: 0.75rem 0; font-size: 0.85rem; color: var(--text2); line-height: 1.6;
+  }
+  .plan-escalon-tit { color: var(--text); font-weight: 600; margin-bottom: 4px; }
+  .plan-bloques { display: flex; flex-direction: column; }
+  .plan-bloque { margin: 0 0 0.6rem; }
+  .plan-bloque-cab { color: var(--text); font-weight: 600; margin-bottom: 4px; }
+  .plan-bloque-min {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent2);
+    border: 1px solid var(--border2); border-radius: 6px; padding: 1px 6px; margin-right: 6px; font-weight: 400;
+  }
+  .plan-bloque-cab { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 0; }
+  .plan-duracion {
+    margin-left: auto; display: inline-flex; align-items: center; gap: 4px;
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text3); font-weight: 400;
+  }
+  .plan-duracion input {
+    width: 3.2rem; padding: 4px 6px; font: inherit; font-size: 0.8rem; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border2); border-radius: 6px; text-align: right;
+  }
+  .plan-chip {
+    font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--orange); border: 1px solid var(--orange); border-radius: 6px; padding: 1px 6px; margin-left: 6px;
+    white-space: nowrap; vertical-align: middle;
+  }
+  .plan-ayuda-aviso { color: var(--orange); }
+  .plan-enlace {
+    background: none; border: none; padding: 0; font: inherit; color: var(--accent);
+    cursor: pointer; text-decoration: underline; text-underline-offset: 2px;
+  }
+  .plan-int-hip { color: var(--text); font-size: 0.8rem; margin: 6px 0 4px; }
+  .plan-lista { margin: 4px 0 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; color: var(--text2); line-height: 1.6; }
+  .plan-sub {
+    font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent2); margin: 1rem 0 4px;
+  }
+  .plan-registro { margin: 1rem 0 0; font-size: 0.85rem; color: var(--text2); }
+  .plan-registro summary { cursor: pointer; color: var(--accent); }
+  #phase6 .summary-row .summary-value { text-align: right; }
+

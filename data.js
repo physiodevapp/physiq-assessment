@@ -149,6 +149,13 @@ export { CUESTIONARIOS, GRUPOS_CUESTIONARIO } from './data/cuestionarios.js';
 
 export const HYPOTHESES = Object.assign({}, ...Object.values(REGIONES).map(m => m.hypotheses));
 
+// Fase 3 — zonas del mapa corporal por región ([{ id, nombre }]), solo las
+// regiones que las tienen (piloto: lumbar). Sin zonas, la tarjeta «Síntomas»
+// no se pinta. Ver docs/sintomas-multiples.md.
+export const ZONAS_SINTOMA = Object.fromEntries(
+  Object.entries(REGIONES).filter(([, m]) => m.zonas).map(([r, m]) => [r, m.zonas])
+);
+
 
 export const NRS_LABELS = ['Sin dolor','Dolor muy leve','Dolor leve','Dolor leve-moderado','Dolor moderado','Dolor moderado','Dolor moderado-intenso','Dolor intenso','Dolor intenso','Dolor muy intenso','Dolor máximo'];
 export const NRS_CLASSES = ['nrs-0','nrs-1','nrs-2','nrs-3','nrs-4','nrs-5','nrs-6','nrs-7','nrs-8','nrs-9','nrs-10'];
@@ -160,6 +167,7 @@ export const PHASE_DEFS = [
   { n: 4,    label: 'Algoritmo CIF',            short: 'Fase 4' },
   { n: '4b', label: 'Confirmación de Hipótesis',short: 'Fase 4b' },
   { n: 5,    label: 'Resultados',               short: 'Fase 5' },
+  { n: 6,    label: 'Plan de tratamiento',      short: 'Fase 6' },  // opcional (docs/plan-tratamiento.md)
 ];
 
 // Frases clínicas predefinidas para los chips de entrada rápida en campos de texto libre.
@@ -199,4 +207,4 @@ export const QUICK_PHRASES = {
     'Vincular a un desplazamiento habitual (coche, transporte)'
   ]
 };
-export const PHASE_NAV_IDS = { 1:'nav1', 2:'nav2', 3:'nav3', 4:'nav4', '4b':'nav4b', 5:'nav5' };
+export const PHASE_NAV_IDS = { 1:'nav1', 2:'nav2', 3:'nav3', 4:'nav4', '4b':'nav4b', 5:'nav5', 6:'nav6' };

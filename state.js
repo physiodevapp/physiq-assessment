@@ -39,6 +39,12 @@ const state = {
   irritabilidad: { dolor: 'Baja (≤3/10)', reposo: 'Ausente', movimiento: 'Al final del rango con SP', discapacidad: 'Mínima', tolerancia: 'Alta' },
   irritabilidadNivel: 'Baja',
   irritabilidadDirecta: false,  // true si el nivel se eligió directamente (modo breve) y no con la matriz
+  // Tarjeta «Síntomas» (sintomas.js, lib/sintomas.js; docs/sintomas-multiples.md).
+  // P1: dónde y cómo es el dolor principal; su NRS e irritabilidad son los de
+  // arriba. P2–P4: hasta 3 secundarios con su propio NRS, irritabilidad directa
+  // y relación con P1. Misma forma en los dos: sintomaVacio().
+  sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },
+  sintomasSecundarios: [],
   naturaleza: '',
   estabilidad: '',
   signoComparable: '',
@@ -61,6 +67,13 @@ const state = {
     ventanaRecuperacion: '',
     anclajeHabito: ''
   },
+  // Fase 6 «Plan de tratamiento» (plan.js, opcional): lo que elige o escribe el
+  // fisio; el esqueleto se recalcula del estado. Nunca entra en el payload.
+  // { hipotesis: [id, id?], nivel: 'A'|'B'|'C', frecuencia: 'A'|'B',
+  //   sesion: 'primera'|'siguiente', gravedad?: string, irritabilidad?: string,
+  //   notas: { sesion, mes, domiciliario, parar },
+  //   duraciones: { [bloqueId]: minutos } } | null
+  planTratamiento: null,
   // Formulario previo (formulario.js): { comun: {id: valor}, regiones: { lumbar: {...} } }
   formularioPrevio: { comun: {}, regiones: {} },
   // Calculadora de cuestionarios (lib/cuestionarios.js): { [id]: { r: { [ítem]: valor } } }.

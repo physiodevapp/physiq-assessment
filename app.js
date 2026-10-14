@@ -3,7 +3,7 @@
 // Lógica principal de la aplicación
 // ============================================================
 import { state } from './state.js';
-import { SYSTEMIC_SCREENING, HYPOTHESES, DOSIS_DERIVAR, TIEMPOS_TEJIDO, CUESTIONARIOS, GRUPOS_CUESTIONARIO, PHASE_DEFS, PHASE_NAV_IDS, NRS_LABELS, NRS_CLASSES, QUICK_PHRASES } from './data.js';
+import { SYSTEMIC_SCREENING, HYPOTHESES, DOSIS_DERIVAR, TIEMPOS_TEJIDO, ZONAS_SINTOMA, CUESTIONARIOS, GRUPOS_CUESTIONARIO, PHASE_DEFS, PHASE_NAV_IDS, NRS_LABELS, NRS_CLASSES, QUICK_PHRASES } from './data.js';
 import { initCIFTree, getDerivacionesArbol } from './phase4.js';
 import { buildHypothesisCards, teardownHypObserver, restoreHypObserver, esTratada, marcarTratada, casillaTratadaHTML, hipotesis, hipotesisActivas, sincronizarTratadas, etiquetaHipHTML, anatomiaLineaHTML, anatomiaPanelHTML } from './phase4b.js';
 import { writeSession, readSession, clearSession, updateSession } from './lib/session.js';
@@ -16,6 +16,8 @@ import { VERSION_SHA, textoVersion, esVersionNueva } from './lib/version.js';
 import { nombreRegion, regionConLado } from './lib/region.js';
 import { TEXTO_VALORACION_BREVE, textoNotas, textoInformePaciente } from './lib/resumenes.js';
 import { ramaPauta } from './lib/pauta.js';
+import { sintomaVacio, normalizarSintomas, payloadSintomas, lineaP1, lineaSecundario } from './lib/sintomas.js';
+import { pintarSintomas } from './sintomas.js';
 import { tiemposTejidoHTML, infoBarraHTML } from './lib/tejidos.js';
 import { listaCuestionariosHTML, formularioCuestionarioHTML, resultadoCuestionarioHTML, itemCuestionarioHTML, resumenCuestionarios } from './lib/cuestionarios.js';
 import { initAmpliarIA, iaParrafoHTML, ctxCribado, attrIA, DESTINOS_IA, NOTA_CUENTAS, destinoIA, guardarDestinoIA, promptPregunta, urlIA } from './ampliar-ia.js';
@@ -75,6 +77,15 @@ _sessionCh.onmessage = ({ data }) => {
   });
 };
 
+// Orden de las fases, de PHASE_DEFS (una sola fuente): 1 2 3 4 4b 5 6. La 6
+// («Plan de tratamiento») es opcional: la valoración termina en la 5.
+const _FASES = PHASE_DEFS.map(d => d.n);
+const _NAV_IDS = _FASES.map(n => PHASE_NAV_IDS[n]);
+const _idxFase = n => _FASES.findIndex(f => String(f) === String(n));
+// Lo que se anuncia a physiq-report como fase alcanzada: como mucho la 5, que
+// es donde termina la valoración (la 6 es un plan, no parte de ella).
+const _faseAnunciada = () => _FASES[Math.min(state.maxVisitedIdx, _idxFase(5))];
+
 window.addEventListener('popstate', e => {
   // Sheets del razonamiento (fase 2) y de compartir (fase 5), en móvil: el
   // atrás los cierra sin cambiar de fase, y nuestro propio history.back() al
@@ -95,9 +106,8 @@ window.addEventListener('popstate', e => {
   }
   if (!e.state || e.state.phase === undefined) return;
   // Swipe-back nativo: sincronizar _historyDepth con la posición real del stack
-  const _pm = { 1:0, 2:1, 3:2, 4:3, '4b':4, 5:5 };
-  const naturalIdx = _pm[e.state.phase];
-  if (naturalIdx !== undefined) _historyDepth = naturalIdx;
+  const naturalIdx = _idxFase(e.state.phase);
+  if (naturalIdx >= 0) _historyDepth = naturalIdx;
   _handlingPopState = true;
   goToPhase(e.state.phase);
   _handlingPopState = false;
@@ -106,10 +116,8 @@ window.addEventListener('popstate', e => {
 
 // ─── NAVIGATION ──────────────────────────────────────────────
 function navStepClick(n) {
-  const phaseMap = { 1:0, 2:1, 3:2, 4:3, '4b':4, 5:5 };
-  const navIds = ['nav1','nav2','nav3','nav4','nav4b','nav5'];
-  const idx = phaseMap[n];
-  const navEl = document.getElementById(navIds[idx]);
+  const idx = _idxFase(n);
+  const navEl = document.getElementById(_NAV_IDS[idx]);
   if (!navEl) return;
   // Bloqueado si no fue visitado
   if (!navEl.classList.contains('completed') && !navEl.classList.contains('active')) return;
@@ -152,9 +160,7 @@ function showNavTooltip(el, msg) {
 }
 
 function goToPhase(n) {
-  const phases = ['phase1','phase2','phase3','phase4','phase4b','phase5'];
-  const navIds = ['nav1','nav2','nav3','nav4','nav4b','nav5'];
-  const phaseMap = { 1:0, 2:1, 3:2, 4:3, '4b':4, 5:5 };
+  const phases = _FASES.map(f => `phase${f}`);
 
   // El panel del razonamiento es de la fase en la que se abrió (2 o 4b)
   if (String(n) !== String(state.currentPhase)) cerrarRazonamiento({ sinHistorial: true });
@@ -163,8 +169,8 @@ function goToPhase(n) {
   if (state.currentPhase === 1) collectPhase1();
   if (state.currentPhase === 3) collectPhase3();
 
-  const idx = phaseMap[n];
-  const prevIdx = phaseMap[state.currentPhase] ?? 0;
+  const idx = _idxFase(n);
+  const prevIdx = Math.max(0, _idxFase(state.currentPhase));
 
   // Actualizar índice máximo visitado
   if (idx > state.maxVisitedIdx) state.maxVisitedIdx = idx;
@@ -181,7 +187,7 @@ function goToPhase(n) {
   document.getElementById(phases[idx]).classList.add('active');
   if (document.getElementById('versionAviso')) _colocarAvisoVersion();
   state.currentPhase = n;
-  if (n === 3) _pintarEstadioCronologia();
+  if (n === 3) { _pintarEstadioCronologia(); pintarSintomas(); }
   updateMobilePhaseBar(n);
   // Clean up observers when leaving phases
   if (typeof teardownHypObserver === 'function') teardownHypObserver();
@@ -192,9 +198,9 @@ function goToPhase(n) {
   _programarBandas();
 
   // Update progress
-  const pct = [0, 20, 40, 60, 80, 100];
+  const pct = [0, 20, 40, 60, 80, 100, 100];
   document.getElementById('progressBar').style.width = pct[idx] + '%';
-  document.getElementById('phaseIndicator').textContent = `FASE ${n === '4b' ? '4b' : n} / 5`;
+  document.getElementById('phaseIndicator').textContent = n === 6 ? 'FASE 6 · OPCIONAL' : `FASE ${n === '4b' ? '4b' : n} / 5`;
 
   // Phase-specific init
   if (n === 1) renderBrevePendientes();
@@ -207,15 +213,15 @@ function goToPhase(n) {
     }
     // Observer is restored via restoreHypObserver called above
   }
+  if (n === 6) _montarPlan();
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   if (!_handlingPopState) {
-    const _phaseOrder = [1, 2, 3, 4, '4b', 5];
     if (idx > prevIdx) {
       // Push one entry per skipped phase so swipe-back steps through each one
       for (let i = prevIdx + 1; i <= idx; i++) {
-        history.pushState({ phase: _phaseOrder[i] }, '');
+        history.pushState({ phase: _FASES[i] }, '');
       }
       _historyDepth += (idx - prevIdx);
     } else if (idx < prevIdx) {
@@ -231,22 +237,20 @@ function goToPhase(n) {
       }
     }
   }
-  const _phaseLabels = [1, 2, 3, 4, '4b', 5];
-  _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_PARTIAL', phase: _phaseLabels[state.maxVisitedIdx], region: state.region || null });
+  _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_PARTIAL', phase: _faseAnunciada(), region: state.region || null });
   saveSession();
 }
 
 // Pinta el estado de cada paso del nav según maxVisitedIdx y flags de invalidación
 function paintNav(activeIdx) {
-  const navIds = ['nav1','nav2','nav3','nav4','nav4b','nav5'];
   // Índices que quedan invalidados según los flags activos
-  // regionChanged → invalida 4(idx3), 4b(idx4), 5(idx5)
-  // treeModified  → invalida 4b(idx4), 5(idx5)
+  // regionChanged → invalida 4(idx3), 4b(idx4), 5(idx5) y 6(idx6)
+  // treeModified  → invalida 4b(idx4), 5(idx5) y 6(idx6)
   const invalidated = new Set();
-  if (state.regionChanged) { invalidated.add(3); invalidated.add(4); invalidated.add(5); }
-  if (state.treeModified)  { invalidated.add(4); invalidated.add(5); }
+  if (state.regionChanged) { invalidated.add(3); invalidated.add(4); invalidated.add(5); invalidated.add(6); }
+  if (state.treeModified)  { invalidated.add(4); invalidated.add(5); invalidated.add(6); }
 
-  navIds.forEach((navId, i) => {
+  _NAV_IDS.forEach((navId, i) => {
     const el = document.getElementById(navId);
     el.classList.remove('active', 'completed', 'invalidated');
 
@@ -296,6 +300,7 @@ function _softResetApp() {
   state.derivacionResuelta = {};
   state.resultsBuilt = false;
   state.planNotes = { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' };
+  state.planTratamiento = null;
   state.formularioPrevio = { comun: {}, regiones: {} };
   state.cuestionarios = {};
   _cuestActivo = null;
@@ -456,6 +461,20 @@ function _montarInformeIA() {
   _cargarInformeIA()
     .then(m => m.montarInformeIA(document.getElementById('informeIA')))
     .catch(() => {});
+}
+// Fase 6 «Plan de tratamiento» (plan.js): se carga al entrar en la fase. Si no
+// carga, la valoración (fases 1–5) sigue funcionando.
+let _planMod = null;
+function _cargarPlan() {
+  return import('./plan.js').then(m => { _planMod = m; return m; });
+}
+function _montarPlan() {
+  _cargarPlan()
+    .then(m => m.montarPlan(document.getElementById('planContenido')))
+    .catch(() => {
+      const c = document.getElementById('planContenido');
+      if (c) c.innerHTML = '<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>No se ha podido cargar el plan de tratamiento. Recarga la página.</div></div>';
+    });
 }
 function informeFormularioPrevio() {
   return _fpMod ? _fpMod.informeFormularioPrevio() : { historia: [], antecedentes: [] };
@@ -1008,6 +1027,8 @@ function resetPhase3UI() {
   state.irritabilidad = { dolor: 'Baja (≤3/10)', reposo: 'Ausente', movimiento: 'Al final del rango con SP', discapacidad: 'Mínima', tolerancia: 'Alta' };
   state.irritabilidadNivel = null;
   state.irritabilidadDirecta = false;
+  state.sintomaPrincipal = sintomaVacio();
+  state.sintomasSecundarios = [];
 
   // Reset option-btn selections in phase 3
   document.querySelectorAll('#phase3 .option-btn').forEach(b => b.classList.remove('selected'));
@@ -1037,6 +1058,7 @@ function resetPhase3UI() {
 
   // Recalculate irritability display
   calcIrritabilidad();
+  pintarSintomas();
 }
 
 function applyRegionChange(regionId, card) {
@@ -1085,10 +1107,12 @@ function applyRegionChange(regionId, card) {
 function sistemasActivos(regionId = state.region) {
   const data = SYSTEMIC_SCREENING[regionId];
   if (!data) return [];
+  const enRegion = x => typeof x === 'string' || !x.regiones || x.regiones.includes(regionId);
   return data.sistemas
     .filter(sis => !sis.soloPosquirurgico || esPosquirurgico(state.mecanismo))
-    .map(sis => sis.preguntas.some(q => q.regiones)
-      ? { ...sis, preguntas: sis.preguntas.filter(q => !q.regiones || q.regiones.includes(regionId)) }
+    .map(sis => [sis.preguntas, sis.banderasRojas || [], sis.banderasAmarillas || []].some(l => !l.every(enRegion))
+      ? { ...sis, preguntas: sis.preguntas.filter(enRegion),
+          banderasRojas: (sis.banderasRojas || []).filter(enRegion), banderasAmarillas: (sis.banderasAmarillas || []).filter(enRegion) }
       : sis);
 }
 
@@ -1228,13 +1252,13 @@ function buildSistemaHTML(sis) {
     if (hasRed) {
       html += `<div class="flags-box red-box">
         <div class="flags-col-title red">🚩 Banderas Rojas</div>
-        ${sis.banderasRojas.map(f => `<div class="flag-item"><span class="flag-dot-red">●</span>${f}</div>`).join('')}
+        ${sis.banderasRojas.map((f, i) => banderaHTML(sis, f, 'rojas', i)).join('')}
       </div>`;
     }
     if (hasYellow) {
       html += `<div class="flags-box yellow-box">
         <div class="flags-col-title yellow">🟡 Banderas Amarillas</div>
-        ${sis.banderasAmarillas.map(f => `<div class="flag-item"><span class="flag-dot-yellow">●</span>${f}</div>`).join('')}
+        ${sis.banderasAmarillas.map((f, i) => banderaHTML(sis, f, 'amarillas', i)).join('')}
       </div>`;
     }
     html += `</div>`;
@@ -1373,22 +1397,74 @@ function _buscarPregunta(sisId, qId) {
   return q ? { sis, q } : null;
 }
 
+// Secciones del panel para un `razonamiento` del cribado (de una pregunta o de
+// una bandera); `x` lleva el `anatomia` (pregunta) o nada (bandera).
+function razonCribadoPanelHTML(r, x = {}) {
+  const parrafos = r.detalle ? r.detalle.split('\n\n').map(p => `<p>${p}${iaParrafoHTML()}</p>`).join('') : '';
+  return `
+    <div class="razon-seccion"><div class="razon-etq">Por qué</div><p>${r.porque}${iaParrafoHTML()}</p></div>
+    <div class="razon-seccion"><div class="razon-etq">Cuánto pesa</div><p>${r.peso}</p></div>
+    ${razonFisiologiaHTML(r.fisiologia)}
+    ${parrafos ? `<div class="razon-seccion"><div class="razon-etq">En detalle</div>${parrafos}</div>` : ''}
+    ${anatomiaPanelHTML(x)}
+    <div class="razon-seccion razon-fuentes"><div class="razon-etq">Fuentes</div>
+      <ul>${(r.citas || r.fuentes).map(razonCitaHTML).join('')}</ul></div>`;
+}
+
 function abrirRazonamiento(btn, sisId, qId) {
   const hit = _buscarPregunta(sisId, qId);
   const r = hit?.q.razonamiento;
   if (!r || !r.detalle) return;
-  const parrafos = r.detalle.split('\n\n').map(p => `<p>${p}${iaParrafoHTML()}</p>`).join('');
   abrirPanelRazon({
     btn, kicker: '¿Por qué esta pregunta?', titulo: hit.q.text,
     ia: ctxCribado(state.region, hit.q.text),
-    html: `
-    <div class="razon-seccion"><div class="razon-etq">Por qué</div><p>${r.porque}${iaParrafoHTML()}</p></div>
-    <div class="razon-seccion"><div class="razon-etq">Cuánto pesa</div><p>${r.peso}</p></div>
-    ${razonFisiologiaHTML(r.fisiologia)}
-    <div class="razon-seccion"><div class="razon-etq">En detalle</div>${parrafos}</div>
-    ${anatomiaPanelHTML(hit.q)}
-    <div class="razon-seccion razon-fuentes"><div class="razon-etq">Fuentes</div>
-      <ul>${(r.citas || r.fuentes).map(razonCitaHTML).join('')}</ul></div>`,
+    html: razonCribadoPanelHTML(r, hit.q),
+  });
+}
+
+// ─── RAZONAMIENTO DE LAS BANDERAS (fase 2) ───────────────────
+// Una bandera es un texto o { texto, regiones?, pregunta?, fase1?, razonamiento? }
+// (docs/razonamiento-banderas.md). Con `pregunta` (id o lista de ids del mismo
+// sistema), su «¿Por qué?» es el de esa pregunta: no se escribe dos veces. Con
+// `razonamiento` propio (misma forma que el de una pregunta), el suyo. `fase1`
+// (br1–br4) solo pinta una etiqueta: se pregunta en las banderas de la fase 1.
+// Solo se enlaza una pregunta visible en la región (`sis` ya filtrado).
+function textoBandera(f) { return typeof f === 'string' ? f : f.texto; }
+
+function preguntasDeBandera(sis, f) {
+  if (typeof f === 'string' || !f.pregunta) return [];
+  const ids = [].concat(f.pregunta);
+  return sis.preguntas.filter(q => ids.includes(q.id) && q.razonamiento);
+}
+
+function banderaHTML(sis, f, tipo, i) {
+  const dot = tipo === 'rojas' ? 'flag-dot-red' : 'flag-dot-yellow';
+  const conPorque = typeof f !== 'string' && (f.razonamiento || preguntasDeBandera(sis, f).length);
+  const fase1 = typeof f !== 'string' && f.fase1
+    ? ` <span class="flag-fase1" title="También se pregunta en las banderas rojas de la fase 1">· fase 1</span>` : '';
+  const porque = conPorque
+    ? ` <button type="button" class="flag-porque" aria-label="¿Por qué esta bandera?" onclick="abrirRazonBandera(this,'${sis.id}','${tipo}',${i})">ⓘ</button>` : '';
+  return `<div class="flag-item"><span class="${dot}">●</span><span class="flag-texto">${textoBandera(f)}${fase1}${porque}</span></div>`;
+}
+
+// Contenido del panel de una bandera, o null si no tiene «¿Por qué?».
+function razonBanderaHTML(sis, f) {
+  if (typeof f === 'string') return null;
+  if (f.razonamiento) return razonCribadoPanelHTML(f.razonamiento, f);
+  const qs = preguntasDeBandera(sis, f);
+  if (!qs.length) return null;
+  return qs.map(q => `<div class="razon-seccion razon-bandera-pregunta"><div class="razon-etq">Se pregunta así</div><p>${q.text}</p></div>
+    ${razonCribadoPanelHTML(q.razonamiento, q)}`).join('');
+}
+
+function abrirRazonBandera(btn, sisId, tipo, i) {
+  const sis = sistemasActivos().find(s => s.id === sisId);
+  const f = sis?.[tipo === 'rojas' ? 'banderasRojas' : 'banderasAmarillas'][i];
+  const html = f && razonBanderaHTML(sis, f);
+  if (!html) return;
+  abrirPanelRazon({
+    btn, kicker: tipo === 'rojas' ? '¿Por qué esta bandera roja?' : '¿Por qué esta bandera amarilla?',
+    titulo: textoBandera(f), ia: ctxCribado(state.region, textoBandera(f)), html,
   });
 }
 
@@ -1963,6 +2039,8 @@ function calcIrritabilidad() {
 }
 
 function renderIrritabResumen(nivel) {
+  // Sin nivel (p. ej., un secundario sin irritabilidad que pasa a ser P1): nada que resumir
+  if (!nivel) { document.getElementById('irritabilidadResumen').innerHTML = ''; return; }
   const { color, emoji } = { Baja: { color: 'var(--green)', emoji: '🟢' }, Moderada: { color: 'var(--orange)', emoji: '🟠' }, Alta: { color: 'var(--red)', emoji: '🔴' } }[nivel] || { color: 'var(--green)', emoji: '🟢' };
   const div = document.getElementById('irritabilidadResumen');
   div.innerHTML = `<div class="alert alert-info" style="border-color:${color}33; background:${color}11;">
@@ -2121,6 +2199,17 @@ function _pintarLado() {
   _restoreOptionBtnGroup('lado', state.lado);
 }
 
+// Fase 5: P1–P4 de la tarjeta «Síntomas» (solo lo que tiene datos)
+function _sintomasResultadosHTML() {
+  const { z1, ss } = payloadSintomas(state, ZONAS_SINTOMA[state.region] || []);
+  const fila = (et, v) => `<div class="summary-row"><span class="summary-label">${et}</span><span class="summary-value">${_escapeAttr(v)}</span></div>`;
+  return (z1 ? fila(ss.length ? 'Síntoma principal (P1)' : 'Zona del dolor', lineaP1(z1)) : '')
+    + ss.map(s => fila(`P${s.n}`, lineaSecundario(s))).join('');
+}
+function _hayVariosSintomas() {
+  return payloadSintomas(state, ZONAS_SINTOMA[state.region] || []).ss.length > 0;
+}
+
 function buildResults() {
   const container = document.getElementById('resultsContent');
   container.innerHTML = '';
@@ -2184,8 +2273,9 @@ function buildResults() {
   <div class="summary-section">
     <div class="summary-section-title">📊 SINSS — Caracterización del Cuadro</div>
     <div class="summary-row"><span class="summary-label">Región valorada</span><span class="summary-value">${regionConLado(state.region, state.lado)}</span></div>
-    <div class="summary-row"><span class="summary-label">Severidad (EVN)</span><span class="summary-value">${state.severidad != null ? `${state.severidad}/10` : 'No registrada'}</span></div>
-    <div class="summary-row"><span class="summary-label">Irritabilidad</span><span class="summary-value">${state.irritabilidadNivel || '—'}${state.irritabilidadDirecta && state.irritabilidadNivel ? ' (estimada, sin matriz)' : ''}</span></div>
+    ${_sintomasResultadosHTML()}
+    <div class="summary-row"><span class="summary-label">Severidad (EVN)${_hayVariosSintomas() ? ' de P1' : ''}</span><span class="summary-value">${state.severidad != null ? `${state.severidad}/10` : 'No registrada'}</span></div>
+    <div class="summary-row"><span class="summary-label">Irritabilidad${_hayVariosSintomas() ? ' de P1' : ''}</span><span class="summary-value">${state.irritabilidadNivel || '—'}${state.irritabilidadDirecta && state.irritabilidadNivel ? ' (estimada, sin matriz)' : ''}</span></div>
     <div class="summary-row"><span class="summary-label">Naturaleza</span><span class="summary-value">${state.naturaleza || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Estabilidad</span><span class="summary-value">${state.estabilidad || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Signo comparable</span><span class="summary-value">${state.signoComparable || '—'}</span></div>
@@ -2980,6 +3070,7 @@ function buildPhysiQPayload() {
     rp: state.riesgoPsico,
     nr: state.severidad ?? null,   // null = no registrado (nunca un 0 por defecto)
     ir: state.irritabilidadNivel && state.irritabilidadDirecta ? `${state.irritabilidadNivel} (estimada)` : state.irritabilidadNivel,
+    ...payloadSintomas(state, ZONAS_SINTOMA[state.region] || []),   // z1 (zona de P1), ss (P2–P4)
     na: state.naturaleza,
     si: state.sistemicoAlerta,
     br: Object.entries(state.banderasRojas).filter(([, v]) => v === 'SI').map(([k]) => BR_LABELS[k]),
@@ -3058,6 +3149,12 @@ let _compartirHistorial = false;
 async function abrirMenuCompartir() {
   const overlay = document.getElementById('compartirOverlay');
   if (!overlay || overlay.classList.contains('open')) return;
+  // Fase 6: el menú ofrece los documentos del plan (plan.js)
+  if (state.currentPhase === 6) {
+    if (!_planMod) return;
+    document.getElementById('compartirOpciones').innerHTML = _planMod.opcionesCompartir().map(o => _opcionCompartir(o.accion, o.nombre, o.sub)).join('');
+    return _abrirOverlayCompartir('btnCompartirPlan');
+  }
   const conIA = !_enHub() && !!state.informeIA?.texto;
   // Puntos automáticos + «Antes de compartir», y cuántos siguen sin marcar
   let rev = { total: 0, pendientes: 0, altosPendientes: 0 };
@@ -3070,8 +3167,15 @@ async function abrirMenuCompartir() {
     + (conIA ? _opcionCompartir('compartirInformeIA', 'Informe clínico (IA)', detalleIA) : '')
     + _opcionCompartir('compartirNotas', 'Notas clínicas', 'Resumen abreviado para ti, con puntuaciones')
     + (_enHub() ? _opcionCompartir('finalizarValoracion', 'Enviar al informe', 'Deja la valoración lista en physiq-report') : '');
+  _abrirOverlayCompartir('btnCompartir');
+}
+
+let _btnCompartirActivo = 'btnCompartir';
+function _abrirOverlayCompartir(btnId) {
+  const overlay = document.getElementById('compartirOverlay');
+  _btnCompartirActivo = btnId;
   overlay.classList.add('open');
-  document.getElementById('btnCompartir')?.setAttribute('aria-expanded', 'true');
+  document.getElementById(btnId)?.setAttribute('aria-expanded', 'true');
   lockBodyScroll();
   window.parent.postMessage({ type: 'PHYSIQ_WIDGET_HIDE' }, '*');
   if (_esMovil()) {
@@ -3095,7 +3199,7 @@ function cerrarMenuCompartir({ desdeHistorial = false, sinHistorial = false } = 
     _compartirHistorial = false;
     if (!desdeHistorial && !sinHistorial) { _popIgnorar = true; history.back(); }
   }
-  const btn = document.getElementById('btnCompartir');
+  const btn = document.getElementById(_btnCompartirActivo);
   btn?.setAttribute('aria-expanded', 'false');
   if (!sinHistorial) btn?.focus({ preventScroll: true });
 }
@@ -3626,11 +3730,11 @@ function saveSession() {
         if (_sessionGen !== gen) { clearSession(); return; }
         if (session) updateSessionChip(session);
         _sessionCh.postMessage({ type: 'SESSION_PATIENT', patient: state.patient });
-        if (state.currentPhase !== 5) {
+        // En la 5 y en la 6 la valoración ya está completa: no se anuncia como parcial
+        if (state.currentPhase !== 5 && state.currentPhase !== 6) {
           const _hasPhase1Data = state.motivoConsulta || state.edadPaciente !== null || _hasVitalsData() || state.mecanismo || state.cronologia || state.riesgoPsico;
           if (state.maxVisitedIdx > 0 || _hasPhase1Data) {
-            const _phaseLabels = [1, 2, 3, 4, '4b', 5];
-            _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_PARTIAL', phase: _phaseLabels[state.maxVisitedIdx], region: state.region || null });
+            _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_PARTIAL', phase: _faseAnunciada(), region: state.region || null });
           }
         }
         _sessionCh.postMessage({ type: 'SESSION_ASSESSMENT_STATE', assessmentState: { ...state } });
@@ -3646,6 +3750,29 @@ function _restoreOptionBtnGroup(groupId, val) {
     const m = (btn.getAttribute('onclick') || '').match(/,\s*this\s*,\s*'([^']*)'\s*\)/);
     btn.classList.toggle('selected', !!(m && m[1] === val));
   });
+}
+
+// NRS e irritabilidad de P1 desde el estado (restaurar la sesión, o cuando
+// «Hacer principal» de la tarjeta Síntomas cambia P1)
+function repintarP1Fase3() {
+  document.querySelectorAll('.nrs-btn').forEach(btn => {
+    btn.classList.toggle('selected', state.severidad !== null && parseInt(btn.textContent.trim()) === state.severidad);
+  });
+  const nrsLabel = document.getElementById('nrsLabel');
+  if (nrsLabel) nrsLabel.textContent = state.severidad !== null ? `${state.severidad}/10 — ${NRS_LABELS[state.severidad]}` : '— Sin seleccionar —';
+  document.querySelectorAll('.irritab-table .irritab-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/selectIrritab\('(\w+)',\s*this,\s*'([^']*)'\)/);
+    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
+  });
+  document.querySelectorAll('.irritab-card-btns .irritab-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/selectIrritabSync\('(\w+)',\s*this,\s*'([^']*)'\)/);
+    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
+  });
+  document.querySelectorAll('#irritabDirecta .option-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/'(\w+)'\)/);
+    btn.classList.toggle('selected', !!(state.irritabilidadDirecta && m && m[1] === state.irritabilidadNivel));
+  });
+  calcIrritabilidad();
 }
 
 function _restoreSessionDOM() {
@@ -3675,6 +3802,7 @@ function _restoreSessionDOM() {
   // Sesiones anteriores al posquirúrgico: sin cirugia / derivacionResuelta
   state.cirugia = { ...cirugiaVacia(), ...(state.cirugia || {}) };
   if (!state.derivacionResuelta) state.derivacionResuelta = {};
+  normalizarSintomas(state);   // sesiones anteriores a la tarjeta Síntomas
   _pintarCirugiaUI();
   _pintarLado();
 
@@ -3712,26 +3840,8 @@ function _restoreSessionDOM() {
 
   if (state.maxVisitedIdx < 2) return;
 
-  if (state.severidad !== null) {
-    document.querySelectorAll('.nrs-btn').forEach(btn => {
-      btn.classList.toggle('selected', parseInt(btn.textContent.trim()) === state.severidad);
-    });
-    const nrsLabel = document.getElementById('nrsLabel');
-    if (nrsLabel) nrsLabel.textContent = `${state.severidad}/10 — ${NRS_LABELS[state.severidad]}`;
-  }
-  document.querySelectorAll('.irritab-table .irritab-btn').forEach(btn => {
-    const m = (btn.getAttribute('onclick') || '').match(/selectIrritab\('(\w+)',\s*this,\s*'([^']*)'\)/);
-    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
-  });
-  document.querySelectorAll('.irritab-card-btns .irritab-btn').forEach(btn => {
-    const m = (btn.getAttribute('onclick') || '').match(/selectIrritabSync\('(\w+)',\s*this,\s*'([^']*)'\)/);
-    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
-  });
-  document.querySelectorAll('#irritabDirecta .option-btn').forEach(btn => {
-    const m = (btn.getAttribute('onclick') || '').match(/'(\w+)'\)/);
-    btn.classList.toggle('selected', !!(state.irritabilidadDirecta && m && m[1] === state.irritabilidadNivel));
-  });
-  calcIrritabilidad();
+  repintarP1Fase3();
+  pintarSintomas();
   ['naturaleza', 'estabilidad'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
   const signoEl = document.getElementById('signoComparable');
   if (signoEl) signoEl.value = state.signoComparable || '';
@@ -3745,8 +3855,7 @@ function _applyRemoteAssessmentState(as) {
   // Preserve local device's navigation — each device navigates independently
   const localPhase = state.currentPhase;
   const localMaxIdx = state.maxVisitedIdx;
-  const phaseMap = { 1:0, 2:1, 3:2, 4:3, '4b':4, 5:5 };
-  const localIdx = phaseMap[localPhase] ?? 0;
+  const localIdx = Math.max(0, _idxFase(localPhase));
 
   Object.assign(state, as);
   state.currentPhase = localPhase;
@@ -3774,7 +3883,8 @@ function _applyRemoteAssessmentState(as) {
     }
     if (typeof restoreHypObserver === 'function') setTimeout(restoreHypObserver, 50);
   }
-  if (localPhase === 5) buildResults();
+  if (localPhase === 5 || localPhase === 6) buildResults();
+  if (localPhase === 6) _montarPlan();
 
   // Update nav breadcrumbs to reflect combined maxVisitedIdx
   paintNav(localIdx);
@@ -3843,16 +3953,14 @@ document.addEventListener('DOMContentLoaded', () => {
       Object.assign(state, session.assessmentState);
       _restoreSessionDOM();
       const targetPhase = state.currentPhase;
-      if (targetPhase === 5) buildResults();
+      if (targetPhase === 5 || targetPhase === 6) buildResults();
       _handlingPopState = true;
       goToPhase(targetPhase);
       _handlingPopState = false;
       // Rebuild history stack so swipe-back steps through each phase
-      const _phaseOrder = [1, 2, 3, 4, '4b', 5];
-      const _phaseIdx = { 1:0, 2:1, 3:2, 4:3, '4b':4, 5:5 };
-      const targetIdx = _phaseIdx[targetPhase] ?? 0;
+      const targetIdx = Math.max(0, _idxFase(targetPhase));
       history.replaceState({ phase: 1 }, '');
-      for (let i = 1; i <= targetIdx; i++) history.pushState({ phase: _phaseOrder[i] }, '');
+      for (let i = 1; i <= targetIdx; i++) history.pushState({ phase: _FASES[i] }, '');
       _historyDepth = targetIdx;
     } else {
       const patientEl = document.getElementById('patientName');
@@ -3965,11 +4073,9 @@ function _initHubIntegration() {
     }
     if (e.data?.type !== 'PHYSIQ_SAT_VISIBLE') return;
     if (_pendingBackNav) return;
-    const _phaseOrder = [1, 2, 3, 4, '4b', 5];
-    const _phaseIdx = { 1:0, 2:1, 3:2, 4:3, '4b':4, 5:5 };
-    const targetIdx = _phaseIdx[state.currentPhase] ?? 0;
+    const targetIdx = Math.max(0, _idxFase(state.currentPhase));
     history.replaceState({ phase: 1 }, '');
-    for (let i = 1; i <= targetIdx; i++) history.pushState({ phase: _phaseOrder[i] }, '');
+    for (let i = 1; i <= targetIdx; i++) history.pushState({ phase: _FASES[i] }, '');
     _historyDepth = targetIdx;
   });
 }
@@ -3980,16 +4086,16 @@ initAmpliarIA();
 // ─── PUBLIC API ──────────────────────────────────────────────
 // Named exports for phase4.js / phase4b.js (which import these directly) and
 // for tests/unit.js.
-export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, resumenFormularioIA, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
-  buildContextSummaryText, getPendientesBreve, buildSistemaHTML,
+export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, getUrgenciasActivas, getCirugiaPayload, cerrarMenuCompartir, resumenFormularioIA, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
+  buildContextSummaryText, getPendientesBreve, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML,
   precargarFormularioPrevio, nombreRegion, showToast,
-  injectQuickInputBar, lockBodyScroll, unlockBodyScroll, partirPrimeraFrase, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento };
+  injectQuickInputBar, repintarP1Fase3, lockBodyScroll, unlockBodyScroll, partirPrimeraFrase, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento };
 
 // Exposed on window for inline onclick/oninput attributes across index.html
 // and dynamically-generated HTML — those resolve only against the global
 // scope, never a module's private scope.
 Object.assign(window, {
-  abrirFormularioPrevio, abrirRazonamiento, cerrarRazonamiento, irACronologia, appendQuickPhrase, buildResults, closePhaseSheet, closeSessionPanel, compartirNotas,
+  abrirFormularioPrevio, abrirRazonamiento, abrirRazonBandera, cerrarRazonamiento, irACronologia, appendQuickPhrase, buildResults, closePhaseSheet, closeSessionPanel, compartirNotas,
   abrirMenuCompartir, cerrarMenuCompartir, abrirPreguntaIA, cerrarPreguntaIA, abrirTiemposTejido, cerrarTiemposTejido, abrirCuestionarios, cerrarCuestionarios, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
   navStepClick, promptClearSession, resetApp, saveSession, scrollToActiveSisHeader, scrollToFormularioPrevio, selectIrritab,
   selectIrritabSync, selectNRS, selectOption, selectPsico, selectRegion, selectSQ, selectSistQ,
