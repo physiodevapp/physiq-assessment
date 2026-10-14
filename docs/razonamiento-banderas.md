@@ -62,15 +62,18 @@ Se inventarían una vez: lo que se escriba para ellos vale en todas las regiones
 
 | Sistema | C | P | N | Sin pregunta |
 |---|---|---|---|---|
-| transversal_posquirurgico (8) | 6 | 2 | 0 | — (pero ver hallazgos: en lumbar se ocultan 4 de sus preguntas) |
-| transversal_endocrino (10) | 2 (`end_1`, `end_2`) | 2 (`end_3`, `end_5`) | 6 | túnel carpiano bilateral, tormenta tiroidea, hipopotasemia por diuréticos, xantomas *expl.*, nódulos supraclaviculares o fiebre con corticoides, tendinitis calcificante bilateral de hombro |
-| transversal_hematologico (9) | 4 (`hem_1`, `hem_2`, `hem_4` ×2) | 1 (`hem_3`) | 4 | dolor articular en hemofilia, palidez *expl.*, coiloniquia *expl.*, AINE crónicos |
+| transversal_posquirurgico (9) | 9 | 0 | 0 | — (pero ver hallazgos: en lumbar se ocultan 4 de sus preguntas) |
+| transversal_endocrino (10) | 3 (`end_1`, `end_2`, `end_3`) | 1 (`end_5`) | 6 | túnel carpiano bilateral, tormenta tiroidea, hipopotasemia por diuréticos, xantomas *expl.*, nódulos supraclaviculares o fiebre con corticoides, tendinitis calcificante bilateral de hombro |
+| transversal_hematologico (9) | 5 (`hem_1`, `hem_2`, `hem_3` + `hem_5`, `hem_4` ×2) | 0 | 4 | dolor articular en hemofilia, palidez *expl.*, coiloniquia *expl.*, AINE crónicos |
+
+Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posquirúrgico tiene 9 banderas (`pq_nervio_col`). Cuatro «parciales» ya las explica el razonamiento de su pregunta y se enlazan (decisión del usuario): infección necrotizante en las 48–72 h → `pq_herida` (su «cuánto pesa» la describe, Zabaglo); yeso o vendaje que aprieta → `pq_sdrc` y `pq_compart` (este solo se ve en codo, rodilla y tobillo y pie); cambios de pelo, uñas, piel o temperatura → `end_3`; fiebre en la leucopenia → `hem_3` y la nueva `hem_5` (hallazgo 4). La confusión o sudoración en el diabético (parcial con `end_5`) lleva razonamiento propio: `end_5` no cubre la cetoacidosis ni qué hacer en la sesión. Codo no carga el sistema endocrino.
 
 ## Hallazgos fuera del «¿Por qué?»
 
 1. **Embarazo ectópico sin pregunta urgente en lumbar.** Resuelto (decisión del usuario, 2026-10): `l_e8` en lumbar y `ca_u5` en cadera, con `urgencia` y razonamiento de NICE NG126 (1.4.1–1.4.8, releída en la sesión). Están separadas de `l_e3`/`ca_u4` (dolor ligado a la regla), que siguen sin urgencia porque un SÍ por una endometriosis conocida no justifica ir a urgencias. La bandera de lumbar enlaza `l_e8`.
 2. **Banderas posquirúrgicas sin filtrar por región.** Resuelto: llevan `regiones`, igual que sus preguntas, y `sistemasActivos()` filtra preguntas y banderas. En lumbar y cervical ya no salen la compartimental, la nerviosa, la del SDRC ni la del yeso. Para la columna, `pq_nervio_col` (lumbar y cervical, con urgencia) y su bandera, decisión del usuario (2026-10): tras cirugía de columna el déficit nuevo es de raíz o médula (hematoma epidural), no de un nervio periférico.
 3. **AINE crónicos** (l_gi y hematológico): sin pregunta nueva (recomendación aceptada). Cuando se escriba su razonamiento, que explique que dan más peso a las heces negras o a la anemia.
+4. **Sepsis neutropénica sin pregunta urgente** (hematológico, todas las regiones). La bandera roja «fiebre en la leucopenia» solo enlazaba `hem_3`, que no tiene `urgencia`: un SÍ no encendía la alerta roja aunque su razonamiento pedía derivación inmediata (mismo patrón que el ectópico). Resuelto (decisión del usuario, 2026-10): `hem_5`, «¿Está recibiendo tratamiento contra el cáncer (quimioterapia o radioterapia) y se encuentra mal o tiene fiebre?», con `urgencia` y razonamiento de NICE CG151 (leída en la sesión: 1.3.1.1 sospecharla en todo paciente con tratamiento contra el cáncer que se encuentra mal; 1.3.1.2 derivación inmediata; urgencia médica, mortalidad del 2–21 %). `hem_3` sigue sin urgencia: las infecciones de repetición sin ese tratamiento no justifican ir a urgencias. CG151 habla solo del tratamiento contra el cáncer, así que la pregunta no incluye otros inmunosupresores.
 
 ## Diseño (implementado, 2026-10)
 

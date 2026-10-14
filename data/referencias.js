@@ -92,6 +92,10 @@ export const REFERENCIAS = {
     publicacion: 'Guía NICE «Spondyloarthritis in over 16s: diagnosis and management» (2017, actualizada el 2 de junio de 2017)', doi: '', url: 'https://www.nice.org.uk/guidance/ng65', revision: { fecha: '2026-10', resultado: 'Leída en nice.org.uk (2026-10), última actualización 2 de junio de 2017.' },
     nota: 'Leídas en nice.org.uk (2026-10) las recomendaciones 1.1.1–1.1.13 (sospecha y derivación de la espondiloartritis). Razonamiento de las banderas de lumbar (uveítis y psoriasis, historia familiar).'
   },
+  'NICE CG151': {
+    publicacion: 'Guía NICE «Neutropenic sepsis: prevention and management in people with cancer» (19 de septiembre de 2012; revisión de vigilancia de enero de 2020 sin cambios; actualizada en septiembre de 2024)', doi: '', url: 'https://www.nice.org.uk/guidance/cg151', revision: null,
+    nota: 'Leídas en nice.org.uk (2026-10, con curl) la introducción, las recomendaciones completas, «Terms used in this guideline» y «Update information». Razonamiento de la pregunta urgente hem_5 (sepsis neutropénica, sistema hematológico compartido; Fase M).'
+  },
   'NICE NG126': {
     publicacion: 'Guía NICE «Ectopic pregnancy and miscarriage: diagnosis and initial management» (2019, actualizada el 17 de junio de 2026)', doi: '', url: 'https://www.nice.org.uk/guidance/ng126', revision: { fecha: '2026-10', resultado: 'Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian.' },
     nota: 'Leídas las recomendaciones 1.4.1–1.4.7 (síntomas y signos del embarazo ectópico) en nice.org.uk y en el PDF aportado por el usuario (2026-10). Razonamiento del cribado de hombro (h_g1). Releídas las 1.4.1–1.4.8 en nice.org.uk (2026-10) para las preguntas urgentes de ectópico de lumbar (l_e8) y cadera (ca_u5). Las CKS de NICE (cks.nice.org.uk) no son accesibles fuera del Reino Unido.'

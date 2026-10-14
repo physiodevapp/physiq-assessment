@@ -2,6 +2,7 @@
 import { assert, test, HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, DOSIS_DERIVAR, calcLRScore,
    testPuntua, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
    getPendientesBreve, buildSistemaHTML, withState, VALID_REGIONS } from './comun.mjs';
+import { SIS_ENDOCRINO, SIS_HEMATOLOGICO } from '../../data/comun.js';
 
 // ── Urgencias de región (fase 2) ─────────────────────────────────────────────
 console.log('\nurgencias fase 2');
@@ -62,7 +63,7 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
 });
 
 test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra); el dolor ligado a la regla (l_e3) no', () => {
-  const qs = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);
+  const qs = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => s.preguntas);
   assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['l6', 'l_e8']);
   // La bandera roja del ectópico dice «urgencia»: tiene que haber una pregunta que la dispare
   const sis = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_espondilo');
@@ -73,8 +74,19 @@ test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra
   });
 });
 
+test('sistemas compartidos (endocrino, hematológico): solo la sepsis neutropénica (hem_5) es urgencia; las infecciones de repetición (hem_3) no', () => {
+  const qs = [SIS_ENDOCRINO, SIS_HEMATOLOGICO].flatMap(s => s.preguntas);
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['hem_5']);
+  assert.match(qs.find(q => q.id === 'hem_5').urgencia, /sepsis neutropénica.*urgencias hoy/);
+  // La bandera de fiebre en la leucopenia tiene una pregunta que dispara la urgencia
+  const f = SIS_HEMATOLOGICO.banderasRojas.find(b => /leucopenia/.test(b.texto || b));
+  assert.deepEqual(f.pregunta, ['hem_3', 'hem_5']);
+  // y sale en todas las regiones que cargan el sistema hematológico
+  for (const r of VALID_REGIONS) assert.ok(SYSTEMIC_SCREENING[r].sistemas.includes(SIS_HEMATOLOGICO), r);
+});
+
 test('cadera: TVP, torsión testicular, ectópico, fractura de estrés del cuello femoral y artritis séptica son urgencias (y ninguna otra)', () => {
-  const qs = SYSTEMIC_SCREENING.cadera.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
+  const qs = SYSTEMIC_SCREENING.cadera.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_u5', 'ca_v2']);
   // ca_v2 junta TVP y calambres: la urgencia dice que los calambres solos no lo son,
   // y deriva hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8)
@@ -182,7 +194,7 @@ test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y de
 });
 
 test('hombro: urgencias: h_g1 (ectópico) y h_t1 (fractura o luxación); la bisagra reparte congelado, artrosis GH y luxación/fractura', () => {
-  const qs = SYSTEMIC_SCREENING.hombro.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
+  const qs = SYSTEMIC_SCREENING.hombro.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   assert.equal(SYSTEMIC_SCREENING.hombro.urgencia, undefined);
   assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['h_g1', 'h_t1']);
   ['h_t1', 'h_i1', 'h_n1'].forEach(id => assert.ok(qs.find(q => q.id === id), id));

@@ -338,5 +338,5 @@ Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero an
 | Región / sistema | Enlaces (`pregunta`, `fase1`) | Razonamiento propio (rojas) | Amarillas | Revisión usuario | Notas |
 |---|---|---|---|---|---|
 | Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [x] 8 de 8 (Finucane 2020, Downie 2013, NICE NG12 y NG65, Goodman caps. 6 y 10, Belyayeva 2024, Kimyaghalam 2024, Zemaitis 2026) | [x] 2 (Downie, NG65); el resto sin hacer | [x] (2026-10), incluidos percusión costovertebral, Leriche, la masa testicular ampliada y `pq_nervio_col` | |
-| Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 13 preguntas | [ ] | [ ] | [ ] | Una vez para todas las regiones |
+| Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 17 preguntas (2026-10: + necrotizante, yeso, pelo y uñas, fiebre en la leucopenia) | [ ] (pendiente de los PDF: Goodman caps. 5 y 11, StatPearls) | [ ] | [ ] | Una vez para todas las regiones. Nueva pregunta urgente `hem_5` (sepsis neutropénica, NICE CG151; decisión del usuario) |
 | Cadera, cervical, hombro, rodilla, codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |

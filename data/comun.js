@@ -159,7 +159,7 @@ export const SIS_HEMATOLOGICO = {
     { texto: 'Heces negras/alquitranadas indicativas de trombocitopenia o sangrado GI', pregunta: 'hem_4' },
     'Episodios nuevos de dolor muscular o articular en pacientes con hemofilia',
     { texto: 'Hemoptisis (toser sangre) en pacientes con hemofilia', pregunta: 'hem_4' },
-    { texto: 'Fiebre alta, escalofríos y sudores por infecciones en pacientes con leucopenia', pregunta: 'hem_3' }
+    { texto: 'Fiebre alta, escalofríos y sudores por infecciones en pacientes con leucopenia', pregunta: ['hem_3', 'hem_5'] }
   ],
   banderasAmarillas: [
     'Palidez en pliegues palmares, mucosas o lechos ungueales',
@@ -230,6 +230,17 @@ export const SIS_HEMATOLOGICO = {
         citas: [
           'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 217–218 y 221.',
           { texto: 'Rout 2024 — Rout, Reynolds y Zito, «Neutropenia», StatPearls [Internet], NCBI Bookshelf, última actualización 7 de junio de 2024.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK507702/' }
+        ]
+      } },
+    { id: 'hem_5', text: '¿Está recibiendo tratamiento contra el cáncer (quimioterapia o radioterapia) y se encuentra mal o tiene fiebre?', alerta: true, s1: false,
+      urgencia: 'Posible sepsis neutropénica: a urgencias hoy, sin demora, o al teléfono de 24 horas de su servicio de oncología.',
+      razonamiento: {
+        porque: 'Los tratamientos contra el cáncer, sobre todo la quimioterapia y también la radioterapia, pueden frenar la capacidad de la médula ósea para responder a una infección: bajan los neutrófilos y una infección puede acabar en una sepsis. Como la quimioterapia suele darse de forma ambulatoria, la mayoría de los episodios empiezan fuera del hospital.',
+        peso: 'Es una urgencia médica: la sepsis neutropénica puede ser mortal (entre el 2 % y el 21 % de los adultos en los estudios que recoge NICE). NICE pide sospecharla en todo paciente con tratamiento contra el cáncer que se encuentra mal, no solo cuando tiene fiebre, y derivarlo de inmediato al hospital, donde el antibiótico se empieza enseguida, antes de conocer la causa.',
+        detalle: 'Cómo se confirma (NICE): neutrófilos de 0,5 × 10⁹/L o menos, con fiebre de más de 38 °C u otros signos o síntomas de sepsis. El recuento se hace en el hospital, así que en la consulta no se puede descartar: ante la sospecha, se deriva.\n\nNICE pide que quien recibe tratamiento contra el cáncer sepa, por escrito y de palabra, cómo y cuándo llamar al teléfono de 24 horas de oncología y cuándo ir a urgencias: con un SÍ, preguntar si tiene ese teléfono.\n\nLa guía habla solo de los tratamientos contra el cáncer (quimioterapia y radioterapia, entre otros). Las infecciones de repetición o la fiebre baja sin este tratamiento se preguntan aparte, sin urgencia.',
+        fuentes: ['NICE CG151'],
+        citas: [
+          { texto: 'NICE CG151 — NICE, «Neutropenic sepsis: prevention and management in people with cancer» (2012, actualizada en septiembre de 2024), introducción, recomendaciones 1.1.1.1, 1.3.1.1–1.3.1.2, 1.4.1.1 y 1.4.4.1, y «Terms used in this guideline».', url: 'https://www.nice.org.uk/guidance/cg151' }
         ]
       } },
     { id: 'hem_4', text: '¿Ha notado heces negras/alquitranadas, sangre en orina, o ha tosido o vomitado sangre?', alerta: true, s1: false,
