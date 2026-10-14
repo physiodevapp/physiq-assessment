@@ -35,7 +35,7 @@ El eje no es lineal: tiene las 8 columnas del wiki (de 1–3 días a 2 años), t
 
 ## Pendiente
 
-- **Fuente del wiki sin verificar** (`'Snyder-Mackler 2012'` en `data/referencias.js`). Es probablemente el cap. 3, «Developing Treatment Pathways», de Andrews, Harrelson y Wilk, *Physical Rehabilitation of the Injured Athlete*, 4.ª ed. (Elsevier, 2012). Coinciden el título y el año, pero no está confirmado que el capítulo sea de Snyder-Mackler. El usuario no tiene el libro (2026-10), así que las filas que la citan siguen siendo las del wiki sin verificar.
+- **Fuente del wiki sin verificar** (`'Snyder-Mackler 2012'` en `data/referencias.js`). Es probablemente el cap. 3, «Developing Treatment Pathways», de Andrews, Harrelson y Wilk, *Physical Rehabilitation of the Injured Athlete*, 4.ª ed. (Elsevier, 2012). Coinciden el título y el año, pero no está confirmado que el capítulo sea de Snyder-Mackler. El usuario no tiene el libro (2026-10), así que las filas que la citan siguen siendo las del wiki sin verificar. **Resuelto (2026-10):** esas cifras ya no se pintan; ver «Fuera las cifras genéricas de la tabla del wiki», al final.
 - **Fila nueva sin fuente**: va con `pendiente: true` hasta tener una fuente leída. Al añadirla: clave en el registro, en `fuentes` de la fila, quitar `pendiente` y ejecutar `node tests/gen-referencias.mjs`. Hoy ninguna fila está pendiente.
 - **Revisar las gravedades.** El color de la fractura (moderada) y el del tendón vienen de la intensidad que usaba el wiki, que no tenía leyenda.
 - **Ampliación** (opción descartada para la primera versión): cartílago y menisco (zona vascular y avascular), fractura de estrés, nervio periférico, y la ligamentización del injerto de LCA más allá del año.
@@ -254,3 +254,20 @@ La franja «Fases de reparación» llevaba el nombre de cada fase dentro de su t
 - `node tests/unit.js`, tema «tiempos de tejido»: integridad de los datos, rangos del wiki fijados, `posicionDia`/`marcaHoy`, HTML (barras, «pendiente de fuente», línea «Hoy») y que no llegue a resúmenes ni informes.
 - `node tests/smoke.mjs`, «⏱ Tiempos de recuperación»: diálogo en escritorio, «Hoy» a las 6 semanas por la UI real, Escape y velo, hoja inferior en móvil con atrás, cabecera y panel a 320 px, botón visible en el hub.
 - La fuente cuenta en `docs/referencias.md` como uso «tiempos de tejido» (región «Todas (tiempos de tejido)»).
+
+## Tarjeta al tocar una barra (2026-10)
+
+Para saber qué significa una barra había que bajar hasta la leyenda, al final del panel, y volver. Con más de 80 barras y seis rellenos era mucho ir y venir. Ahora cada barra es un botón (decisión del usuario): al tocarlo se abre a su lado una tarjeta con su nombre (y el de su fila madre si es un subtipo), su **gravedad**, qué **mide** (con la muestra en el color de la barra) y su **plazo** (`infoBarraHTML()`, `lib/tejidos.js`; `_alternarInfoBarra()`, `app.js`). Se abre debajo de la barra, o encima si no cabe, siempre a 16 px de los bordes. La cierran: tocar la misma barra, tocar fuera, Escape (sin cerrar el panel), cambiar el filtro, cerrar el panel o desplazarlo más de 24 px. Si el desplazamiento es menor, se recoloca: así el último evento de una inercia no la cierra justo al abrirla. La zona de toque mide 34 px de alto aunque la barra mida 14. La leyenda del final no cambia (es la que sale al imprimir; la tarjeta no se imprime). Las barras han perdido el `title`, porque el tooltip del navegador se ponía encima de la tarjeta. Copiado en physiq-wiki (`abrirInfoBarra()`): allí la tarjeta añade el nombre entero y la nota de la fila, porque la tabla de móvil solo muestra el nombre corto.
+
+## Fuera las cifras genéricas de la tabla del wiki (2026-10)
+
+Las 10 filas con el relleno «Sin especificar en la fuente» venían de la tabla original del wiki, que cita Snyder-Mackler 2012 («Developing Treatment Pathways», probablemente el cap. 3 de Andrews, Harrelson y Wilk 2012). El usuario no tiene acceso al libro, y la búsqueda de una alternativa (2026-10) mostró que para varias filas no hay un plazo general fiable: la escala I–III de las roturas musculares no predice bien la vuelta al deporte, y en esguinces y fracturas el plazo depende de la articulación o del hueso. Además, el relleno «sin especificar» daba a entender que se había leído la fuente. *Orthopaedic Rehabilitation of the Athlete* (Reider, Davies y Provencher, 2015), que propuso el usuario, está organizado por lesión y región y no tiene un capítulo general de tiempos por tejido.
+
+Decisión del usuario:
+
+- **Sin barra** en las filas madre con subtipos (tendinopatía, esguince I–III, injerto, fractura): se quedan con su nombre y una nota «Sin barra general: …» (por qué no hay plazo general; ver los subtipos), que son los que llevan barra y fuente. En el esquema, una fila sin `desde`, `hasta` ni `mide` (`tieneBarra()`, `lib/tejidos.js`); no se puede tocar ni lleva línea «Hoy».
+- **Fuera** las roturas musculares genéricas de grado I–III, que no tenían subtipos; la nota del grupo «Músculo» lo explica y remite a las filas de cada músculo (isquiotibiales BAMIC, gemelo, recto femoral, aductores).
+- **DOMS** con fuente leída: Wilke y Behringer 2021 (revisión narrativa en acceso libre, PMC8431437): síntomas horas después de un ejercicio intenso o no habitual, sobre todo excéntrico, máximos a los 1–3 días y que pueden durar varios días. Barra de «1–3 d» a «4–14 d» con relleno de evolución natural. El artículo que se había propuesto antes (PubMed 25597217) resultó ser un caso clínico de radiología y se descartó.
+- Sin barras que lo usen, desaparece la medida `sinEspecificar` (relleno `tenue`) de la leyenda, y `'Snyder-Mackler 2012'` del registro.
+
+Copiado en physiq-wiki (`TISSUE_TIMES`).

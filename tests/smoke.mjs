@@ -1199,7 +1199,7 @@ async function checkTiemposTejido(browser, errors) {
   const r = {};
   const { TIEMPOS_TEJIDO } = await import(new URL('../data/tejidos.js', import.meta.url));
   // barras: una por fila y por subtipo (plegados, pero en el DOM)
-  const barrasDe = filas => filas.reduce((n, f) => n + 1 + (f.subtipos?.length || 0), 0);
+  const barrasDe = filas => filas.reduce((n, f) => n + (Number.isInteger(f.desde) ? 1 : 0) + (f.subtipos?.length || 0), 0);
   const nFilas = TIEMPOS_TEJIDO.grupos.reduce((n, g) => n + barrasDe(g.filas), 0);
   const nFases = TIEMPOS_TEJIDO.fases.length;
   const nLig = barrasDe(TIEMPOS_TEJIDO.grupos.find(g => g.id === 'ligamento').filas);
@@ -1279,6 +1279,26 @@ async function checkTiemposTejido(browser, errors) {
     const filasSub = [...d.querySelectorAll('.tej-subfila')];
     return ocultas && filasSub.length === nSub && filasSub.every(x => x.checkVisibility() && x.querySelector('.tej-barra').getBoundingClientRect().width > 0);
   }, nSubG3);
+  // Tarjeta de una barra: tocarla dice su gravedad, qué mide y su plazo junto a ella;
+  // la misma barra la cierra, Escape la cierra sin cerrar el panel, desplazar también
+  const info = () => page.evaluate(() => { const i = document.getElementById('tejInfo'); return i && !i.hidden ? i.textContent : ''; });
+  const barraSel = '#tejidosCuerpo .tej-barra[data-barra="menisco_sutura"]';
+  await page.click(barraSel);
+  const tInfo = await info();
+  r.infoBarra = /Gravedad/.test(tInfo) && tInfo.includes(TIEMPOS_TEJIDO.medidas.deporte.etiqueta) && /Plazo/.test(tInfo)
+    && await page.evaluate(s => {
+      const b = document.querySelector(s).getBoundingClientRect(), i = document.getElementById('tejInfo').getBoundingClientRect();
+      return document.querySelector(s).getAttribute('aria-expanded') === 'true' && Math.abs(i.top - b.bottom) < 20;
+    }, barraSel);
+  await page.click(barraSel);
+  r.infoBarra = r.infoBarra && !(await info());
+  await page.click(barraSel);
+  await page.keyboard.press('Escape');
+  r.infoBarra = r.infoBarra && !(await info()) && await abierto()
+    && await page.evaluate(s => document.activeElement === document.querySelector(s), barraSel);
+  await page.click(barraSel);
+  await page.evaluate(() => { document.getElementById('tejidosCuerpo').scrollTop -= 200; });
+  await page.waitForFunction(() => document.getElementById('tejInfo').hidden);
   await page.mouse.click(10, 10);   // velo
   r.velo = !(await abierto());
   r.sinPayload = await page.evaluate(async () => !/tejid|Remodelaci/i.test(JSON.stringify((await import('./app.js')).buildPhysiQPayload())));
@@ -1319,6 +1339,19 @@ async function checkTiemposTejido(browser, errors) {
       && new Set([...document.querySelectorAll('.tej-filtro-btn')].map(b => Math.round(b.getBoundingClientRect().top))).size === 1
       && [...document.querySelectorAll('.tej-fase-ley')].every(c => { const b = c.getBoundingClientRect(); return b.left >= panel.left && b.right <= panel.right + 1; });
   });
+  // Tarjeta de una barra en táctil a 320 px: dentro de la pantalla con 16 px de margen;
+  // tocar fuera (texto del panel) la cierra y el panel sigue abierto
+  await movil.evaluate(() => document.querySelector('#tejidosCuerpo .tej-barra[data-barra="nervio_neurapraxia"]').scrollIntoView({ block: 'center' }));
+  await movil.tap('#tejidosCuerpo .tej-barra[data-barra="nervio_neurapraxia"]');
+  r.infoBarra320 = await movil.evaluate(() => {
+    const i = document.getElementById('tejInfo');
+    if (!i || i.hidden) return false;
+    const b = i.getBoundingClientRect();
+    return b.left >= 15 && b.right <= innerWidth - 15 && b.top >= 0 && b.bottom <= innerHeight && document.documentElement.scrollWidth <= innerWidth;
+  });
+  await movil.tap('#tejidosTitulo');
+  r.infoBarra320 = r.infoBarra320 && await movil.evaluate(() => document.getElementById('tejInfo').hidden
+    && document.getElementById('tejidosOverlay').classList.contains('open'));
   await ctxMovil.close();
 
   // Hub: el botón sí está (consulta pura, sin red)
@@ -2466,6 +2499,12 @@ async function checkBandaFormulario(page) {
     await irA(pos.dentro);
     const dentro = await bandas();
     const contSummary = await page.textContent('#fpCont_comun');
+    // Responder sin hacer scroll: el contador de la banda se actualiza igual
+    // (el.click() no desplaza la página, a diferencia de page.click)
+    await page.evaluate(() => [...document.querySelectorAll('#fpBody_comun button')]
+      .find(b => { const r = b.getBoundingClientRect(); return r.top > 200 && r.bottom < innerHeight; })?.click());
+    const respondido = await bandas();
+    const contRespondido = await page.textContent('#fpCont_comun');
     await irA(pos.fuera);
     const fuera = await bandas();
     await irA(pos.dentro);
@@ -2485,6 +2524,15 @@ async function checkBandaFormulario(page) {
     await irAFase2(page, 'lumbar');
     await page.click('#fpDet_region > summary');
     await page.waitForSelector('#fpBody_region .fp-text, #fpBody_region button');
+    // Cada fila contestada de una matriz cuenta como una respuesta (lumbar «¿Qué le empeora?»)
+    const matriz = await page.evaluate(async () => {
+      const cont = () => document.getElementById('fpCont_region').textContent;
+      const fila = i => document.querySelector(`[onclick^="fpMatriz('lumbar','empeora',${i},"]`);
+      const antes = cont();
+      fila(0)?.click(); fila(1)?.click();
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+      return { antes, despues: cont(), banda: document.getElementById('fpBannerCont').textContent };
+    });
     await page.evaluate(() => [...document.querySelectorAll('#sistemicoQuestions .sistema-accordion-header')]
       .find(h => h.offsetParent)?.click());
     await page.waitForTimeout(100);
@@ -2514,9 +2562,11 @@ async function checkBandaFormulario(page) {
     const enF2 = await bandas();
     await page.evaluate(() => goToPhase(1));
     const trasFase = await bandas();
-    res[k] = { antes, dentro, contSummary, fuera, trasVolver, cerrado, trasSistema, dos, vioFp, vioSis, nombreRegion, enF2, trasFase };
+    res[k] = { antes, dentro, contSummary, respondido, contRespondido, matriz, fuera, trasVolver, cerrado, trasSistema, dos, vioFp, vioSis, nombreRegion, enF2, trasFase };
     res[`${k}_ok`] = !antes.fp && dentro.fp && /General/.test(dentro.nombre) && dentro.cont === contSummary
+      && respondido.fp && contRespondido !== contSummary && respondido.cont === contRespondido
       && !fuera.fp && res[`${k}_volver`] && !trasVolver.fp && !cerrado.fp
+      && matriz.antes === 'Sin rellenar' && matriz.despues === '2 respuestas'
       && !trasSistema.sis && !dos && vioFp && (vioSis || ancho > 768) && /Lumbar/.test(nombreRegion) && enF2.fp && !trasFase.fp && !trasFase.sis;
   }
   // 320 px: la banda cabe en una línea, sin desbordar
@@ -2639,7 +2689,7 @@ const SECCIONES = [
 
   { id: 'banda-formulario', titulo: 'Bandas de contexto del formulario previo y del cribado:', run: async ({ page }) => {
     const r = await checkBandaFormulario(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} formulario previo (fases 1 y 2, 390 y 1280 px): la banda aparece con la cabecera fuera, con nombre y contador, se va al pasar el formulario, al cerrarlo y al cambiar de fase; «↑ volver» lleva a la cabecera; formulario regional y sistema abierto nunca a la vez, y la del sistema se va al dejarlo atrás; cabe a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} formulario previo (fases 1 y 2, 390 y 1280 px): la banda aparece con la cabecera fuera, con nombre y contador (que se actualiza al responder sin hacer scroll, y cuenta cada fila de una matriz), se va al pasar el formulario, al cerrarlo y al cambiar de fase; «↑ volver» lleva a la cabecera; formulario regional y sistema abierto nunca a la vez, y la del sistema se va al dejarlo atrás; cabe a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
