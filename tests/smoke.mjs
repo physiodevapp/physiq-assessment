@@ -57,7 +57,7 @@ try {
 
 const BASE_URL = process.argv.slice(2).find(a => !a.startsWith('--') && /^https?:/.test(a)) || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
-const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'ampliar-ia.js', 'lib/session.js', 'lib/posquirurgico.js',
+const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'ampliar-ia.js', 'lib/sintomas.js', 'sintomas.js', 'lib/session.js', 'lib/posquirurgico.js',
   'data/comun.js', 'data/anatomia.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
@@ -2836,6 +2836,99 @@ async function porRegiones(ctx, walk) {
   return res;
 }
 
+// Tarjeta «Síntomas» de la fase 3 (docs/sintomas-multiples.md), lumbar: P1 con
+// zonas, hasta P4 y no más, quitar con confirmación, «Hacer principal»
+// intercambia NRS e irritabilidad, se restaura al recargar, sale en la fase 5,
+// cabe a 320 px; en una región sin zonas (hombro) no se pinta.
+async function checkSintomas(page) {
+  const r = {};
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page.evaluate(() => { document.getElementById('patientName').value = 'Prueba síntomas'; });
+  await irAFase2(page, 'lumbar');
+  await page.click('#btnContinuarSinss');
+  await page.waitForSelector('#cardSintomas:not([hidden]) #sintItem_0');
+  await page.click('#sintItem_0 .sint-zona:has-text("Zona lumbar")');
+  await page.click('#sintItem_0 .sint-zona:has-text("Glúteo")');
+  await page.click('#phase3 .nrs-btn >> nth=7');
+  for (let n = 0; n < 3; n++) await page.click('.sint-anadir');
+  r.sinCuarto = await page.locator('.sint-anadir').count() === 0;
+  await page.click('#sintItem_1 .sint-zona:has-text("Pierna por debajo")');
+  await page.click('#sintItem_1 .sint-nrs-btn >> nth=3');
+  await page.click('#sintItem_1 .option-btn:has-text("Moderada")');
+  await page.click('#sintItem_1 .option-btn:has-text("Si P1 empeora")');
+  await page.click('#sintItem_2 .sint-otra');
+  await page.fill('#sintZonaLibre_2', 'Rodilla');
+  await page.dispatchEvent('#sintZonaLibre_2', 'change');
+  r.otraSinRelacion = await page.locator('#sintItem_2 .sint-relacion').count() === 0;
+  // P4 vacío se quita sin preguntar; P3 con datos pide confirmación
+  await page.click('#sintItem_3 .sint-quitar');
+  r.quitarVacio = await page.evaluate(() => state.sintomasSecundarios.length === 2 && !document.querySelector('.confirm-box'));
+  r.cabe = await page.evaluate(() => {
+    const c = document.getElementById('cardSintomas').getBoundingClientRect();
+    // Los chips de la descripción van en su fila con desplazamiento lateral (.chip-row), como en el resto de la app
+    const dentro = [...document.querySelectorAll('#cardSintomas button:not(.chip-btn), #cardSintomas input')].every(e => {
+      const b = e.getBoundingClientRect(); return b.width === 0 || (b.left >= c.left - 1 && b.right <= c.right + 1);
+    });
+    const unaLinea = [...document.querySelectorAll('#cardSintomas .sint-grupo .option-btn')].every(b => b.scrollWidth <= b.clientWidth + 1);
+    return dentro && unaLinea && document.documentElement.scrollWidth <= innerWidth;
+  });
+  // Restaurar: recarga con nombre de paciente (la sesión se guarda en IDB)
+  await page.evaluate(() => saveSession());
+  await page.waitForTimeout(300);
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForFunction(() => state.maxVisitedIdx >= 2);
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForSelector('#sintItem_2');
+  r.restaurado = await page.evaluate(() => state.sintomaPrincipal.zonas.join() === 'lumbar,gluteo'
+    && state.sintomasSecundarios[0].nrs === 3 && state.sintomasSecundarios[1].otraRegion
+    && document.querySelector('#sintItem_0 .sint-zona.selected')?.textContent === 'Zona lumbar');
+  // Hacer principal P2: su NRS e irritabilidad pasan a las tarjetas de P1
+  await page.click('#sintItem_1 .sint-accion:has-text("Hacer principal")');
+  await page.click('.confirm-box-btns button:has-text("Cambiar")');
+  r.cambio = await page.evaluate(() => state.sintomaPrincipal.zonas.join() === 'pierna' && state.severidad === 3
+    && state.irritabilidadNivel === 'Moderada' && state.sintomasSecundarios[0].nrs === 7
+    && state.sintomasSecundarios.every(s => !s.relacion)
+    && document.querySelector('#phase3 .nrs-btn.selected')?.textContent.trim() === '3');
+  // P3 (otra región) con datos: quitar pide confirmación; se cancela
+  await page.click('#sintItem_2 .sint-quitar');
+  await page.waitForSelector('.confirm-box-btns');
+  await page.keyboard.press('Escape');
+  r.quitarCancelado = await page.evaluate(() => state.sintomasSecundarios.length === 2);
+  // Fase 5
+  await page.evaluate(() => { goToPhase(4); });
+  await page.evaluate(() => { state.maxVisitedIdx = 5; buildResults(); goToPhase(5); });
+  await page.waitForSelector('#resultsContent .summary-section');
+  r.fase5 = await page.evaluate(() => {
+    const t = document.getElementById('resultsContent').textContent;
+    return t.includes('Síntoma principal (P1)') && t.includes('Pierna por debajo de la rodilla') && t.includes('P3') && t.includes('otra región, no valorada hoy');
+  });
+  // Cervical (paso 2): sus 7 zonas y «Central» en el lado; el cambio de región borra los síntomas
+  await page.evaluate(() => goToPhase(2));
+  await page.click(`[onclick="selectRegion('cervical', this)"]`);
+  const confirmarCambio = await page.waitForSelector('.confirm-box-btns button:has-text("Cambiar región")', { timeout: 3000 }).catch(() => null);
+  if (confirmarCambio) await confirmarCambio.click();
+  await page.click('#btnContinuarSinss');
+  await page.waitForSelector('#cardSintomas:not([hidden]) #sintItem_0');
+  r.cervical = await page.evaluate(() => {
+    const zonas = [...document.querySelectorAll('#sintItem_0 .sint-zona')].map(b => b.textContent);
+    return zonas.length === 7 && zonas[0] === 'Cuello' && zonas.includes('Antebrazo y mano')
+      && !!document.querySelector('#sintItem_0 .lado-central') && state.sintomasSecundarios.length === 0
+      && state.sintomaPrincipal.zonas.length === 0;
+  });
+  // Otra región sin zonas: la tarjeta no se pinta
+  await page.evaluate(() => goToPhase(2));
+  await page.click(`[onclick="selectRegion('hombro', this)"]`);
+  await page.waitForTimeout(150);
+  const banner = await page.$('.confirm-box-btns button:has-text("Cambiar región")');
+  if (banner) await banner.click();
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(200);
+  r.hombroSinTarjeta = await page.evaluate(() => document.getElementById('cardSintomas').hidden && state.sintomasSecundarios.length === 0);
+  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.fase5 && r.cervical && r.hombroSinTarjeta;
+  return r;
+}
+
 // Cada sección devuelve true si pasa; imprime su propio detalle.
 // `id` es lo que se pasa a --solo.
 const SECCIONES = [
@@ -2989,6 +3082,15 @@ const SECCIONES = [
     const r = await checkFase5Plegado(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
+  } },
+
+  { id: 'sintomas', titulo: 'Síntomas P1–P4 (fase 3, lumbar y cervical):', run: async ({ browser, errors }) => {
+    const page = await nuevaPagina(browser, errors);
+    try {
+      const r = await checkSintomas(page);
+      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; fase 5 con P1–P3; cervical con sus 7 zonas y «Central», sin los síntomas de lumbar; hombro sin tarjeta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      return r.ok;
+    } finally { await page.context().close(); }
   } },
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
