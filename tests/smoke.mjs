@@ -2713,7 +2713,12 @@ async function checkFase6Cervical(browser, errors) {
   r.casaCe3 = t2.trimEnd().endsWith(`${D.TEXTOS_CASA.alarmaMedula.texto}\n\n${D.TEXTOS_CASA.alarmaArterial.texto}`);
   await page.evaluate(() => { if (!state.activeHypotheses.includes('ce12')) state.activeHypotheses.push('ce12'); state.planTratamiento.hipotesis = ['ce12']; goToPhase(5); goToPhase(6); });
   await page.waitForSelector('#planContenido .card');
-  r.ce12 = (await page.textContent('#planContenido')).includes(D.AVISOS.sinTerapiaManualAguda);
+  r.ce12 = (await page.textContent('#planContenido')).includes(D.AVISOS.sinTerapiaManualAguda)
+    && (await page.textContent('#planContenido')).includes(D.FRECUENCIA_PAUTA.ce12.nota);
+  await page.evaluate(() => { if (!state.activeHypotheses.includes('ce13')) state.activeHypotheses.push('ce13'); state.planTratamiento.hipotesis = ['ce13']; goToPhase(5); goToPhase(6); });
+  await page.waitForSelector('#planContenido .card');
+  const t13 = await page.textContent('#planContenido');
+  r.ce13 = t13.includes(D.TEXTOS_SESION.cantidadReid) && !t13.includes(D.TEXTOS_SESION.cantidad) && t13.includes(D.AVISOS.vertigo);
   await context.close();
   r.ok = Object.values(r).every(v => v === true);
   return r;
@@ -3046,7 +3051,7 @@ const SECCIONES = [
 
   { id: 'fase6-cervical', titulo: 'Fase 6: plan de tratamiento en cervical (L3):', run: async ({ browser, errors }) => {
     const r = await checkFase6Cervical(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} cervical por la interfaz real hasta la 6: plan con sus tarjetas; el programa para casa termina con la red de seguridad arterial y nunca con la de cola de caballo; con ce3, exploración neurológica, aviso de manipulación y red de la médula antes de la arterial; con ce12, aviso de la pauta aguda sin terapia manual${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} cervical por la interfaz real hasta la 6: plan con sus tarjetas; el programa para casa termina con la red de seguridad arterial y nunca con la de cola de caballo; con ce3, exploración neurológica, aviso de manipulación y red de la médula antes de la arterial; con ce12, aviso de la pauta aguda sin terapia manual y nota de 2 sesiones/semana; con ce13, el volumen de su pauta en vez del genérico y el aviso de mareo${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

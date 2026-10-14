@@ -100,6 +100,8 @@ export const TEXTOS_SESION = {
   educacionPrimera: 'Avisar de un posible aumento temporal de los síntomas tras esta primera sesión (Maitland 2005, cap. 9, p. 219).',
   primeraSesion: 'Primera sesión: menos tratamiento que en las siguientes, porque el primer estiramiento provoca más reacción (Maitland 2005, cap. 9, p. 219).',
   cantidad: 'Evaluar antes, durante y después de cada técnica; unas 3–4 movilizaciones de unos 30 s por articulación, la mitad si duele mucho (Maitland 2005, cap. 9, pp. 213, 216 y 219).',
+  // Pautas con volumen propio (VOLUMEN_PAUTA): mandan sobre la cantidad genérica.
+  cantidadReid: 'Mareo cervicogénico: el volumen es el de su pauta, que manda sobre la cantidad genérica: SNAG de Mulligan, 6 repeticiones (sin síntomas en la primera sesión); o movilización de Maitland de hasta 3 niveles cervicales altos, normalmente 3 aplicaciones de 30 s por nivel (Reid 2014).',
   domiciliario: 'Enseñar y comprobar lo que hará en casa.',
   cierre: 'Reevaluar el signo comparable y explicar qué vigilar hasta la próxima sesión (Maitland 2005, cap. 9, p. 213 y tabla 9.3, «Después»).',
   cierreNeuro: 'Red de seguridad: explicar qué síntomas exigen ir a urgencias (adormecimiento entre las piernas o alrededor del ano, cambios al orinar o al hacer de vientre) y comprobar que lo ha entendido (Finucane 2020, sección 2, pp. 9–17).',
@@ -128,6 +130,19 @@ export const PLANES_MES = {
     notas: [
       'Con movilización neural vigorosa, dejar al menos 2–3 días entre sesiones y reevaluar a las 24 h (Maitland 2005, cap. 6, p. 149).',
     ],
+  },
+};
+
+// Hipótesis cuya pauta trae su propio volumen de terapia manual, por id: clave
+// de TEXTOS_SESION que sustituye a la cantidad genérica (decisión 40).
+export const VOLUMEN_PAUTA = { ce13: 'cantidadReid' };
+
+// Hipótesis cuya pauta fija la frecuencia, por id (decisión 41): plan del mes
+// que se propone por defecto y nota que lo explica.
+export const FRECUENCIA_PAUTA = {
+  ce12: {
+    plan: 'B',
+    nota: 'Dolor radicular cervical agudo: su pauta fija 2 sesiones por semana durante 6 semanas (12 sesiones), así que encaja con el plan B; con el plan A, el mes queda por debajo de esa pauta (Kuijper 2009).',
   },
 };
 
@@ -227,4 +242,4 @@ export const HOJA_REGISTRO = [
 ];
 
 // Fuentes de la fase (claves de data/referencias.js), para docs/referencias.md.
-export const FUENTES_PLAN = ['Petersen 2021', 'Maitland 2005', 'Barakatt 2009', 'Zusman 1998', 'Finucane 2020', 'Margetis y Donnally 2025', 'Rushton 2023', 'Kuijper 2009', 'Blanpied 2017'];
+export const FUENTES_PLAN = ['Petersen 2021', 'Maitland 2005', 'Barakatt 2009', 'Zusman 1998', 'Finucane 2020', 'Margetis y Donnally 2025', 'Rushton 2023', 'Kuijper 2009', 'Blanpied 2017', 'Reid 2014'];

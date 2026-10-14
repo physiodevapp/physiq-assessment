@@ -6,7 +6,7 @@ import { state } from './state.js';
 import { DOSIS_DERIVAR } from './data.js';
 import { REGIONES_PLAN, ESCALONES, AVISOS, MINUTOS_SESION } from './data/plan-tratamiento.js';
 import {
-  construirPlan, elegible, hipotesisPorDefecto, textoPlanSesion, textoPlanMes, textoDomiciliario, faltaEnCasa, textoPosq,
+  construirPlan, elegible, hipotesisPorDefecto, frecuenciaPorDefecto, textoPlanSesion, textoPlanMes, textoDomiciliario, faltaEnCasa, textoPosq,
   NIVELES_GRAVEDAD, NIVELES_IRRITABILIDAD, NOMBRE_GRAVEDAD, NOMBRE_IRRITABILIDAD,
 } from './lib/plan-tratamiento.js';
 import { hipotesis, hipotesisActivas, esTratada } from './phase4b.js';
@@ -26,7 +26,7 @@ let _contenedor = null;
 function planVacio(idDefecto) {
   return {
     hipotesis: idDefecto ? [idDefecto] : [],
-    nivel: 'B', frecuencia: 'A', sesion: 'primera',
+    nivel: 'B', frecuencia: frecuenciaPorDefecto(idDefecto), sesion: 'primera',
     gravedad: null, irritabilidad: null,
     notas: { sesion: '', mes: '', domiciliario: '', parar: '' },
     duraciones: {},
@@ -207,7 +207,7 @@ function pintar() {
         ${b.id === 'educacion' ? lista(s.educacion) : ''}
         ${b.id === 'intervencion' ? s.intervencion.map(h => `<div class="plan-int-hip">${esc(h.name)}</div>${h.sinPauta
           ? '<div class="exercise-box"><em>Pauta a criterio del fisioterapeuta: no hay una pauta con fuente para esta hipótesis.</em></div>'
-          : pautaHTML(h.pauta, h.pautaFuente)}`).join('') + lista([`Terapia manual: nivel ${nivel} (arriba).`, s.cantidad]) : ''}
+          : pautaHTML(h.pauta, h.pautaFuente)}`).join('') + lista([`Terapia manual: nivel ${nivel} (arriba).`, ...s.cantidad]) : ''}
         ${b.id === 'domiciliario' ? lista([s.domiciliario]) : ''}
         ${b.id === 'cierre' ? lista(s.cierre) : ''}
       </div>`).join('')}
@@ -226,7 +226,7 @@ function pintar() {
     <div class="summary-row"><span class="summary-label">Reevaluación intermedia</span><span class="summary-value">${esc(mes.intermedia)}</span></div>
     <div class="summary-row"><span class="summary-label">Reevaluación final</span><span class="summary-value">${esc(mes.final)}${plan.mes.prom.length ? `, con ${esc(plan.mes.prom.join(' / '))}` : ''}</span></div>
     <div class="summary-row"><span class="summary-label">Programa domiciliario</span><span class="summary-value">${esc(mes.domiciliario)}</span></div>
-    ${lista(mes.notas)}
+    ${lista([...mes.notas, ...plan.mes.notasPauta])}
     ${plan.mes.posq ? `<div class="nota-posq">🏥 ${plan.mes.posq.semanas != null ? `Semana ${plan.mes.posq.semanas} tras la cirugía. ` : ''}${esc(textoPosq(plan.mes.posq.conProtocolo))}</div>` : ''}
     <div class="plan-sub">Progresión</div>${lista([plan.mes.progresion])}
     <div class="plan-sub">Seguir o cambiar</div>${lista(plan.mes.reglas)}

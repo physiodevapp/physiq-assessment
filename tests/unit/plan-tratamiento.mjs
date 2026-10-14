@@ -274,6 +274,39 @@ test('plan: avisos por hipótesis por id (AVISOS_HIP): mareo con ce13, sin manip
   assert.ok(!avisos(['ce1']).some(a => a === D.AVISOS.vertigo || a === D.AVISOS.manipulacionCervical));
 });
 
+test('plan: pauta con volumen propio (ce13, Reid 2014) sustituye a la cantidad genérica; con otra hipótesis sin él, salen las dos', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const cant = ids => P.construirPlan({ region: 'cervical', severidad: 5, hipotesis: ids.map(hip), elegidas: ids }).sesion.cantidad;
+  assert.deepEqual(cant(['ce13']), [D.TEXTOS_SESION.cantidadReid]);
+  assert.deepEqual(cant(['ce1']), [D.TEXTOS_SESION.cantidad]);
+  assert.deepEqual(cant(['ce13', 'ce1']), [D.TEXTOS_SESION.cantidadReid, D.TEXTOS_SESION.cantidad]);
+  assert.deepEqual(cant([]), [D.TEXTOS_SESION.cantidad]);
+  // El texto repite el volumen de la pauta de ce13
+  for (const frag of ['6 repeticiones', '3 aplicaciones de 30 s']) {
+    assert.ok(HYPOTHESES.ce13.dosis.includes(frag) && D.TEXTOS_SESION.cantidadReid.includes(frag), frag);
+  }
+  for (const [id, k] of Object.entries(D.VOLUMEN_PAUTA)) { assert.ok(HYPOTHESES[id], id); assert.equal(typeof D.TEXTOS_SESION[k], 'string', k); }
+  const t = P.textoPlanSesion(P.construirPlan({ region: 'cervical', severidad: 5, hipotesis: [hip('ce13')], elegidas: ['ce13'] }), {});
+  assert.ok(t.includes(D.TEXTOS_SESION.cantidadReid) && !t.includes(D.TEXTOS_SESION.cantidad));
+});
+
+test('plan: pauta que fija la frecuencia (ce12, Kuijper 2009): plan B por defecto y nota en el mes', () => {
+  assert.equal(P.frecuenciaPorDefecto('ce12'), 'B');
+  assert.equal(P.frecuenciaPorDefecto('ce1'), 'A');
+  assert.equal(P.frecuenciaPorDefecto(null), 'A');
+  assert.match(HYPOTHESES.ce12.dosis, /2 veces por semana durante 6 semanas/);
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const p = P.construirPlan({ region: 'cervical', severidad: 5, hipotesis: [hip('ce12')], elegidas: ['ce12'] });
+  assert.deepEqual(p.mes.notasPauta, [D.FRECUENCIA_PAUTA.ce12.nota]);
+  assert.ok(P.textoPlanMes(p, {}, 'A').includes(D.FRECUENCIA_PAUTA.ce12.nota));
+  assert.deepEqual(P.construirPlan({ region: 'cervical', severidad: 5, hipotesis: [hip('ce1')], elegidas: ['ce1'] }).mes.notasPauta, []);
+  withState({ region: 'cervical', activeHypotheses: ['ce12'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    PLAN.planActual();
+    assert.equal(state.planTratamiento.frecuencia, 'B');
+  });
+  state.planTratamiento = null;
+});
+
 test('plan: los avisos posquirúrgicos son los textos de la fase 5; sin propuesta C «por tope», que ya no puede darse', () => {
   const POSQ = await_posq;
   assert.equal(P.textoPosq(true), POSQ.TEXTO_PAUTA_COMPATIBLE);
