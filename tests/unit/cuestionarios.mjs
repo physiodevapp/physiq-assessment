@@ -17,6 +17,8 @@ test('cuestionarios: ids únicos, grupo conocido, ítems numerados sin repetir, 
   for (const d of CUESTIONARIOS) {
     assert.ok(grupos.has(d.grupo), `${d.id}: grupo`);
     assert.ok(d.fuente && d.nombre && d.titulo, `${d.id}: nombre, título y fuente`);
+    // Requisito del usuario: solo cuestionarios con validación española publicada
+    assert.ok(/\b(19|20)\d\d\b/.test(d.validacionEs || ''), `${d.id}: sin validación española (validacionEs)`);
     assert.equal(new Set(d.items.map(it => it.n)).size, d.items.length, `${d.id}: ítems repetidos`);
     for (const it of d.items) {
       assert.ok(['escala', 'opciones', 'sino', 'marcas'].includes(it.tipo || 'escala'), `${d.id} ${it.n}: tipo`);
@@ -75,17 +77,6 @@ test('PHQ-2 y GAD-7: puntos de corte', () => {
   assert.equal(L.puntuar(def('gad7'), todos('gad7', 3)).interpretacion.etiqueta, 'Ansiedad grave');    // 21
 });
 
-test('STarT Back: ítem 9 dicotomizado y bajo / medio / alto con la subescala psicosocial (Hill 2008)', () => {
-  const r = (si, i9) => ({ ...Object.fromEntries([1, 2, 3, 4, 5, 6, 7, 8].map(n => [n, si.includes(n) ? 'si' : 'no'])), 9: i9 });
-  // «Moderadamente» (índice 2) puntúa 0; «Mucho» (3), 1
-  assert.equal(L.puntuar(def('startback'), r([1, 2, 3], 2)).total, 3);
-  assert.equal(L.puntuar(def('startback'), r([1, 2, 3], 2)).interpretacion.etiqueta, 'Riesgo bajo');
-  assert.equal(L.puntuar(def('startback'), r([1, 2, 3, 5], 2)).interpretacion.etiqueta, 'Riesgo medio');   // 4, psico 1
-  assert.equal(L.puntuar(def('startback'), r([1, 5, 6, 7], 3)).interpretacion.etiqueta, 'Riesgo alto');    // 5, psico 4
-  assert.equal(L.puntuar(def('startback'), r([5, 6, 7], 3)).interpretacion.etiqueta, 'Riesgo alto');       // 4, psico 4
-  assert.equal(L.puntuar(def('startback'), r([5, 6, 7], 2)).interpretacion.etiqueta, 'Riesgo bajo');       // 3
-});
-
 test('Örebro: zonas × 2 (máx. 10), categorías 1–10, ítems invertidos 10 − x y total sobre 210', () => {
   const r = { 5: [0, 1, 2, 3, 4, 5, 6], 6: 0, 7: 0 };
   for (let n = 8; n <= 25; n++) r[n] = 0;
@@ -124,7 +115,7 @@ test('cuestionarios: valores fuera de rango o de tipo equivocado no cuentan como
   const d = def('phq9');
   assert.equal(L.valorItem(d, d.items[0], 4), null);
   assert.equal(L.valorItem(d, d.items[0], '2'), null);
-  assert.equal(L.valorItem(def('startback'), def('startback').items[0], true), null);
+  assert.equal(L.valorItem(def('dn4'), def('dn4').items[0], true), null);
   assert.equal(L.valorItem(def('orebro'), def('orebro').items[0], []), null);
 });
 

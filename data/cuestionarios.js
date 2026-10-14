@@ -9,12 +9,15 @@
 //
 // Los ítems llevan una etiqueta corta, no el texto literal: el paciente
 // rellena su hoja en papel y aquí solo se pasa lo que marcó, en el mismo
-// orden. Cada regla de puntuación e interpretación sale de la fuente citada
+// orden. Solo entran cuestionarios con una validación española publicada
+// (requisito del usuario, 2026-10; `validacionEs`, obligatorio): STarT Back
+// quedó fuera porque su versión de España (Gusi 2011) solo es una traducción.
+// Cada regla de puntuación e interpretación sale de la fuente citada
 // en `fuente`; si la fuente no da punto de corte, no se inventa
 // (`sinInterpretacion`).
 //
 // Esquema de un cuestionario:
-//   { id, nombre, titulo, grupo (id de GRUPOS_CUESTIONARIO), instrucciones?,
+//   { id, nombre, titulo, grupo (id de GRUPOS_CUESTIONARIO), validacionEs, instrucciones?,
 //     leyenda?, escala?: { min, max } (por defecto de los ítems `escala`),
 //     items: [{ n, t, tipo?, min?, max?, invertir?, peso?, opciones?, porMarca?,
 //               anclas?: [izq, dcha], seccion?, etiquetaN? }],
@@ -38,6 +41,7 @@ const FRECUENCIA_2_SEMANAS = '0 = ningún día · 1 = varios días · 2 = más d
 export const CUESTIONARIOS = [
   {
     id: 'phq2',
+    validacionEs: 'Gómez-Gómez 2022 (Psychol Med 53(12):5625–5635; PHQ-2, PHQ-8 y PHQ-9 en atención primaria en España)',
     nombre: 'PHQ-2',
     titulo: 'Cribado de depresión (2 ítems)',
     grupo: 'animo',
@@ -57,6 +61,7 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'phq9',
+    validacionEs: 'Diez-Quevedo 2001 (Psychosom Med 63(4):679–686) · Muñoz-Navarro 2017 (BMC Psychiatry 17:291)',
     nombre: 'PHQ-9',
     titulo: 'Síntomas depresivos',
     grupo: 'animo',
@@ -90,6 +95,7 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'gad7',
+    validacionEs: 'García-Campayo 2010 (Health Qual Life Outcomes 8:8)',
     nombre: 'GAD-7',
     titulo: 'Síntomas de ansiedad',
     grupo: 'animo',
@@ -116,6 +122,7 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'tsk11',
+    validacionEs: 'Gómez-Pérez 2011 (J Pain 12(4):425–435; TSK-11SV)',
     nombre: 'TSK-11',
     titulo: 'Kinesiofobia (escala de Tampa, 11 ítems)',
     grupo: 'miedo',
@@ -141,6 +148,7 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'cadc',
+    validacionEs: 'Martín-Aragón 1999 (Rev Psicol Salud 11(1–2); adaptación y validación española de la Chronic Pain Self-Efficacy Scale)',
     nombre: 'CADC',
     titulo: 'Autoeficacia en dolor crónico',
     grupo: 'autoeficacia',
@@ -178,35 +186,8 @@ export const CUESTIONARIOS = [
     nota: 'El artículo original no se ha podido leer. Los tres dominios (manejo del dolor, función física y control de síntomas) constan en las fuentes que lo citan; los ítems de cada uno son los tres bloques de la hoja, y la media de 0 a 10 es una elección de la app para que se lea en la misma escala que cada ítem. Pendiente de verificar en el artículo.',
   },
   {
-    id: 'startback',
-    nombre: 'STarT Back',
-    titulo: 'Riesgo de mal pronóstico en el dolor lumbar',
-    grupo: 'riesgo',
-    instrucciones: 'Últimas 2 semanas.',
-    items: [
-      { n: 1, tipo: 'sino', t: 'El dolor se ha extendido a la pierna' },
-      { n: 2, tipo: 'sino', t: 'Le ha dolido el hombro o el cuello' },
-      { n: 3, tipo: 'sino', t: 'Solo ha caminado distancias cortas por el dolor' },
-      { n: 4, tipo: 'sino', t: 'Se ha vestido más despacio por el dolor' },
-      { n: 5, tipo: 'sino', t: 'No es seguro ser físicamente activo con este dolor' },
-      { n: 6, tipo: 'sino', t: 'Se ha preocupado mucho por el dolor' },
-      { n: 7, tipo: 'sino', t: 'El dolor es terrible y nunca irá a mejor' },
-      { n: 8, tipo: 'sino', t: 'No ha disfrutado de las cosas como antes' },
-      { n: 9, tipo: 'opciones', t: 'Cuánto le ha molestado la espalda', opciones: [
-        { t: 'Nada', v: 0 }, { t: 'Poco', v: 0 }, { t: 'Moderadamente', v: 0 }, { t: 'Mucho', v: 1 }, { t: 'Extremadamente', v: 1 },
-      ] },
-    ],
-    subescalas: [{ id: 'psico', nombre: 'Subescala psicosocial (ítems 5–9)', items: [5, 6, 7, 8, 9] }],
-    interpretacion: [
-      { si: { max: 3 }, etiqueta: 'Riesgo bajo', nivel: 'ok' },
-      { si: { de: 'psico', min: 4 }, etiqueta: 'Riesgo alto', nivel: 'alto' },
-      { etiqueta: 'Riesgo medio', nivel: 'medio' },
-    ],
-    interpretacionTexto: 'Total ≤ 3: riesgo bajo. Total ≥ 4 con subescala psicosocial ≤ 3: medio; con subescala ≥ 4: alto.',
-    fuente: 'Hill 2008 (Arthritis Rheum 59(5):632–641) · Pilz 2014 (versión brasileña: respuestas de los ítems 1–9)',
-  },
-  {
     id: 'orebro',
+    validacionEs: 'Cuesta-Vargas 2014 (Health Qual Life Outcomes 12:157)',
     nombre: 'Örebro (OMPSQ)',
     titulo: 'Riesgo de dolor persistente y discapacidad laboral (21 ítems puntuables)',
     grupo: 'riesgo',
@@ -252,6 +233,7 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'dn4',
+    validacionEs: 'Pérez 2007 (Health Qual Life Outcomes 5:66)',
     nombre: 'DN4',
     titulo: 'Dolor neuropático (4 preguntas, 10 ítems)',
     grupo: 'neuropatico',
@@ -276,6 +258,7 @@ export const CUESTIONARIOS = [
   },
   {
     id: 'slanss',
+    validacionEs: 'López-de-Uralde-Villanueva 2018 (Neurología 33(8):505–514)',
     nombre: 'S-LANSS',
     titulo: 'Dolor neuropático (autocumplimentado)',
     grupo: 'neuropatico',

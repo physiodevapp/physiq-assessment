@@ -165,7 +165,8 @@ Decisiones del usuario (2026-10):
 - **Dónde:** icono en la cabecera, en cualquier fase y también en el hub (no usa red), como «⏱ Tiempos de recuperación».
 - **Entrada:** tocar el valor de cada ítem; el total, lo que falta y la interpretación se actualizan solos.
 - **Resultado:** al payload (`cu`), a 📋 Notas, a la fase 5 y al informe con IA. No al 📄 Informe para el paciente o su médico.
-- **Piloto:** psicosociales y dolor neuropático (PHQ-2, PHQ-9, GAD-7, TSK-11, CADC, STarT Back, Örebro, DN4, S-LANSS). Los regionales, después.
+- **Piloto:** psicosociales y dolor neuropático (PHQ-2, PHQ-9, GAD-7, TSK-11, CADC, Örebro, DN4, S-LANSS). Los regionales, después.
+- **Requisito obligatorio:** solo cuestionarios con una validación española publicada (campo `validacionEs`; un test unitario falla sin él). STarT Back salió de la calculadora por eso: su versión de España (Gusi 2011) es solo una traducción con entrevistas cognitivas, sin fiabilidad ni validez, y en PubMed no hay una validación posterior (búsqueda de 2026-10).
 
 Criterios del diseño:
 
@@ -182,7 +183,7 @@ Verificación de las reglas del piloto (2026-10; el proxy solo dejó leer PMC y 
 | PHQ-9 | Kroenke 2001, texto completo (tabla 2) | Ítems 0–3, suma 0–27, bandas 5/10/15/20, ≥10 S y E 88 %, la pregunta de dificultad no suma | El aviso del ítem 9 es una regla de seguridad de la app (consta en su `nota`) |
 | PHQ-2 | Kroenke 2003, resumen | ≥3, S 83 %, E 92 % | — |
 | GAD-7 | García-Campayo 2010, texto completo (tabla 2) | Corte 10 en la versión española (S 86,8 %, E 93,4 %) | Bandas 5/10/15 del original (Spitzer 2006 no se pudo abrir; García-Campayo las cita con una errata en la última) |
-| STarT Back | Hill 2008, resumen; Pilz 2014, texto completo | Bajo / medio / alto con la subescala de los ítems 5–9 | Respuestas de los ítems 1–9 solo en Pilz 2014 y en la hoja de Keele |
+| STarT Back | — | Retirado de la calculadora: sin validación española | — |
 | DN4 | Pérez 2007, texto completo (tabla 4) | 10 ítems, ≥4, S 79,8 %, E 78,0 % | — |
 | S-LANSS | López-de-Uralde-Villanueva 2018, resumen | ≥12 en la versión española | Pesos 5/5/3/2/1/5/3 solo en fuentes secundarias |
 | TSK-11 | Woby 2005 y Gómez-Pérez 2011, resúmenes | 11 ítems, sin invertidos, sin corte; mejoría importante ≥4 puntos | Escala 1–4 solo en fuentes secundarias; ítems de las dos subescalas (no se usan) |
