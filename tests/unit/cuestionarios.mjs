@@ -298,10 +298,23 @@ test('FAAM: porcentaje por subescala sin las N/A; LEFS: suma 0–80', () => {
 });
 
 test('cada PROM de las hipótesis (salvo escalas de dolor y los pendientes) está en la calculadora', () => {
-  const pendientes = ['VISA-A', 'CAIT', 'IdFAI'];   // puntos por respuesta sin verificar (docs/cuestionarios.md)
+  const pendientes = ['VISA-A', 'IdFAI'];   // puntos por respuesta sin verificar (docs/cuestionarios.md)
   const ids = new Set(CUESTIONARIOS.map(d => d.id));
   for (const v of PROM_VALIDADOS_ES.filter(x => !['NPRS', 'EVA', ...pendientes].includes(x))) {
     const id = v.toLowerCase().replace(/[^a-z0-9]/g, '');
     assert.ok(ids.has(id), `«${v}» no está en la calculadora (id «${id}»)`);
   }
+});
+
+test('CAIT: máximos suman 30, mínimos 0; cortes 24 y 27', () => {
+  const d = def('cait');
+  const max = Object.fromEntries(d.items.map(it => [it.n, 0]));
+  assert.equal(L.puntuar(d, max).total, 30);
+  assert.equal(L.puntuar(d, Object.fromEntries(d.items.map(it => [it.n, it.n >= 8 ? 3 : it.opciones.length - 1]))).total, 0);
+  // Índice de opción = puntos que se pierden (ítems 1 y 2 van de 5 o 4 a 0)
+  const con = t => L.puntuar(d, { ...max, 1: Math.min(5, 30 - t), ...(30 - t > 5 ? { 2: 30 - t - 5 } : {}) }).interpretacion.etiqueta;
+  assert.equal(con(30), 'Sin inestabilidad');
+  assert.match(con(27), /^Zona dudosa/);
+  assert.match(con(25), /^Zona dudosa/);
+  assert.match(con(24), /^Compatible/);
 });

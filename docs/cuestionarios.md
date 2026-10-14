@@ -210,12 +210,13 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 | Kujala | Suma 0–100 con puntos por opción | Puntos y orden de la versión inglesa; falta comprobar con la hoja española |
 | VISA-P | Puntos del apéndice de la VISA-P-SP | — |
 | FAAM | % por subescala sin N/A | **Decidido (usuario, 2026-10):** vida diaria con los 15 ítems validados en España (sin el 2, 7, 13, 14, 18 y 20), con la fórmula original aplicada a esos 15 |
+| CAIT | Suma 0–30 con los puntos de la hoja del usuario; cortes ≤ 24 (IAC) y ≤ 27 (Hiller), con «zona dudosa» entre los dos | La hoja no dice de qué validación española sale (sus puntos coinciden con el original); «≤ 24» o «< 24» sin leer en Gribble 2014 |
 | LEFS | Suma 0–80 | Etiquetas de la hoja de EE. UU.; no se leyó la versión española |
 
-Pendientes de añadir (puntos por respuesta sin verificar; hacen falta las hojas oficiales en español o los artículos): **VISA-A** (VISA-A-S, Hernández-Sánchez 2018: puntos del ítem 1 y de las ramas B y C del ítem 8), **CAIT** (Hiller 2006 / CAIT-Sv: puntos de cada opción) e **IdFAI** (Simon 2012 / IdFAI-Sp: pesos de cada respuesta).
+Pendientes de añadir: **VISA-A** (hace falta la hoja de la VISA-A-S, Hernández-Sánchez 2018: la que circula dice «Este cuestionario no está validado» y da los mismos puntos a las ramas A, B y C del ítem 8) e **IdFAI** (Cervera-Garvi 2020, IdFAI-Sp, leído: rango 0–37 y corte ≥ 10,5 en la versión española, pero el artículo no incluye el cuestionario; hace falta la hoja con los puntos de cada respuesta).
 
 Pendiente:
 
-- Regionales: VISA-A, CAIT e IdFAI (ver arriba).
+- Regionales: VISA-A e IdFAI (ver arriba).
 - Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
 - physiq-report no lee aún el campo `cu` del payload.
