@@ -20,7 +20,8 @@ const NOMBRE_REGION = {
   hombro: 'Hombro', cadera: 'Cadera', cervical: 'Cervical', lumbar: 'Lumbar',
   rodilla: 'Rodilla', codo: 'Codo', tobillo_pie: 'Tobillo y pie',
   comun: 'Todas (sistemas comunes)',
-  tejidos: 'Todas (tiempos de tejido)'
+  tejidos: 'Todas (tiempos de tejido)',
+  plan: 'Fase 6 (plan de tratamiento)'
 };
 
 // Tarjetas de consulta (repo physiodevapp/guia-de-consulta). Las tarjetas son
@@ -119,7 +120,7 @@ function lugar(hyp, ruta, testPuntua) {
   if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto', efecto: 'texto' };
   return { donde: `\`${ruta.join('.')}\``, fase: '—', efecto: 'texto' };
 }
-const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento fase 4', 'razonamiento 4b', 'tiempos de tejido', 'texto'];
+const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento fase 4', 'razonamiento 4b', 'tiempos de tejido', 'plan de tratamiento', 'texto'];
 
 function recorrer(obj, ruta, fn) {
   if (typeof obj === 'string') return fn(obj, ruta);
@@ -134,7 +135,7 @@ const ancla = k => k.toLowerCase().replace(/[^\p{L}\d\s-]/gu, '').replace(/\s+/g
 
 // Todas las citas de data/: literatura (clave → citas y usos), tarjetas
 // (región → citas y usos), tests sin fuente y otras fuentes sin campo propio.
-export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, REFERENCIAS = {}, testPuntua }) {
+export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, REFERENCIAS = {}, testPuntua }) {
   const alias = Object.entries(REFERENCIAS).flatMap(([k, r]) => (r.citadaComo || []).map(a => [k, a]));
   const lit = new Map();        // clave → { citas: [texto], usos: [] }
   const tarjetas = new Map();   // región → { citas: [texto], usos: [] }
@@ -265,6 +266,21 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPO
     }
   }
 
+  // Fase 6 «Plan de tratamiento» (data/plan-tratamiento.js, el módulo entero):
+  // dónde aparece cada clave de FUENTES_PLAN en sus textos.
+  if (PLAN_TRATAMIENTO) {
+    const claves = PLAN_TRATAMIENTO.FUENTES_PLAN || [];
+    for (const [nombre, valor] of Object.entries(PLAN_TRATAMIENTO)) {
+      if (nombre === 'FUENTES_PLAN') continue;
+      recorrer(valor, [nombre], (texto, ruta) => {
+        for (const clave of claves) {
+          if (texto.includes(clave)) anotar(lit, clave, clave, { region: 'plan', hyp: '—', donde: `\`${ruta.join('.')}\``,
+            fase: '6 · plan de tratamiento', efecto: 'plan de tratamiento' });
+        }
+      });
+    }
+  }
+
   for (const [region, scr] of Object.entries(SYSTEMIC_SCREENING)) {
     if (scr.urgencia) otras.push({ region, que: `Recuadro «${scr.urgencia.titulo}»`, fase: '2', fuente: 'Literal de la tarjeta de consulta (URGENCIA)' });
     for (const sis of scr.sistemas || []) {
@@ -301,9 +317,9 @@ function lineaRegistro(r) {
   return [xs.join('  \n'), ''];
 }
 
-export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, REFERENCIAS, testPuntua }) {
+export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, REFERENCIAS, testPuntua }) {
   const regiones = Object.keys(CIF_TREES);
-  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, REFERENCIAS, testPuntua });
+  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, REFERENCIAS, testPuntua });
   const claveBase = Object.keys(REFERENCIAS).find(k => REFERENCIAS[k].tarjetas);
 
   const L = [];

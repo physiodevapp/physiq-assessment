@@ -406,7 +406,7 @@ export const SIS_POSQUIRURGICO = {
         fuentes: ['Goebel 2018', 'Guthmiller 2025'],
         citas: [PQ_CITA.goebel, PQ_CITA.guthmiller]
       } },
-    // Variante de pq_nervio para la columna (decisión del usuario, 2026-10, Fase L):
+    // Variante de pq_nervio para la columna (decisión del usuario, 2026-10, Fase M):
     // tras cirugía de columna, el déficit nuevo es radicular o medular, no de un nervio periférico.
     { id: 'pq_nervio_col', regiones: ['lumbar', 'cervical'], urgencia: 'Posible hematoma epidural o lesión neurológica tras la cirugía de columna: urgencias o el cirujano, hoy.', text: '¿Desde la operación de columna nota en los brazos o las piernas un dolor, hormigueo, adormecimiento o pérdida de fuerza nuevos o que van a más, torpeza al caminar, o cambios al orinar o al hacer de vientre?', alerta: true,
       razonamiento: {

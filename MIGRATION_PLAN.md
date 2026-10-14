@@ -301,7 +301,28 @@ Diseño, esquema y procedimiento: `docs/anatomia-kenhub.md` (léelo entero antes
 
 Después, si se ve útil: un enlace a la estructura principal en la cabecera de la hipótesis (4b).
 
-## Fase L — «¿Por qué?» de las banderas rojas y amarillas de la fase 2
+---
+
+## Fase L — Fase 6 «Plan de tratamiento»
+
+Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo entero antes de empezar). Abierta en 2026-10, a propuesta del usuario. Una sesión de 50 minutos a tres niveles de carga (A/B/C, según la irritabilidad) y un plan de un mes (A: 1 sesión/semana; B: 2), con una parte sin IA (también en el hub) y una capa de IA opcional (solo standalone) que lee los datos y la transcripción, nunca el texto del informe IA. Sin plan con una derivación sin resolver. Revisión clínica del usuario antes de `main`.
+
+- [x] L1 — Documento de diseño
+- [x] L1 — Decisiones 6–10 tomadas según la recomendación (usuario, 2026-10)
+- [x] L1 — Leídas Petersen 2021 (SINSS) y Barakatt 2009 (×2), de acceso libre; notas y propuesta en `docs/plan-tratamiento.md`, «Fuentes leídas»
+- [x] L1 — Leídos Zusman 1998 y Silbernagel 2007 (PDF del usuario); decisiones 11–15 aceptadas por el usuario (2026-10)
+- [x] Leído Maitland 7.ª ed., cap. 6 (pp. 97–170); decisiones 16–19 aceptadas por el usuario
+- [x] Leídos Maitland 7.ª ed. (2005), caps. 8 y 9 (pp. 183–228, la 224 en imagen); decisiones 20–24 aceptadas por el usuario. Fuentes de L1 completas: L2 puede empezar
+- [x] L2 — Parte sin IA en lumbar (piloto): fase 6 opcional en la navegación (`nav6`, `#phase6`, `plan.js` + `lib/plan-tratamiento.js` + `data/plan-tratamiento.js`), sin IA. Primera revisión hecha (decisiones 25–29 de `docs/plan-tratamiento.md`: cortes de irritabilidad, tabla de escalones, sin NRS, hipótesis neurológicas por id, minutos editables y «cuándo parar»)
+- [x] L2 — Revisión de las frases por el usuario (`docs/plan-tratamiento-frases.md`): redacción propia (decisiones 30–34) y el resto, aprobada para `main` (2026-10); posquirúrgico sin protocolo como en la fase 5, confirmado
+- [ ] L3 — Añadir a la matriz de la fase 3 cuánto tarda el dolor en calmarse (decisión 25), si se decide cambiar la fase 3
+- [ ] L3 — Parte sin IA en las 7 regiones
+- [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)
+- [ ] L5 — Revisión automática con planes reales en los fixtures
+
+---
+
+## Fase M — «¿Por qué?» de las banderas rojas y amarillas de la fase 2
 
 Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero antes de empezar). Una región por sesión, con revisión clínica del usuario antes de `main`. Una bandera es un texto o `{ texto, regiones?, pregunta?, fase1?, razonamiento? }`. Con `pregunta` (ids del mismo sistema), su ⓘ abre el «¿Por qué?» de esa pregunta en el panel del razonamiento: no se escribe dos veces. Con `razonamiento` propio (misma forma que el de una pregunta, fuentes leídas en la sesión), abre el suyo. `fase1` pinta «· fase 1». `regiones` la oculta fuera de esas regiones, igual que a las preguntas. Abierta en 2026-10, a propuesta del usuario, tras el inventario de lumbar.
 
@@ -316,4 +337,3 @@ Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero an
 | Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [x] 8 de 8 (Finucane 2020, Downie 2013, NICE NG12 y NG65, Goodman caps. 6 y 10, Belyayeva 2024, Kimyaghalam 2024, Zemaitis 2026) | [x] 2 (Downie, NG65); el resto sin hacer | [x] (2026-10), incluidos percusión costovertebral, Leriche, la masa testicular ampliada y `pq_nervio_col` | |
 | Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 13 preguntas | [ ] | [ ] | [ ] | Una vez para todas las regiones |
 | Cadera, cervical, hombro, rodilla, codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
-
