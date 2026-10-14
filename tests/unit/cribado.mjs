@@ -61,9 +61,21 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
   });
 });
 
-test('cadera: TVP, torsión testicular, fractura de estrés del cuello femoral y artritis séptica son urgencias (y ninguna otra)', () => {
+test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra); el dolor ligado a la regla (l_e3) no', () => {
+  const qs = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['l6', 'l_e8']);
+  // La bandera roja del ectópico dice «urgencia»: tiene que haber una pregunta que la dispare
+  const sis = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_espondilo');
+  assert.ok(sis.banderasRojas.some(f => /ectópico.*urgencia/i.test(f)));
+  assert.ok(sis.preguntas.some(q => q.id === 'l_e8'));
+  withState({ region: 'lumbar', sistemicoAnswers: { l_e8: 'SI' } }, () => {
+    assert.equal(buildPhysiQPayload().ur.length, 1);
+  });
+});
+
+test('cadera: TVP, torsión testicular, ectópico, fractura de estrés del cuello femoral y artritis séptica son urgencias (y ninguna otra)', () => {
   const qs = SYSTEMIC_SCREENING.cadera.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
-  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_v2']);
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_u5', 'ca_v2']);
   // ca_v2 junta TVP y calambres: la urgencia dice que los calambres solos no lo son,
   // y deriva hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8)
   assert.match(qs.find(q => q.id === 'ca_v2').urgencia, /no los calambres solos/);

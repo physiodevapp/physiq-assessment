@@ -85,7 +85,7 @@ export const REFERENCIAS = {
   },
   'NICE NG126': {
     publicacion: 'Guía NICE «Ectopic pregnancy and miscarriage: diagnosis and initial management» (2019, actualizada el 17 de junio de 2026)', doi: '', url: 'https://www.nice.org.uk/guidance/ng126', revision: { fecha: '2026-10', resultado: 'Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian.' },
-    nota: 'Leídas las recomendaciones 1.4.1–1.4.7 (síntomas y signos del embarazo ectópico) en nice.org.uk y en el PDF aportado por el usuario (2026-10). Razonamiento del cribado de hombro (h_g1). Las CKS de NICE (cks.nice.org.uk) no son accesibles fuera del Reino Unido.'
+    nota: 'Leídas las recomendaciones 1.4.1–1.4.7 (síntomas y signos del embarazo ectópico) en nice.org.uk y en el PDF aportado por el usuario (2026-10). Razonamiento del cribado de hombro (h_g1). Releídas las 1.4.1–1.4.8 en nice.org.uk (2026-10) para las preguntas urgentes de ectópico de lumbar (l_e8) y cadera (ca_u5). Las CKS de NICE (cks.nice.org.uk) no son accesibles fuera del Reino Unido.'
   },
   'NICE NG226': {
     publicacion: 'Guía NICE «Osteoarthritis in over 16s: diagnosis and management» (19 de octubre de 2022)', doi: '', url: 'https://www.nice.org.uk/guidance/ng226',

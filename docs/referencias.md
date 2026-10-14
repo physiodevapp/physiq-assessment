@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **459** referencias de literatura, con **2082** usos.
+- **459** referencias de literatura, con **2084** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **374** de 459 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -315,7 +315,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [NICE CG147](#nice-cg147) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 8 de agosto de 2012, última actualización el 11 de diciembre de 2020. |
 | [NICE NG125](#nice-ng125) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 19 de agosto de 2020; la revisión de vigilancia de 2023 recomendó actualizarla, pero NICE decidió no hacerlo (31 de mayo de 2023). Las recomendaciones 1.1.3 y 1.4.9 dicen lo que recoge el razonamiento (consultado en nice.org.uk en 2026-10). |
-| [NICE NG126](#nice-ng126) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian. |
+| [NICE NG126](#nice-ng126) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian. |
 | [NICE NG158](#nice-ng158) | razonamiento fase 2 · razonamiento fase 4 · texto | 23 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 2 de agosto de 2023, y la revisión del 1 de mayo de 2026 decidió no actualizarla. Las recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18 y las tablas 1 y 2 (escalas de Wells de dos niveles) dicen lo que recoge el razonamiento de ca_v2, r_v2, tp_v2, pq_tvp, pq_tvp_ms y pq_tep (consultado en nice.org.uk en 2026-10). |
 | [NICE NG38](#nice-ng38) | razonamiento fase 2 · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 17 de febrero de 2016, sin actualizaciones; la recomendación 1.2.2 dice lo que recoge la app. |
 | [NICE NG89](#nice-ng89) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 13 de agosto de 2019, y la revisión de vigilancia del 18 de septiembre de 2024 decidió no actualizarla. Las recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3 dicen lo que recoge el razonamiento (duraciones de la profilaxis y umbrales de 90 minutos; consultado en nice.org.uk en 2026-10). |
@@ -7936,15 +7936,18 @@ Citada como:
 Publicación: Guía NICE «Ectopic pregnancy and miscarriage: diagnosis and initial management» (2019, actualizada el 17 de junio de 2026)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian.  
-Nota: Leídas las recomendaciones 1.4.1–1.4.7 (síntomas y signos del embarazo ectópico) en nice.org.uk y en el PDF aportado por el usuario (2026-10). Razonamiento del cribado de hombro (h_g1). Las CKS de NICE (cks.nice.org.uk) no son accesibles fuera del Reino Unido.
+Nota: Leídas las recomendaciones 1.4.1–1.4.7 (síntomas y signos del embarazo ectópico) en nice.org.uk y en el PDF aportado por el usuario (2026-10). Razonamiento del cribado de hombro (h_g1). Releídas las 1.4.1–1.4.8 en nice.org.uk (2026-10) para las preguntas urgentes de ectópico de lumbar (l_e8) y cadera (ca_u5). Las CKS de NICE (cks.nice.org.uk) no son accesibles fuera del Reino Unido.
 
 Citada como:
 
 1. NICE NG126 — NICE, «Ectopic pregnancy and miscarriage: diagnosis and initial management» (2019, actualizada el 17 de junio de 2026), recomendaciones 1.4.1–1.4.5.
+2. NICE NG126 — NICE, «Ectopic pregnancy and miscarriage: diagnosis and initial management» (2019, actualizada el 17 de junio de 2026), recomendaciones 1.4.1–1.4.8.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | — | Pregunta `h_g1` · Ginecológico | 2 · razonamiento del cribado | 1 |
+| Cadera | — | Pregunta `ca_u5` · Urogenital / Renal | 2 · razonamiento del cribado | 2 |
+| Lumbar | — | Pregunta `l_e8` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 
 ### NICE NG158
 
