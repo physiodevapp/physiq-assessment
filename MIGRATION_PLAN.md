@@ -351,6 +351,8 @@ Diseño y decisiones: `docs/sintomas-multiples.md` (léelo entero antes de empez
 - [x] N1 — Paso 1 en lumbar (piloto): tarjeta «Síntomas» (`sintomas.js`, `lib/sintomas.js`, `export const zonas` en `data/lumbar.js` → `ZONAS_SINTOMA`), estado, payload (`z1`, `ss`), fase 5, `📋 Notas`, `📄 Informe`, bloque del prompt de la IA y regla de revisión `lado-sintoma`. Unit `tests/unit/sintomas.mjs`, smoke `sintomas`
 - [ ] N1 — Prueba en consulta real y revisión de las zonas de lumbar por el usuario
 - [ ] N2 — Zonas de las otras 6 regiones, una por sesión (tabla en `docs/sintomas-multiples.md`)
+  - [x] Cervical (2026-10): las 7 zonas de la tabla en `data/cervical.js`; unit y smoke (`sintomas`) ampliados. Pendiente de probar en consulta
+  - [ ] Hombro · [ ] Codo · [ ] Cadera · [ ] Rodilla · [ ] Tobillo y pie
 - [ ] N3 — Pistas en el árbol (`pasos` en cada zona → recuadro «📝» en el paso), región a región
 - [ ] N4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente
 - [ ] N5 — physiq-report: mostrar `z1` / `ss` (otro repositorio)

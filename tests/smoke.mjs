@@ -2994,6 +2994,19 @@ async function checkSintomas(page) {
     const t = document.getElementById('resultsContent').textContent;
     return t.includes('Síntoma principal (P1)') && t.includes('Pierna por debajo de la rodilla') && t.includes('P3') && t.includes('otra región, no valorada hoy');
   });
+  // Cervical (paso 2): sus 7 zonas y «Central» en el lado; el cambio de región borra los síntomas
+  await page.evaluate(() => goToPhase(2));
+  await page.click(`[onclick="selectRegion('cervical', this)"]`);
+  const confirmarCambio = await page.waitForSelector('.confirm-box-btns button:has-text("Cambiar región")', { timeout: 3000 }).catch(() => null);
+  if (confirmarCambio) await confirmarCambio.click();
+  await page.click('#btnContinuarSinss');
+  await page.waitForSelector('#cardSintomas:not([hidden]) #sintItem_0');
+  r.cervical = await page.evaluate(() => {
+    const zonas = [...document.querySelectorAll('#sintItem_0 .sint-zona')].map(b => b.textContent);
+    return zonas.length === 7 && zonas[0] === 'Cuello' && zonas.includes('Antebrazo y mano')
+      && !!document.querySelector('#sintItem_0 .lado-central') && state.sintomasSecundarios.length === 0
+      && state.sintomaPrincipal.zonas.length === 0;
+  });
   // Otra región sin zonas: la tarjeta no se pinta
   await page.evaluate(() => goToPhase(2));
   await page.click(`[onclick="selectRegion('hombro', this)"]`);
@@ -3003,7 +3016,7 @@ async function checkSintomas(page) {
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(200);
   r.hombroSinTarjeta = await page.evaluate(() => document.getElementById('cardSintomas').hidden && state.sintomasSecundarios.length === 0);
-  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.fase5 && r.hombroSinTarjeta;
+  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.fase5 && r.cervical && r.hombroSinTarjeta;
   return r;
 }
 
@@ -3168,11 +3181,11 @@ const SECCIONES = [
     return r.ok;
   } },
 
-  { id: 'sintomas', titulo: 'Síntomas P1–P4 (fase 3, lumbar):', run: async ({ browser, errors }) => {
+  { id: 'sintomas', titulo: 'Síntomas P1–P4 (fase 3, lumbar y cervical):', run: async ({ browser, errors }) => {
     const page = await nuevaPagina(browser, errors);
     try {
       const r = await checkSintomas(page);
-      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; fase 5 con P1–P3; hombro sin tarjeta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; fase 5 con P1–P3; cervical con sus 7 zonas y «Central», sin los síntomas de lumbar; hombro sin tarjeta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
       return r.ok;
     } finally { await page.context().close(); }
   } },
