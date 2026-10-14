@@ -208,16 +208,16 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 | iHOT-12 | Media de los mm (0–100) | El ítem 9 «no relevante» se excluye (deducción) |
 | HOS | % por subescala sin N/A, sin total | — |
 | KOOS | 100 − media × 25 por subescala, sin total | Q4 de la hoja con opciones en orden dudoso: puntúa la posición |
-| Kujala | Suma 0–100 con puntos por opción | Puntos y orden de la versión inglesa; falta comprobar con la hoja española |
+| Kujala | Suma 0–100 con puntos por opción | Letras, orden y redacción comprobados con la hoja española (traducción de Gil-Gámez, sin puntos); puntos del original. **Duda pendiente:** el ítem 4 (escaleras) de la hoja española tiene 5 opciones (añade C «dolor leve al subir»), el original 4; sin el artículo no se sabe cómo puntúa la C, y la app no la ofrece (aviso en el ítem). El 11D dice «después de la cirugía» (original: «luxación documentada»), se puntúa igual |
 | VISA-P | Puntos del apéndice de la VISA-P-SP | — |
 | FAAM | % por subescala sin N/A | **Decidido (usuario, 2026-10):** vida diaria con los 15 ítems validados en España (sin el 2, 7, 13, 14, 18 y 20), con la fórmula original aplicada a esos 15 |
 | CAIT | Suma 0–30 con los puntos de la hoja del usuario; cortes ≤ 24 (IAC) y ≤ 27 (Hiller), con «zona dudosa» entre los dos | La hoja no dice de qué validación española sale (sus puntos coinciden con el original); «≤ 24» o «< 24» sin leer en Gribble 2014 |
-| LEFS | Suma 0–80 | Etiquetas de la hoja de EE. UU. (la segunda que llegó es la misma traducción); falta la versión española de Cruz-Díaz 2014 |
+| LEFS | Suma 0–80 | Orden (1–20) y redacción comprobados con la versión española (Cruz-Díaz 2014, apéndice 1): mismo orden que el original, «250 metros» y «un kilómetro» en vez de manzanas y millas. Su cambio mínimo detectable (2,18 puntos) se añade a la interpretación |
 
 Pendiente de añadir: **IdFAI** (Cervera-Garvi 2020, IdFAI-Sp, leído: rango 0–37 y corte ≥ 10,5 en la versión española, pero el artículo no incluye el cuestionario; hace falta la hoja con los puntos de cada respuesta).
 
 Pendiente:
 
-- Regionales: IdFAI (ver arriba).
+- Regionales: IdFAI (ver arriba) y el ítem 4C del Kujala (hace falta Gil-Gámez 2016, PMID 25649731, o una hoja española con puntos).
 - Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
 - physiq-report no lee aún el campo `cu` del payload.
