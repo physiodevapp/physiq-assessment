@@ -175,6 +175,20 @@ Criterios del diseño:
 - **Las alertas de seguridad no esperan.** El ítem 9 del PHQ-9 avisa en cuanto se marca, aunque falten ítems.
 - **Hojas en papel:** la calculadora sigue la versión validada. Si la hoja del usuario difiere (§5: NDI, HOOS, VISA-A…), hay que cambiar la hoja, no la calculadora.
 
+Verificación de las reglas del piloto (2026-10; el proxy solo dejó leer PMC y PubMed):
+
+| Cuestionario | Leído en | Verificado | Sin verificar en la fuente primaria |
+|---|---|---|---|
+| PHQ-9 | Kroenke 2001, texto completo (tabla 2) | Ítems 0–3, suma 0–27, bandas 5/10/15/20, ≥10 S y E 88 %, la pregunta de dificultad no suma | El aviso del ítem 9 es una regla de seguridad de la app (consta en su `nota`) |
+| PHQ-2 | Kroenke 2003, resumen | ≥3, S 83 %, E 92 % | — |
+| GAD-7 | García-Campayo 2010, texto completo (tabla 2) | Corte 10 en la versión española (S 86,8 %, E 93,4 %) | Bandas 5/10/15 del original (Spitzer 2006 no se pudo abrir; García-Campayo las cita con una errata en la última) |
+| STarT Back | Hill 2008, resumen; Pilz 2014, texto completo | Bajo / medio / alto con la subescala de los ítems 5–9 | Respuestas de los ítems 1–9 solo en Pilz 2014 y en la hoja de Keele |
+| DN4 | Pérez 2007, texto completo (tabla 4) | 10 ítems, ≥4, S 79,8 %, E 78,0 % | — |
+| S-LANSS | López-de-Uralde-Villanueva 2018, resumen | ≥12 en la versión española | Pesos 5/5/3/2/1/5/3 solo en fuentes secundarias |
+| TSK-11 | Woby 2005 y Gómez-Pérez 2011, resúmenes | 11 ítems, sin invertidos, sin corte; mejoría importante ≥4 puntos | Escala 1–4 solo en fuentes secundarias; ítems de las dos subescalas (no se usan) |
+| Örebro | Cuesta-Vargas 2014, texto completo y formulario | Puntuación de cada ítem (formulario), total 210 | Bandas <105 / 105–130 / >130 según Cuesta-Vargas, que las atribuye a Linton y Boersma 2003; el corte de 90 de Linton 2003, solo en su resumen |
+| CADC | Fuentes que lo citan | 19 ítems de 0 a 10, tres dominios | Artículo original no leído: ítems por dominio (se usan los bloques de la hoja), suma o media (la app usa media 0–10) |
+
 Pendiente:
 
 - Regionales (siguiente tanda): RMDQ, Oswestry, NDI (versión de Andrade Ortega), SPADI, KOOS, HAGOS, FAAM, VISA-P, iHOT-12.

@@ -52,6 +52,7 @@ export const CUESTIONARIOS = [
       { si: { min: 3 }, etiqueta: 'Cribado positivo: completar el PHQ-9', nivel: 'medio' },
       { etiqueta: 'Cribado negativo', nivel: 'ok' },
     ],
+    interpretacionTexto: '3 o más: sensibilidad 83 % y especificidad 92 % para depresión mayor.',
     fuente: 'Kroenke 2003 (Med Care 41(11):1284–1292)',
   },
   {
@@ -83,7 +84,9 @@ export const CUESTIONARIOS = [
     alertas: [
       { item: 9, min: 1, texto: 'Ítem 9 positivo: valorar hoy el riesgo de suicidio y derivar según el protocolo del centro' },
     ],
-    fuente: 'Kroenke 2001 (J Gen Intern Med 16(9):606–613)',
+    interpretacionTexto: 'Bandas de Kroenke 2001: 5, 10, 15 y 20 marcan síntomas leves, moderados, moderadamente graves y graves. Con 10 o más, sensibilidad y especificidad del 88 % para depresión mayor. La pregunta final sobre dificultad no suma.',
+    fuente: 'Kroenke 2001 (J Gen Intern Med 16(9):606–613; tabla 2)',
+    nota: 'El aviso del ítem 9 es una regla de seguridad de la app, no del artículo: cualquier respuesta distinta de 0 merece preguntar por el riesgo.',
   },
   {
     id: 'gad7',
@@ -108,7 +111,8 @@ export const CUESTIONARIOS = [
       { si: { max: 14 }, etiqueta: 'Ansiedad moderada', nivel: 'alto' },
       { etiqueta: 'Ansiedad grave', nivel: 'alto' },
     ],
-    fuente: 'Spitzer 2006 (Arch Intern Med 166(10):1092–1097)',
+    interpretacionTexto: 'Bandas 5, 10 y 15 del original. En la versión española, 10 o más: sensibilidad 86,8 % y especificidad 93,4 % para trastorno de ansiedad generalizada.',
+    fuente: 'Spitzer 2006 (Arch Intern Med 166(10):1092–1097) · García-Campayo 2010 (Health Qual Life Outcomes 8:8; versión española, tabla 2)',
   },
   {
     id: 'tsk11',
@@ -132,6 +136,7 @@ export const CUESTIONARIOS = [
     ],
     rango: [11, 44],
     sinInterpretacion: 'Sin punto de corte consensuado: a más puntuación, más miedo al movimiento',
+    interpretacionTexto: 'Para el seguimiento, una bajada de 4 puntos o más indica una mejoría importante (Woby 2005).',
     fuente: 'Woby 2005 (Pain 117(1–2):137–144) · Gómez-Pérez 2011 (J Pain 12(4):425–435; versión española TSK-11SV)',
   },
   {
@@ -162,14 +167,15 @@ export const CUESTIONARIOS = [
       { n: 18, etiquetaN: '4', seccion: 'Bloque 3 · Dolor, en este momento', t: 'Reducir mucho el dolor sin tomar más medicinas' },
       { n: 19, etiquetaN: '5', seccion: 'Bloque 3 · Dolor, en este momento', t: 'Cumplir sus obligaciones de trabajo como antes' },
     ],
-    total: 'suma',
+    total: 'media',
     subescalas: [
-      { id: 'sintomas', nombre: 'Control de síntomas', items: [1, 2, 3, 4, 5, 6, 7, 8] },
-      { id: 'funcion', nombre: 'Función física', items: [9, 10, 11, 12, 13, 14] },
-      { id: 'dolor', nombre: 'Control del dolor', items: [15, 16, 17, 18, 19] },
+      { id: 'sintomas', nombre: 'Control de síntomas', items: [1, 2, 3, 4, 5, 6, 7, 8], calculo: 'media' },
+      { id: 'funcion', nombre: 'Función física', items: [9, 10, 11, 12, 13, 14], calculo: 'media' },
+      { id: 'dolor', nombre: 'Manejo del dolor', items: [15, 16, 17, 18, 19], calculo: 'media' },
     ],
     sinInterpretacion: 'Sin punto de corte publicado: a más puntuación, más autoeficacia',
-    fuente: 'Martín-Aragón 1999 (Rev Psicol Salud 11(1–2):53–75)',
+    fuente: 'Martín-Aragón 1999 (Rev Psicol Salud 11(1–2); versión española de la Chronic Pain Self-Efficacy Scale)',
+    nota: 'El artículo original no se ha podido leer. Los tres dominios (manejo del dolor, función física y control de síntomas) constan en las fuentes que lo citan; los ítems de cada uno son los tres bloques de la hoja, y la media de 0 a 10 es una elección de la app para que se lea en la misma escala que cada ítem. Pendiente de verificar en el artículo.',
   },
   {
     id: 'startback',
@@ -197,7 +203,7 @@ export const CUESTIONARIOS = [
       { etiqueta: 'Riesgo medio', nivel: 'medio' },
     ],
     interpretacionTexto: 'Total ≤ 3: riesgo bajo. Total ≥ 4 con subescala psicosocial ≤ 3: medio; con subescala ≥ 4: alto.',
-    fuente: 'Hill 2008 (Arthritis Rheum 59(5):632–641)',
+    fuente: 'Hill 2008 (Arthritis Rheum 59(5):632–641) · Pilz 2014 (versión brasileña: respuestas de los ítems 1–9)',
   },
   {
     id: 'orebro',
@@ -212,8 +218,8 @@ export const CUESTIONARIOS = [
         { t: '1 mes', v: 6 }, { t: '2 meses', v: 7 }, { t: '3–6 meses', v: 8 }, { t: '6–12 meses', v: 9 }, { t: 'Más de un año', v: 10 },
       ] },
       { n: 7, tipo: 'opciones', t: 'Desde cuándo tiene el dolor actual', opciones: [
-        { t: '1.ª casilla', v: 1 }, { t: '2.ª casilla', v: 2 }, { t: '3.ª casilla', v: 3 }, { t: '4.ª casilla', v: 4 }, { t: '5.ª casilla', v: 5 },
-        { t: '6.ª casilla', v: 6 }, { t: '7.ª casilla', v: 7 }, { t: '8.ª casilla', v: 8 }, { t: '9.ª casilla', v: 9 }, { t: '10.ª casilla (más de un año)', v: 10 },
+        { t: '0 días', v: 1 }, { t: '1–2 días', v: 2 }, { t: '3–7 días', v: 3 }, { t: '8–14 días', v: 4 }, { t: '15–30 días', v: 5 },
+        { t: '1 mes', v: 6 }, { t: '2 meses', v: 7 }, { t: '3–6 meses', v: 8 }, { t: '6–12 meses', v: 9 }, { t: 'Más de un año', v: 10 },
       ] },
       { n: 8, t: 'Trabajo pesado o monótono', anclas: ['nada', 'extremadamente'] },
       { n: 9, t: 'Dolor de la última semana', anclas: ['sin dolor', 'el peor soportable'] },
@@ -236,11 +242,13 @@ export const CUESTIONARIOS = [
     ],
     rango: [0, 210],
     interpretacion: [
-      { si: { min: 106 }, etiqueta: 'Riesgo alto', nivel: 'alto' },
-      { etiqueta: 'Riesgo bajo', nivel: 'ok' },
+      { si: { max: 104 }, etiqueta: 'Riesgo bajo de discapacidad', nivel: 'ok' },
+      { si: { max: 130 }, etiqueta: 'Riesgo moderado de discapacidad', nivel: 'medio' },
+      { etiqueta: 'Riesgo alto de discapacidad', nivel: 'alto' },
     ],
-    interpretacionTexto: 'Más de 105 puntos: riesgo alto de discapacidad laboral prolongada.',
-    fuente: 'Linton 1998 (Clin J Pain 14(3):209–215) · Cuesta-Vargas 2014 (Health Qual Life Outcomes 12:157; versión española)',
+    interpretacionTexto: 'Bandas que recoge la versión española: menos de 105, bajo; 105–130, moderado; más de 130, alto. Linton y Boersma 2003 proponen además 90 puntos como corte para predecir la baja laboral (sensibilidad 89 %, especificidad 65 %).',
+    fuente: 'Cuesta-Vargas 2014 (Health Qual Life Outcomes 12:157; versión española y su formulario) · Linton 2003 (Clin J Pain 19(2):80–86)',
+    nota: 'En la hoja española los ítems 6 y 7 tienen las mismas casillas; puntúan de 1 a 10 según la casilla marcada.',
   },
   {
     id: 'dn4',
@@ -263,7 +271,8 @@ export const CUESTIONARIOS = [
       { si: { min: 4 }, etiqueta: 'Compatible con dolor neuropático', nivel: 'medio' },
       { etiqueta: 'No sugiere dolor neuropático', nivel: 'ok' },
     ],
-    fuente: 'Bouhassira 2005 (Pain 114(1–2):29–36) · Pérez 2007 (Health Qual Life Outcomes 5:66; versión española)',
+    interpretacionTexto: '4 o más de 10: sensibilidad 79,8 % y especificidad 78,0 % en la versión española.',
+    fuente: 'Bouhassira 2005 (Pain 114(1–2):29–36) · Pérez 2007 (Health Qual Life Outcomes 5:66; versión española, tabla 4)',
   },
   {
     id: 'slanss',
@@ -284,6 +293,7 @@ export const CUESTIONARIOS = [
       { si: { min: 12 }, etiqueta: 'Compatible con dolor de predominio neuropático', nivel: 'medio' },
       { etiqueta: 'No sugiere dolor de predominio neuropático', nivel: 'ok' },
     ],
-    fuente: 'Bennett 2005 (J Pain 6(3):149–158)',
+    interpretacionTexto: '12 o más de 24: sensibilidad 88,7 % y especificidad 76,6 % en la versión española.',
+    fuente: 'Bennett 2005 (J Pain 6(3):149–158) · López-de-Uralde-Villanueva 2018 (Neurología 33(8):505–514; versión española)',
   },
 ];
