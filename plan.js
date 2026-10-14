@@ -129,7 +129,7 @@ function pintar() {
   if (!c) return;
   if (!REGIONES_PLAN.includes(state.region)) {
     c.innerHTML = `<div class="alert alert-info"><span class="alert-icon">ℹ️</span><div>
-      <strong>El plan de tratamiento está en fase piloto.</strong> De momento solo está disponible para la región lumbar; ${esc(state.region ? nombreRegion(state.region).toLowerCase() : 'esta región')} se añadirá después, con revisión clínica.</div></div>`;
+      <strong>El plan de tratamiento está en fase piloto.</strong> De momento solo está disponible para ${esc(REGIONES_PLAN.map(r => nombreRegion(r).toLowerCase()).join(' y '))}; ${esc(state.region ? nombreRegion(state.region).toLowerCase() : 'esta región')} se añadirá después, con revisión clínica.</div></div>`;
     return;
   }
   const { hs, plan } = planActual();
@@ -242,7 +242,7 @@ function pintar() {
   <div class="card" id="planCasa">
     <div class="card-title">Programa para casa</div>
     <p class="plan-ayuda">Lo que hará el paciente en casa, con tus palabras: va tal cual en «📤 Compartir → Programa para casa», en lenguaje llano y sin puntuaciones ni fuentes. Las notas del plan de la fase 5 (cuándo parar, a las 24 h, anclaje) se añaden si están rellenas.</p>
-    ${plan.neuro ? '<p class="plan-ayuda">Con una hipótesis neurológica, el programa termina con cuándo ir a urgencias (red de seguridad).</p>' : ''}
+    ${plan.alarmasCasa.length ? `<p class="plan-ayuda">El programa termina con cuándo ir a urgencias (red de seguridad${plan.alarmasCasa.length > 1 ? ', dos avisos' : ''}): explícalo en la sesión.</p>` : ''}
     <label class="plan-campo-et" for="planNotasCasa">Qué hacer</label>
     <textarea class="plan-note-input" id="planNotasCasa" rows="4" placeholder="Ej.: 10 repeticiones de … cada mañana" oninput="planNota('domiciliario', this.value)">${esc(pt.notas.domiciliario)}</textarea>
     <label class="plan-campo-et" for="planParar">Cuándo parar</label>

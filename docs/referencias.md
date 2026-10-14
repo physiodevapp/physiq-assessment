@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **468** referencias de literatura, con **2139** usos.
+- **468** referencias de literatura, con **2146** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **376** de 468 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -137,7 +137,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pedret 2026](#pedret-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
-| [Maitland 2005](#maitland-2005) | plan de tratamiento | 24 | **sin revisar** |
+| [Maitland 2005](#maitland-2005) | plan de tratamiento | 25 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 1 | **sin revisar** |
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 6 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
@@ -202,7 +202,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hölmich 1999](#hölmich-1999) | pauta | 1 | 2026-10 · Texto completo leído: la pauta de ca16 coincide con el panel 1 y los métodos. Corregido el trote (pasadas las 6 primeras semanas) y añadida la población (varones de 18 a 50 años). No se encontró un ensayo posterior que lo sustituya. |
 | [Jonsson 2008](#jonsson-2008) | pauta · tiempos de tejido | 2 | 2026-10 · PDF leído entero (2026-10): el dolor en carga de 70 a 21 es solo de los 18 pacientes satisfechos (los otros 9, de 78 a 58); diagnóstico clínico con alteración en la ecografía; el ejercicio debe doler. Corregido en tp9. PubMed (2026-10): se añade Pringels 2025 (ensayo aleatorizado) como respaldo del principio de no cargar en dorsiflexión; la pauta sigue siendo la de Jonsson (decisión del usuario). |
 | [McKeon 2008](#mckeon-2008) | pauta · texto | 2 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Se precisa en tp21 a qué tareas se aplican los niveles, las reglas de progresión y qué mejoró (FADI, FADI Sport, equilibrio con ojos cerrados, alcance posteromedial y posterolateral del SEBT) y qué no (equilibrio con ojos abiertos, alcance anterior); sin seguimiento ni medida de recidivas. |
-| [Kuijper 2009](#kuijper-2009) | pauta · texto | 2 | 2026-10 · Sin cambios en la pauta: texto completo leído en PMC (2026-10). Coincide con ce12 (fisioterapia 2 veces por semana 6 semanas, «hands off», ejercicios graduados y en casa; collarín semirrígido 3 semanas más 3 de retirada; 12 mm más de mejora del dolor de brazo a las 6 semanas). Se añade que a los 6 meses no hubo diferencias con esperar. PubMed (2026-10): revisiones posteriores sobre terapia manual en la radiculopatía cervical (p. ej., Xu y Ling 2025, metaanálisis en red de 8 ensayos) sin una pauta con volumen mejor. |
+| [Kuijper 2009](#kuijper-2009) | pauta · plan de tratamiento · texto | 3 | 2026-10 · Sin cambios en la pauta: texto completo leído en PMC (2026-10). Coincide con ce12 (fisioterapia 2 veces por semana 6 semanas, «hands off», ejercicios graduados y en casa; collarín semirrígido 3 semanas más 3 de retirada; 12 mm más de mejora del dolor de brazo a las 6 semanas). Se añade que a los 6 meses no hubo diferencias con esperar. PubMed (2026-10): revisiones posteriores sobre terapia manual en la radiculopatía cervical (p. ej., Xu y Ling 2025, metaanálisis en red de 8 ensayos) sin una pauta con volumen mejor. |
 | [Kulig 2009](#kulig-2009) | pauta | 1 | 2026-10 · PDF leído entero (2026-10): revisiones semanales durante 10 semanas, no 12; las P = 0,036–0,048 comparan los tres grupos a la vez y los autores no pueden concluir que el excéntrico supere al concéntrico. Corregido en tp14; se añade Houck 2015 como contraste. DOI corregido: el anterior era de otro artículo. |
 | [Kelley 2013](#kelley-2013) | pauta · test 4b sin puntuar · razonamiento fase 4 · texto | 8 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10) sin revisión de la guía de capsulitis adhesiva de JOSPT; sigue vigente junto con el consenso Salamh 2025. |
 | [Rinkel 2013](#rinkel-2013) | pauta | 2 | 2026-10 · Sin cambios: PDF del usuario releído (2026-10). Su «ensayo de bajo riesgo de sesgo» del túnel cubital es el mismo único ensayo que recogen Caliandro 2025 y Bateman 2025 (Bateman lo califica de alto riesgo); se corrige la pauta de co8 para no presentarlo como tres pruebas. |
@@ -212,7 +212,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Mellor 2016](#mellor-2016) | pauta | 1 | 2026-10 · Sin cambios: protocolo del ensayo LEAP (ver Mellor 2018); las revisiones posteriores (Wang 2025, Cordeiro 2024) no dan una progresión de ejercicios más detallada. |
 | [van Dijk 2016](#van-dijk-2016) | pauta | 1 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las recomendaciones citadas coinciden con su apartado final. Los 143 tobillos son de deportistas profesionales y universitarios (su tabla 1), no solo profesionales: corregido en tp2. PubMed (2026-10): ningún consenso posterior sobre el tratamiento conservador de la lesión aislada. |
 | [Al-Subahi 2017](#al-subahi-2017) | pauta | 1 | 2026-10 · Complementada: Trager 2024 (J Man Manip Ther, revisión sistemática con metaanálisis de 16 ensayos, PDF del usuario) actualiza el efecto de la terapia manual sacroilíaca (discapacidad: efecto moderado, certeza baja; dolor: sin efecto demostrado, certeza muy baja; ninguna técnica superior). Al-Subahi se mantiene para el ejercicio de estabilización, la duración de los programas y el vendaje. |
-| [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · razonamiento fase 4 · texto | 38 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
+| [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento · texto | 39 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
 | [Logerstedt 2017](#logerstedt-2017) | pauta · razonamiento fase 4 · tiempos de tejido | 8 | 2026-10 · Sin cambios: PubMed (guías de JOSPT de rodilla desde 2017) no encuentra revisión de la guía de esguince de ligamentos; lo posterior son consensos quirúrgicos (esquina posterolateral, 2025; reconstrucción del LCA, 2026), de menos peso y sobre otra pregunta. |
 | [Griffin 2018](#griffin-2018) | pauta | 1 | 2026-10 · Sin cambios: sigue siendo el ensayo de artroscopia frente a fisioterapia de la pauta de ca2; PubMed (SIFA y fisioterapia desde 2022) solo añade el ensayo PhysioFIRST (Kemp 2026), que compara dos programas de fisioterapia. |
 | [Logerstedt 2018](#logerstedt-2018) | pauta · razonamiento fase 4 · tiempos de tejido | 9 | 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso). |
@@ -314,7 +314,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Mohr 2024](#mohr-2024) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Pitcher 2024](#pitcher-2024) | test 4b sin puntuar · texto | 2 | 2026-10 · Sin cambios: leído en PMC (2026-10). Síntesis narrativa sin agrupar; las cifras citadas en tp34 (Mahadevan y Dando) coinciden con sus tablas. |
 | [Bergman 2025](#bergman-2025) | test 4b sin puntuar · razonamiento fase 2 · tiempos de tejido | 6 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 2 de agosto de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Margetis y Donnally 2025](#margetis-y-donnally-2025) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 | 9 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de agosto de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Margetis y Donnally 2025](#margetis-y-donnally-2025) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 · plan de tratamiento | 11 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de agosto de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Williams 2025](#williams-2025) | test 4b sin puntuar · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). PAIVM frente a bloqueo de rama medial: S 0,90 (0,85–0,94), E 0,73 (0,65–0,81), de una de sus revisiones de calidad alta; coincide con ce1. La prueba de extensión-rotación para el dolor facetario (S 0,83, E 0,59, LR+ 2,01, LR− 0,29) no se añade a ce14, cuya diana no es la faceta. |
 | [Grimaldi 2026](#grimaldi-2026) | test 4b sin puntuar | 5 | 2026-10 · Sin cambios: es de 2026 y PubMed no encuentra nada posterior sobre pinzamiento isquiofemoral o dolor glúteo bajo. |
 | [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo. |
@@ -382,7 +382,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rider y Marra 2023](#rider-y-marra-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Rowe 2023](#rowe-2023) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de marzo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Rupp y Leslie 2023](#rupp-y-leslie-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Rushton 2023](#rushton-2023) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios en lo citado: el marco sigue vigente. Fe de erratas (J Orthop Sports Phys Ther 2023;53(6):372–374, PDF del usuario leído, 2026-10): solo corrige los riesgos absolutos de los AINE (tabla 9, figuras 6 y 8), que la app no cita. Precisión del marco: en atención primaria (estudio Go4Safe, de Best 2023, J Physiother 69:260–266; 150 pacientes, referencia: consenso de neurólogos con angio-RM) clasifica mal el riesgo vascular (S 0,50, E 0,63, LR+ 1,36, LR− 0,79; leído el resumen en PubMed y el comentario invitado de Verhagen y Leaver, J Physiother 69:267). La app usa el marco para describir síntomas y frecuencias, no como prueba de cribado, así que no cambia nada; el artículo original del marco no se ha releído en esta sesión. |
+| [Rushton 2023](#rushton-2023) | razonamiento fase 2 · plan de tratamiento | 6 | 2026-10 · Sin cambios en lo citado: el marco sigue vigente. Fe de erratas (J Orthop Sports Phys Ther 2023;53(6):372–374, PDF del usuario leído, 2026-10): solo corrige los riesgos absolutos de los AINE (tabla 9, figuras 6 y 8), que la app no cita. Precisión del marco: en atención primaria (estudio Go4Safe, de Best 2023, J Physiother 69:260–266; 150 pacientes, referencia: consenso de neurólogos con angio-RM) clasifica mal el riesgo vascular (S 0,50, E 0,63, LR+ 1,36, LR− 0,79; leído el resumen en PubMed y el comentario invitado de Verhagen y Leaver, J Physiother 69:267). La app usa el marco para describir síntomas y frecuencias, no como prueba de cribado, así que no cambia nada; el artículo original del marco no se ha releído en esta sesión. |
 | [Sanvictores 2023](#sanvictores-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 30 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Schick y Sternard 2023](#schick-y-sternard-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Sekhon 2023](#sekhon-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -1545,9 +1545,11 @@ Citada como:
 24. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); exploración, pp. A19–A20, y modelo de clasificación, p. A22)
 25. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); imagen, p. A16; exploración y clasificación, pp. A19–A24)
 26. Blanpied 2017 (J Orthop Sports Phys Ther 47(7); exploración, p. A19)
+27. Blanpied 2017
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.sinTerapiaManualAguda` | 6 · plan de tratamiento | 27 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» | 4b · cita bajo el test | 2 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Pauta de tratamiento | 5 · cita de la pauta | 3 |
@@ -5248,9 +5250,11 @@ Citada como:
 
 1. Aguda: ejercicios de movilización y estabilización, láser y collarín a corto plazo (C); el collarín, solo poco tiempo, en la fase aguda y si no alivian otros tratamientos. Crónica: tracción cervical mecánica intermitente (la continua no ha mostrado beneficio) combinada con estiramientos y fortalecimiento más movilización o manipulación cervical y torácica (B); educación para seguir con la actividad laboral y el ejercicio (B). Vigilar la irritabilidad y ajustar la terapia manual y el ejercicio. Para la fase aguda hay una pauta con volumen de un ensayo (Kuijper 2009) en «Dolor radicular cervical». La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico, ajustado a la irritabilidad.
 2. Kuijper 2009, BMJ 339:b3883 (ensayo aleatorizado, n = 205; la lista de ejercicios está en su apéndice web, no revisado) · Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación)
+3. Kuijper 2009
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.sinTerapiaManualAguda` | 6 · plan de tratamiento | 3 |
 | Cervical | ce3 · Radiculopatía Cervical | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Cervical | ce12 · Dolor Radicular Cervical | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
@@ -7152,6 +7156,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Fase 6 (plan de tratamiento) | — | `AVISOS.vertigo` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.manipulacionCervical` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES.1.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES.2.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES.3.citas.0` | 6 · plan de tratamiento | 1 |
@@ -7262,9 +7267,12 @@ Citada como:
 3. Margetis y Donnally 2025 — Margetis y Donnally, «Cervical Myelopathy», StatPearls [Internet], NCBI Bookshelf, última actualización 2 de agosto de 2025.
 4. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy»: fisiopatología, anamnesis y exploración, diagnóstico diferencial y complicaciones)
 5. Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy»: anamnesis y diagnóstico diferencial)
+6. Margetis y Donnally 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaMedula.fuente` | 6 · plan de tratamiento | 6 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreMedula` | 6 · plan de tratamiento | 6 |
 | Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Signo de Hoffmann» | 4b · cita bajo el test | 1 |
 | Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Clonus de tobillo/muñeca» | 4b · cita bajo el test | 2 |
 | Cervical | ce8 · Mielopatía Espondilótica Cervical | Test «Evaluación de marcha (alteración)» | 4b · cita bajo el test | 2 |
@@ -9527,9 +9535,12 @@ Citada como:
 2. Rushton 2023 — Rushton, Carlesso, Flynn, Hing, Rubinstein, Vogel y Kerry, «International Framework for Examination of the Cervical Region for Potential of Vascular Pathologies of the Neck Prior to Musculoskeletal Intervention: International IFOMPT Cervical Framework», J Orthop Sports Phys Ther 2023;53(1):7–22 (marco IFOMPT cervical aprobado en 2020), tablas 2, 5 y 6, pp. 11–12; «Planning the physical examination», p. 14.
 3. Rushton 2023 — Rushton, Carlesso, Flynn, Hing, Rubinstein, Vogel y Kerry, «International Framework for Examination of the Cervical Region for Potential of Vascular Pathologies of the Neck Prior to Musculoskeletal Intervention: International IFOMPT Cervical Framework», J Orthop Sports Phys Ther 2023;53(1):7–22 (marco IFOMPT cervical aprobado en 2020), «Importance of observation throughout history», p. 13.
 4. Rushton 2023 — Rushton, Carlesso, Flynn, Hing, Rubinstein, Vogel y Kerry, «International Framework for Examination of the Cervical Region for Potential of Vascular Pathologies of the Neck Prior to Musculoskeletal Intervention: International IFOMPT Cervical Framework», J Orthop Sports Phys Ther 2023;53(1):7–22 (marco IFOMPT cervical aprobado en 2020), tabla 1, p. 9.
+5. Rushton 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaArterial.fuente` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreArterial` | 6 · plan de tratamiento | 5 |
 | Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
 | Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 2 |
 | Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 3 |
