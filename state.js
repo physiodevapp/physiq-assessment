@@ -65,7 +65,8 @@ const state = {
   // fisio; el esqueleto se recalcula del estado. Nunca entra en el payload.
   // { hipotesis: [id, id?], nivel: 'A'|'B'|'C', frecuencia: 'A'|'B',
   //   sesion: 'primera'|'siguiente', gravedad?: string, irritabilidad?: string,
-  //   notas: { sesion, mes, domiciliario } } | null
+  //   notas: { sesion, mes, domiciliario, parar },
+  //   duraciones: { [bloqueId]: minutos } } | null
   planTratamiento: null,
   // Formulario previo (formulario.js): { comun: {id: valor}, regiones: { lumbar: {...} } }
   formularioPrevio: { comun: {}, regiones: {} },

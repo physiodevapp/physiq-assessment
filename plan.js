@@ -4,9 +4,9 @@
 // Nunca toca buildPhysiQPayload(), 📋 Notas ni 📄 Informe (decisión 9).
 import { state } from './state.js';
 import { DOSIS_DERIVAR } from './data.js';
-import { REGIONES_PLAN, ESCALONES } from './data/plan-tratamiento.js';
+import { REGIONES_PLAN, ESCALONES, AVISOS, MINUTOS_SESION } from './data/plan-tratamiento.js';
 import {
-  construirPlan, elegible, hipotesisPorDefecto, textoPlanSesion, textoPlanMes, textoDomiciliario,
+  construirPlan, elegible, hipotesisPorDefecto, textoPlanSesion, textoPlanMes, textoDomiciliario, cuandoParar,
   NIVELES_GRAVEDAD, NIVELES_IRRITABILIDAD, NOMBRE_GRAVEDAD, NOMBRE_IRRITABILIDAD,
 } from './lib/plan-tratamiento.js';
 import { hipotesis, hipotesisActivas, esTratada } from './phase4b.js';
@@ -15,7 +15,7 @@ import { ramaPauta } from './lib/pauta.js';
 import { conProtocolo, semanasCirugia, pautaHipPosq, TEXTO_PAUTA_COMPATIBLE } from './lib/posquirurgico.js';
 import { nombreRegion, regionConLado } from './lib/region.js';
 import {
-  saveSession, getUrgenciasActivas, getCirugiaPayload, compartirTexto, cerrarMenuCompartir, partirPrimeraFrase,
+  saveSession, showConfirmBanner, getUrgenciasActivas, getCirugiaPayload, compartirTexto, cerrarMenuCompartir, partirPrimeraFrase,
 } from './app.js';
 
 const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -28,7 +28,8 @@ function planVacio(idDefecto) {
     hipotesis: idDefecto ? [idDefecto] : [],
     nivel: 'B', frecuencia: 'A', sesion: 'primera',
     gravedad: null, irritabilidad: null,
-    notas: { sesion: '', mes: '', domiciliario: '' },
+    notas: { sesion: '', mes: '', domiciliario: '', parar: '' },
+    duraciones: {},
   };
 }
 
@@ -72,6 +73,7 @@ function entrada(hs) {
     estabilidad: state.estabilidad, riesgoPsico: state.riesgoPsico, psico_miedo: state.psico_miedo,
     signoComparable: state.signoComparable,
     sesion: pt.sesion, gravedadManual: pt.gravedad, irritabilidadManual: pt.irritabilidad,
+    duraciones: pt.duraciones,
   };
 }
 
@@ -82,7 +84,8 @@ function asegurarEstado(hs) {
   const idDef = hipotesisPorDefecto(hs);
   if (!state.planTratamiento) state.planTratamiento = planVacio(idDef);
   const pt = state.planTratamiento;
-  pt.notas = { sesion: '', mes: '', domiciliario: '', ...(pt.notas || {}) };
+  pt.notas = { sesion: '', mes: '', domiciliario: '', parar: '', ...(pt.notas || {}) };
+  pt.duraciones = { ...(pt.duraciones || {}) };
   const validas = new Set(hs.filter(h => elegible(h).ok).map(h => h.id));
   pt.hipotesis = (pt.hipotesis || []).filter(id => validas.has(id)).slice(0, 2);
   if (!pt.hipotesis.length && idDef) pt.hipotesis = [idDef];
@@ -156,7 +159,8 @@ function pintar() {
   const mes = plan.mes[pt.frecuencia];
 
   c.innerHTML = `
-  ${plan.avisos.map(a => `<div class="plan-aviso">${esc(a)}</div>`).join('')}
+  ${plan.avisos.map(a => `<div class="plan-aviso">${esc(a)}${a === AVISOS.sinNRS
+    ? ' <button type="button" class="plan-enlace" onclick="goToPhase(3)">Registrar NRS en la fase 3 →</button>' : ''}</div>`).join('')}
 
   <div class="card">
     <div class="card-title">Hipótesis a tratar</div>
@@ -169,14 +173,15 @@ function pintar() {
     <p class="plan-ayuda">Calculadas de la fase 3 (gravedad: NRS con los cortes de SINSS; irritabilidad: dolor en reposo, movimiento y tolerancia de la matriz). Puedes cambiarlas.</p>
     <div class="plan-campo"><div class="plan-campo-et">Gravedad${plan.gravedadNRS ? ` <span class="plan-calc">· calculada: ${NOMBRE_GRAVEDAD[plan.gravedadNRS]} (NRS ${state.severidad}/10)</span>` : ' <span class="plan-calc">· sin NRS</span>'}</div>
       <div class="option-group">${NIVELES_GRAVEDAD.map(g => opcion('gravedad', g, NOMBRE_GRAVEDAD[g], plan.gravedad === g)).join('')}</div></div>
-    <div class="plan-campo"><div class="plan-campo-et">Irritabilidad${plan.irritabilidadCalculada ? ` <span class="plan-calc">· calculada: ${NOMBRE_IRRITABILIDAD[plan.irritabilidadCalculada]}${plan.irritabilidadEstimada ? ' (estimada)' : ''}</span>` : ''}</div>
+    <div class="plan-campo"><div class="plan-campo-et">Irritabilidad${plan.irritabilidadCalculada ? ` <span class="plan-calc">· calculada: ${NOMBRE_IRRITABILIDAD[plan.irritabilidadCalculada]}${plan.irritabilidadEstimada ? ' (estimada)' : ''}</span>` : ''}${plan.irritabilidadFase3 ? ` <span class="plan-calc">· en la fase 3: ${NOMBRE_IRRITABILIDAD[plan.irritabilidadFase3]}</span>` : ''}</div>
+      ${plan.irritabilidadFase3 ? `<div class="plan-ayuda">${esc(AVISOS.difiereFase3)}</div>` : ''}
       <div class="option-group">${NIVELES_IRRITABILIDAD.map(i => opcion('irritabilidad', i, NOMBRE_IRRITABILIDAD[i], plan.irritabilidad === i)).join('')}</div></div>
     <div class="plan-campo"><div class="plan-campo-et">Sesión</div>
       <div class="option-group">${opcion('sesion', 'primera', 'Primera de tratamiento', pt.sesion === 'primera')}${opcion('sesion', 'siguiente', 'Siguientes', pt.sesion === 'siguiente')}</div></div>
   </div>
 
   <div class="card" id="planSesion">
-    <div class="card-title">Sesión de 50 minutos</div>
+    <div class="card-title">Sesión de 50 minutos <span class="plan-chip">Minutos orientativos</span></div>
     ${plan.avisosHip.map(a => `<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>${esc(a)}</div></div>`).join('')}
     <div class="option-group plan-niveles">
       ${['A', 'B', 'C'].map(k => {
@@ -196,7 +201,8 @@ function pintar() {
     ${s.notaPrimera ? `<div class="plan-aviso">${esc(s.notaPrimera)}</div>` : ''}
     <div class="plan-bloques">
       ${s.bloques.map(b => `<div class="plan-bloque">
-        <div class="plan-bloque-cab"><span class="plan-bloque-min">${b.minutos} min</span> ${esc(b.titulo)}</div>
+        <div class="plan-bloque-cab"><span class="plan-bloque-min">${b.minutos} min</span> ${esc(b.titulo)}
+          <label class="plan-duracion"><input type="number" inputmode="numeric" min="0" max="${MINUTOS_SESION}" value="${b.duracion}" aria-label="Minutos de ${esc(b.titulo)}" onchange="planDuracion('${b.id}', this.value)"> min</label></div>
         ${b.id === 'reevaluacion' ? lista(s.reevaluacion) : ''}
         ${b.id === 'educacion' ? lista(s.educacion) : ''}
         ${b.id === 'intervencion' ? s.intervencion.map(h => `<div class="plan-int-hip">${esc(h.name)}</div>${h.sinPauta
@@ -206,7 +212,9 @@ function pintar() {
         ${b.id === 'cierre' ? lista([s.cierre]) : ''}
       </div>`).join('')}
     </div>
-    <div class="plan-ayuda">Minutos orientativos: organización de la sesión, no evidencia. Editables en tus notas.</div>
+    <div class="plan-ayuda${s.cuadra ? '' : ' plan-ayuda-aviso'}" id="planTotalMin">${s.cuadra
+      ? 'Minutos orientativos: organización de la sesión, no evidencia. Cambia la duración de cada bloque si lo necesitas.'
+      : `Los bloques suman ${s.total} min, no ${MINUTOS_SESION}.`}</div>
     <label class="plan-campo-et" for="planNotasSesion">Tus notas para la sesión</label>
     <textarea class="plan-note-input" id="planNotasSesion" rows="3" oninput="planNota('sesion', this.value)">${esc(pt.notas.sesion)}</textarea>
   </div>
@@ -235,6 +243,8 @@ function pintar() {
     <div class="card-title">Programa para casa</div>
     <p class="plan-ayuda">Lo que hará el paciente en casa, con tus palabras: va tal cual en «📤 Compartir → Programa para casa», en lenguaje llano y sin puntuaciones ni fuentes. Las notas del plan de la fase 5 (cuándo parar, a las 24 h, anclaje) se añaden si están rellenas.</p>
     <textarea class="plan-note-input" id="planNotasCasa" rows="4" placeholder="Ej.: 10 repeticiones de … cada mañana" oninput="planNota('domiciliario', this.value)">${esc(pt.notas.domiciliario)}</textarea>
+    <label class="plan-campo-et" for="planParar">Cuándo parar</label>
+    <textarea class="plan-note-input" id="planParar" rows="2" placeholder="${esc(state.planNotes?.variableControl ? `Si lo dejas vacío: «${state.planNotes.variableControl}» (fase 5)` : 'Ej.: si el dolor de la pierna aumenta o aparece hormigueo')}" oninput="planNota('parar', this.value)">${esc(pt.notas.parar)}</textarea>
   </div>`;
 }
 
@@ -249,6 +259,15 @@ function planElegir(grupo, valor) {
   } else {
     pt[grupo] = valor;   // gravedad, irritabilidad, sesion, nivel, frecuencia
   }
+  saveSession();
+  pintar();
+}
+
+function planDuracion(id, valor) {
+  const pt = state.planTratamiento;
+  if (!pt) return;
+  if (valor === '' || valor == null) delete pt.duraciones[id];
+  else pt.duraciones[id] = valor;
   saveSession();
   pintar();
 }
@@ -275,7 +294,7 @@ function _compartir(doc, titulo, copiado) {
   let texto;
   if (doc === 'sesion') texto = textoPlanSesion(plan, e, pt.nivel);
   else if (doc === 'mes') texto = textoPlanMes(plan, e, pt.frecuencia);
-  else texto = textoDomiciliario(plan, e, { ejercicios: pt.notas.domiciliario, planNotes: state.planNotes });
+  else texto = textoDomiciliario(plan, e, { ejercicios: pt.notas.domiciliario, parar: pt.notas.parar, planNotes: state.planNotes });
   const extra = doc === 'sesion' ? pt.notas.sesion : doc === 'mes' ? pt.notas.mes : '';
   if (!plan.bloqueado && extra?.trim()) texto += `\n\nNOTAS DEL FISIOTERAPEUTA\n${extra.trim()}`;
   compartirTexto(texto, { titulo, copiado });
@@ -283,11 +302,21 @@ function _compartir(doc, titulo, copiado) {
 
 function compartirPlanSesion() { _compartir('sesion', 'Plan de sesión — PhysiQ-Assessment', '✓ Plan de sesión copiado al portapapeles'); }
 function compartirPlanMes() { _compartir('mes', 'Plan del mes — PhysiQ-Assessment', '✓ Plan del mes copiado al portapapeles'); }
-function compartirDomiciliario() { _compartir('casa', 'Programa para casa', '✓ Programa para casa copiado al portapapeles'); }
+// Sin «cuándo parar» (ni aquí ni en la fase 5), pide confirmación antes de
+// darle al paciente un programa sin criterio de parada.
+function compartirDomiciliario() {
+  const ir = () => _compartir('casa', 'Programa para casa', '✓ Programa para casa copiado al portapapeles');
+  const { plan } = planActual();
+  if (plan.bloqueado || cuandoParar(state.planTratamiento.notas, state.planNotes)) { ir(); return; }
+  cerrarMenuCompartir();
+  showConfirmBanner('Sin criterio para parar',
+    'El programa para casa no dice cuándo parar. Escríbelo en «Cuándo parar» o compártelo sin esa sección.',
+    '<span class="btn-text-full">Compartir igualmente</span><span class="btn-text-short">Compartir</span>', ir, { borra: false });
+}
 
 // Para tests/unit/plan-tratamiento.mjs
 export { planActual, hipotesisEntrada };
 
 // Exposed for inline onclick/oninput attributes (HTML strings built above and
 // the share menu in app.js) — they resolve only against the global scope.
-Object.assign(window, { planElegir, planNota, compartirPlanSesion, compartirPlanMes, compartirDomiciliario });
+Object.assign(window, { planElegir, planNota, planDuracion, compartirPlanSesion, compartirPlanMes, compartirDomiciliario });

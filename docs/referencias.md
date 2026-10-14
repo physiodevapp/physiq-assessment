@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **463** referencias de literatura, con **2111** usos.
+- **463** referencias de literatura, con **2113** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **374** de 463 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -134,7 +134,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pedret 2026](#pedret-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
-| [Maitland 2005](#maitland-2005) | plan de tratamiento | 21 | **sin revisar** |
+| [Maitland 2005](#maitland-2005) | plan de tratamiento | 23 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 1 | **sin revisar** |
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 6 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
@@ -7120,6 +7120,8 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `REGLAS_MES.3` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `REGLAS_MES.4` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `REGLA_RADICULAR_SEVERA` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alDiaSiguienteDefecto.fuente` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.primeraSesion.fuente` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionBase` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionSiguiente` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionRadicular` | 6 · plan de tratamiento | 1 |

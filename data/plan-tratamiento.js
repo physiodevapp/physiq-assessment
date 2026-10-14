@@ -61,22 +61,27 @@ export const AVISOS = {
   propuesta: 'Es una propuesta, no una prescripción: la decide y la firma el fisioterapeuta.',
   soloTerapiaManual: 'Los escalones se refieren a la terapia manual de la pauta. Para el ejercicio, la dosis es la de la pauta (Maitland no trata la dosis del ejercicio).',
   miedo: 'Bandera amarilla (miedo al movimiento o riesgo psicosocial alto): tenlo presente al educar y al progresar. No bloquea la propuesta C (Petersen 2021 incluye las banderas amarillas en la «naturaleza» del cuadro).',
-  sinNRS: 'Sin NRS registrado: se toma la gravedad más alta, que es la opción prudente. Cámbiala si la conoces.',
+  sinNRS: 'Sin NRS registrado: se toma la gravedad más alta, que es la opción prudente. Cámbiala si la conoces, o registra el NRS en la fase 3.',
+  difiereFase3: 'La fase 3 calcula la irritabilidad con toda la matriz, que incluye ítems de gravedad (dolor y discapacidad); aquí solo cuentan reposo, movimiento y tolerancia.',
   estimada: 'Irritabilidad estimada (elegida directamente, sin la matriz).',
   breveSinTests: 'Hipótesis de trabajo, pendiente de confirmar: no tiene ningún test hecho.',
   posqSinProtocolo: 'Restricciones pendientes de confirmar con el cirujano: solo estructura genérica, sin contenido de intervención.',
   posqProtocolo: 'El protocolo del cirujano manda: no adelantar nada que no permita.',
+  dosHipotesis: 'Dos hipótesis: la intervención principal se reparte entre ambas y el tiempo de cada una baja.',
   vertigo: 'No usar ninguna técnica cervical que produzca mareo; probar antes con movimientos exploratorios (Maitland 2005, cap. 9, p. 224).',
 };
 
 // Bloques de la sesión de 50 minutos: organización orientativa y editable, no
-// evidencia (docs/plan-tratamiento.md, «Sesión de 50 minutos»).
+// evidencia (docs/plan-tratamiento.md, «Sesión de 50 minutos»). `duracion` en
+// minutos; el fisio la cambia en la fase 6 y los rangos se recalculan
+// (rangosBloques(), lib/plan-tratamiento.js).
+export const MINUTOS_SESION = 50;
 export const BLOQUES_SESION = [
-  { id: 'reevaluacion', titulo: 'Reevaluación', minutos: '0–5' },
-  { id: 'educacion', titulo: 'Educación', minutos: '5–12' },
-  { id: 'intervencion', titulo: 'Intervención principal', minutos: '12–35' },
-  { id: 'domiciliario', titulo: 'Programa domiciliario', minutos: '35–45' },
-  { id: 'cierre', titulo: 'Cierre', minutos: '45–50' },
+  { id: 'reevaluacion', titulo: 'Reevaluación', duracion: 5 },
+  { id: 'educacion', titulo: 'Educación', duracion: 7 },
+  { id: 'intervencion', titulo: 'Intervención principal', duracion: 23 },
+  { id: 'domiciliario', titulo: 'Programa domiciliario', duracion: 10 },
+  { id: 'cierre', titulo: 'Cierre', duracion: 5 },
 ];
 
 // Contenido fijo de cada bloque (decisiones 18 y 21).
@@ -129,6 +134,37 @@ export const REGLAS_MES = [
 ];
 
 export const REGLA_RADICULAR_SEVERA = 'Con dolor radicular severo, la mejoría puede tardar 7–10 días en notarse (Maitland 2005, cap. 9, p. 217).';
+
+// Hipótesis con compromiso de la raíz o del tejido nervioso, por id (nunca por
+// el nombre: renombrar una hipótesis no debe cambiar el plan). Un test exige
+// que toda hipótesis de una región de REGIONES_PLAN cuyo nombre suene a
+// neurológica («radicul», «estenosis», «neuro») esté en EXPLORACION_NEURO o en
+// NEURO_DESCARTADAS con su motivo.
+//  · EXPLORACION_NEURO: exploración neurológica al empezar cada sesión
+//    (Maitland 2005, cap. 6, p. 136).
+//  · RADICULARES: además, la regla de los 7–10 días, y solo con NRS registrado
+//    de 8 o más (Maitland 2005, cap. 9, p. 217, que habla de dolor radicular
+//    severo, no de la estenosis).
+export const HIP_EXPLORACION_NEURO = ['lu3', 'lu4', 'lu5'];   // dolor radicular, estenosis, radiculopatía
+export const HIP_RADICULARES = ['lu3', 'lu5'];
+export const HIP_NEURO_DESCARTADAS = {};
+
+// Programa para casa: lo único que ve el paciente. Lenguaje llano, sin
+// puntuaciones ni fuentes en el texto; `fuente` solo para la revisión
+// (docs/plan-tratamiento-frases.md). null = redacción propia.
+export const TEXTOS_CASA = {
+  titulo: { texto: 'PROGRAMA PARA CASA', fuente: null },
+  bloqueado: { texto: 'Antes de empezar el tratamiento hace falta una valoración médica. Tu fisioterapeuta te indicará los pasos.', fuente: null },
+  queHacer: { texto: 'Qué hacer:', fuente: null },
+  sinEjercicios: { texto: '(Tu fisioterapeuta te indicará los ejercicios.)', fuente: null },
+  cuandoHacerlo: { texto: 'Cuándo hacerlo:', fuente: null },
+  cuandoParar: { texto: 'Cuándo parar:', fuente: null },
+  alDiaSiguiente: { texto: 'Al día siguiente:', fuente: null },
+  alDiaSiguienteDefecto: { texto: 'Fíjate en cómo estás a las 24 horas y anótalo para la próxima sesión.', fuente: 'Maitland 2005, cap. 9, p. 219 y tabla 9.3 (respuesta a las 24–48 h)' },
+  primeraSesion: { texto: 'Después de esta primera sesión puedes notar un aumento temporal de las molestias.', fuente: 'Maitland 2005, cap. 9, p. 219' },
+  cirujano: { texto: 'Sigue siempre las indicaciones de tu cirujano.', fuente: null },
+  empeora: { texto: 'Si algo empeora mucho o aparece algo nuevo, coméntalo con tu fisioterapeuta antes de la próxima sesión.', fuente: null },
+};
 
 // Hoja de registro de cada sesión (decisión 24; Maitland 2005, cap. 9, tabla 9.3, p. 226).
 export const HOJA_REGISTRO = [

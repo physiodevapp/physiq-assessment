@@ -1,6 +1,6 @@
 # Fase 6 «Plan de tratamiento» — diseño
 
-Estado: **L2 implementado, pendiente de revisión clínica** (2026-10): la parte sin IA, solo en lumbar (piloto), como fase 6 opcional de la navegación. Código: `plan.js` (interfaz), `lib/plan-tratamiento.js` (funciones puras, con tests), `data/plan-tratamiento.js` (textos y fuentes). Detalles de implementación que no estaban en las decisiones: la irritabilidad de la fase 6 se calcula solo con reposo, movimiento y tolerancia de la matriz de la fase 3 (suma 0–6: 0–2 baja, 3–5 moderada, 6 alta) y se puede cambiar; sin NRS, gravedad alta; la hipótesis radicular se detecta por su nombre; la fase 6 nunca entra en el payload, las Notas ni el Informe, y a physiq-report se le anuncia como mucho la fase 5. L3–L5 sin empezar. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
+Estado: **L2 implementado, pendiente de revisión clínica** (2026-10): la parte sin IA, solo en lumbar (piloto), como fase 6 opcional de la navegación. Código: `plan.js` (interfaz), `lib/plan-tratamiento.js` (funciones puras, con tests), `data/plan-tratamiento.js` (textos y fuentes). Tras la primera revisión se tomaron las decisiones 25–29 (abajo). Falta que el usuario revise, línea por línea, `docs/plan-tratamiento-frases.md` (todas las frases de la fase con su fuente o «redacción propia»; se regenera con `node tests/gen-frases-plan.mjs` y `tests/unit.js` falla si no está al día). La fase 6 nunca entra en el payload, las Notas ni el Informe, y a physiq-report se le anuncia como mucho la fase 5. L3–L5 sin empezar. Seguimiento en `MIGRATION_PLAN.md`, **Fase L**.
 
 Qué es: una fase nueva tras los resultados (fase 5) que propone **una sesión de 50 minutos a tres niveles de carga** y **un plan de un mes** en dos variantes: **A**, 1 sesión por semana, y **B**, 2 sesiones por semana. Tiene una parte sin IA, construida con lo que la app ya sabe, y una capa opcional con IA que la detalla.
 
@@ -184,6 +184,13 @@ Leídas enteras desde PubMed Central (página del artículo; la API de texto com
 23. **Plan A (1/semana)**: Maitland evalúa a las 24–48 h y pide sesiones lo bastante frecuentes para poder valorar el efecto (p. 219); con una a la semana, la comparación es semanal (tabla 9.3). El plan A lo dirá, y propondrá que el paciente anote cómo estuvo a las 24 h.
 24. **Hoja de registro de la sesión** siguiendo la tabla 9.3: refiere el paciente / signos / plan y porqué / técnica, grado y efecto durante / efecto después / plan para la siguiente. Sirve también como formato de salida de la capa de IA.
 
+### Decisiones 25–29 (usuario, 2026-10; revisión de L2, aceptadas como se propusieron)
+25. **Cortes de irritabilidad asimétricos hacia lo prudente**: reposo + movimiento + tolerancia (0–2 cada uno) suman 0–6; 0–1 baja, 2–4 moderada, 5–6 alta (antes 0–2 / 3–5 / 6, que solo daba «alta» con los tres al máximo). Quedarse corto es el error peligroso, porque con irritabilidad baja aparecen C y los escalones firmes. Cuando el nivel de la fase 3 (matriz entera, con ítems de gravedad) difiere, la fase 6 muestra los dos y explica por qué. A la matriz le falta el dato central de Petersen y Maitland, cuánto tarda el dolor en calmarse: se apunta para L3 (sería cambiar la fase 3).
+26. **Escalón de B**: irritabilidad alta → 1 siempre, también con gravedad mínima; moderada → 2, o 1 con gravedad máxima; baja → 3. **B nunca es 4**: el escalón firme exige que domine la rigidez, que la app no recoge, así que el 4 solo aparece como C, elegido a sabiendas.
+27. **Sin NRS**: se mantiene la gravedad máxima, con enlace «Registrar NRS en la fase 3 →». La regla de los 7–10 días (radicular severo) solo sale con el NRS registrado de 8 o más, nunca con la máxima prudente ni con la elegida a mano.
+28. **Hipótesis neurológicas por id, nunca por el nombre** (`data/plan-tratamiento.js`): exploración neurológica al empezar cada sesión (Maitland, cap. 6, p. 136) con `lu3` (dolor radicular), `lu4` (estenosis) y `lu5` (radiculopatía); regla de los 7–10 días solo con `lu3` y `lu5`. Un test exige que toda hipótesis de las regiones del plan con «radicul», «estenosis» o «neuro» en el nombre esté en la lista o descartada con motivo; en L3 cada región añade las suyas.
+29. **Textos y minutos**: todas las frases del programa para casa viven en `TEXTOS_CASA`, con su fuente o «redacción propia», y se revisan en `docs/plan-tratamiento-frases.md`. Los minutos de los bloques llevan la etiqueta «Minutos orientativos» y son editables (aviso si no suman 50). «Cuándo parar» es un campo propio; si queda vacío se usa la variable de control de la fase 5 y, sin ninguna, la sección no sale y «📤 Compartir» pide confirmación antes de dar al paciente un programa sin criterio de parada.
+
 ### Decisiones 11–15 (usuario, 2026-10)
 Las cinco recomendaciones tras la lectura se aceptaron y están arriba, en «Decisiones tomadas».
 
@@ -201,7 +208,10 @@ planTratamiento: null | {
   hipotesis: ['lu2'],          // elegidas por el fisio
   nivel: 'B',                  // propuesta de sesión marcada: 'A' | 'B' | 'C'
   frecuencia: 'A',             // plan del mes: 'A' (1/semana) | 'B' (2/semana)
-  notas: { sesion: '', mes: '', domiciliario: '' },  // ediciones del fisio
+  sesion: 'primera',           // 'primera' | 'siguiente'
+  gravedad: null, irritabilidad: null,  // cambiadas a mano (null = calculadas)
+  notas: { sesion: '', mes: '', domiciliario: '', parar: '' },  // ediciones del fisio
+  duraciones: {},              // minutos de cada bloque cambiados a mano
   ia: null | { texto, fecha, prompt, version, huella, revisados }
 }
 ```

@@ -313,7 +313,9 @@ Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo enter
 - [x] L1 — Leídos Zusman 1998 y Silbernagel 2007 (PDF del usuario); decisiones 11–15 aceptadas por el usuario (2026-10)
 - [x] Leído Maitland 7.ª ed., cap. 6 (pp. 97–170); decisiones 16–19 aceptadas por el usuario
 - [x] Leídos Maitland 7.ª ed. (2005), caps. 8 y 9 (pp. 183–228, la 224 en imagen); decisiones 20–24 aceptadas por el usuario. Fuentes de L1 completas: L2 puede empezar
-- [x] L2 — Parte sin IA en lumbar (piloto): fase 6 opcional en la navegación (`nav6`, `#phase6`, `plan.js` + `lib/plan-tratamiento.js` + `data/plan-tratamiento.js`), sin IA; pendiente de revisión clínica del usuario antes de `main`. Elecciones a revisar: cortes de irritabilidad desde la matriz (reposo + movimiento + tolerancia: 0–2 baja, 3–5 moderada, 6 alta), tabla de escalones, detección de radicular por el nombre de la hipótesis, textos del programa para casa
+- [x] L2 — Parte sin IA en lumbar (piloto): fase 6 opcional en la navegación (`nav6`, `#phase6`, `plan.js` + `lib/plan-tratamiento.js` + `data/plan-tratamiento.js`), sin IA. Primera revisión hecha (decisiones 25–29 de `docs/plan-tratamiento.md`: cortes de irritabilidad, tabla de escalones, sin NRS, hipótesis neurológicas por id, minutos editables y «cuándo parar»)
+- [ ] L2 — Revisión de las frases por el usuario (`docs/plan-tratamiento-frases.md`), antes de `main`
+- [ ] L3 — Añadir a la matriz de la fase 3 cuánto tarda el dolor en calmarse (decisión 25), si se decide cambiar la fase 3
 - [ ] L3 — Parte sin IA en las 7 regiones
 - [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)
 - [ ] L5 — Revisión automática con planes reales en los fixtures

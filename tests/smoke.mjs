@@ -1430,6 +1430,7 @@ const ACCIONES_DIALOGO = [
   ['Reiniciar', true], ['Pasar a completa', false], ['Cambiar región', true], ['Importar', true],
   ['Actualizar', false], ['Borrar sesión', true], ['Limpiar', true], ['Descartar', true],
   ['<span class="btn-text-full">Sí, cancelar</span><span class="btn-text-short">Cancelar</span>', true, 'Seguir'],
+  ['<span class="btn-text-full">Compartir igualmente</span><span class="btn-text-short">Compartir</span>', false],
 ];
 async function checkDialogos(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 320, height: 700 } });
@@ -2633,11 +2634,37 @@ async function checkFase6(browser, errors) {
   await page.click('#compartirOpciones .compartir-op >> nth=0');
   await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
   r.sesionCopiada = (await leer()).startsWith('PLAN DE SESIÓN');
+  // Irritabilidad alta → B muy suave aunque la gravedad sea mínima
+  await page.click('.option-btn[onclick="planElegir(\'gravedad\',\'minima\')"]');
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'alta\')"]');
+  r.altaMinimaMuySuave = (await page.textContent('.plan-escalon-tit')).includes('Muy suave');
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
+  await botonNivel('C').click();
+  // Minutos editables: los rangos se recalculan y avisa si no suman 50
+  await page.fill('.plan-bloque:nth-child(3) .plan-duracion input', '20');
+  await page.dispatchEvent('.plan-bloque:nth-child(3) .plan-duracion input', 'change');
+  await page.waitForFunction(() => document.getElementById('planTotalMin')?.textContent.includes('suman 47 min'));
+  r.minutosEditables = await page.evaluate(() => [...document.querySelectorAll('.plan-bloque-min')].map(e => e.textContent.trim()).join('|') === '0–5 min|5–12 min|12–32 min|32–42 min|42–47 min'
+    && !!document.querySelector('.plan-chip'));
+  await page.fill('.plan-bloque:nth-child(3) .plan-duracion input', '23');
+  await page.dispatchEvent('.plan-bloque:nth-child(3) .plan-duracion input', 'change');
+  await page.waitForFunction(() => !document.getElementById('planTotalMin')?.textContent.includes('suman'));
+  // Sin «cuándo parar»: pide confirmación y la sección no sale
   await page.fill('#planNotasCasa', 'Caminar 10 minutos al día');
   await page.click('#btnCompartirPlan');
   await page.click('#compartirOpciones .compartir-op >> nth=2');
+  await page.waitForSelector('#confirmBanner');
+  r.pideParar = (await page.textContent('#confirmBanner .confirm-box-title')).includes('Sin criterio para parar');
+  await page.click('#confirmAction');
+  await page.waitForFunction(() => !document.getElementById('confirmBanner'));
   const casa = await leer();
-  r.casaLlana = casa.startsWith('PROGRAMA PARA CASA') && casa.includes('Caminar 10 minutos') && !/Maitland|Petersen|grado|Nivel/.test(casa);
+  r.casaLlana = casa.startsWith('PROGRAMA PARA CASA') && casa.includes('Caminar 10 minutos') && !/Maitland|Petersen|grado|Nivel/.test(casa)
+    && !casa.includes('Cuándo parar');
+  await page.fill('#planParar', 'Si aparece hormigueo en la pierna');
+  await page.click('#btnCompartirPlan');
+  await page.click('#compartirOpciones .compartir-op >> nth=2');
+  await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+  r.conParar = !(await page.$('#confirmBanner')) && (await leer()).includes('Cuándo parar:\nSi aparece hormigueo');
   // Atrás a la 5 con sus resultados; la 6 sigue en la barra
   await page.click('#phase6 .nav-buttons .btn-secondary');
   r.vueltaA5 = await page.evaluate(() => state.currentPhase === 5 && document.querySelectorAll('#resultsContent .summary-section').length > 0
@@ -2655,6 +2682,11 @@ async function checkFase6(browser, errors) {
   // Urgencia de la fase 2: sin plan
   r.bloqueo = await page.evaluate(() => { state.sistemicoAnswers.l6 = 'SI'; goToPhase(5); goToPhase(6); return true; })
     && await page.waitForFunction(() => document.querySelector('#planContenido .alert-danger') && !document.querySelector('#planContenido .card'), null, { timeout: 4000 }).then(() => true).catch(() => false);
+  // Sin NRS: aviso con enlace a la fase 3
+  await page.evaluate(() => { state.sistemicoAnswers = {}; state.severidad = null; state.planTratamiento.gravedad = null; goToPhase(5); goToPhase(6); });
+  await page.waitForSelector('#planContenido .plan-enlace');
+  await page.click('#planContenido .plan-enlace');
+  r.enlaceNRS = await page.waitForFunction(() => state.currentPhase === 3, null, { timeout: 4000 }).then(() => true).catch(() => false);
   // Otra región: aviso de piloto
   r.piloto = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = 'hombro'; goToPhase(5); goToPhase(6); return true; })
     && await page.waitForFunction(() => document.querySelector('#planContenido .alert-info')?.textContent.includes('piloto'), null, { timeout: 4000 }).then(() => true).catch(() => false);
@@ -2863,7 +2895,7 @@ const SECCIONES = [
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; gravedad e irritabilidad editables (con irritabilidad alta no hay C); compartir sesión, mes y casa (sin fuentes); vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; otra región → piloto; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «cuándo parar» pide confirmación); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; otra región → piloto; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
