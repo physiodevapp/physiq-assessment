@@ -219,4 +219,4 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 Pendiente:
 
 - Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
-- physiq-report no lee aún el campo `cu` del payload.
+- physiq-report lee el campo `cu` del payload (`buildClinicalContext()`, mismo bloque que `contextoValoracion()`): pendiente de fusionar su rama `claude/adoring-maxwell-t0id5i`.
