@@ -2,32 +2,28 @@
 
 > Generado por `node tests/gen-frases-plan.mjs` a partir de `data/plan-tratamiento.js` y `lib/plan-tratamiento.js`. No lo edites a mano: cambia el texto en `data/plan-tratamiento.js` y regenera (`tests/unit.js` falla si no está al día).
 
-Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra los PDF que me pasaste (notas en `docs/plan-tratamiento.md`, «Fuentes leídas»).
+Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», y en el razonamiento de la pregunta `l6` para Finucane 2020).
+
+Redacción propia: **1** frase.
 
 ## 1. Programa para casa (lo lee el paciente)
 
-Va tal cual en «📤 Compartir → Programa para casa». Lo que hará en casa y cuándo parar los escribe el fisio; si «Cuándo parar» queda vacío, se usa la variable de control de la fase 5 y, sin ninguna, la sección no sale y compartir pide confirmación. «Cuándo hacerlo» y «Al día siguiente» usan las notas de la fase 5 si están rellenas.
+Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cuándo parar» los escribe el fisio (si «Cuándo parar» queda vacío, se usa la variable de control de la fase 5); lo que falte no sale, y compartir pide confirmación antes. «Cuándo hacerlo» y «Al día siguiente» usan las notas de la fase 5 si están rellenas. La última frase (urgencias) solo sale con una hipótesis neurológica (sección 2). Con el plan bloqueado por una urgencia o una derivación no hay programa para casa.
 
 - [ ] «PROGRAMA PARA CASA»  
-  ↳ **redacción propia**  
+  ↳ etiqueta  
   ↳ clave `titulo`
-- [ ] «Antes de empezar el tratamiento hace falta una valoración médica. Tu fisioterapeuta te indicará los pasos.»  
-  ↳ **redacción propia**  
-  ↳ clave `bloqueado`
 - [ ] «Qué hacer:»  
-  ↳ **redacción propia**  
+  ↳ etiqueta  
   ↳ clave `queHacer`
-- [ ] «(Tu fisioterapeuta te indicará los ejercicios.)»  
-  ↳ **redacción propia**  
-  ↳ clave `sinEjercicios`
 - [ ] «Cuándo hacerlo:»  
-  ↳ **redacción propia**  
+  ↳ etiqueta  
   ↳ clave `cuandoHacerlo`
 - [ ] «Cuándo parar:»  
-  ↳ **redacción propia**  
+  ↳ etiqueta  
   ↳ clave `cuandoParar`
 - [ ] «Al día siguiente:»  
-  ↳ **redacción propia**  
+  ↳ etiqueta  
   ↳ clave `alDiaSiguiente`
 - [ ] «Fíjate en cómo estás a las 24 horas y anótalo para la próxima sesión.»  
   ↳ fuente: Maitland 2005, cap. 9, p. 219 y tabla 9.3 (respuesta a las 24–48 h)  
@@ -36,11 +32,14 @@ Va tal cual en «📤 Compartir → Programa para casa». Lo que hará en casa y
   ↳ fuente: Maitland 2005, cap. 9, p. 219  
   ↳ clave `primeraSesion`
 - [ ] «Sigue siempre las indicaciones de tu cirujano.»  
-  ↳ **redacción propia**  
+  ↳ fuente: decisión posquirúrgica: el protocolo del cirujano manda (docs/posquirurgico.md; principio 3 de docs/plan-tratamiento.md)  
   ↳ clave `cirujano`
-- [ ] «Si algo empeora mucho o aparece algo nuevo, coméntalo con tu fisioterapeuta antes de la próxima sesión.»  
+- [ ] «Si empeoras claramente o notas algo nuevo, coméntalo con tu fisioterapeuta antes de la próxima sesión.»  
   ↳ **redacción propia**  
   ↳ clave `empeora`
+- [ ] «Si notas adormecimiento entre las piernas o alrededor del ano, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo.»  
+  ↳ fuente: Finucane 2020, sección 2 (síndrome de cola de caballo), pp. 9–17: explicar al paciente qué vigilar y qué hacer (red de seguridad)  
+  ↳ clave `alarmaNeuro`
 
 ## 2. Reglas de decisión (no son frases, pero deciden qué sale)
 
@@ -80,46 +79,44 @@ Va tal cual en «📤 Compartir → Programa para casa». Lo que hará en casa y
 ## 4. Propuestas A, B y C
 
 - [ ] «Un escalón por debajo de B»  
-  ↳ **redacción propia**
+  ↳ describe la app (no afirma nada clínico)
 - [ ] «Ajustada a la gravedad y la irritabilidad»  
-  ↳ **redacción propia**
+  ↳ describe la app (no afirma nada clínico)
 - [ ] «Un escalón por encima de B»  
-  ↳ **redacción propia**
+  ↳ describe la app (no afirma nada clínico)
+- [ ] «A coincide con B: ya es el escalón más suave.»  
+  ↳ describe la app (no afirma nada clínico)
 - [ ] «Sin propuesta C: la irritabilidad no es baja (Petersen 2021; Maitland 2005, cap. 6, p. 117).»  
   ↳ fuente en el texto (Petersen 2021, Maitland 2005)
 - [ ] «Sin propuesta C: los síntomas empeoran. Tratamiento suave y evaluación en cada sesión (Maitland 2005, cap. 6, pp. 101 y 107, que lo dice de los síntomas que varían mucho de un día a otro).»  
   ↳ fuente en el texto (Maitland 2005)
-- [ ] «Sin propuesta C: B ya es el escalón más firme.»  
-  ↳ **redacción propia**
-- [ ] «A coincide con B: ya es el escalón más suave.»  
-  ↳ **redacción propia**
 
 ## 5. Avisos de la fase
 
 - [ ] «Nivel orientativo: el juicio de irritabilidad varía entre fisioterapeutas (acuerdo del 71 %, kappa 0,39–0,44; Barakatt 2009). Puedes cambiar la gravedad y la irritabilidad.»  
   ↳ fuente en el texto (Barakatt 2009)
 - [ ] «Es una propuesta, no una prescripción: la decide y la firma el fisioterapeuta.»  
-  ↳ **redacción propia**
-- [ ] «Los escalones se refieren a la terapia manual de la pauta. Para el ejercicio, la dosis es la de la pauta (Maitland no trata la dosis del ejercicio).»  
-  ↳ **redacción propia**
+  ↳ principio 4 de docs/plan-tratamiento.md
+- [ ] «Los escalones se refieren a la terapia manual de la pauta. Para el ejercicio, la dosis es la de la pauta.»  
+  ↳ decisión 20 de docs/plan-tratamiento.md
 - [ ] «Bandera amarilla (miedo al movimiento o riesgo psicosocial alto): tenlo presente al educar y al progresar. No bloquea la propuesta C (Petersen 2021 incluye las banderas amarillas en la «naturaleza» del cuadro).»  
   ↳ fuente en el texto (Petersen 2021)
 - [ ] «Sin NRS registrado: se toma la gravedad más alta, que es la opción prudente. Cámbiala si la conoces, o registra el NRS en la fase 3.»  
-  ↳ **redacción propia**
+  ↳ decisión 27 de docs/plan-tratamiento.md
 - [ ] «La fase 3 calcula la irritabilidad con toda la matriz, que incluye ítems de gravedad (dolor y discapacidad); aquí solo cuentan reposo, movimiento y tolerancia.»  
-  ↳ **redacción propia**
+  ↳ decisión 25 de docs/plan-tratamiento.md
 - [ ] «Irritabilidad estimada (elegida directamente, sin la matriz).»  
-  ↳ **redacción propia**
+  ↳ decisión 12 de docs/plan-tratamiento.md
 - [ ] «Hipótesis de trabajo, pendiente de confirmar: no tiene ningún test hecho.»  
-  ↳ **redacción propia**
-- [ ] «Restricciones pendientes de confirmar con el cirujano: solo estructura genérica, sin contenido de intervención.»  
-  ↳ **redacción propia**
-- [ ] «El protocolo del cirujano manda: no adelantar nada que no permita.»  
-  ↳ **redacción propia**
+  ↳ describe la app (no afirma nada clínico)
 - [ ] «Dos hipótesis: la intervención principal se reparte entre ambas y el tiempo de cada una baja.»  
-  ↳ **redacción propia**
+  ↳ decisión 10 de docs/plan-tratamiento.md
 - [ ] «No usar ninguna técnica cervical que produzca mareo; probar antes con movimientos exploratorios (Maitland 2005, cap. 9, p. 224).»  
   ↳ fuente en el texto (Maitland 2005)
+- [ ] «Solo si es compatible con el protocolo del cirujano; donde difieran, prevalece el protocolo.»  
+  ↳ texto de la fase 5 (`TEXTO_PAUTA_COMPATIBLE`, lib/posquirurgico.js), ya revisado: posquirúrgico con protocolo
+- [ ] «Restricciones pendientes de confirmar con el cirujano.»  
+  ↳ texto de la fase 5 (`TEXTO_SIN_PROTOCOLO`, lib/posquirurgico.js), ya revisado: posquirúrgico sin protocolo
 
 ## 6. Sesión de 50 minutos
 
@@ -142,7 +139,7 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
 - [ ] «Exploración neurológica al empezar; si empeora, comunicarlo al médico (Maitland 2005, cap. 6, p. 136).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Explicar la hipótesis y el plan, y lo que puede notar.»  
-  ↳ **redacción propia**
+  ↳ organización de la sesión (orientativa, editable; no evidencia)
 - [ ] «Avisar de un posible aumento temporal de los síntomas tras esta primera sesión (Maitland 2005, cap. 9, p. 219).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Primera sesión: menos tratamiento que en las siguientes, porque el primer estiramiento provoca más reacción (Maitland 2005, cap. 9, p. 219).»  
@@ -150,9 +147,11 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
 - [ ] «Evaluar antes, durante y después de cada técnica; unas 3–4 movilizaciones de unos 30 s por articulación, la mitad si duele mucho (Maitland 2005, cap. 9, pp. 213, 216 y 219).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Enseñar y comprobar lo que hará en casa.»  
-  ↳ **redacción propia**
-- [ ] «Reevaluar el signo comparable y explicar qué vigilar hasta la próxima sesión.»  
-  ↳ **redacción propia**
+  ↳ organización de la sesión (orientativa, editable; no evidencia)
+- [ ] «Reevaluar el signo comparable y explicar qué vigilar hasta la próxima sesión (Maitland 2005, cap. 9, p. 213 y tabla 9.3, «Después»).»  
+  ↳ fuente en el texto (Maitland 2005)
+- [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (adormecimiento entre las piernas o alrededor del ano, cambios al orinar o al hacer de vientre) y comprobar que lo ha entendido (Finucane 2020, sección 2, pp. 9–17).»  
+  ↳ fuente en el texto (Finucane 2020)
 
 ## 7. Plan de un mes
 

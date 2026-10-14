@@ -6,7 +6,7 @@ import { state } from './state.js';
 import { DOSIS_DERIVAR } from './data.js';
 import { REGIONES_PLAN, ESCALONES, AVISOS, MINUTOS_SESION } from './data/plan-tratamiento.js';
 import {
-  construirPlan, elegible, hipotesisPorDefecto, textoPlanSesion, textoPlanMes, textoDomiciliario, cuandoParar,
+  construirPlan, elegible, hipotesisPorDefecto, textoPlanSesion, textoPlanMes, textoDomiciliario, faltaEnCasa, textoPosq,
   NIVELES_GRAVEDAD, NIVELES_IRRITABILIDAD, NOMBRE_GRAVEDAD, NOMBRE_IRRITABILIDAD,
 } from './lib/plan-tratamiento.js';
 import { hipotesis, hipotesisActivas, esTratada } from './phase4b.js';
@@ -196,7 +196,7 @@ function pintar() {
       <div class="plan-escalon-tit">Nivel ${nivel} · ${esc(esc_.nombre)} <span class="plan-calc">(${esc(esc_.modo)})</span></div>
       <div>${esc(esc_.texto)}</div>
       <div class="test-source" style="margin:6px 0 0;">${esc(esc_.citas.join(' · '))}</div>
-      <div class="plan-ayuda" style="margin-top:6px;">Los escalones se refieren a la terapia manual. Para el ejercicio, la dosis es la de la pauta.</div>
+      <div class="plan-ayuda" style="margin-top:6px;">${esc(AVISOS.soloTerapiaManual)}</div>
     </div>
     ${s.notaPrimera ? `<div class="plan-aviso">${esc(s.notaPrimera)}</div>` : ''}
     <div class="plan-bloques">
@@ -209,7 +209,7 @@ function pintar() {
           ? '<div class="exercise-box"><em>Pauta a criterio del fisioterapeuta: no hay una pauta con fuente para esta hipótesis.</em></div>'
           : pautaHTML(h.pauta, h.pautaFuente)}`).join('') + lista([`Terapia manual: nivel ${nivel} (arriba).`, s.cantidad]) : ''}
         ${b.id === 'domiciliario' ? lista([s.domiciliario]) : ''}
-        ${b.id === 'cierre' ? lista([s.cierre]) : ''}
+        ${b.id === 'cierre' ? lista(s.cierre) : ''}
       </div>`).join('')}
     </div>
     <div class="plan-ayuda${s.cuadra ? '' : ' plan-ayuda-aviso'}" id="planTotalMin">${s.cuadra
@@ -227,7 +227,7 @@ function pintar() {
     <div class="summary-row"><span class="summary-label">Reevaluación final</span><span class="summary-value">${esc(mes.final)}${plan.mes.prom.length ? `, con ${esc(plan.mes.prom.join(' / '))}` : ''}</span></div>
     <div class="summary-row"><span class="summary-label">Programa domiciliario</span><span class="summary-value">${esc(mes.domiciliario)}</span></div>
     ${lista(mes.notas)}
-    ${plan.mes.posq ? `<div class="nota-posq">🏥 ${plan.mes.posq.semanas != null ? `Semana ${plan.mes.posq.semanas} tras la cirugía. ` : ''}${esc(plan.mes.posq.conProtocolo ? 'El protocolo del cirujano manda: no adelantar nada que no permita.' : 'Restricciones pendientes de confirmar con el cirujano.')}</div>` : ''}
+    ${plan.mes.posq ? `<div class="nota-posq">🏥 ${plan.mes.posq.semanas != null ? `Semana ${plan.mes.posq.semanas} tras la cirugía. ` : ''}${esc(textoPosq(plan.mes.posq.conProtocolo))}</div>` : ''}
     <div class="plan-sub">Progresión</div>${lista([plan.mes.progresion])}
     <div class="plan-sub">Seguir o cambiar</div>${lista(plan.mes.reglas)}
     ${plan.mes.pronostico.length ? `<div class="plan-sub">Pronóstico y cuándo reconsiderar</div>${lista(plan.mes.pronostico.flatMap(p => [
@@ -242,6 +242,8 @@ function pintar() {
   <div class="card" id="planCasa">
     <div class="card-title">Programa para casa</div>
     <p class="plan-ayuda">Lo que hará el paciente en casa, con tus palabras: va tal cual en «📤 Compartir → Programa para casa», en lenguaje llano y sin puntuaciones ni fuentes. Las notas del plan de la fase 5 (cuándo parar, a las 24 h, anclaje) se añaden si están rellenas.</p>
+    ${plan.neuro ? '<p class="plan-ayuda">Con una hipótesis neurológica, el programa termina con cuándo ir a urgencias (red de seguridad).</p>' : ''}
+    <label class="plan-campo-et" for="planNotasCasa">Qué hacer</label>
     <textarea class="plan-note-input" id="planNotasCasa" rows="4" placeholder="Ej.: 10 repeticiones de … cada mañana" oninput="planNota('domiciliario', this.value)">${esc(pt.notas.domiciliario)}</textarea>
     <label class="plan-campo-et" for="planParar">Cuándo parar</label>
     <textarea class="plan-note-input" id="planParar" rows="2" placeholder="${esc(state.planNotes?.variableControl ? `Si lo dejas vacío: «${state.planNotes.variableControl}» (fase 5)` : 'Ej.: si el dolor de la pierna aumenta o aparece hormigueo')}" oninput="planNota('parar', this.value)">${esc(pt.notas.parar)}</textarea>
@@ -280,11 +282,16 @@ function planNota(campo, valor) {
 
 // ─── Compartir (menú de «📤 Compartir» de la fase 6, app.js) ─────
 export function opcionesCompartir() {
-  return [
+  const ops = [
     { accion: 'compartirPlanSesion', nombre: 'Plan de sesión', sub: 'Sesión de 50 min con el nivel elegido, para ti' },
     { accion: 'compartirPlanMes', nombre: 'Plan del mes', sub: 'Plan A o B, reglas de seguir o cambiar y hoja de registro' },
-    { accion: 'compartirDomiciliario', nombre: 'Programa para casa', sub: 'Para el paciente, en lenguaje llano' },
   ];
+  // Con el plan bloqueado (urgencia o derivación) no hay programa para casa:
+  // esa conversación es en persona.
+  if (REGIONES_PLAN.includes(state.region) && !planActual().plan.bloqueado) {
+    ops.push({ accion: 'compartirDomiciliario', nombre: 'Programa para casa', sub: 'Para el paciente, en lenguaje llano' });
+  }
+  return ops;
 }
 
 function _compartir(doc, titulo, copiado) {
@@ -302,15 +309,18 @@ function _compartir(doc, titulo, copiado) {
 
 function compartirPlanSesion() { _compartir('sesion', 'Plan de sesión — PhysiQ-Assessment', '✓ Plan de sesión copiado al portapapeles'); }
 function compartirPlanMes() { _compartir('mes', 'Plan del mes — PhysiQ-Assessment', '✓ Plan del mes copiado al portapapeles'); }
-// Sin «cuándo parar» (ni aquí ni en la fase 5), pide confirmación antes de
-// darle al paciente un programa sin criterio de parada.
+// Sin «qué hacer» o sin «cuándo parar» (ni aquí ni en la fase 5), pide
+// confirmación antes de darle al paciente un programa incompleto.
 function compartirDomiciliario() {
   const ir = () => _compartir('casa', 'Programa para casa', '✓ Programa para casa copiado al portapapeles');
   const { plan } = planActual();
-  if (plan.bloqueado || cuandoParar(state.planTratamiento.notas, state.planNotes)) { ir(); return; }
+  if (plan.bloqueado) return;
+  const falta = faltaEnCasa(state.planTratamiento.notas, state.planNotes);
+  if (!falta.length) { ir(); return; }
   cerrarMenuCompartir();
-  showConfirmBanner('Sin criterio para parar',
-    'El programa para casa no dice cuándo parar. Escríbelo en «Cuándo parar» o compártelo sin esa sección.',
+  const lista = falta.map(f => `«${f[0].toUpperCase()}${f.slice(1)}»`).join(' y ');
+  showConfirmBanner('Programa incompleto',
+    `El programa para casa no dice ${falta.join(' ni ')}. Escríbelo en ${lista} o compártelo sin ${falta.length > 1 ? 'esas secciones' : 'esa sección'}.`,
     '<span class="btn-text-full">Compartir igualmente</span><span class="btn-text-short">Compartir</span>', ir, { borra: false });
 }
 

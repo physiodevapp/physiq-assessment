@@ -4,6 +4,7 @@
 import { assert, leer, test, state, withState, buildPhysiQPayload, buildContextSummaryText, buildInformeFisioterapiaText, DOSIS_DERIVAR, HYPOTHESES } from './comun.mjs';
 const P = await import('../../lib/plan-tratamiento.js');
 const D = await import('../../data/plan-tratamiento.js');
+const await_posq = await import('../../lib/posquirurgico.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 const { PHASE_DEFS, PHASE_NAV_IDS } = await import('../../data.js');
 const { leerImportacion } = await import('../../lib/valoracion-json.js');
@@ -75,7 +76,7 @@ test('plan: urgencias y derivaciones del árbol bloquean el plan, y los textos l
   const e = { paciente: 'P', regionTexto: 'Lumbar', fecha: '1/1/2026' };
   assert.match(P.textoPlanSesion(plan, e), /Cauda equina[\s\S]*Sin plan de tratamiento/);
   assert.match(P.textoPlanMes(plan, e), /Claudicación vascular/);
-  assert.match(P.textoDomiciliario(plan, e), /valoración médica/);
+  assert.equal(P.textoDomiciliario(plan, e), '', 'con el plan bloqueado no hay programa para casa');
 });
 
 test('plan: no se planifica una hipótesis «Derivar» sin tratar ni una ya tratada; por defecto, la posquirúrgica o la primera elegible', () => {
@@ -184,16 +185,60 @@ test('plan: el programa para casa va en lenguaje llano (sin escalones, grados, p
   }
 });
 
-test('plan: «cuándo parar» del plan; si no, la variable de control de la fase 5; sin ninguna, la sección no sale y compartir pide confirmación', () => {
+test('plan: «cuándo parar» del plan; si no, la variable de control de la fase 5; lo que falte no sale y compartir pide confirmación', () => {
   const p = P.construirPlan({ hipotesis: [], elegidas: [] });
   assert.equal(P.cuandoParar({ parar: ' Si duele ' }, { variableControl: 'VC' }), 'Si duele');
   assert.equal(P.cuandoParar({ parar: '' }, { variableControl: 'VC' }), 'VC');
   assert.equal(P.cuandoParar({}, {}), '');
   assert.match(P.textoDomiciliario(p, {}, { planNotes: { variableControl: 'VC' } }), /Cuándo parar:\nVC/);
   const sin = P.textoDomiciliario(p, {}, {});
-  assert.ok(!sin.includes(D.TEXTOS_CASA.cuandoParar.texto));
-  assert.ok(!/te indicará cuándo parar/.test(sin));
-  assert.match(leer('plan.js'), /showConfirmBanner\('Sin criterio para parar'/);
+  for (const k of ['queHacer', 'cuandoParar']) assert.ok(!sin.includes(D.TEXTOS_CASA[k].texto), k);
+  assert.ok(!/te indicará/.test(sin), 'sin rellenos que prometen algo');
+  assert.deepEqual(P.faltaEnCasa({}, {}), ['qué hacer', 'cuándo parar']);
+  assert.deepEqual(P.faltaEnCasa({ domiciliario: 'X' }, { variableControl: 'VC' }), []);
+  assert.deepEqual(P.faltaEnCasa({ domiciliario: ' ' }, { variableControl: 'VC' }), ['qué hacer']);
+  assert.match(leer('plan.js'), /showConfirmBanner\('Programa incompleto'/);
+});
+
+test('plan: con una hipótesis neurológica, red de seguridad en el cierre y al final del programa para casa (Finucane 2020); sin ella, no', () => {
+  const base = { severidad: 5, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta') };
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  for (const id of D.HIP_EXPLORACION_NEURO) {
+    const p = P.construirPlan({ ...base, hipotesis: [hip(id)], elegidas: [id] });
+    assert.ok(p.neuro && p.sesion.cierre.includes(D.TEXTOS_SESION.cierreNeuro), id);
+    const t = P.textoDomiciliario(p, {}, { ejercicios: 'X', parar: 'Y' });
+    assert.ok(t.trimEnd().endsWith(D.TEXTOS_CASA.alarmaNeuro.texto), `${id}: la alarma va al final`);
+  }
+  const no = P.construirPlan({ ...base, hipotesis: [hip('lu1')], elegidas: ['lu1'] });
+  assert.ok(!no.neuro && !no.sesion.cierre.includes(D.TEXTOS_SESION.cierreNeuro));
+  assert.ok(!P.textoDomiciliario(no, {}, { ejercicios: 'X', parar: 'Y' }).includes(D.TEXTOS_CASA.alarmaNeuro.texto));
+  assert.ok(D.FUENTES_PLAN.includes('Finucane 2020'));
+  assert.match(D.TEXTOS_CASA.alarmaNeuro.fuente, /^Finucane 2020/);
+});
+
+test('plan: los avisos posquirúrgicos son los textos de la fase 5; sin propuesta C «por tope», que ya no puede darse', () => {
+  const POSQ = await_posq;
+  assert.equal(P.textoPosq(true), POSQ.TEXTO_PAUTA_COMPATIBLE);
+  assert.equal(P.textoPosq(false), `${POSQ.TEXTO_SIN_PROTOCOLO}.`);
+  const hs = [{ id: 'x', name: 'X', pauta: 'P.', derivar: false, tratada: false }];
+  const conP = P.construirPlan({ hipotesis: hs, elegidas: ['x'], posq: { conProtocolo: true, semanas: 3 } });
+  assert.ok(conP.avisosHip.includes(POSQ.TEXTO_PAUTA_COMPATIBLE));
+  assert.match(P.textoPlanMes(conP, {}), new RegExp(POSQ.TEXTO_PAUTA_COMPATIBLE.slice(0, 30)));
+  assert.ok(!('tope' in D.TEXTO_NIVELES.sinC));
+  for (const k of ['posqProtocolo', 'posqSinProtocolo']) assert.ok(!(k in D.AVISOS), k);
+  assert.ok(!/Maitland no trata/.test(D.AVISOS.soloTerapiaManual));
+});
+
+test('plan: TIPO_TEXTO solo nombra textos que existen y decisiones o principios del documento de diseño', () => {
+  const diseno = leer('docs', 'plan-tratamiento.md');
+  for (const [clave, tipo] of Object.entries(D.TIPO_TEXTO)) {
+    const [obj, ...ruta] = clave.split('.');
+    assert.equal(typeof ruta.reduce((o, k) => o?.[k], D[obj]), 'string', clave);
+    const [k, n] = tipo.split(':');
+    if (k === 'decision') assert.match(diseno, new RegExp(`^${n}\\. `, 'm'), `decisión ${n}`);
+    else if (k === 'principio') assert.match(diseno, new RegExp(`^${n}\\. \\*\\*`, 'm'), `principio ${n}`);
+    else assert.ok(['app', 'organizacion'].includes(k), tipo);
+  }
 });
 
 test('plan: navegación con fase 6 opcional (PHASE_DEFS, nav, contenedor) y la importación la acepta', () => {

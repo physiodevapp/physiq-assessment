@@ -50,7 +50,6 @@ export const TEXTO_NIVELES = {
   sinC: {
     irritabilidad: 'Sin propuesta C: la irritabilidad no es baja (Petersen 2021; Maitland 2005, cap. 6, p. 117).',
     estabilidad: 'Sin propuesta C: los síntomas empeoran. Tratamiento suave y evaluación en cada sesión (Maitland 2005, cap. 6, pp. 101 y 107, que lo dice de los síntomas que varían mucho de un día a otro).',
-    tope: 'Sin propuesta C: B ya es el escalón más firme.',
   },
   aIgual: 'A coincide con B: ya es el escalón más suave.',
 };
@@ -59,14 +58,12 @@ export const TEXTO_NIVELES = {
 export const AVISOS = {
   orientativo: 'Nivel orientativo: el juicio de irritabilidad varía entre fisioterapeutas (acuerdo del 71 %, kappa 0,39–0,44; Barakatt 2009). Puedes cambiar la gravedad y la irritabilidad.',
   propuesta: 'Es una propuesta, no una prescripción: la decide y la firma el fisioterapeuta.',
-  soloTerapiaManual: 'Los escalones se refieren a la terapia manual de la pauta. Para el ejercicio, la dosis es la de la pauta (Maitland no trata la dosis del ejercicio).',
+  soloTerapiaManual: 'Los escalones se refieren a la terapia manual de la pauta. Para el ejercicio, la dosis es la de la pauta.',
   miedo: 'Bandera amarilla (miedo al movimiento o riesgo psicosocial alto): tenlo presente al educar y al progresar. No bloquea la propuesta C (Petersen 2021 incluye las banderas amarillas en la «naturaleza» del cuadro).',
   sinNRS: 'Sin NRS registrado: se toma la gravedad más alta, que es la opción prudente. Cámbiala si la conoces, o registra el NRS en la fase 3.',
   difiereFase3: 'La fase 3 calcula la irritabilidad con toda la matriz, que incluye ítems de gravedad (dolor y discapacidad); aquí solo cuentan reposo, movimiento y tolerancia.',
   estimada: 'Irritabilidad estimada (elegida directamente, sin la matriz).',
   breveSinTests: 'Hipótesis de trabajo, pendiente de confirmar: no tiene ningún test hecho.',
-  posqSinProtocolo: 'Restricciones pendientes de confirmar con el cirujano: solo estructura genérica, sin contenido de intervención.',
-  posqProtocolo: 'El protocolo del cirujano manda: no adelantar nada que no permita.',
   dosHipotesis: 'Dos hipótesis: la intervención principal se reparte entre ambas y el tiempo de cada una baja.',
   vertigo: 'No usar ninguna técnica cervical que produzca mareo; probar antes con movimientos exploratorios (Maitland 2005, cap. 9, p. 224).',
 };
@@ -94,7 +91,8 @@ export const TEXTOS_SESION = {
   primeraSesion: 'Primera sesión: menos tratamiento que en las siguientes, porque el primer estiramiento provoca más reacción (Maitland 2005, cap. 9, p. 219).',
   cantidad: 'Evaluar antes, durante y después de cada técnica; unas 3–4 movilizaciones de unos 30 s por articulación, la mitad si duele mucho (Maitland 2005, cap. 9, pp. 213, 216 y 219).',
   domiciliario: 'Enseñar y comprobar lo que hará en casa.',
-  cierre: 'Reevaluar el signo comparable y explicar qué vigilar hasta la próxima sesión.',
+  cierre: 'Reevaluar el signo comparable y explicar qué vigilar hasta la próxima sesión (Maitland 2005, cap. 9, p. 213 y tabla 9.3, «Después»).',
+  cierreNeuro: 'Red de seguridad: explicar qué síntomas exigen ir a urgencias (adormecimiento entre las piernas o alrededor del ano, cambios al orinar o al hacer de vientre) y comprobar que lo ha entendido (Finucane 2020, sección 2, pp. 9–17).',
 };
 
 // Plan de un mes: A = 1 sesión/semana, B = 2 sesiones/semana.
@@ -153,17 +151,32 @@ export const HIP_NEURO_DESCARTADAS = {};
 // puntuaciones ni fuentes en el texto; `fuente` solo para la revisión
 // (docs/plan-tratamiento-frases.md). null = redacción propia.
 export const TEXTOS_CASA = {
-  titulo: { texto: 'PROGRAMA PARA CASA', fuente: null },
-  bloqueado: { texto: 'Antes de empezar el tratamiento hace falta una valoración médica. Tu fisioterapeuta te indicará los pasos.', fuente: null },
-  queHacer: { texto: 'Qué hacer:', fuente: null },
-  sinEjercicios: { texto: '(Tu fisioterapeuta te indicará los ejercicios.)', fuente: null },
-  cuandoHacerlo: { texto: 'Cuándo hacerlo:', fuente: null },
-  cuandoParar: { texto: 'Cuándo parar:', fuente: null },
-  alDiaSiguiente: { texto: 'Al día siguiente:', fuente: null },
+  titulo: { texto: 'PROGRAMA PARA CASA', tipo: 'etiqueta' },
+  queHacer: { texto: 'Qué hacer:', tipo: 'etiqueta' },
+  cuandoHacerlo: { texto: 'Cuándo hacerlo:', tipo: 'etiqueta' },
+  cuandoParar: { texto: 'Cuándo parar:', tipo: 'etiqueta' },
+  alDiaSiguiente: { texto: 'Al día siguiente:', tipo: 'etiqueta' },
   alDiaSiguienteDefecto: { texto: 'Fíjate en cómo estás a las 24 horas y anótalo para la próxima sesión.', fuente: 'Maitland 2005, cap. 9, p. 219 y tabla 9.3 (respuesta a las 24–48 h)' },
   primeraSesion: { texto: 'Después de esta primera sesión puedes notar un aumento temporal de las molestias.', fuente: 'Maitland 2005, cap. 9, p. 219' },
-  cirujano: { texto: 'Sigue siempre las indicaciones de tu cirujano.', fuente: null },
-  empeora: { texto: 'Si algo empeora mucho o aparece algo nuevo, coméntalo con tu fisioterapeuta antes de la próxima sesión.', fuente: null },
+  cirujano: { texto: 'Sigue siempre las indicaciones de tu cirujano.', fuente: 'decisión posquirúrgica: el protocolo del cirujano manda (docs/posquirurgico.md; principio 3 de docs/plan-tratamiento.md)' },
+  empeora: { texto: 'Si empeoras claramente o notas algo nuevo, coméntalo con tu fisioterapeuta antes de la próxima sesión.', tipo: 'redaccion' },
+  // Solo con hipótesis de HIP_EXPLORACION_NEURO: síntomas de la lista del
+  // razonamiento de l6 (data/lumbar.js), en lenguaje llano.
+  alarmaNeuro: { texto: 'Si notas adormecimiento entre las piernas o alrededor del ano, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo.', fuente: 'Finucane 2020, sección 2 (síndrome de cola de caballo), pp. 9–17: explicar al paciente qué vigilar y qué hacer (red de seguridad)' },
+};
+
+// Cómo cuenta cada texto que no cita fuente en el propio texto, para el
+// documento de revisión (tests/frases-plan.mjs). Sin entrada = redacción propia.
+//  · app: describe cómo funciona la app, no afirma nada clínico.
+//  · decision:N / principio:N: una decisión o un principio de docs/plan-tratamiento.md.
+//  · organizacion: organización de la sesión (orientativa, editable), no evidencia.
+export const TIPO_TEXTO = {
+  'TEXTO_NIVELES.A': 'app', 'TEXTO_NIVELES.B': 'app', 'TEXTO_NIVELES.C': 'app', 'TEXTO_NIVELES.aIgual': 'app',
+  'AVISOS.propuesta': 'principio:4',
+  'AVISOS.soloTerapiaManual': 'decision:20',
+  'AVISOS.sinNRS': 'decision:27', 'AVISOS.difiereFase3': 'decision:25', 'AVISOS.estimada': 'decision:12',
+  'AVISOS.breveSinTests': 'app', 'AVISOS.dosHipotesis': 'decision:10',
+  'TEXTOS_SESION.educacionBase': 'organizacion', 'TEXTOS_SESION.domiciliario': 'organizacion',
 };
 
 // Hoja de registro de cada sesión (decisión 24; Maitland 2005, cap. 9, tabla 9.3, p. 226).
@@ -177,4 +190,4 @@ export const HOJA_REGISTRO = [
 ];
 
 // Fuentes de la fase (claves de data/referencias.js), para docs/referencias.md.
-export const FUENTES_PLAN = ['Petersen 2021', 'Maitland 2005', 'Barakatt 2009', 'Zusman 1998'];
+export const FUENTES_PLAN = ['Petersen 2021', 'Maitland 2005', 'Barakatt 2009', 'Zusman 1998', 'Finucane 2020'];
