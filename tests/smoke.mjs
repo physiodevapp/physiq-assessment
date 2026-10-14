@@ -2524,6 +2524,15 @@ async function checkBandaFormulario(page) {
     await irAFase2(page, 'lumbar');
     await page.click('#fpDet_region > summary');
     await page.waitForSelector('#fpBody_region .fp-text, #fpBody_region button');
+    // Cada fila contestada de una matriz cuenta como una respuesta (lumbar «¿Qué le empeora?»)
+    const matriz = await page.evaluate(async () => {
+      const cont = () => document.getElementById('fpCont_region').textContent;
+      const fila = i => document.querySelector(`[onclick^="fpMatriz('lumbar','empeora',${i},"]`);
+      const antes = cont();
+      fila(0)?.click(); fila(1)?.click();
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+      return { antes, despues: cont(), banda: document.getElementById('fpBannerCont').textContent };
+    });
     await page.evaluate(() => [...document.querySelectorAll('#sistemicoQuestions .sistema-accordion-header')]
       .find(h => h.offsetParent)?.click());
     await page.waitForTimeout(100);
@@ -2553,10 +2562,11 @@ async function checkBandaFormulario(page) {
     const enF2 = await bandas();
     await page.evaluate(() => goToPhase(1));
     const trasFase = await bandas();
-    res[k] = { antes, dentro, contSummary, respondido, contRespondido, fuera, trasVolver, cerrado, trasSistema, dos, vioFp, vioSis, nombreRegion, enF2, trasFase };
+    res[k] = { antes, dentro, contSummary, respondido, contRespondido, matriz, fuera, trasVolver, cerrado, trasSistema, dos, vioFp, vioSis, nombreRegion, enF2, trasFase };
     res[`${k}_ok`] = !antes.fp && dentro.fp && /General/.test(dentro.nombre) && dentro.cont === contSummary
       && respondido.fp && contRespondido !== contSummary && respondido.cont === contRespondido
       && !fuera.fp && res[`${k}_volver`] && !trasVolver.fp && !cerrado.fp
+      && matriz.antes === 'Sin rellenar' && matriz.despues === '2 respuestas'
       && !trasSistema.sis && !dos && vioFp && (vioSis || ancho > 768) && /Lumbar/.test(nombreRegion) && enF2.fp && !trasFase.fp && !trasFase.sis;
   }
   // 320 px: la banda cabe en una línea, sin desbordar
@@ -2679,7 +2689,7 @@ const SECCIONES = [
 
   { id: 'banda-formulario', titulo: 'Bandas de contexto del formulario previo y del cribado:', run: async ({ page }) => {
     const r = await checkBandaFormulario(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} formulario previo (fases 1 y 2, 390 y 1280 px): la banda aparece con la cabecera fuera, con nombre y contador (que se actualiza al responder sin hacer scroll), se va al pasar el formulario, al cerrarlo y al cambiar de fase; «↑ volver» lleva a la cabecera; formulario regional y sistema abierto nunca a la vez, y la del sistema se va al dejarlo atrás; cabe a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} formulario previo (fases 1 y 2, 390 y 1280 px): la banda aparece con la cabecera fuera, con nombre y contador (que se actualiza al responder sin hacer scroll, y cuenta cada fila de una matriz), se va al pasar el formulario, al cerrarlo y al cambiar de fase; «↑ volver» lleva a la cabecera; formulario regional y sistema abierto nunca a la vez, y la del sistema se va al dejarlo atrás; cabe a 320 px${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
