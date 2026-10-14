@@ -308,12 +308,25 @@ test('Kujala: 0–100; el ítem 4 de la versión española tiene la C «dolor le
 });
 
 test('cada PROM de las hipótesis (salvo escalas de dolor y los pendientes) está en la calculadora', () => {
-  const pendientes = ['IdFAI'];   // puntos por respuesta sin verificar (docs/cuestionarios.md)
+  const pendientes = [];
   const ids = new Set(CUESTIONARIOS.map(d => d.id));
   for (const v of PROM_VALIDADOS_ES.filter(x => !['NPRS', 'EVA', ...pendientes].includes(x))) {
     const id = v.toLowerCase().replace(/[^a-z0-9]/g, '');
     assert.ok(ids.has(id), `«${v}» no está en la calculadora (id «${id}»)`);
   }
+});
+
+test('IdFAI: 0–37 (la pregunta 1 no puntúa); corte ≥ 10,5 de la versión española', () => {
+  const d = def('idfai');
+  assert.deepEqual(d.items.map(it => it.n), [2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  assert.deepEqual(L.rangoPuntuacion(d, d.items.map(it => it.n)), [0, 37]);
+  const maxIdx = Object.fromEntries(d.items.map(it => [it.n, it.opciones.length - 1]));
+  assert.equal(L.puntuar(d, maxIdx).total, 37);
+  const con = (r) => L.puntuar(d, { ...todosN('idfai', 0), ...r });
+  assert.equal(con({ 2: 5, 4: 5 }).total, 10);
+  assert.equal(con({ 2: 5, 4: 5 }).interpretacion.nivel, 'ok');
+  assert.equal(con({ 2: 5, 4: 5, 3: 1 }).total, 11);
+  assert.equal(con({ 2: 5, 4: 5, 3: 1 }).interpretacion.nivel, 'alto');
 });
 
 test('CAIT: máximos suman 30, mínimos 0; cortes 24 y 27', () => {

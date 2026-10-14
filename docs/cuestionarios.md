@@ -82,7 +82,7 @@ Leyenda de licencia:
 | FAAM | 🟠 | Martin / Irrgang | Cervera-Garvi 2017, PMID 28852426; Membrilla-Mesa 2022, PMID 34716013 | Sin bandas; MCID 8 (AVD) / 9 (deporte) |
 | VISA-A | Suma 0–100; puntos por respuesta del anexo de Keller 2018 (versión chilena, misma puntuación que el original) | La validación es la española (Hernández-Sánchez 2018); de la chilena solo se toma la puntuación. La hoja «no validada» que circula da los mismos puntos a 8A, 8B y 8C: está mal |
 | CAIT | 🟠 | Hiller | Cruz-Díaz 2013, PMID 23053687; Rodríguez-Fernández 2015, PMID 26292174 | ≤27 original; ≤25 (Wright 2014); ≤24* |
-| IdFAI | 🟠 | Simon; © AOFAS | Cervera-Garvi 2022, PMID 33296608; Izquierdo 2021, PMID 33582620 | ≥11* |
+| IdFAI | 🟠 | Simon; © AOFAS | Cervera-Garvi 2020 (*Disabil Rehabil*, PMID 33296608); Izquierdo 2021, PMID 33582620 | ≥11* |
 
 ### Conclusiones
 
@@ -214,10 +214,9 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 | CAIT | Suma 0–30 con los puntos de la hoja del usuario; cortes ≤ 24 (IAC) y ≤ 27 (Hiller), con «zona dudosa» entre los dos | La hoja no dice de qué validación española sale (sus puntos coinciden con el original); «≤ 24» o «< 24» sin leer en Gribble 2014 |
 | LEFS | Suma 0–80 | Orden (1–20) y redacción comprobados con la versión española (Cruz-Díaz 2014, apéndice 1): mismo orden que el original, «250 metros» y «un kilómetro» en vez de manzanas y millas. Su cambio mínimo detectable (2,18 puntos) se añade a la interpretación |
 
-Pendiente de añadir: **IdFAI** (Cervera-Garvi 2020, IdFAI-Sp, leído: rango 0–37 y corte ≥ 10,5 en la versión española, pero el artículo no incluye el cuestionario; hace falta la hoja con los puntos de cada respuesta).
+**IdFAI** (añadido): puntos por respuesta del apéndice B del original (Simon 2012, *Foot Ankle Int* 33(9):755–763, aportado por el usuario); la pregunta 1 (número de esguinces) no puntúa y las 2–10 suman 0–37 (más es peor). Corte de la versión española ≥ 10,5 (Cervera-Garvi 2020, *Disabil Rehabil*, doi:10.1080/09638288.2020.1857446; AUC 0,84), ≥ 11 con puntos enteros, como el original; cambio mínimo detectable 6,4. El artículo español no trae el cuestionario: etiquetas traducidas por nosotros, pendientes de comparar con la hoja española si aparece.
 
 Pendiente:
 
-- Regionales: IdFAI (ver arriba).
 - Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
 - physiq-report no lee aún el campo `cu` del payload.
