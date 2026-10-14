@@ -1335,6 +1335,41 @@ async function checkCuestionarios(browser, errors) {
   });
   await context.close();
 
+  // Enlaces «Calcular»: fase 1 (Örebro y unidimensionales) y badge del PROM (4b y 5)
+  const ctxEnl = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const e = await ctxEnl.newPage();
+  e.on('pageerror', err => errors.push(`pageerror (calcular): ${err.message}`));
+  await e.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await e.click('button[onclick="selectPsico(this, \'Alto\')"]');
+  await e.click('#psico_miedo .option-btn:has-text("Sí")');
+  r.calcFase1 = await e.evaluate(() =>
+    !!document.querySelector('#psicoToolSuggest [data-cuest-abrir="orebro"]')
+    && [...document.querySelectorAll('#psicoRecomendacion [data-cuest-abrir]')].map(b => b.dataset.cuestAbrir).join() === 'tsk11');
+  await e.click('#psicoToolSuggest [data-cuest-abrir="orebro"]');
+  r.calcAbre = await e.evaluate(() => document.getElementById('cuestOverlay').classList.contains('open')
+    && !!document.querySelector('#cuestCuerpo [data-item="25"]'));
+  await e.keyboard.press('Escape');
+  await e.click('#psicoRecomendacion [data-cuest-abrir="tsk11"]');
+  for (let n = 1; n <= 11; n++) await e.click(`#cuestCuerpo .cuest-item[data-item="${n}"] .cuest-op[data-valor="2"]`);
+  await e.keyboard.press('Escape');
+  r.calcRefresca = await e.evaluate(() => {
+    const b = document.querySelector('#psicoRecomendacion [data-cuest-abrir="tsk11"]');
+    return !!b && /TSK-11 · 22\/44 ✓/.test(b.textContent) && b.classList.contains('cuest-calc-hecho') && document.activeElement === b;
+  });
+  await e.evaluate(() => {
+    Object.assign(window.state, { region: 'lumbar', activeHypotheses: ['lu1'], maxVisitedIdx: 5 });
+    window.goToPhase('4b');
+  });
+  r.calcProm4b = await e.evaluate(() => [...document.querySelectorAll('#hypothesisCards .cuest-calc [data-cuest-abrir]')].map(b => b.dataset.cuestAbrir).join() === 'odi,rmdq');
+  await e.evaluate(() => { window.buildResults(); window.goToPhase(5); });
+  r.calcProm5 = await e.evaluate(() => [...document.querySelectorAll('#phase5 .cuest-calc [data-cuest-abrir]')].map(b => b.dataset.cuestAbrir).join() === 'odi,rmdq');
+  await e.click('#phase5 [data-cuest-abrir="odi"]');
+  r.calcAbreOdi = await e.evaluate(() => /Oswestry/.test(document.getElementById('cuestCuerpo').textContent));
+  await e.keyboard.press('Escape');
+  await e.emulateMedia({ media: 'print' });
+  r.calcSinImprimir = await e.evaluate(() => [...document.querySelectorAll('#phase5 .cuest-calc')].every(c => getComputedStyle(c).display === 'none'));
+  await ctxEnl.close();
+
   // Móvil: hoja inferior, atrás cierra en la misma fase; 320 px sin desbordar
   const movil = await browser.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true });
   const m = await movil.newPage();
