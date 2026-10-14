@@ -297,6 +297,16 @@ test('FAAM: porcentaje por subescala sin las N/A; LEFS: suma 0–80', () => {
   assert.equal(L.totalTexto(def('lefs'), L.puntuar(def('lefs'), todosN('lefs', 2))), '40/80');
 });
 
+test('Kujala: 0–100; el ítem 4 de la versión española tiene la C «dolor leve al subir» a 8 (Gil-Gámez 2016)', () => {
+  const k = def('kujala');
+  const max = k.items.reduce((a, it) => a + Math.max(...it.opciones.map(o => o.v)), 0);
+  const min = k.items.reduce((a, it) => a + Math.min(...it.opciones.map(o => o.v)), 0);
+  assert.equal(max, 100); assert.equal(min, 0);
+  const esc = k.items.find(it => it.n === 4).opciones;
+  assert.deepEqual(esc.map(o => o.v), [10, 8, 8, 5, 0]);
+  assert.ok(esc.every((o, i) => o.t.startsWith('ABCDE'[i] + ' · ')));
+});
+
 test('cada PROM de las hipótesis (salvo escalas de dolor y los pendientes) está en la calculadora', () => {
   const pendientes = ['IdFAI'];   // puntos por respuesta sin verificar (docs/cuestionarios.md)
   const ids = new Set(CUESTIONARIOS.map(d => d.id));
