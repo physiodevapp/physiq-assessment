@@ -103,8 +103,28 @@ Una bandera es un texto o un objeto:
 - **Amarillas sin razonamiento:** dolor de espalda y abdominal al mismo nivel, AINE crónicos, dolor modificado por la ingesta, osteoporosis o corticoides, factores de riesgo cardiovascular, inmunosupresión.
 - **Revisión clínica del usuario:** hecha (2026-10), incluidas las banderas y la pregunta `pq_nervio_col` añadidas después.
 
+## Estado de los sistemas compartidos (2026-10)
+
+- **Enlaces:** las 13 banderas con pregunta en su sistema, más cuatro parciales que su pregunta ya explicaba (infección necrotizante → `pq_herida`; yeso → `pq_sdrc` + `pq_compart`; pelo, uñas, piel y temperatura → `end_3`; fiebre en la leucopenia → `hem_3` + `hem_5`).
+- **Razonamiento propio (11):** endocrino, las 6 rojas sin pregunta (túnel carpiano bilateral, tormenta tiroidea, confusión o sudoración en el diabético, hipopotasemia por diuréticos, xantomas, nódulos supraclaviculares o fiebre con corticoides) y la amarilla de tendinitis calcificante bilateral; hematológico, la roja de la hemofilia y las amarillas de palidez, coiloniquia y AINE crónicos. Ninguna bandera de los tres sistemas queda sin «¿Por qué?» (test del inventario).
+- **Pregunta nueva:** `hem_5`, sepsis neutropénica, con urgencia (hallazgo 4).
+- **Fuentes leídas en la sesión:** Goodman 2018, cap. 5 entero, cap. 11 (las partes de cada bandera, los criterios de derivación y los puntos clave) y cap. 8, pp. 306 y 314–317 (PDF del usuario); NICE CG151 en nice.org.uk; la guía WFH 2020 (PDF del usuario: principios 5 y 6, caps. 7.1–7.2 y 10.4); y 17 capítulos de StatPearls en PDF del usuario: Pokhrel 2022, Mathew y Thoppil 2022, Lizzo 2025, Castro y Sharma 2025, Bell y Saleh 2026, Hodgens y Sharman 2023, Regalla y Killeen 2026, Hanif 2026, Saad y Mathew 2025 y Punnapuzha 2023, nuevos, y Sevy 2023, Farmer y Matto 2026, Awidi y Babiker 2026, Killeen y Cardenas 2025, Malik 2023, Antunes 2024 y Rout 2024, ya registrados y releídos.
+- **Conflictos entre fuentes y cómo se resolvieron:**
+  - Hemofilia: Goodman pone el dolor nuevo entre los motivos de derivación, no de atención inmediata; la guía WFH pide tratar con factor de inmediato. Prevalece la WFH (guía de práctica clínica; regla 1).
+  - Tormenta tiroidea: fiebre de 40–41 °C y pulso por encima de 140 (Pokhrel 2022) en lugar de «hasta 40,7 °C» (Goodman 2018), y cetoacidosis por encima de 250 mg/dL (Lizzo 2025) en lugar de 300 (Goodman): mismo nivel, gana la más reciente (regla 2).
+  - Hipopotasemia: Goodman considera peligroso cualquier potasio por debajo de 3,5; Castro y Sharma 2025, más reciente, clasifica 3,0–3,5 como leve, a menudo sin síntomas. Se usa Castro y se mantiene de Goodman solo la recomendación de consultar antes del ejercicio (regla 2).
+  - Sepsis neutropénica: NICE CG151 (fiebre de más de 38 °C) prevalece sobre la definición de Punnapuzha (38,3 °C una vez, o 38 °C durante una hora), que no se cita para ese dato (regla 1).
+  - Túnel carpiano: Goodman trata todo síntoma bilateral como bandera roja, y Sevy dice que el bilateral es frecuente. No se contradicen: se dicen las dos cosas, y lo que pesa son los signos acompañantes.
+- **Revisión clínica del usuario:** pendiente.
+
+### Hallazgos de esta sesión
+
+5. **Hemofilia sin pregunta urgente.** La WFH pide tratar de inmediato el sangrado articular o muscular, y considera urgencia musculoesquelética el compromiso neurovascular. Ninguna pregunta dispara la alerta. Recomendación, pendiente de decisión del usuario: una pregunta urgente en hematológico, «(Si tiene hemofilia u otro trastorno hereditario de la coagulación) ¿Tiene un dolor nuevo en una articulación o un músculo, con hormigueo o tirantez, hinchazón, calor o dificultad para moverla?», con una urgencia que pida tratarlo hoy según su pauta y su unidad de hemofilia, y urgencias si hay hormigueo, adormecimiento o pérdida de fuerza, o dolor en la ingle o el abdomen.
+6. **Texto de la bandera de xantomas.** «Xantomas eruptivos en tendones extensores» mezcla dos tipos que StatPearls (Bell y Saleh 2026) distingue: los eruptivos (pápulas en la piel, triglicéridos muy altos, riesgo de pancreatitis) y los tendinosos (nódulos en los tendones, hipercolesterolemia). El razonamiento explica los dos. Se deja al usuario decidir si cambia el texto.
+7. **Tormenta tiroidea, hipoglucemia, cetoacidosis e hipopotasemia:** sin pregunta nueva. Son signos que se ven en la consulta, no algo que se pregunte, y el razonamiento dice qué hacer en el momento.
+
 ## Siguientes pasos
 
-2. Sistemas compartidos (posquirúrgico, endocrino, hematológico): razonamiento propio de sus banderas sin pregunta, una vez para todas las regiones.
+2. Sistemas compartidos: hechos (2026-10), pendientes de revisión del usuario.
 3. Resto de regiones, una por sesión: inventario, enlaces y razonamiento propio de las rojas.
 4. Amarillas, al final o nunca si no aportan.
