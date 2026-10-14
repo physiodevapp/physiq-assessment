@@ -1,6 +1,6 @@
 # Varios síntomas (P1–P4) — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto), pendiente de probarlo en consulta. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
+Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto) y **paso 2 empezado: cervical** (`data/cervical.js`, las 7 zonas de la tabla), pendientes de probar en consulta. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
 
 ## Decisiones tomadas (octubre 2026)
 Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
