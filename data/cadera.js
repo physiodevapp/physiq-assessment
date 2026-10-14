@@ -187,24 +187,13 @@ export const screening = {
       banderasRojas: [
         { texto: 'Claudicación: dolor que aparece a los 5-10 min de caminar y cede casi de inmediato al parar', pregunta: 'c2' },
         { texto: 'Calambres nocturnos en pantorrilla que interrumpen el sueño profundo', pregunta: 'ca_v2' },
-        { texto: 'Aneurisma aórtico: dolor desgarrador irradiado a glúteo o parte posterior del muslo',
-          razonamiento: {
-            porque: 'Un aneurisma de la aorta abdominal crece sin síntomas hasta que se fisura o se rompe. La mayoría está justo por debajo de las arterias renales; al crecer presiona estructuras vecinas y puede doler en el abdomen, la espalda, el flanco, la ingle o las nalgas, con irradiación a la cara posterior de los muslos (Goodman; Shaw).',
-            peso: 'La rotura es una urgencia vital: muchos mueren antes de llegar al hospital (Shaw). NICE pide pensar en ella ante un dolor abdominal o de espalda nuevo, un colapso o una pérdida de conocimiento, sobre todo con un aneurisma conocido, más de 60 años, tabaco o hipertensión, y recuerda que en la mujer se rompe con más facilidad. Señales (Goodman): dolor de ingle intenso y brusco, casi siempre con dolor abdominal o lumbar, desgarrador, que no cambia con la postura, con piernas frías y sin pulso, mareo o tensión baja. Ante la sospecha, llamar al 112.',
-            detalle: 'Quién (NICE; Shaw; Goodman): varones de 65 años o más, fumadores o exfumadores, con hipertensión, colesterol alto, EPOC, enfermedad coronaria, cerebrovascular o arterial periférica, o antecedentes familiares de aneurisma; Goodman añade el levantamiento de pesas en el mayor y los anticoagulantes. Sin romperse, la mayoría no da síntomas; el más frecuente es notar una masa que late en el abdomen.\n\nQué puede explorar el fisioterapeuta (Goodman): la anchura del pulso aórtico por encima del ombligo (normal, 2,5–4 cm); notar una masa pulsátil tiene una sensibilidad del 28 % y una especificidad del 97 %. Tensión sistólica por debajo de 100 y pulso por encima de 100 sugieren shock.\n\nCon un aneurisma conocido, el levantamiento de pesas está contraindicado; enseñar a hacer fuerza sin maniobra de Valsalva (Goodman).',
-            fuentes: ['NICE NG156', 'Goodman 2018', 'Shaw 2025'],
-            citas: [
-              { texto: 'NICE NG156 — NICE, «Abdominal aortic aneurysm: diagnosis and management» (19 de marzo de 2020), recomendaciones 1.1.1–1.1.9.', url: 'https://www.nice.org.uk/guidance/ng156' },
-              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 240–243; cap. 16, pp. 636–637.',
-              { texto: 'Shaw 2025 — Shaw, Loree y Oropallo, «Abdominal Aortic Aneurysm», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2025.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK470237/' }
-            ]
-          } },
+        { texto: 'Aneurisma aórtico: dolor desgarrador irradiado a glúteo o parte posterior del muslo', pregunta: 'ca_v4' },
         { texto: 'Signos de TVP: edema, eritema, calor y dolor en pantorrilla', pregunta: 'ca_v2' },
         // Tarjeta cadera (guía de consulta), BANDERAS «Vascular»: sin pistas propias, regla del dolor atípico
         { texto: 'Oclusión aortoilíaca (síndrome de Leriche), enfermedad vascular periférica, variz de la safena', pregunta: ['c2', 'ca_v3'] }
       ],
       banderasAmarillas: [
-        { texto: 'Claudicación que empeora repentinamente', pregunta: 'c2' },
+        { texto: 'Claudicación que empeora repentinamente', pregunta: ['c2', 'ca_v5'] },
         { texto: 'Dolor en reposo isquémico que se alivia al colgar la pierna fuera de la cama', pregunta: 'ca_v3' }
       ],
       preguntas: [
@@ -272,6 +261,28 @@ export const screening = {
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228 y 254–255; cap. 16, p. 624.',
               { texto: 'Zemaitis 2026 — Zemaitis, Boll, Kato y Golla, «Peripheral Arterial Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 31 de enero de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430745/' },
               { texto: 'NICE CG147 — NICE, «Peripheral arterial disease: diagnosis and management» (2012, actualizada el 11 de diciembre de 2020), recomendaciones 1.3.2–1.3.4 y 1.6.1, y contexto.', url: 'https://www.nice.org.uk/guidance/cg147' }
+            ]
+          } },
+        { id: 'ca_v4', anatomia: ['aorta'], text: '¿Ha empezado de golpe un dolor intenso en el abdomen, la espalda, la ingle o las nalgas, desgarrador, que no cambia al moverse, o con mareo o desmayo?', alerta: true, urgencia: 'Posible rotura de un aneurisma de aorta abdominal: llamar al 112.',
+          razonamiento: {
+            porque: 'Un aneurisma de la aorta abdominal crece sin síntomas hasta que se fisura o se rompe. La mayoría está justo por debajo de las arterias renales; al crecer presiona estructuras vecinas y puede doler en el abdomen, la espalda, el flanco, la ingle o las nalgas, con irradiación a la cara posterior de los muslos (Goodman; Shaw).',
+            peso: 'Con un SÍ, llamar al 112: la rotura es una urgencia vital, muchos mueren antes de llegar al hospital (Shaw). NICE pide pensar en ella ante un dolor abdominal o de espalda nuevo, un colapso o una pérdida de conocimiento, sobre todo con un aneurisma conocido, más de 60 años, tabaco o hipertensión, y recuerda que en la mujer se rompe con más facilidad. Señales (Goodman): dolor de ingle intenso y brusco, casi siempre con dolor abdominal o lumbar, desgarrador, que no cambia con la postura, con piernas frías y sin pulso, mareo o tensión baja.',
+            detalle: 'Quién (NICE; Shaw; Goodman): varones de 65 años o más, fumadores o exfumadores, con hipertensión, colesterol alto, EPOC, enfermedad coronaria, cerebrovascular o arterial periférica, o antecedentes familiares de aneurisma; Goodman añade el levantamiento de pesas en el mayor y los anticoagulantes. Sin romperse, la mayoría no da síntomas; el más frecuente es notar una masa que late en el abdomen.\n\nQué puede explorar el fisioterapeuta (Goodman): la anchura del pulso aórtico por encima del ombligo (normal, 2,5–4 cm); notar una masa pulsátil tiene una sensibilidad del 28 % y una especificidad del 97 %. Tensión sistólica por debajo de 100 y pulso por encima de 100 sugieren shock.\n\nCon un aneurisma conocido, el levantamiento de pesas está contraindicado; enseñar a hacer fuerza sin maniobra de Valsalva (Goodman).',
+            fuentes: ['NICE NG156', 'Goodman 2018', 'Shaw 2025'],
+            citas: [
+              { texto: 'NICE NG156 — NICE, «Abdominal aortic aneurysm: diagnosis and management» (19 de marzo de 2020), recomendaciones 1.1.1–1.1.9.', url: 'https://www.nice.org.uk/guidance/ng156' },
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 240–243; cap. 16, pp. 636–637.',
+              { texto: 'Shaw 2025 — Shaw, Loree y Oropallo, «Abdominal Aortic Aneurysm», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2025.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK470237/' }
+            ]
+          } },
+        { id: 'ca_v5', anatomia: ['arteria_femoral', 'arteria_poplitea'], text: '¿Se le ha puesto la pierna de repente fría, pálida, muy dolorosa, con hormigueo o debilidad, o le ha empeorado de golpe el dolor al caminar?', alerta: true, urgencia: 'Posible isquemia aguda de la pierna (trombo o émbolo): a urgencias hoy, sin esperar.',
+          razonamiento: {
+            porque: 'Si un trombo o un émbolo tapa de golpe una arteria de la pierna, el músculo y los nervios se quedan sin riego. A diferencia de la claudicación crónica, que aparece al caminar y cede al parar, el dolor de la oclusión aguda empieza de repente, en menos de una hora, y puede afectar a toda la pierna por debajo de la obstrucción (Goodman).',
+            peso: 'Goodman pide comunicar de inmediato al médico el empeoramiento brusco de una claudicación, porque puede ser una tromboembolia. Los signos de la oclusión aguda son las «6 P»: dolor, palidez, ausencia de pulso, hormigueo, frialdad y, en los casos graves, parálisis. Con un SÍ, urgencias hoy, sin esperar.',
+            detalle: 'Quién tiene más riesgo (Goodman, tabla 6.7): cirugía vascular o un procedimiento arterial previos, aneurisma abdominal, traumatismo con lesión arterial y fibrilación auricular crónica.\n\nQué mirar: la pierna fría y pálida, la falta de pulso pedio o poplíteo comparando con el otro lado, y la sensibilidad y la fuerza del pie.\n\nLa claudicación estable, que aparece siempre a una distancia parecida y cede al parar, no es urgente y se pregunta aparte.',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 254 y 260; cap. 16, p. 636.'
             ]
           } }
       ],

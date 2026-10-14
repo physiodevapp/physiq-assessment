@@ -141,7 +141,7 @@ test('anatomía: cadera, sin anatomía solo las filas genéricas (longitud de pa
   assert.deepEqual(TODOS.filter(x => x.h.region === 'cadera' && !x.t.anatomia).map(x => `${x.hId}/${x.i}`),
     ['ca3/7', 'ca13/3', 'ca15/0', 'ca15/1', 'ca15/2', 'ca15/3', 'ca15/4']);
   const con = PREG_CON.filter(p => p.region === 'cadera').map(p => p.q.id);
-  assert.equal(con.length, 21);
+  assert.equal(con.length, 23);   // + ca_v4 (aorta) y ca_v5 (femoral, poplítea), Fase M
   // Pérdida de peso o bulto nuevo
   const sinQ = PREGUNTAS.filter(p => p.region === 'cadera' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['ca_on3']);

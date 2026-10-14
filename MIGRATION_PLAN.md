@@ -339,7 +339,7 @@ Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero an
 |---|---|---|---|---|---|
 | Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [x] 8 de 8 (Finucane 2020, Downie 2013, NICE NG12 y NG65, Goodman caps. 6 y 10, Belyayeva 2024, Kimyaghalam 2024, Zemaitis 2026) | [x] 2 (Downie, NG65); el resto sin hacer | [x] (2026-10), incluidos percusión costovertebral, Leriche, la masa testicular ampliada y `pq_nervio_col` | |
 | Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 18 preguntas (2026-10: + necrotizante, yeso, pelo y uñas, fiebre en la leucopenia, hemofilia → `hem_6`) | [x] 6 rojas + 4 amarillas (Goodman caps. 5, 8 y 11; WFH 2020; 17 capítulos de StatPearls; NICE CG151) | [x] (las 5 sin pregunta) | [x] (2026-10), incluidas `hem_5`, `hem_6` y el texto de xantomas | Una vez para todas las regiones. Nuevas preguntas urgentes `hem_5` (sepsis neutropénica, NICE CG151) y `hem_6` (sangrado en la hemofilia, WFH 2020), y texto de la bandera de xantomas corregido (decisiones del usuario) |
-| Cadera | [x] 36 preguntas + 1 fase 1 | [x] 6 de 6 (Goodman caps. 6, 13, 15 y 16; NICE NG12 y NG156; Downie 2013; Henschke 2013; 8 capítulos de StatPearls) | [x] 1 (edad); 2 sin fuente | [ ] | Huecos pendientes de decisión: aneurisma sin pregunta, isquemia aguda sin urgencia |
+| Cadera | [x] 37 preguntas + 1 fase 1 | [x] 6 de 6 (el aneurisma, en `ca_v4`) (Goodman caps. 6, 13, 15 y 16; NICE NG12 y NG156; Downie 2013; Henschke 2013; 8 capítulos de StatPearls) | [x] 1 (edad); 2 sin fuente | [ ] | Preguntas urgentes nuevas `ca_v4` (aneurisma roto) y `ca_v5` (isquemia aguda), decisión del usuario |
 | Cervical, hombro, rodilla, codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
 
 ---

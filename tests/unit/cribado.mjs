@@ -87,9 +87,9 @@ test('sistemas compartidos (endocrino, hematológico): solo la sepsis neutropén
   for (const r of VALID_REGIONS) assert.ok(SYSTEMIC_SCREENING[r].sistemas.includes(SIS_HEMATOLOGICO), r);
 });
 
-test('cadera: TVP, torsión testicular, ectópico, fractura de estrés del cuello femoral y artritis séptica son urgencias (y ninguna otra)', () => {
+test('cadera: TVP, torsión testicular, ectópico, fractura de estrés del cuello femoral, artritis séptica, aneurisma roto e isquemia aguda son urgencias (y ninguna otra)', () => {
   const qs = SYSTEMIC_SCREENING.cadera.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
-  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_u5', 'ca_v2']);
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_u5', 'ca_v2', 'ca_v4', 'ca_v5']);
   // ca_v2 junta TVP y calambres: la urgencia dice que los calambres solos no lo son,
   // y deriva hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8)
   assert.match(qs.find(q => q.id === 'ca_v2').urgencia, /no los calambres solos/);
