@@ -315,22 +315,43 @@ Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo enter
 - [x] Leídos Maitland 7.ª ed. (2005), caps. 8 y 9 (pp. 183–228, la 224 en imagen); decisiones 20–24 aceptadas por el usuario. Fuentes de L1 completas: L2 puede empezar
 - [x] L2 — Parte sin IA en lumbar (piloto): fase 6 opcional en la navegación (`nav6`, `#phase6`, `plan.js` + `lib/plan-tratamiento.js` + `data/plan-tratamiento.js`), sin IA. Primera revisión hecha (decisiones 25–29 de `docs/plan-tratamiento.md`: cortes de irritabilidad, tabla de escalones, sin NRS, hipótesis neurológicas por id, minutos editables y «cuándo parar»)
 - [x] L2 — Revisión de las frases por el usuario (`docs/plan-tratamiento-frases.md`): redacción propia (decisiones 30–34) y el resto, aprobada para `main` (2026-10); posquirúrgico sin protocolo como en la fase 5, confirmado
-- [ ] L3 — Añadir a la matriz de la fase 3 cuánto tarda el dolor en calmarse (decisión 25), si se decide cambiar la fase 3
-- [ ] L3 — Parte sin IA en las 7 regiones
+- [ ] L2 — Uso en consulta real con pacientes lumbares (1–2 semanas, usuario): ¿coinciden los escalones B con el juicio clínico?, ¿se sostienen los minutos?, ¿entienden los pacientes el programa para casa? Los casos exportados (⬇ Exportar) se revisan en sesión y los ajustes se hacen antes de L3
+- [ ] L3 — Cervical (primera región; mismo libro de Maitland, sin fuentes nuevas para los escalones). Decidir: `ce3` y `ce12` en `HIP_EXPLORACION_NEURO` y `HIP_RADICULARES`; `ce2` en `HIP_NEURO_DESCARTADAS` (control neuromuscular, no neurológica); `ce8` ya es «Derivar»; red de seguridad propia de cervical (mielopatía, arterias cervicales) solo con fuente leída (Finucane 2020 y Rushton 2023 ya están en el registro); aviso de mareo de `ce13` ya escrito. Procedimiento: «L3 — procedimiento por región» en `docs/plan-tratamiento.md`
+- [ ] L3 — Fuente para las regiones periféricas (antes de hombro, codo, cadera, rodilla y tobillo y pie): leer los capítulos equivalentes de *Maitland's Peripheral Manipulation* (PDF del usuario) o decidir de forma explícita que los principios vertebrales valen igual, anotándolo como decisión
+- [ ] L3 — Regiones periféricas, una por sesión, tras completar en lo posible sus pautas (sin pauta hoy: tobillo y pie 20 de 37, cadera 10 de 19, rodilla 8 de 20, hombro 5 de 11, codo 5 de 16; ver `docs/dosis-pendientes-fuentes.md`)
+- [ ] L3 — Añadir a la matriz de la fase 3 cuánto tarda el dolor en calmarse (decisión 25): sesión propia, porque cambia la fase 3 y lo que recibe physiq-report (`ir`)
 - [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)
 - [ ] L5 — Revisión automática con planes reales en los fixtures
 
 ---
 
-## Fase M — Varios síntomas (P1–P4) en la fase 3
+## Fase M — «¿Por qué?» de las banderas rojas y amarillas de la fase 2
+
+Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero antes de empezar). Una región por sesión, con revisión clínica del usuario antes de `main`. Una bandera es un texto o `{ texto, regiones?, pregunta?, fase1?, razonamiento? }`. Con `pregunta` (ids del mismo sistema), su ⓘ abre el «¿Por qué?» de esa pregunta en el panel del razonamiento: no se escribe dos veces. Con `razonamiento` propio (misma forma que el de una pregunta, fuentes leídas en la sesión), abre el suyo. `fase1` pinta «· fase 1». `regiones` la oculta fuera de esas regiones, igual que a las preguntas. Abierta en 2026-10, a propuesta del usuario, tras el inventario de lumbar.
+
+- [x] Inventario de lumbar y de los tres sistemas compartidos
+- [x] Pregunta urgente de embarazo ectópico en lumbar (`l_e8`) y cadera (`ca_u5`): la bandera decía «urgencia» y ninguna pregunta la disparaba (NICE NG126)
+- [x] Banderas posquirúrgicas filtradas por región (`regiones`, igual que sus preguntas)
+- [x] Esquema, ⓘ y panel (`banderaHTML`, `razonBanderaHTML`, `abrirRazonBandera`, `app.js`), tests (`tests/unit/razonamiento.mjs`, smoke `--solo banderas`), `tests/referencias.mjs` cuenta las fuentes de las banderas
+- [x] Variante de `pq_nervio` para columna (decisión del usuario, 2026-10): `pq_nervio_col` (lumbar y cervical, urgencia; Finucane 2020, Wang 2020, Schroeder 2017) y su bandera. Revisado por el usuario (2026-10)
+
+| Región / sistema | Enlaces (`pregunta`, `fase1`) | Razonamiento propio (rojas) | Amarillas | Revisión usuario | Notas |
+|---|---|---|---|---|---|
+| Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [x] 8 de 8 (Finucane 2020, Downie 2013, NICE NG12 y NG65, Goodman caps. 6 y 10, Belyayeva 2024, Kimyaghalam 2024, Zemaitis 2026) | [x] 2 (Downie, NG65); el resto sin hacer | [x] (2026-10), incluidos percusión costovertebral, Leriche, la masa testicular ampliada y `pq_nervio_col` | |
+| Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 13 preguntas | [ ] | [ ] | [ ] | Una vez para todas las regiones |
+| Cadera, cervical, hombro, rodilla, codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
+
+---
+
+## Fase N — Varios síntomas (P1–P4) en la fase 3
 
 Diseño y decisiones: `docs/sintomas-multiples.md` (léelo entero antes de empezar). Abierta en 2026-10 a propuesta del usuario: el paciente pinta en el mapa corporal más de una zona y cada una tiene su intensidad y su comportamiento. P1 es la fase 3 de siempre más la zona; P2–P4, una ficha corta. Revisión clínica del usuario antes de `main`.
 
-- [x] M0 — Documento de diseño; propuestas y puntos pendientes aceptados por el usuario (2026-10)
-- [x] M1 — Paso 1 en lumbar (piloto): tarjeta «Síntomas» (`sintomas.js`, `lib/sintomas.js`, `export const zonas` en `data/lumbar.js` → `ZONAS_SINTOMA`), estado, payload (`z1`, `ss`), fase 5, `📋 Notas`, `📄 Informe`, bloque del prompt de la IA y regla de revisión `lado-sintoma`. Unit `tests/unit/sintomas.mjs`, smoke `sintomas`
-- [ ] M1 — Prueba en consulta real y revisión de las zonas de lumbar por el usuario
-- [ ] M2 — Zonas de las otras 6 regiones, una por sesión (tabla en `docs/sintomas-multiples.md`)
-- [ ] M3 — Pistas en el árbol (`pasos` en cada zona → recuadro «📝» en el paso), región a región
-- [ ] M4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente
-- [ ] M5 — physiq-report: mostrar `z1` / `ss` (otro repositorio)
-- [ ] M6 — Mapa dibujado, solo si hace falta
+- [x] N0 — Documento de diseño; propuestas y puntos pendientes aceptados por el usuario (2026-10)
+- [x] N1 — Paso 1 en lumbar (piloto): tarjeta «Síntomas» (`sintomas.js`, `lib/sintomas.js`, `export const zonas` en `data/lumbar.js` → `ZONAS_SINTOMA`), estado, payload (`z1`, `ss`), fase 5, `📋 Notas`, `📄 Informe`, bloque del prompt de la IA y regla de revisión `lado-sintoma`. Unit `tests/unit/sintomas.mjs`, smoke `sintomas`
+- [ ] N1 — Prueba en consulta real y revisión de las zonas de lumbar por el usuario
+- [ ] N2 — Zonas de las otras 6 regiones, una por sesión (tabla en `docs/sintomas-multiples.md`)
+- [ ] N3 — Pistas en el árbol (`pasos` en cada zona → recuadro «📝» en el paso), región a región
+- [ ] N4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente
+- [ ] N5 — physiq-report: mostrar `z1` / `ss` (otro repositorio)
+- [ ] N6 — Mapa dibujado, solo si hace falta

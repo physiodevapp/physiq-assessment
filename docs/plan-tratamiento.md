@@ -241,8 +241,19 @@ Hay que comprobar en physiq-report que un `SESSION_ASSESSMENT_PARTIAL` con `phas
 
 ## Orden de trabajo
 
-1. **L1 — este documento** (hecho; decisiones 1–15 tomadas y fuentes leídas).
-2. **L2 — parte sin IA en lumbar** (piloto): bloqueos, esqueleto, compartir. Prueba en consulta real.
-3. **L3 — las 7 regiones.** Tobillo y pie (20 de 37 sin pauta) será la que más «pauta a criterio del fisio» muestre.
+1. **L1 — este documento** (hecho; decisiones 1–34 tomadas y fuentes leídas).
+2. **L2 — parte sin IA en lumbar** (piloto; en `main` desde 2026-10, PR #356). Falta la prueba en consulta real (1–2 semanas) antes de L3.
+3. **L3 — las demás regiones**, una por sesión: primero cervical (mismo libro de Maitland); las periféricas, después de resolver su fuente (abajo) y, en lo posible, sus pautas. Tobillo y pie (20 de 37 sin pauta) será la que más «pauta a criterio del fisio» muestre.
 4. **L4 — capa de IA**, con la ruta nueva en el worker de physiq-report.
 5. **L5 — revisión automática** con planes reales en los fixtures, como `tests/fixtures/informes/`.
+
+### L3 — procedimiento por región
+
+1. Leer este documento entero y la Fase L de `MIGRATION_PLAN.md`; revisar los casos de la prueba en consulta si los hay.
+2. **Fuente de los escalones.** Columna (cervical): *Maitland's Vertebral Manipulation*, ya leído. Periféricas: hace falta leer *Maitland's Peripheral Manipulation* (capítulos de exploración y de principios de tratamiento, equivalentes a los caps. 6, 8 y 9) o una decisión explícita del usuario de que los principios vertebrales valen igual; sin una de las dos, no se añade la región.
+3. **Hipótesis neurológicas por id**: decidir con el usuario cuáles van a `HIP_EXPLORACION_NEURO`, cuáles además a `HIP_RADICULARES` y cuáles a `HIP_NEURO_DESCARTADAS` con su motivo (el test lo exige para todo nombre con «radicul», «estenosis» o «neuro»).
+4. **Red de seguridad** propia de la región (qué síntomas exigen ir a urgencias), solo con fuente leída y en lenguaje llano, como `alarmaNeuro` en lumbar; si la región no la tiene, decirlo en el documento.
+5. **Avisos específicos** de la región (p. ej. mareo en cervical, `ce13`).
+6. Añadir la región a `REGIONES_PLAN`; regenerar `docs/plan-tratamiento-frases.md` (`node tests/gen-frases-plan.mjs`) y `docs/referencias.md` si cambian citas.
+7. Tests: los de `tests/unit/plan-tratamiento.mjs` que dependen de la región, y el smoke `fase6` para la región nueva (recorrido real hasta la 6).
+8. Revisión del usuario de las frases nuevas antes de `main`.
