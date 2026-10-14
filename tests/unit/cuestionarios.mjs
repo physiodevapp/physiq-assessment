@@ -21,7 +21,7 @@ test('cuestionarios: ids únicos, grupo conocido, ítems numerados sin repetir, 
     assert.ok(/\b(19|20)\d\d\b/.test(d.validacionEs || ''), `${d.id}: sin validación española (validacionEs)`);
     assert.equal(new Set(d.items.map(it => it.n)).size, d.items.length, `${d.id}: ítems repetidos`);
     for (const it of d.items) {
-      assert.ok(['escala', 'opciones', 'sino', 'marcas'].includes(it.tipo || 'escala'), `${d.id} ${it.n}: tipo`);
+      assert.ok(['escala', 'opciones', 'sino', 'marcas', 'numero'].includes(it.tipo || 'escala'), `${d.id} ${it.n}: tipo`);
       assert.ok(it.t, `${d.id} ${it.n}: etiqueta`);
       if (it.tipo === 'opciones' || it.tipo === 'marcas') assert.ok(it.opciones?.length, `${d.id} ${it.n}: opciones`);
     }
@@ -169,4 +169,61 @@ test('PROM de las hipótesis: solo instrumentos validados en castellano de Espa�
     const nombres = prom.replace(/\([^)]*\)/g, '').replace(/\s+—\s+[^/]*/g, '').split(/\s+(?:\/|o)\s+/).map(x => x.trim()).filter(Boolean);
     for (const n of nombres) assert.ok(PROM_VALIDADOS_ES.some(v => n === v || n.startsWith(v + ' ')), `${id}: «${n}» no está validado en castellano de España`);
   }
+});
+
+// ── Regionales ──────────────────────────────────────────────────────────────
+const todosN = (id, v) => Object.fromEntries(def(id).items.map(it => [it.n, v]));
+
+test('WOMAC: suma 0–96 con subescalas dolor 0–20, rigidez 0–8, función 0–68', () => {
+  const p = L.puntuar(def('womac'), todosN('womac', 2));
+  assert.equal(p.total, 48);
+  assert.deepEqual(p.subescalas.map(s => [s.id, s.valor, s.rango[1]]), [['dolor', 10, 20], ['rigidez', 4, 8], ['funcion', 34, 68]]);
+});
+
+test('iHOT-12: media de los mm; el ítem 9 «no relevante» (N/A) no entra', () => {
+  const r = todosN('ihot12', 60);
+  r[9] = L.NA; r[1] = 100;   // 11 ítems: diez a 60 y uno a 100
+  const p = L.puntuar(def('ihot12'), r);
+  assert.equal(p.completo, true);
+  assert.equal(Math.round(p.total * 100) / 100, Math.round((60 * 10 + 100) / 11 * 100) / 100);
+  assert.equal(L.valorItem(def('ihot12'), def('ihot12').items[0], 101), null, 'fuera de 0–100 no cuenta');
+  assert.equal(L.valorItem(def('ihot12'), def('ihot12').items[0], L.NA), null, 'el ítem 1 no admite N/A');
+});
+
+test('HOS: porcentaje por subescala sobre los ítems contestados, sin las N/A, y sin total', () => {
+  const r = todosN('hos', 4);
+  r[1] = 0; r[2] = L.NA;           // vida diaria: 15 ítems a 4 y uno a 0 → 60/64
+  r[101] = L.NA; r[102] = 2;       // deporte: 7 a 4 y uno a 2 → 30/32
+  const p = L.puntuar(def('hos'), r);
+  assert.equal(p.total, null);
+  assert.equal(p.subescalas[0].valor, 60 / 64 * 100);
+  assert.equal(p.subescalas[1].valor, 30 / 32 * 100);
+  assert.match(L.resumenCuestionario(def('hos'), r).v, /^Vida diaria: 93,8 %, Deporte: 93,8 %$/);
+});
+
+test('KOOS: cada subescala 100 − media × 25', () => {
+  const r = todosN('koos', 0);
+  [1, 2, 3, 4, 5, 6, 7].forEach(n => { r[n] = 1; });   // síntomas: media 1 → 75
+  r[39] = 4; r[40] = 4;                                  // calidad de vida: media 2 → 50
+  const p = L.puntuar(def('koos'), r);
+  assert.deepEqual(p.subescalas.map(s => s.valor), [75, 100, 100, 100, 50]);
+  assert.equal(def('koos').items.length, 42);
+});
+
+test('Kujala: los máximos suman 100 y los mínimos 0', () => {
+  const d = def('kujala');
+  const max = Object.fromEntries(d.items.map(it => [it.n, 0]));
+  const min = Object.fromEntries(d.items.map(it => [it.n, it.opciones.length - 1]));
+  assert.equal(L.puntuar(d, max).total, 100);
+  assert.equal(L.puntuar(d, min).total, 0);
+});
+
+test('VISA-P: ítems 2–6 puntúan 10 − lo marcado; total 0–100', () => {
+  const d = def('visap');
+  // asintomático: >120 min, 0 en 2–6, mismo nivel, A >90 min
+  const asint = { 1: 5, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 3, 8: 4 };
+  assert.equal(L.puntuar(d, asint).total, 100);
+  const peor = { 1: 0, 2: 10, 3: 10, 4: 10, 5: 10, 6: 10, 7: 0, 8: 10 };
+  assert.equal(L.puntuar(d, peor).total, 0);
+  assert.equal(L.rangoPuntuacion(d, d.items.map(it => it.n))[1], 100);
 });
