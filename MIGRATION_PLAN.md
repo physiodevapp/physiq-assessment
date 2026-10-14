@@ -340,3 +340,18 @@ Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero an
 | Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [x] 8 de 8 (Finucane 2020, Downie 2013, NICE NG12 y NG65, Goodman caps. 6 y 10, Belyayeva 2024, Kimyaghalam 2024, Zemaitis 2026) | [x] 2 (Downie, NG65); el resto sin hacer | [x] (2026-10), incluidos percusión costovertebral, Leriche, la masa testicular ampliada y `pq_nervio_col` | |
 | Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 13 preguntas | [ ] | [ ] | [ ] | Una vez para todas las regiones |
 | Cadera, cervical, hombro, rodilla, codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
+
+---
+
+## Fase N — Varios síntomas (P1–P4) en la fase 3
+
+Diseño y decisiones: `docs/sintomas-multiples.md` (léelo entero antes de empezar). Abierta en 2026-10 a propuesta del usuario: el paciente pinta en el mapa corporal más de una zona y cada una tiene su intensidad y su comportamiento. P1 es la fase 3 de siempre más la zona; P2–P4, una ficha corta. Revisión clínica del usuario antes de `main`.
+
+- [x] N0 — Documento de diseño; propuestas y puntos pendientes aceptados por el usuario (2026-10)
+- [x] N1 — Paso 1 en lumbar (piloto): tarjeta «Síntomas» (`sintomas.js`, `lib/sintomas.js`, `export const zonas` en `data/lumbar.js` → `ZONAS_SINTOMA`), estado, payload (`z1`, `ss`), fase 5, `📋 Notas`, `📄 Informe`, bloque del prompt de la IA y regla de revisión `lado-sintoma`. Unit `tests/unit/sintomas.mjs`, smoke `sintomas`
+- [ ] N1 — Prueba en consulta real y revisión de las zonas de lumbar por el usuario
+- [ ] N2 — Zonas de las otras 6 regiones, una por sesión (tabla en `docs/sintomas-multiples.md`)
+- [ ] N3 — Pistas en el árbol (`pasos` en cada zona → recuadro «📝» en el paso), región a región
+- [ ] N4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente
+- [ ] N5 — physiq-report: mostrar `z1` / `ss` (otro repositorio)
+- [ ] N6 — Mapa dibujado, solo si hace falta
