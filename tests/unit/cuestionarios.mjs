@@ -331,7 +331,7 @@ test('enlaces «Calcular»: siglas como palabra entera, en el orden del texto', 
   assert.deepEqual(en('PHQ-2 → PHQ-9 (Cuestionario de Salud del Paciente)'), ['phq2', 'phq9']);
   assert.deepEqual(en('KOOS-12 o IKDC'), []);
   assert.deepEqual(en('Örebro (OMPSQ, 21 ítems)'), ['orebro']);
-  assert.deepEqual(en('FABQ (…), TSK-11 (…), PCS (…)'), ['tsk11']);
+  assert.deepEqual(en('FABQ (…), TSK-11 (…), PCS (…)'), ['fabq', 'tsk11', 'pcs']);
   assert.deepEqual(en('VISA-P / KOOS'), ['visap', 'koos']);
   assert.deepEqual(en(''), []);
 });
@@ -358,6 +358,34 @@ test('IdFAI: 0–37 (la pregunta 1 no puntúa); corte ≥ 10,5 de la versión es
   assert.equal(con({ 2: 5, 4: 5 }).interpretacion.nivel, 'ok');
   assert.equal(con({ 2: 5, 4: 5, 3: 1 }).total, 11);
   assert.equal(con({ 2: 5, 4: 5, 3: 1 }).interpretacion.nivel, 'alto');
+});
+
+test('FABQ: solo los 11 ítems que puntúan; actividad 0–24 y trabajo 0–42, sin total; corte de trabajo > 34 (Fritz y George 2002)', () => {
+  const d = def('fabq');
+  assert.deepEqual(d.items.map(it => it.n), [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 15]);
+  assert.deepEqual(d.subescalas.map(x => x.items), [[2, 3, 4, 5], [6, 7, 9, 10, 11, 12, 15]]);
+  const p = L.puntuar(d, todosN('fabq', 6));
+  assert.equal(p.total, null);
+  assert.deepEqual(p.subescalas.map(x => x.valor), [24, 42]);
+  // Trabajo = 5 × 6 ítems (6, 7, 9, 10, 11, 12) + v en el ítem 15 = 30 + v
+  const trabajo = v => L.puntuar(d, { ...todosN('fabq', 0), 6: 5, 7: 5, 9: 5, 10: 5, 11: 5, 12: 5, 15: v });
+  assert.equal(trabajo(4).subescalas[1].valor, 34);
+  assert.equal(trabajo(4).interpretacion.nivel, 'medio');   // 30–34
+  assert.equal(trabajo(5).interpretacion.nivel, 'alto');    // > 34
+  assert.equal(L.puntuar(d, { ...todosN('fabq', 0), 6: 5, 7: 5, 9: 5, 10: 5, 11: 5, 12: 4, 15: 0 }).interpretacion.nivel, 'ok');  // 29
+});
+
+test('PCS: 0–52 con rumiación 8–11, magnificación 6, 7, 13 y desesperanza 1–5 y 12; corte 30', () => {
+  const d = def('pcs');
+  assert.deepEqual(L.rangoPuntuacion(d, d.items.map(it => it.n)), [0, 52]);
+  assert.deepEqual(d.subescalas.flatMap(x => x.items).sort((a, b) => a - b), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+  const con = r => L.puntuar(d, { ...todosN('pcs', 2), ...r });
+  assert.equal(con({}).total, 26);
+  assert.equal(con({}).interpretacion.nivel, 'ok');
+  assert.equal(con({ 1: 4, 2: 3 }).total, 29);
+  assert.equal(con({ 1: 4, 2: 3 }).interpretacion.nivel, 'ok');
+  assert.equal(con({ 1: 4, 2: 4 }).total, 30);
+  assert.equal(con({ 1: 4, 2: 4 }).interpretacion.nivel, 'alto');
 });
 
 test('CAIT: máximos suman 30, mínimos 0; cortes 24 y 27', () => {

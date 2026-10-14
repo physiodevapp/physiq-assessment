@@ -1344,7 +1344,7 @@ async function checkCuestionarios(browser, errors) {
   await e.click('#psico_miedo .option-btn:has-text("Sí")');
   r.calcFase1 = await e.evaluate(() =>
     !!document.querySelector('#psicoToolSuggest [data-cuest-abrir="orebro"]')
-    && [...document.querySelectorAll('#psicoRecomendacion [data-cuest-abrir]')].map(b => b.dataset.cuestAbrir).join() === 'tsk11');
+    && [...document.querySelectorAll('#psicoRecomendacion [data-cuest-abrir]')].map(b => b.dataset.cuestAbrir).join() === 'fabq,tsk11,pcs');
   await e.click('#psicoToolSuggest [data-cuest-abrir="orebro"]');
   r.calcAbre = await e.evaluate(() => document.getElementById('cuestOverlay').classList.contains('open')
     && !!document.querySelector('#cuestCuerpo [data-item="25"]'));
