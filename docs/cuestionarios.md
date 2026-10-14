@@ -218,6 +218,4 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 
 physiq-report lee el campo `cu` del payload (`buildClinicalContext()`, mismo bloque que `contextoValoracion()`; physiodevapp/physiq-report#89).
 
-Pendiente:
-
-- Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
+Enlaces «Calcular» (hecho): junto a la recomendación psicosocial de la fase 1 y al badge del PROM de las fases 4b y 5, un botón por cuestionario de la calculadora que nombra el texto («Calcular PHQ-9», o lo que lleva hecho: «PHQ-9 · 12/27 ✓»), que abre la calculadora en ese cuestionario. FABQ y PCS, que la fase 1 también sugiere, no están en la calculadora y no llevan botón.

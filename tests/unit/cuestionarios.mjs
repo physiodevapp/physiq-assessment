@@ -316,6 +316,37 @@ test('cada PROM de las hipótesis (salvo escalas de dolor y los pendientes) est�
   }
 });
 
+// ── Enlaces «Calcular» (fase 1 y badge del PROM) ───────────────────────────
+test('enlaces «Calcular»: cada PROM del badge enlaza todos sus cuestionarios, y nada más', () => {
+  const proms = [...Object.values(HYPOTHESES).map(h => [h.id, h.prom]), ...Object.entries(HIP_POSQUIRURGICA.promPorRegion).map(([r, p]) => [`pq1 ${r}`, p])];
+  for (const [id, prom] of proms) {
+    const nombres = prom.replace(/\([^)]*\)/g, '').replace(/\s+—\s+[^/]*/g, '').split(/\s+(?:\/|o)\s+/).map(x => x.trim().split(' ')[0]).filter(n => !['NPRS', 'EVA'].includes(n));
+    const esperados = nombres.map(n => n.toLowerCase().replace(/[^a-z0-9]/g, ''));
+    assert.deepEqual(L.cuestionariosEnTexto(prom, CUESTIONARIOS), esperados, `${id}: «${prom}»`);
+  }
+});
+
+test('enlaces «Calcular»: siglas como palabra entera, en el orden del texto', () => {
+  const en = t => L.cuestionariosEnTexto(t, CUESTIONARIOS);
+  assert.deepEqual(en('PHQ-2 → PHQ-9 (Cuestionario de Salud del Paciente)'), ['phq2', 'phq9']);
+  assert.deepEqual(en('KOOS-12 o IKDC'), []);
+  assert.deepEqual(en('Örebro (OMPSQ, 21 ítems)'), ['orebro']);
+  assert.deepEqual(en('FABQ (…), TSK-11 (…), PCS (…)'), ['tsk11']);
+  assert.deepEqual(en('VISA-P / KOOS'), ['visap', 'koos']);
+  assert.deepEqual(en(''), []);
+});
+
+test('enlaces «Calcular»: sin empezar, a medias y completo', () => {
+  const d = def('phq2');
+  assert.equal(L.enlacesCalcularHTML([], CUESTIONARIOS), '');
+  assert.match(L.enlacesCalcularHTML(['phq2'], CUESTIONARIOS), /data-cuest-abrir="phq2">Calcular PHQ-2</);
+  assert.match(L.enlacesCalcularHTML(['phq2'], CUESTIONARIOS, { phq2: { r: { 1: 1 } } }), />PHQ-2 · 1 de 2</);
+  const html = L.enlacesCalcularHTML(['phq2'], CUESTIONARIOS, { phq2: { r: { 1: 1, 2: 2 } } });
+  assert.match(html, /cuest-calc-hecho/);
+  assert.match(html, />PHQ-2 · 3\/6 ✓</);
+  assert.equal(d.items.length, 2);
+});
+
 test('IdFAI: 0–37 (la pregunta 1 no puntúa); corte ≥ 10,5 de la versión española', () => {
   const d = def('idfai');
   assert.deepEqual(d.items.map(it => it.n), [2, 3, 4, 5, 6, 7, 8, 9, 10]);
