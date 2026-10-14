@@ -777,9 +777,28 @@ async function checkRazonamientoEscritorio(page) {
   await page.keyboard.press('Escape');
   await page.waitForTimeout(400);
   const c = await razonEstado(page);
+  // Ancho: crece con la pantalla (380 → 560 px) sin tapar nunca la columna de
+  // la fase, que conserva sus 780 px en cuanto hay sitio.
+  const anchos = [];
+  await page.click(`${base} #sq2_${RAZON_Q1} .razon-ampliar`);
+  await page.waitForTimeout(400);
+  for (const w of [1024, 1280, 1600, 1920]) {
+    await page.setViewportSize({ width: w, height: 860 });
+    await page.waitForTimeout(100);
+    anchos.push(await page.evaluate(() => {
+      const p = document.getElementById('razonPanel').getBoundingClientRect();
+      const f = document.querySelector('#phase2').getBoundingClientRect();
+      return { vw: innerWidth, panel: Math.round(p.width), fase: Math.round(f.width), hueco: Math.round(p.left - f.right) };
+    }));
+  }
+  await page.keyboard.press('Escape');
+  const anchoOk = anchos.every(x => x.panel >= 380 && x.panel <= 560 && x.hueco >= 0)
+    && anchos.find(x => x.vw === 1920).panel === 560
+    && anchos.find(x => x.vw === 1024).panel === 380
+    && anchos.filter(x => x.vw >= 1280).every(x => x.fase === 780);
   const ok = inlineVisible && a.abierto && a.visible && !a.velo && siConPanel
-    && b.abierto && b.pregunta !== a.pregunta && !c.abierto && c.fase === 2;
-  return { ok, inlineVisible, siConPanel, a, b, c };
+    && b.abierto && b.pregunta !== a.pregunta && !c.abierto && c.fase === 2 && anchoOk;
+  return { ok, inlineVisible, siConPanel, a, b, c, anchos };
 }
 
 async function checkRazonamientoMovil(page) {
@@ -2695,7 +2714,7 @@ const SECCIONES = [
 
   { id: 'cribado', titulo: 'Razonamiento del cribado (lumbar):', run: async ({ page }) => {
     const razonEsc = await checkRazonamientoEscritorio(page);
-    console.log(`  ${razonEsc.ok ? '✓' : '✗'} escritorio: panel lateral sin velo, SÍ con el panel abierto, cambia de pregunta, Escape cierra`);
+    console.log(`  ${razonEsc.ok ? '✓' : '✗'} escritorio: panel lateral sin velo, SÍ con el panel abierto, cambia de pregunta, Escape cierra; ancho 380 → 560 px según la pantalla sin tapar la fase`);
     const razonMov = await checkRazonamientoMovil(page);
     console.log(`  ${razonMov.ok ? '✓' : '✗'} 390 px: bottom sheet con velo, atrás lo cierra en la fase 2, sin ✕ (cierra el velo), sin entrada colgando`);
     if (!razonEsc.ok) console.log('\nRazonamiento escritorio:', JSON.stringify(razonEsc));
