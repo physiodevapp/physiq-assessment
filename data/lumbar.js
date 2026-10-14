@@ -24,9 +24,9 @@ export const screening = {
     {
       id: 'l_cancer', icon: '🔬', nombre: 'Cáncer / Oncológico',
       banderasRojas: [
-        'Antecedentes de cáncer de próstata, colon, o cualquier tipo',
-        'Dolor nocturno intenso que despierta al paciente sin alivio postural',
-        'Pérdida de peso inexplicada (>5 % del peso en 6 meses)',
+        { texto: 'Antecedentes de cáncer de próstata, colon, o cualquier tipo', pregunta: 'l2' },
+        { texto: 'Dolor nocturno intenso que despierta al paciente sin alivio postural', pregunta: 'l_on2' },
+        { texto: 'Pérdida de peso inexplicada (>5 % del peso en 6 meses)', fase1: 'br1' },
         'Fractura patológica ante trauma menor o fragilidad ósea'
       ],
       banderasAmarillas: ['Dolor lumbar persistente sin mejoría tras 1 mes de tratamiento conservador'],
@@ -93,15 +93,15 @@ export const screening = {
     {
       id: 'l_urogenital', icon: '🫘', nombre: 'Urogenital / Renal',
       banderasRojas: [
-        'Hematuria (sangre en orina)',
+        { texto: 'Hematuria (sangre en orina)', pregunta: 'l4' },
         'Prueba de percusión positiva en ángulo costovertebral',
-        'Incontinencia intestinal/vesical o anestesia en silla de montar (síndrome de cauda equina)',
+        { texto: 'Incontinencia intestinal/vesical o anestesia en silla de montar (síndrome de cauda equina)', pregunta: 'l6' },
         'Masa testicular indolora'
       ],
       banderasAmarillas: [
-        'Dolor lumbar constante que no varía con la postura corporal',
-        'Fiebre y escalofríos acompañando el dolor lumbar',
-        'Cambios en la orina (color, olor, cantidad)'
+        { texto: 'Dolor lumbar constante que no varía con la postura corporal', fase1: 'br4' },
+        { texto: 'Fiebre y escalofríos acompañando el dolor lumbar', pregunta: 'l4' },
+        { texto: 'Cambios en la orina (color, olor, cantidad)', pregunta: 'l4' }
       ],
       preguntas: [
         { id: 'l4', anatomia: ['rinon', 'ureteres'], text: '¿Ha notado cambios en la orina (color rojo, marrón, turbio) o fiebre/escalofríos junto con el dolor de espalda?', alerta: true, s1: true,
@@ -224,10 +224,10 @@ export const screening = {
     {
       id: 'l_gi', icon: '🫃', nombre: 'Gastrointestinal',
       banderasRojas: [
-        'Dolor sacro/lumbar que se alivia al pasar gases o defecar',
-        'Heces negras alquitranadas, sangre en heces',
-        'Dolor nocturno intenso entre medianoche y 3 am',
-        'Pérdida de peso inexplicada o saciedad precoz'
+        { texto: 'Dolor sacro/lumbar que se alivia al pasar gases o defecar', pregunta: 'l1' },
+        { texto: 'Heces negras alquitranadas, sangre en heces', pregunta: 'l_gi2' },
+        { texto: 'Dolor nocturno intenso entre medianoche y 3 am', pregunta: 'l_gi2' },
+        { texto: 'Pérdida de peso inexplicada o saciedad precoz', fase1: 'br1' }
       ],
       banderasAmarillas: [
         'Dolor de espalda y abdominal al mismo nivel (simultáneo o alterno)',
@@ -311,20 +311,20 @@ export const screening = {
     {
       id: 'l_espondilo', icon: '🦴', nombre: 'Espondiloartropatías / Espondilogénicas / Ginecológico',
       banderasRojas: [
-        'Rigidez matutina prolongada >30 min que mejora con actividad (espondiloartritis)',
-        'Despertar por dolor en segunda mitad de la noche — patrón inflamatorio',
+        { texto: 'Rigidez matutina prolongada >30 min que mejora con actividad (espondiloartritis)', pregunta: 'l5' },
+        { texto: 'Despertar por dolor en segunda mitad de la noche — patrón inflamatorio', pregunta: 'l_e2' },
         'Síntomas oculares (uveítis) o cutáneos (psoriasis) asociados',
-        'Fractura por insuficiencia: dolor lumbar súbito en paciente con osteoporosis o Paget',
-        'Embarazo ectópico: dolor pélvico unilateral severo con sangrado (urgencia)',
-        'Fractura sacra por estrés: mujer deportista con actividad vigorosa y repetitiva, dolor en nalga que reproduce la carrera, dieta pobre, alteraciones menstruales o fracturas de estrés previas. Signo de la nalga; la radiografía inicial suele ser normal: la confirman la gammagrafía o la RM (Goodman 2018, cap. 15)',
-        'Espondilolistesis aguda: joven con lesiones repetidas en hiperextensión, ciática bilateral súbita durante el deporte, dolor en extensión'
+        { texto: 'Fractura por insuficiencia: dolor lumbar súbito en paciente con osteoporosis o Paget', pregunta: 'l_e4' },
+        { texto: 'Embarazo ectópico: dolor pélvico unilateral severo con sangrado (urgencia)', pregunta: 'l_e8' },
+        { texto: 'Fractura sacra por estrés: mujer deportista con actividad vigorosa y repetitiva, dolor en nalga que reproduce la carrera, dieta pobre, alteraciones menstruales o fracturas de estrés previas. Signo de la nalga; la radiografía inicial suele ser normal: la confirman la gammagrafía o la RM (Goodman 2018, cap. 15)', pregunta: 'l_e6' },
+        { texto: 'Espondilolistesis aguda: joven con lesiones repetidas en hiperextensión, ciática bilateral súbita durante el deporte, dolor en extensión', pregunta: 'l_e7' }
       ],
       banderasAmarillas: [
-        'Dolor sacroilíaco bilateral alterno',
-        'Dolor relacionado con ciclo menstrual (endometriosis)',
+        { texto: 'Dolor sacroilíaco bilateral alterno', pregunta: 'l5c' },
+        { texto: 'Dolor relacionado con ciclo menstrual (endometriosis)', pregunta: 'l_e3' },
         'Historia familiar de espondilitis anquilosante',
         'Antecedente de osteoporosis o uso prolongado de corticosteroides (riesgo de fractura por insuficiencia)',
-        'Engrosamiento óseo palpable o deformidad (Paget)'
+        { texto: 'Engrosamiento óseo palpable o deformidad (Paget)', pregunta: 'l_e5' }
       ],
       preguntas: [
         { id: 'l5', anatomia: ['art_sacroiliaca', 'columna_lumbar'], text: '¿Tiene rigidez matutina prolongada (más de 30 minutos) que mejora con el movimiento?', alerta: true, s1: true,
@@ -577,8 +577,8 @@ export const screening = {
       // PARARSE, no al sentarse ni al flexionar (a diferencia de la estenosis).
       id: 'l_vascular', icon: '🫀', nombre: 'Vascular',
       banderasRojas: [
-        'Aneurisma aórtico: dolor en reposo o nocturno, masa abdominal pulsátil, antecedentes familiares cardiovasculares',
-        'Claudicación vascular: dolor al caminar que cede al pararse (sin necesidad de sentarse), pie más frío, pulsos distales disminuidos',
+        { texto: 'Aneurisma aórtico: dolor en reposo o nocturno, masa abdominal pulsátil, antecedentes familiares cardiovasculares', pregunta: 'l_v2' },
+        { texto: 'Claudicación vascular: dolor al caminar que cede al pararse (sin necesidad de sentarse), pie más frío, pulsos distales disminuidos', pregunta: ['l_v1', 'l_v3'] },
         'Síndrome de Leriche (aortoilíaco): imita lumbalgia, con dolor en nalgas, caderas y muslos; disfunción eréctil'
       ],
       banderasAmarillas: [
@@ -652,7 +652,7 @@ export const screening = {
     {
       id: 'l_infeccion', icon: '🦠', nombre: 'Infección vertebral',
       banderasRojas: [
-        'Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH',
+        { texto: 'Infección (Lluch 2020, cap. 5.1, tabla 1): fiebre, infección bacteriana reciente, cirugía lumbar reciente, dolor nocturno, dolor que empeora con el tiempo, sin respuesta al tratamiento conservador, inmunosupresión o VIH', pregunta: 'l_inf1' },
         'Signos neurológicos (déficit sensitivo o motor, alteraciones de vejiga o recto) junto a fiebre o malestar general'
       ],
       banderasAmarillas: [

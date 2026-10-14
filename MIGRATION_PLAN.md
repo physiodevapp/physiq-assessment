@@ -300,3 +300,20 @@ Diseño, esquema y procedimiento: `docs/anatomia-kenhub.md` (léelo entero antes
 | Tobillo y pie | [x] 86 de 123 tests (todos salvo los 35 gesto testigo y dos filas genéricas) | [x] 11 de 16 preguntas | [x] abiertas con `curl` (200), inglés y español | [x] (2026-10) | 27 estructuras nuevas, 12 con versión en español; lo que no tiene artículo propio (seno del tarso, fascia plantar, túnel del tarso, Lisfranc, sesamoideos) enlaza el que lo trata. |
 
 Después, si se ve útil: un enlace a la estructura principal en la cabecera de la hipótesis (4b).
+
+## Fase L — «¿Por qué?» de las banderas rojas y amarillas de la fase 2
+
+Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero antes de empezar). Una región por sesión, con revisión clínica del usuario antes de `main`. Una bandera es un texto o `{ texto, regiones?, pregunta?, fase1?, razonamiento? }`. Con `pregunta` (ids del mismo sistema), su ⓘ abre el «¿Por qué?» de esa pregunta en el panel del razonamiento: no se escribe dos veces. Con `razonamiento` propio (misma forma que el de una pregunta, fuentes leídas en la sesión), abre el suyo. `fase1` pinta «· fase 1». `regiones` la oculta fuera de esas regiones, igual que a las preguntas. Abierta en 2026-10, a propuesta del usuario, tras el inventario de lumbar.
+
+- [x] Inventario de lumbar y de los tres sistemas compartidos
+- [x] Pregunta urgente de embarazo ectópico en lumbar (`l_e8`) y cadera (`ca_u5`): la bandera decía «urgencia» y ninguna pregunta la disparaba (NICE NG126)
+- [x] Banderas posquirúrgicas filtradas por región (`regiones`, igual que sus preguntas)
+- [x] Esquema, ⓘ y panel (`banderaHTML`, `razonBanderaHTML`, `abrirRazonBandera`, `app.js`), tests (`tests/unit/razonamiento.mjs`, smoke `--solo banderas`), `tests/referencias.mjs` cuenta las fuentes de las banderas
+- [ ] Pendiente de decisión: ¿variante de `pq_nervio` para columna (déficit neurológico nuevo tras cirugía de columna)? Hoy `PQ_MIEMBROS` excluye lumbar y cervical
+
+| Región / sistema | Enlaces (`pregunta`, `fase1`) | Razonamiento propio (rojas) | Amarillas | Revisión usuario | Notas |
+|---|---|---|---|---|---|
+| Lumbar (piloto) | [x] 21 preguntas + 3 fase 1 | [ ] | [ ] | [ ] | |
+| Sistemas compartidos (posquirúrgico, endocrino, hematológico) | [x] 13 preguntas | [ ] | [ ] | [ ] | Una vez para todas las regiones |
+| Cadera, cervical, hombro, rodilla, codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
+

@@ -811,6 +811,66 @@ async function checkRazonamientoMovil(page) {
   return { ok, a, b, c, d, sinCruz, faseTrasAtras: fase };
 }
 
+// «¿Por qué?» de las banderas (docs/razonamiento-banderas.md): el ⓘ de una
+// bandera enlazada abre el panel del razonamiento con su pregunta (escritorio:
+// lateral; 390 px: sheet que atrás cierra en la fase 2); una bandera sin
+// «¿Por qué?» no lo lleva. Posquirúrgico: en lumbar no se ven las banderas de
+// miembros (compartimental, nervio, SDRC, yeso), en rodilla sí, con su ⓘ.
+async function checkBanderas(browser) {
+  const r = {};
+  const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const page = await context.newPage();
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await irAFase2(page, 'lumbar');
+  await page.click('#tab_l_espondilo');
+  const panel = '#panel_l_espondilo';
+  r.sinPorque = await page.evaluate(p => [...document.querySelectorAll(`${p} .flag-item`)]
+    .filter(el => /uveítis/.test(el.textContent)).every(el => !el.querySelector('.flag-porque')), panel);
+  await page.click(`${panel} .flag-item:has-text("Embarazo ectópico") .flag-porque`);
+  await page.waitForSelector('#razonPanel.open');
+  const a = await razonEstado(page);
+  r.escritorio = a.abierto && a.visible && !a.velo && a.pregunta.startsWith('Embarazo ectópico')
+    && await page.evaluate(() => document.querySelector('#razonPanel .razon-kicker').textContent === '¿Por qué esta bandera roja?'
+      && document.getElementById('razonContenido').textContent.includes('(Mujeres en edad fértil)')
+      && document.getElementById('razonContenido').textContent.includes('NICE NG126'));
+  await page.keyboard.press('Escape');
+  r.fase1 = await page.isVisible('#panel_l_cancer .flag-fase1') || await page.evaluate(() => !!document.querySelector('#panel_l_cancer .flag-fase1'));
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.click('#acc_l_cancer .sistema-accordion-header');
+  await page.click('#acc_l_cancer .flag-item:has-text("Antecedentes de cáncer") .flag-porque');
+  await page.waitForSelector('#razonPanel.open');
+  const b = await razonEstado(page);
+  await page.goBack();
+  await page.waitForFunction(() => !document.getElementById('razonPanel').classList.contains('open'));
+  const c = await razonEstado(page);
+  r.movil = b.abierto && b.velo && !b.scrollX && !c.abierto && c.fase === 2;
+  await context.close();
+
+  const posq = async region => {
+    const ctx = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+    const pg = await ctx.newPage();
+    await pg.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await pg.fill('#motivoConsulta', 'Operado (banderas)');
+    await pg.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
+    await pg.click('#cronologia .option-btn >> nth=0');
+    await pg.click('#phase1 .btn-primary');
+    await pg.click(`[onclick="selectRegion('${region}', this)"]`);
+    await pg.waitForSelector('#panel_transversal_posquirurgico');
+    const res = await pg.evaluate(() => [...document.querySelectorAll('#panel_transversal_posquirurgico .flag-item')]
+      .map(el => ({ t: el.textContent, porque: !!el.querySelector('.flag-porque') })));
+    await ctx.close();
+    return res;
+  };
+  const lu = await posq('lumbar'), ro = await posq('rodilla');
+  const miembros = /compartimento|territorio de un nervio|al roce \(SDRC\)/;
+  r.posqLumbar = lu.length === 4 && !lu.some(f => miembros.test(f.t) || /Yeso/.test(f.t));
+  r.posqRodilla = ro.length === 8 && ro.filter(f => miembros.test(f.t)).every(f => f.porque);
+  r.ok = r.sinPorque && r.escritorio && r.fase1 && r.movil && r.posqLumbar && r.posqRodilla;
+  if (!r.ok) Object.assign(r, { a, b, c, lu, ro });
+  return r;
+}
+
 // «Ampliar con IA» (ampliar-ia.js): el enlace «✨ IA ↗» de un párrafo abre
 // Perplexity con el párrafo, el contexto y la frase de fuentes, sin datos del
 // paciente; seleccionar texto del «¿Por qué?» saca la barra flotante (fuera
@@ -2701,6 +2761,12 @@ const SECCIONES = [
     if (!razonEsc.ok) console.log('\nRazonamiento escritorio:', JSON.stringify(razonEsc));
     if (!razonMov.ok) console.log('\nRazonamiento 390 px:', JSON.stringify(razonMov));
     return razonEsc.ok && razonMov.ok;
+  } },
+
+  { id: 'banderas', titulo: '«¿Por qué?» de las banderas (lumbar, posquirúrgico en lumbar y rodilla):', run: async ({ browser }) => {
+    const r = await checkBanderas(browser);
+    console.log(`  ${r.ok ? '✓' : '✗'} el ⓘ de una bandera enlazada abre su pregunta en el panel (escritorio y sheet a 390 px que atrás cierra en la fase 2); sin «¿Por qué?», sin ⓘ; «· fase 1»; las banderas posquirúrgicas de miembros no salen en lumbar y en rodilla sí, con ⓘ${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
   } },
 
   { id: 'ia', titulo: '«✨ Ampliar con IA» y «✨ Preguntar a la IA»:', run: async ({ browser, errors }) => {

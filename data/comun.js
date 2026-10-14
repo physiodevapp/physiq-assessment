@@ -22,10 +22,10 @@ export const SIS_ENDOCRINO = {
     'Nódulos palpables supraclaviculares o fiebre inexplicable en pacientes con corticosteroides'
   ],
   banderasAmarillas: [
-    'Debilidad muscular proximal, mialgias y fatiga sistémica inexplicada',
+    { texto: 'Debilidad muscular proximal, mialgias y fatiga sistémica inexplicada', pregunta: 'end_1' },
     'Periartritis o tendinitis calcificante bilateral de hombro',
     'Cambios inexplicables en cabello, uñas, piel o tolerancia a la temperatura',
-    'Polidipsia y poliuria (sed y orina excesivas)'
+    { texto: 'Polidipsia y poliuria (sed y orina excesivas)', pregunta: 'end_2' }
   ],
   preguntas: [
     { id: 'end_1', text: '¿Siente fatiga inusual o debilidad muscular, especialmente al subir escaleras o levantarse de una silla?', alerta: true, s1: false,
@@ -155,16 +155,16 @@ export const SIS_ENDOCRINO = {
 export const SIS_HEMATOLOGICO = {
   id: 'transversal_hematologico', icon: '🩸', nombre: 'Hematológico',
   banderasRojas: [
-    'Sangrado espontáneo, petequias o equimosis sin traumatismo (trombocitopenia)',
-    'Heces negras/alquitranadas indicativas de trombocitopenia o sangrado GI',
+    { texto: 'Sangrado espontáneo, petequias o equimosis sin traumatismo (trombocitopenia)', pregunta: 'hem_1' },
+    { texto: 'Heces negras/alquitranadas indicativas de trombocitopenia o sangrado GI', pregunta: 'hem_4' },
     'Episodios nuevos de dolor muscular o articular en pacientes con hemofilia',
-    'Hemoptisis (toser sangre) en pacientes con hemofilia',
+    { texto: 'Hemoptisis (toser sangre) en pacientes con hemofilia', pregunta: 'hem_4' },
     'Fiebre alta, escalofríos y sudores por infecciones en pacientes con leucopenia'
   ],
   banderasAmarillas: [
     'Palidez en pliegues palmares, mucosas o lechos ungueales',
     'Uñas cóncavas o quebradizas (coiloniquia — alerta de anemia ferropénica)',
-    'Disnea rápida, dolor de pecho, debilidad y fatiga con palpitaciones',
+    { texto: 'Disnea rápida, dolor de pecho, debilidad y fatiga con palpitaciones', pregunta: 'hem_2' },
     'Uso crónico de AINEs (predispone a sangrado GI y anemia)'
   ],
   preguntas: [
@@ -314,16 +314,16 @@ const PQ_URGENCIA_TVP = 'Posible TVP: derivar hoy (NICE NG158: con Wells ≥2, e
 export const SIS_POSQUIRURGICO = {
   id: 'transversal_posquirurgico', icon: '🏥', nombre: 'Posquirúrgico', soloPosquirurgico: true,
   banderasRojas: [
-    'Herida más roja, caliente, hinchada o dolorosa, que supura o se abre, o fiebre y malestar tras la operación (infección)',
+    { texto: 'Herida más roja, caliente, hinchada o dolorosa, que supura o se abre, o fiebre y malestar tras la operación (infección)', pregunta: 'pq_herida' },
     'En las 48–72 horas siguientes, dolor desproporcionado con piel oscura, ampollas, crepitación o signos de sepsis (infección necrotizante: urgencia quirúrgica)',
-    'Pierna hinchada, caliente o dolorosa (TVP)',
-    'Falta de aire brusca, dolor en el pecho al respirar, tos con sangre o síncope (embolia pulmonar)',
-    'Dolor desproporcionado que va a más, sobre todo al estirar los dedos, con el compartimento tenso, en las horas siguientes a la lesión, la operación o un yeso o vendaje (síndrome compartimental)',
-    'Dolor quemante, hormigueo, adormecimiento o debilidad nuevos en el territorio de un nervio (posible lesión nerviosa)'
+    { texto: 'Pierna hinchada, caliente o dolorosa (TVP)', pregunta: ['pq_tvp', 'pq_tvp_ms'] },
+    { texto: 'Falta de aire brusca, dolor en el pecho al respirar, tos con sangre o síncope (embolia pulmonar)', pregunta: 'pq_tep' },
+    { texto: 'Dolor desproporcionado que va a más, sobre todo al estirar los dedos, con el compartimento tenso, en las horas siguientes a la lesión, la operación o un yeso o vendaje (síndrome compartimental)', regiones: ['codo', 'rodilla', 'tobillo_pie'], pregunta: 'pq_compart' },
+    { texto: 'Dolor quemante, hormigueo, adormecimiento o debilidad nuevos en el territorio de un nervio (posible lesión nerviosa)', regiones: PQ_MIEMBROS, pregunta: 'pq_nervio' }
   ],
   banderasAmarillas: [
-    'Dolor continuo y desproporcionado con cambios de color, temperatura, sudoración o hinchazón, o dolor al roce (SDRC)',
-    'Yeso o vendaje que aprieta, o dolor desproporcionado mientras se lleva o al retirarlo (aviso precoz de SDRC)'
+    { texto: 'Dolor continuo y desproporcionado con cambios de color, temperatura, sudoración o hinchazón, o dolor al roce (SDRC)', regiones: PQ_MIEMBROS, pregunta: 'pq_sdrc' },
+    { texto: 'Yeso o vendaje que aprieta, o dolor desproporcionado mientras se lleva o al retirarlo (aviso precoz de SDRC)', regiones: PQ_MIEMBROS }
   ],
   preguntas: [
     { id: 'pq_herida', urgencia: 'Posible infección de la herida quirúrgica: que la valore hoy el cirujano o urgencias.', text: '¿Desde la operación, la herida está más roja, caliente, hinchada o dolorosa, supura o se ha abierto, o ha tenido fiebre, escalofríos o malestar general?', alerta: true,

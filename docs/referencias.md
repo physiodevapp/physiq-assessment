@@ -3374,7 +3374,7 @@ Citada como:
 | Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 65 |
 | Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 66 |
 | Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 67 |
-| Lumbar | — | `sistemas.4.banderasRojas.5` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.4.banderasRojas.5.texto` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.4.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 2 |
 | Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 68 |
 | Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 69 |
@@ -6382,7 +6382,7 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 114 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 115 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 116 |
-| Lumbar | — | `sistemas.6.banderasRojas.0` | 2 · mención en el texto | 318 |
+| Lumbar | — | `sistemas.6.banderasRojas.0.texto` | 2 · mención en el texto | 318 |
 | Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 346 |
 | Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 347 |
 | Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 348 |

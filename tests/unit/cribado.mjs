@@ -66,8 +66,8 @@ test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra
   assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['l6', 'l_e8']);
   // La bandera roja del ectópico dice «urgencia»: tiene que haber una pregunta que la dispare
   const sis = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_espondilo');
-  assert.ok(sis.banderasRojas.some(f => /ectópico.*urgencia/i.test(f)));
-  assert.ok(sis.preguntas.some(q => q.id === 'l_e8'));
+  const ect = sis.banderasRojas.find(f => /ectópico.*urgencia/i.test(f.texto || f));
+  assert.equal(ect?.pregunta, 'l_e8');
   withState({ region: 'lumbar', sistemicoAnswers: { l_e8: 'SI' } }, () => {
     assert.equal(buildPhysiQPayload().ur.length, 1);
   });
