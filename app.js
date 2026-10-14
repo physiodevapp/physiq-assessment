@@ -714,11 +714,18 @@ function selectPsico(btn, value) {
 
   // Will update after region is known — show generic for now
   suggest.style.display = 'block';
-  suggest.innerHTML = `Herramienta recomendada: <strong>Örebro (OMPSQ)</strong> — validada para cualquier región MSK. Si la región es lumbar, también puede usar <strong>STarT Back</strong> (desarrollada y validada principalmente para columna lumbar).`;
+  suggest.innerHTML = TEXTO_HERRAMIENTA_PSICO;
 
   altoQ.style.display = value === 'Alto' ? 'block' : 'none';
   saveSession();
 }
+
+// Riesgo psicosocial (fase 1): solo herramientas validadas en castellano de
+// España (decisión del usuario, 2026-10). STarT Back salió de la
+// recomendación lumbar: su versión de España (Gusi 2011) es solo una
+// traducción. El Örebro de 21 ítems sí (Cuesta-Vargas 2014); su forma corta
+// de 10 ítems no tiene versión española. Ver docs/cuestionarios.md.
+const TEXTO_HERRAMIENTA_PSICO = 'Herramienta recomendada: <strong>Örebro (OMPSQ, 21 ítems)</strong> — validada en castellano de España para dolor musculoesquelético de cualquier región (Cuesta-Vargas 2014). Puede puntuarla en la calculadora de cuestionarios de la cabecera.';
 
 function updatePsicoRecomendacion() {
   const rec = document.getElementById('psicoRecomendacion');
@@ -1192,15 +1199,11 @@ function buildSistemicoQuestions(regionId) {
     accordion.appendChild(row);
   });
 
-  // Update psico tool suggestion based on region
+  // La herramienta recomendada ya no depende de la región (sin STarT Back)
   if (state.riesgoPsico) {
     const suggest = document.getElementById('psicoToolSuggest');
     if (suggest) {
-      if (regionId === 'lumbar') {
-        suggest.innerHTML = `Herramienta recomendada para columna lumbar: <strong>STarT Back Screening Tool (SBT)</strong> — desarrollada y validada específicamente para dolor lumbar. También puede usarse <strong>Örebro (OMPSQ)</strong>.`;
-      } else {
-        suggest.innerHTML = `Herramienta recomendada para esta región: <strong>Örebro (OMPSQ)</strong> — validada para dolor musculoesquelético en general. El STarT Back fue desarrollado principalmente para columna lumbar.`;
-      }
+      suggest.innerHTML = TEXTO_HERRAMIENTA_PSICO;
     }
   }
 

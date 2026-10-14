@@ -6,7 +6,7 @@ Estado (2026-10): investigación hecha; **calculadora implementada** para el pil
 
 Antes de la calculadora (§8), ningún cuestionario se puntuaba en la app: solo se recomendaban como texto.
 
-- **Fase 1, riesgo psicosocial** (`app.js`, `selectPsico`, `updatePsicoRecomendacion`, `applyRegionChange`): Örebro (OMPSQ) para cualquier región, STarT Back para lumbar. Con `psico_*` en «Sí» o «Dudoso»: FABQ y TSK-11 (miedo-evitación), PCS (autoeficacia; ver §6), PHQ-2 → PHQ-9 (estado de ánimo). El nivel Bajo/Medio/Alto lo elige el clínico.
+- **Fase 1, riesgo psicosocial** (`app.js`, `selectPsico`, `updatePsicoRecomendacion`, `applyRegionChange`): Örebro (OMPSQ) para cualquier región; hasta 2026-10 también STarT Back para lumbar, retirado por no tener validación en castellano de España (§8). Con `psico_*` en «Sí» o «Dudoso»: FABQ y TSK-11 (miedo-evitación), PCS (autoeficacia; ver §6), PHQ-2 → PHQ-9 (estado de ánimo). El nivel Bajo/Medio/Alto lo elige el clínico.
 - **Fases 4b y 5, `prom` de cada hipótesis** (`data/<región>.js`; badge `.prom-badge` y «Escala recomendada para el seguimiento» en el prompt del informe con IA). La MCID va dentro del texto (`'ODI (MCID: 8.5 pts) / …'`), no como dato aparte.
 
 | Región | PROMs |
@@ -166,7 +166,7 @@ Decisiones del usuario (2026-10):
 - **Entrada:** tocar el valor de cada ítem; el total, lo que falta y la interpretación se actualizan solos.
 - **Resultado:** al payload (`cu`), a 📋 Notas, a la fase 5 y al informe con IA. No al 📄 Informe para el paciente o su médico.
 - **Piloto:** psicosociales y dolor neuropático (PHQ-2, PHQ-9, GAD-7, TSK-11, CADC, Örebro, DN4, S-LANSS). Los regionales, después.
-- **Requisito obligatorio:** solo cuestionarios con una validación española publicada (campo `validacionEs`; un test unitario falla sin él). STarT Back salió de la calculadora por eso: su versión de España (Gusi 2011) es solo una traducción con entrevistas cognitivas, sin fiabilidad ni validez, y en PubMed no hay una validación posterior (búsqueda de 2026-10).
+- **Requisito obligatorio:** solo cuestionarios con una validación publicada en castellano de España (las latinoamericanas no valen) (campo `validacionEs`; un test unitario falla sin él). STarT Back salió de la calculadora por eso: su versión de España (Gusi 2011) es solo una traducción con entrevistas cognitivas, sin fiabilidad ni validez, y en PubMed no hay una validación posterior (búsqueda de 2026-10).
 
 Criterios del diseño:
 
@@ -192,6 +192,6 @@ Verificación de las reglas del piloto (2026-10; el proxy solo dejó leer PMC y 
 
 Pendiente:
 
-- Regionales (siguiente tanda): RMDQ, Oswestry, NDI (versión de Andrade Ortega), SPADI, KOOS, HAGOS, FAAM, VISA-P, iHOT-12.
+- Regionales (siguiente tanda), solo con validación de España: RMDQ, Oswestry, NDI (versión de Andrade Ortega), SPADI, KOOS, FAAM, VISA-P, VISA-A, iHOT-12. Quedan fuera por el requisito: HOOS (solo Chile), HAGOS (sin validación), KOOS-12 (solo México), KOOS-PF (solo Colombia), PSFS, Oxford Elbow Score y MEPS (sin versión española).
 - Enlace «Calcular» junto a cada cuestionario que sugiere la fase 1 y junto al badge del PROM en las fases 4b y 5.
 - physiq-report no lee aún el campo `cu` del payload.
