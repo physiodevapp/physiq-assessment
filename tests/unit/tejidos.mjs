@@ -1,7 +1,7 @@
 // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera: data/tejidos.js,
 // lib/tejidos.js, docs/tiempos-tejido.md). Se ejecuta desde tests/unit.js.
 import { assert, leer, test, TIEMPOS_TEJIDO } from './comun.mjs';
-const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles, rangoFase, buscarFila, infoBarraHTML } = await import('../../lib/tejidos.js');
+const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles, rangoFase, buscarFila, infoBarraHTML, tieneBarra } = await import('../../lib/tejidos.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 
 console.log('\ntiempos de tejido');
@@ -10,18 +10,25 @@ const T = TIEMPOS_TEJIDO;
 const filas = T.grupos.flatMap(g => g.filas);
 const subtipos = filas.flatMap(f => f.subtipos || []);
 const n = T.columnas.length;
+const conBarra = filas.filter(f => Number.isInteger(f.desde));
 
 test('tejidos: columnas con `hasta` creciente; filas con rango dentro del eje y gravedad conocida', () => {
   T.columnas.forEach((c, i) => assert.ok(c.hasta > (i ? T.columnas[i - 1].hasta : 0), `columna ${c.etiqueta}`));
   for (const f of filas) {
-    assert.ok(Number.isInteger(f.desde) && Number.isInteger(f.hasta) && f.desde >= 0 && f.hasta < n && f.desde <= f.hasta, `rango de ${f.id}`);
     assert.ok(f.gravedad in T.gravedades, `gravedad de ${f.id}`);
+    // Fila sin barra (sin `desde` ni `hasta`): solo como madre de subtipos, con una nota que lo explica
+    if (!tieneBarra(f)) {
+      assert.ok(f.desde === undefined && f.hasta === undefined && f.mide === undefined, `${f.id}: sin barra, pero con rango o medida`);
+      assert.ok(f.subtipos?.length && /^Sin barra general: /.test(f.nota || ''), `${f.id}: sin barra necesita subtipos y la nota «Sin barra general: …»`);
+      continue;
+    }
+    assert.ok(f.desde >= 0 && f.hasta < n && f.desde <= f.hasta, `rango de ${f.id}`);
   }
   assert.equal(new Set(filas.map(f => f.id)).size, filas.length, 'ids repetidos');
 });
 
 test('tejidos: toda fila tiene fuente del registro o va marcada `pendiente`; las fuentes existen en data/referencias.js', () => {
-  for (const f of filas) {
+  for (const f of conBarra) {
     assert.ok(f.fuentes.length || f.pendiente === true, `${f.id}: sin fuente ni pendiente`);
     assert.ok(!(f.fuentes.length && f.pendiente), `${f.id}: con fuente y pendiente a la vez`);
     for (const k of f.fuentes) assert.ok(REFERENCIAS[k], `${f.id}: «${k}» no está en el registro`);
@@ -38,16 +45,27 @@ test('tejidos: las fases de reparación son contiguas y caben en el eje', () => 
   assert.ok(T.fases.at(-1).hastaDia <= T.columnas.at(-1).hasta);
 });
 
-test('tejidos: las filas que salen de la tabla del wiki conservan su rango (escritorio del wiki)', () => {
-  // Índices de columna de la tabla «Tiempos de Tejido» de physiq-wiki (fb3acbf)
-  const WIKI = { tendinopatia: [2, 5], doms: [0, 0], musculo_g1: [1, 2], musculo_g2: [2, 3], musculo_g3: [2, 4],
-    ligamento_g1: [1, 2], ligamento_g2: [2, 4], ligamento_g3: [3, 5], injerto: [4, 6], fractura: [2, 5],
-    // No es del wiki: de Wu 2017 (remodelación desde las 6–8 semanas, 1–2 años)
-    tendon_rotura: [3, 7] };
-  for (const [id, [a, b]] of Object.entries(WIKI)) {
-    const f = filas.find(x => x.id === id);
-    assert.deepEqual([f.desde, f.hasta], [a, b], id);
+test('tejidos: las cifras genéricas de la tabla del wiki (Snyder-Mackler 2012, nunca leída) ya no se pintan', () => {
+  // Decisión del usuario (2026-10): las madres con subtipos quedan sin barra; las roturas
+  // musculares de grado I–III, sin subtipos, se quitan y el grupo lo explica en su nota.
+  for (const id of ['tendinopatia', 'ligamento_g1', 'ligamento_g2', 'ligamento_g3', 'injerto', 'fractura']) {
+    assert.ok(!tieneBarra(filas.find(x => x.id === id)), id);
   }
+  assert.ok(!filas.some(x => /^musculo_g/.test(x.id)), 'roturas musculares genéricas');
+  assert.ok(/^Sin barra general por grados I–III/.test(T.grupos.find(g => g.id === 'musculo').nota));
+  assert.ok(!JSON.stringify(T).includes('Snyder-Mackler'), 'ninguna cita a la tabla del wiki');
+  assert.ok(!('sinEspecificar' in T.medidas), 'medida «sin especificar» sin barras que la usen');
+  // DOMS: Wilke y Behringer 2021, máximo a los 1–3 días y varios días más → «1–3 d» a «4–14 d»
+  const doms = filas.find(x => x.id === 'doms');
+  assert.deepEqual([doms.desde, doms.hasta, doms.mide, doms.fuentes], [0, 1, 'evolucion', ['Wilke y Behringer 2021']]);
+  // No es del wiki: de Wu 2017 (remodelación desde las 6–8 semanas, 1–2 años)
+  const rotura = filas.find(x => x.id === 'tendon_rotura');
+  assert.deepEqual([rotura.desde, rotura.hasta], [3, 7]);
+  // Una fila sin barra se pinta con su nombre y su nota, sin botón ni línea «Hoy»
+  const h = tiemposTejidoHTML(T, { posquirurgico: true, semanas: 6 });
+  const fx = h.match(/<div class="tej-fila tej-sin-barra" data-tejido="fractura">.*?<\/div><\/div>/)[0];
+  assert.ok(fx.includes('Sin barra general') && !fx.includes('tej-barra') && !fx.includes('tej-hoy'));
+  assert.equal(infoBarraHTML(T, 'fractura'), '');
 });
 
 test('posicionDia: bordes de columna, monotonía y extremos', () => {
@@ -74,7 +92,7 @@ test('marcaHoy: semanas → posición y texto; sin semanas, nada', () => {
 test('tiemposTejidoHTML: una barra por fila, «pendiente de fuente» donde toca, línea «Hoy» solo posquirúrgico con semanas', () => {
   const sin = tiemposTejidoHTML(T);
   // una barra por fila y por subtipo (los subtipos van plegados, pero están en el HTML)
-  assert.equal((sin.match(/class="tej-barra /g) || []).length, filas.length + subtipos.length);
+  assert.equal((sin.match(/class="tej-barra /g) || []).length, conBarra.length + subtipos.length);
   assert.ok(!sin.includes('class="tej-hoy"'));
   assert.ok(sin.includes('Con mecanismo Post-quirúrgico'));
   const pendientes = filas.filter(f => f.pendiente).length + (T.fases.some(f => !f.fuentes.length) ? 1 : 0);
@@ -83,15 +101,15 @@ test('tiemposTejidoHTML: una barra por fila, «pendiente de fuente» donde toca,
   assert.ok(!tiemposTejidoHTML(T, { semanas: 6 }).includes('class="tej-hoy"'));
   const posq = tiemposTejidoHTML(T, { posquirurgico: true, semanas: 6 });
   // una por fila (en el eje solo la etiqueta «Hoy»; la leyenda de fases no lleva línea)
-  assert.equal((posq.match(/class="tej-hoy"/g) || []).length, filas.length + subtipos.length);
+  assert.equal((posq.match(/class="tej-hoy"/g) || []).length, conBarra.length + subtipos.length);
   assert.equal((posq.match(/class="tej-hoy-etq"/g) || []).length, 1);
   assert.ok(posq.includes('Hoy · 6 semanas tras la cirugía'));
   assert.ok(tiemposTejidoHTML(T, { posquirurgico: true }).includes('tarjeta «Cirugía»'));
   // Tira de fases en el eje fijo: una por fase, con su color
   assert.equal((sin.match(/class="tej-eje-fase tej-fase-/g) || []).length, T.fases.length);
   // Barras en su columna (grid-column de inicio y fin+1)
-  const g2 = posq.match(/data-tejido="ligamento_g2".*?grid-column:(\d+) \/ (\d+)/);
-  assert.deepEqual([+g2[1], +g2[2]], [3, 6]);
+  const rot = posq.match(/data-tejido="tendon_rotura".*?grid-column:(\d+) \/ (\d+)/);
+  assert.deepEqual([+rot[1], +rot[2]], [4, 9]);
 });
 
 test('tiempos de tejido: solo consulta — ni payload, ni resúmenes, ni informe con IA lo importan', () => {
@@ -139,7 +157,7 @@ test('tiemposTejidoHTML: filtro por tejido sin «Todos»: tocar la pastilla acti
   assert.ok(todos.includes('class="tej-filtro-btn" data-grupo="ligamento" data-filtro-tejido="ligamento" aria-pressed="false"'));
   assert.ok(todos.includes('class="tej-grupo" data-grupo="ligamento" data-filtro-tejido="ligamento"'));
   const lig = tiemposTejidoHTML(T, { filtro: 'ligamento' });
-  const nLig = T.grupos.find(g => g.id === 'ligamento').filas.reduce((n, f) => n + 1 + (f.subtipos?.length || 0), 0);
+  const nLig = T.grupos.find(g => g.id === 'ligamento').filas.reduce((n, f) => n + (tieneBarra(f) ? 1 : 0) + (f.subtipos?.length || 0), 0);
   assert.equal((lig.match(/class="tej-barra /g) || []).length, nLig);
   // La activa lleva aria-pressed y, al tocarla otra vez, pone 'todos'
   assert.ok(lig.includes('class="tej-filtro-btn activo" data-grupo="ligamento" data-filtro-tejido="todos" aria-pressed="true"'));
@@ -177,9 +195,9 @@ test('tejidos, Fase J 1: subtipos de esguince lateral de tobillo con los plazos 
   assert.deepEqual([st.tobillo_lateral_g3.desde, st.tobillo_lateral_g3.hasta], [3, 4]);
   assert.deepEqual([st.tobillo_lateral_cirugia.desde, st.tobillo_lateral_cirugia.hasta], [4, 5]);
   for (const x of Object.values(st)) assert.ok(x.fuentes.includes('Bergman 2025') || x.fuentes.includes('Vuurberg 2018'), x.id);
-  // Cada subtipo cae dentro (o casi) de su fila madre de grado: no se sale del rango del wiki por delante
-  const madre = id => filas.find(f => f.subtipos?.some(x => x.id === id));
-  for (const x of Object.values(st)) assert.ok(x.desde >= madre(x.id).desde, `${x.id} empieza antes que su fila`);
+  // Cuelgan de la fila de su grado (las madres ya no tienen barra: la tabla del wiki no se pudo leer)
+  const madre = id => filas.find(f => f.subtipos?.some(x => x.id === id)).id;
+  assert.deepEqual(['tobillo_lateral_g1', 'tobillo_lateral_g2', 'tobillo_lateral_g3', 'tobillo_lateral_cirugia'].map(madre), ['ligamento_g1', 'ligamento_g2', 'ligamento_g3', 'ligamento_g3']);
 });
 
 test('tejidos, Fase J 2: subtipos de rodilla (LCM grado I, LCA sin cirugía, LCA reconstruido) con sus fuentes', () => {
@@ -255,18 +273,20 @@ test('tejidos, Fase J 5: fila «Fractura de estrés» con subtipos de bajo y alt
 });
 
 test('tejidos: toda fila y subtipo dice qué mide su barra (`mide`), y se pinta con su relleno o su marca', () => {
-  const todas = filas.flatMap(f => [f, ...(f.subtipos || [])]);
+  const todas = filas.flatMap(f => [f, ...(f.subtipos || [])]).filter(tieneBarra);
   for (const x of todas) assert.ok(T.medidas[x.mide], `${x.id}: «mide» falta o no está en medidas`);
-  for (const [k, m] of Object.entries(T.medidas)) assert.ok(['liso', 'rayado', 'contorno', 'punteado', 'tenue', 'degradado'].includes(m.relleno) && m.etiqueta, k);
+  for (const [k, m] of Object.entries(T.medidas)) assert.ok(['liso', 'rayado', 'contorno', 'punteado', 'degradado'].includes(m.relleno) && m.etiqueta, k);
+  // Toda medida de la leyenda la usa alguna barra
+  for (const k of Object.keys(T.medidas)) assert.ok(todas.some(x => x.mide === k), `medida «${k}» sin barras`);
   // Cada medida con su propio relleno: la barra misma dice qué mide (antes «biología» y «sin
   // especificar» compartían el liso con una etiqueta, y no se entendía; usuario, 2026-10)
   const rellenos = Object.values(T.medidas).map(m => m.relleno);
   assert.equal(new Set(rellenos).size, rellenos.length, 'rellenos repetidos');
-  assert.deepEqual([T.medidas.biologia.relleno, T.medidas.sinEspecificar.relleno], ['punteado', 'tenue']);
-  // Clasificación revisada por el usuario (2026-10): las filas del wiki, sin especificar; la rotura de
-  // tendón, biología; programas; protección (casi todas las fracturas por localización)
+  assert.equal(T.medidas.biologia.relleno, 'punteado');
+  // Clasificación revisada por el usuario (2026-10): la rotura de tendón, biología; programas;
+  // protección (casi todas las fracturas por localización); el DOMS, evolución natural
   const de = id => todas.find(x => x.id === id).mide;
-  for (const id of ['tendinopatia', 'doms', 'musculo_g1', 'ligamento_g1', 'injerto', 'fractura']) assert.equal(de(id), 'sinEspecificar', id);
+  assert.equal(de('doms'), 'evolucion');
   assert.equal(de('tendon_rotura'), 'biologia');
   for (const id of ['rodilla_lca_conservador', 'menisco_traumatica_conservador', 'menisco_degenerativa_conservador']) assert.equal(de(id), 'programa', id);
   for (const id of ['fx_quinto_jones', 'fx_calcaneo_extra', 'fx_rotula_conservador', 'fx_meseta_cirugia']) assert.equal(de(id), 'proteccion', id);
@@ -445,7 +465,7 @@ test('tejidos: gemelo y sóleo por grado (Prakash 2018), recto femoral (Knapik 2
 test('tejidos: cada barra es un botón que abre su tarjeta (gravedad, qué mide, plazo), también la de un subtipo', () => {
   const h = tiemposTejidoHTML(T);
   const ids = [...h.matchAll(/<button type="button" class="tej-barra[^"]*" data-mide="[^"]*" data-barra="([^"]+)"/g)].map(m => m[1]);
-  assert.equal(ids.length, filas.length + subtipos.length);
+  assert.equal(ids.length, conBarra.length + subtipos.length);
   // Ni `title` (el tooltip del navegador taparía la tarjeta) ni role="img"
   assert.ok(!/class="tej-barra[^>]*(title=|role="img")/.test(h));
   for (const id of ids) assert.ok(infoBarraHTML(T, id).includes('tej-info-nombre'), id);
