@@ -79,7 +79,7 @@ Los tres niveles se construyen así, todos sobre la misma pauta:
 | **B — ajustada** | Siempre | La que corresponde a la irritabilidad registrada |
 | **C — por encima** | Solo con irritabilidad Baja y sin miedo al movimiento alto | Un escalón más de carga |
 
-Los modificadores por irritabilidad necesitan una fuente leída antes de escribirse (decisión 6). Hoy la fase 3 ya muestra un texto por nivel («Proceder con precaución. Evitar técnicas de alta intensidad…»); fase 6 no debe reutilizarlo sin comprobar de dónde sale.
+Los modificadores necesitan una fuente leída antes de escribirse (decisión 6); lo leído hasta ahora y lo que cambia está en «Fuentes leídas», abajo. Hoy la fase 3 ya muestra un texto por nivel («Proceder con precaución. Evitar técnicas de alta intensidad…»); fase 6 no debe reutilizarlo sin comprobar de dónde sale.
 
 ### Plan de un mes (parte sin IA)
 | | Plan A — 1 sesión/semana | Plan B — 2 sesiones/semana |
@@ -89,7 +89,7 @@ Los modificadores por irritabilidad necesitan una fuente leída antes de escribi
 | Reevaluación final | Sesión 4, con el PROM de la hipótesis (`prom`) | Sesión 8, con el mismo PROM |
 | Peso del programa domiciliario | Alto: es la mayor parte de la carga del mes | Medio |
 
-- **Progresión por criterios, no por fechas.** Del tipo «subir la carga cuando el dolor durante el ejercicio y a las 24 h no empeore». Si la pauta de la hipótesis ya trae criterios, se usan los suyos; los genéricos necesitan fuente (decisión 6).
+- **Progresión por criterios, no por fechas.** Del tipo «subir la carga cuando el dolor durante el ejercicio y a las 24 h no empeore». Si la pauta de la hipótesis ya trae criterios, se usan los suyos; los genéricos necesitan fuente (decisión 6; ver «Fuentes leídas»).
 - **Pronóstico**: si `pronostico.horizonte` pasa de 4 semanas, el plan dice que es el primer mes de un proceso más largo. `pronostico.derivacion` («Cuándo reconsiderar o derivar») va a la reevaluación final como criterio explícito.
 - **Post-quirúrgico**: el mes se sitúa en las semanas desde la cirugía (`semanasCirugia()`) y no adelanta nada que el protocolo no permita.
 
@@ -103,6 +103,38 @@ Los modificadores por irritabilidad necesitan una fuente leída antes de escribi
 
 ### Compartir
 Fase 6 tiene su propio «📤 Compartir» en la barra inferior, con el mismo patrón que fase 5 (hoja en móvil, diálogo centrado en escritorio): «Plan de sesión», «Plan del mes» (fisio) y «Programa domiciliario» (paciente). Con la capa de IA, el programa domiciliario muestra los puntos de revisión sin marcar, como «Informe clínico (IA)».
+
+## Fuentes leídas para la decisión 6 (2026-10)
+
+Leídas enteras desde PubMed Central (página del artículo; la API de texto completo no lo permite para esta revista). Aún no están en `data/referencias.js`: se añadirán cuando `data/` las cite, porque el test de referencias rechaza entradas que nada cita.
+
+**Petersen, Thurmond y Jensen 2021.** *Severity, Irritability, Nature, Stage, and Stability (SINSS): A clinical perspective.* J Man Manip Ther 29(5):297–309. [PMC8491699](https://pmc.ncbi.nlm.nih.gov/articles/PMC8491699/) · DOI [10.1080/10669817.2021.1919284](https://doi.org/10.1080/10669817.2021.1919284). Tipo: perspectiva clínica (opinión experta con viñetas), no un estudio.
+- SINSS sirve para decidir el **vigor** (fuerza o intensidad y complejidad de la técnica) y la **extensión** (profundidad en la resistencia, número de movimientos, magnitud) de la exploración y de la intervención, para no quedarse corto ni pasarse (tabla 2 y texto).
+- **Gravedad e irritabilidad se combinan**, no se usa la irritabilidad sola. Cuatro combinaciones: gravedad alta + irritabilidad alta → solo hasta el límite activo; gravedad alta + irritabilidad baja → se puede llegar al límite pasivo, porque lo que se provoca cede rápido; gravedad baja + irritabilidad alta → prudencia al acercarse al límite de dolor, por el riesgo de exacerbación prolongada o dolor latente; las dos bajas → exploración y tratamiento más agresivos, evitando exacerbaciones innecesarias.
+- Irritabilidad en tres niveles por la razón entre actividad que agrava y actividad o reposo que alivia: mínima ≥ 2:1, moderada 1:1, máxima ≥ 1:2 (con sueño: vuelve a dormirse en < 30 min en la moderada, > 30 min o con medicación en la máxima).
+- Gravedad en tres niveles: mínima NRS 0–3, moderada 4–7, máxima 8–10, más impacto en las AVD, medicación y dolor nocturno.
+- Intervención: al principio, evitar posiciones o actividades que agraven; empezar el movimiento respetando la curación sin provocar síntomas innecesariamente; **reintroducir lo que agravaba cuando baja la irritabilidad**. Reevaluar la respuesta dentro de cada sesión y entre sesiones (estabilidad); si no cambia, retroceder si el tejido sigue inflamado o progresar si la mejora se ha estancado.
+- Estadio con otros cortes que la app: agudo < 3 semanas, subagudo 3–6, crónico > 6 (la app usa < 6 semanas y > 3 meses).
+
+**Barakatt, Romano, Riddle, Beckett y Kravitz 2009.** *An Exploration of Maitland's Concept of Pain Irritability in Patients with Low Back Pain.* J Man Manip Ther 17(4):196–205. [PMC2813500](https://pmc.ncbi.nlm.nih.gov/articles/PMC2813500/) · DOI [10.1179/106698109791352175](https://doi.org/10.1179/106698109791352175). Transversal, 183 pacientes con lumbalgia, 27 fisios.
+- Maitland: con dolor irritable, limitar el vigor de la exploración y de los ejercicios iniciales, para no exacerbar mientras se maximiza la movilidad.
+- Lo que hicieron los fisios (descriptivo, no comparación de eficacia): con lumbalgia irritable dieron más terapia manual y menos ejercicio activo y estiramientos (aguda y crónica), y en la aguda más McKenzie y más agentes físicos. Sin diferencias en ejercicio con material, aeróbico ni ergonomía.
+- **No está demostrado que juzgar la irritabilidad mejore los resultados** (texto de los autores). El Roland-Morris, los síntomas distales y la tolerancia a la flexión se asociaron con el juicio de irritabilidad.
+
+**Barakatt, Romano, Riddle y Beckett 2009.** *The Reliability of Maitland's Irritability Judgments in Patients with Low Back Pain.* J Man Manip Ther 17(3):135–40. [PMC2762835](https://pmc.ncbi.nlm.nih.gov/articles/PMC2762835/) · DOI [10.1179/jmt.2009.17.3.135](https://doi.org/10.1179/jmt.2009.17.3.135). 80 pacientes, dos fisios cada uno.
+- Acuerdo del 71 %, kappa 0,39 (todos) y 0,44 en los 48 cuyo dolor no cambió entre exploraciones (PABAK 0,43 y 0,50): fiabilidad entre baja y moderada. La irritabilidad es un juicio con margen.
+
+### Qué cambia en el diseño (propuesta, pendiente de la revisión del usuario)
+1. **Los niveles A/B/C dependen de gravedad × irritabilidad, no solo de la irritabilidad** (Petersen 2021). La gravedad sale del NRS (fase 3) con los cortes de SINSS. Ojo: la matriz de irritabilidad de la app ya mezcla gravedad (dolor ≤3 / 4–6 / ≥7, discapacidad) con irritabilidad (dolor en reposo, movimiento, tolerancia), y con cortes de NRS distintos de SINSS. Hay que decidir si fase 6 usa el nivel de la matriz tal cual o separa las dos dimensiones.
+2. **Lo que se puede escribir con fuente es cualitativo**: vigor y extensión (hasta el límite activo, hasta el pasivo, prudencia cerca del dolor, más agresivo), evitar lo que agrava al principio y reintroducirlo cuando baje la irritabilidad, reevaluar dentro de la sesión y entre sesiones. Ninguna fuente da minutos, series ni cargas.
+3. **El tipo de técnica por nivel es práctica observada, no recomendación**: Barakatt 2009 describe qué hicieron los fisios, no qué funciona. Si se usa, se dice así.
+4. **Criterio de progresión con fuente**: «reintroducir lo que agravaba cuando baja la irritabilidad» + reevaluación (Petersen 2021). Un umbral numérico de dolor (modelo de monitorización del dolor, Silbernagel 2007) sigue sin leer.
+5. **«Sin C con miedo al movimiento alto» no tiene apoyo directo** en lo leído: Petersen 2021 solo liga la gravedad alta con el miedo al movimiento como factor de mal pronóstico. Se mantiene como decisión clínica del usuario o se retira.
+6. **La fiabilidad baja del juicio** (Barakatt 2009) se dice en fase 6: el nivel es orientativo y el fisio puede cambiarlo.
+
+### Pendiente de leer
+- Silbernagel, Thomeé, Eriksson y Karlsson 2007, Am J Sports Med 35(6):897–906, DOI [10.1177/0363546506298279](https://doi.org/10.1177/0363546506298279) — sin acceso libre; hace falta el PDF. Solo si se quiere un umbral numérico de dolor para progresar (estudiado en tendinopatía de Aquiles).
+- Opcionales, citados por Petersen 2021 como origen del concepto: Hengeveld y Banks, *Maitland's Vertebral Manipulation*, 8.ª ed., Elsevier 2014 (capítulo de gravedad e irritabilidad); Zusman M, *Irritability*, Man Ther 1998;3(4):195–202.
 
 ## Datos
 

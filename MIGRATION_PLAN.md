@@ -309,7 +309,8 @@ Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo enter
 
 - [x] L1 — Documento de diseño
 - [x] L1 — Decisiones 6–10 tomadas según la recomendación (usuario, 2026-10)
-- [ ] L1 — Fuente leída para los modificadores por irritabilidad y los criterios de progresión (decisión 6; la aporta el usuario; bloquea L2)
+- [x] L1 — Leídas Petersen 2021 (SINSS) y Barakatt 2009 (×2), de acceso libre; notas y propuesta en `docs/plan-tratamiento.md`, «Fuentes leídas»
+- [ ] L1 — Revisión del usuario de esa propuesta (gravedad × irritabilidad; matriz de la app; regla del miedo al movimiento). Opcional: PDF de Silbernagel 2007 para un umbral numérico de progresión
 - [ ] L2 — Parte sin IA en lumbar (piloto)
 - [ ] L3 — Parte sin IA en las 7 regiones
 - [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)
