@@ -11,19 +11,71 @@
 export const DOSIS_DERIVAR = 'Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico';
 
 // ── SISTEMAS TRANSVERSALES (aplicados a todas las regiones) ──
+
+// Cita de Goodman en el razonamiento propio de las banderas (Fase M); cada una añade sus páginas.
+const GOODMAN_BANDERAS = 'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), ';
 export const SIS_ENDOCRINO = {
   id: 'transversal_endocrino', icon: '⚗️', nombre: 'Endocrino / Metabólico',
   banderasRojas: [
-    'Síndrome del túnel carpiano bilateral (alerta endocrina/metabólica)',
-    'Signos de tormenta tiroidea: taquicardia, hipertermia, agitación',
-    'Confusión, letargo o sudoración profusa sin ejercicio en diabéticos (riesgo hipoglucemia/cetoacidosis)',
-    'Signos de depleción de potasio por diuréticos: arritmias, calambres',
-    'Aparición de xantomas eruptivos en tendones extensores',
-    'Nódulos palpables supraclaviculares o fiebre inexplicable en pacientes con corticosteroides'
+    { texto: 'Síndrome del túnel carpiano bilateral (alerta endocrina/metabólica)',
+      razonamiento: {
+        porque: 'Cuando el túnel carpiano afecta a las dos manos, la causa es sistémica más a menudo: en el mixedema o la acromegalia se engrosa el ligamento transverso del carpo, y la diabetes, el hipotiroidismo, la amiloidosis o la artritis inflamatoria lesionan o comprimen el nervio mediano en las dos muñecas.',
+        peso: 'No apunta a una enfermedad concreta, pero para Goodman todo síntoma bilateral es una bandera roja. Con un túnel carpiano en las dos manos, buscar otros signos endocrinos o metabólicos (debilidad proximal, cansancio, cambios de peso, de piel o de pelo, sed y orina excesivas) y, si los hay o no hay una causa conocida, derivar al médico.',
+        detalle: 'Síntomas: hormigueo, adormecimiento o dolor quemante en el territorio del mediano (pulgar, índice, medio y mitad radial del anular), con frecuencia de noche y despertando al paciente, que se alivia sacudiendo la mano o cambiando la postura; puede irradiar a la palma y al antebrazo.\n\nCausas sistémicas que recoge Goodman (tabla 11.2): endocrinas (acromegalia, diabetes, hiper e hipotiroidismo, hiperparatiroidismo, menopausia), inflamatorias (artritis reumatoide, gota, lupus, amiloidosis), retención de líquidos (embarazo, insuficiencia renal o cardiaca), algunos fármacos y la quimioterapia. Puede acompañarse de un túnel tarsiano en los dos pies.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 11, pp. 387–389 y 422.']
+      } },
+    { texto: 'Signos de tormenta tiroidea: taquicardia, hipertermia, agitación',
+      razonamiento: {
+        porque: 'En un hipertiroidismo sin diagnosticar, sin tratar o mal tratado, o ante un desencadenante (traumatismo, infección, cirugía) incluso con el hipertiroidismo controlado, el metabolismo se dispara: tormenta tiroidea. Da taquicardia intensa con insuficiencia cardiaca, fiebre muy alta (hasta 40,7 °C), inquietud y agitación, dolor torácico o abdominal, náuseas y vómitos, y en los casos graves shock o coma.',
+        peso: 'Es rara, pero pone en peligro la vida: Goodman la incluye entre lo que pide atención médica inmediata, para evitar el colapso cardiovascular o por la fiebre. Vigilar sobre todo a quien tiene un hipertiroidismo conocido después de una operación, un traumatismo o una infección.',
+        detalle: 'No se pregunta: se reconoce por lo que se ve en la consulta (pulso muy rápido, temperatura alta, agitación) en una persona con hipertiroidismo o con sus signos (temblor, nerviosismo, palpitaciones, pérdida de peso, intolerancia al calor). Buscar si ha habido hace poco una operación, un traumatismo o una infección.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 11, pp. 395–396 y 421.']
+      } },
+    { texto: 'Confusión, letargo o sudoración profusa sin ejercicio en diabéticos (riesgo hipoglucemia/cetoacidosis)',
+      razonamiento: {
+        porque: 'En la persona con diabetes, la confusión, el letargo o el sudor abundante sin ejercicio pueden ser una hipoglucemia (de inicio brusco: insulina o antidiabéticos orales con poca comida o más actividad) o una hiperglucemia grave (de inicio gradual: cetoacidosis o estado hiperosmolar, cuando falta insulina o aumentan las necesidades por una infección, un traumatismo, una cirugía o estrés).',
+        peso: 'Pide actuar en el momento: Goodman la incluye entre lo que necesita atención médica inmediata. Medir la glucosa con un pinchazo en el dedo si se puede y avisar al médico. Si está consciente y no se sabe si la glucosa está alta o baja, darle azúcar: es lo más seguro. Si pierde el conocimiento, llamar a emergencias. Toda hipoglucemia, o sospecha, se comunica al médico.',
+        detalle: 'Cómo se distinguen (Goodman, tabla 11.10). Hipoglucemia (glucosa por debajo de 70 mg/dL), de inicio brusco: palidez, sudor, nerviosismo, debilidad, hambre y temblor; después cefalea, visión doble o borrosa, habla torpe, labios o lengua dormidos, confusión, y convulsiones o coma. Cetoacidosis (por encima de 300 mg/dL), gradual: sed, orina abundante y deshidratación, respiración rápida y profunda, aliento afrutado, calambres musculares y abdominales, cara enrojecida, piel caliente y seca, letargo y confusión. El estado hiperosmolar, más propio del mayor con diabetes tipo 2, da sed, deshidratación grave, confusión, convulsiones y coma, sin cetosis.\n\nTrampas: una bajada rápida desde cifras altas puede dar síntomas de hipoglucemia aunque la glucosa siga alta; los betabloqueantes pueden ocultar sus avisos; y de noche puede dar solo pesadillas, sudor o cefalea.\n\nEn la consulta: 10–15 g de hidratos de absorción rápida suelen bastar (media taza de zumo o de refresco con azúcar, dos sobres de azúcar). Tenerlos siempre a mano.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 11, pp. 407–409 y 421–423.']
+      } },
+    { texto: 'Signos de depleción de potasio por diuréticos: arritmias, calambres',
+      razonamiento: {
+        porque: 'Los diuréticos que no ahorran potasio (los más usados, las tiacidas, como la hidroclorotiazida) hacen perder por la orina sodio y agua, y con ellos potasio. La falta de potasio da debilidad muscular, calambres, cansancio, arritmias, distensión abdominal, náuseas y vómitos.',
+        peso: 'Goodman la incluye entre lo que pide atención médica: un potasio por debajo de 3,5 mEq/L puede provocar una arritmia mortal incluso con un ejercicio cardiovascular moderado. Con debilidad, calambres o cansancio en quien toma diuréticos, consultar al médico antes de hacer ejercicio y, si hay análisis, mirar el potasio.',
+        detalle: 'Qué hacer con la sospecha: tomar el pulso buscando arritmias y preguntar por náuseas y vómitos. Buscar también los signos de deshidratación (labios y piel secos y agrietados, mareo al ponerse de pie, debilidad, cansancio), que en quien toma diuréticos también se comunican al médico.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 11, pp. 390, 410–411 y 421–423.']
+      } },
+    { texto: 'Aparición de xantomas eruptivos en tendones extensores',
+      razonamiento: {
+        porque: 'Cuando los lípidos de la sangre (colesterol y triglicéridos) están muy altos, se depositan en la piel como nódulos sobre las superficies de extensión (codos, rodillas, nuca, talones), a menudo junto a los tendones extensores. En la diabetes mal controlada indican que la glucosa no está controlada.',
+        peso: 'Es un signo de exploración, no de una enfermedad oculta grave: pide derivar al médico para normalizar los lípidos (Goodman). Desaparecen al controlar la diabetes, y pueden aparecer en cualquier trastorno de los lípidos, no solo en ella.',
+        detalle: 'Las placas amarillas en los párpados son otro signo de lípidos altos. El ejercicio sigue siendo clave en el tratamiento, y el equipo, fisioterapeuta incluido, ayuda con la educación sobre la diabetes y el control de la glucosa.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 11, pp. 402–403 y 421–422.']
+      } },
+    { texto: 'Nódulos palpables supraclaviculares o fiebre inexplicable en pacientes con corticosteroides',
+      razonamiento: {
+        porque: 'Junta dos avisos distintos de Goodman. Un ganglio o un nódulo palpable encima de la clavícula o en el triángulo de los escalenos (lateral al esternocleidomastoideo, en la parte baja del cuello) puede ser la primera manifestación de un cáncer de tiroides. Y los corticoides frenan la respuesta inflamatoria, así que pueden ocultar los primeros signos de una infección: una fiebre sin explicación puede ser la única pista.',
+        peso: 'Los dos piden valoración médica; Goodman los pone entre los motivos de derivación, no entre los de atención inmediata. El nódulo pesa más con ronquera nueva, tos con sangre o tensión alta, y en la exploración no se distingue de uno benigno, así que lo valora el médico. La fiebre sin otros síntomas en quien toma corticoides se deriva siempre.',
+        detalle: 'Corticoides: tomados mucho tiempo dan un síndrome de Cushing (cara redonda, joroba de grasa en la nuca, cicatrización lenta). No se retiran de golpe: la glándula suprarrenal se atrofia mientras se toman y el descenso debe ser gradual.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 11, pp. 392, 398–399 y 421–423.']
+      } }
   ],
   banderasAmarillas: [
     { texto: 'Debilidad muscular proximal, mialgias y fatiga sistémica inexplicada', pregunta: 'end_1' },
-    'Periartritis o tendinitis calcificante bilateral de hombro',
+    { texto: 'Periartritis o tendinitis calcificante bilateral de hombro',
+      razonamiento: {
+        porque: 'La periartritis (inflamación de tendones, ligamentos y cápsula) y la tendinitis calcificante aparecen sobre todo en el hombro de personas con enfermedad endocrina: del tiroides (hipertiroidismo) y del metabolismo de los estrógenos, y también en los trastornos de las paratiroides.',
+        peso: 'Por sí sola no es grave, pero bilateral orienta a una causa sistémica (para Goodman, todo síntoma bilateral es una bandera roja): buscar otros signos endocrinos. Con causa endocrina suele empezar a una edad más joven, durar más y acabar más a menudo en cirugía; la periartritis crónica mejora al tratar el hipertiroidismo.',
+        detalle: 'En el hipertiroidismo, la restricción dolorosa del hombro puede ser uni o bilateral y avanzar a una capsulitis adhesiva (hombro congelado); también se ha descrito tendinitis calcificante aguda de la muñeca. La calcificación se ve en la radiografía.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 11, pp. 388, 395, 399 y 422.']
+      } },
     { texto: 'Cambios inexplicables en cabello, uñas, piel o tolerancia a la temperatura', pregunta: 'end_3' },
     { texto: 'Polidipsia y poliuria (sed y orina excesivas)', pregunta: 'end_2' }
   ],
@@ -157,15 +209,42 @@ export const SIS_HEMATOLOGICO = {
   banderasRojas: [
     { texto: 'Sangrado espontáneo, petequias o equimosis sin traumatismo (trombocitopenia)', pregunta: 'hem_1' },
     { texto: 'Heces negras/alquitranadas indicativas de trombocitopenia o sangrado GI', pregunta: 'hem_4' },
-    'Episodios nuevos de dolor muscular o articular en pacientes con hemofilia',
+    { texto: 'Episodios nuevos de dolor muscular o articular en pacientes con hemofilia',
+      razonamiento: {
+        porque: 'En la hemofilia no funcionan bien los factores VIII o IX de la coagulación: se sangra durante más tiempo. El sangrado dentro de la articulación (hemartros) es de lo más frecuente, tras un traumatismo o sin causa, sobre todo en rodilla, codo, tobillo, cadera y hombro; el segundo sitio es el músculo, sobre todo el psoasilíaco, los gemelos y los flexores del antebrazo.',
+        peso: 'En una persona con hemofilia, todo episodio nuevo de dolor muscular o articular se deriva al médico (Goodman): el dolor suele aparecer antes que cualquier otro signo de sangrado, y cualquier síntoma sin explicar puede ser un sangrado. Se trata pronto con el factor que falta y reposo de la articulación mientras duele. Nunca aplicar calor sobre una zona que sangra o puede sangrar.',
+        detalle: 'Hemartros agudo: hormigueo o pinchazos, rigidez en la postura de alivio, menos movilidad, dolor, hinchazón, dolor a la presión y calor. Hemorragia muscular: dolor que va a más, espasmo protector, movilidad limitada en las articulaciones vecinas y el músculo en posición acortada; puede comprimir un nervio (femoral, cubital o mediano).\n\nSangrado en el psoas o el ilíaco: dolor en el abdomen bajo o la ingle (a la derecha puede parecer una apendicitis), pérdida de sensibilidad en la cara anterior del muslo y la cadera en flexión. Para distinguirlo de un sangrado de la cadera: flexionar el tronco duele mucho si sangra el psoas y poco si sangra la cadera; rotar la cadera con suavidad duele mucho si sangra la cadera y poco o nada si sangra el psoas.\n\nLos hemartros repetidos acaban en artropatía hemofílica (pérdida de movilidad, atrofia, contracturas en flexión), y esa articulación sangra con más facilidad.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 5, pp. 218–221.']
+      } },
     { texto: 'Hemoptisis (toser sangre) en pacientes con hemofilia', pregunta: 'hem_4' },
     { texto: 'Fiebre alta, escalofríos y sudores por infecciones en pacientes con leucopenia', pregunta: ['hem_3', 'hem_5'] }
   ],
   banderasAmarillas: [
-    'Palidez en pliegues palmares, mucosas o lechos ungueales',
-    'Uñas cóncavas o quebradizas (coiloniquia — alerta de anemia ferropénica)',
+    { texto: 'Palidez en pliegues palmares, mucosas o lechos ungueales',
+      razonamiento: {
+        porque: 'La anemia baja la capacidad de la sangre para llevar oxígeno, y el cuerpo reparte la que hay hacia los órganos más sensibles a la falta de oxígeno (cerebro, corazón, músculo), a costa de las manos y los riñones: por eso palidecen las palmas, los lechos ungueales, las mucosas y la conjuntiva.',
+        peso: 'Sugiere anemia, pero no dice su causa; en fisioterapia las más habituales son la pérdida de sangre digestiva por AINE, las enfermedades crónicas o inflamatorias, la anemia perniciosa y el cáncer o su tratamiento (Goodman). Pesa más con cansancio, falta de aire o palpitaciones con poco esfuerzo. Con anemia conocida, el médico aprueba antes el ejercicio.',
+        detalle: 'Cómo mirarla (Goodman): con las manos a la altura del corazón y calientes, porque el frío las palidece por vasoconstricción. Buscar palmas pálidas con los pliegues de color normal; en la anemia grave también palidecen los pliegues. En la piel oscura la palidez es la falta del tono rojizo: amarillenta en la piel morena, grisácea o cenicienta en la negra.\n\nOtros datos: la tensión diastólica puede ser más baja y el pulso en reposo más alto, y la tolerancia al esfuerzo baja; dosificar el ejercicio por el esfuerzo percibido y vigilar pulso y tensión.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 5, pp. 213–215 y 220–221.']
+      } },
+    { texto: 'Uñas cóncavas o quebradizas (coiloniquia — alerta de anemia ferropénica)',
+      razonamiento: {
+        porque: 'En la anemia ferropénica de larga evolución, las uñas se vuelven quebradizas y cóncavas (en cuchara) en lugar de convexas (Goodman, tabla 5.1). En fisioterapia, la causa más habitual de la falta de hierro es la pérdida crónica de sangre digestiva por AINE.',
+        peso: 'Indica una falta de hierro mantenida, no reciente. Goodman la incluye entre las pistas de enfermedad hematológica que se buscan al inspeccionar las manos: con ella, preguntar por AINE, heces negras y cansancio, y que el médico busque la causa.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 5, pp. 214 y 220–221.']
+      } },
     { texto: 'Disnea rápida, dolor de pecho, debilidad y fatiga con palpitaciones', pregunta: 'hem_2' },
-    'Uso crónico de AINEs (predispone a sangrado GI y anemia)'
+    { texto: 'Uso crónico de AINEs (predispone a sangrado GI y anemia)',
+      razonamiento: {
+        porque: 'Los AINE inhiben la ciclooxigenasa: además de quitar la inflamación, dejan sin protección la mucosa del estómago y frenan las plaquetas. Tomados mucho tiempo causan gastritis y úlcera (en torno al 25 % de quienes los toman de forma crónica), y la úlcera puede sangrar; un sangrado lento y mantenido acaba en anemia por falta de hierro.',
+        peso: 'Por sí solo no es una bandera de enfermedad, pero da más peso a otros hallazgos: con AINE crónicos, las heces negras, los signos de anemia (cansancio, palidez, falta de aire con poco esfuerzo) o un dolor nuevo de espalda o de hombro hacen más probable una úlcera que sangra, y piden valoración médica (Goodman). La lesión puede no dar síntomas hasta que está avanzada.',
+        detalle: 'Qué aumenta el riesgo (Goodman, recuadro 8.3): más de 65 años, úlcera o enfermedad digestiva previa, tabaco y alcohol, corticoides orales, anticoagulantes o aspirina incluso a dosis baja, antidepresivos ISRS, y antiácidos, que ocultan los síntomas. Los inhibidores de la COX-2 reducen el riesgo, pero no lo quitan.\n\nPor qué la espalda o el hombro: la úlcera por AINE suele estar en la pared posterior del estómago. Otros efectos que vigilar: tensión alta y edema de tobillos (son vasoconstrictores renales) y, en el mayor, confusión o pérdida de memoria. Preguntar si combina varios AINE, con o sin receta.',
+        fuentes: ['Goodman 2018'],
+        citas: [GOODMAN_BANDERAS + 'cap. 5, pp. 213 y 220; cap. 8, pp. 306 y 314–317.']
+      } }
   ],
   preguntas: [
     { id: 'hem_1', text: '¿Sangra o se le forman moretones fácilmente después de un traumatismo menor, cirugía o procedimiento dental?', alerta: true, s1: false,

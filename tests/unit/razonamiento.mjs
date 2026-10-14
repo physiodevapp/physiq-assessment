@@ -150,7 +150,7 @@ test('banderas: lumbar, cada bandera enlazada según el inventario (docs/razonam
   assert.equal(enlaces.filter(f => f.pregunta).length, 21);
   assert.deepEqual(enlaces.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4', 'br1']);
   // Razonamiento propio: las 8 rojas sin pregunta y 2 amarillas
-  const propias = SYSTEMIC_SCREENING.lumbar.sistemas.flatMap(s => [
+  const propias = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => [
     ...s.banderasRojas.filter(f => f.razonamiento).map(f => `R ${f.texto.split(' ').slice(0, 2).join(' ')}`),
     ...s.banderasAmarillas.filter(f => f.razonamiento).map(f => `A ${f.texto.split(' ').slice(0, 2).join(' ')}`)]);
   assert.deepEqual(propias, ['R Pérdida de', 'R Fractura patológica', 'A Dolor lumbar', 'R Prueba de', 'R Masa testicular',
@@ -159,6 +159,23 @@ test('banderas: lumbar, cada bandera enlazada según el inventario (docs/razonam
   const sinPorque = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_'))
     .flatMap(s => s.banderasRojas).filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento));
   assert.deepEqual(sinPorque.map(textoBandera), []);
+});
+
+test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const corto = f => f.texto.split(' ').slice(0, 2).join(' ');
+  const resumen = sis => [...sis.banderasRojas.map(f => ['R', f]), ...sis.banderasAmarillas.map(f => ['A', f])]
+    .map(([t, f]) => typeof f === 'string' ? `${t} ${f.split(' ').slice(0, 2).join(' ')} · —`
+      : `${t} ${corto(f)} · ${f.pregunta ? [].concat(f.pregunta).join('+') : f.razonamiento ? 'propio' : '—'}`);
+  const sis = id => SYSTEMIC_SCREENING.lumbar.sistemas.concat(SYSTEMIC_SCREENING.rodilla.sistemas).find(s => s.id === id);
+  assert.deepEqual(resumen(sis('transversal_posquirurgico')), ['R Herida más · pq_herida', 'R En las · pq_herida', 'R Pierna hinchada, · pq_tvp+pq_tvp_ms',
+    'R Falta de · pq_tep', 'R Dolor desproporcionado · pq_compart', 'R Dolor quemante, · pq_nervio', 'R Tras una · pq_nervio_col',
+    'A Dolor continuo · pq_sdrc', 'A Yeso o · pq_sdrc+pq_compart']);
+  assert.deepEqual(resumen(sis('transversal_endocrino')), ['R Síndrome del · propio', 'R Signos de · propio', 'R Confusión, letargo · propio',
+    'R Signos de · propio', 'R Aparición de · propio', 'R Nódulos palpables · propio',
+    'A Debilidad muscular · end_1', 'A Periartritis o · propio', 'A Cambios inexplicables · end_3', 'A Polidipsia y · end_2']);
+  assert.deepEqual(resumen(sis('transversal_hematologico')), ['R Sangrado espontáneo, · hem_1', 'R Heces negras/alquitranadas · hem_4',
+    'R Episodios nuevos · propio', 'R Hemoptisis (toser · hem_4', 'R Fiebre alta, · hem_3+hem_5',
+    'A Palidez en · propio', 'A Uñas cóncavas · propio', 'A Disnea rápida, · hem_2', 'A Uso crónico · propio']);
 });
 
 test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar» solo con detalle', () => {
