@@ -137,7 +137,7 @@ export const screening = {
     {
       id: 'cv_cardio', icon: '❤️', nombre: 'Cardiovascular',
       banderasRojas: [
-        { texto: 'Dolor de cuello/mandíbula acompañado de sudores, náuseas u opresión torácica', pregunta: 'cv2' },
+        { texto: 'Dolor de cuello/mandíbula acompañado de sudores, náuseas u opresión torácica', pregunta: ['cv2', 'cv_c3'] },
         { texto: 'Síncope repentino sin mareo previo',
           razonamiento: {
             porque: 'Un síncope es una pérdida breve de conocimiento porque llega poco oxígeno al cerebro. El vasovagal, por ansiedad o estrés, y el de la tensión baja al incorporarse suelen avisar antes con mareo, aturdimiento o náuseas. Un síncope que llega sin ningún aviso orienta al corazón: un problema de una válvula o una arritmia (Goodman).',
@@ -148,7 +148,7 @@ export const screening = {
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 227 y 261.'
             ]
           } },
-        { texto: 'Angina no aliviada por reposo (>20 min)', pregunta: 'cv2' },
+        { texto: 'Angina no aliviada por reposo (>20 min)', pregunta: ['cv2', 'cv_c3'] },
         // Tarjeta cervical (guía de consulta), BANDERAS «Cardiaco»
         { texto: 'Cardiaco: dolor cervical, habitualmente anterior. No se relaciona con movimientos ni posturas del cuello', pregunta: ['cv2', 'cv_c2'] }
       ],
@@ -199,6 +199,16 @@ export const screening = {
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226 y 234–236; cap. 14, pp. 537, 543 y 567.',
               { texto: 'Gillen 2026 — Gillen, Shams y Goyal, «Stable Angina», StatPearls [Internet], NCBI Bookshelf, última actualización 17 de junio de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK559016/' }
+            ]
+          } },
+        { id: 'cv_c3', anatomia: ['corazon'], text: '¿Tiene ahora mismo dolor u opresión en el pecho, el cuello, la mandíbula, la espalda o el brazo que dura más de 20 minutos o no se le pasa al parar, o que le viene con sudor frío, náuseas, vómitos o falta de aire?', alerta: true, urgencia: 'Posible infarto o angina que no cede: llamar al 112.',
+          razonamiento: {
+            porque: 'Un infarto puede doler solo en la mandíbula, la parte alta del cuello, la espalda o el brazo, sin dolor en el pecho (Goodman). La angina estable cede en 3 a 5 minutos al parar; un dolor que no cede con el reposo ni al cambiar de postura, o que se acompaña de náuseas, vómitos o sudor profuso, es el de un infarto en curso.',
+            peso: 'Goodman pide intervención médica inmediata si el dolor anginoso no cede en 20 minutos o viene con náuseas, vómitos o sudor profuso, y también si la angina cambia de patrón (más intensa, con menos esfuerzo o más larga). Con un SÍ, llamar al 112 y no dejar que el paciente se vaya solo. El infarto se completa en unas 6 horas: cuanto antes vuelva el riego, menos músculo del corazón se pierde.',
+            detalle: 'Por qué una pregunta aparte de cv2: cv2 recoge si esos síntomas acompañan al dolor de cuello, también en el pasado, y un SÍ pide derivar al médico; esta pregunta es solo para el episodio que está pasando ahora, que es una urgencia.\n\nCómo se presenta (Goodman): dolor u opresión fuerte y persistente detrás del esternón, que puede irradiar a los brazos, la garganta, el cuello, la mandíbula o la espalda; palidez, sudor profuso, náuseas o vómitos (a veces se confunde con una indigestión), falta de aire, debilidad o sensación de desmayo. Puede pasar en reposo o con el esfuerzo, sobre todo trabajando con los brazos por encima de la cabeza.\n\nEn mujeres, mayores y diabéticos puede ser atípico o silente: pesadez o dolor en el lado izquierdo del pecho, el abdomen, la zona dorsal media, el hombro o el brazo, cansancio, náuseas o falta de aire brusca.',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 236 y 260.'
             ]
           } }
       ],

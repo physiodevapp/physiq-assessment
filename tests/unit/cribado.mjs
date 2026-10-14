@@ -143,12 +143,15 @@ test('ca10: el cluster de Laslett puntúa con Saueressig 2021; thigh thrust y co
   assert.ok(Math.abs(calcLRScore(h, { [iCl]: 'pos', [iCo]: 'pos', [iTt]: 'pos' }).totalLR - 2.13) < 0.001);
 });
 
-test('cervical: disección, IVB, fractura tras traumatismo y cefalea de alarma son urgencias', () => {
+test('cervical: disección, IVB, fractura tras traumatismo, cefalea de alarma y episodio cardiaco en curso son urgencias', () => {
   const qs = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
-  ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+  ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4', 'cv_c3'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
   withState({ region: 'cervical', sistemicoAnswers: { cv_ar1: 'NO', cv_ar2: 'SI', cv_ar3: 'NO', cv_ar4: 'NO' } }, () => {
     assert.equal(buildPhysiQPayload().ur.length, 1);
   });
+  // cv2 (síntomas cardiacos acompañantes, también pasados) no es urgente; cv_c3 (episodio en curso) sí
+  assert.ok(!qs.find(q => q.id === 'cv2').urgencia);
+  assert.deepEqual(qs.filter(q => q.urgencia && !q.id.startsWith('hem_')).map(q => q.id).sort(), ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4', 'cv_c3']);   // hem_5 y hem_6, test de los compartidos
 });
 
 test('cervical: ningún test multiplica por una LR− de 0; el cluster de Jull y el hielo no puntúan', () => {
