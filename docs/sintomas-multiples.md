@@ -1,6 +1,6 @@
 # Varios síntomas (P1–P4) — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto) y **paso 2 empezado: cervical** (`data/cervical.js`, las 7 zonas de la tabla), pendientes de probar en consulta. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
+Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2** completo: las 7 regiones tienen zonas, revisadas por el usuario (2026-10). **Paso 3** (pistas en el árbol) hecho en lumbar (revisado por el usuario, 2026-10) y cervical (revisados por el usuario, 2026-10) y hombro (revisados por el usuario, 2026-10) y codo (revisados por el usuario, 2026-10); las otras 3 regiones, una por sesión. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
 
 ## Decisiones tomadas (octubre 2026)
 Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
@@ -18,6 +18,17 @@ Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
 - **Al cambiar de región** se borran, como el resto de la fase 3 (`resetPhase3UI()`).
 - **Payload**: `z1` es un objeto, no texto: `{ z, la?, pr?, pa?, de? }` (zonas en texto, lado, profundidad, comportamiento, descripción). `ss[]`: `{ n, z, la?, nr, ir?, pa?, re?, de?, or? }`. Sin datos, no hay `z1` y `ss` es `[]`.
 - **Revisión del informe con IA**: regla nueva `lado-sintoma` (medio) en vez de `lado`/`lado-otro` cuando un síntoma está en el otro lado o es bilateral; `lado-no-consta` no salta si algún síntoma tiene lado. El NRS de un secundario está en el bloque de datos, así que `nrs` lo acepta.
+
+## Cómo quedó el paso 3 (lumbar)
+- **Dato**: `pasos: ['<stepId>']` en cada zona de `export const zonas` (`data/lumbar.js`, con el porqué de cada paso en el comentario de encima). Una zona sin `pasos` no da pistas.
+- **Qué sale**: en el recuadro «📝 Refiere el paciente» del paso, cada síntoma que tiene alguna zona ligada a ese paso, entero (todas sus zonas), con la misma línea que la fase 5: «Síntoma P1 (principal): Pierna por debajo de la rodilla · intermitente · NRS 3/10», «Síntoma P2: Zona lumbar · NRS 6/10 · solo cuando empeora P1». La otra región no sale nunca (no se valora hoy).
+- **Un solo recuadro** con las respuestas del formulario previo ligadas al paso (primero) y los síntomas (después): el HTML del recuadro pasó de `formulario.js` a `lib/pistas.js` (`pistasHTML()`), que usan el formulario (fase 1) y `phase4.js`; `formulario.js` expone sus pistas del paso como datos (`window.fpPistasPaso`) y `phase4.js` las junta con `pistasSintomasPaso()` (`lib/sintomas.js`). Si el formulario no carga, salen solo los síntomas.
+- **Siempre al día**: el árbol se repinta entero al entrar en la fase 4, así que un cambio en la fase 3 se ve al volver.
+- **Nunca contesta el paso** (decisión 8): ni selecciona opciones ni toca `treeAnswers`; lo comprueba el smoke test.
+- **Lumbar** (revisado por el usuario, 2026-10): lu_step1 (¿la pierna duele más que la espalda?) → zona lumbar, para comparar, y todo lo que baja por la pierna; lu_step1c (déficit) → muslo anterior, pierna y pie; lu_step2 (estenosis, glúteos y muslos) → glúteo, muslos y pierna; lu_step3 («sin dolor bajo la rodilla») → pierna y pie; lu_step4 (facetario «sin pasar de la rodilla», sacroilíaca, «revisar siempre cadera») → glúteo, ingle y pierna. lu_step1b (centralización) no lleva: se ve explorando.
+- **Cervical** (revisado por el usuario, 2026-10): ce_step1 (mielopatía) → antebrazo y mano; ce_step3 (¿el brazo duele más que el cuello?) → cuello, para comparar, trapecio o escápula (referencia radicular C5–C8), hombro, brazo, antebrazo y mano; ce_step3b (radicular o radiculopatía) → brazo, antebrazo y mano, y cabeza por la opción «aura migrañosa»; ce_step4 (cefalea o base del cuello u hombro) → cuello, cabeza, trapecio o escápula, hombro; ce_step6 (dónde está la disfunción) → cuello, cabeza (C1–2) y zona dorsal (cervicotorácica). Sin pistas: ce_step2 (latigazo), ce_step4b (mareo), ce_step5 (dominio mecánico).
+- **Hombro** (revisado por el usuario, 2026-10): h_step1 (cribado cervical y 1ª costilla) → cuello o trapecio, y por debajo del codo (el dolor subacromial no suele bajar del codo); h_step3 (¿dolor arriba o inestabilidad?) → hombro anterior y posterior; h_step4 (manguito) → hombro lateral (deltoides) y brazo hasta el codo; h_step5 (control escapular) → cuello o trapecio. Sin pistas: h_step2 y h_step2b (movilidad pasiva).
+- **Codo** (revisado por el usuario, 2026-10): co_step1 (trauma, rotura muscular, menores) → codo anterior (bíceps distal), medial (lanzador joven) y lateral (7–12 años); co_step3 (síntomas neurales) → codo medial (cubital), antebrazo y mano; co_step4 (epicondilalgias) → codo lateral, medial y posterior; co_step5 (inestabilidad o bloqueo) → codo medial, lateral y posterior. Sin pistas: co_step2 (movilidad global).
 
 ## Por qué
 
@@ -99,15 +110,15 @@ sintomasSecundarios: [ /* hasta 3 (P2–P4), misma forma */ ],
 
 - **Fase 5**: el resumen SINSS añade una línea por síntoma («P2 · Pierna bajo la rodilla (derecha) · NRS 3 · Irritabilidad baja · solo cuando P1 empeora»).
 - **`📋 Notas`**: una línea «SÍNTOMAS:» con P1–P4 en formato compacto.
-- **`📄 Informe`** (paciente/médico): en lenguaje llano, sin jerga («Refiere además dolor en la pierna derecha, menos intenso, que aparece cuando empeora el dolor lumbar»). La otra región, como «pendiente de valorar».
+- **`📄 Informe`** (paciente/médico): en lenguaje llano, sin jerga («Refiere además dolor: por debajo del codo (lado derecho), de intensidad 2/10, que aparece y desaparece con el dolor principal»; con «dolor:» y no «dolor en», porque hay zonas como «Por debajo del codo» que no admiten «en»). La otra región, como «pendiente de valorar».
 - **Informe con IA**: un bloque «Síntomas» numerado en los datos, y en `REGLAS_COMUNES` una regla para no mezclar intensidades ni comportamientos entre síntomas. El NRS de un secundario cuenta como «figura en la valoración» para la regla `nrs` (si no, daría un falso positivo). Siguiendo la costumbre del repo, **no se añaden reglas de revisión nuevas por adelantado**: solo cuando un informe real muestre el fallo (p. ej. un NRS cambiado de síntoma), con ese informe en `tests/fixtures/informes/`.
 - **Fase 6**: decisión 7.
 - **Árbol (fase 4)**: decisión 8. Las hipótesis no cambian.
 
 ## Pruebas
 
-- **Unitarias** (`tests/unit/sintomas.mjs`, hechas en el paso 1): payload con y sin secundarios; sesiones antiguas; resúmenes; prompt; el NRS de un secundario no dispara la regla `nrs` y su lado no es una contradicción; nada de esto en el payload cuando está vacío. Pendientes para los pasos 3 y 4: los `pasos` de cada zona existen en su árbol; el plan elige el más irritable y desempata con P1.
-- **Smoke** (sección `sintomas`, hecha en el paso 1): añadir hasta P4 y no más; quitar con y sin confirmación; «Hacer principal»; persistencia al recargar; fase 5; región sin zonas sin tarjeta; cabe a 320 px. Pendiente para el paso 3: la pista en el paso del árbol.
+- **Unitarias** (`tests/unit/sintomas.mjs`, hechas en el paso 1): payload con y sin secundarios; sesiones antiguas; resúmenes; prompt; el NRS de un secundario no dispara la regla `nrs` y su lado no es una contradicción; nada de esto en el payload cuando está vacío. Paso 3: los `pasos` de cada zona existen en su árbol y no se repiten; pistas solo de los síntomas con una zona ligada, nunca la otra región. Pendiente para el paso 4: el plan elige el más irritable y desempata con P1.
+- **Smoke** (sección `sintomas`, hecha en el paso 1): añadir hasta P4 y no más; quitar con y sin confirmación; «Hacer principal»; persistencia al recargar; fase 5; región sin zonas sin tarjeta; cabe a 320 px. Paso 3: la pista en el paso 1 lumbar, en el mismo recuadro que el formulario previo, sin la otra región y sin contestar el paso.
 
 ## Por pasos
 

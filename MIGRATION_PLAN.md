@@ -354,11 +354,20 @@ Diseño y decisiones: `docs/sintomas-multiples.md` (léelo entero antes de empez
 
 - [x] N0 — Documento de diseño; propuestas y puntos pendientes aceptados por el usuario (2026-10)
 - [x] N1 — Paso 1 en lumbar (piloto): tarjeta «Síntomas» (`sintomas.js`, `lib/sintomas.js`, `export const zonas` en `data/lumbar.js` → `ZONAS_SINTOMA`), estado, payload (`z1`, `ss`), fase 5, `📋 Notas`, `📄 Informe`, bloque del prompt de la IA y regla de revisión `lado-sintoma`. Unit `tests/unit/sintomas.mjs`, smoke `sintomas`
-- [ ] N1 — Prueba en consulta real y revisión de las zonas de lumbar por el usuario
-- [ ] N2 — Zonas de las otras 6 regiones, una por sesión (tabla en `docs/sintomas-multiples.md`)
-  - [x] Cervical (2026-10): las 7 zonas de la tabla en `data/cervical.js`; unit y smoke (`sintomas`) ampliados. Pendiente de probar en consulta
-  - [ ] Hombro · [ ] Codo · [ ] Cadera · [ ] Rodilla · [ ] Tobillo y pie
+- [x] N1 — Zonas de lumbar revisadas por el usuario (2026-10)
+- [x] N2 — Zonas de las otras 6 regiones, una por sesión (tabla en `docs/sintomas-multiples.md`)
+  - [x] Cervical (2026-10): las 7 zonas de la tabla en `data/cervical.js`; unit y smoke (`sintomas`) ampliados. Revisadas por el usuario (2026-10)
+  - [x] Hombro (2026-10): las 6 zonas de la tabla en `data/hombro.js`; unit y smoke (`sintomas`) ampliados. Revisadas por el usuario (2026-10)
+  - [x] Codo (2026-10): las 6 zonas de la tabla en `data/codo.js`; unit y smoke (`sintomas`) ampliados. Revisadas por el usuario (2026-10)
+  - [x] Cadera (2026-10): las 6 zonas de la tabla en `data/cadera.js`; unit y smoke (`sintomas`) ampliados. Revisadas por el usuario (2026-10)
+  - [x] Rodilla (2026-10): las 6 zonas de la tabla en `data/rodilla.js`, con «Rodilla» delante de anterior, medial, lateral y posterior; unit y smoke (`sintomas`) ampliados. Revisadas por el usuario (2026-10)
+  - [x] Tobillo y pie (2026-10): las 7 zonas de la tabla en `data/tobillo_pie.js` («o» en vez de «/»); unit y smoke (`sintomas`) ampliados; ya no queda región sin tarjeta. Revisadas por el usuario (2026-10)
 - [ ] N3 — Pistas en el árbol (`pasos` en cada zona → recuadro «📝» en el paso), región a región
+  - [x] Lumbar (2026-10): `pasos` en las 7 zonas de `data/lumbar.js` (porqué de cada paso en el comentario); recuadro único con el formulario previo (`lib/pistas.js`), `pistasSintomasPaso()` en `lib/sintomas.js`; unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
+  - [x] Cervical (2026-10): `pasos` en las 7 zonas de `data/cervical.js` (ce_step1, 3, 3b, 4 y 6; porqué en el comentario); unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
+  - [x] Hombro (2026-10): `pasos` en las 6 zonas de `data/hombro.js` (h_step1, 3, 4 y 5; porqué en el comentario); unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
+  - [x] Codo (2026-10): `pasos` en las 6 zonas de `data/codo.js` (co_step1, 3, 4 y 5; porqué en el comentario); unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
+  - [ ] Cadera · [ ] Rodilla · [ ] Tobillo y pie
 - [ ] N4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente
 - [ ] N5 — physiq-report: mostrar `z1` / `ss` (otro repositorio)
 - [ ] N6 — Mapa dibujado, solo si hace falta

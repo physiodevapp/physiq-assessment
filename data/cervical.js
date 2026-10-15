@@ -8,16 +8,31 @@
 import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
 
 // ── Fase 3 · ZONAS_SINTOMA.cervical — zonas del mapa corporal para P1–P4
-// (docs/sintomas-multiples.md). Tabla aceptada por el usuario (2026-10),
-// pendiente de probarla en consulta; `id` estable: se guarda en la sesión.
+// (docs/sintomas-multiples.md). Revisadas por el usuario (2026-10);
+// `id` estable: se guarda en la sesión.
+// `pasos` (Fase N, paso 3): pasos del árbol de abajo en los que el síntoma de
+// esa zona sale en el recuadro «📝 Refiere el paciente». Solo recuerda; nunca
+// contesta el paso. Revisados por el usuario (2026-10):
+//   ce_step1  mielopatía (manos torpes o dormidas) → antebrazo y mano
+//   ce_step3  ¿el brazo duele más que el cuello? → el cuello, para comparar,
+//             y todo lo que baja: trapecio o escápula (el dolor radicular
+//             C5–C8 suele referirse a la escápula), hombro, brazo, mano
+//   ce_step3b radicular o radiculopatía → brazo y mano; cabeza, por la opción
+//             «aura migrañosa» (síntomas que preceden a la cefalea)
+//   ce_step4  ¿cefalea o dolor en la base del cuello u hombro? → cuello,
+//             cabeza, trapecio o escápula (1ª costilla), hombro
+//   ce_step6  dónde está la disfunción → cuello, cabeza (craneocervical,
+//             C1–2) y zona dorsal (cervical baja y cervicotorácica)
+// ce_step2 (latigazo), ce_step4b (mareo) y ce_step5 (dominio mecánico) no
+// llevan: no dependen de dónde duele.
 export const zonas = [
-  { id: 'cuello',         nombre: 'Cuello' },
-  { id: 'cabeza',         nombre: 'Cabeza' },
-  { id: 'trapecio',       nombre: 'Trapecio o escápula' },
-  { id: 'hombro',         nombre: 'Hombro' },
-  { id: 'brazo',          nombre: 'Brazo' },
-  { id: 'antebrazo_mano', nombre: 'Antebrazo y mano' },
-  { id: 'dorsal',         nombre: 'Zona dorsal' },
+  { id: 'cuello',         nombre: 'Cuello',              pasos: ['ce_step3', 'ce_step4', 'ce_step6'] },
+  { id: 'cabeza',         nombre: 'Cabeza',              pasos: ['ce_step3b', 'ce_step4', 'ce_step6'] },
+  { id: 'trapecio',       nombre: 'Trapecio o escápula', pasos: ['ce_step3', 'ce_step4'] },
+  { id: 'hombro',         nombre: 'Hombro',              pasos: ['ce_step3', 'ce_step4'] },
+  { id: 'brazo',          nombre: 'Brazo',               pasos: ['ce_step3', 'ce_step3b'] },
+  { id: 'antebrazo_mano', nombre: 'Antebrazo y mano',    pasos: ['ce_step1', 'ce_step3', 'ce_step3b'] },
+  { id: 'dorsal',         nombre: 'Zona dorsal',         pasos: ['ce_step6'] },
 ];
 
 // ── Fase 2 · SYSTEMIC_SCREENING.cervical
@@ -974,7 +989,7 @@ export const hypotheses = {
   ce7: {
     id: 'ce7', region: 'cervical', num: '⑦',
     name: 'Dolor Mecánico Cervical Inespecífico Crónico',
-    prom: 'NDI (MCID: 7.5–18 pts) / PSFS',
+    prom: 'NDI (MCID: 7.5–18 pts)',
     dosis: 'Fase crónica (dolor de cuello con déficit de movilidad): abordaje multimodal con manipulación torácica y manipulación o movilización cervical, ejercicio mixto cervical y escapulotorácico (neuromuscular, estiramientos, fuerza, resistencia, aeróbico y componente cognitivo-afectivo) y punción seca, láser o tracción mecánica intermitente (B); ejercicios de resistencia de cuello, cintura escapular y tronco, y educación que promueva una vida activa y atienda lo cognitivo y emocional (C). Los programas supervisados de fuerza y estiramiento de cuello y tren superior mejoraron más que un programa individual en casa. Integrar estrategias de adherencia al ejercicio en casa. La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico, ajustado a la irritabilidad.',
     dosisFuente: 'Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía)',
     tests: [
@@ -985,7 +1000,7 @@ export const hypotheses = {
   ce8: {
     id: 'ce8', region: 'cervical', num: '⑧',
     name: 'Mielopatía Espondilótica Cervical',
-    prom: 'NDI (MCID: 10.5–17.5 pts según severidad) / mJOA',
+    prom: 'NDI (MCID: 10.5–17.5 pts según severidad)',
     dosis: DOSIS_DERIVAR,
     tests: [
       { name: 'Signo de Hoffmann', anatomia: ['medula_espinal'], sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Mano relajada; se percute hacia abajo la falange distal del dedo medio. Positivo: flexión involuntaria del pulgar o del índice, que sugiere afectación de la vía corticoespinal. Un estudio citado encontró que 3 de 5 hallazgos (Hoffmann, reflejo supinador invertido, Babinski, alteración de la marcha y más de 45 años) elevan la probabilidad postest de mielopatía por encima del 90 %. La guía advierte que las pruebas clínicas de mielopatía tienen sensibilidad baja: no sirven para descartarla; la resonancia ayuda al diagnóstico.', razonamiento: { detalle: 'Sin S ni E.' }, fuente: 'Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy», exploración) · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A15)' },
@@ -1066,7 +1081,7 @@ export const hypotheses = {
   ce14: {
     id: 'ce14', region: 'cervical', num: '⑭',
     name: 'Dolor Cervical Idiopático',
-    prom: 'NDI (MCID: 7.5–18 puntos) / PSFS',
+    prom: 'NDI (MCID: 7.5–18 puntos)',
     dosis: 'Se trata como dolor de cuello con déficit de movilidad (categoría de la guía), según la fase. Aguda: manipulación torácica, ejercicios de movilidad cervical y fortalecimiento escapulotorácico y de miembro superior, que además favorecen la adherencia (B); puede añadirse manipulación o movilización cervical (C). Subaguda: ejercicios de resistencia de cuello y cintura escapular (B); manipulación torácica y manipulación o movilización cervical (C). Crónica: abordaje multimodal con manipulación torácica y manipulación o movilización cervical, ejercicio mixto cervical y escapulotorácico (neuromuscular, estiramientos, fuerza, resistencia, aeróbico y componente cognitivo-afectivo) y punción seca, láser o tracción mecánica intermitente (B); educación que promueva una vida activa (C). En la subaguda y la crónica la terapia manual pierde peso y la manipulación no supera a la movilización. La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico, ajustado a la irritabilidad.',
     dosisFuente: 'Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía)',
     pronostico: {
