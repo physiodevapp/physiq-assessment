@@ -253,8 +253,8 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
 
 - [x] Decisiones clínicas cerradas (las 5 recomendaciones, 2026-10)
 - [x] Leer enteras Malfait 2017, Byers 2017 y Engelbert 2017 (PDF del usuario, 2026-10). Hakim y Grahame 2003 se cita a través de la tabla III de Malfait 2017. Cortes de Beighton corregidos (≥6 prepúberes y adolescentes, ≥5 hasta los 50, ≥4 por encima)
-- [ ] Decisión del usuario: el aviso de laxitud de la fase 4b no tiene fuente directa en las tres leídas (buscar una o redactarlo solo como regla de técnica)
-- [ ] Revisión clínica del usuario: tests con `laxitud`, texto del aviso, preguntas del subtipo vascular, recuadro de la fase 5
+- [x] Revisión del borrador (2026-10, aceptadas las 5 recomendaciones): aviso de laxitud solo como regla de técnica (sin fuente directa sobre la precisión); cuestionario con traducción propia ajustada; urgencia vascular en 3 preguntas y regla de sospecha (1 mayor o ≥2); 16 tests con `laxitud` (sin las compuestas de `ro4`); recuadro de la fase 5 pegado a las fuentes, línea vascular solo con el subtipo diagnosticado, TA fuera del piloto
+- [ ] Revisión clínica final del usuario de la redacción concreta antes de implementar
 - [ ] Fase 1: tarjeta «Hipermovilidad» (`state.hipermovilidad`, `body.hipermovilidad`)
 - [ ] Fase 2: `SIS_HIPERMOVILIDAD` (cuestionario de 5 preguntas, escala de Beighton, subtipo vascular) con razonamiento
 - [ ] Fase 4b: campo `laxitud: true` y aviso

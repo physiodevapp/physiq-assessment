@@ -1,6 +1,6 @@
 # Hipermovilidad / Ehlers-Danlos — diseño
 
-Estado: **decisiones cerradas (octubre 2026), fuentes leídas, sin implementar**. Primer caso de una capa de «condiciones especiales»: condiciones que cambian la **seguridad** o la **interpretación** de la valoración, no simples comorbilidades (criterio de entrada, para que no se convierta en un cajón de sastre). Seguimiento en `MIGRATION_PLAN.md`, Fase J.
+Estado: **decisiones cerradas (octubre 2026), fuentes leídas, recomendaciones de revisión aceptadas (ver «Revisión del borrador»), sin implementar**. Primer caso de una capa de «condiciones especiales»: condiciones que cambian la **seguridad** o la **interpretación** de la valoración, no simples comorbilidades (criterio de entrada, para que no se convierta en un cajón de sastre). Seguimiento en `MIGRATION_PLAN.md`, Fase J.
 
 Fuentes leídas enteras en PDF del usuario (octubre 2026): Malfait 2017 (pp. 8–26), Byers 2017 (pp. 40–47) y Engelbert 2017 (pp. 158–167). Hakim y Grahame 2003 no se ha leído entero: no está en PubMed Central, PubMed no le da DOI ([PMID 12723715](https://pubmed.ncbi.nlm.nih.gov/12723715/)) y la editorial no es accesible desde la sesión. No hace falta: Malfait 2017 reproduce el cuestionario en su tabla III (p. 17), así que se cita Malfait (ver «Fuentes»).
 
@@ -15,6 +15,23 @@ Aceptadas las cinco recomendaciones:
    - **Derivación preferente**, sin urgencia: rasgos que hacen sospechar el subtipo vascular sin un cuadro agudo (Malfait 2017, p. 16; Byers 2017, p. 41).
 4. **POTS / disautonomía fuera del piloto.** Queda como siguiente paso. Engelbert 2017 (p. 165) pide derivar al especialista cuando hay signos sistémicos importantes, entre ellos la disautonomía cardíaca; esa línea sí puede ir en el recuadro de la fase 5.
 5. **Fuentes**: Malfait 2017, Byers 2017 y Engelbert 2017, leídas enteras. Hakim y Grahame 2003, a través de la tabla III de Malfait 2017.
+
+## Revisión del borrador (octubre 2026)
+
+Aceptadas las cinco recomendaciones de la revisión; ya están aplicadas en las secciones de cada fase:
+
+1. **Aviso de laxitud**: solo como regla de técnica, sin afirmar nada sobre la precisión de las pruebas. Se apoya únicamente en la definición de HAG (Malfait 2017, p. 17). Si aparece una fuente sobre la precisión en personas hiperlaxas, se añade.
+2. **Cuestionario**: traducción casi literal, con «abrirse de piernas del todo (spagat)» en la 3 y «hiperlaxa, “de goma”» en la 5. El razonamiento dice que es una traducción propia, no validada; si existe una versión española validada, se usa esa.
+3. **Subtipo vascular**:
+   - La urgencia se parte en tres preguntas, cada una con su mensaje.
+   - Las preguntas de sospecha llevan una regla: basta un «sí» en antecedentes familiares o en una rotura propia; para el resto hacen falta 2 o más «sí».
+   - Las varices llevan el matiz de Malfait (antes de los 30 años y, en una mujer, sin embarazos previos).
+4. **Tests con `laxitud`**: todos los de la tabla menos las dos pruebas compuestas de `ro4`: 16 tests en 5 regiones.
+5. **Recuadro de la fase 5**:
+   - Líneas pegadas a la fuente; lo de las 24 h, «(observado en niños)».
+   - La línea de actividad del subtipo vascular, solo con ese subtipo diagnosticado.
+   - La derivación por signos sistémicos, como línea fija.
+   - La TA, fuera del piloto.
 
 ## Lo que dicen las fuentes (lo que usa el diseño)
 
@@ -102,12 +119,12 @@ Aceptadas las cinco recomendaciones:
 ### Fase 2 — sistema «Hipermovilidad»
 Un sistema común nuevo en `data/comun.js` (p. ej. `SIS_HIPERMOVILIDAD`, id `transversal_hipermovilidad`). Es la misma instancia en las 7 regiones y lleva `soloHipermovilidad: true`, que `sistemasActivos()` resuelve igual que `soloPosquirurgico`.
 
-**Cuestionario de 5 preguntas** (con «Sospecha»; sí/no). Malfait 2017, tabla III, p. 17; traducción propia, para revisar:
+**Cuestionario de 5 preguntas** (con «Sospecha»; sí/no). Malfait 2017, tabla III, p. 17; traducción propia, no validada (el razonamiento lo dice):
 1. ¿Puede ahora (o pudo alguna vez) apoyar las palmas de las manos en el suelo sin doblar las rodillas?
 2. ¿Puede ahora (o pudo alguna vez) doblar el pulgar hasta tocar el antebrazo?
-3. De niño o niña, ¿entretenía a sus amigos contorsionando el cuerpo en posturas raras, o podía hacer el spagat?
+3. De niño o niña, ¿entretenía a sus amigos contorsionando el cuerpo en posturas raras, o podía abrirse de piernas del todo (spagat)?
 4. De niño o adolescente, ¿se le salió el hombro o la rótula más de una vez?
-5. ¿Se considera una persona con las articulaciones «dobles» (muy flexibles)?
+5. ¿Se considera una persona hiperlaxa, «de goma», o con las articulaciones muy flexibles?
 
 Dos o más «sí» = cuestionario positivo.
 
@@ -123,16 +140,25 @@ Dos o más «sí» = cuestionario positivo.
 
 Texto: «hipermovilidad articular generalizada (Beighton X/9; cuestionario Y/5) → valorar derivación a reumatología o genética». Si no se cumple: «sin hipermovilidad generalizada según Beighton». Nunca un diagnóstico de SEDh.
 
-**Subtipo vascular: urgencia** (con el subtipo vascular diagnosticado, o con «Sospecha»). Una pregunta con `urgencia` y clase `.sq2-urg`, que nunca se pliega. Borrador sacado de Byers 2017, pp. 43–45:
-> ¿Ha tenido de forma brusca un dolor intenso que va a más en el abdomen, el flanco, la espalda, el pecho o un miembro; un zumbido repentino en la sien con el ojo rojo, dolorido o saltón; o falta de aire repentina?
+**Subtipo vascular: urgencia** (con el subtipo vascular diagnosticado, o con «Sospecha»). Tres preguntas con `urgencia` y clase `.sq2-urg`, que nunca se pliegan. Borrador sacado de Byers 2017, pp. 43–45:
 
-`urgencia`: «Posible disección o rotura arterial o de una víscera, o neumotórax: urgencias hoy».
+| id | Pregunta (borrador) | `urgencia` | Fuente |
+|---|---|---|---|
+| `hm_v_dolor` | ¿Ha tenido de forma brusca un dolor intenso, que va a más, en el abdomen, el flanco, la espalda, el pecho o un brazo o una pierna? | Posible disección o rotura arterial, o rotura de colon: urgencias hoy | Byers 2017, pp. 43–44 |
+| `hm_v_ojo` | ¿Ha notado de repente un zumbido en la sien, con el ojo rojo, dolorido o más saltón? | Posible fístula carótido-cavernosa: urgencia médica, hoy | Byers 2017, p. 45 |
+| `hm_v_aire` | ¿Le ha faltado el aire de forma brusca, o le duele el pecho al respirar? | Posible neumotórax: urgencias hoy | Byers 2017, p. 44 |
 
-**Subtipo vascular: sospecha** (con «Sospecha», o con «Diagnosticada» y subtipo «otro» o «no lo sabe»; sin `urgencia`, derivación preferente). Borrador sacado de Malfait 2017, p. 16, y Byers 2017, p. 41:
-- ¿Algún familiar de primer grado con SED vascular, o con una rotura o disección arterial o una muerte súbita antes de los 40 años?
-- ¿Ha tenido un neumotórax espontáneo, una rotura de intestino o una rotura arterial?
-- ¿Le salen hematomas sin golpes, en sitios poco habituales (mejillas, espalda), o tiene la piel fina y translúcida, con las venas muy visibles?
-- ¿Tuvo varices antes de los 30 años?
+**Subtipo vascular: sospecha** (con «Sospecha», o con «Diagnosticada» y subtipo «otro» o «no lo sabe»; sin `urgencia`, derivación preferente a genética). Borrador sacado de Malfait 2017, p. 16, y Byers 2017, pp. 41 y 45:
+
+| id | Pregunta (borrador) | Peso |
+|---|---|---|
+| `hm_s_familia` | ¿Algún familiar de primer grado con SED vascular, o con una rotura o disección arterial o una muerte súbita antes de los 40 años? | Mayor |
+| `hm_s_rotura` | ¿Ha tenido una rotura arterial o una rotura de intestino sin causa conocida? | Mayor |
+| `hm_s_neumo` | ¿Ha tenido algún neumotórax espontáneo? | Menor |
+| `hm_s_piel` | ¿Le salen hematomas sin golpes, en sitios poco habituales (mejillas, espalda), o tiene la piel fina y translúcida, con las venas muy visibles? | Menor |
+| `hm_s_varices` | ¿Tuvo varices antes de los 30 años (y, si es mujer, sin haber estado embarazada)? | Menor |
+
+**Regla** (`criterioCompuesto` o equivalente): derivación preferente con un «sí» mayor, o con 2 o más «sí» en total. Motivo: Malfait (p. 16) pide estudiar el subtipo ante un antecedente familiar o una rotura; para el neumotórax exige además «otros rasgos compatibles». Byers (p. 45) dice que algunos rasgos menores «por sí solos no bastan para pedir el estudio genético». Un solo «sí» menor se muestra como hallazgo, sin derivación.
 
 Cada pregunta lleva su `razonamiento` (Fase F) con las fuentes del registro.
 
@@ -146,23 +172,22 @@ Sin cambios.
 
 ### Fase 4b — aviso en las pruebas de laxitud
 - Campo nuevo y opcional en el test: `laxitud: true`. Marca las pruebas cuyo positivo depende de la laxitud, no de un síntoma.
-- Con la condición activa, la tarjeta del test muestra bajo el «cuánto pesa»: *«Hipermovilidad: una laxitud bilateral puede ser normal en este paciente. Compara con el lado sano; cuenta como positivo si es asimétrica o reproduce su síntoma.»*
+- Con la condición activa, la tarjeta del test muestra bajo el «cuánto pesa»: *«Hipermovilidad: compara siempre con el lado sano y anota si la laxitud es simétrica. Cuenta como positivo una laxitud asimétrica o que reproduzca su síntoma.»*
 - El LR no cambia (decisión 2). Tampoco va en el payload ni en los resúmenes.
 
-**Salvedad sobre la fuente**: ninguna de las tres fuentes leídas habla de la validez de las pruebas de laxitud en la hipermovilidad. El aviso es razonamiento clínico: la HAG es por definición una laxitud generalizada (Malfait 2017, p. 17), así que la referencia es el lado sano. Malfait solo dice que la inestabilidad la debe valorar «un profesional cualificado con las guías recomendadas» (p. 19, nota 20). Antes de implementarlo:
-- o se busca una fuente (precisión de Lachman o cajón en personas hiperlaxas),
-- o se redacta solo como regla de técnica («compara con el lado sano»), sin afirmar nada sobre la precisión.
+**Fuente del aviso**: ninguna de las tres fuentes leídas habla de la validez de las pruebas de laxitud en la hipermovilidad. Por eso el aviso es solo una regla de técnica y no afirma nada sobre la precisión (decisión de la revisión). Se apoya en la definición: la HAG es una laxitud generalizada (Malfait 2017, p. 17). Si aparece una fuente sobre la precisión de Lachman o del cajón en personas hiperlaxas, se añade.
 
-Decisión del usuario pendiente.
+Tests que llevan `laxitud: true`: todos los de la tabla (16 tests en 5 regiones; algunas filas tienen dos) **menos las dos pruebas compuestas de `ro4`** («Confirmar…» y «Descartar…»). En ellas la laxitud es solo una parte, y el aviso ya sale en el Lachman. El pivot shift y el cajón posterolateral o pivote lateral del codo sí lo llevan: su positivo es una subluxación, que depende de la laxitud, y el aviso deja contar como positivo el que reproduce el síntoma.
 
-Candidatas medidas en el código (octubre 2026), para la revisión clínica del usuario. Una por una, porque no todas se basan solo en la laxitud:
+Candidatas medidas en el código (octubre 2026):
 
 | Región | Hipótesis | Test | LR hoy |
 |---|---|---|---|
 | Rodilla | `ro4` | Lachman | LR+ 5,72 / LR− 0,24 |
 | Rodilla | `ro4` | Cajón anterior | LR+ 6,34 / LR− 0,20 |
 | Rodilla | `ro4` | Pivot shift | LR+ 10,70 / LR− 0,56 |
-| Rodilla | `ro4` | «Confirmar: … + Lachman positivo» | LR+ 17,5 |
+| Rodilla | `ro4` | «Confirmar: … + Lachman positivo» (**sin aviso**: prueba compuesta) | LR+ 17,5 |
+| Rodilla | `ro4` | «Descartar: …» (**sin aviso**: prueba compuesta) | LR− 0,08 |
 | Rodilla | `ro9` | Cajón posterior a 90° | — |
 | Rodilla | `ro10` | Varo forzado a unos 30° · cajón posterolateral | — |
 | Hombro | `h4` | Inestabilidad multidireccional: surco + tests en una dirección | — |
@@ -177,12 +202,13 @@ Candidatas medidas en el código (octubre 2026), para la revisión clínica del 
 No llevan el aviso: aprensión, recolocación y sorpresa (el positivo es el síntoma), ni las pruebas de dolor. Las únicas que hoy multiplican son las de `ro4`.
 
 ### Fase 5 e informes
-**Recuadro «Hipermovilidad»** al principio de la fase 5, como el de «Paciente posquirúrgico». Nunca se pliega. Contenido (borrador):
+**Recuadro «Hipermovilidad»** al principio de la fase 5, como el de «Paciente posquirúrgico». Nunca se pliega. Cada línea, pegada a su fuente. Contenido (borrador):
 - Estado y subtipo; Beighton y cuestionario, si se hicieron.
-- **Siempre**: «Prescripción de ejercicio graduada, con vigilancia de la recuperación; el dolor puede empeorar con la actividad y aparecer en las 24 h siguientes; aplicar las terapias con cuidado por la posible sensibilización» (Engelbert 2017, pp. 160 y 165).
-- **Subtipo vascular**: «Evitar deportes de colisión, ejercicio isométrico y aceleraciones bruscas; intensidad que permita conversar, control de la respiración al levantar peso y cargas ligeras» (Byers 2017, p. 42).
+- **Siempre**: «Ejercicio graduado; vigila la carga para asegurar la recuperación (Engelbert 2017, p. 165). El dolor empeora con la actividad y puede aparecer en las 24 h siguientes (observado en niños; Engelbert 2017, p. 160).»
+- **Siempre**: «Si hay disautonomía o síntomas digestivos o urinarios importantes, derivar al especialista» (Engelbert 2017, p. 165). Línea fija, sin pregunta.
+- **Solo con el subtipo vascular diagnosticado** (no con «no lo sabe»): «Evitar deportes de colisión, ejercicio isométrico y aceleraciones bruscas; intensidad que permita conversar, control de la respiración al levantar peso y cargas ligeras» (Byers 2017, p. 42). Aplicarla a quien probablemente tiene el subtipo hipermóvil le quitaría ejercicio útil.
 - **Con «Sospecha» y HAG**: la línea de derivación a reumatología o genética.
-- **Con signos sistémicos importantes** (disautonomía, digestivos, urinarios): derivar al especialista (Engelbert 2017, p. 165).
+- **Con la regla de sospecha del subtipo vascular cumplida**: la línea de derivación preferente a genética.
 
 **Salidas**:
 - **📋 Notas**: línea «🧬 HIPERMOVILIDAD: …».
@@ -192,7 +218,8 @@ No llevan el aviso: aprensión, recolocación y sorpresa (el positivo es el sín
 - **Modo breve**: con «Sospecha», un Beighton sin hacer es un pendiente (`ancla: 'cardHipermovilidad'`).
 
 ## Ideas no decididas
-- **TA en el subtipo vascular**: Byers 2017 pide mantener la presión arterial en rango normal (pp. 40 y 43). La fase 1 ya recoge la TA (`signosVitales`), pero ningún algoritmo la lee. Se podría avisar en la fase 5 si la TAS es alta y el subtipo es vascular. Queda fuera del piloto salvo que el usuario lo pida.
+- **TA en el subtipo vascular** (fuera del piloto, decisión de la revisión): Byers 2017 pide mantener la presión arterial en rango normal (pp. 40 y 43). La fase 1 ya recoge la TA (`signosVitales`), pero ningún algoritmo la lee. Se podría avisar en la fase 5 si la TAS es alta y el subtipo es vascular.
+- **Versión española validada del cuestionario**: no comprobado si existe; si existe, sustituye a la traducción propia.
 - **Lupus**: Malfait 2017 (p. 19) muestra que el lupus y el SEDh interactúan en el diagnóstico. Si más adelante se añade el lupus como condición especial, la tarjeta podría tener en cuenta las dos.
 
 ## Estado y cambios técnicos (cuando se implemente)
@@ -227,10 +254,5 @@ hipermovilidad: {
 
 ## Siguiente paso
 
-1. **Decisión del usuario** sobre el aviso de la fase 4b: buscar fuente o redactarlo solo como regla de técnica.
-2. **Revisión clínica del usuario** de:
-   - las traducciones del cuestionario;
-   - las preguntas del subtipo vascular;
-   - la lista de tests con `laxitud`;
-   - el recuadro de la fase 5.
-3. **Implementar en una sesión**, en el orden fase 1 → fase 2 → fase 4b → fase 5 → informes.
+1. **Revisión clínica final del usuario** del texto concreto: las tres preguntas de urgencia, las cinco de sospecha con su regla, el aviso de la fase 4b y el recuadro de la fase 5. Las decisiones ya están cerradas; queda validar la redacción.
+2. **Implementar en una sesión**, en el orden fase 1 → fase 2 → fase 4b → fase 5 → informes.
