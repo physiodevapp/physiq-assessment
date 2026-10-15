@@ -344,7 +344,7 @@ Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero an
 | Hombro | [x] 36 preguntas + 1 fase 1 | [x] 1 de 1 sin pregunta (síncope, Goodman cap. 6) | [x] 4 de 4 sin pregunta (edad, debilidad proximal, betabloqueantes e IECA, exposiciones; Goodman caps. 6 y 13) | [x] (2026-10), incluidas `h_c4` y `h_gi4` | Preguntas urgentes nuevas `h_c4` (episodio cardiaco en curso, como `cv_c3`) y `h_gi4` (rotura de bazo, signo de Kehr; Goodman cap. 8), por la recomendación aceptada por el usuario |
 | Rodilla | [x] 21 preguntas | [x] 1 de 1 sin pregunta (calambres nocturnos; Goodman caps. 6 y 16) | [x] 1 de 1 sin pregunta (dolor en reposo que mejora al colgar la pierna; Goodman cap. 6) | [x] (2026-10) | Sin huecos de seguridad. Pregunta urgente nueva `r_v4` (isquemia aguda, el mismo razonamiento que `ca_v5`, compartido en `data/comun.js`), por la recomendación aceptada por el usuario |
 | Codo | [x] 12 preguntas | [x] 2 de 2 sin pregunta (síntomas vasculares tras la cirugía, Goodman caps. 6 y 16; xantomas, el razonamiento del sistema endocrino compartido) | [x] 1 de 1 sin pregunta (tendinitis calcificante, el razonamiento compartido) | [x] (2026-10) | Hueco resuelto (decisión del usuario): `co1` (artritis o bursitis séptica) con `urgencia`, como `r1` y `ca_in1` |
-| Tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
+| Tobillo y pie | [x] 15 preguntas (todas) | — (ninguna sin pregunta) | — (no tiene amarillas) | [ ] | Sin huecos de seguridad: las rojas urgentes (compartimental, artritis infecciosa, TVP, neuropatía desmielinizante aguda) ya tenían pregunta urgente |
 
 ---
 

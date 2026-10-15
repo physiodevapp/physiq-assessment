@@ -156,6 +156,20 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
 - **Hueco de seguridad, resuelto (decisión del usuario, 2026-10):** la bandera roja de la artritis séptica enlazaba `co1`, que no tenía `urgencia`, aunque su razonamiento la llama emergencia ortopédica y pide derivación sin demora; en rodilla (`r1`) y cadera (`ca_in1`) es urgente. `co1` lleva ahora «Sospecha de artritis séptica o de bursitis séptica del olécranon: derivación hoy.» (la bursitis séptica también es derivación el mismo día en rodilla, `r_i3`).
 - **Revisión clínica del usuario:** hecha (2026-10).
 
+## Tobillo y pie (2026-10)
+
+15 banderas rojas en sus 6 sistemas propios, sin amarillas, todas texto sin enlace antes de esta sesión. Cada una tiene una pregunta propia (Fase D) cuyo razonamiento la explica (comprobado por términos clave: 5.º metatarsiano y Jones, Lisfranc, calcáneo, tibial posterior y FHL, gota, mononeuritis, claudicación neurógena…), así que todas se enlazan y ninguna necesita razonamiento propio.
+
+- **Enlazadas (15):**
+  - tp_trauma: compartimental y compromiso neurovascular → `tp_t1`; rotura del Aquiles → `tp_t3`; Lisfranc → `tp_t4` + `tp_t1`; calcáneo → `tp_t4`; 5.º metatarsiano → `tp_t2`; tibial posterior o FHL → `tp_t5`.
+  - tp_oseo: fractura de estrés de alto riesgo o múltiple → `tp_o1` + `tp_o2`.
+  - tp_infecciosa: artritis infecciosa → `tp_i1`; artritis inflamatoria → `tp_i2`.
+  - tp_oncologico: osteoma osteoide → `tp_c2`; malignidad o infección → `tp_c1`.
+  - tp_vascular: claudicación → `tp_v1`; TVP (Wells) → `tp_v2`.
+  - tp_neuro: neuropatía sistémica → `tp_n1` + `tp_n2`; SDRC → `tp_n3`.
+- **Huecos de seguridad:** ninguno. Las rojas que piden urgencias (síndrome compartimental, artritis infecciosa, TVP, neuropatía desmielinizante aguda) ya tenían pregunta con `urgencia`; la rotura del Aquiles y Lisfranc o calcáneo son derivación preferente, como dicen sus preguntas.
+- **Revisión clínica del usuario:** pendiente.
+
 ## Hallazgos fuera del «¿Por qué?»
 
 1. **Embarazo ectópico sin pregunta urgente en lumbar.** Resuelto (decisión del usuario, 2026-10): `l_e8` en lumbar y `ca_u5` en cadera, con `urgencia` y razonamiento de NICE NG126 (1.4.1–1.4.8, releída en la sesión). Están separadas de `l_e3`/`ca_u4` (dolor ligado a la regla), que siguen sin urgencia porque un SÍ por una endometriosis conocida no justifica ir a urgencias. La bandera de lumbar enlaza `l_e8`.
