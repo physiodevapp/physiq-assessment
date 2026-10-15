@@ -2830,6 +2830,22 @@ async function checkFase6(browser, errors) {
     && document.getElementById('phaseIndicator').textContent.includes('FASE 6')
     && document.querySelectorAll('#planContenido .card').length === 5);
   r.hipotesisPorDefecto = await page.evaluate(() => document.querySelectorAll('.plan-hip .option-btn.selected').length === 1 && state.planTratamiento.hipotesis.length === 1);
+  // Varios síntomas (Fase N, paso 4): sin secundarios no hay línea «Según…»;
+  // con un P2 más irritable e «Independiente», dosifica P2 y avisa
+  r.sinSecundarios = await page.evaluate(() => !document.getElementById('planDosifica'));
+  await page.evaluate(() => {
+    state.sintomaPrincipal.zonas = ['lumbar'];
+    state.sintomasSecundarios = [{ zonas: ['pierna'], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: 2, irritabilidad: 'Alta', relacion: 'independiente' }];
+    planElegir('sesion', 'primera');
+  });
+  await page.waitForSelector('#planDosifica');
+  r.dosificaP2 = await page.evaluate(() => {
+    const t = document.getElementById('planContenido').textContent;
+    return document.getElementById('planDosifica').textContent.includes('P2 · Pierna por debajo de la rodilla, el síntoma más irritable')
+      && t.includes('NRS 2/10') && t.includes('Un síntoma va independiente de P1') && t.includes('(P2 · Pierna por debajo de la rodilla)');
+  });
+  await page.evaluate(() => { state.sintomasSecundarios = []; state.sintomaPrincipal.zonas = []; planElegir('sesion', 'primera'); });
+  await page.waitForFunction(() => !document.getElementById('planDosifica'));
   r.gravedadMarcada = await page.evaluate(() => {
     const sel = [...document.querySelectorAll('#planContenido .option-btn.selected')].map(b => b.textContent.trim());
     return sel.includes('Moderada');   // NRS 6 → moderada
@@ -3307,7 +3323,7 @@ const SECCIONES = [
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; otra región → piloto; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; otra región → piloto; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
