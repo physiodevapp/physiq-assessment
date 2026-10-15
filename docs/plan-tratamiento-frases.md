@@ -2,7 +2,7 @@
 
 > Generado por `node tests/gen-frases-plan.mjs` a partir de `data/plan-tratamiento.js` y `lib/plan-tratamiento.js`. No lo edites a mano: cambia el texto en `data/plan-tratamiento.js` y regenera (`tests/unit.js` falla si no está al día).
 
-Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, y en el de `h_c4` para Goodman 2018).
+Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
 Redacción propia: **1** frase.
 
@@ -49,6 +49,9 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Si notas dolor u opresión en el pecho, el hombro, el brazo, el cuello, la mandíbula o la espalda que no se pasa al parar en unos 20 minutos, o que te viene con sudor frío, náuseas, vómitos o falta de aire, llama al 112.»  
   ↳ fuente: Goodman 2018, cap. 6, pp. 236 y 260, como en el razonamiento de h_c4: un infarto puede doler solo en el hombro o el brazo; intervención médica inmediata si el dolor no cede en 20 minutos o viene con náuseas, vómitos o sudor  
   ↳ clave `alarmaCardiaca`
+- [ ] «Si el codo se te pone rojo, caliente e hinchado, aunque no tengas fiebre, ve hoy mismo al médico o a urgencias.»  
+  ↳ fuente: Momodu y Savaliya 2023 (StatPearls, «Septic Arthritis») y Pangia 2025 (StatPearls, «Olecranon Bursitis»), como en el razonamiento de co1: la artritis séptica es una emergencia y la fiebre solo aparece en el 40–60 %; en la bursitis séptica del olécranon, enrojecimiento en el 83 %, calor en el 84 % y fiebre en el 38 %  
+  ↳ clave `alarmaInfeccion`
 - [ ] «Si te empieza de golpe un dolor de cabeza o de cuello distinto a cualquiera que hayas tenido, o notas visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas sin perder el conocimiento, ve a urgencias hoy mismo.»  
   ↳ fuente: Rushton 2023 (marco IFOMPT cervical), tablas 1–2 y 6, pp. 9–12, como en el razonamiento de cv_ar1 y cv_ar2: disección arterial e insuficiencia vertebrobasilar; los síntomas neurológicos pueden llegar días después  
   ↳ clave `alarmaArterial`
@@ -76,6 +79,8 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ fuente: Maitland 2005, cap. 6, p. 136
 - [ ] Regla de los 7–10 días: `lu3`, `lu5`, `ce3`, `ce12`, solo con NRS registrado de 8 o más.  
   ↳ fuente: Maitland 2005, cap. 9, p. 217
+- [ ] Atrapamiento de un nervio periférico (sensibilidad y fuerza en su territorio al empezar cada sesión, `TEXTOS_SESION.reevaluacionNervio`; sin red de seguridad neurológica ni regla de días): `co8`, `co9`, `co13`.  
+  ↳ **decisión de diseño** (decisión 65)
 - [ ] `ce2` no cuenta como neurológica: Disfunción neuromuscular cervical: déficit de control motor (coordinación, propiocepción), no compromiso de la raíz ni de la médula.  
   ↳ **decisión de diseño**
 - [ ] Red de seguridad de lumbar: con una hipótesis neurológica, cierre `cierreNeuro` y casa `alarmaNeuro`.  
@@ -84,9 +89,13 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Red de seguridad de hombro: con cualquier plan de la región, cierre `cierreCardiaco` y casa `alarmaCardiaca`.  
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
+- [ ] Red de seguridad de codo: con cualquier plan de la región, cierre `cierreInfeccion` y casa `alarmaInfeccion`.  
+  ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Con `ce13`, la cantidad de terapia manual es la de su pauta: `TEXTOS_SESION.cantidadReid` (sección 6) en vez de la genérica.  
   ↳ **decisión de diseño** (decisión 41)
 - [ ] Con `ce12` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Con `co3` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
   ↳ **decisión de diseño** (decisión 42)
 - [ ] Avisos con `ce13`: `AVISOS.vertigo` (sección 5).  
   ↳ **decisión de diseño**
@@ -100,9 +109,31 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño**
 - [ ] Avisos con `h10`: `AVISOS.artrosis` (sección 5).  
   ↳ **decisión de diseño**
+- [ ] Avisos con `co1`: `AVISOS.epicondilalgiaLateral` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co2`: `AVISOS.epicondilalgiaMedial` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co3`: `AVISOS.rigidezCodo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co4`: `AVISOS.inestabilidadCodo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co5`: `AVISOS.inestabilidadCodo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co6`: `AVISOS.radiohumeral` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co8`: `AVISOS.nervioCodo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co9`: `AVISOS.nervioCodo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co13`: `AVISOS.nervioCodo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co15`: `AVISOS.esqueletoInmaduro` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `co16`: `AVISOS.esqueletoInmaduro` (sección 5).  
+  ↳ **decisión de diseño**
 - [ ] Con mecanismo Post-quirúrgico en una región periférica: `AVISOS.protesis` (sección 5).  
   ↳ **decisión de diseño** (decisión 47)
-- [ ] Familia de la terapia manual: columna (Maitland 2005) en lumbar y cervical; periférica (Hengeveld y Banks 2005) en hombro. Decide los escalones (sección 3), la cantidad por sesión (sección 6), la progresión y las reglas del mes (sección 7).  
+- [ ] Familia de la terapia manual: columna (Maitland 2005) en lumbar y cervical; periférica (Hengeveld y Banks 2005) en hombro, codo. Decide los escalones (sección 3), la cantidad por sesión (sección 6), la progresión y las reglas del mes (sección 7).  
   ↳ **decisión de diseño** (decisiones 43–46)
 - [ ] `h6` usa la familia columna aunque su región sea periférica.  
   ↳ **decisión de diseño** (decisión 50)
@@ -184,6 +215,20 @@ Regiones periféricas:
   ↳ fuente en el texto (Hengeveld y Banks 2005)
 - [ ] «Si la cirugía fue una prótesis: sobre todo accesorios cerca de la línea articular, sin palancas largas que muevan el hueso alrededor del implante; si el ejercicio activo ya cumple el objetivo, la movilización pasiva sobra (Hengeveld y Banks 2005, cap. 10, p. 269).»  
   ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Epicondilalgia lateral: la base de la pauta es el ejercicio, con su propia dosis; la terapia manual es un complemento para aliviar pronto el dolor, y los escalones solo se refieren a ella (Hengeveld y Banks 2005, cap. 12, cuadro 12.6, p. 392, que cita a Vicenzino 2003). Si el movimiento pasivo del codo es completo e indoloro, la movilización pasiva no tiene sitio; con signos articulares, se tratan primero ellos solos, hasta ver cómo progresa, y después, si hace falta, también el componente tendinoso (p. 390). Las técnicas preferidas son la extensión-aducción de grado IV a IV+ y los accesorios al límite, sobre todo el anteroposterior y el posteroanterior de la cabeza del radio en pronación (cuadro 12.6, p. 392). El codo se sobretrata con facilidad (p. 393). Si no evoluciona, mirar también la columna cervical y torácica y el hombro (pp. 361 y 369).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Epicondilalgia medial: la pauta es de ejercicio excéntrico, con su propia dosis, y no incluye terapia manual; el cap. 12 de Peripheral no trae un perfil propio de la medial (solo la nombra entre los cuadros por sobrecarga; Hengeveld y Banks 2005, cap. 12, p. 390). Los escalones, solo si la exploración encuentra signos articulares en el codo.»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Codo rígido y doloroso: primero, técnicas para el dolor hasta tener clara la irritabilidad; después, estirar en cualquier dirección mientras la progresión no empeore el patrón del dolor. Para estirar: fisiológicos de grado IV o IV− si el dolor es mínimo; accesorios de grado IV o IV− con la articulación sostenida al límite del recorrido fisiológico; intercalar los dos; y un grado II+ o III− en la mayor amplitud posible para aliviar las molestias del tratamiento. Un estiramiento juicioso y controlado (grados III y IV) es poco probable que cause una miositis osificante (Hengeveld y Banks 2005, cap. 12, pp. 390 y 393).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Inestabilidad del codo: la pauta es de fortalecimiento y control, y en la posterolateral evita la carga axial en extensión y supinación (Quzli 2025). El cap. 12 de Peripheral no trae un perfil de inestabilidad del codo; por la regla general de no usar técnicas firmes con ligamentos debilitados (Hengeveld y Banks 2005, cap. 8, pp. 224–225), sin técnicas firmes al final del recorrido que tensen el ligamento insuficiente: el valgo (extensión-abducción) en la medial; la extensión con supinación en la posterolateral.»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Quzli 2025)
+- [ ] «Dolor radiohumeral intraarticular (plica): con patología intraarticular, de grado II− a III o III− (Hengeveld y Banks 2005, cap. 7, tabla 7.2, p. 176); si duele mucho, el movimiento longitudinal cefálico del radio cuando alivia el dolor (cap. 12, p. 389).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Atrapamiento de un nervio en el codo: los escalones se refieren a la articulación. Para el nervio, movilizar las interfases que lo rodean y recuperar su deslizamiento y su tensión (Butler 2000, citado en Hengeveld y Banks 2005, cap. 12, p. 371); el anteroposterior y el longitudinal caudal de la cabeza del radio sirven como movilización de la interfase de un nervio radial mecanosensible (pp. 387–388). Los signos neurológicos se exploran pronto y no se empeoran con pruebas vigorosas (cap. 6, p. 158).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Codo en crecimiento (apofisitis o avulsión del epicóndilo medial, enfermedad de Panner u osteocondritis del capítulo): ninguna fuente leída trata la movilización pasiva del codo con el esqueleto inmaduro (el cap. 12 de Peripheral solo nombra la osteocondritis disecante; Hengeveld y Banks 2005, cap. 12, p. 390), y la pauta del lanzador joven es de descanso y ajuste de las cargas (Lluch 2020, cap. 3.2, p. 94). Los escalones de terapia manual no se aplican.»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Lluch 2020)
 - [ ] «Las dos hipótesis se tratan en zonas distintas (columna y articulación periférica): los escalones y las reglas del mes son los de la principal; la cantidad por sesión y la progresión, las de cada una.»  
   ↳ decisión 50 de docs/plan-tratamiento.md
 - [ ] «Dosificado según el síntoma más irritable de la fase 3, no según P1 (a igualdad de irritabilidad, manda P1). La gravedad es la de su NRS.»  
@@ -215,6 +260,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Maitland 2005, Hengeveld y Banks 2005)
 - [ ] «Exploración neurológica al empezar; si empeora, comunicarlo al médico (Maitland 2005, cap. 6, p. 136).»  
   ↳ fuente en el texto (Maitland 2005)
+- [ ] «Sensibilidad y fuerza en el territorio del nervio al empezar, sin empeorarlas con pruebas vigorosas (Hengeveld y Banks 2005, cap. 6, p. 158; cap. 12, cuadro 12.6, p. 392); si empeoran, comunicarlo al médico (Maitland 2005, cap. 6, p. 136).»  
+  ↳ fuente en el texto (Maitland 2005, Hengeveld y Banks 2005)
 - [ ] «Explicar la hipótesis y el plan, y lo que puede notar.»  
   ↳ organización de la sesión (orientativa, editable; no evidencia)
 - [ ] «Avisar de un posible aumento temporal de los síntomas tras esta primera sesión (Maitland 2005, cap. 9, p. 219; Hengeveld y Banks 2005, cap. 9, p. 243).»  
@@ -237,6 +284,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Margetis y Donnally 2025)
 - [ ] «Red de seguridad: explicar qué síntomas exigen llamar al 112 (dolor u opresión en el pecho, el hombro, el brazo, el cuello, la mandíbula o la espalda que no se pasa al parar en unos 20 minutos, o que viene con sudor frío, náuseas, vómitos o falta de aire) y comprobar que lo ha entendido (Goodman 2018, cap. 6, pp. 236 y 260, como en el razonamiento de h_c4).»  
   ↳ fuente en el texto (Goodman 2018)
+- [ ] «Red de seguridad: explicar qué síntomas exigen ir hoy mismo al médico o a urgencias (el codo se pone rojo, caliente e hinchado, aunque no haya fiebre) y comprobar que lo ha entendido (Momodu y Savaliya 2023; Pangia 2025, como en el razonamiento de co1).»  
+  ↳ fuente en el texto (Momodu y Savaliya 2023, Pangia 2025)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (dolor de cabeza o de cuello de golpe y distinto a cualquier otro, visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas súbitas) y comprobar que lo ha entendido; los de una disección pueden llegar días después (Rushton 2023, tablas 1–2 y 6, pp. 9–12).»  
   ↳ fuente en el texto (Rushton 2023)
 
@@ -252,6 +301,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Dolor radicular cervical agudo: su pauta fija 2 sesiones por semana durante 6 semanas (12 sesiones), así que encaja con el plan B; con el plan A, el mes queda por debajo de esa pauta (Kuijper 2009).»  
   ↳ fuente en el texto (Kuijper 2009)
+- [ ] «Rigidez del codo: los ensayos de estiramientos de contracción-relajación de su pauta usaron de 2 a 7 sesiones por semana durante 3 a 6 semanas, y la intensidad óptima no se conoce (Wistow 2025); con el plan A, el mes queda por debajo de lo estudiado.»  
+  ↳ fuente en el texto (Wistow 2025)
 - [ ] «Si la pauta trae su propio criterio de progresión, ese manda. Si no: al principio lo mínimo que no provoque recaída; reintroducir lo que agravaba cuando baje la irritabilidad; progresar al ritmo de la curación y de los síntomas; reevaluar dentro de la sesión y entre sesiones (Petersen 2021; Zusman 1998).»  
   ↳ fuente en el texto (Petersen 2021, Zusman 1998)
 - [ ] «Terapia manual en una articulación periférica: empezar con un accesorio en posición indolora y apoyada; pasar a movimientos fisiológicos cuando el recorrido activo supere el 60 % del normal (con dolor y rigidez, el 60 % del recorrido rígido disponible) y, hasta el 75 %, quedarse antes del punto donde empieza el dolor; después, entrar en una molestia controlada (un 10–20 % de su intensidad máxima), y movimientos fisiológicos amplios cuando el dolor solo aparezca en el último 40 % del recorrido. Si no está claro si domina el dolor o la rigidez, tratar primero el dolor; con dudas al pasar a fisiológicos, repetir unas sesiones más los accesorios, y si empeora, volver a ellos (Hengeveld y Banks 2005, cap. 8, pp. 192–196 y 200).»  
