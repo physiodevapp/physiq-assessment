@@ -180,9 +180,9 @@ test('citas dentro de una frase: se pintan en la fase 6, la irritabilidad de la 
   for (const x of ['citasEnTexto(T.margen)', 'citasEnTexto(primera)', 'citasEnTexto(resto)', 'citasEnTexto(hyp.pronostico.derivacion)', 'citasEnTexto(o.texto)']) assert.ok(app.includes(x), x);
   // Fase O3: el razonamiento de las fases 2, 4 y 4b y el criterio de los tests
   for (const x of ['citasEnTexto(r.porque)', 'citasEnTexto(r.peso)', 'citasEnTexto(f.nota)', '`<li>${citasEnTexto(p)}</li>`', '`<p>${citasEnTexto(p)}${iaParrafoHTML()}</p>`']) assert.ok(app.includes(x), `app.js: ${x}`);
-  for (const f of ['phase4.js', 'phase4b.js']) {
+  for (const f of ['app.js', 'phase4.js', 'phase4b.js']) {
     const src = leer(f);
-    assert.ok(!/\$\{r\.porque\}|`<p>\$\{p\}/.test(src), `${f}: razonamiento sin citasEnTexto`);
+    assert.ok(!/\$\{r\.(porque|peso)\}|`<p>\$\{p\}|<li>\$\{p\}|\$\{f\.nota\}/.test(src), `${f}: razonamiento sin citasEnTexto`);
   }
   assert.ok(leer('phase4b.js').includes('${citasEnTexto(test.criterio)}'));
   assert.ok(esReferencia('NICE CG147') && esReferencia('Hengeveld y Banks 2005') && !esReferencia('van Dijk 2016') && !esReferencia('MDT: C'));
