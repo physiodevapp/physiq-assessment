@@ -1301,6 +1301,118 @@ async function checkBarraFase(page) {
 // la fase 5 lo resume y Escape cierra. En móvil, hoja inferior que atrás
 // cierra sin cambiar de fase; a 320 px nada desborda y la escala 0–10 deja
 // botones de 40 px o más. También en el hub.
+// Citas tocables (lib/citas.js + ficha.js): forma corta en el texto, ficha con la cita
+// entera y su enlace al tocarla; se cierra con la misma cita, fuera, Escape (foco de
+// vuelta), al desplazar y al cambiar de fase; teclado → foco en «Abrir ↗»; al imprimir,
+// la cita entera; en móvil cabe con 16 px de margen; dentro de la calculadora, Escape
+// cierra la ficha antes que el panel.
+async function checkCitas(browser, errors) {
+  const nueva = async (opts, etq) => {
+    const context = await browser.newContext(opts);
+    const page = await context.newPage();
+    page.on('pageerror', err => errors.push(`pageerror (${etq}): ${err.message}`));
+    page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (${etq}): ${msg.text()}`); });
+    await page.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+      headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+      contentType: 'application/json', body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo' }, demoOnly: false }),
+    }));
+    await abrirApp(page);
+    await walkRegion(page, 'lumbar');
+    return { context, page };
+  };
+  const { context, page } = await nueva({ viewport: { width: 1280, height: 900 } }, 'citas');
+  const r = {};
+  const ficha = () => page.evaluate(() => { const f = document.getElementById('citaFicha'); return f && !f.hidden ? f.textContent : ''; });
+  const cerrada = () => page.waitForFunction(() => { const f = document.getElementById('citaFicha'); return !f || f.hidden; }, null, { timeout: 3000 }).then(() => true, () => false);
+  // Una cita con enlace en el registro, visible en la fase 5
+  const sel = await page.evaluate(async () => {
+    const { REFERENCIAS } = await import('./data/referencias.js');
+    const { claveRegistro } = await import('./lib/citas.js');
+    document.querySelectorAll('#phase5 details.pauta-det, #phase5 details.pronostico-det').forEach(d => { d.open = true; });
+    const cs = [...document.querySelectorAll('#phase5 .cita')].filter(b => b.checkVisibility());
+    const i = cs.findIndex(b => { const x = REFERENCIAS[claveRegistro(b.dataset.cita, REFERENCIAS)]; return x?.url || x?.doi; });
+    cs.forEach((b, k) => b.toggleAttribute('data-prueba', k === i));
+    return i >= 0 ? { cita: cs[i].dataset.cita } : null;
+  });
+  r.hayCitas = !!sel;
+  r.formaCorta = await page.evaluate(() => [...document.querySelectorAll('#phase5 .cita')].some(x => x.textContent.length < x.dataset.cita.length));
+  if (!sel) { await context.close(); return { ok: false, ...r }; }
+  const b = '#phase5 .cita[data-prueba]';
+  await page.click(b);
+  await page.waitForFunction(() => document.querySelector('#citaFicha .cita-ficha-enlace'), null, { timeout: 5000 }).catch(() => {});
+  r.abre = await page.evaluate(c => {
+    const f = document.getElementById('citaFicha'), a = f?.querySelector('.cita-ficha-enlace');
+    return !!f && !f.hidden && f.querySelector('.cita-ficha-texto').textContent === c && a?.target === '_blank' && /^https:\/\//.test(a.href)
+      && document.querySelector('#phase5 .cita[data-prueba]').getAttribute('aria-expanded') === 'true';
+  }, sel.cita);
+  r.junto = await page.evaluate(() => {
+    const a = document.querySelector('#phase5 .cita[data-prueba]').getBoundingClientRect(), f = document.getElementById('citaFicha').getBoundingClientRect();
+    return f.left >= 16 && f.right <= innerWidth - 16 && (Math.abs(f.top - a.bottom - 8) < 2 || Math.abs(a.top - 8 - f.bottom) < 2);
+  });
+  await page.keyboard.press('Escape');
+  r.escape = await cerrada() && await page.evaluate(() => document.activeElement?.matches('.cita[data-prueba]') && state.currentPhase === 5);
+  await page.click(b); await page.click(b);
+  r.mismaCita = await cerrada();
+  await page.click(b); await page.mouse.click(5, 450);
+  r.fuera = await cerrada();
+  await page.click(b);
+  await page.evaluate(() => window.scrollBy(0, 200));
+  r.desplazar = await cerrada();
+  await page.click(b);
+  await page.evaluate(() => goToPhase(4));
+  r.cambiarFase = await cerrada();
+  await page.evaluate(() => goToPhase(5));
+  // Teclado: Enter abre y el foco pasa a «Abrir ↗»; Escape lo devuelve a la cita
+  await page.evaluate(() => { const x = document.querySelector('#phase5 .cita[data-prueba]'); x.scrollIntoView({ block: 'center' }); x.focus(); });
+  await page.keyboard.press('Enter');
+  r.teclado = await page.waitForFunction(() => document.activeElement?.matches('#citaFicha .cita-ficha-enlace'), null, { timeout: 3000 }).then(() => true, () => false);
+  await page.keyboard.press('Escape');
+  r.tecladoVuelve = await cerrada() && await page.evaluate(() => document.activeElement?.matches('.cita[data-prueba]'));
+  // Al imprimir, la cita entera
+  await page.emulateMedia({ media: 'print' });
+  r.imprimir = await page.evaluate(c => {
+    const x = document.querySelector('#phase5 .cita[data-prueba]');
+    return getComputedStyle(x, '::before').content === JSON.stringify(c) && getComputedStyle(x.querySelector('.cita-corta')).display === 'none';
+  }, sel.cita);
+  await page.emulateMedia({ media: 'screen' });
+  // Fase 6: las fuentes del plan también son citas
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => {
+    const cs = [...document.querySelectorAll('#planContenido .test-source .cita')].filter(x => x.checkVisibility());
+    return cs.length > 0 && cs.every(x => /\d{4}/.test(x.textContent) && !x.textContent.includes(','));
+  });
+  await page.evaluate(() => { const x = [...document.querySelectorAll('#planContenido .test-source .cita')].find(y => y.checkVisibility()); x.scrollIntoView({ block: 'center' }); x.setAttribute('data-p6', ''); });
+  await page.click('#planContenido .cita[data-p6]');
+  r.fase6Abre = (await ficha()).length > 0;
+  await page.keyboard.press('Escape');
+  await cerrada();
+  // Calculadora: la fuente es cita; Escape cierra la ficha y deja el panel abierto
+  await page.click('#cuestBtn');
+  await page.click('[data-cuest="phq9"]');
+  await page.click('#cuestOverlay .cuest-fuente .cita >> nth=0');
+  r.cuestAbre = (await ficha()).length > 0;
+  await page.keyboard.press('Escape');
+  r.cuestEscape = await cerrada() && await page.evaluate(() => document.getElementById('cuestOverlay').classList.contains('open'));
+  await page.keyboard.press('Escape');
+  r.cuestCierra = await page.waitForFunction(() => !document.getElementById('cuestOverlay').classList.contains('open'), null, { timeout: 3000 }).then(() => true, () => false);
+  await context.close();
+
+  // Móvil táctil a 320 px: la ficha cabe con 16 px de margen
+  const m = await nueva({ viewport: { width: 320, height: 700 }, hasTouch: true, isMobile: true }, 'citas móvil');
+  await m.page.evaluate(() => { document.querySelectorAll('#phase5 details.pauta-det').forEach(d => { d.open = true; }); const x = [...document.querySelectorAll('#phase5 .cita')].filter(y => y.checkVisibility()).pop(); x.scrollIntoView({ block: 'center' }); x.setAttribute('data-prueba', ''); });
+  await m.page.tap('#phase5 .cita[data-prueba]');
+  await m.page.waitForFunction(() => document.querySelector('#citaFicha .cita-ficha-enlace, #citaFicha .cita-ficha-sin'), null, { timeout: 5000 }).catch(() => {});
+  r.movil = await m.page.evaluate(() => {
+    const f = document.getElementById('citaFicha'), q = f?.getBoundingClientRect();
+    return !!f && !f.hidden && q.left >= 16 && q.right <= innerWidth - 16 && q.top >= 0 && q.bottom <= innerHeight
+      && document.documentElement.scrollWidth <= innerWidth;
+  });
+  await m.context.close();
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 async function checkCuestionarios(browser, errors) {
   const r = {};
   const { CUESTIONARIOS } = await import(new URL('../data/cuestionarios.js', import.meta.url));
@@ -3888,6 +4000,12 @@ const SECCIONES = [
     const tejidos = await checkTiemposTejido(browser, errors);
     console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, tarjeta de una barra con sus fuentes enlazadas en línea con « · » (toque de 40 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
+  } },
+
+  { id: 'citas', titulo: 'Citas tocables (fuentes de las fases 2–6 y de la calculadora):', run: async ({ browser, errors }) => {
+    const c = await checkCitas(browser, errors);
+    console.log(`  ${c.ok ? '✓' : '✗'} en el texto solo autor y año; al tocar, la ficha con la cita entera y «Abrir ↗» en pestaña nueva, junto a la cita; se cierra con la misma cita, fuera, Escape (foco de vuelta), al desplazar y al cambiar de fase; con teclado el foco va al enlace; al imprimir, la cita entera; en la fase 6 y en la calculadora también (Escape cierra la ficha antes que el panel); a 320 px táctil cabe sin desbordar${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
   } },
 
   { id: 'cuestionarios', titulo: 'Calculadora de cuestionarios:', run: async ({ browser, errors }) => {

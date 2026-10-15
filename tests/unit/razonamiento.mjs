@@ -1,6 +1,6 @@
 // «¿Por qué?» del cribado, del árbol CIF y de los tests, «Ampliar con IA». Se ejecuta desde tests/unit.js.
 import { assert, readFileSync, join, TESTS, leer, test, HYPOTHESES, SYSTEMIC_SCREENING, testPuntua,
-   pesoTest, PESO_TEST, buildTestItem, lrEfectiva, fuenteCorta, claveRegistro, enlaceCita,
+   pesoTest, PESO_TEST, buildTestItem, lrEfectiva, claveRegistro, enlaceCita, citasHTML,
    citasTest, state, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
    buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML, BASE_STATE, withState, VALID_REGIONS } from './comun.mjs';
 const { REFERENCIAS } = await import('../../data/referencias.js');
@@ -366,14 +366,9 @@ test('tarjeta del test: «cuánto pesa» siempre, «Ampliar» solo con razonamie
     assert.equal(html.includes(`abrirRazonamientoTest(this,'${hId}',${i})`), !!t.razonamiento, `${hId} «${t.name}»: Ampliar`);
     assert.equal(html.includes('class="razon"'), !!t.razonamiento?.porque, `${hId} «${t.name}»: ¿Por qué?`);
     assert.ok(!html.includes('stat-badge no-data'), `${hId} «${t.name}»: badge redundante`);
-    // con «Ampliar», autor y año en la tarjeta (la cita entera, en el panel); sin él, la cita entera
-    if (t.fuente) assert.ok(html.includes(t.razonamiento ? fuenteCorta(t.fuente) : t.fuente), `${hId} «${t.name}»: fuente`);
+    // la fuente, como citas tocables (lib/citas.js): autor y año, la cita entera en la ficha
+    if (t.fuente) assert.ok(html.includes(citasHTML(t.fuente)), `${hId} «${t.name}»: fuente`);
   }
-});
-
-test('fuenteCorta: autor y año de cada cita', () => {
-  assert.equal(fuenteCorta('Hegedus 2012 (Br J Sports Med 46:964–978; tabla 3) · Zhao 2024 (BMC, tabla 3)'), 'Hegedus 2012 · Zhao 2024');
-  assert.equal(fuenteCorta('Lluch 2020, cap. 3.1 (Struyf), p. 54'), 'Lluch 2020, cap. 3.1');
 });
 
 test('fuentes del panel: cada cita de un test con razonamiento se resuelve en el registro y se enlaza con su url o su DOI', () => {
