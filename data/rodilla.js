@@ -5,7 +5,36 @@
 // con las demás regiones en SYSTEMIC_SCREENING / CIF_TREES / HYPOTHESES;
 // los esquemas de cada objeto están documentados allí.
 // ============================================================
-import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
+import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR, RAZON_ISQUEMIA_AGUDA } from './comun.js';
+
+// ── Fase 3 · ZONAS_SINTOMA.rodilla — zonas del mapa corporal para P1–P4
+// (docs/sintomas-multiples.md). Revisadas por el usuario (2026-10); con
+// «Rodilla» delante de anterior, medial, lateral y posterior para que se lean
+// solas en los resúmenes. `id` estable: se guarda en la sesión.
+// `pasos` (Fase N, paso 3): pasos del árbol de abajo en los que el síntoma de
+// esa zona sale en el recuadro «📝 Refiere el paciente». Solo recuerda; nunca
+// contesta el paso. Revisados por el usuario (2026-10):
+//   ro_step1b Ottawa → rodilla anterior (rótula aislada) y lateral (cabeza
+//             del peroné)
+//   ro_step2b menor sin mecanismo: cadera primero → muslo, por donde baja el
+//             dolor de la epifisiólisis y el Perthes
+//   ro_step2c ¿referido de cadera o columna? → muslo y pierna
+//   ro_step3  ¿dónde se concentra? → rodilla anterior, medial y lateral
+//   ro_step4  anterior persistente → rodilla anterior
+//   ro_step5  medial persistente → rodilla medial
+//   ro_step6  lateral persistente → rodilla lateral y pierna (nervio peroneo)
+//   ro_step7  posterior persistente → rodilla posterior y pierna (TVP,
+//             quiste roto que baja a la pantorrilla)
+// ro_step1 (mecanismo) y ro_step2 (perfil por edad) no llevan: no dependen de
+// dónde duele.
+export const zonas = [
+  { id: 'rodilla_ant',  nombre: 'Rodilla anterior (rótula)',          pasos: ['ro_step1b', 'ro_step3', 'ro_step4'] },
+  { id: 'rodilla_med',  nombre: 'Rodilla medial',                     pasos: ['ro_step3', 'ro_step5'] },
+  { id: 'rodilla_lat',  nombre: 'Rodilla lateral',                    pasos: ['ro_step1b', 'ro_step3', 'ro_step6'] },
+  { id: 'rodilla_post', nombre: 'Rodilla posterior (hueco poplíteo)', pasos: ['ro_step7'] },
+  { id: 'muslo',        nombre: 'Muslo',                              pasos: ['ro_step2b', 'ro_step2c'] },
+  { id: 'pierna',       nombre: 'Pierna',                             pasos: ['ro_step2c', 'ro_step6', 'ro_step7'] },
+];
 
 // ── Fase 2 · SYSTEMIC_SCREENING.rodilla
 export const screening = {
@@ -26,14 +55,34 @@ export const screening = {
     {
       id: 'ro_vascular', icon: '🩸', nombre: 'Vascular',
       banderasRojas: [
-        'Claudicación: dolor que aparece al caminar y cede al detenerse',
-        'Calambres nocturnos en pantorrilla que interrumpen el sueño',
-        'Signos de TVP: edema asimétrico, calor, eritema y sensibilidad en pantorrilla',
+        { texto: 'Claudicación: dolor que aparece al caminar y cede al detenerse', pregunta: ['r_v1', 'r_v4'] },
+        { texto: 'Calambres nocturnos en pantorrilla que interrumpen el sueño',
+          razonamiento: {
+            porque: 'Los calambres de la pierna y la pantorrilla son frecuentes en adultos, sobre todo en mayores, deportistas y embarazadas, y casi siempre benignos. Pero entre sus causas más frecuentes Goodman cuenta la oclusión de una arteria por enfermedad arterial periférica, la claudicación neurógena por estenosis de canal lumbar, la neuropatía, los fármacos, las alteraciones metabólicas y el déficit de vitaminas o calcio. El dolor de la isquemia se describe a menudo como un calambre, aunque el músculo no tenga ningún espasmo.',
+            peso: 'Aislados pesan poco. Pesan si hay factores de riesgo vascular (tabaco, diabetes, hipertensión, colesterol, más de 50 años), si la pantorrilla también duele al caminar y cede al parar (pregunta de claudicación), o si hay pérdida de vello, piel fría, pálida o brillante, uñas que crecen mal o pulsos débiles: entonces pide valoración médica. El dolor nocturno del pie o del antepié que mejora al colgar la pierna es dolor isquémico en reposo (amarilla de este sistema).',
+            detalle: 'Otras causas que da Goodman: deshidratación (en el deportista, un calambre con deshidratación grave puede anunciar un golpe de calor) y síndrome compartimental anterior por traumatismo, hemofilia, drepanocitosis, quemadura, yeso o mordedura. En el deportista, las fracturas y las roturas de ligamentos pueden imitar un calambre.\n\nQué mirar: pulsos femoral, poplíteo y del pie comparando los dos lados, temperatura y color de la piel, vello y uñas; y si hay dolor lumbar o en las nalgas al caminar que mejora al sentarse o inclinarse (claudicación neurógena).',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 16, p. 624.'
+            ]
+          } },
+        { texto: 'Signos de TVP: edema asimétrico, calor, eritema y sensibilidad en pantorrilla', pregunta: 'r_v2' },
         // Tarjeta rodilla (guía de consulta), BANDERAS «TVP · Wells con puntuación» y «Pseudotromboflebitis por quiste poplíteo»
-        'TVP · Wells con puntuación: +1 cada uno: cáncer activo (tratamiento en 6 meses o paliativo) · parálisis, paresia o inmovilización con férula · encamamiento ≥3 días o cirugía mayor en 12 SEMANAS · dolor en el trayecto venoso profundo · hinchazón de toda la pierna · pantorrilla >3 cm más gruesa, medida 10 cm bajo la tuberosidad tibial · edema con fóvea solo en la pierna sintomática · venas colaterales no varicosas · TVP previa documentada. −2: hay un diagnóstico alternativo al menos tan probable como la TVP. 2 o más → TVP probable; 1 o menos → improbable. El capítulo lista el ítem que resta junto a los demás y sobreestima. Orienta la derivación, no la sustituye.',
-        'Pseudotromboflebitis por quiste poplíteo: dolor o hinchazón en la pantorrilla y signo de Homans positivo en un quiste grande, disecado o roto. El quiste también puede causar síndrome compartimental y neuropatías por compresión. Clínicamente no se puede separar de una tromboflebitis real: derivar. La ecografía es la primera opción para diferenciar quiste de TVP.'
+        { texto: 'TVP · Wells con puntuación: +1 cada uno: cáncer activo (tratamiento en 6 meses o paliativo) · parálisis, paresia o inmovilización con férula · encamamiento ≥3 días o cirugía mayor en 12 SEMANAS · dolor en el trayecto venoso profundo · hinchazón de toda la pierna · pantorrilla >3 cm más gruesa, medida 10 cm bajo la tuberosidad tibial · edema con fóvea solo en la pierna sintomática · venas colaterales no varicosas · TVP previa documentada. −2: hay un diagnóstico alternativo al menos tan probable como la TVP. 2 o más → TVP probable; 1 o menos → improbable. El capítulo lista el ítem que resta junto a los demás y sobreestima. Orienta la derivación, no la sustituye.', pregunta: 'r_v2' },
+        { texto: 'Pseudotromboflebitis por quiste poplíteo: dolor o hinchazón en la pantorrilla y signo de Homans positivo en un quiste grande, disecado o roto. El quiste también puede causar síndrome compartimental y neuropatías por compresión. Clínicamente no se puede separar de una tromboflebitis real: derivar. La ecografía es la primera opción para diferenciar quiste de TVP.', pregunta: 'r_v3' }
       ],
-      banderasAmarillas: ['Dolor en reposo que mejora al colgar la pierna fuera de la cama'],
+      banderasAmarillas: [
+        { texto: 'Dolor en reposo que mejora al colgar la pierna fuera de la cama',
+          razonamiento: {
+            porque: 'Es el dolor isquémico en reposo, propio de una enfermedad arterial avanzada: la arteria está tan estrechada que ni en reposo llega sangre suficiente al pie. Tumbado empeora, y al colgar la pierna fuera de la cama la gravedad empuja la sangre hacia abajo y el dolor cede (Goodman). Suele ser un dolor quemante o sordo en el pie y el antepié, de noche.',
+            peso: 'Indica una enfermedad arterial más grave que la claudicación y pide valoración médica pronto. Si el dolor en reposo ha empezado de golpe, o una claudicación ha empeorado bruscamente, puede ser una tromboembolia y Goodman pide comunicarlo al médico de inmediato.',
+            detalle: 'Cómo reconocerlo (Goodman): empeora al elevar la pierna y mejora al colgarla de la cama o de la silla; se acompaña de cambios de color, temperatura, piel y uñas: piel fría, seca, descamada o brillante, poco vello y uñas que crecen mal. En los casos avanzados la pierna se pone roja o cianótica al colgarla, y pueden aparecer úlceras o gangrena.\n\nQuién: sobre todo hombres de más de 50 años; tabaco, diabetes, hipertensión, colesterol alto y edad.\n\nPor qué no es la rodilla: el dolor de rodilla mecánico no mejora al colgar la pierna; el de la isquemia no cambia con el movimiento de la rodilla.',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228, 254 y 262.'
+            ]
+          } }
+      ],
       preguntas: [
         { id: 'r_v1', anatomia: ['arteria_femoral', 'arteria_poplitea'], text: '¿El dolor aparece tras caminar unos minutos y cede casi de inmediato al parar (claudicación)?', alerta: true,
           razonamiento: {
@@ -101,7 +150,9 @@ export const screening = {
               'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.',
               { texto: 'Leib 2023 — Leib, Roshan, Foris y Varacallo, «Baker’s Cyst», StatPearls [Internet], NCBI Bookshelf, última actualización 4 de agosto de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430774/' }
             ]
-          } }
+          } },
+        { id: 'r_v4', anatomia: ['arteria_femoral', 'arteria_poplitea'], text: '¿Se le ha puesto la pierna de repente fría, pálida, muy dolorosa, con hormigueo o debilidad, o le ha empeorado de golpe el dolor al caminar?', alerta: true, urgencia: 'Posible isquemia aguda de la pierna (trombo o émbolo): a urgencias hoy, sin esperar.',
+          razonamiento: RAZON_ISQUEMIA_AGUDA }
       ],
       zonasDolor: [
         { zona: 'Pantorrilla / Rodilla', desc: 'Claudicación distal o TVP' }
@@ -112,13 +163,15 @@ export const screening = {
     {
       id: 'ro_infecciosa', icon: '🦠', nombre: 'Infecciosa / Inflamatoria',
       banderasRojas: [
-        'Fiebre, enrojecimiento intenso, calor y tumefacción articular (artritis séptica)',
-        'Artritis séptica: urgencia médica — derivar de inmediato',
-        'Inicio muy agudo con articulación bloqueada en posición de confort',
+        { texto: 'Fiebre, enrojecimiento intenso, calor y tumefacción articular (artritis séptica)', pregunta: 'r1' },
+        { texto: 'Artritis séptica: urgencia médica — derivar de inmediato', pregunta: 'r1' },
+        { texto: 'Inicio muy agudo con articulación bloqueada en posición de confort', pregunta: 'r1' },
         // Tarjeta rodilla (guía de consulta), URGENCIA
-        'Bursitis prerrotuliana séptica: la FIEBRE >37,7 °C solo se ha descrito en la séptica. Derivación el mismo día.'
+        { texto: 'Bursitis prerrotuliana séptica: la FIEBRE >37,7 °C solo se ha descrito en la séptica. Derivación el mismo día.', pregunta: 'r_i3' }
       ],
-      banderasAmarillas: ['Antecedente de infección reciente (urinaria, respiratoria, cutánea)'],
+      banderasAmarillas: [
+        { texto: 'Antecedente de infección reciente (urinaria, respiratoria, cutánea)', pregunta: 'r_i2' }
+      ],
       preguntas: [
         { id: 'r1', anatomia: ['art_rodilla'], urgencia: 'Sospecha de artritis séptica: urgencia hospitalaria hoy.', text: '¿Hay fiebre, enrojecimiento intenso y calor local junto con la tumefacción de la rodilla (artritis séptica)?', alerta: true,
           razonamiento: {
@@ -195,13 +248,15 @@ export const screening = {
     {
       id: 'ro_oncologico', icon: '🔬', nombre: 'Oncológico / Hematológico',
       banderasRojas: [
-        'Dolor nocturno constante e intenso sin alivio postural',
-        'Masa o bulto palpable en zona periarticular',
-        'Antecedentes de cáncer o edad <25 años (cánceres óseos primarios)',
+        { texto: 'Dolor nocturno constante e intenso sin alivio postural', pregunta: 'r2' },
+        { texto: 'Masa o bulto palpable en zona periarticular', pregunta: 'r3' },
+        { texto: 'Antecedentes de cáncer o edad <25 años (cánceres óseos primarios)', pregunta: ['r2', 'r3'] },
         // Tarjeta rodilla (guía de consulta), BANDERAS «Tumor»
-        'Tumor: el capítulo no da criterios clínicos propios: solo lo menciona como bandera roja que la radiografía ayuda a descartar al valorar una apofisitis tibial en el adolescente. Si se pide imagen en un adolescente con dolor en la tuberosidad tibial, la radiografía simple ayuda a descartar fractura aguda y tumor.'
+        { texto: 'Tumor: el capítulo no da criterios clínicos propios: solo lo menciona como bandera roja que la radiografía ayuda a descartar al valorar una apofisitis tibial en el adolescente. Si se pide imagen en un adolescente con dolor en la tuberosidad tibial, la radiografía simple ayuda a descartar fractura aguda y tumor.', pregunta: ['r2', 'r3'] }
       ],
-      banderasAmarillas: ['Edad entre 10-30 años con dolor óseo inexplicado'],
+      banderasAmarillas: [
+        { texto: 'Edad entre 10-30 años con dolor óseo inexplicado', pregunta: 'r2' }
+      ],
       preguntas: [
         { id: 'r2', text: '¿El dolor es constante, nocturno, intenso y no se alivia con ninguna posición ni reposo?', alerta: true,
           razonamiento: {
@@ -288,12 +343,12 @@ export const screening = {
       // rodilla de Lluch 2020 (cap. 4.2, p. 217), decisión del usuario (2026-10).
       id: 'ro_trauma', icon: '🦴', nombre: 'Traumático / Mecánico',
       banderasRojas: [
-        'Fractura de rótula o de meseta tibial: mecanismo conocido: golpe directo, rótula contra el salpicadero, caída sobre la rodilla, o indirecto (saltar y caer mal). Meseta: alta energía en varones jóvenes, baja energía en mujeres mayores u osteoporóticas. Hinchazón inmediata, incapacidad para cargar, movilidad limitada, chasquido en el momento. Regla de Ottawa. Palpación de rótula, cabeza del peroné y meseta; posible escalón palpable; dolor con extensión resistida; marcha antiálgica con rodilla rígida.',
-        'Rotura del aparato extensor: la regla de Ottawa NO lo detecta. NO puede elevar la pierna extendida ni mantener la rodilla extendida contra gravedad. Escalón palpable por encima de la rótula (cuádriceps) o por debajo (rotuliano); hemartrosis; rótula alta o baja. Reparación precoz (2 primeras semanas) → mejores resultados.',
-        'Luxación de rodilla y traumatismo multiligamentoso: alta energía, golpe en la cara anteromedial, lesión de salpicadero o hiperextensión. Hasta el 95 % de las lesiones del LCP vistas en urgencias son combinadas; en hemartrosis agudas por lesión ligamentosa, un 9 % tiene lesión de la EPL. Hemartrosis aguda tras alta energía: valorar función neurovascular y derivar antes de forzar la exploración.',
-        'Compromiso neurovascular tras traumatismo: cambios de temperatura, adormecimiento, parestesias o debilidad tras fractura de meseta o luxación → pulsos distales, cribado neurológico e índice tobillo-brazo.',
-        'Lesión del nervio peroneo común: pie caído, tropezar con el pie, parestesias y debilidad en la cara lateral de la pierna y el dorso del pie, tras esguince o luxación de la tibioperonea proximal, fractura de tibia o peroné, lesión ligamentosa o cirugía de rodilla. Más frecuente aún sin traumatismo: cruzar las piernas, cuclillas prolongadas, pérdida de peso importante reciente o una masa que lo comprime. Marcha en steppage; fuerza de eversión y de flexión dorsal de tobillo y dedos; sensibilidad; Tinel sobre la cabeza del peroné.',
-        'Lesión osteocondral inestable: chasquidos, enganches o bloqueos muy dolorosos: el fragmento bloquea físicamente el movimiento. Derrame y pérdida de rango. Derrame + tope mecánico + rango limitado → imagen (radiografía de elección) y derivación.'
+        { texto: 'Fractura de rótula o de meseta tibial: mecanismo conocido: golpe directo, rótula contra el salpicadero, caída sobre la rodilla, o indirecto (saltar y caer mal). Meseta: alta energía en varones jóvenes, baja energía en mujeres mayores u osteoporóticas. Hinchazón inmediata, incapacidad para cargar, movilidad limitada, chasquido en el momento. Regla de Ottawa. Palpación de rótula, cabeza del peroné y meseta; posible escalón palpable; dolor con extensión resistida; marcha antiálgica con rodilla rígida.', pregunta: 'ro_t1' },
+        { texto: 'Rotura del aparato extensor: la regla de Ottawa NO lo detecta. NO puede elevar la pierna extendida ni mantener la rodilla extendida contra gravedad. Escalón palpable por encima de la rótula (cuádriceps) o por debajo (rotuliano); hemartrosis; rótula alta o baja. Reparación precoz (2 primeras semanas) → mejores resultados.', pregunta: 'ro_t2' },
+        { texto: 'Luxación de rodilla y traumatismo multiligamentoso: alta energía, golpe en la cara anteromedial, lesión de salpicadero o hiperextensión. Hasta el 95 % de las lesiones del LCP vistas en urgencias son combinadas; en hemartrosis agudas por lesión ligamentosa, un 9 % tiene lesión de la EPL. Hemartrosis aguda tras alta energía: valorar función neurovascular y derivar antes de forzar la exploración.', pregunta: 'ro_t3' },
+        { texto: 'Compromiso neurovascular tras traumatismo: cambios de temperatura, adormecimiento, parestesias o debilidad tras fractura de meseta o luxación → pulsos distales, cribado neurológico e índice tobillo-brazo.', pregunta: 'ro_t4' },
+        { texto: 'Lesión del nervio peroneo común: pie caído, tropezar con el pie, parestesias y debilidad en la cara lateral de la pierna y el dorso del pie, tras esguince o luxación de la tibioperonea proximal, fractura de tibia o peroné, lesión ligamentosa o cirugía de rodilla. Más frecuente aún sin traumatismo: cruzar las piernas, cuclillas prolongadas, pérdida de peso importante reciente o una masa que lo comprime. Marcha en steppage; fuerza de eversión y de flexión dorsal de tobillo y dedos; sensibilidad; Tinel sobre la cabeza del peroné.', pregunta: 'ro_t5' },
+        { texto: 'Lesión osteocondral inestable: chasquidos, enganches o bloqueos muy dolorosos: el fragmento bloquea físicamente el movimiento. Derrame y pérdida de rango. Derrame + tope mecánico + rango limitado → imagen (radiografía de elección) y derivación.', pregunta: 'ro_t6' }
       ],
       banderasAmarillas: [],
       preguntas: [
@@ -445,7 +500,7 @@ export const screening = {
       // cap. 4.2, p. 201 («consistent pain pattern»; antes «es constante»).
       id: 'ro_pediatrico', icon: '🧒', nombre: 'Niño o Adolescente',
       banderasRojas: [
-        'Epifisiólisis femoral proximal o Perthes: niño o adolescente con dolor de rodilla SIN mecanismo conocido. Por su patrón de dolor y porque obliga a derivar, cribado de cadera PRIMERO: rango activo y pasivo de la cadera ipsilateral. Solo si es normal, la rodilla es la localización primaria.'
+        { texto: 'Epifisiólisis femoral proximal o Perthes: niño o adolescente con dolor de rodilla SIN mecanismo conocido. Por su patrón de dolor y porque obliga a derivar, cribado de cadera PRIMERO: rango activo y pasivo de la cadera ipsilateral. Solo si es normal, la rodilla es la localización primaria.', pregunta: 'ro_p1' }
       ],
       banderasAmarillas: [],
       preguntas: [
@@ -750,7 +805,7 @@ export const hypotheses = {
   ro3: {
     id: 'ro3', region: 'rodilla', num: '③',
     name: 'Dolor Patelofemoral (Síndrome)',
-    prom: 'KOOS-PF / Kujala / VISA-P',
+    prom: 'Kujala / VISA-P',
     dosis: 'Ejercicio centrado en el cuádriceps y/o la cadera durante al menos 6 a 12 semanas, mejor con supervisión de fisioterapia al menos en parte, en un programa estructurado cuyo volumen e intensidad se ajustan al dolor (certeza baja); prioridad a la educación. Reevaluar dolor (EVA) y función (Kujala) a las 6 y a las 12 semanas. Vendaje, rodillera u ortesis plantar solo como añadido al ejercicio si a las 6–12 semanas no hay un cambio clínicamente relevante (certeza muy baja), informando al paciente de la falta de pruebas. Sin infiltraciones y con prudencia con los analgésicos. Si a las 12 semanas no mejora, reconsiderar el diagnóstico. La guía JOSPT de 2019 coincide en lo esencial: ejercicio combinado de cadera (musculatura posterolateral) y rodilla, en carga o sin carga, empezando si acaso por la cadera (A), y combinar intervenciones con el ejercicio como eje (A). Añade que no se usen punción seca ni terapia manual aislada (A), ni agentes físicos como ultrasonido, crioterapia, electroestimulación o láser (B), ni biofeedback (B); la reeducación de la carrera es opcional (C) y la educación sobre la carga, recomendable (F). Discrepan en los añadidos: la JOSPT admite vendaje rotuliano con el ejercicio a corto plazo (4 semanas, B) y ortesis plantares prefabricadas hasta 6 semanas si hay más pronación de lo normal (A), y desaconseja rodilleras y cintas (B); la holandesa, más reciente, los deja para cuando el ejercicio no basta tras 6–12 semanas, y es la que se sigue. Ninguna fija series ni repeticiones (la JOSPT dice que la dosis óptima no se conoce): el volumen queda a criterio del clínico.',
     dosisFuente: 'Ophey 2025, Knee Surg Sports Traumatol Arthrosc 33:457–469 (guía multidisciplinar holandesa, módulos 1–3; certeza GRADE como la da la guía) · Willy 2019, J Orthop Sports Phys Ther 49(9):CPG1–CPG95 (guía de práctica clínica APTA, resumen de recomendaciones, pp. CPG2–CPG3; letra = grado de la recomendación)',
     pronostico: {
@@ -769,7 +824,7 @@ export const hypotheses = {
   ro4: {
     id: 'ro4', region: 'rodilla', num: '④',
     name: 'Lesión del Ligamento Cruzado Anterior (LCA)',
-    prom: 'KOOS / IKDC (MCID: 12.2 pts)',
+    prom: 'KOOS',
     dosis: 'En la lesión ligamentosa de rodilla, reeducación neuromuscular junto con el fortalecimiento (A); con insuficiencia del LCA puede usarse una ortesis funcional (C). Las demás recomendaciones son tras la reconstrucción: movilización inmediata, dentro de la primera semana (B); carga precoz según tolerancia (C); crioterapia en el posoperatorio inmediato (B); ejercicio supervisado en consulta más un programa en casa (B); ejercicios concéntricos y excéntricos, en carga y sin carga, desde las 4–6 semanas, 2 o 3 veces por semana durante 6 a 10 meses (A), y electroestimulación neuromuscular 6 a 8 semanas junto al fortalecimiento (A). Fuera del posoperatorio, la guía no fija volumen: queda a criterio del clínico.',
     dosisFuente: 'Logerstedt 2017, J Orthop Sports Phys Ther 47(11):A1–A47 (guía de práctica clínica APTA, esguince de ligamentos de rodilla; letra = grado de la recomendación, tal como la da la guía: A evidencia fuerte, C débil, F opinión de expertos)',
     pronostico: {
@@ -844,7 +899,7 @@ export const hypotheses = {
   ro8: {
     id: 'ro8', region: 'rodilla', num: '⑧',
     name: 'Lesión del Ligamento Colateral Medial (LCM)',
-    prom: 'IKDC subjetivo',
+    prom: 'KOOS',
     dosis: 'Reeducación neuromuscular junto con el fortalecimiento (A). En la lesión grave del LCM puede usarse una ortesis adecuada (F). La guía no fija volumen: queda a criterio del clínico.',
     dosisFuente: 'Logerstedt 2017, J Orthop Sports Phys Ther 47(11):A1–A47 (guía de práctica clínica APTA, esguince de ligamentos de rodilla; letra = grado de la recomendación, tal como la da la guía: A evidencia fuerte, C débil, F opinión de expertos)',
     pronostico: {
@@ -860,7 +915,7 @@ export const hypotheses = {
   ro9: {
     id: 'ro9', region: 'rodilla', num: '⑨',
     name: 'Lesión del Ligamento Cruzado Posterior (LCP)',
-    prom: 'IKDC subjetivo',
+    prom: 'KOOS',
     dosis: 'Reeducación neuromuscular junto con el fortalecimiento (A). En la lesión aguda del LCP puede usarse una ortesis adecuada (F). La guía no fija volumen: queda a criterio del clínico.',
     dosisFuente: 'Logerstedt 2017, J Orthop Sports Phys Ther 47(11):A1–A47 (guía de práctica clínica APTA, esguince de ligamentos de rodilla; letra = grado de la recomendación, tal como la da la guía: A evidencia fuerte, C débil, F opinión de expertos)',
     pronostico: {
@@ -878,7 +933,7 @@ export const hypotheses = {
   ro10: {
     id: 'ro10', region: 'rodilla', num: '⑩',
     name: 'Lesión del Ligamento Lateral Externo y Esquina Posterolateral (LLE y EPL)',
-    prom: 'IKDC subjetivo',
+    prom: 'KOOS',
     dosis: 'Reeducación neuromuscular junto con el fortalecimiento (A). En la lesión de la esquina posterolateral puede usarse una ortesis adecuada (F). La guía no trata cuándo operar las lesiones de grado III o combinadas, ni fija volumen: el volumen queda a criterio del clínico.',
     dosisFuente: 'Logerstedt 2017, J Orthop Sports Phys Ther 47(11):A1–A47 (guía de práctica clínica APTA, esguince de ligamentos de rodilla; letra = grado de la recomendación, tal como la da la guía: A evidencia fuerte, C débil, F opinión de expertos)',
     pronostico: {
@@ -899,7 +954,7 @@ export const hypotheses = {
   ro11: {
     id: 'ro11', region: 'rodilla', num: '⑪',
     name: 'Fracturas (Rótula o Meseta Tibial)',
-    prom: 'KOOS-12',
+    prom: 'KOOS',
     dosis: DOSIS_DERIVAR,
     pronostico: {
       horizonte: 'Rótula: radiografía AP y lateral; TC en conminutas. Meseta: radiografía primero, TC para clasificar, RM si se sospecha lesión meniscal o ligamentosa.',
@@ -916,7 +971,7 @@ export const hypotheses = {
   ro12: {
     id: 'ro12', region: 'rodilla', num: '⑫',
     name: 'Inestabilidad Rotuliana',
-    prom: 'KOOS-12',
+    prom: 'KOOS',
     dosis: 'Primera luxación: tratamiento conservador solo si el riesgo de recidiva es bajo y no hay lesión condral u osteocondral (C); con el esqueleto inmaduro, hablar siempre de la cirugía con el paciente y la familia (C). Ninguna ortesis ha demostrado ser mejor que no llevarla; como mucho, una sin limitar el rango y muy poco tiempo en la fase aguda (B). Ejercicio guiado por fisioterapia como complemento necesario, con o sin cirugía (C): fuerza de cuádriceps y glúteos, movilidad, reeducación de la marcha, control neuromuscular funcional y entrenamiento específico del deporte. Tras el tratamiento conservador, al menos un 25 % vuelve a luxarse (hasta un 70 % en niños y adolescentes) (B). El consenso no fija volumen: queda a criterio del clínico.',
     dosisFuente: 'Balcarek 2025, Knee Surg Sports Traumatol Arthrosc 33(12):4197–4206 (consenso formal de la ESSKA, publicado en 2025, sobre la primera luxación de rótula, parte 2; letra = grado: B presunción científica, C bajo nivel científico)',
     pronostico: {
@@ -934,7 +989,7 @@ export const hypotheses = {
   ro13: {
     id: 'ro13', region: 'rodilla', num: '⑬',
     name: 'Síndrome de la Grasa de Hoffa',
-    prom: 'KOOS-12',
+    prom: 'KOOS',
     dosis: '',
     pronostico: {
       horizonte: 'RM: edema, sangrado y fibrosis en el cuerpo graso en fases iniciales; en casos avanzados, metaplasia osteocondral en radiografía o TC.',
@@ -949,7 +1004,7 @@ export const hypotheses = {
   ro14: {
     id: 'ro14', region: 'rodilla', num: '⑭',
     name: 'Bursitis Pre e Infrarrotuliana',
-    prom: 'KOOS-12',
+    prom: 'KOOS',
     dosis: '',
     pronostico: {
       horizonte: 'El diagnóstico clínico suele bastar. Para diferenciar séptica de aséptica o descartar otras condiciones: la analítica y la aspiración del líquido muestran leucocitos, PCR y VSG elevados en la séptica; la ecografía permite ver la bursa y los tejidos blandos de alrededor.',
@@ -964,7 +1019,7 @@ export const hypotheses = {
   ro15: {
     id: 'ro15', region: 'rodilla', num: '⑮',
     name: 'Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson)',
-    prom: 'KOOS-12',
+    prom: 'KOOS',
     dosis: 'Solo Osgood-Schlatter: el estudio excluyó el Sinding-Larsen-Johansson. Semanas 0–4: dejar el deporte y las actividades que reproducen el dolor; isométrico de cuádriceps contra la pared 10 × 30 s al día con cada pierna, y puente con los dos pies 3 × 10 cada 2 días. Desde la semana 5, cada 2 días: (1) sentadilla apoyado en la pared, 5 repeticiones manteniendo hasta 20 s, y una repetición más por sesión hasta 10; (2) sentadilla de 3 s bajando, 10 s mantenida y 3 s subiendo, añadiendo series hasta 4 × 10; (3) añadir zancadas. En paralelo, escalera de 11 escalones de actividad (caminar o bici suave → caminar rápido o bici media → carrera lenta → escaleras → carrera media → skipping → saltos → carrera rápida, giros y saltos → calentamiento + media sesión → calentamiento + sesión → partido): subir un escalón solo con dolor ≤2/10 durante la actividad y a la mañana siguiente, y bajar uno si empeora; la sentadilla (nivel 2) sin pasar de 2/10 antes del escalón 3; vuelta completa tras 2 semanas de entrenamiento completo sin dolor. 4 visitas en 12 semanas, con los padres. Resultados: 80 % con éxito a las 12 semanas y 90 % al año; vuelta al deporte del 16 % a las 12 semanas y del 69 % al año.',
     dosisFuente: 'Rathleff 2020, Orthop J Sports Med 8(4):2325967120911106 (serie de casos, n = 51, 10–14 años, sin grupo control: nivel de evidencia 4; pauta de su apéndice 1)',
     pronostico: {
@@ -982,7 +1037,7 @@ export const hypotheses = {
   ro16: {
     id: 'ro16', region: 'rodilla', num: '⑯',
     name: 'Lesión Osteocondral',
-    prom: 'IKDC subjetivo',
+    prom: 'KOOS',
     dosis: '',
     tests: [
       { name: 'Palpación de la zona afectada', anatomia: ['femur', 'art_rodilla'], sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Depende de la estabilidad. Dolor a la palpación de la articulación en la zona afectada.', fuente: 'Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), p. 199' },
@@ -994,7 +1049,7 @@ export const hypotheses = {
   ro17: {
     id: 'ro17', region: 'rodilla', num: '⑰',
     name: 'Plica Sinovial Medial',
-    prom: 'KOOS-12',
+    prom: 'KOOS',
     dosis: '',
     tests: [
       { name: 'Test de provocación de la plica rotuliana medial', anatomia: ['art_rodilla'], sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Técnica (test MPP): supino, rodilla extendida; presión con el pulgar sobre la porción inferomedial de la femororrotuliana y, manteniéndola, flexionar a 90°. Positivo: dolor en extensión que desaparece o disminuye mucho a 90°; comparar con el otro lado.', razonamiento: { detalle: 'El test de provocación es la mejor forma de diagnosticarlo en consulta. Kim 2007 da S 89,5 % · E 88,7 % frente a artroscopia (la tarjeta redondea a S 0,90 · E 0,89 · LR+ 8,18 · LR− 0,11), pero no puntúa: toda la especificidad sale de los controles con dolor en la interlínea lateral. En el grupo con dolor anteromedial, las 13 rodillas sin plica patológica (7 pinzamientos de franjas sinoviales de la grasa de Hoffa, 5 sinovitis localizadas, 1 lesión de cartílago) dieron el test positivo: E 0 de 13 en el diagnóstico diferencial real. Además, nivel III, no consecutivos y test hecho por su autor sin cegamiento.' }, fuente: 'Kim 2007 (Arthroscopy; 172 rodillas, referencia: artroscopia); técnica: Kim 2004' },
@@ -1004,7 +1059,7 @@ export const hypotheses = {
   ro18: {
     id: 'ro18', region: 'rodilla', num: '⑱',
     name: 'Disfunción de la Articulación Tibioperonea Proximal',
-    prom: 'KOOS-12',
+    prom: 'KOOS',
     dosis: '',
     pronostico: {
       horizonte: 'Radiografía de rodilla en AP y lateral para valorar la patología articular. TC si la radiografía no aclara el diagnóstico.',
@@ -1021,7 +1076,7 @@ export const hypotheses = {
   ro19: {
     id: 'ro19', region: 'rodilla', num: '⑲',
     name: 'Neuropatía del Nervio Peroneo Común',
-    prom: 'KOOS-12',
+    prom: 'KOOS',
     dosis: '',
     pronostico: {
       horizonte: 'Conducción nerviosa y EMG confirman el diagnóstico y ayudan a establecer el pronóstico. Ecografía útil por lo superficial del nervio.',
@@ -1040,7 +1095,7 @@ export const hypotheses = {
   ro20: {
     id: 'ro20', region: 'rodilla', num: '⑳',
     name: 'Quiste Poplíteo (Baker)',
-    prom: 'KOOS-12',
+    prom: 'KOOS',
     dosis: '',
     pronostico: {
       horizonte: 'RM de referencia; ecografía como primera opción, sobre todo para diferenciarlo de una TVP. Se encuentra en el 38 % de las RM de rodillas sintomáticas.',

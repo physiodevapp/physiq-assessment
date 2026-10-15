@@ -77,9 +77,9 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] Red de seguridad de cervical: con una hipótesis neurológica, cierre `cierreMedula` y casa `alarmaMedula`; con cualquier plan de la región, cierre `cierreArterial` y casa `alarmaArterial`.  
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Con `ce13`, la cantidad de terapia manual es la de su pauta: `TEXTOS_SESION.cantidadReid` (sección 6) en vez de la genérica.  
-  ↳ **decisión de diseño** (decisión 40)
-- [ ] Con `ce12` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
   ↳ **decisión de diseño** (decisión 41)
+- [ ] Con `ce12` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
 - [ ] Avisos con `ce13`: `AVISOS.vertigo` (sección 5).  
   ↳ **decisión de diseño**
 - [ ] Avisos con `ce3`: `AVISOS.manipulacionCervical` (sección 5).  
@@ -139,6 +139,10 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «En la fase aguda (menos de 1 mes) la pauta de Kuijper 2009 es sin terapia manual: ahí los escalones no se aplican. La movilización o manipulación entra en la fase crónica (Blanpied 2017, B).»  
   ↳ fuente en el texto (Kuijper 2009, Blanpied 2017)
+- [ ] «Dosificado según el síntoma más irritable de la fase 3, no según P1 (a igualdad de irritabilidad, manda P1). La gravedad es la de su NRS.»  
+  ↳ decisión 35 de docs/plan-tratamiento.md
+- [ ] «Un síntoma va independiente de P1: puede ser un segundo problema que este plan no trata. Valóralo aparte.»  
+  ↳ decisión 35 de docs/plan-tratamiento.md
 - [ ] «Solo si es compatible con el protocolo del cirujano; donde difieran, prevalece el protocolo.»  
   ↳ texto de la fase 5 (`TEXTO_PAUTA_COMPATIBLE`, lib/posquirurgico.js), ya revisado: posquirúrgico con protocolo
 - [ ] «Restricciones pendientes de confirmar con el cirujano.»  

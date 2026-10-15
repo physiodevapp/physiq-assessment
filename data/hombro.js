@@ -7,6 +7,29 @@
 // ============================================================
 import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
 
+// ── Fase 3 · ZONAS_SINTOMA.hombro — zonas del mapa corporal para P1–P4
+// (docs/sintomas-multiples.md). Revisadas por el usuario (2026-10);
+// `id` estable: se guarda en la sesión.
+// `pasos` (Fase N, paso 3): pasos del árbol de abajo en los que el síntoma de
+// esa zona sale en el recuadro «📝 Refiere el paciente». Solo recuerda; nunca
+// contesta el paso. Revisados por el usuario (2026-10):
+//   h_step1  cribado cervical y 1ª costilla → cuello o trapecio, y lo que
+//            pasa del codo (el dolor subacromial no suele bajar del codo)
+//   h_step3  ¿dolor arriba (AC) o inestabilidad? → hombro anterior (AC,
+//            inestabilidad anterior) y posterior (inestabilidad posterior, labrum)
+//   h_step4  manguito rotador → hombro lateral (deltoides) y brazo hasta el
+//            codo, donde se refiere el dolor del manguito
+//   h_step5  control escapular → cuello o trapecio
+// h_step2 y h_step2b (movilidad pasiva) no llevan: no dependen de dónde duele.
+export const zonas = [
+  { id: 'hombro_ant',  nombre: 'Hombro anterior',            pasos: ['h_step3'] },
+  { id: 'hombro_lat',  nombre: 'Hombro lateral (deltoides)', pasos: ['h_step4'] },
+  { id: 'hombro_post', nombre: 'Hombro posterior',           pasos: ['h_step3'] },
+  { id: 'brazo',       nombre: 'Brazo hasta el codo',        pasos: ['h_step4'] },
+  { id: 'bajo_codo',   nombre: 'Por debajo del codo',        pasos: ['h_step1'] },
+  { id: 'cuello',      nombre: 'Cuello o trapecio',          pasos: ['h_step1', 'h_step5'] },
+];
+
 // ── Fase 2 · SYSTEMIC_SCREENING.hombro
 export const screening = {
   label: 'Hombro y Cuadrante Superior',
@@ -15,16 +38,34 @@ export const screening = {
     {
       id: 'h_cancer', icon: '🔬', nombre: 'Cáncer / Oncológico',
       banderasRojas: [
-        'Historia personal de cáncer o tratamiento oncológico (quimio, radioterapia)',
-        'Pérdida de peso inexplicada (>5 % del peso en 6 meses)',
-        'Dolor nocturno constante que despierta al paciente sin alivio con cambio de postura',
-        'Ganglios linfáticos duros, fijos e indoloros en axila o cuello',
-        'Tumor de Pancoast: dolor irradiado a escápula, cuello, axila o cara medial del brazo',
-        'Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.'
+        { texto: 'Historia personal de cáncer o tratamiento oncológico (quimio, radioterapia)', pregunta: 'h3' },
+        { texto: 'Pérdida de peso inexplicada (>5 % del peso en 6 meses)', pregunta: 'h6', fase1: 'br1' },
+        { texto: 'Dolor nocturno constante que despierta al paciente sin alivio con cambio de postura', pregunta: 'h4' },
+        { texto: 'Ganglios linfáticos duros, fijos e indoloros en axila o cuello', pregunta: 'h3' },
+        { texto: 'Tumor de Pancoast: dolor irradiado a escápula, cuello, axila o cara medial del brazo', pregunta: ['h3', 'h4'] },
+        { texto: 'Tumor (Lluch 2020, cap. 3.1 (Struyf), pp. 54 y 61; Lluch 2020, cap. 3.1.1 (Powell y Lewis), pp. 75–76): antecedente de cáncer, pérdida de peso inexplicada, dolor sin relación con el movimiento o implacable, dolor nocturno o en reposo con síntomas sistémicos, masa o deformidad inexplicada. Raros en clavícula distal y acromion; pensar en ellos si hay dolor nocturno + síntomas sistémicos.', pregunta: ['h3', 'h4', 'h6'] }
       ],
       banderasAmarillas: [
-        'Edad >50 años con dolor insidioso sin causa mecánica clara',
-        'Debilidad muscular proximal idiopática'
+        { texto: 'Edad >50 años con dolor insidioso sin causa mecánica clara',
+          razonamiento: {
+            porque: 'La edad de más de 50 años es, según Goodman, el factor de riesgo de cáncer más importante por sí solo. Un dolor de hombro que empieza poco a poco, sin un esfuerzo ni un gesto que lo explique, a esa edad, obliga a no dar por hecho que es mecánico.',
+            peso: 'Aislada pesa poco: a esa edad el hombro doloroso es casi siempre mecánico o degenerativo, y en el hombro no hay cifras de precisión. Es una bandera amarilla que da más peso al resto: antecedente de cáncer, pérdida de peso, dolor nocturno constante, dolor que no cambia con el movimiento o síntomas generales (preguntas de este sistema y del renal).',
+            detalle: 'Los demás factores de riesgo de cáncer que da Goodman: la etnia, los antecedentes en familiares de primer grado y el entorno y el estilo de vida (tabaco, alcohol, dieta, obesidad, exposiciones en el trabajo).',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 465.'
+            ]
+          } },
+        { texto: 'Debilidad muscular proximal idiopática',
+          razonamiento: {
+            porque: 'Una debilidad de los músculos de la raíz de los miembros (hombros, caderas) sin causa que la explique puede ser un signo temprano de cáncer: la neuromiopatía carcinomatosa, un síndrome paraneoplásico (Goodman). También la causan la caquexia, efectos generales del tumor o una hipercalcemia por metástasis óseas, más frecuente en el cáncer avanzado, el mieloma y los cánceres de mama y pulmón.',
+            peso: 'Es una bandera amarilla: con antecedente de cáncer, pérdida de peso o dolor nocturno pide derivar al médico. Goodman la describe acompañada de cambios en dos o más reflejos osteotendinosos (el aquíleo suele conservarse).',
+            detalle: 'Cómo se nota: lo más frecuente es la dificultad para andar o subir escaleras; en el hombro, para elevar los brazos o mantenerlos en alto. Muchos pacientes dicen que no tienen debilidad: Goodman propone preguntar por la función (levantarse de una silla, subir escaleras sin parar, hacer la compra o las tareas de casa sin sentarse, qué actividades han dejado de hacer o les cuestan más).\n\nQué hacer: explorar la fuerza de los dos lados en los músculos proximales y los reflejos, y buscar las demás banderas de este sistema.',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 476.'
+            ]
+          } }
       ],
       preguntas: [
         { id: 'h3', anatomia: ['humero', 'plexo_braquial'], text: '¿Tiene antecedentes de cáncer de cualquier tipo, o ha recibido quimioterapia, radioterapia o terapia hormonal?', alerta: true, s1: true,
@@ -111,14 +152,32 @@ export const screening = {
     {
       id: 'h_cardio', icon: '❤️', nombre: 'Cardiovascular',
       banderasRojas: [
-        'Dolor de hombro que aumenta con esfuerzo físico NO relacionado con el brazo (subir escaleras)',
-        'Dolor acompañado de sudores, náuseas, opresión en mandíbula o pecho',
-        'Angina no aliviada por reposo o nitroglicerina (>20 min)',
-        'Síncope repentino sin mareo previo'
+        { texto: 'Dolor de hombro que aumenta con esfuerzo físico NO relacionado con el brazo (subir escaleras)', pregunta: 'h1' },
+        { texto: 'Dolor acompañado de sudores, náuseas, opresión en mandíbula o pecho', pregunta: ['h2', 'h_c4'] },
+        { texto: 'Angina no aliviada por reposo o nitroglicerina (>20 min)', pregunta: ['h2', 'h_c4'] },
+        { texto: 'Síncope repentino sin mareo previo',
+          razonamiento: {
+            porque: 'Un síncope es una pérdida breve de conocimiento porque llega poco oxígeno al cerebro. El vasovagal, por ansiedad o estrés, y el de la tensión baja al incorporarse suelen avisar antes con mareo, aturdimiento o náuseas. Un síncope que llega sin ningún aviso orienta al corazón: un problema de una válvula o una arritmia (Goodman).',
+            peso: 'Goodman recomienda derivar al médico cualquier síncope sin explicación, porque por esas mismas causas puede haber una muerte súbita; pesa más con enfermedad del corazón o de la circulación, o con factores de riesgo de infarto o ictus. Es una derivación para estudiarlo, no una urgencia por sí sola.',
+            detalle: 'Otras causas cardiacas de síncope o de aturdimiento que da Goodman: arritmias, hipotensión ortostática, mala función del ventrículo, enfermedad coronaria e insuficiencia vertebral. La hipotensión ortostática da aturdimiento al cambiar rápido de postura tras un rato tumbado o sentado, o al hacer fuerza con presión abdominal (al defecar, al levantar peso); quien tiene estenosis aórtica lo nota con esas mismas actividades. Al empezar o ajustar fármacos del corazón, como los vasodilatadores, también puede aparecer.',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 227 y 261.'
+            ]
+          } }
       ],
       banderasAmarillas: [
-        'Dolor que cambia al acostarse o con falta de aire en reposo',
-        'Uso de betabloqueantes o inhibidores de la ECA'
+        { texto: 'Dolor que cambia al acostarse o con falta de aire en reposo', pregunta: 'h_c3' },
+        { texto: 'Uso de betabloqueantes o inhibidores de la ECA',
+          razonamiento: {
+            porque: 'Quien toma betabloqueantes o inhibidores de la ECA tiene, casi siempre, una enfermedad del corazón o de la circulación (hipertensión, angina, arritmia, insuficiencia cardiaca): es un motivo para pensar en el corazón ante un dolor de hombro. Además, cambian cómo responde el cuerpo al ejercicio (Goodman).',
+            peso: 'Es una bandera amarilla: no indica un problema por sí sola, pero da más peso a las preguntas cardiacas de este sistema y pide vigilar la respuesta al esfuerzo durante el tratamiento.',
+            detalle: 'Betabloqueantes (nombres en «-olol»: propranolol, metoprolol, atenolol): bajan la fuerza de contracción y la frecuencia cardiaca, así que la frecuencia no sube con el esfuerzo como cabría esperar. Hay que vigilar el esfuerzo percibido y una frecuencia demasiado baja; otros efectos son el cansancio, la depresión y el empeoramiento del asma.\n\nInhibidores de la ECA (nombres en «-pril»: enalapril, captopril, lisinopril): bajan la tensión y mejoran la función del corazón en la insuficiencia cardiaca; se usan también en la diabetes y el daño renal inicial. Efectos frecuentes: erupción y tos seca persistente. Los AINE anulan su efecto sobre la tensión: quien toma ambos debe controlarse la tensión durante el ejercicio (Goodman).',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 259–260.'
+            ]
+          } }
       ],
       preguntas: [
         { id: 'h1', anatomia: ['corazon'], text: '¿El dolor de hombro aumenta con el esfuerzo físico general (subir escaleras, caminar) aunque no mueva los brazos?', alerta: true, s1: true,
@@ -181,6 +240,16 @@ export const screening = {
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227 y 239; cap. 7, pp. 272–273; cap. 18, pp. 693, 696 y 705–709.'
             ]
+          } },
+        { id: 'h_c4', anatomia: ['corazon'], text: '¿Tiene ahora mismo dolor u opresión en el pecho, el hombro, el brazo, el cuello, la mandíbula o la espalda que dura más de 20 minutos o no se le pasa al parar, o que le viene con sudor frío, náuseas, vómitos o falta de aire?', alerta: true, urgencia: 'Posible infarto o angina que no cede: llamar al 112.',
+          razonamiento: {
+            porque: 'Un infarto puede doler solo en el hombro, el brazo, la mandíbula, el cuello o la espalda, sin dolor en el pecho (Goodman). La angina estable cede en 3 a 5 minutos al parar; un dolor que no cede con el reposo ni al cambiar de postura, o que se acompaña de náuseas, vómitos o sudor profuso, es el de un infarto en curso.',
+            peso: 'Goodman pide intervención médica inmediata si el dolor anginoso no cede en 20 minutos o viene con náuseas, vómitos o sudor profuso, y también si la angina cambia de patrón (más intensa, con menos esfuerzo o más larga). Con un SÍ, llamar al 112 y no dejar que el paciente se vaya solo. El infarto se completa en unas 6 horas: cuanto antes vuelva el riego, menos músculo del corazón se pierde.',
+            detalle: 'Por qué una pregunta aparte de h2: h2 recoge si esos síntomas acompañan al dolor de hombro, también en el pasado, y un SÍ pide derivar al médico; esta pregunta es solo para el episodio que está pasando ahora, que es una urgencia.\n\nCómo se presenta (Goodman): dolor u opresión fuerte y persistente detrás del esternón, que puede irradiar a los brazos (sobre todo el izquierdo, por su cara cubital), la garganta, el cuello, la mandíbula o la espalda; palidez, sudor profuso, náuseas o vómitos (a veces se confunde con una indigestión), falta de aire, debilidad o sensación de desmayo. Puede pasar en reposo o con el esfuerzo, sobre todo trabajando con los brazos por encima de la cabeza.\n\nEn mujeres, mayores y diabéticos puede ser atípico o silente: pesadez o dolor en el lado izquierdo del pecho, el abdomen, la zona dorsal media, el hombro o el brazo, cansancio, náuseas o falta de aire brusca.',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 236 y 260.'
+            ]
           } }
       ],
       zonasDolor: [
@@ -200,15 +269,24 @@ export const screening = {
     {
       id: 'h_pulmonar', icon: '🫁', nombre: 'Pulmonar',
       banderasRojas: [
-        'Dolor de hombro que empeora al toser, reír o respirar profundamente',
-        'Dolor que mejora al aguantar la respiración o acostarse sobre el lado afectado (autosplinting)',
-        'Hemoptisis (esputo con sangre), tos persistente',
-        'Disnea inexplicada en reposo o mínimo esfuerzo'
+        { texto: 'Dolor de hombro que empeora al toser, reír o respirar profundamente', pregunta: 'h5' },
+        { texto: 'Dolor que mejora al aguantar la respiración o acostarse sobre el lado afectado (autosplinting)', pregunta: 'h5' },
+        { texto: 'Hemoptisis (esputo con sangre), tos persistente', pregunta: 'h_p3' },
+        { texto: 'Disnea inexplicada en reposo o mínimo esfuerzo', pregunta: 'h_p2' }
       ],
       banderasAmarillas: [
-        'Historia de tabaquismo (paquetes-año)',
-        'Exposición a factores ambientales/ocupacionales tóxicos',
-        'Antecedentes de cáncer que puede metastatizar a pulmón'
+        { texto: 'Historia de tabaquismo (paquetes-año)', pregunta: 'h_p3' },
+        { texto: 'Exposición a factores ambientales/ocupacionales tóxicos',
+          razonamiento: {
+            porque: 'Algunas profesiones exponen a productos químicos y gases que se relacionan con el cáncer, y la reacción puede tardar hasta 30 años en aparecer: el paciente puede no recordar la exposición o no relacionarla (Goodman).',
+            peso: 'Es una bandera amarilla: da más peso a las preguntas pulmonares de este sistema (tos, sangre al toser, falta de aire) y al antecedente de tabaco. No indica nada por sí sola.',
+            detalle: 'Qué preguntar: la historia laboral y militar, y dónde ha vivido. Goodman propone el recordatorio CH2OPD2: comunidad, casa, aficiones (hobbies), ocupación, hábitos personales, dieta y drogas o fármacos. Recomienda tomar esta historia cuando hay asma, alergias o una enfermedad autoinmune junto a síntomas vagos de varios órganos (dolores musculares o articulares, cefalea, dolor de espalda, mal sueño, falta de apetito, síntomas respiratorios de repetición).',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 468.'
+            ]
+          } },
+        { texto: 'Antecedentes de cáncer que puede metastatizar a pulmón', pregunta: 'h_p3' }
       ],
       preguntas: [
         { id: 'h5', anatomia: ['pleura', 'diafragma', 'nervio_frenico'], text: '¿El dolor de hombro o espalda empeora al toser, reír, estornudar o tomar una respiración profunda?', alerta: true, s1: true,
@@ -293,14 +371,14 @@ export const screening = {
     {
       id: 'h_renal', icon: '🫘', nombre: 'Renal / Urológico',
       banderasRojas: [
-        'Prueba de percusión de Murphy positiva (ángulo costovertebral)',
-        'Hematuria (sangre en orina)',
-        'Fiebre y escalofríos acompañando el dolor (pielonefritis)'
+        { texto: 'Prueba de percusión de Murphy positiva (ángulo costovertebral)', pregunta: 'h_r1' },
+        { texto: 'Hematuria (sangre en orina)', pregunta: 'h_r1' },
+        { texto: 'Fiebre y escalofríos acompañando el dolor (pielonefritis)', pregunta: 'h_r1' }
       ],
       banderasAmarillas: [
-        'Dolor de hombro que no cambia con ninguna postura ni movimiento del brazo',
-        'Cambios en el color, olor o cantidad de orina',
-        'Antecedentes de cálculos renales'
+        { texto: 'Dolor de hombro que no cambia con ninguna postura ni movimiento del brazo', pregunta: 'h_r2' },
+        { texto: 'Cambios en el color, olor o cantidad de orina', pregunta: 'h_r1' },
+        { texto: 'Antecedentes de cálculos renales', pregunta: 'h_r1' }
       ],
       preguntas: [
         { id: 'h_r1', anatomia: ['rinon', 'diafragma'], text: '¿Ha notado cambios en la orina (color rojo, marrón, turbio, olor fuerte) o tiene fiebre/escalofríos junto con el dolor?', alerta: true, s1: true,
@@ -364,13 +442,13 @@ export const screening = {
     {
       id: 'h_gine', icon: '🌸', nombre: 'Ginecológico',
       banderasRojas: [
-        'Embarazo ectópico: dolor pélvico unilateral severo con sangrado y hombro ipsilateral (signo de Kehr)',
-        'Dolor de hombro izquierdo de aparición súbita con hipotensión (rotura de trompa)',
-        'Sangrado vaginal inusual acompañando el dolor de hombro'
+        { texto: 'Embarazo ectópico: dolor pélvico unilateral severo con sangrado y hombro ipsilateral (signo de Kehr)', pregunta: 'h_g1' },
+        { texto: 'Dolor de hombro izquierdo de aparición súbita con hipotensión (rotura de trompa)', pregunta: 'h_g1' },
+        { texto: 'Sangrado vaginal inusual acompañando el dolor de hombro', pregunta: 'h_g1' }
       ],
       banderasAmarillas: [
-        'Dolor de hombro relacionado temporalmente con el ciclo menstrual',
-        'Antecedentes de enfermedad inflamatoria pélvica (EPI)'
+        { texto: 'Dolor de hombro relacionado temporalmente con el ciclo menstrual', pregunta: 'h_g2' },
+        { texto: 'Antecedentes de enfermedad inflamatoria pélvica (EPI)', pregunta: 'h_g2' }
       ],
       preguntas: [
         { id: 'h_g1', anatomia: ['diafragma', 'nervio_frenico'], text: '¿El dolor de hombro apareció de forma súbita y se acompaña de dolor pélvico, sangrado vaginal inusual o mareos intensos?', alerta: true, s1: true, urgencia: 'Sospecha de embarazo ectópico roto: derivación a urgencias hoy.',
@@ -435,14 +513,14 @@ export const screening = {
     {
       id: 'h_gi', icon: '🫃', nombre: 'GI / Hepático',
       banderasRojas: [
-        'Dolor de hombro derecho que no responde a terapia mecánica alguna',
-        'Ictericia (piel/ojos amarillentos) u orina oscura con heces claras',
-        'Rotura esplénica (signo de Kehr): dolor en hombro izquierdo por sangre intraabdominal'
+        { texto: 'Dolor de hombro derecho que no responde a terapia mecánica alguna', pregunta: ['h_gi1', 'h_gi2', 'h_gi3'] },
+        { texto: 'Ictericia (piel/ojos amarillentos) u orina oscura con heces claras', pregunta: 'h_gi2' },
+        { texto: 'Rotura esplénica (signo de Kehr): dolor en hombro izquierdo por sangre intraabdominal', pregunta: 'h_gi4' }
       ],
       banderasAmarillas: [
-        'Dolor relacionado con la ingesta de comidas grasas',
-        'Saciedad precoz, distensión o sensación de hinchazón postprandial',
-        'Uso de estatinas, AINEs crónicos o alcohol'
+        { texto: 'Dolor relacionado con la ingesta de comidas grasas', pregunta: 'h_gi1' },
+        { texto: 'Saciedad precoz, distensión o sensación de hinchazón postprandial', pregunta: 'h_gi1' },
+        { texto: 'Uso de estatinas, AINEs crónicos o alcohol', pregunta: ['h_gi1', 'h_gi2', 'h_gi3'] }
       ],
       preguntas: [
         { id: 'h_gi1', anatomia: ['vesicula_biliar', 'nervio_frenico'], text: '¿El dolor de hombro aumenta o aparece 1-2 horas después de comer, especialmente comidas grasas?', alerta: true, s1: true,
@@ -508,6 +586,16 @@ export const screening = {
             citas: [
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 95; cap. 8, pp. 306 y 315–317; cap. 18, pp. 698 y 705–709.'
             ]
+          } },
+        { id: 'h_gi4', anatomia: ['diafragma'], text: '¿Ha empezado el dolor de hombro izquierdo después de un golpe o una caída sobre el costado o el abdomen (también un golpe leve, como el del volante en un accidente), y es constante o se acompaña de mareo o sensación de desmayo?', alerta: true, urgencia: 'Posible rotura de bazo o sangrado dentro del abdomen: a urgencias hoy, sin esperar.',
+          razonamiento: {
+            porque: 'La sangre libre en el abdomen, casi siempre de un bazo roto, irrita el diafragma, y su dolor se refiere al hombro izquierdo (signo de Kehr) (Goodman). El hombro no tiene nada: por eso su movilidad es normal aunque el dolor sea constante.',
+            peso: 'Goodman pide derivación médica inmediata ante la sospecha de un sangrado retroperitoneal por un bazo dañado o roto, o con antecedente de traumatismo y signo de Kehr positivo. Con un SÍ, a urgencias hoy: el sangrado puede seguir y acabar en un colapso.',
+            detalle: 'El caso que cuenta Goodman: un futbolista de 23 años recibió un golpe en el costado y cayó sobre el lado izquierdo con otro jugador encima; se quedó «sin aire», descansó 20 minutos y terminó el partido. A la mañana siguiente despertó con un dolor intenso en el hombro izquierdo; la exploración del hombro era normal, en contraste con un dolor «constante». Le trataron el hombro y al día siguiente se desplomó en el trabajo: tenía el bazo roto. Lo que pedía derivar de inmediato: el traumatismo, el comienzo brusco, el dolor en el hombro izquierdo y que fuese constante.\n\nQué preguntar: el paciente puede no relacionar el golpe con el hombro; preguntar por un golpe en un deporte, una caída o un accidente de tráfico aunque fuese leve. El mismo dolor de hombro aparece tras una laparoscopia por el gas que queda en el abdomen, y con cualquier sangrado retroperitoneal; en una mujer en edad fértil, ver también la pregunta del embarazo ectópico.',
+            fuentes: ['Goodman 2018'],
+            citas: [
+              'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 311–312 y 325.'
+            ]
           } }
       ],
       zonasDolor: [
@@ -536,7 +624,7 @@ export const screening = {
     {
       id: 'h_trauma', icon: '🦴', nombre: 'Traumático (Fractura o Luxación)',
       banderasRojas: [
-        'Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).'
+        { texto: 'Fractura o luxación no reducida (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), tabla 2, p. 75): traumatismo previo (caída sobre el hombro o el codo), pérdida aguda de movilidad, deformidad, osteoporosis. Ayuda en consulta: test de aprensión ósea; signo de percusión olécranon-manubrio (buen valor para luxación anterior y fracturas de clavícula y húmero).', pregunta: 'h_t1' }
       ],
       banderasAmarillas: [],
       preguntas: [
@@ -568,7 +656,7 @@ export const screening = {
     {
       id: 'h_infeccion', icon: '🌡️', nombre: 'Infección / Sistémico',
       banderasRojas: [
-        'Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.'
+        { texto: 'Infección o sistémico (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): fiebre, sensación de estar enfermo, cambios en la piel (aspecto, erupciones, sudoración), hematomas inexplicados, dolor en otras partes del cuerpo. Preguntar siempre por el estado general reciente.', pregunta: 'h_i1' }
       ],
       banderasAmarillas: [],
       preguntas: [
@@ -598,7 +686,7 @@ export const screening = {
     {
       id: 'h_neuro', icon: '🧠', nombre: 'Neurológico',
       banderasRojas: [
-        'Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.'
+        { texto: 'Lesión neurológica (Lluch 2020, cap. 3.1 (Struyf), p. 54; Lluch 2020, cap. 3.1.1 (Powell y Lewis), p. 76): déficit motor o sensitivo significativo, atrofia. Exploración neurológica breve: sensibilidad, fuerza y reflejos.', pregunta: 'h_n1' }
       ],
       banderasAmarillas: [],
       preguntas: [
@@ -773,7 +861,7 @@ export const hypotheses = {
   h2: {
     id: 'h2', region: 'hombro', num: '②',
     name: 'Síndrome de Pinzamiento Subacromial (Impingement)',
-    prom: 'QuickDASH (MCID: 8.0–15.9 puntos)',
+    prom: 'DASH (MCID: 10.8 pts)',
     dosis: 'Educación individualizada y centrada en el paciente sobre su problema, las opciones para manejar el dolor, la modificación de la actividad y el automanejo (C). Tratamiento inicial: programa de ejercicio activo, de control motor o de fuerza con cargas variadas (A); la carga alta no ha demostrado ser mejor que la baja, y el ejercicio supervisado no supera al de casa. Puede añadirse terapia manual vertebral o del miembro superior (partes blandas, movilización o manipulación) para aliviar el dolor a corto plazo (B) y vendaje como complemento del ejercicio (D). No usar ultrasonido terapéutico (B; C en la tendinopatía calcificada, donde pueden usarse ondas de choque o láser, C). Adaptaciones ergonómicas si el dolor es laboral (C). La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico.',
     dosisFuente: 'Desmeules 2025, J Orthop Sports Phys Ther 55(4):235–274 (guía de práctica clínica; incluye el síndrome de dolor subacromial dentro de la tendinopatía del manguito; letra = grado de la recomendación, tal como la da la guía)',
     pronostico: {
@@ -819,7 +907,7 @@ export const hypotheses = {
   h4: {
     id: 'h4', region: 'hombro', num: '④',
     name: 'Inestabilidad Glenohumeral (Anterior o Posterior)',
-    prom: 'DASH (MCID: 10.8 pts) o QuickDASH (MCID: 8.0–15.9 pts)',
+    prom: 'DASH (MCID: 10.8 pts)',
     dosis: 'Inestabilidad anterior traumática (el consenso no trata la posterior ni la multidireccional, que quedan a criterio del clínico). Primer episodio: cabestrillo para el dolor, preferiblemente en rotación interna; movilizar pronto, dentro de la primera semana, puede dar resultados parecidos a 3 semanas de cabestrillo (C). En mayores, inmovilizar para el dolor hasta descartar lesiones asociadas (C). Rehabilitación siempre, se opere o no (D): tras la inmovilización, movilidad pasiva controlada por el dolor que progresa a activo-asistida y, cuando el dolor lo permita, fuerza periescapular y del manguito, habiendo descartado antes lesiones asociadas. Recidiva: en general se recomienda cirugía, y en deportes de contacto o colisión la rehabilitación difícilmente basta; como preparación, ejercicios pasivos y activo-asistidos en cuanto se toleren y después propiocepción y fuerza del manguito, el deltoides y los periescapulares (C); cabestrillo solo 1–2 semanas para el dolor (C). Vuelta al deporte sin cirugía cuando haya rango completo sin dolor, hombro estable con aprensión negativa y fuerza y resistencia suficientes, por lo general a las 6–16 semanas (C). El consenso no fija series ni repeticiones.',
     dosisFuente: 'Alentorn-Geli 2026, Knee Surg Sports Traumatol Arthrosc 34:3040–3051 (consenso formal de la ESSKA-ESA, parte 2: tratamiento y vuelta al deporte; letra = grado de la recomendación, tal como la da el consenso; ninguna llega a A)',
     pronostico: {
@@ -842,7 +930,7 @@ export const hypotheses = {
   h5: {
     id: 'h5', region: 'hombro', num: '⑤',
     name: 'Lesión Labral Superior (SLAP)',
-    prom: 'DASH (MCID: 10.8 pts) o QuickDASH (MCID: 8.0–15.9 pts)',
+    prom: 'DASH (MCID: 10.8 pts)',
     dosis: '',
     pronostico: {
       horizonte: 'La artro-RM es más precisa que la RM sin contraste.',
@@ -860,7 +948,7 @@ export const hypotheses = {
   h6: {
     id: 'h6', region: 'hombro', num: '⑥',
     name: 'Disfunción Cervical con Dolor Referido a Hombro',
-    prom: 'QuickDASH (MCID: 8.0–15.9 pts)',
+    prom: 'DASH (MCID: 10.8 pts)',
     dosis: 'Se trata como dolor de cuello con déficit de movilidad (la categoría de la guía que incluye el dolor referido a la cintura escapular o al miembro superior), según la fase. Aguda: manipulación torácica, ejercicios de movilidad cervical y fortalecimiento escapulotorácico y de miembro superior, que además favorecen la adherencia (B); puede añadirse manipulación o movilización cervical (C). Subaguda: ejercicios de resistencia de cuello y cintura escapular (B); manipulación torácica y manipulación o movilización cervical (C). Crónica: abordaje multimodal con manipulación torácica y manipulación o movilización cervical, ejercicio mixto cervical y escapulotorácico (neuromuscular, estiramientos, fuerza, resistencia, aeróbico y componente cognitivo-afectivo) y punción seca, láser o tracción mecánica o manual intermitente (B); ejercicio de resistencia de cuello, cintura escapular y tronco, y educación que promueva una vida activa y aborde los factores cognitivos y afectivos (C). La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico, ajustado a la irritabilidad.',
     dosisFuente: 'Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía)',
     tests: [
@@ -871,7 +959,7 @@ export const hypotheses = {
   h7: {
     id: 'h7', region: 'hombro', num: '⑦',
     name: 'Artropatía Acromioclavicular',
-    prom: 'SPADI o QuickDASH (MCID: 14.9–25.4 / 8.0–15.9 pts)',
+    prom: 'SPADI (MCID: 14.9–25.4 pts)',
     dosis: '',
     pronostico: {
       horizonte: 'Rx y RM muestran patología AC, pero muchos cambios aparecen en personas sin síntomas.',
@@ -894,7 +982,7 @@ export const hypotheses = {
   h8: {
     id: 'h8', region: 'hombro', num: '⑧',
     name: 'Discinesia Escapular',
-    prom: 'QuickDASH (MCID: 8.0–15.9 pts)',
+    prom: 'DASH (MCID: 10.8 pts)',
     dosis: '',
     tests: [
       { name: 'Observación visual de asimetría escapular (winging, tilting)', anatomia: ['escapula', 'serrato_anterior', 'trapecio'], sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Asimetría visual en la elevación del brazo: ángulo inferior, borde medial o espina escapular prominentes.', razonamiento: { detalle: 'Las medidas de la movilidad escapular son poco fiables y de validez limitada, y no deben usarse para medir objetivamente la movilidad escapular dinámica (Desmeules 2025, recomendación 6, A). La discinesia se asocia al SAPS, pero no se ha demostrado que cause el dolor (Lluch 2020). Sin S ni E.' }, fuente: 'Desmeules 2025 (J Orthop Sports Phys Ther 55(4):235–274, recomendación 6) · Lluch 2020, cap. 3.1 (Struyf), pp. 53–54', noData: true },
@@ -904,7 +992,7 @@ export const hypotheses = {
   h9: {
     id: 'h9', region: 'hombro', num: '⑨',
     name: 'Disfunción de Primera Costilla (Zona Cervicotorácica)',
-    prom: 'QuickDASH (MCID: 8.0–15.9 pts)',
+    prom: 'DASH (MCID: 10.8 pts)',
     dosis: '',
     tests: [
       { name: 'Palpación posteroanterior de 1ª costilla', anatomia: ['costillas', 'escalenos'], sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Restricción de movilidad de primera costilla a la palpación posteroanterior.', razonamiento: { detalle: 'En un Delphi de 12 expertos en terapia manual hubo consenso en que el movimiento accesorio posteroanterior doloroso y restringido de la 1.ª costilla, y su palpación dolorosa, ayudan a identificar su disfunción; es opinión de expertos y los autores piden estudiar su fiabilidad y validez. Sin S ni E.' }, fuente: 'Mastromarchi 2021 (J Man Manip Ther 29(3):181–188, Delphi, tabla 2)', noData: true },
@@ -925,7 +1013,7 @@ export const hypotheses = {
   h11: {
     id: 'h11', region: 'hombro', num: '⑪',
     name: 'Luxación Bloqueada o Fractura (→ Rx)',
-    prom: 'QuickDASH (MCID: 8.0–15.9 pts)',
+    prom: 'DASH (MCID: 10.8 pts)',
     dosis: DOSIS_DERIVAR,
     pronostico: {
       horizonte: 'Luxación bloqueada: traumatismo previo, cualquier edad, rigidez activa y pasiva similar al congelado; imagen: Rx simple. Fractura: traumatismo previo, osteoporosis; imagen: Rx, y RM si es una fractura no desplazada del troquíter.',

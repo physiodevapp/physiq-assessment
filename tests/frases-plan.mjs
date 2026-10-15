@@ -69,8 +69,8 @@ export function construirFrases(D, P) {
     const partes = Object.entries(r).map(([k, x]) => `${CUANDO[k]}, cierre \`${x.cierre}\` y casa \`${x.casa}\``);
     out.push(`- [ ] Red de seguridad de ${region}: ${partes.join('; ')}.  \n  ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)`);
   }
-  for (const [id, k] of Object.entries(D.VOLUMEN_PAUTA)) out.push(`- [ ] Con ${nombre(id)}, la cantidad de terapia manual es la de su pauta: \`TEXTOS_SESION.${k}\` (sección 6) en vez de la genérica.  \n  ↳ **decisión de diseño** (decisión 40)`);
-  for (const [id, f] of Object.entries(D.FRECUENCIA_PAUTA)) out.push(`- [ ] Con ${nombre(id)} como hipótesis por defecto, el plan del mes empieza en ${f.plan} (sección 7).  \n  ↳ **decisión de diseño** (decisión 41)`);
+  for (const [id, k] of Object.entries(D.VOLUMEN_PAUTA)) out.push(`- [ ] Con ${nombre(id)}, la cantidad de terapia manual es la de su pauta: \`TEXTOS_SESION.${k}\` (sección 6) en vez de la genérica.  \n  ↳ **decisión de diseño** (decisión 41)`);
+  for (const [id, f] of Object.entries(D.FRECUENCIA_PAUTA)) out.push(`- [ ] Con ${nombre(id)} como hipótesis por defecto, el plan del mes empieza en ${f.plan} (sección 7).  \n  ↳ **decisión de diseño** (decisión 42)`);
   for (const [id, ks] of Object.entries(D.AVISOS_HIP)) out.push(`- [ ] Avisos con ${nombre(id)}: ${ks.map(k => `\`AVISOS.${k}\``).join(', ')} (sección 5).  \n  ↳ **decisión de diseño**`);
 
   sec('3. Escalones de terapia manual');

@@ -7,6 +7,29 @@
 // ============================================================
 import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO } from './comun.js';
 
+// ── Fase 3 · ZONAS_SINTOMA.lumbar — zonas del mapa corporal para P1–P4
+// (docs/sintomas-multiples.md). Revisadas por el usuario (2026-10);
+// `id` estable: se guarda en la sesión.
+// `pasos` (Fase N, paso 3): pasos del árbol de abajo en los que el síntoma de
+// esa zona sale en el recuadro «📝 Refiere el paciente». Solo recuerda; nunca
+// contesta el paso. Revisados por el usuario (2026-10):
+//   lu_step1  ¿la pierna duele más que la espalda? → la zona lumbar, para
+//             comparar, y todo lo que baja por la pierna
+//   lu_step1c déficit en la pierna → muslo anterior (L2–L4), pierna y pie
+//   lu_step2  estenosis: dolor en glúteos y muslos → glúteo, muslos, pierna
+//   lu_step3  «sin dolor bajo la rodilla» (agudo) → pierna y pie
+//   lu_step4  facetario «sin pasar de la rodilla», sacroilíaca (glúteo) y
+//             «revisar siempre cadera» (ingle) → glúteo, ingle, pierna
+export const zonas = [
+  { id: 'lumbar',     nombre: 'Zona lumbar',                     pasos: ['lu_step1'] },
+  { id: 'gluteo',     nombre: 'Glúteo',                          pasos: ['lu_step2', 'lu_step4'] },
+  { id: 'ingle',      nombre: 'Ingle',                           pasos: ['lu_step4'] },
+  { id: 'muslo_ant',  nombre: 'Muslo anterior',                  pasos: ['lu_step1', 'lu_step1c', 'lu_step2'] },
+  { id: 'muslo_post', nombre: 'Muslo posterior o lateral',       pasos: ['lu_step1', 'lu_step2'] },
+  { id: 'pierna',     nombre: 'Pierna por debajo de la rodilla', pasos: ['lu_step1', 'lu_step1c', 'lu_step2', 'lu_step3', 'lu_step4'] },
+  { id: 'pie',        nombre: 'Pie',                             pasos: ['lu_step1', 'lu_step1c', 'lu_step3'] },
+];
+
 // ── Fase 2 · SYSTEMIC_SCREENING.lumbar
 export const screening = {
   label: 'Sacro, Sacroilíaca, Pelvis y Lumbar',
@@ -150,7 +173,7 @@ export const screening = {
           } }
       ],
       banderasAmarillas: [
-        { texto: 'Dolor lumbar constante que no varía con la postura corporal', fase1: 'br4' },
+        { texto: 'Dolor lumbar constante que no varía con la postura corporal', pregunta: 'l4', fase1: 'br4' },
         { texto: 'Fiebre y escalofríos acompañando el dolor lumbar', pregunta: 'l4' },
         { texto: 'Cambios en la orina (color, olor, cantidad)', pregunta: 'l4' }
       ],
@@ -291,9 +314,9 @@ export const screening = {
           } }
       ],
       banderasAmarillas: [
-        'Dolor de espalda y abdominal al mismo nivel (simultáneo o alterno)',
-        'Uso crónico de AINEs',
-        'Dolor modificado por ingesta o defecación'
+        { texto: 'Dolor de espalda y abdominal al mismo nivel (simultáneo o alterno)', pregunta: ['l1', 'l3'] },
+        { texto: 'Uso crónico de AINEs', pregunta: 'l_gi2' },
+        { texto: 'Dolor modificado por ingesta o defecación', pregunta: ['l1', 'l_gi2'] }
       ],
       preguntas: [
         { id: 'l1', anatomia: ['intestino_grueso'], text: '¿El dolor lumbar, sacro o pélvico se alivia o cambia después de tener una evacuación intestinal o al expulsar gases?', alerta: true, s1: true,
@@ -401,7 +424,7 @@ export const screening = {
               { texto: 'NICE NG65 — NICE, «Spondyloarthritis in over 16s: diagnosis and management» (2017), recomendaciones 1.1.2 y 1.1.5.', url: 'https://www.nice.org.uk/guidance/ng65' }
             ]
           } },
-        'Antecedente de osteoporosis o uso prolongado de corticosteroides (riesgo de fractura por insuficiencia)',
+        { texto: 'Antecedente de osteoporosis o uso prolongado de corticosteroides (riesgo de fractura por insuficiencia)', pregunta: 'l_e4' },
         { texto: 'Engrosamiento óseo palpable o deformidad (Paget)', pregunta: 'l_e5' }
       ],
       preguntas: [
@@ -671,7 +694,7 @@ export const screening = {
           } }
       ],
       banderasAmarillas: [
-        'Mayor con factores de riesgo cardiovascular (HTA, diabetes, colesterol, tabaco)'
+        { texto: 'Mayor con factores de riesgo cardiovascular (HTA, diabetes, colesterol, tabaco)', pregunta: ['l_v1', 'l_v2', 'l_v3'] }
       ],
       preguntas: [
         { id: 'l_v1', anatomia: ['arteria_femoral', 'arteria_poplitea'], text: '¿El dolor de piernas al caminar se le pasa con solo pararse de pie, sin necesidad de sentarse ni inclinarse?', alerta: true, s1: true,
@@ -754,7 +777,7 @@ export const screening = {
           } }
       ],
       banderasAmarillas: [
-        'Diabetes, corticoides prolongados u otros inmunosupresores, insuficiencia renal crónica o consumo de drogas'
+        { texto: 'Diabetes, corticoides prolongados u otros inmunosupresores, insuficiencia renal crónica o consumo de drogas', pregunta: 'l_inf1' }
       ],
       preguntas: [
         { id: 'l_inf1', anatomia: ['columna_lumbar', 'discos_intervertebrales'], text: '¿Ha tenido fiebre o alguna infección en las últimas semanas, le han operado o infiltrado la espalda hace poco, o tiene las defensas bajas (corticoides, inmunosupresores, VIH, diabetes)?', alerta: true, s1: true,

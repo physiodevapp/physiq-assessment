@@ -144,7 +144,17 @@ export { DOSIS_DERIVAR, HIP_POSQUIRURGICA } from './data/comun.js';
 // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera; no regional)
 export { TIEMPOS_TEJIDO } from './data/tejidos.js';
 
+// Calculadora de cuestionarios (📋 de la cabecera; no regional)
+export { CUESTIONARIOS, GRUPOS_CUESTIONARIO } from './data/cuestionarios.js';
+
 export const HYPOTHESES = Object.assign({}, ...Object.values(REGIONES).map(m => m.hypotheses));
+
+// Fase 3 — zonas del mapa corporal por región ([{ id, nombre }]), solo las
+// regiones que las tienen (piloto: lumbar). Sin zonas, la tarjeta «Síntomas»
+// no se pinta. Ver docs/sintomas-multiples.md.
+export const ZONAS_SINTOMA = Object.fromEntries(
+  Object.entries(REGIONES).filter(([, m]) => m.zonas).map(([r, m]) => [r, m.zonas])
+);
 
 
 export const NRS_LABELS = ['Sin dolor','Dolor muy leve','Dolor leve','Dolor leve-moderado','Dolor moderado','Dolor moderado','Dolor moderado-intenso','Dolor intenso','Dolor intenso','Dolor muy intenso','Dolor máximo'];

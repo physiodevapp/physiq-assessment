@@ -371,6 +371,67 @@ test('plan: con estado cervical real, la pauta de ce3, su red de seguridad y ce8
   state.planTratamiento = null;
 });
 
+test('plan: varios síntomas — dosifica el más irritable; a igualdad, P1; otra región y sin irritabilidad no cuentan', () => {
+  const hs = [{ id: 'x', name: 'X', pauta: 'P.', derivar: false, tratada: false }];
+  const P2 = { n: 2, z: 'Pierna por debajo de la rodilla', nr: 3, ir: 'Alta', re: 'empeora' };
+  const base = { hipotesis: hs, elegidas: ['x'], severidad: 6, zonaP1: 'Zona lumbar', irritabilidad: MATRIZ('Intermitente', 'Al final del rango', 'Alta') }; // P1 moderada
+  // Sin secundarios: P1, como siempre
+  const solo = P.construirPlan(base);
+  assert.equal(solo.dosifica.n, 1); assert.equal(solo.dosifica.varios, false);
+  assert.equal(solo.gravedad, 'moderada'); assert.equal(solo.irritabilidad, 'moderada');
+  // P2 más irritable: manda P2, con la gravedad de su NRS y la irritabilidad estimada
+  const p = P.construirPlan({ ...base, secundarios: [P2] });
+  assert.equal(p.dosifica.n, 2); assert.equal(p.dosifica.nombre, 'P2 · Pierna por debajo de la rodilla');
+  assert.equal(p.gravedadNRS, 'minima'); assert.equal(p.irritabilidad, 'alta'); assert.equal(p.irritabilidadEstimada, true);
+  assert.ok(p.avisos.includes(D.AVISOS.dosificaOtro)); assert.ok(p.avisos.includes(D.AVISOS.estimada));
+  assert.equal(p.niveles.B, 1);
+  assert.match(P.textoPlanSesion(p, {}), /Irritabilidad: Alta \(según P2 · Pierna por debajo de la rodilla, el síntoma más irritable\)/);
+  // A igualdad, P1; un secundario menos irritable tampoco cambia nada
+  for (const ir of ['Moderada', 'Baja']) {
+    const q = P.construirPlan({ ...base, secundarios: [{ ...P2, ir }] });
+    assert.equal(q.dosifica.n, 1, ir); assert.equal(q.dosifica.varios, true); assert.ok(!q.avisos.includes(D.AVISOS.dosificaOtro));
+    assert.doesNotMatch(P.textoPlanSesion(q, {}), /según P/);
+  }
+  // Entre secundarios igual de irritables, el de número más bajo
+  assert.equal(P.construirPlan({ ...base, secundarios: [P2, { ...P2, n: 3, z: 'Pie' }] }).dosifica.n, 2);
+  // Otra región o sin irritabilidad: no cuentan
+  assert.equal(P.construirPlan({ ...base, secundarios: [{ ...P2, or: true }] }).dosifica.n, 1);
+  assert.equal(P.construirPlan({ ...base, secundarios: [{ ...P2, ir: undefined }] }).dosifica.n, 1);
+  // P1 sin irritabilidad cuenta como alta: ningún secundario lo supera
+  assert.equal(P.construirPlan({ ...base, irritabilidad: {}, secundarios: [P2] }).dosifica.n, 1);
+  // Secundario sin NRS: sin gravedad calculada, el aviso de siempre
+  const sinNrs = P.construirPlan({ ...base, secundarios: [{ ...P2, nr: null }] });
+  assert.equal(sinNrs.gravedadNRS, null); assert.ok(sinNrs.avisos.includes(D.AVISOS.sinNRS));
+  // Lo elegido a mano sigue mandando
+  assert.equal(P.construirPlan({ ...base, secundarios: [P2], irritabilidadManual: 'baja' }).irritabilidad, 'baja');
+});
+
+test('plan: varios síntomas — un secundario «Independiente» avisa de un posible segundo problema, también al compartir', () => {
+  const hs = [{ id: 'x', name: 'X', pauta: 'P.', derivar: false, tratada: false }];
+  const base = { hipotesis: hs, elegidas: ['x'], severidad: 5, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true };
+  const p = P.construirPlan({ ...base, secundarios: [{ n: 2, z: 'Ingle', nr: 2, ir: 'Baja', re: 'independiente' }] });
+  const av = p.avisosHip.find(a => a.startsWith(D.AVISOS.independiente));
+  assert.equal(av, `${D.AVISOS.independiente} (P2 · Ingle)`);
+  assert.ok(P.textoPlanSesion(p, {}).includes(`⚠ ${av}`));
+  // Otra región «independiente» no (ya se dice pendiente de valorar), ni otra relación
+  assert.ok(!P.construirPlan({ ...base, secundarios: [{ n: 2, z: 'Rodilla', nr: 2, re: 'independiente', or: true }] }).avisosHip.some(a => a.startsWith(D.AVISOS.independiente)));
+  assert.ok(!P.construirPlan({ ...base, secundarios: [{ n: 2, z: 'Ingle', nr: 2, re: 'juntos' }] }).avisosHip.some(a => a.startsWith(D.AVISOS.independiente)));
+});
+
+test('plan: varios síntomas — con estado real, plan.js pasa P1 y los secundarios de la fase 3', () => {
+  const v = () => ({ zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' });
+  withState({ region: 'lumbar', activeHypotheses: ['lu3'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 6, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['lumbar'] },
+    sintomasSecundarios: [{ ...v(), zonas: ['pierna'], nrs: 8, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.nombre, 'P2 · Pierna por debajo de la rodilla');
+    assert.equal(plan.gravedadNRS, 'maxima');
+    assert.ok(plan.avisosHip.includes(`${D.AVISOS.independiente} (P2 · Pierna por debajo de la rodilla)`));
+  });
+  state.planTratamiento = null; state.sintomasSecundarios = [];
+});
+
 test('plan: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
   const MARCA = 'MARCA_PLAN_FASE6';
   withState({ region: 'lumbar', activeHypotheses: ['lu3'], planTratamiento: { hipotesis: ['lu3'], nivel: 'B', frecuencia: 'A', sesion: 'primera', gravedad: null, irritabilidad: null, notas: { sesion: MARCA, mes: MARCA, domiciliario: MARCA, parar: MARCA }, duraciones: {} } }, () => {

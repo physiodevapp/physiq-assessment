@@ -69,6 +69,9 @@ export const AVISOS = {
   vertigo: 'No usar ninguna técnica cervical que produzca mareo; probar antes con movimientos exploratorios (Maitland 2005, cap. 9, p. 224).',
   manipulacionCervical: 'Sin manipulación forzada con signos de dos raíces cervicales o signos medulares; la movilización suave sí puede ser adecuada, y los cambios neurológicos no impiden movilizar con suavidad desde el principio (Maitland 2005, cap. 9, pp. 222–223).',
   sinTerapiaManualAguda: 'En la fase aguda (menos de 1 mes) la pauta de Kuijper 2009 es sin terapia manual: ahí los escalones no se aplican. La movilización o manipulación entra en la fase crónica (Blanpied 2017, B).',
+  // Varios síntomas (Fase N, docs/sintomas-multiples.md; decisión 35)
+  dosificaOtro: 'Dosificado según el síntoma más irritable de la fase 3, no según P1 (a igualdad de irritabilidad, manda P1). La gravedad es la de su NRS.',
+  independiente: 'Un síntoma va independiente de P1: puede ser un segundo problema que este plan no trata. Valóralo aparte.',
 };
 
 // Avisos por hipótesis, por id (nunca por el nombre): claves de AVISOS.
@@ -134,10 +137,10 @@ export const PLANES_MES = {
 };
 
 // Hipótesis cuya pauta trae su propio volumen de terapia manual, por id: clave
-// de TEXTOS_SESION que sustituye a la cantidad genérica (decisión 40).
+// de TEXTOS_SESION que sustituye a la cantidad genérica (decisión 41).
 export const VOLUMEN_PAUTA = { ce13: 'cantidadReid' };
 
-// Hipótesis cuya pauta fija la frecuencia, por id (decisión 41): plan del mes
+// Hipótesis cuya pauta fija la frecuencia, por id (decisión 42): plan del mes
 // que se propone por defecto y nota que lo explica.
 export const FRECUENCIA_PAUTA = {
   ce12: {
@@ -228,6 +231,7 @@ export const TIPO_TEXTO = {
   'AVISOS.soloTerapiaManual': 'decision:20',
   'AVISOS.sinNRS': 'decision:27', 'AVISOS.difiereFase3': 'decision:25', 'AVISOS.estimada': 'decision:12',
   'AVISOS.breveSinTests': 'app', 'AVISOS.dosHipotesis': 'decision:10',
+  'AVISOS.dosificaOtro': 'decision:35', 'AVISOS.independiente': 'decision:35',
   'TEXTOS_SESION.educacionBase': 'organizacion', 'TEXTOS_SESION.domiciliario': 'organizacion',
 };
 

@@ -3,7 +3,7 @@
 // Lógica principal de la aplicación
 // ============================================================
 import { state } from './state.js';
-import { SYSTEMIC_SCREENING, HYPOTHESES, DOSIS_DERIVAR, TIEMPOS_TEJIDO, PHASE_DEFS, PHASE_NAV_IDS, NRS_LABELS, NRS_CLASSES, QUICK_PHRASES } from './data.js';
+import { SYSTEMIC_SCREENING, HYPOTHESES, DOSIS_DERIVAR, TIEMPOS_TEJIDO, ZONAS_SINTOMA, CUESTIONARIOS, GRUPOS_CUESTIONARIO, PHASE_DEFS, PHASE_NAV_IDS, NRS_LABELS, NRS_CLASSES, QUICK_PHRASES } from './data.js';
 import { initCIFTree, getDerivacionesArbol } from './phase4.js';
 import { buildHypothesisCards, teardownHypObserver, restoreHypObserver, esTratada, marcarTratada, casillaTratadaHTML, hipotesis, hipotesisActivas, sincronizarTratadas, etiquetaHipHTML, anatomiaLineaHTML, anatomiaPanelHTML } from './phase4b.js';
 import { writeSession, readSession, clearSession, updateSession } from './lib/session.js';
@@ -16,7 +16,10 @@ import { VERSION_SHA, textoVersion, esVersionNueva } from './lib/version.js';
 import { nombreRegion, regionConLado } from './lib/region.js';
 import { TEXTO_VALORACION_BREVE, textoNotas, textoInformePaciente } from './lib/resumenes.js';
 import { ramaPauta } from './lib/pauta.js';
+import { sintomaVacio, normalizarSintomas, payloadSintomas, lineaP1, lineaSecundario } from './lib/sintomas.js';
+import { pintarSintomas } from './sintomas.js';
 import { tiemposTejidoHTML, infoBarraHTML } from './lib/tejidos.js';
+import { listaCuestionariosHTML, formularioCuestionarioHTML, resultadoCuestionarioHTML, itemCuestionarioHTML, resumenCuestionarios, cuestionariosEnTexto, enlacesCalcularHTML } from './lib/cuestionarios.js';
 import { initAmpliarIA, iaParrafoHTML, ctxCribado, attrIA, DESTINOS_IA, NOTA_CUENTAS, destinoIA, guardarDestinoIA, promptPregunta, urlIA } from './ampliar-ia.js';
 
 // ─── SCROLL LOCK (dialogs / bottom sheets) ───────────────────
@@ -92,6 +95,7 @@ window.addEventListener('popstate', e => {
   if (_compartirHistorial) { cerrarMenuCompartir({ desdeHistorial: true }); return; }
   if (_preguntaHistorial) { cerrarPreguntaIA({ desdeHistorial: true }); return; }
   if (_tejidosHistorial) { cerrarTiemposTejido({ desdeHistorial: true }); return; }
+  if (_cuestHistorial) { cerrarCuestionarios({ desdeHistorial: true }); return; }
   if (_pendingBackNav) {
     // history.go() de limpieza de stack aterrizó; reemplazar y actualizar profundidad
     const { phase: p, idx: i } = _pendingBackNav;
@@ -183,7 +187,7 @@ function goToPhase(n) {
   document.getElementById(phases[idx]).classList.add('active');
   if (document.getElementById('versionAviso')) _colocarAvisoVersion();
   state.currentPhase = n;
-  if (n === 3) _pintarEstadioCronologia();
+  if (n === 3) { _pintarEstadioCronologia(); pintarSintomas(); }
   updateMobilePhaseBar(n);
   // Clean up observers when leaving phases
   if (typeof teardownHypObserver === 'function') teardownHypObserver();
@@ -298,6 +302,8 @@ function _softResetApp() {
   state.planNotes = { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' };
   state.planTratamiento = null;
   state.formularioPrevio = { comun: {}, regiones: {} };
+  state.cuestionarios = {};
+  _cuestActivo = null;
   precargarFormularioPrevio();   // refresca contadores y desplegables abiertos
   // Informe narrativo: cancela una generación en curso. El audio de la sesión
   // NO se toca aquí — _softResetApp() también corre por un reinicio llegado de
@@ -727,23 +733,31 @@ function selectPsico(btn, value) {
 
   // Will update after region is known — show generic for now
   suggest.style.display = 'block';
-  suggest.innerHTML = `Herramienta recomendada: <strong>Örebro (OMPSQ)</strong> — validada para cualquier región MSK. Si la región es lumbar, también puede usar <strong>STarT Back</strong> (desarrollada y validada principalmente para columna lumbar).`;
+  suggest.innerHTML = _herramientaPsicoHTML();
 
   altoQ.style.display = value === 'Alto' ? 'block' : 'none';
   saveSession();
 }
 
+// Riesgo psicosocial (fase 1): solo herramientas validadas en castellano de
+// España (decisión del usuario, 2026-10). STarT Back salió de la
+// recomendación lumbar: su versión de España (Gusi 2011) es solo una
+// traducción. El Örebro de 21 ítems sí (Cuesta-Vargas 2014); su forma corta
+// de 10 ítems no tiene versión española. Ver docs/cuestionarios.md.
+const TEXTO_HERRAMIENTA_PSICO = 'Herramienta recomendada: <strong>Örebro (OMPSQ, 21 ítems)</strong> — validada en castellano de España para dolor musculoesquelético de cualquier región (Cuesta-Vargas 2014).';
+const _herramientaPsicoHTML = () => TEXTO_HERRAMIENTA_PSICO + enlacesCalcular(TEXTO_HERRAMIENTA_PSICO);
+
 function updatePsicoRecomendacion() {
   const rec = document.getElementById('psicoRecomendacion');
   const { psico_miedo, psico_autoef, psico_emocional } = state;
   const tools = [];
-  if (psico_miedo === 'Sí' || psico_miedo === 'Dudoso') tools.push('FABQ (Cuestionario de Creencias de Miedo-Evitación), TSK-11 (Escala de Kinesiofobia de Tampa)');
-  if (psico_autoef === 'Sí' || psico_autoef === 'Dudoso') tools.push('PCS (Escala de Catastrofización del Dolor)');
+  if (psico_miedo === 'Sí' || psico_miedo === 'Dudoso') tools.push('FABQ (Cuestionario de Creencias de Miedo-Evitación), TSK-11 (Escala de Kinesiofobia de Tampa), PCS (Escala de Catastrofización del Dolor)');
+  if (psico_autoef === 'Sí' || psico_autoef === 'Dudoso') tools.push('CADC (Cuestionario de Autoeficacia en Dolor Crónico)');
   if (psico_emocional === 'Sí' || psico_emocional === 'Dudoso') tools.push('PHQ-2 → PHQ-9 (Cuestionario de Salud del Paciente)');
 
   if (tools.length > 0) {
     rec.style.display = 'block';
-    rec.innerHTML = `<strong>Cuestionarios unidimensionales sugeridos:</strong><br>${tools.join('<br>')}`;
+    rec.innerHTML = `<strong>Cuestionarios unidimensionales sugeridos:</strong>${tools.map(t => `<div class="psico-herr">${t}${enlacesCalcular(t)}</div>`).join('')}`;
   } else {
     rec.style.display = 'none';
   }
@@ -1014,6 +1028,8 @@ function resetPhase3UI() {
   state.irritabilidad = { dolor: 'Baja (≤3/10)', reposo: 'Ausente', movimiento: 'Al final del rango con SP', discapacidad: 'Mínima', tolerancia: 'Alta' };
   state.irritabilidadNivel = null;
   state.irritabilidadDirecta = false;
+  state.sintomaPrincipal = sintomaVacio();
+  state.sintomasSecundarios = [];
 
   // Reset option-btn selections in phase 3
   document.querySelectorAll('#phase3 .option-btn').forEach(b => b.classList.remove('selected'));
@@ -1043,6 +1059,7 @@ function resetPhase3UI() {
 
   // Recalculate irritability display
   calcIrritabilidad();
+  pintarSintomas();
 }
 
 function applyRegionChange(regionId, card) {
@@ -1207,15 +1224,11 @@ function buildSistemicoQuestions(regionId) {
     accordion.appendChild(row);
   });
 
-  // Update psico tool suggestion based on region
+  // La herramienta recomendada ya no depende de la región (sin STarT Back)
   if (state.riesgoPsico) {
     const suggest = document.getElementById('psicoToolSuggest');
     if (suggest) {
-      if (regionId === 'lumbar') {
-        suggest.innerHTML = `Herramienta recomendada para columna lumbar: <strong>STarT Back Screening Tool (SBT)</strong> — desarrollada y validada específicamente para dolor lumbar. También puede usarse <strong>Örebro (OMPSQ)</strong>.`;
-      } else {
-        suggest.innerHTML = `Herramienta recomendada para esta región: <strong>Örebro (OMPSQ)</strong> — validada para dolor musculoesquelético en general. El STarT Back fue desarrollado principalmente para columna lumbar.`;
-      }
+      suggest.innerHTML = _herramientaPsicoHTML();
     }
   }
 
@@ -2027,6 +2040,8 @@ function calcIrritabilidad() {
 }
 
 function renderIrritabResumen(nivel) {
+  // Sin nivel (p. ej., un secundario sin irritabilidad que pasa a ser P1): nada que resumir
+  if (!nivel) { document.getElementById('irritabilidadResumen').innerHTML = ''; return; }
   const { color, emoji } = { Baja: { color: 'var(--green)', emoji: '🟢' }, Moderada: { color: 'var(--orange)', emoji: '🟠' }, Alta: { color: 'var(--red)', emoji: '🔴' } }[nivel] || { color: 'var(--green)', emoji: '🟢' };
   const div = document.getElementById('irritabilidadResumen');
   div.innerHTML = `<div class="alert alert-info" style="border-color:${color}33; background:${color}11;">
@@ -2142,7 +2157,7 @@ function _hipPosqResultadosHTML(hyp, cq) {
         ${_cabeceraHipHTML(color, '', `🏥 ${_escHTML(hyp.name)}`, ETIQUETA_HIP_POSQ.replace(/^🏥\s*/, ''), 'var(--text)')}
         <div style="margin-bottom:1rem;">
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">PROM Recomendado</div>
-          <span class="prom-badge">${hyp.prom}</span>
+          <span class="prom-badge">${hyp.prom}</span>${enlacesCalcular(hyp.prom)}
         </div>
         <div>
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent2); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">🏥 Protocolo del cirujano</div>
@@ -2183,6 +2198,17 @@ function _pintarLado() {
   if (state.lado === 'Central' && !columna) state.lado = '';
   wrap.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
   _restoreOptionBtnGroup('lado', state.lado);
+}
+
+// Fase 5: P1–P4 de la tarjeta «Síntomas» (solo lo que tiene datos)
+function _sintomasResultadosHTML() {
+  const { z1, ss } = payloadSintomas(state, ZONAS_SINTOMA[state.region] || []);
+  const fila = (et, v) => `<div class="summary-row"><span class="summary-label">${et}</span><span class="summary-value">${_escapeAttr(v)}</span></div>`;
+  return (z1 ? fila(ss.length ? 'Síntoma principal (P1)' : 'Zona del dolor', lineaP1(z1)) : '')
+    + ss.map(s => fila(`P${s.n}`, lineaSecundario(s))).join('');
+}
+function _hayVariosSintomas() {
+  return payloadSintomas(state, ZONAS_SINTOMA[state.region] || []).ss.length > 0;
 }
 
 function buildResults() {
@@ -2248,12 +2274,16 @@ function buildResults() {
   <div class="summary-section">
     <div class="summary-section-title">📊 SINSS — Caracterización del Cuadro</div>
     <div class="summary-row"><span class="summary-label">Región valorada</span><span class="summary-value">${regionConLado(state.region, state.lado)}</span></div>
-    <div class="summary-row"><span class="summary-label">Severidad (EVN)</span><span class="summary-value">${state.severidad != null ? `${state.severidad}/10` : 'No registrada'}</span></div>
-    <div class="summary-row"><span class="summary-label">Irritabilidad</span><span class="summary-value">${state.irritabilidadNivel || '—'}${state.irritabilidadDirecta && state.irritabilidadNivel ? ' (estimada, sin matriz)' : ''}</span></div>
+    ${_sintomasResultadosHTML()}
+    <div class="summary-row"><span class="summary-label">Severidad (EVN)${_hayVariosSintomas() ? ' de P1' : ''}</span><span class="summary-value">${state.severidad != null ? `${state.severidad}/10` : 'No registrada'}</span></div>
+    <div class="summary-row"><span class="summary-label">Irritabilidad${_hayVariosSintomas() ? ' de P1' : ''}</span><span class="summary-value">${state.irritabilidadNivel || '—'}${state.irritabilidadDirecta && state.irritabilidadNivel ? ' (estimada, sin matriz)' : ''}</span></div>
     <div class="summary-row"><span class="summary-label">Naturaleza</span><span class="summary-value">${state.naturaleza || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Estabilidad</span><span class="summary-value">${state.estabilidad || '—'}</span></div>
     <div class="summary-row"><span class="summary-label">Signo comparable</span><span class="summary-value">${state.signoComparable || '—'}</span></div>
   </div>`;
+
+  // ── Cuestionarios puntuados en la calculadora (lo pinta _pintarCuestionariosFase5)
+  container.innerHTML += `<div class="summary-section" id="cuestFase5" hidden></div>`;
 
   // ── Hypotheses with tests
   let hypHtml = `<div class="summary-section"><div class="summary-section-title">${sinConfirmar ? '🎯 Hipótesis de Trabajo — Confirmación pendiente' : '🎯 Hipótesis Diagnósticas — Ordenadas por Peso Diagnóstico'}</div>`;
@@ -2311,7 +2341,7 @@ function buildResults() {
         </div>
         <div style="margin-bottom:1rem;">
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">PROM Recomendado</div>
-          <span class="prom-badge">${hyp.prom}</span>
+          <span class="prom-badge">${hyp.prom}</span>${enlacesCalcular(hyp.prom)}
         </div>
         <div>
           <div style="font-size:0.65rem; font-family:'DM Mono',monospace; color:var(--accent2); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">${tratada ? ETIQUETA_TRATADA : hyp.dosis === DOSIS_DERIVAR ? '🚑 Derivación' : hyp.dosisFuente ? '💊 Pauta de Tratamiento' : '💊 Dosis Día 1 (Baja Fricción)'}</div>
@@ -2381,6 +2411,7 @@ function buildResults() {
   // Wire chip sync last: every `container.innerHTML +=` above reparses and
   // recreates the whole subtree, which would drop listeners attached earlier.
   ['planVariableControl', 'planVentana', 'planAnclaje'].forEach(wireQuickInputBar);
+  _pintarCuestionariosFase5();
 
   _montarInformeIA();
 }
@@ -2897,6 +2928,7 @@ function _closeAllOverlays() {
   cerrarMenuCompartir({ sinHistorial: true });
   cerrarPreguntaIA({ sinHistorial: true });
   cerrarTiemposTejido({ sinHistorial: true });
+  cerrarCuestionarios({ sinHistorial: true });
   closePhaseSheet();
   closeSessionPanel();
   const banner = document.getElementById('confirmBanner');
@@ -3039,6 +3071,7 @@ function buildPhysiQPayload() {
     rp: state.riesgoPsico,
     nr: state.severidad ?? null,   // null = no registrado (nunca un 0 por defecto)
     ir: state.irritabilidadNivel && state.irritabilidadDirecta ? `${state.irritabilidadNivel} (estimada)` : state.irritabilidadNivel,
+    ...payloadSintomas(state, ZONAS_SINTOMA[state.region] || []),   // z1 (zona de P1), ss (P2–P4)
     na: state.naturaleza,
     si: state.sistemicoAlerta,
     br: Object.entries(state.banderasRojas).filter(([, v]) => v === 'SI').map(([k]) => BR_LABELS[k]),
@@ -3057,6 +3090,7 @@ function buildPhysiQPayload() {
         }),
     pn: state.planNotes,
     fp: resumenFormularioPrevio(),
+    ...(getCuestionariosPayload().length ? { cu: getCuestionariosPayload() } : {}),
     md: state.modo === 'breve' ? 'breve' : 'completo',
     ...(state.modo === 'breve' ? { pe: getPendientesBreve().map(p => p.texto) } : {}),
     ...(state.rom ? { rom: state.rom } : {})
@@ -3467,6 +3501,195 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && document.getElementById('tejidosOverlay')?.classList.contains('open')) cerrarTiemposTejido();
 });
 
+// ─── Calculadora de cuestionarios (cabecera, cualquier fase, también en el hub) ───
+// El paciente rellena la hoja en papel; aquí se toca el valor de cada ítem y
+// se ve la puntuación y su interpretación al momento (lib/cuestionarios.js,
+// data/cuestionarios.js). Las respuestas van en state.cuestionarios y el
+// resultado al payload (`cu`), a 📋 Notas y al informe con IA. Mismo patrón
+// que «Tiempos de recuperación»: hoja inferior con atrás en móvil, diálogo
+// centrado en ancho. Dentro, lista de cuestionarios o el de `_cuestActivo`.
+let _cuestHistorial = false;
+let _cuestActivo = null;
+
+function getCuestionariosPayload() {
+  return resumenCuestionarios(CUESTIONARIOS, state.cuestionarios || {});
+}
+
+function _defCuest(id) { return CUESTIONARIOS.find(d => d.id === id); }
+function _respuestasCuest(id) { return state.cuestionarios?.[id]?.r || {}; }
+
+function _pintarCuestionarios({ foco } = {}) {
+  const cuerpo = document.getElementById('cuestCuerpo');
+  const titulo = document.getElementById('cuestTitulo');
+  const def = _cuestActivo && _defCuest(_cuestActivo);
+  titulo.textContent = 'Cuestionarios';
+  if (def) {
+    cuerpo.innerHTML = formularioCuestionarioHTML(def, _respuestasCuest(def.id));
+  } else {
+    _cuestActivo = null;
+    cuerpo.innerHTML = listaCuestionariosHTML(CUESTIONARIOS, GRUPOS_CUESTIONARIO, state.cuestionarios || {}, { region: state.region });
+  }
+  cuerpo.scrollTop = 0;
+  if (foco) cuerpo.querySelector(foco)?.focus({ preventScroll: true });
+}
+
+// Un toque: guarda la respuesta y repinta solo ese ítem y el resultado, para
+// no perder la posición. Un segundo toque sobre la opción marcada la borra
+// (regla de la app para grupos sin valor por defecto); en `marcas`, alterna.
+function _tocarCuest(item, valorTxt) {
+  const def = _defCuest(_cuestActivo);
+  const it = def?.items.find(x => String(x.n) === item);
+  if (!it) return;
+  const tipo = it.tipo || 'escala';
+  const valor = tipo === 'sino' || valorTxt === 'na' ? valorTxt : Number(valorTxt);
+  const reg = state.cuestionarios[def.id] ||= { r: {} };
+  const actual = reg.r[it.n];
+  if (tipo === 'marcas') {
+    const lista = Array.isArray(actual) ? [...actual] : [];
+    const i = lista.indexOf(valor);
+    if (i >= 0) lista.splice(i, 1); else lista.push(valor);
+    lista.sort((a, b) => a - b);
+    if (lista.length) reg.r[it.n] = lista; else delete reg.r[it.n];
+  } else if (actual === valor) delete reg.r[it.n];
+  else reg.r[it.n] = valor;
+  if (!Object.keys(reg.r).length) delete state.cuestionarios[def.id];
+  const r = _respuestasCuest(def.id);
+  const nodo = document.querySelector(`#cuestCuerpo .cuest-item[data-item="${it.n}"]`);
+  if (nodo) {
+    nodo.outerHTML = itemCuestionarioHTML(def, it, r[it.n]);
+    document.querySelector(`#cuestCuerpo .cuest-item[data-item="${it.n}"] .cuest-op[data-valor="${valorTxt}"]`)?.focus({ preventScroll: true });
+  }
+  document.getElementById('cuestResultado').innerHTML = resultadoCuestionarioHTML(def, r);
+  const borrar = document.querySelector('#cuestCuerpo [data-cuest-borrar]');
+  if (borrar) borrar.disabled = !Object.keys(r).length;
+  saveSession();
+}
+
+// Ítems `numero` (mm de una escala visual): se guarda al teclear; vacío o
+// fuera de rango no cuenta. Solo se repinta el resultado, no el ítem, para no
+// perder el foco del campo.
+document.getElementById('cuestCuerpo')?.addEventListener('input', e => {
+  const campo = e.target instanceof HTMLInputElement && e.target.classList.contains('cuest-num') ? e.target : null;
+  const def = campo && _defCuest(_cuestActivo);
+  const n = campo?.closest('.cuest-item')?.dataset.item;
+  if (!def || !n) return;
+  const reg = state.cuestionarios[def.id] ||= { r: {} };
+  const v = campo.value === '' ? NaN : Number(campo.value);
+  if (Number.isFinite(v)) reg.r[n] = v; else delete reg.r[n];
+  if (!Object.keys(reg.r).length) delete state.cuestionarios[def.id];
+  const r = _respuestasCuest(def.id);
+  document.getElementById('cuestResultado').innerHTML = resultadoCuestionarioHTML(def, r);
+  const borrar = document.querySelector('#cuestCuerpo [data-cuest-borrar]');
+  if (borrar) borrar.disabled = !Object.keys(r).length;
+  saveSession();
+});
+document.getElementById('cuestCuerpo')?.addEventListener('click', e => {
+  const t = e.target instanceof Element ? e.target : null;
+  if (!t) return;
+  const tarjeta = t.closest('[data-cuest]');
+  if (tarjeta) { _cuestActivo = tarjeta.dataset.cuest; _pintarCuestionarios({ foco: '.cuest-volver' }); return; }
+  if (t.closest('[data-cuest-volver]')) {
+    const antes = _cuestActivo;
+    _cuestActivo = null;
+    _pintarCuestionarios({ foco: `[data-cuest="${antes}"]` });
+    return;
+  }
+  if (t.closest('[data-cuest-borrar]')) {
+    const def = _defCuest(_cuestActivo);
+    if (!def) return;
+    cerrarCuestionarios({ sinFoco: true });
+    showConfirmBanner('Borrar respuestas', `Se borrarán las respuestas del ${def.nombre}.`, 'Borrar', () => {
+      delete state.cuestionarios[def.id];
+      saveSession();
+      abrirCuestionarios(def.id);
+    }, { onCancel: () => abrirCuestionarios(def.id) });
+    return;
+  }
+  const op = t.closest('.cuest-op');
+  const item = op?.closest('.cuest-item');
+  if (op && item) _tocarCuest(item.dataset.item, op.dataset.valor);
+});
+
+function abrirCuestionarios(id) {
+  const overlay = document.getElementById('cuestOverlay');
+  if (!overlay || overlay.classList.contains('open')) return;
+  if (typeof id === 'string' && _defCuest(id)) _cuestActivo = id;
+  _pintarCuestionarios();
+  overlay.classList.add('open');
+  document.getElementById('cuestBtn')?.setAttribute('aria-expanded', 'true');
+  lockBodyScroll();
+  window.parent.postMessage({ type: 'PHYSIQ_WIDGET_HIDE' }, '*');
+  if (_esMovil()) {
+    history.pushState({ phase: state.currentPhase, cuestionarios: true }, '');
+    _cuestHistorial = true;
+  }
+  document.getElementById('cuestPanel').focus({ preventScroll: true });
+}
+
+function cerrarCuestionarios({ desdeHistorial = false, sinHistorial = false, sinFoco = false } = {}) {
+  const overlay = document.getElementById('cuestOverlay');
+  if (!overlay?.classList.contains('open')) return;
+  overlay.classList.remove('open');
+  const panel = document.getElementById('cuestPanel');
+  panel.style.transform = ''; panel.style.transition = '';
+  unlockBodyScroll();
+  window.parent.postMessage({ type: 'PHYSIQ_WIDGET_SHOW' }, '*');
+  if (_cuestHistorial) {
+    _cuestHistorial = false;
+    if (!desdeHistorial && !sinHistorial) { _popIgnorar = true; history.back(); }
+  }
+  const btn = document.getElementById('cuestBtn');
+  btn?.setAttribute('aria-expanded', 'false');
+  // Si se abrió desde un enlace «Calcular», el foco vuelve a ese enlace
+  const origen = _cuestOrigen;
+  _cuestOrigen = null;
+  // Si la fase 5 ya está pintada, su bloque de cuestionarios se pone al día,
+  // y los enlaces «Calcular» muestran lo que lleva hecho cada cuestionario
+  _pintarCuestionariosFase5();
+  _refrescarEnlacesCalcular();
+  if (!sinHistorial && !sinFoco) {
+    const vuelta = origen && [...document.querySelectorAll(`[data-cuest-abrir="${origen}"]`)].find(b => b.offsetParent);
+    (vuelta || btn)?.focus({ preventScroll: true });
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape' || !document.getElementById('cuestOverlay')?.classList.contains('open')) return;
+  if (document.getElementById('confirmBanner')) return;
+  cerrarCuestionarios();
+});
+
+// Fase 5: los cuestionarios puntuados, con un enlace para abrir la calculadora
+// Enlaces «Calcular <cuestionario>» junto a los textos que los recomiendan
+// (fase 1, badge del PROM en 4b y 5): abren la calculadora en ese
+// cuestionario y, al cerrarla, se repintan con lo que lleva hecho.
+export function enlacesCalcular(texto) {
+  return enlacesCalcularHTML(cuestionariosEnTexto(texto, CUESTIONARIOS), CUESTIONARIOS, state.cuestionarios);
+}
+let _cuestOrigen = null;
+function _refrescarEnlacesCalcular() {
+  document.querySelectorAll('.cuest-calc[data-cuest-ids]').forEach(el => {
+    el.outerHTML = enlacesCalcularHTML(el.dataset.cuestIds.split(' '), CUESTIONARIOS, state.cuestionarios);
+  });
+}
+document.addEventListener('click', e => {
+  const btn = e.target.closest?.('[data-cuest-abrir]');
+  if (!btn) return;
+  _cuestOrigen = btn.dataset.cuestAbrir;
+  abrirCuestionarios(btn.dataset.cuestAbrir);
+});
+
+function _pintarCuestionariosFase5() {
+  const caja = document.getElementById('cuestFase5');
+  if (!caja) return;
+  const lista = getCuestionariosPayload();
+  caja.hidden = !lista.length;
+  caja.innerHTML = lista.length
+    ? `<div class="summary-section-title">📑 Cuestionarios</div><ul class="cuest-f5">${lista.map(c =>
+      `<li><strong>${_escapeAttr(c.n)}</strong>: ${_escapeAttr(c.v)}${c.i ? ` — ${_escapeAttr(c.i)}` : ''}${c.a?.length ? `<div class="cuest-alerta">⚠️ ${c.a.map(_escapeAttr).join(' · ')}</div>` : ''}</li>`).join('')}</ul>`
+      + '<button type="button" class="cuest-f5-abrir" onclick="abrirCuestionarios()">Abrir la calculadora</button>'
+    : '';
+}
+
 // Aviso inferior. Estilos en styles.css (.app-toast): en móvil, banda a todo
 // el ancho justo encima de los botones de navegación fijos (--nav-alto) y, si
 // está el aviso de versión nueva, encima de este (--toast-sobre).
@@ -3557,6 +3780,29 @@ function _restoreOptionBtnGroup(groupId, val) {
   });
 }
 
+// NRS e irritabilidad de P1 desde el estado (restaurar la sesión, o cuando
+// «Hacer principal» de la tarjeta Síntomas cambia P1)
+function repintarP1Fase3() {
+  document.querySelectorAll('.nrs-btn').forEach(btn => {
+    btn.classList.toggle('selected', state.severidad !== null && parseInt(btn.textContent.trim()) === state.severidad);
+  });
+  const nrsLabel = document.getElementById('nrsLabel');
+  if (nrsLabel) nrsLabel.textContent = state.severidad !== null ? `${state.severidad}/10 — ${NRS_LABELS[state.severidad]}` : '— Sin seleccionar —';
+  document.querySelectorAll('.irritab-table .irritab-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/selectIrritab\('(\w+)',\s*this,\s*'([^']*)'\)/);
+    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
+  });
+  document.querySelectorAll('.irritab-card-btns .irritab-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/selectIrritabSync\('(\w+)',\s*this,\s*'([^']*)'\)/);
+    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
+  });
+  document.querySelectorAll('#irritabDirecta .option-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/'(\w+)'\)/);
+    btn.classList.toggle('selected', !!(state.irritabilidadDirecta && m && m[1] === state.irritabilidadNivel));
+  });
+  calcIrritabilidad();
+}
+
 function _restoreSessionDOM() {
   _pintarModoUI();
   const patientEl = document.getElementById('patientName');
@@ -3584,6 +3830,7 @@ function _restoreSessionDOM() {
   // Sesiones anteriores al posquirúrgico: sin cirugia / derivacionResuelta
   state.cirugia = { ...cirugiaVacia(), ...(state.cirugia || {}) };
   if (!state.derivacionResuelta) state.derivacionResuelta = {};
+  normalizarSintomas(state);   // sesiones anteriores a la tarjeta Síntomas
   _pintarCirugiaUI();
   _pintarLado();
 
@@ -3621,26 +3868,8 @@ function _restoreSessionDOM() {
 
   if (state.maxVisitedIdx < 2) return;
 
-  if (state.severidad !== null) {
-    document.querySelectorAll('.nrs-btn').forEach(btn => {
-      btn.classList.toggle('selected', parseInt(btn.textContent.trim()) === state.severidad);
-    });
-    const nrsLabel = document.getElementById('nrsLabel');
-    if (nrsLabel) nrsLabel.textContent = `${state.severidad}/10 — ${NRS_LABELS[state.severidad]}`;
-  }
-  document.querySelectorAll('.irritab-table .irritab-btn').forEach(btn => {
-    const m = (btn.getAttribute('onclick') || '').match(/selectIrritab\('(\w+)',\s*this,\s*'([^']*)'\)/);
-    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
-  });
-  document.querySelectorAll('.irritab-card-btns .irritab-btn').forEach(btn => {
-    const m = (btn.getAttribute('onclick') || '').match(/selectIrritabSync\('(\w+)',\s*this,\s*'([^']*)'\)/);
-    if (m) btn.classList.toggle('selected', state.irritabilidad[m[1]] === m[2]);
-  });
-  document.querySelectorAll('#irritabDirecta .option-btn').forEach(btn => {
-    const m = (btn.getAttribute('onclick') || '').match(/'(\w+)'\)/);
-    btn.classList.toggle('selected', !!(state.irritabilidadDirecta && m && m[1] === state.irritabilidadNivel));
-  });
-  calcIrritabilidad();
+  repintarP1Fase3();
+  pintarSintomas();
   ['naturaleza', 'estabilidad'].forEach(g => _restoreOptionBtnGroup(g, state[g]));
   const signoEl = document.getElementById('signoComparable');
   if (signoEl) signoEl.value = state.signoComparable || '';
@@ -3888,14 +4117,14 @@ initAmpliarIA();
 export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, getUrgenciasActivas, getCirugiaPayload, cerrarMenuCompartir, resumenFormularioIA, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML,
   precargarFormularioPrevio, nombreRegion, showToast,
-  injectQuickInputBar, lockBodyScroll, unlockBodyScroll, partirPrimeraFrase, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento };
+  injectQuickInputBar, repintarP1Fase3, lockBodyScroll, unlockBodyScroll, partirPrimeraFrase, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento };
 
 // Exposed on window for inline onclick/oninput attributes across index.html
 // and dynamically-generated HTML — those resolve only against the global
 // scope, never a module's private scope.
 Object.assign(window, {
   abrirFormularioPrevio, abrirRazonamiento, abrirRazonBandera, cerrarRazonamiento, irACronologia, appendQuickPhrase, buildResults, closePhaseSheet, closeSessionPanel, compartirNotas,
-  abrirMenuCompartir, cerrarMenuCompartir, abrirPreguntaIA, cerrarPreguntaIA, abrirTiemposTejido, cerrarTiemposTejido, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
+  abrirMenuCompartir, cerrarMenuCompartir, abrirPreguntaIA, cerrarPreguntaIA, abrirTiemposTejido, cerrarTiemposTejido, abrirCuestionarios, cerrarCuestionarios, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
   navStepClick, promptClearSession, resetApp, saveSession, scrollToActiveSisHeader, scrollToFormularioPrevio, selectIrritab,
   selectIrritabSync, selectNRS, selectOption, selectPsico, selectRegion, selectSQ, selectSistQ,
   toggleAccordionRow, toggleDictation, toggleImpact, togglePhaseSheet, toggleSessionPanel,
@@ -3971,5 +4200,7 @@ Object.assign(window, {
   if (pregunta) initSwipe(pregunta, () => cerrarPreguntaIA(), _esMovil);
   const tejidos = document.getElementById('tejidosPanel');
   if (tejidos) initSwipe(tejidos, () => cerrarTiemposTejido(), _esMovil);
+  const cuest = document.getElementById('cuestPanel');
+  if (cuest) initSwipe(cuest, () => cerrarCuestionarios(), _esMovil);
 }());
 

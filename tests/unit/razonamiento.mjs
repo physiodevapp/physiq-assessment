@@ -147,18 +147,111 @@ test('banderas: ⓘ solo cuando hay «¿Por qué?»; «· fase 1» con fase1; el
 test('banderas: lumbar, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
   const enlaces = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_'))
     .flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => typeof f !== 'string');
-  assert.equal(enlaces.filter(f => f.pregunta).length, 21);
+  assert.equal(enlaces.filter(f => f.pregunta).length, 28);
   assert.deepEqual(enlaces.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4', 'br1']);
   // Razonamiento propio: las 8 rojas sin pregunta y 2 amarillas
-  const propias = SYSTEMIC_SCREENING.lumbar.sistemas.flatMap(s => [
+  const propias = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => [
     ...s.banderasRojas.filter(f => f.razonamiento).map(f => `R ${f.texto.split(' ').slice(0, 2).join(' ')}`),
     ...s.banderasAmarillas.filter(f => f.razonamiento).map(f => `A ${f.texto.split(' ').slice(0, 2).join(' ')}`)]);
   assert.deepEqual(propias, ['R Pérdida de', 'R Fractura patológica', 'A Dolor lumbar', 'R Prueba de', 'R Masa testicular',
     'R Pérdida de', 'R Síntomas oculares', 'A Historia familiar', 'R Síndrome de', 'R Signos neurológicos']);
-  // Ninguna roja propia de lumbar sin «¿Por qué?»
+  // Ninguna bandera propia de lumbar sin «¿Por qué?» (las amarillas, enlazadas en 2026-10)
   const sinPorque = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_'))
-    .flatMap(s => s.banderasRojas).filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento));
+    .flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento));
   assert.deepEqual(sinPorque.map(textoBandera), []);
+});
+
+test('banderas: cadera, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.cadera.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 45);
+  assert.equal(banderas.filter(f => f.pregunta).length, 37);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1']);
+  // Razonamiento propio: las 5 rojas sin pregunta (el aneurisma pasó a ca_v4) y 3 amarillas; ninguna sin «¿Por qué?»
+  const propias = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Factores de', 'Tumores óseos', 'Edad >50', 'Antecedente familiar', 'Denominador común:', 'Líquido en', 'Fractura de', 'VSG como']);
+  const sinPorque = propios.flatMap(s => [...s.banderasRojas.map(f => ['R', f]), ...s.banderasAmarillas.map(f => ['A', f])])
+    .filter(([, f]) => typeof f === 'string' || (!f.pregunta && !f.razonamiento)).map(([t, f]) => `${t} ${textoBandera(f).split(' ').slice(0, 2).join(' ')}`);
+  assert.deepEqual(sinPorque, []);
+});
+
+test('banderas: cervical, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 40);
+  assert.equal(banderas.filter(f => f.pregunta).length, 36);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4']);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Síncope repentino', 'Prueba de', 'Dolor que', 'Dolor de']);   // la mielopatía, en cv_n4
+  // «Dolor que no cambia…» marca la fase 1 (br4) y lleva su propio razonamiento
+  const sinPorque = propios.flatMap(s => [...s.banderasRojas.map(f => ['R', f]), ...s.banderasAmarillas.map(f => ['A', f])])
+    .filter(([, f]) => typeof f === 'string' || (!f.pregunta && !f.razonamiento)).map(([t, f]) => `${t} ${textoBandera(f).split(' ').slice(0, 2).join(' ')}`);
+  assert.deepEqual(sinPorque, []);
+});
+
+test('banderas: hombro, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.hombro.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 41);
+  assert.equal(banderas.filter(f => f.pregunta).length, 36);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1']);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Edad >50', 'Debilidad muscular', 'Síncope repentino', 'Uso de', 'Exposición a']);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+  // El signo de Kehr por rotura de bazo y las cardiacas tienen pregunta urgente (h_gi4, h_c4)
+  const kehr = propios.find(s => s.id === 'h_gi').banderasRojas.find(f => /esplénica/.test(f.texto));
+  assert.equal(kehr.pregunta, 'h_gi4');
+});
+
+test('banderas: rodilla, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 23);
+  assert.equal(banderas.filter(f => f.pregunta).length, 21);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), []);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Calambres nocturnos', 'Dolor en']);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+});
+
+test('banderas: codo, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.codo.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 15);
+  assert.equal(banderas.filter(f => f.pregunta).length, 12);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Síntomas vasculares', 'Xantomas en', 'Tendinitis calcificante']);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+  // Xantomas y tendinitis calcificante: el mismo razonamiento que el sistema endocrino compartido (codo tiene el suyo)
+  const end = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'transversal_endocrino');
+  const codoEnd = propios.find(s => s.id === 'co_endocrino');
+  assert.equal(codoEnd.banderasRojas.find(f => /Xantomas/.test(f.texto)).razonamiento, end.banderasRojas.find(f => /Xantomas/.test(f.texto)).razonamiento);
+  assert.equal(codoEnd.banderasAmarillas.find(f => /calcificante/.test(f.texto)).razonamiento, end.banderasAmarillas.find(f => /calcificante/.test(f.texto)).razonamiento);
+});
+
+test('banderas: tobillo y pie, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.tobillo_pie.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 15);
+  assert.equal(banderas.filter(f => f.pregunta).length, 15);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+});
+
+test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const corto = f => f.texto.split(' ').slice(0, 2).join(' ');
+  const resumen = sis => [...sis.banderasRojas.map(f => ['R', f]), ...sis.banderasAmarillas.map(f => ['A', f])]
+    .map(([t, f]) => typeof f === 'string' ? `${t} ${f.split(' ').slice(0, 2).join(' ')} · —`
+      : `${t} ${corto(f)} · ${f.pregunta ? [].concat(f.pregunta).join('+') : f.razonamiento ? 'propio' : '—'}`);
+  const sis = id => SYSTEMIC_SCREENING.lumbar.sistemas.concat(SYSTEMIC_SCREENING.rodilla.sistemas).find(s => s.id === id);
+  assert.deepEqual(resumen(sis('transversal_posquirurgico')), ['R Herida más · pq_herida', 'R En las · pq_herida', 'R Pierna hinchada, · pq_tvp+pq_tvp_ms',
+    'R Falta de · pq_tep', 'R Dolor desproporcionado · pq_compart', 'R Dolor quemante, · pq_nervio', 'R Tras una · pq_nervio_col',
+    'A Dolor continuo · pq_sdrc', 'A Yeso o · pq_sdrc+pq_compart']);
+  assert.deepEqual(resumen(sis('transversal_endocrino')), ['R Síndrome del · propio', 'R Signos de · propio', 'R Confusión, letargo · propio',
+    'R Signos de · propio', 'R Xantomas: pápulas · propio', 'R Nódulos palpables · propio',
+    'A Debilidad muscular · end_1', 'A Periartritis o · propio', 'A Cambios inexplicables · end_3', 'A Polidipsia y · end_2']);
+  assert.deepEqual(resumen(sis('transversal_hematologico')), ['R Sangrado espontáneo, · hem_1', 'R Heces negras/alquitranadas · hem_4',
+    'R Episodios nuevos · hem_6', 'R Hemoptisis (toser · hem_4', 'R Fiebre alta, · hem_3+hem_5',
+    'A Palidez en · propio', 'A Uñas cóncavas · propio', 'A Disnea rápida, · hem_2', 'A Uso crónico · propio']);
 });
 
 test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar» solo con detalle', () => {
