@@ -1,6 +1,6 @@
 # Varios síntomas (P1–P4) — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2** completo: las 7 regiones tienen zonas, revisadas por el usuario (2026-10). **Paso 3** (pistas en el árbol) hecho en lumbar, pendiente de revisión; las otras 6 regiones, una por sesión. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
+Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2** completo: las 7 regiones tienen zonas, revisadas por el usuario (2026-10). **Paso 3** (pistas en el árbol) hecho en lumbar y revisado por el usuario (2026-10); las otras 6 regiones, una por sesión. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
 
 ## Decisiones tomadas (octubre 2026)
 Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
@@ -25,7 +25,7 @@ Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
 - **Un solo recuadro** con las respuestas del formulario previo ligadas al paso (primero) y los síntomas (después): el HTML del recuadro pasó de `formulario.js` a `lib/pistas.js` (`pistasHTML()`), que usan el formulario (fase 1) y `phase4.js`; `formulario.js` expone sus pistas del paso como datos (`window.fpPistasPaso`) y `phase4.js` las junta con `pistasSintomasPaso()` (`lib/sintomas.js`). Si el formulario no carga, salen solo los síntomas.
 - **Siempre al día**: el árbol se repinta entero al entrar en la fase 4, así que un cambio en la fase 3 se ve al volver.
 - **Nunca contesta el paso** (decisión 8): ni selecciona opciones ni toca `treeAnswers`; lo comprueba el smoke test.
-- **Lumbar** (pendiente de revisión): lu_step1 (¿la pierna duele más que la espalda?) → zona lumbar, para comparar, y todo lo que baja por la pierna; lu_step1c (déficit) → muslo anterior, pierna y pie; lu_step2 (estenosis, glúteos y muslos) → glúteo, muslos y pierna; lu_step3 («sin dolor bajo la rodilla») → pierna y pie; lu_step4 (facetario «sin pasar de la rodilla», sacroilíaca, «revisar siempre cadera») → glúteo, ingle y pierna. lu_step1b (centralización) no lleva: se ve explorando.
+- **Lumbar** (revisado por el usuario, 2026-10): lu_step1 (¿la pierna duele más que la espalda?) → zona lumbar, para comparar, y todo lo que baja por la pierna; lu_step1c (déficit) → muslo anterior, pierna y pie; lu_step2 (estenosis, glúteos y muslos) → glúteo, muslos y pierna; lu_step3 («sin dolor bajo la rodilla») → pierna y pie; lu_step4 (facetario «sin pasar de la rodilla», sacroilíaca, «revisar siempre cadera») → glúteo, ingle y pierna. lu_step1b (centralización) no lleva: se ve explorando.
 
 ## Por qué
 

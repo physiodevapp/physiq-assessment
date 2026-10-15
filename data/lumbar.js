@@ -12,7 +12,7 @@ import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO } from './comun.js';
 // `id` estable: se guarda en la sesión.
 // `pasos` (Fase N, paso 3): pasos del árbol de abajo en los que el síntoma de
 // esa zona sale en el recuadro «📝 Refiere el paciente». Solo recuerda; nunca
-// contesta el paso. Pendientes de revisión por el usuario:
+// contesta el paso. Revisados por el usuario (2026-10):
 //   lu_step1  ¿la pierna duele más que la espalda? → la zona lumbar, para
 //             comparar, y todo lo que baja por la pierna
 //   lu_step1c déficit en la pierna → muslo anterior (L2–L4), pierna y pie
