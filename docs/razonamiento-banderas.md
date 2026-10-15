@@ -139,7 +139,7 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
 - **Razonamiento propio (2), con Goodman 2018 leído en la sesión:** calambres nocturnos en la pantorrilla (cap. 6, p. 254: el dolor isquémico se describe como calambre sin espasmo; cap. 16, p. 624: causas de los calambres, entre ellas la oclusión arterial y la claudicación neurógena) y, en amarillas, dolor en reposo que mejora al colgar la pierna (cap. 6, pp. 228, 254 y 262: dolor isquémico en reposo de la enfermedad arterial avanzada; si empieza de golpe, tromboembolia, comunicar de inmediato). Ninguna bandera de rodilla queda sin «¿Por qué?».
 - **Huecos de seguridad:** ninguno. Las rojas que piden urgencias (TVP, artritis séptica, bursitis séptica, aparato extensor, luxación, compromiso neurovascular) ya tenían pregunta con `urgencia`.
 - **Recomendación pendiente de decisión del usuario:** pregunta urgente de isquemia aguda de la pierna, igual que `ca_v5` en cadera (Goodman cap. 6, p. 228: el dolor isquémico en reposo de comienzo brusco o el empeoramiento brusco de una claudicación pueden ser una tromboembolia y se comunican al médico de inmediato). Hoy en rodilla solo la cubre `ro_t4`, que es tras un traumatismo; la amarilla del dolor en reposo lo explica pero no enciende la alerta.
-- **Revisión clínica del usuario:** pendiente.
+- **Revisión clínica del usuario:** hecha (2026-10). La pregunta urgente de isquemia aguda sigue como recomendación, sin decidir.
 
 ## Hallazgos fuera del «¿Por qué?»
 
