@@ -1,7 +1,7 @@
 // Fase 6 «Plan de tratamiento», parte sin IA (lib/plan-tratamiento.js,
 // data/plan-tratamiento.js, plan.js; docs/plan-tratamiento.md). Se ejecuta
 // desde tests/unit.js.
-import { assert, leer, test, state, withState, buildPhysiQPayload, buildContextSummaryText, buildInformeFisioterapiaText, DOSIS_DERIVAR, HYPOTHESES } from './comun.mjs';
+import { assert, leer, test, state, withState, buildPhysiQPayload, buildContextSummaryText, buildInformeFisioterapiaText, DOSIS_DERIVAR, HYPOTHESES, SYSTEMIC_SCREENING } from './comun.mjs';
 const P = await import('../../lib/plan-tratamiento.js');
 const D = await import('../../data/plan-tratamiento.js');
 const await_posq = await import('../../lib/posquirurgico.js');
@@ -163,10 +163,10 @@ test('plan: sin pauta, «a criterio del fisioterapeuta»; sin NRS, aviso y grave
 
 test('plan: cada escalón y cada regla cita fuentes del registro; FUENTES_PLAN está registrada', () => {
   for (const k of D.FUENTES_PLAN) assert.ok(REFERENCIAS[k], `«${k}» no está en data/referencias.js`);
-  for (const [n, e] of Object.entries(D.ESCALONES)) {
+  for (const [n, e] of [...Object.entries(D.ESCALONES), ...Object.entries(D.ESCALONES_PERIFERICOS)]) {
     assert.ok(e.citas.length && e.citas.every(c => D.FUENTES_PLAN.some(k => c.startsWith(k))), `escalón ${n}`);
   }
-  for (const r of [...D.REGLAS_MES, D.REGLA_RADICULAR_SEVERA, D.PROGRESION_GENERICA]) {
+  for (const r of [...D.REGLAS_MES, ...D.REGLAS_MES_PERIFERICAS, D.REGLA_RADICULAR_SEVERA, D.PROGRESION_GENERICA, D.PROGRESION_PERIFERICA]) {
     assert.ok(D.FUENTES_PLAN.some(k => r.includes(k)), `regla sin fuente: ${r.slice(0, 50)}`);
   }
 });
@@ -241,7 +241,7 @@ test('plan: cervical — médula con ce3/ce12, arterias con cualquier hipótesis
   }
   assert.ok(!D.HIP_EXPLORACION_NEURO.includes('ce2') && D.HIP_NEURO_DESCARTADAS.ce2, 'ce2: control motor, no neurológica');
   // Sin región, o con una sin entrada, no hay red de seguridad
-  for (const region of [undefined, 'hombro']) {
+  for (const region of [undefined, 'codo']) {
     const p = P.construirPlan({ ...base, region, hipotesis: [hip('ce3')], elegidas: ['ce3'] });
     assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre], String(region));
     assert.deepEqual(p.alarmasCasa, []);
@@ -303,6 +303,103 @@ test('plan: pauta que fija la frecuencia (ce12, Kuijper 2009): plan B por defect
   withState({ region: 'cervical', activeHypotheses: ['ce12'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
     PLAN.planActual();
     assert.equal(state.planTratamiento.frecuencia, 'B');
+  });
+  state.planTratamiento = null;
+});
+
+test('plan: hombro (periférica) — escalones, cantidad, progresión y reglas de Peripheral; lumbar y cervical, igual que antes', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const plan = (region, ids) => P.construirPlan({ region, severidad: 5, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta'), hipotesis: ids.map(hip), elegidas: ids });
+  assert.equal(P.familiaRegion('hombro'), 'periferica');
+  for (const r of ['lumbar', 'cervical', undefined]) assert.equal(P.familiaRegion(r), 'columna', String(r));
+  const h = plan('hombro', ['h2']);
+  assert.equal(h.familia, 'periferica');
+  assert.equal(h.escalones.B, D.ESCALONES_PERIFERICOS[h.niveles.B]);
+  assert.equal(h.escalones.C, D.ESCALONES_PERIFERICOS[4]);
+  assert.match(D.ESCALONES_PERIFERICOS[1].texto, /accesorio en posición indolora y apoyada antes que un fisiológico/);
+  assert.deepEqual(h.sesion.cantidad, [D.TEXTOS_SESION.cantidadPeriferica]);
+  assert.deepEqual(h.mes.progresion, [D.PROGRESION_GENERICA, D.PROGRESION_PERIFERICA]);
+  assert.deepEqual(h.mes.reglas, D.REGLAS_MES_PERIFERICAS);
+  for (const frag of ['60 %', '75 %', '10–20 %', 'último 40 %']) assert.ok(D.PROGRESION_PERIFERICA.includes(frag), frag);
+  assert.ok(!D.REGLAS_MES_PERIFERICAS.some(r => /75 %|4–5 días/.test(r)), 'sin las reglas de Vertebral sin equivalente');
+  const t = P.textoPlanMes(h, {});
+  assert.ok(t.includes(D.PROGRESION_PERIFERICA) && t.includes(D.REGLAS_MES_PERIFERICAS[0]));
+  assert.ok(P.textoPlanSesion(h, {}).includes(D.ESCALONES_PERIFERICOS[h.niveles.B].texto));
+  for (const [region, id] of [['lumbar', 'lu1'], ['cervical', 'ce1']]) {
+    const c = plan(region, [id]);
+    assert.equal(c.familia, 'columna', region);
+    assert.equal(c.escalones.B, D.ESCALONES[c.niveles.B], region);
+    assert.deepEqual(c.sesion.cantidad, [D.TEXTOS_SESION.cantidad], region);
+    assert.deepEqual(c.mes.progresion, [D.PROGRESION_GENERICA], region);
+    assert.deepEqual(c.mes.reglas, D.REGLAS_MES, region);
+  }
+  assert.ok(D.REGIONES_PLAN.includes('hombro'));
+  assert.ok(REFERENCIAS['Hengeveld y Banks 2005'] && D.FUENTES_PLAN.includes('Hengeveld y Banks 2005'));
+});
+
+test('plan: hombro — h6 como columna con la red arterial de cervical; con una hipótesis del hombro, aviso de dos familias', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const plan = ids => P.construirPlan({ region: 'hombro', severidad: 5, hipotesis: ids.map(hip), elegidas: ids });
+  const h6 = plan(['h6']);
+  assert.equal(h6.familia, 'columna');
+  assert.equal(h6.escalones.B, D.ESCALONES[h6.niveles.B]);
+  assert.deepEqual(h6.sesion.cantidad, [D.TEXTOS_SESION.cantidad]);
+  assert.deepEqual(h6.sesion.cierre, [D.TEXTOS_SESION.cierre, D.TEXTOS_SESION.cierreCardiaco, D.TEXTOS_SESION.cierreArterial]);
+  assert.deepEqual(h6.alarmasCasa, [D.TEXTOS_CASA.alarmaCardiaca.texto, D.TEXTOS_CASA.alarmaArterial.texto]);
+  assert.ok(!h6.avisosHip.includes(D.AVISOS.manipulacionCervical) && !h6.alarmasCasa.includes(D.TEXTOS_CASA.alarmaMedula.texto), 'h6 no es radicular');
+  assert.ok(!h6.avisosHip.includes(D.AVISOS.dosFamilias));
+  assert.match(HYPOTHESES.h6.dosis, /manipulación o movilización cervical/, 'la red arterial se justifica por la terapia manual cervical de su pauta');
+  const mixto = plan(['h2', 'h6']);
+  assert.equal(mixto.familia, 'periferica', 'manda la principal');
+  assert.ok(mixto.avisosHip.includes(D.AVISOS.dosFamilias));
+  assert.deepEqual(mixto.sesion.cantidad, [D.TEXTOS_SESION.cantidadPeriferica, D.TEXTOS_SESION.cantidad]);
+  assert.deepEqual(mixto.mes.progresion, [D.PROGRESION_GENERICA, D.PROGRESION_PERIFERICA]);
+  assert.equal(plan(['h6', 'h2']).familia, 'columna');
+  // La red de una región nunca sale repetida aunque la traiga también la hipótesis
+  const cerv = P.redSeguridad('cervical', false, [hip('h6')]);
+  assert.deepEqual(cerv.cierre, [D.TEXTOS_SESION.cierreArterial]);
+  for (const [id, x] of Object.entries(D.RED_HIP)) {
+    assert.ok(HYPOTHESES[id], id);
+    assert.equal(typeof D.TEXTOS_SESION[x.cierre], 'string');
+    assert.equal(typeof D.TEXTOS_CASA[x.casa]?.texto, 'string');
+  }
+  for (const [id, f] of Object.entries(D.FAMILIA_HIP)) { assert.ok(HYPOTHESES[id], id); assert.ok(['columna', 'periferica'].includes(f)); }
+});
+
+test('plan: hombro — red cardiaca siempre (h_c4); avisos de capsulitis (h1), artrosis (h10) y, con cirugía, prótesis', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const plan = (ids, extra = {}) => P.construirPlan({ region: 'hombro', severidad: 5, hipotesis: ids.map(hip), elegidas: ids, ...extra });
+  const h2 = plan(['h2']);
+  assert.deepEqual(h2.sesion.cierre, [D.TEXTOS_SESION.cierre, D.TEXTOS_SESION.cierreCardiaco]);
+  assert.ok(P.textoDomiciliario(h2, {}, { ejercicios: 'X', parar: 'Y' }).trimEnd().endsWith(D.TEXTOS_CASA.alarmaCardiaca.texto));
+  assert.ok(!h2.alarmasCasa.some(a => /ectópico|bazo|ano/.test(a)));
+  // Los síntomas de la red son los de la pregunta urgente h_c4
+  const hc4 = JSON.stringify(SYSTEMIC_SCREENING.hombro).includes('"id":"h_c4"');
+  assert.ok(hc4, 'h_c4 existe en el cribado de hombro');
+  for (const frag of ['20 minutos', 'sudor frío', 'náuseas', 'falta de aire', '112']) assert.ok(D.TEXTOS_CASA.alarmaCardiaca.texto.includes(frag), frag);
+  assert.ok(plan(['h1']).avisosHip.includes(D.AVISOS.capsulitisPrecoz));
+  assert.match(HYPOTHESES.h1.dosis, /no considera eficaz la terapia manual en la fase precoz dolorosa \(93 %\)/);
+  assert.ok(plan(['h10']).avisosHip.includes(D.AVISOS.artrosis));
+  assert.ok(!h2.avisosHip.some(a => a === D.AVISOS.capsulitisPrecoz || a === D.AVISOS.artrosis || a === D.AVISOS.protesis));
+  const posq = plan(['h2'], { posq: { conProtocolo: true } });
+  assert.ok(posq.avisosHip.includes(D.AVISOS.protesis));
+  assert.ok(!P.construirPlan({ region: 'lumbar', severidad: 5, hipotesis: [hip('lu1')], elegidas: ['lu1'], posq: { conProtocolo: true } }).avisosHip.includes(D.AVISOS.protesis), 'la de prótesis es de periféricas');
+  // Ninguna pauta de hombro fija volumen ni frecuencia; sin hipótesis neurológicas
+  for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'hombro')) {
+    assert.ok(!D.VOLUMEN_PAUTA[id] && !D.FRECUENCIA_PAUTA[id], id);
+    assert.ok(!D.HIP_EXPLORACION_NEURO.includes(id), id);
+  }
+});
+
+test('plan: con estado de hombro real, la pauta de h1, sus avisos, la red cardiaca y h11 («Derivar») no elegible', () => {
+  withState({ region: 'hombro', activeHypotheses: ['h1', 'h11'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    const { plan, hs } = PLAN.planActual();
+    assert.deepEqual(state.planTratamiento.hipotesis, ['h1']);
+    assert.equal(plan.sesion.intervencion[0].pauta, HYPOTHESES.h1.dosis);
+    assert.equal(P.elegible(hs.find(h => h.id === 'h11')).ok, false);
+    assert.equal(plan.familia, 'periferica');
+    assert.deepEqual(plan.alarmasCasa, [D.TEXTOS_CASA.alarmaCardiaca.texto]);
+    assert.ok(plan.avisosHip.includes(D.AVISOS.capsulitisPrecoz));
   });
   state.planTratamiento = null;
 });
