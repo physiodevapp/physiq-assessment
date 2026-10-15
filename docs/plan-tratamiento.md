@@ -235,7 +235,7 @@ Caps. 5 «Principles of assessment» (pp. 89–124), 6 «Principles of examinati
 7. **Dolor radicular agudo**: los cambios medibles pueden tardar 10–14 días (cap. 5, p. 100); *Vertebral* da 7–10 días (cap. 9, p. 217). Para columna se mantiene *Vertebral*.
 8. **Red de seguridad**: estos capítulos no dan una propia; el cap. 10 recoge rasgos de dolor sistémico frente a musculoesquelético (recuadro 10.5, p. 271, tomado de Goodman y Snyder 1995) y remite al cribado. Cada región periférica necesitará la suya, desde sus preguntas de la fase 2.
 
-### Decisiones 42–48 (L3 periféricas, propuestas, pendientes de revisión del usuario)
+### Decisiones 42–48 (L3 periféricas, usuario, 2026-10; aceptadas como se propusieron)
 42. **Los escalones A/B/C valen para las periféricas** con la misma tabla de gravedad × irritabilidad (Petersen 2021) y los mismos cuatro escalones: *Peripheral* coincide con *Vertebral* en la definición de irritabilidad, los grados y los dos modos. En las regiones periféricas, cada escalón cita *Peripheral* en lugar de *Vertebral*, y el 1 añade «un accesorio en posición indolora y apoyada antes que un fisiológico» (cap. 7, p. 176; cap. 8, p. 192).
 43. **Cantidad por sesión por familia de regiones**: la de *Vertebral* en columna y la de *Peripheral* en periféricas (punto 1 de arriba). Las pautas con volumen propio (`VOLUMEN_PAUTA`) siguen mandando sobre las dos.
 44. **Umbrales de progresión en periféricas** (punto 2): se añaden a la progresión genérica (no la sustituyen) y valen para la terapia manual; para el ejercicio sigue mandando la pauta.
