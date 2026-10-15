@@ -293,3 +293,17 @@ test('síntomas: la tarjeta y el módulo existen y van en el despliegue', () => 
 
 // Que state quede como lo dejó el test (los siguientes temas parten de withState)
 state.sintomasSecundarios = [];
+
+// Una sola X en la app: el icono SVG .icono-x, nunca los caracteres × o ✕
+// como contenido de un botón (cada uno con su grosor y alineación)
+test('interfaz: los botones de cerrar y quitar usan el icono .icono-x', () => {
+  for (const f of ['index.html', 'app.js', 'sintomas.js', 'phase4.js', 'phase4b.js', 'informe-ia.js', 'plan.js', 'grabadora.js']) {
+    const t = leer(f);
+    assert(!/>\s*[×✕✖]\s*<\/button>/.test(t), `${f}: botón con «×»/«✕» de texto`);
+  }
+  for (const [f, id] of [['index.html', 'razonCerrar'], ['index.html', 'hideTranslateBanner'], ['app.js', 'versionAvisoCerrar'], ['sintomas.js', 'sint-quitar']]) {
+    const t = leer(f);
+    const i = t.indexOf(id);
+    assert(i >= 0 && /class="icono-x"/.test(t.slice(i, t.indexOf('</button>', i))), `${f}: ${id} sin .icono-x`);
+  }
+});
