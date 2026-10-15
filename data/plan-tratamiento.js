@@ -330,7 +330,7 @@ export const HOJA_REGISTRO = [
   'Refiere el paciente: lo primero, su opinión sobre la sesión anterior, en sus palabras y comparada con antes',
   'Signos: cambios en los signos marcados, también comparados con antes',
   'Plan: técnica elegida y por qué',
-  'Tratamiento: posición del paciente y de la articulación, técnica (con su inclinación), grado, ritmo, duración (repeticiones o tiempo) y respuesta mientras se aplica',
+  'Tratamiento: posición del paciente y de la articulación, técnica (con su inclinación), nivel en la columna, grado, ritmo, duración (repeticiones o tiempo) y respuesta mientras se aplica',
   'Después: lo que refiere el paciente y los signos',
   'Indicaciones dadas: información, ejercicios y avisos',
   'Para la siguiente sesión: qué cambiar y por qué',

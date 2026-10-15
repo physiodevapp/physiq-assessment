@@ -308,7 +308,7 @@ Fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9
   ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
 - [ ] «Plan: técnica elegida y por qué»  
   ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
-- [ ] «Tratamiento: posición del paciente y de la articulación, técnica (con su inclinación), grado, ritmo, duración (repeticiones o tiempo) y respuesta mientras se aplica»  
+- [ ] «Tratamiento: posición del paciente y de la articulación, técnica (con su inclinación), nivel en la columna, grado, ritmo, duración (repeticiones o tiempo) y respuesta mientras se aplica»  
   ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
 - [ ] «Después: lo que refiere el paciente y los signos»  
   ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
