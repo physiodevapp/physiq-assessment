@@ -3092,6 +3092,90 @@ async function checkFase6Rodilla(browser, errors) {
   return r;
 }
 
+async function checkFase6Cadera(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 6 cadera): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 cadera): ${msg.text()}`); });
+  await page.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json', body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo' }, demoOnly: false }),
+  }));
+  await abrirApp(page);
+  const r = {};
+  await walkRegion(page, 'cadera');
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.plan = await page.evaluate(() => state.currentPhase === 6 && !document.querySelector('#planContenido .alert-info')
+    && document.querySelectorAll('#planContenido .card').length === 5
+    && state.planTratamiento.hipotesis.join() === 'ca10' && state.planTratamiento.frecuencia === 'A');
+  const { D } = await page.evaluate(async () => ({ D: JSON.parse(JSON.stringify(await import('./data/plan-tratamiento.js'))) }));
+  const RED = [D.TEXTOS_CASA.alarmaFracturaEstres, D.TEXTOS_CASA.alarmaInfeccionCadera, D.TEXTOS_CASA.alarmaTVP].map(a => a.texto);
+  // ca10 (sacroilíaca), por defecto: familia columna y la red de cadera
+  const t10 = await page.textContent('#planContenido');
+  r.ca10 = t10.includes(D.TEXTOS_SESION.cantidad) && !t10.includes(D.TEXTOS_SESION.cantidadPeriferica) && t10.includes(D.REGLAS_MES[2])
+    && Object.values(D.ESCALONES).some(e => t10.includes(e.texto))
+    && t10.includes(D.TEXTOS_SESION.cierreFracturaEstres) && t10.includes(D.TEXTOS_SESION.cierreInfeccionCadera) && t10.includes(D.TEXTOS_SESION.cierreTVP);
+  const casa = async () => {
+    await page.fill('#planNotasCasa', 'Puente glúteo a dos piernas');
+    await page.fill('#planParar', 'Si el dolor pasa de 5/10 o sigue a la mañana siguiente');
+    await page.click('#btnCompartirPlan');
+    await page.click('#compartirOpciones .compartir-op >> nth=2');
+    await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+    return page.evaluate(() => navigator.clipboard.readText());
+  };
+  const elegir = ids => page.evaluate(ids => {
+    for (const id of ids) if (!state.activeHypotheses.includes(id)) state.activeHypotheses.push(id);
+    state.planTratamiento.hipotesis = ids; goToPhase(5); goToPhase(6);
+  }, ids).then(() => page.waitForSelector('#planContenido .card')).then(() => page.textContent('#planContenido'));
+  const t1 = await elegir(['ca1']);
+  r.ca1 = t1.includes(D.AVISOS.artrosisCadera) && !t1.includes(D.AVISOS.artrosis) && !t1.includes(D.AVISOS.artrosisRodilla)
+    && t1.includes(D.TEXTOS_SESION.cantidadPeriferica) && !t1.includes(D.TEXTOS_SESION.cantidad)
+    && t1.includes(D.PROGRESION_PERIFERICA) && t1.includes(D.REGLAS_MES_PERIFERICAS[0]) && !t1.includes(D.REGLAS_MES[2])
+    && Object.values(D.ESCALONES_PERIFERICOS).some(e => t1.includes(e.texto)) && !Object.values(D.ESCALONES).some(e => t1.includes(e.texto))
+    && t1.includes(D.FRECUENCIA_PAUTA.ca1.nota)
+    && !t1.includes(D.TEXTOS_SESION.cierreInfeccionRodilla) && !t1.includes(D.TEXTOS_SESION.cierreInfeccion) && !t1.includes(D.TEXTOS_SESION.cierreCardiaco) && !t1.includes(D.TEXTOS_SESION.cierreArterial) && !t1.includes(D.TEXTOS_SESION.cierreNeuro);
+  const c1 = await casa();
+  r.casaCa1 = c1.trimEnd().endsWith(RED.join('\n\n'))
+    && ![D.TEXTOS_CASA.alarmaInfeccionRodilla, D.TEXTOS_CASA.alarmaInfeccion, D.TEXTOS_CASA.alarmaCardiaca, D.TEXTOS_CASA.alarmaArterial, D.TEXTOS_CASA.alarmaNeuro, D.TEXTOS_CASA.alarmaMedula].some(a => c1.includes(a.texto));
+  // Varios síntomas (Fase N, paso 4) en cadera
+  await page.evaluate(() => {
+    state.sintomaPrincipal.zonas = ['cadera_lat'];
+    state.sintomasSecundarios = [{ zonas: ['muslo_ant'], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }];
+    planElegir('sesion', 'primera');
+  });
+  await page.waitForSelector('#planDosifica');
+  r.dosificaP2 = await page.evaluate(() => {
+    const t = document.getElementById('planContenido').textContent;
+    return document.getElementById('planDosifica').textContent.includes('P2 · Muslo anterior, el síntoma más irritable')
+      && t.includes('NRS 9/10') && t.includes('Un síntoma va independiente de P1') && t.includes('(P2 · Muslo anterior)');
+  });
+  await page.evaluate(() => { state.sintomasSecundarios = []; state.sintomaPrincipal.zonas = []; planElegir('sesion', 'primera'); });
+  await page.waitForFunction(() => !document.getElementById('planDosifica'));
+  r.ca2 = (await elegir(['ca2'])).includes(D.AVISOS.pinzamientoCadera);
+  const t4 = await elegir(['ca4']);
+  r.ca4 = t4.includes(D.AVISOS.tendinopatiaGlutea) && t4.includes(D.FRECUENCIA_PAUTA.ca4.nota);
+  const t11 = await elegir(['ca11']);
+  r.ca11 = t11.includes(D.AVISOS.ingleAguda) && t11.includes(D.AVISOS.ingleDeportiva) && t11.includes(D.FRECUENCIA_PAUTA.ca11.nota);
+  r.ca12 = (await elegir(['ca12'])).includes(D.AVISOS.inestabilidadCadera);
+  const t16 = await elegir(['ca16']);
+  r.ca16 = t16.includes(D.AVISOS.cargaCadera) && t16.includes(D.AVISOS.ingleDeportiva) && t16.includes(D.FRECUENCIA_PAUTA.ca16.nota);
+  r.ca15 = (await elegir(['ca15'])).includes(D.AVISOS.sensibilizacionCentral);
+  for (const [id, k] of [['ca7', 'gluteoProfundo'], ['ca14', 'nervioCadera']]) {
+    const t = await elegir([id]);
+    r[id] = t.includes(D.AVISOS[k]) && t.includes(D.TEXTOS_SESION.reevaluacionNervio) && !t.includes(D.TEXTOS_SESION.reevaluacionRadicular)
+      && !t.includes(D.TEXTOS_SESION.cierreNeuro) && !t.includes(D.TEXTOS_SESION.cierreMedula) && t.includes('Pauta a criterio del fisioterapeuta');
+  }
+  // Con mecanismo Post-quirúrgico, el aviso condicional de prótesis y el de cadera
+  await page.evaluate(() => { state.mecanismo = 'Post-quirúrgico'; });
+  const tp = await elegir(['ca1']);
+  r.posq = tp.includes(D.AVISOS.protesis) && tp.includes(D.AVISOS.posqCadera) && !tp.includes(D.AVISOS.posqRodilla);
+  r.ok = Object.values(r).every(v => v === true);
+  await context.close();
+  return r;
+}
+
 // Fase 6 «Plan de tratamiento» (opcional; docs/plan-tratamiento.md): lumbar
 // por la interfaz real hasta la 5 y de ahí a la 6 con «Plan de tratamiento →».
 // Escritorio: paso 6 en la barra, hipótesis por defecto, gravedad e
@@ -3216,7 +3300,7 @@ async function checkFase6(browser, errors) {
   await page.click('#planContenido .plan-enlace');
   r.enlaceNRS = await page.waitForFunction(() => state.currentPhase === 3, null, { timeout: 4000 }).then(() => true).catch(() => false);
   // Otra región: aviso de piloto
-  r.piloto = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = 'cadera'; goToPhase(5); goToPhase(6); return true; })
+  r.piloto = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = 'tobillo_pie'; goToPhase(5); goToPhase(6); return true; })
     && await page.waitForFunction(() => document.querySelector('#planContenido .alert-info')?.textContent.includes('piloto'), null, { timeout: 4000 }).then(() => true).catch(() => false);
   await page.evaluate(() => { state.region = 'lumbar'; goToPhase(5); goToPhase(6); });
   await page.waitForSelector('#planContenido .card');
@@ -3640,6 +3724,12 @@ const SECCIONES = [
   { id: 'fase6-rodilla', titulo: 'Fase 6: plan de tratamiento en rodilla (L3, tercera periférica):', run: async ({ browser, errors }) => {
     const r = await checkFase6Rodilla(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} rodilla por la interfaz real hasta la 6 (por el camino de la primera opción, ro11, «Derivar», no elegible, y ro4 por defecto con el plan A); con ro1, escalones, cantidad, progresión y reglas de Peripheral, su aviso de artrosis (no el glenohumeral), y el programa para casa termina con la red de infección y la de TVP (ni la de codo, ni cardiaca, ni arterial, ni neurológica); con varios síntomas dosifica el más irritable (P2 · Pierna) y avisa del independiente; con ro2, la rama traumática de su pauta y su aviso; con ro3, ro5, ro12 y ro18, sus avisos; con ro8, ligamento y esguince, y con ro4 sin esguince; con ro15, su aviso y la nota de frecuencia; con ro19, exploración del nervio sin red neurológica y pauta a criterio del fisio; con cirugía, el de prótesis y el de rodilla${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'fase6-cadera', titulo: 'Fase 6: plan de tratamiento en cadera (L3, cuarta periférica):', run: async ({ browser, errors }) => {
+    const r = await checkFase6Cadera(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} cadera por la interfaz real hasta la 6 (por el camino de la primera opción, ca10 por defecto, con la familia columna y el plan A); con ca1, escalones, cantidad, progresión y reglas de Peripheral, su aviso de artrosis (ni el glenohumeral ni el de rodilla), su nota de frecuencia, y el programa para casa termina con la red de fractura de estrés, la de infección y la de TVP (ni la de rodilla, ni la de codo, ni cardiaca, ni arterial, ni neurológica); con varios síntomas dosifica el más irritable (P2 · Muslo anterior) y avisa del independiente; con ca2, ca12 y ca15, sus avisos; con ca4, ca11 y ca16, sus avisos y su nota de frecuencia; con ca7 y ca14, exploración del nervio sin red neurológica y pauta a criterio del fisio; con cirugía, el de prótesis y el de cadera${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
