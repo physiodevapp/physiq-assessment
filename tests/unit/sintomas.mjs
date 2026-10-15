@@ -6,6 +6,7 @@ const S = await import('../../lib/sintomas.js');
 const { ZONAS_SINTOMA, CIF_TREES } = await import('../../data.js');
 const IN = await import('../../lib/informe-narrativo.js');
 const RI = await import('../../lib/revision-informe.js');
+const PI = await import('../../lib/pistas.js');
 
 const vacio = S.sintomaVacio;
 const P1 = { ...vacio(), zonas: ['lumbar', 'gluteo'], profundidad: 'Profunda', patron: 'Constante', descripcion: 'sordo' };
@@ -172,11 +173,51 @@ test('síntomas: tobillo y pie — zonas en payload y 📋 Notas', () => {
   });
 });
 
+test('síntomas: los `pasos` de cada zona existen en el árbol de su región, sin repetir', () => {
+  for (const [r, zonas] of Object.entries(ZONAS_SINTOMA)) {
+    const ids = new Set(CIF_TREES[r].steps.map(st => st.id));
+    zonas.forEach(z => {
+      if (z.pasos === undefined) return;
+      assert.ok(Array.isArray(z.pasos) && z.pasos.length, `${r}.${z.id}: pasos vacío`);
+      assert.equal(new Set(z.pasos).size, z.pasos.length, `${r}.${z.id}: pasos repetidos`);
+      z.pasos.forEach(p => assert.ok(ids.has(p), `${r}.${z.id}: paso inexistente ${p}`));
+    });
+  }
+  assert.ok(ZONAS_SINTOMA.lumbar.every(z => z.pasos?.length), 'lumbar: todas las zonas con pasos');
+});
+
+test('síntomas: pistas en el árbol — solo los síntomas con una zona ligada al paso; otra región nunca', () => {
+  const st = { region: 'lumbar', severidad: 7, sintomaPrincipal: P1, sintomasSecundarios: [{ ...vacio() }, P2, { ...OTRA, zonas: ['pierna'] }] };
+  const z = ZONAS_SINTOMA.lumbar;
+  // lu_step1: P1 (zona lumbar) y P2 (pierna); el secundario vacío no cuenta para numerar
+  assert.deepEqual(S.pistasSintomasPaso(st, z, 'lu_step1'), [
+    { q: 'Síntoma P1 (principal):', a: 'Zona lumbar, glúteo · profunda · constante · «sordo» · NRS 7/10' },
+    { q: 'Síntoma P2:', a: 'Pierna por debajo de la rodilla · lado derecho · NRS 3/10 · irritabilidad baja · intermitente · solo cuando empeora P1' },
+  ]);
+  // lu_step3: solo P2 (pierna); P1 no baja de la rodilla
+  assert.deepEqual(S.pistasSintomasPaso(st, z, 'lu_step3').map(x => x.q), ['Síntoma P2:']);
+  // lu_step1b: ninguna zona ligada
+  assert.deepEqual(S.pistasSintomasPaso(st, z, 'lu_step1b'), []);
+  // P1 sin NRS: sin «NRS»
+  assert.doesNotMatch(S.pistasSintomasPaso({ ...st, severidad: null }, z, 'lu_step1')[0].a, /NRS/);
+  // sin zonas en la región, nada
+  assert.deepEqual(S.pistasSintomasPaso(st, [], 'lu_step1'), []);
+});
+
+test('síntomas: pistas en el árbol — el recuadro «📝» las pinta escapadas (el paso real, en el smoke test)', () => {
+  assert.equal(PI.pistasHTML([]), '');
+  const html = PI.pistasHTML([{ q: 'Síntoma P2:', a: 'Pie · «<b>»' }]);
+  assert.match(html, /📝 Refiere el paciente/);
+  assert.match(html, /&lt;b&gt;/);
+  assert.match(leer('phase4.js'), /pistasSintomasPaso\(state, ZONAS_SINTOMA\[state\.region\]/);
+});
+
 test('síntomas: la tarjeta y el módulo existen y van en el despliegue', () => {
   assert.match(leer('index.html'), /id="cardSintomas" hidden/);
   const dep = leer('.github/workflows/deploy-to-hub.yml');
   assert.match(dep, / sintomas\.js /);
   assert.match(dep, /lib\/sintomas\.js/);
+  assert.match(dep, /lib\/pistas\.js/);
 });
 
 // Que state quede como lo dejó el test (los siguientes temas parten de withState)
