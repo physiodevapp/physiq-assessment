@@ -228,7 +228,7 @@ test('VISA-P: ítems 2–6 puntúan 10 − lo marcado; total 0–100', () => {
   assert.equal(L.rangoPuntuacion(d, d.items.map(it => it.n))[1], 100);
 });
 
-test('ODI: porcentaje sobre los ítems contestados y bandas de Fairbank', () => {
+test('ODI: porcentaje sobre los ítems contestados y bandas de la versión española', () => {
   const d = def('odi');
   assert.equal(L.puntuar(d, todosN('odi', 2)).total, 40);
   assert.equal(L.puntuar(d, todosN('odi', 2)).interpretacion.etiqueta, 'Limitación funcional moderada');
@@ -394,7 +394,7 @@ test('PCS: 0–52 con rumiación 8–11, magnificación 6, 7, 13 y desesperanza 
   assert.equal(con({ 1: 4, 2: 4 }).interpretacion.nivel, 'alto');
 });
 
-test('CAIT: máximos suman 30, mínimos 0; cortes 24 y 27', () => {
+test('CAIT: máximos suman 30, mínimos 0; cortes < 24 y ≤ 27', () => {
   const d = def('cait');
   const max = Object.fromEntries(d.items.map(it => [it.n, 0]));
   assert.equal(L.puntuar(d, max).total, 30);
@@ -404,7 +404,8 @@ test('CAIT: máximos suman 30, mínimos 0; cortes 24 y 27', () => {
   assert.equal(con(30), 'Sin inestabilidad');
   assert.match(con(27), /^Zona dudosa/);
   assert.match(con(25), /^Zona dudosa/);
-  assert.match(con(24), /^Compatible/);
+  assert.match(con(24), /^Zona dudosa/);   // IAC: «< 24» (Gribble 2014)
+  assert.match(con(23), /^Compatible/);
 });
 
 test('VISA-A: 0–100; ítem 1 por minutos y ramas 8A/8B/8C con sus puntos', () => {
