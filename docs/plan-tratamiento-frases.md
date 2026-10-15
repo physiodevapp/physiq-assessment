@@ -315,7 +315,7 @@ Regiones periféricas:
   ↳ describe la app (no afirma nada clínico)
 - [ ] «Un escalón por encima de B»  
   ↳ describe la app (no afirma nada clínico)
-- [ ] «A coincide con B: ya es el escalón más suave.»  
+- [ ] «Una sola propuesta: B es la que se ajusta a esta gravedad e irritabilidad, y ya es el escalón más suave. A sería uno menos y no lo hay.»  
   ↳ describe la app (no afirma nada clínico)
 - [ ] «Sin propuesta C: la irritabilidad no es baja (Petersen 2021; Maitland 2005, cap. 6, p. 117).»  
   ↳ fuente en el texto (Petersen 2021, Maitland 2005)
