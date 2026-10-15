@@ -131,7 +131,7 @@ test('anatomía: cervical, sin anatomía solo las filas genéricas (①/②, pro
   assert.deepEqual(TODOS.filter(x => x.h.region === 'cervical' && !x.t.anatomia).map(x => `${x.hId}/${x.i}`),
     ['ce3/5', 'ce4/4', 'ce5/1', 'ce5/2', 'ce5/3', 'ce5/5', 'ce11/1', 'ce12/1', 'ce12/2', 'ce13/2', 'ce14/0']);
   const con = PREG_CON.filter(p => p.region === 'cervical').map(p => p.q.id);
-  assert.equal(con.length, 17);
+  assert.equal(con.length, 18);
   // Dolor nocturno, peso, cefalea de cambio brusco (arterias cerebrales), artritis inflamatoria de otras articulaciones
   const sinQ = PREGUNTAS.filter(p => p.region === 'cervical' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['cv1', 'cv5', 'cv_ar4', 'cv_in2']);
