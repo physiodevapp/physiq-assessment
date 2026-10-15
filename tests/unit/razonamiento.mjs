@@ -203,6 +203,17 @@ test('banderas: hombro, cada bandera enlazada o con razonamiento propio según e
   assert.equal(kehr.pregunta, 'h_gi4');
 });
 
+test('banderas: rodilla, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 23);
+  assert.equal(banderas.filter(f => f.pregunta).length, 21);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), []);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Calambres nocturnos', 'Dolor en']);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+});
+
 test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
   const corto = f => f.texto.split(' ').slice(0, 2).join(' ');
   const resumen = sis => [...sis.banderasRojas.map(f => ['R', f]), ...sis.banderasAmarillas.map(f => ['A', f])]

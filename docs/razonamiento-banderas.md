@@ -126,6 +126,21 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
   - Rotura de bazo: la bandera roja del signo de Kehr no tenía pregunta (el razonamiento de `h_g1` lo menciona, pero es del sistema ginecológico). Pregunta urgente nueva `h_gi4` en h_gi (dolor de hombro izquierdo tras un golpe en el costado o el abdomen, constante o con mareo → «a urgencias hoy»), con razonamiento de Goodman cap. 8, pp. 311–312 (signo de Kehr; caso 8.5, futbolista con bazo roto) y 325 (derivación inmediata con sospecha de sangrado retroperitoneal, traumatismo y Kehr positivo). Anatomía: diafragma (el bazo no tiene entrada en `data/anatomia.js`).
 - **Revisión clínica del usuario:** hecha (2026-10), incluidas `h_c4` y `h_gi4`.
 
+## Rodilla (2026-10)
+
+23 banderas en sus 5 sistemas propios (20 rojas, 3 amarillas), todas texto sin enlace antes de esta sesión (tres amarillas estaban en una sola línea; se pasaron a varias para poder enlazarlas). Rodilla ya tenía preguntas propias para casi cada bandera de la tarjeta (Fase D), así que casi todas se enlazan.
+
+- **Enlazadas (21):**
+  - ro_vascular: claudicación → `r_v1`; signos de TVP y escala de Wells → `r_v2`; pseudotromboflebitis → `r_v3`.
+  - ro_infecciosa: fiebre con articulación caliente, artritis séptica e inicio muy agudo con la articulación bloqueada → `r1`; bursitis prerrotuliana séptica → `r_i3`; amarilla de infección reciente → `r_i2`.
+  - ro_oncologico: dolor nocturno y amarilla de 10–30 años con dolor óseo → `r2`; masa → `r3`; cáncer previo o menos de 25 años y tumor (apofisitis) → `r2` + `r3`.
+  - ro_trauma: fractura de rótula o meseta → `ro_t1`; aparato extensor → `ro_t2`; luxación → `ro_t3`; compromiso neurovascular → `ro_t4`; peroneo común → `ro_t5`; osteocondral inestable → `ro_t6`.
+  - ro_pediatrico: epifisiólisis o Perthes → `ro_p1`.
+- **Razonamiento propio (2), con Goodman 2018 leído en la sesión:** calambres nocturnos en la pantorrilla (cap. 6, p. 254: el dolor isquémico se describe como calambre sin espasmo; cap. 16, p. 624: causas de los calambres, entre ellas la oclusión arterial y la claudicación neurógena) y, en amarillas, dolor en reposo que mejora al colgar la pierna (cap. 6, pp. 228, 254 y 262: dolor isquémico en reposo de la enfermedad arterial avanzada; si empieza de golpe, tromboembolia, comunicar de inmediato). Ninguna bandera de rodilla queda sin «¿Por qué?».
+- **Huecos de seguridad:** ninguno. Las rojas que piden urgencias (TVP, artritis séptica, bursitis séptica, aparato extensor, luxación, compromiso neurovascular) ya tenían pregunta con `urgencia`.
+- **Recomendación pendiente de decisión del usuario:** pregunta urgente de isquemia aguda de la pierna, igual que `ca_v5` en cadera (Goodman cap. 6, p. 228: el dolor isquémico en reposo de comienzo brusco o el empeoramiento brusco de una claudicación pueden ser una tromboembolia y se comunican al médico de inmediato). Hoy en rodilla solo la cubre `ro_t4`, que es tras un traumatismo; la amarilla del dolor en reposo lo explica pero no enciende la alerta.
+- **Revisión clínica del usuario:** pendiente.
+
 ## Hallazgos fuera del «¿Por qué?»
 
 1. **Embarazo ectópico sin pregunta urgente en lumbar.** Resuelto (decisión del usuario, 2026-10): `l_e8` en lumbar y `ca_u5` en cadera, con `urgencia` y razonamiento de NICE NG126 (1.4.1–1.4.8, releída en la sesión). Están separadas de `l_e3`/`ca_u4` (dolor ligado a la regla), que siguen sin urgencia porque un SÍ por una endometriosis conocida no justifica ir a urgencias. La bandera de lumbar enlaza `l_e8`.
