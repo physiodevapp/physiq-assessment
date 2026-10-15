@@ -2868,6 +2868,65 @@ async function checkFase6Cervical(browser, errors) {
   return r;
 }
 
+// Fase 6 en hombro (L3, primera región periférica; decisiones 43–56 de
+// docs/plan-tratamiento.md): por la interfaz real hasta la 5 (el camino de
+// siempre la primera opción da h6, dolor referido desde el cuello) y a la 6.
+// h6 va como columna y añade la red arterial de cervical a la cardiaca de
+// hombro; h1 usa los escalones, la cantidad y la progresión de Peripheral con
+// su aviso; h10, el de artrosis; h2 + h6, el aviso de dos familias.
+async function checkFase6Hombro(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 6 hombro): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 hombro): ${msg.text()}`); });
+  await page.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json', body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo' }, demoOnly: false }),
+  }));
+  await abrirApp(page);
+  const r = {};
+  await walkRegion(page, 'hombro');
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.plan = await page.evaluate(() => state.currentPhase === 6 && !document.querySelector('#planContenido .alert-info')
+    && document.querySelectorAll('#planContenido .card').length === 5 && state.planTratamiento.hipotesis[0] === 'h6');
+  const { D } = await page.evaluate(async () => ({ D: JSON.parse(JSON.stringify(await import('./data/plan-tratamiento.js'))) }));
+  const casa = async () => {
+    await page.fill('#planNotasCasa', 'Movilidad del hombro');
+    await page.fill('#planParar', 'Si aumenta el dolor por la noche');
+    await page.click('#btnCompartirPlan');
+    await page.click('#compartirOpciones .compartir-op >> nth=2');
+    await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+    return page.evaluate(() => navigator.clipboard.readText());
+  };
+  const elegir = ids => page.evaluate(ids => {
+    for (const id of ids) if (!state.activeHypotheses.includes(id)) state.activeHypotheses.push(id);
+    state.planTratamiento.hipotesis = ids; goToPhase(5); goToPhase(6);
+  }, ids).then(() => page.waitForSelector('#planContenido .card')).then(() => page.textContent('#planContenido'));
+  const t6 = await page.textContent('#planContenido');
+  r.h6 = t6.includes(D.TEXTOS_SESION.cantidad) && !t6.includes(D.TEXTOS_SESION.cantidadPeriferica)
+    && t6.includes(D.TEXTOS_SESION.cierreCardiaco) && t6.includes(D.TEXTOS_SESION.cierreArterial)
+    && !t6.includes(D.AVISOS.manipulacionCervical) && !t6.includes(D.TEXTOS_SESION.cierreMedula);
+  const c6 = await casa();
+  r.casaH6 = c6.trimEnd().endsWith(`${D.TEXTOS_CASA.alarmaCardiaca.texto}\n\n${D.TEXTOS_CASA.alarmaArterial.texto}`)
+    && !c6.includes(D.TEXTOS_CASA.alarmaNeuro.texto) && !c6.includes(D.TEXTOS_CASA.alarmaMedula.texto);
+  const t1 = await elegir(['h1']);
+  const nivelB = await page.evaluate(() => state.planTratamiento.nivel);
+  r.h1 = t1.includes(D.AVISOS.capsulitisPrecoz) && t1.includes(D.AVISOS.capsulitisEstadios) && t1.includes(D.TEXTOS_SESION.cantidadPeriferica) && !t1.includes(D.TEXTOS_SESION.cantidad)
+    && t1.includes(D.PROGRESION_PERIFERICA) && t1.includes(D.REGLAS_MES_PERIFERICAS[0]) && !t1.includes(D.REGLAS_MES[2])
+    && Object.values(D.ESCALONES_PERIFERICOS).some(e => t1.includes(e.texto)) && !Object.values(D.ESCALONES).some(e => t1.includes(e.texto))
+    && !t1.includes(D.TEXTOS_SESION.cierreArterial) && nivelB === 'B';
+  const c1 = await casa();
+  r.casaH1 = c1.trimEnd().endsWith(D.TEXTOS_CASA.alarmaCardiaca.texto) && !c1.includes(D.TEXTOS_CASA.alarmaArterial.texto);
+  r.h10 = (await elegir(['h10'])).includes(D.AVISOS.artrosis);
+  r.h4 = (await elegir(['h4'])).includes(D.AVISOS.inestabilidad);
+  r.dosFamilias = (await elegir(['h2', 'h6'])).includes(D.AVISOS.dosFamilias);
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 // Fase 6 «Plan de tratamiento» (opcional; docs/plan-tratamiento.md): lumbar
 // por la interfaz real hasta la 5 y de ahí a la 6 con «Plan de tratamiento →».
 // Escritorio: paso 6 en la barra, hipótesis por defecto, gravedad e
@@ -2992,7 +3051,7 @@ async function checkFase6(browser, errors) {
   await page.click('#planContenido .plan-enlace');
   r.enlaceNRS = await page.waitForFunction(() => state.currentPhase === 3, null, { timeout: 4000 }).then(() => true).catch(() => false);
   // Otra región: aviso de piloto
-  r.piloto = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = 'hombro'; goToPhase(5); goToPhase(6); return true; })
+  r.piloto = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = 'codo'; goToPhase(5); goToPhase(6); return true; })
     && await page.waitForFunction(() => document.querySelector('#planContenido .alert-info')?.textContent.includes('piloto'), null, { timeout: 4000 }).then(() => true).catch(() => false);
   await page.evaluate(() => { state.region = 'lumbar'; goToPhase(5); goToPhase(6); });
   await page.waitForSelector('#planContenido .card');
@@ -3398,6 +3457,12 @@ const SECCIONES = [
   { id: 'fase6-cervical', titulo: 'Fase 6: plan de tratamiento en cervical (L3):', run: async ({ browser, errors }) => {
     const r = await checkFase6Cervical(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} cervical por la interfaz real hasta la 6: plan con sus tarjetas; con varios síntomas dosifica el más irritable (P2 · Brazo) y avisa del independiente; el programa para casa termina con la red de seguridad arterial y nunca con la de cola de caballo; con ce3, exploración neurológica, aviso de manipulación y red de la médula antes de la arterial; con ce12, aviso de la pauta aguda sin terapia manual y nota de 2 sesiones/semana; con ce13, el volumen de su pauta en vez del genérico y el aviso de mareo${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'fase6-hombro', titulo: 'Fase 6: plan de tratamiento en hombro (L3, primera periférica):', run: async ({ browser, errors }) => {
+    const r = await checkFase6Hombro(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} hombro por la interfaz real hasta la 6 (h6 por el camino de la primera opción): h6 con la cantidad de columna, sin avisos radiculares, y el programa para casa termina con la red cardiaca y la arterial; con h1, avisos de capsulitis (fase precoz y por estadio), escalones, cantidad, progresión y reglas de Peripheral, y solo la red cardiaca; con h10, aviso de artrosis; con h4, aviso de inestabilidad; con h2 + h6, aviso de dos familias${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

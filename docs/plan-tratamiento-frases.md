@@ -2,7 +2,7 @@
 
 > Generado por `node tests/gen-frases-plan.mjs` a partir de `data/plan-tratamiento.js` y `lib/plan-tratamiento.js`. No lo edites a mano: cambia el texto en `data/plan-tratamiento.js` y regenera (`tests/unit.js` falla si no está al día).
 
-Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023).
+Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, y en el de `h_c4` para Goodman 2018).
 
 Redacción propia: **1** frase.
 
@@ -43,6 +43,9 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Si notas torpeza nueva en las manos (al abrocharte o al escribir), inestabilidad o las piernas pesadas al caminar, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo.»  
   ↳ fuente: Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy»: anamnesis y exploración), como en el razonamiento de cv3: con signos nuevos o que van a más, la derivación es urgente  
   ↳ clave `alarmaMedula`
+- [ ] «Si notas dolor u opresión en el pecho, el hombro, el brazo, el cuello, la mandíbula o la espalda que no se pasa al parar en unos 20 minutos, o que te viene con sudor frío, náuseas, vómitos o falta de aire, llama al 112.»  
+  ↳ fuente: Goodman 2018, cap. 6, pp. 236 y 260, como en el razonamiento de h_c4: un infarto puede doler solo en el hombro o el brazo; intervención médica inmediata si el dolor no cede en 20 minutos o viene con náuseas, vómitos o sudor  
+  ↳ clave `alarmaCardiaca`
 - [ ] «Si te empieza de golpe un dolor de cabeza o de cuello distinto a cualquiera que hayas tenido, o notas visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas sin perder el conocimiento, ve a urgencias hoy mismo.»  
   ↳ fuente: Rushton 2023 (marco IFOMPT cervical), tablas 1–2 y 6, pp. 9–12, como en el razonamiento de cv_ar1 y cv_ar2: disección arterial e insuficiencia vertebrobasilar; los síntomas neurológicos pueden llegar días después  
   ↳ clave `alarmaArterial`
@@ -76,6 +79,8 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Red de seguridad de cervical: con una hipótesis neurológica, cierre `cierreMedula` y casa `alarmaMedula`; con cualquier plan de la región, cierre `cierreArterial` y casa `alarmaArterial`.  
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
+- [ ] Red de seguridad de hombro: con cualquier plan de la región, cierre `cierreCardiaco` y casa `alarmaCardiaca`.  
+  ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Con `ce13`, la cantidad de terapia manual es la de su pauta: `TEXTOS_SESION.cantidadReid` (sección 6) en vez de la genérica.  
   ↳ **decisión de diseño** (decisión 41)
 - [ ] Con `ce12` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
@@ -86,8 +91,24 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño**
 - [ ] Avisos con `ce12`: `AVISOS.manipulacionCervical`, `AVISOS.sinTerapiaManualAguda` (sección 5).  
   ↳ **decisión de diseño**
+- [ ] Avisos con `h1`: `AVISOS.capsulitisPrecoz`, `AVISOS.capsulitisEstadios` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `h4`: `AVISOS.inestabilidad` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `h10`: `AVISOS.artrosis` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Con mecanismo Post-quirúrgico en una región periférica: `AVISOS.protesis` (sección 5).  
+  ↳ **decisión de diseño** (decisión 47)
+- [ ] Familia de la terapia manual: columna (Maitland 2005) en lumbar y cervical; periférica (Hengeveld y Banks 2005) en hombro. Decide los escalones (sección 3), la cantidad por sesión (sección 6), la progresión y las reglas del mes (sección 7).  
+  ↳ **decisión de diseño** (decisiones 43–46)
+- [ ] `h6` usa la familia columna aunque su región sea periférica.  
+  ↳ **decisión de diseño** (decisión 50)
+- [ ] Con `h6`, además, cierre `cierreArterial` y casa `alarmaArterial`.  
+  ↳ **decisión de diseño** (decisión 50)
 
 ## 3. Escalones de terapia manual
+
+Columna (lumbar, cervical):
 
 - [ ] «1 · Muy suave (Manda el dolor): Sin provocar dolor: posición cómoda y sin molestias, la mayor amplitud posible sin molestia, movimiento lento y suave (grados I y II). Corta al principio, hasta conocer la respuesta a las 48 h. Explorar solo hasta el límite activo.»  
   ↳ fuente: Maitland 2005, cap. 8, p. 203; cap. 9, p. 218 · Petersen 2021, tabla 2 y apartado de irritabilidad
@@ -97,6 +118,17 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ fuente: Maitland 2005, cap. 8, pp. 206–208 · Petersen 2021, apartado de irritabilidad
 - [ ] «4 · Firme (Manda la rigidez): Solo si domina la rigidez y las estructuras no están debilitadas por un traumatismo o una enfermedad: al final del recorrido, técnica firme (grado IV), amplitud sobre todo pequeña con alguna grande, intercalando movimientos activos. Respetar la molestia, sobre todo si se va sumando; un grado III suave alivia la que deje.»  
   ↳ fuente: Maitland 2005, cap. 8, p. 203; cap. 9, p. 218
+
+Regiones periféricas:
+
+- [ ] «1 · Muy suave (Manda el dolor): Sin provocar dolor: un accesorio en posición indolora y apoyada antes que un fisiológico, con la mayor amplitud posible sin molestia y oscilaciones lentas y suaves (grados I y II). Mejor quedarse corto al principio, hasta conocer la irritabilidad. Explorar solo hasta el límite activo.»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 7, p. 176; cap. 8, p. 192 · Petersen 2021, tabla 2 y apartado de irritabilidad
+- [ ] «2 · Suave (Manda el dolor): Hasta donde empieza el dolor, sin sobrepasarlo: con dolor a lo largo del recorrido, de grado II− a III+. Con prudencia al acercarse al dolor, por el riesgo de que tarde en ceder.»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 6, p. 148; cap. 7, tabla 7.2, p. 176 · Petersen 2021, apartado de irritabilidad
+- [ ] «3 · Moderada (Molestia controlada): Entrar en una molestia controlada, de un 10–20 % de su intensidad máxima, que no aumente mientras se aplica la técnica (grado III); si lo que se provoca cede enseguida, hasta el límite pasivo.»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 8, pp. 192–194 · Petersen 2021, apartado de irritabilidad
+- [ ] «4 · Firme (Manda la rigidez): Solo si domina la rigidez: al límite del recorrido, estiramiento oscilatorio de grado IV que progresa a IV+ y IV++, con ritmo «staccato», alternando fisiológicos y accesorios. Nunca técnicas firmes con ligamentos debilitados por una enfermedad (p. ej., artritis reumatoide), ni empujar a través de un espasmo.»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 7, pp. 174–176; cap. 8, pp. 197, 203 y 224–225
 
 ## 4. Propuestas A, B y C
 
@@ -139,6 +171,18 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «En la fase aguda (menos de 1 mes) la pauta de Kuijper 2009 es sin terapia manual: ahí los escalones no se aplican. La movilización o manipulación entra en la fase crónica (Blanpied 2017, B).»  
   ↳ fuente en el texto (Kuijper 2009, Blanpied 2017)
+- [ ] «Capsulitis con irritabilidad alta (fase precoz dolorosa): la guía admite movilización glenohumeral de baja intensidad en rangos sin dolor (Kelley 2013, C), pero un consenso posterior no considera eficaz la terapia manual en esa fase (93 % del panel) y sí la información y tranquilizar (100 %) (Salamh 2025). Con irritabilidad baja (fase rígida), el consenso sí la considera eficaz (85 %).»  
+  ↳ fuente en el texto (Kelley 2013, Salamh 2025)
+- [ ] «Capsulitis por estadio. 1, muy dolorosa: accesorios de grado I y II con el brazo bien apoyado en una posición neutra e indolora, reevaluando la respuesta de los síntomas más que el movimiento; si a las 2–3 sesiones los síntomas bajan, más amplitud y una pequeña molestia. 2, dolorosa y rígida: accesorios en posición neutra e indolora, y en la resistencia si lo que se queda antes no funciona; cuando la flexión llega a 100–120°, movimientos lentos hacia el cuadrante, primero de grado III− y después de grado IV a IV+, con un III− amplio para aliviar las molestias del tratamiento. 3, solo rigidez: grado IV+ fisiológicos y accesorios al límite, intercalando grado III; si el hombro está muy limitado, la movilización sirve poco (Hengeveld y Banks 2005, cap. 11, cuadro 11.9, pp. 342–343).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Inestabilidad: en el hombro, movimientos accesorios o fisiológicos de grado II para estimular la propiocepción antes del entrenamiento de la estabilidad funcional; la rigidez se moviliza en la columna y en las articulaciones claviculares (Hengeveld y Banks 2005, cap. 11, cuadro 11.12, p. 347). La rotación lateral con presión fuerte, con mucho cuidado, por la palanca y la torsión sobre el húmero y la cápsula (p. 314).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Artrosis glenohumeral: mejor solo con movimientos accesorios; el posteroanterior, con la mayor amplitud posible (grado II o III); tras una reagudización, grado I al principio, con el objetivo de llegar a III− o III+ en todo el recorrido sin dolor; los fisiológicos de grado II también pueden servir (Hengeveld y Banks 2005, cap. 11, cuadro 11.11, p. 345). En una articulación con artrosis, grados II o III− también cuando lo que se trata es otra estructura (cap. 8, p. 224).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Si la cirugía fue una prótesis: sobre todo accesorios cerca de la línea articular, sin palancas largas que muevan el hueso alrededor del implante; si el ejercicio activo ya cumple el objetivo, la movilización pasiva sobra (Hengeveld y Banks 2005, cap. 10, p. 269).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Las dos hipótesis se tratan en zonas distintas (columna y articulación periférica): los escalones y las reglas del mes son los de la principal; la cantidad por sesión y la progresión, las de cada una.»  
+  ↳ decisión 50 de docs/plan-tratamiento.md
 - [ ] «Dosificado según el síntoma más irritable de la fase 3, no según P1 (a igualdad de irritabilidad, manda P1). La gravedad es la de su NRS.»  
   ↳ decisión 35 de docs/plan-tratamiento.md
 - [ ] «Un síntoma va independiente de P1: puede ser un segundo problema que este plan no trata. Valóralo aparte.»  
@@ -176,6 +220,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Evaluar antes, durante y después de cada técnica; unas 3–4 movilizaciones de unos 30 s por articulación, la mitad si duele mucho (Maitland 2005, cap. 9, pp. 213, 216 y 219).»  
   ↳ fuente en el texto (Maitland 2005)
+- [ ] «Evaluar antes, durante y después de cada técnica. Con dolor: técnicas de 30 s a 2 min, una o dos veces, lentas y suaves. Con rigidez: unos 2 min de estiramiento oscilatorio, alternando fisiológicos y accesorios al límite, 3–4 veces en la sesión inicial; de media, 4–5 min por articulación cada vez. Con dolor y rigidez, estirar 3 o más veces, 1–2 min cada una (Hengeveld y Banks 2005, cap. 5, pp. 97–102; cap. 7, p. 175; cap. 8, pp. 192, 197–198 y 201).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
 - [ ] «Mareo cervicogénico: el volumen es el de su pauta, que manda sobre la cantidad genérica: SNAG de Mulligan, 6 repeticiones (sin síntomas en la primera sesión); o movilización de Maitland de hasta 3 niveles cervicales altos, normalmente 3 aplicaciones de 30 s por nivel (Reid 2014).»  
   ↳ fuente en el texto (Reid 2014)
 - [ ] «Enseñar y comprobar lo que hará en casa.»  
@@ -186,6 +232,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Finucane 2020)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (torpeza nueva en las manos, inestabilidad o piernas «pesadas» al caminar, cambios al orinar o al hacer de vientre) y comprobar que lo ha entendido (Margetis y Donnally 2025, anamnesis y exploración).»  
   ↳ fuente en el texto (Margetis y Donnally 2025)
+- [ ] «Red de seguridad: explicar qué síntomas exigen llamar al 112 (dolor u opresión en el pecho, el hombro, el brazo, el cuello, la mandíbula o la espalda que no se pasa al parar en unos 20 minutos, o que viene con sudor frío, náuseas, vómitos o falta de aire) y comprobar que lo ha entendido (Goodman 2018, cap. 6, pp. 236 y 260, como en el razonamiento de h_c4).»  
+  ↳ fuente en el texto (Goodman 2018)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (dolor de cabeza o de cuello de golpe y distinto a cualquier otro, visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas súbitas) y comprobar que lo ha entendido; los de una disección pueden llegar días después (Rushton 2023, tablas 1–2 y 6, pp. 9–12).»  
   ↳ fuente en el texto (Rushton 2023)
 
@@ -203,6 +251,11 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Kuijper 2009)
 - [ ] «Si la pauta trae su propio criterio de progresión, ese manda. Si no: al principio lo mínimo que no provoque recaída; reintroducir lo que agravaba cuando baje la irritabilidad; progresar al ritmo de la curación y de los síntomas; reevaluar dentro de la sesión y entre sesiones (Petersen 2021; Zusman 1998).»  
   ↳ fuente en el texto (Petersen 2021, Zusman 1998)
+- [ ] «Terapia manual en una articulación periférica: empezar con un accesorio en posición indolora y apoyada; pasar a movimientos fisiológicos cuando el recorrido activo supere el 60 % del normal (con dolor y rigidez, el 60 % del recorrido rígido disponible) y, hasta el 75 %, quedarse antes del punto donde empieza el dolor; después, entrar en una molestia controlada (un 10–20 % de su intensidad máxima), y movimientos fisiológicos amplios cuando el dolor solo aparezca en el último 40 % del recorrido. Si no está claro si domina el dolor o la rigidez, tratar primero el dolor; con dudas al pasar a fisiológicos, repetir unas sesiones más los accesorios, y si empeora, volver a ellos (Hengeveld y Banks 2005, cap. 8, pp. 192–196 y 200).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+
+Reglas de seguir o cambiar, columna:
+
 - [ ] «Si una técnica no cambia nada, repetirla más firme; si sigue sin cambio, descartarla. Si mejora, repetirla; si empeora, no repetirla (Maitland 2005, cap. 9, pp. 213–214).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Si se espera una mejora lenta, no cambiar una técnica antes de usarla dos sesiones o más (Maitland 2005, cap. 9, pp. 214 y 216).»  
@@ -213,6 +266,17 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Sin cambio en 10–14 días, pausa y reevaluación a los 7–14 días; devolver al médico si los signos no siguen los patrones habituales o el paciente no mejora (Maitland 2005, cap. 9, pp. 219–220 y 223).»  
   ↳ fuente en el texto (Maitland 2005)
+
+Reglas de seguir o cambiar, regiones periféricas:
+
+- [ ] «Si mejora o no cambia, repetir la misma técnica; si empeora, la misma con menos amplitud y más lejos del dolor (Hengeveld y Banks 2005, cap. 8, p. 192).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «No cambiar una técnica demasiado pronto: puede hacer falta repetirla hasta la 2.ª visita, y a veces aplicarla dos veces antes de juzgarla (Hengeveld y Banks 2005, cap. 8, pp. 191 y 206).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Revisión retrospectiva cada 4 sesiones, y entre la 3.ª y la 4.ª sesión, un pronóstico explícito (Hengeveld y Banks 2005, cap. 5, p. 106; cap. 8, p. 233).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Si se estanca, pausa de unas 2 semanas; si mejoró, 2–3 semanas más sin tratamiento o el alta; si sigue igual, 4–5 sesiones más y otra pausa (Hengeveld y Banks 2005, cap. 5, pp. 106–108; Maitland 2005, cap. 9, pp. 219–220). Devolver al médico si los signos no siguen los patrones habituales o el paciente no mejora (Maitland 2005, cap. 9, p. 223).»  
+  ↳ fuente en el texto (Maitland 2005, Hengeveld y Banks 2005)
 - [ ] «Con dolor radicular severo, la mejoría puede tardar 7–10 días en notarse (Maitland 2005, cap. 9, p. 217).»  
   ↳ fuente en el texto (Maitland 2005)
 

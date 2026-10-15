@@ -39,7 +39,7 @@ export function construirFrases(D, P) {
     '',
     '> Generado por `node tests/gen-frases-plan.mjs` a partir de `data/plan-tratamiento.js` y `lib/plan-tratamiento.js`. No lo edites a mano: cambia el texto en `data/plan-tratamiento.js` y regenera (`tests/unit.js` falla si no está al día).',
     '',
-    'Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023).',
+    'Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, y en el de `h_c4` para Goodman 2018).',
   );
 
   sec('1. Programa para casa (lo lee el paciente)',
@@ -72,9 +72,15 @@ export function construirFrases(D, P) {
   for (const [id, k] of Object.entries(D.VOLUMEN_PAUTA)) out.push(`- [ ] Con ${nombre(id)}, la cantidad de terapia manual es la de su pauta: \`TEXTOS_SESION.${k}\` (sección 6) en vez de la genérica.  \n  ↳ **decisión de diseño** (decisión 41)`);
   for (const [id, f] of Object.entries(D.FRECUENCIA_PAUTA)) out.push(`- [ ] Con ${nombre(id)} como hipótesis por defecto, el plan del mes empieza en ${f.plan} (sección 7).  \n  ↳ **decisión de diseño** (decisión 42)`);
   for (const [id, ks] of Object.entries(D.AVISOS_HIP)) out.push(`- [ ] Avisos con ${nombre(id)}: ${ks.map(k => `\`AVISOS.${k}\``).join(', ')} (sección 5).  \n  ↳ **decisión de diseño**`);
+  out.push(`- [ ] Con mecanismo Post-quirúrgico en una región periférica: ${D.AVISOS_POSQ_PERIFERICA.map(k => `\`AVISOS.${k}\``).join(', ')} (sección 5).  \n  ↳ **decisión de diseño** (decisión 47)`);
+  out.push(`- [ ] Familia de la terapia manual: columna (Maitland 2005) en ${D.REGIONES_COLUMNA_PLAN.join(' y ')}; periférica (Hengeveld y Banks 2005) en ${D.REGIONES_PLAN.filter(r => !D.REGIONES_COLUMNA_PLAN.includes(r)).join(', ')}. Decide los escalones (sección 3), la cantidad por sesión (sección 6), la progresión y las reglas del mes (sección 7).  \n  ↳ **decisión de diseño** (decisiones 43–46)`);
+  for (const [id, f] of Object.entries(D.FAMILIA_HIP)) out.push(`- [ ] ${nombre(id)} usa la familia ${f} aunque su región sea periférica.  \n  ↳ **decisión de diseño** (decisión 50)`);
+  for (const [id, x] of Object.entries(D.RED_HIP)) out.push(`- [ ] Con ${nombre(id)}, además, cierre \`${x.cierre}\` y casa \`${x.casa}\`.  \n  ↳ **decisión de diseño** (decisión 50)`);
 
-  sec('3. Escalones de terapia manual');
+  sec('3. Escalones de terapia manual', 'Columna (lumbar, cervical):');
   for (const [n, e] of Object.entries(D.ESCALONES)) out.push(item(`${n} · ${e.nombre} (${e.modo}): ${e.texto}`, `fuente: ${e.citas.join(' · ')}`));
+  out.push('', 'Regiones periféricas:', '');
+  for (const [n, e] of Object.entries(D.ESCALONES_PERIFERICOS)) out.push(item(`${n} · ${e.nombre} (${e.modo}): ${e.texto}`, `fuente: ${e.citas.join(' · ')}`));
 
   sec('4. Propuestas A, B y C');
   for (const k of ['A', 'B', 'C', 'aIgual']) out.push(auto(D.TEXTO_NIVELES[k], `TEXTO_NIVELES.${k}`));
@@ -96,7 +102,11 @@ export function construirFrases(D, P) {
   }
   for (const [id, f] of Object.entries(D.FRECUENCIA_PAUTA)) out.push(auto(f.nota, `FRECUENCIA_PAUTA.${id}.nota`));
   out.push(auto(D.PROGRESION_GENERICA, 'PROGRESION_GENERICA'));
+  out.push(auto(D.PROGRESION_PERIFERICA, 'PROGRESION_PERIFERICA'));
+  out.push('', 'Reglas de seguir o cambiar, columna:', '');
   D.REGLAS_MES.forEach((t, i) => out.push(auto(t, `REGLAS_MES.${i}`)));
+  out.push('', 'Reglas de seguir o cambiar, regiones periféricas:', '');
+  D.REGLAS_MES_PERIFERICAS.forEach((t, i) => out.push(auto(t, `REGLAS_MES_PERIFERICAS.${i}`)));
   out.push(auto(D.REGLA_RADICULAR_SEVERA, 'REGLA_RADICULAR_SEVERA'));
 
   sec('8. Hoja de registro de cada sesión', 'Fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226.');
