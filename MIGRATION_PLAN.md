@@ -361,7 +361,8 @@ Diseño y decisiones: `docs/sintomas-multiples.md` (léelo entero antes de empez
   - [x] Lumbar (2026-10): `pasos` en las 7 zonas de `data/lumbar.js` (porqué de cada paso en el comentario); recuadro único con el formulario previo (`lib/pistas.js`), `pistasSintomasPaso()` en `lib/sintomas.js`; unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
   - [x] Cervical (2026-10): `pasos` en las 7 zonas de `data/cervical.js` (ce_step1, 3, 3b, 4 y 6; porqué en el comentario); unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
   - [x] Hombro (2026-10): `pasos` en las 6 zonas de `data/hombro.js` (h_step1, 3, 4 y 5; porqué en el comentario); unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
-  - [ ] Codo · [ ] Cadera · [ ] Rodilla · [ ] Tobillo y pie
+  - [x] Codo (2026-10): `pasos` en las 6 zonas de `data/codo.js` (co_step1, 3, 4 y 5; porqué en el comentario); unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
+  - [ ] Cadera · [ ] Rodilla · [ ] Tobillo y pie
 - [ ] N4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente
 - [ ] N5 — physiq-report: mostrar `z1` / `ss` (otro repositorio)
 - [ ] N6 — Mapa dibujado, solo si hace falta

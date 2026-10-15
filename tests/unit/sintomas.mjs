@@ -183,7 +183,7 @@ test('síntomas: los `pasos` de cada zona existen en el árbol de su región, si
       z.pasos.forEach(p => assert.ok(ids.has(p), `${r}.${z.id}: paso inexistente ${p}`));
     });
   }
-  for (const r of ['lumbar', 'cervical', 'hombro']) assert.ok(ZONAS_SINTOMA[r].every(z => z.pasos?.length), `${r}: todas las zonas con pasos`);
+  for (const r of ['lumbar', 'cervical', 'hombro', 'codo']) assert.ok(ZONAS_SINTOMA[r].every(z => z.pasos?.length), `${r}: todas las zonas con pasos`);
 });
 
 test('síntomas: pistas en el árbol — solo los síntomas con una zona ligada al paso; otra región nunca', () => {
@@ -223,6 +223,16 @@ test('síntomas: pistas en el árbol — hombro: cuello y lo que baja del codo e
   assert.deepEqual(q('h_step1'), ['Síntoma P2:']);
   assert.deepEqual(q('h_step4'), ['Síntoma P1 (principal):']);
   assert.deepEqual(q('h_step2'), []);
+});
+
+test('síntomas: pistas en el árbol — codo: la mano en el paso neural; el epicóndilo lateral en el de carga', () => {
+  const st = { region: 'codo', severidad: 5,
+    sintomaPrincipal: { ...vacio(), zonas: ['codo_lat'] },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['mano'], nrs: 2, relacion: 'nosabe' }] };
+  const z = ZONAS_SINTOMA.codo, q = paso => S.pistasSintomasPaso(st, z, paso).map(x => x.q);
+  assert.deepEqual(q('co_step3'), ['Síntoma P2:']);
+  assert.deepEqual(q('co_step4'), ['Síntoma P1 (principal):']);
+  assert.deepEqual(q('co_step2'), []);
 });
 
 test('síntomas: pistas en el árbol — el recuadro «📝» las pinta escapadas (el paso real, en el smoke test)', () => {
