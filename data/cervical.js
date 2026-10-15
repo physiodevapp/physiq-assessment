@@ -12,7 +12,7 @@ import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } fro
 // `id` estable: se guarda en la sesión.
 // `pasos` (Fase N, paso 3): pasos del árbol de abajo en los que el síntoma de
 // esa zona sale en el recuadro «📝 Refiere el paciente». Solo recuerda; nunca
-// contesta el paso. Pendientes de revisión por el usuario:
+// contesta el paso. Revisados por el usuario (2026-10):
 //   ce_step1  mielopatía (manos torpes o dormidas) → antebrazo y mano
 //   ce_step3  ¿el brazo duele más que el cuello? → el cuello, para comparar,
 //             y todo lo que baja: trapecio o escápula (el dolor radicular
