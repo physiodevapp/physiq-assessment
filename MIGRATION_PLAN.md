@@ -320,7 +320,7 @@ Diseño, decisiones y orden de trabajo: `docs/plan-tratamiento.md` (léelo enter
 - [x] L3 — Cervical, revisión del usuario de las frases nuevas (aceptadas como se propusieron, 2026-10; con las decisiones 40–41: volumen propio de la pauta de `ce13` y plan B por defecto con `ce12`)
 - [x] L3 — Fuente para las regiones periféricas: leídos *Maitland's Peripheral Manipulation*, 4.ª ed., caps. 5, 6, 7, 8 y 10 (PDF del usuario, 2026-10); notas y decisiones 42–48 propuestas en `docs/plan-tratamiento.md`, «Fuente de las regiones periféricas»
 - [x] L3 — Periféricas: decisiones 42–48 revisadas por el usuario (2026-10), aceptadas como se propusieron
-- [ ] L3 — Periféricas: portada y créditos del libro para registrarlo (`'Hengeveld y Banks 2005'`, pendiente de confirmar)
+- [x] L3 — Periféricas: referencia confirmada con la portada y los créditos (Hengeveld y Banks, eds., *Maitland's Peripheral Manipulation*, 4.ª ed., Elsevier Butterworth-Heinemann, 2005; ISBN 0-7506-5598-4). Clave `'Hengeveld y Banks 2005'`, que entra en `data/referencias.js` con la primera región periférica
 - [ ] L3 — Regiones periféricas, una por sesión, tras completar en lo posible sus pautas (sin pauta hoy: tobillo y pie 20 de 37, cadera 10 de 19, rodilla 8 de 20, hombro 5 de 11, codo 5 de 16; ver `docs/dosis-pendientes-fuentes.md`)
 - [ ] L3 — Añadir a la matriz de la fase 3 cuánto tarda el dolor en calmarse (decisión 25): sesión propia, porque cambia la fase 3 y lo que recibe physiq-report (`ir`)
 - [ ] L4 — Capa de IA (ruta nueva en el worker de physiq-report)
