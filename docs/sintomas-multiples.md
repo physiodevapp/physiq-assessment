@@ -12,7 +12,7 @@ Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir» (hoy «Decidi
 ## Cómo quedó el paso 1 (lumbar)
 - **Archivos**: `sintomas.js` (tarjeta, en la raíz, import estático desde `app.js`), `lib/sintomas.js` (puro: forma, payload y textos), `ZONAS_SINTOMA` en `data.js` (solo regiones con `zonas`). Sin zonas en la región, la tarjeta no se pinta y nada cambia.
 - **Misma forma para P1 y los secundarios** (`sintomaVacio()`): así «Hacer principal» intercambia los objetos sin perder nada. Lo que P1 no muestra (NRS, irritabilidad, relación) o lo que un secundario no muestra (profundidad) se guarda igual. `descripcion` es «Descripción» en P1 y «Nota» en los secundarios.
-- **«Hacer principal»** pide confirmación: el NRS y la irritabilidad del secundario pasan a las tarjetas de P1 (irritabilidad estimada, como en modo breve), los de P1 pasan al secundario, y **las relaciones con P1 se borran** (eran con el principal anterior). No se ofrece para «otra región».
+- **«Hacer principal»** pide confirmación: el NRS y la irritabilidad del secundario pasan a las tarjetas de P1 (irritabilidad estimada, como en modo breve), los de P1 pasan al secundario, y **las relaciones con P1 se borran** (eran con el principal anterior). Desde 2026-10 también se vacía la matriz de irritabilidad, por lo mismo, conservando el impacto en las actividades (decisión 104 de `docs/plan-tratamiento.md`). No se ofrece para «otra región».
 - **Otra región**: solo dónde, lado, NRS y nota; sin irritabilidad, comportamiento ni relación (al marcarla se vacían).
 - **Quitar** un secundario vacío no pregunta; con datos, pide confirmación.
 - **Al cambiar de región** se borran, como el resto de la fase 3 (`resetPhase3UI()`).

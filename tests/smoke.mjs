@@ -108,6 +108,13 @@ async function walkCifTreeToCompletion(page) {
 // available option at each step — one golden path per region, not every
 // branch, but enough to prove that region's CIF_TREES entry actually
 // renders and completes in a real browser.
+// Primera opción de cada fila de la matriz de irritabilidad, en la vista visible
+async function contestarMatriz(page, indice = 0) {
+  for (const k of ['reposo', 'movimiento', 'tolerancia', 'calma']) {
+    await page.locator(`#phase3 .irritab-btn[data-key="${k}"]:visible`).nth(indice).click();
+  }
+}
+
 async function walkRegion(page, region) {
   await page.fill('#motivoConsulta', `Dolor de ${region} tras esfuerzo`);
   await page.click('#mecanismo .option-btn >> nth=0');
@@ -122,6 +129,9 @@ async function walkRegion(page, region) {
   await page.waitForTimeout(150);
 
   await page.click('#phase3 .nrs-btn >> nth=6');
+  // Matriz de irritabilidad sin preselección (decisión 101): la primera opción
+  // de cada fila, con la vista que se vea (tabla o tarjetas) → irritabilidad baja
+  await contestarMatriz(page);
   await page.evaluate(() => {
     ['naturaleza', 'estabilidad'].forEach(g => document.getElementById(g)?.querySelector('.option-btn')?.click());
   });
@@ -152,7 +162,7 @@ async function walkRegion(page, region) {
 // the only screening questions still visible are the ones with `urgencia` —
 // and that phase 5 carries the transparency line and the pending tests.
 async function walkRegionBreve(page, region) {
-  await page.click('#modoConsulta .option-btn:has-text("Breve")');
+  await page.evaluate(() => selectModo('breve'));
   await page.fill('#motivoConsulta', `Dolor de ${region} (breve)`);
   await page.click('#mecanismo .option-btn >> nth=0');
   await page.click('#cronologia .option-btn >> nth=0');
@@ -3318,6 +3328,19 @@ async function checkFase6(browser, errors) {
   });
   await page.evaluate(() => { state.sintomasSecundarios = []; state.sintomaPrincipal.zonas = []; planElegir('sesion', 'primera'); });
   await page.waitForFunction(() => !document.getElementById('planDosifica'));
+  // Irritabilidad sin registrar en la fase 3 (decisión 101): alta, con aviso y
+  // enlace a la matriz; la fase 6 y la fase 3 dan el mismo nivel
+  r.mismoNivel = await page.evaluate(() => state.irritabilidadNivel === 'Baja'
+    && document.querySelector('#planContenido .option-btn.selected[onclick="planElegir(\'irritabilidad\',\'baja\')"]') !== null
+    && !document.getElementById('planContenido').textContent.includes('en la fase 3:'));
+  const matrizAntes = await page.evaluate(() => JSON.stringify(state.irritabilidad));
+  await page.evaluate(() => { state.irritabilidad = { reposo: '', movimiento: '', tolerancia: '', calma: '', discapacidad: '' }; state.irritabilidadNivel = null; planElegir('sesion', 'primera'); });
+  r.sinIrritabilidad = await page.evaluate(() => {
+    const t = document.getElementById('planContenido').textContent;
+    return t.includes('Sin irritabilidad registrada en la fase 3') && t.includes('Completar la matriz en la fase 3 →')
+      && document.querySelector('#planContenido .option-btn.selected[onclick="planElegir(\'irritabilidad\',\'alta\')"]') !== null;
+  });
+  await page.evaluate(m => { state.irritabilidad = JSON.parse(m); state.irritabilidadNivel = 'Baja'; planElegir('sesion', 'primera'); }, matrizAntes);
   r.gravedadMarcada = await page.evaluate(() => {
     const sel = [...document.querySelectorAll('#planContenido .option-btn.selected')].map(b => b.textContent.trim());
     return sel.includes('Moderada');   // NRS 6 → moderada
@@ -3478,6 +3501,73 @@ async function porRegiones(ctx, walk) {
 // zonas, hasta P4 y no más, quitar con confirmación, «Hacer principal»
 // intercambia NRS e irritabilidad, se restaura al recargar, sale en la fase 5,
 // cabe a 320 px; en una región sin zonas (hombro) no se pinta.
+// Matriz de irritabilidad de la fase 3 (decisiones 99–104 de
+// docs/plan-tratamiento.md): sin preselección, el tiempo en calmarse marca el
+// suelo y los otros tres lo suben, segundo toque vacía, el impacto en las
+// actividades no cuenta, tabla y tarjetas sincronizadas, cabe a 320 px, textos
+// de Maitland, fase 5 y modo breve con la pista.
+async function checkIrritabilidad(page) {
+  const r = {};
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await abrirApp(page);
+  await irAFase2(page, 'lumbar');
+  await page.click('#btnContinuarSinss');
+  await page.waitForSelector('#irritabTabla .irritab-btn');
+  const resumen = () => page.textContent('#irritabilidadResumen');
+  const tabla = (k, t) => page.click(`#irritabTabla .irritab-btn[data-key="${k}"]:has-text("${t}")`);
+  r.sinPreseleccion = await page.evaluate(() => !document.querySelector('.irritab-btn.selected') && state.irritabilidadNivel === null)
+    && (await resumen()).includes('Irritabilidad no registrada');
+  r.filas = await page.evaluate(() => [...document.querySelectorAll('#irritabTabla tbody tr td:first-child')].map(td => td.firstChild.textContent).join('|'))
+    === 'Dolor en reposo|Dolor con movimiento|Tolerancia al estrés físico|Tiempo en calmarse';
+  r.unaLineaEscritorio = await page.evaluate(() => [...document.querySelectorAll('#irritabTabla .irritab-select')]
+    .every(sel => new Set([...sel.children].map(b => Math.round(b.getBoundingClientRect().top))).size === 1));
+  r.impactoEnSeveridad = await page.evaluate(() => !!document.querySelector('.card #nrsLabel ~ #impactoActividades .irritab-btn')
+    && !document.querySelector('#irritabTabla [data-key="discapacidad"], #irritabTabla [data-key="dolor"]'));
+  await tabla('calma', 'Horas');
+  r.suelo = await page.evaluate(() => state.irritabilidadNivel === 'Moderada') && (await resumen()).includes('hasta el dolor')
+    && (await resumen()).includes('Matriz incompleta');
+  await tabla('reposo', 'Presente'); await tabla('movimiento', 'Antes FR'); await tabla('tolerancia', 'Moderada');
+  r.otrosSuben = await page.evaluate(() => state.irritabilidadNivel === 'Alta') && (await resumen()).includes('se confirma en la 2.ª visita')
+    && !(await resumen()).includes('incompleta');
+  await tabla('tolerancia', 'Moderada');
+  r.segundoToque = await page.evaluate(() => state.irritabilidad.tolerancia === '' && state.irritabilidadNivel === 'Moderada'
+    && !document.querySelector('.irritab-btn[data-key="tolerancia"].selected'));
+  await page.click('#impactoActividades .irritab-btn:has-text("Alto")');
+  r.impactoNoCuenta = await page.evaluate(() => state.irritabilidad.discapacidad === 'Alta' && state.irritabilidadNivel === 'Moderada');
+  // Móvil a 320 px: las tarjetas muestran lo mismo y elegir en ellas repinta la tabla
+  await page.setViewportSize({ width: 320, height: 700 });
+  r.tarjetasSincronizadas = await page.evaluate(() => {
+    const sel = v => [...document.querySelectorAll(`${v} .irritab-btn.selected`)].map(b => `${b.dataset.key}=${b.dataset.valor}`).sort().join();
+    return sel('#irritabTarjetas') === sel('#irritabTabla') && sel('#irritabTarjetas').includes('calma=Tarda horas');
+  });
+  await page.click('#irritabTarjetas .irritab-btn[data-key="calma"]:has-text("Minutos")');
+  r.tablaSincronizada = await page.evaluate(() => document.querySelector('#irritabTabla .irritab-btn[data-key="calma"][data-valor="Cede en minutos"]').classList.contains('selected')
+    && !document.querySelector('#irritabTabla .irritab-btn[data-key="calma"][data-valor="Tarda horas"]').classList.contains('selected'));
+  r.cabe320 = await page.evaluate(() => document.documentElement.scrollWidth <= 320
+    && [...document.querySelectorAll('#irritabTarjetas .irritab-btn, #impactoActividades .irritab-btn')].every(b => b.scrollWidth <= b.clientWidth + 1 && b.getBoundingClientRect().height < 48)
+    && [...document.querySelectorAll('#irritabTarjetas .irritab-card, #impactoActividades')].every(c => c.getBoundingClientRect().right <= 320));
+  // Todo en lo más bajo → baja, «hasta el límite»
+  for (const [k, t] of [['reposo', 'Ausente'], ['movimiento', 'FR + SP'], ['tolerancia', 'Alta']]) await page.click(`#irritabTarjetas .irritab-btn[data-key="${k}"]:has-text("${t}")`);
+  r.baja = await page.evaluate(() => state.irritabilidadNivel === 'Baja') && (await resumen()).includes('hasta el límite');
+  // Fase 5: nivel, tiempo en calmarse e impacto
+  r.fase5 = await page.evaluate(() => { buildResults(); const t = document.getElementById('resultsContent').textContent;
+    return t.includes('Tiempo en calmarse') && t.includes('Cede en minutos') && t.includes('Impacto en las actividades'); });
+  // Se restaura al recargar (con nombre, la sesión se guarda)
+  await page.evaluate(() => { document.getElementById('patientName').value = 'Prueba irritabilidad'; saveSession(); });
+  await page.waitForTimeout(300);
+  await abrirApp(page);
+  await page.waitForSelector('#irritabTarjetas .irritab-btn.selected');
+  r.restaurada = await page.evaluate(() => state.irritabilidadNivel === 'Baja' && state.irritabilidad.calma === 'Cede en minutos'
+    && document.querySelectorAll('#irritabTarjetas .irritab-btn.selected').length === 4);
+  // Modo breve: la pista del dato clave bajo el nivel directo
+  await page.evaluate(() => { goToPhase(1); });
+  await page.evaluate(() => selectModo('breve'));
+  await page.evaluate(() => { goToPhase(3); });
+  r.pistaBreve = await page.evaluate(() => { const p = document.getElementById('irritabPistaBreve'); return !!p && p.offsetParent !== null && p.textContent.includes('cuánto tarda en calmarse'); });
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 async function checkSintomas(page) {
   const r = {};
   await page.setViewportSize({ width: 320, height: 700 });
@@ -3521,13 +3611,19 @@ async function checkSintomas(page) {
   r.restaurado = await page.evaluate(() => state.sintomaPrincipal.zonas.join() === 'lumbar,gluteo'
     && state.sintomasSecundarios[0].nrs === 3 && state.sintomasSecundarios[1].otraRegion
     && document.querySelector('#sintItem_0 .sint-zona.selected')?.textContent === 'Zona lumbar');
-  // Hacer principal P2: su NRS e irritabilidad pasan a las tarjetas de P1
+  // Hacer principal P2: su NRS e irritabilidad pasan a las tarjetas de P1, y
+  // la matriz (del P1 anterior) se vacía salvo el impacto en las actividades
+  await contestarMatriz(page);
+  await page.locator('#impactoActividades .irritab-btn:visible').nth(1).click();
   await page.click('#sintItem_1 .sint-accion:has-text("Hacer principal")');
   await page.click('.confirm-box-btns button:has-text("Cambiar")');
   r.cambio = await page.evaluate(() => state.sintomaPrincipal.zonas.join() === 'pierna' && state.severidad === 3
     && state.irritabilidadNivel === 'Moderada' && state.sintomasSecundarios[0].nrs === 7
     && state.sintomasSecundarios.every(s => !s.relacion)
     && document.querySelector('#phase3 .nrs-btn.selected')?.textContent.trim() === '3');
+  r.matrizVaciada = await page.evaluate(() => ['reposo', 'movimiento', 'tolerancia', 'calma'].every(k => !state.irritabilidad[k])
+    && !document.querySelector('#irritabTabla .irritab-btn.selected, #irritabTarjetas .irritab-btn.selected')
+    && state.irritabilidad.discapacidad === 'Moderada' && state.irritabilidadDirecta);
   // P3 (otra región) con datos: quitar pide confirmación; se cancela
   await page.click('#sintItem_2 .sint-quitar');
   await page.waitForSelector('.confirm-box-btns');
@@ -3619,7 +3715,7 @@ async function checkSintomas(page) {
   await page.waitForSelector('#tp_step2 .fp-pistas');
   r.pistaTobillo = await page.evaluate(() => document.querySelector('#tp_step2 .fp-pistas').textContent.includes('Síntoma P1 (principal): Tobillo lateral')
     && !('tp_step2' in state.treeAnswers) && !document.querySelector('#tp_step1 .fp-pistas'));
-  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.pistaArbol && r.fase5 && r.cervical && r.pistaCervical && r.pistaHombro && r.pistaCodo && r.pistaCadera && r.pistaRodilla && r.pistaTobillo && r.hombro && r.codo && r.cadera && r.rodilla && r.tobillo;
+  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.matrizVaciada && r.quitarCancelado && r.pistaArbol && r.fase5 && r.cervical && r.pistaCervical && r.pistaHombro && r.pistaCodo && r.pistaCadera && r.pistaRodilla && r.pistaTobillo && r.hombro && r.codo && r.cadera && r.rodilla && r.tobillo;
   return r;
 }
 
@@ -3784,18 +3880,26 @@ const SECCIONES = [
     return r.ok;
   } },
 
+  { id: 'irritabilidad', titulo: 'Matriz de irritabilidad (fase 3, escritorio y 320 px):', run: async ({ browser, errors }) => {
+    const page = await nuevaPagina(browser, errors);
+    try {
+      const r = await checkIrritabilidad(page);
+      console.log(`  ${r.ok ? '✓' : '✗'} sin preselección («no registrada»); cuatro filas con el tiempo en calmarse (botones en una línea en escritorio) y el impacto en las actividades en la tarjeta de severidad; el tiempo en calmarse marca el suelo y los otros tres lo suben; segundo toque vacía; el impacto no cuenta; tabla y tarjetas sincronizadas; cabe a 320 px; baja → «hasta el límite», alta → se confirma en la 2.ª visita; fase 5; se restaura al recargar; pista en modo breve${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      return r.ok;
+    } finally { await page.context().close(); }
+  } },
   { id: 'sintomas', titulo: 'Síntomas P1–P4 (fase 3, las 7 regiones):', run: async ({ browser, errors }) => {
     const page = await nuevaPagina(browser, errors);
     try {
       const r = await checkSintomas(page);
-      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; pistas en el paso del árbol (lumbar, con las del formulario, sin la otra región, sin contestarlo; cervical, la mano en el paso 1; hombro, el cuello en el paso 1; codo, el anterior en el paso 1; cadera, el glúteo en el paso 1; rodilla, la rótula en el 1b; tobillo y pie, el lateral en el 2); fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad, borra las relaciones y vacía la matriz (salvo el impacto en las actividades); pistas en el paso del árbol (lumbar, con las del formulario, sin la otra región, sin contestarlo; cervical, la mano en el paso 1; hombro, el cuello en el paso 1; codo, el anterior en el paso 1; cadera, el glúteo en el paso 1; rodilla, la rótula en el 1b; tobillo y pie, el lateral en el 2); fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
       return r.ok;
     } finally { await page.context().close(); }
   } },
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

@@ -415,8 +415,13 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'frecuencia', 'repetido', 'estructura']],
       ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero', 'limitaciones-negativas']],
       ['valoracion-carmen-vidal-tobillo-breve.json', 'carmen-audio-1-ficha-breve.txt', 'carmen-audio-transcripcion.txt', ['relleno', 'fuentes', 'repetido']],
-      ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['plan-urgente', 'frecuencia', 'diagnostico', 'imc']],
-      ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas', 'imagen-motivo']],
+      // `nrs` desde la decisión 100 (docs/plan-tratamiento.md): el «nivel de dolor
+      // Media (4-6/10)» de la matriz antigua ya no va al prompt (repetía el NRS
+      // con otros cortes), así que el «4-6/10» del informe no figura en los datos.
+      // Ese informe mezclaba precisamente ese ítem con el NRS 6/10.
+      ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['nrs', 'plan-urgente', 'frecuencia', 'diagnostico', 'imc']],
+      // `nrs` desde la decisión 100, como el de Javier: «nivel de dolor medio (4-6/10)» con NRS 4/10.
+      ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['nrs', 'descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas', 'imagen-motivo']],
       ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-1-informe.txt', 'daniel-dictado-transcripcion.txt', ['lado-otro', 'formulario-contradicho', 'seguimiento-fuera', 'constantes', 'imagen-motivo']],
       ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-2-informe.txt', 'daniel-dictado-2-transcripcion.txt', ['lado-otro', 'no-se', 'formulario-contradicho', 'test-propiedades']],
       ['valoracion-marta-gil-rodilla.json', 'marta-dictado-1-informe.txt', 'marta-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'relleno', 'frecuencia', 'discrepancia-separada']],
@@ -435,7 +440,8 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-2-ficha-breve.txt', 'pablo-dictado-2-transcripcion.txt', ['relleno']],
       ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-1-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'confirma', 'atribucion', 'hipotesis-no-cumple', 'repetido']],
       ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-2-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'hipotesis-no-cumple', 'diagnostico']],
-      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-3-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno']],
+      // `nrs` desde la decisión 100, como el de Javier: «nivel de dolor medio (4-6/10)» con NRS 4/10.
+      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-3-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['nrs', 'lado-otro', 'relleno']],
       ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-4-informe.txt', 'rosario-dictado-4-transcripcion.txt', ['lado-otro', 'atribucion', 'hipotesis-no-cumple']],
       ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-5-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno', 'repetido']],
     ];
