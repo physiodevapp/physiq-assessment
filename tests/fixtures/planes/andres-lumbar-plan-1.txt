@@ -1,0 +1,133 @@
+## SESIÓN
+
+### REEVALUACIÓN (0–5 min)
+- Slump izquierdo: reproducir el dolor de la pantorrilla con la rodilla a 20° de la extensión completa; comprobar si mejora al soltar la flexión cervical
+- Preguntar por conducir y estar sentado en el trabajo (actividades que refiere como limitantes)
+- Exploración neurológica: fuerza en flexión dorsal del tobillo (L4), extensión del dedo gordo (L5) y flexión plantar (S1); reflejo rotuliano y aquíleo; sensibilidad en las zonas que explora cada raíz; comparar con el lado derecho
+
+### EDUCACIÓN (5–12 min)
+- Explicar que el dolor de la pierna probablemente se debe a una irritación del nervio que sale de la zona lumbar, que cuando el nervio está irritado puede provocar esa sensación de corriente que baja hasta la pantorrilla
+- El objetivo es calmar esa irritación con movilizaciones suaves del nervio y ejercicios que fortalezcan la musculatura del tronco para dar más estabilidad a la zona
+- En esta primera sesión haremos menos cantidad que en las siguientes, porque la primera vez puede provocar más reacción
+- Es posible que notes un aumento temporal de las molestias en las próximas 24-48 horas; es una respuesta normal y debería bajar después
+- Vamos a valorar cómo respondes antes de aumentar la carga
+
+### INTERVENCIÓN PRINCIPAL (12–35 min)
+
+**Movilización neural** (grados I-II, sin provocar dolor):
+- Slump en sedestación: paciente sentado en la camilla con las manos atrás de la espalda; llevar la cabeza hacia flexión de forma suave y lenta hasta notar tensión pero sin que aparezca el dolor de la pantorrilla; volver a la posición neutra; 3 series de 30 segundos con descanso entre ellas (sugerencia de la IA)
+- Evaluar durante y después: si reproduce el dolor, menos amplitud; si no cambia nada, mantener igual
+
+**Activación específica del tronco**:
+- Abdominal transverso en decúbito supino con rodillas flexionadas: contraer el abdomen hundiendo el ombligo hacia la columna sin mover la pelvis, mantener la respiración normal; 2 series de 8 repeticiones manteniendo 5 segundos cada una (sugerencia de la IA)
+- Multífido lumbar en cuadrupedia: levantar un brazo manteniendo la columna estable, sin que rote la pelvis ni la zona lumbar; alternar; 2 series de 6 repeticiones por lado manteniendo 5 segundos (sugerencia de la IA)
+- Comprobar que no aparece el dolor de la pierna durante los ejercicios; si aparece, parar
+
+**Terapia manual**:
+- Movilización posteroanterior central (PAC) en L5-S1, grado I: paciente en decúbito prono con cojín bajo el abdomen para comodidad; presión suave y rítmica sobre la apófisis espinosa, sin llegar a resistencia ni provocar dolor; 3 series de 30 segundos (sugerencia de la IA)
+- Evaluar antes, durante y después: si no cambia nada en la segunda sesión, aumentar a grado II o descartar
+
+### PROGRAMA DOMICILIARIO (35–45 min)
+- Enseñar slump en silla: sentado en una silla con las manos atrás, llevar la barbilla al pecho de forma suave hasta notar un poco de tensión en la parte de atrás de la pierna, sin que llegue a doler; mantener 3 segundos y soltar; explicar que debe hacerlo después de desayunar
+- Enseñar activación del transverso tumbado y multífido en cuadrupedia; comprobar que los hace correctamente
+- Indicar que pare si el dolor baja más abajo de la pantorrilla o aparece hormigueo en el pie
+- Comprobar que ha entendido la dosis y la técnica
+
+### CIERRE (45–50 min)
+- Reevaluar el slump izquierdo: comparar el ángulo de rodilla al que aparece el dolor de la pantorrilla y si mejora al soltar la flexión cervical
+- Explicar qué vigilar: cómo se levanta mañana comparado con hoy, si puede estar más tiempo sentado en el trabajo o conduciendo sin que le baje el dolor, si por la noche le molesta más o igual, y cómo responde después de hacer los ejercicios en casa
+- Puede notar un aumento temporal de las molestias en las próximas 24-48 horas
+- Apuntar cómo estuvo a las 24 horas de esta sesión y, si las molestias aumentan, qué estaba haciendo y qué le ayudó
+- Red de seguridad: si notas adormecimiento entre las piernas o alrededor del ano, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo; comprobar que lo ha entendido
+
+## PLAN DEL MES
+
+**Sesión 1 (semana 1)**: como se detalla arriba; menos tratamiento que en las siguientes; evaluar la respuesta a las 24-48 horas
+
+**Sesión 2 (semana 2 — reevaluación intermedia)**:
+- Comparar: bienestar general comparado con la primera sesión; síntomas (dolor de la pantorrilla, del glúteo) y nivel de actividad (tiempo sentado, conducir, trabajo) comparados con antes; efecto del slump y de las movilizaciones; efecto de los ejercicios en casa; qué ha aprendido y qué le ha sido más útil
+- Si el slump en la sesión 1 no cambió nada, repetirlo con más amplitud (hasta el inicio de la molestia sin provocar dolor); si sigue sin cambio, descartarlo
+- Si mejoró, repetir la movilización neural igual o aumentar ligeramente la amplitud según la respuesta
+- Activación del tronco: si la toleró bien, aumentar a 3 series de 10 repeticiones manteniendo 8 segundos (sugerencia de la IA)
+- Añadir un ejercicio de resistencia del tronco: plancha prona sobre antebrazos y rodillas, mantener la columna neutra sin que se hunda la zona lumbar; 2 series de 15 segundos (sugerencia de la IA)
+- Si la PAC en L5-S1 mejoró el signo comparable, repetirla; si no cambió nada, aumentar a grado II o cambiar a movilización unilateral posteroanterior (UPA) ipsilateral en L5 izquierda, grado I-II (sugerencia de la IA)
+- Ajustar el programa domiciliario según la respuesta: si toleró bien la dosis, aumentar la frecuencia del slump en silla a 2 veces al día (sugerencia de la IA)
+
+**Sesión 3 (semana 3)**:
+- Si la irritabilidad ha bajado (puede estar más tiempo sentado sin que le baje el dolor de la pantorrilla), progresar:
+  - Movilización neural: slump con extensión progresiva de rodilla, añadiendo más rango según tolerancia, sin provocar dolor (sugerencia de la IA)
+  - Activación del tronco: plancha prona sobre antebrazos y pies si toleró bien la versión sobre rodillas; 2 series de 20 segundos (sugerencia de la IA)
+  - Añadir ejercicio de control del movimiento: en cuadrupedia, levantar brazo contrario a pierna manteniendo la pelvis estable; 2 series de 8 repeticiones por lado manteniendo 6 segundos (sugerencia de la IA)
+- Si con una mejora del 75 % o más en la sesión 2, no subir la dosis: repetir igual o menos
+- Terapia manual: si está funcionando, repetir; si no, cambiar la técnica o descartarla
+- Reintroducir actividades que agravaban cuando baje la irritabilidad: probar estar sentado más tiempo, conducir distancias más largas
+
+**Sesión 4 (semana 4 — reevaluación final)**:
+- Comparar con la sesión 2: bienestar general, síntomas, nivel de actividad, efecto de cada intervención, qué ha aprendido, objetivos siguientes acordados con el paciente
+- Aplicar ODI y comparar con la valoración inicial (MCID: 8.5 pts)
+- Aplicar NPRS y comparar con la EVN inicial de 6/10 (MCID: 1.5–3.2 pts)
+- Si la mejora es marcada (puede conducir y trabajar sentado sin que le baje el dolor), progresar hacia ejercicios más funcionales y preparar el alta o el espaciamiento de sesiones
+- Si no hay cambio respecto a la sesión 2 o 3, considerar pausa de 7-14 días y reevaluación; si los signos no siguen los patrones habituales o no mejora, devolver al médico
+- Si lleva más de 1 mes sin remisión con tratamiento conservador, reconsiderar y valorar derivación para RM
+
+**Criterios de progresión**:
+- Al principio lo mínimo que no provoque recaída
+- Progresar al ritmo de los síntomas: cuando baje la irritabilidad (puede estar más tiempo sentado, el dolor tarda menos en calmarse tras la actividad), aumentar la carga de los ejercicios
+- Si una técnica mejora, repetirla; si empeora, no repetirla; si no cambia nada, repetirla más firme o descartarla
+- La movilización que funciona debería mostrar una mejora marcada en 4-5 días
+- Reevaluar dentro de cada sesión (antes, durante y después de cada técnica) y entre sesiones (a las 24-48 horas)
+- Pedir que anote cómo estuvo a las 24 horas de cada sesión
+
+**Pronóstico**: agudo hasta 3 semanas, subagudo hasta 3 meses; mejora a los 6 meses en el 88 %, recuperación completa en el 65 %
+
+**Peso del programa domiciliario**: alto; es la mayor parte de la carga del mes
+
+## PROGRAMA PARA CASA
+
+**Cuándo hacerlo**: después de desayunar
+
+**Cuándo parar**: para si el dolor baja más abajo de la pantorrilla o aparece hormigueo en el pie
+
+**Al día siguiente**: debes estar como antes de los ejercicios; si no, haz la mitad la próxima vez
+
+**Ejercicios**:
+
+1. **Movilización del nervio sentado en una silla**:
+   - Siéntate en una silla con las manos atrás de la espalda
+   - Lleva la barbilla hacia el pecho de forma suave hasta que notes un poco de tensión en la parte de atrás de la pierna, pero sin que llegue a dolerte
+   - Mantén 3 segundos y vuelve a la posición de inicio
+   - Haz 10 repeticiones
+   - Una vez al día
+
+2. **Activación del abdomen profundo tumbado**:
+   - Túmbate boca arriba con las rodillas dobladas y los pies apoyados
+   - Hunde el ombligo hacia dentro como si quisieras tocar la columna con él, pero sin mover la pelvis ni la espalda
+   - Sigue respirando normal mientras mantienes la contracción
+   - Mantén 5 segundos y descansa
+   - Haz 8 repeticiones
+   - Descansa 1 minuto y haz otra serie de 8
+   - Una vez al día
+
+3. **Estabilización en cuatro apoyos**:
+   - Ponte en cuatro apoyos (manos y rodillas en el suelo) con la espalda recta
+   - Levanta un brazo hacia delante manteniéndolo estirado, sin que se mueva la pelvis ni la zona lumbar
+   - Mantén 5 segundos y baja
+   - Haz lo mismo con el otro brazo
+   - Alterna un brazo y otro
+   - Haz 6 repeticiones con cada brazo
+   - Descansa 1 minuto y haz otra serie de 6 con cada brazo
+   - Una vez al día
+
+**Qué vigilar**:
+- Cómo te levantas por la mañana comparado con el día anterior
+- Si puedes estar más tiempo sentado en el trabajo o conduciendo sin que te baje el dolor
+- Si por la noche te molesta más o igual
+- Cómo respondes después de hacer los ejercicios
+
+**Apunta**: si las molestias aumentan, apunta qué estabas haciendo y qué te ayudó
+
+**Después de esta primera sesión**: puedes notar un aumento temporal de las molestias; es normal y debería bajar en los próximos días
+
+**Si empeoras**: si empeoras claramente o notas algo nuevo, coméntalo con tu fisioterapeuta antes de la próxima sesión
+
+Si notas adormecimiento entre las piernas o alrededor del ano, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo.

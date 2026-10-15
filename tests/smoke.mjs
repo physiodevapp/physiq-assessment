@@ -3581,8 +3581,10 @@ async function checkPlanIA(browser, errors) {
       .observe(document.body, { childList: true });
   });
   await page.click('.compartir-op[onclick="compartirCasaIA()"]');
-  r.casaBloqueada = await page.waitForFunction(() => window.__toasts.some(t => t.includes('marca como revisados los 6 puntos')), null, { timeout: 10000 }).then(() => true, () => false)
-    && (await page.evaluate(() => navigator.clipboard.readText())) === 'VACIO';
+  const toastBloqueo = await page.waitForFunction(() => window.__toasts.some(t => t.includes('marca como revisados los 6 puntos')), null, { timeout: 10000 }).then(() => true, () => false);
+  const portaBloqueo = await page.evaluate(() => navigator.clipboard.readText());
+  r.casaBloqueada = toastBloqueo && portaBloqueo === 'VACIO';
+  if (!r.casaBloqueada) r.casaBloqueadaDetalle = { toasts: await page.evaluate(() => window.__toasts), portapapeles: portaBloqueo.slice(0, 60) };
   await page.evaluate(() => document.querySelectorAll('#piaRevision details, #piaResultadoDet').forEach(d => { d.open = true; }));
   for (const c of await page.$$('#piaRevision .ia-rev-check, #piaComprobar .ia-rev-check')) await c.check();
   r.revisados = await page.evaluate(() => document.querySelector('#piaRevision summary').textContent.includes('✓ 2 puntos revisados') && state.planTratamiento.ia.revisados.length === 6);
@@ -3629,7 +3631,7 @@ async function checkPlanIA(browser, errors) {
   await frame.waitForTimeout(300);
   r.hubSinIA = !pedidos.length && await frame.evaluate(() => document.getElementById('planIA').hidden && !document.getElementById('planIA').firstChild);
   await hub.close();
-  r.ok = Object.values(r).every(v => v === true);
+  r.ok = Object.entries(r).every(([k, v]) => k === 'casaBloqueadaDetalle' || v === true);
   return r;
 }
 
