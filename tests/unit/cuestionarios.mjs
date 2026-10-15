@@ -376,15 +376,20 @@ test('FABQ: 16 frases, total 0–96 (Kovacs 2006), actividad 2–5 y trabajo 6, 
   assert.equal(L.puntuar(d, { ...todosN('fabq', 0), 6: 5, 7: 5, 9: 5, 10: 5, 11: 5, 12: 4 }).interpretacion.nivel, 'ok');  // 29
 });
 
-test('PCS: 0–52 con rumiación 8–11, magnificación 6, 7, 13 y desesperanza 1–5 y 12; corte 30', () => {
+test('PCS: 0–52 con rumiación 8–11, magnificación 6, 7, 13 y desesperanza 1–5 y 12; bandas 20 y 30', () => {
   const d = def('pcs');
   assert.deepEqual(L.rangoPuntuacion(d, d.items.map(it => it.n)), [0, 52]);
   assert.deepEqual(d.subescalas.flatMap(x => x.items).sort((a, b) => a - b), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
   const con = r => L.puntuar(d, { ...todosN('pcs', 2), ...r });
   assert.equal(con({}).total, 26);
-  assert.equal(con({}).interpretacion.nivel, 'ok');
+  assert.equal(con({}).interpretacion.nivel, 'medio');
+  const unos = r => L.puntuar(d, { ...todosN('pcs', 1), ...r });
+  assert.equal(unos({ 1: 2, 2: 2, 3: 2, 4: 2, 5: 2, 6: 2 }).total, 19);
+  assert.equal(unos({ 1: 2, 2: 2, 3: 2, 4: 2, 5: 2, 6: 2 }).interpretacion.nivel, 'ok');
+  assert.equal(unos({ 1: 2, 2: 2, 3: 2, 4: 2, 5: 2, 6: 2, 7: 2 }).total, 20);
+  assert.equal(unos({ 1: 2, 2: 2, 3: 2, 4: 2, 5: 2, 6: 2, 7: 2 }).interpretacion.nivel, 'medio');
   assert.equal(con({ 1: 4, 2: 3 }).total, 29);
-  assert.equal(con({ 1: 4, 2: 3 }).interpretacion.nivel, 'ok');
+  assert.equal(con({ 1: 4, 2: 3 }).interpretacion.nivel, 'medio');
   assert.equal(con({ 1: 4, 2: 4 }).total, 30);
   assert.equal(con({ 1: 4, 2: 4 }).interpretacion.nivel, 'alto');
 });
