@@ -392,3 +392,10 @@ Diseño y decisiones: `docs/sintomas-multiples.md` (léelo entero antes de empez
 - [x] N4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente (2026-10): `sintomaQueDosifica()` y avisos `dosificaOtro`/`independiente` (decisión 35 de `docs/plan-tratamiento.md`); unit (`plan-tratamiento`) y smoke (`fase6`). Revisado por el usuario (2026-10)
 - [x] N5 — physiq-report: mostrar `z1` / `ss` (otro repositorio; 2026-10): el mismo bloque del prompt en `lib/payload.js` (`_bloqueSintomas`) y una línea «Síntomas: …» en la insignia de la valoración importada; un test en cada repo fija el mismo texto. Revisado por el usuario (2026-10)
 - [ ] N6 — Mapa dibujado, solo si hace falta
+
+## Fase O — Citas tocables en toda la app
+
+Regla única (decisión del usuario, 2026-10; ver «Citas» en `CLAUDE.md`): en el texto de corrido, cada cita en su forma corta («George 2021»), como botón; al tocarla, la ficha flotante común (`ficha.js`) con la cita entera y «Abrir ↗» (o «Sin enlace»). Las secciones «Fuentes» (panel «Ampliar», tarjeta de tejidos) siguen con la lista entera enlazada; lo que se comparte, en texto plano.
+
+- [x] O1 — Componente y líneas de fuente (2026-10): `lib/citas.js` + `ficha.js` (la tarjeta de las barras de tejido pasa a la ficha común); pies de los «¿Por qué?» de las fases 2, 4 y 4b, fuente de los tests y clusters, pauta y pronóstico de la fase 5, fuentes de la fase 6 y de la calculadora. Unit `tests/unit/citas.mjs`, smoke `citas`.
+- [ ] O2 — Citas dentro de una frase («… (Maitland 2005, cap. 9, p. 213)»), región por región: sacarlas a la línea de fuente o convertirlas en cita tocable, reescribiendo esos textos en `data/` (revisión del usuario antes de `main`). Pendientes: textos de la fase 6 (`data/plan-tratamiento.js`), irritabilidad de la fase 3 (`data/irritabilidad.js`) y las pautas de `data/<región>.js`.
