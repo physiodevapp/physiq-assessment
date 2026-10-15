@@ -67,13 +67,14 @@ export function construirFrases(D, P) {
   for (const [id, motivo] of Object.entries(D.HIP_NEURO_DESCARTADAS)) out.push(`- [ ] ${nombre(id)} no cuenta como neurológica: ${motivo}  \n  ↳ **decisión de diseño**`);
   const CUANDO = { neuro: 'con una hipótesis neurológica', siempre: 'con cualquier plan de la región' };
   for (const [region, r] of Object.entries(D.RED_SEGURIDAD)) {
-    const partes = Object.entries(r).map(([k, x]) => `${CUANDO[k]}, cierre \`${x.cierre}\` y casa \`${x.casa}\``);
+    const partes = Object.entries(r).flatMap(([k, xs]) => [].concat(xs).map(x => `${CUANDO[k]}, cierre \`${x.cierre}\` y casa \`${x.casa}\``));
     out.push(`- [ ] Red de seguridad de ${region}: ${partes.join('; ')}.  \n  ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)`);
   }
   for (const [id, k] of Object.entries(D.VOLUMEN_PAUTA)) out.push(`- [ ] Con ${nombre(id)}, la cantidad de terapia manual es la de su pauta: \`TEXTOS_SESION.${k}\` (sección 6) en vez de la genérica.  \n  ↳ **decisión de diseño** (decisión 41)`);
   for (const [id, f] of Object.entries(D.FRECUENCIA_PAUTA)) out.push(`- [ ] Con ${nombre(id)} como hipótesis por defecto, el plan del mes empieza en ${f.plan} (sección 7).  \n  ↳ **decisión de diseño** (decisión 42)`);
   for (const [id, ks] of Object.entries(D.AVISOS_HIP)) out.push(`- [ ] Avisos con ${nombre(id)}: ${ks.map(k => `\`AVISOS.${k}\``).join(', ')} (sección 5).  \n  ↳ **decisión de diseño**`);
   out.push(`- [ ] Con mecanismo Post-quirúrgico en una región periférica: ${D.AVISOS_POSQ_PERIFERICA.map(k => `\`AVISOS.${k}\``).join(', ')} (sección 5).  \n  ↳ **decisión de diseño** (decisión 47)`);
+  for (const [region, ks] of Object.entries(D.AVISOS_POSQ_REGION)) out.push(`- [ ] Con mecanismo Post-quirúrgico en ${region}, además: ${ks.map(k => `\`AVISOS.${k}\``).join(', ')} (sección 5).  \n  ↳ **decisión de diseño** (decisión 78)`);
   out.push(`- [ ] Familia de la terapia manual: columna (Maitland 2005) en ${D.REGIONES_COLUMNA_PLAN.join(' y ')}; periférica (Hengeveld y Banks 2005) en ${D.REGIONES_PLAN.filter(r => !D.REGIONES_COLUMNA_PLAN.includes(r)).join(', ')}. Decide los escalones (sección 3), la cantidad por sesión (sección 6), la progresión y las reglas del mes (sección 7).  \n  ↳ **decisión de diseño** (decisiones 43–46)`);
   for (const [id, f] of Object.entries(D.FAMILIA_HIP)) out.push(`- [ ] ${nombre(id)} usa la familia ${f} aunque su región sea periférica.  \n  ↳ **decisión de diseño** (decisión 50)`);
   for (const [id, x] of Object.entries(D.RED_HIP)) out.push(`- [ ] Con ${nombre(id)}, además, cierre \`${x.cierre}\` y casa \`${x.casa}\`.  \n  ↳ **decisión de diseño** (decisión 50)`);

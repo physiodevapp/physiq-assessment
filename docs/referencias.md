@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **485** referencias de literatura, con **2275** usos.
+- **485** referencias de literatura, con **2303** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **376** de 485 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -153,7 +153,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pedret 2026](#pedret-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
-| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 30 | **sin revisar** |
+| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 41 | **sin revisar** |
 | [Maitland 2005](#maitland-2005) | plan de tratamiento | 28 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 1 | **sin revisar** |
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 9 | **sin revisar** |
@@ -214,7 +214,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rudwaleit 2006](#rudwaleit-2006) | cribado fase 2 · razonamiento fase 2 | 5 | 2026-10 · Añadida (PDF del usuario, leído entero): es el estudio de origen del criterio de dolor lumbar inflamatorio del cribado lumbar (Goodman 2018, cap. 14, da las mismas cifras). Tabla 5: con 2 de 4 (rigidez matutina de más de 30 minutos, mejora con el ejercicio y no con el reposo, despertar en la segunda mitad de la noche, dolor glúteo alternante), S 70,3 %, E 81,2 %, LR+ 3,7; con 3 o 4, S 33,6 %, E 97,3 %, LR+ 12,4 (IC 4,0–39,7). Estudio exploratorio sin validación: 213 menores de 50 años con dolor lumbar de más de 3 meses (101 con espondilitis anquilosante ya establecida, media de 12,9 años de dolor, y 112 con lumbalgia mecánica), muestra de conveniencia no consecutiva; los propios autores piden validarlo en la enfermedad precoz. |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · plan de tratamiento · texto | 163 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
 | [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) | pauta · texto | 4 | 2026-10 · Sin cambios: PubMed (SIFA y fisioterapia, consensos y revisiones desde 2022) no encuentra un consenso posterior del IHiPRN; el ensayo PhysioFIRST (Kemp 2026) se suma a la pauta de ca2 sin contradecirlo. |
-| [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). |
+| [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento | 7 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), última actualización 29 de julio de 2026; las recomendaciones citadas (1.2.1, 1.2.6, 1.2.7 —corregida en 2026—, 1.3.1–1.3.3 y 1.3.6) dicen lo que recoge la app. |
 | [Hölmich 1999](#hölmich-1999) | pauta | 1 | 2026-10 · Texto completo leído: la pauta de ca16 coincide con el panel 1 y los métodos. Corregido el trote (pasadas las 6 primeras semanas) y añadida la población (varones de 18 a 50 años). No se encontró un ensayo posterior que lo sustituya. |
 | [Jonsson 2008](#jonsson-2008) | pauta · tiempos de tejido | 2 | 2026-10 · PDF leído entero (2026-10): el dolor en carga de 70 a 21 es solo de los 18 pacientes satisfechos (los otros 9, de 78 a 58); diagnóstico clínico con alteración en la ecografía; el ejercicio debe doler. Corregido en tp9. PubMed (2026-10): se añade Pringels 2025 (ensayo aleatorizado) como respaldo del principio de no cargar en dorsiflexión; la pauta sigue siendo la de Jonsson (decisión del usuario). |
@@ -236,10 +236,10 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Mellor 2018](#mellor-2018) | pauta · tiempos de tejido | 2 | 2026-10 · Sin cambios: PubMed (tendinopatía glútea o dolor trocantéreo con ejercicio o educación desde 2022). El metaanálisis en red de Wang 2025 (J Orthop Surg Res 20:126, 19 ensayos, PMC11783921) sitúa el ejercicio primero para dolor y función, y el de Cordeiro 2024 (Sci Rep 14:3343, PMC10858207) lo encuentra mejor que la intervención mínima (certeza baja) e igual que la infiltración en dolor; ninguno da una pauta mejor que la del LEAP. Leídos en PMC (2026-10). |
 | [Biz 2019](#biz-2019) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). PubMed (2026-10): Gopinatth 2023 (Am J Sports Med, metaanálisis de la vuelta al deporte sin cirugía, 79,7 %) y Buchanan 2025 (Sports Health, protocolos, casi todos posquirúrgicos) son posteriores; Gopinatth no se pudo leer y Buchanan no aporta una pauta conservadora mejor. |
 | [Cascia 2019](#cascia-2019) | pauta | 1 | 2026-10 · Sin cambios en la conclusión: texto completo leído en PMC (2026-10; antes solo el resumen). Programas de 6 a 12–14 semanas (tabla 3) y 5 de las 7 series con infiltración de plasma rico en plaquetas: se añade a la pauta de co4. |
-| [Willy 2019](#willy-2019) | pauta · razonamiento fase 4 | 7 | 2026-10 · Sin cambios: la guía holandesa (Ophey 2025), posterior y del mismo nivel, ya manda donde discrepan; no hay revisión de la guía de JOSPT. |
+| [Willy 2019](#willy-2019) | pauta · razonamiento fase 4 · plan de tratamiento | 8 | 2026-10 · Sin cambios: la guía holandesa (Ophey 2025), posterior y del mismo nivel, ya manda donde discrepan; no hay revisión de la guía de JOSPT. |
 | [Kemp 2020](#kemp-2020) | pauta | 1 | 2026-10 · Sin cambios: PubMed (dolor de cadera relacionado con la articulación y fisioterapia, revisiones sistemáticas desde 2021) no encuentra una revisión posterior de las intervenciones; el ensayo PhysioFIRST (Kemp 2026), posterior, se suma a la pauta de ca2. |
 | [Lubiatowski 2020](#lubiatowski-2020) | pauta · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La resección fue artroscópica en 280 de 288 y los criterios de eficacia eran poco claros: se precisa en co6. PubMed (2026-10): nada posterior sobre el tratamiento de la plica del codo (Cui 2026 es de pronóstico con RM). |
-| [Rathleff 2020](#rathleff-2020) | pauta | 2 | 2026-10 · Sin cambios: la revisión posterior de tratamientos de Osgood-Schlatter (Ndjonko 2026, Orthop J Sports Med, revisión de alcance, nivel 4) no aporta ningún ensayo ni pauta mejor. |
+| [Rathleff 2020](#rathleff-2020) | pauta · plan de tratamiento | 4 | 2026-10 · Sin cambios: la revisión posterior de tratamientos de Osgood-Schlatter (Ndjonko 2026, Orthop J Sports Med, revisión de alcance, nivel 4) no aporta ningún ensayo ni pauta mejor. |
 | [Serner 2020](#serner-2020) | pauta | 1 | 2026-10 · Sin cambios: la revisión sistemática más reciente sobre la lesión aguda del aductor (Farrell, Hatem y Bharam 2023, Am J Sports Med 51(13):3591–3603, doi 10.1177/03635465221140923; PDF del usuario leído entero, 2026-10) la incluye (ref. 40) y no aporta otra pauta: 30 estudios, síntesis narrativa sin metaanálisis; las roturas parciales se trataron siempre sin cirugía, con vuelta al deporte en 1–7 semanas. Da las medias de Serner 2020 (sin dolor a las 1,9 semanas, entrenamiento completo a las 6,9; recaída al año 7,4 %); la pauta de ca11 usa las medianas por grado del propio artículo. |
 | [George 2021](#george-2021) | pauta · razonamiento fase 4 | 9 | 2026-10 · Sin cambios: PubMed (guías de práctica clínica de lumbalgia en JOSPT y de la APTA desde 2021) no encuentra una revisión posterior de esta guía. |
 | [Martin 2021](#martin-2021) | pauta · razonamiento fase 4 · tiempos de tejido | 8 | 2026-10 · Sin cambios de fondo: PDF leído entero (2026-10); las letras citadas coinciden. Se matizan en tp1 la inmovilización («puede estar indicada») y la terapia manual (con sus objetivos), y se añade la vuelta al trabajo o al deporte (B); en tp21, la tobillera o el vendaje no como tratamiento único para mejorar el equilibrio (B), pero sí para prevenir la recidiva. Es la revisión de 2021 (revisión prevista en 2025); PubMed (2026-10): sin versión posterior de la APTA. |
@@ -254,7 +254,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) | pauta | 1 | 2026-10 · Sin cambios: hay una revisión posterior, Ferrero 2026 (Orthop Res Rev, 24 estudios, resumen leído), que concluye que la rehabilitación estructurada es la primera opción y que ningún tratamiento puede recomendarse sobre otro por la heterogeneidad; no contradice la pauta de ro6. |
 | [Trager 2024](#trager-2024) | pauta | 1 | 2026-10 · Sin cambios: es la revisión más reciente que encontró la búsqueda en PubMed (terapia manual en el dolor sacroilíaco) al incorporarla en 2026-10. |
 | [Wallis 2024](#wallis-2024) | pauta · texto | 2 | 2026-10 · Añadida (texto completo leído en PMC, 2026-10): 23 ensayos y 1612 participantes, búsqueda hasta enero de 2024. Terapia manual, ejercicio o ambos frente a intervención mínima: dolor −0,53/10 y discapacidad −5/100 al final del tratamiento, certeza baja, probablemente sin relevancia clínica y sin mantenerse; ejercicio solo, poco o ningún efecto en el dolor; añadir terapia manual al ejercicio, −2,56/10 al final del tratamiento. Contraste de la pauta de co1 (decisión del usuario). |
-| [Balcarek 2025](#balcarek-2025) | pauta | 1 | 2026-10 · Sin cambios: PubMed (consensos y guías de primera luxación de rótula desde 2024) no encuentra nada posterior; el consenso de 2024 para adolescentes (J Pediatr Orthop) es anterior. |
+| [Balcarek 2025](#balcarek-2025) | pauta · plan de tratamiento | 2 | 2026-10 · Sin cambios: PubMed (consensos y guías de primera luxación de rótula desde 2024) no encuentra nada posterior; el consenso de 2024 para adolescentes (J Pediatr Orthop) es anterior. |
 | [Bateman 2025](#bateman-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10; antes solo el resumen). Un solo ensayo, con alto riesgo de sesgo (RoB 2; 51 analizados de 70), el mismo que recogen Caliandro 2025 y Rinkel 2013; se dice en co8. |
 | [Caliandro 2025](#caliandro-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10; antes solo el resumen). Su ensayo de información frente a férula o deslizamiento neural es el mismo que recogen Rinkel 2013 y Bateman 2025; se corrige la pauta de co8. Es la revisión más reciente (PubMed, 2026-10). |
 | [Desmeules 2025](#desmeules-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · texto | 8 | 2026-10 · Sin cambios: guía de 2025; búsqueda en PubMed (2026-10) sin versión posterior. Sigue como pauta de h2 y h3. |
@@ -262,7 +262,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Liu 2025](#liu-2025) | pauta | 1 | 2026-10 · Leída en PMC (2026-10). Sus análisis de dosis son subgrupos separados (tipo, frecuencia, duración) que nunca se combinan: «multimodal 1–2 veces por semana durante 5–8 semanas» para el FAAM se apoya en un solo ensayo, hecho 3 veces por semana, y «terapia manual ≤4 semanas» para el CAIT en uno o dos. Se quita de tp21 esa orientación de dosis y queda el efecto global (CAIT +4,6 y FAAM de actividades diarias +7,7, certeza moderada). |
 | [Lopes 2025](#lopes-2025) | pauta | 1 | 2026-10 · Sin cambios: es la revisión Cochrane más reciente; el metaanálisis en red posterior (BMC Sports Sci Med Rehabil, 2026) no la sustituye en la pauta, que sigue la guía holandesa (Ophey 2025). |
 | [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido | 6 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
-| [Prill 2025](#prill-2025) | pauta · tiempos de tejido · texto | 6 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
+| [Prill 2025](#prill-2025) | pauta · tiempos de tejido · plan de tratamiento · texto | 7 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
 | [Pringels 2025](#pringels-2025) | pauta · tiempos de tejido · texto | 3 | 2026-10 · Añadida (leída entera en PMC) en la pauta de tp9: ensayo aleatorizado de 42 deportistas con tendinopatía insercional; limitar la dorsiflexión mejoró el VISA-A 12,9 puntos más (IC 95 % 6,2–19,6) a las 12 semanas y 10,4 (3,7–17,1) a las 24. |
 | [Quzli 2025](#quzli-2025) | pauta · razonamiento fase 4 · plan de tratamiento | 3 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
 | [Rich 2025](#rich-2025) | pauta · test 4b sin puntuar · tiempos de tejido · texto | 4 | 2026-10 · Sin cambios: es el ensayo más reciente sobre tendinopatía proximal de isquiotibiales (PubMed, revisiones y ensayos desde 2024). |
@@ -341,10 +341,10 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE NG12](#nice-ng12) | razonamiento fase 2 | 5 | 2026-10 · Leída en nice.org.uk (2026-10), última actualización 15 de abril de 2026. |
 | [NICE NG125](#nice-ng125) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 19 de agosto de 2020; la revisión de vigilancia de 2023 recomendó actualizarla, pero NICE decidió no hacerlo (31 de mayo de 2023). Las recomendaciones 1.1.3 y 1.4.9 dicen lo que recoge el razonamiento (consultado en nice.org.uk en 2026-10). |
 | [NICE NG126](#nice-ng126) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian. |
-| [NICE NG158](#nice-ng158) | razonamiento fase 2 · razonamiento fase 4 · texto | 23 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 2 de agosto de 2023, y la revisión del 1 de mayo de 2026 decidió no actualizarla. Las recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18 y las tablas 1 y 2 (escalas de Wells de dos niveles) dicen lo que recoge el razonamiento de ca_v2, r_v2, tp_v2, pq_tvp, pq_tvp_ms y pq_tep (consultado en nice.org.uk en 2026-10). |
+| [NICE NG158](#nice-ng158) | razonamiento fase 2 · razonamiento fase 4 · plan de tratamiento · texto | 25 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 2 de agosto de 2023, y la revisión del 1 de mayo de 2026 decidió no actualizarla. Las recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18 y las tablas 1 y 2 (escalas de Wells de dos niveles) dicen lo que recoge el razonamiento de ca_v2, r_v2, tp_v2, pq_tvp, pq_tvp_ms y pq_tep (consultado en nice.org.uk en 2026-10). |
 | [NICE NG38](#nice-ng38) | razonamiento fase 2 · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 17 de febrero de 2016, sin actualizaciones; la recomendación 1.2.2 dice lo que recoge la app. |
 | [NICE NG65](#nice-ng65) | razonamiento fase 2 | 2 | 2026-10 · Leída en nice.org.uk (2026-10), última actualización 2 de junio de 2017. |
-| [NICE NG89](#nice-ng89) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 13 de agosto de 2019, y la revisión de vigilancia del 18 de septiembre de 2024 decidió no actualizarla. Las recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3 dicen lo que recoge el razonamiento (duraciones de la profilaxis y umbrales de 90 minutos; consultado en nice.org.uk en 2026-10). |
+| [NICE NG89](#nice-ng89) | razonamiento fase 2 · plan de tratamiento | 3 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 13 de agosto de 2019, y la revisión de vigilancia del 18 de septiembre de 2024 decidió no actualizarla. Las recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3 dicen lo que recoge el razonamiento (duraciones de la profilaxis y umbrales de 90 minutos; consultado en nice.org.uk en 2026-10). |
 | [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | 2026-10 · Complementada: PubMed (cauda equina, revisiones sistemáticas desde 2012) no encuentra una revisión de precisión diagnóstica posterior. Galliker 2020 (Am J Med, PDF del usuario) aporta el único estudio en urgencias (silla de montar LR+ 3,1, esfínteres LR+ 2,1) y Hennessy 2025 (Eur Spine J, PDF del usuario) revisa 9 guías: RM urgente y radiculopatía bilateral como señal clave. Ambos se añaden a `l6`. Tabrah 2022 (tacto rectal) y Boktor 2023 (residuo posmiccional) no leídos: tratan pruebas que no hace el fisioterapeuta. |
 | [Downie 2013](#downie-2013) | razonamiento fase 2 | 6 | 2026-10 · Complementada: PubMed (banderas rojas de cáncer o fractura en lumbalgia, revisiones desde 2014). Williams 2023 (Cochrane de fractura) es una reedición con búsqueda hasta 2012, no más reciente. Verhagen 2017 (Pain, PDF del usuario) confirma que el antecedente de cáncer es la única bandera de malignidad informativa (LR+ 15,3), y Galliker 2020 (Am J Med, PDF del usuario) añade los datos de urgencias (LR+ 5,9; 27,9 con sospecha clínica): se añaden a `l2`. Sin cambios para fractura (`l_e4`). Maselli 2022 (Disabil Rehabil, dolor toracolumbar) no leída. |
 | [Henschke 2013](#henschke-2013) | razonamiento fase 2 | 4 | 2026-10 · Complementada: Verhagen 2017 (Pain, PDF del usuario) apoya sus conclusiones con una búsqueda más amplia; el dolor nocturno solo se midió en un estudio (LR+ 0,7). Galliker 2020 (Am J Med, PDF del usuario) aporta el dato de urgencias (LR+ 2,2). Ambos se añaden a `l_on2`. |
@@ -388,7 +388,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido | 8 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McClary y Massey 2023](#mcclary-y-massey-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McMordie 2023](#mcmordie-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) | razonamiento fase 2 · plan de tratamiento | 8 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) | razonamiento fase 2 · plan de tratamiento | 10 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Mountjoy 2023](#mountjoy-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: es el consenso vigente del COI (el anterior es de 2018). |
 | [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 24 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Pak y Kim 2023](#pak-y-kim-2023) | razonamiento fase 2 · tiempos de tejido | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -409,8 +409,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Singleton y Hefner 2023](#singleton-y-hefner-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de febrero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Smidt y Massey 2023](#smidt-y-massey-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido | 6 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 29 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Torlincasi 2023](#torlincasi-2023) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Truong 2023](#truong-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Waheed 2023](#waheed-2023) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Truong 2023](#truong-2023) | razonamiento fase 2 · plan de tratamiento | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Waheed 2023](#waheed-2023) | razonamiento fase 2 · plan de tratamiento | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Wenker y Quint 2023](#wenker-y-quint-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 20 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Ziu 2023](#ziu-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -435,7 +435,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Regunath y Oba 2024](#regunath-y-oba-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Rishor-Olney 2024](#rishor-olney-2024) | razonamiento fase 2 · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de enero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Rout 2024](#rout-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 7 de junio de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Vyas 2024](#vyas-2024) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 11 de diciembre de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Vyas 2024](#vyas-2024) | razonamiento fase 2 · plan de tratamiento | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 11 de diciembre de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Zabaglo 2024](#zabaglo-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de marzo de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Benjamin y Lui 2025](#benjamin-y-lui-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Budha 2025](#budha-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10). Lo posterior son casos clínicos y revisiones de casos (leídos los resúmenes): Heck 2026 (Int J Pediatr Otorhinolaryngol, revisión sistemática de 13 casos de luxación occipito-atloaxoidea por Grisel diagnosticado tarde; media de 5,9 meses hasta el diagnóstico), Cirrincione 2026 (Curr Opin Pediatr, revisión narrativa: con diagnóstico precoz basta tratamiento no quirúrgico) y Koru 2025 (Clin Rheumatol, Grisel sin infección en enfermedades reumáticas). Coinciden con el razonamiento de la pregunta (derivar pronto, el retraso empeora el tratamiento); no lo cambian. |
@@ -1227,9 +1227,11 @@ Nota: Consenso formal ESSKA; texto completo leído en PMC12684363 (2026-10). Pau
 Citada como:
 
 1. Balcarek 2025, Knee Surg Sports Traumatol Arthrosc 33(12):4197–4206 (consenso formal de la ESSKA, publicado en 2025, sobre la primera luxación de rótula, parte 2; letra = grado: B presunción científica, C bajo nivel científico)
+2. Balcarek 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.rotulaInestable` | 6 · plan de tratamiento | 2 |
 | Rodilla | ro12 · Inestabilidad Rotuliana | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Barakatt 2009
@@ -4218,6 +4220,17 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `AVISOS.radiohumeral` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.nervioCodo` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.esqueletoInmaduro` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.artrosisRodilla` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.menisco` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.patelofemoral` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.ligamentoRodilla` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.esguinceReciente` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.cargaRodilla` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.rotulaInestable` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.apofisitis` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.tibioperonea` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.nervioPeroneo` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.posqRodilla` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.1.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.2.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.3.citas.0` | 6 · plan de tratamiento | 1 |
@@ -8129,7 +8142,9 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaInfeccion.fuente` | 6 · plan de tratamiento | 2 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaInfeccionRodilla.fuente` | 6 · plan de tratamiento | 2 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccion` | 6 · plan de tratamiento | 2 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccionRodilla` | 6 · plan de tratamiento | 2 |
 | Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 1 |
 | Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 | Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
@@ -8456,12 +8471,15 @@ Citada como:
 5. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y tabla 1 (escala de Wells de dos niveles).
 6. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.8 y tabla 1 (escala de Wells de dos niveles).
 7. NICE NG158 (2020; recomendaciones 1.1.1 y 1.1.2, leídas en nice.org.uk en 2026-10)
+8. NICE NG158
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `pq_tvp` · Posquirúrgico | 2 · razonamiento del cribado | 3 |
 | Todas (sistemas comunes) | — | Pregunta `pq_tvp_ms` · Posquirúrgico | 2 · razonamiento del cribado | 3 |
 | Todas (sistemas comunes) | — | Pregunta `pq_tep` · Posquirúrgico | 2 · razonamiento del cribado | 3 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaTVP.fuente` | 6 · plan de tratamiento | 8 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreTVP` | 6 · plan de tratamiento | 8 |
 | Hombro | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
@@ -8514,9 +8532,11 @@ Citada como:
 4. NICE NG226 (2022; recomendaciones 1.3.1–1.3.11, leídas en nice.org.uk en 2026-10; NICE marca la fuerza con el verbo: «offer» = recomendación firme, «consider» = más débil, «do not offer» = no hacer)
 5. NICE NG226 (2022; recomendaciones 1.1.1 y 1.1.2 y su justificación, leídas en nice.org.uk en 2026-10)
 6. NICE NG226 (2022; recomendación 1.1.1, leída en nice.org.uk en 2026-10)
+7. NICE NG226
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.artrosisRodilla` | 6 · plan de tratamiento | 7 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Criterio clínico combinado: Edad ≥45 + dolor en actividad + rigidez <1h» | 4b · cita bajo el test | 1 |
 | Cadera | ca1 · Artrosis de Cadera | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Criterio combinado: Edad ≥45 + dolor en actividad + rigidez <30 min» | 4b · cita bajo el test | 3 |
@@ -8597,11 +8617,13 @@ Nota: PDF del usuario (2026-10): leídas las recomendaciones 1.1–1.3 y 1.10–
 Citada como:
 
 1. NICE NG89 — NICE, «Venous thromboembolism in over 16s: reducing the risk of hospital-acquired deep vein thrombosis or pulmonary embolism» (2018, actualizada el 13 de agosto de 2019), recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3.
+2. NICE NG89
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `pq_tvp` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `pq_tvp_ms` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaTVP.fuente` | 6 · plan de tratamiento | 2 |
 
 ### Nori y Stretanski 2025
 
@@ -9389,6 +9411,7 @@ Citada como:
 | Todas (tiempos de tejido) | — | Fila «Lesión degenerativa, sin cirugía» (Menisco) | cabecera · tiempos de tejido | 3 |
 | Todas (tiempos de tejido) | — | Fila «Meniscectomía parcial» (Menisco) | cabecera · tiempos de tejido | 3 |
 | Todas (tiempos de tejido) | — | Fila «Sutura (reparación)» (Menisco) | cabecera · tiempos de tejido | 3 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.menisco` | 6 · plan de tratamiento | 3 |
 | Rodilla | ro2 · Lesión Meniscal | Pronóstico (en `derivacion`) | 5 · mención en el texto | 1 |
 | Rodilla | ro2 · Lesión Meniscal | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
@@ -9515,9 +9538,12 @@ Citada como:
 
 1. Rathleff 2020, Orthop J Sports Med 8(4):2325967120911106 (serie de casos, n = 51, 10–14 años, sin grupo control: nivel de evidencia 4; pauta de su apéndice 1)
 2. Rathleff 2020, Orthop J Sports Med 8(4):2325967120911106 (Osgood-Schlatter, aplicado por analogía: no hay estudios en Sever ni Iselin; serie de casos, n = 51, 10–14 años, nivel de evidencia 4)
+3. Rathleff 2020
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.apofisitis` | 6 · plan de tratamiento | 3 |
+| Fase 6 (plan de tratamiento) | — | `FRECUENCIA_PAUTA.ro15.nota` | 6 · plan de tratamiento | 3 |
 | Rodilla | ro15 · Apofisitis del Adolescente (Osgood-Schlatter, Sinding-Larsen-Johansson) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Tobillo y pie | tp36 · Apofisitis y Osteocondrosis Pediátricas (Sever, Iselin, Köhler, Freiberg) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
@@ -11146,9 +11172,12 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 Citada como:
 
 1. Truong 2023 — Truong, Mabrouk y Ashurst, «Septic Bursitis», StatPearls [Internet], NCBI Bookshelf, última actualización 22 de abril de 2023.
+2. Truong 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaInfeccionRodilla.fuente` | 6 · plan de tratamiento | 2 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccionRodilla` | 6 · plan de tratamiento | 2 |
 | Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 | Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 
@@ -11374,12 +11403,15 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 Citada como:
 
 1. Vyas 2024 — Vyas, Sankari y Goyal, «Acute Pulmonary Embolism», StatPearls [Internet], NCBI Bookshelf, última actualización 11 de diciembre de 2024.
+2. Vyas 2024
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `pq_tvp` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `pq_tvp_ms` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `pq_tep` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaTVP.fuente` | 6 · plan de tratamiento | 2 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreTVP` | 6 · plan de tratamiento | 2 |
 
 ### Waheed 2023
 
@@ -11393,9 +11425,12 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 Citada como:
 
 1. Waheed 2023 — Waheed, Kudaravalli y Hotwagner, «Deep Venous Thrombosis», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2023.
+2. Waheed 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaTVP.fuente` | 6 · plan de tratamiento | 2 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreTVP` | 6 · plan de tratamiento | 2 |
 | Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 1 |
@@ -11671,9 +11706,11 @@ Citada como:
 4. Willy 2019 (J Orthop Sports Phys Ther 49(9); guía de la APTA de dolor femoropatelar, leídos el resumen de recomendaciones, prevalencia, diagnóstico y diagnóstico diferencial, diagnóstico diferencial musculoesquelético, pp. CPG21–CPG22)
 5. Willy 2019 (J Orthop Sports Phys Ther 49(9); guía de la APTA de dolor femoropatelar, leídos el resumen de recomendaciones, prevalencia, diagnóstico y diagnóstico diferencial, pp. CPG2, CPG4, CPG14–CPG15 y CPG22)
 6. Willy 2019 (J Orthop Sports Phys Ther 49(9); guía de la APTA de dolor femoropatelar, leídos el resumen de recomendaciones, prevalencia, diagnóstico y diagnóstico diferencial, diagnóstico diferencial musculoesquelético, p. CPG22)
+7. Willy 2019
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.patelofemoral` | 6 · plan de tratamiento | 7 |
 | Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Rodilla | — | Paso `ro_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 | Rodilla | — | Paso `ro_step1b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |

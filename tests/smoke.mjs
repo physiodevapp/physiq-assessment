@@ -3007,6 +3007,91 @@ async function checkFase6Codo(browser, errors) {
   return r;
 }
 
+// Fase 6 en rodilla (L3, tercera periférica; decisiones 72–80): por la
+// interfaz real hasta la 6 (primera opción en cada paso del árbol), y después
+// las hipótesis con aviso elegidas a mano.
+async function checkFase6Rodilla(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 6 rodilla): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 rodilla): ${msg.text()}`); });
+  await page.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json', body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo' }, demoOnly: false }),
+  }));
+  await abrirApp(page);
+  const r = {};
+  await walkRegion(page, 'rodilla');
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.plan = await page.evaluate(() => state.currentPhase === 6 && !document.querySelector('#planContenido .alert-info')
+    && document.querySelectorAll('#planContenido .card').length === 5
+    && state.activeHypotheses.includes('ro11') && !!document.querySelector('.plan-hip.plan-hip-no')
+    && state.planTratamiento.hipotesis.join() === 'ro4' && state.planTratamiento.frecuencia === 'A');
+  const { D } = await page.evaluate(async () => ({ D: JSON.parse(JSON.stringify(await import('./data/plan-tratamiento.js'))) }));
+  const casa = async () => {
+    await page.fill('#planNotasCasa', 'Sentadilla isométrica contra la pared');
+    await page.fill('#planParar', 'Si el dolor pasa de 2/10 a la mañana siguiente');
+    await page.click('#btnCompartirPlan');
+    await page.click('#compartirOpciones .compartir-op >> nth=2');
+    await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+    return page.evaluate(() => navigator.clipboard.readText());
+  };
+  const elegir = ids => page.evaluate(ids => {
+    for (const id of ids) if (!state.activeHypotheses.includes(id)) state.activeHypotheses.push(id);
+    state.planTratamiento.hipotesis = ids; goToPhase(5); goToPhase(6);
+  }, ids).then(() => page.waitForSelector('#planContenido .card')).then(() => page.textContent('#planContenido'));
+  const t1 = await elegir(['ro1']);
+  r.ro1 = t1.includes(D.AVISOS.artrosisRodilla) && !t1.includes(D.AVISOS.artrosis)
+    && t1.includes(D.TEXTOS_SESION.cantidadPeriferica) && !t1.includes(D.TEXTOS_SESION.cantidad)
+    && t1.includes(D.PROGRESION_PERIFERICA) && t1.includes(D.REGLAS_MES_PERIFERICAS[0]) && !t1.includes(D.REGLAS_MES[2])
+    && Object.values(D.ESCALONES_PERIFERICOS).some(e => t1.includes(e.texto)) && !Object.values(D.ESCALONES).some(e => t1.includes(e.texto))
+    && t1.includes(D.TEXTOS_SESION.cierreInfeccionRodilla) && t1.includes(D.TEXTOS_SESION.cierreTVP)
+    && !t1.includes(D.TEXTOS_SESION.cierreInfeccion) && !t1.includes(D.TEXTOS_SESION.cierreCardiaco) && !t1.includes(D.TEXTOS_SESION.cierreArterial);
+  const c1 = await casa();
+  r.casaRo1 = c1.trimEnd().endsWith(`${D.TEXTOS_CASA.alarmaInfeccionRodilla.texto}\n\n${D.TEXTOS_CASA.alarmaTVP.texto}`)
+    && ![D.TEXTOS_CASA.alarmaInfeccion, D.TEXTOS_CASA.alarmaCardiaca, D.TEXTOS_CASA.alarmaArterial, D.TEXTOS_CASA.alarmaNeuro, D.TEXTOS_CASA.alarmaMedula].some(a => c1.includes(a.texto));
+  // Varios síntomas (Fase N, paso 4) en rodilla
+  await page.evaluate(() => {
+    state.sintomaPrincipal.zonas = ['rodilla_ant'];
+    state.sintomasSecundarios = [{ zonas: ['pierna'], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }];
+    planElegir('sesion', 'primera');
+  });
+  await page.waitForSelector('#planDosifica');
+  r.dosificaP2 = await page.evaluate(() => {
+    const t = document.getElementById('planContenido').textContent;
+    return document.getElementById('planDosifica').textContent.includes('P2 · Pierna, el síntoma más irritable')
+      && t.includes('NRS 9/10') && t.includes('Un síntoma va independiente de P1') && t.includes('(P2 · Pierna)');
+  });
+  await page.evaluate(() => { state.sintomasSecundarios = []; state.sintomaPrincipal.zonas = []; planElegir('sesion', 'primera'); });
+  await page.waitForFunction(() => !document.getElementById('planDosifica'));
+  // ro2: la rama de su pauta según el árbol
+  await page.evaluate(() => { state.treeAnswers.ro_step1 = 'menisco'; });
+  const t2 = await elegir(['ro2']);
+  r.ro2 = t2.includes(D.AVISOS.menisco) && t2.includes('Rotura traumática: el ejercicio es una opción tan viable como la cirugía') && !t2.includes('Lesión degenerativa con síntomas');
+  r.ro3 = (await elegir(['ro3'])).includes(D.AVISOS.patelofemoral);
+  const t8 = await elegir(['ro8']);
+  r.ro8 = t8.includes(D.AVISOS.ligamentoRodilla) && t8.includes(D.AVISOS.esguinceReciente);
+  const t4 = await elegir(['ro4']);
+  r.ro4 = t4.includes(D.AVISOS.ligamentoRodilla) && !t4.includes(D.AVISOS.esguinceReciente);
+  r.ro5 = (await elegir(['ro5'])).includes(D.AVISOS.cargaRodilla);
+  r.ro12 = (await elegir(['ro12'])).includes(D.AVISOS.rotulaInestable);
+  const t15 = await elegir(['ro15']);
+  r.ro15 = t15.includes(D.AVISOS.apofisitis) && t15.includes(D.FRECUENCIA_PAUTA.ro15.nota);
+  r.ro18 = (await elegir(['ro18'])).includes(D.AVISOS.tibioperonea);
+  const t19 = await elegir(['ro19']);
+  r.ro19 = t19.includes(D.AVISOS.nervioPeroneo) && t19.includes(D.TEXTOS_SESION.reevaluacionNervio) && !t19.includes(D.TEXTOS_SESION.reevaluacionRadicular)
+    && !t19.includes(D.TEXTOS_SESION.cierreNeuro) && !t19.includes(D.TEXTOS_SESION.cierreMedula) && t19.includes('Pauta a criterio del fisioterapeuta');
+  // Con mecanismo Post-quirúrgico, el aviso condicional de prótesis y el de rodilla
+  await page.evaluate(() => { state.mecanismo = 'Post-quirúrgico'; });
+  const tp = await elegir(['ro1']);
+  r.posq = tp.includes(D.AVISOS.protesis) && tp.includes(D.AVISOS.posqRodilla);
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 // Fase 6 «Plan de tratamiento» (opcional; docs/plan-tratamiento.md): lumbar
 // por la interfaz real hasta la 5 y de ahí a la 6 con «Plan de tratamiento →».
 // Escritorio: paso 6 en la barra, hipótesis por defecto, gravedad e
@@ -3549,6 +3634,12 @@ const SECCIONES = [
   { id: 'fase6-codo', titulo: 'Fase 6: plan de tratamiento en codo (L3, segunda periférica):', run: async ({ browser, errors }) => {
     const r = await checkFase6Codo(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} codo por la interfaz real hasta la 6 (por el camino de la primera opción, co7, «Derivar», no elegible, y co3 por defecto con el plan B); con co1, escalones, cantidad, progresión y reglas de Peripheral, su aviso, y el programa para casa termina con la red de infección (ni cardiaca, ni arterial, ni neurológica); con varios síntomas dosifica el más irritable (P2 · Antebrazo) y avisa del independiente; con co3, aviso de rigidez y nota de frecuencia; con co8, exploración del nervio sin red neurológica; con co5, co6 y co15, sus avisos; con cirugía, el de prótesis${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'fase6-rodilla', titulo: 'Fase 6: plan de tratamiento en rodilla (L3, tercera periférica):', run: async ({ browser, errors }) => {
+    const r = await checkFase6Rodilla(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} rodilla por la interfaz real hasta la 6 (por el camino de la primera opción, ro11, «Derivar», no elegible, y ro4 por defecto con el plan A); con ro1, escalones, cantidad, progresión y reglas de Peripheral, su aviso de artrosis (no el glenohumeral), y el programa para casa termina con la red de infección y la de TVP (ni la de codo, ni cardiaca, ni arterial, ni neurológica); con varios síntomas dosifica el más irritable (P2 · Pierna) y avisa del independiente; con ro2, la rama traumática de su pauta y su aviso; con ro3, ro5, ro12 y ro18, sus avisos; con ro8, ligamento y esguince, y con ro4 sin esguince; con ro15, su aviso y la nota de frecuencia; con ro19, exploración del nervio sin red neurológica y pauta a criterio del fisio; con cirugía, el de prótesis y el de rodilla${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
