@@ -242,7 +242,7 @@ test('plan: cervical — médula con ce3/ce12, arterias con cualquier hipótesis
   }
   assert.ok(!D.HIP_EXPLORACION_NEURO.includes('ce2') && D.HIP_NEURO_DESCARTADAS.ce2, 'ce2: control motor, no neurológica');
   // Sin región, o con una sin entrada, no hay red de seguridad
-  for (const region of [undefined, 'cadera']) {
+  for (const region of [undefined, 'tobillo_pie']) {
     const p = P.construirPlan({ ...base, region, hipotesis: [hip('ce3')], elegidas: ['ce3'] });
     assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre], String(region));
     assert.deepEqual(p.alarmasCasa, []);
@@ -795,7 +795,7 @@ test('plan: rodilla — avisos por hipótesis del cap. 15 y, con cirugía, prót
   const posq = plan(['ro1'], { posq: { conProtocolo: true } }).avisosHip;
   assert.ok(posq.indexOf(D.AVISOS.protesis) >= 0 && posq.indexOf(D.AVISOS.posqRodilla) > posq.indexOf(D.AVISOS.protesis));
   assert.ok(!plan(['ro1']).avisosHip.includes(D.AVISOS.posqRodilla));
-  assert.deepEqual(D.AVISOS_POSQ_REGION, { rodilla: ['posqRodilla'] });
+  assert.deepEqual(D.AVISOS_POSQ_REGION.rodilla, ['posqRodilla']);
 });
 
 test('plan: rodilla — ro19 (peroneo común): exploración del nervio cada sesión, sin red neurológica ni regla de días', () => {
@@ -921,6 +921,197 @@ test('plan: varios síntomas en rodilla — dosifica el más irritable, avisa de
   withState({ region: 'rodilla', mecanismo: '', activeHypotheses: ['ro3'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
     severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
     sintomaPrincipal: { ...v(), zonas: ['rodilla_ant'] },
+    sintomasSecundarios: [{ ...v(), otraRegion: true, nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.n, 1);
+    assert.ok(!plan.avisos.includes(D.AVISOS.dosificaOtro));
+  });
+  state.planTratamiento = null; state.sintomasSecundarios = [];
+});
+
+const RED_CADERA = () => [D.TEXTOS_CASA.alarmaFracturaEstres.texto, D.TEXTOS_CASA.alarmaInfeccionCadera.texto, D.TEXTOS_CASA.alarmaTVP.texto];
+
+test('plan: cadera (periférica) — escalones, cantidad, progresión y reglas de Peripheral; ca10 como columna; las demás regiones, igual que antes', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const plan = (region, ids) => P.construirPlan({ region, severidad: 5, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta'), hipotesis: ids.map(hip), elegidas: ids });
+  assert.ok(D.REGIONES_PLAN.includes('cadera'));
+  assert.equal(P.familiaRegion('cadera'), 'periferica');
+  const c = plan('cadera', ['ca1']);
+  assert.equal(c.familia, 'periferica');
+  assert.equal(c.escalones.B, D.ESCALONES_PERIFERICOS[c.niveles.B]);
+  assert.equal(c.escalones.C, D.ESCALONES_PERIFERICOS[4]);
+  assert.deepEqual(c.sesion.cantidad, [D.TEXTOS_SESION.cantidadPeriferica]);
+  assert.deepEqual(c.mes.progresion, [D.PROGRESION_GENERICA, D.PROGRESION_PERIFERICA]);
+  assert.deepEqual(c.mes.reglas, D.REGLAS_MES_PERIFERICAS);
+  // ca10 (sacroilíaca): familia columna, sin red de otra región ni avisos
+  const si = plan('cadera', ['ca10']);
+  assert.equal(si.familia, 'columna');
+  assert.equal(si.escalones.B, D.ESCALONES[si.niveles.B]);
+  assert.deepEqual(si.sesion.cantidad, [D.TEXTOS_SESION.cantidad]);
+  assert.deepEqual(si.mes.reglas, D.REGLAS_MES);
+  assert.deepEqual(si.alarmasCasa, RED_CADERA(), 'la red es la de cadera');
+  assert.ok(plan('cadera', ['ca1', 'ca10']).avisosHip.includes(D.AVISOS.dosFamilias));
+  for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'cadera')) {
+    assert.ok(!D.RED_HIP[id], `${id}: no trae red de otra región`);
+    assert.equal(!!D.FAMILIA_HIP[id], id === 'ca10', `${id}: solo ca10 cambia de familia`);
+  }
+  const deCadera = Object.entries(D.AVISOS_HIP).filter(([id]) => HYPOTHESES[id]?.region === 'cadera').flatMap(([, ks]) => ks).map(k => D.AVISOS[k]);
+  for (const [region, id, fam] of [['lumbar', 'lu1', 'columna'], ['cervical', 'ce1', 'columna'], ['hombro', 'h2', 'periferica'], ['codo', 'co1', 'periferica'], ['rodilla', 'ro1', 'periferica']]) {
+    const p = plan(region, [id]);
+    assert.equal(p.familia, fam, region);
+    assert.ok(!p.avisosHip.some(a => deCadera.includes(a)), `${region}: sin avisos de cadera`);
+    const posq = P.construirPlan({ region, severidad: 5, hipotesis: [hip(id)], elegidas: [id], posq: { conProtocolo: true } });
+    assert.ok(!posq.avisosHip.includes(D.AVISOS.posqCadera), `${region}: sin el aviso posquirúrgico de cadera`);
+    assert.ok(!p.alarmasCasa.includes(D.TEXTOS_CASA.alarmaFracturaEstres.texto) && !p.alarmasCasa.includes(D.TEXTOS_CASA.alarmaInfeccionCadera.texto), `${region}: sin la red de cadera`);
+  }
+  assert.deepEqual(plan('rodilla', ['ro1']).alarmasCasa, [D.TEXTOS_CASA.alarmaInfeccionRodilla.texto, D.TEXTOS_CASA.alarmaTVP.texto], 'rodilla mantiene la suya');
+});
+
+test('plan: cadera — avisos por hipótesis del cap. 14 y, con cirugía, prótesis y el propio de cadera', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const plan = (ids, extra = {}) => P.construirPlan({ region: 'cadera', severidad: 5, hipotesis: ids.map(hip), elegidas: ids, ...extra });
+  const esperado = {
+    ca1: ['artrosisCadera'], ca2: ['pinzamientoCadera'], ca3: ['pinzamientoCadera'], ca4: ['tendinopatiaGlutea'], ca7: ['gluteoProfundo'],
+    ca9: ['cargaCadera'], ca11: ['ingleAguda', 'ingleDeportiva'], ca12: ['inestabilidadCadera'], ca14: ['nervioCadera'], ca15: ['sensibilizacionCentral'],
+    ca16: ['cargaCadera', 'ingleDeportiva'], ca17: ['cargaCadera', 'ingleDeportiva'], ca18: ['ingleDeportiva'], ca19: ['ingleDeportiva'],
+  };
+  for (const [id, ks] of Object.entries(esperado)) assert.deepEqual(plan([id]).avisosHip, ks.map(k => D.AVISOS[k]), id);
+  for (const id of ['ca5', 'ca6', 'ca8', 'ca10', 'ca13']) assert.deepEqual(plan([id]).avisosHip, [], `${id}: sin aviso propio`);
+  for (const k of ['artrosisCadera', 'pinzamientoCadera', 'inestabilidadCadera', 'tendinopatiaGlutea', 'cargaCadera', 'ingleDeportiva', 'gluteoProfundo', 'nervioCadera', 'posqCadera']) assert.match(D.AVISOS[k], /Hengeveld y Banks 2005, cap\. (14|8)/, k);
+  assert.notEqual(D.AVISOS.artrosisCadera, D.AVISOS.artrosis); assert.notEqual(D.AVISOS.artrosisCadera, D.AVISOS.artrosisRodilla);
+  assert.match(D.AVISOS.artrosisCadera, /cuadro 14\.3, p\. 476/); assert.match(D.AVISOS.artrosisCadera, /cap\. 8, p\. 224/);
+  assert.match(HYPOTHESES.ca1.dosis, /siempre junto al ejercicio/); assert.match(HYPOTHESES.ca1.dosis, /irritabilidad \(F\)/);
+  assert.match(HYPOTHESES.ca2.dosis, /rangos que reproduzcan el pinzamiento/); assert.match(D.AVISOS.pinzamientoCadera, /cuadro 14\.5, p\. 478/);
+  assert.match(HYPOTHESES.ca12.dosis, /estructuras capsuloligamentosas/); assert.match(D.AVISOS.inestabilidadCadera, /cap\. 8, pp\. 224–225/);
+  // ca4: su pauta evita estirar la cintilla, que el cuadro 14.6 sí estira: manda la pauta
+  assert.match(HYPOTHESES.ca4.dosis, /no estirar piriforme ni cintilla iliotibial/); assert.match(D.AVISOS.tendinopatiaGlutea, /cuadro 14\.6, p\. 479/); assert.match(D.AVISOS.tendinopatiaGlutea, /manda la pauta/);
+  for (const id of ['ca4', 'ca9', 'ca11', 'ca16']) assert.ok(!/terapia manual/i.test(HYPOTHESES[id].dosis), `${id}: su pauta no trae terapia manual`);
+  assert.match(D.AVISOS.ingleDeportiva, /cuadro 14\.4/); assert.match(D.AVISOS.nervioCadera, /cuadro 14\.7, p\. 480/);
+  assert.match(D.AVISOS.sensibilizacionCentral, /cap\. 10, recuadro 10\.3, pp\. 264–265/);
+  assert.match(D.AVISOS.ingleAguda, /Serner 2020/);
+  // Cadera no tiene ninguna «Derivar»; diez hipótesis sin pauta
+  for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'cadera')) assert.notEqual(HYPOTHESES[id].dosis, DOSIS_DERIVAR, id);
+  for (const id of ['ca5', 'ca6', 'ca7', 'ca8', 'ca10', 'ca13', 'ca14', 'ca15', 'ca18', 'ca19']) assert.equal(HYPOTHESES[id].dosis, '', id);
+  // Con mecanismo Post-quirúrgico: el de prótesis de las periféricas y, después, el de cadera
+  const posq = plan(['ca1'], { posq: { conProtocolo: true } }).avisosHip;
+  assert.ok(posq.indexOf(D.AVISOS.protesis) >= 0 && posq.indexOf(D.AVISOS.posqCadera) > posq.indexOf(D.AVISOS.protesis));
+  assert.ok(!plan(['ca1']).avisosHip.includes(D.AVISOS.posqCadera));
+  assert.ok(!posq.includes(D.AVISOS.posqRodilla));
+  assert.deepEqual(D.AVISOS_POSQ_REGION.cadera, ['posqCadera']);
+});
+
+test('plan: cadera — ca7 y ca14 (nervio periférico): exploración del nervio cada sesión, sin red neurológica ni regla de días; ca6 descartada', () => {
+  const hip = id => ({ id, name: id, pauta: '', derivar: false, tratada: false });
+  for (const id of ['ca7', 'ca14']) {
+    assert.ok(D.HIP_NERVIO_PERIFERICO.includes(id) && !D.HIP_EXPLORACION_NEURO.includes(id) && !D.HIP_RADICULARES.includes(id), id);
+    const p = P.construirPlan({ region: 'cadera', severidad: 9, hipotesis: [hip(id)], elegidas: [id] });
+    assert.ok(p.nervio && !p.neuro, id);
+    assert.ok(p.sesion.reevaluacion.includes(D.TEXTOS_SESION.reevaluacionNervio), id);
+    assert.ok(!p.sesion.reevaluacion.includes(D.TEXTOS_SESION.reevaluacionRadicular), id);
+    assert.ok(!p.mes.reglas.includes(D.REGLA_RADICULAR_SEVERA), `${id}: sin la regla de los 7–10 días aunque el NRS sea 9`);
+    assert.deepEqual(p.alarmasCasa, RED_CADERA(), `${id}: solo la red de siempre`);
+    assert.ok(p.sesion.intervencion[0].sinPauta, id);
+  }
+  assert.match(HYPOTHESES.ca14.name, /Neuropatías/); assert.match(HYPOTHESES.ca6.name, /Neuromuscular/);
+  assert.ok(D.HIP_NEURO_DESCARTADAS.ca6 && !D.HIP_EXPLORACION_NEURO.includes('ca6') && !D.HIP_NERVIO_PERIFERICO.includes('ca6'));
+  const p6 = P.construirPlan({ region: 'cadera', severidad: 5, hipotesis: [hip('ca6')], elegidas: ['ca6'] });
+  assert.ok(!p6.nervio && !p6.neuro);
+});
+
+test('plan: cadera — red de seguridad de fractura de estrés, infección y TVP siempre; ni vascular aguda, ni urogenital, ni las demás posquirúrgicas', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const p = P.construirPlan({ region: 'cadera', severidad: 5, hipotesis: [hip('ca4')], elegidas: ['ca4'], posq: { conProtocolo: true } });
+  assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre, D.TEXTOS_SESION.cierreFracturaEstres, D.TEXTOS_SESION.cierreInfeccionCadera, D.TEXTOS_SESION.cierreTVP]);
+  const t = P.textoDomiciliario(p, {}, { ejercicios: 'X', parar: 'Y' });
+  assert.ok(t.trimEnd().endsWith(RED_CADERA().join('\n\n')));
+  assert.ok(t.includes(D.TEXTOS_CASA.cirujano.texto));
+  for (const frag of ['aorta', 'desgarr', 'testículo', 'regla', 'embarazo', 'fría', 'pálida', 'compartimental', 'herida', 'rodilla', 'codo']) assert.ok(!t.includes(frag), frag);
+  // Los síntomas son los de las preguntas urgentes ca_os1, ca_in1, ca_in3, ca_v2 y pq_tep
+  const qs = Object.values(SYSTEMIC_SCREENING.cadera.sistemas).flatMap(s => s.preguntas);
+  const q = id => qs.find(x => x.id === id);
+  for (const id of ['ca_os1', 'ca_in1', 'ca_v2', 'pq_tep', 'ca_v4', 'ca_v5', 'ca_u3', 'ca_u5']) assert.ok(q(id)?.urgencia, `${id} es urgente`);
+  assert.match(SYSTEMIC_SCREENING.cadera.urgencia.titulo, /FRACTURA DE ESTRÉS DEL CUELLO FEMORAL/);
+  assert.match(q('ca_os1').razonamiento.porque, /si se sigue cargando, la fisura puede completarse/);
+  for (const frag of ['ingle', 'cadera', 'apoyar el peso', 'actividad', 'de noche', 'deja la actividad', 'hoy mismo']) assert.ok(D.TEXTOS_CASA.alarmaFracturaEstres.texto.includes(frag), frag);
+  assert.match(q('ca_in1').text, /no poder apoyar la pierna/);
+  assert.match(q('ca_in3').razonamiento.peso, /no cede en reposo y sigue de noche/);
+  for (const frag of ['no poder apoyar la pierna', 'fiebre', 'mal en general', 'urgencias', 'prótesis', 'de noche']) assert.ok(D.TEXTOS_CASA.alarmaInfeccionCadera.texto.includes(frag), frag);
+  assert.match(D.TEXTOS_CASA.alarmaFracturaEstres.fuente, /^Lluch 2020/);
+  assert.match(D.TEXTOS_CASA.alarmaInfeccionCadera.fuente, /^Momodu y Savaliya 2023/);
+  assert.match(D.TEXTOS_CASA.alarmaTVP.fuente, /prótesis de rodilla o de cadera/);
+  // Sin cirugía, la misma red
+  const sin = P.construirPlan({ region: 'cadera', severidad: 5, hipotesis: [hip('ca4')], elegidas: ['ca4'] });
+  assert.deepEqual(sin.alarmasCasa, RED_CADERA());
+});
+
+test('plan: cadera — frecuencia de la pauta (ca1 A, ca4 B, ca9 A, ca11 B, ca16 B, con nota); ninguna trae volumen propio de terapia manual', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const esperado = { ca1: 'A', ca4: 'B', ca9: 'A', ca11: 'B', ca16: 'B' };
+  for (const [id, f] of Object.entries(esperado)) {
+    assert.equal(P.frecuenciaPorDefecto(id), f, id);
+    assert.deepEqual(P.construirPlan({ region: 'cadera', severidad: 5, hipotesis: [hip(id)], elegidas: [id] }).mes.notasPauta, [D.FRECUENCIA_PAUTA[id].nota], id);
+  }
+  assert.match(HYPOTHESES.ca1.dosis, /de 1 a 5 sesiones por semana/); assert.match(HYPOTHESES.ca1.dosis, /1–3 veces por semana durante 6–12 semanas/);
+  assert.match(HYPOTHESES.ca4.dosis, /14 sesiones individuales en 8 semanas/);
+  assert.match(HYPOTHESES.ca9.dosis, /6 sesiones en 12 semanas \(semanas 0, 1, 2, 3, 6 y 12\)/);
+  assert.match(HYPOTHESES.ca16.dosis, /3 veces por semana \(unos 90 min, en grupos de 2–4\) durante 8–12 semanas/);
+  for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'cadera')) {
+    assert.ok(!D.VOLUMEN_PAUTA[id], id);
+    if (!esperado[id]) assert.ok(!D.FRECUENCIA_PAUTA[id], id);
+  }
+});
+
+test('plan: con estado de cadera real, la pauta de ca1, su aviso, su nota, la red de cadera y, con cirugía, sus avisos', () => {
+  withState({ region: 'cadera', mecanismo: '', activeHypotheses: ['ca1'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    const { plan } = PLAN.planActual();
+    assert.deepEqual(state.planTratamiento.hipotesis, ['ca1']);
+    assert.equal(state.planTratamiento.frecuencia, 'A');
+    assert.equal(plan.sesion.intervencion[0].pauta, HYPOTHESES.ca1.dosis);
+    assert.equal(plan.familia, 'periferica');
+    assert.deepEqual(plan.alarmasCasa, RED_CADERA());
+    assert.ok(plan.avisosHip.includes(D.AVISOS.artrosisCadera));
+    assert.deepEqual(plan.mes.notasPauta, [D.FRECUENCIA_PAUTA.ca1.nota]);
+  });
+  state.planTratamiento = null;
+  withState({ region: 'cadera', mecanismo: '', activeHypotheses: ['ca4'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    PLAN.planActual();
+    assert.equal(state.planTratamiento.frecuencia, 'B', 'ca4 por defecto propone el plan B');
+  });
+  state.planTratamiento = null;
+  withState({ region: 'cadera', mecanismo: 'Post-quirúrgico', cirugia: { intervencion: 'Prótesis total de cadera', fecha: '', semanasAprox: 8, protocolo: 'Escrito', restricciones: 'Sin flexión de más de 90° las primeras 6 semanas', complicaciones: ['Ninguna'], complicacionOtra: '' },
+    activeHypotheses: ['ca1'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    const { plan } = PLAN.planActual();
+    assert.ok(plan.avisosHip.includes(D.AVISOS.protesis) && plan.avisosHip.includes(D.AVISOS.posqCadera));
+    assert.ok(!plan.avisosHip.includes(D.AVISOS.posqRodilla));
+  });
+  state.planTratamiento = null;
+});
+
+test('plan: varios síntomas en cadera — dosifica el más irritable, avisa del independiente y mantiene lo propio de cadera', () => {
+  const v = () => ({ zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' });
+  withState({ region: 'cadera', mecanismo: '', activeHypotheses: ['ca4'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['cadera_lat'] },
+    sintomasSecundarios: [{ ...v(), zonas: ['muslo_ant'], nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.nombre, 'P2 · Muslo anterior');
+    assert.equal(plan.irritabilidad, 'alta');
+    assert.equal(plan.gravedadNRS, 'maxima', 'la gravedad sale del NRS de P2');
+    assert.equal(plan.niveles.B, 1);
+    assert.ok(plan.avisos.includes(D.AVISOS.dosificaOtro));
+    assert.ok(plan.avisosHip.includes(`${D.AVISOS.independiente} (P2 · Muslo anterior)`));
+    assert.ok(!plan.mes.reglas.includes(D.REGLA_RADICULAR_SEVERA));
+    // Lo propio de cadera sigue
+    assert.equal(plan.familia, 'periferica');
+    assert.equal(plan.escalones.B, D.ESCALONES_PERIFERICOS[1]);
+    assert.ok(plan.avisosHip.includes(D.AVISOS.tendinopatiaGlutea));
+    assert.deepEqual(plan.alarmasCasa, RED_CADERA());
+    assert.match(P.textoPlanSesion(plan, {}), /Irritabilidad: Alta \(según P2 · Muslo anterior, el síntoma más irritable\)/);
+  });
+  // Un secundario de otra región («no valorada hoy») no dosifica
+  withState({ region: 'cadera', mecanismo: '', activeHypotheses: ['ca4'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['cadera_lat'] },
     sintomasSecundarios: [{ ...v(), otraRegion: true, nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
     const { plan } = PLAN.planActual();
     assert.equal(plan.dosifica.n, 1);

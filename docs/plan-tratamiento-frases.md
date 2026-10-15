@@ -56,8 +56,14 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ fuente: Momodu y Savaliya 2023 (StatPearls, «Septic Arthritis») y Truong 2023 (StatPearls, «Septic Bursitis»), como en el razonamiento de r1 y r_i3: la rodilla es la articulación más afectada en el adulto, la artritis séptica es una urgencia y la fiebre solo aparece en el 40–60 %; en la bursitis séptica la fiebre puede faltar  
   ↳ clave `alarmaInfeccionRodilla`
 - [ ] «Si se te hincha la pantorrilla, o la notas caliente, más roja o dolorida que la otra, ve hoy mismo al médico o a urgencias. Si además te falta el aire de repente o te duele el pecho al respirar, llama al 112.»  
-  ↳ fuente: Waheed 2023 (StatPearls, «Deep Venous Thrombosis») y NICE NG158, como en el razonamiento de r_v2: valoración médica en el día; Vyas 2024 (StatPearls, «Acute Pulmonary Embolism»), como en el de pq_tep: con falta de aire o dolor al respirar, 112; NICE NG89 pide explicar al paciente estos síntomas al alta tras una prótesis de rodilla  
+  ↳ fuente: Waheed 2023 (StatPearls, «Deep Venous Thrombosis») y NICE NG158, como en el razonamiento de r_v2: valoración médica en el día; Vyas 2024 (StatPearls, «Acute Pulmonary Embolism»), como en el de pq_tep: con falta de aire o dolor al respirar, 112; NICE NG89 pide explicar al paciente estos síntomas al alta tras una prótesis de rodilla o de cadera (profilaxis de 14 días tras la de rodilla, 28 tras la de cadera y un mes tras una fractura de cadera, como en el razonamiento de pq_tvp)  
   ↳ clave `alarmaTVP`
+- [ ] «Si el dolor de la ingle o de la cadera va a más al apoyar el peso o con la actividad, y empieza a dolerte también de noche, deja la actividad que lo empeora (correr, saltar) y ve hoy mismo al médico.»  
+  ↳ fuente: Lluch 2020, Goodman 2018 y May y Marappa-Ganeshan 2023, como en el razonamiento de ca_os1 y el recuadro de urgencia de cadera: la fractura de estrés del cuello femoral es de alto riesgo y, si se sigue cargando, puede completarse y desplazarse; dolor que empeora con la carga y aparece de noche; derivación urgente, y una radiografía negativa no la descarta  
+  ↳ clave `alarmaFracturaEstres`
+- [ ] «Si la cadera te empieza a doler mucho, hasta el punto de no poder apoyar la pierna, y tienes fiebre o te encuentras mal en general, ve hoy mismo a urgencias. Si tienes una prótesis y aparece un dolor nuevo que no se calma en reposo y sigue de noche, sobre todo después de una infección, ve al médico.»  
+  ↳ fuente: Momodu y Savaliya 2023 (StatPearls, «Septic Arthritis») y Goodman 2018, como en el razonamiento de ca_in1 (artritis séptica: urgencias hoy; la fiebre solo aparece en el 40–60 %) y de ca_in3 (prótesis con una infección reciente y dolor nuevo, o dolor que no cede en reposo y sigue de noche: derivación médica)  
+  ↳ clave `alarmaInfeccionCadera`
 - [ ] «Si te empieza de golpe un dolor de cabeza o de cuello distinto a cualquiera que hayas tenido, o notas visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas sin perder el conocimiento, ve a urgencias hoy mismo.»  
   ↳ fuente: Rushton 2023 (marco IFOMPT cervical), tablas 1–2 y 6, pp. 9–12, como en el razonamiento de cv_ar1 y cv_ar2: disección arterial e insuficiencia vertebrobasilar; los síntomas neurológicos pueden llegar días después  
   ↳ clave `alarmaArterial`
@@ -85,9 +91,11 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ fuente: Maitland 2005, cap. 6, p. 136
 - [ ] Regla de los 7–10 días: `lu3`, `lu5`, `ce3`, `ce12`, solo con NRS registrado de 8 o más.  
   ↳ fuente: Maitland 2005, cap. 9, p. 217
-- [ ] Atrapamiento de un nervio periférico (sensibilidad y fuerza en su territorio al empezar cada sesión, `TEXTOS_SESION.reevaluacionNervio`; sin red de seguridad neurológica ni regla de días): `co8`, `co9`, `co13`, `ro19`.  
+- [ ] Atrapamiento de un nervio periférico (sensibilidad y fuerza en su territorio al empezar cada sesión, `TEXTOS_SESION.reevaluacionNervio`; sin red de seguridad neurológica ni regla de días): `co8`, `co9`, `co13`, `ro19`, `ca7`, `ca14`.  
   ↳ **decisión de diseño** (decisión 65)
 - [ ] `ce2` no cuenta como neurológica: Disfunción neuromuscular cervical: déficit de control motor (coordinación, propiocepción), no compromiso de la raíz ni de la médula.  
+  ↳ **decisión de diseño**
+- [ ] `ca6` no cuenta como neurológica: Disfunción de control neuromuscular de cadera: déficit de control motor (activación, coordinación), no compromiso de un nervio ni de la raíz.  
   ↳ **decisión de diseño**
 - [ ] Red de seguridad de lumbar: con una hipótesis neurológica, cierre `cierreNeuro` y casa `alarmaNeuro`.  
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
@@ -99,6 +107,8 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Red de seguridad de rodilla: con cualquier plan de la región, cierre `cierreInfeccionRodilla` y casa `alarmaInfeccionRodilla`; con cualquier plan de la región, cierre `cierreTVP` y casa `alarmaTVP`.  
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
+- [ ] Red de seguridad de cadera: con cualquier plan de la región, cierre `cierreFracturaEstres` y casa `alarmaFracturaEstres`; con cualquier plan de la región, cierre `cierreInfeccionCadera` y casa `alarmaInfeccionCadera`; con cualquier plan de la región, cierre `cierreTVP` y casa `alarmaTVP`.  
+  ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Con `ce13`, la cantidad de terapia manual es la de su pauta: `TEXTOS_SESION.cantidadReid` (sección 6) en vez de la genérica.  
   ↳ **decisión de diseño** (decisión 41)
 - [ ] Con `ce12` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
@@ -106,6 +116,16 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] Con `co3` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
   ↳ **decisión de diseño** (decisión 42)
 - [ ] Con `ro15` como hipótesis por defecto, el plan del mes empieza en A (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Con `ca1` como hipótesis por defecto, el plan del mes empieza en A (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Con `ca4` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Con `ca9` como hipótesis por defecto, el plan del mes empieza en A (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Con `ca11` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Con `ca16` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
   ↳ **decisión de diseño** (decisión 42)
 - [ ] Avisos con `ce13`: `AVISOS.vertigo` (sección 5).  
   ↳ **decisión de diseño**
@@ -167,13 +187,45 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño**
 - [ ] Avisos con `ro19`: `AVISOS.nervioPeroneo` (sección 5).  
   ↳ **decisión de diseño**
+- [ ] Avisos con `ca1`: `AVISOS.artrosisCadera` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca2`: `AVISOS.pinzamientoCadera` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca3`: `AVISOS.pinzamientoCadera` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca4`: `AVISOS.tendinopatiaGlutea` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca7`: `AVISOS.gluteoProfundo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca9`: `AVISOS.cargaCadera` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca11`: `AVISOS.ingleAguda`, `AVISOS.ingleDeportiva` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca12`: `AVISOS.inestabilidadCadera` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca14`: `AVISOS.nervioCadera` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca15`: `AVISOS.sensibilizacionCentral` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca16`: `AVISOS.cargaCadera`, `AVISOS.ingleDeportiva` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca17`: `AVISOS.cargaCadera`, `AVISOS.ingleDeportiva` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca18`: `AVISOS.ingleDeportiva` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ca19`: `AVISOS.ingleDeportiva` (sección 5).  
+  ↳ **decisión de diseño**
 - [ ] Con mecanismo Post-quirúrgico en una región periférica: `AVISOS.protesis` (sección 5).  
   ↳ **decisión de diseño** (decisión 47)
 - [ ] Con mecanismo Post-quirúrgico en rodilla, además: `AVISOS.posqRodilla` (sección 5).  
   ↳ **decisión de diseño** (decisión 78)
-- [ ] Familia de la terapia manual: columna (Maitland 2005) en lumbar y cervical; periférica (Hengeveld y Banks 2005) en hombro, codo, rodilla. Decide los escalones (sección 3), la cantidad por sesión (sección 6), la progresión y las reglas del mes (sección 7).  
+- [ ] Con mecanismo Post-quirúrgico en cadera, además: `AVISOS.posqCadera` (sección 5).  
+  ↳ **decisión de diseño** (decisión 78)
+- [ ] Familia de la terapia manual: columna (Maitland 2005) en lumbar y cervical; periférica (Hengeveld y Banks 2005) en hombro, codo, rodilla, cadera. Decide los escalones (sección 3), la cantidad por sesión (sección 6), la progresión y las reglas del mes (sección 7).  
   ↳ **decisión de diseño** (decisiones 43–46)
 - [ ] `h6` usa la familia columna aunque su región sea periférica.  
+  ↳ **decisión de diseño** (decisión 50)
+- [ ] `ca10` usa la familia columna aunque su región sea periférica.  
   ↳ **decisión de diseño** (decisión 50)
 - [ ] Con `h6`, además, cierre `cierreArterial` y casa `alarmaArterial`.  
   ↳ **decisión de diseño** (decisión 50)
@@ -289,6 +341,28 @@ Regiones periféricas:
   ↳ fuente en el texto (Hengeveld y Banks 2005)
 - [ ] «Tras una cirugía de rodilla: el libro empieza a movilizar con el anteroposterior y el posteroanterior de la tibia en grados I y II tras una prótesis u otra intervención (Hengeveld y Banks 2005, cap. 15, pp. 507–508), y la rotación de la tibia forma parte de la rehabilitación tras una meniscectomía o una fractura de meseta tibial (p. 504). Siempre dentro del protocolo del cirujano.»  
   ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Artrosis de cadera: la terapia manual, siempre junto al ejercicio (NICE NG226, rec. 1.3.6), adaptando la técnica y la fuerza a la morfología de la cadera y a la irritabilidad (Koc 2025, F). Movimientos accesorios al final del recorrido y, si hay movilidad suficiente, en posiciones dentro del recorrido, sobre todo en flexión-aducción (F/Ad); amplitudes grandes alternadas con las de final de recorrido; los síntomas menores pueden responder a la compresión intermitente añadida (Hengeveld y Banks 2005, cap. 14, cuadro 14.3, p. 476). Para calmar una reagudización, la F/Ad de grado II o III (p. 469); el longitudinal caudal alivia mucho la cadera dolorosa y sirve en la artrosis que migra hacia arriba y en la tensión capsular (p. 464), y el lateral, en la que migra hacia dentro (p. 462). En la artrosis de tipo sistémico, la movilización puede aliviar, pero es esencial el manejo reumatológico (cuadro 14.3, p. 476). En una articulación con artrosis, grados II o III− también cuando lo que se trata es otra estructura (cap. 8, p. 224).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, NICE NG226, Koc 2025)
+- [ ] «Pinzamiento femoroacetabular o labrum: la pauta evita los ejercicios y los rangos que reproducen el pinzamiento (Enseki 2023). La técnica principal del cap. 14, la flexión-aducción (F/Ad), con compresión o rotación medial añadidas, lleva justo a esa posición (Hengeveld y Banks 2005, cap. 14, pp. 457–460). En la rotura del labrum, el capítulo describe dolor y aprensión con la flexión, la aducción y la rotación interna (rotura anterosuperior) o con la hiperextensión, la abducción y la rotación externa (posteroinferior), y la provocación de los síntomas con la compresión axial; según el dolor, movimientos pasivos suaves con accesorios antes de la posición dolorosa (cuadro 14.5, p. 478). Sin técnicas firmes ni compresión en las posiciones que reproducen el pinzamiento.»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Enseki 2023)
+- [ ] «Ligamento redondo e inestabilidad: la pauta evita los ejercicios y las actividades que provoquen síntomas o carguen en exceso las estructuras capsuloligamentosas (Enseki 2023). El cap. 14 de Peripheral no trae un perfil de inestabilidad de la cadera; por la regla general de no usar técnicas firmes con ligamentos debilitados (Hengeveld y Banks 2005, cap. 8, pp. 224–225), sin técnicas firmes al final del recorrido que estiren la cápsula, como el movimiento lateral y el longitudinal caudal, que el capítulo usa para la tensión capsular (cap. 14, pp. 462 y 464).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Enseki 2023)
+- [ ] «Tendinopatía glútea: la base es la educación y el ejercicio de su pauta, con su propia dosis; la pauta no incluye terapia manual, y los escalones solo se refieren a ella (Mellor 2018). El cap. 14 la trata como «bursitis trocantérea» (Hengeveld y Banks 2005, cap. 14, cuadro 14.6, p. 479): cruzar las piernas y tumbarse sobre ese lado reproducen los síntomas, y pide tratar a la vez los signos lumbares y de la cadera que la acompañen. Su estiramiento del tensor de la fascia lata y de la cintilla iliotibial choca con la pauta, que lo evita porque comprime los tendones contra el trocánter: manda la pauta.»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Mellor 2018)
+- [ ] «Tendinopatía o lesión muscular: la base es la carga o el ejercicio de su pauta, con su propia dosis, y los escalones solo se refieren a la terapia manual. Si a la vez hay signos articulares, el cap. 14 recomienda tratar primero esos y usar como parámetro de reevaluación las pruebas isométricas que reproducen los síntomas (Hengeveld y Banks 2005, cap. 14, p. 454).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Lesión aguda de ingle: la pauta es de ejercicio, sin agentes físicos ni punción seca, y los escalones solo se refieren a la terapia manual; el tratamiento manual de tejidos blandos no se hacía sobre la zona dolorosa, y fuera de ella, hasta 5 min si la tensión del aductor limitaba los ejercicios (Serner 2020).»  
+  ↳ fuente en el texto (Serner 2020)
+- [ ] «Dolor inguinal del deportista: el cap. 14 pide considerar como fuente, además de la cadera, la columna lumbar y la torácica, la sacroilíaca y el sistema neurodinámico, y en la zona, las tendinopatías del aductor largo, el psoas ilíaco, el recto femoral y el recto abdominal, la osteítis de pubis, las fracturas de estrés de la pelvis, la inestabilidad del pubis, el atrapamiento de los nervios ilioinguinal y obturador, la hernia inguinal y la patología genitourinaria. En la tendinitis, el movimiento pasivo de la cadera suele ser normal y lo preferido son las técnicas de tejidos blandos; en la fase aguda, reposo, frío y compresión unas 48 h, y después aumentar con suavidad el estiramiento y la contracción dentro de lo indoloro (Hengeveld y Banks 2005, cap. 14, cuadro 14.4, pp. 476–477).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Síndrome glúteo profundo: los escalones se refieren a la articulación. El posteroanterior del trocánter mayor puede servir en el síndrome piriforme (Hengeveld y Banks 2005, cap. 14, p. 465); el nervio ciático se palpa a medio camino entre el trocánter mayor y la tuberosidad isquiática (p. 457) y se explora con la elevación de la pierna recta y el slump (cuadro 14.2, p. 451). Los signos neurológicos se exploran pronto y no se empeoran con pruebas vigorosas (cap. 6, p. 158).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Neuropatías de cadera e ingle: los escalones se refieren a la articulación. En la meralgia parestésica (nervio cutáneo femoral lateral), el slump en decúbito lateral con extensión y aducción de la cadera puede provocar los síntomas, y la palpación profunda justo por debajo de la espina ilíaca anterosuperior, reproducirlos; es esencial tratar a la vez los signos lumbares y de la cadera, la movilización neurodinámica respetando los síntomas, y aconsejar sobre la ropa ajustada y la pérdida de peso; según algunos autores, en muchos casos se resuelve sola en 2 años (Hengeveld y Banks 2005, cap. 14, cuadro 14.7, p. 480). Para los nervios obturador e ilioinguinal, variantes del slump en decúbito lateral y de las pruebas del nervio femoral (pp. 451 y 455; cuadro 14.4, p. 477). Los signos neurológicos se exploran pronto y no se empeoran con pruebas vigorosas (cap. 6, p. 158).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Sensibilización central: con hiperalgesia secundaria, los grados I y II solos no alivian el dolor y los III y IV pueden aumentar la sensibilización, y el tratamiento local tiene poco efecto duradero (Hengeveld y Banks 2005, cap. 10, recuadro 10.3, pp. 264–265).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Tras una cirugía de cadera: el cap. 14 no trata la prótesis; el movimiento lateral sirve para recuperar el recorrido tras una fractura del fémur o de la región acetabular (Hengeveld y Banks 2005, cap. 14, p. 462). Su técnica principal, la flexión-aducción (F/Ad), con compresión o rotación medial añadidas, lleva la cadera a flexión y aducción (pp. 457–460): si el cirujano ha pautado precauciones de luxación, comprobar antes que las respeta. Siempre dentro del protocolo del cirujano.»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
 - [ ] «Las dos hipótesis se tratan en zonas distintas (columna y articulación periférica): los escalones y las reglas del mes son los de la principal; la cantidad por sesión y la progresión, las de cada una.»  
   ↳ decisión 50 de docs/plan-tratamiento.md
 - [ ] «Dosificado según el síntoma más irritable de la fase 3, no según P1 (a igualdad de irritabilidad, manda P1). La gravedad es la de su NRS.»  
@@ -350,6 +424,10 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Momodu y Savaliya 2023, Truong 2023)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir hoy mismo al médico o a urgencias (la pantorrilla hinchada, caliente, más roja o dolorida que la otra) y cuáles, llamar al 112 (falta de aire de repente o dolor en el pecho al respirar), y comprobar que lo ha entendido (Waheed 2023; NICE NG158; Vyas 2024, como en el razonamiento de r_v2 y pq_tep).»  
   ↳ fuente en el texto (Waheed 2023, NICE NG158, Vyas 2024)
+- [ ] «Red de seguridad: explicar qué síntomas exigen dejar la actividad que lo empeora e ir hoy mismo al médico (dolor de ingle o de cadera que va a más al apoyar el peso o con la actividad y aparece también de noche: posible fractura de estrés del cuello del fémur, que una radiografía negativa no descarta) y comprobar que lo ha entendido (Lluch 2020; Goodman 2018; May y Marappa-Ganeshan 2023, como en el razonamiento de ca_os1).»  
+  ↳ fuente en el texto (Goodman 2018, Lluch 2020, May y Marappa-Ganeshan 2023)
+- [ ] «Red de seguridad: explicar qué síntomas exigen ir hoy mismo a urgencias (la cadera duele mucho, hasta no poder apoyar la pierna, con fiebre o malestar general) y, con una prótesis, cuáles piden ir al médico (un dolor nuevo que no cede en reposo y sigue de noche, sobre todo tras una infección), y comprobar que lo ha entendido (Momodu y Savaliya 2023; Goodman 2018, como en el razonamiento de ca_in1 y ca_in3).»  
+  ↳ fuente en el texto (Goodman 2018, Momodu y Savaliya 2023)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (dolor de cabeza o de cuello de golpe y distinto a cualquier otro, visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas súbitas) y comprobar que lo ha entendido; los de una disección pueden llegar días después (Rushton 2023, tablas 1–2 y 6, pp. 9–12).»  
   ↳ fuente en el texto (Rushton 2023)
 
@@ -369,6 +447,16 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Wistow 2025)
 - [ ] «Apofisitis del adolescente: su pauta usa 4 visitas en 12 semanas, con los padres, y el resto del trabajo es en casa (Rathleff 2020); el plan A ya queda por encima de esas visitas, y el programa para casa es el que lleva la carga.»  
   ↳ fuente en el texto (Rathleff 2020)
+- [ ] «Artrosis de cadera: la guía da de 1 a 5 sesiones de ejercicio por semana durante 5–16 semanas (A), y la terapia manual, de 1 a 3 veces por semana durante 6–12 semanas, siempre junto al ejercicio (Koc 2025): los dos planes caben en esos márgenes, y el mes es el comienzo de un programa más largo.»  
+  ↳ fuente en el texto (Koc 2025)
+- [ ] «Tendinopatía glútea: su pauta son 14 sesiones individuales en 8 semanas, casi 2 por semana, con la abducción contra resistencia en consulta 2 veces por semana (Mellor 2018), así que encaja con el plan B; con el plan A, el mes queda por debajo de esa pauta.»  
+  ↳ fuente en el texto (Mellor 2018)
+- [ ] «Tendinopatía proximal de isquiotibiales: su pauta usa 6 sesiones en 12 semanas (las semanas 0, 1, 2, 3, 6 y 12), así que el primer mes son 4, una por semana, como el plan A (Rich 2025).»  
+  ↳ fuente en el texto (Rich 2025)
+- [ ] «Lesión aguda de ingle: su pauta se hizo con sesiones individuales supervisadas, ofrecidas 5 días por semana (los ejercicios de ingle, 3 de ellos); las lesiones de grado 0–2 en la RM necesitaron una mediana de 10 sesiones en unas 2–4 semanas, y las de grado 3, de 40 (Serner 2020): incluso el plan B queda por debajo de lo estudiado.»  
+  ↳ fuente en el texto (Serner 2020)
+- [ ] «Dolor inguinal de larga evolución relacionado con el aductor: su pauta son 3 sesiones supervisadas por semana, de unos 90 min y en grupos de 2–4, durante 8–12 semanas, con el módulo I en casa los días intermedios (Hölmich 1999): incluso el plan B queda por debajo de esa pauta.»  
+  ↳ fuente en el texto (Hölmich 1999)
 - [ ] «Si la pauta trae su propio criterio de progresión, ese manda. Si no: al principio lo mínimo que no provoque recaída; reintroducir lo que agravaba cuando baje la irritabilidad; progresar al ritmo de la curación y de los síntomas; reevaluar dentro de la sesión y entre sesiones (Petersen 2021; Zusman 1998).»  
   ↳ fuente en el texto (Petersen 2021, Zusman 1998)
 - [ ] «Terapia manual en una articulación periférica: empezar con un accesorio en posición indolora y apoyada; pasar a movimientos fisiológicos cuando el recorrido activo supere el 60 % del normal (con dolor y rigidez, el 60 % del recorrido rígido disponible) y, hasta el 75 %, quedarse antes del punto donde empieza el dolor; después, entrar en una molestia controlada (un 10–20 % de su intensidad máxima), y movimientos fisiológicos amplios cuando el dolor solo aparezca en el último 40 % del recorrido. Si no está claro si domina el dolor o la rigidez, tratar primero el dolor; con dudas al pasar a fisiológicos, repetir unas sesiones más los accesorios, y si empeora, volver a ellos (Hengeveld y Banks 2005, cap. 8, pp. 192–196 y 200).»  
