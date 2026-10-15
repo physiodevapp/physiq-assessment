@@ -334,7 +334,7 @@ Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero an
 - [x] Banderas posquirúrgicas filtradas por región (`regiones`, igual que sus preguntas)
 - [x] Esquema, ⓘ y panel (`banderaHTML`, `razonBanderaHTML`, `abrirRazonBandera`, `app.js`), tests (`tests/unit/razonamiento.mjs`, smoke `--solo banderas`), `tests/referencias.mjs` cuenta las fuentes de las banderas
 - [x] Variante de `pq_nervio` para columna (decisión del usuario, 2026-10): `pq_nervio_col` (lumbar y cervical, urgencia; Finucane 2020, Wang 2020, Schroeder 2017) y su bandera. Revisado por el usuario (2026-10)
-- [x] Sistemas compartidos y las siete regiones, rojas y amarillas: ninguna bandera sin «¿Por qué?» (2026-10). Las últimas (7 amarillas de lumbar, enlazadas, y la del dolor que no cambia con la postura de cervical, con razonamiento propio) pendientes de revisión del usuario
+- [x] Sistemas compartidos y las siete regiones, rojas y amarillas: ninguna bandera sin «¿Por qué?» (2026-10). Las últimas (7 amarillas de lumbar, enlazadas, y la del dolor que no cambia con la postura de cervical, con razonamiento propio) revisadas por el usuario. Fase M cerrada
 
 | Región / sistema | Enlaces (`pregunta`, `fase1`) | Razonamiento propio (rojas) | Amarillas | Revisión usuario | Notas |
 |---|---|---|---|---|---|
