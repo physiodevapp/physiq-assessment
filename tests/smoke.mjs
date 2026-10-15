@@ -3709,10 +3709,17 @@ const SECCIONES = [
     const sheetOpen = await page.evaluate(() => document.getElementById('phaseSheet')?.classList.contains('open')
       && document.getElementById('mobilePhaseBar').getAttribute('aria-expanded') === 'true');
     console.log(`  ${sheetOpen ? '✓' : '✗'} Phase sheet opens from the phase bar: ${sheetOpen}`);
+    // Icono de la fase actual (flecha SVG) centrado en su círculo
+    const iconoCentrado = await page.evaluate(() => {
+      const c = document.querySelector('.phase-sheet-item.psi-active .phase-sheet-icon');
+      const a = c?.getBoundingClientRect(), i = c?.querySelector('svg')?.getBoundingClientRect();
+      return !!i && Math.abs((a.top + a.bottom) / 2 - (i.top + i.bottom) / 2) < 1 && Math.abs((a.left + a.right) / 2 - (i.left + i.right) / 2) < 1;
+    });
+    console.log(`  ${iconoCentrado ? '✓' : '✗'} hoja de fases: la flecha de la fase actual está centrada en su círculo`);
     await page.evaluate(() => closePhaseSheet());
     const barraFase = await checkBarraFase(page);
     console.log(`  ${barraFase.ok ? '✓' : '✗'} barra de fase en móvil: botón entero sin caja en «≡», aria-expanded vuelve a false al cerrar; chip «Breve» en la barra (no en la cabecera) en móvil y en la cabecera en escritorio; cabe a 320 px${barraFase.ok ? '' : ' ' + JSON.stringify(barraFase)}`);
-    return sheetOpen === true && barraFase.ok;
+    return sheetOpen === true && iconoCentrado && barraFase.ok;
   } },
 
   { id: 'banda-formulario', titulo: 'Bandas de contexto del formulario previo y del cribado:', run: async ({ page }) => {
