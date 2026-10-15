@@ -271,7 +271,7 @@ async function walkRegionPosq(page, region) {
 // casilla desaparecen y la artrosis vuelve a puntuar.
 async function checkCaderaProtesis(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.fill('#motivoConsulta', 'Rehabilitación tras prótesis de cadera');
   await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
   await page.fill('#cirIntervencion', 'PTC derecha');
@@ -330,7 +330,7 @@ async function checkCaderaProtesis(page) {
 // deja de contar aunque la respuesta siga guardada.
 async function checkCambioMecanismo(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.fill('#motivoConsulta', 'Lumbalgia');
   await page.click('#mecanismo .option-btn:has-text("Insidioso")');
   await page.click('#phase1 .btn-primary');
@@ -371,7 +371,7 @@ async function checkCambioMecanismo(page) {
 // pide derivación y dice que se siga el protocolo del cirujano.
 async function checkHombroTratada(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.fill('#motivoConsulta', 'Rigidez tras fractura de húmero operada');
   await page.click('#mecanismo .option-btn:has-text("Post-quirúrgico")');
   await page.fill('#cirIntervencion', 'Osteosíntesis de húmero proximal');
@@ -449,7 +449,7 @@ const razonEstado = page => page.evaluate(() => {
 // se guarda en el estado y cabe a 320 px sin desbordar.
 async function checkLado(page) {
   await page.setViewportSize({ width: 320, height: 640 });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   const r = {};
   // Sexo (fase 1, junto a la edad): se guarda, un segundo toque lo borra, cabe a 320 px
   await page.click('#sexo .option-btn:has-text("Mujer")');
@@ -499,7 +499,7 @@ async function checkLado(page) {
 // «árbol completado» y en la fase 5, por clics reales.
 async function checkDerivacionVascular(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.fill('#motivoConsulta', 'Dolor lumbar al caminar');
   await page.click('#mecanismo .option-btn >> nth=0');
   await page.click('#cronologia .option-btn >> nth=0');
@@ -534,7 +534,7 @@ async function checkDerivacionVascular(page) {
 // lateral sin velo, se puede marcar un test con él abierto, ir a la fase 5 lo
 // cierra. 390 px: bottom sheet con velo y atrás lo cierra sin salir de la 4b.
 async function irA4bHombro(page) {
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.fill('#motivoConsulta', 'Dolor de hombro al elevar el brazo');
   await page.click('#mecanismo .option-btn >> nth=1');
   await page.click('#cronologia .option-btn >> nth=0');
@@ -647,7 +647,7 @@ async function checkAnatomia(page, browser) {
   await page.setViewportSize({ width: 1280, height: 900 });
   // Fase 2 (cribado de hombro): «Anatomía» dentro del «¿Por qué?» de la
   // pregunta pleurítica (h5) y en su panel «Ampliar»
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await irAFase2(page, 'hombro');
   await page.click('#tab_h_pulmonar');
   const h5 = '#panel_h_pulmonar #sq2_h5';
@@ -689,7 +689,7 @@ async function checkAnatomia(page, browser) {
 // abierto. 390 px: sheet con velo que atrás cierra sin salir de la fase 4.
 const ARBOL_PASO = 'lu_step1';
 async function irAFase4Lumbar(page) {
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await irAFase2(page, 'lumbar');
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
@@ -759,7 +759,7 @@ async function checkArbolRazon(page) {
 
 async function checkRazonamientoEscritorio(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await irAFase2(page, 'lumbar');
   const base = `#panel_${RAZON_SIS}`;
   await page.click(`${base} #sq2_${RAZON_Q1} details.razon > summary`);
@@ -803,7 +803,7 @@ async function checkRazonamientoEscritorio(page) {
 
 async function checkRazonamientoMovil(page) {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await irAFase2(page, 'lumbar');
   const acc = `#acc_${RAZON_SIS}`;
   await page.click(`${acc} .sistema-accordion-header`);
@@ -839,7 +839,7 @@ async function checkBanderas(browser) {
   const r = {};
   const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
   const page = await context.newPage();
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await irAFase2(page, 'lumbar');
   await page.click('#tab_l_espondilo');
   const panel = '#panel_l_espondilo';
@@ -909,7 +909,7 @@ async function checkAmpliarIA(browser) {
   const r = {};
   const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
   const page = await context.newPage();
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.evaluate(() => { localStorage.removeItem('physiq-assessment-ia-destino'); });
   await page.fill('#edadPaciente', '47').catch(() => {});
   await irAFase2(page, 'lumbar');
@@ -1111,7 +1111,7 @@ async function checkPreguntaIA(browser, errors) {
   await context.addInitScript(DICTADO_FALSO);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (pregunta IA): ${err.message}`));
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.evaluate(() => {
     localStorage.removeItem('physiq-assessment-ia-destino');
     window.__iaHrefs = [];
@@ -1295,7 +1295,7 @@ async function checkCuestionarios(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (cuestionarios): ${err.message}`));
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   const abierto = () => page.evaluate(() => document.getElementById('cuestOverlay').classList.contains('open'));
   const res = () => page.textContent('#cuestResultado');
   const toca = (n, v) => page.click(`#cuestCuerpo .cuest-item[data-item="${n}"] .cuest-op[data-valor="${v}"]`);
@@ -1420,7 +1420,7 @@ async function checkTiemposTejido(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (tejidos): ${err.message}`));
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   const abierto = () => page.evaluate(() => document.getElementById('tejidosOverlay').classList.contains('open'));
   await page.click('#tejidosBtn');
   r.dialogo = await page.evaluate(([n, nPend]) => {
@@ -1648,7 +1648,7 @@ async function checkDialogos(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 320, height: 700 } });
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (diálogos): ${err.message}`));
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   const r = { fallos: [] };
   for (const [etiqueta, borra, cancelLabel] of ACCIONES_DIALOGO) {
     const m = await page.evaluate(async ([etiqueta, borra, cancelLabel]) => {
@@ -1742,7 +1742,7 @@ async function checkFase5Plegado(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (fase 5 plegado): ${err.message}`));
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   const fase5 = (datos, id, mirar) => page.evaluate(async ([datos, id, mirar]) => {
     const { HYPOTHESES, DOSIS_DERIVAR } = await import('./data.js');
     Object.assign(state, { mecanismo: '', treeAnswers: {}, testResults: {}, derivacionResuelta: {} }, datos);
@@ -1793,7 +1793,7 @@ async function checkBotonesTactil(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (táctil): ${err.message}`));
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   const r = {};
   r.hoverSoloConRaton = await page.evaluate(() => {
     const clases = ['.option-btn', '.nrs-btn', '.test-result-btn', '.fp-escala-btn', '.region-card'];
@@ -1872,7 +1872,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (exportar): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (exportar): ${msg.text()}`); });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   const r = {};
 
   await page.click('#sessionBtn');
@@ -2032,7 +2032,7 @@ async function checkAvisoVersion(browser, errors) {
     await context.route('**/version.json', route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ sha: 'bbbbbbb', fecha: '2026-10-11T10:00:00Z' }) }));
     const page = await context.newPage();
     page.on('pageerror', err => errors.push(`pageerror (aviso versión): ${err.message}`));
-    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await abrirApp(page);
     await page.waitForSelector('#versionAviso', { timeout: 5000 }).catch(() => {});
     return { context, page };
   };
@@ -2150,7 +2150,7 @@ async function checkToast(browser, errors) {
     const context = await browser.newContext({ viewport: { width: w, height: 700 }, hasTouch: true });
     const page = await context.newPage();
     page.on('pageerror', err => errors.push(`pageerror (toast ${w}): ${err.message}`));
-    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await abrirApp(page);
     r[w] = {};
     for (const f of [1, 5]) {
       await page.evaluate(f => { if (f !== 1) state.region = 'hombro'; goToPhase(f); }, f);
@@ -2175,7 +2175,7 @@ async function checkToast(browser, errors) {
   }
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
   const page = await context.newPage();
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.evaluate(async m => (await import('./app.js')).showToast(m, 'warning'), corto);
   const m = await medir(page);
   r.escritorio = m && m.lineas === 1 && Math.abs(m.left - m.right) <= 1 ? true : m;
@@ -2192,7 +2192,7 @@ async function checkInformeNarrativo(browser, errors) {
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (informe IA): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (informe IA): ${msg.text()}`); });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.evaluate(() => { try { localStorage.removeItem('physiq-license-key'); } catch {} });
   await page.reload({ waitUntil: 'networkidle' });
   const sinBotonSinLicencia = !(await page.isVisible('#grabBtn'));
@@ -2464,7 +2464,7 @@ async function recorrerGrabadora(browser, errors) {
   const clases = () => page.evaluate(() => document.getElementById('grabBtn').className);
   const esperaClase = (c, si = true) => page.waitForFunction(([c, si]) => document.getElementById('grabBtn').classList.contains(c) === si, [c, si]);
   const r = {};
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.waitForSelector('#grabBtn', { state: 'visible' });
   r.botonVisible = true;
 
@@ -2590,7 +2590,7 @@ async function checkGrabadoraSilencio(errors) {
       await mockWorkerYTurnstile(context, ['x']);
       const page = await context.newPage();
       page.on('pageerror', err => errors.push(`pageerror (silencio): ${err.message}`));
-      await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+      await abrirApp(page);
       await page.waitForSelector('#grabBtn', { state: 'visible' });
       await page.click('#grabBtn');
       await page.waitForFunction(() => document.getElementById('grabBtn').classList.contains('recording'));
@@ -2624,7 +2624,7 @@ async function recorrerGrabadoraRaton(browser, errors) {
   page.on('pageerror', err => errors.push(`pageerror (grabadora ratón): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error') errors.push(`console (grabadora ratón): ${msg.text()}`); });
   const r = {};
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.waitForSelector('#grabBtn', { state: 'visible' });
   r.ratonSinPapeleraSinGrabar = !(await page.isVisible('#grabDescBtn'));
   await page.click('#grabBtn');
@@ -2704,7 +2704,7 @@ async function checkBandaFormulario(page) {
   for (const [ancho, alto] of [[390, 844], [1280, 860]]) {
     const k = `w${ancho}`;
     await page.setViewportSize({ width: ancho, height: alto });
-    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await abrirApp(page);
     await page.click('#fpDet_comun > summary');
     await page.waitForSelector('#fpBody_comun .fp-text, #fpBody_comun button');
     const pos = await posiciones('#fpDet_comun');
@@ -2784,7 +2784,7 @@ async function checkBandaFormulario(page) {
   }
   // 320 px: la banda cabe en una línea, sin desbordar
   await page.setViewportSize({ width: 320, height: 700 });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.click('#fpDet_comun > summary');
   await page.waitForSelector('#fpBody_comun .fp-text, #fpBody_comun button');
   await irA((await posiciones('#fpDet_comun')).dentro);
@@ -2817,7 +2817,7 @@ async function checkFase6(browser, errors) {
     headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
     contentType: 'application/json', body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo' }, demoOnly: false }),
   }));
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   const r = {};
   await walkRegion(page, 'lumbar');
   r.botonEnFase5 = await page.isVisible('#btnIrPlan');
@@ -2927,6 +2927,28 @@ async function checkFase6(browser, errors) {
   return r;
 }
 
+// Abre la app y espera a que sus módulos se hayan ejecutado. `networkidle`
+// solo dice que no quedan peticiones: si una petición de un módulo falló, la
+// app no llega a arrancar y la prueba se quedaba 30 s en un clic, con errores
+// «state/goToPhase is not defined» que no decían por qué. Pasó dos veces en
+// ejecuciones completas justo tras arrancar `npx serve` (2026-10); la misma
+// firma sale cortando a propósito la conexión de un .js. Sin reintento: si la
+// app no carga, la sección falla, pero diciendo qué petición se perdió.
+async function abrirApp(page, url = BASE_URL) {
+  if (!page.__fallidas) {
+    page.__fallidas = [];
+    page.on('requestfailed', r => page.__fallidas.push(`${r.url().replace(url, '')} (${r.failure()?.errorText || 'error'})`));
+  }
+  page.__fallidas.length = 0;
+  await page.goto(url, { waitUntil: 'networkidle' });
+  const lista = await page.waitForFunction(() => typeof window.goToPhase === 'function' && !!window.state, null, { timeout: 10000 })
+    .then(() => true, () => false);
+  if (!lista) {
+    const propias = page.__fallidas.filter(f => !/^https?:/.test(f));
+    throw new Error(`la app no terminó de cargar (módulos sin ejecutar)${propias.length ? `; peticiones fallidas: ${propias.join(', ')}` : ''}`);
+  }
+}
+
 async function nuevaPagina(browser, errors, moduleStatus) {
   const page = await browser.newPage();
   page.on('pageerror', err => errors.push(`pageerror: ${err.message}`));
@@ -2954,7 +2976,7 @@ async function porRegiones(ctx, walk) {
   const res = await enParalelo(REGIONS, ctx.paralelo, async (region) => {
     let page = paginas.pop() || await nuevaPagina(ctx.browser, ctx.errors);
     try {
-      await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+      await abrirApp(page);
       return await walk(page, region);
     } finally { paginas.push(page); }
   });
@@ -2969,7 +2991,7 @@ async function porRegiones(ctx, walk) {
 async function checkSintomas(page) {
   const r = {};
   await page.setViewportSize({ width: 320, height: 700 });
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   await page.evaluate(() => { document.getElementById('patientName').value = 'Prueba síntomas'; });
   await irAFase2(page, 'lumbar');
   await page.click('#btnContinuarSinss');
@@ -3054,10 +3076,11 @@ async function checkSintomas(page) {
   r.hombro = await zonasDe('hombro', ['Hombro anterior', 'Hombro lateral (deltoides)', 'Hombro posterior', 'Brazo hasta el codo', 'Por debajo del codo', 'Cuello o trapecio'], false);
   r.codo = await zonasDe('codo', ['Codo lateral', 'Codo medial', 'Codo posterior', 'Codo anterior', 'Antebrazo', 'Mano'], false);
   r.cadera = await zonasDe('cadera', ['Ingle', 'Cadera lateral', 'Glúteo', 'Muslo anterior', 'Rodilla', 'Zona lumbar'], false);
-  // Una región aún sin zonas (cuando rodilla las tenga, usar otra que no las tenga): sin tarjeta
-  await cambiarRegion('rodilla');
+  r.rodilla = await zonasDe('rodilla', ['Rodilla anterior (rótula)', 'Rodilla medial', 'Rodilla lateral', 'Rodilla posterior (hueco poplíteo)', 'Muslo', 'Pierna'], false);
+  // Una región aún sin zonas (cuando tobillo y pie las tenga, esta comprobación sobra): sin tarjeta
+  await cambiarRegion('tobillo_pie');
   r.sinZonasSinTarjeta = await page.evaluate(() => document.getElementById('cardSintomas').hidden && state.sintomasSecundarios.length === 0);
-  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.fase5 && r.cervical && r.hombro && r.codo && r.cadera && r.sinZonasSinTarjeta;
+  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.fase5 && r.cervical && r.hombro && r.codo && r.cadera && r.rodilla && r.sinZonasSinTarjeta;
   return r;
 }
 
@@ -3116,7 +3139,7 @@ const SECCIONES = [
   // Toda la barra de fase es el botón (se pulsa por la izquierda, sobre el título).
   { id: 'barra-fase', titulo: 'Barra de fase en móvil:', run: async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await abrirApp(page);
     await page.click('#mobilePhaseBar', { position: { x: 60, y: 20 } }).catch(() => {});
     await page.waitForTimeout(150);
     const sheetOpen = await page.evaluate(() => document.getElementById('phaseSheet')?.classList.contains('open')
@@ -3222,11 +3245,11 @@ const SECCIONES = [
     return r.ok;
   } },
 
-  { id: 'sintomas', titulo: 'Síntomas P1–P4 (fase 3, lumbar, cervical, hombro, codo y cadera):', run: async ({ browser, errors }) => {
+  { id: 'sintomas', titulo: 'Síntomas P1–P4 (fase 3, lumbar, cervical, hombro, codo, cadera y rodilla):', run: async ({ browser, errors }) => {
     const page = await nuevaPagina(browser, errors);
     try {
       const r = await checkSintomas(page);
-      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; fase 5 con P1–P3; cervical, hombro, codo y cadera con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior; rodilla (sin zonas) sin tarjeta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; fase 5 con P1–P3; cervical, hombro, codo, cadera y rodilla con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior; tobillo y pie (sin zonas) sin tarjeta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
       return r.ok;
     } finally { await page.context().close(); }
   } },
@@ -3294,7 +3317,7 @@ async function main() {
 
   // Siempre: que cada módulo cargue (también comprueba que el servidor responde).
   console.log(`Loading ${BASE_URL} ...`);
-  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await abrirApp(page);
   console.log('\nModule file responses:');
   let modulesOk = true;
   for (const f of MODULE_FILES) {
