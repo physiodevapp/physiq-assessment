@@ -269,7 +269,16 @@ Cómo se aplican las decisiones 43–46 a hombro: cada región del plan tiene un
 - **Cuadrante y posición de bloqueo** (pp. 304–308): para limitaciones menores y las fases finales del pinzamiento; con una limitación evidente del recorrido activo no hacen falta, y se trabaja la flexión. Ni la flexión ni el cuadrante se usan en grado I (p. 310).
 - La parte 1 no trae aún los perfiles clínicos (capsulitis, rigidez dolorosa, artrosis, inestabilidad, fracturas del cuello del húmero, pinzamiento, acromioclavicular): están en la parte 2.
 
-**Pendiente del cap. 11 de *Peripheral*** (parte 1 leída; falta la parte 2, con los perfiles clínicos): avisos por estadio de la capsulitis, inestabilidad (`h4`), acromioclavicular (`h7`), artrosis glenohumeral (afinar `h10`) y precauciones del complejo del hombro que el capítulo traiga.
+**Cap. 11, parte 2 (pp. 316–335; PDF del usuario, escaneado, leído entero, 2026-10).** Sigue con las técnicas (mano a la espalda, aducción y extensión horizontales, longitudinal caudal, posteroanterior, anteroposterior, lateral, pruebas de inestabilidad de Gerber y Ganz, diferenciación acromiohumeral, acromioclavicular y esternoclavicular). Lo que sirve para el plan:
+- **Hombro muy doloroso** (grupo clínico 1): el posteroanterior con el brazo al lado es «uno de los movimientos más valiosos» (p. 324), y el longitudinal caudal, una técnica suave para aliviar el dolor glenohumeral y acromiohumeral muy intenso (p. 322); el anteroposterior es menos útil ahí (p. 326). Coincide con el escalón 1 (accesorio en posición indolora y apoyada).
+- **Capsulitis**: el posteroanterior sirve en cualquier estadio de la capsulitis; el grado, la velocidad, el ritmo y la duración los deciden los hallazgos clínicos (p. 325). El longitudinal caudal en abducción o flexión completa estira la cápsula (p. 322).
+- **Inestabilidad**: el anteroposterior estira la cápsula posterior, recoloca una cabeza humeral subluxada hacia delante y ayuda a recuperar la propiocepción en hombros inestables (p. 326). Las pruebas de aprensión y de cajón confirman la inestabilidad (pp. 327–330).
+- **Fractura del cuello del húmero**: el movimiento lateral ayuda a recuperar la abducción (p. 327).
+- **Tras reparar el manguito**: la rotación acromiohumeral con compresión, para los síntomas menores residuales (p. 331).
+- Técnica lateral: cuidado de no comprometer los nervios cubital y mediano en el brazo (p. 327).
+- La parte 2 aún no llega a los perfiles clínicos ni al caso clínico que anuncia la portada del capítulo.
+
+**Pendiente del cap. 11 de *Peripheral*** (partes 1 y 2 leídas, pp. 275–335; faltan los perfiles clínicos y el caso clínico): avisos por estadio de la capsulitis, inestabilidad (`h4`), acromioclavicular (`h7`), artrosis glenohumeral (afinar `h10`) y precauciones del complejo del hombro que el capítulo traiga.
 
 ### Referencia completa
 Maitland GD; Hengeveld E, Banks K, English K (eds.). *Maitland's Vertebral Manipulation*. 7.ª ed. Edimburgo: Elsevier Butterworth-Heinemann; 2005. ISBN 978-0-7506-8806-2 (portada y página de créditos aportadas por el usuario). Clave prevista en `data/referencias.js`: `'Maitland 2005'`, que se añadirá cuando `data/` la cite (el test rechaza entradas que nada cita), igual que Petersen 2021, Barakatt 2009, Zusman 1998 y Silbernagel 2007.
