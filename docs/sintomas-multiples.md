@@ -1,6 +1,6 @@
 # Varios síntomas (P1–P4) — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2**: cervical hecha; zonas de lumbar y cervical revisadas por el usuario (2026-10); hombro, codo, cadera y rodilla hechas (`data/hombro.js`, `data/codo.js`, `data/cadera.js`, `data/rodilla.js`, las 6 zonas de la tabla cada una; en rodilla, con «Rodilla» delante de anterior, medial, lateral y posterior), pendientes de revisión. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
+Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2**: cervical hecha; zonas de lumbar y cervical revisadas por el usuario (2026-10); hombro, codo, cadera, rodilla y tobillo y pie hechas (las zonas de la tabla en cada `data/<región>.js`; en rodilla, con «Rodilla» delante de anterior, medial, lateral y posterior, y en tobillo y pie, «o» en vez de «/»), pendientes de revisión. Con esto, el paso 2 está completo: las 7 regiones tienen zonas. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
 
 ## Decisiones tomadas (octubre 2026)
 Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
