@@ -360,19 +360,20 @@ test('IdFAI: 0–37 (la pregunta 1 no puntúa); corte ≥ 10,5 de la versión es
   assert.equal(con({ 2: 5, 4: 5, 3: 1 }).interpretacion.nivel, 'alto');
 });
 
-test('FABQ: solo los 11 ítems que puntúan; actividad 0–24 y trabajo 0–42, sin total; corte de trabajo > 34 (Fritz y George 2002)', () => {
+test('FABQ: 16 frases, total 0–96 (Kovacs 2006), actividad 2–5 y trabajo 6, 7, 9–12 y 15 (Waddell 1993); corte de trabajo > 34', () => {
   const d = def('fabq');
-  assert.deepEqual(d.items.map(it => it.n), [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 15]);
+  assert.deepEqual(d.items.map(it => it.n), Array.from({ length: 16 }, (_, i) => i + 1));
   assert.deepEqual(d.subescalas.map(x => x.items), [[2, 3, 4, 5], [6, 7, 9, 10, 11, 12, 15]]);
   const p = L.puntuar(d, todosN('fabq', 6));
-  assert.equal(p.total, null);
+  assert.equal(p.total, 96);
   assert.deepEqual(p.subescalas.map(x => x.valor), [24, 42]);
-  // Trabajo = 5 × 6 ítems (6, 7, 9, 10, 11, 12) + v en el ítem 15 = 30 + v
-  const trabajo = v => L.puntuar(d, { ...todosN('fabq', 0), 6: 5, 7: 5, 9: 5, 10: 5, 11: 5, 12: 5, 15: v });
+  // Trabajo = 5 × 6 ítems (6, 7, 9, 10, 11, 12) + v en el ítem 15 = 30 + v; los que no puntúan no cuentan
+  const trabajo = v => L.puntuar(d, { ...todosN('fabq', 0), 8: 6, 13: 6, 6: 5, 7: 5, 9: 5, 10: 5, 11: 5, 12: 5, 15: v });
   assert.equal(trabajo(4).subescalas[1].valor, 34);
+  assert.equal(trabajo(4).total, 46);
   assert.equal(trabajo(4).interpretacion.nivel, 'medio');   // 30–34
   assert.equal(trabajo(5).interpretacion.nivel, 'alto');    // > 34
-  assert.equal(L.puntuar(d, { ...todosN('fabq', 0), 6: 5, 7: 5, 9: 5, 10: 5, 11: 5, 12: 4, 15: 0 }).interpretacion.nivel, 'ok');  // 29
+  assert.equal(L.puntuar(d, { ...todosN('fabq', 0), 6: 5, 7: 5, 9: 5, 10: 5, 11: 5, 12: 4 }).interpretacion.nivel, 'ok');  // 29
 });
 
 test('PCS: 0–52 con rumiación 8–11, magnificación 6, 7, 13 y desesperanza 1–5 y 12; corte 30', () => {
