@@ -2821,6 +2821,22 @@ async function checkFase6Cervical(browser, errors) {
   r.plan = await page.evaluate(() => state.currentPhase === 6 && !document.querySelector('#planContenido .alert-info')
     && document.querySelectorAll('#planContenido .card').length === 5);
   const { D } = await page.evaluate(async () => ({ D: JSON.parse(JSON.stringify(await import('./data/plan-tratamiento.js'))) }));
+  // Varios síntomas (Fase N, paso 4) en cervical: un P2 en el brazo más
+  // irritable e «Independiente» dosifica el plan y avisa; sin él, nada
+  r.sinSecundarios = await page.evaluate(() => !document.getElementById('planDosifica'));
+  await page.evaluate(() => {
+    state.sintomaPrincipal.zonas = ['cuello'];
+    state.sintomasSecundarios = [{ zonas: ['brazo'], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }];
+    planElegir('sesion', 'primera');
+  });
+  await page.waitForSelector('#planDosifica');
+  r.dosificaP2 = await page.evaluate(() => {
+    const t = document.getElementById('planContenido').textContent;
+    return document.getElementById('planDosifica').textContent.includes('P2 · Brazo, el síntoma más irritable')
+      && t.includes('NRS 9/10') && t.includes('Un síntoma va independiente de P1') && t.includes('(P2 · Brazo)');
+  });
+  await page.evaluate(() => { state.sintomasSecundarios = []; state.sintomaPrincipal.zonas = []; planElegir('sesion', 'primera'); });
+  await page.waitForFunction(() => !document.getElementById('planDosifica'));
   const casa = async () => {
     await page.fill('#planNotasCasa', 'Movilidad del cuello');
     await page.fill('#planParar', 'Si aumenta el hormigueo');
@@ -3440,7 +3456,7 @@ const SECCIONES = [
 
   { id: 'fase6-cervical', titulo: 'Fase 6: plan de tratamiento en cervical (L3):', run: async ({ browser, errors }) => {
     const r = await checkFase6Cervical(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} cervical por la interfaz real hasta la 6: plan con sus tarjetas; el programa para casa termina con la red de seguridad arterial y nunca con la de cola de caballo; con ce3, exploración neurológica, aviso de manipulación y red de la médula antes de la arterial; con ce12, aviso de la pauta aguda sin terapia manual y nota de 2 sesiones/semana; con ce13, el volumen de su pauta en vez del genérico y el aviso de mareo${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} cervical por la interfaz real hasta la 6: plan con sus tarjetas; con varios síntomas dosifica el más irritable (P2 · Brazo) y avisa del independiente; el programa para casa termina con la red de seguridad arterial y nunca con la de cola de caballo; con ce3, exploración neurológica, aviso de manipulación y red de la médula antes de la arterial; con ce12, aviso de la pauta aguda sin terapia manual y nota de 2 sesiones/semana; con ce13, el volumen de su pauta en vez del genérico y el aviso de mareo${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

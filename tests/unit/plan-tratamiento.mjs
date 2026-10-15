@@ -531,6 +531,71 @@ test('plan: varios síntomas — con estado real, plan.js pasa P1 y los secundar
   state.planTratamiento = null; state.sintomasSecundarios = [];
 });
 
+test('plan: varios síntomas en cervical — dosifica el más irritable, avisa del independiente y mantiene lo propio de cervical', () => {
+  const v = () => ({ zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' });
+  withState({ region: 'cervical', activeHypotheses: ['ce3'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['cuello'] },
+    sintomasSecundarios: [{ ...v(), zonas: ['brazo'], nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.nombre, 'P2 · Brazo');
+    assert.equal(plan.irritabilidad, 'alta');
+    assert.equal(plan.gravedadNRS, 'maxima', 'la gravedad sale del NRS de P2');
+    assert.ok(plan.avisos.includes(D.AVISOS.dosificaOtro));
+    assert.ok(plan.avisosHip.includes(`${D.AVISOS.independiente} (P2 · Brazo)`));
+    // La regla de los 7–10 días usa el NRS del síntoma que dosifica (P2: 9), no el de P1 (4)
+    assert.ok(plan.mes.reglas.includes(D.REGLA_RADICULAR_SEVERA));
+    // Lo propio de cervical sigue
+    assert.ok(plan.avisosHip.includes(D.AVISOS.manipulacionCervical));
+    assert.deepEqual(plan.alarmasCasa, [D.TEXTOS_CASA.alarmaMedula.texto, D.TEXTOS_CASA.alarmaArterial.texto]);
+    assert.match(P.textoPlanSesion(plan, {}), /Irritabilidad: Alta \(según P2 · Brazo, el síntoma más irritable\)/);
+  });
+  // Un secundario de otra región («no valorada hoy») no dosifica
+  withState({ region: 'cervical', activeHypotheses: ['ce1'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['cuello'] },
+    sintomasSecundarios: [{ ...v(), otraRegion: true, nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.n, 1);
+    assert.ok(!plan.avisos.includes(D.AVISOS.dosificaOtro));
+  });
+  state.planTratamiento = null; state.sintomasSecundarios = [];
+});
+
+test('plan: varios síntomas en hombro — dosifica el más irritable, avisa del independiente y mantiene lo propio de hombro', () => {
+  const v = () => ({ zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' });
+  withState({ region: 'hombro', activeHypotheses: ['h1'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['hombro_ant'] },
+    sintomasSecundarios: [{ ...v(), zonas: ['cuello'], nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.nombre, 'P2 · Cuello o trapecio');
+    assert.equal(plan.irritabilidad, 'alta');
+    assert.equal(plan.gravedadNRS, 'maxima', 'la gravedad sale del NRS de P2');
+    assert.equal(plan.niveles.B, 1);
+    assert.ok(plan.avisos.includes(D.AVISOS.dosificaOtro));
+    assert.ok(plan.avisosHip.includes(`${D.AVISOS.independiente} (P2 · Cuello o trapecio)`));
+    // Sin hipótesis radicular en hombro: nunca la regla de los 7–10 días
+    assert.ok(!plan.mes.reglas.includes(D.REGLA_RADICULAR_SEVERA));
+    // Lo propio de hombro sigue
+    assert.equal(plan.familia, 'periferica');
+    assert.equal(plan.escalones.B, D.ESCALONES_PERIFERICOS[1]);
+    assert.ok(plan.avisosHip.includes(D.AVISOS.capsulitisPrecoz) && plan.avisosHip.includes(D.AVISOS.capsulitisEstadios));
+    assert.deepEqual(plan.alarmasCasa, [D.TEXTOS_CASA.alarmaCardiaca.texto]);
+    assert.match(P.textoPlanSesion(plan, {}), /Irritabilidad: Alta \(según P2 · Cuello o trapecio, el síntoma más irritable\)/);
+  });
+  // Un secundario de otra región («no valorada hoy») no dosifica
+  withState({ region: 'hombro', activeHypotheses: ['h2'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['hombro_lat'] },
+    sintomasSecundarios: [{ ...v(), otraRegion: true, nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.n, 1);
+    assert.ok(!plan.avisos.includes(D.AVISOS.dosificaOtro));
+  });
+  state.planTratamiento = null; state.sintomasSecundarios = [];
+});
+
 test('plan: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
   const MARCA = 'MARCA_PLAN_FASE6';
   withState({ region: 'lumbar', activeHypotheses: ['lu3'], planTratamiento: { hipotesis: ['lu3'], nivel: 'B', frecuencia: 'A', sesion: 'primera', gravedad: null, irritabilidad: null, notas: { sesion: MARCA, mes: MARCA, domiciliario: MARCA, parar: MARCA }, duraciones: {} } }, () => {
