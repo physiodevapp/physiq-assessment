@@ -183,7 +183,7 @@ test('síntomas: los `pasos` de cada zona existen en el árbol de su región, si
       z.pasos.forEach(p => assert.ok(ids.has(p), `${r}.${z.id}: paso inexistente ${p}`));
     });
   }
-  for (const r of ['lumbar', 'cervical', 'hombro', 'codo', 'cadera']) assert.ok(ZONAS_SINTOMA[r].every(z => z.pasos?.length), `${r}: todas las zonas con pasos`);
+  for (const r of ['lumbar', 'cervical', 'hombro', 'codo', 'cadera', 'rodilla']) assert.ok(ZONAS_SINTOMA[r].every(z => z.pasos?.length), `${r}: todas las zonas con pasos`);
 });
 
 test('síntomas: pistas en el árbol — solo los síntomas con una zona ligada al paso; otra región nunca', () => {
@@ -243,6 +243,16 @@ test('síntomas: pistas en el árbol — cadera: la rodilla en el perfil degener
   assert.deepEqual(q('ca_step2'), ['Síntoma P2:']);
   assert.deepEqual(q('ca_step5'), ['Síntoma P1 (principal):']);
   assert.deepEqual(q('ca_step3b'), []);
+});
+
+test('síntomas: pistas en el árbol — rodilla: el muslo en el referido de cadera; el hueco poplíteo en el posterior', () => {
+  const st = { region: 'rodilla', severidad: 5,
+    sintomaPrincipal: { ...vacio(), zonas: ['rodilla_post'] },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['muslo'], nrs: 3, relacion: 'juntos' }] };
+  const z = ZONAS_SINTOMA.rodilla, q = paso => S.pistasSintomasPaso(st, z, paso).map(x => x.q);
+  assert.deepEqual(q('ro_step2c'), ['Síntoma P2:']);
+  assert.deepEqual(q('ro_step7'), ['Síntoma P1 (principal):']);
+  assert.deepEqual(q('ro_step1'), []);
 });
 
 test('síntomas: pistas en el árbol — el recuadro «📝» las pinta escapadas (el paso real, en el smoke test)', () => {
