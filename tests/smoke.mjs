@@ -1335,7 +1335,7 @@ async function checkCitas(browser, errors) {
     return i >= 0 ? { cita: cs[i].dataset.cita } : null;
   });
   r.hayCitas = !!sel;
-  r.formaCorta = await page.evaluate(() => [...document.querySelectorAll('#phase5 .cita')].some(x => x.textContent.length < x.dataset.cita.length));
+  r.formaCorta = await page.evaluate(() => [...document.querySelectorAll('#phase5 .cita')].some(x => x.querySelector('.cita-corta').textContent.length < x.dataset.cita.length));
   if (!sel) { await context.close(); return { ok: false, ...r }; }
   const b = '#phase5 .cita[data-prueba]';
   await page.click(b);
@@ -1368,11 +1368,13 @@ async function checkCitas(browser, errors) {
   r.teclado = await page.waitForFunction(() => document.activeElement?.matches('#citaFicha .cita-ficha-enlace'), null, { timeout: 3000 }).then(() => true, () => false);
   await page.keyboard.press('Escape');
   r.tecladoVuelve = await cerrada() && await page.evaluate(() => document.activeElement?.matches('.cita[data-prueba]'));
-  // Al imprimir, la cita entera
+  // Al imprimir, la cita entera (forma corta + resto, que en pantalla está oculto)
+  r.restoOculto = await page.evaluate(() => [...document.querySelectorAll('#phase5 .cita-resto')].every(x => getComputedStyle(x).display === 'none'));
   await page.emulateMedia({ media: 'print' });
   r.imprimir = await page.evaluate(c => {
     const x = document.querySelector('#phase5 .cita[data-prueba]');
-    return getComputedStyle(x, '::before').content === JSON.stringify(c) && getComputedStyle(x.querySelector('.cita-corta')).display === 'none';
+    const resto = x.querySelector('.cita-resto');
+    return x.innerText.trim() === c && (!resto || getComputedStyle(resto).display === 'inline');
   }, sel.cita);
   await page.emulateMedia({ media: 'screen' });
   // Fase 6: las fuentes del plan también son citas
@@ -1380,13 +1382,27 @@ async function checkCitas(browser, errors) {
   await page.waitForSelector('#planContenido .card');
   r.fase6 = await page.evaluate(() => {
     const cs = [...document.querySelectorAll('#planContenido .test-source .cita')].filter(x => x.checkVisibility());
-    return cs.length > 0 && cs.every(x => /\d{4}/.test(x.textContent) && !x.textContent.includes(','));
+    return cs.length > 0 && cs.every(x => /\d{4}/.test(x.querySelector('.cita-corta').textContent) && !x.querySelector('.cita-corta').textContent.includes(','));
+  });
+  // Citas dentro de una frase (Fase O2): botón con autor y año, el resto oculto, y el
+  // texto del elemento sigue entero (lo que se comparte no cambia)
+  r.enFrase6 = await page.evaluate(() => {
+    const x = [...document.querySelectorAll('#planContenido li .cita, #planContenido .plan-ayuda .cita')].find(y => y.checkVisibility());
+    if (!x) return false;
+    const resto = x.querySelector('.cita-resto');
+    return /\d{4}$/.test(x.querySelector('.cita-corta').textContent) && (!resto || !resto.checkVisibility())
+      && x.closest('li, .plan-ayuda').textContent.includes(x.dataset.cita);
   });
   await page.evaluate(() => { const x = [...document.querySelectorAll('#planContenido .test-source .cita')].find(y => y.checkVisibility()); x.scrollIntoView({ block: 'center' }); x.setAttribute('data-p6', ''); });
   await page.click('#planContenido .cita[data-p6]');
   r.fase6Abre = (await ficha()).length > 0;
   await page.keyboard.press('Escape');
   await cerrada();
+  // Fase 3: la ayuda de la irritabilidad lleva sus citas tocables
+  await page.evaluate(() => goToPhase(3));
+  r.enFrase3 = await page.evaluate(() => !!document.querySelector('#irritabilidadResumen .cita[data-cita="Barakatt 2009"]'));
+  await page.evaluate(() => goToPhase(6));
+  await page.waitForSelector('#planContenido .card');
   // Calculadora: la fuente es cita; Escape cierra la ficha y deja el panel abierto
   await page.click('#cuestBtn');
   await page.click('[data-cuest="phq9"]');
