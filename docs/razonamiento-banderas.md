@@ -141,6 +141,21 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
 - **Recomendación pendiente de decisión del usuario:** pregunta urgente de isquemia aguda de la pierna, igual que `ca_v5` en cadera (Goodman cap. 6, p. 228: el dolor isquémico en reposo de comienzo brusco o el empeoramiento brusco de una claudicación pueden ser una tromboembolia y se comunican al médico de inmediato). Hoy en rodilla solo la cubre `ro_t4`, que es tras un traumatismo; la amarilla del dolor en reposo lo explica pero no enciende la alerta.
 - **Revisión clínica del usuario:** hecha (2026-10). La pregunta urgente de isquemia aguda sigue como recomendación, sin decidir.
 
+## Codo (2026-10)
+
+15 banderas en sus 4 sistemas propios (11 rojas, 4 amarillas), todas texto sin enlace antes de esta sesión (dos amarillas en una sola línea, pasadas a varias). Codo no usa el sistema endocrino compartido sino uno propio, `co_endocrino`, con preguntas de codo.
+
+- **Enlazadas (12):**
+  - co_trauma: no estira el codo tras una caída → `co_t1`; deformidad o mano dormida, fría o pálida, y pronación dolorosa (su razonamiento la explica) → `co_t2`.
+  - co_vascular: Raynaud → `co4a` + `co4a_uni` + `co4a_prog`; debilidad progresiva → `co3`; amarilla de parestesias en el 4.º y 5.º dedo → `co4b`.
+  - co_infecciosa: fiebre con codo caliente, inicio muy agudo con impotencia funcional y amarilla de infección reciente → `co1` (la amarilla, parcial: `co1` recoge las infecciones de la piel y las úlceras entre los factores de riesgo).
+  - co_endocrino: túnel carpiano bilateral → `co_e1`; debilidad proximal y fatiga, y amarilla de cambios de cabello, uñas, piel o tolerancia a la temperatura → `co_e2a` (la miastenia, `co_e2b`, está en co_vascular y no se puede enlazar).
+- **Razonamiento propio (3):**
+  - Síntomas vasculares en un codo operado: Goodman cap. 6, p. 254 (tabla 6.7: la cirugía vascular, los procedimientos arteriales y el traumatismo, factores de riesgo de la oclusión arterial aguda; las «6 P») y cap. 16, p. 624 (síndrome compartimental por un yeso). Remite al cribado posquirúrgico, que con mecanismo Post-quirúrgico pregunta por el síndrome compartimental y la TVP del brazo.
+  - Xantomas en tendones extensores y, en amarillas, tendinitis calcificante bilateral del hombro: el mismo razonamiento que el sistema endocrino compartido, ya revisado. Para no duplicarlo, `data/comun.js` lo exporta como `RAZON_XANTOMAS` y `RAZON_CALCIFICANTE`, y un test comprueba que es el mismo objeto.
+- **Hueco de seguridad, pendiente de decisión del usuario:** la bandera roja de la artritis séptica enlaza `co1`, que no tiene `urgencia`, aunque su razonamiento la llama emergencia ortopédica y pide derivación sin demora. En rodilla (`r1`) y cadera (`ca_in1`) la misma pregunta es urgente. Recomendación: dar `urgencia` a `co1`, como en rodilla. Ojo: `co1` también cubre la bursitis séptica del olécranon, que en rodilla (`r_i3`, prerrotuliana) es derivación el mismo día.
+- **Revisión clínica del usuario:** pendiente.
+
 ## Hallazgos fuera del «¿Por qué?»
 
 1. **Embarazo ectópico sin pregunta urgente en lumbar.** Resuelto (decisión del usuario, 2026-10): `l_e8` en lumbar y `ca_u5` en cadera, con `urgencia` y razonamiento de NICE NG126 (1.4.1–1.4.8, releída en la sesión). Están separadas de `l_e3`/`ca_u4` (dolor ligado a la regla), que siguen sin urgencia porque un SÍ por una endometriosis conocida no justifica ir a urgencias. La bandera de lumbar enlaza `l_e8`.

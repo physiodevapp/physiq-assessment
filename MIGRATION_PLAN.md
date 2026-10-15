@@ -343,7 +343,8 @@ Diseño, inventario y esquema: `docs/razonamiento-banderas.md` (léelo entero an
 | Cervical | [x] 36 preguntas + 2 fase 1 (la mielopatía → `cv_n4`) | [x] 3 de 3 (síncope, Goodman cap. 6; Murphy, Goodman cap. 10 y Belyayeva 2024; mielopatía, Margetis y Donnally 2025 y Goodman cap. 14) | [x] 1 de 1 sin enlace (espalda y abdomen al mismo nivel, Goodman cap. 8) | [x] (2026-10), incluidas `cv_c3` y `cv_n4` | Pregunta urgente nueva `cv_c3` (episodio cardiaco en curso, «llamar al 112»; Goodman cap. 6), decisión del usuario; `cv2` sigue sin urgencia; pregunta nueva `cv_n4` (torpeza de manos y marcha, sin urgencia), decisión del usuario |
 | Hombro | [x] 36 preguntas + 1 fase 1 | [x] 1 de 1 sin pregunta (síncope, Goodman cap. 6) | [x] 4 de 4 sin pregunta (edad, debilidad proximal, betabloqueantes e IECA, exposiciones; Goodman caps. 6 y 13) | [x] (2026-10), incluidas `h_c4` y `h_gi4` | Preguntas urgentes nuevas `h_c4` (episodio cardiaco en curso, como `cv_c3`) y `h_gi4` (rotura de bazo, signo de Kehr; Goodman cap. 8), por la recomendación aceptada por el usuario |
 | Rodilla | [x] 21 preguntas | [x] 1 de 1 sin pregunta (calambres nocturnos; Goodman caps. 6 y 16) | [x] 1 de 1 sin pregunta (dolor en reposo que mejora al colgar la pierna; Goodman cap. 6) | [x] (2026-10) | Sin huecos de seguridad: las rojas urgentes ya tenían pregunta urgente. Recomendación pendiente: pregunta urgente de isquemia aguda, como `ca_v5` |
-| Codo, tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
+| Codo | [x] 12 preguntas | [x] 2 de 2 sin pregunta (síntomas vasculares tras la cirugía, Goodman caps. 6 y 16; xantomas, el razonamiento del sistema endocrino compartido) | [x] 1 de 1 sin pregunta (tendinitis calcificante, el razonamiento compartido) | [ ] | Hueco pendiente de decisión del usuario: `co1` (artritis séptica) sin `urgencia`, a diferencia de `r1` y `ca_in1` |
+| Tobillo y pie | [ ] | [ ] | [ ] | [ ] | |
 
 ---
 

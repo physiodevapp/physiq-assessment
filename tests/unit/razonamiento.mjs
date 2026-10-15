@@ -214,6 +214,21 @@ test('banderas: rodilla, cada bandera enlazada o con razonamiento propio según 
   assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
 });
 
+test('banderas: codo, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.codo.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 15);
+  assert.equal(banderas.filter(f => f.pregunta).length, 12);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Síntomas vasculares', 'Xantomas en', 'Tendinitis calcificante']);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+  // Xantomas y tendinitis calcificante: el mismo razonamiento que el sistema endocrino compartido (codo tiene el suyo)
+  const end = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'transversal_endocrino');
+  const codoEnd = propios.find(s => s.id === 'co_endocrino');
+  assert.equal(codoEnd.banderasRojas.find(f => /Xantomas/.test(f.texto)).razonamiento, end.banderasRojas.find(f => /Xantomas/.test(f.texto)).razonamiento);
+  assert.equal(codoEnd.banderasAmarillas.find(f => /calcificante/.test(f.texto)).razonamiento, end.banderasAmarillas.find(f => /calcificante/.test(f.texto)).razonamiento);
+});
+
 test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
   const corto = f => f.texto.split(' ').slice(0, 2).join(' ');
   const resumen = sis => [...sis.banderasRojas.map(f => ['R', f]), ...sis.banderasAmarillas.map(f => ['A', f])]

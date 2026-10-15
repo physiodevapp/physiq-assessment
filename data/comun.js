@@ -14,6 +14,27 @@ export const DOSIS_DERIVAR = 'Derivar: sin tratamiento de fisioterapia hasta el 
 
 // Cita de Goodman en el razonamiento propio de las banderas (Fase M); cada una añade sus páginas.
 const GOODMAN_BANDERAS = 'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), ';
+
+// Razonamientos de banderas que también lleva el sistema endocrino propio de codo (data/codo.js)
+export const RAZON_XANTOMAS = {
+  porque: 'Cuando los lípidos de la sangre están muy altos, salen de los vasos y se depositan en la piel o en los tendones, donde los macrófagos los engullen y forman nódulos amarillentos. En la diabetes mal controlada indican que la glucosa y los lípidos no están controlados (Goodman).',
+  peso: 'Es un signo de exploración: pide derivar al médico para estudiar y controlar los lípidos (Goodman, Bell). Bell distingue dos tipos. Los eruptivos son pápulas rojo-amarillentas de 1 a 5 mm en las caras de extensión de brazos y piernas, nalgas y manos, a veces con picor o dolor; indican triglicéridos muy altos (a menudo por encima de 3000–4000 mg/dL), con riesgo de pancreatitis. Los tendinosos son nódulos firmes en el Aquiles o en los tendones extensores de manos, rodillas o codos, con la piel normal; indican hipercolesterolemia, a menudo familiar, y aterosclerosis.',
+  detalle: 'Qué sube los triglicéridos (Bell): diabetes, obesidad, alcohol, estrógenos orales, tiacidas, retinoides y algunos antipsicóticos. Los eruptivos desaparecen en semanas al tratar los lípidos; los tendinosos tardan años o no desaparecen.\n\nLas placas amarillas en los párpados (xantelasma) son otro signo de lípidos altos (Goodman). El ejercicio sigue siendo clave en el tratamiento.',
+  fuentes: ['Goodman 2018', 'Bell y Saleh 2026'],
+  citas: [
+    GOODMAN_BANDERAS + 'cap. 11, pp. 402–403 y 421–422.',
+    { texto: 'Bell y Saleh 2026 — Bell y Saleh, «Xanthoma», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK562241/' }
+  ]
+};
+export const RAZON_CALCIFICANTE = {
+  porque: 'La periartritis (inflamación de tendones, ligamentos y cápsula) y la tendinitis calcificante aparecen sobre todo en el hombro de personas con enfermedad endocrina: del tiroides (hipertiroidismo) y del metabolismo de los estrógenos, y también en los trastornos de las paratiroides.',
+  peso: 'Por sí sola no es grave, pero bilateral orienta a una causa sistémica (para Goodman, todo síntoma bilateral es una bandera roja): buscar otros signos endocrinos. Con causa endocrina suele empezar a una edad más joven, durar más y acabar más a menudo en cirugía; la periartritis crónica mejora al tratar el hipertiroidismo.',
+  detalle: 'En el hipertiroidismo, la restricción dolorosa del hombro puede ser uni o bilateral y avanzar a una capsulitis adhesiva (hombro congelado); también se ha descrito tendinitis calcificante aguda de la muñeca. La calcificación se ve en la radiografía. (StatPearls no tiene un capítulo vigente sobre la tendinitis calcificante.)',
+  fuentes: ['Goodman 2018'],
+  citas: [
+    GOODMAN_BANDERAS + 'cap. 11, pp. 388, 395, 399 y 422.'
+  ]
+};
 export const SIS_ENDOCRINO = {
   id: 'transversal_endocrino', icon: '⚗️', nombre: 'Endocrino / Metabólico',
   banderasRojas: [
@@ -63,16 +84,7 @@ export const SIS_ENDOCRINO = {
         ]
       } },
     { texto: 'Xantomas: pápulas amarillentas en las caras de extensión (eruptivos) o nódulos en los tendones extensores o el Aquiles (tendinosos)',
-      razonamiento: {
-        porque: 'Cuando los lípidos de la sangre están muy altos, salen de los vasos y se depositan en la piel o en los tendones, donde los macrófagos los engullen y forman nódulos amarillentos. En la diabetes mal controlada indican que la glucosa y los lípidos no están controlados (Goodman).',
-        peso: 'Es un signo de exploración: pide derivar al médico para estudiar y controlar los lípidos (Goodman, Bell). Bell distingue dos tipos. Los eruptivos son pápulas rojo-amarillentas de 1 a 5 mm en las caras de extensión de brazos y piernas, nalgas y manos, a veces con picor o dolor; indican triglicéridos muy altos (a menudo por encima de 3000–4000 mg/dL), con riesgo de pancreatitis. Los tendinosos son nódulos firmes en el Aquiles o en los tendones extensores de manos, rodillas o codos, con la piel normal; indican hipercolesterolemia, a menudo familiar, y aterosclerosis.',
-        detalle: 'Qué sube los triglicéridos (Bell): diabetes, obesidad, alcohol, estrógenos orales, tiacidas, retinoides y algunos antipsicóticos. Los eruptivos desaparecen en semanas al tratar los lípidos; los tendinosos tardan años o no desaparecen.\n\nLas placas amarillas en los párpados (xantelasma) son otro signo de lípidos altos (Goodman). El ejercicio sigue siendo clave en el tratamiento.',
-        fuentes: ['Goodman 2018', 'Bell y Saleh 2026'],
-        citas: [
-          GOODMAN_BANDERAS + 'cap. 11, pp. 402–403 y 421–422.',
-          { texto: 'Bell y Saleh 2026 — Bell y Saleh, «Xanthoma», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK562241/' }
-        ]
-      } },
+      razonamiento: RAZON_XANTOMAS },
     { texto: 'Nódulos palpables supraclaviculares o fiebre inexplicable en pacientes con corticosteroides',
       razonamiento: {
         porque: 'Junta dos avisos distintos. El ganglio supraclavicular drena el mediastino, los pulmones y el esófago (Farmer), y un nódulo en la parte baja del cuello, sobre los escalenos, puede ser la primera manifestación de un cáncer de tiroides (Goodman). Los corticoides frenan la inflamación y la inmunidad: aumentan el riesgo de infección y pueden ocultar sus primeros signos, así que una fiebre sin explicación puede ser la única pista (Goodman, Hodgens).',
@@ -89,15 +101,7 @@ export const SIS_ENDOCRINO = {
   banderasAmarillas: [
     { texto: 'Debilidad muscular proximal, mialgias y fatiga sistémica inexplicada', pregunta: 'end_1' },
     { texto: 'Periartritis o tendinitis calcificante bilateral de hombro',
-      razonamiento: {
-        porque: 'La periartritis (inflamación de tendones, ligamentos y cápsula) y la tendinitis calcificante aparecen sobre todo en el hombro de personas con enfermedad endocrina: del tiroides (hipertiroidismo) y del metabolismo de los estrógenos, y también en los trastornos de las paratiroides.',
-        peso: 'Por sí sola no es grave, pero bilateral orienta a una causa sistémica (para Goodman, todo síntoma bilateral es una bandera roja): buscar otros signos endocrinos. Con causa endocrina suele empezar a una edad más joven, durar más y acabar más a menudo en cirugía; la periartritis crónica mejora al tratar el hipertiroidismo.',
-        detalle: 'En el hipertiroidismo, la restricción dolorosa del hombro puede ser uni o bilateral y avanzar a una capsulitis adhesiva (hombro congelado); también se ha descrito tendinitis calcificante aguda de la muñeca. La calcificación se ve en la radiografía. (StatPearls no tiene un capítulo vigente sobre la tendinitis calcificante.)',
-        fuentes: ['Goodman 2018'],
-        citas: [
-          GOODMAN_BANDERAS + 'cap. 11, pp. 388, 395, 399 y 422.'
-        ]
-      } },
+      razonamiento: RAZON_CALCIFICANTE },
     { texto: 'Cambios inexplicables en cabello, uñas, piel o tolerancia a la temperatura', pregunta: 'end_3' },
     { texto: 'Polidipsia y poliuria (sed y orina excesivas)', pregunta: 'end_2' }
   ],
