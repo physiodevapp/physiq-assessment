@@ -186,8 +186,8 @@
     "derivacionResuelta": {},
     "resultsBuilt": false,
     "planNotes": {
-      "variableControl": "Tiempo sentado en el coche hasta que aparece el dolor de la pantorrilla (hoy, 20 min)",
-      "ventanaRecuperacion": "24 h tras la sesión",
+      "variableControl": "Para si el dolor baja más abajo de la pantorrilla o aparece hormigueo en el pie.",
+      "ventanaRecuperacion": "Debes estar como antes de los ejercicios; si no, haz la mitad la próxima vez.",
       "anclajeHabito": "Después de desayunar"
     },
     "planTratamiento": null,

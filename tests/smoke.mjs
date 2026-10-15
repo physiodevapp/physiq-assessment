@@ -1773,17 +1773,16 @@ async function checkTiemposTejido(browser, errors) {
 // por SSE, se guarda en state.informeIA y se copia como texto plano. Y dentro
 // de un iframe (hub) informe-ia.js ni se descarga.
 const CLAVE_OK = 'CLAVE-SMOKE-OK';
+// Como el real: un widget por tarjeta (informe con IA y plan con IA, lib/turnstile.js);
+// reset(id) vuelve a resolver ese widget y emite un token nuevo
+const TURNSTILE_SIMULADO = `const _w = {}; let _n = 0;
+  window.turnstile = { render(el, o) { const id = 'w' + (++_n); _w[id] = o; el.textContent = 'turnstile simulado'; setTimeout(() => o.callback('tok-' + Date.now()), 30); return id; },
+    reset(id) { setTimeout(() => _w[id] && _w[id].callback('tok-' + Date.now()), 30); } };
+  window.__iaTurnstileOnload && window.__iaTurnstileOnload();`;
 async function mockWorkerYTurnstile(context, captura) {
   const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Expose-Headers': 'X-PhysiQ-Mode' };
-  await context.route('**/turnstile/v0/api.js*', route => route.fulfill({
-    contentType: 'application/javascript',
-    // Como el real: reset() vuelve a resolver y emite un token nuevo
-    body: `let _o = null;
-      window.turnstile = { render(el, o) { _o = o; el.textContent = 'turnstile simulado'; setTimeout(() => o.callback('tok-' + Date.now()), 30); return 'w1'; },
-        reset() { setTimeout(() => _o && _o.callback('tok-' + Date.now()), 30); } };
-      window.__iaTurnstileOnload && window.__iaTurnstileOnload();`,
-  }));
+  await context.route('**/turnstile/v0/api.js*', route => route.fulfill({ contentType: 'application/javascript', body: TURNSTILE_SIMULADO }));
   await context.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', async route => {
     const req = route.request();
     if (req.method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors });
@@ -3468,6 +3467,138 @@ async function checkFase6Tobillo(browser, errors) {
 // urgencia de la fase 2 bloquea el plan; sin región, pide elegirla en la
 // fase 2. 320 px: sin desbordar, tarjetas a todo el ancho, barra y hoja de
 // fases con la 6.
+// «✨ Detallar con IA» de la fase 6 (plan-ia.js, solo standalone; Fase L, L4).
+// Sin coste: worker y Turnstile simulados. El caso de Andrés se importa por el
+// panel de sesión; con un informe con IA de dictado, el prompt lleva la
+// transcripción y nunca el informe; el plan llega por SSE, las sugerencias se
+// pintan aparte, la revisión señala la técnica por encima del escalón y el
+// volumen sin marcar; «Programa para casa (IA)» no se comparte hasta revisar
+// todo y sale sin marcas y con la red de seguridad; cambiar la frecuencia lo
+// marca desactualizado; sigue tras recargar. En el hub, plan-ia.js ni se descarga.
+const PLAN_IA_SIMULADO = `## SESIÓN
+### REEVALUACIÓN (0–5 min)
+- Slump izquierdo y exploración neurológica.
+### INTERVENCIÓN PRINCIPAL (12–35 min)
+- Deslizamiento neural del ciático sentado, 10 repeticiones lentas (sugerencia de la IA).
+- Movilización PA de grado III en L5.
+## PLAN DEL MES
+- Sesión 2: reevaluación y progresar según el esquema.
+## PROGRAMA PARA CASA
+- Camina 10 minutos después de desayunar (sugerencia de la IA).
+- Haz 3 series de 10 repeticiones.
+Si notas adormecimiento entre las piernas o alrededor del ano, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo.`;
+async function checkPlanIA(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
+  const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Expose-Headers': 'X-PhysiQ-Mode' };
+  const captura = [];
+  await context.route('**/turnstile/v0/api.js*', route => route.fulfill({ contentType: 'application/javascript', body: TURNSTILE_SIMULADO }));
+  await context.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => {
+    const req = route.request();
+    if (req.method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors });
+    if (req.url().endsWith('/validate')) return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': 'real' }, contentType: 'application/json',
+      body: JSON.stringify({ ok: true, mode: 'real', routes: { report: 'real', email: 'demo' }, demoOnly: false }) });
+    captura.push(req.postDataBuffer()?.toString('utf8') || '');
+    const sse = (t, d) => `event: ${t}\ndata: ${JSON.stringify(d)}\n\n`;
+    return route.fulfill({ headers: { ...cors, 'X-PhysiQ-Mode': 'real' }, contentType: 'text/event-stream',
+      body: sse('transcript', { text: '(No disponible — informe basado exclusivamente en los datos de la valoración estructurada)' })
+        + sse('report_chunk', { text: PLAN_IA_SIMULADO.slice(0, 200) }) + sse('report_chunk', { text: PLAN_IA_SIMULADO.slice(200) }) + sse('done', { success: true }) });
+  });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (plan IA): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (plan IA): ${msg.text()}`); });
+  const r = {};
+  await abrirApp(page);
+  await page.click('#sessionBtn');
+  await page.setInputFiles('#sessionImportFile', new URL('./fixtures/casos/valoracion-andres-molina-lumbar.json', import.meta.url).pathname);
+  await page.waitForSelector('#confirmBanner');
+  await Promise.all([page.waitForEvent('load'), page.click('#confirmAction')]);
+  await page.waitForFunction(() => window.state?.currentPhase === 5 && state.patient === 'Andrés Molina');
+  // Un informe con IA de dictado ya generado: el plan usa su transcripción
+  await page.evaluate(() => { state.informeIA = { texto: 'TEXTO-DEL-INFORME', transcripcion: 'Dictado simulado: conduce cuarenta minutos.', conAudio: true, dictado: true, plantilla: 'narrativo', huella: 'x', fecha: new Date().toISOString() }; });
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planIA .pia-card');
+  await page.waitForFunction(() => !document.getElementById('planIA').hidden && document.getElementById('piaGenerar') && !document.getElementById('piaGenerar').disabled, null, { timeout: 15000 });
+  r.tarjeta = await page.evaluate(() => {
+    const q = document.getElementById('piaQue').textContent;
+    return q.includes('Nivel B · Muy suave') && q.includes('Plan A') && q.includes('Dolor Radicular Lumbar') && q.includes('dictado') && q.includes('La valoración cambió');
+  });
+  await page.click('#piaGenerar');
+  await page.waitForFunction(() => !!state.planTratamiento?.ia?.texto, null, { timeout: 15000 });
+  const prompt = captura[0] || '';
+  r.prompt = prompt.includes('Dictado simulado: conduce cuarenta minutos.') && !prompt.includes('TEXTO-DEL-INFORME')
+    && prompt.includes('Nivel elegido: B · escalón «Muy suave»') && prompt.includes('name="maxTokens"') && !prompt.includes('name="file"');
+  await page.waitForSelector('#piaResultadoDet');
+  await page.click('#piaResultadoDet > summary');
+  r.sugerencias = await page.evaluate(() => {
+    const s = [...document.querySelectorAll('.pia-plan .pia-sug')];
+    return s.length === 2 && s.every(x => x.querySelector('.pia-sug-et')?.textContent === 'Sugerencia de la IA, sin fuente en PhysiQ')
+      && !document.querySelector('.pia-plan').textContent.includes('(sugerencia de la IA)');
+  });
+  r.revision = await page.evaluate(() => {
+    const t = document.getElementById('piaRevision').textContent;
+    return t.includes('⚠ 2 puntos a revisar') && t.includes('Técnica por encima del escalón elegido (grado III)') && t.includes('3 series')
+      && document.querySelectorAll('#piaComprobar li').length === 4;   // con transcripción, una más
+  });
+  // Compartir: sin revisar, el programa para casa (IA) no se comparte
+  await page.evaluate(() => navigator.clipboard.writeText('VACIO'));
+  await page.click('#btnCompartirPlan');
+  await page.waitForSelector('#compartirOverlay.open');
+  r.opciones = await page.evaluate(() => {
+    const t = document.getElementById('compartirOpciones').textContent;
+    return t.includes('Plan detallado (IA)') && t.includes('6 puntos sin revisar') && t.includes('Programa para casa (IA)') && t.includes('marca todos los puntos');
+  });
+  await page.click('.compartir-op[onclick="compartirCasaIA()"]');
+  r.casaBloqueada = await page.waitForFunction(() => document.getElementById('appToast')?.textContent.includes('marca como revisados los 6 puntos'), null, { timeout: 5000 }).then(() => true, () => false)
+    && (await page.evaluate(() => navigator.clipboard.readText())) === 'VACIO';
+  await page.evaluate(() => document.querySelectorAll('#piaRevision details, #piaResultadoDet').forEach(d => { d.open = true; }));
+  for (const c of await page.$$('#piaRevision .ia-rev-check, #piaComprobar .ia-rev-check')) await c.check();
+  r.revisados = await page.evaluate(() => document.querySelector('#piaRevision summary').textContent.includes('✓ 2 puntos revisados') && state.planTratamiento.ia.revisados.length === 6);
+  await page.click('#btnCompartirPlan');
+  await page.waitForSelector('#compartirOverlay.open');
+  await page.click('.compartir-op[onclick="compartirCasaIA()"]');
+  const portapapelesNuevo = () => page.waitForFunction(async () => (await navigator.clipboard.readText()) !== 'VACIO', null, { timeout: 5000 }).catch(() => {});
+  await portapapelesNuevo();
+  const casa = await page.evaluate(() => navigator.clipboard.readText());
+  r.casa = casa.startsWith('PROGRAMA PARA CASA\nAndrés Molina') && casa.includes('· Camina 10 minutos después de desayunar.')
+    && !casa.includes('sugerencia') && !casa.includes('grado III') && casa.trimEnd().endsWith('ve a urgencias hoy mismo.');
+  await page.click('#btnCompartirPlan');
+  await page.waitForSelector('#compartirOverlay.open');
+  await page.evaluate(() => navigator.clipboard.writeText('VACIO'));
+  await page.click('.compartir-op[onclick="compartirPlanIA()"]');
+  await portapapelesNuevo();
+  const fisio = await page.evaluate(() => navigator.clipboard.readText());
+  r.planFisio = fisio.startsWith('PLAN DE TRATAMIENTO DETALLADO — propuesta\nAndrés Molina · Lumbar (izquierda)') && fisio.includes('(sugerencia de la IA)') && fisio.includes('Nivel B · Muy suave · Plan A');
+  // Cambiar la frecuencia: desactualizado
+  await page.click('.option-btn[onclick="planElegir(\'frecuencia\',\'B\')"]');
+  r.desactualizado = (await page.textContent('#piaResultado')).includes('han cambiado desde que se detalló');
+  // Nunca en el payload ni en el .json exportado
+  r.fueraPayload = await page.evaluate(async () => {
+    const { buildPhysiQPayload } = await import('./app.js');
+    const { exportarValoracion } = await import('./lib/valoracion-json.js');
+    return !JSON.stringify(buildPhysiQPayload()).includes('Deslizamiento neural') && !JSON.stringify(exportarValoracion(state)).includes('Deslizamiento neural');
+  });
+  // Persiste con la sesión
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForFunction(() => window.state?.currentPhase === 6 && !!document.querySelector('#piaResultadoDet'), null, { timeout: 15000 });
+  r.trasRecargar = await page.evaluate(() => state.planTratamiento.ia.revisados.length === 6);
+  await context.close();
+
+  // En el hub: ni la tarjeta ni el módulo
+  const hub = await browser.newPage();
+  const pedidos = [];
+  hub.on('request', q => { if (/plan-ia\.js|revision-plan\.js|turnstile/.test(q.url())) pedidos.push(q.url()); });
+  const frame = await cargarEnHub(hub);
+  await frame.evaluate(() => { state.region = 'lumbar'; state.resultsBuilt = true; goToPhase(6); });
+  await frame.waitForSelector('#planContenido > *');
+  await frame.waitForTimeout(300);
+  r.hubSinIA = !pedidos.length && await frame.evaluate(() => document.getElementById('planIA').hidden && !document.getElementById('planIA').firstChild);
+  await hub.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function checkFase6(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
@@ -4110,6 +4241,12 @@ const SECCIONES = [
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C, A no se ofrece porque coincide con B, y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'plan-ia', titulo: 'Fase 6: «✨ Detallar con IA» (worker y Turnstile simulados):', run: async ({ browser, errors }) => {
+    const r = await checkPlanIA(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} caso de Andrés importado: la tarjeta dice qué se detallará (nivel B «Muy suave», plan A, lu3, con el dictado y su aviso); el prompt lleva la transcripción y nunca el informe, sin audio; el plan llega por SSE, las sugerencias se pintan aparte con su etiqueta, la revisión señala el grado III y las 3 series sin marcar, más las comprobaciones; «Programa para casa (IA)» no se comparte sin revisarlo todo y sale sin marcas y con la red de cola de caballo; «Plan detallado (IA)» con las marcas; cambiar la frecuencia lo marca desactualizado; fuera del payload y del .json; sigue tras recargar; en el hub, ni el módulo ni la tarjeta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

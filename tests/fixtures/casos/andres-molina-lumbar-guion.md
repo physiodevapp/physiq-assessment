@@ -1,7 +1,7 @@
 # Caso simulado: Andrés Molina, dolor radicular lumbar (Fase L, L4)
 
-Caso de prueba para la capa de IA de la fase 6 («✨ Detallar con IA», L4) y,
-mientras no exista, para la parte sin IA de la fase 6 y el informe con IA. Es
+Caso de prueba para la capa de IA de la fase 6 («✨ Detallar con IA», L4), la
+parte sin IA de la fase 6 y el informe con IA. Es
 un paciente inventado. Cubre lo que el prompt del plan tiene que respetar:
 
 - **Dolor radicular** (`lu3`, en `HIP_EXPLORACION_NEURO` y `HIP_RADICULARES`):
@@ -26,13 +26,13 @@ un paciente inventado. Cubre lo que el prompt del plan tiene que respetar:
    `valoracion-andres-molina-lumbar.json`. Se carga en la fase 5.
 2. **Plan sin IA**: pulsa «Plan de tratamiento (opcional) →» y comprueba lo de
    «Qué debe salir en la fase 6».
-3. **Con L4** (cuando exista): en la fase 6, «✨ Detallar con IA». Si quieres
+3. **Con L4**: en la fase 6, «✨ Detallar con IA», al final de la página. Si quieres
    probarlo con transcripción, genera antes el informe con IA en la fase 5
    (plantilla **Narrativo**, audio **Dictado del fisioterapeuta**, leyendo el
    guion de abajo): el plan reutiliza la transcripción guardada.
 4. Revisa el resultado con «Qué comprobar en el plan con IA» y pásame lo que
-   salga (o el paquete de revisión) para convertirlo en fixture, como los
-   informes de `tests/fixtures/informes/`.
+   salga («📤 Compartir → Plan detallado (IA)», con los puntos de la revisión)
+   para convertirlo en fixture, como los informes de `tests/fixtures/informes/`.
 
 ## Datos del caso
 
@@ -51,7 +51,7 @@ un paciente inventado. Cubre lo que el prompt del plan tiene que respetar:
 | Signo comparable | Slump izquierdo: reproduce el dolor de la pantorrilla con la rodilla a 20° de la extensión completa; mejora al soltar la flexión cervical |
 | Árbol | Pierna peor que espalda (SLR / Slump) → **no centraliza** → sin déficit neurológico → no estenosis → sin patrón agudo ni inestable → discogénico |
 | Hipótesis | `lu3` Dolor radicular lumbar (SLR ipsilateral +, SLR contralateral −, Slump +; 2/3 hallazgos) · `lu6` Discogénico (centralización −, preferencia direccional −) |
-| Notas del plan (fase 5) | Variable de control: tiempo sentado en el coche hasta que aparece el dolor de la pantorrilla (hoy, 20 min) · ventana de recuperación: 24 h · anclaje: después de desayunar |
+| Notas del plan (fase 5) | Variable de control: «Para si el dolor baja más abajo de la pantorrilla o aparece hormigueo en el pie.» · ventana de recuperación: «Debes estar como antes de los ejercicios; si no, haz la mitad la próxima vez.» · anclaje: «Después de desayunar». Van tal cual al programa para casa («Cuándo parar», «Al día siguiente», «Cuándo hacerlo»), así que están escritas para el paciente (antes decían «tiempo sentado… (hoy, 20 min)» y «24 h tras la sesión», que en el programa para casa no se entendían) |
 
 ## Guion del dictado
 
