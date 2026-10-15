@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **484** referencias de literatura, con **2218** usos.
+- **484** referencias de literatura, con **2219** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **376** de 484 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -211,7 +211,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Grondin 2026](#grondin-2026) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 | 3 | 2026-10 · Añadida: texto completo leído en PMC (2026-10). Misma cohorte que Grondin 2021 (85 pacientes consecutivos, 27 con radiculopatía; neurocirujano con RM). Tabla 2: ULNT1 LR+ 2,46, LR− 0,54; 1 de 4 ULNT positivo LR− 0,08; SART pasiva modificada LR+ 2,05, LR− 0,36; Spurling con dolor de brazo LR+ 34,4. Sustituye a Grondin 2021 como fuente leída de esa cohorte (el PDF de Grondin 2021 no estaba disponible). |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios en las cifras: texto completo y tabla 3 (figura) leídos en Europe PMC (2026-10). Las cifras de ULNT1, SART y la combinación de 4 ULNT coinciden con su tabla 4. Modelo bivariante (GLMM) que, con k ≤ 3, se interpreta como de efecto fijo (los autores avisan de que solo vale para esas poblaciones). La SART agrupa Sleijser-Koehorst 2021 (riesgo bajo; LR+ 1,88 por sí solo) y Viikari-Juntura 1989 (riesgo alto, cuenta lados: la fila dice n = 13 y las celdas suman 28); por eso la SART pasa a hallazgo (decisión del usuario). El ULNT1 se mantiene (decisión del usuario): sus 3 estudios usan diferenciación estructural y clínica más RM como referencia; Albert-Lucena 2025, con estudios de EMG o conducción nerviosa y sin diferenciación estructural, da LR+ 1,51 y LR− 0,53. Revisiones posteriores: Albert-Lucena 2025 (leída), Lin 2025 sobre el Spurling (bivariante aleatorio, 8 estudios; solo el resumen, PDF no disponible) y Shen 2023 sobre el ULNT1 (solo el resumen). |
 | [Rudwaleit 2006](#rudwaleit-2006) | cribado fase 2 · razonamiento fase 2 | 5 | 2026-10 · Añadida (PDF del usuario, leído entero): es el estudio de origen del criterio de dolor lumbar inflamatorio del cribado lumbar (Goodman 2018, cap. 14, da las mismas cifras). Tabla 5: con 2 de 4 (rigidez matutina de más de 30 minutos, mejora con el ejercicio y no con el reposo, despertar en la segunda mitad de la noche, dolor glúteo alternante), S 70,3 %, E 81,2 %, LR+ 3,7; con 3 o 4, S 33,6 %, E 97,3 %, LR+ 12,4 (IC 4,0–39,7). Estudio exploratorio sin validación: 213 menores de 50 años con dolor lumbar de más de 3 meses (101 con espondilitis anquilosante ya establecida, media de 12,9 años de dolor, y 112 con lumbalgia mecánica), muestra de conveniencia no consecutiva; los propios autores piden validarlo en la enfermedad precoz. |
-| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 160 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
+| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · texto | 161 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
 | [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) | pauta · texto | 4 | 2026-10 · Sin cambios: PubMed (SIFA y fisioterapia, consensos y revisiones desde 2022) no encuentra un consenso posterior del IHiPRN; el ensayo PhysioFIRST (Kemp 2026) se suma a la pauta de ca2 sin contradecirlo. |
 | [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), última actualización 29 de julio de 2026; las recomendaciones citadas (1.2.1, 1.2.6, 1.2.7 —corregida en 2026—, 1.3.1–1.3.3 y 1.3.6) dicen lo que recoge la app. |
@@ -3377,71 +3377,72 @@ Citada como:
 84. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373 y 376; cap. 13, p. 483; cap. 14, pp. 531, 542 y 568.
 85. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373; cap. 14, pp. 531, 550 y 562–563.
 86. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 362–363 y 377.
-87. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 90; cap. 8, pp. 304 y 307; cap. 14, pp. 532 y 552–553.
-88. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307 y 316; cap. 14, pp. 532 y 553.
-89. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 303–305 y 326.
-90. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522 y 532.
-91. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 227; cap. 14, pp. 530 y 532.
-92. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 523–524.
-93. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 482; cap. 14, pp. 528–531.
-94. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 440 y 448; cap. 14, pp. 522, 531–532.
-95. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 531 y 564.
-96. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522, 531 y 562–563.
-97. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 429, 438, 440 y 447–448; cap. 14, pp. 522 y 531.
-98. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
-99. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
-100. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
-101. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
-102. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
-103. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
-104. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 360–363 y 377.
-105. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 367, 375–376 y 380.
-106. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
-107. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
-108. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
-109. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
-110. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
-111. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
-112. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
-113. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
-114. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
-115. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
-116. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
-117. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
-118. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
-119. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228, 254–255 y 261.
-120. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 120; cap. 6, pp. 228 y 254–255; cap. 16, pp. 623 y 636.
-121. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–257; cap. 16, pp. 622 y 636.
-122. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 16, p. 624.
-123. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228, 254 y 262.
-124. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 449 y 455; cap. 16, pp. 611 y 641.
-125. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 448–449 y 455–456; cap. 16, pp. 633 y 636.
-126. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 13, pp. 476, 487–488 y 496; cap. 16, pp. 624 y 631–632.
-127. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475, 487 y 495–496; cap. 16, pp. 624, 630 y 639.
-128. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 218–221; cap. 16, pp. 612 y 638.
-129. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 6, p. 254.
-130. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 118; cap. 16, pp. 612, 615, 617 y 622.
-131. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, p. 704.
-132. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 18, p. 704.
-133. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 255.
-134. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 255; cap. 13, p. 494; cap. 18, pp. 696–697 y 705.
-135. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 701 y 706.
-136. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 701, 703 y 705–706.
-137. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, p. 395; cap. 12, pp. 454–455.
-138. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254 (tabla 6.7); cap. 16, p. 624.
-139. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 699–700 y 707.
-140. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475–476; cap. 18, pp. 700–701, 704 y 707.
-141. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387–390, 398 y 404; cap. 18, p. 699.
-142. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387, 390, 392, 395, 398–399, 404 y 422–423; cap. 13, p. 475.
-143. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 119–120; cap. 13, pp. 487–488.
-144. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 449 y 455.
-145. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 113–117; cap. 12, pp. 438–441, 449–450 y 455–456.
-146. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 113–114 y 119; cap. 13, pp. 475–476, 487 y 495–496.
-147. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 125; cap. 13, pp. 487 y 498.
-148. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 120; cap. 6, pp. 228, 254–255 y 262.
-149. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–257.
-150. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 453–456.
-151. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, p. 440.
+87. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, p. 362; cap. 13, p. 488; cap. 14, p. 564.
+88. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 90; cap. 8, pp. 304 y 307; cap. 14, pp. 532 y 552–553.
+89. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307 y 316; cap. 14, pp. 532 y 553.
+90. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 303–305 y 326.
+91. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522 y 532.
+92. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 227; cap. 14, pp. 530 y 532.
+93. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 523–524.
+94. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 482; cap. 14, pp. 528–531.
+95. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 440 y 448; cap. 14, pp. 522, 531–532.
+96. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 531 y 564.
+97. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522, 531 y 562–563.
+98. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 429, 438, 440 y 447–448; cap. 14, pp. 522 y 531.
+99. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
+100. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
+101. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
+102. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
+103. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
+104. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
+105. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 360–363 y 377.
+106. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 367, 375–376 y 380.
+107. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
+108. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
+109. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
+110. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
+111. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
+112. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
+113. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
+114. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
+115. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
+116. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
+117. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
+118. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
+119. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
+120. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228, 254–255 y 261.
+121. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 120; cap. 6, pp. 228 y 254–255; cap. 16, pp. 623 y 636.
+122. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–257; cap. 16, pp. 622 y 636.
+123. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 16, p. 624.
+124. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228, 254 y 262.
+125. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 449 y 455; cap. 16, pp. 611 y 641.
+126. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 448–449 y 455–456; cap. 16, pp. 633 y 636.
+127. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 13, pp. 476, 487–488 y 496; cap. 16, pp. 624 y 631–632.
+128. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475, 487 y 495–496; cap. 16, pp. 624, 630 y 639.
+129. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 218–221; cap. 16, pp. 612 y 638.
+130. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 6, p. 254.
+131. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 118; cap. 16, pp. 612, 615, 617 y 622.
+132. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, p. 704.
+133. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 18, p. 704.
+134. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 255.
+135. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 255; cap. 13, p. 494; cap. 18, pp. 696–697 y 705.
+136. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 701 y 706.
+137. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 701, 703 y 705–706.
+138. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, p. 395; cap. 12, pp. 454–455.
+139. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254 (tabla 6.7); cap. 16, p. 624.
+140. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 699–700 y 707.
+141. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475–476; cap. 18, pp. 700–701, 704 y 707.
+142. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387–390, 398 y 404; cap. 18, p. 699.
+143. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387, 390, 392, 395, 398–399, 404 y 422–423; cap. 13, p. 475.
+144. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 119–120; cap. 13, pp. 487–488.
+145. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 449 y 455.
+146. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 113–117; cap. 12, pp. 438–441, 449–450 y 455–456.
+147. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 113–114 y 119; cap. 13, pp. 475–476, 487 y 495–496.
+148. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 125; cap. 13, pp. 487 y 498.
+149. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 120; cap. 6, pp. 228, 254–255 y 262.
+150. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–257.
+151. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 453–456.
+152. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, p. 440.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -3532,79 +3533,80 @@ Citada como:
 | Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 84 |
 | Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 85 |
 | Cervical | — | Bandera roja «Prueba de percusión de Murphy positiva (ángulo costovertebral)» · Renal / Urológico | 2 · razonamiento del cribado | 86 |
-| Cervical | — | Pregunta `cv_gi1` · Gastrointestinal | 2 · razonamiento del cribado | 87 |
-| Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 88 |
-| Cervical | — | Bandera amarilla «Dolor de espalda y abdominal al mismo nivel de forma simultánea o alterna» · Gastrointestinal | 2 · razonamiento del cribado | 89 |
-| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 90 |
-| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 91 |
-| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 92 |
-| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 93 |
-| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 94 |
-| Cervical | — | Pregunta `cv_n4` · Médula / Estructural | 2 · razonamiento del cribado | 95 |
-| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 96 |
-| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 97 |
+| Cervical | — | Bandera amarilla «Dolor que no cambia con postura corporal» · Renal / Urológico | 2 · razonamiento del cribado | 87 |
+| Cervical | — | Pregunta `cv_gi1` · Gastrointestinal | 2 · razonamiento del cribado | 88 |
+| Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 89 |
+| Cervical | — | Bandera amarilla «Dolor de espalda y abdominal al mismo nivel de forma simultánea o alterna» · Gastrointestinal | 2 · razonamiento del cribado | 90 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 91 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 92 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 93 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 94 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 95 |
+| Cervical | — | Pregunta `cv_n4` · Médula / Estructural | 2 · razonamiento del cribado | 96 |
+| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 97 |
+| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 98 |
 | Lumbar | — | `sistemas.4.banderasRojas.5.texto` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.4.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 2 |
-| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 98 |
-| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 99 |
-| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 100 |
-| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 101 |
-| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 102 |
-| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 103 |
-| Lumbar | — | Bandera roja «Prueba de percusión positiva en ángulo costovertebral» · Urogenital / Renal | 2 · razonamiento del cribado | 104 |
-| Lumbar | — | Bandera roja «Masa testicular indolora» · Urogenital / Renal | 2 · razonamiento del cribado | 105 |
-| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 106 |
-| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 107 |
-| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 108 |
-| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 109 |
-| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 109 |
-| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 110 |
-| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 111 |
-| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 112 |
-| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 113 |
-| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 114 |
-| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 115 |
-| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 116 |
-| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 117 |
-| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 118 |
-| Lumbar | — | Bandera roja «Síndrome de Leriche (aortoilíaco): imita lumbalgia, con dolor en nalgas, caderas y muslos; disfunción eréctil» · Vascular | 2 · razonamiento del cribado | 119 |
-| Rodilla | — | Pregunta `r_v1` · Vascular | 2 · razonamiento del cribado | 120 |
-| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 121 |
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 99 |
+| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 100 |
+| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 101 |
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 102 |
+| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 103 |
+| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 104 |
+| Lumbar | — | Bandera roja «Prueba de percusión positiva en ángulo costovertebral» · Urogenital / Renal | 2 · razonamiento del cribado | 105 |
+| Lumbar | — | Bandera roja «Masa testicular indolora» · Urogenital / Renal | 2 · razonamiento del cribado | 106 |
+| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 107 |
+| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 108 |
+| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 109 |
+| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 110 |
+| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 110 |
+| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 111 |
+| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 112 |
+| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 113 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 114 |
+| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 115 |
+| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 116 |
+| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 117 |
+| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 118 |
+| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 119 |
+| Lumbar | — | Bandera roja «Síndrome de Leriche (aortoilíaco): imita lumbalgia, con dolor en nalgas, caderas y muslos; disfunción eréctil» · Vascular | 2 · razonamiento del cribado | 120 |
+| Rodilla | — | Pregunta `r_v1` · Vascular | 2 · razonamiento del cribado | 121 |
+| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 122 |
 | Rodilla | — | Pregunta `r_v4` · Vascular | 2 · razonamiento del cribado | 61 |
-| Rodilla | — | Bandera roja «Calambres nocturnos en pantorrilla que interrumpen el sueño» · Vascular | 2 · razonamiento del cribado | 122 |
-| Rodilla | — | Bandera amarilla «Dolor en reposo que mejora al colgar la pierna fuera de la cama» · Vascular | 2 · razonamiento del cribado | 123 |
-| Rodilla | — | Pregunta `r1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 124 |
-| Rodilla | — | Pregunta `r_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 125 |
-| Rodilla | — | Pregunta `r2` · Oncológico / Hematológico | 2 · razonamiento del cribado | 126 |
-| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 127 |
-| Rodilla | — | Pregunta `r4` · Oncológico / Hematológico | 2 · razonamiento del cribado | 128 |
-| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 129 |
-| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 130 |
-| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 131 |
-| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 132 |
-| Codo | — | Pregunta `co4a` · Vascular / Neurológica | 2 · razonamiento del cribado | 133 |
-| Codo | — | Pregunta `co4a_uni` · Vascular / Neurológica | 2 · razonamiento del cribado | 134 |
-| Codo | — | Pregunta `co4a_prog` · Vascular / Neurológica | 2 · razonamiento del cribado | 133 |
-| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 135 |
-| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 136 |
-| Codo | — | Pregunta `co_e2b` · Vascular / Neurológica | 2 · razonamiento del cribado | 137 |
-| Codo | — | Bandera roja «Síntomas vasculares en un codo postoperatorio» · Vascular / Neurológica | 2 · razonamiento del cribado | 138 |
-| Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 139 |
-| Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 140 |
-| Codo | — | Pregunta `co_e1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 141 |
-| Codo | — | Pregunta `co_e2a` · Endocrino / Metabólico | 2 · razonamiento del cribado | 142 |
+| Rodilla | — | Bandera roja «Calambres nocturnos en pantorrilla que interrumpen el sueño» · Vascular | 2 · razonamiento del cribado | 123 |
+| Rodilla | — | Bandera amarilla «Dolor en reposo que mejora al colgar la pierna fuera de la cama» · Vascular | 2 · razonamiento del cribado | 124 |
+| Rodilla | — | Pregunta `r1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 125 |
+| Rodilla | — | Pregunta `r_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 126 |
+| Rodilla | — | Pregunta `r2` · Oncológico / Hematológico | 2 · razonamiento del cribado | 127 |
+| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 128 |
+| Rodilla | — | Pregunta `r4` · Oncológico / Hematológico | 2 · razonamiento del cribado | 129 |
+| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 130 |
+| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 131 |
+| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 132 |
+| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 133 |
+| Codo | — | Pregunta `co4a` · Vascular / Neurológica | 2 · razonamiento del cribado | 134 |
+| Codo | — | Pregunta `co4a_uni` · Vascular / Neurológica | 2 · razonamiento del cribado | 135 |
+| Codo | — | Pregunta `co4a_prog` · Vascular / Neurológica | 2 · razonamiento del cribado | 134 |
+| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 136 |
+| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 137 |
+| Codo | — | Pregunta `co_e2b` · Vascular / Neurológica | 2 · razonamiento del cribado | 138 |
+| Codo | — | Bandera roja «Síntomas vasculares en un codo postoperatorio» · Vascular / Neurológica | 2 · razonamiento del cribado | 139 |
+| Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 140 |
+| Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 141 |
+| Codo | — | Pregunta `co_e1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 142 |
+| Codo | — | Pregunta `co_e2a` · Endocrino / Metabólico | 2 · razonamiento del cribado | 143 |
 | Codo | — | Bandera roja «Xantomas en tendones extensores» · Endocrino / Metabólico | 2 · razonamiento del cribado | 38 |
 | Codo | — | Bandera amarilla «Tendinitis calcificante bilateral del hombro junto con síntomas en codo» · Endocrino / Metabólico | 2 · razonamiento del cribado | 40 |
-| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 129 |
-| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 143 |
-| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 144 |
-| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 145 |
-| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 146 |
-| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 147 |
-| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 148 |
-| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 149 |
-| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 150 |
-| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 151 |
+| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 130 |
+| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 144 |
+| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 145 |
+| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 146 |
+| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 147 |
+| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 148 |
+| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 149 |
+| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 150 |
+| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 151 |
+| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 152 |
 
 ### Goosenberg 2025
 
