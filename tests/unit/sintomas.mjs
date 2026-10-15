@@ -14,8 +14,8 @@ const OTRA = { ...vacio(), otraRegion: true, zonaLibre: 'Rodilla', lado: 'Izquie
 const conSintomas = (patch, fn) => withState({ region: 'lumbar', lado: 'Derecho', severidad: 7, irritabilidadNivel: 'Moderada',
   sintomaPrincipal: P1, sintomasSecundarios: [P2, OTRA], ...patch }, fn);
 
-test('síntomas: zonas en las regiones hechas (lumbar, cervical, hombro, codo, cadera), ids únicos y no vacíos', () => {
-  assert.deepEqual(Object.keys(ZONAS_SINTOMA).sort(), ['cadera', 'cervical', 'codo', 'hombro', 'lumbar']);
+test('síntomas: zonas en las regiones hechas (lumbar, cervical, hombro, codo, cadera, rodilla), ids únicos y no vacíos', () => {
+  assert.deepEqual(Object.keys(ZONAS_SINTOMA).sort(), ['cadera', 'cervical', 'codo', 'hombro', 'lumbar', 'rodilla']);
   for (const [r, zonas] of Object.entries(ZONAS_SINTOMA)) {
     assert.ok(CIF_TREES[r], r);
     const ids = zonas.map(z => z.id);
@@ -146,6 +146,18 @@ test('síntomas: cadera — zonas en payload, 📋 Notas y 📄 Informe', () => 
     assert.equal(d.ss[0].z, 'Rodilla');
     assert.match(buildContextSummaryText(), /SÍNTOMAS: P1 Ingle · intermitente \| P2 Rodilla · NRS 3\/10 · aparece y desaparece con P1/);
     assert.match(buildInformeFisioterapiaText(), /Localización del dolor principal: ingle, intermitente/);
+  });
+});
+
+test('síntomas: rodilla — zonas en payload, 📋 Notas y 📄 Informe', () => {
+  withState({ region: 'rodilla', lado: 'Izquierdo', severidad: 5, irritabilidadNivel: 'Baja',
+    sintomaPrincipal: { ...vacio(), zonas: ['rodilla_ant'], patron: 'Intermitente' },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['rodilla_post'], nrs: 2, relacion: 'nosabe' }] }, () => {
+    const d = buildPhysiQPayload();
+    assert.deepEqual(d.z1, { z: 'Rodilla anterior (rótula)', pa: 'Intermitente' });
+    assert.equal(d.ss[0].z, 'Rodilla posterior (hueco poplíteo)');
+    assert.match(buildContextSummaryText(), /SÍNTOMAS: P1 Rodilla anterior \(rótula\) · intermitente \| P2 Rodilla posterior \(hueco poplíteo\) · NRS 2\/10 · relación con P1 no conocida/);
+    assert.match(buildInformeFisioterapiaText(), /Refiere además dolor: rodilla posterior \(hueco poplíteo\), de intensidad 2\/10\n/);
   });
 });
 
