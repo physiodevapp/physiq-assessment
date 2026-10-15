@@ -57,7 +57,7 @@ try {
 
 const BASE_URL = process.argv.slice(2).find(a => !a.startsWith('--') && /^https?:/.test(a)) || process.env.SMOKE_URL || 'http://localhost:3000';
 // data/*.js: data.js los importa estáticamente, así que uno que falte rompe la app entera.
-const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'ampliar-ia.js', 'lib/sintomas.js', 'sintomas.js', 'lib/session.js', 'lib/posquirurgico.js',
+const MODULE_FILES = ['app.js', 'state.js', 'data.js', 'phase4.js', 'phase4b.js', 'ampliar-ia.js', 'lib/sintomas.js', 'sintomas.js', 'lib/pistas.js', 'lib/session.js', 'lib/posquirurgico.js',
   'data/comun.js', 'data/anatomia.js', 'data/hombro.js', 'data/cadera.js', 'data/cervical.js', 'data/lumbar.js', 'data/rodilla.js', 'data/codo.js', 'data/tobillo_pie.js', 'data/cuestionarios.js', 'lib/cuestionarios.js'];
 const KNOWN_NOISE = ['ERR_CERT_AUTHORITY_INVALID']; // sandboxed egress proxy noise, not app errors
 // Keep in sync with the region keys in CIF_TREES/SYSTEMIC_SCREENING (data.js)
@@ -3043,8 +3043,19 @@ async function checkSintomas(page) {
   await page.waitForSelector('.confirm-box-btns');
   await page.keyboard.press('Escape');
   r.quitarCancelado = await page.evaluate(() => state.sintomasSecundarios.length === 2);
+  // Paso 3 (pistas en el árbol): el recuadro «📝» del paso 1 lumbar recuerda
+  // P1 (pierna) y P2 (zona lumbar), no la otra región, y no contesta el paso
+  // (en el mismo recuadro que las respuestas del formulario previo ligadas al paso, que van antes)
+  await page.evaluate(() => { state.formularioPrevio.regiones.lumbar = { pierna_hasta: 'Hasta el pie' }; goToPhase(4); });
+  await page.waitForSelector('#lu_step1 .fp-pistas');
+  r.pistaArbol = await page.evaluate(() => {
+    const cajas = document.querySelectorAll('#lu_step1 .fp-pistas'), t = cajas[0].textContent;
+    return cajas.length === 1 && t.indexOf('Hasta el pie') > -1 && t.indexOf('Hasta el pie') < t.indexOf('Síntoma P1')
+      && t.includes('Síntoma P1 (principal): Pierna por debajo de la rodilla') && t.includes('NRS 3/10')
+      && t.includes('Síntoma P2: Zona lumbar, glúteo') && !t.includes('Rodilla ·') && !t.includes('P3')
+      && Object.keys(state.treeAnswers).length === 0 && !document.querySelector('#lu_step1 .option-btn.selected');
+  });
   // Fase 5
-  await page.evaluate(() => { goToPhase(4); });
   await page.evaluate(() => { state.maxVisitedIdx = 5; buildResults(); goToPhase(5); });
   await page.waitForSelector('#resultsContent .summary-section');
   r.fase5 = await page.evaluate(() => {
@@ -3078,7 +3089,7 @@ async function checkSintomas(page) {
   r.cadera = await zonasDe('cadera', ['Ingle', 'Cadera lateral', 'Glúteo', 'Muslo anterior', 'Rodilla', 'Zona lumbar'], false);
   r.rodilla = await zonasDe('rodilla', ['Rodilla anterior (rótula)', 'Rodilla medial', 'Rodilla lateral', 'Rodilla posterior (hueco poplíteo)', 'Muslo', 'Pierna'], false);
   r.tobillo = await zonasDe('tobillo_pie', ['Tobillo lateral', 'Tobillo medial', 'Tobillo anterior', 'Tendón de Aquiles', 'Talón o planta', 'Antepié o dedos', 'Pantorrilla'], false);
-  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.fase5 && r.cervical && r.hombro && r.codo && r.cadera && r.rodilla && r.tobillo;
+  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.pistaArbol && r.fase5 && r.cervical && r.hombro && r.codo && r.cadera && r.rodilla && r.tobillo;
   return r;
 }
 
@@ -3247,7 +3258,7 @@ const SECCIONES = [
     const page = await nuevaPagina(browser, errors);
     try {
       const r = await checkSintomas(page);
-      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; pistas en el paso del árbol (con las del formulario, sin la otra región, sin contestarlo); fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
       return r.ok;
     } finally { await page.context().close(); }
   } },
