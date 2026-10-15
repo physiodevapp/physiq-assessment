@@ -1,7 +1,7 @@
 // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera: data/tejidos.js,
 // lib/tejidos.js, docs/tiempos-tejido.md). Se ejecuta desde tests/unit.js.
 import { assert, leer, test, TIEMPOS_TEJIDO } from './comun.mjs';
-const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles, rangoFase, buscarFila, infoBarraHTML, tieneBarra } = await import('../../lib/tejidos.js');
+const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles, rangoFase, buscarFila, infoBarraHTML, tieneBarra, fuentesTejidoHTML } = await import('../../lib/tejidos.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 
 console.log('\ntiempos de tejido');
@@ -486,4 +486,30 @@ test('tejidos: cada barra es un botón que abre su tarjeta (gravedad, qué mide,
   assert.ok(hs.includes(`<div class="tej-info-madre">${g2.nombre}</div>`));
   assert.ok(hs.includes(`tej-ley-muestra tej-${g2.gravedad} tej-relleno-rayado"`));
   assert.ok(hs.includes(`>${T.columnas[2].etiqueta}</dd>`.replace(/^>./, c => c.toUpperCase())));
+});
+
+test('tejidos: la tarjeta de cada barra lista sus fuentes, enlazadas a la url o el DOI del registro; la nota de grupo, plegadas', () => {
+  const todas = [...filas, ...subtipos].filter(tieneBarra);
+  for (const f of todas) {
+    const h = infoBarraHTML(T, f.id, REFERENCIAS);
+    // Sin registro: la misma lista, sin enlaces (el registro llega con import())
+    const sinRef = infoBarraHTML(T, f.id);
+    assert.equal(h.includes('tej-info-fuentes'), f.fuentes.length > 0, f.id);
+    assert.ok(!sinRef.includes('<a '), f.id);
+    for (const k of f.fuentes) {
+      const r = REFERENCIAS[k];
+      const url = r.url || (r.doi ? `https://doi.org/${r.doi}` : null);
+      assert.ok(url, `${f.id}: ${k} sin url ni DOI en el registro`);
+      assert.ok(h.includes(`href="${url.replace(/&/g, '&amp;')}" target="_blank" rel="noopener noreferrer"`), `${f.id}: ${k}`);
+      assert.ok(sinRef.includes(`<li>${k}</li>`), `${f.id}: ${k} sin registro`);
+    }
+  }
+  assert.equal(fuentesTejidoHTML(['No existe 1900'], REFERENCIAS), '<li>No existe 1900</li>');
+  // Nota de grupo con fuentes (nervio periférico): plegadas bajo la nota, con sus claves para enlazarlas después
+  const g = T.grupos.find(x => x.notaFuentes?.length);
+  const h = tiemposTejidoHTML(T, { filtro: g.id, REF: REFERENCIAS });
+  assert.ok(h.includes(`<details class="tej-grupo-fuentes"><summary>Fuentes (${g.notaFuentes.length})</summary>`));
+  assert.ok(h.includes(`data-claves="${g.notaFuentes.join('|')}"`));
+  assert.equal((h.match(/tej-grupo-fuentes[\s\S]*?<\/details>/)[0].match(/class="tej-fuente-enlace"/g) || []).length, g.notaFuentes.length);
+  assert.ok(!tiemposTejidoHTML(T, { filtro: g.id }).match(/tej-grupo-fuentes[\s\S]*?<\/details>/)[0].includes('<a '));
 });
