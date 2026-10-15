@@ -2,13 +2,13 @@
 
 > Generado por `node tests/gen-frases-plan.mjs` a partir de `data/plan-tratamiento.js` y `lib/plan-tratamiento.js`. No lo edites a mano: cambia el texto en `data/plan-tratamiento.js` y regenera (`tests/unit.js` falla si no está al día).
 
-Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», y en el razonamiento de la pregunta `l6` para Finucane 2020).
+Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023).
 
 Redacción propia: **1** frase.
 
 ## 1. Programa para casa (lo lee el paciente)
 
-Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cuándo parar» los escribe el fisio (si «Cuándo parar» queda vacío, se usa la variable de control de la fase 5); lo que falte no sale, y compartir pide confirmación antes. «Cuándo hacerlo» y «Al día siguiente» usan las notas de la fase 5 si están rellenas. La última frase (urgencias) solo sale con una hipótesis neurológica (sección 2). Con el plan bloqueado por una urgencia o una derivación no hay programa para casa.
+Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cuándo parar» los escribe el fisio (si «Cuándo parar» queda vacío, se usa la variable de control de la fase 5); lo que falte no sale, y compartir pide confirmación antes. «Cuándo hacerlo» y «Al día siguiente» usan las notas de la fase 5 si están rellenas. Las últimas frases (urgencias) son la red de seguridad de la región (sección 2): la neurológica solo con una hipótesis neurológica, la de siempre con cualquier plan de esa región. Con el plan bloqueado por una urgencia o una derivación no hay programa para casa.
 
 - [ ] «PROGRAMA PARA CASA»  
   ↳ etiqueta  
@@ -40,6 +40,12 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Si notas adormecimiento entre las piernas o alrededor del ano, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo.»  
   ↳ fuente: Finucane 2020, sección 2 (síndrome de cola de caballo), pp. 9–17: explicar al paciente qué vigilar y qué hacer (red de seguridad)  
   ↳ clave `alarmaNeuro`
+- [ ] «Si notas torpeza nueva en las manos (al abrocharte o al escribir), inestabilidad o las piernas pesadas al caminar, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo.»  
+  ↳ fuente: Margetis y Donnally 2025 (StatPearls, «Cervical Myelopathy»: anamnesis y exploración), como en el razonamiento de cv3: con signos nuevos o que van a más, la derivación es urgente  
+  ↳ clave `alarmaMedula`
+- [ ] «Si te empieza de golpe un dolor de cabeza o de cuello distinto a cualquiera que hayas tenido, o notas visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas sin perder el conocimiento, ve a urgencias hoy mismo.»  
+  ↳ fuente: Rushton 2023 (marco IFOMPT cervical), tablas 1–2 y 6, pp. 9–12, como en el razonamiento de cv_ar1 y cv_ar2: disección arterial e insuficiencia vertebrobasilar; los síntomas neurológicos pueden llegar días después  
+  ↳ clave `alarmaArterial`
 
 ## 2. Reglas de decisión (no son frases, pero deciden qué sale)
 
@@ -60,10 +66,26 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 
   ↳ Petersen 2021 (combinación gravedad × irritabilidad); concreción en escalones: **decisión de diseño** (revisión clínica 2026-10: alta siempre 1, B nunca 4).
 
-- [ ] Exploración neurológica al empezar cada sesión: `lu3`, `lu4`, `lu5`.  
+- [ ] Exploración neurológica al empezar cada sesión: `lu3`, `lu4`, `lu5`, `ce3`, `ce12`.  
   ↳ fuente: Maitland 2005, cap. 6, p. 136
-- [ ] Regla de los 7–10 días: `lu3`, `lu5`, solo con NRS registrado de 8 o más.  
+- [ ] Regla de los 7–10 días: `lu3`, `lu5`, `ce3`, `ce12`, solo con NRS registrado de 8 o más.  
   ↳ fuente: Maitland 2005, cap. 9, p. 217
+- [ ] `ce2` no cuenta como neurológica: Disfunción neuromuscular cervical: déficit de control motor (coordinación, propiocepción), no compromiso de la raíz ni de la médula.  
+  ↳ **decisión de diseño**
+- [ ] Red de seguridad de lumbar: con una hipótesis neurológica, cierre `cierreNeuro` y casa `alarmaNeuro`.  
+  ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
+- [ ] Red de seguridad de cervical: con una hipótesis neurológica, cierre `cierreMedula` y casa `alarmaMedula`; con cualquier plan de la región, cierre `cierreArterial` y casa `alarmaArterial`.  
+  ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
+- [ ] Con `ce13`, la cantidad de terapia manual es la de su pauta: `TEXTOS_SESION.cantidadReid` (sección 6) en vez de la genérica.  
+  ↳ **decisión de diseño** (decisión 41)
+- [ ] Con `ce12` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Avisos con `ce13`: `AVISOS.vertigo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ce3`: `AVISOS.manipulacionCervical` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `ce12`: `AVISOS.manipulacionCervical`, `AVISOS.sinTerapiaManualAguda` (sección 5).  
+  ↳ **decisión de diseño**
 
 ## 3. Escalones de terapia manual
 
@@ -113,6 +135,10 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ decisión 10 de docs/plan-tratamiento.md
 - [ ] «No usar ninguna técnica cervical que produzca mareo; probar antes con movimientos exploratorios (Maitland 2005, cap. 9, p. 224).»  
   ↳ fuente en el texto (Maitland 2005)
+- [ ] «Sin manipulación forzada con signos de dos raíces cervicales o signos medulares; la movilización suave sí puede ser adecuada, y los cambios neurológicos no impiden movilizar con suavidad desde el principio (Maitland 2005, cap. 9, pp. 222–223).»  
+  ↳ fuente en el texto (Maitland 2005)
+- [ ] «En la fase aguda (menos de 1 mes) la pauta de Kuijper 2009 es sin terapia manual: ahí los escalones no se aplican. La movilización o manipulación entra en la fase crónica (Blanpied 2017, B).»  
+  ↳ fuente en el texto (Kuijper 2009, Blanpied 2017)
 - [ ] «Dosificado según el síntoma más irritable de la fase 3, no según P1 (a igualdad de irritabilidad, manda P1). La gravedad es la de su NRS.»  
   ↳ decisión 35 de docs/plan-tratamiento.md
 - [ ] «Un síntoma va independiente de P1: puede ser un segundo problema que este plan no trata. Valóralo aparte.»  
@@ -150,12 +176,18 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Evaluar antes, durante y después de cada técnica; unas 3–4 movilizaciones de unos 30 s por articulación, la mitad si duele mucho (Maitland 2005, cap. 9, pp. 213, 216 y 219).»  
   ↳ fuente en el texto (Maitland 2005)
+- [ ] «Mareo cervicogénico: el volumen es el de su pauta, que manda sobre la cantidad genérica: SNAG de Mulligan, 6 repeticiones (sin síntomas en la primera sesión); o movilización de Maitland de hasta 3 niveles cervicales altos, normalmente 3 aplicaciones de 30 s por nivel (Reid 2014).»  
+  ↳ fuente en el texto (Reid 2014)
 - [ ] «Enseñar y comprobar lo que hará en casa.»  
   ↳ organización de la sesión (orientativa, editable; no evidencia)
 - [ ] «Reevaluar el signo comparable y explicar qué vigilar hasta la próxima sesión (Maitland 2005, cap. 9, p. 213 y tabla 9.3, «Después»).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (adormecimiento entre las piernas o alrededor del ano, cambios al orinar o al hacer de vientre) y comprobar que lo ha entendido (Finucane 2020, sección 2, pp. 9–17).»  
   ↳ fuente en el texto (Finucane 2020)
+- [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (torpeza nueva en las manos, inestabilidad o piernas «pesadas» al caminar, cambios al orinar o al hacer de vientre) y comprobar que lo ha entendido (Margetis y Donnally 2025, anamnesis y exploración).»  
+  ↳ fuente en el texto (Margetis y Donnally 2025)
+- [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (dolor de cabeza o de cuello de golpe y distinto a cualquier otro, visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas súbitas) y comprobar que lo ha entendido; los de una disección pueden llegar días después (Rushton 2023, tablas 1–2 y 6, pp. 9–12).»  
+  ↳ fuente en el texto (Rushton 2023)
 
 ## 7. Plan de un mes
 
@@ -167,6 +199,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ **organización orientativa**
 - [ ] «Con movilización neural vigorosa, dejar al menos 2–3 días entre sesiones y reevaluar a las 24 h (Maitland 2005, cap. 6, p. 149).»  
   ↳ fuente en el texto (Maitland 2005)
+- [ ] «Dolor radicular cervical agudo: su pauta fija 2 sesiones por semana durante 6 semanas (12 sesiones), así que encaja con el plan B; con el plan A, el mes queda por debajo de esa pauta (Kuijper 2009).»  
+  ↳ fuente en el texto (Kuijper 2009)
 - [ ] «Si la pauta trae su propio criterio de progresión, ese manda. Si no: al principio lo mínimo que no provoque recaída; reintroducir lo que agravaba cuando baje la irritabilidad; progresar al ritmo de la curación y de los síntomas; reevaluar dentro de la sesión y entre sesiones (Petersen 2021; Zusman 1998).»  
   ↳ fuente en el texto (Petersen 2021, Zusman 1998)
 - [ ] «Si una técnica no cambia nada, repetirla más firme; si sigue sin cambio, descartarla. Si mejora, repetirla; si empeora, no repetirla (Maitland 2005, cap. 9, pp. 213–214).»  

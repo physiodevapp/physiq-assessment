@@ -2800,6 +2800,58 @@ async function checkBandaFormulario(page) {
   return res;
 }
 
+// Fase 6 en cervical (L3, docs/plan-tratamiento.md): por la interfaz real hasta
+// la 5 y a la 6. La red de seguridad es la de cervical (arterias siempre;
+// médula con ce3/ce12), nunca la de cola de caballo de lumbar.
+async function checkFase6Cervical(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 6 cervical): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 cervical): ${msg.text()}`); });
+  await page.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json', body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo' }, demoOnly: false }),
+  }));
+  await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+  const r = {};
+  await walkRegion(page, 'cervical');
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.plan = await page.evaluate(() => state.currentPhase === 6 && !document.querySelector('#planContenido .alert-info')
+    && document.querySelectorAll('#planContenido .card').length === 5);
+  const { D } = await page.evaluate(async () => ({ D: JSON.parse(JSON.stringify(await import('./data/plan-tratamiento.js'))) }));
+  const casa = async () => {
+    await page.fill('#planNotasCasa', 'Movilidad del cuello');
+    await page.fill('#planParar', 'Si aumenta el hormigueo');
+    await page.click('#btnCompartirPlan');
+    await page.click('#compartirOpciones .compartir-op >> nth=2');
+    await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+    return page.evaluate(() => navigator.clipboard.readText());
+  };
+  const t1 = await casa();
+  r.arterial = t1.trimEnd().endsWith(D.TEXTOS_CASA.alarmaArterial.texto) && !t1.includes(D.TEXTOS_CASA.alarmaNeuro.texto);
+  // Con ce3 (radiculopatía) elegida a mano
+  await page.evaluate(() => { if (!state.activeHypotheses.includes('ce3')) state.activeHypotheses.push('ce3'); state.planTratamiento.hipotesis = ['ce3']; goToPhase(5); goToPhase(6); });
+  await page.waitForSelector('#planContenido .card');
+  const html = await page.textContent('#planContenido');
+  r.ce3 = html.includes(D.AVISOS.manipulacionCervical) && html.includes(D.TEXTOS_SESION.reevaluacionRadicular) && html.includes(D.TEXTOS_SESION.cierreMedula)
+    && !html.includes(D.TEXTOS_SESION.cierreNeuro);
+  const t2 = await casa();
+  r.casaCe3 = t2.trimEnd().endsWith(`${D.TEXTOS_CASA.alarmaMedula.texto}\n\n${D.TEXTOS_CASA.alarmaArterial.texto}`);
+  await page.evaluate(() => { if (!state.activeHypotheses.includes('ce12')) state.activeHypotheses.push('ce12'); state.planTratamiento.hipotesis = ['ce12']; goToPhase(5); goToPhase(6); });
+  await page.waitForSelector('#planContenido .card');
+  r.ce12 = (await page.textContent('#planContenido')).includes(D.AVISOS.sinTerapiaManualAguda)
+    && (await page.textContent('#planContenido')).includes(D.FRECUENCIA_PAUTA.ce12.nota);
+  await page.evaluate(() => { if (!state.activeHypotheses.includes('ce13')) state.activeHypotheses.push('ce13'); state.planTratamiento.hipotesis = ['ce13']; goToPhase(5); goToPhase(6); });
+  await page.waitForSelector('#planContenido .card');
+  const t13 = await page.textContent('#planContenido');
+  r.ce13 = t13.includes(D.TEXTOS_SESION.cantidadReid) && !t13.includes(D.TEXTOS_SESION.cantidad) && t13.includes(D.AVISOS.vertigo);
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 // Fase 6 «Plan de tratamiento» (opcional; docs/plan-tratamiento.md): lumbar
 // por la interfaz real hasta la 5 y de ahí a la 6 con «Plan de tratamiento →».
 // Escritorio: paso 6 en la barra, hipótesis por defecto, gravedad e
@@ -3324,6 +3376,12 @@ const SECCIONES = [
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; otra región → piloto; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'fase6-cervical', titulo: 'Fase 6: plan de tratamiento en cervical (L3):', run: async ({ browser, errors }) => {
+    const r = await checkFase6Cervical(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} cervical por la interfaz real hasta la 6: plan con sus tarjetas; el programa para casa termina con la red de seguridad arterial y nunca con la de cola de caballo; con ce3, exploración neurológica, aviso de manipulación y red de la médula antes de la arterial; con ce12, aviso de la pauta aguda sin terapia manual y nota de 2 sesiones/semana; con ce13, el volumen de su pauta en vez del genérico y el aviso de mareo${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

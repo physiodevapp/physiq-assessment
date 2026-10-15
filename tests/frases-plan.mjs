@@ -39,11 +39,11 @@ export function construirFrases(D, P) {
     '',
     '> Generado por `node tests/gen-frases-plan.mjs` a partir de `data/plan-tratamiento.js` y `lib/plan-tratamiento.js`. No lo edites a mano: cambia el texto en `data/plan-tratamiento.js` y regenera (`tests/unit.js` falla si no está al día).',
     '',
-    'Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», y en el razonamiento de la pregunta `l6` para Finucane 2020).',
+    'Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023).',
   );
 
   sec('1. Programa para casa (lo lee el paciente)',
-    'Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cuándo parar» los escribe el fisio (si «Cuándo parar» queda vacío, se usa la variable de control de la fase 5); lo que falte no sale, y compartir pide confirmación antes. «Cuándo hacerlo» y «Al día siguiente» usan las notas de la fase 5 si están rellenas. La última frase (urgencias) solo sale con una hipótesis neurológica (sección 2). Con el plan bloqueado por una urgencia o una derivación no hay programa para casa.');
+    'Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cuándo parar» los escribe el fisio (si «Cuándo parar» queda vacío, se usa la variable de control de la fase 5); lo que falte no sale, y compartir pide confirmación antes. «Cuándo hacerlo» y «Al día siguiente» usan las notas de la fase 5 si están rellenas. Las últimas frases (urgencias) son la red de seguridad de la región (sección 2): la neurológica solo con una hipótesis neurológica, la de siempre con cualquier plan de esa región. Con el plan bloqueado por una urgencia o una derivación no hay programa para casa.');
   for (const [k, v] of Object.entries(D.TEXTOS_CASA)) out.push(item(v.texto, v.fuente ? `fuente: ${v.fuente}` : tipoLegible(v.tipo)) + `  \n  ↳ clave \`${k}\``);
 
   sec('2. Reglas de decisión (no son frases, pero deciden qué sale)');
@@ -63,6 +63,15 @@ export function construirFrases(D, P) {
   out.push('',
     `- [ ] Exploración neurológica al empezar cada sesión: ${D.HIP_EXPLORACION_NEURO.map(nombre).join(', ')}.  \n  ↳ fuente: Maitland 2005, cap. 6, p. 136`,
     `- [ ] Regla de los 7–10 días: ${D.HIP_RADICULARES.map(nombre).join(', ')}, solo con NRS registrado de 8 o más.  \n  ↳ fuente: Maitland 2005, cap. 9, p. 217`);
+  for (const [id, motivo] of Object.entries(D.HIP_NEURO_DESCARTADAS)) out.push(`- [ ] ${nombre(id)} no cuenta como neurológica: ${motivo}  \n  ↳ **decisión de diseño**`);
+  const CUANDO = { neuro: 'con una hipótesis neurológica', siempre: 'con cualquier plan de la región' };
+  for (const [region, r] of Object.entries(D.RED_SEGURIDAD)) {
+    const partes = Object.entries(r).map(([k, x]) => `${CUANDO[k]}, cierre \`${x.cierre}\` y casa \`${x.casa}\``);
+    out.push(`- [ ] Red de seguridad de ${region}: ${partes.join('; ')}.  \n  ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)`);
+  }
+  for (const [id, k] of Object.entries(D.VOLUMEN_PAUTA)) out.push(`- [ ] Con ${nombre(id)}, la cantidad de terapia manual es la de su pauta: \`TEXTOS_SESION.${k}\` (sección 6) en vez de la genérica.  \n  ↳ **decisión de diseño** (decisión 41)`);
+  for (const [id, f] of Object.entries(D.FRECUENCIA_PAUTA)) out.push(`- [ ] Con ${nombre(id)} como hipótesis por defecto, el plan del mes empieza en ${f.plan} (sección 7).  \n  ↳ **decisión de diseño** (decisión 42)`);
+  for (const [id, ks] of Object.entries(D.AVISOS_HIP)) out.push(`- [ ] Avisos con ${nombre(id)}: ${ks.map(k => `\`AVISOS.${k}\``).join(', ')} (sección 5).  \n  ↳ **decisión de diseño**`);
 
   sec('3. Escalones de terapia manual');
   for (const [n, e] of Object.entries(D.ESCALONES)) out.push(item(`${n} · ${e.nombre} (${e.modo}): ${e.texto}`, `fuente: ${e.citas.join(' · ')}`));
@@ -85,6 +94,7 @@ export function construirFrases(D, P) {
     out.push(item(`${p.nombre}: ${p.sesiones} sesiones; reevaluación intermedia ${p.intermedia}; final ${p.final}; programa domiciliario: ${p.domiciliario}`, '**organización orientativa**'));
     p.notas.forEach((t, i) => out.push(auto(t, `PLANES_MES.notas.${i}`)));
   }
+  for (const [id, f] of Object.entries(D.FRECUENCIA_PAUTA)) out.push(auto(f.nota, `FRECUENCIA_PAUTA.${id}.nota`));
   out.push(auto(D.PROGRESION_GENERICA, 'PROGRESION_GENERICA'));
   D.REGLAS_MES.forEach((t, i) => out.push(auto(t, `REGLAS_MES.${i}`)));
   out.push(auto(D.REGLA_RADICULAR_SEVERA, 'REGLA_RADICULAR_SEVERA'));

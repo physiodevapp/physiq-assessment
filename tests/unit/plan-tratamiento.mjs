@@ -200,20 +200,111 @@ test('plan: «cuándo parar» del plan; si no, la variable de control de la fase
   assert.match(leer('plan.js'), /showConfirmBanner\('Programa incompleto'/);
 });
 
-test('plan: con una hipótesis neurológica, red de seguridad en el cierre y al final del programa para casa (Finucane 2020); sin ella, no', () => {
+test('plan: con una hipótesis neurológica, la red de seguridad de su región en el cierre y al final del programa para casa; sin ella, solo la de siempre', () => {
   const base = { severidad: 5, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta') };
   const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
   for (const id of D.HIP_EXPLORACION_NEURO) {
-    const p = P.construirPlan({ ...base, hipotesis: [hip(id)], elegidas: [id] });
-    assert.ok(p.neuro && p.sesion.cierre.includes(D.TEXTOS_SESION.cierreNeuro), id);
+    const region = HYPOTHESES[id].region;
+    const red = D.RED_SEGURIDAD[region];
+    assert.ok(red?.neuro, `${id}: su región (${region}) no tiene red de seguridad neurológica`);
+    const p = P.construirPlan({ ...base, region, hipotesis: [hip(id)], elegidas: [id] });
+    const esperadas = [red.neuro, red.siempre].filter(Boolean);
+    assert.ok(p.neuro, id);
+    assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre, ...esperadas.map(x => D.TEXTOS_SESION[x.cierre])], id);
     const t = P.textoDomiciliario(p, {}, { ejercicios: 'X', parar: 'Y' });
-    assert.ok(t.trimEnd().endsWith(D.TEXTOS_CASA.alarmaNeuro.texto), `${id}: la alarma va al final`);
+    assert.ok(t.trimEnd().endsWith(esperadas.map(x => D.TEXTOS_CASA[x.casa].texto).join('\n\n')), `${id}: las alarmas van al final`);
   }
-  const no = P.construirPlan({ ...base, hipotesis: [hip('lu1')], elegidas: ['lu1'] });
+  const no = P.construirPlan({ ...base, region: 'lumbar', hipotesis: [hip('lu1')], elegidas: ['lu1'] });
   assert.ok(!no.neuro && !no.sesion.cierre.includes(D.TEXTOS_SESION.cierreNeuro));
   assert.ok(!P.textoDomiciliario(no, {}, { ejercicios: 'X', parar: 'Y' }).includes(D.TEXTOS_CASA.alarmaNeuro.texto));
   assert.ok(D.FUENTES_PLAN.includes('Finucane 2020'));
   assert.match(D.TEXTOS_CASA.alarmaNeuro.fuente, /^Finucane 2020/);
+});
+
+test('plan: cervical — médula con ce3/ce12, arterias con cualquier hipótesis; nunca la cola de caballo; sin región, sin red', () => {
+  const base = { region: 'cervical', severidad: 5, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta') };
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const casa = p => P.textoDomiciliario(p, {}, { ejercicios: 'X', parar: 'Y' });
+  const ce1 = P.construirPlan({ ...base, hipotesis: [hip('ce1')], elegidas: ['ce1'] });
+  assert.ok(!ce1.neuro);
+  assert.deepEqual(ce1.sesion.cierre, [D.TEXTOS_SESION.cierre, D.TEXTOS_SESION.cierreArterial]);
+  assert.ok(casa(ce1).trimEnd().endsWith(D.TEXTOS_CASA.alarmaArterial.texto));
+  assert.ok(!casa(ce1).includes(D.TEXTOS_CASA.alarmaMedula.texto));
+  for (const id of ['ce3', 'ce12']) {
+    const p = P.construirPlan({ ...base, hipotesis: [hip(id)], elegidas: [id] });
+    assert.ok(p.sesion.reevaluacion.includes(D.TEXTOS_SESION.reevaluacionRadicular), id);
+    assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre, D.TEXTOS_SESION.cierreMedula, D.TEXTOS_SESION.cierreArterial], id);
+    const t = casa(p);
+    assert.ok(t.includes(D.TEXTOS_CASA.alarmaMedula.texto) && !t.includes(D.TEXTOS_CASA.alarmaNeuro.texto), id);
+    assert.ok(!p.sesion.cierre.includes(D.TEXTOS_SESION.cierreNeuro), `${id}: la cola de caballo es lumbar`);
+    assert.ok(P.construirPlan({ ...base, severidad: 9, hipotesis: [hip(id)], elegidas: [id] }).mes.reglas.includes(D.REGLA_RADICULAR_SEVERA), id);
+  }
+  assert.ok(!D.HIP_EXPLORACION_NEURO.includes('ce2') && D.HIP_NEURO_DESCARTADAS.ce2, 'ce2: control motor, no neurológica');
+  // Sin región, o con una sin entrada, no hay red de seguridad
+  for (const region of [undefined, 'hombro']) {
+    const p = P.construirPlan({ ...base, region, hipotesis: [hip('ce3')], elegidas: ['ce3'] });
+    assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre], String(region));
+    assert.deepEqual(p.alarmasCasa, []);
+  }
+  // Cada entrada apunta a textos que existen; toda región del plan tiene la suya
+  for (const region of D.REGIONES_PLAN) assert.ok(D.RED_SEGURIDAD[region], `${region} sin RED_SEGURIDAD`);
+  for (const [region, r] of Object.entries(D.RED_SEGURIDAD)) for (const [k, x] of Object.entries(r)) {
+    assert.ok(['neuro', 'siempre'].includes(k), `${region}.${k}`);
+    assert.equal(typeof D.TEXTOS_SESION[x.cierre], 'string', `${region}.${k}.cierre`);
+    assert.equal(typeof D.TEXTOS_CASA[x.casa]?.texto, 'string', `${region}.${k}.casa`);
+  }
+});
+
+test('plan: avisos por hipótesis por id (AVISOS_HIP): mareo con ce13, sin manipulación forzada con ce3/ce12, sin terapia manual en la aguda con ce12', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const avisos = ids => P.construirPlan({ region: 'cervical', severidad: 5, hipotesis: ids.map(hip), elegidas: ids }).avisosHip;
+  for (const [id, ks] of Object.entries(D.AVISOS_HIP)) {
+    assert.ok(HYPOTHESES[id], `${id} no existe`);
+    assert.ok(D.REGIONES_PLAN.includes(HYPOTHESES[id].region), `${id}: región sin plan`);
+    assert.ok(Array.isArray(ks) && ks.length, id);
+    for (const k of ks) assert.equal(typeof D.AVISOS[k], 'string', `${id}: AVISOS.${k}`);
+  }
+  // ce12: su pauta aguda es sin terapia manual, y el aviso lo dice
+  assert.match(HYPOTHESES.ce12.dosis, /sin terapia manual/);
+  assert.ok(avisos(['ce12']).includes(D.AVISOS.sinTerapiaManualAguda));
+  assert.ok(!avisos(['ce3']).includes(D.AVISOS.sinTerapiaManualAguda));
+  assert.ok(avisos(['ce13']).includes(D.AVISOS.vertigo));
+  assert.ok(avisos(['ce3']).includes(D.AVISOS.manipulacionCervical));
+  assert.equal(avisos(['ce3', 'ce12']).filter(a => a === D.AVISOS.manipulacionCervical).length, 1, 'un aviso repetido sale una vez');
+  assert.ok(!avisos(['ce1']).some(a => a === D.AVISOS.vertigo || a === D.AVISOS.manipulacionCervical));
+});
+
+test('plan: pauta con volumen propio (ce13, Reid 2014) sustituye a la cantidad genérica; con otra hipótesis sin él, salen las dos', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const cant = ids => P.construirPlan({ region: 'cervical', severidad: 5, hipotesis: ids.map(hip), elegidas: ids }).sesion.cantidad;
+  assert.deepEqual(cant(['ce13']), [D.TEXTOS_SESION.cantidadReid]);
+  assert.deepEqual(cant(['ce1']), [D.TEXTOS_SESION.cantidad]);
+  assert.deepEqual(cant(['ce13', 'ce1']), [D.TEXTOS_SESION.cantidadReid, D.TEXTOS_SESION.cantidad]);
+  assert.deepEqual(cant([]), [D.TEXTOS_SESION.cantidad]);
+  // El texto repite el volumen de la pauta de ce13
+  for (const frag of ['6 repeticiones', '3 aplicaciones de 30 s']) {
+    assert.ok(HYPOTHESES.ce13.dosis.includes(frag) && D.TEXTOS_SESION.cantidadReid.includes(frag), frag);
+  }
+  for (const [id, k] of Object.entries(D.VOLUMEN_PAUTA)) { assert.ok(HYPOTHESES[id], id); assert.equal(typeof D.TEXTOS_SESION[k], 'string', k); }
+  const t = P.textoPlanSesion(P.construirPlan({ region: 'cervical', severidad: 5, hipotesis: [hip('ce13')], elegidas: ['ce13'] }), {});
+  assert.ok(t.includes(D.TEXTOS_SESION.cantidadReid) && !t.includes(D.TEXTOS_SESION.cantidad));
+});
+
+test('plan: pauta que fija la frecuencia (ce12, Kuijper 2009): plan B por defecto y nota en el mes', () => {
+  assert.equal(P.frecuenciaPorDefecto('ce12'), 'B');
+  assert.equal(P.frecuenciaPorDefecto('ce1'), 'A');
+  assert.equal(P.frecuenciaPorDefecto(null), 'A');
+  assert.match(HYPOTHESES.ce12.dosis, /2 veces por semana durante 6 semanas/);
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const p = P.construirPlan({ region: 'cervical', severidad: 5, hipotesis: [hip('ce12')], elegidas: ['ce12'] });
+  assert.deepEqual(p.mes.notasPauta, [D.FRECUENCIA_PAUTA.ce12.nota]);
+  assert.ok(P.textoPlanMes(p, {}, 'A').includes(D.FRECUENCIA_PAUTA.ce12.nota));
+  assert.deepEqual(P.construirPlan({ region: 'cervical', severidad: 5, hipotesis: [hip('ce1')], elegidas: ['ce1'] }).mes.notasPauta, []);
+  withState({ region: 'cervical', activeHypotheses: ['ce12'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    PLAN.planActual();
+    assert.equal(state.planTratamiento.frecuencia, 'B');
+  });
+  state.planTratamiento = null;
 });
 
 test('plan: los avisos posquirúrgicos son los textos de la fase 5; sin propuesta C «por tope», que ya no puede darse', () => {
@@ -266,6 +357,18 @@ test('plan: con estado lumbar real, la pauta sale de la hipótesis y una «Deriv
     assert.equal(plan.sesion.intervencion[0].pauta, HYPOTHESES.lu3.dosis);
     assert.equal(P.elegible(hs.find(h => h.id === derivar.id)).ok, false);
   });
+});
+
+test('plan: con estado cervical real, la pauta de ce3, su red de seguridad y ce8 («Derivar») no elegible', () => {
+  withState({ region: 'cervical', activeHypotheses: ['ce3', 'ce8'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    const { plan, hs } = PLAN.planActual();
+    assert.deepEqual(state.planTratamiento.hipotesis, ['ce3']);
+    assert.equal(plan.sesion.intervencion[0].pauta, HYPOTHESES.ce3.dosis);
+    assert.equal(P.elegible(hs.find(h => h.id === 'ce8')).ok, false);
+    assert.deepEqual(plan.alarmasCasa, [D.TEXTOS_CASA.alarmaMedula.texto, D.TEXTOS_CASA.alarmaArterial.texto]);
+    assert.ok(plan.avisosHip.includes(D.AVISOS.manipulacionCervical));
+  });
+  state.planTratamiento = null;
 });
 
 test('plan: varios síntomas — dosifica el más irritable; a igualdad, P1; otra región y sin irritabilidad no cuentan', () => {
