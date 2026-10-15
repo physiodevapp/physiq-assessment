@@ -3120,7 +3120,7 @@ async function checkSintomas(page) {
   await page.waitForSelector('#ro_step1b .fp-pistas');
   r.pistaRodilla = await page.evaluate(() => document.querySelector('#ro_step1b .fp-pistas').textContent.includes('Síntoma P1 (principal): Rodilla anterior (rótula)')
     && !('ro_step1b' in state.treeAnswers) && !document.querySelector('#ro_step1 .fp-pistas'));
-  r.tobillo = await zonasDe('tobillo_pie', ['Tobillo lateral', 'Tobillo medial', 'Tobillo anterior', 'Tendón de Aquiles', 'Talón o planta', 'Antepié o dedos', 'Pantorrilla'], false);
+  r.tobillo = await zonasDe('tobillo_pie', ['Tobillo lateral', 'Tobillo medial', 'Tobillo anterior', 'Tendón de Aquiles', 'Talón o planta', 'Mediopié', 'Antepié o dedos', 'Pantorrilla'], false);
   // Pistas en el árbol de tobillo y pie: el tobillo lateral sale en el paso 2
   // (Ottawa), que aparece al contestar SÍ al 1; la pista no contesta el 2
   await page.click('#sintItem_0 .sint-zona:has-text("Tobillo lateral")');

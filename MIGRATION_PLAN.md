@@ -369,7 +369,7 @@ Diseño y decisiones: `docs/sintomas-multiples.md` (léelo entero antes de empez
   - [x] Codo (2026-10): `pasos` en las 6 zonas de `data/codo.js` (co_step1, 3, 4 y 5; porqué en el comentario); unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
   - [x] Cadera (2026-10): `pasos` en las 6 zonas de `data/cadera.js` (todos los pasos menos ca_step3b; porqué en el comentario); unit y smoke (`sintomas`) ampliados. Revisado por el usuario (2026-10)
   - [x] Rodilla (2026-10): `pasos` en las 6 zonas de `data/rodilla.js` (todos los pasos menos ro_step1 y ro_step2; porqué en el comentario); unit y smoke (`sintomas`, la rótula en el 1b) ampliados. Revisado por el usuario (2026-10)
-  - [x] Tobillo y pie (2026-10): `pasos` en las 7 zonas de `data/tobillo_pie.js` (todos los pasos menos tp_step1 y tp_step11, el mediopié, que no tiene zona; porqué en el comentario); unit (todas las zonas de las 7 regiones con pasos) y smoke (`sintomas`, el tobillo lateral en el paso 2) ampliados. Pendiente de revisión por el usuario
+  - [x] Tobillo y pie (2026-10): `pasos` en las 8 zonas de `data/tobillo_pie.js`, con la zona nueva «Mediopié» para tp_step11 (todos los pasos menos tp_step1; porqué en el comentario); unit (todas las zonas de las 7 regiones con pasos) y smoke (`sintomas`, el tobillo lateral en el paso 2) ampliados. Revisado por el usuario (2026-10)
 - [ ] N4 — Fase 6: dosificar según el síntoma más irritable y avisar del síntoma independiente
 - [ ] N5 — physiq-report: mostrar `z1` / `ss` (otro repositorio)
 - [ ] N6 — Mapa dibujado, solo si hace falta

@@ -263,6 +263,7 @@ test('síntomas: pistas en el árbol — tobillo y pie: el Aquiles en Thompson; 
   assert.deepEqual(q('tp_step2'), ['Síntoma P1 (principal):', 'Síntoma P2:']);
   assert.deepEqual(q('tp_step13'), ['Síntoma P1 (principal):']);
   assert.deepEqual(q('tp_step1'), []);
+  assert.ok(z.find(x => x.id === 'mediopie').pasos.includes('tp_step11'), 'el mediopié tiene zona');
 });
 
 test('síntomas: pistas en el árbol — el recuadro «📝» las pinta escapadas (el paso real, en el smoke test)', () => {
