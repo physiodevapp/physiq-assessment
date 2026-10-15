@@ -183,7 +183,7 @@ test('síntomas: los `pasos` de cada zona existen en el árbol de su región, si
       z.pasos.forEach(p => assert.ok(ids.has(p), `${r}.${z.id}: paso inexistente ${p}`));
     });
   }
-  assert.ok(ZONAS_SINTOMA.lumbar.every(z => z.pasos?.length), 'lumbar: todas las zonas con pasos');
+  for (const r of ['lumbar', 'cervical']) assert.ok(ZONAS_SINTOMA[r].every(z => z.pasos?.length), `${r}: todas las zonas con pasos`);
 });
 
 test('síntomas: pistas en el árbol — solo los síntomas con una zona ligada al paso; otra región nunca', () => {
@@ -202,6 +202,17 @@ test('síntomas: pistas en el árbol — solo los síntomas con una zona ligada 
   assert.doesNotMatch(S.pistasSintomasPaso({ ...st, severidad: null }, z, 'lu_step1')[0].a, /NRS/);
   // sin zonas en la región, nada
   assert.deepEqual(S.pistasSintomasPaso(st, [], 'lu_step1'), []);
+});
+
+test('síntomas: pistas en el árbol — cervical: la mano en mielopatía; el brazo y la escápula en el paso radicular', () => {
+  const st = { region: 'cervical', severidad: 6,
+    sintomaPrincipal: { ...vacio(), zonas: ['cuello'] },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['antebrazo_mano'], lado: 'Derecho', nrs: 4, relacion: 'empeora' }, { ...vacio(), zonas: ['trapecio'], nrs: 2 }] };
+  const z = ZONAS_SINTOMA.cervical, q = paso => S.pistasSintomasPaso(st, z, paso).map(x => x.q);
+  assert.deepEqual(q('ce_step1'), ['Síntoma P2:']);
+  assert.deepEqual(q('ce_step3'), ['Síntoma P1 (principal):', 'Síntoma P2:', 'Síntoma P3:']);
+  assert.deepEqual(q('ce_step2'), []);
+  assert.equal(S.pistasSintomasPaso(st, z, 'ce_step1')[0].a, 'Antebrazo y mano · lado derecho · NRS 4/10 · solo cuando empeora P1');
 });
 
 test('síntomas: pistas en el árbol — el recuadro «📝» las pinta escapadas (el paso real, en el smoke test)', () => {
