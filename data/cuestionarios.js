@@ -217,7 +217,7 @@ export const CUESTIONARIOS = [
     ],
     interpretacionTexto: 'Suma de 0 a 52. El manual de la PCS (Sullivan) toma 30 como nivel de catastrofización clínicamente relevante (percentil 75 en pacientes con dolor crónico), según lo citan varios estudios; no es un corte validado en la versión española, y una revisión sistemática desaconseja usar un corte único entre culturas (Hayashi 2022).',
     fuente: 'Sullivan 1995 (Psychol Assess 7:524–532) · García Campayo 2008 (versión española) · Cook 2021 (Pain Rep 6(1):e909; subescalas) · manual de la PCS, citado por Hidaka 2023 (BMC Musculoskelet Disord 24:388) · Hayashi 2022 (Pain Ther 11(3):753–769)',
-    nota: 'No se ha podido leer el manual de la PCS: el corte de 30 sale de estudios que lo citan, y no está claro si es «≥ 30» o «> 30» (aquí, ≥ 30). La validación española es en fibromialgia; no hay otra en población musculoesquelética de España.',
+    nota: 'No se ha podido leer el manual de la PCS: el corte de 30 sale de estudios que lo citan, y no está claro si es «≥ 30» o «> 30». Aquí, ≥ 30, como lo citan Hidaka 2023 y Sci Rep 2022 («una puntuación de 30 representa…»); la ficha de Shirley Ryan AbilityLab y Acta Orthop 2019 lo formulan como «> 30». Solo cambia el caso de exactamente 30. La validación española es en fibromialgia; no hay otra en población musculoesquelética de España.',
   },
   {
     id: 'cadc',
