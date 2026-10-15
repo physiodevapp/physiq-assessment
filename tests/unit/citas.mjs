@@ -114,7 +114,8 @@ test('ficha flotante: un solo controlador para citas y tiempos de tejido', () =>
 });
 
 // ── Citas dentro de una frase (Fase O2) ──
-const sinEtiquetas = h => h.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+// Quita solo lo que pone citasEnTexto (un criterio puede llevar «<16 días» tal cual)
+const sinEtiquetas = h => h.replace(/<\/?(button|span)\b[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
 test('citasEnTexto: cada cita entre paréntesis pasa a botón y el texto queda igual', () => {
   const t = 'La mitad si duele mucho (Maitland 2005, cap. 9, pp. 213, 216 y 219).';
@@ -140,10 +141,18 @@ function textosConCitas() {
   const walk = v => { if (typeof v === 'string') out.push(v); else if (v && typeof v === 'object') Object.values(v).forEach(walk); };
   walk(PLAN); walk(IRR.TEXTOS_IRRITABILIDAD);
   for (const h of Object.values(HYPOTHESES)) walk([h.dosis, h.dosisRamas, h.dosisComun, h.pronostico?.horizonte, h.pronostico?.derivacion]);
+  // Fase O3: razonamiento de las fases 2, 4 y 4b (preguntas, banderas, pasos y tests) y el criterio de cada test
+  const razon = r => r && walk([r.porque, r.peso, ...(r.detalle || '').split('\n\n'), r.fisiologia?.pasos, r.fisiologia?.nota]);
+  for (const reg of Object.values(SYSTEMIC_SCREENING)) for (const sis of reg.sistemas || []) {
+    for (const q of sis.preguntas || []) razon(q.razonamiento);
+    for (const b of [...(sis.banderasRojas || []), ...(sis.banderasAmarillas || [])]) razon(b?.razonamiento);
+  }
+  for (const tree of Object.values(CIF_TREES)) for (const st of tree.steps) razon(st.razonamiento);
+  for (const h of Object.values(HYPOTHESES)) for (const t of h.tests) { razon(t.razonamiento); walk(t.criterio); }
   return out;
 }
 
-test('citas dentro de una frase: cada una que se convierte es una referencia del registro (o «citado en» una)', () => {
+test('citas dentro de una frase: cada una que se convierte es una referencia del registro (o citada en una)', () => {
   const malas = [];
   let n = 0;
   for (const t of textosConCitas()) {
@@ -151,8 +160,10 @@ test('citas dentro de una frase: cada una que se convierte es una referencia del
     for (const m of h.matchAll(/data-cita="([^"]*)"/g)) {
       n++;
       const c = m[1].replace(/&amp;/g, '&').replace(/&quot;/g, '"');
-      const citadoEn = c.match(/, citado en (.*)$/);
-      if (!claveRegistro(c, REFERENCIAS) && !(citadoEn && claveRegistro(citadoEn[1], REFERENCIAS))) malas.push(c);
+      // cita secundaria: «Butler 2000, citado en Hengeveld y Banks 2005…», «Kemp 2017, en Lluch» (Lluch 2020)
+      const citadoEn = c.match(/, (?:citado )?en (.*)$/);
+      const secundaria = citadoEn && (claveRegistro(citadoEn[1], REFERENCIAS) || Object.keys(REFERENCIAS).some(k => k.startsWith(`${citadoEn[1]} `)));
+      if (!claveRegistro(c, REFERENCIAS) && !secundaria) malas.push(c);
     }
     assert.equal(sinEtiquetas(h), t.replace(/&quot;/g, '"'), `el texto cambia: ${t.slice(0, 80)}`);
   }
@@ -160,12 +171,19 @@ test('citas dentro de una frase: cada una que se convierte es una referencia del
   assert.deepEqual(malas, []);
 });
 
-test('citas dentro de una frase: se pintan en la fase 6, la irritabilidad de la fase 3 y la pauta y el pronóstico de la fase 5', () => {
+test('citas dentro de una frase: se pintan en la fase 6, la irritabilidad de la fase 3, la pauta y el pronóstico de la fase 5 y el razonamiento de las fases 2, 4 y 4b', () => {
   const plan = leer('plan.js');
   assert.ok(plan.includes('const escC = t => citasEnTexto(esc(t));'));
   assert.ok(!/<textarea[^\n]*escC\(/.test(plan), 'nunca dentro de un <textarea>');
   assert.ok(!/(title|placeholder|aria-label)="\$\{escC\(/.test(plan), 'nunca en un atributo');
   const app = leer('app.js');
   for (const x of ['citasEnTexto(T.margen)', 'citasEnTexto(primera)', 'citasEnTexto(resto)', 'citasEnTexto(hyp.pronostico.derivacion)', 'citasEnTexto(o.texto)']) assert.ok(app.includes(x), x);
+  // Fase O3: el razonamiento de las fases 2, 4 y 4b y el criterio de los tests
+  for (const x of ['citasEnTexto(r.porque)', 'citasEnTexto(r.peso)', 'citasEnTexto(f.nota)', '`<li>${citasEnTexto(p)}</li>`', '`<p>${citasEnTexto(p)}${iaParrafoHTML()}</p>`']) assert.ok(app.includes(x), `app.js: ${x}`);
+  for (const f of ['phase4.js', 'phase4b.js']) {
+    const src = leer(f);
+    assert.ok(!/\$\{r\.porque\}|`<p>\$\{p\}/.test(src), `${f}: razonamiento sin citasEnTexto`);
+  }
+  assert.ok(leer('phase4b.js').includes('${citasEnTexto(test.criterio)}'));
   assert.ok(esReferencia('NICE CG147') && esReferencia('Hengeveld y Banks 2005') && !esReferencia('van Dijk 2016') && !esReferencia('MDT: C'));
 });
