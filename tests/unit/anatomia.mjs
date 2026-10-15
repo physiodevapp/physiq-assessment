@@ -100,7 +100,7 @@ test('anatomía: toda estructura del registro la usa algún test o alguna pregun
 
 test('anatomía: cribado de hombro con anatomía en las preguntas cuya derivación explica una estructura', () => {
   const con = PREG_CON.filter(p => p.region === 'hombro').map(p => p.q.id);
-  assert.deepEqual(con, ['h3', 'h1', 'h2', 'h_c3', 'h5', 'h_p2', 'h_p3', 'h_r1', 'h_g1', 'h_g2', 'h_gi1', 'h_gi2', 'h_gi3', 'h_t1', 'h_n1']);
+  assert.deepEqual(con, ['h3', 'h1', 'h2', 'h_c3', 'h_c4', 'h5', 'h_p2', 'h_p3', 'h_r1', 'h_g1', 'h_g2', 'h_gi1', 'h_gi2', 'h_gi3', 'h_gi4', 'h_t1', 'h_n1']);
   // Sin estructura concreta: dolor nocturno, peso, dolor constante, sistémico
   const sin = PREGUNTAS.filter(p => p.region === 'hombro' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sin, ['h4', 'h6', 'h_r2', 'h_i1']);

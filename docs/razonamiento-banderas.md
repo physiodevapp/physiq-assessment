@@ -108,6 +108,24 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
 - **Hueco de seguridad, resuelto (decisión del usuario, 2026-10):** `cv2` (dolor de cuello o mandíbula con sudor, náuseas u opresión) no tenía `urgencia`, aunque su propio «cuánto pesa» dice que es una urgencia si está pasando ahora. Pregunta urgente nueva `cv_c3` en cv_cardio, solo para el episodio en curso (más de 20 minutos, no cede al parar, o con sudor frío, náuseas, vómitos o falta de aire → «llamar al 112»), con razonamiento de Goodman cap. 6, pp. 236 (signos del infarto) y 260 («Guidelines for Immediate Medical Attention»). `cv2` sigue sin urgencia: un antecedente de esos síntomas pide derivar, no el 112. Las banderas de cuello o mandíbula con sudores y de angina de más de 20 minutos enlazan `cv2` + `cv_c3`. Hombro tiene la misma bandera y probablemente el mismo hueco: se mirará en su sesión.
 - **Revisión clínica del usuario:** hecha (2026-10), incluidas `cv_c3` y `cv_n4`.
 
+## Hombro (2026-10)
+
+41 banderas en sus 9 sistemas propios (26 rojas, 15 amarillas), todas texto sin enlace antes de esta sesión. Repasadas contra el razonamiento completo de cada pregunta; hombro (piloto de la Fase F) tiene razonamientos largos, que cubren casi todas.
+
+- **Enlazadas (36), más `fase1: 'br1'` en la pérdida de peso:**
+  - h_cancer: cáncer previo y ganglios duros → `h3`; dolor nocturno → `h4`; pérdida de peso → `h6` (y `br1`); Pancoast → `h3` + `h4`; tumor (Lluch) → `h3` + `h4` + `h6`.
+  - h_cardio: esfuerzo sin mover el brazo → `h1`; sudores o náuseas y angina de más de 20 minutos → `h2` + `h_c4`; amarilla de acostarse o falta de aire → `h_c3`.
+  - h_pulmonar: toser y autoferulización → `h5`; hemoptisis, tabaco y cáncer con metástasis pulmonar → `h_p3`; disnea → `h_p2`.
+  - h_renal: Murphy, hematuria, fiebre y escalofríos, cambios de la orina y cálculos → `h_r1`; dolor que no cambia con ninguna postura → `h_r2`.
+  - h_gine: ectópico, hombro izquierdo súbito con hipotensión y sangrado vaginal → `h_g1`; ciclo menstrual y EIP → `h_g2`.
+  - h_gi: hombro derecho que no responde y estatinas, AINE o alcohol → `h_gi1` + `h_gi2` + `h_gi3`; ictericia → `h_gi2`; grasas y saciedad → `h_gi1`; rotura esplénica → `h_gi4`.
+  - h_trauma → `h_t1`; h_infeccion → `h_i1`; h_neuro → `h_n1`.
+- **Razonamiento propio (5), con Goodman 2018 leído en la sesión:** síncope sin aviso (cap. 6, pp. 227 y 261; el mismo texto que cervical) y, en amarillas, edad de más de 50 con dolor insidioso (cap. 13, p. 465: el factor de riesgo de cáncer más importante), debilidad muscular proximal idiopática (cap. 13, p. 476: neuromiopatía carcinomatosa, preguntas funcionales), betabloqueantes o IECA (cap. 6, pp. 259–260) y exposición ambiental u ocupacional (cap. 13, p. 468). Ninguna bandera de hombro queda sin «¿Por qué?».
+- **Huecos de seguridad, resueltos con la recomendación que el usuario aceptó («adelante con tus recomendaciones», 2026-10):**
+  - Cardiaco, igual que cervical: `h2` no tiene `urgencia` aunque su «cuánto pesa» dice que es una urgencia si está pasando ahora. Pregunta urgente nueva `h_c4` («llamar al 112»), con el texto y las fuentes de `cv_c3` (Goodman cap. 6, pp. 236 y 260). `h2` sigue sin urgencia.
+  - Rotura de bazo: la bandera roja del signo de Kehr no tenía pregunta (el razonamiento de `h_g1` lo menciona, pero es del sistema ginecológico). Pregunta urgente nueva `h_gi4` en h_gi (dolor de hombro izquierdo tras un golpe en el costado o el abdomen, constante o con mareo → «a urgencias hoy»), con razonamiento de Goodman cap. 8, pp. 311–312 (signo de Kehr; caso 8.5, futbolista con bazo roto) y 325 (derivación inmediata con sospecha de sangrado retroperitoneal, traumatismo y Kehr positivo). Anatomía: diafragma (el bazo no tiene entrada en `data/anatomia.js`).
+- **Revisión clínica del usuario:** pendiente.
+
 ## Hallazgos fuera del «¿Por qué?»
 
 1. **Embarazo ectópico sin pregunta urgente en lumbar.** Resuelto (decisión del usuario, 2026-10): `l_e8` en lumbar y `ca_u5` en cadera, con `urgencia` y razonamiento de NICE NG126 (1.4.1–1.4.8, releída en la sesión). Están separadas de `l_e3`/`ca_u4` (dolor ligado a la regla), que siguen sin urgencia porque un SÍ por una endometriosis conocida no justifica ir a urgencias. La bandera de lumbar enlaza `l_e8`.
