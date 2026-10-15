@@ -91,7 +91,9 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño**
 - [ ] Avisos con `ce12`: `AVISOS.manipulacionCervical`, `AVISOS.sinTerapiaManualAguda` (sección 5).  
   ↳ **decisión de diseño**
-- [ ] Avisos con `h1`: `AVISOS.capsulitisPrecoz` (sección 5).  
+- [ ] Avisos con `h1`: `AVISOS.capsulitisPrecoz`, `AVISOS.capsulitisEstadios` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `h4`: `AVISOS.inestabilidad` (sección 5).  
   ↳ **decisión de diseño**
 - [ ] Avisos con `h10`: `AVISOS.artrosis` (sección 5).  
   ↳ **decisión de diseño**
@@ -171,7 +173,11 @@ Regiones periféricas:
   ↳ fuente en el texto (Kuijper 2009, Blanpied 2017)
 - [ ] «Capsulitis con irritabilidad alta (fase precoz dolorosa): la guía admite movilización glenohumeral de baja intensidad en rangos sin dolor (Kelley 2013, C), pero un consenso posterior no considera eficaz la terapia manual en esa fase (93 % del panel) y sí la información y tranquilizar (100 %) (Salamh 2025). Con irritabilidad baja (fase rígida), el consenso sí la considera eficaz (85 %).»  
   ↳ fuente en el texto (Kelley 2013, Salamh 2025)
-- [ ] «Articulación con artrosis: grados II o III−, también cuando lo que se trata es otra estructura (Hengeveld y Banks 2005, cap. 8, p. 224).»  
+- [ ] «Capsulitis por estadio. 1, muy dolorosa: accesorios de grado I y II con el brazo bien apoyado en una posición neutra e indolora, reevaluando la respuesta de los síntomas más que el movimiento; si a las 2–3 sesiones los síntomas bajan, más amplitud y una pequeña molestia. 2, dolorosa y rígida: accesorios en posición neutra e indolora, y en la resistencia si lo que se queda antes no funciona; cuando la flexión llega a 100–120°, movimientos lentos hacia el cuadrante, primero de grado III− y después de grado IV a IV+, con un III− amplio para aliviar las molestias del tratamiento. 3, solo rigidez: grado IV+ fisiológicos y accesorios al límite, intercalando grado III; si el hombro está muy limitado, la movilización sirve poco (Hengeveld y Banks 2005, cap. 11, cuadro 11.9, pp. 342–343).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Inestabilidad: en el hombro, movimientos accesorios o fisiológicos de grado II para estimular la propiocepción antes del entrenamiento de la estabilidad funcional; la rigidez se moviliza en la columna y en las articulaciones claviculares (Hengeveld y Banks 2005, cap. 11, cuadro 11.12, p. 347). La rotación lateral con presión fuerte, con mucho cuidado, por la palanca y la torsión sobre el húmero y la cápsula (p. 314).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Artrosis glenohumeral: mejor solo con movimientos accesorios; el posteroanterior, con la mayor amplitud posible (grado II o III); tras una reagudización, grado I al principio, con el objetivo de llegar a III− o III+ en todo el recorrido sin dolor; los fisiológicos de grado II también pueden servir (Hengeveld y Banks 2005, cap. 11, cuadro 11.11, p. 345). En una articulación con artrosis, grados II o III− también cuando lo que se trata es otra estructura (cap. 8, p. 224).»  
   ↳ fuente en el texto (Hengeveld y Banks 2005)
 - [ ] «Si la cirugía fue una prótesis: sobre todo accesorios cerca de la línea articular, sin palancas largas que muevan el hueso alrededor del implante; si el ejercicio activo ya cumple el objetivo, la movilización pasiva sobra (Hengeveld y Banks 2005, cap. 10, p. 269).»  
   ↳ fuente en el texto (Hengeveld y Banks 2005)

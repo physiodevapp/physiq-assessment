@@ -113,7 +113,9 @@ export const AVISOS = {
   sinTerapiaManualAguda: 'En la fase aguda (menos de 1 mes) la pauta de Kuijper 2009 es sin terapia manual: ahí los escalones no se aplican. La movilización o manipulación entra en la fase crónica (Blanpied 2017, B).',
   // Hombro (L3, decisiones 47 y 51–52)
   capsulitisPrecoz: 'Capsulitis con irritabilidad alta (fase precoz dolorosa): la guía admite movilización glenohumeral de baja intensidad en rangos sin dolor (Kelley 2013, C), pero un consenso posterior no considera eficaz la terapia manual en esa fase (93 % del panel) y sí la información y tranquilizar (100 %) (Salamh 2025). Con irritabilidad baja (fase rígida), el consenso sí la considera eficaz (85 %).',
-  artrosis: 'Articulación con artrosis: grados II o III−, también cuando lo que se trata es otra estructura (Hengeveld y Banks 2005, cap. 8, p. 224).',
+  capsulitisEstadios: 'Capsulitis por estadio. 1, muy dolorosa: accesorios de grado I y II con el brazo bien apoyado en una posición neutra e indolora, reevaluando la respuesta de los síntomas más que el movimiento; si a las 2–3 sesiones los síntomas bajan, más amplitud y una pequeña molestia. 2, dolorosa y rígida: accesorios en posición neutra e indolora, y en la resistencia si lo que se queda antes no funciona; cuando la flexión llega a 100–120°, movimientos lentos hacia el cuadrante, primero de grado III− y después de grado IV a IV+, con un III− amplio para aliviar las molestias del tratamiento. 3, solo rigidez: grado IV+ fisiológicos y accesorios al límite, intercalando grado III; si el hombro está muy limitado, la movilización sirve poco (Hengeveld y Banks 2005, cap. 11, cuadro 11.9, pp. 342–343).',
+  inestabilidad: 'Inestabilidad: en el hombro, movimientos accesorios o fisiológicos de grado II para estimular la propiocepción antes del entrenamiento de la estabilidad funcional; la rigidez se moviliza en la columna y en las articulaciones claviculares (Hengeveld y Banks 2005, cap. 11, cuadro 11.12, p. 347). La rotación lateral con presión fuerte, con mucho cuidado, por la palanca y la torsión sobre el húmero y la cápsula (p. 314).',
+  artrosis: 'Artrosis glenohumeral: mejor solo con movimientos accesorios; el posteroanterior, con la mayor amplitud posible (grado II o III); tras una reagudización, grado I al principio, con el objetivo de llegar a III− o III+ en todo el recorrido sin dolor; los fisiológicos de grado II también pueden servir (Hengeveld y Banks 2005, cap. 11, cuadro 11.11, p. 345). En una articulación con artrosis, grados II o III− también cuando lo que se trata es otra estructura (cap. 8, p. 224).',
   protesis: 'Si la cirugía fue una prótesis: sobre todo accesorios cerca de la línea articular, sin palancas largas que muevan el hueso alrededor del implante; si el ejercicio activo ya cumple el objetivo, la movilización pasiva sobra (Hengeveld y Banks 2005, cap. 10, p. 269).',
   dosFamilias: 'Las dos hipótesis se tratan en zonas distintas (columna y articulación periférica): los escalones y las reglas del mes son los de la principal; la cantidad por sesión y la progresión, las de cada una.',
   // Varios síntomas (Fase N, docs/sintomas-multiples.md; decisión 35)
@@ -126,8 +128,9 @@ export const AVISOS_HIP = {
   ce13: ['vertigo'],                                         // mareo cervicogénico
   ce3: ['manipulacionCervical'],                             // radiculopatía cervical
   ce12: ['manipulacionCervical', 'sinTerapiaManualAguda'],   // dolor radicular cervical (su pauta aguda, data/cervical.js)
-  h1: ['capsulitisPrecoz'],                                  // capsulitis adhesiva (su pauta, data/hombro.js)
-  h10: ['artrosis'],                                         // artrosis glenohumeral
+  h1: ['capsulitisPrecoz', 'capsulitisEstadios'],           // capsulitis adhesiva (su pauta; cap. 11, cuadro 11.9)
+  h4: ['inestabilidad'],                                     // inestabilidad glenohumeral (cap. 11, cuadro 11.12)
+  h10: ['artrosis'],                                         // artrosis glenohumeral (cap. 11, cuadro 11.11)
 };
 
 // Avisos con mecanismo Post-quirúrgico en una región periférica (decisión 47):

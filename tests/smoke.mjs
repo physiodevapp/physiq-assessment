@@ -2897,13 +2897,14 @@ async function checkFase6Hombro(browser, errors) {
     && !c6.includes(D.TEXTOS_CASA.alarmaNeuro.texto) && !c6.includes(D.TEXTOS_CASA.alarmaMedula.texto);
   const t1 = await elegir(['h1']);
   const nivelB = await page.evaluate(() => state.planTratamiento.nivel);
-  r.h1 = t1.includes(D.AVISOS.capsulitisPrecoz) && t1.includes(D.TEXTOS_SESION.cantidadPeriferica) && !t1.includes(D.TEXTOS_SESION.cantidad)
+  r.h1 = t1.includes(D.AVISOS.capsulitisPrecoz) && t1.includes(D.AVISOS.capsulitisEstadios) && t1.includes(D.TEXTOS_SESION.cantidadPeriferica) && !t1.includes(D.TEXTOS_SESION.cantidad)
     && t1.includes(D.PROGRESION_PERIFERICA) && t1.includes(D.REGLAS_MES_PERIFERICAS[0]) && !t1.includes(D.REGLAS_MES[2])
     && Object.values(D.ESCALONES_PERIFERICOS).some(e => t1.includes(e.texto)) && !Object.values(D.ESCALONES).some(e => t1.includes(e.texto))
     && !t1.includes(D.TEXTOS_SESION.cierreArterial) && nivelB === 'B';
   const c1 = await casa();
   r.casaH1 = c1.trimEnd().endsWith(D.TEXTOS_CASA.alarmaCardiaca.texto) && !c1.includes(D.TEXTOS_CASA.alarmaArterial.texto);
   r.h10 = (await elegir(['h10'])).includes(D.AVISOS.artrosis);
+  r.h4 = (await elegir(['h4'])).includes(D.AVISOS.inestabilidad);
   r.dosFamilias = (await elegir(['h2', 'h6'])).includes(D.AVISOS.dosFamilias);
   await context.close();
   r.ok = Object.values(r).every(v => v === true);
@@ -3445,7 +3446,7 @@ const SECCIONES = [
 
   { id: 'fase6-hombro', titulo: 'Fase 6: plan de tratamiento en hombro (L3, primera periférica):', run: async ({ browser, errors }) => {
     const r = await checkFase6Hombro(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} hombro por la interfaz real hasta la 6 (h6 por el camino de la primera opción): h6 con la cantidad de columna, sin avisos radiculares, y el programa para casa termina con la red cardiaca y la arterial; con h1, aviso de capsulitis, escalones, cantidad, progresión y reglas de Peripheral, y solo la red cardiaca; con h10, aviso de artrosis; con h2 + h6, aviso de dos familias${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} hombro por la interfaz real hasta la 6 (h6 por el camino de la primera opción): h6 con la cantidad de columna, sin avisos radiculares, y el programa para casa termina con la red cardiaca y la arterial; con h1, avisos de capsulitis (fase precoz y por estadio), escalones, cantidad, progresión y reglas de Peripheral, y solo la red cardiaca; con h10, aviso de artrosis; con h4, aviso de inestabilidad; con h2 + h6, aviso de dos familias${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

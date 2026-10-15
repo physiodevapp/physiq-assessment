@@ -366,7 +366,7 @@ test('plan: hombro — h6 como columna con la red arterial de cervical; con una 
   for (const [id, f] of Object.entries(D.FAMILIA_HIP)) { assert.ok(HYPOTHESES[id], id); assert.ok(['columna', 'periferica'].includes(f)); }
 });
 
-test('plan: hombro — red cardiaca siempre (h_c4); avisos de capsulitis (h1), artrosis (h10) y, con cirugía, prótesis', () => {
+test('plan: hombro — red cardiaca siempre (h_c4); avisos de capsulitis (h1), inestabilidad (h4), artrosis (h10) y, con cirugía, prótesis', () => {
   const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
   const plan = (ids, extra = {}) => P.construirPlan({ region: 'hombro', severidad: 5, hipotesis: ids.map(hip), elegidas: ids, ...extra });
   const h2 = plan(['h2']);
@@ -377,10 +377,12 @@ test('plan: hombro — red cardiaca siempre (h_c4); avisos de capsulitis (h1), a
   const hc4 = JSON.stringify(SYSTEMIC_SCREENING.hombro).includes('"id":"h_c4"');
   assert.ok(hc4, 'h_c4 existe en el cribado de hombro');
   for (const frag of ['20 minutos', 'sudor frío', 'náuseas', 'falta de aire', '112']) assert.ok(D.TEXTOS_CASA.alarmaCardiaca.texto.includes(frag), frag);
-  assert.ok(plan(['h1']).avisosHip.includes(D.AVISOS.capsulitisPrecoz));
+  assert.ok(plan(['h1']).avisosHip.includes(D.AVISOS.capsulitisPrecoz) && plan(['h1']).avisosHip.includes(D.AVISOS.capsulitisEstadios));
+  assert.ok(plan(['h4']).avisosHip.includes(D.AVISOS.inestabilidad));
+  for (const k of ['capsulitisEstadios', 'inestabilidad', 'artrosis']) assert.match(D.AVISOS[k], /Hengeveld y Banks 2005, cap\. 11, cuadro 11\.(9|11|12)/, k);
   assert.match(HYPOTHESES.h1.dosis, /no considera eficaz la terapia manual en la fase precoz dolorosa \(93 %\)/);
   assert.ok(plan(['h10']).avisosHip.includes(D.AVISOS.artrosis));
-  assert.ok(!h2.avisosHip.some(a => a === D.AVISOS.capsulitisPrecoz || a === D.AVISOS.artrosis || a === D.AVISOS.protesis));
+  assert.ok(!h2.avisosHip.some(a => [D.AVISOS.capsulitisPrecoz, D.AVISOS.capsulitisEstadios, D.AVISOS.inestabilidad, D.AVISOS.artrosis, D.AVISOS.protesis].includes(a)));
   const posq = plan(['h2'], { posq: { conProtocolo: true } });
   assert.ok(posq.avisosHip.includes(D.AVISOS.protesis));
   assert.ok(!P.construirPlan({ region: 'lumbar', severidad: 5, hipotesis: [hip('lu1')], elegidas: ['lu1'], posq: { conProtocolo: true } }).avisosHip.includes(D.AVISOS.protesis), 'la de prótesis es de periféricas');

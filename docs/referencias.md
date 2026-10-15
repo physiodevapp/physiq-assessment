@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **485** referencias de literatura, con **2248** usos.
+- **485** referencias de literatura, con **2250** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **376** de 485 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -153,7 +153,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pedret 2026](#pedret-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
-| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 12 | **sin revisar** |
+| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 14 | **sin revisar** |
 | [Maitland 2005](#maitland-2005) | plan de tratamiento | 26 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 1 | **sin revisar** |
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 9 | **sin revisar** |
@@ -4207,6 +4207,8 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.capsulitisEstadios` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.inestabilidad` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.artrosis` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.protesis` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.1.citas.0` | 6 · plan de tratamiento | 1 |
