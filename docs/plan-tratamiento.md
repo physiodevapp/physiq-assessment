@@ -52,7 +52,7 @@ Tres consecuencias para el diseño:
 ## Flujo
 
 ### Entrada a la fase 6
-- Botón «Plan de tratamiento →» en la barra inferior de fase 5, junto a «📤 Compartir». La fase no es obligatoria: la valoración está completa en fase 5.
+- Botón secundario (gris) «Plan de tratamiento (opcional) →» (`#btnIrPlan`, «Plan de tratamiento →» en pantallas estrechas), **debajo** de la barra inferior de fase 5, en su propio bloque (`.plan-entrada`), no dentro de ella. La fase no es obligatoria: la valoración está completa en fase 5. Por eso el botón azul de fase 5 es «📤 Compartir» y no un «Siguiente» como en las fases 1–4b, y la entrada a fase 6 no compite con él. Además, la barra fija de móvil no tiene sitio para un tercer botón a 320 px. Se pensó ponerlo en la barra, junto a «📤 Compartir», y se descartó por esos dos motivos (decisión del usuario, 2026-10). Fase 5 y fase 6 tienen cada una su «📤 Compartir» con la misma etiqueta: cada uno comparte los documentos de su fase, y la hoja que abre los nombra antes de compartir nada.
 - Nueva entrada en `PHASE_DEFS` (`{ n: 6, label: 'Plan de tratamiento', short: 'Fase 6' }`), `goToPhase(6)`, barra de fases y hoja móvil. `navStepClick` solo deja entrar con `resultsBuilt`.
 - **Hipótesis a tratar**: el fisio elige una (y opcionalmente una segunda). Por defecto, la de mayor peso que no esté marcada como tratada ni sea `DOSIS_DERIVAR`. Con mecanismo Post-quirúrgico, `pq1` va primero (`hipotesisActivas()`).
 
