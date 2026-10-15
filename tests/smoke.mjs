@@ -1537,7 +1537,14 @@ async function checkTiemposTejido(browser, errors) {
   await page.waitForFunction(() => document.querySelector('#tejInfo .tej-fuente-enlace'), null, { timeout: 5000 }).catch(() => {});
   r.infoFuentes = await page.evaluate(n => {
     const a = [...document.querySelectorAll('#tejInfo .tej-fuente-enlace')];
-    return a.length === n && a.every(x => x.target === '_blank' && /noopener/.test(x.rel) && /^https:\/\//.test(x.href));
+    // En línea con « · »: varias por línea, y el « · » del principio de cada línea queda
+    // recortado (el <li> empieza antes que la caja que lo contiene)
+    const dd = document.querySelector('#tejInfo .tej-info-fuentes dd').getBoundingClientRect();
+    const lis = [...document.querySelectorAll('#tejInfo .tej-fuentes-lista li')].map(li => li.getBoundingClientRect());
+    const lineas = new Set(lis.map(r => Math.round(r.top)));
+    const inicioLinea = [...lineas].map(t => lis.filter(r => Math.round(r.top) === t).sort((x, y) => x.left - y.left)[0]);
+    return a.length === n && a.every(x => x.target === '_blank' && /noopener/.test(x.rel) && /^https:\/\//.test(x.href))
+      && lineas.size < n && inicioLinea.every(r => r.left < dd.left) && lis.every(r => r.right <= dd.right + 1);
   }, nFuentes);
   await page.click('#tejInfo .tej-info-fuentes dt');
   r.infoFuentes = r.infoFuentes && !!(await info());
@@ -3879,7 +3886,7 @@ const SECCIONES = [
 
   { id: 'tejidos', titulo: '«⏱ Tiempos de recuperación»:', run: async ({ browser, errors }) => {
     const tejidos = await checkTiemposTejido(browser, errors);
-    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, tarjeta de una barra con sus fuentes enlazadas (filas de 40 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, tarjeta de una barra con sus fuentes enlazadas en línea con « · » (toque de 40 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
   } },
 
