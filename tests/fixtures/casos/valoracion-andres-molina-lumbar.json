@@ -120,7 +120,7 @@
         "lado": "Izquierdo",
         "otraRegion": false,
         "profundidad": "profunda",
-        "patron": "constante",
+        "patron": "intermitente",
         "descripcion": "sentado se le carga y no se le pasa hasta el día siguiente",
         "nrs": 5,
         "irritabilidad": "Alta",

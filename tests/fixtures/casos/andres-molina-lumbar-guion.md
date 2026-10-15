@@ -45,7 +45,7 @@ un paciente inventado. Cubre lo que el prompt del plan tiene que respetar:
 | P1 | Muslo posterior y pierna por debajo de la rodilla (izquierda), profunda, intermitente, «como una corriente que baja hasta la pantorrilla»; NRS 6/10 |
 | Matriz (P1) | Reposo intermitente · movimiento antes del final del rango · tolerancia moderada · **tiempo en calmarse: tarda horas** → irritabilidad **moderada** (completa) |
 | Impacto en las actividades | Moderado |
-| P2 | Glúteo izquierdo, profunda, constante, NRS 5/10, irritabilidad **alta**, va junto con P1 («sentado se le carga y no se le pasa hasta el día siguiente») |
+| P2 | Glúteo izquierdo, profunda, intermitente, NRS 5/10, irritabilidad **alta**, va junto con P1 («sentado se le carga y no se le pasa hasta el día siguiente») |
 | P3 | Zona lumbar derecha, intermitente, NRS 3/10, irritabilidad baja, **independiente** de P1 («molestia antigua al final del día de pie») |
 | Naturaleza · estabilidad | Neuropática · Estable |
 | Signo comparable | Slump izquierdo: reproduce el dolor de la pantorrilla con la rodilla a 20° de la extensión completa; mejora al soltar la flexión cervical |
@@ -69,8 +69,8 @@ Léelo en primera persona, como fisioterapeuta, al final de la consulta:
 > duele antes de llegar al final del movimiento. Aguanta caminar media hora
 > sin que le empeore. Por la noche no le despierta.
 >
-> Además tiene dolor en el glúteo izquierdo, que va junto con el de la pierna:
-> es constante, lo pone en un 5, y cuando ha estado mucho rato sentado se le
+> Además tiene dolor en el glúteo izquierdo, que le aparece y se le va junto
+> con el de la pierna; lo pone en un 5, y cuando ha estado mucho rato sentado se le
 > carga y no se le pasa hasta el día siguiente. Y aparte, en el lado derecho
 > de la zona lumbar, una molestia antigua, de un 3, que le sale al final del
 > día si ha estado mucho de pie; dice que no tiene nada que ver con lo de
@@ -95,6 +95,10 @@ Léelo en primera persona, como fisioterapeuta, al final de la consulta:
 > trabajar sentado sin que le baje el dolor, y volver al pádel. Toma
 > ibuprofeno cuando le duele más y dice que le ayuda poco. Puede hacer los
 > ejercicios en casa por la mañana, después de desayunar.
+
+Primera prueba (ronda 33, `tests/fixtures/informes/andres-lumbar-dictado-1-*`):
+el glúteo iba como «constante» y «va junto con P1», que se contradicen (P1 es
+intermitente), y el informe escribió las dos cosas. Corregido: P2 es intermitente.
 
 ## Qué debe salir en la fase 6 (sin IA)
 
