@@ -274,6 +274,15 @@ test('síntomas: pistas en el árbol — el recuadro «📝» las pinta escapada
   assert.match(leer('phase4.js'), /pistasSintomasPaso\(state, ZONAS_SINTOMA\[state\.region\]/);
 });
 
+// physiq-report (lib/payload.js, _bloqueSintomas) tiene una copia de este
+// bloque y su test fija el mismo texto: si cambia aquí, se copia allí.
+test('síntomas: bloque del prompt fijado (el mismo que copia physiq-report)', () => {
+  const d = { z1: { z: 'Zona lumbar, glúteo', la: 'Derecho', pr: 'Profunda', pa: 'Constante', de: 'sordo' },
+    ss: [{ n: 2, z: 'Pierna por debajo de la rodilla', la: 'Derecho', nr: 3, ir: 'Baja', pa: 'Intermitente', re: 'empeora' },
+         { n: 3, z: 'Rodilla', la: 'Izquierdo', nr: 4, or: true }, { n: 4, z: 'Pie', nr: null, re: 'nosabe', de: 'hormigueo' }] };
+  assert.equal(S.bloqueSintomasIA(d), "Síntomas que refiere el paciente (mapa corporal):\n  · P1 (principal; el NRS y la irritabilidad de arriba son los suyos): Zona lumbar, glúteo · lado derecho · profunda · constante · «sordo»\n  · P2: Pierna por debajo de la rodilla · lado derecho · NRS 3/10 · irritabilidad baja · intermitente · solo cuando empeora P1\n  · P3: Rodilla (otra región, no valorada hoy) · lado izquierdo · NRS 4/10\n  · P4: Pie · NRS no registrado · relación con P1 no conocida · «hormigueo»\nDescribe cada síntoma con sus propios datos: no atribuyas a uno la intensidad, la irritabilidad ni el comportamiento de otro. Lo marcado como «otra región, no valorada hoy» no se exploró: menciónalo solo como pendiente de valorar, sin hipótesis ni plan.");
+});
+
 test('síntomas: la tarjeta y el módulo existen y van en el despliegue', () => {
   assert.match(leer('index.html'), /id="cardSintomas" hidden/);
   const dep = leer('.github/workflows/deploy-to-hub.yml');
