@@ -129,12 +129,17 @@ test('banderas: en cada región, una bandera con `pregunta` siempre enlaza a una
   }
 });
 
-test('banderas: ⓘ solo cuando hay «¿Por qué?»; «· fase 1» con fase1; el panel enlazado repite la pregunta y su razonamiento', () => {
+test('banderas: ⓘ solo cuando hay «¿Por qué?», que despliega por qué y cuánto pesa; «Ampliar →» solo con más; «· fase 1» con fase1; el panel enlazado repite la pregunta y su razonamiento', () => {
   for (const { sis, campo, f } of todasBanderas) {
     if (typeof f !== 'string' && f.regiones) continue;   // se comprueban por región arriba
     const html = buildSistemaHTML({ ...sis, banderasRojas: campo === 'banderasRojas' ? [f] : [], banderasAmarillas: campo === 'banderasAmarillas' ? [f] : [] });
     const tiene = !!razonBanderaHTML(sis, f);
-    assert.equal(html.includes('abrirRazonBandera('), tiene, `«${textoBandera(f)}»: ⓘ`);
+    assert.equal(html.includes('toggleRazonBandera('), tiene, `«${textoBandera(f)}»: ⓘ`);
+    // Nivel 1 bajo la bandera (Por qué + Cuánto pesa); «Ampliar →» solo si el panel tiene más
+    const rs = typeof f === 'string' ? [] : f.razonamiento ? [f.razonamiento]
+      : sis.preguntas.filter(q => [].concat(f.pregunta || []).includes(q.id) && q.razonamiento).map(q => q.razonamiento);
+    for (const r of rs) assert.ok(html.includes(r.porque) && html.includes(r.peso), `«${textoBandera(f)}»: por qué y cuánto pesa`);
+    assert.equal(html.includes('abrirRazonBandera('), rs.some(r => r.detalle || r.fisiologia), `«${textoBandera(f)}»: Ampliar`);
     assert.equal(html.includes('class="flag-fase1"'), !!f.fase1, `«${textoBandera(f)}»: fase 1`);
   }
   const sis = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_espondilo');
@@ -481,8 +486,13 @@ test('ampliar con IA: solo el razonamiento lleva data-ia-ctx y «✨ IA» (fase 
       for (const sis of data.sistemas) {
         const html = buildSistemaHTML(sis);
         const n = sis.preguntas.filter(q => q.razonamiento).length;
-        assert.equal(cuenta(html, 'data-ia-ctx='), n, `${region}/${sis.id}`);
-        assert.equal(cuenta(html, 'class="ia-parrafo"'), n, `${region}/${sis.id}`);
+        // y el «¿Por qué?» de las banderas: un contenedor por bandera, un «✨ IA» por cada «Por qué»
+        const porBandera = [...(sis.banderasRojas || []), ...(sis.banderasAmarillas || [])]
+          .map(f => typeof f === 'string' ? 0 : f.razonamiento ? 1
+            : sis.preguntas.filter(q => [].concat(f.pregunta || []).includes(q.id) && q.razonamiento).length);
+        const nb = porBandera.filter(Boolean).length, np = porBandera.reduce((a, b) => a + b, 0);
+        assert.equal(cuenta(html, 'data-ia-ctx='), n + nb, `${region}/${sis.id}`);
+        assert.equal(cuenta(html, 'class="ia-parrafo"'), n + np, `${region}/${sis.id}`);
       }
     });
   }

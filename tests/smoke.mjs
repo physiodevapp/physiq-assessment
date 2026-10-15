@@ -841,7 +841,8 @@ async function checkRazonamientoMovil(page) {
 }
 
 // «¿Por qué?» de las banderas (docs/razonamiento-banderas.md): el ⓘ de una
-// bandera enlazada abre el panel del razonamiento con su pregunta (escritorio:
+// bandera despliega debajo «Por qué» y «Cuánto pesa» (otro toque lo pliega) y
+// su «Ampliar →» abre el panel del razonamiento con su pregunta (escritorio:
 // lateral; 390 px: sheet que atrás cierra en la fase 2); una bandera sin
 // «¿Por qué?» no lo lleva (hoy todas lo tienen). Posquirúrgico: en lumbar no se ven las banderas de
 // miembros (compartimental, nervio, SDRC, yeso), en rodilla sí, con su ⓘ.
@@ -859,7 +860,19 @@ async function checkBanderas(browser) {
     const f = [...document.querySelectorAll('.sistema-panel:not([id^="panel_transversal_"]) .flag-item, [id^="panel_l_"] .flag-item')];
     return f.length > 0 && f.every(el => el.querySelector('.flag-porque'));
   });
-  await page.click(`${panel} .flag-item:has-text("Embarazo ectópico") .flag-porque`);
+  // Nivel 1: el ⓘ despliega «Por qué» y «Cuánto pesa» bajo la bandera, sin abrir el panel
+  const ect = `${panel} .flag-item:has(.flag-texto:has-text("Embarazo ectópico"))`;
+  await page.click(`${ect} .flag-porque`);
+  r.inline = await page.locator(ect).evaluate(it => {
+    const c = it.querySelector('.razon-bandera');
+    return !c.hidden && c.offsetHeight > 0 && it.querySelector('.flag-porque').getAttribute('aria-expanded') === 'true'
+      && /Por qué/i.test(c.textContent) && /Cuánto pesa/i.test(c.textContent)
+      && !document.getElementById('razonPanel').classList.contains('open');
+  });
+  await page.click(`${ect} .flag-porque`);
+  r.inlineCierra = await page.locator(`${ect} .razon-bandera`).evaluate(c => c.hidden);
+  await page.click(`${ect} .flag-porque`);
+  await page.click(`${ect} .razon-ampliar`);
   // Esperar a que termine de entrar (con carga, la transición tarda más)
   await page.waitForFunction(() => {
     const p = document.getElementById('razonPanel'), r = p.getBoundingClientRect();
@@ -875,7 +888,8 @@ async function checkBanderas(browser) {
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.click('#acc_l_cancer .sistema-accordion-header');
-  await page.click('#acc_l_cancer .flag-item:has-text("Antecedentes de cáncer") .flag-porque');
+  await page.click('#acc_l_cancer .flag-item:has(.flag-texto:has-text("Antecedentes de cáncer")) .flag-porque');
+  await page.click('#acc_l_cancer .flag-item:has(.flag-texto:has-text("Antecedentes de cáncer")) .razon-ampliar');
   await page.waitForSelector('#razonPanel.open');
   const b = await razonEstado(page);
   await page.goBack();
@@ -895,7 +909,7 @@ async function checkBanderas(browser) {
     await pg.click(`[onclick="selectRegion('${region}', this)"]`);
     await pg.waitForSelector('#panel_transversal_posquirurgico');
     const res = await pg.evaluate(() => [...document.querySelectorAll('#panel_transversal_posquirurgico .flag-item')]
-      .map(el => ({ t: el.textContent, porque: !!el.querySelector('.flag-porque') })));
+      .map(el => ({ t: el.querySelector('.flag-texto').textContent, porque: !!el.querySelector('.flag-porque') })));
     await ctx.close();
     return res;
   };
@@ -904,7 +918,7 @@ async function checkBanderas(browser) {
   r.posqLumbar = lu.length === 5 && !lu.some(f => miembros.test(f.t) || /Yeso/.test(f.t))
     && lu.some(f => /cirugía de columna/.test(f.t) && f.porque);
   r.posqRodilla = ro.length === 8 && !ro.some(f => /cirugía de columna/.test(f.t)) && ro.filter(f => miembros.test(f.t)).every(f => f.porque);
-  r.ok = r.sinPorque && r.escritorio && r.fase1 && r.movil && r.posqLumbar && r.posqRodilla;
+  r.ok = r.sinPorque && r.inline && r.inlineCierra && r.escritorio && r.fase1 && r.movil && r.posqLumbar && r.posqRodilla;
   if (!r.ok) Object.assign(r, { a, b, c, lu, ro });
   return r;
 }
@@ -4139,7 +4153,7 @@ const SECCIONES = [
 
   { id: 'banderas', titulo: '«¿Por qué?» de las banderas (lumbar, posquirúrgico en lumbar y rodilla):', run: async ({ browser }) => {
     const r = await checkBanderas(browser);
-    console.log(`  ${r.ok ? '✓' : '✗'} el ⓘ de una bandera enlazada abre su pregunta en el panel (escritorio y sheet a 390 px que atrás cierra en la fase 2); sin «¿Por qué?», sin ⓘ; «· fase 1»; las banderas posquirúrgicas de miembros no salen en lumbar y en rodilla sí, con ⓘ${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} el ⓘ de una bandera despliega por qué y cuánto pesa (otro toque lo pliega) y su «Ampliar →» abre su pregunta en el panel (escritorio y sheet a 390 px que atrás cierra en la fase 2); sin «¿Por qué?», sin ⓘ; «· fase 1»; las banderas posquirúrgicas de miembros no salen en lumbar y en rodilla sí, con ⓘ${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
