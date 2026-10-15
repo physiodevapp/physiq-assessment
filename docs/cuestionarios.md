@@ -80,9 +80,9 @@ Leyenda de licencia:
 | Kujala (AKPS) | 🟠 | Kujala | Gil-Gámez 2016, *KSSTA*, PMID 25649731 | Sin bandas; MCID 10 |
 | VISA-P / VISA-A | 🟠 | Visentini / Robinson. El VISA-P-SP lleva © JOSPT | Hernández-Sánchez 2011, PMID 21765223 / 2018, PMID 29237355 (JOSPT) | Sin bandas |
 | FAAM | 🟠 | Martin / Irrgang | Cervera-Garvi 2017, PMID 28852426; Membrilla-Mesa 2022, PMID 34716013 | Sin bandas; MCID 8 (AVD) / 9 (deporte) |
-| VISA-A | Suma 0–100; puntos por respuesta del anexo de Keller 2018 (versión chilena, misma puntuación que el original) | La validación es la española (Hernández-Sánchez 2018); de la chilena solo se toma la puntuación. La hoja «no validada» que circula da los mismos puntos a 8A, 8B y 8C: está mal |
-| CAIT | 🟠 | Hiller | Cruz-Díaz 2013, PMID 23053687; Rodríguez-Fernández 2015, PMID 26292174 | ≤27 original; ≤25 (Wright 2014); ≤24* |
-| IdFAI | 🟠 | Simon; © AOFAS | Cervera-Garvi 2020 (*Disabil Rehabil*, PMID 33296608); Izquierdo 2021, PMID 33582620 | ≥10,5 (Cervera-Garvi 2020); ≥11 con puntos enteros, como el original |
+| VISA-A | Suma 0–100 con los puntos de la hoja española (apéndice de Hernández-Sánchez 2018, versión publicada, aportada por el usuario), los mismos del original | Ítems 2–5: el paciente marca el dolor de 0 (sin dolor) a 10 y puntúa 10 − lo marcado, así que la app pide el número marcado (antes pedía los puntos, como la versión chilena de Keller 2018). La hoja «no validada» que circula da los mismos puntos a 8A, 8B y 8C: está mal |
+| CAIT | 🟠 | Hiller | Cruz-Díaz 2013, PMID 23053687; Rodríguez-Fernández 2015, PMID 26292174 | ≤27 original; ≤25 (Wright 2014); <24 (International Ankle Consortium, Gribble 2014) |
+| IdFAI | 🟠 | Simon; © AOFAS | Cervera-Garvi 2020 (*Disabil Rehabil*, PMID 33296608); Izquierdo 2021, PMID 33582620 | ≥10,5 (Cervera-Garvi 2020); ≥11 con puntos enteros, como el original (Gribble 2014 lo cita como «> 11») |
 
 ### Conclusiones
 
@@ -157,8 +157,8 @@ QuickDASH/DASH, PRTEE, ASES, Oxford Elbow Score, IKDC, Kujala, KOOS-PF, KOOS-12,
 ## 7. Pendiente de verificar
 
 - Condiciones oficiales de ePROVIDE (ODI, NDI, PCS, KOOS/HOOS, HAGOS, KOOS-PF), IWH (DASH/QuickDASH para una app gratuita), Keele (STarT Back), Linton (OMPSQ), Roach (SPADI), MacDermid (PRTEE), Stratford (PSFS), Fundación Kovacs (RMDQ en app y repo).
-- Puntos de corte marcados con *: solo queda el ≤24 del CAIT (falta leer Gribble 2014 para saber si es «≤ 24» o «< 24»). FABQ, OMPSQ-21 e IdFAI ya están comprobados con su fuente (§8); el OMPSQ-10 no se usa.
-- Fuentes sin leer que la calculadora suple con otra (cada `nota` lo dice): la hoja española de la VISA-A (puntos de Keller 2018, versión chilena que conserva los del original), la redacción de las bandas del ODI en la versión española (traducidas de Fairbank), el artículo original del CADC (la media 0–10 es elección de la app) y la hoja española del IdFAI (etiquetas traducidas por nosotros).
+- Puntos de corte marcados con *: ya no queda ninguno en la calculadora. FABQ, OMPSQ-21, IdFAI y CAIT (< 24, Gribble 2014, leído: 24 pasa a la zona dudosa) están comprobados con su fuente (§8); el OMPSQ-10 no se usa.
+- Fuentes sin leer que la calculadora suple con otra (cada `nota` lo dice): la hoja española del IdFAI (etiquetas traducidas por nosotros). La hoja española de la VISA-A ya está comprobada (apéndice de la versión publicada de Hernández-Sánchez 2018). Resueltas en 2026-10 con artículos aportados por el usuario: las bandas del ODI (Alcántara-Bumbiedro 2006, con su redacción y la exclusión de ítems sin contestar) y el CADC (Martín-Aragón 1999: ítems, escala 0–10 y tres factores; el artículo no da regla de puntuación ni corte, así que la media 0–10 sigue siendo elección de la app).
 - Validación de origen de los PDF sin cita: FAAM, iHOT-12, S-LANSS, LLFI, Pelvic Girdle Questionnaire.
 
 ## 8. Calculadora (implementada, 2026-10)
@@ -192,13 +192,13 @@ Verificación de las reglas del piloto (2026-10; el proxy solo dejó leer PMC y 
 | S-LANSS | López-de-Uralde-Villanueva 2018, resumen | ≥12 en la versión española | Pesos 5/5/3/2/1/5/3 solo en fuentes secundarias |
 | TSK-11 | Woby 2005 y Gómez-Pérez 2011, resúmenes | 11 ítems, sin invertidos, sin corte; mejoría importante ≥4 puntos | Escala 1–4 solo en fuentes secundarias; ítems de las dos subescalas (no se usan) |
 | Örebro | Cuesta-Vargas 2014, texto completo y formulario | Puntuación de cada ítem (formulario), total 210 | Bandas <105 / 105–130 / >130 según Cuesta-Vargas, que las atribuye a Linton y Boersma 2003; el corte de 90 de Linton 2003, solo en su resumen |
-| CADC | Fuentes que lo citan | 19 ítems de 0 a 10, tres dominios | Artículo original no leído: ítems por dominio (se usan los bloques de la hoja), suma o media (la app usa media 0–10) |
+| CADC | Martín-Aragón 1999 (tabla 1 y anexo 1, leído) | 19 ítems de 0 a 10; control de síntomas (8), funcionamiento físico (6) y manejo del dolor (5): los tres bloques de la hoja | El artículo no da regla de puntuación (lleva los totales a 0–100 para el análisis) ni corte: la app usa la media 0–10 |
 
 Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados en castellano de España. Especificación verificada por fuente; lo que no se pudo leer consta en la `nota` de cada uno.
 
 | Cuestionario | Puntuación | Decisión (aceptadas por el usuario, 2026-10) o duda pendiente |
 |---|---|---|
-| ODI v1.0 | % = suma ÷ (5 × contestados) × 100; bandas de Fairbank | Etiquetas de las bandas traducidas (no se leyó la versión española); N/A en cualquier ítem, sin límite publicado |
+| ODI v1.0 | % = suma ÷ (5 × contestados) × 100; bandas de la versión española (las de Fairbank) | Comprobado con Alcántara-Bumbiedro 2006 (aportado por el usuario): bandas «mínima, moderada, intensa, discapacidad, limitación funcional máxima»; un ítem sin contestar se excluye, sin límite |
 | Roland-Morris | Frases marcadas, 0–24 | — |
 | NDI | % del máximo; bandas de Vernon en % | Comprobado con Andrade Ortega 2008 (anexo): el ítem 7 tiene 6 opciones (a la hoja del usuario le falta una); «conducir» sin contestar se excluye del máximo |
 | SPADI | Dolor ÷ 50, discapacidad ÷ 80, total = media de las dos | Otras fuentes usan suma ÷ 130; se sigue la validación española |
@@ -212,7 +212,7 @@ Regionales (2026-10): los PROM que recomiendan las hipótesis, todos validados e
 | Kujala | Suma 0–100 con puntos por opción | Letras, orden y redacción de la versión española (Gil-Gámez 2016, apéndice 2); puntos del original (apéndice 1 del mismo artículo, comprobados uno a uno). El ítem 4 (escaleras) tiene una opción más que el original, C «dolor leve al subir», que Gil-Gámez puntúa con 8, como «dolor al bajar» (lo pidió el 5,3 % en la prueba piloto; acordado con Kujala). El 11D dice «después de la cirugía» (original: «luxación documentada»), se puntúa igual |
 | VISA-P | Puntos del apéndice de la VISA-P-SP | — |
 | FAAM | % por subescala sin N/A | **Decidido (usuario, 2026-10):** vida diaria con los 15 ítems validados en España (sin el 2, 7, 13, 14, 18 y 20), con la fórmula original aplicada a esos 15 |
-| CAIT | Suma 0–30 con los puntos de la hoja del usuario; cortes ≤ 24 (IAC) y ≤ 27 (Hiller), con «zona dudosa» entre los dos | La hoja no dice de qué validación española sale (sus puntos coinciden con el original); «≤ 24» o «< 24» sin leer en Gribble 2014 |
+| CAIT | Suma 0–30 con los puntos de la hoja del usuario; cortes < 24 (IAC) y ≤ 27 (Hiller), con «zona dudosa» de 24 a 27 | La hoja no dice de qué validación española sale (sus puntos coinciden con el original); «< 24» leído en Gribble 2014 (aportado por el usuario) |
 | LEFS | Suma 0–80 | Orden (1–20) y redacción comprobados con la versión española (Cruz-Díaz 2014, apéndice 1): mismo orden que el original, «250 metros» y «un kilómetro» en vez de manzanas y millas. Su cambio mínimo detectable (2,18 puntos) se añade a la interpretación |
 
 **IdFAI** (añadido): puntos por respuesta del apéndice B del original (Simon 2012, *Foot Ankle Int* 33(9):755–763, aportado por el usuario); la pregunta 1 (número de esguinces) no puntúa y las 2–10 suman 0–37 (más es peor). Corte de la versión española ≥ 10,5 (Cervera-Garvi 2020, *Disabil Rehabil*, doi:10.1080/09638288.2020.1857446; AUC 0,84), ≥ 11 con puntos enteros, como el original; cambio mínimo detectable 6,4. El artículo español no trae el cuestionario: etiquetas traducidas por nosotros, pendientes de comparar con la hoja española si aparece.
