@@ -12,7 +12,7 @@ import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } fro
 // `id` estable: se guarda en la sesión.
 // `pasos` (Fase N, paso 3): pasos del árbol de abajo en los que el síntoma de
 // esa zona sale en el recuadro «📝 Refiere el paciente». Solo recuerda; nunca
-// contesta el paso. Pendientes de revisión por el usuario:
+// contesta el paso. Revisados por el usuario (2026-10):
 //   h_step1  cribado cervical y 1ª costilla → cuello o trapecio, y lo que
 //            pasa del codo (el dolor subacromial no suele bajar del codo)
 //   h_step3  ¿dolor arriba (AC) o inestabilidad? → hombro anterior (AC,
