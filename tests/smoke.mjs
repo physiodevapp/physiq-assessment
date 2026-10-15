@@ -3574,8 +3574,14 @@ async function checkPlanIA(browser, errors) {
     const t = document.getElementById('compartirOpciones').textContent;
     return t.includes('Plan detallado (IA)') && t.includes('6 puntos sin revisar') && t.includes('Programa para casa (IA)') && t.includes('marca todos los puntos');
   });
+  // Los toasts se apuntan al aparecer: con carga, uno dura menos que lo que tarda en mirarse
+  await page.evaluate(() => {
+    window.__toasts = [];
+    new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.id === 'appToast') window.__toasts.push(n.textContent); })))
+      .observe(document.body, { childList: true });
+  });
   await page.click('.compartir-op[onclick="compartirCasaIA()"]');
-  r.casaBloqueada = await page.waitForFunction(() => document.getElementById('appToast')?.textContent.includes('marca como revisados los 6 puntos'), null, { timeout: 5000 }).then(() => true, () => false)
+  r.casaBloqueada = await page.waitForFunction(() => window.__toasts.some(t => t.includes('marca como revisados los 6 puntos')), null, { timeout: 10000 }).then(() => true, () => false)
     && (await page.evaluate(() => navigator.clipboard.readText())) === 'VACIO';
   await page.evaluate(() => document.querySelectorAll('#piaRevision details, #piaResultadoDet').forEach(d => { d.open = true; }));
   for (const c of await page.$$('#piaRevision .ia-rev-check, #piaComprobar .ia-rev-check')) await c.check();
@@ -3595,6 +3601,9 @@ async function checkPlanIA(browser, errors) {
   await portapapelesNuevo();
   const fisio = await page.evaluate(() => navigator.clipboard.readText());
   r.planFisio = fisio.startsWith('PLAN DE TRATAMIENTO DETALLADO — propuesta\nAndrés Molina · Lumbar (izquierda)') && fisio.includes('(sugerencia de la IA)') && fisio.includes('Nivel B · Muy suave · Plan A');
+  // «⬇ Paquete de revisión» del plan: descarga el .zip con su nombre
+  const [descarga] = await Promise.all([page.waitForEvent('download', { timeout: 10000 }), page.click('#planIA .ia-rev-paquete-btn')]);
+  r.paquete = /^revision-plan-andres-molina-\d{4}-\d{2}-\d{2}\.zip$/.test(descarga.suggestedFilename());
   // Cambiar la frecuencia: desactualizado
   await page.click('.option-btn[onclick="planElegir(\'frecuencia\',\'B\')"]');
   r.desactualizado = (await page.textContent('#piaResultado')).includes('han cambiado desde que se detalló');
@@ -4271,7 +4280,7 @@ const SECCIONES = [
 
   { id: 'plan-ia', titulo: 'Fase 6: «✨ Detallar con IA» (worker y Turnstile simulados):', run: async ({ browser, errors }) => {
     const r = await checkPlanIA(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} caso de Andrés importado: la tarjeta dice qué se detallará (nivel B «Muy suave», plan A, lu3, con el dictado y su aviso); el prompt lleva la transcripción y nunca el informe, sin audio; el plan llega por SSE, las sugerencias se pintan aparte con su etiqueta, la revisión señala el grado III y las 3 series sin marcar, más las comprobaciones; «Programa para casa (IA)» no se comparte sin revisarlo todo y sale sin marcas y con la red de cola de caballo; «Plan detallado (IA)» con las marcas; cambiar la frecuencia lo marca desactualizado; fuera del payload y del .json; sigue tras recargar; en el hub, ni el módulo ni la tarjeta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} caso de Andrés importado: la tarjeta dice qué se detallará (nivel B «Muy suave», plan A, lu3, con el dictado y su aviso); el prompt lleva la transcripción y nunca el informe, sin audio; el plan llega por SSE, las sugerencias se pintan aparte con su etiqueta, la revisión señala el grado III y las 3 series sin marcar, más las comprobaciones; «Programa para casa (IA)» no se comparte sin revisarlo todo y sale sin marcas y con la red de cola de caballo; «Plan detallado (IA)» con las marcas; «⬇ Paquete de revisión» descarga el .zip del plan; cambiar la frecuencia lo marca desactualizado; fuera del payload y del .json; sigue tras recargar; en el hub, ni el módulo ni la tarjeta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

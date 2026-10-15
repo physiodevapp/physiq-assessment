@@ -209,3 +209,26 @@ test('plan IA: las funciones de los onclick están en window', () => {
   for (const f of ['compartirPlanIA', 'compartirCasaIA']) usadas.add(f);
   for (const f of usadas) assert.equal(typeof window[f], 'function', f);
 });
+
+const PQ = await import('../../lib/paquete-revision.js');
+test('plan IA: «⬇ Paquete de revisión» — plan, programa para casa, puntos con sus marcas, valoración sin la IA y prompt', () => conAndres({}, () => {
+  UI.contextoPlanIA();
+  const ia = { texto: '## SESIÓN\n- 3 series de extensión.', fecha: '2026-10-16T00:05:00Z', nivel: 'B', escalon: 'Muy suave', frecuenciaNombre: 'Plan B · 2 sesiones por semana',
+    conTranscripcion: true, prompt: 'PROMPT-EXACTO', version: 'abc1234', revisados: [] };
+  state.planTratamiento.ia = ia;
+  const puntos = RP.revisarPlan(ia.texto, { esqueleto: '', escalon: 1, alarmas: [ALARMA] });
+  ia.revisados = [RP.clavePuntoPlan(puntos.find(p => p.id === 'volumen'))];
+  const ahora = new Date(2026, 9, 16, 0, 10);
+  const { nombre, ficheros } = PQ.ficherosPaquetePlan({ ia, casa: 'PROGRAMA PARA CASA\n…', state, puntos, comprobaciones: RP.comprobacionesPlan(), versionActual: 'def5678', ahora });
+  assert.equal(nombre, 'revision-plan-andres-molina-2026-10-16.zip');
+  const f = Object.fromEntries(ficheros.map(x => [x.nombre, x.texto]));
+  assert.deepEqual(Object.keys(f), ['info.txt', 'andres-molina-plan-ia.txt', 'andres-molina-programa-casa-ia.txt', 'revision.txt', 'valoracion-andres-molina.json', 'prompt.txt']);
+  assert.equal(f['andres-molina-plan-ia.txt'], ia.texto + '\n', 'el plan tal como se generó');
+  assert.match(f['info.txt'], /con la versión abc1234[\s\S]*con la versión def5678[\s\S]*Nivel: B \(Muy suave\) · Plan B[\s\S]*Transcripción del informe con IA: sí/);
+  assert.match(f['revision.txt'], /\[MEDIO\] volumen:.*\[revisado\]/);
+  assert.match(f['revision.txt'], /\[ALTO\] secciones:/);
+  assert.match(f['revision.txt'], /ANTES DE COMPARTIR, COMPRUEBA\n- Cada ejercicio/);
+  assert.ok(!f['valoracion-andres-molina.json'].includes('3 series de extensión'), 'el .json, como «⬇ Exportar», sin el plan con IA');
+  assert.equal(f['prompt.txt'], 'PROMPT-EXACTO');
+  assert.match(leer('plan-ia.js'), /onclick="piaPaqueteRevision\(\)"[\s\S]*⬇ Paquete de revisión/);
+}));
