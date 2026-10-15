@@ -444,6 +444,8 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-3-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['nrs', 'lado-otro', 'relleno']],
       ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-4-informe.txt', 'rosario-dictado-4-transcripcion.txt', ['lado-otro', 'atribucion', 'hipotesis-no-cumple']],
       ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-5-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno', 'repetido']],
+      // Caso simulado para la fase 6 (tests/fixtures/casos/andres-molina-lumbar-guion.md), informe narrativo con dictado (ronda 33)
+      ['valoracion-andres-molina-lumbar.json', 'andres-lumbar-dictado-1-informe.txt', 'andres-lumbar-dictado-1-transcripcion.txt', ['lado-sintoma', 'confirma', 'relleno', 'fuentes']],
     ];
     // En este mismo proceso (revisarArchivos(), lo que hace la herramienta),
     // no un `node` por informe; luego se deja `state` como estaba.
@@ -554,6 +556,20 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(seg('Si no mejora, se pedirá una ecografía.').includes('seguimiento-fuera'));
     assert.ok(!seg('La ausencia de mejoría con movimientos repetidos es compatible con origen facetario.').includes('seguimiento-fuera'), 'un hallazgo no es el criterio');
     assert.ok(ids('Según el dictado, refiere dolor.').includes('fuentes'), '«dictado» nombra la fuente');
+  });
+  test('revisión: neoplasia por cáncer, «confirmando» lo neural y episodios previos negados sin que nadie los mencione (ronda 33)', () => {
+    assert.ok(ids('Niega fiebre, pérdida de peso y antecedentes de neoplasia.').includes('diagnostico'), 'sin nada en la fuente, sigue saltando');
+    assert.ok(!ids('Niega fiebre, pérdida de peso y antecedentes de neoplasia.', { transcripcion: 'Ni fiebre ni pérdida de peso ni antecedentes de cáncer.' }).includes('diagnostico'), 'cáncer en la consulta = neoplasia en el informe');
+    assert.ok(ids('El slump reproduce el dolor y mejora al liberar la flexión cervical, confirmando la sensibilización neural.').includes('confirma'));
+    assert.ok(!ids('El slump reproduce el dolor y mejora al liberar la flexión cervical, compatible con mecanosensibilidad neural.').includes('confirma'));
+    assert.ok(ids('Comenzó hace tres semanas. No refiere episodios previos similares.').includes('relleno'), 'nadie preguntó por episodios previos');
+    assert.ok(!ids('Comenzó hace tres semanas. No refiere episodios previos similares.', { transcripcion: 'Es la primera vez que le pasa.' }).includes('relleno'), 'si consta, puede decirse');
+    assert.ok(!ids('Comenzó hace tres semanas. No refiere episodios previos similares.', { datos: { fp: [{ s: 'General', q: '¿Es la primera vez que le pasa?', a: 'Sí' }] } }).includes('relleno'));
+  });
+  test('prompt: episodios previos y factores ambientales, solo si constan (ronda 33)', () => {
+    const pr = IN.buildNarrativePrompt({ p: 'X', h: [] }, { conAudio: true, dictado: true });
+    assert.ok(pr.includes('episodios previos si constan (si nadie los menciona, no escribas que no los hay)'));
+    assert.ok(pr.includes('sin deducir facilidades ni dificultades que nadie dijo'));
   });
   test('revisión: «Antes de compartir, comprueba» — atribución y otra zona siempre; tests con «o» solo si se hicieron', () => {
     const sin = RI.comprobacionesManuales({ ampliado: { tests: [{ hipotesis: 'X', items: [{ test: 'Test de Neer', resultado: 'positivo' }] }] } });
