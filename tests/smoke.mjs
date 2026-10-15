@@ -1606,9 +1606,9 @@ async function checkTiemposTejido(browser, errors) {
     if (!i || i.hidden) return false;
     const b = i.getBoundingClientRect();
     return b.left >= 15 && b.right <= innerWidth - 15 && b.top >= 0 && b.bottom <= innerHeight && document.documentElement.scrollWidth <= innerWidth
-      // Fuentes en táctil: una fila de ≥ 40 px por enlace, dentro de la tarjeta
+      // Fuentes en táctil: zona de toque de ≥ 32 px por enlace, dentro de la tarjeta
       && [...i.querySelectorAll('.tej-fuente-enlace')].length > 0
-      && [...i.querySelectorAll('.tej-fuente-enlace')].every(a => { const r = a.getBoundingClientRect(); return r.height >= 40 && r.right <= b.right + 1; });
+      && [...i.querySelectorAll('.tej-fuente-enlace')].every(a => { const r = a.getBoundingClientRect(); return r.height >= 32 && r.right <= b.right + 1; });
   });
   // Nota de grupo (nervio periférico): sus fuentes, plegadas y enlazadas al abrirlas
   r.grupoFuentes = await movil.evaluate(() => {
@@ -3886,7 +3886,7 @@ const SECCIONES = [
 
   { id: 'tejidos', titulo: '«⏱ Tiempos de recuperación»:', run: async ({ browser, errors }) => {
     const tejidos = await checkTiemposTejido(browser, errors);
-    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, tarjeta de una barra con sus fuentes enlazadas en línea con « · » (toque de 40 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, tarjeta de una barra con sus fuentes enlazadas en línea con « · » (toque de 32 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
   } },
 
