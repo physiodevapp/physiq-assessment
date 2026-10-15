@@ -22,6 +22,7 @@ for (const tema of [
   'cuestionarios.mjs',
   'irritabilidad.mjs',
   'plan-tratamiento.mjs',
+  'plan-ia.mjs',
   'sintomas.mjs',
   'citas.mjs',
 ]) await import(`./unit/${tema}`);
