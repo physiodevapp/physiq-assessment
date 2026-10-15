@@ -1214,7 +1214,7 @@ async function checkPreguntaIA(browser, errors) {
   movil.on('pageerror', err => errors.push(`pageerror (pregunta IA móvil): ${err.message}`));
   await movil.goto(BASE_URL, { waitUntil: 'networkidle' });
   await irAFase2(movil, 'hombro');
-  await movil.tap('#preguntaIABtn');
+  await abrirHerramienta(movil, 'pregunta');
   await movil.waitForTimeout(400);
   const hoja = await movil.evaluate(() => {
     const p = document.getElementById('preguntaPanel').getBoundingClientRect();
@@ -1227,7 +1227,7 @@ async function checkPreguntaIA(browser, errors) {
   r.movil = hoja && await movil.evaluate(() => !document.getElementById('preguntaOverlay').classList.contains('open') && state.currentPhase === 2);
   // 320 px: los tres destinos y el botón caben sin cortar
   await movil.setViewportSize({ width: 320, height: 640 });
-  await movil.tap('#preguntaIABtn');
+  await abrirHerramienta(movil, 'pregunta');
   await movil.waitForTimeout(400);
   r.caben320 = await movil.evaluate(() => {
     const panel = document.getElementById('preguntaPanel').getBoundingClientRect();
@@ -1377,18 +1377,35 @@ async function checkCuestionarios(browser, errors) {
   const m = await movil.newPage();
   m.on('pageerror', err => errors.push(`pageerror (cuestionarios móvil): ${err.message}`));
   await m.goto(BASE_URL, { waitUntil: 'networkidle' });
-  await m.tap('#cuestBtn');
+  await abrirHerramienta(m, 'cuestionarios');
   await m.waitForSelector('#cuestOverlay.open');
   // Tras la animación de entrada (desliza desde abajo)
   r.hoja = await m.waitForFunction(() => {
     const p = document.getElementById('cuestPanel').getBoundingClientRect();
     return Math.round(p.width) === innerWidth && Math.abs(p.bottom - innerHeight) < 2;
   }, null, { timeout: 3000 }).then(() => true, () => false);
+  // Cabecera: un solo botón «Herramientas» en vez de tres iconos, y el menú
+  // se cierra al elegir (la herramienta se queda con su entrada del historial)
+  r.herramientas = await m.evaluate(() => {
+    const ve = id => getComputedStyle(document.getElementById(id)).display !== 'none';
+    return ve('herramientasBtn') && !ve('tejidosBtn') && !ve('cuestBtn') && !ve('preguntaIABtn')
+      && !document.getElementById('herramientasOverlay').classList.contains('open');
+  });
+  // Tarjeta con descripción larga: sigue debajo del nombre (sin columna aparte)
+  // y el estado empieza en el mismo borde que el nombre
+  r.tarjetaLarga = await m.evaluate(() => {
+    const t = document.querySelector('[data-cuest="orebro"]');
+    const nombre = t.querySelector('.cuest-tarjeta-nombre').getBoundingClientRect();
+    const lineas = [...t.querySelector('.cuest-tarjeta-titulo').getClientRects()];
+    const estado = t.querySelector('.cuest-tarjeta-estado').getBoundingClientRect();
+    return lineas.length > 1 && Math.abs(lineas[1].left - nombre.left) < 2
+      && Math.abs(estado.left - nombre.left) < 2 && estado.top >= lineas.at(-1).bottom - 1;
+  });
   await m.goBack();
   await m.waitForFunction(() => !document.getElementById('cuestOverlay').classList.contains('open'));
   r.atras = await m.evaluate(() => window.state.currentPhase === 1);
   await m.setViewportSize({ width: 320, height: 700 });
-  await m.tap('#cuestBtn');
+  await abrirHerramienta(m, 'cuestionarios');
   await m.tap('[data-cuest="cadc"]');
   r.estrecho = await m.evaluate(() => {
     const c = document.getElementById('cuestCuerpo');
@@ -1397,7 +1414,7 @@ async function checkCuestionarios(browser, errors) {
       && ops.length === 11 && ops.every(o => o.getBoundingClientRect().width >= 40);
   });
   r.cabecera = await m.evaluate(() => document.documentElement.scrollWidth <= innerWidth
-    && document.getElementById('cuestBtn').getBoundingClientRect().right <= innerWidth);
+    && document.getElementById('themeBtn').getBoundingClientRect().right <= innerWidth);
   await movil.close();
 
   // En el hub también (no usa red)
@@ -1524,7 +1541,7 @@ async function checkTiemposTejido(browser, errors) {
   movil.on('pageerror', err => errors.push(`pageerror (tejidos móvil): ${err.message}`));
   await movil.goto(BASE_URL, { waitUntil: 'networkidle' });
   await irAFase2(movil, 'rodilla');
-  await movil.tap('#tejidosBtn');
+  await abrirHerramienta(movil, 'tejidos');
   await movil.waitForTimeout(400);
   const hoja = await movil.evaluate(() => {
     const p = document.getElementById('tejidosPanel').getBoundingClientRect();
@@ -1542,7 +1559,7 @@ async function checkTiemposTejido(browser, errors) {
     return Math.max(...items) <= innerWidth + 1 && document.querySelector('.logo').getBoundingClientRect().right <= document.querySelector('.header-right').getBoundingClientRect().left + 1;
   });
   await movil.evaluate(() => document.body.classList.remove('modo-breve'));
-  await movil.tap('#tejidosBtn');
+  await abrirHerramienta(movil, 'tejidos');
   await movil.waitForTimeout(400);
   r.panel320 = await movil.evaluate(() => {
     const panel = document.getElementById('tejidosPanel').getBoundingClientRect();
@@ -3424,6 +3441,14 @@ async function checkFase6(browser, errors) {
 // ejecuciones completas justo tras arrancar `npx serve` (2026-10); la misma
 // firma sale cortando a propósito la conexión de un .js. Sin reintento: si la
 // app no carga, la sección falla, pero diciendo qué petición se perdió.
+// ≤768 px: tiempos de tejido, cuestionarios y «Preguntar a la IA» se abren
+// desde el botón «Herramientas» de la cabecera
+async function abrirHerramienta(page, k) {
+  await page.tap('#herramientasBtn');
+  await page.waitForSelector('#herramientasOverlay.open');
+  await page.tap(`#herramientasOverlay [data-herramienta="${k}"]`);
+}
+
 async function abrirApp(page, url = BASE_URL) {
   if (!page.__fallidas) {
     page.__fallidas = [];
@@ -3728,7 +3753,7 @@ const SECCIONES = [
 
   { id: 'cuestionarios', titulo: 'Calculadora de cuestionarios:', run: async ({ browser, errors }) => {
     const c = await checkCuestionarios(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; hoja inferior en móvil que atrás cierra en la misma fase; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
