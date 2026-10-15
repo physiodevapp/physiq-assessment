@@ -1,6 +1,6 @@
 # Varios síntomas (P1–P4) — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2** completo: las 7 regiones tienen zonas, revisadas por el usuario (2026-10). **Paso 3** (pistas en el árbol) hecho en lumbar y revisado por el usuario (2026-10); las otras 6 regiones, una por sesión. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
+Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2** completo: las 7 regiones tienen zonas, revisadas por el usuario (2026-10). **Paso 3** (pistas en el árbol) hecho en lumbar (revisado por el usuario, 2026-10) y cervical (revisados por el usuario, 2026-10); las otras 5 regiones, una por sesión. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
 
 ## Decisiones tomadas (octubre 2026)
 Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
@@ -26,6 +26,7 @@ Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
 - **Siempre al día**: el árbol se repinta entero al entrar en la fase 4, así que un cambio en la fase 3 se ve al volver.
 - **Nunca contesta el paso** (decisión 8): ni selecciona opciones ni toca `treeAnswers`; lo comprueba el smoke test.
 - **Lumbar** (revisado por el usuario, 2026-10): lu_step1 (¿la pierna duele más que la espalda?) → zona lumbar, para comparar, y todo lo que baja por la pierna; lu_step1c (déficit) → muslo anterior, pierna y pie; lu_step2 (estenosis, glúteos y muslos) → glúteo, muslos y pierna; lu_step3 («sin dolor bajo la rodilla») → pierna y pie; lu_step4 (facetario «sin pasar de la rodilla», sacroilíaca, «revisar siempre cadera») → glúteo, ingle y pierna. lu_step1b (centralización) no lleva: se ve explorando.
+- **Cervical** (revisado por el usuario, 2026-10): ce_step1 (mielopatía) → antebrazo y mano; ce_step3 (¿el brazo duele más que el cuello?) → cuello, para comparar, trapecio o escápula (referencia radicular C5–C8), hombro, brazo, antebrazo y mano; ce_step3b (radicular o radiculopatía) → brazo, antebrazo y mano, y cabeza por la opción «aura migrañosa»; ce_step4 (cefalea o base del cuello u hombro) → cuello, cabeza, trapecio o escápula, hombro; ce_step6 (dónde está la disfunción) → cuello, cabeza (C1–2) y zona dorsal (cervicotorácica). Sin pistas: ce_step2 (latigazo), ce_step4b (mareo), ce_step5 (dominio mecánico).
 
 ## Por qué
 

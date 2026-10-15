@@ -3084,12 +3084,18 @@ async function checkSintomas(page) {
     }, { esperadas, central });
   };
   r.cervical = await zonasDe('cervical', ['Cuello', 'Cabeza', 'Trapecio o escápula', 'Hombro', 'Brazo', 'Antebrazo y mano', 'Zona dorsal'], true);
+  // Pistas en el árbol cervical: la mano sale en el paso 1 (mielopatía)
+  await page.click('#sintItem_0 .sint-zona:has-text("Antebrazo y mano")');
+  await page.evaluate(() => goToPhase(4));
+  await page.waitForSelector('#ce_step1 .fp-pistas');
+  r.pistaCervical = await page.evaluate(() => document.querySelector('#ce_step1 .fp-pistas').textContent.includes('Síntoma P1 (principal): Antebrazo y mano')
+    && Object.keys(state.treeAnswers).length === 0);
   r.hombro = await zonasDe('hombro', ['Hombro anterior', 'Hombro lateral (deltoides)', 'Hombro posterior', 'Brazo hasta el codo', 'Por debajo del codo', 'Cuello o trapecio'], false);
   r.codo = await zonasDe('codo', ['Codo lateral', 'Codo medial', 'Codo posterior', 'Codo anterior', 'Antebrazo', 'Mano'], false);
   r.cadera = await zonasDe('cadera', ['Ingle', 'Cadera lateral', 'Glúteo', 'Muslo anterior', 'Rodilla', 'Zona lumbar'], false);
   r.rodilla = await zonasDe('rodilla', ['Rodilla anterior (rótula)', 'Rodilla medial', 'Rodilla lateral', 'Rodilla posterior (hueco poplíteo)', 'Muslo', 'Pierna'], false);
   r.tobillo = await zonasDe('tobillo_pie', ['Tobillo lateral', 'Tobillo medial', 'Tobillo anterior', 'Tendón de Aquiles', 'Talón o planta', 'Antepié o dedos', 'Pantorrilla'], false);
-  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.pistaArbol && r.fase5 && r.cervical && r.hombro && r.codo && r.cadera && r.rodilla && r.tobillo;
+  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.pistaArbol && r.fase5 && r.cervical && r.pistaCervical && r.hombro && r.codo && r.cadera && r.rodilla && r.tobillo;
   return r;
 }
 
@@ -3258,7 +3264,7 @@ const SECCIONES = [
     const page = await nuevaPagina(browser, errors);
     try {
       const r = await checkSintomas(page);
-      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; pistas en el paso del árbol (con las del formulario, sin la otra región, sin contestarlo); fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; pistas en el paso del árbol (lumbar, con las del formulario, sin la otra región, sin contestarlo; cervical, la mano en el paso 1); fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
       return r.ok;
     } finally { await page.context().close(); }
   } },
