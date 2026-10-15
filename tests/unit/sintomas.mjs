@@ -1,5 +1,5 @@
 // Varios síntomas (P1–P4) de la fase 3: docs/sintomas-multiples.md. Se ejecuta desde tests/unit.js.
-import { assert, leer, test, state, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText, withState } from './comun.mjs';
+import { assert, leer, test, state, VALID_REGIONS, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText, withState } from './comun.mjs';
 
 console.log('\nsíntomas (P1–P4)');
 const S = await import('../../lib/sintomas.js');
@@ -14,8 +14,8 @@ const OTRA = { ...vacio(), otraRegion: true, zonaLibre: 'Rodilla', lado: 'Izquie
 const conSintomas = (patch, fn) => withState({ region: 'lumbar', lado: 'Derecho', severidad: 7, irritabilidadNivel: 'Moderada',
   sintomaPrincipal: P1, sintomasSecundarios: [P2, OTRA], ...patch }, fn);
 
-test('síntomas: zonas en las regiones hechas (lumbar, cervical, hombro, codo, cadera, rodilla), ids únicos y no vacíos', () => {
-  assert.deepEqual(Object.keys(ZONAS_SINTOMA).sort(), ['cadera', 'cervical', 'codo', 'hombro', 'lumbar', 'rodilla']);
+test('síntomas: zonas en las 7 regiones, ids únicos y no vacíos', () => {
+  assert.deepEqual(Object.keys(ZONAS_SINTOMA).sort(), [...VALID_REGIONS].sort());
   for (const [r, zonas] of Object.entries(ZONAS_SINTOMA)) {
     assert.ok(CIF_TREES[r], r);
     const ids = zonas.map(z => z.id);
@@ -158,6 +158,17 @@ test('síntomas: rodilla — zonas en payload, 📋 Notas y 📄 Informe', () =>
     assert.equal(d.ss[0].z, 'Rodilla posterior (hueco poplíteo)');
     assert.match(buildContextSummaryText(), /SÍNTOMAS: P1 Rodilla anterior \(rótula\) · intermitente \| P2 Rodilla posterior \(hueco poplíteo\) · NRS 2\/10 · relación con P1 no conocida/);
     assert.match(buildInformeFisioterapiaText(), /Refiere además dolor: rodilla posterior \(hueco poplíteo\), de intensidad 2\/10\n/);
+  });
+});
+
+test('síntomas: tobillo y pie — zonas en payload y 📋 Notas', () => {
+  withState({ region: 'tobillo_pie', lado: 'Derecho', severidad: 4, irritabilidadNivel: 'Baja',
+    sintomaPrincipal: { ...vacio(), zonas: ['tobillo_lat'] },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['talon', 'antepie'], nrs: 3, relacion: 'independiente' }] }, () => {
+    const d = buildPhysiQPayload();
+    assert.deepEqual(d.z1, { z: 'Tobillo lateral' });
+    assert.equal(d.ss[0].z, 'Talón o planta, antepié o dedos');
+    assert.match(buildContextSummaryText(), /SÍNTOMAS: P1 Tobillo lateral \| P2 Talón o planta, antepié o dedos · NRS 3\/10 · independiente de P1/);
   });
 });
 

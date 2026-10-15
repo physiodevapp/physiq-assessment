@@ -3077,10 +3077,8 @@ async function checkSintomas(page) {
   r.codo = await zonasDe('codo', ['Codo lateral', 'Codo medial', 'Codo posterior', 'Codo anterior', 'Antebrazo', 'Mano'], false);
   r.cadera = await zonasDe('cadera', ['Ingle', 'Cadera lateral', 'Glúteo', 'Muslo anterior', 'Rodilla', 'Zona lumbar'], false);
   r.rodilla = await zonasDe('rodilla', ['Rodilla anterior (rótula)', 'Rodilla medial', 'Rodilla lateral', 'Rodilla posterior (hueco poplíteo)', 'Muslo', 'Pierna'], false);
-  // Una región aún sin zonas (cuando tobillo y pie las tenga, esta comprobación sobra): sin tarjeta
-  await cambiarRegion('tobillo_pie');
-  r.sinZonasSinTarjeta = await page.evaluate(() => document.getElementById('cardSintomas').hidden && state.sintomasSecundarios.length === 0);
-  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.fase5 && r.cervical && r.hombro && r.codo && r.cadera && r.rodilla && r.sinZonasSinTarjeta;
+  r.tobillo = await zonasDe('tobillo_pie', ['Tobillo lateral', 'Tobillo medial', 'Tobillo anterior', 'Tendón de Aquiles', 'Talón o planta', 'Antepié o dedos', 'Pantorrilla'], false);
+  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.fase5 && r.cervical && r.hombro && r.codo && r.cadera && r.rodilla && r.tobillo;
   return r;
 }
 
@@ -3245,11 +3243,11 @@ const SECCIONES = [
     return r.ok;
   } },
 
-  { id: 'sintomas', titulo: 'Síntomas P1–P4 (fase 3, lumbar, cervical, hombro, codo, cadera y rodilla):', run: async ({ browser, errors }) => {
+  { id: 'sintomas', titulo: 'Síntomas P1–P4 (fase 3, las 7 regiones):', run: async ({ browser, errors }) => {
     const page = await nuevaPagina(browser, errors);
     try {
       const r = await checkSintomas(page);
-      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; fase 5 con P1–P3; cervical, hombro, codo, cadera y rodilla con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior; tobillo y pie (sin zonas) sin tarjeta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
       return r.ok;
     } finally { await page.context().close(); }
   } },
