@@ -3397,7 +3397,10 @@ async function checkFase6(browser, errors) {
   const botonNivel = k => page.locator('.plan-niveles .option-btn', { hasText: new RegExp(`^${k} ·`) });
   await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'alta\')"]');
   r.altaSinC = await botonNivel('C').isDisabled() && (await page.textContent('.plan-escalon-tit')).includes('Muy suave');
+  // Con irritabilidad alta A coincide con B: no se ofrece y vale B
+  r.altaSinA = await botonNivel('A').isDisabled() && (await page.textContent('.plan-escalon-tit')).startsWith('Nivel B');
   await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
+  r.bajaConA = !(await botonNivel('A').isDisabled());
   await botonNivel('C').click();
   r.bajaConC = await page.evaluate(() => state.planTratamiento.nivel === 'C');
   // Compartir: los tres documentos del plan
@@ -3972,7 +3975,7 @@ const SECCIONES = [
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C, A no se ofrece porque coincide con B, y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

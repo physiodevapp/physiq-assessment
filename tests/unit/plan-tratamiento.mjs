@@ -80,6 +80,13 @@ test('plan: C solo con irritabilidad baja y sÃ­ntomas que no empeoran; el escalÃ
   assert.equal(P.niveles({ gravedad: 'minima', irritabilidad: 'baja' }).C, 4);
   const alta = P.niveles({ gravedad: 'minima', irritabilidad: 'alta' });
   assert.equal(alta.A, 1); assert.equal(alta.B, 1); assert.equal(alta.C, null); assert.ok(alta.aIgual);
+  // A igual que B no se ofrece y C sin propuesta no existe: en los dos casos vale B
+  assert.equal(P.nivelEfectivo(alta, 'A'), 'B');
+  assert.equal(P.nivelEfectivo(alta, 'C'), 'B');
+  assert.equal(P.nivelEfectivo(alta, 'B'), 'B');
+  const baja = P.niveles({ gravedad: 'moderada', irritabilidad: 'baja', estabilidad: 'Estable' });
+  assert.deepEqual(['A', 'B', 'C'].map(k => P.nivelEfectivo(baja, k)), ['A', 'B', 'C']);
+  assert.match(leer('plan.js'), /k === 'A' && nv\.aIgual \? null/, 'A igual que B, deshabilitada');
   assert.equal(alta.sinC, D.TEXTO_NIVELES.sinC.irritabilidad);
   assert.equal(P.niveles({ gravedad: 'moderada', irritabilidad: 'baja', estabilidad: 'Empeora' }).sinC, D.TEXTO_NIVELES.sinC.estabilidad);
   for (const g of P.NIVELES_GRAVEDAD) for (const i of P.NIVELES_IRRITABILIDAD) assert.ok(P.niveles({ gravedad: g, irritabilidad: i }).B < 4, `${g}|${i}`);
