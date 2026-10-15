@@ -12,7 +12,7 @@ import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO } from './comun.js';
 // `id` estable: se guarda en la sesión.
 // `pasos` (Fase N, paso 3): pasos del árbol de abajo en los que el síntoma de
 // esa zona sale en el recuadro «📝 Refiere el paciente». Solo recuerda; nunca
-// contesta el paso. Pendientes de revisión por el usuario:
+// contesta el paso. Revisados por el usuario (2026-10):
 //   ca_step1  ¿referido de la columna o la sacroilíaca? → zona lumbar y glúteo
 //             (la sacroilíaca duele inferomedial a la EIPS)
 //   ca_step1b lesión aguda de ingle → ingle
