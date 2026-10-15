@@ -64,6 +64,15 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Si la cadera te empieza a doler mucho, hasta el punto de no poder apoyar la pierna, y tienes fiebre o te encuentras mal en general, ve hoy mismo a urgencias. Si tienes una prótesis y aparece un dolor nuevo que no se calma en reposo y sigue de noche, sobre todo después de una infección, ve al médico.»  
   ↳ fuente: Momodu y Savaliya 2023 (StatPearls, «Septic Arthritis») y Goodman 2018, como en el razonamiento de ca_in1 (artritis séptica: urgencias hoy; la fiebre solo aparece en el 40–60 %) y de ca_in3 (prótesis con una infección reciente y dolor nuevo, o dolor que no cede en reposo y sigue de noche: derivación médica)  
   ↳ clave `alarmaInfeccionCadera`
+- [ ] «Si un dolor del pie o del tobillo empieza poco a poco, va a más al apoyar o con la actividad, no mejora al calentar y te molesta también por la noche, deja la actividad que lo empeora (correr, saltar) y ve al médico.»  
+  ↳ fuente: May y Marappa-Ganeshan 2023 y Lluch 2020, como en el razonamiento de tp_o1: presentación típica de una fractura de estrés; algunas del pie son de alto riesgo (navicular, base del 5.º metatarsiano); la radiografía tarda 2–3 semanas en mostrarla; derivar para confirmarla con imagen  
+  ↳ clave `alarmaFracturaEstresPie`
+- [ ] «Si el tobillo o una articulación del pie se te pone hinchada, caliente y muy dolorosa y tienes fiebre o te encuentras mal en general, ve hoy mismo a urgencias. Aunque no tengas fiebre, si se pone así de golpe, ve hoy mismo al médico.»  
+  ↳ fuente: Momodu y Savaliya 2023 (StatPearls, «Septic Arthritis») y Goodman 2018, como en el razonamiento de tp_i1 y el recuadro de urgencia de tobillo y pie: artritis infecciosa, urgencia hoy; la fiebre solo aparece en el 40–60 %, y la gota se le parece y solo el líquido articular las separa  
+  ↳ clave `alarmaInfeccionTobillo`
+- [ ] «Si de repente notas como un golpe o una patada detrás del tobillo o de la pantorrilla, a veces con un chasquido, y desde entonces cojeas o no puedes ponerte de puntillas sobre esa pierna, deja los ejercicios y ve al médico sin esperar a la próxima sesión.»  
+  ↳ fuente: Lluch 2020 y Shamrock 2023, como en el razonamiento de tp_t3 (la tendinopatía previa es factor de riesgo; camina sorprendentemente bien, y entre el 20 y el 25 % se toman al principio por un esguince; derivación preferente); Hengeveld y Banks 2005, cap. 16, cuadro 16.5, p. 565 (cuidado con la rotura completa, prueba de Thompson)  
+  ↳ clave `alarmaRoturaAquiles`
 - [ ] «Si te empieza de golpe un dolor de cabeza o de cuello distinto a cualquiera que hayas tenido, o notas visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas sin perder el conocimiento, ve a urgencias hoy mismo.»  
   ↳ fuente: Rushton 2023 (marco IFOMPT cervical), tablas 1–2 y 6, pp. 9–12, como en el razonamiento de cv_ar1 y cv_ar2: disección arterial e insuficiencia vertebrobasilar; los síntomas neurológicos pueden llegar días después  
   ↳ clave `alarmaArterial`
@@ -91,7 +100,7 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ fuente: Maitland 2005, cap. 6, p. 136
 - [ ] Regla de los 7–10 días: `lu3`, `lu5`, `ce3`, `ce12`, solo con NRS registrado de 8 o más.  
   ↳ fuente: Maitland 2005, cap. 9, p. 217
-- [ ] Atrapamiento de un nervio periférico (sensibilidad y fuerza en su territorio al empezar cada sesión, `TEXTOS_SESION.reevaluacionNervio`; sin red de seguridad neurológica ni regla de días): `co8`, `co9`, `co13`, `ro19`, `ca7`, `ca14`.  
+- [ ] Atrapamiento de un nervio periférico (sensibilidad y fuerza en su territorio al empezar cada sesión, `TEXTOS_SESION.reevaluacionNervio`; sin red de seguridad neurológica ni regla de días): `co8`, `co9`, `co13`, `ro19`, `ca7`, `ca14`, `tp12`, `tp16`, `tp28`, `tp34`.  
   ↳ **decisión de diseño** (decisión 65)
 - [ ] `ce2` no cuenta como neurológica: Disfunción neuromuscular cervical: déficit de control motor (coordinación, propiocepción), no compromiso de la raíz ni de la médula.  
   ↳ **decisión de diseño**
@@ -108,6 +117,8 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] Red de seguridad de rodilla: con cualquier plan de la región, cierre `cierreInfeccionRodilla` y casa `alarmaInfeccionRodilla`; con cualquier plan de la región, cierre `cierreTVP` y casa `alarmaTVP`.  
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Red de seguridad de cadera: con cualquier plan de la región, cierre `cierreFracturaEstres` y casa `alarmaFracturaEstres`; con cualquier plan de la región, cierre `cierreInfeccionCadera` y casa `alarmaInfeccionCadera`; con cualquier plan de la región, cierre `cierreTVP` y casa `alarmaTVP`.  
+  ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
+- [ ] Red de seguridad de tobillo_pie: con cualquier plan de la región, cierre `cierreFracturaEstresPie` y casa `alarmaFracturaEstresPie`; con cualquier plan de la región, cierre `cierreInfeccionTobillo` y casa `alarmaInfeccionTobillo`; con cualquier plan de la región, cierre `cierreTVP` y casa `alarmaTVP`.  
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Con `ce13`, la cantidad de terapia manual es la de su pauta: `TEXTOS_SESION.cantidadReid` (sección 6) en vez de la genérica.  
   ↳ **decisión de diseño** (decisión 41)
@@ -126,6 +137,12 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] Con `ca11` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
   ↳ **decisión de diseño** (decisión 42)
 - [ ] Con `ca16` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Con `tp14` como hipótesis por defecto, el plan del mes empieza en A (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Con `tp21` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
+- [ ] Con `tp36` como hipótesis por defecto, el plan del mes empieza en A (sección 7).  
   ↳ **decisión de diseño** (decisión 42)
 - [ ] Avisos con `ce13`: `AVISOS.vertigo` (sección 5).  
   ↳ **decisión de diseño**
@@ -215,19 +232,55 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño**
 - [ ] Avisos con `ca19`: `AVISOS.ingleDeportiva` (sección 5).  
   ↳ **decisión de diseño**
+- [ ] Avisos con `tp1`: `AVISOS.esguinceTobillo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp2`: `AVISOS.sindesmosis` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp8`: `AVISOS.aquiles`, `AVISOS.monitorizacionDolor` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp9`: `AVISOS.aquiles`, `AVISOS.aquilesInsercional` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp10`: `AVISOS.aquiles` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp12`: `AVISOS.nervioTobillo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp16`: `AVISOS.nervioTobillo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp28`: `AVISOS.nervioTobillo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp14`: `AVISOS.tibialPosterior` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp21`: `AVISOS.inestabilidadTobillo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp24`: `AVISOS.artrosisTobillo` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp26`: `AVISOS.talon` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp33`: `AVISOS.fracturaEstresMetatarsiano` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp34`: `AVISOS.morton` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `tp36`: `AVISOS.apofisitisPie` (sección 5).  
+  ↳ **decisión de diseño**
 - [ ] Con mecanismo Post-quirúrgico en una región periférica: `AVISOS.protesis` (sección 5).  
   ↳ **decisión de diseño** (decisión 47)
 - [ ] Con mecanismo Post-quirúrgico en rodilla, además: `AVISOS.posqRodilla` (sección 5).  
   ↳ **decisión de diseño** (decisión 78)
 - [ ] Con mecanismo Post-quirúrgico en cadera, además: `AVISOS.posqCadera` (sección 5).  
   ↳ **decisión de diseño** (decisión 78)
-- [ ] Familia de la terapia manual: columna (Maitland 2005) en lumbar y cervical; periférica (Hengeveld y Banks 2005) en hombro, codo, rodilla, cadera. Decide los escalones (sección 3), la cantidad por sesión (sección 6), la progresión y las reglas del mes (sección 7).  
+- [ ] Con mecanismo Post-quirúrgico en tobillo_pie, además: `AVISOS.posqTobillo` (sección 5).  
+  ↳ **decisión de diseño** (decisión 78)
+- [ ] Familia de la terapia manual: columna (Maitland 2005) en lumbar y cervical; periférica (Hengeveld y Banks 2005) en hombro, codo, rodilla, cadera, tobillo_pie. Decide los escalones (sección 3), la cantidad por sesión (sección 6), la progresión y las reglas del mes (sección 7).  
   ↳ **decisión de diseño** (decisiones 43–46)
 - [ ] `h6` usa la familia columna aunque su región sea periférica.  
   ↳ **decisión de diseño** (decisión 50)
 - [ ] `ca10` usa la familia columna aunque su región sea periférica.  
   ↳ **decisión de diseño** (decisión 50)
 - [ ] Con `h6`, además, cierre `cierreArterial` y casa `alarmaArterial`.  
+  ↳ **decisión de diseño** (decisión 50)
+- [ ] Con `tp8`, además, cierre `cierreRoturaAquiles` y casa `alarmaRoturaAquiles`.  
+  ↳ **decisión de diseño** (decisión 50)
+- [ ] Con `tp9`, además, cierre `cierreRoturaAquiles` y casa `alarmaRoturaAquiles`.  
   ↳ **decisión de diseño** (decisión 50)
 
 ## 3. Escalones de terapia manual
@@ -363,6 +416,34 @@ Regiones periféricas:
   ↳ fuente en el texto (Hengeveld y Banks 2005)
 - [ ] «Tras una cirugía de cadera: el cap. 14 no trata la prótesis; el movimiento lateral sirve para recuperar el recorrido tras una fractura del fémur o de la región acetabular (Hengeveld y Banks 2005, cap. 14, p. 462). Su técnica principal, la flexión-aducción (F/Ad), con compresión o rotación medial añadidas, lleva la cadera a flexión y aducción (pp. 457–460): si el cirujano ha pautado precauciones de luxación, comprobar antes que las respeta. Siempre dentro del protocolo del cirujano.»  
   ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Esguince lateral de tobillo: en la fase aguda, reposo, compresión (vendaje o tobillera) y elevación o muletas; contracciones y movimientos desde unos 3 días, al principio en los rangos libres de resistencia, y después movilización pasiva suave dentro de la resistencia, control muscular y sentido de posición articular (Hengeveld y Banks 2005, cap. 16, cuadro 16.4, pp. 564–565). Si es reciente, movimientos lentos y pequeños, en grupos de unos 5, solo hasta una molestia mínima, y reevaluar a las 24 h; el estiramiento suave, desde el 5.º–6.º día (cap. 8, p. 220). Movimientos accesorios en distintas posiciones del retropié; la flexión dorsal y plantar con compresión de la talocrural, solo si hay un trastorno intraarticular y no antes del comienzo de la remodelación tardía, hacia las 6–8 semanas (cuadro 16.4). La tibioperonea inferior suele afectarse en los traumatismos fuertes y se pasa por alto (p. 541). Si está implicado el nervio peroneo superficial, los síntomas pueden durar más y ser urentes (cuadro 16.4; p. 529).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Lesión de la sindesmosis: la pauta no incluye terapia manual, y mientras duran la descarga y la bota (6 semanas, van Dijk 2016) los escalones no se aplican. La sindesmosis impide que la tibia y el peroné se separen con la carga, y en la flexión dorsal el peroné se desplaza hacia fuera (Hengeveld y Banks 2005, cap. 16, p. 527); la rotación lateral del astrágalo en la mortaja lleva el peroné hacia atrás (pp. 544–545): por la regla general de no usar técnicas firmes con ligamentos debilitados (cap. 8, pp. 224–225), sin técnicas firmes al final de la flexión dorsal ni de la rotación lateral del astrágalo mientras el ligamento cura.»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, van Dijk 2016)
+- [ ] «Tendinopatía del Aquiles: la base es la carga de su pauta, con su propia dosis, y es ejercicio (en casa o en consulta), no un número de sesiones; los escalones solo se refieren a la terapia manual. El cap. 16 trata los signos articulares del retropié (tibioperonea distal y tobillo), moviliza el arco del pie si se puede y la columna lumbar si está relacionada, y más adelante integra el tratamiento neurodinámico (nervios sural y tibial posterior) si lo está; la flexión dorsal y la eversión suelen provocar los síntomas. Cuidado con la rotura completa: prueba de Thompson (Hengeveld y Banks 2005, cap. 16, cuadro 16.5, pp. 565–566).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Porción media del Aquiles: su pauta pide la carga más alta que se tolere, sin fijar un criterio de dolor. Uno estudiado precisamente aquí: durante el ejercicio, dolor de hasta 5/10; después, hasta 5/10 pero desaparecido a la mañana siguiente; y el dolor y la rigidez, sin aumentar de semana en semana. En ese ensayo, seguir corriendo y saltando con este modelo no fue peor que el reposo activo; no prueba que sea mejor (Silbernagel 2007; no incluyó la insercional).»  
+  ↳ fuente en el texto (Silbernagel 2007)
+- [ ] «Tendinopatía insercional: la pauta evita cargar el tendón en flexión dorsal, que lo comprime contra el calcáneo (Jonsson 2008; Pringels 2025). Por lo mismo, sin técnicas firmes al final de la flexión dorsal (inferencia de la pauta; la flexión dorsal suele provocar los síntomas, Hengeveld y Banks 2005, cap. 16, cuadro 16.5, p. 565).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Jonsson 2008, Pringels 2025)
+- [ ] «Tendinopatía del tibial posterior: la base son las plantillas, el estiramiento y el ejercicio de su pauta, con su propia dosis y sin dolor en el tendón (Kulig 2009); los escalones solo se refieren a la terapia manual. La vaina se explora con resistencia en todo el recorrido y palpando: puede aumentar los síntomas y notarse crepitación (Hengeveld y Banks 2005, cap. 16, p. 535). La tenosinovitis del tibial posterior es una de las causas del síndrome del túnel del tarso: explorar también el nervio tibial posterior (p. 525).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Kulig 2009)
+- [ ] «Inestabilidad crónica del tobillo: la terapia manual de la pauta (movilizaciones graduadas y movilización con movimiento, en carga y sin carga, para la flexión dorsal y el equilibrio dinámico) va junto al ejercicio (Martin 2021, A y B); la manipulación que también recoge la guía no está en los escalones, porque la app no propone grado V (Hengeveld y Banks 2005, cap. 8, p. 198). El cap. 16 incluye las inestabilidades recurrentes en el perfil del esguince, con la pérdida del control muscular y del sentido de posición articular como factores (cuadro 16.4, p. 564), y el equilibrio monopodal es una prueba esencial tras un traumatismo (p. 533).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Martin 2021)
+- [ ] «Dolor plantar del talón: la terapia manual articular de la pauta (sobre todo la flexión dorsal talocrural) y de tejidos blandos va con el estiramiento y el resto del núcleo (Koc 2023, A). En el caso clínico del cap. 16, un «espolón» resultó un componente neural (nervio tibial posterior mecanosensible, muy irritable): técnicas articulares locales, accesorios del calcáneo en flexión dorsal y eversión, siempre antes del dolor, y la movilización neurodinámica solo cuando el dolor dominaba menos (Hengeveld y Banks 2005, cap. 16, pp. 570–574). El nervio plantar puede dar síntomas con un espolón (p. 529).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Koc 2023)
+- [ ] «Nervios del tobillo y el pie: los escalones se refieren a la articulación. El cap. 16 relaciona el nervio sural con la tendinopatía del Aquiles, el tibial posterior con el túnel del tarso y el nervio plantar con el dolor del talón (Hengeveld y Banks 2005, cap. 16, p. 529). Pruebas neurodinámicas: elevación de la pierna recta o slump con flexión plantar e inversión (peroneos superficial y profundo), con abducción del retropié y flexión dorsal (tibial posterior) o con aducción del retropié y flexión dorsal (sural) (p. 538, figura 16.11). En el túnel del tarso, la fuerza de los músculos de los nervios plantares y la sensibilidad de la planta (p. 538); puede deberse a una tenosinovitis del tibial posterior, un traumatismo, el sobreuso o un esguince del ligamento medial (p. 525). Con un nervio mecanosensible e irritable, primero técnicas articulares locales antes del dolor, y la movilización neurodinámica cuando el dolor domine menos (caso clínico 16.1, pp. 571–574). Los signos neurológicos se exploran pronto y no se empeoran con pruebas vigorosas (cap. 6, p. 158).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Neuroma de Morton o bursitis intermetatarsiana: los escalones se refieren a la articulación. El cap. 16 relaciona los nervios intermetatarsianos con el arco transverso aplanado (neuralgia de Morton) y los palpa en la planta entre las cabezas del 3.º y el 4.º y del 4.º y el 5.º metatarsianos (Hengeveld y Banks 2005, cap. 16, pp. 529 y 539); los movimientos intermetatarsianos sirven en la metatarsalgia por disfunción de esas articulaciones (p. 563), y en las deformidades del antepié, la movilización con automovilizaciones y la actividad de la musculatura intrínseca (p. 541). Si es una bursitis y no el nervio, la exploración del nervio de cada sesión sobra.»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Artrosis de tobillo o pie: el cap. 16 no trae un perfil de artrosis. Con un trastorno intraarticular, grado III con movimientos amplios hasta el límite (Hengeveld y Banks 2005, cap. 16, p. 541), y la compresión del retropié para los trastornos intraarticulares estables y menores (p. 547). En una articulación con artrosis, grados II o III− también cuando lo que se trata es otra estructura (cap. 8, p. 224).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
+- [ ] «Fractura de estrés de un metatarsiano: la pauta es dejar de correr, modificar la actividad guiándose por el dolor y volver con un programa graduado (Warden 2014). Ninguna fuente leída trata la terapia manual sobre una fractura de estrés que consolida: los escalones no se aplican en el foco. Las técnicas intermetatarsianas sirven sobre todo tras la fase de inmovilización, con el pie rígido (Hengeveld y Banks 2005, cap. 16, pp. 562–563).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Warden 2014)
+- [ ] «Apofisitis del pie en crecimiento (Sever, Iselin): la pauta, por analogía con la de Osgood-Schlatter, es de carga progresiva y una escalera de actividad guiada por el dolor, sin terapia manual (Rathleff 2020). Ninguna fuente leída trata la movilización pasiva del pie con el esqueleto inmaduro (el cap. 16 de Peripheral no lo trata). Los escalones de terapia manual no se aplican.»  
+  ↳ fuente en el texto (Rathleff 2020)
+- [ ] «Tras una cirugía de tobillo o pie: el cap. 16 no trata la cirugía. Tras una inmovilización el pie puede quedar rígido (Hengeveld y Banks 2005, cap. 16, p. 528), y entonces sirven las técnicas intermetatarsianas (pp. 562–563); el sentido de posición articular puede disminuir tras un traumatismo, y el equilibrio monopodal es una prueba esencial (p. 533). Siempre dentro del protocolo del cirujano.»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005)
 - [ ] «Las dos hipótesis se tratan en zonas distintas (columna y articulación periférica): los escalones y las reglas del mes son los de la principal; la cantidad por sesión y la progresión, las de cada una.»  
   ↳ decisión 50 de docs/plan-tratamiento.md
 - [ ] «Dosificado según el síntoma más irritable de la fase 3, no según P1 (a igualdad de irritabilidad, manda P1). La gravedad es la de su NRS.»  
@@ -428,6 +509,12 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Goodman 2018, Lluch 2020, May y Marappa-Ganeshan 2023)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir hoy mismo a urgencias (la cadera duele mucho, hasta no poder apoyar la pierna, con fiebre o malestar general) y, con una prótesis, cuáles piden ir al médico (un dolor nuevo que no cede en reposo y sigue de noche, sobre todo tras una infección), y comprobar que lo ha entendido (Momodu y Savaliya 2023; Goodman 2018, como en el razonamiento de ca_in1 y ca_in3).»  
   ↳ fuente en el texto (Goodman 2018, Momodu y Savaliya 2023)
+- [ ] «Red de seguridad: explicar qué síntomas piden dejar la actividad que lo empeora e ir al médico (un dolor del pie o del tobillo que empieza poco a poco, va a más con la carga o la actividad, no mejora al calentar y molesta por la noche: posible fractura de estrés, que la radiografía tarda 2–3 semanas en mostrar) y comprobar que lo ha entendido (May y Marappa-Ganeshan 2023; Lluch 2020, como en el razonamiento de tp_o1).»  
+  ↳ fuente en el texto (Lluch 2020, May y Marappa-Ganeshan 2023)
+- [ ] «Red de seguridad: explicar qué síntomas exigen ir hoy mismo a urgencias (el tobillo o una articulación del pie hinchada, caliente y muy dolorosa, con fiebre o malestar general) y cuáles, hoy mismo al médico (lo mismo de golpe, aunque no haya fiebre), y comprobar que lo ha entendido (Momodu y Savaliya 2023; Goodman 2018, como en el razonamiento de tp_i1).»  
+  ↳ fuente en el texto (Goodman 2018, Momodu y Savaliya 2023)
+- [ ] «Red de seguridad: explicar qué síntomas piden dejar los ejercicios e ir al médico sin esperar a la próxima sesión (un golpe o una patada de repente detrás del tobillo o de la pantorrilla, a veces con un chasquido, y desde entonces cojear o no poder ponerse de puntillas) y comprobar que lo ha entendido (Lluch 2020; Shamrock 2023, como en el razonamiento de tp_t3; Hengeveld y Banks 2005, cap. 16, cuadro 16.5, p. 565).»  
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Lluch 2020, Shamrock 2023)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (dolor de cabeza o de cuello de golpe y distinto a cualquier otro, visión doble, dificultad para hablar o tragar, inestabilidad al caminar o caídas súbitas) y comprobar que lo ha entendido; los de una disección pueden llegar días después (Rushton 2023, tablas 1–2 y 6, pp. 9–12).»  
   ↳ fuente en el texto (Rushton 2023)
 
@@ -457,6 +544,12 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Serner 2020)
 - [ ] «Dolor inguinal de larga evolución relacionado con el aductor: su pauta son 3 sesiones supervisadas por semana, de unos 90 min y en grupos de 2–4, durante 8–12 semanas, con el módulo I en casa los días intermedios (Hölmich 1999): incluso el plan B queda por debajo de esa pauta.»  
   ↳ fuente en el texto (Hölmich 1999)
+- [ ] «Tendinopatía del tibial posterior: su pauta son 12 semanas de ejercicio en casa, dos veces al día, con una revisión semanal de 30 min durante 10 semanas (Kulig 2009), así que encaja con el plan A; el programa para casa es el que lleva la carga.»  
+  ↳ fuente en el texto (Kulig 2009)
+- [ ] «Inestabilidad crónica del tobillo: el protocolo concreto de su pauta son 12 sesiones supervisadas, 3 por semana durante 4 semanas (McKeon 2008): incluso el plan B queda por debajo de lo estudiado. La guía no fija una dosis (Martin 2021).»  
+  ↳ fuente en el texto (Martin 2021, McKeon 2008)
+- [ ] «Apofisitis del pie en crecimiento: su pauta, por analogía con la de Osgood-Schlatter, usa 4 visitas en 12 semanas, con los padres, y el resto del trabajo es en casa (Rathleff 2020); el plan A ya queda por encima de esas visitas, y el programa para casa es el que lleva la carga.»  
+  ↳ fuente en el texto (Rathleff 2020)
 - [ ] «Si la pauta trae su propio criterio de progresión, ese manda. Si no: al principio lo mínimo que no provoque recaída; reintroducir lo que agravaba cuando baje la irritabilidad; progresar al ritmo de la curación y de los síntomas; reevaluar dentro de la sesión y entre sesiones (Petersen 2021; Zusman 1998).»  
   ↳ fuente en el texto (Petersen 2021, Zusman 1998)
 - [ ] «Terapia manual en una articulación periférica: empezar con un accesorio en posición indolora y apoyada; pasar a movimientos fisiológicos cuando el recorrido activo supere el 60 % del normal (con dolor y rigidez, el 60 % del recorrido rígido disponible) y, hasta el 75 %, quedarse antes del punto donde empieza el dolor; después, entrar en una molestia controlada (un 10–20 % de su intensidad máxima), y movimientos fisiológicos amplios cuando el dolor solo aparezca en el último 40 % del recorrido. Si no está claro si domina el dolor o la rigidez, tratar primero el dolor; con dudas al pasar a fisiológicos, repetir unas sesiones más los accesorios, y si empeora, volver a ellos (Hengeveld y Banks 2005, cap. 8, pp. 192–196 y 200).»  

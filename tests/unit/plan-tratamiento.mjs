@@ -1,7 +1,7 @@
 // Fase 6 «Plan de tratamiento», parte sin IA (lib/plan-tratamiento.js,
 // data/plan-tratamiento.js, plan.js; docs/plan-tratamiento.md). Se ejecuta
 // desde tests/unit.js.
-import { assert, leer, test, state, withState, buildPhysiQPayload, buildContextSummaryText, buildInformeFisioterapiaText, DOSIS_DERIVAR, HYPOTHESES, SYSTEMIC_SCREENING } from './comun.mjs';
+import { assert, leer, test, state, withState, buildPhysiQPayload, buildContextSummaryText, buildInformeFisioterapiaText, DOSIS_DERIVAR, HYPOTHESES, SYSTEMIC_SCREENING, VALID_REGIONS } from './comun.mjs';
 const P = await import('../../lib/plan-tratamiento.js');
 const D = await import('../../data/plan-tratamiento.js');
 const await_posq = await import('../../lib/posquirurgico.js');
@@ -241,8 +241,8 @@ test('plan: cervical — médula con ce3/ce12, arterias con cualquier hipótesis
     assert.ok(P.construirPlan({ ...base, severidad: 9, hipotesis: [hip(id)], elegidas: [id] }).mes.reglas.includes(D.REGLA_RADICULAR_SEVERA), id);
   }
   assert.ok(!D.HIP_EXPLORACION_NEURO.includes('ce2') && D.HIP_NEURO_DESCARTADAS.ce2, 'ce2: control motor, no neurológica');
-  // Sin región, o con una sin entrada, no hay red de seguridad
-  for (const region of [undefined, 'tobillo_pie']) {
+  // Sin región, o con una sin entrada (hoy, ninguna de las siete), no hay red de seguridad
+  for (const region of [undefined, 'region_sin_entrada']) {
     const p = P.construirPlan({ ...base, region, hipotesis: [hip('ce3')], elegidas: ['ce3'] });
     assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre], String(region));
     assert.deepEqual(p.alarmasCasa, []);
@@ -1112,6 +1112,218 @@ test('plan: varios síntomas en cadera — dosifica el más irritable, avisa del
   withState({ region: 'cadera', mecanismo: '', activeHypotheses: ['ca4'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
     severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
     sintomaPrincipal: { ...v(), zonas: ['cadera_lat'] },
+    sintomasSecundarios: [{ ...v(), otraRegion: true, nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.n, 1);
+    assert.ok(!plan.avisos.includes(D.AVISOS.dosificaOtro));
+  });
+  state.planTratamiento = null; state.sintomasSecundarios = [];
+});
+
+const RED_TOBILLO = () => [D.TEXTOS_CASA.alarmaFracturaEstresPie.texto, D.TEXTOS_CASA.alarmaInfeccionTobillo.texto, D.TEXTOS_CASA.alarmaTVP.texto];
+const TP_DERIVAR = ['tp3', 'tp4', 'tp5', 'tp6', 'tp17', 'tp30', 'tp35', 'tp37'];
+const TP_SIN_PAUTA = ['tp7', 'tp10', 'tp11', 'tp12', 'tp13', 'tp15', 'tp16', 'tp18', 'tp19', 'tp20', 'tp22', 'tp23', 'tp24', 'tp25', 'tp27', 'tp28', 'tp29', 'tp31', 'tp32', 'tp34'];
+
+test('plan: tobillo y pie (periférica) — escalones, cantidad, progresión y reglas de Peripheral; con ella están las siete regiones; las demás, igual que antes', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const plan = (region, ids) => P.construirPlan({ region, severidad: 5, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta'), hipotesis: ids.map(hip), elegidas: ids });
+  assert.ok(D.REGIONES_PLAN.includes('tobillo_pie'));
+  assert.deepEqual([...D.REGIONES_PLAN].sort(), [...VALID_REGIONS].sort(), 'las siete regiones tienen plan');
+  assert.equal(P.familiaRegion('tobillo_pie'), 'periferica');
+  const t = plan('tobillo_pie', ['tp1']);
+  assert.equal(t.familia, 'periferica');
+  assert.equal(t.escalones.B, D.ESCALONES_PERIFERICOS[t.niveles.B]);
+  assert.equal(t.escalones.C, D.ESCALONES_PERIFERICOS[4]);
+  assert.deepEqual(t.sesion.cantidad, [D.TEXTOS_SESION.cantidadPeriferica]);
+  assert.deepEqual(t.mes.progresion, [D.PROGRESION_GENERICA, D.PROGRESION_PERIFERICA]);
+  assert.deepEqual(t.mes.reglas, D.REGLAS_MES_PERIFERICAS);
+  for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'tobillo_pie')) {
+    assert.ok(!D.FAMILIA_HIP[id], `${id}: ninguna cambia de familia`);
+    assert.equal(!!D.RED_HIP[id], ['tp8', 'tp9'].includes(id), `${id}: solo tp8 y tp9 traen red por id`);
+  }
+  const deTobillo = Object.entries(D.AVISOS_HIP).filter(([id]) => HYPOTHESES[id]?.region === 'tobillo_pie').flatMap(([, ks]) => ks).map(k => D.AVISOS[k]);
+  for (const [region, id, fam] of [['lumbar', 'lu1', 'columna'], ['cervical', 'ce1', 'columna'], ['hombro', 'h2', 'periferica'], ['codo', 'co1', 'periferica'], ['rodilla', 'ro1', 'periferica'], ['cadera', 'ca1', 'periferica']]) {
+    const p = plan(region, [id]);
+    assert.equal(p.familia, fam, region);
+    assert.ok(!p.avisosHip.some(a => deTobillo.includes(a)), `${region}: sin avisos de tobillo y pie`);
+    const posq = P.construirPlan({ region, severidad: 5, hipotesis: [hip(id)], elegidas: [id], posq: { conProtocolo: true } });
+    assert.ok(!posq.avisosHip.includes(D.AVISOS.posqTobillo), `${region}: sin el aviso posquirúrgico de tobillo y pie`);
+    for (const k of ['alarmaFracturaEstresPie', 'alarmaInfeccionTobillo', 'alarmaRoturaAquiles']) assert.ok(!p.alarmasCasa.includes(D.TEXTOS_CASA[k].texto), `${region}: sin ${k}`);
+  }
+  assert.deepEqual(plan('cadera', ['ca1']).alarmasCasa, [D.TEXTOS_CASA.alarmaFracturaEstres.texto, D.TEXTOS_CASA.alarmaInfeccionCadera.texto, D.TEXTOS_CASA.alarmaTVP.texto], 'cadera mantiene la suya');
+  assert.deepEqual(plan('rodilla', ['ro1']).alarmasCasa, [D.TEXTOS_CASA.alarmaInfeccionRodilla.texto, D.TEXTOS_CASA.alarmaTVP.texto], 'rodilla mantiene la suya');
+  // Ya no hay aviso de piloto: sin región, la fase pide elegirla
+  const ui = leer('plan.js');
+  assert.ok(!/piloto/.test(ui)); assert.match(ui, /elígela en la fase 2/);
+});
+
+test('plan: tobillo y pie — las 8 «Derivar» no se pueden elegir; 20 sin pauta salen «a criterio del fisio»', () => {
+  const ids = Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'tobillo_pie');
+  assert.equal(ids.length, 37);
+  assert.deepEqual(ids.filter(id => HYPOTHESES[id].dosis === DOSIS_DERIVAR).sort(), [...TP_DERIVAR].sort());
+  assert.deepEqual(ids.filter(id => HYPOTHESES[id].dosis === '').sort(), [...TP_SIN_PAUTA].sort());
+  for (const id of TP_DERIVAR) assert.ok(!P.elegible({ id, derivar: true, tratada: false }).ok, id);
+  // Con estado real: una «Derivar» activa no es la hipótesis por defecto
+  withState({ region: 'tobillo_pie', mecanismo: '', activeHypotheses: ['tp3', 'tp1'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    PLAN.planActual();
+    assert.deepEqual(state.planTratamiento.hipotesis, ['tp1']);
+  });
+  state.planTratamiento = null;
+  const p = P.construirPlan({ region: 'tobillo_pie', severidad: 5, hipotesis: [{ id: 'tp7', name: 'tp7', pauta: '', derivar: false, tratada: false }], elegidas: ['tp7'] });
+  assert.ok(p.sesion.intervencion[0].sinPauta);
+});
+
+test('plan: tobillo y pie — avisos por hipótesis del cap. 16 y, con cirugía, prótesis y el propio de tobillo y pie', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const plan = (ids, extra = {}) => P.construirPlan({ region: 'tobillo_pie', severidad: 5, hipotesis: ids.map(hip), elegidas: ids, ...extra });
+  const esperado = {
+    tp1: ['esguinceTobillo'], tp2: ['sindesmosis'], tp8: ['aquiles', 'monitorizacionDolor'], tp9: ['aquiles', 'aquilesInsercional'], tp10: ['aquiles'],
+    tp12: ['nervioTobillo'], tp14: ['tibialPosterior'], tp16: ['nervioTobillo'], tp21: ['inestabilidadTobillo'], tp24: ['artrosisTobillo'],
+    tp26: ['talon'], tp28: ['nervioTobillo'], tp33: ['fracturaEstresMetatarsiano'], tp34: ['morton'], tp36: ['apofisitisPie'],
+  };
+  for (const [id, ks] of Object.entries(esperado)) assert.deepEqual(plan([id]).avisosHip, ks.map(k => D.AVISOS[k]), id);
+  for (const id of ['tp7', 'tp11', 'tp13', 'tp15', 'tp18', 'tp19', 'tp20', 'tp22', 'tp23', 'tp25', 'tp27', 'tp29', 'tp31', 'tp32']) assert.deepEqual(plan([id]).avisosHip, [], `${id}: sin aviso propio`);
+  for (const k of ['esguinceTobillo', 'sindesmosis', 'aquiles', 'aquilesInsercional', 'tibialPosterior', 'inestabilidadTobillo', 'talon', 'nervioTobillo', 'morton', 'artrosisTobillo', 'fracturaEstresMetatarsiano', 'posqTobillo']) assert.match(D.AVISOS[k], /Hengeveld y Banks 2005, cap\. (16|8)/, k);
+  // tp1: cuadro 16.4 y la lesión periarticular reciente del cap. 8
+  assert.match(D.AVISOS.esguinceTobillo, /cuadro 16\.4, pp\. 564–565/); assert.match(D.AVISOS.esguinceTobillo, /cap\. 8, p\. 220/); assert.match(D.AVISOS.esguinceTobillo, /6–8 semanas/);
+  assert.match(HYPOTHESES.tp1.dosis, /Terapia manual dentro del movimiento sin dolor/);
+  // tp2: su pauta no trae terapia manual; descarga y bota
+  assert.ok(!/terapia manual/i.test(HYPOTHESES.tp2.dosis)); assert.match(HYPOTHESES.tp2.dosis, /3 semanas sin carga/); assert.match(D.AVISOS.sindesmosis, /cap\. 8, pp\. 224–225/);
+  // tp8: Silbernagel solo en la porción media (decisión 14)
+  assert.match(D.AVISOS.monitorizacionDolor, /Silbernagel 2007/); assert.ok(!plan(['tp9']).avisosHip.includes(D.AVISOS.monitorizacionDolor));
+  assert.match(HYPOTHESES.tp9.dosis, /sin carga en dorsiflexión/); assert.match(D.AVISOS.aquilesInsercional, /Pringels 2025/);
+  // tp21: la manipulación de la guía no está en los escalones (sin grado V)
+  assert.match(HYPOTHESES.tp21.dosis, /manipulación/); assert.match(D.AVISOS.inestabilidadTobillo, /grado V/);
+  // tp26: su pauta trae terapia manual articular talocrural
+  assert.match(HYPOTHESES.tp26.dosis, /terapia manual articular \(sobre todo la dorsiflexión talocrural\)/); assert.match(D.AVISOS.talon, /pp\. 570–574/);
+  // tp33 y tp36: los escalones no se aplican
+  for (const k of ['fracturaEstresMetatarsiano', 'apofisitisPie']) assert.match(D.AVISOS[k], /escalones (de terapia manual )?no se aplican/, k);
+  assert.match(HYPOTHESES.tp36.dosis, /Rathleff 2020|Osgood-Schlatter/);
+  // Con mecanismo Post-quirúrgico: el de prótesis de las periféricas y, después, el de tobillo y pie
+  const posq = plan(['tp1'], { posq: { conProtocolo: true } }).avisosHip;
+  assert.ok(posq.indexOf(D.AVISOS.protesis) >= 0 && posq.indexOf(D.AVISOS.posqTobillo) > posq.indexOf(D.AVISOS.protesis));
+  assert.ok(!plan(['tp1']).avisosHip.includes(D.AVISOS.posqTobillo));
+  assert.ok(!posq.includes(D.AVISOS.posqRodilla) && !posq.includes(D.AVISOS.posqCadera));
+  assert.deepEqual(D.AVISOS_POSQ_REGION.tobillo_pie, ['posqTobillo']);
+});
+
+test('plan: tobillo y pie — tp12, tp16, tp28 y tp34 (nervio periférico): exploración del nervio cada sesión, sin red neurológica ni regla de días', () => {
+  const hip = id => ({ id, name: id, pauta: '', derivar: false, tratada: false });
+  for (const id of ['tp12', 'tp16', 'tp28', 'tp34']) {
+    assert.ok(D.HIP_NERVIO_PERIFERICO.includes(id) && !D.HIP_EXPLORACION_NEURO.includes(id) && !D.HIP_RADICULARES.includes(id), id);
+    const p = P.construirPlan({ region: 'tobillo_pie', severidad: 9, hipotesis: [hip(id)], elegidas: [id] });
+    assert.ok(p.nervio && !p.neuro, id);
+    assert.ok(p.sesion.reevaluacion.includes(D.TEXTOS_SESION.reevaluacionNervio), id);
+    assert.ok(!p.sesion.reevaluacion.includes(D.TEXTOS_SESION.reevaluacionRadicular), id);
+    assert.ok(!p.mes.reglas.includes(D.REGLA_RADICULAR_SEVERA), `${id}: sin la regla de los días aunque el NRS sea 9`);
+    assert.deepEqual(p.alarmasCasa, RED_TOBILLO(), `${id}: solo la red de siempre`);
+  }
+  assert.match(HYPOTHESES.tp12.name, /Neuropatía/); assert.match(HYPOTHESES.tp34.name, /Neuroma/);
+  assert.match(HYPOTHESES.tp16.name, /Túnel del Tarso/); assert.match(HYPOTHESES.tp28.name, /Atrapamiento Nervioso/);
+});
+
+test('plan: tobillo y pie — red de fractura de estrés, infección y TVP siempre; rotura del Aquiles solo con tp8 y tp9; ni compartimental, ni neuropatía aguda, ni hematológicas, ni las demás posquirúrgicas', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const p = P.construirPlan({ region: 'tobillo_pie', severidad: 5, hipotesis: [hip('tp1')], elegidas: ['tp1'], posq: { conProtocolo: true } });
+  assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre, D.TEXTOS_SESION.cierreFracturaEstresPie, D.TEXTOS_SESION.cierreInfeccionTobillo, D.TEXTOS_SESION.cierreTVP]);
+  const t = P.textoDomiciliario(p, {}, { ejercicios: 'X', parar: 'Y' });
+  assert.ok(t.trimEnd().endsWith(RED_TOBILLO().join('\n\n')));
+  assert.ok(t.includes(D.TEXTOS_CASA.cirujano.texto));
+  for (const frag of ['compartimental', 'pálido', 'pulso', 'piernas', 'quimioterapia', 'hemofilia', 'herida', 'Aquiles', 'rodilla', 'cadera', 'codo']) assert.ok(!t.includes(frag), frag);
+  // tp8 y tp9: además, la rotura del Aquiles (por id)
+  for (const id of ['tp8', 'tp9']) {
+    const a = P.construirPlan({ region: 'tobillo_pie', severidad: 5, hipotesis: [hip(id)], elegidas: [id] });
+    assert.deepEqual(a.alarmasCasa, [...RED_TOBILLO(), D.TEXTOS_CASA.alarmaRoturaAquiles.texto], id);
+    assert.equal(a.sesion.cierre.at(-1), D.TEXTOS_SESION.cierreRoturaAquiles, id);
+  }
+  const dos = P.construirPlan({ region: 'tobillo_pie', severidad: 5, hipotesis: [hip('tp8'), hip('tp9')], elegidas: ['tp8', 'tp9'] });
+  assert.equal(dos.alarmasCasa.filter(x => x === D.TEXTOS_CASA.alarmaRoturaAquiles.texto).length, 1, 'sin repetir');
+  assert.ok(!P.construirPlan({ region: 'tobillo_pie', severidad: 5, hipotesis: [hip('tp10')], elegidas: ['tp10'] }).alarmasCasa.includes(D.TEXTOS_CASA.alarmaRoturaAquiles.texto));
+  // Los síntomas son los de las preguntas tp_o1, tp_i1, tp_v2, pq_tep y tp_t3
+  const qs = Object.values(SYSTEMIC_SCREENING.tobillo_pie.sistemas).flatMap(s => s.preguntas);
+  const q = id => qs.find(x => x.id === id);
+  for (const id of ['tp_i1', 'tp_v2', 'pq_tep', 'tp_t1', 'tp_n1', 'hem_5', 'hem_6', 'pq_compart']) assert.ok(q(id)?.urgencia, `${id} es urgente`);
+  assert.ok(!q('tp_o1').urgencia && !q('tp_t3').urgencia, 'fractura de estrés y rotura del Aquiles: derivar, no urgencia');
+  assert.match(q('tp_o1').text, /no mejora al calentar y le molesta por la noche/);
+  for (const frag of ['poco a poco', 'apoyar', 'actividad', 'calentar', 'noche', 'deja la actividad', 've al médico']) assert.ok(D.TEXTOS_CASA.alarmaFracturaEstresPie.texto.includes(frag), frag);
+  assert.ok(!D.TEXTOS_CASA.alarmaFracturaEstresPie.texto.includes('hoy mismo'), 'tp_o1 deriva, no es urgencia');
+  assert.match(q('tp_i1').text, /fiebre alta y malestar general/);
+  for (const frag of ['hinchada, caliente y muy dolorosa', 'fiebre', 'mal en general', 'urgencias', 'Aunque no tengas fiebre']) assert.ok(D.TEXTOS_CASA.alarmaInfeccionTobillo.texto.includes(frag), frag);
+  assert.match(q('tp_t3').razonamiento.detalle, /tendinopatía previa del Aquiles/);
+  for (const frag of ['golpe o una patada', 'chasquido', 'puntillas', 'deja los ejercicios']) assert.ok(D.TEXTOS_CASA.alarmaRoturaAquiles.texto.includes(frag), frag);
+  assert.match(D.TEXTOS_CASA.alarmaFracturaEstresPie.fuente, /^May y Marappa-Ganeshan 2023/);
+  assert.match(D.TEXTOS_CASA.alarmaInfeccionTobillo.fuente, /^Momodu y Savaliya 2023/);
+  assert.match(D.TEXTOS_CASA.alarmaRoturaAquiles.fuente, /cuadro 16\.5/);
+  // Sin cirugía, la misma red
+  assert.deepEqual(P.construirPlan({ region: 'tobillo_pie', severidad: 5, hipotesis: [hip('tp1')], elegidas: ['tp1'] }).alarmasCasa, RED_TOBILLO());
+});
+
+test('plan: tobillo y pie — frecuencia de la pauta (tp14 A, tp21 B, tp36 A, con nota); tp8 y tp9 son ejercicio; ninguna trae volumen propio de terapia manual', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const esperado = { tp14: 'A', tp21: 'B', tp36: 'A' };
+  for (const [id, f] of Object.entries(esperado)) {
+    assert.equal(P.frecuenciaPorDefecto(id), f, id);
+    assert.deepEqual(P.construirPlan({ region: 'tobillo_pie', severidad: 5, hipotesis: [hip(id)], elegidas: [id] }).mes.notasPauta, [D.FRECUENCIA_PAUTA[id].nota], id);
+  }
+  assert.match(HYPOTHESES.tp14.dosis, /revisión semanal de 30 min durante 10 semanas/);
+  assert.match(HYPOTHESES.tp21.dosis, /12 sesiones supervisadas de unos 20 min, 3 por semana durante 4 semanas/);
+  assert.match(HYPOTHESES.tp8.dosis, /al menos 3 veces por semana/); assert.match(HYPOTHESES.tp9.dosis, /dos veces al día, 7 días por semana/);
+  for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'tobillo_pie')) {
+    assert.ok(!D.VOLUMEN_PAUTA[id], id);
+    if (!esperado[id]) assert.ok(!D.FRECUENCIA_PAUTA[id], id);
+  }
+});
+
+test('plan: con estado de tobillo y pie real, la pauta de tp1, su aviso, la red de tobillo y pie y, con cirugía, sus avisos; tp21 propone el plan B', () => {
+  withState({ region: 'tobillo_pie', mecanismo: '', activeHypotheses: ['tp1'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    const { plan } = PLAN.planActual();
+    assert.deepEqual(state.planTratamiento.hipotesis, ['tp1']);
+    assert.equal(state.planTratamiento.frecuencia, 'A');
+    assert.equal(plan.sesion.intervencion[0].pauta, HYPOTHESES.tp1.dosis);
+    assert.equal(plan.familia, 'periferica');
+    assert.deepEqual(plan.alarmasCasa, RED_TOBILLO());
+    assert.ok(plan.avisosHip.includes(D.AVISOS.esguinceTobillo));
+  });
+  state.planTratamiento = null;
+  withState({ region: 'tobillo_pie', mecanismo: '', activeHypotheses: ['tp21'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    PLAN.planActual();
+    assert.equal(state.planTratamiento.frecuencia, 'B', 'tp21 por defecto propone el plan B');
+  });
+  state.planTratamiento = null;
+  withState({ region: 'tobillo_pie', mecanismo: 'Post-quirúrgico', cirugia: { intervencion: 'Reparación del ligamento peroneoastragalino anterior', fecha: '', semanasAprox: 8, protocolo: 'Escrito', restricciones: 'Sin inversión forzada 12 semanas', complicaciones: ['Ninguna'], complicacionOtra: '' },
+    activeHypotheses: ['tp21'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    const { plan } = PLAN.planActual();
+    assert.ok(plan.avisosHip.includes(D.AVISOS.protesis) && plan.avisosHip.includes(D.AVISOS.posqTobillo));
+    assert.ok(!plan.avisosHip.includes(D.AVISOS.posqCadera));
+  });
+  state.planTratamiento = null;
+});
+
+test('plan: varios síntomas en tobillo y pie — dosifica el más irritable, avisa del independiente y mantiene lo propio de tobillo y pie', () => {
+  const v = () => ({ zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' });
+  withState({ region: 'tobillo_pie', mecanismo: '', activeHypotheses: ['tp8'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['aquiles'] },
+    sintomasSecundarios: [{ ...v(), zonas: ['talon'], nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.nombre, 'P2 · Talón o planta');
+    assert.equal(plan.irritabilidad, 'alta');
+    assert.equal(plan.gravedadNRS, 'maxima', 'la gravedad sale del NRS de P2');
+    assert.equal(plan.niveles.B, 1);
+    assert.ok(plan.avisos.includes(D.AVISOS.dosificaOtro));
+    assert.ok(plan.avisosHip.includes(`${D.AVISOS.independiente} (P2 · Talón o planta)`));
+    assert.ok(!plan.mes.reglas.includes(D.REGLA_RADICULAR_SEVERA));
+    // Lo propio de tobillo y pie sigue
+    assert.equal(plan.familia, 'periferica');
+    assert.equal(plan.escalones.B, D.ESCALONES_PERIFERICOS[1]);
+    assert.ok(plan.avisosHip.includes(D.AVISOS.aquiles) && plan.avisosHip.includes(D.AVISOS.monitorizacionDolor));
+    assert.deepEqual(plan.alarmasCasa, [...RED_TOBILLO(), D.TEXTOS_CASA.alarmaRoturaAquiles.texto]);
+    assert.match(P.textoPlanSesion(plan, {}), /Irritabilidad: Alta \(según P2 · Talón o planta, el síntoma más irritable\)/);
+  });
+  // Un secundario de otra región («no valorada hoy») no dosifica
+  withState({ region: 'tobillo_pie', mecanismo: '', activeHypotheses: ['tp8'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['aquiles'] },
     sintomasSecundarios: [{ ...v(), otraRegion: true, nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
     const { plan } = PLAN.planActual();
     assert.equal(plan.dosifica.n, 1);

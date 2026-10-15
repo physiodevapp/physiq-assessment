@@ -3176,14 +3176,110 @@ async function checkFase6Cadera(browser, errors) {
   return r;
 }
 
+// Fase 6 en tobillo y pie (L3, quinta y última periférica; decisiones 90–98):
+// por la interfaz real hasta la 6 con la primera opción de cada paso; después,
+// las hipótesis con aviso elegidas a mano.
+async function checkFase6Tobillo(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 6 tobillo): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 tobillo): ${msg.text()}`); });
+  await page.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json', body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo' }, demoOnly: false }),
+  }));
+  await abrirApp(page);
+  const r = {};
+  await walkRegion(page, 'tobillo_pie');
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  const { D } = await page.evaluate(async () => ({ D: JSON.parse(JSON.stringify(await import('./data/plan-tratamiento.js'))) }));
+  const RED = [D.TEXTOS_CASA.alarmaFracturaEstresPie, D.TEXTOS_CASA.alarmaInfeccionTobillo, D.TEXTOS_CASA.alarmaTVP].map(a => a.texto);
+  // Por el camino de la primera opción: sin aviso de piloto, y las «Derivar» activas no se eligen
+  r.plan = await page.evaluate(() => state.currentPhase === 6 && !document.querySelector('#planContenido .alert-info')
+    && document.querySelectorAll('#planContenido .card').length === 5);
+  // El camino activa primero tp37 (fractura de tobillo, «Derivar»), que no se
+  // puede elegir: tp1 por defecto, con el plan A
+  r.porDefecto = await page.evaluate(async () => {
+    const { DOSIS_DERIVAR } = await import('./data/comun.js');
+    const { HYPOTHESES } = await import('./data.js');
+    return state.activeHypotheses[0] === 'tp37' && HYPOTHESES.tp37.dosis === DOSIS_DERIVAR
+      && state.planTratamiento.hipotesis.join() === 'tp1' && state.planTratamiento.frecuencia === 'A';
+  });
+  const casa = async () => {
+    await page.fill('#planNotasCasa', 'Equilibrio monopodal');
+    await page.fill('#planParar', 'Si el dolor pasa de 5/10 o sigue a la mañana siguiente');
+    await page.click('#btnCompartirPlan');
+    await page.click('#compartirOpciones .compartir-op >> nth=2');
+    await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+    return page.evaluate(() => navigator.clipboard.readText());
+  };
+  const elegir = ids => page.evaluate(ids => {
+    for (const id of ids) if (!state.activeHypotheses.includes(id)) state.activeHypotheses.push(id);
+    state.planTratamiento.hipotesis = ids; goToPhase(5); goToPhase(6);
+  }, ids).then(() => page.waitForSelector('#planContenido .card')).then(() => page.textContent('#planContenido'));
+  // tp1: escalones, cantidad, progresión y reglas de Peripheral; su aviso; la red de tobillo y pie
+  const t1 = await elegir(['tp1']);
+  r.tp1 = t1.includes(D.AVISOS.esguinceTobillo)
+    && t1.includes(D.TEXTOS_SESION.cantidadPeriferica) && !t1.includes(D.TEXTOS_SESION.cantidad)
+    && t1.includes(D.PROGRESION_PERIFERICA) && t1.includes(D.REGLAS_MES_PERIFERICAS[0]) && !t1.includes(D.REGLAS_MES[2])
+    && Object.values(D.ESCALONES_PERIFERICOS).some(e => t1.includes(e.texto)) && !Object.values(D.ESCALONES).some(e => t1.includes(e.texto))
+    && t1.includes(D.TEXTOS_SESION.cierreFracturaEstresPie) && t1.includes(D.TEXTOS_SESION.cierreInfeccionTobillo) && t1.includes(D.TEXTOS_SESION.cierreTVP)
+    && !t1.includes(D.TEXTOS_SESION.cierreRoturaAquiles) && !t1.includes(D.TEXTOS_SESION.cierreFracturaEstres) && !t1.includes(D.TEXTOS_SESION.cierreInfeccionRodilla)
+    && !t1.includes(D.TEXTOS_SESION.cierreCardiaco) && !t1.includes(D.TEXTOS_SESION.cierreArterial) && !t1.includes(D.TEXTOS_SESION.cierreNeuro);
+  const c1 = await casa();
+  r.casaTp1 = c1.trimEnd().endsWith(RED.join('\n\n'))
+    && ![D.TEXTOS_CASA.alarmaRoturaAquiles, D.TEXTOS_CASA.alarmaFracturaEstres, D.TEXTOS_CASA.alarmaInfeccionRodilla, D.TEXTOS_CASA.alarmaInfeccionCadera, D.TEXTOS_CASA.alarmaCardiaca, D.TEXTOS_CASA.alarmaArterial, D.TEXTOS_CASA.alarmaNeuro].some(a => c1.includes(a.texto));
+  // Varios síntomas (Fase N, paso 4) en tobillo y pie
+  await page.evaluate(() => {
+    state.sintomaPrincipal.zonas = ['tobillo_lat'];
+    state.sintomasSecundarios = [{ zonas: ['talon'], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }];
+    planElegir('sesion', 'primera');
+  });
+  await page.waitForSelector('#planDosifica');
+  r.dosificaP2 = await page.evaluate(() => {
+    const t = document.getElementById('planContenido').textContent;
+    return document.getElementById('planDosifica').textContent.includes('P2 · Talón o planta, el síntoma más irritable')
+      && t.includes('NRS 9/10') && t.includes('Un síntoma va independiente de P1') && t.includes('(P2 · Talón o planta)');
+  });
+  await page.evaluate(() => { state.sintomasSecundarios = []; state.sintomaPrincipal.zonas = []; planElegir('sesion', 'primera'); });
+  await page.waitForFunction(() => !document.getElementById('planDosifica'));
+  // tp8: los dos avisos y la rotura del Aquiles al final del programa para casa
+  const t8 = await elegir(['tp8']);
+  r.tp8 = t8.includes(D.AVISOS.aquiles) && t8.includes(D.AVISOS.monitorizacionDolor) && t8.includes(D.TEXTOS_SESION.cierreRoturaAquiles);
+  r.casaTp8 = (await casa()).trimEnd().endsWith([...RED, D.TEXTOS_CASA.alarmaRoturaAquiles.texto].join('\n\n'));
+  const t9 = await elegir(['tp9']);
+  r.tp9 = t9.includes(D.AVISOS.aquilesInsercional) && !t9.includes(D.AVISOS.monitorizacionDolor) && t9.includes(D.TEXTOS_SESION.cierreRoturaAquiles);
+  r.tp2 = (await elegir(['tp2'])).includes(D.AVISOS.sindesmosis);
+  for (const [id, k] of [['tp14', 'tibialPosterior'], ['tp21', 'inestabilidadTobillo'], ['tp36', 'apofisitisPie']]) {
+    const t = await elegir([id]);
+    r[id] = t.includes(D.AVISOS[k]) && t.includes(D.FRECUENCIA_PAUTA[id].nota);
+  }
+  r.tp26 = (await elegir(['tp26'])).includes(D.AVISOS.talon);
+  r.tp33 = (await elegir(['tp33'])).includes(D.AVISOS.fracturaEstresMetatarsiano);
+  for (const [id, k] of [['tp16', 'nervioTobillo'], ['tp34', 'morton']]) {
+    const t = await elegir([id]);
+    r[id] = t.includes(D.AVISOS[k]) && t.includes(D.TEXTOS_SESION.reevaluacionNervio) && !t.includes(D.TEXTOS_SESION.reevaluacionRadicular)
+      && !t.includes(D.TEXTOS_SESION.cierreNeuro) && !t.includes(D.TEXTOS_SESION.cierreMedula) && t.includes('Pauta a criterio del fisioterapeuta');
+  }
+  // Con mecanismo Post-quirúrgico, el aviso condicional de prótesis y el de tobillo y pie
+  await page.evaluate(() => { state.mecanismo = 'Post-quirúrgico'; });
+  const tq = await elegir(['tp21']);
+  r.posq = tq.includes(D.AVISOS.protesis) && tq.includes(D.AVISOS.posqTobillo) && !tq.includes(D.AVISOS.posqCadera) && !tq.includes(D.AVISOS.posqRodilla);
+  r.ok = Object.values(r).every(v => v === true);
+  await context.close();
+  return r;
+}
+
 // Fase 6 «Plan de tratamiento» (opcional; docs/plan-tratamiento.md): lumbar
 // por la interfaz real hasta la 5 y de ahí a la 6 con «Plan de tratamiento →».
 // Escritorio: paso 6 en la barra, hipótesis por defecto, gravedad e
 // irritabilidad marcadas y editables (con irritabilidad alta no hay C), menú
 // de compartir con los tres documentos (el de casa sin fuentes), vuelta a la
 // 5 con los resultados, y la sesión restaurada en la 6 tras recargar. Una
-// urgencia de la fase 2 bloquea el plan; otra región muestra el aviso de
-// piloto. 320 px: sin desbordar, tarjetas a todo el ancho, barra y hoja de
+// urgencia de la fase 2 bloquea el plan; sin región, pide elegirla en la
+// fase 2. 320 px: sin desbordar, tarjetas a todo el ancho, barra y hoja de
 // fases con la 6.
 async function checkFase6(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
@@ -3299,9 +3395,9 @@ async function checkFase6(browser, errors) {
   await page.waitForSelector('#planContenido .plan-enlace');
   await page.click('#planContenido .plan-enlace');
   r.enlaceNRS = await page.waitForFunction(() => state.currentPhase === 3, null, { timeout: 4000 }).then(() => true).catch(() => false);
-  // Otra región: aviso de piloto
-  r.piloto = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = 'tobillo_pie'; goToPhase(5); goToPhase(6); return true; })
-    && await page.waitForFunction(() => document.querySelector('#planContenido .alert-info')?.textContent.includes('piloto'), null, { timeout: 4000 }).then(() => true).catch(() => false);
+  // Sin región (las siete tienen plan): pide elegirla en la fase 2
+  r.sinRegion = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = ''; goToPhase(6); return true; })
+    && await page.waitForFunction(() => document.querySelector('#planContenido .alert-info')?.textContent.includes('elígela en la fase 2'), null, { timeout: 4000 }).then(() => true).catch(() => false);
   await page.evaluate(() => { state.region = 'lumbar'; goToPhase(5); goToPhase(6); });
   await page.waitForSelector('#planContenido .card');
   // 320 px: sin desbordar, tarjetas a todo el ancho, barra y hoja de fases
@@ -3699,7 +3795,7 @@ const SECCIONES = [
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; otra región → piloto; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; gravedad e irritabilidad editables (con irritabilidad alta no hay C y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
@@ -3730,6 +3826,12 @@ const SECCIONES = [
   { id: 'fase6-cadera', titulo: 'Fase 6: plan de tratamiento en cadera (L3, cuarta periférica):', run: async ({ browser, errors }) => {
     const r = await checkFase6Cadera(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} cadera por la interfaz real hasta la 6 (por el camino de la primera opción, ca10 por defecto, con la familia columna y el plan A); con ca1, escalones, cantidad, progresión y reglas de Peripheral, su aviso de artrosis (ni el glenohumeral ni el de rodilla), su nota de frecuencia, y el programa para casa termina con la red de fractura de estrés, la de infección y la de TVP (ni la de rodilla, ni la de codo, ni cardiaca, ni arterial, ni neurológica); con varios síntomas dosifica el más irritable (P2 · Muslo anterior) y avisa del independiente; con ca2, ca12 y ca15, sus avisos; con ca4, ca11 y ca16, sus avisos y su nota de frecuencia; con ca7 y ca14, exploración del nervio sin red neurológica y pauta a criterio del fisio; con cirugía, el de prótesis y el de cadera${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'fase6-tobillo', titulo: 'Fase 6: plan de tratamiento en tobillo y pie (L3, quinta periférica):', run: async ({ browser, errors }) => {
+    const r = await checkFase6Tobillo(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} tobillo y pie por la interfaz real hasta la 6 (por el camino de la primera opción, tp37, «Derivar», no elegible, y tp1 por defecto con el plan A); con tp1, escalones, cantidad, progresión y reglas de Peripheral, su aviso de esguince, y el programa para casa termina con la red de fractura de estrés, la de infección y la de TVP (ni la rotura del Aquiles, ni la de cadera, ni la de rodilla, ni cardiaca, ni arterial, ni neurológica); con varios síntomas dosifica el más irritable (P2 · Talón o planta) y avisa del independiente; con tp8 y tp9, sus avisos y la rotura del Aquiles al final; con tp2, tp26 y tp33, sus avisos; con tp14, tp21 y tp36, sus avisos y su nota de frecuencia; con tp16 y tp34, exploración del nervio sin red neurológica y pauta a criterio del fisio; con cirugía, el de prótesis y el de tobillo y pie${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
