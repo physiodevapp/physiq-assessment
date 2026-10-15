@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **485** referencias de literatura, con **2259** usos.
+- **485** referencias de literatura, con **2275** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **376** de 485 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -153,8 +153,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pedret 2026](#pedret-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
-| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 22 | **sin revisar** |
-| [Maitland 2005](#maitland-2005) | plan de tratamiento | 27 | **sin revisar** |
+| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 30 | **sin revisar** |
+| [Maitland 2005](#maitland-2005) | plan de tratamiento | 28 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 1 | **sin revisar** |
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 9 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
@@ -264,10 +264,10 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido | 6 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
 | [Prill 2025](#prill-2025) | pauta · tiempos de tejido · texto | 6 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
 | [Pringels 2025](#pringels-2025) | pauta · tiempos de tejido · texto | 3 | 2026-10 · Añadida (leída entera en PMC) en la pauta de tp9: ensayo aleatorizado de 42 deportistas con tendinopatía insercional; limitar la dorsiflexión mejoró el VISA-A 12,9 puntos más (IC 95 % 6,2–19,6) a las 12 semanas y 10,4 (3,7–17,1) a las 24. |
-| [Quzli 2025](#quzli-2025) | pauta · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
+| [Quzli 2025](#quzli-2025) | pauta · razonamiento fase 4 · plan de tratamiento | 3 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
 | [Rich 2025](#rich-2025) | pauta · test 4b sin puntuar · tiempos de tejido · texto | 4 | 2026-10 · Sin cambios: es el ensayo más reciente sobre tendinopatía proximal de isquiotibiales (PubMed, revisiones y ensayos desde 2024). |
 | [Salamh 2025](#salamh-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento | 5 | 2026-10 · Sin cambios: consenso de 2025; búsqueda en PubMed (2026-10) sin guía ni consenso posterior sobre el hombro congelado. |
-| [Wistow 2025](#wistow-2025) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). Se precisa que las 2–7 sesiones por semana durante 3–6 semanas son de los ensayos de hold-relax. Es posterior a la revisión de Piacenza 2024 (Musculoskelet Sci Pract), que no da una pauta mejor. |
+| [Wistow 2025](#wistow-2025) | pauta · plan de tratamiento | 2 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). Se precisa que las 2–7 sesiones por semana durante 3–6 semanas son de los ensayos de hold-relax. Es posterior a la revisión de Piacenza 2024 (Musculoskelet Sci Pract), que no da una pauta mejor. |
 | [Alentorn-Geli 2026](#alentorn-geli-2026) | pauta | 2 | 2026-10 · Sin cambios: consenso de 2026, el más reciente sobre la inestabilidad anterior traumática (búsqueda en PubMed, 2026-10). |
 | [Kemp 2026](#kemp-2026) | pauta | 1 | 2026-10 · Ensayo más reciente sobre fisioterapia en el SIFA (PubMed, 2026-10); se suma a la pauta de ca2. |
 | [See 2026](#see-2026) | pauta · tiempos de tejido | 2 | 2026-10 · Sin cambios: PDF del usuario releído (2026-10); 5 estudios y 143 pacientes, certeza baja a muy baja, pautas de la tabla 2 coinciden. Es la revisión más reciente sobre el excéntrico en la epicondilalgia medial (PubMed, 2026-10). |
@@ -388,7 +388,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido | 8 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McClary y Massey 2023](#mcclary-y-massey-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McMordie 2023](#mcmordie-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) | razonamiento fase 2 | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) | razonamiento fase 2 · plan de tratamiento | 8 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Mountjoy 2023](#mountjoy-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: es el consenso vigente del COI (el anterior es de 2018). |
 | [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 24 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Pak y Kim 2023](#pak-y-kim-2023) | razonamiento fase 2 · tiempos de tejido | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -454,7 +454,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Lleva 2025](#lleva-2025) | razonamiento fase 2 · razonamiento fase 4 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Margetis y Gillis 2025](#margetis-y-gillis-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de marzo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Nori y Stretanski 2025](#nori-y-stretanski-2025) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Pangia 2025](#pangia-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Pangia 2025](#pangia-2025) | razonamiento fase 2 · plan de tratamiento | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Patel 2025](#patel-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de mayo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shams 2025](#shams-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shaw 2025](#shaw-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -4211,6 +4211,13 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `AVISOS.inestabilidad` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.artrosis` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.protesis` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.epicondilalgiaLateral` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.epicondilalgiaMedial` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.rigidezCodo` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.inestabilidadCodo` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.radiohumeral` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.nervioCodo` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.esqueletoInmaduro` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.1.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.2.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.3.citas.0` | 6 · plan de tratamiento | 1 |
@@ -4226,6 +4233,7 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.primeraSesion.fuente` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.anotarAumento.fuente` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionSiguiente` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionNervio` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.educacionPrimera` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cantidadPeriferica` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierre` | 6 · plan de tratamiento | 1 |
@@ -6528,9 +6536,11 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 432. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 252–253, 263 y 268–273 (tabla 6)
 433. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 274–282 (tablas 7–9)
 434. Lluch 2020, cap. 4.3 (Lam, Mayes, Rio, Delahunt y Cook), pp. 260–264 (tabla 4) y 284–285
+435. Lluch 2020
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.esqueletoInmaduro` | 6 · plan de tratamiento | 435 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Abducción pasiva glenohumeral <80°» | 4b · cita bajo el test | 1 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Hombro | h1 · Capsulitis Adhesiva | Test «Test de Rotación Externa (brazo neutro al lado, codo 90°)» | 4b · cita bajo el test | 3 |
@@ -7465,6 +7475,7 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionBase` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionSiguiente` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionRadicular` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionNervio` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.educacionPrimera` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.primeraSesion` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cantidad` | 6 · plan de tratamiento | 1 |
@@ -8113,9 +8124,12 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 Citada como:
 
 1. Momodu y Savaliya 2023 — Momodu y Savaliya, «Septic Arthritis», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023.
+2. Momodu y Savaliya 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaInfeccion.fuente` | 6 · plan de tratamiento | 2 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccion` | 6 · plan de tratamiento | 2 |
 | Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 1 |
 | Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 | Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
@@ -8916,9 +8930,12 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 Citada como:
 
 1. Pangia 2025 — Pangia, Taqi y Rizvi, «Olecranon Bursitis», StatPearls [Internet], NCBI Bookshelf, última actualización 13 de diciembre de 2025.
+2. Pangia 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaInfeccion.fuente` | 6 · plan de tratamiento | 2 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccion` | 6 · plan de tratamiento | 2 |
 | Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 | Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 
@@ -9425,9 +9442,11 @@ Citada como:
 
 1. Rinkel 2013, Clin J Pain 29(12):1087–1096 (revisión sistemática) · Quzli 2025, Cureus 17(11):e96151 (revisión narrativa, sin protocolo: opinión de los autores)
 2. Quzli 2025 (Cureus 17(11):e96151; revisión narrativa sin protocolo; leídas en Europe PMC la epidemiología, la presentación clínica y la exploración)
+3. Quzli 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.inestabilidadCodo` | 6 · plan de tratamiento | 3 |
 | Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
@@ -11675,9 +11694,11 @@ Nota: Revisión sistemática (9 estudios, 312 participantes; sin metaanálisis);
 Citada como:
 
 1. Wistow 2025, JSES Int 9(6):2146–2155 (revisión sistemática, 9 estudios y 312 participantes, sin metaanálisis) · Siemensma 2023, EFORT Open Rev 8(5):351–360 (revisión narrativa)
+2. Wistow 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `FRECUENCIA_PAUTA.co3.nota` | 6 · plan de tratamiento | 2 |
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Wong 2014

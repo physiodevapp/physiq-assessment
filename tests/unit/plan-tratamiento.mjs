@@ -127,7 +127,8 @@ test('plan: regla de los 7–10 días solo con radicular y NRS registrado de 8 o
 });
 
 test('plan: en las regiones del plan, toda hipótesis de nombre neurológico está en las listas por id o descartada con motivo', () => {
-  const listadas = new Set([...D.HIP_EXPLORACION_NEURO, ...Object.keys(D.HIP_NEURO_DESCARTADAS)]);
+  const listadas = new Set([...D.HIP_EXPLORACION_NEURO, ...D.HIP_NERVIO_PERIFERICO, ...Object.keys(D.HIP_NEURO_DESCARTADAS)]);
+  for (const id of D.HIP_NERVIO_PERIFERICO) assert.ok(!D.HIP_EXPLORACION_NEURO.includes(id) && !D.HIP_RADICULARES.includes(id), `${id}: un nervio periférico no es radicular`);
   for (const id of D.HIP_RADICULARES) assert.ok(D.HIP_EXPLORACION_NEURO.includes(id), `${id}: radicular sin exploración neurológica`);
   for (const id of listadas) assert.ok(HYPOTHESES[id], `${id} no existe`);
   for (const h of Object.values(HYPOTHESES)) {
@@ -241,7 +242,7 @@ test('plan: cervical — médula con ce3/ce12, arterias con cualquier hipótesis
   }
   assert.ok(!D.HIP_EXPLORACION_NEURO.includes('ce2') && D.HIP_NEURO_DESCARTADAS.ce2, 'ce2: control motor, no neurológica');
   // Sin región, o con una sin entrada, no hay red de seguridad
-  for (const region of [undefined, 'codo']) {
+  for (const region of [undefined, 'cadera']) {
     const p = P.construirPlan({ ...base, region, hipotesis: [hip('ce3')], elegidas: ['ce3'] });
     assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre], String(region));
     assert.deepEqual(p.alarmasCasa, []);
@@ -588,6 +589,149 @@ test('plan: varios síntomas en hombro — dosifica el más irritable, avisa del
   withState({ region: 'hombro', activeHypotheses: ['h2'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
     severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
     sintomaPrincipal: { ...v(), zonas: ['hombro_lat'] },
+    sintomasSecundarios: [{ ...v(), otraRegion: true, nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.n, 1);
+    assert.ok(!plan.avisos.includes(D.AVISOS.dosificaOtro));
+  });
+  state.planTratamiento = null; state.sintomasSecundarios = [];
+});
+
+test('plan: codo (periférica) — escalones, cantidad, progresión y reglas de Peripheral; lumbar, cervical y hombro, igual que antes', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const plan = (region, ids) => P.construirPlan({ region, severidad: 5, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta'), hipotesis: ids.map(hip), elegidas: ids });
+  assert.ok(D.REGIONES_PLAN.includes('codo'));
+  assert.equal(P.familiaRegion('codo'), 'periferica');
+  const c = plan('codo', ['co1']);
+  assert.equal(c.familia, 'periferica');
+  assert.equal(c.escalones.B, D.ESCALONES_PERIFERICOS[c.niveles.B]);
+  assert.equal(c.escalones.C, D.ESCALONES_PERIFERICOS[4]);
+  assert.deepEqual(c.sesion.cantidad, [D.TEXTOS_SESION.cantidadPeriferica]);
+  assert.deepEqual(c.mes.progresion, [D.PROGRESION_GENERICA, D.PROGRESION_PERIFERICA]);
+  assert.deepEqual(c.mes.reglas, D.REGLAS_MES_PERIFERICAS);
+  for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'codo')) assert.ok(!D.FAMILIA_HIP[id] && !D.RED_HIP[id], `${id}: codo no cambia de familia ni trae red de otra región`);
+  for (const [region, id, fam] of [['lumbar', 'lu1', 'columna'], ['cervical', 'ce1', 'columna'], ['hombro', 'h2', 'periferica']]) {
+    const p = plan(region, [id]);
+    assert.equal(p.familia, fam, region);
+    assert.equal(p.escalones.B, P.tablaEscalones(fam)[p.niveles.B], region);
+    assert.ok(!p.avisosHip.some(a => Object.values(D.AVISOS_HIP).flat().filter(k => /Codo|epicondil|radiohumeral|esqueleto/i.test(k)).map(k => D.AVISOS[k]).includes(a)), `${region}: sin avisos de codo`);
+  }
+  assert.deepEqual(plan('hombro', ['h2']).alarmasCasa, [D.TEXTOS_CASA.alarmaCardiaca.texto], 'hombro mantiene solo la cardiaca');
+});
+
+test('plan: codo — avisos por hipótesis del cap. 12 (co1, co2, co3, co4/co5, co6, nervios, esqueleto inmaduro) y, con cirugía, prótesis', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const plan = (ids, extra = {}) => P.construirPlan({ region: 'codo', severidad: 5, hipotesis: ids.map(hip), elegidas: ids, ...extra });
+  const esperado = {
+    co1: 'epicondilalgiaLateral', co2: 'epicondilalgiaMedial', co3: 'rigidezCodo', co4: 'inestabilidadCodo', co5: 'inestabilidadCodo',
+    co6: 'radiohumeral', co8: 'nervioCodo', co9: 'nervioCodo', co13: 'nervioCodo', co15: 'esqueletoInmaduro', co16: 'esqueletoInmaduro',
+  };
+  for (const [id, k] of Object.entries(esperado)) assert.ok(plan([id]).avisosHip.includes(D.AVISOS[k]), `${id}: ${k}`);
+  for (const id of ['co10', 'co11']) assert.deepEqual(plan([id]).avisosHip, [], `${id}: sin aviso propio`);
+  for (const k of ['epicondilalgiaLateral', 'rigidezCodo', 'nervioCodo']) assert.match(D.AVISOS[k], /Hengeveld y Banks 2005, cap\. 12/, k);
+  assert.match(D.AVISOS.epicondilalgiaLateral, /cuadro 12\.6, p\. 392/);
+  assert.match(D.AVISOS.inestabilidadCodo, /Quzli 2025/); assert.match(HYPOTHESES.co5.dosis, /evitar la carga axial en extensión y supinación/);
+  assert.match(D.AVISOS.esqueletoInmaduro, /no se aplican/); assert.match(HYPOTHESES.co15.dosis, /La fuente no da una pauta de ejercicio/);
+  assert.match(HYPOTHESES.co2.dosis, /^Ejercicio excéntrico/); assert.ok(!/terapia manual/i.test(HYPOTHESES.co2.dosis), 'co2: su pauta no trae terapia manual');
+  // Las «Derivar» de codo no se planifican
+  for (const id of ['co7', 'co12', 'co14']) {
+    assert.equal(HYPOTHESES[id].dosis, DOSIS_DERIVAR, id);
+    assert.equal(P.elegible({ ...hip(id), derivar: true }).ok, false, id);
+  }
+  // Sin pauta: «a criterio del fisio»
+  for (const id of ['co9', 'co10', 'co11', 'co13', 'co16']) assert.equal(HYPOTHESES[id].dosis, '', id);
+  // Prótesis con mecanismo Post-quirúrgico (periférica), también en codo
+  assert.ok(plan(['co3'], { posq: { conProtocolo: true } }).avisosHip.includes(D.AVISOS.protesis));
+  assert.ok(!plan(['co3']).avisosHip.includes(D.AVISOS.protesis));
+});
+
+test('plan: codo — atrapamientos (co8, co9, co13): sensibilidad y fuerza del nervio cada sesión, sin red neurológica ni regla de días', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  for (const id of ['co8', 'co9', 'co13']) {
+    assert.match(HYPOTHESES[id].name, /Neuropatía/, id);
+    const p = P.construirPlan({ region: 'codo', severidad: 9, hipotesis: [hip(id)], elegidas: [id] });
+    assert.ok(p.nervio && !p.neuro, id);
+    assert.ok(p.sesion.reevaluacion.includes(D.TEXTOS_SESION.reevaluacionNervio), id);
+    assert.ok(!p.sesion.reevaluacion.includes(D.TEXTOS_SESION.reevaluacionRadicular), id);
+    assert.ok(!p.mes.reglas.includes(D.REGLA_RADICULAR_SEVERA), `${id}: sin la regla de los 7–10 días aunque el NRS sea 9`);
+    assert.deepEqual(p.alarmasCasa, [D.TEXTOS_CASA.alarmaInfeccion.texto], `${id}: solo la red de siempre`);
+  }
+  const no = P.construirPlan({ region: 'codo', severidad: 5, hipotesis: [hip('co1')], elegidas: ['co1'] });
+  assert.ok(!no.nervio && !no.sesion.reevaluacion.includes(D.TEXTOS_SESION.reevaluacionNervio));
+  assert.match(D.TEXTOS_SESION.reevaluacionNervio, /Hengeveld y Banks 2005, cap\. 6, p\. 158/);
+});
+
+test('plan: codo — red de seguridad de infección siempre (co1); ni traumatismo ni posquirúrgicas en el programa para casa', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const p = P.construirPlan({ region: 'codo', severidad: 5, hipotesis: [hip('co3')], elegidas: ['co3'], posq: { conProtocolo: true } });
+  assert.deepEqual(p.sesion.cierre, [D.TEXTOS_SESION.cierre, D.TEXTOS_SESION.cierreInfeccion]);
+  const t = P.textoDomiciliario(p, {}, { ejercicios: 'X', parar: 'Y' });
+  assert.ok(t.trimEnd().endsWith(D.TEXTOS_CASA.alarmaInfeccion.texto));
+  assert.ok(t.includes(D.TEXTOS_CASA.cirujano.texto), 'con cirugía, «sigue las indicaciones de tu cirujano»');
+  for (const frag of ['compartimental', 'radiografía', 'deformado', 'trombosis', '112']) assert.ok(!t.includes(frag), frag);
+  // Los síntomas son los de la pregunta urgente co1
+  const co1 = Object.values(SYSTEMIC_SCREENING.codo.sistemas).flatMap(s => s.preguntas).find(q => q.id === 'co1');
+  assert.ok(co1?.urgencia, 'co1 es urgente');
+  assert.match(co1.razonamiento.peso, /fiebre solo aparece en el 40–60 %/);
+  for (const frag of ['rojo', 'caliente', 'hinchado', 'aunque no tengas fiebre', 'hoy mismo']) assert.ok(D.TEXTOS_CASA.alarmaInfeccion.texto.includes(frag), frag);
+  assert.match(D.TEXTOS_CASA.alarmaInfeccion.fuente, /^Momodu y Savaliya 2023/);
+});
+
+test('plan: codo — la rigidez (co3) propone el plan B por defecto, con su nota; ninguna otra pauta de codo fija volumen ni frecuencia', () => {
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  assert.equal(P.frecuenciaPorDefecto('co3'), 'B');
+  assert.match(HYPOTHESES.co3.dosis, /de 2 a 7 sesiones por semana durante 3 a 6 semanas/);
+  const p = P.construirPlan({ region: 'codo', severidad: 5, hipotesis: [hip('co3')], elegidas: ['co3'] });
+  assert.deepEqual(p.mes.notasPauta, [D.FRECUENCIA_PAUTA.co3.nota]);
+  for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'codo')) {
+    assert.ok(!D.VOLUMEN_PAUTA[id], id);
+    if (id !== 'co3') assert.ok(!D.FRECUENCIA_PAUTA[id], id);
+  }
+  withState({ region: 'codo', activeHypotheses: ['co3'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    PLAN.planActual();
+    assert.equal(state.planTratamiento.frecuencia, 'B');
+  });
+  state.planTratamiento = null;
+});
+
+test('plan: con estado de codo real, la pauta de co1, su aviso, la red de infección y co7 («Derivar») no elegible', () => {
+  withState({ region: 'codo', activeHypotheses: ['co7', 'co1'], hypothesisScores: {}, testResults: {}, planTratamiento: null }, () => {
+    const { plan, hs } = PLAN.planActual();
+    assert.deepEqual(state.planTratamiento.hipotesis, ['co1']);
+    assert.equal(plan.sesion.intervencion[0].pauta, HYPOTHESES.co1.dosis);
+    assert.equal(P.elegible(hs.find(h => h.id === 'co7')).ok, false);
+    assert.equal(plan.familia, 'periferica');
+    assert.deepEqual(plan.alarmasCasa, [D.TEXTOS_CASA.alarmaInfeccion.texto]);
+    assert.ok(plan.avisosHip.includes(D.AVISOS.epicondilalgiaLateral));
+  });
+  state.planTratamiento = null;
+});
+
+test('plan: varios síntomas en codo — dosifica el más irritable, avisa del independiente y mantiene lo propio de codo', () => {
+  const v = () => ({ zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' });
+  withState({ region: 'codo', activeHypotheses: ['co1'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['codo_lat'] },
+    sintomasSecundarios: [{ ...v(), zonas: ['antebrazo'], nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
+    const { plan } = PLAN.planActual();
+    assert.equal(plan.dosifica.nombre, 'P2 · Antebrazo');
+    assert.equal(plan.irritabilidad, 'alta');
+    assert.equal(plan.gravedadNRS, 'maxima', 'la gravedad sale del NRS de P2');
+    assert.equal(plan.niveles.B, 1);
+    assert.ok(plan.avisos.includes(D.AVISOS.dosificaOtro));
+    assert.ok(plan.avisosHip.includes(`${D.AVISOS.independiente} (P2 · Antebrazo)`));
+    assert.ok(!plan.mes.reglas.includes(D.REGLA_RADICULAR_SEVERA));
+    // Lo propio de codo sigue
+    assert.equal(plan.familia, 'periferica');
+    assert.equal(plan.escalones.B, D.ESCALONES_PERIFERICOS[1]);
+    assert.ok(plan.avisosHip.includes(D.AVISOS.epicondilalgiaLateral));
+    assert.deepEqual(plan.alarmasCasa, [D.TEXTOS_CASA.alarmaInfeccion.texto]);
+    assert.match(P.textoPlanSesion(plan, {}), /Irritabilidad: Alta \(según P2 · Antebrazo, el síntoma más irritable\)/);
+  });
+  // Un secundario de otra región («no valorada hoy») no dosifica
+  withState({ region: 'codo', activeHypotheses: ['co1'], hypothesisScores: {}, testResults: {}, planTratamiento: null,
+    severidad: 4, irritabilidadNivel: 'Moderada', irritabilidadDirecta: true,
+    sintomaPrincipal: { ...v(), zonas: ['codo_lat'] },
     sintomasSecundarios: [{ ...v(), otraRegion: true, nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }] }, () => {
     const { plan } = PLAN.planActual();
     assert.equal(plan.dosifica.n, 1);

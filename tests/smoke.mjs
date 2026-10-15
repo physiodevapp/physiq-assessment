@@ -2927,6 +2927,86 @@ async function checkFase6Hombro(browser, errors) {
   return r;
 }
 
+// Fase 6 en codo (L3, segunda periférica; decisiones 64–71 de
+// docs/plan-tratamiento.md): por la interfaz real hasta la 5 (la primera
+// opción de cada paso da co7, rotura distal del bíceps, «Derivar», y después
+// co3, co8, co1 y co4) y a la 6. co7 no se puede elegir y la hipótesis por
+// defecto es co3, con el plan B (su pauta usó 2 o más sesiones por semana);
+// el resto, a mano: co1 con los escalones, la cantidad,
+// la progresión y las reglas de Peripheral, su aviso y la red de infección;
+// co3 con su aviso y la nota de 2 o más sesiones por semana; co8 con la
+// exploración del nervio y sin red neurológica; co5, co6 y co15 con sus
+// avisos; varios síntomas; y, con cirugía, el aviso de prótesis.
+async function checkFase6Codo(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (fase 6 codo): ${err.message}`));
+  page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 codo): ${msg.text()}`); });
+  await page.route('https://physiq-orchestrator.edu-gamboa-rodriguez.workers.dev/**', route => route.fulfill({
+    headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'X-PhysiQ-Mode': 'demo' },
+    contentType: 'application/json', body: JSON.stringify({ ok: true, mode: 'demo', routes: { report: 'demo' }, demoOnly: false }),
+  }));
+  await abrirApp(page);
+  const r = {};
+  await walkRegion(page, 'codo');
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.plan = await page.evaluate(() => state.currentPhase === 6 && !document.querySelector('#planContenido .alert-info')
+    && document.querySelectorAll('#planContenido .card').length === 5
+    && state.activeHypotheses.includes('co7') && !!document.querySelector('.plan-hip.plan-hip-no')
+    && state.planTratamiento.hipotesis.join() === 'co3' && state.planTratamiento.frecuencia === 'B');
+  const { D } = await page.evaluate(async () => ({ D: JSON.parse(JSON.stringify(await import('./data/plan-tratamiento.js'))) }));
+  const casa = async () => {
+    await page.fill('#planNotasCasa', 'Ejercicio de los extensores de la muñeca');
+    await page.fill('#planParar', 'Si el dolor dura más de un día');
+    await page.click('#btnCompartirPlan');
+    await page.click('#compartirOpciones .compartir-op >> nth=2');
+    await page.waitForFunction(() => !document.getElementById('compartirOverlay').classList.contains('open'));
+    return page.evaluate(() => navigator.clipboard.readText());
+  };
+  const elegir = ids => page.evaluate(ids => {
+    for (const id of ids) if (!state.activeHypotheses.includes(id)) state.activeHypotheses.push(id);
+    state.planTratamiento.hipotesis = ids; goToPhase(5); goToPhase(6);
+  }, ids).then(() => page.waitForSelector('#planContenido .card')).then(() => page.textContent('#planContenido'));
+  const t1 = await elegir(['co1']);
+  r.co1 = t1.includes(D.AVISOS.epicondilalgiaLateral) && t1.includes(D.TEXTOS_SESION.cantidadPeriferica) && !t1.includes(D.TEXTOS_SESION.cantidad)
+    && t1.includes(D.PROGRESION_PERIFERICA) && t1.includes(D.REGLAS_MES_PERIFERICAS[0]) && !t1.includes(D.REGLAS_MES[2])
+    && Object.values(D.ESCALONES_PERIFERICOS).some(e => t1.includes(e.texto)) && !Object.values(D.ESCALONES).some(e => t1.includes(e.texto))
+    && t1.includes(D.TEXTOS_SESION.cierreInfeccion) && !t1.includes(D.TEXTOS_SESION.cierreCardiaco) && !t1.includes(D.TEXTOS_SESION.cierreArterial);
+  const c1 = await casa();
+  r.casaCo1 = c1.trimEnd().endsWith(D.TEXTOS_CASA.alarmaInfeccion.texto)
+    && ![D.TEXTOS_CASA.alarmaCardiaca, D.TEXTOS_CASA.alarmaArterial, D.TEXTOS_CASA.alarmaNeuro, D.TEXTOS_CASA.alarmaMedula].some(a => c1.includes(a.texto));
+  // Varios síntomas (Fase N, paso 4) en codo
+  await page.evaluate(() => {
+    state.sintomaPrincipal.zonas = ['codo_lat'];
+    state.sintomasSecundarios = [{ zonas: ['antebrazo'], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: 9, irritabilidad: 'Alta', relacion: 'independiente' }];
+    planElegir('sesion', 'primera');
+  });
+  await page.waitForSelector('#planDosifica');
+  r.dosificaP2 = await page.evaluate(() => {
+    const t = document.getElementById('planContenido').textContent;
+    return document.getElementById('planDosifica').textContent.includes('P2 · Antebrazo, el síntoma más irritable')
+      && t.includes('NRS 9/10') && t.includes('Un síntoma va independiente de P1') && t.includes('(P2 · Antebrazo)');
+  });
+  await page.evaluate(() => { state.sintomasSecundarios = []; state.sintomaPrincipal.zonas = []; planElegir('sesion', 'primera'); });
+  await page.waitForFunction(() => !document.getElementById('planDosifica'));
+  const t3 = await elegir(['co3']);
+  r.co3 = t3.includes(D.AVISOS.rigidezCodo) && t3.includes(D.FRECUENCIA_PAUTA.co3.nota);
+  const t8 = await elegir(['co8']);
+  r.co8 = t8.includes(D.AVISOS.nervioCodo) && t8.includes(D.TEXTOS_SESION.reevaluacionNervio) && !t8.includes(D.TEXTOS_SESION.reevaluacionRadicular)
+    && !t8.includes(D.TEXTOS_SESION.cierreNeuro) && !t8.includes(D.TEXTOS_SESION.cierreMedula);
+  r.co5 = (await elegir(['co5'])).includes(D.AVISOS.inestabilidadCodo);
+  r.co6 = (await elegir(['co6'])).includes(D.AVISOS.radiohumeral);
+  r.co15 = (await elegir(['co15'])).includes(D.AVISOS.esqueletoInmaduro);
+  // Con mecanismo Post-quirúrgico, el aviso condicional de prótesis (periféricas)
+  await page.evaluate(() => { state.mecanismo = 'Post-quirúrgico'; });
+  r.protesis = (await elegir(['co3'])).includes(D.AVISOS.protesis);
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 // Fase 6 «Plan de tratamiento» (opcional; docs/plan-tratamiento.md): lumbar
 // por la interfaz real hasta la 5 y de ahí a la 6 con «Plan de tratamiento →».
 // Escritorio: paso 6 en la barra, hipótesis por defecto, gravedad e
@@ -3051,7 +3131,7 @@ async function checkFase6(browser, errors) {
   await page.click('#planContenido .plan-enlace');
   r.enlaceNRS = await page.waitForFunction(() => state.currentPhase === 3, null, { timeout: 4000 }).then(() => true).catch(() => false);
   // Otra región: aviso de piloto
-  r.piloto = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = 'codo'; goToPhase(5); goToPhase(6); return true; })
+  r.piloto = await page.evaluate(() => { state.sistemicoAnswers = {}; state.region = 'cadera'; goToPhase(5); goToPhase(6); return true; })
     && await page.waitForFunction(() => document.querySelector('#planContenido .alert-info')?.textContent.includes('piloto'), null, { timeout: 4000 }).then(() => true).catch(() => false);
   await page.evaluate(() => { state.region = 'lumbar'; goToPhase(5); goToPhase(6); });
   await page.waitForSelector('#planContenido .card');
@@ -3463,6 +3543,12 @@ const SECCIONES = [
   { id: 'fase6-hombro', titulo: 'Fase 6: plan de tratamiento en hombro (L3, primera periférica):', run: async ({ browser, errors }) => {
     const r = await checkFase6Hombro(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} hombro por la interfaz real hasta la 6 (h6 por el camino de la primera opción): h6 con la cantidad de columna, sin avisos radiculares, y el programa para casa termina con la red cardiaca y la arterial; con h1, avisos de capsulitis (fase precoz y por estadio), escalones, cantidad, progresión y reglas de Peripheral, y solo la red cardiaca; con h10, aviso de artrosis; con h4, aviso de inestabilidad; con h2 + h6, aviso de dos familias${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'fase6-codo', titulo: 'Fase 6: plan de tratamiento en codo (L3, segunda periférica):', run: async ({ browser, errors }) => {
+    const r = await checkFase6Codo(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} codo por la interfaz real hasta la 6 (por el camino de la primera opción, co7, «Derivar», no elegible, y co3 por defecto con el plan B); con co1, escalones, cantidad, progresión y reglas de Peripheral, su aviso, y el programa para casa termina con la red de infección (ni cardiaca, ni arterial, ni neurológica); con varios síntomas dosifica el más irritable (P2 · Antebrazo) y avisa del independiente; con co3, aviso de rigidez y nota de frecuencia; con co8, exploración del nervio sin red neurológica; con co5, co6 y co15, sus avisos; con cirugía, el de prótesis${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

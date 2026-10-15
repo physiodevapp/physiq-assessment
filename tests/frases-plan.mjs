@@ -39,7 +39,7 @@ export function construirFrases(D, P) {
     '',
     '> Generado por `node tests/gen-frases-plan.mjs` a partir de `data/plan-tratamiento.js` y `lib/plan-tratamiento.js`. No lo edites a mano: cambia el texto en `data/plan-tratamiento.js` y regenera (`tests/unit.js` falla si no está al día).',
     '',
-    'Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, y en el de `h_c4` para Goodman 2018).',
+    'Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).',
   );
 
   sec('1. Programa para casa (lo lee el paciente)',
@@ -62,7 +62,8 @@ export function construirFrases(D, P) {
   const nombre = id => `\`${id}\``;
   out.push('',
     `- [ ] Exploración neurológica al empezar cada sesión: ${D.HIP_EXPLORACION_NEURO.map(nombre).join(', ')}.  \n  ↳ fuente: Maitland 2005, cap. 6, p. 136`,
-    `- [ ] Regla de los 7–10 días: ${D.HIP_RADICULARES.map(nombre).join(', ')}, solo con NRS registrado de 8 o más.  \n  ↳ fuente: Maitland 2005, cap. 9, p. 217`);
+    `- [ ] Regla de los 7–10 días: ${D.HIP_RADICULARES.map(nombre).join(', ')}, solo con NRS registrado de 8 o más.  \n  ↳ fuente: Maitland 2005, cap. 9, p. 217`,
+    `- [ ] Atrapamiento de un nervio periférico (sensibilidad y fuerza en su territorio al empezar cada sesión, \`TEXTOS_SESION.reevaluacionNervio\`; sin red de seguridad neurológica ni regla de días): ${D.HIP_NERVIO_PERIFERICO.map(nombre).join(', ')}.  \n  ↳ **decisión de diseño** (decisión 65)`);
   for (const [id, motivo] of Object.entries(D.HIP_NEURO_DESCARTADAS)) out.push(`- [ ] ${nombre(id)} no cuenta como neurológica: ${motivo}  \n  ↳ **decisión de diseño**`);
   const CUANDO = { neuro: 'con una hipótesis neurológica', siempre: 'con cualquier plan de la región' };
   for (const [region, r] of Object.entries(D.RED_SEGURIDAD)) {
