@@ -12,7 +12,7 @@ import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } fro
 // `id` estable: se guarda en la sesión.
 // `pasos` (Fase N, paso 3): pasos del árbol de abajo en los que el síntoma de
 // esa zona sale en el recuadro «📝 Refiere el paciente». Solo recuerda; nunca
-// contesta el paso. Pendientes de revisión por el usuario:
+// contesta el paso. Revisados por el usuario (2026-10):
 //   co_step1  trauma, rotura muscular y menores → codo anterior (bíceps
 //             distal), medial (lanzador joven) y lateral (dolor insidioso
 //             de 7 a 12 años)
