@@ -14,8 +14,8 @@ const OTRA = { ...vacio(), otraRegion: true, zonaLibre: 'Rodilla', lado: 'Izquie
 const conSintomas = (patch, fn) => withState({ region: 'lumbar', lado: 'Derecho', severidad: 7, irritabilidadNivel: 'Moderada',
   sintomaPrincipal: P1, sintomasSecundarios: [P2, OTRA], ...patch }, fn);
 
-test('síntomas: zonas en las regiones hechas (lumbar, cervical, hombro, codo), ids únicos y no vacíos', () => {
-  assert.deepEqual(Object.keys(ZONAS_SINTOMA).sort(), ['cervical', 'codo', 'hombro', 'lumbar']);
+test('síntomas: zonas en las regiones hechas (lumbar, cervical, hombro, codo, cadera), ids únicos y no vacíos', () => {
+  assert.deepEqual(Object.keys(ZONAS_SINTOMA).sort(), ['cadera', 'cervical', 'codo', 'hombro', 'lumbar']);
   for (const [r, zonas] of Object.entries(ZONAS_SINTOMA)) {
     assert.ok(CIF_TREES[r], r);
     const ids = zonas.map(z => z.id);
@@ -134,6 +134,18 @@ test('síntomas: codo — zonas en payload y 📋 Notas', () => {
     assert.deepEqual(d.z1, { z: 'Codo lateral', pr: 'Profunda' });
     assert.equal(d.ss[0].z, 'Antebrazo, mano');
     assert.match(buildContextSummaryText(), /SÍNTOMAS: P1 Codo lateral · profunda \| P2 Antebrazo, mano · NRS 3\/10 · independiente de P1/);
+  });
+});
+
+test('síntomas: cadera — zonas en payload, 📋 Notas y 📄 Informe', () => {
+  withState({ region: 'cadera', lado: 'Derecho', severidad: 6, irritabilidadNivel: 'Moderada',
+    sintomaPrincipal: { ...vacio(), zonas: ['ingle'], patron: 'Intermitente' },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['rodilla'], nrs: 3, relacion: 'juntos' }] }, () => {
+    const d = buildPhysiQPayload();
+    assert.deepEqual(d.z1, { z: 'Ingle', pa: 'Intermitente' });
+    assert.equal(d.ss[0].z, 'Rodilla');
+    assert.match(buildContextSummaryText(), /SÍNTOMAS: P1 Ingle · intermitente \| P2 Rodilla · NRS 3\/10 · aparece y desaparece con P1/);
+    assert.match(buildInformeFisioterapiaText(), /Localización del dolor principal: ingle, intermitente/);
   });
 });
 
