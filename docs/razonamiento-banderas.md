@@ -124,7 +124,7 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
 - **Huecos de seguridad, resueltos con la recomendación que el usuario aceptó («adelante con tus recomendaciones», 2026-10):**
   - Cardiaco, igual que cervical: `h2` no tiene `urgencia` aunque su «cuánto pesa» dice que es una urgencia si está pasando ahora. Pregunta urgente nueva `h_c4` («llamar al 112»), con el texto y las fuentes de `cv_c3` (Goodman cap. 6, pp. 236 y 260). `h2` sigue sin urgencia.
   - Rotura de bazo: la bandera roja del signo de Kehr no tenía pregunta (el razonamiento de `h_g1` lo menciona, pero es del sistema ginecológico). Pregunta urgente nueva `h_gi4` en h_gi (dolor de hombro izquierdo tras un golpe en el costado o el abdomen, constante o con mareo → «a urgencias hoy»), con razonamiento de Goodman cap. 8, pp. 311–312 (signo de Kehr; caso 8.5, futbolista con bazo roto) y 325 (derivación inmediata con sospecha de sangrado retroperitoneal, traumatismo y Kehr positivo). Anatomía: diafragma (el bazo no tiene entrada en `data/anatomia.js`).
-- **Revisión clínica del usuario:** pendiente.
+- **Revisión clínica del usuario:** hecha (2026-10), incluidas `h_c4` y `h_gi4`.
 
 ## Hallazgos fuera del «¿Por qué?»
 
