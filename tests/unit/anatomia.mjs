@@ -100,7 +100,7 @@ test('anatomía: toda estructura del registro la usa algún test o alguna pregun
 
 test('anatomía: cribado de hombro con anatomía en las preguntas cuya derivación explica una estructura', () => {
   const con = PREG_CON.filter(p => p.region === 'hombro').map(p => p.q.id);
-  assert.deepEqual(con, ['h3', 'h1', 'h2', 'h_c3', 'h5', 'h_p2', 'h_p3', 'h_r1', 'h_g1', 'h_g2', 'h_gi1', 'h_gi2', 'h_gi3', 'h_t1', 'h_n1']);
+  assert.deepEqual(con, ['h3', 'h1', 'h2', 'h_c3', 'h_c4', 'h5', 'h_p2', 'h_p3', 'h_r1', 'h_g1', 'h_g2', 'h_gi1', 'h_gi2', 'h_gi3', 'h_gi4', 'h_t1', 'h_n1']);
   // Sin estructura concreta: dolor nocturno, peso, dolor constante, sistémico
   const sin = PREGUNTAS.filter(p => p.region === 'hombro' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sin, ['h4', 'h6', 'h_r2', 'h_i1']);
@@ -111,7 +111,7 @@ test('anatomía: rodilla, todos los tests salvo el gesto testigo; cribado sin an
   assert.ok(sin.length && sin.every(x => x.t.name.startsWith('Gesto testigo')), sin.map(x => `${x.hId}/${x.i}`).join(' '));
   assert.equal(sin.length, 20);
   const con = PREG_CON.filter(p => p.region === 'rodilla').map(p => p.q.id);
-  assert.deepEqual(con, ['r_v1', 'r_v2', 'r_v3', 'r1', 'r_i2', 'r_i3', 'r3', 'r4', 'ro_t1', 'ro_t2', 'ro_t3', 'ro_t4', 'ro_t5', 'ro_t6', 'ro_p1']);
+  assert.deepEqual(con, ['r_v1', 'r_v2', 'r_v3', 'r_v4', 'r1', 'r_i2', 'r_i3', 'r3', 'r4', 'ro_t1', 'ro_t2', 'ro_t3', 'ro_t4', 'ro_t5', 'ro_t6', 'ro_p1']);
   const sinQ = PREGUNTAS.filter(p => p.region === 'rodilla' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['r2']);
 });
@@ -131,7 +131,7 @@ test('anatomía: cervical, sin anatomía solo las filas genéricas (①/②, pro
   assert.deepEqual(TODOS.filter(x => x.h.region === 'cervical' && !x.t.anatomia).map(x => `${x.hId}/${x.i}`),
     ['ce3/5', 'ce4/4', 'ce5/1', 'ce5/2', 'ce5/3', 'ce5/5', 'ce11/1', 'ce12/1', 'ce12/2', 'ce13/2', 'ce14/0']);
   const con = PREG_CON.filter(p => p.region === 'cervical').map(p => p.q.id);
-  assert.equal(con.length, 16);
+  assert.equal(con.length, 18);
   // Dolor nocturno, peso, cefalea de cambio brusco (arterias cerebrales), artritis inflamatoria de otras articulaciones
   const sinQ = PREGUNTAS.filter(p => p.region === 'cervical' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['cv1', 'cv5', 'cv_ar4', 'cv_in2']);
@@ -141,7 +141,7 @@ test('anatomía: cadera, sin anatomía solo las filas genéricas (longitud de pa
   assert.deepEqual(TODOS.filter(x => x.h.region === 'cadera' && !x.t.anatomia).map(x => `${x.hId}/${x.i}`),
     ['ca3/7', 'ca13/3', 'ca15/0', 'ca15/1', 'ca15/2', 'ca15/3', 'ca15/4']);
   const con = PREG_CON.filter(p => p.region === 'cadera').map(p => p.q.id);
-  assert.equal(con.length, 21);
+  assert.equal(con.length, 23);   // + ca_v4 (aorta) y ca_v5 (femoral, poplítea), Fase M
   // Pérdida de peso o bulto nuevo
   const sinQ = PREGUNTAS.filter(p => p.region === 'cadera' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['ca_on3']);
