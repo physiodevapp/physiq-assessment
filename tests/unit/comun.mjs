@@ -19,7 +19,7 @@ export const leer = (...ruta) => readFileSync(join(RAIZ, ...ruta), 'utf8');
 // (e.g. app.js's _initHubIntegration() call).
 export const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, DOSIS_DERIVAR, TIEMPOS_TEJIDO } = await import('../../data.js');
 export const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML, pesoTest, PESO_TEST, buildTestItem, lrEfectiva, citasTest } = await import('../../phase4b.js');
-export const { claveRegistro, enlaceCita, partirCitas, etiquetaCita, citasHTML, fichaCitaHTML, MAX_ETIQUETA } = await import('../../lib/citas.js');
+export const { claveRegistro, enlaceCita, partirCitas, etiquetaCita, citasHTML, fichaCitaHTML, MAX_ETIQUETA, citasEnTexto, esReferencia } = await import('../../lib/citas.js');
 export const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML } = await import('../../app.js');
 export const { state } = await import('../../state.js');
