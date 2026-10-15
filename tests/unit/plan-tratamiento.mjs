@@ -12,7 +12,7 @@ const PLAN = await import('../../plan.js');
 
 console.log('\nplan de tratamiento (fase 6)');
 
-const MATRIZ = (reposo, movimiento, tolerancia) => ({ dolor: 'Baja (≤3/10)', discapacidad: 'Mínima', reposo, movimiento, tolerancia });
+const MATRIZ = (reposo, movimiento, tolerancia, calma = '') => ({ discapacidad: 'Mínima', reposo, movimiento, tolerancia, calma });
 
 test('plan: gravedad por NRS con los cortes de SINSS (0–3, 4–7, 8–10); sin NRS, null', () => {
   assert.deepEqual([0, 3, 4, 7, 8, 10].map(P.gravedadSINSS), ['minima', 'minima', 'moderada', 'moderada', 'maxima', 'maxima']);
@@ -20,28 +20,44 @@ test('plan: gravedad por NRS con los cortes de SINSS (0–3, 4–7, 8–10); sin
   assert.equal(P.gravedadSINSS(''), null);
 });
 
-test('plan: irritabilidad solo con reposo, movimiento y tolerancia (0–1 baja, 2–4 moderada, 5–6 alta); directa o incompleta = estimada', () => {
+test('plan: irritabilidad con la regla de la fase 3 (lib/irritabilidad.js); directa = estimada, matriz a medias = incompleta', () => {
   const niv = (...a) => P.irritabilidadSINSS({ irritabilidad: MATRIZ(...a) }).nivel;
+  // Sin el tiempo en calmarse: los cortes de la decisión 25 sobre reposo + movimiento + tolerancia
   assert.equal(niv('Ausente', 'Al final del rango con SP', 'Alta'), 'baja');           // 0
   assert.equal(niv('Intermitente', 'Al final del rango con SP', 'Alta'), 'baja');      // 1
   assert.equal(niv('Intermitente', 'Al final del rango', 'Alta'), 'moderada');         // 2
   assert.equal(niv('Presente', 'Antes del final del rango', 'Alta'), 'moderada');      // 4
-  assert.equal(niv('Presente', 'Antes del final del rango', 'Moderada'), 'alta');      // 5: dos al máximo y uno intermedio
+  assert.equal(niv('Presente', 'Antes del final del rango', 'Moderada'), 'alta');      // 5
   assert.equal(niv('Presente', 'Antes del final del rango', 'Baja'), 'alta');          // 6
-  assert.equal(P.irritabilidadSINSS({ irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta') }).estimada, false);
-  // El dolor y la discapacidad de la matriz (gravedad) no cuentan
+  // Con él, marca el suelo
+  assert.equal(niv('Ausente', 'Al final del rango con SP', 'Alta', 'Tarda horas'), 'moderada');
+  assert.equal(niv('Ausente', 'Al final del rango con SP', 'Alta', 'No cede hasta tras una noche'), 'alta');
+  assert.deepEqual(P.irritabilidadSINSS({ irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta', 'Cede en minutos') }), { nivel: 'baja', estimada: false, incompleta: false });
+  assert.deepEqual(P.irritabilidadSINSS({ irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta') }), { nivel: 'baja', estimada: false, incompleta: true });
+  // El dolor y la discapacidad (gravedad) no cuentan
   assert.equal(P.irritabilidadSINSS({ irritabilidad: { ...MATRIZ('Ausente', 'Al final del rango con SP', 'Alta'), dolor: 'Alta (≥7/10)', discapacidad: 'Alta' } }).nivel, 'baja');
-  assert.deepEqual(P.irritabilidadSINSS({ irritabilidadDirecta: true, irritabilidadNivel: 'Alta', irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta') }), { nivel: 'alta', estimada: true, fase3: 'alta' });
-  assert.deepEqual(P.irritabilidadSINSS({ irritabilidadNivel: 'Moderada', irritabilidad: {} }), { nivel: 'moderada', estimada: true, fase3: 'moderada' });
+  assert.deepEqual(P.irritabilidadSINSS({ irritabilidadDirecta: true, irritabilidadNivel: 'Alta', irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta') }), { nivel: 'alta', estimada: true, incompleta: false });
+  assert.deepEqual(P.irritabilidadSINSS({ irritabilidadNivel: 'Moderada', irritabilidad: {} }), { nivel: 'moderada', estimada: true, incompleta: false });
+  assert.deepEqual(P.irritabilidadSINSS({ irritabilidad: {} }), { nivel: null, estimada: false, incompleta: true });
 });
 
-test('plan: si el nivel de la fase 3 (matriz entera) difiere del de la fase 6, se muestran los dos', () => {
+test('plan: la fase 3 y la fase 6 dan el mismo nivel (sin «en la fase 3»); matriz incompleta o sin registrar, con aviso', () => {
   const hs = [{ id: 'x', name: 'X', pauta: 'P.', derivar: false, tratada: false }];
-  const base = { hipotesis: hs, elegidas: ['x'], severidad: 5, irritabilidad: MATRIZ('Presente', 'Antes del final del rango', 'Moderada') };
-  assert.equal(P.construirPlan({ ...base, irritabilidadNivel: 'Moderada' }).irritabilidadFase3, 'moderada');
-  assert.equal(P.construirPlan({ ...base, irritabilidadNivel: 'Alta' }).irritabilidadFase3, null);
-  assert.equal(P.construirPlan({ ...base, irritabilidadDirecta: true, irritabilidadNivel: 'Baja' }).irritabilidadFase3, null, 'estimada: no hay dos cálculos');
-  assert.match(leer('plan.js'), /AVISOS\.difiereFase3/);
+  const base = { hipotesis: hs, elegidas: ['x'], severidad: 5 };
+  const completa = P.construirPlan({ ...base, irritabilidad: MATRIZ('Presente', 'Antes del final del rango', 'Moderada', 'Cede en minutos'), irritabilidadNivel: 'Alta' });
+  assert.equal(completa.irritabilidad, 'alta');
+  assert.ok(!('irritabilidadFase3' in completa));
+  assert.ok(!completa.avisos.includes(D.AVISOS.incompleta) && !completa.avisos.includes(D.AVISOS.sinIrritabilidad));
+  const aMedias = P.construirPlan({ ...base, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta'), irritabilidadNivel: 'Baja' });
+  assert.equal(aMedias.irritabilidad, 'baja');
+  assert.ok(aMedias.avisos.includes(D.AVISOS.incompleta));
+  const sin = P.construirPlan({ ...base, irritabilidad: MATRIZ('', '', ''), irritabilidadNivel: null });
+  assert.equal(sin.irritabilidad, 'alta', 'sin irritabilidad, la prudente');
+  assert.ok(sin.avisos.includes(D.AVISOS.sinIrritabilidad) && !sin.avisos.includes(D.AVISOS.incompleta));
+  assert.ok(!P.construirPlan({ ...base, irritabilidad: MATRIZ('', '', ''), irritabilidadManual: 'baja' }).avisos.includes(D.AVISOS.sinIrritabilidad), 'elegida a mano: sin aviso');
+  assert.equal(D.AVISOS.difiereFase3, undefined);
+  assert.ok(!/difiereFase3|irritabilidadFase3/.test(leer('plan.js') + leer('lib/plan-tratamiento.js')));
+  assert.match(leer('plan.js'), /AVISOS\.incompleta \|\| a === AVISOS\.sinIrritabilidad/);
 });
 
 test('plan: escalón de B por gravedad × irritabilidad; alta siempre 1; B nunca 4; sin gravedad, la máxima', () => {

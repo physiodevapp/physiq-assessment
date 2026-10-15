@@ -334,8 +334,10 @@ Regiones periféricas:
   ↳ fuente en el texto (Petersen 2021)
 - [ ] «Sin NRS registrado: se toma la gravedad más alta, que es la opción prudente. Cámbiala si la conoces, o registra el NRS en la fase 3.»  
   ↳ decisión 27 de docs/plan-tratamiento.md
-- [ ] «La fase 3 calcula la irritabilidad con toda la matriz, que incluye ítems de gravedad (dolor y discapacidad); aquí solo cuentan reposo, movimiento y tolerancia.»  
-  ↳ decisión 25 de docs/plan-tratamiento.md
+- [ ] «Irritabilidad calculada con la matriz de la fase 3 incompleta (falta el tiempo en calmarse u otra fila): puede quedarse corta. Complétala o cámbiala aquí si la conoces.»  
+  ↳ decisión 101 de docs/plan-tratamiento.md
+- [ ] «Sin irritabilidad registrada en la fase 3: se toma la alta, que es la opción prudente. Cámbiala si la conoces, o completa la matriz en la fase 3.»  
+  ↳ decisión 101 de docs/plan-tratamiento.md
 - [ ] «Irritabilidad estimada (elegida directamente, sin la matriz).»  
   ↳ decisión 12 de docs/plan-tratamiento.md
 - [ ] «Hipótesis de trabajo, pendiente de confirmar: no tiene ningún test hecho.»  

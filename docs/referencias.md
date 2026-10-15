@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **486** referencias de literatura, con **2373** usos.
+- **486** referencias de literatura, con **2381** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **376** de 486 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -153,11 +153,11 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pedret 2026](#pedret-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
-| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 65 | **sin revisar** |
-| [Maitland 2005](#maitland-2005) | plan de tratamiento | 28 | **sin revisar** |
+| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 68 | **sin revisar** |
+| [Maitland 2005](#maitland-2005) | plan de tratamiento | 31 | **sin revisar** |
 | [Silbernagel 2007](#silbernagel-2007) | plan de tratamiento | 1 | **sin revisar** |
-| [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 1 | **sin revisar** |
-| [Petersen 2021](#petersen-2021) | plan de tratamiento | 9 | **sin revisar** |
+| [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 2 | **sin revisar** |
+| [Petersen 2021](#petersen-2021) | plan de tratamiento | 10 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
@@ -1251,6 +1251,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Fase 6 (plan de tratamiento) | — | `AVISOS.orientativo` | 6 · plan de tratamiento | 1 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.margen` | 3 · irritabilidad | 1 |
 
 ### Barcelos 2014
 
@@ -4284,6 +4285,9 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cantidadPeriferica` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierre` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreRoturaAquiles` | 6 · plan de tratamiento | 1 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.hastaLimite` | 3 · irritabilidad | 1 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.hastaDolor` | 3 · irritabilidad | 1 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.alta` | 3 · irritabilidad | 1 |
 
 ### Hennessy 2025
 
@@ -7546,6 +7550,9 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierre` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTO_NIVELES.sinC.irritabilidad` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTO_NIVELES.sinC.estabilidad` | 6 · plan de tratamiento | 1 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.hastaLimite` | 3 · irritabilidad | 1 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.hastaDolor` | 3 · irritabilidad | 1 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.alta` | 3 · irritabilidad | 1 |
 
 ### Majlesi 2008
 
@@ -9343,6 +9350,7 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.3.citas.1` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `PROGRESION_GENERICA` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTO_NIVELES.sinC.irritabilidad` | 6 · plan de tratamiento | 1 |
+| irritabilidad | — | `ITEMS_IRRITABILIDAD.3.ayuda` | 3 · irritabilidad | 1 |
 
 ### Pitcher 2024
 

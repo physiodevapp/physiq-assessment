@@ -2,7 +2,7 @@
 
 Estado: **implementado** con las cinco decisiones de abajo (todas según la recomendación). Detalle técnico en CLAUDE.md, «Modo breve». Diferencias con este diseño, vistas al implementarlo:
 - En la fase 4b no hacía falta «mostrar solo las 2 primeras hipótesis»: las tarjetas ya están todas plegadas. Lo que cambia en breve es el orden de los tests dentro de cada tarjeta.
-- La irritabilidad ya tenía un valor por defecto («Baja», con la matriz preseleccionada), igual que en el modo completo. El nivel directo solo marca «estimada» cuando se usa.
+- La irritabilidad ya tenía un valor por defecto («Baja», con la matriz preseleccionada), igual que en el modo completo. El nivel directo solo marca «estimada» cuando se usa. **Desde 2026-10 ya no** (decisiones 99–104 de `docs/plan-tratamiento.md`): la matriz no viene preseleccionada y, sin nivel directo ni matriz, la irritabilidad es «no registrada» y sale como pendiente («Irritabilidad sin registrar»). Bajo el nivel directo, una pista recuerda la pregunta clave: cuánto tarda en calmarse tras la actividad que lo provoca.
 - «Completar pendientes» lleva al primer pendiente sin cambiar de modo. El paso a completa es un acto explícito del fisio y pide confirmación si quedan pendientes.
 
 ## Decisiones tomadas (septiembre 2026)
