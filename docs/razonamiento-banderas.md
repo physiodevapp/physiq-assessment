@@ -168,7 +168,7 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
   - tp_vascular: claudicación → `tp_v1`; TVP (Wells) → `tp_v2`.
   - tp_neuro: neuropatía sistémica → `tp_n1` + `tp_n2`; SDRC → `tp_n3`.
 - **Huecos de seguridad:** ninguno. Las rojas que piden urgencias (síndrome compartimental, artritis infecciosa, TVP, neuropatía desmielinizante aguda) ya tenían pregunta con `urgencia`; la rotura del Aquiles y Lisfranc o calcáneo son derivación preferente, como dicen sus preguntas.
-- **Revisión clínica del usuario:** pendiente.
+- **Revisión clínica del usuario:** hecha (2026-10).
 
 ## Hallazgos fuera del «¿Por qué?»
 
