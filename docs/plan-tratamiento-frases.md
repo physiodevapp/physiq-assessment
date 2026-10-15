@@ -113,6 +113,10 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ decisión 10 de docs/plan-tratamiento.md
 - [ ] «No usar ninguna técnica cervical que produzca mareo; probar antes con movimientos exploratorios (Maitland 2005, cap. 9, p. 224).»  
   ↳ fuente en el texto (Maitland 2005)
+- [ ] «Dosificado según el síntoma más irritable de la fase 3, no según P1 (a igualdad de irritabilidad, manda P1). La gravedad es la de su NRS.»  
+  ↳ decisión 35 de docs/plan-tratamiento.md
+- [ ] «Un síntoma va independiente de P1: puede ser un segundo problema que este plan no trata. Valóralo aparte.»  
+  ↳ decisión 35 de docs/plan-tratamiento.md
 - [ ] «Solo si es compatible con el protocolo del cirujano; donde difieran, prevalece el protocolo.»  
   ↳ texto de la fase 5 (`TEXTO_PAUTA_COMPATIBLE`, lib/posquirurgico.js), ya revisado: posquirúrgico con protocolo
 - [ ] «Restricciones pendientes de confirmar con el cirujano.»  
