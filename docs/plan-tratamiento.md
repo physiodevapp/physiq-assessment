@@ -294,11 +294,25 @@ Cómo se aplican las decisiones 43–46 a hombro: cada región del plan tiene un
 59. **Artrosis (`h10`)**: el aviso `artrosis` pasa a citar el cuadro 11.11 (solo accesorios, posteroanterior amplio de grado II o III, grado I tras una reagudización hasta llegar a III− o III+ sin dolor) y mantiene la frase del cap. 8, p. 224. Sin más avisos de hombro: el pinzamiento (`h2`), la rotura del manguito (`h3`) y la acromioclavicular (`h7`) coinciden con los escalones, y la fractura (`h11`) es «Derivar».
 
 
+### Cap. 9 de *Peripheral*, «Recording» (pp. 237–247; PDF del usuario, 2026-10)
+
+**Lo que confirma**: avisar de un posible aumento de síntomas al empezar el tratamiento, y apuntarlo (p. 243); indicar al paciente qué observar y comparar entre sesiones: al levantarse, en el trabajo o la actividad, por la noche y el efecto del ejercicio (p. 243); en cada sesión de seguimiento, lo primero es la opinión del paciente sobre la sesión anterior, citada y como comparación, no como hecho aislado (p. 246); registrar también lo normal, para que conste que se preguntó o se exploró (p. 239).
+
+**Lo que añade**: el registro de una técnica pasiva (p. 243): posición del paciente y de la articulación, técnica con sus inclinaciones, grado, ritmo, duración (repeticiones o tiempo), respuesta mientras se aplica y reevaluación inmediata; además, la información, las indicaciones, los ejercicios y los avisos dados. La revisión retrospectiva (p. 246) compara el bienestar general, los síntomas, el nivel de actividad, el efecto de las intervenciones y de las indicaciones y ejercicios, qué ha aprendido el paciente, qué intervenciones dieron qué resultado y los objetivos de la siguiente fase. El registro escrito por el paciente (p. 247): síntomas, actividades antes y durante el aumento de los síntomas, actividades del día o la semana y estrategias de autocuidado; a veces es necesario, pero puede hacer que algunos pacientes se fijen demasiado en sus síntomas.
+
+**Lo que no se usa**: los símbolos de registro (tabla 9.1), los asteriscos, el mapa corporal y el formato SOAP.
+
+### Decisiones 60–63 (cap. 9 de *Peripheral*, usuario, 2026-10; aceptadas como se propusieron)
+60. **Una hoja de registro común a todas las regiones, más completa**: «Tratamiento» incluye la posición del paciente y de la articulación, la técnica con su inclinación, el grado, el ritmo, la duración y la respuesta mientras se aplica (p. 243), y se añade «Indicaciones dadas: información, ejercicios y avisos» (p. 243). Cita los dos libros (`FUENTE_REGISTRO`).
+61. **Los textos de la sesión que solo citaban *Vertebral* citan también *Peripheral***: la reevaluación de las siguientes (p. 246), el aviso de la primera sesión (p. 243) y el cierre, que además nombra qué vigilar (al levantarse, en el trabajo o la actividad, por la noche y tras los ejercicios; p. 243).
+62. **Anotar más, solo en el plan A** (1 sesión por semana, donde la comparación es semanal): el programa para casa añade «Si las molestias aumentan, apunta qué estabas haciendo y qué te ayudó» (`anotarAumento`, p. 247), y la nota del plan A lo pide al fisio. No en el B: el libro advierte que anotar puede hacer que algunos pacientes se fijen demasiado en sus síntomas.
+63. **Qué comparar en las reevaluaciones intermedia y final del mes** (`REEVALUACION_RETROSPECTIVA`, p. 246): bienestar general; síntomas y nivel de actividad; efecto de cada intervención; efecto de las indicaciones y los ejercicios; qué ha aprendido el paciente; objetivos de la siguiente fase. En la tarjeta del mes (plegado) y en el texto compartido.
+
 ### Referencia completa
 Maitland GD; Hengeveld E, Banks K, English K (eds.). *Maitland's Vertebral Manipulation*. 7.ª ed. Edimburgo: Elsevier Butterworth-Heinemann; 2005. ISBN 978-0-7506-8806-2 (portada y página de créditos aportadas por el usuario). Clave prevista en `data/referencias.js`: `'Maitland 2005'`, que se añadirá cuando `data/` la cite (el test rechaza entradas que nada cita), igual que Petersen 2021, Barakatt 2009, Zusman 1998 y Silbernagel 2007.
 
 ### Pendiente de leer
-- Al empezar cada región periférica, su capítulo regional de ese libro (11 hombro, 12 codo, 14 cadera, 15 rodilla, 16 tobillo y pie): la parte de tratamiento y precauciones. Hombro: cap. 11 leído entero (decisiones 57–59).
+- Al empezar cada región periférica, su capítulo regional de ese libro (11 hombro, 12 codo, 14 cadera, 15 rodilla, 16 tobillo y pie): la parte de tratamiento y precauciones. Hombro: cap. 11 leído entero (decisiones 57–59). Leído también el cap. 9, «Recording» (decisiones 60–63).
 - Nada más para L2 ni para L3 cervical. Con una hipótesis de mareo cervicogénico (`ce13`), la regla «no usar ninguna técnica que produzca mareo» (p. 224) se añade al plan (`AVISOS_HIP`, decisión 40).
 
 ## Datos

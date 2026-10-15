@@ -109,8 +109,11 @@ export function construirFrases(D, P) {
   D.REGLAS_MES_PERIFERICAS.forEach((t, i) => out.push(auto(t, `REGLAS_MES_PERIFERICAS.${i}`)));
   out.push(auto(D.REGLA_RADICULAR_SEVERA, 'REGLA_RADICULAR_SEVERA'));
 
-  sec('8. Hoja de registro de cada sesión', 'Fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226.');
-  for (const t of D.HOJA_REGISTRO) out.push(item(t, 'fuente: Maitland 2005, cap. 9, tabla 9.3'));
+  out.push('', `Qué comparar en las reevaluaciones intermedia y final (fuente: ${D.FUENTE_RETROSPECTIVA}):`, '');
+  for (const t of D.REEVALUACION_RETROSPECTIVA) out.push(item(t, `fuente: ${D.FUENTE_RETROSPECTIVA}`));
+
+  sec('8. Hoja de registro de cada sesión', `Fuente: ${D.FUENTE_REGISTRO}.`);
+  for (const t of D.HOJA_REGISTRO) out.push(item(t, `fuente: ${D.FUENTE_REGISTRO}`));
 
   const propias = out.filter(l => l.includes('**redacción propia**')).length;
   out.splice(5, 0, '', `Redacción propia: **${propias}** frase${propias === 1 ? '' : 's'}.`);

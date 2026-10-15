@@ -29,8 +29,11 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ fuente: Maitland 2005, cap. 9, p. 219 y tabla 9.3 (respuesta a las 24–48 h)  
   ↳ clave `alDiaSiguienteDefecto`
 - [ ] «Después de esta primera sesión puedes notar un aumento temporal de las molestias.»  
-  ↳ fuente: Maitland 2005, cap. 9, p. 219  
+  ↳ fuente: Maitland 2005, cap. 9, p. 219; Hengeveld y Banks 2005, cap. 9, p. 243  
   ↳ clave `primeraSesion`
+- [ ] «Si las molestias aumentan, apunta qué estabas haciendo y qué te ayudó.»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 9, p. 247 (registro escrito por el paciente)  
+  ↳ clave `anotarAumento`
 - [ ] «Sigue siempre las indicaciones de tu cirujano.»  
   ↳ fuente: decisión posquirúrgica: el protocolo del cirujano manda (docs/posquirurgico.md; principio 3 de docs/plan-tratamiento.md)  
   ↳ clave `cirujano`
@@ -208,14 +211,14 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ **organización orientativa**
 - [ ] «Signo comparable y la actividad que el paciente refiere como control (Maitland 2005, cap. 6, pp. 100–101 y 128).»  
   ↳ fuente en el texto (Maitland 2005)
-- [ ] «Cómo reaccionó a la sesión anterior, en sus palabras y comparado con antes («D más 1», Maitland 2005, cap. 6, p. 156; cap. 9, tabla 9.3).»  
-  ↳ fuente en el texto (Maitland 2005)
+- [ ] «Cómo reaccionó a la sesión anterior, en sus palabras y comparado con antes («D más 1», Maitland 2005, cap. 6, p. 156; cap. 9, tabla 9.3; Hengeveld y Banks 2005, cap. 9, p. 246).»  
+  ↳ fuente en el texto (Maitland 2005, Hengeveld y Banks 2005)
 - [ ] «Exploración neurológica al empezar; si empeora, comunicarlo al médico (Maitland 2005, cap. 6, p. 136).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Explicar la hipótesis y el plan, y lo que puede notar.»  
   ↳ organización de la sesión (orientativa, editable; no evidencia)
-- [ ] «Avisar de un posible aumento temporal de los síntomas tras esta primera sesión (Maitland 2005, cap. 9, p. 219).»  
-  ↳ fuente en el texto (Maitland 2005)
+- [ ] «Avisar de un posible aumento temporal de los síntomas tras esta primera sesión (Maitland 2005, cap. 9, p. 219; Hengeveld y Banks 2005, cap. 9, p. 243).»  
+  ↳ fuente en el texto (Maitland 2005, Hengeveld y Banks 2005)
 - [ ] «Primera sesión: menos tratamiento que en las siguientes, porque el primer estiramiento provoca más reacción (Maitland 2005, cap. 9, p. 219).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Evaluar antes, durante y después de cada técnica; unas 3–4 movilizaciones de unos 30 s por articulación, la mitad si duele mucho (Maitland 2005, cap. 9, pp. 213, 216 y 219).»  
@@ -226,8 +229,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Reid 2014)
 - [ ] «Enseñar y comprobar lo que hará en casa.»  
   ↳ organización de la sesión (orientativa, editable; no evidencia)
-- [ ] «Reevaluar el signo comparable y explicar qué vigilar hasta la próxima sesión (Maitland 2005, cap. 9, p. 213 y tabla 9.3, «Después»).»  
-  ↳ fuente en el texto (Maitland 2005)
+- [ ] «Reevaluar el signo comparable y explicar qué vigilar hasta la próxima sesión: al levantarse, en el trabajo o la actividad, por la noche y tras los ejercicios (Maitland 2005, cap. 9, p. 213 y tabla 9.3, «Después»; Hengeveld y Banks 2005, cap. 9, p. 243).»  
+  ↳ fuente en el texto (Maitland 2005, Hengeveld y Banks 2005)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (adormecimiento entre las piernas o alrededor del ano, cambios al orinar o al hacer de vientre) y comprobar que lo ha entendido (Finucane 2020, sección 2, pp. 9–17).»  
   ↳ fuente en el texto (Finucane 2020)
 - [ ] «Red de seguridad: explicar qué síntomas exigen ir a urgencias (torpeza nueva en las manos, inestabilidad o piernas «pesadas» al caminar, cambios al orinar o al hacer de vientre) y comprobar que lo ha entendido (Margetis y Donnally 2025, anamnesis y exploración).»  
@@ -241,8 +244,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
 
 - [ ] «Plan A · 1 sesión por semana: 4 sesiones; reevaluación intermedia Sesión 2 (semana 2); final Sesión 4; programa domiciliario: Alto: es la mayor parte de la carga del mes.»  
   ↳ **organización orientativa**
-- [ ] «Maitland evalúa la respuesta a las 24–48 h y pide sesiones lo bastante frecuentes para valorar el efecto; con una por semana la comparación es semanal (Maitland 2005, cap. 9, p. 219 y tabla 9.3). Pedir al paciente que anote cómo estuvo a las 24 h de cada sesión.»  
-  ↳ fuente en el texto (Maitland 2005)
+- [ ] «Maitland evalúa la respuesta a las 24–48 h y pide sesiones lo bastante frecuentes para valorar el efecto; con una por semana la comparación es semanal (Maitland 2005, cap. 9, p. 219 y tabla 9.3). Pedir al paciente que anote cómo estuvo a las 24 h de cada sesión y, si las molestias aumentan, qué estaba haciendo y qué le ayudó (Hengeveld y Banks 2005, cap. 9, p. 247).»  
+  ↳ fuente en el texto (Maitland 2005, Hengeveld y Banks 2005)
 - [ ] «Plan B · 2 sesiones por semana: 8 sesiones; reevaluación intermedia Sesión 4 (semana 2); final Sesión 8; programa domiciliario: Medio.»  
   ↳ **organización orientativa**
 - [ ] «Con movilización neural vigorosa, dejar al menos 2–3 días entre sesiones y reevaluar a las 24 h (Maitland 2005, cap. 6, p. 149).»  
@@ -280,19 +283,36 @@ Reglas de seguir o cambiar, regiones periféricas:
 - [ ] «Con dolor radicular severo, la mejoría puede tardar 7–10 días en notarse (Maitland 2005, cap. 9, p. 217).»  
   ↳ fuente en el texto (Maitland 2005)
 
+Qué comparar en las reevaluaciones intermedia y final (fuente: Hengeveld y Banks 2005, cap. 9, p. 246):
+
+- [ ] «Bienestar general, comparado con unas sesiones antes»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 9, p. 246
+- [ ] «Síntomas y nivel de actividad, comparados»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 9, p. 246
+- [ ] «Efecto de cada intervención hasta ahora (exploración y movimientos pasivos)»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 9, p. 246
+- [ ] «Efecto de las indicaciones, recomendaciones y ejercicios»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 9, p. 246
+- [ ] «Qué ha aprendido el paciente y qué le ha sido más útil»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 9, p. 246
+- [ ] «Objetivos de la siguiente fase del tratamiento, acordados con el paciente»  
+  ↳ fuente: Hengeveld y Banks 2005, cap. 9, p. 246
+
 ## 8. Hoja de registro de cada sesión
 
-Fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226.
+Fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246.
 
-- [ ] «Refiere el paciente: cambios desde la sesión anterior, en sus palabras y comparados con antes»  
-  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3
-- [ ] «Signos: cambios en los signos marcados»  
-  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3
+- [ ] «Refiere el paciente: lo primero, su opinión sobre la sesión anterior, en sus palabras y comparada con antes»  
+  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
+- [ ] «Signos: cambios en los signos marcados, también comparados con antes»  
+  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
 - [ ] «Plan: técnica elegida y por qué»  
-  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3
-- [ ] «Tratamiento: técnica, grado, nivel, repeticiones y efecto mientras se aplica»  
-  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3
+  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
+- [ ] «Tratamiento: posición del paciente y de la articulación, técnica (con su inclinación), grado, ritmo, duración (repeticiones o tiempo) y respuesta mientras se aplica»  
+  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
 - [ ] «Después: lo que refiere el paciente y los signos»  
-  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3
+  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
+- [ ] «Indicaciones dadas: información, ejercicios y avisos»  
+  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246
 - [ ] «Para la siguiente sesión: qué cambiar y por qué»  
-  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3
+  ↳ fuente: Maitland 2005, cap. 9, tabla 9.3, p. 226; Hengeveld y Banks 2005, cap. 9, pp. 243 y 246

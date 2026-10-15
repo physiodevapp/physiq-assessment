@@ -609,3 +609,29 @@ test('plan: docs/plan-tratamiento-frases.md está al día con data/plan-tratamie
   assert.equal(leer('docs', 'plan-tratamiento-frases.md'), construirFrases(D, P),
     'docs/plan-tratamiento-frases.md no está al día — ejecuta `node tests/gen-frases-plan.mjs` y comitéalo con el cambio');
 });
+
+test('plan: cap. 9 de Peripheral (decisiones 60–63): hoja de registro común con su detalle, citas periféricas, anotar solo en el plan A, qué comparar en las reevaluaciones', () => {
+  // 60: hoja de registro común, con posición, ritmo, duración e indicaciones dadas; cita los dos libros
+  assert.ok(D.HOJA_REGISTRO.some(t => /posición del paciente y de la articulación/.test(t) && /ritmo/.test(t) && /duración/.test(t)));
+  assert.ok(D.HOJA_REGISTRO.some(t => t.startsWith('Indicaciones dadas')));
+  assert.match(D.FUENTE_REGISTRO, /^Maitland 2005/); assert.match(D.FUENTE_REGISTRO, /Hengeveld y Banks 2005, cap\. 9/);
+  // 61: los textos de la sesión citan también Peripheral
+  for (const k of ['reevaluacionSiguiente', 'educacionPrimera', 'cierre']) assert.match(D.TEXTOS_SESION[k], /Hengeveld y Banks 2005, cap\. 9, p\. 24[36]/, k);
+  assert.match(D.TEXTOS_CASA.primeraSesion.fuente, /Hengeveld y Banks 2005, cap\. 9, p\. 243/);
+  // 62: anotar qué hacía y qué ayudó, solo con el plan A
+  const hs = [{ id: 'x', name: 'X', pauta: 'P.', derivar: false, tratada: false }];
+  const plan = P.construirPlan({ hipotesis: hs, elegidas: ['x'], severidad: 5 });
+  const casa = f => P.textoDomiciliario(plan, {}, { ejercicios: 'X', parar: 'Y', frecuencia: f });
+  assert.ok(casa('A').includes(D.TEXTOS_CASA.anotarAumento.texto));
+  assert.ok(!casa('B').includes(D.TEXTOS_CASA.anotarAumento.texto));
+  assert.ok(!casa('').includes(D.TEXTOS_CASA.anotarAumento.texto));
+  assert.match(D.PLANES_MES.A.notas[0], /qué estaba haciendo y qué le ayudó \(Hengeveld y Banks 2005, cap\. 9, p\. 247\)/);
+  // 63: qué comparar en las reevaluaciones, en el plan y en el texto del mes
+  assert.deepEqual(plan.mes.retrospectiva, D.REEVALUACION_RETROSPECTIVA);
+  const mes = P.textoPlanMes(plan, {}, 'B');
+  assert.match(mes, /En las reevaluaciones intermedia y final, comparar \(Hengeveld y Banks 2005, cap\. 9, p\. 246\): bienestar general/);
+  assert.match(mes, /HOJA DE REGISTRO DE CADA SESIÓN \(Maitland 2005, cap\. 9, tabla 9\.3, p\. 226; Hengeveld y Banks 2005/);
+  const ui = leer('plan.js');
+  assert.match(ui, /plan\.fuenteRegistro/); assert.match(ui, /plan\.mes\.retrospectiva/);
+  assert.match(ui, /frecuencia: pt\.frecuencia \}\);/);
+});
