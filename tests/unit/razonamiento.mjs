@@ -1,6 +1,6 @@
 // «¿Por qué?» del cribado, del árbol CIF y de los tests, «Ampliar con IA». Se ejecuta desde tests/unit.js.
 import { assert, readFileSync, join, TESTS, leer, test, HYPOTHESES, SYSTEMIC_SCREENING, testPuntua,
-   pesoTest, PESO_TEST, buildTestItem, lrEfectiva, claveRegistro, enlaceCita, citasHTML,
+   pesoTest, PESO_TEST, buildTestItem, lrEfectiva, claveRegistro, enlaceCita, citasHTML, citasEnTexto,
    citasTest, state, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
    buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML, BASE_STATE, withState, VALID_REGIONS } from './comun.mjs';
 const { REFERENCIAS } = await import('../../data/referencias.js');
@@ -138,7 +138,7 @@ test('banderas: ⓘ solo cuando hay «¿Por qué?», que despliega por qué y cu
     // Nivel 1 bajo la bandera (Por qué + Cuánto pesa); «Ampliar →» solo si el panel tiene más
     const rs = typeof f === 'string' ? [] : f.razonamiento ? [f.razonamiento]
       : sis.preguntas.filter(q => [].concat(f.pregunta || []).includes(q.id) && q.razonamiento).map(q => q.razonamiento);
-    for (const r of rs) assert.ok(html.includes(r.porque) && html.includes(r.peso), `«${textoBandera(f)}»: por qué y cuánto pesa`);
+    for (const r of rs) assert.ok(html.includes(citasEnTexto(r.porque)) && html.includes(citasEnTexto(r.peso)), `«${textoBandera(f)}»: por qué y cuánto pesa`);
     assert.equal(html.includes('abrirRazonBandera('), rs.some(r => r.detalle || r.fisiologia), `«${textoBandera(f)}»: Ampliar`);
     assert.equal(html.includes('class="flag-fase1"'), !!f.fase1, `«${textoBandera(f)}»: fase 1`);
   }
