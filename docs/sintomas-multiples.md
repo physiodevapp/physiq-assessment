@@ -1,9 +1,9 @@
 # Varios síntomas (P1–P4) — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2** completo: las 7 regiones tienen zonas, revisadas por el usuario (2026-10). **Paso 3** (pistas en el árbol) hecho en lumbar (revisado por el usuario, 2026-10) y cervical (revisados por el usuario, 2026-10) y hombro (revisados por el usuario, 2026-10) y codo (revisados por el usuario, 2026-10) y cadera (revisados por el usuario, 2026-10) y rodilla (revisados por el usuario, 2026-10) y tobillo y pie (revisados por el usuario, 2026-10): las 7 regiones tienen pistas. **Paso 5** (physiq-report) hecho y revisado por el usuario (2026-10). **Paso 4** (fase 6) hecho y revisado por el usuario (2026-10): ver «Cómo quedó el paso 4». Seguimiento en `MIGRATION_PLAN.md`, Fase N.
+Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir» (hoy «Decidido», al final). **Paso 1 implementado en lumbar** (piloto). **Paso 2** completo: las 7 regiones tienen zonas, revisadas por el usuario (2026-10). **Paso 3** (pistas en el árbol) hecho en lumbar (revisado por el usuario, 2026-10) y cervical (revisados por el usuario, 2026-10) y hombro (revisados por el usuario, 2026-10) y codo (revisados por el usuario, 2026-10) y cadera (revisados por el usuario, 2026-10) y rodilla (revisados por el usuario, 2026-10) y tobillo y pie (revisados por el usuario, 2026-10): las 7 regiones tienen pistas. **Paso 5** (physiq-report) hecho y revisado por el usuario (2026-10). **Paso 4** (fase 6) hecho y revisado por el usuario (2026-10): ver «Cómo quedó el paso 4». Seguimiento en `MIGRATION_PLAN.md`, Fase N.
 
 ## Decisiones tomadas (octubre 2026)
-Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
+Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir» (hoy «Decidido», al final):
 - **Zonas**: la tabla de abajo, como borrador; la de lumbar ya está en `data/lumbar.js` (`export const zonas`) y se revisa en consulta.
 - **NRS de P1**: un solo valor, como hasta ahora.
 - **Secundarios**: solo la nota libre, sin los chips de descripción.
@@ -140,9 +140,11 @@ sintomasSecundarios: [ /* hasta 3 (P2–P4), misma forma */ ],
 4. **Fase 6**: dosificación según el más irritable y aviso del síntoma independiente.
 5. **Mapa dibujado** opcional sobre las mismas zonas, solo si después hace falta.
 
-## Pendiente de decidir
+## Decidido (antes «Pendiente de decidir»)
 
-- **Listas de zonas**: revisar la tabla de arriba, región a región.
-- **NRS de P1**: ¿sigue siendo un solo valor, o pasa a ahora / peor / mejor? Propuesta: un solo valor, como ahora. Cambiarlo afecta a `nr`, a physiq-report y a las reglas `nrs-momento`, así que sería un cambio aparte.
-- **Descripción en los secundarios**: ¿solo la nota libre, o también los chips de descripción de P1?
-- **Orden**: ¿se puede convertir un secundario en P1 (botón «Hacer principal»)? Propuesta: sí, intercambiando los datos, porque a veces el paciente cambia de idea sobre qué le molesta más.
+Eran las preguntas abiertas del diseño; el usuario aceptó las propuestas (octubre 2026) y todo está implementado:
+
+- **Listas de zonas**: revisadas región a región (paso 2) y con sus `pasos` del árbol (paso 3), las 7 regiones; tobillo y pie ganó la zona «Mediopié».
+- **NRS de P1**: un solo valor, como hasta ahora. Pasar a ahora / peor / mejor afectaría a `nr`, a physiq-report y a las reglas `nrs-momento`, así que sería un cambio aparte.
+- **Descripción en los secundarios**: solo la nota libre, sin los chips de descripción de P1.
+- **Orden**: sí hay «Hacer principal», que intercambia los datos con P1 (ver «Cómo quedó el paso 1»).
