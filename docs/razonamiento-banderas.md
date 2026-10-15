@@ -138,8 +138,8 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
   - ro_pediatrico: epifisiólisis o Perthes → `ro_p1`.
 - **Razonamiento propio (2), con Goodman 2018 leído en la sesión:** calambres nocturnos en la pantorrilla (cap. 6, p. 254: el dolor isquémico se describe como calambre sin espasmo; cap. 16, p. 624: causas de los calambres, entre ellas la oclusión arterial y la claudicación neurógena) y, en amarillas, dolor en reposo que mejora al colgar la pierna (cap. 6, pp. 228, 254 y 262: dolor isquémico en reposo de la enfermedad arterial avanzada; si empieza de golpe, tromboembolia, comunicar de inmediato). Ninguna bandera de rodilla queda sin «¿Por qué?».
 - **Huecos de seguridad:** ninguno. Las rojas que piden urgencias (TVP, artritis séptica, bursitis séptica, aparato extensor, luxación, compromiso neurovascular) ya tenían pregunta con `urgencia`.
-- **Recomendación pendiente de decisión del usuario:** pregunta urgente de isquemia aguda de la pierna, igual que `ca_v5` en cadera (Goodman cap. 6, p. 228: el dolor isquémico en reposo de comienzo brusco o el empeoramiento brusco de una claudicación pueden ser una tromboembolia y se comunican al médico de inmediato). Hoy en rodilla solo la cubre `ro_t4`, que es tras un traumatismo; la amarilla del dolor en reposo lo explica pero no enciende la alerta.
-- **Revisión clínica del usuario:** hecha (2026-10). La pregunta urgente de isquemia aguda sigue como recomendación, sin decidir.
+- **Pregunta urgente nueva `r_v4`, isquemia aguda de la pierna (recomendación aceptada por el usuario, 2026-10):** el mismo texto, urgencia y razonamiento que `ca_v5` de cadera (Goodman cap. 6, pp. 254 y 260; cap. 16, p. 636). Hasta entonces solo la cubría `ro_t4`, tras un traumatismo. El razonamiento se comparte desde `data/comun.js` (`RAZON_ISQUEMIA_AGUDA`) y un test comprueba que es el mismo objeto; la bandera de la claudicación enlaza `r_v1` + `r_v4`.
+- **Revisión clínica del usuario:** hecha (2026-10).
 
 ## Codo (2026-10)
 
@@ -153,8 +153,8 @@ Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posq
 - **Razonamiento propio (3):**
   - Síntomas vasculares en un codo operado: Goodman cap. 6, p. 254 (tabla 6.7: la cirugía vascular, los procedimientos arteriales y el traumatismo, factores de riesgo de la oclusión arterial aguda; las «6 P») y cap. 16, p. 624 (síndrome compartimental por un yeso). Remite al cribado posquirúrgico, que con mecanismo Post-quirúrgico pregunta por el síndrome compartimental y la TVP del brazo.
   - Xantomas en tendones extensores y, en amarillas, tendinitis calcificante bilateral del hombro: el mismo razonamiento que el sistema endocrino compartido, ya revisado. Para no duplicarlo, `data/comun.js` lo exporta como `RAZON_XANTOMAS` y `RAZON_CALCIFICANTE`, y un test comprueba que es el mismo objeto.
-- **Hueco de seguridad, pendiente de decisión del usuario:** la bandera roja de la artritis séptica enlaza `co1`, que no tiene `urgencia`, aunque su razonamiento la llama emergencia ortopédica y pide derivación sin demora. En rodilla (`r1`) y cadera (`ca_in1`) la misma pregunta es urgente. Recomendación: dar `urgencia` a `co1`, como en rodilla. Ojo: `co1` también cubre la bursitis séptica del olécranon, que en rodilla (`r_i3`, prerrotuliana) es derivación el mismo día.
-- **Revisión clínica del usuario:** pendiente.
+- **Hueco de seguridad, resuelto (decisión del usuario, 2026-10):** la bandera roja de la artritis séptica enlazaba `co1`, que no tenía `urgencia`, aunque su razonamiento la llama emergencia ortopédica y pide derivación sin demora; en rodilla (`r1`) y cadera (`ca_in1`) es urgente. `co1` lleva ahora «Sospecha de artritis séptica o de bursitis séptica del olécranon: derivación hoy.» (la bursitis séptica también es derivación el mismo día en rodilla, `r_i3`).
+- **Revisión clínica del usuario:** hecha (2026-10).
 
 ## Hallazgos fuera del «¿Por qué?»
 

@@ -111,7 +111,7 @@ test('anatomía: rodilla, todos los tests salvo el gesto testigo; cribado sin an
   assert.ok(sin.length && sin.every(x => x.t.name.startsWith('Gesto testigo')), sin.map(x => `${x.hId}/${x.i}`).join(' '));
   assert.equal(sin.length, 20);
   const con = PREG_CON.filter(p => p.region === 'rodilla').map(p => p.q.id);
-  assert.deepEqual(con, ['r_v1', 'r_v2', 'r_v3', 'r1', 'r_i2', 'r_i3', 'r3', 'r4', 'ro_t1', 'ro_t2', 'ro_t3', 'ro_t4', 'ro_t5', 'ro_t6', 'ro_p1']);
+  assert.deepEqual(con, ['r_v1', 'r_v2', 'r_v3', 'r_v4', 'r1', 'r_i2', 'r_i3', 'r3', 'r4', 'ro_t1', 'ro_t2', 'ro_t3', 'ro_t4', 'ro_t5', 'ro_t6', 'ro_p1']);
   const sinQ = PREGUNTAS.filter(p => p.region === 'rodilla' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['r2']);
 });

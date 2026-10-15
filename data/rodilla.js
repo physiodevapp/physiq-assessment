@@ -5,7 +5,7 @@
 // con las demás regiones en SYSTEMIC_SCREENING / CIF_TREES / HYPOTHESES;
 // los esquemas de cada objeto están documentados allí.
 // ============================================================
-import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
+import { SIS_POSQUIRURGICO, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR, RAZON_ISQUEMIA_AGUDA } from './comun.js';
 
 // ── Fase 2 · SYSTEMIC_SCREENING.rodilla
 export const screening = {
@@ -26,7 +26,7 @@ export const screening = {
     {
       id: 'ro_vascular', icon: '🩸', nombre: 'Vascular',
       banderasRojas: [
-        { texto: 'Claudicación: dolor que aparece al caminar y cede al detenerse', pregunta: 'r_v1' },
+        { texto: 'Claudicación: dolor que aparece al caminar y cede al detenerse', pregunta: ['r_v1', 'r_v4'] },
         { texto: 'Calambres nocturnos en pantorrilla que interrumpen el sueño',
           razonamiento: {
             porque: 'Los calambres de la pierna y la pantorrilla son frecuentes en adultos, sobre todo en mayores, deportistas y embarazadas, y casi siempre benignos. Pero entre sus causas más frecuentes Goodman cuenta la oclusión de una arteria por enfermedad arterial periférica, la claudicación neurógena por estenosis de canal lumbar, la neuropatía, los fármacos, las alteraciones metabólicas y el déficit de vitaminas o calcio. El dolor de la isquemia se describe a menudo como un calambre, aunque el músculo no tenga ningún espasmo.',
@@ -121,7 +121,9 @@ export const screening = {
               'Lluch 2020 — Lluch, López-Cubas, Jones, Jull, Hall y Lewis (eds.), Pattern Recognition of Clinical Syndromes Related to Neuromusculoskeletal Pain Disorders (ZERAPI, 2020), cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 223–225.',
               { texto: 'Leib 2023 — Leib, Roshan, Foris y Varacallo, «Baker’s Cyst», StatPearls [Internet], NCBI Bookshelf, última actualización 4 de agosto de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430774/' }
             ]
-          } }
+          } },
+        { id: 'r_v4', anatomia: ['arteria_femoral', 'arteria_poplitea'], text: '¿Se le ha puesto la pierna de repente fría, pálida, muy dolorosa, con hormigueo o debilidad, o le ha empeorado de golpe el dolor al caminar?', alerta: true, urgencia: 'Posible isquemia aguda de la pierna (trombo o émbolo): a urgencias hoy, sin esperar.',
+          razonamiento: RAZON_ISQUEMIA_AGUDA }
       ],
       zonasDolor: [
         { zona: 'Pantorrilla / Rodilla', desc: 'Claudicación distal o TVP' }

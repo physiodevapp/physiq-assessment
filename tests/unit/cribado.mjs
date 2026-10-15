@@ -174,7 +174,13 @@ test('cervical: el FRT puntúa solo positivo (un negativo no descarta una cervic
 
 test('rodilla: bursa séptica, aparato extensor, luxación y neurovascular son urgencias', () => {
   const qs = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.soloPosquirurgico).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
-  ['r1', 'r_v2', 'r_i3', 'ro_t2', 'ro_t3', 'ro_t4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+  ['r1', 'r_v2', 'r_v4', 'r_i3', 'ro_t2', 'ro_t3', 'ro_t4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
+});
+
+test('codo y rodilla: artritis séptica (co1) e isquemia aguda (r_v4, el mismo razonamiento que ca_v5) son urgencias', () => {
+  const preg = r => SYSTEMIC_SCREENING[r].sistemas.flatMap(s => s.preguntas);
+  assert.deepEqual(preg('codo').filter(q => q.urgencia && !q.id.startsWith('hem_') && !q.id.startsWith('pq_')).map(q => q.id), ['co_t1', 'co_t2', 'co1']);
+  assert.equal(preg('rodilla').find(q => q.id === 'r_v4').razonamiento, preg('cadera').find(q => q.id === 'ca_v5').razonamiento);
 });
 
 test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y descarta por separado', () => {

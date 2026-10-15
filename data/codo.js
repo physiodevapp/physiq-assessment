@@ -244,7 +244,7 @@ export const screening = {
         { texto: 'Infección reciente en otra localización', pregunta: 'co1' }
       ],
       preguntas: [
-        { id: 'co1', anatomia: ['art_codo'], text: '¿Hay fiebre, enrojecimiento intenso y calor local en la articulación del codo?', alerta: true,
+        { id: 'co1', anatomia: ['art_codo'], text: '¿Hay fiebre, enrojecimiento intenso y calor local en la articulación del codo?', alerta: true, urgencia: 'Sospecha de artritis séptica o de bursitis séptica del olécranon: derivación hoy.',
           razonamiento: {
             porque: 'La fiebre con enrojecimiento intenso y calor en el codo hace pensar en una infección: una artritis séptica de la articulación o una bursitis séptica del olécranon. La bursa del olécranon está justo bajo la piel, así que se infecta con facilidad por una herida o un roce.',
             peso: 'La artritis séptica es una emergencia ortopédica que destruye la articulación si se retrasa el tratamiento (Momodu y Savaliya); la fiebre solo aparece en el 40–60 %, así que su ausencia no la descarta. En la bursitis séptica del olécranon hay dolor a la palpación en el 88 %, enrojecimiento en el 83 %, calor en el 84 % y fiebre en el 38 %, frente al 36 %, 27 %, 56 % y 0 % de la no infecciosa (Pangia et al.). Lo que orienta a la articulación es el movimiento limitado y doloroso; en la bursitis suele conservarse. Ante la sospecha, derivación médica sin demora.',
