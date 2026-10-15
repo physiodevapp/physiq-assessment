@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **485** referencias de literatura, con **2250** usos.
+- **485** referencias de literatura, con **2259** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **376** de 485 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -153,8 +153,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pedret 2026](#pedret-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
-| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 14 | **sin revisar** |
-| [Maitland 2005](#maitland-2005) | plan de tratamiento | 26 | **sin revisar** |
+| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 22 | **sin revisar** |
+| [Maitland 2005](#maitland-2005) | plan de tratamiento | 27 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 1 | **sin revisar** |
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 9 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
@@ -4215,12 +4215,20 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.2.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.3.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES_PERIFERICOS.4.citas.0` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `FUENTE_REGISTRO` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `FUENTE_RETROSPECTIVA` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `PLANES_MES.A.notas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `PROGRESION_PERIFERICA` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `REGLAS_MES_PERIFERICAS.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `REGLAS_MES_PERIFERICAS.1` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `REGLAS_MES_PERIFERICAS.2` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `REGLAS_MES_PERIFERICAS.3` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.primeraSesion.fuente` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.anotarAumento.fuente` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionSiguiente` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.educacionPrimera` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cantidadPeriferica` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierre` | 6 · plan de tratamiento | 1 |
 
 ### Hennessy 2025
 
@@ -7442,6 +7450,7 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `ESCALONES.2.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES.3.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES.4.citas.0` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `FUENTE_REGISTRO` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `PLANES_MES.A.notas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `PLANES_MES.B.notas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `REGLAS_MES.0` | 6 · plan de tratamiento | 1 |
