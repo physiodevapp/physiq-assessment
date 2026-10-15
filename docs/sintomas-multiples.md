@@ -1,6 +1,6 @@
 # Varios síntomas (P1–P4) — diseño
 
-Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2** completo: las 7 regiones tienen zonas, revisadas por el usuario (2026-10). **Paso 3** (pistas en el árbol) hecho en lumbar (revisado por el usuario, 2026-10) y cervical (revisados por el usuario, 2026-10) y hombro (revisados por el usuario, 2026-10) y codo (revisados por el usuario, 2026-10) y cadera (revisados por el usuario, 2026-10) y rodilla (revisados por el usuario, 2026-10); queda tobillo y pie. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
+Estado: **decisiones cerradas (octubre 2026)**: el usuario aceptó las 9 decisiones y las propuestas de «Pendiente de decidir». **Paso 1 implementado en lumbar** (piloto). **Paso 2** completo: las 7 regiones tienen zonas, revisadas por el usuario (2026-10). **Paso 3** (pistas en el árbol) hecho en lumbar (revisado por el usuario, 2026-10) y cervical (revisados por el usuario, 2026-10) y hombro (revisados por el usuario, 2026-10) y codo (revisados por el usuario, 2026-10) y cadera (revisados por el usuario, 2026-10) y rodilla (revisados por el usuario, 2026-10) y tobillo y pie (revisados por el usuario, 2026-10): las 7 regiones tienen pistas. Seguimiento en `MIGRATION_PLAN.md`, Fase N.
 
 ## Decisiones tomadas (octubre 2026)
 Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
@@ -31,6 +31,7 @@ Aceptadas las 9 decisiones de abajo y, de «Pendiente de decidir»:
 - **Codo** (revisado por el usuario, 2026-10): co_step1 (trauma, rotura muscular, menores) → codo anterior (bíceps distal), medial (lanzador joven) y lateral (7–12 años); co_step3 (síntomas neurales) → codo medial (cubital), antebrazo y mano; co_step4 (epicondilalgias) → codo lateral, medial y posterior; co_step5 (inestabilidad o bloqueo) → codo medial, lateral y posterior. Sin pistas: co_step2 (movilidad global).
 - **Cadera** (revisado por el usuario, 2026-10): ca_step1 (¿referido de la columna o la sacroilíaca?) → zona lumbar y glúteo; ca_step1b (lesión aguda de ingle) → ingle; ca_step2 (perfil degenerativo) → ingle, muslo anterior y rodilla (referencia de la artrosis); ca_step3 (intraarticular) → ingle; ca_step4 (lateral) → cadera lateral; ca_step5 (posterior) → glúteo; ca_step6 (ingle, Doha) → ingle; ca_step7 (neuropático) → muslo anterior (meralgia) e ingle. Sin pistas: ca_step3b (Thomas).
 - **Rodilla** (revisado por el usuario, 2026-10): ro_step1b (Ottawa) → rodilla anterior (rótula) y lateral (cabeza del peroné); ro_step2b (menor: cadera primero) → muslo; ro_step2c (referido de cadera o columna) → muslo y pierna; ro_step3 (¿dónde se concentra?) → rodilla anterior, medial y lateral; ro_step4/5/6/7 (persistente anterior, medial, lateral, posterior) → su zona, más la pierna en el lateral (nervio peroneo) y en el posterior (TVP, quiste roto). Sin pistas: ro_step1 (mecanismo) y ro_step2 (perfil por edad).
+- **Tobillo y pie** (revisado por el usuario, 2026-10): tp_step2 (Ottawa, Thompson, Lisfranc, calcáneo) → tobillo lateral y medial, mediopié, Aquiles y talón; tp_step3 (mecanismo agudo) → tobillo lateral, anterior (sindesmosis) y medial (tibial posterior); tp_step4 (menores) → Aquiles y talón (Sever), mediopié (Köhler, Iselin), antepié (Freiberg); tp_step5 (no reproduce: origen proximal) → pantorrilla; tp_step6 (posterior) → Aquiles y pantorrilla; tp_step7/8/9 → tobillo medial, lateral y anterior; tp_step10 → talón o planta; tp_step11 → mediopié; tp_step12 → antepié o dedos; tp_step13 (dolor vago tras esguince) → tobillo lateral y anterior. Sin pistas: tp_step1 (¿traumatismo?). La zona «Mediopié» se añadió con este paso (usuario, 2026-10): sin ella el paso 11 no tenía zona.
 
 ## Por qué
 
@@ -90,7 +91,7 @@ Nada es obligatorio, como el resto de la fase 3. La fase sigue sin bloquear la n
 | Codo | Codo lateral · Codo medial · Codo posterior · Codo anterior · Antebrazo · Mano |
 | Cadera | Ingle · Cadera lateral · Glúteo · Muslo anterior · Rodilla · Zona lumbar |
 | Rodilla | Anterior / rótula · Medial · Lateral · Posterior (hueco poplíteo) · Muslo · Pierna |
-| Tobillo y pie | Tobillo lateral · Tobillo medial · Tobillo anterior · Tendón de Aquiles · Talón / planta · Antepié / dedos · Pantorrilla |
+| Tobillo y pie | Tobillo lateral · Tobillo medial · Tobillo anterior · Tendón de Aquiles · Talón / planta · Mediopié · Antepié / dedos · Pantorrilla |
 
 Más **Otra región (no valorada hoy)** con texto libre en todas. Una zona puede llevar `pasos: ['<stepId>']` del árbol de su región (decisión 8), revisados uno a uno. Lugar propuesto: `export const zonas` en cada `data/<region>.js`, junto al cribado y al árbol, para que la revisión clínica de una región quede en un solo archivo.
 

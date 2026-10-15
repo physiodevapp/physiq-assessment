@@ -183,7 +183,7 @@ test('síntomas: los `pasos` de cada zona existen en el árbol de su región, si
       z.pasos.forEach(p => assert.ok(ids.has(p), `${r}.${z.id}: paso inexistente ${p}`));
     });
   }
-  for (const r of ['lumbar', 'cervical', 'hombro', 'codo', 'cadera', 'rodilla']) assert.ok(ZONAS_SINTOMA[r].every(z => z.pasos?.length), `${r}: todas las zonas con pasos`);
+  for (const r of VALID_REGIONS) assert.ok(ZONAS_SINTOMA[r].every(z => z.pasos?.length), `${r}: todas las zonas con pasos`);
 });
 
 test('síntomas: pistas en el árbol — solo los síntomas con una zona ligada al paso; otra región nunca', () => {
@@ -253,6 +253,17 @@ test('síntomas: pistas en el árbol — rodilla: el muslo en el referido de cad
   assert.deepEqual(q('ro_step2c'), ['Síntoma P2:']);
   assert.deepEqual(q('ro_step7'), ['Síntoma P1 (principal):']);
   assert.deepEqual(q('ro_step1'), []);
+});
+
+test('síntomas: pistas en el árbol — tobillo y pie: el Aquiles en Thompson; el tobillo lateral en el dolor vago tras esguince', () => {
+  const st = { region: 'tobillo_pie', severidad: 5,
+    sintomaPrincipal: { ...vacio(), zonas: ['tobillo_lat'] },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['aquiles'], nrs: 3, relacion: 'independiente' }] };
+  const z = ZONAS_SINTOMA.tobillo_pie, q = paso => S.pistasSintomasPaso(st, z, paso).map(x => x.q);
+  assert.deepEqual(q('tp_step2'), ['Síntoma P1 (principal):', 'Síntoma P2:']);
+  assert.deepEqual(q('tp_step13'), ['Síntoma P1 (principal):']);
+  assert.deepEqual(q('tp_step1'), []);
+  assert.ok(z.find(x => x.id === 'mediopie').pasos.includes('tp_step11'), 'el mediopié tiene zona');
 });
 
 test('síntomas: pistas en el árbol — el recuadro «📝» las pinta escapadas (el paso real, en el smoke test)', () => {

@@ -3122,8 +3122,16 @@ async function checkSintomas(page) {
   await page.waitForSelector('#ro_step1b .fp-pistas');
   r.pistaRodilla = await page.evaluate(() => document.querySelector('#ro_step1b .fp-pistas').textContent.includes('Síntoma P1 (principal): Rodilla anterior (rótula)')
     && !('ro_step1b' in state.treeAnswers) && !document.querySelector('#ro_step1 .fp-pistas'));
-  r.tobillo = await zonasDe('tobillo_pie', ['Tobillo lateral', 'Tobillo medial', 'Tobillo anterior', 'Tendón de Aquiles', 'Talón o planta', 'Antepié o dedos', 'Pantorrilla'], false);
-  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.pistaArbol && r.fase5 && r.cervical && r.pistaCervical && r.pistaHombro && r.pistaCodo && r.pistaCadera && r.pistaRodilla && r.hombro && r.codo && r.cadera && r.rodilla && r.tobillo;
+  r.tobillo = await zonasDe('tobillo_pie', ['Tobillo lateral', 'Tobillo medial', 'Tobillo anterior', 'Tendón de Aquiles', 'Talón o planta', 'Mediopié', 'Antepié o dedos', 'Pantorrilla'], false);
+  // Pistas en el árbol de tobillo y pie: el tobillo lateral sale en el paso 2
+  // (Ottawa), que aparece al contestar SÍ al 1; la pista no contesta el 2
+  await page.click('#sintItem_0 .sint-zona:has-text("Tobillo lateral")');
+  await page.evaluate(() => goToPhase(4));
+  await page.click('#tp_step1 .option-group .option-btn >> nth=0');
+  await page.waitForSelector('#tp_step2 .fp-pistas');
+  r.pistaTobillo = await page.evaluate(() => document.querySelector('#tp_step2 .fp-pistas').textContent.includes('Síntoma P1 (principal): Tobillo lateral')
+    && !('tp_step2' in state.treeAnswers) && !document.querySelector('#tp_step1 .fp-pistas'));
+  r.ok = r.sinCuarto && r.otraSinRelacion && r.quitarVacio && r.cabe && r.restaurado && r.cambio && r.quitarCancelado && r.pistaArbol && r.fase5 && r.cervical && r.pistaCervical && r.pistaHombro && r.pistaCodo && r.pistaCadera && r.pistaRodilla && r.pistaTobillo && r.hombro && r.codo && r.cadera && r.rodilla && r.tobillo;
   return r;
 }
 
@@ -3292,7 +3300,7 @@ const SECCIONES = [
     const page = await nuevaPagina(browser, errors);
     try {
       const r = await checkSintomas(page);
-      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; pistas en el paso del árbol (lumbar, con las del formulario, sin la otra región, sin contestarlo; cervical, la mano en el paso 1; hombro, el cuello en el paso 1; codo, el anterior en el paso 1; cadera, el glúteo en el paso 1; rodilla, la rótula en el 1b); fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad y borra las relaciones; pistas en el paso del árbol (lumbar, con las del formulario, sin la otra región, sin contestarlo; cervical, la mano en el paso 1; hombro, el cuello en el paso 1; codo, el anterior en el paso 1; cadera, el glúteo en el paso 1; rodilla, la rótula en el 1b; tobillo y pie, el lateral en el 2); fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
       return r.ok;
     } finally { await page.context().close(); }
   } },
