@@ -147,7 +147,7 @@ test('banderas: ⓘ solo cuando hay «¿Por qué?»; «· fase 1» con fase1; el
 test('banderas: lumbar, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
   const enlaces = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_'))
     .flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => typeof f !== 'string');
-  assert.equal(enlaces.filter(f => f.pregunta).length, 21);
+  assert.equal(enlaces.filter(f => f.pregunta).length, 28);
   assert.deepEqual(enlaces.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4', 'br1']);
   // Razonamiento propio: las 8 rojas sin pregunta y 2 amarillas
   const propias = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => [
@@ -155,9 +155,9 @@ test('banderas: lumbar, cada bandera enlazada según el inventario (docs/razonam
     ...s.banderasAmarillas.filter(f => f.razonamiento).map(f => `A ${f.texto.split(' ').slice(0, 2).join(' ')}`)]);
   assert.deepEqual(propias, ['R Pérdida de', 'R Fractura patológica', 'A Dolor lumbar', 'R Prueba de', 'R Masa testicular',
     'R Pérdida de', 'R Síntomas oculares', 'A Historia familiar', 'R Síndrome de', 'R Signos neurológicos']);
-  // Ninguna roja propia de lumbar sin «¿Por qué?»
+  // Ninguna bandera propia de lumbar sin «¿Por qué?» (las amarillas, enlazadas en 2026-10)
   const sinPorque = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_'))
-    .flatMap(s => s.banderasRojas).filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento));
+    .flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento));
   assert.deepEqual(sinPorque.map(textoBandera), []);
 });
 
@@ -182,11 +182,11 @@ test('banderas: cervical, cada bandera enlazada según el inventario (docs/razon
   assert.equal(banderas.filter(f => f.pregunta).length, 36);
   assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4']);
   const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
-  assert.deepEqual(propias, ['Síncope repentino', 'Prueba de', 'Dolor de']);   // la mielopatía, en cv_n4
-  // «Dolor que no cambia…» solo marca la fase 1 (br4)
+  assert.deepEqual(propias, ['Síncope repentino', 'Prueba de', 'Dolor que', 'Dolor de']);   // la mielopatía, en cv_n4
+  // «Dolor que no cambia…» marca la fase 1 (br4) y lleva su propio razonamiento
   const sinPorque = propios.flatMap(s => [...s.banderasRojas.map(f => ['R', f]), ...s.banderasAmarillas.map(f => ['A', f])])
     .filter(([, f]) => typeof f === 'string' || (!f.pregunta && !f.razonamiento)).map(([t, f]) => `${t} ${textoBandera(f).split(' ').slice(0, 2).join(' ')}`);
-  assert.deepEqual(sinPorque, ['A Dolor que']);
+  assert.deepEqual(sinPorque, []);
 });
 
 test('banderas: hombro, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {

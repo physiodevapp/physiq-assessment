@@ -833,7 +833,7 @@ async function checkRazonamientoMovil(page) {
 // «¿Por qué?» de las banderas (docs/razonamiento-banderas.md): el ⓘ de una
 // bandera enlazada abre el panel del razonamiento con su pregunta (escritorio:
 // lateral; 390 px: sheet que atrás cierra en la fase 2); una bandera sin
-// «¿Por qué?» no lo lleva. Posquirúrgico: en lumbar no se ven las banderas de
+// «¿Por qué?» no lo lleva (hoy todas lo tienen). Posquirúrgico: en lumbar no se ven las banderas de
 // miembros (compartimental, nervio, SDRC, yeso), en rodilla sí, con su ⓘ.
 async function checkBanderas(browser) {
   const r = {};
@@ -843,9 +843,11 @@ async function checkBanderas(browser) {
   await irAFase2(page, 'lumbar');
   await page.click('#tab_l_espondilo');
   const panel = '#panel_l_espondilo';
+  // Fase M cerrada: toda bandera propia de lumbar lleva su ⓘ (la regla «sin
+  // «¿Por qué?», sin ⓘ» la cubre el test unitario con banderas de prueba)
   r.sinPorque = await page.evaluate(() => {
-    const f = [...document.querySelectorAll('#panel_l_gi .flag-item')].filter(el => /AINEs/.test(el.textContent));
-    return f.length === 1 && !f[0].querySelector('.flag-porque');
+    const f = [...document.querySelectorAll('.sistema-panel:not([id^="panel_transversal_"]) .flag-item, [id^="panel_l_"] .flag-item')];
+    return f.length > 0 && f.every(el => el.querySelector('.flag-porque'));
   });
   await page.click(`${panel} .flag-item:has-text("Embarazo ectópico") .flag-porque`);
   // Esperar a que termine de entrar (con carga, la transición tarda más)
