@@ -2504,7 +2504,7 @@ function buildPhaseSheetList() {
 
     let stateClass = 'psi-blocked';
     let statusText = '🔒 No disponible';
-    let iconContent = String(i + 1);
+    let iconContent = String(def.n);   // el número de la fase («4b»), no la posición en la lista
 
     if (isActive) {
       stateClass = 'psi-active';

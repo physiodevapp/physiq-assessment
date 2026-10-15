@@ -3514,6 +3514,11 @@ async function checkSintomas(page) {
   await page.click('#sintItem_0 .sint-zona:has-text("Zona lumbar")');
   await page.click('#sintItem_0 .sint-zona:has-text("Glúteo")');
   await page.click('#phase3 .nrs-btn >> nth=7');
+  // «+ Añadir síntoma» con el estilo de botón de la app (no el nativo): 44 px y radio
+  r.botonAnadir = await page.evaluate(() => {
+    const b = document.querySelector('.sint-anadir'), cs = getComputedStyle(b);
+    return b.getBoundingClientRect().height >= 44 && cs.borderRadius === '10px' && /Outfit/.test(cs.fontFamily);
+  });
   for (let n = 0; n < 3; n++) await page.click('.sint-anadir');
   r.sinCuarto = await page.locator('.sint-anadir').count() === 0;
   await page.click('#sintItem_1 .sint-zona:has-text("Pierna por debajo")');
@@ -3715,11 +3720,15 @@ const SECCIONES = [
       const a = c?.getBoundingClientRect(), i = c?.querySelector('svg')?.getBoundingClientRect();
       return !!i && Math.abs((a.top + a.bottom) / 2 - (i.top + i.bottom) / 2) < 1 && Math.abs((a.left + a.right) / 2 - (i.left + i.right) / 2) < 1;
     });
-    console.log(`  ${iconoCentrado ? '✓' : '✗'} hoja de fases: la flecha de la fase actual está centrada en su círculo`);
+    // Cada círculo lleva el número de su fase (4b, 5, 6), no la posición
+    const numeros = await page.evaluate(() => [...document.querySelectorAll('.phase-sheet-item.psi-blocked')]
+      .map(it => [it.querySelector('.phase-sheet-icon').textContent.trim(), it.querySelector('.phase-sheet-name').textContent.match(/^Fase (\S+)/)?.[1]]));
+    const numerosOk = numeros.some(([c]) => c === '4b') && numeros.every(([c, f]) => c === f);
+    console.log(`  ${iconoCentrado && numerosOk ? '✓' : '✗'} hoja de fases: la flecha de la fase actual está centrada en su círculo; los círculos llevan el número de la fase (${numeros.map(([c]) => c).join(', ')})`);
     await page.evaluate(() => closePhaseSheet());
     const barraFase = await checkBarraFase(page);
     console.log(`  ${barraFase.ok ? '✓' : '✗'} barra de fase en móvil: botón entero sin caja en «≡», aria-expanded vuelve a false al cerrar; chip «Breve» en la barra (no en la cabecera) en móvil y en la cabecera en escritorio; cabe a 320 px${barraFase.ok ? '' : ' ' + JSON.stringify(barraFase)}`);
-    return sheetOpen === true && iconoCentrado && barraFase.ok;
+    return sheetOpen === true && iconoCentrado && numerosOk && barraFase.ok;
   } },
 
   { id: 'banda-formulario', titulo: 'Bandas de contexto del formulario previo y del cribado:', run: async ({ page }) => {
