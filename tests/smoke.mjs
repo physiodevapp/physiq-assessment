@@ -1417,6 +1417,17 @@ async function checkCitas(browser, errors) {
   r.enFrase3 = await page.evaluate(() => !!document.querySelector('#irritabilidadResumen .cita[data-cita="Barakatt 2009"]'));
   await page.evaluate(() => goToPhase(6));
   await page.waitForSelector('#planContenido .card');
+  // Fase O3: razonamiento (4b) con citas tocables; «Ampliar con IA» sigue leyendo el párrafo entero
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForSelector('#hypothesisCards .test-item', { state: 'attached' });
+  r.razon4b = await page.evaluate(async () => {
+    const x = document.querySelector('#phase4b .razon-cuerpo p .cita, #phase4b .test-criterion .cita');
+    if (!x) return false;
+    const { textoDe } = await import('./ampliar-ia.js');
+    return textoDe(x.closest('p, .test-criterion')).includes(x.dataset.cita);
+  });
+  await page.evaluate(() => goToPhase(6));
+  await page.waitForSelector('#planContenido .card');
   // Calculadora: la fuente es cita; Escape cierra la ficha y deja el panel abierto
   await page.click('#cuestBtn');
   await page.click('[data-cuest="phq9"]');
@@ -4173,7 +4184,7 @@ const SECCIONES = [
 
   { id: 'citas', titulo: 'Citas tocables (fuentes de las fases 2–6 y de la calculadora):', run: async ({ browser, errors }) => {
     const c = await checkCitas(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} en el texto solo autor y año; al tocar, la ficha con la cita entera y «Abrir ↗» en pestaña nueva, junto a la cita; se cierra con la misma cita, fuera, Escape (foco de vuelta), al desplazar y al cambiar de fase; con teclado el foco va al enlace; al imprimir, la cita entera; en la fase 6 y en la calculadora también (Escape cierra la ficha antes que el panel); a 320 px táctil cabe sin desbordar${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} en el texto solo autor y año; al tocar, la ficha con la cita entera y «Abrir ↗» en pestaña nueva, junto a la cita; se cierra con la misma cita, fuera, Escape (foco de vuelta), al desplazar y al cambiar de fase; con teclado el foco va al enlace; al imprimir, la cita entera; dentro de una frase en las fases 3, 4b y 6 («Ampliar con IA» sigue leyendo el párrafo entero), en la fase 6 y en la calculadora también (Escape cierra la ficha antes que el panel); a 320 px táctil cabe sin desbordar${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
