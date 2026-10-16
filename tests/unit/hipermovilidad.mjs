@@ -155,3 +155,22 @@ test('normalizar: sesiones anteriores y valores raros', () => {
 test('se despliega: lib/hipermovilidad.js en deploy-to-hub.yml', () => {
   assert.ok(leer('.github', 'workflows', 'deploy-to-hub.yml').includes('lib/hipermovilidad.js'));
 });
+
+// physiq-report (lib/payload.js, _bloqueHM) lleva una copia de bloqueHMIA() y
+// su test fija estos mismos textos: si cambian aquí, se copian allí (casos y
+// textos) y en su _TEXTOS_HM.
+const HM_CASOS = {
+  sospecha: [{ es: "sospecha", st: "", bt: 5, co: 5, cu: 3, hag: true, vs: true },
+    "Hipermovilidad (condición especial marcada por el fisioterapeuta):\n  · Estado: sospecha\n  · Beighton 5/9 (corte 5): hipermovilidad articular generalizada\n  · Cuestionario de 5 preguntas: 3 «sí»\n  · Es una sospecha: no escribas que el paciente tiene un síndrome de Ehlers-Danlos.\n  · Consideraciones para el plan: Ejercicio graduado; vigila la carga para asegurar la recuperación. El dolor empeora con la actividad y puede aparecer en las 24 h siguientes. Hipermovilidad articular generalizada: valorar derivación a reumatología o genética. No es un diagnóstico de SED hipermóvil, que exige además otros criterios. Rasgos que hacen sospechar el subtipo vascular: derivación preferente a genética. Si hay disautonomía o síntomas digestivos o urinarios importantes, derivar al especialista."],
+  vascular: [{ es: "diagnosticada", st: "vascular", bt: null, co: null, cu: null, hag: null, vs: false },
+    "Hipermovilidad (condición especial marcada por el fisioterapeuta):\n  · Estado: diagnosticada (subtipo vascular)\n  · Consideraciones para el plan: Ejercicio graduado; vigila la carga para asegurar la recuperación. El dolor empeora con la actividad y puede aparecer en las 24 h siguientes. Subtipo vascular: evitar deportes de colisión, ejercicio isométrico y aceleraciones bruscas; intensidad que permita conversar, control de la respiración al levantar peso y cargas ligeras. Si hay disautonomía o síntomas digestivos o urinarios importantes, derivar al especialista."],
+  hipermovil: [{ es: "diagnosticada", st: "hipermovil", bt: 3, co: 6, cu: null, hag: false, vs: false },
+    "Hipermovilidad (condición especial marcada por el fisioterapeuta):\n  · Estado: diagnosticada (subtipo hipermóvil (SEDh) o TEH)\n  · Beighton 3/9 (corte 6): sin hipermovilidad articular generalizada\n  · Consideraciones para el plan: Ejercicio graduado; vigila la carga para asegurar la recuperación. El dolor empeora con la actividad y puede aparecer en las 24 h siguientes. Si hay disautonomía o síntomas digestivos o urinarios importantes, derivar al especialista."],
+  ns: [{ es: "diagnosticada", st: "ns", bt: null, co: null, cu: null, hag: null, vs: true },
+    "Hipermovilidad (condición especial marcada por el fisioterapeuta):\n  · Estado: diagnosticada\n  · Consideraciones para el plan: Ejercicio graduado; vigila la carga para asegurar la recuperación. El dolor empeora con la actividad y puede aparecer en las 24 h siguientes. Rasgos que hacen sospechar el subtipo vascular: derivación preferente a genética. Si hay disautonomía o síntomas digestivos o urinarios importantes, derivar al especialista."],
+  otro: [{ es: "diagnosticada", st: "otro", bt: 4, co: null, cu: null, hag: null, vs: false },
+    "Hipermovilidad (condición especial marcada por el fisioterapeuta):\n  · Estado: diagnosticada (subtipo otro)\n  · Beighton 4/9\n  · Consideraciones para el plan: Ejercicio graduado; vigila la carga para asegurar la recuperación. El dolor empeora con la actividad y puede aparecer en las 24 h siguientes. Si hay disautonomía o síntomas digestivos o urinarios importantes, derivar al especialista."],
+};
+test('bloqueHMIA: el texto que physiq-report copia, literal', () => {
+  for (const [k, [d, esperado]] of Object.entries(HM_CASOS)) assert.equal(HMX.bloqueHMIA(d), esperado, k);
+});
