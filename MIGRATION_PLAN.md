@@ -294,6 +294,6 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
 - [x] Fase 2: `SIS_HIPERMOVILIDAD` (cuestionario de 5 preguntas, escala de Beighton, subtipo vascular) con razonamiento
 - [x] Fase 4b: campo `laxitud: true` (16 tests) y aviso
 - [x] Fase 5, 📋 Notas, 📄 Informe, payload `hm`, informe con IA, pendiente en modo breve (pruebas unitarias y sección `hipermovilidad` de la prueba de humo)
-- [ ] Revisión del usuario en la app antes de `main`
+- [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
 - [x] physiq-report: leer `hm` del payload (otro repositorio): `_bloqueHM()` en su `lib/payload.js`, copia literal de `bloqueHMIA()`; un test en cada repositorio fija el mismo texto (2026-10)
 - [ ] Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)
