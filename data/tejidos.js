@@ -181,8 +181,14 @@ export const TIEMPOS_TEJIDO = {
             // PDF del usuario leído: tras la reparación, el 89 % vuelve al trabajo sin cambiar de
             // tareas, a las 14,37 semanas de media (17 estudios); «a range between 3 and 4 months,
             // with variation dependent on job demands». 3–4 meses = «2–3 m» a «3–6 m» (4–5).
-            { id: 'biceps_distal_reparado', mide: 'deporte', nombre: 'Bíceps distal, reparado', desde: 4, hasta: 5, fuentes: ['Rubinger 2020'],
-              nota: 'Vuelta al trabajo a las 14 semanas de media (3–4 meses, según lo exigente que sea el trabajo); el 89 % vuelve sin cambiar de tareas. Mide la vuelta al trabajo, no al deporte.' },
+            { id: 'biceps_distal_reparado', mide: 'deporte', nombre: 'Bíceps distal reparado, vuelta al trabajo', desde: 4, hasta: 5, fuentes: ['Rubinger 2020'],
+              nota: 'Vuelta al trabajo a las 14 semanas de media (3–4 meses, según lo exigente que sea el trabajo); el 89 % vuelve sin cambiar de tareas.' },
+            // Boufadel 2025 (revisión sistemática, 42 estudios, 1093 pacientes) y Pitsilos 2022 (10
+            // estudios, 157 deportistas), PDF del usuario leídos: vuelta al deporte del 91,5 %, «a mean
+            // time of 6.3 months» (18 estudios, de 3,0 a 12,55 meses) y 9,4 meses en deportistas;
+            // Pitsilos, «a mean time of 6.2 months». 6–9 meses = «3–6 m» a «6m–1a» (5–6).
+            { id: 'biceps_distal_deporte', mide: 'deporte', nombre: 'Bíceps distal reparado, vuelta al deporte', desde: 5, hasta: 6, fuentes: ['Boufadel 2025', 'Pitsilos 2022'],
+              nota: 'Vuelve al deporte el 91,5 %, a los 6,3 meses de media (de 3 a 12,5 meses); en deportistas, a los 6–9 meses.' },
           ],
         },
       ],
@@ -747,8 +753,8 @@ export const TIEMPOS_TEJIDO = {
     co1: ['epicondilalgia_lateral'],
     co2: ['epicondilalgia_medial'],
     // Sin cirugía, la barra general (biología del tendón, Wu 2017), sin los subtipos de Aquiles y
-    // manguito; operado, el subtipo del bíceps distal (Rubinger 2020)
-    co7: [{ id: 'tendon_rotura', soloFila: true, posq: false }, { id: 'biceps_distal_reparado', posq: true }],
+    // manguito; operado, los subtipos del bíceps distal (vuelta al trabajo y al deporte)
+    co7: [{ id: 'tendon_rotura', soloFila: true, posq: false }, { id: 'biceps_distal_reparado', posq: true }, { id: 'biceps_distal_deporte', posq: true }],
     co4: ['codo_lcc'],
     // Latigazo: el plazo de la guía es el del agudo
     ce5: [{ id: 'wad_agudo', cronologia: 'Agudo (<6 semanas)' }],
