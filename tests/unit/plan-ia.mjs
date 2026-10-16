@@ -295,9 +295,15 @@ test('plan: técnicas neurales según el escalón (decisión 118, Butler 2000)',
   assert.deepEqual(r('- Slump deslizador, 10 repeticiones sin que duela; sin mantener la posición.'), [], 'negado en su frase');
   assert.deepEqual(r('- Plancha: mantén 10 segundos.'), [], 'no es neural');
   assert.deepEqual(r('- Slump: 3 series de 30 segundos.', 3), [], 'escalón 3');
+  assert.deepEqual(r('- Slump deslizador: oscilaciones lentas en series de 20–30 s.'), [], 'segundos de oscilación (decisión 119, Butler 1991)');
+  assert.deepEqual(r('- Slump en tensión mantenido 30 s.', 3), ['neural-tensor'], 'escalón 3: más de 10 s mantenido');
+  assert.deepEqual(r('- Slump mantenido 10 s.', 3), [], 'escalón 3: hasta 10 s');
+  assert.match(D.AVISOS.neuralRadicular, /oscilaciones lentas de gran amplitud \(grado II\) en series de unos 20–30 s.*como mucho 10 s.*\(Butler 1991, pp\. 188–189 y 192–193\)/);
   const en = conAndres({}, () => UI.contextoPlanIA().entrada);
   assert.ok(en.neural, 'Andrés tiene una hipótesis radicular');
-  assert.match(PIA.promptPlan(en), /13\. Técnicas neurales.*solo deslizadores.*nada de tensores ni de posiciones mantenidas/);
-  assert.match(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 3 } }), /13\. Técnicas neurales.*tensores solo graduados/);
+  assert.match(PIA.promptPlan(en), /13\. Técnicas neurales.*lejos de la zona de síntomas.*solo deslizadores.*series de unos 20–30 s.*nada de tensores ni de posiciones mantenidas.*una o dos maniobras, unos minutos al día/);
+  assert.match(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 3 } }), /13\. Técnicas neurales.*grado III \(mejor tolerado\); tensores solo graduados.*como mucho 10 s/);
+  assert.doesNotMatch(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 3 } }), /o grado IV/, 'el escalón 3 no admite grado IV');
+  assert.match(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 4 } }), /grado III \(mejor tolerado\) o grado IV/);
   assert.doesNotMatch(PIA.promptPlan({ ...en, neural: false }), /13\. Técnicas neurales/);
 });
