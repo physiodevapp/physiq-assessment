@@ -26,6 +26,7 @@ for (const tema of [
   'plan-ia.mjs',
   'sintomas.mjs',
   'citas.mjs',
+  'silueta.mjs',
 ]) await import(`./unit/${tema}`);
 
 // ── Summary ───────────────────────────────────────────────────────────────────
