@@ -350,8 +350,8 @@ Regiones periféricas:
   ↳ decisión 10 de docs/plan-tratamiento.md
 - [ ] «No usar ninguna técnica cervical que produzca mareo; probar antes con movimientos exploratorios (Maitland 2005, cap. 9, p. 224).»  
   ↳ fuente en el texto (Maitland 2005)
-- [ ] «Técnicas neurales (p. ej., el slump): rara vez son la primera técnica. Si se usan con vigor, dejar 2–3 días entre sesiones y reevaluar a las 24 h, porque las estructuras del canal tardan más en recuperarse de las agujetas (Maitland 2005, cap. 6, p. 149).»  
-  ↳ fuente en el texto (Maitland 2005)
+- [ ] «Técnicas neurales (p. ej., el slump): rara vez son la primera técnica. Si se usan con vigor, dejar 2–3 días entre sesiones y reevaluar a las 24 h, porque las estructuras del canal tardan más en recuperarse de las agujetas (Maitland 2005, cap. 6, p. 149). En fase aguda o irritable, deslizadores antes que tensores, con el resto del cuerpo descargado y antes de provocar el síntoma; dosificar por repeticiones, no por el dolor, y progresar primero en repeticiones; si no mejora en 2–3 sesiones, cambiar de técnica (Butler 2000, pp. 379–381, 387 y 391).»  
+  ↳ fuente en el texto (Maitland 2005, Butler 2000)
 - [ ] «Sin manipulación forzada con signos de dos raíces cervicales o signos medulares; la movilización suave sí puede ser adecuada, y los cambios neurológicos no impiden movilizar con suavidad desde el principio (Maitland 2005, cap. 9, pp. 222–223).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «En la fase aguda (menos de 1 mes) la pauta de Kuijper 2009 es sin terapia manual: ahí los escalones no se aplican. La movilización o manipulación entra en la fase crónica (Blanpied 2017, B).»  
@@ -377,7 +377,7 @@ Regiones periféricas:
 - [ ] «Dolor radiohumeral intraarticular (plica): con patología intraarticular, de grado II− a III o III− (Hengeveld y Banks 2005, cap. 7, tabla 7.2, p. 176); si duele mucho, el movimiento longitudinal cefálico del radio cuando alivia el dolor (cap. 12, p. 389).»  
   ↳ fuente en el texto (Hengeveld y Banks 2005)
 - [ ] «Atrapamiento de un nervio en el codo: los escalones se refieren a la articulación. Para el nervio, movilizar las interfases que lo rodean y recuperar su deslizamiento y su tensión (Butler 2000, citado en Hengeveld y Banks 2005, cap. 12, p. 371); el anteroposterior y el longitudinal caudal de la cabeza del radio sirven como movilización de la interfase de un nervio radial mecanosensible (pp. 387–388). Los signos neurológicos se exploran pronto y no se empeoran con pruebas vigorosas (cap. 6, p. 158).»  
-  ↳ fuente en el texto (Hengeveld y Banks 2005)
+  ↳ fuente en el texto (Hengeveld y Banks 2005, Butler 2000)
 - [ ] «Codo en crecimiento (apofisitis o avulsión del epicóndilo medial, enfermedad de Panner u osteocondritis del capítulo): ninguna fuente leída trata la movilización pasiva del codo con el esqueleto inmaduro (el cap. 12 de Peripheral solo nombra la osteocondritis disecante; Hengeveld y Banks 2005, cap. 12, p. 390), y la pauta del lanzador joven es de descanso y ajuste de las cargas (Lluch 2020, cap. 3.2, p. 94). Los escalones de terapia manual no se aplican.»  
   ↳ fuente en el texto (Hengeveld y Banks 2005, Lluch 2020)
 - [ ] «Artrosis de rodilla: la terapia manual, solo junto al ejercicio (NICE NG226, rec. 1.3.6). Movimientos accesorios al final del recorrido y a lo largo de él, con amplitudes grandes, y progresar a la compresión si hace falta; si el problema es estable, también fisiológicos, sobre todo las combinaciones en extensión (Hengeveld y Banks 2005, cap. 15, cuadro 15.2, p. 517). En una reagudización, el anteroposterior y el posteroanterior de la tibia en grados I y II (pp. 507–508); la extensión en grado III, para el dolor y la rigidez a lo largo del recorrido (p. 500). En una articulación con artrosis, grados II o III− también cuando lo que se trata es otra estructura (cap. 8, p. 224).»  
