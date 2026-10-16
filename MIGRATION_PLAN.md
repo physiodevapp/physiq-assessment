@@ -281,3 +281,19 @@ Qué mide cada barra (`mide`: vuelta al deporte, protección, programa, biologí
 - [x] Abrir el panel ya filtrado por la hipótesis activa (2026-10): `porHipotesis` en `data/tejidos.js` asigna 31 hipótesis a sus filas o subtipos (algunas según el mecanismo Post-quirúrgico: LCA sin cirugía o reconstruido, Aquiles, menisco, fracturas…); con alguna activa, el panel se abre con una primera pastilla «Este paciente» que deja solo esas filas, con los subtipos desplegados, y dice de qué hipótesis salen. No se guarda como preferencia. Las hipótesis sin fila propia (atrapamientos nerviosos, tendinopatías crónicas sin subtipo, dolor lumbar inespecífico…) no tienen entrada. Diseño y tabla: `docs/tiempos-tejido.md`, «Este paciente». Unit (`tejidos`) y smoke (`tejidos`). Revisado por el usuario (2026-10) y en `main` (PR 423).
 - [x] Ampliación de «Este paciente» (2026-10): condiciones `mecanismo` y `cronologia` además de `posq` (lumbalgia inespecífica `lu1`, `lu2`, `lu6`, `lu7`, `lu9` → «Lumbalgia aguda» solo con cronología aguda; `h4` → luxación anterior solo con mecanismo Traumático), `soloFila` (`co7`: la barra general de rotura de tendón, sin los subtipos de Aquiles y manguito) y aviso de las hipótesis activas sin plazo propio. Unit y smoke (`tejidos`).
 - [x] Fila 12 (2026-10): filas de «programa» (y una de evolución y otra de vuelta al deporte) para `ro3`, `ro6`, `ro15`, `tp14`, `tp21`, `h8`, `ce5` (solo aguda), `ce13`, `ca2`/`ca3`, `ca16`, `ca19` y `co4`, cada una con su fuente releída en la sesión (PDF del usuario); tabla en `docs/tiempos-tejido.md`, «Fila 12». `tp36` no: Rathleff 2020 solo incluyó la Osgood-Schlatter. Subtipos «Bíceps distal reparado» para `co7` operado: vuelta al trabajo (Rubinger 2020) y al deporte (Boufadel 2025, Pitsilos 2022); sin fuente para el no operado; revisión del usuario antes de `main`.
+
+## Fase P — Condiciones especiales: hipermovilidad / Ehlers-Danlos (piloto)
+
+Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transversal como la del paciente posquirúrgico: tarjeta en la fase 1 (No consta · Diagnosticada · Sospecha), sistema de la fase 2 que solo aparece si se activa, aviso en los tests de laxitud de la fase 4b (sin cambiar su LR) y recuadro en la fase 5. El árbol CIF y el motor de puntuación no se tocan. Criterio de entrada para otras condiciones: que cambien la seguridad o la interpretación de la valoración.
+
+- [x] Decisiones clínicas cerradas (las 5 recomendaciones, 2026-10)
+- [x] Leer enteras Malfait 2017, Byers 2017 y Engelbert 2017 (PDF del usuario, 2026-10). Hakim y Grahame 2003 se cita a través de la tabla III de Malfait 2017. Cortes de Beighton corregidos (≥6 prepúberes y adolescentes, ≥5 hasta los 50, ≥4 por encima)
+- [x] Revisión del borrador (2026-10, aceptadas las 5 recomendaciones): aviso de laxitud solo como regla de técnica (sin fuente directa sobre la precisión); cuestionario con traducción propia ajustada; urgencia vascular en 3 preguntas y regla de sospecha (1 mayor o ≥2); 16 tests con `laxitud` (sin las compuestas de `ro4`); recuadro de la fase 5 pegado a las fuentes, línea vascular solo con el subtipo diagnosticado, TA fuera del piloto
+- [x] Visto bueno del usuario a la redacción (2026-10)
+- [x] Fase 1: tarjeta «Hipermovilidad» (`state.hipermovilidad`, `body.hipermovilidad`)
+- [x] Fase 2: `SIS_HIPERMOVILIDAD` (cuestionario de 5 preguntas, escala de Beighton, subtipo vascular) con razonamiento
+- [x] Fase 4b: campo `laxitud: true` (16 tests) y aviso
+- [x] Fase 5, 📋 Notas, 📄 Informe, payload `hm`, informe con IA, pendiente en modo breve (pruebas unitarias y sección `hipermovilidad` de la prueba de humo)
+- [ ] Revisión del usuario en la app antes de `main`
+- [ ] physiq-report: leer `hm` del payload (otro repositorio)
+- [ ] Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)
