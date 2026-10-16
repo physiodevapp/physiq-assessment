@@ -297,3 +297,4 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
 - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
 - [x] physiq-report: leer `hm` del payload (otro repositorio): `_bloqueHM()` en su `lib/payload.js`, copia literal de `bloqueHMIA()`; un test en cada repositorio fija el mismo texto (2026-10)
 - [ ] Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)
+  - [ ] Tarlov: diseño propuesto en `docs/tarlov.md` (2026-10), pendiente de las decisiones del usuario y de leer Hulens 2018 y StatPearls (Lim y Selbi 2023)
