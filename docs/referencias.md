@@ -1800,7 +1800,7 @@ Título: *The Sensitive Nervous System*
 Publicación: Adelaida: Noigroup Publications; ISBN 0-9750910-2-6  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Libro de texto (opinión experta), aportado por el usuario (2026-10). Leídos los caps. 7 (precauciones con la exploración neural, p. 170), 14 «Management strategies» (pp. 368–393) y parte del 15 (pp. 400–416). Fase 6 (decisión 118): en estados agudos y sensibles, movimiento con el cuerpo descargado y desde lejos (p. 379); técnicas antes del dolor o rozándolo en lo agudo, en el dolor solo en lo crónico, con la mínima fuerza (pp. 380–381); progresar en repeticiones, mejoría en 2–3 sesiones (p. 380); el deslizador exige menos que el tensor, que provoca más síntomas y defensa (p. 387); dosificar por tiempo o número, no por dolor (p. 391). No da tiempos ni series.
+Nota: Libro de texto (opinión experta), aportado por el usuario (2026-10). Leídos los caps. 7 (precauciones con la exploración neural, p. 170), 14 «Management strategies» (pp. 368–393) y parte del 15 (pp. 400–416). Fase 6 (decisión 118): en estados agudos y sensibles, movimiento con el cuerpo descargado y desde lejos (p. 379); técnicas antes del dolor o rozándolo en lo agudo, en el dolor solo en lo crónico, con la mínima fuerza (pp. 380–381); progresar en repeticiones, mejoría en 2–3 sesiones (p. 380); el deslizador exige menos que el tensor, que provoca más síntomas y defensa (p. 387); dosificar por tiempo o número, no por dolor (p. 391). Aviso del codo: el «neural container» (la interfase, p. 37) se trata primero cuando su componente es claro (p. 380) y la descompresión conservadora mejora el tejido que rodea al nervio (p. 400). No da tiempos ni series.
 
 Citada como:
 
