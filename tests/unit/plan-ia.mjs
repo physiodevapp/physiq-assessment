@@ -242,6 +242,9 @@ const PLANES_REALES = [
     ['volumen', 'Descansa 1 minuto y haz otra serie de 8'],
     ['volumen', 'Descansa 1 minuto y haz otra serie de 6 con cada brazo'],
     ['neural-primera', 'Slump en sedestación'],
+    ['neural-tensor', 'Slump en sedestación'],
+    ['neural-tensor', 'Enseñar slump en silla'],
+    ['neural-tensor', 'Mantén 3 segundos y vuelve'],
   ]],
 ];
 for (const [json, plan, esperados] of PLANES_REALES) {
@@ -281,4 +284,20 @@ test('plan: técnicas neurales en las radiculares (decisión 117) y punto si abr
   assert.deepEqual(r('- Slump sentado, suave.'), ['neural-primera']);
   assert.deepEqual(r('- Activación del tronco.\n- Slump sentado, suave.'), [], 'no es la primera técnica');
   assert.deepEqual(r('- Slump sentado, suave.', false), [], 'solo la primera sesión');
+});
+
+test('plan: técnicas neurales según el escalón (decisión 118, Butler 2000)', () => {
+  assert.match(D.AVISOS.neuralRadicular, /deslizadores antes que tensores.*\(Butler 2000, pp\. 379–381, 387 y 391\)/);
+  const r = (txt, escalon = 1) => RP.revisarPlan(`## SESIÓN\n${txt}\n## PLAN DEL MES\n- x.\n## PROGRAMA PARA CASA\n${ALARMA}`, { alarmas: [ALARMA], escalon }).map(p => p.id).filter(i => i === 'neural-tensor');
+  assert.deepEqual(r('- Slump: 3 series de 30 segundos (sugerencia de la IA).'), ['neural-tensor']);
+  assert.deepEqual(r('- Slump en tensor, suave.'), ['neural-tensor']);
+  assert.deepEqual(r('1. Movilización del nervio sentado:\n   - Mantén 3 segundos y vuelve.'), ['neural-tensor'], 'el subpunto hereda el ejercicio');
+  assert.deepEqual(r('- Slump deslizador, 10 repeticiones sin que duela; sin mantener la posición.'), [], 'negado en su frase');
+  assert.deepEqual(r('- Plancha: mantén 10 segundos.'), [], 'no es neural');
+  assert.deepEqual(r('- Slump: 3 series de 30 segundos.', 3), [], 'escalón 3');
+  const en = conAndres({}, () => UI.contextoPlanIA().entrada);
+  assert.ok(en.neural, 'Andrés tiene una hipótesis radicular');
+  assert.match(PIA.promptPlan(en), /13\. Técnicas neurales.*solo deslizadores.*nada de tensores ni de posiciones mantenidas/);
+  assert.match(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 3 } }), /13\. Técnicas neurales.*tensores solo graduados/);
+  assert.doesNotMatch(PIA.promptPlan({ ...en, neural: false }), /13\. Técnicas neurales/);
 });
