@@ -122,6 +122,8 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño** (los textos, con su fuente, en las secciones 1 y 6)
 - [ ] Con `ce13`, la cantidad de terapia manual es la de su pauta: `TEXTOS_SESION.cantidadReid` (sección 6) en vez de la genérica.  
   ↳ **decisión de diseño** (decisión 41)
+- [ ] Con `h8` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
+  ↳ **decisión de diseño** (decisión 42)
 - [ ] Con `ce12` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
   ↳ **decisión de diseño** (decisión 42)
 - [ ] Con `co3` como hipótesis por defecto, el plan del mes empieza en B (sección 7).  
@@ -536,6 +538,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ **organización orientativa**
 - [ ] «Con movilización neural vigorosa, dejar al menos 2–3 días entre sesiones y reevaluar a las 24 h (Maitland 2005, cap. 6, p. 149).»  
   ↳ fuente en el texto (Maitland 2005)
+- [ ] «Discinesia escapular: el programa estándar de su pauta fueron 16 sesiones, 2 por semana durante 8 semanas (Kamonseki 2022), así que encaja con el plan B; con el plan A, el mes queda por debajo de lo estudiado.»  
+  ↳ fuente en el texto (Kamonseki 2022)
 - [ ] «Dolor radicular cervical agudo: su pauta fija 2 sesiones por semana durante 6 semanas (12 sesiones), así que encaja con el plan B; con el plan A, el mes queda por debajo de esa pauta (Kuijper 2009).»  
   ↳ fuente en el texto (Kuijper 2009)
 - [ ] «Rigidez del codo: los ensayos de estiramientos de contracción-relajación de su pauta usaron de 2 a 7 sesiones por semana durante 3 a 6 semanas, y la intensidad óptima no se conoce (Wistow 2025); con el plan A, el mes queda por debajo de lo estudiado.»  

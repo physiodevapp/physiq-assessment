@@ -74,7 +74,7 @@ Leyenda:
 | h5 | SLAP | ✅ D | — | Ninguna guía ni consenso con pauta de fisioterapia (Lluch 2020, cap. 3.1, pp. 63–64: no hay hallazgo específico y no siempre se trata). `dosis: ''` |
 | h6 | Cervical con dolor referido al hombro | ✅ **Hecho** (2026-10) · B | Blanpied 2017 (PDF del usuario) | Categoría «dolor de cuello con déficit de movilidad», que incluye el dolor referido a la cintura escapular; misma pauta que `ce1` |
 | h7 | Acromioclavicular | ✅ D | — | Sin guía de fisioterapia. Lluch 2020 (p. 61) solo menciona la infiltración ecoguiada de corticoide, que es médica. `dosis: ''` |
-| h8 | Discinesia escapular | ✅ D | — | Sin guía. Lluch 2020 (pp. 53–54): no se ha demostrado que la discinesia cause el dolor. `dosis: ''` |
+| h8 | Discinesia escapular | ✅ **Hecho** (2026-10) | Kamonseki 2022, Disabil Rehabil 45(18):2925–35 · Tang 2024, Am J Phys Med Rehabil 103(9):771–6 (PDF del usuario, leídos enteros; los suplementos de Tang, no) | Tang: estabilización según el tipo de discinesia mejor que pendulares y bastón (control sin fuerza), en casa a diario 6 semanas. Kamonseki: entrenar la escápula no fue mejor que un programa estándar de fuerza (16 sesiones, 2/semana); su mejoría no se asoció a la cinemática. La pauta da los dos. Sigue en pie lo de Lluch 2020 (pp. 53–54): no se ha demostrado que la discinesia cause el dolor. Fase 6: plan B por defecto (`FRECUENCIA_PAUTA`) |
 | h9 | Disfunción de 1.ª costilla | ✅ D | — | Igual que `ce10`: ninguna fuente, y Blanpied 2017 (p. A29) no encontró beneficio de los ejercicios respiratorios en el dolor de cuello crónico, que era la pauta anterior. `dosis: ''` |
 | h10 | Artrosis GH | ✅ **Hecho** (2026-10) | NICE NG226 (2022), rec. 1.3.1–1.3.11 (leídas en nice.org.uk, 2026-10) · antes: AAOS 2020 y la revisión de 2026 (Shoulder & Elbow, doi 10.1177/17585732261450961) | La guía de NICE vale para la artrosis de cualquier articulación, como en `tp24`: ejercicio sí, terapia manual no (NICE solo la considera en cadera y rodilla, 1.3.6), sin series ni semanas. Sigue en pie lo que se vio en el fragmento de la revisión de 2026 (sin leer entera): no hay ensayos de fisioterapia en la artrosis GH sin cirugía, así que la pauta es la recomendación general de NICE, no una dosis probada en el hombro |
 | h11 | Luxación bloqueada o fractura | C | — | Ya dice «→ Rx». Propuesta: dosis «Derivar para radiografía; sin tratamiento de fisioterapia hasta el diagnóstico» |
@@ -112,7 +112,7 @@ Leyenda:
 | tp28 | Atrapamiento nervioso del talón | D | — | — |
 | tp29 | Calcaneocuboidea y cubometatarsiana | D | — | — |
 | tp30 | Fractura de estrés del mediopié | ✅ Derivar (`DOSIS_DERIVAR`) | Warden 2014, tabla 1 | Ya en `data/` como derivación. El navicular es de alto riesgo |
-| tp31 | 1.ª metatarsofalángica | D | — | Búsqueda en PubMed (2026-10): en la artrosis de la 1.ª MTF (hallux rigidus) los ensayos son de plantillas, plantillas que rigidizan el calzado, calzado de suela balancín y cirugía frente a esperar; ninguno da una dosis de ejercicio. La hipótesis mezcla además sesamoideos y placa plantar, así que no se le pone la pauta de NICE (decisión del usuario, 2026-10) |
+| tp31 | 1.ª metatarsofalángica | ✅ **Hecho** (2026-10), solo la artrosis | Munteanu 2021, Osteoarthritis Cartilage 29(4):480–90 · Paterson 2021, Arthritis Care Res 73(2):250–8 (PDF del usuario, leídos enteros) | La pauta empieza «Si es artrosis de la 1.ª MTF…»: plantillas de carbono que rigidizan el calzado (mejor que simuladas, por debajo de la diferencia mínima importante) y el programa en casa de los dos estudios, que nunca se probó solo. Con sesamoideos o placa plantar no se aplica (decisión del usuario, 2026-10, que cambia la anterior de no poner frase condicional) |
 | tp32 | Base del 2.º metatarsiano | C/D | Warden 2014, p. 755 y tabla 1 | Sin dosis (puede ser sinovitis, Lisfranc o fractura de estrés). Desde 2026-10, `pronostico` dice que, si es una fractura de estrés, es de alto riesgo: derivar para confirmarla con imagen (RM de elección) y no aplicarle la vuelta a la carrera de tp33 |
 | tp33 | Fractura de marcha (cuello del metatarsiano) | ✅ **Hecho** (2026-10) | Warden 2014, JOSPT 44(10):749–65 (comentario clínico, nivel 5; PDF del usuario, leído entero) | Diáfisis del 2.º–4.º MT = bajo riesgo (tabla 1). Fase 1 de actividad modificada guiada por el dolor y factores de riesgo; fase 2 con el programa graduado de carrera de su tabla 3 |
 | tp34 | Neuroma de Morton | D | — | — |
@@ -143,7 +143,7 @@ Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y n
 | ca16 | Aductor (largo plazo) | A | Hölmich 1999 | ✅ Hecho antes (PDF del usuario) |
 | ca17 | Psoas ilíaco | B | Vandeputte 2026 (revisión sistemática) | ✅ Contenido de las series de casos, sin volumen |
 | ca18 | Canal inguinal | D | — | Sin fuente (la Cochrane de 2025 sobre dolor inguinal es solo un protocolo) |
-| ca19 | Pubis | D | — | Sin fuente |
+| ca19 | Pubis | ✅ **Hecho** (2026-10) | Schöberl 2017, KSSTA 25(6):1958–66 (PDF del usuario, leído entero) | Programa en 3 fases de su fig. 3 (osteítis de pubis en futbolistas aficionados). Aleatorizadas solo las ondas de choque (adelantaron el regreso); la comparación con el reposo no fue aleatoria. El acuerdo de Doha (Weir 2015) es de terminología, sin tratamiento |
 
 Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2017, guía APTA de dolor de cadera no artrósico de Enseki 2023 y consenso de Zúrich del IHiPRN), `ca1`–`ca3` ganan grados de recomendación.
 
@@ -171,11 +171,11 @@ Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2
 | co16 | Panner / osteocondritis disecante del capítulo | D | — | Hipótesis nueva: `dosis: ''` |
 
 ## Resumen
-- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12, ca17, tp24 y h10 (NICE NG226) y ca15 (NICE NG193).
+- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12, ca17, tp24 y h10 (NICE NG226), ca15 (NICE NG193), h8 (Kamonseki 2022 · Tang 2024), tp31 (Munteanu 2021 · Paterson 2021) y ca19 (Schöberl 2017).
 - **Con fuente de pauta, a falta del PDF de pago (A):** ninguna.
 - **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), co7 (rotura distal del bíceps, 2026-10), co12 (fractura de estrés del olécranon) y co14 (pronación dolorosa, 2026-10), h11, ro11, tp3–tp6, tp17, tp30, tp35 y tp37 (fractura maleolar, 2026-10) llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`; tp2 tiene ya pauta para la lesión estable y dice que la inestable se deriva (2026-10).
 - **Recomendación de guía sin pauta numérica (B), hechas (2026-10):** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ro12` (ESSKA 2024), `tp2` (van Dijk 2016), `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
-- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `co9`–`co11`, `co13`, `co16`, `ca10`, `ca13`, `ca14`, `ca18`, `ca19`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
+- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `co9`–`co11`, `co13`, `co16`, `ca10`, `ca13`, `ca14`, `ca18`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp27`–`tp29`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
 ## Para cerrar esto
 Hay dos caminos: que el usuario aporte los PDF (como se hizo en cadera y rodilla), o permitir en la red del entorno `pubmed.ncbi.nlm.nih.gov`, `pmc.ncbi.nlm.nih.gov`, `www.jospt.org` y `www.orthopt.org`. Luego, una región por sesión, siguiendo la Fase D.
