@@ -148,3 +148,72 @@ Eran las preguntas abiertas del diseño; el usuario aceptó las propuestas (octu
 - **NRS de P1**: un solo valor, como hasta ahora. Pasar a ahora / peor / mejor afectaría a `nr`, a physiq-report y a las reglas `nrs-momento`, así que sería un cambio aparte.
 - **Descripción en los secundarios**: solo la nota libre, sin los chips de descripción de P1.
 - **Orden**: sí hay «Hacer principal», que intercambia los datos con P1 (ver «Cómo quedó el paso 1»).
+
+## Propuesta: zonas sacra, coccígea y perineal en lumbar (decisión 5 de `docs/tarlov.md`)
+
+Estado: **propuesta, pendiente del visto bueno del usuario (2026-10). No hay nada implementado.** Va aquí, y no en `docs/tarlov.md`, porque es un cambio de la Fase N: zonas, `pasos`, lado, fase 6 y pruebas de la tarjeta «Síntomas», que es donde se documentan las zonas de todas las regiones. El quiste de Tarlov es solo uno de sus tres motivos: también lo son la cauda equina y la sacroilíaca. `docs/tarlov.md` (decisión 5) remite aquí.
+
+### Lo que hay hoy (medido en el código)
+- Lumbar tiene 7 zonas (`data/lumbar.js`), todas con `pasos`; un test exige que **toda** zona de las 7 regiones tenga `pasos` (`tests/unit/sintomas.mjs`, «todas las zonas con pasos»).
+- El lado de cada síntoma ya ofrece **Central** en lumbar y cervical (`sintomas.js`, `COLUMNA`). Con el lado de P1 vacío, la tarjeta dice «Sin marcar: el de la región»; los resúmenes no escriben ningún lado.
+- Las pistas de síntomas solo salen en los pasos del árbol. **`lu_step1c` solo se pisa en la rama radicular** (`lu_step1` = SÍ; snapshot `tests/fixtures/cif-tree-navigation.json`), mientras que `lu_step4` se pisa siempre. Un paciente con dolor perineal sin dolor de pierna no vería nunca una pista en `lu_step1c`.
+- Payload, `📋 Notas`, `📄 Informe`, el bloque de la IA y la copia de physiq-report (`_bloqueSintomas`) llevan el **nombre** de la zona como texto (`z`), nunca el id.
+- `lado-sintoma` (`lib/revision-informe.js`): un síntoma Central no la dispara (bien), pero **sí silencia `lado-no-consta`** cuando la región no tiene lado, porque cuenta cualquier lado de síntoma. Fallo previo, pequeño.
+- Fase 6: la red de seguridad de cola de caballo de lumbar (`RED_SEGURIDAD.lumbar.neuro`) solo sale con una hipótesis neurológica (`HIP_EXPLORACION_NEURO`).
+
+### Zonas propuestas
+
+| id | Nombre | `pasos` | Por qué (fuentes ya leídas en el repositorio) |
+|---|---|---|---|
+| `sacro` | Sacro | `lu_step1`, `lu_step4` | `lu_step1` compara pierna con espalda: el sacro es espalda, como la zona lumbar. `lu_step4`: dolor sacroilíaco en la zona de Fortin y dolor discal en la línea media (Lluch 2020, cap. 5.1, pp. 314–324, ya citado en su razonamiento) |
+| `coxis` | Cóccix | ninguno | Ningún paso del árbol pregunta por él. Su valor es el registro, los resúmenes y la pregunta `l_u5` de la fase 2, que ya lo nombra (coccigodinia 49 % frente a 17 %, Hulens 2018, tabla 1). Necesita una excepción en el test de «todas las zonas con pasos» |
+| `perine` | Periné, ano o genitales | `lu_step1c` | Su razonamiento ya dice que la exploración habitual no cubre S2–S4 y que con síntomas perineales hay que explorarlos aparte y repasar `l6` y `l_u5` (Murphy 2023; Paredes Mogica 2023, p. 377). Como `lu_step1c` solo sale en la rama radicular, no basta: ver «Recordatorio de la fase 2» |
+
+Orden de los chips, de arriba abajo: Zona lumbar · Sacro · Cóccix · Glúteo · Ingle · Periné, ano o genitales · Muslo anterior · Muslo posterior o lateral · Pierna por debajo de la rodilla · Pie (10). Los ids son nuevos: las sesiones guardadas no cambian.
+
+- **«Cóccix»** y no «coxis», como en `l_u5`.
+- **Sacro y cóccix separados**, aunque se propusieron juntos: la línea de la pista dice el nombre de la zona, y en `lu_step4` «Sacro o cóccix» no diría si el dolor está en la zona de Fortin o en el cóccix, que no orienta a la sacroilíaca.
+- **Periné, ano y genitales juntos**: son las mismas raíces (S2–S4; Paredes Mogica 2023, p. 377), la misma silla de montar de `l6` y los mismos pasos. Separarlos añadiría chips sin cambiar nada. Se nombra **el ano** porque el dolor anal es lo que más separaba el quiste sintomático de la lumbalgia de otra causa (57 % frente a 10 %, Hulens 2018, tabla 1) y porque `l_u5` lo pregunta; sin él, el fisio lo apuntaría en «Cóccix».
+
+### Recordatorio de la fase 2 (mecanismo nuevo, pequeño)
+Basta con texto en `lu_step1c` solo para la rama radicular. Para que el recordatorio llegue siempre, se propone un campo opcional en la zona:
+
+```js
+{ id: 'perine', nombre: 'Periné, ano o genitales', pasos: ['lu_step1c'], central: true,
+  recordatorio: { preguntas: ['l6', 'l_u5'], texto: '…' } }
+```
+
+- **Dónde**: en la tarjeta «Síntomas» de la fase 3, bajo los chips del síntoma que tiene marcada esa zona, con «Ir a la pregunta →» (fase 2, desplegando el sistema y llevando a `l6`). No en la fase 2: cuando se marca la zona, la fase 2 ya está hecha.
+- **Texto** (borrador, de los razonamientos de `l6` y `l_u5`, sin fuentes nuevas): «Si hay pérdida de sensibilidad en silla de montar o cambios al orinar o al hacer de vientre **nuevos o que van a más**, es la pregunta de cauda equina de la fase 2: urgencia hoy, aunque se conozca un quiste de Tarlov. Si son antiguos y el dolor empeora sentado y alivia tumbado, repasa la del quiste de Tarlov.» El dolor perineal solo, sin esos síntomas, no es `l6`, y el texto no dice que lo sea.
+- **Cuándo**: solo mientras `l6` no esté en SÍ (con `l6` en SÍ la urgencia ya sale en todas partes). Nunca en «otra región».
+- **Cómo se garantiza que nunca sustituye ni rebaja `l6`**:
+  - una función pura (`recordatoriosZona()`, `lib/sintomas.js`) que solo lee `state.sistemicoAnswers` y devuelve texto; nunca escribe respuestas, `sistemicoAlerta`, `ur` ni `dv` (test unitario que lo compara antes y después);
+  - el texto nombra primero la urgencia y nunca dice «descartada» ni «no urgente»;
+  - `l6` conserva `urgencia` y `.sq2-urg` (tests de Tarlov ya existentes);
+  - nunca en el payload, los resúmenes ni el prompt (test unitario, como el resto del razonamiento);
+  - se ve también en modo breve y en el hub (no usa red).
+- Sacro y cóccix no llevan recordatorio: `l_u5` ya los nombra en su texto y no son silla de montar.
+
+### Lado
+- Las tres zonas llevan `central: true`. **Sin preselección** (regla de la app): el fisio marca Central, o el lado si el paciente lo localiza a un lado (un quiste de un lado puede dar síntomas de los dos; Paredes Mogica 2023, p. 377).
+- En P1, si todas sus zonas son centrales, el aviso «Sin marcar: el de la región (derecho)» se cambia por «Zona central: marca Central, o el lado si el paciente lo localiza», para que P1 no herede el lado de la pierna.
+- `lado-sintoma` no cambia: un síntoma Central no es «el otro lado». Se corrige que un síntoma Central silencie `lado-no-consta`: solo cuentan Derecho, Izquierdo y Bilateral. Se comprueba que ningún informe real del fixture cambia de puntos.
+
+### Qué cambia en cada sitio
+- **Payload** (`z1`, `ss`): nada en la forma; los nombres nuevos van en `z`.
+- **`📋 Notas` y `📄 Informe`**: nada en el código. El informe dirá «Localización del dolor principal: periné, ano o genitales» o «Refiere además dolor: cóccix (lado central)…».
+- **Informe con IA**: sin cambios en `bloqueSintomasIA()` ni en `lib/reglas-informe.js`. Sin reglas de revisión nuevas por adelantado (costumbre del repositorio): solo si un informe real confunde el dolor perineal con la silla de montar.
+- **Fase 6**: `sintomaQueDosifica()` no cambia (un síntoma perineal irritable puede dosificar como cualquier otro). Se propone que **una zona perineal marcada en lumbar añada la red de seguridad de cola de caballo** (`cierreNeuro`, `alarmaNeuro`; Finucane 2020, sección 2, ya leído), aunque no haya hipótesis neurológica. `plan.js` pasaría un indicador sacado de los ids, porque `ss` solo lleva nombres.
+- **physiq-report**: nada. `_bloqueSintomas` copia el texto de las zonas tal cual y su test fija un caso con zonas que no cambian.
+
+### Pruebas
+- Unitarias (`tests/unit/sintomas.mjs`): las tres zonas y sus `pasos`; `coxis` como única excepción a «todas las zonas con pasos»; la pista de `perine` en `lu_step1c` y la de `sacro` en `lu_step4`; `recordatoriosZona()` solo con periné, no con `l6` en SÍ, nunca con otra región, sin tocar respuestas, `ur` ni `dv`; nada en payload, resúmenes ni prompt. `tests/unit/revision-informe.mjs`: Central no silencia `lado-no-consta` y los informes reales no cambian. `tests/unit/plan-tratamiento.mjs`: la red de cola de caballo con zona perineal y sin hipótesis neurológica.
+- Humo (sección `sintomas`, y `fase6`): chips nuevos a 320 px sin desbordar; recordatorio al marcar periné, «Ir a la pregunta →» lleva a `l6`, desaparece con `l6` en SÍ; pista en `lu_step4` con sacro; aviso de zona central en P1. Prueba de humo completa antes de `main`.
+
+### Decisiones para el usuario (con la recomendación)
+1. **Sacro y cóccix, ¿juntos o separados?** Recomendación: separados («Sacro», «Cóccix»).
+2. **Periné**: recomendación: una sola zona, «Periné, ano o genitales».
+3. **`pasos`**: recomendación: sacro → `lu_step1` y `lu_step4`; cóccix → ninguno; periné → `lu_step1c`.
+4. **Recordatorio de la fase 2**: recomendación: el mecanismo nuevo, solo en periné, con el texto del borrador y solo mientras `l6` no esté en SÍ.
+5. **Lado**: recomendación: sin preselección, aviso propio en P1 y la corrección de `lado-no-consta`.
+6. **Fase 6**: recomendación: la red de cola de caballo con zona perineal; la dosificación, sin cambios.
