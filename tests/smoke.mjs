@@ -2399,7 +2399,7 @@ async function checkToast(browser, errors) {
 
 async function checkInformeNarrativo(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await portapapelesPropio(context);
   const captura = [];
   await mockWorkerYTurnstile(context, captura);
   const page = await context.newPage();
@@ -3016,7 +3016,7 @@ async function checkBandaFormulario(page) {
 // médula con ce3/ce12), nunca la de cola de caballo de lumbar.
 async function checkFase6Cervical(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await portapapelesPropio(context);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (fase 6 cervical): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 cervical): ${msg.text()}`); });
@@ -3087,7 +3087,7 @@ async function checkFase6Cervical(browser, errors) {
 // su aviso; h10, el de artrosis; h2 + h6, el aviso de dos familias.
 async function checkFase6Hombro(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await portapapelesPropio(context);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (fase 6 hombro): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 hombro): ${msg.text()}`); });
@@ -3150,7 +3150,7 @@ async function checkFase6Hombro(browser, errors) {
 // avisos; varios síntomas; y, con cirugía, el aviso de prótesis.
 async function checkFase6Codo(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await portapapelesPropio(context);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (fase 6 codo): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 codo): ${msg.text()}`); });
@@ -3223,7 +3223,7 @@ async function checkFase6Codo(browser, errors) {
 // las hipótesis con aviso elegidas a mano.
 async function checkFase6Rodilla(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await portapapelesPropio(context);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (fase 6 rodilla): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 rodilla): ${msg.text()}`); });
@@ -3305,7 +3305,7 @@ async function checkFase6Rodilla(browser, errors) {
 
 async function checkFase6Cadera(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await portapapelesPropio(context);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (fase 6 cadera): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 cadera): ${msg.text()}`); });
@@ -3392,7 +3392,7 @@ async function checkFase6Cadera(browser, errors) {
 // las hipótesis con aviso elegidas a mano.
 async function checkFase6Tobillo(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await portapapelesPropio(context);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (fase 6 tobillo): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6 tobillo): ${msg.text()}`); });
@@ -3514,7 +3514,7 @@ const PLAN_IA_SIMULADO = `## SESIÓN
 Si notas adormecimiento entre las piernas o alrededor del ano, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo.`;
 async function checkPlanIA(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await portapapelesPropio(context);
   await context.addInitScript(k => { try { localStorage.setItem('physiq-license-key', k); } catch {} }, CLAVE_OK);
   const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Expose-Headers': 'X-PhysiQ-Mode' };
   const captura = [];
@@ -3637,7 +3637,7 @@ async function checkPlanIA(browser, errors) {
 
 async function checkFase6(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await portapapelesPropio(context);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (fase 6): ${err.message}`));
   page.on('console', msg => { if (msg.type() === 'error' && !KNOWN_NOISE.some(n => msg.text().includes(n))) errors.push(`console (fase 6): ${msg.text()}`); });
@@ -3800,6 +3800,26 @@ async function abrirHerramienta(page, k) {
   await page.tap('#herramientasBtn');
   await page.waitForSelector('#herramientasOverlay.open');
   await page.tap(`#herramientasOverlay [data-herramienta="${k}"]`);
+}
+
+// Un portapapeles por contexto. El de Chromium es uno para todo el navegador, y
+// las secciones corren en paralelo: lo que copiaba una lo leía otra (2026-10, fallo
+// intermitente de «plan-ia»: escribía 'VACIO', otra sección copiaba su texto y la
+// comprobación de que no se había copiado nada fallaba). Vive en Node, así que
+// sobrevive a las recargas del contexto; la app solo usa writeText().
+async function portapapelesPropio(context) {
+  let texto = '';
+  await context.exposeBinding('__portapapeles', (_src, nuevo) => {
+    if (typeof nuevo === 'string') texto = nuevo;
+    return texto;
+  });
+  await context.addInitScript(() => {
+    const clip = {
+      writeText: t => window.__portapapeles(String(t)).then(() => undefined),
+      readText: () => window.__portapapeles(null),
+    };
+    try { Object.defineProperty(navigator, 'clipboard', { value: clip, configurable: true }); } catch {}
+  });
 }
 
 async function abrirApp(page, url = BASE_URL) {
@@ -4081,6 +4101,38 @@ async function checkSintomas(page) {
 
 // Cada sección devuelve true si pasa; imprime su propio detalle.
 // `id` es lo que se pasa a --solo.
+// Móvil: la barra fija de navegación está dentro de la fase; si la animación
+// de entrada llevara transform, durante ella se colocaría respecto a la fase
+// (al final de la página, tapando «Plan de tratamiento →») y luego saltaría.
+async function checkBarraFijaAnimacion(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (barra fija): ${err.message}`));
+  await abrirApp(page);
+  await walkRegion(page, 'lumbar');
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  const r = await page.evaluate(() => new Promise(res => {
+    const barra = document.querySelector('#phase5 .nav-buttons');
+    const fase = document.getElementById('phase5');
+    let peor = 0, transform = false, n = 0;
+    const t0 = performance.now();
+    const tick = () => {
+      const b = barra.getBoundingClientRect();
+      peor = Math.max(peor, Math.abs(b.bottom - window.innerHeight));
+      if (getComputedStyle(fase).transform !== 'none') transform = true;
+      n++;
+      if (performance.now() - t0 < 600) requestAnimationFrame(tick); else res({ peor: Math.round(peor), transform, n });
+    };
+    document.querySelector('#phase6 .nav-buttons .btn-secondary').click();
+    requestAnimationFrame(tick);
+  }));
+  r.ok = r.n > 5 && r.peor <= 1 && !r.transform;
+  await context.close();
+  return r;
+}
+
 const SECCIONES = [
   { id: 'regiones', titulo: `Walking through phases 1-5 for all ${REGIONS.length} regions...`, run: async (ctx) => {
     const results = await porRegiones(ctx, walkRegion);
@@ -4272,6 +4324,12 @@ const SECCIONES = [
       console.log(`  ${r.ok ? '✓' : '✗'} zonas de P1; hasta P4 y no más; otra región sin irritabilidad ni relación; quitar un vacío sin preguntar y uno con datos con confirmación; cabe a 320 px en una línea; se restaura al recargar; «Hacer principal» intercambia NRS e irritabilidad, borra las relaciones y vacía la matriz (salvo el impacto en las actividades); pistas en el paso del árbol (lumbar, con las del formulario, sin la otra región, sin contestarlo; cervical, la mano en el paso 1; hombro, el cuello en el paso 1; codo, el anterior en el paso 1; cadera, el glúteo en el paso 1; rodilla, la rótula en el 1b; tobillo y pie, el lateral en el 2); fase 5 con P1–P3; cervical, hombro, codo, cadera, rodilla y tobillo y pie con sus zonas en orden, «Central» solo en cervical, sin los síntomas de la región anterior${r.ok ? '' : ' ' + JSON.stringify(r)}`);
       return r.ok;
     } finally { await page.context().close(); }
+  } },
+
+  { id: 'barra-fija', titulo: 'Barra de navegación fija durante la entrada de fase (móvil):', run: async ({ browser, errors }) => {
+    const r = await checkBarraFijaAnimacion(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} al volver de la 6 a la 5, la barra «← Anterior / Compartir» sigue al pie de la pantalla en cada fotograma de la animación (sin transform en la fase), así que no tapa «Plan de tratamiento →» ni salta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
   } },
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
