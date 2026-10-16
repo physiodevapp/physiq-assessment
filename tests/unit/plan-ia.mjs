@@ -241,6 +241,7 @@ const PLANES_REALES = [
     ['volumen', 'Una vez al día'],
     ['volumen', 'Descansa 1 minuto y haz otra serie de 8'],
     ['volumen', 'Descansa 1 minuto y haz otra serie de 6 con cada brazo'],
+    ['neural-primera', 'Slump en sedestación'],
   ]],
 ];
 for (const [json, plan, esperados] of PLANES_REALES) {
@@ -250,7 +251,7 @@ for (const [json, plan, esperados] of PLANES_REALES) {
       const ctx = UI.contextoPlanIA();
       const puntos = RP.revisarPlan(leer('tests/fixtures/planes', plan), {
         esqueleto: ctx.esqueleto, escalon: ctx.entrada.escalon.n, alarmas: ctx.entrada.alarmas,
-        noElegidas: ctx.entrada.noElegidas, derivar: ctx.entrada.derivar, independientes: ctx.independientes,
+        noElegidas: ctx.entrada.noElegidas, derivar: ctx.entrada.derivar, independientes: ctx.independientes, primera: ctx.entrada.primera,
       });
       assert.deepEqual(puntos.map(p => p.id), esperados.map(e => e[0]), JSON.stringify(puntos.map(p => [p.id, p.cita]), null, 1));
       esperados.forEach(([, cita], i) => assert.ok(puntos[i].cita.startsWith(cita), `${i}: ${puntos[i].cita}`));
@@ -270,4 +271,14 @@ test('revisión del plan: números escritos y cifras ya propuestas con la marca'
   assert.deepEqual(ids(plan('- 2 series de 8 repeticiones (sugerencia de la IA).', undefined, `- Haz 8 repeticiones.\n${ALARMA}`)), [], 'casa repite la cifra marcada en la sesión');
   assert.deepEqual(ids(plan('- Una vez al día.\n- Una vez al día.')), ['volumen'], 'la misma línea, un punto');
   assert.match(PIA.promptPlan(conAndres({}, () => UI.contextoPlanIA().entrada)), /Un mismo ejercicio lleva la misma dosis en la sesión y en casa/);
+});
+
+test('plan: técnicas neurales en las radiculares (decisión 117) y punto si abren la primera sesión', () => {
+  assert.match(D.AVISOS.neuralRadicular, /rara vez son la primera técnica.*\(Maitland 2005, cap\. 6, p\. 149\)/);
+  for (const id of D.HIP_RADICULARES) assert.ok(D.AVISOS_HIP[id].includes('neuralRadicular'), id);
+  const r = (sesion, primera = true) => RP.revisarPlan(`## SESIÓN\n### INTERVENCIÓN PRINCIPAL (12–35 min)\n${sesion}\n## PLAN DEL MES\n- x.\n## PROGRAMA PARA CASA\n${ALARMA}`, { alarmas: [ALARMA], primera }).map(p => p.id);
+  assert.deepEqual(r('**Movilización neural**:\n- Slump sentado, suave.'), ['neural-primera']);
+  assert.deepEqual(r('- Slump sentado, suave.'), ['neural-primera']);
+  assert.deepEqual(r('- Activación del tronco.\n- Slump sentado, suave.'), [], 'no es la primera técnica');
+  assert.deepEqual(r('- Slump sentado, suave.', false), [], 'solo la primera sesión');
 });

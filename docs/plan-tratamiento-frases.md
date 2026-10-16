@@ -146,9 +146,13 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
   ↳ **decisión de diseño** (decisión 42)
 - [ ] Avisos con `ce13`: `AVISOS.vertigo` (sección 5).  
   ↳ **decisión de diseño**
-- [ ] Avisos con `ce3`: `AVISOS.manipulacionCervical` (sección 5).  
+- [ ] Avisos con `ce3`: `AVISOS.manipulacionCervical`, `AVISOS.neuralRadicular` (sección 5).  
   ↳ **decisión de diseño**
-- [ ] Avisos con `ce12`: `AVISOS.manipulacionCervical`, `AVISOS.sinTerapiaManualAguda` (sección 5).  
+- [ ] Avisos con `ce12`: `AVISOS.manipulacionCervical`, `AVISOS.sinTerapiaManualAguda`, `AVISOS.neuralRadicular` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `lu3`: `AVISOS.neuralRadicular` (sección 5).  
+  ↳ **decisión de diseño**
+- [ ] Avisos con `lu5`: `AVISOS.neuralRadicular` (sección 5).  
   ↳ **decisión de diseño**
 - [ ] Avisos con `h1`: `AVISOS.capsulitisPrecoz`, `AVISOS.capsulitisEstadios` (sección 5).  
   ↳ **decisión de diseño**
@@ -345,6 +349,8 @@ Regiones periféricas:
 - [ ] «Dos hipótesis: la intervención principal se reparte entre ambas y el tiempo de cada una baja.»  
   ↳ decisión 10 de docs/plan-tratamiento.md
 - [ ] «No usar ninguna técnica cervical que produzca mareo; probar antes con movimientos exploratorios (Maitland 2005, cap. 9, p. 224).»  
+  ↳ fuente en el texto (Maitland 2005)
+- [ ] «Técnicas neurales (p. ej., el slump): rara vez son la primera técnica. Si se usan con vigor, dejar 2–3 días entre sesiones y reevaluar a las 24 h, porque las estructuras del canal tardan más en recuperarse de las agujetas (Maitland 2005, cap. 6, p. 149).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Sin manipulación forzada con signos de dos raíces cervicales o signos medulares; la movilización suave sí puede ser adecuada, y los cambios neurológicos no impiden movilizar con suavidad desde el principio (Maitland 2005, cap. 9, pp. 222–223).»  
   ↳ fuente en el texto (Maitland 2005)

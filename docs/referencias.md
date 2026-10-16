@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **486** referencias de literatura, con **2381** usos.
+- **486** referencias de literatura, con **2382** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **376** de 486 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -154,7 +154,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) | tiempos de tejido | 1 | **sin revisar** |
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
 | [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 68 | **sin revisar** |
-| [Maitland 2005](#maitland-2005) | plan de tratamiento | 31 | **sin revisar** |
+| [Maitland 2005](#maitland-2005) | plan de tratamiento | 32 | **sin revisar** |
 | [Silbernagel 2007](#silbernagel-2007) | plan de tratamiento | 1 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 2 | **sin revisar** |
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 10 | **sin revisar** |
@@ -7523,6 +7523,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Fase 6 (plan de tratamiento) | — | `AVISOS.vertigo` | 6 · plan de tratamiento | 1 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.neuralRadicular` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.manipulacionCervical` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES.1.citas.0` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `ESCALONES.2.citas.0` | 6 · plan de tratamiento | 1 |
