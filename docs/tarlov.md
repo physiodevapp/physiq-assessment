@@ -1,6 +1,6 @@
 # Quistes de Tarlov (quistes perineurales sacros) — diseño
 
-Estado: **implementado (octubre 2026), pendiente de la revisión clínica del usuario en la app antes de `main`.** Las 7 recomendaciones fueron aceptadas, y todas las fuentes, StatPearls incluido, están leídas enteras. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»: Tarlov como contenido de lumbar, no como capa transversal).
+Estado: **implementado y fusionado en `main` (octubre 2026); la revisión del usuario se dio por hecha al fusionar.** Las 7 recomendaciones fueron aceptadas, y todas las fuentes, StatPearls incluido, están leídas enteras. physiq-report no necesita cambios: pinta `dv` con un texto genérico. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»: Tarlov como contenido de lumbar, no como capa transversal).
 
 Es la segunda «condición especial» después de la hipermovilidad (`docs/hipermovilidad.md`), pero con otra forma: el quiste de Tarlov es una lesión de una región (el sacro), no una condición que cambie la interpretación de todas las regiones. Por eso va en `data/lumbar.js` y no en `data/comun.js`.
 
