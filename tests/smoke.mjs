@@ -1738,8 +1738,15 @@ async function checkTiemposTejido(browser, errors) {
   await page.keyboard.press('Escape');
   await page.evaluate(() => { state.activeHypotheses = ['h2']; });
   await page.click('#tejidosBtn');
-  r.paciente = r.paciente && await barras() === nFilas && !(await page.$(pastilla('paciente')));
+  r.paciente = r.paciente && await barras() === nFilas && !(await page.$(pastilla('paciente')))
+    && await page.evaluate(() => /no tiene plazo propio en este panel: Síndrome de Pinzamiento/.test(document.querySelector('#tejidosCuerpo .tej-paciente')?.textContent || ''));
   await page.keyboard.press('Escape');
+  // Lumbalgia inespecífica: solo con cronología aguda va a «Lumbalgia aguda»
+  await page.evaluate(() => { state.activeHypotheses = ['lu1']; state.cronologia = 'Agudo (<6 semanas)'; });
+  await page.click('#tejidosBtn');
+  r.paciente = r.paciente && await page.evaluate(() => [...document.querySelectorAll('#tejidosCuerpo .tej-barra')].map(b => b.dataset.barra).join() === 'lumbalgia_aguda');
+  await page.keyboard.press('Escape');
+  await page.evaluate(() => { state.cronologia = ''; });
   await page.evaluate(() => { state.activeHypotheses = []; });
   r.sinPayload = await page.evaluate(async () => !/tejid|Remodelaci/i.test(JSON.stringify((await import('./app.js')).buildPhysiQPayload())));
   await context.close();
@@ -4270,7 +4277,7 @@ const SECCIONES = [
 
   { id: 'tejidos', titulo: '«⏱ Tiempos de recuperación»:', run: async ({ browser, errors }) => {
     const tejidos = await checkTiemposTejido(browser, errors);
-    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, «Este paciente» según las hipótesis activas y el mecanismo, tarjeta de una barra con sus fuentes enlazadas en línea con « · » (líneas de 24 px y toque de 32 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, «Este paciente» según las hipótesis activas, el mecanismo y la cronología (y aviso de las que no tienen plazo), tarjeta de una barra con sus fuentes enlazadas en línea con « · » (líneas de 24 px y toque de 32 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
   } },
 

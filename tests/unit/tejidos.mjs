@@ -515,6 +515,7 @@ test('tejidos: la tarjeta de cada barra lista sus fuentes, enlazadas a la url o 
 });
 
 test('tejidos: porHipotesis — cada hipótesis existe y cada fila o subtipo también; «paciente» no es un grupo', () => {
+  const html = leer('index.html');
   assert.ok(!T.grupos.some(g => g.id === FILTRO_PACIENTE));
   for (const [h, entradas] of Object.entries(T.porHipotesis)) {
     assert.ok(HYPOTHESES[h], `${h} no es una hipótesis`);
@@ -522,19 +523,33 @@ test('tejidos: porHipotesis — cada hipótesis existe y cada fila o subtipo tam
     for (const e of entradas) {
       const id = typeof e === 'string' ? e : e.id;
       assert.ok(buscarFila(T, id), `${h}: ${id} no es una fila ni un subtipo`);
-      if (typeof e !== 'string') assert.equal(typeof e.posq, 'boolean', `${h}: ${id} posq`);
+      if (typeof e === 'string') continue;
+      assert.deepEqual(Object.keys(e).filter(k => !['id', 'posq', 'mecanismo', 'cronologia', 'soloFila'].includes(k)), [], `${h}: ${id} claves`);
+      if ('posq' in e) assert.equal(typeof e.posq, 'boolean', `${h}: ${id} posq`);
+      // mecanismo y cronología: el texto exacto de un botón de la fase 1
+      if ('mecanismo' in e) assert.ok(html.includes(`selectOption('mecanismo', this, '${e.mecanismo}')`), `${h}: mecanismo ${e.mecanismo}`);
+      if ('cronologia' in e) assert.ok(html.includes(`selectOption('cronologia', this, '${e.cronologia}')`), `${h}: cronología ${e.cronologia}`);
+      if ('soloFila' in e) assert.ok(e.soloFila === true && buscarFila(T, id).fila.subtipos?.length, `${h}: soloFila en una fila con subtipos`);
     }
   }
 });
 
 test('filasPaciente: según las hipótesis activas y el mecanismo; sin repetir; sin filas, vacío', () => {
-  assert.deepEqual(filasPaciente(T, []), { ids: [], hipotesis: [] });
-  assert.deepEqual(filasPaciente(T, ['h2']), { ids: [], hipotesis: [] }, 'pinzamiento subacromial: sin fila');
+  assert.deepEqual(filasPaciente(T, []), { ids: [], hipotesis: [], sinFilas: [], soloFila: [] });
+  assert.deepEqual(filasPaciente(T, ['h2']), { ids: [], hipotesis: [], sinFilas: ['h2'], soloFila: [] }, 'pinzamiento subacromial: sin fila');
   assert.deepEqual(filasPaciente(T, ['ro4']).ids, ['rodilla_lca_conservador']);
   assert.deepEqual(filasPaciente(T, ['ro4'], { posquirurgico: true }).ids, ['rodilla_lca_reconstruido']);
   assert.deepEqual(filasPaciente(T, ['h3']).ids, [], 'manguito: solo reparado');
   const r = filasPaciente(T, ['lu3', 'lu1', 'lu5']);
-  assert.deepEqual(r, { ids: ['radiculopatia_lumbar'], hipotesis: ['lu3', 'lu5'] });
+  assert.deepEqual(r, { ids: ['radiculopatia_lumbar'], hipotesis: ['lu3', 'lu5'], sinFilas: ['lu1'], soloFila: [] });
+  // Lumbalgia inespecífica solo aguda; la luxación anterior solo traumática
+  const agudo = filasPaciente(T, ['lu1', 'lu7'], { cronologia: 'Agudo (<6 semanas)' });
+  assert.deepEqual([agudo.ids, agudo.hipotesis], [['lumbalgia_aguda'], ['lu1', 'lu7']]);
+  assert.deepEqual(filasPaciente(T, ['lu1'], { cronologia: 'Crónico (>3 meses)' }).ids, []);
+  assert.deepEqual(filasPaciente(T, ['h4'], { mecanismo: 'Traumático' }).ids, ['hombro_luxacion_anterior']);
+  assert.deepEqual(filasPaciente(T, ['h4'], { mecanismo: 'Insidioso' }).ids, []);
+  // co7: la fila de rotura de tendón sin sus subtipos
+  assert.deepEqual(filasPaciente(T, ['co7']).soloFila, ['tendon_rotura']);
 });
 
 test('tiemposTejidoHTML: «Este paciente» solo con filas, primera pastilla, solo sus filas con los subtipos desplegados', () => {
@@ -550,4 +565,17 @@ test('tiemposTejidoHTML: «Este paciente» solo con filas, primera pastilla, sol
   assert.ok(h.includes('<details class="tej-subtipos" open>'));
   assert.ok(h.includes('Según las hipótesis activas: Esguince · Aquiles.'));
   assert.deepEqual([...h.matchAll(/class="tej-bloque" data-grupo="([^"]+)"/g)].map(m => m[1]), ['tendon', 'ligamento']);
+});
+
+test('tiemposTejidoHTML: fila sin subtipos (soloFila) y aviso de las hipótesis sin plazo propio', () => {
+  const r = filasPaciente(T, ['co7', 'h2']);
+  const h = tiemposTejidoHTML(T, { paciente: { ...r, nombres: ['Bíceps'], sinPlazo: ['Subacromial'] }, filtro: FILTRO_PACIENTE });
+  assert.deepEqual([...h.matchAll(/data-barra="([^"]+)"/g)].map(m => m[1]), ['tendon_rotura']);
+  assert.ok(!h.includes('tej-subtipos'));
+  assert.ok(h.includes('Según la hipótesis activa: Bíceps. Sin plazo propio en este panel: Subacromial.'));
+  // Ninguna con fila: sin pastilla, todo el panel y una línea que lo dice
+  const sin = tiemposTejidoHTML(T, { paciente: { ids: [], soloFila: [], nombres: [], sinPlazo: ['Subacromial', 'SLAP'] }, filtro: FILTRO_PACIENTE });
+  assert.ok(!sin.includes('tej-filtro-paciente'));
+  assert.ok(sin.includes('<p class="tej-paciente">Las hipótesis activas no tienen plazo propio en este panel: Subacromial · SLAP.</p>'));
+  assert.ok(!tiemposTejidoHTML(T).includes('class="tej-paciente"'));
 });
