@@ -52,11 +52,15 @@ test('silueta: la figura sale del sexo de la fase 1 y el botón la cambia sin to
   assert.equal(S.figuraSilueta('Hombre'), 'hombre');
   assert.equal(S.figuraSilueta(''), 'hombre', 'sin sexo indicado, la masculina');
   assert.equal(S.figuraSilueta('Hombre', 'mujer'), 'mujer');
-  assert.equal(S.notaFigura('Mujer', ''), '');
-  assert.equal(S.notaFigura('Mujer', 'mujer'), '', 'elegir la misma figura no avisa');
-  assert.match(S.notaFigura('Mujer', 'hombre'), /no cambia el sexo de la fase 1 \(mujer\)/);
-  assert.match(S.notaFigura('', 'mujer'), /sigue sin indicar/);
-  assert.equal(S.notaFigura('', 'hombre'), '');
+  assert.deepEqual(S.notaFigura('Mujer', ''), { texto: '', enlace: false });
+  assert.deepEqual(S.notaFigura('Mujer', 'mujer'), { texto: '', enlace: false }, 'elegir la misma figura no avisa');
+  const conSexo = S.notaFigura('Mujer', 'hombre');
+  assert.match(conSexo.texto, /no cambia el sexo de la fase 1 \(mujer\)/);
+  assert.equal(conSexo.enlace, false, 'con sexo indicado no se ofrece ir a la fase 1');
+  const sinSexo = S.notaFigura('', 'mujer');
+  assert.match(sinSexo.texto, /sigue sin indicar/);
+  assert.equal(sinSexo.enlace, true, 'sin sexo se ofrece indicarlo en la fase 1');
+  assert.deepEqual(S.notaFigura('', 'hombre'), { texto: '', enlace: false });
 });
 
 test('silueta: estado de cada zona y lado que queda al tocarla', () => {
@@ -85,7 +89,8 @@ test('silueta: el texto confirma región y lado concordados', () => {
 
 test('silueta: cada zona es un botón con nombre que llama a una función expuesta en window', () => {
   const app = leer('app.js'), html = leer('index.html');
-  assert.match(app, /tocarZonaSilueta, alternarFiguraSilueta,/);
+  assert.match(app, /tocarZonaSilueta, alternarFiguraSilueta, irASexo,/);
+  assert.match(app, /if \(groupId === 'sexo'\) _figuraElegida = '';/, 'cambiar el sexo anula la figura elegida a mano');
   for (const [nombre, fig] of Object.entries(SILUETAS)) {
     const h = S.siluetaHTML(fig, nombre);
     const botones = h.match(/<button type="button" class="sil-zona"[^>]*>/g) || [];

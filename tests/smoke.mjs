@@ -526,6 +526,28 @@ async function checkSilueta(page) {
   await page.click('#confirmAction');
   e = await estado();
   r.confirma = e.region === 'hombro' && e.lado === 'Derecho' && e.texto === 'Hombro (derecho)';
+  // Cambiar el sexo en la fase 1 anula la figura elegida a mano (ahora masculina con sexo Mujer)
+  await page.evaluate(() => goToPhase(1));
+  await page.click('#sexo .option-btn:has-text("Hombre")');
+  await page.evaluate(() => goToPhase(2));
+  e = await estado();
+  r.sexoAnulaFigura = e.figura === 'Figura masculina' && e.nota === '' && e.sexo === 'Hombre';
+  await page.evaluate(() => goToPhase(1));
+  await page.click('#sexo .option-btn:has-text("Mujer")');
+  await page.evaluate(() => goToPhase(2));
+  r.sigueAlSexo = (await estado()).figura === 'Figura femenina';
+  // Sin sexo indicado: cambiar la figura ofrece «Indicarlo en la fase 1 →», que lleva al sexo sin rellenarlo
+  await page.evaluate(() => goToPhase(1));
+  await page.click('#sexo .option-btn:has-text("Mujer")');
+  await page.evaluate(() => goToPhase(2));
+  await page.click('#siluetaRegion .sil-figura');
+  e = await estado();
+  const enlace = '#siluetaRegion .sil-nota-enlace';
+  r.enlaceSinSexo = e.figura === 'Figura femenina' && /sigue sin indicar/.test(e.nota) && await page.isVisible(enlace);
+  await page.click(enlace);
+  await page.waitForFunction(() => state.currentPhase === 1 && document.getElementById('sexo').classList.contains('flash-destacar'));
+  r.enlaceLleva = await page.evaluate(() => state.sexo === '' && document.activeElement?.closest('#sexo') !== null);
+  await page.evaluate(() => goToPhase(2));
   // Tema claro: los colores de la silueta salen de sus variables
   r.tema = await page.evaluate(() => {
     const raiz = document.documentElement, antes = raiz.getAttribute('data-theme');
@@ -4529,7 +4551,7 @@ const SECCIONES = [
 
   { id: 'silueta', titulo: 'Silueta de la fase 2 (región y lado de un toque, 320 px):', run: async ({ page }) => {
     const r = await checkSilueta(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el botón cambia la figura sin tocar el sexo; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el botón cambia la figura sin tocar el sexo, y cambiar el sexo en la fase 1 anula esa elección; sin sexo, «Indicarlo en la fase 1 →» lleva al campo sin rellenarlo; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
