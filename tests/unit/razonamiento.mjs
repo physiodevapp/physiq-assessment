@@ -89,7 +89,7 @@ test('razonamiento: fisiologia = { pasos (3–6), nota?, metafora? }, solo con d
 
 // ── Banderas de fase 2 (docs/razonamiento-banderas.md) ───────────────────────
 // Una bandera es un texto o { texto, regiones?, pregunta?, fase1?, razonamiento? }.
-const CAMPOS_BANDERA = ['texto', 'regiones', 'pregunta', 'fase1', 'razonamiento'];
+const CAMPOS_BANDERA = ['texto', 'regiones', 'pregunta', 'fase1', 'razonamiento', 'hm'];
 const todasBanderas = [];
 for (const [region, data] of Object.entries(SYSTEMIC_SCREENING))
   for (const sis of data.sistemas)
@@ -275,7 +275,7 @@ test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar»
 });
 
 test('razonamiento: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
-  const muestra = preguntasConRazon.find(p => !p.bandera && p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico);
+  const muestra = preguntasConRazon.find(p => !p.bandera && p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico && !p.sis.soloHipermovilidad);
   if (!muestra) return;   // aún no hay ninguna pregunta con razonamiento
   const { region, q, r } = muestra;
   withState({ region, sistemicoAnswers: { [q.id]: 'SI' }, sistemicoAlerta: true }, () => {
