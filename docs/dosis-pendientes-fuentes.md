@@ -76,7 +76,7 @@ Leyenda:
 | h7 | Acromioclavicular | ✅ D | — | Sin guía de fisioterapia. Lluch 2020 (p. 61) solo menciona la infiltración ecoguiada de corticoide, que es médica. `dosis: ''` |
 | h8 | Discinesia escapular | ✅ D | — | Sin guía. Lluch 2020 (pp. 53–54): no se ha demostrado que la discinesia cause el dolor. `dosis: ''` |
 | h9 | Disfunción de 1.ª costilla | ✅ D | — | Igual que `ce10`: ninguna fuente, y Blanpied 2017 (p. A29) no encontró beneficio de los ejercicios respiratorios en el dolor de cuello crónico, que era la pauta anterior. `dosis: ''` |
-| h10 | Artrosis GH | D (sin ensayos) | AAOS 2020, *Management of Glenohumeral Joint Osteoarthritis* (guía) · revisión sistemática de 2026 sobre intervenciones dirigidas por fisioterapeutas (Shoulder & Elbow, doi 10.1177/17585732261450961) | Fragmento de la revisión: «no hay ensayos publicados sobre intervenciones de fisioterapia en artrosis GH con tratamiento no quirúrgico», solo en el postoperatorio. Conclusión: `dosis: ''` es correcto; se puede citar en el criterio la ausencia de evidencia |
+| h10 | Artrosis GH | ✅ **Hecho** (2026-10) | NICE NG226 (2022), rec. 1.3.1–1.3.11 (leídas en nice.org.uk, 2026-10) · antes: AAOS 2020 y la revisión de 2026 (Shoulder & Elbow, doi 10.1177/17585732261450961) | La guía de NICE vale para la artrosis de cualquier articulación, como en `tp24`: ejercicio sí, terapia manual no (NICE solo la considera en cadera y rodilla, 1.3.6), sin series ni semanas. Sigue en pie lo que se vio en el fragmento de la revisión de 2026 (sin leer entera): no hay ensayos de fisioterapia en la artrosis GH sin cirugía, así que la pauta es la recomendación general de NICE, no una dosis probada en el hombro |
 | h11 | Luxación bloqueada o fractura | C | — | Ya dice «→ Rx». Propuesta: dosis «Derivar para radiografía; sin tratamiento de fisioterapia hasta el diagnóstico» |
 
 ## Tobillo y pie (`tp1`–`tp37`)
@@ -139,7 +139,7 @@ Sesión de 2026-10 (textos completos de acceso abierto leídos en Europe PMC y n
 | ca12 | Ligamento redondo e inestabilidad | B (extrapolada) | Enseki 2023 | ✅ La precaución capsuloligamentosa de la guía como dato principal; multimodal por extrapolación; sin evidencia específica |
 | ca13 | Condropatía de cadera | D | — | Vacía a propósito: Enseki 2023 la incluye en su alcance pero no dice nada propio (decisión del usuario) |
 | ca14 | Neuropatías de cadera e ingle | D | — | Sin fuente de fisioterapia (meralgia: revisiones de tratamiento médico) |
-| ca15 | Sensibilización central | D | — | Sin fuente |
+| ca15 | Sensibilización central | ✅ **Hecho** (2026-10) | NICE NG193 (2021), rec. 1.1.4, 1.1.15, 1.1.20–1.1.21 y 1.2.1–1.2.6 (leídas en nice.org.uk, 2026-10) | Solo si el dolor encaja con dolor crónico primario (1.1.4); si coexiste con una patología de la cadera, también su pauta (1.1.20–1.1.21). Ejercicio supervisado en grupo, ACT o TCC, un único ciclo de acupuntura o punción seca de hasta 5 horas; no TENS, ultrasonido ni interferenciales. La guía no menciona la terapia manual ni fija volumen de ejercicio |
 | ca16 | Aductor (largo plazo) | A | Hölmich 1999 | ✅ Hecho antes (PDF del usuario) |
 | ca17 | Psoas ilíaco | B | Vandeputte 2026 (revisión sistemática) | ✅ Contenido de las series de casos, sin volumen |
 | ca18 | Canal inguinal | D | — | Sin fuente (la Cochrane de 2025 sobre dolor inguinal es solo un protocolo) |
@@ -171,11 +171,11 @@ Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2
 | co16 | Panner / osteocondritis disecante del capítulo | D | — | Hipótesis nueva: `dosis: ''` |
 
 ## Resumen
-- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12, ca17 y tp24 (NICE NG226).
+- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12, ca17, tp24 y h10 (NICE NG226) y ca15 (NICE NG193).
 - **Con fuente de pauta, a falta del PDF de pago (A):** ninguna.
 - **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), co7 (rotura distal del bíceps, 2026-10), co12 (fractura de estrés del olécranon) y co14 (pronación dolorosa, 2026-10), h11, ro11, tp3–tp6, tp17, tp30, tp35 y tp37 (fractura maleolar, 2026-10) llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`; tp2 tiene ya pauta para la lesión estable y dice que la inestable se deriva (2026-10).
 - **Recomendación de guía sin pauta numérica (B), hechas (2026-10):** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ro12` (ESSKA 2024), `tp2` (van Dijk 2016), `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
-- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `co9`–`co11`, `co13`, `co16`, `ca10`, `ca13`–`ca15`, `ca18`, `ca19`, `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
+- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `co9`–`co11`, `co13`, `co16`, `ca10`, `ca13`, `ca14`, `ca18`, `ca19`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
 ## Para cerrar esto
 Hay dos caminos: que el usuario aporte los PDF (como se hizo en cadera y rodilla), o permitir en la red del entorno `pubmed.ncbi.nlm.nih.gov`, `pmc.ncbi.nlm.nih.gov`, `www.jospt.org` y `www.orthopt.org`. Luego, una región por sesión, siguiendo la Fase D.

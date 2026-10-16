@@ -1014,7 +1014,7 @@ test('plan: cadera — avisos por hipótesis del cap. 14 y, con cirugía, próte
   assert.match(D.AVISOS.ingleAguda, /Serner 2020/);
   // Cadera no tiene ninguna «Derivar»; diez hipótesis sin pauta
   for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'cadera')) assert.notEqual(HYPOTHESES[id].dosis, DOSIS_DERIVAR, id);
-  for (const id of ['ca5', 'ca6', 'ca7', 'ca8', 'ca10', 'ca13', 'ca14', 'ca15', 'ca18', 'ca19']) assert.equal(HYPOTHESES[id].dosis, '', id);
+  for (const id of ['ca5', 'ca6', 'ca7', 'ca8', 'ca10', 'ca13', 'ca14', 'ca18', 'ca19']) assert.equal(HYPOTHESES[id].dosis, '', id);
   // Con mecanismo Post-quirúrgico: el de prótesis de las periféricas y, después, el de cadera
   const posq = plan(['ca1'], { posq: { conProtocolo: true } }).avisosHip;
   assert.ok(posq.indexOf(D.AVISOS.protesis) >= 0 && posq.indexOf(D.AVISOS.posqCadera) > posq.indexOf(D.AVISOS.protesis));
