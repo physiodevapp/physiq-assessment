@@ -192,7 +192,7 @@ En `l_urogenital`, después de `l6`.
 2. **Campo nuevo y opcional `derivacion` en las preguntas de la fase 2**, que reutiliza lo que ya hace el árbol: alerta bajo la pregunta, fase 5, `📋 Notas` «🩺 DERIVACIÓN MÉDICA», `📄 Informe` «Se recomienda valoración médica» y `dv[]` en el payload, que physiq-report ya lee.
 3. **Se deriva al médico**, de forma preferente y no urgente, para valorar una RM sacra dedicada. Sin nombrar especialista ni técnica de tratamiento: las dos revisiones se contradicen en la técnica.
 4. **Hipermovilidad: ninguna regla automática**, solo una frase sin cifras.
-5. **Zonas de sacro, cóccix y periné en la tarjeta «Síntomas» (Fase N)**: en otra sesión. Propuesta (2026-10, pendiente del visto bueno del usuario) en `docs/sintomas-multiples.md`, «Propuesta: zonas sacra, coccígea y perineal en lumbar».
+5. **Zonas de sacro, cóccix y periné en la tarjeta «Síntomas» (Fase N)**: en otra sesión. Hecho (2026-10): zonas «Sacro», «Cóccix» y «Periné, ano o genitales», con un recordatorio de `l6` en el periné; diseño y decisiones en `docs/sintomas-multiples.md`, «Zonas sacra, coccígea y perineal en lumbar».
 6. **Quiste ya conocido**: solo texto en el razonamiento de `l_u5`.
 7. **No se implementa hasta leer StatPearls.** Cumplida: Hulens 2018 y StatPearls están leídos.
 
