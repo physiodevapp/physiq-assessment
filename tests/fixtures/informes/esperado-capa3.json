@@ -1107,6 +1107,32 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "andres-lumbar-dictado-2-informe.txt",
+      "valoracion": "valoracion-andres-molina-lumbar-2.json",
+      "transcripcion": "andres-lumbar-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "andres-lumbar2-consejos",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Recomienda adaptar el puesto de trabajo y hacer pausas al conducir cada 20 minutos; nadie lo indicó",
+          "fragmentos": [
+            "Se recomienda la adaptación temporal del puesto de trabajo"
+          ]
+        },
+        {
+          "id": "andres-lumbar2-episodios",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "«No refiere episodios previos similares»: nadie preguntó por episodios previos",
+          "fragmentos": [
+            "No refiere episodios previos similares de dolor radicular"
+          ]
+        }
+      ]
     }
   ]
 }

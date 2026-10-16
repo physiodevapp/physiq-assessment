@@ -413,7 +413,8 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-lucia-romero-breve.json', 'lucia-ficha-breve-sin-audio.txt', null, ['fuentes']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'frecuencia', 'discrepancia-separada', 'repetido']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'frecuencia', 'repetido', 'estructura']],
-      ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero', 'limitaciones-negativas']],
+      // consejo-inventado (ronda 34): «fraccionando la actividad… realizando pausas»: se para ella, nadie se lo aconsejó
+      ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero', 'limitaciones-negativas', 'consejo-inventado']],
       ['valoracion-carmen-vidal-tobillo-breve.json', 'carmen-audio-1-ficha-breve.txt', 'carmen-audio-transcripcion.txt', ['relleno', 'fuentes', 'repetido']],
       // `nrs` desde la decisión 100 (docs/plan-tratamiento.md): el «nivel de dolor
       // Media (4-6/10)» de la matriz antigua ya no va al prompt (repetía el NRS
@@ -446,6 +447,8 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-5-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno', 'repetido']],
       // Caso simulado para la fase 6 (tests/fixtures/casos/andres-molina-lumbar-guion.md), informe narrativo con dictado (ronda 33)
       ['valoracion-andres-molina-lumbar.json', 'andres-lumbar-dictado-1-informe.txt', 'andres-lumbar-dictado-1-transcripcion.txt', ['lado-sintoma', 'confirma', 'relleno', 'fuentes']],
+      // Ronda 34: el mismo caso corregido (P2 intermitente, notas del plan para el paciente); mismo dictado
+      ['valoracion-andres-molina-lumbar-2.json', 'andres-lumbar-dictado-2-informe.txt', 'andres-lumbar-dictado-1-transcripcion.txt', ['lado-sintoma', 'relleno', 'consejo-inventado']],
     ];
     // En este mismo proceso (revisarArchivos(), lo que hace la herramienta),
     // no un `node` por informe; luego se deja `state` como estaba.
