@@ -286,21 +286,24 @@ Copiado en physiq-wiki (`TISSUE_TIMES`).
 
 Último paso de la Fase J. `porHipotesis` (`data/tejidos.js`) asigna cada hipótesis que tiene una fila propia a esa fila o a sus subtipos. Con alguna de ellas activa en la fase 4 (`state.activeHypotheses`), el panel ⏱ se abre con una primera pastilla **«Este paciente»** activa: solo esas filas (una fila madre asignada trae todos sus subtipos; si solo lo están algunos subtipos, la madre aparece con esos), con los `<details>` de subtipos abiertos, y una línea «Según la hipótesis activa: …». Volver a tocarla enseña todos los tejidos (la regla de siempre); tocar otra pastilla filtra por ese tejido hasta cerrar el panel. «Este paciente» no se guarda en `localStorage`: depende de la valoración, y al reabrir el panel se vuelve a elegir sola. Sin ninguna hipótesis con filas, la pastilla no aparece y el panel se comporta como antes.
 
-Una entrada `{ id, posq }` se elige por el mecanismo: `posq: true` solo con Post-quirúrgico, `false` solo sin él. Lógica pura: `filasPaciente()` y `FILTRO_PACIENTE` en `lib/tejidos.js`.
+Una entrada puede llevar condiciones (`encajaEntrada()`, `lib/tejidos.js`), y solo vale si las cumple todas: `posq: true` solo con Post-quirúrgico y `false` solo sin él; `mecanismo` y `cronologia`, el texto exacto de un botón de la fase 1 (un test lo comprueba). `soloFila: true` enseña la fila madre sin sus subtipos. Lógica pura: `filasPaciente()` y `FILTRO_PACIENTE` en `lib/tejidos.js`.
 
-Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; por ejemplo, un atrapamiento nervioso no es una neuropraxia, la tendinopatía crónica de aductores (`ca16`) no es la lesión aguda de aductores y el dolor lumbar inespecífico no lleva a «Lumbalgia aguda» porque no se sabe la cronología.
+Las hipótesis activas sin fila se nombran en la línea de «Este paciente» («Sin plazo propio en este panel: …»). Si ninguna tiene fila, no hay pastilla y una línea al principio lo dice, para que no parezca que el filtro ha fallado.
+
+Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; por ejemplo, un atrapamiento nervioso no es una neuropraxia, la tendinopatía crónica de aductores (`ca16`) no es la lesión aguda de aductores y el dolor lumbar inespecífico solo lleva a «Lumbalgia aguda» con cronología aguda (ampliación, 2026-10).
 
 | Hipótesis | Filas o subtipos |
 |---|---|
 | `h1` capsulitis adhesiva | Capsulitis adhesiva |
 | `h3` rotura del manguito | Manguito reparado, protección y rehabilitación (solo posquirúrgico) |
-| `h4` inestabilidad glenohumeral | Luxación anterior de hombro |
+| `h4` inestabilidad glenohumeral | Luxación anterior de hombro, solo con mecanismo Traumático (la hipótesis cubre también la inestabilidad posterior y la multidireccional) |
 | `ca1` artrosis de cadera | Prótesis total de cadera (solo posquirúrgico) |
 | `ca4` dolor trocantérico | Tendinopatía glútea |
 | `ca9` tendinopatía proximal de isquios | Isquiotibiales, proximal |
 | `ca11` lesión aguda de ingle | Aductores; recto femoral proximal (con sus subtipos) |
 | `ce3`, `ce12` radiculopatía / dolor radicular cervical | Radiculopatía cervical |
-| `lu3`, `lu5` dolor radicular / radiculopatía lumbar | Radiculopatía lumbar |
+| `lu3`, `lu5` dolor radicular / radiculopatía lumbar | Radiculopatía lumbar (Konstantinou 2018 estudia la ciática, es decir, el dolor radicular) |
+| `lu1`, `lu2`, `lu6`, `lu7`, `lu9` lumbalgia inespecífica | Lumbalgia aguda inespecífica, solo con cronología «Agudo (<6 semanas)» (no `lu4` estenosis ni `lu8` sacroilíaca) |
 | `ro1` artrosis de rodilla | Prótesis total de rodilla (solo posquirúrgico) |
 | `ro2` lesión meniscal | Sin cirugía: traumática y degenerativa; posquirúrgico: meniscectomía y sutura |
 | `ro4` LCA | Sin cirugía: LCA sin cirugía; posquirúrgico: LCA reconstruido |
@@ -308,7 +311,7 @@ Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; po
 | `ro8` LCM | LCM grado I (el único grado con fuente) |
 | `ro11` fracturas de rótula o meseta | Sin cirugía: rótula y meseta; posquirúrgico: meseta operada |
 | `co1`, `co2` epicondilalgia lateral / medial | Epicondilalgia lateral / medial |
-| `co7` rotura distal del bíceps | Rotura / reparación de tendón (biología, Wu 2017) |
+| `co7` rotura distal del bíceps | Rotura / reparación de tendón (biología, Wu 2017), sin los subtipos de Aquiles y manguito (`soloFila`) |
 | `tp1` esguince lateral | Sin cirugía: grados I–III; posquirúrgico: reparación |
 | `tp2` sindesmosis | Sin cirugía / operada |
 | `tp3` rotura del Aquiles | Sin cirugía / reparado |
@@ -320,4 +323,6 @@ Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; po
 | `tp37` fractura de tobillo | Sin cirugía: estable; posquirúrgico: operada |
 
 Revisada por el usuario (2026-10) y en `main` (PR 423).
+
+**Ampliación (2026-10, a propuesta del asistente, aceptada por el usuario):** lumbalgia inespecífica por cronología, `h4` solo traumática, `co7` sin subtipos y el aviso de las hipótesis sin plazo. Pendiente para una sesión de la Fase J: filas de «programa» para las hipótesis cuya pauta ya da una duración (ver `MIGRATION_PLAN.md`, Fase J, fila 12).
 
