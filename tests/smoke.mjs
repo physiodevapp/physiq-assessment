@@ -1712,6 +1712,29 @@ async function checkTiemposTejido(browser, errors) {
   await page.waitForFunction(() => document.getElementById('tejInfo').hidden);
   await page.mouse.click(10, 10);   // velo
   r.velo = !(await abierto());
+  // «Este paciente» (Fase J): con un esguince lateral activo (y Post-quirúrgico, puesto
+  // arriba) se abre con esa pastilla, solo la reparación quirúrgica, desplegada; tocarla
+  // otra vez enseña todo, y reabrir vuelve a ella. Sin hipótesis con filas, no aparece.
+  await page.evaluate(() => { state.activeHypotheses = ['tp1']; });
+  await page.click('#tejidosBtn');
+  r.paciente = await page.evaluate(() => {
+    const p = document.querySelector('#tejidosCuerpo .tej-filtro-btn.activo');
+    const b = [...document.querySelectorAll('#tejidosCuerpo .tej-barra')];
+    return p?.dataset.grupo === 'paciente' && p === document.querySelector('#tejidosCuerpo .tej-filtro-btn')
+      && b.length === 1 && b[0].dataset.barra === 'tobillo_lateral_cirugia' && b[0].checkVisibility()
+      && document.querySelector('#tejidosCuerpo .tej-paciente')?.textContent.includes('Esguince Lateral Agudo');
+  });
+  await page.click(pastilla('paciente'));
+  r.paciente = r.paciente && await barras() === nFilas;
+  await page.keyboard.press('Escape');
+  await page.click('#tejidosBtn');
+  r.paciente = r.paciente && await barras() === 1;
+  await page.keyboard.press('Escape');
+  await page.evaluate(() => { state.activeHypotheses = ['h2']; });
+  await page.click('#tejidosBtn');
+  r.paciente = r.paciente && await barras() === nFilas && !(await page.$(pastilla('paciente')));
+  await page.keyboard.press('Escape');
+  await page.evaluate(() => { state.activeHypotheses = []; });
   r.sinPayload = await page.evaluate(async () => !/tejid|Remodelaci/i.test(JSON.stringify((await import('./app.js')).buildPhysiQPayload())));
   await context.close();
 
@@ -4241,7 +4264,7 @@ const SECCIONES = [
 
   { id: 'tejidos', titulo: '«⏱ Tiempos de recuperación»:', run: async ({ browser, errors }) => {
     const tejidos = await checkTiemposTejido(browser, errors);
-    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, tarjeta de una barra con sus fuentes enlazadas en línea con « · » (líneas de 24 px y toque de 32 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
+    console.log(`  ${tejidos.ok ? '✓' : '✗'} «⏱ Tiempos de recuperación» (cabecera): diálogo ancho con una barra por fila y el eje fijo al hacer scroll (con la tira de colores de las fases), filtro por tejido en una fila sin «Todos» (se recuerda; un segundo toque o el título del grupo vuelven a todos; «Menisco», grupo propio), qué mide cada barra por su relleno, subtipos plegados que se despliegan, «Este paciente» según las hipótesis activas y el mecanismo, tarjeta de una barra con sus fuentes enlazadas en línea con « · » (líneas de 24 px y toque de 32 px en táctil) y las de la nota de grupo plegadas, sin «Hoy» sin cirugía y con «Hoy» a las 6 semanas posquirúrgicas, Escape y velo cierran, fuera del payload; hoja inferior en móvil que atrás cierra; cabecera y panel caben a 320 px; también en el hub${tejidos.ok ? '' : ' ' + JSON.stringify(tejidos)}`);
     return tejidos.ok;
   } },
 

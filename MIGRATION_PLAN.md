@@ -278,7 +278,7 @@ Orden propuesto: primero lo más frecuente en las hipótesis de la app y con fue
 
 Qué mide cada barra (`mide`: vuelta al deporte, protección, programa, biología o sin especificar; relleno liso, rayado o contorno; decisión del usuario, 2026-10): hecho para todas las filas y subtipos de las filas 1–5. Toda fila o subtipo nuevo lo necesita (test unitario). Diseño: `docs/tiempos-tejido.md`.
 
-Después, cuando haya subtipos: abrir el panel ya filtrado por la hipótesis activa (p. ej. un esguince de tobillo → «Ligamento» con su subtipo desplegado). Requiere asignar cada hipótesis a su fila o subtipo; se deja para el final.
+- [x] Abrir el panel ya filtrado por la hipótesis activa (2026-10): `porHipotesis` en `data/tejidos.js` asigna 31 hipótesis a sus filas o subtipos (algunas según el mecanismo Post-quirúrgico: LCA sin cirugía o reconstruido, Aquiles, menisco, fracturas…); con alguna activa, el panel se abre con una primera pastilla «Este paciente» que deja solo esas filas, con los subtipos desplegados, y dice de qué hipótesis salen. No se guarda como preferencia. Las hipótesis sin fila propia (atrapamientos nerviosos, tendinopatías crónicas sin subtipo, dolor lumbar inespecífico…) no tienen entrada. Diseño y tabla: `docs/tiempos-tejido.md`, «Este paciente». Unit (`tejidos`) y smoke (`tejidos`). **Pendiente: revisión clínica del usuario de la asignación antes de `main`.**
 
 ## Fase K — «Anatomía» en Kenhub: tests de la fase 4b y cribado de la fase 2
 
