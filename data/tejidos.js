@@ -261,6 +261,13 @@ export const TIEMPOS_TEJIDO = {
         // the remaining 8 weeks». 8 sem = «5–8 s» (3).
         { id: 'discinesia_escapular', mide: 'programa', nombre: 'Discinesia escapular con dolor de hombro', desde: 3, hasta: 3, gravedad: 'leve', fuentes: ['Kamonseki 2022'],
           nota: '16 sesiones de ejercicio en 8 semanas (dos por semana). El dolor y la función mejoraron a las 4 semanas y se mantuvieron a las 12, igual con ejercicio escapular específico que con ejercicio estándar.' },
+        // Fila 12 (2026-10): Hölmich 1999 (ensayo aleatorizado, 68 deportistas con dolor de ingle
+        // por los aductores de larga evolución), PDF del usuario leído: «The treatment period was
+        // 8–12 weeks» («minimum … 8 weeks», nunca más de 12); con el entrenamiento activo, «median
+        // time … until complete symptom-free return to sport was 18·5 weeks (range 13–26)».
+        // 8–12 sem = «5–8 s» a «2–3 m» (3–4).
+        { id: 'aductores_cronico', mide: 'programa', nombre: 'Aductores, dolor de ingle de larga evolución', desde: 3, hasta: 4, gravedad: 'moderada', fuentes: ['Hölmich 1999'],
+          nota: 'Entrenamiento activo durante 8–12 semanas, sin deporte mientras dura. Con él, la vuelta al deporte sin síntomas llegó a las 18,5 semanas de mediana (de 13 a 26). Es distinto de la lesión aguda de aductores.' },
       ],
     },
     {
@@ -741,6 +748,7 @@ export const TIEMPOS_TEJIDO = {
     // Solo la Osgood-Schlatter (tp36, Sever y las demás, no: Rathleff 2020 no las incluyó)
     ro15: ['osgood_schlatter'],
     ca19: ['osteitis_pubis'],
+    ca16: ['aductores_cronico'],
     h8: ['discinesia_escapular'],
     ce13: ['mareo_cervicogenico'],
     ro3: ['dolor_patelofemoral'],

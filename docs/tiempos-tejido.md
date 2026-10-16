@@ -300,6 +300,7 @@ Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; po
 | `h4` inestabilidad glenohumeral | Luxación anterior de hombro, solo con mecanismo Traumático (la hipótesis cubre también la inestabilidad posterior y la multidireccional) |
 | `ca1` artrosis de cadera | Prótesis total de cadera (solo posquirúrgico) |
 | `ca2`, `ca3` SIFA y labrum | SIFA o labrum, sin cirugía (fila 12) |
+| `ca16` aductores | Aductores, dolor de larga evolución (fila 12) |
 | `ca19` pubis | Sobrecarga del pubis (fila 12) |
 | `ca4` dolor trocantérico | Tendinopatía glútea |
 | `ca9` tendinopatía proximal de isquios | Isquiotibiales, proximal |
@@ -339,12 +340,13 @@ Revisada por el usuario (2026-10) y en `main` (PR 423).
 
 ## Fila 12: hipótesis con plazo en su propia pauta (2026-10)
 
-Trece filas nuevas, cada una con su fuente releída en la sesión buscando el plazo (PDF del usuario). Casi todas miden la duración del programa (`programa`), no la cicatrización:
+Doce filas nuevas, cada una con su fuente releída en la sesión buscando el plazo (PDF del usuario). Casi todas miden la duración del programa (`programa`), no la cicatrización:
 
 | Fila | Grupo | Barra | Fuente y plazo |
 |---|---|---|---|
 | `tendinopatia_tibial_posterior` | Tendón (subtipo) | 2–3 m | Kulig 2009: programa de 12 semanas |
 | `banda_iliotibial` | Tendón | 3–4 s a 5–8 s | Sanchez-Alvarado 2024: 4–8 semanas de ejercicio; solo el 44 % vuelve tras 6–8 semanas |
+| `aductores_cronico` | Músculo | 5–8 s a 2–3 m | Hölmich 1999: 8–12 semanas; vuelta al deporte sin síntomas a las 18,5 semanas de mediana |
 | `discinesia_escapular` | Músculo | 5–8 s | Kamonseki 2022: 16 sesiones en 8 semanas (la pauta de 6 semanas en casa es de Tang 2024, que no se releyó) |
 | `codo_lcc` | Ligamento | 3–6 m a 6m–1a | Biz 2019: al menos 3 meses; de 3 a 9 meses antes de operar |
 | `tobillo_inestabilidad_cronica` | Ligamento | 3–4 s | McKeon 2008: 4 semanas, 12 sesiones |
@@ -355,5 +357,5 @@ Trece filas nuevas, cada una con su fuente releída en la sesión buscando el pl
 | `osgood_schlatter` | Hueso | 2–3 m | Rathleff 2020: programa de 12 semanas; vuelta al deporte del 67 % a los 6 meses |
 | `osteitis_pubis` | Hueso | vuelta al deporte, 2–3 m a 3–6 m | Schöberl 2017: 73–103 días de media |
 
-Pendiente: `ca16` (aductores, Hölmich 1999: falta el PDF) y un subtipo «Bíceps distal» para `co7`.
+Pendiente: un subtipo «Bíceps distal» para `co7`.
 
