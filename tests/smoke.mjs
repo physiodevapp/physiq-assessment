@@ -457,6 +457,88 @@ const razonEstado = page => page.evaluate(() => {
 
 // Lado afectado (fase 2): aparece al elegir región, «Central» solo en columna,
 // se guarda en el estado y cabe a 320 px sin desbordar.
+// Silueta de la fase 2 (lib/silueta.js): figura según el sexo de la fase 1,
+// un toque elige región y lado, el botón cambia la figura sin tocar el sexo,
+// la lista sigue funcionando, el cambio de región pide confirmación pasada la
+// fase 2 y las zonas caben sin pisarse a 320 px.
+async function checkSilueta(page) {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await abrirApp(page);
+  const r = {};
+  await page.click('#sexo .option-btn:has-text("Mujer")');
+  await page.fill('#motivoConsulta', 'Dolor (silueta)');
+  await page.click('#mecanismo .option-btn >> nth=0');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForSelector('#siluetaRegion .sil-zona');
+  const zona = (region, lado) => `#siluetaRegion .sil-zona[data-region="${region}"][data-lado="${lado}"]`;
+  const estado = () => page.evaluate(() => ({
+    region: state.region, lado: state.lado, sexo: state.sexo,
+    texto: document.querySelector('.sil-elegida-texto').textContent,
+    figura: document.querySelector('.sil-figura').textContent.trim(),
+    nota: document.querySelector('.sil-nota').hidden ? '' : document.querySelector('.sil-nota').textContent,
+    on: [...document.querySelectorAll('.sil-zona-on')].map(b => `${b.dataset.region}|${b.dataset.lado}`).sort(),
+    aMedias: [...document.querySelectorAll('.sil-zona-region')].map(b => `${b.dataset.region}|${b.dataset.lado}`).sort(),
+    tarjeta: document.querySelector('.region-card.selected')?.dataset.region || '',
+    botonLado: document.querySelector('#lado .option-btn.selected')?.textContent || '',
+  }));
+  const inicio = await estado();
+  r.figuraDelSexo = inicio.figura === 'Figura femenina' && inicio.texto === 'Toca la zona en la silueta';
+  // A 320 px: zonas de 44 px, dentro de la pantalla y sin pisarse; nada desborda
+  r.cabe320 = await page.evaluate(() => {
+    const cajas = [...document.querySelectorAll('.sil-zona')].map(b => b.getBoundingClientRect());
+    const centro = c => [c.left + c.width / 2, c.top + c.height / 2];
+    const dist = cajas.flatMap((a, i) => cajas.slice(i + 1).map(b => Math.hypot(centro(a)[0] - centro(b)[0], centro(a)[1] - centro(b)[1])));
+    return cajas.length === 12 && cajas.every(c => c.width >= 44 && c.height >= 44 && c.left >= 0 && c.right <= innerWidth)
+      && Math.min(...dist) >= 44 && document.documentElement.scrollWidth <= innerWidth;
+  });
+  await page.click(zona('rodilla', 'Izquierdo'));
+  let e = await estado();
+  r.toqueRegionYLado = e.region === 'rodilla' && e.lado === 'Izquierdo' && e.texto === 'Rodilla (izquierda)'
+    && e.tarjeta === 'rodilla' && e.botonLado === 'Izquierdo' && e.on.join() === 'rodilla|Izquierdo';
+  await page.click(zona('rodilla', 'Derecho'));
+  e = await estado();
+  r.otroLado = e.lado === 'Derecho' && !(await page.isVisible('#confirmBanner'));
+  await page.click('#lado .option-btn:has-text("Bilateral")');
+  e = await estado();
+  r.bilateral = e.on.join() === 'rodilla|Derecho,rodilla|Izquierdo';
+  await page.click(zona('lumbar', ''));
+  e = await estado();
+  r.columna = e.region === 'lumbar' && e.lado === '' && e.texto === 'Lumbar' && e.on.join() === 'lumbar|';
+  // El botón cambia la figura, no el sexo; la región sigue marcada
+  await page.click('#siluetaRegion .sil-figura');
+  e = await estado();
+  r.cambiaFigura = e.figura === 'Figura masculina' && e.sexo === 'Mujer' && /no cambia el sexo de la fase 1 \(mujer\)/.test(e.nota)
+    && e.on.join() === 'lumbar|' && await page.evaluate(() => document.activeElement?.classList.contains('sil-figura'));
+  // La lista: región sin lado, sus dos zonas a medias
+  await page.click('.region-card[data-region="codo"]');
+  e = await estado();
+  r.lista = e.region === 'codo' && e.lado === '' && e.aMedias.join() === 'codo|Derecho,codo|Izquierdo' && e.texto === 'Codo';
+  // Pasada la fase 2, cambiar de región pide confirmación; cancelar no cambia nada
+  await page.evaluate(() => { state.maxVisitedIdx = 2; });
+  await page.click(zona('hombro', 'Derecho'));
+  await page.waitForSelector('#confirmBanner');
+  await page.click('#confirmCancel');
+  e = await estado();
+  r.cancela = e.region === 'codo' && e.lado === '';
+  await page.click(zona('hombro', 'Derecho'));
+  await page.waitForSelector('#confirmBanner');
+  await page.click('#confirmAction');
+  e = await estado();
+  r.confirma = e.region === 'hombro' && e.lado === 'Derecho' && e.texto === 'Hombro (derecho)';
+  // Tema claro: los colores de la silueta salen de sus variables
+  r.tema = await page.evaluate(() => {
+    const raiz = document.documentElement, antes = raiz.getAttribute('data-theme');
+    const f = tema => { raiz.setAttribute('data-theme', tema); return getComputedStyle(document.querySelector('.sil-parte')).fill; };
+    const oscuro = f('dark'), claro = f('light');
+    raiz.setAttribute('data-theme', antes);
+    return oscuro !== claro;
+  });
+  r.ok = Object.values(r).every(Boolean);
+  await page.setViewportSize({ width: 1280, height: 900 });
+  return r;
+}
+
 async function checkLado(page) {
   await page.setViewportSize({ width: 320, height: 640 });
   await abrirApp(page);
@@ -4393,6 +4475,12 @@ const SECCIONES = [
   { id: 'arbol', titulo: '«¿Por qué esta pregunta?» del árbol (fase 4, lumbar):', run: async ({ page }) => {
     const r = await checkArbolRazon(page);
     console.log(`  ${r.ok ? '✓' : '✗'} entre la pregunta y las opciones, se abre sin contestar el paso, «✨ IA» con el contexto del paso, «Ampliar» abre el panel (Por qué, En detalle, Fuentes enlazadas; lateral sin velo, se contesta con él abierto; sheet con velo a 390 px que atrás cierra sin salir de la fase 4)${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'silueta', titulo: 'Silueta de la fase 2 (región y lado de un toque, 320 px):', run: async ({ page }) => {
+    const r = await checkSilueta(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el botón cambia la figura sin tocar el sexo; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
