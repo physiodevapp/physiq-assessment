@@ -196,6 +196,31 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(n && /tiroides/.test(n.mensaje), JSON.stringify(p));
     assert.ok(!ids(limpio + ' No refiere diabetes.').includes('no-se'), 'la diabetes sí se contestó «No»');
   });
+  test('revisión: diagnóstico que «no cumple los criterios» propuesto como hipótesis adicional (ronda 32)', () => {
+    const trans = 'No cumple todos los criterios de un síndrome de dolor regional complejo pero lo dejo anotado para vigilarlo.';
+    const p = rev(limpio + '\n### Hipótesis adicionales a valorar\nPosible síndrome de dolor regional complejo en fase inicial.\n## SEGUIMIENTO FUNCIONAL\nReevaluar.', { transcripcion: trans }).find(x => x.id === 'hipotesis-no-cumple');
+    assert.ok(p && /síndrome de dolor regional complejo/.test(p.mensaje), 'nombre con acentos en el mensaje');
+    assert.ok(!ids(limpio + '\n## CONCLUSIONES\nLos cambios del pie se vigilarán y se comentarán con el cirujano.', { transcripcion: trans }).includes('hipotesis-no-cumple'), 'como hallazgo a vigilar, no salta');
+    assert.ok(!ids(limpio + '\n### Hipótesis adicionales a valorar\nPosible síndrome de dolor regional complejo.').includes('hipotesis-no-cumple'), 'sin el «no cumple» en la consulta, no salta');
+  });
+  test('prompt: lo que «no cumple los criterios» no va en Hipótesis adicionales (ronda 32)', () => {
+    const pr = IN.buildNarrativePrompt({ p: 'X', h: [{ name: 'Debilidad de abductores' }] }, { conAudio: true, dictado: true });
+    assert.ok(pr.includes(IN.AVISO_NO_CUMPLE));
+    assert.ok(pr.includes('no cumple los criterios de un diagnóstico no va aquí'));
+  });
+  test('revisión: «sin aumento del edema» es un criterio, no niega la hinchazón (ronda 31)', () => {
+    const t = limpio + ' Refiere edema del pie al final del día. La carga se dosifica sin aumento del edema del pie al día siguiente.';
+    assert.ok(!ids(t).includes('discrepancia-separada'), 'criterio de carga');
+    assert.ok(ids(limpio + ' Refiere edema del pie al final del día. Niega hinchazón.').includes('discrepancia-separada'), 'la negación sigue contando');
+  });
+  test('revisión: «No sé» frente a las restricciones del cirujano (ronda 30)', () => {
+    const fp = [{ s: 'Cadera', q: '¿Le aparece o le aumenta el dolor al…?', a: 'Caminar: Sí · Cruzar las piernas: No sé' }];
+    const cq = { iv: 'Prótesis', fe: '', se: 5, pr: 'Escrito', re: 'Precauciones de luxación: no flexionar más de 90°, no cruzar las piernas', co: [] };
+    const t = limpio + ' El protocolo indica no flexionar más de 90 grados, no cruzar las piernas.';
+    assert.ok(!ids(t, { datos: { fp, cq } }).includes('no-se'), 'cita la restricción, no niega el síntoma');
+    assert.ok(ids(t + ' Niega dolor al cruzar las piernas.', { datos: { fp, cq } }).includes('no-se'), 'la negación del síntoma sigue saliendo');
+    assert.ok(ids(t, { datos: { fp } }).includes('no-se'), 'sin cirugía, la frase sigue contando');
+  });
   test('revisión: códigos CIF según la plantilla', () => {
     assert.ok(ids('Dolor (b28016) al correr (d4552).', { plantilla: 'breve' }).every(i => i !== 'cif'));
     assert.match(rev('Dolor al entrenar (e1101).', { plantilla: 'breve' }).find(x => x.id === 'cif').mensaje, /e1101/);
@@ -388,10 +413,16 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-lucia-romero-breve.json', 'lucia-ficha-breve-sin-audio.txt', null, ['fuentes']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-1-informe.txt', 'pedro-audio-transcripcion.txt', ['atribucion', 'frecuencia', 'discrepancia-separada', 'repetido']],
       ['valoracion-pedro-flores-audio.json', 'pedro-audio-2-informe.txt', 'pedro-audio-transcripcion.txt', ['inventado', 'relleno', 'fuentes', 'atribucion', 'frecuencia', 'repetido', 'estructura']],
-      ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero', 'limitaciones-negativas']],
+      // consejo-inventado (ronda 34): «fraccionando la actividad… realizando pausas»: se para ella, nadie se lo aconsejó
+      ['valoracion-andrea-ruiz-lumbar.json', 'andrea-audio-1-informe.txt', 'andrea-audio-transcripcion.txt', ['genero', 'limitaciones-negativas', 'consejo-inventado']],
       ['valoracion-carmen-vidal-tobillo-breve.json', 'carmen-audio-1-ficha-breve.txt', 'carmen-audio-transcripcion.txt', ['relleno', 'fuentes', 'repetido']],
-      ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['plan-urgente', 'frecuencia', 'diagnostico', 'imc']],
-      ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas', 'imagen-motivo']],
+      // `nrs` desde la decisión 100 (docs/plan-tratamiento.md): el «nivel de dolor
+      // Media (4-6/10)» de la matriz antigua ya no va al prompt (repetía el NRS
+      // con otros cortes), así que el «4-6/10» del informe no figura en los datos.
+      // Ese informe mezclaba precisamente ese ítem con el NRS 6/10.
+      ['valoracion-javier-soto-cervical.json', 'javier-audio-1-informe.txt', 'javier-audio-transcripcion.txt', ['nrs', 'plan-urgente', 'frecuencia', 'diagnostico', 'imc']],
+      // `nrs` desde la decisión 100, como el de Javier: «nivel de dolor medio (4-6/10)» con NRS 4/10.
+      ['valoracion-daniel-ortega-cadera.json', 'daniel-audio-1-informe.txt', 'daniel-audio-transcripcion.txt', ['nrs', 'descartar-inventado', 'seguimiento-fuera', 'limitaciones-negativas', 'imagen-motivo']],
       ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-1-informe.txt', 'daniel-dictado-transcripcion.txt', ['lado-otro', 'formulario-contradicho', 'seguimiento-fuera', 'constantes', 'imagen-motivo']],
       ['valoracion-daniel-ortega-cadera.json', 'daniel-dictado-2-informe.txt', 'daniel-dictado-2-transcripcion.txt', ['lado-otro', 'no-se', 'formulario-contradicho', 'test-propiedades']],
       ['valoracion-marta-gil-rodilla.json', 'marta-dictado-1-informe.txt', 'marta-dictado-transcripcion.txt', ['lado-otro', 'seguimiento-fuera', 'relleno', 'frecuencia', 'discrepancia-separada']],
@@ -408,6 +439,17 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-andres-molina-codo.json', 'andres-dictado-1-informe.txt', 'andres-dictado-1-transcripcion.txt', ['nrs-momento', 'reconsiderar-copiado', 'seguimiento-fuera', 'relleno']],
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-1-ficha-breve.txt', 'pablo-dictado-1-transcripcion.txt', ['nrs-momento', 'fisiopatologia']],
       ['valoracion-pablo-serrano-rodilla.json', 'pablo-dictado-2-ficha-breve.txt', 'pablo-dictado-2-transcripcion.txt', ['relleno']],
+      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-1-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'confirma', 'atribucion', 'hipotesis-no-cumple', 'repetido']],
+      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-2-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'descarta', 'hipotesis-no-cumple', 'diagnostico']],
+      // `nrs` desde la decisión 100, como el de Javier: «nivel de dolor medio (4-6/10)» con NRS 4/10.
+      ['valoracion-rosario-gomez-cadera.json', 'rosario-dictado-3-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['nrs', 'lado-otro', 'relleno']],
+      ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-4-informe.txt', 'rosario-dictado-4-transcripcion.txt', ['lado-otro', 'atribucion', 'hipotesis-no-cumple']],
+      ['valoracion-rosario-gomez-cadera-2.json', 'rosario-dictado-5-informe.txt', 'rosario-dictado-1-transcripcion.txt', ['lado-otro', 'relleno', 'repetido']],
+      // Caso simulado para la fase 6 (tests/fixtures/casos/andres-molina-lumbar-guion.md), informe narrativo con dictado (ronda 33)
+      ['valoracion-andres-molina-lumbar.json', 'andres-lumbar-dictado-1-informe.txt', 'andres-lumbar-dictado-1-transcripcion.txt', ['lado-sintoma', 'confirma', 'relleno', 'fuentes']],
+      // Ronda 34: el mismo caso corregido (P2 intermitente, notas del plan para el paciente); mismo dictado
+      ['valoracion-andres-molina-lumbar-2.json', 'andres-lumbar-dictado-2-informe.txt', 'andres-lumbar-dictado-1-transcripcion.txt', ['lado-sintoma', 'relleno', 'consejo-inventado']],
+      ['valoracion-andres-molina-lumbar-3.json', 'andres-lumbar-dictado-3-informe.txt', 'andres-lumbar-dictado-1-transcripcion.txt', ['lado-sintoma', 'consejo-inventado']],
     ];
     // En este mismo proceso (revisarArchivos(), lo que hace la herramienta),
     // no un `node` por informe; luego se deja `state` como estaba.
@@ -430,6 +472,16 @@ console.log('\nrevisión automática del informe con IA');
       assert.equal(salida, formatearPuntos(revisados[0][1]));
     });
   }
+  test('prompt: aviso del cribado sin copiar la pregunta y EVN sin desarrollar (ronda 31)', () => {
+    assert.match(IN.AVISO_SQ, /No copies ni parafrasees el texto de la pregunta/);
+    assert.match(IN.NOTA_NRS, /sigla sin desarrollar/);
+  });
+  test('prompt: las preguntas del cribado en SÍ llevan el aviso de que no todas sus partes son hallazgos (ronda 30)', () => {
+    const d = { p: 'X', si: true, sq: ['¿Tiene un dolor continuo, con sudoración o hinchazón?'] };
+    for (const pr of [IN.buildNarrativePrompt(d, {}), IN.buildFichaBrevePrompt(d, {})])
+      assert.ok(pr.includes(`Alertas sistémicas positivas (${IN.AVISO_SQ}):`), 'aviso junto a las preguntas');
+    assert.ok(!IN.buildNarrativePrompt({ p: 'X', sq: [] }, {}).includes(IN.AVISO_SQ), 'sin preguntas en SÍ, sin aviso');
+  });
   test('prompt: aviso de reglas pronósticas en la coherencia y NRS que debe constar (ronda 23)', () => {
     const d = { p: 'X', nr: 7, h: [{ name: 'Disfunción segmentaria' }] };
     for (const pr of [IN.buildNarrativePrompt(d, {}), IN.buildFichaBrevePrompt(d, {})]) {
@@ -508,6 +560,20 @@ console.log('\nrevisión automática del informe con IA');
     assert.ok(seg('Si no mejora, se pedirá una ecografía.').includes('seguimiento-fuera'));
     assert.ok(!seg('La ausencia de mejoría con movimientos repetidos es compatible con origen facetario.').includes('seguimiento-fuera'), 'un hallazgo no es el criterio');
     assert.ok(ids('Según el dictado, refiere dolor.').includes('fuentes'), '«dictado» nombra la fuente');
+  });
+  test('revisión: neoplasia por cáncer, «confirmando» lo neural y episodios previos negados sin que nadie los mencione (ronda 33)', () => {
+    assert.ok(ids('Niega fiebre, pérdida de peso y antecedentes de neoplasia.').includes('diagnostico'), 'sin nada en la fuente, sigue saltando');
+    assert.ok(!ids('Niega fiebre, pérdida de peso y antecedentes de neoplasia.', { transcripcion: 'Ni fiebre ni pérdida de peso ni antecedentes de cáncer.' }).includes('diagnostico'), 'cáncer en la consulta = neoplasia en el informe');
+    assert.ok(ids('El slump reproduce el dolor y mejora al liberar la flexión cervical, confirmando la sensibilización neural.').includes('confirma'));
+    assert.ok(!ids('El slump reproduce el dolor y mejora al liberar la flexión cervical, compatible con mecanosensibilidad neural.').includes('confirma'));
+    assert.ok(ids('Comenzó hace tres semanas. No refiere episodios previos similares.').includes('relleno'), 'nadie preguntó por episodios previos');
+    assert.ok(!ids('Comenzó hace tres semanas. No refiere episodios previos similares.', { transcripcion: 'Es la primera vez que le pasa.' }).includes('relleno'), 'si consta, puede decirse');
+    assert.ok(!ids('Comenzó hace tres semanas. No refiere episodios previos similares.', { datos: { fp: [{ s: 'General', q: '¿Es la primera vez que le pasa?', a: 'Sí' }] } }).includes('relleno'));
+  });
+  test('prompt: episodios previos y factores ambientales, solo si constan (ronda 33)', () => {
+    const pr = IN.buildNarrativePrompt({ p: 'X', h: [] }, { conAudio: true, dictado: true });
+    assert.ok(pr.includes('episodios previos si constan (si nadie los menciona, no escribas que no los hay)'));
+    assert.ok(pr.includes('sin deducir facilidades ni dificultades que nadie dijo'));
   });
   test('revisión: «Antes de compartir, comprueba» — atribución y otra zona siempre; tests con «o» solo si se hicieron', () => {
     const sin = RI.comprobacionesManuales({ ampliado: { tests: [{ hipotesis: 'X', items: [{ test: 'Test de Neer', resultado: 'positivo' }] }] } });

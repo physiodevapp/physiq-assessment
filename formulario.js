@@ -9,7 +9,8 @@
 // de la app.
 // ============================================================
 import { state } from './state.js';
-import { saveSession, injectQuickInputBar } from './app.js';
+import { saveSession, injectQuickInputBar, _actualizarBandas } from './app.js';
+import { pistasHTML } from './lib/pistas.js';
 import COMUN from './formularios/comun.js';
 
 // Regiones con archivo formularios/<region>.js. Al añadir uno, añadirlo aquí
@@ -394,22 +395,8 @@ function _pistas(refs) {
   return out;
 }
 
-function _pistasHTML(p) {
-  if (!p.length) return '';
-  // «Refiere el paciente», como el «SEGÚN REFIERE EL PACIENTE» del 📄 Informe:
-  // la voz del paciente, distinta de la clasificación del fisio de debajo.
-  // textoRespuesta() pone el detalle al final, así que `cita` es el sufijo de `a`.
-  const resp = x => {
-    if (!x.cita) return esc(x.a);
-    const pre = x.a.slice(0, x.a.length - x.cita.length);
-    return `${esc(pre)}<span class="fp-pista-cita">«${esc(x.cita)}»</span>`;
-  };
-  return `<div class="fp-pistas"><div class="fp-pistas-title">📝 Refiere el paciente</div>${
-    p.map(x => `<div class="fp-pista"><span class="fp-pista-q">${esc(x.q)}</span> <span class="fp-pista-a">${resp(x)}</span></div>`).join('')}</div>`;
-}
-
 export function pistasPasoHTML(stepId) {
-  return _pistasHTML(pistasPaso(stepId));
+  return pistasHTML(pistasPaso(stepId));
 }
 
 // Pinta las pistas en #fpPistas_<campo> de la fase 1. Va con el contador:
@@ -417,8 +404,23 @@ export function pistasPasoHTML(stepId) {
 function _actualizarPistasFase1() {
   Object.keys(COMUN.pistas || {}).forEach(campo => {
     const el = document.getElementById(`fpPistas_${campo}`);
-    if (el) el.innerHTML = _pistasHTML(pistasFase1(campo));
+    if (el) el.innerHTML = pistasHTML(pistasFase1(campo));
   });
+}
+
+// Respuestas para el contador: cada fila contestada de una matriz cuenta
+// como una (si no, «1 respuesta» no cambiaba al contestar más filas).
+function _contarScope(scope) {
+  const esquema = esquemaDe(scope);
+  if (!esquema) return 0;
+  const resp = scope === 'comun' ? fp().comun : (fp().regiones[scope] || {});
+  let n = 0;
+  esquema.secciones.forEach(s => s.items.forEach(it => {
+    const v = resp[it.id];
+    if (vacio(v) || !visible(it, resp)) return;
+    n += it.tipo === 'matriz' ? it.filas.filter(f => v[f.id]).length : 1;
+  }));
+  return n;
 }
 
 function _actualizarContador() {
@@ -427,10 +429,11 @@ function _actualizarContador() {
     const el = document.getElementById(id);
     if (el) el.textContent = n ? `${n} respuesta${n === 1 ? '' : 's'}` : 'Sin rellenar';
   };
-  pinta('fpCont_comun', resumenDe('comun').length);
-  pinta('fpCont_region', state.region ? resumenDe(state.region).length : 0);
+  pinta('fpCont_comun', _contarScope('comun'));
+  pinta('fpCont_region', state.region ? _contarScope(state.region) : 0);
   const nom = document.getElementById('fpNombreRegion');
   if (nom) nom.textContent = _nombreRegion(state.region);
+  _actualizarBandas();   // la banda fija repite el contador: sin esto solo cambiaba al hacer scroll
 }
 
 export async function precargarFormulario() {
@@ -442,4 +445,4 @@ export async function precargarFormulario() {
 // Exposed for inline onclick/oninput attributes built above — those resolve
 // only against the global scope, never a module's private scope.
 Object.assign(window, { fpUnica, fpMulti, fpEscala, fpMatriz, fpTexto, fpToggle,
-  fpPistasPasoHTML: pistasPasoHTML });
+  fpPistasPaso: pistasPaso });

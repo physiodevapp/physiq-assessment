@@ -1,0 +1,331 @@
+// «✨ Detallar con IA» de la fase 6 (Fase L, L4; decisiones 106–115 de
+// docs/plan-tratamiento.md): prompt, revisión automática, vista, textos para
+// compartir y aislamiento (solo standalone, nunca en el payload ni en el .json).
+// Se ejecuta desde tests/unit.js.
+import { assert, leer, test, state, buildPhysiQPayload, buildContextSummaryText, buildInformeFisioterapiaText } from './comun.mjs';
+const PIA = await import('../../lib/plan-ia.js');
+const RP = await import('../../lib/revision-plan.js');
+const UI = await import('../../plan-ia.js');
+const J = await import('../../lib/valoracion-json.js');
+const D = await import('../../data/plan-tratamiento.js');
+
+console.log('\nplan detallado con IA (fase 6, L4)');
+
+const ALARMA = D.TEXTOS_CASA.alarmaNeuro.texto;
+const ANDRES = JSON.parse(leer('tests/fixtures/casos/valoracion-andres-molina-lumbar.json')).assessmentState;
+
+// Carga el caso de Andrés (lumbar radicular, dosifica P2, P3 independiente)
+function conAndres(patch, fn) {
+  const antes = { ...state };
+  Object.assign(state, JSON.parse(JSON.stringify(ANDRES)), { planTratamiento: null, informeIA: null }, patch);
+  try { return fn(); } finally {
+    for (const k of Object.keys(state)) if (!(k in antes)) delete state[k];
+    Object.assign(state, antes, { planTratamiento: null, informeIA: null });
+  }
+}
+
+test('plan IA: el contexto del caso de Andrés — B «Muy suave», plan A, lu3, sin C, red de cola de caballo, P3 y lu6 fuera', () => conAndres({}, () => {
+  const ctx = UI.contextoPlanIA();
+  const en = ctx.entrada;
+  assert.equal(en.nivel, 'B');
+  assert.deepEqual([en.escalon.n, en.escalon.nombre], [1, 'Muy suave']);
+  assert.equal(en.frecuencia.clave, 'A');
+  assert.equal(en.sinC, true);
+  assert.deepEqual(en.elegidas, ['Dolor Radicular Lumbar']);
+  assert.ok(en.noElegidas.some(n => /discog/i.test(n)), 'lu6 no elegida');
+  assert.deepEqual(en.independientes, ['P3 · Zona lumbar']);
+  assert.deepEqual(en.alarmas, [ALARMA]);
+  assert.equal(en.transcripcion, null, 'sin informe con IA no hay transcripción');
+  assert.match(ctx.esqueleto, /INTERVENCIÓN PRINCIPAL \(12–35 min\)/);
+}));
+
+test('plan IA: el prompt lleva datos, esquema y reglas; nunca el texto del informe con IA', () => conAndres({
+  informeIA: { texto: 'TEXTO-DEL-INFORME-QUE-NO-DEBE-IR', transcripcion: 'Dictado: le cuesta conducir.', conAudio: true, dictado: true, huella: 'otra' },
+}, () => {
+  const p = PIA.promptPlan(UI.contextoPlanIA().entrada);
+  assert.ok(!p.includes('TEXTO-DEL-INFORME-QUE-NO-DEBE-IR'), 'decisión 4: nunca el informe');
+  assert.match(p, /## DICTADO DEL FISIOTERAPEUTA \(solo para preferencias y contexto\)\nAVISO: la valoración cambió[^\n]*\nDictado: le cuesta conducir\./);
+  assert.match(p, /## DATOS DE VALORACIÓN ESTRUCTURADA/);
+  assert.match(p, /Nivel elegido: B · escalón «Muy suave» \(Manda el dolor\)/);
+  assert.match(p, /Frecuencia del mes: Plan A · 1 sesión por semana/);
+  assert.match(p, /### Plan de sesión\nPLAN DE SESIÓN \(50 min\)/);
+  assert.match(p, /### Programa para casa \(texto base\)\nPROGRAMA PARA CASA/);
+  assert.match(p, /NO trata \(no las planifiques\):\n {2}· Dolor Lumbar Discog/i);
+  assert.match(p, /Síntomas independientes que este plan NO trata:\n {2}· P3 · Zona lumbar/);
+  assert.match(p, /ni una propuesta C \(el esquema no la tiene\)/);
+  assert.match(p, /solo grados I y II[^.]*nada de grado III ni IV/);
+  assert.match(p, /termina esa línea con «\(sugerencia de la IA\)»/);
+  assert.match(p, /centralización o preferencia direccional/);
+  assert.ok(p.includes(`«${ALARMA}»`), 'la red de seguridad, para copiarla literal');
+  assert.match(p, /primera sesión de tratamiento/);
+  assert.match(p, /empieza DIRECTAMENTE con «## SESIÓN»/);
+  assert.ok(!p.includes('{{TRANSCRIPT}}'), 'el worker no añade transcripción: va en el prompt');
+}));
+
+test('plan IA: sin audio en el informe, sin transcripción; la huella cambia con las elecciones de la fase 6', () => conAndres({
+  informeIA: { texto: 'x', transcripcion: '(No disponible)', conAudio: false },
+}, () => {
+  const ctx = UI.contextoPlanIA();
+  assert.equal(ctx.entrada.transcripcion, null);
+  assert.ok(!PIA.promptPlan(ctx.entrada).includes('TRANSCRIPCIÓN DE LA CONSULTA'));
+  const h1 = ctx.huella;
+  state.planTratamiento.frecuencia = 'B';
+  const h2 = UI.contextoPlanIA().huella;
+  assert.notEqual(h1, h2);
+  state.planTratamiento.notas.domiciliario = 'Caminar 10 min';
+  assert.notEqual(UI.contextoPlanIA().huella, h2, 'lo que escribe el fisio para casa también');
+}));
+
+test('plan IA: sin plan que detallar (sin región, bloqueado o sin hipótesis), sin tarjeta', () => {
+  conAndres({ region: '' }, () => assert.equal(UI.contextoPlanIA(), null));
+  conAndres({ sistemicoAnswers: { ...ANDRES.sistemicoAnswers, l6: 'SI' } }, () => assert.equal(UI.contextoPlanIA(), null, 'urgencia de cola de caballo'));
+  conAndres({ activeHypotheses: [] }, () => assert.equal(UI.contextoPlanIA(), null));
+});
+
+const ESQ = `INTERVENCIÓN PRINCIPAL (12–35 min)
+- unas 3–4 movilizaciones de unos 30 s por articulación. Corta al principio, hasta conocer la respuesta a las 48 h (Maitland 2005, cap. 9).
+- Ejercicios repetidos (George 2021; NICE NG59).
+${ALARMA}`;
+const OPC = { esqueleto: ESQ, escalon: 1, alarmas: [ALARMA], noElegidas: ['Dolor Lumbar Discogénico'], derivar: ['Fractura vertebral'], independientes: ['P3 · Zona lumbar'] };
+const plan = (sesion, mes = '- Progresar según el esquema.', casa = `- Camina cada día.\n${ALARMA}`) =>
+  `## SESIÓN\n### INTERVENCIÓN PRINCIPAL (12–35 min)\n${sesion}\n\n## PLAN DEL MES\n${mes}\n\n## PROGRAMA PARA CASA\n${casa}`;
+const ids = (t, o = OPC) => RP.revisarPlan(t, o).map(p => p.id);
+
+test('revisión del plan: un plan limpio no da puntos', () => {
+  assert.deepEqual(ids(plan('- Movilización accesoria de grado I y II, unas 3–4 movilizaciones de unos 30 s.\n- Deslizamiento neural suave, 10 repeticiones (sugerencia de la IA).')), []);
+});
+
+test('revisión del plan: volumen sin marcar (cifra con unidad que no está en el esquema)', () => {
+  assert.deepEqual(ids(plan('- 3 series de 10 repeticiones de extensión.')), ['volumen']);
+  assert.deepEqual(ids(plan('- 3 x 10 de extensión.')), ['volumen']);
+  assert.deepEqual(ids(plan('- Igual, 2 veces al día (sugerencia de la IA).')), [], 'marcada');
+  assert.deepEqual(ids(plan('- Reevaluar a las 48 h.')), [], 'la cifra está en el esquema');
+  assert.deepEqual(ids(plan('- Ver respuesta.', '- Sesión 2 (semana 2): reevaluación.')), [], 'sesión y semana no son dosis');
+});
+
+test('revisión del plan: fuente que el esquema no cita', () => {
+  assert.deepEqual(ids(plan('- Movilización neural (Butler 2000).')), ['fuente']);
+  assert.deepEqual(ids(plan('- Según la guía de Kovacs et al. 2019, lo que sea.')), ['fuente']);
+  assert.deepEqual(ids(plan('- Recomendación del KNGF.')), ['fuente']);
+  assert.deepEqual(ids(plan('- Ejercicios repetidos (George 2021) y NICE.')), [], 'citadas en el esquema');
+});
+
+test('revisión del plan: técnica por encima del escalón, salvo para prohibirla', () => {
+  assert.deepEqual(ids(plan('- Movilización PA de grado III.')), ['escalon']);
+  assert.deepEqual(ids(plan('- Grados III–IV si tolera.')), ['escalon']);
+  assert.deepEqual(ids(plan('- Manipulación de alta velocidad (thrust) en L5.')), ['escalon']);
+  assert.deepEqual(ids(plan('- Explorar con sobrepresión.')), ['escalon']);
+  assert.deepEqual(ids(plan('- Sin grados III ni IV, ni thrust, ni sobrepresión.')), [], 'negada');
+  assert.deepEqual(ids(plan('- Movilización de grado III.'), { ...OPC, escalon: 3 }), [], 'el escalón 3 admite grado III');
+  assert.deepEqual(ids(plan('- Movilización de grado IV.'), { ...OPC, escalon: 3 }), ['escalon']);
+});
+
+test('revisión del plan: red de seguridad del programa para casa, tal cual', () => {
+  assert.deepEqual(ids(plan('- Nada.', undefined, '- Camina.')), ['red']);
+  assert.deepEqual(ids(plan('- Nada.', undefined, '- Camina.\nSi notas adormecimiento entre las piernas, ve a urgencias.')), ['red'], 'resumida no vale');
+  assert.deepEqual(ids(`## SESIÓN\n- Nada.\n## PLAN DEL MES\n- Nada.`), ['secciones']);
+});
+
+test('revisión del plan: hipótesis que se deriva o no elegida, y síntoma independiente', () => {
+  assert.deepEqual(ids(plan('- Para la fractura vertebral, extensión suave.')), ['derivar']);
+  assert.deepEqual(ids(plan('- Ejercicios para el dolor lumbar discogénico.')), ['no-elegida']);
+  assert.deepEqual(ids(plan('- El dolor lumbar discogénico no se trata en este plan.')), []);
+  assert.deepEqual(ids(plan('- Estiramiento para la zona lumbar derecha.')), ['independiente']);
+  assert.deepEqual(ids(plan('- La molestia de la zona lumbar es independiente: se valora aparte.')), []);
+});
+
+test('revisión del plan: comprobaciones a mano y recuento de revisados', () => {
+  assert.equal(RP.comprobacionesPlan().length, 3);
+  assert.match(RP.comprobacionesPlan({ posq: true }).join(' '), /protocolo del cirujano/);
+  assert.match(RP.comprobacionesPlan({ transcripcion: true }).join(' '), /de la consulta/);
+  const puntos = RP.revisarPlan(plan('- 3 series de extensión.\n- Grado IV.'), OPC);
+  const com = RP.comprobacionesPlan();
+  const r0 = RP.resumenRevisadosPlan(puntos, com, []);
+  assert.deepEqual([r0.total, r0.pendientes, r0.altosPendientes], [5, 5, 1]);
+  const todo = [...puntos.map(RP.clavePuntoPlan), ...com.map(RP.claveComprobacionPlan)];
+  assert.equal(RP.resumenRevisadosPlan(puntos, com, todo).pendientes, 0);
+});
+
+test('plan IA: vista — las sugerencias se pintan aparte con su etiqueta, sin la marca, y escapadas', () => {
+  const h = PIA.planIAHtml('## SESIÓN\n### CIERRE (45–50 min)\n- Reevaluar.\n- Caminar 10 min <b> (sugerencia de la IA).\nTexto suelto.');
+  assert.match(h, /<h3>SESIÓN<\/h3><h4>CIERRE \(45–50 min\)<\/h4><ul><li>Reevaluar\.<\/li><li class="pia-sug">Caminar 10 min &lt;b&gt;\. <span class="pia-sug-et">Sugerencia de la IA, sin fuente en PhysiQ<\/span><\/li><\/ul><p>Texto suelto\.<\/p>/);
+  assert.ok(!h.includes('(sugerencia de la IA)'));
+});
+
+test('plan IA: textos para compartir — el del fisio con marcas; el del paciente solo casa, sin marcas y con la red siempre', () => {
+  const t = plan('- 10 repeticiones (sugerencia de la IA).', undefined, '- Camina 10 min cada mañana (sugerencia de la IA).');
+  const fisio = PIA.textoPlanIA(t, { paciente: 'Andrés', regionTexto: 'Lumbar (izquierda)', fecha: '15/10/2026', nivel: 'B', escalon: 'Muy suave', frecuencia: 'Plan A' });
+  assert.match(fisio, /^PLAN DE TRATAMIENTO DETALLADO — propuesta\nAndrés · Lumbar \(izquierda\) · 15\/10\/2026\nNivel B · Muy suave · Plan A\n\nSESIÓN/);
+  assert.match(fisio, /\(sugerencia de la IA\)/);
+  assert.ok(fisio.endsWith(PIA.PIE_PLAN_IA));
+  const casa = PIA.textoCasaIA(t, { paciente: 'Andrés', fecha: '15/10/2026', alarmas: [ALARMA] });
+  assert.equal(casa, `PROGRAMA PARA CASA\nAndrés · 15/10/2026\n\n· Camina 10 min cada mañana.\n\n${ALARMA}`, 'sin la marca; la red, añadida');
+  const sinRed = PIA.textoCasaIA(plan('- x', undefined, '- Camina.'), { alarmas: [ALARMA] });
+  assert.ok(sinRed.endsWith(`\n\n${ALARMA}`), 'si la IA no la copió, se añade');
+});
+
+test('plan IA: truncado — faltan secciones o acaba a medias', () => {
+  assert.equal(PIA.planTruncado(plan('- x.', '- y.', '- z.')), false);
+  assert.equal(PIA.planTruncado(plan('- x.', '- y.', '- z sin terminar')), true);
+  assert.equal(PIA.planTruncado('## SESIÓN\n- x.'), true);
+  assert.equal(PIA.planTruncado(''), true);
+});
+
+test('plan IA: nunca en el payload, 📋 Notas, 📄 Informe ni el .json exportado', () => conAndres({}, () => {
+  UI.contextoPlanIA();
+  state.planTratamiento.ia = { texto: 'MARCADOR-PLAN-IA', revisados: [] };
+  for (const t of [JSON.stringify(buildPhysiQPayload()), buildContextSummaryText(), buildInformeFisioterapiaText()])
+    assert.ok(!t.includes('MARCADOR-PLAN-IA'));
+  const exp = J.exportarValoracion(state);
+  assert.ok(!JSON.stringify(exp).includes('MARCADOR-PLAN-IA'));
+  assert.ok(exp.assessmentState.planTratamiento && !('ia' in exp.assessmentState.planTratamiento), 'las elecciones del fisio sí van');
+  assert.equal(state.planTratamiento.ia.texto, 'MARCADOR-PLAN-IA', 'exportar no toca el estado');
+  const imp = J.leerImportacion(JSON.stringify({ ...exp, assessmentState: { ...exp.assessmentState, planTratamiento: { ...exp.assessmentState.planTratamiento, ia: { texto: 'x' } } } }));
+  assert.ok(imp.ok && !('ia' in imp.assessmentState.planTratamiento));
+}));
+
+test('plan IA: solo standalone — plan.js la carga con import() fuera del hub; nada más la importa', () => {
+  const plan = leer('plan.js');
+  assert.match(plan, /if \(!_ia && !document\.body\.classList\.contains\('in-hub'\)\) \{\s*import\('\.\/plan-ia\.js'\)/);
+  assert.ok(!/^import .*plan-ia\.js/m.test(plan), 'nunca estática');
+  for (const f of ['app.js', 'index.html', 'phase4.js', 'phase4b.js', 'informe-ia.js']) assert.ok(!leer(f).includes('plan-ia.js'), f);
+  assert.match(leer('index.html'), /<div id="planIA" hidden><\/div>/);
+  const yml = leer('.github/workflows/deploy-to-hub.yml');
+  for (const f of ['plan-ia.js', 'lib/plan-ia.js', 'lib/revision-plan.js', 'lib/turnstile.js']) assert.match(yml, new RegExp(` ${f.replace(/[./]/g, '\\$&')} `), f);
+});
+
+test('plan IA: Turnstile compartido con el informe con IA (un solo script, un widget por tarjeta)', () => {
+  const ia = leer('informe-ia.js'), pia = leer('plan-ia.js');
+  for (const s of [ia, pia]) {
+    assert.match(s, /crearTurnstile\(\{ caja: \(\) => \$\('p?iaTurnstile'\)/);
+    assert.ok(!s.includes('challenges.cloudflare.com'), 'el script solo en lib/turnstile.js');
+  }
+  assert.match(leer('lib/turnstile.js'), /render=explicit&onload=__iaTurnstileOnload/);
+});
+
+test('plan IA: las funciones de los onclick están en window', () => {
+  const src = leer('plan-ia.js');
+  const usadas = new Set([...src.matchAll(/on(?:click|change)="(\w+)\(/g)].map(m => m[1]));
+  for (const f of ['compartirPlanIA', 'compartirCasaIA']) usadas.add(f);
+  for (const f of usadas) assert.equal(typeof window[f], 'function', f);
+});
+
+const PQ = await import('../../lib/paquete-revision.js');
+test('plan IA: «⬇ Paquete de revisión» — plan, programa para casa, puntos con sus marcas, valoración sin la IA y prompt', () => conAndres({}, () => {
+  UI.contextoPlanIA();
+  const ia = { texto: '## SESIÓN\n- 3 series de extensión.', fecha: '2026-10-16T00:05:00Z', nivel: 'B', escalon: 'Muy suave', frecuenciaNombre: 'Plan B · 2 sesiones por semana',
+    conTranscripcion: true, prompt: 'PROMPT-EXACTO', version: 'abc1234', revisados: [] };
+  state.planTratamiento.ia = ia;
+  const puntos = RP.revisarPlan(ia.texto, { esqueleto: '', escalon: 1, alarmas: [ALARMA] });
+  ia.revisados = [RP.clavePuntoPlan(puntos.find(p => p.id === 'volumen'))];
+  const ahora = new Date(2026, 9, 16, 0, 10);
+  const { nombre, ficheros } = PQ.ficherosPaquetePlan({ ia, casa: 'PROGRAMA PARA CASA\n…', state, puntos, comprobaciones: RP.comprobacionesPlan(), versionActual: 'def5678', ahora });
+  assert.equal(nombre, 'revision-plan-andres-molina-2026-10-16.zip');
+  const f = Object.fromEntries(ficheros.map(x => [x.nombre, x.texto]));
+  assert.deepEqual(Object.keys(f), ['info.txt', 'andres-molina-plan-ia.txt', 'andres-molina-programa-casa-ia.txt', 'revision.txt', 'valoracion-andres-molina.json', 'prompt.txt']);
+  assert.equal(f['andres-molina-plan-ia.txt'], ia.texto + '\n', 'el plan tal como se generó');
+  assert.match(f['info.txt'], /con la versión abc1234[\s\S]*con la versión def5678[\s\S]*Nivel: B \(Muy suave\) · Plan B[\s\S]*Transcripción del informe con IA: sí/);
+  assert.match(f['revision.txt'], /\[MEDIO\] volumen:.*\[revisado\]/);
+  assert.match(f['revision.txt'], /\[ALTO\] secciones:/);
+  assert.match(f['revision.txt'], /ANTES DE COMPARTIR, COMPRUEBA\n- Cada ejercicio/);
+  assert.ok(!f['valoracion-andres-molina.json'].includes('3 series de extensión'), 'el .json, como «⬇ Exportar», sin el plan con IA');
+  assert.equal(f['prompt.txt'], 'PROMPT-EXACTO');
+  assert.match(leer('plan-ia.js'), /onclick="piaPaqueteRevision\(\)"[\s\S]*⬇ Paquete de revisión/);
+}));
+
+// Planes reales (tests/fixtures/planes/LEEME.md): la lista exacta de puntos
+const PLANES_REALES = [
+  ['valoracion-andres-molina-lumbar.json', 'andres-lumbar-plan-1.txt', [
+    ['volumen', 'Enseñar slump en silla: sentado en una silla'],
+    ['volumen', 'Mantén 3 segundos y vuelve a la posición de inicio'],
+    ['volumen', 'Una vez al día'],
+    ['volumen', 'Descansa 1 minuto y haz otra serie de 8'],
+    ['volumen', 'Descansa 1 minuto y haz otra serie de 6 con cada brazo'],
+    ['neural-primera', 'Slump en sedestación'],
+    ['neural-tensor', 'Slump en sedestación'],
+    ['neural-tensor', 'Enseñar slump en silla'],
+    ['neural-tensor', 'Mantén 3 segundos y vuelve'],
+  ]],
+  ['valoracion-andres-molina-lumbar-2.json', 'andres-lumbar-plan-2.txt', [
+    ['diagnostico-estructural', 'Explicar que el dolor que baja'],
+  ]],
+];
+for (const [json, plan, esperados] of PLANES_REALES) {
+  test(`revisión del plan: planes reales — ${plan}`, () => {
+    const d = JSON.parse(leer('tests/fixtures/planes', json)).assessmentState;
+    conAndres(d, () => {
+      const ctx = UI.contextoPlanIA();
+      const puntos = RP.revisarPlan(leer('tests/fixtures/planes', plan), {
+        esqueleto: ctx.esqueleto, escalon: ctx.entrada.escalon.n, alarmas: ctx.entrada.alarmas,
+        noElegidas: ctx.entrada.noElegidas, derivar: ctx.entrada.derivar, independientes: ctx.independientes, primera: ctx.entrada.primera,
+      });
+      assert.deepEqual(puntos.map(p => p.id), esperados.map(e => e[0]), JSON.stringify(puntos.map(p => [p.id, p.cita]), null, 1));
+      esperados.forEach(([, cita], i) => assert.ok(puntos[i].cita.startsWith(cita), `${i}: ${puntos[i].cita}`));
+    });
+  });
+}
+
+test('revisión del plan: un síntoma independiente con lado solo cuenta si la línea nombra también el lado', () => {
+  const ind = [{ nombre: 'P3 · Zona lumbar', lado: 'Derecho' }];
+  const r = l => RP.revisarPlan(plan(l), { ...OPC, independientes: ind }).map(p => p.id);
+  assert.deepEqual(r('- Sin que se mueva la zona lumbar.'), [], 'la región del plan');
+  assert.deepEqual(r('- Estiramiento para la zona lumbar derecha.'), ['independiente']);
+});
+
+test('revisión del plan: números escritos y cifras ya propuestas con la marca', () => {
+  assert.deepEqual(ids(plan('- Una vez al día.')), ['volumen']);
+  assert.deepEqual(ids(plan('- 2 series de 8 repeticiones (sugerencia de la IA).', undefined, `- Haz 8 repeticiones.\n${ALARMA}`)), [], 'casa repite la cifra marcada en la sesión');
+  assert.deepEqual(ids(plan('- Una vez al día.\n- Una vez al día.')), ['volumen'], 'la misma línea, un punto');
+  assert.match(PIA.promptPlan(conAndres({}, () => UI.contextoPlanIA().entrada)), /Un mismo ejercicio lleva la misma dosis en la sesión y en casa/);
+});
+
+test('plan: técnicas neurales en las radiculares (decisión 117) y punto si abren la primera sesión', () => {
+  assert.match(D.AVISOS.neuralRadicular, /rara vez son la primera técnica.*\(Maitland 2005, cap\. 6, p\. 149\)/);
+  for (const id of D.HIP_RADICULARES) assert.ok(D.AVISOS_HIP[id].includes('neuralRadicular'), id);
+  const r = (sesion, primera = true) => RP.revisarPlan(`## SESIÓN\n### INTERVENCIÓN PRINCIPAL (12–35 min)\n${sesion}\n## PLAN DEL MES\n- x.\n## PROGRAMA PARA CASA\n${ALARMA}`, { alarmas: [ALARMA], primera }).map(p => p.id);
+  assert.deepEqual(r('**Movilización neural**:\n- Slump sentado, suave.'), ['neural-primera']);
+  assert.deepEqual(r('- Slump sentado, suave.'), ['neural-primera']);
+  assert.deepEqual(r('- Activación del tronco.\n- Slump sentado, suave.'), [], 'no es la primera técnica');
+  assert.deepEqual(r('- Slump sentado, suave.', false), [], 'solo la primera sesión');
+});
+
+test('plan: técnicas neurales según el escalón (decisión 118, Butler 2000)', () => {
+  assert.match(D.AVISOS.neuralRadicular, /deslizadores antes que tensores.*\(Butler 2000, pp\. 379–381, 387 y 391\)/);
+  const r = (txt, escalon = 1) => RP.revisarPlan(`## SESIÓN\n${txt}\n## PLAN DEL MES\n- x.\n## PROGRAMA PARA CASA\n${ALARMA}`, { alarmas: [ALARMA], escalon }).map(p => p.id).filter(i => i === 'neural-tensor');
+  assert.deepEqual(r('- Slump: 3 series de 30 segundos (sugerencia de la IA).'), ['neural-tensor']);
+  assert.deepEqual(r('- Slump en tensor, suave.'), ['neural-tensor']);
+  assert.deepEqual(r('1. Movilización del nervio sentado:\n   - Mantén 3 segundos y vuelve.'), ['neural-tensor'], 'el subpunto hereda el ejercicio');
+  assert.deepEqual(r('- Slump deslizador, 10 repeticiones sin que duela; sin mantener la posición.'), [], 'negado en su frase');
+  assert.deepEqual(r('- Plancha: mantén 10 segundos.'), [], 'no es neural');
+  assert.deepEqual(r('- Slump: 3 series de 30 segundos.', 3), [], 'escalón 3');
+  assert.deepEqual(r('- Slump deslizador: oscilaciones lentas en series de 20–30 s.'), [], 'segundos de oscilación (decisión 119, Butler 1991)');
+  assert.deepEqual(r('- Slump en tensión mantenido 30 s.', 3), ['neural-tensor'], 'escalón 3: más de 10 s mantenido');
+  assert.deepEqual(r('- Slump mantenido 10 s.', 3), [], 'escalón 3: hasta 10 s');
+  assert.match(D.AVISOS.neuralRadicular, /oscilaciones lentas de gran amplitud \(grado II\) en series de unos 20–30 s.*como mucho 10 s.*\(Butler 1991, pp\. 188–189 y 192–193\)/);
+  const en = conAndres({}, () => UI.contextoPlanIA().entrada);
+  assert.ok(en.neural, 'Andrés tiene una hipótesis radicular');
+  assert.match(PIA.promptPlan(en), /13\. Técnicas neurales.*lejos de la zona de síntomas.*solo deslizadores.*series de unos 20–30 s.*nada de tensores ni de posiciones mantenidas.*una o dos maniobras, unos minutos al día/);
+  assert.match(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 3 } }), /13\. Técnicas neurales.*grado III \(mejor tolerado\); tensores solo graduados.*como mucho 10 s/);
+  assert.doesNotMatch(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 3 } }), /o grado IV/, 'el escalón 3 no admite grado IV');
+  assert.match(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 4 } }), /grado III \(mejor tolerado\) o grado IV/);
+  assert.doesNotMatch(PIA.promptPlan({ ...en, neural: false }), /13\. Técnicas neurales/);
+});
+
+test('plan: «mantener» de seguir, deslizadores, contexto por títulos, «Repite N veces» y diagnóstico estructural (decisión 120)', () => {
+  const base = (sesion, extra = {}, casa = ALARMA) => RP.revisarPlan(`## SESIÓN\n${sesion}\n## PLAN DEL MES\n- x.\n## PROGRAMA PARA CASA\n${casa}`, { alarmas: [ALARMA], escalon: 1, ...extra }).map(p => p.id);
+  const nt = (s, e) => base(s, e).filter(i => i === 'neural-tensor');
+  assert.deepEqual(nt('- Si va bien: mantener el deslizador neural y progresar el tronco.'), [], '«mantener» = seguir haciendo');
+  assert.deepEqual(nt('- Deslizador del nervio ciático: 4 series de 20–30 segundos (sugerencia de la IA).'), [], 'un deslizador es oscilación');
+  assert.deepEqual(nt('- Si va bien: mantener el deslizador.\n  - Bird-dog: mantener 5 segundos (sugerencia de la IA).'), [], 'una viñeta no abre contexto neural');
+  assert.deepEqual(nt('- Slump: mantener la posición 5 s (sugerencia de la IA).'), ['neural-tensor'], 'mantener la postura sí');
+  const prim = s => base(`### INTERVENCIÓN PRINCIPAL (12–35 min)\n${s}`, { primera: true }).filter(i => i === 'neural-primera');
+  assert.deepEqual(prim('**Movilización neural**\n- Deslizador en supino, oscilación lenta, reevaluando el slump.'), [], 'un deslizador puede abrir la sesión');
+  assert.deepEqual(prim('- Slump sentado, suave.'), ['neural-primera']);
+  const vol = base('- Deslizador: 3 series de 20–30 s de oscilación (sugerencia de la IA).', {}, `- Descansa 1 minuto. Repite 3 veces.\n${ALARMA}`).filter(i => i === 'volumen');
+  assert.deepEqual(vol.length, 1, 'solo «1 minuto»: «Repite 3 veces» son las 3 series');
+  const de = (s, fuente = '') => base(s, { fuente }).filter(i => i === 'diagnostico-estructural');
+  assert.deepEqual(de('- Explicar que el dolor viene de una protrusión discal que comprime la raíz.'), ['diagnostico-estructural']);
+  assert.deepEqual(de('- Explicar que el dolor viene de una protrusión discal.', 'RM: protrusión L5-S1'), [], 'consta en los datos');
+  assert.deepEqual(de('- Explicar que el nervio está irritado.'), []);
+  assert.match(PIA.promptPlan(conAndres({}, () => UI.contextoPlanIA().entrada)), /sin atribuir el dolor a una estructura o lesión concreta \(protrusión, hernia, compresión de la raíz…\)/);
+});

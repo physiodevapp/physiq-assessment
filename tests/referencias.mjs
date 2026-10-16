@@ -20,7 +20,8 @@ const NOMBRE_REGION = {
   hombro: 'Hombro', cadera: 'Cadera', cervical: 'Cervical', lumbar: 'Lumbar',
   rodilla: 'Rodilla', codo: 'Codo', tobillo_pie: 'Tobillo y pie',
   comun: 'Todas (sistemas comunes)',
-  tejidos: 'Todas (tiempos de tejido)'
+  tejidos: 'Todas (tiempos de tejido)',
+  plan: 'Fase 6 (plan de tratamiento)'
 };
 
 // Tarjetas de consulta (repo physiodevapp/guia-de-consulta). Las tarjetas son
@@ -119,7 +120,7 @@ function lugar(hyp, ruta, testPuntua) {
   if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto', efecto: 'texto' };
   return { donde: `\`${ruta.join('.')}\``, fase: '—', efecto: 'texto' };
 }
-const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento fase 4', 'razonamiento 4b', 'tiempos de tejido', 'texto'];
+const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento fase 4', 'razonamiento 4b', 'tiempos de tejido', 'plan de tratamiento', 'texto'];
 
 function recorrer(obj, ruta, fn) {
   if (typeof obj === 'string') return fn(obj, ruta);
@@ -134,7 +135,7 @@ const ancla = k => k.toLowerCase().replace(/[^\p{L}\d\s-]/gu, '').replace(/\s+/g
 
 // Todas las citas de data/: literatura (clave → citas y usos), tarjetas
 // (región → citas y usos), tests sin fuente y otras fuentes sin campo propio.
-export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, REFERENCIAS = {}, testPuntua }) {
+export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, REFERENCIAS = {}, testPuntua }) {
   const alias = Object.entries(REFERENCIAS).flatMap(([k, r]) => (r.citadaComo || []).map(a => [k, a]));
   const lit = new Map();        // clave → { citas: [texto], usos: [] }
   const tarjetas = new Map();   // región → { citas: [texto], usos: [] }
@@ -208,6 +209,20 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPO
             fase: '2 · razonamiento del cribado', efecto: 'razonamiento fase 2' });
         }
       }
+      // Banderas con razonamiento propio (docs/razonamiento-banderas.md); las
+      // que solo enlazan una pregunta (`pregunta`) ya cuentan por ella.
+      for (const [campo, nombre] of [['banderasRojas', 'Bandera roja'], ['banderasAmarillas', 'Bandera amarilla']]) {
+        (sis[campo] || []).forEach((f, i) => {
+          const r = typeof f === 'string' ? null : f.razonamiento;
+          if (!r || vistas.has(`${sis.id}.${campo}.${i}`)) return;
+          vistas.add(`${sis.id}.${campo}.${i}`);
+          for (const clave of r.fuentes || []) {
+            const cita = (r.citas || []).map(c => (typeof c === 'string' ? c : c.texto)).find(c => c.startsWith(clave)) || clave;
+            anotar(lit, clave, cita, { region: reg, hyp: '—', donde: `${nombre} «${f.texto}» · ${sis.nombre}`,
+              fase: '2 · razonamiento del cribado', efecto: 'razonamiento fase 2' });
+          }
+        });
+      }
     }
   }
 
@@ -227,10 +242,20 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPO
   // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera,
   // data/tejidos.js): `fuentes` de cada fila y de cada fase, claves del registro.
   for (const g of TIEMPOS_TEJIDO?.grupos || []) {
+    for (const clave of g.notaFuentes || []) {
+      anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Nota del grupo «${g.tejido}»`,
+        fase: 'cabecera · tiempos de tejido', efecto: 'tiempos de tejido' });
+    }
     for (const f of g.filas) {
       for (const clave of f.fuentes || []) {
         anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Fila «${f.nombre}» (${g.tejido})`,
           fase: 'cabecera · tiempos de tejido', efecto: 'tiempos de tejido' });
+      }
+      for (const st of f.subtipos || []) {
+        for (const clave of st.fuentes || []) {
+          anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Subtipo «${st.nombre}» de «${f.nombre}» (${g.tejido})`,
+            fase: 'cabecera · tiempos de tejido', efecto: 'tiempos de tejido' });
+        }
       }
     }
   }
@@ -238,6 +263,36 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPO
     for (const clave of f.fuentes || []) {
       anotar(lit, clave, clave, { region: 'tejidos', hyp: '—', donde: `Fase de reparación «${f.nombre}»`,
         fase: 'cabecera · tiempos de tejido', efecto: 'tiempos de tejido' });
+    }
+  }
+
+  // Fase 6 «Plan de tratamiento» (data/plan-tratamiento.js, el módulo entero):
+  // dónde aparece cada clave de FUENTES_PLAN en sus textos.
+  if (PLAN_TRATAMIENTO) {
+    const claves = PLAN_TRATAMIENTO.FUENTES_PLAN || [];
+    for (const [nombre, valor] of Object.entries(PLAN_TRATAMIENTO)) {
+      if (nombre === 'FUENTES_PLAN') continue;
+      recorrer(valor, [nombre], (texto, ruta) => {
+        for (const clave of claves) {
+          if (texto.includes(clave)) anotar(lit, clave, clave, { region: 'plan', hyp: '—', donde: `\`${ruta.join('.')}\``,
+            fase: '6 · plan de tratamiento', efecto: 'plan de tratamiento' });
+        }
+      });
+    }
+  }
+
+  // Matriz de irritabilidad de la fase 3 (data/irritabilidad.js, el módulo
+  // entero): dónde aparece cada clave de FUENTES_IRRITABILIDAD en sus textos.
+  if (IRRITABILIDAD) {
+    const claves = IRRITABILIDAD.FUENTES_IRRITABILIDAD || [];
+    for (const [nombre, valor] of Object.entries(IRRITABILIDAD)) {
+      if (nombre === 'FUENTES_IRRITABILIDAD') continue;
+      recorrer(valor, [nombre], (texto, ruta) => {
+        for (const clave of claves) {
+          if (texto.includes(clave)) anotar(lit, clave, clave, { region: 'irritabilidad', hyp: '—', donde: `\`${ruta.join('.')}\``,
+            fase: '3 · irritabilidad', efecto: 'irritabilidad (fase 3 y fase 6)' });
+        }
+      });
     }
   }
 
@@ -277,9 +332,9 @@ function lineaRegistro(r) {
   return [xs.join('  \n'), ''];
 }
 
-export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, REFERENCIAS, testPuntua }) {
+export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, REFERENCIAS, testPuntua }) {
   const regiones = Object.keys(CIF_TREES);
-  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, REFERENCIAS, testPuntua });
+  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, REFERENCIAS, testPuntua });
   const claveBase = Object.keys(REFERENCIAS).find(k => REFERENCIAS[k].tarjetas);
 
   const L = [];

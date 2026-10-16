@@ -276,7 +276,7 @@ const P = await import('../../lib/pauta.js');
 test('datos ampliados: edad, fase 3, árbol, tests, criterios y pauta solo cuando hay datos', () => {
   const a = {
     edad: 52, signoComparable: 'Flexión lumbar', estabilidad: 'Empeorando',
-    irritabilidad: { dolor: 'Alto', reposo: 'Sí', movimiento: 'Sí', discapacidad: 'Moderada', tolerancia: 'Baja' },
+    irritabilidad: { dolor: 'Alto', reposo: 'Presente', movimiento: 'Antes del final del rango', discapacidad: 'Moderada', tolerancia: 'Baja', calma: 'Tarda horas' },
     psico: [{ q: 'Miedo al movimiento', a: 'Sí' }],
     criterios: [{ etiqueta: 'Dolor lumbar inflamatorio', positivas: 2, total: 4, nota: 'Valorar derivación' }],
     arbol: [{ pregunta: '¿SLR positivo?', respuesta: 'SÍ — SLR <60°' }],
@@ -287,10 +287,11 @@ test('datos ampliados: edad, fase 3, árbol, tests, criterios y pauta solo cuand
   const t = IN.bloquesAmpliados(a).join('\n');
   // El horizonte del pronóstico no se envía: el informe lo convertía en plan (Daniel: ecografía «para valorar líquido…»)
   assert.ok(!t.includes('6-12 semanas') && !/· Pronóstico/.test(t), 'sin la línea «Pronóstico»');
-  for (const x of ['Signo comparable', 'Flexión lumbar', 'Empeorando', 'tolerancia al estrés físico Baja', 'Miedo al movimiento → Sí',
+  for (const x of ['Signo comparable', 'Flexión lumbar', 'Empeorando', 'tolerancia al estrés físico: Baja', 'tiempo en calmarse tras la actividad que lo provoca: Tarda horas', 'Impacto en las actividades (gravedad): Moderada', 'Miedo al movimiento → Sí',
     'Dolor lumbar inflamatorio (2/4)', '¿SLR positivo? → SÍ — SLR <60°', 'Slump: positivo (parte del cluster «Cluster de Laslett»)',
     'Reglas pronósticas (predicen', '  · CPR Flynn: negativo (regla pronóstica, no diagnóstica)', 'Pauta: Movilidad neural', 'Fuente: NICE NG59',
     'Cuándo reconsiderar o derivar (contexto para el fisioterapeuta: no es plan ni explicación al paciente): Déficit progresivo', 'seguimiento: ODI', 'Derivar: sin tratamiento']) assert.ok(t.includes(x), `falta «${x}»`);
+  assert.ok(!t.includes('nivel de dolor'), 'el «nivel de dolor» de la matriz antigua no va al prompt: el NRS ya está (decisión 100)');
   const vacio = { edad: null, signoComparable: '', estabilidad: '', irritabilidad: null, psico: [], criterios: [], arbol: [], tests: [], pautas: [] };
   assert.deepEqual(IN.bloquesAmpliados(vacio), [], 'sin datos, ningún bloque');
   assert.deepEqual(IN.bloquesAmpliados(null), []);

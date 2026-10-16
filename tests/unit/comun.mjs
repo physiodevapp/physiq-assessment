@@ -18,9 +18,10 @@ export const leer = (...ruta) => readFileSync(join(RAIZ, ...ruta), 'utf8');
 // phase4.js and phase4b.js touch `document`/`window` at module top level
 // (e.g. app.js's _initHubIntegration() call).
 export const { HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, DOSIS_DERIVAR, TIEMPOS_TEJIDO } = await import('../../data.js');
-export const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML, pesoTest, PESO_TEST, buildTestItem, lrEfectiva, fuenteCorta, claveRegistro, enlaceCita, citasTest } = await import('../../phase4b.js');
+export const { calcLRScore, parseLR, testPuntua, etiquetaHipHTML, pesoTest, PESO_TEST, buildTestItem, lrEfectiva, citasTest } = await import('../../phase4b.js');
+export const { claveRegistro, enlaceCita, partirCitas, etiquetaCita, citasHTML, fichaCitaHTML, MAX_ETIQUETA, citasEnTexto, esReferencia } = await import('../../lib/citas.js');
 export const { buildPhysiQPayload, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts, precargarFormularioPrevio,
-  buildContextSummaryText, getPendientesBreve, buildSistemaHTML } = await import('../../app.js');
+  buildContextSummaryText, getPendientesBreve, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML } = await import('../../app.js');
 export const { state } = await import('../../state.js');
 export const { rebuildHypotheses, pruneTreeFrom, resolveOptionTargets } = await import('../../phase4.js');
 // Se importa aquí, antes de que ningún test toque `state`: guarda el estado
@@ -58,6 +59,9 @@ export const BASE_STATE = {
   planNotes:        { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' },
   cirugia:          { intervencion: '', fecha: '', semanasAprox: null, protocolo: '', restricciones: '', complicaciones: [], complicacionOtra: '' },
   derivacionResuelta: {},
+  cuestionarios:    {},
+  sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },
+  sintomasSecundarios: [],
 };
 
 export function withState(patch, fn) {

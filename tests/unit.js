@@ -18,6 +18,13 @@ for (const tema of [
   'revision-informe.mjs',
   'verificacion.mjs',
   'tejidos.mjs',
+  'anatomia.mjs',
+  'cuestionarios.mjs',
+  'irritabilidad.mjs',
+  'plan-tratamiento.mjs',
+  'plan-ia.mjs',
+  'sintomas.mjs',
+  'citas.mjs',
 ]) await import(`./unit/${tema}`);
 
 // ── Summary ───────────────────────────────────────────────────────────────────

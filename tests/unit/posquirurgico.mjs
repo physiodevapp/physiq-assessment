@@ -243,17 +243,34 @@ console.log('\npaciente posquirúrgico');
     });
   });
 
-  test('informe con IA: el recorrido avisa cuando lo que «orienta a» ya está tratado', () => {
+  test('informe con IA: el paso cuyo «orienta a» ya está tratado no va al prompt (ronda 30)', () => {
     withState({ ...POSQ({ intervencion: 'Clavo', protocolo: 'Verbal' }), region: 'hombro', activeHypotheses: ['h11'], testResults: {},
       hypothesisScores: {}, derivacionResuelta: { h11: true }, treeAnswers: { h_step2b: 'trauma' } }, () => {
-      const a = IA.construirAmpliado();
-      assert.equal(a.arbol.find(x => /Traumatismo previo/.test(x.respuesta))?.tratada, true);
-      assert.match(IN.bloquesAmpliados(a).join('\n'), /orienta a: luxación bloqueada o fractura; Rx \(ya diagnosticada y tratada: es un antecedente\)/);
+      assert.ok(!IA.construirAmpliado().arbol.some(x => /Traumatismo previo/.test(x.respuesta)), 'tratada: el paso no va');
       state.derivacionResuelta = {};
-      assert.ok(!IA.construirAmpliado().arbol.some(x => x.tratada), 'sin marcar, sin aviso');
+      const a = IA.construirAmpliado();
+      assert.ok(a.arbol.some(x => /Traumatismo previo/.test(x.respuesta)), 'sin marcar, el paso va');
+      assert.ok(!a.arbol.some(x => x.tratada), 'sin marcar, sin aviso');
+    });
+    // Rosario: prótesis de cadera, ca1 tratada; el perfil degenerativo ya no va, la debilidad de abductores sí
+    withState({ ...POSQ({ intervencion: 'Prótesis total de cadera', protocolo: 'Escrito' }), region: 'cadera', activeHypotheses: ['ca1', 'ca5'], testResults: {},
+      hypothesisScores: {}, derivacionResuelta: { ca1: true }, treeAnswers: { ca_step1: 'no', ca_step1b: 'no', ca_step2: 'si', ca_step3: 'no', ca_step4: 'debilidad' } }, () => {
+      const txt = IN.bloquesAmpliados(IA.construirAmpliado()).join('\n');
+      assert.ok(!/perfil es degenerativo|rigidez matutina/i.test(txt), 'sin el paso de la artrosis tratada');
+      assert.match(txt, /Debilidad de abductores/i);
     });
   });
 
+  test('cadera ca_step3: «No explorado» sigue a la cara externa sin hipótesis y no dice que las pruebas fueran negativas (ronda 31)', () => {
+    withState({ ...POSQ({ intervencion: 'Prótesis total de cadera', protocolo: 'Escrito' }), region: 'cadera', activeHypotheses: [], testResults: {},
+      hypothesisScores: {}, derivacionResuelta: {}, treeAnswers: { ca_step1: 'no', ca_step1b: 'no', ca_step2: 'no', ca_step3: 'no_explorado' } }, () => {
+      const op = CIF_TREES.cadera.steps.find(s => s.id === 'ca_step3').options.find(o => o.value === 'no_explorado');
+      assert.equal(op.next, 'ca_step4'); assert.deepEqual(op.hypothesis, []);
+      const txt = IN.bloquesAmpliados(IA.construirAmpliado()).join('\n');
+      assert.match(txt, /No explorado/);
+      assert.ok(!/negativos|improbable/.test(txt.split('\n').find(l => /No explorado/.test(l))), 'sin «negativos» ni «improbable»');
+    });
+  });
   test('huella del informe con IA: las semanas desde la cirugía no la cambian; la intervención sí', () => {
     const base = { p: 'X', d: '01/01/2026', cq: { iv: 'PTR', fe: '', se: 4, pr: 'Escrito', re: '', co: [] } };
     assert.equal(IN.huellaPayload(base), IN.huellaPayload({ ...base, d: '15/01/2026', cq: { ...base.cq, se: 6 } }));
@@ -263,8 +280,10 @@ console.log('\npaciente posquirúrgico');
   test('cribado posquirúrgico: el mismo sistema, el primero, en las 7 regiones; preguntas y urgencias decididas', () => {
     const { SIS_POSQUIRURGICO: SIS } = await_comun;
     for (const [r, d] of Object.entries(SYSTEMIC_SCREENING)) assert.equal(d.sistemas[0], SIS, r);
-    assert.deepEqual(SIS.preguntas.map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_compart', 'pq_sdrc', 'pq_nervio']);
-    assert.deepEqual(SIS.preguntas.filter(q => q.urgencia).map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_compart', 'pq_nervio']);
+    assert.deepEqual(SIS.preguntas.map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_compart', 'pq_sdrc', 'pq_nervio', 'pq_nervio_col']);
+    assert.deepEqual(SIS.preguntas.filter(q => q.urgencia).map(q => q.id), ['pq_herida', 'pq_tvp', 'pq_tvp_ms', 'pq_tep', 'pq_compart', 'pq_nervio', 'pq_nervio_col']);
+    // Cada región ve una sola pregunta de déficit neurológico: periférico en los miembros, de raíz o médula en la columna
+    for (const r of Object.keys(SYSTEMIC_SCREENING)) assert.equal(SIS.preguntas.filter(q => q.id.startsWith('pq_nervio') && q.regiones.includes(r)).length, 1, r);
     const regiones = Object.keys(SYSTEMIC_SCREENING);
     for (const q of SIS.preguntas) (q.regiones || []).forEach(r => assert.ok(regiones.includes(r), `${q.id}: región ${r}`));
     // Cada región ve una sola pregunta de TVP

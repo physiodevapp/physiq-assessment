@@ -4,12 +4,14 @@
 // ============================================================
 import { HYPOTHESES, DOSIS_DERIVAR, HIP_POSQUIRURGICA } from './data.js';
 import { state } from './state.js';
-import { saveSession, showConfirmBanner, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento } from './app.js';
+import { saveSession, showConfirmBanner, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento, enlacesCalcular } from './app.js';
 import {
   ETIQUETA_TRATADA, ETIQUETA_HIP_POSQ, ID_HIP_POSQ, esPosquirurgico, hipotesisConPosq,
   nombreHipPosq, cirugiaPayload, pautaHipPosq,
 } from './lib/posquirurgico.js';
 import { iaParrafoHTML, ctxTest, attrIA } from './ampliar-ia.js';
+import { ESTRUCTURAS, KENHUB_BASE, KENHUB_BASE_ES } from './data/anatomia.js';
+import { citasHTML, citasEnTexto, partirCitas, registroReferencias, enlaceCita } from './lib/citas.js';
 
 // Hipótesis por id, incluida la posquirúrgica genérica (`pq1`), que no está en
 // HYPOTHESES: su nombre lleva la intervención y su PROM es el de la región.
@@ -109,7 +111,7 @@ function tarjetaPosqHTML(hyp) {
         <div class="exercise-box">${esc(pautaHipPosq(cirugiaPayload(state.mecanismo, state.cirugia)))}</div>
         <div style="margin-top:1.2rem; padding-top:1rem; border-top:1px solid var(--border);">
           <div style="font-size:0.72rem; color:var(--accent); font-family:'DM Mono',monospace; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">PROM Recomendado</div>
-          <span class="prom-badge">${hyp.prom}</span>
+          <span class="prom-badge">${hyp.prom}</span>${enlacesCalcular(hyp.prom)}
         </div>
       </div>`;
 }
@@ -183,7 +185,7 @@ export function buildHypothesisCards() {
         ${testsHtml}`}
         <div style="margin-top:1.2rem; padding-top:1rem; border-top:1px solid var(--border);">
           <div style="font-size:0.72rem; color:var(--accent); font-family:'DM Mono',monospace; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">PROM Recomendado</div>
-          <span class="prom-badge">${hyp.prom}</span>
+          <span class="prom-badge">${hyp.prom}</span>${enlacesCalcular(hyp.prom)}
         </div>
       </div>`;
     container.appendChild(card);
@@ -239,7 +241,7 @@ export function buildClusterBox(hyp, cid) {
     <div class="cluster-title">🧩 ${r.nombre}</div>
     <div class="cluster-rule">${[pos, neg].filter(Boolean).join(' · ')}</div>
     <div class="cluster-rule">Los tests del cluster no puntúan por separado.</div>
-    ${r.fuente ? `<div class="test-source">${r.fuente}</div>` : ''}
+    ${r.fuente ? `<div class="test-source">${citasHTML(r.fuente)}</div>` : ''}
   </div>`;
 }
 
@@ -274,9 +276,40 @@ export function pesoTest(hyp, test, idx) {
   return txt;
 }
 
-// «Hegedus 2012 (Br J Sports Med…) · Zhao 2024 (…)» → «Hegedus 2012 · Zhao 2024»
-export function fuenteCorta(fuente) {
-  return fuente.split(' · ').map(c => c.split(' (')[0].trim()).join(' · ');
+// «Anatomía» de un test de la 4b o de una pregunta de cribado de la fase 2
+// (docs/anatomia-kenhub.md): las estructuras de su `anatomia`, enlazadas a su
+// artículo de Kenhub en una pestaña nueva:
+// en español si Kenhub lo tiene y, si no, en inglés (marcado «EN»).
+// Solo el nombre de la estructura va en la URL, nunca nada del paciente; si
+// hay cuenta de Kenhub con la sesión iniciada en el navegador, Kenhub
+// enseña el contenido completo. Oculto en el hub (CSS, como «Ampliar con IA»).
+export function enlacesAnatomia(item) {
+  return (item.anatomia || []).map(id => ESTRUCTURAS[id]).filter(Boolean)
+    .map(e => ({
+      nombre: e.nombre, nota: e.nota || '',
+      url: e.kenhubEs ? KENHUB_BASE_ES + e.kenhubEs : KENHUB_BASE + e.kenhub,
+      ingles: !e.kenhubEs,
+    }));
+}
+function enlaceAnatomiaHTML(e) {
+  const title = `Abrir en Kenhub${e.ingles ? ' (sin versión en español)' : ''}${e.nota ? ` · ${e.nota}` : ''}`;
+  const idioma = e.ingles ? ' <span class="anat-idioma">EN</span>' : '';
+  return `<a class="anat-enlace" href="${e.url}" target="_blank" rel="noopener noreferrer" title="${title}">${e.nombre}${idioma} ↗</a>`;
+}
+// Línea «ANATOMÍA a ↗ · b ↗» (tarjeta del test; «¿Por qué?» de la fase 2)
+export function anatomiaLineaHTML(item) {
+  const enlaces = enlacesAnatomia(item);
+  return enlaces.length
+    ? `<div class="test-anat"><span class="test-anat-etq">Anatomía</span> ${enlaces.map(enlaceAnatomiaHTML).join('<span class="test-anat-sep"> · </span>')}</div>`
+    : '';
+}
+// Sección «Anatomía (Kenhub)» del panel «Ampliar»
+export function anatomiaPanelHTML(item) {
+  const enlaces = enlacesAnatomia(item);
+  return enlaces.length
+    ? `<div class="razon-seccion razon-anatomia"><div class="razon-etq">Anatomía (Kenhub)</div>
+      <ul>${enlaces.map(e => `<li>${enlaceAnatomiaHTML(e)}</li>`).join('')}</ul></div>`
+    : '';
 }
 
 export function buildTestItem(hId, test, idx) {
@@ -296,22 +329,22 @@ export function buildTestItem(hId, test, idx) {
     ? `<button type="button" class="razon-ampliar" onclick="abrirRazonamientoTest(this,'${hId}',${idx})">Ampliar →</button>` : '';
   const porque = r?.porque ? `<details class="razon">
       <summary>ⓘ ¿Por qué?</summary>
-      <div class="razon-cuerpo" data-ia-ctx="${attrIA(ctxTest(hyp?.region, test.name, hyp?.name))}"><p><span class="razon-etq">Por qué</span> ${r.porque}${iaParrafoHTML()}</p>
-        ${r.fuentes?.length ? `<div class="razon-pie">— ${r.fuentes.join(' · ')}</div>` : ''}</div>
+      <div class="razon-cuerpo" data-ia-ctx="${attrIA(ctxTest(hyp?.region, test.name, hyp?.name))}"><p><span class="razon-etq">Por qué</span> ${citasEnTexto(r.porque)}${iaParrafoHTML()}</p>
+        ${r.fuentes?.length ? `<div class="razon-pie">— ${citasHTML(r.fuentes)}</div>` : ''}</div>
     </details>` : '';
-  // Con «Ampliar», la tarjeta lleva solo autor y año; la cita completa está en el panel
-  const fuenteTxt = ampliar && test.fuente ? fuenteCorta(test.fuente) : test.fuente || '';
-  const fuente = fuenteTxt || ampliar
-    ? `<div class="test-source">${fuenteTxt}${ampliar}</div>` : '';
+  // Autor y año de cada cita; al tocarla, la cita entera y su enlace (lib/citas.js)
+  const fuente = test.fuente || ampliar
+    ? `<div class="test-source">${test.fuente ? citasHTML(test.fuente) : ''}${ampliar}</div>` : '';
 
   const savedResult = (state.testResults[hId] && state.testResults[hId][idx]) || 'nd';
   return `<div class="test-item">
     <div class="test-name">${test.name}</div>
     ${statsHtml}
     <div class="test-peso">${hyp ? pesoTest(hyp, test, idx) : ''}</div>
-    <div class="test-criterion">${test.criterio}</div>
+    <div class="test-criterion">${citasEnTexto(test.criterio)}</div>
     ${porque}
     ${fuente}
+    ${anatomiaLineaHTML(test)}
     <div class="test-result-btns">
       <button class="test-result-btn pos ${savedResult==='pos'?'selected':''}" onclick="setTestResult('${hId}',${idx},'pos',this)">✓ Positivo</button>
       <button class="test-result-btn neg ${savedResult==='neg'?'selected':''}" onclick="setTestResult('${hId}',${idx},'neg',this)">✗ Negativo</button>
@@ -321,39 +354,16 @@ export function buildTestItem(hId, test, idx) {
 }
 
 // Panel «Ampliar» de un test: el mismo de la fase 2 (abrirPanelRazon, app.js).
-// Fuentes: la `fuente` del test partida por « · » y, después, las `citas` del
+// Fuentes: la `fuente` del test partida en citas (partirCitas, las mismas que
+// la tarjeta) y, después, las `citas` del
 // «por qué» que no estén ya. Cada cita se enlaza («Abrir ↗») con la url del
 // registro (data/referencias.js) o, sin ella, con su DOI: el registro se
 // carga con import() la primera vez que se abre el panel, y si falla el
 // panel se abre igual, sin enlaces.
-let _registro = null;
-export async function registroReferencias() {
-  if (!_registro) _registro = import('./data/referencias.js').then(m => m.REFERENCIAS).catch(() => ({}));
-  return _registro;
-}
-
-// Clave del registro con la que empieza una cita («Hegedus 2012 (Br J…)» →
-// 'Hegedus 2012'; «Lluch 2020, cap. 3.1 (Struyf)» → 'Lluch 2020'): la más
-// larga, para no confundir 'Malik 2023' con 'Malik y Herron 2023'.
-export function claveRegistro(cita, REF) {
-  let mejor = null;
-  for (const k of Object.keys(REF)) {
-    if (cita.startsWith(k) && !/^[\p{L}\d]/u.test(cita.slice(k.length)) && (!mejor || k.length > mejor.length)) mejor = k;
-  }
-  return mejor;
-}
-
 export function citasTest(test) {
-  const propias = test.fuente ? test.fuente.split(' · ') : [];
+  const propias = partirCitas(test.fuente);
   const textos = new Set(propias);
   return [...propias, ...(test.razonamiento?.citas || []).filter(c => !textos.has(typeof c === 'string' ? c : c.texto))];
-}
-
-export function enlaceCita(cita, REF) {
-  if (typeof cita !== 'string') return cita;
-  const r = REF[claveRegistro(cita, REF)];
-  const url = r?.url || (r?.doi ? `https://doi.org/${r.doi}` : null);
-  return url ? { texto: cita, url } : cita;
 }
 
 export async function abrirRazonamientoTest(btn, hId, idx) {
@@ -362,15 +372,16 @@ export async function abrirRazonamientoTest(btn, hId, idx) {
   const r = test?.razonamiento;
   if (!r) return;
   const REF = await registroReferencias();
-  const parrafos = (r.detalle || '').split('\n\n').filter(Boolean).map(p => `<p>${p}${iaParrafoHTML()}</p>`).join('');
+  const parrafos = (r.detalle || '').split('\n\n').filter(Boolean).map(p => `<p>${citasEnTexto(p)}${iaParrafoHTML()}</p>`).join('');
   const citas = citasTest(test).map(c => enlaceCita(c, REF));
   abrirPanelRazon({
     btn, kicker: 'Test · por qué y evidencia', titulo: test.name,
     ia: ctxTest(hyp.region, test.name, hyp.name),
     html: `
-    ${r.porque ? `<div class="razon-seccion"><div class="razon-etq">Por qué</div><p>${r.porque}${iaParrafoHTML()}</p></div>` : ''}
+    ${r.porque ? `<div class="razon-seccion"><div class="razon-etq">Por qué</div><p>${citasEnTexto(r.porque)}${iaParrafoHTML()}</p></div>` : ''}
     <div class="razon-seccion"><div class="razon-etq">Cuánto pesa</div><p>${pesoTest(hyp, test, idx)}</p></div>
     ${parrafos ? `<div class="razon-seccion"><div class="razon-etq">En detalle</div>${parrafos}</div>` : ''}
+    ${anatomiaPanelHTML(test)}
     ${citas.length ? `<div class="razon-seccion razon-fuentes"><div class="razon-etq">Fuentes</div>
       <ul>${citas.map(razonCitaHTML).join('')}</ul></div>` : ''}`,
   });

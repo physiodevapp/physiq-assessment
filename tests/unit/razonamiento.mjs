@@ -1,8 +1,8 @@
 // «¿Por qué?» del cribado, del árbol CIF y de los tests, «Ampliar con IA». Se ejecuta desde tests/unit.js.
 import { assert, readFileSync, join, TESTS, leer, test, HYPOTHESES, SYSTEMIC_SCREENING, testPuntua,
-   pesoTest, PESO_TEST, buildTestItem, lrEfectiva, fuenteCorta, claveRegistro, enlaceCita,
+   pesoTest, PESO_TEST, buildTestItem, lrEfectiva, claveRegistro, enlaceCita, citasHTML, citasEnTexto,
    citasTest, state, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
-   buildSistemaHTML, BASE_STATE, withState } from './comun.mjs';
+   buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML, BASE_STATE, withState, VALID_REGIONS } from './comun.mjs';
 const { REFERENCIAS } = await import('../../data/referencias.js');
 
 // ── Razonamiento del cribado (fase 2, «¿Por qué?») ───────────────────────────
@@ -21,6 +21,14 @@ const preguntasConRazon = [];
         if (!q.razonamiento || vistas.has(`${sis.id}.${q.id}`)) continue;
         vistas.add(`${sis.id}.${q.id}`);
         preguntasConRazon.push({ region, sis, q, r: q.razonamiento });
+      }
+      // Banderas con razonamiento propio: mismas reglas de forma y fuentes
+      for (const campo of ['banderasRojas', 'banderasAmarillas']) {
+        (sis[campo] || []).forEach((f, i) => {
+          if (typeof f === 'string' || !f.razonamiento || vistas.has(`${sis.id}.${campo}.${i}`)) return;
+          vistas.add(`${sis.id}.${campo}.${i}`);
+          preguntasConRazon.push({ region, sis, q: { id: `${campo}[${i}]` }, r: f.razonamiento, bandera: true });
+        });
       }
     }
   }
@@ -79,6 +87,178 @@ test('razonamiento: fisiologia = { pasos (3–6), nota?, metafora? }, solo con d
   }
 });
 
+// ── Banderas de fase 2 (docs/razonamiento-banderas.md) ───────────────────────
+// Una bandera es un texto o { texto, regiones?, pregunta?, fase1?, razonamiento? }.
+const CAMPOS_BANDERA = ['texto', 'regiones', 'pregunta', 'fase1', 'razonamiento'];
+const todasBanderas = [];
+for (const [region, data] of Object.entries(SYSTEMIC_SCREENING))
+  for (const sis of data.sistemas)
+    for (const campo of ['banderasRojas', 'banderasAmarillas'])
+      (sis[campo] || []).forEach((f, i) => todasBanderas.push({ region, sis, campo, i, f }));
+
+test('banderas: texto o { texto, regiones?, pregunta?, fase1?, razonamiento? } sin campos raros; pregunta o razonamiento, no los dos', () => {
+  for (const { region, sis, campo, i, f } of todasBanderas) {
+    const donde = `${region}/${sis.id}.${campo}[${i}]`;
+    if (typeof f === 'string') { assert.ok(noVacio(f), `${donde}: vacía`); continue; }
+    assert.deepEqual(Object.keys(f).filter(k => !CAMPOS_BANDERA.includes(k)), [], `${donde}: campos raros`);
+    assert.ok(noVacio(f.texto), `${donde}: sin texto`);
+    assert.ok(!(f.pregunta && f.razonamiento), `${donde}: pregunta y razonamiento a la vez (el «¿Por qué?» se escribe una vez)`);
+    assert.ok(f.regiones === undefined || (f.regiones.length && f.regiones.every(r => VALID_REGIONS.includes(r))), `${donde}: regiones`);
+    assert.ok(f.fase1 === undefined || ['br1', 'br2', 'br3', 'br4'].includes(f.fase1), `${donde}: fase1`);
+    for (const id of [].concat(f.pregunta || [])) {
+      const q = sis.preguntas.find(p => p.id === id);
+      assert.ok(q, `${donde}: la pregunta ${id} no está en el mismo sistema`);
+      assert.ok(q.razonamiento, `${donde}: ${id} no tiene razonamiento que enlazar`);
+    }
+  }
+});
+
+test('banderas: en cada región, una bandera con `pregunta` siempre enlaza a una pregunta visible (y las de regiones ajenas no se ven)', () => {
+  for (const region of VALID_REGIONS) {
+    withState({ region, mecanismo: 'Post-quirúrgico' }, () => {
+      for (const sis of sistemasActivos(region)) {
+        for (const campo of ['banderasRojas', 'banderasAmarillas']) {
+          for (const f of sis[campo] || []) {
+            if (typeof f === 'string') continue;
+            assert.ok(!f.regiones || f.regiones.includes(region), `${region}/${sis.id}: «${f.texto}» no debería verse`);
+            if (f.pregunta) assert.ok(razonBanderaHTML(sis, f), `${region}/${sis.id}: «${f.texto}» enlaza a una pregunta que aquí no se ve`);
+          }
+        }
+      }
+    });
+  }
+});
+
+test('banderas: ⓘ solo cuando hay «¿Por qué?», que despliega por qué y cuánto pesa; «Ampliar →» solo con más; «· fase 1» con fase1; el panel enlazado repite la pregunta y su razonamiento', () => {
+  for (const { sis, campo, f } of todasBanderas) {
+    if (typeof f !== 'string' && f.regiones) continue;   // se comprueban por región arriba
+    const html = buildSistemaHTML({ ...sis, banderasRojas: campo === 'banderasRojas' ? [f] : [], banderasAmarillas: campo === 'banderasAmarillas' ? [f] : [] });
+    const tiene = !!razonBanderaHTML(sis, f);
+    assert.equal(html.includes('toggleRazonBandera('), tiene, `«${textoBandera(f)}»: ⓘ`);
+    // Nivel 1 bajo la bandera (Por qué + Cuánto pesa); «Ampliar →» solo si el panel tiene más
+    const rs = typeof f === 'string' ? [] : f.razonamiento ? [f.razonamiento]
+      : sis.preguntas.filter(q => [].concat(f.pregunta || []).includes(q.id) && q.razonamiento).map(q => q.razonamiento);
+    for (const r of rs) assert.ok(html.includes(citasEnTexto(r.porque)) && html.includes(citasEnTexto(r.peso)), `«${textoBandera(f)}»: por qué y cuánto pesa`);
+    assert.equal(html.includes('abrirRazonBandera('), rs.some(r => r.detalle || r.fisiologia), `«${textoBandera(f)}»: Ampliar`);
+    assert.equal(html.includes('class="flag-fase1"'), !!f.fase1, `«${textoBandera(f)}»: fase 1`);
+  }
+  const sis = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_espondilo');
+  const ect = sis.banderasRojas.find(f => f.pregunta === 'l_e8');
+  const panel = razonBanderaHTML(sis, ect);
+  const q = sis.preguntas.find(p => p.id === 'l_e8');
+  assert.ok(panel.includes(q.text) && panel.includes(q.razonamiento.porque) && panel.includes('NICE NG126'));
+});
+
+test('banderas: lumbar, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
+  const enlaces = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_'))
+    .flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => typeof f !== 'string');
+  assert.equal(enlaces.filter(f => f.pregunta).length, 28);
+  assert.deepEqual(enlaces.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4', 'br1']);
+  // Razonamiento propio: las 8 rojas sin pregunta y 2 amarillas
+  const propias = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => [
+    ...s.banderasRojas.filter(f => f.razonamiento).map(f => `R ${f.texto.split(' ').slice(0, 2).join(' ')}`),
+    ...s.banderasAmarillas.filter(f => f.razonamiento).map(f => `A ${f.texto.split(' ').slice(0, 2).join(' ')}`)]);
+  assert.deepEqual(propias, ['R Pérdida de', 'R Fractura patológica', 'A Dolor lumbar', 'R Prueba de', 'R Masa testicular',
+    'R Pérdida de', 'R Síntomas oculares', 'A Historia familiar', 'R Síndrome de', 'R Signos neurológicos']);
+  // Ninguna bandera propia de lumbar sin «¿Por qué?» (las amarillas, enlazadas en 2026-10)
+  const sinPorque = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_'))
+    .flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento));
+  assert.deepEqual(sinPorque.map(textoBandera), []);
+});
+
+test('banderas: cadera, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.cadera.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 45);
+  assert.equal(banderas.filter(f => f.pregunta).length, 37);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1']);
+  // Razonamiento propio: las 5 rojas sin pregunta (el aneurisma pasó a ca_v4) y 3 amarillas; ninguna sin «¿Por qué?»
+  const propias = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Factores de', 'Tumores óseos', 'Edad >50', 'Antecedente familiar', 'Denominador común:', 'Líquido en', 'Fractura de', 'VSG como']);
+  const sinPorque = propios.flatMap(s => [...s.banderasRojas.map(f => ['R', f]), ...s.banderasAmarillas.map(f => ['A', f])])
+    .filter(([, f]) => typeof f === 'string' || (!f.pregunta && !f.razonamiento)).map(([t, f]) => `${t} ${textoBandera(f).split(' ').slice(0, 2).join(' ')}`);
+  assert.deepEqual(sinPorque, []);
+});
+
+test('banderas: cervical, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 40);
+  assert.equal(banderas.filter(f => f.pregunta).length, 36);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4']);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Síncope repentino', 'Prueba de', 'Dolor que', 'Dolor de']);   // la mielopatía, en cv_n4
+  // «Dolor que no cambia…» marca la fase 1 (br4) y lleva su propio razonamiento
+  const sinPorque = propios.flatMap(s => [...s.banderasRojas.map(f => ['R', f]), ...s.banderasAmarillas.map(f => ['A', f])])
+    .filter(([, f]) => typeof f === 'string' || (!f.pregunta && !f.razonamiento)).map(([t, f]) => `${t} ${textoBandera(f).split(' ').slice(0, 2).join(' ')}`);
+  assert.deepEqual(sinPorque, []);
+});
+
+test('banderas: hombro, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.hombro.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 41);
+  assert.equal(banderas.filter(f => f.pregunta).length, 36);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), ['br1']);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Edad >50', 'Debilidad muscular', 'Síncope repentino', 'Uso de', 'Exposición a']);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+  // El signo de Kehr por rotura de bazo y las cardiacas tienen pregunta urgente (h_gi4, h_c4)
+  const kehr = propios.find(s => s.id === 'h_gi').banderasRojas.find(f => /esplénica/.test(f.texto));
+  assert.equal(kehr.pregunta, 'h_gi4');
+});
+
+test('banderas: rodilla, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 23);
+  assert.equal(banderas.filter(f => f.pregunta).length, 21);
+  assert.deepEqual(banderas.filter(f => f.fase1).map(f => f.fase1), []);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Calambres nocturnos', 'Dolor en']);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+});
+
+test('banderas: codo, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.codo.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 15);
+  assert.equal(banderas.filter(f => f.pregunta).length, 12);
+  const propias = banderas.filter(f => f.razonamiento).map(f => f.texto.split(' ').slice(0, 2).join(' '));
+  assert.deepEqual(propias, ['Síntomas vasculares', 'Xantomas en', 'Tendinitis calcificante']);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+  // Xantomas y tendinitis calcificante: el mismo razonamiento que el sistema endocrino compartido (codo tiene el suyo)
+  const end = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'transversal_endocrino');
+  const codoEnd = propios.find(s => s.id === 'co_endocrino');
+  assert.equal(codoEnd.banderasRojas.find(f => /Xantomas/.test(f.texto)).razonamiento, end.banderasRojas.find(f => /Xantomas/.test(f.texto)).razonamiento);
+  assert.equal(codoEnd.banderasAmarillas.find(f => /calcificante/.test(f.texto)).razonamiento, end.banderasAmarillas.find(f => /calcificante/.test(f.texto)).razonamiento);
+});
+
+test('banderas: tobillo y pie, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
+  const propios = SYSTEMIC_SCREENING.tobillo_pie.sistemas.filter(s => !s.id.startsWith('transversal_'));
+  const banderas = propios.flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]);
+  assert.equal(banderas.length, 15);
+  assert.equal(banderas.filter(f => f.pregunta).length, 15);
+  assert.deepEqual(banderas.filter(f => typeof f === 'string' || (!f.pregunta && !f.razonamiento)), []);
+});
+
+test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento propio según el inventario (docs/razonamiento-banderas.md)', () => {
+  const corto = f => f.texto.split(' ').slice(0, 2).join(' ');
+  const resumen = sis => [...sis.banderasRojas.map(f => ['R', f]), ...sis.banderasAmarillas.map(f => ['A', f])]
+    .map(([t, f]) => typeof f === 'string' ? `${t} ${f.split(' ').slice(0, 2).join(' ')} · —`
+      : `${t} ${corto(f)} · ${f.pregunta ? [].concat(f.pregunta).join('+') : f.razonamiento ? 'propio' : '—'}`);
+  const sis = id => SYSTEMIC_SCREENING.lumbar.sistemas.concat(SYSTEMIC_SCREENING.rodilla.sistemas).find(s => s.id === id);
+  assert.deepEqual(resumen(sis('transversal_posquirurgico')), ['R Herida más · pq_herida', 'R En las · pq_herida', 'R Pierna hinchada, · pq_tvp+pq_tvp_ms',
+    'R Falta de · pq_tep', 'R Dolor desproporcionado · pq_compart', 'R Dolor quemante, · pq_nervio', 'R Tras una · pq_nervio_col',
+    'A Dolor continuo · pq_sdrc', 'A Yeso o · pq_sdrc+pq_compart']);
+  assert.deepEqual(resumen(sis('transversal_endocrino')), ['R Síndrome del · propio', 'R Signos de · propio', 'R Confusión, letargo · propio',
+    'R Signos de · propio', 'R Xantomas: pápulas · propio', 'R Nódulos palpables · propio',
+    'A Debilidad muscular · end_1', 'A Periartritis o · propio', 'A Cambios inexplicables · end_3', 'A Polidipsia y · end_2']);
+  assert.deepEqual(resumen(sis('transversal_hematologico')), ['R Sangrado espontáneo, · hem_1', 'R Heces negras/alquitranadas · hem_4',
+    'R Episodios nuevos · hem_6', 'R Hemoptisis (toser · hem_4', 'R Fiebre alta, · hem_3+hem_5',
+    'A Palidez en · propio', 'A Uñas cóncavas · propio', 'A Disnea rápida, · hem_2', 'A Uso crónico · propio']);
+});
+
 test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar» solo con detalle', () => {
   for (const [region, data] of Object.entries(SYSTEMIC_SCREENING)) {
     for (const sis of data.sistemas) {
@@ -95,7 +275,7 @@ test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar»
 });
 
 test('razonamiento: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
-  const muestra = preguntasConRazon.find(p => p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico);
+  const muestra = preguntasConRazon.find(p => !p.bandera && p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico);
   if (!muestra) return;   // aún no hay ninguna pregunta con razonamiento
   const { region, q, r } = muestra;
   withState({ region, sistemicoAnswers: { [q.id]: 'SI' }, sistemicoAlerta: true }, () => {
@@ -191,14 +371,9 @@ test('tarjeta del test: «cuánto pesa» siempre, «Ampliar» solo con razonamie
     assert.equal(html.includes(`abrirRazonamientoTest(this,'${hId}',${i})`), !!t.razonamiento, `${hId} «${t.name}»: Ampliar`);
     assert.equal(html.includes('class="razon"'), !!t.razonamiento?.porque, `${hId} «${t.name}»: ¿Por qué?`);
     assert.ok(!html.includes('stat-badge no-data'), `${hId} «${t.name}»: badge redundante`);
-    // con «Ampliar», autor y año en la tarjeta (la cita entera, en el panel); sin él, la cita entera
-    if (t.fuente) assert.ok(html.includes(t.razonamiento ? fuenteCorta(t.fuente) : t.fuente), `${hId} «${t.name}»: fuente`);
+    // la fuente, como citas tocables (lib/citas.js): autor y año, la cita entera en la ficha
+    if (t.fuente) assert.ok(html.includes(citasHTML(t.fuente)), `${hId} «${t.name}»: fuente`);
   }
-});
-
-test('fuenteCorta: autor y año de cada cita', () => {
-  assert.equal(fuenteCorta('Hegedus 2012 (Br J Sports Med 46:964–978; tabla 3) · Zhao 2024 (BMC, tabla 3)'), 'Hegedus 2012 · Zhao 2024');
-  assert.equal(fuenteCorta('Lluch 2020, cap. 3.1 (Struyf), p. 54'), 'Lluch 2020, cap. 3.1');
 });
 
 test('fuentes del panel: cada cita de un test con razonamiento se resuelve en el registro y se enlaza con su url o su DOI', () => {
@@ -311,8 +486,13 @@ test('ampliar con IA: solo el razonamiento lleva data-ia-ctx y «✨ IA» (fase 
       for (const sis of data.sistemas) {
         const html = buildSistemaHTML(sis);
         const n = sis.preguntas.filter(q => q.razonamiento).length;
-        assert.equal(cuenta(html, 'data-ia-ctx='), n, `${region}/${sis.id}`);
-        assert.equal(cuenta(html, 'class="ia-parrafo"'), n, `${region}/${sis.id}`);
+        // y el «¿Por qué?» de las banderas: un contenedor por bandera, un «✨ IA» por cada «Por qué»
+        const porBandera = [...(sis.banderasRojas || []), ...(sis.banderasAmarillas || [])]
+          .map(f => typeof f === 'string' ? 0 : f.razonamiento ? 1
+            : sis.preguntas.filter(q => [].concat(f.pregunta || []).includes(q.id) && q.razonamiento).length);
+        const nb = porBandera.filter(Boolean).length, np = porBandera.reduce((a, b) => a + b, 0);
+        assert.equal(cuenta(html, 'data-ia-ctx='), n + nb, `${region}/${sis.id}`);
+        assert.equal(cuenta(html, 'class="ia-parrafo"'), n + np, `${region}/${sis.id}`);
       }
     });
   }

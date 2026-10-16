@@ -878,6 +878,278 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "rosario-dictado-1-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera.json",
+      "transcripcion": "rosario-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario1-cribado-pregunta",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Lee las preguntas del cribado en SÍ como si el paciente hubiera referido cada parte: sudoración, dolor continuo y desproporcionado, que no cede en reposo (nadie lo dijo)",
+          "fragmentos": [
+            "con cambios de color, temperatura y sudoración en la zona",
+            "no cede en reposo y ha tenido una infección reciente"
+          ]
+        },
+        {
+          "id": "rosario1-movilidad-inventada",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Da por hecha una exploración de la movilidad que no consta",
+          "fragmentos": [
+            "La exploración de la movilidad de la cadera se ha realizado dentro de los límites permitidos"
+          ]
+        },
+        {
+          "id": "rosario1-confirmada",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«Queda confirmada» la debilidad de abductores con dos tests sin LR (hallazgos compatibles); la regla «confirma» solo cita otra frase",
+          "fragmentos": [
+            "La debilidad de los abductores de cadera queda confirmada"
+          ]
+        },
+        {
+          "id": "rosario1-escala-visual",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "El NRS pasa a «escala visual numérica» (mezcla la EVA con la escala numérica)",
+          "fragmentos": [
+            "en la escala visual numérica"
+          ]
+        },
+        {
+          "id": "rosario1-derivacion-inventada",
+          "tipo": "plan",
+          "nivel": "medio",
+          "descripcion": "Añade una «valoración médica adicional» si el pie empeora; el fisioterapeuta solo dijo que lo comentará con el cirujano en la revisión",
+          "fragmentos": [
+            "se reconsiderará la necesidad de valoración médica adicional"
+          ]
+        },
+        {
+          "id": "rosario1-ambientales-relleno",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Factores Ambientales sin datos rellenado con una negación («No se registran barreras…»)",
+          "fragmentos": [
+            "No se registran barreras arquitectónicas ni del entorno"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "rosario-dictado-2-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera.json",
+      "transcripcion": "rosario-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario2-cribado-pregunta",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Otra vez las preguntas del cribado en SÍ leídas enteras como hallazgos: dolor continuo y desproporcionado, que no cede en reposo (generado antes de la ronda 30)",
+          "fragmentos": [
+            "que no cede en reposo tras infección reciente"
+          ]
+        },
+        {
+          "id": "rosario2-perfil-arbol",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "El paso del perfil degenerativo de la artrosis tratada contado como prueba clínica (antes de la ronda 30)",
+          "fragmentos": [
+            "El perfil clínico previo a la cirugía fue compatible con artrosis de cadera"
+          ]
+        },
+        {
+          "id": "rosario2-escala-visual",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "El NRS vuelve a ser «escala visual numérica»",
+          "fragmentos": [
+            "escala visual numérica"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "rosario-dictado-3-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera.json",
+      "transcripcion": "rosario-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario3-cribado-pregunta",
+          "tipo": "no-respaldado",
+          "nivel": "alto",
+          "descripcion": "Con AVISO_SQ (ronda 30) sigue copiando el texto de las preguntas en SÍ como lo que «refiere» la paciente, con el dolor que «no cede en reposo» que nadie dijo",
+          "fragmentos": [
+            "refiere dolor nuevo tras la cirugía de cadera que no cede en reposo"
+          ]
+        },
+        {
+          "id": "rosario3-faddir-contradice",
+          "tipo": "contradice",
+          "nivel": "alto",
+          "descripcion": "Da el origen intraarticular por improbable por la «ausencia de positividad» de unas pruebas que dice no haber hecho: el paso del árbol no tiene opción «no explorado» y obliga a contestar «FADDIR y flexión-RI negativos»",
+          "fragmentos": [
+            "La ausencia de positividad en FADDIR y flexión-rotación interna hace improbable el origen intraarticular"
+          ]
+        },
+        {
+          "id": "rosario3-escala-visual",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«EVN» del prompt desarrollada como «escala visual numérica» (tercera vez de tres; es escala verbal numérica)",
+          "fragmentos": [
+            "escala visual numérica (EVN)"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "rosario-dictado-4-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera-2.json",
+      "transcripcion": "rosario-dictado-4-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario4-dolor-continuo",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Con la ronda 31 ya nombra de qué trata cada pregunta, pero le queda «dolor continuo» de la pregunta del SDRC, que la paciente no refirió",
+          "fragmentos": [
+            "refiere dolor continuo con cambios de coloración"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "rosario-dictado-5-informe.txt",
+      "valoracion": "valoracion-rosario-gomez-cadera-2.json",
+      "transcripcion": "rosario-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "rosario5-plan-miedo",
+          "tipo": "plan",
+          "nivel": "medio",
+          "descripcion": "Añade al plan abordar el miedo a la luxación con educación y refuerzo de la confianza; el fisioterapeuta solo repasó las precauciones para levantarse",
+          "fragmentos": [
+            "Se abordará el miedo a la luxación mediante educación sobre las precauciones"
+          ]
+        },
+        {
+          "id": "rosario5-evolucion-esperada",
+          "tipo": "atribucion",
+          "nivel": "medio",
+          "descripcion": "«Evolución favorable dentro de lo esperado para la quinta semana»: la regla `atribucion` no ve esta forma",
+          "fragmentos": [
+            "con evolución favorable dentro de lo esperado para la quinta semana posquirúrgica"
+          ]
+        },
+        {
+          "id": "rosario5-confirmada",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "«Queda confirmada» la debilidad de abductores con dos tests sin LR",
+          "fragmentos": [
+            "La debilidad de abductores de cadera queda confirmada"
+          ]
+        },
+        {
+          "id": "rosario5-infeccion-condicion",
+          "tipo": "repetido",
+          "nivel": "medio",
+          "descripcion": "La infección y el estado de la herida en Condición de Salud, que solo lleva el diagnóstico que motivó la cirugía, y otra vez en Intervención Quirúrgica",
+          "fragmentos": [
+            "En la segunda semana posquirúrgica presentó una infección superficial de la herida que fue tratada con antibiótico oral por su médico de cabecera"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "andres-lumbar-dictado-1-informe.txt",
+      "valoracion": "valoracion-andres-molina-lumbar.json",
+      "transcripcion": "andres-lumbar-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "andres-lumbar-ambientales",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Factores Ambientales deduce que en el trabajo tiene «escasas posibilidades de modificación postural»; nadie lo dijo",
+          "fragmentos": [
+            "con escasas posibilidades de modificación postural"
+          ]
+        },
+        {
+          "id": "andres-lumbar-glueteo-constante",
+          "tipo": "lectura",
+          "nivel": "medio",
+          "descripcion": "El glúteo es «constante» y a la vez «aparece y desaparece junto con» la pierna: los dos datos están en la valoración (el caso se corrigió después: P2 intermitente)",
+          "fragmentos": [
+            "de carácter constante e irritabilidad alta, que aparece y desaparece junto con el síntoma de la pierna"
+          ]
+        },
+        {
+          "id": "andres-lumbar-aguda",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "«La ausencia de déficit neurológico no descarta esta hipótesis en un cuadro de evolución aguda»: razonamiento propio sin fuente en los datos",
+          "fragmentos": [
+            "La ausencia de déficit neurológico no descarta esta hipótesis en un cuadro de evolución aguda"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "andres-lumbar-dictado-2-informe.txt",
+      "valoracion": "valoracion-andres-molina-lumbar-2.json",
+      "transcripcion": "andres-lumbar-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "andres-lumbar2-consejos",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "Recomienda adaptar el puesto de trabajo y hacer pausas al conducir cada 20 minutos; nadie lo indicó",
+          "fragmentos": [
+            "Se recomienda la adaptación temporal del puesto de trabajo"
+          ]
+        },
+        {
+          "id": "andres-lumbar2-episodios",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "«No refiere episodios previos similares»: nadie preguntó por episodios previos",
+          "fragmentos": [
+            "No refiere episodios previos similares de dolor radicular"
+          ]
+        }
+      ]
+    },
+    {
+      "informe": "andres-lumbar-dictado-3-informe.txt",
+      "valoracion": "valoracion-andres-molina-lumbar-3.json",
+      "transcripcion": "andres-lumbar-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "andres-lumbar3-modificacion",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "«Se han proporcionado recomendaciones sobre modificación temporal de las actividades»: nadie las dio",
+          "fragmentos": [
+            "Se han proporcionado recomendaciones sobre modificación temporal de las actividades"
+          ]
+        }
+      ]
     }
   ]
 }

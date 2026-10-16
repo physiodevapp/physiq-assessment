@@ -1,0 +1,83 @@
+INFORME DE FISIOTERAPIA
+Paciente: Andrés Molina
+Edad: 42 años
+Sexo: Hombre
+Fecha: 16/10/2026
+Región valorada: Lumbar (izquierda)
+
+CONDICIÓN DE SALUD Y FACTORES CONTEXTUALES
+
+Consulta por dolor irradiado en la extremidad inferior izquierda de tres semanas de evolución, que se extiende por la cara posterior del muslo hasta la pantorrilla, de mayor intensidad que las molestias lumbares concomitantes.
+
+Factores Personales
+
+Varón de 42 años. Trabajador de oficina, en sedestación prolongada durante la mayor parte de la jornada laboral. Practicaba pádel dos veces por semana, actividad que ha suspendido desde el inicio del cuadro actual. Presenta riesgo psicosocial bajo.
+
+Factores Ambientales
+
+Desplazamientos diarios en vehículo privado, con trayectos de aproximadamente 40 minutos en cada sentido.
+
+HISTORIA CLÍNICA Y EVOLUCIÓN
+
+Presentación Inicial y Antecedentes
+
+El cuadro se inició de forma insidiosa hace tres semanas, sin traumatismo ni esfuerzo específico identificable. Refiere que esa semana realizó conducción prolongada durante muchas horas. La cronología del cuadro corresponde a un proceso agudo.
+
+Cribado de Seguridad
+
+El cribado de banderas rojas no muestra hallazgos que sugieran patología grave. Niega pérdida de fuerza en las extremidades inferiores, alteraciones sensitivas en la región perineal, cambios en el patrón miccional o defecatorio, fiebre, pérdida de peso no intencionada ni antecedentes de enfermedad oncológica. El cribado sistémico resulta negativo.
+
+EVALUACIÓN DE FUNCIONES Y ESTRUCTURAS CORPORALES
+
+Dolor
+
+Refiere tres áreas sintomáticas diferenciadas. El síntoma principal (P1) se localiza en la cara posterior o lateral del muslo izquierdo y desciende por debajo de la rodilla hasta la pantorrilla, con carácter profundo e intermitente, descrito como una corriente que baja hasta la pantorrilla. La intensidad del dolor se registra en EVN de 6/10. La irritabilidad de este síntoma es moderada: el dolor aparece de forma intermitente en reposo, se reproduce antes del final del rango de movimiento durante la flexión del tronco, y tras la actividad provocadora el dolor tarda horas en calmarse. Tolera caminar durante media hora sin empeoramiento. No refiere dolor nocturno que interrumpa el sueño.
+
+El segundo síntoma (P2) se localiza en la región glútea izquierda, con intensidad de EVN de 5/10 e irritabilidad alta. Este dolor es de carácter intermitente y aparece y desaparece conjuntamente con el síntoma principal. Refiere que tras sedestación prolongada la zona se carga y el dolor no remite hasta el día siguiente.
+
+El tercer síntoma (P3) consiste en una molestia localizada en la zona lumbar derecha, de intensidad EVN de 3/10 e irritabilidad baja, de carácter intermitente e independiente del síntoma principal. Refiere que esta molestia es antigua y aparece al final del día tras bipedestación prolongada.
+
+El dolor en la extremidad inferior izquierda es de mayor intensidad que el dolor lumbar. La naturaleza del dolor es neuropática.
+
+El signo comparable corresponde al test de Slump en el lado izquierdo, que reproduce el dolor de la pantorrilla con la rodilla a 20 grados de la extensión completa y mejora al liberar la flexión cervical.
+
+Pruebas Clínicas
+
+La exploración se orientó a valorar las hipótesis de dolor radicular lumbar y dolor lumbar discogénico.
+
+En relación con el dolor radicular lumbar, el test de elevación de pierna recta ipsilateral resultó positivo, reproduciendo el dolor de la pantorrilla aproximadamente a los 45 grados de elevación. El test de elevación de pierna recta contralateral (Lasègue cruzado) resultó negativo, sin provocar síntomas en la extremidad inferior izquierda. El test de Slump ipsilateral resultó positivo, reproduciendo el dolor del paciente y mejorando al liberar la flexión cervical. La exploración neurológica por miotomas, dermatomas y reflejos osteotendinosos (rotuliano y aquíleo) no mostró déficits de fuerza, sensibilidad ni alteraciones reflejas en comparación con el lado contralateral.
+
+Respecto al dolor lumbar discogénico, no se identificó centralización del dolor con movimientos repetidos de extensión lumbar en bipedestación. Tampoco se encontró una dirección preferencial que aliviara o modificara los síntomas.
+
+El dolor se extiende de forma unilateral por la extremidad inferior y es de mayor intensidad que el dolor en la región lumbar. Los movimientos repetidos según el método McKenzie no producen centralización ni periferialización del dolor.
+
+ANÁLISIS DEL FUNCIONAMIENTO: LIMITACIONES EN LA ACTIVIDAD Y RESTRICCIONES EN LA PARTICIPACIÓN
+
+Limitaciones en las Actividades
+
+La sedestación prolongada constituye la principal limitación funcional. Refiere que tras 20 minutos de conducción aparece el dolor en la pantorrilla, y al levantarse el dolor tarda un par de horas en volver al estado basal. La flexión del tronco provoca dolor antes de alcanzar el final del rango de movimiento.
+
+Restricciones en la Participación
+
+Ha suspendido la práctica de pádel desde el inicio del cuadro. Refiere dificultad para mantener la sedestación durante la jornada laboral en la oficina y para realizar los desplazamientos diarios en vehículo. Sus objetivos son poder conducir y trabajar sentado sin que aparezca el dolor irradiado, así como reincorporarse a la práctica deportiva habitual.
+
+CONCLUSIONES Y PLAN DE TRATAMIENTO
+
+El cuadro clínico se caracteriza por dolor irradiado en la extremidad inferior izquierda de naturaleza neuropática, con predominio sobre el dolor lumbar, que limita principalmente la sedestación prolongada y la conducción. La exploración clínica apoya la hipótesis de dolor radicular lumbar, con tests de provocación neural positivos y exploración neurológica sin déficits objetivables. La ausencia de centralización con movimientos repetidos y de preferencia direccional limita el apoyo a la hipótesis de dolor lumbar discogénico.
+
+El plan de tratamiento se fundamenta en el abordaje del dolor radicular lumbar en fase aguda, con énfasis en ejercicios de fuerza y resistencia del tronco y activación específica de su musculatura, complementados con movilización neural a corto plazo. La pauta se ajustará a la tolerancia individual y se integrará en un programa supervisado que combine ejercicio terapéutico y movilización neural, evitando el uso de tracción según las recomendaciones de la evidencia actual.
+
+Las indicaciones para dosificar la carga incluyen detener la actividad si el dolor desciende más allá de la pantorrilla o aparece hormigueo en el pie. El paciente debe recuperar el estado basal entre sesiones; en caso contrario, se reducirá el volumen de ejercicio a la mitad en la siguiente sesión. Los ejercicios se realizarán después del desayuno.
+
+Se han proporcionado recomendaciones sobre modificación temporal de las actividades que provocan los síntomas, especialmente la sedestación prolongada y la conducción. Actualmente utiliza ibuprofeno de forma ocasional con alivio limitado.
+
+Coherencia con hipótesis de valoración
+
+Los hallazgos de la exploración clínica refuerzan la hipótesis de dolor radicular lumbar. La presencia de dolor irradiado unilateral en la extremidad inferior de mayor intensidad que el dolor lumbar, junto con los tests de provocación neural positivos y la exploración neurológica sin déficits, son compatibles con esta condición. La hipótesis de dolor lumbar discogénico recibe menor apoyo ante la ausencia de centralización con movimientos repetidos y la falta de identificación de una dirección preferencial que modifique los síntomas.
+
+SEGUIMIENTO FUNCIONAL
+
+Se utilizará el Oswestry Disability Index (diferencia mínima clínicamente importante de 8.5 puntos) y la Escala Numérica de Dolor (diferencia mínima clínicamente importante de 1.5 a 3.2 puntos) para valorar la evolución funcional y la respuesta al tratamiento. Se reconsiderará la derivación médica si persiste dolor radicular sin remisión tras más de un mes de tratamiento conservador, si aparecen déficits neurológicos graves o progresivos, o si se identifica sospecha de patología grave en reevaluaciones posteriores.
+
+—
+Informe generado con PhysiQ-Assessment el 16/10/2026 (redacción asistida por IA).

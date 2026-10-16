@@ -1,6 +1,6 @@
 # Hipermovilidad / Ehlers-Danlos — diseño
 
-Estado: **decisiones cerradas (octubre 2026), fuentes leídas, recomendaciones de revisión aceptadas (ver «Revisión del borrador»), sin implementar**. Primer caso de una capa de «condiciones especiales»: condiciones que cambian la **seguridad** o la **interpretación** de la valoración, no simples comorbilidades (criterio de entrada, para que no se convierta en un cajón de sastre). Seguimiento en `MIGRATION_PLAN.md`, Fase J.
+Estado: **decisiones cerradas (octubre 2026), fuentes leídas, recomendaciones de revisión aceptadas (ver «Revisión del borrador»), sin implementar**. Primer caso de una capa de «condiciones especiales»: condiciones que cambian la **seguridad** o la **interpretación** de la valoración, no simples comorbilidades (criterio de entrada, para que no se convierta en un cajón de sastre). Seguimiento en `MIGRATION_PLAN.md`, Fase K.
 
 Fuentes leídas enteras en PDF del usuario (octubre 2026): Malfait 2017 (pp. 8–26), Byers 2017 (pp. 40–47) y Engelbert 2017 (pp. 158–167). Hakim y Grahame 2003 no se ha leído entero: no está en PubMed Central, PubMed no le da DOI ([PMID 12723715](https://pubmed.ncbi.nlm.nih.gov/12723715/)) y la editorial no es accesible desde la sesión. No hace falta: Malfait 2017 reproduce el cuestionario en su tabla III (p. 17), así que se cita Malfait (ver «Fuentes»).
 

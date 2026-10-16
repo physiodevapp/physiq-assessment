@@ -2,11 +2,13 @@
 // PhysiQ-Assessment · PHASE4.JS
 // Algoritmo CIF — árbol de decisión clínica
 // ============================================================
-import { CIF_TREES, HYPOTHESES } from './data.js';
+import { CIF_TREES, HYPOTHESES, ZONAS_SINTOMA } from './data.js';
 import { state } from './state.js';
 import { saveSession, showConfirmBanner, paintNav, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento } from './app.js';
-import { registroReferencias, enlaceCita } from './phase4b.js';
+import { registroReferencias, enlaceCita, citasHTML, citasEnTexto } from './lib/citas.js';
 import { iaParrafoHTML, ctxArbol, attrIA } from './ampliar-ia.js';
+import { pistasHTML } from './lib/pistas.js';
+import { pistasSintomasPaso } from './lib/sintomas.js';
 
 // Derivaciones médicas que piden las respuestas del árbol (`derivacion` en una
 // opción de CIF_TREES): mensajes de las opciones elegidas, en el orden de los
@@ -151,6 +153,17 @@ export function resetCIFTree() {
   );
 }
 
+// «📝 Refiere el paciente» del paso: respuestas del formulario previo ligadas
+// al paso (formulario.js, cargado con import(): sin él, solo los síntomas) y
+// los síntomas de la fase 3 con una zona ligada (`pasos`, lib/sintomas.js).
+// El árbol se repinta entero al entrar en la fase 4, así que siempre está al día.
+function pistasPasoHTML(stepId) {
+  return pistasHTML([
+    ...(window.fpPistasPaso?.(stepId) || []),
+    ...pistasSintomasPaso(state, ZONAS_SINTOMA[state.region] || [], stepId),
+  ]);
+}
+
 export function renderStep(step) {
   const container = document.getElementById('cifTree');
   const existing = document.getElementById(step.id);
@@ -163,7 +176,7 @@ export function renderStep(step) {
     <div class="tree-step-badge">${step.tag}</div>
     <div class="tree-question-text">${step.question}</div>
     ${razonamientoPasoHTML(step, state.region)}
-    ${window.fpPistasPasoHTML?.(step.id) || ''}
+    ${pistasPasoHTML(step.id)}
     <div class="option-group" id="opts_${step.id}">
       ${step.options.map((opt, i) => `
         <button class="option-btn" style="width:100%; text-align:left; justify-content:flex-start;"
@@ -195,27 +208,27 @@ export function razonamientoPasoHTML(step, region) {
   return `<details class="razon">
       <summary>ⓘ ¿Por qué esta pregunta?</summary>
       <div class="razon-cuerpo" data-ia-ctx="${attrIA(ctxArbol(region, step.iaPregunta || step.question))}">
-        <p><span class="razon-etq">Por qué</span> ${r.porque}${iaParrafoHTML()}</p>
-        <div class="razon-pie">— ${r.fuentes.join(' · ')}${ampliar}</div>
+        <p><span class="razon-etq">Por qué</span> ${citasEnTexto(r.porque)}${iaParrafoHTML()}</p>
+        <div class="razon-pie">— ${citasHTML(r.fuentes)}${ampliar}</div>
       </div>
     </details>`;
 }
 
 // Panel «Ampliar» de un paso: el compartido (abrirPanelRazon, app.js), con
 // Por qué, En detalle y Fuentes (las `citas`, o las claves de `fuentes`),
-// cada una enlazada a la url o el DOI del registro (enlaceCita, phase4b.js).
+// cada una enlazada a la url o el DOI del registro (enlaceCita, lib/citas.js).
 export async function abrirRazonamientoPaso(btn, stepId) {
   const step = CIF_TREES[state.region]?.steps.find(s => s.id === stepId);
   const r = step?.razonamiento;
   if (!r?.detalle) return;
   const REF = await registroReferencias();
-  const parrafos = r.detalle.split('\n\n').filter(Boolean).map(p => `<p>${p}${iaParrafoHTML()}</p>`).join('');
+  const parrafos = r.detalle.split('\n\n').filter(Boolean).map(p => `<p>${citasEnTexto(p)}${iaParrafoHTML()}</p>`).join('');
   const citas = (r.citas || r.fuentes).map(c => enlaceCita(c, REF));
   abrirPanelRazon({
     btn, kicker: '¿Por qué esta pregunta?', titulo: step.question,
     ia: ctxArbol(state.region, step.iaPregunta || step.question),
     html: `
-    <div class="razon-seccion"><div class="razon-etq">Por qué</div><p>${r.porque}${iaParrafoHTML()}</p></div>
+    <div class="razon-seccion"><div class="razon-etq">Por qué</div><p>${citasEnTexto(r.porque)}${iaParrafoHTML()}</p></div>
     <div class="razon-seccion"><div class="razon-etq">En detalle</div>${parrafos}</div>
     <div class="razon-seccion razon-fuentes"><div class="razon-etq">Fuentes</div>
       <ul>${citas.map(razonCitaHTML).join('')}</ul></div>`,

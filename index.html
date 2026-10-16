@@ -50,8 +50,13 @@
       <!-- Con ratón (sin pulsación larga): descartar la grabación en curso -->
       <button id="grabDescBtn" class="btn-record grab-desc" onclick="grabDescartar()" type="button" aria-label="Descartar grabación" title="Descartar grabación"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
     </div>
-    <!-- «Tiempos de recuperación» de tejidos (consulta, cualquier fase, también en el hub) -->
-    <button id="tejidosBtn" class="session-btn tejidos-btn" onclick="abrirTiemposTejido()" type="button" aria-haspopup="dialog" aria-controls="tejidosOverlay" aria-label="Tiempos de recuperación de tejidos" title="Tiempos de recuperación de tejidos"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9.5 2.5h5"/></svg></button>
+    <!-- «Herramientas» (solo ≤768 px): agrupa tiempos de tejido, cuestionarios y
+         «Preguntar a la IA», que en móvil no caben como iconos sueltos -->
+    <button id="herramientasBtn" class="session-btn herramientas-btn" onclick="abrirHerramientas()" type="button" aria-haspopup="dialog" aria-controls="herramientasOverlay" aria-expanded="false" aria-label="Herramientas" title="Herramientas"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg></button>
+    <!-- «Tiempos de recuperación» de tejidos (consulta, cualquier fase, también en el hub): icono de cronograma, no de reloj, para no confundirlo con el chip «Breve» -->
+    <button id="tejidosBtn" class="session-btn tejidos-btn" onclick="abrirTiemposTejido()" type="button" aria-haspopup="dialog" aria-controls="tejidosOverlay" aria-label="Tiempos de recuperación de tejidos" title="Tiempos de recuperación de tejidos"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4v16h18"/><path d="M7 8h5"/><path d="M10 12h7"/><path d="M13 16h6"/></svg></button>
+    <!-- Calculadora de cuestionarios (cualquier fase, también en el hub; lib/cuestionarios.js): puntuar la hoja que ha rellenado el paciente -->
+    <button id="cuestBtn" class="session-btn cuest-btn" onclick="abrirCuestionarios()" type="button" aria-haspopup="dialog" aria-controls="cuestOverlay" aria-label="Calculadora de cuestionarios" title="Calculadora de cuestionarios"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.5h6V4"/><path d="M9 12.5l2 2 4-4"/></svg></button>
     <!-- «Preguntar a la IA» (pregunta libre, solo standalone): fijo, sin borde, como sesión y tema -->
     <button id="preguntaIABtn" class="session-btn pregunta-ia-btn" onclick="abrirPreguntaIA()" type="button" aria-haspopup="dialog" aria-controls="preguntaOverlay" aria-label="Preguntar a la IA" title="Preguntar a la IA"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3l1.8 5.2L17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></button>
     <button id="sessionBtn" class="session-btn" onclick="toggleSessionPanel()" aria-label="Sesión" title="Sesión"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg></button>
@@ -68,7 +73,7 @@
 
 <div class="translate-banner" id="translateBanner">
   🌐 <span>Long-press or right-click → Translate to English</span>
-  <button class="translate-banner-close" onclick="hideTranslateBanner()" aria-label="Cerrar">×</button>
+  <button class="translate-banner-close" onclick="hideTranslateBanner()" aria-label="Cerrar"><svg class="icono-x" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
 </div>
 
 <!-- PROGRESS -->
@@ -96,6 +101,9 @@
   <div class="phase-step" id="nav5" onclick="navStepClick(5)">
     <span class="phase-step-num">5</span> Resultados
   </div>
+  <div class="phase-step phase-step-opcional" id="nav6" onclick="navStepClick(6)" title="Opcional: la valoración termina en la fase 5">
+    <span class="phase-step-num">6</span> Plan
+  </div>
 </nav>
 
 <!-- SISTEMA CONTEXT BANNER — Fase 2 acordeón -->
@@ -105,18 +113,28 @@
   <button class="context-banner-back" onclick="scrollToActiveSisHeader()">↑ volver</button>
 </div>
 
+<!-- FORMULARIO PREVIO CONTEXT BANNER — fases 1 y 2, mismo patrón que el de los sistemas -->
+<div class="sis-context-banner fp-context-banner" id="fpContextBanner">
+  <span class="sis-banner-icon">📝</span>
+  <span class="sis-banner-name" id="fpBannerName"></span>
+  <span class="fp-banner-cont" id="fpBannerCont"></span>
+  <button class="context-banner-back" onclick="scrollToFormularioPrevio()">↑ volver</button>
+</div>
+
 <!-- HYPOTHESIS CONTEXT BANNER — appears when header scrolls out of view -->
 <div class="hyp-context-banner" id="hypContextBanner">
   <span class="hyp-banner-dot" id="hypBannerDot"></span>
   <span class="hyp-banner-name" id="hypBannerName"></span>
   <button class="context-banner-back" onclick="scrollToActiveHypHeader()">↑ volver</button>
 </div>
-<div class="mobile-phase-bar" id="mobilePhaseBar">
+<!-- Barra de fase (móvil): toda ella es el botón que abre la hoja de fases. El chip
+     «Breve» va aquí en móvil (en escritorio sigue en la cabecera); no es pulsable aparte. -->
+<button type="button" class="mobile-phase-bar" id="mobilePhaseBar" onclick="togglePhaseSheet()" aria-haspopup="dialog" aria-controls="phaseSheet" aria-expanded="false">
+  <span class="modo-badge modo-badge-fase" title="Consulta breve (10 min): cribado y confirmación no exhaustivos">⏱<span class="modo-badge-text"> Breve</span></span>
   <span class="mobile-phase-label" id="mobilePhaseLabel">Fase 1 de 6 · Triage y Cabecera</span>
-  <button class="mobile-phase-menu-btn" onclick="togglePhaseSheet()" aria-label="Ver fases">
-    <span>≡</span> Fases
-  </button>
-</div>
+  <span class="mobile-phase-menu-btn" aria-hidden="true">≡</span>
+  <span class="sr-only">, cambiar de fase</span>
+</button>
 
 <!-- BOTTOM SHEET — mobile phase navigation -->
 <div class="phase-sheet-overlay" id="phaseSheetOverlay" onclick="closePhaseSheet()"></div>
@@ -133,7 +151,7 @@
   <div class="razon-handle"></div>
   <div class="razon-head">
     <div class="razon-kicker">¿Por qué esta pregunta?</div>
-    <button class="razon-cerrar" id="razonCerrar" onclick="cerrarRazonamiento()" aria-label="Cerrar">×</button>
+    <button class="razon-cerrar" id="razonCerrar" onclick="cerrarRazonamiento()" aria-label="Cerrar"><svg class="icono-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     <div class="razon-pregunta" id="razonPregunta"></div>
   </div>
   <div class="razon-contenido" id="razonContenido"></div>
@@ -168,14 +186,49 @@
   </div>
 </div>
 
+<!-- HERRAMIENTAS (cabecera, solo ≤768 px): hoja inferior con las herramientas
+     que en escritorio son iconos sueltos. Cada opción cierra esta hoja y abre la
+     suya en la misma entrada del historial (herramientaElegir, app.js) -->
+<div class="session-panel-overlay" id="herramientasOverlay" onclick="cerrarHerramientas()">
+  <div class="session-panel compartir-panel" id="herramientasPanel" role="dialog" aria-modal="true" aria-labelledby="herramientasTitulo" tabindex="-1" onclick="event.stopPropagation()">
+    <div class="session-panel-handle"></div>
+    <div class="session-panel-title" id="herramientasTitulo">Herramientas</div>
+    <div class="compartir-opciones">
+      <button type="button" class="compartir-op" data-herramienta="tejidos" onclick="herramientaElegir('tejidos')">
+        <span class="compartir-op-nombre">Tiempos de recuperación</span>
+        <span class="compartir-op-sub">Plazos de curación por tejido y lesión</span>
+      </button>
+      <button type="button" class="compartir-op" data-herramienta="cuestionarios" onclick="herramientaElegir('cuestionarios')">
+        <span class="compartir-op-nombre">Cuestionarios</span>
+        <span class="compartir-op-sub">Puntuar la hoja que ha rellenado el paciente</span>
+      </button>
+      <button type="button" class="compartir-op herr-op-ia" data-herramienta="pregunta" onclick="herramientaElegir('pregunta')">
+        <span class="compartir-op-nombre">Preguntar a la IA</span>
+        <span class="compartir-op-sub">Una duda libre, sin datos del paciente</span>
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- TIEMPOS DE RECUPERACIÓN DE TEJIDOS (cabecera, ⏱): hoja inferior en móvil,
      diálogo centrado (más ancho que el de sesión) en escritorio. Lo rellena
      abrirTiemposTejido() (app.js) con tiemposTejidoHTML() (lib/tejidos.js) -->
 <div class="session-panel-overlay" id="tejidosOverlay" onclick="cerrarTiemposTejido()">
   <div class="session-panel tejidos-panel" id="tejidosPanel" role="dialog" aria-modal="true" aria-labelledby="tejidosTitulo" tabindex="-1" onclick="event.stopPropagation()">
     <div class="session-panel-handle"></div>
-    <div class="session-panel-title" id="tejidosTitulo">⏱ Tiempos de recuperación de tejidos</div>
+    <div class="session-panel-title" id="tejidosTitulo">Tiempos de recuperación de tejidos</div>
     <div class="tejidos-cuerpo" id="tejidosCuerpo"></div>
+  </div>
+</div>
+
+<!-- CALCULADORA DE CUESTIONARIOS (cabecera): hoja inferior en móvil, diálogo
+     centrado en escritorio, como «Tiempos de recuperación». Lo rellena
+     abrirCuestionarios() (app.js) con lib/cuestionarios.js y data/cuestionarios.js -->
+<div class="session-panel-overlay" id="cuestOverlay" onclick="cerrarCuestionarios()">
+  <div class="session-panel cuest-panel" id="cuestPanel" role="dialog" aria-modal="true" aria-labelledby="cuestTitulo" tabindex="-1" onclick="event.stopPropagation()">
+    <div class="session-panel-handle"></div>
+    <div class="session-panel-title" id="cuestTitulo">Cuestionarios</div>
+    <div class="cuest-cuerpo" id="cuestCuerpo"></div>
   </div>
 </div>
 
@@ -185,10 +238,12 @@
 <div class="session-panel-overlay" id="preguntaOverlay" onclick="cerrarPreguntaIA()">
   <div class="session-panel pregunta-panel" id="preguntaPanel" role="dialog" aria-modal="true" aria-labelledby="preguntaTitulo" tabindex="-1" onclick="event.stopPropagation()">
     <div class="session-panel-handle"></div>
-    <div class="session-panel-title" id="preguntaTitulo">✨ Preguntar a la IA</div>
+    <div class="pregunta-cabecera" id="preguntaCabecera">
+      <div class="session-panel-title" id="preguntaTitulo">✨ Preguntar a la IA</div>
+    </div>
     <textarea class="form-input pregunta-texto" id="preguntaTexto" rows="3" maxlength="800" enterkeyhint="send" aria-label="Tu pregunta"
       placeholder="Ej.: ¿Qué diferencia hay entre el test de Hawkins y el de Neer?"></textarea>
-    <div class="pregunta-aviso">No escribas datos que identifiquen al paciente: la pregunta sale a un servicio externo y PhysiQ no revisa la respuesta.</div>
+    <div class="pregunta-aviso">No escribas ni dictes datos que identifiquen al paciente: la pregunta sale a un servicio externo y PhysiQ no revisa la respuesta.</div>
     <div class="option-group pregunta-destinos" id="preguntaDestinos" role="radiogroup" aria-label="IA"></div>
     <div class="pregunta-ventaja" id="preguntaVentaja"></div>
     <a class="btn btn-primary pregunta-ir" id="preguntaIr" href="#" target="_blank" rel="noopener noreferrer"></a>
@@ -400,7 +455,7 @@
 
   <div class="card">
     <div class="card-title">Riesgo Psicosocial</div>
-    <p class="form-label" style="margin-bottom:12px;">Estratifique según su valoración clínica inicial (STarT Back / Örebro)</p>
+    <p class="form-label" style="margin-bottom:12px;">Estratifique según su valoración clínica inicial (Örebro)</p>
 
     <div class="option-group option-group-full" id="riesgoPsico">
       <button class="option-btn" onclick="selectPsico(this, 'Bajo')">🟢 Bajo</button>
@@ -547,6 +602,9 @@
     <p class="phase-subtitle">Caracterización del cuadro clínico: Severidad, Irritabilidad, Naturaleza, Estadio y Estabilidad.</p>
   </div>
 
+  <!-- Síntomas P1–P4 (sintomas.js): solo en regiones con zonas (ZONAS_SINTOMA) -->
+  <div class="card" id="cardSintomas" hidden></div>
+
   <div class="card">
     <div class="card-title">Severidad del Dolor (EVN 0–10)</div>
     <div class="nrs-ext"><span>0 = Sin dolor</span><span>10 = El peor que pueda imaginar</span></div>
@@ -568,6 +626,8 @@
       </div>
     </div>
     <div class="nrs-label" id="nrsLabel">— Sin seleccionar —</div>
+    <!-- Impacto en las actividades: gravedad, no irritabilidad (decisión 100) -->
+    <div class="irritab-impacto breve-opcional" id="impactoActividades"></div>
   </div>
 
   <div class="card">
@@ -575,107 +635,18 @@
     <!-- Modo breve: nivel directo en vez de la matriz (la matriz queda plegada) -->
     <div class="breve-only">
       <div class="plan-note-hint">Consulta breve: estime el nivel directamente; la matriz queda como pendiente (se abre con «Mostrar campos opcionales»).</div>
+      <div class="plan-note-hint" id="irritabPistaBreve"></div>
       <div class="option-group option-group-full" id="irritabDirecta">
         <button class="option-btn" onclick="selectIrritabDirecta(this,'Baja')">🟢 Baja</button>
         <button class="option-btn" onclick="selectIrritabDirecta(this,'Moderada')">🟠 Moderada</button>
         <button class="option-btn" onclick="selectIrritabDirecta(this,'Alta')">🔴 Alta</button>
       </div>
     </div>
-    <!-- Tabla: visible en desktop -->
-    <div class="irritab-table-wrap irritab-desktop breve-opcional"><table class="irritab-table">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th>Seleccione nivel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Nivel de dolor</td>
-          <td><div class="irritab-select">
-            <button class="irritab-btn selected" onclick="selectIrritab('dolor',this,'Baja (≤3/10)')">Baja ≤3</button>
-            <button class="irritab-btn" onclick="selectIrritab('dolor',this,'Media (4-6/10)')">Media</button>
-            <button class="irritab-btn" onclick="selectIrritab('dolor',this,'Alta (≥7/10)')">Alta ≥7</button>
-          </div></td>
-        </tr>
-        <tr>
-          <td>Dolor en reposo</td>
-          <td><div class="irritab-select">
-            <button class="irritab-btn selected" onclick="selectIrritab('reposo',this,'Ausente')">Ausente</button>
-            <button class="irritab-btn" onclick="selectIrritab('reposo',this,'Intermitente')">Intermitente</button>
-            <button class="irritab-btn" onclick="selectIrritab('reposo',this,'Presente')">Presente</button>
-          </div></td>
-        </tr>
-        <tr>
-          <td>Dolor con movimiento</td>
-          <td><div class="irritab-select">
-            <button class="irritab-btn selected" onclick="selectIrritab('movimiento',this,'Al final del rango con SP')">FR + SP</button>
-            <button class="irritab-btn" onclick="selectIrritab('movimiento',this,'Al final del rango')">Final rango</button>
-            <button class="irritab-btn" onclick="selectIrritab('movimiento',this,'Antes del final del rango')">Antes FR</button>
-          </div></td>
-        </tr>
-        <tr>
-          <td>Discapacidad</td>
-          <td><div class="irritab-select">
-            <button class="irritab-btn selected" onclick="selectIrritab('discapacidad',this,'Mínima')">Mínima</button>
-            <button class="irritab-btn" onclick="selectIrritab('discapacidad',this,'Moderada')">Moderada</button>
-            <button class="irritab-btn" onclick="selectIrritab('discapacidad',this,'Alta')">Alta</button>
-          </div></td>
-        </tr>
-        <tr>
-          <td>Tolerancia al estrés físico</td>
-          <td><div class="irritab-select">
-            <button class="irritab-btn selected" onclick="selectIrritab('tolerancia',this,'Alta')">Alta</button>
-            <button class="irritab-btn" onclick="selectIrritab('tolerancia',this,'Moderada')">Moderada</button>
-            <button class="irritab-btn" onclick="selectIrritab('tolerancia',this,'Baja')">Baja</button>
-          </div></td>
-        </tr>
-      </tbody>
-    </table></div>
-
-    <!-- Cards: visible en móvil/tablet -->
-    <div class="irritab-cards irritab-mobile breve-opcional">
-      <div class="irritab-card">
-        <div class="irritab-card-label">Nivel de dolor</div>
-        <div class="irritab-card-btns">
-          <button class="irritab-btn selected" onclick="selectIrritabSync('dolor',this,'Baja (≤3/10)')">Baja ≤3/10</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('dolor',this,'Media (4-6/10)')">Media</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('dolor',this,'Alta (≥7/10)')">Alta ≥7/10</button>
-        </div>
-      </div>
-      <div class="irritab-card">
-        <div class="irritab-card-label">Dolor en reposo</div>
-        <div class="irritab-card-btns">
-          <button class="irritab-btn selected" onclick="selectIrritabSync('reposo',this,'Ausente')">Ausente</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('reposo',this,'Intermitente')">Intermitente</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('reposo',this,'Presente')">Presente</button>
-        </div>
-      </div>
-      <div class="irritab-card">
-        <div class="irritab-card-label">Dolor con movimiento</div>
-        <div class="irritab-card-btns">
-          <button class="irritab-btn selected" onclick="selectIrritabSync('movimiento',this,'Al final del rango con SP')">FR + SP</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('movimiento',this,'Al final del rango')">Final rango</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('movimiento',this,'Antes del final del rango')">Antes FR</button>
-        </div>
-      </div>
-      <div class="irritab-card">
-        <div class="irritab-card-label">Discapacidad</div>
-        <div class="irritab-card-btns">
-          <button class="irritab-btn selected" onclick="selectIrritabSync('discapacidad',this,'Mínima')">Mínima</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('discapacidad',this,'Moderada')">Moderada</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('discapacidad',this,'Alta')">Alta</button>
-        </div>
-      </div>
-      <div class="irritab-card">
-        <div class="irritab-card-label">Tolerancia al estrés físico</div>
-        <div class="irritab-card-btns">
-          <button class="irritab-btn selected" onclick="selectIrritabSync('tolerancia',this,'Alta')">Alta</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('tolerancia',this,'Moderada')">Moderada</button>
-          <button class="irritab-btn" onclick="selectIrritabSync('tolerancia',this,'Baja')">Baja</button>
-        </div>
-      </div>
-    </div>
+    <!-- Matriz de irritabilidad (decisiones 99–101 de docs/plan-tratamiento.md):
+         la pinta pintarMatrizIrritabilidad() (app.js) desde data/irritabilidad.js,
+         sin preselección. Tabla en escritorio, tarjetas en móvil. -->
+    <div class="irritab-table-wrap irritab-desktop breve-opcional" id="irritabTabla"></div>
+    <div class="irritab-cards irritab-mobile breve-opcional" id="irritabTarjetas"></div>
     <div id="irritabilidadResumen" style="margin-top:1rem;"></div>
   </div>
 
@@ -767,6 +738,24 @@
   <div class="nav-buttons">
     <button class="btn btn-secondary" onclick="goToPhase('4b')">← Anterior</button>
     <button class="btn btn-primary" id="btnCompartir" onclick="abrirMenuCompartir()" aria-haspopup="dialog" aria-controls="compartirOverlay" title="Compartir o copiar el informe para el paciente / médico, el informe clínico con IA o las notas clínicas">📤 Compartir</button>
+  </div>
+  <!-- Fase 6 (opcional): la valoración termina aquí -->
+  <div class="plan-entrada">
+    <button class="btn btn-secondary" id="btnIrPlan" onclick="goToPhase(6)"><span class="btn-text-full">Plan de tratamiento (opcional) →</span><span class="btn-text-short">Plan de tratamiento →</span></button>
+  </div>
+</div>
+
+<!-- FASE 6 — PLAN DE TRATAMIENTO (opcional; plan.js lo pinta en #planContenido) -->
+<div class="phase-container" id="phase6">
+  <div class="phase-header">
+    <h1 class="phase-title">Plan de Tratamiento</h1>
+    <p class="phase-subtitle">Propuesta de sesión de 50 minutos y de plan para un mes, a partir de la valoración. Opcional.</p>
+  </div>
+  <div id="planContenido"></div>
+  <div id="planIA" hidden></div>
+  <div class="nav-buttons">
+    <button class="btn btn-secondary" onclick="goToPhase(5)">← Anterior</button>
+    <button class="btn btn-primary" id="btnCompartirPlan" onclick="abrirMenuCompartir()" aria-haspopup="dialog" aria-controls="compartirOverlay" title="Compartir o copiar el plan de sesión, el plan del mes o el programa para casa">📤 Compartir</button>
   </div>
 </div>
 
