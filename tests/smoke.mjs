@@ -472,18 +472,24 @@ async function checkSilueta(page) {
   await page.click('#phase1 .btn-primary');
   await page.waitForSelector('#siluetaRegion .sil-zona');
   const zona = (region, lado) => `#siluetaRegion .sil-zona[data-region="${region}"][data-lado="${lado}"]`;
-  const estado = () => page.evaluate(() => ({
+  const estadoSinSalto = () => page.evaluate(() => ({
     region: state.region, lado: state.lado, sexo: state.sexo,
     texto: document.querySelector('.sil-elegida-texto').textContent,
     figura: document.querySelector('.sil-figura').textContent.trim(),
-    nota: document.querySelector('.sil-nota').hidden ? '' : document.querySelector('.sil-nota').textContent,
+    nota: document.querySelector('.sil-nota').textContent,
+    // Sin saltos: la figura siempre a la misma distancia del inicio del bloque, y el texto junto al botón en dos líneas como mucho
+    alto: Math.round(document.querySelector('.sil-lienzo').getBoundingClientRect().top - document.getElementById('siluetaRegion').getBoundingClientRect().top),
+    notaCabe: document.querySelector('.sil-nota').getBoundingClientRect().height <= 44
+      && document.querySelector('.sil-figura-fila').getBoundingClientRect().height <= 44,
     on: [...document.querySelectorAll('.sil-zona-on')].map(b => `${b.dataset.region}|${b.dataset.lado}`).sort(),
     aMedias: [...document.querySelectorAll('.sil-zona-region')].map(b => `${b.dataset.region}|${b.dataset.lado}`).sort(),
     tarjeta: document.querySelector('.region-card.selected')?.dataset.region || '',
     botonLado: document.querySelector('#lado .option-btn.selected')?.textContent || '',
   }));
+  const altos = new Set(), cabe = [];
+  const estado = async () => { const e = await estadoSinSalto(); altos.add(e.alto); cabe.push(e.notaCabe); return e; };
   const inicio = await estado();
-  r.figuraDelSexo = inicio.figura === 'Figura femenina' && inicio.texto === 'Toca la zona en la silueta';
+  r.figuraDelSexo = inicio.figura === 'Femenina' && inicio.nota === 'Según el sexo de la fase 1.' && inicio.texto === 'Toca la zona en la silueta';
   // A 320 px: zonas de 44 px, dentro de la pantalla y sin pisarse; nada desborda
   r.cabe320 = await page.evaluate(() => {
     const cajas = [...document.querySelectorAll('.sil-zona')].map(b => b.getBoundingClientRect());
@@ -508,7 +514,7 @@ async function checkSilueta(page) {
   // El botón cambia la figura, no el sexo; la región sigue marcada
   await page.click('#siluetaRegion .sil-figura');
   e = await estado();
-  r.cambiaFigura = e.figura === 'Figura masculina' && e.sexo === 'Mujer' && /no cambia el sexo de la fase 1 \(mujer\)/.test(e.nota)
+  r.cambiaFigura = e.figura === 'Masculina' && e.sexo === 'Mujer' && e.nota === 'Solo cambia el dibujo; en la fase 1 sigue «Mujer».'
     && e.on.join() === 'lumbar|' && await page.evaluate(() => document.activeElement?.classList.contains('sil-figura'));
   // La lista: región sin lado, sus dos zonas a medias
   await page.click('.region-card[data-region="codo"]');
@@ -531,23 +537,26 @@ async function checkSilueta(page) {
   await page.click('#sexo .option-btn:has-text("Hombre")');
   await page.evaluate(() => goToPhase(2));
   e = await estado();
-  r.sexoAnulaFigura = e.figura === 'Figura masculina' && e.nota === '' && e.sexo === 'Hombre';
+  r.sexoAnulaFigura = e.figura === 'Masculina' && e.nota === 'Según el sexo de la fase 1.' && e.sexo === 'Hombre';
   await page.evaluate(() => goToPhase(1));
   await page.click('#sexo .option-btn:has-text("Mujer")');
   await page.evaluate(() => goToPhase(2));
-  r.sigueAlSexo = (await estado()).figura === 'Figura femenina';
-  // Sin sexo indicado: cambiar la figura ofrece «Indicarlo en la fase 1 →», que lleva al sexo sin rellenarlo
+  r.sigueAlSexo = (await estado()).figura === 'Femenina';
+  // Sin sexo indicado: cambiar la figura ofrece «Indicar sexo →», que lleva al sexo sin rellenarlo
   await page.evaluate(() => goToPhase(1));
   await page.click('#sexo .option-btn:has-text("Mujer")');
   await page.evaluate(() => goToPhase(2));
   await page.click('#siluetaRegion .sil-figura');
   e = await estado();
   const enlace = '#siluetaRegion .sil-nota-enlace';
-  r.enlaceSinSexo = e.figura === 'Figura femenina' && /sigue sin indicar/.test(e.nota) && await page.isVisible(enlace);
+  r.enlaceSinSexo = e.figura === 'Femenina' && e.nota === 'Solo cambia el dibujo. Indicar sexo →' && await page.isVisible(enlace);
   await page.click(enlace);
   await page.waitForFunction(() => state.currentPhase === 1 && document.getElementById('sexo').classList.contains('flash-destacar'));
   r.enlaceLleva = await page.evaluate(() => state.sexo === '' && document.activeElement?.closest('#sexo') !== null);
   await page.evaluate(() => goToPhase(2));
+  await estado();
+  r.sinSaltos = altos.size === 1 && cabe.every(Boolean);
+  if (!r.sinSaltos) r.altos = [...altos];
   // Tema claro: los colores de la silueta salen de sus variables
   r.tema = await page.evaluate(() => {
     const raiz = document.documentElement, antes = raiz.getAttribute('data-theme');
@@ -4551,7 +4560,7 @@ const SECCIONES = [
 
   { id: 'silueta', titulo: 'Silueta de la fase 2 (región y lado de un toque, 320 px):', run: async ({ page }) => {
     const r = await checkSilueta(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el botón cambia la figura sin tocar el sexo, y cambiar el sexo en la fase 1 anula esa elección; sin sexo, «Indicarlo en la fase 1 →» lleva al campo sin rellenarlo; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el botón cambia la figura sin tocar el sexo, y cambiar el sexo en la fase 1 anula esa elección; sin sexo, «Indicar sexo →» lleva al campo sin rellenarlo; la figura no salta al cambiar el texto ni el lado; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

@@ -1197,10 +1197,10 @@ function _pintarSilueta() {
   cont.querySelector('.sil-elegida-texto').textContent = principal;
   cont.querySelector('.sil-elegida-sub').textContent = sub;
   const nota = cont.querySelector('.sil-nota');
-  const { texto, enlace } = notaFigura(state.sexo, _figuraElegida);
+  const { texto, enlace, cambiada } = notaFigura(state.sexo, _figuraElegida);
   nota.textContent = texto;
-  if (enlace) nota.insertAdjacentHTML('beforeend', ' <button type="button" class="sil-nota-enlace" onclick="irASexo()">Indicarlo en la fase 1 →</button>');
-  nota.hidden = !texto;
+  if (enlace) nota.insertAdjacentHTML('beforeend', ' <button type="button" class="sil-nota-enlace" onclick="irASexo()">Indicar sexo →</button>');
+  nota.classList.toggle('sil-nota-cambiada', cambiada);
 }
 
 // Toque en una zona: región y lado a la vez. Cambiar de región pasa por
