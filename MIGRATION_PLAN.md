@@ -211,7 +211,7 @@ Diseño y las 8 decisiones clínicas en `docs/posquirurgico.md`; detalle técnic
 - [x] Cribado posquirúrgico de la fase 2 (`transversal_posquirurgico`, 7 preguntas con razonamiento): fuentes gratuitas leídas enteras en la sesión (Zabaglo 2024, Vyas 2024, Torlincasi 2023, Guthmiller 2025, Goebel 2018 y NICE NG125, NG89 y NG158), en lugar de Goodman, que no trata el SDRC ni la infección de la herida en un apartado propio
 - [x] Revisión clínica del usuario (2026-10)
 - [ ] Probar con un caso real de operado, sobre todo el 📄 Informe y el informe con IA
-- [ ] physiq-report: leer `cq` y `dt` del payload (otro repositorio; hasta entonces su informe no sabe de la cirugía ni de la marca «ya tratada»)
+- [x] physiq-report: leer `cq` y `dt` del payload (otro repositorio). Hecho al portar las reglas del informe a physiq-report: `buildClinicalContext()` (`lib/payload.js`) manda el bloque «Cirugía (paciente posquirúrgico)» desde `cq`, y las hipótesis con `dt` como antecedente y la `pq` como condición de salud; lo comprueban sus tests unitarios (comprobado 2026-10, casilla marcada después)
 - [x] Hipótesis posquirúrgica genérica (`pq1`): decisiones cerradas (las 5 recomendaciones) e implementada; ver `docs/posquirurgico.md`, «Hipótesis posquirúrgica genérica». Motivo: tras una prótesis, el árbol daba la artrosis de esa articulación (`ca1`, `ro1`, `h10`, `tp24`) con su pauta; ahora se marca «Tratada con la cirugía». En `main` con la PR 205.
 
 ## Fase H — «¿Por qué?» de los tests de la fase 4b
