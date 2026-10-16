@@ -3504,7 +3504,7 @@ const PLAN_IA_SIMULADO = `## SESIÓN
 ### REEVALUACIÓN (0–5 min)
 - Slump izquierdo y exploración neurológica.
 ### INTERVENCIÓN PRINCIPAL (12–35 min)
-- Deslizamiento neural del ciático sentado, 10 repeticiones lentas (sugerencia de la IA).
+- Slump sentado, 10 repeticiones lentas (sugerencia de la IA).
 - Movilización PA de grado III en L5.
 ## PLAN DEL MES
 - Sesión 2: reevaluación y progresar según el esquema.

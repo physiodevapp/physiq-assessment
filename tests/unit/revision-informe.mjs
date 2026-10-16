@@ -449,6 +449,7 @@ console.log('\nrevisión automática del informe con IA');
       ['valoracion-andres-molina-lumbar.json', 'andres-lumbar-dictado-1-informe.txt', 'andres-lumbar-dictado-1-transcripcion.txt', ['lado-sintoma', 'confirma', 'relleno', 'fuentes']],
       // Ronda 34: el mismo caso corregido (P2 intermitente, notas del plan para el paciente); mismo dictado
       ['valoracion-andres-molina-lumbar-2.json', 'andres-lumbar-dictado-2-informe.txt', 'andres-lumbar-dictado-1-transcripcion.txt', ['lado-sintoma', 'relleno', 'consejo-inventado']],
+      ['valoracion-andres-molina-lumbar-3.json', 'andres-lumbar-dictado-3-informe.txt', 'andres-lumbar-dictado-1-transcripcion.txt', ['lado-sintoma', 'consejo-inventado']],
     ];
     // En este mismo proceso (revisarArchivos(), lo que hace la herramienta),
     // no un `node` por informe; luego se deja `state` como estaba.
