@@ -1,6 +1,6 @@
 # Hipermovilidad / Ehlers-Danlos — diseño
 
-Estado: **decisiones cerradas (octubre 2026), fuentes leídas, recomendaciones de revisión aceptadas (ver «Revisión del borrador»), sin implementar**. Primer caso de una capa de «condiciones especiales»: condiciones que cambian la **seguridad** o la **interpretación** de la valoración, no simples comorbilidades (criterio de entrada, para que no se convierta en un cajón de sastre). Seguimiento en `MIGRATION_PLAN.md`, Fase P.
+Estado: **decisiones cerradas (octubre 2026), fuentes leídas, recomendaciones de revisión aceptadas (ver «Revisión del borrador»), implementado (octubre 2026; ver «Implementación»), pendiente de revisión del usuario antes de `main`**. Primer caso de una capa de «condiciones especiales»: condiciones que cambian la **seguridad** o la **interpretación** de la valoración, no simples comorbilidades (criterio de entrada, para que no se convierta en un cajón de sastre). Seguimiento en `MIGRATION_PLAN.md`, Fase P.
 
 Fuentes leídas enteras en PDF del usuario (octubre 2026): Malfait 2017 (pp. 8–26), Byers 2017 (pp. 40–47) y Engelbert 2017 (pp. 158–167). Hakim y Grahame 2003 no se ha leído entero: no está en PubMed Central, PubMed no le da DOI ([PMID 12723715](https://pubmed.ncbi.nlm.nih.gov/12723715/)) y la editorial no es accesible desde la sesión. No hace falta: Malfait 2017 reproduce el cuestionario en su tabla III (p. 17), así que se cita Malfait (ver «Fuentes»).
 
@@ -152,13 +152,13 @@ Texto: «hipermovilidad articular generalizada (Beighton X/9; cuestionario Y/5) 
 
 | id | Pregunta (borrador) | Peso |
 |---|---|---|
-| `hm_s_familia` | ¿Algún familiar de primer grado con SED vascular, o con una rotura o disección arterial o una muerte súbita antes de los 40 años? | Mayor |
+| `hm_s_familia` | ¿Algún familiar de primer grado con SED vascular, o con una rotura o disección arterial antes de los 40 años? | Mayor |
 | `hm_s_rotura` | ¿Ha tenido una rotura arterial o una rotura de intestino sin causa conocida? | Mayor |
 | `hm_s_neumo` | ¿Ha tenido algún neumotórax espontáneo? | Menor |
 | `hm_s_piel` | ¿Le salen hematomas sin golpes, en sitios poco habituales (mejillas, espalda), o tiene la piel fina y translúcida, con las venas muy visibles? | Menor |
 | `hm_s_varices` | ¿Tuvo varices antes de los 30 años (y, si es mujer, sin haber estado embarazada)? | Menor |
 
-**Regla** (`criterioCompuesto` o equivalente): derivación preferente con un «sí» mayor, o con 2 o más «sí» en total. Motivo: Malfait (p. 16) pide estudiar el subtipo ante un antecedente familiar o una rotura; para el neumotórax exige además «otros rasgos compatibles». Byers (p. 45) dice que algunos rasgos menores «por sí solos no bastan para pedir el estudio genético». Un solo «sí» menor se muestra como hallazgo, sin derivación.
+**Regla** (`reglaVascular()`, `lib/hipermovilidad.js`): derivación preferente con un «sí» mayor, o con 2 o más «sí» en total. Motivo: Malfait (p. 16) pide estudiar el subtipo ante un antecedente familiar, una rotura o disección arterial antes de los 40 años o una rotura de sigma sin causa; el neumotórax espontáneo, solo «con otros rasgos compatibles», y también pide considerar el estudio ante «una combinación de los otros rasgos menores». Un solo «sí» menor se muestra como hallazgo, sin derivación.
 
 Cada pregunta lleva su `razonamiento` (Fase F) con las fuentes del registro.
 
@@ -252,7 +252,22 @@ hipermovilidad: {
 | (no se registra) | Hakim AJ, Grahame R. A simple questionnaire to detect hypermobility. *Int J Clin Pract* 2003;57(3):163–6. [PMID 12723715](https://pubmed.ncbi.nlm.nih.gov/12723715/) | Origen del cuestionario | Solo resumen; se cita a través de Malfait 2017, tabla III |
 | (opcional) Castori 2017 | Marco del trastorno del espectro de la hipermovilidad, mismo número de *Am J Med Genet C* (citado en Malfait 2017, p. 9) | Terminología TEH frente a SEDh | Por localizar; no imprescindible |
 
+## Implementación (octubre 2026)
+
+Hecho según este documento, con estas concreciones:
+
+- **Contenido clínico** en `data/comun.js` (`SIS_HIPERMOVILIDAD`): las 8 preguntas con su razonamiento (fuentes `Malfait 2017` y `Byers 2017`, nuevas en `data/referencias.js` junto a `Engelbert 2017`), las 3 banderas rojas enlazadas a las urgencias, y en `hipermovilidad` el cuestionario, las maniobras de Beighton, los cortes y los textos con sus citas. Es el segundo sistema de las 7 regiones (tras el posquirúrgico).
+- **Lógica pura** en `lib/hipermovilidad.js`: visibilidad por estado y subtipo (`elementoHMVisible`), puntos y corte de Beighton, regla del punto por debajo, regla vascular, payload `hm` y textos de 📋 Notas, 📄 Informe e informe con IA.
+- **Cortes por edad**: la pubertad no se deduce de la edad, así que hasta los 17 años se aplica el corte de 6 (Malfait agrupa a los adolescentes con los prepúberes), de 18 a 50 el de 5 y por encima de 50 el de 4. La pantalla muestra el corte y el grupo para que el fisio lo valore.
+- **Sin embudo**: el sistema de hipermovilidad no tiene el embudo del modo breve; lo activó el fisio a propósito y sus pocas preguntas se hacen siempre. No sale como «sistema sin cribar».
+- **Escala de Beighton**: botón «Hacer la escala de Beighton»; hasta entonces no puntúa (`beighton: null`), y con la sospecha es un pendiente del modo breve. Una casilla sin marcar puntúa 0.
+- **Payload `hm`**: `{ es, st, bt, co, cu, hag, vs }` (estado, subtipo, puntos de Beighton, corte, «sí» del cuestionario, hipermovilidad generalizada, regla vascular cumplida). Solo con la tarjeta activa, así que la huella de los informes con IA anteriores no cambia. physiq-report aún no lo lee.
+- **Informe con IA**: bloque «Hipermovilidad» en `contextoValoracion()` (`lib/informe-narrativo.js`), con las recomendaciones sin las citas (el informe no debe nombrar fuentes) y, con la sospecha, «no escribas que el paciente tiene un síndrome de Ehlers-Danlos». `lib/reglas-informe.js` no se ha tocado.
+- **📄 Informe**: bloque «HIPERMOVILIDAD ARTICULAR»; con la sospecha solo dice que se recomienda valoración (reumatología o genética), sin nombrar el Ehlers-Danlos.
+- **Pruebas**: `tests/unit/hipermovilidad.mjs` (visibilidad, urgencias, Beighton y cortes, regla del punto por debajo, regla vascular, payload, resúmenes y prompt, lista de los 16 tests y aviso, pendiente del modo breve) y la sección `hipermovilidad` de `tests/smoke.mjs`.
+
 ## Siguiente paso
 
-1. **Revisión clínica final del usuario** del texto concreto: las tres preguntas de urgencia, las cinco de sospecha con su regla, el aviso de la fase 4b y el recuadro de la fase 5. Las decisiones ya están cerradas; queda validar la redacción.
-2. **Implementar en una sesión**, en el orden fase 1 → fase 2 → fase 4b → fase 5 → informes.
+1. **Revisión del usuario en la app** antes de `main`: tarjeta de la fase 1, sistema de la fase 2 (razonamientos incluidos), aviso de la 4b y recuadro de la fase 5.
+2. **physiq-report**: leer `hm` del payload (otro repositorio).
+3. Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar).

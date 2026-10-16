@@ -59,6 +59,7 @@ export const BASE_STATE = {
   planNotes:        { variableControl: '', ventanaRecuperacion: '', anclajeHabito: '' },
   cirugia:          { intervencion: '', fecha: '', semanasAprox: null, protocolo: '', restricciones: '', complicaciones: [], complicacionOtra: '' },
   derivacionResuelta: {},
+  hipermovilidad:   { estado: '', subtipo: '', beighton: null, cuestionario: {} },
   cuestionarios:    {},
   sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },
   sintomasSecundarios: [],

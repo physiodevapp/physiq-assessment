@@ -507,6 +507,77 @@ async function checkLado(page) {
 // Derivación pedida por el árbol (`derivacion` en una opción de CIF_TREES):
 // lumbar, paso 1 NO y paso 2 VASCULAR. Comprueba el aviso bajo el paso, en el
 // «árbol completado» y en la fase 5, por clics reales.
+// Hipermovilidad / Ehlers-Danlos (Fase P, docs/hipermovilidad.md), rodilla.
+// Fase 1: sin marcar no hay sistema; «Sospecha» lo añade a la fase 2 con el
+// cuestionario, la escala de Beighton (corte por edad), las urgencias del
+// subtipo vascular sin plegar y la regla de sospecha. 4b: el aviso de laxitud
+// en Lachman y no en las pruebas compuestas. Fase 5: el recuadro. 320 px: nada
+// se sale. Quitar la marca quita el sistema.
+async function checkHipermovilidad(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#motivoConsulta', 'Dolor de rodilla');
+  await page.fill('#edadPaciente', '30');
+  await page.dispatchEvent('#edadPaciente', 'input');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.subtipoOculto = !(await page.isVisible('#hmSubtipoWrap'));
+  await page.click('#hmEstado .option-btn[data-valor="diagnosticada"]');
+  r.subtipoVisible = await page.isVisible('#hmSubtipoWrap');
+  await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
+  r.subtipoOcultoSospecha = !(await page.isVisible('#hmSubtipoWrap'));
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('rodilla', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_hipermovilidad');
+  await page.click('#tab_transversal_hipermovilidad');
+  const P = '#panel_transversal_hipermovilidad';
+  r.cuestionario = await page.$$eval(`${P} .hm-cq`, els => els.length);
+  await page.click(`${P} button:has-text("Hacer la escala de Beighton")`);
+  for (let i = 0; i < 5; i++) await page.click(`${P} .hm-casilla input >> nth=${i}`);
+  r.hag = await page.evaluate(p => document.querySelector(p).textContent.includes('Beighton 5/9 · corte 5') && document.querySelector(p).textContent.includes('valorar derivación a reumatología'), P);
+  await page.click(`${P} .hm-casilla input >> nth=4`);   // 4/9
+  await page.click(`${P} .hm-cq >> nth=0 >> .sq-btn.si`);
+  await page.click(`${P} .hm-cq >> nth=1 >> .sq-btn.si`);
+  r.porCuestionario = await page.evaluate(p => document.querySelector(p).textContent.includes('Un punto por debajo del corte'), P);
+  r.urgSinPlegar = await page.$$eval(`${P} .sq2-urg`, els => els.length) === 3;
+  await page.click(`${P} #sq2_hm_v_ojo .sq-btn.si`);
+  r.urgencia = await page.isVisible('#sistemicoAlert .urgencia-alert');
+  await page.click(`${P} #sq2_hm_v_ojo .sq-btn.no`);
+  await page.click(`${P} #sq2_hm_s_neumo .sq-btn.si`);
+  r.menorSolo = await page.evaluate(p => document.querySelector(`${p} [data-hm-vascular]`).textContent.includes('por sí solo es un hallazgo'), P);
+  await page.click(`${P} #sq2_hm_s_varices .sq-btn.si`);
+  r.dosMenores = await page.evaluate(p => document.querySelector(`${p} [data-hm-vascular]`).textContent.includes('derivación preferente a genética'), P);
+  // 4b: el aviso en los tests de laxitud de ro4
+  await page.evaluate(() => { state.activeHypotheses = ['ro4']; goToPhase('4b'); });
+  await page.waitForTimeout(200);
+  r.avisos = await page.$$eval('#hypcard_ro4 .hm-aviso-test', els => els.length);
+  // Fase 5: el recuadro
+  await page.evaluate(() => { buildResults(); goToPhase(5); });
+  await page.waitForTimeout(200);
+  r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .hm-fase5')?.textContent || ''; return t.includes('Sospecha') && t.includes('Ejercicio graduado') && t.includes('derivación preferente a genética'); });
+  // 320 px: fase 1 y fase 2 sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#acc_transversal_hipermovilidad .sistema-accordion-header');
+  await page.waitForTimeout(150);
+  r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  // Quitar la marca quita el sistema
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
+  r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_hipermovilidad') && !document.getElementById('tab_transversal_hipermovilidad'));
+  r.ok = r.subtipoOculto && r.subtipoVisible && r.subtipoOcultoSospecha && r.tab && r.cuestionario === 5 && r.hag && r.porCuestionario
+    && r.urgSinPlegar && r.urgencia && r.menorSolo && r.dosMenores && r.avisos === 3 && r.fase5 && r.ancho1 && r.ancho2 && r.sinSistema;
+  return r;
+}
+
 async function checkDerivacionVascular(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
   await abrirApp(page);
@@ -4327,6 +4398,13 @@ const SECCIONES = [
     const r = await checkLado(page);
     console.log(`  ${r.ok ? '✓' : '✗'} sexo se guarda y se borra con un segundo toque; lado aparece al elegir región, «Central» solo en columna; todo cabe a 320 px`);
     if (!r.ok) console.log('\nLado afectado:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'hipermovilidad', titulo: 'Hipermovilidad / Ehlers-Danlos (Fase P, rodilla):', run: async ({ page }) => {
+    const r = await checkHipermovilidad(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta, cribado con cuestionario y Beighton, urgencias sin plegar, regla vascular, aviso 4b, fase 5 y 320 px`);
+    if (!r.ok) console.log('\nHipermovilidad:', JSON.stringify(r));
     return r.ok;
   } },
 
