@@ -479,6 +479,8 @@ async function checkSilueta(page) {
     nota: document.querySelector('.sil-nota').textContent,
     // Sin saltos: la figura siempre a la misma distancia del inicio del bloque; la fila del sexo cabe en su alto
     alto: Math.round(document.querySelector('.sil-lienzo').getBoundingClientRect().top - document.getElementById('siluetaRegion').getBoundingClientRect().top),
+    // …y la misma altura con las dos figuras, así que lo de debajo (lado, lista) tampoco se mueve
+    altoLienzo: Math.round(document.querySelector('.sil-lienzo').getBoundingClientRect().height),
     notaCabe: (() => {
       const fila = document.querySelector('.sil-sexo-fila').getBoundingClientRect();
       return [...document.querySelectorAll('.sil-sexo-fila > *')].every(el => { const c = el.getBoundingClientRect(); return c.top >= fila.top - 1 && c.bottom <= fila.bottom + 1 && c.right <= fila.right + 1; });
@@ -488,8 +490,8 @@ async function checkSilueta(page) {
     tarjeta: document.querySelector('.region-card.selected')?.dataset.region || '',
     botonLado: document.querySelector('#lado .option-btn.selected')?.textContent || '',
   }));
-  const altos = new Set(), cabe = [];
-  const estado = async () => { const e = await estadoSinSalto(); altos.add(e.alto); cabe.push(e.notaCabe); return e; };
+  const altos = new Set(), altosLienzo = new Set(), figuras = new Set(), cabe = [];
+  const estado = async () => { const e = await estadoSinSalto(); altos.add(e.alto); altosLienzo.add(e.altoLienzo); figuras.add(e.figura); cabe.push(e.notaCabe); return e; };
   const inicio = await estado();
   r.figuraDelSexo = inicio.figura === 'mujer' && inicio.sexoSilueta === 'Mujer' && inicio.nota === '' && inicio.texto === 'Toca la zona en la silueta';
   // A 320 px: zonas de 44 px, dentro de la pantalla y sin pisarse; nada desborda
@@ -545,8 +547,8 @@ async function checkSilueta(page) {
   e = await estado();
   r.sexoDesdeFase1 = e.sexo === 'Mujer' && e.sexoSilueta === 'Mujer' && e.figura === 'mujer' && e.nota === '';
   await estado();
-  r.sinSaltos = altos.size === 1 && cabe.every(Boolean);
-  if (!r.sinSaltos) r.altos = [...altos];
+  r.sinSaltos = altos.size === 1 && altosLienzo.size === 1 && figuras.size === 2 && cabe.every(Boolean);
+  if (!r.sinSaltos) r.altos = [...altos, '|', ...altosLienzo];
   // Tema claro: los colores de la silueta salen de sus variables
   r.tema = await page.evaluate(() => {
     const raiz = document.documentElement, antes = raiz.getAttribute('data-theme');
@@ -4633,7 +4635,7 @@ const SECCIONES = [
 
   { id: 'silueta', titulo: 'Silueta de la fase 2 (región y lado de un toque, 320 px):', run: async ({ page }) => {
     const r = await checkSilueta(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el sexo es el mismo en las fases 1 y 2 (se cambia y se quita desde cualquiera) y la figura lo sigue; la figura no salta al cambiar el sexo ni el lado; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el sexo es el mismo en las fases 1 y 2 (se cambia y se quita desde cualquiera) y la figura lo sigue; la figura no salta al cambiar el sexo ni el lado, y las dos figuras miden lo mismo de alto; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

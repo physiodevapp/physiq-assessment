@@ -34,6 +34,11 @@ test('silueta: vista posterior, el lado izquierdo del paciente a la izquierda de
   }
 });
 
+test('silueta: las dos figuras tienen la misma proporción (igual de altas en pantalla: cambiar de sexo no mueve lo de debajo)', () => {
+  const { hombre, mujer } = SILUETAS;
+  assert.ok(Math.abs(hombre.caja[2] / hombre.caja[3] - mujer.caja[2] / mujer.caja[3]) < 1e-9);
+});
+
 test('silueta: a la anchura del dibujo (280 px) las zonas de 44 px no se pisan', () => {
   const css = leer('styles.css');
   assert.match(css, /\.sil-lienzo \{[^}]*width: min\(280px, 100%\)/);
