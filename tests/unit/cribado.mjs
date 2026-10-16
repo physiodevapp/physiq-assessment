@@ -51,7 +51,7 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
   const msg = CIF_TREES.lumbar.steps.find(s => s.id === 'lu_step2').options.find(o => o.value === 'vascular').derivacion;
   withState({ region: 'lumbar', treeAnswers: { lu_step1: 'no', lu_step2: 'vascular' } }, () => {
     assert.deepEqual(buildPhysiQPayload().dv, [msg]);
-    assert.ok(buildContextSummaryText().includes(`🩺 DERIVACIÓN MÉDICA (árbol CIF): ${msg}`));
+    assert.ok(buildContextSummaryText().includes(`🩺 DERIVACIÓN MÉDICA: ${msg}`));
     const inf = buildInformeFisioterapiaText();
     assert.ok(inf.includes('Se recomienda valoración médica') && inf.includes(msg));
   });
@@ -59,6 +59,50 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
     assert.deepEqual(buildPhysiQPayload().dv, []);
     assert.ok(!buildContextSummaryText().includes('DERIVACIÓN MÉDICA'));
     assert.ok(!buildInformeFisioterapiaText().includes('Se recomienda valoración médica'));
+  });
+});
+
+// ── `derivacion` en preguntas de la fase 2 (quiste de Tarlov, docs/tarlov.md) ──
+test('cribado: `derivacion` es texto no vacío, nunca junto a `urgencia`; hoy solo l_u5 (quiste de Tarlov) la lleva', () => {
+  const todas = Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).flatMap(s => s.preguntas);
+  const con = [...new Set(todas.filter(q => 'derivacion' in q).map(q => q.id))];
+  assert.deepEqual(con, ['l_u5']);
+  todas.filter(q => 'derivacion' in q).forEach(q => {
+    assert.ok(typeof q.derivacion === 'string' && q.derivacion.trim(), q.id);
+    assert.ok(!q.urgencia, `${q.id}: derivacion y urgencia a la vez`);
+  });
+});
+
+test('l_u5 (Tarlov): SÍ entra en dv, 📋 Notas y 📄 Informe, no en ur; l6 sigue siendo la urgencia', () => {
+  const qs = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_urogenital').preguntas;
+  const u5 = qs.find(q => q.id === 'l_u5'), l6 = qs.find(q => q.id === 'l6');
+  assert.equal(qs.indexOf(u5), qs.indexOf(l6) + 1, 'l_u5 va justo después de l6');
+  assert.ok(l6.urgencia && !l6.derivacion);
+  assert.ok(u5.razonamiento.porque && u5.razonamiento.peso && u5.razonamiento.detalle && u5.razonamiento.fisiologia);
+  withState({ region: 'lumbar', sistemicoAnswers: { l_u5: 'SI' } }, () => {
+    const d = buildPhysiQPayload();
+    assert.deepEqual(d.dv, [u5.derivacion]);
+    assert.deepEqual(d.ur, []);
+    assert.ok(buildContextSummaryText().includes(`🩺 DERIVACIÓN MÉDICA: ${u5.derivacion}`));
+    const inf = buildInformeFisioterapiaText();
+    assert.ok(inf.includes('Se recomienda valoración médica') && inf.includes(u5.derivacion));
+  });
+  withState({ region: 'lumbar', sistemicoAnswers: { l_u5: 'NO' } }, () => {
+    assert.deepEqual(buildPhysiQPayload().dv, []);
+  });
+  // Con una derivación del árbol, primero la del cribado
+  const vasc = CIF_TREES.lumbar.steps.find(s => s.id === 'lu_step2').options.find(o => o.value === 'vascular').derivacion;
+  withState({ region: 'lumbar', sistemicoAnswers: { l_u5: 'SI' }, treeAnswers: { lu_step1: 'no', lu_step2: 'vascular' } }, () => {
+    assert.deepEqual(buildPhysiQPayload().dv, [u5.derivacion, vasc]);
+  });
+});
+
+test('l_u5 (Tarlov): pinta su mensaje 🩺, sin la clase de urgencia', () => {
+  withState({ region: 'lumbar' }, () => {
+    const html = buildSistemaHTML(SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_urogenital'));
+    const fila = html.slice(html.indexOf('id="sq2_l_u5"') - 60, html.indexOf('id="sq2_l_u3a"'));
+    assert.ok(fila.includes('sq2-deriv-msg') && !fila.includes('sq2-urg'));
+    assert.ok(/class="sq2[^"]*sq2-urg[^"]*" id="sq2_l6"/.test(html));
   });
 });
 

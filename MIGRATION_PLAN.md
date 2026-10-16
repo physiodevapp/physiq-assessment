@@ -297,4 +297,5 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
 - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
 - [x] physiq-report: leer `hm` del payload (otro repositorio): `_bloqueHM()` en su `lib/payload.js`, copia literal de `bloqueHMIA()`; un test en cada repositorio fija el mismo texto (2026-10)
 - [ ] Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)
-  - [ ] Tarlov: diseño en `docs/tarlov.md`; las 7 decisiones aceptadas (2026-10); Hulens 2018 y Paredes Mogica 2023 leídos (PDF del usuario). Falta leer StatPearls (Lim y Selbi 2023) antes de implementar
+  - [x] Tarlov: diseño en `docs/tarlov.md`, las 7 decisiones aceptadas y todas las fuentes leídas (2026-10). Implementado: `l_u5` (lumbar, `l_urogenital`) con `derivacion` y razonamiento completo, párrafos nuevos en `l6` y `lu_step1c`, y el campo `derivacion` en las preguntas de la fase 2
+  - [ ] Tarlov: revisión clínica del usuario en la app antes de `main`

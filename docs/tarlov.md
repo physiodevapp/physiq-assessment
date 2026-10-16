@@ -1,6 +1,6 @@
 # Quistes de Tarlov (quistes perineurales sacros) — diseño
 
-Estado: **las 7 recomendaciones aceptadas por el usuario (octubre 2026). Sin código todavía**: según la decisión 7, la implementación espera a leer StatPearls (Lim y Selbi 2023). Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»: Tarlov como contenido de lumbar, no como capa transversal).
+Estado: **implementado (octubre 2026), pendiente de la revisión clínica del usuario en la app antes de `main`.** Las 7 recomendaciones fueron aceptadas, y todas las fuentes, StatPearls incluido, están leídas enteras. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»: Tarlov como contenido de lumbar, no como capa transversal).
 
 Es la segunda «condición especial» después de la hipermovilidad (`docs/hipermovilidad.md`), pero con otra forma: el quiste de Tarlov es una lesión de una región (el sacro), no una condición que cambie la interpretación de todas las regiones. Por eso va en `data/lumbar.js` y no en `data/comun.js`.
 
@@ -17,6 +17,7 @@ Leídas enteras:
 | `Paredes Mogica 2023` | Paredes Mogica JA, Feigenbaum F, Pilitsis JG, Schrot RJ, Oaklander AL, De EJB. Sacral Tarlov perineurial cysts: a systematic review of treatment options. *J Neurosurg Spine* 2024;40(3):375–388 (publicado en línea en 2023). [doi:10.3171/2023.9.SPINE23559](https://doi.org/10.3171/2023.9.SPINE23559) | PDF del usuario | Diagnóstico, manejo conservador (tabla 3), indicaciones de intervención rápida, tejido conectivo, algoritmo (fig. 4) |
 | `Henderson 2017` | Henderson FC Sr, Austin C, Benzel E, et al. Neurological and spinal manifestations of the Ehlers–Danlos syndromes. *Am J Med Genet C Semin Med Genet* 2017;175(1):195–211. [doi:10.1002/ajmg.c.31549](https://doi.org/10.1002/ajmg.c.31549) | PDF del usuario | Tejido conectivo (EDS), patrones clínicos del quiste sintomático (pp. 206–207) |
 | `Isono 1999` | Isono M, Hori S, Konishi Y, et al. Ehlers-Danlos syndrome associated with multiple spinal meningeal cysts—case report. *Neurol Med Chir (Tokyo)* 1999;39(5):380–383. [PubMed 10481443](https://pubmed.ncbi.nlm.nih.gov/10481443/) | PDF del usuario | Comprobar la cita de Paredes Mogica 2023 sobre el Ehlers-Danlos |
+| `Lim y Selbi 2023` | Lim Y, Selbi W. «Tarlov Cyst». StatPearls [Internet], NCBI Bookshelf, última actualización 12 de junio de 2023. [NBK582154](https://www.ncbi.nlm.nih.gov/books/NBK582154/) | PDF del usuario | Fuente de contraste: exploración (dermatomas y miotomas de piernas y periné, reflejos, retención, tono anal), la cauda equina como diagnóstico principal que hay que excluir, complicaciones agudas |
 | `Hulens 2025` | Hulens M, Zajonc P, Bruyninckx F, et al. High prevalence of small-fiber neuropathy in patients with Tarlov cysts. *J Pain Res* 2025;18:2241–2263. [doi:10.2147/JPR.S513705](https://doi.org/10.2147/JPR.S513705) | PMC12050039 | Agravantes en 126 mujeres, SEDh en la cohorte |
 
 Salvedades de lectura:
@@ -38,10 +39,15 @@ Salvedades de lectura:
   - Se cita como descripción, sin dar sus porcentajes como dato propio.
 - **Hulens 2025**: cuestionario propio sin validar, solo mujeres de una consulta de dolor, sin grupo control y sin comprobar que los quistes fueran sintomáticos. Sirve para decir «frecuente en estas pacientes», nunca para dar una sensibilidad.
 
-**Pendientes:**
-1. **Lim y Selbi 2023**, «Tarlov Cyst», StatPearls ([NBK582154](https://www.ncbi.nlm.nih.gov/books/NBK582154/), PMID 35881759). Bookshelf pide un reCAPTCHA y Europe PMC no sirve el capítulo, así que hace falta el PDF. **La implementación espera a leerlo (decisión 7).**
-2. **Goodman 2018**: ¿menciona el quiste de Tarlov o el quiste perineural? Si no, basta con decirlo.
-3. **Opcional**: **Marathe 2022**, Spinal manifestations of Ehlers-Danlos syndrome: a scoping review, *J Neurosurg Spine* 2022;37(6):783–793 ([doi:10.3171/2022.6.SPINE211011](https://doi.org/10.3171/2022.6.SPINE211011)). Con Henderson 2017 e Isono 1999 leídos ya no hace falta para la decisión 4.
+**StatPearls (Lim y Selbi 2023)**, leído entero, no cambia el diseño y añade:
+- La exploración de los dermatomas y miotomas de las piernas y del periné, los reflejos, la retención urinaria y el tono anal, porque es una lesión de motoneurona inferior.
+- En atención primaria o en urgencias, lo principal es descartar la cauda equina, que un quiste grande puede causar. Si se sospecha, se deriva al servicio de columna.
+- La rotura del quiste o una hemorragia dentro de él son raras, pero pueden dar síntomas nuevos, como una radiculopatía, o imitar una cauda equina. Esto refuerza la regla 2 de la cauda equina.
+- **Contradicción con la fuente original**: StatPearls dice que Hulens 2018 encontró más empeoramiento con el Valsalva, pero la tabla 1 del artículo no lo muestra (37 % frente a 29 %, sin diferencia). Se sigue el artículo.
+
+**Goodman 2018 no menciona el quiste de Tarlov** (comprobado por el usuario, octubre 2026).
+
+**Opcional, no leído**: Marathe 2022, Spinal manifestations of Ehlers-Danlos syndrome: a scoping review, *J Neurosurg Spine* 2022;37(6):783–793 ([doi:10.3171/2022.6.SPINE211011](https://doi.org/10.3171/2022.6.SPINE211011)). Con Henderson 2017 e Isono 1999 leídos ya no hace falta para la decisión 4.
 
 ## Lo que dicen las fuentes leídas
 
@@ -188,9 +194,46 @@ En `l_urogenital`, después de `l6`.
 4. **Hipermovilidad: ninguna regla automática**, solo una frase sin cifras.
 5. **Zonas de sacro, cóccix y periné en la tarjeta «Síntomas» (Fase N)**: en otra sesión.
 6. **Quiste ya conocido**: solo texto en el razonamiento de `l_u5`.
-7. **No se implementa hasta leer StatPearls.** Hulens 2018 ya está leído.
+7. **No se implementa hasta leer StatPearls.** Cumplida: Hulens 2018 y StatPearls están leídos.
 
-## Cambios técnicos (cuando se implemente)
+## Implementación (octubre 2026)
+
+- **`data/lumbar.js`**
+  - **`l_u5`**, en `l_urogenital` justo después de `l6`: `alerta: true`, `anatomia: ['sacro']` y `derivacion`, sin `urgencia`.
+  - Su `razonamiento` completo, como las demás preguntas lumbares:
+    - «¿Por qué?» con `porque` y `peso`;
+    - «Ampliar →» con un `detalle` de seis párrafos: qué es y cuántos hay, cómo se presenta, cuánto distingue, por qué se pasa por alto, quiste ya conocido y tejido conectivo;
+    - «Fisiología, paso a paso» con 5 pasos, una nota y una metáfora;
+    - 8 fuentes con cita completa y enlace.
+  - El texto de la pregunta es el del borrador. No pregunta por el Valsalva ni por toser.
+  - **`l6`**: un párrafo «Con qué se confunde» al final del `detalle`, con el quiste de Tarlov, el cambio nuevo y el grupo sin dolor de Henderson 2017. Tres fuentes más.
+  - **`lu_step1c`**: un párrafo al final del `detalle`: la exploración y la electromiografía de rutina no cubren S2–S4. Navegación y opciones sin cambios, así que el snapshot no cambia.
+- **Campo `derivacion` en las preguntas de la fase 2** (`app.js`), según la decisión 2:
+  - el mensaje `🩺` bajo la pregunta, solo después de un SÍ (`.sq2-deriv-msg`, en naranja), y un aviso emergente;
+  - un aviso «Derivación médica» en la fase 2. Si todos los SÍ son urgencias o derivaciones, el aviso genérico «no exige derivación automática» no sale, porque las contradiría;
+  - `getDerivacionesCribado()` y `getDerivacionesMedicas()` (primero las del cribado, después las del árbol) alimentan el payload `dv[]`, la fase 5, `📋 Notas` y `📄 Informe`;
+  - la línea de `📋 Notas` pasa de «🩺 DERIVACIÓN MÉDICA (árbol CIF):» a «🩺 DERIVACIÓN MÉDICA:», porque ahora la comparten las dos fuentes.
+- **La fase 6 no se bloquea** con la derivación del cribado (decisión de implementación, octubre 2026). Es preferente y no urgente, y Paredes Mogica 2023 pide empezar con el manejo conservador. `plan.js` sigue bloqueando solo con urgencias y derivaciones del árbol.
+- **Fallo previo corregido de paso**: cada pregunta de la fase 2 se pinta dos veces con el mismo `id` (acordeón móvil y panel de escritorio).
+  - `answered-si` solo se ponía en la primera copia, la del acordeón, que en escritorio está oculta. Por eso en escritorio no se veía el mensaje 🚨 de las urgencias tras un SÍ.
+  - `_marcarRespuestaSist()` marca ahora el botón y la clase en las dos copias, también al restaurar la sesión (`_repintarCribado()`).
+- **Referencias**: 8 entradas nuevas en `data/referencias.js` (las de la tabla salvo Isono 1999, que no se cita en `data/`) y `docs/referencias.md` regenerado.
+- **Pruebas**:
+  - unitarias en `tests/unit/cribado.mjs`:
+    - `derivacion` solo en `l_u5` y nunca junto a `urgencia`;
+    - un SÍ llega a `dv`, `📋 Notas` y `📄 Informe`, pero no a `ur`;
+    - el orden es primero el cribado y después el árbol;
+    - `l_u5` va tras `l6`, que sigue urgente;
+    - el mensaje 🩺 se pinta sin la clase de urgencia;
+  - `tests/unit/anatomia.mjs`: 25 preguntas lumbares con anatomía;
+  - prueba de humo, sección `derivacion`:
+    - «¿Por qué?» y «Ampliar» con la fisiología;
+    - el mensaje 🩺 solo con SÍ;
+    - el aviso sin el genérico;
+    - `l6` sigue urgente;
+    - la fase 5 muestra la derivación.
+
+## Cambios técnicos previstos (antes de implementar)
 
 - `data/lumbar.js`:
   - pregunta `l_u5` con `razonamiento` y `derivacion`;
