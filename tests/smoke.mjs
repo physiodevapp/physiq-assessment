@@ -455,12 +455,10 @@ const razonEstado = page => page.evaluate(() => {
   };
 });
 
-// Lado afectado (fase 2): aparece al elegir región, «Central» solo en columna,
-// se guarda en el estado y cabe a 320 px sin desbordar.
-// Silueta de la fase 2 (lib/silueta.js): figura según el sexo de la fase 1,
-// un toque elige región y lado, el botón cambia la figura sin tocar el sexo,
-// la lista sigue funcionando, el cambio de región pide confirmación pasada la
-// fase 2 y las zonas caben sin pisarse a 320 px.
+// Silueta de la fase 2 (lib/silueta.js): figura según el sexo, que es el
+// mismo dato en las fases 1 y 2; un toque elige región y lado; la lista sigue
+// funcionando, el cambio de región pide confirmación pasada la fase 2, la
+// figura no salta y las zonas caben sin pisarse a 320 px.
 async function checkSilueta(page) {
   await page.setViewportSize({ width: 320, height: 700 });
   await abrirApp(page);
@@ -475,12 +473,16 @@ async function checkSilueta(page) {
   const estadoSinSalto = () => page.evaluate(() => ({
     region: state.region, lado: state.lado, sexo: state.sexo,
     texto: document.querySelector('.sil-elegida-texto').textContent,
-    figura: document.querySelector('.sil-figura').textContent.trim(),
+    figura: document.querySelector('.sil-lienzo').dataset.figura,
+    sexoSilueta: document.querySelector('.sil-sexo .option-btn.selected')?.dataset.sexo || '',
+    sexoFase1: document.querySelector('#sexo .option-btn.selected')?.textContent.trim() || '',
     nota: document.querySelector('.sil-nota').textContent,
-    // Sin saltos: la figura siempre a la misma distancia del inicio del bloque, y el texto junto al botón en dos líneas como mucho
+    // Sin saltos: la figura siempre a la misma distancia del inicio del bloque; la fila del sexo cabe en su alto
     alto: Math.round(document.querySelector('.sil-lienzo').getBoundingClientRect().top - document.getElementById('siluetaRegion').getBoundingClientRect().top),
-    notaCabe: document.querySelector('.sil-nota').getBoundingClientRect().height <= 44
-      && document.querySelector('.sil-figura-fila').getBoundingClientRect().height <= 44,
+    notaCabe: (() => {
+      const fila = document.querySelector('.sil-sexo-fila').getBoundingClientRect();
+      return [...document.querySelectorAll('.sil-sexo-fila > *')].every(el => { const c = el.getBoundingClientRect(); return c.top >= fila.top - 1 && c.bottom <= fila.bottom + 1 && c.right <= fila.right + 1; });
+    })(),
     on: [...document.querySelectorAll('.sil-zona-on')].map(b => `${b.dataset.region}|${b.dataset.lado}`).sort(),
     aMedias: [...document.querySelectorAll('.sil-zona-region')].map(b => `${b.dataset.region}|${b.dataset.lado}`).sort(),
     tarjeta: document.querySelector('.region-card.selected')?.dataset.region || '',
@@ -489,7 +491,7 @@ async function checkSilueta(page) {
   const altos = new Set(), cabe = [];
   const estado = async () => { const e = await estadoSinSalto(); altos.add(e.alto); cabe.push(e.notaCabe); return e; };
   const inicio = await estado();
-  r.figuraDelSexo = inicio.figura === 'Femenina' && inicio.nota === 'Según el sexo de la fase 1.' && inicio.texto === 'Toca la zona en la silueta';
+  r.figuraDelSexo = inicio.figura === 'mujer' && inicio.sexoSilueta === 'Mujer' && inicio.nota === '' && inicio.texto === 'Toca la zona en la silueta';
   // A 320 px: zonas de 44 px, dentro de la pantalla y sin pisarse; nada desborda
   r.cabe320 = await page.evaluate(() => {
     const cajas = [...document.querySelectorAll('.sil-zona')].map(b => b.getBoundingClientRect());
@@ -511,11 +513,15 @@ async function checkSilueta(page) {
   await page.click(zona('lumbar', ''));
   e = await estado();
   r.columna = e.region === 'lumbar' && e.lado === '' && e.texto === 'Lumbar' && e.on.join() === 'lumbar|';
-  // El botón cambia la figura, no el sexo; la región sigue marcada
-  await page.click('#siluetaRegion .sil-figura');
+  // El sexo de la silueta es el de la fase 1: lo cambia, la figura lo sigue y la región sigue marcada
+  await page.click('#siluetaRegion .sil-sexo [data-sexo="Hombre"]');
   e = await estado();
-  r.cambiaFigura = e.figura === 'Masculina' && e.sexo === 'Mujer' && e.nota === 'Solo cambia el dibujo; en la fase 1 sigue «Mujer».'
-    && e.on.join() === 'lumbar|' && await page.evaluate(() => document.activeElement?.classList.contains('sil-figura'));
+  r.sexoDesdeSilueta = e.sexo === 'Hombre' && e.sexoFase1 === 'Hombre' && e.sexoSilueta === 'Hombre' && e.figura === 'hombre'
+    && e.on.join() === 'lumbar|' && await page.evaluate(() => document.activeElement?.dataset.sexo === 'Hombre');
+  // Segundo toque: lo quita en las dos fases (figura masculina por defecto, «Sin indicar»)
+  await page.click('#siluetaRegion .sil-sexo [data-sexo="Hombre"]');
+  e = await estado();
+  r.sexoSegundoToque = e.sexo === '' && e.sexoFase1 === '' && e.sexoSilueta === '' && e.figura === 'hombre' && e.nota === 'Sin indicar';
   // La lista: región sin lado, sus dos zonas a medias
   await page.click('.region-card[data-region="codo"]');
   e = await estado();
@@ -532,28 +538,12 @@ async function checkSilueta(page) {
   await page.click('#confirmAction');
   e = await estado();
   r.confirma = e.region === 'hombro' && e.lado === 'Derecho' && e.texto === 'Hombro (derecho)';
-  // Cambiar el sexo en la fase 1 anula la figura elegida a mano (ahora masculina con sexo Mujer)
-  await page.evaluate(() => goToPhase(1));
-  await page.click('#sexo .option-btn:has-text("Hombre")');
-  await page.evaluate(() => goToPhase(2));
-  e = await estado();
-  r.sexoAnulaFigura = e.figura === 'Masculina' && e.nota === 'Según el sexo de la fase 1.' && e.sexo === 'Hombre';
+  // Y al revés: el sexo marcado en la fase 1 llega a la silueta
   await page.evaluate(() => goToPhase(1));
   await page.click('#sexo .option-btn:has-text("Mujer")');
   await page.evaluate(() => goToPhase(2));
-  r.sigueAlSexo = (await estado()).figura === 'Femenina';
-  // Sin sexo indicado: cambiar la figura ofrece «Indicar sexo →», que lleva al sexo sin rellenarlo
-  await page.evaluate(() => goToPhase(1));
-  await page.click('#sexo .option-btn:has-text("Mujer")');
-  await page.evaluate(() => goToPhase(2));
-  await page.click('#siluetaRegion .sil-figura');
   e = await estado();
-  const enlace = '#siluetaRegion .sil-nota-enlace';
-  r.enlaceSinSexo = e.figura === 'Femenina' && e.nota === 'Solo cambia el dibujo. Indicar sexo →' && await page.isVisible(enlace);
-  await page.click(enlace);
-  await page.waitForFunction(() => state.currentPhase === 1 && document.getElementById('sexo').classList.contains('flash-destacar'));
-  r.enlaceLleva = await page.evaluate(() => state.sexo === '' && document.activeElement?.closest('#sexo') !== null);
-  await page.evaluate(() => goToPhase(2));
+  r.sexoDesdeFase1 = e.sexo === 'Mujer' && e.sexoSilueta === 'Mujer' && e.figura === 'mujer' && e.nota === '';
   await estado();
   r.sinSaltos = altos.size === 1 && cabe.every(Boolean);
   if (!r.sinSaltos) r.altos = [...altos];
@@ -570,6 +560,8 @@ async function checkSilueta(page) {
   return r;
 }
 
+// Lado afectado (fase 2): aparece al elegir región, «Central» solo en columna,
+// se guarda en el estado y cabe a 320 px sin desbordar.
 async function checkLado(page) {
   await page.setViewportSize({ width: 320, height: 640 });
   await abrirApp(page);
@@ -4560,7 +4552,7 @@ const SECCIONES = [
 
   { id: 'silueta', titulo: 'Silueta de la fase 2 (región y lado de un toque, 320 px):', run: async ({ page }) => {
     const r = await checkSilueta(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el botón cambia la figura sin tocar el sexo, y cambiar el sexo en la fase 1 anula esa elección; sin sexo, «Indicar sexo →» lleva al campo sin rellenarlo; la figura no salta al cambiar el texto ni el lado; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el sexo es el mismo en las fases 1 y 2 (se cambia y se quita desde cualquiera) y la figura lo sigue; la figura no salta al cambiar el sexo ni el lado; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

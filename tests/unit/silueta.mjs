@@ -47,23 +47,16 @@ test('silueta: a la anchura del dibujo (280 px) las zonas de 44 px no se pisan',
   }
 });
 
-test('silueta: la figura sale del sexo de la fase 1 y el botón la cambia sin tocar el sexo', () => {
+test('silueta: la figura sale del sexo, que es el mismo dato en las fases 1 y 2', () => {
   assert.equal(S.figuraSilueta('Mujer'), 'mujer');
   assert.equal(S.figuraSilueta('Hombre'), 'hombre');
   assert.equal(S.figuraSilueta(''), 'hombre', 'sin sexo indicado, la masculina');
-  assert.equal(S.figuraSilueta('Hombre', 'mujer'), 'mujer');
-  // Siempre hay texto (la fila no cambia de alto); `cambiada` lo pinta en azul
-  assert.deepEqual(S.notaFigura('Mujer', ''), { texto: 'Según el sexo de la fase 1.', enlace: false, cambiada: false });
-  assert.deepEqual(S.notaFigura('Mujer', 'mujer'), { texto: 'Según el sexo de la fase 1.', enlace: false, cambiada: false }, 'elegir la misma figura no avisa');
-  assert.deepEqual(S.notaFigura('', ''), { texto: 'Sin sexo en la fase 1.', enlace: false, cambiada: false });
-  assert.deepEqual(S.notaFigura('', 'hombre'), { texto: 'Sin sexo en la fase 1.', enlace: false, cambiada: false });
-  assert.deepEqual(S.notaFigura('Mujer', 'hombre'), { texto: 'Solo cambia el dibujo; en la fase 1 sigue «Mujer».', enlace: false, cambiada: true });
-  assert.deepEqual(S.notaFigura('', 'mujer'), { texto: 'Solo cambia el dibujo.', enlace: true, cambiada: true }, 'sin sexo se ofrece indicarlo en la fase 1');
-  // Cortos: caben en dos líneas junto al botón a 320 px
-  for (const [s, e] of [['Mujer', ''], ['', ''], ['Hombre', 'mujer'], ['Mujer', 'hombre'], ['', 'mujer']]) {
-    const { texto, enlace } = S.notaFigura(s, e);
-    assert.ok((texto + (enlace ? ' Indicar sexo →' : '')).length <= 52, texto);
-  }
+  assert.equal(S.notaSexo(''), 'Sin indicar');
+  assert.equal(S.notaSexo('Mujer'), '');
+  const app = leer('app.js');
+  assert.ok(!/_figuraElegida/.test(app), 'no hay figura elegida aparte del sexo');
+  // El sexo de la silueta pasa por el botón de la fase 1 (mismo dato y reglas)
+  assert.match(app, /function elegirSexoSilueta\(valor\) \{[\s\S]*?selectOption\('sexo', btn, valor\)/);
 });
 
 test('silueta: estado de cada zona y lado que queda al tocarla', () => {
@@ -92,8 +85,7 @@ test('silueta: el texto confirma región y lado concordados', () => {
 
 test('silueta: cada zona es un botón con nombre que llama a una función expuesta en window', () => {
   const app = leer('app.js'), html = leer('index.html');
-  assert.match(app, /tocarZonaSilueta, alternarFiguraSilueta, irASexo,/);
-  assert.match(app, /if \(groupId === 'sexo'\) _figuraElegida = '';/, 'cambiar el sexo anula la figura elegida a mano');
+  assert.match(app, /tocarZonaSilueta, elegirSexoSilueta,/);
   for (const [nombre, fig] of Object.entries(SILUETAS)) {
     const h = S.siluetaHTML(fig, nombre);
     const botones = h.match(/<button type="button" class="sil-zona"[^>]*>/g) || [];
@@ -102,8 +94,9 @@ test('silueta: cada zona es un botón con nombre que llama a una función expues
       assert.match(b, /aria-label="[^"]+"/);
       assert.match(b, /onclick="tocarZonaSilueta\('[a-z_]+', '(Izquierdo|Derecho|)'\)"/);
     }
-    assert.match(h, /onclick="alternarFiguraSilueta\(\)"/);
-    assert.match(h, nombre === 'mujer' ? /aria-label="Figura femenina: cambiar a la masculina"/ : /aria-label="Figura masculina: cambiar a la femenina"/);
+    for (const s of ['Mujer', 'Hombre']) assert.match(h, new RegExp(`data-sexo="${s}" aria-pressed="false" onclick="elegirSexoSilueta\\('${s}'\\)"`));
+    assert.match(h, /role="group" aria-labelledby="silSexoEtq"/);
+    assert.match(h, new RegExp(`data-figura="${nombre}"`));
     assert.match(h, /react-native-body-highlighter \(licencia MIT\)/);
     for (const z of fig.zonas) assert.ok(html.includes(`class="region-card" data-region="${z.region}"`), `lista: ${z.region}`);
   }
