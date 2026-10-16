@@ -177,6 +177,12 @@ export const TIEMPOS_TEJIDO = {
               nota: '2 semanas de inmovilización estricta y movilidad pasiva protegida hasta la 6.ª (grado A en roturas pequeñas o medianas); 6 semanas de inmovilización si preocupa la cicatrización. A las 6 semanas la reparación tiene solo un 19–30 % de la resistencia normal. Manda el protocolo del cirujano.' },
             { id: 'manguito_programa', mide: 'programa', nombre: 'Manguito rotador reparado, rehabilitación', desde: 5, hasta: 5, fuentes: ['Thigpen 2016'],
               nota: 'Movilidad activa desde la 6.ª semana, fuerza progresiva desde la 12.ª y fortalecimiento avanzado de la 20.ª a la 26.ª, solo para trabajo pesado o deporte por encima de la cabeza. El trabajo específico de deporte o trabajo puede empezar hacia los 4–5 meses; el tendón no se acerca a su resistencia normal hasta los 6 meses como pronto. Consenso de expertos (nivel V).' },
+            // Fila 12 (2026-10): Rubinger 2020 (revisión sistemática, 40 estudios, 1270 pacientes),
+            // PDF del usuario leído: tras la reparación, el 89 % vuelve al trabajo sin cambiar de
+            // tareas, a las 14,37 semanas de media (17 estudios); «a range between 3 and 4 months,
+            // with variation dependent on job demands». 3–4 meses = «2–3 m» a «3–6 m» (4–5).
+            { id: 'biceps_distal_reparado', mide: 'deporte', nombre: 'Bíceps distal, reparado', desde: 4, hasta: 5, fuentes: ['Rubinger 2020'],
+              nota: 'Vuelta al trabajo a las 14 semanas de media (3–4 meses, según lo exigente que sea el trabajo); el 89 % vuelve sin cambiar de tareas. Mide la vuelta al trabajo, no al deporte.' },
           ],
         },
       ],
@@ -740,8 +746,9 @@ export const TIEMPOS_TEJIDO = {
     ro11: [{ id: 'fx_rotula_conservador', posq: false }, { id: 'fx_meseta_conservador', posq: false }, { id: 'fx_meseta_cirugia', posq: true }],
     co1: ['epicondilalgia_lateral'],
     co2: ['epicondilalgia_medial'],
-    // La barra general (biología del tendón, Wu 2017), sin los subtipos de Aquiles y manguito
-    co7: [{ id: 'tendon_rotura', soloFila: true }],
+    // Sin cirugía, la barra general (biología del tendón, Wu 2017), sin los subtipos de Aquiles y
+    // manguito; operado, el subtipo del bíceps distal (Rubinger 2020)
+    co7: [{ id: 'tendon_rotura', soloFila: true, posq: false }, { id: 'biceps_distal_reparado', posq: true }],
     co4: ['codo_lcc'],
     // Latigazo: el plazo de la guía es el del agudo
     ce5: [{ id: 'wad_agudo', cronologia: 'Agudo (<6 semanas)' }],

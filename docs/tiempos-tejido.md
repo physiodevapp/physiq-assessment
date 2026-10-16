@@ -321,7 +321,7 @@ Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; po
 | `ro11` fracturas de rótula o meseta | Sin cirugía: rótula y meseta; posquirúrgico: meseta operada |
 | `co1`, `co2` epicondilalgia lateral / medial | Epicondilalgia lateral / medial |
 | `co4` ligamento colateral cubital | LCC del codo, sin cirugía (fila 12) |
-| `co7` rotura distal del bíceps | Rotura / reparación de tendón (biología, Wu 2017), sin los subtipos de Aquiles y manguito (`soloFila`) |
+| `co7` rotura distal del bíceps | Sin cirugía: rotura / reparación de tendón (biología, Wu 2017), sin los subtipos de Aquiles y manguito (`soloFila`); posquirúrgico: bíceps distal reparado (Rubinger 2020) |
 | `tp1` esguince lateral | Sin cirugía: grados I–III; posquirúrgico: reparación |
 | `tp2` sindesmosis | Sin cirugía / operada |
 | `tp3` rotura del Aquiles | Sin cirugía / reparado |
@@ -340,7 +340,7 @@ Revisada por el usuario (2026-10) y en `main` (PR 423).
 
 ## Fila 12: hipótesis con plazo en su propia pauta (2026-10)
 
-Doce filas nuevas, cada una con su fuente releída en la sesión buscando el plazo (PDF del usuario). Casi todas miden la duración del programa (`programa`), no la cicatrización:
+Doce filas y un subtipo nuevos, cada una con su fuente releída en la sesión buscando el plazo (PDF del usuario). Casi todas miden la duración del programa (`programa`), no la cicatrización:
 
 | Fila | Grupo | Barra | Fuente y plazo |
 |---|---|---|---|
@@ -355,7 +355,8 @@ Doce filas nuevas, cada una con su fuente releída en la sesión buscando el pla
 | `wad_agudo` | Columna | evolución, 0–3 m | Blanpied 2017: recuperación esperada en 2–3 meses; la mitad al año |
 | `mareo_cervicogenico` | Columna | 5–8 s | Reid 2014: 2–6 sesiones en 6 semanas |
 | `osgood_schlatter` | Hueso | 2–3 m | Rathleff 2020: programa de 12 semanas; vuelta al deporte del 67 % a los 6 meses |
+| `biceps_distal_reparado` | Tendón (subtipo de rotura) | 2–3 m a 3–6 m | Rubinger 2020: vuelta al trabajo a las 14 semanas de media (3–4 meses); solo posquirúrgico |
 | `osteitis_pubis` | Hueso | vuelta al deporte, 2–3 m a 3–6 m | Schöberl 2017: 73–103 días de media |
 
-Pendiente: un subtipo «Bíceps distal» para `co7`.
+Sin fuente para el bíceps distal sin cirugía, ni para su vuelta al deporte (Boufadel 2025, 6,3 meses de media según el resumen, sin leer).
 
