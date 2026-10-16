@@ -15,6 +15,8 @@ Leídas enteras:
 | `Baker 2018` | Baker M, Wilson M, Wallach S. Urogenital symptoms in women with Tarlov cysts. *J Obstet Gynaecol Res* 2018;44(9):1817–1823. [doi:10.1111/jog.13711](https://doi.org/10.1111/jog.13711) | PMC6150833 | Síntomas urogenitales y urodinámica en 65 mujeres |
 | `Hulens 2018` | Hulens MA, Dankaerts W, Rasschaert R, Bruyninckx F, Willaert ML, Vereecke C, Vansant G. Can patients with symptomatic Tarlov cysts be differentiated from patients with specific low back pain based on comprehensive history taking? *Acta Neurochir (Wien)* 2018;160(4):839–844. [doi:10.1007/s00701-018-3494-z](https://doi.org/10.1007/s00701-018-3494-z) | PDF del usuario | **El único estudio con grupo control** (tabla 1) |
 | `Paredes Mogica 2023` | Paredes Mogica JA, Feigenbaum F, Pilitsis JG, Schrot RJ, Oaklander AL, De EJB. Sacral Tarlov perineurial cysts: a systematic review of treatment options. *J Neurosurg Spine* 2024;40(3):375–388 (publicado en línea en 2023). [doi:10.3171/2023.9.SPINE23559](https://doi.org/10.3171/2023.9.SPINE23559) | PDF del usuario | Diagnóstico, manejo conservador (tabla 3), indicaciones de intervención rápida, tejido conectivo, algoritmo (fig. 4) |
+| `Henderson 2017` | Henderson FC Sr, Austin C, Benzel E, et al. Neurological and spinal manifestations of the Ehlers–Danlos syndromes. *Am J Med Genet C Semin Med Genet* 2017;175(1):195–211. [doi:10.1002/ajmg.c.31549](https://doi.org/10.1002/ajmg.c.31549) | PDF del usuario | Tejido conectivo (EDS), patrones clínicos del quiste sintomático (pp. 206–207) |
+| `Isono 1999` | Isono M, Hori S, Konishi Y, et al. Ehlers-Danlos syndrome associated with multiple spinal meningeal cysts—case report. *Neurol Med Chir (Tokyo)* 1999;39(5):380–383. [PubMed 10481443](https://pubmed.ncbi.nlm.nih.gov/10481443/) | PDF del usuario | Comprobar la cita de Paredes Mogica 2023 sobre el Ehlers-Danlos |
 | `Hulens 2025` | Hulens M, Zajonc P, Bruyninckx F, et al. High prevalence of small-fiber neuropathy in patients with Tarlov cysts. *J Pain Res* 2025;18:2241–2263. [doi:10.2147/JPR.S513705](https://doi.org/10.2147/JPR.S513705) | PMC12050039 | Agravantes en 126 mujeres, SEDh en la cohorte |
 
 Salvedades de lectura:
@@ -27,16 +29,19 @@ Salvedades de lectura:
   - Murphy 2023 (neurorradiología intervencionista) pide como primera línea la aspiración con sellante de fibrina.
   - Paredes Mogica 2023 desaconseja esa técnica (p. 380) y recomienda la cirugía de envoltura, que hace Feigenbaum, uno de sus autores.
   - Por eso **PhysiQ no nombra ninguna técnica** (decisión 3) y de las dos usa solo la clínica, el diagnóstico y el manejo conservador.
-- **Paredes Mogica 2023** habla de «asociaciones fuertes confirmadas» con el Ehlers-Danlos o el Marfan (p. 380), pero la cita es un caso clínico (Isono 1999, ref. 25). No se usa como dato (ver «Relación con la hipermovilidad»).
+- **Paredes Mogica 2023** habla de «asociaciones fuertes confirmadas» con el Ehlers-Danlos o el Marfan (p. 380), pero la referencia que da es Isono 1999: un solo caso. No se usa como dato (ver «Relación con la hipermovilidad»).
+  - Es una mujer de 40 años con Ehlers-Danlos de tipo VI (cifoescoliótico, no el hipermóvil), con quistes meníngeos sacros múltiples que se extendían a la pelvis.
+  - Sus propios autores escriben que la asociación entre quistes meníngeos y Ehlers-Danlos «no se ha encontrado» y que solo es «posible» (pp. 382–383).
+- **Henderson 2017** es una revisión narrativa del grupo de trabajo del Consorcio Internacional sobre el Ehlers-Danlos, sin método sistemático.
+  - Su sección sobre el quiste de Tarlov (pp. 206–207) apoya sus cifras en una revisión **no publicada** de 756 pacientes del Johns Hopkins, y no da porcentajes del resto.
+  - Su primer autor es neurocirujano y cirujano de estos quistes, como Feigenbaum (Feigenbaum y Henderson 2006, ref. de su p. 207).
+  - Se cita como descripción, sin dar sus porcentajes como dato propio.
 - **Hulens 2025**: cuestionario propio sin validar, solo mujeres de una consulta de dolor, sin grupo control y sin comprobar que los quistes fueran sintomáticos. Sirve para decir «frecuente en estas pacientes», nunca para dar una sensibilidad.
 
 **Pendientes:**
 1. **Lim y Selbi 2023**, «Tarlov Cyst», StatPearls ([NBK582154](https://www.ncbi.nlm.nih.gov/books/NBK582154/), PMID 35881759). Bookshelf pide un reCAPTCHA y Europe PMC no sirve el capítulo, así que hace falta el PDF. **La implementación espera a leerlo (decisión 7).**
 2. **Goodman 2018**: ¿menciona el quiste de Tarlov o el quiste perineural? Si no, basta con decirlo.
-3. **Opcionales** (relación con la Fase P), sin texto completo abierto:
-   - **Henderson 2017**: Henderson FC, et al. Neurological and spinal manifestations of the Ehlers-Danlos syndromes. *Am J Med Genet C Semin Med Genet* 2017;175(1):195–211. [doi:10.1002/ajmg.c.31549](https://doi.org/10.1002/ajmg.c.31549) · [PubMed 28220607](https://pubmed.ncbi.nlm.nih.gov/28220607/). Su resumen dice que la asociación con los quistes de Tarlov es anecdótica, sin datos epidemiológicos.
-   - **Marathe 2022**: Marathe N, Lohkamp LN, Fehlings MG. Spinal manifestations of Ehlers-Danlos syndrome: a scoping review. *J Neurosurg Spine* 2022;37(6):783–793. [doi:10.3171/2022.6.SPINE211011](https://doi.org/10.3171/2022.6.SPINE211011) · [PubMed 35986728](https://pubmed.ncbi.nlm.nih.gov/35986728/).
-   - (Solo para comprobar la frase de Paredes Mogica) **Isono 1999**: Isono M, et al. Ehlers-Danlos syndrome associated with multiple spinal meningeal cysts—case report. *Neurol Med Chir (Tokyo)* 1999;39(5):380–383 · [PubMed 10481443](https://pubmed.ncbi.nlm.nih.gov/10481443/).
+3. **Opcional**: **Marathe 2022**, Spinal manifestations of Ehlers-Danlos syndrome: a scoping review, *J Neurosurg Spine* 2022;37(6):783–793 ([doi:10.3171/2022.6.SPINE211011](https://doi.org/10.3171/2022.6.SPINE211011)). Con Henderson 2017 e Isono 1999 leídos ya no hace falta para la decisión 4.
 
 ## Lo que dicen las fuentes leídas
 
@@ -84,6 +89,10 @@ Salvedades de lectura:
 - **Signos** (cohorte de Murphy, en Murphy 2023, tabla 2):
   - aquíleo abolido (61 %), debilidad de la flexión plantar (41 %), hipoestesia S2 (64 %) y S3–S5 (46 %);
   - el pie caído es raro (2 de 213).
+- **Patrones clínicos** (Henderson 2017, p. 207, sobre una revisión no publicada; sin cifras propias):
+  - el más frecuente, dolor sacro que empeora sentado y de pie y mejora tumbado, con dolor pélvico y perineal en los dermatomas S2–S5 y ciática S1–S2;
+  - un tercio con síntomas de vejiga e intestino y alteraciones sensitivas S2–S4, sin ciática;
+  - **un grupo pequeño con disfunción de vejiga e intestino y pérdida sensitiva sacra, sin dolor.** La pregunta `l_u5` no lo recoge, porque pregunta por el dolor; ese paciente entra por `l6` si es nuevo y, si es antiguo, por la derivación que dice el razonamiento de `l6` (ver «Relación con la cauda equina»).
 - **No hay ninguna prueba clínica con sensibilidad, especificidad ni LR.**
 
 **Por qué se pasa por alto**:
@@ -112,7 +121,9 @@ Salvedades de lectura:
 **Tejido conectivo**:
 - La ectasia dural es frecuente en el síndrome de Marfan (63 % en una cohorte de 57) y se describe en el Ehlers-Danlos y en el Loeys-Dietz. **La frecuencia real de quistes de Tarlov en estos síndromes no se conoce: solo hay casos clínicos** (Murphy 2023).
 - En la cohorte de Hulens 2025, el 10 % de las 126 mujeres tenía un SEDh diagnosticado, sin grupo control.
-- Paredes Mogica 2023 lo da por asociación fuerte (p. 380) apoyándose en un caso clínico.
+- Paredes Mogica 2023 lo da por asociación fuerte (p. 380), pero su única referencia es un caso (Isono 1999) cuyos autores dicen que la asociación no se había encontrado.
+- Henderson 2017, escrito para el consenso internacional del Ehlers-Danlos, la llama «anecdótica», sin datos epidemiológicos (resumen). Pone entre lo que falta por investigar la prevalencia del quiste en el SEDh y en el EDS clásico (p. 207).
+- En la revisión no publicada que cita Henderson, 16 de los 18 meningoceles sacros grandes con erosión ósea eran de mujeres con Marfan o Ehlers-Danlos (p. 207). Son meningoceles, no quistes de Tarlov típicos.
 - Con trastornos genéticos del tejido conectivo, la cirugía tiene más riesgo de fuga de LCR (dura muy fina; p. 384).
 
 ## Dónde encaja en lumbar (decisión 1, aceptada)
@@ -136,12 +147,15 @@ Reglas:
 1. **La pregunta de Tarlov nunca resta a `l6`.** `l6` conserva su `urgencia` y su `.sq2-urg`, y sigue visible en modo breve. La pregunta nueva no tiene `urgencia`.
 2. El razonamiento de las dos lo dice igual: un síntoma de esfínteres o de silla de montar **nuevo o que empeora** es `l6`, aunque haya un quiste de Tarlov en una RM antigua. Un quiste conocido no explica un cambio nuevo, y un deterioro rápido con quiste conocido también es urgente.
 3. La pregunta nueva pregunta por síntomas que el paciente **ya tenía**. Si el fisio duda, marca `l6`.
+4. El párrafo nuevo de `l6` recoge el grupo sin dolor de Henderson 2017: la disfunción de vejiga o intestino con pérdida sensitiva sacra puede aparecer sin dolor. Si es nueva o empeora, es urgencia; si es antigua y nadie la ha estudiado, también merece valoración médica.
 
 ## Relación con la hipermovilidad (Fase P; decisión 4, aceptada)
 
 **Ninguna regla automática.** La tarjeta «Hipermovilidad» no activa ni da peso a la pregunta de Tarlov, y la pregunta no toca `SIS_HIPERMOVILIDAD`, que es común a las 7 regiones.
 
-El «En detalle» de `l_u5` lleva una frase sin cifras: el quiste se ha descrito en trastornos hereditarios del tejido conectivo (Ehlers-Danlos, Marfan), pero su frecuencia en ellos no se conoce (Murphy 2023). Se revisa si se leen Henderson 2017 o Marathe 2022.
+Con Henderson 2017 e Isono 1999 leídos, la decisión se mantiene: la asociación no está medida.
+
+El «En detalle» de `l_u5` lleva una frase sin cifras: el quiste y la ectasia dural se han descrito en trastornos hereditarios del tejido conectivo (Ehlers-Danlos, Marfan), pero su frecuencia en ellos no se conoce (Murphy 2023; Henderson 2017).
 
 ## Borrador de la pregunta `l_u5` (fase 2)
 
@@ -161,6 +175,7 @@ En `l_urogenital`, después de `l6`.
   - la tabla de Hulens 2018 con sus limitaciones; Baker 2018 sobre la vejiga;
   - por qué se pasa por alto: RM lumbar, electromiografía y no preguntar (Murphy 2023; Paredes Mogica 2023);
   - diferencial en mujeres con dolor pélvico (Murphy 2023);
+  - patrones clínicos, sin porcentajes (Henderson 2017);
   - tejido conectivo, sin cifras;
   - qué hacer con un «sí» y con un quiste ya conocido (decisión 6): educación para evitar los picos de presión al defecar y con cargas máximas, y suelo pélvico, sin evidencia propia del quiste (Paredes Mogica 2023, pp. 378 y 380).
 - **Se revisa con StatPearls** antes de implementar.
@@ -181,7 +196,7 @@ En `l_urogenital`, después de `l6`.
   - pregunta `l_u5` con `razonamiento` y `derivacion`;
   - un párrafo en el `detalle` de `l6` y una frase en el `detalle` de `lu_step1c`.
   - Sin cambios en la navegación del árbol, así que el snapshot `tests/fixtures/cif-tree-navigation.json` no cambia.
-- `data/referencias.js`: las seis fuentes leídas (y StatPearls), y `node tests/gen-referencias.mjs`.
+- `data/referencias.js`: las fuentes que se citen (Klepinowski 2021, Murphy 2023, Baker 2018, Hulens 2018, Paredes Mogica 2023, Hulens 2025 y Henderson 2017; Isono 1999 solo si se cita) y StatPearls, y `node tests/gen-referencias.mjs`.
 - `derivacion` en las preguntas de la fase 2:
   - código en `buildSistemaHTML` (`app.js`), la fase 5, `📋 Notas`, `📄 Informe` y `dv[]` del payload;
   - pruebas unitarias: aparece solo con «sí», nunca junto a `urgencia`, no cambia `ur[]` y llega a `dv[]`.
