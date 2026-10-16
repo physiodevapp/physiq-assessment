@@ -411,9 +411,10 @@ test('plan: hombro — red cardiaca siempre (h_c4); avisos de capsulitis (h1), i
   const posq = plan(['h2'], { posq: { conProtocolo: true } });
   assert.ok(posq.avisosHip.includes(D.AVISOS.protesis));
   assert.ok(!P.construirPlan({ region: 'lumbar', severidad: 5, hipotesis: [hip('lu1')], elegidas: ['lu1'], posq: { conProtocolo: true } }).avisosHip.includes(D.AVISOS.protesis), 'la de prótesis es de periféricas');
-  // Ninguna pauta de hombro fija volumen ni frecuencia; sin hipótesis neurológicas
+  // Ninguna pauta de hombro fija volumen ni frecuencia, salvo la frecuencia de h8 (decisión 123); sin hipótesis neurológicas
+  assert.equal(D.FRECUENCIA_PAUTA.h8.plan, 'B');
   for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'hombro')) {
-    assert.ok(!D.VOLUMEN_PAUTA[id] && !D.FRECUENCIA_PAUTA[id], id);
+    assert.ok(!D.VOLUMEN_PAUTA[id] && (id === 'h8' || !D.FRECUENCIA_PAUTA[id]), id);
     assert.ok(!D.HIP_EXPLORACION_NEURO.includes(id), id);
   }
 });
@@ -1014,7 +1015,7 @@ test('plan: cadera — avisos por hipótesis del cap. 14 y, con cirugía, próte
   assert.match(D.AVISOS.ingleAguda, /Serner 2020/);
   // Cadera no tiene ninguna «Derivar»; diez hipótesis sin pauta
   for (const id of Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'cadera')) assert.notEqual(HYPOTHESES[id].dosis, DOSIS_DERIVAR, id);
-  for (const id of ['ca5', 'ca6', 'ca7', 'ca8', 'ca10', 'ca13', 'ca14', 'ca18', 'ca19']) assert.equal(HYPOTHESES[id].dosis, '', id);
+  for (const id of ['ca5', 'ca6', 'ca7', 'ca8', 'ca10', 'ca13', 'ca14', 'ca18']) assert.equal(HYPOTHESES[id].dosis, '', id);
   // Con mecanismo Post-quirúrgico: el de prótesis de las periféricas y, después, el de cadera
   const posq = plan(['ca1'], { posq: { conProtocolo: true } }).avisosHip;
   assert.ok(posq.indexOf(D.AVISOS.protesis) >= 0 && posq.indexOf(D.AVISOS.posqCadera) > posq.indexOf(D.AVISOS.protesis));
@@ -1145,7 +1146,7 @@ test('plan: varios síntomas en cadera — dosifica el más irritable, avisa del
 
 const RED_TOBILLO = () => [D.TEXTOS_CASA.alarmaFracturaEstresPie.texto, D.TEXTOS_CASA.alarmaInfeccionTobillo.texto, D.TEXTOS_CASA.alarmaTVP.texto];
 const TP_DERIVAR = ['tp3', 'tp4', 'tp5', 'tp6', 'tp17', 'tp30', 'tp35', 'tp37'];
-const TP_SIN_PAUTA = ['tp7', 'tp10', 'tp11', 'tp12', 'tp13', 'tp15', 'tp16', 'tp18', 'tp19', 'tp20', 'tp22', 'tp23', 'tp25', 'tp27', 'tp28', 'tp29', 'tp31', 'tp32', 'tp34'];
+const TP_SIN_PAUTA = ['tp7', 'tp10', 'tp11', 'tp12', 'tp13', 'tp15', 'tp16', 'tp18', 'tp19', 'tp20', 'tp22', 'tp23', 'tp25', 'tp27', 'tp28', 'tp29', 'tp32', 'tp34'];
 
 test('plan: tobillo y pie (periférica) — escalones, cantidad, progresión y reglas de Peripheral; con ella están las siete regiones; las demás, igual que antes', () => {
   const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
@@ -1180,7 +1181,7 @@ test('plan: tobillo y pie (periférica) — escalones, cantidad, progresión y r
   assert.ok(!/piloto/.test(ui)); assert.match(ui, /elígela en la fase 2/);
 });
 
-test('plan: tobillo y pie — las 8 «Derivar» no se pueden elegir; 19 sin pauta salen «a criterio del fisio»', () => {
+test('plan: tobillo y pie — las 8 «Derivar» no se pueden elegir; 18 sin pauta salen «a criterio del fisio»', () => {
   const ids = Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'tobillo_pie');
   assert.equal(ids.length, 37);
   assert.deepEqual(ids.filter(id => HYPOTHESES[id].dosis === DOSIS_DERIVAR).sort(), [...TP_DERIVAR].sort());
