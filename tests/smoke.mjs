@@ -1574,7 +1574,13 @@ async function checkCuestionarios(browser, errors) {
     const c = document.getElementById('cuestCuerpo');
     const ops = [...document.querySelectorAll('#cuestCuerpo .cuest-item[data-item="1"] .cuest-op')];
     return c.scrollWidth <= c.clientWidth && document.documentElement.scrollWidth <= innerWidth
-      && ops.length === 11 && ops.every(o => o.getBoundingClientRect().width >= 40);
+      && ops.length === 11 && ops.every(o => o.getBoundingClientRect().width >= 40)
+      // Dos filas como la EVA (0–4 / 5–10), cada una de borde a borde, sin hueco
+      && [ops.slice(0, 5), ops.slice(5)].every(fila => {
+        const rs = fila.map(o => o.getBoundingClientRect());
+        const caja = ops[0].parentElement.getBoundingClientRect();
+        return rs.every(x => Math.abs(x.top - rs[0].top) < 1) && Math.abs(rs[0].left - caja.left) < 1 && Math.abs(rs.at(-1).right - caja.right) < 1;
+      }) && Math.abs(ops[5].getBoundingClientRect().top - ops[4].getBoundingClientRect().bottom - 6) < 1;
   });
   r.cabecera = await m.evaluate(() => document.documentElement.scrollWidth <= innerWidth
     && document.getElementById('themeBtn').getBoundingClientRect().right <= innerWidth);
@@ -4276,7 +4282,7 @@ const SECCIONES = [
 
   { id: 'cuestionarios', titulo: 'Calculadora de cuestionarios:', run: async ({ browser, errors }) => {
     const c = await checkCuestionarios(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
