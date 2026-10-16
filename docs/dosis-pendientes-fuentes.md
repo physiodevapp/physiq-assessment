@@ -105,14 +105,14 @@ Leyenda:
 | tp21 | Inestabilidad crónica | ✅ **Hecho** | Martin 2021 · Liu 2025 · McKeon 2008, Med Sci Sports Exerc 40(10):1810–1819 (PDF del usuario) | La guía no fija dosis; McKeon da el protocolo concreto (12 sesiones de 20 min en 4 semanas, saltos a estabilización con 7 niveles). Revisión 2026-10: se quita la orientación de dosis de Liu 2025 (subgrupos separados; el multimodal para el FAAM es un solo ensayo hecho 3 veces/semana) y queda su efecto global; tobillera no como tratamiento único para el equilibrio (B), sí para prevenir la recidiva; McKeon precisado (qué mejoró y qué no) |
 | tp22 | Sinovitis postraumática | D | — | — |
 | tp23 | Coalición tarsiana | C | — | Derivar si hay rigidez o espasmo peroneo |
-| tp24 | Artrosis de tobillo o pie | D | — | — |
+| tp24 | Artrosis de tobillo o pie | ✅ **Hecho** (2026-10) | NICE NG226 (2022), rec. 1.3.1–1.3.11 (leídas en nice.org.uk, 2026-10) | La guía vale para la artrosis de cualquier articulación. Como en `ro1`, sin series ni semanas. Diferencia con la rodilla: NICE solo considera la terapia manual en cadera y rodilla (1.3.6), así que la pauta lo dice, y el aviso `artrosisTobillo` de la fase 6 da las dos posturas (Hengeveld y Banks frente a NICE). Búsqueda en PubMed (2026-10) sin ensayos con dosis de ejercicio para la artrosis de tobillo o mediopié |
 | tp25 | Osteocondritis del astrágalo | C/D | — | — |
 | tp26 | Dolor plantar crónico del talón | ✅ **Hecho** | Koc 2023, JOSPT 53(12):CPG1–CPG39 (versión publicada: `Heel_Pain_Plantar_Fasciitis_revision_2023_1_.pdf` en orthopt.org) | **Ojo:** `Heel_Pain_Plantar_Fasciitis_Revision_2023.pdf` en orthopt.org es el **borrador** para revisión y difiere (p. ej. ejercicio C en el borrador, B en la publicada). Parámetros de la tabla de intervención: vendaje 1 a ≤6 semanas, férula nocturna 1–3 meses, láser 2–3 puntos con dosis por punto, punción seca 1–6 sesiones. La dosis del estiramiento no está establecida. Revisión 2026-10: «plantillas nunca solas» es grado B (combinarlas, C); férula para el dolor sistemático con los primeros pasos |
 | tp27 | Almohadilla grasa del talón | D | — | — |
 | tp28 | Atrapamiento nervioso del talón | D | — | — |
 | tp29 | Calcaneocuboidea y cubometatarsiana | D | — | — |
 | tp30 | Fractura de estrés del mediopié | ✅ Derivar (`DOSIS_DERIVAR`) | Warden 2014, tabla 1 | Ya en `data/` como derivación. El navicular es de alto riesgo |
-| tp31 | 1.ª metatarsofalángica | D | — | — |
+| tp31 | 1.ª metatarsofalángica | D | — | Búsqueda en PubMed (2026-10): en la artrosis de la 1.ª MTF (hallux rigidus) los ensayos son de plantillas, plantillas que rigidizan el calzado, calzado de suela balancín y cirugía frente a esperar; ninguno da una dosis de ejercicio. La hipótesis mezcla además sesamoideos y placa plantar, así que no se le pone la pauta de NICE (decisión del usuario, 2026-10) |
 | tp32 | Base del 2.º metatarsiano | C/D | Warden 2014, p. 755 y tabla 1 | Sin dosis (puede ser sinovitis, Lisfranc o fractura de estrés). Desde 2026-10, `pronostico` dice que, si es una fractura de estrés, es de alto riesgo: derivar para confirmarla con imagen (RM de elección) y no aplicarle la vuelta a la carrera de tp33 |
 | tp33 | Fractura de marcha (cuello del metatarsiano) | ✅ **Hecho** (2026-10) | Warden 2014, JOSPT 44(10):749–65 (comentario clínico, nivel 5; PDF del usuario, leído entero) | Diáfisis del 2.º–4.º MT = bajo riesgo (tabla 1). Fase 1 de actividad modificada guiada por el dolor y factores de riesgo; fase 2 con el programa graduado de carrera de su tabla 3 |
 | tp34 | Neuroma de Morton | D | — | — |
@@ -171,11 +171,11 @@ Después, con los PDF del usuario (guía APTA de artrosis de cadera de Cibulka 2
 | co16 | Panner / osteocondritis disecante del capítulo | D | — | Hipótesis nueva: `dosis: ''` |
 
 ## Resumen
-- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12 y ca17.
+- **Hechas (septiembre 2026, textos completos leídos):** tp1, tp8, tp9, tp14, tp21, tp26, ce12, ce13, ro15 y ca16, con `dosisFuente`. Octubre 2026: ca1–ca4, ca9, ca11, ca12, ca17 y tp24 (NICE NG226).
 - **Con fuente de pauta, a falta del PDF de pago (A):** ninguna.
 - **Derivación antes que dosis (C), hecho:** ce8 (mielopatía, 2026-10), co7 (rotura distal del bíceps, 2026-10), co12 (fractura de estrés del olécranon) y co14 (pronación dolorosa, 2026-10), h11, ro11, tp3–tp6, tp17, tp30, tp35 y tp37 (fractura maleolar, 2026-10) llevan `DOSIS_DERIVAR` («Derivar: sin tratamiento de fisioterapia hasta el diagnóstico médico», texto decidido por el usuario). Las que solo se derivan según el grado o un signo (ro10, tp23, ro14, ro16, ro19, tp25, tp32) siguen con `dosis: ''`; tp2 tiene ya pauta para la lesión estable y dice que la inestable se deriva (2026-10).
 - **Recomendación de guía sin pauta numérica (B), hechas (2026-10):** `ro8`, `ro9`, `ro10` (sin grado III) con Logerstedt 2017; `ro12` (ESSKA 2024), `tp2` (van Dijk 2016), `tp33` (Warden 2014), `tp36` (por analogía con Rathleff 2020). Se rellenan como `tp1`/`tp8`: lo que recomienda la guía, con su grado y diciendo que no fija volumen.
-- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `co9`–`co11`, `co13`, `co16`, `ca10`, `ca13`–`ca15`, `ca18`, `ca19`, `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp24`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
+- **Sin evidencia de dosis específica (D):** `ca5`–`ca8`, `co9`–`co11`, `co13`, `co16`, `ca10`, `ca13`–`ca15`, `ca18`, `ca19`, `h10`, `ro13`, `ro17`, `ro18`, `ro20`, `tp7`, `tp10`–`tp13`, `tp15`, `tp16`, `tp18`–`tp20`, `tp22`, `tp27`–`tp29`, `tp31`, `tp34`. `dosis: ''` es lo correcto y no conviene rellenarlo.
 
 ## Para cerrar esto
 Hay dos caminos: que el usuario aporte los PDF (como se hizo en cadera y rodilla), o permitir en la red del entorno `pubmed.ncbi.nlm.nih.gov`, `pmc.ncbi.nlm.nih.gov`, `www.jospt.org` y `www.orthopt.org`. Luego, una región por sesión, siguiendo la Fase D.

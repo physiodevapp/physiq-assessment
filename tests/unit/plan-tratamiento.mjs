@@ -1145,7 +1145,7 @@ test('plan: varios síntomas en cadera — dosifica el más irritable, avisa del
 
 const RED_TOBILLO = () => [D.TEXTOS_CASA.alarmaFracturaEstresPie.texto, D.TEXTOS_CASA.alarmaInfeccionTobillo.texto, D.TEXTOS_CASA.alarmaTVP.texto];
 const TP_DERIVAR = ['tp3', 'tp4', 'tp5', 'tp6', 'tp17', 'tp30', 'tp35', 'tp37'];
-const TP_SIN_PAUTA = ['tp7', 'tp10', 'tp11', 'tp12', 'tp13', 'tp15', 'tp16', 'tp18', 'tp19', 'tp20', 'tp22', 'tp23', 'tp24', 'tp25', 'tp27', 'tp28', 'tp29', 'tp31', 'tp32', 'tp34'];
+const TP_SIN_PAUTA = ['tp7', 'tp10', 'tp11', 'tp12', 'tp13', 'tp15', 'tp16', 'tp18', 'tp19', 'tp20', 'tp22', 'tp23', 'tp25', 'tp27', 'tp28', 'tp29', 'tp31', 'tp32', 'tp34'];
 
 test('plan: tobillo y pie (periférica) — escalones, cantidad, progresión y reglas de Peripheral; con ella están las siete regiones; las demás, igual que antes', () => {
   const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
@@ -1180,7 +1180,7 @@ test('plan: tobillo y pie (periférica) — escalones, cantidad, progresión y r
   assert.ok(!/piloto/.test(ui)); assert.match(ui, /elígela en la fase 2/);
 });
 
-test('plan: tobillo y pie — las 8 «Derivar» no se pueden elegir; 20 sin pauta salen «a criterio del fisio»', () => {
+test('plan: tobillo y pie — las 8 «Derivar» no se pueden elegir; 19 sin pauta salen «a criterio del fisio»', () => {
   const ids = Object.keys(HYPOTHESES).filter(id => HYPOTHESES[id].region === 'tobillo_pie');
   assert.equal(ids.length, 37);
   assert.deepEqual(ids.filter(id => HYPOTHESES[id].dosis === DOSIS_DERIVAR).sort(), [...TP_DERIVAR].sort());
