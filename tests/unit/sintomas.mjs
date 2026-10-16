@@ -7,6 +7,7 @@ const { ZONAS_SINTOMA, CIF_TREES } = await import('../../data.js');
 const IN = await import('../../lib/informe-narrativo.js');
 const RI = await import('../../lib/revision-informe.js');
 const PI = await import('../../lib/pistas.js');
+const DATA = await import('../../data.js');
 
 const vacio = S.sintomaVacio;
 const P1 = { ...vacio(), zonas: ['lumbar', 'gluteo'], profundidad: 'Profunda', patron: 'Constante', descripcion: 'sordo' };
@@ -183,7 +184,13 @@ test('síntomas: los `pasos` de cada zona existen en el árbol de su región, si
       z.pasos.forEach(p => assert.ok(ids.has(p), `${r}.${z.id}: paso inexistente ${p}`));
     });
   }
-  for (const r of VALID_REGIONS) assert.ok(ZONAS_SINTOMA[r].every(z => z.pasos?.length), `${r}: todas las zonas con pasos`);
+  // Única zona sin pasos: el cóccix de lumbar, por el que no pregunta ningún paso
+  // (docs/sintomas-multiples.md, «Zonas sacra, coccígea y perineal en lumbar»)
+  const SIN_PASOS = { lumbar: ['coxis'] };
+  for (const r of VALID_REGIONS) {
+    const sin = ZONAS_SINTOMA[r].filter(z => !z.pasos?.length).map(z => z.id);
+    assert.deepEqual(sin, SIN_PASOS[r] || [], `${r}: todas las zonas con pasos (salvo las de SIN_PASOS)`);
+  }
 });
 
 test('síntomas: pistas en el árbol — solo los síntomas con una zona ligada al paso; otra región nunca', () => {
@@ -276,6 +283,110 @@ test('síntomas: pistas en el árbol — el recuadro «📝» las pinta escapada
 
 // physiq-report (lib/payload.js, _bloqueSintomas) tiene una copia de este
 // bloque y su test fija el mismo texto: si cambia aquí, se copia allí.
+// ── Sacro, cóccix y periné en lumbar (decisión 5 de docs/tarlov.md) ──
+const zl = () => ZONAS_SINTOMA.lumbar;
+const zona = id => zl().find(z => z.id === id);
+
+test('síntomas: lumbar — sacro, cóccix y periné: nombres, orden, centrales y pasos', () => {
+  assert.deepEqual(zl().map(z => z.id), ['lumbar', 'sacro', 'coxis', 'gluteo', 'ingle', 'perine', 'muslo_ant', 'muslo_post', 'pierna', 'pie']);
+  assert.equal(zona('sacro').nombre, 'Sacro');
+  assert.equal(zona('coxis').nombre, 'Cóccix');
+  assert.equal(zona('perine').nombre, 'Periné, ano o genitales');
+  assert.deepEqual(zl().filter(z => z.central).map(z => z.id), ['sacro', 'coxis', 'perine']);
+  assert.deepEqual(zona('sacro').pasos, ['lu_step1', 'lu_step4']);
+  assert.equal(zona('coxis').pasos, undefined);
+  assert.deepEqual(zona('perine').pasos, ['lu_step1c']);
+  // Recordatorio y red neurológica: solo el periné, en ninguna otra zona de ninguna región
+  for (const [r, zonas] of Object.entries(ZONAS_SINTOMA)) for (const z of zonas) {
+    const esPerine = r === 'lumbar' && z.id === 'perine';
+    assert.equal(!!z.recordatorio, esPerine, `${r}.${z.id}: recordatorio`);
+    assert.equal(!!z.redNeuro, esPerine, `${r}.${z.id}: redNeuro`);
+    if (z.central) assert.ok(['cervical', 'lumbar'].includes(r), `${r}.${z.id}: central fuera de la columna (sin botón Central)`);
+  }
+});
+
+test('síntomas: lumbar — pistas: periné en lu_step1c, sacro en lu_step1 y lu_step4, cóccix en ningún paso', () => {
+  const st = { region: 'lumbar', severidad: 5,
+    sintomaPrincipal: { ...vacio(), zonas: ['sacro'] },
+    sintomasSecundarios: [{ ...vacio(), zonas: ['perine'], lado: 'Central', nrs: 3 }, { ...vacio(), zonas: ['coxis'], nrs: 2 }] };
+  const q = paso => S.pistasSintomasPaso(st, zl(), paso).map(x => x.q);
+  assert.deepEqual(q('lu_step1'), ['Síntoma P1 (principal):']);
+  assert.deepEqual(q('lu_step4'), ['Síntoma P1 (principal):']);
+  assert.deepEqual(q('lu_step1c'), ['Síntoma P2:']);
+  assert.equal(S.pistasSintomasPaso(st, zl(), 'lu_step1c')[0].a, 'Periné, ano o genitales · lado central · NRS 3/10');
+  for (const paso of CIF_TREES.lumbar.steps.map(x => x.id)) assert.ok(!q(paso).includes('Síntoma P3:'), `cóccix en ${paso}`);
+});
+
+test('síntomas: lumbar — zonas centrales: P1 no da por hecho el lado de la región', () => {
+  assert.ok(S.todasCentrales({ ...vacio(), zonas: ['coxis'] }, zl()));
+  assert.ok(S.todasCentrales({ ...vacio(), zonas: ['sacro', 'perine'] }, zl()));
+  assert.ok(!S.todasCentrales({ ...vacio(), zonas: ['sacro', 'gluteo'] }, zl()));
+  assert.ok(!S.todasCentrales({ ...vacio() }, zl()));
+  assert.ok(!S.todasCentrales({ ...vacio(), otraRegion: true, zonas: ['coxis'] }, zl()));
+  const card = leer('sintomas.js');
+  assert.match(card, /todasCentrales\(s, zonas\)/);
+  assert.match(card, /Zona central: marca Central, o el lado si el paciente lo localiza a un lado\./);
+});
+
+test('síntomas: lumbar — recordatorio del periné: solo l6 sin SÍ, nunca otra región, no toca nada', () => {
+  const sint = { ...vacio(), zonas: ['perine', 'sacro'] };
+  const st = { region: 'lumbar', sistemicoAnswers: { l6: 'NO', l_u5: 'NO' }, sintomaPrincipal: sint, sintomasSecundarios: [] };
+  const antes = JSON.stringify(st);
+  const r = S.recordatoriosZona(st, sint, zl());
+  assert.equal(JSON.stringify(st), antes, 'solo lee');
+  assert.equal(r.length, 1);
+  assert.equal(r[0].pregunta, 'l6');
+  assert.equal(r[0].zona, 'Periné, ano o genitales');
+  // Nombra primero la urgencia; nunca descarta ni rebaja
+  assert.ok(r[0].texto.indexOf('urgencia hoy') >= 0 && r[0].texto.indexOf('urgencia hoy') < r[0].texto.indexOf('quiste de Tarlov'));
+  assert.match(r[0].texto, /nuevos o que van a más/);
+  assert.doesNotMatch(r[0].texto, /descart|no urgente|no es urgente/i);
+  assert.deepEqual(S.recordatoriosZona({ ...st, sistemicoAnswers: { l6: 'SI' } }, sint, zl()), [], 'con l6 en SÍ la urgencia ya sale');
+  assert.equal(S.recordatoriosZona({ ...st, sistemicoAnswers: {} }, sint, zl()).length, 1, 'sin contestar, también');
+  assert.deepEqual(S.recordatoriosZona(st, { ...sint, otraRegion: true }, zl()), []);
+  assert.deepEqual(S.recordatoriosZona(st, { ...vacio(), zonas: ['sacro', 'coxis'] }, zl()), []);
+  // La pregunta existe en lumbar y sigue siendo urgente (Tarlov, regla 1)
+  const { SYSTEMIC_SCREENING } = DATA;
+  const l6 = SYSTEMIC_SCREENING.lumbar.sistemas.flatMap(x => x.preguntas || []).find(x => x.id === 'l6');
+  assert.ok(l6?.urgencia && !l6.derivacion);
+  assert.match(leer('sintomas.js'), /onclick="irAPreguntaCribado\('\$\{r\.pregunta\}'\)"/);
+  assert.match(leer('app.js'), /irACronologia, irAPreguntaCribado,/);
+});
+
+test('síntomas: lumbar — un síntoma perineal no cambia el cribado y el recordatorio no sale de la tarjeta', () => {
+  const texto = zona('perine').recordatorio.texto;
+  const sacar = () => { const d = buildPhysiQPayload(); return { d, notas: buildContextSummaryText(), inf: buildInformeFisioterapiaText(), ia: IN.contextoValoracion(d) }; };
+  let sin;
+  withState({ region: 'lumbar', sistemicoAnswers: { l6: 'NO' } }, () => { sin = sacar(); });
+  withState({ region: 'lumbar', sistemicoAnswers: { l6: 'NO' }, sintomaPrincipal: { ...vacio(), zonas: ['perine'], lado: 'Central' } }, () => {
+    const con = sacar();
+    assert.deepEqual([con.d.ur, con.d.dv, con.d.si, con.d.sq], [sin.d.ur, sin.d.dv, sin.d.si, sin.d.sq]);
+    assert.equal(state.sistemicoAnswers.l6, 'NO');
+    assert.deepEqual(con.d.z1, { z: 'Periné, ano o genitales', la: 'Central' });
+    assert.match(con.notas, /SÍNTOMAS: P1 Periné, ano o genitales · lado central/);
+    assert.match(con.inf, /Localización del dolor principal: periné, ano o genitales \(lado central\)/);
+    for (const t of [JSON.stringify(con.d), con.notas, con.inf, con.ia]) assert.ok(!t.includes(texto.slice(0, 40)), 'el recordatorio no sale');
+  });
+});
+
+test('síntomas: revisión — un síntoma Central no es un lado: no silencia lado-no-consta ni es «el otro lado»', () => {
+  const datos = { la: '', z1: { z: 'Cóccix', la: 'Central' } };
+  assert.ok(RI.revisarInforme('Dolor en la pierna derecha.', { datos }).some(p => p.id === 'lado-no-consta'));
+  const der = { la: 'Derecho', ss: [{ n: 2, z: 'Periné, ano o genitales', la: 'Central', nr: 2 }] };
+  const ids = RI.revisarInforme('Dolor en la pierna izquierda.', { datos: der }).map(p => p.id);
+  assert.ok(ids.includes('lado') && !ids.includes('lado-sintoma'), ids.join());
+});
+
+test('síntomas: zonaConRedNeuro — solo con el periné marcado, nunca en otra región', () => {
+  const z = zl();
+  assert.ok(S.zonaConRedNeuro({ sintomaPrincipal: { ...vacio(), zonas: ['perine'] }, sintomasSecundarios: [] }, z));
+  assert.ok(S.zonaConRedNeuro({ sintomaPrincipal: vacio(), sintomasSecundarios: [{ ...vacio(), zonas: ['perine'] }] }, z));
+  assert.ok(!S.zonaConRedNeuro({ sintomaPrincipal: { ...vacio(), zonas: ['sacro', 'coxis'] }, sintomasSecundarios: [] }, z));
+  assert.ok(!S.zonaConRedNeuro({ sintomaPrincipal: vacio(), sintomasSecundarios: [{ ...vacio(), otraRegion: true, zonas: ['perine'] }] }, z));
+  assert.ok(!S.zonaConRedNeuro({ sintomaPrincipal: { ...vacio(), zonas: ['cuello'] }, sintomasSecundarios: [] }, ZONAS_SINTOMA.cervical));
+  assert.match(leer('plan.js'), /redNeuroZona: zonaConRedNeuro\(state, ZONAS_SINTOMA\[state\.region\] \|\| \[\]\)/);
+});
+
 test('síntomas: bloque del prompt fijado (el mismo que copia physiq-report)', () => {
   const d = { z1: { z: 'Zona lumbar, glúteo', la: 'Derecho', pr: 'Profunda', pa: 'Constante', de: 'sordo' },
     ss: [{ n: 2, z: 'Pierna por debajo de la rodilla', la: 'Derecho', nr: 3, ir: 'Baja', pa: 'Intermitente', re: 'empeora' },

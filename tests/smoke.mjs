@@ -4372,6 +4372,87 @@ async function checkSintomas(page) {
   return r;
 }
 
+// Sacro, cóccix y periné en lumbar (decisión 5 de docs/tarlov.md; diseño en
+// docs/sintomas-multiples.md): chips a 320 px; P1 central sin «el de la región»;
+// recordatorio del periné → «Ir a la pregunta» lleva a l6 (acordeón en móvil,
+// pestaña en escritorio) sin contestarla; con l6 en SÍ desaparece; el sacro sale
+// en el paso 4 del árbol y el cóccix en ninguno.
+async function checkZonasCentrales(page) {
+  const r = {};
+  await page.setViewportSize({ width: 320, height: 700 });
+  await abrirApp(page);
+  await irAFase2(page, 'lumbar');
+  await page.evaluate(() => { state.lado = 'Derecho'; });
+  await page.click('#btnContinuarSinss');
+  await page.waitForSelector('#cardSintomas:not([hidden]) #sintItem_0');
+  r.chips = await page.evaluate(() => {
+    const zonas = [...document.querySelectorAll('#sintItem_0 .sint-zona')].map(b => b.textContent);
+    const c = document.getElementById('cardSintomas').getBoundingClientRect();
+    const dentro = [...document.querySelectorAll('#cardSintomas .sint-zona')].every(b => { const x = b.getBoundingClientRect(); return x.left >= c.left - 1 && x.right <= c.right + 1; });
+    return JSON.stringify(zonas) === JSON.stringify(['Zona lumbar', 'Sacro', 'Cóccix', 'Glúteo', 'Ingle', 'Periné, ano o genitales', 'Muslo anterior', 'Muslo posterior o lateral', 'Pierna por debajo de la rodilla', 'Pie'])
+      && dentro && document.documentElement.scrollWidth <= innerWidth;
+  });
+  // P1 solo con zonas centrales: no da por hecho el lado de la región, ni preselecciona Central
+  await page.click('#sintItem_0 .sint-zona:has-text("Cóccix")');
+  r.ladoCentral = await page.evaluate(() => {
+    const t = document.getElementById('sintItem_0').textContent;
+    return t.includes('Zona central: marca Central') && !t.includes('Sin marcar: el de la región') && state.sintomaPrincipal.lado === ''
+      && !document.querySelector('#sintItem_0 .lado-central.selected');
+  });
+  await page.click('#sintItem_0 .sint-zona:has-text("Glúteo")');
+  r.ladoRegion = await page.evaluate(() => document.getElementById('sintItem_0').textContent.includes('Sin marcar: el de la región (derecho)'));
+  await page.click('#sintItem_0 .sint-zona:has-text("Glúteo")');
+  r.sinRecordatorioCoxis = await page.locator('#sintItem_0 .sint-recordatorio').count() === 0;
+  // Periné: recordatorio de l6; nada del cribado cambia
+  await page.click('#sintItem_0 .sint-zona:has-text("Periné")');
+  r.recordatorio = await page.evaluate(() => {
+    const el = document.querySelector('#sintItem_0 .sint-recordatorio');
+    const c = document.getElementById('cardSintomas').getBoundingClientRect(), b = el?.getBoundingClientRect();
+    return !!el && el.textContent.includes('urgencia hoy') && el.textContent.includes('Ir a la pregunta')
+      && b.left >= c.left - 1 && b.right <= c.right + 1 && state.sistemicoAnswers.l6 === 'NO' && !state.sistemicoAlerta;
+  });
+  // «Ir a la pregunta →» en móvil: fase 2, acordeón abierto y l6 a la vista, sin contestarla
+  await page.click('#sintItem_0 .sint-recordatorio-ir');
+  await page.waitForFunction(() => state.currentPhase === 2 && [...document.querySelectorAll('[id="sq2_l6"]')].some(e => e.offsetParent !== null && e.classList.contains('flash-destacar')), null, { timeout: 5000 }).catch(() => {});
+  const aLaVista = () => page.evaluate(() => {
+    const e = [...document.querySelectorAll('[id="sq2_l6"]')].find(x => x.offsetParent !== null);
+    if (!e) return false;
+    const b = e.getBoundingClientRect();
+    return state.currentPhase === 2 && e.classList.contains('flash-destacar') && b.bottom > 0 && b.top < innerHeight && state.sistemicoAnswers.l6 === 'NO';
+  });
+  await page.waitForTimeout(700);
+  r.irMovil = await aLaVista();
+  // Escritorio: la pestaña del sistema de l6
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.evaluate(() => { const t = document.querySelector('.sistema-tab'); t?.click(); goToPhase(3); });
+  await page.waitForSelector('#sintItem_0 .sint-recordatorio-ir');
+  await page.click('#sintItem_0 .sint-recordatorio-ir');
+  await page.waitForTimeout(900);
+  r.irEscritorio = await aLaVista();
+  // l6 en SÍ: el recordatorio desaparece (la urgencia ya sale en todas partes)
+  await page.locator('[id="sq2_l6"] .sq-btn.si').filter({ visible: true }).first().click();
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForSelector('#sintItem_0');
+  r.conL6 = await page.evaluate(() => state.sistemicoAnswers.l6 === 'SI' && !document.querySelector('#sintItem_0 .sint-recordatorio'));
+  await page.evaluate(() => goToPhase(2));
+  await page.locator('[id="sq2_l6"] .sq-btn.no').filter({ visible: true }).first().click();
+  // Árbol: P2 en el sacro sale en el paso 4; P1 (cóccix y periné) no
+  await page.evaluate(() => goToPhase(3));
+  await page.click('.sint-anadir');
+  await page.click('#sintItem_1 .sint-zona:has-text("Sacro")');
+  await page.evaluate(() => goToPhase(4));
+  await page.click('#lu_step1 .option-group .option-btn >> nth=1');
+  await page.click('#lu_step2 .option-group .option-btn >> nth=1');
+  await page.click('#lu_step3 .option-group .option-btn >> nth=2');
+  await page.waitForSelector('#lu_step4 .fp-pistas');
+  r.pistaSacro = await page.evaluate(() => {
+    const t = document.querySelector('#lu_step4 .fp-pistas').textContent;
+    return t.includes('Síntoma P2: Sacro') && !t.includes('Síntoma P1') && !('lu_step4' in state.treeAnswers);
+  });
+  r.ok = r.chips && r.ladoCentral && r.ladoRegion && r.sinRecordatorioCoxis && r.recordatorio && r.irMovil && r.irEscritorio && r.conL6 && r.pistaSacro;
+  return r;
+}
+
 // Cada sección devuelve true si pasa; imprime su propio detalle.
 // `id` es lo que se pasa a --solo.
 // Móvil: la barra fija de navegación está dentro de la fase; si la animación
@@ -4603,6 +4684,14 @@ const SECCIONES = [
     try {
       const r = await checkIrritabilidad(page);
       console.log(`  ${r.ok ? '✓' : '✗'} sin preselección («no registrada»); cuatro filas con el tiempo en calmarse (botones en una línea en escritorio) y el impacto en las actividades en la tarjeta de severidad; el tiempo en calmarse marca el suelo y los otros tres lo suben; segundo toque vacía; el impacto no cuenta; tabla y tarjetas sincronizadas; cabe a 320 px; baja → «hasta el límite», alta → se confirma en la 2.ª visita; fase 5; se restaura al recargar; pista en modo breve${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+      return r.ok;
+    } finally { await page.context().close(); }
+  } },
+  { id: 'zonas-centrales', titulo: 'Síntomas: sacro, cóccix y periné en lumbar (fase 3):', run: async ({ browser, errors }) => {
+    const page = await nuevaPagina(browser, errors);
+    try {
+      const r = await checkZonasCentrales(page);
+      console.log(`  ${r.ok ? '✓' : '✗'} diez chips en orden que caben a 320 px; P1 central sin «el de la región» ni Central preseleccionado; recordatorio solo con el periné, sin tocar el cribado; «Ir a la pregunta» lleva a l6 en móvil (acordeón) y en escritorio (pestaña) sin contestarla; con l6 en SÍ desaparece; el sacro en el paso 4 del árbol, el cóccix y el periné no${r.ok ? '' : ' ' + JSON.stringify(r)}`);
       return r.ok;
     } finally { await page.context().close(); }
   } },

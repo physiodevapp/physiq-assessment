@@ -245,6 +245,22 @@ test('plan: con una hipótesis neurológica, la red de seguridad de su región e
   assert.match(D.TEXTOS_CASA.alarmaNeuro.fuente, /^Finucane 2020/);
 });
 
+test('plan: lumbar — con un síntoma en el periné, la red de cola de caballo aunque no haya hipótesis neurológica', () => {
+  const base = { region: 'lumbar', severidad: 5, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta') };
+  const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
+  const con = P.construirPlan({ ...base, hipotesis: [hip('lu1')], elegidas: ['lu1'], redNeuroZona: true });
+  assert.ok(con.sesion.cierre.includes(D.TEXTOS_SESION.cierreNeuro));
+  assert.ok(P.textoDomiciliario(con, {}, { ejercicios: 'X', parar: 'Y' }).trimEnd().endsWith(D.TEXTOS_CASA.alarmaNeuro.texto));
+  assert.ok(!con.neuro, 'no la vuelve hipótesis neurológica');
+  assert.ok(!con.sesion.reevaluacion.includes(D.TEXTOS_SESION.reevaluacionRadicular), 'sin la reevaluación radicular');
+  // Con hipótesis neurológica y zona, una sola vez
+  const ambas = P.construirPlan({ ...base, hipotesis: [hip('lu3')], elegidas: ['lu3'], redNeuroZona: true });
+  assert.equal(ambas.sesion.cierre.filter(x => x === D.TEXTOS_SESION.cierreNeuro).length, 1);
+  // En una región sin red neurológica no añade nada
+  const hombro = P.construirPlan({ ...base, region: 'hombro', hipotesis: [hip('h2')], elegidas: ['h2'], redNeuroZona: true });
+  assert.ok(!hombro.sesion.cierre.includes(D.TEXTOS_SESION.cierreNeuro));
+});
+
 test('plan: cervical — médula con ce3/ce12, arterias con cualquier hipótesis; nunca la cola de caballo; sin región, sin red', () => {
   const base = { region: 'cervical', severidad: 5, irritabilidad: MATRIZ('Ausente', 'Al final del rango con SP', 'Alta') };
   const hip = id => ({ id, name: id, pauta: 'P.', derivar: false, tratada: false });
