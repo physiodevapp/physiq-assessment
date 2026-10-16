@@ -319,5 +319,5 @@ Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; po
 | `tp33` fractura de marcha | Metatarsianos 1.º–4.º |
 | `tp37` fractura de tobillo | Sin cirugía: estable; posquirúrgico: operada |
 
-Pendiente: revisión clínica de esta tabla por el usuario antes de `main`.
+Revisada por el usuario (2026-10) y en `main` (PR 423).
 
