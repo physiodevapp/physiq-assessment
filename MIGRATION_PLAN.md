@@ -421,6 +421,7 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
 - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
 - [x] physiq-report: leer `hm` del payload (otro repositorio): `_bloqueHM()` en su `lib/payload.js`, copia literal de `bloqueHMIA()`; un test en cada repositorio fija el mismo texto (2026-10)
 - [ ] Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)
+  - [ ] POTS / disautonomía: propuesta de diseño en `docs/pots.md` (2026-10), con las fuentes en abierto leídas enteras y 12 decisiones con su recomendación. Pendiente del visto bueno del usuario y de los PDF de la ESC 2018 (síncope) y de Sivakoti 2026 antes de implementar
   - [x] Tarlov: diseño en `docs/tarlov.md`, las 7 decisiones aceptadas y todas las fuentes leídas (2026-10). Implementado: `l_u5` (lumbar, `l_urogenital`) con `derivacion` y razonamiento completo, párrafos nuevos en `l6` y `lu_step1c`, y el campo `derivacion` en las preguntas de la fase 2
   - [x] Tarlov: revisión del usuario dada por hecha al fusionar (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico («Derivación médica indicada en la exploración»), así que la derivación de `l_u5` le llega sin tocar nada
   - [x] Tarlov, después: zonas de sacro, cóccix y periné en la tarjeta «Síntomas» de lumbar (decisión 5 de `docs/tarlov.md`): hecho en la Fase N, N7 (2026-10)
