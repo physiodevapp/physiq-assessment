@@ -296,11 +296,16 @@ Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; po
 |---|---|
 | `h1` capsulitis adhesiva | Capsulitis adhesiva |
 | `h3` rotura del manguito | Manguito reparado, protección y rehabilitación (solo posquirúrgico) |
+| `h8` discinesia escapular | Discinesia escapular (fila 12) |
 | `h4` inestabilidad glenohumeral | Luxación anterior de hombro, solo con mecanismo Traumático (la hipótesis cubre también la inestabilidad posterior y la multidireccional) |
 | `ca1` artrosis de cadera | Prótesis total de cadera (solo posquirúrgico) |
+| `ca2`, `ca3` SIFA y labrum | SIFA o labrum, sin cirugía (fila 12) |
+| `ca19` pubis | Sobrecarga del pubis (fila 12) |
 | `ca4` dolor trocantérico | Tendinopatía glútea |
 | `ca9` tendinopatía proximal de isquios | Isquiotibiales, proximal |
 | `ca11` lesión aguda de ingle | Aductores; recto femoral proximal (con sus subtipos) |
+| `ce5` latigazo | Latigazo agudo, solo con cronología aguda (fila 12) |
+| `ce13` mareo cervicogénico | Mareo cervicogénico (fila 12) |
 | `ce3`, `ce12` radiculopatía / dolor radicular cervical | Radiculopatía cervical |
 | `lu3`, `lu5` dolor radicular / radiculopatía lumbar | Radiculopatía lumbar (Konstantinou 2018 estudia la ciática, es decir, el dolor radicular) |
 | `lu1`, `lu2`, `lu6`, `lu7`, `lu9` lumbalgia inespecífica | Lumbalgia aguda inespecífica, solo con cronología «Agudo (<6 semanas)» (no `lu4` estenosis ni `lu8` sacroilíaca) |
@@ -308,14 +313,20 @@ Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; po
 | `ro2` lesión meniscal | Sin cirugía: traumática y degenerativa; posquirúrgico: meniscectomía y sutura |
 | `ro4` LCA | Sin cirugía: LCA sin cirugía; posquirúrgico: LCA reconstruido |
 | `ro5` tendinopatía rotuliana | Rotuliana |
+| `ro3` dolor patelofemoral | Dolor patelofemoral (fila 12) |
+| `ro6` banda iliotibial | Síndrome de la banda iliotibial (fila 12) |
+| `ro15` apofisitis | Osgood-Schlatter (fila 12; solo la Osgood, no `tp36`) |
 | `ro8` LCM | LCM grado I (el único grado con fuente) |
 | `ro11` fracturas de rótula o meseta | Sin cirugía: rótula y meseta; posquirúrgico: meseta operada |
 | `co1`, `co2` epicondilalgia lateral / medial | Epicondilalgia lateral / medial |
+| `co4` ligamento colateral cubital | LCC del codo, sin cirugía (fila 12) |
 | `co7` rotura distal del bíceps | Rotura / reparación de tendón (biología, Wu 2017), sin los subtipos de Aquiles y manguito (`soloFila`) |
 | `tp1` esguince lateral | Sin cirugía: grados I–III; posquirúrgico: reparación |
 | `tp2` sindesmosis | Sin cirugía / operada |
 | `tp3` rotura del Aquiles | Sin cirugía / reparado |
 | `tp5` fracturas del pie | 5.º MT (avulsión, Jones); calcáneo (extra e intraarticular) |
+| `tp14` tibial posterior | Tibial posterior (subtipo de tendinopatía; fila 12) |
+| `tp21` inestabilidad crónica | Inestabilidad crónica de tobillo (fila 12) |
 | `tp8`, `tp9` tendinopatía aquílea | Porción media / insercional |
 | `tp17` estrés del tobillo | Maléolo medial (alto riesgo) |
 | `tp30` estrés del mediopié | Navicular (estrés, alto riesgo; y fractura por estrés) |
@@ -325,4 +336,24 @@ Criterio: solo donde la fila es **esa misma lesión**. Sin fila propia, nada; po
 Revisada por el usuario (2026-10) y en `main` (PR 423).
 
 **Ampliación (2026-10, a propuesta del asistente, aceptada por el usuario):** lumbalgia inespecífica por cronología, `h4` solo traumática, `co7` sin subtipos y el aviso de las hipótesis sin plazo. Pendiente para una sesión de la Fase J: filas de «programa» para las hipótesis cuya pauta ya da una duración (ver `MIGRATION_PLAN.md`, Fase J, fila 12).
+
+## Fila 12: hipótesis con plazo en su propia pauta (2026-10)
+
+Trece filas nuevas, cada una con su fuente releída en la sesión buscando el plazo (PDF del usuario). Casi todas miden la duración del programa (`programa`), no la cicatrización:
+
+| Fila | Grupo | Barra | Fuente y plazo |
+|---|---|---|---|
+| `tendinopatia_tibial_posterior` | Tendón (subtipo) | 2–3 m | Kulig 2009: programa de 12 semanas |
+| `banda_iliotibial` | Tendón | 3–4 s a 5–8 s | Sanchez-Alvarado 2024: 4–8 semanas de ejercicio; solo el 44 % vuelve tras 6–8 semanas |
+| `discinesia_escapular` | Músculo | 5–8 s | Kamonseki 2022: 16 sesiones en 8 semanas (la pauta de 6 semanas en casa es de Tang 2024, que no se releyó) |
+| `codo_lcc` | Ligamento | 3–6 m a 6m–1a | Biz 2019: al menos 3 meses; de 3 a 9 meses antes de operar |
+| `tobillo_inestabilidad_cronica` | Ligamento | 3–4 s | McKeon 2008: 4 semanas, 12 sesiones |
+| `dolor_patelofemoral` | Articulación | 5–8 s a 2–3 m | Ophey 2025: al menos 6–12 semanas |
+| `sifa_conservador` | Articulación | 2–3 m a 3–6 m | Consenso de Zúrich: al menos 3 meses; Griffin 2018: 12–24 semanas; Enseki 2023 lo recoge |
+| `wad_agudo` | Columna | evolución, 0–3 m | Blanpied 2017: recuperación esperada en 2–3 meses; la mitad al año |
+| `mareo_cervicogenico` | Columna | 5–8 s | Reid 2014: 2–6 sesiones en 6 semanas |
+| `osgood_schlatter` | Hueso | 2–3 m | Rathleff 2020: programa de 12 semanas; vuelta al deporte del 67 % a los 6 meses |
+| `osteitis_pubis` | Hueso | vuelta al deporte, 2–3 m a 3–6 m | Schöberl 2017: 73–103 días de media |
+
+Pendiente: `ca16` (aductores, Hölmich 1999: falta el PDF) y un subtipo «Bíceps distal» para `co7`.
 

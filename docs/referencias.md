@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **494** referencias de literatura, con **2401** usos.
+- **494** referencias de literatura, con **2414** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **376** de 494 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -50,10 +50,10 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | Referencia | Afecta a | Usos | Última revisión |
 |---|---|---|---|
 | [NICE NG193](#nice-ng193) | pauta · plan de tratamiento | 2 | **sin revisar** |
-| [Schöberl 2017](#schöberl-2017) | pauta | 1 | **sin revisar** |
+| [Schöberl 2017](#schöberl-2017) | pauta · tiempos de tejido | 2 | **sin revisar** |
 | [Munteanu 2021](#munteanu-2021) | pauta · texto | 2 | **sin revisar** |
 | [Paterson 2021](#paterson-2021) | pauta · texto | 2 | **sin revisar** |
-| [Kamonseki 2022](#kamonseki-2022) | pauta · plan de tratamiento · texto | 3 | **sin revisar** |
+| [Kamonseki 2022](#kamonseki-2022) | pauta · tiempos de tejido · plan de tratamiento · texto | 4 | **sin revisar** |
 | [Tang 2024](#tang-2024) | pauta · texto | 2 | **sin revisar** |
 | [NICE CG151](#nice-cg151) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG156](#nice-ng156) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -222,45 +222,45 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios en las cifras: texto completo y tabla 3 (figura) leídos en Europe PMC (2026-10). Las cifras de ULNT1, SART y la combinación de 4 ULNT coinciden con su tabla 4. Modelo bivariante (GLMM) que, con k ≤ 3, se interpreta como de efecto fijo (los autores avisan de que solo vale para esas poblaciones). La SART agrupa Sleijser-Koehorst 2021 (riesgo bajo; LR+ 1,88 por sí solo) y Viikari-Juntura 1989 (riesgo alto, cuenta lados: la fila dice n = 13 y las celdas suman 28); por eso la SART pasa a hallazgo (decisión del usuario). El ULNT1 se mantiene (decisión del usuario): sus 3 estudios usan diferenciación estructural y clínica más RM como referencia; Albert-Lucena 2025, con estudios de EMG o conducción nerviosa y sin diferenciación estructural, da LR+ 1,51 y LR− 0,53. Revisiones posteriores: Albert-Lucena 2025 (leída), Lin 2025 sobre el Spurling (bivariante aleatorio, 8 estudios; solo el resumen, PDF no disponible) y Shen 2023 sobre el ULNT1 (solo el resumen). |
 | [Rudwaleit 2006](#rudwaleit-2006) | cribado fase 2 · razonamiento fase 2 | 5 | 2026-10 · Añadida (PDF del usuario, leído entero): es el estudio de origen del criterio de dolor lumbar inflamatorio del cribado lumbar (Goodman 2018, cap. 14, da las mismas cifras). Tabla 5: con 2 de 4 (rigidez matutina de más de 30 minutos, mejora con el ejercicio y no con el reposo, despertar en la segunda mitad de la noche, dolor glúteo alternante), S 70,3 %, E 81,2 %, LR+ 3,7; con 3 o 4, S 33,6 %, E 97,3 %, LR+ 12,4 (IC 4,0–39,7). Estudio exploratorio sin validación: 213 menores de 50 años con dolor lumbar de más de 3 meses (101 con espondilitis anquilosante ya establecida, media de 12,9 años de dolor, y 112 con lumbalgia mecánica), muestra de conveniencia no consecutiva; los propios autores piden validarlo en la enfermedad precoz. |
 | [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · plan de tratamiento · texto | 169 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
-| [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) | pauta · texto | 4 | 2026-10 · Sin cambios: PubMed (SIFA y fisioterapia, consensos y revisiones desde 2022) no encuentra un consenso posterior del IHiPRN; el ensayo PhysioFIRST (Kemp 2026) se suma a la pauta de ca2 sin contradecirlo. |
+| [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) | pauta · tiempos de tejido · texto | 5 | 2026-10 · Sin cambios: PubMed (SIFA y fisioterapia, consensos y revisiones desde 2022) no encuentra un consenso posterior del IHiPRN; el ensayo PhysioFIRST (Kemp 2026) se suma a la pauta de ca2 sin contradecirlo. |
 | [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento | 12 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). Releídas 1.1.1–1.1.2 y 1.3.1–1.3.11 en la sesión de las pautas de tobillo y pie (2026-10): pauta de tp24 y h10 y notas de los avisos artrosisTobillo y artrosis (la terapia manual, solo en cadera y rodilla, 1.3.6). |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), última actualización 29 de julio de 2026; las recomendaciones citadas (1.2.1, 1.2.6, 1.2.7 —corregida en 2026—, 1.3.1–1.3.3 y 1.3.6) dicen lo que recoge la app. |
 | [Hölmich 1999](#hölmich-1999) | pauta · plan de tratamiento | 2 | 2026-10 · Texto completo leído: la pauta de ca16 coincide con el panel 1 y los métodos. Corregido el trote (pasadas las 6 primeras semanas) y añadida la población (varones de 18 a 50 años). No se encontró un ensayo posterior que lo sustituya. |
 | [Jonsson 2008](#jonsson-2008) | pauta · tiempos de tejido · plan de tratamiento | 3 | 2026-10 · PDF leído entero (2026-10): el dolor en carga de 70 a 21 es solo de los 18 pacientes satisfechos (los otros 9, de 78 a 58); diagnóstico clínico con alteración en la ecografía; el ejercicio debe doler. Corregido en tp9. PubMed (2026-10): se añade Pringels 2025 (ensayo aleatorizado) como respaldo del principio de no cargar en dorsiflexión; la pauta sigue siendo la de Jonsson (decisión del usuario). |
-| [McKeon 2008](#mckeon-2008) | pauta · plan de tratamiento · texto | 3 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Se precisa en tp21 a qué tareas se aplican los niveles, las reglas de progresión y qué mejoró (FADI, FADI Sport, equilibrio con ojos cerrados, alcance posteromedial y posterolateral del SEBT) y qué no (equilibrio con ojos abiertos, alcance anterior); sin seguimiento ni medida de recidivas. |
+| [McKeon 2008](#mckeon-2008) | pauta · tiempos de tejido · plan de tratamiento · texto | 4 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Se precisa en tp21 a qué tareas se aplican los niveles, las reglas de progresión y qué mejoró (FADI, FADI Sport, equilibrio con ojos cerrados, alcance posteromedial y posterolateral del SEBT) y qué no (equilibrio con ojos abiertos, alcance anterior); sin seguimiento ni medida de recidivas. |
 | [Kuijper 2009](#kuijper-2009) | pauta · plan de tratamiento · texto | 4 | 2026-10 · Sin cambios en la pauta: texto completo leído en PMC (2026-10). Coincide con ce12 (fisioterapia 2 veces por semana 6 semanas, «hands off», ejercicios graduados y en casa; collarín semirrígido 3 semanas más 3 de retirada; 12 mm más de mejora del dolor de brazo a las 6 semanas). Se añade que a los 6 meses no hubo diferencias con esperar. PubMed (2026-10): revisiones posteriores sobre terapia manual en la radiculopatía cervical (p. ej., Xu y Ling 2025, metaanálisis en red de 8 ensayos) sin una pauta con volumen mejor. |
-| [Kulig 2009](#kulig-2009) | pauta · plan de tratamiento | 3 | 2026-10 · PDF leído entero (2026-10): revisiones semanales durante 10 semanas, no 12; las P = 0,036–0,048 comparan los tres grupos a la vez y los autores no pueden concluir que el excéntrico supere al concéntrico. Corregido en tp14; se añade Houck 2015 como contraste. DOI corregido: el anterior era de otro artículo. |
+| [Kulig 2009](#kulig-2009) | pauta · tiempos de tejido · plan de tratamiento | 4 | 2026-10 · PDF leído entero (2026-10): revisiones semanales durante 10 semanas, no 12; las P = 0,036–0,048 comparan los tres grupos a la vez y los autores no pueden concluir que el excéntrico supere al concéntrico. Corregido en tp14; se añade Houck 2015 como contraste. DOI corregido: el anterior era de otro artículo. |
 | [Kelley 2013](#kelley-2013) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento · texto | 9 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10) sin revisión de la guía de capsulitis adhesiva de JOSPT; sigue vigente junto con el consenso Salamh 2025. |
 | [Rinkel 2013](#rinkel-2013) | pauta | 2 | 2026-10 · Sin cambios: PDF del usuario releído (2026-10). Su «ensayo de bajo riesgo de sesgo» del túnel cubital es el mismo único ensayo que recogen Caliandro 2025 y Bateman 2025 (Bateman lo califica de alto riesgo); se corrige la pauta de co8 para no presentarlo como tres pruebas. |
-| [Reid 2014](#reid-2014) | pauta · plan de tratamiento | 2 | 2026-10 · Pauta corregida: PDF del usuario leído entero (2026-10). 86 pacientes con mareo cervicogénico crónico (3 meses o más; vértigo, migraña, insuficiencia vertebrobasilar y otras causas excluidas con otoneurólogo); 2–6 sesiones en 6 semanas; técnicas, repeticiones y ejercicios en casa coinciden con ce13. Corregido: la frecuencia del mareo bajó frente a placebo solo a las 12 semanas (la intensidad, al terminar y a las 12 semanas), y los ejercicios en casa empiezan tras la 2.ª sesión. Revisión posterior: Carrasco-Uribarren 2025 (BMC Musculoskelet Disord, 6 ensayos; leído el resumen) apoya con certeza baja o muy baja la terapia manual de la cervical alta, sin una pauta con volumen mejor. |
+| [Reid 2014](#reid-2014) | pauta · tiempos de tejido · plan de tratamiento | 3 | 2026-10 · Pauta corregida: PDF del usuario leído entero (2026-10). 86 pacientes con mareo cervicogénico crónico (3 meses o más; vértigo, migraña, insuficiencia vertebrobasilar y otras causas excluidas con otoneurólogo); 2–6 sesiones en 6 semanas; técnicas, repeticiones y ejercicios en casa coinciden con ce13. Corregido: la frecuencia del mareo bajó frente a placebo solo a las 12 semanas (la intensidad, al terminar y a las 12 semanas), y los ejercicios en casa empiezan tras la 2.ª sesión. Revisión posterior: Carrasco-Uribarren 2025 (BMC Musculoskelet Disord, 6 ensayos; leído el resumen) apoya con certeza baja o muy baja la terapia manual de la cervical alta, sin una pauta con volumen mejor. |
 | [Warden 2014](#warden-2014) | pauta · pronóstico · razonamiento fase 4 · plan de tratamiento | 8 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las localizaciones de riesgo (tabla 1), las dos fases y el programa de carrera de la tabla 3 coinciden con la pauta de tp33. PubMed (2026-10): sin protocolo validado posterior. Se añade a tp32 un pronóstico con la tabla 1 (base del 2.º metatarsiano, alto riesgo) y la p. 755 (RM de elección). |
 | [Houck 2015](#houck-2015) | pauta · texto | 2 | 2026-10 · Añadida (PDF del usuario, leído entero) como contraste de Kulig 2009 en tp14: 39 aleatorizados (36 analizados), estadio II; el fortalecimiento en casa de intensidad moderada con banda elástica no añadió beneficio en el FFI ni en la fuerza a la ortesis con estiramiento. |
 | [Mellor 2016](#mellor-2016) | pauta | 1 | 2026-10 · Sin cambios: protocolo del ensayo LEAP (ver Mellor 2018); las revisiones posteriores (Wang 2025, Cordeiro 2024) no dan una progresión de ejercicios más detallada. |
 | [van Dijk 2016](#van-dijk-2016) | pauta · plan de tratamiento | 2 | 2026-10 · Sin cambios: PDF leído entero (2026-10); las recomendaciones citadas coinciden con su apartado final. Los 143 tobillos son de deportistas profesionales y universitarios (su tabla 1), no solo profesionales: corregido en tp2. PubMed (2026-10): ningún consenso posterior sobre el tratamiento conservador de la lesión aislada. |
 | [Al-Subahi 2017](#al-subahi-2017) | pauta | 1 | 2026-10 · Complementada: Trager 2024 (J Man Manip Ther, revisión sistemática con metaanálisis de 16 ensayos, PDF del usuario) actualiza el efecto de la terapia manual sacroilíaca (discapacidad: efecto moderado, certeza baja; dolor: sin efecto demostrado, certeza muy baja; ninguna técnica superior). Al-Subahi se mantiene para el ejercicio de estabilización, la duración de los programas y el vendaje. |
-| [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento · texto | 39 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
+| [Blanpied 2017](#blanpied-2017) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido · plan de tratamiento · texto | 40 | 2026-10 · Sin cambios: PDF del usuario leído (2026-10): resumen de recomendaciones (A2–A3), pronóstico (A13–A14, tabla 6), mielopatía (A15), medidas de exploración (A19–A20), modelo de clasificación (A22) e intervenciones (tablas 7–10, A26–A42); las pautas y las letras de ce1–ce7, ce9, ce11, ce12 y ce14 y las páginas citadas coinciden. Matiz añadido a ce11: el programa en casa de resistencia de flexores (1 año, 3 veces por semana) aparece como beneficio frente al aeróbico (A29) y, con el mismo estudio, como sin beneficio frente a aeróbico más estiramientos (A30). No hay revisión posterior de la guía APTA (PubMed, JOSPT, 2026-10); la guía alemana S3 de dolor cervical inespecífico (El-Allawy 2025) no cambia las pautas. |
 | [Logerstedt 2017](#logerstedt-2017) | pauta · razonamiento fase 4 · tiempos de tejido | 8 | 2026-10 · Sin cambios: PubMed (guías de JOSPT de rodilla desde 2017) no encuentra revisión de la guía de esguince de ligamentos; lo posterior son consensos quirúrgicos (esquina posterolateral, 2025; reconstrucción del LCA, 2026), de menos peso y sobre otra pregunta. |
-| [Griffin 2018](#griffin-2018) | pauta | 1 | 2026-10 · Sin cambios: sigue siendo el ensayo de artroscopia frente a fisioterapia de la pauta de ca2; PubMed (SIFA y fisioterapia desde 2022) solo añade el ensayo PhysioFIRST (Kemp 2026), que compara dos programas de fisioterapia. |
+| [Griffin 2018](#griffin-2018) | pauta · tiempos de tejido | 2 | 2026-10 · Sin cambios: sigue siendo el ensayo de artroscopia frente a fisioterapia de la pauta de ca2; PubMed (SIFA y fisioterapia desde 2022) solo añade el ensayo PhysioFIRST (Kemp 2026), que compara dos programas de fisioterapia. |
 | [Logerstedt 2018](#logerstedt-2018) | pauta · razonamiento fase 4 · tiempos de tejido | 9 | 2026-10 · Complementada: el consenso formal EU-US de 2024 (Prill 2025, acceso abierto) cubre el tratamiento sin cirugía, que la guía deja para su próxima revisión; la pauta de ro2 suma sus recomendaciones con su grado. La guía AAOS 2024 de patología meniscal aislada aguda (PDF completo del usuario) también se suma a la pauta de ro2 (opciones de consenso). |
 | [Mellor 2018](#mellor-2018) | pauta · tiempos de tejido · plan de tratamiento | 4 | 2026-10 · Sin cambios: PubMed (tendinopatía glútea o dolor trocantéreo con ejercicio o educación desde 2022). El metaanálisis en red de Wang 2025 (J Orthop Surg Res 20:126, 19 ensayos, PMC11783921) sitúa el ejercicio primero para dolor y función, y el de Cordeiro 2024 (Sci Rep 14:3343, PMC10858207) lo encuentra mejor que la intervención mínima (certeza baja) e igual que la infiltración en dolor; ninguno da una pauta mejor que la del LEAP. Leídos en PMC (2026-10). |
-| [Biz 2019](#biz-2019) | pauta | 1 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). PubMed (2026-10): Gopinatth 2023 (Am J Sports Med, metaanálisis de la vuelta al deporte sin cirugía, 79,7 %) y Buchanan 2025 (Sports Health, protocolos, casi todos posquirúrgicos) son posteriores; Gopinatth no se pudo leer y Buchanan no aporta una pauta conservadora mejor. |
+| [Biz 2019](#biz-2019) | pauta · tiempos de tejido | 2 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). PubMed (2026-10): Gopinatth 2023 (Am J Sports Med, metaanálisis de la vuelta al deporte sin cirugía, 79,7 %) y Buchanan 2025 (Sports Health, protocolos, casi todos posquirúrgicos) son posteriores; Gopinatth no se pudo leer y Buchanan no aporta una pauta conservadora mejor. |
 | [Cascia 2019](#cascia-2019) | pauta | 1 | 2026-10 · Sin cambios en la conclusión: texto completo leído en PMC (2026-10; antes solo el resumen). Programas de 6 a 12–14 semanas (tabla 3) y 5 de las 7 series con infiltración de plasma rico en plaquetas: se añade a la pauta de co4. |
 | [Willy 2019](#willy-2019) | pauta · razonamiento fase 4 · plan de tratamiento | 8 | 2026-10 · Sin cambios: la guía holandesa (Ophey 2025), posterior y del mismo nivel, ya manda donde discrepan; no hay revisión de la guía de JOSPT. |
 | [Kemp 2020](#kemp-2020) | pauta | 1 | 2026-10 · Sin cambios: PubMed (dolor de cadera relacionado con la articulación y fisioterapia, revisiones sistemáticas desde 2021) no encuentra una revisión posterior de las intervenciones; el ensayo PhysioFIRST (Kemp 2026), posterior, se suma a la pauta de ca2. |
 | [Lubiatowski 2020](#lubiatowski-2020) | pauta · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La resección fue artroscópica en 280 de 288 y los criterios de eficacia eran poco claros: se precisa en co6. PubMed (2026-10): nada posterior sobre el tratamiento de la plica del codo (Cui 2026 es de pronóstico con RM). |
-| [Rathleff 2020](#rathleff-2020) | pauta · plan de tratamiento | 6 | 2026-10 · Sin cambios: la revisión posterior de tratamientos de Osgood-Schlatter (Ndjonko 2026, Orthop J Sports Med, revisión de alcance, nivel 4) no aporta ningún ensayo ni pauta mejor. |
+| [Rathleff 2020](#rathleff-2020) | pauta · tiempos de tejido · plan de tratamiento | 7 | 2026-10 · Sin cambios: la revisión posterior de tratamientos de Osgood-Schlatter (Ndjonko 2026, Orthop J Sports Med, revisión de alcance, nivel 4) no aporta ningún ensayo ni pauta mejor. |
 | [Serner 2020](#serner-2020) | pauta · plan de tratamiento | 3 | 2026-10 · Sin cambios: la revisión sistemática más reciente sobre la lesión aguda del aductor (Farrell, Hatem y Bharam 2023, Am J Sports Med 51(13):3591–3603, doi 10.1177/03635465221140923; PDF del usuario leído entero, 2026-10) la incluye (ref. 40) y no aporta otra pauta: 30 estudios, síntesis narrativa sin metaanálisis; las roturas parciales se trataron siempre sin cirugía, con vuelta al deporte en 1–7 semanas. Da las medias de Serner 2020 (sin dolor a las 1,9 semanas, entrenamiento completo a las 6,9; recaída al año 7,4 %); la pauta de ca11 usa las medianas por grado del propio artículo. |
 | [George 2021](#george-2021) | pauta · razonamiento fase 4 | 9 | 2026-10 · Sin cambios: PubMed (guías de práctica clínica de lumbalgia en JOSPT y de la APTA desde 2021) no encuentra una revisión posterior de esta guía. |
 | [Martin 2021](#martin-2021) | pauta · razonamiento fase 4 · tiempos de tejido · plan de tratamiento | 10 | 2026-10 · Sin cambios de fondo: PDF leído entero (2026-10); las letras citadas coinciden. Se matizan en tp1 la inmovilización («puede estar indicada») y la terapia manual (con sus objetivos), y se añade la vuelta al trabajo o al deporte (B); en tp21, la tobillera o el vendaje no como tratamiento único para mejorar el equilibrio (B), pero sí para prevenir la recidiva. Es la revisión de 2021 (revisión prevista en 2025); PubMed (2026-10): sin versión posterior de la APTA. |
 | [Ammendolia 2022](#ammendolia-2022) | pauta · texto | 2 | 2026-10 · Sin cambios: es la actualización de la revisión Cochrane de 2013 y la más reciente que encontró la búsqueda en PubMed (tratamiento no quirúrgico de la estenosis lumbar) al incorporarla en 2026-10. |
 | [Lucado 2022](#lucado-2022) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido · texto | 6 | 2026-10 · Sin cambios en la guía: grados y pauta de ejercicio comprobados en el PDF (2026-10). Hay una revisión Cochrane posterior, Wallis 2024, con un beneficio pequeño y de certeza baja del ejercicio y la terapia manual: se añade a la pauta de co1 como contraste (decisión del usuario). Se matizan la fonoforesis (solo con hidrocortisona, prednisolona o diclofenaco) y los estiramientos (a medio plazo). |
-| [Enseki 2023](#enseki-2023) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento | 10 | 2026-10 · Sin cambios: es la revisión vigente de la guía APTA de dolor de cadera no artrósico; PubMed (2026-10) no encuentra una posterior (la revisión de 2025 es la de artrosis, Koc 2025). |
+| [Enseki 2023](#enseki-2023) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido · plan de tratamiento | 11 | 2026-10 · Sin cambios: es la revisión vigente de la guía APTA de dolor de cadera no artrósico; PubMed (2026-10) no encuentra una posterior (la revisión de 2025 es la de artrosis, Koc 2025). |
 | [Koc 2023](#koc-2023) | pauta · razonamiento fase 4 · plan de tratamiento | 4 | 2026-10 · PDF leído entero (2026-10). Corregido en tp26: «plantillas nunca solas» es grado B (la C es combinarlas con otros tratamientos); la férula nocturna es para el dolor sistemático con los primeros pasos; los rangos del estiramiento, por estructura. Es la revisión más reciente de la APTA (en 2025 solo hay un comentario, Riel 2025, y la respuesta de los autores). |
 | [Munakomi 2023](#munakomi-2023) | pauta · razonamiento fase 2 · razonamiento fase 4 · texto | 5 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 13 de agosto de 2023 (PubMed). Se añade a la pauta de lu4 Ammendolia 2022 (revisión sistemática del tratamiento no quirúrgico de la estenosis, leída entera en PMC). |
 | [Siemensma 2023](#siemensma-2023) | pauta · pronóstico · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10). La pauta de férulas es «por la literatura y la experiencia propia» de los autores; se dice así en co3. |
 | [AAOS 2024](#aaos-2024) | pauta · test 4b sin puntuar · texto | 4 | 2026-10 · Sin cambios: es la guía más reciente de la rotura meniscal aguda aislada; coherente con Prill 2025 y con Smith 2015. |
 | [Chimenti 2024](#chimenti-2024) | pauta · razonamiento fase 4 · tiempos de tejido · texto | 6 | 2026-10 · Sin cambios de fondo: PDF leído entero (2026-10); grados y cifras de la pauta de tp8 coinciden (se reformula la del láser y el ultrasonido). La guía usa el dolor a la palpación de la porción media como criterio diagnóstico: se corrige en tp8 la frase «la palpación no ayuda al diagnóstico». Es la revisión más reciente de la APTA. |
-| [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) | pauta | 1 | 2026-10 · Sin cambios: hay una revisión posterior, Ferrero 2026 (Orthop Res Rev, 24 estudios, resumen leído), que concluye que la rehabilitación estructurada es la primera opción y que ningún tratamiento puede recomendarse sobre otro por la heterogeneidad; no contradice la pauta de ro6. |
+| [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) | pauta · tiempos de tejido | 2 | 2026-10 · Sin cambios: hay una revisión posterior, Ferrero 2026 (Orthop Res Rev, 24 estudios, resumen leído), que concluye que la rehabilitación estructurada es la primera opción y que ningún tratamiento puede recomendarse sobre otro por la heterogeneidad; no contradice la pauta de ro6. |
 | [Trager 2024](#trager-2024) | pauta | 1 | 2026-10 · Sin cambios: es la revisión más reciente que encontró la búsqueda en PubMed (terapia manual en el dolor sacroilíaco) al incorporarla en 2026-10. |
 | [Wallis 2024](#wallis-2024) | pauta · texto | 2 | 2026-10 · Añadida (texto completo leído en PMC, 2026-10): 23 ensayos y 1612 participantes, búsqueda hasta enero de 2024. Terapia manual, ejercicio o ambos frente a intervención mínima: dolor −0,53/10 y discapacidad −5/100 al final del tratamiento, certeza baja, probablemente sin relevancia clínica y sin mantenerse; ejercicio solo, poco o ningún efecto en el dolor; añadir terapia manual al ejercicio, −2,56/10 al final del tratamiento. Contraste de la pauta de co1 (decisión del usuario). |
 | [Balcarek 2025](#balcarek-2025) | pauta · plan de tratamiento | 2 | 2026-10 · Sin cambios: PubMed (consensos y guías de primera luxación de rótula desde 2024) no encuentra nada posterior; el consenso de 2024 para adolescentes (J Pediatr Orthop) es anterior. |
@@ -270,7 +270,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Koc 2025](#koc-2025) | pauta · razonamiento fase 4 · plan de tratamiento | 5 | 2026-10 · Sustituye a Cibulka 2017 (revisión 2017 de la misma guía) en la pauta de ca1. PDF del usuario leído (2026-10; trae CPG1 y CPG10–CPG31, todas las intervenciones; faltan el resumen, la introducción, los métodos y el diagnóstico, CPG2–CPG9). Cambios frente a 2017: ejercicio (A) 1–5 veces por semana, 30–120 min, 5–16 semanas, incluido el acuático; terapia manual (A) con distracción longitudinal y movilización con movimiento; punción seca nueva (A); educación con afrontamiento del dolor por internet (B); pérdida de peso de C a B; ultrasonido de B a D. Donde choca con NICE NG226 (punción seca, ultrasonido) se dan las dos posturas (decisión del usuario). |
 | [Liu 2025](#liu-2025) | pauta | 1 | 2026-10 · Leída en PMC (2026-10). Sus análisis de dosis son subgrupos separados (tipo, frecuencia, duración) que nunca se combinan: «multimodal 1–2 veces por semana durante 5–8 semanas» para el FAAM se apoya en un solo ensayo, hecho 3 veces por semana, y «terapia manual ≤4 semanas» para el CAIT en uno o dos. Se quita de tp21 esa orientación de dosis y queda el efecto global (CAIT +4,6 y FAAM de actividades diarias +7,7, certeza moderada). |
 | [Lopes 2025](#lopes-2025) | pauta | 1 | 2026-10 · Sin cambios: es la revisión Cochrane más reciente; el metaanálisis en red posterior (BMC Sports Sci Med Rehabil, 2026) no la sustituye en la pauta, que sigue la guía holandesa (Ophey 2025). |
-| [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido | 6 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
+| [Ophey 2025](#ophey-2025) | pauta · test 4b sin puntuar · razonamiento fase 4 · tiempos de tejido | 7 | 2026-10 · Sin cambios: PubMed (guías de dolor femoropatelar y de tendinopatía rotuliana desde 2024) no encuentra ninguna posterior; la guía de buena práctica de BJSM (2024) es anterior y de menos peso. |
 | [Prill 2025](#prill-2025) | pauta · tiempos de tejido · plan de tratamiento · texto | 7 | 2026-10 · Sin cambios: es lo más reciente sobre el tratamiento sin cirugía de las lesiones de menisco; la guía AAOS 2024 (leída entera) solo da para la fisioterapia una opción de consenso, coherente con este. |
 | [Pringels 2025](#pringels-2025) | pauta · tiempos de tejido · plan de tratamiento · texto | 4 | 2026-10 · Añadida (leída entera en PMC) en la pauta de tp9: ensayo aleatorizado de 42 deportistas con tendinopatía insercional; limitar la dorsiflexión mejoró el VISA-A 12,9 puntos más (IC 95 % 6,2–19,6) a las 12 semanas y 10,4 (3,7–17,1) a las 24. |
 | [Quzli 2025](#quzli-2025) | pauta · razonamiento fase 4 · plan de tratamiento | 3 | 2026-10 · Sin cambios: texto completo releído en PMC (2026-10); las condiciones de la prueba de tratamiento conservador son alternativas, se corrige en co5. PubMed (2026-10): nada posterior sobre el tratamiento conservador de la inestabilidad rotatoria posterolateral. |
@@ -1556,9 +1556,11 @@ Nota: Revisión sistemática de 15 estudios, casi todos de nivel IV; texto compl
 Citada como:
 
 1. Biz 2019, Orthop Surg 11(6):974–984 (revisión sistemática de 15 estudios, casi todos de nivel IV) · Cascia 2019, Sports Health 11(4):367–374 (revisión sistemática de 7 series retrospectivas, nivel 4)
+2. Biz 2019
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Ligamento colateral cubital del codo, sin cirugía» (Ligamento) | cabecera · tiempos de tejido | 2 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Blanpied 2017
@@ -1599,6 +1601,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Latigazo cervical (WAD) agudo» (Columna) | cabecera · tiempos de tejido | 27 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.sinTerapiaManualAguda` | 6 · plan de tratamiento | 27 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h6 · Disfunción Cervical con Dolor Referido a Hombro | Test «Test de Spurling (Compresión Foraminal)» | 4b · cita bajo el test | 2 |
@@ -2124,9 +2127,11 @@ Citada como:
 2. Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · consenso de Zúrich del IHiPRN (Kemp, Risberg, Mosler et al., Br J Sports Med 54:504–511) · Griffin 2018, Lancet 391:2225–2235 (ensayo aleatorizado UK FASHIoN, n = 348) · Kemp 2026, Br J Sports Med 60:951–961 (ensayo aleatorizado PhysioFIRST, n = 154, fortalecimiento dirigido frente a estiramientos)
 3. El mismo abordaje multimodal que en el SIFA, que la guía recomienda en particular para el SIFA y las lesiones del labrum (B): modificar la actividad y fortalecer cadera (psoas ilíaco, glúteos, rotadores), tronco y miembro inferior, junto con terapia manual, corrección postural y del movimiento, estiramientos y equilibrio, evitando los ejercicios y rangos que provoquen síntomas. Educación sobre los factores agravantes y el dolor (C) y entrenamiento del patrón de movimiento (C). Al menos 3 meses (consenso de Zúrich). En adolescentes con rotura labral en la RM, el 73 % de los tratados solo con fisioterapia y modificación de la actividad alcanzó la mejoría mínima importante a los 3 años, igual que con infiltración o artroscopia (serie de casos). Ninguna fuente fija series ni repeticiones: el volumen queda a criterio del clínico.
 4. Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía; serie de Murtha citada en ella) · consenso de Zúrich del IHiPRN (Kemp, Risberg, Mosler et al., Br J Sports Med 54:504–511) · Kemp 2020, Br J Sports Med 54:1382–1394 (revisión sistemática)
+5. Consenso de Zúrich IHiPRN
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «SIFA o lesión del labrum, sin cirugía» (Articulación) | cabecera · tiempos de tejido | 5 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Dosis (en el texto) | 5 · mención en el texto | 3 |
@@ -2877,6 +2882,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «SIFA o lesión del labrum, sin cirugía» (Articulación) | cabecera · tiempos de tejido | 9 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.pinzamientoCadera` | 6 · plan de tratamiento | 9 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.inestabilidadCadera` | 6 · plan de tratamiento | 9 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
@@ -3772,9 +3778,11 @@ Nota: Texto completo en PMC5988794 (leído en Europe PMC). Dosis de ca2 (cadera)
 Citada como:
 
 1. Enseki 2023, J Orthop Sports Phys Ther 53(7):CPG1–CPG70 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · consenso de Zúrich del IHiPRN (Kemp, Risberg, Mosler et al., Br J Sports Med 54:504–511) · Griffin 2018, Lancet 391:2225–2235 (ensayo aleatorizado UK FASHIoN, n = 348) · Kemp 2026, Br J Sports Med 60:951–961 (ensayo aleatorizado PhysioFIRST, n = 154, fortalecimiento dirigido frente a estiramientos)
+2. Griffin 2018
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «SIFA o lesión del labrum, sin cirugía» (Articulación) | cabecera · tiempos de tejido | 2 |
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Grimaldi 2017
@@ -4997,6 +5005,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Discinesia escapular con dolor de hombro» (Músculo) | cabecera · tiempos de tejido | 3 |
 | Fase 6 (plan de tratamiento) | — | `FRECUENCIA_PAUTA.h8.nota` | 6 · plan de tratamiento | 3 |
 | Hombro | h8 · Discinesia Escapular | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Hombro | h8 · Discinesia Escapular | Pauta de tratamiento | 5 · cita de la pauta | 2 |
@@ -5652,6 +5661,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Subtipo «Tibial posterior (estadios I–II)» de «Tendinopatía» (Tendón) | cabecera · tiempos de tejido | 2 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.tibialPosterior` | 6 · plan de tratamiento | 2 |
 | Fase 6 (plan de tratamiento) | — | `FRECUENCIA_PAUTA.tp14.nota` | 6 · plan de tratamiento | 2 |
 | Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Pauta de tratamiento | 5 · cita de la pauta | 1 |
@@ -7977,6 +7987,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Inestabilidad crónica de tobillo» (Ligamento) | cabecera · tiempos de tejido | 3 |
 | Fase 6 (plan de tratamiento) | — | `FRECUENCIA_PAUTA.tp21.nota` | 6 · plan de tratamiento | 3 |
 | Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Tobillo y pie | tp21 · Inestabilidad Crónica del Tobillo | Pauta de tratamiento | 5 · cita de la pauta | 2 |
@@ -9034,6 +9045,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Rotuliana» de «Tendinopatía» (Tendón) | cabecera · tiempos de tejido | 6 |
+| Todas (tiempos de tejido) | — | Fila «Dolor patelofemoral» (Articulación) | cabecera · tiempos de tejido | 6 |
 | Rodilla | ro3 · Dolor Patelofemoral (Síndrome) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Rodilla | ro5 · Tendinopatía Rotuliana | Test «Dolor localizado en polo inferior de rótula + palpación del tendón» | 4b · cita bajo el test | 2 |
 | Rodilla | ro5 · Tendinopatía Rotuliana | Test «Dolor durante sentadilla en tabla inclinada (decline squat)» | 4b · cita bajo el test | 3 |
@@ -9742,6 +9754,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Osgood-Schlatter (apofisitis de la tuberosidad tibial)» (Hueso) | cabecera · tiempos de tejido | 3 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.apofisitis` | 6 · plan de tratamiento | 3 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.apofisitisPie` | 6 · plan de tratamiento | 3 |
 | Fase 6 (plan de tratamiento) | — | `FRECUENCIA_PAUTA.ro15.nota` | 6 · plan de tratamiento | 3 |
@@ -9797,6 +9810,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Mareo cervicogénico crónico» (Columna) | cabecera · tiempos de tejido | 2 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cantidadReid` | 6 · plan de tratamiento | 2 |
 | Cervical | ce13 · Mareo Cervicogénico | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
@@ -10288,9 +10302,11 @@ Nota: Revisión sistemática; texto completo leído en PMC (2026-10). Pauta de r
 Citada como:
 
 1. Sanchez-Alvarado 2024, Front Sports Act Living 6:1386456 (revisión sistemática; 13 estudios, 5 de ellos ensayos aleatorizados, 201 corredores)
+2. Sanchez-Alvarado 2024
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Síndrome de la banda iliotibial (corredores)» (Tendón) | cabecera · tiempos de tejido | 2 |
 | Rodilla | ro6 · Síndrome de la Banda Iliotibial | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Sanvictores 2023
@@ -10401,9 +10417,11 @@ Nota: PDF del usuario, leído entero (2026-10). Pauta de ca19 (dolor inguinal re
 Citada como:
 
 1. Schöberl 2017, Knee Surg Sports Traumatol Arthrosc 25(6):1958–66 (ensayo aleatorizado de ondas de choque frente a simuladas, n = 44, ambos con el programa; grupo de solo reposo no aleatorizado, n = 51; leído entero: programa p. 3, fig. 3, resultados pp. 4–5)
+2. Schöberl 2017
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (tiempos de tejido) | — | Fila «Sobrecarga del pubis (osteítis de pubis), futbolistas» (Hueso) | cabecera · tiempos de tejido | 2 |
 | Cadera | ca19 · Dolor Inguinal Relacionado con el Pubis | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
 ### Schroeder 2017
