@@ -1,0 +1,217 @@
+{
+  "app": "physiq-assessment",
+  "tipo": "valoracion",
+  "version": 1,
+  "exportado": "2026-10-16T06:59:46.252Z",
+  "assessmentState": {
+    "currentPhase": 6,
+    "modo": "completo",
+    "maxVisitedIdx": 6,
+    "regionChanged": false,
+    "treeModified": false,
+    "patient": "Andrés Molina",
+    "motivoConsulta": "Dolor en la pierna izquierda, por detrás del muslo hasta la pantorrilla, desde hace 3 semanas, peor que el dolor de la zona lumbar. Le cuesta estar sentado más de 20 minutos y conducir.",
+    "edadPaciente": 42,
+    "sexo": "Hombre",
+    "signosVitales": {
+      "fc": null,
+      "fr": null,
+      "spo2": null,
+      "tas": null,
+      "tad": null
+    },
+    "antropometria": {
+      "talla": null,
+      "peso": null
+    },
+    "mecanismo": "Insidioso",
+    "cirugia": {
+      "intervencion": "",
+      "fecha": "",
+      "semanasAprox": null,
+      "protocolo": "",
+      "restricciones": "",
+      "complicaciones": [],
+      "complicacionOtra": ""
+    },
+    "cronologia": "Agudo (<6 semanas)",
+    "banderasRojas": {
+      "br1": "NO",
+      "br2": "NO",
+      "br3": "NO",
+      "br4": "NO"
+    },
+    "riesgoPsico": "Bajo",
+    "psico_miedo": "",
+    "psico_autoef": "",
+    "psico_emocional": "",
+    "region": "lumbar",
+    "lado": "Izquierdo",
+    "sistemicoAnswers": {
+      "l2": "NO",
+      "l_on2": "NO",
+      "l4": "NO",
+      "l6": "NO",
+      "l_u3a": "NO",
+      "l_u3b": "NO",
+      "l_u4": "NO",
+      "l1": "NO",
+      "l3": "NO",
+      "l_gi2": "NO",
+      "l5": "NO",
+      "l5c": "NO",
+      "l5d": "NO",
+      "l_e2": "NO",
+      "l_e3": "NO",
+      "l_e8": "NO",
+      "l_e4": "NO",
+      "l_e5": "NO",
+      "l_e6": "NO",
+      "l_e7": "NO",
+      "l_v1": "NO",
+      "l_v2": "NO",
+      "l_v3": "NO",
+      "l_inf1": "NO",
+      "end_1": "NO",
+      "end_2": "NO",
+      "end_3": "NO",
+      "end_4": "NO",
+      "end_5": "NO",
+      "hem_1": "NO",
+      "hem_2": "NO",
+      "hem_3": "NO",
+      "hem_5": "NO",
+      "hem_6": "NO",
+      "hem_4": "NO"
+    },
+    "sistemicoAlerta": false,
+    "sistemicoBreve": {},
+    "severidad": 6,
+    "irritabilidad": {
+      "reposo": "Intermitente",
+      "movimiento": "Antes del final del rango",
+      "tolerancia": "Moderada",
+      "calma": "Tarda horas",
+      "discapacidad": "Moderada"
+    },
+    "irritabilidadNivel": "Moderada",
+    "irritabilidadDirecta": false,
+    "sintomaPrincipal": {
+      "zonas": [
+        "muslo_post",
+        "pierna"
+      ],
+      "zonaLibre": "",
+      "lado": "Izquierdo",
+      "otraRegion": false,
+      "profundidad": "profunda",
+      "patron": "intermitente",
+      "descripcion": "como una corriente que baja hasta la pantorrilla",
+      "nrs": null,
+      "irritabilidad": "",
+      "relacion": ""
+    },
+    "sintomasSecundarios": [
+      {
+        "zonas": [
+          "gluteo"
+        ],
+        "zonaLibre": "",
+        "lado": "Izquierdo",
+        "otraRegion": false,
+        "profundidad": "profunda",
+        "patron": "intermitente",
+        "descripcion": "sentado se le carga y no se le pasa hasta el día siguiente",
+        "nrs": 5,
+        "irritabilidad": "Alta",
+        "relacion": "juntos"
+      },
+      {
+        "zonas": [
+          "lumbar"
+        ],
+        "zonaLibre": "",
+        "lado": "Derecho",
+        "otraRegion": false,
+        "profundidad": "",
+        "patron": "intermitente",
+        "descripcion": "molestia antigua al final del día de pie",
+        "nrs": 3,
+        "irritabilidad": "Baja",
+        "relacion": "independiente"
+      }
+    ],
+    "naturaleza": "Neuropática",
+    "estabilidad": "Estable",
+    "signoComparable": "Slump izquierdo: reproduce el dolor de la pantorrilla con la rodilla a 20° de la extensión completa; mejora al soltar la flexión cervical",
+    "activeHypotheses": [
+      "lu3",
+      "lu6"
+    ],
+    "treeAnswers": {
+      "lu_step1": "si",
+      "lu_step1b": "no",
+      "lu_step1c": "no",
+      "lu_step2": "no",
+      "lu_step3": "ninguno",
+      "lu_step4": "disco"
+    },
+    "currentStep": null,
+    "stepsCompleted": [],
+    "testResults": {
+      "lu3": {
+        "0": "pos",
+        "1": "neg",
+        "2": "pos",
+        "3": "nd"
+      },
+      "lu6": {
+        "0": "neg",
+        "1": "neg",
+        "2": "nd"
+      }
+    },
+    "hypothesisScores": {
+      "lu3": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 2/3 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      },
+      "lu6": {
+        "totalLR": 1,
+        "label": "⚪ Sin LR aplicable · 0/2 hallazgos compatibles",
+        "colorClass": "hyp-neutral"
+      }
+    },
+    "derivacionResuelta": {},
+    "resultsBuilt": false,
+    "planNotes": {
+      "variableControl": "Para si el dolor baja más abajo de la pantorrilla o aparece hormigueo en el pie.",
+      "ventanaRecuperacion": "Debes estar como antes de los ejercicios; si no, haz la mitad la próxima vez.",
+      "anclajeHabito": "Después de desayunar"
+    },
+    "planTratamiento": {
+      "hipotesis": [
+        "lu3"
+      ],
+      "nivel": "B",
+      "frecuencia": "A",
+      "sesion": "primera",
+      "gravedad": null,
+      "irritabilidad": null,
+      "notas": {
+        "sesion": "",
+        "mes": "",
+        "domiciliario": "",
+        "parar": ""
+      },
+      "duraciones": {}
+    },
+    "formularioPrevio": {
+      "comun": {},
+      "regiones": {}
+    },
+    "cuestionarios": {},
+    "rom": null
+  }
+}

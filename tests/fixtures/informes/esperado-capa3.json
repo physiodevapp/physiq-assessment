@@ -1133,6 +1133,23 @@
           ]
         }
       ]
+    },
+    {
+      "informe": "andres-lumbar-dictado-3-informe.txt",
+      "valoracion": "valoracion-andres-molina-lumbar-3.json",
+      "transcripcion": "andres-lumbar-dictado-1-transcripcion.txt",
+      "plantilla": "narrativo",
+      "errores": [
+        {
+          "id": "andres-lumbar3-modificacion",
+          "tipo": "no-respaldado",
+          "nivel": "medio",
+          "descripcion": "«Se han proporcionado recomendaciones sobre modificación temporal de las actividades»: nadie las dio",
+          "fragmentos": [
+            "Se han proporcionado recomendaciones sobre modificación temporal de las actividades"
+          ]
+        }
+      ]
     }
   ]
 }

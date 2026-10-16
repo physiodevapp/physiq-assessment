@@ -1,0 +1,133 @@
+## SESIÓN
+
+### REEVALUACIÓN (0–5 min)
+
+- Exploración neurológica: fuerza por miotomas (L4: dorsiflexión del pie; L5: extensión del primer dedo; S1: flexión plantar), reflejos rotuliano y aquíleo, y sensibilidad en ambas piernas. Comparar con la valoración inicial.
+- Signo comparable: slump izquierdo en camilla, reproduciendo el dolor de la pantorrilla con la rodilla a 20° de la extensión completa; observar si mejora al soltar la flexión cervical.
+- Pregunta dirigida: ¿cómo ha estado conduciendo y sentado esta semana?
+
+### EDUCACIÓN (5–12 min)
+
+- Explicar que el dolor que baja por la pierna sugiere irritación del nervio ciático, probablemente por una protrusión discal que está comprimiendo la raíz nerviosa en la zona lumbar. El nervio está inflamado y muy sensible, por eso se queja con la postura de sentado y al conducir.
+- El objetivo es calmar la irritación del nervio con movimientos suaves que lo hagan deslizarse sin cargarlo, y fortalecer la musculatura del tronco para proteger la zona.
+- Es normal que tras esta primera sesión notes un aumento temporal de las molestias; suele ceder en 24–48 horas.
+- El tratamiento es progresivo: empezamos muy suave y vamos subiendo según respondas.
+
+### INTERVENCIÓN PRINCIPAL (12–35 min)
+
+**Movilización neural (deslizadores del nervio ciático)**
+
+Como no hay centralización ni preferencia direccional, empiezo con movilización neural en fase muy suave.
+
+- Deslizador en decúbito supino, pierna izquierda: paciente tumbado boca arriba, cadera y rodilla a 90°, pie relajado. Movimiento alternante: extensión suave de rodilla (unos 20–30°) mientras lleva el cuello a extensión (mirando hacia atrás), y luego flexión de rodilla mientras lleva el mentón al pecho. Ritmo lento, 1 segundo en cada dirección. Antes de que aparezca el síntoma. 3 series de 20–30 segundos de oscilación, con 1 minuto de descanso entre series, reevaluando el slump tras cada serie (sugerencia de la IA).
+
+**Activación específica del tronco**
+
+- Activación de transverso del abdomen en decúbito supino: tumbado boca arriba, rodillas flexionadas, pies apoyados. Llevar el ombligo hacia dentro y hacia la columna sin mover la pelvis, manteniendo la respiración. Mantener 5 segundos, descansar 10 segundos. 2 series de 6 repeticiones (sugerencia de la IA).
+
+- Puente de glúteos con activación previa del transverso: misma posición, activar el transverso y desde ahí elevar la pelvis despegando las vértebras del suelo una a una, hasta apoyarse en los omóplatos. Mantener arriba 3 segundos, bajar despacio. 2 series de 5 repeticiones (sugerencia de la IA).
+
+Reevaluar el slump tras cada bloque.
+
+### PROGRAMA DOMICILIARIO (35–45 min)
+
+- Enseñar y practicar el deslizador del nervio ciático en la misma posición que en la sesión, comprobando que el movimiento es suave, rítmico y que para antes de que aparezca el dolor de la pantorrilla.
+- Enseñar la activación del transverso y el puente de glúteos, corrigiendo la ejecución.
+- Comprobar que identifica cuándo debe parar: si el dolor baja más abajo de la pantorrilla o aparece hormigueo en el pie.
+
+### CIERRE (45–50 min)
+
+- Reevaluar el slump y preguntar cómo nota la pierna ahora.
+- Explicar qué vigilar: cómo te levantas mañana por la mañana, cómo toleras el estar sentado en el trabajo y al conducir, si te molesta por la noche y cómo te sientes después de hacer los ejercicios en casa.
+- Red de seguridad: si notas adormecimiento entre las piernas o alrededor del ano, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo. Comprobar que lo ha entendido.
+- Si las molestias aumentan claramente o notas algo nuevo, llama antes de la próxima sesión.
+
+---
+
+## PLAN DEL MES
+
+**Sesión 1 (semana 1): descrita arriba.**
+
+**Sesión 2 (semana 2): reevaluación intermedia.**
+
+- Comparar bienestar general, síntomas y nivel de actividad con la semana 1: ¿cómo ha ido sentado en el trabajo? ¿y conduciendo? ¿cómo respondió a los ejercicios en casa?
+- Revisar la exploración neurológica y el slump.
+- Si la respuesta ha sido buena (mejoría en el slump, tolerancia al sedente, sin empeoramiento a las 24 h): mantener el deslizador neural y progresar el ejercicio de tronco.
+  - Deslizador del nervio ciático: 4 series de 20–30 segundos (sugerencia de la IA).
+  - Activación del transverso: 2 series de 8 repeticiones (sugerencia de la IA).
+  - Puente de glúteos: 2 series de 8 repeticiones (sugerencia de la IA).
+  - Añadir bird-dog: cuadrupedia, activar transverso, extender brazo derecho y pierna izquierda al mismo tiempo, mantener 5 segundos sin rotar el tronco, volver. Alternar lados. 2 series de 5 repeticiones por lado (sugerencia de la IA).
+
+- Si no hay cambio o empeora: repetir el deslizador con más firmeza (mayor recorrido de rodilla, sin llegar al dolor) o cambiar de técnica neural; mantener el ejercicio de tronco en la misma dosis.
+
+**Sesiones 3 (semana 3).**
+
+Si la mejoría es marcada (reducción del dolor en slump, mayor tolerancia a sentado, sin reagudizaciones):
+
+- Deslizador del nervio ciático: 5 series de 20–30 segundos (sugerencia de la IA).
+- Activación del transverso: 2 series de 10 repeticiones (sugerencia de la IA).
+- Puente de glúteos: 3 series de 8 repeticiones (sugerencia de la IA).
+- Bird-dog: 2 series de 8 repeticiones por lado (sugerencia de la IA).
+- Añadir plancha frontal sobre rodillas: apoyado en antebrazos y rodillas, activar transverso, alinear hombros-cadera-rodillas. Mantener 10 segundos, descansar 20 segundos. 2 series de 3 repeticiones (sugerencia de la IA).
+
+Si la mejoría es del 75 % o más, no subir la dosis: mantener la de la sesión 2 y esperar 48 h.
+
+**Sesión 4 (semana 4): reevaluación final.**
+
+- Aplicar ODI o NPRS y comparar con la valoración inicial (MCID: 8.5 pts para ODI, 1.5–3.2 pts para NPRS).
+- Revisar exploración neurológica, slump, tolerancia a sentado y conducción.
+- Comparar síntomas, nivel de actividad y bienestar general con el inicio.
+- Valorar qué ha sido más útil para el paciente y qué ha aprendido.
+- Si la mejoría es sostenida: consolidar el programa de ejercicio en casa, introducir actividades funcionales (conducir tiempos más largos, reintroducir el pádel de forma progresiva) y plantear el alta o espaciar sesiones.
+- Si persiste el dolor radicular sin mejoría marcada tras 4 semanas: reconsiderar la hipótesis y valorar derivación al médico para RM.
+
+**Criterios de progresión del mes:**
+
+- Progresar el ejercicio de tronco en repeticiones primero, luego en series, luego en dificultad (de supino a cuadrupedia, de rodillas a pies).
+- Progresar la movilización neural en número de series, manteniendo la técnica de deslizador sin provocar síntomas.
+- Reintroducir las actividades que agravaban (conducir, sentado prolongado) cuando baje la irritabilidad y el slump mejore.
+- Si una técnica no cambia nada en la reevaluación dentro de la sesión, repetirla con más firmeza; si sigue sin cambio, descartarla.
+- Si mejora, repetirla en la siguiente sesión; si empeora, no repetirla.
+- Si se espera mejoría lenta (por la irritabilidad alta del glúteo), no cambiar una técnica antes de usarla dos sesiones.
+- Sin cambio en 10–14 días, pausa y reevaluación a los 7–14 días.
+
+---
+
+## PROGRAMA PARA CASA
+
+Haz estos ejercicios después de desayunar.
+
+**Deslizador del nervio ciático (pierna izquierda):**
+
+Túmbate boca arriba. Dobla la cadera y la rodilla izquierda hasta formar un ángulo recto, como si estuvieras sentado en el aire. El pie relajado. Ahora haz este movimiento despacio, como un balanceo suave:
+
+- Estira un poco la rodilla (sin llegar a estirarla del todo) mientras echas la cabeza hacia atrás, mirando al techo.
+- Vuelve a doblar la rodilla mientras llevas el mentón al pecho.
+
+Hazlo de forma rítmica, un segundo en cada dirección, durante 20–30 segundos. Descansa 1 minuto. Repite 3 veces.
+
+Para antes de que te aparezca el dolor en la pantorrilla. El movimiento debe ser suave, sin forzar.
+
+**Activación del abdomen profundo:**
+
+Túmbate boca arriba, rodillas dobladas, pies apoyados. Mete el ombligo hacia dentro, como si quisieras pegar la tripa a la columna, sin mover la pelvis ni aguantar la respiración. Mantén 5 segundos, descansa 10 segundos. Haz 2 series de 6 repeticiones.
+
+**Puente de glúteos:**
+
+En la misma posición, activa primero el abdomen profundo como antes. Desde ahí, levanta la pelvis despegando las vértebras del suelo una a una, hasta apoyarte en los omóplatos. Mantén arriba 3 segundos y baja despacio. Haz 2 series de 5 repeticiones.
+
+**Cuándo parar:**
+
+Para si el dolor baja más abajo de la pantorrilla o aparece hormigueo en el pie.
+
+**Al día siguiente:**
+
+Debes estar como antes de los ejercicios; si no, haz la mitad la próxima vez.
+
+Si las molestias aumentan, apunta qué estabas haciendo y qué te ayudó.
+
+Después de esta primera sesión puedes notar un aumento temporal de las molestias.
+
+Si empeoras claramente o notas algo nuevo, coméntalo con tu fisioterapeuta antes de la próxima sesión.
+
+Si notas adormecimiento entre las piernas o alrededor del ano, o cambios al orinar o al hacer de vientre, ve a urgencias hoy mismo.

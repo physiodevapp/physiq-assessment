@@ -246,6 +246,9 @@ const PLANES_REALES = [
     ['neural-tensor', 'Enseñar slump en silla'],
     ['neural-tensor', 'Mantén 3 segundos y vuelve'],
   ]],
+  ['valoracion-andres-molina-lumbar-2.json', 'andres-lumbar-plan-2.txt', [
+    ['diagnostico-estructural', 'Explicar que el dolor que baja'],
+  ]],
 ];
 for (const [json, plan, esperados] of PLANES_REALES) {
   test(`revisión del plan: planes reales — ${plan}`, () => {
@@ -306,4 +309,23 @@ test('plan: técnicas neurales según el escalón (decisión 118, Butler 2000)',
   assert.doesNotMatch(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 3 } }), /o grado IV/, 'el escalón 3 no admite grado IV');
   assert.match(PIA.promptPlan({ ...en, escalon: { ...en.escalon, n: 4 } }), /grado III \(mejor tolerado\) o grado IV/);
   assert.doesNotMatch(PIA.promptPlan({ ...en, neural: false }), /13\. Técnicas neurales/);
+});
+
+test('plan: «mantener» de seguir, deslizadores, contexto por títulos, «Repite N veces» y diagnóstico estructural (decisión 120)', () => {
+  const base = (sesion, extra = {}, casa = ALARMA) => RP.revisarPlan(`## SESIÓN\n${sesion}\n## PLAN DEL MES\n- x.\n## PROGRAMA PARA CASA\n${casa}`, { alarmas: [ALARMA], escalon: 1, ...extra }).map(p => p.id);
+  const nt = (s, e) => base(s, e).filter(i => i === 'neural-tensor');
+  assert.deepEqual(nt('- Si va bien: mantener el deslizador neural y progresar el tronco.'), [], '«mantener» = seguir haciendo');
+  assert.deepEqual(nt('- Deslizador del nervio ciático: 4 series de 20–30 segundos (sugerencia de la IA).'), [], 'un deslizador es oscilación');
+  assert.deepEqual(nt('- Si va bien: mantener el deslizador.\n  - Bird-dog: mantener 5 segundos (sugerencia de la IA).'), [], 'una viñeta no abre contexto neural');
+  assert.deepEqual(nt('- Slump: mantener la posición 5 s (sugerencia de la IA).'), ['neural-tensor'], 'mantener la postura sí');
+  const prim = s => base(`### INTERVENCIÓN PRINCIPAL (12–35 min)\n${s}`, { primera: true }).filter(i => i === 'neural-primera');
+  assert.deepEqual(prim('**Movilización neural**\n- Deslizador en supino, oscilación lenta, reevaluando el slump.'), [], 'un deslizador puede abrir la sesión');
+  assert.deepEqual(prim('- Slump sentado, suave.'), ['neural-primera']);
+  const vol = base('- Deslizador: 3 series de 20–30 s de oscilación (sugerencia de la IA).', {}, `- Descansa 1 minuto. Repite 3 veces.\n${ALARMA}`).filter(i => i === 'volumen');
+  assert.deepEqual(vol.length, 1, 'solo «1 minuto»: «Repite 3 veces» son las 3 series');
+  const de = (s, fuente = '') => base(s, { fuente }).filter(i => i === 'diagnostico-estructural');
+  assert.deepEqual(de('- Explicar que el dolor viene de una protrusión discal que comprime la raíz.'), ['diagnostico-estructural']);
+  assert.deepEqual(de('- Explicar que el dolor viene de una protrusión discal.', 'RM: protrusión L5-S1'), [], 'consta en los datos');
+  assert.deepEqual(de('- Explicar que el nervio está irritado.'), []);
+  assert.match(PIA.promptPlan(conAndres({}, () => UI.contextoPlanIA().entrada)), /sin atribuir el dolor a una estructura o lesión concreta \(protrusión, hernia, compresión de la raíz…\)/);
 });
