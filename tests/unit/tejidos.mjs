@@ -1,7 +1,7 @@
 // Tiempos de recuperación de tejidos (panel ⏱ de la cabecera: data/tejidos.js,
 // lib/tejidos.js, docs/tiempos-tejido.md). Se ejecuta desde tests/unit.js.
-import { assert, leer, test, TIEMPOS_TEJIDO } from './comun.mjs';
-const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles, rangoFase, buscarFila, infoBarraHTML, tieneBarra, fuentesTejidoHTML } = await import('../../lib/tejidos.js');
+import { assert, leer, test, TIEMPOS_TEJIDO, HYPOTHESES } from './comun.mjs';
+const { posicionDia, marcaHoy, tiemposTejidoHTML, gruposVisibles, rangoFase, buscarFila, infoBarraHTML, tieneBarra, fuentesTejidoHTML, filasPaciente, FILTRO_PACIENTE } = await import('../../lib/tejidos.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 
 console.log('\ntiempos de tejido');
@@ -119,7 +119,7 @@ test('tiempos de tejido: solo consulta — ni payload, ni resúmenes, ni informe
   // En app.js solo lo usa el panel
   const app = leer('app.js');
   const usos = [...app.matchAll(/TIEMPOS_TEJIDO|tiemposTejidoHTML/g)].length;
-  assert.equal(usos, 5, 'import de data.js, import de lib/tejidos.js, la llamada en abrirTiemposTejido() y la tarjeta de una barra');
+  assert.equal(usos, 6, 'import de data.js, import de lib/tejidos.js, la llamada en abrirTiemposTejido(), la tarjeta de una barra y las filas del paciente');
   const cuerpo = app.slice(app.indexOf('function buildPhysiQPayload'), app.indexOf('function buildPhysiQPayload') + 6000);
   assert.ok(!/tejid/i.test(cuerpo));
 });
@@ -512,4 +512,42 @@ test('tejidos: la tarjeta de cada barra lista sus fuentes, enlazadas a la url o 
   assert.ok(h.includes(`data-claves="${g.notaFuentes.join('|')}"`));
   assert.equal((h.match(/tej-grupo-fuentes[\s\S]*?<\/details>/)[0].match(/class="tej-fuente-enlace"/g) || []).length, g.notaFuentes.length);
   assert.ok(!tiemposTejidoHTML(T, { filtro: g.id }).match(/tej-grupo-fuentes[\s\S]*?<\/details>/)[0].includes('<a '));
+});
+
+test('tejidos: porHipotesis — cada hipótesis existe y cada fila o subtipo también; «paciente» no es un grupo', () => {
+  assert.ok(!T.grupos.some(g => g.id === FILTRO_PACIENTE));
+  for (const [h, entradas] of Object.entries(T.porHipotesis)) {
+    assert.ok(HYPOTHESES[h], `${h} no es una hipótesis`);
+    assert.ok(entradas.length, `${h} sin filas`);
+    for (const e of entradas) {
+      const id = typeof e === 'string' ? e : e.id;
+      assert.ok(buscarFila(T, id), `${h}: ${id} no es una fila ni un subtipo`);
+      if (typeof e !== 'string') assert.equal(typeof e.posq, 'boolean', `${h}: ${id} posq`);
+    }
+  }
+});
+
+test('filasPaciente: según las hipótesis activas y el mecanismo; sin repetir; sin filas, vacío', () => {
+  assert.deepEqual(filasPaciente(T, []), { ids: [], hipotesis: [] });
+  assert.deepEqual(filasPaciente(T, ['h2']), { ids: [], hipotesis: [] }, 'pinzamiento subacromial: sin fila');
+  assert.deepEqual(filasPaciente(T, ['ro4']).ids, ['rodilla_lca_conservador']);
+  assert.deepEqual(filasPaciente(T, ['ro4'], { posquirurgico: true }).ids, ['rodilla_lca_reconstruido']);
+  assert.deepEqual(filasPaciente(T, ['h3']).ids, [], 'manguito: solo reparado');
+  const r = filasPaciente(T, ['lu3', 'lu1', 'lu5']);
+  assert.deepEqual(r, { ids: ['radiculopatia_lumbar'], hipotesis: ['lu3', 'lu5'] });
+});
+
+test('tiemposTejidoHTML: «Este paciente» solo con filas, primera pastilla, solo sus filas con los subtipos desplegados', () => {
+  assert.ok(!tiemposTejidoHTML(T, { filtro: FILTRO_PACIENTE }).includes('Este paciente'), 'sin paciente no hay pastilla');
+  const paciente = { ids: filasPaciente(T, ['tp1', 'tp8']).ids, nombres: ['Esguince', 'Aquiles'] };
+  const todos = tiemposTejidoHTML(T, { paciente });
+  assert.ok(/class="tej-filtro" [^>]*>\s*<button type="button" class="tej-filtro-btn tej-filtro-paciente" data-grupo="paciente" data-filtro-tejido="paciente"/.test(todos));
+  assert.ok(!todos.includes('class="tej-paciente"'));
+  const h = tiemposTejidoHTML(T, { paciente, filtro: FILTRO_PACIENTE });
+  assert.ok(h.includes('tej-filtro-paciente activo" data-grupo="paciente" data-filtro-tejido="todos" aria-pressed="true"'));
+  const barras = [...h.matchAll(/data-barra="([^"]+)"/g)].map(m => m[1]);
+  assert.deepEqual(barras.sort(), ['tendinopatia_aquilea_media', 'tobillo_lateral_g1', 'tobillo_lateral_g2', 'tobillo_lateral_g3'].sort());
+  assert.ok(h.includes('<details class="tej-subtipos" open>'));
+  assert.ok(h.includes('Según las hipótesis activas: Esguince · Aquiles.'));
+  assert.deepEqual([...h.matchAll(/class="tej-bloque" data-grupo="([^"]+)"/g)].map(m => m[1]), ['tendon', 'ligamento']);
 });
