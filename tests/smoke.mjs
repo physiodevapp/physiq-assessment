@@ -691,6 +691,55 @@ async function checkDerivacionVascular(page) {
   return { ok: bajoPaso && enCompleto && enFase5, bajoPaso, enCompleto, enFase5 };
 }
 
+// Derivación del cribado (`derivacion` en una pregunta de la fase 2; quiste de
+// Tarlov, l_u5, docs/tarlov.md): «¿Por qué?» y «Ampliar» con su fisiología;
+// el mensaje 🩺 solo con SÍ; el aviso de la fase 2 dice «Derivación médica»
+// sin el genérico «no exige derivación automática»; l6 sigue siendo urgencia;
+// llega a la fase 5 como derivación pendiente.
+async function checkDerivacionCribado(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  await irAFase2(page, 'lumbar');
+  await page.click('#tab_l_urogenital');
+  const fila = '#panel_l_urogenital #sq2_l_u5';
+  const r = {};
+  r.urgL6 = await page.locator('#panel_l_urogenital #sq2_l6').evaluate(el => el.classList.contains('sq2-urg'));
+  r.sinUrg = await page.locator(fila).evaluate(el => !el.classList.contains('sq2-urg'));
+  r.msgOculto = !(await page.isVisible(`${fila} .sq2-deriv-msg`));
+  await page.click(`${fila} summary`);
+  r.porque = await page.locator(`${fila} .razon`).evaluate(d => d.open && /Por qué/i.test(d.textContent) && /Cuánto pesa/i.test(d.textContent));
+  await page.click(`${fila} .razon-ampliar`);
+  await page.waitForTimeout(200);
+  r.ampliar = await page.evaluate(() => document.getElementById('razonPanel').classList.contains('open')
+    && /Fisiología/i.test(document.getElementById('razonContenido').textContent)
+    && /Hulens 2018/.test(document.getElementById('razonContenido').textContent));
+  await page.keyboard.press('Escape');
+  await page.click(`${fila} .sq-btn.si`);
+  await page.waitForTimeout(150);
+  r.msgVisible = await page.isVisible(`${fila} .sq2-deriv-msg`);
+  r.aviso = await page.evaluate(() => {
+    const t = document.getElementById('sistemicoAlert').textContent;
+    return /Derivación médica/.test(t) && /quiste de Tarlov/.test(t) && !/watchful/.test(t) && !/Derivación urgente/.test(t);
+  });
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .nrs-btn >> nth=4');
+  await page.fill('#signoComparable', 'Sedestación');
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  r.fase5 = await page.evaluate(() => {
+    const t = document.getElementById('resultsContent')?.textContent || '';
+    return t.includes('Derivación médica pendiente') && t.includes('quiste de Tarlov');
+  });
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 // «¿Por qué?» de los tests (fase 4b, docs/razonamiento-tests.md): hombro con
 // h2 (pinzamiento). Bajo los badges, la frase de «cuánto pesa»; «Ampliar →»
 // abre el mismo panel de la fase 2 con el detalle del test. Escritorio: panel
@@ -4498,11 +4547,14 @@ const SECCIONES = [
     return r.ok;
   } },
 
-  { id: 'derivacion', titulo: 'Derivación del árbol (lumbar, VASCULAR):', run: async ({ page }) => {
+  { id: 'derivacion', titulo: 'Derivación médica (árbol: lumbar VASCULAR; cribado: quiste de Tarlov):', run: async ({ page }) => {
     const r = await checkDerivacionVascular(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} aviso bajo el paso, al completar el árbol y en la fase 5`);
+    console.log(`  ${r.ok ? '✓' : '✗'} árbol: aviso bajo el paso, al completar el árbol y en la fase 5`);
     if (!r.ok) console.log('\nDerivación del árbol:', JSON.stringify(r));
-    return r.ok;
+    const c = await checkDerivacionCribado(page);
+    console.log(`  ${c.ok ? '✓' : '✗'} cribado (l_u5): «¿Por qué?» y «Ampliar» con fisiología, mensaje solo con SÍ, aviso sin el genérico, l6 sigue urgente, fase 5`);
+    if (!c.ok) console.log('\nDerivación del cribado:', JSON.stringify(c));
+    return r.ok && c.ok;
   } },
 
   { id: 'tactil', titulo: 'Botones en táctil (segundo toque y :hover):', run: async ({ browser, errors }) => {
