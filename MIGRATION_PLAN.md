@@ -421,7 +421,11 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
 - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
 - [x] physiq-report: leer `hm` del payload (otro repositorio): `_bloqueHM()` en su `lib/payload.js`, copia literal de `bloqueHMIA()`; un test en cada repositorio fija el mismo texto (2026-10)
 - [ ] Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)
-  - [ ] POTS / disautonomía: propuesta de diseño en `docs/pots.md` (2026-10), con las 13 fuentes leídas enteras (en abierto y PDF del usuario: ESC 2018, CCS 2020, Sivakoti 2026, Hakim 2017, George 2016, Fedorowski 2019) y 12 decisiones con su recomendación. Pendiente del visto bueno del usuario
+  - [x] POTS / disautonomía: diseño en `docs/pots.md` (2026-10), con las 13 fuentes leídas enteras (en abierto y PDF del usuario: ESC 2018, CCS 2020, Sivakoti 2026, Hakim 2017, George 2016, Fedorowski 2019); aceptadas las 12 recomendaciones
+  - [x] POTS: implementado (2026-10). Tarjeta de la fase 1, `SIS_DISAUTONOMIA` (4 preguntas de síncope urgentes, 1 derivación, patrón de sospecha y prueba de bipedestación activa), notas de las fases 3, 4 y 4b, recuadro de la fase 5, payload `ds`, 📋 Notas, 📄 Informe, informe con IA y aviso y red de seguridad de la fase 6. Pruebas unitarias (`tests/unit/disautonomia.mjs`) y sección `disautonomia` de la prueba de humo; prueba completa en verde
+  - [ ] POTS: revisión del usuario en la app antes de `main`
+  - [ ] POTS: physiq-report lee `ds` (otro repositorio): `_bloqueDs()`, copia de `bloqueDsIA()`, con los casos de `DS_CASOS` fijados en un test en cada repositorio
+  - [ ] Pregunta de síncope en el sistema cardiovascular de cada región (decisión 9 de `docs/pots.md`), trabajo aparte
   - [x] Tarlov: diseño en `docs/tarlov.md`, las 7 decisiones aceptadas y todas las fuentes leídas (2026-10). Implementado: `l_u5` (lumbar, `l_urogenital`) con `derivacion` y razonamiento completo, párrafos nuevos en `l6` y `lu_step1c`, y el campo `derivacion` en las preguntas de la fase 2
   - [x] Tarlov: revisión del usuario dada por hecha al fusionar (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico («Derivación médica indicada en la exploración»), así que la derivación de `l_u5` le llega sin tocar nada
   - [x] Tarlov, después: zonas de sacro, cóccix y periné en la tarjeta «Síntomas» de lumbar (decisión 5 de `docs/tarlov.md`): hecho en la Fase N, N7 (2026-10)

@@ -15,6 +15,7 @@ for (const tema of [
   'lado-y-exportar.mjs',
   'posquirurgico.mjs',
   'hipermovilidad.mjs',
+  'disautonomia.mjs',
   'fase5-y-version.mjs',
   'revision-informe.mjs',
   'verificacion.mjs',

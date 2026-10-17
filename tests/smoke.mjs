@@ -683,6 +683,100 @@ async function checkHipermovilidad(page) {
   return r;
 }
 
+// Disautonomía / POTS (Fase P, docs/pots.md), lumbar. Fase 1: «cuál» solo con
+// Diagnosticada. Fase 2: las 4 preguntas del síncope sin plegar y urgentes, la
+// paroxística con 🩺, el patrón de sospecha y la prueba de bipedestación (las
+// dos copias, panel y acordeón, sincronizadas; compatible e hipotensión). Fase
+// 3: la nota de la tolerancia. 320 px: nada se sale. Quitar la marca quita el
+// sistema. Después, un recorrido entero: la línea de la 4b, el recuadro de la
+// fase 5 y el aviso y la red de seguridad de la fase 6.
+async function checkDisautonomia(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#motivoConsulta', 'Dolor lumbar y mareo al estar de pie');
+  await page.fill('#edadPaciente', '24');
+  await page.dispatchEvent('#edadPaciente', 'input');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.tipoOculto = !(await page.isVisible('#dsTipoWrap'));
+  await page.click('#dsEstado .option-btn[data-valor="diagnosticada"]');
+  r.tipoVisible = await page.isVisible('#dsTipoWrap');
+  await page.click('#dsEstado .option-btn[data-valor="sospecha"]');
+  r.tipoOcultoSospecha = !(await page.isVisible('#dsTipoWrap'));
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_disautonomia');
+  await page.click('#tab_transversal_disautonomia');
+  const P = '#panel_transversal_disautonomia';
+  r.urgSinPlegar = await page.$$eval(`${P} .sq2-urg`, els => els.length) === 4;
+  r.sospecha = await page.$$eval(`${P} .ds-io`, els => els.length) === 3;
+  await page.click(`${P} #sq2_ds_u_esfuerzo .sq-btn.si`);
+  r.urgencia = await page.isVisible('#sistemicoAlert .urgencia-alert');
+  await page.click(`${P} #sq2_ds_u_esfuerzo .sq-btn.no`);
+  await page.click(`${P} #sq2_ds_d_paroxistica .sq-btn.si`);
+  r.derivacion = await page.isVisible(`${P} #sq2_ds_d_paroxistica .sq2-deriv-msg`);
+  await page.click(`${P} #sq2_ds_d_paroxistica .sq-btn.no`);
+  // Prueba de bipedestación: compatible (24 años, corte 30)
+  await page.click(`${P} button:has-text("Hacer la prueba de bipedestación")`);
+  const campo = (f, c) => `${P} [data-ds-fila="${f}"][data-ds-campo="${c}"]`;
+  const cifras = { tumbado: [70, 120, 75], m1: [95, 112, 72], m3: [102, 118, 76], m5: [104, 118, 76], m8: [99, 118, 76], m10: [101, 118, 76] };
+  for (const [f, [fc, tas, tad]] of Object.entries(cifras)) {
+    await page.fill(campo(f, 'fc'), String(fc));
+    await page.fill(campo(f, 'tas'), String(tas));
+    await page.fill(campo(f, 'tad'), String(tad));
+  }
+  await page.check(campo('m3', 'sintomas'));
+  const resultado = () => page.evaluate(p => document.querySelector(`${p} [data-ds-resultado]`).textContent, P);
+  r.compatible = (await resultado()).includes('Aumento de la FC de 32 lpm mantenido') && (await resultado()).includes('Compatible con taquicardia ortostática');
+  r.sincronizada = await page.evaluate(() => document.querySelector('#acc_transversal_disautonomia [data-ds-fila="m10"][data-ds-campo="fc"]').value === '101'
+    && document.querySelector('#acc_transversal_disautonomia [data-ds-fila="m3"][data-ds-campo="sintomas"]').checked);
+  r.payload = await page.evaluate(async () => JSON.stringify((await import('./app.js')).buildPhysiQPayload().ds) === JSON.stringify({ es: 'sospecha', ti: '', pb: true, dfc: 32, ho: false, ot: true, cs: null }));
+  await page.fill(campo('m5', 'tas'), '95');
+  r.hipotension = (await resultado()).includes('hipotensión ortostática, no un POTS');
+  await page.fill(campo('m5', 'tas'), '118');
+  // Fase 3: la nota de la tolerancia
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForTimeout(150);
+  r.notaFase3 = await page.isVisible('#dsNotaTolerancia') && (await page.textContent('#dsNotaTolerancia')).includes('la matriz mide lo segundo');
+  // 320 px: fase 1 y la prueba en el acordeón, sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#acc_transversal_disautonomia .sistema-accordion-header');
+  await page.waitForTimeout(150);
+  r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  r.inputs320 = await page.$$eval('#acc_transversal_disautonomia .ds-tabla input[type="number"]', els => els.length === 18 && els.every(e => e.getBoundingClientRect().right <= 320 && e.getBoundingClientRect().width >= 40));
+  // Quitar la marca quita el sistema
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#dsEstado .option-btn[data-valor="sospecha"]');
+  r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_disautonomia') && !document.getElementById('tab_transversal_disautonomia') && !document.body.classList.contains('disautonomia'));
+  // Recorrido entero con la sospecha marcada: 4b, fase 5 y fase 6
+  await abrirApp(page);
+  await page.click('#dsEstado .option-btn[data-valor="sospecha"]');
+  await walkRegion(page, 'lumbar');
+  r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .ds-fase5')?.textContent || ''; return t.includes('Sospecha') && t.includes('semirreclinado') && t.includes('valoración médica urgente'); });
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.nota4b = await page.isVisible('#hypothesisCards .ds-nota-4b');
+  await page.evaluate(() => goToPhase(5));
+  await page.waitForTimeout(150);
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent; return t.includes('Disautonomía: empezar el ejercicio semirreclinado') && t.includes('si se desmaya mientras hace ejercicio'); });
+  r.ok = r.tipoOculto && r.tipoVisible && r.tipoOcultoSospecha && r.tab && r.urgSinPlegar && r.sospecha && r.urgencia && r.derivacion
+    && r.compatible && r.sincronizada && r.payload && r.hipotension && r.notaFase3 && r.ancho1 && r.ancho2 && r.inputs320 && r.sinSistema
+    && r.fase5 && r.nota4b && r.fase6;
+  return r;
+}
+
 async function checkDerivacionVascular(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
   await abrirApp(page);
@@ -4648,6 +4742,13 @@ const SECCIONES = [
     const r = await checkHipermovilidad(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta, cribado con cuestionario y Beighton, urgencias sin plegar, regla vascular, aviso 4b, fase 5 y 320 px`);
     if (!r.ok) console.log('\nHipermovilidad:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'disautonomia', titulo: 'Disautonomía / POTS (Fase P, lumbar):', run: async ({ page }) => {
+    const r = await checkDisautonomia(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta, síncope urgente sin plegar, paroxística, sospecha, prueba de bipedestación (compatible, hipotensión, copias sincronizadas), notas 3 y 4b, fase 5, fase 6 y 320 px`);
+    if (!r.ok) console.log('\nDisautonomía:', JSON.stringify(r));
     return r.ok;
   } },
 

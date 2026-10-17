@@ -257,6 +257,8 @@ test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento p
   assert.deepEqual(resumen(sis('transversal_hematologico')), ['R Sangrado espontáneo, · hem_1', 'R Heces negras/alquitranadas · hem_4',
     'R Episodios nuevos · hem_6', 'R Hemoptisis (toser · hem_4', 'R Fiebre alta, · hem_3+hem_5',
     'A Palidez en · propio', 'A Uñas cóncavas · propio', 'A Disnea rápida, · hem_2', 'A Uso crónico · propio']);
+  assert.deepEqual(resumen(sis('transversal_disautonomia')), ['R Síncope durante · ds_u_esfuerzo', 'R Síncope tumbado, · ds_u_tumbado',
+    'R Síncope con · ds_u_corazon', 'R Síncope con · ds_u_familia', 'A Taquicardia que · ds_d_paroxistica']);
 });
 
 test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar» solo con detalle', () => {
@@ -275,7 +277,7 @@ test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar»
 });
 
 test('razonamiento: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
-  const muestra = preguntasConRazon.find(p => !p.bandera && p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico && !p.sis.soloHipermovilidad);
+  const muestra = preguntasConRazon.find(p => !p.bandera && p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico && !p.sis.soloHipermovilidad && !p.sis.soloDisautonomia);
   if (!muestra) return;   // aún no hay ninguna pregunta con razonamiento
   const { region, q, r } = muestra;
   withState({ region, sistemicoAnswers: { [q.id]: 'SI' }, sistemicoAlerta: true }, () => {

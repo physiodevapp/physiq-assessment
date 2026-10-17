@@ -1,6 +1,6 @@
 # POTS (síndrome de taquicardia postural ortostática) y disautonomía — diseño
 
-Estado: **propuesta (octubre 2026), pendiente del visto bueno del usuario. No hay código.** Todas las fuentes están leídas enteras: las que están en abierto y los PDF del usuario.
+Estado: **las 12 recomendaciones, aceptadas por el usuario (octubre 2026); implementado (ver «Implementación»), pendiente de su revisión en la app antes de `main`.** Todas las fuentes están leídas enteras: las que están en abierto y los PDF del usuario.
 
 Es la tercera condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad / Ehlers-Danlos (`docs/hipermovilidad.md`) y del quiste de Tarlov (`docs/tarlov.md`).
 
@@ -362,7 +362,7 @@ Al principio, junto a «Paciente posquirúrgico» e «Hipermovilidad». Cada lí
 - **physiq-report**: copia literal `_bloqueDs()` en su `lib/payload.js` y un test en cada repositorio fija el mismo texto, como `_bloqueHM`. Va en otra PR, después de esta.
 - **Modo breve**: con «Sospecha», la prueba sin hacer es un pendiente (`ancla: 'cardDisautonomia'`). Las urgencias siempre se ven.
 
-## Decisiones que tienes que tomar
+## Decisiones (aceptadas por el usuario, octubre 2026: las 12 recomendaciones)
 
 1. **¿Entra, y como capa transversal con documento propio?** *Recomiendo sí a las dos.*
 2. **Tarjeta propia** con POTS · Hipotensión ortostática · Otra o no lo sabe. *Recomiendo tarjeta propia*, separada de la de hipermovilidad.
@@ -389,7 +389,7 @@ Al principio, junto a «Paciente posquirúrgico» e «Hipermovilidad». Cada lí
     
     No registrar `Raj 2021` (Part 2), que no se usa.
 
-## Cambios técnicos previstos (cuando se apruebe)
+## Cambios técnicos previstos
 
 ```js
 disautonomia: {
@@ -431,3 +431,39 @@ disautonomia: {
   - 320 px y el hub.
   
   La completa, antes de `main`.
+
+## Implementación (octubre 2026)
+
+Hecho según las 12 recomendaciones, con estas concreciones:
+
+- **Datos** (`data/comun.js`, `SIS_DISAUTONOMIA`):
+  - las 5 preguntas con su razonamiento y sus banderas enlazadas (Fase M);
+  - en `disautonomia`, el patrón de sospecha, el protocolo de la prueba y los textos con sus citas.
+  
+  Es el tercer sistema de las 7 regiones. Las 13 referencias, en `data/referencias.js` (sin `Raj 2021`).
+- **Lógica pura** (`lib/disautonomia.js`, `resultadoPrueba()`):
+  - la FC de referencia es la de tumbado, o 60 si es menor;
+  - el corte es de 30 lpm, o de 40 entre los 12 y los 19 años; por debajo de 12 no se interpreta;
+  - «2 medidas seguidas» se mira en los minutos 3, 5, 8 y 10, sin el primer minuto. Si solo supera el corte la última, el resultado es «repetir»;
+  - la hipotensión ortostática cuenta a partir del minuto 3 (TAS −20, TAD −10 o TAS por debajo de 90) y manda sobre el aumento de la FC;
+  - sin edad, la prueba no se interpreta, como la escala de Beighton.
+- **La prueba en la pantalla**:
+  - las cifras se escriben sin repintar el bloque, para no perder el foco;
+  - se copian a la otra copia del sistema (panel o acordeón) y solo se repinta el resultado.
+- **Payload `ds`**: `{ es, ti, pb, dfc, ho, ot, cs }`, solo con la tarjeta activa. `ho` y `ot` valen `null` mientras la prueba no tenga un resultado concluyente (sin hacer, a medias, sin edad o «repetir»).
+- **Lo que no se dice**:
+  - el 📄 Informe nunca escribe «POTS» con la sospecha: usa el bloque «RESPUESTA AL PONERSE DE PIE»;
+  - con «hipotensión ortostática» diagnosticada no sale la pauta de ejercicio del POTS, pero sí las adaptaciones de Hakim 2017.
+- **Fase 6**: el aviso cita Fu 2010 y George 2016 para el paso a lo vertical («hacia el final del 2.º mes»). Con las dos tarjetas activas sale además la adaptación a la hipermovilidad.
+- **Fase 4**: la nota de `ce_step4b` sale al pintar el paso. Si se marca la tarjeta con el árbol ya respondido, no aparece hasta que el paso se vuelve a pintar.
+- **Pruebas**:
+  - unitarias en `tests/unit/disautonomia.mjs`; entre ellas, que marcar la tarjeta no cambia las urgencias ni el pintado de ningún otro sistema en las 7 regiones;
+  - el inventario de banderas de los sistemas compartidos (`tests/unit/razonamiento.mjs`);
+  - la sección `disautonomia` de la prueba de humo, que pasó, igual que la prueba completa.
+- **physiq-report**: pendiente, en otra PR. Copiar `bloqueDsIA()` como `_bloqueDs()` en su `lib/payload.js`, con los casos de `DS_CASOS` (`tests/unit/disautonomia.mjs`) fijados en su test.
+
+## Siguiente paso
+
+1. **Revisión del usuario en la app** antes de `main`: la tarjeta, el sistema (con los razonamientos), la prueba de bipedestación, las notas de las fases 3, 4 y 4b, el recuadro de la fase 5 y el aviso de la fase 6.
+2. **physiq-report**: leer `ds` del payload (otro repositorio).
+3. **Trabajo aparte** (decisión 9): una pregunta de síncope en el sistema cardiovascular de cada región, con su revisión región a región.

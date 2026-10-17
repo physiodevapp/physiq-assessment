@@ -13,6 +13,9 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «PROGRAMA PARA CASA»  
   ↳ etiqueta  
   ↳ clave `titulo`
+- [ ] «Si te desmayas mientras haces ejercicio, para y no vuelvas a hacer ejercicio hasta que te vea el médico.»  
+  ↳ fuente: NICE CG109, recomendaciones 1.3.2.2 y 1.5.4.3: con un síncope durante el ejercicio, no hacer ejercicio hasta la valoración; Brignole 2018, p. 1911 (docs/pots.md)  
+  ↳ clave `alarmaSincope`
 - [ ] «Qué hacer:»  
   ↳ etiqueta  
   ↳ clave `queHacer`
@@ -330,6 +333,10 @@ Regiones periféricas:
 
 ## 5. Avisos de la fase
 
+- [ ] «Disautonomía: empezar el ejercicio semirreclinado, tumbado o en el agua (no muy caliente) y añadir lo vertical poco a poco (Raj 2020, rec. 14; en Fu 2010 y George 2016, hacia el final del 2.º mes); mejor dinámico que isométrico, no comer en la hora anterior y terminar con una vuelta a la calma suave (Hakim 2017, p. 172). Evitar estar mucho rato de pie quieto en la sesión (Raj 2020, p. 367). La mejoría puede tardar 4–6 semanas (Raj 2020, p. 368).»  
+  ↳ fuente en el texto (Raj 2020, Fu 2010, George 2016, Hakim 2017)
+- [ ] «Disautonomía con hipermovilidad: adaptar además el ejercicio a la hipermovilidad, la inestabilidad y las lesiones (Hakim 2017, p. 172).»  
+  ↳ fuente en el texto (Hakim 2017)
 - [ ] «Nivel orientativo: el juicio de irritabilidad varía entre fisioterapeutas (acuerdo del 71 %, kappa 0,39–0,44; Barakatt 2009). Puedes cambiar la gravedad y la irritabilidad.»  
   ↳ fuente en el texto (Barakatt 2009)
 - [ ] «Es una propuesta, no una prescripción: la decide y la firma el fisioterapeuta.»  
@@ -479,6 +486,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ **organización orientativa**
 - [ ] «Cierre: 5 min (45–50)»  
   ↳ **organización orientativa**
+- [ ] «Red de seguridad (disautonomía): explicar que, si se desmaya mientras hace ejercicio, debe parar y no volver a hacer ejercicio hasta que le vea el médico, y comprobar que lo ha entendido (NICE CG109, 1.3.2.2 y 1.5.4.3; Brignole 2018, p. 1911).»  
+  ↳ fuente en el texto (NICE CG109, Brignole 2018)
 - [ ] «Signo comparable y la actividad que el paciente refiere como control (Maitland 2005, cap. 6, pp. 100–101 y 128).»  
   ↳ fuente en el texto (Maitland 2005)
 - [ ] «Cómo reaccionó a la sesión anterior, en sus palabras y comparado con antes («D más 1», Maitland 2005, cap. 6, p. 156; cap. 9, tabla 9.3; Hengeveld y Banks 2005, cap. 9, p. 246).»  

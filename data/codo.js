@@ -5,7 +5,7 @@
 // con las demás regiones en SYSTEMIC_SCREENING / CIF_TREES / HYPOTHESES;
 // los esquemas de cada objeto están documentados allí.
 // ============================================================
-import { SIS_POSQUIRURGICO, SIS_HIPERMOVILIDAD, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR, RAZON_XANTOMAS, RAZON_CALCIFICANTE } from './comun.js';
+import { SIS_POSQUIRURGICO, SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR, RAZON_XANTOMAS, RAZON_CALCIFICANTE } from './comun.js';
 
 // ── Fase 3 · ZONAS_SINTOMA.codo — zonas del mapa corporal para P1–P4
 // (docs/sintomas-multiples.md). Revisadas por el usuario (2026-10);
@@ -36,6 +36,7 @@ export const screening = {
   sistemas: [
     SIS_POSQUIRURGICO,   // solo con mecanismo Post-quirúrgico (docs/posquirurgico.md)
     SIS_HIPERMOVILIDAD,  // solo con la tarjeta «Hipermovilidad» activa (docs/hipermovilidad.md)
+    SIS_DISAUTONOMIA,    // solo con la tarjeta «Disautonomía / POTS» activa (docs/pots.md)
     {
       id: 'co_trauma', icon: '🦴', nombre: 'Traumático (Fractura o Luxación)',
       banderasRojas: [

@@ -60,6 +60,7 @@ export const BASE_STATE = {
   cirugia:          { intervencion: '', fecha: '', semanasAprox: null, protocolo: '', restricciones: '', complicaciones: [], complicacionOtra: '' },
   derivacionResuelta: {},
   hipermovilidad:   { estado: '', subtipo: '', beighton: null, cuestionario: {} },
+  disautonomia:     { estado: '', tipo: '', sospecha: {}, bipedestacion: null },
   cuestionarios:    {},
   sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },
   sintomasSecundarios: [],

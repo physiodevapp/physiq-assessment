@@ -270,4 +270,4 @@ Hecho según este documento, con estas concreciones:
 
 1. **Revisión del usuario en la app** antes de `main`: tarjeta de la fase 1, sistema de la fase 2 (razonamientos incluidos), aviso de la 4b y recuadro de la fase 5.
 2. **physiq-report**: leer `hm` del payload (otro repositorio).
-3. Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar).
+3. Después del piloto: POTS / disautonomía (hecho en `docs/pots.md`, sin ninguna regla automática con esta tarjeta); otras condiciones (lupus; Tarlov como contenido de lumbar).
