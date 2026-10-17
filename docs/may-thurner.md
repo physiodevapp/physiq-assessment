@@ -1,6 +1,6 @@
 # Síndrome de May-Thurner (compresión de la vena ilíaca común izquierda) — diseño
 
-Estado: **implementado (octubre 2026), pendiente de la revisión del usuario.** El usuario aceptó las 10 recomendaciones («Decisiones», al final) y aportó en PDF StatPearls (Mangla y Hamad 2024), la guía ESVS 2022 y Kibbe 2004, leídos enteros (de la guía, los apartados que tratan el tema). Larkin 2026 no está disponible y no se cita: no cambia ninguna decisión (ver «Fuentes no leídas»). Lo implementado, en «Implementación», al final. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
+Estado: **implementado y fusionado en `main` (octubre 2026); la revisión del usuario se dio por hecha al fusionar.** El usuario aceptó las 10 recomendaciones («Decisiones», al final) y aportó en PDF StatPearls (Mangla y Hamad 2024), la guía ESVS 2022 y Kibbe 2004, leídos enteros (de la guía, los apartados que tratan el tema). Larkin 2026 no está disponible y no se cita: no cambia ninguna decisión (ver «Fuentes no leídas»). Lo implementado, en «Implementación», al final. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
 
 Origen: la congestión pélvica (`docs/congestion-pelvica.md`) y el cascanueces (`docs/mals-cascanueces.md`) ya nombran el May-Thurner como compresión venosa que puede causarlos o acompañarlos, sin pregunta ni razonamiento propios.
 
