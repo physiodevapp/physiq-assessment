@@ -2328,23 +2328,6 @@ async function checkCuestionarios(browser, errors) {
       return ops.every((x, i) => Math.abs(x.left - caja.left) < 1 && Math.abs(x.right - caja.right) < 1 && (i === 0 || x.top > ops[i - 1].bottom));
     });
   });
-  // Si caben todas en una fila, una fila (Kujala: tres opciones cortas)
-  await m.tap('[data-cuest-volver]');
-  await m.tap('[data-cuest="kujala"]');
-  r.filaUnica = await m.evaluate(() => {
-    const cont = [...document.querySelectorAll('#cuestCuerpo .cuest-ops-fila')];
-    return cont.length > 0 && cont.every(c => {
-      const ops = [...c.querySelectorAll('.cuest-op')].map(o => o.getBoundingClientRect()), caja = c.getBoundingClientRect();
-      return ops.every(x => Math.abs(x.top - ops[0].top) < 1) && Math.abs(ops[0].left - caja.left) < 1 && Math.abs(ops.at(-1).right - caja.right) < 1;
-    });
-  });
-  // Mismo criterio en los grupos de fase 1 (mecanismo, cronología): las tres en una fila,
-  // sin partir palabras a 320 px
-  r.gruposCol = await m.evaluate(() => [...document.querySelectorAll('#phase1 .option-group-col')].every(g => {
-    const bs = [...g.querySelectorAll('.option-btn')], b = bs.map(x => x.getBoundingClientRect()), c = g.getBoundingClientRect();
-    const sinPartir = bs.every(x => { x.style.overflowWrap = 'normal'; const ok = x.scrollWidth <= x.clientWidth + 1; x.style.overflowWrap = ''; return ok; });
-    return b.length === 3 && b.every(x => Math.abs(x.top - b[0].top) < 1) && Math.abs(b[0].left - c.left) < 1 && Math.abs(b[2].right - c.right) < 1 && sinPartir;
-  }));
   r.cabecera = await m.evaluate(() => document.documentElement.scrollWidth <= innerWidth
     && document.getElementById('themeBtn').getBoundingClientRect().right <= innerWidth);
   await movil.close();
@@ -4438,6 +4421,91 @@ async function checkPlanIA(browser, errors) {
 // última fila (o llena la fila o el último ocupa todo el ancho). Recorre las 7 regiones
 // hasta la fase 5 en un móvil de 320 px, abre todo lo plegable y mira cada fase (1–6).
 // Fuera: la silueta (zonas colocadas sobre el dibujo) y las citas (texto corrido).
+// Filas de opciones en pantalla estrecha (filas.js): un grupo pone todas sus opciones en una
+// fila solo si cada texto cabe en una línea; si no, dos por fila (la última a todo el ancho
+// si son impares) y, en los grupos de tres de las fases 1 y 3, una por fila si tampoco caben.
+// En los cuestionarios no se baja de dos por fila. A 320, 360 y 390 px, también con la
+// opción marcada (negrita) y tras repintar un ítem; en escritorio, sin data-cols.
+async function checkFilas(browser, errors) {
+  const r = {}, fallos = [];
+  // Comprueba los grupos [data-filas] visibles: ninguna fila llena con un texto partido, salvo
+  // la última disposición de su lista; la impar a todo el ancho con dos por fila
+  const revisar = (page, donde) => page.evaluate(donde => {
+    const lineas = x => { const rg = document.createRange(); rg.selectNodeContents(x);
+      const tops = [...rg.getClientRects()].filter(q => q.width > 1).map(q => q.top).sort((a, b) => a - b);
+      let n = 0, u = -Infinity; for (const t of tops) { if (t - u > 4) n++; u = t; } return n; };
+    const out = [];
+    for (const g of document.querySelectorAll('[data-filas]')) {
+      if (!g.offsetWidth) continue;
+      const pasos = g.dataset.filas.split(',').map(Number), cols = Number(g.dataset.cols);
+      if (!cols) { out.push(`${donde}: ${g.id || g.className} sin data-cols`); continue; }
+      const bs = [...g.children].filter(b => b.tagName === 'BUTTON'), caja = g.getBoundingClientRect();
+      const tops = new Set(bs.map(b => Math.round(b.getBoundingClientRect().top)));
+      if (cols !== pasos.at(-1) && bs.some(b => lineas(b) > 1)) out.push(`${donde}: ${g.id || g.className} con ${cols} columnas y un texto partido`);
+      if (cols === bs.length && tops.size !== 1) out.push(`${donde}: ${g.id || g.className} no está en una fila`);
+      if (cols === 2 && bs.length % 2) { const u = bs.at(-1).getBoundingClientRect();
+        if (Math.abs(u.left - caja.left) > 1 || Math.abs(u.right - caja.right) > 1) out.push(`${donde}: ${g.id || g.className} impar sin la última a todo el ancho`); }
+      if (cols === 1 && bs.some(b => Math.abs(b.getBoundingClientRect().width - caja.width) > 1)) out.push(`${donde}: ${g.id || g.className} una por fila sin ancho completo`);
+    }
+    return out;
+  }, donde);
+  const cols = (page, sel) => page.evaluate(sel => document.querySelector(sel)?.dataset.cols || '', sel);
+  for (const W of [320, 360, 390]) {
+    const context = await browser.newContext({ viewport: { width: W, height: 800 }, isMobile: true, hasTouch: true });
+    const page = await context.newPage();
+    page.on('pageerror', err => errors.push(`pageerror (filas ${W}): ${err.message}`));
+    await abrirApp(page);
+    await page.waitForFunction(() => document.querySelector('#cronologia')?.dataset.cols);
+    fallos.push(...await revisar(page, `${W} fase 1`));
+    r[`cron${W}`] = await cols(page, '#cronologia');
+    r[`mec${W}`] = await cols(page, '#mecanismo');
+    // Marcada (negrita): la opción más larga sigue sin partir con la misma disposición
+    await page.tap('#cronologia .option-btn >> nth=0');
+    await page.tap('#mecanismo .option-btn >> nth=2');
+    fallos.push(...await revisar(page, `${W} fase 1 marcada`));
+    // Fase 3: naturaleza y estabilidad
+    await page.fill('#motivoConsulta', 'x');
+    await page.tap('#phase1 .btn-primary');
+    await page.tap(`[onclick="selectRegion('lumbar', this)"]`);
+    await page.tap('#btnContinuarSinss');
+    await page.waitForFunction(() => document.querySelector('#naturaleza')?.dataset.cols);
+    fallos.push(...await revisar(page, `${W} fase 3`));
+    r[`nat${W}`] = await cols(page, '#naturaleza');
+    // Cuestionarios: Kujala y CAIT; y tras tocar una opción (el ítem se repinta)
+    for (const id of ['kujala', 'cait']) {
+      await page.evaluate(id => window.abrirCuestionarios(id), id);
+      await page.waitForFunction(() => document.querySelector('#cuestCuerpo .cuest-ops-fila')?.dataset.cols);
+      fallos.push(...await revisar(page, `${W} ${id}`));
+      if (await page.evaluate(() => [...document.querySelectorAll('#cuestCuerpo [data-filas]')].some(g => g.dataset.filas.endsWith(',1')))) fallos.push(`${W} ${id}: un cuestionario baja a una por fila`);
+      const item = await page.evaluate(() => document.querySelector('#cuestCuerpo .cuest-ops-fila').closest('.cuest-item').dataset.item);
+      await page.tap(`#cuestCuerpo .cuest-item[data-item="${item}"] .cuest-op >> nth=1`);
+      await page.waitForFunction(item => document.querySelector(`#cuestCuerpo .cuest-item[data-item="${item}"] .cuest-ops-fila`)?.dataset.cols, item);
+      fallos.push(...await revisar(page, `${W} ${id} marcada`));
+      await page.evaluate(() => window.cerrarCuestionarios());
+      await page.waitForFunction(() => !document.getElementById('cuestOverlay').classList.contains('open'));
+    }
+    await context.close();
+  }
+  // Lo que se esperaba al medirlo (2026-10): cronología una por fila a 320 y dos por fila desde 360;
+  // mecanismo dos por fila; naturaleza dos a 320 y las tres en fila desde 360
+  r.esperado = r.cron320 === '1' && r.cron360 === '2' && r.cron390 === '2'
+    && ['mec320', 'mec360', 'mec390'].every(k => r[k] === '2')
+    && r.nat320 === '2' && r.nat360 === '3' && r.nat390 === '3';
+  // Escritorio: sin data-cols, las tres en una fila como siempre
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const page = await ctx.newPage();
+  await abrirApp(page);
+  await page.waitForTimeout(200);
+  r.escritorio = await page.evaluate(() => [...document.querySelectorAll('#phase1 .option-group-col')].every(g => {
+    const tops = new Set([...g.children].map(b => Math.round(b.getBoundingClientRect().top)));
+    return !g.dataset.cols && tops.size === 1;
+  }));
+  await ctx.close();
+  r.fallos = fallos;
+  r.ok = !fallos.length && r.esperado && r.escritorio;
+  return r;
+}
+
 async function checkSinHuecos(browser, errors) {
   const fallos = [];
   const huecos = page => page.evaluate(() => {
@@ -5184,7 +5252,7 @@ const SECCIONES = [
 
   { id: 'cuestionarios', titulo: 'Calculadora de cuestionarios:', run: async ({ browser, errors }) => {
     const c = await checkCuestionarios(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las opciones de texto (una respuesta o varias) van en dos columnas, con la última a todo el ancho si son impares, todas en una fila si caben (Kujala), y una por fila si alguna es larga; mecanismo y cronología, las tres en una fila; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las opciones de texto (una respuesta o varias) van en dos columnas, con la última a todo el ancho si son impares, y una por fila si alguna es larga; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -5317,6 +5385,12 @@ const SECCIONES = [
   { id: 'barra-fija', titulo: 'Barra de navegación fija durante la entrada de fase (móvil):', run: async ({ browser, errors }) => {
     const r = await checkBarraFijaAnimacion(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} al volver de la 6 a la 5, la barra «← Anterior / Compartir» sigue al pie de la pantalla en cada fotograma de la animación (sin transform en la fase), así que no tapa «Plan de tratamiento →» ni salta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'filas', titulo: 'Filas de opciones en pantalla estrecha (320, 360 y 390 px):', run: async ({ browser, errors }) => {
+    const r = await checkFilas(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} una fila solo si ningún texto parte; si no, dos por fila (la impar a todo el ancho) y, en los grupos de tres de las fases 1 y 3, una por fila; los cuestionarios nunca bajan de dos; también con la opción marcada y tras repintar; en escritorio sin cambios${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
