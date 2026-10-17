@@ -2092,8 +2092,9 @@ async function checkCondiciones(browser, errors) {
     const p = document.getElementById('condPanel').getBoundingClientRect();
     const ids = [...document.querySelectorAll('#condCuerpo .cond-fila')].map(f => f.dataset.condicion).join();
     return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,tarlov,cascanueces'
+      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,tarlov,cascanueces,congestionPelvica'
       && /Solo en lumbar/i.test(document.getElementById('condCuerpo').textContent)
+      && /Solo en cadera/i.test(document.getElementById('condCuerpo').textContent)
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
   });
   r.sinMarcar = await estado('lupus') === 'No consta' && await estado('posquirurgico') === 'No marcado';
@@ -5178,7 +5179,7 @@ const SECCIONES = [
 
   { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
     const c = await checkCondiciones(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 6 filas en orden, «Solo en lumbar» y fuentes como citas; sin región, las de lumbar no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 7 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 

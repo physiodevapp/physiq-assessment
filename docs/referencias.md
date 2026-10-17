@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **557** referencias de literatura, con **3114** usos.
+- **557** referencias de literatura, con **3117** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **379** de 557 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -63,8 +63,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Ruperto 2011](#ruperto-2011) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Shelkey 2014](#shelkey-2014) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 16 | **sin revisar** |
-| [Champaneria 2016](#champaneria-2016) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Dos Santos 2016](#dos-santos-2016) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Champaneria 2016](#champaneria-2016) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Dos Santos 2016](#dos-santos-2016) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Byers 2017](#byers-2017) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Henderson 2017](#henderson-2017) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Malfait 2017](#malfait-2017) | razonamiento fase 2 · texto | 62 | **sin revisar** |
@@ -81,7 +81,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kaneko 2021](#kaneko-2021) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Pisetsky 2021](#pisetsky-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Thanou 2021](#thanou-2021) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Bałabuszek 2022](#bałabuszek-2022) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Bałabuszek 2022](#bałabuszek-2022) | razonamiento fase 2 | 3 | **sin revisar** |
 | [De Maeseneer 2022](#de-maeseneer-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Drosos 2022](#drosos-2022) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -1353,9 +1353,11 @@ Nota: Revisión narrativa de un servicio de radiología intervencionista que emb
 Citada como:
 
 1. Bałabuszek 2022 — Bałabuszek, Toborek y Pietura, «Comprehensive overview of the venous disorder known as pelvic congestion syndrome», Ann Med 2022;54(1):22–36, apartados «Anatomy», «Symptoms», «Diagnosis» y tabla 1 (texto completo en PMC).
+2. Bałabuszek 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Síndrome de congestión pélvica» | guía de condiciones especiales | 2 |
 | Cadera | — | Pregunta `ca_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 | Cadera | — | Pregunta `ca_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
@@ -2397,9 +2399,11 @@ Nota: Informe HTA del NIHR (138 pp. en dos PDF del usuario), leído entero (2026
 Citada como:
 
 1. Champaneria 2016 — Champaneria, Shah, Moss, Gupta, Birch, Middleton y Daniels, «The relationship between pelvic vein incompetence and chronic pelvic pain in women: systematic reviews of diagnosis and treatment effectiveness», Health Technol Assess 2016;20(5), caps. 1, 3, 4, 6 y 8.
+2. Champaneria 2016
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Síndrome de congestión pélvica» | guía de condiciones especiales | 2 |
 | Cadera | — | Pregunta `ca_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
 ### Chauhan 2023
@@ -3250,9 +3254,11 @@ Nota: Dos casos de una unidad venosa privada que emboliza (The Whiteley Clinic);
 Citada como:
 
 1. Dos Santos 2016 — Dos Santos y Whiteley, «Pelvic congestion syndrome masquerading as osteoarthritis of the hip», SAGE Open Med Case Rep 2016;4 (texto completo en PMC).
+2. Dos Santos 2016
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Síndrome de congestión pélvica» | guía de condiciones especiales | 2 |
 | Cadera | — | Pregunta `ca_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
 ### Downie 2013

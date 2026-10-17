@@ -136,6 +136,20 @@ Las pistas resumen preguntas existentes; entre corchetes, de dónde sale cada un
 - **Botón:** «Ir a la pregunta →».
 - **Fuentes:** Penfold 2024 · Mačionienė 2026, de las de `l_u6`. Bruessel 2026 se queda fuera: trata la asociación con el Ehlers-Danlos, que no está en la fila.
 
+### Solo en cadera: síndrome de congestión pélvica
+
+Añadida después de fusionar la guía (2026-10, petición del usuario): la pregunta `ca_u6` entró a la vez que la guía (`docs/congestion-pelvica.md`).
+
+- **Qué es:** «Venas de la pelvis dilatadas que se llenan al estar de pie; el dolor puede notarse en la ingle o la cadera.» [resumen del «¿Por qué?» de `ca_u6`]
+- **Piensa en él si:**
+  - en una mujer, desde hace meses, hay un dolor sordo o de peso en la pelvis, la ingle o la cadera, peor de pie o al final del día y mejor tumbada, [`ca_u6`]
+  - y varices en la vulva, el periné, el muslo o la nalga, o un dolor que dura horas después de las relaciones sexuales. [`ca_u6`]
+- **Añade:** una derivación médica preferente, no urgente, para descartar otras causas. Recuerda que un dolor pélvico nuevo con retraso de la regla no es esto, sino la pregunta urgente del embarazo ectópico (lo dice el «cuánto pesa» de `ca_u6`).
+- **Botón:** «Ir a la pregunta →»; con otra región, «Elige cadera en la fase 2».
+- **Fuentes:** Bałabuszek 2022 · Champaneria 2016 · Dos Santos 2016, las que cita el «¿Por qué?» de `ca_u6` para el mecanismo y la presentación como dolor de cadera.
+
+El apartado y el botón de las filas de región salen del nombre de la región (`grupoRegion`, `sinRegion` en `data/condiciones.js`), así que una región nueva no necesita textos propios.
+
 ## Estado de cada fila
 
 Una etiqueta pequeña, leída del `state` cada vez que se abre el diálogo:
@@ -146,7 +160,7 @@ Una etiqueta pequeña, leída del `state` cada vez que se abre el diálogo:
 | Hipermovilidad | «Diagnosticada» (+ subtipo si consta) · «Sospecha» · «No consta» |
 | Disautonomía | «Diagnosticada» (+ tipo) · «Sospecha» · «No consta» |
 | Lupus | «Diagnosticado» · «Sospecha» · «No consta» |
-| Tarlov, cascanueces | «Sí» · «Sin responder» (ver decisión 4) |
+| Tarlov, cascanueces, congestión pélvica | «Sí» con la pregunta marcada y su región elegida; nada en otro caso (decisión 4) |
 
 Las marcadas llevan el color de acento; «No consta» va en gris, sin color de alarma: no marcar es lo normal.
 
