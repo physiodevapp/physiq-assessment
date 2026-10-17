@@ -573,7 +573,7 @@ lupus: {
 
 ## Implementación (octubre 2026)
 
-Hecho según las 18 decisiones y los 16 cambios, con estas concreciones:
+Hecho según las 18 decisiones y los 16 cambios, y revisado por el usuario (2026-10), con estas concreciones:
 
 - **Datos** (`data/comun.js`, `SIS_LUPUS`, cuarto sistema de las 7 regiones, tras el de disautonomía):
   - 6 urgencias y 4 derivaciones con `les: 'diagnosticado'`, cada una con su razonamiento y su bandera enlazada (Fase M);
