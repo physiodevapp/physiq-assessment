@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **1** frase.
+Redacción propia: **6** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -13,6 +13,12 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «PROGRAMA PARA CASA»  
   ↳ etiqueta  
   ↳ clave `titulo`
+- [ ] «Si tienes fiebre o escalofríos, o te encuentras mal de una forma nueva, ve hoy mismo al médico: con tu tratamiento, una infección puede dar poca fiebre.»  
+  ↳ fuente: Rao y Mikdashi 2023, «Proposed Steps» (la fiebre en el lupus es infecciosa mientras no se demuestre lo contrario); Yasir 2023, «Adverse Effects» (los corticoides pueden quitar la fiebre)  
+  ↳ clave `alarmaFiebreLupus`
+- [ ] «Si de golpe notas debilidad o adormecimiento de un lado del cuerpo, dificultad para hablar o pérdida de visión, llama al 112, aunque se te pase.»  
+  ↳ fuente: Goodman 2018, cap. 12, p. 445 (enfermedad cerebrovascular, frecuente en el lupus); Drosos 2022, p. 773; Rout 2024 (síndrome antifosfolípido), «Deterrence and Patient Education» (enseñar los síntomas del AIT)  
+  ↳ clave `alarmaIctusLupus`
 - [ ] «Si te desmayas mientras haces ejercicio, para y no vuelvas a hacer ejercicio hasta que te vea el médico.»  
   ↳ fuente: NICE CG109, recomendaciones 1.3.2.2 y 1.5.4.3: con un síncope durante el ejercicio, no hacer ejercicio hasta la valoración; Brignole 2018, p. 1911 (docs/pots.md)  
   ↳ clave `alarmaSincope`
@@ -335,6 +341,14 @@ Regiones periféricas:
 
 - [ ] «Disautonomía: empezar el ejercicio semirreclinado, tumbado o en el agua (no muy caliente) y añadir lo vertical poco a poco (Raj 2020, rec. 14; en Fu 2010 y George 2016, hacia el final del 2.º mes); mejor dinámico que isométrico, no comer en la hora anterior y terminar con una vuelta a la calma suave (Hakim 2017, p. 172). Evitar estar mucho rato de pie quieto en la sesión (Raj 2020, p. 367). La mejoría puede tardar 4–6 semanas (Raj 2020, p. 368).»  
   ↳ fuente en el texto (Raj 2020, Fu 2010, George 2016, Hakim 2017)
+- [ ] «Lupus: intensidad moderada, con aeróbico y fuerza, individualizada y supervisada por un fisioterapeuta (Blaess 2024, recs. 9, 11 y 14); antes de empezar, su médico valora las contraindicaciones (Blaess 2024, rec. 10). Fotoprotección para prevenir brotes (Parodis 2024, rec. LES 2) y evitar el ejercicio al sol con un índice UV por encima de 3 (opinión de los autores de Frade 2023).»  
+  ↳ **redacción propia**
+- [ ] «Lupus en brote o peor sin valorar: que su reumatólogo revalore las contraindicaciones antes de seguir (Blaess 2024, rec. 4); en un brote articular, no cargar las articulaciones inflamadas (Blaess 2024, rec. 5).»  
+  ↳ **redacción propia**
+- [ ] «Lupus con anticoagulante o antiagregante: precaución con lo que tenga riesgo de golpe (Blaess 2024, rec. 3).»  
+  ↳ **redacción propia**
+- [ ] «Lupus con Raynaud: al aire libre, guantes o ropa contra el frío; evitar tocar superficies frías y secar bien la piel durante y después del ejercicio (Blaess 2024, rec. 2). Por lo mismo, cuidado con el frío local en manos y pies (inferencia, sin fuente propia).»  
+  ↳ **redacción propia**
 - [ ] «Disautonomía con hipermovilidad: adaptar además el ejercicio a la hipermovilidad, la inestabilidad y las lesiones (Hakim 2017, p. 172).»  
   ↳ fuente en el texto (Hakim 2017)
 - [ ] «Nivel orientativo: el juicio de irritabilidad varía entre fisioterapeutas (acuerdo del 71 %, kappa 0,39–0,44; Barakatt 2009). Puedes cambiar la gravedad y la irritabilidad.»  
@@ -486,6 +500,10 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ **organización orientativa**
 - [ ] «Cierre: 5 min (45–50)»  
   ↳ **organización orientativa**
+- [ ] «Red de seguridad (lupus): explicar que la fiebre, los escalofríos o un malestar general nuevos piden ir hoy mismo al médico, y que con su tratamiento una infección puede dar poca fiebre; comprobar que lo ha entendido (Rao y Mikdashi 2023; Yasir 2023).»  
+  ↳ **redacción propia**
+- [ ] «Red de seguridad (lupus): explicar que la debilidad o el adormecimiento de un lado, la dificultad para hablar o la pérdida de visión de golpe piden llamar al 112, aunque se pasen (Goodman 2018, cap. 12, p. 445; Drosos 2022, p. 773).»  
+  ↳ fuente en el texto (Goodman 2018)
 - [ ] «Red de seguridad (disautonomía): explicar que, si se desmaya mientras hace ejercicio, debe parar y no volver a hacer ejercicio hasta que le vea el médico, y comprobar que lo ha entendido (NICE CG109, 1.3.2.2 y 1.5.4.3; Brignole 2018, p. 1911).»  
   ↳ fuente en el texto (NICE CG109, Brignole 2018)
 - [ ] «Signo comparable y la actividad que el paciente refiere como control (Maitland 2005, cap. 6, pp. 100–101 y 128).»  

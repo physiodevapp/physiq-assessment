@@ -61,6 +61,7 @@ export const BASE_STATE = {
   derivacionResuelta: {},
   hipermovilidad:   { estado: '', subtipo: '', beighton: null, cuestionario: {} },
   disautonomia:     { estado: '', tipo: '', sospecha: {}, bipedestacion: null },
+  lupus:            { estado: '', corticoides: '', dosisAltas: '', inmunosupresores: '', antifosfolipidos: '', antitrombotico: false, osteonecrosis: false, raynaud: false, actividad: '', rasgos: {} },
   cuestionarios:    {},
   sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },
   sintomasSecundarios: [],

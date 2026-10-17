@@ -68,11 +68,11 @@ test('seguridad: marcar la tarjeta nunca quita ni rebaja una urgencia de otro si
     let sin, con, htmlSin, htmlCon;
     withState({ region: r, ...ds(), sistemicoAnswers: respuestas }, () => {
       sin = buildPhysiQPayload().ur;
-      htmlSin = sistemasActivos().filter(s => !s.soloDisautonomia).map(s => buildSistemaHTML(s)).join('');
+      htmlSin = sistemasActivos().filter(s => !s.soloDisautonomia && !s.soloLupus).map(s => buildSistemaHTML(s)).join('');
     });
     withState({ region: r, ...ds({ estado: 'sospecha' }), sistemicoAnswers: respuestas }, () => {
       con = buildPhysiQPayload().ur;
-      htmlCon = sistemasActivos().filter(s => !s.soloDisautonomia).map(s => buildSistemaHTML(s)).join('');
+      htmlCon = sistemasActivos().filter(s => !s.soloDisautonomia && !s.soloLupus).map(s => buildSistemaHTML(s)).join('');
     });
     assert.deepEqual(con, sin, `${r}: mismas urgencias`);
     assert.equal(htmlCon, htmlSin, `${r}: los demás sistemas se pintan igual`);

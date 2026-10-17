@@ -1,6 +1,6 @@
 # Lupus eritematoso sistémico (LES) — diseño
 
-Estado: **las 18 decisiones, aceptadas por el usuario (octubre 2026). Después se leyeron enteras las guías (PDF del usuario y Blaess 2024 en abierto), que proponen 16 cambios sobre lo aceptado: ver «Revisión con las guías», pendiente de tu visto bueno.** No hay código todavía.
+Estado: **las 18 decisiones y los 16 cambios de «Revisión con las guías», aceptados por el usuario (octubre 2026); implementado (ver «Implementación»), pendiente de su revisión en la app antes de `main`.** Lo que dicen las secciones de diseño de abajo queda corregido por «Revisión con las guías» donde no coinciden (por ejemplo, los tramos de corticoides).
 
 ## Revisión con las guías (octubre 2026)
 
@@ -508,7 +508,9 @@ Al principio, junto a los recuadros de los pilotos. Cada línea va pegada a su f
     - Si no están, se puede implementar con las fuentes leídas.
     - La línea de los corticoides y la del brote se revisarían cuando lleguen.
 
-## Fuentes que faltan (PDF, por favor)
+## Fuentes que faltaban (ya leídas)
+
+El usuario aportó los PDF de las guías de esta lista y de Parodis 2024 (octubre 2026); todas están leídas enteras (ver «Revisión con las guías»). La lista se conserva como registro de lo que se pidió.
 
 Desde la sesión solo se llega a PMC y a NCBI Bookshelf. Las webs de las editoriales (BMJ / Elsevier, OUP, Wiley, EULAR, ACR) están bloqueadas. Por orden de utilidad:
 
@@ -568,3 +570,47 @@ lupus: {
   
   La completa, antes de `main`.
 - **Documentación**: este documento, `CLAUDE.md` (Fase P y el esquema de `state`) y `MIGRATION_PLAN.md`. En este último se corrige la casilla «Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)», que se marca hecha con sus subcasillas, y se añade la del lupus.
+
+## Implementación (octubre 2026)
+
+Hecho según las 18 decisiones y los 16 cambios, con estas concreciones:
+
+- **Datos** (`data/comun.js`, `SIS_LUPUS`, cuarto sistema de las 7 regiones, tras el de disautonomía):
+  - 6 urgencias y 4 derivaciones con `les: 'diagnosticado'`, cada una con su razonamiento y su bandera enlazada (Fase M);
+  - en `lupus`, los 6 rasgos de la sospecha, sus fuentes y los textos con sus citas.
+- **Parodis 2024** (EULAR no farmacológica, PDF del usuario, leída entera después de aceptar los cambios) no contradice nada. Se usa en dos líneas:
+  - la del sol: «fotoprotección para prevenir brotes», rec. LES 2, con sombrero y gafas de sol, que da Blaess 2024;
+  - la del tabaco, rec. común 3. «El tabaco aumenta la actividad del lupus» se atribuye a Bowers y Blum 2026, no a Gordon 2018, que solo lo nombra como factor de riesgo.
+  
+  La numeración de Parodis empieza en 1 en cada lista: se cita «rec. común N» o «rec. LES N».
+- **Lógica pura** (`lib/lupus.js`):
+  - estado vacío y normalizado;
+  - visibilidad (`elementoLESVisible`);
+  - rasgos de la sospecha, sin regla de puntos: cualquier «sí» de lr1–lr5 deriva, y lr6 no suma;
+  - pendientes del modo breve (`pendientesLES`);
+  - payload `le` (`lePayload`) y los textos de 📋 Notas, 📄 Informe e IA (`bloqueLESIA`).
+- **Payload `le`**, solo con la tarjeta activa:
+  - con «Diagnosticado»: `{ es, gc, ga, is, af, at, on, ry, av }` (estado, corticoides, dosis altas previas, inmunosupresores, antifosfolípidos, anticoagulante o antiagregante, osteonecrosis o Jaccoud, Raynaud, actividad);
+  - con «Sospecha»: `{ es, rs, fd }` («sí» de los rasgos y fármaco nuevo).
+- **Tarjeta de la fase 1** (`#cardLupus`, tras «Disautonomía / POTS»):
+  - estado;
+  - con «Diagnosticado», cinco filas de botones (un segundo toque desmarca) y tres casillas.
+- **Fase 2**: sin embudo. Con «Sospecha», el sistema solo muestra el bloque de los rasgos (`[data-les-bloque]`, pintado en el panel y en el acordeón).
+- **Fase 3**: las notas `#lesNotaNaturaleza` (Naturaleza) y `#lesNotaBrote` (bajo la matriz, solo con «En brote» o «Peor, sin valorar aún»).
+- **Fase 4b**: la línea `.les-nota-4b`, con la frase del antitrombótico solo con su casilla.
+- **Fase 5**: el recuadro `.les-fase5`, que nunca se pliega.
+- **Hipermovilidad** (decisión 15): con las dos tarjetas activas, la frase de Malfait 2017 (p. 19) bajo la escala de Beighton.
+- **Fase 6** (`AVISOS_LUPUS`, `RED_LUPUS` en `data/plan-tratamiento.js`):
+  - avisos: `lupus` siempre con «Diagnosticado»; `lupusBrote`, `lupusAntitrombotico` y `lupusRaynaud` según la tarjeta;
+  - red de seguridad: fiebre, TVP (`alarmaTVP`, que no se repite en las regiones que ya la tienen) e ictus.
+- **Referencias registradas**: las 21 que cita `data/`.
+  - En abierto: Aringer 2019, Tektonidou 2019, Frade 2023, Thanou 2021, Rao y Mikdashi 2023, Kaneko 2021, Pisetsky 2021, Blaess 2024.
+  - StatPearls: Bowers y Blum 2026, Rout 2024 (síndrome antifosfolípido), Matthews 2023, Yasir 2023, Saliba 2026.
+  - PDF del usuario: Fanouriakis 2024, Sammaritano 2025, Gordon 2018, Fragoulis 2023, Drosos 2022, Dures 2024, Ruperto 2011, Parodis 2024.
+  - Reusadas: Goodman 2018, Barney 2023, Deeb y Maher 2026 (Raynaud), Waheed 2023, NICE NG158 y Malfait 2017.
+- **Leídas y no citadas**, sin registrar: He 2026, Fangtham 2019, Santos 2023, Youssef 2016, Wolfe 2009, Ganesan 2023 y Smiljanić Tomičević 2023. Lo que aportaban lo dicen ya otras fuentes. Además, el nombre compuesto de la última no lo reconoce el detector de citas de `tests/referencias.mjs`.
+- **Pruebas**:
+  - unitarias en `tests/unit/lupus.mjs`. Entre ellas: que marcar la tarjeta, con todas las filas, no cambia las urgencias ni el pintado de ningún otro sistema en las 7 regiones; y `LES_CASOS`, el texto literal que copiará physiq-report;
+  - el inventario de banderas de los sistemas compartidos (`tests/unit/razonamiento.mjs`);
+  - la sección `lupus` de la prueba de humo.
+- **physiq-report**: pendiente, en otra PR. Copiar `bloqueLESIA()` como `_bloqueLES()` en su `lib/payload.js`, con los casos de `LES_CASOS` fijados en su test.

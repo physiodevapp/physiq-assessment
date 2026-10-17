@@ -89,7 +89,7 @@ test('razonamiento: fisiologia = { pasos (3–6), nota?, metafora? }, solo con d
 
 // ── Banderas de fase 2 (docs/razonamiento-banderas.md) ───────────────────────
 // Una bandera es un texto o { texto, regiones?, pregunta?, fase1?, razonamiento? }.
-const CAMPOS_BANDERA = ['texto', 'regiones', 'pregunta', 'fase1', 'razonamiento', 'hm'];
+const CAMPOS_BANDERA = ['texto', 'regiones', 'pregunta', 'fase1', 'razonamiento', 'hm', 'les'];
 const todasBanderas = [];
 for (const [region, data] of Object.entries(SYSTEMIC_SCREENING))
   for (const sis of data.sistemas)
@@ -259,6 +259,9 @@ test('banderas: sistemas compartidos, cada bandera enlazada o con razonamiento p
     'A Palidez en · propio', 'A Uñas cóncavas · propio', 'A Disnea rápida, · hem_2', 'A Uso crónico · propio']);
   assert.deepEqual(resumen(sis('transversal_disautonomia')), ['R Síncope durante · ds_u_esfuerzo', 'R Síncope tumbado, · ds_u_tumbado',
     'R Síncope con · ds_u_corazon', 'R Síncope con · ds_u_familia', 'A Taquicardia que · ds_d_paroxistica']);
+  assert.deepEqual(resumen(sis('transversal_lupus')), ['R Fiebre, escalofríos · les_u_fiebre', 'R Pierna o · les_u_tvp',
+    'R Falta de · les_u_tep_ictus', 'R Dolor torácico · les_u_pecho', 'R Úlcera en · les_u_dedos', 'R Convulsión, confusión, · les_u_neuro',
+    'A Dolor profundo · les_d_osteonecrosis', 'A Debilidad proximal · les_d_debilidad', 'A Articulaciones hinchadas, · les_d_brote', 'A Edemas o · les_d_rinon']);
 });
 
 test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar» solo con detalle', () => {
@@ -277,7 +280,7 @@ test('razonamiento: «¿Por qué?» solo en preguntas que lo tienen, «Ampliar»
 });
 
 test('razonamiento: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
-  const muestra = preguntasConRazon.find(p => !p.bandera && p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico && !p.sis.soloHipermovilidad && !p.sis.soloDisautonomia);
+  const muestra = preguntasConRazon.find(p => !p.bandera && p.region !== 'comun' && SYSTEMIC_SCREENING[p.region] && !p.sis.soloPosquirurgico && !p.sis.soloHipermovilidad && !p.sis.soloDisautonomia && !p.sis.soloLupus);
   if (!muestra) return;   // aún no hay ninguna pregunta con razonamiento
   const { region, q, r } = muestra;
   withState({ region, sistemicoAnswers: { [q.id]: 'SI' }, sistemicoAlerta: true }, () => {
