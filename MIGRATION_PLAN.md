@@ -432,7 +432,7 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
   - [x] Tarlov, después: zonas de sacro, cóccix y periné en la tarjeta «Síntomas» de lumbar (decisión 5 de `docs/tarlov.md`): hecho en la Fase N, N7 (2026-10)
   - [x] MALS y cascanueces: diseño en `docs/mals-cascanueces.md` (2026-10), 4 fuentes leídas enteras (Bruessel 2026 en PDF del usuario), las 7 recomendaciones aceptadas. Implementado: `l_u6` (cascanueces, lumbar, `l_urogenital`) con `derivacion` preferente y razonamiento completo; el MALS como párrafo en la bandera de pérdida de peso de `l_gi`, sin pregunta propia; ninguna regla con la hipermovilidad
   - [x] MALS y cascanueces: revisado por el usuario (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico
-  - [ ] MALS y cascanueces, después: congestión pélvica en cadera (decisión 5)
+  - [x] MALS y cascanueces, después: congestión pélvica en cadera (decisión 5): hecho, `docs/congestion-pelvica.md`
     - [x] Congestión pélvica: borrador de diseño en `docs/congestion-pelvica.md` (2026-10). 5 fuentes leídas enteras en PMC (Bruessel 2026, Bałabuszek 2022, Shelkey 2014, Dos Santos 2016, Peker 2020); propuesta: pregunta `ca_u6` en `ca_urogenital` con `derivacion` preferente, una frase en `ca_u4`, ninguna regla con la hipermovilidad
     - [x] Congestión pélvica: las 10 recomendaciones aceptadas por el usuario (2026-10)
     - [x] Congestión pélvica: StatPearls (Kuo 2025) y Hanna 2024 leídos enteros en PDF del usuario (2026-10); no cambian las decisiones
