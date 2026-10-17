@@ -5,7 +5,7 @@
 // con las demás regiones en SYSTEMIC_SCREENING / CIF_TREES / HYPOTHESES;
 // los esquemas de cada objeto están documentados allí.
 // ============================================================
-import { SIS_POSQUIRURGICO, SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR, RAZON_ISQUEMIA_AGUDA } from './comun.js';
+import { SIS_POSQUIRURGICO, SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, PREGUNTA_SINCOPE, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR, RAZON_ISQUEMIA_AGUDA } from './comun.js';
 
 // ── Fase 3 · ZONAS_SINTOMA.rodilla — zonas del mapa corporal para P1–P4
 // (docs/sintomas-multiples.md). Revisadas por el usuario (2026-10); con
@@ -154,7 +154,8 @@ export const screening = {
             ]
           } },
         { id: 'r_v4', anatomia: ['arteria_femoral', 'arteria_poplitea'], text: '¿Se le ha puesto la pierna de repente fría, pálida, muy dolorosa, con hormigueo o debilidad, o le ha empeorado de golpe el dolor al caminar?', alerta: true, urgencia: 'Posible isquemia aguda de la pierna (trombo o émbolo): a urgencias hoy, sin esperar.',
-          razonamiento: RAZON_ISQUEMIA_AGUDA }
+          razonamiento: RAZON_ISQUEMIA_AGUDA },
+        PREGUNTA_SINCOPE   // síncope de alto riesgo, común a las 7 regiones (docs/pots.md, decisión 9)
       ],
       zonasDolor: [
         { zona: 'Pantorrilla / Rodilla', desc: 'Claudicación distal o TVP' }

@@ -5,7 +5,7 @@
 // con las demás regiones en SYSTEMIC_SCREENING / CIF_TREES / HYPOTHESES;
 // los esquemas de cada objeto están documentados allí.
 // ============================================================
-import { SIS_POSQUIRURGICO, SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_ENDOCRINO, SIS_HEMATOLOGICO } from './comun.js';
+import { SIS_POSQUIRURGICO, SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, PREGUNTA_SINCOPE, SIS_ENDOCRINO, SIS_HEMATOLOGICO } from './comun.js';
 
 // ── Fase 3 · ZONAS_SINTOMA.lumbar — zonas del mapa corporal para P1–P4
 // (docs/sintomas-multiples.md). Revisadas por el usuario (2026-10);
@@ -816,7 +816,8 @@ export const screening = {
               'Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.',
               { texto: 'Zemaitis 2026 — Zemaitis, Boll, Kato y Golla, «Peripheral Arterial Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 31 de enero de 2026.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK430745/' }
             ]
-          } }
+          } },
+        PREGUNTA_SINCOPE   // síncope de alto riesgo, común a las 7 regiones (docs/pots.md, decisión 9)
       ]
     },
     {

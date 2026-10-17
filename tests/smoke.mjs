@@ -708,6 +708,9 @@ async function checkDisautonomia(page) {
   await page.waitForTimeout(150);
   await page.click(`[onclick="selectRegion('lumbar', this)"]`);
   await page.waitForTimeout(150);
+  // Pregunta de síncope de la región (sx_sincope, decisión 9), urgente y sin plegar
+  await page.click('#tab_l_vascular');
+  r.sincopeRegion = await page.isVisible('#panel_l_vascular #sq2_sx_sincope.sq2-urg');
   r.tab = await page.isVisible('#tab_transversal_disautonomia');
   await page.click('#tab_transversal_disautonomia');
   const P = '#panel_transversal_disautonomia';
@@ -773,7 +776,7 @@ async function checkDisautonomia(page) {
   r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent; return t.includes('Disautonomía: empezar el ejercicio semirreclinado') && t.includes('si se desmaya mientras hace ejercicio'); });
   r.ok = r.tipoOculto && r.tipoVisible && r.tipoOcultoSospecha && r.tab && r.urgSinPlegar && r.sospecha && r.urgencia && r.derivacion
     && r.compatible && r.sincronizada && r.payload && r.hipotension && r.notaFase3 && r.ancho1 && r.ancho2 && r.inputs320 && r.sinSistema
-    && r.fase5 && r.nota4b && r.fase6;
+    && r.fase5 && r.nota4b && r.fase6 && r.sincopeRegion;
   return r;
 }
 

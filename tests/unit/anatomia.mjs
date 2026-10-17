@@ -22,6 +22,10 @@ for (const [region, data] of Object.entries(SYSTEMIC_SCREENING)) {
 }
 const PREG_CON = PREGUNTAS.filter(p => p.q.anatomia);
 
+// Preguntas compartidas por las 7 regiones (sistemas transversal_* y preguntas
+// sx_*, p. ej. sx_sincope): sin anatomía, saldría igual en todas las regiones.
+const compartida = p => p.sis.id.startsWith('transversal_') || p.q.id.startsWith('sx_');
+
 test('anatomía: cada estructura tiene nombre, slug inglés y, si existe, slug español (minúsculas y guiones)', () => {
   assert.equal(KENHUB_BASE, 'https://www.kenhub.com/en/library/anatomy/');
   assert.equal(KENHUB_BASE_ES, 'https://www.kenhub.com/es/library/anatomia-es/');
@@ -89,7 +93,7 @@ test('anatomía: `anatomia` de una pregunta de cribado: claves de ESTRUCTURAS, s
 
 test('anatomía: nunca en los sistemas transversales (mismo objeto en todas las regiones; decisión del usuario, 2026-10)', () => {
   for (const { sis, q } of PREGUNTAS) {
-    if (sis.id.startsWith('transversal_')) assert.ok(!q.anatomia, `${sis.id}/${q.id}`);
+    if (sis.id.startsWith('transversal_') || q.id.startsWith('sx_')) assert.ok(!q.anatomia, `${sis.id}/${q.id}`);
   }
 });
 
@@ -102,7 +106,7 @@ test('anatomía: cribado de hombro con anatomía en las preguntas cuya derivaci�
   const con = PREG_CON.filter(p => p.region === 'hombro').map(p => p.q.id);
   assert.deepEqual(con, ['h3', 'h1', 'h2', 'h_c3', 'h_c4', 'h5', 'h_p2', 'h_p3', 'h_r1', 'h_g1', 'h_g2', 'h_gi1', 'h_gi2', 'h_gi3', 'h_gi4', 'h_t1', 'h_n1']);
   // Sin estructura concreta: dolor nocturno, peso, dolor constante, sistémico
-  const sin = PREGUNTAS.filter(p => p.region === 'hombro' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  const sin = PREGUNTAS.filter(p => p.region === 'hombro' && !compartida(p) && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sin, ['h4', 'h6', 'h_r2', 'h_i1']);
 });
 
@@ -112,7 +116,7 @@ test('anatomía: rodilla, todos los tests salvo el gesto testigo; cribado sin an
   assert.equal(sin.length, 20);
   const con = PREG_CON.filter(p => p.region === 'rodilla').map(p => p.q.id);
   assert.deepEqual(con, ['r_v1', 'r_v2', 'r_v3', 'r_v4', 'r1', 'r_i2', 'r_i3', 'r3', 'r4', 'ro_t1', 'ro_t2', 'ro_t3', 'ro_t4', 'ro_t5', 'ro_t6', 'ro_p1']);
-  const sinQ = PREGUNTAS.filter(p => p.region === 'rodilla' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  const sinQ = PREGUNTAS.filter(p => p.region === 'rodilla' && !compartida(p) && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['r2']);
 });
 
@@ -121,7 +125,7 @@ test('anatomía: codo, todos los tests (no tiene filas de gesto testigo); cribad
   const con = PREG_CON.filter(p => p.region === 'codo').map(p => p.q.id);
   assert.deepEqual(con, ['co_t1', 'co_t2', 'co4a_uni', 'co4b', 'co3', 'co1', 'co_e1']);
   // Raynaud bilateral y su evolución, miastenia, dolor constante, debilidad proximal
-  const sinQ = PREGUNTAS.filter(p => p.region === 'codo' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  const sinQ = PREGUNTAS.filter(p => p.region === 'codo' && !compartida(p) && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['co4a', 'co4a_prog', 'co_e2b', 'co2', 'co_e2a']);
 });
 
@@ -133,7 +137,7 @@ test('anatomía: cervical, sin anatomía solo las filas genéricas (①/②, pro
   const con = PREG_CON.filter(p => p.region === 'cervical').map(p => p.q.id);
   assert.equal(con.length, 18);
   // Dolor nocturno, peso, cefalea de cambio brusco (arterias cerebrales), artritis inflamatoria de otras articulaciones
-  const sinQ = PREGUNTAS.filter(p => p.region === 'cervical' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  const sinQ = PREGUNTAS.filter(p => p.region === 'cervical' && !compartida(p) && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['cv1', 'cv5', 'cv_ar4', 'cv_in2']);
 });
 
@@ -143,7 +147,7 @@ test('anatomía: cadera, sin anatomía solo las filas genéricas (longitud de pa
   const con = PREG_CON.filter(p => p.region === 'cadera').map(p => p.q.id);
   assert.equal(con.length, 23);   // + ca_v4 (aorta) y ca_v5 (femoral, poplítea), Fase M
   // Pérdida de peso o bulto nuevo
-  const sinQ = PREGUNTAS.filter(p => p.region === 'cadera' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  const sinQ = PREGUNTAS.filter(p => p.region === 'cadera' && !compartida(p) && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['ca_on3']);
 });
 
@@ -153,7 +157,7 @@ test('anatomía: lumbar, sin anatomía solo las filas genéricas (regla de Flynn
     ['lu1/0', 'lu4/4', 'lu9/0', 'lu9/1', 'lu9/2']);
   const con = PREG_CON.filter(p => p.region === 'lumbar').map(p => p.q.id);
   assert.equal(con.length, 25);
-  const sinQ = PREGUNTAS.filter(p => p.region === 'lumbar' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  const sinQ = PREGUNTAS.filter(p => p.region === 'lumbar' && !compartida(p) && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, []);
 });
 
@@ -165,7 +169,7 @@ test('anatomía: tobillo y pie, todos los tests salvo el gesto testigo y dos fil
   const con = PREG_CON.filter(p => p.region === 'tobillo_pie').map(p => p.q.id);
   assert.equal(con.length, 11);
   // Varias fracturas de estrés (RED-S), artritis inflamatoria, síntomas generales, osteoma osteoide, SDRC
-  const sinQ = PREGUNTAS.filter(p => p.region === 'tobillo_pie' && !p.sis.id.startsWith('transversal_') && !p.q.anatomia).map(p => p.q.id);
+  const sinQ = PREGUNTAS.filter(p => p.region === 'tobillo_pie' && !compartida(p) && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, ['tp_o2', 'tp_i2', 'tp_c1', 'tp_c2', 'tp_n3']);
 });
 

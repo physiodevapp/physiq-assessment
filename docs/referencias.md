@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **521** referencias de literatura, con **2779** usos.
+- **521** referencias de literatura, con **2800** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **377** de 521 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -55,16 +55,16 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Paterson 2021](#paterson-2021) | pauta · texto | 2 | **sin revisar** |
 | [Kamonseki 2022](#kamonseki-2022) | pauta · tiempos de tejido · plan de tratamiento · texto | 4 | **sin revisar** |
 | [Tang 2024](#tang-2024) | pauta · texto | 2 | **sin revisar** |
-| [NICE CG109](#nice-cg109) | razonamiento fase 2 · plan de tratamiento · texto | 19 | **sin revisar** |
+| [NICE CG109](#nice-cg109) | razonamiento fase 2 · plan de tratamiento · texto | 26 | **sin revisar** |
 | [NICE CG151](#nice-cg151) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG156](#nice-ng156) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 8 | **sin revisar** |
+| [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Byers 2017](#byers-2017) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Henderson 2017](#henderson-2017) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Malfait 2017](#malfait-2017) | razonamiento fase 2 · texto | 54 | **sin revisar** |
 | [Schroeder 2017](#schroeder-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Baker 2018](#baker-2018) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 35 | **sin revisar** |
+| [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
 | [Hulens 2018](#hulens-2018) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Wang 2020](#wang-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [WFH 2020](#wfh-2020) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -1806,7 +1806,8 @@ Citada como:
 7. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tabla 6 (pp. 1897–1898) y p. 1925.
 8. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tablas 5 y 6 (pp. 1895–1898).
 9. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tabla 6 (pp. 1897–1898).
-10. Brignole 2018
+10. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tablas 5 y 6 (pp. 1895–1898), p. 1911 y p. 1925.
+11. Brignole 2018
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -1815,36 +1816,43 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `ds_u_corazon` · Disautonomía | 2 · razonamiento del cribado | 7 |
 | Todas (sistemas comunes) | — | Pregunta `ds_u_familia` · Disautonomía | 2 · razonamiento del cribado | 8 |
 | Todas (sistemas comunes) | — | Pregunta `ds_d_paroxistica` · Disautonomía | 2 · razonamiento del cribado | 9 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaSincope.fuente` | 6 · plan de tratamiento | 10 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreSincope` | 6 · plan de tratamiento | 10 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaSincope.fuente` | 6 · plan de tratamiento | 11 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreSincope` | 6 · plan de tratamiento | 11 |
 | Hombro | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
 | Hombro | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Hombro | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 10 |
 | Cadera | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
 | Cadera | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
 | Cadera | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Cadera | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 10 |
 | Cervical | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
 | Cervical | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
 | Cervical | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Cervical | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 10 |
 | Lumbar | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
 | Lumbar | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
 | Lumbar | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Lumbar | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 10 |
 | Rodilla | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
 | Rodilla | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
 | Rodilla | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Rodilla | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 10 |
 | Codo | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
 | Codo | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
 | Codo | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Codo | — | Pregunta `sx_sincope` · Vascular / Neurológica | 2 · razonamiento del cribado | 10 |
 | Tobillo y pie | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
 | Tobillo y pie | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
 | Tobillo y pie | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 10 |
 
 ### Brotman 2024
 
@@ -9041,29 +9049,37 @@ Citada como:
 2. Un desmayo durante el esfuerzo, tumbado, tras palpitaciones bruscas o con síntomas del corazón no lo explica la disautonomía: valoración médica urgente (Brignole 2018, tabla 6; NICE CG109, 1.1.4.2).
 3. NICE CG109 — NICE, «Transient loss of consciousness ('blackouts') in over 16s», guía clínica CG109 (2010, actualizada en 2023), capítulo «Recommendations», recomendaciones 1.1.4.2, 1.3.2.1, 1.3.2.2 y 1.5.4.3.
 4. NICE CG109 — NICE, «Transient loss of consciousness ('blackouts') in over 16s», guía clínica CG109 (2010, actualizada en 2023), capítulo «Recommendations», recomendación 1.1.4.2.
-5. NICE CG109
+5. NICE CG109 — NICE, «Transient loss of consciousness ('blackouts') in over 16s», guía clínica CG109 (2010, actualizada en 2023), capítulo «Recommendations», recomendaciones 1.1.4.2, 1.3.2.2 y 1.5.4.3.
+6. NICE CG109
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ds_u_esfuerzo` · Disautonomía | 2 · razonamiento del cribado | 3 |
 | Todas (sistemas comunes) | — | Pregunta `ds_u_corazon` · Disautonomía | 2 · razonamiento del cribado | 4 |
 | Todas (sistemas comunes) | — | Pregunta `ds_u_familia` · Disautonomía | 2 · razonamiento del cribado | 4 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaSincope.fuente` | 6 · plan de tratamiento | 5 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreSincope` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaSincope.fuente` | 6 · plan de tratamiento | 6 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreSincope` | 6 · plan de tratamiento | 6 |
 | Hombro | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Hombro | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 5 |
 | Cadera | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Cadera | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 5 |
 | Cervical | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Cervical | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 5 |
 | Lumbar | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Lumbar | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 5 |
 | Rodilla | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Rodilla | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 5 |
 | Codo | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Codo | — | Pregunta `sx_sincope` · Vascular / Neurológica | 2 · razonamiento del cribado | 5 |
 | Tobillo y pie | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 5 |
 
 ### NICE CG147
 
@@ -11497,17 +11513,25 @@ Citada como:
 
 1. El POTS exige síntomas de pie de 3 meses o más que mejoran al tumbarse (Vernino 2021; Raj 2020, §3.2; Raj 2022, recuadro 2). Agravantes: el calor, la deshidratación, el alcohol y el ejercicio (Sheldon 2015), las comidas y el Valsalva (Hakim 2017, p. 171), levantarse de golpe (Fedorowski 2019, tabla 5).
 2. Sheldon 2015 — Sheldon, Grubb, Olshansky et al., «2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope», Heart Rhythm 2015;12(6):e41–e63, secciones 1 y 4.
+3. Sheldon 2015 — Sheldon, Grubb, Olshansky et al., «2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope», Heart Rhythm 2015;12(6):e41–e63, sección 4.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ds_u_esfuerzo` · Disautonomía | 2 · razonamiento del cribado | 2 |
 | Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 3 |
 | Cadera | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 3 |
 | Cervical | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 3 |
 | Lumbar | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 3 |
 | Rodilla | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 3 |
 | Codo | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Codo | — | Pregunta `sx_sincope` · Vascular / Neurológica | 2 · razonamiento del cribado | 3 |
 | Tobillo y pie | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 3 |
 
 ### Siemensma 2023
 

@@ -736,6 +736,25 @@ const DS_CITA = {
   sheldon: 'Sheldon 2015 — Sheldon, Grubb, Olshansky et al., «2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope», Heart Rhythm 2015;12(6):e41–e63',
   raj22: 'Raj 2022 — Raj, Fedorowski y Sheldon, «Diagnosis and management of postural orthostatic tachycardia syndrome», CMAJ 2022;194(10):E378–E385',
 };
+// Pregunta de síncope de alto riesgo para el sistema vascular o cardiovascular
+// de cada región (decisión 9 de docs/pots.md): sin ella, a quien no tiene
+// marcada la tarjeta «Disautonomía / POTS» nadie le preguntaba por el síncope
+// de esfuerzo. La misma instancia en las 7 regiones; no sustituye a las 4
+// preguntas detalladas del sistema de disautonomía, que siguen saliendo con la
+// tarjeta (las dos conviven: ocultar una con la tarjeta haría desaparecer de
+// `ur` un SÍ ya marcado).
+export const PREGUNTA_SINCOPE = { id: 'sx_sincope', urgencia: 'Síncope con rasgos de alto riesgo: valoración médica urgente (en 24 h) y sin ejercicio hasta entonces.', alerta: true,
+  text: 'Si se ha desmayado alguna vez: ¿fue mientras hacía un esfuerzo, estando tumbado, justo después de notar de golpe el corazón muy rápido, o con dolor en el pecho o falta de aire nuevos? ¿O algún familiar suyo murió de forma súbita antes de los 40 años?',
+  razonamiento: {
+    porque: 'La mayoría de los desmayos son reflejos (vasovagales) o por una bajada de tensión al ponerse de pie, y avisan antes con mareo, calor, sudor o náuseas. Los que no encajan con eso orientan al corazón: durante el esfuerzo el corazón tiene que aumentar su gasto y una arritmia o una obstrucción se lo impiden; tumbado, la gravedad no explica el desmayo; y una muerte súbita joven en la familia es a menudo la primera pista de una cardiopatía hereditaria (Brignole 2018, tablas 5 y 6).',
+    peso: 'Son rasgos de alto riesgo en la guía europea: no se da el alta desde urgencias y se pide una valoración temprana (Brignole 2018, tabla 6). NICE pide derivar con urgencia, con revisión en 24 h, el síncope durante el esfuerzo, con antecedente familiar de muerte súbita antes de los 40 años o una cardiopatía hereditaria, con falta de aire nueva, con un soplo o con insuficiencia cardiaca, y no hacer ejercicio hasta la valoración si fue durante el esfuerzo (NICE CG109, 1.1.4.2 y 1.3.2.2).',
+    detalle: 'Durante o después: el síncope durante el ejercicio es probablemente cardiaco; el que llega justo al pararlo, casi siempre reflejo (Brignole 2018, p. 1911). En jóvenes lo más frecuente sigue siendo el vasovagal, pero el síncope de esfuerzo debe estudiarse por miocardiopatía o arritmia (Sheldon 2015, sección 4).\n\nAntecedente familiar: NICE lo da como motivo de derivación urgente con cualquier síncope (1.1.4.2); la guía europea lo considera de alto riesgo solo con cardiopatía estructural o un ECG alterado (tabla 6). Como el fisioterapeuta no puede comprobar ninguna de las dos cosas, PhysiQ sigue a NICE.\n\nSi el paciente tiene un POTS u otra disautonomía, o se sospecha, márcalo en la tarjeta «Disautonomía / POTS» de la fase 1: un POTS conocido no explica un síncope con estos rasgos (que exista una enfermedad no quiere decir que el síncope venga de ella; Brignole 2018, p. 1925).\n\nMientras espera la valoración: explicarle qué hacer si se repite, que evite el esfuerzo y que no conduzca (NICE CG109, 1.5.4.3).',
+    fuentes: ['Brignole 2018', 'NICE CG109', 'Sheldon 2015'],
+    citas: ['Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tablas 5 y 6 (pp. 1895–1898), p. 1911 y p. 1925.',
+      'NICE CG109 — NICE, «Transient loss of consciousness (\'blackouts\') in over 16s», guía clínica CG109 (2010, actualizada en 2023), capítulo «Recommendations», recomendaciones 1.1.4.2, 1.3.2.2 y 1.5.4.3.',
+      'Sheldon 2015 — Sheldon, Grubb, Olshansky et al., «2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope», Heart Rhythm 2015;12(6):e41–e63, sección 4.']
+  } };
+
 export const SIS_DISAUTONOMIA = {
   id: 'transversal_disautonomia', icon: '🫀', nombre: 'Disautonomía', soloDisautonomia: true,
   banderasRojas: [

@@ -14,7 +14,7 @@
 // en su criterio o en su panel «Ampliar». La tarjeta no da dosis («Dosis y
 // progresión no están en la guía»): dosis '' en todas.
 // ============================================================
-import { SIS_POSQUIRURGICO, SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
+import { SIS_POSQUIRURGICO, SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, PREGUNTA_SINCOPE, SIS_ENDOCRINO, SIS_HEMATOLOGICO, DOSIS_DERIVAR } from './comun.js';
 
 // ── Fase 3 · ZONAS_SINTOMA.tobillo_pie — zonas del mapa corporal para P1–P4
 // (docs/sintomas-multiples.md). Revisadas por el usuario (2026-10);
@@ -438,7 +438,8 @@ export const screening = {
               { texto: 'Waheed 2023 — Waheed, Kudaravalli y Hotwagner, «Deep Venous Thrombosis», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2023.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK507708/' },
               { texto: 'Hermena y Slane 2025 — Hermena y Slane, «Ankle Fracture», StatPearls [Internet], NCBI Bookshelf, última actualización 15 de febrero de 2025.', url: 'https://www.ncbi.nlm.nih.gov/books/NBK542324/' }
             ]
-          } }
+          } },
+        PREGUNTA_SINCOPE   // síncope de alto riesgo, común a las 7 regiones (docs/pots.md, decisión 9)
       ]
     },
     {

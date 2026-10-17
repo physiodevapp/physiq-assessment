@@ -6,7 +6,8 @@ const IN = await import('../../lib/informe-narrativo.js');
 const P = await import('../../lib/plan-tratamiento.js');
 const PD = await import('../../data/plan-tratamiento.js');
 const { notaDsPasoHTML } = await import('../../phase4.js');
-const { SIS_DISAUTONOMIA } = await import('../../data/comun.js');
+const SIS_DISAUTONOMIA_MOD = await import('../../data/comun.js');
+const { SIS_DISAUTONOMIA } = SIS_DISAUTONOMIA_MOD;
 
 console.log('\ndisautonomía / POTS (Fase P)');
 
@@ -75,6 +76,24 @@ test('seguridad: marcar la tarjeta nunca quita ni rebaja una urgencia de otro si
     });
     assert.deepEqual(con, sin, `${r}: mismas urgencias`);
     assert.equal(htmlCon, htmlSin, `${r}: los demás sistemas se pintan igual`);
+  }
+});
+
+test('sx_sincope (decisión 9): la misma pregunta urgente en el sistema vascular o cardiovascular de las 7 regiones, sin la tarjeta y con ella', () => {
+  const { PREGUNTA_SINCOPE } = SIS_DISAUTONOMIA_MOD;
+  const HOST = { lumbar: 'l_vascular', cervical: 'cv_cardio', hombro: 'h_cardio', codo: 'co_vascular', cadera: 'ca_vascular', rodilla: 'ro_vascular', tobillo_pie: 'tp_vascular' };
+  assert.ok(PREGUNTA_SINCOPE.urgencia && !PREGUNTA_SINCOPE.derivacion);
+  for (const r of VALID_REGIONS) {
+    const sis = SYSTEMIC_SCREENING[r].sistemas.filter(s => s.preguntas.includes(PREGUNTA_SINCOPE));
+    assert.deepEqual(sis.map(s => s.id), [HOST[r]], `${r}: una sola vez, en su sistema vascular o cardiovascular`);
+    for (const extra of [ds(), ds({ estado: 'sospecha' })]) {
+      withState({ region: r, ...extra, sistemicoAnswers: { sx_sincope: 'SI' } }, () => {
+        const activo = sistemasActivos().find(s => s.id === HOST[r]);
+        assert.ok(activo.preguntas.includes(PREGUNTA_SINCOPE), `${r}: se ve`);
+        assert.match(buildSistemaHTML(activo), /class="sq2[^"]*sq2-urg[^"]*" id="sq2_sx_sincope"/, `${r}: nunca se pliega`);
+        assert.ok(buildPhysiQPayload().ur.includes(PREGUNTA_SINCOPE.urgencia), `${r}: va a ur`);
+      });
+    }
   }
 });
 

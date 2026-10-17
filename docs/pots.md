@@ -1,6 +1,6 @@
 # POTS (síndrome de taquicardia postural ortostática) y disautonomía — diseño
 
-Estado: **las 12 recomendaciones, aceptadas por el usuario (octubre 2026); implementado (ver «Implementación»), pendiente de su revisión en la app antes de `main`.** Todas las fuentes están leídas enteras: las que están en abierto y los PDF del usuario.
+Estado: **las 12 recomendaciones, aceptadas por el usuario (octubre 2026); implementado (ver «Implementación»), con la revisión del usuario dada por hecha (octubre 2026). La decisión 9 (pregunta de síncope en cada región) también está hecha.** Todas las fuentes están leídas enteras: las que están en abierto y los PDF del usuario.
 
 Es la tercera condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad / Ehlers-Danlos (`docs/hipermovilidad.md`) y del quiste de Tarlov (`docs/tarlov.md`).
 
@@ -462,8 +462,19 @@ Hecho según las 12 recomendaciones, con estas concreciones:
   - la sección `disautonomia` de la prueba de humo, que pasó, igual que la prueba completa.
 - **physiq-report**: pendiente, en otra PR. Copiar `bloqueDsIA()` como `_bloqueDs()` en su `lib/payload.js`, con los casos de `DS_CASOS` (`tests/unit/disautonomia.mjs`) fijados en su test.
 
+## Decisión 9: pregunta de síncope en cada región (octubre 2026)
+
+Hecho. Antes, a quien no tenía marcada la tarjeta nadie le preguntaba por el síncope de alto riesgo.
+
+- **La pregunta** es `PREGUNTA_SINCOPE` (`sx_sincope`, `data/comun.js`): «Si se ha desmayado alguna vez: ¿fue mientras hacía un esfuerzo, estando tumbado, justo después de notar de golpe el corazón muy rápido, o con dolor en el pecho o falta de aire nuevos? ¿O algún familiar suyo murió de forma súbita antes de los 40 años?».
+  - Reúne en una sola pregunta los rasgos de alto riesgo de Brignole 2018 (tabla 6) y de NICE CG109 (1.1.4.2).
+  - Lleva `urgencia` («valoración médica urgente (en 24 h) y sin ejercicio hasta entonces»), así que nunca se pliega en modo breve.
+  - Su razonamiento cita Brignole 2018, NICE CG109 y Sheldon 2015, y remite a la tarjeta «Disautonomía / POTS».
+- **Dónde va**: la misma instancia, al final del sistema vascular o cardiovascular de cada región (`l_vascular`, `cv_cardio`, `h_cardio`, `co_vascular`, `ca_vascular`, `ro_vascular`, `tp_vascular`).
+- **Sin anatomía**: se trata como las preguntas compartidas, que no llevan enlace a Kenhub para no salir igual en todas las regiones.
+- **Convive con las 4 preguntas detalladas** del sistema de disautonomía. No se oculta al marcar la tarjeta: si se ocultara, un SÍ ya marcado desaparecería de `ur`.
+- **Las banderas «Síncope repentino sin mareo previo»** de cervical y hombro (Goodman 2018) siguen con su razonamiento propio. Hablan del síncope sin pródromos, que la pregunta no recoge entero (en la ESC es un rasgo menor).
+
 ## Siguiente paso
 
-1. **Revisión del usuario en la app** antes de `main`: la tarjeta, el sistema (con los razonamientos), la prueba de bipedestación, las notas de las fases 3, 4 y 4b, el recuadro de la fase 5 y el aviso de la fase 6.
-2. **physiq-report**: leer `ds` del payload (otro repositorio).
-3. **Trabajo aparte** (decisión 9): una pregunta de síncope en el sistema cardiovascular de cada región, con su revisión región a región.
+1. **physiq-report**: leer `ds` del payload (otro repositorio).
