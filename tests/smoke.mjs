@@ -4534,6 +4534,9 @@ async function checkSinHuecos(browser, errors) {
     await abrirApp(page);
     const r = await walkRegion(page, region);
     if (r.finalPhase !== 5) { fallos.push(`${region}: no llega a la fase 5`); await context.close(); continue; }
+    // Condiciones especiales marcadas: sus filas de botones (.hm-subtipos) solo se
+    // ven así (el hueco de «Cuál» en Disautonomía pasó sin que esto lo viera, 2026-10)
+    await page.evaluate(() => { window.goToPhase(1); window.selectHMEstado('diagnosticada'); window.selectDsEstado('diagnosticada'); window.selectLESEstado('diagnosticado'); });
     for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
       await page.evaluate(f => window.goToPhase(f), f);
       await page.waitForFunction(f => String(window.state.currentPhase) === String(f), f);
