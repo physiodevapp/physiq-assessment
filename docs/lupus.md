@@ -1,6 +1,6 @@
 # Lupus eritematoso sistémico (LES) — diseño
 
-Estado: **las 18 decisiones y los 16 cambios de «Revisión con las guías», aceptados por el usuario (octubre 2026); implementado (ver «Implementación»), pendiente de su revisión en la app antes de `main`.** Lo que dicen las secciones de diseño de abajo queda corregido por «Revisión con las guías» donde no coinciden (por ejemplo, los tramos de corticoides).
+Estado: **las 18 decisiones y los 16 cambios de «Revisión con las guías», aceptados por el usuario (octubre 2026); implementado (ver «Implementación») y revisado por el usuario en la app (octubre 2026).** Lo que dicen las secciones de diseño de abajo queda corregido por «Revisión con las guías» donde no coinciden (por ejemplo, los tramos de corticoides).
 
 ## Revisión con las guías (octubre 2026)
 

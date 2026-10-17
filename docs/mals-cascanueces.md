@@ -121,7 +121,7 @@ Su dolor sí puede parecer musculoesquelético (flanco o lumbar, sordo, mejor tu
 ### Lo que no se toca
 
 - Árbol CIF, hipótesis y tests de la fase 4b, fase 6, calculadora.
-- Cadera: el dolor pélvico de la congestión pélvica ya lo cubre en parte `ca_u4`. Se deja para después de lumbar.
+- Cadera: el dolor pélvico de la congestión pélvica ya lo cubre en parte `ca_u4`. Se deja para después de lumbar (hecho después: `ca_u6`, `docs/congestion-pelvica.md`).
 
 ## Decisiones (aceptadas por el usuario, octubre 2026)
 
@@ -129,7 +129,7 @@ Su dolor sí puede parecer musculoesquelético (flanco o lumbar, sordo, mejor tu
 2. **Cascanueces**: pregunta nueva `l_u6` con `derivacion` preferente, no urgente.
 3. **`l_u6` exige los dos componentes**: el dolor postural **y** un acompañante (sangre en la orina, varicocele izquierdo o dolor pélvico que empeora de pie).
 4. **Hipermovilidad**: ninguna regla automática; solo una frase sin cifras en el razonamiento de cada una.
-5. **Cadera** (congestión pélvica): para otra sesión.
+5. **Cadera** (congestión pélvica): para otra sesión. Hecho (2026-10): pregunta `ca_u6` en `ca_urogenital`, con derivación preferente; diseño y decisiones en `docs/congestion-pelvica.md`.
 6. **Bruessel 2026**: el usuario aportó el PDF; las tablas se comprobaron en él.
 7. **SIBO**: fuera.
 
