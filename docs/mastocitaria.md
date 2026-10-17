@@ -1,10 +1,55 @@
 # Trastornos de la activación mastocitaria (MCAD) — borrador de diseño
 
-Estado: **borrador, sin código (octubre 2026). Pendiente de las decisiones del usuario** (ver «Decisiones», cada una con mi recomendación). Posible condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad (`docs/hipermovilidad.md`), el POTS (`docs/pots.md`) y el lupus (`docs/lupus.md`). La guía de condiciones especiales (`docs/condiciones-especiales.md`) tendría que añadir su fila si se hace una tarjeta.
+Estado: **diseño sin código (octubre 2026). Aceptadas por el usuario las 12 recomendaciones** (ver «Decisiones aceptadas»). Pasajes clave comprobados en las fuentes (ver «Comprobación de pasajes»). **Antes de implementar faltan los PDF de la decisión 9.** Posible condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad (`docs/hipermovilidad.md`), el POTS (`docs/pots.md`) y el lupus (`docs/lupus.md`). La guía de condiciones especiales (`docs/condiciones-especiales.md`) tendría que añadir su fila si se hace una tarjeta.
 
 **Enfoque** (decidido con el usuario, octubre 2026): el diseño parte del paraguas de los **trastornos de la activación mastocitaria** (MCAD, por sus siglas en inglés), no del síndrome de activación mastocitaria (SAMA) solo. Lo que cambia la sesión es el **riesgo de anafilaxia**, y ese riesgo está descrito para cada variante del paraguas (mastocitosis, SAMA con sus variantes, α-triptasemia hereditaria como agravante), no para el SAMA aislado. La primera versión de este borrador partía del SAMA; el documento conserva su nombre de archivo.
 
 **Qué hay hoy en la app**: nada. Ningún archivo de `data/`, `lib/` ni `formularios/` habla de anafilaxia, alergias, mastocitos, histamina ni autoinyector (búsqueda de octubre 2026). Es un hueco previo, más amplio que el SAMA: una anafilaxia en la sala puede darla cualquier paciente (ver «Fuera de este diseño»).
+
+## Decisiones aceptadas (octubre 2026)
+
+El usuario aceptó las 12 recomendaciones de «Decisiones»:
+
+1. **Forma 2**: texto en los razonamientos de hipermovilidad y POTS más la tarjeta reducida «Trastorno mastocitario o anafilaxia».
+2. **Sin «Sospecha»**: la tarjeta solo tiene «No consta» y «Diagnosticado».
+3. **Todo el paraguas en una tarjeta**, con el diagnóstico concreto como opción.
+4. **Nota de la tarjeta**: «márcala si…; pregunta qué le dijeron exactamente».
+5. **Ninguna regla automática** con la hipermovilidad ni el POTS.
+6. **El texto dice «que se ponga su autoinyector»**, sin «ayúdale a ponérselo».
+7. **Pregunta de derivación** por episodios nuevos sin valorar, no urgente. Pasajes ya comprobados: NICE NG258, 1.1.12, y Cardona 2020 (ver «Comprobación de pasajes»).
+8. **Desencadenantes como casillas**, más un «otro» libre.
+9. **Pedir en PDF antes de implementar**: Valent 2022 (ECNM/AIM, propuesta ajustada a la CIE-10-MC), Resuscitation Council UK 2021 y EAACI 2021 como mínimo; Farley 2025, Valdez 2026 y Seneviratne 2017 si se consiguen.
+10. **Registrar solo las referencias** que use el texto final.
+11. **La línea de riesgo alto** sale solo con mastocitosis, SAMA o anafilaxia previa; el protocolo de qué hacer sale siempre que la tarjeta esté marcada.
+12. **Sin opción propia** para la α-triptasemia hereditaria sola.
+
+## Comprobación de pasajes (octubre 2026)
+
+Comprobados, en el texto completo de cada fuente, los pasajes que usarán los textos de la app:
+
+| Pasaje | Fuente y localizador | Resultado |
+|---|---|---|
+| Tras el tratamiento urgente, ofrecer la derivación a un servicio especializado de alergia | NICE NG258, 1.1.12 [2011] | Confirmado. Es el apoyo de la pregunta de la decisión 7 |
+| «After an anaphylaxis occurrence, patients should be referred to a specialist to assess the potential cause»; las guías recomiendan derivar a alergia e inmunología «for confirmation of the suspected trigger, advice on prevention» | Cardona 2020, resumen y apartado de la prevención | Confirmado |
+| En la anafilaxia idiopática se busca la mastocitosis, que «may be present even when these levels are not elevated» (triptasa basal) | Cardona 2020, apartado de la anafilaxia idiopática | Confirmado; corrige la redacción anterior («obliga a descartar»), que era más fuerte que la fuente |
+| Tumbarse tras el autoinyector, o sentarse si cuesta respirar, y «should not stand up or change position suddenly, even if they feel better» | NICE NG258, 1.1.14 [2011] | Confirmado |
+| Llevar los autoinyectores «at all times» | NICE NG258, **1.1.16** [2011, modificada en 2020] | Confirmado. Los dos autoinyectores son la 1.1.15 |
+| Supino; sentado si hay dificultad respiratoria; embarazada semirreclinada sobre el lado izquierdo; inconsciente en posición de recuperación | Cardona 2020, «Acute treatment» | Confirmado |
+| «Fatality can occur within seconds if patient stands or sits suddenly»; dosis cada 5–15 min; anotar la hora | Cardona 2020, fig. 4, pasos 5 y 6 (vista como imagen) | Confirmado |
+| «Have a written emergency protocol for recognition and treatment of anaphylaxis and rehearse it regularly» | Cardona 2020, fig. 4, paso 1 | **Nuevo**: va al recuadro de la fase 5 como línea para la consulta |
+| La piel falta en el 10–20 % | Cardona 2020, problemas revisados | Confirmado |
+| Mastocitosis: «increased risk of anaphylaxis; also, anaphylaxis may be the first manifestation» | Cardona 2020, tabla 3, nota | Confirmado |
+| «Patients suddenly feel very warm and then experience palpitations, dizziness, and a decrease in blood pressure … which often leads to syncope» | Gülen 2023, mastocitosis sistémica indolente | Confirmado |
+| Evitar los desencadenantes clásicos y, estrictamente, aquellos a los que ya reaccionó; no una lista larga de todos los descritos | Brockow 2021, apartado de manejo | Confirmado, con un **matiz**: es una revisión de **niños** con mastocitosis. Se cita como extrapolación |
+| «Heat, skin rubbing, fever» como desencadenantes | Brockow 2021, tabla 1 (serie de Álvarez-Twose 2012) | Confirmado |
+| Provocar el signo de Darier con suavidad; evitar los cambios de temperatura y la estimulación mecánica | Brockow 2021 (lo segundo, en el contexto de la anestesia) | Confirmado; el contexto de la anestesia se dice al usarlo |
+| Urticaria por presión: lesiones 4–6 h después (a veces 12–24 h); en la urticaria por frío el agua es el desencadenante más común | Muñoz 2024 | Confirmado |
+| «Promote the continuation of regular exercise»; en grupo y con tarjeta de anafilaxia | Srisuwatchari 2023, tabla 2 | Confirmado, con un **matiz**: es anafilaxia por ejercicio dependiente de alimentos. Extenderlo a la mastocitosis se marca como inferencia (como ya decía la fase 6) |
+| Episodios «mostly or solely provoked by exercise, high ambient temperature or stressful events»; AINE en las 6 h previas «should be actively sought» | Lee y Picard 2025 | Confirmado |
+| POTS, hipermovilidad o SEDh: «never been demonstrated in patients unambiguously meeting ECNM-AIM consortium criteria» | Lee y Picard 2025 | Confirmado |
+| Paraguas MCAD según la CIE-10 y cinco variantes; la anafilaxia se trata igual sea cual sea la variante | Valent 2022, tabla 1 (nota), tabla 2 y fig. 3 (leyenda) | Confirmado |
+| Riesgo de anafilaxia estimado por variante | Castells 2024, tabla II | Confirmado |
+| «MC activation disease» (MCAD) como espectro «the bulk of which is likely MCAS» | Afrin 2017, introducción | Confirmado |
 
 ## Resumen
 
@@ -154,7 +199,7 @@ El criterio es que la condición cambie la **seguridad** o la **interpretación*
 |---|---|
 | Mastocitosis (cutánea o sistémica) | Sí: anafilaxia en el 22–49 % de los adultos con mastocitosis sistémica, a menudo sin ronchas |
 | SAMA, cualquier variante | Sí: por definición ha tenido episodios graves, «usually in form of anaphylaxis» (Valent 2022); riesgo de + a +++ según la variante (Castells 2024, tabla II) |
-| Anafilaxia previa, sin trastorno mastocitario diagnosticado | Sí: puede repetirse (Cardona 2020; NICE NG258); la anafilaxia idiopática obliga a descartar un trastorno mastocitario (Cardona 2020) |
+| Anafilaxia previa, sin trastorno mastocitario diagnosticado | Sí: puede repetirse (Cardona 2020; NICE NG258); en la anafilaxia idiopática se busca una mastocitosis, que puede estar aunque la triptasa basal sea normal (Cardona 2020) |
 | MCAD «otro» | Probablemente sí (activación sistémica grave que no llega a los criterios), sin cifra en las fuentes leídas |
 | MCAD «no especificado» o etiqueta sin más detalle | No está descrito: activación local, leve o crónica. Solo importan sus desencadenantes |
 | α-triptasemia hereditaria sola | Riesgo «very low» sin alergia ni mastocitosis (Valent 2022, tabla 2, nota) |
@@ -174,12 +219,12 @@ El criterio es que la condición cambie la **seguridad** o la **interpretación*
 **Qué hacer** (Cardona 2020, «Acute treatment» y fig. 4; NICE NG258, 1.1.14):
 1. Parar la sesión y retirar el desencadenante si lo hay.
 2. **Llamar al 112** a la vez.
-3. **Adrenalina intramuscular en la cara anterolateral del muslo** cuanto antes: si el paciente lleva su autoinyector, que se lo ponga, o ayudarle (ver la salvedad de abajo). Si los síntomas siguen, se repite a los 5–15 min (Cardona 2020).
+3. **Adrenalina intramuscular en la cara anterolateral del muslo** cuanto antes: si el paciente lleva su autoinyector, que se lo ponga (decisión 6). Si los síntomas siguen, se repite a los 5–15 min (Cardona 2020).
 4. **Tumbado**; sentado si le cuesta respirar; sobre el lado izquierdo si está embarazada; en posición de recuperación si pierde el conocimiento. **No ponerlo de pie ni sentarlo de golpe, aunque se encuentre mejor** (NICE NG258, 1.1.14; Cardona 2020, fig. 4: «fatality can occur within seconds if patient stands or sits suddenly»).
 5. Anotar la hora de inicio y de cada dosis (Cardona 2020, fig. 4; NICE NG258, 1.1.2).
 6. Tras el episodio, **lo tiene que ver un médico aunque se haya recuperado**: puede repetirse en las horas siguientes sin nueva exposición (reacción bifásica, hasta 72 h; NICE NG258).
 
-**Salvedad: quién pone la adrenalina.** Ninguna fuente leída dice qué puede hacer un fisioterapeuta con el autoinyector del paciente. Cardona 2020 y NICE NG258 hablan del paciente que se lo pone y de los «profesionales sanitarios» en general. Lo que diga la app sobre ayudarle a ponérselo es una **decisión del usuario** que depende de la normativa y del protocolo de su centro (decisión 6), no algo que las fuentes resuelvan.
+**Salvedad: quién pone la adrenalina.** Ninguna fuente leída dice qué puede hacer un fisioterapeuta con el autoinyector del paciente. Cardona 2020 y NICE NG258 hablan del paciente que se lo pone y de los «profesionales sanitarios» en general. Decidido (decisión 6): la app dice «que se ponga su autoinyector» y no habla de ayudarle; eso queda a la normativa y al protocolo de cada centro.
 
 ### 2. Los desencadenantes que pone la sesión
 
@@ -249,7 +294,7 @@ Mismos principios que las otras condiciones: capa transversal, el árbol CIF y e
 ### Fase 2 — sin sistema propio
 
 - La tarjeta no añade preguntas de cribado: la anafilaxia es un suceso **de la sesión**, no una respuesta del cribado. Las preguntas de urgencia de la fase 2 tratan de lo que ya ha pasado.
-- **Opcional (decisión 7)**: una pregunta con `derivacion`, no urgente, para quien tiene la tarjeta marcada y refiere episodios **nuevos** o más graves sin valorar: «¿Ha tenido desde su última revisión episodios bruscos con ronchas, hinchazón, falta de aire, mareo o desmayo?» → «Episodios nuevos sin valorar: que los valore su alergólogo». Fuente: Cardona 2020 (tras una anafilaxia, derivar al alergólogo; pasaje a comprobar), NICE NG258 (que lo vea un especialista tras el tratamiento urgente; pasaje a comprobar).
+- **Opcional (decisión 7)**: una pregunta con `derivacion`, no urgente, para quien tiene la tarjeta marcada y refiere episodios **nuevos** o más graves sin valorar: «¿Ha tenido desde su última revisión episodios bruscos con ronchas, hinchazón, falta de aire, mareo o desmayo?» → «Episodios nuevos sin valorar: que los valore su alergólogo». Fuente: NICE NG258, 1.1.12 (tras el tratamiento urgente, derivación a un servicio especializado de alergia) y Cardona 2020 (tras una anafilaxia, derivar a un especialista), comprobados. Aceptada (decisión 7).
 
 ### Fases 3 y 4
 
@@ -270,7 +315,8 @@ Al principio, junto a los recuadros de las otras condiciones. Cada línea, pegad
 - **Riesgo alto** (mastocitosis, SAMA o anafilaxia previa «Sí»; decisión 11): «Tiene más riesgo de anafilaxia que la población general. Que traiga su autoinyector a cada sesión (Castells 2024, tabla II; Cardona 2020, tabla 8).»
 - **Con la mastocitosis**: «En la mastocitosis la anafilaxia suele empezar con calor, palpitaciones, mareo y desmayo, a menudo sin ronchas (Gülen 2023; González-de-Olano 2017).»
 - **Con «otro trastorno» o «no lo sabe» y sin anafilaxia previa**: solo las líneas de siempre y sus desencadenantes, sin la de riesgo alto: el riesgo de esa etiqueta no está descrito (Valent 2022, tabla 1).
-- **Sin autoinyector o «no le han recetado»**: «Que su médico valore si necesita un autoinyector (Valent 2020; NICE NG258, 1.1.15).» Redacción a revisar.
+- **Sin autoinyector o «no le han recetado»**: «Que su médico valore si necesita un autoinyector (Valent 2020; NICE NG258, 1.1.15).» Redacción propia sobre esas fuentes; se revisa al implementar.
+- **Para la consulta** (comprobado): «Ten un protocolo escrito de anafilaxia y ensáyalo con regularidad (Cardona 2020, fig. 4, paso 1).»
 - **Con sus desencadenantes**: la lista que marcó, con «evita estos en la sesión».
 
 ### Fase 6 — plan de tratamiento
@@ -314,7 +360,7 @@ Una frase para el `detalle`, si hay sitio: la α-triptasemia hereditaria no est�
 - **La anafilaxia en cualquier paciente.** La app no tiene hoy nada para una anafilaxia en la consulta de alguien sin la tarjeta (por ejemplo, la primera reacción al látex, o la primera anafilaxia por ejercicio). Como la pregunta de síncope de la decisión 9 de `docs/pots.md`, es un hueco previo que se apunta en vez de taparlo aquí. Podría ser una pregunta en el formulario previo («alergias graves, ¿lleva autoinyector?») o un texto de seguridad general. Trabajo aparte.
 - **Las urticarias físicas** (frío, presión, vibración) sin trastorno mastocitario: Muñoz 2024 las describe, y la urticaria por frío puede dar anafilaxia en el agua. Quedan fuera salvo que el usuario quiera ampliar la tarjeta a «urticaria inducible».
 
-## Decisiones (cada una con mi recomendación)
+## Decisiones (cada una con mi recomendación; aceptadas todas, ver «Decisiones aceptadas»)
 
 1. **¿Qué forma?** *Recomiendo la forma 2*: la forma 1 (texto) más la tarjeta reducida solo con «Diagnosticado». Si prefieres empezar por lo mínimo, la forma 1 sola es segura y no cierra la puerta a la 2.
 2. **Sin «Sospecha».** *Recomiendo no tenerla*: el fisio no tiene ninguna prueba que hacer, los criterios exigen la triptasa en el episodio y un patrón de síntomas sería el criterio amplio que las sociedades de alergia rechazan (Lee y Picard 2025; Valent 2018). Es la primera condición sin «Sospecha»; la guía de condiciones especiales lo reflejaría.
@@ -354,6 +400,6 @@ mastocitos: {
 
 ## Siguiente paso
 
-1. Tus decisiones (sobre todo la 1, la 2, la 6 y la 11).
-2. Si eliges la forma 2: pedir en PDF las fuentes de la decisión 9 y volver a comprobar en la fuente cada pasaje que use el texto final.
+1. ~~Tus decisiones~~ Hecho: las 12 recomendaciones, aceptadas.
+2. **Los PDF de la decisión 9** (como mínimo Valent 2022 de la CIE-10-MC, RCUK 2021 y EAACI 2021). Al leerlos, revisar si cambian algo del «qué hacer», de la tabla del paraguas o de las contradicciones.
 3. Después, la implementación, en una PR con tu revisión antes de `main`.
