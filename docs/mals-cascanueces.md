@@ -1,6 +1,6 @@
 # Síndrome del ligamento arcuato medio (MALS) y síndrome del cascanueces — borrador de diseño
 
-Estado: **borrador (octubre 2026), sin implementar.** Las 4 fuentes de abajo están leídas enteras en esta sesión; faltan las decisiones del usuario (al final). Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
+Estado: **implementado (octubre 2026), pendiente de la revisión del usuario antes de `main`.** El usuario aceptó las 7 recomendaciones («Decisiones», al final) y aportó el PDF de Bruessel 2026; las 4 fuentes están leídas enteras. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
 
 Origen: la pregunta del usuario (2026-10) de si la app tiene en cuenta condiciones que pueden coexistir con el Ehlers-Danlos, como el SIBO, el MALS o el cascanueces. No las tenía. El SIBO queda fuera de este borrador: es un diagnóstico digestivo sin presentación musculoesquelética propia.
 
@@ -12,7 +12,7 @@ Leídas enteras:
 
 | Clave propuesta | Referencia | Cómo se leyó | Qué aporta |
 |---|---|---|---|
-| `Bruessel 2026` | Bruessel P, Govender M, Frahm-Jensen G. The investigation and management of the abdominopelvic vascular compression syndromes in patients with Ehlers–Danlos syndrome and hypermobility spectrum disorder. *Vasc Health Risk Manag* 2026;22:592420. [doi:10.2147/VHRM.S592420](https://doi.org/10.2147/VHRM.S592420) | PMC13037643; las tablas 1 y 2 y la declaración de conflictos, de la página de PMC | La única revisión sobre estas compresiones en el Ehlers-Danlos y la hipermovilidad: cuánta evidencia hay de la asociación |
+| `Bruessel 2026` | Bruessel P, Govender M, Frahm-Jensen G. The investigation and management of the abdominopelvic vascular compression syndromes in patients with Ehlers–Danlos syndrome and hypermobility spectrum disorder. *Vasc Health Risk Manag* 2026;22:592420. [doi:10.2147/VHRM.S592420](https://doi.org/10.2147/VHRM.S592420) | PDF del usuario (15 pp.), tablas incluidas; también en PMC13037643 | La única revisión sobre estas compresiones en el Ehlers-Danlos y la hipermovilidad: cuánta evidencia hay de la asociación |
 | `Saleem 2023` | Saleem T, Katta S, Baril DT. «Celiac Artery Compression Syndrome». StatPearls [Internet], NCBI Bookshelf, actualizado el 26 de abril de 2023. [NBK470601](https://www.ncbi.nlm.nih.gov/books/NBK470601/) | Capítulo completo | MALS: mecanismo, clínica, diagnóstico, tratamiento y pronóstico |
 | `Penfold 2024` | Penfold D, Leslie SW, Lotfollahzadeh S. «Nutcracker Syndrome and Left Renal Vein Entrapment». StatPearls [Internet], NCBI Bookshelf, actualizado el 7 de mayo de 2024. [NBK559189](https://www.ncbi.nlm.nih.gov/books/NBK559189/) | Capítulo completo | Cascanueces: mecanismo, frecuencia de cada síntoma, diagnóstico, complicaciones y tratamiento |
 | `Mačionienė 2026` | Mačionienė E, Kerpauskienė A, Žakauskienė U, Vitkauskaitė M, Girčius R, Miglinas M. Nutcracker syndrome in 2026: a nephrologist-oriented diagnosis and management. *Clin Kidney J* 2026;19(5):sfag124. [doi:10.1093/ckj/sfag124](https://doi.org/10.1093/ckj/sfag124) | PMC13156603 (sin el contenido de su tabla 1 ni de las figuras) | Cascanueces: el dolor según la postura, el fenómeno en la imagen frente al síndrome, consenso Delphi 2025 |
@@ -22,7 +22,9 @@ Salvedades de lectura:
   - casi todo son casos y series pequeñas, y no evalúa el riesgo de sesgo;
   - solo 6 estudios tratan estas compresiones en el Ehlers-Danlos o la hipermovilidad;
   - los autores son cirujanos vasculares y una reumatóloga, y proponen una guía de pruebas invasivas; declaran no tener conflictos de interés.
-  - El texto de PMC omite las tablas. Las tablas 1 (clínica) y 2 (imagen) se leyeron en la página de PMC y deben comprobarse en el PDF antes de citarlas.
+  - Las tablas 1 (clínica, pp. 5–6) y 2 (imagen, pp. 7–8) se comprobaron en el PDF: coinciden con lo que dice este documento.
+  - Para el MALS da 40–60 años (tabla 1, p. 5); Saleem 2023 da 30–50. La app no cita edad.
+  - Varias afirmaciones de la asociación se apoyan en la web de una clínica del Ehlers-Danlos (su ref. 8), no en un estudio.
 - **Saleem 2023**: el capítulo de StatPearls se titula «Celiac Artery Compression Syndrome»; no hay ninguno titulado MALS.
   - Se contradice en el alivio tras la cirugía (60–70 % en «Prognosis», 75 % en el apartado del equipo) y en que la cirugía sea el único tratamiento.
   - Una errata llama «invasivas» a las pruebas no invasivas.
@@ -85,16 +87,16 @@ En cervical, `cv_gi1` (el dolor de espalda empeora o mejora al comer) es lo más
 
 Con la tarjeta «Hipermovilidad» marcada, el recuadro de la fase 5 ya dice «Si hay disautonomía o síntomas digestivos o urinarios importantes, derivar al especialista» (Engelbert 2017, p. 165).
 
-## Propuesta
+## Propuesta (los textos finales están en `data/lumbar.js`)
 
-### MALS: solo texto, sin pregunta nueva (recomendación)
+### MALS: solo texto, sin pregunta nueva (aceptada)
 
 - Ninguna de las fuentes describe el MALS como dolor de espalda, y su incidencia es de 2/100 000. Una pregunta propia en lumbar tendría muy poco rendimiento.
 - Propuesta: un párrafo «Con qué se confunde» en el `detalle` de la bandera de pérdida de peso de `l_gi`.
   - Contenido: dolor epigástrico después de comer, o con el esfuerzo, con pérdida de peso y sin respuesta a los antiácidos, en una mujer joven. Diagnóstico de exclusión que hace el médico. La compresión es frecuente en la imagen sin síntomas (Saleem 2023; Bruessel 2026).
 - Lo que haga falta lo hace la derivación que ya pide esa bandera; no hace falta otra.
 
-### Cascanueces: pregunta nueva en lumbar, con derivación preferente (a decidir)
+### Cascanueces: pregunta nueva en lumbar, con derivación preferente (aceptada)
 
 Su dolor sí puede parecer musculoesquelético (flanco o lumbar, sordo, mejor tumbado), pero el alivio en decúbito no lo distingue de una lumbalgia mecánica. Lo que lo separa es lo que lo acompaña. Borrador:
 
@@ -111,7 +113,7 @@ Su dolor sí puede parecer musculoesquelético (flanco o lumbar, sordo, mejor tu
   - **Sangre visible en la orina con anemia o mareo, o mucha cantidad, es otra cosa**: ya la recoge `l4`.
 - **En detalle** (borrador): fenómeno frente a síndrome; frecuencia de cada síntoma (Penfold 2024); diferenciales (litiasis, tumor, nefropatía IgA); tratamiento conservador primero, incluida la ganancia de peso; la asociación descrita con el Ehlers-Danlos sin cifras (Bruessel 2026).
 
-### Relación con la hipermovilidad: ninguna regla automática (recomendación)
+### Relación con la hipermovilidad: ninguna regla automática (aceptada)
 
 - La tarjeta «Hipermovilidad» no activa ni da peso a estas preguntas, como en el Tarlov y el POTS.
 - Solo una frase sin cifras en el «En detalle» de cada una: se han descrito con más frecuencia en el Ehlers-Danlos y la hipermovilidad, pero la asociación no está medida (Bruessel 2026).
@@ -121,18 +123,22 @@ Su dolor sí puede parecer musculoesquelético (flanco o lumbar, sordo, mejor tu
 - Árbol CIF, hipótesis y tests de la fase 4b, fase 6, calculadora.
 - Cadera: el dolor pélvico de la congestión pélvica ya lo cubre en parte `ca_u4`. Se deja para después de lumbar.
 
-## Decisiones pendientes (usuario)
+## Decisiones (aceptadas por el usuario, octubre 2026)
 
-1. **MALS**: ¿solo el párrafo en la bandera de pérdida de peso de `l_gi` (recomendado), una pregunta propia, o nada?
-2. **Cascanueces**: ¿pregunta nueva `l_u6` con `derivacion` preferente (recomendado), solo texto en el razonamiento de `l4` y `l_u4`, o nada?
-3. **Texto de `l_u6`**: ¿se mantiene la exigencia de los dos componentes (dolor postural **y** un acompañante)?
-4. **Hipermovilidad**: ¿ninguna regla automática, solo una frase sin cifras (recomendado)?
-5. **Cadera**: ¿se deja la congestión pélvica para otra sesión?
-6. **Tablas de Bruessel 2026**: ¿las compruebas en el PDF antes de citarlas (se leyeron en la página de PMC, no en el texto completo)?
-7. **SIBO**: ¿fuera, como propone este borrador?
+1. **MALS**: solo un párrafo «Con qué se confunde» en la bandera de pérdida de peso de `l_gi`; sin pregunta propia.
+2. **Cascanueces**: pregunta nueva `l_u6` con `derivacion` preferente, no urgente.
+3. **`l_u6` exige los dos componentes**: el dolor postural **y** un acompañante (sangre en la orina, varicocele izquierdo o dolor pélvico que empeora de pie).
+4. **Hipermovilidad**: ninguna regla automática; solo una frase sin cifras en el razonamiento de cada una.
+5. **Cadera** (congestión pélvica): para otra sesión.
+6. **Bruessel 2026**: el usuario aportó el PDF; las tablas se comprobaron en él.
+7. **SIBO**: fuera.
 
-## Al implementar
+## Implementación (octubre 2026)
 
-- Registrar las 4 referencias en `data/referencias.js` y regenerar `docs/referencias.md` (`node tests/gen-referencias.mjs`).
-- Si hay `l_u6`: `anatomia` solo con un artículo de Kenhub comprobado (vena renal izquierda); fijarla en el test que fija las preguntas con `derivacion`; prueba de humo.
-- Revisión del usuario antes de `main`.
+- **`data/lumbar.js`**
+  - **`l_u6`**, en `l_urogenital` justo después de `l_u4` (cólico renal, su diferencial): `alerta: true`, `anatomia: ['rinon']` (Kenhub no tiene un artículo propio de la vena renal comprobado; se enlaza el riñón, ya en el registro), `derivacion`, sin `urgencia`.
+  - Su `razonamiento` completo: «¿Por qué?» (`porque`, `peso`), «Ampliar →» con un `detalle` de seis párrafos (fenómeno y síndrome, cómo se presenta, con qué se confunde, complicaciones, tratamiento, tejido conectivo), «Fisiología, paso a paso» con 5 pasos y una metáfora, y 3 fuentes con cita y enlace (Penfold 2024, Mačionienė 2026, Bruessel 2026).
+  - **Bandera «Pérdida de peso inexplicada o saciedad precoz»** (`l_gi`): un párrafo «Con qué se confunde (raro)» al final de su `detalle` sobre el MALS, más dos fuentes (Saleem 2023, Bruessel 2026). Dice que ninguna de las dos fuentes lo describe como dolor de espalda y que la conducta con la bandera no cambia: derivar.
+- **`data/referencias.js`**: las 4 referencias; `docs/referencias.md` regenerado.
+- Nada nuevo en `app.js`: la derivación de `l_u6` usa el campo `derivacion` del Tarlov (mensaje 🩺 con SÍ, aviso «Derivación médica», fase 5, `📋 Notas`, `📄 Informe`, payload `dv[]`). physiq-report no necesita cambios: pinta `dv` con un texto genérico. La fase 6 no se bloquea, igual que con el Tarlov.
+- **Pruebas**: `tests/unit/cribado.mjs` (la lista de preguntas con `derivacion` incluye `l_u6`; `l_u6` tras `l_u4`, en `dv` y no en `ur`; el MALS sin pregunta propia y ninguna de las dos ligada a la hipermovilidad), `tests/unit/anatomia.mjs` (26 preguntas lumbares con anatomía) y la sección `cascanueces` de `tests/smoke.mjs`.

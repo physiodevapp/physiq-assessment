@@ -63,10 +63,10 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
 });
 
 // ── `derivacion` en preguntas de la fase 2 (quiste de Tarlov, docs/tarlov.md) ──
-test('cribado: `derivacion` es texto no vacío, nunca junto a `urgencia`; hoy l_u5 (quiste de Tarlov) y ds_d_paroxistica (taquicardia paroxística, docs/pots.md)', () => {
+test('cribado: `derivacion` es texto no vacío, nunca junto a `urgencia`; hoy l_u5 (quiste de Tarlov), l_u6 (cascanueces, docs/mals-cascanueces.md) y ds_d_paroxistica (taquicardia paroxística, docs/pots.md)', () => {
   const todas = Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).flatMap(s => s.preguntas);
   const con = [...new Set(todas.filter(q => 'derivacion' in q).map(q => q.id))];
-  assert.deepEqual(con.sort(), ['ds_d_paroxistica', 'l_u5']);
+  assert.deepEqual(con.sort(), ['ds_d_paroxistica', 'l_u5', 'l_u6']);
   todas.filter(q => 'derivacion' in q).forEach(q => {
     assert.ok(typeof q.derivacion === 'string' && q.derivacion.trim(), q.id);
     assert.ok(!q.urgencia, `${q.id}: derivacion y urgencia a la vez`);
@@ -104,6 +104,39 @@ test('l_u5 (Tarlov): pinta su mensaje 🩺, sin la clase de urgencia', () => {
     assert.ok(fila.includes('sq2-deriv-msg') && !fila.includes('sq2-urg'));
     assert.ok(/class="sq2[^"]*sq2-urg[^"]*" id="sq2_l6"/.test(html));
   });
+});
+
+// ── Cascanueces (l_u6) y MALS (bandera de pérdida de peso), docs/mals-cascanueces.md ──
+test('l_u6 (cascanueces): tras el cólico renal, derivación preferente sin urgencia, razonamiento completo; SÍ entra en dv, no en ur', () => {
+  const qs = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_urogenital').preguntas;
+  const u6 = qs.find(q => q.id === 'l_u6'), u4 = qs.find(q => q.id === 'l_u4');
+  assert.equal(qs.indexOf(u6), qs.indexOf(u4) + 1, 'l_u6 va justo después de l_u4');
+  assert.ok(u6.derivacion && !u6.urgencia && u6.alerta);
+  assert.ok(u6.razonamiento.porque && u6.razonamiento.peso && u6.razonamiento.detalle && u6.razonamiento.fisiologia);
+  assert.deepEqual(u6.razonamiento.fuentes, ['Penfold 2024', 'Mačionienė 2026', 'Bruessel 2026']);
+  withState({ region: 'lumbar', sistemicoAnswers: { l_u6: 'SI' }, treeAnswers: {} }, () => {
+    const d = buildPhysiQPayload();
+    assert.deepEqual(d.dv, [u6.derivacion]);
+    assert.deepEqual(d.ur, []);
+    assert.ok(buildContextSummaryText().includes(`🩺 DERIVACIÓN MÉDICA: ${u6.derivacion}`));
+  });
+  withState({ region: 'lumbar', sistemicoAnswers: { l_u5: 'SI', l_u6: 'SI' }, treeAnswers: {} }, () => {
+    const u5 = qs.find(q => q.id === 'l_u5');
+    assert.deepEqual(buildPhysiQPayload().dv, [u5.derivacion, u6.derivacion]);
+  });
+});
+
+test('MALS: solo texto en la bandera de pérdida de peso de l_gi, sin pregunta propia; ninguna regla con la hipermovilidad', () => {
+  const gi = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_gi');
+  const b = gi.banderasRojas.find(f => (f.texto || f).startsWith('Pérdida de peso inexplicada'));
+  assert.ok(b.razonamiento.detalle.includes('ligamento arcuato medio'));
+  assert.ok(b.razonamiento.fuentes.includes('Saleem 2023') && b.razonamiento.fuentes.includes('Bruessel 2026'));
+  const todas = Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).flatMap(s => s.preguntas);
+  assert.ok(!todas.some(q => /arcuato/i.test(q.text)), 'MALS no tiene pregunta');
+  // Ni MALS ni cascanueces dependen de la tarjeta «Hipermovilidad»
+  const u6 = todas.find(q => q.id === 'l_u6');
+  assert.ok(!('hm' in u6));
+  assert.ok(!SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'transversal_hipermovilidad').preguntas.some(q => /cascanueces|arcuato/i.test(JSON.stringify(q))));
 });
 
 test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra); el dolor ligado a la regla (l_e3) no', () => {
