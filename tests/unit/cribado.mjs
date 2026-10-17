@@ -162,6 +162,29 @@ test('ca_u6 (congestión pélvica): entre ca_u4 y ca_u5, derivación preferente 
   assert.ok(!SYSTEMIC_SCREENING.cadera.sistemas.find(s => s.id === 'transversal_hipermovilidad').preguntas.some(q => /congesti/i.test(JSON.stringify(q))));
 });
 
+// ── Síndrome de May-Thurner (sin pregunta propia), docs/may-thurner.md ──
+test('May-Thurner: sin pregunta propia; ca_v2 y r_v2 nombran la pierna entera; texto en ca_v2, r_v2, tp_v2, pq_tvp (no pq_tvp_ms), c2 y l_v1; nunca un tratamiento', () => {
+  const todas = Object.values(SYSTEMIC_SCREENING).flatMap(d => d.sistemas.flatMap(s => s.preguntas));
+  const q = id => todas.find(x => x.id === id);
+  // Decisión 1: ninguna pregunta nombra el May-Thurner en su texto, urgencia ni derivación
+  assert.ok(!todas.some(x => /thurner|cockett/i.test(`${x.text} ${x.urgencia || ''} ${x.derivacion || ''}`)));
+  // Decisión 2: la TVP ilio-femoral hincha la pierna entera
+  assert.match(q('ca_v2').text, /pantorrilla o en toda la pierna/);
+  assert.match(q('ca_v2').urgencia, /^Si son la pantorrilla o la pierna hinchada/);
+  assert.match(q('r_v2').text, /pantorrilla o toda la pierna/);
+  assert.ok(q('ca_v2').urgencia && q('r_v2').urgencia);
+  // Decisiones 3 y 4: solo texto, con sus fuentes
+  const con = { ca_v2: ['Mangla y Hamad 2024', 'Bruessel 2026', 'Kibbe 2004', 'Lim 2024'], r_v2: ['Mangla y Hamad 2024'], tp_v2: ['Mangla y Hamad 2024'],
+    pq_tvp: ['Lim 2024'], c2: ['De Maeseneer 2022', 'Mangla y Hamad 2024'], l_v1: ['De Maeseneer 2022', 'Mangla y Hamad 2024'] };
+  for (const [id, fuentes] of Object.entries(con)) {
+    assert.match(q(id).razonamiento.detalle, /May-Thurner/, id);
+    for (const f of fuentes) assert.ok(q(id).razonamiento.fuentes.includes(f), `${id}: ${f}`);
+  }
+  assert.ok(!/May-Thurner|Lim 2024/.test(q('pq_tvp_ms').razonamiento.detalle), 'hombro y codo no ven lo de la prótesis de cadera');
+  // Decisión 6: ni stent, ni angioplastia, ni trombólisis
+  for (const id of Object.keys(con)) assert.ok(!/stent|angioplast|tromból/i.test(JSON.stringify(q(id).razonamiento)), id);
+});
+
 test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra); el dolor ligado a la regla (l_e3) no', () => {
   const qs = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => s.preguntas);
   assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['l6', 'l_e8', 'sx_sincope']);   // sx_sincope: común a las 7 regiones (docs/pots.md)
