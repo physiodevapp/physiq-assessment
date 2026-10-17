@@ -4,6 +4,7 @@ import { assert, leer, test, withState, buildPhysiQPayload, buildContextSummaryT
 const { CUESTIONARIOS, GRUPOS_CUESTIONARIO } = await import('../../data.js');
 const L = await import('../../lib/cuestionarios.js');
 const IN = await import('../../lib/informe-narrativo.js');
+const { elegirColumnas } = await import('../../filas.js');
 
 console.log('\ncuestionarios');
 
@@ -419,11 +420,32 @@ test('VISA-A: 0–100 con los puntos de la hoja española; 2–5 invertidos', ()
   assert.deepEqual(d.items[7].opciones.map(o => o.v), [0, 7, 14, 21, 30, 0, 4, 10, 14, 20, 0, 2, 5, 7, 10]);
 });
 
-test('cuestionarios: columnas de las opciones en móvil (una fila si caben, dos, una si alguna es larga)', () => {
+test('cuestionarios: columnas de las opciones en móvil (de 3 a 4 cortas prueban una fila; si no, dos; una si alguna es larga)', () => {
+  // De 3 a 4 opciones cortas: candidatas a una fila (filas.js mide y, si algo parte, dos por fila)
   assert.equal(L.columnasMovil(['A · No', 'B · Un poco', 'C · Mucha']), 3);
-  assert.equal(L.columnasMovil(['Nunca', 'Sobre el antepié', 'Con el pie plano']), 3);
-  // Una palabra que no cabe en un tercio del ancho: dos por fila
-  assert.equal(L.columnasMovil(['Nunca', 'Si va rápido', 'Ocasionalmente', 'Siempre']), 2);
+  assert.equal(L.columnasMovil(['Nunca', 'Si va rápido', 'Ocasionalmente', 'Siempre']), 4);
+  // Dos o más de 4: dos por fila, aunque alguna ocupe dos líneas
+  assert.equal(L.columnasMovil(['Sí', 'No']), 2);
   assert.equal(L.columnasMovil(['0 días', '1–2 días', '3–7 días', '8–14 días', '15–30 días']), 2);
+  // Alguna de más de LARGO_OPCION_COLUMNA: una por fila
   assert.equal(L.columnasMovil(['No, en absoluto', 'Entrenamiento o competición modificada']), 1);
+  // El HTML: candidatas con data-filas="N,2" (nunca bajan de dos), largas sin data-filas
+  const kujala = CUESTIONARIOS.find(d => d.id === 'kujala');
+  const html = L.formularioCuestionarioHTML(kujala, {});
+  assert.ok(/cuest-ops-fila" data-filas="3,2"/.test(html));
+  assert.ok(!/data-filas="[^"]*,1"/.test(html));
+});
+
+test('filas: elegirColumnas toma la primera disposición en la que cabe y, si ninguna, la última', () => {
+  assert.equal(elegirColumnas([3, 2, 1], c => c <= 3), 3);
+  assert.equal(elegirColumnas([3, 2, 1], c => c <= 2), 2);
+  assert.equal(elegirColumnas([3, 2, 1], () => false), 1);
+  assert.equal(elegirColumnas([4, 2], () => false), 2);
+});
+
+test('filas: los grupos de tres de las fases 1 y 3 prueban tres, dos y una por fila', () => {
+  const html = leer('index.html');
+  const grupos = html.match(/class="option-group option-group-col"[^>]*/g) || [];
+  assert.equal(grupos.length, 4);
+  assert.ok(grupos.every(g => g.includes('data-filas="3,2,1"')));
 });
