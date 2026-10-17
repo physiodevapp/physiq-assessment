@@ -238,3 +238,34 @@ Lumbar era la única región de pierna sin pregunta de TVP fuera del mecanismo P
 - Con el mecanismo Post-quirúrgico, `l_v4` y `pq_tvp` conviven, como `r_v2` y `pq_tvp` en rodilla.
 - Una urgencia de la fase 2 bloquea la fase 6, como las demás. physiq-report no necesita cambios: pinta `ur` como siempre.
 - **Pruebas**: `tests/unit/cribado.mjs` (prueba propia de `l_v4` y la lista de urgencias de lumbar), `tests/unit/razonamiento.mjs` (29 banderas enlazadas) y `tests/unit/anatomia.mjs` (27 preguntas lumbares con anatomía).
+
+
+## Claudicación venosa en el árbol lumbar, `lu_step2` (octubre 2026)
+
+Estado: **implementado y revisado por el usuario al fusionar (octubre 2026).** Viene de una sesión paralela (PR #458) que diseñó el May-Thurner a la vez que la de arriba; al fusionar `main`, el usuario eligió quedarse con lo de `main` y añadir solo lo que no tenía: el razonamiento del paso del árbol lumbar que separa la claudicación vascular de la neurógena (`lu_step2`). El cribado (`l_v1`) ya dice qué es la claudicación venosa; el árbol necesitaba **cómo se distingue de las otras dos al caminar**, que solo da Tsouknidas 2022.
+
+- **`lu_step2`, `detalle`**: un párrafo tras el de la claudicación arterial: dolor de reventón o de calambre en la nalga, el muslo o la pierna al caminar, a menudo con hinchazón, que obliga a parar y cede con reposo y elevando la pierna, a menudo tras 15 minutos o más; la arterial cede de pie en 1–2 minutos y la neurógena pide cambiar la postura de la espalda (Tsouknidas 2022). Su causa habitual es la obstrucción de la vena ilíaca, tras una trombosis o por el May-Thurner, cuya compresión sola es frecuente y casi nunca da síntomas (Mangla y Hamad 2024). Con este patrón, valoración médica. Las opciones, las hipótesis y la navegación no cambian (instantánea de navegación sin cambios).
+- **Fuentes**: `Tsouknidas 2022`, nueva en el registro; `Mangla y Hamad 2024`, la misma entrada que ya usa `main`.
+- Lo que la PR #458 hacía en `pq_tvp` (Lim 2024) se descarta: `main` ya lo tiene en `PQ_RAZON_TVP_PIERNA`.
+
+### Tsouknidas 2022
+
+Tsouknidas I, Charisis N, Eklof B, Labropoulos N. Venous claudication: a scoping review of the pathophysiology and clinical importance. *Eur J Vasc Endovasc Surg* 2022;64(5):535–543. [doi:10.1016/j.ejvs.2022.08.006](https://doi.org/10.1016/j.ejvs.2022.08.006). PDF del usuario, leído entero (9 páginas, tablas y figuras).
+
+- **El síntoma:**
+  - un dolor «bursting or cramping» (de reventón o de calambre) en el muslo, la nalga o la pierna al caminar, a menudo con hinchazón;
+  - empieza poco a poco y empeora, hasta obligar a parar (pp. 535 y 539);
+  - se alivia con reposo y elevando la pierna, y tarda «up to 15 minutes» (p. 535) o «usually … 15 minutes or more» (p. 539): el propio artículo se contradice.
+- **La causa:** casi siempre una obstrucción iliofemoral, a menudo tras una trombosis ilíaca o de la cava. Nombra la compresión de la vena ilíaca común izquierda (p. 537).
+- **Frente a la claudicación arterial** (p. 539): calambre tras una distancia concreta, que cede quedándose de pie 1–2 minutos.
+- **Frente a la neurógena** (pp. 539–540): cede con reposo, pero cambiando la postura de la espalda (menos lordosis).
+- **Variante «neurogenic venous induced claudication»** (p. 540): es poco frecuente, y en ella elevar la pierna o mover la columna la empeora. No se lleva a la app.
+- **Lo que no da:**
+  - tabla comparativa: el diferencial es texto apoyado en otras referencias;
+  - cifras de exactitud de ningún síntoma.
+- **Calidad:** 29 estudios, todos observacionales.
+- **Sobre la comparación del borrador:** el artículo no compara directamente lo que alivia cada tipo, así que no apoya la frase «más que con flexionar el tronco». Se sustituye por lo que sí dice de cada claudicación.
+- **Erratas:**
+  - años y números de pacientes distintos entre el texto y las tablas;
+  - el diagrama de flujo no cuadra;
+  - la cabecera dice «Systematic review», aunque es una scoping review.
