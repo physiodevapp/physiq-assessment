@@ -802,6 +802,121 @@ async function checkDisautonomia(page) {
   return r;
 }
 
+// Lupus (Fase P, docs/lupus.md), codo. Fase 1: las filas solo con
+// «Diagnosticado», y un segundo toque desmarca. Fase 2: las 6 urgencias sin
+// plegar, la derivación con 🩺; con «Sospecha», solo los rasgos y la
+// derivación preferente. Fase 3: las dos notas. Con la hipermovilidad, la
+// nota de Malfait bajo la escala de Beighton. 320 px: nada se sale. Quitar la
+// marca quita el sistema. Después, un recorrido entero: la línea de la 4b, el
+// recuadro de la fase 5 y los avisos y la red de seguridad de la fase 6.
+async function checkLupus(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#motivoConsulta', 'Dolor de codo al cargar');   // sin «lupus»: el informe con la sospecha no debe nombrarlo
+  await page.fill('#edadPaciente', '34');
+  await page.dispatchEvent('#edadPaciente', 'input');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.filasOcultas = !(await page.isVisible('#lesDiagWrap'));
+  await page.click('#lesEstado .option-btn[data-valor="sospecha"]');
+  r.filasOcultasSospecha = !(await page.isVisible('#lesDiagWrap'));
+  await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
+  r.filasVisibles = await page.isVisible('#lesDiagWrap');
+  const fila = (k, v) => page.click(`[data-les-fila="${k}"] .option-btn[data-valor="${v}"]`);
+  await fila('corticoides', 'a');
+  await fila('corticoides', 'a');
+  r.segundoToque = await page.evaluate(() => state.lupus.corticoides === '');
+  await fila('corticoides', 'm');
+  await fila('antifosfolipidos', 'no');
+  await fila('actividad', 'peor');
+  await page.check('#les_raynaud');
+  await page.check('#les_antitrombotico');
+  r.estado = await page.evaluate(() => JSON.stringify(state.lupus) === JSON.stringify({ estado: 'diagnosticado', corticoides: 'm', dosisAltas: '', inmunosupresores: '',
+    antifosfolipidos: 'no', antitrombotico: true, osteonecrosis: false, raynaud: true, actividad: 'peor', rasgos: {} }));
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('codo', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_lupus');
+  await page.click('#tab_transversal_lupus');
+  const P = '#panel_transversal_lupus';
+  r.urgSinPlegar = await page.$$eval(`${P} .sq2-urg`, els => els.length) === 6;
+  r.sinEmbudo = await page.$$eval(`${P} [data-embudo]`, els => els.length) === 0;
+  await page.click(`${P} #sq2_les_u_tvp .sq-btn.si`);
+  r.urgencia = await page.isVisible('#sistemicoAlert .urgencia-alert');
+  await page.click(`${P} #sq2_les_u_tvp .sq-btn.no`);
+  await page.click(`${P} #sq2_les_d_rinon .sq-btn.si`);
+  r.derivacion = await page.isVisible(`${P} #sq2_les_d_rinon .sq2-deriv-msg`);
+  r.payloadDv = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().dv.some(t => t.startsWith('Posible afectación del riñón')));
+  await page.click(`${P} #sq2_les_d_rinon .sq-btn.no`);
+  // Fase 3: la nota de Naturaleza y, con «Peor, sin valorar aún», la del brote
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForTimeout(150);
+  r.notaNaturaleza = await page.isVisible('#lesNotaNaturaleza') && (await page.textContent('#lesNotaNaturaleza')).includes('sola no mide la actividad');
+  r.notaBrote = await page.isVisible('#lesNotaBrote');
+  // Con la hipermovilidad, la nota de Malfait bajo la escala de Beighton
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#tab_transversal_hipermovilidad');
+  await page.click('#panel_transversal_hipermovilidad button:has-text("Hacer la escala de Beighton")');
+  r.notaHM = (await page.textContent('#panel_transversal_hipermovilidad [data-hm-bloque]')).includes('Con lupus, el diagnóstico de SED hipermóvil');
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
+  // «Sospecha»: sin urgencias del sistema, con los rasgos
+  await page.click('#lesEstado .option-btn[data-valor="sospecha"]');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#tab_transversal_lupus');
+  r.sospechaSinUrg = await page.$$eval(`${P} .sq2-urg`, els => els.length) === 0;
+  r.rasgos = await page.$$eval(`${P} .les-rasgo`, els => els.length) === 6;
+  await page.click(`${P} .les-rasgo >> nth=1 >> .sq-btn.si`);
+  r.derivarSospecha = (await page.textContent(`${P} [data-les-bloque]`)).includes('derivación preferente a su médico de atención primaria');
+  r.sincronizada = await page.evaluate(() => document.querySelector('#acc_transversal_lupus [data-les-bloque]').textContent.includes('1 de 5 con «sí»'));
+  r.informeSinLupus = await page.evaluate(async () => !/lupus/i.test((await import('./app.js')).buildInformeFisioterapiaText()));
+  // 320 px: la tarjeta y el acordeón, sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
+  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#acc_transversal_lupus .sistema-accordion-header');
+  await page.waitForTimeout(150);
+  r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  // Quitar la marca quita el sistema
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
+  r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_lupus') && !document.getElementById('tab_transversal_lupus') && !document.body.classList.contains('lupus'));
+  // Recorrido entero con «Diagnosticado» y Raynaud: 4b, fase 5 y fase 6
+  await abrirApp(page);
+  await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
+  await page.check('#les_raynaud');
+  await walkRegion(page, 'codo');
+  r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .les-fase5')?.textContent || '';
+    return t.includes('Diagnosticado') && t.includes('150–300 min') && t.includes('Fotoprotección') && t.includes('Raynaud') && t.includes('valoración médica hoy'); });
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.nota4b = await page.isVisible('#hypothesisCards .les-nota-4b');
+  await page.evaluate(() => goToPhase(5));
+  await page.waitForTimeout(150);
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Lupus: intensidad moderada') && t.includes('Lupus con Raynaud') && t.includes('una infección puede dar poca fiebre') && t.includes('pérdida de visión de golpe'); });
+  r.ok = r.filasOcultas && r.filasOcultasSospecha && r.filasVisibles && r.segundoToque && r.estado && r.tab && r.urgSinPlegar && r.sinEmbudo
+    && r.urgencia && r.derivacion && r.payloadDv && r.notaNaturaleza && r.notaBrote && r.notaHM && r.sospechaSinUrg && r.rasgos
+    && r.derivarSospecha && r.sincronizada && r.informeSinLupus && r.ancho1 && r.ancho2 && r.sinSistema && r.fase5 && r.nota4b && r.fase6;
+  return r;
+}
+
 // Reloj de la prueba de bipedestación (docs/pots.md, «Reloj»): reloj del
 // navegador simulado (page.clock), pitidos y vibración contados.
 async function checkDsReloj(page) {
@@ -2088,18 +2203,46 @@ async function checkCuestionarios(browser, errors) {
         return rs.every(x => Math.abs(x.top - rs[0].top) < 1) && Math.abs(rs[0].left - caja.left) < 1 && Math.abs(rs.at(-1).right - caja.right) < 1;
       }) && Math.abs(ops[5].getBoundingClientRect().top - ops[4].getBoundingClientRect().bottom - 6) < 1;
   });
-  // Una sola respuesta: una opción por fila de borde a borde (Örebro, ítem 6); marcar varias: dos columnas (ítem 5)
+  // Opciones de texto (una respuesta o varias): dos columnas, la última a todo el ancho si son impares
+  // (Örebro, ítems 6 y 5); con una opción larga, una por fila de borde a borde (VISA-A)
   await m.tap('[data-cuest-volver]');
   await m.tap('[data-cuest="orebro"]');
-  r.lista = await m.evaluate(() => {
-    const filas = sel => [...document.querySelectorAll(`#cuestCuerpo .cuest-item[data-item="${sel}"] .cuest-op`)].map(o => o.getBoundingClientRect());
-    const una = filas(6), marcas = filas(5);
-    const caja = document.querySelector('#cuestCuerpo .cuest-item[data-item="6"] .cuest-ops').getBoundingClientRect();
-    return una.length > 4 && una.every((x, i) => Math.abs(x.left - caja.left) < 1 && Math.abs(x.right - caja.right) < 1 && x.height >= 40 && (i === 0 || x.top > una[i - 1].bottom))
-      && Math.abs(marcas[0].top - marcas[1].top) < 1 && marcas[1].left > marcas[0].right
-      // Impares: la última ocupa la fila entera
-      && marcas.length % 2 === 1 && Math.abs(marcas.at(-1).left - marcas[0].left) < 1 && Math.abs(marcas.at(-1).right - marcas[1].right) < 1;
+  const dosColumnas = sel => m.evaluate(sel => {
+    const ops = [...document.querySelectorAll(sel)].map(o => o.getBoundingClientRect());
+    const caja = document.querySelector(sel).parentElement.getBoundingClientRect();
+    return ops.length > 2 && Math.abs(ops[0].top - ops[1].top) < 1 && ops[1].left > ops[0].right
+      && Math.abs(ops[0].left - caja.left) < 1 && Math.abs(ops[1].right - caja.right) < 1
+      && ops.every(x => x.height >= 40)
+      && (ops.length % 2 === 0 || (Math.abs(ops.at(-1).left - caja.left) < 1 && Math.abs(ops.at(-1).right - caja.right) < 1));
+  }, sel);
+  r.lista = await dosColumnas('#cuestCuerpo .cuest-item[data-item="6"] .cuest-op')
+    && await dosColumnas('#cuestCuerpo .cuest-item[data-item="5"] .cuest-op');
+  await m.tap('[data-cuest-volver]');
+  await m.tap('[data-cuest="visaa"]');
+  r.largas = await m.evaluate(() => {
+    const cont = [...document.querySelectorAll('#cuestCuerpo .cuest-ops-largas')];
+    return cont.length > 0 && cont.every(c => {
+      const ops = [...c.querySelectorAll('.cuest-op')].map(o => o.getBoundingClientRect()), caja = c.getBoundingClientRect();
+      return ops.every((x, i) => Math.abs(x.left - caja.left) < 1 && Math.abs(x.right - caja.right) < 1 && (i === 0 || x.top > ops[i - 1].bottom));
+    });
   });
+  // Si caben todas en una fila, una fila (Kujala: tres opciones cortas)
+  await m.tap('[data-cuest-volver]');
+  await m.tap('[data-cuest="kujala"]');
+  r.filaUnica = await m.evaluate(() => {
+    const cont = [...document.querySelectorAll('#cuestCuerpo .cuest-ops-fila')];
+    return cont.length > 0 && cont.every(c => {
+      const ops = [...c.querySelectorAll('.cuest-op')].map(o => o.getBoundingClientRect()), caja = c.getBoundingClientRect();
+      return ops.every(x => Math.abs(x.top - ops[0].top) < 1) && Math.abs(ops[0].left - caja.left) < 1 && Math.abs(ops.at(-1).right - caja.right) < 1;
+    });
+  });
+  // Mismo criterio en los grupos de fase 1 (mecanismo, cronología): las tres en una fila,
+  // sin partir palabras a 320 px
+  r.gruposCol = await m.evaluate(() => [...document.querySelectorAll('#phase1 .option-group-col')].every(g => {
+    const bs = [...g.querySelectorAll('.option-btn')], b = bs.map(x => x.getBoundingClientRect()), c = g.getBoundingClientRect();
+    const sinPartir = bs.every(x => { x.style.overflowWrap = 'normal'; const ok = x.scrollWidth <= x.clientWidth + 1; x.style.overflowWrap = ''; return ok; });
+    return b.length === 3 && b.every(x => Math.abs(x.top - b[0].top) < 1) && Math.abs(b[0].left - c.left) < 1 && Math.abs(b[2].right - c.right) < 1 && sinPartir;
+  }));
   r.cabecera = await m.evaluate(() => document.documentElement.scrollWidth <= innerWidth
     && document.getElementById('themeBtn').getBoundingClientRect().right <= innerWidth);
   await movil.close();
@@ -4189,6 +4332,51 @@ async function checkPlanIA(browser, errors) {
   return r;
 }
 
+// Pantalla estrecha: ningún grupo de botones deja uno descolgado con hueco a su lado en la
+// última fila (o llena la fila o el último ocupa todo el ancho). Recorre las 7 regiones
+// hasta la fase 5 en un móvil de 320 px, abre todo lo plegable y mira cada fase (1–6).
+// Fuera: la silueta (zonas colocadas sobre el dibujo) y las citas (texto corrido).
+async function checkSinHuecos(browser, errors) {
+  const fallos = [];
+  const huecos = page => page.evaluate(() => {
+    const out = [];
+    const visibles = el => el.getBoundingClientRect().width > 0;
+    const conts = new Set([...document.querySelectorAll('.phase-container.active button')].filter(visibles).map(x => x.parentElement));
+    for (const c of conts) {
+      if (c.closest('.sil-lienzo')) continue;
+      const bs = [...c.children].filter(x => x.tagName === 'BUTTON' && visibles(x) && !x.classList.contains('cita'));
+      if (bs.length < 3) continue;
+      const filas = {};
+      for (const x of bs) (filas[Math.round(x.getBoundingClientRect().top)] ??= []).push(x);
+      const ks = Object.keys(filas).map(Number).sort((a, b) => a - b);
+      if (ks.length < 2) continue;
+      const ultimo = filas[ks.at(-1)].at(-1).getBoundingClientRect();
+      const hueco = c.getBoundingClientRect().right - ultimo.right;
+      if (hueco > 20) out.push(`${c.className} (${filas[ks.at(-1)].map(x => x.textContent.trim().slice(0, 24)).join(' · ')}, hueco ${Math.round(hueco)} px)`);
+    }
+    return out;
+  });
+  for (const region of REGIONS) {
+    const context = await browser.newContext({ viewport: { width: 320, height: 700 }, isMobile: true, hasTouch: true });
+    const page = await context.newPage();
+    page.on('pageerror', err => errors.push(`pageerror (huecos ${region}): ${err.message}`));
+    await abrirApp(page);
+    const r = await walkRegion(page, region);
+    if (r.finalPhase !== 5) { fallos.push(`${region}: no llega a la fase 5`); await context.close(); continue; }
+    for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
+      await page.evaluate(f => window.goToPhase(f), f);
+      await page.waitForFunction(f => String(window.state.currentPhase) === String(f), f);
+      await page.evaluate(() => document.querySelectorAll('.phase-container.active details:not([open])').forEach(d => { d.open = true; }));
+      // El formulario previo se pinta al abrirse (import() de formulario.js)
+      if (f === 1 || f === 2) await page.waitForSelector('.phase-container.active .fp-opts');
+      await page.waitForTimeout(150);
+      for (const h of await huecos(page)) fallos.push(`${region} fase ${f}: ${h}`);
+    }
+    await context.close();
+  }
+  return { ok: fallos.length === 0, fallos: [...new Set(fallos)] };
+}
+
 async function checkFase6(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await portapapelesPropio(context);
@@ -4888,7 +5076,7 @@ const SECCIONES = [
 
   { id: 'cuestionarios', titulo: 'Calculadora de cuestionarios:', run: async ({ browser, errors }) => {
     const c = await checkCuestionarios(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las preguntas de una sola respuesta van una opción por fila y las de marcar varias en dos columnas, con la última a todo el ancho si son impares; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las opciones de texto (una respuesta o varias) van en dos columnas, con la última a todo el ancho si son impares, todas en una fila si caben (Kujala), y una por fila si alguna es larga; mecanismo y cronología, las tres en una fila; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -4936,6 +5124,13 @@ const SECCIONES = [
     const r = await checkDisautonomia(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta, síncope urgente sin plegar, paroxística, sospecha, prueba de bipedestación (compatible, hipotensión, copias sincronizadas), notas 3 y 4b, fase 5, fase 6 y 320 px`);
     if (!r.ok) console.log('\nDisautonomía:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'lupus', titulo: 'Lupus (Fase P, codo):', run: async ({ page }) => {
+    const r = await checkLupus(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con sus filas, urgencias sin plegar, derivación, sospecha con rasgos (sin la palabra lupus en el informe), notas 3 y 4b, nota de hipermovilidad, fase 5, fase 6 y 320 px`);
+    if (!r.ok) console.log('\nLupus:', JSON.stringify(r));
     return r.ok;
   } },
 
@@ -5014,6 +5209,12 @@ const SECCIONES = [
   { id: 'barra-fija', titulo: 'Barra de navegación fija durante la entrada de fase (móvil):', run: async ({ browser, errors }) => {
     const r = await checkBarraFijaAnimacion(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} al volver de la 6 a la 5, la barra «← Anterior / Compartir» sigue al pie de la pantalla en cada fotograma de la animación (sin transform en la fase), así que no tapa «Plan de tratamiento →» ni salta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'huecos', titulo: 'Sin botones descolgados en pantalla estrecha (320 px, las 7 regiones, fases 1–6):', run: async ({ browser, errors }) => {
+    const r = await checkSinHuecos(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} en ningún grupo de botones queda uno solo en la última fila con hueco al lado: la fila se llena o el último ocupa todo el ancho${r.ok ? '' : ' ' + JSON.stringify(r.fallos)}`);
     return r.ok;
   } },
 

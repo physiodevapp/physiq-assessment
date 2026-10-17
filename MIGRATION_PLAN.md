@@ -420,7 +420,7 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
 - [x] Fase 5, 📋 Notas, 📄 Informe, payload `hm`, informe con IA, pendiente en modo breve (pruebas unitarias y sección `hipermovilidad` de la prueba de humo)
 - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
 - [x] physiq-report: leer `hm` del payload (otro repositorio): `_bloqueHM()` en su `lib/payload.js`, copia literal de `bloqueHMIA()`; un test en cada repositorio fija el mismo texto (2026-10)
-- [ ] Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)
+- [x] Después del piloto: POTS / disautonomía y quiste de Tarlov (contenido de lumbar). Antes esta casilla nombraba también el lupus, que tiene la suya abajo (corregida en 2026-10)
   - [x] POTS / disautonomía: diseño en `docs/pots.md` (2026-10), con las 13 fuentes leídas enteras (en abierto y PDF del usuario: ESC 2018, CCS 2020, Sivakoti 2026, Hakim 2017, George 2016, Fedorowski 2019); aceptadas las 12 recomendaciones
   - [x] POTS: implementado (2026-10). Tarjeta de la fase 1, `SIS_DISAUTONOMIA` (4 preguntas de síncope urgentes, 1 derivación, patrón de sospecha y prueba de bipedestación activa), notas de las fases 3, 4 y 4b, recuadro de la fase 5, payload `ds`, 📋 Notas, 📄 Informe, informe con IA y aviso y red de seguridad de la fase 6. Pruebas unitarias (`tests/unit/disautonomia.mjs`) y sección `disautonomia` de la prueba de humo; prueba completa en verde
   - [x] POTS: revisión del usuario dada por hecha (2026-10)
@@ -438,3 +438,9 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
     - [x] Congestión pélvica: StatPearls (Kuo 2025) y Hanna 2024 leídos enteros en PDF del usuario (2026-10); no cambian las decisiones
     - [x] Congestión pélvica: Champaneria 2016 leído entero en PDF del usuario (2026-10); no cambia las decisiones. Implementado: `ca_u6` (cadera, `ca_urogenital`, entre `ca_u4` y `ca_u5`) con `derivacion` preferente y razonamiento completo, una frase en `ca_u4`, 7 referencias nuevas; ninguna regla con la hipermovilidad
     - [x] Congestión pélvica: revisado por el usuario (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico
+- [x] Lupus eritematoso sistémico (LES): diseño, decisiones y fuentes en `docs/lupus.md`
+  - [x] Diseño (2026-10): 21 fuentes en abierto (PMC y StatPearls) leídas enteras; aceptadas las 18 recomendaciones
+  - [x] Revisión con las guías (2026-10): PDF del usuario leídos enteros (EULAR 2023 del LES, ACR 2025, BSR 2018, EULAR de infecciones, riesgo cardiovascular, fatiga y no farmacológica, Ruperto 2011, Goodman cap. 12) y Blaess 2024 en abierto; aceptados los 16 cambios (corticoides ≤5 · 5–20 · >20 mg/día, hidroxicloroquina fuera de los inmunosupresores, dosis de ejercicio de Blaess 2024, ejercicio en brote, fatiga, ictus siempre…)
+  - [x] Implementado (2026-10): tarjeta de la fase 1, `SIS_LUPUS` (6 urgencias y 4 derivaciones con «Diagnosticado»; rasgos sin puntos con «Sospecha»), notas de las fases 3 y 4b, recuadro de la fase 5, payload `le`, 📋 Notas, 📄 Informe (sin la palabra lupus con la sospecha), informe con IA, avisos y red de seguridad de la fase 6, nota con la hipermovilidad. Pruebas unitarias (`tests/unit/lupus.mjs`) y sección `lupus` de la prueba de humo; prueba completa en verde
+  - [x] Revisión del usuario (2026-10)
+  - [x] physiq-report: leer `le` del payload (otro repositorio): `_bloqueLES()`, copia literal de `bloqueLESIA()`; `LES_CASOS` fija el mismo texto en un test en cada repositorio (physiodevapp/physiq-report#93, 2026-10)

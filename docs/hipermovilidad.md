@@ -220,7 +220,7 @@ No llevan el aviso: aprensión, recolocación y sorpresa (el positivo es el sín
 ## Ideas no decididas
 - **TA en el subtipo vascular** (fuera del piloto, decisión de la revisión): Byers 2017 pide mantener la presión arterial en rango normal (pp. 40 y 43). La fase 1 ya recoge la TA (`signosVitales`), pero ningún algoritmo la lee. Se podría avisar en la fase 5 si la TAS es alta y el subtipo es vascular.
 - **Versión española validada del cuestionario**: no comprobado si existe; si existe, sustituye a la traducción propia.
-- **Lupus**: Malfait 2017 (p. 19) muestra que el lupus y el SEDh interactúan en el diagnóstico. Si más adelante se añade el lupus como condición especial, la tarjeta podría tener en cuenta las dos.
+- **Lupus**: Malfait 2017 (p. 19) muestra que el lupus y el SEDh interactúan en el diagnóstico. Hecho (2026-10): con las tarjetas de hipermovilidad y de lupus marcadas, esa nota sale bajo la escala de Beighton (`docs/lupus.md`).
 
 ## Estado y cambios técnicos (cuando se implemente)
 
