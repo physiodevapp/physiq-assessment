@@ -1,6 +1,6 @@
 # Guía de condiciones especiales
 
-Estado: **implementado (octubre 2026), pendiente de la revisión del usuario en la app.** El usuario aceptó las recomendaciones generales (botón en la cabecera, incluir el posquirúrgico, empezar solo con el botón) y las 8 decisiones del final. Seguimiento en `MIGRATION_PLAN.md`, Fase P.
+Estado: **implementado y fusionado (octubre 2026); la revisión del usuario se dio por hecha al fusionar.** El usuario aceptó las recomendaciones generales (botón en la cabecera, incluir el posquirúrgico, empezar solo con el botón) y las 8 decisiones del final. Seguimiento en `MIGRATION_PLAN.md`, Fase P.
 
 ## Para qué
 

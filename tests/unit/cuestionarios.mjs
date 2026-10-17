@@ -418,3 +418,12 @@ test('VISA-A: 0–100 con los puntos de la hoja española; 2–5 invertidos', ()
   assert.deepEqual(d.items[0].opciones.map(o => o.v), [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]);
   assert.deepEqual(d.items[7].opciones.map(o => o.v), [0, 7, 14, 21, 30, 0, 4, 10, 14, 20, 0, 2, 5, 7, 10]);
 });
+
+test('cuestionarios: columnas de las opciones en móvil (una fila si caben, dos, una si alguna es larga)', () => {
+  assert.equal(L.columnasMovil(['A · No', 'B · Un poco', 'C · Mucha']), 3);
+  assert.equal(L.columnasMovil(['Nunca', 'Sobre el antepié', 'Con el pie plano']), 3);
+  // Una palabra que no cabe en un tercio del ancho: dos por fila
+  assert.equal(L.columnasMovil(['Nunca', 'Si va rápido', 'Ocasionalmente', 'Siempre']), 2);
+  assert.equal(L.columnasMovil(['0 días', '1–2 días', '3–7 días', '8–14 días', '15–30 días']), 2);
+  assert.equal(L.columnasMovil(['No, en absoluto', 'Entrenamiento o competición modificada']), 1);
+});

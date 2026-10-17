@@ -1121,6 +1121,44 @@ async function checkCascanueces(page) {
   return r;
 }
 
+// Congestión pélvica (ca_u6, cadera), docs/congestion-pelvica.md: «¿Por qué?» y
+// «Ampliar» con su fisiología, mensaje 🩺 solo con SÍ, aviso «Derivación médica»
+// sin urgencia; ca_u4 remite a ella en su «Ampliar».
+async function checkCongestionPelvica(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  await irAFase2(page, 'cadera');
+  await page.click('#tab_ca_urogenital');
+  const fila = '#panel_ca_urogenital #sq2_ca_u6';
+  const r = {};
+  r.sinUrg = await page.locator(fila).evaluate(el => !el.classList.contains('sq2-urg'));
+  r.msgOculto = !(await page.isVisible(`${fila} .sq2-deriv-msg`));
+  await page.click(`${fila} summary`);
+  r.porque = await page.locator(`${fila} .razon`).evaluate(d => d.open && /Por qué/i.test(d.textContent) && /Cuánto pesa/i.test(d.textContent));
+  await page.click(`${fila} .razon-ampliar`);
+  await page.waitForSelector('#razonPanel.open');
+  r.ampliar = await page.evaluate(() => {
+    const t = document.getElementById('razonContenido').textContent;
+    return /Fisiología/i.test(t) && /Champaneria 2016/.test(t) && /Shelkey 2014/.test(t);
+  });
+  await page.keyboard.press('Escape');
+  await page.click(`${fila} .sq-btn.si`);
+  await page.waitForSelector(`${fila} .sq2-deriv-msg`, { state: 'visible' });
+  r.msgVisible = true;
+  r.aviso = await page.evaluate(() => {
+    const t = document.getElementById('sistemicoAlert').textContent;
+    return /Derivación médica/.test(t) && /congestión pélvica/.test(t) && !/Derivación urgente/.test(t);
+  });
+  const u4 = '#panel_ca_urogenital #sq2_ca_u4';
+  await page.click(`${u4} summary`);
+  await page.click(`${u4} .razon-ampliar`);
+  await page.waitForSelector('#razonPanel.open');
+  r.u4 = await page.evaluate(() => /congestión pélvica/.test(document.getElementById('razonContenido').textContent));
+  await page.keyboard.press('Escape');
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 // «¿Por qué?» de los tests (fase 4b, docs/razonamiento-tests.md): hombro con
 // h2 (pinzamiento). Bajo los badges, la frase de «cuánto pesa»; «Ampliar →»
 // abre el mismo panel de la fase 2 con el detalle del test. Escritorio: panel
@@ -2267,18 +2305,46 @@ async function checkCuestionarios(browser, errors) {
         return rs.every(x => Math.abs(x.top - rs[0].top) < 1) && Math.abs(rs[0].left - caja.left) < 1 && Math.abs(rs.at(-1).right - caja.right) < 1;
       }) && Math.abs(ops[5].getBoundingClientRect().top - ops[4].getBoundingClientRect().bottom - 6) < 1;
   });
-  // Una sola respuesta: una opción por fila de borde a borde (Örebro, ítem 6); marcar varias: dos columnas (ítem 5)
+  // Opciones de texto (una respuesta o varias): dos columnas, la última a todo el ancho si son impares
+  // (Örebro, ítems 6 y 5); con una opción larga, una por fila de borde a borde (VISA-A)
   await m.tap('[data-cuest-volver]');
   await m.tap('[data-cuest="orebro"]');
-  r.lista = await m.evaluate(() => {
-    const filas = sel => [...document.querySelectorAll(`#cuestCuerpo .cuest-item[data-item="${sel}"] .cuest-op`)].map(o => o.getBoundingClientRect());
-    const una = filas(6), marcas = filas(5);
-    const caja = document.querySelector('#cuestCuerpo .cuest-item[data-item="6"] .cuest-ops').getBoundingClientRect();
-    return una.length > 4 && una.every((x, i) => Math.abs(x.left - caja.left) < 1 && Math.abs(x.right - caja.right) < 1 && x.height >= 40 && (i === 0 || x.top > una[i - 1].bottom))
-      && Math.abs(marcas[0].top - marcas[1].top) < 1 && marcas[1].left > marcas[0].right
-      // Impares: la última ocupa la fila entera
-      && marcas.length % 2 === 1 && Math.abs(marcas.at(-1).left - marcas[0].left) < 1 && Math.abs(marcas.at(-1).right - marcas[1].right) < 1;
+  const dosColumnas = sel => m.evaluate(sel => {
+    const ops = [...document.querySelectorAll(sel)].map(o => o.getBoundingClientRect());
+    const caja = document.querySelector(sel).parentElement.getBoundingClientRect();
+    return ops.length > 2 && Math.abs(ops[0].top - ops[1].top) < 1 && ops[1].left > ops[0].right
+      && Math.abs(ops[0].left - caja.left) < 1 && Math.abs(ops[1].right - caja.right) < 1
+      && ops.every(x => x.height >= 40)
+      && (ops.length % 2 === 0 || (Math.abs(ops.at(-1).left - caja.left) < 1 && Math.abs(ops.at(-1).right - caja.right) < 1));
+  }, sel);
+  r.lista = await dosColumnas('#cuestCuerpo .cuest-item[data-item="6"] .cuest-op')
+    && await dosColumnas('#cuestCuerpo .cuest-item[data-item="5"] .cuest-op');
+  await m.tap('[data-cuest-volver]');
+  await m.tap('[data-cuest="visaa"]');
+  r.largas = await m.evaluate(() => {
+    const cont = [...document.querySelectorAll('#cuestCuerpo .cuest-ops-largas')];
+    return cont.length > 0 && cont.every(c => {
+      const ops = [...c.querySelectorAll('.cuest-op')].map(o => o.getBoundingClientRect()), caja = c.getBoundingClientRect();
+      return ops.every((x, i) => Math.abs(x.left - caja.left) < 1 && Math.abs(x.right - caja.right) < 1 && (i === 0 || x.top > ops[i - 1].bottom));
+    });
   });
+  // Si caben todas en una fila, una fila (Kujala: tres opciones cortas)
+  await m.tap('[data-cuest-volver]');
+  await m.tap('[data-cuest="kujala"]');
+  r.filaUnica = await m.evaluate(() => {
+    const cont = [...document.querySelectorAll('#cuestCuerpo .cuest-ops-fila')];
+    return cont.length > 0 && cont.every(c => {
+      const ops = [...c.querySelectorAll('.cuest-op')].map(o => o.getBoundingClientRect()), caja = c.getBoundingClientRect();
+      return ops.every(x => Math.abs(x.top - ops[0].top) < 1) && Math.abs(ops[0].left - caja.left) < 1 && Math.abs(ops.at(-1).right - caja.right) < 1;
+    });
+  });
+  // Mismo criterio en los grupos de fase 1 (mecanismo, cronología): las tres en una fila,
+  // sin partir palabras a 320 px
+  r.gruposCol = await m.evaluate(() => [...document.querySelectorAll('#phase1 .option-group-col')].every(g => {
+    const bs = [...g.querySelectorAll('.option-btn')], b = bs.map(x => x.getBoundingClientRect()), c = g.getBoundingClientRect();
+    const sinPartir = bs.every(x => { x.style.overflowWrap = 'normal'; const ok = x.scrollWidth <= x.clientWidth + 1; x.style.overflowWrap = ''; return ok; });
+    return b.length === 3 && b.every(x => Math.abs(x.top - b[0].top) < 1) && Math.abs(b[0].left - c.left) < 1 && Math.abs(b[2].right - c.right) < 1 && sinPartir;
+  }));
   r.cabecera = await m.evaluate(() => document.documentElement.scrollWidth <= innerWidth
     && document.getElementById('themeBtn').getBoundingClientRect().right <= innerWidth);
   await movil.close();
@@ -4368,6 +4434,51 @@ async function checkPlanIA(browser, errors) {
   return r;
 }
 
+// Pantalla estrecha: ningún grupo de botones deja uno descolgado con hueco a su lado en la
+// última fila (o llena la fila o el último ocupa todo el ancho). Recorre las 7 regiones
+// hasta la fase 5 en un móvil de 320 px, abre todo lo plegable y mira cada fase (1–6).
+// Fuera: la silueta (zonas colocadas sobre el dibujo) y las citas (texto corrido).
+async function checkSinHuecos(browser, errors) {
+  const fallos = [];
+  const huecos = page => page.evaluate(() => {
+    const out = [];
+    const visibles = el => el.getBoundingClientRect().width > 0;
+    const conts = new Set([...document.querySelectorAll('.phase-container.active button')].filter(visibles).map(x => x.parentElement));
+    for (const c of conts) {
+      if (c.closest('.sil-lienzo')) continue;
+      const bs = [...c.children].filter(x => x.tagName === 'BUTTON' && visibles(x) && !x.classList.contains('cita'));
+      if (bs.length < 3) continue;
+      const filas = {};
+      for (const x of bs) (filas[Math.round(x.getBoundingClientRect().top)] ??= []).push(x);
+      const ks = Object.keys(filas).map(Number).sort((a, b) => a - b);
+      if (ks.length < 2) continue;
+      const ultimo = filas[ks.at(-1)].at(-1).getBoundingClientRect();
+      const hueco = c.getBoundingClientRect().right - ultimo.right;
+      if (hueco > 20) out.push(`${c.className} (${filas[ks.at(-1)].map(x => x.textContent.trim().slice(0, 24)).join(' · ')}, hueco ${Math.round(hueco)} px)`);
+    }
+    return out;
+  });
+  for (const region of REGIONS) {
+    const context = await browser.newContext({ viewport: { width: 320, height: 700 }, isMobile: true, hasTouch: true });
+    const page = await context.newPage();
+    page.on('pageerror', err => errors.push(`pageerror (huecos ${region}): ${err.message}`));
+    await abrirApp(page);
+    const r = await walkRegion(page, region);
+    if (r.finalPhase !== 5) { fallos.push(`${region}: no llega a la fase 5`); await context.close(); continue; }
+    for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
+      await page.evaluate(f => window.goToPhase(f), f);
+      await page.waitForFunction(f => String(window.state.currentPhase) === String(f), f);
+      await page.evaluate(() => document.querySelectorAll('.phase-container.active details:not([open])').forEach(d => { d.open = true; }));
+      // El formulario previo se pinta al abrirse (import() de formulario.js)
+      if (f === 1 || f === 2) await page.waitForSelector('.phase-container.active .fp-opts');
+      await page.waitForTimeout(150);
+      for (const h of await huecos(page)) fallos.push(`${region} fase ${f}: ${h}`);
+    }
+    await context.close();
+  }
+  return { ok: fallos.length === 0, fallos: [...new Set(fallos)] };
+}
+
 async function checkFase6(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await portapapelesPropio(context);
@@ -5073,7 +5184,7 @@ const SECCIONES = [
 
   { id: 'cuestionarios', titulo: 'Calculadora de cuestionarios:', run: async ({ browser, errors }) => {
     const c = await checkCuestionarios(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las preguntas de una sola respuesta van una opción por fila y las de marcar varias en dos columnas, con la última a todo el ancho si son impares; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las opciones de texto (una respuesta o varias) van en dos columnas, con la última a todo el ancho si son impares, todas en una fila si caben (Kujala), y una por fila si alguna es larga; mecanismo y cronología, las tres en una fila; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -5154,6 +5265,12 @@ const SECCIONES = [
     return r.ok;
   } },
 
+  { id: 'congestion-pelvica', titulo: 'Congestión pélvica (ca_u6, cadera, docs/congestion-pelvica.md):', run: async ({ page }) => {
+    const r = await checkCongestionPelvica(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} ca_u6: «¿Por qué?» y «Ampliar» con fisiología, mensaje solo con SÍ, aviso «Derivación médica» sin urgencia; ca_u4 remite a ella${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
   { id: 'tactil', titulo: 'Botones en táctil (segundo toque y :hover):', run: async ({ browser, errors }) => {
     const r = await checkBotonesTactil(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} sexo y NRS se deseleccionan; :hover de botones solo con ratón; NRS sin marcar → nr null; compartir usa la hoja del sistema; «Compartir» es una hoja inferior que se cierra con atrás o tocando el velo${r.ok ? '' : ' ' + JSON.stringify(r)}`);
@@ -5200,6 +5317,12 @@ const SECCIONES = [
   { id: 'barra-fija', titulo: 'Barra de navegación fija durante la entrada de fase (móvil):', run: async ({ browser, errors }) => {
     const r = await checkBarraFijaAnimacion(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} al volver de la 6 a la 5, la barra «← Anterior / Compartir» sigue al pie de la pantalla en cada fotograma de la animación (sin transform en la fase), así que no tapa «Plan de tratamiento →» ni salta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'huecos', titulo: 'Sin botones descolgados en pantalla estrecha (320 px, las 7 regiones, fases 1–6):', run: async ({ browser, errors }) => {
+    const r = await checkSinHuecos(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} en ningún grupo de botones queda uno solo en la última fila con hueco al lado: la fila se llena o el último ocupa todo el ancho${r.ok ? '' : ' ' + JSON.stringify(r.fallos)}`);
     return r.ok;
   } },
 
