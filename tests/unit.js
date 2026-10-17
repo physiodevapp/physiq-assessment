@@ -17,6 +17,7 @@ for (const tema of [
   'hipermovilidad.mjs',
   'disautonomia.mjs',
   'lupus.mjs',
+  'condiciones.mjs',
   'fase5-y-version.mjs',
   'revision-informe.mjs',
   'verificacion.mjs',

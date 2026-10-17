@@ -1,6 +1,6 @@
-# Guía de condiciones especiales — borrador de diseño
+# Guía de condiciones especiales
 
-Estado: **borrador para revisión del usuario (octubre 2026).** No hay código. Las recomendaciones generales (botón en la cabecera, incluir el posquirúrgico, empezar solo con el botón) ya están aceptadas; las decisiones de abajo, no.
+Estado: **implementado (octubre 2026), pendiente de la revisión del usuario en la app.** El usuario aceptó las recomendaciones generales (botón en la cabecera, incluir el posquirúrgico, empezar solo con el botón) y las 8 decisiones del final. Seguimiento en `MIGRATION_PLAN.md`, Fase P.
 
 ## Para qué
 
@@ -70,7 +70,7 @@ Cada fila:
 
 Al pulsar la fila entera no pasa nada: solo el botón navega, para que leer no te saque del diálogo.
 
-## Contenido propuesto de cada fila
+## Contenido de cada fila
 
 Las pistas resumen preguntas existentes; entre corchetes, de dónde sale cada una. «Redacción propia» = texto de la app que no afirma nada clínico nuevo.
 
@@ -123,7 +123,8 @@ Las pistas resumen preguntas existentes; entre corchetes, de dónde sale cada un
   - con molestias de orina, de heces o sexuales que ya tenía. [`l_u5`]
 - **Añade:** una derivación médica preferente, no urgente, para valorar una RM sacra. [`derivacion` de `l_u5`]
 - **Botón:** «Ir a la pregunta →».
-- **Fuentes:** las de `l_u5` (Klepinowski 2021 · Hulens 2018 · Murphy 2023 · Baker 2018 · Paredes Mogica 2023 · Lim y Selbi 2023 · Henderson 2017 · Hulens 2025). En la fila, quizá solo las que respaldan las dos pistas; se decide al implementar, leyendo el razonamiento de `l_u5`.
+- **Fuentes:** Paredes Mogica 2023 · Hulens 2018 · Klepinowski 2021: las del razonamiento de `l_u5` que respaldan las pistas (por qué empeora sentado y mejora tumbado, y los síntomas de S2–S4) y la línea «qué es» (solo uno de cada seis quistes da síntomas). Las otras cinco de `l_u5` tratan del diagnóstico y el tratamiento.
+- **Añadido al implementar:** el «Añade» recuerda que, si algo de vejiga, intestino o silla de montar es nuevo o empeora, no es esto sino la pregunta de la cola de caballo, urgente (lo dice el «cuánto pesa» de `l_u5`).
 
 ### Solo en lumbar: síndrome del cascanueces
 
@@ -133,7 +134,7 @@ Las pistas resumen preguntas existentes; entre corchetes, de dónde sale cada un
   - y le han encontrado sangre en la orina, o tiene varices en el escroto izquierdo, o (en mujeres) dolor de pelvis que empeora de pie. [`l_u6`]
 - **Añade:** una derivación médica preferente, no urgente, para descartar otras causas. [`derivacion` de `l_u6`]
 - **Botón:** «Ir a la pregunta →».
-- **Fuentes:** Penfold 2024 · Mačionienė 2026 · Bruessel 2026 (las de `l_u6`).
+- **Fuentes:** Penfold 2024 · Mačionienė 2026, de las de `l_u6`. Bruessel 2026 se queda fuera: trata la asociación con el Ehlers-Danlos, que no está en la fila.
 
 ## Estado de cada fila
 
@@ -149,11 +150,13 @@ Una etiqueta pequeña, leída del `state` cada vez que se abre el diálogo:
 
 Las marcadas llevan el color de acento; «No consta» va en gris, sin color de alarma: no marcar es lo normal.
 
-## Implementación prevista (cuando lo apruebes)
+## Implementación (octubre 2026)
 
 - `data/condiciones.js`: el texto de cada fila (qué es, pistas, «Añade», destino y fuentes), separado de la lógica como el resto del contenido clínico. Las pistas citan los ids de las preguntas de las que salen.
 - `lib/condiciones.js` (puro): la etiqueta de estado de cada fila a partir del `state`, qué filas se ven según la región, y el HTML del diálogo. Con pruebas unitarias.
 - `app.js`: `abrirCondiciones()` / `cerrarCondiciones()` con el patrón de las demás herramientas (hoja con historial en móvil, `_closeAllOverlays()`), `irACondicion(k)` (fase 1 + desplazamiento + `flash-destacar`, o `irAPreguntaCribado()` para las de lumbar) y la opción en `herramientaElegir()`.
+  - En móvil la hoja tiene su entrada en el historial: `irACondicion()` la cierra con `history.back()` y navega solo cuando ese atrás ha llegado (`cerrarCondiciones({ despues })` → `_trasPop`, que el manejador de `popstate` ejecuta). Navegar antes juntaba dos movimientos del historial a la vez.
+  - La tarjeta «Mecanismo de inicio» lleva ahora `id="cardMecanismo"`, el destino del posquirúrgico.
 - `index.html`: el icono de la cabecera, la opción en «Herramientas» y el overlay.
 - `tests/referencias.mjs`: contar sus citas como «condiciones especiales», para que `docs/referencias.md` sepa dónde se usan.
 - **Pruebas unitarias:**
@@ -174,7 +177,7 @@ Las marcadas llevan el color de acento; «No consta» va en gris, sin color de a
 
 ## Decisiones
 
-Cada una con mi recomendación.
+Aceptadas las 8 recomendaciones (2026-10).
 
 1. **Dibujo del icono.** *Recomiendo* una brújula (orientar), dibujada en línea como los demás iconos de la cabecera. Descarto:
    - la «ⓘ», que ya significa «¿Por qué?» en el razonamiento;
