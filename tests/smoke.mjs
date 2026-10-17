@@ -520,7 +520,14 @@ async function checkSilueta(page) {
   // …y un segundo toque deja la región sin lado
   await page.click(zona('rodilla', 'Derecho'));
   e = await estado();
-  r.sinLado = e.region === 'rodilla' && e.lado === '' && e.aMedias.join() === 'rodilla|Derecho,rodilla|Izquierdo' && e.sub === 'Lado sin indicar (opcional)';
+  r.sinLado = e.region === 'rodilla' && e.lado === '' && e.aMedias.join() === 'rodilla|Derecho,rodilla|Izquierdo' && e.sub === 'Lado sin indicar: toca uno (opcional)';
+  // Región sin lado: borde continuo y «?» en sus dos zonas; las demás, discontinuas y sin «?»
+  r.interrogacion = await page.evaluate(() => {
+    const ver = b => getComputedStyle(b.querySelector('.sil-pregunta')).display !== 'none';
+    const [aMedias, resto] = [[...document.querySelectorAll('.sil-zona-region')], [...document.querySelectorAll('.sil-zona:not(.sil-zona-region):not(.sil-zona-on)')]];
+    return aMedias.length === 2 && aMedias.every(b => ver(b) && getComputedStyle(b).borderTopStyle === 'solid')
+      && resto.length > 0 && resto.every(b => !ver(b) && getComputedStyle(b).borderTopStyle === 'dashed');
+  });
   // Los botones de lado siguen funcionando y el dibujo los sigue
   await page.click('#lado .option-btn:has-text("Bilateral")');
   e = await estado();
@@ -4648,7 +4655,7 @@ const SECCIONES = [
 
   { id: 'silueta', titulo: 'Silueta de la fase 2 (región y lado de un toque, 320 px):', run: async ({ page }) => {
     const r = await checkSilueta(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; las dos zonas de la región son casillas (el otro lado añade bilateral, tocar uno lo quita, segundo toque sin lado) y los botones de lado siguen; columna sin lado; el sexo es el mismo en las fases 1 y 2 (se cambia y se quita desde cualquiera) y la figura lo sigue; la figura no salta al cambiar el sexo ni el lado, y las dos figuras miden lo mismo de alto; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; las dos zonas de la región son casillas (el otro lado añade bilateral, tocar uno lo quita, segundo toque sin lado, con «?» y borde continuo en sus dos zonas) y los botones de lado siguen; columna sin lado; el sexo es el mismo en las fases 1 y 2 (se cambia y se quita desde cualquiera) y la figura lo sigue; la figura no salta al cambiar el sexo ni el lado, y las dos figuras miden lo mismo de alto; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

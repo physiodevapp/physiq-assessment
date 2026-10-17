@@ -90,7 +90,8 @@ test('silueta: el texto confirma región y lado concordados', () => {
   assert.deepEqual(S.textoElegida('', ''), { principal: 'Toca la región en la silueta', sub: 'Da igual si duele delante o detrás' });
   assert.deepEqual(S.textoElegida('rodilla', 'Izquierdo'), { principal: 'Rodilla (izquierda)', sub: '' });
   assert.deepEqual(S.textoElegida('hombro', 'Derecho'), { principal: 'Hombro (derecho)', sub: '' });
-  assert.equal(S.textoElegida('codo', '').sub, 'Lado sin indicar (opcional)');
+  assert.equal(S.textoElegida('codo', '').sub, 'Lado sin indicar: toca uno (opcional)');
+  assert.equal(S.textoElegida('lumbar', '').sub, 'Lado sin indicar (opcional)', 'la columna tiene una sola zona, sin «?»');
   assert.deepEqual(S.textoElegida('rodilla', 'Bilateral'), { principal: 'Rodilla (bilateral)', sub: 'Toca un lado para quitarlo' });
   assert.equal(S.textoElegida('lumbar', 'Bilateral').sub, '', 'en la columna no hay dos zonas que quitar');
 });
