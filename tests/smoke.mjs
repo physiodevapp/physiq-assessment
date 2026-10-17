@@ -1121,6 +1121,44 @@ async function checkCascanueces(page) {
   return r;
 }
 
+// Congestión pélvica (ca_u6, cadera), docs/congestion-pelvica.md: «¿Por qué?» y
+// «Ampliar» con su fisiología, mensaje 🩺 solo con SÍ, aviso «Derivación médica»
+// sin urgencia; ca_u4 remite a ella en su «Ampliar».
+async function checkCongestionPelvica(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  await irAFase2(page, 'cadera');
+  await page.click('#tab_ca_urogenital');
+  const fila = '#panel_ca_urogenital #sq2_ca_u6';
+  const r = {};
+  r.sinUrg = await page.locator(fila).evaluate(el => !el.classList.contains('sq2-urg'));
+  r.msgOculto = !(await page.isVisible(`${fila} .sq2-deriv-msg`));
+  await page.click(`${fila} summary`);
+  r.porque = await page.locator(`${fila} .razon`).evaluate(d => d.open && /Por qué/i.test(d.textContent) && /Cuánto pesa/i.test(d.textContent));
+  await page.click(`${fila} .razon-ampliar`);
+  await page.waitForSelector('#razonPanel.open');
+  r.ampliar = await page.evaluate(() => {
+    const t = document.getElementById('razonContenido').textContent;
+    return /Fisiología/i.test(t) && /Champaneria 2016/.test(t) && /Shelkey 2014/.test(t);
+  });
+  await page.keyboard.press('Escape');
+  await page.click(`${fila} .sq-btn.si`);
+  await page.waitForSelector(`${fila} .sq2-deriv-msg`, { state: 'visible' });
+  r.msgVisible = true;
+  r.aviso = await page.evaluate(() => {
+    const t = document.getElementById('sistemicoAlert').textContent;
+    return /Derivación médica/.test(t) && /congestión pélvica/.test(t) && !/Derivación urgente/.test(t);
+  });
+  const u4 = '#panel_ca_urogenital #sq2_ca_u4';
+  await page.click(`${u4} summary`);
+  await page.click(`${u4} .razon-ampliar`);
+  await page.waitForSelector('#razonPanel.open');
+  r.u4 = await page.evaluate(() => /congestión pélvica/.test(document.getElementById('razonContenido').textContent));
+  await page.keyboard.press('Escape');
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 // «¿Por qué?» de los tests (fase 4b, docs/razonamiento-tests.md): hombro con
 // h2 (pinzamiento). Bajo los badges, la frase de «cuánto pesa»; «Ampliar →»
 // abre el mismo panel de la fase 2 con el detalle del test. Escritorio: panel
@@ -5116,6 +5154,12 @@ const SECCIONES = [
   { id: 'cascanueces', titulo: 'Cascanueces (l_u6) y MALS (lumbar, docs/mals-cascanueces.md):', run: async ({ page }) => {
     const r = await checkCascanueces(page);
     console.log(`  ${r.ok ? '✓' : '✗'} l_u6: «¿Por qué?» y «Ampliar» con fisiología, mensaje solo con SÍ, aviso «Derivación médica» sin urgencia; el MALS en el «Ampliar» de la bandera de l_gi${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'congestion-pelvica', titulo: 'Congestión pélvica (ca_u6, cadera, docs/congestion-pelvica.md):', run: async ({ page }) => {
+    const r = await checkCongestionPelvica(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} ca_u6: «¿Por qué?» y «Ampliar» con fisiología, mensaje solo con SÍ, aviso «Derivación médica» sin urgencia; ca_u4 remite a ella${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
