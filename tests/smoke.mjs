@@ -802,6 +802,121 @@ async function checkDisautonomia(page) {
   return r;
 }
 
+// Lupus (Fase P, docs/lupus.md), codo. Fase 1: las filas solo con
+// «Diagnosticado», y un segundo toque desmarca. Fase 2: las 6 urgencias sin
+// plegar, la derivación con 🩺; con «Sospecha», solo los rasgos y la
+// derivación preferente. Fase 3: las dos notas. Con la hipermovilidad, la
+// nota de Malfait bajo la escala de Beighton. 320 px: nada se sale. Quitar la
+// marca quita el sistema. Después, un recorrido entero: la línea de la 4b, el
+// recuadro de la fase 5 y los avisos y la red de seguridad de la fase 6.
+async function checkLupus(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#motivoConsulta', 'Dolor de codo al cargar');   // sin «lupus»: el informe con la sospecha no debe nombrarlo
+  await page.fill('#edadPaciente', '34');
+  await page.dispatchEvent('#edadPaciente', 'input');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.filasOcultas = !(await page.isVisible('#lesDiagWrap'));
+  await page.click('#lesEstado .option-btn[data-valor="sospecha"]');
+  r.filasOcultasSospecha = !(await page.isVisible('#lesDiagWrap'));
+  await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
+  r.filasVisibles = await page.isVisible('#lesDiagWrap');
+  const fila = (k, v) => page.click(`[data-les-fila="${k}"] .option-btn[data-valor="${v}"]`);
+  await fila('corticoides', 'a');
+  await fila('corticoides', 'a');
+  r.segundoToque = await page.evaluate(() => state.lupus.corticoides === '');
+  await fila('corticoides', 'm');
+  await fila('antifosfolipidos', 'no');
+  await fila('actividad', 'peor');
+  await page.check('#les_raynaud');
+  await page.check('#les_antitrombotico');
+  r.estado = await page.evaluate(() => JSON.stringify(state.lupus) === JSON.stringify({ estado: 'diagnosticado', corticoides: 'm', dosisAltas: '', inmunosupresores: '',
+    antifosfolipidos: 'no', antitrombotico: true, osteonecrosis: false, raynaud: true, actividad: 'peor', rasgos: {} }));
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('codo', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_lupus');
+  await page.click('#tab_transversal_lupus');
+  const P = '#panel_transversal_lupus';
+  r.urgSinPlegar = await page.$$eval(`${P} .sq2-urg`, els => els.length) === 6;
+  r.sinEmbudo = await page.$$eval(`${P} [data-embudo]`, els => els.length) === 0;
+  await page.click(`${P} #sq2_les_u_tvp .sq-btn.si`);
+  r.urgencia = await page.isVisible('#sistemicoAlert .urgencia-alert');
+  await page.click(`${P} #sq2_les_u_tvp .sq-btn.no`);
+  await page.click(`${P} #sq2_les_d_rinon .sq-btn.si`);
+  r.derivacion = await page.isVisible(`${P} #sq2_les_d_rinon .sq2-deriv-msg`);
+  r.payloadDv = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().dv.some(t => t.startsWith('Posible afectación del riñón')));
+  await page.click(`${P} #sq2_les_d_rinon .sq-btn.no`);
+  // Fase 3: la nota de Naturaleza y, con «Peor, sin valorar aún», la del brote
+  await page.evaluate(() => goToPhase(3));
+  await page.waitForTimeout(150);
+  r.notaNaturaleza = await page.isVisible('#lesNotaNaturaleza') && (await page.textContent('#lesNotaNaturaleza')).includes('sola no mide la actividad');
+  r.notaBrote = await page.isVisible('#lesNotaBrote');
+  // Con la hipermovilidad, la nota de Malfait bajo la escala de Beighton
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#tab_transversal_hipermovilidad');
+  await page.click('#panel_transversal_hipermovilidad button:has-text("Hacer la escala de Beighton")');
+  r.notaHM = (await page.textContent('#panel_transversal_hipermovilidad [data-hm-bloque]')).includes('Con lupus, el diagnóstico de SED hipermóvil');
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
+  // «Sospecha»: sin urgencias del sistema, con los rasgos
+  await page.click('#lesEstado .option-btn[data-valor="sospecha"]');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#tab_transversal_lupus');
+  r.sospechaSinUrg = await page.$$eval(`${P} .sq2-urg`, els => els.length) === 0;
+  r.rasgos = await page.$$eval(`${P} .les-rasgo`, els => els.length) === 6;
+  await page.click(`${P} .les-rasgo >> nth=1 >> .sq-btn.si`);
+  r.derivarSospecha = (await page.textContent(`${P} [data-les-bloque]`)).includes('derivación preferente a su médico de atención primaria');
+  r.sincronizada = await page.evaluate(() => document.querySelector('#acc_transversal_lupus [data-les-bloque]').textContent.includes('1 de 5 con «sí»'));
+  r.informeSinLupus = await page.evaluate(async () => !/lupus/i.test((await import('./app.js')).buildInformeFisioterapiaText()));
+  // 320 px: la tarjeta y el acordeón, sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
+  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#acc_transversal_lupus .sistema-accordion-header');
+  await page.waitForTimeout(150);
+  r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  // Quitar la marca quita el sistema
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
+  r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_lupus') && !document.getElementById('tab_transversal_lupus') && !document.body.classList.contains('lupus'));
+  // Recorrido entero con «Diagnosticado» y Raynaud: 4b, fase 5 y fase 6
+  await abrirApp(page);
+  await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
+  await page.check('#les_raynaud');
+  await walkRegion(page, 'codo');
+  r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .les-fase5')?.textContent || '';
+    return t.includes('Diagnosticado') && t.includes('150–300 min') && t.includes('Fotoprotección') && t.includes('Raynaud') && t.includes('valoración médica hoy'); });
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.nota4b = await page.isVisible('#hypothesisCards .les-nota-4b');
+  await page.evaluate(() => goToPhase(5));
+  await page.waitForTimeout(150);
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Lupus: intensidad moderada') && t.includes('Lupus con Raynaud') && t.includes('una infección puede dar poca fiebre') && t.includes('pérdida de visión de golpe'); });
+  r.ok = r.filasOcultas && r.filasOcultasSospecha && r.filasVisibles && r.segundoToque && r.estado && r.tab && r.urgSinPlegar && r.sinEmbudo
+    && r.urgencia && r.derivacion && r.payloadDv && r.notaNaturaleza && r.notaBrote && r.notaHM && r.sospechaSinUrg && r.rasgos
+    && r.derivarSospecha && r.sincronizada && r.informeSinLupus && r.ancho1 && r.ancho2 && r.sinSistema && r.fase5 && r.nota4b && r.fase6;
+  return r;
+}
+
 // Reloj de la prueba de bipedestación (docs/pots.md, «Reloj»): reloj del
 // navegador simulado (page.clock), pitidos y vibración contados.
 async function checkDsReloj(page) {
@@ -4898,6 +5013,13 @@ const SECCIONES = [
     const r = await checkDisautonomia(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta, síncope urgente sin plegar, paroxística, sospecha, prueba de bipedestación (compatible, hipotensión, copias sincronizadas), notas 3 y 4b, fase 5, fase 6 y 320 px`);
     if (!r.ok) console.log('\nDisautonomía:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'lupus', titulo: 'Lupus (Fase P, codo):', run: async ({ page }) => {
+    const r = await checkLupus(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con sus filas, urgencias sin plegar, derivación, sospecha con rasgos (sin la palabra lupus en el informe), notas 3 y 4b, nota de hipermovilidad, fase 5, fase 6 y 320 px`);
+    if (!r.ok) console.log('\nLupus:', JSON.stringify(r));
     return r.ok;
   } },
 

@@ -420,7 +420,7 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
 - [x] Fase 5, 📋 Notas, 📄 Informe, payload `hm`, informe con IA, pendiente en modo breve (pruebas unitarias y sección `hipermovilidad` de la prueba de humo)
 - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
 - [x] physiq-report: leer `hm` del payload (otro repositorio): `_bloqueHM()` en su `lib/payload.js`, copia literal de `bloqueHMIA()`; un test en cada repositorio fija el mismo texto (2026-10)
-- [ ] Después del piloto: POTS / disautonomía; otras condiciones (lupus; Tarlov como contenido de lumbar)
+- [x] Después del piloto: POTS / disautonomía y quiste de Tarlov (contenido de lumbar). Antes esta casilla nombraba también el lupus, que tiene la suya abajo (corregida en 2026-10)
   - [x] POTS / disautonomía: diseño en `docs/pots.md` (2026-10), con las 13 fuentes leídas enteras (en abierto y PDF del usuario: ESC 2018, CCS 2020, Sivakoti 2026, Hakim 2017, George 2016, Fedorowski 2019); aceptadas las 12 recomendaciones
   - [x] POTS: implementado (2026-10). Tarjeta de la fase 1, `SIS_DISAUTONOMIA` (4 preguntas de síncope urgentes, 1 derivación, patrón de sospecha y prueba de bipedestación activa), notas de las fases 3, 4 y 4b, recuadro de la fase 5, payload `ds`, 📋 Notas, 📄 Informe, informe con IA y aviso y red de seguridad de la fase 6. Pruebas unitarias (`tests/unit/disautonomia.mjs`) y sección `disautonomia` de la prueba de humo; prueba completa en verde
   - [x] POTS: revisión del usuario dada por hecha (2026-10)
@@ -430,6 +430,15 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
   - [x] Tarlov: diseño en `docs/tarlov.md`, las 7 decisiones aceptadas y todas las fuentes leídas (2026-10). Implementado: `l_u5` (lumbar, `l_urogenital`) con `derivacion` y razonamiento completo, párrafos nuevos en `l6` y `lu_step1c`, y el campo `derivacion` en las preguntas de la fase 2
   - [x] Tarlov: revisión del usuario dada por hecha al fusionar (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico («Derivación médica indicada en la exploración»), así que la derivación de `l_u5` le llega sin tocar nada
   - [x] Tarlov, después: zonas de sacro, cóccix y periné en la tarjeta «Síntomas» de lumbar (decisión 5 de `docs/tarlov.md`): hecho en la Fase N, N7 (2026-10)
+<<<<<<< HEAD
+- [x] Lupus eritematoso sistémico (LES): diseño, decisiones y fuentes en `docs/lupus.md`
+  - [x] Diseño (2026-10): 21 fuentes en abierto (PMC y StatPearls) leídas enteras; aceptadas las 18 recomendaciones
+  - [x] Revisión con las guías (2026-10): PDF del usuario leídos enteros (EULAR 2023 del LES, ACR 2025, BSR 2018, EULAR de infecciones, riesgo cardiovascular, fatiga y no farmacológica, Ruperto 2011, Goodman cap. 12) y Blaess 2024 en abierto; aceptados los 16 cambios (corticoides ≤5 · 5–20 · >20 mg/día, hidroxicloroquina fuera de los inmunosupresores, dosis de ejercicio de Blaess 2024, ejercicio en brote, fatiga, ictus siempre…)
+  - [x] Implementado (2026-10): tarjeta de la fase 1, `SIS_LUPUS` (6 urgencias y 4 derivaciones con «Diagnosticado»; rasgos sin puntos con «Sospecha»), notas de las fases 3 y 4b, recuadro de la fase 5, payload `le`, 📋 Notas, 📄 Informe (sin la palabra lupus con la sospecha), informe con IA, avisos y red de seguridad de la fase 6, nota con la hipermovilidad. Pruebas unitarias (`tests/unit/lupus.mjs`) y sección `lupus` de la prueba de humo; prueba completa en verde
+  - [x] Revisión del usuario (2026-10)
+  - [x] physiq-report: leer `le` del payload (otro repositorio): `_bloqueLES()`, copia literal de `bloqueLESIA()`; `LES_CASOS` fija el mismo texto en un test en cada repositorio (physiodevapp/physiq-report#93, pendiente de fusionar después de esta)
+=======
   - [x] MALS y cascanueces: diseño en `docs/mals-cascanueces.md` (2026-10), 4 fuentes leídas enteras (Bruessel 2026 en PDF del usuario), las 7 recomendaciones aceptadas. Implementado: `l_u6` (cascanueces, lumbar, `l_urogenital`) con `derivacion` preferente y razonamiento completo; el MALS como párrafo en la bandera de pérdida de peso de `l_gi`, sin pregunta propia; ninguna regla con la hipermovilidad
   - [x] MALS y cascanueces: revisado por el usuario (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico
   - [ ] MALS y cascanueces, después: congestión pélvica en cadera (decisión 5)
+>>>>>>> origin/main
