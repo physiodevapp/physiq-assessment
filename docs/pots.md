@@ -477,4 +477,4 @@ Hecho. Antes, a quien no ten√≠a marcada la tarjeta nadie le preguntaba por el s√
 
 ## Siguiente paso
 
-1. **physiq-report**: leer `ds` del payload (otro repositorio).
+Ninguno pendiente del POTS. physiq-report ya lee `ds` (physiq-report#92): `_bloqueDs()` es una copia literal de `bloqueDsIA()` sin citas, y `DS_CASOS` fija el mismo texto en un test en cada repositorio.
