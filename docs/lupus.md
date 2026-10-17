@@ -613,4 +613,4 @@ Hecho según las 18 decisiones y los 16 cambios, y revisado por el usuario (2026
   - unitarias en `tests/unit/lupus.mjs`. Entre ellas: que marcar la tarjeta, con todas las filas, no cambia las urgencias ni el pintado de ningún otro sistema en las 7 regiones; y `LES_CASOS`, el texto literal que copiará physiq-report;
   - el inventario de banderas de los sistemas compartidos (`tests/unit/razonamiento.mjs`);
   - la sección `lupus` de la prueba de humo.
-- **physiq-report**: physiodevapp/physiq-report#93 copia `bloqueLESIA()` como `_bloqueLES()` en su `lib/payload.js`, tras la disautonomía, y fija los casos de `LES_CASOS` en su test. Se fusiona después de esta PR.
+- **physiq-report**: physiodevapp/physiq-report#93 copia `bloqueLESIA()` como `_bloqueLES()` en su `lib/payload.js`, tras la disautonomía, y fija los casos de `LES_CASOS` en su test (fusionada, 2026-10).
