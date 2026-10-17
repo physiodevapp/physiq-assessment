@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **508** referencias de literatura, con **2514** usos.
+- **521** referencias de literatura, con **2800** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **377** de 508 referencias del registro revisadas. Ver «Estado de revisión».
+- **377** de 521 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -55,18 +55,22 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Paterson 2021](#paterson-2021) | pauta · texto | 2 | **sin revisar** |
 | [Kamonseki 2022](#kamonseki-2022) | pauta · tiempos de tejido · plan de tratamiento · texto | 4 | **sin revisar** |
 | [Tang 2024](#tang-2024) | pauta · texto | 2 | **sin revisar** |
+| [NICE CG109](#nice-cg109) | razonamiento fase 2 · plan de tratamiento · texto | 26 | **sin revisar** |
 | [NICE CG151](#nice-cg151) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG156](#nice-ng156) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Byers 2017](#byers-2017) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Henderson 2017](#henderson-2017) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Malfait 2017](#malfait-2017) | razonamiento fase 2 · texto | 54 | **sin revisar** |
 | [Schroeder 2017](#schroeder-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Baker 2018](#baker-2018) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
 | [Hulens 2018](#hulens-2018) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Wang 2020](#wang-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [WFH 2020](#wfh-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Pokhrel 2022](#pokhrel-2022) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Raj 2022](#raj-2022) | razonamiento fase 2 · texto | 37 | **sin revisar** |
 | [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lim y Selbi 2023](#lim-y-selbi-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Limaiem 2023](#limaiem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -177,9 +181,18 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Maitland 2005](#maitland-2005) | plan de tratamiento | 32 | **sin revisar** |
 | [Silbernagel 2007](#silbernagel-2007) | plan de tratamiento | 1 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 2 | **sin revisar** |
+| [Fu 2010](#fu-2010) | plan de tratamiento | 1 | **sin revisar** |
+| [George 2016](#george-2016) | plan de tratamiento | 1 | **sin revisar** |
+| [Hakim 2017](#hakim-2017) | plan de tratamiento · texto | 30 | **sin revisar** |
+| [Raj 2020](#raj-2020) | plan de tratamiento · texto | 71 | **sin revisar** |
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 10 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
+| [Plash 2013](#plash-2013) | texto | 7 | **sin revisar** |
 | [Engelbert 2017](#engelbert-2017) | texto | 14 | **sin revisar** |
+| [Fedorowski 2019](#fedorowski-2019) | texto | 14 | **sin revisar** |
+| [Miller 2020](#miller-2020) | texto | 7 | **sin revisar** |
+| [Vernino 2021](#vernino-2021) | texto | 28 | **sin revisar** |
+| [Sivakoti 2026](#sivakoti-2026) | texto | 7 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | 2026-10 · Sustituida por van der Windt 2010 (revisión Cochrane del mismo grupo, con Devillé como autor; PDF del usuario): SLR y SLR cruzado de lu3 pasan a sus cifras agrupadas con LR publicadas. Se menciona como dato anterior. |
@@ -777,7 +790,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baker 2018](#baker-2018) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Lim 2013](#lim-2013) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE NG12](#nice-ng12) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG193](#nice-ng193) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Speer 1994](#speer-1994) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Telang 2024](#telang-2024) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [WFH 2020](#wfh-2020) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
+[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baker 2018](#baker-2018) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Lim 2013](#lim-2013) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE NG12](#nice-ng12) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG193](#nice-ng193) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Speer 1994](#speer-1994) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Telang 2024](#telang-2024) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [WFH 2020](#wfh-2020) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -1114,7 +1127,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Test de ROM activo en 4 direcciones» | 4b · cita bajo el test | 1 |
-| Codo | — | `sistemas.2.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
 | Codo | — | `steps.0.options.1.derivacion` | 4 · mención en el texto | 3 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
@@ -1772,6 +1785,74 @@ En 6 cadáveres, la rotación interna de la cadera con la pierna extendida tens�
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «SLR Contralateral (Lasègue cruzado)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «Test de Elevación de Pierna Recta (SLR) ipsilateral» («¿Por qué?») | 4b · razonamiento del test | 3 |
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «SLR Contralateral (Lasègue cruzado)» («¿Por qué?») | 4b · razonamiento del test | 4 |
+
+### Brignole 2018
+
+Autores: Brignole, Moya, de Lange, Deharo, Elliott, Fanciulli, Fedorowski, Furlan, Kenny, Martín, Probst, Reed, Rice, Sutton, Ungar y van Dijk (ESC)  
+Título: *2018 ESC Guidelines for the diagnosis and management of syncope*  
+Publicación: Eur Heart J 39(21):1883–1948  
+DOI: 10.1093/eurheartj/ehy037  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Sin los anexos web, que no venían en el PDF. Rasgos de alto riesgo del síncope (tabla 6, pp. 1897–1898), rasgos del síncope cardiaco (tabla 5, p. 1895), bipedestación activa y criterios de hipotensión ortostática y de POTS (p. 1902), síncope de esfuerzo (p. 1911), tratamiento de la hipotensión ortostática (pp. 1919–1921). Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. Caída de la tensión al ponerse de pie: hipotensión ortostática, no un POTS. Valoración médica, con revisión de los fármacos (Brignole 2018, p. 1902; NICE CG109, 1.5.4.2).
+2. TAS tumbado por debajo de 90: si se ha desmayado, es un rasgo de alto riesgo (Brignole 2018, tabla 6).
+3. Un desmayo durante el esfuerzo, tumbado, tras palpitaciones bruscas o con síntomas del corazón no lo explica la disautonomía: valoración médica urgente (Brignole 2018, tabla 6; NICE CG109, 1.1.4.2).
+4. El agua, la sal, las prendas de compresión y los fármacos los indica el médico (Raj 2020, recs. 11–13; Brignole 2018, p. 1921).
+5. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tabla 6 (pp. 1897–1898), p. 1911 y p. 1925.
+6. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tablas 5 y 6 (pp. 1895–1898) y fig. 6 (p. 1899).
+7. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tabla 6 (pp. 1897–1898) y p. 1925.
+8. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tablas 5 y 6 (pp. 1895–1898).
+9. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tabla 6 (pp. 1897–1898).
+10. Brignole 2018 — Brignole, Moya, de Lange et al., «2018 ESC Guidelines for the diagnosis and management of syncope», Eur Heart J 2018;39(21):1883–1948, tablas 5 y 6 (pp. 1895–1898), p. 1911 y p. 1925.
+11. Brignole 2018
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ds_u_esfuerzo` · Disautonomía | 2 · razonamiento del cribado | 5 |
+| Todas (sistemas comunes) | — | Pregunta `ds_u_tumbado` · Disautonomía | 2 · razonamiento del cribado | 6 |
+| Todas (sistemas comunes) | — | Pregunta `ds_u_corazon` · Disautonomía | 2 · razonamiento del cribado | 7 |
+| Todas (sistemas comunes) | — | Pregunta `ds_u_familia` · Disautonomía | 2 · razonamiento del cribado | 8 |
+| Todas (sistemas comunes) | — | Pregunta `ds_d_paroxistica` · Disautonomía | 2 · razonamiento del cribado | 9 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaSincope.fuente` | 6 · plan de tratamiento | 11 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreSincope` | 6 · plan de tratamiento | 11 |
+| Hombro | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Hombro | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 10 |
+| Cadera | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Cadera | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 10 |
+| Cervical | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Cervical | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 10 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Lumbar | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 10 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Rodilla | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 10 |
+| Codo | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Codo | — | Pregunta `sx_sincope` · Vascular / Neurológica | 2 · razonamiento del cribado | 10 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.tasBaja` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 10 |
 
 ### Brotman 2024
 
@@ -3081,6 +3162,37 @@ Citada como:
 | Todas (sistemas comunes) | — | Bandera roja «Nódulos palpables supraclaviculares o fiebre inexplicable en pacientes con corticosteroides» · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 | Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 
+### Fedorowski 2019
+
+Autores: Fedorowski  
+Título: *Postural orthostatic tachycardia syndrome: clinical presentation, aetiology and management*  
+Publicación: J Intern Med 285(4):352–366  
+DOI: 10.1111/joim.12852  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Manuscrito aceptado, sin las páginas de la revista. Presentación clínica (tabla 2), educación (tabla 5). No se usa su «el 50 % se recupera solo en 1–3 años»: sale de una cohorte de adolescentes (su ref. 67). Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. El POTS exige síntomas de pie de 3 meses o más que mejoran al tumbarse (Vernino 2021; Raj 2020, §3.2; Raj 2022, recuadro 2). Agravantes: el calor, la deshidratación, el alcohol y el ejercicio (Sheldon 2015), las comidas y el Valsalva (Hakim 2017, p. 171), levantarse de golpe (Fedorowski 2019, tabla 5).
+2. Disautonomía: separa lo que limita estar de pie (mareo, palpitaciones) de lo que limita la carga del tejido; la matriz mide lo segundo. La debilidad, el dolor muscular y la intolerancia al esfuerzo forman parte del cuadro (Fedorowski 2019, tabla 2).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.2.disautonomia.textos.tolerancia` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.textos.tolerancia` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.textos.tolerancia` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.tolerancia` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.tolerancia` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.textos.tolerancia` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.tolerancia` | 2 · mención en el texto | 2 |
+
 ### Feller 2024
 
 Autores: Feller, Chiarotto, Koes, Maselli y Mourad  
@@ -3235,6 +3347,23 @@ En la serie de Fritz (49 pacientes), la hipomovilidad fue κ 0,38, la hipermovil
 | Lumbar | lu2 · Inestabilidad Espinal Lumbar (Déficit de Coordinación) | Test «Flexión lumbar ≥ 53° o ausencia de hipomovilidad en la exploración segmentaria» («¿Por qué?») | 4b · razonamiento del test | 7 |
 | Lumbar | — | Paso `lu_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 8 |
 
+### Fu 2010
+
+Autores: Fu, VanGundy, Galbreath, Shibata, Jain, Hastings, Bhella y Levine  
+Título: *Cardiac origins of the postural orthostatic tachycardia syndrome*  
+Publicación: J Am Coll Cardiol 55(25):2858–2868  
+DOI: 10.1016/j.jacc.2010.02.043  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Programa de entrenamiento de 3 meses, semirreclinado al principio y vertical desde el 2.º–3.er mes, sin grupo control y con sal y agua añadidas. Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. Fu 2010
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomia` | 6 · plan de tratamiento | 1 |
+
 ### Galliker 2020
 
 Autores: Galliker, Scherer, Trippolini, Rasmussen-Barr, LoMartire y Wertli  
@@ -3305,6 +3434,23 @@ Con 11 puntos o más, S 70,6 % (IC 95 %: 59,6–79,7) y E 90,4 % (IC 83,2–94,9
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «Criterios RAPIDH (5 criterios)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «Criterios RAPIDH (5 criterios)» | 4b · cita bajo el test | 2 |
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «Criterios RAPIDH (5 criterios)» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
+### George 2016
+
+Autores: George, Bivens, Howden, Saleem, Galbreath, Hendrickson, Fu y Levine  
+Título: *The international POTS registry: evaluating the efficacy of an exercise training intervention in a community setting*  
+Publicación: Heart Rhythm 13(4):943–950  
+DOI: 10.1016/j.hrthm.2015.12.012  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Manuscrito aceptado, sin las páginas de la revista. Registro observacional sin grupo control (no es un ensayo aleatorizado, aunque PubMed lo etiquete así): programa de 3 meses (tabla 2), terminó el 41 % y abandonó el 59 %. Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. George 2016
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomia` | 6 · plan de tratamiento | 1 |
 
 ### George 2021
 
@@ -3730,8 +3876,8 @@ Citada como:
 | Cervical | — | Pregunta `cv_n4` · Médula / Estructural | 2 · razonamiento del cribado | 96 |
 | Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 97 |
 | Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 98 |
-| Lumbar | — | `sistemas.5.banderasRojas.5.texto` | 2 · mención en el texto | 1 |
-| Lumbar | — | `sistemas.5.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 2 |
+| Lumbar | — | `sistemas.6.banderasRojas.5.texto` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.6.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 2 |
 | Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 99 |
 | Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 100 |
 | Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 101 |
@@ -4069,6 +4215,56 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `pq_sdrc` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `pq_nervio` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 1 |
+
+### Hakim 2017
+
+Autores: Hakim, O'Callaghan, De Wandele, Stiles, Pocinki y Rowe  
+Título: *Cardiovascular autonomic dysfunction in Ehlers–Danlos syndrome—hypermobile type*  
+Publicación: Am J Med Genet C Semin Med Genet 175C:168–174  
+DOI: 10.1002/ajmg.c.31543  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Consenso del International EDS Consortium, evidencia de nivel IV: sin estudios de cohortes ni ensayos en el SEDh (pp. 169–170). Preparación de la prueba de bipedestación (p. 171), agravantes (p. 171), adaptación del ejercicio con intolerancia ortostática (p. 172). Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. El POTS exige síntomas de pie de 3 meses o más que mejoran al tumbarse (Vernino 2021; Raj 2020, §3.2; Raj 2022, recuadro 2). Agravantes: el calor, la deshidratación, el alcohol y el ejercicio (Sheldon 2015), las comidas y el Valsalva (Hakim 2017, p. 171), levantarse de golpe (Fedorowski 2019, tabla 5).
+2. Tumbado al menos 5 min y de pie hasta 10 min; la taquicardia tiene que mantenerse en 2 medidas seguidas después del primer minuto (Raj 2020, rec. 4). Minutos de medida: Raj 2022. Preparación: Hakim 2017, p. 171. Si la FC tumbado es menor de 60, la referencia es 60 (Raj 2020, p. 363).
+3. Mejor ejercicio dinámico que isométrico (el isométrico provoca maniobras de Valsalva que bajan la tensión), no comer en la hora anterior y terminar con una vuelta a la calma suave (Hakim 2017, p. 172).
+4. Disautonomía: haz en decúbito o sentado lo que la técnica permita, evita mantener una contracción isométrica o un Valsalva prolongado y, si aparece mareo de pie, vuelve a tumbarlo antes de seguir (Hakim 2017, pp. 171–172).
+5. Hakim 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomia` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomiaHM` | 6 · plan de tratamiento | 5 |
+| Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.2.disautonomia.textos.adaptaciones` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.2.disautonomia.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.2.disautonomia.textos.adaptaciones` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.2.disautonomia.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.2.disautonomia.textos.adaptaciones` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.2.disautonomia.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.adaptaciones` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.adaptaciones` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.2.disautonomia.textos.adaptaciones` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.2.disautonomia.textos.tecnica4b` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.adaptaciones` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.tecnica4b` | 2 · mención en el texto | 4 |
 
 ### Hall 2008
 
@@ -6924,10 +7120,10 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Hombro | h10 · Artrosis Glenohumeral | Test «Mayor edad + crepitación con rigidez activa = pasiva» | 4b · cita bajo el test | 21 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 8 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Pronóstico | 5 · cita del pronóstico | 27 |
-| Hombro | — | `sistemas.2.banderasRojas.5.texto` | 2 · mención en el texto | 314 |
-| Hombro | — | `sistemas.8.banderasRojas.0.texto` | 2 · mención en el texto | 315 |
-| Hombro | — | `sistemas.9.banderasRojas.0.texto` | 2 · mención en el texto | 316 |
-| Hombro | — | `sistemas.10.banderasRojas.0.texto` | 2 · mención en el texto | 317 |
+| Hombro | — | `sistemas.3.banderasRojas.5.texto` | 2 · mención en el texto | 314 |
+| Hombro | — | `sistemas.9.banderasRojas.0.texto` | 2 · mención en el texto | 315 |
+| Hombro | — | `sistemas.10.banderasRojas.0.texto` | 2 · mención en el texto | 316 |
+| Hombro | — | `sistemas.11.banderasRojas.0.texto` | 2 · mención en el texto | 317 |
 | Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 322 |
 | Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 323 |
 | Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 324 |
@@ -7097,7 +7293,7 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 114 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 115 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 116 |
-| Lumbar | — | `sistemas.7.banderasRojas.0.texto` | 2 · mención en el texto | 318 |
+| Lumbar | — | `sistemas.8.banderasRojas.0.texto` | 2 · mención en el texto | 318 |
 | Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 347 |
 | Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 348 |
 | Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 349 |
@@ -7275,9 +7471,9 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» | 4b · cita bajo el test | 218 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» («¿Por qué?») | 4b · razonamiento del test | 217 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» («¿Por qué?») | 4b · razonamiento del test | 218 |
-| Codo | — | `sistemas.2.banderasRojas.0.texto` | 2 · mención en el texto | 319 |
-| Codo | — | `sistemas.2.banderasRojas.1.texto` | 2 · mención en el texto | 320 |
-| Codo | — | `sistemas.2.banderasRojas.2.texto` | 2 · mención en el texto | 321 |
+| Codo | — | `sistemas.3.banderasRojas.0.texto` | 2 · mención en el texto | 319 |
+| Codo | — | `sistemas.3.banderasRojas.1.texto` | 2 · mención en el texto | 320 |
+| Codo | — | `sistemas.3.banderasRojas.2.texto` | 2 · mención en el texto | 321 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 361 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 362 |
 | Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 363 |
@@ -8491,6 +8687,29 @@ Citada como:
 | Cadera | — | Paso `ca_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
 | Cadera | — | Paso `ca_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 8 |
 
+### Miller 2020
+
+Autores: Miller, Stiles, Sheehan, Bascom, Levy, Francomano y Arnold  
+Título: *Prevalence of hypermobile Ehlers-Danlos syndrome in postural orthostatic tachycardia syndrome*  
+Publicación: Auton Neurosci 224:102637  
+DOI: 10.1016/j.autneu.2020.102637  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). 31 % de SEDh con los criterios de 2017 en 91 personas con POTS reclutadas en un congreso de pacientes, sin grupo control y con el POTS autodeclarado. Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. En las consultas de POTS, entre el 20 y el 30 % cumple los criterios del SED hipermóvil o del trastorno del espectro de la hipermovilidad, con evidencia débil (Vernino 2021; Raj 2022), y no se conoce un mecanismo que los una (Miller 2020). La exploración del POTS incluye valorar la hipermovilidad (Raj 2022): si refiere ser muy flexible, mira la tarjeta «Hipermovilidad».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 1 |
+
 ### Mohr 2024
 
 Autores: Mohr, Mabrouk y Baldea  
@@ -8817,6 +9036,51 @@ Origen (Hopkinson 1990): revisión retrospectiva de 1344 esguinces en cadetes de
 | Tobillo y pie | — | Paso `tp_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 | Tobillo y pie | — | Paso `tp_step13` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 
+### NICE CG109
+
+Publicación: Guía NICE «Transient loss of consciousness ('blackouts') in over 16s» (2010, actualizada en 2023)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Leído entero el capítulo «Recommendations» en nice.org.uk (2026-10). Banderas rojas del síncope (1.1.4.2), síncope de esfuerzo (1.3.2.1–1.3.2.2), hipotensión postural (1.2.1, 1.5.4.2), qué decir mientras espera (1.5.4.3). Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. Caída de la tensión al ponerse de pie: hipotensión ortostática, no un POTS. Valoración médica, con revisión de los fármacos (Brignole 2018, p. 1902; NICE CG109, 1.5.4.2).
+2. Un desmayo durante el esfuerzo, tumbado, tras palpitaciones bruscas o con síntomas del corazón no lo explica la disautonomía: valoración médica urgente (Brignole 2018, tabla 6; NICE CG109, 1.1.4.2).
+3. NICE CG109 — NICE, «Transient loss of consciousness ('blackouts') in over 16s», guía clínica CG109 (2010, actualizada en 2023), capítulo «Recommendations», recomendaciones 1.1.4.2, 1.3.2.1, 1.3.2.2 y 1.5.4.3.
+4. NICE CG109 — NICE, «Transient loss of consciousness ('blackouts') in over 16s», guía clínica CG109 (2010, actualizada en 2023), capítulo «Recommendations», recomendación 1.1.4.2.
+5. NICE CG109 — NICE, «Transient loss of consciousness ('blackouts') in over 16s», guía clínica CG109 (2010, actualizada en 2023), capítulo «Recommendations», recomendaciones 1.1.4.2, 1.3.2.2 y 1.5.4.3.
+6. NICE CG109
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ds_u_esfuerzo` · Disautonomía | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `ds_u_corazon` · Disautonomía | 2 · razonamiento del cribado | 4 |
+| Todas (sistemas comunes) | — | Pregunta `ds_u_familia` · Disautonomía | 2 · razonamiento del cribado | 4 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaSincope.fuente` | 6 · plan de tratamiento | 6 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreSincope` | 6 · plan de tratamiento | 6 |
+| Hombro | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Hombro | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 5 |
+| Cadera | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Cadera | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 5 |
+| Cervical | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Cervical | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 5 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Lumbar | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 5 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Rodilla | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 5 |
+| Codo | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Codo | — | Pregunta `sx_sincope` · Vascular / Neurológica | 2 · razonamiento del cribado | 5 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.ho` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.seguridad` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 5 |
+
 ### NICE CG147
 
 Publicación: Guía NICE «Peripheral arterial disease: diagnosis and management» (2012, actualizada el 11 de diciembre de 2020)  
@@ -8952,7 +9216,7 @@ Citada como:
 | Hombro | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Cadera | — | `sistemas.3.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.4.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
 | Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 4 |
 | Cervical | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
@@ -8966,7 +9230,7 @@ Citada como:
 | Codo | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | `sistemas.6.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 6 |
 
 ### NICE NG19
@@ -9843,6 +10107,29 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Bíceps distal reparado, vuelta al deporte» de «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 1 |
 
+### Plash 2013
+
+Autores: Plash, Diedrich, Biaggioni, Garland, Paranjape, Black, Dupont y Raj  
+Título: *Diagnosing postural tachycardia syndrome: comparison of tilt testing compared with standing haemodynamics*  
+Publicación: Clin Sci 124(2):109–114  
+DOI: 10.1042/CS20120276  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). 15 pacientes y 15 controles, retrospectivo: con el corte de 30 lpm, la bipedestación de 10 min tuvo una sensibilidad del 87 % y una especificidad del 67 %. Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. Cuánto pesa: con el corte de 30 lpm, la bipedestación de 10 min tuvo una sensibilidad del 87 % y una especificidad del 67 %; uno de cada tres sanos superó el corte (Plash 2013). Por eso el diagnóstico exige además los síntomas y descartar otras causas.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
+
 ### Pokhrel 2022
 
 Autores: Pokhrel, Aiman y Bhusal  
@@ -10022,6 +10309,161 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `AVISOS.inestabilidadCodo` | 6 · plan de tratamiento | 3 |
 | Codo | co5 · Lesión del Complejo Colateral Lateral / Inestabilidad Rotatoria Posterolateral (IRPL) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 | Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Raj 2020
+
+Autores: Raj, Guzman, Harvey, Richer, Schondorf, Seifer, Thibodeau-Jarry y Sheldon  
+Título: *Canadian Cardiovascular Society position statement on postural orthostatic tachycardia syndrome (POTS) and related disorders of chronic orthostatic intolerance*  
+Publicación: Can J Cardiol 36(3):357–372  
+DOI: 10.1016/j.cjca.2019.12.024  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Única con GRADE: criterios (tabla 1, §3.2), protocolo de la bipedestación (rec. 4, fuerte, moderada), FC de referencia de 60 (p. 363), taquicardia postural de otra causa (tabla 5), ejercicio semirreclinado (rec. 14, fuerte, moderada), el fisioterapeuta en el equipo (p. 366), atención primaria (rec. 30). Quita el criterio de FC por encima de 120 (pp. 360–361). Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. El POTS exige síntomas de pie de 3 meses o más que mejoran al tumbarse (Vernino 2021; Raj 2020, §3.2; Raj 2022, recuadro 2). Agravantes: el calor, la deshidratación, el alcohol y el ejercicio (Sheldon 2015), las comidas y el Valsalva (Hakim 2017, p. 171), levantarse de golpe (Fedorowski 2019, tabla 5).
+2. Un «sí» en la última no suma: la taquicardia al ponerse de pie por fármacos, reposo en cama o pérdida de volumen es una «taquicardia postural de otra causa» y excluye el POTS (Raj 2020, tabla 5). La anemia, el tiroides y el sangrado ya los pregunta el cribado de la región.
+3. Tumbado al menos 5 min y de pie hasta 10 min; la taquicardia tiene que mantenerse en 2 medidas seguidas después del primer minuto (Raj 2020, rec. 4). Minutos de medida: Raj 2022. Preparación: Hakim 2017, p. 171. Si la FC tumbado es menor de 60, la referencia es 60 (Raj 2020, p. 363).
+4. Compatible con taquicardia ortostática. El POTS lo diagnostica el médico: exige síntomas de 3 meses o más y descartar otras causas. Derivación preferente a su médico de atención primaria (Raj 2020, recs. 1 y 30).
+5. Sin síntomas durante la prueba: la taquicardia al ponerse de pie sin síntomas no es un POTS (Raj 2020, §3.7).
+6. Solo la última medida supera el corte: repite la medida 1 min después (Raj 2020, p. 361).
+7. FC tumbado por encima de 100: coméntalo con su médico (taquicardia sinusal inapropiada u otra causa; Raj 2020, §3.8).
+8. Ejercicio regular, al principio semirreclinado (remo, bicicleta reclinada, natación) y lo vertical poco a poco; al menos 4 días por semana, sesiones de al menos 30 min (Raj 2020, rec. 14). La mejoría puede tardar 4–6 semanas y al principio puede encontrarse peor (Raj 2020; Vernino 2021).
+9. Aumento de la FC al ponerse de pie sin hipotensión ortostática: derivación preferente a su médico de atención primaria para confirmar el diagnóstico y descartar otras causas (Raj 2020, rec. 30).
+10. El agua, la sal, las prendas de compresión y los fármacos los indica el médico (Raj 2020, recs. 11–13; Brignole 2018, p. 1921).
+11. Raj 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomia` | 6 · plan de tratamiento | 11 |
+| Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.2.disautonomia.diferencialFuente` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.2.disautonomia.textos.compatible` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.2.disautonomia.textos.sinSintomas` | 2 · mención en el texto | 5 |
+| Hombro | — | `sistemas.2.disautonomia.textos.ultima` | 2 · mención en el texto | 6 |
+| Hombro | — | `sistemas.2.disautonomia.textos.reposoAlta` | 2 · mención en el texto | 7 |
+| Hombro | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 8 |
+| Hombro | — | `sistemas.2.disautonomia.textos.derivar` | 2 · mención en el texto | 9 |
+| Hombro | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 10 |
+| Cadera | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.diferencialFuente` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.2.disautonomia.textos.compatible` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.2.disautonomia.textos.sinSintomas` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.2.disautonomia.textos.ultima` | 2 · mención en el texto | 6 |
+| Cadera | — | `sistemas.2.disautonomia.textos.reposoAlta` | 2 · mención en el texto | 7 |
+| Cadera | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 8 |
+| Cadera | — | `sistemas.2.disautonomia.textos.derivar` | 2 · mención en el texto | 9 |
+| Cadera | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 10 |
+| Cervical | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.diferencialFuente` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.2.disautonomia.textos.compatible` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.2.disautonomia.textos.sinSintomas` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.2.disautonomia.textos.ultima` | 2 · mención en el texto | 6 |
+| Cervical | — | `sistemas.2.disautonomia.textos.reposoAlta` | 2 · mención en el texto | 7 |
+| Cervical | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 8 |
+| Cervical | — | `sistemas.2.disautonomia.textos.derivar` | 2 · mención en el texto | 9 |
+| Cervical | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 10 |
+| Lumbar | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.diferencialFuente` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.compatible` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.sinSintomas` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.ultima` | 2 · mención en el texto | 6 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.reposoAlta` | 2 · mención en el texto | 7 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 8 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.derivar` | 2 · mención en el texto | 9 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 10 |
+| Rodilla | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.diferencialFuente` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.compatible` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.sinSintomas` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.ultima` | 2 · mención en el texto | 6 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.reposoAlta` | 2 · mención en el texto | 7 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 8 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.derivar` | 2 · mención en el texto | 9 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 10 |
+| Codo | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.diferencialFuente` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.2.disautonomia.textos.compatible` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.2.disautonomia.textos.sinSintomas` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.2.disautonomia.textos.ultima` | 2 · mención en el texto | 6 |
+| Codo | — | `sistemas.2.disautonomia.textos.reposoAlta` | 2 · mención en el texto | 7 |
+| Codo | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 8 |
+| Codo | — | `sistemas.2.disautonomia.textos.derivar` | 2 · mención en el texto | 9 |
+| Codo | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 10 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.diferencialFuente` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.compatible` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.sinSintomas` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.ultima` | 2 · mención en el texto | 6 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.reposoAlta` | 2 · mención en el texto | 7 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 8 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.derivar` | 2 · mención en el texto | 9 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.medico` | 2 · mención en el texto | 10 |
+
+### Raj 2022
+
+Autores: Raj, Fedorowski y Sheldon  
+Título: *Diagnosis and management of postural orthostatic tachycardia syndrome*  
+Publicación: CMAJ 194(10):E378–E385  
+DOI: 10.1503/cmaj.211373  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Prueba de bipedestación activa (minutos 1, 3, 5, 8 y 10), criterios (recuadro 2), diagnóstico diferencial (recuadro 3), taquicardia paroxística, evaluación en atención primaria. Sin páginas en PMC: se cita por sección o recuadro. Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. El POTS exige síntomas de pie de 3 meses o más que mejoran al tumbarse (Vernino 2021; Raj 2020, §3.2; Raj 2022, recuadro 2). Agravantes: el calor, la deshidratación, el alcohol y el ejercicio (Sheldon 2015), las comidas y el Valsalva (Hakim 2017, p. 171), levantarse de golpe (Fedorowski 2019, tabla 5).
+2. En las consultas de POTS, entre el 20 y el 30 % cumple los criterios del SED hipermóvil o del trastorno del espectro de la hipermovilidad, con evidencia débil (Vernino 2021; Raj 2022), y no se conoce un mecanismo que los una (Miller 2020). La exploración del POTS incluye valorar la hipermovilidad (Raj 2022): si refiere ser muy flexible, mira la tarjeta «Hipermovilidad».
+3. Tumbado al menos 5 min y de pie hasta 10 min; la taquicardia tiene que mantenerse en 2 medidas seguidas después del primer minuto (Raj 2020, rec. 4). Minutos de medida: Raj 2022. Preparación: Hakim 2017, p. 171. Si la FC tumbado es menor de 60, la referencia es 60 (Raj 2020, p. 363).
+4. No llega al corte. No descarta una disautonomía: con una sospecha alta, repetir otro día, mejor por la mañana (Sivakoti 2026, enunciado 10; Raj 2022).
+5. Disautonomía: el mareo al ponerse de pie que mejora al tumbarse orienta a intolerancia ortostática, no a mareo cervicogénico (Raj 2022, recuadro 2).
+6. Raj 2022 — Raj, Fedorowski y Sheldon, «Diagnosis and management of postural orthostatic tachycardia syndrome», CMAJ 2022;194(10):E378–E385, «What other disorders can cause orthostatic intolerance?».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ds_u_tumbado` · Disautonomía | 2 · razonamiento del cribado | 6 |
+| Todas (sistemas comunes) | — | Pregunta `ds_d_paroxistica` · Disautonomía | 2 · razonamiento del cribado | 6 |
+| Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.2.disautonomia.textos.mareoCervical` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.2.disautonomia.textos.mareoCervical` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.2.disautonomia.textos.mareoCervical` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.mareoCervical` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.mareoCervical` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.2.disautonomia.textos.mareoCervical` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.mareoCervical` | 2 · mención en el texto | 5 |
 
 ### Raj 2023
 
@@ -10513,7 +10955,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Lumbar | — | `sistemas.5.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
+| Lumbar | — | `sistemas.6.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
 | Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
@@ -11058,6 +11500,39 @@ Citada como:
 | Cadera | — | Pregunta `ca_v4` · Vascular | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 1 |
 
+### Sheldon 2015
+
+Autores: Sheldon, Grubb, Olshansky, Shen, Calkins, Brignole, Raj, Krahn, Morillo, Stewart, Sutton, Sandroni, Friday, Hachul, Cohen, Lau, Mayuga, Moak, Sandhu y Kanjwal  
+Título: *2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope*  
+Publicación: Heart Rhythm 12(6):e41–e63  
+DOI: 10.1016/j.hrthm.2015.03.029  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Definición del POTS, ejercicio (IIa, B-R), agravantes, pronóstico y síncope de esfuerzo en jóvenes (sección 4). Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. El POTS exige síntomas de pie de 3 meses o más que mejoran al tumbarse (Vernino 2021; Raj 2020, §3.2; Raj 2022, recuadro 2). Agravantes: el calor, la deshidratación, el alcohol y el ejercicio (Sheldon 2015), las comidas y el Valsalva (Hakim 2017, p. 171), levantarse de golpe (Fedorowski 2019, tabla 5).
+2. Sheldon 2015 — Sheldon, Grubb, Olshansky et al., «2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope», Heart Rhythm 2015;12(6):e41–e63, secciones 1 y 4.
+3. Sheldon 2015 — Sheldon, Grubb, Olshansky et al., «2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope», Heart Rhythm 2015;12(6):e41–e63, sección 4.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ds_u_esfuerzo` · Disautonomía | 2 · razonamiento del cribado | 2 |
+| Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 3 |
+| Cadera | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 3 |
+| Cervical | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 3 |
+| Lumbar | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 3 |
+| Rodilla | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 3 |
+| Codo | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Codo | — | Pregunta `sx_sincope` · Vascular / Neurológica | 2 · razonamiento del cribado | 3 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | Pregunta `sx_sincope` · Vascular | 2 · razonamiento del cribado | 3 |
+
 ### Siemensma 2023
 
 Autores: Siemensma, van der Windt, van Es, Colaris y Eygendaal  
@@ -11152,6 +11627,29 @@ Citada como:
 | Cervical | — | Pregunta `cv_p1` · Pulmonar | 2 · razonamiento del cribado | 1 |
 | Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 1 |
 | Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
+
+### Sivakoti 2026
+
+Autores: Sivakoti, Cortez, Fedorowski, Fudim, Lau, Novak, Rowe, Schofield y Blitshteyn  
+Título: *Postural orthostatic tachycardia syndrome (POTS) and dysautonomia: International multidisciplinary expert consensus*  
+Publicación: Am J Med (en prensa, 2026)  
+DOI: 10.1016/j.amjmed.2026.08.012  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Versión en prensa, páginas 1–13 del PDF. Delphi de una ronda, 31 enunciados: los criterios no cambian (tabla 1); una prueba negativa no descarta la disautonomía (enunciado 10); ejercicio tumbado o sentado adaptado al malestar postesfuerzo (enunciado 16). «Disautonomía no POTS» es un término provisional que los autores no respaldan para la práctica clínica (pp. 2 y 11). Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. No llega al corte. No descarta una disautonomía: con una sospecha alta, repetir otro día, mejor por la mañana (Sivakoti 2026, enunciado 10; Raj 2022).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.noCorte` | 2 · mención en el texto | 1 |
 
 ### Sleijser-Koehorst 2021
 
@@ -11958,6 +12456,53 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
+
+### Vernino 2021
+
+Autores: Vernino, Bourne, Stiles, Grubb, Fedorowski, Stewart, Arnold, Pace, Axelsson, Boris, Moak, Goodman, Chémali, Chung, Goldstein, Diedrich, Miglis, Cortez, Miller, Freeman, Biaggioni, Rowe, Sheldon, Shibao, Systrom, Cook, Doherty, Abdallah, Darbari y Raj  
+Título: *Postural orthostatic tachycardia syndrome (POTS): State of the science and clinical care from a 2019 National Institutes of Health Expert Consensus Meeting – Part 1*  
+Publicación: Auton Neurosci 235:102828  
+DOI: 10.1016/j.autneu.2021.102828  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Criterios del POTS con duración de 3 meses y exclusiones (§2), comorbilidades (tabla 1), ejercicio (tabla 2), historia natural (§3). Condición especial «Disautonomía / POTS» (Fase P, docs/pots.md).
+
+Citada como:
+
+1. El POTS exige síntomas de pie de 3 meses o más que mejoran al tumbarse (Vernino 2021; Raj 2020, §3.2; Raj 2022, recuadro 2). Agravantes: el calor, la deshidratación, el alcohol y el ejercicio (Sheldon 2015), las comidas y el Valsalva (Hakim 2017, p. 171), levantarse de golpe (Fedorowski 2019, tabla 5).
+2. En las consultas de POTS, entre el 20 y el 30 % cumple los criterios del SED hipermóvil o del trastorno del espectro de la hipermovilidad, con evidencia débil (Vernino 2021; Raj 2022), y no se conoce un mecanismo que los una (Miller 2020). La exploración del POTS incluye valorar la hipermovilidad (Raj 2022): si refiere ser muy flexible, mira la tarjeta «Hipermovilidad».
+3. Por debajo de los 12 años el POTS no está definido (Vernino 2021, §11): la prueba no se interpreta.
+4. Ejercicio regular, al principio semirreclinado (remo, bicicleta reclinada, natación) y lo vertical poco a poco; al menos 4 días por semana, sesiones de al menos 30 min (Raj 2020, rec. 14). La mejoría puede tardar 4–6 semanas y al principio puede encontrarse peor (Raj 2020; Vernino 2021).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.2.disautonomia.textos.menor12` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.2.disautonomia.textos.menor12` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.2.disautonomia.textos.menor12` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.menor12` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.menor12` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.2.disautonomia.textos.menor12` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.menor12` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.2.disautonomia.textos.ejercicio` | 2 · mención en el texto | 4 |
 
 ### Viikari-Juntura 1989
 

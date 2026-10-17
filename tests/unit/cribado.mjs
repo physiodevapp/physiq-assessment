@@ -63,10 +63,10 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
 });
 
 // ── `derivacion` en preguntas de la fase 2 (quiste de Tarlov, docs/tarlov.md) ──
-test('cribado: `derivacion` es texto no vacío, nunca junto a `urgencia`; hoy solo l_u5 (quiste de Tarlov) la lleva', () => {
+test('cribado: `derivacion` es texto no vacío, nunca junto a `urgencia`; hoy l_u5 (quiste de Tarlov) y ds_d_paroxistica (taquicardia paroxística, docs/pots.md)', () => {
   const todas = Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).flatMap(s => s.preguntas);
   const con = [...new Set(todas.filter(q => 'derivacion' in q).map(q => q.id))];
-  assert.deepEqual(con, ['l_u5']);
+  assert.deepEqual(con.sort(), ['ds_d_paroxistica', 'l_u5']);
   todas.filter(q => 'derivacion' in q).forEach(q => {
     assert.ok(typeof q.derivacion === 'string' && q.derivacion.trim(), q.id);
     assert.ok(!q.urgencia, `${q.id}: derivacion y urgencia a la vez`);
@@ -108,7 +108,7 @@ test('l_u5 (Tarlov): pinta su mensaje 🩺, sin la clase de urgencia', () => {
 
 test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra); el dolor ligado a la regla (l_e3) no', () => {
   const qs = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => s.preguntas);
-  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['l6', 'l_e8']);
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['l6', 'l_e8', 'sx_sincope']);   // sx_sincope: común a las 7 regiones (docs/pots.md)
   // La bandera roja del ectópico dice «urgencia»: tiene que haber una pregunta que la dispare
   const sis = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_espondilo');
   const ect = sis.banderasRojas.find(f => /ectópico.*urgencia/i.test(f.texto || f));
@@ -133,7 +133,7 @@ test('sistemas compartidos (endocrino, hematológico): solo la sepsis neutropén
 
 test('cadera: TVP, torsión testicular, ectópico, fractura de estrés del cuello femoral, artritis séptica, aneurisma roto e isquemia aguda son urgencias (y ninguna otra)', () => {
   const qs = SYSTEMIC_SCREENING.cadera.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
-  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_u5', 'ca_v2', 'ca_v4', 'ca_v5']);
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['ca_in1', 'ca_os1', 'ca_u3', 'ca_u5', 'ca_v2', 'ca_v4', 'ca_v5', 'sx_sincope']);
   // ca_v2 junta TVP y calambres: la urgencia dice que los calambres solos no lo son,
   // y deriva hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8)
   assert.match(qs.find(q => q.id === 'ca_v2').urgencia, /no los calambres solos/);
@@ -188,14 +188,14 @@ test('ca10: el cluster de Laslett puntúa con Saueressig 2021; thigh thrust y co
 });
 
 test('cervical: disección, IVB, fractura tras traumatismo, cefalea de alarma y episodio cardiaco en curso son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
+  const qs = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4', 'cv_c3'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
   withState({ region: 'cervical', sistemicoAnswers: { cv_ar1: 'NO', cv_ar2: 'SI', cv_ar3: 'NO', cv_ar4: 'NO' } }, () => {
     assert.equal(buildPhysiQPayload().ur.length, 1);
   });
   // cv2 (síntomas cardiacos acompañantes, también pasados) no es urgente; cv_c3 (episodio en curso) sí
   assert.ok(!qs.find(q => q.id === 'cv2').urgencia);
-  assert.deepEqual(qs.filter(q => q.urgencia && !q.id.startsWith('hem_')).map(q => q.id).sort(), ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4', 'cv_c3']);   // hem_5 y hem_6, test de los compartidos
+  assert.deepEqual(qs.filter(q => q.urgencia && !q.id.startsWith('hem_')).map(q => q.id).sort(), ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4', 'cv_c3', 'sx_sincope']);   // hem_5 y hem_6, test de los compartidos; sx_sincope, común a las 7 regiones
 });
 
 test('cervical: ningún test multiplica por una LR− de 0; el cluster de Jull y el hielo no puntúan', () => {
@@ -217,13 +217,13 @@ test('cervical: el FRT puntúa solo positivo (un negativo no descarta una cervic
 });
 
 test('rodilla: bursa séptica, aparato extensor, luxación y neurovascular son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
+  const qs = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['r1', 'r_v2', 'r_v4', 'r_i3', 'ro_t2', 'ro_t3', 'ro_t4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
 });
 
 test('codo y rodilla: artritis séptica (co1) e isquemia aguda (r_v4, el mismo razonamiento que ca_v5) son urgencias', () => {
   const preg = r => SYSTEMIC_SCREENING[r].sistemas.flatMap(s => s.preguntas);
-  assert.deepEqual(preg('codo').filter(q => q.urgencia && !q.id.startsWith('hem_') && !q.id.startsWith('pq_') && !q.id.startsWith('hm_')).map(q => q.id), ['co_t1', 'co_t2', 'co1']);
+  assert.deepEqual(preg('codo').filter(q => q.urgencia && !q.id.startsWith('hem_') && !q.id.startsWith('pq_') && !q.id.startsWith('hm_') && !q.id.startsWith('ds_')).map(q => q.id), ['co_t1', 'co_t2', 'sx_sincope', 'co1']);
   assert.equal(preg('rodilla').find(q => q.id === 'r_v4').razonamiento, preg('cadera').find(q => q.id === 'ca_v5').razonamiento);
 });
 
@@ -251,7 +251,7 @@ test('rodilla: los grupos de Décary absorben sus componentes; LCA confirma y de
 test('hombro: urgencias: episodio cardiaco en curso (h_c4), ectópico (h_g1), rotura de bazo (h_gi4) y fractura o luxación (h_t1); la bisagra reparte congelado, artrosis GH y luxación/fractura', () => {
   const qs = SYSTEMIC_SCREENING.hombro.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   assert.equal(SYSTEMIC_SCREENING.hombro.urgencia, undefined);
-  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['h_c4', 'h_g1', 'h_gi4', 'h_t1']);
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id), ['h_c4', 'sx_sincope', 'h_g1', 'h_gi4', 'h_t1']);
   assert.ok(!qs.find(q => q.id === 'h2').urgencia);   // síntomas cardiacos acompañantes, también pasados: derivar, no el 112
   ['h_t1', 'h_i1', 'h_n1'].forEach(id => assert.ok(qs.find(q => q.id === id), id));
   const steps = CIF_TREES.hombro.steps, s2 = steps.find(s => s.id === 'h_step2');
@@ -317,7 +317,7 @@ test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan'
 });
 
 test('tobillo y pie: cinco P, artritis infecciosa y debilidad simétrica con arreflexia son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
+  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['tp_t1', 'tp_i1', 'tp_n1'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
   // TVP: derivar hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8), igual que ca_v2 de cadera
   assert.match(qs.find(q => q.id === 'tp_v2').urgencia, /derivar hoy.*1 o menos, dímero D/);
@@ -407,7 +407,7 @@ test('hipótesis de derivación: texto fijo, sin fuente, y solo las decididas', 
 // ── Modo breve ────────────────────────────────────────────────────────────────
 console.log('\nmodo breve');
 
-const LUMBAR_SIS = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad);   // fuera del posquirúrgico no se ve
+const LUMBAR_SIS = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia);   // fuera del posquirúrgico no se ve
 
 test('modo completo → sin pendientes, md "completo" y sin campo pe', () => {
   withState({}, () => {
@@ -474,8 +474,8 @@ test('embudo: toda pregunta con `urgencia` lleva sq2-urg (el CSS nunca la pliega
   for (const [region, data] of Object.entries(SYSTEMIC_SCREENING)) {
     for (const sis of data.sistemas) {
       const html = buildSistemaHTML(sis);
-      // El sistema de hipermovilidad (Fase P) no tiene embudo: sus preguntas se hacen siempre
-      assert.equal(html.includes(`data-embudo="${sis.id}"`), !sis.soloHipermovilidad, `${region}/${sis.id} embudo`);
+      // Los sistemas de las condiciones especiales (Fase P) no tienen embudo: sus preguntas se hacen siempre
+      assert.equal(html.includes(`data-embudo="${sis.id}"`), !sis.soloHipermovilidad && !sis.soloDisautonomia, `${region}/${sis.id} embudo`);
       for (const q of sis.preguntas) {
         const m = html.match(new RegExp(`<div class="(sq2[^"]*)" id="sq2_${q.id}"`));
         assert.ok(m, `${region}/${q.id} no renderizada`);

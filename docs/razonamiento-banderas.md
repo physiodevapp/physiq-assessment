@@ -65,6 +65,7 @@ Se inventarían una vez: lo que se escriba para ellos vale en todas las regiones
 | transversal_posquirurgico (9) | 9 | 0 | 0 | — (pero ver hallazgos: en lumbar se ocultan 4 de sus preguntas) |
 | transversal_endocrino (10) | 3 (`end_1`, `end_2`, `end_3`) | 1 (`end_5`) | 6 | túnel carpiano bilateral, tormenta tiroidea, hipopotasemia por diuréticos, xantomas *expl.*, nódulos supraclaviculares o fiebre con corticoides, tendinitis calcificante bilateral de hombro |
 | transversal_hematologico (9) | 6 (`hem_1`, `hem_2`, `hem_3` + `hem_5`, `hem_4` ×2, `hem_6`) | 0 | 3 | palidez *expl.*, coiloniquia *expl.*, AINE crónicos |
+| transversal_disautonomia (5) | 5 (`ds_u_esfuerzo`, `ds_u_tumbado`, `ds_u_corazon`, `ds_u_familia`, `ds_d_paroxistica`) | 0 | 0 | — (Fase P, 2026-10: cada bandera nace enlazada a su pregunta; ver `docs/pots.md`) |
 
 Repaso de 2026-10 (sesión de los sistemas compartidos), contra el código: posquirúrgico tiene 9 banderas (`pq_nervio_col`). Cuatro «parciales» ya las explica el razonamiento de su pregunta y se enlazan (decisión del usuario): infección necrotizante en las 48–72 h → `pq_herida` (su «cuánto pesa» la describe, Zabaglo); yeso o vendaje que aprieta → `pq_sdrc` y `pq_compart` (este solo se ve en codo, rodilla y tobillo y pie); cambios de pelo, uñas, piel o temperatura → `end_3`; fiebre en la leucopenia → `hem_3` y la nueva `hem_5` (hallazgo 4). La confusión o sudoración en el diabético (parcial con `end_5`) lleva razonamiento propio: `end_5` no cubre la cetoacidosis ni qué hacer en la sesión. Codo no carga el sistema endocrino.
 
