@@ -2050,18 +2050,46 @@ async function checkCuestionarios(browser, errors) {
         return rs.every(x => Math.abs(x.top - rs[0].top) < 1) && Math.abs(rs[0].left - caja.left) < 1 && Math.abs(rs.at(-1).right - caja.right) < 1;
       }) && Math.abs(ops[5].getBoundingClientRect().top - ops[4].getBoundingClientRect().bottom - 6) < 1;
   });
-  // Una sola respuesta: una opción por fila de borde a borde (Örebro, ítem 6); marcar varias: dos columnas (ítem 5)
+  // Opciones de texto (una respuesta o varias): dos columnas, la última a todo el ancho si son impares
+  // (Örebro, ítems 6 y 5); con una opción larga, una por fila de borde a borde (VISA-A)
   await m.tap('[data-cuest-volver]');
   await m.tap('[data-cuest="orebro"]');
-  r.lista = await m.evaluate(() => {
-    const filas = sel => [...document.querySelectorAll(`#cuestCuerpo .cuest-item[data-item="${sel}"] .cuest-op`)].map(o => o.getBoundingClientRect());
-    const una = filas(6), marcas = filas(5);
-    const caja = document.querySelector('#cuestCuerpo .cuest-item[data-item="6"] .cuest-ops').getBoundingClientRect();
-    return una.length > 4 && una.every((x, i) => Math.abs(x.left - caja.left) < 1 && Math.abs(x.right - caja.right) < 1 && x.height >= 40 && (i === 0 || x.top > una[i - 1].bottom))
-      && Math.abs(marcas[0].top - marcas[1].top) < 1 && marcas[1].left > marcas[0].right
-      // Impares: la última ocupa la fila entera
-      && marcas.length % 2 === 1 && Math.abs(marcas.at(-1).left - marcas[0].left) < 1 && Math.abs(marcas.at(-1).right - marcas[1].right) < 1;
+  const dosColumnas = sel => m.evaluate(sel => {
+    const ops = [...document.querySelectorAll(sel)].map(o => o.getBoundingClientRect());
+    const caja = document.querySelector(sel).parentElement.getBoundingClientRect();
+    return ops.length > 2 && Math.abs(ops[0].top - ops[1].top) < 1 && ops[1].left > ops[0].right
+      && Math.abs(ops[0].left - caja.left) < 1 && Math.abs(ops[1].right - caja.right) < 1
+      && ops.every(x => x.height >= 40)
+      && (ops.length % 2 === 0 || (Math.abs(ops.at(-1).left - caja.left) < 1 && Math.abs(ops.at(-1).right - caja.right) < 1));
+  }, sel);
+  r.lista = await dosColumnas('#cuestCuerpo .cuest-item[data-item="6"] .cuest-op')
+    && await dosColumnas('#cuestCuerpo .cuest-item[data-item="5"] .cuest-op');
+  await m.tap('[data-cuest-volver]');
+  await m.tap('[data-cuest="visaa"]');
+  r.largas = await m.evaluate(() => {
+    const cont = [...document.querySelectorAll('#cuestCuerpo .cuest-ops-largas')];
+    return cont.length > 0 && cont.every(c => {
+      const ops = [...c.querySelectorAll('.cuest-op')].map(o => o.getBoundingClientRect()), caja = c.getBoundingClientRect();
+      return ops.every((x, i) => Math.abs(x.left - caja.left) < 1 && Math.abs(x.right - caja.right) < 1 && (i === 0 || x.top > ops[i - 1].bottom));
+    });
   });
+  // Si caben todas en una fila, una fila (Kujala: tres opciones cortas)
+  await m.tap('[data-cuest-volver]');
+  await m.tap('[data-cuest="kujala"]');
+  r.filaUnica = await m.evaluate(() => {
+    const cont = [...document.querySelectorAll('#cuestCuerpo .cuest-ops-fila')];
+    return cont.length > 0 && cont.every(c => {
+      const ops = [...c.querySelectorAll('.cuest-op')].map(o => o.getBoundingClientRect()), caja = c.getBoundingClientRect();
+      return ops.every(x => Math.abs(x.top - ops[0].top) < 1) && Math.abs(ops[0].left - caja.left) < 1 && Math.abs(ops.at(-1).right - caja.right) < 1;
+    });
+  });
+  // Mismo criterio en los grupos de fase 1 (mecanismo, cronología): las tres en una fila,
+  // sin partir palabras a 320 px
+  r.gruposCol = await m.evaluate(() => [...document.querySelectorAll('#phase1 .option-group-col')].every(g => {
+    const bs = [...g.querySelectorAll('.option-btn')], b = bs.map(x => x.getBoundingClientRect()), c = g.getBoundingClientRect();
+    const sinPartir = bs.every(x => { x.style.overflowWrap = 'normal'; const ok = x.scrollWidth <= x.clientWidth + 1; x.style.overflowWrap = ''; return ok; });
+    return b.length === 3 && b.every(x => Math.abs(x.top - b[0].top) < 1) && Math.abs(b[0].left - c.left) < 1 && Math.abs(b[2].right - c.right) < 1 && sinPartir;
+  }));
   r.cabecera = await m.evaluate(() => document.documentElement.scrollWidth <= innerWidth
     && document.getElementById('themeBtn').getBoundingClientRect().right <= innerWidth);
   await movil.close();
@@ -4850,7 +4878,7 @@ const SECCIONES = [
 
   { id: 'cuestionarios', titulo: 'Calculadora de cuestionarios:', run: async ({ browser, errors }) => {
     const c = await checkCuestionarios(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las preguntas de una sola respuesta van una opción por fila y las de marcar varias en dos columnas, con la última a todo el ancho si son impares; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Calculadora de cuestionarios (cabecera): diálogo centrado con una tarjeta por cuestionario; PHQ-9 por toques reales (incompleto, 12/27 moderados con la alerta del ítem 9, segundo toque la quita, la tarjeta enseña el resultado), zonas de Örebro marcadas y desmarcadas, «Borrar respuestas» pregunta y vuelve, Escape cierra, la fase 5 lo resume; en móvil, desde «Herramientas» (un botón en vez de tres iconos), hoja inferior que atrás cierra en la misma fase y tarjetas con la descripción larga bajo el nombre; a 320 px nada desborda y la escala 0–10 deja botones ≥ 40 px en dos filas 0–4 / 5–10 de borde a borde, como la EVA, las opciones de texto (una respuesta o varias) van en dos columnas, con la última a todo el ancho si son impares, todas en una fila si caben (Kujala), y una por fila si alguna es larga; mecanismo y cronología, las tres en una fila; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
