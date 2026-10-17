@@ -1,6 +1,152 @@
 # Lupus eritematoso sistémico (LES) — diseño
 
-Estado: **propuesta, pendiente de la aprobación del usuario (octubre 2026).** No hay código. Las fuentes en abierto (PMC y StatPearls) están leídas enteras; las guías de referencia (EULAR 2023, BSR 2018 y otras) no son accesibles desde la sesión y se piden en PDF (ver «Fuentes que faltan»).
+Estado: **las 18 decisiones, aceptadas por el usuario (octubre 2026). Después se leyeron enteras las guías (PDF del usuario y Blaess 2024 en abierto), que proponen 16 cambios sobre lo aceptado: ver «Revisión con las guías», pendiente de tu visto bueno.** No hay código todavía.
+
+## Revisión con las guías (octubre 2026)
+
+Leídas enteras después de aceptar las 18 decisiones:
+
+| Clave propuesta | Referencia | Cómo se leyó |
+|---|---|---|
+| `Fanouriakis 2024` | Fanouriakis A, Kostopoulou M, Andersen J, et al. EULAR recommendations for the management of systemic lupus erythematosus: 2023 update. *Ann Rheum Dis* 2024;83(1):15–29. [doi:10.1136/ard-2023-224762](https://doi.org/10.1136/ard-2023-224762) | PDF del usuario, 15 pp. (sin el suplemento en línea) |
+| `Sammaritano 2025` | Sammaritano LR, Askanase A, Bermas BL, et al. 2025 American College of Rheumatology (ACR) Guideline for the Treatment of Systemic Lupus Erythematosus. *Arthritis Rheumatol* 2026. [doi:10.1002/art.43452](https://doi.org/10.1002/art.43452) | PDF del usuario (versión *early view*, pp. 1–26; se cita por esas páginas) |
+| `Gordon 2018` | Gordon C, Amissah-Arthur MB, Gayed M, et al. The British Society for Rheumatology guideline for the management of systemic lupus erythematosus in adults. *Rheumatology* 2018;57(1):e1–e45. [doi:10.1093/rheumatology/kex286](https://doi.org/10.1093/rheumatology/kex286) | PDF del usuario, 45 pp. |
+| `Fragoulis 2023` | Fragoulis GE, Nikiphorou E, Dey M, et al. 2022 EULAR recommendations for screening and prophylaxis of chronic and opportunistic infections in adults with autoimmune inflammatory rheumatic diseases. *Ann Rheum Dis* 2023;82(6):742–753. [doi:10.1136/ard-2022-223335](https://doi.org/10.1136/ard-2022-223335) | PDF del usuario |
+| `Drosos 2022` | Drosos GC, Vedder D, Houben E, et al. EULAR recommendations for cardiovascular risk management in rheumatic and musculoskeletal diseases, including systemic lupus erythematosus and antiphospholipid syndrome. *Ann Rheum Dis* 2022;81(6):768–779. [doi:10.1136/annrheumdis-2021-221733](https://doi.org/10.1136/annrheumdis-2021-221733) | PDF del usuario |
+| `Dures 2024` | Dures E, Farisoğulları B, Santos EJF, et al. 2023 EULAR recommendations for the management of fatigue in people with inflammatory rheumatic and musculoskeletal diseases. *Ann Rheum Dis* 2024;83(10):1260–1267. [doi:10.1136/ard-2023-224514](https://doi.org/10.1136/ard-2023-224514) | PDF del usuario |
+| `Ruperto 2011` | Ruperto N, Hanrahan LM, Alarcón GS, et al. International consensus for a definition of disease flare in lupus. *Lupus* 2011;20(5):453–462. [doi:10.1177/0961203310388445](https://doi.org/10.1177/0961203310388445) | PDF del usuario |
+| `Goodman 2018` (ya registrada) | Goodman, Heick y Lazaro 2018, cap. 12 «Screening for Immunologic Disease» (Auyeung y Hickman), pp. 428–462 | PDF del usuario. El LES está en pp. 444–445; la fibromialgia, en pp. 435–439; la derivación, en p. 455 |
+| `Blaess 2024` | Blaess J, Geneton S, Goepfert T, et al. Recommendations for physical activity and exercise in persons living with systemic lupus erythematosus (SLE): consensus by an international task force. *RMD Open* 2024;10(2):e004171. [doi:10.1136/rmdopen-2024-004171](https://doi.org/10.1136/rmdopen-2024-004171) | En abierto (PMC11002419), sin los suplementos (reCAPTCHA) |
+| (no se registra) | Parodis I, et al. Revisión sistemática que informa las recomendaciones EULAR no farmacológicas del LES y la esclerosis sistémica. *RMD Open* 2023;9:e003297 (PMC10401222) | En abierto. Para el LES, el ejercicio mejora la fatiga (DM −0,61) sin cambiar la actividad (0,01). Lo dice ya Frade 2023, así que no hace falta citarla |
+
+**Ninguna guía contradice una urgencia del diseño ni rebaja una línea de seguridad.** Algunas son más prudentes que el diseño (Goodman con el riñón) y otras menos (EULAR y ACR con la serositis). Estos son los cambios propuestos; cada uno lleva mi recomendación.
+
+### Corticoides e inmunosupresores (tarjeta de la fase 1)
+
+**C1. Tramos de corticoides: No · Hasta 5 · Más de 5 hasta 20 · Más de 20 mg/día · No lo sabe** (antes, el corte bajo era 7,5).
+- La EULAR 2023 baja el objetivo de mantenimiento a ≤ 5 mg/día: «as compared with 7.5 mg/day in the 2019 recommendations» (Fanouriakis 2024, rec. 2, 2a/B, p. 18).
+- La ACR 2025 recomienda bajar a ≤ 5 mg/día en 6 meses, «ideally to zero» (Sammaritano 2025, recomendación fuerte, p. 11).
+- 20 mg/día sigue teniendo respaldo: la ACR trata más de 20 mg/día durante más de 4 semanas como dosis moderada-alta (Sammaritano 2025, tabla 4).
+- La BSR aún usaba ≤ 7,5 (Gordon 2018, 2+/C). Es de 2018: se sigue a las dos guías posteriores.
+- *Recomiendo el cambio.*
+
+**C2. «Dosis altas» = más de 20 mg/día durante más de 4 semanas** (Sammaritano 2025, tabla 4). Los pulsos intravenosos no cuentan: «pulse IV MP has not been linked to … avascular necrosis» (Fanouriakis 2024, p. 18). La etiqueta de la fila dirá «sin contar los pulsos en vena». *Recomiendo el cambio.*
+
+**C3. Fila «Inmunosupresores o biológicos»: «la hidroxicloroquina no cuenta».** Fragoulis 2023 (p. 743) excluye de los inmunosupresores la hidroxicloroquina y la sulfasalazina, por su efecto leve. Como la hidroxicloroquina se recomienda a casi todos los pacientes con LES (Fanouriakis 2024, rec. 1, 1b/A), sin la aclaración casi todos contestarían «Sí». Se darán como ejemplos metotrexato, micofenolato, azatioprina, ciclofosfamida y rituximab (Fragoulis 2023, p. 743). *Recomiendo el cambio.*
+
+**C4. Casilla «Toma anticoagulante» → «Toma anticoagulante o antiagregante (aspirina)».**
+- Con antifosfolípidos de alto riesgo sin SAF, lo indicado es la aspirina a dosis baja, no el anticoagulante (Tektonidou 2019, rec. 2A; Drosos 2022, rec. 4B, 2a/B).
+- Blaess 2024 pide precaución con las actividades de riesgo de traumatismo con los dos tipos de fármaco (rec. 3, 5/D).
+- *Recomiendo el cambio.*
+
+### Fase 2
+
+**C5. `lr5` (fiebre): «más de 38,3 °C»**, no 38. Es la cifra de Aringer 2019, tabla 1. Corrección de un error de transcripción mío.
+
+**C6. `les_u_neuro`: añadir el pie o la mano caídos de golpe y la pérdida de visión.**
+- La ACR cuenta la mononeuritis múltiple y la neuritis óptica entre los cuadros graves (Sammaritano 2025).
+- Goodman pide preguntar por «recent vision problems» (Goodman 2018, cap. 12, p. 457).
+- Son los síntomas que puede ver un fisio.
+- *Recomiendo el cambio.*
+
+**C7. `les_u_pecho` sigue urgente, con una nota en el razonamiento.**
+- La EULAR y la ACR tratan la serositis como enfermedad moderada, y la BSR pone la pleuritis leve como actividad leve (Gordon 2018, tabla 7).
+- Pero el fisio no puede descartar una infección ni una embolia pulmonar, y Pisetsky 2021 pide un diagnóstico pronto que descarte la infección.
+- Por eso el razonamiento explicará por qué la app es más prudente que las guías.
+- *Recomiendo mantenerla urgente.*
+
+**C8. `les_d_rinon`: mensaje más firme, sin pasar a urgencia.**
+- La pregunta añade «o le han dicho en un análisis que tiene proteínas o sangre en la orina».
+- El mensaje pasa a ser «valoración médica pronto, sin esperar a la próxima revisión».
+- Las fuentes:
+  - Goodman pide «immediate physician referral» ante un análisis de orina con proteínas, sangre o cilindros, en un paciente en el que se sospecha un LES (Goodman 2018, cap. 12, p. 441);
+  - la EULAR insiste en no retrasar el diagnóstico de la nefritis (Fanouriakis 2024);
+  - la BSR recuerda que el riñón puede no dar síntomas, así que un «no» no la descarta (Gordon 2018).
+- *Recomiendo* `derivacion` con este mensaje, no `urgencia`: quien ya tiene el diagnóstico está en seguimiento.
+- *Alternativa*: seguir a Goodman y marcarla `urgencia` «valoración médica hoy».
+
+**C9. `les_d_debilidad`: «preferente, antes de la próxima sesión».**
+- La BSR pone la miositis como brote grave (Gordon 2018, tabla 7).
+- El razonamiento añade las otras causas de debilidad que nombran las guías:
+  - miopatía por estatinas o por hidroxicloroquina, e hipotiroidismo (Gordon 2018);
+  - la retirada de los corticoides, que imita síntomas del lupus (Sammaritano 2025).
+- *Recomiendo el cambio.*
+
+**C10. Fila «Ahora mismo» de la tarjeta: Estable · En brote, según su médico · Peor, sin valorar aún · No lo sabe.**
+- El brote lo juzga el clínico (Ruperto 2011): un empeoramiento que nota el paciente no es por sí mismo un brote.
+- «Peor, sin valorar aún» saca el mismo aviso que el brote en las fases 5 y 6 y recuerda `les_d_brote`.
+- *Recomiendo el cambio.*
+
+### Fase 3
+
+**C11. Reescribir la línea de Naturaleza.**
+- «La fatiga no indica actividad» contradice las guías:
+  - la EULAR de fatiga pide valorar la actividad ante una fatiga nueva o que empeora (Dures 2024, rec. 4, 1a/A);
+  - la BSR cuenta la fatiga en el brote leve (Gordon 2018, tabla 7).
+- Fibromialgia: «hasta un 20–30 %» (Bowers y Blum 2026; Goodman 2018, p. 444), y el diagnóstico es médico: hay que descartar hipotiroidismo, anemia o afectación pulmonar (Goodman 2018, p. 444).
+- Se añade una pista de exploración: «la artritis duele y limita igual en activo que en pasivo; la tendinitis, mucho más en activo» (Goodman 2018, p. 456).
+- Texto propuesto:
+  > «Lupus: la artritis da hinchazón y rigidez por la mañana de 30 min o más, sobre todo en manos, muñecas y rodillas, y duele y limita igual en activo que en pasivo (Goodman 2018, cap. 12, p. 456). El dolor generalizado a la palpación sin tumefacción orienta a fibromialgia, que acompaña al lupus en el 20–30 %; el diagnóstico es médico (Goodman 2018, cap. 12, p. 444). La fatiga aparece también con el lupus inactivo, así que sola no mide la actividad; si es nueva o empeora, que la valore su reumatólogo (Dures 2024, rec. 4).»
+- *Recomiendo el cambio.*
+
+### Fase 4b
+
+**C12. La línea de técnica gana fuente y pierde la redacción propia.**
+- Goodman, tras un caso de LES con corticoides: antes de ejercicios resistidos, técnicas de energía muscular o movilizaciones, conocer los cambios en la densidad ósea (Goodman 2018, cap. 12, p. 445).
+- Blaess 2024 cubre el riesgo de traumatismo con anticoagulante o antiagregante (rec. 3, 5/D).
+- Texto propuesto:
+  > «Lupus: con corticoides, el hueso es más frágil y la piel más fina; antes de ejercicios resistidos o movilizaciones, ten en cuenta la densidad ósea (Yasir 2023; Goodman 2018, cap. 12, p. 445). Con anticoagulante o antiagregante, precaución con lo que tenga riesgo de golpe (Blaess 2024, rec. 3). Un dolor profundo en carga de cadera, rodilla, hombro o tobillo puede ser una osteonecrosis aunque la exploración y la radiografía sean normales (Matthews 2023).»
+- *Recomiendo el cambio.*
+
+### Fases 5 y 6: ejercicio
+
+**C13. La dosis pasa a ser la recomendada, y lo estudiado queda como contexto.** Blaess 2024 es la única fuente leída que recomienda una pauta para el LES. Texto propuesto:
+> «Con el lupus inactivo o leve, llegar poco a poco a 150–300 min por semana de intensidad moderada (esfuerzo 5–6 sobre 10) y fuerza al menos 2 días (Blaess 2024, rec. 9). Sesiones con aeróbico y fuerza, 3–5 por semana (rec. 14, 1a/A); fuerza en 1–3 series de 8–12 repeticiones con 1–3 min de descanso (rec. 15, 1b/A); aeróbico de 20–30 min hasta 50, en tramos de 4 semanas (rec. 12, 1b/A); con calentamiento y vuelta a la calma (rec. 13). Supervisado por un fisioterapeuta (rec. 11, 1b/A). Puede reducir algo la fatiga y la actividad del lupus probablemente no cambia (Frade 2023).»
+
+Además, en la fase 5:
+> «Antes de empezar, su médico valora si hay contraindicaciones; antes de ejercicio vigoroso, puede hacer falta un ECG o una prueba de esfuerzo (Blaess 2024, rec. 10, 1b/A).»
+
+Y con osteonecrosis o Jaccoud conocidos:
+> «Que lo valore un especialista antes de empezar (Blaess 2024, rec. 1, 4/C).»
+
+Para esa última línea, la fila de la tarjeta «Dosis altas» no basta: hace falta una casilla «Osteonecrosis o artropatía de Jaccoud conocidas».
+
+*Recomiendo el cambio, con la casilla.*
+
+**C14. Ejercicio en brote (decisión 12): la frase ya tiene fuente, y se suaviza.**
+- Blaess 2024 pide revalorar las contraindicaciones en el brote (rec. 4, 5/D), y nombra como posibles contraindicaciones la miocarditis, la pericarditis, la pleuritis y la miositis activas.
+- En un brote articular, no implicar las articulaciones inflamadas (rec. 5, 5/D).
+- Texto propuesto:
+  > «En brote, que su reumatólogo revalore las contraindicaciones antes de seguir (Blaess 2024, rec. 4); en un brote articular, no cargar las articulaciones inflamadas (rec. 5).»
+- Se quita «sin progresar la carga», que era redacción propia y más restrictiva que la fuente.
+- Blaess también dice «mantenerse lo más activo posible», pero lo apoya en fuentes de artritis, no de LES: solo va en el razonamiento.
+- *Recomiendo el cambio.*
+
+**C15. Sol y Raynaud (decisión 14): con fuente graduada.**
+- Sol:
+  > «Fotoprotección: protector solar de amplio espectro UVA y UVB, ropa que cubra y evitar las horas de más sol (Gordon 2018, 2++/B y 4/D; Blaess 2024, rec. 2, 1b/A; Sammaritano 2025).»
+  
+  El índice UV por encima de 3 se queda como «opinión de los autores» de Frade 2023, después.
+- Con la casilla de Raynaud:
+  > «Al aire libre, guantes o ropa contra el frío; evitar tocar superficies frías y secar bien la piel durante y después del ejercicio (Blaess 2024, rec. 2, 1b/A).»
+  
+  «También la crioterapia» sigue siendo inferencia mía y lo dirá así.
+- *Recomiendo el cambio.*
+
+**C16. Red de seguridad y otras líneas de la fase 5.**
+- La línea del ictus en la fase 6 sale **siempre** con «Diagnosticado», no solo con antifosfolípidos.
+  - En el LES, el ictus es el riesgo que menos recogen las escalas generales (Drosos 2022, p. 773).
+  - La enfermedad cerebrovascular es frecuente en el LES (Goodman 2018, p. 445).
+- Línea de tabaco:
+  > «Si fuma, dejarlo: empeora el lupus y el riesgo cardiovascular.»
+  
+  Fuentes: Drosos 2022, principio C; Bowers y Blum 2026; Gordon 2018.
+- La línea «lo ajusta el médico» cita a Drosos 2022, principio B: el reumatólogo es el responsable.
+- *Recomiendo los tres.*
+
+**No cambian:** las decisiones 1, 3, 5 (salvo C6 y C7), 6, 9, 15, 16 y 18. Lo que aporta cada fuente a cada decisión está en las notas de lectura (`scratchpad`, no van al repositorio).
+
+**Fuente que aún falta** (opcional): Parodis I, et al. EULAR recommendations for the non-pharmacological management of systemic lupus erythematosus and systemic sclerosis. *Ann Rheum Dis* 2024;83(6):720–729, [doi:10.1136/ard-2023-224416](https://doi.org/10.1136/ard-2023-224416). Su revisión sistemática ya está leída y no cambia nada. Blaess 2024 dice que sus medidas de fotoprotección coinciden con esta guía.
 
 Es la cuarta condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad / Ehlers-Danlos (`docs/hipermovilidad.md`), el quiste de Tarlov (`docs/tarlov.md`) y el POTS / disautonomía (`docs/pots.md`). Repite el patrón de los dos pilotos transversales (hipermovilidad y POTS). Cada diferencia lleva su motivo en «Diferencias con los pilotos».
 
