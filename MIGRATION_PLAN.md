@@ -444,3 +444,8 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
   - [x] Implementado (2026-10): tarjeta de la fase 1, `SIS_LUPUS` (6 urgencias y 4 derivaciones con «Diagnosticado»; rasgos sin puntos con «Sospecha»), notas de las fases 3 y 4b, recuadro de la fase 5, payload `le`, 📋 Notas, 📄 Informe (sin la palabra lupus con la sospecha), informe con IA, avisos y red de seguridad de la fase 6, nota con la hipermovilidad. Pruebas unitarias (`tests/unit/lupus.mjs`) y sección `lupus` de la prueba de humo; prueba completa en verde
   - [x] Revisión del usuario (2026-10)
   - [x] physiq-report: leer `le` del payload (otro repositorio): `_bloqueLES()`, copia literal de `bloqueLESIA()`; `LES_CASOS` fija el mismo texto en un test en cada repositorio (physiodevapp/physiq-report#93, 2026-10)
+- [x] Guía de condiciones especiales (botón en la cabecera que lista las condiciones, cuándo pensar en ellas y cómo llegar a cada una): diseño en `docs/condiciones-especiales.md`
+  - [x] Borrador de diseño (2026-10): recomendaciones generales aceptadas (botón en la cabecera y en «Herramientas», posquirúrgico incluido, sin aviso en la fase 1)
+  - [x] Decisiones 1–8 del documento: aceptadas las 8 recomendaciones (2026-10)
+  - [x] Implementado (2026-10): icono de brújula en la cabecera y opción en «Herramientas» en móvil, `data/condiciones.js`, `lib/condiciones.js`, `abrirCondiciones()` / `irACondicion()` en `app.js`; pruebas unitarias (`tests/unit/condiciones.mjs`) y sección `condiciones` de la prueba de humo
+  - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)

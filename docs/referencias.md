@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **553** referencias de literatura, con **3091** usos.
+- **553** referencias de literatura, con **3103** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **379** de 553 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -61,18 +61,18 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Ruperto 2011](#ruperto-2011) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Shelkey 2014](#shelkey-2014) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 15 | **sin revisar** |
+| [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Champaneria 2016](#champaneria-2016) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Dos Santos 2016](#dos-santos-2016) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Byers 2017](#byers-2017) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Henderson 2017](#henderson-2017) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Malfait 2017](#malfait-2017) | razonamiento fase 2 · texto | 61 | **sin revisar** |
+| [Malfait 2017](#malfait-2017) | razonamiento fase 2 · texto | 62 | **sin revisar** |
 | [Schroeder 2017](#schroeder-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Baker 2018](#baker-2018) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
 | [Gordon 2018](#gordon-2018) | razonamiento fase 2 · texto | 12 | **sin revisar** |
-| [Hulens 2018](#hulens-2018) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Aringer 2019](#aringer-2019) | razonamiento fase 2 · texto | 16 | **sin revisar** |
+| [Hulens 2018](#hulens-2018) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Aringer 2019](#aringer-2019) | razonamiento fase 2 · texto | 17 | **sin revisar** |
 | [Tektonidou 2019](#tektonidou-2019) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Peker 2020](#peker-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Wang 2020](#wang-2020) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -91,7 +91,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Limaiem 2023](#limaiem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Matthews 2023](#matthews-2023) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Murphy 2023](#murphy-2023) | razonamiento fase 2 · razonamiento fase 4 | 2 | **sin revisar** |
-| [Paredes Mogica 2023](#paredes-mogica-2023) | razonamiento fase 2 · razonamiento fase 4 | 3 | **sin revisar** |
+| [Paredes Mogica 2023](#paredes-mogica-2023) | razonamiento fase 2 · razonamiento fase 4 | 4 | **sin revisar** |
 | [Punnapuzha 2023](#punnapuzha-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Saleem 2023](#saleem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -100,7 +100,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hanna 2024](#hanna-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hosseinzadeh 2024](#hosseinzadeh-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kimyaghalam 2024](#kimyaghalam-2024) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Penfold 2024](#penfold-2024) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Penfold 2024](#penfold-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Castro y Sharma 2025](#castro-y-sharma-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Goosenberg 2025](#goosenberg-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hulens 2025](#hulens-2025) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -208,15 +208,15 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 2 | **sin revisar** |
 | [Fu 2010](#fu-2010) | plan de tratamiento | 1 | **sin revisar** |
 | [George 2016](#george-2016) | plan de tratamiento | 1 | **sin revisar** |
-| [Hakim 2017](#hakim-2017) | plan de tratamiento · texto | 30 | **sin revisar** |
-| [Raj 2020](#raj-2020) | plan de tratamiento · texto | 71 | **sin revisar** |
+| [Hakim 2017](#hakim-2017) | plan de tratamiento · texto | 31 | **sin revisar** |
+| [Raj 2020](#raj-2020) | plan de tratamiento · texto | 72 | **sin revisar** |
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 10 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
 | [Plash 2013](#plash-2013) | texto | 7 | **sin revisar** |
 | [Engelbert 2017](#engelbert-2017) | texto | 14 | **sin revisar** |
-| [Fedorowski 2019](#fedorowski-2019) | texto | 14 | **sin revisar** |
+| [Fedorowski 2019](#fedorowski-2019) | texto | 15 | **sin revisar** |
 | [Miller 2020](#miller-2020) | texto | 7 | **sin revisar** |
-| [Vernino 2021](#vernino-2021) | texto | 28 | **sin revisar** |
+| [Vernino 2021](#vernino-2021) | texto | 29 | **sin revisar** |
 | [Frade 2023](#frade-2023) | texto | 21 | **sin revisar** |
 | [Blaess 2024](#blaess-2024) | texto | 56 | **sin revisar** |
 | [Dures 2024](#dures-2024) | texto | 7 | **sin revisar** |
@@ -420,7 +420,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Finucane 2020](#finucane-2020) | razonamiento fase 2 · plan de tratamiento | 17 | 2026-10 · Sin cambios: PubMed (autor Finucane LM, «red flags») no encuentra una versión posterior del marco IFOMPT. |
 | [Galliker 2020](#galliker-2020) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: PubMed (banderas rojas en lumbalgia en urgencias, revisiones desde 2020) no encuentra ninguna posterior. |
 | [Kim y Chang 2021](#kim-y-chang-2021) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10); leídas enteras en Europe PMC dos fuentes posteriores en acceso abierto: Fares 2026 (Clin Shoulder Elb 29:161–169, revisión narrativa, doi 10.5397/cise.2025.00885) y Holle 2026 (Muscle Nerve 73:56–62, datos de un seguro alemán, doi 10.1002/mus.70059). Coinciden con lo que usa h_n1: infradiagnóstico (incidencia codificada 10,3 por 100 000 frente a unos 100 por 100 000 en el estudio prospectivo de atención primaria, es decir, en torno a 1 por 1000), dolor brusco a menudo nocturno seguido de debilidad y atrofia en parches, desencadenantes (infección, vacuna, cirugía, esfuerzo) y confusión con la patología del manguito y la radiculopatía cervical. La revisión de Gabet 2025 (Muscle Nerve) no se pudo conseguir. |
-| [Klepinowski 2021](#klepinowski-2021) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: PubMed (quiste de Tarlov, metaanálisis de prevalencia) no encuentra otro metaanálisis. |
+| [Klepinowski 2021](#klepinowski-2021) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: PubMed (quiste de Tarlov, metaanálisis de prevalencia) no encuentra otro metaanálisis. |
 | [Cabre 2022](#cabre-2022) | razonamiento fase 2 | 1 | 2026-10 · Complementada: el consenso del COI de 2023 (Mountjoy 2023, Br J Sports Med, PDF del usuario) actualiza el marco: REDs en ambos sexos y la fractura de estrés del sacro o la pelvis como de alto riesgo. Se añade a `l_e6`; la cifra de 4,5 veces más lesiones óseas sigue citando Cabre. |
 | [Goodfriend 2022](#goodfriend-2022) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de diciembre de 2022 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Kalakonda 2022](#kalakonda-2022) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de septiembre de 2022 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -540,7 +540,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Jogu 2026](#jogu-2026) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 15 de mayo de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) | razonamiento fase 2 · tiempos de tejido | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) | razonamiento fase 2 · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 15 de febrero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Mačionienė 2026](#mačionienė-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior. |
+| [Mačionienė 2026](#mačionienė-2026) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior. |
 | [Menon y Cassaro 2026](#menon-y-cassaro-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Moore y Tafti 2026](#moore-y-tafti-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 15 de febrero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Sabry y Li 2026](#sabry-y-li-2026) | razonamiento fase 2 · razonamiento fase 4 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de marzo de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -1180,11 +1180,13 @@ Citada como:
 2. Rasgos que pueden corresponder a una enfermedad inflamatoria sistémica: derivación preferente a su médico de atención primaria. El diagnóstico es médico y necesita analítica (Aringer 2019).
 3. Aringer 2019 — Aringer, Costenbader, Daikh et al., «2019 European League Against Rheumatism/American College of Rheumatology classification criteria for systemic lupus erythematosus», Arthritis Rheumatol 2019;71(9):1400–1412, discusión.
 4. Aringer 2019 — Aringer, Costenbader, Daikh et al., «2019 European League Against Rheumatism/American College of Rheumatology classification criteria for systemic lupus erythematosus», Arthritis Rheumatol 2019;71(9):1400–1412, tabla 1 (pericarditis aguda).
+5. Aringer 2019
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `les_u_fiebre` · Lupus | 2 · razonamiento del cribado | 3 |
 | Todas (sistemas comunes) | — | Pregunta `les_u_pecho` · Lupus | 2 · razonamiento del cribado | 4 |
+| condiciones | — | Fila «Lupus (LES)» | guía de condiciones especiales | 5 |
 | Hombro | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.3.lupus.textos.derivar` | 2 · mención en el texto | 2 |
 | Cadera | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
@@ -3519,9 +3521,11 @@ Citada como:
 
 1. El POTS exige síntomas de pie de 3 meses o más que mejoran al tumbarse (Vernino 2021; Raj 2020, §3.2; Raj 2022, recuadro 2). Agravantes: el calor, la deshidratación, el alcohol y el ejercicio (Sheldon 2015), las comidas y el Valsalva (Hakim 2017, p. 171), levantarse de golpe (Fedorowski 2019, tabla 5).
 2. Disautonomía: separa lo que limita estar de pie (mareo, palpitaciones) de lo que limita la carga del tejido; la matriz mide lo segundo. La debilidad, el dolor muscular y la intolerancia al esfuerzo forman parte del cuadro (Fedorowski 2019, tabla 2).
+3. Fedorowski 2019
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Disautonomía / POTS» | guía de condiciones especiales | 3 |
 | Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.2.disautonomia.textos.tolerancia` | 2 · mención en el texto | 2 |
 | Cadera | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
@@ -4695,6 +4699,7 @@ Citada como:
 |---|---|---|---|---|
 | Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomia` | 6 · plan de tratamiento | 5 |
 | Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomiaHM` | 6 · plan de tratamiento | 5 |
+| condiciones | — | Fila «Disautonomía / POTS» | guía de condiciones especiales | 5 |
 | Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.2.disautonomia.textos.adaptaciones` | 2 · mención en el texto | 3 |
@@ -5534,9 +5539,11 @@ Nota: PDF del usuario, leído entero (2026-10). Único estudio con grupo control
 Citada como:
 
 1. Hulens 2018 — Hulens, Dankaerts, Rasschaert, Bruyninckx, Willaert, Vereecke y Vansant, «Can patients with symptomatic Tarlov cysts be differentiated from patients with specific low back pain based on comprehensive history taking?», Acta Neurochir (Wien) 2018;160(4):839–844, tabla 1 y discusión.
+2. Hulens 2018
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Quiste de Tarlov» | guía de condiciones especiales | 2 |
 | Lumbar | — | Pregunta `l_u5` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
 ### Hulens 2025
@@ -6385,9 +6392,11 @@ Nota: Texto completo en PMC, leído entero (2026-10). Se contradice en dos cifra
 Citada como:
 
 1. Klepinowski 2021 — Klepinowski, Orbik y Sagan, «Global incidence of spinal perineural Tarlov's cysts and their morphological characteristics: a meta-analysis of 13,266 subjects», Surg Radiol Anat 2021;43(6):855–863, resultados y tabla 4 (texto completo en PMC).
+2. Klepinowski 2021
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Quiste de Tarlov» | guía de condiciones especiales | 2 |
 | Lumbar | — | Pregunta `l_u5` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
 ### Knapik 2023
@@ -8448,9 +8457,11 @@ Nota: Revisión narrativa; texto completo en PMC13156603, leído en PubMed Centr
 Citada como:
 
 1. Mačionienė 2026 — Mačionienė, Kerpauskienė, Žakauskienė, Vitkauskaitė, Girčius y Miglinas, «Nutcracker syndrome in 2026: a nephrologist-oriented diagnosis and management», Clin Kidney J 2026;19(5):sfag124, apartados «Epidemiology», «Clinical presentation», «Diagnosis» y «Treatment» (texto completo en PMC).
+2. Mačionienė 2026
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Síndrome del cascanueces» | guía de condiciones especiales | 2 |
 | Lumbar | — | Pregunta `l_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
 ### Maffulli 1998
@@ -8598,6 +8609,7 @@ Citada como:
 7. Un rasgo menor del subtipo vascular: por sí solo es un hallazgo; deriva junto con otro (Malfait 2017, p. 16).
 8. Con lupus, el diagnóstico de SED hipermóvil exige los rasgos A y B, y el dolor crónico y la inestabilidad no cuentan (Malfait 2017, p. 19).
 9. Malfait 2017 — Malfait, Francomano, Byers et al., «The 2017 international classification of the Ehlers-Danlos syndromes», Am J Med Genet C Semin Med Genet 2017;175(1):8–26, p. 16.
+10. Malfait 2017
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -8606,6 +8618,7 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `hm_s_neumo` · Hipermovilidad | 2 · razonamiento del cribado | 9 |
 | Todas (sistemas comunes) | — | Pregunta `hm_s_piel` · Hipermovilidad | 2 · razonamiento del cribado | 9 |
 | Todas (sistemas comunes) | — | Pregunta `hm_s_varices` · Hipermovilidad | 2 · razonamiento del cribado | 9 |
+| condiciones | — | Fila «Hipermovilidad / Ehlers-Danlos» | guía de condiciones especiales | 10 |
 | Hombro | — | `sistemas.1.hipermovilidad.cuestionarioFuente` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.1.hipermovilidad.beightonFuente` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.1.hipermovilidad.cortesFuente` | 2 · mención en el texto | 3 |
@@ -10347,9 +10360,11 @@ Citada como:
 
 1. Paredes Mogica 2023 — Paredes Mogica, Feigenbaum, Pilitsis, Schrot, Oaklander y De, «Sacral Tarlov perineurial cysts: a systematic review of treatment options», J Neurosurg Spine 2024;40(3):375–388 (en línea en 2023), resumen, pp. 377–378, 380 y 384–385, y tabla 3.
 2. Paredes Mogica 2023 (J Neurosurg Spine 40(3):375–388; p. 377)
+3. Paredes Mogica 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Quiste de Tarlov» | guía de condiciones especiales | 3 |
 | Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_u5` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Paso `lu_step1c` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
@@ -10661,9 +10676,11 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf), leído entero (2026-10). Se cont
 Citada como:
 
 1. Penfold 2024 — Penfold, Leslie y Lotfollahzadeh, «Nutcracker Syndrome and Left Renal Vein Entrapment», StatPearls [Internet], NCBI Bookshelf, última actualización 7 de mayo de 2024, apartados «Etiology», «Epidemiology», «Pathophysiology», «History and Physical», «Evaluation», «Treatment / Management» y «Complications».
+2. Penfold 2024
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Síndrome del cascanueces» | guía de condiciones especiales | 2 |
 | Lumbar | — | Pregunta `l_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
 ### Petersen 2017
@@ -10995,6 +11012,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomia` | 6 · plan de tratamiento | 11 |
+| condiciones | — | Fila «Disautonomía / POTS» | guía de condiciones especiales | 11 |
 | Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.2.disautonomia.diferencialFuente` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.2.disautonomia.prueba.fuente` | 2 · mención en el texto | 3 |
@@ -12307,10 +12325,12 @@ Citada como:
 1. El POTS exige síntomas de pie de 3 meses o más que mejoran al tumbarse (Vernino 2021; Raj 2020, §3.2; Raj 2022, recuadro 2). Agravantes: el calor, la deshidratación, el alcohol y el ejercicio (Sheldon 2015), las comidas y el Valsalva (Hakim 2017, p. 171), levantarse de golpe (Fedorowski 2019, tabla 5).
 2. Sheldon 2015 — Sheldon, Grubb, Olshansky et al., «2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope», Heart Rhythm 2015;12(6):e41–e63, secciones 1 y 4.
 3. Sheldon 2015 — Sheldon, Grubb, Olshansky et al., «2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope», Heart Rhythm 2015;12(6):e41–e63, sección 4.
+4. Sheldon 2015
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ds_u_esfuerzo` · Disautonomía | 2 · razonamiento del cribado | 2 |
+| condiciones | — | Fila «Disautonomía / POTS» | guía de condiciones especiales | 4 |
 | Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
 | Hombro | — | Pregunta `sx_sincope` · Cardiovascular | 2 · razonamiento del cribado | 3 |
 | Cadera | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
@@ -13324,9 +13344,11 @@ Citada como:
 2. En las consultas de POTS, entre el 20 y el 30 % cumple los criterios del SED hipermóvil o del trastorno del espectro de la hipermovilidad, con evidencia débil (Vernino 2021; Raj 2022), y no se conoce un mecanismo que los una (Miller 2020). La exploración del POTS incluye valorar la hipermovilidad (Raj 2022): si refiere ser muy flexible, mira la tarjeta «Hipermovilidad».
 3. Por debajo de los 12 años el POTS no está definido (Vernino 2021, §11): la prueba no se interpreta.
 4. Ejercicio regular, al principio semirreclinado (remo, bicicleta reclinada, natación) y lo vertical poco a poco; al menos 4 días por semana, sesiones de al menos 30 min (Raj 2020, rec. 14). La mejoría puede tardar 4–6 semanas y al principio puede encontrarse peor (Raj 2020; Vernino 2021).
+5. Vernino 2021
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| condiciones | — | Fila «Disautonomía / POTS» | guía de condiciones especiales | 5 |
 | Hombro | — | `sistemas.2.disautonomia.sospechaFuente` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.2.disautonomia.textos.menor12` | 2 · mención en el texto | 3 |
