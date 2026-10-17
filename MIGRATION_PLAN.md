@@ -431,5 +431,5 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
   - [x] Tarlov: revisión del usuario dada por hecha al fusionar (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico («Derivación médica indicada en la exploración»), así que la derivación de `l_u5` le llega sin tocar nada
   - [x] Tarlov, después: zonas de sacro, cóccix y periné en la tarjeta «Síntomas» de lumbar (decisión 5 de `docs/tarlov.md`): hecho en la Fase N, N7 (2026-10)
   - [x] MALS y cascanueces: diseño en `docs/mals-cascanueces.md` (2026-10), 4 fuentes leídas enteras (Bruessel 2026 en PDF del usuario), las 7 recomendaciones aceptadas. Implementado: `l_u6` (cascanueces, lumbar, `l_urogenital`) con `derivacion` preferente y razonamiento completo; el MALS como párrafo en la bandera de pérdida de peso de `l_gi`, sin pregunta propia; ninguna regla con la hipermovilidad
-  - [ ] MALS y cascanueces: revisión del usuario antes de `main`
+  - [x] MALS y cascanueces: revisado por el usuario (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico
   - [ ] MALS y cascanueces, después: congestión pélvica en cadera (decisión 5)

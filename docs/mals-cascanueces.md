@@ -1,6 +1,6 @@
 # Síndrome del ligamento arcuato medio (MALS) y síndrome del cascanueces — borrador de diseño
 
-Estado: **implementado (octubre 2026), pendiente de la revisión del usuario antes de `main`.** El usuario aceptó las 7 recomendaciones («Decisiones», al final) y aportó el PDF de Bruessel 2026; las 4 fuentes están leídas enteras. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
+Estado: **implementado y revisado por el usuario (octubre 2026).** El usuario aceptó las 7 recomendaciones («Decisiones», al final) y aportó el PDF de Bruessel 2026; las 4 fuentes están leídas enteras. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
 
 Origen: la pregunta del usuario (2026-10) de si la app tiene en cuenta condiciones que pueden coexistir con el Ehlers-Danlos, como el SIBO, el MALS o el cascanueces. No las tenía. El SIBO queda fuera de este borrador: es un diagnóstico digestivo sin presentación musculoesquelética propia.
 
