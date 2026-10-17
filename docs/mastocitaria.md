@@ -1,16 +1,46 @@
-# Síndrome de activación mastocitaria (SAMA) — borrador de diseño
+# Trastornos de la activación mastocitaria (MCAD) — borrador de diseño
 
 Estado: **borrador, sin código (octubre 2026). Pendiente de las decisiones del usuario** (ver «Decisiones», cada una con mi recomendación). Posible condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad (`docs/hipermovilidad.md`), el POTS (`docs/pots.md`) y el lupus (`docs/lupus.md`). La guía de condiciones especiales (`docs/condiciones-especiales.md`) tendría que añadir su fila si se hace una tarjeta.
+
+**Enfoque** (decidido con el usuario, octubre 2026): el diseño parte del paraguas de los **trastornos de la activación mastocitaria** (MCAD, por sus siglas en inglés), no del síndrome de activación mastocitaria (SAMA) solo. Lo que cambia la sesión es el **riesgo de anafilaxia**, y ese riesgo está descrito para cada variante del paraguas (mastocitosis, SAMA con sus variantes, α-triptasemia hereditaria como agravante), no para el SAMA aislado. La primera versión de este borrador partía del SAMA; el documento conserva su nombre de archivo.
 
 **Qué hay hoy en la app**: nada. Ningún archivo de `data/`, `lib/` ni `formularios/` habla de anafilaxia, alergias, mastocitos, histamina ni autoinyector (búsqueda de octubre 2026). Es un hueco previo, más amplio que el SAMA: una anafilaxia en la sala puede darla cualquier paciente (ver «Fuera de este diseño»).
 
 ## Resumen
 
+- **El paraguas.** En la clasificación del ECNM/AIM, ajustada a la CIE-10, los trastornos de la activación mastocitaria incluyen el SAMA, «an MCAD where all MCAS criteria are fulfilled», y los trastornos «otros o no especificados», para la activación local, leve o crónica que no cumple los criterios (Valent 2022, tabla 1, nota). El SAMA tiene cinco variantes, cada una con su riesgo de anafilaxia estimado: primaria o clonal (mastocitosis), secundaria (alergia), combinada, con α-triptasemia hereditaria e idiopática (Valent 2022, tabla 2; Castells 2024, tabla II).
+- **La sigla no significa lo mismo para todos.** Para el ECNM/AIM, «MCAD» es *mast cell activation disorder*, el paraguas de arriba. Para el grupo de los criterios amplios es *mast cell activation disease*, un espectro «the bulk of which is likely MCAS» con sus propios criterios (Afrin 2017, introducción). Un «MCAD» en el informe de un paciente puede venir de cualquiera de los dos.
 - **El SAMA, definido con rigor, es raro.** Con los criterios del consenso ECNM/AIM hacen falta episodios graves y recurrentes en dos o más sistemas, una subida de la triptasa medida durante el episodio y una respuesta a los fármacos antimediadores (Valent 2019; Valent 2022). Menos del 5 % de los derivados por sospecha los cumple (Castells 2024).
 - **Hay dos «consensos» enfrentados.** Los criterios amplios (Afrin y Molderings, el llamado «consenso-2») cuentan muchos síntomas crónicos e inespecíficos y llegan a atribuir el cuadro hasta al 17 % de la población (Lee y Picard 2025, describiendo el consenso-2, que no se ha podido leer). Los del ECNM/AIM los rechazan por inespecíficos.
 - **La relación con la hipermovilidad y el POTS no está medida.** No hay ningún estudio con grupo control que use criterios de consenso. La frecuencia del SAMA en el POTS va del 2 % al 87 % en la misma cohorte según el criterio que se aplique (Yao 2025). La α-triptasemia hereditaria, que parecía unir los tres cuadros, no está aumentada ni en la hipermovilidad (Vazquez 2022) ni en el POTS (Huang 2024), y su descubridor atribuye la asociación inicial a sesgos de reclutamiento (Lyons 2025).
 - **Lo que importa al fisio** es la seguridad: reconocer una anafilaxia en la consulta y actuar, y conocer los desencadenantes que la sesión puede poner (ejercicio, calor, frío, roce, presión, vibración, estrés, AINE).
-- **Mi recomendación** (decisión 1): una tarjeta reducida, «Anafilaxia o trastorno mastocitario», **solo con «Diagnosticado», sin «Sospecha»**, más una línea de texto en los razonamientos de hipermovilidad y POTS, y **ninguna regla automática** con esas tarjetas.
+- **Mi recomendación** (decisión 1): una tarjeta reducida, «Trastorno mastocitario o anafilaxia», **solo con «Diagnosticado», sin «Sospecha»**, que pregunte **qué diagnóstico concreto** tiene dentro del paraguas y **si ha tenido alguna anafilaxia**. El nivel de alerta lo dan esas dos respuestas, no la etiqueta. Además, una línea de texto en los razonamientos de hipermovilidad y POTS, y **ninguna regla automática** con esas tarjetas.
+
+## El paraguas: trastornos de la activación mastocitaria
+
+### Qué incluye (ECNM/AIM)
+
+La activación mastocitaria (MCA) puede ser local, sistémica leve, sistémica grave o sistémica crónica (Valent 2022, tabla 1). La clasificación pone cada forma en su sitio:
+
+| Dentro del paraguas | Qué es | Riesgo de anafilaxia estimado | Fuente |
+|---|---|---|---|
+| **SAMA primario o clonal** | Cumple los criterios del SAMA y los mastocitos son clonales (KIT D816V); casi siempre hay una mastocitosis cutánea o sistémica | +++ (grave) | Valent 2022, tabla 2; Castells 2024, tabla II |
+| **SAMA secundario** | Cumple los criterios; hay una alergia IgE u otra hipersensibilidad que lo explica; mastocitos normales | ++ (alto) | Ídem |
+| **SAMA combinado o mixto** | Cumple los criterios y tiene dos o más de: mastocitosis, alergia clara, predisposición genética (α-triptasemia) | +++ (grave); el «complejo de alto riesgo» es α-triptasemia + mastocitosis + alergia a himenópteros | Ídem; Valent 2022, «Predisposing genetic variants» |
+| **SAMA con α-triptasemia hereditaria** | Cumple los criterios, sin alergia ni mastocitosis, con α-triptasemia | De + a +++ según el número de copias; Valent 2022 duda de que exista una forma «pura» | Ídem (tabla 2, nota ****) |
+| **SAMA idiopático** | Cumple los criterios sin ninguna de las causas anteriores | + (aumentado) | Ídem |
+| **MCAD «otro»** | Activación sistémica grave que no llega a los criterios (por ejemplo, la triptasa sube pero no hasta la fórmula); «cannot be called MCAS»; a menudo hay una alergia IgE | Sin cifra en las fuentes leídas | Valent 2022, «Clinical manifestations» |
+| **MCAD «no especificado»** | Activación local o leve, o crónica (fatiga, síntomas neuropsiquiátricos, diarrea crónica); el diagnóstico «remains descriptive» | Sin cifra; no se describe como de riesgo | Valent 2022, tabla 1 y su nota |
+
+**Fuera del paraguas por sí solos**: la α-triptasemia hereditaria («per se … is not diagnostic for MCAS»; en portadores sin alergia ni mastocitosis la anafilaxia es «very low», Valent 2022) y una alergia IgE sin más (Valent 2022). La mastocitosis es una neoplasia propia (criterios de la OMS) que **puede** dar un SAMA primario; muchas personas con mastocitosis sistémica no tienen síntomas durante años (Valent 2022).
+
+**Lo que dice la mastocitosis sobre la anafilaxia**, con independencia de que se haya etiquetado como SAMA: aparece en el 22–49 % de los adultos con mastocitosis sistémica (Gülen 2023; González-de-Olano 2017), a menudo como mareo y desmayo sin ronchas.
+
+### Qué significa para la app
+
+- **La etiqueta sola no basta.** «MCAD» abarca desde una mastocitosis con anafilaxias hasta una activación crónica sin riesgo descrito, y además la sigla tiene dos significados. Por eso la tarjeta pregunta el **diagnóstico concreto** y si ha tenido **alguna anafilaxia**, y el recuadro de la fase 5 sube el tono solo con mastocitosis, SAMA o anafilaxia previa (decisión 11).
+- **El protocolo de qué hacer ante una anafilaxia es el mismo para todos** (Valent 2022, fig. 3: «the patient is treated for acute anaphylaxis regardless of the etiology»). Puede salir con cualquier marca de la tarjeta sin exagerar nada: es primeros auxilios.
+- **Los desencadenantes son individuales** en todo el paraguas (Brockow 2021): se preguntan siempre, sea cual sea el diagnóstico.
 
 ## Fuentes leídas enteras
 
@@ -24,11 +54,11 @@ Todas en esta sesión (octubre 2026): texto completo de PMC (XML JATS o página 
 | `Valent 2018` | Valent P, Akin C, Bonadonna P, et al. Mast cell activation syndrome: importance of consensus criteria and call for research. *J Allergy Clin Immunol* 2018;142(3):1008–1010. [doi:10.1016/j.jaci.2018.06.004](https://doi.org/10.1016/j.jaci.2018.06.004) (PMC7115848) | Carta del grupo de consenso | Sobrediagnóstico y su daño («unjustified anxiety and fear»); tabla 1: EDS y POTS por debajo del 1 % de eventos que cumplen SAMA (estimación de expertos) |
 | `Valent 2019` | Valent P, Akin C, Bonadonna P, et al. Proposed diagnostic algorithm for patients with suspected mast cell activation syndrome. *J Allergy Clin Immunol Pract* 2019;7(4):1125–1133.e1. [doi:10.1016/j.jaip.2019.01.006](https://doi.org/10.1016/j.jaip.2019.01.006) (PMC6643056) | Consenso ECNM/AIM (manuscrito aceptado). Sin la fig. 2 ni la tabla S1 | Criterios A + B + C (tabla I), la fórmula 20 % + 2 ng/mL, variantes (tabla II), especificidad de cada síntoma (tabla III); hipermovilidad y disautonomía «not necessarily related»; «overt MCAS is an unusual condition» |
 | `Valent 2020` | Valent P, Akin C, Nedoszytko B, et al. Diagnosis, classification and management of mast cell activation syndromes (MCAS) in the era of personalized medicine. *Int J Mol Sci* 2020;21(23):9030. [doi:10.3390/ijms21239030](https://doi.org/10.3390/ijms21239030) (PMC7731385) | Revisión del grupo ECNM/AIM; leídas también las tablas S1–S3 | Síntomas crónicos inespecíficos «do not fulfill» los criterios (§2); qué mediadores valen (tabla 3); imitadores (tabla 4); cofactores (ejercicio, aspirina, alcohol); llevar dos o más autoinyectores |
-| `Valent 2022` | Valent P, Hartmann K, Bonadonna P, et al. Mast cell activation syndromes: Collegium Internationale Allergologicum update 2022. *Int Arch Allergy Immunol* 2022;183(7):693–705. [doi:10.1159/000524532](https://doi.org/10.1159/000524532) (PMC9393812) | Actualización de consenso | Cinco variantes (tabla 2), incluida la α-triptasemia hereditaria; síntomas crónicos solo como «MCAD unspecified», no SAMA (tabla 1); cofactores y urticaria por vibración. No menciona ni EDS ni POTS |
+| `Valent 2022` | Valent P, Hartmann K, Bonadonna P, et al. Mast cell activation syndromes: Collegium Internationale Allergologicum update 2022. *Int Arch Allergy Immunol* 2022;183(7):693–705. [doi:10.1159/000524532](https://doi.org/10.1159/000524532) (PMC9393812) | Actualización de consenso | **El paraguas MCAD** según la CIE-10 (tabla 1, nota: el SAMA es el MCAD que cumple todos los criterios; lo local o leve, «other or unspecified MCAD»); cinco variantes del SAMA (tabla 2) y condiciones predisponentes (tabla 3); el «complejo de alto riesgo» (α-triptasemia + mastocitosis + alergia a himenópteros); la anafilaxia se trata igual sea cual sea la variante (fig. 3, leyenda); cofactores, estímulos físicos y urticaria por vibración. No menciona ni EDS ni POTS |
 | `Valent 2024` | Valent P, Akin C, Arock M. Reversible elevation of tryptase over the individual's baseline… *Curr Allergy Asthma Rep* 2024;24(3):133–141. [doi:10.1007/s11882-024-01124-2](https://doi.org/10.1007/s11882-024-01124-2) (PMC10960756) | Revisión de posicionamiento | Triptasa normal y α-triptasemia hereditaria (4–7,5 % de la población, «cannot be regarded as a biomarker of anaphylaxis or MCAS»); no aplicar los criterios sin síntomas o con síntomas leves |
-| `Castells 2024` | Castells M, Giannetti MP, Hamilton MJ, et al. Mast cell activation syndrome: current understanding and research needs. *J Allergy Clin Immunol* 2024;154(2):255–263. [doi:10.1016/j.jaci.2024.05.025](https://doi.org/10.1016/j.jaci.2024.05.025) (PMC11881543) | Informe de un taller del NIH (incluye alergólogos, autonómicos y EDS). Sin las figs. 1–3 | El texto más equilibrado: menos del 5 % de los derivados cumple criterios estrictos; datos a favor y en contra de la relación con POTS y EDS; eficacia de los fármacos en esos cuadros «yet to be confirmed»; la disautonomía puede imitar la activación mastocitaria |
+| `Castells 2024` | Castells M, Giannetti MP, Hamilton MJ, et al. Mast cell activation syndrome: current understanding and research needs. *J Allergy Clin Immunol* 2024;154(2):255–263. [doi:10.1016/j.jaci.2024.05.025](https://doi.org/10.1016/j.jaci.2024.05.025) (PMC11881543) | Informe de un taller del NIH (incluye alergólogos, autonómicos y EDS). Sin las figs. 1–3 | Tabla II, «Classification of MCA disorders», con el **riesgo de anafilaxia estimado de cada variante** (de + a +++). El texto más equilibrado: menos del 5 % de los derivados cumple criterios estrictos; datos a favor y en contra de la relación con POTS y EDS; eficacia de los fármacos en esos cuadros «yet to be confirmed»; la disautonomía puede imitar la activación mastocitaria |
 | `Lee y Picard 2025` | Lee E, Picard M. Diagnosis and management of mast cell activation syndrome (MCAS) in Canada: a practical approach. *Allergy Asthma Clin Immunol* 2025;21:49. [doi:10.1186/s13223-025-00998-9](https://doi.org/10.1186/s13223-025-00998-9) (PMC12639879) | Revisión práctica en la revista de la sociedad canadiense de alergia; sigue ECNM/AIM, respaldado por la AAAAI | Tabla 1: lo que sugiere y lo que **no** sugiere SAMA (POTS, hipermovilidad o SEDh, fatiga, cefalea, niebla mental, dolor articular, síntomas no episódicos); única fuente leída que describe el consenso-2 (de segunda mano); ejercicio, calor y estrés como desencadenantes; AINE en las 6 h previas; adrenalina autoinyectable |
-| `Afrin 2017` | Afrin LB, Self S, Menk J, Lazarchick J. Characterization of mast cell activation syndrome. *Am J Med Sci* 2017;353(3):207–215. [doi:10.1016/j.amjms.2016.12.013](https://doi.org/10.1016/j.amjms.2016.12.013) (PMC5341697) | Serie de casos de un centro (413 pacientes), sin comparador. Sin las tablas suplementarias | Fuente primaria de la postura de criterios amplios: síntomas «chronic/recurrent», cromogranina A y heparina como marcadores, rechazo de la fórmula del 20 % + 2; mediana de 20 síntomas, dermografismo en el 76 %, EDS III en el 4 %, POTS en el 10 %, triptasa alta solo en el 16 % |
+| `Afrin 2017` | Afrin LB, Self S, Menk J, Lazarchick J. Characterization of mast cell activation syndrome. *Am J Med Sci* 2017;353(3):207–215. [doi:10.1016/j.amjms.2016.12.013](https://doi.org/10.1016/j.amjms.2016.12.013) (PMC5341697) | Serie de casos de un centro (413 pacientes), sin comparador. Sin las tablas suplementarias | Fuente primaria de la postura de criterios amplios, y de su uso de «MCAD» como «MC activation disease» (introducción): síntomas «chronic/recurrent», cromogranina A y heparina como marcadores, rechazo de la fórmula del 20 % + 2; mediana de 20 síntomas, dermografismo en el 76 %, EDS III en el 4 %, POTS en el 10 %, triptasa alta solo en el 16 % |
 | `Hamilton 2018` | Hamilton MJ. Nonclonal mast cell activation syndrome: a growing body of evidence. *Immunol Allergy Clin North Am* 2018;38(3):469–481. [doi:10.1016/j.iac.2018.04.002](https://doi.org/10.1016/j.iac.2018.04.002) (PMC6049091) | Revisión narrativa, posición intermedia | Desencadenantes en una encuesta (calor 82 %, estrés 81 %, ejercicio 63 %, alcohol 54 %, fármacos 53 %, olores 48 %); POTS y SEDh como «asociados» (recuadro), sin datos propios |
 
 ### B. Relación con la hipermovilidad y el POTS
@@ -74,7 +104,7 @@ Todas en esta sesión (octubre 2026): texto completo de PMC (XML JATS o página 
 |---|---|
 | Valent P, et al. Definitions, criteria and global classification of mast cell disorders… *Int Arch Allergy Immunol* 2012;157:215–225 (PMC3224511) | PMC sin licencia abierta; solo la portada. Su contenido lo recogen Valent 2019 y 2020 |
 | Afrin LB, et al. Diagnosis of mast cell activation syndrome: a global «consensus-2». *Diagnosis* 2021;8(2):137–152 | De pago. **Solo se conoce por la descripción de Lee y Picard 2025**: si se cita su postura, es a través de ellos |
-| Valent P, et al. Global classification of mast cell activation disorders: an ICD-10-CM-adjusted proposal of the ECNM-AIM Consortium. *J Allergy Clin Immunol Pract* 2022;10(8):1941–1950 | De pago (su umbral urinario, solo a través de Lee y Picard) |
+| Valent P, et al. Global classification of mast cell activation disorders: an ICD-10-CM-adjusted proposal of the ECNM-AIM Consortium. *J Allergy Clin Immunol Pract* 2022;10(8):1941–1950 | De pago (su umbral urinario, solo a través de Lee y Picard). **Es la fuente central del paraguas MCAD** (la propuesta de clasificación ajustada a la CIE-10-MC). Hoy el paraguas se apoya en Valent 2022 (CIA), que la resume, y en Castells 2024. **Conviene pedirla en PDF** antes de implementar (decisión 9) |
 | Gülen T, et al. *J Allergy Clin Immunol Pract* 2021;9(11):3918–3928 | De pago |
 | Weiler CR, et al. AAAAI Mast Cell Disorders Committee Work Group Report. *J Allergy Clin Immunol* 2019 | Editor bloqueado desde la sesión |
 | Kohn A, Chang C. *Clin Rev Allergy Immunol* 2020;58:273–297 | De pago. Por su resumen, es crítica con la asociación |
@@ -94,7 +124,8 @@ Todas en esta sesión (octubre 2026): texto completo de PMC (XML JATS o página 
    - ECNM/AIM (Valent 2019, 2020, 2022; Lee y Picard 2025): episodios graves, recurrentes, en dos o más sistemas, con subida de la triptasa en el episodio y respuesta a los fármacos. Fatiga, cefalea, niebla mental o dolor articular no cuentan.
    - Criterios amplios (Afrin 2017; consenso-2 según Lee y Picard 2025; Hamilton 2018): síntomas crónicos o intermitentes, una lista larga, otros mediadores (cromogranina A, heparina) y la respuesta al tratamiento como apoyo.
    - Castells 2024 (taller del NIH) cuela niebla mental, cefalea y fatiga en su tabla I «adaptada de Valent», que los textos de Valent excluyen.
-   - **Propongo** seguir al ECNM/AIM, como hacen las sociedades de alergia (Lee y Picard 2025, respaldado por la AAAAI). La app no lo diagnostica ni lo puntúa, así que la elección solo afecta al texto: nunca dar a entender que una lista de síntomas crónicos «sugiere» un SAMA.
+   - **La sigla**: «mast cell activation disorder» para el ECNM/AIM (Valent 2022; Castells 2024; Akin 2010, glosario) y «MC activation disease» para Afrin 2017, que lo usa como un espectro casi todo SAMA con sus criterios amplios.
+   - **Propongo** seguir al ECNM/AIM, como hacen las sociedades de alergia (Lee y Picard 2025, respaldado por la AAAAI). La app no lo diagnostica ni lo puntúa, así que la elección solo afecta al texto: nunca dar a entender que una lista de síntomas crónicos «sugiere» un SAMA, y **no fiarse de la etiqueta «MCAD»**: preguntar el diagnóstico concreto y si ha tenido anafilaxia.
 2. **Frecuencia en el POTS.** 9 % en una encuesta autodeclarada (Vernino 2021; Raj 2022), 36 % en un metaanálisis con datos autodeclarados (Kulin 2026), 42 % con mediadores fuera de brote (Kohno 2021), del 2 % al 87 % según el criterio (Yao 2025). **Propongo no dar ninguna cifra** en la app: depende del criterio, no del paciente.
 3. **α-triptasemia hereditaria.** Lyons 2016 la asocia a hipermovilidad y disautonomía; Vazquez 2022, Huang 2024 y Lyons 2025 lo descartan. **Se sigue a las posteriores**, que incluyen al propio autor.
 4. **El ejercicio como desencadenante en la mastocitosis.** Lo nombran Gülen 2023, Brockow 2021, Lee y Picard 2025 y la encuesta de Hamilton 2018 (63 %); en la serie de la REMA, ninguna anafilaxia fue por ejercicio (González-de-Olano 2017). No se contradicen del todo: las encuestas recogen síntomas por mediadores, la REMA solo anafilaxias. **Propongo** decir que el ejercicio puede desencadenar síntomas en algunas personas y que lo que cuenta es lo que ya le ha pasado a ese paciente (Brockow 2021), sin prohibir el ejercicio (Srisuwatchari 2023 pide mantenerlo en la anafilaxia por ejercicio).
@@ -117,7 +148,18 @@ El criterio es que la condición cambie la **seguridad** o la **interpretación*
    - La sesión pone desencadenantes conocidos: ejercicio, calor, frío, roce, presión mantenida, vibración y estrés (Cardona 2020, fig. 2; Brockow 2021; Gülen 2023; Muñoz 2024).
 2. **Cambia la interpretación: poco.** Con criterios estrictos, el SAMA no explica el dolor musculoesquelético, la fatiga ni la intolerancia ortostática (Lee y Picard 2025, tabla 1; Valent 2020). Decir lo contrario sería apoyarse en los criterios amplios.
 
-**Entra, pero con una forma más pequeña que las otras condiciones** (ver «Formas posibles»).
+**Por variante del paraguas**:
+
+| Diagnóstico del paciente | ¿Cambia la seguridad? |
+|---|---|
+| Mastocitosis (cutánea o sistémica) | Sí: anafilaxia en el 22–49 % de los adultos con mastocitosis sistémica, a menudo sin ronchas |
+| SAMA, cualquier variante | Sí: por definición ha tenido episodios graves, «usually in form of anaphylaxis» (Valent 2022); riesgo de + a +++ según la variante (Castells 2024, tabla II) |
+| Anafilaxia previa, sin trastorno mastocitario diagnosticado | Sí: puede repetirse (Cardona 2020; NICE NG258); la anafilaxia idiopática obliga a descartar un trastorno mastocitario (Cardona 2020) |
+| MCAD «otro» | Probablemente sí (activación sistémica grave que no llega a los criterios), sin cifra en las fuentes leídas |
+| MCAD «no especificado» o etiqueta sin más detalle | No está descrito: activación local, leve o crónica. Solo importan sus desencadenantes |
+| α-triptasemia hereditaria sola | Riesgo «very low» sin alergia ni mastocitosis (Valent 2022, tabla 2, nota) |
+
+**Entra, pero con una forma más pequeña que las otras condiciones** (ver «Formas posibles»), y con el nivel de alerta según el diagnóstico concreto y la anafilaxia previa, no según la etiqueta.
 
 ## Lo que importa al fisioterapeuta
 
@@ -177,7 +219,7 @@ Si en el futuro un estudio controlado con criterios ECNM/AIM la mide (Farley 202
 |---|---|---|---|---|
 | 0 | Nada | — | Sin riesgo de sobrediagnóstico | Sigue el hueco de la anafilaxia en un paciente que ya tiene el diagnóstico |
 | 1 | **Solo texto en los razonamientos** de hipermovilidad y POTS | Una línea en el «¿Por qué?» de `cq5` (hipermovilidad) y en `disautonomia.hipermovilidad` / el de `io1` (POTS) | Responde a lo que el clínico habrá oído; no cambia nada de la lógica ni del payload; corrige la idea de la «tríada» | No ayuda en la sesión al paciente que sí tiene mastocitosis |
-| 2 | **Forma 1 + tarjeta reducida «Anafilaxia o trastorno mastocitario», solo «Diagnosticado»** | Fase 1: tarjeta con qué diagnóstico, si lleva autoinyector y qué le desencadena los episodios. Fase 4b: una línea de técnica. Fase 5: recuadro con qué hacer ante una anafilaxia y los desencadenantes de ese paciente. Fase 6: aviso y red de seguridad. Fila en la guía de condiciones especiales | Cubre la seguridad donde el riesgo está medido (mastocitosis, anafilaxia previa); sin «Sospecha», la app no fabrica diagnósticos | Una tarjeta más en la fase 1 |
+| 2 | **Forma 1 + tarjeta reducida «Trastorno mastocitario o anafilaxia», solo «Diagnosticado»** | Fase 1: tarjeta con el diagnóstico concreto dentro del paraguas, si ha tenido anafilaxia, si lleva autoinyector y qué le desencadena los episodios. Fase 4b: una línea de técnica. Fase 5: recuadro con qué hacer ante una anafilaxia y los desencadenantes de ese paciente. Fase 6: aviso y red de seguridad. Fila en la guía de condiciones especiales | Cubre la seguridad donde el riesgo está medido (mastocitosis, anafilaxia previa); sin «Sospecha», la app no fabrica diagnósticos | Una tarjeta más en la fase 1 |
 | 3 | Tarjeta completa con «Diagnosticado» y «Sospecha», como las demás | Lo de la 2 + un patrón de sospecha en la fase 2 que lleve a una derivación | Mismo patrón que las otras tres | El fisio no tiene ninguna prueba que hacer; los criterios piden la triptasa en el episodio; un patrón de síntomas sería justo el criterio amplio que las sociedades rechazan; riesgo de sobrediagnóstico documentado (Valent 2018) |
 | 4 | Forma 2 + regla con la hipermovilidad y el POTS | Sugerir la tarjeta al marcar las otras | — | Sin base (ver «Relación»); va contra la decisión 5 de `docs/pots.md` |
 
@@ -187,15 +229,22 @@ Si en el futuro un estudio controlado con criterios ECNM/AIM la mide (Farley 202
 
 Mismos principios que las otras condiciones: capa transversal, el árbol CIF y el motor de puntuación no se tocan, el fisio no diagnostica, la seguridad nunca se recorta, sin contenido clínico inventado (lo que no tiene fuente va marcado como redacción propia y es una decisión tuya).
 
-### Fase 1 — tarjeta «Anafilaxia o trastorno mastocitario» (`#cardMastocitos`)
+### Fase 1 — tarjeta «Trastorno mastocitario o anafilaxia» (`#cardMastocitos`)
 
 - Va después de «Lupus (LES)», antes de Cronología. No se pliega en modo breve.
 - **Estados: No consta (por defecto) · Diagnosticado.** Sin «Sospecha» (decisión 2).
-- Con «Diagnosticado», **qué** (decisión 3): Mastocitosis · Síndrome de activación mastocitaria · Anafilaxia previa (incluida la inducida por ejercicio) · Otro o no lo sabe.
+- Con «Diagnosticado», **qué le han diagnosticado** (decisión 3), una sola opción, de más a menos concreta:
+  - Mastocitosis (cutánea o sistémica);
+  - Síndrome de activación mastocitaria (SAMA), cualquier variante;
+  - Otro trastorno mastocitario («MCAD» u otro nombre, sin más detalle);
+  - Ninguno: solo ha tenido una anafilaxia (incluida la inducida por ejercicio);
+  - No lo sabe.
+- **¿Ha tenido alguna anafilaxia?** Sí · No · No lo sabe. Es la pregunta que pesa: con «Sí» el recuadro de la fase 5 sube el tono aunque el diagnóstico sea «otro» o «no lo sabe» (decisión 11). Con «Ninguno: solo anafilaxia» se marca sola.
 - **¿Lleva el autoinyector de adrenalina?** Sí · No · No le han recetado.
 - **¿Qué le ha provocado episodios?** Casillas: ejercicio · calor · frío · roce o presión en la piel · vibración · estrés · algún AINE · alimentos (con el ejercicio) · picaduras · otro (texto). Brockow 2021: lo que cuenta es lo que ya le ha pasado a ese paciente.
 - La clase `body.mastocitos` muestra los elementos `.solo-ma`. Un cambio vacía la 4b, como las demás.
-- **Nota fija de la tarjeta** (redacción propia, decisión 4): «Márcala solo si un médico ha diagnosticado la mastocitosis o el síndrome, o si ha tenido una anafilaxia. Los síntomas crónicos (cansancio, dolor, niebla mental) no bastan para sospecharlo (Lee y Picard 2025, tabla 1).»
+- **Nota fija de la tarjeta** (redacción propia, decisión 4): «Márcala si un médico le ha diagnosticado un trastorno mastocitario o si ha tenido una anafilaxia. Pregunta qué le dijeron exactamente: “MCAD” puede significar cosas distintas según quién lo diagnostique. Los síntomas crónicos (cansancio, dolor, niebla mental) no bastan para sospecharlo (Lee y Picard 2025, tabla 1).»
+- **La α-triptasemia hereditaria sola** no tiene opción propia: sin alergia ni mastocitosis, el riesgo de anafilaxia es «very low» (Valent 2022, tabla 2, nota). Si además ha tenido anafilaxia, lo recoge esa pregunta (decisión 12).
 
 ### Fase 2 — sin sistema propio
 
@@ -212,13 +261,15 @@ Con la tarjeta activa, una línea encima de las hipótesis (como `.ds-nota-4b` y
 
 > «Trastorno mastocitario: el roce, la presión mantenida, el calor, el frío y la vibración pueden desencadenar síntomas; haz las maniobras con suavidad y evita lo que ya le ha provocado episodios (Brockow 2021; Muñoz 2024).»
 
-### Fase 5 — recuadro «Anafilaxia o trastorno mastocitario» (`.ma-fase5`, nunca se pliega)
+### Fase 5 — recuadro «Trastorno mastocitario o anafilaxia» (`.ma-fase5`, nunca se pliega)
 
 Al principio, junto a los recuadros de las otras condiciones. Cada línea, pegada a su fuente:
 - Qué tiene, si lleva el autoinyector y sus desencadenantes.
 - **Siempre (qué hacer)**: «Si en la sesión aparecen ronchas, hinchazón, falta de aire, mareo o un desmayo, para, llama al 112 y que se ponga su autoinyector en la cara externa del muslo. Tumbado (sentado si le cuesta respirar) y sin levantarlo de golpe aunque mejore. Puede faltar la piel (Cardona 2020; NICE NG258, 1.1.14).»
 - **Siempre (después)**: «Tras una anafilaxia, aunque se recupere, lo tiene que ver un médico: puede repetirse en las horas siguientes (NICE NG258).»
+- **Riesgo alto** (mastocitosis, SAMA o anafilaxia previa «Sí»; decisión 11): «Tiene más riesgo de anafilaxia que la población general. Que traiga su autoinyector a cada sesión (Castells 2024, tabla II; Cardona 2020, tabla 8).»
 - **Con la mastocitosis**: «En la mastocitosis la anafilaxia suele empezar con calor, palpitaciones, mareo y desmayo, a menudo sin ronchas (Gülen 2023; González-de-Olano 2017).»
+- **Con «otro trastorno» o «no lo sabe» y sin anafilaxia previa**: solo las líneas de siempre y sus desencadenantes, sin la de riesgo alto: el riesgo de esa etiqueta no está descrito (Valent 2022, tabla 1).
 - **Sin autoinyector o «no le han recetado»**: «Que su médico valore si necesita un autoinyector (Valent 2020; NICE NG258, 1.1.15).» Redacción a revisar.
 - **Con sus desencadenantes**: la lista que marcó, con «evita estos en la sesión».
 
@@ -235,19 +286,20 @@ Al principio, junto a los recuadros de las otras condiciones. Cada línea, pegad
 
 ### Salidas
 
-- **Payload `ma`**, solo con la tarjeta activa (así la huella de los informes con IA anteriores no cambia): `{ es, ti, ai, de[] }` (estado, qué, autoinyector, desencadenantes). physiq-report lo leería con una copia literal de `bloqueMAIA()`, como `_bloqueHM`, `_bloqueDs` y `_bloqueLES`, en otra PR.
-- **📋 Notas**: «⚠️ MASTOCITOS: mastocitosis · lleva autoinyector · desencadenantes: calor, roce».
-- **📄 Informe**: en antecedentes, «Mastocitosis (diagnosticada)» o «Anafilaxia previa», y los desencadenantes que se evitan en la sesión.
+- **Payload `ma`**, solo con la tarjeta activa (así la huella de los informes con IA anteriores no cambia): `{ es, ti, an, ai, de[] }` (estado, diagnóstico, anafilaxia previa, autoinyector, desencadenantes). physiq-report lo leería con una copia literal de `bloqueMAIA()`, como `_bloqueHM`, `_bloqueDs` y `_bloqueLES`, en otra PR.
+- **📋 Notas**: «⚠️ MASTOCITOS: mastocitosis · anafilaxia previa · lleva autoinyector · desencadenantes: calor, roce».
+- **📄 Informe**: en antecedentes, el diagnóstico tal como lo marcó el fisio («Mastocitosis (diagnosticada)», «Trastorno mastocitario (diagnosticado)») y «Anafilaxia previa» si la hubo, y los desencadenantes que se evitan en la sesión. Nunca convierte «otro trastorno» en «SAMA».
 - **Informe con IA**: bloque «Trastorno mastocitario» en `contextoValoracion()`, sin citas, con «no relaciones sus síntomas crónicos con el trastorno mastocitario». `lib/reglas-informe.js` no se toca.
 - **Modo breve**: el autoinyector sin responder es un pendiente.
 
 ### Guía de condiciones especiales
 
 Una fila, después del lupus:
-- **Qué es** (redacción propia): «Los mastocitos liberan sustancias que pueden dar reacciones alérgicas graves (anafilaxia), a veces sin causa clara.»
-- **Piensa en ella si**: «ya le han diagnosticado una mastocitosis o un síndrome de activación mastocitaria»; «ha tenido una anafilaxia, también con el ejercicio». No hay pistas de sospecha, por coherencia con la decisión 2.
+- **Nombre de la fila**: «Trastorno mastocitario o anafilaxia».
+- **Qué es** (redacción propia): «Los mastocitos liberan sustancias que pueden dar reacciones alérgicas graves (anafilaxia), a veces sin causa clara. Incluye la mastocitosis y el síndrome de activación mastocitaria.»
+- **Piensa en ella si**: «ya le han diagnosticado una mastocitosis o un trastorno o síndrome de activación mastocitaria»; «ha tenido una anafilaxia, también con el ejercicio». No hay pistas de sospecha, por coherencia con la decisión 2.
 - **Añade**: qué hacer ante una anafilaxia, sus desencadenantes en la sesión y la red de seguridad del plan.
-- **Fuentes**: Cardona 2020 · Lee y Picard 2025.
+- **Fuentes**: Valent 2022 · Cardona 2020 · Lee y Picard 2025.
 
 ### Forma 1 — el texto de los razonamientos (en la forma 1 sola o con la 2)
 
@@ -266,28 +318,32 @@ Una frase para el `detalle`, si hay sitio: la α-triptasemia hereditaria no est�
 
 1. **¿Qué forma?** *Recomiendo la forma 2*: la forma 1 (texto) más la tarjeta reducida solo con «Diagnosticado». Si prefieres empezar por lo mínimo, la forma 1 sola es segura y no cierra la puerta a la 2.
 2. **Sin «Sospecha».** *Recomiendo no tenerla*: el fisio no tiene ninguna prueba que hacer, los criterios exigen la triptasa en el episodio y un patrón de síntomas sería el criterio amplio que las sociedades de alergia rechazan (Lee y Picard 2025; Valent 2018). Es la primera condición sin «Sospecha»; la guía de condiciones especiales lo reflejaría.
-3. **Qué incluye la tarjeta.** *Recomiendo* mastocitosis, SAMA y anafilaxia previa en una sola tarjeta: lo que cambia la sesión es el riesgo de anafilaxia, igual en los tres.
-4. **La nota de la tarjeta** («márcala solo si…»). *Recomiendo sí*, para que no se marque por síntomas crónicos. Es redacción propia con la fuente de la tabla 1 de Lee y Picard 2025.
+3. **Qué incluye la tarjeta.** *Recomiendo* el paraguas entero en una sola tarjeta, con el diagnóstico concreto como opción (mastocitosis · SAMA · otro trastorno mastocitario · ninguno, solo anafilaxia · no lo sabe): lo que cambia la sesión es el riesgo de anafilaxia, y la tarjeta lo gradúa con el diagnóstico y la anafilaxia previa.
+4. **La nota de la tarjeta** («márcala si…; pregunta qué le dijeron exactamente»). *Recomiendo sí*, para que no se marque por síntomas crónicos y para que la etiqueta «MCAD» no se tome por un SAMA. Es redacción propia con la fuente de la tabla 1 de Lee y Picard 2025.
 5. **Ninguna regla con la hipermovilidad y el POTS.** *Recomiendo* ninguna, con solo el texto de la forma 1.
 6. **Quién pone la adrenalina.** Ninguna fuente lo resuelve para el fisio. *Recomiendo* el texto «que se ponga su autoinyector» y que tú decidas si añadir «o ayúdale a ponérselo», según la normativa y el protocolo de tu centro.
 7. **Pregunta de derivación por episodios nuevos (fase 2).** *Recomiendo sí*, como `derivacion` no urgente, después de comprobar en Cardona 2020 y NICE NG258 el pasaje exacto de la derivación al especialista.
 8. **Desencadenantes como casillas, no como texto libre.** *Recomiendo casillas* (salen en el recuadro de la fase 5 y en el aviso de la fase 6) más un «otro» libre.
-9. **Fuentes que conviene pedir en PDF** antes de implementar: Resuscitation Council UK 2021 (la primera respuesta en el Reino Unido), EAACI 2021 (la guía europea), Farley 2025 y Valdez 2026 (las críticas con la asociación) y Seneviratne 2017 (del mismo número que Malfait 2017). *Recomiendo* al menos RCUK 2021 y EAACI 2021, para que el «qué hacer» se apoye en guías y no solo en la WAO y en NICE.
-10. **Registro de referencias.** *Recomiendo* registrar solo las que use el texto final. Con la forma 2: `Valent 2019`, `Valent 2020`, `Lee y Picard 2025`, `Yao 2025`, `Vazquez 2022`, `Huang 2024`, `Lyons 2025`, `Cardona 2020`, `NICE NG258`, `Gülen 2023`, `González-de-Olano 2017`, `Brockow 2021`, `Muñoz 2024`, `Srisuwatchari 2023`, y `Bonadonna 2022` si sale la línea de los AINE. Las demás quedan en este documento como lectura de contexto.
+9. **Fuentes que conviene pedir en PDF** antes de implementar: **Valent 2022 (ECNM/AIM, propuesta ajustada a la CIE-10-MC)**, la fuente central del paraguas; Resuscitation Council UK 2021 (la primera respuesta en el Reino Unido), EAACI 2021 (la guía europea), Farley 2025 y Valdez 2026 (las críticas con la asociación) y Seneviratne 2017 (del mismo número que Malfait 2017). *Recomiendo* al menos RCUK 2021 y EAACI 2021, para que el «qué hacer» se apoye en guías y no solo en la WAO y en NICE.
+10. **Registro de referencias.** *Recomiendo* registrar solo las que use el texto final. Con la forma 2: `Valent 2019`, `Valent 2020`, `Valent 2022`, `Castells 2024`, `Lee y Picard 2025`, `Yao 2025`, `Vazquez 2022`, `Huang 2024`, `Lyons 2025`, `Cardona 2020`, `NICE NG258`, `Gülen 2023`, `González-de-Olano 2017`, `Brockow 2021`, `Muñoz 2024`, `Srisuwatchari 2023`, y `Bonadonna 2022` si sale la línea de los AINE. Las demás quedan en este documento como lectura de contexto.
+
+11. **Nivel de alerta por diagnóstico y anafilaxia previa.** *Recomiendo* que la línea de riesgo alto del recuadro de la fase 5 salga con mastocitosis, SAMA o anafilaxia previa «Sí», y no con «otro trastorno» o «no lo sabe» sin anafilaxia: el riesgo de esas etiquetas no está descrito (Valent 2022, tabla 1) y la sigla «MCAD» se usa con criterios distintos (Afrin 2017). El protocolo de qué hacer ante una anafilaxia sale siempre que la tarjeta esté marcada: es el mismo para todas las variantes (Valent 2022, fig. 3). *Alternativa más prudente*: la línea de riesgo alto con cualquier marca.
+12. **α-triptasemia hereditaria.** *Recomiendo* no darle opción propia en la tarjeta: sola, el riesgo de anafilaxia es «very low» y no es un trastorno mastocitario (Valent 2022, tabla 2, nota). Con alergia, mastocitosis o anafilaxia previa, ya lo recogen esas respuestas.
 
 ## Cambios técnicos previstos (si se aprueba la forma 2)
 
 ```js
 mastocitos: {
   estado: '',          // '' (no consta) | 'diagnosticado'
-  tipo: '',            // '' | 'mastocitosis' | 'sama' | 'anafilaxia' | 'otro'
+  tipo: '',            // '' | 'mastocitosis' | 'sama' | 'otro' | 'soloAnafilaxia' | 'ns'
+  anafilaxia: '',      // '' | 'SI' | 'NO' | 'NS' — 'SI' fijo con tipo 'soloAnafilaxia'
   autoinyector: '',    // '' | 'SI' | 'NO' | 'sinReceta'
   desencadenantes: {}, // { ejercicio, calor, frio, roce, vibracion, estres, aine, alimentos, picaduras: true }
   otro: '',            // texto libre
 }
 ```
 
-- `lib/mastocitos.js`, puro: estado normalizado, payload `ma`, textos de 📋 Notas, 📄 Informe e IA (`bloqueMAIA()`), pendiente del modo breve. Con pruebas unitarias (`tests/unit/mastocitos.mjs`).
+- `lib/mastocitos.js`, puro: estado normalizado, nivel de alerta (`riesgoAltoMA()`: mastocitosis, SAMA o anafilaxia previa), payload `ma`, textos de 📋 Notas, 📄 Informe e IA (`bloqueMAIA()`), pendiente del modo breve. Con pruebas unitarias (`tests/unit/mastocitos.mjs`).
 - Contenido en `data/comun.js` (textos de la tarjeta, recuadro, línea de la 4b) y en `data/plan-tratamiento.js` (aviso y `RED_MASTOCITOS`; luego `node tests/gen-frases-plan.mjs`).
 - Fila en `data/condiciones.js`. La prueba que exige una fila por sistema `transversal_*` con `soloX` no la cubre (no hay sistema): añadir la fila a mano y una prueba propia.
 - Las referencias en `data/referencias.js` y `node tests/gen-referencias.mjs`.
@@ -298,6 +354,6 @@ mastocitos: {
 
 ## Siguiente paso
 
-1. Tus decisiones (sobre todo la 1, la 2 y la 6).
+1. Tus decisiones (sobre todo la 1, la 2, la 6 y la 11).
 2. Si eliges la forma 2: pedir en PDF las fuentes de la decisión 9 y volver a comprobar en la fuente cada pasaje que use el texto final.
 3. Después, la implementación, en una PR con tu revisión antes de `main`.
