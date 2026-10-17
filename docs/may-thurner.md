@@ -66,7 +66,11 @@ Para separar de verdad la claudicación venosa de la neurógena haría falta **T
   - el cribado posquirúrgico de todas las regiones de la pierna (`pq_tvp`, que ya pregunta por «una pantorrilla o una pierna», sin decir cuál);
   - el lupus (`les_u_tvp`).
 - **Ya se nombra** como causa en el «¿Por qué?» de la congestión pélvica (`ca_u6`) y en el detalle del cascanueces (`l_u6`).
-- **El árbol lumbar** tiene en `lu_step2` la opción VASCULAR («los síntomas al caminar ceden con solo pararse de pie»), con derivación médica. Ese texto describe la claudicación **arterial**; la venosa no se menciona en ningún sitio.
+- **Lumbar** trata la claudicación vascular en dos sitios, y los dos describen la **arterial**:
+  - el árbol (`lu_step2`), con la opción VASCULAR («los síntomas al caminar ceden con solo pararse de pie») y derivación médica;
+  - el sistema vascular del cribado (`l_vascular`, preguntas `l_v1` y `l_v3`), con pulsos y temperatura.
+
+  La claudicación venosa no se menciona en ningún sitio.
 
 ## Decisiones
 
@@ -81,6 +85,7 @@ Cada una con mi recomendación.
    - Es el único hueco real: el paso compara la claudicación neurógena con la arterial y no dice nada de la venosa.
    - Borrador: «Hay también una claudicación **venosa**: la pierna se nota pesada, tensa o hinchada al caminar o al final del día, y se alivia con reposo y elevándola, más que con flexionar el tronco. Es poco frecuente; una causa es la compresión de la vena ilíaca izquierda (síndrome de May-Thurner), sobre todo en mujeres de 30 a 50 años. La compresión por sí sola es muy frecuente y no da síntomas; el diagnóstico es médico (Poyyamoli 2021; Knuttinen 2017; Mangla y Hamad 2024).»
    - No toca las opciones, las hipótesis ni la navegación del árbol, así que no cambia la instantánea de navegación.
+   - Alternativa: ponerlo en el razonamiento de `l_v1` (fase 2), que ya habla de la arterial. *Recomiendo* `lu_step2`, porque es donde el clínico compara las claudicaciones.
    - «más que con flexionar el tronco» es la única frase que compara, y su apoyo es indirecto: la flexión alivia la neurógena según el propio `lu_step2`, y la elevación alivia la venosa según Poyyamoli. Si prefieres no compararlas sin una fuente que lo haga, la quito (ver la decisión 6).
 
 3. **Una frase en el detalle de `pq_tvp` (cribado posquirúrgico): sí.**
