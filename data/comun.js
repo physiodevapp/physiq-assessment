@@ -492,7 +492,12 @@ export const SIS_POSQUIRURGICO = {
         citas: [PQ_CITA.zabaglo, PQ_CITA.ng125]
       } },
     { id: 'pq_tvp', regiones: ['cadera', 'rodilla', 'tobillo_pie', 'lumbar', 'cervical'], urgencia: PQ_URGENCIA_TVP, text: '¿Desde la operación tiene una pantorrilla o una pierna hinchada, caliente o dolorosa? (Posible TVP: calcular Wells; ≥2 → probable.)', alerta: true,
-      razonamiento: PQ_RAZON_TVP },
+      // La pierna contraria (docs/may-thurner.md, decisión 3): solo aquí, no en
+      // la del miembro superior (pq_tvp_ms), que comparte el resto del razonamiento
+      razonamiento: { ...PQ_RAZON_TVP,
+        detalle: `${PQ_RAZON_TVP.detalle}\n\nCualquier pierna, no solo la operada: tras una prótesis de cadera, la trombosis puede aparecer en la contraria; en una serie de casos, en la izquierda aunque se operara la derecha, con una compresión de la vena ilíaca izquierda (síndrome de May-Thurner) (Lim 2024). Es una serie de 4 casos sin grupo control: no mide ningún riesgo.`,
+        fuentes: [...PQ_RAZON_TVP.fuentes, 'Lim 2024'],
+        citas: [...PQ_RAZON_TVP.citas, { texto: 'Lim 2024 — Lim, Roh, Kim y Nam, «Is the May-Thurner Syndrome a Major Risk Factor for Deep Vein Thrombosis in Total Hip Arthroplasty?», Clin Orthop Surg 2024;16(1):34–40 (serie de casos).', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10825252/' }] } },
     { id: 'pq_tvp_ms', regiones: ['hombro', 'codo'], urgencia: PQ_URGENCIA_TVP, text: '¿Desde la operación tiene una pantorrilla, una pierna o el brazo operado hinchados, calientes o dolorosos? (En la pierna, posible TVP: calcular Wells; ≥2 → probable.)', alerta: true,
       razonamiento: PQ_RAZON_TVP },
     { id: 'pq_tep', urgencia: 'Posible embolia pulmonar: llamar al 112.', text: '¿Le falta el aire de repente, le duele el pecho al respirar, ha tosido sangre o se ha mareado o desmayado?', alerta: true,
