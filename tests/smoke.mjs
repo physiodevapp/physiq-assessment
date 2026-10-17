@@ -2075,6 +2075,108 @@ async function checkCitas(browser, errors) {
   return r;
 }
 
+// Guía de condiciones especiales (cabecera, docs/condiciones-especiales.md):
+// diálogo con una fila por condición, cada botón lleva a su tarjeta o pregunta y
+// la resalta sin marcar nada, el estado sigue a la tarjeta, Escape y atrás
+// cierran sin cambiar de fase, cabe a 320 px y también sale en el hub.
+async function checkCondiciones(browser, errors) {
+  const r = {};
+  const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (condiciones): ${err.message}`));
+  await abrirApp(page);
+  const abierto = () => page.evaluate(() => document.getElementById('condOverlay').classList.contains('open'));
+  const estado = id => page.evaluate(i => document.querySelector(`[data-condicion="${i}"] .cond-estado`)?.textContent || '', id);
+  await page.click('#condBtn');
+  r.dialogo = await page.evaluate(() => {
+    const p = document.getElementById('condPanel').getBoundingClientRect();
+    const ids = [...document.querySelectorAll('#condCuerpo .cond-fila')].map(f => f.dataset.condicion).join();
+    return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
+      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,tarlov,cascanueces'
+      && /Solo en lumbar/i.test(document.getElementById('condCuerpo').textContent)
+      && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
+  });
+  r.sinMarcar = await estado('lupus') === 'No consta' && await estado('posquirurgico') === 'No marcado';
+  // Sin región: las filas de lumbar se ven, su botón no navega
+  r.lumbarSinRegion = await page.evaluate(() => {
+    const b = document.querySelector('[data-condicion="tarlov"] .cond-ir');
+    return b.disabled && /Elige lumbar/.test(b.textContent);
+  });
+  // Ir a la tarjeta del lupus: fase 1, resaltada, nada marcado
+  const antes = await page.evaluate(() => JSON.stringify(window.state));
+  await page.evaluate(() => window.goToPhase(1));
+  await page.click('[data-condicion="lupus"] .cond-ir');
+  await page.waitForFunction(() => !document.getElementById('condOverlay').classList.contains('open'));
+  r.tarjeta = await page.waitForFunction(() => document.getElementById('cardLupus').classList.contains('flash-destacar'), null, { timeout: 3000 }).then(() => true, () => false);
+  r.noMarca = await page.evaluate(a => {
+    const s = JSON.parse(a), n = window.state;
+    return n.lupus.estado === s.lupus.estado && n.hipermovilidad.estado === s.hipermovilidad.estado && n.mecanismo === s.mecanismo;
+  }, antes);
+  // El estado sigue a la tarjeta
+  await page.click('#lesEstado [data-valor="sospecha"]');
+  await page.click('#condBtn');
+  r.estadoSigue = await estado('lupus') === 'Sospecha';
+  await page.keyboard.press('Escape');
+  r.escape = !(await abierto());
+  // Posquirúrgico → «Mecanismo de inicio»
+  await page.click('#condBtn');
+  await page.click('[data-condicion="posquirurgico"] .cond-ir');
+  r.mecanismo = await page.waitForFunction(() => document.getElementById('cardMecanismo').classList.contains('flash-destacar'), null, { timeout: 3000 }).then(() => true, () => false);
+  // Con lumbar: Tarlov lleva a su pregunta de la fase 2, resaltada
+  await page.evaluate(() => { window.state.maxVisitedIdx = Math.max(window.state.maxVisitedIdx, 1); window.goToPhase(2); });
+  await page.click('.region-card[data-region="lumbar"]');
+  await page.waitForSelector('[id="sq2_l_u5"]', { state: 'attached' });
+  await page.click('#condBtn');
+  await page.click('[data-condicion="tarlov"] .cond-ir');
+  r.pregunta = await page.waitForFunction(() => window.state.currentPhase === 2
+    && [...document.querySelectorAll('[id="sq2_l_u5"]')].some(e => e.offsetParent && e.classList.contains('flash-destacar')), null, { timeout: 4000 }).then(() => true, () => false);
+  await page.emulateMedia({ media: 'print' });
+  r.sinImprimir = await page.evaluate(() => getComputedStyle(document.getElementById('condBtn')).display === 'none');
+  await context.close();
+
+  // Móvil: desde «Herramientas», hoja inferior; atrás cierra en la misma fase;
+  // un botón vuelve sin dejar la hoja abierta y la fase cambia una sola vez
+  const movil = await browser.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true });
+  const m = await movil.newPage();
+  m.on('pageerror', err => errors.push(`pageerror (condiciones móvil): ${err.message}`));
+  await abrirApp(m);
+  await m.evaluate(() => { window.state.maxVisitedIdx = 2; window.goToPhase(2); });
+  await abrirHerramienta(m, 'condiciones');
+  await m.waitForSelector('#condOverlay.open');
+  r.hoja = await m.waitForFunction(() => {
+    const p = document.getElementById('condPanel').getBoundingClientRect();
+    return Math.round(p.width) === innerWidth && Math.abs(p.bottom - innerHeight) < 2;
+  }, null, { timeout: 3000 }).then(() => true, () => false);
+  r.iconoOculto = await m.evaluate(() => getComputedStyle(document.getElementById('condBtn')).display === 'none');
+  await m.goBack();
+  r.atras = await m.waitForFunction(() => !document.getElementById('condOverlay').classList.contains('open'), null, { timeout: 3000 }).then(() => true, () => false)
+    && await m.evaluate(() => window.state.currentPhase === 2);
+  await abrirHerramienta(m, 'condiciones');
+  await m.waitForSelector('#condOverlay.open');
+  await m.tap('[data-condicion="hipermovilidad"] .cond-ir');
+  r.irMovil = await m.waitForFunction(() => window.state.currentPhase === 1
+    && document.getElementById('cardHipermovilidad').classList.contains('flash-destacar')
+    && !document.getElementById('condOverlay').classList.contains('open'), null, { timeout: 4000 }).then(() => true, () => false);
+  await m.setViewportSize({ width: 320, height: 700 });
+  await abrirHerramienta(m, 'condiciones');
+  await m.waitForSelector('#condOverlay.open');
+  r.estrecho = await m.evaluate(() => {
+    const c = document.getElementById('condCuerpo');
+    return document.documentElement.scrollWidth <= innerWidth && c.scrollWidth <= c.clientWidth
+      && [...c.querySelectorAll('.cond-ir')].every(b => b.getBoundingClientRect().right <= innerWidth);
+  });
+  await movil.close();
+
+  // Hub: también aparece (no usa la red)
+  const ctxHub = await browser.newContext({ viewport: { width: 1100, height: 900 } });
+  const hub = await ctxHub.newPage();
+  const frame = await cargarEnHub(hub);
+  r.hub = await frame.evaluate(() => getComputedStyle(document.getElementById('condBtn')).display !== 'none');
+  await ctxHub.close();
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 async function checkCuestionarios(browser, errors) {
   const r = {};
   const { CUESTIONARIOS } = await import(new URL('../data/cuestionarios.js', import.meta.url));
@@ -5071,6 +5173,12 @@ const SECCIONES = [
   { id: 'citas', titulo: 'Citas tocables (fuentes de las fases 2–6 y de la calculadora):', run: async ({ browser, errors }) => {
     const c = await checkCitas(browser, errors);
     console.log(`  ${c.ok ? '✓' : '✗'} en el texto solo autor y año; al tocar, la ficha con la cita entera y «Abrir ↗» en pestaña nueva, junto a la cita; se cierra con la misma cita, fuera, Escape (foco de vuelta), al desplazar y al cambiar de fase; con teclado el foco va al enlace; al imprimir, la cita entera; dentro de una frase en las fases 3, 4b y 6 («Ampliar con IA» sigue leyendo el párrafo entero), en la fase 6 y en la calculadora también (Escape cierra la ficha antes que el panel); a 320 px táctil cabe sin desbordar${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
+  } },
+
+  { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
+    const c = await checkCondiciones(browser, errors);
+    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 6 filas en orden, «Solo en lumbar» y fuentes como citas; sin región, las de lumbar no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
