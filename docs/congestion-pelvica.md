@@ -1,6 +1,6 @@
-# Síndrome de congestión pélvica — borrador de diseño
+# Síndrome de congestión pélvica — diseño
 
-Estado: **diseño aceptado, sin implementar (octubre 2026).** El usuario aceptó las 10 recomendaciones («Decisiones», al final). StatPearls (Kuo 2025) y Hanna 2024 están leídos enteros en PDF del usuario; **falta el informe completo de Champaneria 2016** (ver «Fuentes pendientes»), sin el que no se implementa (decisión 10). Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
+Estado: **implementado (octubre 2026), pendiente de la revisión del usuario antes de `main`.** El usuario aceptó las 10 recomendaciones («Decisiones», al final) y aportó en PDF StatPearls (Kuo 2025), Hanna 2024 y el informe completo de Champaneria 2016; las 8 fuentes están leídas enteras. Lo implementado, en «Implementación», al final. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
 
 Origen: decisión 5 de `docs/mals-cascanueces.md`. El cascanueces se implementó en lumbar (`l_u6`) y su pregunta ya recoge, como acompañante, el dolor de pelvis que empeora de pie. La congestión pélvica sin cascanueces quedaba para cadera, donde `ca_u4` cubre en parte el dolor pélvico ginecológico.
 
@@ -18,13 +18,9 @@ Leídas enteras:
 | `Dos Santos 2016` | Dos Santos SJ, Whiteley MS. Pelvic congestion syndrome masquerading as osteoarthritis of the hip. *SAGE Open Med Case Rep* 2016;4:2050313X16683630. [doi:10.1177/2050313X16683630](https://doi.org/10.1177/2050313X16683630) | PMC5153020 | Dos mujeres diagnosticadas de artrosis de cadera con radiografía casi normal; el dolor desapareció al tratar el reflujo pélvico |
 | `Kuo 2025` | Kuo CH, Martingano DJ, Singh P. «Pelvic Congestion Syndrome». StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2025. [NBK560790](https://www.ncbi.nlm.nih.gov/books/NBK560790/) | PDF del usuario (9 pp.) | Fuente de contraste: clínica, exploración, diagnóstico, manejo conservador (con fisioterapia del suelo pélvico), tratamiento invasivo, diferenciales |
 | `Hanna 2024` | Hanna J, Bruinsma J, Barns M, Hanna M, Boulos B, Ponosh S. Pelvic congestion syndrome: not all pelvic pain is gynaecological. *Aust J Gen Pract* 2024;53(12 Suppl):S41–S44. [doi:10.31128/AJGP-07-23-6889](https://doi.org/10.31128/AJGP-07-23-6889) | PDF del usuario (4 pp.) | Para atención primaria: la cifra del 30–40 % que cita Bruessel 2026, la clínica, y que el Doppler de las venas pélvicas hay que pedirlo expresamente |
+| `Champaneria 2016` | Champaneria R, Shah L, Moss J, Gupta JK, Birch J, Middleton LJ, Daniels JP. The relationship between pelvic vein incompetence and chronic pelvic pain in women: systematic reviews of diagnosis and treatment effectiveness. *Health Technol Assess* 2016;20(5):1–108. [doi:10.3310/hta20050](https://doi.org/10.3310/hta20050) | PDF del usuario en dos partes (138 pp.), los 8 capítulos; las tablas de los estudios incluidos y las estrategias de búsqueda (apéndice 1), por encima | **La única revisión sistemática independiente** (programa HTA del NIHR): definiciones, asociación con el dolor, exactitud de la imagen, embolización, encuestas. Es el contrapeso de todas las demás |
 | `Peker 2020` | Peker A, Camkerten GT, Balci A, Akin IB, Altay C, Can G. Increased prevalence of pelvic venous congestion sign on sacroiliac MRI in women with clinically suspected sacroiliitis. *North Clin Istanb* 2020;7(6):551–556. [doi:10.14744/nci.2020.48030](https://doi.org/10.14744/nci.2020.48030) | PMC7754859 | 727 RM de mujeres de 18–50 años con dolor: el signo de congestión venosa en el 30 % de las RM sacroilíacas frente al 17 % de las de cadera |
 
-Leído solo el resumen (no se cita en la app hasta leerlo entero):
-
-| Clave propuesta | Referencia | Por qué importa |
-|---|---|---|
-| `Champaneria 2016` | Champaneria R, Shah L, Moss J, et al. The relationship between pelvic vein incompetence and chronic pelvic pain in women: systematic reviews of diagnosis and treatment effectiveness. *Health Technol Assess* 2016;20(5):1–108. [doi:10.3310/hta20050](https://doi.org/10.3310/hta20050) | **La única revisión sistemática independiente** (financiada por el NIHR, sin autores que embolicen). Es el contrapeso de todas las demás |
 
 Salvedades de lectura:
 - **Casi todas las fuentes las firman quienes tratan la congestión pélvica con embolización**, y todas la recomiendan:
@@ -35,7 +31,13 @@ Salvedades de lectura:
   - Bruessel 2026 son cirujanos vasculares y una reumatóloga, y declaran no tener conflictos.
   - En el texto de PMC que se leyó de Bałabuszek 2022, Dos Santos 2016 y Shelkey 2014 no viene la declaración de conflictos de interés: queda por comprobar en los PDF.
   - Por eso **PhysiQ no nombraría ningún tratamiento** (como en el Tarlov, decisión 3) y usaría de estas fuentes solo la clínica y el diagnóstico.
-- **Champaneria 2016**, en su resumen, dice que no puede afirmarse que el reflujo de las venas pélvicas sea la causa del dolor pélvico crónico en mujeres sin otra patología: los seis estudios de asociación usan poblaciones y definiciones distintas, la embolización solo tiene un ensayo aleatorizado y de mala calidad, y no hay criterios diagnósticos comunes. Las demás fuentes dan la relación por hecha.
+- **Champaneria 2016** (leído entero):
+  - Financiado por el NIHR. Conflicto declarado: Moss, radiólogo intervencionista, es miembro del panel de procedimientos intervencionistas del programa HTA. Los demás autores son de una unidad de ensayos clínicos, un ginecólogo y la presidenta de una asociación de pacientes con dolor pélvico.
+  - **No puede afirmarse que el reflujo de las venas pélvicas sea la causa del dolor pélvico crónico** en mujeres sin otra patología (cap. 4 y 8): seis estudios de casos y controles, de calidad desigual, con poblaciones y definiciones distintas y sin emparejar por partos; tres dan odds ratios de 31 a 117 y los dos más pequeños no llegan a significación.
+  - **No hay ningún criterio diagnóstico común** (cap. 3): de 33 estudios, solo dos usaban el dolor tras estar mucho de pie como criterio, y los signos clínicos más citados eran las varices atípicas del muslo, la vulva o la nalga. Propone una puntuación de 20 puntos que no está validada (sus umbrales son «opinión de los autores»): el dolor tras estar mucho de pie y las varices del muslo, la nalga o la vulva valen 2 puntos cada uno, la dispareunia y la dismenorrea 1.
+  - **Su consejo de buena práctica** (cap. 8, «Implications for health care»): preguntar si el dolor empeora después de estar de pie y si mejora al tumbarse, y anotar las varices de la vulva y de las piernas. No hace ninguna recomendación clínica más, porque la evidencia no da para ello.
+  - Embolización (cap. 6): solo un ensayo aleatorizado, de baja validez interna, y 21 series de casos (1308 mujeres); calidad GRADE «muy baja»; mejoría importante en el 75 % (IC 95 % 64–85 %) a las 4–8 semanas en seis series; probable sesgo de publicación. Los radiólogos encuestados esperaban una mejoría importante solo en el 38 %.
+  - En la encuesta a especialistas en dolor pélvico, pocos usaban la fisioterapia, «lo que no sorprende, porque para el dolor pélvico crónico en general hay poca evidencia de las intervenciones no quirúrgicas ni farmacológicas» (cap. 7).
 - **Shelkey 2014 y Dos Santos 2016 son 4 casos en total**, sin grupo control. Prueban que la presentación como dolor de cadera existe, no con qué frecuencia.
 - **Peker 2020** es retrospectivo y solo de imagen: no sabe qué mujeres tenían de verdad una congestión pélvica sintomática, ni en qué momento del ciclo se hizo la RM, y no tiene grupo control de mujeres sanas. Sus autores lo dicen. El signo de congestión en la RM sacroilíaca no se asociaba a tener o no una sacroileítis activa.
 - **Hanna 2024** es una revisión clínica breve, sin método sistemático. Su 30–40 % (en el dolor pélvico crónico sin otra causa) se apoya en Beard 1984 y en una revisión de resultados de la embolización (Brown 2018). **No menciona la cadera, la espalda ni la sacroilíaca.**
@@ -53,7 +55,9 @@ Salvedades de lectura:
 - **Venas dilatadas sin síntomas**: alrededor del 10 % de las mujeres tiene venas pélvicas dilatadas (Peker 2020; Shelkey 2014, que añade que más de la mitad acabaría con síntomas); las varices ováricas dan síntomas «solo hasta en el 59 %» (Bałabuszek 2022). La prevalencia en la población femenina general va del «hasta un 6 %» (Shelkey 2014) al 15 % entre los 18 y los 50 años (citado en Peker 2020).
 - **Relación con la regla**: «típicamente no cíclico, aunque suele empeorar alrededor de la regla» (Dos Santos 2016); cíclico o no (Hanna 2024); empeora antes y durante la regla (Bałabuszek 2022; Kuo 2025); en el segundo caso de Shelkey 2014, el dolor no tenía relación con la regla.
 - **Edad**: de los 20 a los 45 años, y cada vez más en jóvenes sin partos (Hanna 2024); antes de la menopausia y nunca después (Kuo 2025, «Epidemiology»), aunque el mismo capítulo admite casos aislados después; una de las pacientes de Dos Santos 2016 tenía 53 años.
-- **El estudio de Beard** (dolor tras las relaciones más dolor a la palpación del ovario o los anejos: sensibilidad del 94 %, especificidad del 77 %): 35 pacientes en 1988 según Bałabuszek 2022, 57 mujeres según Kuo 2025; Hanna 2024 cita un trabajo de Beard de 1984.
+- **El estudio de Beard** (dolor tras las relaciones más dolor a la palpación del punto ovárico: sensibilidad del 94 %, especificidad del 77 %): 35 pacientes en 1988 según Bałabuszek 2022, 57 mujeres según Kuo 2025; Hanna 2024 cita un trabajo de Beard de 1984. Champaneria 2016 aclara que es Beard 1988: 68 mujeres con dolor pélvico crónico y 36 controles sin dolor, de las que 35 tenían reflujo (cap. 1 y 4).
+- **Partos**: casi todas las fuentes dan la multiparidad como factor de riesgo; Champaneria 2016 recoge una serie con el 63 % de nulíparas y concluye que los partos solos no pueden ser el factor determinante (cap. 1).
+- **Venas dilatadas sin síntomas**, con cifras: en donantes de riñón sin dolor, reflujo de la vena ovárica izquierda en el 10, 17, 18, 38 y 47 % según el estudio; en otra serie de donantes con varices ováricas, el 41 % no tenía dolor pélvico (Champaneria 2016, cap. 4).
 - **Laparoscopia**: puede no verla en el 80–90 % (Bałabuszek 2022); en el 20 % de las laparoscopias por dolor pélvico crónico se encuentra congestión (Kuo 2025).
 - **Prueba de referencia**: la flebografía (Bałabuszek 2022; Hanna 2024; Kuo 2025; Champaneria 2016, como confirmación) o la ecografía transvaginal con Doppler (Dos Santos 2016, su propia unidad). El diámetro de la vena solo acierta el reflujo en el 56 % (el grupo de Dos Santos, citado en Bałabuszek 2022), y los umbrales cambian entre estudios.
 - **La postura en la imagen, en sentidos opuestos**: tumbada, la RM, la TC o la ecografía pueden no ver las varices, que se llenan de pie (Shelkey 2014; Hanna 2024; Kuo 2025, que por eso da a la flebo-RM una especificidad baja); en cambio, la compresión de la vena renal (cascanueces) parece más intensa tumbada, y Bałabuszek 2022 cree que por eso se sobrediagnostica (55 % de estenosis significativa en decúbito supino frente a 10 % en decúbito lateral izquierdo). Bruessel 2026 sí da el cascanueces como causa de congestión pélvica.
@@ -101,7 +105,7 @@ Salvedades de lectura:
 - **Hanna 2024 y Kuo 2025 no hablan de la cadera.** Entre los diferenciales musculoesqueléticos dan el dolor miofascial de la pared abdominal, la mialgia del suelo pélvico, la fibromialgia y la coccigodinia.
 - **Bałabuszek 2022, tabla 1**: entre los cuadros que se parecen a la congestión pélvica están la patología de la cadera, la sacroilíaca, el piriforme, la inflamación del psoas, la miofascial, la mialgia del suelo pélvico, la hernia discal y las neuralgias ilioinguinal, genitofemoral y pudenda. Es decir: **lo que el fisio trata es su diferencial**.
 
-### Diagnóstico (Bałabuszek 2022; Hanna 2024; Kuo 2025; Champaneria 2016, resumen)
+### Diagnóstico (Bałabuszek 2022; Hanna 2024; Kuo 2025; Champaneria 2016)
 
 - **El Doppler de las venas ováricas y pélvicas no forma parte de una ecografía pélvica normal: quien sospecha la congestión tiene que pedirlo expresamente** (Hanna 2024). Por eso la derivación lo nombra.
 
@@ -174,7 +178,7 @@ Sí, aunque con una evidencia muy floja:
   - «Que hay que pedir expresamente» viene de Hanna 2024: el Doppler venoso no va incluido en una ecografía pélvica normal. Si se quiere más corto, se puede quitar.
 - **Por qué** (borrador): las venas de los ovarios y las ilíacas internas drenan el útero y los ovarios; si sus válvulas no cierran, o si hay una vena comprimida más arriba (la renal en el cascanueces, la ilíaca en el May-Thurner), la sangre refluye y las venas de la pelvis se dilatan. De pie la gravedad las llena más y tumbada se vacían: por eso el dolor es de peso, aumenta con estar de pie y a lo largo del día y mejora al tumbarse. Las venas de la pelvis se comunican con las de la vulva, el muslo y la nalga, y por eso aparecen varices en sitios poco habituales. El dolor puede notarse en la ingle o la cadera (Bałabuszek 2022; Hanna 2024; Dos Santos 2016).
 - **Cuánto pesa** (borrador): sin datos de exactitud; ningún estudio mide esta pregunta.
-  - Venas pélvicas dilatadas sin síntomas son frecuentes (alrededor del 10 % de las mujeres; Peker 2020; Kuo 2025), ver varices y dolor a la vez no demuestra que una cosa cause la otra (Kuo 2025), y que el reflujo cause el dolor no está demostrado (Champaneria 2016, cuando se lea entero). Por eso la pregunta pide el dolor postural y un acompañante.
+  - Venas pélvicas dilatadas sin síntomas son frecuentes (alrededor del 10 % de las mujeres; Peker 2020; Kuo 2025), ver varices y dolor a la vez no demuestra que una cosa cause la otra (Kuo 2025), y que el reflujo cause el dolor no está demostrado (Champaneria 2016). Por eso la pregunta pide el dolor postural y un acompañante.
   - Como dolor de cadera solo hay casos publicados: en dos corredoras la exploración de la cadera era normal y la fisioterapia no funcionó (Shelkey 2014); en otras dos se había diagnosticado una artrosis con la radiografía casi normal (Dos Santos 2016).
   - Un SÍ con una exploración de cadera que reproduce claramente el dolor no lo explica todo: valorar las dos cosas.
   - Un SÍ pide una valoración médica preferente, no urgente. Un dolor pélvico nuevo con retraso de la regla es `ca_u5`; una pierna entera hinchada de golpe es `ca_v2`.
@@ -210,11 +214,9 @@ Sí, aunque con una evidencia muy floja:
 - Lumbar y sacroilíaca: Peker 2020 es solo de imagen; no justifica una pregunta en lumbar.
 - Hombres: el trastorno venoso pélvico del hombre es el varicocele, que ya entra por `ca_u2` (cadera) y `l_u6` (lumbar).
 
-## Fuentes pendientes (pedir al usuario en PDF)
+## Fuentes
 
-StatPearls (Kuo 2025) y Hanna 2024 se leyeron enteros en PDF del usuario (octubre 2026). Falta:
-
-1. **Champaneria 2016** (informe completo, *Health Technol Assess* 20(5):1–108, [doi:10.3310/hta20050](https://doi.org/10.3310/hta20050); página de la NIHR Journals Library: https://www.journalslibrary.nihr.ac.uk/hta/hta20050). La revisión independiente, la que puede cambiar el «Cuánto pesa». No se ha podido abrir desde la sesión: el proxy bloquea la NIHR Journals Library y NCBI Bookshelf pide un captcha.
+Las 8 fuentes están leídas enteras: cinco en PubMed Central y tres en PDF del usuario (Kuo 2025, Hanna 2024 y Champaneria 2016, octubre 2026). Champaneria 2016 no cambia ninguna decisión: su consejo de buena práctica (preguntar si el dolor empeora de pie y mejora tumbada, y mirar las varices) es justo lo que pide `ca_u6`, y su conclusión sobre la causalidad va al «Cuánto pesa».
 
 Opcionales, no leídos: Lemos 2016 (*Int Urogynecol J*, atrapamiento vascular del plexo sacro con ciática cíclica), Berthelot 2022 (*Joint Bone Spine*, congestión venosa y radiculopatías), Meissner 2021 (clasificación SVP de los trastornos venosos pélvicos). No hacen falta para las decisiones.
 
@@ -229,4 +231,15 @@ Opcionales, no leídos: Lemos 2016 (*Int Urogynecol J*, atrapamiento vascular de
 7. **Hipermovilidad**: ninguna regla automática; solo una frase sin cifras (Bruessel 2026). Recomendación: sí, como en el Tarlov, el MALS y el cascanueces.
 8. **Lumbar y sacroilíaca**: nada. Peker 2020 solo es imagen y `l_u6` ya recoge la congestión del cascanueces. Recomendación: no tocar lumbar.
 9. **«Fisiología, paso a paso»**: opcional. Recomendación: sí, 4 pasos y sin metáfora, para que `ca_u6` tenga el mismo nivel que `l_u6`.
-10. **No se implementa hasta leer enteras StatPearls, Hanna 2024 y Champaneria 2016** (en PDF del usuario), como la decisión 7 del Tarlov. Recomendación: sí; Champaneria 2016 es la que puede cambiar el «Cuánto pesa». StatPearls y Hanna 2024, leídos (2026-10): no cambian ninguna decisión; añaden «que hay que pedir expresamente» a la derivación, el periné a las varices y el párrafo «Qué hacer con un SÍ». Falta Champaneria 2016.
+10. **No se implementa hasta leer enteras StatPearls, Hanna 2024 y Champaneria 2016** (en PDF del usuario), como la decisión 7 del Tarlov. Recomendación: sí; Champaneria 2016 es la que puede cambiar el «Cuánto pesa». StatPearls y Hanna 2024, leídos (2026-10): no cambian ninguna decisión; añaden «que hay que pedir expresamente» a la derivación, el periné a las varices y el párrafo «Qué hacer con un SÍ». Champaneria 2016, leído (2026-10): tampoco cambia ninguna decisión. **Cumplida.**
+
+## Implementación (octubre 2026)
+
+- **`data/cadera.js`**
+  - **`ca_u6`**, en `ca_urogenital` entre `ca_u4` (dolor ligado a la regla o a las relaciones) y `ca_u5` (embarazo ectópico): `alerta: true`, `anatomia: ['organos_reproductores_femeninos']`, `derivacion` (texto de la decisión 4, con «que hay que pedir expresamente»), sin `urgencia`, sin `hm`.
+  - Su `razonamiento`: «¿Por qué?» (`porque`, `peso`), «Ampliar →» con un `detalle` de seis párrafos (quién, cómo se presenta, con qué se confunde, venas comprimidas más arriba, qué hacer con un SÍ, tejido conectivo), «Fisiología, paso a paso» con 4 pasos y sin metáfora (decisión 9), y 8 fuentes con cita y enlace.
+  - **`ca_u4`**: una frase al final de «Banderas del dolor pélvico (Goodman)» que remite a la pregunta siguiente, y Bałabuszek 2022 en sus fuentes. Sin cambios en su texto ni en sus campos (decisión 5).
+- **`data/referencias.js`**: 7 referencias nuevas (Champaneria 2016, Bałabuszek 2022, Kuo 2025, Hanna 2024, Shelkey 2014, Dos Santos 2016, Peker 2020); Bruessel 2026 ya estaba. `docs/referencias.md` regenerado.
+- Nada nuevo en `app.js`: la derivación usa el campo `derivacion` del Tarlov (mensaje 🩺 con SÍ, aviso «Derivación médica», fase 5, `📋 Notas`, `📄 Informe`, payload `dv[]`). physiq-report no necesita cambios: pinta `dv` con un texto genérico. La fase 6 no se bloquea. En modo breve queda bajo el embudo del sistema, como `l_u6`, porque no es una urgencia.
+- **Pruebas**: `tests/unit/cribado.mjs` (la lista de preguntas con `derivacion` incluye `ca_u6`; su posición, campos y fuentes; en `dv` y no en `ur`; ninguna regla con la hipermovilidad; la derivación no nombra la embolización), `tests/unit/anatomia.mjs` (24 preguntas de cadera con anatomía) y la sección `congestion-pelvica` de `tests/smoke.mjs`.
+

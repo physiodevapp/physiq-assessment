@@ -63,10 +63,10 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
 });
 
 // ── `derivacion` en preguntas de la fase 2 (quiste de Tarlov, docs/tarlov.md) ──
-test('cribado: `derivacion` es texto no vacío, nunca junto a `urgencia`; hoy l_u5 (quiste de Tarlov), l_u6 (cascanueces, docs/mals-cascanueces.md) y ds_d_paroxistica (taquicardia paroxística, docs/pots.md)', () => {
+test('cribado: `derivacion` es texto no vacío, nunca junto a `urgencia`; hoy l_u5 (quiste de Tarlov), l_u6 (cascanueces, docs/mals-cascanueces.md), ca_u6 (congestión pélvica, docs/congestion-pelvica.md) y ds_d_paroxistica (taquicardia paroxística, docs/pots.md)', () => {
   const todas = Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).flatMap(s => s.preguntas);
   const con = [...new Set(todas.filter(q => 'derivacion' in q).map(q => q.id))];
-  assert.deepEqual(con.sort(), ['ds_d_paroxistica', 'l_u5', 'l_u6']);
+  assert.deepEqual(con.sort(), ['ca_u6', 'ds_d_paroxistica', 'l_u5', 'l_u6']);
   todas.filter(q => 'derivacion' in q).forEach(q => {
     assert.ok(typeof q.derivacion === 'string' && q.derivacion.trim(), q.id);
     assert.ok(!q.urgencia, `${q.id}: derivacion y urgencia a la vez`);
@@ -137,6 +137,29 @@ test('MALS: solo texto en la bandera de pérdida de peso de l_gi, sin pregunta p
   const u6 = todas.find(q => q.id === 'l_u6');
   assert.ok(!('hm' in u6));
   assert.ok(!SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'transversal_hipermovilidad').preguntas.some(q => /cascanueces|arcuato/i.test(JSON.stringify(q))));
+});
+
+// ── Síndrome de congestión pélvica (ca_u6, cadera), docs/congestion-pelvica.md ──
+test('ca_u6 (congestión pélvica): entre ca_u4 y ca_u5, derivación preferente sin urgencia, razonamiento completo; SÍ entra en dv, no en ur; ninguna regla con la hipermovilidad', () => {
+  const qs = SYSTEMIC_SCREENING.cadera.sistemas.find(s => s.id === 'ca_urogenital').preguntas;
+  const u6 = qs.find(q => q.id === 'ca_u6'), u4 = qs.find(q => q.id === 'ca_u4'), u5 = qs.find(q => q.id === 'ca_u5');
+  assert.equal(qs.indexOf(u6), qs.indexOf(u4) + 1, 'ca_u6 va justo después de ca_u4');
+  assert.equal(qs.indexOf(u5), qs.indexOf(u6) + 1, 'y antes de ca_u5 (ectópico)');
+  assert.ok(u6.derivacion && !u6.urgencia && u6.alerta && !('hm' in u6));
+  assert.ok(u6.text.startsWith('(Mujeres)'));
+  const r = u6.razonamiento;
+  assert.ok(r.porque && r.peso && r.detalle && r.fisiologia && r.fisiologia.pasos.length === 4 && !r.fisiologia.metafora);
+  assert.deepEqual(r.fuentes, ['Champaneria 2016', 'Bałabuszek 2022', 'Kuo 2025', 'Hanna 2024', 'Shelkey 2014', 'Dos Santos 2016', 'Peker 2020', 'Bruessel 2026']);
+  // Nunca nombra un tratamiento en lo que se comparte
+  assert.ok(!/emboli/i.test(u6.derivacion));
+  assert.ok(u4.razonamiento.detalle.includes('congestión pélvica'));
+  withState({ region: 'cadera', sistemicoAnswers: { ca_u6: 'SI' }, treeAnswers: {} }, () => {
+    const d = buildPhysiQPayload();
+    assert.deepEqual(d.dv, [u6.derivacion]);
+    assert.deepEqual(d.ur, []);
+    assert.ok(buildContextSummaryText().includes(`🩺 DERIVACIÓN MÉDICA: ${u6.derivacion}`));
+  });
+  assert.ok(!SYSTEMIC_SCREENING.cadera.sistemas.find(s => s.id === 'transversal_hipermovilidad').preguntas.some(q => /congesti/i.test(JSON.stringify(q))));
 });
 
 test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra); el dolor ligado a la regla (l_e3) no', () => {
