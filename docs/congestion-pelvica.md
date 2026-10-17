@@ -1,6 +1,6 @@
 # Síndrome de congestión pélvica — diseño
 
-Estado: **implementado (octubre 2026), pendiente de la revisión del usuario antes de `main`.** El usuario aceptó las 10 recomendaciones («Decisiones», al final) y aportó en PDF StatPearls (Kuo 2025), Hanna 2024 y el informe completo de Champaneria 2016; las 8 fuentes están leídas enteras. Lo implementado, en «Implementación», al final. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
+Estado: **implementado y revisado por el usuario (octubre 2026).** El usuario aceptó las 10 recomendaciones («Decisiones», al final) y aportó en PDF StatPearls (Kuo 2025), Hanna 2024 y el informe completo de Champaneria 2016; las 8 fuentes están leídas enteras. Lo implementado, en «Implementación», al final. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
 
 Origen: decisión 5 de `docs/mals-cascanueces.md`. El cascanueces se implementó en lumbar (`l_u6`) y su pregunta ya recoge, como acompañante, el dolor de pelvis que empeora de pie. La congestión pélvica sin cascanueces quedaba para cadera, donde `ca_u4` cubre en parte el dolor pélvico ginecológico.
 

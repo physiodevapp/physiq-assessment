@@ -437,4 +437,4 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
     - [x] Congestión pélvica: las 10 recomendaciones aceptadas por el usuario (2026-10)
     - [x] Congestión pélvica: StatPearls (Kuo 2025) y Hanna 2024 leídos enteros en PDF del usuario (2026-10); no cambian las decisiones
     - [x] Congestión pélvica: Champaneria 2016 leído entero en PDF del usuario (2026-10); no cambia las decisiones. Implementado: `ca_u6` (cadera, `ca_urogenital`, entre `ca_u4` y `ca_u5`) con `derivacion` preferente y razonamiento completo, una frase en `ca_u4`, 7 referencias nuevas; ninguna regla con la hipermovilidad
-    - [ ] Congestión pélvica: revisión del usuario antes de `main`
+    - [x] Congestión pélvica: revisado por el usuario (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico
