@@ -1,6 +1,6 @@
 # Síndrome de May-Thurner — borrador de diseño
 
-Estado: **borrador para revisión del usuario (octubre 2026).** No hay código. Las decisiones del final llevan mi recomendación; ninguna está aceptada todavía.
+Estado: **implementado (octubre 2026), pendiente de la revisión del usuario.** El usuario aceptó las 8 recomendaciones y aportó el PDF de Tsouknidas 2022, leído entero. Lo implementado, en «Implementación», al final.
 
 Origen: la pregunta del usuario (2026-10) de si habría que añadir el May-Thurner, después de la congestión pélvica (`docs/congestion-pelvica.md`) y el cascanueces (`docs/mals-cascanueces.md`).
 
@@ -41,7 +41,29 @@ Salvedades de lectura:
   - define el síndrome de forma circular;
   - no tiene grupo control, así que no mide ningún riesgo.
 
-Para separar de verdad la claudicación venosa de la neurógena haría falta **Tsouknidas 2022** («Venous claudication: a scoping review», *Eur J Vasc Endovasc Surg* 64:535–543, [doi:10.1016/j.ejvs.2022.08.006](https://doi.org/10.1016/j.ejvs.2022.08.006)), que no está en abierto (decisión 6).
+Para separar la claudicación venosa de la neurógena hacía falta **Tsouknidas 2022** («Venous claudication: a scoping review», *Eur J Vasc Endovasc Surg* 64:535–543, [doi:10.1016/j.ejvs.2022.08.006](https://doi.org/10.1016/j.ejvs.2022.08.006)), que no está en abierto (decisión 6). El usuario aportó el PDF y está leído entero: ver «Tsouknidas 2022» abajo.
+
+## Tsouknidas 2022
+
+Tsouknidas I, Charisis N, Eklof B, Labropoulos N. Venous claudication: a scoping review of the pathophysiology and clinical importance. *Eur J Vasc Endovasc Surg* 2022;64(5):535–543. [doi:10.1016/j.ejvs.2022.08.006](https://doi.org/10.1016/j.ejvs.2022.08.006). PDF del usuario, leído entero (9 páginas, tablas y figuras).
+
+- **El síntoma:**
+  - un dolor «bursting or cramping» (de reventón o de calambre) en el muslo, la nalga o la pierna al caminar, a menudo con hinchazón;
+  - empieza poco a poco y empeora, hasta obligar a parar (pp. 535 y 539);
+  - se alivia con reposo y elevando la pierna, y tarda «up to 15 minutes» (p. 535) o «usually … 15 minutes or more» (p. 539): el propio artículo se contradice.
+- **La causa:** casi siempre una obstrucción iliofemoral, a menudo tras una trombosis ilíaca o de la cava. Nombra la compresión de la vena ilíaca común izquierda (p. 537).
+- **Frente a la claudicación arterial** (p. 539): calambre tras una distancia concreta, que cede quedándose de pie 1–2 minutos.
+- **Frente a la neurógena** (pp. 539–540): cede con reposo, pero cambiando la postura de la espalda (menos lordosis).
+- **Variante «neurogenic venous induced claudication»** (p. 540): es poco frecuente, y en ella elevar la pierna o mover la columna la empeora. No se lleva a la app.
+- **Lo que no da:**
+  - tabla comparativa: el diferencial es texto apoyado en otras referencias;
+  - cifras de exactitud de ningún síntoma.
+- **Calidad:** 29 estudios, todos observacionales.
+- **Sobre la comparación del borrador:** el artículo no compara directamente lo que alivia cada tipo, así que no apoya la frase «más que con flexionar el tronco». Se sustituye por lo que sí dice de cada claudicación.
+- **Erratas:**
+  - años y números de pacientes distintos entre el texto y las tablas;
+  - el diagrama de flujo no cuadra;
+  - la cabecera dice «Systematic review», aunque es una scoping review.
 
 ## Qué dicen, en lo que importa a PhysiQ
 
@@ -74,7 +96,7 @@ Para separar de verdad la claudicación venosa de la neurógena haría falta **T
 
 ## Decisiones
 
-Cada una con mi recomendación.
+Aceptadas las 8 recomendaciones (2026-10).
 
 1. **Pregunta propia en el cribado: no.**
    - La compresión es una variante frecuente sin síntomas, y ningún síntoma tiene exactitud medida, así que una pregunta sería muy poco específica.
@@ -109,3 +131,16 @@ Cada una con mi recomendación.
 7. **Registro de referencias:** añadir solo las que se citarían: `Poyyamoli 2021`, `Knuttinen 2017`, `Mangla y Hamad 2024` y `Lim 2024`. Dunlap 2023, Radaideh 2019, Brinegar 2015 y Ormiston 2022 se quedan en este documento.
 
 8. **Fase 6:** nada. No hay hipótesis ni pauta del May-Thurner, y la red de seguridad de la TVP ya está donde la región la tiene.
+
+## Implementación (octubre 2026)
+
+- **Decisión 2** (`lu_step2`, lumbar, detalle del razonamiento): párrafo sobre la claudicación venosa, después del de la arterial. Texto final, ya con Tsouknidas 2022:
+
+  > Hay también una claudicación venosa, menos frecuente: un dolor de reventón o de calambre en la nalga, el muslo o la pierna al caminar, a menudo con hinchazón, que obliga a parar y cede con reposo y elevando la pierna, a menudo tras 15 minutos o más; la arterial cede de pie en 1–2 minutos, y la neurógena pide cambiar la postura de la espalda (Tsouknidas 2022). Casi siempre se debe a una obstrucción de la vena ilíaca, tras una trombosis o por la compresión de la vena ilíaca izquierda (síndrome de May-Thurner), más frecuente en mujeres de 30 a 50 años; esa compresión, por sí sola, es frecuente y casi nunca da síntomas (Mangla y Hamad 2024). El diagnóstico es médico: con este patrón, valoración médica.
+
+  - La frase «más que con flexionar el tronco» del borrador se quitó: Tsouknidas 2022 no compara directamente.
+  - Las opciones, las hipótesis y la navegación del árbol no cambian.
+- **Decisión 3** (`pq_tvp`, cribado posquirúrgico): una frase al final de su detalle, solo en la pregunta del miembro inferior (`pq_tvp_ms` sigue con el razonamiento compartido sin ella). Dice que tras una prótesis de cadera la trombosis puede salir en la pierna contraria (Lim 2024) y que es una serie de 4 casos sin grupo control.
+- **Decisión 7** (registro): `Tsouknidas 2022`, `Mangla y Hamad 2024` y `Lim 2024`. Poyyamoli 2021 y Knuttinen 2017 al final no se citan: lo que iban a apoyar lo dice mejor Tsouknidas 2022. Se quedan en este documento con las demás. `docs/referencias.md` regenerado.
+- **Decisiones 1, 4, 5 y 8:** nada que tocar.
+- Pruebas: `node tests/unit.js` (647) y la prueba de humo completa, en verde. No hacía falta una prueba nueva: las del razonamiento del árbol y del cribado ya comprueban que cada fuente esté en el registro, que tenga su cita y que nada llegue al payload ni a los resúmenes.
