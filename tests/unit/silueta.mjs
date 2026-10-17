@@ -75,8 +75,13 @@ test('silueta: estado de cada zona y lado que queda al tocarla', () => {
   assert.equal(S.estadoZona(rodD, 'hombro', 'Derecho'), 'off');
   assert.equal(S.estadoZona(lumbar, 'lumbar', 'Central'), 'on');
   assert.equal(S.estadoZona(lumbar, 'lumbar', ''), 'on');
+  // Las dos zonas de una región son casillas
   assert.equal(S.ladoAlTocar(rodI, '', ''), 'Izquierdo');
-  assert.equal(S.ladoAlTocar(rodD, 'rodilla', 'Bilateral'), 'Derecho');
+  assert.equal(S.ladoAlTocar(rodI, 'rodilla', ''), 'Izquierdo', 'región sin lado: marca ese lado');
+  assert.equal(S.ladoAlTocar(rodD, 'rodilla', 'Izquierdo'), 'Bilateral', 'el otro lado se añade');
+  assert.equal(S.ladoAlTocar(rodI, 'rodilla', 'Bilateral'), 'Derecho', 'tocar uno de bilateral lo quita');
+  assert.equal(S.ladoAlTocar(rodI, 'rodilla', 'Izquierdo'), '', 'segundo toque: sin lado');
+  assert.equal(S.ladoAlTocar(rodD, 'hombro', 'Bilateral'), 'Derecho', 'otra región: el lado de la zona');
   assert.equal(S.ladoAlTocar(lumbar, 'lumbar', 'Central'), 'Central', 'la misma región de columna conserva el lado');
   assert.equal(S.ladoAlTocar(lumbar, 'rodilla', 'Izquierdo'), '', 'otra región: sin lado');
 });
@@ -86,6 +91,8 @@ test('silueta: el texto confirma región y lado concordados', () => {
   assert.deepEqual(S.textoElegida('rodilla', 'Izquierdo'), { principal: 'Rodilla (izquierda)', sub: '' });
   assert.deepEqual(S.textoElegida('hombro', 'Derecho'), { principal: 'Hombro (derecho)', sub: '' });
   assert.equal(S.textoElegida('codo', '').sub, 'Lado sin indicar (opcional)');
+  assert.deepEqual(S.textoElegida('rodilla', 'Bilateral'), { principal: 'Rodilla (bilateral)', sub: 'Toca un lado para quitarlo' });
+  assert.equal(S.textoElegida('lumbar', 'Bilateral').sub, '', 'en la columna no hay dos zonas que quitar');
 });
 
 test('silueta: cada zona es un botón con nombre que llama a una función expuesta en window', () => {

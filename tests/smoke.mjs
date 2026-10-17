@@ -473,6 +473,7 @@ async function checkSilueta(page) {
   const estadoSinSalto = () => page.evaluate(() => ({
     region: state.region, lado: state.lado, sexo: state.sexo,
     texto: document.querySelector('.sil-elegida-texto').textContent,
+    sub: document.querySelector('.sil-elegida-sub').textContent,
     figura: document.querySelector('.sil-lienzo').dataset.figura,
     sexoSilueta: document.querySelector('.sil-sexo .option-btn.selected')?.dataset.sexo || '',
     sexoFase1: document.querySelector('#sexo .option-btn.selected')?.textContent.trim() || '',
@@ -507,12 +508,23 @@ async function checkSilueta(page) {
   let e = await estado();
   r.toqueRegionYLado = e.region === 'rodilla' && e.lado === 'Izquierdo' && e.texto === 'Rodilla (izquierda)'
     && e.tarjeta === 'rodilla' && e.botonLado === 'Izquierdo' && e.on.join() === 'rodilla|Izquierdo';
+  // Las dos zonas de la región son casillas: el otro lado se añade (bilateral), sin confirmar…
   await page.click(zona('rodilla', 'Derecho'));
   e = await estado();
-  r.otroLado = e.lado === 'Derecho' && !(await page.isVisible('#confirmBanner'));
+  r.bilateral = e.lado === 'Bilateral' && e.texto === 'Rodilla (bilateral)' && e.sub === 'Toca un lado para quitarlo'
+    && e.botonLado === 'Bilateral' && e.on.join() === 'rodilla|Derecho,rodilla|Izquierdo' && !(await page.isVisible('#confirmBanner'));
+  // …tocar uno lo quita…
+  await page.click(zona('rodilla', 'Izquierdo'));
+  e = await estado();
+  r.quitaLado = e.lado === 'Derecho' && e.on.join() === 'rodilla|Derecho' && e.sub === '';
+  // …y un segundo toque deja la región sin lado
+  await page.click(zona('rodilla', 'Derecho'));
+  e = await estado();
+  r.sinLado = e.region === 'rodilla' && e.lado === '' && e.aMedias.join() === 'rodilla|Derecho,rodilla|Izquierdo' && e.sub === 'Lado sin indicar (opcional)';
+  // Los botones de lado siguen funcionando y el dibujo los sigue
   await page.click('#lado .option-btn:has-text("Bilateral")');
   e = await estado();
-  r.bilateral = e.on.join() === 'rodilla|Derecho,rodilla|Izquierdo';
+  r.botonBilateral = e.on.join() === 'rodilla|Derecho,rodilla|Izquierdo';
   await page.click(zona('lumbar', ''));
   e = await estado();
   r.columna = e.region === 'lumbar' && e.lado === '' && e.texto === 'Lumbar' && e.on.join() === 'lumbar|';
@@ -4636,7 +4648,7 @@ const SECCIONES = [
 
   { id: 'silueta', titulo: 'Silueta de la fase 2 (región y lado de un toque, 320 px):', run: async ({ page }) => {
     const r = await checkSilueta(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; otro lado sin confirmar; bilateral marca las dos; columna sin lado; el sexo es el mismo en las fases 1 y 2 (se cambia y se quita desde cualquiera) y la figura lo sigue; la figura no salta al cambiar el sexo ni el lado, y las dos figuras miden lo mismo de alto; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} figura según el sexo de la fase 1; un toque fija región y lado; las dos zonas de la región son casillas (el otro lado añade bilateral, tocar uno lo quita, segundo toque sin lado) y los botones de lado siguen; columna sin lado; el sexo es el mismo en las fases 1 y 2 (se cambia y se quita desde cualquiera) y la figura lo sigue; la figura no salta al cambiar el sexo ni el lado, y las dos figuras miden lo mismo de alto; la lista sigue; cambiar de región pide confirmación; zonas de 44 px sin pisarse a 320 px; colores del tema${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
