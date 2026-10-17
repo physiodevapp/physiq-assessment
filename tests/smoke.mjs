@@ -493,7 +493,8 @@ async function checkSilueta(page) {
   const altos = new Set(), altosLienzo = new Set(), figuras = new Set(), cabe = [];
   const estado = async () => { const e = await estadoSinSalto(); altos.add(e.alto); altosLienzo.add(e.altoLienzo); figuras.add(e.figura); cabe.push(e.notaCabe); return e; };
   const inicio = await estado();
-  r.figuraDelSexo = inicio.figura === 'mujer' && inicio.sexoSilueta === 'Mujer' && inicio.nota === '' && inicio.texto === 'Toca la zona en la silueta';
+  r.figuraDelSexo = inicio.figura === 'mujer' && inicio.sexoSilueta === 'Mujer' && inicio.nota === '' && inicio.texto === 'Toca la región en la silueta'
+    && await page.evaluate(() => { const v = document.querySelector('#siluetaRegion .sil-vista'); return !!v && v.textContent.includes('Vista desde detrás') && v.getBoundingClientRect().bottom <= document.querySelector('.sil-lienzo').getBoundingClientRect().top + 4; });
   // A 320 px: zonas de 44 px, dentro de la pantalla y sin pisarse; nada desborda
   r.cabe320 = await page.evaluate(() => {
     const cajas = [...document.querySelectorAll('.sil-zona')].map(b => b.getBoundingClientRect());
