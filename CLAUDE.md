@@ -528,7 +528,7 @@ See `MIGRATION_PLAN.md` for a living checklist covering the ES modules migration
 - **Phases 3 and 4b**: `#lesNotaNaturaleza` and `#lesNotaBrote` (only in brote or «peor»), `.les-nota-4b` (bone, skin, osteonecrosis; the anticoagulant sentence only with its checkbox); no LR changes. With the hypermobility card too, Malfait 2017 p. 19 under the Beighton scale.
 - **Phase 5** box `.les-fase5` (never folded), `📋 Notas` «🦋 LUPUS:», `📄 Informe` «LUPUS ERITEMATOSO SISTÉMICO» (diagnosed) or «RECOMENDACIÓN DE VALORACIÓN MÉDICA» (suspicion, never the word lupus), AI block `bloqueLESIA()` (no citations), payload `le`. Exercise dose from Blaess 2024 (the only read source recommending one for SLE).
 - **Phase 6**: `construirPlan()` takes `lupus` (null or `{ brote, antitrombotico, raynaud }`): avisos `lupus`, `lupusBrote`, `lupusAntitrombotico`, `lupusRaynaud`; safety net `RED_LUPUS` (fever, DVT — not repeated where the region has it —, stroke, always with Diagnosticado).
-- Unit `tests/unit/lupus.mjs` (includes «marking the card, every row filled, never removes or lowers an urgency of another system»), smoke section `lupus`. physiq-report will read `le` with a copy of `bloqueLESIA()` (`_bloqueLES`; `LES_CASOS` pins the text) — pending, another PR.
+- Unit `tests/unit/lupus.mjs` (includes «marking the card, every row filled, never removes or lowers an urgency of another system»), smoke section `lupus`. physiq-report reads `le` with a copy of `bloqueLESIA()` (`_bloqueLES`, its `lib/payload.js`; `LES_CASOS` in a test in each repo pins the same literal text, so a change here is copied there).
 
 ## Sibling repos
 
