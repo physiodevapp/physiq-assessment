@@ -2415,6 +2415,12 @@
 @media (max-width: 768px) {
   .fp-escala .option-btn { font-size: 0.75rem; }
 }
+/* Pantalla estrecha: cada fila de opciones se estira hasta el borde, así un botón
+   descolgado en la última fila ocupa todo el ancho y no quedan huecos (mismo
+   criterio que las opciones de los cuestionarios) */
+@media (max-width: 520px) {
+  .fp-opts .option-btn, .sint-zonas .option-btn { flex: 1 1 auto; text-align: center; justify-content: center; }
+}
 
 /* ─── Urgencias de la región (fase 2) ───────────────────────── */
 .urgencia-box { border: 2px solid var(--red); border-radius: var(--radius); background: rgba(255,71,87,0.08); padding: 10px 14px; margin-bottom: 1rem; }

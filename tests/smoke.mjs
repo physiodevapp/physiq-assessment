@@ -4179,6 +4179,51 @@ async function checkPlanIA(browser, errors) {
   return r;
 }
 
+// Pantalla estrecha: ningún grupo de botones deja uno descolgado con hueco a su lado en la
+// última fila (o llena la fila o el último ocupa todo el ancho). Recorre las 7 regiones
+// hasta la fase 5 en un móvil de 320 px, abre todo lo plegable y mira cada fase (1–6).
+// Fuera: la silueta (zonas colocadas sobre el dibujo) y las citas (texto corrido).
+async function checkSinHuecos(browser, errors) {
+  const fallos = [];
+  const huecos = page => page.evaluate(() => {
+    const out = [];
+    const visibles = el => el.getBoundingClientRect().width > 0;
+    const conts = new Set([...document.querySelectorAll('.phase-container.active button')].filter(visibles).map(x => x.parentElement));
+    for (const c of conts) {
+      if (c.closest('.sil-lienzo')) continue;
+      const bs = [...c.children].filter(x => x.tagName === 'BUTTON' && visibles(x) && !x.classList.contains('cita'));
+      if (bs.length < 3) continue;
+      const filas = {};
+      for (const x of bs) (filas[Math.round(x.getBoundingClientRect().top)] ??= []).push(x);
+      const ks = Object.keys(filas).map(Number).sort((a, b) => a - b);
+      if (ks.length < 2) continue;
+      const ultimo = filas[ks.at(-1)].at(-1).getBoundingClientRect();
+      const hueco = c.getBoundingClientRect().right - ultimo.right;
+      if (hueco > 20) out.push(`${c.className} (${filas[ks.at(-1)].map(x => x.textContent.trim().slice(0, 24)).join(' · ')}, hueco ${Math.round(hueco)} px)`);
+    }
+    return out;
+  });
+  for (const region of REGIONS) {
+    const context = await browser.newContext({ viewport: { width: 320, height: 700 }, isMobile: true, hasTouch: true });
+    const page = await context.newPage();
+    page.on('pageerror', err => errors.push(`pageerror (huecos ${region}): ${err.message}`));
+    await abrirApp(page);
+    const r = await walkRegion(page, region);
+    if (r.finalPhase !== 5) { fallos.push(`${region}: no llega a la fase 5`); await context.close(); continue; }
+    for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
+      await page.evaluate(f => window.goToPhase(f), f);
+      await page.waitForFunction(f => String(window.state.currentPhase) === String(f), f);
+      await page.evaluate(() => document.querySelectorAll('.phase-container.active details:not([open])').forEach(d => { d.open = true; }));
+      // El formulario previo se pinta al abrirse (import() de formulario.js)
+      if (f === 1 || f === 2) await page.waitForSelector('.phase-container.active .fp-opts');
+      await page.waitForTimeout(150);
+      for (const h of await huecos(page)) fallos.push(`${region} fase ${f}: ${h}`);
+    }
+    await context.close();
+  }
+  return { ok: fallos.length === 0, fallos: [...new Set(fallos)] };
+}
+
 async function checkFase6(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await portapapelesPropio(context);
@@ -4998,6 +5043,12 @@ const SECCIONES = [
   { id: 'barra-fija', titulo: 'Barra de navegación fija durante la entrada de fase (móvil):', run: async ({ browser, errors }) => {
     const r = await checkBarraFijaAnimacion(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} al volver de la 6 a la 5, la barra «← Anterior / Compartir» sigue al pie de la pantalla en cada fotograma de la animación (sin transform en la fase), así que no tapa «Plan de tratamiento →» ni salta${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'huecos', titulo: 'Sin botones descolgados en pantalla estrecha (320 px, las 7 regiones, fases 1–6):', run: async ({ browser, errors }) => {
+    const r = await checkSinHuecos(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} en ningún grupo de botones queda uno solo en la última fila con hueco al lado: la fila se llena o el último ocupa todo el ancho${r.ok ? '' : ' ' + JSON.stringify(r.fallos)}`);
     return r.ok;
   } },
 
