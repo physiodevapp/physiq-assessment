@@ -802,6 +802,90 @@ async function checkDisautonomia(page) {
   return r;
 }
 
+// Reloj de la prueba de bipedestación (docs/pots.md, «Reloj»): reloj del
+// navegador simulado (page.clock), pitidos y vibración contados.
+async function checkDsReloj(page) {
+  await page.addInitScript(() => {
+    window.__pitidos = 0; window.__vibra = 0; window.__wake = 0;
+    const AC = window.AudioContext;
+    if (AC) { const o = AC.prototype.createOscillator; AC.prototype.createOscillator = function () { window.__pitidos++; return o.call(this); }; }
+    navigator.vibrate = () => { window.__vibra++; return true; };
+    Object.defineProperty(navigator, 'wakeLock', { value: { request: async () => { window.__wake++; return { release: async () => {} }; } } });
+  });
+  await page.clock.install({ time: new Date('2026-10-17T10:00:00') });
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#edadPaciente', '24');
+  await page.dispatchEvent('#edadPaciente', 'input');
+  await page.click('#dsEstado .option-btn[data-valor="sospecha"]');
+  await page.evaluate(() => goToPhase(2));
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.click('#tab_transversal_disautonomia');
+  const P = '#panel_transversal_disautonomia', A = '#acc_transversal_disautonomia';
+  await page.click(`${P} button:has-text("Hacer la prueba de bipedestación")`);
+  const reloj = () => page.evaluate(p => document.querySelector(`${p} [data-ds-reloj]`).textContent.replace(/\s+/g, ' ').trim(), P);
+  const toca = sel => page.evaluate(sel => [...document.querySelectorAll(sel)].filter(e => e.classList.contains('ds-fila-toca')).map(e => e.dataset.dsEt || `${e.dataset.dsFila}.${e.dataset.dsCampo}`), sel);
+  const pitidos = () => page.evaluate(() => window.__pitidos);
+  r.botones = (await reloj()).includes('Empezar reposo tumbado (5 min)') && (await reloj()).includes('Se pone de pie');
+  // Reposo
+  await page.click(`${P} button:has-text("Empezar reposo tumbado")`);
+  r.wake = await page.evaluate(() => window.__wake) === 1;
+  await page.clock.runFor(125_000);
+  r.reposo = (await reloj()).includes('2:05') && (await reloj()).includes('quedan 2:55');
+  r.sinPitidoAntes = await pitidos() === 0;
+  await page.clock.runFor(175_000);
+  r.reposoCumplido = (await reloj()).includes('Reposo cumplido') && (await toca(`${P} [data-ds-et]`)).join() === 'tumbado';
+  r.pitidoReposo = await pitidos() === 1 && await page.evaluate(() => window.__vibra) === 1;
+  // De pie
+  await page.click(`${P} .ds-reloj button:has-text("Se pone de pie")`);
+  r.pie0 = (await reloj()).includes('0:00') && (await reloj()).includes('Siguiente: 1 min en 1:00');
+  await page.clock.runFor(60_000);
+  r.min1 = (await reloj()).includes('Ahora: medida de 1 min') && (await reloj()).includes('Siguiente: 3 min en 2:00');
+  // Cada segundo cambian los textos, no los botones (un toque no se pierde)
+  const parar = await page.$(`${P} .ds-reloj-btn`);
+  await page.clock.runFor(3_000);
+  r.botonEstable = await parar.evaluate(b => b.isConnected);
+  r.filaM1 = (await toca(`${P} .ds-tabla > *`)).sort().join() === 'm1,m1.fc,m1.tad,m1.tas'
+    && (await toca(`${A} [data-ds-et]`)).join() === 'm1';
+  r.pitidoM1 = await pitidos() === 2;
+  await page.clock.runFor(12_000);
+  await page.fill(`${P} [data-ds-fila="m1"][data-ds-campo="fc"]`, '95');
+  await page.clock.runFor(145_000);   // 3:40
+  await page.fill(`${P} [data-ds-fila="m3"][data-ds-campo="fc"]`, '102');
+  const etiqueta = (c, f) => page.evaluate(([c, f]) => document.querySelector(`${c} [data-ds-et="${f}"]`).textContent, [c, f]);
+  r.tomaTarde = (await etiqueta(P, 'm3')).includes('toma a las 3:40') && (await etiqueta(A, 'm3')).includes('toma a las 3:40');
+  r.tomaATiempo = !(await etiqueta(P, 'm1')).includes('toma');
+  r.foco = await page.evaluate(p => document.activeElement === document.querySelector(`${p} [data-ds-fila="m3"][data-ds-campo="fc"]`), P);
+  // La pantalla apagada no desajusta: el tiempo sale de la hora de inicio
+  await page.clock.runFor(420_000);    // 10:40
+  r.pitidos5 = await pitidos() === 6;
+  await page.clock.runFor(30_000);     // 11:10
+  r.terminada = (await reloj()).includes('Prueba terminada: 10 min de pie') && (await toca(`${P} [data-ds-et]`)).length === 0;
+  await page.clock.runFor(120_000);
+  r.sinMasPitidos = await pitidos() === 6;
+  // El reloj no entra en el payload
+  r.payload = await page.evaluate(async () => { const d = (await import('./app.js')).buildPhysiQPayload(); return !JSON.stringify(d).includes('reloj') && !JSON.stringify(d).includes('tomas'); });
+  await page.click(`${P} button:has-text("Cerrar el reloj")`);
+  r.cerrado = (await reloj()).includes('Empezar reposo tumbado') && await page.evaluate(() => state.disautonomia.bipedestacion.reloj === null)
+    && await page.evaluate(p => document.querySelector(`${p} [data-ds-fila="m1"][data-ds-campo="fc"]`).value === '95', P);
+  // «Parar» a media prueba
+  await page.click(`${P} .ds-reloj button:has-text("Se pone de pie")`);
+  await page.clock.runFor(30_000);
+  await page.click(`${P} button:has-text("Parar")`);
+  await page.clock.runFor(60_000);
+  r.parar = await pitidos() === 6 && (await reloj()).includes('Empezar reposo tumbado');
+  // 320 px: el reloj cabe en el acordeón
+  await page.click(`${P} .ds-reloj button:has-text("Se pone de pie")`);
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.click(`${A} .sistema-accordion-header`);
+  await page.clock.runFor(1_000);
+  r.ancho = await page.evaluate(a => document.documentElement.scrollWidth <= 320
+    && [...document.querySelectorAll(`${a} .ds-reloj-btn`)].every(b => b.getBoundingClientRect().right <= 320 && b.getBoundingClientRect().height >= 44), A);
+  r.ok = Object.entries(r).every(([, v]) => v === true);
+  return r;
+}
+
 async function checkDerivacionVascular(page) {
   await page.setViewportSize({ width: 1280, height: 860 });
   await abrirApp(page);
@@ -4774,6 +4858,13 @@ const SECCIONES = [
     const r = await checkDisautonomia(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta, síncope urgente sin plegar, paroxística, sospecha, prueba de bipedestación (compatible, hipotensión, copias sincronizadas), notas 3 y 4b, fase 5, fase 6 y 320 px`);
     if (!r.ok) console.log('\nDisautonomía:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'ds-reloj', titulo: 'Reloj de la prueba de bipedestación (POTS, reloj simulado):', run: async ({ page }) => {
+    const r = await checkDsReloj(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} reposo de 5 min, de pie con la fila que toca en las dos copias, un pitido por marca, «toma a las 3:40», terminada, Parar, fuera del payload, 320 px`);
+    if (!r.ok) console.log('\nReloj:', JSON.stringify(r));
     return r.ok;
   } },
 
