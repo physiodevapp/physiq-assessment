@@ -156,7 +156,7 @@ test('anatomía: lumbar, sin anatomía solo las filas genéricas (regla de Flynn
   assert.deepEqual(TODOS.filter(x => x.h.region === 'lumbar' && !x.t.anatomia).map(x => `${x.hId}/${x.i}`),
     ['lu1/0', 'lu4/4', 'lu9/0', 'lu9/1', 'lu9/2']);
   const con = PREG_CON.filter(p => p.region === 'lumbar').map(p => p.q.id);
-  assert.equal(con.length, 25);
+  assert.equal(con.length, 26);   // l_u6 (cascanueces) → riñón, docs/mals-cascanueces.md
   const sinQ = PREGUNTAS.filter(p => p.region === 'lumbar' && !compartida(p) && !p.q.anatomia).map(p => p.q.id);
   assert.deepEqual(sinQ, []);
 });

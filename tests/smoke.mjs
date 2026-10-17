@@ -966,6 +966,46 @@ async function checkDerivacionCribado(page) {
   return r;
 }
 
+// Cascanueces (l_u6) y MALS (bandera de pérdida de peso de l_gi),
+// docs/mals-cascanueces.md: «¿Por qué?» y «Ampliar» con su fisiología, mensaje
+// 🩺 solo con SÍ, aviso «Derivación médica» sin urgencia; el MALS solo está en
+// el «Ampliar» de la bandera.
+async function checkCascanueces(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  await irAFase2(page, 'lumbar');
+  await page.click('#tab_l_urogenital');
+  const fila = '#panel_l_urogenital #sq2_l_u6';
+  const r = {};
+  r.sinUrg = await page.locator(fila).evaluate(el => !el.classList.contains('sq2-urg'));
+  r.msgOculto = !(await page.isVisible(`${fila} .sq2-deriv-msg`));
+  await page.click(`${fila} summary`);
+  r.porque = await page.locator(`${fila} .razon`).evaluate(d => d.open && /Por qué/i.test(d.textContent) && /Cuánto pesa/i.test(d.textContent));
+  await page.click(`${fila} .razon-ampliar`);
+  await page.waitForSelector('#razonPanel.open');
+  r.ampliar = await page.evaluate(() => {
+    const t = document.getElementById('razonContenido').textContent;
+    return /Fisiología/i.test(t) && /Penfold 2024/.test(t) && /Bruessel 2026/.test(t);
+  });
+  await page.keyboard.press('Escape');
+  await page.click(`${fila} .sq-btn.si`);
+  await page.waitForSelector(`${fila} .sq2-deriv-msg`, { state: 'visible' });
+  r.msgVisible = true;
+  r.aviso = await page.evaluate(() => {
+    const t = document.getElementById('sistemicoAlert').textContent;
+    return /Derivación médica/.test(t) && /cascanueces/.test(t) && !/Derivación urgente/.test(t);
+  });
+  await page.click('#tab_l_gi');
+  const flag = page.locator('#panel_l_gi .flag-item', { hasText: 'Pérdida de peso inexplicada' });
+  await flag.locator('.flag-porque').click();
+  await flag.locator('.razon-ampliar').click();
+  await page.waitForSelector('#razonPanel.open');
+  r.mals = await page.evaluate(() => /arcuato medio/.test(document.getElementById('razonContenido').textContent));
+  await page.keyboard.press('Escape');
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 // «¿Por qué?» de los tests (fase 4b, docs/razonamiento-tests.md): hombro con
 // h2 (pinzamiento). Bajo los badges, la frase de «cuánto pesa»; «Ampliar →»
 // abre el mismo panel de la fase 2 con el detalle del test. Escritorio: panel
@@ -4876,6 +4916,12 @@ const SECCIONES = [
     console.log(`  ${c.ok ? '✓' : '✗'} cribado (l_u5): «¿Por qué?» y «Ampliar» con fisiología, mensaje solo con SÍ, aviso sin el genérico, l6 sigue urgente, fase 5`);
     if (!c.ok) console.log('\nDerivación del cribado:', JSON.stringify(c));
     return r.ok && c.ok;
+  } },
+
+  { id: 'cascanueces', titulo: 'Cascanueces (l_u6) y MALS (lumbar, docs/mals-cascanueces.md):', run: async ({ page }) => {
+    const r = await checkCascanueces(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} l_u6: «¿Por qué?» y «Ampliar» con fisiología, mensaje solo con SÍ, aviso «Derivación médica» sin urgencia; el MALS en el «Ampliar» de la bandera de l_gi${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
   } },
 
   { id: 'tactil', titulo: 'Botones en táctil (segundo toque y :hover):', run: async ({ browser, errors }) => {
