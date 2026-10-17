@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **525** referencias de literatura, con **2805** usos.
+- **546** referencias de literatura, con **3082** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **379** de 525 referencias del registro revisadas. Ver «Estado de revisión».
+- **379** de 546 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -58,26 +58,40 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE CG109](#nice-cg109) | razonamiento fase 2 · plan de tratamiento · texto | 26 | **sin revisar** |
 | [NICE CG151](#nice-cg151) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG156](#nice-ng156) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) | razonamiento fase 2 | 3 | **sin revisar** |
+| [Ruperto 2011](#ruperto-2011) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Byers 2017](#byers-2017) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Henderson 2017](#henderson-2017) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Malfait 2017](#malfait-2017) | razonamiento fase 2 · texto | 54 | **sin revisar** |
+| [Malfait 2017](#malfait-2017) | razonamiento fase 2 · texto | 61 | **sin revisar** |
 | [Schroeder 2017](#schroeder-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Baker 2018](#baker-2018) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
+| [Gordon 2018](#gordon-2018) | razonamiento fase 2 · texto | 12 | **sin revisar** |
 | [Hulens 2018](#hulens-2018) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Aringer 2019](#aringer-2019) | razonamiento fase 2 · texto | 16 | **sin revisar** |
+| [Tektonidou 2019](#tektonidou-2019) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Wang 2020](#wang-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [WFH 2020](#wfh-2020) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Kaneko 2021](#kaneko-2021) | razonamiento fase 2 · texto | 8 | **sin revisar** |
+| [Pisetsky 2021](#pisetsky-2021) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Thanou 2021](#thanou-2021) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Drosos 2022](#drosos-2022) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Pokhrel 2022](#pokhrel-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Raj 2022](#raj-2022) | razonamiento fase 2 · texto | 37 | **sin revisar** |
+| [Fragoulis 2023](#fragoulis-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lim y Selbi 2023](#lim-y-selbi-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Limaiem 2023](#limaiem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Matthews 2023](#matthews-2023) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Murphy 2023](#murphy-2023) | razonamiento fase 2 · razonamiento fase 4 | 2 | **sin revisar** |
 | [Paredes Mogica 2023](#paredes-mogica-2023) | razonamiento fase 2 · razonamiento fase 4 | 3 | **sin revisar** |
 | [Punnapuzha 2023](#punnapuzha-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Saleem 2023](#saleem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Yasir 2023](#yasir-2023) | razonamiento fase 2 · texto | 17 | **sin revisar** |
+| [Fanouriakis 2024](#fanouriakis-2024) | razonamiento fase 2 · texto | 10 | **sin revisar** |
 | [Hosseinzadeh 2024](#hosseinzadeh-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kimyaghalam 2024](#kimyaghalam-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Penfold 2024](#penfold-2024) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -86,7 +100,9 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hulens 2025](#hulens-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lizzo 2025](#lizzo-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Saad y Mathew 2025](#saad-y-mathew-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Sammaritano 2025](#sammaritano-2025) | razonamiento fase 2 | 4 | **sin revisar** |
 | [Bell y Saleh 2026](#bell-y-saleh-2026) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Bowers y Blum 2026](#bowers-y-blum-2026) | razonamiento fase 2 · texto | 14 | **sin revisar** |
 | [Hanif 2026](#hanif-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Regalla y Killeen 2026](#regalla-y-killeen-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Brown 2004](#brown-2004) | razonamiento fase 4 | 1 | **sin revisar** |
@@ -194,6 +210,11 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Fedorowski 2019](#fedorowski-2019) | texto | 14 | **sin revisar** |
 | [Miller 2020](#miller-2020) | texto | 7 | **sin revisar** |
 | [Vernino 2021](#vernino-2021) | texto | 28 | **sin revisar** |
+| [Frade 2023](#frade-2023) | texto | 21 | **sin revisar** |
+| [Blaess 2024](#blaess-2024) | texto | 56 | **sin revisar** |
+| [Dures 2024](#dures-2024) | texto | 7 | **sin revisar** |
+| [Parodis 2024](#parodis-2024) | texto | 14 | **sin revisar** |
+| [Saliba 2026](#saliba-2026) | texto | 14 | **sin revisar** |
 | [Sivakoti 2026](#sivakoti-2026) | texto | 7 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
@@ -249,7 +270,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Grondin 2026](#grondin-2026) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 | 3 | 2026-10 · Añadida: texto completo leído en PMC (2026-10). Misma cohorte que Grondin 2021 (85 pacientes consecutivos, 27 con radiculopatía; neurocirujano con RM). Tabla 2: ULNT1 LR+ 2,46, LR− 0,54; 1 de 4 ULNT positivo LR− 0,08; SART pasiva modificada LR+ 2,05, LR− 0,36; Spurling con dolor de brazo LR+ 34,4. Sustituye a Grondin 2021 como fuente leída de esa cohorte (el PDF de Grondin 2021 no estaba disponible). |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios en las cifras: texto completo y tabla 3 (figura) leídos en Europe PMC (2026-10). Las cifras de ULNT1, SART y la combinación de 4 ULNT coinciden con su tabla 4. Modelo bivariante (GLMM) que, con k ≤ 3, se interpreta como de efecto fijo (los autores avisan de que solo vale para esas poblaciones). La SART agrupa Sleijser-Koehorst 2021 (riesgo bajo; LR+ 1,88 por sí solo) y Viikari-Juntura 1989 (riesgo alto, cuenta lados: la fila dice n = 13 y las celdas suman 28); por eso la SART pasa a hallazgo (decisión del usuario). El ULNT1 se mantiene (decisión del usuario): sus 3 estudios usan diferenciación estructural y clínica más RM como referencia; Albert-Lucena 2025, con estudios de EMG o conducción nerviosa y sin diferenciación estructural, da LR+ 1,51 y LR− 0,53. Revisiones posteriores: Albert-Lucena 2025 (leída), Lin 2025 sobre el Spurling (bivariante aleatorio, 8 estudios; solo el resumen, PDF no disponible) y Shen 2023 sobre el ULNT1 (solo el resumen). |
 | [Rudwaleit 2006](#rudwaleit-2006) | cribado fase 2 · razonamiento fase 2 | 5 | 2026-10 · Añadida (PDF del usuario, leído entero): es el estudio de origen del criterio de dolor lumbar inflamatorio del cribado lumbar (Goodman 2018, cap. 14, da las mismas cifras). Tabla 5: con 2 de 4 (rigidez matutina de más de 30 minutos, mejora con el ejercicio y no con el reposo, despertar en la segunda mitad de la noche, dolor glúteo alternante), S 70,3 %, E 81,2 %, LR+ 3,7; con 3 o 4, S 33,6 %, E 97,3 %, LR+ 12,4 (IC 4,0–39,7). Estudio exploratorio sin validación: 213 menores de 50 años con dolor lumbar de más de 3 meses (101 con espondilitis anquilosante ya establecida, media de 12,9 años de dolor, y 112 con lumbalgia mecánica), muestra de conveniencia no consecutiva; los propios autores piden validarlo en la enfermedad precoz. |
-| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · plan de tratamiento · texto | 169 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
+| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · plan de tratamiento · texto | 189 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
 | [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) | pauta · tiempos de tejido · texto | 5 | 2026-10 · Sin cambios: PubMed (SIFA y fisioterapia, consensos y revisiones desde 2022) no encuentra un consenso posterior del IHiPRN; el ensayo PhysioFIRST (Kemp 2026) se suma a la pauta de ca2 sin contradecirlo. |
 | [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento | 12 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). Releídas 1.1.1–1.1.2 y 1.3.1–1.3.11 en la sesión de las pautas de tobillo y pie (2026-10): pauta de tp24 y h10 y notas de los avisos artrosisTobillo y artrosis (la terapia manual, solo en cadera y rodilla, 1.3.6). |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), última actualización 29 de julio de 2026; las recomendaciones citadas (1.2.1, 1.2.6, 1.2.7 —corregida en 2026—, 1.3.1–1.3.3 y 1.3.6) dicen lo que recoge la app. |
@@ -373,12 +394,12 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Grimaldi 2026](#grimaldi-2026) | test 4b sin puntuar | 5 | 2026-10 · Sin cambios: es de 2026 y PubMed no encuentra nada posterior sobre pinzamiento isquiofemoral o dolor glúteo bajo. |
 | [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo. |
 | [Menon y Rednam 2026](#menon-y-rednam-2026) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 12 de abril de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [NICE CG147](#nice-cg147) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 8 de agosto de 2012, última actualización el 11 de diciembre de 2020. |
 | [NICE NG12](#nice-ng12) | razonamiento fase 2 | 5 | 2026-10 · Leída en nice.org.uk (2026-10), última actualización 15 de abril de 2026. |
 | [NICE NG125](#nice-ng125) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 19 de agosto de 2020; la revisión de vigilancia de 2023 recomendó actualizarla, pero NICE decidió no hacerlo (31 de mayo de 2023). Las recomendaciones 1.1.3 y 1.4.9 dicen lo que recoge el razonamiento (consultado en nice.org.uk en 2026-10). |
 | [NICE NG126](#nice-ng126) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10). La última actualización, del 17 de junio de 2026, solo añade recomendaciones sobre la profilaxis anti-D; las de síntomas y signos del embarazo ectópico que usa h_g1 no cambian. |
-| [NICE NG158](#nice-ng158) | razonamiento fase 2 · razonamiento fase 4 · plan de tratamiento · texto | 25 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 2 de agosto de 2023, y la revisión del 1 de mayo de 2026 decidió no actualizarla. Las recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18 y las tablas 1 y 2 (escalas de Wells de dos niveles) dicen lo que recoge el razonamiento de ca_v2, r_v2, tp_v2, pq_tvp, pq_tvp_ms y pq_tep (consultado en nice.org.uk en 2026-10). |
+| [NICE NG158](#nice-ng158) | razonamiento fase 2 · razonamiento fase 4 · plan de tratamiento · texto | 26 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 2 de agosto de 2023, y la revisión del 1 de mayo de 2026 decidió no actualizarla. Las recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18 y las tablas 1 y 2 (escalas de Wells de dos niveles) dicen lo que recoge el razonamiento de ca_v2, r_v2, tp_v2, pq_tvp, pq_tvp_ms y pq_tep (consultado en nice.org.uk en 2026-10). |
 | [NICE NG38](#nice-ng38) | razonamiento fase 2 · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 17 de febrero de 2016, sin actualizaciones; la recomendación 1.2.2 dice lo que recoge la app. |
 | [NICE NG65](#nice-ng65) | razonamiento fase 2 | 2 | 2026-10 · Leída en nice.org.uk (2026-10), última actualización 2 de junio de 2017. |
 | [NICE NG89](#nice-ng89) | razonamiento fase 2 · plan de tratamiento | 3 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 13 de agosto de 2019, y la revisión de vigilancia del 18 de septiembre de 2024 decidió no actualizarla. Las recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3 dicen lo que recoge el razonamiento (duraciones de la profilaxis y umbrales de 90 minutos; consultado en nice.org.uk en 2026-10). |
@@ -400,7 +421,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Adigun 2023](#adigun-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 2 de febrero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido | 4 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 3 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Ashley y Lui 2023](#ashley-y-lui-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Barney 2023](#barney-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Barney 2023](#barney-2023) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Basit 2023](#basit-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 8 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Chauhan 2023](#chauhan-2023) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -448,7 +469,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Smidt y Massey 2023](#smidt-y-massey-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido | 6 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 29 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Torlincasi 2023](#torlincasi-2023) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Truong 2023](#truong-2023) | razonamiento fase 2 · plan de tratamiento | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Waheed 2023](#waheed-2023) | razonamiento fase 2 · plan de tratamiento | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Waheed 2023](#waheed-2023) | razonamiento fase 2 · plan de tratamiento | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Wenker y Quint 2023](#wenker-y-quint-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 20 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Ziu 2023](#ziu-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -794,7 +815,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baker 2018](#baker-2018) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Bruessel 2026](#bruessel-2026) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Durer 2024](#durer-2024) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Lim 2013](#lim-2013) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE NG12](#nice-ng12) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG193](#nice-ng193) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Speer 1994](#speer-1994) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Telang 2024](#telang-2024) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [WFH 2020](#wfh-2020) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
+[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baker 2018](#baker-2018) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Bruessel 2026](#bruessel-2026) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Guthmiller 2025](#guthmiller-2025) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaneko 2021](#kaneko-2021) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Lim 2013](#lim-2013) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE NG12](#nice-ng12) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG193](#nice-ng193) · [NICE NG226](#nice-ng226) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Sammaritano 2025](#sammaritano-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Speer 1994](#speer-1994) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [WFH 2020](#wfh-2020) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -1131,11 +1152,46 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Test de ROM activo en 4 direcciones» | 4b · cita bajo el test | 1 |
-| Codo | — | `sistemas.3.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.4.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
 | Codo | — | `steps.0.options.1.derivacion` | 4 · mención en el texto | 3 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
 | Codo | — | Paso `co_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
+
+### Aringer 2019
+
+Autores: Aringer, Costenbader, Daikh et al.  
+Título: *2019 European League Against Rheumatism/American College of Rheumatology classification criteria for systemic lupus erythematosus*  
+Publicación: Arthritis Rheumatol 71(9):1400–1412  
+DOI: 10.1002/art.40930  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10); la figura 2 (imagen) no se pudo ver. Rasgos y pesos (tablas 1 y 2), «clasificación, no diagnóstico» y sospechar primero la infección ante la fiebre (discusión). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Rasgos de los criterios de clasificación EULAR/ACR de 2019: afectación articular (6 puntos: sinovitis en 2 o más articulaciones, o dolor en 2 o más con rigidez matutina de 30 min o más), lupus cutáneo, úlceras orales, alopecia, serositis y fiebre de más de 38,3 °C (Aringer 2019, tabla 1). Son de clasificación, no de diagnóstico: exigen anticuerpos antinucleares y analítica, y cada rasgo cuenta solo si nada lo explica mejor (Aringer 2019, discusión). La fatiga y la artralgia sin rigidez no son criterio: eran menos frecuentes en el lupus precoz que en sus imitadores (Aringer 2019). El diagnóstico es médico y se retrasa una mediana de 2 años (Fanouriakis 2024, p. 18).
+2. Rasgos que pueden corresponder a una enfermedad inflamatoria sistémica: derivación preferente a su médico de atención primaria. El diagnóstico es médico y necesita analítica (Aringer 2019).
+3. Aringer 2019 — Aringer, Costenbader, Daikh et al., «2019 European League Against Rheumatism/American College of Rheumatology classification criteria for systemic lupus erythematosus», Arthritis Rheumatol 2019;71(9):1400–1412, discusión.
+4. Aringer 2019 — Aringer, Costenbader, Daikh et al., «2019 European League Against Rheumatism/American College of Rheumatology classification criteria for systemic lupus erythematosus», Arthritis Rheumatol 2019;71(9):1400–1412, tabla 1 (pericarditis aguda).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_fiebre` · Lupus | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_pecho` · Lupus | 2 · razonamiento del cribado | 4 |
+| Hombro | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.3.lupus.textos.derivar` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.derivar` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.derivar` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.derivar` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.derivar` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.derivar` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.derivar` | 2 · mención en el texto | 2 |
 
 ### Arrigoni 2017
 
@@ -1337,12 +1393,14 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 
 Citada como:
 
-1. Barney 2023 — Barney, Piuzzi y Akhondi, «Femoral Head Avascular Necrosis», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023.
+1. Barney 2023 — Barney, Piuzzi y Akhondi, «Femoral Head Avascular Necrosis», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023, «Etiology», «History and Physical» y «Treatment / Management».
+2. Barney 2023 — Barney, Piuzzi y Akhondi, «Femoral Head Avascular Necrosis», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 1 |
-| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_osteonecrosis` · Lupus | 2 · razonamiento del cribado | 1 |
+| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 2 |
+| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 2 |
 
 ### Basit 2023
 
@@ -1611,6 +1669,85 @@ Citada como:
 | Todas (tiempos de tejido) | — | Fila «Ligamento colateral cubital del codo, sin cirugía» (Ligamento) | cabecera · tiempos de tejido | 2 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
+### Blaess 2024
+
+Autores: Blaess, Geneton, Goepfert et al.  
+Título: *Recommendations for physical activity and exercise in persons living with Systemic Lupus Erythematosus (SLE): consensus by an international task force*  
+Publicación: RMD Open 10(2):e004171  
+DOI: 10.1136/rmdopen-2024-004171  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero sin los suplementos (2026-10). Única fuente leída con una pauta de ejercicio para el LES (recs. 9–15), precauciones (recs. 1–5) y valoración médica antes de empezar (rec. 10). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Lupus en brote o peor sin valorar: los ensayos de ejercicio solo incluyeron lupus estable (Frade 2023); que su reumatólogo revalore las contraindicaciones antes de seguir (Blaess 2024, rec. 4).
+2. Con anticoagulante o antiagregante, precaución con lo que tenga riesgo de golpe (Blaess 2024, rec. 3).
+3. Con el lupus inactivo o leve, llegar poco a poco a 150–300 min por semana de intensidad moderada (esfuerzo 5–6 sobre 10) y fuerza al menos 2 días (Blaess 2024, rec. 9). Sesiones con aeróbico y fuerza, 3–5 por semana (Blaess 2024, rec. 14); fuerza en 1–3 series de 8–12 repeticiones con 1–3 min de descanso (Blaess 2024, rec. 15); aeróbico de 20–30 min hasta 50, en tramos de 4 semanas (Blaess 2024, rec. 12); con calentamiento y vuelta a la calma (Blaess 2024, rec. 13). Supervisado por un fisioterapeuta (Blaess 2024, rec. 11). Puede reducir algo la fatiga, y la actividad del lupus probablemente no cambia (Frade 2023).
+4. Antes de empezar, su médico valora si hay contraindicaciones; antes de ejercicio vigoroso, puede hacer falta un ECG o una prueba de esfuerzo (Blaess 2024, rec. 10).
+5. Con osteonecrosis o artropatía de Jaccoud, que lo valore un especialista antes de empezar (Blaess 2024, rec. 1).
+6. Fotoprotección para prevenir brotes (Parodis 2024, rec. LES 2): protector solar de amplio espectro UVA y UVB, ropa que cubra, sombrero y gafas de sol, y evitar las horas de más sol (Gordon 2018, p. e16; Blaess 2024, rec. 2). Evitar el ejercicio al sol con un índice UV por encima de 3 (opinión de los autores de Frade 2023).
+7. Raynaud: al aire libre, guantes o ropa contra el frío; evitar tocar superficies frías y secar bien la piel durante y después del ejercicio (Blaess 2024, rec. 2). Por lo mismo, cuidado con el frío local en manos y pies (inferencia, sin fuente propia).
+8. En brote, que su reumatólogo revalore las contraindicaciones antes de seguir (Blaess 2024, rec. 4); en un brote articular, no cargar las articulaciones inflamadas (Blaess 2024, rec. 5).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
+| Hombro | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
+| Hombro | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
+| Hombro | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Cadera | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
+| Cadera | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
+| Cadera | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Cervical | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
+| Cervical | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
+| Cervical | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Lumbar | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
+| Lumbar | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
+| Lumbar | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Rodilla | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
+| Rodilla | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
+| Rodilla | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Codo | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
+| Codo | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
+| Codo | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+
 ### Blanpied 2017
 
 Publicación: J Orthop Sports Phys Ther 47(7):A1–A83  
@@ -1764,6 +1901,43 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Bíceps distal reparado, vuelta al deporte» de «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 1 |
+
+### Bowers y Blum 2026
+
+Autores: Bowers y Blum  
+Título: *Systemic Lupus Erythematosus*  
+Publicación: StatPearls [Internet], NBK535405 (act. 2026-09-14)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf), leído entero en la sesión (2026-10). La clave lleva el año de la última actualización del capítulo. Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Si fuma, dejarlo (Parodis 2024, rec. común 3): el tabaco aumenta la actividad del lupus (Bowers y Blum 2026) y el riesgo cardiovascular (Drosos 2022, principio C).
+2. Bowers y Blum 2026 — Bowers y Blum, «Systemic Lupus Erythematosus», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026, «Constitutional Symptoms».
+3. Bowers y Blum 2026 — Bowers y Blum, «Systemic Lupus Erythematosus», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026, «Hematologic and Reticuloendothelial».
+4. Bowers y Blum 2026 — Bowers y Blum, «Systemic Lupus Erythematosus», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026, «Complications».
+5. Bowers y Blum 2026 — Bowers y Blum, «Systemic Lupus Erythematosus», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026, «Pulmonary» y «Cardiovascular».
+6. Bowers y Blum 2026 — Bowers y Blum, «Systemic Lupus Erythematosus», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026, «Neuropsychiatric Manifestations» y «Evaluation».
+7. Bowers y Blum 2026 — Bowers y Blum, «Systemic Lupus Erythematosus», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026, «Musculoskeletal Manifestations».
+8. Bowers y Blum 2026 — Bowers y Blum, «Systemic Lupus Erythematosus», StatPearls [Internet], NCBI Bookshelf, última actualización 14 de septiembre de 2026, «Renal».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_fiebre` · Lupus | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_tvp` · Lupus | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_tep_ictus` · Lupus | 2 · razonamiento del cribado | 4 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_pecho` · Lupus | 2 · razonamiento del cribado | 5 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_neuro` · Lupus | 2 · razonamiento del cribado | 6 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_debilidad` · Lupus | 2 · razonamiento del cribado | 7 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_rinon` · Lupus | 2 · razonamiento del cribado | 8 |
+| Hombro | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
 
 ### Breig y Troup 1979
 
@@ -2736,13 +2910,15 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 
 Citada como:
 
-1. Deeb y Maher 2026 (Raynaud) — Deeb y Maher, «Raynaud Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 13 de septiembre de 2026.
+1. Deeb y Maher 2026 (Raynaud) — Deeb y Maher, «Raynaud Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 13 de septiembre de 2026, «Complications», «Treatment of Severe Digital Ischemia» y «Enhancing Healthcare Team Outcomes».
+2. Deeb y Maher 2026 (Raynaud) — Deeb y Maher, «Raynaud Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 13 de septiembre de 2026.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Codo | — | Pregunta `co4a` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
-| Codo | — | Pregunta `co4a_uni` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
-| Codo | — | Pregunta `co4a_prog` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_dedos` · Lupus | 2 · razonamiento del cribado | 1 |
+| Codo | — | Pregunta `co4a` · Vascular / Neurológica | 2 · razonamiento del cribado | 2 |
+| Codo | — | Pregunta `co4a_uni` · Vascular / Neurológica | 2 · razonamiento del cribado | 2 |
+| Codo | — | Pregunta `co4a_prog` · Vascular / Neurológica | 2 · razonamiento del cribado | 2 |
 
 ### Delitto 2012
 
@@ -3014,6 +3190,39 @@ Citada como:
 | Lumbar | — | Bandera amarilla «Dolor lumbar persistente sin mejoría tras 1 mes de tratamiento conservador» · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 
+### Drosos 2022
+
+Autores: Drosos, Vedder, Houben et al.  
+Título: *EULAR recommendations for cardiovascular risk management in rheumatic and musculoskeletal diseases, including systemic lupus erythematosus and antiphospholipid syndrome*  
+Publicación: Ann Rheum Dis 81(6):768–779  
+DOI: 10.1136/annrheumdis-2021-221733  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). El reumatólogo es el responsable (principio B), dejar de fumar (principio C), el ictus es el riesgo que menos recogen las escalas en el lupus (p. 773). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Si fuma, dejarlo (Parodis 2024, rec. común 3): el tabaco aumenta la actividad del lupus (Bowers y Blum 2026) y el riesgo cardiovascular (Drosos 2022, principio C).
+2. Los corticoides, los inmunosupresores y el anticoagulante los ajusta su reumatólogo (Drosos 2022, principio B).
+3. Drosos 2022 — Drosos, Vedder, Houben et al., «EULAR recommendations for cardiovascular risk management in rheumatic and musculoskeletal diseases, including systemic lupus erythematosus and antiphospholipid syndrome», Ann Rheum Dis 2022;81(6):768–779, p. 773.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_tep_ictus` · Lupus | 2 · razonamiento del cribado | 3 |
+| Hombro | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.3.lupus.textos.medico` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.medico` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.medico` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.medico` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.medico` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.medico` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.medico` | 2 · mención en el texto | 2 |
+
 ### Durer 2024
 
 Autores: Durer, Gasalberti y Shaikh  
@@ -3031,6 +3240,29 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | — | Bandera roja «Tumores óseos primarios (osteoma osteoide: dolor sordo nocturno en el joven que alivian la actividad y, de forma desproporcionada, la aspirina; condrosarcoma, tumor de células gigantes, Ewing) y masas de partes blandas» · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `r2` · Oncológico / Hematológico | 2 · razonamiento del cribado | 1 |
+
+### Dures 2024
+
+Autores: Dures, Farisoğulları, Santos et al.  
+Título: *2023 EULAR recommendations for the management of fatigue in people with inflammatory rheumatic and musculoskeletal diseases*  
+Publicación: Ann Rheum Dis 83(10):1260–1267  
+DOI: 10.1136/ard-2023-224514  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). La fatiga nueva o que empeora debe llevar a valorar la actividad (rec. 4, 1a/A). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Lupus: la artritis da hinchazón y rigidez por la mañana de 30 min o más, sobre todo en manos, muñecas y rodillas, y duele y limita igual en activo que en pasivo (Goodman 2018, cap. 12, p. 456). El dolor generalizado a la palpación sin tumefacción orienta a fibromialgia, que acompaña al lupus en el 20–30 %; el diagnóstico es médico (Goodman 2018, cap. 12, p. 444). La fatiga aparece también con el lupus inactivo, así que sola no mide la actividad; si es nueva o empeora, que la valore su reumatólogo (Dures 2024, rec. 4).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
 
 ### Engelbert 2017
 
@@ -3149,6 +3381,34 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
+
+### Fanouriakis 2024
+
+Autores: Fanouriakis, Kostopoulou, Andersen et al.  
+Título: *EULAR recommendations for the management of systemic lupus erythematosus: 2023 update*  
+Publicación: Ann Rheum Dis 83(1):15–29  
+DOI: 10.1136/ard-2023-224762  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero sin el suplemento en línea (2026-10). Mantenimiento con corticoides ≤ 5 mg/día (rec. 2, 2a/B, p. 18), los pulsos no se relacionan con la osteonecrosis (p. 18), vigilar la nefritis nueva (p. 18), gravedad (fig. 1). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Rasgos de los criterios de clasificación EULAR/ACR de 2019: afectación articular (6 puntos: sinovitis en 2 o más articulaciones, o dolor en 2 o más con rigidez matutina de 30 min o más), lupus cutáneo, úlceras orales, alopecia, serositis y fiebre de más de 38,3 °C (Aringer 2019, tabla 1). Son de clasificación, no de diagnóstico: exigen anticuerpos antinucleares y analítica, y cada rasgo cuenta solo si nada lo explica mejor (Aringer 2019, discusión). La fatiga y la artralgia sin rigidez no son criterio: eran menos frecuentes en el lupus precoz que en sus imitadores (Aringer 2019). El diagnóstico es médico y se retrasa una mediana de 2 años (Fanouriakis 2024, p. 18).
+2. Fanouriakis 2024 — Fanouriakis, Kostopoulou, Andersen et al., «EULAR recommendations for the management of systemic lupus erythematosus: 2023 update», Ann Rheum Dis 2024;83(1):15–29, fig. 1 (p. 22).
+3. Fanouriakis 2024 — Fanouriakis, Kostopoulou, Andersen et al., «EULAR recommendations for the management of systemic lupus erythematosus: 2023 update», Ann Rheum Dis 2024;83(1):15–29, p. 18.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_pecho` · Lupus | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_osteonecrosis` · Lupus | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_rinon` · Lupus | 2 · razonamiento del cribado | 3 |
+| Hombro | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.rasgosFuente` | 2 · mención en el texto | 1 |
 
 ### Fariduddin 2024
 
@@ -3321,6 +3581,62 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Aductores (lesión aguda, futbolistas)» (Músculo) | cabecera · tiempos de tejido | 1 |
+
+### Frade 2023
+
+Autores: Frade, O'Neill, Greene, Nutter y Cameron  
+Título: *Exercise as adjunctive therapy for systemic lupus erythematosus*  
+Publicación: Cochrane Database Syst Rev 4:CD014816  
+DOI: 10.1002/14651858.CD014816.pub2  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). 13 ECA en lupus estable: el ejercicio puede reducir algo la fatiga y la actividad probablemente no cambia (certeza moderada); daños mal comunicados; sol con índice UV > 3 (opinión de los autores). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Lupus en brote o peor sin valorar: los ensayos de ejercicio solo incluyeron lupus estable (Frade 2023); que su reumatólogo revalore las contraindicaciones antes de seguir (Blaess 2024, rec. 4).
+2. Con el lupus inactivo o leve, llegar poco a poco a 150–300 min por semana de intensidad moderada (esfuerzo 5–6 sobre 10) y fuerza al menos 2 días (Blaess 2024, rec. 9). Sesiones con aeróbico y fuerza, 3–5 por semana (Blaess 2024, rec. 14); fuerza en 1–3 series de 8–12 repeticiones con 1–3 min de descanso (Blaess 2024, rec. 15); aeróbico de 20–30 min hasta 50, en tramos de 4 semanas (Blaess 2024, rec. 12); con calentamiento y vuelta a la calma (Blaess 2024, rec. 13). Supervisado por un fisioterapeuta (Blaess 2024, rec. 11). Puede reducir algo la fatiga, y la actividad del lupus probablemente no cambia (Frade 2023).
+3. Fotoprotección para prevenir brotes (Parodis 2024, rec. LES 2): protector solar de amplio espectro UVA y UVB, ropa que cubra, sombrero y gafas de sol, y evitar las horas de más sol (Gordon 2018, p. e16; Blaess 2024, rec. 2). Evitar el ejercicio al sol con un índice UV por encima de 3 (opinión de los autores de Frade 2023).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 3 |
+
+### Fragoulis 2023
+
+Autores: Fragoulis, Nikiphorou, Dey et al.  
+Título: *2022 EULAR recommendations for screening and prophylaxis of chronic and opportunistic infections in adults with autoimmune inflammatory rheumatic diseases*  
+Publicación: Ann Rheum Dis 82(6):742–753  
+DOI: 10.1136/ard-2022-223335  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). La hidroxicloroquina no cuenta como inmunosupresor (p. 743); umbrales de corticoides con duración y dosis mínima desconocida (pp. 745–747). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Fragoulis 2023 — Fragoulis, Nikiphorou, Dey et al., «2022 EULAR recommendations for screening and prophylaxis of chronic and opportunistic infections in adults with autoimmune inflammatory rheumatic diseases», Ann Rheum Dis 2023;82(6):742–753, pp. 743 y 747.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_fiebre` · Lupus | 2 · razonamiento del cribado | 1 |
 
 ### Frey 2017
 
@@ -3636,331 +3952,357 @@ Nota: El cribado de fase 2 lo cita sin año («Criterio de Goodman (cap. 14)»).
 
 Citada como:
 
-1. Fractura sacra por estrés: mujer deportista con actividad vigorosa y repetitiva, dolor en nalga que reproduce la carrera, dieta pobre, alteraciones menstruales o fracturas de estrés previas. Signo de la nalga; la radiografía inicial suele ser normal: la confirman la gammagrafía o la RM (Goodman 2018, cap. 15)
-2. Criterio de Goodman (cap. 14, p. 535), con las cifras del estudio de origen, Rudwaleit 2006 (tabla 5): 2 de 4 → sensibilidad 70,3 %, especificidad 81,2 % (LR+ 3,7); 3 o 4 → sensibilidad 33,6 %, especificidad 97,3 % (LR+ 12,4). Estudio exploratorio, sin validar: 213 menores de 50 años con dolor lumbar crónico, con la espondilitis ya establecida frente a lumbalgia mecánica, en una muestra de conveniencia; el corte de 45 años es de Goodman. No es un diagnóstico.
-3. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 13, pp. 464 y 472–475; cap. 18, pp. 685 y 700–705.
-4. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 6, p. 234; cap. 8, p. 307; cap. 13, p. 476; cap. 18, pp. 690, 703 y 707.
-5. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 9, p. 343; cap. 13, pp. 475–476; cap. 18, pp. 685, 698 y 703.
-6. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 465.
-7. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 476.
-8. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 92 y 120; cap. 6, pp. 226 y 233–236; cap. 18, pp. 685, 690 y 693–694.
-9. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226 y 233–236; cap. 18, pp. 692–693, 704 y 707–708.
-10. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227 y 239; cap. 7, pp. 272–273; cap. 18, pp. 693, 696 y 705–709.
-11. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 236 y 260.
-12. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 227 y 261.
-13. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 259–260.
-14. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 92–95; cap. 7, pp. 274–275; cap. 18, pp. 689, 692–693, 696, 704–705 y 707–709.
-15. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227, 233 y 239; cap. 7, pp. 272–275 y 279; cap. 18, pp. 689, 693 y 704–705.
-16. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 227; cap. 7, pp. 272, 274–275, 282 y 285–286; cap. 18, pp. 685, 693, 703 y 707–709.
-17. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 468.
-18. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 361–364; cap. 18, pp. 689, 697–698 y 705.
-19. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 92–93; cap. 10, pp. 362–363; cap. 18, pp. 693, 697–699 y 705.
-20. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 92–93; cap. 15, p. 591; cap. 18, pp. 689, 692, 703–705 y 708.
-21. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 15, pp. 587 y 592–595; cap. 18, pp. 689, 703–705 y 708.
-22. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 8, p. 307; cap. 9, pp. 337, 339, 341 y 349–351; cap. 18, pp. 689, 698–699 y 705–709.
-23. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, p. 306; cap. 9, pp. 337 y 339–343; cap. 18, pp. 699 y 704.
-24. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 95; cap. 8, pp. 306 y 315–317; cap. 18, pp. 698 y 705–709.
-25. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 311–312 y 325.
-26. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 688, 704 y 707.
-27. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 9, p. 341; cap. 18, pp. 699–700, 704 y 707.
-28. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 700–703 y 706.
-29. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387, 392 y 423.
-30. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 399, 402 y 423.
-31. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 395–397 y 423.
-32. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 392, 402–403 y 423.
-33. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 404, 408–409 y 423.
-34. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387–389 y 422.
-35. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 395–396 y 421.
-36. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 407–409 y 421–423.
-37. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 390, 410–411 y 421–423.
-38. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 402–403 y 421–422.
-39. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 392, 398–399 y 421–423.
-40. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 388, 395, 399 y 422.
-41. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213 y 218–221.
-42. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213–215, 220 y 221.
-43. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 217–218 y 221.
-44. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 218–221.
-45. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 219–221; cap. 8, p. 306.
-46. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213–215 y 220–221.
-47. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 214 y 220–221.
-48. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213 y 220; cap. 8, pp. 306 y 314–317.
-49. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 472 y 487; cap. 16, pp. 611, 616, 629–632 y 641–642.
-50. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475 y 487; cap. 16, pp. 626 y 631–632.
-51. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475 y 487; cap. 16, p. 618.
-52. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 472 y 475; cap. 16, pp. 616, 629–630 y 639.
-53. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 630–632 y 639–640.
-54. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 494–498; cap. 16, pp. 614, 618 y 631–632.
-55. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 619 y 631.
-56. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, p. 618.
-57. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228 y 254–255; cap. 15, p. 595; cap. 16, pp. 623 y 636–637.
-58. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–256; cap. 16, pp. 624 y 636.
-59. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228 y 254–255; cap. 16, p. 624.
-60. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 240–243; cap. 16, pp. 636–637.
-61. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 254 y 260; cap. 16, p. 636.
-62. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 361–362, 364 y 367; cap. 16, pp. 621 y 633.
-63. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 361, 367–368 y 374–375; cap. 16, pp. 617, 633 y 640.
-64. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, p. 617.
-65. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 15, pp. 587–588 y 591–595; cap. 16, p. 617.
-66. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 617, 624 y 639–640.
-67. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 304 y 311–314; cap. 15, pp. 584 y 600–601; cap. 16, pp. 616 y 633–636.
-68. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 13, p. 475; cap. 15, pp. 584 y 602–603; cap. 16, pp. 630 y 638.
-69. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, p. 314; cap. 15, pp. 590 y 603; cap. 16, p. 619.
-70. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 617 y 639.
-71. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 15, pp. 583–584; cap. 16, pp. 625–627 y 639–640.
-72. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 616 y 637–639.
-73. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 15, pp. 583–584; cap. 16, pp. 624–625.
-74. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, p. 455; cap. 16, pp. 611, 614, 633 y 639.
-75. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 439–440, 447–448 y 455; cap. 15, p. 582; cap. 16, pp. 627 y 636.
-76. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 611, 614 y 633.
-77. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 463–464 y 475; cap. 14, pp. 529 y 540–542.
-78. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 13, pp. 476 y 483; cap. 14, pp. 525 y 562.
-79. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 475; cap. 14, pp. 523, 527 y 540–542.
-80. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 6, pp. 226 y 233–236; cap. 14, pp. 542–543.
-81. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226 y 234–236; cap. 14, pp. 537, 543 y 567.
-82. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 7, pp. 272–275; cap. 13, p. 483; cap. 14, pp. 548–550.
-83. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227; cap. 7, pp. 272–274; cap. 14, pp. 549–550.
-84. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373 y 376; cap. 13, p. 483; cap. 14, pp. 531, 542 y 568.
-85. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373; cap. 14, pp. 531, 550 y 562–563.
-86. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 362–363 y 377.
-87. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, p. 362; cap. 13, p. 488; cap. 14, p. 564.
-88. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 90; cap. 8, pp. 304 y 307; cap. 14, pp. 532 y 552–553.
-89. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307 y 316; cap. 14, pp. 532 y 553.
-90. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 303–305 y 326.
-91. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522 y 532.
-92. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 227; cap. 14, pp. 530 y 532.
-93. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 523–524.
-94. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 482; cap. 14, pp. 528–531.
-95. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 440 y 448; cap. 14, pp. 522, 531–532.
-96. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 531 y 564.
-97. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522, 531 y 562–563.
-98. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 429, 438, 440 y 447–448; cap. 14, pp. 522 y 531.
-99. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
-100. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
-101. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
-102. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
-103. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
-104. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
-105. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 360–363 y 377.
-106. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 367, 375–376 y 380.
-107. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
-108. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
-109. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
-110. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
-111. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
-112. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
-113. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
-114. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
-115. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
-116. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
-117. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
-118. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
-119. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
-120. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228, 254–255 y 261.
-121. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 120; cap. 6, pp. 228 y 254–255; cap. 16, pp. 623 y 636.
-122. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–257; cap. 16, pp. 622 y 636.
-123. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 16, p. 624.
-124. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228, 254 y 262.
-125. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 449 y 455; cap. 16, pp. 611 y 641.
-126. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 448–449 y 455–456; cap. 16, pp. 633 y 636.
-127. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 13, pp. 476, 487–488 y 496; cap. 16, pp. 624 y 631–632.
-128. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475, 487 y 495–496; cap. 16, pp. 624, 630 y 639.
-129. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 218–221; cap. 16, pp. 612 y 638.
-130. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 6, p. 254.
-131. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 118; cap. 16, pp. 612, 615, 617 y 622.
-132. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, p. 704.
-133. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 18, p. 704.
-134. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 255.
-135. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 255; cap. 13, p. 494; cap. 18, pp. 696–697 y 705.
-136. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 701 y 706.
-137. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 701, 703 y 705–706.
-138. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, p. 395; cap. 12, pp. 454–455.
-139. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254 (tabla 6.7); cap. 16, p. 624.
-140. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 699–700 y 707.
-141. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475–476; cap. 18, pp. 700–701, 704 y 707.
-142. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387–390, 398 y 404; cap. 18, p. 699.
-143. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387, 390, 392, 395, 398–399, 404 y 422–423; cap. 13, p. 475.
-144. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 119–120; cap. 13, pp. 487–488.
-145. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 449 y 455.
-146. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 113–117; cap. 12, pp. 438–441, 449–450 y 455–456.
-147. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 113–114 y 119; cap. 13, pp. 475–476, 487 y 495–496.
-148. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 125; cap. 13, pp. 487 y 498.
-149. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 120; cap. 6, pp. 228, 254–255 y 262.
-150. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–257.
-151. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 453–456.
-152. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, p. 440.
-153. Goodman 2018
+1. Lupus: la artritis da hinchazón y rigidez por la mañana de 30 min o más, sobre todo en manos, muñecas y rodillas, y duele y limita igual en activo que en pasivo (Goodman 2018, cap. 12, p. 456). El dolor generalizado a la palpación sin tumefacción orienta a fibromialgia, que acompaña al lupus en el 20–30 %; el diagnóstico es médico (Goodman 2018, cap. 12, p. 444). La fatiga aparece también con el lupus inactivo, así que sola no mide la actividad; si es nueva o empeora, que la valore su reumatólogo (Dures 2024, rec. 4).
+2. Lupus: con corticoides, el hueso es más frágil y la piel más fina; antes de ejercicios resistidos o movilizaciones, ten en cuenta la densidad ósea (Yasir 2023; Goodman 2018, cap. 12, p. 445). Un dolor profundo en carga de cadera, rodilla, hombro o tobillo puede ser una osteonecrosis aunque la exploración y la radiografía sean normales (Matthews 2023).
+3. Fractura sacra por estrés: mujer deportista con actividad vigorosa y repetitiva, dolor en nalga que reproduce la carrera, dieta pobre, alteraciones menstruales o fracturas de estrés previas. Signo de la nalga; la radiografía inicial suele ser normal: la confirman la gammagrafía o la RM (Goodman 2018, cap. 15)
+4. Criterio de Goodman (cap. 14, p. 535), con las cifras del estudio de origen, Rudwaleit 2006 (tabla 5): 2 de 4 → sensibilidad 70,3 %, especificidad 81,2 % (LR+ 3,7); 3 o 4 → sensibilidad 33,6 %, especificidad 97,3 % (LR+ 12,4). Estudio exploratorio, sin validar: 213 menores de 50 años con dolor lumbar crónico, con la espondilitis ya establecida frente a lumbalgia mecánica, en una muestra de conveniencia; el corte de 45 años es de Goodman. No es un diagnóstico.
+5. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12 «Screening for Immunologic Disease» (Auyeung y Hickman), p. 445.
+6. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12 «Screening for Immunologic Disease» (Auyeung y Hickman), p. 457.
+7. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12 «Screening for Immunologic Disease» (Auyeung y Hickman), p. 429.
+8. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12 «Screening for Immunologic Disease» (Auyeung y Hickman), p. 441.
+9. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 13, pp. 464 y 472–475; cap. 18, pp. 685 y 700–705.
+10. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 6, p. 234; cap. 8, p. 307; cap. 13, p. 476; cap. 18, pp. 690, 703 y 707.
+11. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 9, p. 343; cap. 13, pp. 475–476; cap. 18, pp. 685, 698 y 703.
+12. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 465.
+13. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 476.
+14. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 92 y 120; cap. 6, pp. 226 y 233–236; cap. 18, pp. 685, 690 y 693–694.
+15. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226 y 233–236; cap. 18, pp. 692–693, 704 y 707–708.
+16. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227 y 239; cap. 7, pp. 272–273; cap. 18, pp. 693, 696 y 705–709.
+17. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 236 y 260.
+18. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 227 y 261.
+19. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 259–260.
+20. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 92–95; cap. 7, pp. 274–275; cap. 18, pp. 689, 692–693, 696, 704–705 y 707–709.
+21. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227, 233 y 239; cap. 7, pp. 272–275 y 279; cap. 18, pp. 689, 693 y 704–705.
+22. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 227; cap. 7, pp. 272, 274–275, 282 y 285–286; cap. 18, pp. 685, 693, 703 y 707–709.
+23. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 468.
+24. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 361–364; cap. 18, pp. 689, 697–698 y 705.
+25. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 92–93; cap. 10, pp. 362–363; cap. 18, pp. 693, 697–699 y 705.
+26. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 92–93; cap. 15, p. 591; cap. 18, pp. 689, 692, 703–705 y 708.
+27. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 15, pp. 587 y 592–595; cap. 18, pp. 689, 703–705 y 708.
+28. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 8, p. 307; cap. 9, pp. 337, 339, 341 y 349–351; cap. 18, pp. 689, 698–699 y 705–709.
+29. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, p. 306; cap. 9, pp. 337 y 339–343; cap. 18, pp. 699 y 704.
+30. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 95; cap. 8, pp. 306 y 315–317; cap. 18, pp. 698 y 705–709.
+31. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 311–312 y 325.
+32. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 688, 704 y 707.
+33. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 9, p. 341; cap. 18, pp. 699–700, 704 y 707.
+34. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 700–703 y 706.
+35. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387, 392 y 423.
+36. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 399, 402 y 423.
+37. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 395–397 y 423.
+38. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 392, 402–403 y 423.
+39. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 404, 408–409 y 423.
+40. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387–389 y 422.
+41. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 395–396 y 421.
+42. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 407–409 y 421–423.
+43. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 390, 410–411 y 421–423.
+44. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 402–403 y 421–422.
+45. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 392, 398–399 y 421–423.
+46. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 388, 395, 399 y 422.
+47. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213 y 218–221.
+48. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213–215, 220 y 221.
+49. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 217–218 y 221.
+50. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 218–221.
+51. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213, 219–221; cap. 8, p. 306.
+52. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213–215 y 220–221.
+53. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 214 y 220–221.
+54. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 213 y 220; cap. 8, pp. 306 y 314–317.
+55. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 472 y 487; cap. 16, pp. 611, 616, 629–632 y 641–642.
+56. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475 y 487; cap. 16, pp. 626 y 631–632.
+57. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475 y 487; cap. 16, p. 618.
+58. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 472 y 475; cap. 16, pp. 616, 629–630 y 639.
+59. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 630–632 y 639–640.
+60. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 494–498; cap. 16, pp. 614, 618 y 631–632.
+61. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 619 y 631.
+62. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, p. 618.
+63. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228 y 254–255; cap. 15, p. 595; cap. 16, pp. 623 y 636–637.
+64. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–256; cap. 16, pp. 624 y 636.
+65. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228 y 254–255; cap. 16, p. 624.
+66. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 240–243; cap. 16, pp. 636–637.
+67. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 254 y 260; cap. 16, p. 636.
+68. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 361–362, 364 y 367; cap. 16, pp. 621 y 633.
+69. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 361, 367–368 y 374–375; cap. 16, pp. 617, 633 y 640.
+70. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, p. 617.
+71. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 15, pp. 587–588 y 591–595; cap. 16, p. 617.
+72. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 617, 624 y 639–640.
+73. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 304 y 311–314; cap. 15, pp. 584 y 600–601; cap. 16, pp. 616 y 633–636.
+74. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 13, p. 475; cap. 15, pp. 584 y 602–603; cap. 16, pp. 630 y 638.
+75. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, p. 314; cap. 15, pp. 590 y 603; cap. 16, p. 619.
+76. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 617 y 639.
+77. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 15, pp. 583–584; cap. 16, pp. 625–627 y 639–640.
+78. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 616 y 637–639.
+79. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 15, pp. 583–584; cap. 16, pp. 624–625.
+80. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, p. 455; cap. 16, pp. 611, 614, 633 y 639.
+81. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 439–440, 447–448 y 455; cap. 15, p. 582; cap. 16, pp. 627 y 636.
+82. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 16, pp. 611, 614 y 633.
+83. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 463–464 y 475; cap. 14, pp. 529 y 540–542.
+84. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 13, pp. 476 y 483; cap. 14, pp. 525 y 562.
+85. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 475; cap. 14, pp. 523, 527 y 540–542.
+86. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 6, pp. 226 y 233–236; cap. 14, pp. 542–543.
+87. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226 y 234–236; cap. 14, pp. 537, 543 y 567.
+88. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 92; cap. 7, pp. 272–275; cap. 13, p. 483; cap. 14, pp. 548–550.
+89. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 226–227; cap. 7, pp. 272–274; cap. 14, pp. 549–550.
+90. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373 y 376; cap. 13, p. 483; cap. 14, pp. 531, 542 y 568.
+91. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 372–373; cap. 14, pp. 531, 550 y 562–563.
+92. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 362–363 y 377.
+93. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, p. 362; cap. 13, p. 488; cap. 14, p. 564.
+94. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 90; cap. 8, pp. 304 y 307; cap. 14, pp. 532 y 552–553.
+95. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307 y 316; cap. 14, pp. 532 y 553.
+96. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 303–305 y 326.
+97. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522 y 532.
+98. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 227; cap. 14, pp. 530 y 532.
+99. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 523–524.
+100. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, p. 482; cap. 14, pp. 528–531.
+101. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 440 y 448; cap. 14, pp. 522, 531–532.
+102. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 531 y 564.
+103. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 522, 531 y 562–563.
+104. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 429, 438, 440 y 447–448; cap. 14, pp. 522 y 531.
+105. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for oncologic causes of back pain», pp. 539–542.
+106. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, «Night pain», p. 119; cap. 8, p. 307; cap. 14, pp. 534 y 562–563.
+107. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for renal and urologic causes of back pain», pp. 550–552.
+108. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Neurogenic» y tabla «Cauda equina syndrome», pp. 536–537 y 552.
+109. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 550–552 y «Screening for male reproductive causes of back pain», pp. 561–562.
+110. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 552 y pp. 561–562.
+111. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 360–363 y 377.
+112. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 10, pp. 367, 375–376 y 380.
+113. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555–556; cap. 15, cuadro 15.1 (p. 581) y pp. 584–585.
+114. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 555 y 557–561.
+115. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 8, pp. 306–307; cap. 14, pp. 553–555.
+116. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535; cap. 15, pp. 581–583.
+117. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 534–535, 542 y 563.
+118. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 8, p. 307; cap. 14, pp. 534–535.
+119. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, pp. 557–561; cap. 15, «The pelvis», pp. 585 y ss.
+120. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Spondylogenic», pp. 538–539; cap. 15, pp. 583–584.
+121. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 538; cap. 15, cuadro 15.2 y «Paget’s disease», p. 583.
+122. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, p. 539; cap. 15, cuadro 15.2 y «Fracture», pp. 583–584.
+123. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, tablas 14.5 y 14.6, cuadro 14.4 y pp. 537–538 y 545–548.
+124. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Abdominal aortic aneurysm», pp. 543–545; cuadro 14.4, p. 538.
+125. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 14, «Screening for peripheral vascular causes of back pain», tablas 14.6 y 14.7, pp. 537 y 545–546.
+126. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228, 254–255 y 261.
+127. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 120; cap. 6, pp. 228 y 254–255; cap. 16, pp. 623 y 636.
+128. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–257; cap. 16, pp. 622 y 636.
+129. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 16, p. 624.
+130. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 228, 254 y 262.
+131. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 449 y 455; cap. 16, pp. 611 y 641.
+132. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 448–449 y 455–456; cap. 16, pp. 633 y 636.
+133. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 13, pp. 476, 487–488 y 496; cap. 16, pp. 624 y 631–632.
+134. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475, 487 y 495–496; cap. 16, pp. 624, 630 y 639.
+135. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 5, pp. 218–221; cap. 16, pp. 612 y 638.
+136. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 119; cap. 6, p. 254.
+137. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 118; cap. 16, pp. 612, 615, 617 y 622.
+138. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, p. 704.
+139. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254; cap. 18, p. 704.
+140. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 255.
+141. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 255; cap. 13, p. 494; cap. 18, pp. 696–697 y 705.
+142. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 701 y 706.
+143. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 701, 703 y 705–706.
+144. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, p. 395; cap. 12, pp. 454–455.
+145. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, p. 254 (tabla 6.7); cap. 16, p. 624.
+146. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 18, pp. 699–700 y 707.
+147. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 13, pp. 475–476; cap. 18, pp. 700–701, 704 y 707.
+148. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387–390, 398 y 404; cap. 18, p. 699.
+149. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 11, pp. 387, 390, 392, 395, 398–399, 404 y 422–423; cap. 13, p. 475.
+150. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 119–120; cap. 13, pp. 487–488.
+151. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 114–117; cap. 12, pp. 449 y 455.
+152. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 113–117; cap. 12, pp. 438–441, 449–450 y 455–456.
+153. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, pp. 113–114 y 119; cap. 13, pp. 475–476, 487 y 495–496.
+154. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 125; cap. 13, pp. 487 y 498.
+155. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 3, p. 120; cap. 6, pp. 228, 254–255 y 262.
+156. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 6, pp. 255–257.
+157. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, pp. 453–456.
+158. Goodman 2018 — Goodman, Heick y Lazaro, Differential Diagnosis for Physical Therapists: Screening for Referral, 6.ª ed. (Elsevier, 2018), cap. 12, p. 440.
+159. Goodman 2018
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Pregunta `end_1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 29 |
-| Todas (sistemas comunes) | — | Pregunta `end_2` · Endocrino / Metabólico | 2 · razonamiento del cribado | 30 |
-| Todas (sistemas comunes) | — | Pregunta `end_3` · Endocrino / Metabólico | 2 · razonamiento del cribado | 31 |
-| Todas (sistemas comunes) | — | Pregunta `end_4` · Endocrino / Metabólico | 2 · razonamiento del cribado | 32 |
-| Todas (sistemas comunes) | — | Pregunta `end_5` · Endocrino / Metabólico | 2 · razonamiento del cribado | 33 |
-| Todas (sistemas comunes) | — | Bandera roja «Síndrome del túnel carpiano bilateral (alerta endocrina/metabólica)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 34 |
-| Todas (sistemas comunes) | — | Bandera roja «Signos de tormenta tiroidea: taquicardia, hipertermia, agitación» · Endocrino / Metabólico | 2 · razonamiento del cribado | 35 |
-| Todas (sistemas comunes) | — | Bandera roja «Confusión, letargo o sudoración profusa sin ejercicio en diabéticos (riesgo hipoglucemia/cetoacidosis)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 36 |
-| Todas (sistemas comunes) | — | Bandera roja «Signos de depleción de potasio por diuréticos: arritmias, calambres» · Endocrino / Metabólico | 2 · razonamiento del cribado | 37 |
-| Todas (sistemas comunes) | — | Bandera roja «Xantomas: pápulas amarillentas en las caras de extensión (eruptivos) o nódulos en los tendones extensores o el Aquiles (tendinosos)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 38 |
-| Todas (sistemas comunes) | — | Bandera roja «Nódulos palpables supraclaviculares o fiebre inexplicable en pacientes con corticosteroides» · Endocrino / Metabólico | 2 · razonamiento del cribado | 39 |
-| Todas (sistemas comunes) | — | Bandera amarilla «Periartritis o tendinitis calcificante bilateral de hombro» · Endocrino / Metabólico | 2 · razonamiento del cribado | 40 |
-| Todas (sistemas comunes) | — | Pregunta `hem_1` · Hematológico | 2 · razonamiento del cribado | 41 |
-| Todas (sistemas comunes) | — | Pregunta `hem_2` · Hematológico | 2 · razonamiento del cribado | 42 |
-| Todas (sistemas comunes) | — | Pregunta `hem_3` · Hematológico | 2 · razonamiento del cribado | 43 |
-| Todas (sistemas comunes) | — | Pregunta `hem_6` · Hematológico | 2 · razonamiento del cribado | 44 |
-| Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 45 |
-| Todas (sistemas comunes) | — | Bandera amarilla «Palidez en pliegues palmares, mucosas o lechos ungueales» · Hematológico | 2 · razonamiento del cribado | 46 |
-| Todas (sistemas comunes) | — | Bandera amarilla «Uñas cóncavas o quebradizas (coiloniquia — alerta de anemia ferropénica)» · Hematológico | 2 · razonamiento del cribado | 47 |
-| Todas (sistemas comunes) | — | Bandera amarilla «Uso crónico de AINEs (predispone a sangrado GI y anemia)» · Hematológico | 2 · razonamiento del cribado | 48 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaCardiaca.fuente` | 6 · plan de tratamiento | 153 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaFracturaEstres.fuente` | 6 · plan de tratamiento | 153 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaInfeccionCadera.fuente` | 6 · plan de tratamiento | 153 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaInfeccionTobillo.fuente` | 6 · plan de tratamiento | 153 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreCardiaco` | 6 · plan de tratamiento | 153 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreFracturaEstres` | 6 · plan de tratamiento | 153 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccionCadera` | 6 · plan de tratamiento | 153 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccionTobillo` | 6 · plan de tratamiento | 153 |
-| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 3 |
-| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 4 |
-| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 5 |
-| Hombro | — | Bandera amarilla «Edad >50 años con dolor insidioso sin causa mecánica clara» · Cáncer / Oncológico | 2 · razonamiento del cribado | 6 |
-| Hombro | — | Bandera amarilla «Debilidad muscular proximal idiopática» · Cáncer / Oncológico | 2 · razonamiento del cribado | 7 |
-| Hombro | — | Pregunta `h1` · Cardiovascular | 2 · razonamiento del cribado | 8 |
-| Hombro | — | Pregunta `h2` · Cardiovascular | 2 · razonamiento del cribado | 9 |
-| Hombro | — | Pregunta `h_c3` · Cardiovascular | 2 · razonamiento del cribado | 10 |
-| Hombro | — | Pregunta `h_c4` · Cardiovascular | 2 · razonamiento del cribado | 11 |
-| Hombro | — | Bandera roja «Síncope repentino sin mareo previo» · Cardiovascular | 2 · razonamiento del cribado | 12 |
-| Hombro | — | Bandera amarilla «Uso de betabloqueantes o inhibidores de la ECA» · Cardiovascular | 2 · razonamiento del cribado | 13 |
-| Hombro | — | Pregunta `h5` · Pulmonar | 2 · razonamiento del cribado | 14 |
-| Hombro | — | Pregunta `h_p2` · Pulmonar | 2 · razonamiento del cribado | 15 |
-| Hombro | — | Pregunta `h_p3` · Pulmonar | 2 · razonamiento del cribado | 16 |
-| Hombro | — | Bandera amarilla «Exposición a factores ambientales/ocupacionales tóxicos» · Pulmonar | 2 · razonamiento del cribado | 17 |
-| Hombro | — | Pregunta `h_r1` · Renal / Urológico | 2 · razonamiento del cribado | 18 |
-| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 19 |
-| Hombro | — | Pregunta `h_g1` · Ginecológico | 2 · razonamiento del cribado | 20 |
-| Hombro | — | Pregunta `h_g2` · Ginecológico | 2 · razonamiento del cribado | 21 |
-| Hombro | — | Pregunta `h_gi1` · GI / Hepático | 2 · razonamiento del cribado | 22 |
-| Hombro | — | Pregunta `h_gi2` · GI / Hepático | 2 · razonamiento del cribado | 23 |
-| Hombro | — | Pregunta `h_gi3` · GI / Hepático | 2 · razonamiento del cribado | 24 |
-| Hombro | — | Pregunta `h_gi4` · GI / Hepático | 2 · razonamiento del cribado | 25 |
-| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 26 |
-| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 27 |
-| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 28 |
-| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 49 |
-| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 50 |
-| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 51 |
-| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 52 |
-| Cadera | — | Bandera roja «Factores de riesgo de malignidad: ≥50 años, sin mejoría en 1 mes, pérdida de peso inexplicada, cáncer previo (ninguna combinación está validada). Lo que más informa: cáncer previo, sospecha clínica, VSG elevada y hematocrito bajo» · Cáncer / Oncológico | 2 · razonamiento del cribado | 53 |
-| Cadera | — | Bandera roja «Tumores óseos primarios (osteoma osteoide: dolor sordo nocturno en el joven que alivian la actividad y, de forma desproporcionada, la aspirina; condrosarcoma, tumor de células gigantes, Ewing) y masas de partes blandas» · Cáncer / Oncológico | 2 · razonamiento del cribado | 54 |
-| Cadera | — | Bandera amarilla «Edad >50 años con dolor insidioso en cadera» · Cáncer / Oncológico | 2 · razonamiento del cribado | 55 |
-| Cadera | — | Bandera amarilla «Antecedente familiar de cáncer» · Cáncer / Oncológico | 2 · razonamiento del cribado | 56 |
-| Cadera | — | Pregunta `c2` · Vascular | 2 · razonamiento del cribado | 57 |
-| Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 58 |
-| Cadera | — | Pregunta `ca_v3` · Vascular | 2 · razonamiento del cribado | 59 |
-| Cadera | — | Pregunta `ca_v4` · Vascular | 2 · razonamiento del cribado | 60 |
-| Cadera | — | Pregunta `ca_v5` · Vascular | 2 · razonamiento del cribado | 61 |
-| Cadera | — | Pregunta `c3` · Urogenital / Renal | 2 · razonamiento del cribado | 62 |
-| Cadera | — | Pregunta `ca_u2` · Urogenital / Renal | 2 · razonamiento del cribado | 63 |
-| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 64 |
-| Cadera | — | Pregunta `ca_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 65 |
-| Cadera | — | Bandera roja «Denominador común: dolor atípico, sin relación clara con la carga, nocturno o con síntomas no musculoesqueléticos» · Urogenital / Renal | 2 · razonamiento del cribado | 66 |
-| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 67 |
-| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 68 |
-| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 69 |
-| Cadera | — | Bandera roja «Líquido en la cavidad peritoneal (ascitis por cirrosis, insuficiencia cardiaca, cáncer): abdomen distendido con dolor inguinal o lumbar; preguntar por enfermedad hepática o alcohol» · Gastrointestinal | 2 · razonamiento del cribado | 70 |
-| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 71 |
-| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 72 |
-| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 64 |
-| Cadera | — | Bandera roja «Fractura de estrés del acetábulo o del sacro (sacro: osteoporosis, embarazo o posparto, radioterapia pélvica, corticoides prolongados, deportistas y militares)» · Óseo / Desarrollo | 2 · razonamiento del cribado | 73 |
-| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 74 |
-| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 75 |
-| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 76 |
-| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 77 |
-| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 78 |
-| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 79 |
-| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 80 |
-| Cervical | — | Pregunta `cv_c2` · Cardiovascular | 2 · razonamiento del cribado | 81 |
-| Cervical | — | Pregunta `cv_c3` · Cardiovascular | 2 · razonamiento del cribado | 11 |
-| Cervical | — | Bandera roja «Síncope repentino sin mareo previo» · Cardiovascular | 2 · razonamiento del cribado | 12 |
-| Cervical | — | Pregunta `cv_p1` · Pulmonar | 2 · razonamiento del cribado | 82 |
-| Cervical | — | Pregunta `cv_p2` · Pulmonar | 2 · razonamiento del cribado | 83 |
-| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 84 |
-| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 85 |
-| Cervical | — | Bandera roja «Prueba de percusión de Murphy positiva (ángulo costovertebral)» · Renal / Urológico | 2 · razonamiento del cribado | 86 |
-| Cervical | — | Bandera amarilla «Dolor que no cambia con postura corporal» · Renal / Urológico | 2 · razonamiento del cribado | 87 |
-| Cervical | — | Pregunta `cv_gi1` · Gastrointestinal | 2 · razonamiento del cribado | 88 |
-| Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 89 |
-| Cervical | — | Bandera amarilla «Dolor de espalda y abdominal al mismo nivel de forma simultánea o alterna» · Gastrointestinal | 2 · razonamiento del cribado | 90 |
-| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 91 |
-| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 92 |
-| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 93 |
-| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 94 |
-| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 95 |
-| Cervical | — | Pregunta `cv_n4` · Médula / Estructural | 2 · razonamiento del cribado | 96 |
-| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 97 |
-| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 98 |
-| Lumbar | — | `sistemas.6.banderasRojas.5.texto` | 2 · mención en el texto | 1 |
-| Lumbar | — | `sistemas.6.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 2 |
-| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 99 |
-| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 100 |
-| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 101 |
-| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 102 |
-| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 103 |
-| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 104 |
-| Lumbar | — | Bandera roja «Prueba de percusión positiva en ángulo costovertebral» · Urogenital / Renal | 2 · razonamiento del cribado | 105 |
-| Lumbar | — | Bandera roja «Masa testicular indolora» · Urogenital / Renal | 2 · razonamiento del cribado | 106 |
-| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 107 |
-| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 108 |
-| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 109 |
-| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 110 |
-| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 110 |
-| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 111 |
-| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 112 |
-| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 113 |
-| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 114 |
-| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 115 |
-| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 116 |
-| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 117 |
-| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 118 |
-| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 119 |
-| Lumbar | — | Bandera roja «Síndrome de Leriche (aortoilíaco): imita lumbalgia, con dolor en nalgas, caderas y muslos; disfunción eréctil» · Vascular | 2 · razonamiento del cribado | 120 |
-| Rodilla | — | Pregunta `r_v1` · Vascular | 2 · razonamiento del cribado | 121 |
-| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 122 |
-| Rodilla | — | Pregunta `r_v4` · Vascular | 2 · razonamiento del cribado | 61 |
-| Rodilla | — | Bandera roja «Calambres nocturnos en pantorrilla que interrumpen el sueño» · Vascular | 2 · razonamiento del cribado | 123 |
-| Rodilla | — | Bandera amarilla «Dolor en reposo que mejora al colgar la pierna fuera de la cama» · Vascular | 2 · razonamiento del cribado | 124 |
-| Rodilla | — | Pregunta `r1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 125 |
-| Rodilla | — | Pregunta `r_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 126 |
-| Rodilla | — | Pregunta `r2` · Oncológico / Hematológico | 2 · razonamiento del cribado | 127 |
-| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 128 |
-| Rodilla | — | Pregunta `r4` · Oncológico / Hematológico | 2 · razonamiento del cribado | 129 |
-| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 130 |
-| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 131 |
-| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 132 |
-| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 133 |
-| Codo | — | Pregunta `co4a` · Vascular / Neurológica | 2 · razonamiento del cribado | 134 |
-| Codo | — | Pregunta `co4a_uni` · Vascular / Neurológica | 2 · razonamiento del cribado | 135 |
-| Codo | — | Pregunta `co4a_prog` · Vascular / Neurológica | 2 · razonamiento del cribado | 134 |
-| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 136 |
-| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 137 |
-| Codo | — | Pregunta `co_e2b` · Vascular / Neurológica | 2 · razonamiento del cribado | 138 |
-| Codo | — | Bandera roja «Síntomas vasculares en un codo postoperatorio» · Vascular / Neurológica | 2 · razonamiento del cribado | 139 |
-| Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 140 |
-| Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 141 |
-| Codo | — | Pregunta `co_e1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 142 |
-| Codo | — | Pregunta `co_e2a` · Endocrino / Metabólico | 2 · razonamiento del cribado | 143 |
-| Codo | — | Bandera roja «Xantomas en tendones extensores» · Endocrino / Metabólico | 2 · razonamiento del cribado | 38 |
-| Codo | — | Bandera amarilla «Tendinitis calcificante bilateral del hombro junto con síntomas en codo» · Endocrino / Metabólico | 2 · razonamiento del cribado | 40 |
-| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 130 |
-| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 144 |
-| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 145 |
-| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 146 |
-| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 147 |
-| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 148 |
-| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 149 |
-| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 150 |
-| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 151 |
-| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 152 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_tep_ictus` · Lupus | 2 · razonamiento del cribado | 5 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_neuro` · Lupus | 2 · razonamiento del cribado | 6 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_debilidad` · Lupus | 2 · razonamiento del cribado | 7 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_rinon` · Lupus | 2 · razonamiento del cribado | 8 |
+| Todas (sistemas comunes) | — | Pregunta `end_1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 35 |
+| Todas (sistemas comunes) | — | Pregunta `end_2` · Endocrino / Metabólico | 2 · razonamiento del cribado | 36 |
+| Todas (sistemas comunes) | — | Pregunta `end_3` · Endocrino / Metabólico | 2 · razonamiento del cribado | 37 |
+| Todas (sistemas comunes) | — | Pregunta `end_4` · Endocrino / Metabólico | 2 · razonamiento del cribado | 38 |
+| Todas (sistemas comunes) | — | Pregunta `end_5` · Endocrino / Metabólico | 2 · razonamiento del cribado | 39 |
+| Todas (sistemas comunes) | — | Bandera roja «Síndrome del túnel carpiano bilateral (alerta endocrina/metabólica)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 40 |
+| Todas (sistemas comunes) | — | Bandera roja «Signos de tormenta tiroidea: taquicardia, hipertermia, agitación» · Endocrino / Metabólico | 2 · razonamiento del cribado | 41 |
+| Todas (sistemas comunes) | — | Bandera roja «Confusión, letargo o sudoración profusa sin ejercicio en diabéticos (riesgo hipoglucemia/cetoacidosis)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 42 |
+| Todas (sistemas comunes) | — | Bandera roja «Signos de depleción de potasio por diuréticos: arritmias, calambres» · Endocrino / Metabólico | 2 · razonamiento del cribado | 43 |
+| Todas (sistemas comunes) | — | Bandera roja «Xantomas: pápulas amarillentas en las caras de extensión (eruptivos) o nódulos en los tendones extensores o el Aquiles (tendinosos)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 44 |
+| Todas (sistemas comunes) | — | Bandera roja «Nódulos palpables supraclaviculares o fiebre inexplicable en pacientes con corticosteroides» · Endocrino / Metabólico | 2 · razonamiento del cribado | 45 |
+| Todas (sistemas comunes) | — | Bandera amarilla «Periartritis o tendinitis calcificante bilateral de hombro» · Endocrino / Metabólico | 2 · razonamiento del cribado | 46 |
+| Todas (sistemas comunes) | — | Pregunta `hem_1` · Hematológico | 2 · razonamiento del cribado | 47 |
+| Todas (sistemas comunes) | — | Pregunta `hem_2` · Hematológico | 2 · razonamiento del cribado | 48 |
+| Todas (sistemas comunes) | — | Pregunta `hem_3` · Hematológico | 2 · razonamiento del cribado | 49 |
+| Todas (sistemas comunes) | — | Pregunta `hem_6` · Hematológico | 2 · razonamiento del cribado | 50 |
+| Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 51 |
+| Todas (sistemas comunes) | — | Bandera amarilla «Palidez en pliegues palmares, mucosas o lechos ungueales» · Hematológico | 2 · razonamiento del cribado | 52 |
+| Todas (sistemas comunes) | — | Bandera amarilla «Uñas cóncavas o quebradizas (coiloniquia — alerta de anemia ferropénica)» · Hematológico | 2 · razonamiento del cribado | 53 |
+| Todas (sistemas comunes) | — | Bandera amarilla «Uso crónico de AINEs (predispone a sangrado GI y anemia)» · Hematológico | 2 · razonamiento del cribado | 54 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaIctusLupus.fuente` | 6 · plan de tratamiento | 159 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaCardiaca.fuente` | 6 · plan de tratamiento | 159 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaFracturaEstres.fuente` | 6 · plan de tratamiento | 159 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaInfeccionCadera.fuente` | 6 · plan de tratamiento | 159 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaInfeccionTobillo.fuente` | 6 · plan de tratamiento | 159 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreIctusLupus` | 6 · plan de tratamiento | 159 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreCardiaco` | 6 · plan de tratamiento | 159 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreFracturaEstres` | 6 · plan de tratamiento | 159 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccionCadera` | 6 · plan de tratamiento | 159 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccionTobillo` | 6 · plan de tratamiento | 159 |
+| Hombro | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 9 |
+| Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 10 |
+| Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 11 |
+| Hombro | — | Bandera amarilla «Edad >50 años con dolor insidioso sin causa mecánica clara» · Cáncer / Oncológico | 2 · razonamiento del cribado | 12 |
+| Hombro | — | Bandera amarilla «Debilidad muscular proximal idiopática» · Cáncer / Oncológico | 2 · razonamiento del cribado | 13 |
+| Hombro | — | Pregunta `h1` · Cardiovascular | 2 · razonamiento del cribado | 14 |
+| Hombro | — | Pregunta `h2` · Cardiovascular | 2 · razonamiento del cribado | 15 |
+| Hombro | — | Pregunta `h_c3` · Cardiovascular | 2 · razonamiento del cribado | 16 |
+| Hombro | — | Pregunta `h_c4` · Cardiovascular | 2 · razonamiento del cribado | 17 |
+| Hombro | — | Bandera roja «Síncope repentino sin mareo previo» · Cardiovascular | 2 · razonamiento del cribado | 18 |
+| Hombro | — | Bandera amarilla «Uso de betabloqueantes o inhibidores de la ECA» · Cardiovascular | 2 · razonamiento del cribado | 19 |
+| Hombro | — | Pregunta `h5` · Pulmonar | 2 · razonamiento del cribado | 20 |
+| Hombro | — | Pregunta `h_p2` · Pulmonar | 2 · razonamiento del cribado | 21 |
+| Hombro | — | Pregunta `h_p3` · Pulmonar | 2 · razonamiento del cribado | 22 |
+| Hombro | — | Bandera amarilla «Exposición a factores ambientales/ocupacionales tóxicos» · Pulmonar | 2 · razonamiento del cribado | 23 |
+| Hombro | — | Pregunta `h_r1` · Renal / Urológico | 2 · razonamiento del cribado | 24 |
+| Hombro | — | Pregunta `h_r2` · Renal / Urológico | 2 · razonamiento del cribado | 25 |
+| Hombro | — | Pregunta `h_g1` · Ginecológico | 2 · razonamiento del cribado | 26 |
+| Hombro | — | Pregunta `h_g2` · Ginecológico | 2 · razonamiento del cribado | 27 |
+| Hombro | — | Pregunta `h_gi1` · GI / Hepático | 2 · razonamiento del cribado | 28 |
+| Hombro | — | Pregunta `h_gi2` · GI / Hepático | 2 · razonamiento del cribado | 29 |
+| Hombro | — | Pregunta `h_gi3` · GI / Hepático | 2 · razonamiento del cribado | 30 |
+| Hombro | — | Pregunta `h_gi4` · GI / Hepático | 2 · razonamiento del cribado | 31 |
+| Hombro | — | Pregunta `h_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 32 |
+| Hombro | — | Pregunta `h_i1` · Infección / Sistémico | 2 · razonamiento del cribado | 33 |
+| Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 34 |
+| Cadera | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Cadera | — | Pregunta `c5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 55 |
+| Cadera | — | Pregunta `ca_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 56 |
+| Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 57 |
+| Cadera | — | Pregunta `ca_on4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 58 |
+| Cadera | — | Bandera roja «Factores de riesgo de malignidad: ≥50 años, sin mejoría en 1 mes, pérdida de peso inexplicada, cáncer previo (ninguna combinación está validada). Lo que más informa: cáncer previo, sospecha clínica, VSG elevada y hematocrito bajo» · Cáncer / Oncológico | 2 · razonamiento del cribado | 59 |
+| Cadera | — | Bandera roja «Tumores óseos primarios (osteoma osteoide: dolor sordo nocturno en el joven que alivian la actividad y, de forma desproporcionada, la aspirina; condrosarcoma, tumor de células gigantes, Ewing) y masas de partes blandas» · Cáncer / Oncológico | 2 · razonamiento del cribado | 60 |
+| Cadera | — | Bandera amarilla «Edad >50 años con dolor insidioso en cadera» · Cáncer / Oncológico | 2 · razonamiento del cribado | 61 |
+| Cadera | — | Bandera amarilla «Antecedente familiar de cáncer» · Cáncer / Oncológico | 2 · razonamiento del cribado | 62 |
+| Cadera | — | Pregunta `c2` · Vascular | 2 · razonamiento del cribado | 63 |
+| Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 64 |
+| Cadera | — | Pregunta `ca_v3` · Vascular | 2 · razonamiento del cribado | 65 |
+| Cadera | — | Pregunta `ca_v4` · Vascular | 2 · razonamiento del cribado | 66 |
+| Cadera | — | Pregunta `ca_v5` · Vascular | 2 · razonamiento del cribado | 67 |
+| Cadera | — | Pregunta `c3` · Urogenital / Renal | 2 · razonamiento del cribado | 68 |
+| Cadera | — | Pregunta `ca_u2` · Urogenital / Renal | 2 · razonamiento del cribado | 69 |
+| Cadera | — | Pregunta `ca_u3` · Urogenital / Renal | 2 · razonamiento del cribado | 70 |
+| Cadera | — | Pregunta `ca_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 71 |
+| Cadera | — | Bandera roja «Denominador común: dolor atípico, sin relación clara con la carga, nocturno o con síntomas no musculoesqueléticos» · Urogenital / Renal | 2 · razonamiento del cribado | 72 |
+| Cadera | — | Pregunta `c4` · Gastrointestinal | 2 · razonamiento del cribado | 73 |
+| Cadera | — | Pregunta `ca_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 74 |
+| Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 75 |
+| Cadera | — | Bandera roja «Líquido en la cavidad peritoneal (ascitis por cirrosis, insuficiencia cardiaca, cáncer): abdomen distendido con dolor inguinal o lumbar; preguntar por enfermedad hepática o alcohol» · Gastrointestinal | 2 · razonamiento del cribado | 76 |
+| Cadera | — | Pregunta `ca_os1` · Óseo / Desarrollo | 2 · razonamiento del cribado | 77 |
+| Cadera | — | Pregunta `ca_os2` · Óseo / Desarrollo | 2 · razonamiento del cribado | 78 |
+| Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 70 |
+| Cadera | — | Bandera roja «Fractura de estrés del acetábulo o del sacro (sacro: osteoporosis, embarazo o posparto, radioterapia pélvica, corticoides prolongados, deportistas y militares)» · Óseo / Desarrollo | 2 · razonamiento del cribado | 79 |
+| Cadera | — | Pregunta `ca_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 80 |
+| Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 81 |
+| Cadera | — | Pregunta `ca_in3` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 82 |
+| Cervical | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 83 |
+| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 84 |
+| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 85 |
+| Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 86 |
+| Cervical | — | Pregunta `cv_c2` · Cardiovascular | 2 · razonamiento del cribado | 87 |
+| Cervical | — | Pregunta `cv_c3` · Cardiovascular | 2 · razonamiento del cribado | 17 |
+| Cervical | — | Bandera roja «Síncope repentino sin mareo previo» · Cardiovascular | 2 · razonamiento del cribado | 18 |
+| Cervical | — | Pregunta `cv_p1` · Pulmonar | 2 · razonamiento del cribado | 88 |
+| Cervical | — | Pregunta `cv_p2` · Pulmonar | 2 · razonamiento del cribado | 89 |
+| Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 90 |
+| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 91 |
+| Cervical | — | Bandera roja «Prueba de percusión de Murphy positiva (ángulo costovertebral)» · Renal / Urológico | 2 · razonamiento del cribado | 92 |
+| Cervical | — | Bandera amarilla «Dolor que no cambia con postura corporal» · Renal / Urológico | 2 · razonamiento del cribado | 93 |
+| Cervical | — | Pregunta `cv_gi1` · Gastrointestinal | 2 · razonamiento del cribado | 94 |
+| Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 95 |
+| Cervical | — | Bandera amarilla «Dolor de espalda y abdominal al mismo nivel de forma simultánea o alterna» · Gastrointestinal | 2 · razonamiento del cribado | 96 |
+| Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 97 |
+| Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 98 |
+| Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 99 |
+| Cervical | — | Pregunta `cv_ar4` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 100 |
+| Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 101 |
+| Cervical | — | Pregunta `cv_n4` · Médula / Estructural | 2 · razonamiento del cribado | 102 |
+| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 103 |
+| Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 104 |
+| Lumbar | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.7.banderasRojas.5.texto` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.7.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 4 |
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 105 |
+| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 106 |
+| Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 107 |
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 108 |
+| Lumbar | — | Pregunta `l_u3a` · Urogenital / Renal | 2 · razonamiento del cribado | 109 |
+| Lumbar | — | Pregunta `l_u3b` · Urogenital / Renal | 2 · razonamiento del cribado | 110 |
+| Lumbar | — | Bandera roja «Prueba de percusión positiva en ángulo costovertebral» · Urogenital / Renal | 2 · razonamiento del cribado | 111 |
+| Lumbar | — | Bandera roja «Masa testicular indolora» · Urogenital / Renal | 2 · razonamiento del cribado | 112 |
+| Lumbar | — | Pregunta `l1` · Gastrointestinal | 2 · razonamiento del cribado | 113 |
+| Lumbar | — | Pregunta `l3` · Gastrointestinal | 2 · razonamiento del cribado | 114 |
+| Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 115 |
+| Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 116 |
+| Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 116 |
+| Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 117 |
+| Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 118 |
+| Lumbar | — | Pregunta `l_e3` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 119 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 120 |
+| Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 121 |
+| Lumbar | — | Pregunta `l_e6` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 122 |
+| Lumbar | — | Pregunta `l_v1` · Vascular | 2 · razonamiento del cribado | 123 |
+| Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 124 |
+| Lumbar | — | Pregunta `l_v3` · Vascular | 2 · razonamiento del cribado | 125 |
+| Lumbar | — | Bandera roja «Síndrome de Leriche (aortoilíaco): imita lumbalgia, con dolor en nalgas, caderas y muslos; disfunción eréctil» · Vascular | 2 · razonamiento del cribado | 126 |
+| Rodilla | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Rodilla | — | Pregunta `r_v1` · Vascular | 2 · razonamiento del cribado | 127 |
+| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 128 |
+| Rodilla | — | Pregunta `r_v4` · Vascular | 2 · razonamiento del cribado | 67 |
+| Rodilla | — | Bandera roja «Calambres nocturnos en pantorrilla que interrumpen el sueño» · Vascular | 2 · razonamiento del cribado | 129 |
+| Rodilla | — | Bandera amarilla «Dolor en reposo que mejora al colgar la pierna fuera de la cama» · Vascular | 2 · razonamiento del cribado | 130 |
+| Rodilla | — | Pregunta `r1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 131 |
+| Rodilla | — | Pregunta `r_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 132 |
+| Rodilla | — | Pregunta `r2` · Oncológico / Hematológico | 2 · razonamiento del cribado | 133 |
+| Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 134 |
+| Rodilla | — | Pregunta `r4` · Oncológico / Hematológico | 2 · razonamiento del cribado | 135 |
+| Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 136 |
+| Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 137 |
+| Codo | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 138 |
+| Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 139 |
+| Codo | — | Pregunta `co4a` · Vascular / Neurológica | 2 · razonamiento del cribado | 140 |
+| Codo | — | Pregunta `co4a_uni` · Vascular / Neurológica | 2 · razonamiento del cribado | 141 |
+| Codo | — | Pregunta `co4a_prog` · Vascular / Neurológica | 2 · razonamiento del cribado | 140 |
+| Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 142 |
+| Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 143 |
+| Codo | — | Pregunta `co_e2b` · Vascular / Neurológica | 2 · razonamiento del cribado | 144 |
+| Codo | — | Bandera roja «Síntomas vasculares en un codo postoperatorio» · Vascular / Neurológica | 2 · razonamiento del cribado | 145 |
+| Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 146 |
+| Codo | — | Pregunta `co2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 147 |
+| Codo | — | Pregunta `co_e1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 148 |
+| Codo | — | Pregunta `co_e2a` · Endocrino / Metabólico | 2 · razonamiento del cribado | 149 |
+| Codo | — | Bandera roja «Xantomas en tendones extensores» · Endocrino / Metabólico | 2 · razonamiento del cribado | 44 |
+| Codo | — | Bandera amarilla «Tendinitis calcificante bilateral del hombro junto con síntomas en codo» · Endocrino / Metabólico | 2 · razonamiento del cribado | 46 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | Pregunta `tp_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 136 |
+| Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 150 |
+| Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 151 |
+| Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 152 |
+| Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 153 |
+| Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 154 |
+| Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 155 |
+| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 156 |
+| Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 157 |
+| Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 158 |
 
 ### Goosenberg 2025
 
@@ -3978,6 +4320,38 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | — | Bandera roja «Líquido en la cavidad peritoneal (ascitis por cirrosis, insuficiencia cardiaca, cáncer): abdomen distendido con dolor inguinal o lumbar; preguntar por enfermedad hepática o alcohol» · Gastrointestinal | 2 · razonamiento del cribado | 1 |
+
+### Gordon 2018
+
+Autores: Gordon, Amissah-Arthur, Gayed et al. (BSR)  
+Título: *The British Society for Rheumatology guideline for the management of systemic lupus erythematosus in adults*  
+Publicación: Rheumatology 57(1):e1–e45  
+DOI: 10.1093/rheumatology/kex286  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Gravedad del brote (tabla 7, p. e13), desencadenantes (p. e11), riñón silente (p. e8), otras causas de debilidad (pp. e14 y e17), fotoprotección (p. e16, 2++/B). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Fotoprotección para prevenir brotes (Parodis 2024, rec. LES 2): protector solar de amplio espectro UVA y UVB, ropa que cubra, sombrero y gafas de sol, y evitar las horas de más sol (Gordon 2018, p. e16; Blaess 2024, rec. 2). Evitar el ejercicio al sol con un índice UV por encima de 3 (opinión de los autores de Frade 2023).
+2. Gordon 2018 — Gordon, Amissah-Arthur, Gayed et al., «The British Society for Rheumatology guideline for the management of systemic lupus erythematosus in adults», Rheumatology 2018;57(1):e1–e45, tabla 7 (p. e13).
+3. Gordon 2018 — Gordon, Amissah-Arthur, Gayed et al., «The British Society for Rheumatology guideline for the management of systemic lupus erythematosus in adults», Rheumatology 2018;57(1):e1–e45, tabla 7 (p. e13) y pp. e14 y e17.
+4. Gordon 2018 — Gordon, Amissah-Arthur, Gayed et al., «The British Society for Rheumatology guideline for the management of systemic lupus erythematosus in adults», Rheumatology 2018;57(1):e1–e45, p. e11.
+5. Gordon 2018 — Gordon, Amissah-Arthur, Gayed et al., «The British Society for Rheumatology guideline for the management of systemic lupus erythematosus in adults», Rheumatology 2018;57(1):e1–e45, p. e8.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_pecho` · Lupus | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_neuro` · Lupus | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_debilidad` · Lupus | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_brote` · Lupus | 2 · razonamiento del cribado | 4 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_rinon` · Lupus | 2 · razonamiento del cribado | 5 |
+| Hombro | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
 
 ### Gornet 2011
 
@@ -5398,6 +5772,31 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `FRECUENCIA_PAUTA.h8.nota` | 6 · plan de tratamiento | 3 |
 | Hombro | h8 · Discinesia Escapular | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Hombro | h8 · Discinesia Escapular | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+
+### Kaneko 2021
+
+Autores: Kaneko, Chen, Kaufman, Sverdlov, Stein y Park-Min  
+Título: *Glucocorticoid-induced osteonecrosis in systemic lupus erythematosus patients*  
+Publicación: Clin Transl Med 11(10):e526  
+DOI: 10.1002/ctm2.526  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Localizaciones, dosis (> 40 mg/día), aparición en los 5 primeros meses de dosis altas, primer síntoma. Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Riesgo de osteonecrosis: un dolor profundo en carga de cadera, rodilla, hombro o tobillo → valoración médica (Kaneko 2021; Matthews 2023).
+2. Kaneko 2021 — Kaneko, Chen, Kaufman et al., «Glucocorticoid-induced osteonecrosis in systemic lupus erythematosus patients», Clin Transl Med 2021;11(10):e526, «Risk factors for the development of ON in patients with SLE», «Pain» y «Musculoskeletal manifestations of SLE».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_d_osteonecrosis` · Lupus | 2 · razonamiento del cribado | 2 |
+| Hombro | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
 
 ### Kaplan y Kanwal 2023
 
@@ -7143,10 +7542,10 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Hombro | h10 · Artrosis Glenohumeral | Test «Mayor edad + crepitación con rigidez activa = pasiva» | 4b · cita bajo el test | 21 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 8 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Pronóstico | 5 · cita del pronóstico | 27 |
-| Hombro | — | `sistemas.3.banderasRojas.5.texto` | 2 · mención en el texto | 314 |
-| Hombro | — | `sistemas.9.banderasRojas.0.texto` | 2 · mención en el texto | 315 |
-| Hombro | — | `sistemas.10.banderasRojas.0.texto` | 2 · mención en el texto | 316 |
-| Hombro | — | `sistemas.11.banderasRojas.0.texto` | 2 · mención en el texto | 317 |
+| Hombro | — | `sistemas.4.banderasRojas.5.texto` | 2 · mención en el texto | 314 |
+| Hombro | — | `sistemas.10.banderasRojas.0.texto` | 2 · mención en el texto | 315 |
+| Hombro | — | `sistemas.11.banderasRojas.0.texto` | 2 · mención en el texto | 316 |
+| Hombro | — | `sistemas.12.banderasRojas.0.texto` | 2 · mención en el texto | 317 |
 | Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 322 |
 | Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 323 |
 | Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 324 |
@@ -7316,7 +7715,7 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 114 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 115 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 116 |
-| Lumbar | — | `sistemas.8.banderasRojas.0.texto` | 2 · mención en el texto | 318 |
+| Lumbar | — | `sistemas.9.banderasRojas.0.texto` | 2 · mención en el texto | 318 |
 | Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 347 |
 | Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 348 |
 | Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 349 |
@@ -7494,9 +7893,9 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» | 4b · cita bajo el test | 218 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» («¿Por qué?») | 4b · razonamiento del test | 217 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» («¿Por qué?») | 4b · razonamiento del test | 218 |
-| Codo | — | `sistemas.3.banderasRojas.0.texto` | 2 · mención en el texto | 319 |
-| Codo | — | `sistemas.3.banderasRojas.1.texto` | 2 · mención en el texto | 320 |
-| Codo | — | `sistemas.3.banderasRojas.2.texto` | 2 · mención en el texto | 321 |
+| Codo | — | `sistemas.4.banderasRojas.0.texto` | 2 · mención en el texto | 319 |
+| Codo | — | `sistemas.4.banderasRojas.1.texto` | 2 · mención en el texto | 320 |
+| Codo | — | `sistemas.4.banderasRojas.2.texto` | 2 · mención en el texto | 321 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 361 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 362 |
 | Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 363 |
@@ -8102,15 +8501,16 @@ Citada como:
 5. Hipermovilidad articular generalizada: valorar derivación a reumatología o genética. No es un diagnóstico de SED hipermóvil, que exige además otros criterios (Malfait 2017, p. 17).
 6. Rasgos que hacen sospechar el subtipo vascular: derivación preferente a genética (Malfait 2017, p. 16).
 7. Un rasgo menor del subtipo vascular: por sí solo es un hallazgo; deriva junto con otro (Malfait 2017, p. 16).
-8. Malfait 2017 — Malfait, Francomano, Byers et al., «The 2017 international classification of the Ehlers-Danlos syndromes», Am J Med Genet C Semin Med Genet 2017;175(1):8–26, p. 16.
+8. Con lupus, el diagnóstico de SED hipermóvil exige los rasgos A y B, y el dolor crónico y la inestabilidad no cuentan (Malfait 2017, p. 19).
+9. Malfait 2017 — Malfait, Francomano, Byers et al., «The 2017 international classification of the Ehlers-Danlos syndromes», Am J Med Genet C Semin Med Genet 2017;175(1):8–26, p. 16.
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Pregunta `hm_s_familia` · Hipermovilidad | 2 · razonamiento del cribado | 8 |
-| Todas (sistemas comunes) | — | Pregunta `hm_s_rotura` · Hipermovilidad | 2 · razonamiento del cribado | 8 |
-| Todas (sistemas comunes) | — | Pregunta `hm_s_neumo` · Hipermovilidad | 2 · razonamiento del cribado | 8 |
-| Todas (sistemas comunes) | — | Pregunta `hm_s_piel` · Hipermovilidad | 2 · razonamiento del cribado | 8 |
-| Todas (sistemas comunes) | — | Pregunta `hm_s_varices` · Hipermovilidad | 2 · razonamiento del cribado | 8 |
+| Todas (sistemas comunes) | — | Pregunta `hm_s_familia` · Hipermovilidad | 2 · razonamiento del cribado | 9 |
+| Todas (sistemas comunes) | — | Pregunta `hm_s_rotura` · Hipermovilidad | 2 · razonamiento del cribado | 9 |
+| Todas (sistemas comunes) | — | Pregunta `hm_s_neumo` · Hipermovilidad | 2 · razonamiento del cribado | 9 |
+| Todas (sistemas comunes) | — | Pregunta `hm_s_piel` · Hipermovilidad | 2 · razonamiento del cribado | 9 |
+| Todas (sistemas comunes) | — | Pregunta `hm_s_varices` · Hipermovilidad | 2 · razonamiento del cribado | 9 |
 | Hombro | — | `sistemas.1.hipermovilidad.cuestionarioFuente` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.1.hipermovilidad.beightonFuente` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.1.hipermovilidad.cortesFuente` | 2 · mención en el texto | 3 |
@@ -8118,6 +8518,7 @@ Citada como:
 | Hombro | — | `sistemas.1.hipermovilidad.textos.derivarHAG` | 2 · mención en el texto | 5 |
 | Hombro | — | `sistemas.1.hipermovilidad.textos.derivarVascular` | 2 · mención en el texto | 6 |
 | Hombro | — | `sistemas.1.hipermovilidad.textos.hallazgoVascular` | 2 · mención en el texto | 7 |
+| Hombro | — | `sistemas.3.lupus.textos.hipermovilidad` | 2 · mención en el texto | 8 |
 | Cadera | — | `sistemas.1.hipermovilidad.cuestionarioFuente` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.1.hipermovilidad.beightonFuente` | 2 · mención en el texto | 2 |
 | Cadera | — | `sistemas.1.hipermovilidad.cortesFuente` | 2 · mención en el texto | 3 |
@@ -8125,6 +8526,7 @@ Citada como:
 | Cadera | — | `sistemas.1.hipermovilidad.textos.derivarHAG` | 2 · mención en el texto | 5 |
 | Cadera | — | `sistemas.1.hipermovilidad.textos.derivarVascular` | 2 · mención en el texto | 6 |
 | Cadera | — | `sistemas.1.hipermovilidad.textos.hallazgoVascular` | 2 · mención en el texto | 7 |
+| Cadera | — | `sistemas.3.lupus.textos.hipermovilidad` | 2 · mención en el texto | 8 |
 | Cervical | — | `sistemas.1.hipermovilidad.cuestionarioFuente` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.1.hipermovilidad.beightonFuente` | 2 · mención en el texto | 2 |
 | Cervical | — | `sistemas.1.hipermovilidad.cortesFuente` | 2 · mención en el texto | 3 |
@@ -8132,6 +8534,7 @@ Citada como:
 | Cervical | — | `sistemas.1.hipermovilidad.textos.derivarHAG` | 2 · mención en el texto | 5 |
 | Cervical | — | `sistemas.1.hipermovilidad.textos.derivarVascular` | 2 · mención en el texto | 6 |
 | Cervical | — | `sistemas.1.hipermovilidad.textos.hallazgoVascular` | 2 · mención en el texto | 7 |
+| Cervical | — | `sistemas.3.lupus.textos.hipermovilidad` | 2 · mención en el texto | 8 |
 | Lumbar | — | `sistemas.1.hipermovilidad.cuestionarioFuente` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.1.hipermovilidad.beightonFuente` | 2 · mención en el texto | 2 |
 | Lumbar | — | `sistemas.1.hipermovilidad.cortesFuente` | 2 · mención en el texto | 3 |
@@ -8139,6 +8542,7 @@ Citada como:
 | Lumbar | — | `sistemas.1.hipermovilidad.textos.derivarHAG` | 2 · mención en el texto | 5 |
 | Lumbar | — | `sistemas.1.hipermovilidad.textos.derivarVascular` | 2 · mención en el texto | 6 |
 | Lumbar | — | `sistemas.1.hipermovilidad.textos.hallazgoVascular` | 2 · mención en el texto | 7 |
+| Lumbar | — | `sistemas.3.lupus.textos.hipermovilidad` | 2 · mención en el texto | 8 |
 | Rodilla | — | `sistemas.1.hipermovilidad.cuestionarioFuente` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.1.hipermovilidad.beightonFuente` | 2 · mención en el texto | 2 |
 | Rodilla | — | `sistemas.1.hipermovilidad.cortesFuente` | 2 · mención en el texto | 3 |
@@ -8146,6 +8550,7 @@ Citada como:
 | Rodilla | — | `sistemas.1.hipermovilidad.textos.derivarHAG` | 2 · mención en el texto | 5 |
 | Rodilla | — | `sistemas.1.hipermovilidad.textos.derivarVascular` | 2 · mención en el texto | 6 |
 | Rodilla | — | `sistemas.1.hipermovilidad.textos.hallazgoVascular` | 2 · mención en el texto | 7 |
+| Rodilla | — | `sistemas.3.lupus.textos.hipermovilidad` | 2 · mención en el texto | 8 |
 | Codo | — | `sistemas.1.hipermovilidad.cuestionarioFuente` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.1.hipermovilidad.beightonFuente` | 2 · mención en el texto | 2 |
 | Codo | — | `sistemas.1.hipermovilidad.cortesFuente` | 2 · mención en el texto | 3 |
@@ -8153,6 +8558,7 @@ Citada como:
 | Codo | — | `sistemas.1.hipermovilidad.textos.derivarHAG` | 2 · mención en el texto | 5 |
 | Codo | — | `sistemas.1.hipermovilidad.textos.derivarVascular` | 2 · mención en el texto | 6 |
 | Codo | — | `sistemas.1.hipermovilidad.textos.hallazgoVascular` | 2 · mención en el texto | 7 |
+| Codo | — | `sistemas.3.lupus.textos.hipermovilidad` | 2 · mención en el texto | 8 |
 | Tobillo y pie | — | `sistemas.1.hipermovilidad.cuestionarioFuente` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.1.hipermovilidad.beightonFuente` | 2 · mención en el texto | 2 |
 | Tobillo y pie | — | `sistemas.1.hipermovilidad.cortesFuente` | 2 · mención en el texto | 3 |
@@ -8160,6 +8566,7 @@ Citada como:
 | Tobillo y pie | — | `sistemas.1.hipermovilidad.textos.derivarHAG` | 2 · mención en el texto | 5 |
 | Tobillo y pie | — | `sistemas.1.hipermovilidad.textos.derivarVascular` | 2 · mención en el texto | 6 |
 | Tobillo y pie | — | `sistemas.1.hipermovilidad.textos.hallazgoVascular` | 2 · mención en el texto | 7 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.hipermovilidad` | 2 · mención en el texto | 8 |
 
 ### Malik 2023
 
@@ -8410,6 +8817,39 @@ En cadáver (29 rodillas), al cortar solo el LCA el resalte apareció en 7 de 20
 |---|---|---|---|---|
 | Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Test de Pivot Shift» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Test de Pivot Shift» («¿Por qué?») | 4b · razonamiento del test | 2 |
+
+### Matthews 2023
+
+Autores: Matthews, Davis, Fish y Stitson  
+Título: *Avascular Necrosis*  
+Publicación: StatPearls [Internet], NBK537007 (act. 2023-08-28)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf), leído entero en la sesión (2026-10). La clave lleva el año de la última actualización del capítulo. Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Lupus: con corticoides, el hueso es más frágil y la piel más fina; antes de ejercicios resistidos o movilizaciones, ten en cuenta la densidad ósea (Yasir 2023; Goodman 2018, cap. 12, p. 445). Un dolor profundo en carga de cadera, rodilla, hombro o tobillo puede ser una osteonecrosis aunque la exploración y la radiografía sean normales (Matthews 2023).
+2. Riesgo de osteonecrosis: un dolor profundo en carga de cadera, rodilla, hombro o tobillo → valoración médica (Kaneko 2021; Matthews 2023).
+3. Matthews 2023 — Matthews, Davis, Fish y Stitson, «Avascular Necrosis», StatPearls [Internet], NCBI Bookshelf, última actualización 28 de agosto de 2023, «History and Physical» y «Evaluation».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_d_osteonecrosis` · Lupus | 2 · razonamiento del cribado | 3 |
+| Hombro | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 2 |
 
 ### Maxwell y Sterling 2013
 
@@ -9239,39 +9679,41 @@ Citada como:
 1. Posible TVP: derivar hoy (NICE NG158: con Wells ≥2, ecografía en 4 horas; con 1 o menos, dímero D en 4 horas; riesgo de embolia pulmonar).
 2. Si son la pantorrilla hinchada, caliente o dolorosa (no los calambres solos): posible TVP; derivar hoy (NICE NG158: con Wells ≥2, ecografía en 4 horas; con 1 o menos, dímero D en 4 horas; riesgo de embolia pulmonar).
 3. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.8 y 1.1.15–1.1.18, tablas 1 y 2 (escalas de Wells de dos niveles).
-4. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y 1.1.8, y tabla 1 (escala de Wells de dos niveles).
-5. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y tabla 1 (escala de Wells de dos niveles).
-6. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.8 y tabla 1 (escala de Wells de dos niveles).
-7. NICE NG158 (2020; recomendaciones 1.1.1 y 1.1.2, leídas en nice.org.uk en 2026-10)
-8. NICE NG158
+4. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing», guía NG158 (2020, actualizada en 2023), recomendaciones 1.1.1–1.1.4.
+5. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y 1.1.8, y tabla 1 (escala de Wells de dos niveles).
+6. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.4 y tabla 1 (escala de Wells de dos niveles).
+7. NICE NG158 — NICE, «Venous thromboembolic diseases: diagnosis, management and thrombophilia testing» (2020, actualizada el 2 de agosto de 2023), recomendaciones 1.1.1–1.1.8 y tabla 1 (escala de Wells de dos niveles).
+8. NICE NG158 (2020; recomendaciones 1.1.1 y 1.1.2, leídas en nice.org.uk en 2026-10)
+9. NICE NG158
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `pq_tvp` · Posquirúrgico | 2 · razonamiento del cribado | 3 |
 | Todas (sistemas comunes) | — | Pregunta `pq_tvp_ms` · Posquirúrgico | 2 · razonamiento del cribado | 3 |
 | Todas (sistemas comunes) | — | Pregunta `pq_tep` · Posquirúrgico | 2 · razonamiento del cribado | 3 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaTVP.fuente` | 6 · plan de tratamiento | 8 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreTVP` | 6 · plan de tratamiento | 8 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_tvp` · Lupus | 2 · razonamiento del cribado | 4 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaTVP.fuente` | 6 · plan de tratamiento | 9 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreTVP` | 6 · plan de tratamiento | 9 |
 | Hombro | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Cadera | — | `sistemas.4.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
-| Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 4 |
+| Cadera | — | `sistemas.5.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
+| Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 5 |
 | Cervical | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 5 |
-| Rodilla | — | Paso `ro_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
+| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 6 |
+| Rodilla | — | Paso `ro_step7` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 8 |
 | Codo | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | `sistemas.7.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 6 |
+| Tobillo y pie | — | `sistemas.8.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 7 |
 
 ### NICE NG19
 
@@ -9888,6 +10330,37 @@ En la serie de Antuna y O'Driscoll que recoge Park 2019, el chasquido aparecía 
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» («¿Por qué?») | 4b · razonamiento del test | 8 |
 | Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 9 |
 
+### Parodis 2024
+
+Autores: Parodis, Girard-Guyonvarc'h, Arnaud et al.  
+Título: *EULAR recommendations for the non-pharmacological management of systemic lupus erythematosus and systemic sclerosis*  
+Publicación: Ann Rheum Dis 83:720–729  
+DOI: 10.1136/ard-2023-224416  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). La numeración empieza en 1 en cada lista: «rec. común» (LES y esclerosis sistémica) o «rec. LES». Tabaco (rec. común 3), fotoprotección para prevenir brotes (rec. LES 2). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Fotoprotección para prevenir brotes (Parodis 2024, rec. LES 2): protector solar de amplio espectro UVA y UVB, ropa que cubra, sombrero y gafas de sol, y evitar las horas de más sol (Gordon 2018, p. e16; Blaess 2024, rec. 2). Evitar el ejercicio al sol con un índice UV por encima de 3 (opinión de los autores de Frade 2023).
+2. Si fuma, dejarlo (Parodis 2024, rec. común 3): el tabaco aumenta la actividad del lupus (Bowers y Blum 2026) y el riesgo cardiovascular (Drosos 2022, principio C).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.tabaco` | 2 · mención en el texto | 2 |
+
 ### Patel 2025
 
 Autores: Patel, Azmat y Goethals  
@@ -10130,6 +10603,23 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `PROGRESION_GENERICA` | 6 · plan de tratamiento | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTO_NIVELES.sinC.irritabilidad` | 6 · plan de tratamiento | 1 |
 | irritabilidad | — | `ITEMS_IRRITABILIDAD.3.ayuda` | 3 · irritabilidad | 1 |
+
+### Pisetsky 2021
+
+Autores: Pisetsky, Eudy, Clowse y Rogers  
+Título: *The categorization of pain in systemic lupus erythematosus*  
+Publicación: Rheum Dis Clin North Am 47(2):215–228  
+DOI: 10.1016/j.rdc.2020.12.004  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC (manuscrito del autor), leído entero (2026-10). Síntomas de tipo 1 y 2; la serositis exige descartar la infección. Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Pisetsky 2021 — Pisetsky, Eudy, Clowse y Rogers, «The categorization of pain in systemic lupus erythematosus», Rheum Dis Clin North Am 2021;47(2):215–228, «Serositis».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_pecho` · Lupus | 2 · razonamiento del cribado | 1 |
 
 ### Pitcher 2024
 
@@ -10558,6 +11048,31 @@ Los estudios no detallan cómo se combinaba la exploración: es la valoración g
 |---|---|---|---|---|
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
+### Rao y Mikdashi 2023
+
+Autores: Rao y Mikdashi  
+Título: *A framework to overcome challenges in the management of infections in patients with systemic lupus erythematosus*  
+Publicación: Open Access Rheumatol 15:125–137  
+DOI: 10.2147/OARRR.S295036  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Mortalidad por infección, gérmenes de hueso y articulación, dosis de corticoides y «fiebre = infecciosa mientras no se demuestre lo contrario». Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Fiebre o malestar general nuevos: valoración médica hoy; con corticoides puede no haber fiebre (Rao y Mikdashi 2023; Yasir 2023).
+2. Rao y Mikdashi 2023 — Rao y Mikdashi, «A framework to overcome challenges in the management of infections in patients with systemic lupus erythematosus», Open Access Rheumatol 2023;15:125–137, «The Burden of Infections in SLE», «Bacterial Infections», «Impact of Immune Therapy» y «Proposed Steps».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_fiebre` · Lupus | 2 · razonamiento del cribado | 2 |
+| Hombro | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 1 |
+
 ### Rathbone 2017
 
 Autores: Rathbone, Grosman-Rimon y Kumbhare  
@@ -10959,6 +11474,27 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `hem_3` · Hematológico | 2 · razonamiento del cribado | 1 |
 
+### Rout 2024 (síndrome antifosfolípido)
+
+Autores: Rout, Goyal y Singhal  
+Título: *Antiphospholipid Syndrome*  
+Publicación: StatPearls [Internet], NBK430980 (act. 2024-05-06)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf), leído entero en la sesión (2026-10). La clave lleva el año de la última actualización del capítulo. Mismo primer autor y año que «Rout 2024» (Neutropenia): la clave lleva el tema entre paréntesis, como «Deeb y Maher 2026 (Raynaud)». Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Rout 2024 (síndrome antifosfolípido) — Rout, Goyal y Singhal, «Antiphospholipid Syndrome», StatPearls [Internet], NCBI Bookshelf, última actualización 6 de mayo de 2024, «Introduction» y «Vascular Thrombosis».
+2. Rout 2024 (síndrome antifosfolípido) — Rout, Goyal y Singhal, «Antiphospholipid Syndrome», StatPearls [Internet], NCBI Bookshelf, última actualización 6 de mayo de 2024, «Introduction», «Vascular Thrombosis» y «Deterrence and Patient Education».
+3. Rout 2024 (síndrome antifosfolípido) — Rout, Goyal y Singhal, «Antiphospholipid Syndrome», StatPearls [Internet], NCBI Bookshelf, última actualización 6 de mayo de 2024, «History and Physical» y «Catastrophic APS».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_tvp` · Lupus | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_tep_ictus` · Lupus | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_dedos` · Lupus | 2 · razonamiento del cribado | 3 |
+
 ### Rowe 2023
 
 Autores: Rowe, Koller y Sharma  
@@ -11012,11 +11548,28 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Lumbar | — | `sistemas.6.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
+| Lumbar | — | `sistemas.7.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
 | Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
+
+### Ruperto 2011
+
+Autores: Ruperto, Hanrahan, Alarcón et al.  
+Título: *International consensus for a definition of disease flare in lupus*  
+Publicación: Lupus 20(5):453–462  
+DOI: 10.1177/0961203310388445  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero (2026-10). Definición del brote; el brote grave amenaza un órgano o la vida (Q5); los moderados, a tiempo (Q9). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Ruperto 2011 — Ruperto, Hanrahan, Alarcón et al., «International consensus for a definition of disease flare in lupus», Lupus 2011;20(5):453–462, definición final y enunciados Q5 y Q9 (pp. 456–457).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_d_brote` · Lupus | 2 · razonamiento del cribado | 1 |
 
 ### Rupp y Leslie 2023
 
@@ -11160,6 +11713,60 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | — | Bandera roja «Pérdida de peso inexplicada o saciedad precoz» · Gastrointestinal | 2 · razonamiento del cribado | 1 |
+
+### Saliba 2026
+
+Autores: Saliba, Blum, Goyal y Chauhan  
+Título: *Drug-Induced Lupus Erythematosus*  
+Publicación: StatPearls [Internet], NBK441889 (act. 2026-01-10)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf), leído entero en la sesión (2026-10). La clave lleva el año de la última actualización del capítulo. Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Un «sí» en la última no suma: orienta a un lupus inducido por fármacos (anti-TNF, minociclina, hidralazina…), que suele mejorar al retirarlo (Saliba 2026).
+2. Si empezó tras un fármaco nuevo, comentarlo con quien lo recetó (Saliba 2026).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.3.lupus.diferencialFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.3.lupus.textos.farmaco` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.3.lupus.diferencialFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.farmaco` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.3.lupus.diferencialFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.farmaco` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.3.lupus.diferencialFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.farmaco` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.3.lupus.diferencialFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.farmaco` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.lupus.diferencialFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.farmaco` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.3.lupus.diferencialFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.farmaco` | 2 · mención en el texto | 2 |
+
+### Sammaritano 2025
+
+Autores: Sammaritano, Askanase, Bermas et al.  
+Título: *2025 American College of Rheumatology (ACR) Guideline for the Treatment of Systemic Lupus Erythematosus*  
+Publicación: Arthritis Rheumatol (2026), versión en línea  
+DOI: 10.1002/art.43452  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario (versión en línea, pp. 1–26), leído entero sin los suplementos (2026-10). Corticoides a ≤ 5 mg/día en 6 meses (p. 11), dosis moderada-alta > 20 mg/día > 4 semanas (tabla 4), retirada que imita al lupus (p. 11), cuadros neurológicos graves (pp. 6 y 18), serositis (p. 20). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Sammaritano 2025 — Sammaritano, Askanase, Bermas et al., «2025 American College of Rheumatology (ACR) Guideline for the Treatment of Systemic Lupus Erythematosus», Arthritis Rheumatol (2026), versión en línea, p. 20.
+2. Sammaritano 2025 — Sammaritano, Askanase, Bermas et al., «2025 American College of Rheumatology (ACR) Guideline for the Treatment of Systemic Lupus Erythematosus», Arthritis Rheumatol (2026), versión en línea, pp. 6 y 18.
+3. Sammaritano 2025 — Sammaritano, Askanase, Bermas et al., «2025 American College of Rheumatology (ACR) Guideline for the Treatment of Systemic Lupus Erythematosus», Arthritis Rheumatol (2026), versión en línea, p. 11 y tabla 4.
+4. Sammaritano 2025 — Sammaritano, Askanase, Bermas et al., «2025 American College of Rheumatology (ACR) Guideline for the Treatment of Systemic Lupus Erythematosus», Arthritis Rheumatol (2026), versión en línea, p. 11.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_pecho` · Lupus | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_neuro` · Lupus | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_debilidad` · Lupus | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_brote` · Lupus | 2 · razonamiento del cribado | 4 |
 
 ### Sanchez-Alvarado 2024
 
@@ -12198,6 +12805,31 @@ Citada como:
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Reflejos rotuliano (L3–L4) y aquíleo (L5–S1)» | 4b · cita bajo el test | 1 |
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Sensibilidad (algodón, diapasón, pinchazo)» | 4b · cita bajo el test | 2 |
 
+### Tektonidou 2019
+
+Autores: Tektonidou, Andreoli, Limper et al.  
+Título: *EULAR recommendations for the management of antiphospholipid syndrome in adults*  
+Publicación: Ann Rheum Dis 78(10):1296–1304  
+DOI: 10.1136/annrheumdis-2019-215213  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC (manuscrito del autor), leído entero (2026-10). El LES como factor de riesgo añadido (principio 1), heparina en la inmovilización (principio 2), actividad física también con anticoagulantes, retirar el anticoagulante desencadena el SAF catastrófico (rec. 12). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Antifosfolípidos: la actividad física se recomienda también con anticoagulantes (Tektonidou 2019, principios generales). No sugerir suspender el anticoagulante: retirarlo desencadena el síndrome antifosfolípido catastrófico (Tektonidou 2019, rec. 12).
+2. Tektonidou 2019 — Tektonidou, Andreoli, Limper et al., «EULAR recommendations for the management of antiphospholipid syndrome in adults», Ann Rheum Dis 2019;78(10):1296–1304, principios generales 1 y 2.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_tvp` · Lupus | 2 · razonamiento del cribado | 2 |
+| Hombro | — | `sistemas.3.lupus.textos.antifosfolipidos` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.antifosfolipidos` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.antifosfolipidos` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.antifosfolipidos` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.antifosfolipidos` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.antifosfolipidos` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.antifosfolipidos` | 2 · mención en el texto | 1 |
+
 ### Telang 2024
 
 Autores: Telang, Hoveidaei, Mayfield, Lieberman, Mont y Heckmann  
@@ -12214,6 +12846,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Prótesis total de cadera» (Articulación) | cabecera · tiempos de tejido | 1 |
+
+### Thanou 2021
+
+Autores: Thanou, Jupe, Purushothaman, Niewold y Munroe  
+Título: *Clinical disease activity and flare in SLE: current concepts and novel biomarkers*  
+Publicación: J Autoimmun 119:102615  
+DOI: 10.1016/j.jaut.2021.102615  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Brote leve-moderado frente a grave (tabla 2, SSFI) y lo que lo imita (infección, fármacos, fibromialgia). Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Thanou 2021 — Thanou, Jupe, Purushothaman, Niewold y Munroe, «Clinical disease activity and flare in SLE: current concepts and novel biomarkers», J Autoimmun 2021;119:102615, «Definition, prevalence, and burden of clinical disease flare in SLE» y tabla 2.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_d_brote` · Lupus | 2 · razonamiento del cribado | 1 |
 
 ### Thigpen 2016
 
@@ -12679,16 +13328,18 @@ Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La 
 
 Citada como:
 
-1. Waheed 2023 — Waheed, Kudaravalli y Hotwagner, «Deep Venous Thrombosis», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2023.
-2. Waheed 2023
+1. Waheed 2023 — Waheed, Kudaravalli y Hotwagner, «Deep Venous Thrombosis», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2023, «History and Physical».
+2. Waheed 2023 — Waheed, Kudaravalli y Hotwagner, «Deep Venous Thrombosis», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2023.
+3. Waheed 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaTVP.fuente` | 6 · plan de tratamiento | 2 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreTVP` | 6 · plan de tratamiento | 2 |
-| Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 1 |
-| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 1 |
-| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `les_u_tvp` · Lupus | 2 · razonamiento del cribado | 1 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaTVP.fuente` | 6 · plan de tratamiento | 3 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreTVP` | 6 · plan de tratamiento | 3 |
+| Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 2 |
+| Rodilla | — | Pregunta `r_v2` · Vascular | 2 · razonamiento del cribado | 2 |
+| Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 2 |
 
 ### Wallace 2023
 
@@ -13108,6 +13759,43 @@ En cadáver (8 hombros), la presión bajo el ligamento coracoacromial al elevar 
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Hawkins-Kennedy» («¿Por qué?») | 4b · razonamiento del test | 3 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Test de Neer» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
+### Yasir 2023
+
+Autores: Yasir, Goyal y Sonthalia  
+Título: *Corticosteroid Adverse Effects*  
+Publicación: StatPearls [Internet], NBK531462 (act. 2023-07-03)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf), leído entero en la sesión (2026-10). La clave lleva el año de la última actualización del capítulo. Los corticoides pueden quitar la fiebre y los signos de infección; osteonecrosis con más de 20 mg/día mantenidos. Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+
+Citada como:
+
+1. Lupus: con corticoides, el hueso es más frágil y la piel más fina; antes de ejercicios resistidos o movilizaciones, ten en cuenta la densidad ósea (Yasir 2023; Goodman 2018, cap. 12, p. 445). Un dolor profundo en carga de cadera, rodilla, hombro o tobillo puede ser una osteonecrosis aunque la exploración y la radiografía sean normales (Matthews 2023).
+2. Fiebre o malestar general nuevos: valoración médica hoy; con corticoides puede no haber fiebre (Rao y Mikdashi 2023; Yasir 2023).
+3. Yasir 2023 — Yasir, Goyal y Sonthalia, «Corticosteroid Adverse Effects», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023, «Adverse Effects» (infecciones).
+4. Yasir 2023 — Yasir, Goyal y Sonthalia, «Corticosteroid Adverse Effects», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023, «Adverse Effects» (musculoesqueléticos).
+5. Yasir 2023 — Yasir, Goyal y Sonthalia, «Corticosteroid Adverse Effects», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023, «Adverse Effects» (miopatía).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `les_u_fiebre` · Lupus | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_osteonecrosis` · Lupus | 2 · razonamiento del cribado | 4 |
+| Todas (sistemas comunes) | — | Pregunta `les_d_debilidad` · Lupus | 2 · razonamiento del cribado | 5 |
+| Hombro | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 2 |
 
 ### Young 2003
 
