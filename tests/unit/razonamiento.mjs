@@ -152,7 +152,7 @@ test('banderas: ⓘ solo cuando hay «¿Por qué?», que despliega por qué y cu
 test('banderas: lumbar, cada bandera enlazada según el inventario (docs/razonamiento-banderas.md)', () => {
   const enlaces = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_'))
     .flatMap(s => [...s.banderasRojas, ...s.banderasAmarillas]).filter(f => typeof f !== 'string');
-  assert.equal(enlaces.filter(f => f.pregunta).length, 28);
+  assert.equal(enlaces.filter(f => f.pregunta).length, 29);   // + TVP → l_v4 (docs/may-thurner.md, decisión 7)
   assert.deepEqual(enlaces.filter(f => f.fase1).map(f => f.fase1), ['br1', 'br4', 'br1']);
   // Razonamiento propio: las 8 rojas sin pregunta y 2 amarillas
   const propias = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => [
