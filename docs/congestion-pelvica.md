@@ -1,6 +1,6 @@
 # Síndrome de congestión pélvica — borrador de diseño
 
-Estado: **borrador, sin implementar (octubre 2026).** Pendiente de que el usuario decida («Decisiones», al final) y de leer enteras tres fuentes que no se han podido abrir desde la sesión (ver «Fuentes pendientes»). Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
+Estado: **diseño aceptado, sin implementar (octubre 2026).** El usuario aceptó las 10 recomendaciones («Decisiones», al final). Falta leer enteras las tres fuentes que no se han podido abrir desde la sesión (ver «Fuentes pendientes»); el usuario las aporta en PDF. Seguimiento en `MIGRATION_PLAN.md`, Fase P («Después del piloto»).
 
 Origen: decisión 5 de `docs/mals-cascanueces.md`. El cascanueces se implementó en lumbar (`l_u6`) y su pregunta ya recoge, como acompañante, el dolor de pelvis que empeora de pie. La congestión pélvica sin cascanueces quedaba para cadera, donde `ca_u4` cubre en parte el dolor pélvico ginecológico.
 
@@ -201,7 +201,7 @@ No se han podido abrir desde la sesión: NCBI Bookshelf pide un captcha, y el pr
 
 Opcionales, no leídos: Lemos 2016 (*Int Urogynecol J*, atrapamiento vascular del plexo sacro con ciática cíclica), Berthelot 2022 (*Joint Bone Spine*, congestión venosa y radiculopatías), Meissner 2021 (clasificación SVP de los trastornos venosos pélvicos). No hacen falta para las decisiones.
 
-## Decisiones pendientes
+## Decisiones (aceptadas por el usuario, octubre 2026)
 
 1. **¿Pregunta nueva o solo texto?** Recomendación: **pregunta nueva `ca_u6`** con `derivacion` preferente, no urgente, en `ca_urogenital` tras `ca_u4`. Es lo que distingue el patrón postural no cíclico que tenían las pacientes con dolor de cadera, y un SÍ llega a `dv[]`, a la fase 5 y a los resúmenes. La alternativa (solo un párrafo en `ca_u4`) es más prudente pero deja ese patrón sin pregunta.
 2. **Dos componentes**: el dolor postural (peor de pie o al final del día, mejor tumbada) **y** un acompañante (varices atípicas o dolor que dura tras las relaciones). Recomendación: sí, como `l_u6`. No incluir la relación con la regla como acompañante, porque ya la pregunta `ca_u4`.

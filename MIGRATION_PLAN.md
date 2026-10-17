@@ -434,4 +434,5 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
   - [x] MALS y cascanueces: revisado por el usuario (2026-10). physiq-report no necesita cambios: pinta `dv` con un texto genérico
   - [ ] MALS y cascanueces, después: congestión pélvica en cadera (decisión 5)
     - [x] Congestión pélvica: borrador de diseño en `docs/congestion-pelvica.md` (2026-10). 5 fuentes leídas enteras en PMC (Bruessel 2026, Bałabuszek 2022, Shelkey 2014, Dos Santos 2016, Peker 2020); propuesta: pregunta `ca_u6` en `ca_urogenital` con `derivacion` preferente, una frase en `ca_u4`, ninguna regla con la hipermovilidad
-    - [ ] Congestión pélvica: el usuario decide las 10 decisiones y aporta en PDF StatPearls (Kuo 2025), Hanna 2024 y el informe completo de Champaneria 2016; no se implementa hasta leerlas
+    - [x] Congestión pélvica: las 10 recomendaciones aceptadas por el usuario (2026-10)
+    - [ ] Congestión pélvica: el usuario aporta en PDF StatPearls (Kuo 2025), Hanna 2024 y el informe completo de Champaneria 2016; no se implementa hasta leerlas
