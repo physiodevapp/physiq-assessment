@@ -11,9 +11,9 @@ console.log('\ncondiciones especiales (guía de la cabecera)');
 const fila = id => CONDICIONES.find(c => c.id === id);
 const html = leer('index.html');
 
-test('orden de las filas (decisión 2): transversales de la más frecuente a la menos, luego lumbar', () => {
-  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'tarlov', 'cascanueces']);
-  assert.deepEqual(CONDICIONES.filter(c => c.region).map(c => c.region), ['lumbar', 'lumbar']);
+test('orden de las filas (decisión 2): transversales de la más frecuente a la menos, luego lumbar y cadera', () => {
+  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'tarlov', 'cascanueces', 'congestionPelvica']);
+  assert.deepEqual(CONDICIONES.filter(c => c.region).map(c => c.region), ['lumbar', 'lumbar', 'cadera']);
 });
 
 test('cada sistema transversal que solo se ve al marcarlo tiene su fila (una condición nueva añade la suya)', () => {
@@ -95,32 +95,38 @@ test('estado de las transversales con cada valor de su tarjeta', () => {
   assert.equal(C.estadoCondicion(fila('lupus'), { mecanismo: '' }).texto, 'No consta');
 });
 
-test('Tarlov y cascanueces: «Sí» solo con la pregunta marcada en lumbar, nunca un «No» (decisión 4)', () => {
-  for (const id of ['tarlov', 'cascanueces']) {
+test('filas de región (Tarlov, cascanueces, congestión pélvica): «Sí» solo con la pregunta marcada en su región, nunca un «No» (decisión 4)', () => {
+  for (const id of ['tarlov', 'cascanueces', 'congestionPelvica']) {
+    const reg = fila(id).region, otra = reg === 'lumbar' ? 'cadera' : 'lumbar';
     const q = fila(id).destino.pregunta;
     const e = patch => C.estadoCondicion(fila(id), { ...state, ...patch });
-    assert.equal(e({ region: 'lumbar', sistemicoAnswers: {} }), null, id);
-    assert.equal(e({ region: 'lumbar', sistemicoAnswers: { [q]: 'NO' } }), null, id);
-    assert.deepEqual(e({ region: 'lumbar', sistemicoAnswers: { [q]: 'SI' } }), { texto: 'Sí', marcada: true }, id);
-    assert.equal(e({ region: 'cadera', sistemicoAnswers: { [q]: 'SI' } }), null, `${id}: respuesta antigua de otra región`);
+    assert.equal(e({ region: reg, sistemicoAnswers: {} }), null, id);
+    assert.equal(e({ region: reg, sistemicoAnswers: { [q]: 'NO' } }), null, id);
+    assert.deepEqual(e({ region: reg, sistemicoAnswers: { [q]: 'SI' } }), { texto: 'Sí', marcada: true }, id);
+    assert.equal(e({ region: otra, sistemicoAnswers: { [q]: 'SI' } }), null, `${id}: respuesta antigua de otra región`);
   }
 });
 
-test('fuera de lumbar las filas de lumbar se ven, pero su botón no navega (decisión 3)', () => {
+test('las filas de región se ven siempre, pero su botón solo navega con su región (decisión 3)', () => {
   for (const r of VALID_REGIONS.concat([''])) {
     const h = C.condicionesHTML({ ...state, region: r });
     for (const c of CONDICIONES) assert.ok(h.includes(`data-condicion="${c.id}"`), `${r || 'sin región'}: ${c.id}`);
     const tarlov = h.slice(h.indexOf('data-condicion="tarlov"'));
     if (r === 'lumbar') assert.ok(tarlov.includes(`onclick="irACondicion('tarlov')"`) && !tarlov.slice(0, tarlov.indexOf('</section>')).includes('disabled'));
-    else assert.ok(tarlov.slice(0, tarlov.indexOf('</section>')).includes(`disabled>${TEXTOS_CONDICIONES.sinLumbar}`), r);
+    else assert.ok(tarlov.slice(0, tarlov.indexOf('</section>')).includes('disabled>Elige lumbar en la fase 2'), r);
+    const cp = h.slice(h.indexOf('data-condicion="congestionPelvica"'));
+    const cpFila = cp.slice(0, cp.indexOf('</section>'));
+    if (r === 'cadera') assert.ok(cpFila.includes(`onclick="irACondicion('congestionPelvica')"`) && !cpFila.includes('disabled'));
+    else assert.ok(cpFila.includes('disabled>Elige cadera en la fase 2'), r);
     assert.ok(h.includes(`onclick="irACondicion('lupus')"`), `${r}: las transversales navegan siempre`);
   }
 });
 
-test('el diálogo: aviso del diagnóstico, apartado «Solo en lumbar», fuentes como citas y sin fila para el MALS', () => {
+test('el diálogo: aviso del diagnóstico, apartados «Solo en lumbar» y «Solo en cadera», fuentes como citas y sin fila para el MALS', () => {
   const h = C.condicionesHTML({ ...state, region: 'lumbar' });
   assert.ok(h.includes(TEXTOS_CONDICIONES.diagnostico) && h.includes(TEXTOS_CONDICIONES.pie));
   assert.ok(h.indexOf('Solo en lumbar') > h.indexOf('data-condicion="lupus"') && h.indexOf('Solo en lumbar') < h.indexOf('data-condicion="tarlov"'));
+  assert.ok(h.indexOf('Solo en cadera') > h.indexOf('data-condicion="cascanueces"') && h.indexOf('Solo en cadera') < h.indexOf('data-condicion="congestionPelvica"'));
   assert.ok(h.includes('class="cita') && h.includes('data-cita="Aringer 2019"'));
   assert.ok(!h.slice(h.indexOf('data-condicion="posquirurgico"'), h.indexOf('data-condicion="hipermovilidad"')).includes('class="cita'), 'el posquirúrgico no cita nada');
   assert.ok(!/MALS|arcuato/i.test(h), 'MALS sin fila (decisión 5)');

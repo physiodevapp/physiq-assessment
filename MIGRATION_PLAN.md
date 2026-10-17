@@ -449,3 +449,4 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
   - [x] Decisiones 1–8 del documento: aceptadas las 8 recomendaciones (2026-10)
   - [x] Implementado (2026-10): icono de brújula en la cabecera y opción en «Herramientas» en móvil, `data/condiciones.js`, `lib/condiciones.js`, `abrirCondiciones()` / `irACondicion()` en `app.js`; pruebas unitarias (`tests/unit/condiciones.mjs`) y sección `condiciones` de la prueba de humo
   - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
+  - [x] Fila de la congestión pélvica (`ca_u6`) bajo «Solo en cadera» (2026-10, petición del usuario); el apartado y el botón de las filas de región salen ya del nombre de la región
