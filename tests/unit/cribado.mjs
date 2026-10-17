@@ -185,9 +185,23 @@ test('May-Thurner: sin pregunta propia; ca_v2 y r_v2 nombran la pierna entera; t
   for (const id of Object.keys(con)) assert.ok(!/stent|angioplast|tromból/i.test(JSON.stringify(q(id).razonamiento)), id);
 });
 
-test('lumbar: cauda equina (l6) y ectópico (l_e8) son urgencias (y ninguna otra); el dolor ligado a la regla (l_e3) no', () => {
+test('l_v4 (TVP en lumbar, decisión 7 de docs/may-thurner.md): en l_vascular antes del síncope, urgente, enlazada desde su bandera; SÍ entra en ur', () => {
+  const sis = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_vascular');
+  const ids = sis.preguntas.map(q => q.id);
+  assert.deepEqual(ids, ['l_v1', 'l_v2', 'l_v3', 'l_v4', 'sx_sincope']);
+  const q = sis.preguntas.find(x => x.id === 'l_v4');
+  assert.ok(q.urgencia && !q.derivacion && q.alerta);
+  assert.match(q.text, /pantorrilla o toda una pierna hinchada/);
+  assert.deepEqual(q.razonamiento.fuentes, ['NICE NG158', 'Mangla y Hamad 2024']);
+  assert.ok(sis.banderasRojas.some(f => f.pregunta === 'l_v4'));
+  withState({ region: 'lumbar', sistemicoAnswers: { l_v4: 'SI' }, treeAnswers: {} }, () => {
+    assert.deepEqual(buildPhysiQPayload().ur, [q.urgencia]);
+  });
+});
+
+test('lumbar: cauda equina (l6), ectópico (l_e8) y TVP (l_v4) son urgencias (y ninguna otra); el dolor ligado a la regla (l_e3) no', () => {
   const qs = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.id.startsWith('transversal_')).flatMap(s => s.preguntas);
-  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['l6', 'l_e8', 'sx_sincope']);   // sx_sincope: común a las 7 regiones (docs/pots.md)
+  assert.deepEqual(qs.filter(q => q.urgencia).map(q => q.id).sort(), ['l6', 'l_e8', 'l_v4', 'sx_sincope']);   // l_v4: TVP, decisión 7 de docs/may-thurner.md; sx_sincope: común a las 7 regiones (docs/pots.md)
   // La bandera roja del ectópico dice «urgencia»: tiene que haber una pregunta que la dispare
   const sis = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.id === 'l_espondilo');
   const ect = sis.banderasRojas.find(f => /ectópico.*urgencia/i.test(f.texto || f));

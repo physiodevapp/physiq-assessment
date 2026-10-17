@@ -48,6 +48,7 @@ Clasificación de cada bandera:
 | l_espondilo | A · Engrosamiento óseo o deformidad (Paget) | C | `l_e5` |
 | l_vascular | R · Aneurisma aórtico | C | `l_v2` |
 | l_vascular | R · Claudicación vascular | C | `l_v1` + `l_v3` |
+| l_vascular | R · Trombosis venosa profunda | C | `l_v4` (añadida en 2026-10, decisión 7 de `docs/may-thurner.md`) |
 | l_vascular | R · Síndrome de Leriche | P | `l_v1` (la disfunción eréctil no se pregunta) |
 | l_vascular | A · Factores de riesgo cardiovascular | N | — |
 | l_infeccion | R · Infección (Lluch 2020) | C | `l_inf1` |
