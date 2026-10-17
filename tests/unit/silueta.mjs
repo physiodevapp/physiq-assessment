@@ -82,7 +82,7 @@ test('silueta: estado de cada zona y lado que queda al tocarla', () => {
 });
 
 test('silueta: el texto confirma región y lado concordados', () => {
-  assert.equal(S.textoElegida('', '').principal, 'Toca la zona en la silueta');
+  assert.deepEqual(S.textoElegida('', ''), { principal: 'Toca la región en la silueta', sub: 'Da igual si duele delante o detrás' });
   assert.deepEqual(S.textoElegida('rodilla', 'Izquierdo'), { principal: 'Rodilla (izquierda)', sub: '' });
   assert.deepEqual(S.textoElegida('hombro', 'Derecho'), { principal: 'Hombro (derecho)', sub: '' });
   assert.equal(S.textoElegida('codo', '').sub, 'Lado sin indicar (opcional)');
