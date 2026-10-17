@@ -866,7 +866,7 @@ test('plan: rodilla — red de seguridad de infección y TVP siempre; ni isquemi
   assert.match(q('r1').razonamiento.peso, /fiebre solo aparece en el 40–60 %/);
   assert.match(q('r1').razonamiento.peso, /La rodilla es la articulación más afectada en el adulto/);
   for (const frag of ['rodilla', 'delante de la rótula', 'roja', 'caliente', 'hinchada', 'aunque no tengas fiebre', 'hoy mismo']) assert.ok(D.TEXTOS_CASA.alarmaInfeccionRodilla.texto.includes(frag), frag);
-  assert.match(q('r_v2').text, /pantorrilla hinchada, caliente y más rojiza/);
+  assert.match(q('r_v2').text, /pantorrilla o toda la pierna hinchada, caliente y más rojiza/);
   assert.match(q('pq_tep').urgencia, /112/);
   for (const frag of ['pantorrilla', 'caliente', 'más roja', 'hoy mismo', 'falta el aire', '112']) assert.ok(D.TEXTOS_CASA.alarmaTVP.texto.includes(frag), frag);
   assert.match(D.TEXTOS_CASA.alarmaInfeccionRodilla.fuente, /^Momodu y Savaliya 2023/);
