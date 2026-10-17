@@ -268,3 +268,57 @@ export const DS_CASOS = {
 test('bloqueDsIA: el texto que physiq-report copia, literal', () => {
   for (const [k, [d, esperado]] of Object.entries(DS_CASOS)) assert.equal(D.bloqueDsIA(d), esperado, k);
 });
+
+// ── Reloj de la prueba (docs/pots.md, «Reloj») ───────────────
+test('reloj: reposo de 5 min, luego la fila de tumbado', () => {
+  const r = { fase: 'reposo', inicio: 1_000_000, tomas: {} };
+  assert.equal(D.estadoReloj(null, 0), null);
+  const a = D.estadoReloj(r, r.inicio + 125_000);
+  assert.equal(a.cumplido, false); assert.equal(a.restante, 175); assert.equal(a.fila, null); assert.equal(a.marcas, 0);
+  const b = D.estadoReloj(r, r.inicio + 300_000);
+  assert.equal(b.cumplido, true); assert.equal(b.fila, 'tumbado'); assert.equal(b.marcas, 1);
+  assert.equal(D.textoTiempo(125), '2:05'); assert.equal(D.textoTiempo(-3), '0:00');
+});
+
+test('reloj: de pie, la fila que toca va del minuto de medida al siguiente', () => {
+  const r = { fase: 'pie', inicio: 0, tomas: {} };
+  const en = s => D.estadoReloj(r, s * 1000);
+  assert.equal(en(30).fila, null); assert.deepEqual([en(30).proxima.fila, en(30).proxima.en], ['m1', 30]); assert.equal(en(30).marcas, 0);
+  assert.equal(en(60).fila, 'm1'); assert.equal(en(60).marcas, 1);
+  assert.equal(en(179).fila, 'm1'); assert.equal(en(180).fila, 'm3'); assert.equal(en(180).proxima.fila, 'm5');
+  assert.equal(en(479).fila, 'm5'); assert.equal(en(480).fila, 'm8');
+  assert.equal(en(600).fila, 'm10'); assert.equal(en(600).proxima, null); assert.equal(en(600).marcas, 5); assert.equal(en(600).terminado, false);
+  assert.equal(en(660).terminado, true); assert.equal(en(660).fila, null);
+  // Un reloj de hace más de 30 min ya no es de esta prueba
+  assert.equal(en(31 * 60).caducado, true);
+  // El tiempo sale de `inicio`: una pantalla apagada no lo desajusta
+  assert.equal(D.estadoReloj(r, 245_500).s, 245.5);
+});
+
+test('reloj: una toma se señala solo si está a más de 30 s de su minuto', () => {
+  assert.equal(D.tomaFueraDeTiempo('m3', 200), null);
+  assert.equal(D.tomaFueraDeTiempo('m3', 210), null);
+  assert.equal(D.tomaFueraDeTiempo('m3', 220), 220);
+  assert.equal(D.tomaFueraDeTiempo('m3', 140), 140);
+  assert.equal(D.tomaFueraDeTiempo('tumbado', 500), null);
+  assert.equal(D.tomaFueraDeTiempo('m3', undefined), null);
+});
+
+test('reloj: no cambia el payload, los resúmenes ni las cifras del informe con IA', () => {
+  const sinReloj = prueba(70, [95, 102, 104, 99, 101], { sint: [0, 1] });
+  const conReloj = { ...sinReloj, reloj: { fase: 'pie', inicio: Date.now() - 200_000, tomas: { m1: 75, m3: 220 } } };
+  const base = { edadPaciente: 30, region: 'lumbar', patient: 'X' };
+  const salida = b => withState({ ...base, ...ds({ estado: 'sospecha', bipedestacion: b }) }, () => {
+    const p = buildPhysiQPayload(); delete p.d;
+    return JSON.stringify([p, buildContextSummaryText().replace(/\d{1,2}\/\d{1,2}\/\d{4}/g, ''), buildInformeFisioterapiaText().replace(/\d{1,2}\/\d{1,2}\/\d{4}/g, ''), D.medidasPruebaTexto(b)]);
+  });
+  assert.equal(salida(conReloj), salida(sinReloj));
+  // y la normalización de sesiones lo conserva
+  assert.deepEqual(D.normalizarDisautonomia({ estado: 'sospecha', bipedestacion: conReloj }).bipedestacion.reloj, conReloj.reloj);
+});
+
+test('reloj: botones en window y fuera de la impresión', () => {
+  assert.equal(typeof globalThis.dsRelojEmpezar, 'function');
+  assert.equal(typeof globalThis.dsRelojParar, 'function');
+  assert.match(leer('styles.css'), /@media print \{ \.ds-reloj \{ display: none; \} \}/);
+});

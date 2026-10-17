@@ -475,6 +475,26 @@ Hecho. Antes, a quien no tenía marcada la tarjeta nadie le preguntaba por el s�
 - **Convive con las 4 preguntas detalladas** del sistema de disautonomía. No se oculta al marcar la tarjeta: si se ocultara, un SÍ ya marcado desaparecería de `ur`.
 - **Las banderas «Síncope repentino sin mareo previo»** de cervical y hombro (Goodman 2018) siguen con su razonamiento propio. Hablan del síncope sin pródromos, que la pregunta no recoge entero (en la ESC es un rasgo menor).
 
+## Reloj de la prueba de bipedestación (octubre 2026)
+
+Hecho a propuesta del usuario. Antes, el fisio llevaba los tiempos con otro reloj mientras estaba de pie al lado del paciente. Las medidas solo valen en su minuto: el criterio exige 2 medidas seguidas después del primer minuto (Raj 2020, rec. 4).
+
+- **Dónde**: dentro de la prueba, entre la nota de seguridad y la tabla (`[data-ds-reloj]`, en las dos copias del bloque, panel y acordeón).
+- **Dos tramos, cada uno con su botón**:
+  - «Empezar reposo tumbado (5 min)»: cuenta los 5 minutos de la casilla de preparación y, al cumplirse, avisa de que toca la medida tumbado.
+  - «Se pone de pie»: pone el reloj a 0:00, dice cuál es la siguiente medida y cuánto falta, y avisa en los minutos 1, 3, 5, 8 y 10. Al minuto 11 la prueba queda terminada y el reloj se para solo.
+- **Aviso en cada marca**: la fila que toca se resalta (etiqueta y casillas, en las dos copias), la pantalla baja hasta ella si no se ve, un pitido corto y una vibración donde la haya (en iPhone no hay vibración desde una web). El pitido solo funciona porque lo arranca el toque en el botón. Cada marca avisa una sola vez, y las ya pasadas no vuelven a sonar al recargar.
+- **«toma a las 3:40»**: si la primera FC de una fila se escribe a más de 30 s de su minuto, lo indica junto a la fila. No bloquea nada.
+- **«Parar»** (y «Cerrar el reloj» al terminar): quita el reloj y deja las cifras. Encaja con la nota de seguridad: si hay que sentar o tumbar al paciente, las medidas que faltan no cuentan.
+- **Nunca rellena ni cierra filas**: el fisio decide qué anota.
+- **Técnica**:
+  - El tiempo se calcula desde la hora en que se pulsó (`reloj.inicio`), no contando segundos. Una pantalla apagada o la app en segundo plano no lo desajustan.
+  - Mientras corre, la pantalla se mantiene encendida (wake lock, como al generar el informe con IA).
+  - Cada segundo solo cambian los textos; los botones se sustituyen solo al cambiar de tramo, para que un toque en «Parar» no se pierda.
+  - Un reloj de hace más de 30 minutos ya no es de esta prueba y no se muestra.
+- **Datos**: `bipedestacion.reloj = { fase, inicio, tomas }`, guardado con la sesión. Nunca va al payload, ni a 📋 Notas o 📄 Informe, ni a las cifras del informe con IA. No sale al imprimir.
+- **Código y pruebas**: `estadoReloj()`, `tomaFueraDeTiempo()` y `RELOJ` en `lib/disautonomia.js`; la interfaz es `dsRelojEmpezar()` / `dsRelojParar()` en `app.js`. Hay pruebas unitarias («reloj: …» en `tests/unit/disautonomia.mjs`) y la sección `ds-reloj` de la prueba de humo (reloj del navegador simulado).
+
 ## Siguiente paso
 
 Ninguno pendiente del POTS. physiq-report ya lee `ds` (physiq-report#92): `_bloqueDs()` es una copia literal de `bloqueDsIA()` sin citas, y `DS_CASOS` fija el mismo texto en un test en cada repositorio.
