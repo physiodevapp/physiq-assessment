@@ -452,6 +452,9 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
   - [x] Implementado (2026-10): tarjeta de la fase 1, `SIS_LUPUS` (6 urgencias y 4 derivaciones con «Diagnosticado»; rasgos sin puntos con «Sospecha»), notas de las fases 3 y 4b, recuadro de la fase 5, payload `le`, 📋 Notas, 📄 Informe (sin la palabra lupus con la sospecha), informe con IA, avisos y red de seguridad de la fase 6, nota con la hipermovilidad. Pruebas unitarias (`tests/unit/lupus.mjs`) y sección `lupus` de la prueba de humo; prueba completa en verde
   - [x] Revisión del usuario (2026-10)
   - [x] physiq-report: leer `le` del payload (otro repositorio): `_bloqueLES()`, copia literal de `bloqueLESIA()`; `LES_CASOS` fija el mismo texto en un test en cada repositorio (physiodevapp/physiq-report#93, 2026-10)
+- [ ] Síndrome de activación mastocitaria (SAMA): borrador de diseño en `docs/mastocitaria.md` (2026-10), sin código
+  - [x] Borrador: 27 fuentes en abierto leídas enteras (criterios ECNM/AIM frente a los amplios, relación con hipermovilidad y POTS, anafilaxia y desencadenantes en la sesión); propuesta: tarjeta reducida «Anafilaxia o trastorno mastocitario» solo con «Diagnosticado», texto en los razonamientos de hipermovilidad y POTS, ninguna regla automática
+  - [ ] Las 10 decisiones del usuario; pedir en PDF RCUK 2021, EAACI 2021, Farley 2025, Valdez 2026 y Seneviratne 2017
 - [x] Guía de condiciones especiales (botón en la cabecera que lista las condiciones, cuándo pensar en ellas y cómo llegar a cada una): diseño en `docs/condiciones-especiales.md`
   - [x] Borrador de diseño (2026-10): recomendaciones generales aceptadas (botón en la cabecera y en «Herramientas», posquirúrgico incluido, sin aviso en la fase 1)
   - [x] Decisiones 1–8 del documento: aceptadas las 8 recomendaciones (2026-10)
