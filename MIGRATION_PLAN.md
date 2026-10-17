@@ -444,7 +444,7 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
     - [x] Implementado (2026-10): sin pregunta propia; «o toda la pierna» en el texto de `ca_v2` (y su `urgencia`) y de `r_v2`; párrafo May-Thurner en `ca_v2`, frases en `r_v2` y `tp_v2`, «La otra pierna» en `pq_tvp` (razón propia, `PQ_RAZON_TVP_PIERNA`, para que `pq_tvp_ms` no la herede), claudicación venosa en `c2` y `l_v1`; 4 referencias nuevas; prueba unitaria en `tests/unit/cribado.mjs`
     - [x] Revisión del usuario: dada por hecha al fusionar (2026-10). physiq-report no necesita cambios: no hay campo nuevo en el payload
     - [x] Decisión 7, después: pregunta de TVP propia en lumbar, `l_v4` (`l_vascular`, urgente, NICE NG158), con su bandera roja; `docs/may-thurner.md`, «Decisión 7» (2026-10)
-    - [ ] `l_v4`: revisión del usuario antes de `main`
+    - [x] `l_v4`: revisión del usuario (2026-10): acepta «hace poco» y la urgencia completa de NICE, igual que `tp_v2`
 - [x] Lupus eritematoso sistémico (LES): diseño, decisiones y fuentes en `docs/lupus.md`
   - [x] Diseño (2026-10): 21 fuentes en abierto (PMC y StatPearls) leídas enteras; aceptadas las 18 recomendaciones
   - [x] Revisión con las guías (2026-10): PDF del usuario leídos enteros (EULAR 2023 del LES, ACR 2025, BSR 2018, EULAR de infecciones, riesgo cardiovascular, fatiga y no farmacológica, Ruperto 2011, Goodman cap. 12) y Blaess 2024 en abierto; aceptados los 16 cambios (corticoides ≤5 · 5–20 · >20 mg/día, hidroxicloroquina fuera de los inmunosupresores, dosis de ejercicio de Blaess 2024, ejercicio en brote, fatiga, ictus siempre…)

@@ -228,7 +228,7 @@ No se ha encontrado ninguna revisión sistemática independiente sobre la compre
 
 ## Decisión 7: pregunta de TVP en lumbar (octubre 2026)
 
-Estado: **implementado en la rama, pendiente de la revisión del usuario antes de `main`.**
+Estado: **implementado y fusionado (octubre 2026); el usuario aceptó el texto («hace poco») y la urgencia completa de NICE, igual que `tp_v2`.**
 
 Lumbar era la única región de pierna sin pregunta de TVP fuera del mecanismo Post-quirúrgico (`pq_tvp`). Cadera tiene `ca_v2`, rodilla `r_v2` y tobillo y pie `tp_v2`. Un paciente que consulta por dolor lumbar con una pierna hinchada nueva no tenía ninguna pregunta urgente que lo recogiera.
 
