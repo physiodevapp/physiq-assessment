@@ -138,9 +138,10 @@ export const FAMILIAS_FARMACO = [
     fuentes: ['Pofi 2023', 'Compston 2018', 'Kaneko 2021', 'Grusky 2026', 'He 2025', 'Beuschlein 2024', 'Soura 2026'],
   },
   // Anticoagulantes y antiagregantes (2026-10): ocho fuentes leídas enteras en
-  // PMC. Sin fuente leída para el hemartros, el síndrome compartimental, los
-  // signos del hematoma del psoas, el masaje y la manipulación, los deportes de
-  // contacto, la guía de TAC tras un golpe en la cabeza ni el sueño:
+  // PMC, más Steffel 2021 (guía EHRA) y Antunes 2024 (StatPearls), PDF del
+  // usuario. Sin fuente leída para el hemartros, el síndrome compartimental,
+  // los signos del hematoma del psoas, el masaje y la manipulación, los deportes
+  // de contacto, la guía de TAC tras un golpe en la cabeza ni el sueño:
   // docs/farmacologia.md.
   {
     id: 'antitromboticos',
@@ -159,33 +160,103 @@ export const FAMILIAS_FARMACO = [
         texto: [
           'Hematoma epidural espinal: raro pero urgente. Se presenta con dolor de cuello o espalda y déficit neurológico (debilidad de un lado o de ambos, alteración de la sensibilidad, de la vejiga o del intestino); dos de cada tres fueron cervicales o cervicotorácicos, y con debilidad de un lado puede parecer un ictus (Ghosh 2026).',
           'Los hematomas retroperitoneales y del iliopsoas tienen peor pronóstico. Una masa nueva no debe atribuirse sin más al anticoagulante: si no se resuelve en 2–3 semanas, mide más de 5 cm, es profunda o el dolor persiste o empeora, hay que estudiarla, porque puede haber un tumor debajo (Mameli 2025).',
+          'Sangrado digestivo alto: vómito con sangre roja o en «posos de café», heces negras y pegajosas (melena) o sangre roja por el ano si es rápido, y síntomas de la pérdida de sangre como mareo al levantarse, síncope, cansancio o debilidad. Un abdomen doloroso a la palpación con defensa o rebote sugiere perforación. El hierro, el bismuto y el regaliz también ponen las heces negras (Antunes 2024).',
           'Digestivo: el tubo digestivo es el lugar más frecuente de sangrado grave con anticoagulantes orales, alrededor del 40 %; la aspirina y otros AINE lesionan directamente la mucosa, los anticoagulantes no (Kurlander 2022). Los antidepresivos ISRS o IRSN aumentan el riesgo de sangrado grave y digestivo en quien toma anticoagulantes o antiagregantes (OR 1,3–1,5, certeza baja) (Nochaiwong 2022).',
         ],
-        detalle: 'Con ISRS o IRSN, el riesgo de sangrado grave fue algo mayor con los anticoagulantes directos (OR 1,72) que con los antivitamina K (OR 1,28). Los autores piden vigilar más a quien ya sangró o tiene úlcera, enfermedad hepática o renal o toma además AINE (Nochaiwong 2022).',
+        detalle: [
+          'Con ISRS o IRSN, el riesgo de sangrado grave fue algo mayor con los anticoagulantes directos (OR 1,72) que con los antivitamina K (OR 1,28). Los autores piden vigilar más a quien ya sangró o tiene úlcera, enfermedad hepática o renal o toma además AINE (Nochaiwong 2022).',
+          'Tomar a la vez otro anticoagulante, antiagregantes (aspirina, clopidogrel, prasugrel, ticagrelor) o AINE aumenta el riesgo de sangrado con los anticoagulantes directos; los corticoides sistémicos figuran entre los factores que también lo aumentan (Steffel 2021). La aspirina con clopidogrel u otro antiagregante parecido multiplica por 2–3 la hemorragia digestiva alta, y en mayores de 75 años con antiagregantes y anticoagulantes llega hasta un 17 % al año (Antunes 2024).',
+        ],
       },
       ejercicio: {
         texto: [
           'Punción seca: tomar antitrombóticos no es una contraindicación absoluta, no hay pruebas para aplazarla de forma sistemática y la medicación no debe suspenderse antes. Empieza por músculos superficiales observando cómo sangra, evita al principio los profundos que no se pueden comprimir y comprime unos 10–15 s en vez de unos 5 (Muñoz 2022).',
           'Acupuntura: complicaciones en un 0,003 % con una localización y una profundidad adecuadas; los sangrados graves se debieron a una punción demasiado profunda, y las agujas más gruesas sangran más (Muñoz 2022).',
-          'Caídas y golpes en la cabeza: tras un traumatismo craneal leve, los antiagregantes se asociaron a hemorragia intracraneal (OR 1,54). Los anticoagulantes no fueron significativos en ese metaanálisis; una posible explicación es que a estos pacientes se les hace siempre un TAC, y las guías piden cautela con todos los fármacos que afectan a la coagulación (Yang 2024).',
+          'Caídas: caerse no es una contraindicación para anticoagular, pero hay que reducir el riesgo de caídas y revisar los factores de sangrado modificables, sobre todo tomar a la vez antiagregantes; la guía aconseja ofrecer a todos estos pacientes una valoración y un programa de prevención de caídas (Steffel 2021).',
+          'Golpes en la cabeza: tras un traumatismo craneal leve, los antiagregantes se asociaron a hemorragia intracraneal (OR 1,54). Los anticoagulantes no fueron significativos en ese metaanálisis; una posible explicación es que a estos pacientes se les hace siempre un TAC, y las guías piden cautela con todos los fármacos que afectan a la coagulación (Yang 2024).',
           'Embolia pulmonar: el ejercicio con el paciente anticoagulado es seguro, factible y mejora la capacidad de ejercicio y la calidad de vida, aunque faltan ensayos grandes (Xiang 2025).',
         ],
-        detalle: 'Las fuentes leídas no tratan el masaje, la manipulación vertebral ni los deportes de contacto.',
+        detalle: [
+          'Riesgo alto de caídas: caídas previas, debilidad de las piernas, mal equilibrio, deterioro cognitivo, hipotensión ortostática, psicofármacos, artritis grave o mareo; la guía propone también una puntuación con pruebas como la bipedestación en tándem, el paso alternante o levantarse de la silla (tabla 14) (Steffel 2021).',
+          'La guía EHRA clasifica la inyección intramuscular, como una vacuna, entre las intervenciones de riesgo mínimo, con aguja fina y compresión firme 2–5 min; los cambios de la toma del anticoagulante los decide quien lo prescribe (Steffel 2021). No trata la punción seca.',
+          'Las fuentes leídas no tratan el masaje, la manipulación vertebral ni los deportes de contacto.',
+        ],
       },
       sueno: {
         texto: 'Las fuentes leídas no describen efectos de los anticoagulantes ni de los antiagregantes sobre el sueño. En la embolia pulmonar, el ejercicio se asoció a mejor calidad del sueño (Xiang 2025).',
       },
       consultar: {
         texto: [
-          'Urgente: dolor de cuello o espalda con debilidad, alteración de la sensibilidad o de la vejiga o el intestino (Ghosh 2026). Tras un golpe en la cabeza, valoración médica: las guías piden cautela con todos estos fármacos (Yang 2024).',
+          'Urgente: dolor de cuello o espalda con debilidad, alteración de la sensibilidad o de la vejiga o el intestino (Ghosh 2026). Sangrado digestivo visible (vómito con sangre, melena), por urgencias (Antunes 2024). Tras un golpe en la cabeza, valoración médica: las guías piden cautela con todos estos fármacos (Yang 2024), y se han descrito hemorragias intracraneales tardías tras caídas con anticoagulantes directos (Steffel 2021).',
           'Pronto: hinchazón, dolor o un hematoma que no se resuelve, o una masa que sigue a las 2–3 semanas (Mameli 2025).',
+          'Los sangrados menores (encías, nariz, pequeños hematomas) se comentan con quien lo prescribe; la guía pide no saltarse ninguna dosis sin consultarlo antes (Steffel 2021).',
           'Nunca aconsejes dejar ni saltarse el anticoagulante: no tomarlo bien se asocia a más ictus y muerte, más aún con los anticoagulantes directos por su vida media corta (Salmasi 2020), y tampoco hay que suspenderlo antes de la punción seca (Muñoz 2022). Las dudas, al médico que lo prescribe.',
         ],
       },
     },
-    fuentes: ['Mameli 2025', 'Ghosh 2026', 'Kurlander 2022', 'Nochaiwong 2022', 'Muñoz 2022', 'Yang 2024', 'Xiang 2025', 'Salmasi 2020'],
+    fuentes: ['Mameli 2025', 'Ghosh 2026', 'Antunes 2024', 'Kurlander 2022', 'Nochaiwong 2022', 'Muñoz 2022', 'Steffel 2021', 'Yang 2024', 'Xiang 2025', 'Salmasi 2020'],
   },
-  { id: 'opioides', nombre: 'Opioides', ejemplos: 'Tramadol, tapentadol, codeína, morfina, oxicodona, fentanilo' },
+  // Opioides (2026-10): seis fuentes en PMC, dos leídas en parte (Dowell 2022,
+  // Sampaio-Cunha y Martins 2022; ver el registro). Sin fuente leída para los
+  // signos clásicos de sobredosis (pupilas puntiformes, respiración lenta), los
+  // efectos propios del tramadol (hiponatremia, hipoglucemia, convulsiones), la
+  // retención urinaria, la curación de tejidos ni la terapia manual:
+  // docs/farmacologia.md.
+  {
+    id: 'opioides',
+    nombre: 'Opioides',
+    ejemplos: 'Tramadol, tapentadol, codeína, morfina, oxicodona, fentanilo, buprenorfina',
+    apartados: {
+      dolor: {
+        texto: [
+          'En el dolor subagudo y crónico, frente a placebo, mejoran poco el dolor a corto plazo (0,79 puntos sobre 10), y la mejoría baja con el tiempo, de 1 punto a los 1–3 meses a unos 0,5 a los 3–6 meses; no hay ensayos con placebo más allá de 6 meses. Dos sociedades médicas estadounidenses desaconsejan los opioides, también el tramadol, para el dolor agudo por lesiones musculoesqueléticas (Dowell 2022).',
+          'El ejercicio terapéutico reduce el dolor y mejora la función en la lumbalgia, la fibromialgia y la artrosis de cadera o rodilla, con beneficios que se mantienen 2–6 meses, y puede sumarse a la medicación (Dowell 2022).',
+          'Hiperalgesia inducida por opioides: más sensibilidad al dolor por la propia exposición. Se distingue de la tolerancia porque el dolor mejora al bajar la dosis y empeora al subirla, y si no se piensa en ella se siguen subiendo dosis (Sampaio-Cunha y Martins 2022).',
+        ],
+        detalle: [
+          'Parecen mejorar más la satisfacción con la atención que la intensidad del dolor, lo que la revisión relaciona con un efecto de enmascarar el dolor (Sampaio-Cunha y Martins 2022). Las fuentes leídas no dicen cuándo conviene valorar respecto a la toma.',
+          'Frente a no tomarlos, se asocian a más trastorno por uso de opioides, sobredosis, muerte, fracturas, caídas e infarto (Dowell 2022).',
+          'Las fuentes leídas no tratan su efecto sobre la curación de los tejidos.',
+        ],
+      },
+      visceral: {
+        texto: [
+          'Estreñimiento, náuseas y dolor abdominal: frenan el tubo digestivo y producen náuseas, vómitos, dificultad para evacuar y dolor abdominal con espasmos o cólicos. El estreñimiento puede aparecer con dosis bajas y en cualquier momento, y no se reduce con el tiempo; en el dolor crónico no oncológico lo tiene un 41 %, náuseas un 32 % y somnolencia un 29 % (Camilleri 2017).',
+          'Síndrome del intestino narcótico: dolor abdominal diario durante más de 3 meses con más de 100 mg/día de morfina o equivalente, que no mejora o empeora al subir la dosis. Ante síntomas digestivos hay que pensar siempre si pueden deberse al opioide (Camilleri 2017). En mayores, el estreñimiento puede llegar a impactación fecal y perforación (Dufort y Samaan 2021).',
+          'Hormonas: hipogonadismo en un 63 % (casi todos varones) e insuficiencia suprarrenal en un 15 %, con cansancio, malestar, molestias abdominales, falta de apetito o hipotensión ortostática; revierten al reducir o retirar el opioide (De Vries 2020).',
+          'Al dejarlos o bajar la dosis, el síndrome de abstinencia da dolor muscular, náuseas, diarrea, sudor, insomnio y ansiedad; con los de acción corta empieza a las 8–12 h y cede en 3–5 días (Dufort y Samaan 2021). El dolor también puede empeorar durante la retirada (Dowell 2022).',
+        ],
+        detalle: [
+          'Síndrome serotoninérgico: el tramadol inhibe la recaptación de serotonina y noradrenalina, y el tramadol y el fentanilo son los opioides que más aparecen en los casos publicados. Da alteración mental, agitación, mioclonías, hiperreflexia, sudor, escalofríos, temblor, diarrea, falta de coordinación o fiebre, y puede ser mortal (Blyzniuk 2026).',
+          'Hueso: en un estudio, la mitad de los varones que tomaban morfina tenía osteopenia y un 21 % osteoporosis (De Vries 2020).',
+        ],
+      },
+      ejercicio: {
+        texto: [
+          'Mareo, somnolencia y caídas: frente a placebo dan más mareo y somnolencia (Dowell 2022). En mayores producen sedación, falta de coordinación, mareo y caídas, con más fracturas de cadera y no vertebrales (Dufort y Samaan 2021). La guía de los CDC pide en mayores de 65 vigilar el deterioro cognitivo, valorar el riesgo de caídas y usar el ejercicio para prevenir el estreñimiento (Dowell 2022).',
+          'Subir la dosis deprisa aumenta la sedación y la depresión respiratoria. En trabajos de riesgo (conducir, maquinaria pesada, alturas), la guía pide valorar si el paciente puede hacerlos (Dowell 2022).',
+          'Mantener o aumentar la actividad física, junto con el agua y la fibra, ayuda a prevenir el estreñimiento; durante una retirada pautada, la guía pide aprovechar al máximo los tratamientos del dolor sin fármacos (Dowell 2022).',
+        ],
+        detalle: 'Las fuentes leídas no dan normas de terapia manual en estos pacientes ni sobre el ejercicio en las horas siguientes a la toma.',
+      },
+      sueno: {
+        texto: [
+          'Pueden empeorar el sueño, y dormir mal baja el umbral del dolor y lleva a subir la dosis; en el dolor crónico también pueden mejorarlo al reducir el dolor (Langstengel y Yaggi 2022).',
+          'Causan depresión respiratoria y apnea del sueño central según la dosis, y la mayoría de las muertes por opioides ocurren durante el sueño (Langstengel y Yaggi 2022). La apnea del sueño aumenta el riesgo de depresión respiratoria grave o sobredosis (Dowell 2022).',
+        ],
+        detalle: 'Tras una retirada pautada, algunos pacientes refieren insomnio, ansiedad, depresión y más dolor, sobre todo al principio (Dowell 2022).',
+      },
+      consultar: {
+        texto: [
+          'Urgente: confusión, sedación o habla arrastrada pueden anunciar una sobredosis, y la naloxona revierte la depresión respiratoria grave (Dowell 2022). Signos de síndrome serotoninérgico en quien toma tramadol con un antidepresivo (Blyzniuk 2026).',
+          'Combinaciones que hay que comentar con quien prescribe: benzodiacepinas (casi cuadruplican el riesgo de muerte por sobredosis), gabapentina o pregabalina, relajantes musculares, otros sedantes y alcohol (Dowell 2022).',
+          'Pronto: dolor abdominal nuevo o que empeora (Camilleri 2017); síntomas de abstinencia; dolor que aumenta pese a subir la dosis (Sampaio-Cunha y Martins 2022); cansancio, hipotensión al levantarse o problemas sexuales en tratamientos largos (De Vries 2020).',
+          'Nunca aconsejes dejarlos ni bajarlos por tu cuenta: no deben retirarse de golpe, y una retirada rápida puede causar abstinencia, más dolor, malestar psicológico grave e ideas de suicidio; la retirada se planifica con quien los prescribe (Dowell 2022).',
+        ],
+      },
+    },
+    fuentes: ['Dowell 2022', 'Sampaio-Cunha y Martins 2022', 'Camilleri 2017', 'Dufort y Samaan 2021', 'De Vries 2020', 'Blyzniuk 2026', 'Langstengel y Yaggi 2022'],
+  },
   { id: 'gabapentinoides', nombre: 'Gabapentinoides', ejemplos: 'Gabapentina, pregabalina' },
   { id: 'antidepresivos', nombre: 'Antidepresivos (ISRS, IRSN, tricíclicos)', ejemplos: 'Sertralina, escitalopram, duloxetina, venlafaxina, amitriptilina' },
   { id: 'sedantes', nombre: 'Benzodiacepinas y relajantes musculares', ejemplos: 'Diazepam, lorazepam, alprazolam, ciclobenzaprina, metocarbamol' },
