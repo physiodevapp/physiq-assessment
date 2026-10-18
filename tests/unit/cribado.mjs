@@ -63,10 +63,10 @@ test('árbol CIF: VASCULAR entra en payload (dv), 📋 Notas y 📄 Informe; otr
 });
 
 // ── `derivacion` en preguntas de la fase 2 (quiste de Tarlov, docs/tarlov.md) ──
-test('cribado: `derivacion` es texto no vacío, nunca junto a `urgencia`; hoy l_u5 (quiste de Tarlov), l_u6 (cascanueces, docs/mals-cascanueces.md), ca_u6 (congestión pélvica, docs/congestion-pelvica.md), ds_d_paroxistica (taquicardia paroxística, docs/pots.md) y las 4 del lupus (docs/lupus.md)', () => {
+test('cribado: `derivacion` es texto no vacío, nunca junto a `urgencia`; hoy l_u5 (quiste de Tarlov), l_u6 (cascanueces, docs/mals-cascanueces.md), ca_u6 (congestión pélvica, docs/congestion-pelvica.md), ds_d_paroxistica (taquicardia paroxística, docs/pots.md) las 4 del lupus (docs/lupus.md) y ma_d_episodios (docs/mastocitaria.md)', () => {
   const todas = Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).flatMap(s => s.preguntas);
   const con = [...new Set(todas.filter(q => 'derivacion' in q).map(q => q.id))];
-  assert.deepEqual(con.sort(), ['ca_u6', 'ds_d_paroxistica', 'l_u5', 'l_u6', 'les_d_brote', 'les_d_debilidad', 'les_d_osteonecrosis', 'les_d_rinon']);
+  assert.deepEqual(con.sort(), ['ca_u6', 'ds_d_paroxistica', 'l_u5', 'l_u6', 'les_d_brote', 'les_d_debilidad', 'les_d_osteonecrosis', 'les_d_rinon', 'ma_d_episodios']);
   todas.filter(q => 'derivacion' in q).forEach(q => {
     assert.ok(typeof q.derivacion === 'string' && q.derivacion.trim(), q.id);
     assert.ok(!q.urgencia, `${q.id}: derivacion y urgencia a la vez`);
@@ -281,7 +281,7 @@ test('ca10: el cluster de Laslett puntúa con Saueressig 2021; thigh thrust y co
 });
 
 test('cervical: disección, IVB, fractura tras traumatismo, cefalea de alarma y episodio cardiaco en curso son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia && !s.soloLupus).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
+  const qs = SYSTEMIC_SCREENING.cervical.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia && !s.soloLupus && !s.soloMastocitos).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['cv_ar1', 'cv_ar2', 'cv_ar3', 'cv_ar4', 'cv_c3'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
   withState({ region: 'cervical', sistemicoAnswers: { cv_ar1: 'NO', cv_ar2: 'SI', cv_ar3: 'NO', cv_ar4: 'NO' } }, () => {
     assert.equal(buildPhysiQPayload().ur.length, 1);
@@ -310,7 +310,7 @@ test('cervical: el FRT puntúa solo positivo (un negativo no descarta una cervic
 });
 
 test('rodilla: bursa séptica, aparato extensor, luxación y neurovascular son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia && !s.soloLupus).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
+  const qs = SYSTEMIC_SCREENING.rodilla.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia && !s.soloLupus && !s.soloMastocitos).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['r1', 'r_v2', 'r_v4', 'r_i3', 'ro_t2', 'ro_t3', 'ro_t4'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
 });
 
@@ -410,7 +410,7 @@ test('hombro: las cifras nuevas de la tarjeta sin fuente verificada no puntúan'
 });
 
 test('tobillo y pie: cinco P, artritis infecciosa y debilidad simétrica con arreflexia son urgencias', () => {
-  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia && !s.soloLupus).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
+  const qs = SYSTEMIC_SCREENING.tobillo_pie.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia && !s.soloLupus && !s.soloMastocitos).flatMap(s => s.preguntas);   // el posquirúrgico tiene su propio test
   ['tp_t1', 'tp_i1', 'tp_n1'].forEach(id => assert.ok(qs.find(q => q.id === id)?.urgencia, id));
   // TVP: derivar hoy con cualquier Wells (NICE NG158, rec. 1.1.3 y 1.1.8), igual que ca_v2 de cadera
   assert.match(qs.find(q => q.id === 'tp_v2').urgencia, /derivar hoy.*1 o menos, dímero D/);
@@ -500,7 +500,7 @@ test('hipótesis de derivación: texto fijo, sin fuente, y solo las decididas', 
 // ── Modo breve ────────────────────────────────────────────────────────────────
 console.log('\nmodo breve');
 
-const LUMBAR_SIS = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia && !s.soloLupus);   // fuera del posquirúrgico no se ve
+const LUMBAR_SIS = SYSTEMIC_SCREENING.lumbar.sistemas.filter(s => !s.soloPosquirurgico && !s.soloHipermovilidad && !s.soloDisautonomia && !s.soloLupus && !s.soloMastocitos);   // fuera del posquirúrgico no se ve
 
 test('modo completo → sin pendientes, md "completo" y sin campo pe', () => {
   withState({}, () => {
@@ -568,7 +568,7 @@ test('embudo: toda pregunta con `urgencia` lleva sq2-urg (el CSS nunca la pliega
     for (const sis of data.sistemas) {
       const html = buildSistemaHTML(sis);
       // Los sistemas de las condiciones especiales (Fase P) no tienen embudo: sus preguntas se hacen siempre
-      assert.equal(html.includes(`data-embudo="${sis.id}"`), !sis.soloHipermovilidad && !sis.soloDisautonomia && !sis.soloLupus, `${region}/${sis.id} embudo`);
+      assert.equal(html.includes(`data-embudo="${sis.id}"`), !sis.soloHipermovilidad && !sis.soloDisautonomia && !sis.soloLupus && !sis.soloMastocitos, `${region}/${sis.id} embudo`);
       for (const q of sis.preguntas) {
         const m = html.match(new RegExp(`<div class="(sq2[^"]*)" id="sq2_${q.id}"`));
         assert.ok(m, `${region}/${q.id} no renderizada`);

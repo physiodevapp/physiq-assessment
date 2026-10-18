@@ -62,6 +62,7 @@ export const BASE_STATE = {
   hipermovilidad:   { estado: '', subtipo: '', beighton: null, cuestionario: {} },
   disautonomia:     { estado: '', tipo: '', sospecha: {}, bipedestacion: null },
   lupus:            { estado: '', corticoides: '', dosisAltas: '', inmunosupresores: '', antifosfolipidos: '', antitrombotico: false, osteonecrosis: false, raynaud: false, actividad: '', rasgos: {} },
+  mastocitos:       { estado: '', tipo: '', anafilaxia: '', autoinyector: '', desencadenantes: {}, otro: '' },
   cuestionarios:    {},
   sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },
   sintomasSecundarios: [],
