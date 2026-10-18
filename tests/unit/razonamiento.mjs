@@ -478,7 +478,7 @@ test('preguntar a la IA: el contexto es solo la región, nada del estado del pac
   assert.ok(llamadas.length > 0 && llamadas.every(l => l === 'promptPregunta({ contexto: _ctxPregunta(), pregunta: q, tipo: _preguntaTipo })'), llamadas.join(' | '));
   // El tipo solo toma valores fijos del diálogo, nunca algo del estado
   const asign = src.match(/_preguntaTipo = [^;]+;/g) || [];
-  assert.ok(asign.length > 0 && asign.every(a => /= (TIPO_PREGUNTA_DEFECTO|b\.dataset\.tipo);$/.test(a)), asign.join(' | '));
+  assert.ok(asign.length > 0 && asign.every(a => /= (TIPO_PREGUNTA_DEFECTO|b\.dataset\.tipo|TIPOS_PREGUNTA\[tipo\] \? tipo : TIPO_PREGUNTA_DEFECTO);$/.test(a)), asign.join(' | '));
 });
 
 test('preguntar a la IA, modalidad «Fármacos»: guion fijo, sin ajustar la medicación', () => {

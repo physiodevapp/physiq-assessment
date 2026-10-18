@@ -31,20 +31,57 @@ Tests: unitarios en `tests/unit/razonamiento.mjs` («preguntar a la IA, modalida
 
 Límite conocido: la respuesta no tiene fuente revisada por PhysiQ. Sirve para resolver una duda puntual, pero no enseña qué preguntar si el fisioterapeuta no sabe que debe hacerlo. Para eso está el paso 2.
 
-## Paso 2 — Guía permanente por familia (pendiente)
+## Paso 2 — Guía permanente por familia (infraestructura hecha; AINE escrita, pendiente de revisión; 2026-10)
 
-Será una herramienta de cabecera propia, como «Condiciones especiales» (`data/condiciones.js` y `lib/condiciones.js` sirven de modelo):
+**Hecho**: es una herramienta de cabecera propia, como «Condiciones especiales».
 
-- icono en la cabecera y opción en «Herramientas» en ≤768 px;
-- también en el hub, porque no usa red;
-- hoja inferior con atrás en móvil y diálogo centrado en ancho;
-- se cierra con `_closeAllOverlays()`.
+| Pieza | Dónde |
+|---|---|
+| Icono `#farmBtn` (una cápsula) | Cabecera; en ≤768 px es la opción «Fármacos» de «Herramientas» (`herramientaElegir('farmacos')`) |
+| Diálogo `#farmOverlay` / `#farmPanel` | Reutiliza `.cond-panel`; hoja inferior con atrás en móvil y diálogo centrado de hasta 560 px en ancho |
+| Abrir y cerrar | `abrirFarmacos()` / `cerrarFarmacos()`, `_farmHistorial`, `_closeAllOverlays()` |
+| Contenido | `data/farmacos.js`: `APARTADOS_FARMACO`, `FAMILIAS_FARMACO`, `TEXTOS_FARMACOS` |
+| HTML | `lib/farmacos.js`: `farmacosHTML()`; es puro y no lee el `state` |
 
-Habrá una fila por **familia**, no por fármaco suelto. Cada fila tiene siempre los mismos cinco apartados: dolor/inflamación, visceral/secundario, ejercicio, sueño y cuándo consultar. Cada apartado lleva el «ⓘ ¿Por qué?», «Ampliar →» (`abrirPanelRazon()`), el «✨ IA» por párrafo (`data-ia-ctx`, con un `ctxFarmaco()` nuevo en `ampliar-ia.js`) y las citas tocables (`citasHTML()`/`citasEnTexto()`). Lleva también un enlace «Buscar en CIMA ↗» a la búsqueda por principio activo.
+Disponible también en el hub, porque no usa red, aunque allí se ocultan los enlaces de IA. Se oculta al imprimir.
+
+Cada familia con contenido es un `<details>` cerrado con sus ejemplos y los cinco apartados (`dolor`, `visceral`, `ejercicio`, `sueno`, `consultar`). Cada apartado tiene:
+- `texto`, que siempre se ve;
+- `detalle` opcional, en «Más detalle»;
+- «✨ IA» por párrafo, con el contexto `ctxFarmaco(nombre)` de `ampliar-ia.js`;
+- las citas dentro de la frase como botones (`citasEnTexto()`).
+
+Las fuentes de la familia van al pie, como citas.
+
+Las familias aún sin contenido se listan como «Pendientes de fuentes revisadas», con el botón «Preguntar a la IA sobre fármacos →» (`farmacosPreguntarIA()`). El botón cierra la guía y abre «✨ Preguntar a la IA» ya en la modalidad «Fármacos» (`abrirPreguntaIA({ tipo: 'farmacos' })`). En el hub está oculto.
+
+Se ha cambiado algo fuera de la guía: el listener de clicks de `ampliar-ia.js` pasa a **captura**, como el de las citas (`ficha.js`). Los paneles de los diálogos de la cabecera cortan la propagación del click, y en burbuja «✨ IA» no funcionaba dentro de ellos. Mientras hay un diálogo abierto, la barra y el menú de «✨ IA» suben por encima del velo (`body:has(.session-panel-overlay.open)`, `styles.css`).
+
+**Tests**:
+- unitarios en `tests/unit/farmacos.mjs`:
+  - las 13 familias en orden;
+  - los cinco apartados;
+  - las fuentes están en el registro;
+  - cada cita de la frase es una fuente de su familia, y cada fuente se cita;
+  - nunca proponer cambiar la medicación;
+  - el HTML;
+  - nada llega al payload ni a los resúmenes;
+  - las funciones están expuestas en `window`;
+- smoke en la sección `farmacos`.
+
+Las fuentes cuentan en `docs/referencias.md` como «guía de fármacos» (`recogerCitas({ FARMACOS })`).
+
+**Límites del diseño**:
+- una fila por **familia**, no por fármaco suelto;
+- solo con fuentes leídas en la sesión;
+- revisión del usuario antes de `main`;
+- sin enlace a CIMA por ahora: la red del entorno no llega a `cima.aemps.es` y no se ha podido comprobar la URL de búsqueda. No se inventa: queda pendiente hasta que alguien la verifique.
+
+### Familias
 
 **Familias propuestas** (aceptadas por el usuario, 2026-10), en este orden de trabajo:
 
-1. AINE (dolor epigástrico o úlcera que se refiere a dorsal u hombro, riesgo renal y cardiovascular, efecto sobre la curación de tejido)
+1. AINE
 2. Corticoides (enmascaran fiebre e infección, osteonecrosis, fractura por fragilidad, miopatía, insomnio, hiperglucemia)
 3. Anticoagulantes y antiagregantes (hematoma, técnicas manuales, sangrado retroperitoneal que imita dolor lumbar o de cadera)
 4. Opioides (enmascaran dolor, estreñimiento o dolor abdominal, mareo y caídas, apnea del sueño, hiperalgesia)
@@ -56,17 +93,31 @@ Habrá una fila por **familia**, no por fármaco suelto. Cada fila tiene siempre
 10. Betabloqueantes (frecuencia cardíaca no válida para dosificar: usar Borg; hipotensión, pesadillas)
 11. Diuréticos y otros antihipertensivos (deshidratación, hipopotasemia y calambres, ortostatismo)
 12. Insulina y antidiabéticos (hipoglucemia con el ejercicio, SGLT2 y deshidratación)
-13. Antirresortivos y fármacos que tocan hueso: bifosfonatos, denosumab, inhibidores de la aromatasa (fractura atípica de fémur con dolor de muslo, osteonecrosis, artralgias)
+13. Fármacos que tocan el hueso: bifosfonatos, denosumab, inhibidores de la aromatasa (fractura atípica de fémur con dolor de muslo, osteonecrosis, artralgias)
 
-**Fuentes**: solo las leídas en la sesión, como en las Fases F, H y M. Candidatas: Goodman 2018 (ya está en el registro y tiene apartados de fármacos por sistema), los capítulos de StatPearls de cada familia, NICE y las fichas técnicas de CIMA. Cada fuente entra en `data/referencias.js` y se regenera `docs/referencias.md` (`node tests/gen-referencias.mjs`). Ciccone, *Pharmacology in Rehabilitation*, solo si el usuario aporta el libro.
+Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido: cada frase de la guía sale de una fuente leída.
 
-**Procedimiento por familia**: leer las fuentes, escribir la fila en `data/farmacos.js`, test unitario (los cinco apartados, `fuentes` del registro, nada en payload, resúmenes ni prompt del informe), sección smoke y revisión del usuario antes de `main`. Se anota aquí el estado de cada familia.
+**Fuentes**: solo las leídas en la sesión. NCBI (StatPearls) pide reCAPTCHA desde la red del entorno, así que los capítulos de StatPearls solo pueden entrar como PDF aportado por el usuario, como en fases anteriores. Las revisiones de acceso abierto de PMC se leen enteras con el conector de PubMed. Se puede usar un agente que lea y devuelva citas literales con su sección, para no llenar el contexto. Cada fuente entra en `data/referencias.js` y se regenera `docs/referencias.md` (`node tests/gen-referencias.mjs`).
 
-| Familia | Estado |
-|---|---|
-| — | ninguna empezada |
+**Procedimiento por familia**:
+1. Leer las fuentes.
+2. Escribir `apartados` y `fuentes` en `data/farmacos.js`. Una frase sin fuente solo es admisible como consejo de redacción propia; se anota abajo.
+3. Ejecutar `node tests/gen-referencias.mjs` y `node tests/unit.js`.
+4. Ejecutar `node tests/smoke.mjs --solo farmacos`.
+5. Revisión del usuario antes de `main`.
+6. Anotar el estado aquí.
 
-**Decisión pendiente**: si va como herramienta propia (recomendado) o como sección dentro de «Condiciones especiales». El usuario aceptó el orden y las recomendaciones, así que de momento va como herramienta propia.
+| Familia | Estado | Fuentes leídas | Huecos |
+|---|---|---|---|
+| AINE | Escrita, **pendiente de revisión clínica** | Schug 2021, Bindu 2020, Lucas 2019, Papantoniou 2023 y Pannone y Abbott 2024 (texto completo en PMC) | Presentación clínica de la úlcera (melena, hematemesis, dolor referido a la espalda o al hombro, úlcera «silente»): ninguna fuente leída la describe. Candidatas: «Malik 2023» (StatPearls, úlcera péptica, ya en el registro) y «Saad y Mathew 2025» (StatPearls, toxicidad de los AINE, ya en el registro), si el usuario aporta los PDF. Sueño: ninguna fuente lo trata, y la guía lo dice. |
+| Las otras 12 | Pendientes | — | — |
+
+**Redacción propia en los AINE** (consejos sin cita, para la revisión):
+- «Anota si tomó una dosis antes de la sesión.»
+- «Vigila la hidratación en sesiones largas o con calor.»
+- «Las dudas sobre la dosis, la duración o la combinación con otros fármacos, al médico o al farmacéutico.»
+
+**Decisión tomada**: va como herramienta propia en la cabecera, no como sección de «Condiciones especiales».
 
 ## Paso 3 — Conectarla con el paciente (pendiente, después del paso 2)
 
