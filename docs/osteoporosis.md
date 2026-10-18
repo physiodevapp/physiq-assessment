@@ -1,6 +1,6 @@
 # Osteoporosis o fragilidad ósea — diseño (borrador)
 
-Estado: **borrador de diseño (octubre 2026), sin código. Aceptadas por el usuario las 14 recomendaciones** (ver «Decisiones aceptadas»). PDF de la decisión 13 en tandas: **tanda 1 leída** (Puentedura 2015 y Giangregorio 2014; **aceptados los cambios C1–C7 y la decisión 15**) y **tanda 2 leída** (Hadji 2026; **aceptados H1–H5**). Con eso están leídos los tres PDF mínimos de la decisión 13. **Tanda 3 leída** (Maitland 2005, cap. 9 entero): pasaje de la decisión 6 comprobado en la p. 223, con 2 cambios (M1 corrección; **M2 aceptado**). **Diseño cerrado: listo para implementar**; quedan solo PDF opcionales. Ver «Lectura de los PDF». Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
+Estado: **borrador de diseño (octubre 2026), sin código. Aceptadas por el usuario las 14 recomendaciones** (ver «Decisiones aceptadas»). PDF de la decisión 13 en tandas: **tanda 1 leída** (Puentedura 2015 y Giangregorio 2014; **aceptados los cambios C1–C7 y la decisión 15**) y **tanda 2 leída** (Hadji 2026; **aceptados H1–H5**). Con eso están leídos los tres PDF mínimos de la decisión 13. **Tanda 4 leída** (Giangregorio 2015, Gibbs 2019, Kovacs y Ralston 2015, Hardcastle 2022 y Sherrington 2019), con 6 cambios (T1–T6) pendientes. **Tanda 3 leída** (Maitland 2005, cap. 9 entero): pasaje de la decisión 6 comprobado en la p. 223, con 2 cambios (M1 corrección; **M2 aceptado**). **Diseño cerrado: listo para implementar**; quedan solo PDF opcionales. Ver «Lectura de los PDF». Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
 
 **Qué hay hoy en la app** (búsqueda de octubre 2026 en `data/` y `formularios/`):
 - **Cribado de la fase 2**:
@@ -221,6 +221,91 @@ En los tests de la 1.ª costilla (`h9`, `ce10`) se añade: «La presión sobre l
 
 La parte de la fractura vertebral sigue apoyándose en Downie 2013 y en la derivación de `op_d_fractura`. *Recomiendo el cambio.*
 
+### Tanda 4: Giangregorio 2015, Gibbs 2019, Kovacs y Ralston 2015, Hardcastle 2022 y Sherrington 2019
+
+Leídos enteros en PDF del usuario, con las tablas que salían mal en el texto comprobadas sobre la imagen. Los leyeron siete subagentes, y yo comprobé en el texto los pasajes que se usan abajo. Las ediciones *online first* (Giangregorio 2015, Kovacs y Ralston 2015, Hardcastle 2022) no traen la paginación de la revista: se citan por sección o tabla.
+
+**Giangregorio LM, McGill S, Wark JD, et al. Too Fit To Fracture: outcomes of a Delphi consensus process on physical activity and exercise recommendations for adults with osteoporosis with or without vertebral fractures.** *Osteoporos Int* 2015;26(3):891–910 (clave propuesta `Giangregorio 2015`).
+- **Qué es**: un Delphi de dos rondas, con una respuesta del 52 % y del 69 %, sin umbral de consenso fijado y con un acuerdo del 65 al 95 %. Parte de tres casos: osteoporosis por densitometría, una fractura vertebral, y varias fracturas con dolor e hipercifosis. Es opinión de expertos.
+- **Fuerza**: al menos 2 días por semana, 8–12 repeticiones máximas, 1–3 series (se empieza con 1). Con fractura vertebral, la forma y la alineación antes que la intensidad.
+- **Equilibrio**: a diario, unas 2 h por semana.
+- **Aeróbico**: 150 min por semana; con fractura vertebral, moderado, no vigoroso.
+- **Impacto**: con fractura vertebral, saltar o correr «may need to be avoided», sin dosis.
+- **Flexión y torsión**: se evitan cuando son rápidas, repetidas, con carga o al final del recorrido, no en sí mismas. «Modify activities that flex (bending forward) or twist». Rechaza los límites de peso («lifting <10 lbs, no twisting») y propone la bisagra de cadera y girar dando pasos. «Avoid lowering or lifting from the floor – store at waist height».
+- **Extensores**: isometrías diarias en posición neutra. **Se contradice**: 3–5 s en la tabla 4 y 5–10 s en el recuadro 2.
+- **Talla**: «6 cm of historic height loss or 2-cm measured height loss» como motivo para pedir una radiografía. Es otro umbral más (contradicción 1).
+- **Nada sobre terapia manual**, la fractura aguda ni el corsé. Con cualquier fractura vertebral, consultar al fisioterapeuta.
+
+**Gibbs JC, MacIntyre NJ, Ponzano M, et al. Exercise for improving outcomes after osteoporotic vertebral fracture.** *Cochrane Database Syst Rev* 2019;7:CD008618 (clave propuesta `Gibbs 2019`).
+- **Qué es**: 9 ensayos con 749 participantes (68 hombres), casi todos con la fractura crónica. Los ensayos **excluían las fracturas recientes o con dolor agudo**: Bennell 2010, por ejemplo, reclutó de 3 a 24 meses después de la fractura.
+- **Resultados**:
+  - el Timed Up and Go mejora 1,09 s (certeza moderada), que los autores no consideran clínicamente importante;
+  - las nuevas fracturas, las caídas, el dolor, la función referida, la calidad de vida y los efectos adversos tienen certeza **muy baja** («We are uncertain» para el dolor).
+- **Programas**: todos llevaban fortalecimiento, a menudo de los extensores; 2–3 sesiones por semana, supervisadas por un fisioterapeuta.
+- **Efectos adversos del ejercicio**: «costal cartilage fracture, rib fracture» en un ensayo con ejercicios en prono y al darse la vuelta de boca arriba a boca abajo.
+- **Terapia manual**: Bennell 2010 la combinaba con el ejercicio, el masaje y el vendaje. La revisión no describe la técnica ni le atribuye ningún efecto adverso.
+- **Contradice a Gregson 2025 en el dolor**: el NOGG da «Physiotherapist supervised exercise following vertebral fracture improves pain and physical performance» con nivel Ib, y la Cochrane, con certeza muy baja. Coincide con Brooke-Wavell 2022 («still low»).
+- **No dice nada** de cuándo empezar tras una fractura aguda ni del corsé.
+
+**Kovacs CS, Ralston SH. Presentation and management of osteoporosis presenting in association with pregnancy or lactation.** *Osteoporos Int* 2015;26(9):2223–2241 (clave propuesta `Kovacs y Ralston 2015`).
+- **Lo que interesa al fisio**, todo opinión de expertos:
+  - «Reasonable (not excessive) weight-bearing and resistance physical activity should be encouraged to help maintain bone mass, fitness, and mobility»;
+  - «Women who have fractured should also be counseled to avoid lifting heavy objects or other activities that may precipitate a fracture»;
+  - tabla 4, para todas: «Early mobilization; avoid bedrest», «Avoid high risk activities that include sudden loads or risk of falls», «Supportive corset (temporary) for vertebral fracture pain».
+- **La frase de Scioscia 2023 sale casi literal de aquí**, pero Kovacs y Ralston 2015 **no espera a la consolidación**: pide movilizar cuanto antes y no reposar en cama.
+- **Lactancia**: «Consider avoiding lactation … or weaning baby» (tabla 4), más suave que la fig. 3 de Hadji 2026.
+- **Recurrencia**: «Affected women should be reassured that vertebral fractures do not usually recur with subsequent pregnancies». Contradice a Hardcastle 2022 y a Hadji 2026 (contradicción 16).
+- Cargar al niño aparece solo como factor de riesgo (tabla 1), sin consejo sobre cómo hacerlo.
+- **Se contradice** con la vertebroplastia: el texto la pone en duda y la tabla 4 la incluye en los casos graves.
+
+**Hardcastle SA. Pregnancy and lactation associated osteoporosis.** *Calcif Tissue Int* 2022;110(5):531–545 (clave propuesta `Hardcastle 2022`).
+- «Other non-pharmacological treatment considerations include adequate analgesia for painful vertebral fractures, physiotherapy input and ensuring women are assisted in caring for their young babies if fractures are causing significant disability». No dice qué fisioterapia.
+- El ejercicio en carga: datos «currently limited».
+- **Recurrencia**: en 6 años, el 28 % volvió a quedarse embarazada, y de ellas el 20 % tuvo otra fractura; «not possible to confidently reassure» que no se repita.
+- Las vértebras más vulnerables, de T11 a L4.
+- La osteoporosis transitoria de cadera, aparte de la PLO (con la frontera difusa).
+
+**Sherrington C, Fairhall NJ, Wallbank GK, et al. Exercise for preventing falls in older people living in the community.** *Cochrane Database Syst Rev* 2019;1:CD012424 (clave propuesta `Sherrington 2019`). Unas 450 páginas en cinco partes, entera.
+- **Qué es**: 108 ensayos con 23.407 personas de 60 años o más que viven en la comunidad.
+- **Resultados**:
+  - el ejercicio reduce el número de caídas (RaR 0,77) y de personas que se caen (RR 0,85), con **certeza alta**;
+  - el de equilibrio y funcional, también con certeza alta (RaR 0,76);
+  - el multicomponente (equilibrio y fuerza), RaR 0,66, con certeza moderada;
+  - las fracturas por caída, RR 0,73, con certeza baja;
+  - la fuerza sola, el baile y caminar, con certeza muy baja: **caminar solo no está demostrado**;
+  - más efecto si lo imparte un profesional sanitario (P = 0,04).
+- **Osteoporosis**: no la analiza. Algunos ensayos se hicieron con osteoporosis (Smulders 2010, Carter 2002, Grahn Kronhed 2009, Madureira 2007, Liu-Ambrose 2004…) y ninguno describe fracturas causadas por el ejercicio. La única fractura atribuida al ejercicio en toda la revisión es una de estrés de la pelvis (Clemson 2012).
+- **La cifra de «3 h por semana» no está en esta revisión.** Ni en el texto, ni en los análisis, ni en las tablas ni en los anexos. Solo tres ensayos comparan dosis, y la revisión no los agrupa. Brooke-Wavell 2022 y Gregson 2025 dan las 3 h con referencias que no he podido comprobar (sus listas bibliográficas no venían en el XML). Probablemente vienen de un metaanálisis anterior del mismo grupo (Sherrington 2017), que no he leído.
+- **Errores internos**: un intervalo de confianza imposible («RaR 0.67, 95% CI 0.58 to 0.65»), un signo cambiado en el SF-36 y los efectos adversos de caminar.
+
+**Una corrección de una nota de lectura**: un subagente dijo que el «up to 28%» de Anagnostis 2024 era una mala lectura. Comprobado en el texto, **no lo es**: sale de Laroche, donde 2 de 7 mujeres con otro embarazo recayeron (28 %). Otro 28 %, el de Kyvernitakis, es el de las que volvieron a quedarse embarazadas, de las que recayó el 20 % (6 de 30). Es una cifra de 7 casos; desde H4 la app no da ninguna.
+
+### Qué cambia con la tanda 4 (propuestas; cada una con mi recomendación)
+
+**T1. Moverse con seguridad**: el recuadro de la fase 5 y el aviso de la fase 6 añaden «girar dando pasos en vez de torcer el tronco» y «no levantar ni dejar cosas desde el suelo: guardarlas a la altura de la cintura» (Giangregorio 2015). *Recomiendo el cambio.*
+
+**T2. El ejercicio tras la fractura vertebral, sin sobrevalorarlo.** La línea de la fase 5 decía «El ejercicio supervisado por un fisioterapeuta mejora el dolor y la función (… Gregson 2025)». Pasa a:
+> «Tras una fractura vertebral, el ejercicio mejora algo la movilidad (certeza moderada); si mejora el dolor no se sabe (certeza muy baja), y los estudios se hicieron meses después de la fractura, no en la fase aguda (Gibbs 2019).»
+
+Se queda «con dolor, empieza tumbado boca arriba» (Gregson 2025, condicional). *Recomiendo el cambio*: es la revisión sistemática más reciente y rebaja al NOGG.
+
+**T3. Las transiciones** (C4) ganan un caso concreto:
+> «En un ensayo, ejercicios en prono y darse la vuelta de boca arriba a boca abajo rompieron una costilla y un cartílago costal (Gibbs 2019).»
+
+Va en el «¿Por qué?» del aviso, no en la línea. *Recomiendo el cambio.*
+
+**T4. La línea de la PLO en la fase 5** (H3) queda así:
+> «Movilízate pronto y sin reposo en cama; actividad en carga y de fuerza razonable, sin excesos, y sin cargar objetos pesados (Kovacs y Ralston 2015). Con las fracturas consolidadas, a los 3–6 meses, más carga y fuerza (Scioscia 2023). Fisioterapia cuando el dolor lo permita (Hadji 2026; Hardcastle 2022). Al coger y cargar al bebé, la misma bisagra de cadera (extrapolado de Brooke-Wavell 2022). Si las fracturas la limitan mucho, que tenga ayuda para cuidar del bebé (Hardcastle 2022). La lactancia, los fármacos y otro embarazo los decide con su médico.»
+
+*Recomiendo el cambio.* Corrige que la versión anterior pareciera pedir esperar 3–6 meses para moverse.
+
+**T5. Las «3 h por semana» de caídas, con su cita correcta.**
+- Siguen citando a Brooke-Wavell 2022 [E] y Gregson 2025 (Ia), **nunca a Sherrington 2019**.
+- Sherrington 2019 se cita para lo que sí dice: «el ejercicio de equilibrio y funcional reduce las caídas (certeza alta); caminar solo no ha demostrado reducirlas».
+- *Recomiendo el cambio.* Si quieres apoyar las 3 h en su origen, el PDF sería Sherrington C, et al. Exercise to prevent falls in older adults: an updated systematic review and meta-analysis. *Br J Sports Med* 2017;51(24):1750–1758 ([doi:10.1136/bjsports-2016-096547](https://doi.org/10.1136/bjsports-2016-096547); identificadores comprobados en Europe PMC, sin texto abierto). No lo he leído.
+
+**T6. Recurrencia (H4), sin cambios en el texto.** Con tres posturas distintas («should be reassured», «not possible to confidently reassure», «still unclear»), el texto de H4 («si hay más riesgo en otro embarazo no está claro») es el que las recoge todas. Añade las citas de Kovacs y Ralston 2015 y Hardcastle 2022 en el razonamiento. *Recomiendo esto.*
+
 ## Resumen
 
 - **Entra en la Fase P.** Cambia la seguridad y la interpretación:
@@ -306,12 +391,12 @@ Desde la sesión solo se llega a PMC y a NICE. Las editoriales (Springer, Wiley,
 | 1 | ~~Hadji P, et al. Pregnancy- and lactation-associated osteoporosis: a position statement of the IAPM, IOF, ECTS, ESCEO, IMS, and EMAS.~~ *Int J Gynaecol Obstet* 2026 | [doi:10.1002/ijgo.71203](https://doi.org/10.1002/ijgo.71203) | **Leído entero** (tanda 2; ver «Lectura de los PDF») |
 | 2 | ~~Puentedura EJ, O'Grady WH. Safety of thrust joint manipulation in the thoracic spine: a systematic review. *J Man Manip Ther* 2015;23(3):154–161~~ | [doi:10.1179/2042618615Y.0000000012](https://doi.org/10.1179/2042618615Y.0000000012) | **Leído entero** (tanda 1; ver «Lectura de los PDF») |
 | 3 | ~~Giangregorio LM, et al. Too Fit To Fracture: exercise recommendations for individuals with osteoporosis or osteoporotic vertebral fracture. *Osteoporos Int* 2014;25(3):821–835~~ | [doi:10.1007/s00198-013-2523-2](https://doi.org/10.1007/s00198-013-2523-2) | **Leído entero** (tanda 1; ver «Lectura de los PDF») |
-| 4 | Giangregorio LM, et al. Too Fit To Fracture: outcomes of a Delphi consensus process on physical activity and exercise recommendations for adults with osteoporosis with or without vertebral fractures. *Osteoporos Int* 2015;26(3):891–910 | [doi:10.1007/s00198-014-2881-4](https://doi.org/10.1007/s00198-014-2881-4) | Qué movimientos evitar, con fractura vertebral; detalle que Brooke-Wavell 2022 resume |
-| 5 | Gibbs JC, et al. Exercise for improving outcomes after osteoporotic vertebral fracture. *Cochrane Database Syst Rev* 2019;7:CD008618 | [doi:10.1002/14651858.CD008618.pub3](https://doi.org/10.1002/14651858.CD008618.pub3) | La revisión Cochrane del ejercicio tras la fractura vertebral. En PMC solo está el resumen |
-| 6 | Kovacs CS, Ralston SH. Presentation and management of osteoporosis presenting in association with pregnancy or lactation. *Osteoporos Int* 2015;26(9):2223–2241 | [doi:10.1007/s00198-015-3149-3](https://doi.org/10.1007/s00198-015-3149-3) | La revisión clásica de la PLO |
+| 4 | ~~Giangregorio LM, et al. Too Fit To Fracture: outcomes of a Delphi consensus process on physical activity and exercise recommendations for adults with osteoporosis with or without vertebral fractures. *Osteoporos Int* 2015;26(3):891–910~~ | [doi:10.1007/s00198-014-2881-4](https://doi.org/10.1007/s00198-014-2881-4) | **Leído entero** (tanda 4; ver «Lectura de los PDF») |
+| 5 | ~~Gibbs JC, et al. Exercise for improving outcomes after osteoporotic vertebral fracture. *Cochrane Database Syst Rev* 2019;7:CD008618~~ | [doi:10.1002/14651858.CD008618.pub3](https://doi.org/10.1002/14651858.CD008618.pub3) | **Leído entero** (tanda 4; ver «Lectura de los PDF») |
+| 6 | ~~Kovacs CS, Ralston SH. Presentation and management of osteoporosis presenting in association with pregnancy or lactation. *Osteoporos Int* 2015;26(9):2223–2241~~ | [doi:10.1007/s00198-015-3149-3](https://doi.org/10.1007/s00198-015-3149-3) | **Leído entero** (tanda 4; ver «Lectura de los PDF») |
 | 7 | Issa Z, et al. Pregnancy and lactation associated osteoporosis: a systematic review. *Calcif Tissue Int* 2026 | [doi:10.1007/s00223-026-01499-6](https://doi.org/10.1007/s00223-026-01499-6) | La revisión sistemática más reciente de la PLO (con Kovacs entre los autores) |
-| 8 | Sherrington C, et al. Exercise for preventing falls in older people living in the community. *Cochrane Database Syst Rev* 2019;1:CD012424 | [doi:10.1002/14651858.CD012424.pub2](https://doi.org/10.1002/14651858.CD012424.pub2) | La base de la dosis de caídas (3 h por semana). Brooke-Wavell 2022 y el NOGG ya la recogen |
-| 9 | Hardcastle SA. Pregnancy and lactation associated osteoporosis. *Calcif Tissue Int* 2022;110(5):531–545 | [doi:10.1007/s00223-021-00815-6](https://doi.org/10.1007/s00223-021-00815-6) | Revisión narrativa; opcional |
+| 8 | ~~Sherrington C, et al. Exercise for preventing falls in older people living in the community. *Cochrane Database Syst Rev* 2019;1:CD012424~~ | [doi:10.1002/14651858.CD012424.pub2](https://doi.org/10.1002/14651858.CD012424.pub2) | **Leído entero** (tanda 4; ver «Lectura de los PDF») |
+| 9 | ~~Hardcastle SA. Pregnancy and lactation associated osteoporosis. *Calcif Tissue Int* 2022;110(5):531–545~~ | [doi:10.1007/s00223-021-00815-6](https://doi.org/10.1007/s00223-021-00815-6) | **Leído entero** (tanda 4; ver «Lectura de los PDF») |
 | 10 | Finucane 2020 en inglés (ya registrada) | [doi:10.2519/jospt.2020.9971](https://doi.org/10.2519/jospt.2020.9971) | Solo si se cita algo de él que no esté ya en `l_e4` |
 | 11 | La guía española de la SEIOMM | — | No la he podido localizar desde la sesión. Opcional, por si prefieres apoyar los textos en una guía española |
 
