@@ -1,6 +1,6 @@
 # Osteoporosis o fragilidad ósea — diseño (borrador)
 
-Estado: **borrador de diseño (octubre 2026), sin código.** Las decisiones están pendientes del usuario (ver «Decisiones»). Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
+Estado: **borrador de diseño (octubre 2026), sin código. Aceptadas por el usuario las 14 recomendaciones** (ver «Decisiones aceptadas»). PDF de la decisión 13 en tandas: **tanda 1 leída** (Puentedura 2015 y Giangregorio 2014; ver «Lectura de los PDF»), con 7 cambios y 1 decisión nueva (15) pendientes. Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
 
 **Qué hay hoy en la app** (búsqueda de octubre 2026 en `data/` y `formularios/`):
 - **Cribado de la fase 2**:
@@ -15,8 +15,122 @@ Estado: **borrador de diseño (octubre 2026), sin código.** Las decisiones est�
 - **Lupus**: la tarjeta pregunta los corticoides en tramos (≤5 · >5–20 · >20 mg/día). Su línea de la 4b dice que con corticoides «el hueso es más frágil» (Yasir 2023; Goodman 2018, cap. 12, p. 445). `les_d_osteonecrosis` deriva la osteonecrosis.
 - **Formulario previo lumbar**: «¿Está embarazada, o ha dado a luz en el último año?» (`embarazo`), enlazado como pista al paso `lu_step4`.
 - **Panel de tiempos de tejido**: `fx_vertebral_compresion` («Vertebral por compresión, sin cirugía», Donnally 2025 · Margetis y Patel 2025 · Yuan 2016). Ninguna hipótesis la enlaza, así que nunca sale en «Este paciente».
-- **Fase 6**: ningún aviso de osteoporosis. `docs/plan-tratamiento.md` ya recoge de Maitland 2005 (pp. 222–223) «sin manipulación forzada con osteoporosis… la movilización suave sí puede ser adecuada», pero ese texto no llegó a ningún aviso (el aviso `manipulacionCervical` solo nombra los signos de dos raíces y los medulares).
+- **Fase 6**: ningún aviso de osteoporosis. `docs/plan-tratamiento.md` ya recoge de Maitland 2005 (cap. 9, pp. 222–223) «sin manipulación forzada con osteoporosis… la movilización suave sí puede ser adecuada», pero ese texto no llegó a ningún aviso (el aviso `manipulacionCervical` solo nombra los signos de dos raíces y los medulares).
 - **Ninguna región torácica.** La silueta de la fase 2 dibuja la columna torácica punteada y sin toque. Una fractura vertebral torácica, la de la paciente del usuario, se valora hoy desde lumbar o cervical (ver «Fuera de este diseño»).
+
+## Decisiones aceptadas (octubre 2026)
+
+El usuario aceptó las 14 recomendaciones de «Decisiones»:
+
+1. Entra, como capa transversal con documento propio.
+2. **Forma 3**: tarjeta con «Diagnosticada» y «Sospecha» y su sistema en la fase 2.
+3. «Sospecha» con la regla del NOGG (50 años o más y un factor) y los 6 factores elegidos; la app nunca calcula el FRAX.
+4. `op_d_fractura` como `derivacion`, con «sin terapia manual ni carga en esa zona hasta entonces».
+5. La derivación por corticoides sin protección ósea (`op_d_corticoides`).
+6. Manipulación forzada fuera del plan de la fase 6 (Maitland 2005, cap. 9, pp. 222–223), tras volver a comprobar el pasaje.
+7. El campo `cargaOsea: true` en los tests de la tabla, con la línea de técnica.
+8. El bloque de caídas con las preguntas de NICE NG249, sin puntuar riesgo. La velocidad de marcha, como medida opcional.
+9. Ninguna regla automática con otras tarjetas; solo texto (recordatorio en el recuadro del lupus, mastocitosis sistémica).
+10. La fractura vertebral en «Este paciente» del panel de tiempos, y la revisión de su nota en otra PR (Fase J).
+11. Payload `op` y la PR de physiq-report después.
+12. La PLO como causa dentro de la tarjeta; su sospecha en la futura «Embarazo y posparto»; mientras tanto, un párrafo en `l_e4` y la pista en la guía. La app nunca aconseja el destete, y lo de cargar al bebé va como extrapolación marcada.
+13. Pedir en PDF Hadji 2026, Puentedura 2015 y Giangregorio 2014 como mínimo. El usuario los pasa en tandas.
+14. Registrar solo las referencias que use el texto final.
+
+## Lectura de los PDF (octubre 2026)
+
+### Tanda 1: Puentedura 2015 y Giangregorio 2014
+
+Leídos enteros en PDF del usuario, incluidas las tablas y sin la bibliografía. Las figuras de Puentedura 2015 (técnicas) se vieron solo por sus pies.
+
+**Puentedura EJ, O'Grady WH. Safety of thrust joint manipulation in the thoracic spine: a systematic review.** *J Man Manip Ther* 2015;23(3):154–161 (clave propuesta `Puentedura 2015`).
+- **Qué es**: una revisión sistemática de casos publicados de efectos adversos graves tras el thrust torácico (1950–2015). Son 10 casos en 7 artículos:
+  - lesión de la médula en 7, neumotórax o hemotórax en 2 y fuga de LCR en 1;
+  - entre los casos con lesión medular, un colapso de T4–T5 con compresión medular (mujer de 60 años) y una fractura de T4 con cáncer de pulmón (71 años) (tabla 3).
+- **Tabla 1, contraindicaciones absolutas del thrust torácico**. Bajo «Bony issues»:
+  - «Metabolic, e.g. osteomalacia, osteoporosis»;
+  - «Iatrogenic, e.g. long-term corticosteroid medication»;
+  - «Traumatic, e.g. fracture».
+  
+  Bajo «Vascular issues», «Bleeding diatheses, e.g. haemophilia, anticoagulant therapy».
+- **Tabla 2, precauciones relativas**: «Minor osteoporosis», «Serious kyphosis and scoliosis», «Hypermobility or ligamentous laxity».
+- **De dónde salen las dos tablas**: «have been identified to assist clinicians with decision-making» con la referencia 25 de los autores, Gatterbauer A. *Contraindications in osteopathy* (Viena, 2009), un trabajo de una escuela de osteopatía, no una guía. No lo he leído.
+- **Qué dice el texto**: «Thrust joint manipulation should never be performed when contraindications or precautions are present». En la discusión: «The most common preexisting conditions were likely to be metabolic pathologies such as osteopenia or osteoporosis. These conditions are clear contraindications to TJM and should have been easily identifiable through a detailed patient history». Los mismos autores dicen antes que los casos no traían información suficiente para saber si había contraindicaciones, así que ese «likely» es una suposición.
+- **Biomecánica** (introducción, citando otros estudios):
+  - el pico de carga de un thrust posteroanterior torácico fue de 562,68 N (Gudavalli 2014);
+  - la carga posteroanterior con la que se rompe en el laboratorio una vértebra torácica media fue de 479 N de media (200–728 N) (Sran 2004).
+  
+  Los autores dicen que esto «may raise some concerns about the strength and depth of TJM techniques in the thoracic spine».
+- **Contradicción interna**: la tabla 1 pone la osteoporosis como contraindicación absoluta, y la tabla 2, la «minor osteoporosis» como precaución relativa; la discusión añade la osteopenia como «clear contraindication». El texto dice que tampoco se manipule con precauciones, así que en la práctica las tres llevan a lo mismo: sin thrust.
+- **Coincide con Maitland 2005** (cap. 9, pp. 222–223: sin manipulación forzada con osteoporosis) y es más estricto: no deja el thrust ni con una osteoporosis leve. Maitland deja abierta la movilización suave; Puentedura 2015 no habla de la movilización.
+
+**Giangregorio LM, Papaioannou A, MacIntyre NJ, et al. Too Fit To Fracture: exercise recommendations for individuals with osteoporosis or osteoporotic vertebral fracture.** *Osteoporos Int* 2014;25(3):821–835 (clave propuesta `Giangregorio 2014`).
+- **Qué es**: un consenso internacional con GRADE para mayores de 65 años con osteoporosis, con o sin fractura vertebral. Lo avalan Osteoporosis Canada, la National Osteoporosis Foundation y Osteoporosis Australia. «We strongly recommend» = fuerte; «We recommend» = condicional.
+- **Calidad de la evidencia** (tabla 2):
+  - caídas, alta con osteoporosis y moderada con fractura vertebral;
+  - fracturas, muy baja;
+  - densidad ósea, baja o muy baja;
+  - daños, dolor y calidad de vida, muy baja;
+  - movilidad, baja.
+- **Recomendaciones** (tabla 4):
+  - **fuerte**: un programa multicomponente con fuerza y equilibrio, con o sin fractura vertebral;
+  - **condicional**: no hacer solo aeróbico, sin fuerza ni equilibrio;
+  - con fractura vertebral, «Consultation with a physical therapist is recommended to ensure safe and appropriate exercise».
+- **Fuerza** (texto y tabla 6):
+  - al menos 2 días por semana;
+  - un ejercicio por cada grupo muscular grande, 2 series de 8–12 repeticiones máximas;
+  - quien empieza o tiene más riesgo, con menos intensidad;
+  - «Resistance training machines should be avoided in individuals at high risk of vertebral fracture unless there is certainty that they can be used and adjusted with proper form», porque a menudo obligan a flexionar y girar el tronco;
+  - «Slow, controlled movements are recommended»;
+  - extensores de la columna y educación postural.
+- **Equilibrio**, recomendación fuerte: «daily balance training … and aim to accumulate 2 h of balance training weekly (~15–20 min per day)». Puede hacerse en tramos o dentro de las actividades del día, de lo estático a lo dinámico, con algo donde apoyarse y en suelo blando (tabla 5).
+- **Aeróbico**: 150–300 min por semana de intensidad moderada, mejor con carga. «For individuals at high risk of vertebral fracture, the risks associated with these exercise types [jumping, running], or vigorous exercise in general, may outweigh the benefits». No hacer ejercicio fuera con lluvia o hielo; tener un plan para hacerlo dentro.
+- **Daños**: hay fracturas al girarse de boca arriba a boca abajo y al caerse una pesa sobre el pie, y más riesgo de fractura con «performing twisting movements too quickly during transitions between positions» o caminando con el suelo resbaladizo.
+- **Precauciones para todos**: «all individuals with osteoporosis should learn how to move safely or take precautions when performing twisting or bending during transitions between movements, when working with loads, when performing movements that challenge balance, or when performing activities outdoors in slippery weather».
+- **No habla de la terapia manual.** Solo cita, en la bibliografía, un ensayo piloto de ejercicio y terapia manual tras la fractura vertebral (Bennell 2010), sin comentarlo.
+
+### Qué cambia en el diseño (propuestas; cada una con mi recomendación)
+
+**C1. Sin thrust en la fase 6: dos fuentes en vez de una** (decisión 6).
+- La regla pasa a citar Maitland 2005 (cap. 9, pp. 222–223) y Puentedura 2015 (tabla 1 y discusión).
+- El texto dirá «sin manipulación con thrust en la columna ni en las costillas; la movilización suave puede ser adecuada». Lo primero viene de las dos fuentes; lo segundo, solo de Maitland 2005.
+- *Recomiendo el cambio.*
+
+**C2. La línea `cargaOsea` gana un porqué** (decisión 7). En su «¿Por qué?», no en la línea:
+> «Un empuje posteroanterior fuerte en la columna torácica puede llegar a la carga con la que se rompe una vértebra torácica en el laboratorio (Puentedura 2015, citando a Sran 2004).»
+
+La línea de la 4b sigue siendo redacción propia. Las cifras son de cadáver y de thrust, no de los tests, así que solo van en el razonamiento. *Recomiendo el cambio.*
+
+**C3. Equilibrio: a diario, unas 2 h por semana, para todos.**
+- Giangregorio 2014 lo recomienda con fuerza: 15–20 min al día, hasta unas 2 h por semana.
+- Brooke-Wavell 2022 pide «al menos dos veces por semana» para todos [C] y 3 h por semana a quien ya se cae [E].
+- *Recomiendo*: «equilibrio a diario, 15–20 min (unas 2 h por semana; Giangregorio 2014); con caídas, 3 h por semana durante al menos 4 meses (Brooke-Wavell 2022)». Va en el recuadro de la fase 5, el aviso de la fase 6 y el resultado del bloque de caídas cuando no hay caídas. Ver la contradicción 12.
+
+**C4. La torsión: suave, lenta y con cuidado en las transiciones.**
+- Brooke-Wavell 2022 dice que es segura «if performed smoothly and comfortably» [C].
+- Giangregorio 2014 recoge fracturas al girarse demasiado rápido entre posturas y pide precaución al girarse y agacharse en las transiciones y con cargas.
+- No se contradicen: las dos piden suavidad.
+- *Recomiendo*: «la torsión, suave y controlada; cuidado al pasar de tumbado a sentado o al darse la vuelta, y con peso en las manos (Brooke-Wavell 2022; Giangregorio 2014)». Ver la contradicción 6.
+
+**C5. Fuerza: «2 series, hasta 3», movimientos lentos y controlados, y sin máquinas que obliguen a flexionar o girar el tronco si el riesgo de fractura vertebral es alto.**
+- Las 2 series son de Giangregorio 2014; las 3, de Brooke-Wavell 2022.
+- *Recomiendo el cambio*, en el recuadro de la fase 5 y el aviso de la fase 6.
+
+**C6. Suelo resbaladizo.** Una línea en el aviso de la fase 6 y en el programa para casa: «con lluvia o hielo, el ejercicio mejor dentro de casa» (Giangregorio 2014). *Recomiendo el cambio.*
+
+**C7. Con fractura vertebral, consultar al fisioterapeuta**: lo dicen las dos guías (Giangregorio 2014, tabla 4; Brooke-Wavell 2022, recuadro 1 [C]). Solo cambia la cita. *Recomiendo el cambio.*
+
+**Decisión nueva 15. ¿El tope «sin thrust» también fuera de esta tarjeta?** Puentedura 2015 (tabla 1) pone como contraindicación absoluta del thrust torácico:
+- los corticoides a largo plazo, sin dar una dosis;
+- el tratamiento anticoagulante;
+- y, como precaución relativa, la hipermovilidad.
+
+La app ya tiene esos datos en otras tarjetas: la fila de corticoides y la casilla «anticoagulante o antiagregante» del lupus, y la tarjeta de hipermovilidad.
+- *Recomiendo* aplicar el tope «sin thrust» de la fase 6 también con la tarjeta del lupus cuando los corticoides no estén en «No» o haya dosis altas previas, y con la casilla del antitrombótico.
+  - No marca ninguna tarjeta ni cambia nada fuera del plan, así que no contradice la decisión 9.
+  - Mi reserva: las tablas de Puentedura 2015 vienen de un trabajo de osteopatía (Gatterbauer 2009) que no he leído, y el antiagregante no está en su lista (solo el anticoagulante). Por eso propongo la casilla tal cual, sin separar el antiagregante, y que la tarjeta del anticoagulado lo revise.
+- Con la hipermovilidad, *recomiendo* no tocar nada: Maitland 2005 ya dice que una articulación hipermóvil no se manipula con fuerza (`docs/plan-tratamiento.md`), y es una precaución relativa.
+- *Alternativa*: dejar el tope solo para esta tarjeta y llevar el resto al diseño del paciente anticoagulado.
 
 ## Resumen
 
@@ -32,7 +146,7 @@ Estado: **borrador de diseño (octubre 2026), sin código.** Las decisiones est�
 - **La terapia manual casi no tiene fuentes**:
   - de las fuentes leídas en esta sesión, ninguna guía la menciona;
   - solo Downie 2013 dice, en su introducción y con una referencia, que en la fractura vertebral está «contraindicated»;
-  - y Maitland 2005 (pp. 222–223; leído en la Fase L) dice «sin manipulación forzada con osteoporosis; la movilización suave sí puede ser adecuada».
+  - y Maitland 2005 (cap. 9, pp. 222–223; leído en la Fase L) dice «sin manipulación forzada con osteoporosis; la movilización suave sí puede ser adecuada».
   
   Cualquier regla de fuerza más fina sería redacción propia.
 - **La PLO** es rara:
@@ -101,8 +215,8 @@ Desde la sesión solo se llega a PMC y a NICE. Las editoriales (Springer, Wiley,
 | # | Fuente | Enlace | Para qué |
 |---|---|---|---|
 | 1 | **Hadji P, et al. Pregnancy- and lactation-associated osteoporosis: a position statement of the IAPM, IOF, ECTS, ESCEO, IMS, and EMAS.** *Int J Gynaecol Obstet* 2026 | [doi:10.1002/ijgo.71203](https://doi.org/10.1002/ijgo.71203) | **La primera declaración de posición de las sociedades sobre la PLO.** Diría si recomiendan algo de actividad, fisioterapia o destete, y con qué fuerza. Es la que más falta hace para la decisión 12 |
-| 2 | Puentedura EJ, O'Grady WH. Safety of thrust joint manipulation in the thoracic spine: a systematic review. *J Man Manip Ther* 2015;23(3):154–161 | [doi:10.1179/2042618615Y.0000000012](https://doi.org/10.1179/2042618615Y.0000000012) | Efectos adversos de la manipulación torácica (fracturas incluidas). Es la única fuente localizada sobre la manipulación en la columna torácica |
-| 3 | Giangregorio LM, et al. Too Fit To Fracture: exercise recommendations for individuals with osteoporosis or osteoporotic vertebral fracture. *Osteoporos Int* 2014;25(3):821–835 | [doi:10.1007/s00198-013-2523-2](https://doi.org/10.1007/s00198-013-2523-2) | El consenso canadiense (GRADE), base de Brooke-Wavell 2022 |
+| 2 | ~~Puentedura EJ, O'Grady WH. Safety of thrust joint manipulation in the thoracic spine: a systematic review. *J Man Manip Ther* 2015;23(3):154–161~~ | [doi:10.1179/2042618615Y.0000000012](https://doi.org/10.1179/2042618615Y.0000000012) | **Leído entero** (tanda 1; ver «Lectura de los PDF») |
+| 3 | ~~Giangregorio LM, et al. Too Fit To Fracture: exercise recommendations for individuals with osteoporosis or osteoporotic vertebral fracture. *Osteoporos Int* 2014;25(3):821–835~~ | [doi:10.1007/s00198-013-2523-2](https://doi.org/10.1007/s00198-013-2523-2) | **Leído entero** (tanda 1; ver «Lectura de los PDF») |
 | 4 | Giangregorio LM, et al. Too Fit To Fracture: outcomes of a Delphi consensus process on physical activity and exercise recommendations for adults with osteoporosis with or without vertebral fractures. *Osteoporos Int* 2015;26(3):891–910 | [doi:10.1007/s00198-014-2881-4](https://doi.org/10.1007/s00198-014-2881-4) | Qué movimientos evitar, con fractura vertebral; detalle que Brooke-Wavell 2022 resume |
 | 5 | Gibbs JC, et al. Exercise for improving outcomes after osteoporotic vertebral fracture. *Cochrane Database Syst Rev* 2019;7:CD008618 | [doi:10.1002/14651858.CD008618.pub3](https://doi.org/10.1002/14651858.CD008618.pub3) | La revisión Cochrane del ejercicio tras la fractura vertebral. En PMC solo está el resumen |
 | 6 | Kovacs CS, Ralston SH. Presentation and management of osteoporosis presenting in association with pregnancy or lactation. *Osteoporos Int* 2015;26(9):2223–2241 | [doi:10.1007/s00198-015-3149-3](https://doi.org/10.1007/s00198-015-3149-3) | La revisión clásica de la PLO |
@@ -141,12 +255,12 @@ Desde la sesión solo se llega a PMC y a NICE. Las editoriales (Springer, Wiley,
    **Propongo** revisar la nota de esa fila con la guía (decisión 10). La app no pauta el corsé: es del médico.
 4. **La vertebroplastia.** Kanis 2019 la plantea con dolor de 2–3 semanas, aunque admite «undue reliance on expert opinion». Gregson 2025 (Ia) y Laurent 2022 no la recomiendan de rutina. No es del fisio; solo afecta a la nota del panel.
 5. **El impacto con fractura vertebral.** Brooke-Wavell 2022 lo limita a caminar a paso ligero como «precautionary measure because of theoretical (unproved) risks» [C]. El mismo texto dice que el ejercicio «does not need to be adapted … according to fracture risk or low BMD» y que caminar a paso ligero aumentó las fracturas en quien ya tenía riesgo de caerse. **Propongo** seguir el recuadro tal cual y decir que es una precaución sin pruebas, con la progresión individual que el mismo consenso permite.
-6. **La torsión.** Brooke-Wavell 2022: «should be safe if performed smoothly and comfortably» [C]. Gregson 2025 no la nombra. **Propongo** no restringirla y sí la flexión con carga, que es lo que dicen las dos.
+6. **La torsión.** Brooke-Wavell 2022: «should be safe if performed smoothly and comfortably» [C]. Gregson 2025 no la nombra. **Propongo** no restringirla y sí la flexión con carga, que es lo que dicen las dos. *Tras la tanda 1*: Giangregorio 2014 recoge fracturas al girarse «too quickly during transitions» y pide precaución al girarse y agacharse en las transiciones y con cargas. No contradice a Brooke-Wavell 2022 (las dos piden suavidad); se añade la precaución (C4).
 7. **La dosis de los extensores.** Brooke-Wavell 2022: 3–5 repeticiones mantenidas 3–5 s, dos veces por semana (o a diario con fractura vertebral) [C]. El mismo texto dice que en los ensayos «the higher the dose … the greater change». **Propongo** darla como punto de partida, con la progresión individual.
 8. **La terapia manual.**
    - Gregson 2025, Brooke-Wavell 2022, Kanis 2019, Laurent 2022, Montero-Odasso 2022, NICE NG249 y Finucane 2020 no la mencionan.
    - Downie 2013 la llama «contraindicated» en la fractura vertebral, en una frase de su introducción con referencia.
-   - Maitland 2005 (pp. 222–223): sin manipulación forzada con osteoporosis; la movilización suave puede ser adecuada.
+   - Maitland 2005 (cap. 9, pp. 222–223): sin manipulación forzada con osteoporosis; la movilización suave puede ser adecuada.
    
    **Propongo** usar solo esas dos (decisiones 6 y 7) y marcar lo demás como redacción propia.
 9. **El valor de las banderas.** Downie 2013 y Finucane 2020 desaconsejan actuar por una sola bandera. Gregson 2025 pide pensar en la fractura vertebral ante un dolor agudo, «especially thoracic», con factores de riesgo (fuerte). No se contradicen: el NOGG combina el síntoma con los factores. **Propongo** que las preguntas combinen siempre el dolor nuevo con la osteoporosis conocida o sospechada, como ya hace `l_e4`.
@@ -167,6 +281,8 @@ Desde la sesión solo se llega a PMC y a NICE. Las editoriales (Springer, Wiley,
     - NICE NG249: sin dosis.
     
     **Propongo** las 3 h por semana (Brooke-Wavell 2022; Gregson 2025) con las ≥ 3 sesiones y las 12 semanas (Montero-Odasso 2022). Son compatibles.
+    
+    *Tras la tanda 1*: Giangregorio 2014 recomienda con fuerza, para todos con osteoporosis, equilibrio a diario, 15–20 min (unas 2 h por semana). Es más que el «al menos dos veces por semana» [C] de Brooke-Wavell 2022 para quien no se cae. **Propongo** las 2 h por semana diarias para todos y las 3 h para quien ya se cae (C3).
 
 ### PLO
 
@@ -188,7 +304,7 @@ Desde la sesión solo se llega a PMC y a NICE. Las editoriales (Springer, Wiley,
 1. **Cambia la seguridad.**
    - **Fractura con poca carga**: en el hueso osteoporótico, una caída desde la propia altura o menos basta (Gregson 2025). Una fractura vertebral puede venir de resbalar, tropezar, levantar algo desde la flexión o toser (Finucane 2020, sección 3).
    - **Lo que hace el fisio**:
-     - manipulación y movilización con fuerza: «sin manipulación forzada con osteoporosis» (Maitland 2005, pp. 222–223);
+     - manipulación y movilización con fuerza: «sin manipulación forzada con osteoporosis» (Maitland 2005, cap. 9, pp. 222–223);
      - tests que empujan la columna, las costillas o la pelvis;
      - ejercicio con flexión del tronco y carga: «repetitive forced spinal forward flexion exercises should be undertaken with care» (Gregson 2025, Ia).
    - **Las caídas**: la mayoría de las fracturas no vertebrales empiezan con una caída (Gregson 2025).
@@ -207,7 +323,7 @@ Desde la sesión solo se llega a PMC y a NICE. Las editoriales (Springer, Wiley,
 
 | Técnica | Qué dicen las fuentes | Qué propongo |
 |---|---|---|
-| **Manipulación con thrust** (columna, costillas) | Maitland 2005 (pp. 222–223): sin manipulación forzada con osteoporosis. Downie 2013: en la fractura vertebral, la terapia manual «is contraindicated» (introducción, con referencia). Ninguna guía de osteoporosis la menciona | Fuera del plan de la fase 6 con la tarjeta marcada (decisión 6) |
+| **Manipulación con thrust** (columna, costillas) | Maitland 2005 (cap. 9, pp. 222–223): sin manipulación forzada con osteoporosis. Downie 2013: en la fractura vertebral, la terapia manual «is contraindicated» (introducción, con referencia). Ninguna guía de osteoporosis la menciona | Fuera del plan de la fase 6 con la tarjeta marcada (decisión 6) |
 | **Movilización con fuerza** (grados altos, posteroanteriores firmes) | Maitland 2005: la movilización suave «puede ser adecuada». Nada más leído | Movilización suave sí; sin fractura vertebral reciente o sospechada en la zona (Downie 2013). Lo que sea «suave» lo decide el fisio: no hay fuente que lo gradúe (decisión 7) |
 | **Flexión del tronco con carga** (abdominales, «roll down», levantar desde la flexión) | Gregson 2025 (Ia): la flexión forzada repetida, «with care». Brooke-Wavell 2022 [C]: modificar o evitar la flexión mantenida, repetida o al final del recorrido, sobre todo con carga; enseñar la bisagra de cadera; «‘how to’ rather than ‘don’t do’» | En el recuadro de la fase 5 y el aviso de la fase 6 |
 | **Torsión** | Brooke-Wavell 2022 [C]: «should be safe if performed smoothly and comfortably» | Sin restricción |
@@ -491,7 +607,7 @@ Al principio, junto a los recuadros de las otras condiciones. Cada línea va peg
 - **Con fractura vertebral o varias fracturas por fragilidad**: «Impacto solo hasta caminar a paso ligero, 150 min por semana, por precaución, sin pruebas de que más sea peligroso; consejo individual del fisioterapeuta al empezar (Brooke-Wavell 2022, consenso).»
 - **Con fractura vertebral reciente o dolorosa**: «Extensores de espalda a diario, suaves, 3–5 repeticiones mantenidas 3–5 s; con dolor, empieza tumbado boca arriba. El ejercicio supervisado por un fisioterapeuta mejora el dolor y la función (Brooke-Wavell 2022, recuadro 3; Gregson 2025).»
 - **Siempre (moverse)**: «Espalda recta al agacharse y levantar (bisagra de cadera); modifica la flexión mantenida, repetida o al final del recorrido, sobre todo con carga; la torsión suave sí. Enseña cómo, no prohíbas (Brooke-Wavell 2022, recuadro 3; Gregson 2025).»
-- **Siempre (técnica)**: «Sin manipulación forzada; la movilización suave puede ser adecuada (Maitland 2005, pp. 222–223).»
+- **Siempre (técnica)**: «Sin manipulación forzada; la movilización suave puede ser adecuada (Maitland 2005, cap. 9, pp. 222–223).»
 - **Siempre (seguridad)**: «Un dolor de espalda brusco tras un esfuerzo pequeño puede ser una fractura vertebral nueva: valoración médica; con debilidad u hormigueo en las piernas, urgencias (Gregson 2025).»
 - **Caídas**: la línea del resultado del bloque D y, con riesgo, la dosis: «Equilibrio exigente y ejercicio funcional, 3 o más sesiones por semana, unas 3 h por semana durante al menos 4 meses (Montero-Odasso 2022; Brooke-Wavell 2022).»
 - **Con bifosfonato o denosumab**: «Si aparece un dolor de muslo, ingle o cadera sin explicación, imagen del fémur antes de cargar (Gregson 2025).»
@@ -501,7 +617,7 @@ Al principio, junto a los recuadros de las otras condiciones. Cada línea va peg
 ### Fase 6 — plan de tratamiento
 
 - **Aviso `osteoporosis`** en todas las regiones, con las líneas de ejercicio de la fase 5 según la tarjeta.
-- **Sin manipulación forzada** (decisión 6): con la tarjeta marcada, el plan nunca sugiere un escalón con thrust en la columna ni en las costillas. Fuente: Maitland 2005, pp. 222–223; se vuelve a comprobar en el PDF antes de implementar.
+- **Sin manipulación forzada** (decisión 6): con la tarjeta marcada, el plan nunca sugiere un escalón con thrust en la columna ni en las costillas. Fuente: Maitland 2005, cap. 9, pp. 222–223; se vuelve a comprobar en el PDF antes de implementar.
 - **Red de seguridad** `RED_OSTEOPOROSIS`, con cualquier plan y la tarjeta en «Diagnosticada», para el cierre de la sesión y el programa para casa (borrador):
   > «Si te empieza de golpe un dolor de espalda fuerte tras un esfuerzo pequeño, para y que te vea el médico; si además notas debilidad u hormigueo en las piernas, o cambios al orinar, ve a urgencias.»
   
@@ -551,7 +667,7 @@ Una fila, después del trastorno mastocitario:
 3. **La «Sospecha» y sus 6 factores.** *Recomiendo* la regla del NOGG (50 años o más y un factor → que su médico valore el riesgo de fractura), con mi selección de 6 factores de sus tablas, y sin calcular nunca el FRAX. *Alternativa*: copiar la tabla 3 entera, más larga.
 4. **`op_d_fractura` como `derivacion`, no como `urgencia`.** *Recomiendo `derivacion`* («valoración médica pronto») con «sin terapia manual ni carga en esa zona hasta entonces». Finucane 2020 pide una radiografía primero, sin urgencia, salvo los signos neurológicos, que ya cubre `op_u_medula`. *Alternativa*: `urgencia` «valoración médica hoy».
 5. **La derivación por corticoides sin protección ósea** (`op_d_corticoides`). *Recomiendo sí*: la apoya una recomendación fuerte del NOGG y el fisio puede ser quien lo detecte. *Alternativa*: dejarla en el recuadro de la fase 5 como texto, sin `dv[]`.
-6. **Manipulación forzada fuera del plan de la fase 6** con la tarjeta marcada (Maitland 2005, pp. 222–223). *Recomiendo sí*, después de volver a comprobar el pasaje en el PDF de Maitland 2005 (lo leyó la Fase L). Es la única regla de técnica con fuente leída.
+6. **Manipulación forzada fuera del plan de la fase 6** con la tarjeta marcada (Maitland 2005, cap. 9, pp. 222–223). *Recomiendo sí*, después de volver a comprobar el pasaje en el PDF de Maitland 2005 (lo leyó la Fase L). Es la única regla de técnica con fuente leída.
 7. **La línea de la 4b.** *Recomiendo* el campo `cargaOsea: true` en los tests de la tabla, con la redacción propia de arriba. *Alternativa*: una sola línea general encima de las hipótesis, como el lupus. Dime también si quitas o añades tests de la lista.
 8. **Las caídas.** *Recomiendo* el bloque con las preguntas de NICE NG249 (1.1.2–1.1.5), sin puntuar riesgo, y la dosis de Brooke-Wavell 2022 y Montero-Odasso 2022. ¿Añado la velocidad de marcha (< 0,8 m/s, Montero-Odasso 2022) como medida opcional, aunque NICE pida no usar herramientas de predicción?
 9. **Ninguna regla automática** con el lupus, el anticoagulado, la hipermovilidad ni los mastocitos. Solo texto: la línea de recordatorio en el recuadro del lupus con corticoides, y la frase de la mastocitosis sistémica (Kanis 2019). *Recomiendo esto.*
@@ -624,7 +740,10 @@ osteoporosis: {
 
 ## Siguiente paso
 
-1. **Tus decisiones** (1–14).
-2. Los PDF de la decisión 13, si los tienes.
-3. La implementación, en la rama de trabajo, y tu revisión en la app antes de `main`.
-4. physiq-report: leer `op` del payload, en otra PR.
+1. ~~Tus decisiones (1–14)~~ Hecho: aceptadas las 14 recomendaciones.
+2. Los PDF de la decisión 13, en tandas:
+   - ~~tanda 1~~ hecho: Puentedura 2015 y Giangregorio 2014;
+   - queda **Hadji 2026** (la que más falta hace); opcionales: Giangregorio 2015, Gibbs 2019, Kovacs y Ralston 2015, Issa 2026, Sherrington 2019, Hardcastle 2022 y las pp. 222–223 de Maitland 2005 (cap. 9).
+3. **Tus decisiones sobre la tanda 1**: los cambios C1–C7 y la decisión 15.
+4. La implementación, en la rama de trabajo, y tu revisión en la app antes de `main`.
+5. physiq-report: leer `op` del payload, en otra PR.
