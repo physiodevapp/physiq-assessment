@@ -1,6 +1,6 @@
 # Embarazo y posparto — diseño (borrador)
 
-Estado: **borrador de diseño (octubre 2026), sin código.** Decisiones 1–16 aceptadas por el usuario (2026-10). Tanda 1 de PDF leída (siete fuentes, sección E); sus cambios (T1–T12, «Cambios por la tanda 1 de PDF») están pendientes de ti. Sigue sin leer la guía del RCOG de la trombosis (ver «No leídas»). Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después de la osteoporosis (`docs/osteoporosis.md`), que dejó para esta tarjeta la sospecha de la osteoporosis del embarazo y la lactancia (decisión 12 y cambio H1 de aquel documento) y la osteoporosis transitoria de cadera (H5).
+Estado: **borrador de diseño (octubre 2026), sin código.** Decisiones 1–16 aceptadas por el usuario (2026-10). Tanda 1 de PDF leída (siete fuentes, sección E) y sus cambios T1–T12 aceptados (2026-10). Tanda 2 leída (RCOG GTG 37b y Christopher 2024, sección F); sus cambios (U1–U5) están pendientes de ti. Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después de la osteoporosis (`docs/osteoporosis.md`), que dejó para esta tarjeta la sospecha de la osteoporosis del embarazo y la lactancia (decisión 12 y cambio H1 de aquel documento) y la osteoporosis transitoria de cadera (H5).
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes; lo que no tiene fuente va marcado como redacción propia y es una decisión tuya.
 
@@ -96,18 +96,25 @@ Siete PDF que pasó el usuario, leídos enteros: Mottola 2018 yo; los otros seis
 | `Liddle y Pennick 2015` | Cochrane, intervenciones para el dolor lumbar y pélvico del embarazo, CD001139.pub4 (búsqueda 19-01-2015, 34 ECA, 5121 mujeres; nada del posparto) | Ninguna conclusión con certeza alta. Ejercicio de 8–12 semanas: menos mujeres con dolor lumbar y pélvico (RR 0,66, moderada). Dolor pélvico solo: el ejercicio en grupo no mejora frente a la atención habitual (baja). Osteopatía: mejor que la atención habitual, «but not more than usual prenatal care plus placebo» (moderada). **El único ensayo con thrust (Peterson 2012, piloto, dolor lumbar): 15 mujeres con thrust en decúbito lateral, «Some post-treatment soreness… but no adverse effects occurred as a result of the interventions»** (baja). Efectos adversos «minor and transient» cuando se registraron |
 | `Deering 2024` | Delphi internacional de vuelta a correr tras el parto, *Br J Sports Med* 2024;58:183–195, doi:10.1136/bjsports-2023-107490 (consenso ≥ 75 %) | Diseña el programa, no la aptitud (esa está en Christopher 2023, no leída). Dosificar importa más que las semanas (92,9 %); sin plazo mínimo. Con escapes, peso o presión vaginal, parar y caminar (86,9 %), aunque los autores dicen que no hay pruebas de que eso proteja. Fractura de estrés en deportistas que dan el pecho: «~3%… 43% of BSIs were sacral» (p. 186) |
 
+### F. Tanda 2 de PDF (octubre 2026)
+
+Leídas enteras por dos lectores. Yo comprobé en el texto las citas que usa este documento y leí sobre el PDF las páginas 10 y 11 del RCOG, que faltaban en la extracción.
+
+| Clave propuesta | Fuente | Qué aporta |
+|---|---|---|
+| `RCOG GTG 37b` | *Thromboembolic Disease in Pregnancy and the Puerperium: Acute Management*, Green-top Guideline No. 37b, 3.ª ed., abril de 2015 (Thomson y Greer). Niveles SIGN y grados A–D | **Síntomas (§2, p. 6)**: TVP, «leg pain and swelling (usually unilateral) and lower abdominal pain»; TEP, «dyspnoea, chest pain, haemoptysis and collapse»; febrícula posible. Trombosis iliaca (§4.1, p. 7): «back and buttock pain and swelling of the entire limb». La valoración clínica es «particularly unreliable in pregnancy». **Ante la sospecha**: pruebas «expeditiously» y heparina «commenced immediately until the diagnosis is excluded» (§6.1, B); el colapso es una emergencia (§6.4). **Sin dímero D** para descartarla (§4.3, D) y sin escala de probabilidad validada en el embarazo (§4.4, C; el Wells modificado y la regla LEFt aún sin validar). El puerperio es el periodo de más riesgo («approximately 20-fold»). Con TVP ya tratada: «Mobilisation with graduated elastic compression stockings should be encouraged» (§7.1, B) |
+| `Christopher 2024` | Delphi internacional de aptitud para volver a correr tras el parto, *Br J Sports Med* 2024;58:299–312, doi:10.1136/bjsports-2023-107489 (consenso ≥ 75 %; en la ronda III, 80 de 95 eran fisioterapeutas). Compañera de Deering 2024 | **Plazo**: «person specific» (100 %); no correr antes de **3 semanas** (85,5 %); 6 semanas sin consenso (55,3 %) y 12 rechazadas (20 %). Heridas del parto, también la cesárea, «completely healed» (97,6 %). Antes de correr, tareas de carga e impacto **sin síntomas**: caminar 30 min (97,7 %), trotar en el sitio 1 min (98,8 %), 10 saltos a la pata coja por pierna (95,3 %), entre otras. Sin cortes de fuerza: «specific cut-offs or benchmarks were not identified» (p. 302). Con síntomas leves de prolapso o incontinencia se puede correr (96,5–100 %), y no hay que decirle que no puede: «running habits may need to be modified» (100 %); con síntomas graves, desaconsejar (75,3–82,4 %) y «Significant pelvic health symptoms should be assessed by a specialist» (p. 306). La distancia entre rectos no alcanzó consenso como requisito (55,3 %) |
+
 ### No leídas (no se citan)
 
 Si quieres alguna, pásame el PDF y la leo entera antes de cerrar el diseño. Por orden de utilidad:
 
 | # | Fuente | Enlace | Para qué |
 |---|---|---|---|
-| 3 | RCOG Green-top Guideline 37b (2015), tromboembolismo en el embarazo y el puerperio: manejo agudo | [rcog.org.uk](https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/thrombosis-and-embolism-during-pregnancy-and-the-puerperium-acute-management-green-top-guideline-no-37b/) | **Imprescindible**: síntomas de TVP y TEP en la embarazada y qué hacer ante la sospecha. Sin ella, la TVP del embarazo solo tiene el «dolor o hinchazón de pantorrilla» de ACOG 804 como signo para parar el ejercicio (T9) |
-| 7 | Christopher 2023, Delphi de aptitud para volver a correr tras el parto, *Br J Sports Med* | [doi:10.1136/bjsports-2023-107489](https://doi.org/10.1136/bjsports-2023-107489) | Opcional: los criterios para empezar a correr (caminar 30 min sin síntomas, pruebas). Deering 2024 solo diseña el programa |
 | 8 | Bauersachs 2019, posición de la ESC sobre la miocardiopatía periparto, *Eur J Heart Fail* | [doi:10.1002/ejhf.1493](https://doi.org/10.1002/ejhf.1493) | Opcional: Hameed 2023 y Sambola 2024 ya cubren lo que necesita el fisio |
 | 9 | Woodley 2020, Cochrane del suelo pélvico en el embarazo y el posparto | [doi:10.1002/14651858.CD007471.pub4](https://doi.org/10.1002/14651858.CD007471.pub4) | Opcional: matiza a Beamish 2025 (contradicción 8) |
 
-Leídas en la tanda 1 (sección E): 1 Mottola 2018, 2 ACOG 804, 4 Vleeming 2008, 5 Clinton 2017 y Simonds 2022, 6 Liddle y Pennick 2015, 7 Deering 2024.
+Leídas en la tanda 1 (sección E): Mottola 2018, ACOG 804, Vleeming 2008, Clinton 2017 y Simonds 2022, Liddle y Pennick 2015, Deering 2024. En la tanda 2 (sección F): RCOG GTG 37b y Christopher 2024.
 
 **En acceso abierto y aún sin leer** (puedo leerlas sin PDF si te interesan):
 - la guía práctica de la diástasis de sínfisis periparto, *J Clin Med* 2021 ([doi:10.3390/jcm10112443](https://doi.org/10.3390/jcm10112443));
@@ -431,6 +438,25 @@ Cada pregunta lleva su `razonamiento` (Fase F) y cada bandera su enlace (Fase M)
     - la pérdida **continua** de heces u orina pasa a urgencia, aparte de los escapes del bloque D.
   - **Correr:** sin plazos (decisión 13). *Recomiendo* una línea en el posparto: «La vuelta a correr se dosifica por síntomas, no por semanas; con escapes, peso o presión vaginal, parar y caminar (Deering 2024, consenso Delphi).»
 - **Registro:** nuevas claves `Mottola 2018`, `ACOG 804`, `Vleeming 2008`, `Clinton 2017`, `Simonds 2022`, `Liddle y Pennick 2015` y `Deering 2024`. «Peterson 2012» se cita como secundaria («en Liddle y Pennick 2015»), sin entrada propia.
+
+## Cambios por la tanda 2 de PDF (U1–U5), pendientes de ti
+
+- **U1. La trombosis también en el embarazo (cambia T9).** `em_u_tev` pasa a los dos estados, con los síntomas del RCOG:
+  - Pregunta: «¿Tiene dolor e hinchazón nuevos en una pierna, sobre todo en una sola; o dolor de espalda o de nalga con toda la pierna hinchada; o le falta el aire de forma nueva, le duele el pecho o ha tosido sangre?»
+  - Urgencia: «Posible trombosis o embolia: valoración médica urgente hoy (en el embarazo, el médico empieza el tratamiento antes de confirmarla). Si se desmaya o le falta mucho el aire, 112.»
+  - Fuentes: RCOG GTG 37b §2, §4.1, §6.1 y §6.4; en el posparto, también NG194 1.2.4. «Hoy» y el «112» son redacción mía, como en la decisión 4.
+  - El dolor torácico y la disnea se solapan con `em_u_corazon`. Las dos se quedan: el clínico marca la que vea, y las dos son urgentes.
+  - *Recomiendo* esto.
+- **U2. Sin escalas para descartarla.** En el razonamiento de `em_u_tev`: «En el embarazo no hay escala de probabilidad validada y el dímero D no sirve para descartarla (RCOG GTG 37b, §4.3 y §4.4): ante la sospecha, derivar.» Así la regla de Wells de otras regiones no se lee como válida aquí. *Recomiendo* sí.
+- **U3. La TVP ya diagnosticada y tratada.** Solo una línea en el razonamiento, sin campo en la tarjeta: «Con una TVP ya tratada, se recomienda moverse con medias de compresión (RCOG GTG 37b, §7.1, B). Si toma heparina, trátala como anticoagulada.» La segunda frase es redacción mía y enlaza con la futura condición «Paciente anticoagulado». *Recomiendo* esto.
+- **U4. Volver a correr (cambia la decisión 13 y la línea de Deering de T12).** Ya hay un plazo con consenso. *Recomiendo* sustituir la línea de T12 por esta, en el recuadro del posparto, marcada como consenso Delphi:
+  - «Volver a correr: no antes de 3 semanas y con las heridas del parto, también la cesárea, completamente curadas. El momento es individual, sin plazo fijo de 6 o 12 semanas.
+  - Antes, caminar 30 min y tareas de impacto sin síntomas.
+  - Con síntomas leves de suelo pélvico puede correr adaptando; con síntomas graves, valoración especializada primero.
+  - Si aparecen escapes, peso o presión vaginal al correr, parar y caminar (Christopher 2024; Deering 2024, consenso Delphi).»
+  
+  Sin cortes de fuerza, sin las 10 tareas como test puntuado y sin el programa de carrera.
+- **U5. Registro:** nuevas claves `RCOG GTG 37b` y `Christopher 2024`.
 
 ## Decisiones (cada una con mi recomendación)
 
