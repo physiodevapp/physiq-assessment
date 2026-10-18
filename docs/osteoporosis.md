@@ -958,5 +958,6 @@ Hecha en la rama de trabajo con todas las decisiones aceptadas (1–15, C1–C7,
 
 **Pruebas**: `tests/unit/osteoporosis.mjs` (17 tests, incluidos «marcar la tarjeta nunca quita ni rebaja una urgencia» en las 7 regiones, la lista fijada de `cargaOsea` y `OP_CASOS`, el texto literal que copiará physiq-report) y la sección `osteoporosis` de `tests/smoke.mjs`. Ejecución completa de las dos en verde.
 
-**Queda**: tu revisión; physiq-report (`_bloqueOP`, copia literal de `bloqueOPIA()`), en otra PR; la pregunta de sospecha de la PLO, con la tarjeta «Embarazo y posparto» (H1).
+**Queda**: tu revisión; la pregunta de sospecha de la PLO, con la tarjeta «Embarazo y posparto» (H1).
 
+**physiq-report** (2026-10): lee `op` con `_bloqueOP`, copia literal de `bloqueOPIA()` (physiodevapp/physiq-report#95); `OP_CASOS` fija el mismo texto en los dos repositorios.
