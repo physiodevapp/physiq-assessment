@@ -4516,14 +4516,19 @@ async function checkSinHuecos(browser, errors) {
     for (const c of conts) {
       if (c.closest('.sil-lienzo')) continue;
       const bs = [...c.children].filter(x => x.tagName === 'BUTTON' && visibles(x) && !x.classList.contains('cita'));
-      if (bs.length < 3) continue;
-      const filas = {};
-      for (const x of bs) (filas[Math.round(x.getBoundingClientRect().top)] ??= []).push(x);
-      const ks = Object.keys(filas).map(Number).sort((a, b) => a - b);
-      if (ks.length < 2) continue;
-      const ultimo = filas[ks.at(-1)].at(-1).getBoundingClientRect();
-      const hueco = c.getBoundingClientRect().right - ultimo.right;
-      if (hueco > 20) out.push(`${c.className} (${filas[ks.at(-1)].map(x => x.textContent.trim().slice(0, 24)).join(' · ')}, hueco ${Math.round(hueco)} px)`);
+      if (bs.length < 2) continue;
+      // Filas por solape vertical, no por el top exacto: dos botones de la misma
+      // fila pueden diferir en 1 px (borde distinto) y se leían como dos filas
+      const filas = [];
+      for (const x of [...bs].sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top)) {
+        const r = x.getBoundingClientRect(), f = filas.at(-1);
+        if (f && r.top < f.bottom - 4) { f.bs.push(x); f.bottom = Math.max(f.bottom, r.bottom); }
+        else filas.push({ bottom: r.bottom, bs: [x] });
+      }
+      if (filas.length < 2) continue;
+      const ult = filas.at(-1).bs.sort((a, b) => a.getBoundingClientRect().right - b.getBoundingClientRect().right);
+      const hueco = c.getBoundingClientRect().right - ult.at(-1).getBoundingClientRect().right;
+      if (hueco > 20) out.push(`${c.className} (${ult.map(x => x.textContent.trim().slice(0, 24)).join(' · ')}, hueco ${Math.round(hueco)} px)`);
     }
     return out;
   });
@@ -4534,6 +4539,14 @@ async function checkSinHuecos(browser, errors) {
     await abrirApp(page);
     const r = await walkRegion(page, region);
     if (r.finalPhase !== 5) { fallos.push(`${region}: no llega a la fase 5`); await context.close(); continue; }
+    // Paciente posquirúrgico y condiciones especiales marcadas: sus filas de botones
+    // (.cir-complicaciones, .hm-subtipos) solo se ven así (el hueco de «Cuál» en
+    // Disautonomía pasó sin que esto lo viera, 2026-10)
+    await page.evaluate(() => {
+      window.goToPhase(1);
+      [...document.querySelectorAll('#mecanismo .option-btn')].find(x => x.textContent.includes('Post-quirúrgico')).click();
+      window.selectHMEstado('diagnosticada'); window.selectDsEstado('diagnosticada'); window.selectLESEstado('diagnosticado');
+    });
     for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
       await page.evaluate(f => window.goToPhase(f), f);
       await page.waitForFunction(f => String(window.state.currentPhase) === String(f), f);
