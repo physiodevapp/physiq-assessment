@@ -1133,6 +1133,117 @@ async function checkOsteoporosis(page) {
   return r;
 }
 
+// Embarazo o posparto (Fase P, docs/embarazo-posparto.md), lumbar.
+// Fase 1: «Embarazada» con las semanas; la tensión de 165/100 pide valoración
+// el mismo día; con sexo «Hombre» la tarjeta se pliega. Fase 2: las preguntas
+// cambian con las semanas, urgencias sin plegar, ánimo y suelo pélvico.
+// 320 px: nada se sale. Después, un recorrido entero: la línea del supino en
+// la 4b, el recuadro de la fase 5 y el plan de la fase 6; y el posparto, con
+// la línea del Gaenslen.
+async function checkEmbarazo(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#motivoConsulta', 'Dolor lumbar en el embarazo');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.nota = (await page.textContent('#emNota')).includes('Márcala si');
+  // Con sexo «Hombre», plegada en una línea con «Mostrar»
+  await page.click('#sexo .option-btn >> text="Hombre"');
+  r.plegada = await page.isVisible('#emHombre') && !(await page.isVisible('#emEstado'));
+  await page.click('#emHombre button');
+  r.mostrar = await page.isVisible('#emEstado');
+  await page.click('#sexo .option-btn >> text="Mujer"');
+  r.camposOcultos = !(await page.isVisible('#emEmbWrap')) && !(await page.isVisible('#emPpWrap'));
+  await page.click('#emEstado .option-btn[data-valor="embarazada"]');
+  r.embWrap = await page.isVisible('#emEmbWrap') && !(await page.isVisible('#emPpWrap'));
+  r.sinSemanas = (await page.textContent('#emSinSemanas')).includes('Anota las semanas');
+  await page.fill('#emSemanas', '14');
+  await page.dispatchEvent('#emSemanas', 'input');
+  r.sinCasillasNativas = await page.$$eval('#cardEmbarazo input[type="checkbox"]', els => els.length === 0);
+  // Tensión 165/100 (la regla se pinta al salir del campo)
+  await page.fill('#vitalTas', '165'); await page.dispatchEvent('#vitalTas', 'input'); await page.dispatchEvent('#vitalTas', 'blur');
+  await page.fill('#vitalTad', '100'); await page.dispatchEvent('#vitalTad', 'input'); await page.dispatchEvent('#vitalTad', 'blur');
+  r.ta = (await page.textContent('#emTA')).includes('valoración el mismo día');
+  r.taUr = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().ur.some(t => t.startsWith('Tensión de 160/110')));
+  await page.fill('#vitalTas', ''); await page.dispatchEvent('#vitalTas', 'input'); await page.dispatchEvent('#vitalTas', 'blur');
+  await page.fill('#vitalTad', ''); await page.dispatchEvent('#vitalTad', 'input'); await page.dispatchEvent('#vitalTad', 'blur');
+  r.taQuitada = (await page.textContent('#emTA')).trim() === '';
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_embarazo');
+  await page.click('#tab_transversal_embarazo');
+  const P = '#panel_transversal_embarazo';
+  r.semana14 = !(await page.$(`${P} #sq2_em_u_preeclampsia`)) && !!(await page.$(`${P} #sq2_em_u_sangrado.sq2-urg`));
+  r.sinEmbudo = await page.$$eval(`${P} [data-embudo]`, els => els.length) === 0;
+  // A las 30 semanas, la preeclampsia y los movimientos
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.fill('#emSemanas', '30');
+  await page.dispatchEvent('#emSemanas', 'input');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#tab_transversal_embarazo');
+  r.semana30 = !!(await page.$(`${P} #sq2_em_u_preeclampsia.sq2-urg`)) && !!(await page.$(`${P} #sq2_em_u_movimientos.sq2-urg`));
+  await page.click(`${P} #sq2_em_u_tev .sq-btn.si`);
+  r.urgencia = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().ur.some(t => t.startsWith('Posible trombosis o embolia')));
+  await page.click(`${P} #sq2_em_u_tev .sq-btn.no`);
+  await page.click(`${P} .em-animo >> nth=0 >> .sq-btn.si`);
+  r.animo = (await page.textContent(`${P} [data-em-bloque]`)).includes('el PHQ-9 de la calculadora');
+  r.animoFuera = await page.evaluate(async () => { const m = await import('./app.js'); const p = m.buildPhysiQPayload();
+    return !JSON.stringify(p).includes('decaída') && !m.buildInformeFisioterapiaText().includes('decaída'); });
+  await page.click(`${P} .em-suelo >> nth=0 >> .sq-btn.si`);
+  r.suelo = (await page.textContent(`${P} [data-em-bloque]`)).includes('programa supervisado de al menos 3 meses');
+  // 320 px: el acordeón y la tarjeta, sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.waitForTimeout(100);
+  await page.click('#acc_transversal_embarazo .sistema-accordion-header');
+  await page.waitForTimeout(150);
+  r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#emEstado .option-btn[data-valor="posparto"]');
+  r.ppWrap = await page.isVisible('#emPpWrap');
+  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  // Quitar la marca quita el sistema
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.click('#emEstado .option-btn[data-valor="posparto"]');
+  r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_embarazo') && !document.body.classList.contains('embarazo'));
+  // Recorrido entero, embarazada de 30 semanas: 4b, fase 5 y fase 6
+  await abrirApp(page);
+  await page.click('#emEstado .option-btn[data-valor="embarazada"]');
+  await page.fill('#emSemanas', '30');
+  await page.dispatchEvent('#emSemanas', 'input');
+  await walkRegion(page, 'lumbar');
+  r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .em-fase5')?.textContent || '';
+    return t.includes('150 min por semana') && t.includes('Parar el ejercicio y consultar') && t.includes('no basta para decir que sea seguro'); });
+  r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .em-fase5 .cita[data-cita^="Mottola 2018"]'));
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.nota4b = await page.evaluate(() => (document.querySelector('#hypothesisCards .em-nota-4b')?.textContent || '').includes('no la dejes mucho rato boca arriba'));
+  await page.evaluate(() => goToPhase(5));
+  await page.waitForTimeout(150);
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Embarazo: actividad de intensidad moderada') && t.includes('Red de seguridad (embarazo)'); });
+  // Posparto de 2 semanas con la sacroilíaca: línea del Gaenslen en la 4b y de Vleeming en la fase 5
+  await abrirApp(page);
+  await page.click('#emEstado .option-btn[data-valor="posparto"]');
+  await page.fill('#emSemanasPp', '2');
+  await page.dispatchEvent('#emSemanasPp', 'input');
+  await page.evaluate(() => { state.activeHypotheses = ['lu8']; });
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.gaenslen = await page.evaluate(() => [...document.querySelectorAll('#hypothesisCards .em-aviso-test')].some(e => e.textContent.includes('no hagas el Gaenslen')));
+  r.ok = r.nota && r.plegada && r.mostrar && r.camposOcultos && r.embWrap && r.sinSemanas && r.sinCasillasNativas && r.ta && r.taUr && r.taQuitada
+    && r.tab && r.semana14 && r.sinEmbudo && r.semana30 && r.urgencia && r.animo && r.animoFuera && r.suelo && r.ancho2 && r.ppWrap && r.ancho1
+    && r.sinSistema && r.fase5 && r.fase5Cita && r.nota4b && r.fase6 && r.gaenslen;
+  return r;
+}
+
 // Reloj de la prueba de bipedestación (docs/pots.md, «Reloj»): reloj del
 // navegador simulado (page.clock), pitidos y vibración contados.
 async function checkDsReloj(page) {
@@ -2327,7 +2438,7 @@ async function checkCondiciones(browser, errors) {
     const p = document.getElementById('condPanel').getBoundingClientRect();
     const ids = [...document.querySelectorAll('#condCuerpo .cond-fila')].map(f => f.dataset.condicion).join();
     return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,tarlov,cascanueces,congestionPelvica'
+      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,embarazo,tarlov,cascanueces,congestionPelvica'
       && /Solo en lumbar/i.test(document.getElementById('condCuerpo').textContent)
       && /Solo en cadera/i.test(document.getElementById('condCuerpo').textContent)
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
@@ -4895,6 +5006,7 @@ async function checkSinHuecos(browser, errors) {
       [...document.querySelectorAll('#mecanismo .option-btn')].find(x => x.textContent.includes('Post-quirúrgico')).click();
       window.selectHMEstado('diagnosticada'); window.selectDsEstado('diagnosticada'); window.selectLESEstado('diagnosticado'); window.selectMAEstado('diagnosticado');
       window.selectOPEstado('diagnosticada'); window.selectOPFila('vertebrales', '1'); window.selectOPCaidas('1');
+      window.selectEMEstado('posparto'); window.updateEM('semanasAprox', '3');
     });
     for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
       await page.evaluate(f => window.goToPhase(f), f);
@@ -5609,7 +5721,7 @@ const SECCIONES = [
 
   { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
     const c = await checkCondiciones(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 9 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 10 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -5690,6 +5802,13 @@ const SECCIONES = [
     const r = await checkOsteoporosis(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con sus filas y la derivación por corticoides, urgencia sin plegar, derivación, caídas, sospecha con factores (sin la palabra osteoporosis en el informe), nota 4b, fase 5, fase 6, panel de tiempos y 320 px`);
     if (!r.ok) console.log('\nOsteoporosis:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'embarazo', titulo: 'Embarazo o posparto (Fase P, lumbar):', run: async ({ page }) => {
+    const r = await checkEmbarazo(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta plegada con «Hombre», semanas, regla de la tensión, preguntas por semanas, urgencia, ánimo fuera del informe, suelo pélvico, supino en la 4b, Gaenslen en el posparto, fase 5, fase 6 y 320 px`);
+    if (!r.ok) console.log('\nEmbarazo:', JSON.stringify(r));
     return r.ok;
   } },
 
