@@ -460,7 +460,7 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
   - [x] Decisiones 13–16 aceptadas por el usuario (2026-10): línea «desmayo vasovagal o anafilaxia» (RCUK 2021, tabla 3), «si no puede, ayúdale si la normativa de tu país lo permite», línea «sin autoinyector» con fuente, una sola opción «Otro trastorno mastocitario». Diseño cerrado
   - [x] Implementado (2026-10): tarjeta `#cardMastocitos` (solo «Diagnosticado»), `SIS_MASTOCITOS` (una derivación, `ma_d_episodios`), texto de la asociación en los bloques de hipermovilidad y disautonomía, línea de la 4b, recuadro de la fase 5, aviso y red de la fase 6, fila en la guía, payload `ma`, 📋 Notas, 📄 Informe e informe con IA, 12 referencias. Pruebas unitarias (`tests/unit/mastocitos.mjs`) y sección `mastocitos` de la prueba de humo
   - [x] Revisión del usuario antes de `main` (2026-10)
-  - [ ] physiq-report: leer `ma` del payload (otro repositorio): `_bloqueMA()`, copia literal de `bloqueMAIA()`; `MA_CASOS` fija el mismo texto en un test en cada repositorio
+  - [x] physiq-report: leer `ma` del payload (otro repositorio): `_bloqueMA()`, copia literal de `bloqueMAIA()`; `MA_CASOS` fija el mismo texto en un test en cada repositorio (physiodevapp/physiq-report#94, 2026-10)
 - [x] Guía de condiciones especiales (botón en la cabecera que lista las condiciones, cuándo pensar en ellas y cómo llegar a cada una): diseño en `docs/condiciones-especiales.md`
   - [x] Borrador de diseño (2026-10): recomendaciones generales aceptadas (botón en la cabecera y en «Herramientas», posquirúrgico incluido, sin aviso en la fase 1)
   - [x] Decisiones 1–8 del documento: aceptadas las 8 recomendaciones (2026-10)
