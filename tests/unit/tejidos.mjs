@@ -535,13 +535,17 @@ test('tejidos: porHipotesis — cada hipótesis existe y cada fila o subtipo tam
 });
 
 test('filasPaciente: según las hipótesis activas y el mecanismo; sin repetir; sin filas, vacío', () => {
-  assert.deepEqual(filasPaciente(T, []), { ids: [], hipotesis: [], sinFilas: [], soloFila: [] });
-  assert.deepEqual(filasPaciente(T, ['h2']), { ids: [], hipotesis: [], sinFilas: ['h2'], soloFila: [] }, 'pinzamiento subacromial: sin fila');
+  assert.deepEqual(filasPaciente(T, []), { ids: [], hipotesis: [], sinFilas: [], condiciones: [], soloFila: [] });
+  assert.deepEqual(filasPaciente(T, ['h2']), { ids: [], hipotesis: [], sinFilas: ['h2'], condiciones: [], soloFila: [] }, 'pinzamiento subacromial: sin fila');
+  // Por condición de una tarjeta (docs/osteoporosis.md, decisión 10): la fractura vertebral
+  assert.deepEqual(filasPaciente(T, ['h2'], { condiciones: ['fracturaVertebral'] }),
+    { ids: ['fx_vertebral_compresion'], hipotesis: [], sinFilas: ['h2'], condiciones: ['fracturaVertebral'], soloFila: [] });
+  assert.deepEqual(filasPaciente(T, [], { condiciones: ['desconocida'] }).ids, []);
   assert.deepEqual(filasPaciente(T, ['ro4']).ids, ['rodilla_lca_conservador']);
   assert.deepEqual(filasPaciente(T, ['ro4'], { posquirurgico: true }).ids, ['rodilla_lca_reconstruido']);
   assert.deepEqual(filasPaciente(T, ['h3']).ids, [], 'manguito: solo reparado');
   const r = filasPaciente(T, ['lu3', 'lu1', 'lu5']);
-  assert.deepEqual(r, { ids: ['radiculopatia_lumbar'], hipotesis: ['lu3', 'lu5'], sinFilas: ['lu1'], soloFila: [] });
+  assert.deepEqual(r, { ids: ['radiculopatia_lumbar'], hipotesis: ['lu3', 'lu5'], sinFilas: ['lu1'], condiciones: [], soloFila: [] });
   // Lumbalgia inespecífica solo aguda; la luxación anterior solo traumática
   const agudo = filasPaciente(T, ['lu1', 'lu7'], { cronologia: 'Agudo (<6 semanas)' });
   assert.deepEqual([agudo.ids, agudo.hipotesis], [['lumbalgia_aguda'], ['lu1', 'lu7']]);

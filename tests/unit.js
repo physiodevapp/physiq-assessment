@@ -18,6 +18,7 @@ for (const tema of [
   'disautonomia.mjs',
   'lupus.mjs',
   'mastocitos.mjs',
+  'osteoporosis.mjs',
   'condiciones.mjs',
   'farmacos.mjs',
   'fase5-y-version.mjs',

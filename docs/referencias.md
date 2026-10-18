@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **581** referencias de literatura, con **3290** usos.
+- **598** referencias de literatura, con **3640** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **379** de 581 referencias del registro revisadas. Ver «Estado de revisión».
+- **379** de 598 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -61,8 +61,10 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE NG258](#nice-ng258) | razonamiento fase 2 · plan de tratamiento · texto | 25 | **sin revisar** |
 | [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Kibbe 2004](#kibbe-2004) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Maitland 2005](#maitland-2005) | razonamiento fase 2 · plan de tratamiento · texto | 55 | **sin revisar** |
 | [Ruperto 2011](#ruperto-2011) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Shelkey 2014](#shelkey-2014) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Giangregorio 2015](#giangregorio-2015) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Champaneria 2016](#champaneria-2016) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Dos Santos 2016](#dos-santos-2016) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -75,6 +77,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Gordon 2018](#gordon-2018) | razonamiento fase 2 · texto | 12 | **sin revisar** |
 | [Hulens 2018](#hulens-2018) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Aringer 2019](#aringer-2019) | razonamiento fase 2 · texto | 17 | **sin revisar** |
+| [Kanis 2019](#kanis-2019) | razonamiento fase 2 · texto | 10 | **sin revisar** |
 | [Tektonidou 2019](#tektonidou-2019) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Cardona 2020](#cardona-2020) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Peker 2020](#peker-2020) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -87,6 +90,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Bałabuszek 2022](#bałabuszek-2022) | razonamiento fase 2 | 3 | **sin revisar** |
 | [De Maeseneer 2022](#de-maeseneer-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Drosos 2022](#drosos-2022) | razonamiento fase 2 · texto | 15 | **sin revisar** |
+| [Laurent 2022](#laurent-2022) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Pokhrel 2022](#pokhrel-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Raj 2022](#raj-2022) | razonamiento fase 2 · texto | 37 | **sin revisar** |
@@ -101,6 +105,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Punnapuzha 2023](#punnapuzha-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Saleem 2023](#saleem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Scioscia 2023](#scioscia-2023) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Yasir 2023](#yasir-2023) | razonamiento fase 2 · texto | 17 | **sin revisar** |
 | [Fanouriakis 2024](#fanouriakis-2024) | razonamiento fase 2 · texto | 10 | **sin revisar** |
 | [Hanna 2024](#hanna-2024) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -111,6 +116,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Penfold 2024](#penfold-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Castro y Sharma 2025](#castro-y-sharma-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Goosenberg 2025](#goosenberg-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Gregson 2025](#gregson-2025) | razonamiento fase 2 · texto | 75 | **sin revisar** |
 | [Hulens 2025](#hulens-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kuo 2025](#kuo-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lee y Picard 2025](#lee-y-picard-2025) | razonamiento fase 2 · texto | 16 | **sin revisar** |
@@ -119,6 +125,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sammaritano 2025](#sammaritano-2025) | razonamiento fase 2 | 4 | **sin revisar** |
 | [Bell y Saleh 2026](#bell-y-saleh-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Bowers y Blum 2026](#bowers-y-blum-2026) | razonamiento fase 2 · texto | 14 | **sin revisar** |
+| [Hadji 2026](#hadji-2026) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Hanif 2026](#hanif-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Regalla y Killeen 2026](#regalla-y-killeen-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Brown 2004](#brown-2004) | razonamiento fase 4 | 1 | **sin revisar** |
@@ -213,7 +220,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
 | [Butler 2000](#butler-2000) | plan de tratamiento | 2 | **sin revisar** |
 | [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 68 | **sin revisar** |
-| [Maitland 2005](#maitland-2005) | plan de tratamiento | 32 | **sin revisar** |
 | [Silbernagel 2007](#silbernagel-2007) | plan de tratamiento | 1 | **sin revisar** |
 | [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 2 | **sin revisar** |
 | [Fu 2010](#fu-2010) | plan de tratamiento | 1 | **sin revisar** |
@@ -224,18 +230,29 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Petersen 2021](#petersen-2021) | plan de tratamiento | 10 | **sin revisar** |
 | [Srisuwatchari 2023](#srisuwatchari-2023) | plan de tratamiento | 1 | **sin revisar** |
 | [Muñoz 2024](#muñoz-2024) | plan de tratamiento · texto | 8 | **sin revisar** |
+| [NICE NG249](#nice-ng249) | texto | 21 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
 | [Plash 2013](#plash-2013) | texto | 7 | **sin revisar** |
+| [Giangregorio 2014](#giangregorio-2014) | texto | 35 | **sin revisar** |
+| [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) | texto | 14 | **sin revisar** |
+| [Puentedura 2015](#puentedura-2015) | texto | 14 | **sin revisar** |
 | [Engelbert 2017](#engelbert-2017) | texto | 14 | **sin revisar** |
 | [González-de-Olano 2017](#gonzález-de-olano-2017) | texto | 7 | **sin revisar** |
 | [Fedorowski 2019](#fedorowski-2019) | texto | 15 | **sin revisar** |
+| [Gibbs 2019](#gibbs-2019) | texto | 7 | **sin revisar** |
+| [Sherrington 2019](#sherrington-2019) | texto | 7 | **sin revisar** |
 | [Miller 2020](#miller-2020) | texto | 7 | **sin revisar** |
 | [Vernino 2021](#vernino-2021) | texto | 29 | **sin revisar** |
+| [Brooke-Wavell 2022](#brooke-wavell-2022) | texto | 49 | **sin revisar** |
+| [Hardcastle 2022](#hardcastle-2022) | texto | 14 | **sin revisar** |
+| [Montero-Odasso 2022](#montero-odasso-2022) | texto | 21 | **sin revisar** |
 | [Muraro 2022](#muraro-2022) | texto | 14 | **sin revisar** |
 | [Frade 2023](#frade-2023) | texto | 21 | **sin revisar** |
 | [Gülen 2023](#gülen-2023) | texto | 7 | **sin revisar** |
+| [Anagnostis 2024](#anagnostis-2024) | texto | 7 | **sin revisar** |
 | [Blaess 2024](#blaess-2024) | texto | 56 | **sin revisar** |
 | [Dures 2024](#dures-2024) | texto | 7 | **sin revisar** |
+| [Gak 2024](#gak-2024) | texto | 7 | **sin revisar** |
 | [Parodis 2024](#parodis-2024) | texto | 14 | **sin revisar** |
 | [Saliba 2026](#saliba-2026) | texto | 14 | **sin revisar** |
 | [Sivakoti 2026](#sivakoti-2026) | texto | 7 | **sin revisar** |
@@ -439,13 +456,13 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE NG65](#nice-ng65) | razonamiento fase 2 | 2 | 2026-10 · Leída en nice.org.uk (2026-10), última actualización 2 de junio de 2017. |
 | [NICE NG89](#nice-ng89) | razonamiento fase 2 · plan de tratamiento | 3 | 2026-10 · Sin cambios: la página de NICE sigue con la última actualización del 13 de agosto de 2019, y la revisión de vigilancia del 18 de septiembre de 2024 decidió no actualizarla. Las recomendaciones 1.2.4, 1.11.1–1.11.16 y 1.12.1–1.12.3 dicen lo que recoge el razonamiento (duraciones de la profilaxis y umbrales de 90 minutos; consultado en nice.org.uk en 2026-10). |
 | [Fairbank 2011](#fairbank-2011) | razonamiento fase 2 | 1 | 2026-10 · Complementada: PubMed (cauda equina, revisiones sistemáticas desde 2012) no encuentra una revisión de precisión diagnóstica posterior. Galliker 2020 (Am J Med, PDF del usuario) aporta el único estudio en urgencias (silla de montar LR+ 3,1, esfínteres LR+ 2,1) y Hennessy 2025 (Eur Spine J, PDF del usuario) revisa 9 guías: RM urgente y radiculopatía bilateral como señal clave. Ambos se añaden a `l6`. Tabrah 2022 (tacto rectal) y Boktor 2023 (residuo posmiccional) no leídos: tratan pruebas que no hace el fisioterapeuta. |
-| [Downie 2013](#downie-2013) | razonamiento fase 2 | 6 | 2026-10 · Complementada: PubMed (banderas rojas de cáncer o fractura en lumbalgia, revisiones desde 2014). Williams 2023 (Cochrane de fractura) es una reedición con búsqueda hasta 2012, no más reciente. Verhagen 2017 (Pain, PDF del usuario) confirma que el antecedente de cáncer es la única bandera de malignidad informativa (LR+ 15,3), y Galliker 2020 (Am J Med, PDF del usuario) añade los datos de urgencias (LR+ 5,9; 27,9 con sospecha clínica): se añaden a `l2`. Sin cambios para fractura (`l_e4`). Maselli 2022 (Disabil Rehabil, dolor toracolumbar) no leída. |
+| [Downie 2013](#downie-2013) | razonamiento fase 2 | 7 | 2026-10 · Complementada: PubMed (banderas rojas de cáncer o fractura en lumbalgia, revisiones desde 2014). Williams 2023 (Cochrane de fractura) es una reedición con búsqueda hasta 2012, no más reciente. Verhagen 2017 (Pain, PDF del usuario) confirma que el antecedente de cáncer es la única bandera de malignidad informativa (LR+ 15,3), y Galliker 2020 (Am J Med, PDF del usuario) añade los datos de urgencias (LR+ 5,9; 27,9 con sospecha clínica): se añaden a `l2`. Sin cambios para fractura (`l_e4`). Maselli 2022 (Disabil Rehabil, dolor toracolumbar) no leída. |
 | [Henschke 2013](#henschke-2013) | razonamiento fase 2 | 4 | 2026-10 · Complementada: Verhagen 2017 (Pain, PDF del usuario) apoya sus conclusiones con una búsqueda más amplia; el dolor nocturno solo se midió en un estudio (LR+ 0,7). Galliker 2020 (Am J Med, PDF del usuario) aporta el dato de urgencias (LR+ 2,2). Ambos se añaden a `l_on2`. |
 | [Barcelos 2014](#barcelos-2014) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10). Lo posterior son casos clínicos y revisiones de casos (leídos los resúmenes): Heck 2026 (Int J Pediatr Otorhinolaryngol, revisión sistemática de 13 casos de luxación occipito-atloaxoidea por Grisel diagnosticado tarde; media de 5,9 meses hasta el diagnóstico), Cirrincione 2026 (Curr Opin Pediatr, revisión narrativa: con diagnóstico precoz basta tratamiento no quirúrgico) y Koru 2025 (Clin Rheumatol, Grisel sin infección en enfermedades reumáticas). Coinciden con el razonamiento de la pregunta (derivar pronto, el retraso empeora el tratamiento); no lo cambian. |
 | [Verhagen 2017](#verhagen-2017) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: PubMed (banderas rojas de malignidad en lumbalgia, revisiones desde 2017) solo encuentra Galliker 2020 (urgencias), que se cita junto a ella. |
 | [Goebel 2018](#goebel-2018) | razonamiento fase 2 · texto | 9 | 2026-10 · Sin cambios: la 2.ª edición (2018) sigue siendo la vigente en la página del Royal College of Physicians (búsqueda de 2026-10), aunque preveía revisarse en julio de 2023. La «concise guidance» de Clinical Medicine es de 2011 (Turner-Stokes y Goebel), anterior. PubMed (2026-10) no encuentra ninguna guía británica posterior; la de la American Society of Interventional Pain Physicians (Pain Physician, 2025) es de diagnóstico intervencionista. |
 | [HerniaSurge 2018](#herniasurge-2018) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: su actualización (Stabilini 2023, BJS Open 7(5):zrad080, PMC10588975, leída en 2026-10) revisa técnicas de reparación, malla y hernia oculta contralateral, no el diagnóstico ni la epidemiología. Cifras del razonamiento de ca_gi3 comprobadas en PMC: exploración S 0,745, E 0,963 (cap. 3, un estudio de cohortes); hernia inguinal 9–12 veces más en hombres y femoral unas 4 veces más en mujeres (cap. 16; la reparación, 8–10 veces más en hombres, cap. 2); factores de riesgo del resumen. |
-| [Finucane 2020](#finucane-2020) | razonamiento fase 2 · plan de tratamiento | 17 | 2026-10 · Sin cambios: PubMed (autor Finucane LM, «red flags») no encuentra una versión posterior del marco IFOMPT. |
+| [Finucane 2020](#finucane-2020) | razonamiento fase 2 · plan de tratamiento | 21 | 2026-10 · Sin cambios: PubMed (autor Finucane LM, «red flags») no encuentra una versión posterior del marco IFOMPT. |
 | [Galliker 2020](#galliker-2020) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: PubMed (banderas rojas en lumbalgia en urgencias, revisiones desde 2020) no encuentra ninguna posterior. |
 | [Kim y Chang 2021](#kim-y-chang-2021) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10); leídas enteras en Europe PMC dos fuentes posteriores en acceso abierto: Fares 2026 (Clin Shoulder Elb 29:161–169, revisión narrativa, doi 10.5397/cise.2025.00885) y Holle 2026 (Muscle Nerve 73:56–62, datos de un seguro alemán, doi 10.1002/mus.70059). Coinciden con lo que usa h_n1: infradiagnóstico (incidencia codificada 10,3 por 100 000 frente a unos 100 por 100 000 en el estudio prospectivo de atención primaria, es decir, en torno a 1 por 1000), dolor brusco a menudo nocturno seguido de debilidad y atrofia en parches, desencadenantes (infección, vacuna, cirugía, esfuerzo) y confusión con la patología del manguito y la radiculopatía cervical. La revisión de Gabet 2025 (Muscle Nerve) no se pudo conseguir. |
 | [Klepinowski 2021](#klepinowski-2021) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: PubMed (quiste de Tarlov, metaanálisis de prevalencia) no encuentra otro metaanálisis. |
@@ -850,7 +867,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baker 2018](#baker-2018) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Beuschlein 2024](#beuschlein-2024) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brockow 2021](#brockow-2021) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Bruessel 2026](#bruessel-2026) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Cardona 2020](#cardona-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Champaneria 2016](#champaneria-2016) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Compston 2018](#compston-2018) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Gülen 2023](#gülen-2023) · [Guthmiller 2025](#guthmiller-2025) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Haskins 2015](#haskins-2015) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaneko 2021](#kaneko-2021) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kuo 2025](#kuo-2025) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Lim 2013](#lim-2013) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE NG12](#nice-ng12) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG193](#nice-ng193) · [NICE NG226](#nice-ng226) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Sammaritano 2025](#sammaritano-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Speer 1994](#speer-1994) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [WFH 2020](#wfh-2020) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
+[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baker 2018](#baker-2018) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Beuschlein 2024](#beuschlein-2024) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brockow 2021](#brockow-2021) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Bruessel 2026](#bruessel-2026) · [Budha 2025](#budha-2025) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Campbell 2020](#campbell-2020) · [Cardona 2020](#cardona-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Champaneria 2016](#champaneria-2016) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Compston 2018](#compston-2018) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Gülen 2023](#gülen-2023) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2026](#hadji-2026) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Haskins 2015](#haskins-2015) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaneko 2021](#kaneko-2021) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kuo 2025](#kuo-2025) · [Lacy 2023](#lacy-2023) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Lim 2013](#lim-2013) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE NG12](#nice-ng12) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG193](#nice-ng193) · [NICE NG226](#nice-ng226) · [NICE NG249](#nice-ng249) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Sammaritano 2025](#sammaritano-2025) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Scioscia 2023](#scioscia-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Speer 1994](#speer-1994) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [WFH 2020](#wfh-2020) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Yamamoto 2009](#yamamoto-2009) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -1115,6 +1132,29 @@ Citada como:
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Lumbar | lu4 · Estenosis Espinal / Claudicación Neurogénica | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
+### Anagnostis 2024
+
+Autores: Anagnostis, Lampropoulou-Adamidou, Bosdou et al.  
+Título: *Comparative effectiveness of therapeutic interventions in pregnancy and lactation-associated osteoporosis: a systematic review and meta-analysis*  
+Publicación: J Clin Endocrinol Metab 109(3):879–901  
+DOI: 10.1210/clinem/dgad548  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Nuevas fracturas y más refracturas con varias fracturas al inicio. Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Tras una osteoporosis del embarazo o la lactancia pueden aparecer nuevas fracturas, más si hubo varias al principio; si hay más riesgo en otro embarazo no está claro: que lo hable con su médico (Hadji 2026; Anagnostis 2024; Kovacs y Ralston 2015; Hardcastle 2022).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 1 |
+
 ### Anastasopoulou y Gillespie 2026
 
 Autores: Anastasopoulou y Gillespie  
@@ -1187,7 +1227,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Test de ROM activo en 4 direcciones» | 4b · cita bajo el test | 1 |
-| Codo | — | `sistemas.5.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.6.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
 | Codo | — | `steps.0.options.1.derivacion` | 4 · mención en el texto | 3 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
@@ -2155,6 +2195,77 @@ Citada como:
 | Codo | — | `sistemas.4.mastocitos.textos.tecnica4b` | 2 · mención en el texto | 2 |
 | Tobillo y pie | — | `sistemas.4.mastocitos.textos.desencadenantes` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.4.mastocitos.textos.tecnica4b` | 2 · mención en el texto | 2 |
+
+### Brooke-Wavell 2022
+
+Autores: Brooke-Wavell, Skelton, Barker et al.  
+Título: *Strong, steady and straight: UK consensus statement on physical activity and exercise for osteoporosis*  
+Publicación: Br J Sports Med 56(15):837–846  
+DOI: 10.1136/bjsports-2021-104634  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero sin la fig. 1 ni los suplementos (2026-10). Recuadros 1 (hueso), 2 (caídas) y 3 (moverse con seguridad y tras la fractura vertebral); cada recomendación marcada evidencia o consenso. Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Ejercicio de caídas: equilibrio exigente y ejercicio funcional (levantarse de la silla, pasos), 3 o más sesiones por semana, progresado al menos 12 semanas (Montero-Odasso 2022), unas 3 h por semana durante al menos 4 meses (Brooke-Wavell 2022; Gregson 2025). El equilibrio y el ejercicio funcional reducen las caídas; caminar solo no ha demostrado reducirlas (Sherrington 2019).
+2. Fuerza progresiva 2–3 días por semana, hasta el peso que levanta 8–12 veces, en 2 series y hasta 3, empezando suave con buena técnica y movimientos lentos y controlados; todos los grupos musculares, también la espalda, sin flexión con carga (Brooke-Wavell 2022, recuadro 1; Giangregorio 2014). Si el riesgo de fractura vertebral es alto, sin máquinas que obliguen a flexionar o girar el tronco (Giangregorio 2014).
+3. Impacto moderado la mayoría de los días: unos 50 impactos por sesión (pisotones, trote, saltos bajos), sin caer desde altura (Brooke-Wavell 2022, consenso).
+4. Con fractura vertebral o varias fracturas por fragilidad: impacto solo hasta caminar a paso ligero, 150 min por semana, por precaución, sin pruebas de que más sea peligroso; consulta con el fisioterapeuta al empezar (Brooke-Wavell 2022, consenso; Giangregorio 2014).
+5. Tras una fractura vertebral dolorosa: extensores de espalda a diario, suaves, 3–5 repeticiones mantenidas 3–5 s; con dolor, empieza tumbado boca arriba (Brooke-Wavell 2022, recuadro 3; Gregson 2025). El ejercicio mejora algo la movilidad (certeza moderada); si mejora el dolor no se sabe (certeza muy baja), y los estudios se hicieron meses después de la fractura, no en la fase aguda (Gibbs 2019).
+6. Espalda recta al agacharse y levantar (bisagra de cadera); modifica la flexión mantenida, repetida o al final del recorrido, sobre todo con carga; la torsión, suave y controlada, mejor girando con pasos; cuidado al pasar de tumbado a sentado o al darse la vuelta, y con peso en las manos; no levantar ni dejar cosas en el suelo, sino guardarlas a la altura de la cintura. Enseña cómo, no prohíbas (Brooke-Wavell 2022, recuadro 3; Giangregorio 2014; Giangregorio 2015).
+7. Osteoporosis del embarazo o la lactancia: que se movilice pronto y sin reposo en cama; actividad en carga y de fuerza razonable, sin excesos, y sin cargar objetos pesados (Kovacs y Ralston 2015). Con las fracturas consolidadas, a los 3–6 meses, más carga y fuerza (Scioscia 2023). Fisioterapia cuando el dolor lo permita (Hadji 2026; Hardcastle 2022). Al coger y cargar al bebé, la misma bisagra de cadera (extrapolado de Brooke-Wavell 2022). Si las fracturas la limitan mucho, que tenga ayuda para cuidar del bebé (Hardcastle 2022). La lactancia, los fármacos y otro embarazo los decide con su médico.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.impactoSin` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 5 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 6 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 7 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.impactoSin` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 6 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 7 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.impactoSin` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 6 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 7 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.impactoSin` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 6 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 7 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.impactoSin` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 6 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 7 |
+| Codo | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.impactoSin` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 6 |
+| Codo | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 7 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.impactoSin` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 6 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 7 |
 
 ### Brotman 2024
 
@@ -3407,16 +3518,18 @@ Nota: Texto completo en PMC3898572. Resume las dos revisiones Cochrane de bander
 
 Citada como:
 
-1. Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).
+1. Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095, introducción y discusión.
+2. Downie 2013 — Downie, Williams, Henschke et al., «Red flags to screen for malignancy and fracture in patients with low back pain: systematic review», BMJ 2013;347:f7095 (texto completo en PMC).
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Cadera | — | Bandera roja «Factores de riesgo de malignidad: ≥50 años, sin mejoría en 1 mes, pérdida de peso inexplicada, cáncer previo (ninguna combinación está validada). Lo que más informa: cáncer previo, sospecha clínica, VSG elevada y hematocrito bajo» · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
-| Cadera | — | Bandera amarilla «Edad >50 años con dolor insidioso en cadera» · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
-| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
-| Lumbar | — | Bandera roja «Pérdida de peso inexplicada (>5 % del peso en 6 meses)» · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
-| Lumbar | — | Bandera amarilla «Dolor lumbar persistente sin mejoría tras 1 mes de tratamiento conservador» · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
-| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `op_d_fractura` · Osteoporosis | 2 · razonamiento del cribado | 1 |
+| Cadera | — | Bandera roja «Factores de riesgo de malignidad: ≥50 años, sin mejoría en 1 mes, pérdida de peso inexplicada, cáncer previo (ninguna combinación está validada). Lo que más informa: cáncer previo, sospecha clínica, VSG elevada y hematocrito bajo» · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
+| Cadera | — | Bandera amarilla «Edad >50 años con dolor insidioso en cadera» · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
+| Lumbar | — | Bandera roja «Pérdida de peso inexplicada (>5 % del peso en 6 meses)» · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
+| Lumbar | — | Bandera amarilla «Dolor lumbar persistente sin mejoría tras 1 mes de tratamiento conservador» · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 
 ### Drosos 2022
 
@@ -3743,39 +3856,45 @@ Nota: Se leyó el documento completo del marco IFOMPT; las páginas citadas son 
 Citada como:
 
 1. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (cola de caballo), pp. 9 y 13.
-2. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), pp. 34–36.
-3. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Night pain», p. 37.
-4. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Unexplained weight loss», p. 39.
-5. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 5.1, «Recent pre-existing infection», p. 46.
-6. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 5 (infección), pp. 43–48.
-7. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), tabla 4.2, p. 39, y sección 5 (infección), tabla 5.2, p. 48.
-8. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura), p. 25.
-9. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–17.
-10. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), tabla 4.2, p. 39.
-11. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura vertebral), pp. 24–26.
-12. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–11.
-13. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 5 (infección), pp. 44–49.
-14. Finucane 2020
+2. Finucane 2020 — Finucane, Downie, Mercer et al., «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, 2020, sección 3 (fractura), tabla 3.2.
+3. Finucane 2020 — Finucane, Downie, Mercer et al., «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, 2020, sección 3 (fractura), tablas 3.1–3.4.
+4. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), pp. 34–36.
+5. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Night pain», p. 37.
+6. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 4.2, «Unexplained weight loss», p. 39.
+7. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), tabla 5.1, «Recent pre-existing infection», p. 46.
+8. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 5 (infección), pp. 43–48.
+9. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), tabla 4.2, p. 39, y sección 5 (infección), tabla 5.2, p. 48.
+10. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura), p. 25.
+11. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–17.
+12. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 4 (malignidad), tabla 4.2, p. 39.
+13. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 3 (fractura vertebral), pp. 24–26.
+14. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 2 (síndrome de cola de caballo), pp. 9–11.
+15. Finucane 2020 — Finucane, Downie, Mercer, Greenhalgh, Boissonnault, Pool-Goudzwaard, Beneciuk, Leech y Selfe, «International Framework for Red Flags for Potential Serious Spinal Pathologies», IFOMPT, marzo de 2020 (documento completo del marco publicado en J Orthop Sports Phys Ther 2020;50(7):350–372), sección 5 (infección), pp. 44–49.
+16. Finucane 2020
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `pq_nervio_col` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaNeuro.fuente` | 6 · plan de tratamiento | 14 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreNeuro` | 6 · plan de tratamiento | 14 |
-| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
-| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 3 |
-| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 4 |
-| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 5 |
-| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 6 |
-| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 2 |
-| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 3 |
-| Lumbar | — | Bandera roja «Pérdida de peso inexplicada (>5 % del peso en 6 meses)» · Cáncer / Oncológico | 2 · razonamiento del cribado | 7 |
-| Lumbar | — | Bandera roja «Fractura patológica ante trauma menor o fragilidad ósea» · Cáncer / Oncológico | 2 · razonamiento del cribado | 8 |
-| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 9 |
-| Lumbar | — | Bandera roja «Pérdida de peso inexplicada o saciedad precoz» · Gastrointestinal | 2 · razonamiento del cribado | 10 |
-| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 11 |
-| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 12 |
-| Lumbar | — | Bandera roja «Signos neurológicos (déficit sensitivo o motor, alteraciones de vejiga o recto) junto a fiebre o malestar general» · Infección vertebral | 2 · razonamiento del cribado | 13 |
+| Todas (sistemas comunes) | — | Pregunta `op_u_medula` · Osteoporosis | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `op_d_fractura` · Osteoporosis | 2 · razonamiento del cribado | 3 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaFracturaVertebral.fuente` | 6 · plan de tratamiento | 16 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaNeuro.fuente` | 6 · plan de tratamiento | 16 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreFracturaVertebral` | 6 · plan de tratamiento | 16 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreNeuro` | 6 · plan de tratamiento | 16 |
+| Cervical | — | Pregunta `cv4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 4 |
+| Cervical | — | Pregunta `cv1` · Cáncer / Oncológico | 2 · razonamiento del cribado | 5 |
+| Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 6 |
+| Cervical | — | Pregunta `cv_r2` · Renal / Urológico | 2 · razonamiento del cribado | 7 |
+| Cervical | — | Pregunta `cv_in1` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 8 |
+| Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 4 |
+| Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 5 |
+| Lumbar | — | Bandera roja «Pérdida de peso inexplicada (>5 % del peso en 6 meses)» · Cáncer / Oncológico | 2 · razonamiento del cribado | 9 |
+| Lumbar | — | Bandera roja «Fractura patológica ante trauma menor o fragilidad ósea» · Cáncer / Oncológico | 2 · razonamiento del cribado | 10 |
+| Lumbar | — | Pregunta `l6` · Urogenital / Renal | 2 · razonamiento del cribado | 11 |
+| Lumbar | — | Bandera roja «Pérdida de peso inexplicada o saciedad precoz» · Gastrointestinal | 2 · razonamiento del cribado | 12 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 13 |
+| Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 14 |
+| Lumbar | — | Bandera roja «Signos neurológicos (déficit sensitivo o motor, alteraciones de vejiga o recto) junto a fiebre o malestar general» · Infección vertebral | 2 · razonamiento del cribado | 15 |
 
 ### Flynn 2002
 
@@ -3932,6 +4051,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomia` | 6 · plan de tratamiento | 1 |
+
+### Gak 2024
+
+Autores: Gak, Abbara, Dhillo, Keen y Comninos  
+Título: *Current and future perspectives on pregnancy and lactation-associated osteoporosis*  
+Publicación: Front Endocrinol 15:1494965  
+DOI: 10.3389/fendo.2024.1494965  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Dolor más de 3 años en el 59 % en una serie. Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. El plazo es el de la fractura osteoporótica de la persona mayor; en la osteoporosis del embarazo o la lactancia el dolor puede durar mucho más: en una serie, más de 3 años en el 59 % (Gak 2024).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.tejidosPLO` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.tejidosPLO` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.tejidosPLO` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.tejidosPLO` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.tejidosPLO` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.tejidosPLO` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.tejidosPLO` | 2 · mención en el texto | 1 |
 
 ### Galliker 2020
 
@@ -4091,6 +4233,109 @@ Citada como:
 | Todas (tiempos de tejido) | — | Subtipo «Navicular, por estrés» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 3 |
 | Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Paso `tp_step11` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Giangregorio 2014
+
+Autores: Giangregorio, Papaioannou, MacIntyre et al.  
+Título: *Too Fit To Fracture: exercise recommendations for individuals with osteoporosis or osteoporotic vertebral fracture*  
+Publicación: Osteoporos Int 25(3):821–835  
+DOI: 10.1007/s00198-013-2523-2  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario, leído entero (2026-10). Fuerza (2 series de 8–12), equilibrio a diario (unas 2 h por semana), máquinas, movimientos lentos, transiciones, lluvia o hielo, consulta con el fisioterapeuta con fractura vertebral (tabla 4). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Sin caídas: equilibrio a diario, 15–20 min (unas 2 h por semana; Giangregorio 2014).
+2. Fuerza progresiva 2–3 días por semana, hasta el peso que levanta 8–12 veces, en 2 series y hasta 3, empezando suave con buena técnica y movimientos lentos y controlados; todos los grupos musculares, también la espalda, sin flexión con carga (Brooke-Wavell 2022, recuadro 1; Giangregorio 2014). Si el riesgo de fractura vertebral es alto, sin máquinas que obliguen a flexionar o girar el tronco (Giangregorio 2014).
+3. Con fractura vertebral o varias fracturas por fragilidad: impacto solo hasta caminar a paso ligero, 150 min por semana, por precaución, sin pruebas de que más sea peligroso; consulta con el fisioterapeuta al empezar (Brooke-Wavell 2022, consenso; Giangregorio 2014).
+4. Equilibrio a diario, 15–20 min (unas 2 h por semana; Giangregorio 2014).
+5. Espalda recta al agacharse y levantar (bisagra de cadera); modifica la flexión mantenida, repetida o al final del recorrido, sobre todo con carga; la torsión, suave y controlada, mejor girando con pasos; cuidado al pasar de tumbado a sentado o al darse la vuelta, y con peso en las manos; no levantar ni dejar cosas en el suelo, sino guardarlas a la altura de la cintura. Enseña cómo, no prohíbas (Brooke-Wavell 2022, recuadro 3; Giangregorio 2014; Giangregorio 2015).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.caidasNo` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.equilibrio` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.caidasNo` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.equilibrio` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.caidasNo` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.equilibrio` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.caidasNo` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.equilibrio` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.caidasNo` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.equilibrio` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.5.osteoporosis.textos.caidasNo` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.5.osteoporosis.textos.equilibrio` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasNo` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.fuerza` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.impactoCon` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.equilibrio` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 5 |
+
+### Giangregorio 2015
+
+Autores: Giangregorio, McGill, Wark et al.  
+Título: *Too Fit To Fracture: outcomes of a Delphi consensus process on physical activity and exercise recommendations for adults with osteoporosis with or without vertebral fractures*  
+Publicación: Osteoporos Int 26(3):891–910  
+DOI: 10.1007/s00198-014-2881-4  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario, leído entero (2026-10). Moverse con seguridad (girar dando pasos, no levantar desde el suelo) y umbrales de pérdida de talla (recuadro 2). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Espalda recta al agacharse y levantar (bisagra de cadera); modifica la flexión mantenida, repetida o al final del recorrido, sobre todo con carga; la torsión, suave y controlada, mejor girando con pasos; cuidado al pasar de tumbado a sentado o al darse la vuelta, y con peso en las manos; no levantar ni dejar cosas en el suelo, sino guardarlas a la altura de la cintura. Enseña cómo, no prohíbas (Brooke-Wavell 2022, recuadro 3; Giangregorio 2014; Giangregorio 2015).
+2. Giangregorio 2015 — Giangregorio, McGill, Wark et al., «Too Fit To Fracture: outcomes of a Delphi consensus process on physical activity and exercise recommendations for adults with osteoporosis with or without vertebral fractures», Osteoporos Int 2015;26(3):891–910, recuadro 2.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `op_d_talla` · Osteoporosis | 2 · razonamiento del cribado | 2 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 1 |
+
+### Gibbs 2019
+
+Autores: Gibbs, MacIntyre, Ponzano et al.  
+Título: *Exercise for improving outcomes after osteoporotic vertebral fracture*  
+Publicación: Cochrane Database Syst Rev 2019;7:CD008618  
+DOI: 10.1002/14651858.CD008618.pub3  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario, leído entero sin la bibliografía (2026-10). Tras la fractura vertebral, el ejercicio mejora algo la movilidad (certeza moderada); el dolor, certeza muy baja; una fractura de costilla y una de cartílago costal en un ensayo (ejercicios en prono y al darse la vuelta). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Tras una fractura vertebral dolorosa: extensores de espalda a diario, suaves, 3–5 repeticiones mantenidas 3–5 s; con dolor, empieza tumbado boca arriba (Brooke-Wavell 2022, recuadro 3; Gregson 2025). El ejercicio mejora algo la movilidad (certeza moderada); si mejora el dolor no se sabe (certeza muy baja), y los estudios se hicieron meses después de la fractura, no en la fase aguda (Gibbs 2019).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 1 |
 
 ### Gill 2025
 
@@ -4488,8 +4733,8 @@ Citada como:
 | Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 104 |
 | Lumbar | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
-| Lumbar | — | `sistemas.8.banderasRojas.5.texto` | 2 · mención en el texto | 3 |
-| Lumbar | — | `sistemas.8.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 4 |
+| Lumbar | — | `sistemas.9.banderasRojas.5.texto` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.9.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 4 |
 | Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 105 |
 | Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 106 |
 | Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 107 |
@@ -4678,6 +4923,111 @@ Citada como:
 | Rodilla | — | Pregunta `r3` · Oncológico / Hematológico | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_c2` · Oncológico / Sistémico | 2 · razonamiento del cribado | 1 |
+
+### Gregson 2025
+
+Autores: Gregson, Armstrong, Avgerinou et al. (NOGG)  
+Título: *The 2024 UK clinical guideline for the prevention and treatment of osteoporosis*  
+Publicación: Arch Osteoporos 20(1):119  
+DOI: 10.1007/s11657-025-01588-3  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero sin las figuras (2026-10). Fractura por fragilidad, fractura vertebral ante el dolor de espalda agudo, cuándo buscarla, corticoides y protección ósea, ejercicio, caídas, fractura atípica de fémur, el LES entre los factores (tabla 3). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Factores de riesgo de fractura de las guías: fractura por fragilidad previa, corticoides orales, fractura de cadera en un progenitor, menopausia precoz, artritis reumatoide y otras enfermedades inflamatorias (con el lupus) y caídas repetidas (Gregson 2025, «Fracture risk assessment tools» y tablas 1 y 3; Kanis 2019, tabla 4). La lista es una selección: la app no calcula el FRAX, que pide el médico (Gregson 2025).
+2. Márcala si le han diagnosticado una osteoporosis o se ha roto un hueso con un golpe pequeño o sin golpe (una caída desde su altura o menos; Gregson 2025). «Sospecha»: 50 años o más con algún factor de riesgo de fractura.
+3. Que su médico valore el riesgo de fractura (FRAX y, si procede, densitometría) (Gregson 2025).
+4. Fractura por fragilidad antes de los 50: valoración médica para buscar la causa (Gregson 2025, introducción).
+5. Ejercicio de caídas: equilibrio exigente y ejercicio funcional (levantarse de la silla, pasos), 3 o más sesiones por semana, progresado al menos 12 semanas (Montero-Odasso 2022), unas 3 h por semana durante al menos 4 meses (Brooke-Wavell 2022; Gregson 2025). El equilibrio y el ejercicio funcional reducen las caídas; caminar solo no ha demostrado reducirlas (Sherrington 2019).
+6. Tras una fractura vertebral dolorosa: extensores de espalda a diario, suaves, 3–5 repeticiones mantenidas 3–5 s; con dolor, empieza tumbado boca arriba (Brooke-Wavell 2022, recuadro 3; Gregson 2025). El ejercicio mejora algo la movilidad (certeza moderada); si mejora el dolor no se sabe (certeza muy baja), y los estudios se hicieron meses después de la fractura, no en la fase aguda (Gibbs 2019).
+7. Un dolor de espalda brusco tras un esfuerzo pequeño puede ser una fractura vertebral nueva: valoración médica; con debilidad u hormigueo en las piernas, urgencias (Gregson 2025).
+8. Con bifosfonato o denosumab: si aparece un dolor de muslo, ingle o cadera sin explicación, imagen del fémur antes de cargar (Gregson 2025).
+9. Corticoides de 7,5 mg/día o más durante 3 meses o más sin tratamiento para el hueso: que su médico valore la protección ósea (Gregson 2025).
+10. Con corticoides mantenidos, pregunta por la osteoporosis y las fracturas por fragilidad; si las tiene, marca también la tarjeta «Osteoporosis o fragilidad ósea» (Gregson 2025; Laurent 2022).
+11. Gregson 2025 — Gregson, Armstrong, Avgerinou et al., «The 2024 UK clinical guideline for the prevention and treatment of osteoporosis», Arch Osteoporos 2025;20(1):119, «Management of symptomatic osteoporotic vertebral fractures».
+12. Gregson 2025 — Gregson, Armstrong, Avgerinou et al., «The 2024 UK clinical guideline for the prevention and treatment of osteoporosis», Arch Osteoporos 2025;20(1):119, «Models of care for fracture prevention» (recomendación) y «Vertebral fracture assessment».
+13. Gregson 2025 — Gregson, Armstrong, Avgerinou et al., «The 2024 UK clinical guideline for the prevention and treatment of osteoporosis», Arch Osteoporos 2025;20(1):119, «Screening and case finding» y recomendaciones de «Fracture risk assessment and case finding».
+14. Gregson 2025 — Gregson, Armstrong, Avgerinou et al., «The 2024 UK clinical guideline for the prevention and treatment of osteoporosis», Arch Osteoporos 2025;20(1):119, «Rare adverse effects», recomendación 12.
+15. Gregson 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `op_u_medula` · Osteoporosis | 2 · razonamiento del cribado | 11 |
+| Todas (sistemas comunes) | — | Pregunta `op_d_fractura` · Osteoporosis | 2 · razonamiento del cribado | 12 |
+| Todas (sistemas comunes) | — | Pregunta `op_d_talla` · Osteoporosis | 2 · razonamiento del cribado | 13 |
+| Todas (sistemas comunes) | — | Pregunta `op_d_femur` · Osteoporosis | 2 · razonamiento del cribado | 14 |
+| condiciones | — | Fila «Osteoporosis o fragilidad ósea» | guía de condiciones especiales | 15 |
+| Hombro | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.nota` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.sospechaDerivar` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.sospechaJoven` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 5 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 6 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.seguridad` | 2 · mención en el texto | 7 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.antirresortivo` | 2 · mención en el texto | 8 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.corticoides` | 2 · mención en el texto | 9 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 10 |
+| Cadera | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.nota` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.sospechaDerivar` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.sospechaJoven` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 6 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.seguridad` | 2 · mención en el texto | 7 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.antirresortivo` | 2 · mención en el texto | 8 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.corticoides` | 2 · mención en el texto | 9 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 10 |
+| Cervical | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.nota` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.sospechaDerivar` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.sospechaJoven` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 6 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.seguridad` | 2 · mención en el texto | 7 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.antirresortivo` | 2 · mención en el texto | 8 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.corticoides` | 2 · mención en el texto | 9 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 10 |
+| Lumbar | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.nota` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.sospechaDerivar` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.sospechaJoven` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 6 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.seguridad` | 2 · mención en el texto | 7 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.antirresortivo` | 2 · mención en el texto | 8 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.corticoides` | 2 · mención en el texto | 9 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 10 |
+| Rodilla | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.nota` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.sospechaDerivar` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.sospechaJoven` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 6 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.seguridad` | 2 · mención en el texto | 7 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.antirresortivo` | 2 · mención en el texto | 8 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.corticoides` | 2 · mención en el texto | 9 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 10 |
+| Codo | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.nota` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.sospechaDerivar` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.5.osteoporosis.textos.sospechaJoven` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 6 |
+| Codo | — | `sistemas.5.osteoporosis.textos.seguridad` | 2 · mención en el texto | 7 |
+| Codo | — | `sistemas.5.osteoporosis.textos.antirresortivo` | 2 · mención en el texto | 8 |
+| Codo | — | `sistemas.5.osteoporosis.textos.corticoides` | 2 · mención en el texto | 9 |
+| Codo | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 10 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.nota` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.sospechaDerivar` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.sospechaJoven` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.reciente` | 2 · mención en el texto | 6 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.seguridad` | 2 · mención en el texto | 7 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.antirresortivo` | 2 · mención en el texto | 8 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.corticoides` | 2 · mención en el texto | 9 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 10 |
 
 ### Griffin 2018
 
@@ -4905,6 +5255,41 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `pq_sdrc` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `pq_nervio` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 1 |
+
+### Hadji 2026
+
+Autores: Hadji, Athanasiadis, Brandi et al. (IAPM, IOF, ECTS, ESCEO, IMS y EMAS)  
+Título: *Pregnancy- and lactation-associated osteoporosis: a position statement of the IAPM, IOF, ECTS, ESCEO, IMS, and EMAS*  
+Publicación: Int J Gynaecol Obstet 2026, en línea antes de imprimir  
+DOI: 10.1002/ijgo.71203  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario (acceso abierto), leído entero sin la bibliografía (2026-10). Sospecha y derivación (sección 5), dónde aparecen las fracturas, fisioterapia si hace falta (sección 6), recurrencia (sección 7). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Osteoporosis del embarazo o la lactancia: que se movilice pronto y sin reposo en cama; actividad en carga y de fuerza razonable, sin excesos, y sin cargar objetos pesados (Kovacs y Ralston 2015). Con las fracturas consolidadas, a los 3–6 meses, más carga y fuerza (Scioscia 2023). Fisioterapia cuando el dolor lo permita (Hadji 2026; Hardcastle 2022). Al coger y cargar al bebé, la misma bisagra de cadera (extrapolado de Brooke-Wavell 2022). Si las fracturas la limitan mucho, que tenga ayuda para cuidar del bebé (Hardcastle 2022). La lactancia, los fármacos y otro embarazo los decide con su médico.
+2. Tras una osteoporosis del embarazo o la lactancia pueden aparecer nuevas fracturas, más si hubo varias al principio; si hay más riesgo en otro embarazo no está claro: que lo hable con su médico (Hadji 2026; Anagnostis 2024; Kovacs y Ralston 2015; Hardcastle 2022).
+3. Hadji 2026 — Hadji, Athanasiadis, Brandi et al., «Pregnancy- and lactation-associated osteoporosis: a position statement of the IAPM, IOF, ECTS, ESCEO, IMS, and EMAS», Int J Gynaecol Obstet 2026, secciones 4 y 5.
+4. Hadji 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| condiciones | — | Fila «Osteoporosis o fragilidad ósea» | guía de condiciones especiales | 4 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 3 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
 
 ### Hakim 2017
 
@@ -5195,6 +5580,37 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `end_2` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `end_5` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+
+### Hardcastle 2022
+
+Autores: Hardcastle  
+Título: *Pregnancy and lactation associated osteoporosis*  
+Publicación: Calcif Tissue Int 110(5):531–545  
+DOI: 10.1007/s00223-021-00815-6  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario, leído entero (2026-10). Osteoporosis del embarazo o la lactancia: fisioterapia, ayuda para cuidar del bebé, recurrencia. Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Osteoporosis del embarazo o la lactancia: que se movilice pronto y sin reposo en cama; actividad en carga y de fuerza razonable, sin excesos, y sin cargar objetos pesados (Kovacs y Ralston 2015). Con las fracturas consolidadas, a los 3–6 meses, más carga y fuerza (Scioscia 2023). Fisioterapia cuando el dolor lo permita (Hadji 2026; Hardcastle 2022). Al coger y cargar al bebé, la misma bisagra de cadera (extrapolado de Brooke-Wavell 2022). Si las fracturas la limitan mucho, que tenga ayuda para cuidar del bebé (Hardcastle 2022). La lactancia, los fármacos y otro embarazo los decide con su médico.
+2. Tras una osteoporosis del embarazo o la lactancia pueden aparecer nuevas fracturas, más si hubo varias al principio; si hay más riesgo en otro embarazo no está claro: que lo hable con su médico (Hadji 2026; Anagnostis 2024; Kovacs y Ralston 2015; Hardcastle 2022).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
 
 ### Haskins 2015
 
@@ -6130,6 +6546,35 @@ Citada como:
 | Codo | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
 
+### Kanis 2019
+
+Autores: Kanis, Cooper, Rizzoli y Reginster (ESCEO e IOF)  
+Título: *European guidance for the diagnosis and management of osteoporosis in postmenopausal women*  
+Publicación: Osteoporos Int 30(1):3–44  
+DOI: 10.1007/s00198-018-4704-5  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero sin las figuras (2026-10). Fracturas vertebrales sin diagnosticar y cuándo buscarlas, factores de riesgo y causas secundarias (tabla 4, con la mastocitosis sistémica). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Factores de riesgo de fractura de las guías: fractura por fragilidad previa, corticoides orales, fractura de cadera en un progenitor, menopausia precoz, artritis reumatoide y otras enfermedades inflamatorias (con el lupus) y caídas repetidas (Gregson 2025, «Fracture risk assessment tools» y tablas 1 y 3; Kanis 2019, tabla 4). La lista es una selección: la app no calcula el FRAX, que pide el médico (Gregson 2025).
+2. Kanis 2019 — Kanis, Cooper, Rizzoli y Reginster (ESCEO e IOF), «European guidance for the diagnosis and management of osteoporosis in postmenopausal women», Osteoporos Int 2019;30(1):3–44, «Vertebral fracture assessment» y «Diagnostic work up».
+3. Kanis 2019 — Kanis, Cooper, Rizzoli y Reginster (ESCEO e IOF), «European guidance for the diagnosis and management of osteoporosis in postmenopausal women», Osteoporos Int 2019;30(1):3–44, «Vertebral fracture assessment».
+4. Kanis 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `op_d_fractura` · Osteoporosis | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `op_d_talla` · Osteoporosis | 2 · razonamiento del cribado | 3 |
+| condiciones | — | Fila «Osteoporosis o fragilidad ósea» | guía de condiciones especiales | 4 |
+| Hombro | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
+
 ### Kaplan y Kanwal 2023
 
 Autores: Kaplan y Kanwal  
@@ -6760,6 +7205,37 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Radiculopatía lumbar (ciática)» (Columna) | cabecera · tiempos de tejido | 1 |
 
+### Kovacs y Ralston 2015
+
+Autores: Kovacs y Ralston  
+Título: *Presentation and management of osteoporosis presenting in association with pregnancy or lactation*  
+Publicación: Osteoporos Int 26(9):2223–2241  
+DOI: 10.1007/s00198-015-3149-3  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario, leído entero (2026-10). Osteoporosis del embarazo o la lactancia: movilización temprana sin reposo en cama, actividad en carga razonable sin cargar objetos pesados, recurrencia. Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Osteoporosis del embarazo o la lactancia: que se movilice pronto y sin reposo en cama; actividad en carga y de fuerza razonable, sin excesos, y sin cargar objetos pesados (Kovacs y Ralston 2015). Con las fracturas consolidadas, a los 3–6 meses, más carga y fuerza (Scioscia 2023). Fisioterapia cuando el dolor lo permita (Hadji 2026; Hardcastle 2022). Al coger y cargar al bebé, la misma bisagra de cadera (extrapolado de Brooke-Wavell 2022). Si las fracturas la limitan mucho, que tenga ayuda para cuidar del bebé (Hardcastle 2022). La lactancia, los fármacos y otro embarazo los decide con su médico.
+2. Tras una osteoporosis del embarazo o la lactancia pueden aparecer nuevas fracturas, más si hubo varias al principio; si hay más riesgo en otro embarazo no está claro: que lo hable con su médico (Hadji 2026; Anagnostis 2024; Kovacs y Ralston 2015; Hardcastle 2022).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+
 ### Krill 2018
 
 Autores: Krill, Rosas, Kwon, Dakkak, Nwachukwu y McCormick  
@@ -7031,6 +7507,33 @@ Citada como:
 | Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
+
+### Laurent 2022
+
+Autores: Laurent, Goemaere, Verroken et al. (Belgian Bone Club)  
+Título: *Prevention and treatment of glucocorticoid-induced osteoporosis in adults: consensus recommendations from the Belgian Bone Club*  
+Publicación: Front Endocrinol 13:908727  
+DOI: 10.3389/fendo.2022.908727  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Osteoporosis por corticoides, pérdida de talla de 2 cm, compresión medular con la fractura vertebral desplazada hacia atrás (apartado 3.2), el lupus. Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Con corticoides mantenidos, pregunta por la osteoporosis y las fracturas por fragilidad; si las tiene, marca también la tarjeta «Osteoporosis o fragilidad ósea» (Gregson 2025; Laurent 2022).
+2. Laurent 2022 — Laurent, Goemaere, Verroken et al., «Prevention and treatment of glucocorticoid-induced osteoporosis in adults: consensus recommendations from the Belgian Bone Club», Front Endocrinol 2022;13:908727, apartado 3.2.
+3. Laurent 2022 — Laurent, Goemaere, Verroken et al., «Prevention and treatment of glucocorticoid-induced osteoporosis in adults: consensus recommendations from the Belgian Bone Club», Front Endocrinol 2022;13:908727, apartado 3.7.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `op_u_medula` · Osteoporosis | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `op_d_talla` · Osteoporosis | 2 · razonamiento del cribado | 3 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
 
 ### Lee y Picard 2025
 
@@ -7963,10 +8466,10 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Hombro | h10 · Artrosis Glenohumeral | Test «Mayor edad + crepitación con rigidez activa = pasiva» | 4b · cita bajo el test | 21 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 8 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Pronóstico | 5 · cita del pronóstico | 27 |
-| Hombro | — | `sistemas.5.banderasRojas.5.texto` | 2 · mención en el texto | 314 |
-| Hombro | — | `sistemas.11.banderasRojas.0.texto` | 2 · mención en el texto | 315 |
-| Hombro | — | `sistemas.12.banderasRojas.0.texto` | 2 · mención en el texto | 316 |
-| Hombro | — | `sistemas.13.banderasRojas.0.texto` | 2 · mención en el texto | 317 |
+| Hombro | — | `sistemas.6.banderasRojas.5.texto` | 2 · mención en el texto | 314 |
+| Hombro | — | `sistemas.12.banderasRojas.0.texto` | 2 · mención en el texto | 315 |
+| Hombro | — | `sistemas.13.banderasRojas.0.texto` | 2 · mención en el texto | 316 |
+| Hombro | — | `sistemas.14.banderasRojas.0.texto` | 2 · mención en el texto | 317 |
 | Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 322 |
 | Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 323 |
 | Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 324 |
@@ -8136,7 +8639,7 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 114 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 115 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 116 |
-| Lumbar | — | `sistemas.10.banderasRojas.0.texto` | 2 · mención en el texto | 318 |
+| Lumbar | — | `sistemas.11.banderasRojas.0.texto` | 2 · mención en el texto | 318 |
 | Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 347 |
 | Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 348 |
 | Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 349 |
@@ -8314,9 +8817,9 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» | 4b · cita bajo el test | 218 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» («¿Por qué?») | 4b · razonamiento del test | 217 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» («¿Por qué?») | 4b · razonamiento del test | 218 |
-| Codo | — | `sistemas.5.banderasRojas.0.texto` | 2 · mención en el texto | 319 |
-| Codo | — | `sistemas.5.banderasRojas.1.texto` | 2 · mención en el texto | 320 |
-| Codo | — | `sistemas.5.banderasRojas.2.texto` | 2 · mención en el texto | 321 |
+| Codo | — | `sistemas.6.banderasRojas.0.texto` | 2 · mención en el texto | 319 |
+| Codo | — | `sistemas.6.banderasRojas.1.texto` | 2 · mención en el texto | 320 |
+| Codo | — | `sistemas.6.banderasRojas.2.texto` | 2 · mención en el texto | 321 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 361 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 362 |
 | Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 363 |
@@ -8872,42 +9375,69 @@ Nota: Libro de texto (opinión experta). Leídos enteros los caps. 6 «Examinati
 
 Citada como:
 
-1. Maitland 2005
+1. Osteoporosis: este test carga el hueso, y no hay ningún signo que avise de que un hueso osteoporótico va a ceder (Maitland 2005, cap. 9, p. 223). Con una fractura vertebral reciente o sospechada en la zona, no lo hagas hasta que la valore el médico; si no, con fuerza progresiva y sin empujes bruscos.
+2. La presión sobre las costillas puede romper una costilla osteoporótica: con mucho cuidado (Maitland 2005, cap. 9, p. 223).
+3. Sin manipulación forzada; la movilización suave puede ser adecuada (Maitland 2005, cap. 9, p. 223; Puentedura 2015, tabla 1).
+4. Maitland 2005 — Maitland; Hengeveld, Banks y English (eds.), «Maitland’s Vertebral Manipulation», 7.ª ed., Elsevier Butterworth-Heinemann, 2005, cap. 9, p. 223.
+5. Maitland 2005
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Fase 6 (plan de tratamiento) | — | `AVISOS.vertigo` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `AVISOS.neuralRadicular` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `AVISOS.manipulacionCervical` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `ESCALONES.1.citas.0` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `ESCALONES.2.citas.0` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `ESCALONES.3.citas.0` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `ESCALONES.4.citas.0` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `FUENTE_REGISTRO` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `PLANES_MES.A.notas.0` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `PLANES_MES.B.notas.0` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.0` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.1` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.2` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.3` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.4` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `REGLAS_MES_PERIFERICAS.3` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `REGLA_RADICULAR_SEVERA` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alDiaSiguienteDefecto.fuente` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.primeraSesion.fuente` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionBase` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionSiguiente` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionRadicular` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionNervio` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.educacionPrimera` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.primeraSesion` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cantidad` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierre` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTO_NIVELES.sinC.irritabilidad` | 6 · plan de tratamiento | 1 |
-| Fase 6 (plan de tratamiento) | — | `TEXTO_NIVELES.sinC.estabilidad` | 6 · plan de tratamiento | 1 |
-| irritabilidad | — | `TEXTOS_IRRITABILIDAD.hastaLimite` | 3 · irritabilidad | 1 |
-| irritabilidad | — | `TEXTOS_IRRITABILIDAD.hastaDolor` | 3 · irritabilidad | 1 |
-| irritabilidad | — | `TEXTOS_IRRITABILIDAD.alta` | 3 · irritabilidad | 1 |
+| Todas (sistemas comunes) | — | Pregunta `op_d_fractura` · Osteoporosis | 2 · razonamiento del cribado | 4 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.sinThrustOsteoporosis` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.vertigo` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.neuralRadicular` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `AVISOS.manipulacionCervical` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `ESCALONES.1.citas.0` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `ESCALONES.2.citas.0` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `ESCALONES.3.citas.0` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `ESCALONES.4.citas.0` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `FUENTE_REGISTRO` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `PLANES_MES.A.notas.0` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `PLANES_MES.B.notas.0` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.0` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.1` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.2` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.3` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `REGLAS_MES.4` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `REGLAS_MES_PERIFERICAS.3` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `REGLA_RADICULAR_SEVERA` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alDiaSiguienteDefecto.fuente` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.primeraSesion.fuente` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionBase` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionSiguiente` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionRadicular` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.reevaluacionNervio` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.educacionPrimera` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.primeraSesion` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cantidad` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierre` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTO_NIVELES.sinC.irritabilidad` | 6 · plan de tratamiento | 5 |
+| Fase 6 (plan de tratamiento) | — | `TEXTO_NIVELES.sinC.estabilidad` | 6 · plan de tratamiento | 5 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.hastaLimite` | 3 · irritabilidad | 5 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.hastaDolor` | 3 · irritabilidad | 5 |
+| irritabilidad | — | `TEXTOS_IRRITABILIDAD.alta` | 3 · irritabilidad | 5 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.tecnica4bCostilla` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.tecnica4bCostilla` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.tecnica4bCostilla` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.tecnica4bCostilla` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.tecnica4bCostilla` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.5.osteoporosis.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.tecnica4bCostilla` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.tecnica4bCostilla` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 3 |
 
 ### Majlesi 2008
 
@@ -9747,6 +10277,45 @@ Citada como:
 | Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 
+### Montero-Odasso 2022
+
+Autores: Montero-Odasso, van der Velde, Martin et al.  
+Título: *World guidelines for falls prevention and management for older adults: a global initiative*  
+Publicación: Age Ageing 51(9):afac205  
+DOI: 10.1093/ageing/afac205  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero sin la fig. 1 ni los apéndices (2026-10). Estratificación del riesgo de caídas, velocidad de marcha por debajo de 0,8 m/s, ejercicio de equilibrio y funcional 3 o más veces por semana durante al menos 12 semanas. Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Riesgo alto de caídas: valoración integral de caídas (NICE NG249, 1.1.3; Montero-Odasso 2022).
+2. Una caída, sin lesión, sin quedarse en el suelo, sin pérdida de conocimiento y sin fragilidad: valora la marcha y el equilibrio; si están alterados, programa de ejercicio de caídas y revisión de los riesgos del hogar (NICE NG249, 1.1.4–1.1.5). La velocidad de marcha por debajo de 0,8 m/s indica más riesgo (Montero-Odasso 2022).
+3. Ejercicio de caídas: equilibrio exigente y ejercicio funcional (levantarse de la silla, pasos), 3 o más sesiones por semana, progresado al menos 12 semanas (Montero-Odasso 2022), unas 3 h por semana durante al menos 4 meses (Brooke-Wavell 2022; Gregson 2025). El equilibrio y el ejercicio funcional reducen las caídas; caminar solo no ha demostrado reducirlas (Sherrington 2019).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 3 |
+
 ### Moore y Tafti 2026
 
 Autores: Moore y Tafti  
@@ -10220,13 +10789,13 @@ Citada como:
 | Hombro | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Cadera | — | `sistemas.6.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.7.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
 | Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 5 |
 | Cervical | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Lumbar | — | `sistemas.9.preguntas.3.urgencia` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.10.preguntas.3.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | Pregunta `l_v4` · Vascular | 2 · razonamiento del cribado | 6 |
 | Rodilla | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
@@ -10236,7 +10805,7 @@ Citada como:
 | Codo | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | `sistemas.9.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.10.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 6 |
 
 ### NICE NG19
@@ -10304,6 +10873,45 @@ Citada como:
 | Rodilla | — | Paso `ro_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 | Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
 | Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### NICE NG249
+
+Autores: National Institute for Health and Care Excellence  
+Título: *Falls: assessment and prevention in older people and in people 50 and over at higher risk*  
+Publicación: NICE guideline NG249, 2025  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de recomendaciones leído entero en la web de NICE (2026-10). Sin herramientas de predicción (1.1.1), preguntar por caídas y qué hacer según la respuesta (1.1.2–1.1.6). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Preguntas de NICE NG249 (1.1.2–1.1.6), sin puntuar: la guía pide no usar herramientas que predigan el riesgo de caídas (NICE NG249, 1.1.1).
+2. Riesgo alto de caídas: valoración integral de caídas (NICE NG249, 1.1.3; Montero-Odasso 2022).
+3. Una caída, sin lesión, sin quedarse en el suelo, sin pérdida de conocimiento y sin fragilidad: valora la marcha y el equilibrio; si están alterados, programa de ejercicio de caídas y revisión de los riesgos del hogar (NICE NG249, 1.1.4–1.1.5). La velocidad de marcha por debajo de 0,8 m/s indica más riesgo (Montero-Odasso 2022).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.caidas.fuente` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.5.osteoporosis.caidas.fuente` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.5.osteoporosis.caidas.fuente` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.5.osteoporosis.caidas.fuente` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.5.osteoporosis.caidas.fuente` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.5.osteoporosis.caidas.fuente` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.caidas.fuente` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasAlto` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 3 |
 
 ### NICE NG258
 
@@ -11460,6 +12068,37 @@ Citada como:
 | Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Tobillo y pie | tp9 · Tendinopatía Insercional del Aquiles | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
+### Puentedura 2015
+
+Autores: Puentedura y O'Grady  
+Título: *Safety of thrust joint manipulation in the thoracic spine: a systematic review*  
+Publicación: J Man Manip Ther 23(3):154–161  
+DOI: 10.1179/2042618615Y.0000000012  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario, leído entero (2026-10). Contraindicaciones absolutas del thrust torácico (tabla 1: osteoporosis, corticoides a largo plazo, fractura, tratamiento anticoagulante) y carga de rotura de una vértebra torácica en cadáver (introducción). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Un empuje posteroanterior fuerte en la columna torácica puede llegar a la carga con la que se rompe una vértebra torácica en el laboratorio, con datos de cadáver (Puentedura 2015). Son cifras de manipulación con thrust, no de estos tests: por eso la línea pide fuerza progresiva y no da un límite.
+2. Sin manipulación forzada; la movilización suave puede ser adecuada (Maitland 2005, cap. 9, p. 223; Puentedura 2015, tabla 1).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+
 ### Punnapuzha 2023
 
 Autores: Punnapuzha, Edemobi y Elmoheen  
@@ -12242,7 +12881,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Lumbar | — | `sistemas.8.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
+| Lumbar | — | `sistemas.9.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
 | Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
@@ -12630,6 +13269,31 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 1 |
 
+### Scioscia 2023
+
+Autores: Scioscia y Zanchetta  
+Título: *Recent insights into pregnancy and lactation-associated osteoporosis (PLO)*  
+Publicación: Int J Womens Health 15:1227–1238  
+DOI: 10.2147/IJWH.S366254  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Cuándo aparece, por qué se diagnostica tarde, la única pauta de actividad (con las fracturas consolidadas, a los 3–6 meses). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Osteoporosis del embarazo o la lactancia: que se movilice pronto y sin reposo en cama; actividad en carga y de fuerza razonable, sin excesos, y sin cargar objetos pesados (Kovacs y Ralston 2015). Con las fracturas consolidadas, a los 3–6 meses, más carga y fuerza (Scioscia 2023). Fisioterapia cuando el dolor lo permita (Hadji 2026; Hardcastle 2022). Al coger y cargar al bebé, la misma bisagra de cadera (extrapolado de Brooke-Wavell 2022). Si las fracturas la limitan mucho, que tenga ayuda para cuidar del bebé (Hardcastle 2022). La lactancia, los fármacos y otro embarazo los decide con su médico.
+2. Scioscia 2023 — Scioscia y Zanchetta, «Recent insights into pregnancy and lactation-associated osteoporosis (PLO)», Int J Womens Health 2023;15:1227–1238, apartados «Osteoporosis During Pregnancy and Lactation» y «X-Rays and MRI».
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Lumbar | — | Pregunta `l_e4` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+
 ### Seaberg 1998
 
 Autores: Seaberg, Yealy, Lukens, Auble y Mathias  
@@ -12943,6 +13607,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | — | Pregunta `ca_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
+
+### Sherrington 2019
+
+Autores: Sherrington, Fairhall, Wallbank et al.  
+Título: *Exercise for preventing falls in older people living in the community*  
+Publicación: Cochrane Database Syst Rev 2019;1:CD012424  
+DOI: 10.1002/14651858.CD012424.pub2  
+Última revisión: **sin revisar**  
+Nota: PDF del usuario, leído entero sin la bibliografía (2026-10). El ejercicio de equilibrio y funcional reduce las caídas (certeza alta); caminar solo no ha demostrado reducirlas. No contiene las «3 h por semana». Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+
+Citada como:
+
+1. Ejercicio de caídas: equilibrio exigente y ejercicio funcional (levantarse de la silla, pasos), 3 o más sesiones por semana, progresado al menos 12 semanas (Montero-Odasso 2022), unas 3 h por semana durante al menos 4 meses (Brooke-Wavell 2022; Gregson 2025). El equilibrio y el ejercicio funcional reducen las caídas; caminar solo no ha demostrado reducirlas (Sherrington 2019).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
 
 ### Siemensma 2023
 
