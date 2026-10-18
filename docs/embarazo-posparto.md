@@ -381,9 +381,9 @@ Cada pregunta lleva su `razonamiento` (Fase F) y cada bandera su enlace (Fase M)
 - **El aborto o la interrupción reciente**: NG255 los incluye en el grupo de riesgo de sepsis, pero la tarjeta no los pregunta. *Recomiendo* dejarlo fuera, salvo que lo quieras.
 - **La región de muñeca y mano** (túnel carpiano y De Quervain del embarazo y el posparto): la app no tiene esa región.
 
-## Cambios por la tanda 1 de PDF (T1–T12), pendientes de ti
+## Cambios por la tanda 1 de PDF (T1–T12)
 
-Cada uno con mi recomendación. Cambian el borrador de arriba; no lo reescribo hasta que decidas.
+**Aceptadas por el usuario las 12 recomendaciones (2026-10).** Cambian el borrador de arriba; se aplican al reescribirlo tras la tanda 2.
 
 - **T1. El supino de la 4b (cambia la decisión 7).** La guía canadiense, con GRADE, no pone semanas: solo cambiar de posición si se marea, tiene náuseas o se encuentra mal boca arriba (Mottola 2018, rec. 6, débil). ACOG 804 lo sitúa desde la semana 20 («may result in decreased venous return»). La OMS («after the first trimester») no da su base. *Recomiendo* la línea desde la semana 20 y sin prohibir: «Embarazada de 20 semanas o más: no la dejes mucho rato boca arriba y, si se marea, tiene náuseas o se encuentra mal, ponla de lado (Mottola 2018; ACOG 804).» Ni las fuentes de ejercicio ni las de fisioterapia hablan de la camilla: Clinton 2017 hace todos sus tests en supino sin avisar.
 - **T2. Signos para parar el ejercicio en el embarazo**, en el recuadro de la fase 5, el aviso de la fase 6 y la red `RED_EMBARAZO`. Son la unión del box 2 de Mottola 2018 (parar y consultar) y el box 3 de ACOG 804 (parar). *Recomiendo* esta lista: sangrado vaginal; pérdida de líquido; contracciones regulares y dolorosas; dolor de vientre; dolor en el pecho; falta de aire que no cede en reposo; mareo que no cede; dolor de cabeza; debilidad que afecta al equilibrio; dolor o hinchazón de pantorrilla.
