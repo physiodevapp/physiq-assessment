@@ -1,6 +1,6 @@
 # Osteoporosis o fragilidad ósea — diseño (borrador)
 
-Estado: **borrador de diseño (octubre 2026), sin código. Aceptadas por el usuario las 14 recomendaciones** (ver «Decisiones aceptadas»). PDF de la decisión 13 en tandas: **tanda 1 leída** (Puentedura 2015 y Giangregorio 2014; **aceptados los cambios C1–C7 y la decisión 15**) y **tanda 2 leída** (Hadji 2026, con 5 cambios H1–H5 pendientes). Con eso están leídos los tres PDF mínimos de la decisión 13. **Tanda 3 leída** (Maitland 2005, cap. 9 entero): pasaje de la decisión 6 comprobado en la p. 223, con 2 cambios (M1–M2) pendientes. Ver «Lectura de los PDF». Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
+Estado: **borrador de diseño (octubre 2026), sin código. Aceptadas por el usuario las 14 recomendaciones** (ver «Decisiones aceptadas»). PDF de la decisión 13 en tandas: **tanda 1 leída** (Puentedura 2015 y Giangregorio 2014; **aceptados los cambios C1–C7 y la decisión 15**) y **tanda 2 leída** (Hadji 2026; **aceptados H1–H5**). Con eso están leídos los tres PDF mínimos de la decisión 13. **Tanda 3 leída** (Maitland 2005, cap. 9 entero): pasaje de la decisión 6 comprobado en la p. 223, con 2 cambios (M1 corrección; **M2 aceptado**). **Diseño cerrado: listo para implementar**; quedan solo PDF opcionales. Ver «Lectura de los PDF». Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
 
 **Qué hay hoy en la app** (búsqueda de octubre 2026 en `data/` y `formularios/`):
 - **Cribado de la fase 2**:
@@ -839,7 +839,7 @@ osteoporosis: {
    - ~~tanda 2~~ hecho: Hadji 2026;
    - ~~imprescindible antes de implementar la decisión 6: Maitland 2005, cap. 9~~ hecho (tanda 3): el pasaje está en la p. 223;
    - opcionales: Giangregorio 2015, Gibbs 2019, Kovacs y Ralston 2015, Issa 2026, Sherrington 2019 y Hardcastle 2022.
-3. ~~Tus decisiones sobre la tanda 1~~ Hecho: aceptados C1–C7 y la decisión 15. **Pendientes: H1–H5** (tanda 2) **y M2** (tanda 3). Con ellos aceptados, se puede implementar.
+3. ~~Tus decisiones sobre la tanda 1~~ Hecho: aceptados C1–C7 y la decisión 15. Aceptados también H1–H5 (tanda 2) y M2 (tanda 3), octubre 2026. Siguiente: la implementación.
    - La decisión 14 suma `Puentedura 2015`, `Giangregorio 2014` y `Hadji 2026` al registro, si los textos los citan.
 4. La implementación, en la rama de trabajo, y tu revisión en la app antes de `main`.
 5. physiq-report: leer `op` del payload, en otra PR.
