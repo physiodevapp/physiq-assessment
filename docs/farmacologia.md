@@ -31,7 +31,7 @@ Tests: unitarios en `tests/unit/razonamiento.mjs` («preguntar a la IA, modalida
 
 Límite conocido: la respuesta no tiene fuente revisada por PhysiQ. Sirve para resolver una duda puntual, pero no enseña qué preguntar si el fisioterapeuta no sabe que debe hacerlo. Para eso está el paso 2.
 
-## Paso 2 — Guía permanente por familia (infraestructura hecha; AINE, corticoides y anticoagulantes revisadas por el usuario; 2026-10)
+## Paso 2 — Guía permanente por familia (infraestructura hecha; AINE, corticoides, anticoagulantes y opioides revisadas por el usuario; 2026-10)
 
 **Hecho**: es una herramienta de cabecera propia, como «Condiciones especiales».
 
@@ -99,20 +99,36 @@ Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido:
 
 **Fuentes**: solo las leídas en la sesión. NCBI (StatPearls) pide reCAPTCHA desde la red del entorno, así que los capítulos de StatPearls solo pueden entrar como PDF aportado por el usuario, como en fases anteriores. Las revisiones de acceso abierto de PMC se leen enteras con el conector de PubMed. Se puede usar un agente que lea y devuelva citas literales con su sección, para no llenar el contexto. Cada fuente entra en `data/referencias.js` y se regenera `docs/referencias.md` (`node tests/gen-referencias.mjs`).
 
-**Procedimiento por familia**:
-1. Leer las fuentes.
-2. Escribir `apartados` y `fuentes` en `data/farmacos.js`. Una frase sin fuente solo es admisible como consejo de redacción propia; se anota abajo.
-3. Ejecutar `node tests/gen-referencias.mjs` y `node tests/unit.js`.
-4. Ejecutar `node tests/smoke.mjs --solo farmacos`.
-5. Revisión del usuario antes de `main`.
-6. Anotar el estado aquí.
+**Procedimiento por familia** (el que se siguió con AINE, corticoides, anticoagulantes y opioides):
+1. **Leer las fuentes con un agente** (herramienta Agent, en segundo plano), para no llenar el contexto de la sesión:
+   - El agente carga las herramientas de PubMed con ToolSearch (`select:mcp__PubMed__search_articles,mcp__PubMed__get_full_text_article,mcp__PubMed__get_article_metadata,mcp__PubMed__convert_article_ids`).
+   - Busca 5–7 revisiones, guías o metaanálisis de 2015 en adelante con texto completo en PMC y los lee enteros.
+   - Devuelve citas literales en inglés con su sección, por cada uno de los cinco apartados (dolor, inflamación y curación; síntomas viscerales o secundarios; ejercicio y terapia manual; sueño; cuándo consultar).
+   - Devuelve también, por cada fuente, los autores, título, revista, DOI y PMCID; qué leyó solo en parte; lo que es inferencia suya, marcado; y los huecos sin fuente.
+   - En el encargo se le dan los temas concretos de la familia: las pistas entre paréntesis de la lista de abajo.
+2. **Pedir al usuario los PDF que falten.** StatPearls y las guías sin PMC solo entran así: NCBI pide reCAPTCHA desde el entorno. Los PDF llegan a `/root/.claude/uploads/<sesión>/`; se pasan a texto con `pdftotext -layout` y un segundo agente los lee enteros y devuelve las citas para los huecos.
+3. **Escribir** `apartados` y `fuentes` en `data/farmacos.js`, con las citas dentro de la frase («(Autor año)»).
+   - Comprobar antes con `citasEnTexto()` que cada clave nueva se reconoce: una clave que empieza por minúscula («de Vries») no se reconoce.
+   - Una frase sin fuente solo es admisible como consejo de redacción propia, y se anota abajo.
+   - Lo que no tiene fuente leída se dice en la guía («Las fuentes leídas no…») y en la tabla de abajo; nunca se rellena.
+4. **Añadir las fuentes al registro** (`data/referencias.js`, encima de `'Kaneko 2021'`). Su nota dice cómo se leyeron (PMC entero, en parte, PDF del usuario) y para qué familia.
+5. **Ejecutar** `node tests/gen-referencias.mjs` y `node tests/unit.js`.
+6. **Actualizar el smoke**: la sección `farmacos` de `tests/smoke.mjs` comprueba el orden de las familias escritas y una familia pendiente; hay que actualizar las dos cosas. Después, con `npx serve . &`, ejecutar `node tests/smoke.mjs --solo farmacos` y, antes de `main`, `node tests/smoke.mjs` entero.
+7. **Abrir la PR sin fusionar**: el usuario revisa el contenido clínico antes de `main`. Al fusionarla, marcar la familia como revisada aquí y en CLAUDE.md («Farmacología para el fisioterapeuta»).
+8. **Anotar el estado aquí**: fuentes, huecos y frases de redacción propia.
 
 | Familia | Estado | Fuentes leídas | Huecos |
 |---|---|---|---|
 | AINE | **Revisada por el usuario** (2026-10) y en `main` | Schug 2021, Bindu 2020, Lucas 2019, Papantoniou 2023 y Pannone y Abbott 2024 (texto completo en PMC) | Presentación clínica de la úlcera (melena, hematemesis, dolor referido a la espalda o al hombro, úlcera «silente»): ninguna fuente leída la describe. Candidatas: «Malik 2023» (StatPearls, úlcera péptica, ya en el registro) y «Saad y Mathew 2025» (StatPearls, toxicidad de los AINE, ya en el registro), si el usuario aporta los PDF. Sueño: ninguna fuente lo trata, y la guía lo dice. |
 | Corticoides | **Revisada por el usuario** (2026-10) y en `main` | Pofi 2023, Compston 2018, Kaneko 2021 (releído), Grusky 2026, He 2025 y Soura 2026, enteros en PMC; Beuschlein 2024 (guía ESE/Endocrine Society de insuficiencia suprarrenal por glucocorticoides), leída por secciones | Sin fuente leída: que enmascaren la fiebre o los signos inflamatorios (solo «atenúan la respuesta de los neutrófilos», Pofi 2023); fragilidad de la piel y hematomas con corticoides sistémicos; reposo y carga del tendón tras una infiltración, y número máximo de infiltraciones (la guía ASRA de Benzon 2026 no está en PMC); sangrado digestivo al combinarlos con AINE; normas de terapia manual o carga en la osteoporosis por glucocorticoides; texto completo de la guía ACR 2022 de osteoporosis por glucocorticoides (Humphrey 2023, no está en PMC). Candidatas si el usuario aporta los PDF: «Yasir 2023» y «Hodgens y Sharman 2023» (StatPearls, ya en el registro), Humphrey 2023, Benzon 2026. |
 | Anticoagulantes y antiagregantes | **Revisada por el usuario** (2026-10) y en `main`; ampliada con los PDF del usuario, **pendiente de revisión** de lo añadido | Mameli 2025, Ghosh 2026, Kurlander 2022, Nochaiwong 2022, Muñoz 2022, Yang 2024, Xiang 2025 y Salmasi 2020 (PMC); Steffel 2021 (guía práctica EHRA, PDF del usuario, leída entera salvo las figuras-imagen 1, 3, 9 y 11–15 y los colores de las tablas 5–9; la corrección euab157 solo cambia la financiación) y Antunes 2024 (StatPearls, PDF del usuario, releído) | Añadido con los PDF: presentación del sangrado digestivo alto y perforación, heces negras que no son melena, antiagregantes combinados y edad (Antunes 2024); caídas y su valoración, no saltarse dosis sin consultar, AINE, antiagregantes y corticoides como factores de sangrado, hemorragia intracraneal tardía tras caídas, inyección intramuscular (Steffel 2021). Siguen sin fuente leída: hemartros; síndrome compartimental; signos del hematoma del iliopsoas; hematoma de la vaina de los rectos; masaje y manipulación vertebral; deportes de contacto (la guía EHRA los remite a su material suplementario, no leído); protocolo o TAC tras un golpe en la cabeza; caminar pronto tras una TVP; cifras de corticoides más anticoagulantes; sueño. |
-| Las otras 10 | Pendientes | — | — |
+| Opioides | **Revisada por el usuario** (2026-10) y en `main` | Dowell 2022 (guía de los CDC, leída en parte: recomendaciones 5, 8 y 11 enteras y el apartado de dolor subagudo y crónico; 1, 2, 4, 6 y 7 por palabras clave), Sampaio-Cunha y Martins 2022 (en parte), Camilleri 2017, Dufort y Samaan 2021, De Vries 2020, Blyzniuk 2026 y Langstengel y Yaggi 2022, en PMC. Cashin 2023 (panorámica Cochrane de la lumbalgia) solo dio el resumen y no se cita | Sin fuente leída: signos clásicos de sobredosis (pupilas puntiformes, respiración lenta o ausente, no responder); efectos propios del tramadol (hiponatremia, hipoglucemia, convulsiones); retención urinaria; curación de tejidos y fracturas; terapia manual; ejercicio tras la toma; programa de ejercicio durante la retirada; sueño con uso analgésico prescrito (Langstengel y Yaggi trata el trastorno por uso); ensayo OPAL (no es de acceso abierto). La clave «De Vries 2020» lleva la partícula en mayúscula para que `citasEnTexto()` la reconozca. |
+| Las otras 9 | Pendientes | — | — |
+
+**Redacción propia en los opioides** (sin cita, para la revisión):
+- «Las fuentes leídas no dicen cuándo conviene valorar respecto a la toma.» y las otras frases de «no tratan».
+- «Nunca aconsejes dejarlos ni bajarlos por tu cuenta» (el resto de la frase es de Dowell 2022).
+- Los rótulos «Urgente», «Pronto» y «Combinaciones que hay que comentar con quien prescribe».
 
 **Redacción propia en anticoagulantes y antiagregantes** (sin cita, para la revisión):
 - «Las fuentes leídas no dan datos sobre los tiempos de curación de los tejidos con estos fármacos.»
