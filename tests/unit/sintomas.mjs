@@ -418,3 +418,17 @@ test('interfaz: los botones de cerrar y quitar usan el icono .icono-x', () => {
     assert(i >= 0 && /class="icono-x"/.test(t.slice(i, t.indexOf('</button>', i))), `${f}: ${id} sin .icono-x`);
   }
 });
+
+// .btn-primary / .btn-secondary solo dan color: el radio, el relleno y la letra
+// los pone .btn. Sin él el botón salía con esquinas y sin relleno (Beighton,
+// prueba de bipedestación y su reloj, 2026-10)
+test('interfaz: todo .btn-primary/.btn-secondary lleva también .btn', () => {
+  for (const f of ['index.html', 'app.js', 'sintomas.js', 'phase4.js', 'phase4b.js', 'informe-ia.js', 'plan.js', 'plan-ia.js', 'grabadora.js', 'formulario.js']) {
+    for (const m of leer(f).matchAll(/class="([^"]*)"/g)) {
+      const cl = m[1].split(/\s+/);
+      if (cl.some(c => c === 'btn-primary' || c === 'btn-secondary')) assert(cl.includes('btn'), `${f}: class="${m[1]}" sin .btn`);
+    }
+  }
+  // Los botones del reloj de la prueba de bipedestación reciben la clase por parámetro
+  assert.match(leer('app.js'), /class="btn \$\{clase\} ds-reloj-btn"/);
+});
