@@ -31,7 +31,7 @@ Tests: unitarios en `tests/unit/razonamiento.mjs` («preguntar a la IA, modalida
 
 Límite conocido: la respuesta no tiene fuente revisada por PhysiQ. Sirve para resolver una duda puntual, pero no enseña qué preguntar si el fisioterapeuta no sabe que debe hacerlo. Para eso está el paso 2.
 
-## Paso 2 — Guía permanente por familia (infraestructura hecha; AINE escrita, pendiente de revisión; 2026-10)
+## Paso 2 — Guía permanente por familia (infraestructura hecha; AINE revisada por el usuario; 2026-10)
 
 **Hecho**: es una herramienta de cabecera propia, como «Condiciones especiales».
 
@@ -109,8 +109,15 @@ Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido:
 
 | Familia | Estado | Fuentes leídas | Huecos |
 |---|---|---|---|
-| AINE | Escrita, **pendiente de revisión clínica** | Schug 2021, Bindu 2020, Lucas 2019, Papantoniou 2023 y Pannone y Abbott 2024 (texto completo en PMC) | Presentación clínica de la úlcera (melena, hematemesis, dolor referido a la espalda o al hombro, úlcera «silente»): ninguna fuente leída la describe. Candidatas: «Malik 2023» (StatPearls, úlcera péptica, ya en el registro) y «Saad y Mathew 2025» (StatPearls, toxicidad de los AINE, ya en el registro), si el usuario aporta los PDF. Sueño: ninguna fuente lo trata, y la guía lo dice. |
-| Las otras 12 | Pendientes | — | — |
+| AINE | **Revisada por el usuario** (2026-10) y en `main` | Schug 2021, Bindu 2020, Lucas 2019, Papantoniou 2023 y Pannone y Abbott 2024 (texto completo en PMC) | Presentación clínica de la úlcera (melena, hematemesis, dolor referido a la espalda o al hombro, úlcera «silente»): ninguna fuente leída la describe. Candidatas: «Malik 2023» (StatPearls, úlcera péptica, ya en el registro) y «Saad y Mathew 2025» (StatPearls, toxicidad de los AINE, ya en el registro), si el usuario aporta los PDF. Sueño: ninguna fuente lo trata, y la guía lo dice. |
+| Corticoides | Escrita, **pendiente de revisión clínica** | Pofi 2023, Compston 2018, Kaneko 2021 (releído), Grusky 2026, He 2025 y Soura 2026, enteros en PMC; Beuschlein 2024 (guía ESE/Endocrine Society de insuficiencia suprarrenal por glucocorticoides), leída por secciones | Sin fuente leída: que enmascaren la fiebre o los signos inflamatorios (solo «atenúan la respuesta de los neutrófilos», Pofi 2023); fragilidad de la piel y hematomas con corticoides sistémicos; reposo y carga del tendón tras una infiltración, y número máximo de infiltraciones (la guía ASRA de Benzon 2026 no está en PMC); sangrado digestivo al combinarlos con AINE; normas de terapia manual o carga en la osteoporosis por glucocorticoides; texto completo de la guía ACR 2022 de osteoporosis por glucocorticoides (Humphrey 2023, no está en PMC). Candidatas si el usuario aporta los PDF: «Yasir 2023» y «Hodgens y Sharman 2023» (StatPearls, ya en el registro), Humphrey 2023, Benzon 2026. |
+| Las otras 11 | Pendientes | — | — |
+
+**Redacción propia en los corticoides** (sin cita, para la revisión):
+- «Las fuentes leídas no dan normas para la terapia manual ni para la carga: tenlo en cuenta al elegir técnicas de alta velocidad o carga axial intensa.»
+- «Las fuentes leídas no dan un protocolo de reposo ni de carga del tendón tras una infiltración: sigue la indicación de quien la puso.»
+- «Nunca aconsejes bajar ni dejar los corticoides… Las dudas, al médico que los prescribe.» (la segunda mitad, «tras un uso prolongado se retiran de forma pautada», sí es de Beuschlein 2024).
+- Los rótulos «Urgente» y «Pronto» del apartado «Cuándo consultar».
 
 **Redacción propia en los AINE** (consejos sin cita, para la revisión):
 - «Anota si tomó una dosis antes de la sesión.»
