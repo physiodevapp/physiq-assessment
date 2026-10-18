@@ -31,7 +31,7 @@ Tests: unitarios en `tests/unit/razonamiento.mjs` («preguntar a la IA, modalida
 
 Límite conocido: la respuesta no tiene fuente revisada por PhysiQ. Sirve para resolver una duda puntual, pero no enseña qué preguntar si el fisioterapeuta no sabe que debe hacerlo. Para eso está el paso 2.
 
-## Paso 2 — Guía permanente por familia (infraestructura hecha; AINE escrita, pendiente de revisión; 2026-10)
+## Paso 2 — Guía permanente por familia (infraestructura hecha; AINE revisada por el usuario; 2026-10)
 
 **Hecho**: es una herramienta de cabecera propia, como «Condiciones especiales».
 
@@ -109,7 +109,7 @@ Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido:
 
 | Familia | Estado | Fuentes leídas | Huecos |
 |---|---|---|---|
-| AINE | Escrita, **pendiente de revisión clínica** | Schug 2021, Bindu 2020, Lucas 2019, Papantoniou 2023 y Pannone y Abbott 2024 (texto completo en PMC) | Presentación clínica de la úlcera (melena, hematemesis, dolor referido a la espalda o al hombro, úlcera «silente»): ninguna fuente leída la describe. Candidatas: «Malik 2023» (StatPearls, úlcera péptica, ya en el registro) y «Saad y Mathew 2025» (StatPearls, toxicidad de los AINE, ya en el registro), si el usuario aporta los PDF. Sueño: ninguna fuente lo trata, y la guía lo dice. |
+| AINE | **Revisada por el usuario** (2026-10) y en `main` | Schug 2021, Bindu 2020, Lucas 2019, Papantoniou 2023 y Pannone y Abbott 2024 (texto completo en PMC) | Presentación clínica de la úlcera (melena, hematemesis, dolor referido a la espalda o al hombro, úlcera «silente»): ninguna fuente leída la describe. Candidatas: «Malik 2023» (StatPearls, úlcera péptica, ya en el registro) y «Saad y Mathew 2025» (StatPearls, toxicidad de los AINE, ya en el registro), si el usuario aporta los PDF. Sueño: ninguna fuente lo trata, y la guía lo dice. |
 | Las otras 12 | Pendientes | — | — |
 
 **Redacción propia en los AINE** (consejos sin cita, para la revisión):
