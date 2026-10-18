@@ -1040,7 +1040,8 @@ async function checkOsteoporosis(page) {
   r.recienteOculta = !(await page.isVisible('#opRecienteWrap'));
   await fila('vertebrales', '1');
   r.recienteVisible = await page.isVisible('#opRecienteWrap');
-  await page.check('#op_reciente');
+  r.sinCasillasNativas = await page.$$eval('#cardOsteoporosis input[type="checkbox"]', els => els.length === 0);
+  await page.click('[data-op-casilla="reciente"]');
   await fila('causa', 'plo');
   await fila('causa', 'plo');
   r.segundoToque = await page.evaluate(() => state.osteoporosis.causa === '');
@@ -1065,7 +1066,10 @@ async function checkOsteoporosis(page) {
   await page.click(`${P} #sq2_op_d_fractura .sq-btn.no`);
   await page.click(`${P} [data-op-caidas] .option-btn >> text="2 o más"`);
   r.caidas = (await page.textContent(`${P} [data-op-bloque]`)).includes('Riesgo alto de caídas');
-  r.caidasCasillas = await page.$$eval(`${P} [data-op-bloque] input[type="checkbox"]`, els => els.length === 4);
+  r.caidasCasillas = await page.$$eval(`${P} [data-op-bloque] [data-op-caida]`, els => els.length === 4);
+  await page.click(`${P} [data-op-caida="suelo"]`);
+  r.caidaChip = await page.evaluate(() => state.osteoporosis.caidas.suelo === true
+    && document.querySelector('#panel_transversal_osteoporosis [data-op-caida="suelo"]').getAttribute('aria-pressed') === 'true');
   // «Sospecha»: los factores, con la edad de la fase 1
   await page.evaluate(() => goToPhase(1));
   await page.waitForTimeout(150);
@@ -1122,8 +1126,8 @@ async function checkOsteoporosis(page) {
   await page.waitForSelector('#tejidosOverlay.open');
   r.tejidos = await page.evaluate(() => { const t = document.getElementById('tejidosCuerpo').textContent;
     return t.includes('Según la tarjeta «Osteoporosis o fragilidad ósea»: fractura vertebral.') && t.includes('el dolor puede durar mucho más'); });
-  r.ok = r.nota && r.filasOcultas && r.filasVisibles && r.recienteOculta && r.recienteVisible && r.segundoToque && r.derivCorticoides
-    && r.tab && r.urgencia && r.sinEmbudo && r.sinTalla && r.derivacion && r.payloadDv && r.caidas && r.caidasCasillas
+  r.ok = r.nota && r.filasOcultas && r.filasVisibles && r.recienteOculta && r.recienteVisible && r.sinCasillasNativas && r.segundoToque && r.derivCorticoides
+    && r.tab && r.urgencia && r.sinEmbudo && r.sinTalla && r.derivacion && r.payloadDv && r.caidas && r.caidasCasillas && r.caidaChip
     && r.factores && r.sospecha && r.informeSinPalabra && r.ancho1 && r.ancho2 && r.sinSistema
     && r.fase5 && r.fase5Cita && r.nota4b && r.fase6 && r.tejidos;
   return r;
@@ -4792,6 +4796,7 @@ async function checkSinHuecos(browser, errors) {
       window.goToPhase(1);
       [...document.querySelectorAll('#mecanismo .option-btn')].find(x => x.textContent.includes('Post-quirúrgico')).click();
       window.selectHMEstado('diagnosticada'); window.selectDsEstado('diagnosticada'); window.selectLESEstado('diagnosticado'); window.selectMAEstado('diagnosticado');
+      window.selectOPEstado('diagnosticada'); window.selectOPFila('vertebrales', '1'); window.selectOPCaidas('1');
     });
     for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
       await page.evaluate(f => window.goToPhase(f), f);

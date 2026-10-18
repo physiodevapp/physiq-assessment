@@ -528,10 +528,14 @@
         <button type="button" class="option-btn" data-valor="2" onclick="selectOPFila('vertebrales','2')">2 o más</button>
         <button type="button" class="option-btn" data-valor="ns" onclick="selectOPFila('vertebrales','ns')">No lo sabe</button>
       </div>
-      <label class="hm-casilla" id="opRecienteWrap"><input type="checkbox" id="op_reciente" onchange="toggleOPCasilla('reciente')"> Alguna en los 2 últimos años, o aún le duele</label>
+      <div class="option-group hm-subtipos" id="opRecienteWrap">
+        <button type="button" class="option-btn" data-op-casilla="reciente" aria-pressed="false" onclick="toggleOPCasilla('reciente')">Alguna en los 2 últimos años, o aún le duele</button>
+      </div>
     </div>
-    <div class="form-group hm-subtipo les-casillas">
-      <label class="hm-casilla"><input type="checkbox" id="op_otras" onchange="toggleOPCasilla('otras')"> Otras fracturas por fragilidad (cadera, muñeca, húmero, pelvis u otra)</label>
+    <div class="form-group hm-subtipo">
+      <div class="option-group hm-subtipos">
+        <button type="button" class="option-btn" data-op-casilla="otras" aria-pressed="false" onclick="toggleOPCasilla('otras')">Otras fracturas por fragilidad (cadera, muñeca, húmero, pelvis u otra)</button>
+      </div>
     </div>
     <div class="form-group hm-subtipo">
       <div class="form-label">Tratamiento para el hueso</div>

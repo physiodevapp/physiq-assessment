@@ -1610,7 +1610,11 @@ function _pintarOPUI() {
   if (wrap) wrap.style.display = opDiagnosticada(op) ? '' : 'none';
   Object.keys(FILAS_OP).forEach(k => document.querySelectorAll(`[data-op-fila="${k}"] .option-btn`)
     .forEach(b => b.classList.toggle('selected', b.dataset.valor === op[k])));
-  CASILLAS_OP.forEach(k => { const c = document.getElementById(`op_${k}`); if (c) c.checked = !!op[k]; });
+  document.querySelectorAll('#cardOsteoporosis [data-op-casilla]').forEach(b => {
+    const on = !!op[b.dataset.opCasilla];
+    b.classList.toggle('selected', on);
+    b.setAttribute('aria-pressed', on);
+  });
   // «Alguna reciente o aún le duele» solo tiene sentido con alguna fractura vertebral
   const rec = document.getElementById('opRecienteWrap');
   if (rec) rec.style.display = fracturaVertebral(op) ? '' : 'none';
@@ -1705,8 +1709,9 @@ function _opBloqueHTML() {
   }
   const c = op.caidas;
   const rc = resultadoCaidas(op);
-  const casillas = c.n === '1' || c.n === '2' ? `<div class="les-casillas">${OP.caidas.casillas.map(k =>
-    `<label class="hm-casilla"><input type="checkbox"${c[k.id] ? ' checked' : ''} onchange="toggleOPCaidaCasilla('${k.id}')"> ${k.texto}</label>`).join('')}</div>` : '';
+  const casillas = c.n === '1' || c.n === '2' ? `<div class="form-label">Además (marca lo que pasó)</div>
+    <div class="option-group hm-subtipos">${OP.caidas.casillas.map(k =>
+    `<button type="button" class="option-btn${c[k.id] ? ' selected' : ''}" data-op-caida="${k.id}" aria-pressed="${!!c[k.id]}" onclick="toggleOPCaidaCasilla('${k.id}')">${k.texto}</button>`).join('')}</div>` : '';
   const resultado = !rc ? '' : `${rc === 'alto'
     ? `<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>${citasEnTexto(t.caidasAlto)}</div></div>`
     : `<div class="hm-nota">${citasEnTexto(t[_OP_RESULTADO_CAIDAS[rc]])}</div>`}${rc === 'no' ? '' : `<div class="hm-nota">${citasEnTexto(t.caidasDosis)}</div>`}`;
