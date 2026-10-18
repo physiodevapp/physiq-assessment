@@ -1,6 +1,6 @@
 # Embarazo y posparto — diseño (borrador)
 
-Estado: **borrador de diseño (octubre 2026), sin código.** Pendientes tus decisiones (al final) y los PDF que no se pudieron leer desde la sesión (ver «No leídas»). Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después de la osteoporosis (`docs/osteoporosis.md`), que dejó para esta tarjeta la sospecha de la osteoporosis del embarazo y la lactancia (decisión 12 y cambio H1 de aquel documento) y la osteoporosis transitoria de cadera (H5).
+Estado: **borrador de diseño (octubre 2026), sin código.** Decisiones 1–16 aceptadas por el usuario (2026-10). Tanda 1 de PDF leída (siete fuentes, sección E); sus cambios (T1–T12, «Cambios por la tanda 1 de PDF») están pendientes de ti. Sigue sin leer la guía del RCOG de la trombosis (ver «No leídas»). Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después de la osteoporosis (`docs/osteoporosis.md`), que dejó para esta tarjeta la sospecha de la osteoporosis del embarazo y la lactancia (decisión 12 y cambio H1 de aquel documento) y la osteoporosis transitoria de cadera (H5).
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes; lo que no tiene fuente va marcado como redacción propia y es una decisión tuya.
 
@@ -76,10 +76,25 @@ Cuatro lectores de esta sesión leyeron las fuentes y devolvieron notas con cita
 
 ### Salvedades de lectura
 
-- **Ninguna fuente leída da datos de seguridad del thrust en el embarazo ni de las posiciones de tratamiento** (prono, supino) en la camilla. Lo único sobre el supino es de ejercicio (OMS) y de sueño (NG201).
-- **La lista de contraindicaciones y signos de alarma para parar el ejercicio en el embarazo no se ha podido leer**: está en la guía canadiense de 2019 y en ACOG 804 (ver «No leídas»). La OMS los nombra sin enumerarlos; Davenport 2025 es solo del posparto.
-- **Los síntomas de la trombosis en la embarazada** no están en ninguna fuente leída: NG158 la excluye y la guía del RCOG no se pudo abrir. En el posparto sí (NG194, NG192).
-- **Vleeming 2008** (guía europea del dolor de cintura pélvica) **no cuenta como leída**: solo el resumen es literal; el resto llegó a través de una herramienta que devuelve fragmentos cortos y parafrasea las tablas. Igual la Cochrane de Liddle 2015 y la de Woodley 2020 (solo el resumen). No se citan hasta tener el PDF.
+- **Las posiciones de tratamiento en la camilla** (prono, supino) no las trata ninguna fuente. El supino aparece solo para el ejercicio (OMS, Mottola 2018, ACOG 804) y para el sueño (NG201).
+- **El thrust en el embarazo**: un solo ensayo piloto de 15 mujeres (Peterson 2012, citado en la Cochrane de 2015) y la opinión graduada C de Clinton 2017. Ver T7.
+- **Los síntomas de la trombosis en la embarazada**: no están en ninguna fuente leída como criterio de derivación. NG158 la excluye y la guía del RCOG sigue sin leer. ACOG 804 solo pone el dolor o la hinchazón de pantorrilla entre los signos para parar el ejercicio. En el posparto sí están (NG194, NG192).
+- **La Cochrane de Woodley 2020**: solo el resumen. No se cita.
+- **Tanda 1 (sección E)**: en Simonds 2022 las tablas 11, 12 y 14 salieron desordenadas en la extracción; ninguna cita de este documento sale de ellas. Las LR que calcula Clinton 2017 (con SPSS, a partir de otros estudios) no se proponen para la puntuación.
+
+### E. Tanda 1 de PDF (octubre 2026)
+
+Siete PDF que pasó el usuario, leídos enteros: Mottola 2018 yo; los otros seis, cuatro lectores, con notas de cita literal y página. Yo comprobé en el texto cada pasaje que usa este documento.
+
+| Clave propuesta | Fuente | Qué aporta |
+|---|---|---|
+| `Mottola 2018` | Guía canadiense 2019 de actividad física en el embarazo (SOGC/CSEP), *Br J Sports Med* 2018;52:1339–1346, doi:10.1136/bjsports-2018-100056, con GRADE | Todas sin contraindicación, activas (fuerte); ≥ 150 min/semana de intensidad moderada en ≥ 3 días (fuerte); aeróbico y fuerza (fuerte); suelo pélvico a diario, con instrucción de la técnica (débil). **Supino (rec. 6, débil, muy baja, sobre todo opinión de expertos): solo si se marea, tiene náuseas o se encuentra mal boca arriba, cambiar de posición.** Tabla 2: contraindicaciones absolutas (rotura de membranas, parto prematuro, sangrado vaginal persistente sin explicar, placenta previa > 28 semanas, preeclampsia, cuello incompetente, CIR, embarazo múltiple de alto orden, diabetes tipo 1, hipertensión o tiroides no controladas, otra enfermedad cardiovascular, respiratoria o sistémica grave) y relativas. Box 2, «Reasons to stop physical activity and consult a healthcare provider»: falta de aire excesiva y persistente que no cede en reposo, dolor torácico intenso, contracciones regulares y dolorosas, sangrado vaginal, pérdida persistente de líquido por la vagina, mareo o desvanecimiento persistente que no cede en reposo. Opinión de expertos: sin buceo, sin contacto ni riesgo de caída, sin bicicleta en movimiento, sin calor excesivo, intensidad alta solo supervisada, «talk test», evitar la apnea si la maniobra de Valsalva marea; **con diástasis, consejo de fisioterapia y evitar los abdominales tipo curl** |
+| `ACOG 804` | ACOG Committee Opinion 804, *Obstet Gynecol* 2020;135(4):e178–e188 (sin grados: opinión de comité). **Sin lista de contraindicaciones** (comprobado en el PDF: solo dice que son pocas) | Supino: «Maintaining a supine position during exercise after 20 weeks of gestation may result in decreased venous return» (p. e179); «avoid long periods of lying flat on their backs» (p. e182). Box 3, signos para parar el ejercicio: sangrado vaginal, dolor abdominal, contracciones regulares y dolorosas, pérdida de líquido amniótico, disnea antes del esfuerzo, mareo, cefalea, dolor torácico, debilidad muscular que afecta al equilibrio, **dolor o hinchazón de pantorrilla**. Tabla 3: 30–60 min, 3–4 días o más, Borg 12–14. Dolor lumbar: ejercicio en el agua como alternativa (p. e183). Reposo en cama: no de rutina, riesgo de TEV (p. e183–e184). Posparto: vuelta gradual «as soon as medically safe», suelo pélvico desde el posparto inmediato, el curl y el «drawing-in» reducen la diástasis, dar el pecho antes |
+| `Vleeming 2008` | Guía europea del dolor de cintura pélvica, *Eur Spine J* 2008;17:794–819 (búsqueda hasta 2004) | Prevalencia en el embarazo «close to 20%» (p. 800); el dolor «rapidly declines to 7% during the first 3 months» (p. 800); banderas rojas: «no difference between LBP and PGP» (p. 798). Tests recomendados (nivel D): P4, FABER, palpación del ligamento dorsal largo, Gaenslen, palpación de la sínfisis, Trendelenburg modificado y ASLR, sin clúster. Tratamiento: «We recommend individualized exercises in pregnancy» (C); en el posparto, estabilización individualizada dentro de un tratamiento multifactorial (C). **Manipulación (D, p. 810): «There is no evidence to recommend manipulation or mobilisation for PGP… may be used to test for symptomatic relief, but should only be applied for a few treatments».** Cinturón (D): para probar el alivio, por periodos cortos. No recomienda: reposo, masaje como único tratamiento, electroterapia, escuela de espalda |
+| `Clinton 2017` | Guía APTA del dolor de cintura pélvica antes del parto, *J Womens Health Phys Ther* 2017;41(2):102–125, doi:10.1097/JWH.0000000000000081 (búsqueda hasta 2012; aquí «D» = evidencia contradictoria) | Terapia manual (C): «may or may not utilize manual therapy techniques including high-velocity, low-amplitude manipulations… little to no reported evidence of adverse effects in the healthy antepartum population» (p. 103). Cinturón y ejercicio: D (contradictoria). Banderas propias del dolor de cintura pélvica: desprendimiento de placenta, dolor referido de una infección urinaria (p. 111); «femoral neck stress fracture due to transient osteoporosis» |
+| `Simonds 2022` | Guía APTA del dolor de cintura pélvica en el posparto, *J Womens Health Phys Ther* 2022;46(1):E1–E38, doi:10.1097/JWH.0000000000000236 (posparto = hasta 2 años) | **Gaenslen (P, buena práctica): «PTs should not perform Gaenslen's test in the first 4 weeks postpartum or beyond 4 weeks postpartum in the presence of PS pain»** (p. E6). **Fractura de estrés (A): derivar a imagen «within 2 weeks of delivery» con dolor intenso, apoyo imposible o reducido, cojera, dolor brusco en sacroilíaca, nalga, zona lumbar o sínfisis, o que alivia tumbada** (pp. E4–E5). Fiebre, sangrado intenso, abdomen hinchado como un globo o pérdida continua de heces u orina: «immediate physician referral» (p. E10). EPDS ≥ 10, derivar; ideas de suicidio (ítem 10) → «immediate referral to the emergency department». Cinturón (A) y terapia manual (A), nunca solos; el thrust (Al-Sayegh 2010: sin efectos adversos, un 19 % en el primer mes tras el parto) «not indicated in the presence of symmetrical joints» (tabla 9). Diástasis: cribarla en todas, sin relación demostrada con el dolor de cintura pélvica |
+| `Liddle y Pennick 2015` | Cochrane, intervenciones para el dolor lumbar y pélvico del embarazo, CD001139.pub4 (búsqueda 19-01-2015, 34 ECA, 5121 mujeres; nada del posparto) | Ninguna conclusión con certeza alta. Ejercicio de 8–12 semanas: menos mujeres con dolor lumbar y pélvico (RR 0,66, moderada). Dolor pélvico solo: el ejercicio en grupo no mejora frente a la atención habitual (baja). Osteopatía: mejor que la atención habitual, «but not more than usual prenatal care plus placebo» (moderada). **El único ensayo con thrust (Peterson 2012, piloto, dolor lumbar): 15 mujeres con thrust en decúbito lateral, «Some post-treatment soreness… but no adverse effects occurred as a result of the interventions»** (baja). Efectos adversos «minor and transient» cuando se registraron |
+| `Deering 2024` | Delphi internacional de vuelta a correr tras el parto, *Br J Sports Med* 2024;58:183–195, doi:10.1136/bjsports-2023-107490 (consenso ≥ 75 %) | Diseña el programa, no la aptitud (esa está en Christopher 2023, no leída). Dosificar importa más que las semanas (92,9 %); sin plazo mínimo. Con escapes, peso o presión vaginal, parar y caminar (86,9 %), aunque los autores dicen que no hay pruebas de que eso proteja. Fractura de estrés en deportistas que dan el pecho: «~3%… 43% of BSIs were sacral» (p. 186) |
 
 ### No leídas (no se citan)
 
@@ -87,15 +102,12 @@ Si quieres alguna, pásame el PDF y la leo entera antes de cerrar el diseño. Po
 
 | # | Fuente | Enlace | Para qué |
 |---|---|---|---|
-| 1 | Mottola 2018, guía canadiense 2019 de actividad física en el embarazo, *Br J Sports Med* | [doi:10.1136/bjsports-2018-100056](https://doi.org/10.1136/bjsports-2018-100056) (versión de la SOGC: [doi:10.1016/j.jogc.2018.07.001](https://doi.org/10.1016/j.jogc.2018.07.001)) | **Imprescindible**: contraindicaciones absolutas y relativas, signos para parar el ejercicio, el supino y el mareo, con GRADE. La OMS se basa en su revisión |
-| 2 | ACOG Committee Opinion 804 (2020), *Obstet Gynecol* 135:e178–e188 | [doi:10.1097/AOG.0000000000003772](https://doi.org/10.1097/AOG.0000000000003772) | Lo mismo desde EE. UU.; para ver si coinciden |
-| 3 | RCOG Green-top Guideline 37b (2015), tromboembolismo en el embarazo y el puerperio: manejo agudo | [rcog.org.uk](https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/thrombosis-and-embolism-during-pregnancy-and-the-puerperium-acute-management-green-top-guideline-no-37b/) | **Imprescindible**: síntomas de TVP y TEP en la embarazada y qué hacer ante la sospecha |
-| 4 | Vleeming 2008, guía europea del dolor de cintura pélvica, *Eur Spine J* 17:794–819 | [doi:10.1007/s00586-008-0602-4](https://doi.org/10.1007/s00586-008-0602-4) | Pruebas (P4, ASLR, FABER, Gaenslen, sínfisis) con su S y E, tratamientos con nivel de evidencia, la manipulación (nivel D), el cinturón, el pronóstico |
-| 5 | Clinton 2017, guía APTA del dolor de cintura pélvica antes del parto, *J Womens Health Phys Therap* 41(2):102–125; y la del posparto, 2022 | [doi:10.1097/JWH.0000000000000081](https://doi.org/10.1097/JWH.0000000000000081) · [doi:10.1097/JWH.0000000000000236](https://doi.org/10.1097/JWH.0000000000000236) | Las guías de fisioterapia: exploración, tratamiento y pronóstico graduados |
-| 6 | Liddle y Pennick 2015, Cochrane, intervenciones para el dolor lumbar y pélvico del embarazo | [doi:10.1002/14651858.CD001139.pub4](https://doi.org/10.1002/14651858.CD001139.pub4) | Efectos por intervención y efectos adversos |
-| 7 | Deering 2024 y Christopher 2024, Delphi de vuelta a correr tras el parto, *Br J Sports Med* | [doi:10.1136/bjsports-2023-107490](https://doi.org/10.1136/bjsports-2023-107490) · [doi:10.1136/bjsports-2023-107489](https://doi.org/10.1136/bjsports-2023-107489) | La vuelta al impacto: criterios y progresión. Sin ellos, la app no dará plazos para correr |
+| 3 | RCOG Green-top Guideline 37b (2015), tromboembolismo en el embarazo y el puerperio: manejo agudo | [rcog.org.uk](https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/thrombosis-and-embolism-during-pregnancy-and-the-puerperium-acute-management-green-top-guideline-no-37b/) | **Imprescindible**: síntomas de TVP y TEP en la embarazada y qué hacer ante la sospecha. Sin ella, la TVP del embarazo solo tiene el «dolor o hinchazón de pantorrilla» de ACOG 804 como signo para parar el ejercicio (T9) |
+| 7 | Christopher 2023, Delphi de aptitud para volver a correr tras el parto, *Br J Sports Med* | [doi:10.1136/bjsports-2023-107489](https://doi.org/10.1136/bjsports-2023-107489) | Opcional: los criterios para empezar a correr (caminar 30 min sin síntomas, pruebas). Deering 2024 solo diseña el programa |
 | 8 | Bauersachs 2019, posición de la ESC sobre la miocardiopatía periparto, *Eur J Heart Fail* | [doi:10.1002/ejhf.1493](https://doi.org/10.1002/ejhf.1493) | Opcional: Hameed 2023 y Sambola 2024 ya cubren lo que necesita el fisio |
 | 9 | Woodley 2020, Cochrane del suelo pélvico en el embarazo y el posparto | [doi:10.1002/14651858.CD007471.pub4](https://doi.org/10.1002/14651858.CD007471.pub4) | Opcional: matiza a Beamish 2025 (contradicción 8) |
+
+Leídas en la tanda 1 (sección E): 1 Mottola 2018, 2 ACOG 804, 4 Vleeming 2008, 5 Clinton 2017 y Simonds 2022, 6 Liddle y Pennick 2015, 7 Deering 2024.
 
 **En acceso abierto y aún sin leer** (puedo leerlas sin PDF si te interesan):
 - la guía práctica de la diástasis de sínfisis periparto, *J Clin Med* 2021 ([doi:10.3390/jcm10112443](https://doi.org/10.3390/jcm10112443));
@@ -369,7 +381,60 @@ Cada pregunta lleva su `razonamiento` (Fase F) y cada bandera su enlace (Fase M)
 - **El aborto o la interrupción reciente**: NG255 los incluye en el grupo de riesgo de sepsis, pero la tarjeta no los pregunta. *Recomiendo* dejarlo fuera, salvo que lo quieras.
 - **La región de muñeca y mano** (túnel carpiano y De Quervain del embarazo y el posparto): la app no tiene esa región.
 
+## Cambios por la tanda 1 de PDF (T1–T12), pendientes de ti
+
+Cada uno con mi recomendación. Cambian el borrador de arriba; no lo reescribo hasta que decidas.
+
+- **T1. El supino de la 4b (cambia la decisión 7).** La guía canadiense, con GRADE, no pone semanas: solo cambiar de posición si se marea, tiene náuseas o se encuentra mal boca arriba (Mottola 2018, rec. 6, débil). ACOG 804 lo sitúa desde la semana 20 («may result in decreased venous return»). La OMS («after the first trimester») no da su base. *Recomiendo* la línea desde la semana 20 y sin prohibir: «Embarazada de 20 semanas o más: no la dejes mucho rato boca arriba y, si se marea, tiene náuseas o se encuentra mal, ponla de lado (Mottola 2018; ACOG 804).» Ni las fuentes de ejercicio ni las de fisioterapia hablan de la camilla: Clinton 2017 hace todos sus tests en supino sin avisar.
+- **T2. Signos para parar el ejercicio en el embarazo**, en el recuadro de la fase 5, el aviso de la fase 6 y la red `RED_EMBARAZO`. Son la unión del box 2 de Mottola 2018 (parar y consultar) y el box 3 de ACOG 804 (parar). *Recomiendo* esta lista: sangrado vaginal; pérdida de líquido; contracciones regulares y dolorosas; dolor de vientre; dolor en el pecho; falta de aire que no cede en reposo; mareo que no cede; dolor de cabeza; debilidad que afecta al equilibrio; dolor o hinchazón de pantorrilla.
+- **T3. Una urgencia nueva en el embarazo, `em_u_parto`**: «¿Tiene contracciones regulares y dolorosas, o le sale líquido por la vagina?» → «Posible parto prematuro o rotura de la bolsa: que llame a su maternidad ahora.» Mottola 2018 lo pone entre los motivos para parar y consultar «immediately» (box 1 y box 2). La redacción de la urgencia es mía. *Recomiendo* sí.
+- **T4. Contraindicaciones del ejercicio en el embarazo** (Mottola 2018, tabla 2), solo como texto en la fase 5 y la 6, sin preguntas en la fase 2, porque son diagnósticos que ya tiene su equipo obstétrico:
+  - con una absoluta, solo las actividades de la vida diaria;
+  - con una relativa, que hable con su obstetra o matrona antes de un ejercicio moderado o intenso.
+  *Recomiendo* esto.
+- **T5. La dosis del embarazo pasa a la guía canadiense** (graduada), con la OMS como apoyo:
+  - ≥ 150 min/semana de intensidad moderada, en ≥ 3 días;
+  - aeróbico y fuerza;
+  - «talk test»;
+  - intensidad alta solo supervisada;
+  - sin apnea si la maniobra de Valsalva le marea;
+  - sin buceo, contacto, riesgo de caída ni bicicleta en movimiento.
+  
+  ACOG 804 (Borg 12–14) no aporta nada que cambie esto. *Recomiendo* esto.
+- **T6. La diástasis en el embarazo.**
+  - Mottola 2018 aconseja, por opinión de expertos, consejo de fisioterapia y evitar los abdominales tipo curl.
+  - En el posparto, ACOG 804, Gluppe 2021 y Beamish 2025 dicen que el curl reduce la distancia entre rectos.
+  - *Recomiendo* que la decisión 10 («sin ejercicios prohibidos») se quede para el posparto. En el embarazo, citar a Mottola tal cual, con «(opinión de expertos)».
+- **T7. El texto del thrust (cambia la frase de la decisión 8; sigue sin tope automático).**
+  - *Recomiendo*, en la fase 5 y la 6: «La terapia manual no tiene base para ser el tratamiento principal ni para usarse sola (Hall 2016; Simonds 2022): como mucho, para probar el alivio en pocas sesiones (Vleeming 2008, nivel D). Del thrust en el embarazo hay un solo ensayo piloto, con 15 mujeres en decúbito lateral y sin efectos adversos (Peterson 2012, en Liddle y Pennick 2015), y la guía de fisioterapia lo deja a criterio del clínico (Clinton 2017, grado C): no basta para decir que sea seguro.»
+  - En el posparto, añadir: «el thrust no está indicado con articulaciones simétricas (Simonds 2022)».
+- **T8. La sacroilíaca (`lu8`) con la tarjeta marcada.** Su pauta empieza por el thrust, y Vleeming 2008 no lo recomienda en el dolor de cintura pélvica. *Recomiendo* no tocar la pauta general de `lu8` y añadir, con la tarjeta marcada, una línea en su tarjeta de la fase 5 y un aviso en la fase 6:
+  - en el embarazo, primero información («not dangerous… will probably improve») y ejercicio individualizado (Vleeming 2008, C);
+  - en el posparto, estabilización individualizada (C);
+  - el cinturón, para probar el alivio por periodos cortos (D; NG201 1.4.15);
+  - el texto de T7.
+- **T9. La TVP del embarazo** (pendiente del RCOG 37b).
+  - Hasta tenerlo, *recomiendo* que `em_u_tev` siga solo en el posparto.
+  - En el embarazo, el dolor o la hinchazón de pantorrilla entra solo en los signos para parar el ejercicio de T2 (ACOG 804).
+  - *Alternativa*: activar `em_u_tev` también en el embarazo con ACOG 804, que no dice cuánta urgencia.
+- **T10. Gaenslen en el posparto** (Simonds 2022, P, buena práctica). Con «Posparto» y menos de 4 semanas, una línea en el test Gaenslen de `lu8`: «Posparto de menos de 4 semanas: no hagas el Gaenslen; tampoco después si duele la sínfisis (Simonds 2022).» Con un campo `gaenslen: true` en ese test, fijado por una prueba. Es una regla de técnica; no toca las LR ni el clúster de Laslett. *Recomiendo* sí.
+- **T11. Fractura de estrés en el posparto**, derivación nueva `em_d_fractura`, solo hasta 2 semanas tras el parto (Simonds 2022, A): «¿Desde el parto tiene un dolor intenso o brusco en la sacroilíaca, la nalga, la zona lumbar o el pubis, le cuesta apoyar o cojea, o se le alivia tumbada?» → «Posible fractura de estrés de la pelvis tras el parto: derivar para pruebas de imagen.» Además, en el razonamiento:
+  - «femoral neck stress fracture due to transient osteoporosis» (Clinton 2017), que apoya la línea de H5;
+  - el sacro en las deportistas que dan el pecho (Deering 2024).
+  *Recomiendo* sí.
+- **T12. Ánimo, fuentes y Deering.**
+  - **Ideas de suicidio:** pasan a tener fuente. Simonds 2022 deriva a urgencias ante cualquier idea de suicidio. *Recomiendo* citarla en la urgencia de la decisión 11 en vez de mi redacción.
+  - **EPDS:** sigue fuera hasta leer su validación española.
+  - **Simonds 2022, «immediate physician referral»** (fiebre, sangrado intenso, abdomen hinchado como un globo, pérdida continua de heces u orina):
+    - fiebre y sangrado ya están en `em_u_infeccion` y `em_u_sangrado_pp`;
+    - *recomiendo* añadir a esta última el abdomen hinchado;
+    - la pérdida **continua** de heces u orina pasa a urgencia, aparte de los escapes del bloque D.
+  - **Correr:** sin plazos (decisión 13). *Recomiendo* una línea en el posparto: «La vuelta a correr se dosifica por síntomas, no por semanas; con escapes, peso o presión vaginal, parar y caminar (Deering 2024, consenso Delphi).»
+- **Registro:** nuevas claves `Mottola 2018`, `ACOG 804`, `Vleeming 2008`, `Clinton 2017`, `Simonds 2022`, `Liddle y Pennick 2015` y `Deering 2024`. «Peterson 2012» se cita como secundaria («en Liddle y Pennick 2015»), sin entrada propia.
+
 ## Decisiones (cada una con mi recomendación)
+
+**Aceptadas por el usuario las 16 recomendaciones (2026-10).** La 7, la 8, la 10, la 11 y la 13 pueden cambiar con T1, T6, T7, T9 y T12.
 
 1. **¿Entra, con documento propio, y qué forma?** *Recomiendo* sí y la forma 3. *Alternativa*: la forma 2, sin sistema en la fase 2 (perdería las banderas, que son lo más importante).
 2. **Una tarjeta con dos estados**, «Embarazada» y «Posparto». Con «Hombre» en el sexo, plegada con una línea. *Recomiendo* esto. *Alternativa*: ocultarla del todo con «Hombre».
