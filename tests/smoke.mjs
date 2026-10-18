@@ -663,9 +663,10 @@ async function checkHipermovilidad(page) {
   const P = '#panel_transversal_hipermovilidad';
   r.cuestionario = await page.$$eval(`${P} .hm-cq`, els => els.length);
   await page.click(`${P} button:has-text("Hacer la escala de Beighton")`);
-  for (let i = 0; i < 5; i++) await page.click(`${P} .hm-casilla input >> nth=${i}`);
+  for (let i = 0; i < 5; i++) await page.click(`${P} [data-beighton] >> nth=${i}`);
   r.hag = await page.evaluate(p => document.querySelector(p).textContent.includes('Beighton 5/9 · corte 5') && document.querySelector(p).textContent.includes('valorar derivación a reumatología'), P);
-  await page.click(`${P} .hm-casilla input >> nth=4`);   // 4/9
+  await page.click(`${P} [data-beighton] >> nth=4`);   // 4/9
+  r.beightonChips = await page.$$eval(`${P} [data-beighton]`, els => els.filter(e => e.classList.contains('selected') && e.getAttribute('aria-pressed') === 'true').length === 4 && els.every(e => e.tagName === 'BUTTON'));
   await page.click(`${P} .hm-cq >> nth=0 >> .sq-btn.si`);
   await page.click(`${P} .hm-cq >> nth=1 >> .sq-btn.si`);
   r.porCuestionario = await page.evaluate(p => document.querySelector(p).textContent.includes('Un punto por debajo del corte'), P);
@@ -700,7 +701,7 @@ async function checkHipermovilidad(page) {
   await page.waitForTimeout(150);
   await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
   r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_hipermovilidad') && !document.getElementById('tab_transversal_hipermovilidad'));
-  r.ok = r.subtipoOculto && r.subtipoVisible && r.subtipoOcultoSospecha && r.tab && r.cuestionario === 5 && r.hag && r.porCuestionario
+  r.ok = r.subtipoOculto && r.beightonChips && r.subtipoVisible && r.subtipoOcultoSospecha && r.tab && r.cuestionario === 5 && r.hag && r.porCuestionario
     && r.urgSinPlegar && r.urgencia && r.menorSolo && r.dosMenores && r.avisos === 3 && r.fase5 && r.ancho1 && r.ancho2 && r.sinSistema;
   return r;
 }
