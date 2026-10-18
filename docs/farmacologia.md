@@ -47,7 +47,7 @@ Disponible también en el hub, porque no usa red, aunque allí se ocultan los en
 
 Cada familia con contenido es un `<details>` cerrado con sus ejemplos y los cinco apartados (`dolor`, `visceral`, `ejercicio`, `sueno`, `consultar`). Cada apartado tiene:
 - `texto`, que siempre se ve;
-- `detalle` opcional, en «Más detalle»;
+- `detalle` opcional, en «Ampliar ▾»;
 - «✨ IA» por párrafo, con el contexto `ctxFarmaco(nombre)` de `ampliar-ia.js`;
 - las citas dentro de la frase como botones (`citasEnTexto()`).
 
