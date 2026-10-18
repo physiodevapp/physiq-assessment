@@ -1,6 +1,6 @@
 # Osteoporosis o fragilidad ósea — diseño (borrador)
 
-Estado: **borrador de diseño (octubre 2026), sin código. Aceptadas por el usuario las 14 recomendaciones** (ver «Decisiones aceptadas»). PDF de la decisión 13 en tandas: **tanda 1 leída** (Puentedura 2015 y Giangregorio 2014; ver «Lectura de los PDF»), con 7 cambios y 1 decisión nueva (15) pendientes. Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
+Estado: **borrador de diseño (octubre 2026), sin código. Aceptadas por el usuario las 14 recomendaciones** (ver «Decisiones aceptadas»). PDF de la decisión 13 en tandas: **tanda 1 leída** (Puentedura 2015 y Giangregorio 2014; **aceptados los cambios C1–C7 y la decisión 15**) y **tanda 2 leída** (Hadji 2026, con 5 cambios H1–H5 pendientes). Con eso están leídos los tres PDF mínimos de la decisión 13. Ver «Lectura de los PDF». Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
 
 **Qué hay hoy en la app** (búsqueda de octubre 2026 en `data/` y `formularios/`):
 - **Cribado de la fase 2**:
@@ -132,6 +132,63 @@ La app ya tiene esos datos en otras tarjetas: la fila de corticoides y la casill
 - Con la hipermovilidad, *recomiendo* no tocar nada: Maitland 2005 ya dice que una articulación hipermóvil no se manipula con fuerza (`docs/plan-tratamiento.md`), y es una precaución relativa.
 - *Alternativa*: dejar el tope solo para esta tarjeta y llevar el resto al diseño del paciente anticoagulado.
 
+**Aceptados por el usuario (octubre 2026): C1–C7 y la decisión 15** (el tope «sin thrust» de la fase 6 también con la tarjeta del lupus cuando los corticoides no estén en «No» o haya dosis altas previas, y con la casilla del antitrombótico).
+
+### Tanda 2: Hadji 2026
+
+**Hadji P, Athanasiadis A, Brandi ML, et al. Pregnancy- and lactation-associated osteoporosis: a position statement of the IAPM, IOF, ECTS, ESCEO, IMS, and EMAS.** *Int J Gynaecol Obstet* 2026 (en línea antes de imprimir, pp. 1–13). [doi:10.1002/ijgo.71203](https://doi.org/10.1002/ijgo.71203) (clave propuesta `Hadji 2026`). Acceso abierto (CC BY).
+- **Cómo se leyó**: PDF del usuario, entero salvo la bibliografía. Las figuras 2 (diagnóstico) y 3 (manejo), que son algoritmos, se miraron como imagen.
+- **Qué es**: la declaración de posición de seis sociedades de obstetricia, hueso y menopausia. Es una revisión narrativa y **sin graduar**: «were not assessed or graded for level of evidence»; las recomendaciones de tratamiento «are not intended as formal evidence-based guidelines». Entre los autores están Zanchetta (Scioscia 2023) y Kyvernitakis (la serie de Fráncfort que citan Gak 2024 y Anagnostis 2024). Varios autores declaran honorarios de empresas de fármacos para la osteoporosis.
+
+**Qué aporta al diseño**:
+- **Sospecharla y derivar**: «Women with severe and persistent back pain during pregnancy or lactation should be referred for further specialist diagnostic procedures» (sección 5; fig. 2, primera casilla). Es la primera fuente leída que convierte la sospecha en una recomendación. Apoya directamente la pregunta de «Embarazo y posparto» (decisión 12).
+- **La exploración**: la valoración inicial incluye «documentation of height for clinical signs of fracture». Los signos de fractura «might include a height loss of ≥3 cm». La embarazada con esos signos, a RM sin contraste. Es **un umbral distinto** del de la osteoporosis general (≥ 4 cm, Gregson 2025): ver la contradicción 1.
+- **Dónde**: «Commonly, fractures occur in the thoracic and/or in the lumbar spine, indicating the need for evaluation of both». Confirma la contradicción 14 (no darla por lumbar).
+- **El retraso**: «Many patients report multiple consultations before finally being correctly diagnosed with PLO». En la conclusión: «in the majority of cases, is identified late».
+- **Cuándo y quién**: en el último trimestre y en la lactancia, sobre todo en el primer embarazo, «rarely in the second or third».
+- **Factores de riesgo**:
+  - menos actividad física antes y después de la pubertad, y menos movilidad en el embarazo (un estudio de casos y controles, 102 frente a 102);
+  - problemas dentales en la infancia;
+  - antecedentes familiares;
+  - diabetes de tipo 1, artritis reumatoide, anorexia;
+  - trastornos de la ovulación y tratamientos de fertilidad;
+  - la **heparina de bajo peso molecular, «widely used in pregnancy»**, los corticoides y otros fármacos;
+  - formas monogénicas (osteogénesis imperfecta; COL1A1, COL1A2, LRP5, WNT1), con estudio genético «if available».
+- **La osteoporosis transitoria de cadera**: «is distinct from PLO» (edema localizado en la RM, no resorción del esqueleto; dolor de cadera, a menudo de un lado, que suele curar sola tras el parto). Ante dolor de cadera con alteración de la marcha en el embarazo, «should be considered as an alternative diagnosis». Toma partido en la contradicción 18, con Anagnostis 2024 y contra Gak 2024 y Carsote 2023.
+- **El manejo** (sección 6 y fig. 3):
+  - calcio de 1000 a 2000 mg/día y vitamina D de 1000 a 2000 UI/día;
+  - **«Pain medication/physiotherapy, if necessary»**; en el texto, con una sola fractura, «pain medication and later physiotherapy can be employed, if necessary». **No dice qué fisioterapia** ni cuándo empezarla;
+  - **el destete**: en el texto, «might be encouraged to consider limiting/stopping breastfeeding»; en la fig. 3, «Stop breastfeeding as soon as possible». Ver la contradicción 15;
+  - fármacos solo de forma individual, fuera de ficha técnica y con anticoncepción; los bifosfonatos, mejor evitarlos, porque cruzan la placenta.
+- **Pronóstico**:
+  - en una cohorte de 107 mujeres con PLO, a los 6 años «almost 25% of these patients had sustained a subsequent fracture», más cuantas más fracturas al diagnóstico;
+  - **si hay más riesgo en el siguiente embarazo «is still unclear»** (sección 7). Ver la contradicción 16;
+  - la densidad suele volver a la de antes del embarazo al año del destete;
+  - la lactancia, en general, no deja efectos negativos a largo plazo en el esqueleto.
+- **Nada sobre ejercicio, carga, postura ni cómo coger al bebé.** La salvedad de lectura sigue en pie: lo que diga la app de eso es extrapolación.
+
+### Qué cambia con la tanda 2 (propuestas; cada una con mi recomendación)
+
+**H1. La pregunta de sospecha de «Embarazo y posparto» se apoya en Hadji 2026** (decisión 12). Borrador nuevo:
+- Pregunta: «¿Tiene un dolor de espalda intenso y que no se le pasa, dorsal o lumbar, en el embarazo o desde el parto, o ha perdido 3 cm o más de altura?»
+- `derivacion`: «Posible fractura vertebral por osteoporosis del embarazo o la lactancia: valoración médica especializada pronto. Hasta entonces, sin terapia manual ni carga en la espalda.»
+
+Fuentes: Hadji 2026, secciones 4.3 y 5; Scioscia 2023. La segunda frase de la derivación es la misma de `op_d_fractura` (decisión 4). *Recomiendo el cambio.* Se aplica cuando se haga la tarjeta «Embarazo y posparto».
+
+**H2. Mientras tanto, el párrafo de `l_e4`** (decisión 12) cita Hadji 2026: dolor de espalda intenso y persistente en el embarazo o la lactancia → valoración especializada. *Recomiendo el cambio.*
+
+**H3. La línea de la PLO en la fase 5** queda así:
+> «Con las fracturas consolidadas, a los 3–6 meses, actividad en carga y de fuerza razonable, sin excesos (Scioscia 2023). Fisioterapia cuando el dolor lo permita (Hadji 2026). Al coger y cargar al bebé, la misma bisagra de cadera (extrapolado de Brooke-Wavell 2022). La lactancia, los fármacos y otro embarazo los decide con su médico.»
+
+*Recomiendo el cambio.* La de «puede repetirse en otro embarazo» se va, porque la declaración dice que no se sabe (H4).
+
+**H4. Recurrencia: sin cifra y sin afirmar que se repite en otro embarazo.** El texto de la app (recuadro de la fase 5 y bloque de la IA) dirá:
+> «Tras una PLO pueden aparecer nuevas fracturas, más si hubo varias al principio; si hay más riesgo en otro embarazo no está claro: que lo hable con su médico (Hadji 2026; Anagnostis 2024).»
+
+*Recomiendo el cambio.*
+
+**H5. La osteoporosis transitoria de cadera fuera de la PLO.** En «Embarazo y posparto» irá como diagnóstico aparte (Hadji 2026; Anagnostis 2024), no como forma de la PLO. *Recomiendo el cambio.*
+
 ## Resumen
 
 - **Entra en la Fase P.** Cambia la seguridad y la interpretación:
@@ -214,7 +271,7 @@ Desde la sesión solo se llega a PMC y a NICE. Las editoriales (Springer, Wiley,
 
 | # | Fuente | Enlace | Para qué |
 |---|---|---|---|
-| 1 | **Hadji P, et al. Pregnancy- and lactation-associated osteoporosis: a position statement of the IAPM, IOF, ECTS, ESCEO, IMS, and EMAS.** *Int J Gynaecol Obstet* 2026 | [doi:10.1002/ijgo.71203](https://doi.org/10.1002/ijgo.71203) | **La primera declaración de posición de las sociedades sobre la PLO.** Diría si recomiendan algo de actividad, fisioterapia o destete, y con qué fuerza. Es la que más falta hace para la decisión 12 |
+| 1 | ~~Hadji P, et al. Pregnancy- and lactation-associated osteoporosis: a position statement of the IAPM, IOF, ECTS, ESCEO, IMS, and EMAS.~~ *Int J Gynaecol Obstet* 2026 | [doi:10.1002/ijgo.71203](https://doi.org/10.1002/ijgo.71203) | **Leído entero** (tanda 2; ver «Lectura de los PDF») |
 | 2 | ~~Puentedura EJ, O'Grady WH. Safety of thrust joint manipulation in the thoracic spine: a systematic review. *J Man Manip Ther* 2015;23(3):154–161~~ | [doi:10.1179/2042618615Y.0000000012](https://doi.org/10.1179/2042618615Y.0000000012) | **Leído entero** (tanda 1; ver «Lectura de los PDF») |
 | 3 | ~~Giangregorio LM, et al. Too Fit To Fracture: exercise recommendations for individuals with osteoporosis or osteoporotic vertebral fracture. *Osteoporos Int* 2014;25(3):821–835~~ | [doi:10.1007/s00198-013-2523-2](https://doi.org/10.1007/s00198-013-2523-2) | **Leído entero** (tanda 1; ver «Lectura de los PDF») |
 | 4 | Giangregorio LM, et al. Too Fit To Fracture: outcomes of a Delphi consensus process on physical activity and exercise recommendations for adults with osteoporosis with or without vertebral fractures. *Osteoporos Int* 2015;26(3):891–910 | [doi:10.1007/s00198-014-2881-4](https://doi.org/10.1007/s00198-014-2881-4) | Qué movimientos evitar, con fractura vertebral; detalle que Brooke-Wavell 2022 resume |
@@ -238,6 +295,8 @@ Desde la sesión solo se llega a PMC y a NICE. Las editoriales (Springer, Wiley,
    - Laurent 2022: «greater than 2 cm since baseline or 4 cm since young adulthood».
    
    **Propongo** 4 cm frente a su talla de joven (Gregson 2025), y 2 cm si hay una medida anterior (Laurent 2022). Las dos son compatibles.
+   
+   *Tras la tanda 2*: en la PLO, Hadji 2026 da como signo de fractura una pérdida de ≥ 3 cm. **Propongo** usar los 3 cm solo en la pregunta de la PLO (H1) y dejar `op_d_talla` como está.
 2. **Umbral de corticoides.**
    - Gregson 2025: ≥ 7,5 mg/día de prednisolona durante 3 meses para la protección ósea inmediata y el riesgo muy alto (en la tabla 1 pone «> 7.5»); en el FRAX, cualquier dosis.
    - Kanis 2019: > 5 mg durante ≥ 3 meses como factor de riesgo.
@@ -295,9 +354,11 @@ Desde la sesión solo se llega a PMC y a NICE. Las editoriales (Springer, Wiley,
     - Carsote 2023 lo exige y, en la cirugía de cadera, recoge lo contrario.
     
     **Propongo** que la app no lo aconseje nunca: es una decisión médica. Solo puede decir que lo hable con su médico.
-16. **La recurrencia en el embarazo siguiente.** «Very infrequent» pero con un 20 % citado (Scioscia 2023); 20 % (Gak 2024); hasta el 28 % (Anagnostis 2024). Más riesgo con varias fracturas al inicio (Gak 2024; Anagnostis 2024). **Propongo** «puede repetirse en otro embarazo; que lo planifique con su médico», sin cifra.
+    
+    *Tras la tanda 2*: la declaración de posición se contradice a sí misma: «might be encouraged to consider limiting/stopping breastfeeding» en el texto y «Stop breastfeeding as soon as possible» en la fig. 3 (Hadji 2026). Refuerza la propuesta.
+16. **La recurrencia en el embarazo siguiente.** «Very infrequent» pero con un 20 % citado (Scioscia 2023); 20 % (Gak 2024); hasta el 28 % (Anagnostis 2024). Más riesgo con varias fracturas al inicio (Gak 2024; Anagnostis 2024). **Propongo** «puede repetirse en otro embarazo; que lo planifique con su médico», sin cifra. *Tras la tanda 2*: Hadji 2026 dice que si hay más riesgo en el siguiente embarazo «is still unclear», y da casi un 25 % de nuevas fracturas a los 6 años, más cuantas más fracturas al diagnóstico. **Propongo** cambiar el texto (H4).
 17. **El dolor.** «Full recovery at 12 months» en la mayoría (Anagnostis 2024), frente al 59 % con dolor más de 3 años (Gak 2024; la misma serie citada por Anagnostis). **No se usa ninguna cifra.**
-18. **La osteoporosis transitoria de cadera.** Una forma de la PLO para Gak 2024 y Carsote 2023, otra entidad para Anagnostis 2024, y la PLO de cadera con lesión ósea para Weckerly 2026. Para la app basta con que la PLO pueda dar dolor de cadera o ingle en el embarazo (decisión 12).
+18. **La osteoporosis transitoria de cadera.** Una forma de la PLO para Gak 2024 y Carsote 2023, otra entidad para Anagnostis 2024, y la PLO de cadera con lesión ósea para Weckerly 2026. Para la app basta con que la PLO pueda dar dolor de cadera o ingle en el embarazo (decisión 12). *Tras la tanda 2*: Hadji 2026 la separa de la PLO («is distinct from PLO»), como Anagnostis 2024. **Propongo** tratarla aparte en «Embarazo y posparto» (H5).
 
 ## Criterio de entrada de la Fase P: sí entra
 
@@ -743,7 +804,10 @@ osteoporosis: {
 1. ~~Tus decisiones (1–14)~~ Hecho: aceptadas las 14 recomendaciones.
 2. Los PDF de la decisión 13, en tandas:
    - ~~tanda 1~~ hecho: Puentedura 2015 y Giangregorio 2014;
-   - queda **Hadji 2026** (la que más falta hace); opcionales: Giangregorio 2015, Gibbs 2019, Kovacs y Ralston 2015, Issa 2026, Sherrington 2019, Hardcastle 2022 y las pp. 222–223 de Maitland 2005 (cap. 9).
-3. **Tus decisiones sobre la tanda 1**: los cambios C1–C7 y la decisión 15.
+   - ~~tanda 2~~ hecho: Hadji 2026;
+   - **imprescindible antes de implementar la decisión 6**: las pp. 222–223 de Maitland 2005 (cap. 9), para volver a comprobar el pasaje;
+   - opcionales: Giangregorio 2015, Gibbs 2019, Kovacs y Ralston 2015, Issa 2026, Sherrington 2019 y Hardcastle 2022.
+3. ~~Tus decisiones sobre la tanda 1~~ Hecho: aceptados C1–C7 y la decisión 15. **Pendientes: H1–H5** (tanda 2).
+   - La decisión 14 suma `Puentedura 2015`, `Giangregorio 2014` y `Hadji 2026` al registro, si los textos los citan.
 4. La implementación, en la rama de trabajo, y tu revisión en la app antes de `main`.
 5. physiq-report: leer `op` del payload, en otra PR.
