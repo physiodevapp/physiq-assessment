@@ -1,6 +1,6 @@
 # Trastornos de la activación mastocitaria (MCAD) — borrador de diseño
 
-Estado: **diseño sin código (octubre 2026). Aceptadas por el usuario las 12 recomendaciones** (ver «Decisiones aceptadas»). Pasajes clave comprobados en las fuentes (ver «Comprobación de pasajes»). **PDF de la decisión 9 leídos enteros** (ver «Lectura de los PDF»); cambian algunos textos y abren las decisiones 13–16. Farley 2025 y Seneviratne 2017 no están disponibles. Posible condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad (`docs/hipermovilidad.md`), el POTS (`docs/pots.md`) y el lupus (`docs/lupus.md`). La guía de condiciones especiales (`docs/condiciones-especiales.md`) tendría que añadir su fila si se hace una tarjeta.
+Estado: **diseño sin código (octubre 2026). Aceptadas por el usuario las 12 recomendaciones** (ver «Decisiones aceptadas»). Pasajes clave comprobados en las fuentes (ver «Comprobación de pasajes»). **PDF de la decisión 9 leídos enteros** (ver «Lectura de los PDF»). **Aceptadas también las decisiones 13–16.** Farley 2025 y Seneviratne 2017 no están disponibles. **Diseño cerrado: listo para implementar.** Posible condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad (`docs/hipermovilidad.md`), el POTS (`docs/pots.md`) y el lupus (`docs/lupus.md`). La guía de condiciones especiales (`docs/condiciones-especiales.md`) tendría que añadir su fila si se hace una tarjeta.
 
 **Enfoque** (decidido con el usuario, octubre 2026): el diseño parte del paraguas de los **trastornos de la activación mastocitaria** (MCAD, por sus siglas en inglés), no del síndrome de activación mastocitaria (SAMA) solo. Lo que cambia la sesión es el **riesgo de anafilaxia**, y ese riesgo está descrito para cada variante del paraguas (mastocitosis, SAMA con sus variantes, α-triptasemia hereditaria como agravante), no para el SAMA aislado. La primera versión de este borrador partía del SAMA; el documento conserva su nombre de archivo.
 
@@ -22,6 +22,13 @@ El usuario aceptó las 12 recomendaciones de «Decisiones»:
 10. **Registrar solo las referencias** que use el texto final.
 11. **La línea de riesgo alto** sale solo con mastocitosis, SAMA o anafilaxia previa; el protocolo de qué hacer sale siempre que la tarjeta esté marcada.
 12. **Sin opción propia** para la α-triptasemia hereditaria sola.
+
+Aceptadas después de leer los PDF (octubre 2026):
+
+13. **Línea «desmayo vasovagal o anafilaxia»** en el recuadro de la fase 5 (RCUK 2021, tabla 3).
+14. **La decisión 6 se amplía**: «que se ponga su autoinyector; si no puede, ayúdale a ponérselo si la normativa de tu país lo permite». No afirma nada de la normativa española.
+15. **Línea «sin autoinyector» con fuente** (RCUK 2021, 8.6; Muraro 2022, recuadro 4), en lugar de la redacción propia.
+16. **Una sola opción «Otro trastorno mastocitario»**; el nivel de alerta lo da la pregunta de la anafilaxia (decisión 11).
 
 ## Comprobación de pasajes (octubre 2026)
 
@@ -285,12 +292,12 @@ El criterio es que la condición cambie la **seguridad** o la **interpretación*
 **Qué hacer** (RCUK 2021, fig. 6 y 4.4; Muraro 2022, recuadro 3 y fig. 1; Cardona 2020, «Acute treatment» y fig. 4; NICE NG258, 1.1.14):
 1. Parar la sesión, **quedarse con él** y retirar el desencadenante si lo hay.
 2. **Llamar al 112** a la vez.
-3. **Adrenalina intramuscular en la cara anterolateral del muslo** cuanto antes: si el paciente lleva su autoinyector, que se lo ponga (decisión 6). Si no mejora, a los 5 minutos el segundo autoinyector si lo tiene (RCUK 2021, 5.1.1; ver la contradicción 10).
+3. **Adrenalina intramuscular en la cara anterolateral del muslo** cuanto antes: si el paciente lleva su autoinyector, que se lo ponga; si no puede, ayúdale a ponérselo si la normativa de tu país lo permite (decisiones 6 y 14). Si no mejora, a los 5 minutos el segundo autoinyector si lo tiene (RCUK 2021, 5.1.1; ver la contradicción 10).
 4. **Tumbado**; sentado si le cuesta respirar; sobre el lado izquierdo si está embarazada; de lado si pierde el conocimiento y respira. **No ponerlo de pie ni sentarlo de golpe, aunque se encuentre mejor** (NICE NG258, 1.1.14; RCUK 2021, 4.4: «Fatality can occur within minutes if a patient stands, walks or sits up suddenly»; Cardona 2020, fig. 4).
 5. Anotar la hora de inicio y de cada dosis (Cardona 2020, fig. 4; NICE NG258, 1.1.2).
 6. Tras el episodio, **lo tiene que ver un médico aunque se haya recuperado**: puede repetirse en las horas siguientes sin nueva exposición (reacción bifásica, hasta 72 h; NICE NG258).
 
-**Salvedad: quién pone la adrenalina.** Ninguna fuente leída dice qué puede hacer un fisioterapeuta con el autoinyector del paciente. Cardona 2020 y NICE NG258 hablan del paciente que se lo pone y de los «profesionales sanitarios» en general. Decidido (decisión 6): la app dice «que se ponga su autoinyector» y no habla de ayudarle; eso queda a la normativa y al protocolo de cada centro. **Novedad**: la RCUK 2021 (anexo 1) lo resuelve para el Reino Unido: cualquier persona competente puede poner el autoinyector a la persona a la que se lo han recetado. No es normativa española. Ver la decisión 14.
+**Salvedad: quién pone la adrenalina.** Ninguna fuente leída dice qué puede hacer un fisioterapeuta con el autoinyector del paciente. Cardona 2020 y NICE NG258 hablan del paciente que se lo pone y de los «profesionales sanitarios» en general. Decidido (decisión 6): la app dice «que se ponga su autoinyector» y no habla de ayudarle; eso queda a la normativa y al protocolo de cada centro. **Novedad**: la RCUK 2021 (anexo 1) lo resuelve para el Reino Unido: cualquier persona competente puede poner el autoinyector a la persona a la que se lo han recetado. No es normativa española. Decidido (decisión 14): la app añade «si no puede, ayúdale a ponérselo si la normativa de tu país lo permite».
 
 ### 2. Los desencadenantes que pone la sesión
 
@@ -377,13 +384,13 @@ Con la tarjeta activa, una línea encima de las hipótesis (como `.ds-nota-4b` y
 
 Al principio, junto a los recuadros de las otras condiciones. Cada línea, pegada a su fuente:
 - Qué tiene, si lleva el autoinyector y sus desencadenantes.
-- **Siempre (qué hacer)**: «Si en la sesión aparecen ronchas, hinchazón, falta de aire, mareo o un desmayo, para, quédate con él, llama al 112 y que se ponga su autoinyector en la cara externa del muslo; si no mejora, a los 5 minutos el segundo. Tumbado (sentado si le cuesta respirar) y sin levantarlo de golpe aunque mejore. Puede faltar la piel (RCUK 2021; Muraro 2022, recuadro 3; NICE NG258, 1.1.14).»
+- **Siempre (qué hacer)**: «Si en la sesión aparecen ronchas, hinchazón, falta de aire, mareo o un desmayo, para, quédate con él, llama al 112 y que se ponga su autoinyector en la cara externa del muslo (si no puede, ayúdale si la normativa de tu país lo permite); si no mejora, a los 5 minutos el segundo. Tumbado (sentado si le cuesta respirar) y sin levantarlo de golpe aunque mejore. Puede faltar la piel (RCUK 2021; Muraro 2022, recuadro 3; NICE NG258, 1.1.14).»
 - **Siempre (después)**: «Tras una anafilaxia, aunque se recupere, lo tiene que ver un médico: puede repetirse en las horas siguientes (NICE NG258).»
 - **Riesgo alto** (mastocitosis, SAMA o anafilaxia previa «Sí»; decisión 11): «Tiene más riesgo de anafilaxia que la población general. Que traiga su autoinyector a cada sesión (Castells 2024, tabla II; Cardona 2020, tabla 8).»
 - **Con la mastocitosis**: «En la mastocitosis la anafilaxia suele empezar con calor, palpitaciones, mareo y desmayo, a menudo sin ronchas (Gülen 2023; González-de-Olano 2017).»
 - **Con «otro trastorno» o «no lo sabe» y sin anafilaxia previa**: solo las líneas de siempre y sus desencadenantes, sin la de riesgo alto: el riesgo de esa etiqueta no está descrito (Valent 2022 (CIA), tabla 1).
-- **Sin autoinyector o «no le han recetado»** (decisión 15): «Tras una anafilaxia, las guías indican llevar autoinyector (salvo si fue por un fármaco fácil de evitar), y también con una mastocitosis sistémica y cualquier reacción previa: que su médico lo valore (RCUK 2021, 8.6; Muraro 2022, recuadro 4).»
-- **Desmayo en la sesión** (decisión 13): «Un desmayo vasovagal mejora enseguida al tumbarlo, con el pulso lento. Si no se recupera rápido tumbado, o tiene el pulso rápido, ronchas o le cuesta respirar, trátalo como una anafilaxia (RCUK 2021, tabla 3).»
+- **Sin autoinyector o «no le han recetado»** (decisión 15, aceptada): «Tras una anafilaxia, las guías indican llevar autoinyector (salvo si fue por un fármaco fácil de evitar), y también con una mastocitosis sistémica y cualquier reacción previa: que su médico lo valore (RCUK 2021, 8.6; Muraro 2022, recuadro 4).»
+- **Desmayo en la sesión** (decisión 13, aceptada): «Un desmayo vasovagal mejora enseguida al tumbarlo, con el pulso lento. Si no se recupera rápido tumbado, o tiene el pulso rápido, ronchas o le cuesta respirar, trátalo como una anafilaxia (RCUK 2021, tabla 3).»
 - **Para la consulta** (comprobado): «Ten un protocolo escrito de anafilaxia y ensáyalo con regularidad (Cardona 2020, fig. 4, paso 1).»
 - **Con sus desencadenantes**: la lista que marcó, con «evita estos en la sesión».
 
@@ -428,7 +435,7 @@ Una frase para el `detalle`, si hay sitio: la α-triptasemia hereditaria no est�
 - **La anafilaxia en cualquier paciente.** La app no tiene hoy nada para una anafilaxia en la consulta de alguien sin la tarjeta (por ejemplo, la primera reacción al látex, o la primera anafilaxia por ejercicio). Como la pregunta de síncope de la decisión 9 de `docs/pots.md`, es un hueco previo que se apunta en vez de taparlo aquí. Podría ser una pregunta en el formulario previo («alergias graves, ¿lleva autoinyector?») o un texto de seguridad general. Trabajo aparte. La RCUK 2021 da el marco: todo el personal clínico debe saber pedir ayuda e iniciar el tratamiento, y la adrenalina «must be readily available in clinical areas where anaphylaxis could occur» (4.1 y 5.1). Si una clínica de fisioterapia debe tenerla es una decisión de cada centro y de su normativa, no de la app.
 - **Las urticarias físicas** (frío, presión, vibración) sin trastorno mastocitario: Muñoz 2024 las describe, y la urticaria por frío puede dar anafilaxia en el agua. Quedan fuera salvo que el usuario quiera ampliar la tarjeta a «urticaria inducible».
 
-## Decisiones (cada una con mi recomendación; aceptadas todas, ver «Decisiones aceptadas»)
+## Decisiones (cada una con mi recomendación; aceptadas las 16, ver «Decisiones aceptadas»)
 
 1. **¿Qué forma?** *Recomiendo la forma 2*: la forma 1 (texto) más la tarjeta reducida solo con «Diagnosticado». Si prefieres empezar por lo mínimo, la forma 1 sola es segura y no cierra la puerta a la 2.
 2. **Sin «Sospecha».** *Recomiendo no tenerla*: el fisio no tiene ninguna prueba que hacer, los criterios exigen la triptasa en el episodio y un patrón de síntomas sería el criterio amplio que las sociedades de alergia rechazan (Lee y Picard 2025; Valent 2018). Es la primera condición sin «Sospecha»; la guía de condiciones especiales lo reflejaría.
@@ -475,5 +482,5 @@ mastocitos: {
 
 1. ~~Tus decisiones~~ Hecho: las 12 recomendaciones, aceptadas.
 2. ~~Los PDF de la decisión 9~~ Hecho: leídos enteros (ver «Lectura de los PDF»). Farley 2025 y Seneviratne 2017 no están disponibles.
-3. **Tus decisiones 13–16.**
+3. ~~Tus decisiones 13–16~~ Hecho: aceptadas.
 4. Después, la implementación, en una PR con tu revisión antes de `main`.
