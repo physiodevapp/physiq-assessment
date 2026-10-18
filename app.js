@@ -44,7 +44,7 @@ import { condicionesHTML } from './lib/condiciones.js';
 import { CONDICIONES } from './data/condiciones.js';
 import { tiemposTejidoHTML, infoBarraHTML, fuentesTejidoHTML, filasPaciente, FILTRO_PACIENTE } from './lib/tejidos.js';
 import { listaCuestionariosHTML, formularioCuestionarioHTML, resultadoCuestionarioHTML, itemCuestionarioHTML, resumenCuestionarios, cuestionariosEnTexto, enlacesCalcularHTML } from './lib/cuestionarios.js';
-import { initAmpliarIA, iaParrafoHTML, ctxCribado, attrIA, DESTINOS_IA, NOTA_CUENTAS, destinoIA, guardarDestinoIA, promptPregunta, urlIA } from './ampliar-ia.js';
+import { initAmpliarIA, iaParrafoHTML, ctxCribado, attrIA, DESTINOS_IA, NOTA_CUENTAS, destinoIA, guardarDestinoIA, promptPregunta, TIPOS_PREGUNTA, TIPO_PREGUNTA_DEFECTO, urlIA } from './ampliar-ia.js';
 
 // ─── SCROLL LOCK (dialogs / bottom sheets) ───────────────────
 // Reference-counted: several overlays (confirm-banner, session panel,
@@ -1001,10 +1001,11 @@ function _hmBloqueHTML() {
       cuerpo = `<button type="button" class="btn btn-secondary hm-btn" onclick="hmBeightonHacer()">Hacer la escala de Beighton</button>`;
     } else {
       const r = resultadoHAG(hm, state.edadPaciente);
-      const fila = (k, txt) => `<label class="hm-casilla"><input type="checkbox"${b[k] ? ' checked' : ''} onchange="toggleHMBeighton('${k}')"> ${txt}</label>`;
+      // Chips de selección múltiple, como el resto de listas de opciones (un segundo toque desmarca)
+      const fila = (k, txt) => `<button type="button" class="option-btn${b[k] ? ' selected' : ''}" data-beighton="${k}" aria-pressed="${!!b[k]}" onclick="toggleHMBeighton('${k}')">${txt}</button>`;
       cuerpo = `${HM.beighton.map(m => `<div class="hm-maniobra">
           <div class="hm-maniobra-txt">${m.texto}</div>
-          <div class="hm-lados">${m.lados ? fila(`${m.id}_d`, 'Derecho') + fila(`${m.id}_i`, 'Izquierdo') : fila(m.id, 'Positivo')}</div>
+          <div class="option-group hm-lados">${m.lados ? fila(`${m.id}_d`, 'Derecho') + fila(`${m.id}_i`, 'Izquierdo') : fila(m.id, 'Positivo')}</div>
         </div>`).join('')}
         <div class="hm-resultado">Beighton ${r.puntos}/9${r.corte != null ? ` · corte ${r.corte} (${r.grupo})` : ''}</div>
         ${r.estado === 'sin-edad' ? `<div class="criterio-compuesto-hint">Indique la edad del paciente en la Fase 1 para aplicar el corte por edad.</div>` : ''}
@@ -1409,7 +1410,11 @@ function _pintarLESUI() {
   if (wrap) wrap.style.display = lesDiagnosticado(les) ? '' : 'none';
   Object.keys(FILAS_LES).forEach(k => document.querySelectorAll(`[data-les-fila="${k}"] .option-btn`)
     .forEach(b => b.classList.toggle('selected', b.dataset.valor === les[k])));
-  CASILLAS_LES.forEach(k => { const c = document.getElementById(`les_${k}`); if (c) c.checked = !!les[k]; });
+  document.querySelectorAll('#lesCasillas [data-les-casilla]').forEach(b => {
+    const on = !!les[b.dataset.lesCasilla];
+    b.classList.toggle('selected', on);
+    b.setAttribute('aria-pressed', on);
+  });
   const nat = document.getElementById('lesNotaNaturaleza');
   if (nat && !nat.innerHTML) nat.innerHTML = `🦋 ${citasEnTexto(LES.textos.naturaleza)}`;
   const brote = document.getElementById('lesNotaBrote');
@@ -1528,9 +1533,13 @@ function _pintarMAUI() {
   if (cont) {
     if (!cont.children.length) {
       cont.innerHTML = MA.desencadenantes.map(d =>
-        `<label class="hm-casilla"><input type="checkbox" id="ma_${d.id}" onchange="toggleMADesencadenante('${d.id}')"> ${d.texto}</label>`).join('');
+        `<button type="button" class="option-btn" data-ma-desenc="${d.id}" aria-pressed="false" onclick="toggleMADesencadenante('${d.id}')">${d.texto}</button>`).join('');
     }
-    DESENCADENANTES_MA.forEach(k => { const c = document.getElementById(`ma_${k}`); if (c) c.checked = !!ma.desencadenantes[k]; });
+    cont.querySelectorAll('[data-ma-desenc]').forEach(b => {
+      const on = !!ma.desencadenantes[b.dataset.maDesenc];
+      b.classList.toggle('selected', on);
+      b.setAttribute('aria-pressed', on);
+    });
   }
   const otro = document.getElementById('maOtro');
   if (otro && document.activeElement !== otro) otro.value = ma.otro || '';
@@ -3715,6 +3724,7 @@ function _showSessionState(st) {
       </div>
       <button type="button" class="session-reset-btn" id="sessionReset"${_hasAssessmentData() ? '' : ' disabled'}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Reiniciar valoración</button>
       <div class="session-io-nota">Borra los datos clínicos y conserva el nombre del paciente.</div>
+      ${_ayudaReiniciarBorrarHTML()}
       <div class="session-io">
         <button type="button" class="session-io-btn" id="sessionExport"${state.maxVisitedIdx > 0 ? '' : ' disabled'}>⬇ Exportar</button>
         <button type="button" class="session-io-btn" id="sessionImport">⬆ Importar</button>
@@ -4088,6 +4098,22 @@ function updateSessionChip(session) {
 // «Borrar sesión»: el mismo diálogo centrado que el resto de confirmaciones
 // (iconos, velo, Escape). Se cierra el panel de sesión mientras tanto; si se
 // cancela, se vuelve a abrir, que es donde estaba quien pulsó la papelera.
+// «¿Reiniciar o borrar?» del panel de sesión, plegado: los dos vuelven a la
+// fase 1 y borran lo clínico; la diferencia es el nombre y lo que queda guardado
+// en este navegador. Fuera del hub los datos solo viven aquí, y se dice.
+function _ayudaReiniciarBorrarHTML() {
+  const soloAqui = _enHub()
+    ? ''
+    : '<p>Sin el hub, la valoración solo está guardada en este navegador (24 h, y solo si tiene nombre). Para conservarla antes de borrarla, usa «⬇ Exportar».</p>';
+  return `<details class="session-ayuda">
+        <summary>¿Reiniciar o borrar?</summary>
+        <p><strong>Reiniciar valoración</strong>: el mismo paciente, desde cero. Conserva el nombre y la sesión sigue guardada con él.</p>
+        <p><strong>Borrar sesión</strong> (papelera junto al nombre): paciente nuevo, o al terminar. Borra también el nombre y no deja nada guardado; limpia la app si está abierta en otra pestaña o en el hub.</p>
+        <p>Los dos borran los datos clínicos (fases 1 a 6, cuestionarios, informe y plan con IA y el audio) y conservan el modo de consulta.</p>
+        ${soloAqui}
+      </details>`;
+}
+
 function promptClearSession() {
   const panelAbierto = document.getElementById('sessionPanelOverlay')?.classList.contains('open');
   closeSessionPanel();
@@ -4353,10 +4379,21 @@ document.addEventListener('keydown', e => {
 // elegido es el mismo que el de «Ampliar con IA» (localStorage).
 let _preguntaHistorial = false;
 let _preguntaDestino = null;
+// «Pregunta libre» o «Fármacos» (docs/farmacologia.md, paso 1): siempre una de
+// las dos; vuelve a «Pregunta libre» cada vez que se abre el diálogo.
+let _preguntaTipo = TIPO_PREGUNTA_DEFECTO;
 const _ctxPregunta = () => (state.region ? nombreRegion(state.region).toLowerCase() : '');
 
 function _pintarPreguntaIA() {
   const d = _preguntaDestino;
+  const t = _preguntaTipo;
+  document.getElementById('preguntaTipos').innerHTML = Object.entries(TIPOS_PREGUNTA).map(([k, x]) =>
+    `<button type="button" class="option-btn${k === t ? ' selected' : ''}" role="radio" aria-checked="${k === t}" data-tipo="${k}">${x.nombre}</button>`).join('');
+  document.getElementById('preguntaTexto').placeholder = TIPOS_PREGUNTA[t].placeholder;
+  document.getElementById('preguntaTexto').setAttribute('aria-label', t === 'farmacos' ? 'Fármacos o duda' : 'Tu pregunta');
+  const guion = document.getElementById('preguntaGuion');
+  guion.textContent = TIPOS_PREGUNTA[t].guion || '';
+  guion.hidden = !TIPOS_PREGUNTA[t].guion;
   document.getElementById('preguntaDestinos').innerHTML = Object.entries(DESTINOS_IA).map(([k, x]) =>
     `<button type="button" class="option-btn${k === d ? ' selected' : ''}" role="radio" aria-checked="${k === d}" data-destino="${k}">${x.nombre.replace(/ \(.*\)$/, '')}</button>`).join('');
   document.getElementById('preguntaVentaja').textContent = DESTINOS_IA[d].ventaja;
@@ -4364,7 +4401,7 @@ function _pintarPreguntaIA() {
   ir.textContent = `Preguntar en ${DESTINOS_IA[d].nombre.replace(/ \(.*\)$/, '')} ↗`;
   const ctx = _ctxPregunta();
   document.getElementById('preguntaNota').textContent =
-    `Se envía tu pregunta${ctx ? ` y la región («valoración de ${ctx}»)` : ''}, y se pide que use fuentes científicas y las enlace. ${NOTA_CUENTAS}`;
+    `Se envía ${t === 'farmacos' ? 'lo que escribas, un guion de lo que debe cubrir' : 'tu pregunta'}${ctx ? ` y la región («valoración de ${ctx}»)` : ''}, y se pide que use fuentes científicas y las enlace. ${NOTA_CUENTAS}`;
   _actualizarPreguntaIr();
 }
 
@@ -4372,13 +4409,14 @@ function _actualizarPreguntaIr() {
   const ir = document.getElementById('preguntaIr');
   const q = document.getElementById('preguntaTexto').value.trim();
   ir.setAttribute('aria-disabled', q.length < 3 ? 'true' : 'false');
-  ir.href = q.length < 3 ? '#' : urlIA(_preguntaDestino, promptPregunta({ contexto: _ctxPregunta(), pregunta: q }));
+  ir.href = q.length < 3 ? '#' : urlIA(_preguntaDestino, promptPregunta({ contexto: _ctxPregunta(), pregunta: q, tipo: _preguntaTipo }));
 }
 
 function abrirPreguntaIA() {
   const overlay = document.getElementById('preguntaOverlay');
   if (!overlay || overlay.classList.contains('open') || _enHub()) return;
   _preguntaDestino = destinoIA();
+  _preguntaTipo = TIPO_PREGUNTA_DEFECTO;
   _pintarPreguntaIA();
   _pintarMicPregunta();
   overlay.classList.add('open');
@@ -4459,6 +4497,12 @@ document.getElementById('preguntaTexto')?.addEventListener('keydown', e => {
   if (e.key !== 'Enter' || e.shiftKey || e.isComposing) return;
   e.preventDefault();
   document.getElementById('preguntaIr').click();
+});
+document.getElementById('preguntaTipos')?.addEventListener('click', e => {
+  const b = e.target instanceof Element ? e.target.closest('[data-tipo]') : null;
+  if (!b || b.dataset.tipo === _preguntaTipo) return;
+  _preguntaTipo = b.dataset.tipo;
+  _pintarPreguntaIA();
 });
 document.getElementById('preguntaDestinos')?.addEventListener('click', e => {
   const b = e.target instanceof Element ? e.target.closest('[data-destino]') : null;

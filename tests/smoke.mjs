@@ -663,9 +663,10 @@ async function checkHipermovilidad(page) {
   const P = '#panel_transversal_hipermovilidad';
   r.cuestionario = await page.$$eval(`${P} .hm-cq`, els => els.length);
   await page.click(`${P} button:has-text("Hacer la escala de Beighton")`);
-  for (let i = 0; i < 5; i++) await page.click(`${P} .hm-casilla input >> nth=${i}`);
+  for (let i = 0; i < 5; i++) await page.click(`${P} [data-beighton] >> nth=${i}`);
   r.hag = await page.evaluate(p => document.querySelector(p).textContent.includes('Beighton 5/9 · corte 5') && document.querySelector(p).textContent.includes('valorar derivación a reumatología'), P);
-  await page.click(`${P} .hm-casilla input >> nth=4`);   // 4/9
+  await page.click(`${P} [data-beighton] >> nth=4`);   // 4/9
+  r.beightonChips = await page.$$eval(`${P} [data-beighton]`, els => els.filter(e => e.classList.contains('selected') && e.getAttribute('aria-pressed') === 'true').length === 4 && els.every(e => e.tagName === 'BUTTON'));
   await page.click(`${P} .hm-cq >> nth=0 >> .sq-btn.si`);
   await page.click(`${P} .hm-cq >> nth=1 >> .sq-btn.si`);
   r.porCuestionario = await page.evaluate(p => document.querySelector(p).textContent.includes('Un punto por debajo del corte'), P);
@@ -700,7 +701,7 @@ async function checkHipermovilidad(page) {
   await page.waitForTimeout(150);
   await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
   r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_hipermovilidad') && !document.getElementById('tab_transversal_hipermovilidad'));
-  r.ok = r.subtipoOculto && r.subtipoVisible && r.subtipoOcultoSospecha && r.tab && r.cuestionario === 5 && r.hag && r.porCuestionario
+  r.ok = r.subtipoOculto && r.beightonChips && r.subtipoVisible && r.subtipoOcultoSospecha && r.tab && r.cuestionario === 5 && r.hag && r.porCuestionario
     && r.urgSinPlegar && r.urgencia && r.menorSolo && r.dosMenores && r.avisos === 3 && r.fase5 && r.ancho1 && r.ancho2 && r.sinSistema;
   return r;
 }
@@ -830,8 +831,8 @@ async function checkLupus(page) {
   await fila('corticoides', 'm');
   await fila('antifosfolipidos', 'no');
   await fila('actividad', 'peor');
-  await page.check('#les_raynaud');
-  await page.check('#les_antitrombotico');
+  await page.click('[data-les-casilla="raynaud"]');
+  await page.click('[data-les-casilla="antitrombotico"]');
   r.estado = await page.evaluate(() => JSON.stringify(state.lupus) === JSON.stringify({ estado: 'diagnosticado', corticoides: 'm', dosisAltas: '', inmunosupresores: '',
     antifosfolipidos: 'no', antitrombotico: true, osteonecrosis: false, raynaud: true, actividad: 'peor', rasgos: {} }));
   await page.click('#phase1 .btn-primary');
@@ -898,7 +899,7 @@ async function checkLupus(page) {
   // Recorrido entero con «Diagnosticado» y Raynaud: 4b, fase 5 y fase 6
   await abrirApp(page);
   await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
-  await page.check('#les_raynaud');
+  await page.click('[data-les-casilla="raynaud"]');
   await walkRegion(page, 'codo');
   r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .les-fase5')?.textContent || '';
     return t.includes('Diagnosticado') && t.includes('150–300 min') && t.includes('Fotoprotección') && t.includes('Raynaud') && t.includes('valoración médica hoy'); });
@@ -946,8 +947,8 @@ async function checkMastocitos(page) {
   r.anafilaxiaVisible = await page.isVisible('#maAnafilaxiaWrap');
   await fila('anafilaxia', 'SI');
   await fila('autoinyector', 'NO');
-  await page.check('#ma_calor');
-  await page.check('#ma_roce');
+  await page.click('[data-ma-desenc="calor"]');
+  await page.click('[data-ma-desenc="roce"]');
   await page.fill('#maOtro', 'frutos secos');
   r.estado = await page.evaluate(() => JSON.stringify(state.mastocitos) === JSON.stringify({ estado: 'diagnosticado', tipo: 'mastocitosis', anafilaxia: 'SI', autoinyector: 'NO',
     desencadenantes: { calor: true, roce: true }, otro: 'frutos secos' }));
@@ -2056,9 +2057,28 @@ async function checkPreguntaIA(browser, errors) {
   const b = await ultimo();
   r.fase2 = b.n === 2 && b.host === 'https://claude.ai/new' && b.q.includes('Contexto: valoración de lumbar. Mi pregunta: «Dosis de ejercicio en lumbalgia crónica».')
     && !b.q.includes('Secreta') && !b.q.includes('47') && !b.q.includes('razonamiento');
+  // Modalidad «Fármacos»: guion visible, prompt con el guion y la región;
+  // al volver a abrir, otra vez «Pregunta libre»
   await page.waitForTimeout(100);
   await page.click('#preguntaIABtn');
-  r.escape = await page.evaluate(() => document.querySelector('#preguntaDestinos .option-btn.selected')?.dataset.destino === 'claude');
+  r.tipoDefecto = await page.evaluate(() => document.querySelector('#preguntaTipos .option-btn.selected')?.dataset.tipo === 'libre'
+    && document.getElementById('preguntaGuion').hidden);
+  await page.click('#preguntaTipos [data-tipo="farmacos"]');
+  r.farmacosUI = await page.evaluate(() => !document.getElementById('preguntaGuion').hidden
+    && document.getElementById('preguntaGuion').textContent.includes('No propone cambiar la medicación')
+    && document.getElementById('preguntaTexto').placeholder.includes('ibuprofeno')
+    && document.getElementById('preguntaNota').textContent.includes('guion'));
+  await page.fill('#preguntaTexto', 'Atorvastatina y bisoprolol');
+  await page.press('#preguntaTexto', 'Enter');
+  await page.waitForTimeout(150);
+  const f = await ultimo();
+  r.farmacos = f.n === 3 && f.q.includes('Contexto: valoración de lumbar. Fármacos o duda: «Atorvastatina y bisoprolol».')
+    && f.q.includes('No propongas cambiar, suspender ni ajustar la medicación.') && f.q.includes('CIMA, AEMPS')
+    && !f.q.includes('Secreta') && !f.q.includes('47');
+  await page.waitForTimeout(100);
+  await page.click('#preguntaIABtn');
+  r.escape = await page.evaluate(() => document.querySelector('#preguntaDestinos .option-btn.selected')?.dataset.destino === 'claude'
+    && document.querySelector('#preguntaTipos .option-btn.selected')?.dataset.tipo === 'libre');
   await page.keyboard.press('Escape');
   r.escape = r.escape && !(await abierto());
   await context.close();
@@ -2087,7 +2107,7 @@ async function checkPreguntaIA(browser, errors) {
   await movil.waitForTimeout(400);
   r.caben320 = await movil.evaluate(() => {
     const panel = document.getElementById('preguntaPanel').getBoundingClientRect();
-    return [...document.querySelectorAll('#preguntaDestinos .option-btn'), document.getElementById('preguntaIr'), document.querySelector('#preguntaCabecera .mic-btn')].every(b => {
+    return [...document.querySelectorAll('#preguntaDestinos .option-btn, #preguntaTipos .option-btn'), document.getElementById('preguntaIr'), document.querySelector('#preguntaCabecera .mic-btn')].every(b => {
       const rb = b.getBoundingClientRect();
       return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth;
     }) && document.documentElement.scrollWidth <= innerWidth;
@@ -3191,6 +3211,21 @@ async function checkExportarImportar(browser, errors, tmpDir) {
       return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth && rb.height >= 40;
     });
   });
+  // «¿Reiniciar o borrar?»: plegado al abrir el panel; abierto (con el párrafo de
+  // fuera del hub) en una pantalla baja, el panel no se sale y se desplaza dentro
+  await page.setViewportSize({ width: 320, height: 568 });
+  r.ayudaReiniciar = await page.evaluate(() => {
+    const d = document.querySelector('#sessionPanel .session-ayuda');
+    if (!d || d.open) return false;
+    d.open = true;
+    const panel = document.getElementById('sessionPanel');
+    const rp = panel.getBoundingClientRect();
+    const ok = rp.top >= 0 && /Borrar sesión/.test(d.textContent) && /Exportar/.test(d.textContent)
+      && (panel.scrollHeight <= panel.clientHeight || getComputedStyle(panel).overflowY === 'auto');
+    d.open = false;
+    return ok;
+  });
+  await page.setViewportSize({ width: 320, height: 640 });
 
   // Móvil a 320 px, todas las fases: el primer nivel (cards, sistemas del
   // cribado, preguntas del árbol, hipótesis de la 4b, secciones de la fase 5)
@@ -3216,7 +3251,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
 
   await context.close();
   r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && r.relevoSinParpadeo && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
-    && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil;
+    && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.ayudaReiniciar && r.fasesMovil;
   return r;
 }
 
@@ -4756,7 +4791,7 @@ async function checkSinHuecos(browser, errors) {
     await page.evaluate(() => {
       window.goToPhase(1);
       [...document.querySelectorAll('#mecanismo .option-btn')].find(x => x.textContent.includes('Post-quirúrgico')).click();
-      window.selectHMEstado('diagnosticada'); window.selectDsEstado('diagnosticada'); window.selectLESEstado('diagnosticado');
+      window.selectHMEstado('diagnosticada'); window.selectDsEstado('diagnosticada'); window.selectLESEstado('diagnosticado'); window.selectMAEstado('diagnosticado');
     });
     for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
       await page.evaluate(f => window.goToPhase(f), f);
@@ -5453,7 +5488,7 @@ const SECCIONES = [
     const ampliarIA = await checkAmpliarIA(browser);
     console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; al hacer scroll el menú se cierra y la barra no se pinta sobre la cabecera (se esconde y vuelve); fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
     const preguntaIA = await checkPreguntaIA(browser, errors);
-    console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, 🎤 junto al título que llena el texto, se corta al cerrar y se desactiva grabando, Claude se recuerda, Escape cierra; hoja inferior en móvil sin teclado al abrir que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
+    console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, 🎤 junto al título que llena el texto, se corta al cerrar y se desactiva grabando, Claude se recuerda, modalidad «Fármacos» con guion (y vuelve a «Pregunta libre» al reabrir), Escape cierra; hoja inferior en móvil sin teclado al abrir que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
     return ampliarIA.ok && preguntaIA.ok;
   } },
 
@@ -5690,7 +5725,7 @@ const SECCIONES = [
   { id: 'exportar', titulo: 'Exportar / importar la valoración (panel de sesión):', run: async ({ browser, errors }) => {
     const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
     const r = await checkExportarImportar(browser, errors, tmpDir);
-    console.log(`  ${r.ok ? '✓' : '✗'} exportar descarga ${r.nombreArchivo}; panel → diálogo y vuelta sin parpadeo de velo; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${r.fasesMovil ? '' : ' ' + JSON.stringify(r.bandasMovil)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} exportar descarga ${r.nombreArchivo}; panel → diálogo y vuelta sin parpadeo de velo; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; «¿Reiniciar o borrar?» plegado y, abierto, dentro de una pantalla baja; todas las fases a 320 px en bandas, sin desbordar${r.fasesMovil ? '' : ' ' + JSON.stringify(r.bandasMovil)}`);
     if (!r.ok) console.log('\nExportar / importar:', JSON.stringify(r));
     return r.ok;
   } },

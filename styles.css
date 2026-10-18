@@ -2321,6 +2321,14 @@
   .session-io-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
   .session-io-btn:disabled{opacity:0.45;cursor:default;}
   .session-io-nota{margin-top:8px;font-size:0.72rem;line-height:1.4;color:var(--text3);}
+  /* «¿Reiniciar o borrar?»: plegado bajo la nota de «Reiniciar valoración» */
+  .session-ayuda{margin-top:6px;font-size:0.72rem;line-height:1.45;color:var(--text3);}
+  .session-ayuda summary{cursor:pointer;color:var(--accent);min-height:32px;display:flex;align-items:center;list-style:none;}
+  .session-ayuda summary::-webkit-details-marker{display:none;}
+  .session-ayuda summary::after{content:'▾';margin-left:6px;}
+  .session-ayuda[open] summary::after{content:'▴';}
+  .session-ayuda p{margin:0 0 6px;}
+  .session-ayuda strong{color:var(--text2);font-weight:600;}
   .session-version{margin-top:14px;padding-top:10px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text3);display:flex;align-items:center;justify-content:space-between;gap:4px;}
   .session-version-txt{flex:1;min-width:0;line-height:1.5;}
   .session-version-txt .nw{white-space:nowrap;}
@@ -2337,6 +2345,11 @@
     .session-panel-overlay.open{animation:none;}
     .session-panel-overlay.open .session-panel{animation:slideUp 0.3s cubic-bezier(0.32,0.72,0,1);}
     .session-panel{max-width:100%;width:100%;border-radius:16px 16px 0 0;border:none;border-top:1px solid var(--border2);padding:12px 1.4rem 32px;touch-action:none;}
+    /* Con «¿Reiniciar o borrar?» abierto el panel de sesión puede no caber en una
+       pantalla baja: se desplaza dentro. El arrastre para cerrar solo escucha los
+       72 px de arriba (_setupSessionPanelDrag), así que el resto puede desplazarse */
+    #sessionPanel{max-height:90vh;max-height:90dvh;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;}
+    #sessionPanel .session-panel-handle{touch-action:none;}
     .session-panel-handle{display:block;}
   }
 
@@ -2934,6 +2947,9 @@ body.grab-activa:not(.in-hub) .grab-wrap { display: flex; }
 .pregunta-panel:focus { outline: none; }
 .pregunta-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; touch-action: none; }
 .pregunta-cabecera .session-panel-title { margin-bottom: 0; min-width: 0; }
+.pregunta-tipos { margin-bottom: 10px; flex-wrap: nowrap; }
+.pregunta-tipos .option-btn { flex: 1 1 0; min-width: 0; min-height: 40px; padding: 8px 4px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pregunta-guion { margin-top: 8px; font-size: 0.76rem; line-height: 1.4; color: var(--text2); }
 .pregunta-texto { width: 100%; resize: vertical; min-height: 84px; line-height: 1.45; touch-action: pan-y; }
 .pregunta-aviso { margin-top: 8px; font-size: 0.76rem; line-height: 1.4; color: var(--alert-warning-text); }
 .pregunta-destinos { margin-top: 14px; flex-wrap: nowrap; }
@@ -2974,10 +2990,9 @@ body.disautonomia .solo-ds { display: block; }
    el bloque de los rasgos, .ds-bloque. */
 .solo-les { display: none; }
 body.lupus .solo-les { display: block; }
-.les-casillas { display: flex; flex-direction: column; gap: 2px; }
-/* Desencadenantes de la tarjeta «Trastorno mastocitario o anafilaxia» (docs/mastocitaria.md): uno por línea */
-#maDesencadenantes { display: flex; flex-direction: column; gap: 2px; }
-#maOtro { margin-top: 6px; }
+/* Casillas de lupus y desencadenantes de mastocitos: chips de selección
+   múltiple (.hm-subtipos), como las complicaciones de la cirugía */
+#maOtro { margin-top: 8px; }
 .ma-fase5 .ma-que-hacer { font-weight: 600; }
 .cir-semanas:not(:empty) { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); margin: -4px 0 12px; }
 .cir-complicaciones { flex-wrap: wrap; }
@@ -3008,7 +3023,9 @@ body.lupus .solo-les { display: block; }
 .hm-btn { min-height: 44px; }
 .hm-maniobra { padding: 10px 12px; margin-bottom: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); }
 .hm-maniobra-txt { font-size: 0.85rem; line-height: 1.45; color: var(--text); margin-bottom: 6px; }
-.hm-lados { display: flex; gap: 16px; flex-wrap: wrap; }
+/* Beighton: Derecho / Izquierdo a partes iguales (o «Positivo» a todo el ancho), alto de los SÍ/NO */
+.hm-lados { display: flex; gap: 8px; flex-wrap: nowrap; }
+.hm-lados .option-btn { flex: 1 1 0; justify-content: center; text-align: center; min-height: 44px; padding: 8px 6px; }
 .hm-casilla { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font-size: 0.85rem; color: var(--text2); cursor: pointer; }
 .hm-casilla input { width: 18px; height: 18px; accent-color: var(--accent); }
 .hm-resultado { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--accent); margin: 8px 0; }

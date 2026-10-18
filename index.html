@@ -258,8 +258,10 @@
     <div class="pregunta-cabecera" id="preguntaCabecera">
       <div class="session-panel-title" id="preguntaTitulo">✨ Preguntar a la IA</div>
     </div>
+    <div class="option-group pregunta-tipos" id="preguntaTipos" role="radiogroup" aria-label="Tipo de pregunta"></div>
     <textarea class="form-input pregunta-texto" id="preguntaTexto" rows="3" maxlength="800" enterkeyhint="send" aria-label="Tu pregunta"
       placeholder="Ej.: ¿Qué diferencia hay entre el test de Hawkins y el de Neer?"></textarea>
+    <div class="pregunta-guion" id="preguntaGuion" hidden></div>
     <div class="pregunta-aviso">No escribas ni dictes datos que identifiquen al paciente: la pregunta sale a un servicio externo y PhysiQ no revisa la respuesta.</div>
     <div class="option-group pregunta-destinos" id="preguntaDestinos" role="radiogroup" aria-label="IA"></div>
     <div class="pregunta-ventaja" id="preguntaVentaja"></div>
@@ -437,10 +439,13 @@
         <button type="button" class="option-btn" data-valor="ns" onclick="selectLESFila('antifosfolipidos','ns')">No lo sabe</button>
       </div>
     </div>
-    <div class="form-group hm-subtipo les-casillas">
-      <label class="hm-casilla"><input type="checkbox" id="les_antitrombotico" onchange="toggleLESCasilla('antitrombotico')"> Toma anticoagulante o antiagregante (aspirina)</label>
-      <label class="hm-casilla"><input type="checkbox" id="les_osteonecrosis" onchange="toggleLESCasilla('osteonecrosis')"> Osteonecrosis o artropatía de Jaccoud conocidas</label>
-      <label class="hm-casilla"><input type="checkbox" id="les_raynaud" onchange="toggleLESCasilla('raynaud')"> Fenómeno de Raynaud</label>
+    <div class="form-group hm-subtipo">
+      <div class="form-label">Además (marca lo que tenga)</div>
+      <div class="option-group hm-subtipos" id="lesCasillas">
+        <button type="button" class="option-btn" data-les-casilla="antitrombotico" aria-pressed="false" onclick="toggleLESCasilla('antitrombotico')">Toma anticoagulante o antiagregante (aspirina)</button>
+        <button type="button" class="option-btn" data-les-casilla="osteonecrosis" aria-pressed="false" onclick="toggleLESCasilla('osteonecrosis')">Osteonecrosis o artropatía de Jaccoud conocidas</button>
+        <button type="button" class="option-btn" data-les-casilla="raynaud" aria-pressed="false" onclick="toggleLESCasilla('raynaud')">Fenómeno de Raynaud</button>
+      </div>
     </div>
     <div class="form-group hm-subtipo">
       <div class="form-label">Ahora mismo</div>
@@ -488,9 +493,9 @@
         <button type="button" class="option-btn" data-valor="sinReceta" onclick="selectMAFila('autoinyector','sinReceta')">No le han recetado</button>
       </div>
     </div>
-    <div class="form-group hm-subtipo les-casillas">
+    <div class="form-group hm-subtipo">
       <div class="form-label">¿Qué le ha provocado episodios?</div>
-      <div id="maDesencadenantes"></div>
+      <div class="option-group hm-subtipos" id="maDesencadenantes"></div>
       <input type="text" class="form-input" id="maOtro" maxlength="120" placeholder="Otro (escríbelo)" oninput="updateMAOtro(this.value)">
     </div>
     </div>
