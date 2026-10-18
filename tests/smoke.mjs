@@ -1017,6 +1017,117 @@ async function checkMastocitos(page) {
   return r;
 }
 
+// Osteoporosis o fragilidad ósea (Fase P, docs/osteoporosis.md), lumbar.
+// Fase 1: «Diagnosticada» abre las filas, «alguna reciente» solo con fractura
+// vertebral, y los corticoides sin tratamiento piden la derivación. Fase 2: la
+// urgencia sin plegar, una derivación con 🩺, el bloque de caídas y, con
+// «Sospecha», los factores con la regla de los 50 años. 320 px: nada se sale.
+// Después, un recorrido entero: la línea de la 4b, el recuadro de la fase 5,
+// el plan de la fase 6 y la fila del panel de tiempos.
+async function checkOsteoporosis(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#motivoConsulta', 'Dolor dorsal desde el parto');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.nota = (await page.textContent('#opNota')).includes('Márcala si');
+  r.filasOcultas = !(await page.isVisible('#opDiagWrap'));
+  await page.click('#opEstado .option-btn[data-valor="diagnosticada"]');
+  r.filasVisibles = await page.isVisible('#opDiagWrap');
+  const fila = (k, v) => page.click(`[data-op-fila="${k}"] .option-btn[data-valor="${v}"]`);
+  r.recienteOculta = !(await page.isVisible('#opRecienteWrap'));
+  await fila('vertebrales', '1');
+  r.recienteVisible = await page.isVisible('#opRecienteWrap');
+  await page.check('#op_reciente');
+  await fila('causa', 'plo');
+  await fila('causa', 'plo');
+  r.segundoToque = await page.evaluate(() => state.osteoporosis.causa === '');
+  await fila('causa', 'plo');
+  await fila('tratamiento', 'no');
+  await fila('corticoides', 'a');
+  r.derivCorticoides = (await page.textContent('#opDerivCorticoides')).includes('que su médico valore la protección ósea');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_osteoporosis');
+  await page.click('#tab_transversal_osteoporosis');
+  const P = '#panel_transversal_osteoporosis';
+  r.urgencia = await page.isVisible(`${P} #sq2_op_u_medula.sq2-urg`);
+  r.sinEmbudo = await page.$$eval(`${P} [data-embudo]`, els => els.length) === 0;
+  r.sinTalla = !(await page.$(`${P} #sq2_op_d_talla`));
+  await page.click(`${P} #sq2_op_d_fractura .sq-btn.si`);
+  r.derivacion = await page.isVisible(`${P} #sq2_op_d_fractura .sq2-deriv-msg`);
+  r.payloadDv = await page.evaluate(async () => { const dv = (await import('./app.js')).buildPhysiQPayload().dv;
+    return dv.some(t => t.startsWith('Posible fractura vertebral nueva')) && dv.some(t => t.startsWith('Corticoides de 7,5 mg/día')); });
+  await page.click(`${P} #sq2_op_d_fractura .sq-btn.no`);
+  await page.click(`${P} [data-op-caidas] .option-btn >> text="2 o más"`);
+  r.caidas = (await page.textContent(`${P} [data-op-bloque]`)).includes('Riesgo alto de caídas');
+  r.caidasCasillas = await page.$$eval(`${P} [data-op-bloque] input[type="checkbox"]`, els => els.length === 4);
+  // «Sospecha»: los factores, con la edad de la fase 1
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#opEstado .option-btn[data-valor="sospecha"]');
+  await page.fill('#edadPaciente', '67');
+  await page.dispatchEvent('#edadPaciente', 'input');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#tab_transversal_osteoporosis');
+  r.factores = await page.$$eval(`${P} .op-factor`, els => els.length === 6);
+  await page.click(`${P} .op-factor >> nth=1 >> .sq-btn.si`);
+  r.sospecha = (await page.textContent(`${P} [data-op-bloque]`)).includes('Que su médico valore el riesgo de fractura');
+  r.informeSinPalabra = await page.evaluate(async () => !/osteoporosis/i.test((await import('./app.js')).buildInformeFisioterapiaText()));
+  // 320 px: la tarjeta y el acordeón, sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.waitForTimeout(100);
+  await page.click('#acc_transversal_osteoporosis .sistema-accordion-header');
+  await page.waitForTimeout(150);
+  r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#opEstado .option-btn[data-valor="diagnosticada"]');
+  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  // Quitar la marca quita el sistema
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.click('#opEstado .option-btn[data-valor="diagnosticada"]');
+  r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_osteoporosis') && !document.body.classList.contains('osteoporosis'));
+  // Recorrido entero con una fractura vertebral: 4b, fase 5, fase 6 y panel de tiempos
+  await abrirApp(page);
+  await page.click('#opEstado .option-btn[data-valor="diagnosticada"]');
+  await page.click('[data-op-fila="vertebrales"] .option-btn[data-valor="1"]');
+  await page.click('[data-op-fila="causa"] .option-btn[data-valor="plo"]');
+  await walkRegion(page, 'lumbar');
+  r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .op-fase5')?.textContent || '';
+    return t.includes('Fuerza progresiva') && t.includes('impacto solo hasta caminar') && t.includes('Sin manipulación forzada')
+      && t.includes('Osteoporosis del embarazo o la lactancia'); });
+  r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .op-fase5 .cita[data-cita^="Brooke-Wavell 2022"]'));
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.nota4b = await page.evaluate(async () => {
+    const { HYPOTHESES } = await import('./data.js');
+    const esperado = state.activeHypotheses.some(h => HYPOTHESES[h]?.tests.some(t => t.cargaOsea));
+    const n = document.querySelectorAll('#hypothesisCards .op-aviso-test').length;
+    return esperado ? n > 0 && !!document.querySelector('#hypothesisCards .op-aviso-test .op-razon') : n === 0;
+  });
+  r.activas = await page.evaluate(() => state.activeHypotheses.join());
+  await page.evaluate(() => goToPhase(5));
+  await page.waitForTimeout(150);
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Osteoporosis: fuerza progresiva') && t.includes('sin manipulación con thrust') && t.includes('Red de seguridad (osteoporosis)'); });
+  await page.click('#tejidosBtn');
+  await page.waitForSelector('#tejidosOverlay.open');
+  r.tejidos = await page.evaluate(() => { const t = document.getElementById('tejidosCuerpo').textContent;
+    return t.includes('Según la tarjeta «Osteoporosis o fragilidad ósea»: fractura vertebral.') && t.includes('el dolor puede durar mucho más'); });
+  r.ok = r.nota && r.filasOcultas && r.filasVisibles && r.recienteOculta && r.recienteVisible && r.segundoToque && r.derivCorticoides
+    && r.tab && r.urgencia && r.sinEmbudo && r.sinTalla && r.derivacion && r.payloadDv && r.caidas && r.caidasCasillas
+    && r.factores && r.sospecha && r.informeSinPalabra && r.ancho1 && r.ancho2 && r.sinSistema
+    && r.fase5 && r.fase5Cita && r.nota4b && r.fase6 && r.tejidos;
+  return r;
+}
+
 // Reloj de la prueba de bipedestación (docs/pots.md, «Reloj»): reloj del
 // navegador simulado (page.clock), pitidos y vibración contados.
 async function checkDsReloj(page) {
@@ -2192,7 +2303,7 @@ async function checkCondiciones(browser, errors) {
     const p = document.getElementById('condPanel').getBoundingClientRect();
     const ids = [...document.querySelectorAll('#condCuerpo .cond-fila')].map(f => f.dataset.condicion).join();
     return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,tarlov,cascanueces,congestionPelvica'
+      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,tarlov,cascanueces,congestionPelvica'
       && /Solo en lumbar/i.test(document.getElementById('condCuerpo').textContent)
       && /Solo en cadera/i.test(document.getElementById('condCuerpo').textContent)
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
@@ -5360,7 +5471,7 @@ const SECCIONES = [
 
   { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
     const c = await checkCondiciones(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 8 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 9 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -5428,6 +5539,13 @@ const SECCIONES = [
     const r = await checkMastocitos(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta solo con «Diagnosticado», filas y desencadenantes, derivación sin urgencia ni embudo, texto de la asociación en hipermovilidad y disautonomía, nota 4b, fase 5 (qué hacer, desmayo, riesgo alto, sin autoinyector), fase 6 y 320 px`);
     if (!r.ok) console.log('\nMastocitos:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'osteoporosis', titulo: 'Osteoporosis o fragilidad ósea (Fase P, lumbar):', run: async ({ page }) => {
+    const r = await checkOsteoporosis(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con sus filas y la derivación por corticoides, urgencia sin plegar, derivación, caídas, sospecha con factores (sin la palabra osteoporosis en el informe), nota 4b, fase 5, fase 6, panel de tiempos y 320 px`);
+    if (!r.ok) console.log('\nOsteoporosis:', JSON.stringify(r));
     return r.ok;
   } },
 

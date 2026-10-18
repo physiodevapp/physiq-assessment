@@ -1,6 +1,6 @@
-# Osteoporosis o fragilidad ósea — diseño (borrador)
+# Osteoporosis o fragilidad ósea — diseño e implementación
 
-Estado: **borrador de diseño (octubre 2026), sin código. Aceptadas por el usuario las 14 recomendaciones** (ver «Decisiones aceptadas»). PDF de la decisión 13 en tandas: **tanda 1 leída** (Puentedura 2015 y Giangregorio 2014; **aceptados los cambios C1–C7 y la decisión 15**) y **tanda 2 leída** (Hadji 2026; **aceptados H1–H5**). Con eso están leídos los tres PDF mínimos de la decisión 13. **Tanda 4 leída** (Giangregorio 2015, Gibbs 2019, Kovacs y Ralston 2015, Hardcastle 2022 y Sherrington 2019), con 6 cambios (T1–T6), **aceptados**. Issa 2026 no está disponible y no se cita. **Diseño cerrado; en implementación.** **Tanda 3 leída** (Maitland 2005, cap. 9 entero): pasaje de la decisión 6 comprobado en la p. 223, con 2 cambios (M1 corrección; **M2 aceptado**). **Diseño cerrado: listo para implementar**; quedan solo PDF opcionales. Ver «Lectura de los PDF». Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
+Estado: **implementado (octubre 2026), pendiente de tu revisión en la app** (ver «Implementación», al final). Diseño: aceptadas por el usuario las 14 recomendaciones** (ver «Decisiones aceptadas»). PDF de la decisión 13 en tandas: **tanda 1 leída** (Puentedura 2015 y Giangregorio 2014; **aceptados los cambios C1–C7 y la decisión 15**) y **tanda 2 leída** (Hadji 2026; **aceptados H1–H5**). Con eso están leídos los tres PDF mínimos de la decisión 13. **Tanda 4 leída** (Giangregorio 2015, Gibbs 2019, Kovacs y Ralston 2015, Hardcastle 2022 y Sherrington 2019), con 6 cambios (T1–T6), **aceptados**. Issa 2026 no está disponible y no se cita. **Diseño cerrado; en implementación.** **Tanda 3 leída** (Maitland 2005, cap. 9 entero): pasaje de la decisión 6 comprobado en la p. 223, con 2 cambios (M1 corrección; **M2 aceptado**). **Diseño cerrado: listo para implementar**; quedan solo PDF opcionales. Ver «Lectura de los PDF». Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después del trastorno mastocitario (`docs/mastocitaria.md`). Incluye la **osteoporosis asociada al embarazo y la lactancia** (PLO, por sus siglas en inglés), por el caso del usuario: una paciente que, tras el parto y probablemente por la lactancia, desarrolló una osteoporosis con fisuras en cuerpos vertebrales torácicos.
 
 **Qué hay hoy en la app** (búsqueda de octubre 2026 en `data/` y `formularios/`):
 - **Cribado de la fase 2**:
@@ -928,3 +928,35 @@ osteoporosis: {
    - La decisión 14 suma `Puentedura 2015`, `Giangregorio 2014` y `Hadji 2026` al registro, si los textos los citan.
 4. La implementación, en la rama de trabajo, y tu revisión en la app antes de `main`.
 5. physiq-report: leer `op` del payload, en otra PR.
+
+## Implementación (octubre 2026)
+
+Hecha en la rama de trabajo con todas las decisiones aceptadas (1–15, C1–C7, H1–H5, M2, T1–T6). Pendiente de tu revisión en la app antes de `main`.
+
+**Dónde está cada cosa**:
+- `data/comun.js`: `SIS_OSTEOPOROSIS` (sexto sistema de las 7 regiones, tras el de mastocitos), con sus preguntas, banderas enlazadas, filas de la tarjeta, factores, caídas y todos los textos con sus fuentes (`osteoporosis.textos`).
+- `lib/osteoporosis.js`: funciones puras (estado, visibilidad, regla de la sospecha, caídas, derivación por corticoides, motivos del tope sin thrust, pendientes del modo breve, payload `op`, textos de 📋 Notas, 📄 Informe e IA).
+- `index.html`: la tarjeta `#cardOsteoporosis`, después de la del trastorno mastocitario.
+- `app.js`: tarjeta, bloque de la fase 2 (`[data-op-bloque]`: factores con «Sospecha» y caídas con los dos estados), recuadro de la fase 5 (`.op-fase5`), derivación por corticoides en `getDerivacionesMedicas()`, recordatorio en el recuadro del lupus, «Este paciente» del panel de tiempos.
+- `phase4b.js`: la línea de los tests con `cargaOsea` (20 tests; `'costilla'` en los dos de la 1.ª costilla), con su «¿Por qué?» plegado (C2).
+- `data/plan-tratamiento.js` y `lib/plan-tratamiento.js`: avisos `osteoporosis`, `osteoporosisMoverse`, `osteoporosisImpacto` / `osteoporosisImpactoLimitado` (solo con «Diagnosticada»), `sinThrustOsteoporosis` y `sinThrustLupus`; red `RED_OSTEOPOROSIS` (con «Diagnosticada»); consejo `moverseOsteoporosis` en el programa para casa.
+- `data/condiciones.js`: la fila de la guía, con las pistas `of1`, `of2` y `l_e4`.
+- `data/tejidos.js` y `lib/tejidos.js`: `porCondicion`, la fila `fx_vertebral_compresion` en «Este paciente» con fractura vertebral, y con la PLO la línea de Gak 2024.
+- `data/lumbar.js`: el párrafo de la PLO en el «Ampliar» de `l_e4` (H2).
+
+**Cómo quedó lo que el diseño dejaba abierto**:
+- **El tope «sin thrust»**: los escalones de la fase 6 nunca proponen grado V, así que el tope es un aviso, que también dice que si la pauta de una hipótesis incluye manipulación, aquí no se aplica.
+- **La derivación por corticoides** (decisión 5) no tiene pregunta: sale de la tarjeta, va a `dv[]` y a la fase 5, y se ve en la tarjeta. No sale en el aviso de la fase 2, que solo resume respuestas del cribado.
+- **Las caídas** no tienen la velocidad de marcha como medida (decisión 8): su corte (0,8 m/s, Montero-Odasso 2022) va en el texto de una caída.
+- **La pérdida de conocimiento** en una caída lleva a la pregunta del síncope (`sx_sincope`) con «Ir a la pregunta →».
+- **La fila del panel de tiempos con la PLO**: una línea en «Este paciente» (Gak 2024), no en la nota de la fila; revisar esa nota con Gregson 2025 sigue en la Fase J.
+
+**Cosas que conviene que mires al revisar**:
+- Algunos textos de `op_u_medula` y `op_d_fractura` citan Finucane 2020 (sección 3, tablas 3.2 y 3.4). En esta sesión solo se leyó la traducción portuguesa: conviene comprobar esas citas, y el número de las tablas, en el original inglés.
+- La línea de la 4b sale en todos los tests de la lista con la tarjeta marcada, también con «Sospecha».
+- Los avisos de la fase 6 salen con los dos estados; el del impacto y la red, solo con «Diagnosticada».
+
+**Pruebas**: `tests/unit/osteoporosis.mjs` (17 tests, incluidos «marcar la tarjeta nunca quita ni rebaja una urgencia» en las 7 regiones, la lista fijada de `cargaOsea` y `OP_CASOS`, el texto literal que copiará physiq-report) y la sección `osteoporosis` de `tests/smoke.mjs`. Ejecución completa de las dos en verde.
+
+**Queda**: tu revisión; physiq-report (`_bloqueOP`, copia literal de `bloqueOPIA()`), en otra PR; la pregunta de sospecha de la PLO, con la tarjeta «Embarazo y posparto» (H1).
+
