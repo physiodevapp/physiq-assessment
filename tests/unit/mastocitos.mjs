@@ -28,7 +28,7 @@ test('solo «Diagnosticado» (decisión 2): sin «Sospecha» en el estado ni en 
   assert.deepEqual(Object.keys(M.ESTADOS_MA), ['diagnosticado']);
   assert.equal(M.normalizarMastocitos({ estado: 'sospecha' }).estado, '');
   const html = leer('index.html');
-  const card = html.slice(html.indexOf('id="cardMastocitos"'), html.indexOf('id="cardCronologia"'));
+  const card = html.slice(html.indexOf('id="cardMastocitos"'), html.indexOf('id="cardOsteoporosis"'));
   assert.ok(card.includes("selectMAEstado('diagnosticado')") && !/sospecha/i.test(card));
 });
 
