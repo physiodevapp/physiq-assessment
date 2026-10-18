@@ -1,6 +1,6 @@
-# Trastornos de la activación mastocitaria (MCAD) — borrador de diseño
+# Trastornos de la activación mastocitaria (MCAD) — diseño
 
-Estado: **diseño sin código (octubre 2026). Aceptadas por el usuario las 12 recomendaciones** (ver «Decisiones aceptadas»). Pasajes clave comprobados en las fuentes (ver «Comprobación de pasajes»). **PDF de la decisión 9 leídos enteros** (ver «Lectura de los PDF»). **Aceptadas también las decisiones 13–16.** Farley 2025 y Seneviratne 2017 no están disponibles. **Diseño cerrado: listo para implementar.** Posible condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad (`docs/hipermovilidad.md`), el POTS (`docs/pots.md`) y el lupus (`docs/lupus.md`). La guía de condiciones especiales (`docs/condiciones-especiales.md`) tendría que añadir su fila si se hace una tarjeta.
+Estado: **diseño sin código (octubre 2026). Aceptadas por el usuario las 12 recomendaciones** (ver «Decisiones aceptadas»). Pasajes clave comprobados en las fuentes (ver «Comprobación de pasajes»). **PDF de la decisión 9 leídos enteros** (ver «Lectura de los PDF»). **Aceptadas también las decisiones 13–16.** Farley 2025 y Seneviratne 2017 no están disponibles. **Implementado (octubre 2026; ver «Implementación»), pendiente de la revisión del usuario antes de `main`.** Posible condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad (`docs/hipermovilidad.md`), el POTS (`docs/pots.md`) y el lupus (`docs/lupus.md`). La guía de condiciones especiales (`docs/condiciones-especiales.md`) tendría que añadir su fila si se hace una tarjeta.
 
 **Enfoque** (decidido con el usuario, octubre 2026): el diseño parte del paraguas de los **trastornos de la activación mastocitaria** (MCAD, por sus siglas en inglés), no del síndrome de activación mastocitaria (SAMA) solo. Lo que cambia la sesión es el **riesgo de anafilaxia**, y ese riesgo está descrito para cada variante del paraguas (mastocitosis, SAMA con sus variantes, α-triptasemia hereditaria como agravante), no para el SAMA aislado. La primera versión de este borrador partía del SAMA; el documento conserva su nombre de archivo.
 
@@ -478,9 +478,36 @@ mastocitos: {
 - Prueba de humo, sección `mastocitos`: la tarjeta, la línea de la 4b, el recuadro de la fase 5, el aviso y la red de la fase 6, 320 px y el hub.
 - physiq-report: `_bloqueMA()` en otra PR, con un caso fijado en un test en cada repositorio.
 
+## Implementación (octubre 2026)
+
+Hecho según la forma 2 y las 16 decisiones, con estas concreciones:
+
+- **Contenido** (`data/comun.js`, `SIS_MASTOCITOS`, `transversal_mastocitos`): quinto sistema de las 7 regiones, tras el del lupus, con `soloMastocitos: true` y sin embudo. Una sola pregunta, `ma_d_episodios`, con `derivacion` y su razonamiento, y su bandera amarilla enlazada. En `mastocitos`, los tipos, los desencadenantes y los textos con sus citas.
+- **Lógica pura** (`lib/mastocitos.js`):
+  - estado vacío y normalizado, solo con «Diagnosticado»;
+  - nivel de alerta (`riesgoAltoMA()`), con «solo anafilaxia» como anafilaxia previa;
+  - pendiente del modo breve: el autoinyector sin registrar;
+  - payload `ma`: `{ es, ti, an, ai, de[] }`;
+  - textos de 📋 Notas, 📄 Informe e informe con IA (`bloqueMAIA()`, sin citas, también las de NICE, que no llevan año).
+- **Tarjeta** `#cardMastocitos` (fase 1, después del lupus): la nota, «Diagnosticado», qué le han diagnosticado, la anafilaxia previa (oculta con «Ninguno: solo ha tenido anafilaxia»), el autoinyector y los desencadenantes como casillas, uno por línea, más un «otro» libre.
+- **Forma 1**: la línea de la asociación (`MA.textos.asociacion`) sale bajo el cuestionario de la hipermovilidad y bajo el patrón de sospecha de la disautonomía, los dos bloques que se ven con «Sospecha». No va en el razonamiento de `cq5`: las preguntas del cuestionario no tienen razonamiento propio.
+- **Recuadro de la fase 5** (`.ma-fase5`): en el color informativo de los demás recuadros de condiciones, con «qué hacer» en negrita.
+- **Fase 6**: aviso `mastocitos` y red `RED_MASTOCITOS` (`cierreAnafilaxia`, `alarmaAnafilaxia`) en cualquier región. Las fuentes de sus textos están en `FUENTES_PLAN` y en `docs/plan-tratamiento-frases.md`.
+- **Registro** (`data/referencias.js`): 12 entradas nuevas, solo las que citan los textos: `Valent 2022`, `Valdez 2026`, `Lee y Picard 2025`, `RCUK 2021`, `Muraro 2022`, `Cardona 2020`, `NICE NG258`, `Brockow 2021`, `Muñoz 2024`, `Gülen 2023`, `González-de-Olano 2017` y `Srisuwatchari 2023`.
+  - **La clave `Valent 2022` es la propuesta de la CIE-10-MC**, la que citan los textos. La actualización del Collegium Internationale Allergologicum del mismo año no se registra, porque la app no la cita. En este documento siguen llamándose «Valent 2022 (CIE-10-MC)» y «Valent 2022 (CIA)».
+  - **Castells 2024 no se cita en la app**: la línea de riesgo alto cita Valent 2022, tabla II.
+- **Guía de condiciones especiales**: fila `mastocitos` («Márcala si:»), después del lupus.
+- **Pruebas**:
+  - unitarias en `tests/unit/mastocitos.mjs`; entre ellas, que marcar la tarjeta no cambia las urgencias ni el pintado de ningún otro sistema en las 7 regiones, que no hay regla automática con la hipermovilidad ni con la disautonomía, y el texto literal de `bloqueMAIA()` (`MA_CASOS`);
+  - las listas fijadas de otras pruebas (derivaciones, inventario de banderas, filas de la guía, filtros de los sistemas especiales);
+  - la sección `mastocitos` de la prueba de humo.
+- **physiq-report**: pendiente, en otra PR. Copiar `bloqueMAIA()` como `_bloqueMA()` en su `lib/payload.js`, con los casos de `MA_CASOS` fijados en su test.
+
 ## Siguiente paso
 
 1. ~~Tus decisiones~~ Hecho: las 12 recomendaciones, aceptadas.
 2. ~~Los PDF de la decisión 9~~ Hecho: leídos enteros (ver «Lectura de los PDF»). Farley 2025 y Seneviratne 2017 no están disponibles.
 3. ~~Tus decisiones 13–16~~ Hecho: aceptadas.
-4. Después, la implementación, en una PR con tu revisión antes de `main`.
+4. ~~La implementación~~ Hecho (octubre 2026), en la rama de trabajo.
+5. **Tu revisión en la app** antes de `main`: la tarjeta, la derivación de la fase 2, la línea de la 4b, el recuadro de la fase 5 y el aviso y la red de la fase 6.
+6. physiq-report: leer `ma` del payload (otro repositorio).

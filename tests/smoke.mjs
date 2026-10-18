@@ -917,6 +917,106 @@ async function checkLupus(page) {
   return r;
 }
 
+// Trastorno mastocitario o anafilaxia (Fase P, docs/mastocitaria.md),
+// rodilla. Fase 1: solo «Diagnosticado», las filas y las casillas, un segundo
+// toque desmarca y «solo anafilaxia» oculta la pregunta de la anafilaxia.
+// Fase 2: una derivación con 🩺, sin urgencias ni embudo, y la línea de la
+// asociación en los bloques de hipermovilidad y disautonomía. 320 px: nada se
+// sale. Quitar la marca quita el sistema. Después, un recorrido entero: la
+// línea de la 4b, el recuadro de la fase 5 y el aviso y la red de la fase 6.
+async function checkMastocitos(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#motivoConsulta', 'Dolor de rodilla al subir escaleras');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.nota = (await page.textContent('#maNota')).includes('Los síntomas crónicos');
+  r.soloDiag = await page.$$eval('#maEstado .option-btn', els => els.length === 1 && els[0].dataset.valor === 'diagnosticado');
+  r.filasOcultas = !(await page.isVisible('#maDiagWrap'));
+  await page.click('#maEstado .option-btn[data-valor="diagnosticado"]');
+  r.filasVisibles = await page.isVisible('#maDiagWrap');
+  const fila = (k, v) => page.click(`[data-ma-fila="${k}"] .option-btn[data-valor="${v}"]`);
+  await fila('tipo', 'otro');
+  await fila('tipo', 'otro');
+  r.segundoToque = await page.evaluate(() => state.mastocitos.tipo === '');
+  await fila('tipo', 'soloAnafilaxia');
+  r.anafilaxiaOculta = !(await page.isVisible('#maAnafilaxiaWrap'));
+  await fila('tipo', 'mastocitosis');
+  r.anafilaxiaVisible = await page.isVisible('#maAnafilaxiaWrap');
+  await fila('anafilaxia', 'SI');
+  await fila('autoinyector', 'NO');
+  await page.check('#ma_calor');
+  await page.check('#ma_roce');
+  await page.fill('#maOtro', 'frutos secos');
+  r.estado = await page.evaluate(() => JSON.stringify(state.mastocitos) === JSON.stringify({ estado: 'diagnosticado', tipo: 'mastocitosis', anafilaxia: 'SI', autoinyector: 'NO',
+    desencadenantes: { calor: true, roce: true }, otro: 'frutos secos' }));
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('rodilla', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_mastocitos');
+  await page.click('#tab_transversal_mastocitos');
+  const P = '#panel_transversal_mastocitos';
+  r.sinUrgNiEmbudo = await page.$$eval(`${P} .sq2-urg, ${P} [data-embudo]`, els => els.length) === 0;
+  await page.click(`${P} #sq2_ma_d_episodios .sq-btn.si`);
+  r.derivacion = await page.isVisible(`${P} #sq2_ma_d_episodios .sq2-deriv-msg`);
+  r.payloadDv = await page.evaluate(async () => (await import('./app.js')).buildPhysiQPayload().dv.some(t => t.startsWith('Episodios nuevos o más graves')));
+  r.sinUrgencia = !(await page.isVisible('#sistemicoAlert .urgencia-alert'));
+  await page.click(`${P} #sq2_ma_d_episodios .sq-btn.no`);
+  // La línea de la asociación (forma 1), con la hipermovilidad y la disautonomía en sospecha
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
+  await page.click('#dsEstado .option-btn[data-valor="sospecha"]');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  r.asociacion = await page.evaluate(() => ['#panel_transversal_hipermovilidad [data-hm-bloque]', '#panel_transversal_disautonomia [data-ds-bloque]']
+    .every(sel => (document.querySelector(sel)?.textContent || '').includes('en 587 pacientes con esas etiquetas solo se confirmó en 1')));
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
+  await page.click('#dsEstado .option-btn[data-valor="sospecha"]');
+  // 320 px: la tarjeta y el acordeón, sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.waitForTimeout(100);
+  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#acc_transversal_mastocitos .sistema-accordion-header');
+  await page.waitForTimeout(150);
+  r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  // Quitar la marca quita el sistema
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#maEstado .option-btn[data-valor="diagnosticado"]');
+  r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_mastocitos') && !document.getElementById('tab_transversal_mastocitos') && !document.body.classList.contains('mastocitos'));
+  // Recorrido entero con mastocitosis y sin autoinyector: 4b, fase 5 y fase 6
+  await abrirApp(page);
+  await page.click('#maEstado .option-btn[data-valor="diagnosticado"]');
+  await page.click('[data-ma-fila="tipo"] .option-btn[data-valor="mastocitosis"]');
+  await page.click('[data-ma-fila="autoinyector"] .option-btn[data-valor="sinReceta"]');
+  await walkRegion(page, 'rodilla');
+  r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .ma-fase5')?.textContent || '';
+    return t.includes('llama al 112') && t.includes('si no puede, ayúdale') && t.includes('desmayo vasovagal') && t.includes('Tiene más riesgo de anafilaxia')
+      && t.includes('En la mastocitosis') && t.includes('las guías indican llevar autoinyector') && t.includes('protocolo escrito'); });
+  r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .ma-fase5 .cita[data-cita^="RCUK 2021"]'));
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.nota4b = await page.isVisible('#hypothesisCards .ma-nota-4b');
+  await page.evaluate(() => goToPhase(5));
+  await page.waitForTimeout(150);
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Trastorno mastocitario o anafilaxia: que traiga su autoinyector') && t.includes('Red de seguridad (trastorno mastocitario o anafilaxia)'); });
+  r.ok = r.nota && r.soloDiag && r.filasOcultas && r.filasVisibles && r.segundoToque && r.anafilaxiaOculta && r.anafilaxiaVisible && r.estado
+    && r.tab && r.sinUrgNiEmbudo && r.derivacion && r.payloadDv && r.sinUrgencia && r.asociacion && r.ancho1 && r.ancho2 && r.sinSistema
+    && r.fase5 && r.fase5Cita && r.nota4b && r.fase6;
+  return r;
+}
+
 // Reloj de la prueba de bipedestación (docs/pots.md, «Reloj»): reloj del
 // navegador simulado (page.clock), pitidos y vibración contados.
 async function checkDsReloj(page) {
@@ -2092,7 +2192,7 @@ async function checkCondiciones(browser, errors) {
     const p = document.getElementById('condPanel').getBoundingClientRect();
     const ids = [...document.querySelectorAll('#condCuerpo .cond-fila')].map(f => f.dataset.condicion).join();
     return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,tarlov,cascanueces,congestionPelvica'
+      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,tarlov,cascanueces,congestionPelvica'
       && /Solo en lumbar/i.test(document.getElementById('condCuerpo').textContent)
       && /Solo en cadera/i.test(document.getElementById('condCuerpo').textContent)
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
@@ -5247,7 +5347,7 @@ const SECCIONES = [
 
   { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
     const c = await checkCondiciones(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 7 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 8 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -5308,6 +5408,13 @@ const SECCIONES = [
     const r = await checkLupus(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta con sus filas, urgencias sin plegar, derivación, sospecha con rasgos (sin la palabra lupus en el informe), notas 3 y 4b, nota de hipermovilidad, fase 5, fase 6 y 320 px`);
     if (!r.ok) console.log('\nLupus:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'mastocitos', titulo: 'Trastorno mastocitario o anafilaxia (Fase P, rodilla):', run: async ({ page }) => {
+    const r = await checkMastocitos(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta solo con «Diagnosticado», filas y desencadenantes, derivación sin urgencia ni embudo, texto de la asociación en hipermovilidad y disautonomía, nota 4b, fase 5 (qué hacer, desmayo, riesgo alto, sin autoinyector), fase 6 y 320 px`);
+    if (!r.ok) console.log('\nMastocitos:', JSON.stringify(r));
     return r.ok;
   } },
 

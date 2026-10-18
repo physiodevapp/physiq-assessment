@@ -4,7 +4,7 @@ import { assert, leer, test, SYSTEMIC_SCREENING, buildPhysiQPayload, buildInform
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
 const C = await import('../../lib/condiciones.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
-const { SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_LUPUS } = await import('../../data/comun.js');
+const { SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_LUPUS, SIS_MASTOCITOS } = await import('../../data/comun.js');
 
 console.log('\ncondiciones especiales (guía de la cabecera)');
 
@@ -12,12 +12,12 @@ const fila = id => CONDICIONES.find(c => c.id === id);
 const html = leer('index.html');
 
 test('orden de las filas (decisión 2): transversales de la más frecuente a la menos, luego lumbar y cadera', () => {
-  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'tarlov', 'cascanueces', 'congestionPelvica']);
+  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'mastocitos', 'tarlov', 'cascanueces', 'congestionPelvica']);
   assert.deepEqual(CONDICIONES.filter(c => c.region).map(c => c.region), ['lumbar', 'lumbar', 'cadera']);
 });
 
 test('cada sistema transversal que solo se ve al marcarlo tiene su fila (una condición nueva añade la suya)', () => {
-  const PORCLAVE = { soloPosquirurgico: 'posquirurgico', soloHipermovilidad: 'hipermovilidad', soloDisautonomia: 'disautonomia', soloLupus: 'lupus' };
+  const PORCLAVE = { soloPosquirurgico: 'posquirurgico', soloHipermovilidad: 'hipermovilidad', soloDisautonomia: 'disautonomia', soloLupus: 'lupus', soloMastocitos: 'mastocitos' };
   const claves = new Set(Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas)
     .flatMap(s => Object.keys(s).filter(k => /^solo[A-Z]/.test(k) && s[k] === true)));
   for (const k of claves) {
@@ -31,6 +31,7 @@ test('cada pista sale de una pregunta que existe (cuestionario, sospecha, rasgos
     ...SIS_HIPERMOVILIDAD.hipermovilidad.cuestionario.map(q => q.id),
     ...SIS_DISAUTONOMIA.disautonomia.sospecha.map(q => q.id),
     ...SIS_LUPUS.lupus.rasgos.map(q => q.id),
+    ...SIS_MASTOCITOS.preguntas.map(q => q.id),
   ]);
   for (const c of CONDICIONES) {
     assert.ok(c.pistas.length >= 1 && c.pistas.length <= 3, `${c.id}: 1 a 3 pistas`);
@@ -91,6 +92,9 @@ test('estado de las transversales con cada valor de su tarjeta', () => {
   assert.deepEqual(le(''), { texto: 'No consta', marcada: false });
   assert.deepEqual(le('sospecha'), { texto: 'Sospecha', marcada: true });
   assert.deepEqual(le('diagnosticado'), { texto: 'Diagnosticado', marcada: true });
+  assert.deepEqual(e('mastocitos', { mastocitos: { estado: '' } }), { texto: 'No consta', marcada: false });
+  assert.deepEqual(e('mastocitos', { mastocitos: { estado: 'diagnosticado' } }), { texto: 'Diagnosticado', marcada: true });
+  assert.equal(C.estadoCondicion(fila('mastocitos'), { mecanismo: '' }).texto, 'No consta');
   // Sesiones antiguas sin las tarjetas
   assert.equal(C.estadoCondicion(fila('lupus'), { mecanismo: '' }).texto, 'No consta');
 });
