@@ -64,6 +64,7 @@ export const BASE_STATE = {
   lupus:            { estado: '', corticoides: '', dosisAltas: '', inmunosupresores: '', antifosfolipidos: '', antitrombotico: false, osteonecrosis: false, raynaud: false, actividad: '', rasgos: {} },
   mastocitos:       { estado: '', tipo: '', anafilaxia: '', autoinyector: '', desencadenantes: {}, otro: '' },
   osteoporosis:     { estado: '', causa: '', vertebrales: '', reciente: false, otras: false, tratamiento: '', corticoides: '', factores: {}, caidas: { n: '', lesion: false, suelo: false, conciencia: false, fragilidad: false } },
+  embarazo:         { estado: '', semanas: null, familiar: '', fecha: '', semanasAprox: null, parto: '', esfinter: false, occipitoposterior: false, lactancia: '', animo: {}, suelo: {} },
   cuestionarios:    {},
   sintomaPrincipal: { zonas: [], zonaLibre: '', lado: '', otraRegion: false, profundidad: '', patron: '', descripcion: '', nrs: null, irritabilidad: '', relacion: '' },
   sintomasSecundarios: [],
