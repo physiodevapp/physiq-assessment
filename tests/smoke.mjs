@@ -830,8 +830,8 @@ async function checkLupus(page) {
   await fila('corticoides', 'm');
   await fila('antifosfolipidos', 'no');
   await fila('actividad', 'peor');
-  await page.check('#les_raynaud');
-  await page.check('#les_antitrombotico');
+  await page.click('[data-les-casilla="raynaud"]');
+  await page.click('[data-les-casilla="antitrombotico"]');
   r.estado = await page.evaluate(() => JSON.stringify(state.lupus) === JSON.stringify({ estado: 'diagnosticado', corticoides: 'm', dosisAltas: '', inmunosupresores: '',
     antifosfolipidos: 'no', antitrombotico: true, osteonecrosis: false, raynaud: true, actividad: 'peor', rasgos: {} }));
   await page.click('#phase1 .btn-primary');
@@ -898,7 +898,7 @@ async function checkLupus(page) {
   // Recorrido entero con «Diagnosticado» y Raynaud: 4b, fase 5 y fase 6
   await abrirApp(page);
   await page.click('#lesEstado .option-btn[data-valor="diagnosticado"]');
-  await page.check('#les_raynaud');
+  await page.click('[data-les-casilla="raynaud"]');
   await walkRegion(page, 'codo');
   r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .les-fase5')?.textContent || '';
     return t.includes('Diagnosticado') && t.includes('150–300 min') && t.includes('Fotoprotección') && t.includes('Raynaud') && t.includes('valoración médica hoy'); });
@@ -946,8 +946,8 @@ async function checkMastocitos(page) {
   r.anafilaxiaVisible = await page.isVisible('#maAnafilaxiaWrap');
   await fila('anafilaxia', 'SI');
   await fila('autoinyector', 'NO');
-  await page.check('#ma_calor');
-  await page.check('#ma_roce');
+  await page.click('[data-ma-desenc="calor"]');
+  await page.click('[data-ma-desenc="roce"]');
   await page.fill('#maOtro', 'frutos secos');
   r.estado = await page.evaluate(() => JSON.stringify(state.mastocitos) === JSON.stringify({ estado: 'diagnosticado', tipo: 'mastocitosis', anafilaxia: 'SI', autoinyector: 'NO',
     desencadenantes: { calor: true, roce: true }, otro: 'frutos secos' }));
@@ -4645,7 +4645,7 @@ async function checkSinHuecos(browser, errors) {
     await page.evaluate(() => {
       window.goToPhase(1);
       [...document.querySelectorAll('#mecanismo .option-btn')].find(x => x.textContent.includes('Post-quirúrgico')).click();
-      window.selectHMEstado('diagnosticada'); window.selectDsEstado('diagnosticada'); window.selectLESEstado('diagnosticado');
+      window.selectHMEstado('diagnosticada'); window.selectDsEstado('diagnosticada'); window.selectLESEstado('diagnosticado'); window.selectMAEstado('diagnosticado');
     });
     for (const f of [1, 2, 3, 4, '4b', 5, 6]) {
       await page.evaluate(f => window.goToPhase(f), f);
