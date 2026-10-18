@@ -3080,6 +3080,21 @@ async function checkExportarImportar(browser, errors, tmpDir) {
       return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth && rb.height >= 40;
     });
   });
+  // «¿Reiniciar o borrar?»: plegado al abrir el panel; abierto (con el párrafo de
+  // fuera del hub) en una pantalla baja, el panel no se sale y se desplaza dentro
+  await page.setViewportSize({ width: 320, height: 568 });
+  r.ayudaReiniciar = await page.evaluate(() => {
+    const d = document.querySelector('#sessionPanel .session-ayuda');
+    if (!d || d.open) return false;
+    d.open = true;
+    const panel = document.getElementById('sessionPanel');
+    const rp = panel.getBoundingClientRect();
+    const ok = rp.top >= 0 && /Borrar sesión/.test(d.textContent) && /Exportar/.test(d.textContent)
+      && (panel.scrollHeight <= panel.clientHeight || getComputedStyle(panel).overflowY === 'auto');
+    d.open = false;
+    return ok;
+  });
+  await page.setViewportSize({ width: 320, height: 640 });
 
   // Móvil a 320 px, todas las fases: el primer nivel (cards, sistemas del
   // cribado, preguntas del árbol, hipótesis de la 4b, secciones de la fase 5)
@@ -3105,7 +3120,7 @@ async function checkExportarImportar(browser, errors, tmpDir) {
 
   await context.close();
   r.ok = r.exportarDesactivadoAlEmpezar && r.reiniciarEnPanel && r.reiniciarCancelaVuelvePanel && r.relevoSinParpadeo && /^valoracion-prueba-exportacion-\d{4}-\d{2}-\d{2}\.json$/.test(r.nombreArchivo)
-    && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.fasesMovil;
+    && Object.values(r.borrarCancelar).every(v => v === true) && r.borrada && r.nombreEscapado && r.restaurado && r.fase5Visible && r.rechazaMalo && r.caben320 && r.ayudaReiniciar && r.fasesMovil;
   return r;
 }
 
@@ -5572,7 +5587,7 @@ const SECCIONES = [
   { id: 'exportar', titulo: 'Exportar / importar la valoración (panel de sesión):', run: async ({ browser, errors }) => {
     const tmpDir = mkdtempSync(join(tmpdir(), 'physiq-smoke-'));
     const r = await checkExportarImportar(browser, errors, tmpDir);
-    console.log(`  ${r.ok ? '✓' : '✗'} exportar descarga ${r.nombreArchivo}; panel → diálogo y vuelta sin parpadeo de velo; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; todas las fases a 320 px en bandas, sin desbordar${r.fasesMovil ? '' : ' ' + JSON.stringify(r.bandasMovil)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} exportar descarga ${r.nombreArchivo}; panel → diálogo y vuelta sin parpadeo de velo; «Borrar» abre el diálogo común con el nombre escapado, cancelar (Escape, velo, botón) vuelve al panel, confirmar vacía también el campo del nombre; borrar + importar restaura la valoración en la fase 5; rechaza otro JSON; caben a 320 px; «¿Reiniciar o borrar?» plegado y, abierto, dentro de una pantalla baja; todas las fases a 320 px en bandas, sin desbordar${r.fasesMovil ? '' : ' ' + JSON.stringify(r.bandasMovil)}`);
     if (!r.ok) console.log('\nExportar / importar:', JSON.stringify(r));
     return r.ok;
   } },
