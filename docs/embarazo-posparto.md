@@ -526,6 +526,5 @@ Con las decisiones 1–16 y los cambios T1–T12 y U1–U5. Lo que se ve en la a
 - **Guía de condiciones**: fila `embarazo` tras la osteoporosis.
 - **Registro**: 27 referencias nuevas (`ACOG 2020` y `RCOG 2015` por su año, no por su número de documento). «Peterson 2012» no se cita aparte: el texto habla del ensayo piloto recogido en la Cochrane.
 - **Pruebas**: `tests/unit/embarazo.mjs` y la sección `embarazo` de la prueba de humo.
-- **Pendiente**:
-  - physiq-report: leer `em` con una copia de `bloqueEMIA()`, en otra PR.
+- **physiq-report** lee `em` con una copia literal de `bloqueEMIA()` (`_bloqueEM`), physiodevapp/physiq-report#96.
 
