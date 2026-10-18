@@ -131,7 +131,7 @@ test('region not set → []', () => {
 test('affirmative answer for known region returns non-empty array', () => {
   // Find a real question id from the hombro screening data
   const sis = SYSTEMIC_SCREENING['hombro'];
-  const firstQid = sis?.sistemas?.find(x => !x.soloPosquirurgico && !x.soloHipermovilidad && !x.soloDisautonomia && !x.soloLupus && !x.soloMastocitos)?.preguntas?.[0]?.id || null;   // el posquirúrgico solo se ve con su mecanismo
+  const firstQid = sis?.sistemas?.find(x => !x.soloPosquirurgico && !x.soloHipermovilidad && !x.soloDisautonomia && !x.soloLupus && !x.soloMastocitos && !x.soloOsteoporosis)?.preguntas?.[0]?.id || null;   // el posquirúrgico solo se ve con su mecanismo
   if (firstQid) {
     withState({ sistemicoAnswers: { [firstQid]: 'SI' }, region: 'hombro' }, () => {
       const texts = getSistemicoAffirmativeTexts();

@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **6** frases.
+Redacción propia: **11** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -22,6 +22,12 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Si de golpe notas debilidad o adormecimiento de un lado del cuerpo, dificultad para hablar o pérdida de visión, llama al 112, aunque se te pase.»  
   ↳ fuente: Goodman 2018, cap. 12, p. 445 (enfermedad cerebrovascular, frecuente en el lupus); Drosos 2022, p. 773; Rout 2024 (síndrome antifosfolípido), «Deterrence and Patient Education» (enseñar los síntomas del AIT)  
   ↳ clave `alarmaIctusLupus`
+- [ ] «Si te empieza de golpe un dolor de espalda fuerte tras un esfuerzo pequeño, para y que te vea el médico; si además notas debilidad u hormigueo en las piernas, o cambios al orinar, ve a urgencias.»  
+  ↳ fuente: Gregson 2025 (pensar en una fractura vertebral ante un dolor de espalda agudo; derivación urgente con déficit neurológico); Finucane 2020, sección 3 (docs/osteoporosis.md)  
+  ↳ clave `alarmaFracturaVertebral`
+- [ ] «Al agacharte o levantar algo, dobla las caderas y las rodillas con la espalda recta. Para girarte, da pasos en vez de torcer el tronco. Guarda lo que uses a la altura de la cintura, no en el suelo. Con lluvia o hielo, haz el ejercicio dentro de casa.»  
+  ↳ fuente: Brooke-Wavell 2022, recuadro 3; Giangregorio 2015; Giangregorio 2014 (docs/osteoporosis.md)  
+  ↳ clave `moverseOsteoporosis`
 - [ ] «Si te desmayas mientras haces ejercicio, para y no vuelvas a hacer ejercicio hasta que te vea el médico.»  
   ↳ fuente: NICE CG109, recomendaciones 1.3.2.2 y 1.5.4.3: con un síncope durante el ejercicio, no hacer ejercicio hasta la valoración; Brignole 2018, p. 1911 (docs/pots.md)  
   ↳ clave `alarmaSincope`
@@ -350,6 +356,18 @@ Regiones periféricas:
   ↳ **redacción propia**
 - [ ] «Lupus en brote o peor sin valorar: que su reumatólogo revalore las contraindicaciones antes de seguir (Blaess 2024, rec. 4); en un brote articular, no cargar las articulaciones inflamadas (Blaess 2024, rec. 5).»  
   ↳ **redacción propia**
+- [ ] «Osteoporosis: fuerza progresiva 2–3 días por semana, hasta el peso que levanta 8–12 veces, en 2 series y hasta 3, con movimientos lentos y controlados, sin flexión con carga; si el riesgo de fractura vertebral es alto, sin máquinas que obliguen a flexionar o girar el tronco (Brooke-Wavell 2022, recuadro 1; Giangregorio 2014). Equilibrio a diario, 15–20 min (Giangregorio 2014).»  
+  ↳ **redacción propia**
+- [ ] «Osteoporosis sin fractura vertebral: impacto moderado la mayoría de los días, unos 50 impactos por sesión, sin caer desde altura (Brooke-Wavell 2022, consenso).»  
+  ↳ **redacción propia**
+- [ ] «Osteoporosis con fractura vertebral o varias fracturas por fragilidad: impacto solo hasta caminar a paso ligero, por precaución (Brooke-Wavell 2022, consenso; Giangregorio 2014).»  
+  ↳ **redacción propia**
+- [ ] «Osteoporosis: enseñar a moverse con seguridad, sin prohibir: bisagra de cadera al agacharse y levantar; la torsión, suave y mejor girando con pasos; no levantar ni dejar cosas en el suelo (Brooke-Wavell 2022, recuadro 3; Giangregorio 2015). Cuidado al pasar de tumbado a sentado o al darse la vuelta: en un ensayo, ejercicios en prono y darse la vuelta de boca arriba a boca abajo rompieron una costilla y un cartílago costal (Gibbs 2019). Con lluvia o hielo, el ejercicio mejor dentro de casa (Giangregorio 2014).»  
+  ↳ **redacción propia**
+- [ ] «Osteoporosis: sin manipulación con thrust en la columna ni en las costillas; la movilización suave puede ser adecuada (Maitland 2005, cap. 9, p. 223; Puentedura 2015, tabla 1). Los escalones no proponen grado V; si la pauta de una hipótesis incluye manipulación, aquí no se aplica.»  
+  ↳ fuente en el texto (Maitland 2005)
+- [ ] «Lupus con corticoides mantenidos o con anticoagulante o antiagregante: sin manipulación con thrust en la columna torácica (Puentedura 2015, tabla 1: corticoides a largo plazo y tratamiento anticoagulante, contraindicaciones absolutas). Si la pauta de una hipótesis incluye manipulación, aquí no se aplica.»  
+  ↳ **redacción propia**
 - [ ] «Lupus con anticoagulante o antiagregante: precaución con lo que tenga riesgo de golpe (Blaess 2024, rec. 3).»  
   ↳ **redacción propia**
 - [ ] «Lupus con Raynaud: al aire libre, guantes o ropa contra el frío; evitar tocar superficies frías y secar bien la piel durante y después del ejercicio (Blaess 2024, rec. 2). Por lo mismo, cuidado con el frío local en manos y pies (inferencia, sin fuente propia).»  
@@ -511,6 +529,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (RCUK 2021, NICE NG258)
 - [ ] «Red de seguridad (lupus): explicar que la debilidad o el adormecimiento de un lado, la dificultad para hablar o la pérdida de visión de golpe piden llamar al 112, aunque se pasen (Goodman 2018, cap. 12, p. 445; Drosos 2022, p. 773).»  
   ↳ fuente en el texto (Goodman 2018)
+- [ ] «Red de seguridad (osteoporosis): explicar que un dolor de espalda fuerte que empieza de golpe tras un esfuerzo pequeño pide parar y que le vea el médico, y que si además nota debilidad u hormigueo en las piernas, o cambios al orinar, debe ir a urgencias (Gregson 2025; Finucane 2020, sección 3).»  
+  ↳ fuente en el texto (Finucane 2020)
 - [ ] «Red de seguridad (disautonomía): explicar que, si se desmaya mientras hace ejercicio, debe parar y no volver a hacer ejercicio hasta que le vea el médico, y comprobar que lo ha entendido (NICE CG109, 1.3.2.2 y 1.5.4.3; Brignole 2018, p. 1911).»  
   ↳ fuente en el texto (NICE CG109, Brignole 2018)
 - [ ] «Signo comparable y la actividad que el paciente refiere como control (Maitland 2005, cap. 6, pp. 100–101 y 128).»  

@@ -4,7 +4,7 @@ import { assert, leer, test, SYSTEMIC_SCREENING, buildPhysiQPayload, buildInform
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
 const C = await import('../../lib/condiciones.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
-const { SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_LUPUS, SIS_MASTOCITOS } = await import('../../data/comun.js');
+const { SIS_HIPERMOVILIDAD, SIS_DISAUTONOMIA, SIS_LUPUS, SIS_MASTOCITOS, SIS_OSTEOPOROSIS } = await import('../../data/comun.js');
 
 console.log('\ncondiciones especiales (guía de la cabecera)');
 
@@ -12,12 +12,12 @@ const fila = id => CONDICIONES.find(c => c.id === id);
 const html = leer('index.html');
 
 test('orden de las filas (decisión 2): transversales de la más frecuente a la menos, luego lumbar y cadera', () => {
-  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'mastocitos', 'tarlov', 'cascanueces', 'congestionPelvica']);
+  assert.deepEqual(CONDICIONES.map(c => c.id), ['posquirurgico', 'hipermovilidad', 'disautonomia', 'lupus', 'mastocitos', 'osteoporosis', 'tarlov', 'cascanueces', 'congestionPelvica']);
   assert.deepEqual(CONDICIONES.filter(c => c.region).map(c => c.region), ['lumbar', 'lumbar', 'cadera']);
 });
 
 test('cada sistema transversal que solo se ve al marcarlo tiene su fila (una condición nueva añade la suya)', () => {
-  const PORCLAVE = { soloPosquirurgico: 'posquirurgico', soloHipermovilidad: 'hipermovilidad', soloDisautonomia: 'disautonomia', soloLupus: 'lupus', soloMastocitos: 'mastocitos' };
+  const PORCLAVE = { soloPosquirurgico: 'posquirurgico', soloHipermovilidad: 'hipermovilidad', soloDisautonomia: 'disautonomia', soloLupus: 'lupus', soloMastocitos: 'mastocitos', soloOsteoporosis: 'osteoporosis' };
   const claves = new Set(Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas)
     .flatMap(s => Object.keys(s).filter(k => /^solo[A-Z]/.test(k) && s[k] === true)));
   for (const k of claves) {
@@ -32,6 +32,8 @@ test('cada pista sale de una pregunta que existe (cuestionario, sospecha, rasgos
     ...SIS_DISAUTONOMIA.disautonomia.sospecha.map(q => q.id),
     ...SIS_LUPUS.lupus.rasgos.map(q => q.id),
     ...SIS_MASTOCITOS.preguntas.map(q => q.id),
+    ...SIS_OSTEOPOROSIS.osteoporosis.factores.map(q => q.id),
+    'l_e4',   // la pista del embarazo y la lactancia sale de la pregunta de lumbar (docs/osteoporosis.md, decisión 12)
   ]);
   for (const c of CONDICIONES) {
     assert.ok(c.pistas.length >= 1 && c.pistas.length <= 3, `${c.id}: 1 a 3 pistas`);
@@ -48,7 +50,7 @@ test('cada pista sale de una pregunta que existe (cuestionario, sospecha, rasgos
 
 test('cada fuente es una clave del registro que ya cita la pregunta de la que sale la pista', () => {
   const citaDe = id => {
-    const sueltas = { cq: SIS_HIPERMOVILIDAD.hipermovilidad.cuestionarioFuente, io: SIS_DISAUTONOMIA.disautonomia.sospechaFuente, lr: SIS_LUPUS.lupus.rasgosFuente };
+    const sueltas = { cq: SIS_HIPERMOVILIDAD.hipermovilidad.cuestionarioFuente, io: SIS_DISAUTONOMIA.disautonomia.sospechaFuente, lr: SIS_LUPUS.lupus.rasgosFuente, of: SIS_OSTEOPOROSIS.osteoporosis.factoresFuente };
     const pre = id.slice(0, 2);
     if (sueltas[pre]) return sueltas[pre];
     const q = Object.values(SYSTEMIC_SCREENING).flatMap(r => r.sistemas).flatMap(s => s.preguntas).find(x => x.id === id);
@@ -95,6 +97,11 @@ test('estado de las transversales con cada valor de su tarjeta', () => {
   assert.deepEqual(e('mastocitos', { mastocitos: { estado: '' } }), { texto: 'No consta', marcada: false });
   assert.deepEqual(e('mastocitos', { mastocitos: { estado: 'diagnosticado' } }), { texto: 'Diagnosticado', marcada: true });
   assert.equal(C.estadoCondicion(fila('mastocitos'), { mecanismo: '' }).texto, 'No consta');
+  const op = estado => e('osteoporosis', { osteoporosis: { estado } });
+  assert.deepEqual(op(''), { texto: 'No consta', marcada: false });
+  assert.deepEqual(op('sospecha'), { texto: 'Sospecha', marcada: true });
+  assert.deepEqual(op('diagnosticada'), { texto: 'Diagnosticada', marcada: true });
+  assert.equal(C.estadoCondicion(fila('osteoporosis'), { mecanismo: '' }).texto, 'No consta');
   // Sesiones antiguas sin las tarjetas
   assert.equal(C.estadoCondicion(fila('lupus'), { mecanismo: '' }).texto, 'No consta');
 });
