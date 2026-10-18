@@ -1,6 +1,6 @@
 # Embarazo y posparto — diseño (borrador)
 
-Estado: **borrador de diseño (octubre 2026), sin código.** Decisiones 1–16 aceptadas por el usuario (2026-10). Tanda 1 de PDF leída (siete fuentes, sección E) y sus cambios T1–T12 aceptados (2026-10). Tanda 2 leída (RCOG GTG 37b y Christopher 2024, sección F); sus cambios (U1–U5) están pendientes de ti. Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después de la osteoporosis (`docs/osteoporosis.md`), que dejó para esta tarjeta la sospecha de la osteoporosis del embarazo y la lactancia (decisión 12 y cambio H1 de aquel documento) y la osteoporosis transitoria de cadera (H5).
+Estado: **implementado (octubre 2026)** con las decisiones 1–16, los cambios T1–T12 y U1–U5 aceptados por el usuario; pendiente de tu revisión en la app antes de `main`. Detalle en «Implementación», al final.
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes; lo que no tiene fuente va marcado como redacción propia y es una decisión tuya.
 
@@ -485,3 +485,48 @@ Cada pregunta lleva su `razonamiento` (Fase F) y cada bandera su enlace (Fase M)
 2. Los PDF de la decisión 15, en tandas, y lo que cambien.
 3. La implementación, en la rama de trabajo, y tu revisión en la app antes de `main`.
 4. physiq-report: leer `em` del payload, en otra PR.
+
+## Implementación (octubre 2026, rama `claude/new-session-zlsxna`)
+
+Con las decisiones 1–16 y los cambios T1–T12 y U1–U5. Lo que se ve en la app:
+
+- **Fase 1, tarjeta `#cardEmbarazo`** (tras la osteoporosis):
+  - «Embarazada»: semanas de gestación y familiar de primer grado con disfunción del suelo pélvico.
+  - «Posparto (hasta 12 meses)»: fecha del parto o semanas aproximadas, tipo de parto, chips de lesión del esfínter anal y occipitoposterior, y lactancia.
+  - Con sexo «Hombre» y nada marcado, se pliega en una línea con «Mostrar» (decisión 2).
+  - Con la pregunta del embarazo del formulario lumbar en «Sí», recuerda marcarla, sin marcarla.
+  - La regla de la tensión (decisión 5) se pinta en la tarjeta:
+    - 160/110 o más con «Embarazada», en cualquier semana (NG201 1.2.27 no pone semanas), va a `ur`;
+    - 140/90 o más desde la semana 20 va a `dv`;
+    - 140/90 o más sin las semanas pide anotarlas.
+- **Fase 2, sistema `transversal_embarazo`** (séptimo de las 7 regiones, sin embudo):
+  - 12 urgencias y 3 derivaciones, cada una con su `em` (estado y semanas desde o hasta) y su razonamiento.
+  - Sin las semanas, salen todas las del estado.
+  - `em_u_tev` sale en los dos estados (U1).
+  - `em_d_plo` no sale con la PLO ya marcada en la tarjeta de la osteoporosis.
+  - Las del ánimo y la psicosis son `privada`: su texto no va a `sq`, solo su urgencia (decisión 11).
+  - Bloques de ánimo (las dos preguntas de CG192, con «Calcular PHQ-9 / GAD-7») y de suelo pélvico (tres preguntas, NG210 y NG123). Sus respuestas viven en `state.embarazo` y el ánimo nunca va al payload.
+  - La pregunta del ectópico de cada región lleva una línea en su razonamiento.
+- **Fase 4b**:
+  - **T1, cambio de forma frente a la decisión 7:** una sola línea encima de las hipótesis («no la dejes mucho rato boca arriba…»), con «Embarazada» y 20 semanas o más (o sin las semanas). No es un campo `supino` en cada test: solo 28 tests dicen en su criterio que se hacen boca arriba, y otros muchos lo son sin decirlo (Lachman, elevación de la pierna recta…). Una lista por test se quedaría corta; la línea general los cubre todos. Las LR no cambian.
+  - **T10:** `gaenslen: true` en el Gaenslen de `lu8` y en el clúster de Laslett de `ca10`, con la línea de Simonds 2022 en el posparto.
+- **Fase 5**:
+  - Recuadro `.em-fase5`, que nunca se pliega, con las líneas de T2, T4–T7, U4, Davenport, diástasis y suelo pélvico, cada una con su cita.
+  - En `lu8` y `ca10`, la línea de Vleeming 2008 (T8).
+- **Fase 6**:
+  - Avisos `embarazo` o `posparto` (y `lactancia`), `terapiaManualEmbarazo` y, con la sacroilíaca elegida, `sacroiliacaEmbarazo`.
+  - Red `RED_EMBARAZO` o `RED_POSPARTO`.
+  - Sin tope de thrust (decisión 8).
+- **Salidas**:
+  - payload `em` (solo con la tarjeta marcada; sin el ánimo);
+  - 📋 Notas «🤰 EMBARAZO» o «🤱 POSPARTO»;
+  - 📄 Informe «EMBARAZO» o «POSPARTO»;
+  - bloque de la IA `bloqueEMIA()` sin citas (`EM_CASOS` fija el texto literal para la copia de physiq-report);
+  - pendientes del modo breve: semanas o fecha del parto sin registrar.
+- **Guía de condiciones**: fila `embarazo` tras la osteoporosis.
+- **Registro**: 27 referencias nuevas (`ACOG 2020` y `RCOG 2015` por su año, no por su número de documento). «Peterson 2012» no se cita aparte: el texto habla del ensayo piloto recogido en la Cochrane.
+- **Pruebas**: `tests/unit/embarazo.mjs` y la sección `embarazo` de la prueba de humo.
+- **Pendiente**:
+  - tu revisión en la app;
+  - physiq-report: leer `em` con una copia de `bloqueEMIA()`, en otra PR.
+

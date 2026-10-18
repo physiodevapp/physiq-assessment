@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **11** frases.
+Redacción propia: **18** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -28,6 +28,12 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Al agacharte o levantar algo, dobla las caderas y las rodillas con la espalda recta. Para girarte, da pasos en vez de torcer el tronco. Guarda lo que uses a la altura de la cintura, no en el suelo. Con lluvia o hielo, haz el ejercicio dentro de casa.»  
   ↳ fuente: Brooke-Wavell 2022, recuadro 3; Giangregorio 2015; Giangregorio 2014 (docs/osteoporosis.md)  
   ↳ clave `moverseOsteoporosis`
+- [ ] «Si tienes un dolor de cabeza fuerte, ves borroso, te duele mucho bajo las costillas o se te hinchan de golpe la cara o las manos, que te vea hoy tu matrona o tu médico. Si notas que el bebé se mueve menos, llama a tu maternidad a cualquier hora. Si sangras, pierdes líquido por la vagina o tienes contracciones regulares y dolorosas, para y llama a tu maternidad.»  
+  ↳ fuente: NICE NG133, 1.1.1 (síntomas de preeclampsia); NICE NG201, 1.2.34 (movimientos fetales); Mottola 2018, recuadro 2 (motivos para parar y consultar) (docs/embarazo-posparto.md)  
+  ↳ clave `alarmaEmbarazo`
+- [ ] «Si sangras de golpe o mucho, tienes fiebre o escalofríos, un flujo que huele mal, una pierna hinchada y dolorosa, te falta el aire, te duele el pecho o tienes un dolor de cabeza fuerte, pide que te vea un médico hoy.»  
+  ↳ fuente: NICE NG194, 1.2.4 (síntomas que piden consulta médica sin demora tras el parto) (docs/embarazo-posparto.md)  
+  ↳ clave `alarmaPosparto`
 - [ ] «Si te desmayas mientras haces ejercicio, para y no vuelvas a hacer ejercicio hasta que te vea el médico.»  
   ↳ fuente: NICE CG109, recomendaciones 1.3.2.2 y 1.5.4.3: con un síncope durante el ejercicio, no hacer ejercicio hasta la valoración; Brignole 2018, p. 1911 (docs/pots.md)  
   ↳ clave `alarmaSincope`
@@ -358,6 +364,16 @@ Regiones periféricas:
   ↳ **redacción propia**
 - [ ] «Osteoporosis: fuerza progresiva 2–3 días por semana, hasta el peso que levanta 8–12 veces, en 2 series y hasta 3, con movimientos lentos y controlados, sin flexión con carga; si el riesgo de fractura vertebral es alto, sin máquinas que obliguen a flexionar o girar el tronco (Brooke-Wavell 2022, recuadro 1; Giangregorio 2014). Equilibrio a diario, 15–20 min (Giangregorio 2014).»  
   ↳ **redacción propia**
+- [ ] «Embarazo: actividad de intensidad moderada (puede hablar, no cantar), con aeróbico y fuerza; sin contacto ni riesgo de caída; si se marea, tiene náuseas o se encuentra mal boca arriba, ponerla de lado; parar si sangra, pierde líquido, tiene contracciones regulares y dolorosas, dolor de vientre o de pecho, o falta de aire o mareo que no ceden (Mottola 2018; ACOG 2020).»  
+  ↳ **redacción propia**
+- [ ] «Posparto: vuelta gradual guiada por los síntomas, sin autorización médica de rutina; consultar antes con su médico con tensión de más de 140/90, dolor en el pecho, falta de aire en reposo, mareo o sangrado sin regla; el dolor lumbar o de cintura pélvica, la incontinencia y la diástasis no contraindican el ejercicio (Davenport 2025). Con síntomas de suelo pélvico, fisioterapia de suelo pélvico (NICE NG210, 1.6.14).»  
+  ↳ **redacción propia**
+- [ ] «Da el pecho: mejor dar el pecho o sacarse leche antes del ejercicio, por comodidad (Davenport 2025).»  
+  ↳ **redacción propia**
+- [ ] «Embarazo o posparto: la terapia manual, como complemento y nunca sola; como mucho, para probar el alivio en pocas sesiones (Hall 2016; Simonds 2022; Vleeming 2008, nivel D). Del thrust en el embarazo solo hay un ensayo piloto de 15 mujeres sin efectos adversos (Liddle y Pennick 2015): no basta para decir que sea seguro.»  
+  ↳ **redacción propia**
+- [ ] «Sacroilíaca en el embarazo o el posparto: primero información (no es peligroso y probablemente mejorará) y ejercicio individualizado, o estabilización individualizada tras el parto (Vleeming 2008, nivel C); el cinturón, para probar el alivio por periodos cortos (Vleeming 2008, nivel D; NICE NG201, 1.4.15).»  
+  ↳ **redacción propia**
 - [ ] «Osteoporosis sin fractura vertebral: impacto moderado la mayoría de los días, unos 50 impactos por sesión, sin caer desde altura (Brooke-Wavell 2022, consenso).»  
   ↳ **redacción propia**
 - [ ] «Osteoporosis con fractura vertebral o varias fracturas por fragilidad: impacto solo hasta caminar a paso ligero, por precaución (Brooke-Wavell 2022, consenso; Giangregorio 2014).»  
@@ -531,6 +547,10 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
   ↳ fuente en el texto (Goodman 2018)
 - [ ] «Red de seguridad (osteoporosis): explicar que un dolor de espalda fuerte que empieza de golpe tras un esfuerzo pequeño pide parar y que le vea el médico, y que si además nota debilidad u hormigueo en las piernas, o cambios al orinar, debe ir a urgencias (Gregson 2025; Finucane 2020, sección 3).»  
   ↳ fuente en el texto (Finucane 2020)
+- [ ] «Red de seguridad (embarazo): explicar que el dolor de cabeza fuerte, la visión borrosa, el dolor fuerte bajo las costillas o la hinchazón brusca de la cara o las manos piden que la vea un profesional hoy; que si nota que el bebé se mueve menos llame a su maternidad a cualquier hora, y que si sangra, pierde líquido o tiene contracciones regulares y dolorosas, pare y llame (NICE NG133, 1.1.1; NICE NG201, 1.2.34; Mottola 2018, recuadro 2).»  
+  ↳ **redacción propia**
+- [ ] «Red de seguridad (posparto): explicar que un sangrado brusco o muy abundante, la fiebre o los escalofríos, el flujo maloliente, la pierna hinchada y dolorosa, la falta de aire, el dolor en el pecho o un dolor de cabeza fuerte piden consulta médica sin demora, y comprobar que lo ha entendido (NICE NG194, 1.2.4).»  
+  ↳ **redacción propia**
 - [ ] «Red de seguridad (disautonomía): explicar que, si se desmaya mientras hace ejercicio, debe parar y no volver a hacer ejercicio hasta que le vea el médico, y comprobar que lo ha entendido (NICE CG109, 1.3.2.2 y 1.5.4.3; Brignole 2018, p. 1911).»  
   ↳ fuente en el texto (NICE CG109, Brignole 2018)
 - [ ] «Signo comparable y la actividad que el paciente refiere como control (Maitland 2005, cap. 6, pp. 100–101 y 128).»  
