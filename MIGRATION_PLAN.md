@@ -467,3 +467,12 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
   - [x] Implementado (2026-10): icono de brújula en la cabecera y opción en «Herramientas» en móvil, `data/condiciones.js`, `lib/condiciones.js`, `abrirCondiciones()` / `irACondicion()` en `app.js`; pruebas unitarias (`tests/unit/condiciones.mjs`) y sección `condiciones` de la prueba de humo
   - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
   - [x] Fila de la congestión pélvica (`ca_u6`) bajo «Solo en cadera» (2026-10, petición del usuario); el apartado y el botón de las filas de región salen ya del nombre de la región
+
+### Próximas condiciones especiales (pendientes, sin diseño)
+
+Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario para la primera). Cada una, como el MCAD: borrador en `docs/<condicion>.md` solo con fuentes leídas enteras, decisiones del usuario, implementación, revisión antes de `main` y, si añade un campo al payload, la copia en physiq-report.
+
+- [ ] **Osteoporosis o fragilidad ósea** (`docs/osteoporosis.md`, siguiente): cambia qué técnicas y qué tests de la fase 4b se pueden hacer (manipulación, fuerza aplicada, carga) y enlaza con la fractura vertebral por compresión del panel de tiempos de tejido (`fx_vertebral_compresion`). Incluir la **osteoporosis asociada al embarazo y la lactancia** (caso del usuario, 2026-10: tras el parto, con lactancia, fisuras en cuerpos vertebrales torácicos): decidir en el borrador si va como subtipo o causa dentro de esta tarjeta o como enlace con la de embarazo y posparto
+  - [ ] Borrador de diseño (fuentes leídas enteras, contradicciones, forma recomendada, relación con lupus por los corticoides y con el posparto)
+- [ ] **Paciente anticoagulado o antiagregado**: técnicas (manipulación, fuerza, punción), hematomas y sangrados como bandera; hoy solo existe dentro del lupus (casilla «anticoagulante o antiagregante»), que habría que reutilizar o enlazar
+- [ ] **Embarazo y posparto**: columna, cadera y suelo pélvico, con sus propias banderas (preeclampsia, trombosis venosa profunda); enlaza con la osteoporosis del embarazo y la lactancia y con la pregunta urgente del embarazo ectópico (`h_g1`) ya existente
