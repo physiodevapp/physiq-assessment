@@ -1,6 +1,6 @@
 # Trastornos de la activación mastocitaria (MCAD) — diseño
 
-Estado: **diseño sin código (octubre 2026). Aceptadas por el usuario las 12 recomendaciones** (ver «Decisiones aceptadas»). Pasajes clave comprobados en las fuentes (ver «Comprobación de pasajes»). **PDF de la decisión 9 leídos enteros** (ver «Lectura de los PDF»). **Aceptadas también las decisiones 13–16.** Farley 2025 y Seneviratne 2017 no están disponibles. **Implementado (octubre 2026; ver «Implementación»), pendiente de la revisión del usuario antes de `main`.** Posible condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad (`docs/hipermovilidad.md`), el POTS (`docs/pots.md`) y el lupus (`docs/lupus.md`). La guía de condiciones especiales (`docs/condiciones-especiales.md`) tendría que añadir su fila si se hace una tarjeta.
+Estado: **implementado y revisado por el usuario (octubre 2026). Aceptadas por el usuario las 12 recomendaciones** (ver «Decisiones aceptadas»). Pasajes clave comprobados en las fuentes (ver «Comprobación de pasajes»). **PDF de la decisión 9 leídos enteros** (ver «Lectura de los PDF»). **Aceptadas también las decisiones 13–16.** Farley 2025 y Seneviratne 2017 no están disponibles. **Implementado (octubre 2026; ver «Implementación») y revisado por el usuario.** Posible condición especial de la Fase P (`MIGRATION_PLAN.md`), después de la hipermovilidad (`docs/hipermovilidad.md`), el POTS (`docs/pots.md`) y el lupus (`docs/lupus.md`). La guía de condiciones especiales (`docs/condiciones-especiales.md`) tendría que añadir su fila si se hace una tarjeta.
 
 **Enfoque** (decidido con el usuario, octubre 2026): el diseño parte del paraguas de los **trastornos de la activación mastocitaria** (MCAD, por sus siglas en inglés), no del síndrome de activación mastocitaria (SAMA) solo. Lo que cambia la sesión es el **riesgo de anafilaxia**, y ese riesgo está descrito para cada variante del paraguas (mastocitosis, SAMA con sus variantes, α-triptasemia hereditaria como agravante), no para el SAMA aislado. La primera versión de este borrador partía del SAMA; el documento conserva su nombre de archivo.
 
@@ -509,5 +509,5 @@ Hecho según la forma 2 y las 16 decisiones, con estas concreciones:
 2. ~~Los PDF de la decisión 9~~ Hecho: leídos enteros (ver «Lectura de los PDF»). Farley 2025 y Seneviratne 2017 no están disponibles.
 3. ~~Tus decisiones 13–16~~ Hecho: aceptadas.
 4. ~~La implementación~~ Hecho (octubre 2026), en la rama de trabajo.
-5. **Tu revisión en la app** antes de `main`: la tarjeta, la derivación de la fase 2, la línea de la 4b, el recuadro de la fase 5 y el aviso y la red de la fase 6.
+5. ~~**Tu revisión en la app** antes de `main`~~ Hecho (2026-10): la tarjeta, la derivación de la fase 2, la línea de la 4b, el recuadro de la fase 5 y el aviso y la red de la fase 6.
 6. physiq-report: leer `ma` del payload (otro repositorio).
