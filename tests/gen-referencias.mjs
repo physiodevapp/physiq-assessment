@@ -15,9 +15,10 @@ const { REFERENCIAS } = await import('../data/referencias.js');
 const PLAN_TRATAMIENTO = await import('../data/plan-tratamiento.js');
 const IRRITABILIDAD = await import('../data/irritabilidad.js');
 const { CONDICIONES } = await import('../data/condiciones.js');
+const { FAMILIAS_FARMACO: FARMACOS } = await import('../data/farmacos.js');
 const { testPuntua } = await import('../phase4b.js');
 const { construirReferencias } = await import('./referencias.mjs');
 
 const outPath = join(dirname(fileURLToPath(import.meta.url)), '..', 'docs', 'referencias.md');
-writeFileSync(outPath, construirReferencias({ ...datos, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, REFERENCIAS, testPuntua }));
+writeFileSync(outPath, construirReferencias({ ...datos, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, REFERENCIAS, testPuntua }));
 console.log(`Wrote ${outPath}`);

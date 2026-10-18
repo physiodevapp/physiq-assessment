@@ -2298,6 +2298,103 @@ async function checkCondiciones(browser, errors) {
   return r;
 }
 
+// Guía de fármacos (docs/farmacologia.md, paso 2): diálogo centrado con los
+// AINE plegados y las pendientes; dentro, «✨ IA» con contexto (por encima del
+// velo) y citas; «Preguntar a la IA sobre fármacos» abre el diálogo en esa
+// modalidad; en móvil desde «Herramientas», atrás cierra; 320 px; en el hub,
+// visible y sin el atajo a la IA.
+async function checkFarmacos(browser, errors) {
+  const r = {};
+  const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (farmacos): ${err.message}`));
+  await abrirApp(page);
+  await page.evaluate(() => {
+    window.__iaHrefs = [];
+    window.addEventListener('click', e => {
+      const a = e.target.closest?.('a[target="_blank"]');
+      if (a) { e.preventDefault(); setTimeout(() => window.__iaHrefs.push(a.href), 0); }
+    }, true);
+  });
+  await page.click('#farmBtn');
+  r.dialogo = await page.evaluate(() => {
+    const p = document.getElementById('farmPanel').getBoundingClientRect();
+    const fam = [...document.querySelectorAll('#farmCuerpo .farm-familia')];
+    return document.getElementById('farmOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
+      && fam.length >= 1 && fam[0].dataset.familia === 'aine' && !fam[0].open
+      && document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Corticoides');
+  });
+  await page.click('[data-familia="aine"] > summary');
+  r.apartados = await page.evaluate(() => [...document.querySelectorAll('[data-familia="aine"] .farm-apartado')].map(a => a.dataset.apartado).join() === 'dolor,visceral,ejercicio,sueno,consultar'
+    && document.querySelectorAll('[data-familia="aine"] .farm-apartado .cita').length > 3);
+  // «✨ IA» del primer párrafo: visible sobre el velo y con la familia como contexto
+  await page.click('[data-familia="aine"] .farm-apartado p .ia-parrafo-ir');
+  await page.waitForTimeout(150);
+  r.ia = await page.evaluate(() => {
+    const q = decodeURIComponent((window.__iaHrefs.at(-1) || '').split('q=')[1] || '').replace(/\+/g, ' ');
+    return q.includes('«AINE (antiinflamatorios no esteroideos)»') && q.includes('Alivian el dolor');
+  });
+  await page.click('[data-familia="aine"] .farm-apartado p .ia-elegir');
+  r.menuEncima = await page.evaluate(() => {
+    const m = document.getElementById('iaMenu');
+    if (!m || m.hidden) return false;
+    const b = m.getBoundingClientRect();
+    return document.elementFromPoint(b.left + b.width / 2, b.top + 10)?.closest('#iaMenu') === m;
+  });
+  await page.keyboard.press('Escape');
+  if (await page.evaluate(() => document.getElementById('farmOverlay').classList.contains('open'))) {
+    await page.click('#farmCuerpo .farm-preguntar');
+    r.preguntar = await page.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open')
+      && document.getElementById('preguntaOverlay').classList.contains('open')
+      && document.querySelector('#preguntaTipos .option-btn.selected')?.dataset.tipo === 'farmacos', null, { timeout: 3000 }).then(() => true, () => false);
+    await page.keyboard.press('Escape');
+  } else r.preguntar = 'Escape cerró la guía con el menú abierto';
+  await page.click('#farmBtn');
+  await page.keyboard.press('Escape');
+  r.escape = await page.evaluate(() => !document.getElementById('farmOverlay').classList.contains('open'));
+  await page.emulateMedia({ media: 'print' });
+  r.sinImprimir = await page.evaluate(() => getComputedStyle(document.getElementById('farmBtn')).display === 'none');
+  await context.close();
+
+  const movil = await browser.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true });
+  const m = await movil.newPage();
+  m.on('pageerror', err => errors.push(`pageerror (farmacos móvil): ${err.message}`));
+  await abrirApp(m);
+  await m.evaluate(() => { window.state.maxVisitedIdx = 2; window.goToPhase(2); });
+  await abrirHerramienta(m, 'farmacos');
+  await m.waitForSelector('#farmOverlay.open');
+  r.hoja = await m.waitForFunction(() => {
+    const p = document.getElementById('farmPanel').getBoundingClientRect();
+    return Math.round(p.width) === innerWidth && Math.abs(p.bottom - innerHeight) < 2;
+  }, null, { timeout: 3000 }).then(() => true, () => false)
+    && await m.evaluate(() => getComputedStyle(document.getElementById('farmBtn')).display === 'none');
+  await m.goBack();
+  r.atras = await m.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open'), null, { timeout: 3000 }).then(() => true, () => false)
+    && await m.evaluate(() => window.state.currentPhase === 2);
+  await m.setViewportSize({ width: 320, height: 700 });
+  await abrirHerramienta(m, 'farmacos');
+  await m.waitForSelector('#farmOverlay.open');
+  await m.tap('[data-familia="aine"] > summary');
+  r.estrecho = await m.evaluate(() => {
+    const c = document.getElementById('farmCuerpo');
+    return document.documentElement.scrollWidth <= innerWidth && c.scrollWidth <= c.clientWidth;
+  });
+  await movil.close();
+
+  const ctxHub = await browser.newContext({ viewport: { width: 1100, height: 900 } });
+  const hub = await ctxHub.newPage();
+  const frame = await cargarEnHub(hub);
+  r.hub = await frame.evaluate(() => {
+    if (getComputedStyle(document.getElementById('farmBtn')).display === 'none') return false;
+    window.abrirFarmacos();
+    const b = document.querySelector('#farmCuerpo .farm-preguntar');
+    return getComputedStyle(b).display === 'none';
+  });
+  await ctxHub.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function checkCuestionarios(browser, errors) {
   const r = {};
   const { CUESTIONARIOS } = await import(new URL('../data/cuestionarios.js', import.meta.url));
@@ -5396,6 +5493,12 @@ const SECCIONES = [
   { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
     const c = await checkCondiciones(browser, errors);
     console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 8 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
+  } },
+
+  { id: 'farmacos', titulo: 'Guía de fármacos:', run: async ({ browser, errors }) => {
+    const c = await checkFarmacos(browser, errors);
+    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con los AINE plegados y sus cinco apartados con citas, las familias pendientes listadas; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; «Preguntar a la IA sobre fármacos» abre el diálogo en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
