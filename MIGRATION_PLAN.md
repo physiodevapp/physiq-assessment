@@ -492,5 +492,5 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] PDF, tanda 2 (2026-10): RCOG GTG 37b (síntomas de TVP y TEP en el embarazo, sin dímero D ni escala validada) y Christopher 2024 (volver a correr: no antes de 3 semanas, sin plazo fijo). 5 cambios (U1–U5) pendientes del usuario. Opcionales sin leer: Bauersachs 2019 y Woodley 2020
   - [x] Cambios U1–U5 del usuario: aceptados (2026-10)
   - [x] Implementación (2026-10, rama `claude/new-session-zlsxna`): tarjeta `#cardEmbarazo` (embarazada con semanas; posparto con fecha, parto, chips y lactancia; plegada con «Hombre»), regla de la tensión de NICE NG201, sistema `transversal_embarazo` (12 urgencias y 3 derivaciones por estado y semanas, ánimo y suelo pélvico), línea del supino encima de la 4b (no un campo por test: ver «Implementación» en el documento) y del Gaenslen en el posparto, recuadro de la fase 5, línea de Vleeming en `lu8`/`ca10`, avisos y red de la fase 6, payload `em`, 📋 Notas, 📄 Informe y bloque de la IA, fila de la guía, 27 referencias. `tests/unit/embarazo.mjs` y sección `embarazo` de la prueba de humo
-  - [ ] Revisión del usuario en la app antes de `main`
+  - [x] Revisión del usuario en la app (2026-10)
   - [ ] physiq-report: leer `em` con una copia literal de `bloqueEMIA()` (`EM_CASOS` fija el texto en los dos repositorios)

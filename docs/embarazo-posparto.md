@@ -1,6 +1,6 @@
 # Embarazo y posparto — diseño (borrador)
 
-Estado: **implementado (octubre 2026)** con las decisiones 1–16, los cambios T1–T12 y U1–U5 aceptados por el usuario; pendiente de tu revisión en la app antes de `main`. Detalle en «Implementación», al final.
+Estado: **implementado (octubre 2026)** con las decisiones 1–16, los cambios T1–T12 y U1–U5 aceptados por el usuario y revisado por el usuario en la app (2026-10). Detalle en «Implementación», al final.
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes; lo que no tiene fuente va marcado como redacción propia y es una decisión tuya.
 
@@ -527,6 +527,5 @@ Con las decisiones 1–16 y los cambios T1–T12 y U1–U5. Lo que se ve en la a
 - **Registro**: 27 referencias nuevas (`ACOG 2020` y `RCOG 2015` por su año, no por su número de documento). «Peterson 2012» no se cita aparte: el texto habla del ensayo piloto recogido en la Cochrane.
 - **Pruebas**: `tests/unit/embarazo.mjs` y la sección `embarazo` de la prueba de humo.
 - **Pendiente**:
-  - tu revisión en la app;
   - physiq-report: leer `em` con una copia de `bloqueEMIA()`, en otra PR.
 
