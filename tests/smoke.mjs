@@ -1946,9 +1946,28 @@ async function checkPreguntaIA(browser, errors) {
   const b = await ultimo();
   r.fase2 = b.n === 2 && b.host === 'https://claude.ai/new' && b.q.includes('Contexto: valoración de lumbar. Mi pregunta: «Dosis de ejercicio en lumbalgia crónica».')
     && !b.q.includes('Secreta') && !b.q.includes('47') && !b.q.includes('razonamiento');
+  // Modalidad «Fármacos»: guion visible, prompt con el guion y la región;
+  // al volver a abrir, otra vez «Pregunta libre»
   await page.waitForTimeout(100);
   await page.click('#preguntaIABtn');
-  r.escape = await page.evaluate(() => document.querySelector('#preguntaDestinos .option-btn.selected')?.dataset.destino === 'claude');
+  r.tipoDefecto = await page.evaluate(() => document.querySelector('#preguntaTipos .option-btn.selected')?.dataset.tipo === 'libre'
+    && document.getElementById('preguntaGuion').hidden);
+  await page.click('#preguntaTipos [data-tipo="farmacos"]');
+  r.farmacosUI = await page.evaluate(() => !document.getElementById('preguntaGuion').hidden
+    && document.getElementById('preguntaGuion').textContent.includes('No propone cambiar la medicación')
+    && document.getElementById('preguntaTexto').placeholder.includes('ibuprofeno')
+    && document.getElementById('preguntaNota').textContent.includes('guion'));
+  await page.fill('#preguntaTexto', 'Atorvastatina y bisoprolol');
+  await page.press('#preguntaTexto', 'Enter');
+  await page.waitForTimeout(150);
+  const f = await ultimo();
+  r.farmacos = f.n === 3 && f.q.includes('Contexto: valoración de lumbar. Fármacos o duda: «Atorvastatina y bisoprolol».')
+    && f.q.includes('No propongas cambiar, suspender ni ajustar la medicación.') && f.q.includes('CIMA, AEMPS')
+    && !f.q.includes('Secreta') && !f.q.includes('47');
+  await page.waitForTimeout(100);
+  await page.click('#preguntaIABtn');
+  r.escape = await page.evaluate(() => document.querySelector('#preguntaDestinos .option-btn.selected')?.dataset.destino === 'claude'
+    && document.querySelector('#preguntaTipos .option-btn.selected')?.dataset.tipo === 'libre');
   await page.keyboard.press('Escape');
   r.escape = r.escape && !(await abierto());
   await context.close();
@@ -1977,7 +1996,7 @@ async function checkPreguntaIA(browser, errors) {
   await movil.waitForTimeout(400);
   r.caben320 = await movil.evaluate(() => {
     const panel = document.getElementById('preguntaPanel').getBoundingClientRect();
-    return [...document.querySelectorAll('#preguntaDestinos .option-btn'), document.getElementById('preguntaIr'), document.querySelector('#preguntaCabecera .mic-btn')].every(b => {
+    return [...document.querySelectorAll('#preguntaDestinos .option-btn, #preguntaTipos .option-btn'), document.getElementById('preguntaIr'), document.querySelector('#preguntaCabecera .mic-btn')].every(b => {
       const rb = b.getBoundingClientRect();
       return rb.left >= panel.left && rb.right <= panel.right && b.scrollWidth <= b.clientWidth;
     }) && document.documentElement.scrollWidth <= innerWidth;
@@ -5358,7 +5377,7 @@ const SECCIONES = [
     const ampliarIA = await checkAmpliarIA(browser);
     console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; al hacer scroll el menú se cierra y la barra no se pinta sobre la cabecera (se esconde y vuelve); fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
     const preguntaIA = await checkPreguntaIA(browser, errors);
-    console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, 🎤 junto al título que llena el texto, se corta al cerrar y se desactiva grabando, Claude se recuerda, Escape cierra; hoja inferior en móvil sin teclado al abrir que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
+    console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, 🎤 junto al título que llena el texto, se corta al cerrar y se desactiva grabando, Claude se recuerda, modalidad «Fármacos» con guion (y vuelve a «Pregunta libre» al reabrir), Escape cierra; hoja inferior en móvil sin teclado al abrir que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
     return ampliarIA.ok && preguntaIA.ok;
   } },
 
