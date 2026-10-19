@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **676** referencias de literatura, con **4287** usos.
+- **718** referencias de literatura, con **4331** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **379** de 676 referencias del registro revisadas. Ver «Estado de revisión».
+- **379** de 718 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -299,7 +299,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hardcastle 2022](#hardcastle-2022) | texto | 14 | **sin revisar** |
 | [Montero-Odasso 2022](#montero-odasso-2022) | texto | 21 | **sin revisar** |
 | [Muraro 2022](#muraro-2022) | texto | 14 | **sin revisar** |
-| [Nochaiwong 2022](#nochaiwong-2022) | texto | 8 | **sin revisar** |
+| [Nochaiwong 2022](#nochaiwong-2022) | texto | 9 | **sin revisar** |
 | [Tenforde 2022](#tenforde-2022) | texto | 7 | **sin revisar** |
 | [Burani 2023](#burani-2023) | texto | 7 | **sin revisar** |
 | [Frade 2023](#frade-2023) | texto | 21 | **sin revisar** |
@@ -327,25 +327,67 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Valdez 2026](#valdez-2026) | texto | 7 | **sin revisar** |
 | [Waterway 2026](#waterway-2026) | texto | 7 | **sin revisar** |
 | [Camilleri 2017](#camilleri-2017) | — | 1 | **sin revisar** |
+| [Filippatos 2017](#filippatos-2017) | — | 1 | **sin revisar** |
+| [Wichniak 2017](#wichniak-2017) | — | 1 | **sin revisar** |
 | [Compston 2018](#compston-2018) | — | 1 | **sin revisar** |
+| [Wang 2018](#wang-2018) | — | 1 | **sin revisar** |
+| [Welsch 2018](#welsch-2018) | — | 1 | **sin revisar** |
 | [Lucas 2019](#lucas-2019) | — | 1 | **sin revisar** |
 | [Bindu 2020](#bindu-2020) | — | 1 | **sin revisar** |
 | [De Vries 2020](#de-vries-2020) | — | 1 | **sin revisar** |
+| [McAnally 2020](#mcanally-2020) | — | 1 | **sin revisar** |
+| [Bhanu 2021](#bhanu-2021) | — | 1 | **sin revisar** |
+| [Cashin 2021](#cashin-2021) | — | 1 | **sin revisar** |
 | [Dufort y Samaan 2021](#dufort-y-samaan-2021) | — | 1 | **sin revisar** |
+| [Edinoff 2021](#edinoff-2021) | — | 1 | **sin revisar** |
+| [Giménez-Campos 2021](#giménez-campos-2021) | — | 1 | **sin revisar** |
 | [Schug 2021](#schug-2021) | — | 1 | **sin revisar** |
+| [Alam 2022](#alam-2022) | — | 1 | **sin revisar** |
+| [Carvalho 2022](#carvalho-2022) | — | 1 | **sin revisar** |
+| [De Filippis 2022](#de-filippis-2022) | — | 1 | **sin revisar** |
 | [Dowell 2022](#dowell-2022) | — | 1 | **sin revisar** |
+| [Hahn 2022](#hahn-2022) | — | 1 | **sin revisar** |
 | [Kurlander 2022](#kurlander-2022) | — | 1 | **sin revisar** |
 | [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) | — | 1 | **sin revisar** |
 | [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) | — | 1 | **sin revisar** |
+| [Capiau 2023](#capiau-2023) | — | 1 | **sin revisar** |
+| [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) | — | 1 | **sin revisar** |
+| [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) | — | 1 | **sin revisar** |
+| [Horowitz 2023](#horowitz-2023) | — | 1 | **sin revisar** |
+| [Kang 2023](#kang-2023) | — | 1 | **sin revisar** |
+| [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) | — | 1 | **sin revisar** |
+| [Martínez 2023](#martínez-2023) | — | 1 | **sin revisar** |
+| [Meaadi 2023](#meaadi-2023) | — | 1 | **sin revisar** |
+| [Moraczewski 2023](#moraczewski-2023) | — | 1 | **sin revisar** |
 | [Papantoniou 2023](#papantoniou-2023) | — | 1 | **sin revisar** |
 | [Pofi 2023](#pofi-2023) | — | 1 | **sin revisar** |
+| [Wewege 2023](#wewege-2023) | — | 1 | **sin revisar** |
 | [Beuschlein 2024](#beuschlein-2024) | — | 1 | **sin revisar** |
+| [Bounds y Patel 2024](#bounds-y-patel-2024) | — | 1 | **sin revisar** |
+| [Cross 2024](#cross-2024) | — | 1 | **sin revisar** |
+| [Farishta 2024](#farishta-2024) | — | 1 | **sin revisar** |
+| [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) | — | 1 | **sin revisar** |
+| [Hwang 2024](#hwang-2024) | — | 1 | **sin revisar** |
+| [Narayan 2024](#narayan-2024) | — | 1 | **sin revisar** |
+| [Oldfield 2024](#oldfield-2024) | — | 1 | **sin revisar** |
 | [Pannone y Abbott 2024](#pannone-y-abbott-2024) | — | 1 | **sin revisar** |
+| [Sibrack 2024](#sibrack-2024) | — | 1 | **sin revisar** |
+| [Simon 2024](#simon-2024) | — | 1 | **sin revisar** |
+| [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) | — | 1 | **sin revisar** |
 | [Yang 2024](#yang-2024) | — | 1 | **sin revisar** |
+| [Yasaei 2024](#yasaei-2024) | — | 1 | **sin revisar** |
+| [Brunner 2025](#brunner-2025) | — | 1 | **sin revisar** |
+| [Ferraro 2025](#ferraro-2025) | — | 1 | **sin revisar** |
 | [He 2025](#he-2025) | — | 1 | **sin revisar** |
-| [Blyzniuk 2026](#blyzniuk-2026) | — | 1 | **sin revisar** |
+| [Biswas 2026](#biswas-2026) | — | 1 | **sin revisar** |
+| [Blyzniuk 2026](#blyzniuk-2026) | — | 2 | **sin revisar** |
 | [Grusky 2026](#grusky-2026) | — | 1 | **sin revisar** |
+| [Kershner 2026](#kershner-2026) | — | 1 | **sin revisar** |
+| [Kishi 2026](#kishi-2026) | — | 1 | **sin revisar** |
 | [Soura 2026](#soura-2026) | — | 1 | **sin revisar** |
+| [Thour 2026](#thour-2026) | — | 1 | **sin revisar** |
+| [Waseem 2026](#waseem-2026) | — | 1 | **sin revisar** |
+| [Zhang 2026](#zhang-2026) | — | 1 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | 2026-10 · Sustituida por van der Windt 2010 (revisión Cochrane del mismo grupo, con Devillé como autor; PDF del usuario): SLR y SLR cruzado de lu3 pasan a sus cifras agrupadas con LR publicadas. Se menciona como dato anterior. |
@@ -945,7 +987,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [ACOG 2020](#acog-2020) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [Albrecht 2024](#albrecht-2024) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Amaniyan 2020](#amaniyan-2020) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Bahit 2017](#bahit-2017) · [Baker 2018](#baker-2018) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Bavishi 2026](#bavishi-2026) · [Baylor 2023](#baylor-2023) · [Beamish 2025](#beamish-2025) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Beuschlein 2024](#beuschlein-2024) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brockow 2021](#brockow-2021) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brooker 2020](#brooker-2020) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Bruessel 2026](#bruessel-2026) · [Budha 2025](#budha-2025) · [Bull 2020](#bull-2020) · [Burani 2023](#burani-2023) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Capsoni 2025](#capsoni-2025) · [Cardona 2020](#cardona-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Champaneria 2016](#champaneria-2016) · [Chauhan 2023](#chauhan-2023) · [Cheatham 2025](#cheatham-2025) · [Chen 2023](#chen-2023) · [Chenoweth 2018](#chenoweth-2018) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Colombo 2021](#colombo-2021) · [Compston 2018](#compston-2018) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Cooper 2019](#cooper-2019) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Dalrymple 2022](#dalrymple-2022) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Gluppe 2021](#gluppe-2021) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Gülen 2023](#gülen-2023) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2026](#hadji-2026) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Hameed 2023](#hameed-2023) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Haskins 2015](#haskins-2015) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hideyama 2023](#hideyama-2023) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Hutting 2018](#hutting-2018) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaneko 2021](#kaneko-2021) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim 2025](#kim-2025) · [Kim 2026](#kim-2026) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Kwon 2024](#kwon-2024) · [Lacy 2023](#lacy-2023) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Liao 2021](#liao-2021) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2015](#liu-2015) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Llitjos 2016](#llitjos-2016) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Lukies 2023](#lukies-2023) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malfait 2024](#malfait-2024) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Minardi 2024](#minardi-2024) · [Mitchell 2023](#mitchell-2023) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mottola 2018](#mottola-2018) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Nemunaitis 2022](#nemunaitis-2022) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG196](#nice-ng196) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG232](#nice-ng232) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nochaiwong 2022](#nochaiwong-2022) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Ogrodnik 2021](#ogrodnik-2021) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Peng 2022](#peng-2022) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhim 2025](#rhim-2025) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Sahu 2020](#sahu-2020) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Scioscia 2023](#scioscia-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Simonds 2022](#simonds-2022) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Steffel 2021](#steffel-2021) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Tenforde 2022](#tenforde-2022) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Tominaga 2023](#tominaga-2023) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waterway 2026](#waterway-2026) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [WFH 2020](#wfh-2020) · [Whedon 2015](#whedon-2015) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wiegele 2019](#wiegele-2019) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Xiang 2025](#xiang-2025) · [Yale 2020](#yale-2020) · [Yamamoto 2009](#yamamoto-2009) · [Yang 2024](#yang-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
+[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [ACOG 2020](#acog-2020) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Alam 2022](#alam-2022) · [Albert-Lucena 2025](#albert-lucena-2025) · [Albrecht 2024](#albrecht-2024) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Amaniyan 2020](#amaniyan-2020) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Bahit 2017](#bahit-2017) · [Baker 2018](#baker-2018) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Bavishi 2026](#bavishi-2026) · [Baylor 2023](#baylor-2023) · [Beamish 2025](#beamish-2025) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Beuschlein 2024](#beuschlein-2024) · [Bhanu 2021](#bhanu-2021) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Birrell 2001](#birrell-2001) · [Biswas 2026](#biswas-2026) · [Biz 2019](#biz-2019) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Bounds y Patel 2024](#bounds-y-patel-2024) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brockow 2021](#brockow-2021) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brooker 2020](#brooker-2020) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Bruessel 2026](#bruessel-2026) · [Brunner 2025](#brunner-2025) · [Budha 2025](#budha-2025) · [Bull 2020](#bull-2020) · [Burani 2023](#burani-2023) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Capiau 2023](#capiau-2023) · [Capsoni 2025](#capsoni-2025) · [Cardona 2020](#cardona-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Carvalho 2022](#carvalho-2022) · [Cascia 2019](#cascia-2019) · [Cashin 2021](#cashin-2021) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Champaneria 2016](#champaneria-2016) · [Chauhan 2023](#chauhan-2023) · [Cheatham 2025](#cheatham-2025) · [Chen 2023](#chen-2023) · [Chenoweth 2018](#chenoweth-2018) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Colombo 2021](#colombo-2021) · [Compston 2018](#compston-2018) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Cooper 2019](#cooper-2019) · [Couch 2025](#couch-2025) · [Cross 2024](#cross-2024) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Dalrymple 2022](#dalrymple-2022) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Filippis 2022](#de-filippis-2022) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Edinoff 2021](#edinoff-2021) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farishta 2024](#farishta-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Ferraro 2025](#ferraro-2025) · [Filippatos 2017](#filippatos-2017) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) · [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Giménez-Campos 2021](#giménez-campos-2021) · [Gluppe 2021](#gluppe-2021) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Gülen 2023](#gülen-2023) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2026](#hadji-2026) · [Hahn 2022](#hahn-2022) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Hameed 2023](#hameed-2023) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Haskins 2015](#haskins-2015) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hideyama 2023](#hideyama-2023) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Horowitz 2023](#horowitz-2023) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Hutting 2018](#hutting-2018) · [Hwang 2024](#hwang-2024) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaneko 2021](#kaneko-2021) · [Kang 2023](#kang-2023) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kershner 2026](#kershner-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim 2025](#kim-2025) · [Kim 2026](#kim-2026) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Kishi 2026](#kishi-2026) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Kwon 2024](#kwon-2024) · [Lacy 2023](#lacy-2023) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Liao 2021](#liao-2021) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2015](#liu-2015) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Llitjos 2016](#llitjos-2016) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Lukies 2023](#lukies-2023) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malfait 2024](#malfait-2024) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Martínez 2023](#martínez-2023) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McAnally 2020](#mcanally-2020) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Meaadi 2023](#meaadi-2023) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Minardi 2024](#minardi-2024) · [Mitchell 2023](#mitchell-2023) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Moraczewski 2023](#moraczewski-2023) · [Mottola 2018](#mottola-2018) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Narayan 2024](#narayan-2024) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Nemunaitis 2022](#nemunaitis-2022) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG196](#nice-ng196) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG232](#nice-ng232) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nochaiwong 2022](#nochaiwong-2022) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Ogrodnik 2021](#ogrodnik-2021) · [Oldfield 2024](#oldfield-2024) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Peng 2022](#peng-2022) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhim 2025](#rhim-2025) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Sahu 2020](#sahu-2020) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Scioscia 2023](#scioscia-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Sibrack 2024](#sibrack-2024) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Simon 2024](#simon-2024) · [Simonds 2022](#simonds-2022) · [Sims 2020](#sims-2020) · [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Steffel 2021](#steffel-2021) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Tenforde 2022](#tenforde-2022) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Thour 2026](#thour-2026) · [Tominaga 2023](#tominaga-2023) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2018](#wang-2018) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waseem 2026](#waseem-2026) · [Waterway 2026](#waterway-2026) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Welsch 2018](#welsch-2018) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wewege 2023](#wewege-2023) · [WFH 2020](#wfh-2020) · [Whedon 2015](#whedon-2015) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wichniak 2017](#wichniak-2017) · [Wiegele 2019](#wiegele-2019) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Xiang 2025](#xiang-2025) · [Yale 2020](#yale-2020) · [Yamamoto 2009](#yamamoto-2009) · [Yang 2024](#yang-2024) · [Yasaei 2024](#yasaei-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhang 2026](#zhang-2026) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -1125,6 +1167,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Alam 2022
+
+Autores: Alam, Qasswal, Ahsan, Walters y Chandra  
+Título: *Selective serotonin reuptake inhibitors increase risk of upper gastrointestinal bleeding when used with NSAIDs: a systemic review and meta-analysis*  
+Publicación: Sci Rep 12:14452  
+DOI: 10.1038/s41598-022-18654-2  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis de 10 estudios observacionales (heterogeneidad alta): ISRS con AINE, OR 1,75 de hemorragia digestiva alta frente a los AINE solos. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Alam 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Albert-Lucena 2025
 
@@ -1938,6 +1997,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
 
+### Bhanu 2021
+
+Autores: Bhanu, Nimmons, Petersen, Orlu, Davis, Hussain, Magammanage y Walters  
+Título: *Drug-induced orthostatic hypotension: A systematic review and meta-analysis of randomised controlled trials*  
+Publicación: PLoS Med 18(11):e1003821  
+DOI: 10.1371/journal.pmed.1003821  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis de 69 ensayos: tricíclicos OR 6,30 de hipotensión ortostática (3 ensayos en depresión); ISRS sin aumento. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Bhanu 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Bhatti 2026
 
 Autores: Bhatti, Maheshwary y Sun  
@@ -2008,6 +2084,23 @@ Citada como:
 | Cadera | ca1 · Artrosis de Cadera | Test «Aducción de cadera disminuida» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Rotación Interna disminuida (<24°)» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Rotación Interna disminuida (<24°)» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
+### Biswas 2026
+
+Autores: Biswas, Patel y Molla  
+Título: *Duloxetine*  
+Publicación: StatPearls [Internet], NBK549806 (act. 2026-09-08)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Biswas 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Biz 2019
 
@@ -2233,6 +2326,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Opioides» | guía de fármacos | 1 |
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Bodman 2024
 
@@ -2285,6 +2379,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Bíceps distal reparado, vuelta al deporte» de «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 1 |
+
+### Bounds y Patel 2024
+
+Autores: Bounds y Patel  
+Título: *Benzodiazepines*  
+Publicación: StatPearls [Internet], NBK470159 (act. 2024-01-30)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Bounds y Patel 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### Bowers y Blum 2026
 
@@ -2596,6 +2707,23 @@ Citada como:
 | Lumbar | — | Pregunta `l_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 3 |
 | Lumbar | — | Bandera roja «Pérdida de peso inexplicada o saciedad precoz» · Gastrointestinal | 2 · razonamiento del cribado | 4 |
 
+### Brunner 2025
+
+Autores: Brunner, Chen, Klein, Maust, Mazer-Amirshahi, Mecca, Najera, Ogbonna, Rajneesh, Roll, Sanders, Snodgrass, VandenBerg, Wright, Boyle, Devoto, Framnes-DeBoer, Kleykamp, Norrington y Lindsay  
+Título: *Joint Clinical Practice Guideline on Benzodiazepine Tapering: Considerations When Risks Outweigh Benefits*  
+Publicación: J Gen Intern Med 40(12):2814–2859  
+DOI: 10.1007/s11606-025-09499-2  
+Última revisión: **sin revisar**  
+Nota: Guía conjunta de ASAM y otras nueve sociedades (GRADE y Delphi) para la retirada pautada de benzodiacepinas. Texto completo leído entero en PMC con el conector de PubMed (2026-10), salvo varias tablas que no vinieron en el texto (síntomas de retirada, equivalencias de dosis, niveles de atención); la tabla 3 de riesgo de retirada sí. Dos autores no constan en los metadatos. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Brunner 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Budha 2025
 
 Autores: Budha, Paudel, Luitel, Joshi, Upreti y Ghimire  
@@ -2860,6 +2988,23 @@ Citada como:
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» | 4b · cita bajo el test | 1 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» | 4b · cita bajo el test | 2 |
 
+### Capiau 2023
+
+Autores: Capiau, Huys, van Poelgeest, van der Velde, Petrovic y Somers  
+Título: *Therapeutic dilemmas with benzodiazepines and Z-drugs: insomnia and anxiety disorders versus increased fall risk: a clinical review*  
+Publicación: Eur Geriatr Med 14(4):697–708  
+DOI: 10.1007/s41999-022-00731-4  
+Última revisión: **sin revisar**  
+Nota: Revisión clínica (grupo de trabajo de la EuGMS, STOPPFall; publicada en línea en 2022): caídas, fracturas, equilibrio, hipotensión ortostática, sedación, cognición y retirada pautada. Un autor no consta en los metadatos. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Capiau 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Capsoni 2025
 
 Autores: Capsoni, Carpani, Tarantino et al.  
@@ -2942,6 +3087,23 @@ Citada como:
 |---|---|---|---|---|
 | Tobillo y pie | — | Paso `tp_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
 
+### Carvalho 2022
+
+Autores: Carvalho, Chaves y da Silva  
+Título: *Effects of antiepileptic drugs on sleep architecture parameters in adults*  
+Publicación: Sleep Sci 15(2):224–244  
+DOI: 10.5935/1984-0063.20220045  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática de antiepilépticos y arquitectura del sueño. Leída en parte en PMC (2026-10): resumen y secciones de gabapentina y pregabalina. Guía de fármacos, familia gabapentinoides (docs/farmacologia.md).
+
+Citada como:
+
+1. Carvalho 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
 ### Cascia 2019
 
 Autores: Cascia, Picha, Hettrich y Uhl  
@@ -2958,6 +3120,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Cashin 2021
+
+Autores: Cashin, Folly, Bagg, Wewege, Jones, Ferraro, Leake, Rizzo, Schabrun, Gustin, Day, Williams y McAuley  
+Título: *Efficacy, acceptability, and safety of muscle relaxants for adults with non-specific low back pain: systematic review and meta-analysis*  
+Publicación: BMJ 374:n1446  
+DOI: 10.1136/bmj.n1446  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis (GRADE): relajantes no benzodiacepínicos, 7,7 puntos menos de dolor sobre 100 a las 2 semanas o menos (certeza muy baja), sin efecto a las 3–13 semanas; benzodiacepinas sin beneficio en el dolor. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Cashin 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### Castro y Sharma 2025
 
@@ -3170,6 +3349,23 @@ Citada como:
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Aducción Cruzada (Cross-body Adduction)» | 4b · cita bajo el test | 1 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» | 4b · cita bajo el test | 3 |
+
+### Chu y Wadhwa 2023
+
+Autores: Chu y Wadhwa  
+Título: *Selective Serotonin Reuptake Inhibitors*  
+Publicación: StatPearls [Internet], NBK554406 (act. 2023-05-01)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Chu y Wadhwa 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Claessen 2015
 
@@ -3441,6 +3637,23 @@ Una revisión sistemática posterior (103 estudios; datos transversales, certeza
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Crepitación articular» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Crepitación articular» («¿Por qué?») | 4b · razonamiento del test | 2 |
 
+### Cross 2024
+
+Autores: Cross, Viswanath y Sherman  
+Título: *Pregabalin*  
+Publicación: StatPearls [Internet], NBK470341 (act. 2024-05-02)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia gabapentinoides (docs/farmacologia.md).
+
+Citada como:
+
+1. Cross 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
 ### Cui 2026
 
 Autores: Cui, Bao, Chen, Guo, Deng, Cui, Song y Wang  
@@ -3654,6 +3867,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | — | Pregunta `ca_u2` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
+
+### De Filippis 2022
+
+Autores: de Filippis, Mercurio, Spina, De Fazio, Segura-Garcia, Familiari, Gasparini y Galasso  
+Título: *Antidepressants and Vertebral and Hip Risk Fracture: An Updated Systematic Review and Meta-Analysis*  
+Publicación: Healthcare (Basel) 10(5):803  
+DOI: 10.3390/healthcare10050803  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis: ISRS y fractura de cadera, más con el uso prolongado. Su medida conjunta («mean effect 0,98») no está bien definida y no se cita como OR. La clave lleva la partícula en mayúscula para que citasEnTexto() la reconozca. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. De Filippis 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### De Hertogh 2025
 
@@ -4249,6 +4479,23 @@ Citada como:
 | Codo | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
 
+### Edinoff 2021
+
+Autores: Edinoff, Nix, Hollier, Sagrera, Delacroix, Abubakar, Cornett, Kaye y Kaye  
+Título: *Benzodiazepines: Uses, Dangers, and Clinical Considerations*  
+Publicación: Neurol Int 13(4):594–607  
+DOI: 10.3390/neurolint13040059  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa: usos, riesgos en mayores, sobredosis, síntomas de retirada. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Edinoff 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Engelbert 2017
 
 Autores: Engelbert, Juul-Kristensen, Pacey, de Wandele, Smeenk, Woinarosky, Sabo, Scheper, Russek y Simmonds  
@@ -4412,6 +4659,23 @@ Citada como:
 |---|---|---|---|---|
 | Codo | — | Pregunta `co_e2a` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 
+### Farishta 2024
+
+Autores: Farishta, Iancau, Janis y Joshi  
+Título: *Use of Muscle Relaxants for Acute Postoperative Pain: A Practical Review*  
+Publicación: Plast Reconstr Surg Glob Open 12(7):e5938  
+DOI: 10.1097/GOX.0000000000005938  
+Última revisión: **sin revisar**  
+Nota: Revisión práctica de los relajantes musculares en el dolor posoperatorio: eficacia inconstante, delirium en mayores, riesgos con opioides. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Farishta 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Farmer y Matto 2026
 
 Autores: Farmer y Matto  
@@ -4487,6 +4751,40 @@ Citada como:
 | Cervical | — | Pregunta `cv3` · Renal / Urológico | 2 · razonamiento del cribado | 3 |
 | Cervical | — | Pregunta `cv_ar3` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 4 |
 | Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 5 |
+
+### Ferraro 2025
+
+Autores: Ferraro, Urquhart, Ferreira, Wewege, Abdel Shaheed, Traeger, Hoving, Visser, McAuley y Cashin  
+Título: *Antidepressants for low back pain and spine-related leg pain*  
+Publicación: Cochrane Database Syst Rev 2025, 3:CD001703  
+DOI: 10.1002/14651858.CD001703.pub4  
+Última revisión: **sin revisar**  
+Nota: Revisión Cochrane (26 ensayos, búsqueda hasta 2024-11): IRSN, efecto pequeño en el dolor y trivial en la discapacidad; tricíclicos, poco o nada en el dolor; ISRS, insuficiente; sin datos de más de 12 meses ni en mayores. PDF aportado por el usuario (2026-10): leídos enteros el resumen, las tablas de resultados, los antecedentes, los métodos, los resultados, la discusión y las conclusiones; las tablas de estudios y los análisis, solo por búsqueda de efectos adversos (y los análisis 1.26 y 1.27 enteros). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Ferraro 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
+### Filippatos 2017
+
+Autores: Filippatos, Makri, Elisaf y Liamis  
+Título: *Hyponatremia in the elderly: challenges and solutions*  
+Publicación: Clin Interv Aging 12:1957–1965  
+DOI: 10.2147/CIA.S138535  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa: síntomas de la hiponatremia aguda y crónica en mayores (marcha, caídas, fracturas), fármacos implicados, factores de riesgo, más en verano. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Filippatos 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Finucane 2020
 
@@ -4857,6 +5155,40 @@ Citada como:
 | Cervical | ce4 · Cefalea Cervicogénica | Test «Cluster: ROM cervical + PAIVM + CCFT» | 4b · cita bajo el test | 2 |
 | Cervical | — | Paso `ce_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
+### Ghanavatian y Derian 2023
+
+Autores: Ghanavatian y Derian  
+Título: *Tizanidine*  
+Publicación: StatPearls [Internet], NBK519505 (act. 2023-08-28)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Mismos autores que «Ghanavatian y Derian 2024» (baclofeno); las claves se distinguen por el año. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Ghanavatian y Derian 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
+### Ghanavatian y Derian 2024
+
+Autores: Ghanavatian y Derian  
+Título: *Baclofen*  
+Publicación: StatPearls [Internet], NBK526037 (act. 2024-08-11)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Mismos autores que «Ghanavatian y Derian 2023» (tizanidina); las claves se distinguen por el año. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Ghanavatian y Derian 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Gheewala 2023
 
 Autores: Gheewala, Arain y Rosenbaum  
@@ -5035,6 +5367,23 @@ Citada como:
 |---|---|---|---|---|
 | Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 1 |
 | Cervical | — | Pregunta `cv_c2` · Cardiovascular | 2 · razonamiento del cribado | 1 |
+
+### Giménez-Campos 2021
+
+Autores: Giménez-Campos, Pimenta-Fermisson-Ramos, Díaz-Cambronero, Carbonell-Sanchís, López-Briz y Ruíz-García  
+Título: *A systematic review and meta-analysis of the effectiveness and adverse events of gabapentin and pregabalin for sciatica pain*  
+Publicación: Aten Primaria 54(1):102144  
+DOI: 10.1016/j.aprim.2021.102144  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis de 8 ensayos (747 pacientes): sin ventaja sobre el placebo en dolor ni discapacidad en la ciática; mareo y náuseas o vómitos más frecuentes con pregabalina. Texto completo leído en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia gabapentinoides (docs/farmacologia.md).
+
+Citada como:
+
+1. Giménez-Campos 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
 
 ### Gluppe 2021
 
@@ -5979,6 +6328,23 @@ Citada como:
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
 
+### Hahn 2022
+
+Autores: Hahn, Jo, Yoo, Shin, Yu y Ah  
+Título: *Risk of major adverse events associated with gabapentinoid and opioid combination therapy: A systematic review and meta-analysis*  
+Publicación: Front Pharmacol 13:1009950  
+DOI: 10.3389/fphar.2022.1009950  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de la combinación de gabapentinoides con opioides: mareo, disfunción cognitiva, depresión respiratoria y mortalidad. Texto completo leído en PMC, tablas incluidas (2026-10); no se leyó el material suplementario. Guía de fármacos, familia gabapentinoides (docs/farmacologia.md).
+
+Citada como:
+
+1. Hahn 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
 ### Hakim 2017
 
 Autores: Hakim, O'Callaghan, De Wandele, Stiles, Pocinki y Rowe  
@@ -6879,6 +7245,23 @@ Origen (Hopkinson 1990): revisión retrospectiva de 1344 esguinces en cadetes de
 | Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» («¿Por qué?») | 4b · razonamiento del test | 2 |
 
+### Horowitz 2023
+
+Autores: Horowitz, Framer, Hengartner, Sørensen y Taylor  
+Título: *Estimating Risk of Antidepressant Withdrawal from a Review of Published Data*  
+Publicación: CNS Drugs 37(2):143–157  
+DOI: 10.1007/s40263-022-00960-y  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa (publicada en línea en 2022): frecuencia, gravedad y duración de la retirada; duloxetina, venlafaxina y paroxetina, de más riesgo. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Horowitz 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Hosseinzadeh 2024
 
 Autores: Hosseinzadeh, Tiwari y De Jesus  
@@ -7029,6 +7412,23 @@ Citada como:
 | Rodilla | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+
+### Hwang 2024
+
+Autores: Hwang, Chang, Brotman, Inker, Grams y Shin  
+Título: *Baclofen and the risk of fall and fracture in older adults: a real-world cohort study*  
+Publicación: J Am Geriatr Soc 72(1):91–101  
+DOI: 10.1111/jgs.18665  
+Última revisión: **sin revisar**  
+Nota: Cohorte de nuevos usuarios con comparador activo (publicada en línea en 2023): más caídas con baclofeno que con tizanidina (SHR 1,68), parecidas a la ciclobenzaprina; fracturas sin diferencias. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Hwang 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### IHS 2018
 
@@ -7317,6 +7717,23 @@ Citada como:
 | Rodilla | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.3.lupus.textos.osteonecrosis` | 2 · mención en el texto | 1 |
+
+### Kang 2023
+
+Autores: Kang, Galuska y Ghassemzadeh  
+Título: *Benzodiazepine Toxicity*  
+Publicación: StatPearls [Internet], NBK482238 (act. 2023-06-26)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Kang 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### Kanis 2019
 
@@ -7613,6 +8030,23 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
+### Kershner 2026
+
+Autores: Kershner, Bompard y Chen  
+Título: *Baclofen Toxicity*  
+Publicación: StatPearls [Internet], NBK580550 (act. 2026-06-18)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Kershner 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Kessel y Watson 1977
 
 Autores: Kessel y Watson  
@@ -7685,6 +8119,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cervical | — | Pregunta `cv_ar1` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
+
+### Khan y Kahwaji 2023
+
+Autores: Khan y Kahwaji  
+Título: *Cyclobenzaprine*  
+Publicación: StatPearls [Internet], NBK513362 (act. 2023-08-28)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Khan y Kahwaji 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### Kibbe 2004
 
@@ -7920,6 +8371,23 @@ Citada como:
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Test de Abducción Resistida de Cadera» | 4b · cita bajo el test | 3 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Marcha de Trendelenburg» | 4b · cita bajo el test | 4 |
 | Cadera | ca4 · Síndrome de Dolor Trocantérico Mayor (Tendinopatía Glútea) | Test «Derotación externa resistida» | 4b · cita bajo el test | 5 |
+
+### Kishi 2026
+
+Autores: Kishi, Ikuta, Sakuma, Hatano, Kishi, Kitajima e Iwata  
+Título: *Comparative effects of hypnotic agents on sleep architecture and respiratory outcomes in obstructive sleep apnea: A systematic review and network meta-analysis*  
+Publicación: Psychiatry Clin Neurosci 80(5):390–397  
+DOI: 10.1111/pcn.70036  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis en red (32 ensayos, la mayoría de 1–3 días) de los hipnóticos en la apnea obstructiva del sueño. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Kishi 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### Klepinowski 2021
 
@@ -10807,6 +11275,23 @@ Citada como:
 | Tobillo y pie | — | Paso `tp_step9` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 | Tobillo y pie | — | Paso `tp_step13` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
 
+### Martínez 2023
+
+Autores: Martínez, Mariscal, de la Rubia Ortí y Barrios  
+Título: *Efficacy and safety of pregabalin and gabapentin in spinal stenosis: a systematic review and meta-analysis*  
+Publicación: Front Pharmacol 14:1249478  
+DOI: 10.3389/fphar.2023.1249478  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 6 estudios (392 pacientes) en estenosis lumbar, con controles heterogéneos. Texto completo leído en PMC (2026-10). Guía de fármacos, familia gabapentinoides (docs/farmacologia.md).
+
+Citada como:
+
+1. Martínez 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
 ### Mastromarchi 2021
 
 Autores: Mastromarchi y May  
@@ -10946,6 +11431,23 @@ Citada como:
 | Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Paso `tp_step12` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
+### McAnally 2020
+
+Autores: McAnally, Bonnet y Kaye  
+Título: *Gabapentinoid Benefit and Risk Stratification: Mechanisms Over Myth*  
+Publicación: Pain Ther 9(2):441–452  
+DOI: 10.1007/s40122-020-00189-x  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa dirigida, con sesgo favorable al fármaco (se cita como contrapunto, no como fuente neutral): sueño de ondas lentas, uso indebido, retirada, riesgos con otros depresores. Texto completo leído en PMC (2026-10). Guía de fármacos, familia gabapentinoides (docs/farmacologia.md).
+
+Citada como:
+
+1. McAnally 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
 ### McCarthy y Busconi 1995
 
 Publicación: Can J Surg 38 Supl 1:S13–7  
@@ -11044,6 +11546,23 @@ Según McMurray, el dolor en el centro del ligamento lateral interno, donde sus 
 | Rodilla | ro2 · Lesión Meniscal | Test «Sensibilidad a la palpación de la línea articular» (en `razonamiento.detalle`) | 4b · mención en el texto | 2 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Test de McMurray» («¿Por qué?») | 4b · razonamiento del test | 3 |
 | Rodilla | ro2 · Lesión Meniscal | Test «Sensibilidad a la palpación de la línea articular» («¿Por qué?») | 4b · razonamiento del test | 4 |
+
+### Meaadi 2023
+
+Autores: Meaadi, Obara, Eldabe y Nazar  
+Título: *The safety and efficacy of gabapentinoids in the management of neuropathic pain: a systematic review with meta-analysis of randomised controlled trials*  
+Publicación: Int J Clin Pharm 45(3):556–565  
+DOI: 10.1007/s11096-022-01528-y  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 50 ensayos (12 398 pacientes): números necesarios a tratar y riesgos relativos de los efectos adversos de cada fármaco. Texto completo leído en PMC (2026-10); no se leyeron las tablas ni el material suplementario. Guía de fármacos, familia gabapentinoides (docs/farmacologia.md).
+
+Citada como:
+
+1. Meaadi 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
 
 ### Mehta 2024
 
@@ -11438,6 +11957,23 @@ Citada como:
 |---|---|---|---|---|
 | Tobillo y pie | — | Pregunta `tp_t5` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 
+### Moraczewski 2023
+
+Autores: Moraczewski, Awosika y Aedma  
+Título: *Tricyclic Antidepressants*  
+Publicación: StatPearls [Internet], NBK557791 (act. 2023-08-17)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Moraczewski 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Mottola 2018
 
 Autores: Mottola, Davenport, Ruchat et al.  
@@ -11735,6 +12271,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Rodilla, ligamento colateral medial» de «Esguince grado I» (Ligamento) | cabecera · tiempos de tejido | 1 |
+
+### Narayan 2024
+
+Autores: Narayan, Naganathan, Vizza, Underwood, Ivers, McLachlan, Zhou, Singh, Tao, Xi y Abdel Shaheed  
+Título: *Efficacy and safety of antidepressants for pain in older adults: A systematic review and meta-analysis*  
+Publicación: Br J Clin Pharmacol 90(12):3097–3118  
+DOI: 10.1111/bcp.16234  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis de 15 ensayos en mayores de 65 años: duloxetina, efecto muy pequeño en la artrosis de rodilla. Texto completo leído entero en PMC con el conector de PubMed (2026-10), salvo el material suplementario. Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Narayan 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Nardi y Schaefer 2023
 
@@ -12607,7 +13160,7 @@ Título: *Use of serotonin reuptake inhibitor antidepressants and the risk of bl
 Publicación: Ann Med 54(1):80–97  
 DOI: 10.1080/07853890.2021.2017474  
 Última revisión: **sin revisar**  
-Nota: Revisión sistemática y metaanálisis de 32 estudios no aleatorizados (1 848 285 pacientes; certeza baja o muy baja): ISRS o IRSN con anticoagulantes o antiagregantes, sangrado grave y digestivo. Texto completo leído en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia anticoagulantes y antiagregantes (docs/farmacologia.md).
+Nota: Revisión sistemática y metaanálisis de 32 estudios no aleatorizados (1 848 285 pacientes; certeza baja o muy baja): ISRS o IRSN con anticoagulantes o antiagregantes, sangrado grave y digestivo. Texto completo leído en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia anticoagulantes y antiagregantes (docs/farmacologia.md). Releído entero (2026-10) para la guía de fármacos, familia antidepresivos.
 
 Citada como:
 
@@ -12617,6 +13170,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
@@ -12829,6 +13383,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_compartimental` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+
+### Oldfield 2024
+
+Autores: Oldfield, Gleeson, Morford, Adams, Funaro, Becker y Merlin  
+Título: *Long-Term Use of Muscle Relaxant Medications for Chronic Pain: A Systematic Review*  
+Publicación: JAMA Netw Open 7(9):e2434835  
+DOI: 10.1001/jamanetworkopen.2024.34835  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática (30 ensayos y 14 cohortes, síntesis narrativa) del uso prolongado de relajantes musculares en el dolor crónico. Texto completo leído en PMC con el conector de PubMed (2026-10), sin las tablas suplementarias. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Oldfield 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### Oliver y Ashurst 2023
 
@@ -15383,6 +15954,23 @@ Citada como:
 | Codo | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
 
+### Sibrack 2024
+
+Autores: Sibrack, Patel y Hammer  
+Título: *Methocarbamol*  
+Publicación: StatPearls [Internet], NBK565868 (act. 2024-09-10)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Sibrack 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Siemensma 2023
 
 Autores: Siemensma, van der Windt, van Es, Colaris y Eygendaal  
@@ -15437,6 +16025,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Fase 6 (plan de tratamiento) | — | `AVISOS.monitorizacionDolor` | 6 · plan de tratamiento | 1 |
+
+### Simon 2024
+
+Autores: Simon, Torrico y Keenaghan  
+Título: *Serotonin Syndrome*  
+Publicación: StatPearls [Internet], NBK482377 (act. 2024-03-02)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Sin las figuras ni el vídeo, que no pasan al texto. Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Simon 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Simonds 2022
 
@@ -15518,6 +16123,23 @@ Citada como:
 |---|---|---|---|---|
 | Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Regla de Ottawa antes de nada» | 4b · cita bajo el test | 1 |
 | Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 2 |
+
+### Singh y Saadabadi 2024
+
+Autores: Singh y Saadabadi  
+Título: *Venlafaxine*  
+Publicación: StatPearls [Internet], NBK535363 (act. 2024-02-26)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Singh y Saadabadi 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Singleton y Hefner 2023
 
@@ -16271,6 +16893,23 @@ Citada como:
 | Cervical | — | Paso `ce_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 | Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 
+### Thour 2026
+
+Autores: Thour, Alag, Patel y Marwaha  
+Título: *Amitriptyline*  
+Publicación: StatPearls [Internet], NBK537225 (act. 2026-09-14)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Thour 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Tominaga 2023
 
 Autores: Tominaga, Hirayama, Nonaka, Yano e Ishii  
@@ -16886,6 +17525,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Artrodesis lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
 
+### Wang 2018
+
+Autores: Wang, Han, Bahk, Lee, Patkar, Masand y Pae  
+Título: *Addressing the Side Effects of Contemporary Antidepressant Drugs: A Comprehensive Review*  
+Publicación: Chonnam Med J 54(2):101–112  
+DOI: 10.4068/cmj.2018.54.2.101  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa de los efectos adversos por clase: sangrado, QT, tensión, boca seca, sudoración, función sexual, peso, sobredosis, suicidio. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Wang 2018
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Wang 2020
 
 Autores: Wang, Wang, Zeng, Zhong, Chen y Li  
@@ -16941,6 +17597,23 @@ Citada como:
 | Tobillo y pie | — | Paso `tp_step10` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 | Tobillo y pie | — | Paso `tp_step11` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 | Tobillo y pie | — | Paso `tp_step12` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+
+### Waseem 2026
+
+Autores: Waseem, Khalid y Schaffer  
+Título: *Tricyclic Antidepressant Toxicity*  
+Publicación: StatPearls [Internet], NBK430931 (act. 2026-09-14)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Waseem 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Waterway 2026
 
@@ -17003,6 +17676,23 @@ Citada como:
 | Cadera | — | Paso `ca_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 | Cadera | — | Paso `ca_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
+### Welsch 2018
+
+Autores: Welsch, Üçeyler, Klose, Walitt y Häuser  
+Título: *Serotonin and noradrenaline reuptake inhibitors (SNRIs) for fibromyalgia*  
+Publicación: Cochrane Database Syst Rev 2018, 2:CD010292  
+DOI: 10.1002/14651858.CD010292.pub2  
+Última revisión: **sin revisar**  
+Nota: Revisión Cochrane (18 ensayos, 7903 participantes; evidencia baja o muy baja; estabilizada en 2020). PDF aportado por el usuario (2026-10): leídos enteros el resumen, la tabla de resultados, los antecedentes, los resultados, la discusión y las conclusiones; por encima los métodos, las tablas de estudios y los análisis. Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Welsch 2018
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Wenker y Quint 2023
 
 Autores: Wenker y Quint  
@@ -17019,6 +17709,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | — | Pregunta `ca_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
+
+### Wewege 2023
+
+Autores: Wewege, Bagg, Jones, Ferraro, Cashin, Rizzo, Leake, Hagstrom, Sharma, McLachlan, Maher, Day, Wand, O’Connell, Nikolakopoulou, Schabrun, Gustin y McAuley  
+Título: *Comparative effectiveness and safety of analgesic medicines for adults with acute non-specific low back pain: systematic review and network meta-analysis*  
+Publicación: BMJ 380:e072962  
+DOI: 10.1136/bmj-2022-072962  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis en red de los analgésicos en la lumbalgia aguda. Texto completo leído en PMC con el conector de PubMed (2026-10), sin las figuras ni el material suplementario. Guía de fármacos, familia benzodiacepinas y relajantes musculares (docs/farmacologia.md).
+
+Citada como:
+
+1. Wewege 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### WFH 2020
 
@@ -17078,6 +17785,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+
+### Wichniak 2017
+
+Autores: Wichniak, Wierzbicka, Walęcka y Jernajczyk  
+Título: *Effects of Antidepressants on Sleep*  
+Publicación: Curr Psychiatry Rep 19(9):63  
+DOI: 10.1007/s11920-017-0816-4  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa: insomnio y somnolencia con ISRS e IRSN en los ensayos, fármacos sedantes y activadores, piernas inquietas, bruxismo. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Wichniak 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Wiegele 2019
 
@@ -17355,6 +18079,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
 
+### Yasaei 2024
+
+Autores: Yasaei, Katta, Patel y Saadabadi  
+Título: *Gabapentin*  
+Publicación: StatPearls [Internet], NBK493228 (act. 2024-02-21)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia gabapentinoides (docs/farmacologia.md).
+
+Citada como:
+
+1. Yasaei 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
 ### Yasir 2023
 
 Autores: Yasir, Goyal y Sonthalia  
@@ -17540,6 +18281,23 @@ Como prueba diagnóstica en la artrosis inicial, la flexión aislada aporta poco
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Restricción de ROM» (en `razonamiento.detalle`) | 4b · mención en el texto | 4 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Restricción de ROM» | 4b · cita bajo el test | 5 |
 | Rodilla | ro1 · Artrosis de Rodilla | Test «Agrandamiento óseo» («¿Por qué?») | 4b · razonamiento del test | 6 |
+
+### Zhang 2026
+
+Autores: Zhang, Zhang y Jing  
+Título: *Risk of antidepressant-induced hyponatremia in geriatric patients: a systematic review and meta-analysis*  
+Publicación: BMC Geriatr 26(1)  
+DOI: 10.1186/s12877-026-07911-y  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis de 21 cohortes en mayores: frecuencia y riesgo de hiponatremia por clase y por fármaco, mayor en las 2–4 primeras semanas. El resumen trae mal un intervalo de la mirtazapina; se usa la tabla 4. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+
+Citada como:
+
+1. Zhang 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Zhao 2024
 

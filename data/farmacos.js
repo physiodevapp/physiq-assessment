@@ -272,9 +272,237 @@ export const FAMILIAS_FARMACO = [
     },
     fuentes: ['Dowell 2022', 'Sampaio-Cunha y Martins 2022', 'Camilleri 2017', 'Dufort y Samaan 2021', 'De Vries 2020', 'Blyzniuk 2026', 'Langstengel y Yaggi 2022'],
   },
-  { id: 'gabapentinoides', nombre: 'Gabapentinoides', ejemplos: 'Gabapentina, pregabalina' },
-  { id: 'antidepresivos', nombre: 'Antidepresivos (ISRS, IRSN, tricíclicos)', ejemplos: 'Sertralina, escitalopram, duloxetina, venlafaxina, amitriptilina' },
-  { id: 'sedantes', nombre: 'Benzodiacepinas y relajantes musculares', ejemplos: 'Diazepam, lorazepam, alprazolam, ciclobenzaprina, metocarbamol' },
+  // Gabapentinoides (2026-10): siete fuentes (cinco enteras en PMC, Carvalho 2022
+  // leída en parte, y los capítulos de StatPearls de gabapentina y pregabalina,
+  // PDF del usuario). Enke 2018 solo dio el resumen y no se cita. Sin fuente
+  // leída para caídas y fracturas en mayores, inflamación y curación de los
+  // tejidos, terapia manual, mioclonías ni sueño en pacientes con dolor
+  // musculoesquelético: docs/farmacologia.md.
+  {
+    id: 'gabapentinoides',
+    nombre: 'Gabapentinoides',
+    ejemplos: 'Gabapentina, pregabalina',
+    apartados: {
+      dolor: {
+        texto: [
+          'En la ciática, la pregabalina no alivió más el dolor ni mejoró más la discapacidad que el placebo en seguimientos de hasta 52 semanas, y la gabapentina tampoco a las 8 semanas; una diferencia a los 3–4 meses no llegó a ser clínicamente relevante (menos de 2 puntos sobre 10). La revisión concluye que no hay evidencia que apoye su uso sistemático en la ciática ni en la lumbalgia (Giménez-Campos 2021). Un capítulo de StatPearls afirma que la pregabalina no debería prescribirse para el dolor musculoesquelético (Cross 2024).',
+          'En el dolor neuropático sí superan al placebo: el número necesario a tratar es de 8 y 10 para la pregabalina (reducción del dolor de al menos 30 % y 50 %) y de 7 y 8 para la gabapentina (Meaadi 2023). Las indicaciones aprobadas de la gabapentina son la neuralgia posherpética y, como complemento, las crisis parciales (Yasaei 2024); las de la pregabalina, el dolor neuropático de la neuropatía diabética, la lesión medular y la neuralgia posherpética, y la fibromialgia (Cross 2024).',
+        ],
+        detalle: [
+          'En la estenosis lumbar, a corto plazo no redujeron el dolor más que los AINE, el limaprost o la difenhidramina; a medio plazo parecieron algo más eficaces, sin ventaja en discapacidad (ODI) y con más efectos adversos. Son seis estudios con 392 pacientes y controles distintos entre sí (Martínez 2023).',
+          'Una revisión narrativa que defiende el fármaco señala que no beneficia a todos los pacientes y que tiene sentido elegirlo según la fisiopatología y el perfil de síntomas (McAnally 2020).',
+          'El efecto de la gabapentina suele notarse en la primera semana, aunque la mejoría importante puede tardar hasta un mes (Yasaei 2024). En el dolor tras una lesión medular, la pregabalina puede mejorar el dolor desde la primera semana y se pide probarla 4–6 semanas si se tolera (Cross 2024).',
+          'Las fuentes leídas no tratan su efecto sobre la inflamación ni sobre la curación de los tejidos.',
+        ],
+      },
+      visceral: {
+        texto: [
+          'Edema periférico y aumento de peso: con gabapentina, frente a placebo, el aumento de peso (RR 5,6) y el edema periférico (RR 3,1) estuvieron entre los efectos con mayor riesgo relativo, y con pregabalina el aumento de peso (RR 5,0) (Meaadi 2023). El aumento de peso de la pregabalina depende de la dosis y llega hasta el 14 % con 600 mg al día (Cross 2024). Se ha descrito una cascada de prescripción: tras empezar uno de los dos, aumenta el uso posterior de diuréticos de asa (Cross 2024).',
+          'Dolor o debilidad muscular sin explicar: se han descrito casos de rabdomiólisis con la gabapentina (Yasaei 2024) y, en el registro de acontecimientos adversos de la FDA, con la pregabalina, por lo que se pide comunicar enseguida cualquier síntoma muscular sin explicar (Cross 2024).',
+          'Entre las reacciones frecuentes de la gabapentina figuran náuseas, vómitos, diarrea, estreñimiento, boca seca, fatiga, visión doble, temblor y dolor de espalda (Yasaei 2024). En la ciática, el mareo y las náuseas o vómitos fueron más frecuentes con pregabalina que con placebo (Giménez-Campos 2021).',
+          'Depresión e ideas de suicidio: ambos fármacos pueden provocarlas o empeorarlas, y se vigilan durante el tratamiento (Yasaei 2024). Los antiepilépticos como la pregabalina pueden aumentar el riesgo de pensamientos o conductas suicidas (Cross 2024).',
+          'Reacciones de hipersensibilidad graves con la gabapentina: síndrome de Stevens-Johnson, angioedema, anafilaxia y DRESS (hipersensibilidad multiorgánica), esta última a veces mortal (Yasaei 2024).',
+          'Retirada brusca: con la pregabalina, insomnio, náuseas, cefalea, ansiedad, nerviosismo, irritabilidad, sudoración y diarrea (Cross 2024); con la gabapentina, crisis de retirada (Yasaei 2024). Pueden dar dependencia física con dosis moderadas o altas y uso prolongado (McAnally 2020).',
+        ],
+        detalle: [
+          'La pregabalina produjo euforia a dosis terapéuticas y la gabapentina no; ningún ensayo evaluó el abuso ni el trastorno por uso indebido (Meaadi 2023). Entre quienes tienen un trastorno por uso de sustancias, sobre todo de opioides, el uso indebido llega hasta el 20 % (McAnally 2020).',
+        ],
+      },
+      ejercicio: {
+        texto: [
+          'Mareo, somnolencia y marcha: son las reacciones más frecuentes y las que más llevaron a abandonar la pregabalina; la mayoría fueron leves o moderadas, dependientes de la dosis y aparecieron en las 2 primeras semanas (Cross 2024). Con pregabalina fueron mucho más frecuentes que con placebo la incoordinación (RR 7,2), la marcha anormal (RR 6,7) y la ataxia (RR 6,0); con gabapentina, el mareo (RR 3,3) y la somnolencia (RR 2,9) (Meaadi 2023). Otra revisión añade sedación e inestabilidad de la marcha, y que una de cada tres personas notó mareo o somnolencia a dosis terapéuticas (Martínez 2023).',
+          'Mayores y función renal: ambos fármacos se eliminan por vía renal y el aclaramiento baja en los mayores y con disfunción renal, con más riesgo de reacciones adversas (Yasaei 2024; Cross 2024). Las fuentes leídas no cuantifican caídas ni fracturas.',
+          'Conducir: se pide cautela hasta saber cuánto afecta la gabapentina (Yasaei 2024); otro capítulo aconseja no conducir mientras se toma la pregabalina (Cross 2024).',
+        ],
+        detalle: [
+          'Más de la mitad de los efectos adversos de los ensayos (12 de 18) eran de cognición o coordinación: mareo, somnolencia, ataxia, amnesia, marcha anormal, incoordinación, astenia, confusión, euforia, pensamiento anormal, ambliopía y visión borrosa (Meaadi 2023). La pregabalina también da dificultad de concentración y visión borrosa (Cross 2024).',
+          'En la estenosis lumbar, los autores plantean que combinar el fármaco con fisioterapia y ejercicio terapéutico individualizados puede dar los mejores resultados antes de plantear la cirugía, y piden describir mejor esos programas; la distancia de marcha no aumentó en los estudios que la midieron, salvo en uno que añadió pregabalina a un AINE (Martínez 2023).',
+          'Las fuentes leídas no dan normas de terapia manual en estos pacientes ni sobre el ejercicio en las horas siguientes a la toma.',
+        ],
+      },
+      sueno: {
+        texto: [
+          'Favorecen el sueño de ondas lentas, a diferencia de la mayoría de los fármacos para el insomnio y de otros anticonvulsivos, que lo reducen (McAnally 2020).',
+          'Gabapentina: en casi todos los estudios, más sueño de ondas lentas y menos fase N1, con efecto variable en el REM, y un sueño más largo y profundo. Pregabalina: en el único ensayo en adultos sanos aumentó el tiempo total de sueño y su eficiencia, redujo la latencia y los despertares, aumentó el sueño de ondas lentas y redujo el REM; la revisión no incluye estudios en pacientes con dolor para la pregabalina (Carvalho 2022).',
+          'La somnolencia es uno de sus efectos adversos más frecuentes (Meaadi 2023), y la retirada brusca da inquietud e insomnio (McAnally 2020).',
+        ],
+        detalle: [
+          'La pregabalina se usa fuera de indicación para el insomnio, con controversia sobre su eficacia (Cross 2024). La guía EULAR de fibromialgia, citada en ese capítulo, la considera más adecuada cuando coinciden dolor intenso y trastorno del sueño (Cross 2024).',
+          'La Academia Americana de Medicina del Sueño sugiere la gabapentina para el síndrome de piernas inquietas moderado o grave (Yasaei 2024). Las fuentes leídas no estudian su efecto sobre el sueño en el dolor musculoesquelético.',
+        ],
+      },
+      consultar: {
+        texto: [
+          'Urgente: angioedema, anafilaxia, erupción grave (síndrome de Stevens-Johnson) o hipersensibilidad multiorgánica, que exigen valoración médica inmediata (Yasaei 2024). Confusión, agitación o disminución de la conciencia pueden ser signos de sobredosis, más con otros depresores del sistema nervioso (Cross 2024). Respiración lenta o dificultad para respirar con opioides (Yasaei 2024). Depresión nueva o que empeora, o ideas de suicidio (Cross 2024). Temblor, alteración mental o dificultad respiratoria en quien tiene enfermedad renal o está en diálisis (Yasaei 2024).',
+          'Combinaciones que hay que comentar con quien prescribe: opioides (depresión respiratoria y sedación, a veces mortales; Yasaei 2024), benzodiacepinas y alcohol (efecto sinérgico; Cross 2024) y gabapentina con pregabalina a la vez, que está contraindicada (Yasaei 2024). Los criterios de Beers de 2019 recomiendan evitar la combinación con opioides por el riesgo de depresión respiratoria (Hahn 2022).',
+          'Pronto: mareo, somnolencia o inestabilidad al caminar nuevos o que empeoran; en la estenosis lumbar, la mayoría de quienes los tuvieron abandonó el tratamiento (Martínez 2023). Dolor o debilidad muscular sin explicar, edema o aumento de peso nuevos (Cross 2024). Síntomas de retirada (Cross 2024).',
+          'El uso indebido es más probable en personas con trastorno por uso de opioides o antecedentes de abuso de sustancias (McAnally 2020; Cross 2024): coméntalo con quien los prescribe.',
+          'Nunca aconsejes dejarlos ni bajarlos por tu cuenta: la retirada brusca puede dar síntomas y crisis de retirada, y se hace de forma gradual con quien los prescribe (Yasaei 2024; Cross 2024). Las dudas, al médico o al farmacéutico.',
+        ],
+        detalle: [
+          'Combinados con opioides, un metaanálisis encontró más mareo (OR 3,26), disfunción cognitiva (OR 3,13) y depresión respiratoria (OR 1,71) en los estudios no aleatorizados, pero ninguna diferencia en depresión respiratoria en los ensayos aleatorizados; con más de 1 dosis diaria definida, la mortalidad ajustada fue mayor (OR 2,76). Los gabapentinoides reducen además la respuesta al CO2 del centro respiratorio bulbar (Hahn 2022).',
+        ],
+      },
+    },
+    fuentes: ['Giménez-Campos 2021', 'Meaadi 2023', 'Martínez 2023', 'McAnally 2020', 'Hahn 2022', 'Carvalho 2022', 'Yasaei 2024', 'Cross 2024'],
+  },
+  // Antidepresivos (2026-10): nueve fuentes enteras en PMC, siete capítulos de
+  // StatPearls y dos revisiones Cochrane (PDF del usuario). Birkinshaw 2023 y
+  // Moore 2015 solo dieron el resumen y no se citan. Sin fuente leída para el
+  // efecto sobre la inflamación y la curación, si enmascaran signos, terapia
+  // manual, ejercicio con calor ni conducción: docs/farmacologia.md.
+  {
+    id: 'antidepresivos',
+    nombre: 'Antidepresivos (ISRS, IRSN, tricíclicos)',
+    ejemplos: 'Sertralina, escitalopram, duloxetina, venlafaxina, amitriptilina',
+    apartados: {
+      dolor: {
+        texto: [
+          'Lumbalgia inespecífica: los IRSN (duloxetina) probablemente tienen un efecto pequeño en el dolor (5,25 puntos menos sobre 100) y trivial en la discapacidad (0,91 puntos menos sobre 24) a corto plazo; los tricíclicos probablemente apenas cambian el dolor, con un efecto pequeño en la discapacidad (1,76 puntos menos sobre 24), y para los ISRS la evidencia es insuficiente. No hay datos de más de 12 meses, y los resultados quizá no valgan para mayores ni para quien tiene otras enfermedades importantes, porque solían excluirse de los ensayos (Ferraro 2025).',
+          'Fibromialgia: con duloxetina o milnaciprán, el 31 % logró al menos un 50 % de alivio frente al 21 % con placebo (NNT 11), una diferencia que la revisión no considera clínicamente relevante; sí lo es la del alivio de al menos un 30 % (NNT 10). De media, sus posibles daños superan a sus beneficios, aunque una minoría mejora mucho sin efectos relevantes (Welsch 2018). Los tricíclicos son de segunda línea en la fibromialgia (Moraczewski 2023).',
+          'Mayores de 65 años: en la artrosis de rodilla, la duloxetina dio un efecto muy pequeño (9,1 puntos menos sobre 100) que puede no compensar sus riesgos, y los autores no la ven adecuada como tratamiento único (Narayan 2024).',
+          'Las fuentes leídas no tratan su efecto sobre la inflamación ni sobre la curación de los tejidos, ni si enmascaran signos en la exploración.',
+        ],
+        detalle: [
+          'Las guías de fibromialgia desaconsejan tratarla solo con fármacos y piden combinarlos con ejercicio aeróbico y terapias psicológicas; el ejercicio aeróbico sirve para la fatiga, en la que estos fármacos no ayudan (Welsch 2018).',
+          'La duloxetina está aprobada para el dolor musculoesquelético crónico (lumbalgia crónica y dolor de la artrosis), la fibromialgia y el dolor neuropático diabético, con un máximo de 60 mg al día, y refuerza las vías descendentes que inhiben el dolor en la médula (Biswas 2026). La amitriptilina se usa fuera de indicación en el dolor crónico, empezando con 10–20 mg al día (Thour 2026).',
+          'Plazos: los antidepresivos suelen empezar a hacer efecto en 2–4 semanas (Thour 2026). En la lumbalgia, los efectos se vieron con tratamientos de al menos 7 semanas, en personas con síntomas de 3 meses o más (Ferraro 2025).',
+          'Ciática y dolor de pierna de origen vertebral: la evidencia viene de ensayos únicos y pequeños; el efecto de los IRSN es muy incierto y el de los tricíclicos quizá grande (un ensayo de 60 personas) (Ferraro 2025).',
+        ],
+      },
+      visceral: {
+        texto: [
+          'Sangrado: aumentan su riesgo, sobre todo junto con AINE, antiagregantes o anticoagulantes (Biswas 2026; Singh y Saadabadi 2024). Con un ISRS además de un AINE, la hemorragia digestiva alta fue más probable que con el AINE solo (OR 1,75) (Alam 2022); con un anticoagulante, el sangrado grave (OR 1,39) (Nochaiwong 2022). Los ISRS se asocian a más sangrado que los tricíclicos (Wang 2018). Señales de hemorragia digestiva: vómitos con sangre o en posos de café, heces negras o sangre en las heces (Alam 2022).',
+          'Hiponatremia (sodio bajo en sangre): en mayores que toman antidepresivos la tuvo alrededor del 8 %, más con IRSN (10 %) e ISRS (10 %) que con tricíclicos (3,5 %), y el riesgo es mayor en las 2–4 primeras semanas (Zhang 2026). También sube con diuréticos tiazídicos (Biswas 2026). La crónica da cansancio, problemas cognitivos, alteraciones de la marcha, caídas y fracturas; la aguda, náuseas, vómitos, cefalea, estupor o convulsiones (Filippatos 2017).',
+          'Síndrome serotoninérgico: suele aparecer en las 6–24 horas siguientes a empezar o subir un fármaco serotoninérgico o añadir otro, con alteración mental (agitación), inestabilidad autonómica (taquicardia, tensión alta, sudoración, pupilas dilatadas, diarrea) y signos neuromusculares, más visibles en las piernas: hiperreflexia, clonus, temblor y rigidez (Simon 2024). Pueden desencadenarlo, entre otros, el tramadol, la metadona, el fentanilo, los triptanes y otros antidepresivos (Thour 2026; Biswas 2026). Con una dosis estable y bien tolerada es poco probable que aparezca de forma espontánea (Simon 2024).',
+          'Tricíclicos (amitriptilina): boca seca, estreñimiento, visión borrosa, retención de orina, taquicardia, confusión y delirio; la amitriptilina es más sedante y anticolinérgica que otros tricíclicos (Thour 2026). Los ISRS apenas dan estos efectos (Chu y Wadhwa 2023).',
+          'Corazón y tensión: la amitriptilina puede dar arritmias y prolongar el QT (Thour 2026), y con los tricíclicos la frecuencia cardíaca en reposo es más alta (Wang 2018). La venlafaxina y la duloxetina pueden subir la tensión arterial y la frecuencia cardíaca, que se vigilan durante el tratamiento (Singh y Saadabadi 2024; Biswas 2026).',
+        ],
+        detalle: [
+          'Náuseas: el efecto más frecuente de la duloxetina, alrededor del 18 % (Biswas 2026); en la fibromialgia, el 32 % con IRSN frente al 14 % con placebo (Welsch 2018). La duloxetina y la venlafaxina también dan temblor (Biswas 2026; Singh y Saadabadi 2024).',
+          'Sudoración excesiva en alrededor del 10 % con ISRS, y en proporción parecida con venlafaxina y tricíclicos. Los que actúan sobre la serotonina o la noradrenalina dan disfunción sexual. Los ISRS e IRSN se asociaron a pérdida de peso que desaparece pasados 4 meses; la amitriptilina hace ganar peso (Wang 2018).',
+          'Hígado: la duloxetina se evita con consumo importante de alcohol o enfermedad hepática crónica (Biswas 2026).',
+          'En los casos publicados de síndrome serotoninérgico, el tramadol, el fentanilo y la trazodona fueron los fármacos que más acompañaban al desencadenante; con prescripción habitual, el 36 % ingresó en la UCI y el 5 % murió (Blyzniuk 2026).',
+        ],
+      },
+      ejercicio: {
+        texto: [
+          'Mareo, ortostatismo y caídas: los tricíclicos se asociaron a mucha más hipotensión ortostática que el placebo (OR 6,30), y los ISRS no (Bhanu 2021). La amitriptilina da hipotensión ortostática, mareo y sedación (Thour 2026). La duloxetina puede dar hipotensión ortostática, caídas y síncope, sobre todo al empezar o al subir la dosis (Biswas 2026).',
+          'Mayores: los criterios de Beers piden evitar la amitriptilina por sus efectos anticolinérgicos (Thour 2026), y la duloxetina si ya hubo caídas o fracturas, por la ataxia y la hipotensión ortostática (Biswas 2026). En los tricíclicos se pide vigilar las caídas y el deterioro cognitivo (Moraczewski 2023).',
+          'Hueso: los tricíclicos aumentan el riesgo de fracturas (Thour 2026), y un metaanálisis asocia los ISRS a más fracturas de cadera, con más riesgo cuanto más largo es el uso (De Filippis 2022).',
+          'Las fuentes leídas no dan normas de terapia manual ni de ejercicio con estos fármacos. El sangrado que estudian es el grave, digestivo o intracraneal, no los hematomas de las técnicas manuales.',
+        ],
+        detalle: [
+          'La hipotensión ortostática es una bajada de al menos 20 mmHg de sistólica o 10 de diastólica en los 3 minutos siguientes a ponerse de pie, y afecta a entre el 30 y el 70 % de los mayores. Los datos de los tricíclicos son de dosis para la depresión; los autores creen que a dosis bajas también pueden perjudicar a los mayores y aconsejan medir la tensión al cambiar de postura (Bhanu 2021).',
+          'Un estudio citado en una revisión encontró más caídas con la duloxetina (HR 1,6) y algo más con los tricíclicos (HR 1,2) (Narayan 2024).',
+          'Calor: el síndrome serotoninérgico altera la regulación de la temperatura (Simon 2024) y la hiponatremia es más frecuente en verano (Filippatos 2017); las fuentes leídas no estudian el ejercicio con calor ni la conducción.',
+          'Con la venlafaxina, el alcohol y otros sedantes aumentan la sedación (Singh y Saadabadi 2024).',
+        ],
+      },
+      sueno: {
+        texto: [
+          'ISRS e IRSN pueden empeorar el sueño: en los ensayos, insomnio en el 17 % con ISRS frente al 9 % con placebo, y en el 13 % con IRSN frente al 7 %; también dan somnolencia de día (16 % y 10 %, frente a 8 % y 5 %). Retrasan y reducen el sueño REM (Wichniak 2017).',
+          'Los tricíclicos sedantes acortan el tiempo en dormirse y mejoran la eficiencia del sueño (Wichniak 2017); como la amitriptilina da sedación, se toma preferiblemente al acostarse (Thour 2026).',
+          'Estos efectos son más fuertes las primeras semanas, aunque en algunos persisten y empeoran el insomnio o dan somnolencia de día (Wichniak 2017). En la fibromialgia, duloxetina y milnaciprán no mejoraron los problemas de sueño más que el placebo (Welsch 2018).',
+        ],
+        detalle: [
+          'ISRS, IRSN y tricíclicos pueden provocar o empeorar el bruxismo del sueño, y los ISRS y la venlafaxina, el síndrome de piernas inquietas (Wichniak 2017). La venlafaxina puede dar sueños anormales (Singh y Saadabadi 2024).',
+        ],
+      },
+      consultar: {
+        texto: [
+          'Urgente: signos de síndrome serotoninérgico, sobre todo en las horas siguientes a empezar o subir un fármaco o añadir tramadol u otro serotoninérgico: agitación o confusión, sudoración, temblor, clonus, hiperreflexia, rigidez o fiebre (Simon 2024). Signos de sobredosis de tricíclicos: confusión o somnolencia, convulsiones, pulso rápido, tensión baja, boca seca y retención de orina; suelen aparecer en 2 horas y pueden empeorar muy deprisa (Waseem 2026). Ideas de suicidio o empeoramiento del ánimo, sobre todo en jóvenes de hasta 24–25 años (cada fuente da un límite) y en los primeros 1–2 meses o al cambiar la dosis (Thour 2026; Chu y Wadhwa 2023). Signos de hemorragia digestiva (Alam 2022).',
+          'Pronto: mareo, inestabilidad o caídas nuevas, sobre todo al empezar o subir la dosis (Biswas 2026); cansancio, confusión o alteraciones de la marcha en un mayor, que pueden ser hiponatremia (Filippatos 2017; Zhang 2026); tensión alta en la consulta con venlafaxina o duloxetina (Singh y Saadabadi 2024; Biswas 2026); hematomas o sangrados poco habituales (Biswas 2026); picor, dolor en el hipocondrio derecho, orina oscura o ictericia con duloxetina, que piden valoración médica (Biswas 2026).',
+          'Retirada: quizá la mitad de quienes los dejan nota síntomas, a veces graves y duraderos, como mareo, cefalea, sensaciones de descarga eléctrica que dificultan caminar y conducir, ataxia y caídas; el riesgo es mayor con duloxetina, venlafaxina y paroxetina, y pueden confundirse con otras enfermedades o con una recaída (Horowitz 2023). Tras dejar la duloxetina de golpe aparecen en cerca del 45 % (Biswas 2026).',
+          'Nunca aconsejes dejarlos ni bajarlos por tu cuenta: se retiran de forma gradual (Thour 2026; Biswas 2026), con quien los prescribe. Las dudas, al médico o al farmacéutico.',
+        ],
+        detalle: [
+          'Combinaciones que hay que comentar con quien prescribe: tramadol, metadona, fentanilo, meperidina y triptanes, por el síndrome serotoninérgico (Thour 2026; Biswas 2026), y AINE, antiagregantes o anticoagulantes, por el sangrado (Biswas 2026; Nochaiwong 2022).',
+          'En la sobredosis de tricíclicos, quien no tiene síntomas a las 6 horas es poco probable que haya tomado una cantidad importante, y las arritmias causan la mayoría de las muertes (Waseem 2026). En sobredosis, los tricíclicos son mucho más mortales que los ISRS (Wang 2018).',
+          'Tras 8 semanas de venlafaxina, el 14 % tuvo mareo al dejarla, y el 29 % tras 24 semanas. Haber tenido síntomas al olvidar dosis o en un intento anterior de dejarlos anticipa que volverán (Horowitz 2023).',
+        ],
+      },
+    },
+    fuentes: ['Ferraro 2025', 'Welsch 2018', 'Narayan 2024', 'Moraczewski 2023', 'Biswas 2026', 'Thour 2026', 'Alam 2022', 'Nochaiwong 2022', 'Wang 2018', 'Singh y Saadabadi 2024', 'Zhang 2026', 'Filippatos 2017', 'Simon 2024', 'Blyzniuk 2026', 'Chu y Wadhwa 2023', 'Bhanu 2021', 'De Filippis 2022', 'Wichniak 2017', 'Waseem 2026', 'Horowitz 2023'],
+  },
+  // Benzodiacepinas y relajantes musculares (2026-10): nueve fuentes enteras
+  // en PMC y siete capítulos de StatPearls (PDF del usuario). Sin fuente leída
+  // para el efecto sobre la inflamación y la curación, si enmascaran signos,
+  // terapia manual ni dosificación del ejercicio: docs/farmacologia.md.
+  {
+    id: 'sedantes',
+    nombre: 'Benzodiacepinas y relajantes musculares',
+    ejemplos: 'Diazepam, lorazepam, alprazolam, ciclobenzaprina, metocarbamol, tizanidina, baclofeno',
+    apartados: {
+      dolor: {
+        texto: [
+          'Lumbalgia inespecífica: los relajantes no benzodiacepínicos (ciclobenzaprina, metocarbamol, tizanidina y otros) redujeron el dolor 7,7 puntos sobre 100 en las 2 primeras semanas, con certeza muy baja y por debajo de los 10 puntos que los autores consideran clínicamente relevantes; el efecto desaparecía al dejar fuera los ensayos con alto riesgo de sesgo, y no hubo efecto a las 3–13 semanas ni en la discapacidad. Las benzodiacepinas (diazepam) no mejoraron el dolor; un único ensayo vio menos discapacidad a las 3–13 semanas. No hay ensayos a largo plazo (Cashin 2021).',
+          'En la lumbalgia aguda, las guías ponen primero los tratamientos no farmacológicos, y por su evolución favorable los autores piden prudencia con los analgésicos (Wewege 2023). En el dolor crónico, el uso prolongado mostró beneficio sobre todo en espasmos, calambres dolorosos y dolor cervical; en lumbalgia y fibromialgia, en conjunto, no (Oldfield 2024).',
+          'La ciclobenzaprina está aprobada como complemento del reposo y la fisioterapia en el espasmo muscular agudo, solo 2–3 semanas, y no sirve para la espasticidad (Khan y Kahwaji 2023); el metocarbamol tampoco (Sibrack 2024). La tizanidina y el baclofeno se indican para la espasticidad de origen neurológico; el uso del baclofeno en la lumbalgia es limitado (Ghanavatian y Derian 2023; Ghanavatian y Derian 2024).',
+          'Las fuentes leídas no tratan su efecto sobre la inflamación ni sobre la curación de los tejidos, ni si enmascaran signos en la exploración.',
+        ],
+        detalle: [
+          'En el metaanálisis en red de la lumbalgia aguda, los relajantes no benzodiacepínicos redujeron el dolor 14,3 puntos sobre 100 frente a placebo, con confianza muy baja (Wewege 2023).',
+          'No hay pruebas de alta calidad de que el metocarbamol sea mejor que un AINE, y añadirlo al naproxeno no mejoró los resultados a la semana en un ensayo pequeño (Sibrack 2024). Tras la cirugía, el efecto analgésico de los relajantes musculares es inconstante (Farishta 2024).',
+          'En la fibromialgia, el dolor volvió a subir una semana después de dejar la tizanidina en un estudio (Oldfield 2024).',
+        ],
+      },
+      visceral: {
+        texto: [
+          'Respiración: con una benzodiacepina sola la depresión respiratoria es poco frecuente, pero el riesgo sube mucho con alcohol, opioides u otros sedantes (Kang 2023); la advertencia de la FDA dice que con opioides pueden causar sedación, depresión respiratoria grave, coma y muerte (Bounds y Patel 2024). En 2021, casi el 88 % de las muertes por sobredosis con benzodiacepinas en EE. UU. implicaban también opioides, y su sedación se suma a la de antihistamínicos, antipsicóticos y gabapentinoides (Brunner 2025). Los relajantes musculares junto con opioides también aumentan el riesgo de sobredosis (Oldfield 2024; Farishta 2024).',
+          'Cognición: dan déficits de memoria, aprendizaje y atención y empeoran el delirium en mayores (Capiau 2023), además de amnesia anterógrada y alteración psicomotora; entre el 1 y el 20 % de quienes las toman tiene conductas agresivas (Edinoff 2021). Tras la cirugía, los relajantes musculares duplicaron el delirium en mayores (Farishta 2024).',
+          'Tizanidina: hipotensión y bradicardia, a veces graves, y casos de daño hepático grave e insuficiencia hepática, por lo que se controla la función hepática; no se combina con ciprofloxacino ni fluvoxamina, por hipotensión importante y más alteración psicomotora (Ghanavatian y Derian 2023).',
+          'Ciclobenzaprina: es de la familia de los tricíclicos y da somnolencia, boca seca, mareo, confusión, taquicardia y retención de orina; con otros serotoninérgicos, como la duloxetina, se han descrito casos de síndrome serotoninérgico (Khan y Kahwaji 2023).',
+          'Baclofeno: se elimina por el riñón; con la función renal reducida se acumula, con riesgo de encefalopatía, y con un filtrado de 30 o menos se aconseja evitarlo (Ghanavatian y Derian 2024; Kershner 2026).',
+        ],
+        detalle: [
+          'Los relajantes no benzodiacepínicos aumentaron los efectos adversos (RR 1,6), sobre todo mareo, somnolencia, cefalea y náuseas (Cashin 2021).',
+          'Todos los relajantes musculares tienen efectos anticolinérgicos que favorecen la sedación, las caídas y la confusión en mayores. El metocarbamol puede cambiar el color de la orina, sin importancia clínica (Sibrack 2024).',
+          'Las benzodiacepinas se asocian a hipotensión ortostática en mayores, por una caída de la tensión más acusada en los primeros 10 segundos al ponerse de pie (Capiau 2023; Brunner 2025).',
+        ],
+      },
+      ejercicio: {
+        texto: [
+          'Caídas y fracturas: las benzodiacepinas aumentan las caídas (OR 1,39–1,57) y se asocian con fuerza a la fractura de cadera; los hipnóticos Z, como el zolpidem, también aumentan las fracturas (OR 1,63). El riesgo es mayor las primeras semanas tras empezar y con el uso prolongado, por sedación, hipotensión ortostática, mareo, debilidad muscular, ataxia y problemas visuales (Capiau 2023). En mayores con insomnio, multiplicaron por 2,6 los efectos psicomotores, como caídas y accidentes de tráfico (Brunner 2025).',
+          'Equilibrio: el efecto depende de la dosis y es máximo en las primeras horas tras la toma; es mayor con dosis altas, con poco tiempo entre la toma y el despertar o con alcohol u otros sedantes, y la inestabilidad es más marcada en mayores (Capiau 2023).',
+          'Relajantes musculares en mayores: los criterios de Beers piden evitarlos por caídas, fracturas y alteración cognitiva o psicomotora (Sibrack 2024). Con baclofeno hubo más caídas que con tizanidina (SHR 1,68) y parecidas a las de la ciclobenzaprina (Hwang 2024). El baclofeno da debilidad muscular, y su intoxicación, hipotonía (Ghanavatian y Derian 2024; Kershner 2026).',
+          'Conducir: con baclofeno se pide no conducir ni manejar maquinaria por la sedación (Ghanavatian y Derian 2024), y las benzodiacepinas de acción larga se asocian a más accidentes de tráfico (Capiau 2023).',
+          'Las fuentes leídas no dan normas de terapia manual ni de dosificación del ejercicio con estos fármacos.',
+        ],
+        detalle: [
+          'En mayores hospitalizados, las dosis de más de 1 mg/día equivalente de diazepam se asociaron a caídas, y quienes tomaban diazepam, de acción larga, tenían más de tres veces más caídas en 90 días que quienes no tomaban benzodiacepinas (Capiau 2023). El aumento de caídas con lesión es significativo sobre todo por encima de los 80 años (Edinoff 2021).',
+          'Con la tizanidina se miden la tensión y la frecuencia cardíaca antes de subir la dosis, por el riesgo de hipotensión grave (Ghanavatian y Derian 2023). El metocarbamol empieza a actuar a los 30 minutos y llega a su máximo a las 2 horas (Sibrack 2024).',
+          'Durante una retirada pautada de benzodiacepinas, la guía aconseja actividad física adaptada a la capacidad (Brunner 2025).',
+        ],
+      },
+      sueno: {
+        texto: [
+          'Las benzodiacepinas mejoran poco el sueño (se duerme antes, más tiempo y con menos despertares), pero el efecto se pierde en días o semanas mientras los riesgos siguen; se aconseja no pasar de 4 semanas (Brunner 2025).',
+          'Las de acción larga dan resaca al día siguiente, confusión, mareo y torpeza motora, y la inercia al despertar puede aumentar el riesgo de caídas (Capiau 2023).',
+          'En el insomnio crónico, el tratamiento inicial recomendado es la terapia cognitivo-conductual (Capiau 2023; Bounds y Patel 2024).',
+          'Apnea del sueño: en un metaanálisis en red, las benzodiacepinas bajaron la saturación media durante el sueño, aunque no empeoraron el índice de apneas; los autores piden mucha cautela en quien tiene apnea (Kishi 2026). Tras la cirugía, los relajantes musculares también piden cautela con apnea del sueño (Farishta 2024).',
+        ],
+        detalle: [
+          'Al reducir la dosis puede empeorar el insomnio, y por eso la reducción es gradual (Capiau 2023). Quien tomaba dosis altas puede dormir menos al bajarlas sin que sea insomnio: puede ser el fin de una sedación excesiva (Brunner 2025).',
+          'La ciclobenzaprina puede ayudar al insomnio asociado a la fibromialgia (Khan y Kahwaji 2023) y mejoró los trastornos del sueño en tres estudios (Oldfield 2024).',
+        ],
+      },
+      consultar: {
+        texto: [
+          'Urgente: sedación extrema, habla arrastrada, ataxia, respiración lenta o superficial o no responder, sobre todo si ha tomado además alcohol u opioides (Bounds y Patel 2024; Kang 2023). Con baclofeno, confusión, depresión respiratoria, convulsiones o parálisis piden atención médica inmediata, igual que las ideas de autolesión o suicidio (Kershner 2026). Signos de síndrome serotoninérgico con ciclobenzaprina y otro serotoninérgico (Khan y Kahwaji 2023).',
+          'Retirada: no se dejan de golpe. Con benzodiacepinas, una reducción rápida puede dar convulsiones y delirium potencialmente mortales (Brunner 2025); otros síntomas son irritabilidad, inquietud, sudoración, cefalea, calambres musculares y molestias digestivas (Capiau 2023), y también dolor o rigidez de cabeza y cuello, sensaciones extrañas en las extremidades, debilidad, hormigueos y contracciones musculares (Edinoff 2021). Los síntomas de retirada a menudo se atribuyen a la enfermedad de base o a otra (Brunner 2025). Con baclofeno oral, la retirada brusca puede dar convulsiones y alucinaciones (Ghanavatian y Derian 2024); con tizanidina, taquicardia, tensión alta de rebote y más espasticidad (Ghanavatian y Derian 2023).',
+          'Pronto: mareo, inestabilidad, caídas o somnolencia de día nuevos, o confusión en un mayor (Capiau 2023); con tizanidina, mareo, pulso lento o tensión baja (Ghanavatian y Derian 2023); con baclofeno, somnolencia o confusión si tiene enfermedad renal, que aumenta el riesgo de intoxicación (Kershner 2026).',
+          'Nunca aconsejes dejarlos ni bajarlos por tu cuenta: la retirada es gradual (Brunner 2025; Kershner 2026), con quien los prescribe. Las dudas, al médico o al farmacéutico.',
+        ],
+        detalle: [
+          'Combinaciones que hay que comentar con quien prescribe: opioides, alcohol y otros sedantes con cualquiera de ellos (Bounds y Patel 2024; Ghanavatian y Derian 2024); tizanidina con ciprofloxacino o fluvoxamina (Ghanavatian y Derian 2023); ciclobenzaprina con otros serotoninérgicos (Khan y Kahwaji 2023). La guía de retirada recomienda ofrecer naloxona a quien toma a la vez benzodiacepinas y opioides (Brunner 2025).',
+          'La dependencia física es una consecuencia esperable del uso continuado y no equivale a un trastorno por uso, que solo cumple el 1,5 %. El riesgo de síntomas de retirada es bajo con menos de 1 mes de uso y aparece con tomas de 4 o más días por semana durante 1–3 meses o más; con el alprazolam la dependencia llega antes. Algunos síntomas pueden durar meses o años (Brunner 2025).',
+          'Al reducir la dosis se vigilan el mareo, la sedación, las caídas, la ansiedad, el insomnio y la agitación (Capiau 2023). La sobredosis de baclofeno puede dar un coma de hasta 7 días (Ghanavatian y Derian 2024).',
+        ],
+      },
+    },
+    fuentes: ['Cashin 2021', 'Wewege 2023', 'Oldfield 2024', 'Khan y Kahwaji 2023', 'Sibrack 2024', 'Ghanavatian y Derian 2023', 'Ghanavatian y Derian 2024', 'Farishta 2024', 'Kang 2023', 'Bounds y Patel 2024', 'Brunner 2025', 'Capiau 2023', 'Edinoff 2021', 'Kershner 2026', 'Hwang 2024', 'Kishi 2026'],
+  },
   { id: 'estatinas', nombre: 'Estatinas', ejemplos: 'Atorvastatina, simvastatina, rosuvastatina' },
   { id: 'fluoroquinolonas', nombre: 'Fluoroquinolonas', ejemplos: 'Ciprofloxacino, levofloxacino, moxifloxacino' },
   { id: 'betabloqueantes', nombre: 'Betabloqueantes', ejemplos: 'Bisoprolol, atenolol, metoprolol, propranolol' },
