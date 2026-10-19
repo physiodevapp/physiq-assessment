@@ -193,7 +193,7 @@ Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido:
 
 **Decisión tomada**: va como herramienta propia en la cabecera, no como sección de «Condiciones especiales».
 
-## Paso 3 — Conectarla con el paciente (diseño en borrador, 2026-10; pendiente de las decisiones del usuario)
+## Paso 3 — Conectarla con el paciente (diseño hecho, 2026-10; las 20 recomendaciones, aceptadas por el usuario; pendiente de implementar)
 
 Diseño completo y las 20 decisiones: **`docs/farmacos-paciente.md`**. Solo diseño, sin código. En resumen:
 

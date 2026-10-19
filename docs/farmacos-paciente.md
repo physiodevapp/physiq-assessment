@@ -1,6 +1,6 @@
 # Fármacos que toma el paciente — diseño del paso 3 de la farmacología
 
-Estado: **borrador de diseño (octubre 2026), solo diseño: nada de código.** Pendiente de las decisiones del usuario (al final). Es el paso 3 de `docs/farmacologia.md` («Conectarla con el paciente»); los pasos 1 y 2 están hechos. Con `main` traído a la rama (2026-10), hay ocho familias revisadas por el usuario: AINE, corticoides, anticoagulantes y antiagregantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes musculares, y estatinas. **Las otras cinco se están escribiendo en paralelo**, cada una en su rama (ver «Trabajo en paralelo»), así que el diseño no fija ninguna lista de familias.
+Estado: **diseño (octubre 2026), solo diseño: nada de código.** **Las 20 recomendaciones de «Decisiones», aceptadas por el usuario (2026-10).** Queda corregir la frase de los corticoides en la guía (decisión 6) y la implementación. Es el paso 3 de `docs/farmacologia.md` («Conectarla con el paciente»); los pasos 1 y 2 están hechos. Con `main` traído a la rama (2026-10), hay ocho familias revisadas por el usuario: AINE, corticoides, anticoagulantes y antiagregantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes musculares, y estatinas. **Las otras cinco se están escribiendo en paralelo**, cada una en su rama (ver «Trabajo en paralelo»), así que el diseño no fija ninguna lista de familias.
 
 Reglas de este diseño, las mismas de la línea «fármacos» y de las condiciones especiales:
 - Solo se usa contenido de **familias ya revisadas**. No entra ninguna frase nueva con fuente: los avisos de la fase 6 son **frases literales** de `data/farmacos.js`, con su cita.
@@ -159,6 +159,8 @@ En otro chat se escriben las familias que faltan, cada una en su rama. Para que 
 
 ## Decisiones (cada una con mi recomendación y la alternativa)
 
+**Aceptadas por el usuario las 20 recomendaciones (2026-10).**
+
 1. **Dónde va.** *Recomiendo* una tarjeta propia, `#cardFarmacos`, tras la del anticoagulado y antes de Cronología. *Alternativa*: dentro del formulario previo, junto a «Medicación que toma ahora» (pero el formulario es una transcripción del papel, empieza cerrado y se carga aparte).
 2. **Qué familias se muestran.** *Recomiendo* solo las que tienen contenido, calculadas de `data/farmacos.js` (hoy 7 chips más la línea del anticoagulado); las que se escriben en paralelo aparecen solas al fusionarse, y mientras tanto una línea calculada remite a «✨ Preguntar a la IA». *Alternativa*: las 13 desde el principio, con las pendientes marcadas «sin guía revisada»; solo irían al payload, a 📋 Notas y a la IA como dato, con el riesgo de que la IA rellene el hueco con consejos sin fuente. Con las familias a punto de llegar, la alternativa aporta poco.
 3. **Anticoagulantes y antiagregantes.** *Recomiendo* una línea con el estado de su tarjeta y «Ir a la tarjeta →», el mismo patrón que se aceptó para el lupus (decisión 3 de `docs/anticoagulado.md`). *Alternativa*: un chip espejo que marque la tarjeta del anticoagulado (un solo dato, pero un control más que escribe en otra tarjeta y deja «qué toma» sin rellenar).
@@ -182,7 +184,7 @@ En otro chat se escriben las familias que faltan, cada una en su rama. Para que 
 
 ## Siguiente paso
 
-1. Tus decisiones (1–20).
+1. ~~Tus decisiones (1–20)~~ Hecho: aceptadas las 20 recomendaciones (2026-10).
 2. Si aceptas la 6: corregir la frase de los corticoides en la guía (revisión aparte, sin fuentes nuevas: Puentedura 2015 ya está leída).
 3. La implementación, en una rama propia: traer `main` antes de empezar y otra vez antes de fusionar, con la prueba de humo completa; revisión del usuario en la app antes de `main`.
 4. physiq-report: `_bloqueFM`, en otra PR.
