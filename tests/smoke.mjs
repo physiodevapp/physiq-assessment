@@ -832,9 +832,10 @@ async function checkLupus(page) {
   await fila('antifosfolipidos', 'no');
   await fila('actividad', 'peor');
   await page.click('[data-les-casilla="raynaud"]');
-  await page.click('[data-les-casilla="antitrombotico"]');
   r.estado = await page.evaluate(() => JSON.stringify(state.lupus) === JSON.stringify({ estado: 'diagnosticado', corticoides: 'm', dosisAltas: '', inmunosupresores: '',
-    antifosfolipidos: 'no', antitrombotico: true, osteonecrosis: false, raynaud: true, actividad: 'peor', rasgos: {} }));
+    antifosfolipidos: 'no', osteonecrosis: false, raynaud: true, actividad: 'peor', rasgos: {} }));
+  // El anticoagulante o antiagregante ya no es una casilla: una línea lleva a su tarjeta (docs/anticoagulado.md, decisión 3)
+  r.enlaceAC = !(await page.$('[data-les-casilla="antitrombotico"]')) && (await page.textContent('#lesNotaAC')).includes('Paciente anticoagulado o antiagregado');
   await page.click('#phase1 .btn-primary');
   await page.waitForTimeout(150);
   await page.click(`[onclick="selectRegion('codo', this)"]`);
@@ -914,7 +915,104 @@ async function checkLupus(page) {
     return t.includes('Lupus: intensidad moderada') && t.includes('Lupus con Raynaud') && t.includes('una infección puede dar poca fiebre') && t.includes('pérdida de visión de golpe'); });
   r.ok = r.filasOcultas && r.filasOcultasSospecha && r.filasVisibles && r.segundoToque && r.estado && r.tab && r.urgSinPlegar && r.sinEmbudo
     && r.urgencia && r.derivacion && r.payloadDv && r.notaNaturaleza && r.notaBrote && r.notaHM && r.sospechaSinUrg && r.rasgos
-    && r.derivarSospecha && r.sincronizada && r.informeSinLupus && r.ancho1 && r.ancho2 && r.sinSistema && r.fase5 && r.nota4b && r.fase6;
+    && r.derivarSospecha && r.sincronizada && r.informeSinLupus && r.ancho1 && r.ancho2 && r.sinSistema && r.fase5 && r.nota4b && r.fase6 && r.enlaceAC;
+  return r;
+}
+
+// Paciente anticoagulado o antiagregado (Fase P, docs/anticoagulado.md),
+// lumbar. Fase 1: un solo estado, «Toma», y los chips de lo que toma («No lo
+// sabe» excluye a los demás); el enlace a la guía de fármacos la abre en los
+// antitrombóticos. Fase 2: con la aspirina sola no sale el golpe en la cabeza
+// (NICE NG232, 1.2.4) ni el psoas o la pared abdominal; con un anticoagulante,
+// las seis urgencias, sin plegar ni embudo. 320 px: nada se sale. Quitar la
+// marca quita el sistema. Después, un recorrido entero: la línea de la 4b, el
+// recuadro de la fase 5 y los avisos, el tope y la red de la fase 6.
+async function checkAnticoagulado(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  await page.fill('#motivoConsulta', 'Dolor lumbar al agacharse');
+  await page.click('#mecanismo .option-btn >> nth=1');
+  await page.click('#cronologia .option-btn >> nth=0');
+  r.nota = (await page.textContent('#acNota')).includes('No le digas que lo deje');
+  r.unEstado = await page.$$eval('#acEstado .option-btn', els => els.length === 1 && els[0].dataset.valor === 'toma');
+  r.chipsOcultos = !(await page.isVisible('#acTomaWrap'));
+  await page.click('#acEstado .option-btn[data-valor="toma"]');
+  r.chips = await page.isVisible('#acTomaWrap') && await page.$$eval('#acToma [data-ac-toma]', els => els.length === 6);
+  await page.click('[data-ac-toma="oa"]');
+  await page.click('[data-ac-toma="as"]');
+  r.ordenTarjeta = await page.evaluate(() => JSON.stringify(state.anticoagulado.toma) === '["as","oa"]');
+  r.ariaPressed = await page.getAttribute('[data-ac-toma="as"]', 'aria-pressed') === 'true';
+  await page.click('[data-ac-toma="ns"]');
+  r.nsExcluye = await page.evaluate(() => JSON.stringify(state.anticoagulado.toma) === '["ns"]');
+  await page.click('[data-ac-toma="ns"]');
+  await page.click('[data-ac-toma="as"]');
+  // La guía de fármacos, abierta en los antitrombóticos
+  await page.click('#cardAnticoagulado button:has-text("Fármacos: anticoagulantes y antiagregantes")');
+  await page.waitForSelector('#farmOverlay.open');
+  r.guia = await page.evaluate(() => document.querySelector('#farmCuerpo [data-familia="antitromboticos"]')?.open === true
+    && [...document.querySelectorAll('#farmCuerpo [data-familia]')].filter(d => d.open).length === 1);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(150);
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(150);
+  r.tab = await page.isVisible('#tab_transversal_anticoagulado');
+  await page.click('#tab_transversal_anticoagulado');
+  const P = '#panel_transversal_anticoagulado';
+  r.aspirina = await page.evaluate(sel => { const ids = [...document.querySelectorAll(`${sel} .sq2`)].map(e => e.id);
+    return !ids.includes('sq2_ac_u_cabeza') && !ids.includes('sq2_ac_u_psoas') && !ids.includes('sq2_ac_u_pared')
+      && ids.includes('sq2_ac_u_cabeza_tardia') && ids.includes('sq2_ac_u_espinal') && ids.includes('sq2_ac_u_compartimental'); }, P);
+  r.sinEmbudo = await page.$$eval(`${P} [data-embudo]`, els => els.length) === 0;
+  await page.click(`${P} #sq2_ac_u_espinal .sq-btn.si`);
+  r.urgencia = await page.isVisible('#sistemicoAlert .urgencia-alert');
+  await page.click(`${P} #sq2_ac_u_espinal .sq-btn.no`);
+  await page.click(`${P} #sq2_ac_d_hematoma .sq-btn.si`);
+  r.derivacion = await page.isVisible(`${P} #sq2_ac_d_hematoma .sq2-deriv-msg`);
+  await page.click(`${P} #sq2_ac_d_hematoma .sq-btn.no`);
+  // Con un anticoagulante directo, las seis urgencias
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('[data-ac-toma="do"]');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#tab_transversal_anticoagulado');
+  r.anticoagulante = await page.$$eval(`${P} .sq2-urg`, els => els.length) === 6;
+  // 320 px: la tarjeta y el acordeón, sin desbordar
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#acc_transversal_anticoagulado .sistema-accordion-header');
+  await page.waitForTimeout(150);
+  r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  // Quitar la marca quita el sistema
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#acEstado .option-btn[data-valor="toma"]');
+  r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_anticoagulado') && !document.getElementById('tab_transversal_anticoagulado') && !document.body.classList.contains('anticoagulado'));
+  // Recorrido entero con un anticoagulante directo: 4b, fase 5 y fase 6
+  await abrirApp(page);
+  await page.click('#acEstado .option-btn[data-valor="toma"]');
+  await page.click('[data-ac-toma="do"]');
+  await walkRegion(page, 'lumbar');
+  r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .ac-fase5')?.textContent || '';
+    return t.includes('anticoagulante directo') && t.includes('Thrust') && t.includes('Punción seca') && t.includes('Ondas de choque') && t.includes('Caídas'); });
+  r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .ac-fase5 .cita[data-cita^="NICE NG232"]'));
+  await page.evaluate(() => goToPhase('4b'));
+  await page.waitForTimeout(200);
+  r.nota4b = await page.isVisible('#hypothesisCards .ac-nota-4b');
+  await page.evaluate(() => goToPhase(5));
+  await page.waitForTimeout(150);
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Anticoagulado o antiagregado: precaución') && t.includes('Anticoagulante: sin manipulación con thrust') && t.includes('Red de seguridad (anticoagulado o antiagregado)'); });
+  r.ok = Object.values(r).every(Boolean);
   return r;
 }
 
@@ -2438,7 +2536,7 @@ async function checkCondiciones(browser, errors) {
     const p = document.getElementById('condPanel').getBoundingClientRect();
     const ids = [...document.querySelectorAll('#condCuerpo .cond-fila')].map(f => f.dataset.condicion).join();
     return p.width > 420 && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,embarazo,tarlov,cascanueces,congestionPelvica'
+      && ids === 'posquirurgico,hipermovilidad,disautonomia,lupus,mastocitos,osteoporosis,embarazo,anticoagulado,tarlov,cascanueces,congestionPelvica'
       && /Solo en lumbar/i.test(document.getElementById('condCuerpo').textContent)
       && /Solo en cadera/i.test(document.getElementById('condCuerpo').textContent)
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
@@ -5721,7 +5819,7 @@ const SECCIONES = [
 
   { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
     const c = await checkCondiciones(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 10 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 11 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -5795,6 +5893,13 @@ const SECCIONES = [
     const r = await checkMastocitos(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta solo con «Diagnosticado», filas y desencadenantes, derivación sin urgencia ni embudo, texto de la asociación en hipermovilidad y disautonomía, nota 4b, fase 5 (qué hacer, desmayo, riesgo alto, sin autoinyector), fase 6 y 320 px`);
     if (!r.ok) console.log('\nMastocitos:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'anticoagulado', titulo: 'Paciente anticoagulado o antiagregado (Fase P, lumbar):', run: async ({ page }) => {
+    const r = await checkAnticoagulado(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta «Toma» con sus chips, guía de fármacos en los antitrombóticos, golpe en la cabeza según el fármaco, urgencias sin plegar ni embudo, derivación, nota 4b, fase 5, fase 6 (aviso, tope y red) y 320 px`);
+    if (!r.ok) console.log('\nAnticoagulado:', JSON.stringify(r));
     return r.ok;
   } },
 

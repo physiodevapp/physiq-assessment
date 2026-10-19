@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **640** referencias de literatura, con **4023** usos.
+- **676** referencias de literatura, con **4263** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **379** de 640 referencias del registro revisadas. Ver «Estado de revisión».
+- **379** de 676 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -63,6 +63,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE NG192](#nice-ng192) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [NICE NG194](#nice-ng194) | razonamiento fase 2 | 7 | **sin revisar** |
 | [NICE NG201](#nice-ng201) | razonamiento fase 2 · texto | 32 | **sin revisar** |
+| [NICE NG232](#nice-ng232) | razonamiento fase 2 · texto | 17 | **sin revisar** |
 | [NICE NG255](#nice-ng255) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG258](#nice-ng258) | razonamiento fase 2 · plan de tratamiento · texto | 25 | **sin revisar** |
 | [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) | razonamiento fase 2 | 3 | **sin revisar** |
@@ -75,6 +76,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Champaneria 2016](#champaneria-2016) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Dos Santos 2016](#dos-santos-2016) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Llitjos 2016](#llitjos-2016) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Bahit 2017](#bahit-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Byers 2017](#byers-2017) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Clinton 2017](#clinton-2017) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Henderson 2017](#henderson-2017) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -82,34 +85,50 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Schroeder 2017](#schroeder-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Baker 2018](#baker-2018) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
+| [Chenoweth 2018](#chenoweth-2018) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Gordon 2018](#gordon-2018) | razonamiento fase 2 · texto | 12 | **sin revisar** |
 | [Hulens 2018](#hulens-2018) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Mottola 2018](#mottola-2018) | razonamiento fase 2 · texto | 58 | **sin revisar** |
 | [Aringer 2019](#aringer-2019) | razonamiento fase 2 · texto | 17 | **sin revisar** |
+| [Cooper 2019](#cooper-2019) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kanis 2019](#kanis-2019) | razonamiento fase 2 · texto | 10 | **sin revisar** |
 | [Tektonidou 2019](#tektonidou-2019) | razonamiento fase 2 · texto | 8 | **sin revisar** |
+| [Wiegele 2019](#wiegele-2019) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Amaniyan 2020](#amaniyan-2020) | razonamiento fase 2 · texto | 8 | **sin revisar** |
+| [Brooker 2020](#brooker-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Cardona 2020](#cardona-2020) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Peker 2020](#peker-2020) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Sahu 2020](#sahu-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Wang 2020](#wang-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [WFH 2020](#wfh-2020) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Yale 2020](#yale-2020) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Colombo 2021](#colombo-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kaneko 2021](#kaneko-2021) | razonamiento fase 2 · texto | 9 | **sin revisar** |
+| [Liao 2021](#liao-2021) | razonamiento fase 2 · texto | 8 | **sin revisar** |
+| [Ogrodnik 2021](#ogrodnik-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Pisetsky 2021](#pisetsky-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [RCUK 2021](#rcuk-2021) | razonamiento fase 2 · plan de tratamiento · texto | 31 | **sin revisar** |
 | [Thanou 2021](#thanou-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Bałabuszek 2022](#bałabuszek-2022) | razonamiento fase 2 | 3 | **sin revisar** |
+| [Dalrymple 2022](#dalrymple-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [De Maeseneer 2022](#de-maeseneer-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Drosos 2022](#drosos-2022) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Laurent 2022](#laurent-2022) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Muñoz 2022](#muñoz-2022) | razonamiento fase 2 · texto | 10 | **sin revisar** |
+| [Nemunaitis 2022](#nemunaitis-2022) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Peng 2022](#peng-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Pokhrel 2022](#pokhrel-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Raj 2022](#raj-2022) | razonamiento fase 2 · texto | 37 | **sin revisar** |
 | [Simonds 2022](#simonds-2022) | razonamiento fase 2 · texto | 39 | **sin revisar** |
 | [Valent 2022](#valent-2022) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Fragoulis 2023](#fragoulis-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hameed 2023](#hameed-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Hideyama 2023](#hideyama-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lim y Selbi 2023](#lim-y-selbi-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Limaiem 2023](#limaiem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Lukies 2023](#lukies-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Matthews 2023](#matthews-2023) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Murphy 2023](#murphy-2023) | razonamiento fase 2 · razonamiento fase 4 | 2 | **sin revisar** |
 | [Paredes Mogica 2023](#paredes-mogica-2023) | razonamiento fase 2 · razonamiento fase 4 | 4 | **sin revisar** |
@@ -118,6 +137,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Saleem 2023](#saleem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Scioscia 2023](#scioscia-2023) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Yasir 2023](#yasir-2023) | razonamiento fase 2 · texto | 17 | **sin revisar** |
+| [Albrecht 2024](#albrecht-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Deering 2024](#deering-2024) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Fanouriakis 2024](#fanouriakis-2024) | razonamiento fase 2 · texto | 10 | **sin revisar** |
 | [Hanna 2024](#hanna-2024) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -127,6 +147,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Mangla y Hamad 2024](#mangla-y-hamad-2024) | razonamiento fase 2 · razonamiento fase 4 | 7 | **sin revisar** |
 | [Penfold 2024](#penfold-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Sambola 2024](#sambola-2024) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Capsoni 2025](#capsoni-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Castro y Sharma 2025](#castro-y-sharma-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Goosenberg 2025](#goosenberg-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Gregson 2025](#gregson-2025) | razonamiento fase 2 · texto | 75 | **sin revisar** |
@@ -134,12 +155,15 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kuo 2025](#kuo-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lee y Picard 2025](#lee-y-picard-2025) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Lizzo 2025](#lizzo-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Mameli 2025](#mameli-2025) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Saad y Mathew 2025](#saad-y-mathew-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Sammaritano 2025](#sammaritano-2025) | razonamiento fase 2 | 4 | **sin revisar** |
 | [Bell y Saleh 2026](#bell-y-saleh-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Bowers y Blum 2026](#bowers-y-blum-2026) | razonamiento fase 2 · texto | 14 | **sin revisar** |
+| [Ghosh 2026](#ghosh-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Hadji 2026](#hadji-2026) | razonamiento fase 2 · texto | 17 | **sin revisar** |
 | [Hanif 2026](#hanif-2026) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Kim 2026](#kim-2026) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Regalla y Killeen 2026](#regalla-y-killeen-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Brown 2004](#brown-2004) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Cook y Brown 2010](#cook-y-brown-2010) | razonamiento fase 4 | 1 | **sin revisar** |
@@ -244,6 +268,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Srisuwatchari 2023](#srisuwatchari-2023) | plan de tratamiento | 1 | **sin revisar** |
 | [Muñoz 2024](#muñoz-2024) | plan de tratamiento · texto | 8 | **sin revisar** |
 | [NICE NG123](#nice-ng123) | texto | 7 | **sin revisar** |
+| [NICE NG196](#nice-ng196) | texto | 14 | **sin revisar** |
 | [NICE NG210](#nice-ng210) | texto | 28 | **sin revisar** |
 | [NICE NG249](#nice-ng249) | texto | 21 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
@@ -252,51 +277,65 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Giangregorio 2014](#giangregorio-2014) | texto | 35 | **sin revisar** |
 | [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) | texto | 14 | **sin revisar** |
 | [Liddle y Pennick 2015](#liddle-y-pennick-2015) | texto | 14 | **sin revisar** |
-| [Puentedura 2015](#puentedura-2015) | texto | 14 | **sin revisar** |
+| [Liu 2015](#liu-2015) | texto | 7 | **sin revisar** |
+| [Puentedura 2015](#puentedura-2015) | texto | 21 | **sin revisar** |
+| [Whedon 2015](#whedon-2015) | texto | 7 | **sin revisar** |
 | [Hall 2016](#hall-2016) | texto | 7 | **sin revisar** |
 | [Sperstad 2016](#sperstad-2016) | texto | 7 | **sin revisar** |
 | [Engelbert 2017](#engelbert-2017) | texto | 14 | **sin revisar** |
 | [González-de-Olano 2017](#gonzález-de-olano-2017) | texto | 7 | **sin revisar** |
+| [Hutting 2018](#hutting-2018) | texto | 7 | **sin revisar** |
 | [Fedorowski 2019](#fedorowski-2019) | texto | 15 | **sin revisar** |
 | [Gibbs 2019](#gibbs-2019) | texto | 7 | **sin revisar** |
 | [Sherrington 2019](#sherrington-2019) | texto | 7 | **sin revisar** |
 | [ACOG 2020](#acog-2020) | texto | 21 | **sin revisar** |
 | [Bull 2020](#bull-2020) | texto | 14 | **sin revisar** |
 | [Miller 2020](#miller-2020) | texto | 7 | **sin revisar** |
+| [Salmasi 2020](#salmasi-2020) | texto | 8 | **sin revisar** |
 | [Gluppe 2021](#gluppe-2021) | texto | 7 | **sin revisar** |
+| [Steffel 2021](#steffel-2021) | texto | 8 | **sin revisar** |
 | [Vernino 2021](#vernino-2021) | texto | 29 | **sin revisar** |
 | [Brooke-Wavell 2022](#brooke-wavell-2022) | texto | 49 | **sin revisar** |
 | [Hardcastle 2022](#hardcastle-2022) | texto | 14 | **sin revisar** |
 | [Montero-Odasso 2022](#montero-odasso-2022) | texto | 21 | **sin revisar** |
 | [Muraro 2022](#muraro-2022) | texto | 14 | **sin revisar** |
+| [Nochaiwong 2022](#nochaiwong-2022) | texto | 8 | **sin revisar** |
+| [Tenforde 2022](#tenforde-2022) | texto | 7 | **sin revisar** |
 | [Burani 2023](#burani-2023) | texto | 7 | **sin revisar** |
 | [Frade 2023](#frade-2023) | texto | 21 | **sin revisar** |
 | [Gülen 2023](#gülen-2023) | texto | 7 | **sin revisar** |
+| [Mitchell 2023](#mitchell-2023) | texto | 7 | **sin revisar** |
+| [Tominaga 2023](#tominaga-2023) | texto | 7 | **sin revisar** |
 | [Anagnostis 2024](#anagnostis-2024) | texto | 7 | **sin revisar** |
-| [Blaess 2024](#blaess-2024) | texto | 56 | **sin revisar** |
+| [Blaess 2024](#blaess-2024) | texto | 63 | **sin revisar** |
 | [Christopher 2024](#christopher-2024) | texto | 7 | **sin revisar** |
 | [Dures 2024](#dures-2024) | texto | 7 | **sin revisar** |
 | [Gak 2024](#gak-2024) | texto | 7 | **sin revisar** |
+| [Kwon 2024](#kwon-2024) | texto | 7 | **sin revisar** |
+| [Malfait 2024](#malfait-2024) | texto | 7 | **sin revisar** |
+| [Minardi 2024](#minardi-2024) | texto | 7 | **sin revisar** |
 | [Parodis 2024](#parodis-2024) | texto | 14 | **sin revisar** |
 | [Beamish 2025](#beamish-2025) | texto | 7 | **sin revisar** |
+| [Cheatham 2025](#cheatham-2025) | texto | 7 | **sin revisar** |
 | [Davenport 2025](#davenport-2025) | texto | 35 | **sin revisar** |
+| [Kim 2025](#kim-2025) | texto | 7 | **sin revisar** |
+| [Rhim 2025](#rhim-2025) | texto | 7 | **sin revisar** |
+| [Xiang 2025](#xiang-2025) | texto | 8 | **sin revisar** |
+| [Bavishi 2026](#bavishi-2026) | texto | 7 | **sin revisar** |
 | [Saliba 2026](#saliba-2026) | texto | 14 | **sin revisar** |
 | [Sivakoti 2026](#sivakoti-2026) | texto | 7 | **sin revisar** |
 | [Valdez 2026](#valdez-2026) | texto | 7 | **sin revisar** |
+| [Waterway 2026](#waterway-2026) | texto | 7 | **sin revisar** |
 | [Camilleri 2017](#camilleri-2017) | — | 1 | **sin revisar** |
 | [Compston 2018](#compston-2018) | — | 1 | **sin revisar** |
 | [Lucas 2019](#lucas-2019) | — | 1 | **sin revisar** |
 | [Bindu 2020](#bindu-2020) | — | 1 | **sin revisar** |
 | [De Vries 2020](#de-vries-2020) | — | 1 | **sin revisar** |
-| [Salmasi 2020](#salmasi-2020) | — | 1 | **sin revisar** |
 | [Dufort y Samaan 2021](#dufort-y-samaan-2021) | — | 1 | **sin revisar** |
 | [Schug 2021](#schug-2021) | — | 1 | **sin revisar** |
-| [Steffel 2021](#steffel-2021) | — | 1 | **sin revisar** |
 | [Dowell 2022](#dowell-2022) | — | 1 | **sin revisar** |
 | [Kurlander 2022](#kurlander-2022) | — | 1 | **sin revisar** |
 | [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) | — | 1 | **sin revisar** |
-| [Muñoz 2022](#muñoz-2022) | — | 1 | **sin revisar** |
-| [Nochaiwong 2022](#nochaiwong-2022) | — | 1 | **sin revisar** |
 | [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) | — | 1 | **sin revisar** |
 | [Papantoniou 2023](#papantoniou-2023) | — | 1 | **sin revisar** |
 | [Pofi 2023](#pofi-2023) | — | 1 | **sin revisar** |
@@ -304,10 +343,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pannone y Abbott 2024](#pannone-y-abbott-2024) | — | 1 | **sin revisar** |
 | [Yang 2024](#yang-2024) | — | 1 | **sin revisar** |
 | [He 2025](#he-2025) | — | 1 | **sin revisar** |
-| [Mameli 2025](#mameli-2025) | — | 1 | **sin revisar** |
-| [Xiang 2025](#xiang-2025) | — | 1 | **sin revisar** |
 | [Blyzniuk 2026](#blyzniuk-2026) | — | 1 | **sin revisar** |
-| [Ghosh 2026](#ghosh-2026) | — | 1 | **sin revisar** |
 | [Grusky 2026](#grusky-2026) | — | 1 | **sin revisar** |
 | [Soura 2026](#soura-2026) | — | 1 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
@@ -909,7 +945,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [ACOG 2020](#acog-2020) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baker 2018](#baker-2018) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Baylor 2023](#baylor-2023) · [Beamish 2025](#beamish-2025) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Beuschlein 2024](#beuschlein-2024) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brockow 2021](#brockow-2021) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Bruessel 2026](#bruessel-2026) · [Budha 2025](#budha-2025) · [Bull 2020](#bull-2020) · [Burani 2023](#burani-2023) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Cardona 2020](#cardona-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Champaneria 2016](#champaneria-2016) · [Chauhan 2023](#chauhan-2023) · [Chen 2023](#chen-2023) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Compston 2018](#compston-2018) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Gluppe 2021](#gluppe-2021) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Gülen 2023](#gülen-2023) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2026](#hadji-2026) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Hameed 2023](#hameed-2023) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Haskins 2015](#haskins-2015) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaneko 2021](#kaneko-2021) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Lacy 2023](#lacy-2023) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mottola 2018](#mottola-2018) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nochaiwong 2022](#nochaiwong-2022) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Scioscia 2023](#scioscia-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Simonds 2022](#simonds-2022) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Steffel 2021](#steffel-2021) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [WFH 2020](#wfh-2020) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Xiang 2025](#xiang-2025) · [Yamamoto 2009](#yamamoto-2009) · [Yang 2024](#yang-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
+[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [ACOG 2020](#acog-2020) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Albert-Lucena 2025](#albert-lucena-2025) · [Albrecht 2024](#albrecht-2024) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Amaniyan 2020](#amaniyan-2020) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Bahit 2017](#bahit-2017) · [Baker 2018](#baker-2018) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Bavishi 2026](#bavishi-2026) · [Baylor 2023](#baylor-2023) · [Beamish 2025](#beamish-2025) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Beuschlein 2024](#beuschlein-2024) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Birrell 2001](#birrell-2001) · [Biz 2019](#biz-2019) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brockow 2021](#brockow-2021) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brooker 2020](#brooker-2020) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Bruessel 2026](#bruessel-2026) · [Budha 2025](#budha-2025) · [Bull 2020](#bull-2020) · [Burani 2023](#burani-2023) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Capsoni 2025](#capsoni-2025) · [Cardona 2020](#cardona-2020) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Cascia 2019](#cascia-2019) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Champaneria 2016](#champaneria-2016) · [Chauhan 2023](#chauhan-2023) · [Cheatham 2025](#cheatham-2025) · [Chen 2023](#chen-2023) · [Chenoweth 2018](#chenoweth-2018) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Colombo 2021](#colombo-2021) · [Compston 2018](#compston-2018) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Cooper 2019](#cooper-2019) · [Couch 2025](#couch-2025) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Dalrymple 2022](#dalrymple-2022) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Evans 2023](#evans-2023) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Gluppe 2021](#gluppe-2021) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Gülen 2023](#gülen-2023) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2026](#hadji-2026) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Hameed 2023](#hameed-2023) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Haskins 2015](#haskins-2015) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hideyama 2023](#hideyama-2023) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Hutting 2018](#hutting-2018) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaneko 2021](#kaneko-2021) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim 2025](#kim-2025) · [Kim 2026](#kim-2026) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Kwon 2024](#kwon-2024) · [Lacy 2023](#lacy-2023) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Liao 2021](#liao-2021) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2015](#liu-2015) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Llitjos 2016](#llitjos-2016) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Lukies 2023](#lukies-2023) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malfait 2024](#malfait-2024) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Martin 2021](#martin-2021) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Minardi 2024](#minardi-2024) · [Mitchell 2023](#mitchell-2023) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Mottola 2018](#mottola-2018) · [Mountjoy 2023](#mountjoy-2023) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Nee 2012](#nee-2012) · [Nemunaitis 2022](#nemunaitis-2022) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG196](#nice-ng196) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG232](#nice-ng232) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nochaiwong 2022](#nochaiwong-2022) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Ogrodnik 2021](#ogrodnik-2021) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Peng 2022](#peng-2022) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhim 2025](#rhim-2025) · [Rhodes 2022](#rhodes-2022) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Sahu 2020](#sahu-2020) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Scioscia 2023](#scioscia-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Simonds 2022](#simonds-2022) · [Sims 2020](#sims-2020) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Steffel 2021](#steffel-2021) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Tenforde 2022](#tenforde-2022) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Tominaga 2023](#tominaga-2023) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waterway 2026](#waterway-2026) · [Waymack y An 2023](#waymack-y-an-2023) · [Weir 2015](#weir-2015) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [WFH 2020](#wfh-2020) · [Whedon 2015](#whedon-2015) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wiegele 2019](#wiegele-2019) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Xiang 2025](#xiang-2025) · [Yale 2020](#yale-2020) · [Yamamoto 2009](#yamamoto-2009) · [Yang 2024](#yang-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -1106,6 +1142,23 @@ Citada como:
 |---|---|---|---|---|
 | Cervical | ce3 · Radiculopatía Cervical | Test «Upper Limb Neurodynamic Test (ULNT) 1» | 4b · cita bajo el test | 1 |
 
+### Albrecht 2024
+
+Autores: Albrecht, Boeckh-Behrens, Schwarting et al.  
+Título: *Spontaneous spinal hematomas: A case series*  
+Publicación: Acta Neurochir (Wien) 166(1):353  
+DOI: 10.1007/s00701-024-06240-6  
+Última revisión: **sin revisar**  
+Nota: Serie de 20 hematomas espinales espontáneos: 11 con anticoagulante o antiagregante; intervalo sin dolor de minutos a días. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Albrecht 2024 — Albrecht, Boeckh-Behrens, Schwarting et al., «Spontaneous spinal hematomas: A case series», Acta Neurochir (Wien) 2024;166(1):353, resultados y discusión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_espinal` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+
 ### AlDahas 2024
 
 Autores: AlDahas, Heneghan, Althobaiti, Deane, Rushton y Falla  
@@ -1193,6 +1246,31 @@ Citada como:
 | Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» | 4b · cita bajo el test | 2 |
 | Cadera | — | Paso `ca_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
+
+### Amaniyan 2020
+
+Autores: Amaniyan, Ghobadi, Vaismoradi et al.  
+Título: *Cold Application on Bruising at the Subcutaneous Heparin Injection Site: A Systematic Review and Meta-Analysis*  
+Publicación: SAGE Open Nurs 6:2377960820901370  
+DOI: 10.1177/2377960820901370  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis del frío tras la heparina subcutánea; la frecuencia del moretón local (26–90 %) está en la introducción, de segunda mano. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Con heparina en inyección, los moratones en el punto de inyección son frecuentes (Amaniyan 2020); un dolor brusco con bulto en la pared del abdomen no lo es (Liao 2021).
+2. Amaniyan 2020 — Amaniyan, Ghobadi, Vaismoradi et al., «Cold Application on Bruising at the Subcutaneous Heparin Injection Site: A Systematic Review and Meta-Analysis», SAGE Open Nurs 2020;6:2377960820901370, introducción.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_pared` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 2 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
 
 ### Ammendolia 2022
 
@@ -1310,7 +1388,7 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co3 · Rigidez del Codo (Contractura Postraumática o Capsular) | Test «Test de ROM activo en 4 direcciones» | 4b · cita bajo el test | 1 |
-| Codo | — | `sistemas.7.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.8.banderasRojas.0.texto` | 2 · mención en el texto | 2 |
 | Codo | — | `steps.0.options.1.derivacion` | 4 · mención en el texto | 3 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 4 |
@@ -1471,6 +1549,23 @@ Citada como:
 | Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Regla de Ottawa antes de nada» | 4b · cita bajo el test | 1 |
 | Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 2 |
 
+### Bahit 2017
+
+Autores: Bahit, Lopes, Wojdyla et al.  
+Título: *Non-major bleeding with apixaban versus warfarin in patients with atrial fibrillation*  
+Publicación: Heart 103(8):623–628  
+DOI: 10.1136/heartjnl-2016-309901  
+Última revisión: **sin revisar**  
+Nota: Análisis post hoc de ARISTOTLE: localización de los sangrados no mayores; el clínicamente relevante no mayor se asoció a más sangrado mayor y muerte. Texto completo leído en PMC, sin las figuras (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Bahit 2017 — Bahit, Lopes, Wojdyla et al., «Non-major bleeding with apixaban versus warfarin in patients with atrial fibrillation», Heart 2017;103(8):623–628, resultados.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_d_hematoma` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+
 ### Baker 2018
 
 Autores: Baker, Wilson y Wallach  
@@ -1615,6 +1710,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | co8 · Neuropatía Cubital (Síndrome del Túnel Cubital) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Bavishi 2026
+
+Autores: Bavishi y Raghavendran  
+Título: *Management of Anticoagulation in Athletes*  
+Publicación: J Clin Med 15(18):7213  
+DOI: 10.3390/jcm15187213  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa: deportes de bajo riesgo permitidos; su tabla de riesgo por deporte es propia, sin fuente. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Deporte de competición: con aspirina sola, sin límite; con doble antiagregación o anticoagulación plena, en los deportes de colisión o de impacto a alta velocidad los riesgos no compensan o se decide con el médico (Kim 2025). Es solo para deportistas de competición y no dice qué anticoagulantes cuentan como plenos. Fuera de la competición, las revisiones coinciden en actividades con poco riesgo de golpe, sí, y deportes de colisión, a decidir con el médico (Minardi 2024; Bavishi 2026).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
 
 ### Baylor 2023
 
@@ -1918,72 +2036,80 @@ Nota: Texto completo en PMC, leído entero sin los suplementos (2026-10). Única
 Citada como:
 
 1. Lupus en brote o peor sin valorar: los ensayos de ejercicio solo incluyeron lupus estable (Frade 2023); que su reumatólogo revalore las contraindicaciones antes de seguir (Blaess 2024, rec. 4).
-2. Con anticoagulante o antiagregante, precaución con lo que tenga riesgo de golpe (Blaess 2024, rec. 3).
-3. Con el lupus inactivo o leve, llegar poco a poco a 150–300 min por semana de intensidad moderada (esfuerzo 5–6 sobre 10) y fuerza al menos 2 días (Blaess 2024, rec. 9). Sesiones con aeróbico y fuerza, 3–5 por semana (Blaess 2024, rec. 14); fuerza en 1–3 series de 8–12 repeticiones con 1–3 min de descanso (Blaess 2024, rec. 15); aeróbico de 20–30 min hasta 50, en tramos de 4 semanas (Blaess 2024, rec. 12); con calentamiento y vuelta a la calma (Blaess 2024, rec. 13). Supervisado por un fisioterapeuta (Blaess 2024, rec. 11). Puede reducir algo la fatiga, y la actividad del lupus probablemente no cambia (Frade 2023).
-4. Antes de empezar, su médico valora si hay contraindicaciones; antes de ejercicio vigoroso, puede hacer falta un ECG o una prueba de esfuerzo (Blaess 2024, rec. 10).
-5. Con osteonecrosis o artropatía de Jaccoud, que lo valore un especialista antes de empezar (Blaess 2024, rec. 1).
-6. Fotoprotección para prevenir brotes (Parodis 2024, rec. LES 2): protector solar de amplio espectro UVA y UVB, ropa que cubra, sombrero y gafas de sol, y evitar las horas de más sol (Gordon 2018, p. e16; Blaess 2024, rec. 2). Evitar el ejercicio al sol con un índice UV por encima de 3 (opinión de los autores de Frade 2023).
-7. Raynaud: al aire libre, guantes o ropa contra el frío; evitar tocar superficies frías y secar bien la piel durante y después del ejercicio (Blaess 2024, rec. 2). Por lo mismo, cuidado con el frío local en manos y pies (inferencia, sin fuente propia).
-8. En brote, que su reumatólogo revalore las contraindicaciones antes de seguir (Blaess 2024, rec. 4); en un brote articular, no cargar las articulaciones inflamadas (Blaess 2024, rec. 5).
+2. Con el lupus inactivo o leve, llegar poco a poco a 150–300 min por semana de intensidad moderada (esfuerzo 5–6 sobre 10) y fuerza al menos 2 días (Blaess 2024, rec. 9). Sesiones con aeróbico y fuerza, 3–5 por semana (Blaess 2024, rec. 14); fuerza en 1–3 series de 8–12 repeticiones con 1–3 min de descanso (Blaess 2024, rec. 15); aeróbico de 20–30 min hasta 50, en tramos de 4 semanas (Blaess 2024, rec. 12); con calentamiento y vuelta a la calma (Blaess 2024, rec. 13). Supervisado por un fisioterapeuta (Blaess 2024, rec. 11). Puede reducir algo la fatiga, y la actividad del lupus probablemente no cambia (Frade 2023).
+3. Antes de empezar, su médico valora si hay contraindicaciones; antes de ejercicio vigoroso, puede hacer falta un ECG o una prueba de esfuerzo (Blaess 2024, rec. 10).
+4. Con osteonecrosis o artropatía de Jaccoud, que lo valore un especialista antes de empezar (Blaess 2024, rec. 1).
+5. Fotoprotección para prevenir brotes (Parodis 2024, rec. LES 2): protector solar de amplio espectro UVA y UVB, ropa que cubra, sombrero y gafas de sol, y evitar las horas de más sol (Gordon 2018, p. e16; Blaess 2024, rec. 2). Evitar el ejercicio al sol con un índice UV por encima de 3 (opinión de los autores de Frade 2023).
+6. Raynaud: al aire libre, guantes o ropa contra el frío; evitar tocar superficies frías y secar bien la piel durante y después del ejercicio (Blaess 2024, rec. 2). Por lo mismo, cuidado con el frío local en manos y pies (inferencia, sin fuente propia).
+7. En brote, que su reumatólogo revalore las contraindicaciones antes de seguir (Blaess 2024, rec. 4); en un brote articular, no cargar las articulaciones inflamadas (Blaess 2024, rec. 5).
+8. Anticoagulado o antiagregado: precaución con lo que tenga riesgo de golpe (lo recomiendan para el lupus: Blaess 2024, rec. 3); un esfuerzo mecánico pequeño puede dar un sangrado importante (Kim 2026, un caso). Si durante la exploración aparece un dolor desproporcionado, una hinchazón tensa o un hematoma que crece, para y deriva.
+9. Con antiagregante solo, ninguna fuente de manipulación lo trata como contraindicación; precaución con lo que tenga riesgo de golpe (lo recomiendan para el lupus: Blaess 2024, rec. 3).
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
-| Hombro | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
-| Hombro | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
-| Hombro | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
-| Hombro | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
-| Hombro | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
-| Hombro | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
-| Hombro | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Hombro | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 5 |
+| Hombro | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 6 |
+| Hombro | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 7 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 8 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.antiagregante` | 2 · mención en el texto | 9 |
 | Cadera | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
-| Cadera | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
-| Cadera | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
-| Cadera | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
-| Cadera | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
-| Cadera | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
-| Cadera | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
-| Cadera | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Cadera | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 6 |
+| Cadera | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 7 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 8 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.antiagregante` | 2 · mención en el texto | 9 |
 | Cervical | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
-| Cervical | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
-| Cervical | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
-| Cervical | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
-| Cervical | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
-| Cervical | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
-| Cervical | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
-| Cervical | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Cervical | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 6 |
+| Cervical | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 7 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 8 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.antiagregante` | 2 · mención en el texto | 9 |
 | Lumbar | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
-| Lumbar | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
-| Lumbar | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
-| Lumbar | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
-| Lumbar | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
-| Lumbar | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
-| Lumbar | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
-| Lumbar | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Lumbar | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 6 |
+| Lumbar | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 7 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 8 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.antiagregante` | 2 · mención en el texto | 9 |
 | Rodilla | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
-| Rodilla | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
-| Rodilla | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
-| Rodilla | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
-| Rodilla | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
-| Rodilla | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
-| Rodilla | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
-| Rodilla | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Rodilla | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 6 |
+| Rodilla | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 7 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 8 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.antiagregante` | 2 · mención en el texto | 9 |
 | Codo | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
-| Codo | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
-| Codo | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
-| Codo | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
-| Codo | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
-| Codo | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
-| Codo | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
-| Codo | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Codo | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 6 |
+| Codo | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 7 |
+| Codo | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 8 |
+| Codo | — | `sistemas.7.anticoagulado.textos.antiagregante` | 2 · mención en el texto | 9 |
 | Tobillo y pie | — | `sistemas.3.lupus.textos.brote3` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | `sistemas.3.lupus.textos.tecnica4bAntitrombotico` | 2 · mención en el texto | 2 |
-| Tobillo y pie | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 3 |
-| Tobillo y pie | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 4 |
-| Tobillo y pie | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 5 |
-| Tobillo y pie | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 6 |
-| Tobillo y pie | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 7 |
-| Tobillo y pie | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 8 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.ejercicio` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.antesEmpezar` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.especialista` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.sol` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.raynaud` | 2 · mención en el texto | 6 |
+| Tobillo y pie | — | `sistemas.3.lupus.textos.brote` | 2 · mención en el texto | 7 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 8 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.antiagregante` | 2 · mención en el texto | 9 |
 
 ### Blanpied 2017
 
@@ -2390,6 +2516,23 @@ Citada como:
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.moverse` | 2 · mención en el texto | 6 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 7 |
 
+### Brooker 2020
+
+Autores: Brooker, Brown, Thornton et al.  
+Título: *Emergency fasciotomy in an anticoagulated patient with low energy posterior thigh injury*  
+Publicación: BMJ Case Rep 13(9)  
+DOI: 10.1136/bcr-2019-232709  
+Última revisión: **sin revisar**  
+Nota: Caso clínico con apixabán: síndrome compartimental del muslo tras un traumatismo de baja energía; signos cardinales. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Brooker 2020 — Brooker, Brown, Thornton et al., «Emergency fasciotomy in an anticoagulated patient with low energy posterior thigh injury», BMJ Case Rep 2020;13(9), discusión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_compartimental` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+
 ### Brotman 2024
 
 Autores: Brotman, Moreno-Escobar, Joseph, Munakomi y Pawar  
@@ -2711,6 +2854,23 @@ Citada como:
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» | 4b · cita bajo el test | 1 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» | 4b · cita bajo el test | 2 |
 
+### Capsoni 2025
+
+Autores: Capsoni, Carpani, Tarantino et al.  
+Título: *Incidence and risk factors for delayed intracranial hemorrhage after mild brain injury in anticoagulated patients: a multicenter retrospective study*  
+Publicación: Scand J Trauma Resusc Emerg Med 33(1)  
+DOI: 10.1186/s13049-025-01337-y  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva multicéntrica (n = 1596): hemorragia tardía 1,8 % con anticoagulantes directos y 2,6 % con antivitamina K; vómitos y síntomas nuevos como factores. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Capsoni 2025 — Capsoni, Carpani, Tarantino et al., «Incidence and risk factors for delayed intracranial hemorrhage after mild brain injury in anticoagulated patients: a multicenter retrospective study», Scand J Trauma Resusc Emerg Med 2025;33, resultados.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza_tardia` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+
 ### Cardona 2020
 
 Autores: Cardona, Ansotegui, Ebisawa et al. (WAO)  
@@ -2849,6 +3009,29 @@ Citada como:
 | Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 
+### Cheatham 2025
+
+Autores: Cheatham, Baker, Loghmani y Schleip  
+Título: *International Expert Consensus on Instrument-Assisted Soft-Tissue Mobilization Precautions and Contraindications: A Modified Delphi Study*  
+Publicación: Healthcare (Basel) 13(6):642  
+DOI: 10.3390/healthcare13060642  
+Última revisión: **sin revisar**  
+Nota: Delphi de 24 expertos («nivel 4»): los fármacos que adelgazan la sangre, precaución de grado B. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes: solo casos de sangrado tras un masajeador, un percutor o una sesión de estiramientos (Tominaga 2023; Kwon 2024; Kim 2026), y un consenso de expertos sobre instrumentos de tejidos blandos que los trata como precaución (Cheatham 2025). En uno de esos casos, grave, se usó un percutor sobre el punto de inyección de la heparina (Kwon 2024).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+
 ### Chen 2023
 
 Autores: Chen, Sabir y Al Khalili  
@@ -2865,6 +3048,31 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `end_2` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+
+### Chenoweth 2018
+
+Autores: Chenoweth, Gaona, Faul, Holmes y Nishijima  
+Título: *Incidence of Delayed Intracranial Hemorrhage in Older Patients After Blunt Head Trauma*  
+Publicación: JAMA Surg 153(6):570–575  
+DOI: 10.1001/jamasurg.2017.6159  
+Última revisión: **sin revisar**  
+Nota: Cohorte prospectiva multicéntrica (n = 859, ≥ 55 años): hemorragia intracraneal tardía 0,3 %; dos de las tres, a los días 3 y 5. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Golpe en la cabeza con anticoagulante o con un antiagregante que no sea la aspirina sola: a urgencias, aunque se encuentre bien (NICE NG232, 1.2.4); que un adulto le acompañe las primeras 24 horas y sepa que puede empeorar después de parecer recuperado (NICE NG232, 1.10.9). El sangrado tardío es raro, pero puede aparecer días después (Chenoweth 2018).
+2. Chenoweth 2018 — Chenoweth, Gaona, Faul, Holmes y Nishijima, «Incidence of Delayed Intracranial Hemorrhage in Older Patients After Blunt Head Trauma», JAMA Surg 2018;153(6):570–575, resultados.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 2 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
 
 ### Childs 2004
 
@@ -3002,6 +3210,23 @@ Citada como:
 | Rodilla | — | `sistemas.6.embarazo.textos.terapiaManual` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.6.embarazo.textos.terapiaManual` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.terapiaManual` | 2 · mención en el texto | 1 |
+
+### Colombo 2021
+
+Autores: Colombo, Bonzi, Fiorelli, Jachetti, Bozzano, Casazza, Solbiati y Costantino  
+Título: *Incidence of delayed bleeding in patients on antiplatelet therapy after mild traumatic brain injury: a systematic review and meta-analysis*  
+Publicación: Scand J Trauma Resusc Emerg Med 29(1):123  
+DOI: 10.1186/s13049-021-00936-9  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis (16 estudios): sangrado tardío con antiagregantes; aspirina sola 0,22 % frente a doble antiagregación 2,64 %. Texto completo leído en PMC, sin suplementos (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Colombo 2021 — Colombo, Bonzi, Fiorelli et al., «Incidence of delayed bleeding in patients on antiplatelet therapy after mild traumatic brain injury: a systematic review and meta-analysis», Scand J Trauma Resusc Emerg Med 2021;29(1):123, resultados.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 
 ### Compston 2018
 
@@ -3166,6 +3391,23 @@ Citada como:
 |---|---|---|---|---|
 | Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
 
+### Cooper 2019
+
+Autores: Cooper, Battaglia y Reiter  
+Título: *Spinal epidural hematoma in a patient on chronic anticoagulation therapy performing self-neck manipulation: a case report*  
+Publicación: Chiropr Man Therap 27:41  
+DOI: 10.1186/s12998-019-0264-9  
+Última revisión: **sin revisar**  
+Nota: Caso clínico: warfarina con INR 7,84 y autorrotación cervical; «precaución» con las técnicas con torsión. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Cooper 2019 — Cooper, Battaglia y Reiter, «Spinal epidural hematoma in a patient on chronic anticoagulation therapy performing self-neck manipulation: a case report», Chiropr Man Therap 2019;27:41, caso.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_espinal` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+
 ### Couch 2025
 
 Autores: Couch, King, De Oliveira Silva, Whittaker, Bruder, Serighelli, Kaplan y Culvenor  
@@ -3260,6 +3502,23 @@ Citada como:
 | Cadera | — | Pregunta `ca_on3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Cervical | — | Pregunta `cv5` · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_c1` · Oncológico / Sistémico | 2 · razonamiento del cribado | 1 |
+
+### Dalrymple 2022
+
+Autores: Dalrymple, Davies, Biggs et al.  
+Título: *Management of Haemarthrosis in Patients On Oral Anticoagulants*  
+Publicación: Geriatr Orthop Surg Rehabil 13:21514593221076966  
+DOI: 10.1177/21514593221076966  
+Última revisión: **sin revisar**  
+Nota: Revisión retrospectiva de 31 hemartros de rodilla con anticoagulantes orales: frecuencia 0–1,5 %, sin consenso; aspirar si el diagnóstico no está claro. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Dalrymple 2022 — Dalrymple, Davies, Biggs et al., «Management of Haemarthrosis in Patients On Oral Anticoagulants», Geriatr Orthop Surg Rehabil 2022;13:21514593221076966, introducción y discusión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_d_hematoma` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 
 ### Davenport 2025
 
@@ -4618,11 +4877,13 @@ Nota: Revisión sistemática descriptiva de casos (17 estudios, 21 pacientes; ev
 
 Citada como:
 
-1. Ghosh 2026
+1. Ghosh 2026 — Ghosh, Shine y Sundaralingam, «Spontaneous Spinal Epidural Haematoma Associated With Direct Oral Anticoagulants: A Descriptive Systematic Review», Cureus 2026;18(7):e112438, resultados.
+2. Ghosh 2026
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
+| Todas (sistemas comunes) | — | Pregunta `ac_u_espinal` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 
 ### Giangregorio 2014
 
@@ -5146,8 +5407,8 @@ Citada como:
 | Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 104 |
 | Lumbar | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
-| Lumbar | — | `sistemas.10.banderasRojas.5.texto` | 2 · mención en el texto | 3 |
-| Lumbar | — | `sistemas.10.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 4 |
+| Lumbar | — | `sistemas.11.banderasRojas.5.texto` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.11.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 4 |
 | Lumbar | — | Pregunta `l2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 105 |
 | Lumbar | — | Pregunta `l_on2` · Cáncer / Oncológico | 2 · razonamiento del cribado | 106 |
 | Lumbar | — | Pregunta `l4` · Urogenital / Renal | 2 · razonamiento del cribado | 107 |
@@ -6428,6 +6689,23 @@ En contra, Norris 2025 (Orthop J Sports Med 13(5):23259671251334775; estudio pro
 |---|---|---|---|---|
 | Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Lever Sign Test» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
+### Hideyama 2023
+
+Autores: Hideyama, Watanabe, Ido et al.  
+Título: *Non-traumatic Rectus Sheath Hematoma During Direct Oral Anticoagulation*  
+Publicación: Cureus 15(9):e45876  
+DOI: 10.7759/cureus.45876  
+Última revisión: **sin revisar**  
+Nota: Caso clínico: hematoma de la vaina de los rectos con apixabán tras una tos intensa; signos de Fothergill y Carnett. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Hideyama 2023 — Hideyama, Watanabe, Ido et al., «Non-traumatic Rectus Sheath Hematoma During Direct Oral Anticoagulation», Cureus 2023;15(9):e45876, caso.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_pared` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+
 ### Hodge y Schroeder 2023
 
 Autores: Hodge y Schroeder  
@@ -6712,6 +6990,29 @@ Lluch 2020 (p. 243) advierte que el dolor a la palpación es común a todas las 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Tobillo y pie | tp8 · Tendinopatía del Aquiles, Porción Media | Test «Batería progresiva de carga» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+
+### Hutting 2018
+
+Autores: Hutting, Kerry, Coppieters y Scholten-Peeters  
+Título: *Considerations to improve the safety of cervical spine manual therapy*  
+Publicación: Musculoskelet Sci Pract 33:41–45  
+DOI: 10.1016/j.msksp.2017.11.003  
+Última revisión: **sin revisar**  
+Nota: Artículo profesional, opinión de los autores; PDF del usuario (manuscrito aceptado) leído entero (2026-10). Tabla 2: tratamiento anticoagulante como precaución de la terapia manual cervical. Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Thrust: la única tabla específica de la columna torácica lo pone como contraindicación absoluta con tratamiento anticoagulante (Puentedura 2015, tabla 1), y otra, de la terapia manual cervical, como precaución (Hutting 2018, opinión de los autores); las dos son opinión de expertos, y ninguna distingue fármacos ni da un INR. Un estudio de cohorte asoció la anticoagulación crónica a más lesión cerebral o medular tras la manipulación, sin probar la causa (Whedon 2015).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
 
 ### IHS 2018
 
@@ -7471,6 +7772,62 @@ Citada como:
 | Rodilla | ro17 · Plica Sinovial Medial | Test «Test de provocación de la plica rotuliana medial» | 4b · cita bajo el test | 2 |
 | Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
+### Kim 2025
+
+Autores: Kim, Baggish, Levine et al.  
+Título: *Clinical Considerations for Competitive Sports Participation for Athletes With Cardiovascular Abnormalities: A Scientific Statement From the American Heart Association and American College of Cardiology*  
+Publicación: J Am Coll Cardiol 85(10):1059–1108  
+DOI: 10.1016/j.jacc.2024.12.025  
+Última revisión: **sin revisar**  
+Nota: Declaración científica AHA/ACC, consenso sin clase ni nivel; PDF del usuario leído entero (2026-10). Tabla 3: deportes de colisión según antitrombótico (aspirina sola, sin límite), solo para deportistas de competición; no nombra los anti-Xa. Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Deporte de competición: con aspirina sola, sin límite; con doble antiagregación o anticoagulación plena, en los deportes de colisión o de impacto a alta velocidad los riesgos no compensan o se decide con el médico (Kim 2025). Es solo para deportistas de competición y no dice qué anticoagulantes cuentan como plenos. Fuera de la competición, las revisiones coinciden en actividades con poco riesgo de golpe, sí, y deportes de colisión, a decidir con el médico (Minardi 2024; Bavishi 2026).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+
+### Kim 2026
+
+Autores: Kim, Na, Kim, Choi, Hwang y Kim  
+Título: *Acute Forearm Compartment Syndrome Following Physical Therapy in a Patient Receiving Anticoagulation Therapy: A Case Report*  
+Publicación: J Clin Med 15(13):5052  
+DOI: 10.3390/jcm15135052  
+Última revisión: **sin revisar**  
+Nota: Caso clínico: warfarina (INR 2,57) y síndrome compartimental del antebrazo tras una sesión de estiramientos y movilización; sin causalidad demostrada. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Anticoagulado o antiagregado: precaución con lo que tenga riesgo de golpe (lo recomiendan para el lupus: Blaess 2024, rec. 3); un esfuerzo mecánico pequeño puede dar un sangrado importante (Kim 2026, un caso). Si durante la exploración aparece un dolor desproporcionado, una hinchazón tensa o un hematoma que crece, para y deriva.
+2. De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes: solo casos de sangrado tras un masajeador, un percutor o una sesión de estiramientos (Tominaga 2023; Kwon 2024; Kim 2026), y un consenso de expertos sobre instrumentos de tejidos blandos que los trata como precaución (Cheatham 2025). En uno de esos casos, grave, se usó un percutor sobre el punto de inyección de la heparina (Kwon 2024).
+3. Kim 2026 — Kim, Na, Kim, Choi, Hwang y Kim, «Acute Forearm Compartment Syndrome Following Physical Therapy in a Patient Receiving Anticoagulation Therapy: A Case Report», J Clin Med 2026;15(13):5052, caso y discusión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_compartimental` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 3 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 2 |
+
 ### Kim y Chang 2021
 
 Autores: Kim y Chang  
@@ -7786,6 +8143,29 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
+
+### Kwon 2024
+
+Autores: Kwon  
+Título: *Portable Percussive Massage Device-Related Rectus Sheath Hematoma and Obstructive Uropathy: A Case Report*  
+Publicación: Biomed Hub 9(1):89–93  
+DOI: 10.1159/000538709  
+Última revisión: **sin revisar**  
+Nota: Caso clínico: percutor sobre el punto de inyección de enoxaparina y hematoma de la vaina de los rectos mortal (COVID grave, doble anticoagulación). Texto leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes: solo casos de sangrado tras un masajeador, un percutor o una sesión de estiramientos (Tominaga 2023; Kwon 2024; Kim 2026), y un consenso de expertos sobre instrumentos de tejidos blandos que los trata como precaución (Cheatham 2025). En uno de esos casos, grave, se usó un percutor sobre el punto de inyección de la heparina (Kwon 2024).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
 
 ### Lacy 2023
 
@@ -8277,6 +8657,31 @@ Citada como:
 | Todas (tiempos de tejido) | — | Fila «Esguince de la sindesmosis (alto de tobillo)» (Ligamento) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Subtipo «Operada (tornillo o sutura dinámica)» de «Esguince de la sindesmosis (alto de tobillo)» (Ligamento) | cabecera · tiempos de tejido | 1 |
 
+### Liao 2021
+
+Autores: Liao y Puckett  
+Título: *A Proposed Algorithm on the Modern Management of Rectus Sheath Hematoma: A Literature Review*  
+Publicación: Cureus 13(11):e20008  
+DOI: 10.7759/cureus.20008  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa del hematoma de la vaina de los rectos: factores de riesgo, manejo conservador en el 56–83 %; la inestabilidad, mejor predictor que el tamaño. Texto completo leído en PMC, sin el algoritmo de la figura 1 (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Con heparina en inyección, los moratones en el punto de inyección son frecuentes (Amaniyan 2020); un dolor brusco con bulto en la pared del abdomen no lo es (Liao 2021).
+2. Liao 2021 — Liao y Puckett, «A Proposed Algorithm on the Modern Management of Rectus Sheath Hematoma: A Literature Review», Cureus 2021;13(11):e20008, revisión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_pared` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 2 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
+
 ### Liddle y Pennick 2015
 
 Autores: Liddle y Pennick  
@@ -8396,6 +8801,29 @@ Citada como:
 |---|---|---|---|---|
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster B: debilidad en RE + edad ≥65 (puntuación de Litaker ≥4)» | 4b · cita bajo el test | 1 |
 
+### Liu 2015
+
+Autores: Liu, Tao, Chen, Fan y Li  
+Título: *Bed rest versus early ambulation with standard anticoagulation in the management of deep vein thrombosis: a meta-analysis*  
+Publicación: PLoS One 10(4):e0121388  
+DOI: 10.1371/journal.pone.0121388  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis (13 estudios): caminar pronto con anticoagulación no aumentó la embolia; estimador global internamente incoherente y no aplicable a todas las TVP. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Ejercicio: ninguna fuente da intensidad ni carga con anticoagulantes. Tras una embolia pulmonar, el ejercicio es seguro y factible (Xiang 2025); tras una TVP, caminar pronto no aumentó la embolia en los estudios (Liu 2015, con reservas de calidad).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+
 ### Liu 2025
 
 Publicación: BMC Sports Sci Med Rehabil 17:335  
@@ -8447,6 +8875,23 @@ Citada como:
 | Codo | — | Pregunta `co3` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
 | Codo | — | Pregunta `co_e1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 | Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Llitjos 2016
+
+Autores: Llitjos, Daviaud, Grimaldi et al.  
+Título: *Ilio-psoas hematoma in the intensive care unit: a multicentric study*  
+Publicación: Ann Intensive Care 6(1):8  
+DOI: 10.1186/s13613-016-0106-z  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva de UCI (77 hematomas del iliopsoas, casos graves): anticoagulación en 56; shock en 34, síntomas compresivos en 20. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Llitjos 2016 — Llitjos, Daviaud, Grimaldi et al., «Ilio-psoas hematoma in the intensive care unit: a multicentric study», Ann Intensive Care 2016;6(1):8, resultados.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_psoas` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 
 ### Lluch 2020
 
@@ -8986,10 +9431,10 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Hombro | h10 · Artrosis Glenohumeral | Test «Mayor edad + crepitación con rigidez activa = pasiva» | 4b · cita bajo el test | 21 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Test «Test de aprensión ósea y percusión olécranon-manubrio» | 4b · cita bajo el test | 8 |
 | Hombro | h11 · Luxación Bloqueada o Fractura (→ Rx) | Pronóstico | 5 · cita del pronóstico | 27 |
-| Hombro | — | `sistemas.7.banderasRojas.5.texto` | 2 · mención en el texto | 314 |
-| Hombro | — | `sistemas.13.banderasRojas.0.texto` | 2 · mención en el texto | 315 |
-| Hombro | — | `sistemas.14.banderasRojas.0.texto` | 2 · mención en el texto | 316 |
-| Hombro | — | `sistemas.15.banderasRojas.0.texto` | 2 · mención en el texto | 317 |
+| Hombro | — | `sistemas.8.banderasRojas.5.texto` | 2 · mención en el texto | 314 |
+| Hombro | — | `sistemas.14.banderasRojas.0.texto` | 2 · mención en el texto | 315 |
+| Hombro | — | `sistemas.15.banderasRojas.0.texto` | 2 · mención en el texto | 316 |
+| Hombro | — | `sistemas.16.banderasRojas.0.texto` | 2 · mención en el texto | 317 |
 | Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 322 |
 | Hombro | — | Pregunta `h4` · Cáncer / Oncológico | 2 · razonamiento del cribado | 323 |
 | Hombro | — | Pregunta `h6` · Cáncer / Oncológico | 2 · razonamiento del cribado | 324 |
@@ -9159,7 +9604,7 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 114 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «Punto hipersensible dentro de la banda» | 4b · cita bajo el test | 115 |
 | Lumbar | lu9 · Síndrome de Dolor Miofascial Lumbar | Test «El paciente reconoce el dolor provocado» | 4b · cita bajo el test | 116 |
-| Lumbar | — | `sistemas.12.banderasRojas.0.texto` | 2 · mención en el texto | 318 |
+| Lumbar | — | `sistemas.13.banderasRojas.0.texto` | 2 · mención en el texto | 318 |
 | Lumbar | — | Pregunta `l_u4` · Urogenital / Renal | 2 · razonamiento del cribado | 347 |
 | Lumbar | — | Pregunta `l_e7` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 348 |
 | Lumbar | — | Pregunta `l_inf1` · Infección vertebral | 2 · razonamiento del cribado | 349 |
@@ -9337,9 +9782,9 @@ Cómo se valora la carga (Stiell 1993): poder pasar el peso dos veces a cada pie
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» | 4b · cita bajo el test | 218 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Dolor lateral sordo e hinchazón de inicio insidioso entre los 7 y los 12 años» («¿Por qué?») | 4b · razonamiento del test | 217 |
 | Codo | co16 · Enfermedad de Panner / Osteocondritis Disecante del Capítulo | Test «Imagen: radiografía o RM» («¿Por qué?») | 4b · razonamiento del test | 218 |
-| Codo | — | `sistemas.7.banderasRojas.0.texto` | 2 · mención en el texto | 319 |
-| Codo | — | `sistemas.7.banderasRojas.1.texto` | 2 · mención en el texto | 320 |
-| Codo | — | `sistemas.7.banderasRojas.2.texto` | 2 · mención en el texto | 321 |
+| Codo | — | `sistemas.8.banderasRojas.0.texto` | 2 · mención en el texto | 319 |
+| Codo | — | `sistemas.8.banderasRojas.1.texto` | 2 · mención en el texto | 320 |
+| Codo | — | `sistemas.8.banderasRojas.2.texto` | 2 · mención en el texto | 321 |
 | Codo | — | Pregunta `co_t1` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 361 |
 | Codo | — | Pregunta `co_t2` · Traumático (Fractura o Luxación) | 2 · razonamiento del cribado | 362 |
 | Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 363 |
@@ -9744,6 +10189,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 1 |
 
+### Lukies 2023
+
+Autores: Lukies, Gipson, Tan et al.  
+Título: *Spontaneous Retroperitoneal Haemorrhage: Efficacy of Conservative Management and Embolisation*  
+Publicación: Cardiovasc Intervent Radiol 46(4):488–495  
+DOI: 10.1007/s00270-023-03359-4  
+Última revisión: **sin revisar**  
+Nota: Estudio retrospectivo de 54 hemorragias retroperitoneales espontáneas: presentación variada y diagnóstico tardío; manejo conservador eficaz. Texto completo leído en PMC, sin el suplemento (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Lukies 2023 — Lukies, Gipson, Tan et al., «Spontaneous Retroperitoneal Haemorrhage: Efficacy of Conservative Management and Embolisation», Cardiovasc Intervent Radiol 2023;46(4):488–495, introducción y discusión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_psoas` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+
 ### Mabrouk y Pilson 2026
 
 Autores: Mabrouk y Pilson  
@@ -10060,6 +10522,29 @@ Citada como:
 | Tobillo y pie | — | `sistemas.1.hipermovilidad.textos.hallazgoVascular` | 2 · mención en el texto | 7 |
 | Tobillo y pie | — | `sistemas.3.lupus.textos.hipermovilidad` | 2 · mención en el texto | 8 |
 
+### Malfait 2024
+
+Autores: Malfait, Gijsbers, Smeets, Hanssen, Pick, Peers y Schillebeeckx  
+Título: *Safety of dry needling in stroke patients: a scoping review*  
+Publicación: Eur J Phys Rehabil Med 60(2):225–232  
+DOI: 10.23736/S1973-9087.24.08224-8  
+Última revisión: **sin revisar**  
+Nota: Revisión de alcance: según ella, la guía suiza trata la anticoagulación como contraindicación absoluta de la punción seca. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Punción seca: no existe ningún estudio con antitrombóticos. Una revisión narrativa y un consenso de expertos que se apoya en ella dicen que no es una contraindicación absoluta (Muñoz 2022; Waterway 2026); según otra revisión, la guía suiza sí la trata así con la anticoagulación (Malfait 2024). Práctica de los autores de la primera: empezar por músculos superficiales viendo cómo sangra, evitar al principio los profundos que no se pueden comprimir y comprimir 10–15 s (Muñoz 2022). Sin INR límite.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+
 ### Malik 2023
 
 Autores: Malik, Gnanapandithan y Singh  
@@ -10128,11 +10613,14 @@ Nota: Caso clínico y revisión narrativa: hematomas musculares espontáneos (0,
 
 Citada como:
 
-1. Mameli 2025
+1. Mameli 2025 — Mameli, Marongiu, Podda, Pisanu y Barcellona, «Spontaneous Muscle Bleeding During Oral Anticoagulation Therapy: When Should We Suspect an Underlying Tumor?», Hematol Rep 2025;17(5):44, discusión.
+2. Mameli 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
+| Todas (sistemas comunes) | — | Pregunta `ac_u_psoas` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `ac_d_hematoma` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 
 ### Mangla y Hamad 2024
 
@@ -10723,6 +11211,52 @@ Citada como:
 | Codo | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.2.disautonomia.hipermovilidad` | 2 · mención en el texto | 1 |
 
+### Minardi 2024
+
+Autores: Minardi, Sciarra, Robles, Scara, Sciarra, De Masi De Luca y Romano  
+Título: *Thromboembolic prevention in athletes: management of anticoagulation in sports players affected by atrial fibrillation*  
+Publicación: Front Pharmacol 15:1384213  
+DOI: 10.3389/fphar.2024.1384213  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa: las recomendaciones sobre anticoagulación y deporte solo reflejan consenso de expertos. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Deporte de competición: con aspirina sola, sin límite; con doble antiagregación o anticoagulación plena, en los deportes de colisión o de impacto a alta velocidad los riesgos no compensan o se decide con el médico (Kim 2025). Es solo para deportistas de competición y no dice qué anticoagulantes cuentan como plenos. Fuera de la competición, las revisiones coinciden en actividades con poco riesgo de golpe, sí, y deportes de colisión, a decidir con el médico (Minardi 2024; Bavishi 2026).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
+
+### Mitchell 2023
+
+Autores: Mitchell, Elmasry, van Poelgeest y Welsh  
+Título: *Anticoagulant use in older persons at risk for falls: therapeutic dilemmas—a clinical review*  
+Publicación: Eur Geriatr Med 14(4):683–696  
+DOI: 10.1007/s41999-023-00811-z  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa: riesgo absoluto bajo de hemorragia intracraneal por caídas frente al de ictus; prevención de caídas. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Caídas: el anticoagulante no se retira solo por el riesgo de caídas, que rara vez causan un sangrado mayor (NICE NG196, 1.6.8); el riesgo absoluto de hemorragia intracraneal por una caída es bajo frente al de ictus (Mitchell 2023). Entrenar fuerza, equilibrio y marcha, y revisar la medicación con su médico (Mitchell 2023). No hay datos de que el ejercicio de equilibrio reduzca el sangrado por caídas.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+
 ### Mohr 2024
 
 Autores: Mohr, Mabrouk y Baldea  
@@ -11024,11 +11558,22 @@ Nota: Revisión narrativa: punción seca y acupuntura con antitrombóticos (no e
 
 Citada como:
 
-1. Muñoz 2022
+1. Punción seca: no existe ningún estudio con antitrombóticos. Una revisión narrativa y un consenso de expertos que se apoya en ella dicen que no es una contraindicación absoluta (Muñoz 2022; Waterway 2026); según otra revisión, la guía suiza sí la trata así con la anticoagulación (Malfait 2024). Práctica de los autores de la primera: empezar por músculos superficiales viendo cómo sangra, evitar al principio los profundos que no se pueden comprimir y comprimir 10–15 s (Muñoz 2022). Sin INR límite.
+2. Muñoz 2022 — Muñoz, Dommerholt, Pérez-Palomares, Herrero y Calvo, «Dry Needling and Antithrombotic Drugs», Pain Res Manag 2022:1363477, apartado 10.
+3. Muñoz 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
+| Todas (sistemas comunes) | — | Pregunta `ac_u_psoas` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 2 |
+| condiciones | — | Fila «Paciente anticoagulado o antiagregado» | guía de condiciones especiales | 3 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 3 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
 
 ### Muñoz 2024
 
@@ -11217,6 +11762,23 @@ Ningún ULNT carga una raíz aislada. El rango de movimiento y la resistencia no
 | Cervical | ce3 · Radiculopatía Cervical | Test «Upper Limb Neurodynamic Test (ULNT) 1» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cervical | ce3 · Radiculopatía Cervical | Test «Upper Limb Neurodynamic Test (ULNT) 1» («¿Por qué?») | 4b · razonamiento del test | 2 |
 | Cervical | ce3 · Radiculopatía Cervical | Test «Combinación de 4 ULNT (ULNT1 y ULNT2a mediano, ULNT2b radial, ULNT3 cubital)» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
+### Nemunaitis 2022
+
+Autores: Nemunaitis, Den Haese, Buseck et al.  
+Título: *A Case of Recurrent Compartment Syndrome with Concomitant Use of Eliquis*  
+Publicación: Case Rep Orthop 2022:1863538  
+DOI: 10.1155/2022/1863538  
+Última revisión: **sin revisar**  
+Nota: Caso clínico con apixabán: síndrome compartimental recurrente, el segundo sin traumatismo; el dolor al estiramiento pasivo, signo precoz más sensible. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Nemunaitis 2022 — Nemunaitis, Den Haese, Buseck et al., «A Case of Recurrent Compartment Syndrome with Concomitant Use of Eliquis», Case Rep Orthop 2022:1863538, discusión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_compartimental` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 
 ### Netterström-Wedin 2021
 
@@ -11509,13 +12071,13 @@ Citada como:
 | Hombro | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Cadera | — | `sistemas.8.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.9.preguntas.1.urgencia` | 2 · mención en el texto | 2 |
 | Cadera | — | Pregunta `ca_v2` · Vascular | 2 · razonamiento del cribado | 5 |
 | Cervical | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Lumbar | — | `sistemas.11.preguntas.3.urgencia` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.12.preguntas.3.urgencia` | 2 · mención en el texto | 1 |
 | Lumbar | — | Pregunta `l_v4` · Vascular | 2 · razonamiento del cribado | 6 |
 | Rodilla | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
@@ -11525,7 +12087,7 @@ Citada como:
 | Codo | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.0.preguntas.2.urgencia` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | `sistemas.11.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.12.preguntas.1.urgencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | Pregunta `tp_v2` · Vascular | 2 · razonamiento del cribado | 6 |
 
 ### NICE NG19
@@ -11614,6 +12176,37 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `em_u_perine` · Embarazo y posparto | 2 · razonamiento del cribado | 3 |
 | Todas (sistemas comunes) | — | Pregunta `em_d_mama` · Embarazo y posparto | 2 · razonamiento del cribado | 2 |
 | condiciones | — | Fila «Embarazo o posparto» | guía de condiciones especiales | 4 |
+
+### NICE NG196
+
+Autores: National Institute for Health and Care Excellence  
+Título: *Atrial fibrillation: diagnosis and management*  
+Publicación: NICE guideline NG196, 2021  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de recomendaciones leído entero en la web de NICE, con la justificación incluida en la página (2026-10). No retirar el anticoagulante solo por la edad o el riesgo de caídas (1.6.8); factores de sangrado modificables (1.2.3). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Caídas: el anticoagulante no se retira solo por el riesgo de caídas, que rara vez causan un sangrado mayor (NICE NG196, 1.6.8); el riesgo absoluto de hemorragia intracraneal por una caída es bajo frente al de ictus (Mitchell 2023). Entrenar fuerza, equilibrio y marcha, y revisar la medicación con su médico (Mitchell 2023). No hay datos de que el ejercicio de equilibrio reduzca el sangrado por caídas.
+2. Los AINE, los antidepresivos ISRS o IRSN y otros antiagregantes aumentan el riesgo de sangrado con estos fármacos (NICE NG196, 1.2.3; Nochaiwong 2022): coméntalo con quien los receta.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 2 |
 
 ### NICE NG201
 
@@ -11748,6 +12341,43 @@ Citada como:
 | Rodilla | — | Paso `ro_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 | Rodilla | — | Paso `ro_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
 | Tobillo y pie | tp24 · Artrosis de Tobillo o Pie | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### NICE NG232
+
+Autores: National Institute for Health and Care Excellence  
+Título: *Head injury: assessment and early management*  
+Publicación: NICE guideline NG232, 2023 (cambios menores hasta 2025)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulos de recomendaciones y de justificación leídos enteros en la web de NICE (2026-10). Golpe en la cabeza con anticoagulante o antiagregante (salvo aspirina sola): derivar a urgencias (1.2.3, 1.2.4); TAC «consider» en las 8 horas (1.5.13); consejo al alta (1.10.9); signos de deterioro (1.9.13). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Golpe en la cabeza con anticoagulante o con un antiagregante que no sea la aspirina sola: a urgencias, aunque se encuentre bien (NICE NG232, 1.2.4); que un adulto le acompañe las primeras 24 horas y sepa que puede empeorar después de parecer recuperado (NICE NG232, 1.10.9). El sangrado tardío es raro, pero puede aparecer días después (Chenoweth 2018).
+2. Con la aspirina sola, el golpe en la cabeza no es por sí solo motivo de derivar (NICE NG232, 1.2.4); los síntomas tras el golpe sí lo son.
+3. NICE NG232 — National Institute for Health and Care Excellence, «Head injury: assessment and early management», NICE guideline NG232, 2023 (cambios menores hasta 2025), recomendaciones 1.2.4, 1.5.13 y 1.10.9, y justificación.
+4. NICE NG232 — National Institute for Health and Care Excellence, «Head injury: assessment and early management», NICE guideline NG232, 2023 (cambios menores hasta 2025), recomendación 1.9.13 y justificación de 1.10.6.
+5. NICE NG232
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 3 |
+| Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza_tardia` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 4 |
+| condiciones | — | Fila «Paciente anticoagulado o antiagregado» | guía de condiciones especiales | 5 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.cabezaAspirina` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.cabezaAspirina` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.cabezaAspirina` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.cabezaAspirina` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.cabezaAspirina` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.cabezaAspirina` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.cabezaAspirina` | 2 · mención en el texto | 2 |
 
 ### NICE NG249
 
@@ -11942,11 +12572,19 @@ Nota: Revisión sistemática y metaanálisis de 32 estudios no aleatorizados (1 
 
 Citada como:
 
-1. Nochaiwong 2022
+1. Los AINE, los antidepresivos ISRS o IRSN y otros antiagregantes aumentan el riesgo de sangrado con estos fármacos (NICE NG196, 1.2.3; Nochaiwong 2022): coméntalo con quien los receta.
+2. Nochaiwong 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 1 |
 
 ### Nori y Stretanski 2025
 
@@ -12135,6 +12773,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cervical | ce4 · Cefalea Cervicogénica | Test «Test de Flexión-Rotación Cervical (CFRT)» («¿Por qué?») | 4b · razonamiento del test | 1 |
+
+### Ogrodnik 2021
+
+Autores: Ogrodnik, Oliver, Cani et al.  
+Título: *Clinical Case of Acute Non-Traumatic Hand Compartment Syndrome and Systematic Review for the Upper Extremity*  
+Publicación: Hand (N Y) 16(3):285–291  
+DOI: 10.1177/1558944719856106  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática de 19 casos de síndrome compartimental no traumático del miembro superior (3 por anticoagulación) y un caso. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Ogrodnik 2021 — Ogrodnik, Oliver, Cani et al., «Clinical Case of Acute Non-Traumatic Hand Compartment Syndrome and Systematic Review for the Upper Extremity», Hand (N Y) 2021;16(3):285–291, resultados.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_compartimental` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 
 ### Oliver y Ashurst 2023
 
@@ -12695,6 +13350,25 @@ Citada como:
 | condiciones | — | Fila «Síndrome del cascanueces» | guía de condiciones especiales | 2 |
 | Lumbar | — | Pregunta `l_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
+### Peng 2022
+
+Autores: Peng, Yan, Liu et al.  
+Título: *Prognostic Factors and Treatments Efficacy in Spontaneous Spinal Epidural Hematoma: A Multicenter Retrospective Study*  
+Publicación: Neurology 99(8):e843–e850  
+DOI: 10.1212/WNL.0000000000200844  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva de 3 centros (n = 105): dolor brusco en el 79 %, déficit sin dolor importante en el 21 %, anticoagulante o antiagregante en 21; cirugía en las primeras 12 h. Texto completo leído en PMC; las tablas 1–3 no se pudieron extraer (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Peng 2022 — Peng, Yan, Liu et al., «Prognostic Factors and Treatments Efficacy in Spontaneous Spinal Epidural Hematoma: A Multicenter Retrospective Study», Neurology 2022;99(8):e843–e850, resultados y discusión.
+2. Peng 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_espinal` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| condiciones | — | Fila «Paciente anticoagulado o antiagregado» | guía de condiciones especiales | 2 |
+
 ### Petersen 2017
 
 Autores: Petersen, Laslett y Juhl  
@@ -12990,23 +13664,31 @@ Citada como:
 
 1. Un empuje posteroanterior fuerte en la columna torácica puede llegar a la carga con la que se rompe una vértebra torácica en el laboratorio, con datos de cadáver (Puentedura 2015). Son cifras de manipulación con thrust, no de estos tests: por eso la línea pide fuerza progresiva y no da un límite.
 2. Sin manipulación forzada; la movilización suave puede ser adecuada (Maitland 2005, cap. 9, p. 223; Puentedura 2015, tabla 1).
+3. Thrust: la única tabla específica de la columna torácica lo pone como contraindicación absoluta con tratamiento anticoagulante (Puentedura 2015, tabla 1), y otra, de la terapia manual cervical, como precaución (Hutting 2018, opinión de los autores); las dos son opinión de expertos, y ninguna distingue fármacos ni da un INR. Un estudio de cohorte asoció la anticoagulación crónica a más lesión cerebral o medular tras la manipulación, sin probar la causa (Whedon 2015).
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 3 |
 | Cadera | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 3 |
 | Cervical | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 3 |
 | Lumbar | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
 | Lumbar | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 3 |
 | Rodilla | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
 | Rodilla | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 3 |
 | Codo | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 3 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 3 |
 
 ### Punnapuzha 2023
 
@@ -13543,6 +14225,29 @@ Citada como:
 |---|---|---|---|---|
 | Rodilla | ro7 · Bursitis de la Pata de Ganso | Test «Dolor y tumefacción en cara medial de rodilla (inserción pata de ganso)» | 4b · cita bajo el test | 1 |
 
+### Rhim 2025
+
+Autores: Rhim, Singh, Maffulli et al.  
+Título: *Recommendations for use of extracorporeal shockwave therapy in sports medicine: an international modified Delphi study*  
+Publicación: Br J Sports Med 59:1287–1301  
+DOI: 10.1136/bjsports-2024-109082  
+Última revisión: **sin revisar**  
+Nota: Delphi de 41 expertos (consenso ≥ 75 %): sin consenso sobre aplicar ondas de choque con anticoagulantes; el hematoma, efecto adverso por consenso. PDF del usuario leído entero (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Ondas de choque: sin consenso entre expertos sobre aplicarlas con anticoagulantes, y el hematoma es un efecto posible (Rhim 2025); se consideran un factor importante a valorar, sin datos con anticoagulados (Tenforde 2022).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+
 ### Rhodes 2022
 
 Autores: Rhodes, Denault y Varacallo  
@@ -13807,7 +14512,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Lumbar | — | `sistemas.10.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
+| Lumbar | — | `sistemas.11.criterioCompuesto.nota` | 2 · criterio compuesto del cribado | 1 |
 | Lumbar | — | Pregunta `l5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
@@ -13912,6 +14617,23 @@ Citada como:
 | Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Paso `ro_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
+### Sahu 2020
+
+Autores: Sahu, Mishra et al.  
+Título: *Femoral Neuropathy: A Rare Presentation of Retroperitoneal Hematoma with Review of Literature*  
+Publicación: Indian J Hematol Blood Transfus 36(1):174–177  
+DOI: 10.1007/s12288-019-01126-5  
+Última revisión: **sin revisar**  
+Nota: Caso clínico con apixabán y minirrevisión: neuropatía femoral por hematoma retroperitoneal; solo un tercio con la tríada clásica. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Sahu 2020 — Sahu, Mishra et al., «Femoral Neuropathy: A Rare Presentation of Retroperitoneal Hematoma with Review of Literature», Indian J Hematol Blood Transfus 2020;36(1):174–177, caso y discusión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_psoas` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+
 ### Salameh 2022
 
 Autores: Salameh, Hantouly, Rayyan, Dabbas, Toubasi, Hartnett y Blankenhorn  
@@ -14015,11 +14737,19 @@ Nota: Revisión sistemática y metaanálisis de 30 estudios observacionales (593
 
 Citada como:
 
-1. Salmasi 2020
+1. No sugieras dejar el anticoagulante ni saltarse una dosis: no tomarlo bien se asocia a más ictus y muerte (Salmasi 2020), y la guía EHRA pide no saltarse ninguna sin consultarlo antes (Steffel 2021). Las dudas, al médico que lo receta.
+2. Salmasi 2020
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
 
 ### Sambola 2024
 
@@ -15062,11 +15792,19 @@ Nota: Guía práctica EHRA; PDF del usuario leído entero (2026-10), salvo el co
 
 Citada como:
 
-1. Steffel 2021
+1. No sugieras dejar el anticoagulante ni saltarse una dosis: no tomarlo bien se asocia a más ictus y muerte (Salmasi 2020), y la guía EHRA pide no saltarse ninguna sin consultarlo antes (Steffel 2021). Las dudas, al médico que lo receta.
+2. Steffel 2021
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.medico` | 2 · mención en el texto | 1 |
 
 ### Stern 2026
 
@@ -15379,6 +16117,29 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Prótesis total de cadera» (Articulación) | cabecera · tiempos de tejido | 1 |
 
+### Tenforde 2022
+
+Autores: Tenforde, Borgstrom, DeLuca, McCormack, Singh, Hoo y Yun  
+Título: *Best practices for extracorporeal shockwave therapy in musculoskeletal medicine: Clinical application and training consideration*  
+Publicación: PM R 14(5):611–619  
+DOI: 10.1002/pmrj.12790  
+Última revisión: **sin revisar**  
+Nota: Buenas prácticas de las ondas de choque (opinión de expertos): la anticoagulación, «consideración importante»; el hematoma, efecto adverso. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Ondas de choque: sin consenso entre expertos sobre aplicarlas con anticoagulantes, y el hematoma es un efecto posible (Rhim 2025); se consideran un factor importante a valorar, sin datos con anticoagulados (Tenforde 2022).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
+
 ### Thanou 2021
 
 Autores: Thanou, Jupe, Purushothaman, Niewold y Munroe  
@@ -15466,6 +16227,29 @@ Citada como:
 | Cervical | ce3 · Radiculopatía Cervical | Test «Combinación de 4 ULNT (ULNT1 y ULNT2a mediano, ULNT2b radial, ULNT3 cubital)» | 4b · cita bajo el test | 4 |
 | Cervical | — | Paso `ce_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 | Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
+
+### Tominaga 2023
+
+Autores: Tominaga, Hirayama, Nonaka, Yano e Ishii  
+Título: *Commercial massage tool-induced spinal epidural hematoma*  
+Publicación: Acute Med Surg 10(1):e886  
+DOI: 10.1002/ams2.886  
+Última revisión: **sin revisar**  
+Nota: Caso clínico: masajeador cervical con aspirina y hematoma epidural cervical; los autores no lo atribuyen a la aspirina. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes: solo casos de sangrado tras un masajeador, un percutor o una sesión de estiramientos (Tominaga 2023; Kwon 2024; Kim 2026), y un consenso de expertos sobre instrumentos de tejidos blandos que los trata como precaución (Cheatham 2025). En uno de esos casos, grave, se usó un percutor sobre el punto de inyección de la heparina (Kwon 2024).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
 
 ### Torg 1976
 
@@ -16113,6 +16897,29 @@ Citada como:
 | Tobillo y pie | — | Paso `tp_step11` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 | Tobillo y pie | — | Paso `tp_step12` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
+### Waterway 2026
+
+Autores: Waterway, Beougher, Butler et al.  
+Título: *Treatment Guidelines and Decision Tree for Dry Needling Musculoskeletal Conditions: A Consensus Statement*  
+Publicación: Int J Sports Phys Ther 21(5):556–567  
+DOI: 10.26603/001c.161025  
+Última revisión: **sin revisar**  
+Nota: Delphi de 9 fisioterapeutas (nivel V): los antitrombóticos solos no son contraindicación absoluta de la punción seca, citando Muñoz 2022. Texto completo leído en PMC, sin las figuras 2A y 2B (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Punción seca: no existe ningún estudio con antitrombóticos. Una revisión narrativa y un consenso de expertos que se apoya en ella dicen que no es una contraindicación absoluta (Muñoz 2022; Waterway 2026); según otra revisión, la guía suiza sí la trata así con la anticoagulación (Malfait 2024). Práctica de los autores de la primera: empezar por músculos superficiales viendo cómo sangra, evitar al principio los profundos que no se pueden comprimir y comprimir 10–15 s (Muñoz 2022). Sin INR límite.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+
 ### Waymack y An 2023
 
 Autores: Waymack y An  
@@ -16185,6 +16992,29 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `hem_6` · Hematológico | 2 · razonamiento del cribado | 1 |
 
+### Whedon 2015
+
+Autores: Whedon, Mackenzie, Phillips y Lurie  
+Título: *Risk of traumatic injury associated with chiropractic spinal manipulation in Medicare Part B beneficiaries aged 66 to 99 years*  
+Publicación: Spine 40(4):264–270  
+DOI: 10.1097/BRS.0000000000000725  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva de Medicare: la anticoagulación crónica se asoció a más lesión cerebral o medular tras la manipulación (OR 2,17), sin probar causa. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Thrust: la única tabla específica de la columna torácica lo pone como contraindicación absoluta con tratamiento anticoagulante (Puentedura 2015, tabla 1), y otra, de la terapia manual cervical, como precaución (Hutting 2018, opinión de los autores); las dos son opinión de expertos, y ninguna distingue fármacos ni da un INR. Un estudio de cohorte asoció la anticoagulación crónica a más lesión cerebral o medular tras la manipulación, sin probar la causa (Whedon 2015).
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Hombro | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
+
 ### Wheeler y DeCastro 2023
 
 Autores: Wheeler y DeCastro  
@@ -16201,6 +17031,25 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | — | Paso `co_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
+
+### Wiegele 2019
+
+Autores: Wiegele, Schöchl, Haushofer, Ortler, Leitgeb, Kwasny, Beer, Ay y Schaden  
+Título: *Diagnostic and therapeutic approach in adult patients with traumatic brain injury receiving oral anticoagulant therapy: an Austrian interdisciplinary consensus statement*  
+Publicación: Crit Care 23:62  
+DOI: 10.1186/s13054-019-2352-6  
+Última revisión: **sin revisar**  
+Nota: Consenso de expertos sin GRADE: ingreso de 24 h con anticoagulante oral y TAC normal; la hemorragia puede aparecer días o semanas después. Texto completo leído en PMC, sin la figura 1 (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Wiegele 2019 — Wiegele, Schöchl, Haushofer et al., «Diagnostic and therapeutic approach in adult patients with traumatic brain injury receiving oral anticoagulant therapy: an Austrian interdisciplinary consensus statement», Crit Care 2019;23:62, recomendaciones.
+2. Wiegele 2019 — Wiegele, Schöchl, Haushofer et al., «Diagnostic and therapeutic approach in adult patients with traumatic brain injury receiving oral anticoagulant therapy: an Austrian interdisciplinary consensus statement», Crit Care 2019;23:62, discusión.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza_tardia` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 2 |
 
 ### Wilke y Behringer 2021
 
@@ -16385,11 +17234,36 @@ Nota: Revisión sistemática (9 estudios, 4 ensayos, 583 pacientes; sin metaaná
 
 Citada como:
 
-1. Xiang 2025
+1. Ejercicio: ninguna fuente da intensidad ni carga con anticoagulantes. Tras una embolia pulmonar, el ejercicio es seguro y factible (Xiang 2025); tras una TVP, caminar pronto no aumentó la embolia en los estudios (Liu 2015, con reservas de calidad).
+2. Xiang 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
+| Hombro | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+
+### Yale 2020
+
+Autores: Yale, Tekiner y Yale  
+Título: *Fothergill and Carnett signs and rectus sheath hematoma*  
+Publicación: J Rural Med 15(3):130–131  
+DOI: 10.2185/jrm.2019-019  
+Última revisión: **sin revisar**  
+Nota: Carta: descripción de los signos de Fothergill (masa de la vaina que queda fija) y Carnett. Texto completo leído en PMC (2026-10). Condición especial «Paciente anticoagulado o antiagregado» (Fase P, docs/anticoagulado.md).
+
+Citada como:
+
+1. Yale 2020 — Yale, Tekiner y Yale, «Fothergill and Carnett signs and rectus sheath hematoma», J Rural Med 2020;15(3):130–131.
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `ac_u_pared` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 
 ### Yamamoto 2009
 

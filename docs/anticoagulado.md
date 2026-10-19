@@ -545,5 +545,21 @@ En el entorno solo llegan PMC, NICE y NCBI Bookshelf (que pide reCAPTCHA); las e
 
 1. ~~Tus decisiones (1–20)~~ Hecho: aceptadas las 20 recomendaciones (2026-10).
 2. ~~Los PDF 1–3 (Hutting 2018, Kim 2025, Rhim 2025)~~ hecho; los demás de «PDF que necesito» son opcionales.
-3. La implementación, en la rama de trabajo, y tu revisión en la app antes de `main`; la actualización de la guía de fármacos va aparte, con su propia revisión.
+3. ~~La implementación~~ hecha en la rama de trabajo (ver «Implementación»); falta tu revisión en la app antes de `main`. La actualización de la guía de fármacos va aparte, con su propia revisión.
 4. physiq-report: leer `ac` del payload, en otra PR.
+
+## Implementación (2026-10)
+
+Hecha según la forma 3 y las 20 decisiones aceptadas. Pendiente de la revisión del usuario en la app antes de `main`.
+
+- **Datos**: `SIS_ANTICOAGULADO` en `data/comun.js` (octavo sistema de las 7 regiones, tras el embarazo), con las 6 urgencias y la derivación de la tabla, su `razonamiento` (Fase F) y sus banderas enlazadas (Fase M); `anticoagulado.tipos` (los chips) y `anticoagulado.textos` (nota, línea de la 4b, líneas de la fase 5). Las referencias nuevas, en `data/referencias.js`.
+- **Lógica pura**: `lib/anticoagulado.js` (grupos, visibilidad, migración de la casilla del lupus, pendiente, payload `ac`, textos de 📋 Notas, 📄 Informe e IA).
+- **Fase 1**: `#cardAnticoagulado`, después del embarazo; enlace «Fármacos: anticoagulantes y antiagregantes» (`abrirFarmacos({ familia: 'antitromboticos' })`, que abre la guía con esa familia desplegada). En la tarjeta del lupus, la casilla se sustituye por una línea con «Ir a la tarjeta →».
+- **Fase 4b**: `.ac-nota-4b`; la frase del anticoagulante del lupus (`tecnica4bAntitrombotico`) desaparece.
+- **Fase 5**: `.ac-fase5`, nunca plegado.
+- **Fase 6**: avisos `anticoagulado`, `anticoaguladoPuncion` y `anticoaguladoOndas`, `sinThrustAnticoagulante`, `RED_ANTICOAGULADO`; `sinThrustLupus` queda solo para los corticoides y `lupusAntitrombotico` desaparece.
+- **Listas por hipótesis** (decisión 12), leídas en las pautas: punción seca en `h6`, `ce1`, `ce7`, `ce14` (JOSPT de cuello, B), `lu9` (C), `co1` (B), `ca1` (APTA 2025, A), `ca15` (NICE NG193, 1.2.5) y `tp26` (B); ondas de choque en `h2` (tendinopatía calcificada, C), `ca9` (el grupo de comparación del ensayo), `ca19` y `ro6`. Fuera, porque solo la nombran para no ofrecerla: `h10`, `ro1`, `ro3`, `tp24`. Una prueba unitaria falla si una pauta nueva nombra cualquiera de las dos sin estar en una lista.
+- **Redacción propia** (marcada así en el diseño y aceptada): la última frase de la línea de la 4b, «Antes de cada técnica, pregunta…» del aviso de la fase 6, el texto de la red de seguridad (con sus fuentes en `TEXTOS_CASA.alarmaAnticoagulado.fuente`), «hoy», «ya» y el 112 de las urgencias, y «No lo sabe» tratado como anticoagulante.
+- **Referencias del diseño que no se citan en la app**: Ben Ismail 2026, El Mraiedh 2026 y Liu 2025 (hematoma de pared abdominal) se quedaron fuera del texto de `ac_u_pared` porque el detector de citas de `tests/referencias.mjs` no reconoce apellidos compuestos y `Liu 2025` ya es otra clave del registro; la pregunta se apoya en Liao 2021, Hideyama 2023, Yale 2020 y Amaniyan 2020. Pozza 2023 tampoco entra en `ac_u_espinal` (la apoyan Peng 2022, Albrecht 2024 y Ghosh 2026).
+- **Pruebas**: `tests/unit/anticoagulado.mjs` (sistema, visibilidad por fármaco, seguridad de las urgencias de los demás sistemas, tope, lupus y migración, payload, resúmenes, fase 5, fase 6, listas, modo breve, `AC_CASOS`) y la sección `anticoagulado` de `tests/smoke.mjs`.
+- **Pendiente**: physiq-report (`_bloqueAC`, otra PR) y la actualización de la guía de fármacos.
