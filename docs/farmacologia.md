@@ -184,12 +184,15 @@ Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido:
 
 **Decisión tomada**: va como herramienta propia en la cabecera, no como sección de «Condiciones especiales».
 
-## Paso 3 — Conectarla con el paciente (pendiente, después del paso 2)
+## Paso 3 — Conectarla con el paciente (diseño en borrador, 2026-10; pendiente de las decisiones del usuario)
 
-Unos chips «Familias que toma» en la fase 1, cerca de los antecedentes. Solo familias de la lista del paso 2, **nunca** nombres de fármaco en texto libre. Con ellos:
+Diseño completo y las 18 decisiones: **`docs/farmacos-paciente.md`**. Solo diseño, sin código. En resumen:
 
-- un filtro «Este paciente» en la guía, como en los tiempos de tejido (`filasPaciente()`);
-- avisos en la fase 6 (`construirPlan()`; por ejemplo, betabloqueante → dosificar por Borg; insulina → hipoglucemia; anticoagulante → técnicas manuales);
-- una línea en el bloque de datos del informe con IA.
+- Una tarjeta «Fármacos que toma» en la fase 1, después de la del anticoagulado: chips de las familias ya escritas (hoy AINE, corticoides, opioides, gabapentinoides, antidepresivos, y benzodiacepinas o relajantes), sin texto libre. Los anticoagulantes y antiagregantes no tienen chip: una línea con «Ir a la tarjeta →» a la suya. Los corticoides que ya registran el lupus o la osteoporosis se ven marcados en el chip, sin duplicar el dato.
+- Un chip «Este paciente» en la guía, como en los tiempos de tejido.
+- Avisos en la fase 6 hechos solo de frases literales de la guía revisada (campo `plan`, con una prueba de literalidad); sin topes, sin red de seguridad nueva y sin reglas por combinaciones.
+- Payload `fm`, una línea en 📋 Notas y un bloque en el informe con IA, copiado en physiq-report como `_bloqueFM`. Nada en el 📄 Informe.
 
-Toca el payload, `📋 Notas`, quizá el `📄 Informe` y physiq-report (copia del bloque, como `_bloqueHM`), así que necesita un diseño propio con el usuario antes de empezar. Lo de la fase 6 y el informe solo se escribe con fuentes del paso 2 ya revisadas.
+Al diseñarlo se encontró una incoherencia en la guía: «Corticoides › Ejercicio» dice que las fuentes leídas no dan normas para la terapia manual, pero la app ya usa Puentedura 2015, tabla 1 (corticoides a largo plazo, contraindicación absoluta del thrust torácico) en las tarjetas del lupus y la osteoporosis. Ver la decisión 6 de `docs/farmacos-paciente.md`.
+
+Cuando se implemente, el procedimiento por familia del paso 2 tendrá un paso más: decidir la etiqueta corta del chip (`corto`) y las frases que van a la fase 6 (`plan`).
