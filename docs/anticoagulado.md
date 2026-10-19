@@ -1,6 +1,6 @@
 # Paciente anticoagulado o antiagregado — diseño (borrador)
 
-Estado: **borrador de diseño (octubre 2026), solo diseño: nada de código.** Pendiente de tus decisiones (1–20) y de los PDF de «PDF que necesito». Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después de la osteoporosis (`docs/osteoporosis.md`) y del embarazo o posparto (`docs/embarazo-posparto.md`). **Tanda 1 de PDF leída** (Hutting 2018, Kim 2025 AHA/ACC y Rhim 2025): ver «Lectura de los PDF (tanda 1)»; no cambia la forma recomendada, afina el texto del thrust, de las ondas de choque y del deporte, y deja las decisiones 5, 12 y 13 con más información.
+Estado: **borrador de diseño (octubre 2026), solo diseño: nada de código.** **Las 20 recomendaciones de «Decisiones», aceptadas por el usuario (2026-10).** Quedan los PDF opcionales de «PDF que necesito» y la implementación. Es la siguiente condición especial de la Fase P (`MIGRATION_PLAN.md`, «Próximas condiciones especiales»), después de la osteoporosis (`docs/osteoporosis.md`) y del embarazo o posparto (`docs/embarazo-posparto.md`). **Tanda 1 de PDF leída** (Hutting 2018, Kim 2025 AHA/ACC y Rhim 2025): ver «Lectura de los PDF (tanda 1)»; no cambia la forma recomendada, afina el texto del thrust, de las ondas de choque y del deporte, y deja las decisiones 5, 12 y 13 con más información.
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes; lo que no tiene fuente va marcado como **[propia]** (redacción propia) y es una decisión tuya.
 
@@ -502,6 +502,8 @@ anticoagulado: {
 
 ## Decisiones (cada una con mi recomendación)
 
+**Aceptadas por el usuario las 20 recomendaciones (2026-10).** La 4 cambia lo que hoy hace la casilla del lupus (el tope «sin thrust» deja de aplicarse al antiagregante solo); la 3 absorbe esa casilla en la tarjeta nueva.
+
 1. **¿Entra, con documento propio, y qué forma?** *Recomiendo* sí y la forma 3 (tarjeta y sistema). *Alternativa*: la forma 2, sin sistema (perdería las banderas, que son lo que ninguna región pregunta hoy).
 2. **La tarjeta**: estado único «Toma» y una fila de chips multiselección (antivitamina K, anticoagulante directo, heparina, aspirina, otro antiagregante, no lo sabe), sin motivo, INR ni nombres. «No lo sabe» se trata como anticoagulante. *Recomiendo* esto. *Alternativa*: añadir «motivo» y «desde cuándo» (más lento y sin efecto medible) o tratar «no lo sabe» solo como dato.
 3. **La casilla del lupus**: *recomiendo* una única fuente de datos, la tarjeta nueva, con enlace desde el lupus, `le.at` derivado y migración de las sesiones antiguas. *Alternativa*: dos casillas independientes.
@@ -541,7 +543,7 @@ En el entorno solo llegan PMC, NICE y NCBI Bookshelf (que pide reCAPTCHA); las e
 
 ## Siguiente paso
 
-1. Tus decisiones (1–20).
+1. ~~Tus decisiones (1–20)~~ Hecho: aceptadas las 20 recomendaciones (2026-10).
 2. ~~Los PDF 1–3 (Hutting 2018, Kim 2025, Rhim 2025)~~ hecho; los demás de «PDF que necesito» son opcionales.
 3. La implementación, en la rama de trabajo, y tu revisión en la app antes de `main`; la actualización de la guía de fármacos va aparte, con su propia revisión.
 4. physiq-report: leer `ac` del payload, en otra PR.
