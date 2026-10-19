@@ -545,12 +545,12 @@ En el entorno solo llegan PMC, NICE y NCBI Bookshelf (que pide reCAPTCHA); las e
 
 1. ~~Tus decisiones (1–20)~~ Hecho: aceptadas las 20 recomendaciones (2026-10).
 2. ~~Los PDF 1–3 (Hutting 2018, Kim 2025, Rhim 2025)~~ hecho; los demás de «PDF que necesito» son opcionales.
-3. ~~La implementación~~ hecha en la rama de trabajo (ver «Implementación»); falta tu revisión en la app antes de `main`. La actualización de la guía de fármacos va aparte, con su propia revisión.
+3. ~~La implementación~~ hecha (ver «Implementación») y revisada por el usuario en la app (2026-10). La actualización de la guía de fármacos va aparte, con su propia revisión.
 4. physiq-report: leer `ac` del payload, en otra PR.
 
 ## Implementación (2026-10)
 
-Hecha según la forma 3 y las 20 decisiones aceptadas. Pendiente de la revisión del usuario en la app antes de `main`.
+Hecha según la forma 3 y las 20 decisiones aceptadas. Revisada por el usuario en la app (2026-10).
 
 - **Datos**: `SIS_ANTICOAGULADO` en `data/comun.js` (octavo sistema de las 7 regiones, tras el embarazo), con las 6 urgencias y la derivación de la tabla, su `razonamiento` (Fase F) y sus banderas enlazadas (Fase M); `anticoagulado.tipos` (los chips) y `anticoagulado.textos` (nota, línea de la 4b, líneas de la fase 5). Las referencias nuevas, en `data/referencias.js`.
 - **Lógica pura**: `lib/anticoagulado.js` (grupos, visibilidad, migración de la casilla del lupus, pendiente, payload `ac`, textos de 📋 Notas, 📄 Informe e IA).

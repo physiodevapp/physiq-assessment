@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **676** referencias de literatura, con **4263** usos.
+- **676** referencias de literatura, con **4287** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **379** de 676 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -63,7 +63,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [NICE NG192](#nice-ng192) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [NICE NG194](#nice-ng194) | razonamiento fase 2 | 7 | **sin revisar** |
 | [NICE NG201](#nice-ng201) | razonamiento fase 2 · texto | 32 | **sin revisar** |
-| [NICE NG232](#nice-ng232) | razonamiento fase 2 · texto | 17 | **sin revisar** |
+| [NICE NG232](#nice-ng232) | razonamiento fase 2 · texto | 18 | **sin revisar** |
 | [NICE NG255](#nice-ng255) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG258](#nice-ng258) | razonamiento fase 2 · plan de tratamiento · texto | 25 | **sin revisar** |
 | [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) | razonamiento fase 2 | 3 | **sin revisar** |
@@ -76,7 +76,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Champaneria 2016](#champaneria-2016) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Dos Santos 2016](#dos-santos-2016) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Llitjos 2016](#llitjos-2016) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Llitjos 2016](#llitjos-2016) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Bahit 2017](#bahit-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Byers 2017](#byers-2017) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Clinton 2017](#clinton-2017) | razonamiento fase 2 · texto | 8 | **sin revisar** |
@@ -85,7 +85,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Schroeder 2017](#schroeder-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Baker 2018](#baker-2018) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
-| [Chenoweth 2018](#chenoweth-2018) | razonamiento fase 2 · texto | 8 | **sin revisar** |
+| [Chenoweth 2018](#chenoweth-2018) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Gordon 2018](#gordon-2018) | razonamiento fase 2 · texto | 12 | **sin revisar** |
 | [Hulens 2018](#hulens-2018) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Mottola 2018](#mottola-2018) | razonamiento fase 2 · texto | 58 | **sin revisar** |
@@ -94,29 +94,29 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kanis 2019](#kanis-2019) | razonamiento fase 2 · texto | 10 | **sin revisar** |
 | [Tektonidou 2019](#tektonidou-2019) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Wiegele 2019](#wiegele-2019) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Amaniyan 2020](#amaniyan-2020) | razonamiento fase 2 · texto | 8 | **sin revisar** |
-| [Brooker 2020](#brooker-2020) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Amaniyan 2020](#amaniyan-2020) | razonamiento fase 2 · texto | 9 | **sin revisar** |
+| [Brooker 2020](#brooker-2020) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Cardona 2020](#cardona-2020) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Peker 2020](#peker-2020) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Sahu 2020](#sahu-2020) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Sahu 2020](#sahu-2020) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Wang 2020](#wang-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [WFH 2020](#wfh-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Yale 2020](#yale-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Colombo 2021](#colombo-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kaneko 2021](#kaneko-2021) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [Liao 2021](#liao-2021) | razonamiento fase 2 · texto | 8 | **sin revisar** |
+| [Liao 2021](#liao-2021) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Ogrodnik 2021](#ogrodnik-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Pisetsky 2021](#pisetsky-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [RCUK 2021](#rcuk-2021) | razonamiento fase 2 · plan de tratamiento · texto | 31 | **sin revisar** |
 | [Thanou 2021](#thanou-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Bałabuszek 2022](#bałabuszek-2022) | razonamiento fase 2 | 3 | **sin revisar** |
-| [Dalrymple 2022](#dalrymple-2022) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Dalrymple 2022](#dalrymple-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [De Maeseneer 2022](#de-maeseneer-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Drosos 2022](#drosos-2022) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Laurent 2022](#laurent-2022) | razonamiento fase 2 · texto | 9 | **sin revisar** |
 | [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Muñoz 2022](#muñoz-2022) | razonamiento fase 2 · texto | 10 | **sin revisar** |
-| [Nemunaitis 2022](#nemunaitis-2022) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Nemunaitis 2022](#nemunaitis-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Peng 2022](#peng-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Pokhrel 2022](#pokhrel-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Raj 2022](#raj-2022) | razonamiento fase 2 · texto | 37 | **sin revisar** |
@@ -124,11 +124,11 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Valent 2022](#valent-2022) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Fragoulis 2023](#fragoulis-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hameed 2023](#hameed-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Hideyama 2023](#hideyama-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Hideyama 2023](#hideyama-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lim y Selbi 2023](#lim-y-selbi-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Limaiem 2023](#limaiem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Lukies 2023](#lukies-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Lukies 2023](#lukies-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Matthews 2023](#matthews-2023) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Murphy 2023](#murphy-2023) | razonamiento fase 2 · razonamiento fase 4 | 2 | **sin revisar** |
 | [Paredes Mogica 2023](#paredes-mogica-2023) | razonamiento fase 2 · razonamiento fase 4 | 4 | **sin revisar** |
@@ -163,7 +163,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Ghosh 2026](#ghosh-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Hadji 2026](#hadji-2026) | razonamiento fase 2 · texto | 17 | **sin revisar** |
 | [Hanif 2026](#hanif-2026) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Kim 2026](#kim-2026) | razonamiento fase 2 · texto | 15 | **sin revisar** |
+| [Kim 2026](#kim-2026) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Regalla y Killeen 2026](#regalla-y-killeen-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Brown 2004](#brown-2004) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Cook y Brown 2010](#cook-y-brown-2010) | razonamiento fase 4 | 1 | **sin revisar** |
@@ -268,7 +268,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Srisuwatchari 2023](#srisuwatchari-2023) | plan de tratamiento | 1 | **sin revisar** |
 | [Muñoz 2024](#muñoz-2024) | plan de tratamiento · texto | 8 | **sin revisar** |
 | [NICE NG123](#nice-ng123) | texto | 7 | **sin revisar** |
-| [NICE NG196](#nice-ng196) | texto | 14 | **sin revisar** |
+| [NICE NG196](#nice-ng196) | texto | 15 | **sin revisar** |
 | [NICE NG210](#nice-ng210) | texto | 28 | **sin revisar** |
 | [NICE NG249](#nice-ng249) | texto | 21 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
@@ -277,14 +277,14 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Giangregorio 2014](#giangregorio-2014) | texto | 35 | **sin revisar** |
 | [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) | texto | 14 | **sin revisar** |
 | [Liddle y Pennick 2015](#liddle-y-pennick-2015) | texto | 14 | **sin revisar** |
-| [Liu 2015](#liu-2015) | texto | 7 | **sin revisar** |
-| [Puentedura 2015](#puentedura-2015) | texto | 21 | **sin revisar** |
-| [Whedon 2015](#whedon-2015) | texto | 7 | **sin revisar** |
+| [Liu 2015](#liu-2015) | texto | 8 | **sin revisar** |
+| [Puentedura 2015](#puentedura-2015) | texto | 22 | **sin revisar** |
+| [Whedon 2015](#whedon-2015) | texto | 8 | **sin revisar** |
 | [Hall 2016](#hall-2016) | texto | 7 | **sin revisar** |
 | [Sperstad 2016](#sperstad-2016) | texto | 7 | **sin revisar** |
 | [Engelbert 2017](#engelbert-2017) | texto | 14 | **sin revisar** |
 | [González-de-Olano 2017](#gonzález-de-olano-2017) | texto | 7 | **sin revisar** |
-| [Hutting 2018](#hutting-2018) | texto | 7 | **sin revisar** |
+| [Hutting 2018](#hutting-2018) | texto | 8 | **sin revisar** |
 | [Fedorowski 2019](#fedorowski-2019) | texto | 15 | **sin revisar** |
 | [Gibbs 2019](#gibbs-2019) | texto | 7 | **sin revisar** |
 | [Sherrington 2019](#sherrington-2019) | texto | 7 | **sin revisar** |
@@ -304,24 +304,24 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Burani 2023](#burani-2023) | texto | 7 | **sin revisar** |
 | [Frade 2023](#frade-2023) | texto | 21 | **sin revisar** |
 | [Gülen 2023](#gülen-2023) | texto | 7 | **sin revisar** |
-| [Mitchell 2023](#mitchell-2023) | texto | 7 | **sin revisar** |
-| [Tominaga 2023](#tominaga-2023) | texto | 7 | **sin revisar** |
+| [Mitchell 2023](#mitchell-2023) | texto | 8 | **sin revisar** |
+| [Tominaga 2023](#tominaga-2023) | texto | 8 | **sin revisar** |
 | [Anagnostis 2024](#anagnostis-2024) | texto | 7 | **sin revisar** |
 | [Blaess 2024](#blaess-2024) | texto | 63 | **sin revisar** |
 | [Christopher 2024](#christopher-2024) | texto | 7 | **sin revisar** |
 | [Dures 2024](#dures-2024) | texto | 7 | **sin revisar** |
 | [Gak 2024](#gak-2024) | texto | 7 | **sin revisar** |
-| [Kwon 2024](#kwon-2024) | texto | 7 | **sin revisar** |
+| [Kwon 2024](#kwon-2024) | texto | 8 | **sin revisar** |
 | [Malfait 2024](#malfait-2024) | texto | 7 | **sin revisar** |
-| [Minardi 2024](#minardi-2024) | texto | 7 | **sin revisar** |
+| [Minardi 2024](#minardi-2024) | texto | 8 | **sin revisar** |
 | [Parodis 2024](#parodis-2024) | texto | 14 | **sin revisar** |
 | [Beamish 2025](#beamish-2025) | texto | 7 | **sin revisar** |
-| [Cheatham 2025](#cheatham-2025) | texto | 7 | **sin revisar** |
+| [Cheatham 2025](#cheatham-2025) | texto | 8 | **sin revisar** |
 | [Davenport 2025](#davenport-2025) | texto | 35 | **sin revisar** |
-| [Kim 2025](#kim-2025) | texto | 7 | **sin revisar** |
+| [Kim 2025](#kim-2025) | texto | 8 | **sin revisar** |
 | [Rhim 2025](#rhim-2025) | texto | 7 | **sin revisar** |
 | [Xiang 2025](#xiang-2025) | texto | 8 | **sin revisar** |
-| [Bavishi 2026](#bavishi-2026) | texto | 7 | **sin revisar** |
+| [Bavishi 2026](#bavishi-2026) | texto | 8 | **sin revisar** |
 | [Saliba 2026](#saliba-2026) | texto | 14 | **sin revisar** |
 | [Sivakoti 2026](#sivakoti-2026) | texto | 7 | **sin revisar** |
 | [Valdez 2026](#valdez-2026) | texto | 7 | **sin revisar** |
@@ -1260,10 +1260,12 @@ Citada como:
 
 1. Con heparina en inyección, los moratones en el punto de inyección son frecuentes (Amaniyan 2020); un dolor brusco con bulto en la pared del abdomen no lo es (Liao 2021).
 2. Amaniyan 2020 — Amaniyan, Ghobadi, Vaismoradi et al., «Cold Application on Bruising at the Subcutaneous Heparin Injection Site: A Systematic Review and Meta-Analysis», SAGE Open Nurs 2020;6:2377960820901370, introducción.
+3. Amaniyan 2020
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_pared` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 2 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 3 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
@@ -1723,9 +1725,11 @@ Nota: Revisión narrativa: deportes de bajo riesgo permitidos; su tabla de riesg
 Citada como:
 
 1. Deporte de competición: con aspirina sola, sin límite; con doble antiagregación o anticoagulación plena, en los deportes de colisión o de impacto a alta velocidad los riesgos no compensan o se decide con el médico (Kim 2025). Es solo para deportistas de competición y no dice qué anticoagulantes cuentan como plenos. Fuera de la competición, las revisiones coinciden en actividades con poco riesgo de golpe, sí, y deportes de colisión, a decidir con el médico (Minardi 2024; Bavishi 2026).
+2. Bavishi 2026
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
@@ -2528,10 +2532,12 @@ Nota: Caso clínico con apixabán: síndrome compartimental del muslo tras un tr
 Citada como:
 
 1. Brooker 2020 — Brooker, Brown, Thornton et al., «Emergency fasciotomy in an anticoagulated patient with low energy posterior thigh injury», BMJ Case Rep 2020;13(9), discusión.
+2. Brooker 2020
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_compartimental` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 
 ### Brotman 2024
 
@@ -3021,9 +3027,11 @@ Nota: Delphi de 24 expertos («nivel 4»): los fármacos que adelgazan la sangre
 Citada como:
 
 1. De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes: solo casos de sangrado tras un masajeador, un percutor o una sesión de estiramientos (Tominaga 2023; Kwon 2024; Kim 2026), y un consenso de expertos sobre instrumentos de tejidos blandos que los trata como precaución (Cheatham 2025). En uno de esos casos, grave, se usó un percutor sobre el punto de inyección de la heparina (Kwon 2024).
+2. Cheatham 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
@@ -3062,10 +3070,12 @@ Citada como:
 
 1. Golpe en la cabeza con anticoagulante o con un antiagregante que no sea la aspirina sola: a urgencias, aunque se encuentre bien (NICE NG232, 1.2.4); que un adulto le acompañe las primeras 24 horas y sepa que puede empeorar después de parecer recuperado (NICE NG232, 1.10.9). El sangrado tardío es raro, pero puede aparecer días después (Chenoweth 2018).
 2. Chenoweth 2018 — Chenoweth, Gaona, Faul, Holmes y Nishijima, «Incidence of Delayed Intracranial Hemorrhage in Older Patients After Blunt Head Trauma», JAMA Surg 2018;153(6):570–575, resultados.
+3. Chenoweth 2018
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 2 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 3 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
@@ -3515,10 +3525,12 @@ Nota: Revisión retrospectiva de 31 hemartros de rodilla con anticoagulantes ora
 Citada como:
 
 1. Dalrymple 2022 — Dalrymple, Davies, Biggs et al., «Management of Haemarthrosis in Patients On Oral Anticoagulants», Geriatr Orthop Surg Rehabil 2022;13:21514593221076966, introducción y discusión.
+2. Dalrymple 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_d_hematoma` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 
 ### Davenport 2025
 
@@ -6701,10 +6713,12 @@ Nota: Caso clínico: hematoma de la vaina de los rectos con apixabán tras una t
 Citada como:
 
 1. Hideyama 2023 — Hideyama, Watanabe, Ido et al., «Non-traumatic Rectus Sheath Hematoma During Direct Oral Anticoagulation», Cureus 2023;15(9):e45876, caso.
+2. Hideyama 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_pared` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 
 ### Hodge y Schroeder 2023
 
@@ -7003,9 +7017,11 @@ Nota: Artículo profesional, opinión de los autores; PDF del usuario (manuscrit
 Citada como:
 
 1. Thrust: la única tabla específica de la columna torácica lo pone como contraindicación absoluta con tratamiento anticoagulante (Puentedura 2015, tabla 1), y otra, de la terapia manual cervical, como precaución (Hutting 2018, opinión de los autores); las dos son opinión de expertos, y ninguna distingue fármacos ni da un INR. Un estudio de cohorte asoció la anticoagulación crónica a más lesión cerebral o medular tras la manipulación, sin probar la causa (Whedon 2015).
+2. Hutting 2018
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
@@ -7784,9 +7800,11 @@ Nota: Declaración científica AHA/ACC, consenso sin clase ni nivel; PDF del usu
 Citada como:
 
 1. Deporte de competición: con aspirina sola, sin límite; con doble antiagregación o anticoagulación plena, en los deportes de colisión o de impacto a alta velocidad los riesgos no compensan o se decide con el médico (Kim 2025). Es solo para deportistas de competición y no dice qué anticoagulantes cuentan como plenos. Fuera de la competición, las revisiones coinciden en actividades con poco riesgo de golpe, sí, y deportes de colisión, a decidir con el médico (Minardi 2024; Bavishi 2026).
+2. Kim 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
@@ -7809,10 +7827,12 @@ Citada como:
 1. Anticoagulado o antiagregado: precaución con lo que tenga riesgo de golpe (lo recomiendan para el lupus: Blaess 2024, rec. 3); un esfuerzo mecánico pequeño puede dar un sangrado importante (Kim 2026, un caso). Si durante la exploración aparece un dolor desproporcionado, una hinchazón tensa o un hematoma que crece, para y deriva.
 2. De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes: solo casos de sangrado tras un masajeador, un percutor o una sesión de estiramientos (Tominaga 2023; Kwon 2024; Kim 2026), y un consenso de expertos sobre instrumentos de tejidos blandos que los trata como precaución (Cheatham 2025). En uno de esos casos, grave, se usó un percutor sobre el punto de inyección de la heparina (Kwon 2024).
 3. Kim 2026 — Kim, Na, Kim, Choi, Hwang y Kim, «Acute Forearm Compartment Syndrome Following Physical Therapy in a Patient Receiving Anticoagulation Therapy: A Case Report», J Clin Med 2026;15(13):5052, caso y discusión.
+4. Kim 2026
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_compartimental` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 3 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 4 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 2 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.tecnica4b` | 2 · mención en el texto | 1 |
@@ -8156,9 +8176,11 @@ Nota: Caso clínico: percutor sobre el punto de inyección de enoxaparina y hema
 Citada como:
 
 1. De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes: solo casos de sangrado tras un masajeador, un percutor o una sesión de estiramientos (Tominaga 2023; Kwon 2024; Kim 2026), y un consenso de expertos sobre instrumentos de tejidos blandos que los trata como precaución (Cheatham 2025). En uno de esos casos, grave, se usó un percutor sobre el punto de inyección de la heparina (Kwon 2024).
+2. Kwon 2024
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
@@ -8670,10 +8692,12 @@ Citada como:
 
 1. Con heparina en inyección, los moratones en el punto de inyección son frecuentes (Amaniyan 2020); un dolor brusco con bulto en la pared del abdomen no lo es (Liao 2021).
 2. Liao 2021 — Liao y Puckett, «A Proposed Algorithm on the Modern Management of Rectus Sheath Hematoma: A Literature Review», Cureus 2021;13(11):e20008, revisión.
+3. Liao 2021
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_pared` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 2 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 3 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.heparina` | 2 · mención en el texto | 1 |
@@ -8813,9 +8837,11 @@ Nota: Metaanálisis (13 estudios): caminar pronto con anticoagulación no aument
 Citada como:
 
 1. Ejercicio: ninguna fuente da intensidad ni carga con anticoagulantes. Tras una embolia pulmonar, el ejercicio es seguro y factible (Xiang 2025); tras una TVP, caminar pronto no aumentó la embolia en los estudios (Liu 2015, con reservas de calidad).
+2. Liu 2015
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
@@ -8888,10 +8914,12 @@ Nota: Cohorte retrospectiva de UCI (77 hematomas del iliopsoas, casos graves): a
 Citada como:
 
 1. Llitjos 2016 — Llitjos, Daviaud, Grimaldi et al., «Ilio-psoas hematoma in the intensive care unit: a multicentric study», Ann Intensive Care 2016;6(1):8, resultados.
+2. Llitjos 2016
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_psoas` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 
 ### Lluch 2020
 
@@ -10201,10 +10229,12 @@ Nota: Estudio retrospectivo de 54 hemorragias retroperitoneales espontáneas: pr
 Citada como:
 
 1. Lukies 2023 — Lukies, Gipson, Tan et al., «Spontaneous Retroperitoneal Haemorrhage: Efficacy of Conservative Management and Embolisation», Cardiovasc Intervent Radiol 2023;46(4):488–495, introducción y discusión.
+2. Lukies 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_psoas` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 
 ### Mabrouk y Pilson 2026
 
@@ -11223,9 +11253,11 @@ Nota: Revisión narrativa: las recomendaciones sobre anticoagulación y deporte 
 Citada como:
 
 1. Deporte de competición: con aspirina sola, sin límite; con doble antiagregación o anticoagulación plena, en los deportes de colisión o de impacto a alta velocidad los riesgos no compensan o se decide con el médico (Kim 2025). Es solo para deportistas de competición y no dice qué anticoagulantes cuentan como plenos. Fuera de la competición, las revisiones coinciden en actividades con poco riesgo de golpe, sí, y deportes de colisión, a decidir con el médico (Minardi 2024; Bavishi 2026).
+2. Minardi 2024
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.deporte` | 2 · mención en el texto | 1 |
@@ -11246,9 +11278,11 @@ Nota: Revisión narrativa: riesgo absoluto bajo de hemorragia intracraneal por c
 Citada como:
 
 1. Caídas: el anticoagulante no se retira solo por el riesgo de caídas, que rara vez causan un sangrado mayor (NICE NG196, 1.6.8); el riesgo absoluto de hemorragia intracraneal por una caída es bajo frente al de ictus (Mitchell 2023). Entrenar fuerza, equilibrio y marcha, y revisar la medicación con su médico (Mitchell 2023). No hay datos de que el ejercicio de equilibrio reduzca el sangrado por caídas.
+2. Mitchell 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
@@ -11775,10 +11809,12 @@ Nota: Caso clínico con apixabán: síndrome compartimental recurrente, el segun
 Citada como:
 
 1. Nemunaitis 2022 — Nemunaitis, Den Haese, Buseck et al., «A Case of Recurrent Compartment Syndrome with Concomitant Use of Eliquis», Case Rep Orthop 2022:1863538, discusión.
+2. Nemunaitis 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_compartimental` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 
 ### Netterström-Wedin 2021
 
@@ -12190,9 +12226,11 @@ Citada como:
 
 1. Caídas: el anticoagulante no se retira solo por el riesgo de caídas, que rara vez causan un sangrado mayor (NICE NG196, 1.6.8); el riesgo absoluto de hemorragia intracraneal por una caída es bajo frente al de ictus (Mitchell 2023). Entrenar fuerza, equilibrio y marcha, y revisar la medicación con su médico (Mitchell 2023). No hay datos de que el ejercicio de equilibrio reduzca el sangrado por caídas.
 2. Los AINE, los antidepresivos ISRS o IRSN y otros antiagregantes aumentan el riesgo de sangrado con estos fármacos (NICE NG196, 1.2.3; Nochaiwong 2022): coméntalo con quien los receta.
+3. NICE NG196
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 3 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.otrosFarmacos` | 2 · mención en el texto | 2 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.caidas` | 2 · mención en el texto | 1 |
@@ -12364,6 +12402,7 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 3 |
 | Todas (sistemas comunes) | — | Pregunta `ac_u_cabeza_tardia` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 4 |
 | condiciones | — | Fila «Paciente anticoagulado o antiagregado» | guía de condiciones especiales | 5 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 5 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.cabezaAspirina` | 2 · mención en el texto | 2 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.cabeza` | 2 · mención en el texto | 1 |
@@ -13665,9 +13704,11 @@ Citada como:
 1. Un empuje posteroanterior fuerte en la columna torácica puede llegar a la carga con la que se rompe una vértebra torácica en el laboratorio, con datos de cadáver (Puentedura 2015). Son cifras de manipulación con thrust, no de estos tests: por eso la línea pide fuerza progresiva y no da un límite.
 2. Sin manipulación forzada; la movilización suave puede ser adecuada (Maitland 2005, cap. 9, p. 223; Puentedura 2015, tabla 1).
 3. Thrust: la única tabla específica de la columna torácica lo pone como contraindicación absoluta con tratamiento anticoagulante (Puentedura 2015, tabla 1), y otra, de la terapia manual cervical, como precaución (Hutting 2018, opinión de los autores); las dos son opinión de expertos, y ninguna distingue fármacos ni da un INR. Un estudio de cohorte asoció la anticoagulación crónica a más lesión cerebral o medular tras la manipulación, sin probar la causa (Whedon 2015).
+4. Puentedura 2015
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 4 |
 | Hombro | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 3 |
@@ -14629,10 +14670,12 @@ Nota: Caso clínico con apixabán y minirrevisión: neuropatía femoral por hema
 Citada como:
 
 1. Sahu 2020 — Sahu, Mishra et al., «Femoral Neuropathy: A Rare Presentation of Retroperitoneal Hematoma with Review of Literature», Indian J Hematol Blood Transfus 2020;36(1):174–177, caso y discusión.
+2. Sahu 2020
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_psoas` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 
 ### Salameh 2022
 
@@ -16240,9 +16283,11 @@ Nota: Caso clínico: masajeador cervical con aspirina y hematoma epidural cervic
 Citada como:
 
 1. De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes: solo casos de sangrado tras un masajeador, un percutor o una sesión de estiramientos (Tominaga 2023; Kwon 2024; Kim 2026), y un consenso de expertos sobre instrumentos de tejidos blandos que los trata como precaución (Cheatham 2025). En uno de esos casos, grave, se usó un percutor sobre el punto de inyección de la heparina (Kwon 2024).
+2. Tominaga 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.tejidosBlandos` | 2 · mención en el texto | 1 |
@@ -17004,9 +17049,11 @@ Nota: Cohorte retrospectiva de Medicare: la anticoagulación crónica se asoció
 Citada como:
 
 1. Thrust: la única tabla específica de la columna torácica lo pone como contraindicación absoluta con tratamiento anticoagulante (Puentedura 2015, tabla 1), y otra, de la terapia manual cervical, como precaución (Hutting 2018, opinión de los autores); las dos son opinión de expertos, y ninguna distingue fármacos ni da un INR. Un estudio de cohorte asoció la anticoagulación crónica a más lesión cerebral o medular tras la manipulación, sin probar la causa (Whedon 2015).
+2. Whedon 2015
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Hombro | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.7.anticoagulado.textos.thrust` | 2 · mención en el texto | 1 |
