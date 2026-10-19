@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **743** referencias de literatura, con **4356** usos.
+- **743** referencias de literatura, con **4357** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **379** de 743 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -278,7 +278,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) | texto | 14 | **sin revisar** |
 | [Liddle y Pennick 2015](#liddle-y-pennick-2015) | texto | 14 | **sin revisar** |
 | [Liu 2015](#liu-2015) | texto | 8 | **sin revisar** |
-| [Puentedura 2015](#puentedura-2015) | texto | 22 | **sin revisar** |
+| [Puentedura 2015](#puentedura-2015) | texto | 23 | **sin revisar** |
 | [Whedon 2015](#whedon-2015) | texto | 8 | **sin revisar** |
 | [Hall 2016](#hall-2016) | texto | 7 | **sin revisar** |
 | [Sperstad 2016](#sperstad-2016) | texto | 7 | **sin revisar** |
@@ -14548,7 +14548,7 @@ Título: *Safety of thrust joint manipulation in the thoracic spine: a systemati
 Publicación: J Man Manip Ther 23(3):154–161  
 DOI: 10.1179/2042618615Y.0000000012  
 Última revisión: **sin revisar**  
-Nota: PDF del usuario, leído entero (2026-10). Contraindicaciones absolutas del thrust torácico (tabla 1: osteoporosis, corticoides a largo plazo, fractura, tratamiento anticoagulante) y carga de rotura de una vértebra torácica en cadáver (introducción). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+Nota: PDF del usuario, leído entero (2026-10). Contraindicaciones absolutas del thrust torácico (tabla 1: osteoporosis, corticoides a largo plazo, fractura, tratamiento anticoagulante) y carga de rotura de una vértebra torácica en cadáver (introducción). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md); también en la guía de fármacos (corticoides y anticoagulantes).
 
 Citada como:
 
@@ -14559,6 +14559,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 4 |
 | fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 4 |
 | Hombro | — | `sistemas.5.osteoporosis.textos.tecnica4bPorque` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.5.osteoporosis.textos.tecnica` | 2 · mención en el texto | 2 |

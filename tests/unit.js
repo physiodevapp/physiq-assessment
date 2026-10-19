@@ -23,6 +23,7 @@ for (const tema of [
   'anticoagulado.mjs',
   'condiciones.mjs',
   'farmacos.mjs',
+  'farmacos-paciente.mjs',
   'fase5-y-version.mjs',
   'revision-informe.mjs',
   'verificacion.mjs',

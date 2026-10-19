@@ -26,7 +26,9 @@ function fuenteDe(texto, fuentes, tipo) {
 
 const item = (texto, fuente) => `- [ ] «${texto}»  \n  ↳ ${fuente}`;
 
-export function construirFrases(D, P) {
+// FP (opcional): data/farmacos-paciente.js, los avisos de los fármacos que toma
+// (docs/farmacos-paciente.md), frases copiadas literales de la guía de fármacos.
+export function construirFrases(D, P, FP = null) {
   const F = D.FUENTES_PLAN;
   const tipos = D.TIPO_TEXTO || {};
   const auto = (t, clave) => item(t, fuenteDe(t, F, tipos[clave]));
@@ -92,6 +94,15 @@ export function construirFrases(D, P) {
   grupo('AVISOS', D.AVISOS);
   out.push(item(P.textoPosq(true), 'texto de la fase 5 (`TEXTO_PAUTA_COMPATIBLE`, lib/posquirurgico.js), ya revisado: posquirúrgico con protocolo'));
   out.push(item(P.textoPosq(false), 'texto de la fase 5 (`TEXTO_SIN_PROTOCOLO`, lib/posquirurgico.js), ya revisado: posquirúrgico sin protocolo'));
+  if (FP) {
+    out.push('', 'Fármacos que toma (tarjeta de la fase 1, `data/farmacos-paciente.js`): un aviso por familia, con su rótulo (redacción propia) y frases copiadas literales de la guía de fármacos ya revisada (`data/farmacos.js`; una prueba lo exige). La línea común sale una vez si hay alguno.', '');
+    for (const [id, f] of Object.entries(FP.FAMILIAS_PACIENTE)) {
+      if (!f.plan?.length) continue;
+      out.push(item(`${f.rotulo}:`, `**redacción propia** (rótulo del aviso de \`${id}\`)`));
+      for (const t of f.plan) out.push(item(t, `guía de fármacos, familia \`${id}\` (texto revisado; su cita va dentro)`));
+    }
+    out.push(item(FP.TEXTOS_FARMACOS_PACIENTE.lineaComun, '**redacción propia** (resume las frases «Nunca aconsejes…» de cada familia; decisión 18 de docs/farmacos-paciente.md)'));
+  }
 
   sec('6. Sesión de 50 minutos', 'Minutos orientativos y editables en la fase 6 (organización de la sesión, no evidencia).');
   for (const b of P.rangosBloques().bloques) out.push(item(`${b.titulo}: ${b.duracion} min (${b.minutos})`, '**organización orientativa**'));
