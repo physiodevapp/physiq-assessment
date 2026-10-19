@@ -1,6 +1,6 @@
 # Fármacos que toma el paciente — diseño del paso 3 de la farmacología
 
-Estado: **diseño (octubre 2026), solo diseño: nada de código.** **Las 20 recomendaciones de «Decisiones», aceptadas por el usuario (2026-10).** Corregida la frase de los corticoides en la guía (decisión 6, 2026-10), pendiente de tu revisión; queda la implementación. Es el paso 3 de `docs/farmacologia.md` («Conectarla con el paciente»); los pasos 1 y 2 están hechos. Con `main` traído a la rama (2026-10), hay ocho familias revisadas por el usuario: AINE, corticoides, anticoagulantes y antiagregantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes musculares, y estatinas. **Las otras cinco se están escribiendo en paralelo**, cada una en su rama (ver «Trabajo en paralelo»), así que el diseño no fija ninguna lista de familias.
+Estado: **diseño (octubre 2026), solo diseño: nada de código.** **Las 20 recomendaciones de «Decisiones», aceptadas por el usuario (2026-10).** Corregida la frase de los corticoides en la guía (decisión 6, 2026-10) y revisada por el usuario; en implementación. Es el paso 3 de `docs/farmacologia.md` («Conectarla con el paciente»); los pasos 1 y 2 están hechos. Con `main` traído a la rama (2026-10), hay ocho familias revisadas por el usuario: AINE, corticoides, anticoagulantes y antiagregantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes musculares, y estatinas. **Las otras cinco se están escribiendo en paralelo**, cada una en su rama (ver «Trabajo en paralelo»), así que el diseño no fija ninguna lista de familias.
 
 Reglas de este diseño, las mismas de la línea «fármacos» y de las condiciones especiales:
 - Solo se usa contenido de **familias ya revisadas**. No entra ninguna frase nueva con fuente: los avisos de la fase 6 son **frases literales** de `data/farmacos.js`, con su cita.
@@ -38,7 +38,7 @@ Revisado en octubre de 2026 en `data/`, `lib/`, `formularios/`, `index.html` y `
 
 La guía, en «Corticoides › Ejercicio», dice: «Las fuentes leídas no dan normas para la terapia manual ni para la carga: tenlo en cuenta al elegir técnicas de alta velocidad o carga axial intensa.» Pero la app ya usa **Puentedura 2015, tabla 1** («corticoides a largo plazo… contraindicación absoluta» del thrust torácico) en `sinThrustLupus` y en `sinThrustOsteoporosis`, y esa fuente está leída y en el registro. La frase se escribió con las fuentes de la familia y no tiene en cuenta las de las condiciones especiales. **No se puede llevar a la fase 6 tal cual** (decisión 6).
 
-**Corregida (2026-10, pendiente de la revisión del usuario).** La frase pasa a ser un párrafo propio del apartado «Ejercicio», con Puentedura 2015 en las fuentes de la familia:
+**Corregida (2026-10) y revisada por el usuario.** La frase pasa a ser un párrafo propio del apartado «Ejercicio», con Puentedura 2015 en las fuentes de la familia:
 
 > Terapia manual: una revisión de casos de efectos adversos del thrust torácico pone la medicación con corticoides a largo plazo, sin definir la dosis ni la duración, entre las contraindicaciones absolutas del thrust en la columna torácica; su tabla sale de un trabajo de una escuela de osteopatía, no de una guía (Puentedura 2015). En el plan de tratamiento, la app quita el thrust con la tarjeta «Osteoporosis o fragilidad ósea» y cuando la tarjeta «Lupus (LES)» registra corticoides o dosis altas previas. Las fuentes leídas no dan normas para la carga ni para el resto de la terapia manual: tenlo en cuenta al elegir carga axial intensa.
 
@@ -191,6 +191,6 @@ En otro chat se escriben las familias que faltan, cada una en su rama. Para que 
 ## Siguiente paso
 
 1. ~~Tus decisiones (1–20)~~ Hecho: aceptadas las 20 recomendaciones (2026-10).
-2. ~~Corregir la frase de los corticoides en la guía~~ Hecho (2026-10), pendiente de tu revisión: ver «Una incoherencia encontrada al diseñar».
+2. ~~Corregir la frase de los corticoides en la guía~~ Hecho (2026-10) y revisado por el usuario: ver «Una incoherencia encontrada al diseñar».
 3. La implementación, en una rama propia: traer `main` antes de empezar y otra vez antes de fusionar, con la prueba de humo completa; revisión del usuario en la app antes de `main`.
 4. physiq-report: `_bloqueFM`, en otra PR.

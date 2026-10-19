@@ -511,7 +511,7 @@ Diseño: `docs/farmacos-paciente.md` (pasos 1 y 2 y su estado: `docs/farmacologi
 - [x] Borrador de diseño (2026-10). Solo diseño, sin código. Tarjeta «Fármacos que toma» en la fase 1 (chips calculados de las familias con contenido de `data/farmacos.js`, para que las que se escriben en paralelo entren solas; sin texto libre; anticoagulantes por su tarjeta; corticoides del lupus y la osteoporosis mostrados, no duplicados), «Este paciente» en la guía, avisos de la fase 6 con frases literales de la guía (prueba de literalidad; uno por familia revisada, con ella o después, en `data/farmacos-paciente.js`), payload `fm` (`[{ id, n }]`), 📋 Notas y bloque de la IA (`_bloqueFM` en physiq-report). Sin reglas por combinaciones, sin topes ni red nuevos, nada en la fase 2. 20 decisiones para el usuario
 - [x] Decisiones 1–20 del usuario: aceptadas las 20 recomendaciones (2026-10)
 - [x] Decisión 6: corregida en la guía la frase de la terapia manual de los corticoides (Puentedura 2015, tabla 1, en las fuentes de la familia; 2026-10)
-- [ ] Revisión del usuario de esa corrección
+- [x] Revisión del usuario de esa corrección (2026-10)
 - [ ] Implementación: traer `main` antes de empezar; ficheros propios (`data/farmacos-paciente.js`, `tests/unit/farmacos-paciente.mjs`, sección de humo `farmacos-paciente`) para no chocar con las ramas de familias
 - [ ] Antes de fusionar: traer `main` otra vez y pasar la prueba de humo completa; si choca `data/referencias.js`, entradas de las dos ramas y `node tests/gen-referencias.mjs`
 - [ ] Revisión del usuario en la app antes de `main`
