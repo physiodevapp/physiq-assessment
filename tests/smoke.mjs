@@ -2547,9 +2547,9 @@ async function checkFarmacos(browser, errors) {
     const p = document.getElementById('farmPanel').getBoundingClientRect();
     const fam = [...document.querySelectorAll('#farmCuerpo .farm-familia')];
     return document.getElementById('farmOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && fam.map(f => f.dataset.familia).slice(0, 5).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides' && fam.every(f => !f.open)
+      && fam.map(f => f.dataset.familia).slice(0, 6).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides,antidepresivos' && fam.every(f => !f.open)
       && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Corticoides')
-      && document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Antidepresivos');
+      && document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Benzodiacepinas');
   });
   await page.click('[data-familia="aine"] > summary');
   r.apartados = await page.evaluate(() => [...document.querySelectorAll('[data-familia="aine"] .farm-apartado')].map(a => a.dataset.apartado).join() === 'dolor,visceral,ejercicio,sueno,consultar'
@@ -5727,7 +5727,7 @@ const SECCIONES = [
 
   { id: 'farmacos', titulo: 'Guía de fármacos:', run: async ({ browser, errors }) => {
     const c = await checkFarmacos(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las familias escritas plegadas (AINE, corticoides, anticoagulantes, opioides, gabapentinoides), los AINE con sus cinco apartados y citas, las familias pendientes listadas; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; «Preguntar a la IA sobre fármacos» abre el diálogo en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las familias escritas plegadas (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos), los AINE con sus cinco apartados y citas, las familias pendientes listadas; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; «Preguntar a la IA sobre fármacos» abre el diálogo en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
