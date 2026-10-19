@@ -745,7 +745,7 @@ export const FAMILIAS_FARMACO = [
     },
     fuentes: ['Mitchell 2025', 'Hansen 2022', 'Ez Eddin 2025', 'Ham 2017', 'Marko y Pawliczak 2025', 'Dos Santos 2024', 'Carnovale 2023', 'Thompson 2026', 'Dar y Jacob 2024', 'Farzam y Jan 2023', 'Awosika y Patel 2026', 'Morris 2024', 'Rehman 2024', 'Bazroon y Alrashidi 2023'],
   },
-  // Diuréticos y otros antihipertensivos (2026-10): doce fuentes en PMC
+  // Diuréticos y otros antihipertensivos (2026-10): catorce fuentes en PMC
   // (Hunter y Bailey 2019 se leyó y no se cita) y PDF del usuario: las guías
   // ESC 2024 y ESH 2023, Hanssen 2022 y dieciséis capítulos de StatPearls
   // (los cinco grupos, cinco fármacos y seis cuadros). Sin fuente leída para
