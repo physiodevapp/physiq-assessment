@@ -200,7 +200,7 @@ Hecha según el diseño y las 20 decisiones aceptadas, en `claude/upbeat-newton-
 - **Fase 6**: `construirPlan()` recibe `farmacos` (ids de `familiasPaciente()` sin los antitrombóticos) y añade `avisosFarmacos()`; la sección 5 de `docs/plan-tratamiento-frases.md` lista sus frases.
 - **Salidas**: payload `fm` (`[{ id, n }]`), 📋 Notas «💊 FÁRMACOS (familias):», `bloqueFMIA()` en `contextoValoracion()` (`FM_CASOS` en `tests/unit/farmacos-paciente.mjs`). Nada en el 📄 Informe ni en la 4b. En 📋 Notas solo va lo marcado en esta tarjeta: los corticoides del lupus o la osteoporosis ya salen en sus líneas.
 - **Pruebas**: `tests/unit/farmacos-paciente.mjs` y la sección de humo `farmacos-paciente`.
-- **Pendiente**: physiq-report (`_bloqueFM`), en otra PR; y, al revisar cada familia nueva, decidir su entrada en `data/farmacos-paciente.js` (hoy, las fluoroquinolonas no la tienen: chip con su nombre y sin aviso).
+- **Pendiente**: la PR de physiq-report (`_bloqueFM` y `FM_CASOS` ya están en su rama `claude/upbeat-newton-tmyq6n`, con sus tests en verde); y, al revisar cada familia nueva, decidir su entrada en `data/farmacos-paciente.js` (hoy, las fluoroquinolonas no la tienen: chip con su nombre y sin aviso).
 
 ## Siguiente paso
 
