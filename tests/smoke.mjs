@@ -2738,10 +2738,11 @@ async function checkFarmacos(browser, errors) {
     const p = document.getElementById('farmPanel').getBoundingClientRect();
     const fam = [...document.querySelectorAll('#farmCuerpo .farm-familia')];
     return document.getElementById('farmOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && fam.map(f => f.dataset.familia).slice(0, 9).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides,antidepresivos,sedantes,estatinas,fluoroquinolonas' && fam.every(f => !f.open)
+      && fam.map(f => f.dataset.familia).slice(0, 10).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides,antidepresivos,sedantes,estatinas,fluoroquinolonas,betabloqueantes' && fam.every(f => !f.open)
       && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Corticoides')
       && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Fluoroquinolonas')
-      && document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Betabloqueantes');
+      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Betabloqueantes')
+      && document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Diuréticos');
   });
   await page.click('[data-familia="aine"] > summary');
   r.apartados = await page.evaluate(() => [...document.querySelectorAll('[data-familia="aine"] .farm-apartado')].map(a => a.dataset.apartado).join() === 'dolor,visceral,ejercicio,sueno,consultar'
@@ -5919,7 +5920,7 @@ const SECCIONES = [
 
   { id: 'farmacos', titulo: 'Guía de fármacos:', run: async ({ browser, errors }) => {
     const c = await checkFarmacos(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las familias escritas plegadas (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas), los AINE con sus cinco apartados y citas, las familias pendientes listadas; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; «Preguntar a la IA sobre fármacos» abre el diálogo en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las familias escritas plegadas (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes), los AINE con sus cinco apartados y citas, las familias pendientes listadas; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; «Preguntar a la IA sobre fármacos» abre el diálogo en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
