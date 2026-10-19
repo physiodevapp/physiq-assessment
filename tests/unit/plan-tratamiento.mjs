@@ -1381,8 +1381,9 @@ test('plan: nunca entra en el payload, 📋 Notas ni 📄 Informe', () => {
 });
 
 const { construirFrases } = await import('../frases-plan.mjs');
+const FP_FARM = await import('../../data/farmacos-paciente.js');
 test('plan: docs/plan-tratamiento-frases.md está al día con data/plan-tratamiento.js', () => {
-  assert.equal(leer('docs', 'plan-tratamiento-frases.md'), construirFrases(D, P),
+  assert.equal(leer('docs', 'plan-tratamiento-frases.md'), construirFrases(D, P, FP_FARM),
     'docs/plan-tratamiento-frases.md no está al día — ejecuta `node tests/gen-frases-plan.mjs` y comitéalo con el cambio');
 });
 
