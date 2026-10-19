@@ -513,6 +513,6 @@ Diseño: `docs/farmacos-paciente.md` (pasos 1 y 2 y su estado: `docs/farmacologi
 - [x] Decisión 6: corregida en la guía la frase de la terapia manual de los corticoides (Puentedura 2015, tabla 1, en las fuentes de la familia; 2026-10)
 - [x] Revisión del usuario de esa corrección (2026-10)
 - [x] Implementación (2026-10; `docs/farmacos-paciente.md`, «Implementación»): traer `main` antes de empezar; ficheros propios (`data/farmacos-paciente.js`, `tests/unit/farmacos-paciente.mjs`, sección de humo `farmacos-paciente`) para no chocar con las ramas de familias
-- [ ] Antes de fusionar: traer `main` otra vez y pasar la prueba de humo completa; si choca `data/referencias.js`, entradas de las dos ramas y `node tests/gen-referencias.mjs`
-- [ ] Revisión del usuario en la app antes de `main`
+- [x] Antes de fusionar: traer `main` otra vez (con las fluoroquinolonas) y pasar la prueba de humo completa; si choca `data/referencias.js`, entradas de las dos ramas y `node tests/gen-referencias.mjs`
+- [x] Revisión del usuario en la app (2026-10)
 - [ ] physiq-report: leer `fm` con una copia literal de `bloqueFMIA()` (`_bloqueFM`, `FM_CASOS` en los dos repos), en otra PR
