@@ -14,7 +14,7 @@ const URG = ['les_u_fiebre', 'les_u_tvp', 'les_u_tep_ictus', 'les_u_pecho', 'les
 const DER = ['les_d_osteonecrosis', 'les_d_debilidad', 'les_d_brote', 'les_d_rinon'];
 // Todas las filas de la tarjeta marcadas, para probar que no cambian la seguridad
 const COMPLETO = { estado: 'diagnosticado', corticoides: 'a', dosisAltas: 'SI', inmunosupresores: 'SI', antifosfolipidos: 'saf',
-  antitrombotico: true, osteonecrosis: true, raynaud: true, actividad: 'brote' };
+  osteonecrosis: true, raynaud: true, actividad: 'brote' };
 
 test('sistema común: la misma instancia en las 7 regiones, tras el de disautonomía, oculto sin la tarjeta', () => {
   for (const r of VALID_REGIONS) {
@@ -108,9 +108,11 @@ test('rasgos de la sospecha: sin regla de puntos; lr6 (fármaco nuevo) no suma; 
 
 test('payload `le`: solo con la tarjeta activa; con sus datos', () => {
   withState({ ...les() }, () => assert.ok(!('le' in buildPhysiQPayload()), 'sin estado, el payload no cambia'));
-  withState({ ...les(COMPLETO) }, () => {
+  // `at` sale de la tarjeta del anticoagulado (docs/anticoagulado.md, decisión 3)
+  withState({ ...les(COMPLETO), anticoagulado: { estado: 'toma', toma: ['as'] } }, () => {
     assert.deepEqual(buildPhysiQPayload().le, { es: 'diagnosticado', gc: 'a', ga: 'si', is: 'si', af: 'saf', at: true, on: true, ry: true, av: 'brote' });
   });
+  withState({ ...les(COMPLETO) }, () => assert.equal(buildPhysiQPayload().le.at, false));
   withState({ ...les({ estado: 'diagnosticado' }) }, () => {
     assert.deepEqual(buildPhysiQPayload().le, { es: 'diagnosticado', gc: null, ga: null, is: null, af: null, at: false, on: false, ry: false, av: null });
   });
@@ -145,28 +147,28 @@ test('fases 3 y 4b: notas solo en la pantalla, nunca en lo que se comparte', () 
   assert.ok(html.includes('id="lesNotaNaturaleza"') && html.includes('id="lesNotaBrote"') && html.includes('id="cardLupus"'));
   assert.ok(leer('phase4b.js').includes('les-nota-4b'));
   withState({ ...les(COMPLETO) }, () => {
-    for (const k of ['naturaleza', 'brote3', 'tecnica4b', 'tecnica4bAntitrombotico']) {
+    for (const k of ['naturaleza', 'brote3', 'tecnica4b']) {
       const frag = L.LES.textos[k].slice(0, 40);
       assert.ok(!JSON.stringify(buildPhysiQPayload()).includes(frag) && !buildContextSummaryText().includes(frag) && !buildInformeFisioterapiaText().includes(frag), k);
     }
   });
 });
 
-test('fase 6: avisos y red de seguridad (fiebre, TVP e ictus) con «Diagnosticado»; los de brote, antitrombótico y Raynaud, según la tarjeta', () => {
+test('fase 6: avisos y red de seguridad (fiebre, TVP e ictus) con «Diagnosticado»; los de brote y Raynaud, según la tarjeta', () => {
   const hs = [{ id: 'x', name: 'X', pauta: 'P.', derivar: false, tratada: false }];
   const base = { region: 'codo', hipotesis: hs, elegidas: ['x'], severidad: 5, irritabilidadNivel: 'Moderada', irritabilidad: {} };
   const sin = P.construirPlan(base);
   assert.ok(!sin.avisosHip.includes(PD.AVISOS.lupus));
   assert.ok(!sin.sesion.cierre.includes(PD.TEXTOS_SESION.cierreFiebreLupus));
-  const con = P.construirPlan({ ...base, lupus: { brote: false, antitrombotico: false, raynaud: false } });
+  const con = P.construirPlan({ ...base, lupus: { brote: false, raynaud: false } });
   assert.ok(con.avisosHip.includes(PD.AVISOS.lupus));
-  for (const k of ['lupusBrote', 'lupusAntitrombotico', 'lupusRaynaud']) assert.ok(!con.avisosHip.includes(PD.AVISOS[k]), k);
+  for (const k of ['lupusBrote', 'lupusRaynaud']) assert.ok(!con.avisosHip.includes(PD.AVISOS[k]), k);
   for (const k of ['cierreFiebreLupus', 'cierreTVP', 'cierreIctusLupus']) assert.ok(con.sesion.cierre.includes(PD.TEXTOS_SESION[k]), k);
   for (const k of ['alarmaFiebreLupus', 'alarmaTVP', 'alarmaIctusLupus']) assert.ok(con.alarmasCasa.includes(PD.TEXTOS_CASA[k].texto), k);
-  const todo = P.construirPlan({ ...base, lupus: { brote: true, antitrombotico: true, raynaud: true } });
-  for (const k of ['lupusBrote', 'lupusAntitrombotico', 'lupusRaynaud']) assert.ok(todo.avisosHip.includes(PD.AVISOS[k]), k);
+  const todo = P.construirPlan({ ...base, lupus: { brote: true, raynaud: true } });
+  for (const k of ['lupusBrote', 'lupusRaynaud']) assert.ok(todo.avisosHip.includes(PD.AVISOS[k]), k);
   // En rodilla la TVP ya está: no se repite
-  const rod = P.construirPlan({ ...base, region: 'rodilla', lupus: { brote: false, antitrombotico: false, raynaud: false } });
+  const rod = P.construirPlan({ ...base, region: 'rodilla', lupus: { brote: false, raynaud: false } });
   assert.equal(rod.sesion.cierre.filter(t => t === PD.TEXTOS_SESION.cierreTVP).length, 1);
   assert.ok(leer('plan.js').includes('lesDiagnosticado(state.lupus)'));
 });

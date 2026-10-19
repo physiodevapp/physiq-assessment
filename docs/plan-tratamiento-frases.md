@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **18** frases.
+Redacción propia: **22** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -34,6 +34,9 @@ Va tal cual en «📤 Compartir → Programa para casa». «Qué hacer» y «Cu�
 - [ ] «Si sangras de golpe o mucho, tienes fiebre o escalofríos, un flujo que huele mal, una pierna hinchada y dolorosa, te falta el aire, te duele el pecho o tienes un dolor de cabeza fuerte, pide que te vea un médico hoy.»  
   ↳ fuente: NICE NG194, 1.2.4 (síntomas que piden consulta médica sin demora tras el parto) (docs/embarazo-posparto.md)  
   ↳ clave `alarmaPosparto`
+- [ ] «Si te das un golpe en la cabeza, aunque te encuentres bien, ve hoy a urgencias; si en los días siguientes tienes un dolor de cabeza fuerte que va a más, vómitos, somnolencia o confusión, llama al 112. Si te empieza de golpe un dolor fuerte de cuello o espalda con debilidad, hormigueo o cambios al orinar, ve a urgencias ya. Un dolor muy fuerte en la ingle, la cadera o la barriga con mareo, o un brazo o una pierna muy hinchados, tensos y con un dolor desproporcionado, también. No dejes ni te saltes tu anticoagulante sin hablarlo antes con tu médico.»  
+  ↳ fuente: Redacción propia sobre NICE NG232, 1.2.4 y 1.10.9 (golpe en la cabeza); Peng 2022 (hematoma epidural espinal); Lukies 2023 (hematoma del psoas); Brooker 2020 (síndrome compartimental); Steffel 2021 (no saltarse dosis) (docs/anticoagulado.md)  
+  ↳ clave `alarmaAnticoagulado`
 - [ ] «Si te desmayas mientras haces ejercicio, para y no vuelvas a hacer ejercicio hasta que te vea el médico.»  
   ↳ fuente: NICE CG109, recomendaciones 1.3.2.2 y 1.5.4.3: con un síncope durante el ejercicio, no hacer ejercicio hasta la valoración; Brignole 2018, p. 1911 (docs/pots.md)  
   ↳ clave `alarmaSincope`
@@ -382,9 +385,15 @@ Regiones periféricas:
   ↳ **redacción propia**
 - [ ] «Osteoporosis: sin manipulación con thrust en la columna ni en las costillas; la movilización suave puede ser adecuada (Maitland 2005, cap. 9, p. 223; Puentedura 2015, tabla 1). Los escalones no proponen grado V; si la pauta de una hipótesis incluye manipulación, aquí no se aplica.»  
   ↳ fuente en el texto (Maitland 2005)
-- [ ] «Lupus con corticoides mantenidos o con anticoagulante o antiagregante: sin manipulación con thrust en la columna torácica (Puentedura 2015, tabla 1: corticoides a largo plazo y tratamiento anticoagulante, contraindicaciones absolutas). Si la pauta de una hipótesis incluye manipulación, aquí no se aplica.»  
+- [ ] «Lupus con corticoides mantenidos: sin manipulación con thrust en la columna torácica (Puentedura 2015, tabla 1: corticoides a largo plazo, contraindicación absoluta). Si la pauta de una hipótesis incluye manipulación, aquí no se aplica.»  
   ↳ **redacción propia**
-- [ ] «Lupus con anticoagulante o antiagregante: precaución con lo que tenga riesgo de golpe (Blaess 2024, rec. 3).»  
+- [ ] «Anticoagulado o antiagregado: precaución con lo que tenga riesgo de golpe (lo recomiendan para el lupus: Blaess 2024, rec. 3); un esfuerzo mecánico pequeño puede dar un sangrado importante (Kim 2026, un caso). De la movilización, el masaje, la presión profunda y los estiramientos no hay ninguna norma con anticoagulantes, solo casos de sangrado (Tominaga 2023; Kwon 2024; Kim 2026). Antes de cada técnica, pregunta si desde la última sesión se ha dado un golpe o ha notado un hematoma o un dolor nuevos. No le digas que deje el fármaco ni que se salte una dosis (Steffel 2021).»  
+  ↳ **redacción propia**
+- [ ] «Anticoagulante: sin manipulación con thrust en la columna torácica (Puentedura 2015, tabla 1: contraindicación absoluta); en la cervical, otra tabla lo trata como precaución (Hutting 2018, opinión de los autores). Las dos son opinión de expertos y ninguna distingue fármacos ni da un INR. Los escalones no proponen grado V; si la pauta de una hipótesis incluye manipulación, aquí no se aplica.»  
+  ↳ **redacción propia**
+- [ ] «Anticoagulado o antiagregado, y la pauta incluye punción seca: no existe ningún estudio con antitrombóticos; una revisión narrativa y un consenso que se apoya en ella dicen que no es una contraindicación absoluta (Muñoz 2022; Waterway 2026), y según otra revisión la guía suiza sí la trata así con la anticoagulación (Malfait 2024). Práctica de los autores de la primera: empezar por músculos superficiales viendo cómo sangra, evitar al principio los profundos que no se pueden comprimir y comprimir 10–15 s (Muñoz 2022). Sin INR límite.»  
+  ↳ **redacción propia**
+- [ ] «Anticoagulado o antiagregado, y la pauta incluye ondas de choque: sin consenso entre expertos sobre aplicarlas con anticoagulantes, y el hematoma es un efecto posible (Rhim 2025); se consideran un factor importante a valorar, sin datos con anticoagulados (Tenforde 2022).»  
   ↳ **redacción propia**
 - [ ] «Lupus con Raynaud: al aire libre, guantes o ropa contra el frío; evitar tocar superficies frías y secar bien la piel durante y después del ejercicio (Blaess 2024, rec. 2). Por lo mismo, cuidado con el frío local en manos y pies (inferencia, sin fuente propia).»  
   ↳ **redacción propia**
@@ -550,6 +559,8 @@ Minutos orientativos y editables en la fase 6 (organización de la sesión, no e
 - [ ] «Red de seguridad (embarazo): explicar que el dolor de cabeza fuerte, la visión borrosa, el dolor fuerte bajo las costillas o la hinchazón brusca de la cara o las manos piden que la vea un profesional hoy; que si nota que el bebé se mueve menos llame a su maternidad a cualquier hora, y que si sangra, pierde líquido o tiene contracciones regulares y dolorosas, pare y llame (NICE NG133, 1.1.1; NICE NG201, 1.2.34; Mottola 2018, recuadro 2).»  
   ↳ **redacción propia**
 - [ ] «Red de seguridad (posparto): explicar que un sangrado brusco o muy abundante, la fiebre o los escalofríos, el flujo maloliente, la pierna hinchada y dolorosa, la falta de aire, el dolor en el pecho o un dolor de cabeza fuerte piden consulta médica sin demora, y comprobar que lo ha entendido (NICE NG194, 1.2.4).»  
+  ↳ **redacción propia**
+- [ ] «Red de seguridad (anticoagulado o antiagregado): explicar que un golpe en la cabeza, aunque se encuentre bien, pide ir a urgencias, y que un dolor de cabeza fuerte, vómitos, somnolencia o confusión en los días siguientes piden llamar al 112; que un dolor fuerte de cuello o espalda con debilidad u hormigueo, un dolor muy fuerte en la ingle, la cadera o la barriga con mareo, o un brazo o una pierna muy hinchados y tensos con un dolor desproporcionado piden urgencias; y que no deje ni se salte el fármaco sin hablarlo con su médico (NICE NG232, 1.2.4 y 1.10.9; Peng 2022; Lukies 2023; Brooker 2020; Steffel 2021).»  
   ↳ **redacción propia**
 - [ ] «Red de seguridad (disautonomía): explicar que, si se desmaya mientras hace ejercicio, debe parar y no volver a hacer ejercicio hasta que le vea el médico, y comprobar que lo ha entendido (NICE CG109, 1.3.2.2 y 1.5.4.3; Brignole 2018, p. 1911).»  
   ↳ fuente en el texto (NICE CG109, Brignole 2018)
