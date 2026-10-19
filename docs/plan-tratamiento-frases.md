@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **31** frases.
+Redacción propia: **32** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -602,6 +602,16 @@ Fármacos que toma (tarjeta de la fase 1, `data/farmacos-paciente.js`): un aviso
   ↳ guía de fármacos, familia `betabloqueantes` (texto revisado; su cita va dentro)
 - [ ] «Caídas: en mayores de 55 años, los no selectivos, como el propranolol, se asociaron a más caídas (HR 1,22; IC 95 % 1,01–1,48) y los selectivos no (HR 0,92; 0,83–1,01). Ese estudio miró el uso mantenido, no el comienzo, cuando otros estudios vieron más caídas por hipotensión (Ham 2017).»  
   ↳ guía de fármacos, familia `betabloqueantes` (texto revisado; su cita va dentro)
+- [ ] «Toma diuréticos u otros antihipertensivos:»  
+  ↳ **redacción propia** (rótulo del aviso de `antihipertensivos`)
+- [ ] «Caídas: en mayores con salud compleja, el riesgo de caer subió un 35–50 % en los 30 días siguientes a empezar un antihipertensivo, y otros estudios lo vieron también al añadir otro o al subir la dosis (Jödicke 2023). Los ensayos no hallaron más caídas, pero sí más hipotensión y síncope (Albasri 2021), y excluyen a los más frágiles (McEvoy 2024). En esas semanas, cuida los cambios de postura y el equilibrio.»  
+  ↳ guía de fármacos, familia `antihipertensivos` (texto revisado; su cita va dentro)
+- [ ] «Hipotensión ortostática: una caída de 20 mmHg de la sistólica o de 10 de la diastólica al ponerse de pie, medida al minuto y a los 3 minutos tras 5 minutos sentado o tumbado (McEvoy 2024). Los diuréticos la provocan más; los IECA, los ARA II y los dihidropiridínicos, menos, y sobre todo en las 2 primeras semanas tras empezar o subir la dosis (McEvoy 2024). Empeora al levantarse, tras el ejercicio y con calor (Ringer 2025).»  
+  ↳ guía de fármacos, familia `antihipertensivos` (texto revisado; su cita va dentro)
+- [ ] «Para prevenirla: levantarse por fases (tumbado, sentado, de pie), beber lo suficiente, y cruzar las piernas o tensar los músculos de piernas y caderas al ponerse de pie (Ringer 2025; McEvoy 2024). Si hay riesgo de caer, ejercicio supervisado, como la bicicleta reclinada o la natación (Ringer 2025).»  
+  ↳ guía de fármacos, familia `antihipertensivos` (texto revisado; su cita va dentro)
+- [ ] «Calor: en mayores, los diuréticos de asa, los IECA y los ARA II se asociaron a más ingresos por golpe de calor o deshidratación, también sin ola de calor (Layton 2020).»  
+  ↳ guía de fármacos, familia `antihipertensivos` (texto revisado; su cita va dentro)
 - [ ] «No le digas que deje ni cambie la medicación: las dudas, a quien la prescribe.»  
   ↳ **redacción propia** (resume las frases «Nunca aconsejes…» de cada familia; decisión 18 de docs/farmacos-paciente.md)
 
