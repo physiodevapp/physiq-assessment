@@ -1016,6 +1016,99 @@ async function checkAnticoagulado(page) {
   return r;
 }
 
+// Fármacos que toma (paso 3 de la farmacología, docs/farmacos-paciente.md),
+// lumbar. Fase 1: chips de las familias escritas de la guía (sin texto libre),
+// la línea del anticoagulado, el chip de corticoides desde el lupus (solo
+// lectura), la medicación del formulario como pista; la guía con «Este
+// paciente» (y su segundo toque); fase 5 con su recuadro, fase 6 con los
+// avisos; 320 px y el hub.
+async function checkFarmacosPaciente(browser, page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  const r = {};
+  const C = '#cardFarmacos';
+  r.sinTexto = await page.$$eval(`${C} input, ${C} textarea`, els => els.length === 0);
+  r.nota = (await page.textContent('#fmNota')).includes('No le digas que deje ni cambie');
+  // Los chips son las familias escritas de la guía, sin los antitrombóticos
+  const chips = await page.$$eval(`${C} [data-fm]`, els => els.map(e => e.dataset.fm));
+  await page.evaluate(() => abrirFarmacos());
+  await page.waitForSelector('#farmOverlay.open');
+  const guia = await page.$$eval('#farmCuerpo [data-familia]', els => els.map(e => e.dataset.familia));
+  r.sinChipGuia = await page.$$eval('#farmCuerpo [data-filtro-farmaco]', els => els.length === 0);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(150);
+  r.chips = chips.length > 0 && JSON.stringify(chips) === JSON.stringify(guia.filter(id => id !== 'antitromboticos'));
+  r.acSinMarcar = (await page.textContent('#fmNotaAC')).includes('sin marcar');
+  r.verGuiaOculto = await page.$eval('#fmVerGuia', e => e.hidden);
+  await page.click(`${C} [data-fm="aine"]`);
+  r.aine = await page.evaluate(() => JSON.stringify(state.farmacos.toma) === '["aine"]')
+    && await page.getAttribute(`${C} [data-fm="aine"]`, 'aria-pressed') === 'true';
+  r.verGuia = !(await page.$eval('#fmVerGuia', e => e.hidden));
+  // Anticoagulado marcado: la línea lo dice
+  await page.click('#acEstado .option-btn[data-valor="toma"]');
+  await page.click('[data-ac-toma="as"]');
+  r.acMarcada = (await page.textContent('#fmNotaAC')).includes('marcada: aspirina');
+  // Corticoides del lupus: marcado desde su tarjeta, no se desmarca aquí ni entra en `fm`
+  await page.evaluate(() => { selectLESEstado('diagnosticado'); selectLESFila('corticoides', 'm'); });
+  r.corticoidesLupus = await page.getAttribute(`${C} [data-fm="corticoides"]`, 'aria-pressed') === 'true'
+    && (await page.textContent(`${C} [data-fm="corticoides"]`)).includes('tarjeta Lupus');
+  await page.click(`${C} [data-fm="corticoides"]`);
+  r.soloLectura = await page.evaluate(() => !state.farmacos.toma.includes('corticoides'))
+    && await page.getAttribute(`${C} [data-fm="corticoides"]`, 'aria-pressed') === 'true';
+  // La medicación del formulario previo, como pista encima de la tarjeta
+  await page.click('#fpDet_comun > summary');
+  await page.waitForSelector('#fp_comun_medicacion');
+  await page.fill('#fp_comun_medicacion', 'Ibuprofeno cuando duele');
+  await page.waitForFunction(() => document.getElementById('fpPistas_farmacos')?.textContent.includes('Ibuprofeno cuando duele'), null, { timeout: 5000 }).catch(() => {});
+  r.pista = (await page.textContent('#fpPistas_farmacos')).includes('Ibuprofeno cuando duele');
+  r.pistaNoMarca = await page.evaluate(() => JSON.stringify(state.farmacos.toma) === '["aine"]');
+  // La guía se abre en «Este paciente», con sus familias desplegadas; un segundo toque, todas
+  await page.click('#fmVerGuia button');
+  await page.waitForSelector('#farmOverlay.open');
+  r.estePaciente = await page.evaluate(() => {
+    const ids = [...document.querySelectorAll('#farmCuerpo [data-familia]')].map(d => d.dataset.familia);
+    const abiertas = [...document.querySelectorAll('#farmCuerpo [data-familia]')].every(d => d.open);
+    const linea = document.querySelector('#farmCuerpo .farm-paciente')?.textContent || '';
+    return JSON.stringify([...ids].sort()) === JSON.stringify(['aine', 'antitromboticos', 'corticoides'].sort()) && abiertas
+      && linea.includes('Corticoides (tarjeta «Lupus (LES)»)');
+  });
+  await page.click('#farmCuerpo [data-filtro-farmaco]');
+  r.todas = await page.evaluate(n => document.querySelectorAll('#farmCuerpo [data-familia]').length === n
+    && document.querySelector('#farmCuerpo [data-filtro-farmaco]')?.getAttribute('aria-pressed') === 'false', guia.length);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(150);
+  // 320 px: la tarjeta cabe
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.waitForTimeout(150);
+  r.ancho = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  await page.setViewportSize({ width: 1280, height: 860 });
+  // Recorrido: fase 5 con el recuadro y la fase 6 con los avisos
+  await abrirApp(page);
+  await page.click(`${C} [data-fm="aine"]`);
+  await page.click(`${C} [data-fm="opioides"]`);
+  await walkRegion(page, 'lumbar');
+  r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .fm-fase5')?.textContent || '';
+    return t.includes('AINE · Opioides') && t.includes('No le digas que deje ni cambie la medicación'); });
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
+    return t.includes('Toma AINE: Deshidratación y calor') && t.includes('Toma opioides: Mareo, somnolencia y caídas')
+      && t.split('No le digas que deje ni cambie la medicación').length === 2; });
+  // En el hub, la tarjeta y la guía funcionan (sin el atajo a la IA)
+  const hub = await browser.newPage();
+  try {
+    const frame = await cargarEnHub(hub);
+    r.hub = await frame.evaluate(() => {
+      const b = document.querySelector('#cardFarmacos [data-fm="aine"]');
+      b?.click();
+      const ia = document.querySelector('#fmPendientes .farm-preguntar');
+      return state.farmacos.toma.includes('aine') && (!ia || getComputedStyle(ia).display === 'none');
+    });
+  } finally { await hub.close(); }
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 // Trastorno mastocitario o anafilaxia (Fase P, docs/mastocitaria.md),
 // rodilla. Fase 1: solo «Diagnosticado», las filas y las casillas, un segundo
 // toque desmarca y «solo anafilaxia» oculta la pregunta de la anafilaxia.
@@ -5900,6 +5993,13 @@ const SECCIONES = [
     const r = await checkAnticoagulado(page);
     console.log(`  ${r.ok ? '✓' : '✗'} tarjeta «Toma» con sus chips, guía de fármacos en los antitrombóticos, golpe en la cabeza según el fármaco, urgencias sin plegar ni embudo, derivación, nota 4b, fase 5, fase 6 (aviso, tope y red) y 320 px`);
     if (!r.ok) console.log('\nAnticoagulado:', JSON.stringify(r));
+    return r.ok;
+  } },
+
+  { id: 'farmacos-paciente', titulo: 'Fármacos que toma (paso 3 de la farmacología, lumbar):', run: async ({ browser, page }) => {
+    const r = await checkFarmacosPaciente(browser, page);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta sin texto libre con los chips de las familias escritas de la guía, línea del anticoagulado, corticoides desde el lupus (solo lectura, fuera de fm), medicación del formulario como pista que no marca nada, guía en «Este paciente» con un segundo toque a todas, fase 5, avisos de la fase 6 con la línea común una vez, 320 px y el hub`);
+    if (!r.ok) console.log('\nFármacos que toma:', JSON.stringify(r));
     return r.ok;
   } },
 

@@ -7,8 +7,9 @@ import { dirname, join } from 'node:path';
 
 const D = await import('../data/plan-tratamiento.js');
 const P = await import('../lib/plan-tratamiento.js');
+const FP = await import('../data/farmacos-paciente.js');
 const { construirFrases } = await import('./frases-plan.mjs');
 
 const outPath = join(dirname(fileURLToPath(import.meta.url)), '..', 'docs', 'plan-tratamiento-frases.md');
-writeFileSync(outPath, construirFrases(D, P));
+writeFileSync(outPath, construirFrases(D, P, FP));
 console.log(`Wrote ${outPath}`);

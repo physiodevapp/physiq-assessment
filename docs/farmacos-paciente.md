@@ -1,6 +1,6 @@
 # Fármacos que toma el paciente — diseño del paso 3 de la farmacología
 
-Estado: **diseño (octubre 2026), solo diseño: nada de código.** **Las 20 recomendaciones de «Decisiones», aceptadas por el usuario (2026-10).** Corregida la frase de los corticoides en la guía (decisión 6, 2026-10) y revisada por el usuario; en implementación. Es el paso 3 de `docs/farmacologia.md` («Conectarla con el paciente»); los pasos 1 y 2 están hechos. Con `main` traído a la rama (2026-10), hay ocho familias revisadas por el usuario: AINE, corticoides, anticoagulantes y antiagregantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes musculares, y estatinas. **Las otras cinco se están escribiendo en paralelo**, cada una en su rama (ver «Trabajo en paralelo»), así que el diseño no fija ninguna lista de familias.
+Estado: **diseño (octubre 2026), solo diseño: nada de código.** **Las 20 recomendaciones de «Decisiones», aceptadas por el usuario (2026-10).** Corregida la frase de los corticoides en la guía (decisión 6, 2026-10) y revisada por el usuario. **Implementado (2026-10), pendiente de tu revisión en la app** (ver «Implementación»). Es el paso 3 de `docs/farmacologia.md` («Conectarla con el paciente»); los pasos 1 y 2 están hechos. Con `main` traído a la rama (2026-10), hay ocho familias revisadas por el usuario: AINE, corticoides, anticoagulantes y antiagregantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes musculares, y estatinas. **Las otras cinco se están escribiendo en paralelo**, cada una en su rama (ver «Trabajo en paralelo»), así que el diseño no fija ninguna lista de familias.
 
 Reglas de este diseño, las mismas de la línea «fármacos» y de las condiciones especiales:
 - Solo se usa contenido de **familias ya revisadas**. No entra ninguna frase nueva con fuente: los avisos de la fase 6 son **frases literales** de `data/farmacos.js`, con su cita.
@@ -188,9 +188,23 @@ En otro chat se escriben las familias que faltan, cada una en su rama. Para que 
 19. **Dónde viven la etiqueta corta y las frases del aviso.** *Recomiendo* un fichero propio, `data/farmacos-paciente.js`, con una entrada opcional por familia: no choca con las ramas que escriben familias en `data/farmacos.js`, y una familia sin entrada funciona con su `nombre` y sin aviso. *Alternativa*: campos `corto` y `plan` dentro de cada familia de `data/farmacos.js` (todo junto, pero cada rama en paralelo tendría que conocer el paso 3 y habría choques al fusionar).
 20. **Forma de `fm`.** *Recomiendo* `[{ id, n }]`, con el nombre corto, para que `_bloqueFM` de physiq-report no tenga que cambiar con cada familia nueva. *Alternativa*: solo los ids (como `ac`), con una tabla de nombres copiada en physiq-report que habría que actualizar cada vez.
 
+## Implementación (2026-10)
+
+Hecha según el diseño y las 20 decisiones aceptadas, en `claude/upbeat-newton-tmyq6n`, con `main` traído antes de empezar. Pendiente de la revisión del usuario en la app.
+
+- **Datos**: `data/farmacos-paciente.js` (`FAMILIAS_PACIENTE`: `corto`, `rotulo` y `plan` de las siete familias revisadas que no son los antitrombóticos; `TEXTOS_FARMACOS_PACIENTE`). `data/farmacos.js` solo cambia por la decisión 6.
+- **Lógica pura**: `lib/farmacos-paciente.js` (y no `lib/farmacos.js`, para no chocar con las ramas en paralelo): `familiasMarcables()`, `familiasPendientesNombres()`, `normalizarFarmacos()`, `derivadasDeTarjetas()` (corticoides del lupus diagnosticado con ≤5 · >5–20 · >20 mg/día; de la osteoporosis diagnosticada con <7,5 · ≥7,5; el hueso con bifosfonato o denosumab, solo cuando su familia tenga contenido; los antitrombóticos con su tarjeta marcada), `familiasPaciente()`, `textoFamiliaPaciente()`, `fmPayload()`, `lineaNotasFM()`, `bloqueFMIA()`, `avisosFarmacos()`. `farmacosHTML({ paciente, filtro })` (`lib/farmacos.js`) pinta el chip «Este paciente» con las familias que le pasan.
+- **Fase 1**: `#cardFarmacos` tras la del anticoagulado, con `#fpPistas_farmacos` (pista `c:medicacion`), los chips (`toggleFarmaco()`; uno registrado en otra tarjeta avisa con un toast y no cambia), la línea del anticoagulado con «Ir a la tarjeta →», la línea de familias pendientes (desaparece sola) y «Ver sus fármacos en la guía →». Se repinta al cambiar el lupus, la osteoporosis o el anticoagulado, al reiniciar y al restaurar.
+- **Guía**: se abre en «Este paciente» si el paciente tiene alguna familia (salvo si se abre en una familia que no es suya); el chip escucha en captura, porque el panel corta la propagación del click.
+- **Fase 5**: `.fm-fase5`, solo con alguna familia además de los antitrombóticos.
+- **Fase 6**: `construirPlan()` recibe `farmacos` (ids de `familiasPaciente()` sin los antitrombóticos) y añade `avisosFarmacos()`; la sección 5 de `docs/plan-tratamiento-frases.md` lista sus frases.
+- **Salidas**: payload `fm` (`[{ id, n }]`), 📋 Notas «💊 FÁRMACOS (familias):», `bloqueFMIA()` en `contextoValoracion()` (`FM_CASOS` en `tests/unit/farmacos-paciente.mjs`). Nada en el 📄 Informe ni en la 4b. En 📋 Notas solo va lo marcado en esta tarjeta: los corticoides del lupus o la osteoporosis ya salen en sus líneas.
+- **Pruebas**: `tests/unit/farmacos-paciente.mjs` y la sección de humo `farmacos-paciente`.
+- **Pendiente**: la revisión del usuario en la app; traer `main` otra vez y pasar la prueba de humo completa antes de fusionar; physiq-report (`_bloqueFM`), en otra PR.
+
 ## Siguiente paso
 
 1. ~~Tus decisiones (1–20)~~ Hecho: aceptadas las 20 recomendaciones (2026-10).
 2. ~~Corregir la frase de los corticoides en la guía~~ Hecho (2026-10) y revisado por el usuario: ver «Una incoherencia encontrada al diseñar».
-3. La implementación, en una rama propia: traer `main` antes de empezar y otra vez antes de fusionar, con la prueba de humo completa; revisión del usuario en la app antes de `main`.
+3. ~~La implementación~~ Hecha (2026-10): ver «Implementación». Queda tu revisión en la app; antes de fusionar, traer `main` otra vez y pasar la prueba de humo completa.
 4. physiq-report: `_bloqueFM`, en otra PR.

@@ -73,7 +73,7 @@ test('resumen y pistas: solo respuestas visibles, con detalle y filas de matriz'
 
 test('formulario comun: pistas de la fase 1 apuntan a una tarjeta con hueco y a una pregunta existente', () => {
   const campos = Object.keys(FP_COMUN.pistas || {});
-  assert.deepEqual(campos, ['mecanismo', 'cronologia']);
+  assert.deepEqual(campos, ['mecanismo', 'cronologia', 'farmacos']);
   campos.forEach(campo => FP_COMUN.pistas[campo].forEach(ref => {
     assert.ok(ref.startsWith('c:'), `${ref}: la cara común solo puede apuntar a sí misma`);
     assert.ok(fpItems(FP_COMUN).some(x => x.id === ref.slice(2)), `${ref}: pregunta inexistente`);
