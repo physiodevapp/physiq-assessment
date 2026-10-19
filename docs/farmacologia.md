@@ -195,13 +195,15 @@ Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido:
 
 ## Paso 3 — Conectarla con el paciente (diseño en borrador, 2026-10; pendiente de las decisiones del usuario)
 
-Diseño completo y las 18 decisiones: **`docs/farmacos-paciente.md`**. Solo diseño, sin código. En resumen:
+Diseño completo y las 20 decisiones: **`docs/farmacos-paciente.md`**. Solo diseño, sin código. En resumen:
 
-- Una tarjeta «Fármacos que toma» en la fase 1, después de la del anticoagulado: chips de las familias ya escritas (hoy AINE, corticoides, opioides, gabapentinoides, antidepresivos, y benzodiacepinas o relajantes), sin texto libre. Los anticoagulantes y antiagregantes no tienen chip: una línea con «Ir a la tarjeta →» a la suya. Los corticoides que ya registran el lupus o la osteoporosis se ven marcados en el chip, sin duplicar el dato.
+- Una tarjeta «Fármacos que toma» en la fase 1, después de la del anticoagulado: chips de las familias con contenido, **calculados de `data/farmacos.js`** (hoy AINE, corticoides, opioides, gabapentinoides, antidepresivos, benzodiacepinas o relajantes, y estatinas), sin texto libre. Las familias que se escriben en paralelo aparecen solas, sin tocar el paso 3. Los anticoagulantes y antiagregantes no tienen chip: una línea con «Ir a la tarjeta →» a la suya. Los corticoides que ya registran el lupus o la osteoporosis se ven marcados en el chip, sin duplicar el dato.
 - Un chip «Este paciente» en la guía, como en los tiempos de tejido.
-- Avisos en la fase 6 hechos solo de frases literales de la guía revisada (campo `plan`, con una prueba de literalidad); sin topes, sin red de seguridad nueva y sin reglas por combinaciones.
+- Avisos en la fase 6 hechos solo de frases literales de la guía revisada (`plan` en un fichero propio, `data/farmacos-paciente.js`, con una prueba de literalidad): **un aviso por familia revisada**, escrito junto con ella o después. Sin topes, sin red de seguridad nueva y sin reglas por combinaciones.
 - Payload `fm`, una línea en 📋 Notas y un bloque en el informe con IA, copiado en physiq-report como `_bloqueFM`. Nada en el 📄 Informe.
 
 Al diseñarlo se encontró una incoherencia en la guía: «Corticoides › Ejercicio» dice que las fuentes leídas no dan normas para la terapia manual, pero la app ya usa Puentedura 2015, tabla 1 (corticoides a largo plazo, contraindicación absoluta del thrust torácico) en las tarjetas del lupus y la osteoporosis. Ver la decisión 6 de `docs/farmacos-paciente.md`.
 
-Cuando se implemente, el procedimiento por familia del paso 2 tendrá un paso más: decidir la etiqueta corta del chip (`corto`) y las frases que van a la fase 6 (`plan`).
+Cuando se implemente, el procedimiento por familia del paso 2 tendrá un paso más, que se puede hacer con la familia o después: decidir en `data/farmacos-paciente.js` la etiqueta corta del chip (`corto`) y las frases que van a la fase 6 (`plan`). Una familia sin esa entrada tiene chip con su nombre y no da aviso; ninguna prueba falla por eso.
+
+**Fusión con las ramas de familias**: antes de implementar, traer `main`; antes de fusionar, traer `main` otra vez y pasar la prueba de humo completa. Si choca `data/referencias.js`, quedarse con las entradas de las dos ramas y regenerar `docs/referencias.md` con `node tests/gen-referencias.mjs`, nunca a mano.
