@@ -132,13 +132,14 @@ Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido:
 
 **Redacción propia en las fluoroquinolonas** (sin cita, para la revisión):
 - «Las fuentes leídas no tratan si enmascaran signos…», «…no dan normas de carga ni de vuelta al deporte… ni tratan la terapia manual» y «…no dan su frecuencia… ni cuánto dura» (sueño).
-- **«Un dolor de espalda brusco e intenso en quien toma o ha tomado hace poco una fluoroquinolona no se trata como mecánico.»** Une el riesgo aórtico (Wee 2021, Humma y Patel 2024) con la presentación de la disección (Levy 2024, que no menciona las fluoroquinolonas). Ninguna fuente lo dice así.
+- **«Por eso, ante un dolor brusco y muy intenso en la espalda o el pecho en quien toma o ha tomado en los 2 últimos meses una fluoroquinolona, piensa en la aorta antes que en un origen mecánico.»** Une el riesgo aórtico (Wee 2021; los 2 meses, de Humma y Patel 2024) con la presentación de la disección (Levy 2024, que no menciona las fluoroquinolonas). Ninguna fuente lo dice así. Recomendación aceptada por el usuario (2026-10): se queda, como razonamiento («piensa en la aorta») y no como regla («no se trata como mecánico»).
 - «…es una norma para esas personas, no para todas las que toman fluoroquinolonas» (las normas de esfuerzo de Levy 2024 son para un aneurisma conocido o una disección previa).
 - Los rótulos «Urgente», «Sin esperar, con su médico» y «Pronto». **La clasificación es mía**:
-  - «Urgente» para el dolor de posible disección (Levy 2024 sí pide atención urgente), la hinchazón de labios, cara o garganta (Humma y Patel 2024 la describe, sin plazo) y la confusión, las alucinaciones o las ideas de suicidio (Wierzbiński 2023 pide comunicarlas pronto).
+  - «Urgente» para el dolor de posible disección (Levy 2024 sí pide atención urgente), la hinchazón de labios, cara o garganta (Humma y Patel 2024 la describe, sin plazo), las convulsiones (Thai 2023 las cita, sin plazo) y las ideas de suicidio, como en los antidepresivos (Wierzbiński 2023 pide comunicar los cambios de ánimo pronto).
+  - La confusión y las alucinaciones van en «Sin esperar, con su médico» (Wierzbiński 2023 pide comunicarlas pronto; en 52 de 73 casos se resolvieron en 72 horas). Recomendación aceptada por el usuario (2026-10).
   - «Sin esperar, con su médico» sigue la lista de la EMA (2018), que pide contactar «at once».
   - «Pronto» para la lista de vigilancia de Podder 2024, que no da plazo.
-- **La única familia en que las agencias piden al propio paciente que deje el fármaco**: la guía lo cuenta como instrucción de la EMA y la AEMPS al paciente, y dice al fisioterapeuta «No decidas tú sobre el antibiótico». Que siga o cambie lo decide su médico sí es de EMA 2018.
+- **La única familia en que las agencias piden al propio paciente que deje el fármaco**: la guía lo cuenta como instrucción de la EMA y la AEMPS al paciente, y dice al fisioterapeuta «Tu papel es reconocer estos signos y que contacte ese mismo día con su médico; no decidas tú sobre el antibiótico». Que siga o cambie lo decide su médico sí es de EMA 2018; «ese mismo día» traduce el «at once» de la EMA. Recomendación aceptada por el usuario (2026-10).
 - El rótulo «Combinaciones que hay que comentar con quien prescribe»; las combinaciones y su riesgo sí son de las fuentes.
 - «Las dudas, al médico o al farmacéutico.»
 
