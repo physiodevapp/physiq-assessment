@@ -172,7 +172,7 @@ test('fase 4b (decisión 7 y M2): `cargaOsea` en la lista fijada; la línea, sol
 });
 
 test('ninguna regla automática (decisión 9): el lupus no marca esta tarjeta; su recordatorio, solo en el recuadro', () => {
-  const lupus = { estado: 'diagnosticado', corticoides: 'a', dosisAltas: 'SI', inmunosupresores: '', antifosfolipidos: '', antitrombotico: false, osteonecrosis: false, raynaud: false, actividad: '', rasgos: {} };
+  const lupus = { estado: 'diagnosticado', corticoides: 'a', dosisAltas: 'SI', inmunosupresores: '', antifosfolipidos: '', osteonecrosis: false, raynaud: false, actividad: '', rasgos: {} };
   withState({ region: 'lumbar', ...op(), lupus }, () => {
     assert.ok(!sistemasActivos().some(s => s.soloOsteoporosis));
     assert.ok(!('op' in buildPhysiQPayload()));
@@ -199,18 +199,21 @@ test('fase 6: avisos, red de la fractura vertebral y tope sin thrust (decisiones
   const sospecha = P.construirPlan({ ...base, osteoporosis: { diagnosticada: false, impactoLimitado: false }, sinThrust: ['osteoporosis'] });
   assert.ok(!sospecha.avisosHip.includes(PD.AVISOS.osteoporosisImpacto) && !sospecha.avisosHip.includes(PD.AVISOS.osteoporosisImpactoLimitado));
   assert.ok(!sospecha.sesion.cierre.includes(PD.TEXTOS_SESION.cierreFracturaVertebral));
-  // Decisión 15: el lupus con corticoides o antitrombótico pone el tope sin marcar esta tarjeta
+  // Decisión 15: el lupus con corticoides pone el tope sin marcar esta tarjeta (el
+  // anticoagulante, desde su tarjeta: docs/anticoagulado.md, decisión 4)
   const lupus = P.construirPlan({ ...base, sinThrust: ['corticoides'] });
   assert.ok(lupus.avisosHip.includes(PD.AVISOS.sinThrustLupus) && !lupus.avisosHip.includes(PD.AVISOS.osteoporosis));
-  const L = extra => ({ estado: 'diagnosticado', corticoides: '', dosisAltas: '', antitrombotico: false, ...extra });
+  const L = extra => ({ estado: 'diagnosticado', corticoides: '', dosisAltas: '', ...extra });
   assert.deepEqual(O.motivosSinThrust(O.osteoporosisVacio(), L({})), []);
   assert.deepEqual(O.motivosSinThrust(O.osteoporosisVacio(), L({ corticoides: 'no' })), []);
   assert.deepEqual(O.motivosSinThrust(O.osteoporosisVacio(), L({ corticoides: 'b' })), ['corticoides']);
   assert.deepEqual(O.motivosSinThrust(O.osteoporosisVacio(), L({ dosisAltas: 'SI' })), ['corticoides']);
-  assert.deepEqual(O.motivosSinThrust(O.osteoporosisVacio(), L({ antitrombotico: true })), ['antitrombotico']);
+  assert.deepEqual(O.motivosSinThrust(O.osteoporosisVacio(), L({ antitrombotico: true })), [], 'la casilla antigua del lupus ya no cuenta');
+  assert.deepEqual(O.motivosSinThrust(O.osteoporosisVacio(), null, { estado: 'toma', toma: ['do'] }), ['anticoagulante']);
+  assert.deepEqual(O.motivosSinThrust(O.osteoporosisVacio(), null, { estado: 'toma', toma: ['as', 'oa'] }), [], 'el antiagregante solo no');
   assert.deepEqual(O.motivosSinThrust(O.osteoporosisVacio(), { ...L({ corticoides: 'a' }), estado: 'sospecha' }), [], 'el lupus en sospecha no');
   assert.deepEqual(O.motivosSinThrust({ ...O.osteoporosisVacio(), estado: 'sospecha' }, null), ['osteoporosis']);
-  assert.ok(leer('plan.js').includes('motivosSinThrust(state.osteoporosis, state.lupus)'));
+  assert.ok(leer('plan.js').includes('motivosSinThrust(state.osteoporosis, state.lupus, state.anticoagulado)'));
 });
 
 test('panel de tiempos (decisión 10): con fractura vertebral, «Este paciente» enseña la vertebral por compresión', () => {

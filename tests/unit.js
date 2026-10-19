@@ -20,6 +20,7 @@ for (const tema of [
   'mastocitos.mjs',
   'osteoporosis.mjs',
   'embarazo.mjs',
+  'anticoagulado.mjs',
   'condiciones.mjs',
   'farmacos.mjs',
   'fase5-y-version.mjs',
