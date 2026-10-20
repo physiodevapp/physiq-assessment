@@ -91,9 +91,12 @@ export const FAMILIAS_FARMACO = [
     fuentes: ['Schug 2021', 'Bindu 2020', 'Lucas 2019', 'Papantoniou 2023', 'Pannone y Abbott 2024', 'Malik 2023', 'Saad y Mathew 2025', 'Antunes 2024', 'Goodman 2018', 'Engert 2024', 'Iacovides 2009'],
   },
   // Corticoides (2026-10): seis revisiones o estudios leídos enteros en PMC y
-  // la guía de Beuschlein 2024 por secciones. Sin fuente leída para que
-  // enmascaren la fiebre, la fragilidad de la piel, el reposo o la carga tras
-  // una infiltración ni el sangrado digestivo con AINE: docs/farmacologia.md.
+  // la guía de Beuschlein 2024 por secciones. Huecos cerrados (2026-10) con
+  // Yasir 2023 y Hodgens y Sharman 2023 (StatPearls), Benzon 2026 (guía ASRA) y
+  // Humphrey 2023 (guía ACR), PDF del usuario, y siete fuentes de PMC: fiebre e
+  // infección, piel, carga tras una infiltración y ejercicio en la osteoporosis
+  // por glucocorticoides. El sangrado digestivo con AINE queda fuera (es una
+  // interacción): docs/farmacologia.md.
   // La terapia manual cita Puentedura 2015 (tabla 1), leído entero para la
   // osteoporosis (docs/osteoporosis.md); corregido en el paso 3 de la
   // farmacología (docs/farmacos-paciente.md, decisión 6).
@@ -111,7 +114,9 @@ export const FAMILIAS_FARMACO = [
         detalle: [
           'Cartílago: en un ensayo, la triamcinolona intraarticular repetida en la rodilla redujo más el volumen de cartílago que el suero salino, y con dolor de cadera o rodilla sin artrosis previa cada infiltración se asoció a más riesgo de prótesis a los 5 años; otro estudio, con concentraciones fisiológicas, no encontró toxicidad sobre los condrocitos (Grusky 2026).',
           'Tras infiltraciones intraarticulares se han descrito fractura subcondral por insuficiencia (0,3 %), necrosis avascular (0,6–20,4 %) y destrucción rápida de la cadera (3–7 %). En el manguito rotador operado, una infiltración previa fue el factor de riesgo más constante de volver a operar (Grusky 2026).',
-          'Una infiltración en los 3 meses previos a una prótesis de rodilla, cadera u hombro aumenta el riesgo de infección de la prótesis (Grusky 2026).',
+          'Una infiltración en los 3 meses previos a una prótesis de rodilla, cadera u hombro aumenta el riesgo de infección de la prótesis (Grusky 2026), sobre todo en el mes previo (Benzon 2026).',
+          'Número de infiltraciones: la norma de no poner más de 3–4 al año en la misma articulación no se basa en investigación (Uson 2021). La guía de la ASRA no encuentra límites anuales definidos, sugiere separarlas al menos 2–3 semanas y hasta 3 meses, y en mujeres posmenopáusicas un tope por dosis acumulada (Benzon 2026).',
+          'Rotura: se han descrito roturas de tendón entre 3 días y 5 meses después de infiltrar, sobre todo de la porción larga del bíceps, y una de la cintilla iliotibial tras tres infiltraciones; la guía pide prudencia al repetirlas en esos dos sitios. En la epicondilalgia, las revisiones no encontraron roturas, pero sí más recaídas que con fisioterapia sola (Benzon 2026).',
         ],
       },
       visceral: {
@@ -119,11 +124,16 @@ export const FAMILIAS_FARMACO = [
           'Osteonecrosis: el primer síntoma es un dolor óseo persistente que limita el movimiento y empeora al cargar y con la actividad. Afecta sobre todo a la cabeza femoral, y también a rodilla, hombro, tobillo o mano, a menudo en varias zonas a la vez (Kaneko 2021). El riesgo sube con dosis altas, por encima de 30 mg/día de prednisona o equivalente (Pofi 2023).',
           'Fractura vertebral: es la fractura más característica de la osteoporosis por glucocorticoides (Compston 2018). Hasta un 20 % de los pacientes tiene una fractura por fragilidad en el primer año de tratamiento, sobre todo en la columna, el fémur proximal y las costillas (Pofi 2023).',
           'Miopatía: debilidad proximal (hombros, muslos) de inicio insidioso y sin dolor, con análisis y electromiograma habitualmente normales. En una cohorte apareció tras una mediana de 97 días; se preguntaba por dificultad para subir escaleras, salir de la bañera, levantarse del váter o mantener los brazos por encima de la cabeza (He 2025).',
+          'Infección: quien toma corticoides puede no dar los signos y síntomas habituales de una infección, porque frenan la respuesta inflamatoria y la fiebre, y eso retrasa reconocerla (Yasir 2023; Liu 2013). En una serie de 10 artritis sépticas tras infiltrar la rodilla, no todas con corticoide, todos tenían dolor e hinchazón, pero solo dos tenían fiebre (Benzon 2026): la falta de fiebre no la descarta.',
+          'Piel: piel fina y frágil, hematomas (púrpura, sobre todo en el dorso de manos y antebrazos) y peor cicatrización, incluso con dosis bajas, y más cuanto mayor es la dosis y la duración (Yasir 2023; Liu 2013). La piel fina y la púrpura suelen mejorar al retirarlos; las estrías no (Hodgens y Sharman 2023).',
           'Al bajar la dosis, hasta la mitad de los pacientes tiene un síndrome de retirada con dolor muscular y articular, debilidad, cansancio y alteraciones del sueño y del ánimo, sobre todo por debajo de 15 mg/día de prednisona; también puede reaparecer la enfermedad de base (Beuschlein 2024).',
         ],
         detalle: [
+          'Las fuentes no coinciden en la dosis a partir de la que sube la infección: por debajo de 10 mg/día de prednisona el riesgo sería mínimo o nulo (Yasir 2023; Liu 2013), pero los estudios observacionales lo ven aumentado ya con 5 mg/día o menos (Youssef 2016). Las fuentes leídas no describen en qué cuadros concretos (peritonitis, herida, artritis séptica) cursa sin fiebre ni dolor.',
+          'Infiltración: alrededor del 4 % tiene pérdida de color de la piel en la epicondilalgia, y tras infiltrar puede haber atrofia de la grasa o de la piel en la zona (Benzon 2026). En personas mayores, los adhesivos y la manipulación del paciente son causas de desgarro de la piel (Guan 2026). Las fuentes leídas no dan normas para la terapia manual ni los vendajes en quien toma corticoides.',
           'Infección: el riesgo sube desde el inicio. Con más de 5 mg/día durante más de 6 meses se duplica el riesgo de infección grave, que baja en los 6 meses siguientes a dejarlos; además atenúan la respuesta de los neutrófilos a los estímulos inflamatorios (Pofi 2023). La artritis séptica tras una infiltración es rara (0,03–0,08 %) (Grusky 2026).',
           'Glucosa: una sola dosis puede subir mucho la glucosa, con o sin diabetes previa, y el mayor efecto suele darse entre la 2.ª y la 4.ª semana (Pofi 2023; Soura 2026). Las infiltraciones intraarticulares e intramusculares también se han asociado a hiperglucemia (Soura 2026).',
+          'Osteonecrosis: Yasir 2023 la sitúa sobre todo con más de 20 mg/día de prednisona durante mucho tiempo, y Pofi 2023 por encima de 30 mg/día; también puede darse tras infiltraciones (Hodgens y Sharman 2023).',
           'En el lupus, las lesiones de osteonecrosis se detectaron en los primeros 5 meses de dosis altas, y más de la mitad de los pacientes estaba ya en fase avanzada cuando aparecieron los síntomas (Kaneko 2021).',
         ],
       },
@@ -133,26 +143,31 @@ export const FAMILIAS_FARMACO = [
           'Terapia manual: una revisión de casos de efectos adversos del thrust torácico pone la medicación con corticoides a largo plazo, sin definir la dosis ni la duración, entre las contraindicaciones absolutas del thrust en la columna torácica; su tabla sale de un trabajo de una escuela de osteopatía, no de una guía (Puentedura 2015). En el plan de tratamiento, la app quita el thrust con la tarjeta «Osteoporosis o fragilidad ósea» y cuando la tarjeta «Lupus (LES)» registra corticoides o dosis altas previas. Las fuentes leídas no dan normas para la carga ni para el resto de la terapia manual: tenlo en cuenta al elegir carga axial intensa.',
           'El ejercicio adaptado a cada paciente y la prevención de caídas forman parte del manejo de la osteoporosis por glucocorticoides, aunque con pocas pruebas (Compston 2018). Las caídas pasaron de 1,6 a 2,8 por 100 personas-año al empezar los corticoides orales (He 2025).',
           'Miopatía: el ejercicio puede atenuarla según los estudios que cita una cohorte, en la que los síntomas mejoraron tras una mediana de 107 días; recomienda cribar las caídas en mayores de 50 años (He 2025).',
-          'Glucosa: la actividad física forma parte del consejo para mantener el control glucémico (Soura 2026). En un paciente con diabetes, ten presente la subida pasajera de la glucosa tras una infiltración (Grusky 2026; Soura 2026).',
+          'Glucosa: la actividad física forma parte del consejo para mantener el control glucémico (Soura 2026). En un paciente con diabetes, ten presente la subida pasajera de la glucosa tras una infiltración (Grusky 2026; Soura 2026), que puede tardar hasta 2 días en llegar a su máximo (Benzon 2026).',
+          'Osteoporosis por glucocorticoides: la guía del ACR anima a todos los que los toman a hacer ejercicio con carga o de fuerza de forma regular, con recomendación condicional y certeza baja (Humphrey 2023). El consenso belga recomienda el ejercicio regular con más razón en quien los toma, centrado en el equilibrio, el impacto y la fuerza adaptados a cada paciente (Laurent 2022). Un metaanálisis de 3 ensayos vio mejor densidad ósea en la columna, no en la cadera (Kast 2023), y hay pocos datos sobre el ejercicio o la prevención de caídas en esta osteoporosis (Shrestha 2026).',
         ],
-        detalle: 'Las fuentes leídas no dan un protocolo de reposo ni de carga del tendón tras una infiltración: sigue la indicación de quien la puso.',
+        detalle: [
+          'Tras una infiltración, ninguna guía leída da una norma de reposo con grado. La de la ASRA recoge que la mayoría de los reumatólogos limita la carga 1–2 días; una revisión Cochrane apoya con evidencia de baja calidad el reposo de la rodilla, pero no el de la muñeca, donde 48 h de férula aumentaron las recaídas (Benzon 2026). EULAR pide no sobrecargar la articulación 24 h, sin inmovilizarla (Uson 2021). En un ensayo de tendinopatía del Aquiles, el ejercicio empezó a los pocos días y se evitó correr y saltar 3 meses, sin roturas (Johannsen 2022). Para los tendones y las partes blandas no hay protocolo: sigue la indicación de quien la puso.',
+          'Las fuentes no coinciden en el impacto: el consenso belga lo propone (Laurent 2022), y la tarjeta «Osteoporosis o fragilidad ósea» lo limita tras una fractura vertebral o varias por fragilidad. Con esa tarjeta marcada, manda la tarjeta.',
+        ],
       },
       sueno: {
         texto: [
           'La exposición prolongada a dosis altas se asocia a alteraciones del sueño, del ánimo y cognitivas; psicosis, manía, depresión o ansiedad aparecen en un 3–60 % según los estudios (Pofi 2023). Tras una infiltración puede aparecer insomnio, en general pasajero (Grusky 2026), y al bajar la dosis, alteraciones del sueño dentro del síndrome de retirada (Beuschlein 2024).',
         ],
-        detalle: 'Tomar más dosis por la tarde que por la mañana se asocia a más efectos adversos (Pofi 2023); las fuentes leídas no estudian su efecto concreto sobre el sueño.',
+        detalle: 'Tomar más dosis por la tarde que por la mañana se asocia a más efectos adversos (Pofi 2023), y repartir la dosis del día altera más el sueño, porque interfiere con el ritmo diario del cortisol; la acatisia (inquietud motora) es un efecto frecuente (Yasir 2023).',
       },
       consultar: {
         texto: [
           'Urgente: con corticoides actuales o recientes, por cualquier vía (también infiltraciones, inhalados o tópicos), hipotensión, colapso o síntomas abdominales agudos pueden ser una crisis suprarrenal, que puede ocurrir si se saltan dosis o con una gastroenteritis (Beuschlein 2024).',
           'Tras infiltraciones, sobre todo en los 2 meses siguientes o con varias en poco tiempo, hay que estar atento a síntomas de insuficiencia suprarrenal (Beuschlein 2024).',
+          'Urgente: dolor, calor o hinchazón de una articulación en las semanas siguientes a infiltrarla, aunque no haya fiebre (Benzon 2026).',
           'Pronto: dolor óseo persistente que empeora al cargar, sobre todo en la cadera o la rodilla (Kaneko 2021); debilidad proximal nueva (He 2025); síntomas de hiperglucemia (Soura 2026).',
           'Nunca aconsejes bajar ni dejar los corticoides: tras un uso prolongado se retiran de forma pautada (Beuschlein 2024). Las dudas, al médico que los prescribe.',
         ],
       },
     },
-    fuentes: ['Pofi 2023', 'Compston 2018', 'Kaneko 2021', 'Grusky 2026', 'He 2025', 'Beuschlein 2024', 'Soura 2026', 'Puentedura 2015'],
+    fuentes: ['Pofi 2023', 'Compston 2018', 'Kaneko 2021', 'Grusky 2026', 'He 2025', 'Beuschlein 2024', 'Soura 2026', 'Puentedura 2015', 'Yasir 2023', 'Hodgens y Sharman 2023', 'Liu 2013', 'Youssef 2016', 'Guan 2026', 'Benzon 2026', 'Uson 2021', 'Johannsen 2022', 'Humphrey 2023', 'Laurent 2022', 'Kast 2023', 'Shrestha 2026'],
   },
   // Anticoagulantes y antiagregantes (2026-10): ocho fuentes leídas enteras en
   // PMC, más Steffel 2021 (guía EHRA) y Antunes 2024 (StatPearls), PDF del
