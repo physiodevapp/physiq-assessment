@@ -120,19 +120,34 @@ test('filas de región (Tarlov, cascanueces, congestión pélvica): «Sí» solo
   }
 });
 
-test('las filas de región se ven siempre, pero su botón solo navega con su región (decisión 3)', () => {
+test('las filas de región se ven siempre; su botón navega con su región y, si no, la elige (decisiones 3 y 9)', () => {
   for (const r of VALID_REGIONS.concat([''])) {
     const h = C.condicionesHTML({ ...state, region: r });
     for (const c of CONDICIONES) assert.ok(h.includes(`data-condicion="${c.id}"`), `${r || 'sin región'}: ${c.id}`);
-    const tarlov = h.slice(h.indexOf('data-condicion="tarlov"'));
-    if (r === 'lumbar') assert.ok(tarlov.includes(`onclick="irACondicion('tarlov')"`) && !tarlov.slice(0, tarlov.indexOf('</section>')).includes('disabled'));
-    else assert.ok(tarlov.slice(0, tarlov.indexOf('</section>')).includes('disabled>Elige lumbar en la fase 2'), r);
-    const cp = h.slice(h.indexOf('data-condicion="congestionPelvica"'));
-    const cpFila = cp.slice(0, cp.indexOf('</section>'));
-    if (r === 'cadera') assert.ok(cpFila.includes(`onclick="irACondicion('congestionPelvica')"`) && !cpFila.includes('disabled'));
-    else assert.ok(cpFila.includes('disabled>Elige cadera en la fase 2'), r);
+    assert.ok(!h.includes('disabled'), `${r || 'sin región'}: ningún botón desactivado`);
+    const filaDe = id => { const t = h.slice(h.indexOf(`data-condicion="${id}"`)); return t.slice(0, t.indexOf('</section>')); };
+    for (const [id, reg] of [['tarlov', 'lumbar'], ['congestionPelvica', 'cadera']]) {
+      const f = filaDe(id);
+      assert.ok(f.includes(`onclick="irACondicion('${id}')"`), `${r}: ${id}`);
+      if (r === reg) assert.ok(f.includes('>Ir a la pregunta →<') && !f.includes('cond-ir-region'), `${r}: ${id}`);
+      else if (r === '') assert.ok(f.includes(`>Elegir ${reg} e ir a la pregunta →<`), `sin región: ${id}`);
+      else assert.ok(f.includes(`>Cambiar a ${reg} e ir →<`), `${r}: ${id}`);
+    }
     assert.ok(h.includes(`onclick="irACondicion('lupus')"`), `${r}: las transversales navegan siempre`);
   }
+});
+
+test('aviso antes de cambiar de región desde la guía: solo con otra región elegida, y nombra lo que se pierde (decisión 9)', () => {
+  const tarlov = fila('tarlov');
+  assert.equal(C.avisoCambioRegion(tarlov, { ...state, region: '' }), null);
+  assert.equal(C.avisoCambioRegion(tarlov, { ...state, region: 'lumbar' }), null);
+  assert.equal(C.avisoCambioRegion(fila('lupus'), { ...state, region: 'cadera' }), null);
+  const a = C.avisoCambioRegion(tarlov, { ...state, region: 'cadera', maxVisitedIdx: 1 });
+  assert.equal(a.titulo, 'Cambiar región de valoración');
+  assert.ok(a.texto.startsWith('Ahora valoras cadera. Esta pregunta solo está en el cribado de lumbar') && a.texto.includes('cribado sistémico'), a.texto);
+  assert.ok(!a.texto.includes('SINSS'), 'sin pasar de la fase 2 no hay fases 3 a 4b que perder');
+  const b = C.avisoCambioRegion(fila('congestionPelvica'), { ...state, region: 'tobillo_pie', maxVisitedIdx: 3 });
+  assert.ok(b.texto.startsWith('Ahora valoras tobillo y pie. Esta pregunta solo está en el cribado de cadera') && b.texto.includes('SINSS'), b.texto);
 });
 
 test('el diálogo: aviso del diagnóstico, apartados «Solo en lumbar» y «Solo en cadera», fuentes como citas y sin fila para el MALS', () => {
