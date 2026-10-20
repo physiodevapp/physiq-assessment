@@ -63,7 +63,10 @@ test('el HTML: una <details> por familia con contenido, «✨ IA» por párrafo 
   const parrafos = con.reduce((n, f) => n + Object.values(f.apartados).reduce((m, a) => m + textos(a).length, 0), 0);
   assert.equal((html.match(/class="ia-parrafo"/g) || []).length, parrafos);
   for (const f of F.familiasPendientes()) assert.ok(html.includes(f.nombre), f.id);
-  assert.ok(html.includes('onclick="farmacosPreguntarIA()"'));
+  // Sin familias pendientes no hay bloque de pendientes (ni su atajo a la IA)
+  const conPendientes = F.familiasPendientes().length > 0;
+  assert.equal(html.includes('class="farm-pendientes"'), conPendientes);
+  assert.equal(html.includes('onclick="farmacosPreguntarIA()"'), conPendientes);
 });
 
 test('la guía no lee el estado del paciente ni llega al payload, los resúmenes o el prompt', () => {
