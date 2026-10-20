@@ -75,7 +75,18 @@ Las fuentes cuentan en `docs/referencias.md` como «guía de fármacos» (`recog
 - una fila por **familia**, no por fármaco suelto;
 - solo con fuentes leídas en la sesión;
 - revisión del usuario antes de `main`;
-- sin enlace a CIMA por ahora: la red del entorno no llega a `cima.aemps.es` y no se ha podido comprobar la URL de búsqueda. No se inventa: queda pendiente hasta que alguien la verifique.
+- el fármaco concreto, solo por enlace a CIMA (ver abajo), nunca copiando su ficha técnica.
+
+**Ficha técnica en CIMA (AEMPS)** (hecho, 2026-10; decisiones del usuario):
+- **Dónde**: una línea «FICHA TÉCNICA (CIMA)» en cada familia desplegada, entre el resumen y los cinco apartados, con un enlace por principio activo: «ibuprofeno ↗ · naproxeno ↗ · …». Mismo estilo que «ANATOMÍA … ↗» de Kenhub (`.test-anat`, `.anat-enlace`). Va fuera de `.farm-cuerpo`, así que no lleva «✨ IA».
+- **Qué principios activos**: campo `cima: [...]` de cada familia en `data/farmacos.js`, escrito a mano. No se sacan de `ejemplos`, que es texto para leer y mezcla grupos («heparinas», «sulfonilureas», «agonistas de GLP-1», «insulina») con principios activos. Un test unitario exige que cada nombre de `cima` aparezca en los `ejemplos` de su familia, en minúscula.
+- **URL**: `urlCima(nombre)` = `CIMA_BUSQUEDA` + `encodeURIComponent(nombre)` (`lib/farmacos.js`). `CIMA_BUSQUEDA` es la URL de búsqueda que el usuario comprobó en su navegador, porque la red del entorno no llega a `cima.aemps.es` (403 del proxy, 2026-10). En la URL va solo el nombre del principio activo, nunca nada del paciente.
+- **Enlace**: `<a target="_blank" rel="noopener noreferrer">`, nunca un iframe, y no se copia nada de la ficha.
+- **Hub**: se ve también en el hub (`.in-hub .farm-cima { display: block; }`), porque es un enlace público, sin cuenta ni IA. Es lo contrario que Kenhub.
+- **Impresión**: no cambia nada, porque la guía entera ya se oculta al imprimir.
+- **«✨ Preguntar a la IA», modalidad «Fármacos»**: sin enlace. El texto es libre (marcas, varias moléculas, dudas) y no se puede convertir en un enlace fiable. El prompt ya pide la ficha técnica de CIMA.
+- **Salidas**: nunca en el payload, 📋 Notas, 📄 Informe ni el prompt del informe con IA.
+- **Tests**: unitarios en `tests/unit/farmacos.mjs` («CIMA: …»): nombres de `ejemplos`, URL y codificación, un enlace por principio activo sin iframe, visible en el hub, nada en las salidas aunque estén marcadas todas las familias. Smoke en la sección `farmacos`: seis enlaces en AINE, en otra pestaña, con solo el nombre en la URL, y visibles en el hub.
 
 ### Familias
 

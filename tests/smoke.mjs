@@ -2769,6 +2769,15 @@ async function checkFarmacos(browser, errors) {
   await page.click('[data-familia="aine"] > summary');
   r.apartados = await page.evaluate(() => [...document.querySelectorAll('[data-familia="aine"] .farm-apartado')].map(a => a.dataset.apartado).join() === 'dolor,visceral,ejercicio,sueno,consultar'
     && document.querySelectorAll('[data-familia="aine"] .farm-apartado .cita').length > 3);
+  // «Ficha técnica (CIMA)»: un enlace por principio activo, en otra pestaña, con solo el nombre en la URL
+  const { CIMA_BUSQUEDA } = await import(new URL('../lib/farmacos.js', import.meta.url));
+  r.cima = await page.evaluate(base => {
+    const as = [...document.querySelectorAll('[data-familia="aine"] .farm-cima a')];
+    const vis = el => { const b = el.getBoundingClientRect(); return b.width > 0 && b.height > 0; };
+    return as.length === 6 && as.every(a => a.target === '_blank' && a.rel === 'noopener noreferrer' && vis(a)
+      && a.href.startsWith(base) && decodeURIComponent(a.href.slice(base.length)) === a.textContent.replace(' ↗', ''))
+      && !document.querySelector('#farmCuerpo iframe');
+  }, CIMA_BUSQUEDA);
   // «✨ IA» del primer párrafo: visible sobre el velo y con la familia como contexto
   await page.click('[data-familia="aine"] .farm-apartado p .ia-parrafo-ir');
   await page.waitForTimeout(150);
@@ -2831,7 +2840,9 @@ async function checkFarmacos(browser, errors) {
     if (getComputedStyle(document.getElementById('farmBtn')).display === 'none') return false;
     window.abrirFarmacos();
     const b = document.querySelector('#farmCuerpo .farm-preguntar');
-    return !b || getComputedStyle(b).display === 'none';
+    document.querySelector('[data-familia="aine"]').open = true;
+    const cima = document.querySelector('[data-familia="aine"] .farm-cima');
+    return (!b || getComputedStyle(b).display === 'none') && !!cima && getComputedStyle(cima).display !== 'none';
   });
   await ctxHub.close();
   r.ok = Object.values(r).every(v => v === true);
