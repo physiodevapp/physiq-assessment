@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **33** frases.
+Redacción propia: **34** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -626,6 +626,14 @@ Fármacos que toma (tarjeta de la fase 1, `data/farmacos-paciente.js`): un aviso
   ↳ guía de fármacos, familia `antidiabeticos` (texto revisado; su cita va dentro)
 - [ ] «Hipoglucemia en la sesión: para el ejercicio y que se mida la glucosa (Moser 2020; Costello 2023). Con 70 mg/dL (3,9 mmol/L) o menos, 15 g de hidratos de absorción rápida, mejor glucosa (tabletas, zumo, refresco), sin grasa ni proteína; volver a medir a los 15 minutos y repetir si sigue baja, la regla «15-15»; cuando se recupere, que coma algo, porque con insulina o sulfonilureas puede repetirse (ADA 2025; Costello 2023). Si bajó de 54 mg/dL, no se reanuda el ejercicio (Moser 2020).»  
   ↳ guía de fármacos, familia `antidiabeticos` (texto revisado; su cita va dentro)
+- [ ] «Toma fármacos que tocan el hueso:»  
+  ↳ **redacción propia** (rótulo del aviso de `hueso`)
+- [ ] «Pronto, con imagen del fémur: un dolor de muslo, ingle o cadera sin explicación con bifosfonato o denosumab. La guía británica pide imagen del fémur (radiografía del fémur entero, gammagrafía o resonancia) y, si hay fractura atípica, también del otro (Gregson 2025). Hasta entonces, sin impacto ni carga de esa pierna.»  
+  ↳ guía de fármacos, familia `hueso` (texto revisado; su cita va dentro)
+- [ ] «Tras una infusión de zoledronato, los 3 primeros días pueden traer fiebre y dolor muscular (Alaranji y Reilly 2025): si la sesión cae en esos días, tenlo en cuenta al dosificar y al interpretar los síntomas.»  
+  ↳ guía de fármacos, familia `hueso` (texto revisado; su cita va dentro)
+- [ ] «Inhibidores de la aromatasa: en un ensayo con 121 mujeres inactivas con dolor articular, fuerza supervisada 2 días por semana (6 ejercicios, 3 series de 8–12 repeticiones, subiendo el peso tras dos sesiones haciendo 12 repeticiones en cada serie) y 150 minutos semanales de aeróbico, del 50 % al 60–80 % de la frecuencia cardíaca máxima en el primer mes, durante 12 meses, bajaron el peor dolor 1,6 puntos (29 %), frente a una subida del 3 % con los cuidados habituales, sin efectos adversos (Irwin 2015). El beneficio más claro llegó a los 12 meses (Irwin 2015).»  
+  ↳ guía de fármacos, familia `hueso` (texto revisado; su cita va dentro)
 - [ ] «No le digas que deje ni cambie la medicación: las dudas, a quien la prescribe.»  
   ↳ **redacción propia** (resume las frases «Nunca aconsejes…» de cada familia; decisión 18 de docs/farmacos-paciente.md)
 
