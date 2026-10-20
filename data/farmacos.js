@@ -81,7 +81,7 @@ export const FAMILIAS_FARMACO = [
       },
       consultar: {
         texto: [
-          'Sangrado digestivo visible: parar toda actividad y buscar atención médica (Papantoniou 2023), por urgencias (Antunes 2024). El sangrado oculto con anemia necesita estudio (Papantoniou 2023). La pérdida de peso sin querer, la dificultad para tragar que va a más, los vómitos repetidos o la anemia por falta de hierro también piden derivación urgente (Malik 2023).',
+          'Sangrado digestivo visible: parar toda actividad y buscar atención médica (Papantoniou 2023), por urgencias (Antunes 2024). El sangrado oculto con anemia necesita estudio (Papantoniou 2023). La pérdida de peso sin querer, la dificultad para tragar que va a más, los vómitos repetidos o la anemia por falta de hierro también piden valoración médica pronta (Malik 2023).',
           'Dolor de espalda o de hombro en quien toma AINE, sobre todo con síntomas de úlcera: que lo valore un médico (Goodman 2018).',
           'También edema, poca orina o proteinuria pocos días después de empezarlos (Lucas 2019); ictericia, náuseas y fiebre; subida de la tensión, sobre todo con enfermedad renal crónica; o broncoespasmo en una persona con asma (Bindu 2020).',
           'Las dudas sobre la dosis, la duración o la combinación con otros fármacos, al médico o al farmacéutico.',
