@@ -10,7 +10,7 @@ El diálogo no enseña dónde están: enseña **cuándo pensar en ellas**, en le
 
 ## Qué no hace (reglas fijas)
 
-- **Nunca marca nada.** Solo lleva a la tarjeta o a la pregunta; marcar es siempre decisión del clínico.
+- **Nunca marca nada.** Solo lleva a la tarjeta o a la pregunta; marcar es siempre decisión del clínico. Única excepción (decisión 9): el botón de una fila de región elige esa región si hace falta, porque la región no es un hallazgo de la condición; la pregunta sigue sin marcar.
 - **No diagnostica ni puntúa.** Sus pistas son una ayuda para recordar, no un criterio.
 - **No salta solo.** Se abre desde la cabecera, cuando el clínico quiere.
 - **No deja rastro clínico.** Nada va al payload, a 📋 Notas, al 📄 Informe ni al prompt de la IA; no guarda nada en la sesión.
@@ -66,6 +66,7 @@ Cada fila:
    - condiciones transversales → la tarjeta en la fase 1;
    - el posquirúrgico → la tarjeta «Mecanismo de inicio», donde se elige «Post-quirúrgico»;
    - Tarlov y cascanueces → la pregunta en la fase 2 (`irAPreguntaCribado()`, que ya existe).
+   - con otra región o sin región, el botón de una fila de región elige la suya antes (decisión 9).
 6. **Fuentes** al final, como citas que se pueden tocar (`citasHTML()`), las mismas que cita la pregunta de la que sale cada pista.
 
 Al pulsar la fila entera no pasa nada: solo el botón navega, para que leer no te saque del diálogo.
@@ -191,7 +192,7 @@ Las marcadas llevan el color de acento; «No consta» va en gris, sin color de a
 
 ## Decisiones
 
-Aceptadas las 8 recomendaciones (2026-10).
+Aceptadas las 8 recomendaciones (2026-10). La 9 se añadió después, a petición del usuario (2026-10).
 
 1. **Dibujo del icono.** *Recomiendo* una brújula (orientar), dibujada en línea como los demás iconos de la cabecera. Descarto:
    - la «ⓘ», que ya significa «¿Por qué?» en el razonamiento;
@@ -203,9 +204,13 @@ Aceptadas las 8 recomendaciones (2026-10).
    3. disautonomía;
    4. lupus;
    5. aparte, bajo «Solo en lumbar», Tarlov y cascanueces.
-3. **Tarlov y cascanueces fuera de lumbar.** *Recomiendo* mostrarlos siempre, en su apartado «Solo en lumbar», para que el clínico aprenda que existen. Con otra región elegida, su botón dice «Elige lumbar en la fase 2» y no navega. Ocultarlos fuera de lumbar escondería justo lo que el diálogo quiere enseñar.
+3. **Tarlov y cascanueces fuera de lumbar.** *Recomiendo* mostrarlos siempre, en su apartado «Solo en lumbar», para que el clínico aprenda que existen. Con otra región elegida, su botón decía «Elige lumbar en la fase 2» y no navegaba (sustituido por la decisión 9). Ocultarlos fuera de lumbar escondería justo lo que el diálogo quiere enseñar.
 4. **Estado de Tarlov y cascanueces.** El cribado guarda «NO» por defecto, así que no se distingue «preguntado y no» de «sin preguntar». *Recomiendo* mostrar solo «Sí» cuando está marcada y nada en otro caso, sin inventar un «No».
 5. **El MALS.** No tiene pregunta propia: es un párrafo en la bandera de pérdida de peso de lumbar. *Recomiendo* no darle fila: no hay nada que marcar ni a dónde llevar al clínico.
 6. **Aviso de novedad.** Un punto en el icono hasta la primera vez que se abre en ese dispositivo ayudaría a descubrirlo, pero es un aviso más en una cabecera ya llena. *Recomiendo* no ponerlo en esta primera versión, coherente con «empezar solo con el botón». Se puede añadir si ves que no se usa.
 7. **Fuentes en cada fila.** *Recomiendo* mostrarlas como citas que se pueden tocar, al final de cada fila, siguiendo la regla de la app (todo texto con fuente la muestra).
 8. **«Qué es» en redacción propia.** Las cuatro líneas «Qué es» de las transversales no tienen fuente: describen la condición en palabras llanas sin afirmar cifras ni criterios. *Recomiendo* dejarlas así y marcarlas como redacción propia en este documento. La alternativa sería quitarlas y dejar solo el nombre y las pistas.
+9. **Elegir la región desde la fila** (petición del usuario, 2026-10; sustituye el botón desactivado de la decisión 3). El botón de una fila de región que no es la elegida ya no se desactiva:
+   - **sin región elegida**, dice «Elegir lumbar e ir a la pregunta →», elige la región sin preguntar (no se pierde nada) y lleva a la pregunta, como si se hubiera tocado en la fase 2;
+   - **con otra región**, dice «Cambiar a lumbar e ir →» y, ya cerrada la guía, pide confirmación siempre, aunque no se haya pasado de la fase 2 (`selectRegion()` solo pregunta desde la fase 3, pero desde la guía el clínico está leyendo una duda, no eligiendo región). El aviso (`avisoCambioRegion()`, `lib/condiciones.js`) nombra la región actual y lo que se pierde: las respuestas del cribado sistémico (`buildSistemicoQuestions()` las reinicia) y, si ya se pasó de la fase 2, el progreso de SINSS, el árbol CIF y la confirmación de hipótesis. Cancelar vuelve a abrir la guía, como «Borrar sesión» con el panel de sesión.
+   - Cambia la región con `applyRegionChange()`, la misma de la fase 2; la pregunta sigue sin marcar. Es la única excepción a «nunca marca nada»: la región no es un hallazgo de la condición.

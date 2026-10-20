@@ -2648,11 +2648,14 @@ async function checkCondiciones(browser, errors) {
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
   });
   r.sinMarcar = await estado('lupus') === 'No consta' && await estado('posquirurgico') === 'No marcado';
-  // Sin región: las filas de lumbar se ven, su botón no navega
-  r.lumbarSinRegion = await page.evaluate(() => {
-    const b = document.querySelector('[data-condicion="tarlov"] .cond-ir');
-    return b.disabled && /Elige lumbar/.test(b.textContent);
-  });
+  // Sin región: el botón de Tarlov elige lumbar, sin preguntar, y lleva a su pregunta
+  r.lumbarSinRegion = await page.evaluate(() => /Elegir lumbar e ir a la pregunta/.test(document.querySelector('[data-condicion="tarlov"] .cond-ir').textContent));
+  await page.click('[data-condicion="tarlov"] .cond-ir');
+  r.eligeRegion = await page.waitForFunction(() => window.state.region === 'lumbar' && window.state.currentPhase === 2
+    && !document.getElementById('confirmBanner')
+    && document.querySelector('.region-card[data-region="lumbar"]').classList.contains('selected')
+    && [...document.querySelectorAll('[id="sq2_l_u5"]')].some(e => e.offsetParent && e.classList.contains('flash-destacar')), null, { timeout: 4000 }).then(() => true, () => false);
+  await page.click('#condBtn');
   // Ir a la tarjeta del lupus: fase 1, resaltada, nada marcado
   const antes = await page.evaluate(() => JSON.stringify(window.state));
   await page.evaluate(() => window.goToPhase(1));
@@ -2681,6 +2684,23 @@ async function checkCondiciones(browser, errors) {
   await page.click('[data-condicion="tarlov"] .cond-ir');
   r.pregunta = await page.waitForFunction(() => window.state.currentPhase === 2
     && [...document.querySelectorAll('[id="sq2_l_u5"]')].some(e => e.offsetParent && e.classList.contains('flash-destacar')), null, { timeout: 4000 }).then(() => true, () => false);
+  // Con lumbar, congestión pélvica cambia a cadera tras confirmar; cancelar
+  // vuelve a la guía sin cambiar nada
+  await page.evaluate(() => { window.state.sistemicoAnswers.l_u5 = 'SI'; });
+  await page.click('#condBtn');
+  r.textoOtra = /Cambiar a cadera e ir/.test(await page.textContent('[data-condicion="congestionPelvica"] .cond-ir'));
+  await page.click('[data-condicion="congestionPelvica"] .cond-ir');
+  await page.waitForSelector('#confirmBanner .confirm-box-text');
+  r.aviso = /Ahora valoras lumbar\. Esta pregunta solo está en el cribado de cadera/.test(await page.textContent('#confirmBanner .confirm-box-text'))
+    && !(await abierto());
+  await page.click('#confirmCancel');
+  r.cancela = await page.waitForFunction(() => document.getElementById('condOverlay').classList.contains('open')
+    && window.state.region === 'lumbar' && window.state.sistemicoAnswers.l_u5 === 'SI', null, { timeout: 3000 }).then(() => true, () => false);
+  await page.click('[data-condicion="congestionPelvica"] .cond-ir');
+  await page.click('#confirmAction');
+  r.cambia = await page.waitForFunction(() => window.state.region === 'cadera' && window.state.currentPhase === 2
+    && !document.getElementById('condOverlay').classList.contains('open')
+    && [...document.querySelectorAll('[id="sq2_ca_u6"]')].some(e => e.offsetParent && e.classList.contains('flash-destacar')), null, { timeout: 4000 }).then(() => true, () => false);
   await page.emulateMedia({ media: 'print' });
   r.sinImprimir = await page.evaluate(() => getComputedStyle(document.getElementById('condBtn')).display === 'none');
   await context.close();
@@ -2708,6 +2728,19 @@ async function checkCondiciones(browser, errors) {
   r.irMovil = await m.waitForFunction(() => window.state.currentPhase === 1
     && document.getElementById('cardHipermovilidad').classList.contains('flash-destacar')
     && !document.getElementById('condOverlay').classList.contains('open'), null, { timeout: 4000 }).then(() => true, () => false);
+  // Cambio de región desde la hoja: el aviso sale con la hoja ya cerrada;
+  // cancelar la reabre y Atrás la vuelve a cerrar sin cambiar de fase
+  await m.evaluate(() => { window.goToPhase(2); window.selectRegion('lumbar', document.querySelector('.region-card[data-region="lumbar"]')); });
+  await abrirHerramienta(m, 'condiciones');
+  await m.waitForSelector('#condOverlay.open');
+  await m.tap('[data-condicion="congestionPelvica"] .cond-ir');
+  await m.waitForSelector('#confirmBanner .confirm-box-text');
+  r.avisoMovil = await m.evaluate(() => !document.getElementById('condOverlay').classList.contains('open'));
+  await m.tap('#confirmCancel');
+  await m.waitForSelector('#condOverlay.open');
+  await m.goBack();
+  r.cancelaMovil = await m.waitForFunction(() => !document.getElementById('condOverlay').classList.contains('open')
+    && window.state.currentPhase === 2 && window.state.region === 'lumbar', null, { timeout: 3000 }).then(() => true, () => false);
   await m.setViewportSize({ width: 320, height: 700 });
   await abrirHerramienta(m, 'condiciones');
   await m.waitForSelector('#condOverlay.open');
@@ -5954,7 +5987,7 @@ const SECCIONES = [
 
   { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
     const c = await checkCondiciones(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 11 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 11 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, el botón de una fila de región la elige y lleva a su pregunta; con otra región pide confirmación (cancelar vuelve a la guía, también en móvil con Atrás) y la cambia; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
