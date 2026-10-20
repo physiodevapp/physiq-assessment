@@ -1052,6 +1052,15 @@ async function checkFarmacosPaciente(browser, page) {
   await page.evaluate(() => { selectLESEstado('diagnosticado'); selectLESFila('corticoides', 'm'); });
   r.corticoidesLupus = await page.getAttribute(`${C} [data-fm="corticoides"]`, 'aria-pressed') === 'true'
     && (await page.textContent(`${C} [data-fm="corticoides"]`)).includes('tarjeta Lupus');
+  // Bifosfonato o denosumab en la tarjeta de osteoporosis: el chip del hueso, marcado desde allí
+  r.sinPendientes = await page.$eval('#fmPendientes', e => e.hidden && !e.textContent.trim());
+  r.huesoSinMarcar = await page.getAttribute(`${C} [data-fm="hueso"]`, 'aria-pressed') === 'false';
+  await page.evaluate(() => { selectOPEstado('diagnosticada'); selectOPFila('tratamiento', 'antirresortivo'); });
+  r.huesoOsteoporosis = await page.getAttribute(`${C} [data-fm="hueso"]`, 'aria-pressed') === 'true'
+    && (await page.textContent(`${C} [data-fm="hueso"]`)).includes('tarjeta Osteoporosis')
+    && await page.evaluate(() => !state.farmacos.toma.includes('hueso'));
+  await page.evaluate(() => { selectOPFila('tratamiento', 'antirresortivo'); selectOPEstado('diagnosticada'); });
+  r.huesoQuitado = await page.getAttribute(`${C} [data-fm="hueso"]`, 'aria-pressed') === 'false';
   await page.click(`${C} [data-fm="corticoides"]`);
   r.soloLectura = await page.evaluate(() => !state.farmacos.toma.includes('corticoides'))
     && await page.getAttribute(`${C} [data-fm="corticoides"]`, 'aria-pressed') === 'true';
@@ -2715,11 +2724,12 @@ async function checkCondiciones(browser, errors) {
   return r;
 }
 
-// Guía de fármacos (docs/farmacologia.md, paso 2): diálogo centrado con los
-// AINE plegados y las pendientes; dentro, «✨ IA» con contexto (por encima del
-// velo) y citas; «Preguntar a la IA sobre fármacos» abre el diálogo en esa
-// modalidad; en móvil desde «Herramientas», atrás cierra; 320 px; en el hub,
-// visible y sin el atajo a la IA.
+// Guía de fármacos (docs/farmacologia.md, paso 2): diálogo centrado con las
+// 13 familias plegadas y en orden, sin bloque de pendientes (ya no queda
+// ninguna) y acabando en su pie; dentro, «✨ IA» con contexto (por encima del
+// velo) y citas; farmacosPreguntarIA() abre «Preguntar a la IA» en la
+// modalidad «Fármacos»; en móvil desde «Herramientas», atrás cierra; 320 px;
+// en el hub, visible y sin el atajo a la IA.
 async function checkFarmacos(browser, errors) {
   const r = {};
   const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
@@ -2738,14 +2748,20 @@ async function checkFarmacos(browser, errors) {
     const p = document.getElementById('farmPanel').getBoundingClientRect();
     const fam = [...document.querySelectorAll('#farmCuerpo .farm-familia')];
     return document.getElementById('farmOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && fam.map(f => f.dataset.familia).slice(0, 12).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides,antidepresivos,sedantes,estatinas,fluoroquinolonas,betabloqueantes,antihipertensivos,antidiabeticos' && fam.every(f => !f.open)
-      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Corticoides')
-      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Fluoroquinolonas')
-      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Betabloqueantes')
-      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Diuréticos')
-      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Insulina')
-      && document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Fármacos que tocan el hueso');
+      && fam.map(f => f.dataset.familia).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides,antidepresivos,sedantes,estatinas,fluoroquinolonas,betabloqueantes,antihipertensivos,antidiabeticos,hueso' && fam.every(f => !f.open);
   });
+  // Sin familias pendientes: ni bloque ni atajo, y la guía acaba en su pie, sin huecos
+  r.sinPendientes = await page.evaluate(() => {
+    const c = document.getElementById('farmCuerpo');
+    const ultimo = [...c.children].at(-1);
+    return !c.querySelector('.farm-pendientes, .farm-preguntar') && ultimo?.classList.contains('cond-pie') && ultimo.textContent.trim().length > 20
+      && [...c.children].every(e => e.textContent.trim().length > 0);
+  });
+  await page.click('[data-familia="hueso"] > summary');
+  r.hueso = await page.evaluate(() => [...document.querySelectorAll('[data-familia="hueso"] .farm-apartado')].map(a => a.dataset.apartado).join() === 'dolor,visceral,ejercicio,sueno,consultar'
+    && document.querySelectorAll('[data-familia="hueso"] .farm-apartado .cita').length > 20
+    && document.querySelector('[data-familia="hueso"]').textContent.includes('Fractura atípica de fémur'));
+  await page.click('[data-familia="hueso"] > summary');
   await page.click('[data-familia="aine"] > summary');
   r.apartados = await page.evaluate(() => [...document.querySelectorAll('[data-familia="aine"] .farm-apartado')].map(a => a.dataset.apartado).join() === 'dolor,visceral,ejercicio,sueno,consultar'
     && document.querySelectorAll('[data-familia="aine"] .farm-apartado .cita').length > 3);
@@ -2764,8 +2780,9 @@ async function checkFarmacos(browser, errors) {
     return document.elementFromPoint(b.left + b.width / 2, b.top + 10)?.closest('#iaMenu') === m;
   });
   await page.keyboard.press('Escape');
+  // farmacosPreguntarIA() sigue expuesta (sin botón mientras no haya pendientes)
   if (await page.evaluate(() => document.getElementById('farmOverlay').classList.contains('open'))) {
-    await page.click('#farmCuerpo .farm-preguntar');
+    await page.evaluate(() => window.farmacosPreguntarIA());
     r.preguntar = await page.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open')
       && document.getElementById('preguntaOverlay').classList.contains('open')
       && document.querySelector('#preguntaTipos .option-btn.selected')?.dataset.tipo === 'farmacos', null, { timeout: 3000 }).then(() => true, () => false);
@@ -2810,7 +2827,7 @@ async function checkFarmacos(browser, errors) {
     if (getComputedStyle(document.getElementById('farmBtn')).display === 'none') return false;
     window.abrirFarmacos();
     const b = document.querySelector('#farmCuerpo .farm-preguntar');
-    return getComputedStyle(b).display === 'none';
+    return !b || getComputedStyle(b).display === 'none';
   });
   await ctxHub.close();
   r.ok = Object.values(r).every(v => v === true);
@@ -5922,7 +5939,7 @@ const SECCIONES = [
 
   { id: 'farmacos', titulo: 'Guía de fármacos:', run: async ({ browser, errors }) => {
     const c = await checkFarmacos(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las familias escritas plegadas (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes, diuréticos y otros antihipertensivos, insulina y antidiabéticos), los AINE con sus cinco apartados y citas, las familias pendientes listadas; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; «Preguntar a la IA sobre fármacos» abre el diálogo en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las 13 familias plegadas y en orden (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes, diuréticos y otros antihipertensivos, insulina y antidiabéticos, fármacos que tocan el hueso), sin bloque de pendientes y acabando en su pie, los AINE y el hueso con sus cinco apartados y citas; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; farmacosPreguntarIA() abre «Preguntar a la IA» en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -6002,7 +6019,7 @@ const SECCIONES = [
 
   { id: 'farmacos-paciente', titulo: 'Fármacos que toma (paso 3 de la farmacología, lumbar):', run: async ({ browser, page }) => {
     const r = await checkFarmacosPaciente(browser, page);
-    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta sin texto libre con los chips de las familias escritas de la guía, línea del anticoagulado, corticoides desde el lupus (solo lectura, fuera de fm), medicación del formulario como pista que no marca nada, guía en «Este paciente» con un segundo toque a todas, fase 5, avisos de la fase 6 con la línea común una vez, 320 px y el hub`);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta sin texto libre con los chips de las familias escritas de la guía, línea del anticoagulado, corticoides desde el lupus (solo lectura, fuera de fm), el hueso desde la osteoporosis con bifosfonato o denosumab (y se quita con ella), sin línea de familias pendientes, medicación del formulario como pista que no marca nada, guía en «Este paciente» con un segundo toque a todas, fase 5, avisos de la fase 6 con la línea común una vez, 320 px y el hub`);
     if (!r.ok) console.log('\nFármacos que toma:', JSON.stringify(r));
     return r.ok;
   } },
