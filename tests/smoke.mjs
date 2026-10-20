@@ -1096,6 +1096,7 @@ async function checkFarmacosPaciente(browser, page) {
   await page.click(`${C} [data-fm="aine"]`);
   await page.click(`${C} [data-fm="opioides"]`);
   await page.click(`${C} [data-fm="hueso"]`);
+  await page.click(`${C} [data-fm="fluoroquinolonas"]`);
   await walkRegion(page, 'lumbar');
   r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .fm-fase5')?.textContent || '';
     return t.includes('AINE · Opioides') && t.includes('No le digas que deje ni cambie la medicación'); });
@@ -1104,6 +1105,7 @@ async function checkFarmacosPaciente(browser, page) {
   r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
     return t.includes('Toma AINE: Deshidratación y calor') && t.includes('Toma opioides: Mareo, somnolencia y caídas')
       && t.includes('Toma fármacos que tocan el hueso: Pronto, con imagen del fémur')
+      && t.includes('Toma o ha tomado fluoroquinolonas: Cuándo: puede empezar')
       && t.split('No le digas que deje ni cambie la medicación').length === 2; });
   // En el hub, la tarjeta y la guía funcionan (sin el atajo a la IA)
   const hub = await browser.newPage();
@@ -6021,7 +6023,7 @@ const SECCIONES = [
 
   { id: 'farmacos-paciente', titulo: 'Fármacos que toma (paso 3 de la farmacología, lumbar):', run: async ({ browser, page }) => {
     const r = await checkFarmacosPaciente(browser, page);
-    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta sin texto libre con los chips de las familias escritas de la guía, línea del anticoagulado, corticoides desde el lupus (solo lectura, fuera de fm), el hueso desde la osteoporosis con bifosfonato o denosumab (y se quita con ella) y su aviso en la fase 6, sin línea de familias pendientes, medicación del formulario como pista que no marca nada, guía en «Este paciente» con un segundo toque a todas, fase 5, avisos de la fase 6 con la línea común una vez, 320 px y el hub`);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta sin texto libre con los chips de las familias escritas de la guía, línea del anticoagulado, corticoides desde el lupus (solo lectura, fuera de fm), el hueso desde la osteoporosis con bifosfonato o denosumab (y se quita con ella), los avisos del hueso y de las fluoroquinolonas en la fase 6, sin línea de familias pendientes, medicación del formulario como pista que no marca nada, guía en «Este paciente» con un segundo toque a todas, fase 5, avisos de la fase 6 con la línea común una vez, 320 px y el hub`);
     if (!r.ok) console.log('\nFármacos que toma:', JSON.stringify(r));
     return r.ok;
   } },
