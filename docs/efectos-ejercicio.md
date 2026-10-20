@@ -1,6 +1,6 @@
 # Efectos fisiológicos del ejercicio
 
-Propuesta de diseño (2026-10), **pendiente de las decisiones del usuario** (al final). Todavía no hay código ni contenido. Léelo entero antes de empezar cualquier bloque.
+Diseño aceptado por el usuario (2026-10; decisiones 1–6 al final). Todavía no hay código ni contenido. Léelo entero antes de empezar cualquier bloque.
 
 ## Objetivo
 
@@ -24,11 +24,10 @@ Nada trata la fisiología del ejercicio en sí. Lo más cercano:
 ## Límites (no cambian en ningún bloque)
 
 - **Solo fuentes leídas en la sesión**, como en el resto de guías. Las fuentes candidatas de abajo no se han leído.
-- **Cada afirmación lleva su nivel**, porque en este campo abunda la divulgación exagerada («el ejercicio es un antiinflamatorio»):
-  - `humano-clinico`: efecto medido en personas sobre un resultado que importa (dolor, función).
-  - `humano-mecanismo`: medido en personas, pero solo el mecanismo (una molécula en sangre, un cambio en el tejido), sin efecto clínico demostrado.
-  - `animal`: solo en animales o in vitro.
-  - `discutido`: hay fuentes leídas que lo contradicen; se dicen las dos.
+- **Cada afirmación lleva su nivel** (decisión 3), porque en este campo abunda la divulgación exagerada («el ejercicio es un antiinflamatorio»):
+  - `clinico`: efecto medido en personas sobre un resultado que importa (dolor, función).
+  - `mecanismo`: solo el mecanismo (una molécula en sangre, un cambio en el tejido), sin efecto clínico demostrado. Si solo se ha visto en animales o in vitro, la frase lo dice.
+  - `discutido`: hay fuentes leídas que se contradicen; se dicen las dos.
 - **Nunca** se convierte en una regla de dosificación automática ni cambia el plan, las hipótesis o el cribado. Es de lectura.
 - **Nunca** va al payload, a `📋 Notas`, al `📄 Informe` ni al prompt del informe con IA (test unitario, como en las demás guías).
 - Ninguna frase dice que el ejercicio sustituye a un tratamiento médico.
@@ -40,8 +39,8 @@ Ordenados por cuánto cambian una decisión en consulta, no por lo llamativos qu
 1. **Hipoalgesia inducida por el ejercicio.** Qué es; diferencia entre ejercicio local y a distancia; por qué puede faltar o invertirse en el dolor crónico; qué implica para la dosis y para los brotes tras ejercitarse.
 2. **Mecanotransducción: tendón, hueso, cartílago y músculo.** Cómo la carga se convierte en adaptación del tejido; por qué el reposo absoluto no repara; relación con las tarjetas de osteoporosis y con las tendinopatías.
 3. **Efecto antiinflamatorio sistémico.** La IL-6 que libera el músculo al contraerse y la cascada que sigue; diferencia con la IL-6 de la inflamación; qué se sabe y qué no en dolor musculoesquelético.
-4. **El músculo como órgano endocrino: otras mioquinas.** Concepto general y estado real de cada una (por ejemplo, irisina, con la medición en humanos discutida). Bloque corto y muy etiquetado.
-5. **Efectos centrales.** Sueño, estado de ánimo, sensibilización central y autoeficacia.
+4. **El músculo como órgano endocrino: otras mioquinas.** Concepto general y estado real de cada una (por ejemplo, irisina, con la medición en humanos discutida). Bloque corto y muy etiquetado. Si las fuentes leídas dan casi solo afirmaciones de `mecanismo`, se queda en un párrafo dentro del bloque 3 (decisión 2).
+5. **Efectos centrales.** Sueño, estado de ánimo y autoeficacia. La sensibilización central va en el bloque 1, para no repetirla (decisión 2).
 
 Cada bloque tiene la misma estructura (propuesta):
 
@@ -50,7 +49,7 @@ Cada bloque tiene la misma estructura (propuesta):
 | `que` | Qué ocurre, en dos o tres frases |
 | `evidencia` | Hasta dónde llega lo demostrado, con la etiqueta de nivel de cada afirmación |
 | `consulta` | Qué cambia en la dosis o en la decisión (solo si alguna fuente leída lo dice) |
-| `paciente` | Una o dos frases para explicárselo al paciente, sin exagerar |
+| `paciente` | Una o dos frases para explicárselo al paciente: redacción propia, solo donde hay una afirmación `clinico` que la respalde y sin decir más que ella (decisión 4) |
 | `detalle` | Opcional, en «Ampliar ▾» |
 
 ## Dónde encaja en la app (propuesta)
@@ -59,10 +58,15 @@ Cada bloque tiene la misma estructura (propuesta):
    - `data/ejercicio.js` (contenido) y `lib/ejercicio.js` (HTML puro, no lee el `state`);
    - icono propio; en ≤768 px, una opción más de «Herramientas»;
    - hoja inferior con atrás en móvil y diálogo centrado en ancho;
-   - un `<details>` por bloque, «✨ IA» por párrafo, citas pulsables (`citasEnTexto()`), etiqueta de nivel visible;
+   - un `<details>` por bloque, «✨ IA» por párrafo, citas pulsables (`citasEnTexto()`);
+   - la etiqueta de nivel, visible como un chip pequeño al final de la frase, pulsable como las citas, con una línea que explica qué significa (decisión 3);
    - disponible también en el hub (no usa red), sin los enlaces de IA;
    - fuentes en `data/referencias.js`, contadas en `docs/referencias.md` como «guía de efectos del ejercicio».
-2. **Fase 6, bloque «Educación»**: un enlace «Para explicárselo al paciente →» que abre la guía en el bloque que toca. La elección del bloque sería por hipótesis o por irritabilidad, con una tabla escrita a mano (como `HIP_PUNCION_SECA`), nunca deducida.
+2. **Fase 6, bloque «Educación»** (decisión 5): un enlace «Para explicárselo al paciente →» que abre la guía en el bloque que toca, elegido **por irritabilidad**, que ya está calculada (`irritabilidadSINSS()`):
+   - alta → bloque 1, hipoalgesia (ejercicio a distancia; puede fallar en el dolor crónico);
+   - baja o moderada → bloque 2, mecanotransducción.
+
+   Más adelante, unos pocos casos por hipótesis donde aporte de verdad (por ejemplo, tendinopatías → tendón), en una tabla escrita a mano como `HIP_PUNCION_SECA`, nunca deducida. Se hace cuando estén los bloques 1 y 2.
 3. **Más adelante**, enlaces de lectura desde las tarjetas donde el mecanismo es central (osteoporosis → mecanotransducción ósea; lupus; disautonomía). Sin reglas automáticas.
 
 ## Fuentes candidatas (sin leer)
@@ -74,23 +78,27 @@ Pistas para localizar, **no contenido**. Cada una se lee entera antes de escribi
 - Efecto antiinflamatorio y mioquinas: Pedersen y Febbraio 2008 (Physiol Rev) y 2012 (Nat Rev Endocrinol); Gleeson 2011 (Nat Rev Immunol).
 - Irisina, la discusión: Albrecht 2015 (Sci Rep) frente a Jedrychowski 2015 (Cell Metab).
 
-## Decisiones pendientes del usuario
+## Decisiones aceptadas (usuario, 2026-10)
 
-1. ¿Herramienta de cabecera propia o un apartado dentro de otra guía?
-2. ¿Los cinco bloques y en este orden?
-3. ¿Las cuatro etiquetas de nivel y que se vean en pantalla?
-4. ¿Apartado `paciente` (frases para explicárselo) o solo contenido para el fisioterapeuta?
-5. ¿Enlace desde el bloque «Educación» de la fase 6 y, en ese caso, con qué tabla de hipótesis → bloque?
-6. ¿Un bloque por sesión con revisión del usuario antes de `main`, como en fármacos?
+1. **Herramienta de cabecera propia.** No encaja en ninguna guía actual; en móvil es una opción más de «Herramientas». Se copia el patrón de la guía de fármacos.
+2. **Los cinco bloques, en ese orden.** El 4 se queda en un párrafo dentro del 3 si sus fuentes dan casi solo mecanismo; la sensibilización central va en el 1, no en el 5.
+3. **Tres etiquetas de nivel, visibles**: `clinico`, `mecanismo` (con «solo en animales» en la frase cuando toque) y `discutido`. Chip pequeño al final de la frase, pulsable, con su explicación.
+4. **Apartado `paciente`**, solo donde lo respalda una afirmación `clinico` y sin decir más que ella. Un test unitario comprueba que ninguna frase para el paciente se apoya solo en `mecanismo` o `discutido`.
+5. **Enlace desde «Educación» de la fase 6, por irritabilidad** (alta → bloque 1; baja o moderada → bloque 2). Los casos por hipótesis, más adelante y pocos.
+6. **Orden de trabajo**:
+   - primera sesión: la infraestructura, con la herramienta y los cinco bloques como «Pendientes de fuentes», más tests unitarios y sección smoke;
+   - después, un bloque por sesión, con las fuentes leídas por un agente que devuelve citas literales, y revisión del usuario antes de `main`;
+   - el enlace de la fase 6, cuando estén los bloques 1 y 2.
 
 ## Estado
 
 | Paso | Estado |
 |---|---|
-| Diseño (este documento) | Propuesta, pendiente de decisiones |
+| Diseño (este documento) | Aceptado por el usuario (2026-10) |
 | Infraestructura (herramienta, tests, smoke) | No empezada |
 | Bloque 1 — Hipoalgesia | No empezado |
 | Bloque 2 — Mecanotransducción | No empezado |
 | Bloque 3 — Antiinflamatorio sistémico | No empezado |
 | Bloque 4 — Otras mioquinas | No empezado |
 | Bloque 5 — Efectos centrales | No empezado |
+| Enlace desde «Educación» de la fase 6 | No empezado (tras los bloques 1 y 2) |
