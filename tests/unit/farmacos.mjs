@@ -3,6 +3,9 @@ import { assert, leer, test, buildPhysiQPayload, buildInformeFisioterapiaText, b
   withState, state, citasEnTexto, claveRegistro } from './comun.mjs';
 const { APARTADOS_FARMACO, FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
 const F = await import('../../lib/farmacos.js');
+const IA = await import('../../informe-ia.js');
+const IN = await import('../../lib/informe-narrativo.js');
+const { familiasMarcables } = await import('../../lib/farmacos-paciente.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 
 console.log('\nguía de fármacos (cabecera)');
@@ -79,6 +82,51 @@ test('la guía no lee el estado del paciente ni llega al payload, los resúmenes
     }
   });
   assert.ok(state);
+});
+
+test('CIMA: cada familia lista solo principios activos que nombra en sus ejemplos', () => {
+  for (const f of F.familiasConContenido()) {
+    assert.ok(Array.isArray(f.cima) && f.cima.length > 0, f.id);
+    assert.equal(new Set(f.cima).size, f.cima.length, `${f.id}: repetido`);
+    for (const n of f.cima) {
+      assert.equal(n, n.toLowerCase().trim(), `${f.id}: «${n}» en minúscula y sin espacios sobrantes`);
+      assert.ok(f.ejemplos.toLowerCase().includes(n), `${f.id}: «${n}» no está en sus ejemplos`);
+    }
+  }
+});
+
+test('CIMA: el enlace abre el buscador verificado, sin nada en la URL; el nombre va aparte, para copiarlo', () => {
+  assert.equal(F.CIMA_BUSCADOR, 'https://cima.aemps.es/cima/publico/buscadoravanzado.html');
+  const html = F.farmacosHTML();
+  assert.ok(!/<iframe/i.test(html));
+  assert.ok(!html.includes(F.CIMA_BUSCADOR + '?') && !html.includes(F.CIMA_BUSCADOR + '#'), 'nada detrás de la URL');
+  for (const f of F.familiasConContenido()) {
+    const bloque = html.slice(html.indexOf(`data-familia="${f.id}"`)).split('</details>')[0];
+    const enlaces = [...bloque.matchAll(/<a class="anat-enlace farm-cima-enlace" href="([^"]+)" target="_blank" rel="noopener noreferrer" data-cima="([^"]+)"/g)];
+    assert.ok(enlaces.every(m => m[1] === F.CIMA_BUSCADOR), f.id);
+    assert.deepEqual(enlaces.map(m => m[2]), f.cima, f.id);
+    assert.ok(bloque.indexOf('farm-cima') < bloque.indexOf('data-ia-ctx'), `${f.id}: la línea CIMA va antes del cuerpo con «✨ IA»`);
+  }
+  assert.ok(html.includes(TEXTOS_FARMACOS.cimaNota), 'la guía explica que se pega en el buscador');
+  assert.equal(F.textoCima(TEXTOS_FARMACOS.cimaCopiado, 'ibuprofeno'), '«ibuprofeno» copiado: pégalo en «Escribe el nombre del principio activo» y pulsa Buscar.');
+  assert.ok(F.textoCima(TEXTOS_FARMACOS.cimaSinCopiar, 'ibuprofeno').includes('«ibuprofeno»'));
+  const css = leer('styles.css');
+  assert.ok(css.includes('.in-hub .farm-cima { display: block; }'), 'visible también en el hub');
+  assert.ok(/closest\('#farmCuerpo a\[data-cima\]'\)/.test(leer('app.js')), 'app.js copia el nombre al tocar el enlace');
+});
+
+test('CIMA: nunca entra en el payload, 📋 Notas, 📄 Informe ni el prompt del informe con IA', () => {
+  const toma = familiasMarcables().map(f => f.id);
+  assert.ok(toma.length > 0);
+  withState({ region: 'lumbar', patient: 'Paciente Prueba', farmacos: { toma } }, () => {
+    const d = buildPhysiQPayload();
+    assert.ok(Array.isArray(d.fm) && d.fm.length === toma.length, 'control: las familias marcadas van en el payload');
+    const prompt = IN.buildNarrativePrompt(d, { conAudio: false }) + IN.bloquesAmpliados(IA.construirAmpliado()).join('\n');
+    for (const txt of [JSON.stringify(d), buildContextSummaryText(), buildInformeFisioterapiaText(), prompt]) {
+      assert.ok(!/cima\.aemps|Ficha técnica \(CIMA\)|farm-cima/i.test(txt), 'CIMA filtrado a un resumen o al prompt');
+      assert.ok(!txt.includes(F.CIMA_BUSCADOR) && !txt.includes(TEXTOS_FARMACOS.cimaNota), 'CIMA filtrado');
+    }
+  });
 });
 
 test('app: botón de cabecera, opción en «Herramientas» y funciones expuestas en window', () => {
