@@ -95,29 +95,24 @@ test('CIMA: cada familia lista solo principios activos que nombra en sus ejemplo
   }
 });
 
-test('CIMA: la URL es la de búsqueda verificada más el nombre codificado, y nada más', () => {
-  assert.match(F.CIMA_BUSQUEDA, /^https:\/\/cima\.aemps\.es\//);
-  assert.equal(F.urlCima('ibuprofeno'), F.CIMA_BUSQUEDA + 'ibuprofeno');
-  assert.equal(F.urlCima('ácido acetilsalicílico'), F.CIMA_BUSQUEDA + '%C3%A1cido%20acetilsalic%C3%ADlico');
-  assert.equal(F.urlCima('a&b=c#d'), F.CIMA_BUSQUEDA + 'a%26b%3Dc%23d');
-  for (const f of F.familiasConContenido()) for (const n of f.cima) {
-    const u = F.urlCima(n);
-    assert.ok(!/[\s&#]/.test(u.slice(F.CIMA_BUSQUEDA.length)), u);
-    assert.equal(decodeURIComponent(u.slice(F.CIMA_BUSQUEDA.length)), n);
-  }
-});
-
-test('CIMA: un enlace por principio activo, en otra pestaña y sin iframe; fuera del cuerpo con «✨ IA»', () => {
+test('CIMA: el enlace abre el buscador verificado, sin nada en la URL; el nombre va aparte, para copiarlo', () => {
+  assert.equal(F.CIMA_BUSCADOR, 'https://cima.aemps.es/cima/publico/buscadoravanzado.html');
   const html = F.farmacosHTML();
   assert.ok(!/<iframe/i.test(html));
+  assert.ok(!html.includes(F.CIMA_BUSCADOR + '?') && !html.includes(F.CIMA_BUSCADOR + '#'), 'nada detrás de la URL');
   for (const f of F.familiasConContenido()) {
     const bloque = html.slice(html.indexOf(`data-familia="${f.id}"`)).split('</details>')[0];
-    const enlaces = [...bloque.matchAll(/<a class="anat-enlace farm-cima-enlace" href="([^"]+)" target="_blank" rel="noopener noreferrer"/g)].map(m => m[1].replace(/&amp;/g, '&'));
-    assert.deepEqual(enlaces, f.cima.map(F.urlCima), f.id);
+    const enlaces = [...bloque.matchAll(/<a class="anat-enlace farm-cima-enlace" href="([^"]+)" target="_blank" rel="noopener noreferrer" data-cima="([^"]+)"/g)];
+    assert.ok(enlaces.every(m => m[1] === F.CIMA_BUSCADOR), f.id);
+    assert.deepEqual(enlaces.map(m => m[2]), f.cima, f.id);
     assert.ok(bloque.indexOf('farm-cima') < bloque.indexOf('data-ia-ctx'), `${f.id}: la línea CIMA va antes del cuerpo con «✨ IA»`);
   }
+  assert.ok(html.includes(TEXTOS_FARMACOS.cimaNota), 'la guía explica que se pega en el buscador');
+  assert.equal(F.textoCima(TEXTOS_FARMACOS.cimaCopiado, 'ibuprofeno'), '«ibuprofeno» copiado: pégalo en «Escribe el nombre del principio activo» y pulsa Buscar.');
+  assert.ok(F.textoCima(TEXTOS_FARMACOS.cimaSinCopiar, 'ibuprofeno').includes('«ibuprofeno»'));
   const css = leer('styles.css');
   assert.ok(css.includes('.in-hub .farm-cima { display: block; }'), 'visible también en el hub');
+  assert.ok(/closest\('#farmCuerpo a\[data-cima\]'\)/.test(leer('app.js')), 'app.js copia el nombre al tocar el enlace');
 });
 
 test('CIMA: nunca entra en el payload, 📋 Notas, 📄 Informe ni el prompt del informe con IA', () => {
@@ -129,7 +124,7 @@ test('CIMA: nunca entra en el payload, 📋 Notas, 📄 Informe ni el prompt del
     const prompt = IN.buildNarrativePrompt(d, { conAudio: false }) + IN.bloquesAmpliados(IA.construirAmpliado()).join('\n');
     for (const txt of [JSON.stringify(d), buildContextSummaryText(), buildInformeFisioterapiaText(), prompt]) {
       assert.ok(!/cima\.aemps|Ficha técnica \(CIMA\)|farm-cima/i.test(txt), 'CIMA filtrado a un resumen o al prompt');
-      assert.ok(!txt.includes(F.CIMA_BUSQUEDA), 'URL de CIMA filtrada');
+      assert.ok(!txt.includes(F.CIMA_BUSCADOR) && !txt.includes(TEXTOS_FARMACOS.cimaNota), 'CIMA filtrado');
     }
   });
 });

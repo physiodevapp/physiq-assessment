@@ -78,15 +78,24 @@ Las fuentes cuentan en `docs/referencias.md` como «guía de fármacos» (`recog
 - el fármaco concreto, solo por enlace a CIMA (ver abajo), nunca copiando su ficha técnica.
 
 **Ficha técnica en CIMA (AEMPS)** (hecho, 2026-10; decisiones del usuario):
+- **CIMA no admite enlazar a una búsqueda.** La red del entorno no llega a `cima.aemps.es` (403 del proxy), así que lo comprobó el usuario en su navegador. Con `…/cima/publico/lista.html?pa=<nombre>`, CIMA ignora el parámetro y vuelve a la portada. La lista de resultados (`lista.html`) solo sale buscando desde el formulario, y su barra de direcciones no lleva la búsqueda. La única URL comprobada que sirve es la del buscador para profesionales, que se abre vacío: `https://cima.aemps.es/cima/publico/buscadoravanzado.html`.
+- **Cómo funciona** (opción elegida por el usuario):
+  1. Al tocar un principio activo se abre ese buscador en otra pestaña.
+  2. La app copia el nombre al portapapeles (`navigator.clipboard.writeText`, en el mismo toque) y avisa: «"ibuprofeno" copiado: pégalo en "Escribe el nombre del principio activo" y pulsa Buscar».
+  3. El fisioterapeuta pega el nombre en esa casilla (la segunda del formulario, para que salga solo lo que lleva ese principio activo) y pulsa Buscar.
+
+  Si el portapapeles falla (por ejemplo, en el iframe del hub), solo se abre CIMA y el aviso dice «Busca "ibuprofeno" en CIMA, en "Escribe el nombre del principio activo"». Bajo los límites, la guía explica esto en una línea (`TEXTOS_FARMACOS.cimaNota`).
 - **Dónde**: una línea «FICHA TÉCNICA (CIMA)» en cada familia desplegada, entre el resumen y los cinco apartados, con un enlace por principio activo: «ibuprofeno ↗ · naproxeno ↗ · …». Mismo estilo que «ANATOMÍA … ↗» de Kenhub (`.test-anat`, `.anat-enlace`). Va fuera de `.farm-cuerpo`, así que no lleva «✨ IA».
 - **Qué principios activos**: campo `cima: [...]` de cada familia en `data/farmacos.js`, escrito a mano. No se sacan de `ejemplos`, que es texto para leer y mezcla grupos («heparinas», «sulfonilureas», «agonistas de GLP-1», «insulina») con principios activos. Un test unitario exige que cada nombre de `cima` aparezca en los `ejemplos` de su familia, en minúscula.
-- **URL**: `urlCima(nombre)` = `CIMA_BUSQUEDA` + `encodeURIComponent(nombre)` (`lib/farmacos.js`). `CIMA_BUSQUEDA` es la URL de búsqueda que el usuario comprobó en su navegador, porque la red del entorno no llega a `cima.aemps.es` (403 del proxy, 2026-10). En la URL va solo el nombre del principio activo, nunca nada del paciente.
-- **Enlace**: `<a target="_blank" rel="noopener noreferrer">`, nunca un iframe, y no se copia nada de la ficha.
+- **Código**: `CIMA_BUSCADOR` y `textoCima()` en `lib/farmacos.js`. Cada enlace es `<a href="<CIMA_BUSCADOR>" target="_blank" rel="noopener noreferrer" data-cima="<nombre>">`. El copiado lo hace un listener de click en captura de `app.js` (sobre `#farmCuerpo a[data-cima]`), que deja seguir el enlace. **En la URL no va nada**: ni el nombre ni, por supuesto, nada del paciente.
+- **Límites**: nunca un iframe, y no se copia nada de la ficha.
 - **Hub**: se ve también en el hub (`.in-hub .farm-cima { display: block; }`), porque es un enlace público, sin cuenta ni IA. Es lo contrario que Kenhub.
 - **Impresión**: no cambia nada, porque la guía entera ya se oculta al imprimir.
-- **«✨ Preguntar a la IA», modalidad «Fármacos»**: sin enlace. El texto es libre (marcas, varias moléculas, dudas) y no se puede convertir en un enlace fiable. El prompt ya pide la ficha técnica de CIMA.
+- **«✨ Preguntar a la IA», modalidad «Fármacos»**: sin enlace. El texto es libre (marcas, varias moléculas, dudas) y el prompt ya pide la ficha técnica de CIMA.
 - **Salidas**: nunca en el payload, 📋 Notas, 📄 Informe ni el prompt del informe con IA.
-- **Tests**: unitarios en `tests/unit/farmacos.mjs` («CIMA: …»): nombres de `ejemplos`, URL y codificación, un enlace por principio activo sin iframe, visible en el hub, nada en las salidas aunque estén marcadas todas las familias. Smoke en la sección `farmacos`: seis enlaces en AINE, en otra pestaña, con solo el nombre en la URL, y visibles en el hub.
+- **Tests**:
+  - unitarios en `tests/unit/farmacos.mjs` («CIMA: …»): los nombres salen de `ejemplos`; el `href` es exactamente el buscador, sin nada detrás; `data-cima` es cada principio activo; no hay iframe; los avisos; visible en el hub; nada en las salidas aunque estén marcadas todas las familias;
+  - smoke en la sección `farmacos`: seis enlaces en AINE, en otra pestaña, hacia el buscador; tocar «naproxeno» lo copia y avisa; visibles en el hub.
 
 ### Familias
 

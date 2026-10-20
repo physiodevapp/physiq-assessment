@@ -1050,6 +1050,9 @@ export const TEXTOS_FARMACOS = {
   pendientesNota: 'Mientras tanto puedes preguntar a la IA con un guion para fisioterapeutas (sin datos del paciente; PhysiQ no revisa la respuesta).',
   preguntar: 'Preguntar a la IA sobre fármacos →',
   cima: 'Ficha técnica (CIMA)',
-  cimaTitulo: 'Buscar en CIMA (AEMPS), se abre en otra pestaña:',
+  cimaTitulo: 'Abre el buscador de CIMA (AEMPS) en otra pestaña y copia «{n}»',
+  cimaNota: 'Ficha técnica: al tocar un principio activo se abre el buscador de CIMA (AEMPS) y el nombre queda copiado. Pégalo en «Escribe el nombre del principio activo» y pulsa Buscar.',
+  cimaCopiado: '«{n}» copiado: pégalo en «Escribe el nombre del principio activo» y pulsa Buscar.',
+  cimaSinCopiar: 'Busca «{n}» en CIMA, en «Escribe el nombre del principio activo».',
   pie: 'Cada familia se escribe con fuentes leídas y revisadas antes de publicarse. Toca una cita para ver la referencia.',
 };
