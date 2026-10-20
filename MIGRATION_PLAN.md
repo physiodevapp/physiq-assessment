@@ -515,4 +515,5 @@ Diseño: `docs/farmacos-paciente.md` (pasos 1 y 2 y su estado: `docs/farmacologi
 - [x] Implementación (2026-10; `docs/farmacos-paciente.md`, «Implementación»): traer `main` antes de empezar; ficheros propios (`data/farmacos-paciente.js`, `tests/unit/farmacos-paciente.mjs`, sección de humo `farmacos-paciente`) para no chocar con las ramas de familias
 - [x] Antes de fusionar: traer `main` otra vez (con las fluoroquinolonas) y pasar la prueba de humo completa; si choca `data/referencias.js`, entradas de las dos ramas y `node tests/gen-referencias.mjs`
 - [x] Revisión del usuario en la app (2026-10)
-- [ ] physiq-report: leer `fm` con una copia literal de `bloqueFMIA()` (`_bloqueFM`, `FM_CASOS` en los dos repos): hecho en la rama `claude/upbeat-newton-tmyq6n` de physiq-report (2026-10), sin PR todavía
+- [x] physiq-report: leer `fm` con una copia literal de `bloqueFMIA()` (`_bloqueFM`, `FM_CASOS` en los dos repos): physiodevapp/physiq-report#98, fusionada; esta parte, physiodevapp/physiq-assessment#485 (2026-10)
+- [x] Un aviso de la fase 6 por familia revisada: los de fluoroquinolonas, betabloqueantes, antihipertensivos, antidiabéticos y hueso, con su familia o en PR propia (#487–#490); el chip del hueso, marcado también desde la osteoporosis (2026-10). Las 12 familias con chip tienen aviso
