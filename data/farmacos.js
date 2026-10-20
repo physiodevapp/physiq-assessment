@@ -27,9 +27,10 @@ export const APARTADOS_FARMACO = [
 ];
 
 export const FAMILIAS_FARMACO = [
-  // AINE (2026-10): cinco revisiones leídas enteras en PMC. Sin fuente leída
-  // todavía para la presentación clínica de la úlcera (melena, dolor referido
-  // a la espalda o al hombro) ni para el sueño: docs/farmacologia.md.
+  // AINE (2026-10): cinco revisiones leídas enteras en PMC. Huecos cerrados
+  // (2026-10) con Malik 2023, Saad y Mathew 2025, Antunes 2024 (StatPearls) y
+  // Goodman 2018, cap. 8, PDF del usuario, para la presentación de la úlcera,
+  // y con Engert 2024 e Iacovides 2009 (PMC) para el sueño: docs/farmacologia.md.
   {
     id: 'aine',
     nombre: 'AINE (antiinflamatorios no esteroideos)',
@@ -49,9 +50,17 @@ export const FAMILIAS_FARMACO = [
       visceral: {
         texto: [
           'Estómago e intestino: la lesión de la mucosa es su principal limitación en el uso crónico. La gravedad depende sobre todo de la dosis y la duración, y el riesgo sube si ya hubo una complicación digestiva (Bindu 2020). Aumentan el riesgo de sangrado y perforación en el intestino en una medida similar a la del estómago (Papantoniou 2023). La lesión intestinal se manifiesta como anemia ferropénica, indigestión o dolor abdominal y, en lo grave, sangrado oculto o perforación (Bindu 2020).',
+          'Úlcera: dolor en la boca del estómago que empieza a los 15–30 min de comer en la úlcera gástrica y a las 2–3 h en la duodenal, que además suele doler de noche y mejora al comer (Malik 2023). La úlcera por AINE asienta sobre todo en la pared posterior del estómago, y por eso puede dar dolor de espalda o de hombro, casi siempre el derecho; el dolor de espalda puede ser el primer y único síntoma (Goodman 2018). Quien toma AINE puede no tener síntomas hasta que la lesión está avanzada (Goodman 2018), y la úlcera, el sangrado o la perforación pueden ocurrir a cualquier edad, aunque son más frecuentes en mayores (Saad y Mathew 2025).',
+          'Sangrado: vómito con sangre roja o en «posos de café», heces negras, pegajosas y de olor característico (melena), y síntomas de la pérdida de sangre como mareo al levantarse, síncope, cansancio, debilidad, palpitaciones o falta de aire con el esfuerzo. El hierro, el bismuto y el regaliz también ponen las heces negras sin que haya sangrado. Un abdomen doloroso a la palpación con defensa o rebote sugiere perforación (Antunes 2024).',
+          'Si un dolor de espalda, cuello u hombro aumenta, disminuye o desaparece al comer, pide más cribado y derivación médica (Goodman 2018).',
           'Riñón y tensión arterial: retienen sodio y agua, con edema a menudo sin síntomas, y pueden subir la tensión (Lucas 2019; Bindu 2020). La lesión renal es rara en personas sanas a dosis habituales; el riesgo se concentra en mayores, enfermedad renal, hepática o cardíaca, deshidratación y quien toma a la vez diuréticos o fármacos del sistema renina-angiotensina (Lucas 2019).',
         ],
         detalle: [
+          'Por qué el hombro y la espalda: si la úlcera se perfora, el jugo gástrico irrita el diafragma y el dolor se refiere al hombro, normalmente el derecho aunque el estómago esté a la izquierda; los nervios del estómago y del intestino delgado entran en la médula entre T6 y T9, y su dolor se percibe en la mitad de la espalda y la zona de la escápula. En la úlcera duodenal, un dolor fijo en la línea media de la espalda entre T6 y T10 que irradia al hipocondrio derecho puede indicar perforación de la pared posterior (Goodman 2018).',
+          'Las fuentes no coinciden en los plazos tras comer: 15–30 min en la úlcera gástrica y 2–3 h en la duodenal (Malik 2023), frente a 30–90 min y 2–4 h (Goodman 2018).',
+          'Los síntomas digestivos por fármacos pueden aparecer con retraso, hasta 6–8 semanas después de tomarlos, y la úlcera por AINE es uno de los casos más frecuentes (Goodman 2018).',
+          'Qué aumenta el riesgo de complicación digestiva, sin contar otros fármacos: más de 65 años, úlcera o enfermedad digestiva previa, tabaco y alcohol (Goodman 2018). Los antiácidos y otros fármacos que bajan el ácido pueden enmascarar los síntomas de alarma, y la persona no nota que el daño sigue (Goodman 2018).',
+          'Los coxibs dan menos úlcera porque la COX-2 no está en la mucosa del estómago (Malik 2023), pero no quitan el riesgo: quien toma un coxib también puede tener molestias o complicaciones digestivas, más con los mismos factores de riesgo (Goodman 2018).',
           'Corazón: su uso se asocia a peor salud cardiovascular, aunque se duda del riesgo coronario con dosis bajas durante pocos días. Las personas mayores tienen más riesgo de base de complicaciones cardiovasculares, digestivas, renales y hepáticas (Bindu 2020).',
           'Hígado: la lesión clínica es rara (1–10 casos por 100 000 prescripciones), más con diclofenaco y sulindaco; se presenta como hepatitis aguda con ictericia, náuseas y fiebre (Bindu 2020).',
           'Respiratorio: alrededor del 7 % de las personas con asma tiene broncoespasmo con la aspirina u otros AINE (Bindu 2020).',
@@ -65,17 +74,21 @@ export const FAMILIAS_FARMACO = [
         ],
       },
       sueno: {
-        texto: 'Las fuentes leídas no describen un efecto directo de los AINE sobre el sueño. Pendiente de una fuente que lo trate.',
+        texto: [
+          'En adultos sanos, la aspirina a dosis baja (81 mg/día) durante 2–3 semanas no cambió el sueño medido con actigrafía y empeoró solo un poco la calidad que refieren; los estudios previos que recoge ese ensayo, con dosis altas durante pocos días, describen menos sueño profundo y más despertares (Engert 2024). En un ensayo pequeño (10 mujeres con dismenorrea), el diclofenaco mejoró el sueño al aliviar el dolor (Iacovides 2009). Las fuentes leídas no estudian el ibuprofeno ni otros AINE en personas sin dolor.',
+          'Un dolor que despierta de noche y mejora al comer puede ser de una úlcera duodenal (Malik 2023).',
+        ],
       },
       consultar: {
         texto: [
-          'Sangrado digestivo visible: parar toda actividad y buscar atención médica (Papantoniou 2023). El sangrado oculto con anemia necesita estudio (Papantoniou 2023).',
+          'Sangrado digestivo visible: parar toda actividad y buscar atención médica (Papantoniou 2023), por urgencias (Antunes 2024). El sangrado oculto con anemia necesita estudio (Papantoniou 2023). La pérdida de peso sin querer, la dificultad para tragar que va a más, los vómitos repetidos o la anemia por falta de hierro también piden derivación urgente (Malik 2023).',
+          'Dolor de espalda o de hombro en quien toma AINE, sobre todo con síntomas de úlcera: que lo valore un médico (Goodman 2018).',
           'También edema, poca orina o proteinuria pocos días después de empezarlos (Lucas 2019); ictericia, náuseas y fiebre; subida de la tensión, sobre todo con enfermedad renal crónica; o broncoespasmo en una persona con asma (Bindu 2020).',
           'Las dudas sobre la dosis, la duración o la combinación con otros fármacos, al médico o al farmacéutico.',
         ],
       },
     },
-    fuentes: ['Schug 2021', 'Bindu 2020', 'Lucas 2019', 'Papantoniou 2023', 'Pannone y Abbott 2024'],
+    fuentes: ['Schug 2021', 'Bindu 2020', 'Lucas 2019', 'Papantoniou 2023', 'Pannone y Abbott 2024', 'Malik 2023', 'Saad y Mathew 2025', 'Antunes 2024', 'Goodman 2018', 'Engert 2024', 'Iacovides 2009'],
   },
   // Corticoides (2026-10): seis revisiones o estudios leídos enteros en PMC y
   // la guía de Beuschlein 2024 por secciones. Sin fuente leída para que
