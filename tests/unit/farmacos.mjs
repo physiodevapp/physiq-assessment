@@ -129,6 +129,15 @@ test('CIMA: nunca entra en el payload, 📋 Notas, 📄 Informe ni el prompt del
   });
 });
 
+test('al pasar a segundo plano no se cierra ningún diálogo (solo la tarjeta de una cita); al ocultarla el hub, sí', () => {
+  const src = leer('app.js');
+  const i = src.indexOf('// Autosave when app is backgrounded');
+  const vis = src.slice(i, src.indexOf('});', src.indexOf("addEventListener('visibilitychange'", i)) + 3);
+  assert.ok(vis.includes('saveSession()') && vis.includes('cerrarFicha('), vis);
+  assert.ok(!vis.includes('_closeAllOverlays'), 'volver de CIMA, Kenhub o «✨ IA» no debe cerrar la guía');
+  assert.match(src, /PHYSIQ_SAT_HIDDEN'\) \{\s*saveSession\(\);\s*_closeAllOverlays\(\);/);
+});
+
 test('app: botón de cabecera, opción en «Herramientas» y funciones expuestas en window', () => {
   const html = leer('index.html');
   assert.ok(html.includes('id="farmBtn"') && html.includes('onclick="abrirFarmacos()"'));

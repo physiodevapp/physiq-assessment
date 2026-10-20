@@ -2784,6 +2784,31 @@ async function checkFarmacos(browser, errors) {
   r.cimaCopia = await page.waitForFunction(base => document.getElementById('appToast')?.textContent.startsWith('«naproxeno» copiado')
     && window.__iaHrefs.at(-1) === base, CIMA_BUSCADOR, { timeout: 3000 }).then(() => true, () => false)
     && await page.evaluate(() => navigator.clipboard.readText()) === 'naproxeno';
+  // Volver de otra pestaña (CIMA) o de otra app: la guía sigue abierta, con la familia
+  // desplegada y el mismo scroll; solo se cierra la tarjeta de una cita
+  // Con la guía desplazada, toca una cita que esté a la vista (sin que Playwright mueva el scroll)
+  await page.evaluate(() => { document.getElementById('farmCuerpo').scrollTop = 200; });
+  await page.waitForTimeout(100);   // que pase el evento scroll antes de abrir la tarjeta (un scroll > 24 px la cierra)
+  await page.evaluate(() => {
+    const panel = document.getElementById('farmCuerpo');
+    const p = panel.getBoundingClientRect();
+    [...document.querySelectorAll('[data-familia="aine"] .farm-apartado .cita')]
+      .find(c => { const b = c.getBoundingClientRect(); return b.top > p.top + 40 && b.bottom < p.bottom - 40; })?.click();
+  });
+  const conFicha = await page.waitForSelector('#citaFicha:not([hidden])', { timeout: 3000 }).then(() => true, () => false);
+  r.vuelta = conFicha && await page.evaluate(async () => {
+    const panel = document.getElementById('farmCuerpo');
+    const antes = panel.scrollTop;
+    const ver = v => { Object.defineProperty(document, 'visibilityState', { value: v, configurable: true }); document.dispatchEvent(new Event('visibilitychange')); };
+    ver('hidden');
+    await new Promise(r => setTimeout(r, 50));
+    ver('visible');
+    delete document.visibilityState;
+    const ficha = document.getElementById('citaFicha');
+    return document.getElementById('farmOverlay').classList.contains('open')
+      && document.querySelector('[data-familia="aine"]').open && antes > 0 && panel.scrollTop === antes
+      && ficha.hidden;
+  });
   // «✨ IA» del primer párrafo: visible sobre el velo y con la familia como contexto
   await page.click('[data-familia="aine"] .farm-apartado p .ia-parrafo-ir');
   await page.waitForTimeout(150);
@@ -5960,7 +5985,7 @@ const SECCIONES = [
 
   { id: 'farmacos', titulo: 'Guía de fármacos:', run: async ({ browser, errors }) => {
     const c = await checkFarmacos(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las 13 familias plegadas y en orden (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes, diuréticos y otros antihipertensivos, insulina y antidiabéticos, fármacos que tocan el hueso), sin bloque de pendientes y acabando en su pie, los AINE y el hueso con sus cinco apartados y citas; «Ficha técnica (CIMA)»: seis enlaces de AINE al buscador de CIMA en otra pestaña, sin nada en la URL, y tocar uno copia su nombre; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; farmacosPreguntarIA() abre «Preguntar a la IA» en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA y con los enlaces a CIMA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las 13 familias plegadas y en orden (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes, diuréticos y otros antihipertensivos, insulina y antidiabéticos, fármacos que tocan el hueso), sin bloque de pendientes y acabando en su pie, los AINE y el hueso con sus cinco apartados y citas; «Ficha técnica (CIMA)»: seis enlaces de AINE al buscador de CIMA en otra pestaña, sin nada en la URL, y tocar uno copia su nombre; sigue abierta al volver de otra pestaña; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; farmacosPreguntarIA() abre «Preguntar a la IA» en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA y con los enlaces a CIMA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
