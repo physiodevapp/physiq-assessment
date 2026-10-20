@@ -4,7 +4,7 @@
 
 Cómo revisarlo: marca cada casilla que valga tal cual y anota debajo las que haya que cambiar. «Redacción propia» = la frase no sale de ninguna fuente leída; son las que más necesitan tu revisión. Las cifras y páginas citadas están comprobadas contra las fuentes leídas (notas en `docs/plan-tratamiento.md`, «Fuentes leídas», en el razonamiento de la pregunta `l6` para Finucane 2020, en el de `cv3` para Margetis y Donnally 2025 y en el de `cv_ar1` y `cv_ar2` para Rushton 2023, en el de `h_c4` para Goodman 2018, y en el de `co1` para Momodu y Savaliya 2023 y Pangia 2025).
 
-Redacción propia: **32** frases.
+Redacción propia: **33** frases.
 
 ## 1. Programa para casa (lo lee el paciente)
 
@@ -612,6 +612,20 @@ Fármacos que toma (tarjeta de la fase 1, `data/farmacos-paciente.js`): un aviso
   ↳ guía de fármacos, familia `antihipertensivos` (texto revisado; su cita va dentro)
 - [ ] «Calor: en mayores, los diuréticos de asa, los IECA y los ARA II se asociaron a más ingresos por golpe de calor o deshidratación, también sin ola de calor (Layton 2020).»  
   ↳ guía de fármacos, familia `antihipertensivos` (texto revisado; su cita va dentro)
+- [ ] «Toma insulina u otros antidiabéticos:»  
+  ↳ **redacción propia** (rótulo del aviso de `antidiabeticos`)
+- [ ] «Riesgo de hipoglucemia con el ejercicio: lo tiene quien usa insulina o sulfonilureas. Con metformina, gliptinas, GLP-1, gliflozinas o pioglitazona solos no hace falta tomar hidratos por el ejercicio; combinados con insulina o sulfonilureas, sí hay riesgo (Kanaley 2022; Colberg 2016). Con insulina o sulfonilureas, que traiga hidratos de absorción rápida y su medidor de glucosa, y glucagón si tiende a hipoglucemias graves (Kanaley 2022; Riddell 2017).»  
+  ↳ guía de fármacos, familia `antidiabeticos` (texto revisado; su cita va dentro)
+- [ ] «Glucemia antes de empezar: el objetivo es 90–250 mg/dL (5,0–13,9 mmol/L) (Colberg 2016). Por debajo de 90 mg/dL, hidratos antes de empezar (Colberg 2016; Riddell 2017). Por encima de 250 mg/dL hay que mirar las cetonas: con cetonas moderadas o altas no se hace ejercicio; sin ellas, ejercicio ligero o moderado si se encuentra bien e hidratado, y el intenso cuando baje de 250 (Colberg 2016; Kanaley 2022). Una hipoglucemia grave en las 24 horas previas contraindica el ejercicio (Riddell 2017).»  
+  ↳ guía de fármacos, familia `antidiabeticos` (texto revisado; su cita va dentro)
+- [ ] «Durante: en la diabetes tipo 1, la hipoglucemia aparece en la mayoría dentro de los 45 minutos de ejercicio aeróbico (Riddell 2017). Después: aparece sobre todo 6–15 horas más tarde, aunque el riesgo dura hasta 48 horas (Colberg 2016), y el ejercicio largo e intenso lo aumenta con insulina o sulfonilureas (Kanaley 2022).»  
+  ↳ guía de fármacos, familia `antidiabeticos` (texto revisado; su cita va dentro)
+- [ ] «Lugar de inyección: la insulina se pone en una zona que no vaya a trabajar, porque el ejercicio acelera su absorción, y el calor ambiente también (Adolfsson 2022). Las fuentes leídas no tratan el masaje, el calor local ni la terapia manual sobre una zona recién inyectada.»  
+  ↳ guía de fármacos, familia `antidiabeticos` (texto revisado; su cita va dentro)
+- [ ] «Gliflozinas: el ejercicio, solo si se encuentra bien, aunque la glucosa no esté muy alta, por la cetoacidosis con glucosa normal (Kanaley 2022); por la pérdida de volumen y el mareo (Tentolouris 2019), cuida la hidratación y los cambios de postura.»  
+  ↳ guía de fármacos, familia `antidiabeticos` (texto revisado; su cita va dentro)
+- [ ] «Hipoglucemia en la sesión: para el ejercicio y que se mida la glucosa (Moser 2020; Costello 2023). Con 70 mg/dL (3,9 mmol/L) o menos, 15 g de hidratos de absorción rápida, mejor glucosa (tabletas, zumo, refresco), sin grasa ni proteína; volver a medir a los 15 minutos y repetir si sigue baja, la regla «15-15»; cuando se recupere, que coma algo, porque con insulina o sulfonilureas puede repetirse (ADA 2025; Costello 2023). Si bajó de 54 mg/dL, no se reanuda el ejercicio (Moser 2020).»  
+  ↳ guía de fármacos, familia `antidiabeticos` (texto revisado; su cita va dentro)
 - [ ] «No le digas que deje ni cambie la medicación: las dudas, a quien la prescribe.»  
   ↳ **redacción propia** (resume las frases «Nunca aconsejes…» de cada familia; decisión 18 de docs/farmacos-paciente.md)
 
