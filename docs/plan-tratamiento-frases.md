@@ -598,7 +598,9 @@ Fármacos que toma (tarjeta de la fase 1, `data/farmacos-paciente.js`): un aviso
   ↳ guía de fármacos, familia `estatinas` (texto revisado; su cita va dentro)
 - [ ] «Rabdomiólisis por esfuerzo: el ejercicio extenuante, sobre todo sin entrenamiento, levantar mucho peso o hacerlo con mucho calor, y la deshidratación pueden causarla, igual que la inmovilización prolongada (Rout 2025).»  
   ↳ guía de fármacos, familia `estatinas` (texto revisado; su cita va dentro)
-- [ ] «Mayores: por encima de 65 años la concentración de atorvastatina es mayor y el riesgo de miopatía también (McIver y Siddique 2025). Las fuentes leídas no tratan la terapia manual, las caídas ni las adaptaciones al entrenamiento.»  
+- [ ] «Mayores: por encima de 65 años la concentración de atorvastatina es mayor y el riesgo de miopatía también (McIver y Siddique 2025). Las fuentes leídas no tratan la terapia manual ni las caídas.»  
+  ↳ guía de fármacos, familia `estatinas` (texto revisado; su cita va dentro)
+- [ ] «Entrenamiento: una revisión sistemática no encontró pruebas consistentes de que las estatinas frenen la mejora con el entrenamiento, aunque solo dos estudios lo midieron (Noyes 2017). En uno, con simvastatina, el consumo máximo de oxígeno subió un 10 % con el ejercicio solo y un 1,5 % con la estatina (Noyes 2017); en otro, en mayores, la mejora del consumo pico tras 12 semanas de caminar en cinta fue parecida con y sin estatina (Slade 2021).»  
   ↳ guía de fármacos, familia `estatinas` (texto revisado; su cita va dentro)
 - [ ] «Toma o ha tomado fluoroquinolonas:»  
   ↳ **redacción propia** (rótulo del aviso de `fluoroquinolonas`)
