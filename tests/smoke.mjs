@@ -1626,7 +1626,7 @@ async function checkModoGuia(page) {
   r.verbal = await page.evaluate(() => {
     const campo = document.getElementById('motivoConsulta');
     const v = document.querySelector('[data-verbal="motivoConsulta"]');
-    return campo.offsetParent === null && !!v && v.offsetParent !== null && /Qué le trae/.test(v.textContent);
+    return campo.offsetParent === null && !!v && v.offsetParent !== null && /Qué te trae/.test(v.textContent);
   });
   await page.click('[data-verbal="motivoConsulta"] .verbal-check');
   r.preguntado = await page.evaluate(() => state.preguntado.motivoConsulta === true
@@ -1635,7 +1635,7 @@ async function checkModoGuia(page) {
   await page.waitForSelector('#fpBody_comun .verbal');
   r.formulario = await page.evaluate(() => {
     const t = document.getElementById('fpBody_comun').textContent;
-    return /¿Desde cuándo le pasa\?/.test(t) && /¿Qué medicación toma ahora\?/.test(t) && !/Medicación que toma ahora/.test(t)
+    return /¿Desde cuándo te pasa\?/.test(t) && /¿Qué medicación tomas ahora\?/.test(t) && !/Medicación que toma ahora/.test(t)
       && document.querySelectorAll('#fpBody_comun textarea').length === 0;
   });
   // «Sí» en el desencadenante abre su detalle: también como frase, no como caja

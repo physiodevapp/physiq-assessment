@@ -249,3 +249,16 @@ test('frases cortas: solo se leen en modo guía y nunca llegan a los resúmenes 
     assert.doesNotMatch(leer(arch), /\.verbal\b/, arch);
   }
 });
+
+test('frases cortas: se dicen de «tú» al paciente, nunca de «usted» (ni «le», «su», «tiene», «toma»…; «que te preocupe» sí vale)', () => {
+  const usted = /\b(le|les|usted|su|sus|tiene|toma|hace|quiera)\b/i;
+  for (const esq of [COMUN, LUMBAR]) {
+    for (const it of items(esq)) {
+      for (const v of [it.verbal, it.detalle?.verbal].filter(Boolean)) assert.doesNotMatch(v, usted, `${esq.id}.${it.id}: «${v}»`);
+    }
+  }
+  // las de la fase 1 y 3 (la del signo comparable va al fisio, no al paciente)
+  for (const [id, v] of Object.entries(VERBALES)) {
+    if (id !== 'signoComparable') assert.doesNotMatch(v.frase, usted, `${id}: «${v.frase}»`);
+  }
+});
