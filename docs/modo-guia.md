@@ -179,6 +179,18 @@ Si los informes no mejoran, la guía es solo comodidad. Si mejoran, es la forma 
 2. Adjuntar ese archivo en la tarjeta tal cual y ver si Whisper lo transcribe bien, sobre todo durante la exploración (distancia, ruido, movimiento).
 3. Si se quiere usar la transcripción de la grabadora (decisión 14): su política de datos de salud.
 
+## Orden de trabajo y modelo para cada parte
+
+Una parte por sesión. Opus donde hay riesgo clínico o hay que encontrar cada sitio que lee un dato; Sonnet para el trabajo mecánico, con este documento como guía.
+
+| Paso | Qué | Modelo | Por qué |
+|---|---|---|---|
+| 0 | Comprobar el audio de la grabadora («Por comprobar», puntos 1 y 2) | — (lo hace el fisio) | Si no cabe en 25 MB, antes hay que resolver la compresión o el troceo en el worker de physiq-report, y cambia el orden |
+| 1 | Decisión 3: «sin marcar» = «no preguntado», con sus tests | **Opus** | Hoy mucha lógica da por hecho el `'NO'` por defecto (alerta sistémica, `ur`, `sq`, embudo, pendientes, condiciones especiales, resúmenes). Un sitio olvidado podría ocultar una urgencia. Es la base del resto |
+| 2 | Vista guía (`modo-guia`, `registro`), nombre automático, teclado numérico, apuntes verbales con check «preguntado», frases ancla, payload, tests unitarios y sección del smoke test | **Sonnet** | Presentación y datos siguiendo patrones que ya existen (`modo-breve`) |
+| 3 | Frases cortas `verbal` en `formularios/comun.js` y `formularios/lumbar.js` | **Sonnet** + revisión del fisio | Redacción breve de preguntas que ya existen |
+| 4 | Decisión 6 (regla de urgencias contra la transcripción) y decisión 9 (lista de preguntas y regla «no consta» en el prompt) | **Opus** | Criterio clínico y calibración con informes reales. Esperar al primer informe real grabado en modo guía |
+
 ## Cambios técnicos (cuando se acepten las decisiones)
 
 Orientativo, para estimar:
