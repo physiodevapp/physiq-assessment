@@ -253,7 +253,7 @@ Hecho sin el Plaud; lo que depende de una grabación real queda en «Pendiente c
 ### Pendiente con la grabadora
 
 - Formato, tamaño y transcripción del audio del Plaud (25 MB).
-- Calibrar los patrones de las urgencias y ampliarlos a las demás regiones con consultas reales en modo guía.
+- Calibrar los patrones de las urgencias (los 75: las 7 regiones, pasos 4 y 5, y las condiciones especiales, paso 6) con consultas reales en modo guía.
 - Revisar con un informe real si la regla del prompt hace que la IA omita bien lo que no está en la transcripción, sin inventar ni llenar de «no consta».
 
 ## Paso 5: el resto de regiones (2026-10)
