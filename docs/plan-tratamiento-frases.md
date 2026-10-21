@@ -570,6 +570,8 @@ Fármacos que toma (tarjeta de la fase 1, `data/farmacos-paciente.js`): un aviso
   ↳ guía de fármacos, familia `gabapentinoides` (texto revisado; su cita va dentro)
 - [ ] «Mayores y función renal: ambos fármacos se eliminan por vía renal y el aclaramiento baja en los mayores y con disfunción renal, con más riesgo de reacciones adversas (Yasaei 2024; Cross 2024).»  
   ↳ guía de fármacos, familia `gabapentinoides` (texto revisado; su cita va dentro)
+- [ ] «Caídas y fracturas: en mayores, la fractura de cadera fue un 30 % más probable en los 60 días siguientes a dispensarlos, y más en personas frágiles o con enfermedad renal crónica (Leung 2024). En pacientes ingresados, las caídas fueron más frecuentes con ellos (OR 1,88) (Moon 2026).»  
+  ↳ guía de fármacos, familia `gabapentinoides` (texto revisado; su cita va dentro)
 - [ ] «Las fuentes leídas no dan normas de terapia manual en estos pacientes ni sobre el ejercicio en las horas siguientes a la toma.»  
   ↳ guía de fármacos, familia `gabapentinoides` (texto revisado; su cita va dentro)
 - [ ] «Toma antidepresivos:»  
