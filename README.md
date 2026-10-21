@@ -6,7 +6,7 @@ SINSS, ICF decision tree, and hypothesis confirmation.
 
 **Primary entry point: [PhysiQ Hub](https://physiodevapp.github.io/physiq/)** — installs as a single PWA covering all PhysiQ apps.
 
-**Standalone: [→ Open app](https://physiodevapp.github.io/physiq-assessment/)**
+**Standalone: [→ Open app](https://physiodevapp.github.io/physiq/assessment/)** — the hub's copy, opened directly; install it from the browser menu as its own app.
 
 ---
 
