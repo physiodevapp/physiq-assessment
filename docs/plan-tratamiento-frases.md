@@ -588,6 +588,8 @@ Fármacos que toma (tarjeta de la fase 1, `data/farmacos-paciente.js`): un aviso
   ↳ guía de fármacos, familia `sedantes` (texto revisado; su cita va dentro)
 - [ ] «Equilibrio: el efecto depende de la dosis y es máximo en las primeras horas tras la toma; es mayor con dosis altas, con poco tiempo entre la toma y el despertar o con alcohol u otros sedantes, y la inestabilidad es más marcada en mayores (Capiau 2023).»  
   ↳ guía de fármacos, familia `sedantes` (texto revisado; su cita va dentro)
+- [ ] «Rendimiento: en adultos sanos y activos, las benzodiacepinas no cambiaron la fuerza ni la resistencia, y una dosis de lorazepam solo bajó la potencia máxima de un esfuerzo anaeróbico breve; son 10 estudios pequeños, con las pruebas hechas entre 3 y 16 h después de la toma y sin medir el equilibrio (Holgado 2022). En un análisis secundario de un ensayo con mayores con peor función física, el programa de actividad física protegió de la pérdida de movilidad a quienes no tomaban benzodiacepinas, pero no a quienes las tomaban; en el conjunto de participantes la diferencia no fue significativa (Levati 2026).»  
+  ↳ guía de fármacos, familia `sedantes` (texto revisado; su cita va dentro)
 - [ ] «Las fuentes leídas no dan normas de terapia manual ni de dosificación del ejercicio con estos fármacos.»  
   ↳ guía de fármacos, familia `sedantes` (texto revisado; su cita va dentro)
 - [ ] «Toma estatinas:»  
