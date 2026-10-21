@@ -618,7 +618,9 @@ Fármacos que toma (tarjeta de la fase 1, `data/farmacos-paciente.js`): un aviso
   ↳ guía de fármacos, familia `betabloqueantes` (texto revisado; su cita va dentro)
 - [ ] «Las fuentes no coinciden en cuánto fiarse del Borg: la guía europea lo quiere solo como complemento de un método objetivo, como la prueba de esfuerzo, y advierte que los betabloqueantes pueden dificultar su interpretación (Hansen 2022); el ensayo que lo apoya es de 13 jóvenes sanos con una sola dosis (Mitchell 2025). Si su cardiólogo le ha dado una intensidad a partir de una prueba de esfuerzo, esa manda.»  
   ↳ guía de fármacos, familia `betabloqueantes` (texto revisado; su cita va dentro)
-- [ ] «Por el mareo y la hipotensión (Ez Eddin 2025; Farzam y Jan 2023), cuida los cambios de postura y el final de la sesión. Las fuentes leídas no tratan la terapia manual, el ejercicio con calor ni la sudoración en el esfuerzo.»  
+- [ ] «Por el mareo y la hipotensión (Ez Eddin 2025; Farzam y Jan 2023), cuida los cambios de postura y el final de la sesión. Las fuentes leídas no tratan la terapia manual.»  
+  ↳ guía de fármacos, familia `betabloqueantes` (texto revisado; su cita va dentro)
+- [ ] «Calor: en un metaanálisis, los betabloqueantes no cambiaron la temperatura central ni el sudor en el ejercicio con calor; con los no selectivos, como el propranolol, subió algo más (0,11 °C). Casi todos los estudios eran de hombres jóvenes y sanos (Hospers 2024). Ante un golpe de calor clásico se revisa la medicación, en especial los betabloqueantes (Morris y Patel 2023).»  
   ↳ guía de fármacos, familia `betabloqueantes` (texto revisado; su cita va dentro)
 - [ ] «Caídas: en mayores de 55 años, los no selectivos, como el propranolol, se asociaron a más caídas (HR 1,22; IC 95 % 1,01–1,48) y los selectivos no (HR 0,92; 0,83–1,01). Ese estudio miró el uso mantenido, no el comienzo, cuando otros estudios vieron más caídas por hipotensión (Ham 2017).»  
   ↳ guía de fármacos, familia `betabloqueantes` (texto revisado; su cita va dentro)
