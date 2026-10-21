@@ -9953,7 +9953,7 @@ Citada como:
 
 Autores: Kalfas, Tsapekos, Butler, McCutcheon, Pillinger, Strawbridge y cols.  
 Título: *Incidence and nature of antidepressant discontinuation symptoms: a systematic review and meta-analysis*  
-Publicación: JAMA Psychiatry 82(9):896–904  
+Publicación: JAMA Psychiatry 82:896–904  
 DOI: 10.1001/jamapsychiatry.2025.1362  
 Última revisión: **sin revisar**  
 Nota: Revisión sistemática y metaanálisis de 50 ensayos (17 828 participantes); PDF del usuario, leído entero (2026-10). Un síntoma más que con placebo en la primera semana (DME 0,31); mareo OR 5,52, diferencia de riesgo 6,24 %; 17,5 % con venlafaxina; vértigo OR 6,40. Tratamientos y seguimientos cortos. Guía de fármacos, familia antidepresivos (2026-10): retirada, contradicción con Moncrieff 2025.
