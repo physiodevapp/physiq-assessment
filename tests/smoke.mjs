@@ -4511,7 +4511,8 @@ async function enParalelo(items, n, fn) {
 // con los mismos escuchas de errores y el mismo /validate simulado.
 // Bandas de contexto del formulario previo (fases 1 y 2) y del sistema abierto
 // (fase 2): se ven solo con la cabecera bajo la banda y el bloque aún en
-// pantalla, nunca dos a la vez; «↑ volver» lleva a la cabecera; caben a 320 px.
+// pantalla, nunca dos a la vez; toda la banda (no solo «↑ volver») lleva a la
+// cabecera; caben a 320 px.
 async function checkBandaFormulario(page) {
   const bandas = () => page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(() => {
     const ver = id => document.getElementById(id).classList.contains('visible');
@@ -4548,7 +4549,8 @@ async function checkBandaFormulario(page) {
     await irA(pos.fuera);
     const fuera = await bandas();
     await irA(pos.dentro);
-    await page.click('#fpContextBanner .context-banner-back');
+    // Toda la banda vuelve, no solo «↑ volver»: se pulsa sobre el nombre
+    await page.click('#fpBannerName');
     await page.waitForFunction(() => {
       const s = document.querySelector('#fpDet_comun > summary').getBoundingClientRect();
       const t = parseFloat(getComputedStyle(document.getElementById('fpContextBanner')).top);
@@ -4621,7 +4623,12 @@ async function checkBandaFormulario(page) {
     const btn = b.querySelector('.context-banner-back').getBoundingClientRect();
     return b.scrollWidth <= b.clientWidth && btn.right <= innerWidth && b.offsetHeight < 60;
   });
-  res.ok = res.w390_ok && res.w1280_ok && res.cabe320;
+  // Las tres bandas son un solo botón, sin otro botón dentro, y se anuncian como «Volver a …»
+  res.botones = await page.evaluate(() => ['fpContextBanner', 'sisContextBanner', 'hypContextBanner'].every(id => {
+    const b = document.getElementById(id);
+    return b.tagName === 'BUTTON' && !b.querySelector('button') && /^Volver a /.test(b.querySelector('.sr-only')?.textContent || '');
+  }));
+  res.ok = res.w390_ok && res.w1280_ok && res.cabe320 && res.botones;
   return res;
 }
 
