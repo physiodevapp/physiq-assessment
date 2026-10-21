@@ -1,6 +1,6 @@
 // Modo guía con grabadora externa: docs/modo-guia.md, decisión 3 («sin marcar» =
 // «no preguntado», nunca «NO»). Se ejecuta desde tests/unit.js.
-import { assert, leer, test, state, SYSTEMIC_SCREENING, HYPOTHESES, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
+import { assert, leer, readdirSync, join, RAIZ, test, state, SYSTEMIC_SCREENING, HYPOTHESES, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
   buildSistemaHTML, sistemasActivos, withState } from './comun.mjs';
 
 console.log('\nmodo guía (sin marcar = no preguntado)');
@@ -350,5 +350,83 @@ test('prompt: el bloque llega al prompt completo, con o sin audio según la tarj
     const a = IA.construirAmpliado();
     assert.ok(IN.contextoValoracion(d, n => n, a, { conAudio: true }).includes(IN.REGLA_GUIA_AUDIO));
     assert.ok(IN.contextoValoracion(d, n => n, a, { conAudio: false }).includes(IN.REGLA_GUIA_SIN_AUDIO));
+  });
+});
+
+console.log('\nmodo guía (paso 4: urgencias contra la transcripción, decisión 6)');
+const RI = await import('../../lib/revision-informe.js');
+const { respuestasUrgentes } = await import('../../app.js');
+const { CONTRASTE_URGENCIAS } = await import('../../data/guia.js');
+const SIN_RESP = ids => ids.map(id => ({ id, respuesta: '' }));
+const detecta = (tr, ids = Object.keys(CONTRASTE_URGENCIAS)) => RI.urgenciasEnTranscripcion(tr, SIN_RESP(ids)).map(u => u.id);
+
+test('urgencias en la transcripción: cada pregunta piloto tiene tema y patrones válidos', () => {
+  assert.deepEqual(Object.keys(CONTRASTE_URGENCIAS).sort(), ['hem_5', 'hem_6', 'l6', 'l_e8', 'l_v4', 'sx_sincope']);
+  for (const [id, c] of Object.entries(CONTRASTE_URGENCIAS)) {
+    assert.ok(c.tema && c.patrones.length, id);
+    c.patrones.forEach(p => assert.doesNotThrow(() => new RegExp(p), `${id}: ${p}`));
+  }
+  // y todas son preguntas de urgencia de verdad
+  withState({ region: 'lumbar' }, () => {
+    const urg = new Set(sistemasActivos().flatMap(s => s.preguntas).filter(q => q.urgencia).map(q => q.id));
+    Object.keys(CONTRASTE_URGENCIAS).forEach(id => assert.ok(urg.has(id), id));
+  });
+});
+
+test('urgencias en la transcripción: detecta lo que el paciente cuenta, de cada pregunta', () => {
+  const casos = {
+    l6: ['Desde ayer se me escapa el pis sin darme cuenta.', 'Tengo como dormida la zona entre las piernas.', 'Me cuesta orinar desde el lunes.'],
+    l_e8: ['Tengo un retraso de la regla de dos semanas.', 'He tenido un sangrado vaginal raro.'],
+    l_v4: ['La pantorrilla derecha la tengo hinchada y caliente.'],
+    sx_sincope: ['La semana pasada me desmayé corriendo.'],
+    hem_5: ['Estoy con quimio desde marzo.'],
+    hem_6: ['Soy hemofílico desde pequeño.'],
+  };
+  for (const [id, frases] of Object.entries(casos)) frases.forEach(f => assert.deepEqual(detecta(`Bueno. ${f} Vale.`), [id], `${id}: «${f}»`));
+});
+
+test('urgencias en la transcripción: no salta con la pregunta del fisio, con lo negado ni con «no está caliente»', () => {
+  for (const f of [
+    '¿Se te escapa el pis o notas dormida la zona entre las piernas? No, nada.',
+    'No he notado que se me escape el pis.',
+    'Nada de desmayos, nunca.',
+    'La pantorrilla está blanda, no está caliente y no le duele al apretarla.',
+    'Me duele la pierna al caminar.',
+  ]) assert.deepEqual(detecta(f), [], f);
+  assert.deepEqual(RI.urgenciasEnTranscripcion('', SIN_RESP(['l6'])), []);
+});
+
+test('urgencias en la transcripción: un SÍ ya marcado no avisa; un NO o sin responder sí, y lo dice', () => {
+  const tr = 'Doctor, desde ayer se me escapa el pis.';
+  assert.deepEqual(RI.urgenciasEnTranscripcion(tr, [{ id: 'l6', respuesta: 'SI' }]), []);
+  const datos = { p: 'X', r: 'lumbar', d: '01/01/2026', br: [], sq: [], pn: {}, h: [] };
+  const rev = respuesta => RI.revisarInforme('Informe.', { datos, transcripcion: tr, cribado: [{ id: 'l6', respuesta }] })
+    .filter(p => p.id === 'urgencia-transcripcion');
+  const [enNO] = rev('NO'), [sinResp] = rev('');
+  assert.equal(enNO.nivel, 'alto');
+  assert.match(enNO.mensaje, /cauda equina.*en NO/);
+  assert.match(sinResp.mensaje, /sin responder/);
+  assert.match(enNO.cita, /se me escapa el pis/, 'cita la frase de la consulta');
+  // sin la lista del cribado (herramientas antiguas, capa 3) no hace nada
+  assert.deepEqual(RI.revisarInforme('Informe.', { datos, transcripcion: tr }).filter(p => p.id === 'urgencia-transcripcion'), []);
+});
+
+test('urgencias en la transcripción: ningún aviso en las 25 transcripciones reales, aun con todo sin responder', () => {
+  const dir = 'tests/fixtures/informes';
+  const ids = Object.keys(CONTRASTE_URGENCIAS);
+  const archivos = readdirSync(join(RAIZ, dir)).filter(f => /transcripcion\.txt$/.test(f));
+  assert.ok(archivos.length >= 20);
+  for (const f of archivos) assert.deepEqual(detecta(leer(dir, f), ids), [], f);
+});
+
+test('urgencias en la transcripción: la tarjeta y la herramienta le pasan las preguntas de urgencia con su respuesta', () => {
+  assert.match(leer('informe-ia.js'), /cribado: respuestasUrgentes\(\)/);
+  assert.match(leer('tools/revisar-informe.mjs'), /cribado: app\.respuestasUrgentes\(\)/);
+  guia({ sistemicoAnswers: { l6: 'NO', sx_sincope: 'SI' } }, () => {
+    const r = Object.fromEntries(respuestasUrgentes().map(x => [x.id, x.respuesta]));
+    assert.equal(r.l6, 'NO');
+    assert.equal(r.sx_sincope, 'SI');
+    assert.equal(r.l_e8, '', 'sin responder');
+    assert.ok(!('l_u5' in r), 'solo las de urgencia');
   });
 });

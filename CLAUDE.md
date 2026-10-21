@@ -159,7 +159,7 @@ A single global `state` object (`state.js`, imported by every module) holds the 
 const state = {
   currentPhase: 1,
   modo: 'completo',         // 'completo' | 'breve' — see "Modo breve"; survives resetApp() like the patient name
-  registro: 'teclado',      // 'teclado' | 'guia' — guide mode with an external recorder (docs/modo-guia.md, steps 1–2 done: selector `#registroConsulta` in phase 1, standalone only; text boxes become «para decir en voz alta» phrases with an optional «Preguntado» check — `state.preguntado`; own numeric keypad for phase 1 numbers; test anchor phrases in 4b; payload `rg: 'guia'`); in 'guia' screening answers and banderasRojas start unanswered ('' / no key = «no preguntado», never «NO»); survives resetApp() like modo
+  registro: 'teclado',      // 'teclado' | 'guia' — guide mode with an external recorder (docs/modo-guia.md, steps 1–2 done: selector `#registroConsulta` in phase 1, standalone only; text boxes become «para decir en voz alta» phrases with an optional «Preguntado» check — `state.preguntado`; own numeric keypad for phase 1 numbers; test anchor phrases in 4b; payload `rg: 'guia'`; step 4: consent toast, `#iaGuia` notice in the AI card, the spoken questions with empty boxes in the prompt (`construirAmpliado().guia`, `bloqueGuia()`: answer from the transcript or omit) and the review point `urgencia-transcripcion` (`urgenciasEnTranscripcion()` + `CONTRASTE_URGENCIAS`, lumbar's six urgent questions, any registro) — see `docs/informe-ia.md`); in 'guia' screening answers and banderasRojas start unanswered ('' / no key = «no preguntado», never «NO»); survives resetApp() like modo
   maxVisitedIdx: 0,
   regionChanged: false,
   treeModified: false,

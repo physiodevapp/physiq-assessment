@@ -871,6 +871,15 @@ function getNoPreguntadas() {
   return { urgentes, banderas, sistemas };
 }
 
+// Preguntas de urgencia que se ven ahora, con su respuesta ('SI' | 'NO' | '' sin
+// responder): para contrastarlas con la transcripción en la revisión del informe
+// (decisión 6 de docs/modo-guia.md). Nunca va al payload ni al prompt.
+function respuestasUrgentes() {
+  if (!state.region || !SYSTEMIC_SCREENING[state.region]) return [];
+  return sistemasActivos().flatMap(sis => sis.preguntas).filter(q => q.urgencia)
+    .map(q => ({ id: q.id, respuesta: ['SI', 'NO'].includes(state.sistemicoAnswers[q.id]) ? state.sistemicoAnswers[q.id] : '' }));
+}
+
 // Las mismas, como líneas de texto: payload `np`, 📋 Notas y prompt del informe.
 function lineasNoPreguntadas(np = getNoPreguntadas()) {
   return [
@@ -6220,7 +6229,7 @@ initAmpliarIA();
 // Named exports for phase4.js / phase4b.js (which import these directly) and
 // for tests/unit.js.
 export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, getUrgenciasActivas, getCirugiaPayload, cerrarMenuCompartir, resumenFormularioIA, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
-  buildContextSummaryText, getPendientesBreve, getNoPreguntadas, lineasNoPreguntadas, preguntasVerbales, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML,
+  buildContextSummaryText, getPendientesBreve, getNoPreguntadas, lineasNoPreguntadas, preguntasVerbales, respuestasUrgentes, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML,
   precargarFormularioPrevio, nombreRegion, showToast,
   injectQuickInputBar, repintarP1Fase3, lockBodyScroll, unlockBodyScroll, partirPrimeraFrase, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento };
 

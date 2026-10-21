@@ -19,7 +19,7 @@
 import { ramaPauta } from './lib/pauta.js';
 import { state } from './state.js';
 import { CIF_TREES, HYPOTHESES, SYSTEMIC_SCREENING, DOSIS_DERIVAR } from './data.js';
-import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast, resumenFormularioIA, compartirTexto, registrarValoracionCompleta, preguntasVerbales } from './app.js';
+import { saveSession, showConfirmBanner, buildPhysiQPayload, nombreRegion, showToast, resumenFormularioIA, compartirTexto, registrarValoracionCompleta, preguntasVerbales, respuestasUrgentes } from './app.js';
 import { esTratada, hipotesis, hipotesisActivas } from './phase4b.js';
 import { esPosquirurgico, cirugiaPayload, pautaHipPosq } from './lib/posquirurgico.js';
 import { dsActiva, medidasPruebaTexto } from './lib/disautonomia.js';
@@ -225,6 +225,7 @@ function puntosRevision(inf) {
   return revisarInforme(inf.texto, {
     datos: buildPhysiQPayload(), ampliado: construirAmpliado(), plantilla: inf.plantilla || 'narrativo',
     transcripcion: inf.conAudio ? inf.transcripcion : '', nombreRegion,
+    cribado: respuestasUrgentes(),
   });
 }
 
