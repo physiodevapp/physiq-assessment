@@ -1,6 +1,22 @@
 # Modo guía con grabadora externa — documento marco
 
-Estado: **propuesta**, pendiente de las decisiones de abajo. No hay código. Piloto propuesto: **lumbar**, solo standalone.
+Estado: **diseño aceptado** (2026-10): las 14 decisiones de abajo, todas según la recomendación. No hay código. Antes de programar, hacer las comprobaciones de «Por comprobar fuera de la app». Piloto: **lumbar**, solo standalone.
+
+## Decisiones tomadas (octubre 2026)
+1. Sesión sin nombre: **nombre automático** («Paciente 10:42», editable).
+2. Números: **teclado numérico propio** (0–9 en una hoja inferior), no tramos.
+3. En modo guía, **sin marcar = «no preguntado»**, nunca «NO»; el cierre lo lista con las urgencias arriba; nunca bloquea.
+4. Preguntas de texto: **frase corta para decir en voz alta** + enunciado plegado + check opcional «preguntado»; solo las que aportan al informe.
+5. **Frases ancla sugeridas** en los tests de 4b y el signo comparable, sin obligar.
+6. **Regla sin IA** que contrasta la transcripción con las 6 urgencias de lumbar; solo avisa.
+7. Audio por **«📎 Adjuntar audio»**, sin integración con la grabadora.
+8. **`registro` independiente de `modo`** (breve y guía se combinan).
+9. Prompt con la **lista de preguntas de la guía y la regla «no consta»**.
+10. **Pistas del formulario sin cambios** (solo lo tocado).
+11. **Restricciones de la cirugía sin cambios** («pendientes de confirmar» si no se escriben).
+12. Piloto: **lumbar, solo standalone**.
+13. **Casilla de consentimiento** + recordatorio al empezar a grabar.
+14. **Sin transcripción de la grabadora** en esta versión (pendiente de su política de datos de salud).
 
 ## La idea
 
