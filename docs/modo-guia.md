@@ -190,6 +190,8 @@ Una parte por sesión. Opus donde hay riesgo clínico o hay que encontrar cada s
 | 2 ✅ | Vista guía (`modo-guia`, `registro`), nombre automático, teclado numérico, apuntes verbales con check «preguntado», frases ancla, payload, tests unitarios y sección del smoke test (hecho 2026-10, ver «Paso 2: lo implementado») | **Sonnet** | Presentación y datos siguiendo patrones que ya existen (`modo-breve`) |
 | 3 ✅ | Frases cortas `verbal` en `formularios/comun.js` y `formularios/lumbar.js` (hecho 2026-10, revisado: se dicen de «tú», ver «Paso 3») | **Sonnet** + revisión del fisio | Redacción breve de preguntas que ya existen |
 | 4 ✅ (falta calibrar) | Decisión 6 (regla de urgencias contra la transcripción) y decisión 9 (lista de preguntas y regla «no consta» en el prompt), más el consentimiento (13) y el aviso de la tarjeta (hecho 2026-10, ver «Paso 4»; calibrar con el primer informe real grabado en modo guía) | **Opus** | Criterio clínico y calibración con informes reales |
+| 5 ✅ | El resto de regiones: frases `verbal` de sus formularios y sus preguntas de urgencia contra la transcripción (hecho 2026-10, ver «Paso 5») | **Opus** | Criterio clínico en los patrones |
+| 6 ✅ (falta calibrar) | Las urgencias de las condiciones especiales contra la transcripción (hecho 2026-10, ver «Paso 6») | **Opus** | Criterio clínico, como el paso 4 |
 
 ## Paso 1: lo implementado (decisión 3)
 
@@ -253,6 +255,22 @@ Hecho sin el Plaud; lo que depende de una grabación real queda en «Pendiente c
 - Formato, tamaño y transcripción del audio del Plaud (25 MB).
 - Calibrar los patrones de las urgencias y ampliarlos a las demás regiones con consultas reales en modo guía.
 - Revisar con un informe real si la regla del prompt hace que la IA omita bien lo que no está en la transcripción, sin inventar ni llenar de «no consta».
+
+## Paso 5: el resto de regiones (2026-10)
+
+A petición del fisio, antes de revisar lumbar con consultas reales (cambia la decisión 12, que dejaba las demás regiones para después). El resto del modo guía ya era de las 7 regiones; solo faltaban dos piezas regionales:
+
+- **Frases cortas (de «tú»):** las 6 preguntas de texto de los formularios de cadera (deporte; el «¿Cuál?» de un problema de cadera de pequeño), hombro (deporte; «¿Cuándo fue la última vez que se te salió?») y codo (deporte; «¿Cuánto tiempo te lo inmovilizaron?»). Cervical, rodilla y tobillo y pie no tienen preguntas de texto. El test de frases (presencia, «¿…?», 75 caracteres, tuteo) cubre ya los 8 formularios.
+- **Urgencias contra la transcripción:** las 30 preguntas de urgencia regionales de las otras 6 regiones, con patrones que apuntan al dato rojo concreto y no al tema (golpes, caídas, hinchazón y «no puedo mover…» son lo habitual en consulta; las luxaciones previas del hombro las pregunta su formulario). TVP, ectópico, fiebre, dolor torácico e isquemia comparten patrones entre regiones. Un test exige una entrada por cada pregunta de urgencia regional (ni más ni menos) y un ejemplo detectado por pregunta, más frases habituales que no deben saltar. Con las 36 preguntas sin responder y de cualquier región sobre las 25 transcripciones reales: 0 avisos. Nuevo: una negación justo después («Fiebre, no») también lo descarta.
+- **Fuera:** las urgencias de los sistemas de las condiciones especiales, hechas en el paso 6.
+
+## Paso 6: las urgencias de las condiciones especiales (2026-10)
+
+- **Qué:** las 39 preguntas de urgencia de los sistemas que solo se ven con su tarjeta de la fase 1 marcada, también en `CONTRASTE_URGENCIAS` (`data/guia.js`): posquirúrgico (7), hipermovilidad (3), disautonomía (4), lupus (6), osteoporosis (1), embarazo o posparto (12) y anticoagulado o antiagregado (6). El trastorno mastocitario no tiene ninguna. Solo cuentan con la tarjeta marcada: `respuestasUrgentes()` lee `sistemasActivos()`, como el resto del cribado.
+- **Familias nuevas** compartidas entre tarjetas: falta de aire brusca o tos con sangre (`AIRE`; solo con «de golpe/de repente», porque al subir escaleras o en el embarazo es lo habitual), ictus (`ICTUS`), síndrome compartimental (`COMPARTIMENTAL`), esfínteres (`ESFINTERES`, que ahora usa también `l6`), síntomas nerviosos nuevos desde la operación y desmayo (`DESMAYO`), más el brazo hinchado junto a la TVP. Una frase puede dar dos puntos (la TVP regional y la de su tarjeta, por ejemplo): son dos preguntas distintas, y cada una está sin marcar.
+- **Las dos `privada`** del embarazo (psicosis posparto e ideas de autolesión) llevan un tema genérico, «un posible problema de salud mental urgente tras el parto», nunca el texto de su pregunta (decisión 11 de `docs/embarazo-posparto.md`; test).
+- **Medido** con las 75 preguntas sin responder sobre las 25 transcripciones reales: solo avisa en la de Javier, que cuenta «me dio de golpe un dolor de cabeza muy fuerte, el peor de mi vida». Es un verdadero positivo: su `cv_ar4` está en SÍ, y una cefalea así es también una alarma en el embarazo y con anticoagulantes. El patrón de `cv_ar4` no la reconocía y se amplió («de golpe … dolor de cabeza», «el peor de mi vida»). El test fija esos tres avisos y ninguno más, comprueba que con su `cv_ar4` en SÍ no hay aviso, y exige un ejemplo detectado por pregunta, más frases habituales que no deben saltar (falta de aire al subir escaleras, dedos blancos con el frío que se pasan, «desde la operación estoy mucho mejor»…).
+- **Pendiente:** calibrarlo con consultas reales de pacientes con alguna de estas tarjetas.
 
 ## Cambios técnicos (cuando se acepten las decisiones)
 
