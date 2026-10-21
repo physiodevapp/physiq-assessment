@@ -203,8 +203,8 @@ test('modo guía: nunca en el hub (el selector se oculta y la sesión restaurada
 
 test('modo guía: el formulario previo cambia la caja de texto por la frase solo si está vacía', () => {
   const f = leer('formulario.js');
-  assert.match(f, /state\.registro === 'guia' && !\(resp\[it\.id\] \|\| ''\)\.trim\(\)/);
-  assert.match(f, /it\.verbal \|\| it\.texto/);
+  assert.match(f, /state\.registro === 'guia' && !\(resp\[key\] \|\| ''\)\.trim\(\)/);
+  assert.match(f, /verbal \|\| etiqueta/, 'sin frase corta, el enunciado');
 });
 
 test('modo guía: los números de la fase 1 usan el teclado propio y los manejadores de siempre', () => {
@@ -215,4 +215,50 @@ test('modo guía: los números de la fase 1 usan el teclado propio y los manejad
   const app = leer('app.js');
   assert.match(app, /dispatchEvent\(new Event\('input', \{ bubbles: true \}\)\)/);
   assert.match(app, /dispatchEvent\(new Event\('blur'\)\)/);
+});
+
+console.log('\nmodo guía (paso 3: frases cortas del formulario previo, lumbar)');
+const COMUN = (await import('../../formularios/comun.js')).default;
+const LUMBAR = (await import('../../formularios/lumbar.js')).default;
+const items = esq => esq.secciones.flatMap(s => s.items);
+
+test('formulario previo (común y lumbar): toda pregunta de texto y todo `detalle` tiene su frase corta para decir en voz alta', () => {
+  for (const esq of [COMUN, LUMBAR]) {
+    for (const it of items(esq)) {
+      if (it.tipo === 'texto') assert.ok(it.verbal, `${esq.id}.${it.id}: falta verbal`);
+      if (it.detalle) assert.ok(it.detalle.verbal, `${esq.id}.${it.id}: falta verbal en el detalle`);
+    }
+  }
+});
+
+test('frases cortas: preguntas completas, con interrogación y de longitud hablable', () => {
+  for (const esq of [COMUN, LUMBAR]) {
+    for (const it of items(esq)) {
+      for (const v of [it.verbal, it.detalle?.verbal].filter(Boolean)) {
+        assert.match(v, /^¿.*\?$/, `${esq.id}.${it.id}: «${v}»`);
+        assert.ok(v.length <= 75, `${esq.id}.${it.id}: demasiado larga (${v.length})`);
+      }
+    }
+  }
+});
+
+test('frases cortas: solo se leen en modo guía y nunca llegan a los resúmenes ni al payload', () => {
+  const f = leer('formulario.js');
+  assert.match(f, /state\.registro === 'guia' && !\(resp\[key\] \|\| ''\)\.trim\(\)/);
+  for (const arch of ['lib/resumenes.js', 'lib/informe-narrativo.js', 'informe-ia.js']) {
+    assert.doesNotMatch(leer(arch), /\.verbal\b/, arch);
+  }
+});
+
+test('frases cortas: se dicen de «tú» al paciente, nunca de «usted» (ni «le», «su», «tiene», «toma»…; «que te preocupe» sí vale)', () => {
+  const usted = /\b(le|les|usted|su|sus|tiene|toma|hace|quiera)\b/i;
+  for (const esq of [COMUN, LUMBAR]) {
+    for (const it of items(esq)) {
+      for (const v of [it.verbal, it.detalle?.verbal].filter(Boolean)) assert.doesNotMatch(v, usted, `${esq.id}.${it.id}: «${v}»`);
+    }
+  }
+  // las de la fase 1 y 3 (la del signo comparable va al fisio, no al paciente)
+  for (const [id, v] of Object.entries(VERBALES)) {
+    if (id !== 'signoComparable') assert.doesNotMatch(v.frase, usted, `${id}: «${v.frase}»`);
+  }
 });

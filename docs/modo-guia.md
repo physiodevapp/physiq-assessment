@@ -188,7 +188,7 @@ Una parte por sesión. Opus donde hay riesgo clínico o hay que encontrar cada s
 | 0 | Comprobar el audio de la grabadora («Por comprobar», puntos 1 y 2) | — (lo hace el fisio) | Si no cabe en 25 MB, antes hay que resolver la compresión o el troceo en el worker de physiq-report, y cambia el orden |
 | 1 ✅ | Decisión 3: «sin marcar» = «no preguntado», con sus tests (hecho 2026-10, ver «Paso 1: lo implementado») | **Opus** | Hoy mucha lógica da por hecho el `'NO'` por defecto (alerta sistémica, `ur`, `sq`, embudo, pendientes, condiciones especiales, resúmenes). Un sitio olvidado podría ocultar una urgencia. Es la base del resto |
 | 2 ✅ | Vista guía (`modo-guia`, `registro`), nombre automático, teclado numérico, apuntes verbales con check «preguntado», frases ancla, payload, tests unitarios y sección del smoke test (hecho 2026-10, ver «Paso 2: lo implementado») | **Sonnet** | Presentación y datos siguiendo patrones que ya existen (`modo-breve`) |
-| 3 | Frases cortas `verbal` en `formularios/comun.js` y `formularios/lumbar.js` | **Sonnet** + revisión del fisio | Redacción breve de preguntas que ya existen |
+| 3 ✅ | Frases cortas `verbal` en `formularios/comun.js` y `formularios/lumbar.js` (hecho 2026-10, revisado: se dicen de «tú», ver «Paso 3») | **Sonnet** + revisión del fisio | Redacción breve de preguntas que ya existen |
 | 4 | Decisión 6 (regla de urgencias contra la transcripción) y decisión 9 (lista de preguntas y regla «no consta» en el prompt) | **Opus** | Criterio clínico y calibración con informes reales. Esperar al primer informe real grabado en modo guía |
 
 ## Paso 1: lo implementado (decisión 3)
@@ -215,6 +215,29 @@ Sin selector todavía (es del paso 2): el modo se activa con `state.registro = '
 - **Payload** `rg: 'guia'` (solo en guía, para no cambiar la huella de lo demás).
 - **Fuera de este paso**: la lista de preguntas verbales y la regla «no consta» en el prompt (decisión 9) y el contraste con la transcripción (decisión 6), que son del paso 4; las frases cortas `verbal` de los formularios, del paso 3. Las pantallas de Atrás del móvil no cierran el teclado numérico (se cierra con Listo, el velo o Escape).
 - Tests: `tests/unit/modo-guia.mjs`; smoke, sección `modo-guia` (390 px el selector, la frase, el teclado, y 1280 px el cribado, las frases ancla y la fase 5).
+
+## Paso 3: las frases cortas (decisión 4)
+
+Campo nuevo `verbal` en las preguntas `texto` y en el `detalle` de una opción (`detalle: { opcion, etiqueta, verbal }`) de `formularios/comun.js` y `formularios/lumbar.js`. Solo se lee en modo guía, con la caja vacía (`textareaOVerbal()`, `formulario.js`); sin `verbal` sale el enunciado literal del papel. Nunca llega a los resúmenes, al payload ni al prompt (test unitario). Reglas que fija un test: pregunta completa con «¿…?», como mucho 75 caracteres y **de «tú»** al paciente (decisión del fisio: más cercano; nunca «le», «su», «usted»). Las demás regiones siguen sin `verbal` (su formulario sale con el enunciado) hasta que lumbar esté revisado con consultas reales.
+
+| Pregunta | Frase corta |
+|---|---|
+| `desde_cuando` | ¿Desde cuándo te pasa? |
+| `desencadenante` (detalle) | ¿Qué fue lo que lo desencadenó? |
+| `episodio_previo` | ¿Cuándo fue la última vez que te pasó y cuánto te duró? |
+| `actividad_1` | ¿Qué es lo que más has dejado de hacer, o haces peor, por esto? |
+| `actividad_2` | ¿Qué otra cosa te cuesta? |
+| `actividad_3` | ¿Y una tercera cosa que te cueste? |
+| `probado_sirvio` | ¿Te sirvió de algo lo que has probado? |
+| `enfermedades` | ¿Qué enfermedades importantes tienes o has tenido? |
+| `operaciones` | ¿Te han operado alguna vez? ¿Cuándo? |
+| `medicacion` | ¿Qué medicación tomas ahora? |
+| `postura_alivio` (detalle, lumbar) | ¿Qué postura o movimiento te lo alivia? |
+| `traumatismo` (detalle, lumbar) | ¿Qué golpe, caída u operación de columna tuviste? |
+| `deporte` (lumbar) | ¿Haces algún deporte o actividad repetitiva? ¿Cuál y cuántos días? |
+| `algo_mas` (lumbar) | ¿Algo más que quieras contarme o que te preocupe? |
+
+Las de la fase 1 y 3 (motivo, signo comparable, cirugía) viven en `data/guia.js` (`VERBALES`) y se revisan igual.
 
 ## Cambios técnicos (cuando se acepten las decisiones)
 
