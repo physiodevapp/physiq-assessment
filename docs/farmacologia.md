@@ -302,11 +302,11 @@ Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido:
 
 **Aviso de la fase 6** (`data/farmacos-paciente.js`): no se ha tocado ninguna de sus frases, y el test de literalidad pasa. «Las fuentes leídas no dan normas de terapia manual ni de dosificación del ejercicio…» sigue siendo un hueco y se queda igual. Propuesta aceptada y aplicada (2026-10): añadir al aviso la frase «Rendimiento: en adultos sanos y activos, las benzodiacepinas no cambiaron la fuerza ni la resistencia… (Holgado 2022). En un análisis secundario de un ensayo con mayores con peor función física… (Levati 2026).», copiada literal de la guía. Recomendación: añadirla. Es lo único sobre ejercicio que hay en la familia, y dice a la vez que el rendimiento no cambia en sanos y que el ejercicio puede servir menos en mayores frágiles que los toman.
 
-**Redacción propia nueva en las estatinas, con Ble 2017, Mikus 2013, Kelly 2016 y Parker 2013** (2026-10), con una recomendación en cada punto dudoso:
+**Redacción propia nueva en las estatinas, con Ble 2017, Mikus 2013, Kelly 2016 y Parker 2013** (2026-10). El usuario aceptó todas las recomendaciones y el aviso de la fase 6.
 - «es un estudio observacional» (Ble 2017): no hay revisión sistemática libre sobre caídas. Recomendación: se queda.
 - «En cambio» une Mikus 2013 (frena la mejora) con Kelly 2016 (no la cambia en insuficiencia cardíaca): es la contradicción que ya recogía la guía con Noyes 2017 y Slade 2021. Recomendación: se queda.
 - Mikus 2013 y Parker 2013 son anteriores a 2015; cada uno es el ensayo que recogen las revisiones ya citadas. Recomendación: se quedan.
-- **Aviso de la fase 6** (propuesta, sin aplicar): su frase «Mayores: … Las fuentes leídas no tratan la terapia manual ni las caídas.» ya no es literal. Propuesta: dejarla en «…Las fuentes leídas no tratan la terapia manual.» y añadir después la frase nueva de las caídas (Ble 2017).
+- **Aviso de la fase 6** (propuesta aceptada por el usuario y aplicada, 2026-10): su frase «Mayores: … Las fuentes leídas no tratan la terapia manual ni las caídas.» ya no es literal. Propuesta: dejarla en «…Las fuentes leídas no tratan la terapia manual.» y añadir después la frase nueva de las caídas (Ble 2017).
 
 **Redacción propia nueva en las estatinas, al cerrar los huecos** (2026-10). El usuario aceptó todas las recomendaciones: todo se queda como está, y el aviso de la fase 6 cambia la frase de hueco y gana la del entrenamiento.
 - «Las fuentes no coinciden en la tendinopatía: …» junta una cohorte y un estudio genético; «un estudio genético» es mi forma de decir «aleatorización mendeliana». Recomendación: se queda.
@@ -327,7 +327,7 @@ Lo que va entre paréntesis son solo **pistas de qué buscar**. No es contenido:
 - «Nunca aconsejes dejarlos ni bajarlos por tu cuenta… con quien los prescribe. Las dudas, al médico o al farmacéutico.» Que la retirada es gradual sí es de Brunner 2025 y Kershner 2026.
 - «No se dejan de golpe» resume las recomendaciones de Brunner 2025 (no suspender bruscamente) y de los capítulos del baclofeno y la tizanidina.
 
-**Redacción propia nueva en los antidepresivos, con Kalfas 2025, Moncrieff 2025, Wong 2024 y Gobillot-Morisson 2024** (2026-10), con una recomendación en cada punto dudoso:
+**Redacción propia nueva en los antidepresivos, con Kalfas 2025, Moncrieff 2025, Wong 2024 y Gobillot-Morisson 2024** (2026-10). El usuario aceptó todas las recomendaciones.
 - «Las fuentes no coinciden en cuántos tienen síntomas al dejarlos» y «Las fuentes no coinciden en el sangrado quirúrgico»: rótulos de dos contradicciones. Recomendación: se quedan.
 - «por debajo de un síndrome clínico» resume la conclusión de Kalfas 2025 («below the threshold for clinically significant discontinuation syndrome»). Recomendación: se queda.
 - «y considera poco fiables las cifras más bajas» resume la crítica de Moncrieff 2025 a Henssler 2024, que no se ha leído. Recomendación: se queda, sin nombrar a Henssler en la guía.
