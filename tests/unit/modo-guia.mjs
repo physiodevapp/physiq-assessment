@@ -1,6 +1,6 @@
 // Modo guía con grabadora externa: docs/modo-guia.md, decisión 3 («sin marcar» =
 // «no preguntado», nunca «NO»). Se ejecuta desde tests/unit.js.
-import { assert, leer, test, state, SYSTEMIC_SCREENING, HYPOTHESES, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
+import { assert, leer, readdirSync, join, RAIZ, test, state, SYSTEMIC_SCREENING, HYPOTHESES, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
   buildSistemaHTML, sistemasActivos, withState } from './comun.mjs';
 
 console.log('\nmodo guía (sin marcar = no preguntado)');
@@ -261,4 +261,172 @@ test('frases cortas: se dicen de «tú» al paciente, nunca de «usted» (ni «l
   for (const [id, v] of Object.entries(VERBALES)) {
     if (id !== 'signoComparable') assert.doesNotMatch(v.frase, usted, `${id}: «${v.frase}»`);
   }
+});
+
+console.log('\nmodo guía (paso 4: consentimiento, aviso del informe y preguntas habladas en el prompt)');
+const IA = await import('../../informe-ia.js');
+const fpMod = await import('../../formulario.js');
+await fpMod.cargarEsquemaRegion('lumbar');
+await (await import('./comun.mjs')).precargarFormularioPrevio();
+const FP_VACIO = () => ({ comun: {}, regiones: { lumbar: {} } });
+const preguntasDe = a => (a.guia || []).map(p => p.q);
+
+test('consentimiento: el aviso del modo guía y el toast al activarlo lo recuerdan (decisión 13)', () => {
+  assert.match(TEXTOS_GUIA.consentimiento, /consentimiento/);
+  assert.ok(leer('index.html').includes('pídele su consentimiento: así queda en el audio'));
+  assert.match(leer('app.js'), /_ponerNombreAuto\(\);\n    showToast\(TEXTOS_GUIA\.consentimiento\);/);
+});
+
+test('tarjeta del informe: en guía avisa de que el texto libre está en el audio, más fuerte sin audio', () => {
+  assert.match(TEXTOS_GUIA.informeSinAudio, /no constará/);
+  const ia = leer('informe-ia.js');
+  assert.match(ia, /if \(state\.registro !== 'guia'\) \{ el\.innerHTML = ''; return; \}/);
+  assert.match(ia, /TEXTOS_GUIA\.informeConAudio[\s\S]*TEXTOS_GUIA\.informeSinAudio/);
+});
+
+test('prompt: fuera del modo guía no hay lista de preguntas habladas (la huella no cambia)', () => {
+  withState({ region: 'lumbar', formularioPrevio: FP_VACIO() }, () => assert.ok(!('guia' in IA.construirAmpliado())));
+});
+
+test('prompt: en guía van las preguntas con la caja vacía, con su grupo; lo ya escrito no', () => {
+  guia({ formularioPrevio: FP_VACIO(), motivoConsulta: '', signoComparable: 'Flexión 40º' }, () => {
+    const g = IA.construirAmpliado().guia;
+    const qs = g.map(p => p.q);
+    assert.ok(qs.includes(VERBALES.motivoConsulta.frase), 'motivo');
+    assert.ok(!qs.some(q => /Signo comparable/.test(q)), 'el signo comparable escrito no va');
+    assert.ok(qs.includes('¿Desde cuándo te pasa?'));
+    assert.ok(qs.includes('¿Algo más que quieras contarme o que te preocupe?'), 'las de la región también');
+    assert.equal(g.find(p => p.q === '¿Desde cuándo te pasa?').g, 'historia');
+    assert.ok(g.every(p => ['historia', 'sintomas', 'actividades', 'contexto', 'exploracion'].includes(p.g)), 'todas con grupo');
+  });
+  guia({ formularioPrevio: { comun: { medicacion: 'Ibuprofeno' }, regiones: { lumbar: {} } }, signoComparable: '' }, () => {
+    const qs = preguntasDe(IA.construirAmpliado());
+    assert.ok(!qs.includes('¿Qué medicación tomas ahora?'), 'con texto escrito no se pregunta');
+    assert.ok(qs.some(q => /^Signo comparable/.test(q)), 'el signo comparable va con su nombre, no con la instrucción al fisio');
+  });
+});
+
+test('prompt: solo lo visible (episodio previo y «detalle» según la respuesta) y la cirugía solo si es posquirúrgico', () => {
+  guia({ formularioPrevio: FP_VACIO() }, () => {
+    const qs = preguntasDe(IA.construirAmpliado());
+    assert.ok(!qs.includes('¿Cuándo fue la última vez que te pasó y cuánto te duró?'));
+    assert.ok(!qs.includes('¿Qué fue lo que lo desencadenó?'));
+    assert.ok(!qs.includes(VERBALES.cirIntervencion.frase));
+  });
+  guia({ mecanismo: 'Post-quirúrgico', formularioPrevio: { comun: { primera_vez: 'No, ya me había pasado antes', desencadenante: 'Sí' }, regiones: { lumbar: {} } } }, () => {
+    const qs = preguntasDe(IA.construirAmpliado());
+    assert.ok(qs.includes('¿Cuándo fue la última vez que te pasó y cuánto te duró?'));
+    assert.ok(qs.includes('¿Qué fue lo que lo desencadenó?'));
+    assert.ok(qs.includes(VERBALES.cirIntervencion.frase) && qs.includes(VERBALES.cirRestricciones.frase));
+  });
+});
+
+test('prompt: «Preguntado» se marca en la lista, sin dar una respuesta', () => {
+  guia({ formularioPrevio: FP_VACIO(), motivoConsulta: '', preguntado: { motivoConsulta: true, 'fp:comun:medicacion': true } }, () => {
+    const g = IA.construirAmpliado().guia;
+    assert.equal(g.find(p => p.q === VERBALES.motivoConsulta.frase).preguntado, true);
+    assert.equal(g.find(p => p.q === '¿Qué medicación tomas ahora?').preguntado, true);
+    assert.ok(!g.find(p => p.q === '¿Desde cuándo te pasa?').preguntado);
+  });
+});
+
+test('prompt: la regla «no consta» con audio (buscar en la transcripción, omitir, sin «no refiere») y sin audio', () => {
+  const ps = [{ g: 'historia', q: '¿Desde cuándo te pasa?', preguntado: true }, { g: 'exploracion', q: 'Signo comparable: …' }];
+  const con = IN.bloqueGuia(ps, { conAudio: true });
+  assert.ok(con.startsWith(IN.REGLA_GUIA_AUDIO));
+  assert.match(con, /transcripción/);
+  assert.match(con, /no escribas «no refiere», «niega» ni «no consta»/);
+  assert.match(con, /· ¿Desde cuándo te pasa\? \(marcada como preguntada\)/);
+  assert.match(con, /Exploración \(va en Movilidad o en Pruebas Clínicas\):\n    · Signo comparable/);
+  const sin = IN.bloqueGuia(ps, { conAudio: false });
+  assert.ok(sin.startsWith(IN.REGLA_GUIA_SIN_AUDIO));
+  assert.doesNotMatch(sin, /transcripción/);
+  assert.equal(IN.bloqueGuia([], { conAudio: true }), '');
+});
+
+test('prompt: el bloque llega al prompt completo, con o sin audio según la tarjeta', () => {
+  guia({ formularioPrevio: FP_VACIO() }, () => {
+    const d = buildPhysiQPayload();
+    const a = IA.construirAmpliado();
+    assert.ok(IN.contextoValoracion(d, n => n, a, { conAudio: true }).includes(IN.REGLA_GUIA_AUDIO));
+    assert.ok(IN.contextoValoracion(d, n => n, a, { conAudio: false }).includes(IN.REGLA_GUIA_SIN_AUDIO));
+  });
+});
+
+console.log('\nmodo guía (paso 4: urgencias contra la transcripción, decisión 6)');
+const RI = await import('../../lib/revision-informe.js');
+const { respuestasUrgentes } = await import('../../app.js');
+const { CONTRASTE_URGENCIAS } = await import('../../data/guia.js');
+const SIN_RESP = ids => ids.map(id => ({ id, respuesta: '' }));
+const detecta = (tr, ids = Object.keys(CONTRASTE_URGENCIAS)) => RI.urgenciasEnTranscripcion(tr, SIN_RESP(ids)).map(u => u.id);
+
+test('urgencias en la transcripción: cada pregunta piloto tiene tema y patrones válidos', () => {
+  assert.deepEqual(Object.keys(CONTRASTE_URGENCIAS).sort(), ['hem_5', 'hem_6', 'l6', 'l_e8', 'l_v4', 'sx_sincope']);
+  for (const [id, c] of Object.entries(CONTRASTE_URGENCIAS)) {
+    assert.ok(c.tema && c.patrones.length, id);
+    c.patrones.forEach(p => assert.doesNotThrow(() => new RegExp(p), `${id}: ${p}`));
+  }
+  // y todas son preguntas de urgencia de verdad
+  withState({ region: 'lumbar' }, () => {
+    const urg = new Set(sistemasActivos().flatMap(s => s.preguntas).filter(q => q.urgencia).map(q => q.id));
+    Object.keys(CONTRASTE_URGENCIAS).forEach(id => assert.ok(urg.has(id), id));
+  });
+});
+
+test('urgencias en la transcripción: detecta lo que el paciente cuenta, de cada pregunta', () => {
+  const casos = {
+    l6: ['Desde ayer se me escapa el pis sin darme cuenta.', 'Tengo como dormida la zona entre las piernas.', 'Me cuesta orinar desde el lunes.'],
+    l_e8: ['Tengo un retraso de la regla de dos semanas.', 'He tenido un sangrado vaginal raro.'],
+    l_v4: ['La pantorrilla derecha la tengo hinchada y caliente.'],
+    sx_sincope: ['La semana pasada me desmayé corriendo.'],
+    hem_5: ['Estoy con quimio desde marzo.'],
+    hem_6: ['Soy hemofílico desde pequeño.'],
+  };
+  for (const [id, frases] of Object.entries(casos)) frases.forEach(f => assert.deepEqual(detecta(`Bueno. ${f} Vale.`), [id], `${id}: «${f}»`));
+});
+
+test('urgencias en la transcripción: no salta con la pregunta del fisio, con lo negado ni con «no está caliente»', () => {
+  for (const f of [
+    '¿Se te escapa el pis o notas dormida la zona entre las piernas? No, nada.',
+    'No he notado que se me escape el pis.',
+    'Nada de desmayos, nunca.',
+    'La pantorrilla está blanda, no está caliente y no le duele al apretarla.',
+    'Me duele la pierna al caminar.',
+  ]) assert.deepEqual(detecta(f), [], f);
+  assert.deepEqual(RI.urgenciasEnTranscripcion('', SIN_RESP(['l6'])), []);
+});
+
+test('urgencias en la transcripción: un SÍ ya marcado no avisa; un NO o sin responder sí, y lo dice', () => {
+  const tr = 'Doctor, desde ayer se me escapa el pis.';
+  assert.deepEqual(RI.urgenciasEnTranscripcion(tr, [{ id: 'l6', respuesta: 'SI' }]), []);
+  const datos = { p: 'X', r: 'lumbar', d: '01/01/2026', br: [], sq: [], pn: {}, h: [] };
+  const rev = respuesta => RI.revisarInforme('Informe.', { datos, transcripcion: tr, cribado: [{ id: 'l6', respuesta }] })
+    .filter(p => p.id === 'urgencia-transcripcion');
+  const [enNO] = rev('NO'), [sinResp] = rev('');
+  assert.equal(enNO.nivel, 'alto');
+  assert.match(enNO.mensaje, /cauda equina.*en NO/);
+  assert.match(sinResp.mensaje, /sin responder/);
+  assert.match(enNO.cita, /se me escapa el pis/, 'cita la frase de la consulta');
+  // sin la lista del cribado (herramientas antiguas, capa 3) no hace nada
+  assert.deepEqual(RI.revisarInforme('Informe.', { datos, transcripcion: tr }).filter(p => p.id === 'urgencia-transcripcion'), []);
+});
+
+test('urgencias en la transcripción: ningún aviso en las 25 transcripciones reales, aun con todo sin responder', () => {
+  const dir = 'tests/fixtures/informes';
+  const ids = Object.keys(CONTRASTE_URGENCIAS);
+  const archivos = readdirSync(join(RAIZ, dir)).filter(f => /transcripcion\.txt$/.test(f));
+  assert.ok(archivos.length >= 20);
+  for (const f of archivos) assert.deepEqual(detecta(leer(dir, f), ids), [], f);
+});
+
+test('urgencias en la transcripción: la tarjeta y la herramienta le pasan las preguntas de urgencia con su respuesta', () => {
+  assert.match(leer('informe-ia.js'), /cribado: respuestasUrgentes\(\)/);
+  assert.match(leer('tools/revisar-informe.mjs'), /cribado: app\.respuestasUrgentes\(\)/);
+  guia({ sistemicoAnswers: { l6: 'NO', sx_sincope: 'SI' } }, () => {
+    const r = Object.fromEntries(respuestasUrgentes().map(x => [x.id, x.respuesta]));
+    assert.equal(r.l6, 'NO');
+    assert.equal(r.sx_sincope, 'SI');
+    assert.equal(r.l_e8, '', 'sin responder');
+    assert.ok(!('l_u5' in r), 'solo las de urgencia');
+  });
 });

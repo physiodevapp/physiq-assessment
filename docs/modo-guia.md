@@ -189,7 +189,7 @@ Una parte por sesión. Opus donde hay riesgo clínico o hay que encontrar cada s
 | 1 ✅ | Decisión 3: «sin marcar» = «no preguntado», con sus tests (hecho 2026-10, ver «Paso 1: lo implementado») | **Opus** | Hoy mucha lógica da por hecho el `'NO'` por defecto (alerta sistémica, `ur`, `sq`, embudo, pendientes, condiciones especiales, resúmenes). Un sitio olvidado podría ocultar una urgencia. Es la base del resto |
 | 2 ✅ | Vista guía (`modo-guia`, `registro`), nombre automático, teclado numérico, apuntes verbales con check «preguntado», frases ancla, payload, tests unitarios y sección del smoke test (hecho 2026-10, ver «Paso 2: lo implementado») | **Sonnet** | Presentación y datos siguiendo patrones que ya existen (`modo-breve`) |
 | 3 ✅ | Frases cortas `verbal` en `formularios/comun.js` y `formularios/lumbar.js` (hecho 2026-10, revisado: se dicen de «tú», ver «Paso 3») | **Sonnet** + revisión del fisio | Redacción breve de preguntas que ya existen |
-| 4 | Decisión 6 (regla de urgencias contra la transcripción) y decisión 9 (lista de preguntas y regla «no consta» en el prompt) | **Opus** | Criterio clínico y calibración con informes reales. Esperar al primer informe real grabado en modo guía |
+| 4 ✅ (falta calibrar) | Decisión 6 (regla de urgencias contra la transcripción) y decisión 9 (lista de preguntas y regla «no consta» en el prompt), más el consentimiento (13) y el aviso de la tarjeta (hecho 2026-10, ver «Paso 4»; calibrar con el primer informe real grabado en modo guía) | **Opus** | Criterio clínico y calibración con informes reales |
 
 ## Paso 1: lo implementado (decisión 3)
 
@@ -238,6 +238,21 @@ Campo nuevo `verbal` en las preguntas `texto` y en el `detalle` de una opción (
 | `algo_mas` (lumbar) | ¿Algo más que quieras contarme o que te preocupe? |
 
 Las de la fase 1 y 3 (motivo, signo comparable, cirugía) viven en `data/guia.js` (`VERBALES`) y se revisan igual.
+
+## Paso 4: lo implementado (decisiones 6, 9 y 13)
+
+Hecho sin el Plaud; lo que depende de una grabación real queda en «Pendiente con la grabadora».
+
+- **Consentimiento (13):** al pasar a «Guía», un aviso («Al empezar a grabar, informa al paciente y pídele su consentimiento: así queda en el audio») y la misma frase bajo el selector. La casilla de consentimiento de la tarjeta del informe sigue igual.
+- **Tarjeta del informe:** en modo guía dice que los textos libres están en el audio; sin audio, lo dice como advertencia (el informe solo tendría lo marcado con botones).
+- **Prompt (9):** la lista de preguntas hechas de palabra cuya caja quedó vacía (fase 1 y 3 y formulario previo; solo las visibles y la cirugía solo en posquirúrgico), agrupadas por la sección del informe y con «(marcada como preguntada)». Regla con audio: buscar cada respuesta en la transcripción; si no está, omitirla, sin deducirla y sin «no refiere», «niega» ni «no consta». Sin audio: omitirlas todas. Fuera del modo guía el prompt no cambia.
+- **Urgencias contra la transcripción (6):** si en la consulta se habla de lo que pregunta una de las 6 urgencias de lumbar y esa pregunta está en NO o sin responder, un punto a revisar de nivel alto, con la frase de la consulta. Se salta lo que va dentro de una pregunta (el fisio preguntando) y lo negado. Funciona también en modo teclado (ahí el NO es por defecto). Medido con las 25 transcripciones reales de `tests/fixtures/informes/`, con todas las preguntas sin responder: 2 avisos falsos al principio («la pantorrilla está blanda, no está caliente»), 0 tras corregirlo.
+
+### Pendiente con la grabadora
+
+- Formato, tamaño y transcripción del audio del Plaud (25 MB).
+- Calibrar los patrones de las urgencias y ampliarlos a las demás regiones con consultas reales en modo guía.
+- Revisar con un informe real si la regla del prompt hace que la IA omita bien lo que no está en la transcripción, sin inventar ni llenar de «no consta».
 
 ## Cambios técnicos (cuando se acepten las decisiones)
 

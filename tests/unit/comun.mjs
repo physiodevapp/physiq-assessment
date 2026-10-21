@@ -39,6 +39,7 @@ export function test(name, fn) {
 export const BASE_STATE = {
   modo:             'completo',
   registro:         'teclado',
+  preguntado:       {},
   sistemicoBreve:   {},
   irritabilidadDirecta: false,
   maxVisitedIdx:    5,
