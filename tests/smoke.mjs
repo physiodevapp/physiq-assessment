@@ -1631,6 +1631,18 @@ async function checkModoGuia(page) {
   await page.click('[data-verbal="motivoConsulta"] .verbal-check');
   r.preguntado = await page.evaluate(() => state.preguntado.motivoConsulta === true
     && document.querySelector('[data-verbal="motivoConsulta"] .verbal-check').getAttribute('aria-pressed') === 'true');
+  await page.click('#fpDet_comun summary');
+  await page.waitForSelector('#fpBody_comun .verbal');
+  r.formulario = await page.evaluate(() => {
+    const t = document.getElementById('fpBody_comun').textContent;
+    return /¿Desde cuándo le pasa\?/.test(t) && /¿Qué medicación toma ahora\?/.test(t) && !/Medicación que toma ahora/.test(t)
+      && document.querySelectorAll('#fpBody_comun textarea').length === 0;
+  });
+  // «Sí» en el desencadenante abre su detalle: también como frase, no como caja
+  await page.click('#fpBody_comun .fp-opts button:has-text("Sí") >> nth=0');
+  r.detalle = await page.evaluate(() => /¿Qué fue lo que lo desencadenó\?/.test(document.getElementById('fpBody_comun').textContent)
+    && document.querySelectorAll('#fpBody_comun textarea').length === 0);
+  await page.click('#fpDet_comun summary');
   r.sinTecladoSistema = await page.evaluate(() => document.getElementById('edadPaciente').getAttribute('inputmode') === 'none');
   await page.click('#edadPaciente');
   await page.waitForSelector('#tecladoOverlay.open');
