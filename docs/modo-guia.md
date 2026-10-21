@@ -254,6 +254,14 @@ Hecho sin el Plaud; lo que depende de una grabación real queda en «Pendiente c
 - Calibrar los patrones de las urgencias y ampliarlos a las demás regiones con consultas reales en modo guía.
 - Revisar con un informe real si la regla del prompt hace que la IA omita bien lo que no está en la transcripción, sin inventar ni llenar de «no consta».
 
+## Paso 5: el resto de regiones (2026-10)
+
+A petición del fisio, antes de revisar lumbar con consultas reales (cambia la decisión 12, que dejaba las demás regiones para después). El resto del modo guía ya era de las 7 regiones; solo faltaban dos piezas regionales:
+
+- **Frases cortas (de «tú»):** las 6 preguntas de texto de los formularios de cadera (deporte; el «¿Cuál?» de un problema de cadera de pequeño), hombro (deporte; «¿Cuándo fue la última vez que se te salió?») y codo (deporte; «¿Cuánto tiempo te lo inmovilizaron?»). Cervical, rodilla y tobillo y pie no tienen preguntas de texto. El test de frases (presencia, «¿…?», 75 caracteres, tuteo) cubre ya los 8 formularios.
+- **Urgencias contra la transcripción:** las 30 preguntas de urgencia regionales de las otras 6 regiones, con patrones que apuntan al dato rojo concreto y no al tema (golpes, caídas, hinchazón y «no puedo mover…» son lo habitual en consulta; las luxaciones previas del hombro las pregunta su formulario). TVP, ectópico, fiebre, dolor torácico e isquemia comparten patrones entre regiones. Un test exige una entrada por cada pregunta de urgencia regional (ni más ni menos) y un ejemplo detectado por pregunta, más frases habituales que no deben saltar. Con las 36 preguntas sin responder y de cualquier región sobre las 25 transcripciones reales: 0 avisos. Nuevo: una negación justo después («Fiebre, no») también lo descarta.
+- **Fuera:** las urgencias de los sistemas de las condiciones especiales (posquirúrgico, embarazo, lupus, anticoagulado…), que no son de una región; quedan para un paso propio si hace falta.
+
 ## Cambios técnicos (cuando se acepten las decisiones)
 
 Orientativo, para estimar:

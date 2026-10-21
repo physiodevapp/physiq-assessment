@@ -220,10 +220,13 @@ test('modo guía: los números de la fase 1 usan el teclado propio y los manejad
 console.log('\nmodo guía (paso 3: frases cortas del formulario previo, lumbar)');
 const COMUN = (await import('../../formularios/comun.js')).default;
 const LUMBAR = (await import('../../formularios/lumbar.js')).default;
+// Las 7 regiones (paso 5, 2026-10): el piloto era común + lumbar
+const FORMULARIOS = [COMUN, LUMBAR, ...await Promise.all(['cadera', 'cervical', 'rodilla', 'hombro', 'tobillo_pie', 'codo']
+  .map(async r => (await import(`../../formularios/${r}.js`)).default))];
 const items = esq => esq.secciones.flatMap(s => s.items);
 
-test('formulario previo (común y lumbar): toda pregunta de texto y todo `detalle` tiene su frase corta para decir en voz alta', () => {
-  for (const esq of [COMUN, LUMBAR]) {
+test('formulario previo (común y las 7 regiones): toda pregunta de texto y todo `detalle` tiene su frase corta para decir en voz alta', () => {
+  for (const esq of FORMULARIOS) {
     for (const it of items(esq)) {
       if (it.tipo === 'texto') assert.ok(it.verbal, `${esq.id}.${it.id}: falta verbal`);
       if (it.detalle) assert.ok(it.detalle.verbal, `${esq.id}.${it.id}: falta verbal en el detalle`);
@@ -232,7 +235,7 @@ test('formulario previo (común y lumbar): toda pregunta de texto y todo `detall
 });
 
 test('frases cortas: preguntas completas, con interrogación y de longitud hablable', () => {
-  for (const esq of [COMUN, LUMBAR]) {
+  for (const esq of FORMULARIOS) {
     for (const it of items(esq)) {
       for (const v of [it.verbal, it.detalle?.verbal].filter(Boolean)) {
         assert.match(v, /^¿.*\?$/, `${esq.id}.${it.id}: «${v}»`);
@@ -252,7 +255,7 @@ test('frases cortas: solo se leen en modo guía y nunca llegan a los resúmenes 
 
 test('frases cortas: se dicen de «tú» al paciente, nunca de «usted» (ni «le», «su», «tiene», «toma»…; «que te preocupe» sí vale)', () => {
   const usted = /\b(le|les|usted|su|sus|tiene|toma|hace|quiera)\b/i;
-  for (const esq of [COMUN, LUMBAR]) {
+  for (const esq of FORMULARIOS) {
     for (const it of items(esq)) {
       for (const v of [it.verbal, it.detalle?.verbal].filter(Boolean)) assert.doesNotMatch(v, usted, `${esq.id}.${it.id}: «${v}»`);
     }
@@ -360,17 +363,20 @@ const { CONTRASTE_URGENCIAS } = await import('../../data/guia.js');
 const SIN_RESP = ids => ids.map(id => ({ id, respuesta: '' }));
 const detecta = (tr, ids = Object.keys(CONTRASTE_URGENCIAS)) => RI.urgenciasEnTranscripcion(tr, SIN_RESP(ids)).map(u => u.id);
 
-test('urgencias en la transcripción: cada pregunta piloto tiene tema y patrones válidos', () => {
-  assert.deepEqual(Object.keys(CONTRASTE_URGENCIAS).sort(), ['hem_5', 'hem_6', 'l6', 'l_e8', 'l_v4', 'sx_sincope']);
+test('urgencias en la transcripción: todas las preguntas de urgencia de las 7 regiones tienen tema y patrones válidos', () => {
+  const condicionales = ['soloPosquirurgico', 'soloHipermovilidad', 'soloDisautonomia', 'soloLupus', 'soloMastocitos', 'soloOsteoporosis', 'soloEmbarazo', 'soloAnticoagulado'];
+  const regionales = new Set();
+  for (const r of Object.keys(SYSTEMIC_SCREENING)) {
+    for (const sis of SYSTEMIC_SCREENING[r].sistemas) {
+      if (condicionales.some(k => sis[k])) continue;   // las de las condiciones especiales, aparte
+      sis.preguntas.filter(q => q.urgencia).forEach(q => regionales.add(q.id));
+    }
+  }
+  assert.deepEqual(Object.keys(CONTRASTE_URGENCIAS).sort(), [...regionales].sort(), 'una entrada por pregunta de urgencia regional, ni más ni menos');
   for (const [id, c] of Object.entries(CONTRASTE_URGENCIAS)) {
     assert.ok(c.tema && c.patrones.length, id);
     c.patrones.forEach(p => assert.doesNotThrow(() => new RegExp(p), `${id}: ${p}`));
   }
-  // y todas son preguntas de urgencia de verdad
-  withState({ region: 'lumbar' }, () => {
-    const urg = new Set(sistemasActivos().flatMap(s => s.preguntas).filter(q => q.urgencia).map(q => q.id));
-    Object.keys(CONTRASTE_URGENCIAS).forEach(id => assert.ok(urg.has(id), id));
-  });
 });
 
 test('urgencias en la transcripción: detecta lo que el paciente cuenta, de cada pregunta', () => {
@@ -381,8 +387,36 @@ test('urgencias en la transcripción: detecta lo que el paciente cuenta, de cada
     sx_sincope: ['La semana pasada me desmayé corriendo.'],
     hem_5: ['Estoy con quimio desde marzo.'],
     hem_6: ['Soy hemofílico desde pequeño.'],
+    ca_v4: ['Fue un dolor desgarrador en la espalda.'],
+    ca_v5: ['De repente la pierna se me quedó fría y pálida.'],
+    ca_u3: ['Tengo el testículo derecho hinchado desde esta mañana.'],
+    ca_os1: ['El traumatólogo habló de una fractura de estrés.'],
+    ca_in1: ['Anoche tuve fiebre y tiritona.'],
+    cv_c3: ['Tengo un dolor en el pecho que no se me pasa.'],
+    cv_ar1: ['Mi mujer dice que se me cae el párpado.'],
+    cv_ar2: ['A ratos veo doble y me cuesta tragar.'],
+    cv_ar3: ['Desde el accidente me tengo que sujetar la cabeza con las manos.'],
+    cv_ar4: ['Es el peor dolor de cabeza que he tenido nunca.'],
+    r_i3: ['Encima de la rótula lo tengo rojo y caliente.'],
+    ro_t2: ['Desde la caída no puedo levantar la pierna estirada.'],
+    ro_t3: ['Me di con la rodilla contra el salpicadero.'],
+    h_c4: ['Me aprieta el pecho cuando subo escaleras.'],
+    h_gi4: ['Con el accidente me di con el volante en el costado.'],
+    h_t1: ['Desde la caída tengo el hombro hundido.'],
+    tp_t1: ['Después de la lesión no noto el pie.', 'Tengo un dolor desproporcionado en el pie.'],
+    tp_n1: ['Llevo una semana perdiendo fuerza en las dos piernas.'],
+    co_t1: ['Desde la caída no puedo estirar del todo el codo.'],
+    co_t2: ['Tras el golpe tengo la mano fría.'],
   };
-  for (const [id, frases] of Object.entries(casos)) frases.forEach(f => assert.deepEqual(detecta(`Bueno. ${f} Vale.`), [id], `${id}: «${f}»`));
+  for (const [id, frases] of Object.entries(casos)) {
+    frases.forEach(f => assert.ok(detecta(`Bueno. ${f} Vale.`, [id]).includes(id), `${id}: «${f}»`));
+  }
+  // y las que comparten patrones con otra (misma clínica, otra región)
+  for (const [id, f] of [['ca_v2', 'Tengo el gemelo hinchado.'], ['r_v2', 'Tengo el gemelo hinchado.'], ['tp_v2', 'Tengo el gemelo hinchado.'],
+    ['ca_u5', 'Tengo un retraso de la regla.'], ['h_g1', 'Tengo un retraso de la regla.'], ['r1', 'He tenido fiebre.'], ['tp_i1', 'He tenido fiebre.'],
+    ['co1', 'He tenido fiebre.'], ['r_v4', 'Tengo el pie helado.'], ['ro_t4', 'Tengo el pie helado.']]) {
+    assert.ok(detecta(f, [id]).includes(id), `${id}: «${f}»`);
+  }
 });
 
 test('urgencias en la transcripción: no salta con la pregunta del fisio, con lo negado ni con «no está caliente»', () => {
@@ -392,6 +426,14 @@ test('urgencias en la transcripción: no salta con la pregunta del fisio, con lo
     'Nada de desmayos, nunca.',
     'La pantorrilla está blanda, no está caliente y no le duele al apretarla.',
     'Me duele la pierna al caminar.',
+    'Fiebre, no. Escalofríos, tampoco.',
+    // lo habitual en una consulta de fisioterapia no es una urgencia
+    'Me caí de la bici y me di un golpe en la rodilla, que se hinchó.',
+    'Me duele el hombro al girar el volante.',
+    'Hace años se me salió el hombro y me lo tuvieron que colocar.',
+    'Las pupilas son normales y le sujeto la cabeza para el test.',
+    'No puedo mover bien el cuello desde que me levanté.',
+    'Tuve un desgarro en el gemelo jugando al pádel.',
   ]) assert.deepEqual(detecta(f), [], f);
   assert.deepEqual(RI.urgenciasEnTranscripcion('', SIN_RESP(['l6'])), []);
 });
@@ -411,7 +453,7 @@ test('urgencias en la transcripción: un SÍ ya marcado no avisa; un NO o sin re
   assert.deepEqual(RI.revisarInforme('Informe.', { datos, transcripcion: tr }).filter(p => p.id === 'urgencia-transcripcion'), []);
 });
 
-test('urgencias en la transcripción: ningún aviso en las 25 transcripciones reales, aun con todo sin responder', () => {
+test('urgencias en la transcripción: ningún aviso en las transcripciones reales, con las 36 preguntas sin responder y de cualquier región', () => {
   const dir = 'tests/fixtures/informes';
   const ids = Object.keys(CONTRASTE_URGENCIAS);
   const archivos = readdirSync(join(RAIZ, dir)).filter(f => /transcripcion\.txt$/.test(f));
