@@ -186,10 +186,23 @@ Una parte por sesión. Opus donde hay riesgo clínico o hay que encontrar cada s
 | Paso | Qué | Modelo | Por qué |
 |---|---|---|---|
 | 0 | Comprobar el audio de la grabadora («Por comprobar», puntos 1 y 2) | — (lo hace el fisio) | Si no cabe en 25 MB, antes hay que resolver la compresión o el troceo en el worker de physiq-report, y cambia el orden |
-| 1 | Decisión 3: «sin marcar» = «no preguntado», con sus tests | **Opus** | Hoy mucha lógica da por hecho el `'NO'` por defecto (alerta sistémica, `ur`, `sq`, embudo, pendientes, condiciones especiales, resúmenes). Un sitio olvidado podría ocultar una urgencia. Es la base del resto |
+| 1 ✅ | Decisión 3: «sin marcar» = «no preguntado», con sus tests (hecho 2026-10, ver «Paso 1: lo implementado») | **Opus** | Hoy mucha lógica da por hecho el `'NO'` por defecto (alerta sistémica, `ur`, `sq`, embudo, pendientes, condiciones especiales, resúmenes). Un sitio olvidado podría ocultar una urgencia. Es la base del resto |
 | 2 | Vista guía (`modo-guia`, `registro`), nombre automático, teclado numérico, apuntes verbales con check «preguntado», frases ancla, payload, tests unitarios y sección del smoke test | **Sonnet** | Presentación y datos siguiendo patrones que ya existen (`modo-breve`) |
 | 3 | Frases cortas `verbal` en `formularios/comun.js` y `formularios/lumbar.js` | **Sonnet** + revisión del fisio | Redacción breve de preguntas que ya existen |
 | 4 | Decisión 6 (regla de urgencias contra la transcripción) y decisión 9 (lista de preguntas y regla «no consta» en el prompt) | **Opus** | Criterio clínico y calibración con informes reales. Esperar al primer informe real grabado en modo guía |
+
+## Paso 1: lo implementado (decisión 3)
+
+Sin selector todavía (es del paso 2): el modo se activa con `state.registro = 'guia'`.
+- `state.registro`: `'teclado'` (por defecto; las sesiones antiguas se normalizan a él al restaurar) | `'guia'`. Sobrevive a «Reiniciar» como `modo`.
+- En guía, `buildSistemicoQuestions()` no rellena `sistemicoAnswers` con NO y el botón NO no viene marcado; `banderasRojasIniciales()` da `''` a br1–br4. `_pintarBanderasRojas()` repinta los botones de la fase 1 al restaurar y al reiniciar (antes, tras «Reiniciar», quedaba marcado el botón de la sesión anterior).
+- Todo lo que cuenta positivos ya leía solo `'SI'` (alerta, `ur`, `dv`, `sq`, `br`, criterio compuesto, regla vascular de hipermovilidad, recordatorio del periné, guía de condiciones): una pregunta sin respuesta nunca es positiva. Un test unitario falla si algún módulo compara esas respuestas con `!== 'NO'`.
+- `getNoPreguntadas()` → urgencias sin responder (siempre, también en breve), banderas rojas sin responder y, por sistema, cuántas preguntas faltan (en breve, las no urgentes de un sistema sin embudo en SÍ ya las cubren sus pendientes). Las `privada` del embarazo nunca dan su texto.
+- Salidas: payload `np` (solo si hay algo, así la huella de los informes ya generados no cambia); fase 5 abre con un aviso rojo, nunca plegado, de urgencias y banderas sin preguntar, y aparte el resto; `📋 Notas` «Cribado sistémico: sin positivos en lo preguntado (incompleto)» + «❔ SIN PREGUNTAR:»; `📄 Informe` «…en las preguntas realizadas; el cribado no se completó en esta sesión»; prompt del informe con IA: «Negativas en lo preguntado», cribado «incompleto» y la lista con la instrucción de no presentarla como negativa.
+- Criterio de Goodman: con preguntas del criterio sin responder que aún podrían cumplirlo, dice que aún no se puede aplicar en vez de callar.
+- En modo teclado no cambia nada: todo empieza en NO y `np` nunca aparece.
+- Tests: `tests/unit/modo-guia.mjs`; smoke, sección `modo-guia`.
+- physiq-report aún no lee `np` (campo nuevo y opcional: lo ignora).
 
 ## Cambios técnicos (cuando se acepten las decisiones)
 

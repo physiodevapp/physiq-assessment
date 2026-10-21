@@ -335,7 +335,7 @@ function _softResetApp() {
   state.anticoagulado = anticoaguladoVacio();
   state.farmacos = farmacosVacio();
   state.cronologia = '';
-  state.banderasRojas = { br1: 'NO', br2: 'NO', br3: 'NO', br4: 'NO' };
+  state.banderasRojas = banderasRojasIniciales();
   state.riesgoPsico = '';
   state.psico_miedo = '';
   state.psico_autoef = '';
@@ -383,6 +383,7 @@ function _softResetApp() {
   updateImcDisplay();
   updateImcColor(); // updateImcDisplay only sets the value now (color/flag deferred to blur — see updateVitalColor), so reset needs both
   document.querySelectorAll('#phase1 .option-btn').forEach(b => b.classList.remove('selected'));
+  _pintarBanderasRojas();
   ['banderaAlert', 'psicoToolSuggest', 'psicoAltoQuestions', 'psicoRecomendacion'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = 'none';
@@ -789,6 +790,90 @@ function selectSQ(btn, id, value) {
 function checkBanderasRojas() {
   const hasRed = Object.values(state.banderasRojas).includes('SI');
   document.getElementById('banderaAlert').style.display = hasRed ? 'block' : 'none';
+}
+
+// ─── REGISTRO EN MODO GUÍA (docs/modo-guia.md, decisión 3) ──────────
+// Con grabadora externa, el fisio pregunta de palabra y toca solo lo que mueve
+// la lógica: una pregunta sin tocar es «no preguntada», nunca «NO». Por eso en
+// modo guía el cribado y las banderas rojas empiezan sin respuesta ('' o sin
+// clave). Todo lo que cuenta positivos ya lee solo 'SI', así que una pregunta
+// sin respuesta nunca salta como positiva ni se toma por negativa: el cierre
+// la lista (getNoPreguntadas) y los resúmenes no dicen «Negativo» sin más.
+function esGuia() {
+  return state.registro === 'guia';
+}
+
+function banderasRojasIniciales() {
+  const v = esGuia() ? '' : 'NO';
+  return { br1: v, br2: v, br3: v, br4: v };
+}
+
+// Marca en la fase 1 lo que dice state.banderasRojas ('' = ninguno marcado).
+// También tras «Reiniciar», que antes dejaba marcado el botón de la sesión anterior.
+function _pintarBanderasRojas() {
+  document.querySelectorAll('#banderasRojas .sq-btn').forEach(btn => {
+    const m = (btn.getAttribute('onclick') || '').match(/'(br\d)','(SI|NO)'\)/);
+    if (m) btn.classList.toggle('selected', state.banderasRojas[m[1]] === m[2]);
+  });
+  checkBanderasRojas();
+}
+
+// Lo que quedó sin preguntar: banderas rojas de la fase 1 y preguntas del
+// cribado que se ven ahora sin respuesta. En modo teclado no hay ninguna (todo
+// empieza en NO), salvo en sesiones que cambiaron de registro. En breve, las
+// preguntas no urgentes de un sistema sin embudo en SÍ ya salen en sus
+// pendientes («solo por embudo», «sin cribar»): aquí no se repiten. Las de
+// urgencia se listan siempre. → { urgentes: [texto], banderas: [texto],
+// sistemas: [{ nombre, n }] }. Las `privada` (ánimo y psicosis del embarazo)
+// nunca dan su texto, igual que en `sq`.
+function getNoPreguntadas() {
+  const banderas = Object.entries(state.banderasRojas || {})
+    .filter(([, v]) => v !== 'SI' && v !== 'NO')
+    .map(([k]) => BR_LABELS[k]).filter(Boolean);
+  const urgentes = [];
+  const sistemas = [];
+  if (state.region && SYSTEMIC_SCREENING[state.region]) {
+    const breve = state.modo === 'breve';
+    sistemasActivos().forEach(sis => {
+      const conEmbudo = !(sis.soloHipermovilidad || sis.soloDisautonomia || sis.soloLupus || sis.soloMastocitos || sis.soloOsteoporosis || sis.soloEmbarazo || sis.soloAnticoagulado);
+      const cubiertoPorBreve = breve && conEmbudo && state.sistemicoBreve?.[sis.id] !== 'SI';
+      let n = 0;
+      sis.preguntas.forEach(q => {
+        const v = state.sistemicoAnswers[q.id];
+        if (v === 'SI' || v === 'NO') return;
+        if (q.urgencia) urgentes.push(q.privada ? `una pregunta de urgencia de «${sis.nombre}»` : q.text);
+        else if (!cubiertoPorBreve) n++;
+      });
+      if (n) sistemas.push({ nombre: sis.nombre, n });
+    });
+  }
+  return { urgentes, banderas, sistemas };
+}
+
+// Las mismas, como líneas de texto: payload `np`, 📋 Notas y prompt del informe.
+function lineasNoPreguntadas(np = getNoPreguntadas()) {
+  return [
+    ...np.urgentes.map(t => `Urgencia sin preguntar: ${t}`),
+    ...np.banderas.map(t => `Bandera roja sin preguntar: ${t}`),
+    ...np.sistemas.map(s => `${s.nombre}: ${s.n} pregunta${s.n > 1 ? 's' : ''} sin hacer`)
+  ];
+}
+
+// Fase 5: lo no preguntado, lo primero. Las urgencias y banderas rojas en rojo
+// y nunca plegadas; el resto de sistemas, en el recuadro de pendientes.
+function _noPreguntadasHTML() {
+  const np = getNoPreguntadas();
+  const graves = [...np.urgentes, ...np.banderas];
+  const lista = l => `<ul>${l.map(t => `<li>${_escapeAttr(t)}</li>`).join('')}</ul>`;
+  return (graves.length ? `<div class="alert alert-danger no-preguntadas-urg" style="margin-bottom:1rem;">
+      <span class="alert-icon">❔</span>
+      <div><strong>Sin preguntar: ${graves.length} pregunta${graves.length > 1 ? 's' : ''} de urgencia o bandera roja.</strong>
+        Sin respuesta no cuentan como «No».${lista(graves)}</div>
+    </div>` : '')
+    + (np.sistemas.length ? `<div class="breve-pendientes no-preguntadas">
+      <div class="breve-pendientes-title">❔ Cribado sin completar</div>
+      ${lista(np.sistemas.map(s => `${s.nombre}: ${s.n} pregunta${s.n > 1 ? 's' : ''} sin hacer`))}
+    </div>` : '');
 }
 
 function selectPsico(btn, value) {
@@ -2486,7 +2571,8 @@ function _respuestasActivas() {
 }
 
 // Repinta el cribado conservando las respuestas (restaurar sesión, cambiar el
-// mecanismo con la región ya elegida); las preguntas nuevas empiezan en NO.
+// mecanismo con la región ya elegida); las preguntas nuevas empiezan en NO
+// (sin respuesta en modo guía).
 function _repintarCribado() {
   if (!state.region) return;
   const savedAnswers = { ...state.sistemicoAnswers };
@@ -2528,8 +2614,8 @@ function buildSistemicoQuestions(regionId) {
   state.sistemicoAnswers = {};
   state.sistemicoBreve = {};
 
-  // Initialize all answers to NO
-  sistemas.forEach(sis => {
+  // Modo teclado: todas empiezan en NO. Modo guía: sin respuesta («no preguntada»)
+  if (!esGuia()) sistemas.forEach(sis => {
     sis.preguntas.forEach(q => { state.sistemicoAnswers[q.id] = 'NO'; });
   });
 
@@ -2663,7 +2749,7 @@ function buildSistemaHTML(sis) {
         <div class="sq2-text">${q.text}${urgBadge}${q.urgencia ? `<span class="sq2-urg-msg">🚨 ${q.urgencia}</span>` : ''}${q.derivacion ? `<span class="sq2-deriv-msg">🩺 ${q.derivacion}</span>` : ''}${q.notaPosquirurgica ? `<div class="nota-posq solo-posq">🏥 ${TEXTO_NOTA_TRAUMA}</div>` : ''}${razonamientoInlineHTML(sis, q)}</div>
         <div class="sq-btns">
           <button class="sq-btn si" onclick="selectSistQ(this,'${q.id}','SI',${q.alerta},'${sis.id}')">SÍ</button>
-          <button class="sq-btn no selected" onclick="selectSistQ(this,'${q.id}','NO',${q.alerta},'${sis.id}')">NO</button>
+          <button class="sq-btn no${esGuia() ? '' : ' selected'}" onclick="selectSistQ(this,'${q.id}','NO',${q.alerta},'${sis.id}')">NO</button>
         </div>
       </div>`;
   });
@@ -2973,6 +3059,12 @@ function evaluarCriterioCompuesto(sis) {
       </div>`;
   } else if (!edadConocida) {
     html = `<div class="criterio-compuesto-hint">Indique la edad del paciente en la Fase 1 para poder aplicar este criterio.</div>`;
+  } else if (cumpleFiltro) {
+    // Modo guía: con preguntas del criterio sin responder, «no se cumple» aún no se sabe
+    const sinResp = criterio.ids.filter(id => !['SI', 'NO'].includes(state.sistemicoAnswers[id])).length;
+    if (sinResp && positivas + sinResp >= criterio.minPositivas) {
+      html = `<div class="criterio-compuesto-hint">${criterio.etiqueta}: ${sinResp} de sus ${criterio.ids.length} preguntas sin responder; con ${positivas} positiva${positivas === 1 ? '' : 's'} aún no se puede aplicar.</div>`;
+    }
   }
   contenedores.forEach(c => { c.innerHTML = html; });
 }
@@ -3679,7 +3771,10 @@ function buildResults() {
   const pendientesBreve = getPendientesBreve();
   const sinConfirmar = state.modo === 'breve' && pendientesBreve.some(p => p.fase === '4b');
 
-  // ── Modo breve: transparencia y pendientes, antes que nada
+  // ── Lo que quedó sin preguntar (modo guía), antes que nada
+  container.innerHTML += _noPreguntadasHTML();
+
+  // ── Modo breve: transparencia y pendientes
   if (state.modo === 'breve') {
     container.innerHTML += `
     <div class="breve-pendientes">
@@ -4609,6 +4704,9 @@ function buildPhysiQPayload() {
     ...(getCuestionariosPayload().length ? { cu: getCuestionariosPayload() } : {}),
     md: state.modo === 'breve' ? 'breve' : 'completo',
     ...(state.modo === 'breve' ? { pe: getPendientesBreve().map(p => p.texto) } : {}),
+    // Sin preguntar (modo guía, docs/modo-guia.md): solo si hay algo, para no
+    // cambiar la huella de los informes ya generados
+    ...(lineasNoPreguntadas().length ? { np: lineasNoPreguntadas() } : {}),
     ...(state.rom ? { rom: state.rom } : {})
   };
 }
@@ -5616,15 +5714,7 @@ function _restoreSessionDOM() {
   _pintarFarmacosUI();
   _pintarLado();
 
-  Object.entries(state.banderasRojas).forEach(([brId, val]) => {
-    document.querySelectorAll('#banderasRojas .sq-btn').forEach(btn => {
-      const onclick = btn.getAttribute('onclick') || '';
-      if (!onclick.includes(`'${brId}'`)) return;
-      const m = onclick.match(/'(SI|NO)'\s*\)/);
-      if (m) btn.classList.toggle('selected', m[1] === val);
-    });
-  });
-  checkBanderasRojas();
+  _pintarBanderasRojas();
 
   if (state.riesgoPsico) {
     const suggest = document.getElementById('psicoToolSuggest');
@@ -5779,6 +5869,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSessionChip(session);
     if (session.assessmentState?.maxVisitedIdx > 0) {
       Object.assign(state, session.assessmentState);
+      if (state.registro !== 'guia') state.registro = 'teclado';   // sesiones de antes del modo guía
       _restoreSessionDOM();
       const targetPhase = state.currentPhase;
       if (targetPhase === 5 || targetPhase === 6) buildResults();
@@ -5798,6 +5889,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       // Modo elegido en la fase 1 antes de salir de ella (maxVisitedIdx 0)
       if (session.assessmentState?.modo === 'breve') { state.modo = 'breve'; _pintarModoUI(); }
+      if (session.assessmentState?.registro === 'guia') {
+        state.registro = 'guia';
+        state.banderasRojas = banderasRojasIniciales();
+        _pintarBanderasRojas();
+      }
     }
     if (session.rom && !state.rom) state.rom = session.rom;
     _updateSessionPanelTitle();
@@ -5915,7 +6011,7 @@ initAmpliarIA();
 // Named exports for phase4.js / phase4b.js (which import these directly) and
 // for tests/unit.js.
 export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, getUrgenciasActivas, getCirugiaPayload, cerrarMenuCompartir, resumenFormularioIA, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
-  buildContextSummaryText, getPendientesBreve, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML,
+  buildContextSummaryText, getPendientesBreve, getNoPreguntadas, lineasNoPreguntadas, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML,
   precargarFormularioPrevio, nombreRegion, showToast,
   injectQuickInputBar, repintarP1Fase3, lockBodyScroll, unlockBodyScroll, partirPrimeraFrase, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento };
 

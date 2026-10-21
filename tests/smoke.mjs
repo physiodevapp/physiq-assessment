@@ -1612,6 +1612,46 @@ async function checkDerivacionCribado(page) {
   return r;
 }
 
+// Modo guía (docs/modo-guia.md, decisión 3): sin selector todavía (paso 2),
+// así que se activa en el estado. El cribado no viene en NO, y la fase 5 abre
+// con lo no preguntado: urgencias y banderas rojas en rojo, el resto aparte.
+async function checkModoGuia(page) {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await abrirApp(page);
+  await page.evaluate(() => {
+    state.registro = 'guia';
+    state.banderasRojas = { br1: '', br2: '', br3: '', br4: '' };
+  });
+  await irAFase2(page, 'lumbar');
+  const r = {};
+  r.sinNOmarcado = await page.evaluate(() => document.querySelectorAll('#sistemaPanels .sq2 .sq-btn.selected').length === 0
+    && document.querySelectorAll('#sistemaPanels .sq2').length > 0);
+  r.estadoVacio = await page.evaluate(() => Object.keys(state.sistemicoAnswers).length === 0);
+  await page.click('#tab_l_urogenital');
+  await page.click('#panel_l_urogenital #sq2_l6 .sq-btn.no');
+  r.noMarcado = await page.evaluate(() => state.sistemicoAnswers.l6 === 'NO'
+    && document.querySelector('#panel_l_urogenital #sq2_l6 .sq-btn.no').classList.contains('selected'));
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  r.fase5 = await page.evaluate(() => {
+    const c = document.getElementById('resultsContent');
+    const urg = c?.querySelector('.no-preguntadas-urg');
+    if (!urg || c.firstElementChild !== urg) return false;
+    const items = urg.querySelectorAll('li').length;
+    // l6 contestada: quedan 5 urgencias + 4 banderas rojas
+    return items === 9 && !!c.querySelector('.no-preguntadas') && !urg.closest('details');
+  });
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
 // Cascanueces (l_u6) y MALS (bandera de pérdida de peso de l_gi),
 // docs/mals-cascanueces.md: «¿Por qué?» y «Ampliar» con su fisiología, mensaje
 // 🩺 solo con SÍ, aviso «Derivación médica» sin urgencia; el MALS solo está en
@@ -6124,6 +6164,12 @@ const SECCIONES = [
     return r.ok;
   } },
 
+  { id: 'modo-guia', titulo: 'Modo guía: sin marcar = no preguntado (lumbar):', run: async ({ page }) => {
+    const r = await checkModoGuia(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} cribado sin NO por defecto, un NO tocado cuenta, la fase 5 abre con lo no preguntado`);
+    if (!r.ok) console.log('\nModo guía:', JSON.stringify(r));
+    return r.ok;
+  } },
   { id: 'derivacion', titulo: 'Derivación médica (árbol: lumbar VASCULAR; cribado: quiste de Tarlov):', run: async ({ page }) => {
     const r = await checkDerivacionVascular(page);
     console.log(`  ${r.ok ? '✓' : '✗'} árbol: aviso bajo el paso, al completar el árbol y en la fase 5`);
