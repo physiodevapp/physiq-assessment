@@ -38,6 +38,7 @@ export function test(name, fn) {
 // ── Estado de partida (lo usan payload, cribado, razonamiento, informe…) ───────
 export const BASE_STATE = {
   modo:             'completo',
+  registro:         'teclado',
   sistemicoBreve:   {},
   irritabilidadDirecta: false,
   maxVisitedIdx:    5,
