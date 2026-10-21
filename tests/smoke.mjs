@@ -1622,7 +1622,7 @@ async function checkModoGuia(page) {
   const r = {};
   await page.click('#registroConsulta .option-btn:has-text("Guía")');
   r.cuerpo = await page.evaluate(() => document.body.classList.contains('modo-guia') && state.registro === 'guia');
-  r.nombreAuto = await page.evaluate(() => /^Paciente \d\d:\d\d$/.test(state.patient) && document.getElementById('patientName').value === state.patient);
+  r.nombreAuto = await page.evaluate(() => /^Paciente \d\d\/\d\d \d\d:\d\d$/.test(state.patient) && document.getElementById('patientName').value === state.patient);
   r.verbal = await page.evaluate(() => {
     const campo = document.getElementById('motivoConsulta');
     const v = document.querySelector('[data-verbal="motivoConsulta"]');
