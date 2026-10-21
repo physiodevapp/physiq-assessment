@@ -143,9 +143,9 @@ test('modo guía: el criterio de Goodman avisa cuando aún no se puede aplicar',
 
 console.log('\nmodo guía (paso 2: selector, frases, teclado numérico)');
 
-test('modo guía: nombre automático «Paciente HH:MM», con ceros', () => {
-  assert.equal(MG.nombreAuto(new Date(2026, 9, 21, 9, 5)), 'Paciente 09:05');
-  assert.equal(MG.nombreAuto(new Date(2026, 9, 21, 14, 32)), 'Paciente 14:32');
+test('modo guía: nombre automático «Paciente DD/MM HH:MM», con ceros', () => {
+  assert.equal(MG.nombreAuto(new Date(2026, 9, 21, 9, 5)), 'Paciente 21/10 09:05');
+  assert.equal(MG.nombreAuto(new Date(2026, 2, 3, 14, 32)), 'Paciente 03/03 14:32');
 });
 
 test('teclado numérico: cifras, ceros a la izquierda, máximo, borrar y decimales', () => {
