@@ -1,7 +1,7 @@
 // Modo guía con grabadora externa: docs/modo-guia.md, decisión 3 («sin marcar» =
 // «no preguntado», nunca «NO»). Se ejecuta desde tests/unit.js.
 import { assert, leer, readdirSync, join, RAIZ, test, state, SYSTEMIC_SCREENING, HYPOTHESES, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
-  buildSistemaHTML, sistemasActivos, withState } from './comun.mjs';
+  buildSistemaHTML, sistemasActivos, withState, BASE_STATE } from './comun.mjs';
 
 console.log('\nmodo guía (sin marcar = no preguntado)');
 const { getNoPreguntadas, lineasNoPreguntadas, getUrgenciasActivas } = await import('../../app.js');
@@ -363,20 +363,33 @@ const { CONTRASTE_URGENCIAS } = await import('../../data/guia.js');
 const SIN_RESP = ids => ids.map(id => ({ id, respuesta: '' }));
 const detecta = (tr, ids = Object.keys(CONTRASTE_URGENCIAS)) => RI.urgenciasEnTranscripcion(tr, SIN_RESP(ids)).map(u => u.id);
 
-test('urgencias en la transcripción: todas las preguntas de urgencia de las 7 regiones tienen tema y patrones válidos', () => {
-  const condicionales = ['soloPosquirurgico', 'soloHipermovilidad', 'soloDisautonomia', 'soloLupus', 'soloMastocitos', 'soloOsteoporosis', 'soloEmbarazo', 'soloAnticoagulado'];
-  const regionales = new Set();
+const CONDICIONALES = ['soloPosquirurgico', 'soloHipermovilidad', 'soloDisautonomia', 'soloLupus', 'soloMastocitos', 'soloOsteoporosis', 'soloEmbarazo', 'soloAnticoagulado'];
+const preguntasUrgentes = condicionales => {
+  const ids = new Map();
   for (const r of Object.keys(SYSTEMIC_SCREENING)) {
     for (const sis of SYSTEMIC_SCREENING[r].sistemas) {
-      if (condicionales.some(k => sis[k])) continue;   // las de las condiciones especiales, aparte
-      sis.preguntas.filter(q => q.urgencia).forEach(q => regionales.add(q.id));
+      if (CONDICIONALES.some(k => sis[k]) !== condicionales) continue;
+      sis.preguntas.filter(q => q.urgencia).forEach(q => ids.set(q.id, q));
     }
   }
-  assert.deepEqual(Object.keys(CONTRASTE_URGENCIAS).sort(), [...regionales].sort(), 'una entrada por pregunta de urgencia regional, ni más ni menos');
+  return ids;
+};
+
+test('urgencias en la transcripción: todas las preguntas de urgencia, de las 7 regiones y de las condiciones especiales, tienen tema y patrones válidos', () => {
+  const regionales = preguntasUrgentes(false), condiciones = preguntasUrgentes(true);
+  assert.equal(regionales.size, 36);
+  assert.equal(condiciones.size, 39, 'paso 6: las de las condiciones especiales');
+  assert.deepEqual(Object.keys(CONTRASTE_URGENCIAS).sort(), [...regionales.keys(), ...condiciones.keys()].sort(), 'una entrada por pregunta de urgencia, ni más ni menos');
   for (const [id, c] of Object.entries(CONTRASTE_URGENCIAS)) {
     assert.ok(c.tema && c.patrones.length, id);
     c.patrones.forEach(p => assert.doesNotThrow(() => new RegExp(p), `${id}: ${p}`));
   }
+});
+
+test('urgencias en la transcripción: una pregunta `privada` tiene un tema genérico, nunca su texto', () => {
+  const privadas = [...preguntasUrgentes(true).values()].filter(q => q.privada);
+  assert.deepEqual(privadas.map(q => q.id).sort(), ['em_u_autolesion', 'em_u_psicosis']);
+  for (const q of privadas) assert.equal(CONTRASTE_URGENCIAS[q.id].tema, 'un posible problema de salud mental urgente tras el parto', q.id);
 });
 
 test('urgencias en la transcripción: detecta lo que el paciente cuenta, de cada pregunta', () => {
@@ -407,6 +420,46 @@ test('urgencias en la transcripción: detecta lo que el paciente cuenta, de cada
     tp_n1: ['Llevo una semana perdiendo fuerza en las dos piernas.'],
     co_t1: ['Desde la caída no puedo estirar del todo el codo.'],
     co_t2: ['Tras el golpe tengo la mano fría.'],
+    // condiciones especiales (paso 6)
+    pq_herida: ['La herida la tengo roja y caliente desde el viernes.', 'Se me ha abierto un poco la cicatriz.'],
+    pq_tvp: ['Tengo el gemelo hinchado desde la operación.'],
+    pq_tvp_ms: ['El brazo operado lo tengo hinchado y caliente.'],
+    pq_tep: ['Anoche de repente me faltaba el aire.', 'Esta mañana tosí sangre.'],
+    pq_compart: ['Tengo un dolor desproporcionado en la pierna.', 'El yeso me aprieta mucho y me duele.'],
+    pq_nervio: ['Desde la operación noto la mano dormida.', 'Tengo hormigueo en el pie desde que me operaron.'],
+    pq_nervio_col: ['Desde la operación de espalda tengo las piernas acorchadas.', 'Me cuesta orinar desde ayer.'],
+    hm_v_dolor: ['De repente un dolor muy fuerte en la tripa.', 'Era un dolor desgarrador en el costado.'],
+    hm_v_ojo: ['Noto un zumbido en la sien.', 'Tengo el ojo como saltón.'],
+    hm_v_aire: ['De golpe me faltaba el aire.'],
+    ds_u_esfuerzo: ['Me desmayé corriendo en el parque.'],
+    ds_u_tumbado: ['Perdí el conocimiento estando tumbado en el sofá.', 'Noté el corazón a mil y me desmayé.'],
+    ds_u_corazon: ['Me dijeron que tengo un soplo.'],
+    ds_u_familia: ['Mi hermano murió de repente con treinta años.'],
+    les_u_fiebre: ['Llevo dos días con febrícula.'],
+    les_u_tvp: ['Tengo el antebrazo hinchado y caliente.'],
+    les_u_tep_ictus: ['Se me torció la boca unos minutos.', 'Noté flojera en medio cuerpo un rato.'],
+    les_u_pecho: ['Me duele el pecho al respirar hondo.'],
+    les_u_dedos: ['Tengo una llaga en la yema del índice.', 'El dedo no recupera el color.'],
+    les_u_neuro: ['La semana pasada tuve una convulsión.', 'Tengo el pie caído desde el lunes.'],
+    op_u_medula: ['Noto torpeza en las piernas desde hace días.'],
+    em_u_preeclampsia: ['Veo destellos desde ayer.', 'Se me ha hinchado de golpe la cara.'],
+    em_u_sangrado: ['Esta mañana he manchado un poco.'],
+    em_u_movimientos: ['El bebé se mueve menos desde ayer.'],
+    em_u_parto: ['Tengo contracciones cada diez minutos.', 'Creo que he roto aguas.'],
+    em_u_sangrado_pp: ['Estoy sangrando mucho y echo coágulos.'],
+    em_u_infeccion: ['Tengo un flujo que huele fatal.'],
+    em_u_tev: ['Tengo la pierna izquierda hinchada y caliente.'],
+    em_u_corazon: ['Tengo palpitaciones por la noche.', 'Me falta el aire en cuanto estoy tumbada.'],
+    em_u_perine: ['Los puntos de la episiotomía se me han abierto.'],
+    em_u_incontinencia: ['Se me escapa la orina todo el rato.'],
+    em_u_psicosis: ['Su pareja dice que la ve muy rara y acelerada.'],
+    em_u_autolesion: ['A veces pienso que es mejor no estar.'],
+    ac_u_cabeza: ['El domingo me di con la cabeza en la puerta del coche.'],
+    ac_u_cabeza_tardia: ['Desde el golpe he vomitado dos veces.'],
+    ac_u_espinal: ['Noto las dos piernas acorchadas desde esta mañana.'],
+    ac_u_psoas: ['Tengo el muslo dormido y me duele la ingle.'],
+    ac_u_pared: ['Me ha salido un bulto en la tripa al toser.'],
+    ac_u_compartimental: ['El gemelo lo tengo duro como una piedra.'],
   };
   for (const [id, frases] of Object.entries(casos)) {
     frases.forEach(f => assert.ok(detecta(`Bueno. ${f} Vale.`, [id]).includes(id), `${id}: «${f}»`));
@@ -434,6 +487,16 @@ test('urgencias en la transcripción: no salta con la pregunta del fisio, con lo
     'Las pupilas son normales y le sujeto la cabeza para el test.',
     'No puedo mover bien el cuello desde que me levanté.',
     'Tuve un desgarro en el gemelo jugando al pádel.',
+    // condiciones especiales: lo habitual tampoco
+    'Al subir escaleras me falta el aire.',
+    'Con el embarazo me ahogo un poco al caminar deprisa.',
+    'La herida está bien cerrada, no está roja.',
+    'Desde la operación estoy mucho mejor.',
+    'Con el frío se me ponen los dedos blancos y luego se me pasa.',
+    'Me duele la cabeza algunas tardes.',
+    'El bebé se mueve muchísimo.',
+    'Me di un golpe en el codo con la mesa.',
+    'El horario de las sesiones es un poco confuso.',
   ]) assert.deepEqual(detecta(f), [], f);
   assert.deepEqual(RI.urgenciasEnTranscripcion('', SIN_RESP(['l6'])), []);
 });
@@ -453,12 +516,18 @@ test('urgencias en la transcripción: un SÍ ya marcado no avisa; un NO o sin re
   assert.deepEqual(RI.revisarInforme('Informe.', { datos, transcripcion: tr }).filter(p => p.id === 'urgencia-transcripcion'), []);
 });
 
-test('urgencias en la transcripción: ningún aviso en las transcripciones reales, con las 36 preguntas sin responder y de cualquier región', () => {
+test('urgencias en la transcripción: en las transcripciones reales, con las 75 preguntas sin responder, solo la cefalea en trueno de Javier', () => {
   const dir = 'tests/fixtures/informes';
   const ids = Object.keys(CONTRASTE_URGENCIAS);
   const archivos = readdirSync(join(RAIZ, dir)).filter(f => /transcripcion\.txt$/.test(f));
   assert.ok(archivos.length >= 20);
-  for (const f of archivos) assert.deepEqual(detecta(leer(dir, f), ids), [], f);
+  // «me dio de golpe un dolor de cabeza muy fuerte, el peor de mi vida»: cv_ar4
+  // (en SÍ en su valoración), y una alarma también en el embarazo y con
+  // anticoagulantes: verdaderos positivos
+  const esperado = { 'javier-audio-transcripcion.txt': ['cv_ar4', 'em_u_preeclampsia', 'ac_u_cabeza_tardia'] };
+  for (const f of archivos) assert.deepEqual(detecta(leer(dir, f), ids), esperado[f] || [], f);
+  // con su cv_ar4 en SÍ, la región no avisa
+  assert.deepEqual(RI.urgenciasEnTranscripcion(leer(dir, 'javier-audio-transcripcion.txt'), [{ id: 'cv_ar4', respuesta: 'SI' }]), []);
 });
 
 test('urgencias en la transcripción: la tarjeta y la herramienta le pasan las preguntas de urgencia con su respuesta', () => {
@@ -470,5 +539,9 @@ test('urgencias en la transcripción: la tarjeta y la herramienta le pasan las p
     assert.equal(r.sx_sincope, 'SI');
     assert.equal(r.l_e8, '', 'sin responder');
     assert.ok(!('l_u5' in r), 'solo las de urgencia');
+    assert.ok(!('les_u_fiebre' in r), 'sin la tarjeta, las de su condición no cuentan');
+  });
+  guia({ lupus: { ...BASE_STATE.lupus, estado: 'diagnosticado' } }, () => {
+    assert.ok(respuestasUrgentes().some(x => x.id === 'les_u_fiebre'), 'con la tarjeta marcada, sí');
   });
 });
