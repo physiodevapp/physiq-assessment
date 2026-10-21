@@ -442,7 +442,7 @@ export const FAMILIAS_FARMACO = [
         detalle: [
           'Náuseas: el efecto más frecuente de la duloxetina, alrededor del 18 % (Biswas 2026); en la fibromialgia, el 32 % con IRSN frente al 14 % con placebo (Welsch 2018). La duloxetina y la venlafaxina también dan temblor (Biswas 2026; Singh y Saadabadi 2024).',
           'Sudoración excesiva en alrededor del 10 % con ISRS, y en proporción parecida con venlafaxina y tricíclicos. Los que actúan sobre la serotonina o la noradrenalina dan disfunción sexual. Los ISRS e IRSN se asociaron a pérdida de peso que desaparece pasados 4 meses; la amitriptilina hace ganar peso (Wang 2018).',
-          'En la cirugía de artrodesis lumbar, quien tomaba ISRS perdió de media un 34 % más de sangre y necesitó más transfusiones; con IRSN no se vio (Schadler 2017).',
+          'Las fuentes no coinciden en el sangrado quirúrgico: en la cirugía de artrodesis lumbar, quien tomaba ISRS perdió de media un 34 % más de sangre y necesitó más transfusiones; con IRSN no se vio (Schadler 2017). En cambio, en mayores de 70 años operados de una fractura de cadera, tomar un ISRS no se asoció a más transfusiones (OR ajustada 0,91; IC 95 % 0,64–1,29), en un estudio de un solo centro (Gobillot-Morisson 2024).',
           'Hígado: la duloxetina se evita con consumo importante de alcohol o enfermedad hepática crónica (Biswas 2026).',
           'En los casos publicados de síndrome serotoninérgico, el tramadol, el fentanilo y la trazodona fueron los fármacos que más acompañaban al desencadenante; con prescripción habitual, el 36 % ingresó en la UCI y el 5 % murió (Blyzniuk 2026).',
         ],
@@ -488,7 +488,7 @@ export const FAMILIAS_FARMACO = [
         ],
       },
     },
-    fuentes: ['Ferraro 2025', 'Welsch 2018', 'Narayan 2024', 'Moraczewski 2023', 'Biswas 2026', 'Thour 2026', 'Alam 2022', 'Nochaiwong 2022', 'Wang 2018', 'Singh y Saadabadi 2024', 'Zhang 2026', 'Filippatos 2017', 'Simon 2024', 'Blyzniuk 2026', 'Chu y Wadhwa 2023', 'Bhanu 2021', 'De Filippis 2022', 'Wichniak 2017', 'Waseem 2026', 'Horowitz 2023', 'Ferreira 2023', 'Birkinshaw 2023', 'Moore 2019', 'Ponna 2026', 'Schadler 2017', 'Wathra 2020', 'Bhanu 2025', 'Wang 2024', 'Hospers 2024', 'Hill 2017'],
+    fuentes: ['Ferraro 2025', 'Welsch 2018', 'Narayan 2024', 'Moraczewski 2023', 'Biswas 2026', 'Thour 2026', 'Alam 2022', 'Nochaiwong 2022', 'Wang 2018', 'Singh y Saadabadi 2024', 'Zhang 2026', 'Filippatos 2017', 'Simon 2024', 'Blyzniuk 2026', 'Chu y Wadhwa 2023', 'Bhanu 2021', 'De Filippis 2022', 'Wichniak 2017', 'Waseem 2026', 'Horowitz 2023', 'Ferreira 2023', 'Birkinshaw 2023', 'Moore 2019', 'Ponna 2026', 'Schadler 2017', 'Wathra 2020', 'Bhanu 2025', 'Wang 2024', 'Hospers 2024', 'Hill 2017', 'Gobillot-Morisson 2024'],
   },
   // Benzodiacepinas y relajantes musculares (2026-10): nueve fuentes enteras
   // en PMC y siete capítulos de StatPearls (PDF del usuario). Huecos cerrados
