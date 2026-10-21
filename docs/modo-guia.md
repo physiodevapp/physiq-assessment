@@ -187,7 +187,7 @@ Una parte por sesión. Opus donde hay riesgo clínico o hay que encontrar cada s
 |---|---|---|---|
 | 0 | Comprobar el audio de la grabadora («Por comprobar», puntos 1 y 2) | — (lo hace el fisio) | Si no cabe en 25 MB, antes hay que resolver la compresión o el troceo en el worker de physiq-report, y cambia el orden |
 | 1 ✅ | Decisión 3: «sin marcar» = «no preguntado», con sus tests (hecho 2026-10, ver «Paso 1: lo implementado») | **Opus** | Hoy mucha lógica da por hecho el `'NO'` por defecto (alerta sistémica, `ur`, `sq`, embudo, pendientes, condiciones especiales, resúmenes). Un sitio olvidado podría ocultar una urgencia. Es la base del resto |
-| 2 | Vista guía (`modo-guia`, `registro`), nombre automático, teclado numérico, apuntes verbales con check «preguntado», frases ancla, payload, tests unitarios y sección del smoke test | **Sonnet** | Presentación y datos siguiendo patrones que ya existen (`modo-breve`) |
+| 2 ✅ | Vista guía (`modo-guia`, `registro`), nombre automático, teclado numérico, apuntes verbales con check «preguntado», frases ancla, payload, tests unitarios y sección del smoke test (hecho 2026-10, ver «Paso 2: lo implementado») | **Sonnet** | Presentación y datos siguiendo patrones que ya existen (`modo-breve`) |
 | 3 | Frases cortas `verbal` en `formularios/comun.js` y `formularios/lumbar.js` | **Sonnet** + revisión del fisio | Redacción breve de preguntas que ya existen |
 | 4 | Decisión 6 (regla de urgencias contra la transcripción) y decisión 9 (lista de preguntas y regla «no consta» en el prompt) | **Opus** | Criterio clínico y calibración con informes reales. Esperar al primer informe real grabado en modo guía |
 
@@ -203,6 +203,18 @@ Sin selector todavía (es del paso 2): el modo se activa con `state.registro = '
 - En modo teclado no cambia nada: todo empieza en NO y `np` nunca aparece.
 - Tests: `tests/unit/modo-guia.mjs`; smoke, sección `modo-guia`.
 - physiq-report aún no lee `np` (campo nuevo y opcional: lo ignora).
+
+## Paso 2: lo implementado (decisiones 1, 2, 4, 5, 8)
+
+- **Selector «Cómo se registra»** (`#registroConsulta`, fase 1, bajo «Tipo de consulta»): «Teclado» / «🎙 Guía (grabadora)» (`selectRegistro()`). Solo fuera del hub (`.in-hub .registro-bloque` oculto; una sesión restaurada en el hub vuelve a `'teclado'`). `body.modo-guia` lo gobierna todo por CSS (`.solo-guia`).
+- **Cambiar de registro a mitad** (`_aplicarRegistro()`): a «Guía», los NO que no se marcaron a propósito quedan sin responder (no se sabe si se preguntaron) y los SÍ se mantienen; de vuelta a «Teclado», lo sin responder pasa a NO. Pasada la fase 1 pregunta antes (`showConfirmBanner`). Repinta el cribado y vacía la 4b.
+- **Nombre automático** (decisión 1): al pasar a guía sin nombre, o al avanzar de la fase 1 sin nombre, «Paciente HH:MM» (`nombreAuto()`), editable. «Borrar sesión» deja `maxVisitedIdx` en 0, así que no se rehace sola.
+- **Frases en voz alta** (decisión 4): `data/guia.js` (`VERBALES`: motivo, signo comparable, intervención y restricciones de la cirugía) y las preguntas `texto` del formulario previo (`it.verbal || it.texto`; el campo `verbal` corto lo escribe el paso 3). Con la caja vacía se sustituye por la frase + check «Preguntado» (`state.preguntado`, no da la respuesta); con texto ya escrito la caja se queda, nunca se esconde un dato.
+- **Teclado numérico** (decisión 2): en los números de la fase 1 (edad, constantes, talla y peso, semanas de cirugía y de embarazo) el teclado del sistema no se abre (`inputmode="none"`) y sale una hoja con 0–9, coma decimal donde el campo la admite, ⌫, Borrar y Listo. Respeta el `max` del campo y dispara `input`/`blur`, así que corren los manejadores de siempre. Los números de otras tarjetas (prueba de bipedestación, calculadora) no cambian.
+- **Frases ancla** (decisión 5): cada test de la 4b lleva «🎙 Dilo en voz alta al marcarlo: «Slump, positivo a la derecha»» (solo en guía; con el lado de la fase 2); el signo comparable lleva un ejemplo.
+- **Payload** `rg: 'guia'` (solo en guía, para no cambiar la huella de lo demás).
+- **Fuera de este paso**: la lista de preguntas verbales y la regla «no consta» en el prompt (decisión 9) y el contraste con la transcripción (decisión 6), que son del paso 4; las frases cortas `verbal` de los formularios, del paso 3. Las pantallas de Atrás del móvil no cierran el teclado numérico (se cierra con Listo, el velo o Escape).
+- Tests: `tests/unit/modo-guia.mjs`; smoke, sección `modo-guia` (390 px el selector, la frase, el teclado, y 1280 px el cribado, las frases ancla y la fase 5).
 
 ## Cambios técnicos (cuando se acepten las decisiones)
 

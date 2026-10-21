@@ -1,11 +1,14 @@
 // Modo guía con grabadora externa: docs/modo-guia.md, decisión 3 («sin marcar» =
 // «no preguntado», nunca «NO»). Se ejecuta desde tests/unit.js.
-import { assert, leer, test, state, SYSTEMIC_SCREENING, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
+import { assert, leer, test, state, SYSTEMIC_SCREENING, HYPOTHESES, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
   buildSistemaHTML, sistemasActivos, withState } from './comun.mjs';
 
 console.log('\nmodo guía (sin marcar = no preguntado)');
 const { getNoPreguntadas, lineasNoPreguntadas, getUrgenciasActivas } = await import('../../app.js');
 const IN = await import('../../lib/informe-narrativo.js');
+const MG = await import('../../lib/modo-guia.js');
+const { VERBALES, TEXTOS_GUIA } = await import('../../data/guia.js');
+const { buildTestItem } = await import('../../phase4b.js');
 
 const SIN = { br1: '', br2: '', br3: '', br4: '' };
 const guia = (patch, fn) => withState({ region: 'lumbar', registro: 'guia', banderasRojas: SIN, sistemicoAnswers: {}, ...patch }, fn);
@@ -14,7 +17,7 @@ const todasNO = () => Object.fromEntries(preguntas().map(q => [q.id, 'NO']));
 
 test('modo guía: el estado empieza en teclado y las sesiones antiguas no cambian', () => {
   assert.equal((leer('state.js').match(/registro: '(\w+)'/) || [])[1], 'teclado');
-  assert.match(leer('app.js'), /if \(state\.registro !== 'guia'\) state\.registro = 'teclado';/);
+  assert.match(leer('app.js'), /if \(state\.registro !== 'guia' \|\| _enHub\(\)\) state\.registro = 'teclado';/);
 });
 
 test('modo guía: sin respuesta nunca cuenta como positivo (alerta, urgencias, derivaciones, sq, br)', () => {
@@ -136,4 +139,80 @@ test('modo guía: el criterio de Goodman avisa cuando aún no se puede aplicar',
   const crit = SYSTEMIC_SCREENING.lumbar.sistemas.find(s => s.criterioCompuesto)?.criterioCompuesto;
   assert.ok(crit);
   assert.match(leer('app.js'), /aún no se puede aplicar/);
+});
+
+console.log('\nmodo guía (paso 2: selector, frases, teclado numérico)');
+
+test('modo guía: nombre automático «Paciente HH:MM», con ceros', () => {
+  assert.equal(MG.nombreAuto(new Date(2026, 9, 21, 9, 5)), 'Paciente 09:05');
+  assert.equal(MG.nombreAuto(new Date(2026, 9, 21, 14, 32)), 'Paciente 14:32');
+});
+
+test('teclado numérico: cifras, ceros a la izquierda, máximo, borrar y decimales', () => {
+  const t = (v, k, o) => MG.aplicarTecla(v, k, o);
+  assert.equal(t('', '4'), '4');
+  assert.equal(t('4', '5', { max: 120 }), '45');
+  assert.equal(t('12', '5', { max: 120 }), '12', 'pasarse del máximo no cambia el valor');
+  assert.equal(t('0', '5'), '5', 'sin ceros a la izquierda');
+  assert.equal(t('45', 'borrar'), '4');
+  assert.equal(t('', 'borrar'), '');
+  assert.equal(t('45', 'limpiar'), '');
+  assert.equal(t('70', '.', { decimal: false }), '70', 'sin decimales si el campo no los admite');
+  assert.equal(t('', '.', { decimal: true }), '0.');
+  assert.equal(t('70.5', '.', { decimal: true }), '70.5', 'un solo punto');
+  assert.equal(t('7', 'x'), '7', 'una tecla desconocida no hace nada');
+});
+
+test('frases ancla: el test con su lado; sin lado (o Central) no inventa uno', () => {
+  assert.equal(MG.fraseAncla('Slump', 'Derecho'), '«Slump, positivo a la derecha»');
+  assert.equal(MG.fraseAncla('Slump', 'Izquierdo'), '«Slump, positivo a la izquierda»');
+  assert.equal(MG.fraseAncla('Slump', 'Bilateral'), '«Slump, positivo bilateral»');
+  assert.equal(MG.fraseAncla('Slump', 'Central'), '«Slump, positivo»');
+  assert.equal(MG.fraseAncla('Slump', ''), '«Slump, positivo»');
+});
+
+test('modo guía: la tarjeta de un test lleva la frase ancla solo en modo guía', () => {
+  const t = HYPOTHESES.ro4.tests[0];
+  guia({ region: 'rodilla', lado: 'Izquierdo' }, () => {
+    const html = buildTestItem('ro4', t, 0);
+    assert.ok(html.includes('test-ancla') && html.includes(TEXTOS_GUIA.anclaTest));
+    assert.ok(html.includes(MG.fraseAncla(t.name, 'Izquierdo')));
+  });
+  withState({ region: 'rodilla', lado: 'Izquierdo' }, () => {
+    assert.ok(!buildTestItem('ro4', t, 0).includes('test-ancla'), 'en teclado la tarjeta no cambia');
+  });
+});
+
+test('modo guía: los textos para decir en voz alta apuntan a cajas que existen y tienen frase', () => {
+  const html = leer('index.html');
+  for (const [id, v] of Object.entries(VERBALES)) {
+    assert.match(html, new RegExp(`<textarea[^>]*id="${id}"`), id);
+    assert.ok(v.frase && v.frase.length > 10, id);
+  }
+});
+
+test('modo guía: el payload lleva `rg` solo en modo guía (la huella de lo demás no cambia)', () => {
+  guia({}, () => assert.equal(buildPhysiQPayload().rg, 'guia'));
+  withState({ region: 'lumbar' }, () => assert.ok(!('rg' in buildPhysiQPayload())));
+});
+
+test('modo guía: nunca en el hub (el selector se oculta y la sesión restaurada vuelve a teclado)', () => {
+  assert.match(leer('styles.css'), /\.in-hub \.registro-bloque \{ display: none; \}/);
+  assert.match(leer('app.js'), /function selectRegistro\(r\) \{\n  if \(_enHub\(\)/);
+});
+
+test('modo guía: el formulario previo cambia la caja de texto por la frase solo si está vacía', () => {
+  const f = leer('formulario.js');
+  assert.match(f, /state\.registro === 'guia' && !\(resp\[it\.id\] \|\| ''\)\.trim\(\)/);
+  assert.match(f, /it\.verbal \|\| it\.texto/);
+});
+
+test('modo guía: los números de la fase 1 usan el teclado propio y los manejadores de siempre', () => {
+  const html = leer('index.html');
+  for (const id of ['edadPaciente', 'vitalFc', 'vitalTas', 'vitalTad', 'vitalTalla', 'vitalPeso', 'cirSemanas', 'emSemanas', 'emSemanasPp']) {
+    assert.match(html, new RegExp(`<input[^>]*type="number"[^>]*id="${id}"`), id);
+  }
+  const app = leer('app.js');
+  assert.match(app, /dispatchEvent\(new Event\('input', \{ bubbles: true \}\)\)/);
+  assert.match(app, /dispatchEvent\(new Event\('blur'\)\)/);
 });

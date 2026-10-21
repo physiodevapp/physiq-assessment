@@ -159,7 +159,7 @@ A single global `state` object (`state.js`, imported by every module) holds the 
 const state = {
   currentPhase: 1,
   modo: 'completo',         // 'completo' | 'breve' — see "Modo breve"; survives resetApp() like the patient name
-  registro: 'teclado',      // 'teclado' | 'guia' — guide mode with an external recorder (docs/modo-guia.md, step 1 done: no selector yet); in 'guia' screening answers and banderasRojas start unanswered ('' / no key = «no preguntado», never «NO»); survives resetApp() like modo
+  registro: 'teclado',      // 'teclado' | 'guia' — guide mode with an external recorder (docs/modo-guia.md, steps 1–2 done: selector `#registroConsulta` in phase 1, standalone only; text boxes become «para decir en voz alta» phrases with an optional «Preguntado» check — `state.preguntado`; own numeric keypad for phase 1 numbers; test anchor phrases in 4b; payload `rg: 'guia'`); in 'guia' screening answers and banderasRojas start unanswered ('' / no key = «no preguntado», never «NO»); survives resetApp() like modo
   maxVisitedIdx: 0,
   regionChanged: false,
   treeModified: false,

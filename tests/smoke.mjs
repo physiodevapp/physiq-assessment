@@ -1612,18 +1612,44 @@ async function checkDerivacionCribado(page) {
   return r;
 }
 
-// Modo guía (docs/modo-guia.md, decisión 3): sin selector todavía (paso 2),
-// así que se activa en el estado. El cribado no viene en NO, y la fase 5 abre
-// con lo no preguntado: urgencias y banderas rojas en rojo, el resto aparte.
+// Modo guía (docs/modo-guia.md): el selector «Cómo se registra» de la fase 1, la
+// frase para decir en voz alta en lugar de la caja de texto, el teclado numérico
+// propio y, sobre todo, que el cribado no venga en NO (decisión 3): la fase 5
+// abre con lo no preguntado, urgencias y banderas rojas en rojo, el resto aparte.
 async function checkModoGuia(page) {
-  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.setViewportSize({ width: 390, height: 844 });
   await abrirApp(page);
-  await page.evaluate(() => {
-    state.registro = 'guia';
-    state.banderasRojas = { br1: '', br2: '', br3: '', br4: '' };
-  });
-  await irAFase2(page, 'lumbar');
   const r = {};
+  await page.click('#registroConsulta .option-btn:has-text("Guía")');
+  r.cuerpo = await page.evaluate(() => document.body.classList.contains('modo-guia') && state.registro === 'guia');
+  r.nombreAuto = await page.evaluate(() => /^Paciente \d\d:\d\d$/.test(state.patient) && document.getElementById('patientName').value === state.patient);
+  r.verbal = await page.evaluate(() => {
+    const campo = document.getElementById('motivoConsulta');
+    const v = document.querySelector('[data-verbal="motivoConsulta"]');
+    return campo.offsetParent === null && !!v && v.offsetParent !== null && /Qué le trae/.test(v.textContent);
+  });
+  await page.click('[data-verbal="motivoConsulta"] .verbal-check');
+  r.preguntado = await page.evaluate(() => state.preguntado.motivoConsulta === true
+    && document.querySelector('[data-verbal="motivoConsulta"] .verbal-check').getAttribute('aria-pressed') === 'true');
+  r.sinTecladoSistema = await page.evaluate(() => document.getElementById('edadPaciente').getAttribute('inputmode') === 'none');
+  await page.click('#edadPaciente');
+  await page.waitForSelector('#tecladoOverlay.open');
+  await page.click('#tecladoTeclas [data-tecla="4"]');
+  await page.click('#tecladoTeclas [data-tecla="5"]');
+  r.tecladoValor = await page.evaluate(() => document.getElementById('tecladoValor').textContent === '45' && state.edadPaciente === 45);
+  await page.click('#tecladoListo');
+  r.tecladoCierra = await page.evaluate(() => !document.getElementById('tecladoOverlay').classList.contains('open')
+    && document.getElementById('edadPaciente').value === '45');
+  r.bandera = await page.evaluate(() => document.querySelectorAll('#banderasRojas .sq-btn.selected').length === 0
+    && Object.values(state.banderasRojas).every(v => v === ''));
+  // (sin irAFase2: rellena #motivoConsulta, que en modo guía está oculto)
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.click('#mecanismo .option-btn >> nth=0');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(200);
   r.sinNOmarcado = await page.evaluate(() => document.querySelectorAll('#sistemaPanels .sq2 .sq-btn.selected').length === 0
     && document.querySelectorAll('#sistemaPanels .sq2').length > 0);
   r.estadoVacio = await page.evaluate(() => Object.keys(state.sistemicoAnswers).length === 0);
@@ -1633,20 +1659,23 @@ async function checkModoGuia(page) {
     && document.querySelector('#panel_l_urogenital #sq2_l6 .sq-btn.no').classList.contains('selected'));
   await page.click('#btnContinuarSinss');
   await page.waitForTimeout(150);
+  r.signoVerbal = await page.evaluate(() => document.getElementById('signoComparable').offsetParent === null
+    && /Flexión de hombro/.test(document.querySelector('[data-verbal="signoComparable"]')?.textContent || ''));
   await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
   await page.waitForTimeout(150);
   await walkCifTreeToCompletion(page);
   await page.click('#btnGoConfirm');
   await page.waitForTimeout(150);
+  r.ancla = await page.evaluate(() => document.querySelectorAll('#phase4b .test-ancla').length > 0
+    && /positivo/.test(document.querySelector('#phase4b .test-ancla').textContent));
   await page.click('#phase4b button:has-text("Ver Resultados")');
   await page.waitForTimeout(150);
   r.fase5 = await page.evaluate(() => {
     const c = document.getElementById('resultsContent');
     const urg = c?.querySelector('.no-preguntadas-urg');
     if (!urg || c.firstElementChild !== urg) return false;
-    const items = urg.querySelectorAll('li').length;
-    // l6 contestada: quedan 5 urgencias + 4 banderas rojas
-    return items === 9 && !!c.querySelector('.no-preguntadas') && !urg.closest('details');
+    // l6 contestada: quedan 5 urgencias + 3 banderas rojas... (las 4, ninguna se tocó)
+    return urg.querySelectorAll('li').length === 9 && !!c.querySelector('.no-preguntadas') && !urg.closest('details');
   });
   r.ok = Object.values(r).every(Boolean);
   return r;
@@ -6166,7 +6195,7 @@ const SECCIONES = [
 
   { id: 'modo-guia', titulo: 'Modo guía: sin marcar = no preguntado (lumbar):', run: async ({ page }) => {
     const r = await checkModoGuia(page);
-    console.log(`  ${r.ok ? '✓' : '✗'} cribado sin NO por defecto, un NO tocado cuenta, la fase 5 abre con lo no preguntado`);
+    console.log(`  ${r.ok ? '✓' : '✗'} selector, nombre automático, frase en voz alta con «Preguntado», teclado numérico (edad), cribado sin NO por defecto, frases ancla en la 4b y la fase 5 abre con lo no preguntado`);
     if (!r.ok) console.log('\nModo guía:', JSON.stringify(r));
     return r.ok;
   } },
