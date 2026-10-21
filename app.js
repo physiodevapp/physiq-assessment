@@ -493,6 +493,23 @@ function resumenFormularioPrevio() {
 function resumenFormularioIA() {
   return _fpMod ? _fpMod.resumenFormularioIA() : [];
 }
+// Modo guía: las preguntas hechas de palabra con su caja vacía (las de las fases
+// 1 y 3, data/guia.js, y las del formulario previo), con su grupo del informe y
+// si se marcaron «Preguntado». [] fuera del modo guía. → [{ g, q, preguntado? }]
+const _VALOR_VERBAL = {
+  motivoConsulta: () => state.motivoConsulta,
+  signoComparable: () => state.signoComparable,
+  cirIntervencion: () => state.cirugia?.intervencion,
+  cirRestricciones: () => state.cirugia?.restricciones,
+};
+function preguntasVerbales() {
+  if (!esGuia()) return [];
+  const fase = Object.entries(VERBALES)
+    .filter(([id, v]) => (!v.soloPosq || esPosquirurgico(state.mecanismo)) && !String(_VALOR_VERBAL[id]?.() || '').trim())
+    .map(([id, v]) => ({ id, g: v.ia, q: v.iaTexto || v.frase }));
+  const form = _fpMod ? _fpMod.preguntasVerbalesFormulario() : [];
+  return [...fase, ...form].map(({ id, g, q }) => ({ g, q, ...(state.preguntado?.[id] ? { preguntado: true } : {}) }));
+}
 
 // ─── INFORME NARRATIVO CON IA (informe-ia.js, solo standalone) ───
 // Fuera del hub no hay physiq-report al lado, así que la fase 5 ofrece generar
@@ -907,6 +924,7 @@ function _aplicarRegistro(r) {
     Object.keys(state.banderasRojas).forEach(k => { if (state.banderasRojas[k] !== 'SI') state.banderasRojas[k] = ''; });
     Object.keys(state.sistemicoAnswers).forEach(k => { if (state.sistemicoAnswers[k] !== 'SI') delete state.sistemicoAnswers[k]; });
     if (!state.patient) _ponerNombreAuto();
+    showToast(TEXTOS_GUIA.consentimiento);
   } else {
     Object.keys(state.banderasRojas).forEach(k => { if (state.banderasRojas[k] !== 'SI') state.banderasRojas[k] = 'NO'; });
     // las preguntas del cribado sin responder vuelven a NO al repintarlo (buildSistemicoQuestions)
@@ -6202,7 +6220,7 @@ initAmpliarIA();
 // Named exports for phase4.js / phase4b.js (which import these directly) and
 // for tests/unit.js.
 export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, getUrgenciasActivas, getCirugiaPayload, cerrarMenuCompartir, resumenFormularioIA, buildInformeFisioterapiaText, getSistemicoAffirmativeTexts,
-  buildContextSummaryText, getPendientesBreve, getNoPreguntadas, lineasNoPreguntadas, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML,
+  buildContextSummaryText, getPendientesBreve, getNoPreguntadas, lineasNoPreguntadas, preguntasVerbales, buildSistemaHTML, sistemasActivos, textoBandera, razonBanderaHTML,
   precargarFormularioPrevio, nombreRegion, showToast,
   injectQuickInputBar, repintarP1Fase3, lockBodyScroll, unlockBodyScroll, partirPrimeraFrase, abrirPanelRazon, razonCitaHTML, cerrarRazonamiento };
 

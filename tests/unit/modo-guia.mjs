@@ -262,3 +262,93 @@ test('frases cortas: se dicen de «tú» al paciente, nunca de «usted» (ni «l
     if (id !== 'signoComparable') assert.doesNotMatch(v.frase, usted, `${id}: «${v.frase}»`);
   }
 });
+
+console.log('\nmodo guía (paso 4: consentimiento, aviso del informe y preguntas habladas en el prompt)');
+const IA = await import('../../informe-ia.js');
+const fpMod = await import('../../formulario.js');
+await fpMod.cargarEsquemaRegion('lumbar');
+await (await import('./comun.mjs')).precargarFormularioPrevio();
+const FP_VACIO = () => ({ comun: {}, regiones: { lumbar: {} } });
+const preguntasDe = a => (a.guia || []).map(p => p.q);
+
+test('consentimiento: el aviso del modo guía y el toast al activarlo lo recuerdan (decisión 13)', () => {
+  assert.match(TEXTOS_GUIA.consentimiento, /consentimiento/);
+  assert.ok(leer('index.html').includes('pídele su consentimiento: así queda en el audio'));
+  assert.match(leer('app.js'), /_ponerNombreAuto\(\);\n    showToast\(TEXTOS_GUIA\.consentimiento\);/);
+});
+
+test('tarjeta del informe: en guía avisa de que el texto libre está en el audio, más fuerte sin audio', () => {
+  assert.match(TEXTOS_GUIA.informeSinAudio, /no constará/);
+  const ia = leer('informe-ia.js');
+  assert.match(ia, /if \(state\.registro !== 'guia'\) \{ el\.innerHTML = ''; return; \}/);
+  assert.match(ia, /TEXTOS_GUIA\.informeConAudio[\s\S]*TEXTOS_GUIA\.informeSinAudio/);
+});
+
+test('prompt: fuera del modo guía no hay lista de preguntas habladas (la huella no cambia)', () => {
+  withState({ region: 'lumbar', formularioPrevio: FP_VACIO() }, () => assert.ok(!('guia' in IA.construirAmpliado())));
+});
+
+test('prompt: en guía van las preguntas con la caja vacía, con su grupo; lo ya escrito no', () => {
+  guia({ formularioPrevio: FP_VACIO(), motivoConsulta: '', signoComparable: 'Flexión 40º' }, () => {
+    const g = IA.construirAmpliado().guia;
+    const qs = g.map(p => p.q);
+    assert.ok(qs.includes(VERBALES.motivoConsulta.frase), 'motivo');
+    assert.ok(!qs.some(q => /Signo comparable/.test(q)), 'el signo comparable escrito no va');
+    assert.ok(qs.includes('¿Desde cuándo te pasa?'));
+    assert.ok(qs.includes('¿Algo más que quieras contarme o que te preocupe?'), 'las de la región también');
+    assert.equal(g.find(p => p.q === '¿Desde cuándo te pasa?').g, 'historia');
+    assert.ok(g.every(p => ['historia', 'sintomas', 'actividades', 'contexto', 'exploracion'].includes(p.g)), 'todas con grupo');
+  });
+  guia({ formularioPrevio: { comun: { medicacion: 'Ibuprofeno' }, regiones: { lumbar: {} } }, signoComparable: '' }, () => {
+    const qs = preguntasDe(IA.construirAmpliado());
+    assert.ok(!qs.includes('¿Qué medicación tomas ahora?'), 'con texto escrito no se pregunta');
+    assert.ok(qs.some(q => /^Signo comparable/.test(q)), 'el signo comparable va con su nombre, no con la instrucción al fisio');
+  });
+});
+
+test('prompt: solo lo visible (episodio previo y «detalle» según la respuesta) y la cirugía solo si es posquirúrgico', () => {
+  guia({ formularioPrevio: FP_VACIO() }, () => {
+    const qs = preguntasDe(IA.construirAmpliado());
+    assert.ok(!qs.includes('¿Cuándo fue la última vez que te pasó y cuánto te duró?'));
+    assert.ok(!qs.includes('¿Qué fue lo que lo desencadenó?'));
+    assert.ok(!qs.includes(VERBALES.cirIntervencion.frase));
+  });
+  guia({ mecanismo: 'Post-quirúrgico', formularioPrevio: { comun: { primera_vez: 'No, ya me había pasado antes', desencadenante: 'Sí' }, regiones: { lumbar: {} } } }, () => {
+    const qs = preguntasDe(IA.construirAmpliado());
+    assert.ok(qs.includes('¿Cuándo fue la última vez que te pasó y cuánto te duró?'));
+    assert.ok(qs.includes('¿Qué fue lo que lo desencadenó?'));
+    assert.ok(qs.includes(VERBALES.cirIntervencion.frase) && qs.includes(VERBALES.cirRestricciones.frase));
+  });
+});
+
+test('prompt: «Preguntado» se marca en la lista, sin dar una respuesta', () => {
+  guia({ formularioPrevio: FP_VACIO(), motivoConsulta: '', preguntado: { motivoConsulta: true, 'fp:comun:medicacion': true } }, () => {
+    const g = IA.construirAmpliado().guia;
+    assert.equal(g.find(p => p.q === VERBALES.motivoConsulta.frase).preguntado, true);
+    assert.equal(g.find(p => p.q === '¿Qué medicación tomas ahora?').preguntado, true);
+    assert.ok(!g.find(p => p.q === '¿Desde cuándo te pasa?').preguntado);
+  });
+});
+
+test('prompt: la regla «no consta» con audio (buscar en la transcripción, omitir, sin «no refiere») y sin audio', () => {
+  const ps = [{ g: 'historia', q: '¿Desde cuándo te pasa?', preguntado: true }, { g: 'exploracion', q: 'Signo comparable: …' }];
+  const con = IN.bloqueGuia(ps, { conAudio: true });
+  assert.ok(con.startsWith(IN.REGLA_GUIA_AUDIO));
+  assert.match(con, /transcripción/);
+  assert.match(con, /no escribas «no refiere», «niega» ni «no consta»/);
+  assert.match(con, /· ¿Desde cuándo te pasa\? \(marcada como preguntada\)/);
+  assert.match(con, /Exploración \(va en Movilidad o en Pruebas Clínicas\):\n    · Signo comparable/);
+  const sin = IN.bloqueGuia(ps, { conAudio: false });
+  assert.ok(sin.startsWith(IN.REGLA_GUIA_SIN_AUDIO));
+  assert.doesNotMatch(sin, /transcripción/);
+  assert.equal(IN.bloqueGuia([], { conAudio: true }), '');
+});
+
+test('prompt: el bloque llega al prompt completo, con o sin audio según la tarjeta', () => {
+  guia({ formularioPrevio: FP_VACIO() }, () => {
+    const d = buildPhysiQPayload();
+    const a = IA.construirAmpliado();
+    assert.ok(IN.contextoValoracion(d, n => n, a, { conAudio: true }).includes(IN.REGLA_GUIA_AUDIO));
+    assert.ok(IN.contextoValoracion(d, n => n, a, { conAudio: false }).includes(IN.REGLA_GUIA_SIN_AUDIO));
+  });
+});
