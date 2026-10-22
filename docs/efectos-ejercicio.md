@@ -112,7 +112,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Diseño (este documento) | Aceptado por el usuario (2026-10) |
 | Infraestructura (herramienta, tests, smoke) | Hecha (2026-10, Sonnet): `data/ejercicio.js`, `lib/ejercicio.js`, `#ejercicioBtn` / `#ejercicioOverlay`, `abrirEjercicio()`, tests `tests/unit/ejercicio.mjs`, smoke `ejercicio`; los cinco bloques sin contenido, listados como pendientes |
 | Bloque 1 — Hipoalgesia | Escrito (2026-10, Opus; lectura de fuentes con Sonnet), **pendiente de revisión del usuario**. Fuentes leídas enteras: Naugle 2012, Vaegter y Jones 2020, Geneen 2017 y Polaski 2019 (PMC); Rice 2019 y Wewege y Jones 2021 (PDF del usuario) |
-| Bloque 2 — Mecanotransducción | No empezado |
+| Bloque 2 — Mecanotransducción | Fuentes leídas (2026-10, Sonnet); **pendiente de redactar con Opus** y de la revisión del usuario. Ver «Bloque 2 — lectura de fuentes» |
 | Bloque 3 — Antiinflamatorio sistémico | No empezado |
 | Bloque 4 — Otras mioquinas | No empezado |
 | Bloque 5 — Efectos centrales | No empezado |
@@ -145,3 +145,43 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 - Sensibilización central: la hipoalgesia falla más con sensibilidad al dolor generalizada o modulación condicionada deficiente, dado como preliminar (Rice 2019). La educación en neurociencia del dolor para los brotes tras el ejercicio va como propuesta de los autores, sin demostrar en dolor crónico.
 - Factores psicológicos: asociados a la hipoalgesia en sanos, no en dolor crónico (Rice 2019); se dice así, sin generalizar.
 - No se ha escrito que la hipoalgesia de una sesión prediga el resultado del ejercicio regular: solo hay datos preliminares (Rice 2019); va en «Ampliar».
+
+## Bloque 2 — lectura de fuentes (2026-10, Sonnet)
+
+Solo lectura: nada escrito en `data/` ni en el registro de referencias todavía (las entradas del registro se escriben con el bloque, porque su `revision` resume lo leído). Las citas literales las devolvieron agentes Sonnet; todas en inglés y con la sección. Lo que no vino en el texto de PMC (tablas, figuras, suplementos, números de cita) no se cita.
+
+| Tema | Fuente | PMC | Estado de lectura |
+|---|---|---|---|
+| Marco | Khan y Scott 2009, BJSM 43:247–252 | PMC2662433 | Entera, sin figuras. Texto corto de opinión y explicación; solo un ensayo (n = 21, radio distal) y una serie de casos |
+| Tendón | Bohm, Mersmann y Arampatzis 2015, Sports Med Open 1:7 | PMC4532714 | Entera. 27 estudios, 264 adultos sanos de 18–50 años; rigidez, módulo y área; muestras de 6–15 |
+| Tendón | Lazarczuk et al. 2022, Sports Med 52:2405 | PMC9474511 | Entera. 61 estudios, 763 participantes, calidad PEDro mediana 4/8; solo tendón sano del miembro inferior |
+| Tendón | McCrum et al. 2018, Front Physiol 9:150 | PMC5835978 | Entera. Envejecimiento y carga; el desuso solo aparece en una frase de la introducción |
+| Tendón | Magnusson y Kjaer 2019, J Physiol 597:1283 | PMC6395417 | **No leída**: texto vacío dos veces, solo el resumen. Probablemente la que trataba el desuso del tendón |
+| Músculo | Lim et al. 2022, Med Sci Sports Exerc 54:1546 | PMC9390238 | Entera. Revisión narrativa de mecanismos; no da dosis |
+| Músculo | Franchi, Reeves y Narici 2017, Front Physiol 8:447 | PMC5495834 | Entera, con tablas. Excéntrico frente a concéntrico |
+| Hueso | Hart et al. 2020, J Musculoskelet Neuronal Interact 20:347 | PMC7493450 | Entera; la tabla 2 sin valores |
+| Hueso | Harding y Beck 2017, Sports 5:29 | PMC5968984 | Entera; sin tablas ni figuras |
+| Hueso (clínica) | Howe et al. 2011, Cochrane CD000333 | PMC12744941 | **Solo el resumen** (texto vacío). 43 ensayos, 4320 mujeres posmenopáusicas |
+| Cartílago | Coburn et al. 2023, Sports Med Open 9:56 | PMC10348990 | Entera. Solo cambios agudos con resonancia (40 estudios); certeza GRADE muy baja |
+| Cartílago | Gardashli et al. 2024, Front Bioeng Biotechnol 12:1401207 | PMC11228341 | Leídas las secciones 3–7 (las 1–2 solo barridas). Revisión narrativa de artrosis postraumática, sobre todo animal e in vitro |
+| Cartílago | Song y Meng 2026, Medicine 105:e48913 | PMC13225549 | Entera, pero **no usarla para sostener afirmaciones**: ECA no registrado, efectos muy grandes, sus cifras del resumen no coinciden con su tabla 6 |
+| Desuso | Reyes et al. 2026, Exp Physiol | PMC13618863 | Entera. Revisión narrativa de reposo en cama, sobre todo músculo y hueso; el texto da dos fechas de búsqueda distintas |
+| Desuso | Chen, Guo y Zhou 2025, Front Physiol 16:1694891 | PMC12660080 | Entera, con tablas. Metaanálisis de entrenamiento de fuerza en reposo en cama a −6° (18 estudios, 297 sanos); algunas cifras internas no cuadran (ver abajo) |
+
+**Descartadas o sin texto**: Marusic 2021 (revisión sistemática de reposo en cama, PMC8325614, solo resumen), Lau 2022 (PMC8961781, localizada, no leída), Coburn 2022 (sin PMC), Savage 2025 (observacional, no leída), Whitten 2026 (solo roedores) y otras que el agente de búsqueda motivó una a una.
+
+### Avisos de lectura (para quien redacte)
+
+- **Tendón**: todo es tejido sano, medido en rigidez, módulo y área; **ninguna fuente mide dolor ni función ni estudia una tendinopatía**, y Lazarczuk avisa de no extrapolar. Las dos revisiones discrepan: Bohm 2015 da efecto con intensidad relativa alta (más del 70 % de la contracción máxima, 27 intervenciones frente a 5 con baja), y Lazarczuk 2022 no encuentra diferencia significativa entre intensidades relativas, pero sí con una deformación alta del tendón (~5 %), que salió de solo tres estudios. Candidato a `discutido`. En mayores la adaptación es menor (Lazarczuk).
+- **Músculo**: Lim 2022 trata mecanismos, no dosis, y no hay cifras de dosis-respuesta en esa fuente. Khan y Scott basan la parte de músculo en estudios animales.
+- **Hueso**: lo clínico depende de Howe 2011, solo con el resumen: efecto pequeño sobre la densidad ósea de mujeres posmenopáusicas (cadera, 1,03 % menos de pérdida con fuerza progresiva; columna, 3,2 % menos con ejercicio combinado). **Discrepancia interna sobre fracturas**: el abstract dice que no hay efecto (OR 0,61; IC 0,23–1,64) y el resumen en lenguaje sencillo habla de una reducción pequeña que puede ser azar; hay que recogerla. Sin texto completo no se cita nada más de Howe.
+- **Cartílago**: Coburn 2023 mide cambios agudos (0–5 % de grosor o volumen tras caminar, saltar o flexiones de rodilla, que se recuperan en 15–90 minutos); no mide adaptación crónica ni dolor. Para dolor y función con ejercicio en artrosis no hay fuente fiable leída (Song 2026 descartada). Gardashli sostiene la hipótesis de una respuesta «en U» (extremos de carga o descarga perjudiciales) con datos sobre todo animales e in vitro: nivel `mecanismo` como mucho.
+- **Desuso**: no hay fuente abierta leída para tendón ni cartílago humanos. Para músculo y hueso, Reyes 2026 (narrativa) y Chen 2025 (metaanálisis en voluntarios sanos jóvenes, mayoría varones, que no incluye pacientes ni inmovilización de una extremidad). Chen: cifras a comprobar antes de citar (IC de la fuerza en mujeres que no contiene su estimación; dos subgrupos con la misma g = 0,90). Reyes: las vías de señalización las marcan los propios autores como correlacionales en humanos.
+- **La afirmación «el reposo absoluto no repara»**: ninguna fuente leída la estudia como tal. Lo más cercano es la pérdida de masa y densidad ósea en reposo en cama en voluntarios (Reyes 2026) y la frase de introducción de McCrum 2018 sobre tendón. Se redacta como desuso en reposo en cama, no como reposo tras lesión.
+
+### Pendiente para Opus (redacción y niveles)
+
+1. Decidir qué entra y con qué nivel; apoyarse en lo anterior y en las citas literales de esta sesión.
+2. Frases para el paciente: solo con afirmaciones `clinico`. Con lo leído, las candidatas son pocas (el hueso, vía Howe, con el matiz de las fracturas); si no hay base clínica suficiente, el bloque puede quedar sin frase para el paciente en algún tema, pero `problemasBloque()` exige al menos una: decidir si se cambia esa regla o se escribe solo la del hueso.
+3. Registrar en `data/referencias.js` solo las fuentes que se citen, con su `revision`, y regenerar `docs/referencias.md`.
+4. Si el usuario aporta Magnusson y Kjaer 2019, Howe 2011 (texto completo) o Marusic 2021, releer antes de escribir esos apartados.
