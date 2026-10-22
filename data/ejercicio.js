@@ -51,8 +51,42 @@ export const APARTADOS_EJERCICIO = [
 // Los cinco bloques, en orden de trabajo. `resumen` es solo la pista de qué
 // cubrirá; no es contenido (cada frase saldrá de una fuente leída).
 export const BLOQUES_EJERCICIO = [
+  // Hipoalgesia (2026-10): cuatro fuentes leídas enteras en PMC. Sin leer
+  // (sin texto abierto): Rice 2019 (J Pain) y Wewege y Jones 2021 (J Pain),
+  // que no encuentra efecto con el isométrico; docs/efectos-ejercicio.md.
   { id: 'hipoalgesia', titulo: 'Hipoalgesia inducida por el ejercicio',
-    resumen: 'Ejercicio local y a distancia, qué pasa en el dolor crónico y con la sensibilización central, y qué implica para la dosis y los brotes' },
+    resumen: 'Ejercicio local y a distancia, qué pasa en el dolor crónico y con la sensibilización central, y qué implica para la dosis y los brotes',
+    apartados: {
+      que: [
+        { t: 'Una sola sesión de ejercicio reduce durante un rato la sensibilidad al dolor: en el laboratorio, el umbral de dolor a la presión sube un 15–20 % frente al reposo, y el efecto dura de 5 a 30 minutos (Vaegter y Jones 2020). Se mide sobre dolor provocado en el laboratorio, no sobre el dolor del paciente.', nivel: 'mecanismo' },
+        { t: 'En personas sanas lo producen el ejercicio aeróbico, el isométrico y el de fuerza dinámica, con efectos de moderados a grandes, más constantes con estímulos de presión que con calor o frío (Naugle 2012).', nivel: 'mecanismo' },
+        { t: 'Se atribuye sobre todo a la inhibición descendente del dolor por los sistemas opioide y endocannabinoide, pero en humanos los resultados son equívocos: los antagonistas opioides la aumentan, la reducen o no la cambian, y el apoyo más constante viene de estudios en animales (Naugle 2012; Vaegter y Jones 2020).', nivel: 'discutido' },
+      ],
+      evidencia: [
+        { t: 'Ejercicio regular en dolor crónico: mejora algo la intensidad del dolor y la función física, con efectos de pequeños a moderados que no se repiten en todas las revisiones; la calidad de la evidencia es baja (Geneen 2017, 21 revisiones Cochrane, 381 estudios).', nivel: 'clinico' },
+        { t: 'En esas revisiones el ejercicio no empeoró el dolor. Los efectos adversos más comunes fueron agujetas o dolor muscular, que cedieron en unas semanas; solo una cuarta parte de los estudios los registró, así que pueden estar infravalorados (Geneen 2017).', nivel: 'clinico' },
+        { t: 'En dolor crónico, la respuesta a una sesión es variable: hipoalgesia, ninguna o incluso hiperalgesia. La hiperalgesia es más frecuente en el dolor generalizado (fibromialgia, latigazo cervical) y en quien tiene mucha sensibilidad al dolor en todo el cuerpo (Vaegter y Jones 2020; Naugle 2012).', nivel: 'mecanismo' },
+        { t: 'Ejercitar una zona que no duele puede dar hipoalgesia donde la zona dolorosa no la da: en la mialgia de hombro, el ejercicio con la pierna la produjo y con el hombro doloroso no; en la artrosis de rodilla, la fuerza del tren superior subió el umbral de dolor y la del inferior no (Vaegter y Jones 2020).', nivel: 'mecanismo' },
+      ],
+      consulta: [
+        { t: 'Si ejercitar la zona dolorosa aumenta el dolor, se puede empezar por zonas que no duelen y por ejercicio de baja intensidad, como caminar. Los autores lo proponen como algo que «puede merecer la pena considerar», no como resultado de ensayos (Vaegter y Jones 2020).', nivel: 'mecanismo' },
+        { t: 'En la fibromialgia, la intensidad que elige el paciente dio más hipoalgesia que una intensidad prescrita del 60–75 % de la frecuencia cardiaca máxima (Vaegter y Jones 2020; Naugle 2012).', nivel: 'mecanismo' },
+        { t: 'No hay una dosis óptima demostrada: un reanálisis de 75 ensayos no encontró una relación clara entre la dosis de ejercicio y el alivio del dolor (Polaski 2019), y la revisión Cochrane no puede orientar el contenido del programa (Geneen 2017).', nivel: 'clinico' },
+        { t: 'Muchos pacientes con dolor crónico esperan más dolor tras el ejercicio, y las expectativas negativas se asociaron a menos hipoalgesia; los autores proponen preguntar por creencias y expectativas antes de prescribirlo. Parte de esos datos aún no está publicada (Vaegter y Jones 2020).', nivel: 'mecanismo' },
+      ],
+      paciente: [
+        { t: 'Hacer ejercicio con regularidad suele ayudar algo con el dolor y a moverse mejor. No es un efecto grande ni igual para todo el mundo.', apoya: [0] },
+        { t: 'Al empezar es normal notar agujetas o algo más de dolor muscular. Suele pasar en unas semanas, y en los estudios el ejercicio no empeoró el dolor.', apoya: [1] },
+      ],
+      detalle: [
+        'Casi todos los estudios de la hipoalgesia son pequeños (50 personas o menos) y muchos no tienen grupo control, así que probablemente sobrestiman el efecto (Vaegter y Jones 2020). Pocos comparan con una condición de reposo, y los que lo hacen dan efectos bastante menores (Naugle 2012).',
+        'En sanos, el efecto isométrico fue mayor con contracciones largas (5 minutos o más) y de intensidad moderada (40–50 % de la contracción máxima), y el aeróbico con más intensidad y más de 10 minutos; son pocos estudios y sin confirmar (Naugle 2012).',
+        'No se ha estudiado si la hipoalgesia tras una sesión predice cómo le irá al paciente con el ejercicio regular, y no se sabe cómo reduce el dolor el entrenamiento (Vaegter y Jones 2020).',
+        'El catastrofismo se asoció en algunos estudios a menos hipoalgesia, pero no en todos, y el miedo al dolor o la ansiedad apenas se relacionan; la influencia de los factores cognitivos parece limitada (Vaegter y Jones 2020).',
+        'Un modelo estadístico predice más alivio con más sesiones por semana, pero los propios autores lo presentan como una predicción para diseñar ensayos, no como un resultado (Polaski 2019).',
+      ],
+    },
+    fuentes: ['Naugle 2012', 'Vaegter y Jones 2020', 'Geneen 2017', 'Polaski 2019'] },
   { id: 'mecanotransduccion', titulo: 'Carga y adaptación del tejido (mecanotransducción)',
     resumen: 'Tendón, hueso, cartílago y músculo: cómo la carga se convierte en adaptación y por qué el reposo absoluto no repara' },
   { id: 'antiinflamatorio', titulo: 'Efecto antiinflamatorio sistémico',

@@ -111,7 +111,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 |---|---|
 | Diseño (este documento) | Aceptado por el usuario (2026-10) |
 | Infraestructura (herramienta, tests, smoke) | Hecha (2026-10, Sonnet): `data/ejercicio.js`, `lib/ejercicio.js`, `#ejercicioBtn` / `#ejercicioOverlay`, `abrirEjercicio()`, tests `tests/unit/ejercicio.mjs`, smoke `ejercicio`; los cinco bloques sin contenido, listados como pendientes |
-| Bloque 1 — Hipoalgesia | No empezado |
+| Bloque 1 — Hipoalgesia | Escrito (2026-10, Opus; lectura de fuentes con Sonnet), **pendiente de revisión del usuario**. Fuentes leídas enteras en PMC: Naugle 2012, Vaegter y Jones 2020, Geneen 2017, Polaski 2019. Sin leer, sin texto abierto: Rice 2019 (J Pain 20:1249) y Wewege y Jones 2021 (J Pain 22:21, que no encuentra efecto con el isométrico, frente a Naugle); entran si el usuario aporta los PDF |
 | Bloque 2 — Mecanotransducción | No empezado |
 | Bloque 3 — Antiinflamatorio sistémico | No empezado |
 | Bloque 4 — Otras mioquinas | No empezado |
@@ -134,3 +134,12 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 **Cómo se escribe un bloque**: se añade `apartados` y `fuentes` a su entrada de `BLOQUES_EJERCICIO`; deja de estar pendiente solo. `node tests/unit.js` exige que cada frase tenga un `nivel` que exista, que cada frase de `paciente` indique en qué `evidencia` se apoya (`apoya`) y que todas sean de nivel `clinico`, y que las citas de dentro de la frase sean fuentes del bloque y estén en el registro; después `node tests/gen-referencias.mjs`.
 
 **Tests**: unitarios en `tests/unit/ejercicio.mjs` (con un bloque de prueba, para no depender de que haya contenido real); smoke en la sección `ejercicio` (el bloque de prueba se escribe solo en la página).
+
+## Bloque 1 — Hipoalgesia: decisiones de nivel (2026-10)
+
+- Todo lo medido tras una sesión es dolor provocado en el laboratorio (sobre todo el umbral de dolor a la presión), no el dolor del paciente: va como `mecanismo`, aunque sea en humanos.
+- Los mecanismos opioide y endocannabinoide van como `discutido`: en humanos, los antagonistas la aumentan, la reducen o no la cambian (Vaegter y Jones 2020), y el apoyo constante viene de animales (Naugle 2012).
+- Lo único `clinico` es el ejercicio regular en dolor crónico (Geneen 2017: efecto de pequeño a moderado, inconsistente, calidad baja; no empeoró el dolor; agujetas que ceden) y la falta de una dosis óptima demostrada (Polaski 2019; Geneen 2017). Las dos frases para el paciente se apoyan solo en eso.
+- «Empezar por zonas que no duelen o por baja intensidad» va en «Qué cambia en la consulta» como `mecanismo` y con la cautela literal de los autores («puede merecer la pena considerar»): sale de estudios de laboratorio, no de ensayos clínicos.
+- La sensibilización central del bloque (decisión 2) queda en la frase de la hiperalgesia en dolor generalizado y con mucha sensibilidad al dolor; Rice 2019, que la trata más a fondo, está sin leer.
+- No se ha escrito que la hipoalgesia de una sesión prediga el resultado del ejercicio regular: ninguna fuente leída lo estudia (va en «Ampliar»).

@@ -2817,10 +2817,9 @@ async function checkFarmacos(browser, errors) {
 }
 
 // Guía «Efectos del ejercicio» (docs/efectos-ejercicio.md): diálogo centrado
-// con los cinco bloques pendientes y la leyenda de niveles; con un bloque de
-// prueba escrito en la página (el módulo de datos es el mismo), chips de nivel
-// pulsables con su ficha, «✨ IA» con el bloque como contexto y el apartado
-// «paciente» sin chip; Escape, impresión, móvil desde «Herramientas» (atrás
+// con la hipoalgesia escrita, los otros bloques pendientes y la leyenda de
+// niveles; chips de nivel pulsables con su ficha, «✨ IA» con el bloque como
+// contexto y el apartado «paciente» sin chip; Escape, impresión, móvil desde «Herramientas» (atrás
 // cierra), 320 px, cabecera sin desbordar a 769 px y el hub.
 async function checkEjercicio(browser, errors) {
   const r = {};
@@ -2828,43 +2827,36 @@ async function checkEjercicio(browser, errors) {
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (ejercicio): ${err.message}`));
   await abrirApp(page);
-  await page.click('#ejercicioBtn');
-  r.dialogo = await page.evaluate(() => {
-    const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
-    const pend = document.querySelector('#ejercicioCuerpo .ej-pendientes-lista')?.textContent || '';
-    return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && ['Hipoalgesia', 'mecanotransducción', 'antiinflamatorio', 'mioquinas', 'Efectos centrales'].every(t => pend.toLowerCase().includes(t.toLowerCase()))
-      && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
-  });
-  await page.keyboard.press('Escape');
-  r.escape = await page.evaluate(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
-  // Un bloque de prueba, escrito solo en esta página
-  await page.evaluate(async () => {
+  await page.evaluate(() => {
     window.__iaHrefs = [];
     window.addEventListener('click', e => {
       const a = e.target.closest?.('a[target="_blank"]');
       if (a) { e.preventDefault(); setTimeout(() => window.__iaHrefs.push(a.href), 0); }
     }, true);
-    const { BLOQUES_EJERCICIO } = await import('./data/ejercicio.js');
-    const b = BLOQUES_EJERCICIO[0];
-    b.apartados = {
-      que: [{ t: 'Frase de prueba sobre qué ocurre con el ejercicio.', nivel: 'mecanismo' }],
-      evidencia: [{ t: 'Frase de prueba con efecto medido en personas.', nivel: 'clinico' }],
-      consulta: [{ t: 'Frase de prueba sobre la consulta, discutida.', nivel: 'discutido' }],
-      paciente: [{ t: 'Frase de prueba para explicárselo al paciente.', apoya: [0] }],
-    };
-    b.fuentes = ['Hermans 2013'];
   });
+  await page.click('#ejercicioBtn');
+  r.dialogo = await page.evaluate(() => {
+    const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
+    const pend = (document.querySelector('#ejercicioCuerpo .ej-pendientes-lista')?.textContent || '').toLowerCase();
+    return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
+      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia'
+      && !pend.includes('hipoalgesia')
+      && ['mecanotransducción', 'antiinflamatorio', 'mioquinas', 'efectos centrales'].every(t => pend.includes(t))
+      && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
+  });
+  await page.keyboard.press('Escape');
+  r.escape = await page.evaluate(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
   await page.click('#ejercicioBtn');
   await page.click('[data-bloque="hipoalgesia"] > summary');
   r.bloque = await page.evaluate(() => {
     const b = document.querySelector('[data-bloque="hipoalgesia"]');
     return [...b.querySelectorAll('.ej-apartado')].map(a => a.dataset.apartado).join() === 'que,evidencia,consulta,paciente'
-      && b.querySelectorAll('button.ej-nivel').length === 3
+      && b.querySelectorAll('button.ej-nivel').length === 11
       && !b.querySelector('[data-apartado="paciente"] .ej-nivel')
-      && !document.querySelector('#ejercicioCuerpo .ej-pendientes-lista').textContent.includes('Hipoalgesia');
+      && b.querySelectorAll('.ej-cuerpo .cita').length > 5
+      && !!b.querySelector('.ej-mas');
   });
-  await page.click('[data-bloque="hipoalgesia"] [data-apartado="evidencia"] button.ej-nivel');
+  await page.click('[data-bloque="hipoalgesia"] [data-apartado="evidencia"] p:first-of-type button.ej-nivel');
   r.ficha = await page.evaluate(() => {
     const f = document.getElementById('ejNivelFicha');
     return !!f && !f.hidden && f.textContent.includes('Efecto medido en personas') && Number(getComputedStyle(f).zIndex) > 999;
@@ -2876,7 +2868,7 @@ async function checkEjercicio(browser, errors) {
   await page.waitForTimeout(150);
   r.ia = await page.evaluate(() => {
     const q = decodeURIComponent((window.__iaHrefs.at(-1) || '').split('q=')[1] || '').replace(/\+/g, ' ');
-    return q.includes('Hipoalgesia inducida por el ejercicio') && q.includes('Frase de prueba sobre qué ocurre');
+    return q.includes('Hipoalgesia inducida por el ejercicio') && q.includes('Una sola sesión de ejercicio');
   });
   await page.keyboard.press('Escape');
   await page.emulateMedia({ media: 'print' });
@@ -6042,7 +6034,7 @@ const SECCIONES = [
 
   { id: 'ejercicio', titulo: 'Guía de efectos del ejercicio:', run: async ({ browser, errors }) => {
     const c = await checkEjercicio(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Efectos del ejercicio (cabecera): diálogo centrado con los cinco bloques pendientes y la leyenda de los tres niveles; con un bloque de prueba, cuatro apartados, un chip de nivel pulsable por afirmación (ninguno en «paciente») con su ficha por encima del velo, Escape cierra primero la ficha, «✨ IA» con el bloque como contexto; oculto al imprimir; cabecera sin desbordar a 769 px; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Efectos del ejercicio (cabecera): diálogo centrado con la hipoalgesia escrita, los otros cuatro bloques pendientes y la leyenda de los tres niveles; la hipoalgesia con sus cuatro apartados, citas, «Ampliar» y un chip de nivel pulsable por afirmación (ninguno en «paciente») con su ficha por encima del velo, Escape cierra primero la ficha, «✨ IA» con el bloque como contexto; oculto al imprimir; cabecera sin desbordar a 769 px; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 

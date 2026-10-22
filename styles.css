@@ -3660,7 +3660,7 @@ body:has(.session-panel-overlay.open) .ia-menu { z-index: 1002; }
 .ej-apartado p { margin: 0 0 6px; font-size: 0.85rem; line-height: 1.5; color: var(--text); }
 .ej-mas { margin: 8px 0 6px; }
 .ej-mas > summary { cursor: pointer; font-size: 0.78rem; color: var(--accent); min-height: 32px; display: flex; align-items: center; }
-.ej-mas p { color: var(--text2); }
+.ej-mas p { margin: 0 0 6px; font-size: 0.85rem; line-height: 1.5; color: var(--text2); }
 .ej-fuentes { padding: 10px 12px 12px; font-size: 0.72rem; color: var(--text3); }
 .ej-fuentes-et { font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
 .ej-grupo { margin: 18px 0 6px; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); font-weight: 500; }
