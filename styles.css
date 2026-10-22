@@ -889,21 +889,35 @@
     text-overflow: ellipsis;
     color: var(--text2);
   }
-  /* Shared back button style for both context banners */
+  /* Las tres bandas son un <button> (como .mobile-phase-bar): toda la banda vuelve
+     a la cabecera; «↑ volver» es un rótulo sin recuadro, como el «≡» de la barra */
+  .context-banner {
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.15s;
+  }
+  .context-banner:active { background: var(--surface2); }
+  .context-banner:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  @media (hover: hover) {
+    .context-banner:hover { background: var(--surface); }
+    .context-banner:hover .context-banner-back { color: var(--text2); }
+  }
   .context-banner-back {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-family: 'DM Mono', monospace;
     color: var(--text3);
-    cursor: pointer;
     flex-shrink: 0;
-    padding: 4px 10px;
-    border: 1px solid var(--border2);
-    border-radius: 6px;
-    background: var(--surface2);
+    padding: 4px 0;
     white-space: nowrap;
-    transition: all 0.15s;
+    transition: color 0.15s;
   }
-  .context-banner-back:hover { color: var(--text2); border-color: var(--text3); background: var(--surface3); }
 
   /* Color coding */
   .hyp-green { background: var(--surface); border-color: rgba(56,217,169,0.3); }
@@ -1480,6 +1494,15 @@
   /* ── OPTION GROUP FULL WIDTH (fila, flex:1 por botón) ─── */
   .option-group-full { display: flex; gap: 6px; }
   .option-group-full .option-btn { flex: 1; text-align: center; }
+  /* Escritorio: todos los grupos de 1–3 opciones excluyentes (estados de las
+     condiciones especiales, modo de consulta, psico_*, Mecanismo, Cronología…) con
+     botones del mismo ancho —el del texto más largo del grupo, mínimo 12rem—,
+     alineados a la izquierda; sin estirarse a toda la tarjeta, que con dos botones
+     los dejaba demasiado anchos (en móvil mandan las reglas de ≤768 px) */
+  @media (min-width: 769px) {
+    .option-group-full, .option-group-col { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; width: fit-content; max-width: 100%; }
+    .option-group-full .option-btn, .option-group-col .option-btn { min-width: 12rem; text-align: center; }
+  }
   /* ── MOBILE PHASE INDICATOR BAR ─────────────────────────── */
   .mobile-phase-bar {
     display: none;
@@ -3346,6 +3369,10 @@ body.lupus .solo-les { display: block; }
 .farm-nombre { font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.3; }
 .farm-ejemplos { font-size: 0.78rem; color: var(--text2); line-height: 1.4; }
 .farm-cuerpo { padding: 0 12px; }
+/* «Ficha técnica (CIMA)»: mismos enlaces que Kenhub (.test-anat), pero también en
+   el hub (enlace público, sin cuenta ni IA; docs/farmacologia.md) */
+.farm-cima { margin: 0 12px 10px; }
+.in-hub .farm-cima { display: block; }
 .farm-apartado + .farm-apartado { margin-top: 12px; }
 .farm-apartado-titulo { margin: 0 0 4px; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text3); font-weight: 500; }
 .farm-apartado p { margin: 0 0 6px; font-size: 0.85rem; line-height: 1.5; color: var(--text); }
@@ -3678,3 +3705,31 @@ button.ej-nivel::after { content: ''; position: absolute; inset: -10px -4px; }
 .ej-ficha-flotante { max-width: 320px; }
 .ej-ficha p { margin: 4px 0 0; font-size: 0.82rem; line-height: 1.45; }
 @media print { .ejercicio-btn { display: none !important; } }
+
+/* ── Modo guía con grabadora externa (docs/modo-guia.md) ─────────────────── */
+.solo-guia { display: none; }
+.modo-guia .solo-guia { display: block; }
+.guia-oculto { display: none !important; }
+.in-hub .registro-bloque { display: none; }
+.registro-bloque { margin-top: 14px; }
+.registro-bloque .form-label { margin-bottom: 6px; }
+/* La frase para decir en voz alta: sin borde discontinuo, que es de «Refiere el paciente» */
+.verbal { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 10px; padding: 12px; margin-bottom: 1rem; }
+.verbal-frase { font-size: 0.95rem; line-height: 1.45; color: var(--text); }
+.verbal-ancla { margin-top: 6px; font-size: 0.8rem; line-height: 1.4; color: var(--text2); }
+.verbal-check { margin-top: 10px; min-height: 44px; }
+.fp-item .verbal { margin-bottom: 0; }
+.test-ancla { margin-top: 8px; font-size: 0.78rem; line-height: 1.4; color: var(--text2); }
+/* Teclado numérico */
+.teclado-panel:focus { outline: none; }
+.teclado-cabecera { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.teclado-cabecera .session-panel-title { margin-bottom: 0; min-width: 0; }
+.teclado-valor { font-family: 'DM Mono', monospace; font-size: 1.8rem; color: var(--accent); min-width: 3ch; text-align: right; }
+.teclado-teclas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.teclado-tecla { min-height: 56px; font-size: 1.4rem; font-family: inherit; background: var(--surface2); color: var(--text); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; }
+.teclado-tecla:active { background: var(--surface3); }
+.teclado-acciones { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.teclado-acciones .btn { min-height: 48px; }
+@media print { .registro-bloque, .verbal, .test-ancla, .teclado-panel, #tecladoOverlay { display: none !important; } }
+/* Un botón solo no deja hueco al lado en pantalla estrecha: ocupa todo el ancho */
+@media (max-width: 520px) { .verbal-check { width: 100%; } }

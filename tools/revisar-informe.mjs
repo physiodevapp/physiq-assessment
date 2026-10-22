@@ -31,6 +31,7 @@ export async function revisarArchivos(archivo, archivoInforme, { plantilla: plan
   const plantilla = plantillaArg || (/HALLAZGOS Y CODIFICACI[OÓ]N CIF/i.test(texto) ? 'breve' : 'narrativo');
   const puntos = RI.revisarInforme(texto, {
     datos: app.buildPhysiQPayload(), ampliado: ia.construirAmpliado(), plantilla, transcripcion, nombreRegion: app.nombreRegion,
+    cribado: app.respuestasUrgentes(),
   });
   return { plantilla, puntos };
 }

@@ -1052,6 +1052,15 @@ async function checkFarmacosPaciente(browser, page) {
   await page.evaluate(() => { selectLESEstado('diagnosticado'); selectLESFila('corticoides', 'm'); });
   r.corticoidesLupus = await page.getAttribute(`${C} [data-fm="corticoides"]`, 'aria-pressed') === 'true'
     && (await page.textContent(`${C} [data-fm="corticoides"]`)).includes('tarjeta Lupus');
+  // Bifosfonato o denosumab en la tarjeta de osteoporosis: el chip del hueso, marcado desde allí
+  r.sinPendientes = await page.$eval('#fmPendientes', e => e.hidden && !e.textContent.trim());
+  r.huesoSinMarcar = await page.getAttribute(`${C} [data-fm="hueso"]`, 'aria-pressed') === 'false';
+  await page.evaluate(() => { selectOPEstado('diagnosticada'); selectOPFila('tratamiento', 'antirresortivo'); });
+  r.huesoOsteoporosis = await page.getAttribute(`${C} [data-fm="hueso"]`, 'aria-pressed') === 'true'
+    && (await page.textContent(`${C} [data-fm="hueso"]`)).includes('tarjeta Osteoporosis')
+    && await page.evaluate(() => !state.farmacos.toma.includes('hueso'));
+  await page.evaluate(() => { selectOPFila('tratamiento', 'antirresortivo'); selectOPEstado('diagnosticada'); });
+  r.huesoQuitado = await page.getAttribute(`${C} [data-fm="hueso"]`, 'aria-pressed') === 'false';
   await page.click(`${C} [data-fm="corticoides"]`);
   r.soloLectura = await page.evaluate(() => !state.farmacos.toma.includes('corticoides'))
     && await page.getAttribute(`${C} [data-fm="corticoides"]`, 'aria-pressed') === 'true';
@@ -1086,6 +1095,8 @@ async function checkFarmacosPaciente(browser, page) {
   await abrirApp(page);
   await page.click(`${C} [data-fm="aine"]`);
   await page.click(`${C} [data-fm="opioides"]`);
+  await page.click(`${C} [data-fm="hueso"]`);
+  await page.click(`${C} [data-fm="fluoroquinolonas"]`);
   await walkRegion(page, 'lumbar');
   r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .fm-fase5')?.textContent || '';
     return t.includes('AINE · Opioides') && t.includes('No le digas que deje ni cambie la medicación'); });
@@ -1093,6 +1104,8 @@ async function checkFarmacosPaciente(browser, page) {
   await page.waitForSelector('#planContenido .card');
   r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
     return t.includes('Toma AINE: Deshidratación y calor') && t.includes('Toma opioides: Mareo, somnolencia y caídas')
+      && t.includes('Toma fármacos que tocan el hueso: Pronto, con imagen del fémur')
+      && t.includes('Toma o ha tomado fluoroquinolonas: Cuándo: puede empezar')
       && t.split('No le digas que deje ni cambie la medicación').length === 2; });
   // En el hub, la tarjeta y la guía funcionan (sin el atajo a la IA)
   const hub = await browser.newPage();
@@ -1594,6 +1607,87 @@ async function checkDerivacionCribado(page) {
   r.fase5 = await page.evaluate(() => {
     const t = document.getElementById('resultsContent')?.textContent || '';
     return t.includes('Derivación médica pendiente') && t.includes('quiste de Tarlov');
+  });
+  r.ok = Object.values(r).every(Boolean);
+  return r;
+}
+
+// Modo guía (docs/modo-guia.md): el selector «Cómo se registra» de la fase 1, la
+// frase para decir en voz alta en lugar de la caja de texto, el teclado numérico
+// propio y, sobre todo, que el cribado no venga en NO (decisión 3): la fase 5
+// abre con lo no preguntado, urgencias y banderas rojas en rojo, el resto aparte.
+async function checkModoGuia(page) {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await abrirApp(page);
+  const r = {};
+  await page.click('#registroConsulta .option-btn:has-text("Guía")');
+  r.cuerpo = await page.evaluate(() => document.body.classList.contains('modo-guia') && state.registro === 'guia');
+  r.nombreAuto = await page.evaluate(() => /^Paciente \d\d\/\d\d \d\d:\d\d$/.test(state.patient) && document.getElementById('patientName').value === state.patient);
+  r.verbal = await page.evaluate(() => {
+    const campo = document.getElementById('motivoConsulta');
+    const v = document.querySelector('[data-verbal="motivoConsulta"]');
+    return campo.offsetParent === null && !!v && v.offsetParent !== null && /Qué te trae/.test(v.textContent);
+  });
+  await page.click('[data-verbal="motivoConsulta"] .verbal-check');
+  r.preguntado = await page.evaluate(() => state.preguntado.motivoConsulta === true
+    && document.querySelector('[data-verbal="motivoConsulta"] .verbal-check').getAttribute('aria-pressed') === 'true');
+  await page.click('#fpDet_comun summary');
+  await page.waitForSelector('#fpBody_comun .verbal');
+  r.formulario = await page.evaluate(() => {
+    const t = document.getElementById('fpBody_comun').textContent;
+    return /¿Desde cuándo te pasa\?/.test(t) && /¿Qué medicación tomas ahora\?/.test(t) && !/Medicación que toma ahora/.test(t)
+      && document.querySelectorAll('#fpBody_comun textarea').length === 0;
+  });
+  // «Sí» en el desencadenante abre su detalle: también como frase, no como caja
+  await page.click('#fpBody_comun .fp-opts button:has-text("Sí") >> nth=0');
+  r.detalle = await page.evaluate(() => /¿Qué fue lo que lo desencadenó\?/.test(document.getElementById('fpBody_comun').textContent)
+    && document.querySelectorAll('#fpBody_comun textarea').length === 0);
+  await page.click('#fpDet_comun summary');
+  r.sinTecladoSistema = await page.evaluate(() => document.getElementById('edadPaciente').getAttribute('inputmode') === 'none');
+  await page.click('#edadPaciente');
+  await page.waitForSelector('#tecladoOverlay.open');
+  await page.click('#tecladoTeclas [data-tecla="4"]');
+  await page.click('#tecladoTeclas [data-tecla="5"]');
+  r.tecladoValor = await page.evaluate(() => document.getElementById('tecladoValor').textContent === '45' && state.edadPaciente === 45);
+  await page.click('#tecladoListo');
+  r.tecladoCierra = await page.evaluate(() => !document.getElementById('tecladoOverlay').classList.contains('open')
+    && document.getElementById('edadPaciente').value === '45');
+  r.bandera = await page.evaluate(() => document.querySelectorAll('#banderasRojas .sq-btn.selected').length === 0
+    && Object.values(state.banderasRojas).every(v => v === ''));
+  // (sin irAFase2: rellena #motivoConsulta, que en modo guía está oculto)
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.click('#mecanismo .option-btn >> nth=0');
+  await page.click('#cronologia .option-btn >> nth=0');
+  await page.click('#phase1 .btn-primary');
+  await page.waitForTimeout(150);
+  await page.click(`[onclick="selectRegion('lumbar', this)"]`);
+  await page.waitForTimeout(200);
+  r.sinNOmarcado = await page.evaluate(() => document.querySelectorAll('#sistemaPanels .sq2 .sq-btn.selected').length === 0
+    && document.querySelectorAll('#sistemaPanels .sq2').length > 0);
+  r.estadoVacio = await page.evaluate(() => Object.keys(state.sistemicoAnswers).length === 0);
+  await page.click('#tab_l_urogenital');
+  await page.click('#panel_l_urogenital #sq2_l6 .sq-btn.no');
+  r.noMarcado = await page.evaluate(() => state.sistemicoAnswers.l6 === 'NO'
+    && document.querySelector('#panel_l_urogenital #sq2_l6 .sq-btn.no').classList.contains('selected'));
+  await page.click('#btnContinuarSinss');
+  await page.waitForTimeout(150);
+  r.signoVerbal = await page.evaluate(() => document.getElementById('signoComparable').offsetParent === null
+    && /Flexión de hombro/.test(document.querySelector('[data-verbal="signoComparable"]')?.textContent || ''));
+  await page.click('#phase3 .btn-primary:has-text("Algoritmo CIF")');
+  await page.waitForTimeout(150);
+  await walkCifTreeToCompletion(page);
+  await page.click('#btnGoConfirm');
+  await page.waitForTimeout(150);
+  r.ancla = await page.evaluate(() => document.querySelectorAll('#phase4b .test-ancla').length > 0
+    && /positivo/.test(document.querySelector('#phase4b .test-ancla').textContent));
+  await page.click('#phase4b button:has-text("Ver Resultados")');
+  await page.waitForTimeout(150);
+  r.fase5 = await page.evaluate(() => {
+    const c = document.getElementById('resultsContent');
+    const urg = c?.querySelector('.no-preguntadas-urg');
+    if (!urg || c.firstElementChild !== urg) return false;
+    // l6 contestada: quedan 5 urgencias + 3 banderas rojas... (las 4, ninguna se tocó)
+    return urg.querySelectorAll('li').length === 9 && !!c.querySelector('.no-preguntadas') && !urg.closest('details');
   });
   r.ok = Object.values(r).every(Boolean);
   return r;
@@ -2635,11 +2729,14 @@ async function checkCondiciones(browser, errors) {
       && document.querySelectorAll('#condCuerpo .cond-fila .cita').length > 0;
   });
   r.sinMarcar = await estado('lupus') === 'No consta' && await estado('posquirurgico') === 'No marcado';
-  // Sin región: las filas de lumbar se ven, su botón no navega
-  r.lumbarSinRegion = await page.evaluate(() => {
-    const b = document.querySelector('[data-condicion="tarlov"] .cond-ir');
-    return b.disabled && /Elige lumbar/.test(b.textContent);
-  });
+  // Sin región: el botón de Tarlov elige lumbar, sin preguntar, y lleva a su pregunta
+  r.lumbarSinRegion = await page.evaluate(() => /Elegir lumbar e ir a la pregunta/.test(document.querySelector('[data-condicion="tarlov"] .cond-ir').textContent));
+  await page.click('[data-condicion="tarlov"] .cond-ir');
+  r.eligeRegion = await page.waitForFunction(() => window.state.region === 'lumbar' && window.state.currentPhase === 2
+    && !document.getElementById('confirmBanner')
+    && document.querySelector('.region-card[data-region="lumbar"]').classList.contains('selected')
+    && [...document.querySelectorAll('[id="sq2_l_u5"]')].some(e => e.offsetParent && e.classList.contains('flash-destacar')), null, { timeout: 4000 }).then(() => true, () => false);
+  await page.click('#condBtn');
   // Ir a la tarjeta del lupus: fase 1, resaltada, nada marcado
   const antes = await page.evaluate(() => JSON.stringify(window.state));
   await page.evaluate(() => window.goToPhase(1));
@@ -2668,6 +2765,23 @@ async function checkCondiciones(browser, errors) {
   await page.click('[data-condicion="tarlov"] .cond-ir');
   r.pregunta = await page.waitForFunction(() => window.state.currentPhase === 2
     && [...document.querySelectorAll('[id="sq2_l_u5"]')].some(e => e.offsetParent && e.classList.contains('flash-destacar')), null, { timeout: 4000 }).then(() => true, () => false);
+  // Con lumbar, congestión pélvica cambia a cadera tras confirmar; cancelar
+  // vuelve a la guía sin cambiar nada
+  await page.evaluate(() => { window.state.sistemicoAnswers.l_u5 = 'SI'; });
+  await page.click('#condBtn');
+  r.textoOtra = /Cambiar a cadera e ir/.test(await page.textContent('[data-condicion="congestionPelvica"] .cond-ir'));
+  await page.click('[data-condicion="congestionPelvica"] .cond-ir');
+  await page.waitForSelector('#confirmBanner .confirm-box-text');
+  r.aviso = /Ahora valoras lumbar\. Esta pregunta solo está en el cribado de cadera/.test(await page.textContent('#confirmBanner .confirm-box-text'))
+    && !(await abierto());
+  await page.click('#confirmCancel');
+  r.cancela = await page.waitForFunction(() => document.getElementById('condOverlay').classList.contains('open')
+    && window.state.region === 'lumbar' && window.state.sistemicoAnswers.l_u5 === 'SI', null, { timeout: 3000 }).then(() => true, () => false);
+  await page.click('[data-condicion="congestionPelvica"] .cond-ir');
+  await page.click('#confirmAction');
+  r.cambia = await page.waitForFunction(() => window.state.region === 'cadera' && window.state.currentPhase === 2
+    && !document.getElementById('condOverlay').classList.contains('open')
+    && [...document.querySelectorAll('[id="sq2_ca_u6"]')].some(e => e.offsetParent && e.classList.contains('flash-destacar')), null, { timeout: 4000 }).then(() => true, () => false);
   await page.emulateMedia({ media: 'print' });
   r.sinImprimir = await page.evaluate(() => getComputedStyle(document.getElementById('condBtn')).display === 'none');
   await context.close();
@@ -2695,6 +2809,19 @@ async function checkCondiciones(browser, errors) {
   r.irMovil = await m.waitForFunction(() => window.state.currentPhase === 1
     && document.getElementById('cardHipermovilidad').classList.contains('flash-destacar')
     && !document.getElementById('condOverlay').classList.contains('open'), null, { timeout: 4000 }).then(() => true, () => false);
+  // Cambio de región desde la hoja: el aviso sale con la hoja ya cerrada;
+  // cancelar la reabre y Atrás la vuelve a cerrar sin cambiar de fase
+  await m.evaluate(() => { window.goToPhase(2); window.selectRegion('lumbar', document.querySelector('.region-card[data-region="lumbar"]')); });
+  await abrirHerramienta(m, 'condiciones');
+  await m.waitForSelector('#condOverlay.open');
+  await m.tap('[data-condicion="congestionPelvica"] .cond-ir');
+  await m.waitForSelector('#confirmBanner .confirm-box-text');
+  r.avisoMovil = await m.evaluate(() => !document.getElementById('condOverlay').classList.contains('open'));
+  await m.tap('#confirmCancel');
+  await m.waitForSelector('#condOverlay.open');
+  await m.goBack();
+  r.cancelaMovil = await m.waitForFunction(() => !document.getElementById('condOverlay').classList.contains('open')
+    && window.state.currentPhase === 2 && window.state.region === 'lumbar', null, { timeout: 3000 }).then(() => true, () => false);
   await m.setViewportSize({ width: 320, height: 700 });
   await abrirHerramienta(m, 'condiciones');
   await m.waitForSelector('#condOverlay.open');
@@ -2715,14 +2842,16 @@ async function checkCondiciones(browser, errors) {
   return r;
 }
 
-// Guía de fármacos (docs/farmacologia.md, paso 2): diálogo centrado con los
-// AINE plegados y las pendientes; dentro, «✨ IA» con contexto (por encima del
-// velo) y citas; «Preguntar a la IA sobre fármacos» abre el diálogo en esa
-// modalidad; en móvil desde «Herramientas», atrás cierra; 320 px; en el hub,
-// visible y sin el atajo a la IA.
+// Guía de fármacos (docs/farmacologia.md, paso 2): diálogo centrado con las
+// 13 familias plegadas y en orden, sin bloque de pendientes (ya no queda
+// ninguna) y acabando en su pie; dentro, «✨ IA» con contexto (por encima del
+// velo) y citas; farmacosPreguntarIA() abre «Preguntar a la IA» en la
+// modalidad «Fármacos»; en móvil desde «Herramientas», atrás cierra; 320 px;
+// en el hub, visible y sin el atajo a la IA.
 async function checkFarmacos(browser, errors) {
   const r = {};
   const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  await portapapelesPropio(context);
   const page = await context.newPage();
   page.on('pageerror', err => errors.push(`pageerror (farmacos): ${err.message}`));
   await abrirApp(page);
@@ -2738,16 +2867,62 @@ async function checkFarmacos(browser, errors) {
     const p = document.getElementById('farmPanel').getBoundingClientRect();
     const fam = [...document.querySelectorAll('#farmCuerpo .farm-familia')];
     return document.getElementById('farmOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && fam.map(f => f.dataset.familia).slice(0, 11).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides,antidepresivos,sedantes,estatinas,fluoroquinolonas,betabloqueantes,antihipertensivos' && fam.every(f => !f.open)
-      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Corticoides')
-      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Fluoroquinolonas')
-      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Betabloqueantes')
-      && !document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Diuréticos')
-      && document.querySelector('#farmCuerpo .farm-pendientes-lista').textContent.includes('Insulina');
+      && fam.map(f => f.dataset.familia).join() === 'aine,corticoides,antitromboticos,opioides,gabapentinoides,antidepresivos,sedantes,estatinas,fluoroquinolonas,betabloqueantes,antihipertensivos,antidiabeticos,hueso' && fam.every(f => !f.open);
   });
+  // Sin familias pendientes: ni bloque ni atajo, y la guía acaba en su pie, sin huecos
+  r.sinPendientes = await page.evaluate(() => {
+    const c = document.getElementById('farmCuerpo');
+    const ultimo = [...c.children].at(-1);
+    return !c.querySelector('.farm-pendientes, .farm-preguntar') && ultimo?.classList.contains('cond-pie') && ultimo.textContent.trim().length > 20
+      && [...c.children].every(e => e.textContent.trim().length > 0);
+  });
+  await page.click('[data-familia="hueso"] > summary');
+  r.hueso = await page.evaluate(() => [...document.querySelectorAll('[data-familia="hueso"] .farm-apartado')].map(a => a.dataset.apartado).join() === 'dolor,visceral,ejercicio,sueno,consultar'
+    && document.querySelectorAll('[data-familia="hueso"] .farm-apartado .cita').length > 20
+    && document.querySelector('[data-familia="hueso"]').textContent.includes('Fractura atípica de fémur'));
+  await page.click('[data-familia="hueso"] > summary');
   await page.click('[data-familia="aine"] > summary');
   r.apartados = await page.evaluate(() => [...document.querySelectorAll('[data-familia="aine"] .farm-apartado')].map(a => a.dataset.apartado).join() === 'dolor,visceral,ejercicio,sueno,consultar'
     && document.querySelectorAll('[data-familia="aine"] .farm-apartado .cita').length > 3);
+  // «Ficha técnica (CIMA)»: un enlace por principio activo al buscador de CIMA, en otra
+  // pestaña y sin nada en la URL; al tocarlo se copia el nombre (portapapeles propio)
+  const { CIMA_BUSCADOR } = await import(new URL('../lib/farmacos.js', import.meta.url));
+  r.cima = await page.evaluate(base => {
+    const as = [...document.querySelectorAll('[data-familia="aine"] .farm-cima a')];
+    const vis = el => { const b = el.getBoundingClientRect(); return b.width > 0 && b.height > 0; };
+    return as.length === 6 && as.every(a => a.target === '_blank' && a.rel === 'noopener noreferrer' && vis(a)
+      && a.href === base && a.textContent === `${a.dataset.cima} ↗`)
+      && !document.querySelector('#farmCuerpo iframe');
+  }, CIMA_BUSCADOR);
+  await page.click('[data-familia="aine"] .farm-cima a[data-cima="naproxeno"]');
+  r.cimaCopia = await page.waitForFunction(base => document.getElementById('appToast')?.textContent.startsWith('«naproxeno» copiado')
+    && window.__iaHrefs.at(-1) === base, CIMA_BUSCADOR, { timeout: 3000 }).then(() => true, () => false)
+    && await page.evaluate(() => navigator.clipboard.readText()) === 'naproxeno';
+  // Volver de otra pestaña (CIMA) o de otra app: la guía sigue abierta, con la familia
+  // desplegada y el mismo scroll; solo se cierra la tarjeta de una cita
+  // Con la guía desplazada, toca una cita que esté a la vista (sin que Playwright mueva el scroll)
+  await page.evaluate(() => { document.getElementById('farmCuerpo').scrollTop = 200; });
+  await page.waitForTimeout(100);   // que pase el evento scroll antes de abrir la tarjeta (un scroll > 24 px la cierra)
+  await page.evaluate(() => {
+    const panel = document.getElementById('farmCuerpo');
+    const p = panel.getBoundingClientRect();
+    [...document.querySelectorAll('[data-familia="aine"] .farm-apartado .cita')]
+      .find(c => { const b = c.getBoundingClientRect(); return b.top > p.top + 40 && b.bottom < p.bottom - 40; })?.click();
+  });
+  const conFicha = await page.waitForSelector('#citaFicha:not([hidden])', { timeout: 3000 }).then(() => true, () => false);
+  r.vuelta = conFicha && await page.evaluate(async () => {
+    const panel = document.getElementById('farmCuerpo');
+    const antes = panel.scrollTop;
+    const ver = v => { Object.defineProperty(document, 'visibilityState', { value: v, configurable: true }); document.dispatchEvent(new Event('visibilitychange')); };
+    ver('hidden');
+    await new Promise(r => setTimeout(r, 50));
+    ver('visible');
+    delete document.visibilityState;
+    const ficha = document.getElementById('citaFicha');
+    return document.getElementById('farmOverlay').classList.contains('open')
+      && document.querySelector('[data-familia="aine"]').open && antes > 0 && panel.scrollTop === antes
+      && ficha.hidden;
+  });
   // «✨ IA» del primer párrafo: visible sobre el velo y con la familia como contexto
   await page.click('[data-familia="aine"] .farm-apartado p .ia-parrafo-ir');
   await page.waitForTimeout(150);
@@ -2763,8 +2938,9 @@ async function checkFarmacos(browser, errors) {
     return document.elementFromPoint(b.left + b.width / 2, b.top + 10)?.closest('#iaMenu') === m;
   });
   await page.keyboard.press('Escape');
+  // farmacosPreguntarIA() sigue expuesta (sin botón mientras no haya pendientes)
   if (await page.evaluate(() => document.getElementById('farmOverlay').classList.contains('open'))) {
-    await page.click('#farmCuerpo .farm-preguntar');
+    await page.evaluate(() => window.farmacosPreguntarIA());
     r.preguntar = await page.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open')
       && document.getElementById('preguntaOverlay').classList.contains('open')
       && document.querySelector('#preguntaTipos .option-btn.selected')?.dataset.tipo === 'farmacos', null, { timeout: 3000 }).then(() => true, () => false);
@@ -2809,7 +2985,9 @@ async function checkFarmacos(browser, errors) {
     if (getComputedStyle(document.getElementById('farmBtn')).display === 'none') return false;
     window.abrirFarmacos();
     const b = document.querySelector('#farmCuerpo .farm-preguntar');
-    return getComputedStyle(b).display === 'none';
+    document.querySelector('[data-familia="aine"]').open = true;
+    const cima = document.querySelector('[data-familia="aine"] .farm-cima');
+    return (!b || getComputedStyle(b).display === 'none') && !!cima && getComputedStyle(cima).display !== 'none';
   });
   await ctxHub.close();
   r.ok = Object.values(r).every(v => v === true);
@@ -4440,7 +4618,8 @@ async function enParalelo(items, n, fn) {
 // con los mismos escuchas de errores y el mismo /validate simulado.
 // Bandas de contexto del formulario previo (fases 1 y 2) y del sistema abierto
 // (fase 2): se ven solo con la cabecera bajo la banda y el bloque aún en
-// pantalla, nunca dos a la vez; «↑ volver» lleva a la cabecera; caben a 320 px.
+// pantalla, nunca dos a la vez; toda la banda (no solo «↑ volver») lleva a la
+// cabecera; caben a 320 px.
 async function checkBandaFormulario(page) {
   const bandas = () => page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(() => {
     const ver = id => document.getElementById(id).classList.contains('visible');
@@ -4477,7 +4656,8 @@ async function checkBandaFormulario(page) {
     await irA(pos.fuera);
     const fuera = await bandas();
     await irA(pos.dentro);
-    await page.click('#fpContextBanner .context-banner-back');
+    // Toda la banda vuelve, no solo «↑ volver»: se pulsa sobre el nombre
+    await page.click('#fpBannerName');
     await page.waitForFunction(() => {
       const s = document.querySelector('#fpDet_comun > summary').getBoundingClientRect();
       const t = parseFloat(getComputedStyle(document.getElementById('fpContextBanner')).top);
@@ -4550,7 +4730,12 @@ async function checkBandaFormulario(page) {
     const btn = b.querySelector('.context-banner-back').getBoundingClientRect();
     return b.scrollWidth <= b.clientWidth && btn.right <= innerWidth && b.offsetHeight < 60;
   });
-  res.ok = res.w390_ok && res.w1280_ok && res.cabe320;
+  // Las tres bandas son un solo botón, sin otro botón dentro, y se anuncian como «Volver a …»
+  res.botones = await page.evaluate(() => ['fpContextBanner', 'sisContextBanner', 'hypContextBanner'].every(id => {
+    const b = document.getElementById(id);
+    return b.tagName === 'BUTTON' && !b.querySelector('button') && /^Volver a /.test(b.querySelector('.sr-only')?.textContent || '');
+  }));
+  res.ok = res.w390_ok && res.w1280_ok && res.cabe320 && res.botones;
   return res;
 }
 
@@ -6022,13 +6207,13 @@ const SECCIONES = [
 
   { id: 'condiciones', titulo: 'Guía de condiciones especiales:', run: async ({ browser, errors }) => {
     const c = await checkCondiciones(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 11 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, las de región no navegan; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Condiciones especiales (cabecera): diálogo centrado con las 11 filas en orden, «Solo en lumbar» y «Solo en cadera» y fuentes como citas; sin región, el botón de una fila de región la elige y lleva a su pregunta; con otra región pide confirmación (cancelar vuelve a la guía, también en móvil con Atrás) y la cambia; cada botón lleva a su tarjeta (fase 1) o pregunta (fase 2, con lumbar) y la resalta sin marcar nada; el estado sigue a la tarjeta; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase y un botón que navega sin dejar la hoja abierta; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
   { id: 'farmacos', titulo: 'Guía de fármacos:', run: async ({ browser, errors }) => {
     const c = await checkFarmacos(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las familias escritas plegadas (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes, diuréticos y otros antihipertensivos), los AINE con sus cinco apartados y citas, las familias pendientes listadas; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; «Preguntar a la IA sobre fármacos» abre el diálogo en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las 13 familias plegadas y en orden (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes, diuréticos y otros antihipertensivos, insulina y antidiabéticos, fármacos que tocan el hueso), sin bloque de pendientes y acabando en su pie, los AINE y el hueso con sus cinco apartados y citas; «Ficha técnica (CIMA)»: seis enlaces de AINE al buscador de CIMA en otra pestaña, sin nada en la URL, y tocar uno copia su nombre; sigue abierta al volver de otra pestaña; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; farmacosPreguntarIA() abre «Preguntar a la IA» en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA y con los enlaces a CIMA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
@@ -6114,7 +6299,7 @@ const SECCIONES = [
 
   { id: 'farmacos-paciente', titulo: 'Fármacos que toma (paso 3 de la farmacología, lumbar):', run: async ({ browser, page }) => {
     const r = await checkFarmacosPaciente(browser, page);
-    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta sin texto libre con los chips de las familias escritas de la guía, línea del anticoagulado, corticoides desde el lupus (solo lectura, fuera de fm), medicación del formulario como pista que no marca nada, guía en «Este paciente» con un segundo toque a todas, fase 5, avisos de la fase 6 con la línea común una vez, 320 px y el hub`);
+    console.log(`  ${r.ok ? '✓' : '✗'} tarjeta sin texto libre con los chips de las familias escritas de la guía, línea del anticoagulado, corticoides desde el lupus (solo lectura, fuera de fm), el hueso desde la osteoporosis con bifosfonato o denosumab (y se quita con ella), los avisos del hueso y de las fluoroquinolonas en la fase 6, sin línea de familias pendientes, medicación del formulario como pista que no marca nada, guía en «Este paciente» con un segundo toque a todas, fase 5, avisos de la fase 6 con la línea común una vez, 320 px y el hub`);
     if (!r.ok) console.log('\nFármacos que toma:', JSON.stringify(r));
     return r.ok;
   } },
@@ -6140,6 +6325,12 @@ const SECCIONES = [
     return r.ok;
   } },
 
+  { id: 'modo-guia', titulo: 'Modo guía: sin marcar = no preguntado (lumbar):', run: async ({ page }) => {
+    const r = await checkModoGuia(page);
+    console.log(`  ${r.ok ? '✓' : '✗'} selector, nombre automático, frase en voz alta con «Preguntado», teclado numérico (edad), cribado sin NO por defecto, frases ancla en la 4b y la fase 5 abre con lo no preguntado`);
+    if (!r.ok) console.log('\nModo guía:', JSON.stringify(r));
+    return r.ok;
+  } },
   { id: 'derivacion', titulo: 'Derivación médica (árbol: lumbar VASCULAR; cribado: quiste de Tarlov):', run: async ({ page }) => {
     const r = await checkDerivacionVascular(page);
     console.log(`  ${r.ok ? '✓' : '✗'} árbol: aviso bajo el paso, al completar el árbol y en la fase 5`);

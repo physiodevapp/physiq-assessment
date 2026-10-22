@@ -13,9 +13,9 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **793** referencias de literatura, con **4409** usos.
+- **993** referencias de literatura, con **4623** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
-- **385** de 793 referencias del registro revisadas. Ver «Estado de revisión».
+- **385** de 993 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
 
 ## Cómo revisar una referencia
@@ -91,7 +91,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Mottola 2018](#mottola-2018) | razonamiento fase 2 · texto | 58 | **sin revisar** |
 | [Aringer 2019](#aringer-2019) | razonamiento fase 2 · texto | 17 | **sin revisar** |
 | [Cooper 2019](#cooper-2019) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Kanis 2019](#kanis-2019) | razonamiento fase 2 · texto | 10 | **sin revisar** |
+| [Kanis 2019](#kanis-2019) | razonamiento fase 2 · texto | 11 | **sin revisar** |
 | [Tektonidou 2019](#tektonidou-2019) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Wiegele 2019](#wiegele-2019) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Amaniyan 2020](#amaniyan-2020) | razonamiento fase 2 · texto | 9 | **sin revisar** |
@@ -113,8 +113,8 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Dalrymple 2022](#dalrymple-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [De Maeseneer 2022](#de-maeseneer-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Drosos 2022](#drosos-2022) | razonamiento fase 2 · texto | 15 | **sin revisar** |
-| [Laurent 2022](#laurent-2022) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Laurent 2022](#laurent-2022) | razonamiento fase 2 · texto | 10 | **sin revisar** |
+| [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Muñoz 2022](#muñoz-2022) | razonamiento fase 2 · texto | 10 | **sin revisar** |
 | [Nemunaitis 2022](#nemunaitis-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Peng 2022](#peng-2022) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -125,7 +125,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Fragoulis 2023](#fragoulis-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hameed 2023](#hameed-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hideyama 2023](#hideyama-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Lim y Selbi 2023](#lim-y-selbi-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Limaiem 2023](#limaiem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lukies 2023](#lukies-2023) | razonamiento fase 2 | 2 | **sin revisar** |
@@ -136,7 +136,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Saleem 2023](#saleem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Scioscia 2023](#scioscia-2023) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [Yasir 2023](#yasir-2023) | razonamiento fase 2 · texto | 17 | **sin revisar** |
+| [Yasir 2023](#yasir-2023) | razonamiento fase 2 · texto | 18 | **sin revisar** |
 | [Albrecht 2024](#albrecht-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Deering 2024](#deering-2024) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Fanouriakis 2024](#fanouriakis-2024) | razonamiento fase 2 · texto | 10 | **sin revisar** |
@@ -150,13 +150,13 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Capsoni 2025](#capsoni-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Castro y Sharma 2025](#castro-y-sharma-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Goosenberg 2025](#goosenberg-2025) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Gregson 2025](#gregson-2025) | razonamiento fase 2 · texto | 75 | **sin revisar** |
+| [Gregson 2025](#gregson-2025) | razonamiento fase 2 · texto | 76 | **sin revisar** |
 | [Hulens 2025](#hulens-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kuo 2025](#kuo-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lee y Picard 2025](#lee-y-picard-2025) | razonamiento fase 2 · texto | 16 | **sin revisar** |
 | [Lizzo 2025](#lizzo-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Mameli 2025](#mameli-2025) | razonamiento fase 2 | 3 | **sin revisar** |
-| [Saad y Mathew 2025](#saad-y-mathew-2025) | razonamiento fase 2 | 1 | **sin revisar** |
+| [Saad y Mathew 2025](#saad-y-mathew-2025) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Sammaritano 2025](#sammaritano-2025) | razonamiento fase 2 | 4 | **sin revisar** |
 | [Bell y Saleh 2026](#bell-y-saleh-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Bowers y Blum 2026](#bowers-y-blum-2026) | razonamiento fase 2 · texto | 14 | **sin revisar** |
@@ -326,95 +326,229 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Sivakoti 2026](#sivakoti-2026) | texto | 7 | **sin revisar** |
 | [Valdez 2026](#valdez-2026) | texto | 7 | **sin revisar** |
 | [Waterway 2026](#waterway-2026) | texto | 7 | **sin revisar** |
+| [Iacovides 2009](#iacovides-2009) | — | 1 | **sin revisar** |
+| [Diabetes Prevention Program 2012](#diabetes-prevention-program-2012) | — | 1 | **sin revisar** |
+| [Bazelier 2013](#bazelier-2013) | — | 1 | **sin revisar** |
+| [Brod 2013](#brod-2013) | — | 1 | **sin revisar** |
+| [Desai 2013](#desai-2013) | — | 1 | **sin revisar** |
+| [Liu 2013](#liu-2013) | — | 1 | **sin revisar** |
+| [Mikus 2013](#mikus-2013) | — | 1 | **sin revisar** |
+| [Parker 2013](#parker-2013) | — | 1 | **sin revisar** |
+| [EMA 2014](#ema-2014) | — | 1 | **sin revisar** |
+| [Evans 2014](#evans-2014) | — | 1 | **sin revisar** |
 | [Lewis y Cook 2014](#lewis-y-cook-2014) | — | 1 | **sin revisar** |
+| [Shane 2014](#shane-2014) | — | 1 | **sin revisar** |
 | [Broncel 2015](#broncel-2015) | — | 1 | **sin revisar** |
+| [Hansen 2015](#hansen-2015) | — | 1 | **sin revisar** |
+| [Irwin 2015](#irwin-2015) | — | 1 | **sin revisar** |
 | [Stroes 2015](#stroes-2015) | — | 1 | **sin revisar** |
+| [Adler 2016](#adler-2016) | — | 1 | **sin revisar** |
+| [Colberg 2016](#colberg-2016) | — | 1 | **sin revisar** |
+| [Kelly 2016](#kelly-2016) | — | 1 | **sin revisar** |
 | [Liamis 2016](#liamis-2016) | — | 1 | **sin revisar** |
+| [Paik 2016](#paik-2016) | — | 1 | **sin revisar** |
+| [Teichtahl 2016](#teichtahl-2016) | — | 1 | **sin revisar** |
+| [Wang 2016](#wang-2016) | — | 1 | **sin revisar** |
+| [Youssef 2016](#youssef-2016) | — | 1 | **sin revisar** |
+| [Bakker 2017](#bakker-2017) | — | 1 | **sin revisar** |
+| [Ble 2017](#ble-2017) | — | 1 | **sin revisar** |
 | [Camilleri 2017](#camilleri-2017) | — | 1 | **sin revisar** |
+| [Chou 2017](#chou-2017) | — | 1 | **sin revisar** |
 | [Filippatos 2017](#filippatos-2017) | — | 1 | **sin revisar** |
 | [Ham 2017](#ham-2017) | — | 1 | **sin revisar** |
+| [Hill 2017](#hill-2017) | — | 1 | **sin revisar** |
+| [Kunutsor 2017](#kunutsor-2017) | — | 1 | **sin revisar** |
+| [Men 2017](#men-2017) | — | 1 | **sin revisar** |
+| [Noyes 2017](#noyes-2017) | — | 1 | **sin revisar** |
+| [Riddell 2017](#riddell-2017) | — | 1 | **sin revisar** |
+| [Schadler 2017](#schadler-2017) | — | 1 | **sin revisar** |
+| [Thomas 2017](#thomas-2017) | — | 1 | **sin revisar** |
+| [Thomas Manapurathe 2017](#thomas-manapurathe-2017) | — | 1 | **sin revisar** |
+| [Tsujimoto 2017](#tsujimoto-2017) | — | 1 | **sin revisar** |
 | [Wichniak 2017](#wichniak-2017) | — | 1 | **sin revisar** |
 | [Compston 2018](#compston-2018) | — | 1 | **sin revisar** |
 | [EMA 2018](#ema-2018) | — | 1 | **sin revisar** |
+| [Enke 2018](#enke-2018) | — | 1 | **sin revisar** |
 | [Evans 2018](#evans-2018) | — | 1 | **sin revisar** |
+| [Gradel 2018](#gradel-2018) | — | 1 | **sin revisar** |
 | [Mach 2018](#mach-2018) | — | 1 | **sin revisar** |
+| [Suárez-Lledó 2018](#suárez-lledó-2018) | — | 1 | **sin revisar** |
 | [Wang 2018](#wang-2018) | — | 1 | **sin revisar** |
 | [Welsch 2018](#welsch-2018) | — | 1 | **sin revisar** |
 | [Yang y Qu 2018](#yang-y-qu-2018) | — | 1 | **sin revisar** |
+| [Bahendeka 2019](#bahendeka-2019) | — | 1 | **sin revisar** |
+| [Keteyian 2019](#keteyian-2019) | — | 1 | **sin revisar** |
+| [Lebovitz 2019](#lebovitz-2019) | — | 1 | **sin revisar** |
 | [Lucas 2019](#lucas-2019) | — | 1 | **sin revisar** |
+| [Moore 2019](#moore-2019) | — | 1 | **sin revisar** |
+| [Morales 2019](#morales-2019) | — | 1 | **sin revisar** |
+| [Smart 2019](#smart-2019) | — | 1 | **sin revisar** |
+| [Tentolouris 2019](#tentolouris-2019) | — | 1 | **sin revisar** |
+| [Van der Sluiszen 2019](#van-der-sluiszen-2019) | — | 1 | **sin revisar** |
 | [Bindu 2020](#bindu-2020) | — | 1 | **sin revisar** |
+| [Black 2020](#black-2020) | — | 1 | **sin revisar** |
 | [De Vries 2020](#de-vries-2020) | — | 1 | **sin revisar** |
+| [Heyward 2020](#heyward-2020) | — | 1 | **sin revisar** |
+| [Lary 2020](#lary-2020) | — | 1 | **sin revisar** |
 | [Layton 2020](#layton-2020) | — | 1 | **sin revisar** |
+| [Lin 2020](#lin-2020) | — | 1 | **sin revisar** |
+| [Lu 2020](#lu-2020) | — | 1 | **sin revisar** |
 | [McAnally 2020](#mcanally-2020) | — | 1 | **sin revisar** |
+| [Moser 2020](#moser-2020) | — | 1 | **sin revisar** |
+| [Pitt 2020](#pitt-2020) | — | 1 | **sin revisar** |
+| [Saco-Ledo 2020](#saco-ledo-2020) | — | 1 | **sin revisar** |
+| [Tchivileva 2020](#tchivileva-2020) | — | 1 | **sin revisar** |
+| [Tenti 2020](#tenti-2020) | — | 1 | **sin revisar** |
+| [Wathra 2020](#wathra-2020) | — | 1 | **sin revisar** |
+| [Wilcox 2020](#wilcox-2020) | — | 1 | **sin revisar** |
 | [Albasri 2021](#albasri-2021) | — | 1 | **sin revisar** |
+| [Anastasilakis 2021](#anastasilakis-2021) | — | 1 | **sin revisar** |
 | [Baggio y Ananda-Rajah 2021](#baggio-y-ananda-rajah-2021) | — | 1 | **sin revisar** |
-| [Bhanu 2021](#bhanu-2021) | — | 1 | **sin revisar** |
+| [Bhanu 2021](#bhanu-2021) | — | 2 | **sin revisar** |
 | [Cashin 2021](#cashin-2021) | — | 1 | **sin revisar** |
+| [Caulfield 2021](#caulfield-2021) | — | 1 | **sin revisar** |
 | [Dufort y Samaan 2021](#dufort-y-samaan-2021) | — | 1 | **sin revisar** |
 | [Edinoff 2021](#edinoff-2021) | — | 1 | **sin revisar** |
 | [Giménez-Campos 2021](#giménez-campos-2021) | — | 1 | **sin revisar** |
+| [Herrett 2021](#herrett-2021) | — | 1 | **sin revisar** |
+| [Huruba 2021](#huruba-2021) | — | 1 | **sin revisar** |
+| [Hyder 2021](#hyder-2021) | — | 1 | **sin revisar** |
+| [Jin 2021](#jin-2021) | — | 1 | **sin revisar** |
+| [Nakafero 2021](#nakafero-2021) | — | 1 | **sin revisar** |
+| [Nakhleh y Shehadeh 2021](#nakhleh-y-shehadeh-2021) | — | 1 | **sin revisar** |
+| [Park 2021](#park-2021) | — | 1 | **sin revisar** |
+| [Roulet 2021](#roulet-2021) | — | 1 | **sin revisar** |
+| [Roy 2021](#roy-2021) | — | 1 | **sin revisar** |
 | [Schug 2021](#schug-2021) | — | 1 | **sin revisar** |
 | [Schweiger 2021](#schweiger-2021) | — | 1 | **sin revisar** |
+| [Slade 2021](#slade-2021) | — | 1 | **sin revisar** |
+| [Smarz 2021](#smarz-2021) | — | 1 | **sin revisar** |
+| [Tsourdi 2021](#tsourdi-2021) | — | 1 | **sin revisar** |
+| [Uson 2021](#uson-2021) | — | 1 | **sin revisar** |
+| [Vehmanen 2021](#vehmanen-2021) | — | 1 | **sin revisar** |
 | [Wee 2021](#wee-2021) | — | 1 | **sin revisar** |
+| [Xue 2021](#xue-2021) | — | 1 | **sin revisar** |
+| [Abraham 2022](#abraham-2022) | — | 1 | **sin revisar** |
+| [Adolfsson 2022](#adolfsson-2022) | — | 1 | **sin revisar** |
+| [Akin 2022](#akin-2022) | — | 1 | **sin revisar** |
 | [Alam 2022](#alam-2022) | — | 1 | **sin revisar** |
+| [Attardo 2022](#attardo-2022) | — | 1 | **sin revisar** |
 | [Carvalho 2022](#carvalho-2022) | — | 1 | **sin revisar** |
 | [CTT 2022](#ctt-2022) | — | 1 | **sin revisar** |
 | [De Filippis 2022](#de-filippis-2022) | — | 1 | **sin revisar** |
+| [Desbiens 2022](#desbiens-2022) | — | 1 | **sin revisar** |
 | [Dowell 2022](#dowell-2022) | — | 1 | **sin revisar** |
+| [Forton 2022](#forton-2022) | — | 1 | **sin revisar** |
+| [García-Sánchez 2022](#garcía-sánchez-2022) | — | 1 | **sin revisar** |
 | [Hahn 2022](#hahn-2022) | — | 1 | **sin revisar** |
+| [Han 2022](#han-2022) | — | 1 | **sin revisar** |
 | [Hansen 2022](#hansen-2022) | — | 1 | **sin revisar** |
 | [Hanssen 2022](#hanssen-2022) | — | 1 | **sin revisar** |
+| [Hershman 2022](#hershman-2022) | — | 1 | **sin revisar** |
+| [Holgado 2022](#holgado-2022) | — | 1 | **sin revisar** |
+| [Johannsen 2022](#johannsen-2022) | — | 1 | **sin revisar** |
+| [Kanaley 2022](#kanaley-2022) | — | 1 | **sin revisar** |
 | [Kurlander 2022](#kurlander-2022) | — | 1 | **sin revisar** |
 | [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) | — | 1 | **sin revisar** |
 | [Liang 2022](#liang-2022) | — | 1 | **sin revisar** |
+| [Pedersini 2022](#pedersini-2022) | — | 1 | **sin revisar** |
+| [Ruggiero 2022](#ruggiero-2022) | — | 1 | **sin revisar** |
 | [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) | — | 1 | **sin revisar** |
 | [Shao 2022](#shao-2022) | — | 1 | **sin revisar** |
+| [Shin 2022](#shin-2022) | — | 1 | **sin revisar** |
+| [Shu 2022](#shu-2022) | — | 1 | **sin revisar** |
+| [Tsuchiya 2022](#tsuchiya-2022) | — | 1 | **sin revisar** |
 | [AEMPS 2023](#aemps-2023) | — | 1 | **sin revisar** |
+| [AGS 2023](#ags-2023) | — | 1 | **sin revisar** |
+| [Baffour-Awuah 2023](#baffour-awuah-2023) | — | 1 | **sin revisar** |
+| [Baigrie y Nookala 2023](#baigrie-y-nookala-2023) | — | 1 | **sin revisar** |
 | [Barberán 2023](#barberán-2023) | — | 1 | **sin revisar** |
 | [Bazroon y Alrashidi 2023](#bazroon-y-alrashidi-2023) | — | 1 | **sin revisar** |
+| [Birkinshaw 2023](#birkinshaw-2023) | — | 1 | **sin revisar** |
+| [Brown 2023](#brown-2023) | — | 1 | **sin revisar** |
+| [Buck 2023](#buck-2023) | — | 1 | **sin revisar** |
+| [Can y Correa 2023](#can-y-correa-2023) | — | 1 | **sin revisar** |
 | [Capiau 2023](#capiau-2023) | — | 1 | **sin revisar** |
 | [Carnovale 2023](#carnovale-2023) | — | 1 | **sin revisar** |
 | [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) | — | 1 | **sin revisar** |
+| [Corcoran y Jacobs 2023](#corcoran-y-jacobs-2023) | — | 1 | **sin revisar** |
+| [Costello 2023](#costello-2023) | — | 1 | **sin revisar** |
 | [Farzam y Jan 2023](#farzam-y-jan-2023) | — | 1 | **sin revisar** |
+| [Ferreira 2023](#ferreira-2023) | — | 1 | **sin revisar** |
 | [Garrison 2023](#garrison-2023) | — | 1 | **sin revisar** |
+| [Gehrke 2023](#gehrke-2023) | — | 1 | **sin revisar** |
 | [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) | — | 1 | **sin revisar** |
 | [Gragossian 2023](#gragossian-2023) | — | 1 | **sin revisar** |
+| [Harrington 2023](#harrington-2023) | — | 1 | **sin revisar** |
 | [Herman 2023](#herman-2023) | — | 1 | **sin revisar** |
 | [Horowitz 2023](#horowitz-2023) | — | 1 | **sin revisar** |
 | [Hu 2023](#hu-2023) | — | 1 | **sin revisar** |
+| [Humphrey 2023](#humphrey-2023) | — | 1 | **sin revisar** |
 | [Huxel 2023](#huxel-2023) | — | 1 | **sin revisar** |
+| [Hwang 2023](#hwang-2023) | — | 1 | **sin revisar** |
 | [Jödicke 2023](#jödicke-2023) | — | 1 | **sin revisar** |
+| [Jones 2023](#jones-2023) | — | 1 | **sin revisar** |
 | [Kang 2023](#kang-2023) | — | 1 | **sin revisar** |
+| [Kasina y Baradhi 2023](#kasina-y-baradhi-2023) | — | 1 | **sin revisar** |
+| [Kast 2023](#kast-2023) | — | 1 | **sin revisar** |
 | [Khan 2023](#khan-2023) | — | 1 | **sin revisar** |
 | [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) | — | 1 | **sin revisar** |
+| [Kwak 2023](#kwak-2023) | — | 1 | **sin revisar** |
+| [Lee 2023](#lee-2023) | — | 1 | **sin revisar** |
+| [Leslie y Rawla 2023](#leslie-y-rawla-2023) | — | 1 | **sin revisar** |
+| [Li 2023](#li-2023) | — | 1 | **sin revisar** |
 | [Mancia 2023](#mancia-2023) | — | 1 | **sin revisar** |
 | [Martínez 2023](#martínez-2023) | — | 1 | **sin revisar** |
 | [Meaadi 2023](#meaadi-2023) | — | 1 | **sin revisar** |
 | [Memon y Tiwari 2023](#memon-y-tiwari-2023) | — | 1 | **sin revisar** |
 | [Moraczewski 2023](#moraczewski-2023) | — | 1 | **sin revisar** |
+| [Morris y Patel 2023](#morris-y-patel-2023) | — | 1 | **sin revisar** |
+| [Nischal y Gupta 2023](#nischal-y-gupta-2023) | — | 1 | **sin revisar** |
 | [Papantoniou 2023](#papantoniou-2023) | — | 1 | **sin revisar** |
+| [Plewa 2023](#plewa-2023) | — | 1 | **sin revisar** |
+| [Ploegmakers 2023](#ploegmakers-2023) | — | 1 | **sin revisar** |
 | [Pofi 2023](#pofi-2023) | — | 1 | **sin revisar** |
+| [Rissardo 2023](#rissardo-2023) | — | 1 | **sin revisar** |
 | [Rusu 2023](#rusu-2023) | — | 1 | **sin revisar** |
 | [Talreja y Cassagnol 2023](#talreja-y-cassagnol-2023) | — | 1 | **sin revisar** |
 | [Thai 2023](#thai-2023) | — | 1 | **sin revisar** |
+| [Thota y Akbar 2023](#thota-y-akbar-2023) | — | 1 | **sin revisar** |
 | [Wewege 2023](#wewege-2023) | — | 1 | **sin revisar** |
 | [Wierzbiński 2023](#wierzbiński-2023) | — | 1 | **sin revisar** |
+| [Anziano 2024](#anziano-2024) | — | 1 | **sin revisar** |
 | [Beuschlein 2024](#beuschlein-2024) | — | 1 | **sin revisar** |
+| [Bianconi 2024](#bianconi-2024) | — | 1 | **sin revisar** |
 | [Bounds y Patel 2024](#bounds-y-patel-2024) | — | 1 | **sin revisar** |
 | [Bulsara 2024](#bulsara-2024) | — | 1 | **sin revisar** |
+| [Bus 2024](#bus-2024) | — | 1 | **sin revisar** |
+| [Collins y Costello 2024](#collins-y-costello-2024) | — | 1 | **sin revisar** |
 | [Cross 2024](#cross-2024) | — | 1 | **sin revisar** |
 | [Dar y Jacob 2024](#dar-y-jacob-2024) | — | 1 | **sin revisar** |
+| [Dhesi 2024](#dhesi-2024) | — | 1 | **sin revisar** |
 | [Dos Santos 2024](#dos-santos-2024) | — | 1 | **sin revisar** |
+| [Edwards 2024](#edwards-2024) | — | 1 | **sin revisar** |
+| [Engert 2024](#engert-2024) | — | 1 | **sin revisar** |
 | [Farishta 2024](#farishta-2024) | — | 1 | **sin revisar** |
 | [Faruqi 2024](#faruqi-2024) | — | 1 | **sin revisar** |
 | [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) | — | 1 | **sin revisar** |
+| [Gobillot-Morisson 2024](#gobillot-morisson-2024) | — | 1 | **sin revisar** |
+| [Greear 2024](#greear-2024) | — | 1 | **sin revisar** |
+| [Guo 2024](#guo-2024) | — | 1 | **sin revisar** |
+| [Hildebrand 2024](#hildebrand-2024) | — | 1 | **sin revisar** |
+| [Hospers 2024](#hospers-2024) | — | 2 | **sin revisar** |
 | [Humma y Patel 2024](#humma-y-patel-2024) | — | 1 | **sin revisar** |
 | [Hwang 2024](#hwang-2024) | — | 1 | **sin revisar** |
+| [Kim y Chen 2024](#kim-y-chen-2024) | — | 1 | **sin revisar** |
+| [Kim y Jang 2024](#kim-y-jang-2024) | — | 1 | **sin revisar** |
 | [Lacuesta 2024](#lacuesta-2024) | — | 1 | **sin revisar** |
+| [Leslie y Rout 2024](#leslie-y-rout-2024) | — | 1 | **sin revisar** |
+| [Leung 2024](#leung-2024) | — | 1 | **sin revisar** |
 | [Levy 2024](#levy-2024) | — | 1 | **sin revisar** |
 | [Mangone 2024](#mangone-2024) | — | 1 | **sin revisar** |
 | [McEvoy 2024](#mcevoy-2024) | — | 1 | **sin revisar** |
 | [McKeever 2024](#mckeever-2024) | — | 1 | **sin revisar** |
+| [Messineo 2024](#messineo-2024) | — | 1 | **sin revisar** |
+| [Miernik 2024](#miernik-2024) | — | 1 | **sin revisar** |
 | [Morris 2024](#morris-2024) | — | 1 | **sin revisar** |
 | [Mulla 2024](#mulla-2024) | — | 1 | **sin revisar** |
 | [Narayan 2024](#narayan-2024) | — | 1 | **sin revisar** |
@@ -423,39 +557,105 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Podder 2024](#podder-2024) | — | 1 | **sin revisar** |
 | [Rehman 2024](#rehman-2024) | — | 1 | **sin revisar** |
 | [Sangiorgio 2024](#sangiorgio-2024) | — | 1 | **sin revisar** |
+| [Scott 2024](#scott-2024) | — | 1 | **sin revisar** |
 | [Sibrack 2024](#sibrack-2024) | — | 1 | **sin revisar** |
 | [Simon 2024](#simon-2024) | — | 1 | **sin revisar** |
 | [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) | — | 1 | **sin revisar** |
 | [Sizar 2024](#sizar-2024) | — | 1 | **sin revisar** |
+| [Spångeus 2024](#spångeus-2024) | — | 1 | **sin revisar** |
+| [Testa 2024](#testa-2024) | — | 1 | **sin revisar** |
+| [Wang 2024](#wang-2024) | — | 1 | **sin revisar** |
+| [Wong 2024](#wong-2024) | — | 1 | **sin revisar** |
 | [Yang 2024](#yang-2024) | — | 1 | **sin revisar** |
 | [Yasaei 2024](#yasaei-2024) | — | 1 | **sin revisar** |
+| [Zeng 2024](#zeng-2024) | — | 1 | **sin revisar** |
+| [ADA 2025](#ada-2025) | — | 1 | **sin revisar** |
+| [Alaranji y Reilly 2025](#alaranji-y-reilly-2025) | — | 1 | **sin revisar** |
+| [Alvarez 2025](#alvarez-2025) | — | 1 | **sin revisar** |
+| [Azmi 2025](#azmi-2025) | — | 1 | **sin revisar** |
+| [Bhanu 2025](#bhanu-2025) | — | 1 | **sin revisar** |
+| [Borsati 2025](#borsati-2025) | — | 1 | **sin revisar** |
+| [Boudreault 2025](#boudreault-2025) | — | 1 | **sin revisar** |
 | [Brunner 2025](#brunner-2025) | — | 1 | **sin revisar** |
 | [Calvo 2025](#calvo-2025) | — | 1 | **sin revisar** |
 | [Duman 2025](#duman-2025) | — | 1 | **sin revisar** |
 | [Ez Eddin 2025](#ez-eddin-2025) | — | 1 | **sin revisar** |
 | [Ferraro 2025](#ferraro-2025) | — | 1 | **sin revisar** |
+| [Fujiwara 2025](#fujiwara-2025) | — | 1 | **sin revisar** |
+| [Goyal 2025](#goyal-2025) | — | 1 | **sin revisar** |
+| [Hadji 2025](#hadji-2025) | — | 1 | **sin revisar** |
 | [He 2025](#he-2025) | — | 1 | **sin revisar** |
+| [Kalfas 2025](#kalfas-2025) | — | 1 | **sin revisar** |
+| [Leander 2025](#leander-2025) | — | 1 | **sin revisar** |
+| [Leslie y Foreman 2025](#leslie-y-foreman-2025) | — | 1 | **sin revisar** |
+| [Li y Zhang 2025](#li-y-zhang-2025) | — | 1 | **sin revisar** |
 | [Marko y Pawliczak 2025](#marko-y-pawliczak-2025) | — | 1 | **sin revisar** |
 | [McIver y Siddique 2025](#mciver-y-siddique-2025) | — | 1 | **sin revisar** |
 | [Mitchell 2025](#mitchell-2025) | — | 1 | **sin revisar** |
+| [Moncrieff 2025](#moncrieff-2025) | — | 1 | **sin revisar** |
+| [Moseley 2025](#moseley-2025) | — | 1 | **sin revisar** |
+| [Padda 2025](#padda-2025) | — | 1 | **sin revisar** |
 | [Patel y Launico 2025](#patel-y-launico-2025) | — | 1 | **sin revisar** |
 | [Patel y Preuss 2025](#patel-y-preuss-2025) | — | 1 | **sin revisar** |
-| [Ringer 2025](#ringer-2025) | — | 1 | **sin revisar** |
+| [Pathak 2025](#pathak-2025) | — | 1 | **sin revisar** |
+| [Regina 2025](#regina-2025) | — | 1 | **sin revisar** |
+| [Ringer 2025](#ringer-2025) | — | 2 | **sin revisar** |
+| [Rissardo 2025](#rissardo-2025) | — | 1 | **sin revisar** |
 | [Rout 2025](#rout-2025) | — | 1 | **sin revisar** |
+| [Simon y Rout 2025](#simon-y-rout-2025) | — | 1 | **sin revisar** |
 | [Suenghataiphorn 2025](#suenghataiphorn-2025) | — | 1 | **sin revisar** |
+| [Wang 2025](#wang-2025) | — | 1 | **sin revisar** |
+| [Wang y Tariq 2025](#wang-y-tariq-2025) | — | 1 | **sin revisar** |
+| [Xia 2025](#xia-2025) | — | 1 | **sin revisar** |
+| [Zhou 2025](#zhou-2025) | — | 1 | **sin revisar** |
+| [Anastasopoulou y Goyal 2026](#anastasopoulou-y-goyal-2026) | — | 1 | **sin revisar** |
 | [Awosika y Patel 2026](#awosika-y-patel-2026) | — | 1 | **sin revisar** |
+| [Benzon 2026](#benzon-2026) | — | 1 | **sin revisar** |
+| [Bergh Fahlén 2026](#bergh-fahlén-2026) | — | 1 | **sin revisar** |
+| [Bhanu 2026](#bhanu-2026) | — | 1 | **sin revisar** |
 | [Biswas 2026](#biswas-2026) | — | 1 | **sin revisar** |
 | [Blyzniuk 2026](#blyzniuk-2026) | — | 2 | **sin revisar** |
+| [Chang 2026](#chang-2026) | — | 1 | **sin revisar** |
+| [Collins y Bergman 2026](#collins-y-bergman-2026) | — | 1 | **sin revisar** |
+| [Confederat 2026](#confederat-2026) | — | 1 | **sin revisar** |
+| [CTT 2026](#ctt-2026) | — | 1 | **sin revisar** |
+| [Devi 2026](#devi-2026) | — | 1 | **sin revisar** |
 | [Epelde 2026](#epelde-2026) | — | 1 | **sin revisar** |
+| [Fong y Patel 2026](#fong-y-patel-2026) | — | 1 | **sin revisar** |
 | [Grusky 2026](#grusky-2026) | — | 1 | **sin revisar** |
+| [Guan 2026](#guan-2026) | — | 1 | **sin revisar** |
+| [Harley 2026](#harley-2026) | — | 1 | **sin revisar** |
+| [Iqbal 2026](#iqbal-2026) | — | 1 | **sin revisar** |
+| [Jasti 2026](#jasti-2026) | — | 1 | **sin revisar** |
+| [Jobanputra 2026](#jobanputra-2026) | — | 1 | **sin revisar** |
 | [Kershner 2026](#kershner-2026) | — | 1 | **sin revisar** |
+| [Khayyat 2026](#khayyat-2026) | — | 1 | **sin revisar** |
 | [Kishi 2026](#kishi-2026) | — | 1 | **sin revisar** |
+| [Koldenhof 2026](#koldenhof-2026) | — | 1 | **sin revisar** |
+| [Lagina y Tripathy 2026](#lagina-y-tripathy-2026) | — | 1 | **sin revisar** |
+| [Levati 2026](#levati-2026) | — | 1 | **sin revisar** |
+| [Milbourn 2026](#milbourn-2026) | — | 1 | **sin revisar** |
+| [Moiz 2026](#moiz-2026) | — | 1 | **sin revisar** |
+| [Moon 2026](#moon-2026) | — | 1 | **sin revisar** |
+| [Ponna 2026](#ponna-2026) | — | 1 | **sin revisar** |
+| [Rangraze 2026](#rangraze-2026) | — | 1 | **sin revisar** |
 | [Rout y Afzal 2026](#rout-y-afzal-2026) | — | 1 | **sin revisar** |
+| [Rusu 2026](#rusu-2026) | — | 1 | **sin revisar** |
+| [Shamim 2026](#shamim-2026) | — | 1 | **sin revisar** |
+| [Sharma 2026](#sharma-2026) | — | 1 | **sin revisar** |
+| [Shrestha 2026](#shrestha-2026) | — | 1 | **sin revisar** |
+| [Sklepinski 2026](#sklepinski-2026) | — | 1 | **sin revisar** |
 | [Soura 2026](#soura-2026) | — | 1 | **sin revisar** |
+| [Srinivas-Shankar 2026](#srinivas-shankar-2026) | — | 1 | **sin revisar** |
 | [Thompson 2026](#thompson-2026) | — | 1 | **sin revisar** |
 | [Thour 2026](#thour-2026) | — | 1 | **sin revisar** |
+| [Tobaiqy y Alqutub 2026](#tobaiqy-y-alqutub-2026) | — | 1 | **sin revisar** |
+| [Tolla 2026](#tolla-2026) | — | 1 | **sin revisar** |
 | [Waseem 2026](#waseem-2026) | — | 1 | **sin revisar** |
 | [Weber 2026](#weber-2026) | — | 1 | **sin revisar** |
+| [Wu 2026](#wu-2026) | — | 1 | **sin revisar** |
+| [Yang 2026](#yang-2026) | — | 1 | **sin revisar** |
+| [Yuen 2026](#yuen-2026) | — | 1 | **sin revisar** |
 | [Zhang 2026](#zhang-2026) | — | 1 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
@@ -511,7 +711,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Grondin 2026](#grondin-2026) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 | 3 | 2026-10 · Añadida: texto completo leído en PMC (2026-10). Misma cohorte que Grondin 2021 (85 pacientes consecutivos, 27 con radiculopatía; neurocirujano con RM). Tabla 2: ULNT1 LR+ 2,46, LR− 0,54; 1 de 4 ULNT positivo LR− 0,08; SART pasiva modificada LR+ 2,05, LR− 0,36; Spurling con dolor de brazo LR+ 34,4. Sustituye a Grondin 2021 como fuente leída de esa cohorte (el PDF de Grondin 2021 no estaba disponible). |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios en las cifras: texto completo y tabla 3 (figura) leídos en Europe PMC (2026-10). Las cifras de ULNT1, SART y la combinación de 4 ULNT coinciden con su tabla 4. Modelo bivariante (GLMM) que, con k ≤ 3, se interpreta como de efecto fijo (los autores avisan de que solo vale para esas poblaciones). La SART agrupa Sleijser-Koehorst 2021 (riesgo bajo; LR+ 1,88 por sí solo) y Viikari-Juntura 1989 (riesgo alto, cuenta lados: la fila dice n = 13 y las celdas suman 28); por eso la SART pasa a hallazgo (decisión del usuario). El ULNT1 se mantiene (decisión del usuario): sus 3 estudios usan diferenciación estructural y clínica más RM como referencia; Albert-Lucena 2025, con estudios de EMG o conducción nerviosa y sin diferenciación estructural, da LR+ 1,51 y LR− 0,53. Revisiones posteriores: Albert-Lucena 2025 (leída), Lin 2025 sobre el Spurling (bivariante aleatorio, 8 estudios; solo el resumen, PDF no disponible) y Shen 2023 sobre el ULNT1 (solo el resumen). |
 | [Rudwaleit 2006](#rudwaleit-2006) | cribado fase 2 · razonamiento fase 2 | 5 | 2026-10 · Añadida (PDF del usuario, leído entero): es el estudio de origen del criterio de dolor lumbar inflamatorio del cribado lumbar (Goodman 2018, cap. 14, da las mismas cifras). Tabla 5: con 2 de 4 (rigidez matutina de más de 30 minutos, mejora con el ejercicio y no con el reposo, despertar en la segunda mitad de la noche, dolor glúteo alternante), S 70,3 %, E 81,2 %, LR+ 3,7; con 3 o 4, S 33,6 %, E 97,3 %, LR+ 12,4 (IC 4,0–39,7). Estudio exploratorio sin validación: 213 menores de 50 años con dolor lumbar de más de 3 meses (101 con espondilitis anquilosante ya establecida, media de 12,9 años de dolor, y 112 con lumbalgia mecánica), muestra de conveniencia no consecutiva; los propios autores piden validarlo en la enfermedad precoz. |
-| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · plan de tratamiento · texto | 189 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
+| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · plan de tratamiento · texto | 190 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
 | [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) | pauta · tiempos de tejido · texto | 5 | 2026-10 · Sin cambios: PubMed (SIFA y fisioterapia, consensos y revisiones desde 2022) no encuentra un consenso posterior del IHiPRN; el ensayo PhysioFIRST (Kemp 2026) se suma a la pauta de ca2 sin contradecirlo. |
 | [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento | 12 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). Releídas 1.1.1–1.1.2 y 1.3.1–1.3.11 en la sesión de las pautas de tobillo y pie (2026-10): pauta de tp24 y h10 y notas de los avisos artrosisTobillo y artrosis (la terapia manual, solo en cadera y rodilla, 1.3.6). |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), última actualización 29 de julio de 2026; las recomendaciones citadas (1.2.1, 1.2.6, 1.2.7 —corregida en 2026—, 1.3.1–1.3.3 y 1.3.6) dicen lo que recoge la app. |
@@ -683,7 +883,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leib 2023](#leib-2023) | razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leslie 2023](#leslie-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Malik 2023](#malik-2023) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Malik 2023](#malik-2023) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Malik y Herron 2023](#malik-y-herron-2023) | razonamiento fase 2 · tiempos de tejido | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido · plan de tratamiento | 12 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McClary y Massey 2023](#mcclary-y-massey-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -713,7 +913,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Waheed 2023](#waheed-2023) | razonamiento fase 2 · plan de tratamiento | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Wenker y Quint 2023](#wenker-y-quint-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 20 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Ziu 2023](#ziu-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 5 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Belyayeva 2024](#belyayeva-2024) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Bodman 2024](#bodman-2024) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 25 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Brotman 2024](#brotman-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -757,7 +957,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pangia 2025](#pangia-2025) | razonamiento fase 2 · plan de tratamiento | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Patel 2025](#patel-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de mayo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shams 2025](#shams-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Shaw 2025](#shaw-2025) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Shaw 2025](#shaw-2025) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Suha 2025](#suha-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Tavakoli 2025](#tavakoli-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 6 de abril de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 27 de marzo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -1062,7 +1262,7 @@ Citada como:
 Orden alfabético. Un mismo «Autor Año» puede agrupar dos artículos distintos (p. ej. dos de Décary 2018):
 la lista «Citada como» los distingue.
 
-[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [ACOG 2020](#acog-2020) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [AEMPS 2023](#aemps-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Alam 2022](#alam-2022) · [Albasri 2021](#albasri-2021) · [Albert-Lucena 2025](#albert-lucena-2025) · [Albrecht 2024](#albrecht-2024) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Amaniyan 2020](#amaniyan-2020) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Antunes 2024](#antunes-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Awosika y Patel 2026](#awosika-y-patel-2026) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baggio y Ananda-Rajah 2021](#baggio-y-ananda-rajah-2021) · [Bahit 2017](#bahit-2017) · [Baker 2018](#baker-2018) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barberán 2023](#barberán-2023) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Bavishi 2026](#bavishi-2026) · [Baylor 2023](#baylor-2023) · [Bazroon y Alrashidi 2023](#bazroon-y-alrashidi-2023) · [Beamish 2025](#beamish-2025) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Bergman 2025](#bergman-2025) · [Beuschlein 2024](#beuschlein-2024) · [Bhanu 2021](#bhanu-2021) · [Bhatti 2026](#bhatti-2026) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Birrell 2001](#birrell-2001) · [Biswas 2026](#biswas-2026) · [Biz 2019](#biz-2019) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Boufadel 2025](#boufadel-2025) · [Bounds y Patel 2024](#bounds-y-patel-2024) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brockow 2021](#brockow-2021) · [Broncel 2015](#broncel-2015) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brooker 2020](#brooker-2020) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Bruessel 2026](#bruessel-2026) · [Brunner 2025](#brunner-2025) · [Budha 2025](#budha-2025) · [Bull 2020](#bull-2020) · [Bulsara 2024](#bulsara-2024) · [Burani 2023](#burani-2023) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Calvo 2025](#calvo-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Capiau 2023](#capiau-2023) · [Capsoni 2025](#capsoni-2025) · [Cardona 2020](#cardona-2020) · [Carnovale 2023](#carnovale-2023) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Carvalho 2022](#carvalho-2022) · [Cascia 2019](#cascia-2019) · [Cashin 2021](#cashin-2021) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Champaneria 2016](#champaneria-2016) · [Chauhan 2023](#chauhan-2023) · [Cheatham 2025](#cheatham-2025) · [Chen 2023](#chen-2023) · [Chenoweth 2018](#chenoweth-2018) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Colombo 2021](#colombo-2021) · [Compston 2018](#compston-2018) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Cooper 2019](#cooper-2019) · [Couch 2025](#couch-2025) · [Cross 2024](#cross-2024) · [CTT 2022](#ctt-2022) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Dalrymple 2022](#dalrymple-2022) · [Dar y Jacob 2024](#dar-y-jacob-2024) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Filippis 2022](#de-filippis-2022) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devillé 2000](#devillé-2000) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dos Santos 2024](#dos-santos-2024) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Duman 2025](#duman-2025) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Edinoff 2021](#edinoff-2021) · [EMA 2018](#ema-2018) · [Engelbert 2017](#engelbert-2017) · [Englund 2003](#englund-2003) · [Enseki 2023](#enseki-2023) · [Epelde 2026](#epelde-2026) · [Evans 2018](#evans-2018) · [Evans 2023](#evans-2023) · [Ez Eddin 2025](#ez-eddin-2025) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farishta 2024](#farishta-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Faruqi 2024](#faruqi-2024) · [Farzam y Jan 2023](#farzam-y-jan-2023) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Ferraro 2025](#ferraro-2025) · [Filippatos 2017](#filippatos-2017) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Forsythe 2025](#forsythe-2025) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [Garrison 2023](#garrison-2023) · [Geneen 2017](#geneen-2017) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) · [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Giménez-Campos 2021](#giménez-campos-2021) · [Gluppe 2021](#gluppe-2021) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Gragossian 2023](#gragossian-2023) · [Grant y John 2025](#grant-y-john-2025) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Gülen 2023](#gülen-2023) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2026](#hadji-2026) · [Hahn 2022](#hahn-2022) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Ham 2017](#ham-2017) · [Hameed 2023](#hameed-2023) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hansen 2022](#hansen-2022) · [Hanssen 2022](#hanssen-2022) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Haskins 2015](#haskins-2015) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Herman 2023](#herman-2023) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Hideyama 2023](#hideyama-2023) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Horowitz 2023](#horowitz-2023) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2023](#hu-2023) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Humma y Patel 2024](#humma-y-patel-2024) · [Hunter 2024](#hunter-2024) · [Hutchison 2013](#hutchison-2013) · [Hutting 2018](#hutting-2018) · [Huxel 2023](#huxel-2023) · [Hwang 2024](#hwang-2024) · [IHS 2018](#ihs-2018) · [Jain 2026](#jain-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jödicke 2023](#jödicke-2023) · [Jogu 2026](#jogu-2026) · [Johns 2023](#johns-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kamonseki 2022](#kamonseki-2022) · [Kaneko 2021](#kaneko-2021) · [Kang 2023](#kang-2023) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kershner 2026](#kershner-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Khalil 2025](#khalil-2025) · [Khan 2023](#khan-2023) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim 2025](#kim-2025) · [Kim 2026](#kim-2026) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Kishi 2026](#kishi-2026) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Konstantinou 2018](#konstantinou-2018) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Kwon 2024](#kwon-2024) · [Lacuesta 2024](#lacuesta-2024) · [Lacy 2023](#lacy-2023) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Layton 2020](#layton-2020) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Levy 2024](#levy-2024) · [Lewis y Cook 2014](#lewis-y-cook-2014) · [Lezak 2024](#lezak-2024) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Liamis 2016](#liamis-2016) · [Liang 2022](#liang-2022) · [Liao 2021](#liao-2021) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Litaker 2000](#litaker-2000) · [Liu 2015](#liu-2015) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Llitjos 2016](#llitjos-2016) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Lukies 2023](#lukies-2023) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mach 2018](#mach-2018) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malfait 2024](#malfait-2024) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mancia 2023](#mancia-2023) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Mangone 2024](#mangone-2024) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Marko y Pawliczak 2025](#marko-y-pawliczak-2025) · [Martin 2021](#martin-2021) · [Martínez 2023](#martínez-2023) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McAnally 2020](#mcanally-2020) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McEvoy 2024](#mcevoy-2024) · [McIver y Siddique 2025](#mciver-y-siddique-2025) · [McKeever 2024](#mckeever-2024) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Meaadi 2023](#meaadi-2023) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Memon y Tiwari 2023](#memon-y-tiwari-2023) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Metcalfe 2019](#metcalfe-2019) · [Miller 2020](#miller-2020) · [Minardi 2024](#minardi-2024) · [Mitchell 2023](#mitchell-2023) · [Mitchell 2025](#mitchell-2025) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Moraczewski 2023](#moraczewski-2023) · [Morris 2024](#morris-2024) · [Mottola 2018](#mottola-2018) · [Mountjoy 2023](#mountjoy-2023) · [Mulla 2024](#mulla-2024) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Narayan 2024](#narayan-2024) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Naugle 2012](#naugle-2012) · [Nee 2012](#nee-2012) · [Nemunaitis 2022](#nemunaitis-2022) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG196](#nice-ng196) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG232](#nice-ng232) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nochaiwong 2022](#nochaiwong-2022) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Ogrodnik 2021](#ogrodnik-2021) · [Oldfield 2024](#oldfield-2024) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Patel y Launico 2025](#patel-y-launico-2025) · [Patel y Preuss 2025](#patel-y-preuss-2025) · [Paterson 2021](#paterson-2021) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Peng 2022](#peng-2022) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Plash 2013](#plash-2013) · [Podder 2024](#podder-2024) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Polaski 2019](#polaski-2019) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Rehman 2024](#rehman-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhim 2025](#rhim-2025) · [Rhodes 2022](#rhodes-2022) · [Rice 2019](#rice-2019) · [Rich 2025](#rich-2025) · [Rider y Marra 2023](#rider-y-marra-2023) · [Ringer 2025](#ringer-2025) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rout 2025](#rout-2025) · [Rout y Afzal 2026](#rout-y-afzal-2026) · [Rowe 2023](#rowe-2023) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Rusu 2023](#rusu-2023) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Sahu 2020](#sahu-2020) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sangiorgio 2024](#sangiorgio-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Schweiger 2021](#schweiger-2021) · [Scioscia 2023](#scioscia-2023) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Shao 2022](#shao-2022) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Sibrack 2024](#sibrack-2024) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Simon 2024](#simon-2024) · [Simonds 2022](#simonds-2022) · [Sims 2020](#sims-2020) · [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sizar 2024](#sizar-2024) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Steffel 2021](#steffel-2021) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Stroes 2015](#stroes-2015) · [Suenghataiphorn 2025](#suenghataiphorn-2025) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Talreja y Cassagnol 2023](#talreja-y-cassagnol-2023) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Tenforde 2022](#tenforde-2022) · [Thai 2023](#thai-2023) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thompson 2026](#thompson-2026) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Thour 2026](#thour-2026) · [Tominaga 2023](#tominaga-2023) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tumialán 2010](#tumialán-2010) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Vaegter y Jones 2020](#vaegter-y-jones-2020) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2017](#wang-2017) · [Wang 2018](#wang-2018) · [Wang 2020](#wang-2020) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waseem 2026](#waseem-2026) · [Waterway 2026](#waterway-2026) · [Waymack y An 2023](#waymack-y-an-2023) · [Weber 2026](#weber-2026) · [Wee 2021](#wee-2021) · [Weir 2015](#weir-2015) · [Welsch 2018](#welsch-2018) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wewege 2023](#wewege-2023) · [Wewege y Jones 2021](#wewege-y-jones-2021) · [WFH 2020](#wfh-2020) · [Whedon 2015](#whedon-2015) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wichniak 2017](#wichniak-2017) · [Wiegele 2019](#wiegele-2019) · [Wierzbiński 2023](#wierzbiński-2023) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Xiang 2025](#xiang-2025) · [Yale 2020](#yale-2020) · [Yamamoto 2009](#yamamoto-2009) · [Yang 2024](#yang-2024) · [Yang y Qu 2018](#yang-y-qu-2018) · [Yasaei 2024](#yasaei-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Yuan 2016](#yuan-2016) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zhang 2010](#zhang-2010) · [Zhang 2026](#zhang-2026) · [Zhao 2024](#zhao-2024) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
+[AAOS 2024](#aaos-2024) · [Abdel Khalik 2025](#abdel-khalik-2025) · [Abraham 2022](#abraham-2022) · [ACOG 2020](#acog-2020) · [ADA 2025](#ada-2025) · [Adib 2023](#adib-2023) · [Adigun 2023](#adigun-2023) · [Adler 2016](#adler-2016) · [Adolfsson 2022](#adolfsson-2022) · [AEMPS 2023](#aemps-2023) · [Agrawal y Tiwari 2023](#agrawal-y-tiwari-2023) · [AGS 2023](#ags-2023) · [Akin 2022](#akin-2022) · [Al Nezari 2013](#al-nezari-2013) · [Al-Subahi 2017](#al-subahi-2017) · [Alam 2022](#alam-2022) · [Alaranji y Reilly 2025](#alaranji-y-reilly-2025) · [Albasri 2021](#albasri-2021) · [Albert-Lucena 2025](#albert-lucena-2025) · [Albrecht 2024](#albrecht-2024) · [AlDahas 2024](#aldahas-2024) · [Alentorn-Geli 2026](#alentorn-geli-2026) · [Alexander 2024](#alexander-2024) · [Altman 1986](#altman-1986) · [Altman 1991](#altman-1991) · [Alvarez 2025](#alvarez-2025) · [Amaniyan 2020](#amaniyan-2020) · [Ammendolia 2022](#ammendolia-2022) · [Anagnostis 2024](#anagnostis-2024) · [Anastasilakis 2021](#anastasilakis-2021) · [Anastasopoulou y Gillespie 2026](#anastasopoulou-y-gillespie-2026) · [Anastasopoulou y Goyal 2026](#anastasopoulou-y-goyal-2026) · [Antunes 2024](#antunes-2024) · [Anziano 2024](#anziano-2024) · [Apelby-Albrecht 2013](#apelby-albrecht-2013) · [Appelboam 2008](#appelboam-2008) · [Aringer 2019](#aringer-2019) · [Arrigoni 2017](#arrigoni-2017) · [Ashley y Lui 2023](#ashley-y-lui-2023) · [Attardo 2022](#attardo-2022) · [Awidi y Babiker 2026](#awidi-y-babiker-2026) · [Awosika y Patel 2026](#awosika-y-patel-2026) · [Azmi 2025](#azmi-2025) · [Bachmann 2003](#bachmann-2003) · [Bachmann 2004](#bachmann-2004) · [Baffour-Awuah 2023](#baffour-awuah-2023) · [Baggio y Ananda-Rajah 2021](#baggio-y-ananda-rajah-2021) · [Bahendeka 2019](#bahendeka-2019) · [Bahit 2017](#bahit-2017) · [Baigrie y Nookala 2023](#baigrie-y-nookala-2023) · [Baker 2018](#baker-2018) · [Bakker 2017](#bakker-2017) · [Bałabuszek 2022](#bałabuszek-2022) · [Balcarek 2025](#balcarek-2025) · [Barakatt 2009](#barakatt-2009) · [Barberán 2023](#barberán-2023) · [Barcelos 2014](#barcelos-2014) · [Barney 2023](#barney-2023) · [Basit 2023](#basit-2023) · [Bateman 2025](#bateman-2025) · [Bavishi 2026](#bavishi-2026) · [Baylor 2023](#baylor-2023) · [Bazelier 2013](#bazelier-2013) · [Bazroon y Alrashidi 2023](#bazroon-y-alrashidi-2023) · [Beamish 2025](#beamish-2025) · [Beckenkamp 2017](#beckenkamp-2017) · [Bell y Saleh 2026](#bell-y-saleh-2026) · [Beloor Suresh y Asuncion 2023](#beloor-suresh-y-asuncion-2023) · [Belyayeva 2024](#belyayeva-2024) · [Benjamin y Lui 2025](#benjamin-y-lui-2025) · [Benzon 2026](#benzon-2026) · [Bergh Fahlén 2026](#bergh-fahlén-2026) · [Bergman 2025](#bergman-2025) · [Beuschlein 2024](#beuschlein-2024) · [Bhanu 2021](#bhanu-2021) · [Bhanu 2025](#bhanu-2025) · [Bhanu 2026](#bhanu-2026) · [Bhatti 2026](#bhatti-2026) · [Bianconi 2024](#bianconi-2024) · [Bierma-Zeinstra 1999](#bierma-zeinstra-1999) · [Bindu 2020](#bindu-2020) · [Birkinshaw 2023](#birkinshaw-2023) · [Birrell 2001](#birrell-2001) · [Biswas 2026](#biswas-2026) · [Biz 2019](#biz-2019) · [Black 2020](#black-2020) · [Blaess 2024](#blaess-2024) · [Blanpied 2017](#blanpied-2017) · [Ble 2017](#ble-2017) · [Blonna 2010](#blonna-2010) · [Blyzniuk 2026](#blyzniuk-2026) · [Bodman 2024](#bodman-2024) · [Bogaert 2022](#bogaert-2022) · [Borsati 2025](#borsati-2025) · [Boudreault 2025](#boudreault-2025) · [Boufadel 2025](#boufadel-2025) · [Bounds y Patel 2024](#bounds-y-patel-2024) · [Bowers y Blum 2026](#bowers-y-blum-2026) · [Breig y Troup 1979](#breig-y-troup-1979) · [Brignole 2018](#brignole-2018) · [Brockow 2021](#brockow-2021) · [Brod 2013](#brod-2013) · [Broncel 2015](#broncel-2015) · [Brooke-Wavell 2022](#brooke-wavell-2022) · [Brooker 2020](#brooker-2020) · [Brotman 2024](#brotman-2024) · [Brown 2004](#brown-2004) · [Brown 2023](#brown-2023) · [Bruessel 2026](#bruessel-2026) · [Brunner 2025](#brunner-2025) · [Buck 2023](#buck-2023) · [Budha 2025](#budha-2025) · [Bull 2020](#bull-2020) · [Bulsara 2024](#bulsara-2024) · [Burani 2023](#burani-2023) · [Bus 2024](#bus-2024) · [Butler 1980](#butler-1980) · [Butler 1991](#butler-1991) · [Butler 2000](#butler-2000) · [Byers 2017](#byers-2017) · [Cabre 2022](#cabre-2022) · [Cadogan 2013](#cadogan-2013) · [Caliandro 2025](#caliandro-2025) · [Calvo 2025](#calvo-2025) · [Camilleri 2017](#camilleri-2017) · [Campbell 2020](#campbell-2020) · [Can y Correa 2023](#can-y-correa-2023) · [Capiau 2023](#capiau-2023) · [Capsoni 2025](#capsoni-2025) · [Cardona 2020](#cardona-2020) · [Carnovale 2023](#carnovale-2023) · [Carro 2016](#carro-2016) · [Carter 2023](#carter-2023) · [Carvalho 2022](#carvalho-2022) · [Cascia 2019](#cascia-2019) · [Cashin 2021](#cashin-2021) · [Castro y Sharma 2025](#castro-y-sharma-2025) · [Caulfield 2021](#caulfield-2021) · [Champaneria 2016](#champaneria-2016) · [Chang 2026](#chang-2026) · [Chauhan 2023](#chauhan-2023) · [Cheatham 2025](#cheatham-2025) · [Chen 2023](#chen-2023) · [Chenoweth 2018](#chenoweth-2018) · [Childs 2004](#childs-2004) · [Chimenti 2024](#chimenti-2024) · [Chou 2017](#chou-2017) · [Christopher 2024](#christopher-2024) · [Chronopoulos 2004](#chronopoulos-2004) · [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) · [Claessen 2015](#claessen-2015) · [Clinton 2017](#clinton-2017) · [Colberg 2016](#colberg-2016) · [Collins y Bergman 2026](#collins-y-bergman-2026) · [Collins y Costello 2024](#collins-y-costello-2024) · [Colombo 2021](#colombo-2021) · [Compston 2018](#compston-2018) · [Confederat 2026](#confederat-2026) · [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) · [Consoli y Carlson 2026](#consoli-y-carlson-2026) · [Cook 2001](#cook-2001) · [Cook 2010](#cook-2010) · [Cook 2011](#cook-2011) · [Cook 2019](#cook-2019) · [Cook y Brown 2010](#cook-y-brown-2010) · [Cooper 2019](#cooper-2019) · [Corcoran y Jacobs 2023](#corcoran-y-jacobs-2023) · [Costello 2023](#costello-2023) · [Couch 2025](#couch-2025) · [Cross 2024](#cross-2024) · [CTT 2022](#ctt-2022) · [CTT 2026](#ctt-2026) · [Cui 2026](#cui-2026) · [Culvenor 2019](#culvenor-2019) · [Cunha 2023](#cunha-2023) · [Daley 2025](#daley-2025) · [Dalrymple 2022](#dalrymple-2022) · [Dar y Jacob 2024](#dar-y-jacob-2024) · [Davenport 2025](#davenport-2025) · [Davies 2018](#davies-2018) · [Davis 2024](#davis-2024) · [Davis y Shaw 2023](#davis-y-shaw-2023) · [Davis y Silberman 2023](#davis-y-silberman-2023) · [De Filippis 2022](#de-filippis-2022) · [De Hertogh 2025](#de-hertogh-2025) · [De Maeseneer 2022](#de-maeseneer-2022) · [De Vries 2020](#de-vries-2020) · [Décary 2018](#décary-2018) · [Deeb y Maher 2026](#deeb-y-maher-2026) · [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) · [Deering 2024](#deering-2024) · [Delitto 2012](#delitto-2012) · [Demont 2022](#demont-2022) · [Denault y Launico 2026](#denault-y-launico-2026) · [DePalma 2011](#depalma-2011) · [Desai 2013](#desai-2013) · [Desbiens 2022](#desbiens-2022) · [Desmeules 2025](#desmeules-2025) · [Devereaux y ElMaraghy 2013](#devereaux-y-elmaraghy-2013) · [Devi 2026](#devi-2026) · [Devillé 2000](#devillé-2000) · [Dhesi 2024](#dhesi-2024) · [Diabetes Prevention Program 2012](#diabetes-prevention-program-2012) · [Dididze 2023](#dididze-2023) · [Dobbs 2016](#dobbs-2016) · [Donnally 2025](#donnally-2025) · [Dookie y Joseph 2023](#dookie-y-joseph-2023) · [Dorf 2007](#dorf-2007) · [Dos Santos 2016](#dos-santos-2016) · [Dos Santos 2024](#dos-santos-2024) · [Dowell 2022](#dowell-2022) · [Downie 2013](#downie-2013) · [Drosos 2022](#drosos-2022) · [Dufort y Samaan 2021](#dufort-y-samaan-2021) · [Duman 2025](#duman-2025) · [Durer 2024](#durer-2024) · [Dures 2024](#dures-2024) · [Edinoff 2021](#edinoff-2021) · [Edwards 2024](#edwards-2024) · [EMA 2014](#ema-2014) · [EMA 2018](#ema-2018) · [Engelbert 2017](#engelbert-2017) · [Engert 2024](#engert-2024) · [Englund 2003](#englund-2003) · [Enke 2018](#enke-2018) · [Enseki 2023](#enseki-2023) · [Epelde 2026](#epelde-2026) · [Evans 2014](#evans-2014) · [Evans 2018](#evans-2018) · [Evans 2023](#evans-2023) · [Ez Eddin 2025](#ez-eddin-2025) · [Fairbank 2011](#fairbank-2011) · [Fanouriakis 2024](#fanouriakis-2024) · [Fariduddin 2024](#fariduddin-2024) · [Farishta 2024](#farishta-2024) · [Farmer y Matto 2026](#farmer-y-matto-2026) · [Faruqi 2024](#faruqi-2024) · [Farzam y Jan 2023](#farzam-y-jan-2023) · [Fedorowski 2019](#fedorowski-2019) · [Feller 2024](#feller-2024) · [Ferraro 2025](#ferraro-2025) · [Ferreira 2023](#ferreira-2023) · [Filippatos 2017](#filippatos-2017) · [Finucane 2020](#finucane-2020) · [Flynn 2002](#flynn-2002) · [Fong y Patel 2026](#fong-y-patel-2026) · [Forsythe 2025](#forsythe-2025) · [Forton 2022](#forton-2022) · [Frade 2023](#frade-2023) · [Fragoulis 2023](#fragoulis-2023) · [Frey 2017](#frey-2017) · [Fritz 2005](#fritz-2005) · [Fu 2010](#fu-2010) · [Fujiwara 2025](#fujiwara-2025) · [Gak 2024](#gak-2024) · [Galliker 2020](#galliker-2020) · [Ganz 2003](#ganz-2003) · [García-Sánchez 2022](#garcía-sánchez-2022) · [Garrison 2023](#garrison-2023) · [Gehrke 2023](#gehrke-2023) · [Geneen 2017](#geneen-2017) · [Genevay 2017](#genevay-2017) · [George 2016](#george-2016) · [George 2021](#george-2021) · [Getsoian 2020](#getsoian-2020) · [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) · [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) · [Gheewala 2023](#gheewala-2023) · [Ghosh 2026](#ghosh-2026) · [Giangregorio 2014](#giangregorio-2014) · [Giangregorio 2015](#giangregorio-2015) · [Gibbs 2019](#gibbs-2019) · [Gill 2025](#gill-2025) · [Gillen 2026](#gillen-2026) · [Giménez-Campos 2021](#giménez-campos-2021) · [Gluppe 2021](#gluppe-2021) · [Gobillot-Morisson 2024](#gobillot-morisson-2024) · [Goebel 2018](#goebel-2018) · [González-de-Olano 2017](#gonzález-de-olano-2017) · [Goodfriend 2022](#goodfriend-2022) · [Goodman 2018](#goodman-2018) · [Goosenberg 2025](#goosenberg-2025) · [Gordon 2018](#gordon-2018) · [Gornet 2011](#gornet-2011) · [Goyal 2025](#goyal-2025) · [Gradel 2018](#gradel-2018) · [Gragossian 2023](#gragossian-2023) · [Grant y John 2025](#grant-y-john-2025) · [Greear 2024](#greear-2024) · [Green 2020](#green-2020) · [Greenwood 2024](#greenwood-2024) · [Gregson 2025](#gregson-2025) · [Griffin 2018](#griffin-2018) · [Grimaldi 2017](#grimaldi-2017) · [Grimaldi 2026](#grimaldi-2026) · [Grimaldi y Fearon 2015](#grimaldi-y-fearon-2015) · [Grondin 2026](#grondin-2026) · [Gross y Distefano 1997](#gross-y-distefano-1997) · [Großterlinden 2016](#großterlinden-2016) · [Grusky 2026](#grusky-2026) · [Guan 2026](#guan-2026) · [Gülen 2023](#gülen-2023) · [Guo 2024](#guo-2024) · [Guthmiller 2025](#guthmiller-2025) · [Hadji 2025](#hadji-2025) · [Hadji 2026](#hadji-2026) · [Hahn 2022](#hahn-2022) · [Hakim 2017](#hakim-2017) · [Hall 2008](#hall-2008) · [Hall 2010](#hall-2010) · [Hall 2016](#hall-2016) · [Hall 2024](#hall-2024) · [Hall 2025](#hall-2025) · [Hall 2026](#hall-2026) · [Hall y Robinson 2004](#hall-y-robinson-2004) · [Halliwell 2026](#halliwell-2026) · [Ham 2017](#ham-2017) · [Hameed 2023](#hameed-2023) · [Han 2022](#han-2022) · [Han 2023](#han-2023) · [Hancock 2007](#hancock-2007) · [Hancock 2008](#hancock-2008) · [Hanif 2026](#hanif-2026) · [Hanna 2024](#hanna-2024) · [Hansen 2015](#hansen-2015) · [Hansen 2022](#hansen-2022) · [Hanssen 2022](#hanssen-2022) · [Hantzidiamantis 2024](#hantzidiamantis-2024) · [Hardcastle 2022](#hardcastle-2022) · [Harley 2026](#harley-2026) · [Harrington 2023](#harrington-2023) · [Haskins 2015](#haskins-2015) · [He 2025](#he-2025) · [Health Quality Ontario 2019](#health-quality-ontario-2019) · [Hegedus 2012](#hegedus-2012) · [Henderson 2017](#henderson-2017) · [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) · [Hennessy 2025](#hennessy-2025) · [Henschke 2013](#henschke-2013) · [Herman 2023](#herman-2023) · [Hermans 2013](#hermans-2013) · [Hermena y Slane 2025](#hermena-y-slane-2025) · [HerniaSurge 2018](#herniasurge-2018) · [Herrett 2021](#herrett-2021) · [Hershman 2022](#hershman-2022) · [Hertel 1996](#hertel-1996) · [Hesmerg 2024](#hesmerg-2024) · [Heyward 2020](#heyward-2020) · [Hideyama 2023](#hideyama-2023) · [Hildebrand 2024](#hildebrand-2024) · [Hill 2017](#hill-2017) · [Hodge y Schroeder 2023](#hodge-y-schroeder-2023) · [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) · [Hoenig 2023](#hoenig-2023) · [Holgado 2022](#holgado-2022) · [Holla 2011](#holla-2011) · [Holla 2012](#holla-2012) · [Hollabaugh 2023](#hollabaugh-2023) · [Hölmich 1999](#hölmich-1999) · [Hopkinson 1990](#hopkinson-1990) · [Horowitz 2023](#horowitz-2023) · [Hospers 2024](#hospers-2024) · [Hosseinzadeh 2024](#hosseinzadeh-2024) · [Houck 2015](#houck-2015) · [Hu 2023](#hu-2023) · [Hu 2024](#hu-2024) · [Hulens 2018](#hulens-2018) · [Hulens 2025](#hulens-2025) · [Humma y Patel 2024](#humma-y-patel-2024) · [Humphrey 2023](#humphrey-2023) · [Hunter 2024](#hunter-2024) · [Huruba 2021](#huruba-2021) · [Hutchison 2013](#hutchison-2013) · [Hutting 2018](#hutting-2018) · [Huxel 2023](#huxel-2023) · [Hwang 2023](#hwang-2023) · [Hwang 2024](#hwang-2024) · [Hyder 2021](#hyder-2021) · [Iacovides 2009](#iacovides-2009) · [IHS 2018](#ihs-2018) · [Iqbal 2026](#iqbal-2026) · [Irwin 2015](#irwin-2015) · [Jain 2026](#jain-2026) · [Jasti 2026](#jasti-2026) · [Jayarangaiah 2023](#jayarangaiah-2023) · [Jeanmonod y Varacallo 2023](#jeanmonod-y-varacallo-2023) · [Jenkins y Vadakekut 2025](#jenkins-y-vadakekut-2025) · [Jette 2020](#jette-2020) · [Jiang 2024](#jiang-2024) · [Jin 2021](#jin-2021) · [Jobanputra 2026](#jobanputra-2026) · [Jödicke 2023](#jödicke-2023) · [Jogu 2026](#jogu-2026) · [Johannsen 2022](#johannsen-2022) · [Johns 2023](#johns-2023) · [Jones 2023](#jones-2023) · [Jones 2025](#jones-2025) · [Jonsson 2008](#jonsson-2008) · [Jull 2007](#jull-2007) · [Kalakonda 2022](#kalakonda-2022) · [Kalfas 2025](#kalfas-2025) · [Kamonseki 2022](#kamonseki-2022) · [Kanaley 2022](#kanaley-2022) · [Kaneko 2021](#kaneko-2021) · [Kang 2023](#kang-2023) · [Kanis 2019](#kanis-2019) · [Kaplan y Kanwal 2023](#kaplan-y-kanwal-2023) · [Karachalios 2005](#karachalios-2005) · [Karanasios 2022](#karanasios-2022) · [Kasina y Baradhi 2023](#kasina-y-baradhi-2023) · [Kast 2023](#kast-2023) · [Kastelein 2008](#kastelein-2008) · [Katz 1995](#katz-1995) · [Katz y Harris 2008](#katz-y-harris-2008) · [Kaur 2025](#kaur-2025) · [Kazemi 2023](#kazemi-2023) · [Keener y Sethi 2015](#keener-y-sethi-2015) · [Kelley 2013](#kelley-2013) · [Kelly 2016](#kelly-2016) · [Kemp 2020](#kemp-2020) · [Kemp 2026](#kemp-2026) · [Kershner 2026](#kershner-2026) · [Kessel y Watson 1977](#kessel-y-watson-1977) · [Keteyian 2019](#keteyian-2019) · [Khalil 2025](#khalil-2025) · [Khan 2023](#khan-2023) · [Khan 2026](#khan-2026) · [Khan y Bollu 2023](#khan-y-bollu-2023) · [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) · [Khayyat 2026](#khayyat-2026) · [Kibbe 2004](#kibbe-2004) · [Kibler 2013](#kibler-2013) · [Killeen y Cardenas 2025](#killeen-y-cardenas-2025) · [Kim 2001](#kim-2001) · [Kim 2004](#kim-2004) · [Kim 2007](#kim-2007) · [Kim 2025](#kim-2025) · [Kim 2026](#kim-2026) · [Kim y Chang 2021](#kim-y-chang-2021) · [Kim y Chen 2024](#kim-y-chen-2024) · [Kim y Jang 2024](#kim-y-jang-2024) · [Kimyaghalam 2024](#kimyaghalam-2024) · [King y Lowery 2023](#king-y-lowery-2023) · [Kinsella 2024](#kinsella-2024) · [Kishi 2026](#kishi-2026) · [Klepinowski 2021](#klepinowski-2021) · [Knapik 2023](#knapik-2023) · [Koc 2023](#koc-2023) · [Koc 2025](#koc-2025) · [Koh y Markovich 2023](#koh-y-markovich-2023) · [Koldenhof 2026](#koldenhof-2026) · [Konstantinou 2018](#konstantinou-2018) · [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) · [Krill 2018](#krill-2018) · [Kuijper 2009](#kuijper-2009) · [Kulig 2009](#kulig-2009) · [Kunutsor 2017](#kunutsor-2017) · [Kuo 2025](#kuo-2025) · [Kurlander 2022](#kurlander-2022) · [Kwak 2023](#kwak-2023) · [Kwon 2024](#kwon-2024) · [Lacuesta 2024](#lacuesta-2024) · [Lacy 2023](#lacy-2023) · [Lagina y Tripathy 2026](#lagina-y-tripathy-2026) · [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) · [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) · [Lary 2020](#lary-2020) · [Laslett 2003](#laslett-2003) · [Laslett 2005](#laslett-2005) · [Laslett 2005 (centralización)](#laslett-2005-centralización) · [Laslett 2006](#laslett-2006) · [Laslett 2008](#laslett-2008) · [Lassiter 2024](#lassiter-2024) · [Laurent 2022](#laurent-2022) · [Layton 2020](#layton-2020) · [Leander 2025](#leander-2025) · [Lebovitz 2019](#lebovitz-2019) · [Lee 2023](#lee-2023) · [Lee y Picard 2025](#lee-y-picard-2025) · [Leib 2023](#leib-2023) · [Lelli 2016](#lelli-2016) · [Lequesne 2008](#lequesne-2008) · [Leschinger 2017](#leschinger-2017) · [Leslie 2023](#leslie-2023) · [Leslie 2024](#leslie-2024) · [Leslie 2025](#leslie-2025) · [Leslie y Foreman 2025](#leslie-y-foreman-2025) · [Leslie y Rawla 2023](#leslie-y-rawla-2023) · [Leslie y Rout 2024](#leslie-y-rout-2024) · [Leung 2024](#leung-2024) · [Levati 2026](#levati-2026) · [Levy 2024](#levy-2024) · [Lewis y Cook 2014](#lewis-y-cook-2014) · [Lezak 2024](#lezak-2024) · [Li 2023](#li-2023) · [Li 2025](#li-2025) · [Li 2026](#li-2026) · [Li y Sun 2026](#li-y-sun-2026) · [Li y Zhang 2025](#li-y-zhang-2025) · [Liamis 2016](#liamis-2016) · [Liang 2022](#liang-2022) · [Liao 2021](#liao-2021) · [Liddle y Pennick 2015](#liddle-y-pennick-2015) · [Lim 2013](#lim-2013) · [Lim 2024](#lim-2024) · [Lim y Selbi 2023](#lim-y-selbi-2023) · [Limaiem 2023](#limaiem-2023) · [Lin 2020](#lin-2020) · [Litaker 2000](#litaker-2000) · [Liu 2013](#liu-2013) · [Liu 2015](#liu-2015) · [Liu 2025](#liu-2025) · [Lizzo 2025](#lizzo-2025) · [Lleva 2025](#lleva-2025) · [Llitjos 2016](#llitjos-2016) · [Lluch 2020](#lluch-2020) · [Logerstedt 2017](#logerstedt-2017) · [Logerstedt 2018](#logerstedt-2018) · [Lopes 2025](#lopes-2025) · [Lotfollahzadeh 2024](#lotfollahzadeh-2024) · [Loureiro 2013](#loureiro-2013) · [Lu 2020](#lu-2020) · [Lubiatowski 2020](#lubiatowski-2020) · [Lucado 2022](#lucado-2022) · [Lucas 2009](#lucas-2009) · [Lucas 2019](#lucas-2019) · [Lukies 2023](#lukies-2023) · [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) · [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) · [Macdonald 2019](#macdonald-2019) · [Mach 2018](#mach-2018) · [Mačionienė 2026](#mačionienė-2026) · [Maffulli 1998](#maffulli-1998) · [Magan 2021](#magan-2021) · [Mahadevan 2015](#mahadevan-2015) · [Maitland 2005](#maitland-2005) · [Majlesi 2008](#majlesi-2008) · [Malfait 2017](#malfait-2017) · [Malfait 2024](#malfait-2024) · [Malik 2023](#malik-2023) · [Malik 2024](#malik-2024) · [Malik y Herron 2023](#malik-y-herron-2023) · [Mameli 2025](#mameli-2025) · [Mancia 2023](#mancia-2023) · [Mangla y Hamad 2024](#mangla-y-hamad-2024) · [Mangone 2024](#mangone-2024) · [Margetis y Donnally 2025](#margetis-y-donnally-2025) · [Margetis y Gillis 2025](#margetis-y-gillis-2025) · [Margetis y Magnus 2025](#margetis-y-magnus-2025) · [Margetis y Patel 2025](#margetis-y-patel-2025) · [Margetis y Singh 2025](#margetis-y-singh-2025) · [Marko y Pawliczak 2025](#marko-y-pawliczak-2025) · [Martin 2021](#martin-2021) · [Martínez 2023](#martínez-2023) · [Mastromarchi 2021](#mastromarchi-2021) · [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) · [Matsumoto 1990](#matsumoto-1990) · [Matthews 2023](#matthews-2023) · [Maxwell y Sterling 2013](#maxwell-y-sterling-2013) · [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) · [McAnally 2020](#mcanally-2020) · [McCarthy y Busconi 1995](#mccarthy-y-busconi-1995) · [McClary y Massey 2023](#mcclary-y-massey-2023) · [McEvoy 2024](#mcevoy-2024) · [McIver y Siddique 2025](#mciver-y-siddique-2025) · [McKeever 2024](#mckeever-2024) · [McKeon 2008](#mckeon-2008) · [McMordie 2023](#mcmordie-2023) · [McMurray 1942](#mcmurray-1942) · [Meaadi 2023](#meaadi-2023) · [Mehta 2024](#mehta-2024) · [Mellor 2016](#mellor-2016) · [Mellor 2018](#mellor-2018) · [Memon y Tiwari 2023](#memon-y-tiwari-2023) · [Men 2017](#men-2017) · [Mendonça 2016](#mendonça-2016) · [Menger 2024](#menger-2024) · [Menon y Cassaro 2026](#menon-y-cassaro-2026) · [Menon y Rednam 2026](#menon-y-rednam-2026) · [Menorca 2013](#menorca-2013) · [Messineo 2024](#messineo-2024) · [Metcalfe 2019](#metcalfe-2019) · [Miernik 2024](#miernik-2024) · [Mikus 2013](#mikus-2013) · [Milbourn 2026](#milbourn-2026) · [Miller 2020](#miller-2020) · [Minardi 2024](#minardi-2024) · [Mitchell 2023](#mitchell-2023) · [Mitchell 2025](#mitchell-2025) · [Mohr 2024](#mohr-2024) · [Mohseni 2024](#mohseni-2024) · [Moiz 2026](#moiz-2026) · [Molloy 2003](#molloy-2003) · [Momodu y Savaliya 2023](#momodu-y-savaliya-2023) · [Moncrieff 2025](#moncrieff-2025) · [Montero-Odasso 2022](#montero-odasso-2022) · [Moon 2026](#moon-2026) · [Moore 2019](#moore-2019) · [Moore y Tafti 2026](#moore-y-tafti-2026) · [Moraczewski 2023](#moraczewski-2023) · [Morales 2019](#morales-2019) · [Morris 2024](#morris-2024) · [Morris y Patel 2023](#morris-y-patel-2023) · [Moseley 2025](#moseley-2025) · [Moser 2020](#moser-2020) · [Mottola 2018](#mottola-2018) · [Mountjoy 2023](#mountjoy-2023) · [Mulla 2024](#mulla-2024) · [Munakomi 2023](#munakomi-2023) · [Munteanu 2021](#munteanu-2021) · [Muñoz 2022](#muñoz-2022) · [Muñoz 2024](#muñoz-2024) · [Muraro 2022](#muraro-2022) · [Murphy 2023](#murphy-2023) · [Nadi 2026](#nadi-2026) · [Nakafero 2021](#nakafero-2021) · [Nakhleh y Shehadeh 2021](#nakhleh-y-shehadeh-2021) · [Nandhagopal 2024](#nandhagopal-2024) · [Naqvi y Sherman 2023](#naqvi-y-sherman-2023) · [Narayan 2024](#narayan-2024) · [Nardi y Schaefer 2023](#nardi-y-schaefer-2023) · [Narvani 2003](#narvani-2003) · [Naugle 2012](#naugle-2012) · [Nee 2012](#nee-2012) · [Nemunaitis 2022](#nemunaitis-2022) · [Netterström-Wedin 2021](#netterström-wedin-2021) · [NICE CG109](#nice-cg109) · [NICE CG147](#nice-cg147) · [NICE CG151](#nice-cg151) · [NICE CG192](#nice-cg192) · [NICE NG12](#nice-ng12) · [NICE NG123](#nice-ng123) · [NICE NG125](#nice-ng125) · [NICE NG126](#nice-ng126) · [NICE NG133](#nice-ng133) · [NICE NG156](#nice-ng156) · [NICE NG158](#nice-ng158) · [NICE NG19](#nice-ng19) · [NICE NG192](#nice-ng192) · [NICE NG193](#nice-ng193) · [NICE NG194](#nice-ng194) · [NICE NG196](#nice-ng196) · [NICE NG201](#nice-ng201) · [NICE NG210](#nice-ng210) · [NICE NG226](#nice-ng226) · [NICE NG232](#nice-ng232) · [NICE NG249](#nice-ng249) · [NICE NG255](#nice-ng255) · [NICE NG258](#nice-ng258) · [NICE NG38](#nice-ng38) · [NICE NG59](#nice-ng59) · [NICE NG65](#nice-ng65) · [NICE NG89](#nice-ng89) · [Nischal y Gupta 2023](#nischal-y-gupta-2023) · [Nochaiwong 2022](#nochaiwong-2022) · [Nori y Stretanski 2025](#nori-y-stretanski-2025) · [Norris 2025](#norris-2025) · [Noyes 2017](#noyes-2017) · [Nunes 2013](#nunes-2013) · [O'Driscoll 2005](#odriscoll-2005) · [O'Driscoll 2007](#odriscoll-2007) · [Ochi 2011](#ochi-2011) · [Ochi 2012](#ochi-2012) · [Ogince 2007](#ogince-2007) · [Ogrodnik 2021](#ogrodnik-2021) · [Oldfield 2024](#oldfield-2024) · [Oliver y Ashurst 2023](#oliver-y-ashurst-2023) · [Ophey 2025](#ophey-2025) · [Padda 2025](#padda-2025) · [Paik 2016](#paik-2016) · [Pak y Kim 2023](#pak-y-kim-2023) · [Pålsson 2020](#pålsson-2020) · [Pan 2024](#pan-2024) · [Pana y Saggu 2023](#pana-y-saggu-2023) · [Pangia 2025](#pangia-2025) · [Pannone y Abbott 2024](#pannone-y-abbott-2024) · [Papantoniou 2023](#papantoniou-2023) · [Pappas 2006](#pappas-2006) · [Paquin 2022](#paquin-2022) · [Paredes Mogica 2023](#paredes-mogica-2023) · [Park 2005](#park-2005) · [Park 2008](#park-2008) · [Park 2019](#park-2019) · [Park 2021](#park-2021) · [Parker 2013](#parker-2013) · [Parodis 2024](#parodis-2024) · [Patel 2025](#patel-2025) · [Patel 2026](#patel-2026) · [Patel y Launico 2025](#patel-y-launico-2025) · [Patel y Preuss 2025](#patel-y-preuss-2025) · [Paterson 2021](#paterson-2021) · [Pathak 2025](#pathak-2025) · [Patil 2024](#patil-2024) · [Patiño y Saenz 2023](#patiño-y-saenz-2023) · [Peat 2006](#peat-2006) · [Pedersen 2017](#pedersen-2017) · [Pedersini 2022](#pedersini-2022) · [Pedret 2015](#pedret-2015) · [Pedret 2026](#pedret-2026) · [Peker 2020](#peker-2020) · [Pencle y Varacallo 2023](#pencle-y-varacallo-2023) · [Penfold 2024](#penfold-2024) · [Peng 2022](#peng-2022) · [Petersen 2017](#petersen-2017) · [Petersen 2021](#petersen-2021) · [Pisetsky 2021](#pisetsky-2021) · [Pitcher 2024](#pitcher-2024) · [Pitsilos 2022](#pitsilos-2022) · [Pitt 2020](#pitt-2020) · [Plash 2013](#plash-2013) · [Plewa 2023](#plewa-2023) · [Ploegmakers 2023](#ploegmakers-2023) · [Podder 2024](#podder-2024) · [Pofi 2023](#pofi-2023) · [Pokhrel 2022](#pokhrel-2022) · [Polaski 2019](#polaski-2019) · [Pollock 2014](#pollock-2014) · [Pollock 2016](#pollock-2016) · [Ponna 2026](#ponna-2026) · [Pope 2023](#pope-2023) · [Prakash 2018](#prakash-2018) · [Prill 2025](#prill-2025) · [Pringels 2025](#pringels-2025) · [Puentedura 2015](#puentedura-2015) · [Punnapuzha 2023](#punnapuzha-2023) · [Quzli 2025](#quzli-2025) · [Raj 2020](#raj-2020) · [Raj 2022](#raj-2022) · [Raj 2023](#raj-2023) · [Rana 2026](#rana-2026) · [Rangraze 2026](#rangraze-2026) · [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) · [Rathbone 2017](#rathbone-2017) · [Rathleff 2020](#rathleff-2020) · [RCOG 2015](#rcog-2015) · [RCUK 2021](#rcuk-2021) · [Regalla y Killeen 2026](#regalla-y-killeen-2026) · [Regina 2025](#regina-2025) · [Regunath y Oba 2024](#regunath-y-oba-2024) · [Rehman 2024](#rehman-2024) · [Reid 2014](#reid-2014) · [Reijman 2004](#reijman-2004) · [Reiley 2017](#reiley-2017) · [Reiman 2014](#reiman-2014) · [Reiman 2015](#reiman-2015) · [Rennie y Saifuddin 2005](#rennie-y-saifuddin-2005) · [Rhim 2025](#rhim-2025) · [Rhodes 2022](#rhodes-2022) · [Rice 2019](#rice-2019) · [Rich 2025](#rich-2025) · [Riddell 2017](#riddell-2017) · [Rider y Marra 2023](#rider-y-marra-2023) · [Ringer 2025](#ringer-2025) · [Rinkel 2013](#rinkel-2013) · [Rishor-Olney 2024](#rishor-olney-2024) · [Rissardo 2023](#rissardo-2023) · [Rissardo 2025](#rissardo-2025) · [Robertson y Wood 2017](#robertson-y-wood-2017) · [Robinson 2022](#robinson-2022) · [Roedl 2016](#roedl-2016) · [Roulet 2021](#roulet-2021) · [Rout 2024](#rout-2024) · [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) · [Rout 2025](#rout-2025) · [Rout y Afzal 2026](#rout-y-afzal-2026) · [Rowe 2023](#rowe-2023) · [Roy 2021](#roy-2021) · [Rubinger 2020](#rubinger-2020) · [Rudwaleit 2006](#rudwaleit-2006) · [Ruggiero 2022](#ruggiero-2022) · [Ruperto 2011](#ruperto-2011) · [Rupp y Leslie 2023](#rupp-y-leslie-2023) · [Rushton 2023](#rushton-2023) · [Rusu 2023](#rusu-2023) · [Rusu 2026](#rusu-2026) · [Saad y Mathew 2025](#saad-y-mathew-2025) · [Sabry y Li 2026](#sabry-y-li-2026) · [Saco-Ledo 2020](#saco-ledo-2020) · [Sahu 2020](#sahu-2020) · [Salameh 2022](#salameh-2022) · [Salamh 2025](#salamh-2025) · [Saleem 2023](#saleem-2023) · [Saliba 2026](#saliba-2026) · [Salmasi 2020](#salmasi-2020) · [Sambola 2024](#sambola-2024) · [Sammaritano 2025](#sammaritano-2025) · [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) · [Sanchez-Alvarado 2024](#sanchez-alvarado-2024) · [Sangiorgio 2024](#sangiorgio-2024) · [Sanvictores 2023](#sanvictores-2023) · [Saueressig 2021](#saueressig-2021) · [Sayudo 2024](#sayudo-2024) · [Schadler 2017](#schadler-2017) · [Schick y Sternard 2023](#schick-y-sternard-2023) · [Schiphof 2014](#schiphof-2014) · [Schöberl 2017](#schöberl-2017) · [Schroeder 2017](#schroeder-2017) · [Schug 2021](#schug-2021) · [Schweiger 2021](#schweiger-2021) · [Scioscia 2023](#scioscia-2023) · [Scott 2024](#scott-2024) · [Seaberg 1998](#seaberg-1998) · [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) · [Seaman y Bergman 2026](#seaman-y-bergman-2026) · [See 2026](#see-2026) · [Sekhon 2023](#sekhon-2023) · [Sendrea 2026](#sendrea-2026) · [Serner 2020](#serner-2020) · [Sevy 2023](#sevy-2023) · [Shahid 2023](#shahid-2023) · [Shamim 2026](#shamim-2026) · [Shamrock 2023](#shamrock-2023) · [Shamrock y Das 2023](#shamrock-y-das-2023) · [Shams 2025](#shams-2025) · [Shane 2014](#shane-2014) · [Shao 2022](#shao-2022) · [Sharma 2026](#sharma-2026) · [Sharma y Munakomi 2026](#sharma-y-munakomi-2026) · [Shaw 2025](#shaw-2025) · [Sheldon 2015](#sheldon-2015) · [Shelkey 2014](#shelkey-2014) · [Sherrington 2019](#sherrington-2019) · [Shin 2022](#shin-2022) · [Shrestha 2026](#shrestha-2026) · [Shu 2022](#shu-2022) · [Sibrack 2024](#sibrack-2024) · [Siemensma 2023](#siemensma-2023) · [Siepe 2007](#siepe-2007) · [Silbernagel 2007](#silbernagel-2007) · [Simon 2024](#simon-2024) · [Simon y Rout 2025](#simon-y-rout-2025) · [Simonds 2022](#simonds-2022) · [Sims 2020](#sims-2020) · [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) · [Singleton y Hefner 2023](#singleton-y-hefner-2023) · [Sivakoti 2026](#sivakoti-2026) · [Sizar 2024](#sizar-2024) · [Sklepinski 2026](#sklepinski-2026) · [Slade 2021](#slade-2021) · [Sleijser-Koehorst 2021](#sleijser-koehorst-2021) · [Small 2022](#small-2022) · [Sman 2015](#sman-2015) · [Smart 2019](#smart-2019) · [Smarz 2021](#smarz-2021) · [Smidt y Massey 2023](#smidt-y-massey-2023) · [Smith 2015](#smith-2015) · [Smith y Varacallo 2023](#smith-y-varacallo-2023) · [Smith y Varacallo 2024](#smith-y-varacallo-2024) · [Sokal 2022](#sokal-2022) · [Solomon 2001](#solomon-2001) · [Soura 2026](#soura-2026) · [Spångeus 2024](#spångeus-2024) · [Speer 1994](#speer-1994) · [Sperstad 2016](#sperstad-2016) · [Srinivas-Shankar 2026](#srinivas-shankar-2026) · [Srisuwatchari 2023](#srisuwatchari-2023) · [Steffel 2021](#steffel-2021) · [Stern 2026](#stern-2026) · [Stiell 1992](#stiell-1992) · [Stiell 1993](#stiell-1993) · [Stiell 1995](#stiell-1995) · [Stiell 1996](#stiell-1996) · [Stroes 2015](#stroes-2015) · [Suárez-Lledó 2018](#suárez-lledó-2018) · [Suenghataiphorn 2025](#suenghataiphorn-2025) · [Suha 2025](#suha-2025) · [Suri 2010](#suri-2010) · [Sutlive 2008](#sutlive-2008) · [Takasaki 2011](#takasaki-2011) · [Talreja y Cassagnol 2023](#talreja-y-cassagnol-2023) · [Tang 2024](#tang-2024) · [Tavakoli 2025](#tavakoli-2025) · [Tawa 2017](#tawa-2017) · [Tchivileva 2020](#tchivileva-2020) · [Teichtahl 2016](#teichtahl-2016) · [Tektonidou 2019](#tektonidou-2019) · [Telang 2024](#telang-2024) · [Tenforde 2022](#tenforde-2022) · [Tenti 2020](#tenti-2020) · [Tentolouris 2019](#tentolouris-2019) · [Testa 2024](#testa-2024) · [Thai 2023](#thai-2023) · [Thanou 2021](#thanou-2021) · [Thigpen 2016](#thigpen-2016) · [Thomas 2017](#thomas-2017) · [Thomas Manapurathe 2017](#thomas-manapurathe-2017) · [Thompson 2026](#thompson-2026) · [Thompson y Doherty 1962](#thompson-y-doherty-1962) · [Thoomes 2026](#thoomes-2026) · [Thota y Akbar 2023](#thota-y-akbar-2023) · [Thour 2026](#thour-2026) · [Tobaiqy y Alqutub 2026](#tobaiqy-y-alqutub-2026) · [Tolla 2026](#tolla-2026) · [Tominaga 2023](#tominaga-2023) · [Torg 1976](#torg-1976) · [Torlincasi 2023](#torlincasi-2023) · [Trager 2024](#trager-2024) · [Trammell 2023](#trammell-2023) · [Truong 2023](#truong-2023) · [Tsouknidas 2022](#tsouknidas-2022) · [Tsourdi 2021](#tsourdi-2021) · [Tsuchiya 2022](#tsuchiya-2022) · [Tsujimoto 2017](#tsujimoto-2017) · [Tumialán 2010](#tumialán-2010) · [Uson 2021](#uson-2021) · [Uysal 2015](#uysal-2015) · [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) · [Vaegter y Jones 2020](#vaegter-y-jones-2020) · [Valdez 2026](#valdez-2026) · [Valent 2022](#valent-2022) · [Van der Sluiszen 2019](#van-der-sluiszen-2019) · [van der Windt 2010](#van-der-windt-2010) · [van Dijk 1996](#van-dijk-1996) · [van Dijk 2016](#van-dijk-2016) · [Vandeputte 2026](#vandeputte-2026) · [Vehmanen 2021](#vehmanen-2021) · [Verhagen 2017](#verhagen-2017) · [Vernino 2021](#vernino-2021) · [Viikari-Juntura 1989](#viikari-juntura-1989) · [Vijayan y Mabrouk 2026](#vijayan-y-mabrouk-2026) · [Vijayan y Maher 2026](#vijayan-y-maher-2026) · [Vleeming 2008](#vleeming-2008) · [Vuurberg 2018](#vuurberg-2018) · [Vyas 2024](#vyas-2024) · [Waheed 2023](#waheed-2023) · [Wallace 2023](#wallace-2023) · [Wallis 2024](#wallis-2024) · [Walton 2004](#walton-2004) · [Wang 2016](#wang-2016) · [Wang 2017](#wang-2017) · [Wang 2018](#wang-2018) · [Wang 2020](#wang-2020) · [Wang 2024](#wang-2024) · [Wang 2025](#wang-2025) · [Wang y Tariq 2025](#wang-y-tariq-2025) · [Warden 2007](#warden-2007) · [Warden 2014](#warden-2014) · [Waseem 2026](#waseem-2026) · [Waterway 2026](#waterway-2026) · [Wathra 2020](#wathra-2020) · [Waymack y An 2023](#waymack-y-an-2023) · [Weber 2026](#weber-2026) · [Wee 2021](#wee-2021) · [Weir 2015](#weir-2015) · [Welsch 2018](#welsch-2018) · [Wenker y Quint 2023](#wenker-y-quint-2023) · [Wewege 2023](#wewege-2023) · [Wewege y Jones 2021](#wewege-y-jones-2021) · [WFH 2020](#wfh-2020) · [Whedon 2015](#whedon-2015) · [Wheeler y DeCastro 2023](#wheeler-y-decastro-2023) · [Wichniak 2017](#wichniak-2017) · [Wiegele 2019](#wiegele-2019) · [Wierzbiński 2023](#wierzbiński-2023) · [Wilcox 2020](#wilcox-2020) · [Wilke y Behringer 2021](#wilke-y-behringer-2021) · [Williams 2025](#williams-2025) · [Willy 2019](#willy-2019) · [Wistow 2025](#wistow-2025) · [Wong 2014](#wong-2014) · [Wong 2022](#wong-2022) · [Wong 2024](#wong-2024) · [Wood 2023](#wood-2023) · [Wróblewski 2026](#wróblewski-2026) · [Wu 2017](#wu-2017) · [Wu 2026](#wu-2026) · [Xia 2025](#xia-2025) · [Xiang 2025](#xiang-2025) · [Xue 2021](#xue-2021) · [Yale 2020](#yale-2020) · [Yamamoto 2009](#yamamoto-2009) · [Yang 2024](#yang-2024) · [Yang 2026](#yang-2026) · [Yang y Qu 2018](#yang-y-qu-2018) · [Yasaei 2024](#yasaei-2024) · [Yasir 2023](#yasir-2023) · [Young 2003](#young-2003) · [Youssef 2016](#youssef-2016) · [Yuan 2016](#yuan-2016) · [Yuen 2026](#yuen-2026) · [Zabaglo 2024](#zabaglo-2024) · [Zacharias 2016](#zacharias-2016) · [Zaslav 2001](#zaslav-2001) · [Zemaitis 2026](#zemaitis-2026) · [Zeng 2024](#zeng-2024) · [Zhang 2010](#zhang-2010) · [Zhang 2026](#zhang-2026) · [Zhao 2024](#zhao-2024) · [Zhou 2025](#zhou-2025) · [Ziu 2023](#ziu-2023) · [Zusman 1998](#zusman-1998) · [Zwerus 2018](#zwerus-2018) · [Zwerus 2022](#zwerus-2022)
 
 ### AAOS 2024
 
@@ -1108,6 +1308,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Luxación anterior de hombro» (Articulación) | cabecera · tiempos de tejido | 1 |
 
+### Abraham 2022
+
+Autores: Abraham, Karges, Dovc, Naranjo, Arbelaez, Mbogo y cols. (ISPAD)  
+Título: *ISPAD Clinical Practice Consensus Guidelines 2022: assessment and management of hypoglycemia in children and adolescents with diabetes*  
+Publicación: Pediatr Diabetes 23(8):1322–1340  
+DOI: 10.1111/pedi.13443  
+Última revisión: **sin revisar**  
+Nota: Guía pediátrica; texto completo en PMC, leído entero por un agente (2026-10). Signos de hipoglucemia nocturna; casi la mitad inadvertida. Contiene consejos de dosis que no se citan. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): hipoglucemia nocturna.
+
+Citada como:
+
+1. Abraham 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### ACOG 2020
 
 Autores: American College of Obstetricians and Gynecologists, Committee on Obstetric Practice  
@@ -1147,6 +1364,23 @@ Citada como:
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 2 |
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 3 |
 
+### ADA 2025
+
+Autores: American Diabetes Association Professional Practice Committee  
+Título: *6. Glycemic Goals and Hypoglycemia: Standards of Care in Diabetes—2025*  
+Publicación: Diabetes Care 48(Suppl 1):S128–S145  
+DOI: 10.2337/dc25-S006  
+Última revisión: **sin revisar**  
+Nota: Capítulo 6 de los Standards of Care de la ADA. En PMC (PMC11635034) solo se descarga el resumen; PDF aportado por el usuario y leído entero (2026-10), salvo las figuras 6.1 y 6.2 (imagen) y las marcas de la tabla 6.7. La recomendación 6.15 dice «<70 mg/dL» y el texto «70 mg/dL or less»; los «15 g» del texto son de hidratos, no de glucosa. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. ADA 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Adib 2023
 
 Publicación: Am J Sports Med 51(4):1007–14  
@@ -1184,6 +1418,40 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Codo | — | Pregunta `co_e1` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+
+### Adler 2016
+
+Autores: Adler, El-Hajj Fuleihan, Bauer et al. (ASBMR)  
+Título: *Managing osteoporosis patients after long-term bisphosphonate treatment: report of a task force of the American Society for Bone and Mineral Research*  
+Publicación: J Bone Miner Res 31(1):16–35  
+DOI: 10.1002/jbmr.2708  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero salvo los apéndices de casos y la figura del algoritmo (2026-10). Pausa de los bifosfonatos tras 3–5 años en el riesgo bajo; frecuencia de la osteonecrosis de mandíbula. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Adler 2016
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Adolfsson 2022
+
+Autores: Adolfsson, Taplin, Zaharieva, Pemberton, Davis, Riddell et al. (última autora, DiMeglio)  
+Título: *ISPAD Clinical Practice Consensus Guidelines 2022: Exercise in children and adolescents with diabetes*  
+Publicación: Pediatr Diabetes 23(8):1341–1372  
+DOI: 10.1111/pedi.13452  
+Última revisión: **sin revisar**  
+Nota: Guía de la ISPAD. Texto completo en PMC con el conector de PubMed (2026-10): resumen ejecutivo y secciones 3–9 enteras; las tablas 2–7, solo en parte, y la sección de la diabetes tipo 2, por encima. Se contradice en el corte de cetonas (0,6–1,4 frente a 1,0–1,4 mmol/L): no se cita. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Adolfsson 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### AEMPS 2023
 
@@ -1223,6 +1491,40 @@ Citada como:
 | Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Paso `tp_step12` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### AGS 2023
+
+Autores: American Geriatrics Society 2023 Beers Criteria Update Expert Panel  
+Título: *American Geriatrics Society 2023 updated AGS Beers Criteria for potentially inappropriate medication use in older adults*  
+Publicación: J Am Geriatr Soc 71(7):2052–2081  
+DOI: 10.1111/jgs.18372  
+Última revisión: **sin revisar**  
+Nota: Criterios de Beers 2023; texto principal completo en PMC, leído entero por un agente, con las filas de las tablas 2, 3, 5 y 6 sobre benzodiacepinas, hipnóticos Z, relajantes y caídas (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10).
+
+Citada como:
+
+1. AGS 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
+### Akin 2022
+
+Autores: Akin, Kelle y Kozanoglu  
+Título: *The Effect of Pregabalin on Bone Metabolism*  
+Publicación: J Clin Densitom 25(2):223–229  
+DOI: 10.1016/j.jocd.2021.05.001  
+Última revisión: **sin revisar**  
+Nota: Estudio transversal (40 pacientes con pregabalina ≥6 meses y 40 controles, 18–50 años, sin posmenopáusicas); PDF del usuario (versión en prensa de 2021), leído entero por un agente (2026-10). Guía de fármacos, familia gabapentinoides (huecos, 2026-10): sin diferencias de densidad ósea ni de marcadores.
+
+Citada como:
+
+1. Akin 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
 
 ### Al Nezari 2013
 
@@ -1276,6 +1578,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
+### Alaranji y Reilly 2025
+
+Autores: Alaranji y Reilly  
+Título: *Bisphosphonate Toxicity*  
+Publicación: StatPearls [Internet], NBK562331 (act. 2025-12-13)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Alaranji y Reilly 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Albasri 2021
 
@@ -1415,6 +1734,23 @@ Citada como:
 | Cadera | ca1 · Artrosis de Cadera | Test «Criterios clínicos ACR (árbol de clasificación)» | 4b · cita bajo el test | 2 |
 | Cadera | — | Paso `ca_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
+### Alvarez 2025
+
+Autores: Alvarez, Prieto, Portilla, Moya, Rincon y Guzman  
+Título: *Metformin-induced vitamin B12 deficiency: An underdiagnosed cause of diabetic neuropathy*  
+Publicación: World J Diabetes 16(7):107514  
+DOI: 10.4239/wjd.v16.i7.107514  
+Última revisión: **sin revisar**  
+Nota: Revisión invitada. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Da las pautas de B12 de NICE y de la BSH sin señalar que difieren: no se citan. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Alvarez 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Amaniyan 2020
 
 Autores: Amaniyan, Ghobadi, Vaismoradi et al.  
@@ -1484,6 +1820,23 @@ Citada como:
 | Codo | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 1 |
 
+### Anastasilakis 2021
+
+Autores: Anastasilakis, Makras, Yavropoulou, Tabacco, Naciu y Palermo  
+Título: *Denosumab discontinuation and the rebound phenomenon: a narrative review*  
+Publicación: J Clin Med 10(1):152  
+DOI: 10.3390/jcm10010152  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Fracturas vertebrales tras dejar el denosumab: momento, frecuencia, efecto de un retraso de 4 meses, inhibidores de la aromatasa. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Anastasilakis 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Anastasopoulou y Gillespie 2026
 
 Autores: Anastasopoulou y Gillespie  
@@ -1501,6 +1854,23 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l_e5` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 1 |
 
+### Anastasopoulou y Goyal 2026
+
+Autores: Anastasopoulou y Goyal  
+Título: *Hypocalcemia*  
+Publicación: StatPearls [Internet], NBK430912 (act. 2026-06-08)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. No es «Anastasopoulou y Gillespie 2026». Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Anastasopoulou y Goyal 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Antunes 2024
 
 Autores: Antunes, Tian y Copelin  
@@ -1508,7 +1878,7 @@ Título: *Upper Gastrointestinal Bleeding*
 Publicación: StatPearls [Internet], NBK470300 (act. 2024-08-17)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído entero (PDF del usuario, 2026-10) para la guía de fármacos, familia anticoagulantes y antiagregantes: presentación del sangrado digestivo alto, perforación, heces negras que no son melena, riesgo con antiagregantes combinados.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído entero (PDF del usuario, 2026-10) para la guía de fármacos, familia anticoagulantes y antiagregantes: presentación del sangrado digestivo alto, perforación, heces negras que no son melena, riesgo con antiagregantes combinados. Releído entero otra vez (PDF del usuario, 2026-10) para la familia AINE: sangrado, perforación y urgencias.
 
 Citada como:
 
@@ -1519,9 +1889,27 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Bandera amarilla «Uso crónico de AINEs (predispone a sangrado GI y anemia)» · Hematológico | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 2 |
 | fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
 | Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
+
+### Anziano 2024
+
+Autores: Anziano  
+Título: *Fluoroquinolone-induced Achilles tendinitis: a case report*  
+Publicación: J Can Chiropr Assoc 68(1):68–74  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Caso clínico (PMID 38840969, sin DOI); texto completo en PMC, leído entero por un agente (2026-10). Sin recomendaciones de consenso para rehabilitarla; mejoría en 8 semanas con modificación de la actividad y ejercicios graduados. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): rehabilitación.
+
+Citada como:
+
+1. Anziano 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
 
 ### Apelby-Albrecht 2013
 
@@ -1645,6 +2033,23 @@ Citada como:
 | Codo | — | Pregunta `co4b` · Vascular / Neurológica | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 1 |
 
+### Attardo 2022
+
+Autores: Attardo, Musumeci, Velardo y Toscano  
+Título: *Statins Neuromuscular Adverse Effects*  
+Publicación: Int J Mol Sci 23(15):8364  
+DOI: 10.3390/ijms23158364  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa; texto completo en PMC, leída entera por un agente la parte de neuropatía y buscados en el resto los fragmentos útiles (2026-10). Guía de fármacos, familia estatinas (huecos, 2026-10): neuropatía periférica.
+
+Citada como:
+
+1. Attardo 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
 ### Awidi y Babiker 2026
 
 Autores: Awidi y Babiker  
@@ -1679,6 +2084,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### Azmi 2025
+
+Autores: Azmi, Alkaff, Soetanto, Wirjopranoto, Postma y Purba  
+Título: *The impact of sodium-glucose cotransporter-2 inhibitors on the incidence, therapy, and outcomes of fournier gangrene: insights from a systematic review of case reports*  
+Publicación: Syst Rev 14(1):25  
+DOI: 10.1186/s13643-024-02746-3  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática de casos clínicos. Texto completo leído entero en PMC con el conector de PubMed (2026-10). El resumen y la discusión no coinciden en la edad, el tiempo mínimo con el fármaco ni el número de casos con obesidad: solo se cita la media de 9 meses. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Azmi 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Bachmann 2003
 
@@ -1736,6 +2158,23 @@ Citada como:
 | Rodilla | ro11 · Fracturas (Rótula o Meseta Tibial) | Test «Regla de Ottawa antes de nada» | 4b · cita bajo el test | 1 |
 | Rodilla | — | Pregunta `ro_t1` · Traumático / Mecánico | 2 · razonamiento del cribado | 2 |
 
+### Baffour-Awuah 2023
+
+Autores: Baffour-Awuah, Pearson, Dieberg, Wiles y Smart  
+Título: *An evidence-based guide to the efficacy and safety of isometric resistance training in hypertension and clinical implications*  
+Publicación: Clin Hypertens 29(1):9  
+DOI: 10.1186/s40885-022-00232-3  
+Última revisión: **sin revisar**  
+Nota: Guía basada en la evidencia; texto completo en PMC, leído entero por un agente (2026-10). Prensión al 30 % 4 × 2 min, 3 días por semana; piernas al 15–25 %; evitar ≥ 50 %. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): isométrica.
+
+Citada como:
+
+1. Baffour-Awuah 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
 ### Baggio y Ananda-Rajah 2021
 
 Autores: Baggio y Ananda-Rajah  
@@ -1752,6 +2191,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
+
+### Bahendeka 2019
+
+Autores: Bahendeka, Kaushik, Swai, Otieno, Bajaj, Kalra y Bavuma  
+Título: *EADSG guidelines: insulin storage and optimisation of injection technique in diabetes management*  
+Publicación: Diabetes Ther 10(2):341–366  
+DOI: 10.1007/s13300-019-0574-x  
+Última revisión: **sin revisar**  
+Nota: Guía de consenso regional (África oriental); texto completo en PMC, leído entero por un agente (2026-10). Tabla 2: masaje, calor (sauna, ducha, baño) y ejercicio aceleran la absorción. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): lugar de inyección.
+
+Citada como:
+
+1. Bahendeka 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Bahit 2017
 
@@ -1770,6 +2226,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_d_hematoma` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 
+### Baigrie y Nookala 2023
+
+Autores: Baigrie y Nookala  
+Título: *Bullous Pemphigoid*  
+Publicación: StatPearls [Internet], NBK535374 (act. 2023-03-02)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): penfigoide ampolloso por gliptinas.
+
+Citada como:
+
+1. Baigrie y Nookala 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Baker 2018
 
 Autores: Baker, Wilson y Wallach  
@@ -1786,6 +2259,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Lumbar | — | Pregunta `l_u5` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
+
+### Bakker 2017
+
+Autores: Bakker, Timmers, Hopman, Thompson, Verbeek y Eijsvogels  
+Título: *Association Between Statin Use and Prevalence of Exercise-Related Injuries: A Cross-Sectional Survey of Amateur Runners in the Netherlands*  
+Publicación: Sports Med 47(9):1885–1892  
+DOI: 10.1007/s40279-017-0681-7  
+Última revisión: **sin revisar**  
+Nota: Encuesta transversal (4460 corredores, 117 con estatina); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia estatinas (huecos, 2026-10): lesiones en corredores.
+
+Citada como:
+
+1. Bakker 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
 
 ### Bałabuszek 2022
 
@@ -1980,6 +2470,23 @@ La aponeurosis bicipital se explora aparte por el lado medial: su borde es fino,
 |---|---|---|---|---|
 | Codo | co7 · Rotura Distal del Bíceps | Test «Test del Gancho (Hook Test)» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
+### Bazelier 2013
+
+Autores: Bazelier, de Vries, Vestergaard, Herings, Gallagher, Leufkens y van Staa  
+Título: *Risk of fracture with thiazolidinediones: an individual patient data meta-analysis*  
+Publicación: Front Endocrinol (Lausanne) 4:11  
+DOI: 10.3389/fendo.2013.00011  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis con datos individuales de tres registros (pioglitazona y rosiglitazona juntas); texto completo en PMC, leído entero por un agente (2026-10). Anterior a 2015, admitida por ser la única fuente leída sobre la localización. Radio y cúbito, húmero, tibia y peroné, tobillo y pie; no cadera ni vértebras. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): fracturas.
+
+Citada como:
+
+1. Bazelier 2013
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Bazroon y Alrashidi 2023
 
 Autores: Bazroon y Alrashidi  
@@ -2133,6 +2640,40 @@ Citada como:
 |---|---|---|---|---|
 | Cervical | — | Pregunta `cv_ar2` · Arterial / Traumatismo / Cefalea de alarma | 2 · razonamiento del cribado | 1 |
 
+### Benzon 2026
+
+Autores: Benzon, Provenzano, Nagpal, Souza, Eckmann, Nelson et al.; últimos autores, Hunt y FitzGerald  
+Título: *Use and safety of corticosteroid injections in joints and musculoskeletal soft tissue: guidelines from the American Society of Regional Anesthesia and Pain Medicine, the American Academy of Pain Medicine, the American Society of Interventional Pain Physicians and other societies*  
+Publicación: Reg Anesth Pain Med 51:746–773 (en línea, 26-2-2025)  
+DOI: 10.1136/rapm-2024-105656  
+Última revisión: **sin revisar**  
+Nota: Guía multisociedad (grados A–D e I modificados de la USPSTF); PDF aportado por el usuario, leído entero por un agente (2026-10). Guía de fármacos, familia corticoides (huecos, 2026-10): artritis séptica tras infiltrar, atrofia y despigmentación, reposo tras infiltrar (sin recomendación graduada), separación y tope por dosis acumulada, roturas de tendón, glucosa y eje suprarrenal, infiltración antes de una prótesis.
+
+Citada como:
+
+1. Benzon 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
+
+### Bergh Fahlén 2026
+
+Autores: Bergh Fahlén, Falhammar, Skov, Lindh y Mannheimer  
+Título: *Thiazides and risk of hyponatremia by age and sex*  
+Publicación: JAMA Netw Open 9(4):e264642  
+DOI: 10.1001/jamanetworkopen.2026.4642  
+Última revisión: **sin revisar**  
+Nota: Cohorte (n = 159 080, tiazidas frente a antagonistas del calcio); texto completo en PMC, leído entero por un agente (2026-10). Sodio < 125 en dos años: 2,40 % en mujeres de 80 o más; riesgo casi nulo en mujeres menores de 65. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): hiponatremia.
+
+Citada como:
+
+1. Bergh Fahlén 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
 ### Bergman 2025
 
 Autores: Bergman, Li y Shuman  
@@ -2181,7 +2722,7 @@ Título: *Drug-induced orthostatic hypotension: A systematic review and meta-ana
 Publicación: PLoS Med 18(11):e1003821  
 DOI: 10.1371/journal.pmed.1003821  
 Última revisión: **sin revisar**  
-Nota: Revisión sistemática y metaanálisis de 69 ensayos: tricíclicos OR 6,30 de hipotensión ortostática (3 ensayos en depresión); ISRS sin aumento. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md).
+Nota: Revisión sistemática y metaanálisis de 69 ensayos: tricíclicos OR 6,30 de hipotensión ortostática (3 ensayos en depresión); ISRS sin aumento. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Guía de fármacos, familia antidepresivos (docs/farmacologia.md). Releído (2026-10) para la guía de fármacos, familia betabloqueantes: OR 7,76.
 
 Citada como:
 
@@ -2190,6 +2731,41 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### Bhanu 2025
+
+Autores: Bhanu, Walters, Orlu, Davis, Sofat y Petersen  
+Título: *Antidepressants and risk of postural hypotension: a self-controlled case series study in UK primary care*  
+Publicación: Br J Gen Pract 75(756):e484–e490  
+DOI: 10.3399/BJGP.2024.0429  
+Última revisión: **sin revisar**  
+Nota: Serie de casos autocontrolada (mayores de 60 años); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia antidepresivos (huecos, 2026-10): hipotensión postural en los 28 primeros días. Distinto de Bhanu 2021.
+
+Citada como:
+
+1. Bhanu 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
+### Bhanu 2026
+
+Autores: Bhanu, Petersen, Orlu, Davis, Sofat y Walters  
+Título: *Drug-induced orthostatic hypotension in UK primary care: a self-controlled case series study*  
+Publicación: Clin Epidemiol 18:593981  
+DOI: 10.2147/CLEP.S593981  
+Última revisión: **sin revisar**  
+Nota: Serie de casos autocontrolada (mayores de 60 años); texto completo en PMC, leído entero por un agente (2026-10). Betabloqueantes: IRR 1,86 en los 90 días previos, 3,70 días 1–28, 2,26 días 29–56, 1,55 desde el 57. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): hipotensión ortostática.
+
+Citada como:
+
+1. Bhanu 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Bhatti 2026
 
@@ -2207,6 +2783,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Tobillo y pie | — | Pregunta `tp_n1` · Neurológico | 2 · razonamiento del cribado | 1 |
+
+### Bianconi 2024
+
+Autores: Bianconi, Fiore, Rosso, Acuti Martellucci, Calò, Cioni et al.  
+Título: *Efficacy of Thiocolchicoside for Musculoskeletal Pain Management: A Systematic Review and Meta-Analysis of Randomized Controlled Trials*  
+Publicación: J Clin Med 13(20):6133  
+DOI: 10.3390/jcm13206133  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis (8 ensayos); texto completo en PMC, leído entero por un agente (2026-10), sin las tablas suplementarias. Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): tiocolchicósido.
+
+Citada como:
+
+1. Bianconi 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### Bierma-Zeinstra 1999
 
@@ -2240,6 +2833,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 1 |
+
+### Birkinshaw 2023
+
+Autores: Birkinshaw, Friedrich, Cole, Eccleston, Serfaty, Stewart et al.  
+Título: *Antidepressants for pain management in adults with chronic pain: a network meta-analysis*  
+Publicación: Cochrane Database Syst Rev 5:CD014682  
+DOI: 10.1002/14651858.CD014682.pub2  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis en red Cochrane (176 ensayos); texto completo en PMC, leídos por un agente el resumen de hallazgos, los resultados primarios, la discusión y las implicaciones; no los resultados secundarios ni los anexos (2026-10). Guía de fármacos, familia antidepresivos (huecos, 2026-10).
+
+Citada como:
+
+1. Birkinshaw 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Birrell 2001
 
@@ -2297,6 +2907,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Ligamento colateral cubital del codo, sin cirugía» (Ligamento) | cabecera · tiempos de tejido | 2 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Black 2020
+
+Autores: Black, Geiger, Eastell, Vittinghoff, Li, Ryan et al.  
+Título: *Atypical femur fracture risk versus fragility fracture prevention with bisphosphonates*  
+Publicación: N Engl J Med 383(8):743–753  
+DOI: 10.1056/NEJMoa1916525  
+Última revisión: **sin revisar**  
+Nota: Manuscrito del autor en PMC, leído entero sin las tablas ni el apéndice suplementario (2026-10). Cohorte: riesgo de fractura atípica según los años de bifosfonato, la raza y tras dejarlo. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Black 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Blaess 2024
 
@@ -2464,6 +3091,23 @@ Citada como:
 | Cervical | — | Paso `ce_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 25 |
 | Cervical | — | Paso `ce_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 26 |
 
+### Ble 2017
+
+Autores: Ble, Hughes, Delgado, Masoli, Bowman, Zirk-Sadowski y cols.  
+Título: *Safety and effectiveness of statins for prevention of recurrent myocardial infarction in 12 156 typical older patients: a quasi-experimental study*  
+Publicación: J Gerontol A Biol Sci Med Sci 72(2):243–250  
+DOI: 10.1093/gerona/glw082  
+Última revisión: **sin revisar**  
+Nota: Cohorte emparejada (CPRD, Reino Unido, mayores de 60 años tras un infarto); PDF del usuario, leído entero (2026-10). Caídas con ingreso en los 2 primeros años subHR 1,36; 60–79 años 1,13 (no significativo), 80 o más 1,82. Sustituye a Densham 2024, de pago. Guía de fármacos, familia estatinas (2026-10): caídas.
+
+Citada como:
+
+1. Ble 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
 ### Blonna 2010
 
 Autores: Blonna, Cecchetti, Tellini, Bonasia, Rossi, Southgate y Castoldi  
@@ -2539,6 +3183,40 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Artrodesis lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
+
+### Borsati 2025
+
+Autores: Borsati, Adamoli, Giannarelli, Belluomini, Trevisan, Schenal y cols.  
+Título: *Effect of exercise on bone-related outcomes in patients with cancer affected by bone metastases or bone loss: a systematic review and meta-analysis*  
+Publicación: Osteoporos Int 36(12):2381–2399  
+DOI: 10.1007/s00198-025-07645-4  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 18 ensayos; texto completo en PMC, leído por un agente (2026-10). Sin efecto agrupado en la densidad ósea; certeza baja o muy baja. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): hueso con inhibidores de la aromatasa.
+
+Citada como:
+
+1. Borsati 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Boudreault 2025
+
+Autores: Boudreault, McLean y Henderson  
+Título: *Exploring the relationship between medications and heat-related community deaths during the 2021 heat dome: a hybrid approach using machine learning*  
+Publicación: EBioMedicine 117:105788  
+DOI: 10.1016/j.ebiom.2025.105788  
+Última revisión: **sin revisar**  
+Nota: Casos y controles (504 muertes); texto completo en PMC, leído entero por un agente (2026-10). Antagonistas del calcio OR 0,69; diuréticos solo en mayores de 76. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): calor, contradicción con Harley 2026.
+
+Citada como:
+
+1. Boudreault 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
 ### Boufadel 2025
 
@@ -2737,6 +3415,23 @@ Citada como:
 | Tobillo y pie | — | `sistemas.4.mastocitos.textos.desencadenantes` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.4.mastocitos.textos.tecnica4b` | 2 · mención en el texto | 2 |
 
+### Brod 2013
+
+Autores: Brod, Pohlman, Wolden y Christensen  
+Título: *Non-severe nocturnal hypoglycemic events: experience and impacts on patient functioning and well-being*  
+Publicación: Qual Life Res 22(5):997–1004  
+DOI: 10.1007/s11136-012-0234-3  
+Última revisión: **sin revisar**  
+Nota: Estudio cualitativo (78 adultos, 69 % tipo 2); texto completo en PMC, leído entero por un agente (2026-10). Anterior a 2015, admitido por ser la única fuente leída en adultos. Sudor como síntoma más común; al día siguiente, «como una resaca». Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): hipoglucemia nocturna.
+
+Citada como:
+
+1. Brod 2013
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Broncel 2015
 
 Autores: Broncel, Gorzelak-Pabiś, Sahebkar, Serejko, Ursoniu, Rysz, Serban, Możdżan y Banach  
@@ -2878,6 +3573,23 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | — | Paso `ca_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
 
+### Brown 2023
+
+Autores: Brown, Wing, Leyrat, Evans, Mansfield, Wong, Smeeth, Galwey y Douglas  
+Título: *Association between fluoroquinolone use and hospitalization with aortic aneurysm or aortic dissection*  
+Publicación: JAMA Cardiol 8(9):865–870  
+DOI: 10.1001/jamacardio.2023.2418  
+Última revisión: **sin revisar**  
+Nota: Cohortes y casos cruzados (CPRD, Reino Unido); texto completo en PMC, leído entero por un agente (2026-10). HR ajustado 1,03; atribuye la asociación a la confusión por la indicación. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): aorta.
+
+Citada como:
+
+1. Brown 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
+
 ### Bruessel 2026
 
 Autores: Bruessel, Govender y Frahm-Jensen  
@@ -2917,6 +3629,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
+### Buck 2023
+
+Autores: Buck, McAllister y Schroeder  
+Título: *Exercise-Associated Hyponatremia*  
+Publicación: StatPearls [Internet], NBK572128 (act. 2023-06-12)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): hiponatremia por esfuerzo; no menciona los diuréticos.
+
+Citada como:
+
+1. Buck 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
 ### Budha 2025
 
@@ -3005,6 +3734,23 @@ Citada como:
 | Rodilla | — | `sistemas.6.embarazo.textos.pelvicaPosparto` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.6.embarazo.textos.pelvicaPosparto` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.pelvicaPosparto` | 2 · mención en el texto | 1 |
+
+### Bus 2024
+
+Autores: Bus, Sacco, Monteiro-Soares, Raspovic, Paton, Rasmussen, Lavery y van Netten  
+Título: *Guidelines on the prevention of foot ulcers in persons with diabetes (IWGDF 2023 update)*  
+Publicación: Diabetes Metab Res Rev 40(3):e3651  
+DOI: 10.1002/dmrr.3651  
+Última revisión: **sin revisar**  
+Nota: Guía del IWGDF. No está en PMC; PDF aportado por el usuario y leído entero (2026-10), sin el material suplementario. Remite a una recomendación 16 que no existe. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Bus 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Butler 1980
 
@@ -3216,6 +3962,23 @@ Citada como:
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» | 4b · cita bajo el test | 1 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» | 4b · cita bajo el test | 2 |
 
+### Can y Correa 2023
+
+Autores: Can y Correa  
+Título: *Pioglitazone*  
+Publicación: StatPearls [Internet], NBK544287 (act. 2023-07-04)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Can y Correa 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Capiau 2023
 
 Autores: Capiau, Huys, van Poelgeest, van der Velde, Petrovic y Somers  
@@ -3402,6 +4165,23 @@ Citada como:
 | Todas (sistemas comunes) | — | Bandera roja «Signos de depleción de potasio por diuréticos: arritmias, calambres» · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 | fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 2 |
 
+### Caulfield 2021
+
+Autores: Caulfield, Heslop, Walesby, Sumukadas, Sayer y Witham  
+Título: *Effect of angiotensin system inhibitors on physical performance in older people: a systematic review and meta-analysis*  
+Publicación: J Am Med Dir Assoc 22(6):1215–1221.e2  
+DOI: 10.1016/j.jamda.2020.07.012  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 8 ensayos (n = 952); texto completo en PMC, leído entero por un agente (2026-10). Sin efecto en fuerza (SMD −0,02), resistencia ni SPPB. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): fuerza.
+
+Citada como:
+
+1. Caulfield 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
 ### Champaneria 2016
 
 Autores: Champaneria, Shah, Moss, Gupta, Birch, Middleton y Daniels  
@@ -3420,6 +4200,23 @@ Citada como:
 |---|---|---|---|---|
 | condiciones | — | Fila «Síndrome de congestión pélvica» | guía de condiciones especiales | 2 |
 | Cadera | — | Pregunta `ca_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
+
+### Chang 2026
+
+Autores: Chang, Tsang, Chen, Huang y Liu  
+Título: *Role of beta-blockers in fracture healing and nonunion risk in tibial and femoral fractures: a retrospective cohort study using real-world data*  
+Publicación: Sci Prog 109(2):368504261457484  
+DOI: 10.1177/00368504261457484  
+Última revisión: **sin revisar**  
+Nota: Cohorte emparejada (TriNetX); texto completo en PMC, leído entero por un agente (2026-10). Pseudoartrosis de tibia HR 1,505; fémur sin asociación. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): hueso, contradicción con Lary 2020.
+
+Citada como:
+
+1. Chang 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Chauhan 2023
 
@@ -3555,6 +4352,23 @@ Lluch 2020 (p. 243) advierte que el dolor a la palpación es común a todas las 
 | Tobillo y pie | — | Paso `tp_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 | Tobillo y pie | — | Paso `tp_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 
+### Chou 2017
+
+Autores: Chou, Deyo, Friedly, Skelly, Weimer, Fu et al.  
+Título: *Systemic Pharmacologic Therapies for Low Back Pain: A Systematic Review for an American College of Physicians Clinical Practice Guideline*  
+Publicación: Ann Intern Med 166(7):480–492  
+DOI: 10.7326/M16-2458  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática para la guía del ACP; PDF del usuario, leído entero por un agente (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): relajantes y benzodiacepinas en la lumbalgia y la radiculopatía.
+
+Citada como:
+
+1. Chou 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Christopher 2024
 
 Autores: Christopher, Donnelly, Brockwell et al.  
@@ -3664,6 +4478,57 @@ Citada como:
 | Codo | — | `sistemas.6.embarazo.textos.terapiaManual` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.terapiaManual` | 2 · mención en el texto | 1 |
 
+### Colberg 2016
+
+Autores: Colberg, Sigal, Yardley, Riddell, Dunstan, Dempsey, Horton, Castorino y Tate  
+Título: *Physical Activity/Exercise and Diabetes: A Position Statement of the American Diabetes Association*  
+Publicación: Diabetes Care 39(11):2065–2079  
+DOI: 10.2337/dc16-1728  
+Última revisión: **sin revisar**  
+Nota: Posicionamiento de la ADA. En PMC (PMC6908414) el cuerpo no se descarga; PDF aportado por el usuario y leído entero (2026-10). Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Colberg 2016
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Collins y Bergman 2026
+
+Autores: Collins y Bergman  
+Título: *Charcot Neuropathic Osteoarthropathy*  
+Publicación: StatPearls [Internet], NBK470164 (act. 2026-01-31)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): presentación del pie de Charcot e inmovilización inmediata.
+
+Citada como:
+
+1. Collins y Bergman 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Collins y Costello 2024
+
+Autores: Collins y Costello  
+Título: *Glucagon-Like Peptide-1 Receptor Agonists*  
+Publicación: StatPearls [Internet], NBK551568 (act. 2024-02-29)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Collins y Costello 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Colombo 2021
 
 Autores: Colombo, Bonzi, Fiorelli, Jachetti, Bozzano, Casazza, Solbiati y Costantino  
@@ -3697,6 +4562,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
+
+### Confederat 2026
+
+Autores: Confederat, Pînzariu, Serban, Condurache y Dragostin  
+Título: *SGLT2 Inhibitors Between Benefits and Euglycemic Ketoacidosis: A Concise Review*  
+Publicación: Int J Mol Sci 27(12):5224  
+DOI: 10.3390/ijms27125224  
+Última revisión: **sin revisar**  
+Nota: Revisión. Texto completo en PMC con el conector de PubMed (2026-10): efectos adversos, cetoacidosis euglucémica, tabla 1 y conclusiones enteros; los beneficios, por encima; sin figuras. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Confederat 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Consenso de Zúrich IHiPRN
 
@@ -3861,6 +4743,40 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_espinal` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 
+### Corcoran y Jacobs 2023
+
+Autores: Corcoran y Jacobs  
+Título: *Metformin*  
+Publicación: StatPearls [Internet], NBK518983 (act. 2023-08-17)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. La semivida no coincide entre dos secciones (20 frente a 6,2 horas): no se cita. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Corcoran y Jacobs 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Costello 2023
+
+Autores: Costello, Nicolas y Shivkumar  
+Título: *Sulfonylureas*  
+Publicación: StatPearls [Internet], NBK513225 (act. 2023-07-12)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Da la regla «15-15» con ese nombre. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Costello 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Couch 2025
 
 Autores: Couch, King, De Oliveira Silva, Whittaker, Bruder, Serighelli, Kaplan y Culvenor  
@@ -3913,6 +4829,23 @@ Nota: Metaanálisis con datos individuales de ensayos ciegos: exceso de dolor o 
 Citada como:
 
 1. CTT 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
+### CTT 2026
+
+Autores: Cholesterol Treatment Trialists' (CTT) Collaboration  
+Título: *Assessment of adverse effects attributed to statin therapy in product labels: a meta-analysis of double-blind randomised controlled trials*  
+Publicación: Lancet 407(10529):689–703  
+DOI: 10.1016/S0140-6736(25)01578-8  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis con datos individuales de ensayos ciegos; texto completo en PMC, leído entero por un agente (2026-10), sin las figuras. Distinto de CTT 2022. Guía de fármacos, familia estatinas (huecos, 2026-10): efectos de los prospectos, neuropatía periférica.
+
+Citada como:
+
+1. CTT 2026
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
@@ -4438,6 +5371,40 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 2 |
 
+### Desai 2013
+
+Autores: Desai, Mao, Su, Demichele, Li, Xie y Gehrman  
+Título: *Prevalence and risk factors for insomnia among breast cancer patients on aromatase inhibitors*  
+Publicación: Support Care Cancer 21(1):43–51  
+DOI: 10.1007/s00520-012-1490-z  
+Última revisión: **sin revisar**  
+Nota: Transversal (n = 413); texto completo en PMC, leído por un agente (2026-10). Anterior a 2015, admitido por ser la única fuente leída con la frecuencia. Insomnio clínicamente importante 18,6 %. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): sueño.
+
+Citada como:
+
+1. Desai 2013
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Desbiens 2022
+
+Autores: Desbiens, Khelifi, Wang, Lavigne, Beaulieu, Sidibé y Mac-Way  
+Título: *Thiazide diuretics and fracture risk: a systematic review and meta-analysis of randomized clinical trials*  
+Publicación: JBMR Plus 6(11):e10683  
+DOI: 10.1002/jbm4.10683  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 32 ensayos (n = 68 273); texto completo en PMC, leído entero por un agente (2026-10). Cualquier fractura RR 0,87; cadera RR 0,84, no significativo. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): hueso, contradicción con Paik 2016.
+
+Citada como:
+
+1. Desbiens 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
 ### Desmeules 2025
 
 Autores: Desmeules, Roy, Lafrance, Charron, Dubé, Dupuis, Beneciuk, Grimes, Kim, Lamontagne, McCreesh, Shanley, Vukobrat y Michener  
@@ -4500,6 +5467,23 @@ Técnica en Zwerus 2022 (tabla 1): sentado, con el codo a 90°, el explorador fi
 | Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Codo | co7 · Rotura Distal del Bíceps | Test «Pronación pasiva del antebrazo (PFP) / test de pronosupinación pasiva» | 4b · cita bajo el test | 4 |
 
+### Devi 2026
+
+Autores: Devi, Khanwelkar y Shete  
+Título: *Thiocolchicoside: A Focused Review of Its Pharmacological, Therapeutic, and Toxicological Profile*  
+Publicación: Cureus 18(5):e109774  
+DOI: 10.7759/cureus.109774  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa de calidad baja, con contradicciones sobre el mecanismo; texto completo en PMC, leído entero por un agente (2026-10). Se cita solo para los efectos adversos y las contraindicaciones. Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10).
+
+Citada como:
+
+1. Devi 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Devillé 2000
 
 Publicación: Spine 25(9):1140–1147  
@@ -4515,6 +5499,40 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «Test de Elevación de Pierna Recta (SLR) ipsilateral» | 4b · cita bajo el test | 1 |
 | Lumbar | lu3 · Dolor Radicular Lumbar | Test «SLR Contralateral (Lasègue cruzado)» | 4b · cita bajo el test | 2 |
+
+### Dhesi 2024
+
+Autores: Dhesi, Maldonado, Patel y Maani  
+Título: *Tramadol*  
+Publicación: StatPearls [Internet], NBK537060 (act. 2024-02-20)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero por un agente (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia opioides (huecos, 2026-10): efectos frecuentes al empezar, hipotensión y síncope, riesgo respiratorio en las 24–72 h tras empezar o subir la dosis, apnea central según la dosis, naloxona de vida más corta que el tramadol. No trata la hiponatremia ni la hipoglucemia.
+
+Citada como:
+
+1. Dhesi 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Opioides» | guía de fármacos | 1 |
+
+### Diabetes Prevention Program 2012
+
+Autores: Diabetes Prevention Program Research Group  
+Título: *Long-term safety, tolerability, and weight loss associated with metformin in the Diabetes Prevention Program Outcomes Study*  
+Publicación: Diabetes Care 35(4):731–737  
+DOI: 10.2337/dc11-1299  
+Última revisión: **sin revisar**  
+Nota: Ensayo y seguimiento abierto; texto completo en PMC, leído entero por un agente (2026-10). Anterior a 2015, admitido por ser la única fuente leída sobre la evolución. Síntomas digestivos 28 % frente a 16 %, iguales desde el año 6; un 4 % no pudo seguir. La clave usa el nombre del grupo autor. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): metformina.
+
+Citada como:
+
+1. Diabetes Prevention Program 2012
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Dididze 2023
 
@@ -4811,6 +5829,40 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
+### Edwards 2024
+
+Autores: Edwards, Coleman, Ritti-Dias, Farah, Stensel, Lucas y Millar  
+Título: *Isometric exercise training and arterial hypertension: an updated review*  
+Publicación: Sports Med 54(6):1459–1497  
+DOI: 10.1007/s40279-024-02036-x  
+Última revisión: **sin revisar**  
+Nota: Revisión de expertos; texto completo en PMC, leído entero por un agente (2026-10). Sentadilla en la pared al 95 % de la frecuencia máxima; evitar Valsalva; límites de la sentadilla. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): isométrica, contradicción con Baffour-Awuah 2023.
+
+Citada como:
+
+1. Edwards 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
+### EMA 2014
+
+Autores: European Medicines Agency  
+Título: *European Medicines Agency recommends restricting use of thiocolchicoside by mouth or injection*  
+Publicación: EMA/40615/2014, 17-1-2014 (procedimiento del artículo 31)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Nota pública de la EMA; PDF del usuario, leído entero en la sesión (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): restricción, dosis y duración máximas del tiocolchicósido por boca o inyectado.
+
+Citada como:
+
+1. EMA 2014
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### EMA 2018
 
 Autores: European Medicines Agency  
@@ -4859,6 +5911,23 @@ Citada como:
 | Tobillo y pie | — | `sistemas.1.hipermovilidad.textos.ejercicio` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.1.hipermovilidad.textos.sistemicos` | 2 · mención en el texto | 2 |
 
+### Engert 2024
+
+Autores: Engert, Ledderose, Biniamin, Birriel, Buraks, Chatterton, Dang, Daniel, Eske, Reed, Tang, Bertisch, Mullington, Junger y Haack  
+Título: *Effects of low-dose acetylsalicylic acid on the inflammatory response to experimental sleep restriction in healthy humans*  
+Publicación: Brain Behav Immun 121:142–154  
+DOI: 10.1016/j.bbi.2024.07.023  
+Última revisión: **sin revisar**  
+Nota: Ensayo aleatorizado, doble ciego y cruzado (46 adultos sanos, aspirina 81 mg/día); texto completo en PMC, leído por un agente (2026-10): introducción, métodos, resultados del sueño y discusión enteros; resultados inmunológicos en parte. Guía de fármacos, familia AINE: sueño. Los estudios con aspirina a dosis alta solo se conocen a través de su discusión.
+
+Citada como:
+
+1. Engert 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 1 |
+
 ### Englund 2003
 
 Autores: Englund, Roos y Lohmander  
@@ -4875,6 +5944,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro2 · Lesión Meniscal | Pronóstico | 5 · cita del pronóstico | 1 |
+
+### Enke 2018
+
+Autores: Enke, New, New, Mathieson, McLachlan, Latimer, Maher y Lin  
+Título: *Anticonvulsants in the treatment of low back pain and lumbar radicular pain: a systematic review and meta-analysis*  
+Publicación: CMAJ 190(26):E786–E793  
+DOI: 10.1503/cmaj.171333  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis (9 ensayos, 859 participantes, GRADE); PDF del usuario, leído entero por un agente (2026-10). Guía de fármacos, familia gabapentinoides (huecos, 2026-10): sin efecto en la lumbalgia crónica ni en el dolor radicular, más efectos adversos (RR 1,4).
+
+Citada como:
+
+1. Enke 2018
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
 
 ### Enseki 2023
 
@@ -4927,6 +6013,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
+### Evans 2014
+
+Autores: Evans, Khoo, Radulescu, Cook, Gerlach, Papadimos y cols.  
+Título: *Pre-injury beta blocker use does not affect the hyperdynamic response in older trauma patients*  
+Publicación: J Emerg Trauma Shock 7(4):305–309  
+DOI: 10.4103/0974-2700.142766  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva (n = 645, mayores de 45 años); texto completo en PMC, leído entero por un agente (2026-10). Anterior a 2015, admitida por ser la única fuente leída sobre el sangrado. La frecuencia al ingreso no cambia; más mortalidad con betabloqueante solo. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): enmascaramiento.
+
+Citada como:
+
+1. Evans 2014
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Evans 2018
 
@@ -5186,6 +6289,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
+### Ferreira 2023
+
+Autores: Ferreira, Abdel-Shaheed, Underwood, Finnerup, Day, McLachlan et al.  
+Título: *Efficacy, safety, and tolerability of antidepressants for pain in adults: overview of systematic reviews*  
+Publicación: BMJ 380:e072415  
+DOI: 10.1136/bmj-2022-072415  
+Última revisión: **sin revisar**  
+Nota: Revisión de revisiones (26 revisiones, 156 ensayos); texto principal completo en PMC, leído entero por un agente, sin los suplementos (2026-10). Guía de fármacos, familia antidepresivos (huecos, 2026-10).
+
+Citada como:
+
+1. Ferreira 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Filippatos 2017
 
 Autores: Filippatos, Makri, Elisaf y Liamis  
@@ -5273,6 +6393,23 @@ Citada como:
 | Lumbar | lu1 · Disfunción Segmentaria Lumbosacra (Déficit de Movilidad) | Test «Evaluación de hipomovilidad segmentaria lumbar (PAIVM, movimientos intervertebrales accesorios pasivos)» | 4b · cita bajo el test | 2 |
 | Lumbar | — | Paso `lu_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 3 |
 
+### Fong y Patel 2026
+
+Autores: Fong y Patel  
+Título: *Aromatase Inhibitors*  
+Publicación: StatPearls [Internet], NBK557856 (act. 2026-07-05)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Es el único capítulo de StatPearls de los tres fármacos. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Fong y Patel 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Forsythe 2025
 
 Autores: Forsythe, Hand, Bohn, Hand, Chang, Khazi-Syed, Borque y McCullough  
@@ -5289,6 +6426,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Aductores (lesión aguda, futbolistas)» (Músculo) | cabecera · tiempos de tejido | 1 |
+
+### Forton 2022
+
+Autores: Forton, Lamotte, Gillet, Chaumont, van de Borne y Faoro  
+Título: *Beta-adrenergic receptor blockade effects on cardio-pulmonary exercise testing in healthy young adults: a randomized, placebo-controlled trial*  
+Publicación: Sports Med Open 8(1):150  
+DOI: 10.1186/s40798-022-00537-5  
+Última revisión: **sin revisar**  
+Nota: Ensayo cruzado (21 hombres sanos, dosis única de bisoprolol); texto completo en PMC, leído entero por un agente (2026-10). Efecto máximo a las 3 horas. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): cuándo hacer el ejercicio.
+
+Citada como:
+
+1. Forton 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Frade 2023
 
@@ -5411,6 +6565,23 @@ Citada como:
 |---|---|---|---|---|
 | Fase 6 (plan de tratamiento) | — | `AVISOS.disautonomia` | 6 · plan de tratamiento | 1 |
 
+### Fujiwara 2025
+
+Autores: Fujiwara, Ohno, Matsumura, Oura, Nakahori y Nishii  
+Título: *Pitfalls in the missed diagnosis of atypical femoral fracture presenting as prodromal pain that mimics degenerative disease: a multicenter study*  
+Publicación: J Bone Metab 32(3):180–189  
+DOI: 10.11005/jbm.25.843  
+Última revisión: **sin revisar**  
+Nota: Estudio retrospectivo multicéntrico; texto completo en PMC, leído por un agente (2026-10). El 21 % se diagnosticó como enfermedad degenerativa; dolor previo no siempre sobre la fractura; dolor a la presión local en las incompletas. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): fractura atípica.
+
+Citada como:
+
+1. Fujiwara 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Gak 2024
 
 Autores: Gak, Abbara, Dhillo, Keen y Comninos  
@@ -5485,6 +6656,23 @@ Prueba de pinzamiento de Ganz 2003: supino, la cadera se lleva pasivamente a uno
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» (en `razonamiento.detalle`) | 4b · mención en el texto | 5 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «FADDIR (valor agrupado)» («¿Por qué?») | 4b · razonamiento del test | 3 |
 
+### García-Sánchez 2022
+
+Autores: García-Sánchez, Mafla-España, Torregrosa y Cauli  
+Título: *Adjuvant aromatase inhibitor treatment worsens depressive symptoms and sleep quality in postmenopausal women with localized breast cancer: a one-year follow-up study*  
+Publicación: Breast 66:310–316  
+DOI: 10.1016/j.breast.2022.11.007  
+Última revisión: **sin revisar**  
+Nota: Cohorte (n = 56); texto completo en PMC, leído por un agente (2026-10). Insomnio 17,9 %, 32,1 % y 37,5 % a 0, 6 y 12 meses. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): sueño, contradicción con Pedersini 2022.
+
+Citada como:
+
+1. García-Sánchez 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Garrison 2023
 
 Autores: Garrison, Kelmer, Korownyk et al.  
@@ -5501,6 +6689,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
+### Gehrke 2023
+
+Autores: Gehrke, Coelho, d'Alva y Madeira  
+Título: *Long-term consequences of osteoporosis therapy with bisphosphonates*  
+Publicación: Arch Endocrinol Metab 68:e220334  
+DOI: 10.20945/2359-4292-2022-0334  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Reacción de fase aguda, dolor musculoesquelético intenso, imagen urgente ante el dolor de muslo. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Gehrke 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Geneen 2017
 
@@ -5859,6 +7064,23 @@ Citada como:
 | Codo | — | `sistemas.6.embarazo.textos.diastasisPp` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.diastasisPp` | 2 · mención en el texto | 1 |
 
+### Gobillot-Morisson 2024
+
+Autores: Gobillot-Morisson, Genet, Frère, Cohen-Bittan, Raux, Rollet y cols.  
+Título: *Association between selective serotonin reuptake inhibitors use and blood transfusion risk in older adults after hip fracture: a cohort study*  
+Publicación: BMC Geriatr 24(1):1048  
+DOI: 10.1186/s12877-024-05634-6  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva de un centro (n = 1085, mayores de 70 años operados de fractura de cadera, 20 % con ISRS); PDF del usuario, leído entero (2026-10). ISRS y transfusión: OR ajustada 0,91 (0,64–1,29). Su análisis con anticoagulantes o antiagregantes es una interacción y no se cita. Guía de fármacos, familia antidepresivos: contradicción con Schadler 2017.
+
+Citada como:
+
+1. Gobillot-Morisson 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Goebel 2018
 
 Autores: Goebel, Barker, Turner-Stokes et al. (Guideline Development Panel)  
@@ -5932,7 +7154,7 @@ Título: *Differential Diagnosis for Physical Therapists: Screening for Referral
 Publicación: Elsevier, 6.ª edición  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50).  
-Nota: El cribado de fase 2 lo cita sin año («Criterio de Goodman (cap. 14)»).
+Nota: El cribado de fase 2 lo cita sin año («Criterio de Goodman (cap. 14)»). Cap. 8 (pp. 302–336, PDF del usuario) leído entero (2026-10) para la guía de fármacos, familia AINE: úlcera por AINE en la pared posterior y dolor de espalda u hombro (pp. 311, 315–317), dolor que cambia con la comida (p. 307), factores de riesgo y antiácidos (recuadro 8.3, p. 317), reacciones retardadas (p. 302).
 
 Citada como:
 
@@ -6132,6 +7354,7 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreFracturaEstres` | 6 · plan de tratamiento | 159 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccionCadera` | 6 · plan de tratamiento | 159 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_SESION.cierreInfeccionTobillo` | 6 · plan de tratamiento | 159 |
+| fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 159 |
 | Hombro | — | `sistemas.3.lupus.textos.naturaleza` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 2 |
 | Hombro | — | Pregunta `h3` · Cáncer / Oncológico | 2 · razonamiento del cribado | 9 |
@@ -6354,6 +7577,40 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Prótesis de disco lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
 
+### Goyal 2025
+
+Autores: Goyal, Singh y Afzal  
+Título: *Peripheral Edema*  
+Publicación: StatPearls [Internet], NBK554452 (act. 2025-04-05)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): cómo distinguir el edema por fármacos de una trombosis.
+
+Citada como:
+
+1. Goyal 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
+### Gradel 2018
+
+Autores: Gradel, Porsgaard, Lykkesfeldt, Seested, Gram-Nielsen, Kristensen y Refsgaard  
+Título: *Factors affecting the absorption of subcutaneously administered insulin: effect on variability*  
+Publicación: J Diabetes Res 2018:1205121  
+DOI: 10.1155/2018/1205121  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa; texto completo en PMC, leído entero por un agente (2026-10). Calentar a 40 °C redujo un 42 % el tiempo al máximo de la insulina aspart. Contiene consejos de dosis que no se citan. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): lugar de inyección.
+
+Citada como:
+
+1. Gradel 2018
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Gragossian 2023
 
 Autores: Gragossian, Bashir, Bhutta y Friede  
@@ -6387,6 +7644,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | — | Pregunta `h_gi2` · GI / Hepático | 2 · razonamiento del cribado | 1 |
+
+### Greear 2024
+
+Autores: Greear, Patel y Bankole  
+Título: *Zoledronate*  
+Publicación: StatPearls [Internet], NBK585053 (act. 2024-02-21)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Greear 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Green 2020
 
@@ -6434,7 +7708,7 @@ Título: *The 2024 UK clinical guideline for the prevention and treatment of ost
 Publicación: Arch Osteoporos 20(1):119  
 DOI: 10.1007/s11657-025-01588-3  
 Última revisión: **sin revisar**  
-Nota: Texto completo en PMC, leído entero sin las figuras (2026-10). Fractura por fragilidad, fractura vertebral ante el dolor de espalda agudo, cuándo buscarla, corticoides y protección ósea, ejercicio, caídas, fractura atípica de fémur, el LES entre los factores (tabla 3). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+Nota: Texto completo en PMC, leído entero sin las figuras (2026-10). Fractura por fragilidad, fractura vertebral ante el dolor de espalda agudo, cuándo buscarla, corticoides y protección ósea, ejercicio, caídas, fractura atípica de fémur, el LES entre los factores (tabla 3). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md). Releído (2026-10) para la guía de fármacos, familia «Fármacos que tocan el hueso»: bifosfonatos, denosumab, fractura atípica, osteonecrosis, inhibidores de la aromatasa.
 
 Citada como:
 
@@ -6461,6 +7735,7 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `op_d_talla` · Osteoporosis | 2 · razonamiento del cribado | 13 |
 | Todas (sistemas comunes) | — | Pregunta `op_d_femur` · Osteoporosis | 2 · razonamiento del cribado | 14 |
 | condiciones | — | Fila «Osteoporosis o fragilidad ósea» | guía de condiciones especiales | 15 |
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 15 |
 | Hombro | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.5.osteoporosis.textos.nota` | 2 · mención en el texto | 2 |
 | Hombro | — | `sistemas.5.osteoporosis.textos.sospechaDerivar` | 2 · mención en el texto | 3 |
@@ -6717,6 +7992,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
 
+### Guan 2026
+
+Autores: Guan, Huang, Guo, Huang, Lv, Yang et al.  
+Título: *Risk factors for skin tears in the older adults: a systematic review and meta-analysis*  
+Publicación: Front Public Health 14:1880249  
+DOI: 10.3389/fpubh.2026.1880249  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia corticoides (huecos, 2026-10): desgarros de la piel por adhesivos y manipulación en mayores; los corticoides solo los midió un estudio.
+
+Citada como:
+
+1. Guan 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
+
 ### Gülen 2023
 
 Autores: Gülen  
@@ -6740,6 +8032,23 @@ Citada como:
 | Codo | — | `sistemas.4.mastocitos.textos.mastocitosis` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.4.mastocitos.textos.mastocitosis` | 2 · mención en el texto | 1 |
 
+### Guo 2024
+
+Autores: Guo, Guo, Li y Wang  
+Título: *Association between different GLP-1 receptor agonists and acute pancreatitis: case series and real-world pharmacovigilance analysis*  
+Publicación: Front Pharmacol 15:1461398  
+DOI: 10.3389/fphar.2024.1461398  
+Última revisión: **sin revisar**  
+Nota: Serie de 39 casos y FAERS; texto completo en PMC, leído entero por un agente (2026-10). Mediana de aparición 2,5 meses; dolor epigástrico con náuseas y vómitos. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): pancreatitis.
+
+Citada como:
+
+1. Guo 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Guthmiller 2025
 
 Autores: Guthmiller, Dua, Dey y Varacallo  
@@ -6758,6 +8067,23 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `pq_sdrc` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `pq_nervio` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_n3` · Neurológico | 2 · razonamiento del cribado | 1 |
+
+### Hadji 2025
+
+Autores: Hadji, Aapro, Al-Dagri et al.  
+Título: *Management of aromatase inhibitor-associated bone loss (AIBL) in women with hormone-sensitive breast cancer: an updated joint position statement of the IOF, CABS, ECTS, IEG, ESCEO, IMS, and SIOG*  
+Publicación: J Bone Oncol 53:100694  
+DOI: 10.1016/j.jbo.2025.100694  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero con las tablas 1–3; la figura 2 (algoritmo) es imagen y no se leyó (2026-10). Pérdida ósea y fracturas con inhibidores de la aromatasa; ejercicio para todas. No es «Hadji 2026» (osteoporosis del embarazo). Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Hadji 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Hadji 2026
 
@@ -7038,6 +8364,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `em_u_corazon` · Embarazo y posparto | 2 · razonamiento del cribado | 1 |
 
+### Han 2022
+
+Autores: Han, Choi, Kim, Kim, Park, Hong y cols.  
+Título: *Is age-predicted maximal heart rate applicable in patients with heart or lung disease?*  
+Publicación: Ann Rehabil Med 46(3):133–141  
+DOI: 10.5535/arm.21181  
+Última revisión: **sin revisar**  
+Nota: Estudio retrospectivo de pruebas de esfuerzo (n = 827, 396 con betabloqueantes; un centro, Corea); texto completo en PMC, leído entero por un agente (2026-10). Frecuencia máxima 138 frente a 154; 183 − 0,76 × edad. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): frecuencia máxima.
+
+Citada como:
+
+1. Han 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
 ### Han 2023
 
 Publicación: eClinicalMedicine 59:101960  
@@ -7142,6 +8485,23 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | — | Pregunta `ca_u6` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
+### Hansen 2015
+
+Autores: Hansen, Boudreau, Ebel, Grossman y Sullivan  
+Título: *Sedative Hypnotic Medication Use and the Risk of Motor Vehicle Crash*  
+Publicación: Am J Public Health 105(8):e64–e69  
+DOI: 10.2105/AJPH.2015.302723  
+Última revisión: **sin revisar**  
+Nota: Cohorte de nuevos usuarios (409 171 personas); PDF del usuario, leído entero por un agente (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): accidentes de tráfico.
+
+Citada como:
+
+1. Hansen 2015
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Hansen 2022
 
 Autores: Hansen, Abreu, Ambrosetti, Cornelissen, Gevaert, Kemps, Laukkanen, Pedretti, Simonenko y Wilhelm  
@@ -7224,6 +8584,40 @@ Citada como:
 | Codo | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.ploRecurrencia` | 2 · mención en el texto | 2 |
+
+### Harley 2026
+
+Autores: Harley, Iwagami, Kawamura, Williamson, Rentsch, Mathur y Douglas  
+Título: *Antihypertensive medications and risk of heat-related illness during heatwaves: self-controlled case series*  
+Publicación: Pharmacoepidemiol Drug Saf 35(9):e70447  
+DOI: 10.1002/pds.70447  
+Última revisión: **sin revisar**  
+Nota: Serie de casos autocontrolada (Japón, n = 11 211 hipertensos); texto completo en PMC, leído entero por un agente (2026-10). IECA/ARA II IRR 1,77 frente a 1,50; antagonistas del calcio 1,40 frente a 1,22; diuréticos no de asa sin modificación (p = 0,38); excluye los de asa. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): calor.
+
+Citada como:
+
+1. Harley 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
+### Harrington 2023
+
+Autores: Harrington, Fonarow, Khan, Hernandez, Anker, Böhm y cols.  
+Título: *Medication-attributable adverse events in heart failure trials*  
+Publicación: JACC Heart Fail 11(4):425–436  
+DOI: 10.1016/j.jchf.2022.11.026  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 17 ensayos (4 de betabloqueantes); texto completo en PMC, leído entero por un agente (2026-10). El dolor, igual que con placebo. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): dolores musculares.
+
+Citada como:
+
+1. Harrington 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Haskins 2015
 
@@ -7554,6 +8948,40 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | — | Pregunta `ca_gi3` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 
+### Herrett 2021
+
+Autores: Herrett, Williamson, Brack, Beaumont, Perkins, Thayne et al.  
+Título: *Statin treatment and muscle symptoms: series of randomised, placebo controlled n-of-1 trials*  
+Publicación: BMJ 372:n135  
+DOI: 10.1136/bmj.n135  
+Última revisión: **sin revisar**  
+Nota: Ensayos n de 1 (StatinWISE, 200 pacientes); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia estatinas (huecos, 2026-10): síntomas musculares y calambres.
+
+Citada como:
+
+1. Herrett 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
+### Hershman 2022
+
+Autores: Hershman, Unger, Greenlee, Capodice, Lew, Darke y cols.  
+Título: *Comparison of acupuncture vs sham acupuncture or waiting list control in the treatment of aromatase inhibitor-related joint pain: a randomized clinical trial*  
+Publicación: JAMA Netw Open 5(11):e2241720  
+DOI: 10.1001/jamanetworkopen.2022.41720  
+Última revisión: **sin revisar**  
+Nota: Ensayo (SWOG S1200, n = 226); texto completo en PMC, leído por un agente (2026-10). Peor dolor a 52 semanas: −2,72 acupuntura, −1,46 simulada, −1,55 lista de espera. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): artralgias.
+
+Citada como:
+
+1. Hershman 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Hertel 1996
 
 Autores: Hertel, Ballmer, Lambert y Gerber  
@@ -7603,6 +9031,23 @@ En contra, Norris 2025 (Orthop J Sports Med 13(5):23259671251334775; estudio pro
 |---|---|---|---|---|
 | Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Lever Sign Test» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
+### Heyward 2020
+
+Autores: Heyward, Mansour, Olson, Singh y Alexander  
+Título: *Association between sodium-glucose cotransporter 2 (SGLT2) inhibitors and lower extremity amputation: a systematic review and meta-analysis*  
+Publicación: PLoS One 15(6):e0234065  
+DOI: 10.1371/journal.pone.0234065  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis; texto completo en PMC, leído entero por un agente (2026-10). Canagliflozina RR 1,59; las demás sin aumento significativo. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): amputaciones.
+
+Citada como:
+
+1. Heyward 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Hideyama 2023
 
 Autores: Hideyama, Watanabe, Ido et al.  
@@ -7621,6 +9066,40 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `ac_u_pared` · Anticoagulado o antiagregado | 2 · razonamiento del cribado | 1 |
 | fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 2 |
+
+### Hildebrand 2024
+
+Autores: Hildebrand, Patel y Kasi  
+Título: *Denosumab*  
+Publicación: StatPearls [Internet], NBK535388 (act. 2024-02-28)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Su lista de efectos adversos no separa las dosis de la osteoporosis de las del cáncer. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Hildebrand 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Hill 2017
+
+Autores: Hill, Lauzon, Winbrock, Li, Chihuri y Lee  
+Título: *Depression, antidepressants and driving safety*  
+Publicación: Inj Epidemiol 4(1):10  
+DOI: 10.1186/s40621-017-0107-x  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática con metaanálisis; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia antidepresivos (huecos, 2026-10): conducción.
+
+Citada como:
+
+1. Hill 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Hodge y Schroeder 2023
 
@@ -7646,15 +9125,17 @@ Título: *Corticosteroids*
 Publicación: StatPearls [Internet], NBK554612 (act. 2023-05-01)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario (2026-10), leído en la sesión. Fase M, razonamiento de las banderas de los sistemas compartidos: fiebre con corticoides.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario (2026-10), leído en la sesión. Fase M, razonamiento de las banderas de los sistemas compartidos: fiebre con corticoides. Releído entero (PDF del usuario, 2026-10) para la guía de fármacos, familia corticoides: piel y osteonecrosis tras infiltraciones.
 
 Citada como:
 
 1. Hodgens y Sharman 2023 — Hodgens y Sharman, «Corticosteroids», StatPearls [Internet], NCBI Bookshelf, última actualización 1 de mayo de 2023.
+2. Hodgens y Sharman 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Bandera roja «Nódulos palpables supraclaviculares o fiebre inexplicable en pacientes con corticosteroides» · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 2 |
 
 ### Hoenig 2023
 
@@ -7682,6 +9163,23 @@ Citada como:
 | Todas (tiempos de tejido) | — | Subtipo «Cuello femoral (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Subtipo «Navicular (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Subtipo «Tibia anterior (alto riesgo)» de «Fractura de estrés» (Hueso) | cabecera · tiempos de tejido | 1 |
+
+### Holgado 2022
+
+Autores: Holgado, Manresa-Rocamora, Zamboni, Lugoboni, Peiró y Zandonai  
+Título: *The effect of benzodiazepines on exercise in healthy adult participants: a systematic review*  
+Publicación: J Addict Dis 40(3):336–344  
+DOI: 10.1080/10550887.2021.1990640  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática (10 estudios en adultos sanos); PDF del usuario, leído entero por un agente (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): rendimiento físico.
+
+Citada como:
+
+1. Holgado 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
 
 ### Holla 2011
 
@@ -7797,6 +9295,24 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
+### Hospers 2024
+
+Autores: Hospers, Dillon, McLachlan, Alexander, Kenney, Capon et al.  
+Título: *The effect of prescription and over-the-counter medications on core temperature in adults during heat stress: a systematic review and meta-analysis*  
+Publicación: EClinicalMedicine 77:102886  
+DOI: 10.1016/j.eclinm.2024.102886  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis; texto completo en PMC, leídas por un agente solo las partes sobre antidepresivos (2026-10). Guía de fármacos, familia antidepresivos (huecos, 2026-10): temperatura central con calor. Releído (2026-10) para la guía de fármacos, familia betabloqueantes: temperatura central y sudor.
+
+Citada como:
+
+1. Hospers 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Hosseinzadeh 2024
 
@@ -7924,6 +9440,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
 
+### Humphrey 2023
+
+Autores: Humphrey, Russell, Danila, Fink, Guyatt, Cannon et al.  
+Título: *2022 American College of Rheumatology Guideline for the Prevention and Treatment of Glucocorticoid-Induced Osteoporosis*  
+Publicación: Arthritis Care Res 75(12):2405–2419  
+DOI: 10.1002/acr.25240  
+Última revisión: **sin revisar**  
+Nota: Guía del ACR (GRADE); publicada a la vez en Arthritis Rheumatol (DOI 10.1002/art.42646). PDF aportado por el usuario, leído entero por un agente (2026-10). Guía de fármacos, familia corticoides (huecos, 2026-10): ejercicio con carga o de fuerza, recomendación condicional y certeza baja; riesgo de fractura desde 2,5 mg/día.
+
+Citada como:
+
+1. Humphrey 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
+
 ### Hunter 2024
 
 Autores: Hunter, Goldin y Regunath  
@@ -7940,6 +9473,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cervical | — | Pregunta `cv_p1` · Pulmonar | 2 · razonamiento del cribado | 1 |
+
+### Huruba 2021
+
+Autores: Huruba, Farcas, Leucuta, Bucsa, Sipos y Mogosan  
+Título: *A VigiBase descriptive study of fluoroquinolone induced disabling and potentially permanent musculoskeletal and connective tissue disorders*  
+Publicación: Sci Rep 11(1):14375  
+DOI: 10.1038/s41598-021-93763-y  
+Última revisión: **sin revisar**  
+Nota: Estudio descriptivo de notificaciones a VigiBase (OMS); texto completo en PMC, leído entero por un agente (2026-10). Artralgia 16,34 % y mialgia 7,17 % de las notificaciones; aparición entre los días 1 y 7 en el 61,5 %; duración de más de 30 días en el 65 % de las que dan el dato. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): articulaciones y músculos.
+
+Citada como:
+
+1. Huruba 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
 
 ### Hutchison 2013
 
@@ -8000,6 +9550,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
+### Hwang 2023
+
+Autores: Hwang, Seo, Lim, Choi, Park y Nam  
+Título: *Bilateral atypical femoral fractures after bisphosphonate treatment for osteoporosis: a literature review*  
+Publicación: J Clin Med 12(3):1038  
+DOI: 10.3390/jcm12031038  
+Última revisión: **sin revisar**  
+Nota: Revisión de 43 casos; texto completo en PMC, leído por un agente (2026-10). Dolor previo de 2 semanas a años; en fracturas bilaterales simultáneas, a veces dolor de un solo lado. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): fractura atípica.
+
+Citada como:
+
+1. Hwang 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Hwang 2024
 
 Autores: Hwang, Chang, Brotman, Inker, Grams y Shin  
@@ -8016,6 +9583,40 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
+### Hyder 2021
+
+Autores: Hyder, Marino, Ahmad, Nasrazadani y Brufsky  
+Título: *Aromatase inhibitor-associated musculoskeletal syndrome: understanding mechanisms and management*  
+Publicación: Front Endocrinol 12:713700  
+DOI: 10.3389/fendo.2021.713700  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Dolor articular de los inhibidores de la aromatasa: frecuencia, inicio, criterios propuestos, abandono y recaídas. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Hyder 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Iacovides 2009
+
+Autores: Iacovides, Avidon, Bentley y Baker  
+Título: *Diclofenac potassium restores objective and subjective measures of sleep quality in women with primary dysmenorrhea*  
+Publicación: Sleep 32(8):1019–1026  
+DOI: 10.1093/sleep/32.8.1019  
+Última revisión: **sin revisar**  
+Nota: Ensayo aleatorizado, doble ciego y cruzado con polisomnografía (10 mujeres); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia AINE: sueño (mejora al aliviar el dolor).
+
+Citada como:
+
+1. Iacovides 2009
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 1 |
 
 ### IHS 2018
 
@@ -8036,6 +9637,40 @@ Citada como:
 | Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
 | Cervical | — | Paso `ce_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
+### Iqbal 2026
+
+Autores: Iqbal, Modi, Sehgal, Costa, Bhattacharya, Nero et al.  
+Título: *Clinical Presentations and Treatment of Baclofen Toxicity and Withdrawal: A Systematic Review*  
+Publicación: CNS Drugs 40(3):419–449  
+DOI: 10.1007/s40263-025-01254-9  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática de casos y estudios observacionales, sin la vía intratecal; PDF del usuario, leído entero por un agente (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): intoxicación y retirada del baclofeno por boca.
+
+Citada como:
+
+1. Iqbal 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
+### Irwin 2015
+
+Autores: Irwin, Cartmel, Gross et al.  
+Título: *Randomized exercise trial of aromatase inhibitor-induced arthralgia in breast cancer survivors*  
+Publicación: J Clin Oncol 33(10):1104–1111  
+DOI: 10.1200/JCO.2014.57.1547  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario (versión impresa), leído entero salvo las curvas de la fig. 2 (2026-10); en PMC (PMC4372849) el editor no permite descargarlo. Ensayo HOPE: dosis del ejercicio y resultados. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Irwin 2015
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Jain 2026
 
 Autores: Jain, Singh, Shah y Grossman  
@@ -8052,6 +9687,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cervical | — | Pregunta `cv2` · Cardiovascular | 2 · razonamiento del cribado | 1 |
+
+### Jasti 2026
+
+Autores: Jasti, Wang, Zhou, Nguyen y Berkenstock  
+Título: *Rates of drug-induced uveitis: a review by medication class*  
+Publicación: Clin Ophthalmol 20:564171  
+DOI: 10.2147/OPTH.S564171  
+Última revisión: **sin revisar**  
+Nota: Revisión (690 casos); texto completo en PMC, leído por un agente (2026-10). Zoledronato: uveítis anterior en el 0,8–1,1 % de las infusiones, casi siempre en la primera semana. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): ojo.
+
+Citada como:
+
+1. Jasti 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Jayarangaiah 2023
 
@@ -8151,6 +9803,40 @@ Citada como:
 | Cervical | — | Paso `ce_step1` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
 | Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 
+### Jin 2021
+
+Autores: Jin, Shou, Shao y Bian  
+Título: *Zoledronate-induced acute anterior uveitis: a three-case report and brief review of literature*  
+Publicación: Arch Osteoporos 16(1):104  
+DOI: 10.1007/s11657-021-00964-z  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Uveítis tras el zoledronato, de media a los 3 días. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Jin 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Jobanputra 2026
+
+Autores: Jobanputra, Sargeant, Plekhanova, James, Almaqhawi, Webb y Davies  
+Título: *The effects of glucagon-like peptide-1 receptor agonists and sodium-glucose co-transporter-2 inhibitors on lean body mass in humans: a systematic review and meta-analysis of randomised controlled trials*  
+Publicación: Diabetes Metab Res Rev 42(5):e70194  
+DOI: 10.1002/dmrr.70194  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 36 ensayos; texto completo en PMC, leído entero por un agente (2026-10). Masa magra 28 % del peso perdido; con liraglutida más ejercicio se mantuvo. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): músculo.
+
+Citada como:
+
+1. Jobanputra 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Jödicke 2023
 
 Autores: Jödicke, Tan, Robinson, Delmestri y Prieto-Alhambra  
@@ -8186,6 +9872,23 @@ Citada como:
 | Rodilla | — | Pregunta `r_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_i2` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 
+### Johannsen 2022
+
+Autores: Johannsen, Olesen, Øhlenschläger, Lundgaard-Nielsen, Cullum, Jakobsen et al.  
+Título: *Effect of Ultrasonography-Guided Corticosteroid Injection vs Placebo Added to Exercise Therapy for Achilles Tendinopathy: A Randomized Clinical Trial*  
+Publicación: JAMA Netw Open 5(7):e2219661  
+DOI: 10.1001/jamanetworkopen.2022.19661  
+Última revisión: **sin revisar**  
+Nota: Ensayo aleatorizado con placebo; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia corticoides (huecos, 2026-10): ejercicio a los pocos días de infiltrar, sin correr ni saltar 3 meses, sin roturas.
+
+Citada como:
+
+1. Johannsen 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
+
 ### Johns 2023
 
 Autores: Johns, Mabrouk y Tavarez  
@@ -8205,6 +9908,23 @@ Citada como:
 | Cadera | — | Pregunta `ca_os3` · Óseo / Desarrollo | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Paso `ro_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Jones 2023
+
+Autores: Jones, Day, Koes, Latimer, Maher, McLachlan, Billot, Shan y Lin, en nombre de los investigadores de OPAL  
+Título: *Opioid analgesia for acute low back pain and neck pain (the OPAL trial): a randomised placebo-controlled trial*  
+Publicación: Lancet 402(10398):304–312  
+DOI: 10.1016/S0140-6736(23)00404-X  
+Última revisión: **sin revisar**  
+Nota: Ensayo aleatorizado con placebo, triple ciego (347 participantes); PDF del usuario (versión en línea), leído entero por un agente (2026-10). Guía de fármacos, familia opioides (huecos, 2026-10): sin beneficio frente a placebo a las 6 semanas y el doble de riesgo de mal uso al año.
+
+Citada como:
+
+1. Jones 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Opioides» | guía de fármacos | 1 |
 
 ### Jones 2025
 
@@ -8273,6 +9993,23 @@ Citada como:
 |---|---|---|---|---|
 | Hombro | — | Pregunta `h_gi2` · GI / Hepático | 2 · razonamiento del cribado | 1 |
 
+### Kalfas 2025
+
+Autores: Kalfas, Tsapekos, Butler, McCutcheon, Pillinger, Strawbridge y cols.  
+Título: *Incidence and nature of antidepressant discontinuation symptoms: a systematic review and meta-analysis*  
+Publicación: JAMA Psychiatry 82:896–904  
+DOI: 10.1001/jamapsychiatry.2025.1362  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis de 50 ensayos (17 828 participantes); PDF del usuario, leído entero (2026-10). Un síntoma más que con placebo en la primera semana (DME 0,31); mareo OR 5,52, diferencia de riesgo 6,24 %; 17,5 % con venlafaxina; vértigo OR 6,40. Tratamientos y seguimientos cortos. Guía de fármacos, familia antidepresivos (2026-10): retirada, contradicción con Moncrieff 2025.
+
+Citada como:
+
+1. Kalfas 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Kamonseki 2022
 
 Autores: Kamonseki, Haik, Ribeiro, Almeida y Camargo  
@@ -8294,6 +10031,23 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `FRECUENCIA_PAUTA.h8.nota` | 6 · plan de tratamiento | 3 |
 | Hombro | h8 · Discinesia Escapular | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Hombro | h8 · Discinesia Escapular | Pauta de tratamiento | 5 · cita de la pauta | 2 |
+
+### Kanaley 2022
+
+Autores: Kanaley, Colberg, Corcoran, Malin, Rodriguez, Crespo, Kirwan y Zierath  
+Título: *Exercise/Physical Activity in Individuals with Type 2 Diabetes: A Consensus Statement from the American College of Sports Medicine*  
+Publicación: Med Sci Sports Exerc 54(2):353–368  
+DOI: 10.1249/MSS.0000000000002800  
+Última revisión: **sin revisar**  
+Nota: Consenso del ACSM. Texto completo leído entero en PMC con el conector de PubMed (2026-10), sin el material suplementario. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Kanaley 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Kaneko 2021
 
@@ -8346,7 +10100,7 @@ Título: *European guidance for the diagnosis and management of osteoporosis in 
 Publicación: Osteoporos Int 30(1):3–44  
 DOI: 10.1007/s00198-018-4704-5  
 Última revisión: **sin revisar**  
-Nota: Texto completo en PMC, leído entero sin las figuras (2026-10). Fracturas vertebrales sin diagnosticar y cuándo buscarlas, factores de riesgo y causas secundarias (tabla 4, con la mastocitosis sistémica). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+Nota: Texto completo en PMC, leído entero sin las figuras (2026-10). Fracturas vertebrales sin diagnosticar y cuándo buscarlas, factores de riesgo y causas secundarias (tabla 4, con la mastocitosis sistémica). Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md). Releído (2026-10) para la guía de fármacos, familia «Fármacos que tocan el hueso»: bifosfonatos, denosumab, fractura atípica, osteonecrosis, inhibidores de la aromatasa.
 
 Citada como:
 
@@ -8360,6 +10114,7 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `op_d_fractura` · Osteoporosis | 2 · razonamiento del cribado | 2 |
 | Todas (sistemas comunes) | — | Pregunta `op_d_talla` · Osteoporosis | 2 · razonamiento del cribado | 3 |
 | condiciones | — | Fila «Osteoporosis o fragilidad ósea» | guía de condiciones especiales | 4 |
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 4 |
 | Hombro | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.5.osteoporosis.factoresFuente` | 2 · mención en el texto | 1 |
@@ -8424,6 +10179,40 @@ Citada como:
 |---|---|---|---|---|
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Test de Cozen (extensión resistida de muñeca)» | 4b · cita bajo el test | 1 |
 | Codo | co1 · Tendinopatía Lateral (Epicondilalgia Lateral / Codo de Tenista) | Test «Reducción de fuerza de prensión (diferencia 5-10% entre posiciones)» | 4b · cita bajo el test | 2 |
+
+### Kasina y Baradhi 2023
+
+Autores: Kasina y Baradhi  
+Título: *Dipeptidyl Peptidase IV (DPP IV) Inhibitors*  
+Publicación: StatPearls [Internet], NBK542331 (act. 2023-05-22)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. No trata el penfigoide ampolloso. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Kasina y Baradhi 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Kast 2023
+
+Autores: Kast, Jakob, Kohl, von Stengel, Kerschan-Schindl, Lange et al.  
+Título: *Exercise effects on glucocorticoid-induced bone loss in adults: a systematic review and meta-analysis*  
+Publicación: Rheumatol Adv Pract 7(1):rkad019  
+DOI: 10.1093/rap/rkad019  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis (3 ensayos, 62 pacientes); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia corticoides (huecos, 2026-10): efecto del ejercicio en la columna, no en la cadera.
+
+Citada como:
+
+1. Kast 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
 
 ### Kastelein 2008
 
@@ -8600,6 +10389,23 @@ Citada como:
 | Hombro | — | Paso `h_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 | Hombro | — | Paso `h_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 4 |
 
+### Kelly 2016
+
+Autores: Kelly, Dunning, Schulte, Fiuzat, Leifer, Fleg y cols.  
+Título: *Statins and exercise training response in heart failure patients: insights from HF-ACTION*  
+Publicación: JACC Heart Fail 4(8):617–624  
+DOI: 10.1016/j.jchf.2016.05.006  
+Última revisión: **sin revisar**  
+Nota: Análisis secundario de un ensayo (n = 2331, insuficiencia cardíaca con fracción de eyección ≤ 35 %, 58 % con estatinas); manuscrito del autor, PDF del usuario, leído entero (2026-10). Sin interacción entre estatinas y entrenamiento en consumo pico, marcha de 6 minutos ni calidad de vida. Sustituye a Morville 2019, de pago. Guía de fármacos, familia estatinas (2026-10): entrenamiento.
+
+Citada como:
+
+1. Kelly 2016
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
 ### Kemp 2020
 
 Autores: Kemp, Mosler, Hart, Bizzini, Chang, Scholes, Semciw y Crossley  
@@ -8671,6 +10477,23 @@ En 97 pacientes con arco doloroso, con la lesión localizada por anestésico loc
 |---|---|---|---|---|
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Hombro | h2 · Síndrome de Pinzamiento Subacromial (Impingement) | Test «Arco doloroso» («¿Por qué?») | 4b · razonamiento del test | 2 |
+
+### Keteyian 2019
+
+Autores: Keteyian, Ehrman, Fuller y Pack  
+Título: *Exercise testing and exercise rehabilitation for patients with atrial fibrillation*  
+Publicación: J Cardiopulm Rehabil Prev 39(2):65–72  
+DOI: 10.1097/HCR.0000000000000423  
+Última revisión: **sin revisar**  
+Nota: Revisión clínica; texto completo en PMC, leído entero por un agente (2026-10). La frecuencia de reserva probablemente no sirve; Borg 11–14 y prueba del habla. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): dosificar el ejercicio.
+
+Citada como:
+
+1. Keteyian 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
 ### Khalil 2025
 
@@ -8757,6 +10580,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
+### Khayyat 2026
+
+Autores: Khayyat y Khayyat  
+Título: *GLP-1 receptor agonists and tendon healing: a systematic review and meta-analysis*  
+Publicación: Arch Med Sci 22(4):1978–2001  
+DOI: 10.5114/aoms/225241  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática (41 estudios, 2 cohortes agrupadas); texto completo en PMC, leído entero por un agente (2026-10). Menos re-roturas del manguito en estudios retrospectivos; inferencia causal limitada. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): tendón, contradicción con Yang 2026.
+
+Citada como:
+
+1. Khayyat 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Kibbe 2004
 
@@ -8937,6 +10777,40 @@ Citada como:
 |---|---|---|---|---|
 | Hombro | — | Pregunta `h_n1` · Neurológico | 2 · razonamiento del cribado | 1 |
 
+### Kim y Chen 2024
+
+Autores: Kim, Chen y Reid  
+Título: *Current and future advances in practice: aromatase inhibitor-induced arthralgia*  
+Publicación: Rheumatol Adv Pract 8(2):rkae024  
+DOI: 10.1093/rap/rkae024  
+Última revisión: **sin revisar**  
+Nota: Revisión; texto completo en PMC, leído por un agente (2026-10). Incidencia media 39,1 %; inicio medio 4,5 meses. Habla de cambiar de fármaco, que no se cita. La clave lleva los dos primeros autores porque hay otro «Kim 2024». Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): artralgias.
+
+Citada como:
+
+1. Kim y Chen 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Kim y Jang 2024
+
+Autores: Kim, Jang, Hong, Kim, Rhee, Park y Cummings  
+Título: *Association of delayed denosumab dosing with increased risk of fractures: a population-based retrospective study*  
+Publicación: Endocrinol Metab (Seoul) 39(6):946–955  
+DOI: 10.3803/EnM.2024.2047  
+Última revisión: **sin revisar**  
+Nota: Cohorte nacional coreana (n = 149 199); texto completo en PMC, leído por un agente (2026-10). Retraso < 30 días sin efecto; 30–90 días vertebrales HR 1,35; > 90 días HR 2,18–2,41. La clave lleva los dos primeros autores porque hay otro «Kim 2024». Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): denosumab.
+
+Citada como:
+
+1. Kim y Jang 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Kimyaghalam 2024
 
 Autores: Kimyaghalam, Fitzpatrick y Khan  
@@ -9109,6 +10983,23 @@ Citada como:
 |---|---|---|---|---|
 | Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 1 |
 
+### Koldenhof 2026
+
+Autores: Koldenhof, Gareb, Smit, Bergwerff, Rienstra y Tieleman  
+Título: *Rate control treatment with calcium channel blockers and beta blockers for patients with atrial fibrillation: a systematic review and meta-analysis*  
+Publicación: Eur Heart J Open 6(2):oeag062  
+DOI: 10.1093/ehjopen/oeag062  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis, solo fibrilación auricular; texto completo en PMC, leído entero por un agente (2026-10). Frecuencia máxima en el esfuerzo 10,5 lpm más alta con antagonistas del calcio que con betabloqueantes. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): frecuencia.
+
+Citada como:
+
+1. Koldenhof 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
 ### Konstantinou 2018
 
 Autores: Konstantinou, Dunn, Ogollah, Lewis, van der Windt y Hay, en nombre del ATLAS study team  
@@ -9219,6 +11110,23 @@ Citada como:
 | Fase 6 (plan de tratamiento) | — | `FRECUENCIA_PAUTA.tp14.nota` | 6 · plan de tratamiento | 2 |
 | Tobillo y pie | tp14 · Tendinopatía del Tibial Posterior | Pauta de tratamiento | 5 · cita de la pauta | 1 |
 
+### Kunutsor 2017
+
+Autores: Kunutsor, Blom, Whitehouse, Kehoe y Laukkanen  
+Título: *Renin-angiotensin system inhibitors and risk of fractures: a prospective cohort study and meta-analysis of published observational cohort studies*  
+Publicación: Eur J Epidemiol 32(11):947–959  
+DOI: 10.1007/s10654-017-0285-4  
+Última revisión: **sin revisar**  
+Nota: Cohorte y metaanálisis de cohortes; texto completo en PMC, leído entero por un agente (2026-10). Fractura de cadera: IECA HR 0,91, ARA II HR 0,80. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): hueso.
+
+Citada como:
+
+1. Kunutsor 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
 ### Kuo 2025
 
 Autores: Kuo, Martingano y Singh  
@@ -9252,6 +11160,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
+
+### Kwak 2023
+
+Autores: Kwak, Moon, Park, Lee y Lee  
+Título: *Effects of Statin Treatment on the Development of Tendinopathy: A Nationwide Population-Based Cohort Study*  
+Publicación: Orthop J Sports Med 11(7):23259671231167851  
+DOI: 10.1177/23259671231167851  
+Última revisión: **sin revisar**  
+Nota: Cohorte emparejada (84 102 usuarios); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia estatinas (huecos, 2026-10): tendinopatía.
+
+Citada como:
+
+1. Kwak 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
 
 ### Kwon 2024
 
@@ -9314,6 +11239,23 @@ Citada como:
 | Cervical | — | Pregunta `cv_n1` · Médula / Estructural | 2 · razonamiento del cribado | 1 |
 | Cervical | — | Pregunta `cv_in2` · Inflamatoria / Infecciosa | 2 · razonamiento del cribado | 1 |
 
+### Lagina y Tripathy 2026
+
+Autores: Lagina y Tripathy  
+Título: *Scleritis*  
+Publicación: StatPearls [Internet], NBK499944 (act. 2026-09-14)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): escleritis por bifosfonatos y su dolor.
+
+Citada como:
+
+1. Lagina y Tripathy 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Langstengel y Yaggi 2022
 
 Autores: Langstengel y Yaggi  
@@ -9348,6 +11290,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `hem_1` · Hematológico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `hem_4` · Hematológico | 2 · razonamiento del cribado | 1 |
+
+### Lary 2020
+
+Autores: Lary, Hinton, Nevola, Shireman, Motyl, Houseknecht y cols.  
+Título: *Association of beta blocker use with bone mineral density in the Framingham Osteoporosis Study: a cross-sectional study*  
+Publicación: JBMR Plus 4(9):e10388  
+DOI: 10.1002/jbm4.10388  
+Última revisión: **sin revisar**  
+Nota: Estudio transversal (n = 1520); texto completo en PMC, leído entero por un agente (2026-10). Densidad ósea un 2,7–3,1 % mayor, igual con selectivos y no selectivos. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): hueso.
+
+Citada como:
+
+1. Lary 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Laslett 2003
 
@@ -9512,18 +11471,20 @@ Título: *Prevention and treatment of glucocorticoid-induced osteoporosis in adu
 Publicación: Front Endocrinol 13:908727  
 DOI: 10.3389/fendo.2022.908727  
 Última revisión: **sin revisar**  
-Nota: Texto completo en PMC, leído entero (2026-10). Osteoporosis por corticoides, pérdida de talla de 2 cm, compresión medular con la fractura vertebral desplazada hacia atrás (apartado 3.2), el lupus. Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md).
+Nota: Texto completo en PMC, leído entero (2026-10). Osteoporosis por corticoides, pérdida de talla de 2 cm, compresión medular con la fractura vertebral desplazada hacia atrás (apartado 3.2), el lupus. Condición especial «Osteoporosis o fragilidad ósea» (Fase P, docs/osteoporosis.md). Releído en PMC por un agente (recomendaciones y secciones de estilo de vida, caídas y seguimiento) para la guía de fármacos, familia corticoides (2026-10).
 
 Citada como:
 
 1. Con corticoides mantenidos, pregunta por la osteoporosis y las fracturas por fragilidad; si las tiene, marca también la tarjeta «Osteoporosis o fragilidad ósea» (Gregson 2025; Laurent 2022).
 2. Laurent 2022 — Laurent, Goemaere, Verroken et al., «Prevention and treatment of glucocorticoid-induced osteoporosis in adults: consensus recommendations from the Belgian Bone Club», Front Endocrinol 2022;13:908727, apartado 3.2.
 3. Laurent 2022 — Laurent, Goemaere, Verroken et al., «Prevention and treatment of glucocorticoid-induced osteoporosis in adults: consensus recommendations from the Belgian Bone Club», Front Endocrinol 2022;13:908727, apartado 3.7.
+4. Laurent 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `op_u_medula` · Osteoporosis | 2 · razonamiento del cribado | 2 |
 | Todas (sistemas comunes) | — | Pregunta `op_d_talla` · Osteoporosis | 2 · razonamiento del cribado | 3 |
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 4 |
 | Hombro | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
 | Cadera | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
 | Cervical | — | `sistemas.5.osteoporosis.textos.lupus` | 2 · mención en el texto | 1 |
@@ -9548,6 +11509,57 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
+### Leander 2025
+
+Autores: Leander, Dahl, Vikström, Möller y Söderberg-Löfdal  
+Título: *CYP2D6-inhibiting drugs and risk of fall injury after newly initiated therapy with beta-blockers: a register-based case-crossover study*  
+Publicación: Sci Rep 15(1):24918  
+DOI: 10.1038/s41598-025-09617-4  
+Última revisión: **sin revisar**  
+Nota: Casos cruzados (Suecia); texto completo en PMC, leído entero por un agente (2026-10). Trata sobre todo interacciones, que no se citan; solo el estrato sin otros fármacos: OR 1,07 al empezar. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): caídas.
+
+Citada como:
+
+1. Leander 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### Lebovitz 2019
+
+Autores: Lebovitz  
+Título: *Thiazolidinediones: the Forgotten Diabetes Medications*  
+Publicación: Curr Diab Rep 19(12):151  
+DOI: 10.1007/s11892-019-1270-y  
+Última revisión: **sin revisar**  
+Nota: Revisión. Texto completo en PMC con el conector de PubMed (2026-10): peso, edema, insuficiencia cardíaca, fracturas y conclusiones enteros; los ensayos cardiovasculares, por encima; tablas 2 y 3, parciales. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Lebovitz 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Lee 2023
+
+Autores: Lee, Kim, Han, Hwang, Choi, Oh et al.  
+Título: *Risk of Hyponatremia after Tramadol/Acetaminophen Single-Pill Combination Therapy: A Real-World Study Based on the OMOP-CDM Database*  
+Publicación: Drugs R D 23(3):289–296  
+DOI: 10.1007/s40268-023-00436-4  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva de un hospital (pacientes ingresados); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia opioides (huecos, 2026-10): hiponatremia con tramadol.
+
+Citada como:
+
+1. Lee 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Opioides» | guía de fármacos | 1 |
 
 ### Lee y Picard 2025
 
@@ -9727,6 +11739,91 @@ Citada como:
 | Hombro | — | Pregunta `h_r1` · Renal / Urológico | 2 · razonamiento del cribado | 1 |
 | Cadera | — | Pregunta `c3` · Urogenital / Renal | 2 · razonamiento del cribado | 1 |
 
+### Leslie y Foreman 2025
+
+Autores: Leslie y Foreman  
+Título: *Fournier Gangrene*  
+Publicación: StatPearls [Internet], NBK549821 (act. 2025-02-15)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. La clave lleva los dos autores porque «Leslie 2025» ya es otro capítulo (hematuria). Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Leslie y Foreman 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Leslie y Rawla 2023
+
+Autores: Leslie, Rawla y Dougherty  
+Título: *Female Urinary Retention*  
+Publicación: StatPearls [Internet], NBK538497 (act. 2023-05-30)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero por un agente (2026-10). Clave con los dos primeros autores para no confundirla con Leslie 2023 (vejiga neurógena). Guía de fármacos, familia opioides (huecos, 2026-10): retención urinaria por opioides, en mayores sin síntomas.
+
+Citada como:
+
+1. Leslie y Rawla 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Opioides» | guía de fármacos | 1 |
+
+### Leslie y Rout 2024
+
+Autores: Leslie y Rout  
+Título: *Male Urinary Retention: Acute and Chronic*  
+Publicación: StatPearls [Internet], NBK538499 (act. 2024-04-20)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero por un agente (2026-10). Guía de fármacos, familia opioides (huecos, 2026-10): retención aguda, varones de 60–80 años, cola de caballo.
+
+Citada como:
+
+1. Leslie y Rout 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Opioides» | guía de fármacos | 1 |
+
+### Leung 2024
+
+Autores: Leung, Turner, Marquina, Ilomäki, Tran, Bykov et al.  
+Título: *Gabapentinoids and Risk of Hip Fracture*  
+Publicación: JAMA Netw Open 7(11):e2444488  
+DOI: 10.1001/jamanetworkopen.2024.44488  
+Última revisión: **sin revisar**  
+Nota: Estudio case-case-time-control (2946 fracturas de cadera, Victoria, Australia); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia gabapentinoides (huecos, 2026-10): OR 1,30 en los 60 días tras dispensarlos, más con fragilidad y enfermedad renal crónica.
+
+Citada como:
+
+1. Leung 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
+### Levati 2026
+
+Autores: Levati, Zazzara, Giuli, Marzetti, Picca, Calvani et al.  
+Título: *Does the use of benzodiazepine influence the effectiveness of lifestyle intervention? Secondary analysis from the Sarcopenia and Physical fRailty iN older people strategies (SPRINTT) trial*  
+Publicación: Age Ageing 55(8):afag257  
+DOI: 10.1093/ageing/afag257  
+Última revisión: **sin revisar**  
+Nota: Análisis secundario de un ensayo aleatorizado; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): ejercicio en mayores.
+
+Citada como:
+
+1. Levati 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Levy 2024
 
 Autores: Levy, Sharma, Farci y Le  
@@ -9782,6 +11879,23 @@ Citada como:
 | Rodilla | — | Paso `ro_step6` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 | Tobillo y pie | — | Pregunta `tp_n2` · Neurológico | 2 · razonamiento del cribado | 1 |
 
+### Li 2023
+
+Autores: Li, Liu, Zhang, Geng, Gu, Wang y Liu  
+Título: *Comparative safety of different sodium-glucose transporter 2 inhibitors in patients with type 2 diabetes: a systematic review and network meta-analysis of randomized controlled trials*  
+Publicación: Front Endocrinol (Lausanne) 14:1238399  
+DOI: 10.3389/fendo.2023.1238399  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis en red; texto completo en PMC, leído entero por un agente (2026-10). Polaquiuria 2,7 % frente a 0,8 %. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): orina.
+
+Citada como:
+
+1. Li 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Li 2025
 
 Autores: Li, St Angelo y Taqi  
@@ -9835,6 +11949,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Fila «Esguince de la sindesmosis (alto de tobillo)» (Ligamento) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Subtipo «Operada (tornillo o sutura dinámica)» de «Esguince de la sindesmosis (alto de tobillo)» (Ligamento) | cabecera · tiempos de tejido | 1 |
+
+### Li y Zhang 2025
+
+Autores: Li, Zhang, Wang, Cheng, Zhou, Chen y cols.  
+Título: *Hypoglycemia associated with fluoroquinolone: a pharmacovigilance analysis from 2014 to 2023 based on the FDA adverse event reporting system*  
+Publicación: Front Med (Lausanne) 12:1583093  
+DOI: 10.3389/fmed.2025.1583093  
+Última revisión: **sin revisar**  
+Nota: Análisis de notificaciones (FAERS); texto completo en PMC, leído entero por un agente (2026-10). La clave lleva los dos primeros autores porque «Li 2025» ya es otro capítulo (capsulitis). Mediana de aparición 2 días, 74,5 % en la primera semana, también sin diabetes. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): glucosa.
+
+Citada como:
+
+1. Li y Zhang 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
 
 ### Liamis 2016
 
@@ -10002,6 +12133,23 @@ Citada como:
 |---|---|---|---|---|
 | Cadera | — | Bandera roja «Tumores óseos primarios (osteoma osteoide: dolor sordo nocturno en el joven que alivian la actividad y, de forma desproporcionada, la aspirina; condrosarcoma, tumor de células gigantes, Ewing) y masas de partes blandas» · Cáncer / Oncológico | 2 · razonamiento del cribado | 1 |
 
+### Lin 2020
+
+Autores: Lin, Fisher y Pop-Busui  
+Título: *Hypoglycemia unawareness and autonomic dysfunction in diabetes: lessons learned and roles of diabetes technologies*  
+Publicación: J Diabetes Investig 11(6):1388–1402  
+DOI: 10.1111/jdi.13290  
+Última revisión: **sin revisar**  
+Nota: Revisión; texto completo en PMC, leído entero por un agente (2026-10). Hipoglucemia inadvertida 25–40 % en tipo 1 y 6–17 % en tipo 2 con insulina; riesgo de grave 9–17 veces. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): hipoglucemia inadvertida.
+
+Citada como:
+
+1. Lin 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Litaker 2000
 
 Publicación: J Am Geriatr Soc  
@@ -10015,6 +12163,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Cluster B: debilidad en RE + edad ≥65 (puntuación de Litaker ≥4)» | 4b · cita bajo el test | 1 |
+
+### Liu 2013
+
+Autores: Liu, Ahmet, Ward, Krishnamoorthy, Mandelcorn, Leigh, Brown, Cohen y Kim  
+Título: *A practical guide to the monitoring and management of the complications of systemic corticosteroid therapy*  
+Publicación: Allergy Asthma Clin Immunol 9(1):30  
+DOI: 10.1186/1710-1492-9-30  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa con recomendaciones de expertos; texto completo en PMC, leído por secciones por un agente (efectos cutáneos, digestivos, miopatía, inmunosupresión, osteonecrosis y osteoporosis; tablas de seguimiento solo ojeadas) (2026-10). Guía de fármacos, familia corticoides (huecos, 2026-10): signos de infección menos claros, piel y púrpura.
+
+Citada como:
+
+1. Liu 2013
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
 
 ### Liu 2015
 
@@ -11331,6 +13496,23 @@ Zacharias 2016 (20 pacientes con artrosis unilateral y 20 controles de la misma 
 | Cadera | ca1 · Artrosis de Cadera | Test «Debilidad de abductores» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Cadera | ca1 · Artrosis de Cadera | Test «Debilidad de abductores» («¿Por qué?») | 4b · razonamiento del test | 2 |
 
+### Lu 2020
+
+Autores: Lu, Zheng y Zhang  
+Título: *The effect of exercise on aromatase inhibitor-induced musculoskeletal symptoms in breast cancer survivors: a systematic review and meta-analysis*  
+Publicación: Support Care Cancer 28(4):1587–1596  
+DOI: 10.1007/s00520-019-05186-1  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero, sin las figuras (2026-10). Cuenta como estudios distintos varios artículos del ensayo HOPE. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Lu 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Lubiatowski 2020
 
 Autores: Lubiatowski, Wałecka, Dzianach, Stefaniak y Romanowski  
@@ -11790,15 +13972,17 @@ Título: *Peptic Ulcer Disease*
 Publicación: StatPearls [Internet], NBK534792 (act. 2023-06-05)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído entero (PDF del usuario, 2026-10) para la guía de fármacos, familia AINE: dolor de la úlcera y comidas, dolor nocturno, síntomas de alarma, coxibs.
 
 Citada como:
 
 1. Malik 2023 — Malik, Gnanapandithan y Singh, «Peptic Ulcer Disease», StatPearls [Internet], NCBI Bookshelf, última actualización 5 de junio de 2023.
+2. Malik 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Bandera amarilla «Uso crónico de AINEs (predispone a sangrado GI y anemia)» · Hematológico | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 2 |
 | Cervical | — | Pregunta `cv_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_gi2` · Gastrointestinal | 2 · razonamiento del cribado | 1 |
 
@@ -12114,15 +14298,17 @@ Título: *Hypoglycemia*
 Publicación: StatPearls [Internet], NBK534841 (act. 2022-12-26)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario (2026-10), leído en la sesión. Fase M, razonamiento de las banderas de los sistemas compartidos: confusión o sudoración en el diabético.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario (2026-10), leído en la sesión. Fase M, razonamiento de las banderas de los sistemas compartidos: confusión o sudoración en el diabético. Releído entero (2026-10) en un PDF nuevo del usuario para la guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
 
 Citada como:
 
 1. Mathew y Thoppil 2022 — Mathew y Thoppil, «Hypoglycemia», StatPearls [Internet], NCBI Bookshelf, última actualización 26 de diciembre de 2022.
+2. Mathew y Thoppil 2022
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Bandera roja «Confusión, letargo o sudoración profusa sin ejercicio en diabéticos (riesgo hipoglucemia/cetoacidosis)» · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 2 |
 
 ### Matsumoto 1990
 
@@ -12479,6 +14665,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
+### Men 2017
+
+Autores: Men, He, Song y Zhai  
+Título: *Dipeptidyl peptidase-4 inhibitors and risk of arthralgia: A systematic review and meta-analysis*  
+Publicación: Diabetes Metab 43(6):493–500  
+DOI: 10.1016/j.diabet.2017.05.013  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis de 67 ensayos. No está en PMC; PDF aportado por el usuario (versión «in press») y leído entero (2026-10), sin las figuras ni el material suplementario, así que no da resultados por fármaco. Los recuentos de ensayos y de eventos de los subgrupos no cuadran con el total: solo se citan el resultado global y la artralgia grave. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Men 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Mendonça 2016
 
 Autores: Mendonça, Ocarino, Bittencourt, Fernandes, Verhagen y Fonseca  
@@ -12570,6 +14773,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Nota del grupo «Nervio periférico» | cabecera · tiempos de tejido | 1 |
 
+### Messineo 2024
+
+Autores: Messineo, Sands y Labarca  
+Título: *Hypnotics on Obstructive Sleep Apnea Severity and Endotypes: A Systematic Review and Meta-Analysis*  
+Publicación: Am J Respir Crit Care Med 210(12):1461–1474  
+DOI: 10.1164/rccm.202403-0501OC  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): apnea del sueño.
+
+Citada como:
+
+1. Messineo 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Metcalfe 2019
 
 Publicación: JAMA 322(23):2323–33  
@@ -12597,6 +14817,57 @@ Citada como:
 | Cadera | ca1 · Artrosis de Cadera | Test «Debilidad de abductores» | 4b · cita bajo el test | 6 |
 | Cadera | — | Paso `ca_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 7 |
 | Cadera | — | Paso `ca_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 8 |
+
+### Miernik 2024
+
+Autores: Miernik, Matusiewicz y Olesińska  
+Título: *Drug-induced myopathies: a comprehensive review and update*  
+Publicación: Biomedicines 12(5):987  
+DOI: 10.3390/biomedicines12050987  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa; texto completo en PMC, leído entero por un agente (2026-10). Calambres y debilidad en las fichas, pocas publicaciones; más calambres con actividad simpaticomimética intrínseca. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): dolores musculares.
+
+Citada como:
+
+1. Miernik 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### Mikus 2013
+
+Autores: Mikus, Boyle, Borengasser, Oberlin, Naples, Fletcher y cols.  
+Título: *Simvastatin impairs exercise training adaptations*  
+Publicación: J Am Coll Cardiol 62(8):709–714  
+DOI: 10.1016/j.jacc.2013.02.074  
+Última revisión: **sin revisar**  
+Nota: Ensayo aleatorizado (n = 37); manuscrito del autor, PDF del usuario, leído entero (2026-10). Anterior a 2015, admitido por ser el ensayo que recoge Noyes 2017. VO2max +10 % frente a +1,5 %; citrato sintasa +13 % frente a −4,5 %. Guía de fármacos, familia estatinas (2026-10): entrenamiento.
+
+Citada como:
+
+1. Mikus 2013
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
+### Milbourn 2026
+
+Autores: Milbourn, Khoshnaghsh, Edmonds y Petrova  
+Título: *Burning issues/hot topics: the Charcot foot*  
+Publicación: J Clin Med 15(5):1993  
+DOI: 10.3390/jcm15051993  
+Última revisión: **sin revisar**  
+Nota: Revisión que recoge la guía IWGDF 2023; texto completo en PMC, leído entero por un agente (2026-10). La sospecha se trata como confirmada hasta descartarla; inadvertido hasta en el 95 %, retraso mediano 87 días. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): pie de Charcot.
+
+Citada como:
+
+1. Milbourn 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Miller 2020
 
@@ -12727,6 +14998,23 @@ Citada como:
 | Rodilla | — | Pregunta `ro_t3` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `ro_t4` · Traumático / Mecánico | 2 · razonamiento del cribado | 1 |
 
+### Moiz 2026
+
+Autores: Moiz, Peters, Tsoukas, Yu, Filion y Eisenberg  
+Título: *Balancing the benefits and risks of GLP-1 receptor agonists: a clinical guide for shared decision-making*  
+Publicación: EClinicalMedicine 96:103991  
+DOI: 10.1016/j.eclinm.2026.103991  
+Última revisión: **sin revisar**  
+Nota: Guía clínica; texto completo en PMC, leído entero por un agente (2026-10). Dolor epigástrico intenso que irradia a la espalda, sobre todo con vómitos: valoración médica. Contiene consejos de dosis que no se citan. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): pancreatitis.
+
+Citada como:
+
+1. Moiz 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Molloy 2003
 
 Publicación: J Bone Joint Surg Br 85-B(3)  
@@ -12779,6 +15067,23 @@ Citada como:
 | Codo | — | Pregunta `co1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_i1` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 
+### Moncrieff 2025
+
+Autores: Moncrieff, Hobday, Sørensen, Read, Plöderl, Hengartner y cols.  
+Título: *Evidence on antidepressant withdrawal: an appraisal and reanalysis of a recent systematic review*  
+Publicación: Psychol Med 55:e191  
+DOI: 10.1017/S0033291725100652  
+Última revisión: **sin revisar**  
+Nota: Reanálisis crítico de Henssler 2024 (no leído, de pago); PDF del usuario, leído entero (2026-10). Con los 5 estudios que midieron la retirada de forma sistemática, 55 % (IC 95 % 31–81 %), sin restar nocebo. Sus autores son críticos con Henssler. Guía de fármacos, familia antidepresivos (2026-10): retirada.
+
+Citada como:
+
+1. Moncrieff 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Montero-Odasso 2022
 
 Autores: Montero-Odasso, van der Velde, Martin et al.  
@@ -12818,6 +15123,40 @@ Citada como:
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasUna` | 2 · mención en el texto | 2 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 3 |
 
+### Moon 2026
+
+Autores: Moon, Kim, Lee, Cho y Choi  
+Título: *Gabapentinoid use and inpatient falls in hospitalized adults: a propensity score-matched case-control study*  
+Publicación: Arch Med Sci 22(1):536–539  
+DOI: 10.5114/aoms/219138  
+Última revisión: **sin revisar**  
+Nota: Carta de investigación, casos y controles emparejados (290 caídas, un centro); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia gabapentinoides (huecos, 2026-10): OR 1,88 de caídas en ingresados.
+
+Citada como:
+
+1. Moon 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
+### Moore 2019
+
+Autores: Moore, Derry, Aldington, Cole y Wiffen  
+Título: *Amitriptyline for fibromyalgia in adults*  
+Publicación: Cochrane Database Syst Rev CD011824 (búsqueda hasta marzo de 2015; publicada en 2015 y reeditada en 2019)  
+DOI: 10.1002/14651858.CD011824  
+Última revisión: **sin revisar**  
+Nota: Revisión Cochrane (9 ensayos, 649 participantes); texto completo en PMC, leído entero por un agente (2026-10). Otras fuentes la citan como Moore 2015; la clave sigue la fecha de PubMed y PMC. Guía de fármacos, familia antidepresivos (huecos, 2026-10).
+
+Citada como:
+
+1. Moore 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Moore y Tafti 2026
 
 Autores: Moore y Tafti  
@@ -12852,6 +15191,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
+### Morales 2019
+
+Autores: Morales, Pacurariu, Slattery, Pinheiro, McGettigan y Kurz  
+Título: *Association between peripheral neuropathy and exposure to oral fluoroquinolone or amoxicillin-clavulanate therapy*  
+Publicación: JAMA Neurol 76(7):827–833  
+DOI: 10.1001/jamaneurol.2019.0887  
+Última revisión: **sin revisar**  
+Nota: Casos y controles anidado (Reino Unido, autores de la EMA); texto completo en PMC, leído entero por un agente (2026-10). aIRR 1,47; +3 % por día de tratamiento; riesgo hasta 180 días; 2,4 casos más por 10 000 pacientes al año. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): neuropatía.
+
+Citada como:
+
+1. Morales 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
+
 ### Morris 2024
 
 Autores: Morris, Awosika y Dunham  
@@ -12868,6 +15224,57 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### Morris y Patel 2023
+
+Autores: Morris y Patel  
+Título: *Heat Stroke*  
+Publicación: StatPearls [Internet], NBK537135 (act. 2023-02-13)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): revisar la medicación ante un golpe de calor clásico.
+
+Citada como:
+
+1. Morris y Patel 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### Moseley 2025
+
+Autores: Moseley, Cluney, Dennis y Overturf  
+Título: *Fluoroquinolone-associated tendinopathy presenting as calf myotendinous strain*  
+Publicación: Cureus 17(9):e92201  
+DOI: 10.7759/cureus.92201  
+Última revisión: **sin revisar**  
+Nota: Caso clínico; texto completo en PMC, leído entero por un agente (2026-10). Roturas repetidas en la unión miotendinosa de la pantorrilla unos 5 meses después de ciprofloxacino y levofloxacino, con brotes más de un año. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10).
+
+Citada como:
+
+1. Moseley 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
+
+### Moser 2020
+
+Autores: Moser, Riddell, Eckstein, Adolfsson, Rabasa-Lhoret, van den Boom et al. (última autora, Mader)  
+Título: *Glucose management for exercise using continuous glucose monitoring (CGM) and intermittently scanned CGM (isCGM) systems in type 1 diabetes: position statement of the EASD and of ISPAD endorsed by JDRF and supported by the ADA*  
+Publicación: Pediatr Diabetes 21(8):1375–1393  
+DOI: 10.1111/pedi.13105  
+Última revisión: **sin revisar**  
+Nota: Posicionamiento de la EASD y la ISPAD (versión abreviada). Texto completo leído entero en PMC con el conector de PubMed (2026-10); las tablas 1–7 son imagen y no se leyeron. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Moser 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Mottola 2018
 
@@ -13149,6 +15556,40 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Nota del grupo «Nervio periférico» | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Fila «Neuropraxia (Sunderland I)» (Nervio periférico) | cabecera · tiempos de tejido | 1 |
+
+### Nakafero 2021
+
+Autores: Nakafero, Grainge, Valdes, Townsend, Mallen, Zhang y cols.  
+Título: *β-blocker prescription is associated with lower cumulative risk of knee osteoarthritis and knee pain consultations in primary care: a propensity score-matched cohort study*  
+Publicación: Rheumatology (Oxford) 60(12):5686–5696  
+DOI: 10.1093/rheumatology/keab234  
+Última revisión: **sin revisar**  
+Nota: Cohorte emparejada (CPRD); texto completo en PMC, leído entero por un agente (2026-10). HR 0,90 artrosis de rodilla, 0,88 dolor de rodilla, 0,85 dolor de cadera; el efecto desaparece al dejarlos; los autores piden un ensayo. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): dolor.
+
+Citada como:
+
+1. Nakafero 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### Nakhleh y Shehadeh 2021
+
+Autores: Nakhleh y Shehadeh  
+Título: *Hypoglycemia in diabetes: An update on pathophysiology, treatment, and prevention*  
+Publicación: World J Diabetes 12(12):2036–2049  
+DOI: 10.4239/wjd.v12.i12.2036  
+Última revisión: **sin revisar**  
+Nota: Revisión. Texto completo leído entero en PMC con el conector de PubMed (2026-10). El texto da unos 20 g de glucosa y la tabla 15–20 g: no se citan los gramos. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Nakhleh y Shehadeh 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Nandhagopal 2024
 
@@ -14082,6 +16523,23 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `pq_tvp_ms` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
 | Fase 6 (plan de tratamiento) | — | `TEXTOS_CASA.alarmaTVP.fuente` | 6 · plan de tratamiento | 2 |
 
+### Nischal y Gupta 2023
+
+Autores: Nischal y Gupta  
+Título: *Bisphosphonate-Related Jaw Osteonecrosis*  
+Publicación: StatPearls [Internet], NBK534771 (act. 2023-07-24)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Sin la figura 1. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Nischal y Gupta 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Nochaiwong 2022
 
 Autores: Nochaiwong, Ruengorn, Awiphan, Chai-Adisaksopha, Tantraworasin, Phosuya, Kanjanarat, Chongruksut, Sood y Thavorn  
@@ -14147,6 +16605,23 @@ En contra, Norris 2025 (Orthop J Sports Med 13(5):23259671251334775; estudio pro
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Rodilla | ro4 · Lesión del Ligamento Cruzado Anterior (LCA) | Test «Lever Sign Test» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
+
+### Noyes 2017
+
+Autores: Noyes y Thompson  
+Título: *The effects of statins on exercise and physical activity*  
+Publicación: J Clin Lipidol 11(5):1134–1144  
+DOI: 10.1016/j.jacl.2017.07.003  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática (32 estudios); PDF del usuario (manuscrito aceptado), leído entero por un agente (2026-10). Se contradice sobre si la citrato sintasa baja o sube un 4,5 % con simvastatina: no se cita esa cifra. Guía de fármacos, familia estatinas (huecos, 2026-10): entrenamiento, maratón, actividad física en mayores.
+
+Citada como:
+
+1. Noyes 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
 
 ### Nunes 2013
 
@@ -14378,6 +16853,40 @@ Citada como:
 | Rodilla | ro5 · Tendinopatía Rotuliana | Test «Dolor durante sentadilla en tabla inclinada (decline squat)» | 4b · cita bajo el test | 3 |
 | Rodilla | ro5 · Tendinopatía Rotuliana | Pauta de tratamiento | 5 · cita de la pauta | 4 |
 | Rodilla | — | Paso `ro_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
+
+### Padda 2025
+
+Autores: Padda, Mahtani y Parmar  
+Título: *Sodium-Glucose Transport 2 (SGLT2) Inhibitors*  
+Publicación: StatPearls [Internet], NBK576405 (act. 2025-09-15)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Cuenta «4 agents» en un apartado y más en otro. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Padda 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Paik 2016
+
+Autores: Paik, Rosen, Gordon y Curhan  
+Título: *Diuretic use and risk of vertebral fracture in women*  
+Publicación: Am J Med 129(12):1299–1306  
+DOI: 10.1016/j.amjmed.2016.07.013  
+Última revisión: **sin revisar**  
+Nota: Cohorte (Nurses' Health Study, n = 55 780 mujeres de 55–82 años); texto completo en PMC, leído entero por un agente (2026-10). Fractura vertebral: asa RR 1,59, tiazidas RR 1,47. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): hueso.
+
+Citada como:
+
+1. Paik 2016
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
 ### Pak y Kim 2023
 
@@ -14646,6 +17155,40 @@ En la serie de Antuna y O'Driscoll que recoge Park 2019, el chasquido aparecía 
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» («¿Por qué?») | 4b · razonamiento del test | 8 |
 | Codo | — | Paso `co_step5` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 9 |
 
+### Park 2021
+
+Autores: Park, Bresnahan, Griggs, Chen, Cho, Gousse y Feinglos  
+Título: *Comparative risk of musculoskeletal adverse reactions among new users of dipeptidyl peptidase-4 inhibitors: A retrospective cohort study*  
+Publicación: Explor Res Clin Soc Pharm 2:100022  
+DOI: 10.1016/j.rcsop.2021.100022  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva. Texto completo leído entero en PMC con el conector de PubMed (2026-10), sin los apéndices. Las notas de la tabla 1 y la tabla 2 intercambian el número de eventos de cada grupo: no se cita. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Park 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Parker 2013
+
+Autores: Parker, Capizzi, Grimaldi, Clarkson, Cole, Keadle y cols.  
+Título: *Effect of statins on skeletal muscle function*  
+Publicación: Circulation 127(1):96–103  
+DOI: 10.1161/CIRCULATIONAHA.112.136101  
+Última revisión: **sin revisar**  
+Nota: Ensayo STOMP (n = 420 adultos sanos, atorvastatina 80 mg 6 meses); manuscrito del autor, PDF del usuario, leído entero (2026-10). Anterior a 2015, admitido por ser el único ensayo leído con fuerza y capacidad de ejercicio. Mialgias 19 frente a 10; sin cambios en fuerza ni capacidad. Guía de fármacos, familia estatinas (2026-10): personas activas.
+
+Citada como:
+
+1. Parker 2013
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
 ### Parodis 2024
 
 Autores: Parodis, Girard-Guyonvarc'h, Arnaud et al.  
@@ -14764,6 +17307,23 @@ Citada como:
 | Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Dosis (en el texto) | 5 · mención en el texto | 1 |
 | Tobillo y pie | tp31 · Lesión de la 1.ª Metatarsofalángica | Pauta de tratamiento | 5 · cita de la pauta | 2 |
 
+### Pathak 2025
+
+Autores: Pathak, Kelleher, Brennan, Amarnani, Wall, Murphy et al.  
+Título: *Treatments for enhancing sleep quality in fibromyalgia: a systematic review and meta-analysis*  
+Publicación: Rheumatology (Oxford) 64(8):4495–4516  
+DOI: 10.1093/rheumatology/keaf147  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis; texto completo en PMC, leídos por un agente los apartados de gabapentinoides, discusión y conclusión (2026-10). Guía de fármacos, familia gabapentinoides (huecos, 2026-10): sueño en la fibromialgia.
+
+Citada como:
+
+1. Pathak 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
 ### Patil 2024
 
 Autores: Patil, Rehman, Anastasopoulou y Jialal  
@@ -14834,6 +17394,23 @@ En la serie de Antuna y O'Driscoll que recoge Park 2019, el chasquido aparecía 
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Dolor posterolateral en línea articular radiocapitelar a la palpación» («¿Por qué?») | 4b · razonamiento del test | 2 |
 | Codo | co6 · Dolor Radiohumeral / Pinzamiento Posterolateral por Plica Radiocapitelar | Test «Test de flexión-pronación» («¿Por qué?») | 4b · razonamiento del test | 3 |
+
+### Pedersini 2022
+
+Autores: Pedersini, di Mauro, Amoroso, Castronovo, Zamparini, Monteverdi y cols.  
+Título: *Sleep disturbances and restless legs syndrome in postmenopausal women with early breast cancer given adjuvant aromatase inhibitor therapy*  
+Publicación: Breast 66:162–168  
+DOI: 10.1016/j.breast.2022.10.006  
+Última revisión: **sin revisar**  
+Nota: Cohorte (n = 160); texto completo en PMC, leído por un agente (2026-10). No cambió el insomnio; aumentaron las piernas inquietas. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): sueño.
+
+Citada como:
+
+1. Pedersini 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Pedret 2015
 
@@ -15042,6 +17619,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Bíceps distal reparado, vuelta al deporte» de «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 1 |
 
+### Pitt 2020
+
+Autores: Pitt, McCarthy, Hoeg-Jensen, Wellman y Bracken  
+Título: *Factors influencing insulin absorption around exercise in type 1 diabetes*  
+Publicación: Front Endocrinol (Lausanne) 11:573275  
+DOI: 10.3389/fendo.2020.573275  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa; texto completo en PMC, leído entero por un agente (2026-10). Sauna a 85 °C: 110 % más salida de insulina y glucosa −3 mmol/L; calentador a 40 °C, máximo antes; glargina sin cambio significativo. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): lugar de inyección.
+
+Citada como:
+
+1. Pitt 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Plash 2013
 
 Autores: Plash, Diedrich, Biaggioni, Garland, Paranjape, Black, Dupont y Raj  
@@ -15064,6 +17658,40 @@ Citada como:
 | Rodilla | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.2.disautonomia.prueba.pesa` | 2 · mención en el texto | 1 |
+
+### Plewa 2023
+
+Autores: Plewa, Bryant y King-Thiele  
+Título: *Euglycemic Diabetic Ketoacidosis*  
+Publicación: StatPearls [Internet], NBK554570 (act. 2023-01-29)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Da el riesgo en la diabetes tipo 1 como 5–12 % y como hasta el 9 %: no se cita. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Plewa 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Ploegmakers 2023
+
+Autores: Ploegmakers, van Poelgeest, Seppala, van Dijk, de Groot, Oliai Araghi y cols.  
+Título: *The role of plasma concentrations and drug characteristics of beta-blockers in fall risk of older persons*  
+Publicación: Pharmacol Res Perspect 11(6):e01126  
+DOI: 10.1002/prp2.1126  
+Última revisión: **sin revisar**  
+Nota: Cohorte (B-PROOF); texto completo en PMC, leído entero por un agente (2026-10). Metoprolol por encima de la mediana HR 1,55; sin relación con la concentración de los no selectivos. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): caídas.
+
+Citada como:
+
+1. Ploegmakers 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Podder 2024
 
@@ -15171,6 +17799,23 @@ Citada como:
 | Todas (tiempos de tejido) | — | Subtipo «Grado 2a/2b (moderada, sin tendón)» de «Isquiotibiales (clasificación BAMIC)» (Músculo) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Subtipo «Grado 2c (moderada, dentro del tendón)» de «Isquiotibiales (clasificación BAMIC)» (Músculo) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Subtipo «Grado 3c (extensa, dentro del tendón)» de «Isquiotibiales (clasificación BAMIC)» (Músculo) | cabecera · tiempos de tejido | 1 |
+
+### Ponna 2026
+
+Autores: Ponna, Soma, Demetriou, Giakas e Ilyas  
+Título: *Perioperative Selective Serotonin Reuptake Inhibitor (SSRI) Use and Postoperative Fracture Fixation Outcomes: A Multi-institutional Retrospective Cohort Study*  
+Publicación: Cureus 18(8):e114976  
+DOI: 10.7759/cureus.114976  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva (TriNetX); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia antidepresivos (huecos, 2026-10): seudoartrosis tras la osteosíntesis.
+
+Citada como:
+
+1. Ponna 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Pope 2023
 
@@ -15530,6 +18175,23 @@ Los estudios no detallan cómo se combinaba la exploración: es la valoración g
 |---|---|---|---|---|
 | Rodilla | ro2 · Lesión Meniscal | Test «Combinación de tests clínicos» (en `razonamiento.detalle`) | 4b · mención en el texto | 1 |
 
+### Rangraze 2026
+
+Autores: Rangraze, Wali, Khan, El-Tanani, Matalka, Rizzo y Oo  
+Título: *Frailty-Informed Deprescribing of Glucose-Lowering Therapy in Older Adults with Type 2 Diabetes: A Pragmatic Clinical Framework*  
+Publicación: Clin Interv Aging 21:622440  
+DOI: 10.2147/CIA.S622440  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa. Texto completo leído entero en PMC con el conector de PubMed (2026-10). Los cortes de la escala de fragilidad no coinciden entre las figuras 1 y 2: no se citan. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Rangraze 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Rao y Mikdashi 2023
 
 Autores: Rao y Mikdashi  
@@ -15682,6 +18344,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Bandera amarilla «Palidez en pliegues palmares, mucosas o lechos ungueales» · Hematológico | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Bandera amarilla «Uñas cóncavas o quebradizas (coiloniquia — alerta de anemia ferropénica)» · Hematológico | 2 · razonamiento del cribado | 1 |
+
+### Regina 2025
+
+Autores: Regina, Goyal y Mechanic  
+Título: *Opioid Toxicity*  
+Publicación: StatPearls [Internet], NBK470415 (act. 2025-01-22)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario, leído entero por un agente (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia opioides (huecos, 2026-10): tríada de la sobredosis, naloxona y su duración (da 90–180 min y 1 h en dos apartados).
+
+Citada como:
+
+1. Regina 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Opioides» | guía de fármacos | 1 |
 
 ### Regunath y Oba 2024
 
@@ -15933,6 +18612,23 @@ Citada como:
 | Cadera | ca9 · Tendinopatía Proximal de Isquiotibiales | Test «Dolor con test de fuerza de isquiotibiales» | 4b · cita bajo el test | 2 |
 | Cadera | ca9 · Tendinopatía Proximal de Isquiotibiales | Pauta de tratamiento | 5 · cita de la pauta | 3 |
 
+### Riddell 2017
+
+Autores: Riddell, Gallen, Smart, Taplin, Adolfsson, Lumb et al. (última autora, Laffel)  
+Título: *Exercise management in type 1 diabetes: a consensus statement*  
+Publicación: Lancet Diabetes Endocrinol 5(5):377–390  
+DOI: 10.1016/S2213-8587(17)30014-1  
+Última revisión: **sin revisar**  
+Nota: Consenso de expertos, sin grados. No está en PMC; PDF aportado por el usuario (versión publicada en línea, sin paginación definitiva; volumen y páginas comprobados en PubMed) y leído entero (2026-10), salvo la figura 1. La figura 2 limita la suspensión de la bomba a 60 minutos y el texto a menos de 2 horas: no se cita. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Riddell 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Rider y Marra 2023
 
 Autores: Rider y Marra  
@@ -15957,7 +18653,7 @@ Título: *Orthostatic Hypotension*
 Publicación: StatPearls [Internet], NBK448192 (act. 2025-01-17)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia diuréticos y otros antihipertensivos (docs/farmacologia.md).
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia diuréticos y otros antihipertensivos (docs/farmacologia.md). Releído (2026-10) para la guía de fármacos, familia betabloqueantes: síntomas tras el ejercicio y con calor, frecuencia no fiable.
 
 Citada como:
 
@@ -15965,6 +18661,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 | fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
 ### Rinkel 2013
@@ -16004,6 +18701,40 @@ Citada como:
 |---|---|---|---|---|
 | Rodilla | — | Pregunta `r_i3` · Infecciosa / Inflamatoria | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Paso `ro_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Rissardo 2023
+
+Autores: Rissardo, Medeiros Araujo de Matos y Fornari Caprara  
+Título: *Gabapentin-Associated Movement Disorders: A Literature Review*  
+Publicación: Medicines (Basel) 10(9):52  
+DOI: 10.3390/medicines10090052  
+Última revisión: **sin revisar**  
+Nota: Revisión de 99 informes con 204 casos; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia gabapentinoides (huecos, 2026-10): mioclonías.
+
+Citada como:
+
+1. Rissardo 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
+
+### Rissardo 2025
+
+Autores: Rissardo, Fornari Caprara, Bhal, Repudi, Zlatin y Walker  
+Título: *Drug-Induced Myoclonus: A Systematic Review*  
+Publicación: Medicina (Kaunas) 61(1):131  
+DOI: 10.3390/medicina61010131  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática; texto completo en PMC, leídos por un agente los apartados de antiepilépticos, asterixis, manejo, discusión y conclusiones (2026-10). Guía de fármacos, familia gabapentinoides (huecos, 2026-10): asterixis y factores de riesgo de la mioclonía.
+
+Citada como:
+
+1. Rissardo 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
 
 ### Robertson y Wood 2017
 
@@ -16081,6 +18812,23 @@ Sumar la apertura de la ecografía de estrés (más de 1,0 mm) a ver la rotura e
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» | 4b · cita bajo el test | 4 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «Ecografía dinámica con estrés en valgo» («¿Por qué?») | 4b · razonamiento del test | 5 |
 | Codo | co4 · Insuficiencia del Ligamento Colateral Cubital (LCC) | Test «RM con artrograma» («¿Por qué?») | 4b · razonamiento del test | 6 |
+
+### Roulet 2021
+
+Autores: Roulet, Rollason, Desmeules y Piguet  
+Título: *Tapentadol Versus Tramadol: A Narrative and Comparative Review of Their Pharmacological, Efficacy and Safety Profiles in Adult Patients*  
+Publicación: Drugs 81(11):1257–1272  
+DOI: 10.1007/s40265-021-01515-z  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia opioides (huecos, 2026-10): convulsiones e hipoglucemia con tramadol.
+
+Citada como:
+
+1. Roulet 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Opioides» | guía de fármacos | 1 |
 
 ### Rout 2024
 
@@ -16174,6 +18922,23 @@ Citada como:
 | Tobillo y pie | — | Pregunta `tp_o1` · Fractura de Estrés | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_o2` · Fractura de Estrés | 2 · razonamiento del cribado | 1 |
 
+### Roy 2021
+
+Autores: Roy, Sahoo, Narayanan, Merugu, Kamalanathan y Naik  
+Título: *Dipeptidyl peptidase-4 inhibitor-induced autoimmune diseases: current evidence*  
+Publicación: World J Diabetes 12(9):1426–1441  
+DOI: 10.4239/wjd.v12.i9.1426  
+Última revisión: **sin revisar**  
+Nota: Revisión; texto completo en PMC, leído entero por un agente (2026-10). Artralgias de 2 semanas a 31 meses, pequeñas articulaciones, rodilla y tobillo; penfigoide con menos eritema y latencia de 14,8 meses. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): artralgias y penfigoide.
+
+Citada como:
+
+1. Roy 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Rubinger 2020
 
 Autores: Rubinger, Solow, Johal y Al-Asiri  
@@ -16212,6 +18977,23 @@ Citada como:
 | Lumbar | — | Pregunta `l5c` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l5d` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
 | Lumbar | — | Pregunta `l_e2` · Espondiloartropatías / Espondilogénicas / Ginecológico | 2 · razonamiento del cribado | 2 |
+
+### Ruggiero 2022
+
+Autores: Ruggiero, Dodson, Aghaloo, Carlson, Ward y Kademani (AAOMS)  
+Título: *American Association of Oral and Maxillofacial Surgeons' position paper on medication-related osteonecrosis of the jaws—2022 update*  
+Publicación: J Oral Maxillofac Surg 80(5):920–943  
+DOI: 10.1016/j.joms.2022.02.008  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero salvo las figuras 1–4 (2026-10). Definición, estadio 0 (dolor que irradia a la ATM), diagnóstico diferencial, frecuencia por dosis. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Ruggiero 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Ruperto 2011
 
@@ -16291,6 +19073,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
 
+### Rusu 2026
+
+Autores: Rusu, Stroia y Cherecheș  
+Título: *An updated 16-year pharmacovigilance analysis of neuropsychiatric safety profiles of ciprofloxacin, levofloxacin, and moxifloxacin using FAERS data*  
+Publicación: Pharmaceuticals (Basel) 19(6):820  
+DOI: 10.3390/ph19060820  
+Última revisión: **sin revisar**  
+Nota: Análisis de notificaciones (FAERS); texto completo en PMC, leído en parte por un agente (resultados psiquiátricos y discusión) (2026-10). Insomnio predominante con levofloxacino; ansiedad con ciprofloxacino y moxifloxacino. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): sueño.
+
+Citada como:
+
+1. Rusu 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
+
 ### Saad y Mathew 2025
 
 Autores: Saad y Mathew  
@@ -16298,15 +19097,17 @@ Título: *Nonsteroidal Anti-Inflammatory Drugs Toxicity*
 Publicación: StatPearls [Internet], NBK526006 (act. 2025-09-15)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario (2026-10), leído en la sesión. Fase M, razonamiento de las banderas de los sistemas compartidos: AINE crónicos.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario (2026-10), leído en la sesión. Fase M, razonamiento de las banderas de los sistemas compartidos: AINE crónicos. Releído entero (PDF del usuario, 2026-10) para la guía de fármacos, familia AINE: úlcera, sangrado y perforación a cualquier edad, más en mayores.
 
 Citada como:
 
 1. Saad y Mathew 2025 — Saad y Mathew, «Nonsteroidal Anti-Inflammatory Drugs Toxicity», StatPearls [Internet], NCBI Bookshelf, última actualización 15 de septiembre de 2025.
+2. Saad y Mathew 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Bandera amarilla «Uso crónico de AINEs (predispone a sangrado GI y anemia)» · Hematológico | 2 · razonamiento del cribado | 1 |
+| fármacos | — | Familia «AINE (antiinflamatorios no esteroideos)» | guía de fármacos | 2 |
 
 ### Sabry y Li 2026
 
@@ -16328,6 +19129,23 @@ Citada como:
 | Cadera | — | Pregunta `ca_os4` · Óseo / Desarrollo | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Pregunta `ro_p1` · Niño o Adolescente | 2 · razonamiento del cribado | 1 |
 | Rodilla | — | Paso `ro_step2b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
+
+### Saco-Ledo 2020
+
+Autores: Saco-Ledo, Valenzuela, Ruiz-Hurtado, Ruilope y Lucia  
+Título: *Exercise reduces ambulatory blood pressure in patients with hypertension: a systematic review and meta-analysis of randomized controlled trials*  
+Publicación: J Am Heart Assoc 9(24):e018487  
+DOI: 10.1161/JAHA.120.018487  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de ensayos; texto completo en PMC, leído entero por un agente (2026-10). En medicados, sistólica de 24 horas −4,9 mmHg. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): ejercicio.
+
+Citada como:
+
+1. Saco-Ledo 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
 ### Sahu 2020
 
@@ -16614,6 +19432,23 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Radio distal, sin cirugía (yeso)» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 1 |
 
+### Schadler 2017
+
+Autores: Schadler, Shue, Moawad, Girardi, Cammisa, Sama et al.  
+Título: *Serotonergic Antidepressants Are Associated with Increased Blood Loss and Risk for Transfusion in Single-Level Lumbar Fusion Surgery*  
+Publicación: Asian Spine J 11(4):601–609  
+DOI: 10.4184/asj.2017.11.4.601  
+Última revisión: **sin revisar**  
+Nota: Casos y controles retrospectivo (235 artrodesis lumbares); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia antidepresivos (huecos, 2026-10): pérdida de sangre quirúrgica.
+
+Citada como:
+
+1. Schadler 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Schick y Sternard 2023
 
 Autores: Schick y Sternard  
@@ -16750,6 +19585,23 @@ Citada como:
 | Rodilla | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.plo` | 2 · mención en el texto | 1 |
+
+### Scott 2024
+
+Autores: Scott, Daud, Bailey, Twohig, Hider, Mallen et al.  
+Título: *Gabapentinoid use and the risk of fractures in patients with inflammatory arthritis: nested case-control study in the Clinical Practice Research Datalink Aurum*  
+Publicación: BMC Med 22:575  
+DOI: 10.1186/s12916-024-03774-5  
+Última revisión: **sin revisar**  
+Nota: Casos y controles anidado (2485 casos); texto completo en PMC, leídos por un agente resultados, discusión y conclusiones, y los métodos por encima (2026-10). Guía de fármacos, familia gabapentinoides (huecos, 2026-10): OR 1,36 de fractura, sin gradiente de dosis.
+
+Citada como:
+
+1. Scott 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
 
 ### Seaberg 1998
 
@@ -16920,6 +19772,23 @@ Citada como:
 | Todas (sistemas comunes) | — | Pregunta `end_3` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 | Codo | — | Pregunta `co_e2a` · Endocrino / Metabólico | 2 · razonamiento del cribado | 1 |
 
+### Shamim 2026
+
+Autores: Shamim, Doughty, Chau, Brown, Baldock y Au  
+Título: *Disproportionality analysis of fluoroquinolone-associated peripheral neuropathy in the FAERS database (2007–2024)*  
+Publicación: Clin Transl Sci 19(4):e70541  
+DOI: 10.1111/cts.70541  
+Última revisión: **sin revisar**  
+Nota: Análisis de desproporcionalidad (FAERS); texto completo en PMC, leído entero por un agente (2026-10). 80,2 % en los 7 primeros días, mediana 1 día; parestesias lo más notificado; signos motores 0,63 %; la evolución no se recoge. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): neuropatía.
+
+Citada como:
+
+1. Shamim 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
+
 ### Shamrock 2023
 
 Autores: Shamrock, Dreyer y Varacallo  
@@ -16978,6 +19847,23 @@ Citada como:
 |---|---|---|---|---|
 | Cervical | — | Pregunta `cv_p2` · Pulmonar | 2 · razonamiento del cribado | 1 |
 
+### Shane 2014
+
+Autores: Shane, Burr, Abrahamsen et al. (ASBMR)  
+Título: *Atypical subtrochanteric and diaphyseal femoral fractures: second report of a task force of the American Society for Bone and Mineral Research*  
+Publicación: J Bone Miner Res 29(1):1–23  
+DOI: 10.1002/jbmr.1998  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario (manuscrito aceptado, sin maquetar), leído entero salvo las figuras 1–2 (2026-10); anterior a 2015, admitido por ser la definición de referencia. Criterios, pródromos, bilateralidad, diferencia con la fractura de estrés por ejercicio, manejo de la carga. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Shane 2014
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Shao 2022
 
 Autores: Shao, Lai, Chen, Lai, Hung y Chi  
@@ -16994,6 +19880,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
+### Sharma 2026
+
+Autores: Sharma, Sharma y Goosenberg  
+Título: *Pill-Induced Esophagitis*  
+Publicación: StatPearls [Internet], NBK549818 (act. 2026-08-19)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Sin las imágenes de las figuras 1–3. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Sharma 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Sharma y Munakomi 2026
 
@@ -17019,14 +19922,16 @@ Título: *Abdominal Aortic Aneurysm*
 Publicación: StatPearls [Internet], NBK470237 (act. 2025-01-19)  
 DOI: —  
 Última revisión: 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10).  
-Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo.
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario. La clave lleva el año de la última actualización del capítulo. Releído (2026-10) para la guía de fármacos, familia fluoroquinolonas (huecos): cómo se presenta un aneurisma abdominal que crece.
 
 Citada como:
 
 1. Shaw 2025 — Shaw, Loree y Oropallo, «Abdominal Aortic Aneurysm», StatPearls [Internet], NCBI Bookshelf, última actualización 19 de enero de 2025.
+2. Shaw 2025
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 2 |
 | Cadera | — | Pregunta `ca_v4` · Vascular | 2 · razonamiento del cribado | 1 |
 | Lumbar | — | Pregunta `l_v2` · Vascular | 2 · razonamiento del cribado | 1 |
 
@@ -17104,6 +20009,57 @@ Citada como:
 | Rodilla | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.5.osteoporosis.textos.caidasDosis` | 2 · mención en el texto | 1 |
+
+### Shin 2022
+
+Autores: Shin, Nam, Song et al.  
+Título: *Carpal tunnel syndrome and tenosynovitis in women with breast cancer associated with hormone therapy: a multi-institutional analysis using a clinical data warehouse*  
+Publicación: Medicine (Baltimore) 101(5):e28786  
+DOI: 10.1097/MD.0000000000028786  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Cohorte: túnel carpiano y tenosinovitis con inhibidores de la aromatasa. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Shin 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Shrestha 2026
+
+Autores: Shrestha, Popuri, Hoffer, Qureshi, Barzilay, Dapaah et al.  
+Título: *Management of glucocorticoid-induced osteoporosis in rheumatic diseases*  
+Publicación: Best Pract Res Clin Rheumatol 40(3):102151  
+DOI: 10.1016/j.berh.2026.102151  
+Última revisión: **sin revisar**  
+Nota: Revisión; texto completo en PMC, leídas por un agente las secciones de ejercicio, caídas y guías (2026-10). Guía de fármacos, familia corticoides (huecos, 2026-10): pocos datos del ejercicio y de la prevención de caídas.
+
+Citada como:
+
+1. Shrestha 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
+
+### Shu 2022
+
+Autores: Shu, Zhang, He, Liu, Wu y Chen  
+Título: *Fluoroquinolone-associated suspected tendonitis and tendon rupture: a pharmacovigilance analysis from 2016 to 2021 based on the FAERS database*  
+Publicación: Front Pharmacol 13:990241  
+DOI: 10.3389/fphar.2022.990241  
+Última revisión: **sin revisar**  
+Nota: Análisis de notificaciones a la FDA (FAERS); texto completo en PMC, leído entero por un agente (2026-10). Mediana de aparición de la tendinitis: 3 días con ciprofloxacino, 16,5 con moxifloxacino. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): cuándo empieza, por fármaco.
+
+Citada como:
+
+1. Shu 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
 
 ### Sibrack 2024
 
@@ -17193,6 +20149,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
+### Simon y Rout 2025
+
+Autores: Simon y Rout  
+Título: *Hyperkalemia*  
+Publicación: StatPearls [Internet], NBK470284 (act. 2025-12-01)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): síntomas de la hiperpotasemia.
+
+Citada como:
+
+1. Simon y Rout 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
 ### Simonds 2022
 
@@ -17353,6 +20326,40 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
 
+### Sklepinski 2026
+
+Autores: Sklepinski, Ratzki-Leewing, Herrin et al. (último autor, McCoy)  
+Título: *Comparative safety of sulfonylurea therapies on cardiovascular and severe hypoglycemia outcomes among adults with type 2 diabetes and moderate cardiovascular risk: a target trial emulation*  
+Publicación: BMJ Open Diabetes Res Care 14(1):e005646  
+DOI: 10.1136/bmjdrc-2025-005646  
+Última revisión: **sin revisar**  
+Nota: Emulación de ensayo con datos observacionales. Texto completo leído entero en PMC con el conector de PubMed (2026-10), sin las tablas suplementarias. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Sklepinski 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Slade 2021
+
+Autores: Slade, Abela, Rozman, McClowry, Hurley, Forbes et al.  
+Título: *The impact of statin therapy and aerobic exercise training on skeletal muscle and whole-body aerobic capacity*  
+Publicación: Am Heart J Plus 5:100028  
+DOI: 10.1016/j.ahjo.2021.100028  
+Última revisión: **sin revisar**  
+Nota: Dos estudios pequeños, el segundo con 12 semanas de entrenamiento en 30 mayores; texto completo en PMC, leído en parte (resumen entero y fragmentos) por un agente (2026-10). Guía de fármacos, familia estatinas (huecos, 2026-10): entrenamiento aeróbico.
+
+Citada como:
+
+1. Slade 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
 ### Sleijser-Koehorst 2021
 
 Autores: Sleijser-Koehorst, Coppieters, Epping, Rooker, Verhagen y Scholten-Peeters  
@@ -17410,6 +20417,40 @@ Origen (Hopkinson 1990): revisión retrospectiva de 1344 esguinces en cadetes de
 | Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Palpación del LTPAI» | 4b · cita bajo el test | 2 |
 | Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Tobillo y pie | tp2 · Lesión de la Sindesmosis | Test «Squeeze test» | 4b · cita bajo el test | 2 |
+
+### Smart 2019
+
+Autores: Smart, Way, Carlson, Millar, McGowan, Swaine y Baross  
+Título: *Effects of isometric resistance training on resting blood pressure: individual participant data meta-analysis*  
+Publicación: J Hypertens 37(10):1927–1938  
+DOI: 10.1097/HJH.0000000000002105  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis con datos individuales (n = 326, 52,7 % medicados); texto completo en PMC, leído entero por un agente (2026-10). La medicación no modificó el efecto (el texto y las cifras del subanálisis no coinciden; se cita solo la conclusión del modelo). Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): isométrica.
+
+Citada como:
+
+1. Smart 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
+### Smarz 2021
+
+Autores: Smarz, Tysarowski, Zaborska, Pilichowska-Paszkiet, Sikora-Frac, Budaj y Jaxa-Chamiec  
+Título: *Chronotropic incompetence limits aerobic exercise capacity in patients taking beta-blockers: real-life observation of consecutive patients*  
+Publicación: Healthcare (Basel) 9(2):212  
+DOI: 10.3390/healthcare9020212  
+Última revisión: **sin revisar**  
+Nota: Observacional (n = 140); texto completo en PMC, leído entero por un agente (2026-10). Incompetencia cronotrópica en el 80,7 %. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): frecuencia máxima.
+
+Citada como:
+
+1. Smarz 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Smidt y Massey 2023
 
@@ -17548,6 +20589,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
 
+### Spångeus 2024
+
+Autores: Spångeus, Rydetun y Woisetschläger  
+Título: *Prevalence of denosumab-induced hypocalcemia: a retrospective observational study of patients routinely monitored with ionized calcium post-injection*  
+Publicación: Osteoporos Int 35(1):173–180  
+DOI: 10.1007/s00198-023-06926-0  
+Última revisión: **sin revisar**  
+Nota: Cohorte (1096 inyecciones, 242 pacientes); texto completo en PMC, leído por un agente (2026-10). Hipocalcemia tras el 6,3 % de las inyecciones, sobre todo en las semanas siguientes; más con enfermedad renal 4–5. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): hipocalcemia.
+
+Citada como:
+
+1. Spångeus 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
 ### Speer 1994
 
 Autores: Speer, Hannafin, Altchek y Warren  
@@ -17596,6 +20654,23 @@ Citada como:
 | Rodilla | — | `sistemas.6.embarazo.textos.diastasisPp` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.6.embarazo.textos.diastasisPp` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.diastasisPp` | 2 · mención en el texto | 1 |
+
+### Srinivas-Shankar 2026
+
+Autores: Srinivas-Shankar, Kimyaghalam y Bergman  
+Título: *Diabetic Foot Ulceration and Complications*  
+Publicación: StatPearls [Internet], NBK499887 (act. 2026-03-22)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Srinivas-Shankar 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Srisuwatchari 2023
 
@@ -17806,6 +20881,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
 
+### Suárez-Lledó 2018
+
+Autores: Suárez-Lledó, Padullés, Lozano, Cobo-Sacristán, Colls, Jódar et al.  
+Título: *Management of Tizanidine Withdrawal Syndrome: A Case Report*  
+Publicación: Clin Med Insights Case Rep 11:1179547618758022  
+DOI: 10.1177/1179547618758022  
+Última revisión: **sin revisar**  
+Nota: Caso clínico; texto completo en PMC, leído en parte (por frases) por un agente (2026-10). Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): retirada de la tizanidina.
+
+Citada como:
+
+1. Suárez-Lledó 2018
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### Suenghataiphorn 2025
 
 Autores: Suenghataiphorn, Tribuddharat, Danpanichkul, Kulthamrongsri y Kantagowit  
@@ -17959,6 +21051,40 @@ Citada como:
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Reflejos rotuliano (L3–L4) y aquíleo (L5–S1)» | 4b · cita bajo el test | 1 |
 | Lumbar | lu5 · Radiculopatía Lumbar (Déficit Neurológico) | Test «Sensibilidad (algodón, diapasón, pinchazo)» | 4b · cita bajo el test | 2 |
 
+### Tchivileva 2020
+
+Autores: Tchivileva, Hadgraft, Lim, Di Giosia, Ribeiro-Dasilva, Campbell y cols.  
+Título: *Efficacy and safety of propranolol for treatment of temporomandibular disorder pain: a randomized, placebo-controlled clinical trial*  
+Publicación: Pain 161(8):1755–1767  
+DOI: 10.1097/j.pain.0000000000001882  
+Última revisión: **sin revisar**  
+Nota: Ensayo de fase 2b (n = 200); texto completo en PMC, leído entero por un agente (2026-10). Sin diferencia significativa en el dolor; respondedores ≥ 30 % 69,0 % frente a 52,6 %. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): dolor.
+
+Citada como:
+
+1. Tchivileva 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
+### Teichtahl 2016
+
+Autores: Teichtahl, Brady, Urquhart, Wluka, Wang, Shaw y Cicuttini  
+Título: *Statins and tendinopathy: a systematic review*  
+Publicación: Med J Aust 204(3):115–121  
+DOI: 10.5694/mja15.00806  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática (4 estudios observacionales); PDF del usuario, leído entero por un agente (2026-10). Guía de fármacos, familia estatinas (huecos, 2026-10): tendinopatía y rotura.
+
+Citada como:
+
+1. Teichtahl 2016
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
 ### Tektonidou 2019
 
 Autores: Tektonidou, Andreoli, Limper et al.  
@@ -18024,6 +21150,57 @@ Citada como:
 | Codo | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.7.anticoagulado.textos.ondas` | 2 · mención en el texto | 1 |
 
+### Tenti 2020
+
+Autores: Tenti, Correale, Cheleschi, Fioravanti y Pirtoli  
+Título: *Aromatase inhibitors-induced musculoskeletal disorders: current knowledge on clinical and molecular aspects*  
+Publicación: Int J Mol Sci 21(16):5625  
+DOI: 10.3390/ijms21165625  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero sin las tablas 1–4 (2026-10). Localización, factores de riesgo, sofocos y ánimo, ejercicio. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Tenti 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Tentolouris 2019
+
+Autores: Tentolouris, Vlachakis, Tzeravini, Eleftheriadou y Tentolouris  
+Título: *SGLT2 Inhibitors: A Review of Their Antidiabetic and Cardioprotective Effects*  
+Publicación: Int J Environ Res Public Health 16(16):2965  
+DOI: 10.3390/ijerph16162965  
+Última revisión: **sin revisar**  
+Nota: Revisión. Texto completo en PMC con el conector de PubMed (2026-10): la sección 5 (efectos adversos) y las conclusiones enteras; la eficacia, por encima. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Tentolouris 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Testa 2024
+
+Autores: Testa, Schmitt, Callanan, Milner, Penvose y Owens  
+Título: *Angiotensin II receptor blockers and their applications in orthopaedic surgery and musculoskeletal medicine*  
+Publicación: Ann Jt 9:39  
+DOI: 10.21037/aoj-24-12  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa; texto completo en PMC, leído entero por un agente (2026-10). Efecto antifibrótico del losartán en animales; en personas, solo observacionales y mixtos. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): curación.
+
+Citada como:
+
+1. Testa 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
+
 ### Thai 2023
 
 Autores: Thai, Salisbury y Zito  
@@ -18075,6 +21252,40 @@ Citada como:
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Manguito rotador reparado, protección» de «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Subtipo «Manguito rotador reparado, rehabilitación» de «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 1 |
+
+### Thomas 2017
+
+Autores: Thomas, Cartmel, Harrigan, Fiellin, Capozza, Zhou y cols.  
+Título: *The effect of exercise on body composition and bone mineral density in breast cancer survivors taking aromatase inhibitors*  
+Publicación: Obesity (Silver Spring) 25(2):346–351  
+DOI: 10.1002/oby.21729  
+Última revisión: **sin revisar**  
+Nota: Ensayo (HOPE, n = 121), el mismo de Irwin 2015; texto completo en PMC, leído por un agente (2026-10). Densidad ósea sin diferencias a 12 meses. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): hueso con inhibidores de la aromatasa.
+
+Citada como:
+
+1. Thomas 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Thomas Manapurathe 2017
+
+Autores: Thomas Manapurathe, Krishna, Dewdney, Moxon, Biros y Golledge  
+Título: *Effect of blood pressure lowering medications on leg ischemia in peripheral artery disease patients: a meta-analysis of randomised controlled trials*  
+Publicación: PLoS One 12(6):e0178713  
+DOI: 10.1371/journal.pone.0178713  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 5 ensayos (n = 307); texto completo en PMC, leído entero por un agente (2026-10). Los antihipertensivos no empeoran la isquemia; los betabloqueantes solo en un ensayo cruzado. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): claudicación.
+
+Citada como:
+
+1. Thomas Manapurathe 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
 
 ### Thompson 2026
 
@@ -18146,6 +21357,23 @@ Citada como:
 | Cervical | — | Paso `ce_step3` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 5 |
 | Cervical | — | Paso `ce_step3b` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 6 |
 
+### Thota y Akbar 2023
+
+Autores: Thota y Akbar  
+Título: *Insulin*  
+Publicación: StatPearls [Internet], NBK560688 (act. 2023-07-10)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Da el máximo de la insulina rápida a los 30 minutos; Adolfsson 2022, a los 60–100. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Thota y Akbar 2023
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Thour 2026
 
 Autores: Thour, Alag, Patel y Marwaha  
@@ -18162,6 +21390,40 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
+### Tobaiqy y Alqutub 2026
+
+Autores: Tobaiqy y Alqutub  
+Título: *Adverse Events Associated with Incretin-Based Therapies: A Narrative Review on Mechanisms, Clinical Management, and Risk Mitigation*  
+Publicación: Drug Des Devel Ther 20:622972  
+DOI: 10.2147/DDDT.S622972  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa; pese al título, solo de los agonistas de GLP-1 (y la tirzepatida). Texto completo leído entero en PMC con el conector de PubMed (2026-10), con las tablas 1–4. Guía de fármacos, familia insulina y antidiabéticos (docs/farmacologia.md).
+
+Citada como:
+
+1. Tobaiqy y Alqutub 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
+### Tolla 2026
+
+Autores: Tolla, Solela, Wondafrash, Burusie, Agero, Garoma y Alemu  
+Título: *Incidence and risk factors of calcium channel blocker-related edema in hypertensive patients: a multicenter retrospective cohort study*  
+Publicación: PLoS One 21(3):e0336659  
+DOI: 10.1371/journal.pone.0336659  
+Última revisión: **sin revisar**  
+Nota: Cohorte retrospectiva (n = 292); texto completo en PMC, leído entero por un agente (2026-10). Edema sobre todo bilateral; más con más horas de pie (AOR 1,92). El tiempo de aparición difiere entre el resumen y los resultados y no se cita. Guía de fármacos, familia diuréticos y otros antihipertensivos (huecos, 2026-10): edema.
+
+Citada como:
+
+1. Tolla 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Diuréticos y otros antihipertensivos» | guía de fármacos | 1 |
 
 ### Tominaga 2023
 
@@ -18306,6 +21568,57 @@ Citada como:
 |---|---|---|---|---|
 | Lumbar | — | Paso `lu_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 1 |
 
+### Tsourdi 2021
+
+Autores: Tsourdi, Zillikens, Meier et al. (ECTS)  
+Título: *Fracture risk and management of discontinuation of denosumab therapy: a systematic review and position statement by ECTS*  
+Publicación: J Clin Endocrinol Metab 106(1):264–281  
+DOI: 10.1210/clinem/dgaa756  
+Última revisión: **sin revisar**  
+Nota: PDF aportado por el usuario, leído entero salvo las figuras 1–3 (2026-10). Rebote y fracturas vertebrales múltiples al dejar el denosumab; diferencia con los bifosfonatos. Recomendaciones por opinión de expertos, sin grados. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Tsourdi 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Tsuchiya 2022
+
+Autores: Tsuchiya, Okano, Shiose, Kudo, Hayakawa, Kuroda y Toyone  
+Título: *Atypical femoral fracture mimicking lumbar radiculopathy in two patients taking bisphosphonate long-term: a case report*  
+Publicación: BMC Musculoskelet Disord 23(1):1103  
+DOI: 10.1186/s12891-022-05990-7  
+Última revisión: **sin revisar**  
+Nota: Dos casos; texto completo en PMC, leído por un agente (2026-10). Dolor al cargar y caminar, no en reposo; difícil de distinguir de una radiculopatía con la exploración. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): fractura atípica.
+
+Citada como:
+
+1. Tsuchiya 2022
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Tsujimoto 2017
+
+Autores: Tsujimoto, Sugiyama, Shapiro, Noda y Kajio  
+Título: *Risk of cardiovascular events in patients with diabetes mellitus on β-blockers*  
+Publicación: Hypertension 70(1):103–110  
+DOI: 10.1161/HYPERTENSIONAHA.117.09259  
+Última revisión: **sin revisar**  
+Nota: Análisis post hoc del ensayo ACCORD; texto completo en PMC, leído entero por un agente (2026-10). Hipoglucemia grave 1,5 % frente a 1,1 % al año, HR 1,36. Guía de fármacos, familia betabloqueantes (huecos, 2026-10): hipoglucemia.
+
+Citada como:
+
+1. Tsujimoto 2017
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Betabloqueantes» | guía de fármacos | 1 |
+
 ### Tumialán 2010
 
 Autores: Tumialán, Ponton, Garvin y Gluf  
@@ -18324,6 +21637,23 @@ Citada como:
 | Todas (tiempos de tejido) | — | Fila «Prótesis de disco lumbar» (Columna) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Fila «Prótesis de disco cervical» (Columna) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Fila «Artrodesis cervical anterior» (Columna) | cabecera · tiempos de tejido | 1 |
+
+### Uson 2021
+
+Autores: Uson, Rodriguez-García, Castellanos-Moreira, O'Neill, Doherty, Boesen et al.  
+Título: *EULAR recommendations for intra-articular therapies*  
+Publicación: Ann Rheum Dis 80(10):1299–1305  
+DOI: 10.1136/annrheumdis-2021-220266  
+Última revisión: **sin revisar**  
+Nota: Recomendaciones EULAR (revisión sistemática y Delphi); texto completo en PMC, leídas por un agente la tabla de recomendaciones y las secciones de reinyección, cuidados posteriores e infección (2026-10). Guía de fármacos, familia corticoides (huecos, 2026-10): no sobrecargar 24 h sin inmovilizar; la norma de 3–4 infiltraciones al año, sin investigación detrás.
+
+Citada como:
+
+1. Uson 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
 
 ### Uysal 2015
 
@@ -18434,6 +21764,23 @@ Citada como:
 | Tobillo y pie | — | `sistemas.4.mastocitos.textos.riesgoAlto` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.4.mastocitos.textos.asociacion` | 2 · mención en el texto | 2 |
 
+### Van der Sluiszen 2019
+
+Autores: van der Sluiszen, Vermeeren, Verster, van de Loo, van Dijken, Veldstra et al.  
+Título: *Driving performance and neurocognitive skills of long-term users of benzodiazepine anxiolytics and hypnotics*  
+Publicación: Hum Psychopharmacol 34(6):e2715  
+DOI: 10.1002/hup.2715  
+Última revisión: **sin revisar**  
+Nota: Casos y controles con prueba de conducción en carretera; texto completo en PMC, leído entero por un agente (2026-10). La clave lleva la partícula en mayúscula para que citasEnTexto() la reconozca. Guía de fármacos, familia benzodiacepinas y relajantes musculares (huecos, 2026-10): conducción.
+
+Citada como:
+
+1. Van der Sluiszen 2019
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Benzodiacepinas y relajantes musculares» | guía de fármacos | 1 |
+
 ### van der Windt 2010
 
 Autores: van der Windt, Simons, Riphagen, Ammendolia, Verhagen, Laslett, Devillé, Deyo, Bouter, de Vet y Aertgeerts  
@@ -18506,6 +21853,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Cadera | ca17 · Dolor Inguinal Relacionado con el Psoas Ilíaco | Pauta de tratamiento | 5 · cita de la pauta | 1 |
+
+### Vehmanen 2021
+
+Autores: Vehmanen, Sievänen, Kellokumpu-Lehtinen, Nikander, Huovinen, Ruohola y cols.  
+Título: *Five-year follow-up results of aerobic and impact training on bone mineral density in early breast cancer patients*  
+Publicación: Osteoporos Int 32(3):473–482  
+DOI: 10.1007/s00198-020-05611-w  
+Última revisión: **sin revisar**  
+Nota: Ensayo (BREX, n = 573); texto completo en PMC, leído por un agente (2026-10). Sin efecto del entrenamiento en la densidad ósea de las posmenopáusicas. Guía de fármacos, familia fármacos que tocan el hueso (huecos, 2026-10): hueso con inhibidores de la aromatasa.
+
+Citada como:
+
+1. Vehmanen 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Verhagen 2017
 
@@ -18778,6 +22142,23 @@ Citada como:
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Compresión activa (O’Brien) para la AC» | 4b · cita bajo el test | 4 |
 | Hombro | h7 · Artropatía Acromioclavicular | Test «Test de Paxinos» | 4b · cita bajo el test | 2 |
 
+### Wang 2016
+
+Autores: Wang, Li, Zhou, Piao y Hao  
+Título: *Effects of Statins on Bone Mineral Density and Fracture Risk: A PRISMA-compliant Systematic Review and Meta-Analysis*  
+Publicación: Medicine (Baltimore) 95(22):e3042  
+DOI: 10.1097/MD.0000000000003042  
+Última revisión: **sin revisar**  
+Nota: Metaanálisis de 7 ensayos aleatorizados; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia estatinas (huecos, 2026-10): hueso y fracturas.
+
+Citada como:
+
+1. Wang 2016
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
+
 ### Wang 2017
 
 Autores: Wang, Borgman, Vertuani y Nilsson  
@@ -18828,6 +22209,57 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `pq_nervio_col` · Posquirúrgico | 2 · razonamiento del cribado | 1 |
+
+### Wang 2024
+
+Autores: Wang, Lai, Goodin, Reise, Shorr y Lo-Ciganic  
+Título: *Injurious Fall Risk Differences Among Older Adults With First-Line Depression Treatments*  
+Publicación: JAMA Netw Open 7(8):e2435535  
+DOI: 10.1001/jamanetworkopen.2024.35535  
+Última revisión: **sin revisar**  
+Nota: Emulación de ensayo diana (mayores de 65 años con depresión); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia antidepresivos (huecos, 2026-10): menos caídas con lesión con duloxetina o venlafaxina que sin tratar.
+
+Citada como:
+
+1. Wang 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
+### Wang 2025
+
+Autores: Wang, Yii, Teh, Premaratne y Chiang  
+Título: *Osteonecrosis of the external auditory canal in two patients on denosumab therapy*  
+Publicación: JBMR Plus 9(10):ziaf134  
+DOI: 10.1093/jbmrpl/ziaf134  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero (2026-10). Dos casos y revisión breve: síntomas, afectación de los dos oídos. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Wang 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
+
+### Wang y Tariq 2025
+
+Autores: Wang, Tariq y Chandra  
+Título: *Acute Pancreatitis*  
+Publicación: StatPearls [Internet], NBK482468 (act. 2025-08-02)  
+DOI: —  
+Última revisión: **sin revisar**  
+Nota: Capítulo de StatPearls (NCBI Bookshelf); PDF aportado por el usuario y leído entero (2026-10). La clave lleva el año de la última actualización del capítulo. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): cómo es el dolor de la pancreatitis (no menciona los GLP-1 ni las gliptinas). La clave lleva los dos primeros autores porque «Wang 2025» ya es otra referencia.
+
+Citada como:
+
+1. Wang y Tariq 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Warden 2007
 
@@ -18907,6 +22339,23 @@ Citada como:
 | Rodilla | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.7.anticoagulado.textos.puncion` | 2 · mención en el texto | 1 |
+
+### Wathra 2020
+
+Autores: Wathra, Mulsant, Thomson, Goldberger, Lenze, Karp et al.  
+Título: *Hypertension and orthostatic hypotension with venlafaxine treatment in depressed older adults*  
+Publicación: J Psychopharmacol 34(10):1112–1118  
+DOI: 10.1177/0269881120944154  
+Última revisión: **sin revisar**  
+Nota: Cohorte prospectiva sin grupo control (429 mayores de 60 años); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia antidepresivos (huecos, 2026-10): hipotensión ortostática y caídas.
+
+Citada como:
+
+1. Wathra 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
 
 ### Waymack y An 2023
 
@@ -19160,6 +22609,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
 
+### Wilcox 2020
+
+Autores: Wilcox, Villasis-Keever, Sena, Knoll y Fife  
+Título: *Evaluation of disability in patients exposed to fluoroquinolones*  
+Publicación: BMC Pharmacol Toxicol 21(1):40  
+DOI: 10.1186/s40360-020-00415-4  
+Última revisión: **sin revisar**  
+Nota: Análisis de notificaciones (FAERS) de autores de Janssen (conflicto de interés declarado); texto completo en PMC, leído entero por un agente (2026-10). Discapacidad: RR 1,09 frente a azitromicina o cotrimoxazol, sin diferencia. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): contradicción con EMA 2018.
+
+Citada como:
+
+1. Wilcox 2020
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
+
 ### Wilke y Behringer 2021
 
 Autores: Wilke y Behringer  
@@ -19278,6 +22744,23 @@ Citada como:
 | Cadera | ca2 · Síndrome de Pinzamiento Femoroacetabular (SIFA) | Test «Test de Thomas» | 4b · cita bajo el test | 1 |
 | Cadera | ca3 · Desgarro del Labrum Acetabular | Test «Test de Thomas» | 4b · cita bajo el test | 2 |
 
+### Wong 2024
+
+Autores: Wong, Iwagami, Taniguchi, Kawamura, Suzuki, Douglas y cols.  
+Título: *The role of psychotropics on the associations between extreme temperature and heat-related outcomes among people with mental health conditions: population-based study*  
+Publicación: Psychol Med 54:4658–4664  
+DOI: 10.1017/S0033291724002824  
+Última revisión: **sin revisar**  
+Nota: Serie de casos autocontrolada (datos de Ibaraki, Japón); PDF del usuario, leído entero (2026-10). Depresión: olas de calor IRR 1,54 con antidepresivo y 1,64 sin él (p de interacción 0,33). Guía de fármacos, familia antidepresivos (2026-10): calor.
+
+Citada como:
+
+1. Wong 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Antidepresivos (ISRS, IRSN, tricíclicos)» | guía de fármacos | 1 |
+
 ### Wood 2023
 
 Autores: Wood, Davis y Carter  
@@ -19332,6 +22815,40 @@ Citada como:
 | Todas (tiempos de tejido) | — | Fila «Rotura / reparación de tendón» (Tendón) | cabecera · tiempos de tejido | 1 |
 | Todas (tiempos de tejido) | — | Fase de reparación «Remodelación (tendón)» | cabecera · tiempos de tejido | 1 |
 
+### Wu 2026
+
+Autores: Wu, Yang, Li, Zhao, Chen, Diao y Li  
+Título: *Effects of fluoroquinolones on aortic aneurysm or dissection processes: a systematic review and meta-analysis*  
+Publicación: Rev Cardiovasc Med 27(3):43656  
+DOI: 10.31083/RCM43656  
+Última revisión: **sin revisar**  
+Nota: Revisión sistemática y metaanálisis; texto completo en PMC, leído entero por un agente (2026-10). RR 3,40 a los 30 días; OR 1,10 al año, no significativo. Guía de fármacos, familia fluoroquinolonas (huecos, 2026-10): aorta, contradicción con Brown 2023.
+
+Citada como:
+
+1. Wu 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fluoroquinolonas» | guía de fármacos | 1 |
+
+### Xia 2025
+
+Autores: Xia, Zhao, Hu, Wang y Lu  
+Título: *Incidence and risk factors for postoperative urinary retention in older patients with hip fracture: a scoping review*  
+Publicación: BMJ Open 15(9):e100368  
+DOI: 10.1136/bmjopen-2025-100368  
+Última revisión: **sin revisar**  
+Nota: Revisión de alcance (12 estudios, 2660 pacientes); texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia opioides (huecos, 2026-10): retención tras operar una fractura de cadera.
+
+Citada como:
+
+1. Xia 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Opioides» | guía de fármacos | 1 |
+
 ### Xiang 2025
 
 Autores: Xiang, Lei, Xiang, Qiu, Wang y Zhang  
@@ -19356,6 +22873,23 @@ Citada como:
 | Rodilla | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
 | Codo | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
 | Tobillo y pie | — | `sistemas.7.anticoagulado.textos.ejercicio` | 2 · mención en el texto | 1 |
+
+### Xue 2021
+
+Autores: Xue, Wu, Tang, Tan y Benedict  
+Título: *Oral antidiabetics and sleep among type 2 diabetes patients: data from the UK Biobank*  
+Publicación: Front Endocrinol (Lausanne) 12:763138  
+DOI: 10.3389/fendo.2021.763138  
+Última revisión: **sin revisar**  
+Nota: Transversal (n = 11 806); texto completo en PMC, leído entero por un agente (2026-10). No metformina (86 % sulfonilureas) OR 1,24 de dificultad para dormir; metformina sin diferencias. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): sueño.
+
+Citada como:
+
+1. Xue 2021
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
 
 ### Yale 2020
 
@@ -19417,6 +22951,23 @@ Citada como:
 |---|---|---|---|---|
 | fármacos | — | Familia «Anticoagulantes y antiagregantes» | guía de fármacos | 1 |
 
+### Yang 2026
+
+Autores: Yang y Hung  
+Título: *GLP-1 receptor agonist therapy and 2-year structural outcomes after arthroscopic rotator cuff repair in type 2 diabetes*  
+Publicación: BMC Musculoskelet Disord 27(1):699  
+DOI: 10.1186/s12891-026-10059-w  
+Última revisión: **sin revisar**  
+Nota: Cohorte emparejada (957 por grupo); texto completo en PMC, leído entero por un agente (2026-10). Sin diferencias en revisiones ni re-roturas a 2 años. Guía de fármacos, familia insulina y antidiabéticos (huecos, 2026-10): tendón.
+
+Citada como:
+
+1. Yang 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Insulina y antidiabéticos» | guía de fármacos | 1 |
+
 ### Yang y Qu 2018
 
 Autores: Yang y Qu  
@@ -19458,7 +23009,7 @@ Título: *Corticosteroid Adverse Effects*
 Publicación: StatPearls [Internet], NBK531462 (act. 2023-07-03)  
 DOI: —  
 Última revisión: **sin revisar**  
-Nota: Capítulo de StatPearls (NCBI Bookshelf), leído entero en la sesión (2026-10). La clave lleva el año de la última actualización del capítulo. Los corticoides pueden quitar la fiebre y los signos de infección; osteonecrosis con más de 20 mg/día mantenidos. Condición especial «Lupus (LES)» (Fase P, docs/lupus.md).
+Nota: Capítulo de StatPearls (NCBI Bookshelf), leído entero en la sesión (2026-10). La clave lleva el año de la última actualización del capítulo. Los corticoides pueden quitar la fiebre y los signos de infección; osteonecrosis con más de 20 mg/día mantenidos. Condición especial «Lupus (LES)» (Fase P, docs/lupus.md). Releído entero (PDF del usuario, 2026-10) para la guía de fármacos, familia corticoides: infección, piel, osteonecrosis con más de 20 mg/día, sueño.
 
 Citada como:
 
@@ -19467,12 +23018,14 @@ Citada como:
 3. Yasir 2023 — Yasir, Goyal y Sonthalia, «Corticosteroid Adverse Effects», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023, «Adverse Effects» (infecciones).
 4. Yasir 2023 — Yasir, Goyal y Sonthalia, «Corticosteroid Adverse Effects», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023, «Adverse Effects» (musculoesqueléticos).
 5. Yasir 2023 — Yasir, Goyal y Sonthalia, «Corticosteroid Adverse Effects», StatPearls [Internet], NCBI Bookshelf, última actualización 3 de julio de 2023, «Adverse Effects» (miopatía).
+6. Yasir 2023
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (sistemas comunes) | — | Pregunta `les_u_fiebre` · Lupus | 2 · razonamiento del cribado | 3 |
 | Todas (sistemas comunes) | — | Pregunta `les_d_osteonecrosis` · Lupus | 2 · razonamiento del cribado | 4 |
 | Todas (sistemas comunes) | — | Pregunta `les_d_debilidad` · Lupus | 2 · razonamiento del cribado | 5 |
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 6 |
 | Hombro | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
 | Hombro | — | `sistemas.3.lupus.textos.fiebre` | 2 · mención en el texto | 2 |
 | Cadera | — | `sistemas.3.lupus.textos.tecnica4b` | 2 · mención en el texto | 1 |
@@ -19515,6 +23068,23 @@ En un estudio retrospectivo, con dolor en la línea media la probabilidad de que
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» (en `razonamiento.detalle`) | 4b · mención en el texto | 3 |
 | Lumbar | lu8 · Dolor de la Articulación Sacroilíaca | Test «Ausencia de dolor lumbar en la línea media» («¿Por qué?») | 4b · razonamiento del test | 4 |
 
+### Youssef 2016
+
+Autores: Youssef, Novosad y Winthrop  
+Título: *Infection Risk and Safety of Corticosteroid Use*  
+Publicación: Rheum Dis Clin North Am 42(1):157–176  
+DOI: 10.1016/j.rdc.2015.08.004  
+Última revisión: **sin revisar**  
+Nota: Revisión narrativa; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia corticoides (huecos, 2026-10): más infección grave ya con 5 mg/día o menos en estudios observacionales.
+
+Citada como:
+
+1. Youssef 2016
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Corticoides» | guía de fármacos | 1 |
+
 ### Yuan 2016
 
 Autores: Yuan, Hsu y Lai  
@@ -19531,6 +23101,23 @@ Citada como:
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
 | Todas (tiempos de tejido) | — | Subtipo «Vertebral por compresión, sin cirugía» de «Fractura» (Hueso) | cabecera · tiempos de tejido | 1 |
+
+### Yuen 2026
+
+Autores: Yuen, Chen, Chan, Hong, Kim, Hayes et al.; último autor, Man  
+Título: *Risk of fracture with gabapentinoid treatment in older adults: a multinational population-based study*  
+Publicación: Lancet Healthy Longev 7(6):100868  
+DOI: 10.1016/j.lanhl.2026.100868  
+Última revisión: **sin revisar**  
+Nota: Dos series de casos autocontroladas (Reino Unido y Corea del Sur, mayores de 60 años, 22 965 fracturas); PDF del usuario, leído entero por un agente (2026-10), sin el apéndice. Guía de fármacos, familia gabapentinoides (huecos, 2026-10): riesgo más alto antes de empezar, atribuido sobre todo a la indicación.
+
+Citada como:
+
+1. Yuen 2026
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Gabapentinoides» | guía de fármacos | 1 |
 
 ### Zabaglo 2024
 
@@ -19608,6 +23195,23 @@ Citada como:
 | Lumbar | — | Paso `lu_step2` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 2 |
 | Rodilla | — | Pregunta `r_v1` · Vascular | 2 · razonamiento del cribado | 1 |
 | Tobillo y pie | — | Pregunta `tp_v1` · Vascular | 2 · razonamiento del cribado | 1 |
+
+### Zeng 2024
+
+Autores: Zeng, Yang, Wang y Meng  
+Título: *The healing and therapeutic effects of perioperative bisphosphonate use in patients with fragility fractures: meta-analysis of 19 clinical trials*  
+Publicación: Osteoporos Int 35(11):1897–1907  
+DOI: 10.1007/s00198-024-07191-5  
+Última revisión: **sin revisar**  
+Nota: Texto completo en PMC, leído entero sin el material suplementario (2026-10). El bifosfonato perioperatorio no retrasa la consolidación. Guía de fármacos, familia «Fármacos que tocan el hueso» (docs/farmacologia.md).
+
+Citada como:
+
+1. Zeng 2024
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Fármacos que tocan el hueso» | guía de fármacos | 1 |
 
 ### Zhang 2010
 
@@ -19693,6 +23297,23 @@ Técnica original: paciente sentado de espaldas; codo a 90°, hombro a 20° de e
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» (en `razonamiento.detalle`) | 4b · mención en el texto | 6 |
 | Hombro | h3 · Rotura del Manguito Rotador | Test «Internal Rotation Lag Sign» | 4b · cita bajo el test | 7 |
 | Hombro | — | Paso `h_step4` del árbol («¿Por qué esta pregunta?») | 4 · razonamiento del árbol | 8 |
+
+### Zhou 2025
+
+Autores: Zhou, Wang, Chen, Wang y Xu  
+Título: *Investigating the controversy surrounding statin therapy and Achilles tendinopathy using Mendelian randomization analysis*  
+Publicación: Int J Clin Pharm 47(5):1186–1194  
+DOI: 10.1007/s11096-025-01893-4  
+Última revisión: **sin revisar**  
+Nota: Aleatorización mendeliana; texto completo en PMC, leído entero por un agente (2026-10). Guía de fármacos, familia estatinas (huecos, 2026-10): tendinopatía del Aquiles.
+
+Citada como:
+
+1. Zhou 2025
+
+| Región | Hipótesis | Dónde | Fase | Cita |
+|---|---|---|---|---|
+| fármacos | — | Familia «Estatinas» | guía de fármacos | 1 |
 
 ### Ziu 2023
 

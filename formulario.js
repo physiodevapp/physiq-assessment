@@ -9,7 +9,7 @@
 // de la app.
 // ============================================================
 import { state } from './state.js';
-import { saveSession, injectQuickInputBar, _actualizarBandas } from './app.js';
+import { saveSession, injectQuickInputBar, _actualizarBandas, verbalHTML } from './app.js';
 import { pistasHTML } from './lib/pistas.js';
 import COMUN from './formularios/comun.js';
 
@@ -168,7 +168,7 @@ function renderItem(scope, it, resp) {
     const fn = it.tipo === 'unica' ? 'fpUnica' : 'fpMulti';
     const sel = o => it.tipo === 'unica' ? v === o : (v || []).includes(o);
     cuerpo = `<div class="fp-opts">${it.opciones.map((o, i) => btn(sel(o), o, `${fn}('${scope}','${it.id}',${i})`)).join('')}</div>`;
-    if (it.detalle && sel(it.detalle.opcion)) cuerpo += textarea(scope, `${it.id}__detalle`, it.detalle.etiqueta, 1, resp);
+    if (it.detalle && sel(it.detalle.opcion)) cuerpo += textareaOVerbal(scope, `${it.id}__detalle`, it.detalle.etiqueta, 1, resp, undefined, it.detalle.verbal);
   } else if (it.tipo === 'escala' && it.estiloSeveridad) {
     cuerpo = renderEscalaSeveridad(scope, it, v);
   } else if (it.tipo === 'escala') {
@@ -184,9 +184,20 @@ function renderItem(scope, it, resp) {
         <span class="fp-fila-opts">${it.opciones.map((o, oi) => btn(m[f.id] === o, o, `fpMatriz('${scope}','${it.id}',${fi},${oi})`)).join('')}</span>
       </div>`).join('')}</div>`;
   } else if (it.tipo === 'texto') {
-    return `<div class="fp-item">${textarea(scope, it.id, it.texto, it.lineas || 1, resp, it.ayuda)}</div>`;
+    return `<div class="fp-item">${textareaOVerbal(scope, it.id, it.texto, it.lineas || 1, resp, it.ayuda, it.verbal)}</div>`;
   }
   return `<div class="fp-item">${cab}${cuerpo}</div>`;
+}
+
+// Modo guía: sin teclear, la pregunta queda como frase para decir en voz alta
+// (`verbal` si el esquema la tiene corta; si no, el enunciado). Con texto ya
+// escrito la caja se queda: nunca se esconde un dato. Sirve a las preguntas
+// `texto` y al `detalle` de una opción.
+function textareaOVerbal(scope, key, etiqueta, lineas, resp, ayuda, verbal) {
+  if (state.registro === 'guia' && !(resp[key] || '').trim()) {
+    return `<div class="verbal">${verbalHTML(`fp:${scope}:${key}`, verbal || etiqueta, { ancla: ayuda })}</div>`;
+  }
+  return textarea(scope, key, etiqueta, lineas, resp, ayuda);
 }
 
 function textarea(scope, key, etiqueta, lineas, resp, ayuda) {
@@ -318,6 +329,31 @@ function resumenIADe(scope) {
     if (vacio(v)) return;
     out.push({ g: it.ia, q: preguntaCorta(it, s), a: textoRespuesta(it, v, resp, true) });
   }));
+  return out;
+}
+
+// Modo guía (docs/modo-guia.md, decisión 9): las preguntas de texto que se
+// hicieron de palabra porque su caja estaba vacía (las que ya tienen texto van
+// con sus respuestas en resumenFormularioIA). Las mismas que se ven en
+// pantalla: solo las visibles y el `detalle` de una opción marcada.
+// → [{ id, g, q }] (id = la clave de state.preguntado)
+export function preguntasVerbalesFormulario() {
+  const out = [];
+  for (const scope of ['comun', ...(state.region ? [state.region] : [])]) {
+    const esquema = esquemaDe(scope);
+    if (!esquema) continue;
+    const resp = scope === 'comun' ? fp().comun : (fp().regiones[scope] || {});
+    esquema.secciones.forEach(s => s.items.forEach(it => {
+      if (!visible(it, resp)) return;
+      if (it.tipo === 'texto' && !(resp[it.id] || '').trim()) out.push({ id: `fp:${scope}:${it.id}`, g: it.ia, q: it.verbal || it.texto });
+      if (it.detalle) {
+        const v = resp[it.id];
+        const marcada = Array.isArray(v) ? v.includes(it.detalle.opcion) : v === it.detalle.opcion;
+        const clave = `${it.id}__detalle`;
+        if (marcada && !(resp[clave] || '').trim()) out.push({ id: `fp:${scope}:${clave}`, g: it.ia, q: it.detalle.verbal || it.detalle.etiqueta });
+      }
+    }));
+  }
   return out;
 }
 
