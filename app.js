@@ -48,6 +48,7 @@ import { sintomaVacio, normalizarSintomas, payloadSintomas, lineaP1, lineaSecund
 import { pintarSintomas } from './sintomas.js';
 import { condicionesHTML } from './lib/condiciones.js';
 import { farmacosHTML, FILTRO_PACIENTE_FARM } from './lib/farmacos.js';
+import { ejercicioHTML, nivelFichaHTML } from './lib/ejercicio.js';
 import { familiasMarcables, familiasPendientesNombres, normalizarFarmacos, farmacosVacio, derivadasDeTarjetas,
   familiasPaciente, textoFamiliaPaciente, fmPayload, FAMILIA_AC } from './lib/farmacos-paciente.js';
 import { TEXTOS_FARMACOS_PACIENTE } from './data/farmacos-paciente.js';
@@ -136,6 +137,7 @@ window.addEventListener('popstate', e => {
   if (_preguntaHistorial) { cerrarPreguntaIA({ desdeHistorial: true }); return; }
   if (_condHistorial) { cerrarCondiciones({ desdeHistorial: true }); return; }
   if (_farmHistorial) { cerrarFarmacos({ desdeHistorial: true }); return; }
+  if (_ejercicioHistorial) { cerrarEjercicio({ desdeHistorial: true }); return; }
   if (_tejidosHistorial) { cerrarTiemposTejido({ desdeHistorial: true }); return; }
   if (_cuestHistorial) { cerrarCuestionarios({ desdeHistorial: true }); return; }
   if (_pendingBackNav) {
@@ -4417,6 +4419,7 @@ function _closeAllOverlays() {
   cerrarPreguntaIA({ sinHistorial: true });
   cerrarCondiciones({ sinHistorial: true });
   cerrarFarmacos({ sinHistorial: true });
+  cerrarEjercicio({ sinHistorial: true });
   cerrarTiemposTejido({ sinHistorial: true });
   cerrarCuestionarios({ sinHistorial: true });
   closePhaseSheet();
@@ -4780,7 +4783,7 @@ function cerrarHerramientas({ desdeHistorial = false, sinHistorial = false, tras
 
 function herramientaElegir(k) {
   cerrarHerramientas({ traspaso: true });
-  ({ condiciones: abrirCondiciones, farmacos: abrirFarmacos, tejidos: abrirTiemposTejido, cuestionarios: abrirCuestionarios, pregunta: abrirPreguntaIA })[k]?.();
+  ({ condiciones: abrirCondiciones, farmacos: abrirFarmacos, ejercicio: abrirEjercicio, tejidos: abrirTiemposTejido, cuestionarios: abrirCuestionarios, pregunta: abrirPreguntaIA })[k]?.();
   // Si la herramienta no llegó a abrirse, la entrada del menú sobra
   if (_reusarEntrada) { _reusarEntrada = false; _popIgnorar = true; history.back(); }
 }
@@ -5235,6 +5238,61 @@ document.addEventListener('click', e => {
   document.getElementById('farmPanel').scrollTop = 0;
   document.querySelector('#farmCuerpo [data-filtro-farmaco]')?.focus({ preventScroll: true });
 }, true);   // en captura: el panel corta la propagación del click (como «✨ IA»)
+
+// ─── Efectos del ejercicio (cabecera, cualquier fase, también en el hub) ───
+// docs/efectos-ejercicio.md: qué hace el ejercicio en el cuerpo y hasta dónde
+// llega la evidencia (data/ejercicio.js, lib/ejercicio.js). No lee ni guarda
+// datos del paciente. Mismo patrón que la guía de fármacos.
+let _ejercicioHistorial = false;
+function abrirEjercicio() {
+  const overlay = document.getElementById('ejercicioOverlay');
+  if (!overlay || overlay.classList.contains('open')) return;
+  document.getElementById('ejercicioCuerpo').innerHTML = ejercicioHTML();
+  overlay.classList.add('open');
+  document.getElementById('ejercicioBtn')?.setAttribute('aria-expanded', 'true');
+  lockBodyScroll();
+  window.parent.postMessage({ type: 'PHYSIQ_WIDGET_HIDE' }, '*');
+  if (_esMovil()) {
+    _entradaOverlay({ phase: state.currentPhase, ejercicio: true });
+    _ejercicioHistorial = true;
+  }
+  const panel = document.getElementById('ejercicioPanel');
+  panel.scrollTop = 0;
+  panel.focus({ preventScroll: true });
+}
+
+function cerrarEjercicio({ desdeHistorial = false, sinHistorial = false, despues = null } = {}) {
+  const overlay = document.getElementById('ejercicioOverlay');
+  if (!overlay?.classList.contains('open')) return;
+  overlay.classList.remove('open');
+  cerrarFicha({ sinFoco: true });
+  const panel = document.getElementById('ejercicioPanel');
+  panel.style.transform = ''; panel.style.transition = '';
+  unlockBodyScroll();
+  window.parent.postMessage({ type: 'PHYSIQ_WIDGET_SHOW' }, '*');
+  const btn = document.getElementById('ejercicioBtn');
+  btn?.setAttribute('aria-expanded', 'false');
+  if (_ejercicioHistorial) {
+    _ejercicioHistorial = false;
+    if (!desdeHistorial && !sinHistorial) {
+      _popIgnorar = true; _trasPop = despues; history.back();
+      if (!despues) _botonCabecera(btn)?.focus({ preventScroll: true });
+      return;
+    }
+  }
+  if (despues) despues();
+  else if (!sinHistorial) _botonCabecera(btn)?.focus({ preventScroll: true });
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('ejercicioOverlay')?.classList.contains('open')) cerrarEjercicio();
+});
+// Chip de nivel de una afirmación: abre la ficha flotante con su explicación
+// (en captura: el panel corta la propagación del click, como «✨ IA» y las citas)
+document.addEventListener('click', e => {
+  const b = e.target instanceof Element ? e.target.closest('#ejercicioCuerpo button.ej-nivel') : null;
+  if (!b) return;
+  alternarFicha(b, nivelFichaHTML(b.dataset.nivel), { id: 'ejNivelFicha', clase: 'ej-ficha-flotante' });
+}, true);
 
 // ─── Calculadora de cuestionarios (cabecera, cualquier fase, también en el hub) ───
 // El paciente rellena la hoja en papel; aquí se toca el valor de cada ítem y
@@ -5891,7 +5949,7 @@ export { saveSession, showConfirmBanner, paintNav, buildPhysiQPayload, getUrgenc
 // scope, never a module's private scope.
 Object.assign(window, {
   abrirFormularioPrevio, abrirRazonamiento, abrirRazonBandera, toggleRazonBandera, cerrarRazonamiento, irACronologia, irAPreguntaCribado, appendQuickPhrase, buildResults, closePhaseSheet, closeSessionPanel, compartirNotas,
-  abrirMenuCompartir, cerrarMenuCompartir, abrirHerramientas, cerrarHerramientas, herramientaElegir, abrirPreguntaIA, cerrarPreguntaIA, abrirTiemposTejido, cerrarTiemposTejido, abrirCondiciones, cerrarCondiciones, irACondicion, abrirFarmacos, cerrarFarmacos, selectACEstado, toggleACToma, irATarjetaAC, toggleFarmaco, farmacosPreguntarIA, abrirCuestionarios, cerrarCuestionarios, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
+  abrirMenuCompartir, cerrarMenuCompartir, abrirHerramientas, cerrarHerramientas, herramientaElegir, abrirPreguntaIA, cerrarPreguntaIA, abrirTiemposTejido, cerrarTiemposTejido, abrirCondiciones, cerrarCondiciones, irACondicion, abrirFarmacos, cerrarFarmacos, abrirEjercicio, cerrarEjercicio, selectACEstado, toggleACToma, irATarjetaAC, toggleFarmaco, farmacosPreguntarIA, abrirCuestionarios, cerrarCuestionarios, compartirInformePaciente, compartirInformeIA, finalizarValoracion, goToPhase, goToPhase2Next, handleTranslateClick, hideTranslateBanner,
   navStepClick, promptClearSession, resetApp, saveSession, scrollToActiveSisHeader, scrollToFormularioPrevio, selectIrritab,
   selectNRS, selectOption, selectPsico, selectRegion, selectSQ, selectSistQ,
   tocarZonaSilueta, elegirSexoSilueta,
@@ -5980,6 +6038,8 @@ Object.assign(window, {
   if (cond) initSwipe(cond, () => cerrarCondiciones(), _esMovil);
   const farm = document.getElementById('farmPanel');
   if (farm) initSwipe(farm, () => cerrarFarmacos(), _esMovil);
+  const ejer = document.getElementById('ejercicioPanel');
+  if (ejer) initSwipe(ejer, () => cerrarEjercicio(), _esMovil);
   const tejidos = document.getElementById('tejidosPanel');
   if (tejidos) initSwipe(tejidos, () => cerrarTiemposTejido(), _esMovil);
   const cuest = document.getElementById('cuestPanel');
