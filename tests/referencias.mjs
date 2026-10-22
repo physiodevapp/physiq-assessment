@@ -135,7 +135,7 @@ const ancla = k => k.toLowerCase().replace(/[^\p{L}\d\s-]/gu, '').replace(/\s+/g
 
 // Todas las citas de data/: literatura (clave → citas y usos), tarjetas
 // (región → citas y usos), tests sin fuente y otras fuentes sin campo propio.
-export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, CONDICIONES = null, FARMACOS = null, REFERENCIAS = {}, testPuntua }) {
+export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, CONDICIONES = null, FARMACOS = null, EJERCICIO = null, REFERENCIAS = {}, testPuntua }) {
   const alias = Object.entries(REFERENCIAS).flatMap(([k, r]) => (r.citadaComo || []).map(a => [k, a]));
   const lit = new Map();        // clave → { citas: [texto], usos: [] }
   const tarjetas = new Map();   // región → { citas: [texto], usos: [] }
@@ -314,6 +314,14 @@ export function recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPO
     }
   }
 
+  // Guía «Efectos del ejercicio» (data/ejercicio.js, docs/efectos-ejercicio.md)
+  for (const b of EJERCICIO || []) {
+    for (const clave of b.fuentes || []) {
+      anotar(lit, clave, clave, { region: 'ejercicio', hyp: '—', donde: `Bloque «${b.titulo}»`,
+        fase: 'guía de efectos del ejercicio', efecto: 'guía de efectos del ejercicio (cabecera)' });
+    }
+  }
+
   for (const [region, scr] of Object.entries(SYSTEMIC_SCREENING)) {
     if (scr.urgencia) otras.push({ region, que: `Recuadro «${scr.urgencia.titulo}»`, fase: '2', fuente: 'Literal de la tarjeta de consulta (URGENCIA)' });
     for (const sis of scr.sistemas || []) {
@@ -350,9 +358,9 @@ function lineaRegistro(r) {
   return [xs.join('  \n'), ''];
 }
 
-export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, CONDICIONES = null, FARMACOS = null, REFERENCIAS, testPuntua }) {
+export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO = null, PLAN_TRATAMIENTO = null, IRRITABILIDAD = null, CONDICIONES = null, FARMACOS = null, EJERCICIO = null, REFERENCIAS, testPuntua }) {
   const regiones = Object.keys(CIF_TREES);
-  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, REFERENCIAS, testPuntua });
+  const { lit, tarjetas, sinFuente, otras } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, REFERENCIAS, testPuntua });
   const claveBase = Object.keys(REFERENCIAS).find(k => REFERENCIAS[k].tarjetas);
 
   const L = [];

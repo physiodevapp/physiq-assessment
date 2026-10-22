@@ -211,7 +211,8 @@ const PLAN_TRATAMIENTO = await import('../../data/plan-tratamiento.js');
 const IRRITABILIDAD = await import('../../data/irritabilidad.js');
 const { CONDICIONES } = await import('../../data/condiciones.js');
 const { FAMILIAS_FARMACO: FARMACOS } = await import('../../data/farmacos.js');
-const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, REFERENCIAS, testPuntua }), REFERENCIAS);
+const { BLOQUES_EJERCICIO: EJERCICIO } = await import('../../data/ejercicio.js');
+const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, REFERENCIAS, testPuntua }), REFERENCIAS);
 
 test('toda referencia citada en data/ está en data/referencias.js', () => {
   assert.deepEqual(problemas.sinRegistrar, [], `${problemas.sinRegistrar.join(', ')}: añádelas al registro (clave = «Autor Año» tal como sale en la cita)`);
@@ -236,7 +237,7 @@ test('data/referencias.js: exactamente una referencia base de las tarjetas (tarj
 
 test('docs/referencias.md coincide con las citas de data/ y con el registro', () => {
   const actual = leer('docs', 'referencias.md');
-  const esperado = construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, REFERENCIAS, testPuntua });
+  const esperado = construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, REFERENCIAS, testPuntua });
   assert.ok(actual === esperado,
     'docs/referencias.md no está al día — ejecuta `node tests/gen-referencias.mjs` y comitéalo junto con el cambio');
 });

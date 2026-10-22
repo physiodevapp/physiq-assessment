@@ -2994,6 +2994,113 @@ async function checkFarmacos(browser, errors) {
   return r;
 }
 
+// Guía «Efectos del ejercicio» (docs/efectos-ejercicio.md): diálogo centrado
+// con la hipoalgesia escrita, los otros bloques pendientes y la leyenda de
+// niveles; chips de nivel pulsables con su ficha, «✨ IA» con el bloque como
+// contexto y el apartado «paciente» sin chip; Escape, impresión, móvil desde «Herramientas» (atrás
+// cierra), 320 px, cabecera sin desbordar a 769 px y el hub.
+async function checkEjercicio(browser, errors) {
+  const r = {};
+  const context = await browser.newContext({ viewport: { width: 1280, height: 860 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (ejercicio): ${err.message}`));
+  await abrirApp(page);
+  await page.evaluate(() => {
+    window.__iaHrefs = [];
+    window.addEventListener('click', e => {
+      const a = e.target.closest?.('a[target="_blank"]');
+      if (a) { e.preventDefault(); setTimeout(() => window.__iaHrefs.push(a.href), 0); }
+    }, true);
+  });
+  await page.click('#ejercicioBtn');
+  r.dialogo = await page.evaluate(() => {
+    const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
+    const pend = (document.querySelector('#ejercicioCuerpo .ej-pendientes-lista')?.textContent || '').toLowerCase();
+    return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
+      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia'
+      && !pend.includes('hipoalgesia')
+      && ['mecanotransducción', 'antiinflamatorio', 'mioquinas', 'efectos centrales'].every(t => pend.includes(t))
+      && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
+  });
+  await page.keyboard.press('Escape');
+  r.escape = await page.evaluate(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
+  await page.click('#ejercicioBtn');
+  await page.click('[data-bloque="hipoalgesia"] > summary');
+  r.bloque = await page.evaluate(() => {
+    const b = document.querySelector('[data-bloque="hipoalgesia"]');
+    return [...b.querySelectorAll('.ej-apartado')].map(a => a.dataset.apartado).join() === 'que,evidencia,consulta,paciente'
+      && b.querySelectorAll('button.ej-nivel').length === 13
+      && !b.querySelector('[data-apartado="paciente"] .ej-nivel')
+      && b.querySelectorAll('.ej-cuerpo .cita').length > 5
+      && !!b.querySelector('.ej-mas');
+  });
+  await page.click('[data-bloque="hipoalgesia"] [data-apartado="evidencia"] p:first-of-type button.ej-nivel');
+  r.ficha = await page.evaluate(() => {
+    const f = document.getElementById('ejNivelFicha');
+    return !!f && !f.hidden && f.textContent.includes('Efecto medido en personas') && Number(getComputedStyle(f).zIndex) > 999;
+  });
+  await page.keyboard.press('Escape');
+  r.fichaEscape = await page.evaluate(() => document.getElementById('ejNivelFicha').hidden
+    && document.getElementById('ejercicioOverlay').classList.contains('open'));
+  await page.click('[data-bloque="hipoalgesia"] [data-apartado="que"] p .ia-parrafo-ir');
+  await page.waitForTimeout(150);
+  r.ia = await page.evaluate(() => {
+    const q = decodeURIComponent((window.__iaHrefs.at(-1) || '').split('q=')[1] || '').replace(/\+/g, ' ');
+    return q.includes('Hipoalgesia inducida por el ejercicio') && q.includes('Una sola sesión de ejercicio');
+  });
+  await page.keyboard.press('Escape');
+  await page.emulateMedia({ media: 'print' });
+  r.sinImprimir = await page.evaluate(() => getComputedStyle(document.getElementById('ejercicioBtn')).display === 'none');
+  await context.close();
+
+  // La cabecera de escritorio más estrecha (769 px) cabe con el icono nuevo
+  const justo = await browser.newContext({ viewport: { width: 769, height: 800 } });
+  const j = await justo.newPage();
+  await abrirApp(j);
+  r.cabecera = await j.evaluate(() => {
+    const h = document.querySelector('.app-header');
+    return document.documentElement.scrollWidth <= innerWidth && h.scrollWidth <= h.clientWidth + 1
+      && getComputedStyle(document.getElementById('ejercicioBtn')).display !== 'none';
+  });
+  await justo.close();
+
+  const movil = await browser.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true });
+  const m = await movil.newPage();
+  m.on('pageerror', err => errors.push(`pageerror (ejercicio móvil): ${err.message}`));
+  await abrirApp(m);
+  await m.evaluate(() => { window.state.maxVisitedIdx = 2; window.goToPhase(2); });
+  await abrirHerramienta(m, 'ejercicio');
+  await m.waitForSelector('#ejercicioOverlay.open');
+  r.hoja = await m.waitForFunction(() => {
+    const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
+    return Math.round(p.width) === innerWidth && Math.abs(p.bottom - innerHeight) < 2;
+  }, null, { timeout: 3000 }).then(() => true, () => false)
+    && await m.evaluate(() => getComputedStyle(document.getElementById('ejercicioBtn')).display === 'none');
+  await m.goBack();
+  r.atras = await m.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'), null, { timeout: 3000 }).then(() => true, () => false)
+    && await m.evaluate(() => window.state.currentPhase === 2);
+  await m.setViewportSize({ width: 320, height: 700 });
+  await abrirHerramienta(m, 'ejercicio');
+  await m.waitForSelector('#ejercicioOverlay.open');
+  r.estrecho = await m.evaluate(() => {
+    const c = document.getElementById('ejercicioCuerpo');
+    return document.documentElement.scrollWidth <= innerWidth && c.scrollWidth <= c.clientWidth;
+  });
+  await movil.close();
+
+  const ctxHub = await browser.newContext({ viewport: { width: 1100, height: 900 } });
+  const hub = await ctxHub.newPage();
+  const frame = await cargarEnHub(hub);
+  r.hub = await frame.evaluate(() => {
+    if (getComputedStyle(document.getElementById('ejercicioBtn')).display === 'none') return false;
+    window.abrirEjercicio();
+    return document.getElementById('ejercicioOverlay').classList.contains('open');
+  });
+  await ctxHub.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function checkCuestionarios(browser, errors) {
   const r = {};
   const { CUESTIONARIOS } = await import(new URL('../data/cuestionarios.js', import.meta.url));
@@ -6107,6 +6214,12 @@ const SECCIONES = [
   { id: 'farmacos', titulo: 'Guía de fármacos:', run: async ({ browser, errors }) => {
     const c = await checkFarmacos(browser, errors);
     console.log(`  ${c.ok ? '✓' : '✗'} Fármacos (cabecera): diálogo centrado con las 13 familias plegadas y en orden (AINE, corticoides, anticoagulantes, opioides, gabapentinoides, antidepresivos, benzodiacepinas y relajantes, estatinas, fluoroquinolonas, betabloqueantes, diuréticos y otros antihipertensivos, insulina y antidiabéticos, fármacos que tocan el hueso), sin bloque de pendientes y acabando en su pie, los AINE y el hueso con sus cinco apartados y citas; «Ficha técnica (CIMA)»: seis enlaces de AINE al buscador de CIMA en otra pestaña, sin nada en la URL, y tocar uno copia su nombre; sigue abierta al volver de otra pestaña; «✨ IA» por párrafo con la familia como contexto y su menú por encima del velo; farmacosPreguntarIA() abre «Preguntar a la IA» en la modalidad «Fármacos»; Escape cierra; oculto al imprimir; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; en el hub, visible sin el atajo a la IA y con los enlaces a CIMA${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
+  } },
+
+  { id: 'ejercicio', titulo: 'Guía de efectos del ejercicio:', run: async ({ browser, errors }) => {
+    const c = await checkEjercicio(browser, errors);
+    console.log(`  ${c.ok ? '✓' : '✗'} Efectos del ejercicio (cabecera): diálogo centrado con la hipoalgesia escrita, los otros cuatro bloques pendientes y la leyenda de los tres niveles; la hipoalgesia con sus cuatro apartados, citas, «Ampliar» y un chip de nivel pulsable por afirmación (ninguno en «paciente») con su ficha por encima del velo, Escape cierra primero la ficha, «✨ IA» con el bloque como contexto; oculto al imprimir; cabecera sin desbordar a 769 px; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
