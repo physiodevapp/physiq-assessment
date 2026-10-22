@@ -111,7 +111,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 |---|---|
 | Diseño (este documento) | Aceptado por el usuario (2026-10) |
 | Infraestructura (herramienta, tests, smoke) | Hecha (2026-10, Sonnet): `data/ejercicio.js`, `lib/ejercicio.js`, `#ejercicioBtn` / `#ejercicioOverlay`, `abrirEjercicio()`, tests `tests/unit/ejercicio.mjs`, smoke `ejercicio`; los cinco bloques sin contenido, listados como pendientes |
-| Bloque 1 — Hipoalgesia | Escrito (2026-10, Opus; lectura de fuentes con Sonnet), **pendiente de revisión del usuario**. Fuentes leídas enteras en PMC: Naugle 2012, Vaegter y Jones 2020, Geneen 2017, Polaski 2019. Sin leer, sin texto abierto: Rice 2019 (J Pain 20:1249) y Wewege y Jones 2021 (J Pain 22:21, que no encuentra efecto con el isométrico, frente a Naugle); entran si el usuario aporta los PDF |
+| Bloque 1 — Hipoalgesia | Escrito (2026-10, Opus; lectura de fuentes con Sonnet), **pendiente de revisión del usuario**. Fuentes leídas enteras: Naugle 2012, Vaegter y Jones 2020, Geneen 2017 y Polaski 2019 (PMC); Rice 2019 y Wewege y Jones 2021 (PDF del usuario) |
 | Bloque 2 — Mecanotransducción | No empezado |
 | Bloque 3 — Antiinflamatorio sistémico | No empezado |
 | Bloque 4 — Otras mioquinas | No empezado |
@@ -138,8 +138,10 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 ## Bloque 1 — Hipoalgesia: decisiones de nivel (2026-10)
 
 - Todo lo medido tras una sesión es dolor provocado en el laboratorio (sobre todo el umbral de dolor a la presión), no el dolor del paciente: va como `mecanismo`, aunque sea en humanos.
-- Los mecanismos opioide y endocannabinoide van como `discutido`: en humanos, los antagonistas la aumentan, la reducen o no la cambian (Vaegter y Jones 2020), y el apoyo constante viene de animales (Naugle 2012).
+- El efecto por tipo de ejercicio en sanos va como `discutido`: Naugle 2012 (con estudios sin control) da efecto grande al isométrico; Wewege y Jones 2021 (solo ensayos aleatorizados con control de reposo) no le encuentra efecto, y atribuye la diferencia al diseño. Lo mismo la intensidad elegida frente a prescrita: un estudio en fibromialgia (Vaegter y Jones 2020; Naugle 2012) frente a «casi sin diferencia» (Rice 2019).
+- Los mecanismos van como `discutido`: opioides equívocos en humanos; endocannabinoides con más acuerdo entre humanos y animales (Rice 2019).
 - Lo único `clinico` es el ejercicio regular en dolor crónico (Geneen 2017: efecto de pequeño a moderado, inconsistente, calidad baja; no empeoró el dolor; agujetas que ceden) y la falta de una dosis óptima demostrada (Polaski 2019; Geneen 2017). Las dos frases para el paciente se apoyan solo en eso.
-- «Empezar por zonas que no duelen o por baja intensidad» va en «Qué cambia en la consulta» como `mecanismo` y con la cautela literal de los autores («puede merecer la pena considerar»): sale de estudios de laboratorio, no de ensayos clínicos.
-- La sensibilización central del bloque (decisión 2) queda en la frase de la hiperalgesia en dolor generalizado y con mucha sensibilidad al dolor; Rice 2019, que la trata más a fondo, está sin leer.
-- No se ha escrito que la hipoalgesia de una sesión prediga el resultado del ejercicio regular: ninguna fuente leída lo estudia (va en «Ampliar»).
+- «Empezar por zonas que no duelen o por baja intensidad» va en «Qué cambia en la consulta» como `mecanismo` y con la cautela literal de los autores: sale de laboratorio, no de ensayos clínicos (Vaegter y Jones 2020; Rice 2019).
+- Sensibilización central: la hipoalgesia falla más con sensibilidad al dolor generalizada o modulación condicionada deficiente, dado como preliminar (Rice 2019). La educación en neurociencia del dolor para los brotes tras el ejercicio va como propuesta de los autores, sin demostrar en dolor crónico.
+- Factores psicológicos: asociados a la hipoalgesia en sanos, no en dolor crónico (Rice 2019); se dice así, sin generalizar.
+- No se ha escrito que la hipoalgesia de una sesión prediga el resultado del ejercicio regular: solo hay datos preliminares (Rice 2019); va en «Ampliar».

@@ -2851,7 +2851,7 @@ async function checkEjercicio(browser, errors) {
   r.bloque = await page.evaluate(() => {
     const b = document.querySelector('[data-bloque="hipoalgesia"]');
     return [...b.querySelectorAll('.ej-apartado')].map(a => a.dataset.apartado).join() === 'que,evidencia,consulta,paciente'
-      && b.querySelectorAll('button.ej-nivel').length === 11
+      && b.querySelectorAll('button.ej-nivel').length === 13
       && !b.querySelector('[data-apartado="paciente"] .ej-nivel')
       && b.querySelectorAll('.ej-cuerpo .cita').length > 5
       && !!b.querySelector('.ej-mas');
