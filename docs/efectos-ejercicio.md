@@ -39,7 +39,7 @@ Ordenados por cuánto cambian una decisión en consulta, no por lo llamativos qu
 1. **Hipoalgesia inducida por el ejercicio.** Qué es; diferencia entre ejercicio local y a distancia; por qué puede faltar o invertirse en el dolor crónico; qué implica para la dosis y para los brotes tras ejercitarse.
 2. **Mecanotransducción: tendón, hueso, cartílago y músculo.** Cómo la carga se convierte en adaptación del tejido; por qué el reposo absoluto no repara; relación con las tarjetas de osteoporosis y con las tendinopatías.
 3. **Efecto antiinflamatorio sistémico.** La IL-6 que libera el músculo al contraerse y la cascada que sigue; diferencia con la IL-6 de la inflamación; qué se sabe y qué no en dolor musculoesquelético.
-4. **El músculo como órgano endocrino: otras mioquinas.** Concepto general y estado real de cada una (por ejemplo, irisina, con la medición en humanos discutida). Bloque corto y muy etiquetado. Si las fuentes leídas dan casi solo afirmaciones de `mecanismo`, se queda en un párrafo dentro del bloque 3 (decisión 2).
+4. **El músculo como órgano endocrino: otras mioquinas.** Concepto general y estado real de cada una (por ejemplo, irisina, con la medición en humanos discutida). Bloque corto y muy etiquetado. Si las fuentes leídas dan casi solo afirmaciones de `mecanismo`, se queda en un párrafo dentro del bloque 3 (decisión 2). **Así se hizo (2026-10)**: ver «Mioquinas, dentro del bloque 3».
 5. **Efectos centrales.** Sueño, estado de ánimo y autoeficacia. La sensibilización central va en el bloque 1, para no repetirla (decisión 2).
 
 Cada bloque tiene la misma estructura (propuesta):
@@ -114,7 +114,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 1 — Hipoalgesia | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Fuentes leídas enteras: Naugle 2012, Vaegter y Jones 2020, Geneen 2017 y Polaski 2019 (PMC); Rice 2019 y Wewege y Jones 2021 (PDF del usuario) |
 | Bloque 2 — Mecanotransducción | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). 13 fuentes, ver «Bloque 2 — decisiones de nivel» |
 | Bloque 3 — Antiinflamatorio sistémico | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10): frases para el paciente solo en enfermedades reumáticas inflamatorias y bloque separado del de mioquinas. 9 fuentes, ver «Bloque 3 — decisiones de nivel» |
-| Bloque 4 — Otras mioquinas | No empezado |
+| Bloque 4 — Otras mioquinas | Unido al bloque 3 (2026-10, Opus; lectura de fuentes con Sonnet), **pendiente de revisión del usuario**: todo era `mecanismo` o `discutido` (decisión 2). El bloque 3 pasa a llamarse «Efecto antiinflamatorio y mioquinas». 5 fuentes, ver «Mioquinas, dentro del bloque 3» |
 | Bloque 5 — Efectos centrales | No empezado |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet), **pendiente de revisión del usuario**: `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis, más adelante y con Opus |
 
@@ -210,6 +210,16 @@ Fuentes leídas enteras: en PMC, Nara y Watanabe 2021, Messier 2013, Balchin 202
 - **Dolor musculoesquelético común: sin evidencia directa**, dicho en el propio bloque.
 - **Frases para el paciente**: dos, solo para enfermedades reumáticas inflamatorias. Ninguna para el dolor musculoesquelético común, y el «Ampliar» explica por qué: decirle que el ejercicio «desinflama» prometería más de lo demostrado. Así el bloque cumple la regla de «al menos una frase para el paciente» sin relajarla.
 - **Infecciones en deportistas de élite, `mecanismo`**: asociación con cargas muy altas que los autores atribuyen en parte al estado antiinflamatorio, junto a otros factores (Gleeson 2011).
+
+## Mioquinas, dentro del bloque 3 (2026-10, Opus)
+
+Fuentes leídas enteras en PMC: Severinsen y Pedersen 2020, Bettariga 2024, Jedrychowski 2015, Albrecht 2015 y Cosio 2021 (más Pedersen y Febbraio 2012, ya leída para el bloque 3). Ninguna afirmación llega a `clinico`: ninguna fuente mide dolor, función, fuerza ni cognición atribuidos a una mioquina concreta en personas. Por eso, como prevé la decisión 2, no hay bloque propio: el 3 se llama «Efecto antiinflamatorio y mioquinas» y lleva:
+
+- **Qué ocurre** (`mecanismo`): más de 650 mioquinas, función conocida en un 5 %; **la IL-6 es con diferencia la más estudiada** y casi todo lo demostrado en humanos es suyo (petición del usuario: decirlo así); las demás, sobre todo en animales o células.
+- **Evidencia**: una sesión sube poco la irisina y la SPARC, y nada significativo el resto (Bettariga 2024, `mecanismo`); la irisina, `discutido` (Jedrychowski 2015 la mide por espectrometría de masas; Albrecht 2015 invalida los kits ELISA; Cosio 2021 no ve aumento significativo con fuerza y pide cautela con los ELISA); ninguna mioquina con efecto clínico medido.
+- **Consulta** (`mecanismo`): no elegir un ejercicio por una mioquina, ni explicarlo como «libera hormonas que…».
+- **Ampliar**: BDNF (sale del cerebro, no del músculo), catepsina B (no se sabe si media efectos cognitivos), el ensayo con tocilizumab (la IL-6 media la pérdida de grasa visceral del entrenamiento) y las limitaciones de medida.
+- **Frases para el paciente**: ninguna nueva; las dos del bloque 3 no cambian.
 
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
