@@ -23,8 +23,8 @@ const muestra = () => ({
   fuentes: ['Prueba 2020'],
 });
 
-test('los cinco bloques de docs/efectos-ejercicio.md, en su orden, y los tres niveles', () => {
-  assert.deepEqual(BLOQUES_EJERCICIO.map(b => b.id), ['hipoalgesia', 'mecanotransduccion', 'antiinflamatorio', 'mioquinas', 'centrales']);
+test('los bloques de docs/efectos-ejercicio.md, en su orden (mioquinas dentro del antiinflamatorio), y los tres niveles', () => {
+  assert.deepEqual(BLOQUES_EJERCICIO.map(b => b.id), ['hipoalgesia', 'mecanotransduccion', 'antiinflamatorio', 'centrales']);
   for (const b of BLOQUES_EJERCICIO) assert.ok(b.titulo && b.resumen, b.id);
   assert.deepEqual(Object.keys(NIVELES_EJERCICIO), ['clinico', 'mecanismo', 'discutido']);
   for (const n of Object.values(NIVELES_EJERCICIO)) assert.ok(n.corto && n.explicacion.length > 20);
