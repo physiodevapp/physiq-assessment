@@ -121,3 +121,59 @@ test('app: botón de cabecera, opción en «Herramientas», funciones expuestas,
   const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
   assert.ok(deploy.includes('lib/ejercicio.js'), 'lib/ejercicio.js en el deploy (data/*.js ya se copia entero)');
 });
+
+test('enlace de la fase 6: alta → hipoalgesia, baja o moderada → mecanotransducción; sin nivel, como el plan (alta)', () => {
+  const id = x => E.bloqueEjercicioParaIrritabilidad(x)?.id;
+  assert.equal(id('alta'), 'hipoalgesia');
+  assert.equal(id('moderada'), 'mecanotransduccion');
+  assert.equal(id('baja'), 'mecanotransduccion');
+  for (const sin of [null, undefined, '', 'Alta', 'otra']) assert.equal(id(sin), 'hipoalgesia', String(sin));
+  // Solo enlaza un bloque ya escrito y que existe
+  for (const k of ['alta', 'baja']) assert.ok(BLOQUES_EJERCICIO.some(b => b.id === id(k) && b.apartados));
+});
+
+test('enlace de la fase 6: sin bloque escrito no hay enlace', () => {
+  const b = BLOQUES_EJERCICIO.find(x => x.id === 'hipoalgesia');
+  const antes = b.apartados;
+  delete b.apartados;
+  try {
+    assert.equal(E.bloqueEjercicioParaIrritabilidad('alta'), null);
+    assert.equal(E.enlaceEjercicioHTML('alta'), '');
+    assert.ok(E.enlaceEjercicioHTML('baja').includes("abrirEjercicio({ bloque: 'mecanotransduccion' })"), 'el otro bloque sigue enlazado');
+  } finally { b.apartados = antes; }
+});
+
+test('enlace de la fase 6: ofrece también el otro bloque, sin cambiar el principal', () => {
+  const alta = E.enlaceEjercicioHTML('alta');
+  assert.ok(alta.includes('data-bloque-alternativo="mecanotransduccion"'));
+  assert.ok(alta.indexOf('data-bloque-ejercicio="hipoalgesia"') < alta.indexOf('data-bloque-alternativo'));
+  assert.ok(E.enlaceEjercicioHTML('baja').includes('data-bloque-alternativo="hipoalgesia"'));
+  assert.ok(E.enlaceEjercicioHTML('moderada').includes('data-bloque-alternativo="hipoalgesia"'));
+  assert.ok(!alta.includes('{titulo}'));
+  const b = BLOQUES_EJERCICIO.find(x => x.id === 'mecanotransduccion');
+  const antes = b.apartados;
+  delete b.apartados;
+  try { assert.ok(!E.enlaceEjercicioHTML('alta').includes('data-bloque-alternativo')); } finally { b.apartados = antes; }
+});
+
+test('enlace de la fase 6: el botón abre el bloque y nombra cuál es', () => {
+  const html = E.enlaceEjercicioHTML('alta');
+  assert.ok(html.includes('data-bloque-ejercicio="hipoalgesia"'));
+  assert.ok(html.includes("onclick=\"abrirEjercicio({ bloque: 'hipoalgesia' })\""));
+  assert.ok(html.includes(TEXTOS_EJERCICIO.enlaceEducacion));
+  assert.ok(html.includes('Hipoalgesia inducida por el ejercicio'), 'la ayuda dice a qué bloque lleva');
+  assert.ok(!html.includes('{titulo}'));
+});
+
+test('enlace de la fase 6: solo en el bloque «Educación», solo en pantalla y nunca en los textos del plan', () => {
+  const plan = leer('plan.js');
+  assert.equal((plan.match(/enlaceEjercicioHTML\(/g) || []).length, 1);
+  assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion, b\.titulo\) \+ enlaceEjercicioHTML\(plan\.irritabilidad\)/.test(plan));
+  assert.ok(leer('styles.css').includes('@media print { .plan-ejercicio { display: none !important; } }'));
+  // Los textos que se comparten salen de lib/ y data/ del plan, que no conocen la guía
+  for (const f of [['lib', 'plan-tratamiento.js'], ['data', 'plan-tratamiento.js'], ['lib', 'plan-ia.js']]) {
+    const src = leer(...f).replace(/\/\/.*$/gm, '');
+    assert.ok(!/ejercicio\.js|explicárselo al paciente/.test(src), f.join('/'));
+  }
+  assert.ok(/typeof opts\?\.bloque === 'string'/.test(leer('app.js')), 'abrirEjercicio acepta { bloque }');
+});
