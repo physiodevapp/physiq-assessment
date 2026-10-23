@@ -184,11 +184,14 @@ test('enlace de la fase 6 por hipótesis: la tabla solo nombra hipótesis y bloq
   for (const [id, bloque] of Object.entries(BLOQUE_POR_HIPOTESIS)) {
     assert.ok(HYPOTHESES[id], `${id} no es una hipótesis`);
     assert.ok(['hipoalgesia', 'mecanotransduccion'].includes(bloque) && escritos.includes(bloque), `${id} → ${bloque}`);
-    // Carga y adaptación del tejido: solo tendinopatías (su frase para el paciente habla del tendón)
-    if (bloque === 'mecanotransduccion') assert.ok(/tendinopat/i.test(HYPOTHESES[id].name), `${id}: ${HYPOTHESES[id].name}`);
+    // Carga y adaptación del tejido: solo tendinopatías (su frase para el paciente habla del tendón),
+    // más el pinzamiento subacromial, que su guía (Desmeules 2025) incluye en la del manguito
+    if (bloque === 'mecanotransduccion' && id !== 'h2') assert.ok(/tendinopat/i.test(HYPOTHESES[id].name), `${id}: ${HYPOTHESES[id].name}`);
   }
-  // Fuera a propósito: la artrosis y lo que se deriva
-  for (const id of ['ca1', 'ro1', 'h10', 'tp24', 'tp3', 'co7']) assert.ok(!BLOQUE_POR_HIPOTESIS[id], id);
+  assert.equal(BLOQUE_POR_HIPOTESIS.h2, 'mecanotransduccion');
+  assert.ok(/Desmeules 2025/.test(HYPOTHESES.h2.dosisFuente) && /síndrome de dolor subacromial dentro de la tendinopatía del manguito/.test(HYPOTHESES.h2.dosisFuente), 'h2 se apoya en su guía');
+  // Fuera a propósito: la artrosis, la rotura del manguito (parcial y completa) y lo que se deriva
+  for (const id of ['ca1', 'ro1', 'h10', 'h3', 'tp24', 'tp3', 'co7']) assert.ok(!BLOQUE_POR_HIPOTESIS[id], id);
 });
 
 test('enlace de la fase 6 por hipótesis: manda sobre la irritabilidad, y nombra la hipótesis', () => {

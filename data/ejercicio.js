@@ -240,14 +240,18 @@ export const BLOQUES_EJERCICIO = [
 // hablan justo de esa hipótesis. Escrita a mano, como HIP_PUNCION_SECA; una
 // hipótesis que no está aquí sigue la regla de la irritabilidad.
 //   · mecanotransduccion: las tendinopatías («en un tendón que duele, el
-//     ejercicio con carga es el tratamiento principal»).
+//     ejercicio con carga es el tratamiento principal»), y el pinzamiento
+//     subacromial (h2): su guía (Desmeules 2025, la fuente de su pauta) lo
+//     incluye en la tendinopatía del manguito y pone como tratamiento inicial
+//     el ejercicio activo o de fuerza (A). No la rotura del manguito (h3): la
+//     misma guía excluye la rotura completa, y h3 agrupa parcial y completa.
 //   · hipoalgesia: el dolor crónico inespecífico, el latigazo y la
 //     sensibilización central («el ejercicio regular ayuda algo con el dolor»;
 //     la respuesta variable en el dolor generalizado y el latigazo).
 // Fuera, a propósito: la artrosis (encaja en los dos bloques), las roturas,
 // fracturas y luxaciones (se derivan) y el resto, sin frase propia.
 export const BLOQUE_POR_HIPOTESIS = {
-  ca4: 'mecanotransduccion', ca9: 'mecanotransduccion', ro5: 'mecanotransduccion',
+  h2: 'mecanotransduccion', ca4: 'mecanotransduccion', ca9: 'mecanotransduccion', ro5: 'mecanotransduccion',
   co1: 'mecanotransduccion', co2: 'mecanotransduccion', co10: 'mecanotransduccion',
   tp8: 'mecanotransduccion', tp9: 'mecanotransduccion', tp11: 'mecanotransduccion',
   tp14: 'mecanotransduccion', tp15: 'mecanotransduccion', tp19: 'mecanotransduccion',
