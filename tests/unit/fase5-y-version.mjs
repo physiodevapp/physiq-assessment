@@ -138,6 +138,8 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.h2.pronostico.derivacion, /^no mejora en un máximo de 12 semanas[^.]*\(Desmeules 2025, grado F\)\.$/);
     assert.match(HYPOTHESES.h3.pronostico.notas, /^La RM es la prueba de imagen de referencia: en la rotura completa/, 'h3: p. 67');
     assert.match(HYPOTHESES.h1.pronostico.notas, /diabetes, con cifras descritas de hasta el 30 %/, 'h1: p. 69');
+    assert.match(HYPOTHESES.h1.pronostico.notas, /Es raro que vuelva en el mismo hombro, pero se han documentado casos en el otro \(6–34 %\)/, 'h1: p. 69');
+    assert.ok(!/dosificar/.test(HYPOTHESES.h2.pronostico.notas), 'h2: «hay que dosificar» no está en la p. 54');
     assert.match(HYPOTHESES.h11.pronostico.derivacion, /radiografía\. No explorar más hasta tenerla\.$/);
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
