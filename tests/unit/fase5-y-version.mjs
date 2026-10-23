@@ -91,6 +91,8 @@ console.log('\nfase 5 plegable');
     assert.equal(HYPOTHESES.ro20.pronostico.derivacion, 'hay duda con una tromboflebitis.');
     assert.match(HYPOTHESES.ro5.pronostico.seguimiento, /VISA-P/);
     assert.ok(!/LLE/.test(HYPOTHESES.ro9.pronostico.notas), 'ro9: lo del LLE, solo en ro10');
+    assert.match(HYPOTHESES.ro10.pronostico.notas, /lesión aislada del LLE es rara/, 'ro10: p. 216');
+    assert.ok(!/95 %/.test(HYPOTHESES.ro10.pronostico.notas), 'ro10: el 95 % es del LCP (p. 221)');
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
     const t = IA_N.bloquesAmpliados(a).join('\n');

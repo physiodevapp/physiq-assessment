@@ -943,7 +943,7 @@ export const hypotheses = {
     dosis: 'Reeducación neuromuscular junto con el fortalecimiento (A). En la lesión de la esquina posterolateral puede usarse una ortesis adecuada (F). La guía no trata cuándo operar las lesiones de grado III o combinadas, ni fija volumen: el volumen queda a criterio del clínico.',
     dosisFuente: 'Logerstedt 2017, J Orthop Sports Phys Ther 47(11):A1–A47 (guía de práctica clínica APTA, esguince de ligamentos de rodilla; letra = grado de la recomendación, tal como la da la guía: A evidencia fuerte, C débil, F opinión de expertos)',
     pronostico: {
-      notas: 'La RM es la prueba de imagen de elección. Las lesiones de grado III del LCP se asocian a lesión de la esquina posterolateral (EPL): siempre que se sospeche una lesión del LLE, explorar la EPL. No usar el varo forzado como prueba de descarte: su sensibilidad es del 25 % y no tiene especificidad publicada, así que un test negativo no descarta la lesión del LLE o de la EPL.',
+      notas: 'La RM es la prueba de imagen de elección. La lesión aislada del LLE es rara: otras estructuras de la esquina posterolateral suelen lesionarse a la vez. Las lesiones de grado III del LCP se asocian a lesión de la esquina posterolateral (EPL): siempre que se sospeche una lesión del LLE, explorar la EPL. No usar el varo forzado como prueba de descarte: su sensibilidad es del 25 % y no tiene especificidad publicada, así que un test negativo no descarta la lesión del LLE o de la EPL.',
       fuente: 'Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216 y 221–222'
     },
     tests: [
