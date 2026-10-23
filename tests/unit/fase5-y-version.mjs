@@ -65,7 +65,7 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
-  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla, cadera y hombro', () => {
+  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla, cadera, hombro y cervical', () => {
     const CLAVES = ['horizonte', 'seguimiento', 'notas', 'derivacion', 'fuente'];
     for (const h of Object.values(HYPOTHESES)) {
       for (const k of Object.keys(h.pronostico || {})) assert.ok(CLAVES.includes(k), `${h.id}: pronostico.${k} no existe`);
@@ -141,6 +141,27 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.h1.pronostico.notas, /Es raro que vuelva en el mismo hombro, pero se han documentado casos en el otro \(6–34 %\)/, 'h1: p. 69');
     assert.ok(!/dosificar/.test(HYPOTHESES.h2.pronostico.notas), 'h2: «hay que dosificar» no está en la p. 54');
     assert.match(HYPOTHESES.h11.pronostico.derivacion, /radiografía\. No explorar más hasta tenerla\.$/);
+    // Cervical (tarjeta de consulta cervical): «reconsiderar o derivar» solo en ce3 (médula; no mejora, Blanpied 2017),
+    // ce4 (revisar ATM y otras cefaleas), ce13 (urgencias) y ce14 (banderas rojas); sin seguimiento; la imagen, en «a tener en cuenta»
+    const CE = ['ce3', 'ce4', 'ce5', 'ce12', 'ce13', 'ce14'];
+    for (const id of CE) {
+      const p = HYPOTHESES[id].pronostico;
+      assert.ok(p.notas, `${id}: sin notas`);
+      assert.ok(!p.seguimiento, `${id}: sin seguimiento`);
+      assert.equal(!!p.derivacion, ['ce3', 'ce4', 'ce13', 'ce14'].includes(id), `${id}: derivación solo con criterio`);
+      assert.equal(!!p.horizonte, ['ce5', 'ce14'].includes(id), `${id}: horizonte`);
+      assert.ok(!/\b(RM|EMG|radiografía|imagen)\b/i.test(p.horizonte || ''), `${id}: la imagen no es un pronóstico`);
+      assert.ok(!/→/.test(`${p.horizonte || ''} ${p.notas} ${p.derivacion || ''}`), `${id}: sin flechas`);
+      if (p.derivacion) assert.match(p.derivacion, /^[a-záéíóú]/, `${id}: continúa «Reconsiderar o derivar si:»`);
+    }
+    assert.match(HYPOTHESES.ce3.pronostico.derivacion, /^hay cualquier duda de afectación medular\./);
+    // Lluch 2020, cap. 5.3, pp. 370–371 y 383: lo «súbito» de la disección es la cefalea o el dolor de cuello, no el mareo
+    assert.match(HYPOTHESES.ce13.pronostico.derivacion, /^hay visión doble verdadera[^.]*cefalea o un dolor de cuello súbito[^.]*disección arterial: derivar a urgencias\.$/);
+    assert.ok(!/mareo súbito/.test(HYPOTHESES.ce13.pronostico.derivacion), 'ce13: el mareo no es lo súbito');
+    for (const id of ['ce5', 'ce13']) assert.match(HYPOTHESES[id].pronostico.notas, /sistema vestibular o de una conmoción \(traumatismo craneoencefálico leve\)/, `${id}: pp. 370–371`);
+    assert.match(HYPOTHESES.ce14.pronostico.derivacion, /derivar de inmediato para valoración médica\.$/, 'ce14: p. 382');
+    assert.ok(!/urgencias|disección/.test(HYPOTHESES.ce13.pronostico.notas), 'ce13: las urgencias, en «reconsiderar o derivar»');
+    assert.ok(!/aura/.test(HYPOTHESES.ce3.pronostico.derivacion), 'ce3: el aura es un diferencial, no un criterio');
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
     const t = IA_N.bloquesAmpliados(a).join('\n');
