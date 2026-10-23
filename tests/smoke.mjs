@@ -1184,8 +1184,10 @@ async function checkMastocitos(page) {
   await page.click('#dsEstado .option-btn[data-valor="sospecha"]');
   // 320 px: la tarjeta y el acordeón, sin desbordar
   await page.setViewportSize({ width: 320, height: 700 });
-  await page.waitForTimeout(100);
-  r.ancho1 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  // Justo tras cambiar el ancho, la barra de frases rápidas desborda un momento
+  // (405 px) hasta recolocarse: esperar a que se asiente, no un tiempo fijo
+  // (con 100 ms fallaba de forma intermitente, 2026-10)
+  r.ancho1 = await page.waitForFunction(() => document.documentElement.scrollWidth <= 320, null, { timeout: 2000 }).then(() => true, () => false);
   await page.evaluate(() => goToPhase(2));
   await page.waitForTimeout(150);
   await page.click('#acc_transversal_mastocitos .sistema-accordion-header');

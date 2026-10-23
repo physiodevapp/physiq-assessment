@@ -65,7 +65,7 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
-  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla y cadera', () => {
+  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla, cadera y hombro', () => {
     const CLAVES = ['horizonte', 'seguimiento', 'notas', 'derivacion', 'fuente'];
     for (const h of Object.values(HYPOTHESES)) {
       for (const k of Object.keys(h.pronostico || {})) assert.ok(CLAVES.includes(k), `${h.id}: pronostico.${k} no existe`);
@@ -120,6 +120,27 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.ca4.pronostico.notas, /empezar en el glúteo menor y extenderse hacia atrás al glúteo medio/, 'ca4: p. 179');
     assert.match(HYPOTHESES.ca14.pronostico.notas, /alivio del dolor con un bloqueo nervioso diagnóstico/, 'ca14: p. 172');
     assert.ok(!/debilidad de cadera/.test(HYPOTHESES.ca11.pronostico.seguimiento), 'ca11: lo de la debilidad, solo en el dolor inguinal de larga evolución');
+    // Hombro (Lluch 2020, caps. 3.1 y 3.1.1): «reconsiderar o derivar» solo en h1 (psicología), h2 (no mejora en
+    // 12 semanas, Desmeules 2025) y h11 (traumatismo y rigidez: radiografía); sin seguimiento; la imagen, en «a tener en cuenta»
+    const HO = ['h1', 'h2', 'h3', 'h4', 'h5', 'h7', 'h11'];
+    for (const id of HO) {
+      const p = HYPOTHESES[id].pronostico;
+      assert.ok(p.notas, `${id}: sin notas`);
+      assert.ok(!p.seguimiento, `${id}: sin seguimiento`);
+      assert.equal(!!p.derivacion, ['h1', 'h2', 'h11'].includes(id), `${id}: derivación solo con criterio`);
+      assert.equal(!!p.horizonte, ['h1', 'h3', 'h4'].includes(id), `${id}: horizonte`);
+      assert.ok(!/\b(Rx|RM|artro-RM|ecografía|radiografía)\b/.test(p.horizonte || ''), `${id}: la imagen no es un pronóstico`);
+      assert.ok(!/→/.test(`${p.horizonte || ''} ${p.notas} ${p.derivacion || ''}`), `${id}: sin flechas`);
+      if (p.derivacion) assert.match(p.derivacion, /^[a-záéíóú]/, `${id}: continúa «Reconsiderar o derivar si:»`);
+    }
+    assert.match(HYPOTHESES.h1.pronostico.derivacion, /^no te ves con confianza o competencia para abordar los aspectos psicosociales del dolor: derivar a tiempo[^.]*psicología\.$/, 'h1: p. 72');
+    assert.match(HYPOTHESES.h1.pronostico.horizonte, /autoeficacia baja frente al dolor predice una peor evolución/, 'h1: factor pronóstico (p. 71)');
+    assert.match(HYPOTHESES.h2.pronostico.derivacion, /^no mejora en un máximo de 12 semanas[^.]*\(Desmeules 2025, grado F\)\.$/);
+    assert.match(HYPOTHESES.h3.pronostico.notas, /^La RM es la prueba de imagen de referencia: en la rotura completa/, 'h3: p. 67');
+    assert.match(HYPOTHESES.h1.pronostico.notas, /diabetes, con cifras descritas de hasta el 30 %/, 'h1: p. 69');
+    assert.match(HYPOTHESES.h1.pronostico.notas, /Es raro que vuelva en el mismo hombro, pero se han documentado casos en el otro \(6–34 %\)/, 'h1: p. 69');
+    assert.ok(!/dosificar/.test(HYPOTHESES.h2.pronostico.notas), 'h2: «hay que dosificar» no está en la p. 54');
+    assert.match(HYPOTHESES.h11.pronostico.derivacion, /radiografía\. No explorar más hasta tenerla\.$/);
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
     const t = IA_N.bloquesAmpliados(a).join('\n');
