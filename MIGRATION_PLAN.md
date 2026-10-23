@@ -529,7 +529,7 @@ Diseño: `docs/farmacos-paciente.md` (pasos 1 y 2 y su estado: `docs/farmacologi
 | Región | Hipótesis con pronóstico | Estado |
 |---|---|---|
 | Tobillo y pie | tp1–tp5, tp7, **tp8–tp11**, tp12, tp14–tp34, tp36, tp37 (34) | Piloto: tendinopatías del Aquiles (tp8–tp11) hechas, pendiente de revisión del usuario; resto pendiente |
-| Rodilla | ro1–ro6, ro8–ro15, ro18–ro20 (17) | Pendiente |
+| Rodilla | ro1–ro6, ro8–ro15, ro18–ro20 (17) | Hecha, pendiente de revisión del usuario. Casi todo era imagen, patogenia o diferenciales → «a tener en cuenta»; horizonte solo en ro2, ro4, ro8, ro15 y ro19; seguimiento en ro5; «reconsiderar o derivar» solo en ro2 (Prill 2025) y ro20 (tromboflebitis). En ro9 (LCP) queda fuera «siempre que se sospeche LLE, explorar la EPL» y en ro10 (LLE) el «95 % de las lesiones del LCP son combinadas» (cada frase en su hipótesis; comprobado en la p. 221). Añadida a ro10, a petición del usuario, la frase de la p. 216: la lesión aislada del LLE es rara y otras estructuras de la esquina posterolateral suelen lesionarse a la vez. «Aparte de los tres números» (ro5) quitado: no está en la fuente (pp. 192–193, comprobado). La misma frase sigue en tobillo y pie (CAIT/IdFAI), para su turno |
 | Cadera | ca1–ca4, ca11–ca14, ca16–ca19 (12) | Pendiente |
 | Hombro | h1–h5, h7, h11 (7) | Pendiente |
 | Cervical | ce3–ce5, ce12–ce14 (6) | Pendiente |
