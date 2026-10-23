@@ -65,7 +65,7 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
-  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla, cadera, hombro, cervical y lumbar', () => {
+  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla, cadera, hombro, cervical, lumbar y codo', () => {
     const CLAVES = ['horizonte', 'seguimiento', 'notas', 'derivacion', 'fuente'];
     for (const h of Object.values(HYPOTHESES)) {
       for (const k of Object.keys(h.pronostico || {})) assert.ok(CLAVES.includes(k), `${h.id}: pronostico.${k} no existe`);
@@ -183,6 +183,10 @@ console.log('\nfase 5 plegable');
     assert.ok(!/persist/.test(HYPOTHESES.lu8.pronostico.notas), 'lu8: los predictores son del PRPPP, no de que persista');
     assert.match(HYPOTHESES.lu7.pronostico.derivacion, /NICE recomienda considerar derivar para valorar una denervación por radiofrecuencia/);
     for (const id of ['lu4', 'lu7']) assert.ok(!/infiltraciones/.test(HYPOTHESES[id].pronostico.derivacion), `${id}: no ofrecer infiltraciones no es un criterio`);
+    // Codo (Siemensma 2023): co3 solo tiene criterios de cirugía, ya en su sitio; escritos como continuación
+    const co3 = HYPOTHESES.co3.pronostico;
+    assert.deepEqual(Object.keys(co3).sort(), ['derivacion', 'fuente'], 'co3: solo derivación');
+    assert.match(co3.derivacion, /^no mejora más tras 3–6 meses de tratamiento adecuado: valorar la cirugía\. Si lo que limita es el hueso/);
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
     const t = IA_N.bloquesAmpliados(a).join('\n');
