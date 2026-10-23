@@ -5567,8 +5567,32 @@ async function checkFase6(browser, errors) {
   r.altaSinC = await botonNivel('C').isDisabled() && (await page.textContent('.plan-escalon-tit')).includes('Muy suave');
   // Con irritabilidad alta A coincide con B: no se ofrece y vale B
   r.altaSinA = await botonNivel('A').isDisabled() && (await page.textContent('.plan-escalon-tit')).startsWith('Nivel B');
+  // Enlace del bloque «Educación» a la guía «Efectos del ejercicio» (decisión 5 de
+  // docs/efectos-ejercicio.md): con irritabilidad alta, la hipoalgesia
+  const enlaceEj = () => page.evaluate(() => {
+    const e = document.querySelector('#planSesion .plan-bloque:nth-child(2) .plan-ejercicio');
+    return e ? { bloque: e.dataset.bloqueEjercicio, boton: e.querySelector('button')?.textContent.trim(), ayuda: e.querySelector('.plan-ayuda')?.textContent.trim() } : null;
+  });
+  const abrirDesdeEnlace = async id => {
+    await page.click('#planSesion .plan-ejercicio .plan-enlace');
+    await page.waitForSelector('#ejercicioOverlay.open');
+    const ok = await page.evaluate(i => document.querySelector(`#ejercicioCuerpo [data-bloque="${i}"]`)?.open === true
+      && [...document.querySelectorAll('#ejercicioCuerpo [data-bloque]')].filter(d => d.open).length === 1, id);
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
+    return ok;
+  };
+  const eAlta = await enlaceEj();
+  r.enlaceAlta = eAlta?.bloque === 'hipoalgesia' && eAlta.boton === 'Para explicárselo al paciente →'
+    && eAlta.ayuda.includes('Hipoalgesia inducida por el ejercicio') && await abrirDesdeEnlace('hipoalgesia');
   await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
   r.bajaConA = !(await botonNivel('A').isDisabled());
+  const eBaja = await enlaceEj();
+  r.enlaceBaja = eBaja?.bloque === 'mecanotransduccion' && eBaja.ayuda.includes('Carga y adaptación del tejido') && await abrirDesdeEnlace('mecanotransduccion');
+  r.enlaceNoCompartido = await page.evaluate(() => {
+    const t = document.getElementById('planContenido').textContent;
+    return t.includes('Para explicárselo al paciente') && getComputedStyle(document.querySelector('.plan-ejercicio')).display !== 'none';
+  });
   await botonNivel('C').click();
   r.bajaConC = await page.evaluate(() => state.planTratamiento.nivel === 'C');
   // Compartir: los tres documentos del plan
@@ -6416,7 +6440,7 @@ const SECCIONES = [
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C, A no se ofrece porque coincide con B, y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; el bloque «Educación» enlaza la guía «Efectos del ejercicio» (alta → hipoalgesia, baja → carga y adaptación del tejido), la abre ya en ese bloque y Escape la cierra; la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C, A no se ofrece porque coincide con B, y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 

@@ -116,7 +116,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 3 — Antiinflamatorio sistémico | No empezado |
 | Bloque 4 — Otras mioquinas | No empezado |
 | Bloque 5 — Efectos centrales | No empezado |
-| Enlace desde «Educación» de la fase 6 | No empezado (tras los bloques 1 y 2) |
+| Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet), **pendiente de revisión del usuario**: `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis, más adelante y con Opus |
 
 ## Infraestructura hecha (2026-10)
 
@@ -197,3 +197,12 @@ Fuentes añadidas tras la primera lectura: Magnusson y Kjaer 2019 y Howe 2011 (l
 - **Cartílago, solo `mecanismo`**: cambios agudos de 0–5 % que se recuperan en minutos (Coburn 2023, certeza muy baja). La respuesta «en U» (Gardashli 2024) va en «Ampliar», marcada como apoyada sobre todo en animales e in vitro. No hay fuente fiable leída sobre dolor o función del cartílago con ejercicio.
 - **El `resumen` del bloque cambia** de «por qué el reposo absoluto no repara» a «qué pasa cuando se deja de cargar»: ninguna fuente leída estudia el reposo tras una lesión como tal; lo que hay es desuso en reposo en cama, inmovilización y descarga.
 - **Frases para el paciente**: tres, cada una apoyada solo en afirmaciones `clinico` (fuerza y desuso; tendón que duele; fuerza con la edad). Ninguna sobre el hueso: con fracturas no demostradas, una frase para el paciente sobre «huesos más fuertes» prometería más de lo que hay.
+
+## Enlace de la fase 6 (2026-10, Sonnet)
+
+- **Dónde**: en el bloque «Educación» de la sesión del plan (`plan.js`), bajo sus frases: un botón «Para explicárselo al paciente →» y una línea que dice a qué bloque lleva («Abre «<título>», el bloque que corresponde a la irritabilidad elegida.»). Texto en `TEXTOS_EJERCICIO` (`data/ejercicio.js`), no en `data/plan-tratamiento.js`, para no tocar las frases del plan ni `docs/plan-tratamiento-frases.md`.
+- **Qué bloque**: el nivel efectivo que ya usa el plan (`plan.irritabilidad`: el elegido, o el calculado de la fase 3, o «alta» si no hay registro, que es lo prudente). Alta → hipoalgesia; baja o moderada → carga y adaptación del tejido. Si el bloque no estuviera escrito, no hay enlace (`bloqueEjercicioParaIrritabilidad()`).
+- **Cómo abre**: `abrirEjercicio({ bloque })` abre la guía con ese bloque desplegado (y los demás plegados) y desplazada hasta él; una clave que no es de un bloque escrito solo abre la guía. En móvil sigue siendo una hoja con Atrás, como siempre.
+- **Solo lectura**: no cambia el nivel ni el plan, no marca nada y no entra en los textos que se comparten (plan de sesión, del mes, programa para casa, plan con IA: salen de `lib/` y `data/` del plan, que no conocen la guía; un test lo fija). No se imprime (`.plan-ejercicio`).
+- **Tests**: `tests/unit/ejercicio.mjs` (la elección por irritabilidad, sin bloque no hay enlace, el HTML, que solo está en «Educación» y que los textos del plan no lo nombran) y, en la sección smoke `fase6`, el enlace con alta y con baja, que abre su bloque (y solo ese) y que Escape cierra.
+- **Pendiente**: una tabla por hipótesis donde aporte de verdad (por ejemplo, tendinopatías → carga y adaptación), escrita a mano como `HIP_PUNCION_SECA`, con Opus; y el mismo enlace desde las tarjetas especiales (osteoporosis → hueso) cuando haya un bloque que lo trate mejor.
