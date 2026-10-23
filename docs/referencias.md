@@ -3086,7 +3086,7 @@ Citada como:
 8. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 379–380 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A19)
 9. Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía) · Lluch 2020, cap. 5.3 (Jull y Falla), p. 378 (test de flexión craneocervical para dosificar)
 10. Lluch 2020, cap. 5.3 (Jull y Falla), p. 380 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
-11. Ante cualquier duda de afectación medular → derivar. El aura migrañosa puede presentarse como pérdida de fuerza en el brazo antes de la cefalea, hasta 60 min. Derivar si los síntomas no mejoran o empeoran (Blanpied 2017).
+11. hay cualquier duda de afectación medular. Derivar también si los síntomas no mejoran o empeoran (Blanpied 2017).
 12. Blanpied 2017 (J Orthop Sports Phys Ther 47(7), pp. A13–A14, tabla 6)
 13. Lluch 2020, cap. 5.3 (Jull y Falla), pp. 372–373 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), pp. A13–A14, tabla 6)
 14. Lluch 2020, cap. 5.3 (Jull y Falla), p. 379 · Blanpied 2017 (J Orthop Sports Phys Ther 47(7), p. A22)
