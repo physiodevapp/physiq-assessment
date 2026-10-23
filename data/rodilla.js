@@ -926,7 +926,7 @@ export const hypotheses = {
     dosis: 'Reeducación neuromuscular junto con el fortalecimiento (A). En la lesión aguda del LCP puede usarse una ortesis adecuada (F). La guía no fija volumen: queda a criterio del clínico.',
     dosisFuente: 'Logerstedt 2017, J Orthop Sports Phys Ther 47(11):A1–A47 (guía de práctica clínica APTA, esguince de ligamentos de rodilla; letra = grado de la recomendación, tal como la da la guía: A evidencia fuerte, C débil, F opinión de expertos)',
     pronostico: {
-      notas: 'La RM es la prueba de imagen de elección. En urgencias, el 95 % de las lesiones del LCP son combinadas. Las lesiones de grado III del LCP se asocian a lesión de la esquina posterolateral (EPL).',
+      notas: 'La RM es el patrón de referencia para el diagnóstico. En urgencias, el 95 % de las lesiones del LCP se combinan con lesiones de otros ligamentos. Las lesiones de grado III del LCP se asocian a lesión de la esquina posterolateral (EPL).',
       fuente: 'Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 216 y 221–222'
     },
     tests: [
@@ -1026,7 +1026,7 @@ export const hypotheses = {
     dosis: 'Solo Osgood-Schlatter: el estudio excluyó el Sinding-Larsen-Johansson. Semanas 0–4: dejar el deporte y las actividades que reproducen el dolor; isométrico de cuádriceps contra la pared 10 × 30 s al día con cada pierna, y puente con los dos pies 3 × 10 cada 2 días. Desde la semana 5, cada 2 días: (1) sentadilla apoyado en la pared, 5 repeticiones manteniendo hasta 20 s, y una repetición más por sesión hasta 10; (2) sentadilla de 3 s bajando, 10 s mantenida y 3 s subiendo, añadiendo series hasta 4 × 10; (3) añadir zancadas. En paralelo, escalera de 11 escalones de actividad (caminar o bici suave → caminar rápido o bici media → carrera lenta → escaleras → carrera media → skipping → saltos → carrera rápida, giros y saltos → calentamiento + media sesión → calentamiento + sesión → partido): subir un escalón solo con dolor ≤2/10 durante la actividad y a la mañana siguiente, y bajar uno si empeora; la sentadilla (nivel 2) sin pasar de 2/10 antes del escalón 3; vuelta completa tras 2 semanas de entrenamiento completo sin dolor. 4 visitas en 12 semanas, con los padres. Resultados: 80 % con éxito a las 12 semanas y 90 % al año; vuelta al deporte del 16 % a las 12 semanas y del 69 % al año.',
     dosisFuente: 'Rathleff 2020, Orthop J Sports Med 8(4):2325967120911106 (serie de casos, n = 51, 10–14 años, sin grupo control: nivel de evidencia 4; pauta de su apéndice 1)',
     pronostico: {
-      horizonte: 'El Sinding-Larsen-Johansson suele ser autolimitado. Entrenar en otras modalidades o en piscina reduce su intensidad y su duración.',
+      horizonte: 'En el Osgood-Schlatter, entrenar en otras modalidades o en piscina reduce la intensidad y la duración de los síntomas. El Sinding-Larsen-Johansson suele ser autolimitado.',
       notas: 'La exploración suele bastar; la radiografía, si hace falta, ayuda a descartar una fractura aguda o un tumor.',
       fuente: 'Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 200–201'
     },
