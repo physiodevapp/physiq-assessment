@@ -58,14 +58,14 @@ console.log('\nfase 5 plegable');
   test('pauta: los criterios de «derivar si no mejora» van en «Cuándo reconsiderar o derivar», no en la pauta', () => {
     for (const id of ['ro2', 'h2', 'ce3']) {
       assert.ok(!/\bderivar\b[^.]*\b(no mejora|persisten|siguen siendo)/i.test(HYPOTHESES[id].dosis), `${id}: sin criterio de no mejoría en la pauta`);
-      assert.match(HYPOTHESES[id].pronostico.derivacion, /[Dd]erivar[^.]*(no mejoran|persisten|siguen siendo intensos)/, `${id}: el criterio está en el pronóstico`);
+      assert.match(HYPOTHESES[id].pronostico.derivacion, /[Dd]erivar[^.]*(no mejoran|persisten|siguen siendo intensos)|(no mejoran|persisten|siguen siendo intensos)[^.]*derivar/, `${id}: el criterio está en el pronóstico`);
     }
     // co3: el criterio es de cirugía, no de derivación (Andrés, codo)
     assert.ok(!/cirugía/.test(HYPOTHESES.co3.dosis), 'co3: sin criterios de cirugía en la pauta');
     assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
-  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles como piloto', () => {
+  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles y rodilla', () => {
     const CLAVES = ['horizonte', 'seguimiento', 'notas', 'derivacion', 'fuente'];
     for (const h of Object.values(HYPOTHESES)) {
       for (const k of Object.keys(h.pronostico || {})) assert.ok(CLAVES.includes(k), `${h.id}: pronostico.${k} no existe`);
@@ -78,6 +78,19 @@ console.log('\nfase 5 plegable');
       assert.ok(!p.horizonte && !/VISA-A|bursa/.test(p.derivacion), id);
       assert.equal(/bursa retrocalcánea/.test(p.notas), id === 'tp9', `${id}: la bursa, solo en la insercional`);
     }
+    // Rodilla (Lluch 2020, cap. 4.2): «reconsiderar o derivar» solo en ro2 (criterios de Prill 2025) y ro20 (tromboflebitis);
+    // la imagen, la patogenia y los diferenciales, en «a tener en cuenta»
+    const RO = ['ro1', 'ro2', 'ro3', 'ro4', 'ro5', 'ro6', 'ro8', 'ro9', 'ro10', 'ro11', 'ro12', 'ro13', 'ro14', 'ro15', 'ro18', 'ro19', 'ro20'];
+    for (const id of RO) {
+      const p = HYPOTHESES[id].pronostico;
+      assert.ok(p.notas, `${id}: sin notas`);
+      assert.equal(!!p.derivacion, id === 'ro2' || id === 'ro20', `${id}: derivación solo con criterio`);
+      assert.ok(!/\b(RM|ecografía|radiografía)\b/.test(p.horizonte || ''), `${id}: la imagen no es un pronóstico`);
+    }
+    assert.match(HYPOTHESES.ro2.pronostico.derivacion, /^persisten [^.]*derivar al traumatólogo \(Prill 2025, grado C\)\.$/);
+    assert.equal(HYPOTHESES.ro20.pronostico.derivacion, 'hay duda con una tromboflebitis.');
+    assert.match(HYPOTHESES.ro5.pronostico.seguimiento, /VISA-P/);
+    assert.ok(!/LLE/.test(HYPOTHESES.ro9.pronostico.notas), 'ro9: lo del LLE, solo en ro10');
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
     const t = IA_N.bloquesAmpliados(a).join('\n');
