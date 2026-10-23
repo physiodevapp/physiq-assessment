@@ -3017,9 +3017,9 @@ async function checkEjercicio(browser, errors) {
     const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
     const pend = (document.querySelector('#ejercicioCuerpo .ej-pendientes-lista')?.textContent || '').toLowerCase();
     return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia'
-      && !pend.includes('hipoalgesia')
-      && ['mecanotransducción', 'antiinflamatorio', 'mioquinas', 'efectos centrales'].every(t => pend.includes(t))
+      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion'
+      && !pend.includes('hipoalgesia') && !pend.includes('mecanotransducción')
+      && ['antiinflamatorio', 'mioquinas', 'efectos centrales'].every(t => pend.includes(t))
       && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
   });
   await page.keyboard.press('Escape');
@@ -6219,7 +6219,7 @@ const SECCIONES = [
 
   { id: 'ejercicio', titulo: 'Guía de efectos del ejercicio:', run: async ({ browser, errors }) => {
     const c = await checkEjercicio(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Efectos del ejercicio (cabecera): diálogo centrado con la hipoalgesia escrita, los otros cuatro bloques pendientes y la leyenda de los tres niveles; la hipoalgesia con sus cuatro apartados, citas, «Ampliar» y un chip de nivel pulsable por afirmación (ninguno en «paciente») con su ficha por encima del velo, Escape cierra primero la ficha, «✨ IA» con el bloque como contexto; oculto al imprimir; cabecera sin desbordar a 769 px; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Efectos del ejercicio (cabecera): diálogo centrado con la hipoalgesia y la mecanotransducción escritas, los otros tres bloques pendientes y la leyenda de los tres niveles; la hipoalgesia con sus cuatro apartados, citas, «Ampliar» y un chip de nivel pulsable por afirmación (ninguno en «paciente») con su ficha por encima del velo, Escape cierra primero la ficha, «✨ IA» con el bloque como contexto; oculto al imprimir; cabecera sin desbordar a 769 px; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 

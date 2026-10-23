@@ -112,7 +112,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Diseño (este documento) | Aceptado por el usuario (2026-10) |
 | Infraestructura (herramienta, tests, smoke) | Hecha (2026-10, Sonnet): `data/ejercicio.js`, `lib/ejercicio.js`, `#ejercicioBtn` / `#ejercicioOverlay`, `abrirEjercicio()`, tests `tests/unit/ejercicio.mjs`, smoke `ejercicio`; los cinco bloques sin contenido, listados como pendientes |
 | Bloque 1 — Hipoalgesia | Escrito (2026-10, Opus; lectura de fuentes con Sonnet), **pendiente de revisión del usuario**. Fuentes leídas enteras: Naugle 2012, Vaegter y Jones 2020, Geneen 2017 y Polaski 2019 (PMC); Rice 2019 y Wewege y Jones 2021 (PDF del usuario) |
-| Bloque 2 — Mecanotransducción | Fuentes leídas (2026-10, Sonnet); **pendiente de redactar con Opus** y de la revisión del usuario. Ver «Bloque 2 — lectura de fuentes» |
+| Bloque 2 — Mecanotransducción | Escrito (2026-10, Opus; lectura de fuentes con Sonnet), **pendiente de revisión del usuario**. 13 fuentes, ver «Bloque 2 — decisiones de nivel» |
 | Bloque 3 — Antiinflamatorio sistémico | No empezado |
 | Bloque 4 — Otras mioquinas | No empezado |
 | Bloque 5 — Efectos centrales | No empezado |
@@ -185,3 +185,15 @@ Solo lectura: nada escrito en `data/` ni en el registro de referencias todavía 
 2. Frases para el paciente: solo con afirmaciones `clinico`. Con lo leído, las candidatas son pocas (el hueso, vía Howe, con el matiz de las fracturas); si no hay base clínica suficiente, el bloque puede quedar sin frase para el paciente en algún tema, pero `problemasBloque()` exige al menos una: decidir si se cambia esa regla o se escribe solo la del hueso.
 3. Registrar en `data/referencias.js` solo las fuentes que se citen, con su `revision`, y regenerar `docs/referencias.md`.
 4. Si el usuario aporta Magnusson y Kjaer 2019, Howe 2011 (texto completo) o Marusic 2021, releer antes de escribir esos apartados.
+
+## Bloque 2 — decisiones de nivel (2026-10, Opus)
+
+Fuentes añadidas tras la primera lectura: Magnusson y Kjaer 2019 y Howe 2011 (las dos en PDF del usuario, leídas enteras; Howe en dos partes). Citadas en el bloque: Khan y Scott 2009, Hart 2020, Lazarczuk 2022, Magnusson y Kjaer 2019, Franchi 2017, Lim 2022, Harding y Beck 2017, Reyes 2026, Chen 2025, Howe 2011, Bohm 2015, Coburn 2023 y Gardashli 2024. No citadas: McCrum 2018 (su dato de desuso es una frase de introducción, cubierto ahora por Magnusson y Kjaer) y Song y Meng 2026 (descartada por fiabilidad).
+
+- **La densidad ósea va como `mecanismo`**, no como `clinico`: es un resultado del tejido, y la propia revisión Cochrane (Howe 2011) no encuentra efecto significativo sobre las fracturas. Lo `clinico` del hueso es la frase de las fracturas (17 frente a 24 en 4 ensayos, OR 0,61; IC 0,23–1,64), con el matiz del ejercicio combinado (un ensayo con el 89 % del peso).
+- **Fuerza y función son `clinico`**: la pérdida con 10 días de reposo en cama en mayores (Reyes 2026, citando a Kortebein), el mantenimiento con fuerza durante el reposo en voluntarios sanos jóvenes (Chen 2025, GRADE alta para volumen y fuerza) y la ganancia de fuerza de las personas mayores con menos hipertrofia (Lim 2022).
+- **Tendinopatía, `clinico`**: carga eficaz y excéntrico aislado no superior (Magnusson y Kjaer 2019, revisión narrativa que resume ensayos). Todo lo demás del tendón es tejido sano medido en rigidez, módulo y área: `mecanismo`.
+- **Intensidad para el tendón, `discutido`**: Bohm 2015 (más efecto por encima del 70 %) frente a Lazarczuk 2022 (sin diferencia por intensidad relativa; sí con deformación alta, tres estudios).
+- **Cartílago, solo `mecanismo`**: cambios agudos de 0–5 % que se recuperan en minutos (Coburn 2023, certeza muy baja). La respuesta «en U» (Gardashli 2024) va en «Ampliar», marcada como apoyada sobre todo en animales e in vitro. No hay fuente fiable leída sobre dolor o función del cartílago con ejercicio.
+- **El `resumen` del bloque cambia** de «por qué el reposo absoluto no repara» a «qué pasa cuando se deja de cargar»: ninguna fuente leída estudia el reposo tras una lesión como tal; lo que hay es desuso en reposo en cama, inmovilización y descarga.
+- **Frases para el paciente**: tres, cada una apoyada solo en afirmaciones `clinico` (fuerza y desuso; tendón que duele; fuerza con la edad). Ninguna sobre el hueso: con fracturas no demostradas, una frase para el paciente sobre «huesos más fuertes» prometería más de lo que hay.

@@ -88,7 +88,8 @@ test('el HTML: leyenda de niveles, chip pulsable por afirmación, «✨ IA» por
   const antes = b.apartados;
   b.apartados = muestra().apartados; b.fuentes = ['Prueba 2020'];
   try {
-    const html = E.ejercicioHTML();
+    // Solo el bloque de prueba: los demás bloques escritos tienen sus propios chips
+    const html = E.ejercicioHTML().split('data-bloque="hipoalgesia"')[1].split('data-bloque="')[0];
     assert.equal((html.match(/<button type="button" class="ej-nivel /g) || []).length, 4);   // que 1 + evidencia 2 + consulta 1
     assert.equal((html.match(/class="ia-parrafo"/g) || []).length, 5);                         // + 1 de paciente
     const paciente = 'data-apartado="paciente"' + html.split('data-apartado="paciente"')[1].split('</section>')[0];
