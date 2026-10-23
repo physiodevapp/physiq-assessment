@@ -105,13 +105,17 @@ console.log('\nfase 5 plegable');
     for (const id of ['ca16', 'ca17', 'ca18', 'ca19']) {
       const p = HYPOTHESES[id].pronostico;
       assert.equal(p.horizonte, 'Con AINE y reposo el dolor se reduce, pero suele volver al retomar el deporte.', id);
-      assert.match(p.notas, /^La debilidad de cadera aumenta el riesgo: volver al deporte con un déficit de fuerza menor del 10–20 %\./, id);
+      assert.match(p.notas, /^La debilidad de cadera aumenta el riesgo de lesión de ingle: volver al deporte con un déficit de fuerza menor del 10–20 % respecto al lado sano o al valor previo\./, id);
       // La imagen, la de cada una: la sínfisis solo en aductor y pubis, la vaina en el psoas, la hernia en el canal
       assert.equal(/sínfisis/.test(p.notas), id === 'ca16' || id === 'ca19', `${id}: sínfisis`);
       assert.equal(/vaina sinovial/.test(p.notas), id === 'ca17', `${id}: vaina`);
       assert.equal(/hernia/.test(p.notas), id === 'ca18', `${id}: hernia`);
+      // p. 177: la hendidura secundaria y los cortes para la inserción son del aductor; el edema de la sínfisis, de los dos
+      assert.equal(/hendidura secundaria|inserción del aductor/.test(p.notas), id === 'ca16', `${id}: hendidura`);
     }
-    assert.match(HYPOTHESES.ca11.pronostico.notas, /déficit de fuerza menor del 10–20 %/);
+    assert.match(HYPOTHESES.ca11.pronostico.notas, /déficit de fuerza menor del 10–20 % respecto al lado sano/, 'ca11: p. 173');
+    assert.match(HYPOTHESES.ca4.pronostico.notas, /empezar en el glúteo menor y extenderse hacia atrás al glúteo medio/, 'ca4: p. 179');
+    assert.match(HYPOTHESES.ca14.pronostico.notas, /alivio del dolor con un bloqueo nervioso diagnóstico/, 'ca14: p. 172');
     assert.ok(!/debilidad de cadera/.test(HYPOTHESES.ca11.pronostico.notas), 'ca11: lo de la debilidad, solo en el dolor inguinal de larga evolución');
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
