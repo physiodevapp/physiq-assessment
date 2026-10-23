@@ -65,7 +65,7 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
-  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla, cadera, hombro y cervical', () => {
+  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla, cadera, hombro, cervical y lumbar', () => {
     const CLAVES = ['horizonte', 'seguimiento', 'notas', 'derivacion', 'fuente'];
     for (const h of Object.values(HYPOTHESES)) {
       for (const k of Object.keys(h.pronostico || {})) assert.ok(CLAVES.includes(k), `${h.id}: pronostico.${k} no existe`);
@@ -162,6 +162,27 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.ce14.pronostico.derivacion, /derivar de inmediato para valoración médica\.$/, 'ce14: p. 382');
     assert.ok(!/urgencias|disección/.test(HYPOTHESES.ce13.pronostico.notas), 'ce13: las urgencias, en «reconsiderar o derivar»');
     assert.ok(!/aura/.test(HYPOTHESES.ce3.pronostico.derivacion), 'ce3: el aura es un diferencial, no un criterio');
+    // Lumbar (Lluch 2020, cap. 5.1): «reconsiderar o derivar» solo en lu3 (RM), lu4 (progresión neurológica),
+    // lu5 (cirugía) y lu7 (radiofrecuencia, NICE NG59); sin seguimiento; la imagen y los diferenciales, en «a tener en cuenta»
+    const LU = ['lu3', 'lu4', 'lu5', 'lu6', 'lu7', 'lu8'];
+    for (const id of LU) {
+      const p = HYPOTHESES[id].pronostico;
+      assert.ok(p.notas, `${id}: sin notas`);
+      assert.ok(!p.seguimiento, `${id}: sin seguimiento`);
+      assert.equal(!!p.derivacion, ['lu3', 'lu4', 'lu5', 'lu7'].includes(id), `${id}: derivación solo con criterio`);
+      assert.equal(!!p.horizonte, id !== 'lu5', `${id}: horizonte`);
+      assert.ok(!/\b(RM|EMG|electromiograma|radiología|imagen)\b/i.test(p.horizonte || ''), `${id}: la imagen no es un pronóstico`);
+      assert.ok(!/→/.test(`${p.horizonte || ''} ${p.notas} ${p.derivacion || ''}`), `${id}: sin flechas`);
+      if (p.derivacion) assert.match(p.derivacion, /^[a-záéíóú]/, `${id}: continúa «Reconsiderar o derivar si:»`);
+    }
+    assert.match(HYPOTHESES.lu3.pronostico.derivacion, /: está indicada la RM\.$/);
+    assert.match(HYPOTHESES.lu5.pronostico.derivacion, /: es una indicación absoluta de cirugía\.$/, 'lu5: p. 311');
+    assert.match(HYPOTHESES.lu3.pronostico.horizonte, /65 % se ha recuperado por completo en seguimientos a 1, 4 y 10 años/, 'lu3: p. 308');
+    assert.match(HYPOTHESES.lu4.pronostico.derivacion, /: puede estar indicada la cirugía\.$/, 'lu4: p. 314');
+    assert.match(HYPOTHESES.lu8.pronostico.notas, /tres veces más frecuente con PRPPP/, 'lu8: p. 322');
+    assert.ok(!/persist/.test(HYPOTHESES.lu8.pronostico.notas), 'lu8: los predictores son del PRPPP, no de que persista');
+    assert.match(HYPOTHESES.lu7.pronostico.derivacion, /NICE recomienda considerar derivar para valorar una denervación por radiofrecuencia/);
+    for (const id of ['lu4', 'lu7']) assert.ok(!/infiltraciones/.test(HYPOTHESES[id].pronostico.derivacion), `${id}: no ofrecer infiltraciones no es un criterio`);
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
     const t = IA_N.bloquesAmpliados(a).join('\n');
