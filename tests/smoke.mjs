@@ -3703,6 +3703,38 @@ async function checkFase5Plegado(browser, errors) {
     dispatchEvent(new Event('afterprint'));
     return desplegado && todos.every((d, i) => d.open === antes[i]);
   });
+  // «✨ IA» en la pauta y el pronóstico (ampliar-ia.js): nada del paciente
+  // dentro de un [data-ia-ctx] (ni la tarjeta pq1 ni la nota del protocolo)
+  r.iaSinPaciente = await page.evaluate(() => {
+    const conIA = [...document.querySelectorAll('#resultsContent [data-ia-ctx]')];
+    const texto = conIA.map(c => c.textContent + c.dataset.iaCtx).join(' ');
+    // (la rama «Tras meniscectomía» de ro2 es de data/: se buscan las restricciones y el nombre de pq1)
+    return conIA.length > 0 && !/pivotar|Postoperatorio/i.test(texto)
+      && !document.querySelector('#resultsContent .nota-posq [data-ia-ctx], #resultsContent .nota-posq[data-ia-ctx]')
+      && !document.querySelector('#resultsContent .nota-posq')?.closest('[data-ia-ctx]');
+  });
+  await fase5({ ...rodilla, mecanismo: 'Traumático', treeAnswers: { ro_step1: 'menisco' } }, 'ro2', 'rama');
+  await page.evaluate(() => {
+    window.__iaHrefs = [];
+    window.addEventListener('click', e => {
+      const a = e.target.closest?.('a[target="_blank"]');
+      if (a) { window.__iaHrefs.push(a.href); e.preventDefault(); }
+    });
+  });
+  const promptDe = async (sel, abrir) => {
+    await page.evaluate(([sel, abrir]) => { document.querySelectorAll(abrir).forEach(d => { d.open = true; }); document.querySelector(sel).scrollIntoView({ block: 'center' }); }, [sel, abrir]);
+    await page.click(sel);
+    return page.evaluate(() => decodeURIComponent(((window.__iaHrefs.at(-1) || '').split('q=')[1] || '').replace(/\+/g, ' ')));
+  };
+  const qPauta = await promptDe('#resultsContent details.pauta-det .pauta-det-resto .ia-parrafo-ir', '#resultsContent details.pauta-det');
+  const primera = await page.textContent('#resultsContent details.pauta-det .pauta-det-primera');
+  r.iaPauta = qPauta.includes('la pauta de tratamiento para la hipótesis') && qPauta.includes('situación «Rotura traumática, sin cirugía»')
+    && qPauta.includes('(región rodilla)') && qPauta.includes('Qué quiere decir en la práctica clínica')
+    && qPauta.includes(primera.trim().slice(0, 30)) && !qPauta.includes('Ver pauta completa') && !qPauta.includes('Ocultar pauta');
+  const qOtra = await promptDe('#resultsContent details.pauta-otras .ia-parrafo-ir', '#resultsContent details.pauta-otras');
+  r.iaOtra = qOtra.includes('la pauta de tratamiento') && !qOtra.includes('Rotura traumática, sin cirugía»');
+  const qPron = await promptDe('#resultsContent details.pronostico-det .ia-parrafo-ir', '#resultsContent details.pronostico-det');
+  r.iaPronostico = qPron.includes('el pronóstico y los criterios de derivación de la hipótesis') && qPron.includes('Qué quiere decir en la práctica clínica');
   await context.close();
   r.ok = Object.values(r).every(v => v === true);
   return r;
@@ -6367,7 +6399,7 @@ const SECCIONES = [
 
   { id: 'fase5', titulo: 'Fase 5: pauta por situación y lo que nunca se pliega:', run: async ({ browser, errors }) => {
     const r = await checkFase5Plegado(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba; «✨ IA» en la pauta (también la plegada y las otras situaciones) y el pronóstico, con su contexto y sin nada del paciente (ni pq1 ni la nota del protocolo)${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
