@@ -65,7 +65,7 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
-  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla, cadera, hombro, cervical, lumbar y codo', () => {
+  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); las 7 regiones', () => {
     const CLAVES = ['horizonte', 'seguimiento', 'notas', 'derivacion', 'fuente'];
     for (const h of Object.values(HYPOTHESES)) {
       for (const k of Object.keys(h.pronostico || {})) assert.ok(CLAVES.includes(k), `${h.id}: pronostico.${k} no existe`);
@@ -187,6 +187,33 @@ console.log('\nfase 5 plegable');
     const co3 = HYPOTHESES.co3.pronostico;
     assert.deepEqual(Object.keys(co3).sort(), ['derivacion', 'fuente'], 'co3: solo derivación');
     assert.match(co3.derivacion, /^no mejora más tras 3–6 meses de tratamiento adecuado: valorar la cirugía\. Si lo que limita es el hueso/);
+    // Tobillo y pie (Lluch 2020, cap. 4.3): los textos que la tarjeta repetía en varias hipótesis, cada uno en la suya;
+    // sin seguimiento; «reconsiderar o derivar» solo con un criterio
+    const TP = ['tp1', 'tp2', 'tp3', 'tp4', 'tp5', 'tp7', 'tp12', 'tp14', 'tp15', 'tp16', 'tp17', 'tp18', 'tp19', 'tp20', 'tp21', 'tp22',
+      'tp23', 'tp24', 'tp25', 'tp26', 'tp27', 'tp28', 'tp29', 'tp30', 'tp31', 'tp32', 'tp33', 'tp34', 'tp36', 'tp37'];
+    const TP_DERIV = ['tp1', 'tp2', 'tp7', 'tp14', 'tp15', 'tp17', 'tp19', 'tp24', 'tp26', 'tp30', 'tp31', 'tp32', 'tp33'];
+    const TP_HORIZ = ['tp1', 'tp5', 'tp7', 'tp14', 'tp15', 'tp17', 'tp22', 'tp30', 'tp32', 'tp33', 'tp36', 'tp37'];
+    for (const id of TP) {
+      const p = HYPOTHESES[id].pronostico;
+      assert.equal(!!p.notas, id !== 'tp2', `${id}: notas`);
+      assert.ok(!p.seguimiento, `${id}: sin seguimiento`);
+      assert.equal(!!p.derivacion, TP_DERIV.includes(id), `${id}: derivación solo con criterio`);
+      assert.equal(!!p.horizonte, TP_HORIZ.includes(id), `${id}: horizonte`);
+      assert.ok(!/\b(RM|TC|radiografía|ecografía|imagen)\b/i.test(p.horizonte || ''), `${id}: la imagen no es un pronóstico`);
+      assert.ok(!/→/.test(`${p.horizonte || ''} ${p.notas || ''} ${p.derivacion || ''}`), `${id}: sin flechas`);
+      if (p.derivacion) assert.match(p.derivacion, /^[a-záéíóú]/, `${id}: continúa «Reconsiderar o derivar si:»`);
+    }
+    const txt = id => Object.values(HYPOTHESES[id].pronostico).join(' ');
+    assert.ok(!/Lisfranc|calcáneo|Jones/.test(txt('tp3')), 'tp3: solo el Aquiles');
+    assert.ok(!/Aquiles|calcáneo|Jones/.test(txt('tp4')), 'tp4: solo Lisfranc');
+    assert.ok(!/Lisfranc|Aquiles/.test(txt('tp5')), 'tp5: solo las fracturas del pie');
+    for (const id of ['tp12', 'tp16', 'tp28']) assert.equal(/neurodinámica/.test(txt(id)), id === 'tp12', `${id}: lo del sural, solo en tp12`);
+    for (const id of ['tp18', 'tp20', 'tp22']) assert.equal(/osteofitos/.test(txt(id)), id === 'tp20', `${id}: el pinzamiento anterior, solo en tp20`);
+    for (const id of ['tp23', 'tp25']) assert.equal(/coalicion|12,7/.test(txt(id)), id === 'tp23', `${id}: la coalición, solo en tp23`);
+    for (const id of ['tp26', 'tp27']) assert.equal(/espolón|atrapamiento/.test(txt(id)), id === 'tp26', `${id}: la fasciopatía, solo en tp26`);
+    for (const id of ['tp29', 'tp31', 'tp34']) assert.equal(/gota/.test(txt(id)), id === 'tp31', `${id}: la gota, solo en tp31`);
+    assert.ok(!/tres números/.test(txt('tp21')), 'tp21: no está en la p. 261');
+    assert.match(HYPOTHESES.tp12.pronostico.notas, /lo que lleva a considerar el diagnóstico diferencial/, 'tp12: p. 244, lo aleatorio es del sural');
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
     const t = IA_N.bloquesAmpliados(a).join('\n');
