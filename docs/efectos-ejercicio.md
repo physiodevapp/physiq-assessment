@@ -115,7 +115,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 2 — Mecanotransducción | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). 13 fuentes, ver «Bloque 2 — decisiones de nivel» |
 | Bloque 3 — Antiinflamatorio sistémico | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10): frases para el paciente solo en enfermedades reumáticas inflamatorias y bloque separado del de mioquinas. 9 fuentes, ver «Bloque 3 — decisiones de nivel» |
 | Bloque 4 — Otras mioquinas | Unido al bloque 3 (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10): todo era `mecanismo` o `discutido` (decisión 2). El bloque 3 pasa a llamarse «Efecto antiinflamatorio y mioquinas». 5 fuentes, ver «Mioquinas, dentro del bloque 3» |
-| Bloque 5 — Efectos centrales | No empezado |
+| Bloque 5 — Efectos centrales | Escrito (2026-10, Opus; lectura de fuentes con Sonnet), **pendiente de revisión del usuario**. 8 fuentes, ver «Bloque 5 — decisiones de nivel». Con él no queda ningún bloque pendiente y la guía deja de pintar «Pendientes de fuentes revisadas» |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet), **pendiente de revisión del usuario**: `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis, más adelante y con Opus |
 
 ## Infraestructura hecha (2026-10)
@@ -220,6 +220,17 @@ Fuentes leídas enteras en PMC: Severinsen y Pedersen 2020, Bettariga 2024, Jedr
 - **Consulta** (`mecanismo`): no elegir un ejercicio por una mioquina, ni explicarlo como «libera hormonas que…».
 - **Ampliar**: BDNF (sale del cerebro, no del músculo), catepsina B (no se sabe si media efectos cognitivos), el ensayo con tocilizumab (la IL-6 media la pérdida de grasa visceral del entrenamiento) y las limitaciones de medida.
 - **Frases para el paciente**: ninguna nueva; las dos del bloque 3 no cambian.
+
+## Bloque 5 — decisiones de nivel (2026-10, Opus)
+
+Fuentes leídas enteras en PMC por dos agentes Sonnet (sin suplementos ni figuras): Noetel 2024 y Singh 2023 (ánimo), Haller 2026 (lumbalgia crónica con síntomas depresivos), Pérez-Romero 2026 (fibromialgia, ánimo), Xie 2021 (sueño en adultos sin enfermedad), Hudson 2025 (sueño en fibromialgia), Lima 2023 (mediadores en artrosis de rodilla) y, por palabras clave, las partes psicológicas, de sueño y de calidad de vida de Geneen 2017 (ya leída entera para el bloque 1).
+
+- **`clinico`**: síntomas depresivos en la depresión mayor (Noetel 2024: efecto moderado frente a control activo, confianza CINeMA baja o muy baja, lo dice la frase) y en población general y enfermedades crónicas, artritis incluida (Singh 2023, revisiones de calidad críticamente baja, también dicho); la intensidad (más efecto cuanto más intensa, pero la ligera ya cuenta); el sueño referido en adultos sin enfermedad (Xie 2021), con la salvedad de que en actigrafía solo mejora la eficiencia.
+- **`discutido`**: el ánimo en el dolor musculoesquelético crónico (Geneen 2017 variable, Pérez-Romero 2026 favorable pero descriptiva, Haller 2026 con 5 ensayos y certeza muy baja) y el sueño en la fibromialgia (Hudson 2025: unas modalidades mejoran con certeza baja, otras no concluyentes, el mente-cuerpo acuático peor que el placebo; Geneen 2017 sin datos de sueño).
+- **`mecanismo`**: los mecanismos neurobiológicos (ninguna revisión los mide), la autoeficacia como mediador (Lima 2023: dos ensayos en artrosis de rodilla, uno de dieta y ejercicio; en el de ejercicio solo, texto y tabla se contradicen; mediador y resultado medidos a la vez) y que ánimo y dolor no se pueden separar (Haller 2026).
+- **Consulta**: el ejercicio junto a la psicoterapia y los antidepresivos, no en su lugar (Noetel 2024, comparación en parte indirecta); empezar con actividad ligera; menos abandonos con fuerza y yoga; no prometer más horas de sueño; no explicar la mejoría por la autoeficacia como un hecho.
+- **Frases para el paciente**: dos, sobre el ánimo (apoya en depresión, población general e intensidad) y sobre el sueño referido. Ninguna sobre ánimo o sueño en su dolor musculoesquelético en concreto, porque ahí está `discutido`; lo dice el «Ampliar».
+- **Fuera**: la sensibilización central va en el bloque 1 (decisión 2). Lee 2015 (autoeficacia como mediador entre dolor y discapacidad, sin ejercicio) y los análisis de mediación de educación o terapia cognitivo-funcional no se usan: no miden el ejercicio.
 
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
