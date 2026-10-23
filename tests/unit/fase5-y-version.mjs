@@ -155,7 +155,11 @@ console.log('\nfase 5 plegable');
       if (p.derivacion) assert.match(p.derivacion, /^[a-záéíóú]/, `${id}: continúa «Reconsiderar o derivar si:»`);
     }
     assert.match(HYPOTHESES.ce3.pronostico.derivacion, /^hay cualquier duda de afectación medular\./);
-    assert.match(HYPOTHESES.ce13.pronostico.derivacion, /visión doble verdadera[^.]*mareo súbito[^.]*: derivar a urgencias\.$/);
+    // Lluch 2020, cap. 5.3, pp. 370–371 y 383: lo «súbito» de la disección es la cefalea o el dolor de cuello, no el mareo
+    assert.match(HYPOTHESES.ce13.pronostico.derivacion, /^hay visión doble verdadera[^.]*cefalea o un dolor de cuello súbito[^.]*disección arterial: derivar a urgencias\.$/);
+    assert.ok(!/mareo súbito/.test(HYPOTHESES.ce13.pronostico.derivacion), 'ce13: el mareo no es lo súbito');
+    for (const id of ['ce5', 'ce13']) assert.match(HYPOTHESES[id].pronostico.notas, /sistema vestibular o de una conmoción \(traumatismo craneoencefálico leve\)/, `${id}: pp. 370–371`);
+    assert.match(HYPOTHESES.ce14.pronostico.derivacion, /derivar de inmediato para valoración médica\.$/, 'ce14: p. 382');
     assert.ok(!/urgencias|disección/.test(HYPOTHESES.ce13.pronostico.notas), 'ce13: las urgencias, en «reconsiderar o derivar»');
     assert.ok(!/aura/.test(HYPOTHESES.ce3.pronostico.derivacion), 'ce3: el aura es un diferencial, no un criterio');
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)

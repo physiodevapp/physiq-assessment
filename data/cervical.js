@@ -937,9 +937,9 @@ export const hypotheses = {
     dosis: 'Aguda: ejercicios de movilización y estabilización, láser y collarín a corto plazo (C); el collarín, solo poco tiempo, en la fase aguda y si no alivian otros tratamientos. Crónica: tracción cervical mecánica intermitente (la continua no ha mostrado beneficio) combinada con estiramientos y fortalecimiento más movilización o manipulación cervical y torácica (B); educación para seguir con la actividad laboral y el ejercicio (B). Vigilar la irritabilidad y ajustar la terapia manual y el ejercicio. Para la fase aguda hay una pauta con volumen de un ensayo (Kuijper 2009) en «Dolor radicular cervical». La guía no fija series, repeticiones ni semanas: el volumen queda a criterio del clínico, ajustado a la irritabilidad.',
     dosisFuente: 'Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía)',
     pronostico: {
-      notas: 'La RM muestra la compresión de la raíz o de la médula; el electromiograma y los estudios de conducción nerviosa localizan el daño y apoyan el diagnóstico clínico. El aura migrañosa puede presentarse como pérdida de fuerza en el brazo antes de la cefalea, durante hasta 60 minutos.',
+      notas: 'La RM muestra la compresión de la raíz o de la médula; el electromiograma y los estudios de conducción nerviosa localizan el daño y su gravedad, y apoyan el diagnóstico clínico. El aura migrañosa puede presentarse como pérdida de fuerza en el brazo antes de la cefalea, durante hasta 60 minutos.',
       derivacion: 'hay cualquier duda de afectación medular. Derivar también si los síntomas no mejoran o empeoran (Blanpied 2017).',
-      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6)'
+      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6) · Lluch 2020, cap. 5.3 (Jull y Falla), p. 381'
     },
     tests: [
       { name: 'Test de Spurling (Compresión Foraminal)', cargaOsea: true, anatomia: ['columna_cervical', 'nervios_espinales'], sn: '38–98%', sp: '84–100%', lr_pos: null, lr_neg: null, criterio: 'Extensión + inclinación lateral ipsilateral + compresión axial. Positivo: reproduce dolor radicular en el brazo.', fuente: 'Rango de 5 estudios; la técnica y la interpretación varían y no hay valor agrupado. E con certeza baja, S y LR con certeza muy baja (Thoomes 2026, BMC Musculoskelet Disord, actualización de la revisión de 2018)' },
@@ -981,8 +981,8 @@ export const hypotheses = {
     dosisFuente: 'Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía)',
     pronostico: {
       horizonte: 'La recuperación es peor con síntomas de estrés postraumático, sobre todo de hiperactivación. Una expectativa de recuperación baja es un factor pronóstico independiente de más discapacidad (OR 4,2).',
-      notas: 'El mecanismo del accidente no predice el daño estructural. No hay que prejuzgar: un factor de riesgo no condena a un paciente concreto, y el miedo suele ceder al bajar el dolor. Si hay mareo tras un golpe en la cabeza o el cuello, pensar también en un trastorno vestibular, una conmoción y una disección arterial.',
-      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6)'
+      notas: 'El mecanismo del accidente no predice el daño estructural. No hay que prejuzgar: un factor de riesgo no condena a un paciente concreto, y el miedo suele ceder al bajar el dolor. Si el mareo empezó tras un golpe en la cabeza o el cuello, puede venir del sistema vestibular o de una conmoción (traumatismo craneoencefálico leve); pensar también en una disección arterial cervical.',
+      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6) · Lluch 2020, cap. 5.3 (Jull y Falla), pp. 369–371 y 373–374'
     },
     tests: [
       { name: 'ROM Cervical Activo (reducción significativa)', anatomia: ['columna_cervical'], sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'En el latigazo cervical, los síntomas y signos suelen ser más frecuentes y en general más graves en todos los parámetros físicos que en el dolor de cuello idiopático.', razonamiento: { detalle: 'Sin S ni E.' }, fuente: 'Lluch 2020, cap. 5.3 (Jull y Falla), p. 382' },
@@ -1069,7 +1069,7 @@ export const hypotheses = {
     dosisFuente: 'Kuijper 2009, BMJ 339:b3883 (ensayo aleatorizado, n = 205; la lista de ejercicios está en su apéndice web, no revisado) · Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación)',
     pronostico: {
       notas: 'La RM para ver el compromiso de la raíz solo tiene sentido si la exploración lo indica: los cambios son frecuentes en personas sin síntomas. Con más dolor y discapacidad aparece sensibilización central, y la exploración debe ser mínima. La espondilosis que avanza puede comprimir la médula.',
-      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6)'
+      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6) · Lluch 2020, cap. 5.3 (Jull y Falla), pp. 368, 370 y 381'
     },
     tests: [
       { name: 'ULNT1 (sesgo mediano) con diferenciación estructural', anatomia: ['nervio_mediano', 'plexo_braquial'], sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Positivo si reproduce los síntomas y estos cambian con la diferenciación estructural. Es el más estudiado (el capítulo no da cifras; las agrupadas del ULNT1 son para radiculopatía y puntúan allí). Si hay adormecimiento o debilidad, pasar a la radiculopatía.', fuente: 'Lluch 2020, cap. 5.3 (Jull y Falla), p. 380 · Tarjeta de consulta cervical (guía clínica cervical, ap. 5)' },
@@ -1085,9 +1085,9 @@ export const hypotheses = {
     dosis: 'Mareo cervicogénico crónico (3 meses o más, con inestabilidad y dolor o rigidez cervical; excluidos vértigo, migraña, insuficiencia vertebrobasilar y otras causas de mareo). 2–6 sesiones en 6 semanas, según la respuesta. Opción 1, SNAG de Mulligan: sentado, el paciente mueve la cabeza hacia la dirección que le marea mientras el fisio desliza hacia anterior C2 (flexión o extensión, por la apófisis espinosa) o C1 (rotación, por la apófisis transversa); 6 repeticiones, sin síntomas en la primera sesión y con sobrepresión suave en las siguientes. Tras la 2.ª sesión, autoSNAG en casa con los dedos o una cinta, 6 repeticiones una vez al día. Opción 2, movilización de Maitland de hasta 3 niveles cervicales altos rígidos o dolorosos, normalmente 3 aplicaciones de 30 s por nivel (grado a criterio), más movilidad activa en casa tras la 2.ª sesión (flexión, extensión, rotación e inclinación, 3 veces cada una, una vez al día). Las dos redujeron la intensidad del mareo frente a placebo al terminar y a las 12 semanas, y su frecuencia a las 12 semanas, sin diferencias entre ellas.',
     dosisFuente: 'Reid 2014, Phys Ther 94(4):466–476 (ensayo aleatorizado doble ciego frente a placebo, n = 86)',
     pronostico: {
-      notas: 'Identificar la fuente del mareo es clave para que el manejo funcione. Un vértigo rotatorio hace pensar en un origen vestibular, y un golpe en la cabeza o el cuello, en una conmoción.',
-      derivacion: 'hay visión doble verdadera en una persona mayor (insuficiencia vertebrobasilar) o un mareo súbito en una persona joven (disección arterial): derivar a urgencias.',
-      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6)'
+      notas: 'Identificar la fuente del mareo es clave para que el manejo funcione. Quien tiene un mareo cervicogénico casi nunca refiere un vértigo verdadero o sensación de giro, típico de una disfunción vestibular. Si el mareo empezó tras un golpe en la cabeza o el cuello, puede venir del sistema vestibular o de una conmoción (traumatismo craneoencefálico leve).',
+      derivacion: 'hay visión doble verdadera, que puede darse en la insuficiencia vertebrobasilar (suele ser en personas mayores) y casi nunca en el mareo cervicogénico, o, en una persona joven, una cefalea o un dolor de cuello súbito y desconocido para el paciente, que hace pensar en una disección arterial: derivar a urgencias.',
+      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6) · Lluch 2020, cap. 5.3 (Jull y Falla), pp. 370–371 y 383'
     },
     tests: [
       { name: 'Descartar lo vascular (5 D y 3 N, disección)', anatomia: ['arteria_vertebral', 'arteria_carotida'], sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Primero descartar lo vascular. Si hay signos vasculares → urgencias hoy (fase 2).', fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5)' },
@@ -1103,9 +1103,9 @@ export const hypotheses = {
     dosisFuente: 'Blanpied 2017, J Orthop Sports Phys Ther 47(7):A1–A83 (guía de práctica clínica APTA; letra = grado de la recomendación, tal como la da la guía)',
     pronostico: {
       horizonte: 'Es recurrente: tras un episodio, el 50–85 % vuelve a tener dolor en meses o pocos años.',
-      notas: 'La radiografía solo tiene sentido con una indicación concreta de la exploración: hay dolor sin cambios y cambios sin dolor. Un dolor constante y sordo hace pensar en un componente inflamatorio. Una espondilosis avanzada puede dar una radiculopatía o una mielopatía.',
-      derivacion: 'el dolor no cambia con la postura, el movimiento ni el reposo: revisar las banderas rojas.',
-      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6)'
+      notas: 'La radiografía solo tiene sentido con una indicación concreta de la exploración: hay dolor sin cambios y cambios sin dolor. Un dolor constante y sordo hace pensar en un componente inflamatorio. La espondilosis puede irritar la raíz y dar una radiculopatía, y cuando está muy avanzada puede comprimir la médula (mielopatía).',
+      derivacion: 'el dolor no cambia con la postura, el movimiento ni el reposo: sospechar una bandera roja y derivar de inmediato para valoración médica.',
+      fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5 y 6) · Lluch 2020, cap. 5.3 (Jull y Falla), pp. 365, 367–368, 372 y 381–382'
     },
     tests: [
       { name: 'Tarea provocadora (① gesto testigo)', sn: null, sp: null, lr_pos: null, lr_neg: null, criterio: 'Que muestre la actividad que le duele; modificar la postura y ver el efecto inmediato. Tarea o postura provocadora que el paciente demuestra (rotación al lado del dolor, mirar al techo, postura de ordenador un tiempo fijo) → EVA.', fuente: 'Tarjeta de consulta cervical (guía clínica cervical, ap. 5)' },
