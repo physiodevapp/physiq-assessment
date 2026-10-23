@@ -1,7 +1,8 @@
 // Guía «Efectos del ejercicio» de la cabecera (docs/efectos-ejercicio.md). Se ejecuta desde tests/unit.js.
 import { assert, leer, test, buildPhysiQPayload, buildInformeFisioterapiaText, buildContextSummaryText,
   withState, citasEnTexto, claveRegistro } from './comun.mjs';
-const { NIVELES_EJERCICIO, APARTADOS_EJERCICIO, BLOQUES_EJERCICIO, TEXTOS_EJERCICIO } = await import('../../data/ejercicio.js');
+const { NIVELES_EJERCICIO, APARTADOS_EJERCICIO, BLOQUES_EJERCICIO, TEXTOS_EJERCICIO, BLOQUE_POR_HIPOTESIS } = await import('../../data/ejercicio.js');
+const { HYPOTHESES } = await import('../../data.js');
 const E = await import('../../lib/ejercicio.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 
@@ -178,6 +179,38 @@ test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuesti
   assert.ok(E.enlaceEjercicioHTML('baja', { animo: true }).includes("abrirEjercicio({ bloque: 'centrales' })"));
 });
 
+test('enlace de la fase 6 por hipótesis: la tabla solo nombra hipótesis y bloques que existen', () => {
+  const escritos = E.bloquesConContenido().map(b => b.id);
+  for (const [id, bloque] of Object.entries(BLOQUE_POR_HIPOTESIS)) {
+    assert.ok(HYPOTHESES[id], `${id} no es una hipótesis`);
+    assert.ok(['hipoalgesia', 'mecanotransduccion'].includes(bloque) && escritos.includes(bloque), `${id} → ${bloque}`);
+    // Carga y adaptación del tejido: solo tendinopatías (su frase para el paciente habla del tendón)
+    if (bloque === 'mecanotransduccion') assert.ok(/tendinopat/i.test(HYPOTHESES[id].name), `${id}: ${HYPOTHESES[id].name}`);
+  }
+  // Fuera a propósito: la artrosis y lo que se deriva
+  for (const id of ['ca1', 'ro1', 'h10', 'tp24', 'tp3', 'co7']) assert.ok(!BLOQUE_POR_HIPOTESIS[id], id);
+});
+
+test('enlace de la fase 6 por hipótesis: manda sobre la irritabilidad, y nombra la hipótesis', () => {
+  const tendon = [{ id: 'ro5', name: 'Tendinopatía Rotuliana' }];
+  const alta = E.enlaceEjercicioHTML('alta', { hipotesis: tendon });
+  assert.ok(alta.includes('data-bloque-ejercicio="mecanotransduccion"') && alta.includes('data-por-hipotesis'));
+  assert.ok(alta.includes('el bloque que corresponde a «Tendinopatía Rotuliana»'));
+  assert.ok(alta.includes('data-bloque-alternativo="hipoalgesia"'), 'el secundario es el otro bloque');
+  const cronico = [{ id: 'ce7', name: 'Dolor Mecánico Cervical Inespecífico Crónico' }];
+  assert.ok(E.enlaceEjercicioHTML('baja', { hipotesis: cronico }).includes('data-bloque-ejercicio="hipoalgesia"'));
+  // Una hipótesis fuera de la tabla no cuenta; las que están deciden
+  assert.ok(E.enlaceEjercicioHTML('baja', { hipotesis: [...cronico, { id: 'ce1', name: 'X' }] }).includes('data-bloque-ejercicio="hipoalgesia"'));
+  // Apuntan a bloques distintos, o ninguna en la tabla: la irritabilidad, como antes
+  const mezcla = E.enlaceEjercicioHTML('alta', { hipotesis: [...tendon, ...cronico] });
+  assert.ok(mezcla.includes('data-bloque-ejercicio="hipoalgesia"') && !mezcla.includes('data-por-hipotesis'));
+  assert.ok(mezcla.includes('la irritabilidad elegida'));
+  assert.ok(E.enlaceEjercicioHTML('baja', { hipotesis: [{ id: 'ce1', name: 'X' }] }).includes('data-bloque-ejercicio="mecanotransduccion"'));
+  // Dos de la tabla con el mismo bloque: las nombra a las dos
+  const dos = E.enlaceEjercicioHTML('alta', { hipotesis: [{ id: 'tp8', name: 'A' }, { id: 'tp9', name: 'B' }] });
+  assert.ok(dos.includes('«A» y «B»'));
+});
+
 test('enlace de la fase 6: el botón abre el bloque y nombra cuál es', () => {
   const html = E.enlaceEjercicioHTML('alta');
   assert.ok(html.includes('data-bloque-ejercicio="hipoalgesia"'));
@@ -190,7 +223,7 @@ test('enlace de la fase 6: el botón abre el bloque y nombra cuál es', () => {
 test('enlace de la fase 6: solo en el bloque «Educación», solo en pantalla y nunca en los textos del plan', () => {
   const plan = leer('plan.js');
   assert.equal((plan.match(/enlaceEjercicioHTML\(/g) || []).length, 1);
-  assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion, b\.titulo\) \+ enlaceEjercicioHTML\(plan\.irritabilidad, motivosEjercicio\(/.test(plan));
+  assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion, b\.titulo\) \+ enlaceEjercicioHTML\(plan\.irritabilidad, \{ \.\.\.motivosEjercicio\(.*hipotesis: plan\.hipotesis \}\)/.test(plan));
   assert.ok(leer('styles.css').includes('@media print { .plan-ejercicio { display: none !important; } }'));
   // Los textos que se comparten salen de lib/ y data/ del plan, que no conocen la guía
   for (const f of [['lib', 'plan-tratamiento.js'], ['data', 'plan-tratamiento.js'], ['lib', 'plan-ia.js']]) {
