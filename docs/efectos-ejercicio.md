@@ -113,7 +113,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Infraestructura (herramienta, tests, smoke) | Hecha (2026-10, Sonnet): `data/ejercicio.js`, `lib/ejercicio.js`, `#ejercicioBtn` / `#ejercicioOverlay`, `abrirEjercicio()`, tests `tests/unit/ejercicio.mjs`, smoke `ejercicio`; los cinco bloques sin contenido, listados como pendientes |
 | Bloque 1 — Hipoalgesia | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Fuentes leídas enteras: Naugle 2012, Vaegter y Jones 2020, Geneen 2017 y Polaski 2019 (PMC); Rice 2019 y Wewege y Jones 2021 (PDF del usuario) |
 | Bloque 2 — Mecanotransducción | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). 13 fuentes, ver «Bloque 2 — decisiones de nivel» |
-| Bloque 3 — Antiinflamatorio sistémico | No empezado |
+| Bloque 3 — Antiinflamatorio sistémico | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10): frases para el paciente solo en enfermedades reumáticas inflamatorias y bloque separado del de mioquinas. 9 fuentes, ver «Bloque 3 — decisiones de nivel» |
 | Bloque 4 — Otras mioquinas | No empezado |
 | Bloque 5 — Efectos centrales | No empezado |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet), **pendiente de revisión del usuario**: `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis, más adelante y con Opus |
@@ -197,6 +197,19 @@ Fuentes añadidas tras la primera lectura: Magnusson y Kjaer 2019 y Howe 2011 (l
 - **Cartílago, solo `mecanismo`**: cambios agudos de 0–5 % que se recuperan en minutos (Coburn 2023, certeza muy baja). La respuesta «en U» (Gardashli 2024) va en «Ampliar», marcada como apoyada sobre todo en animales e in vitro. No hay fuente fiable leída sobre dolor o función del cartílago con ejercicio.
 - **El `resumen` del bloque cambia** de «por qué el reposo absoluto no repara» a «qué pasa cuando se deja de cargar»: ninguna fuente leída estudia el reposo tras una lesión como tal; lo que hay es desuso en reposo en cama, inmovilización y descarga.
 - **Frases para el paciente**: tres, cada una apoyada solo en afirmaciones `clinico` (fuerza y desuso; tendón que duele; fuerza con la edad). Ninguna sobre el hueso: con fracturas no demostradas, una frase para el paciente sobre «huesos más fuertes» prometería más de lo que hay.
+
+## Bloque 3 — decisiones de nivel (2026-10, Opus)
+
+Fuentes leídas enteras: en PMC, Nara y Watanabe 2021, Messier 2013, Balchin 2022, Silva 2024 y Zeng 2021; en PDF del usuario, Petersen y Pedersen 2005, Pedersen y Febbraio 2012, Gleeson 2011, Benatti y Pedersen 2015 y Ho 2013 (este último, propuesto por el usuario en lugar de los metaanálisis sin texto completo). No citadas: Pedersen, Steensberg y Schjerling 2001 (en PMC solo llegó el resumen) y Zeng 2021 (casi todo el mecanismo en ratas; los propios autores dicen que se conoce poco). Sin texto completo y no usadas: Khalafi 2023 y Hejazi 2022.
+
+- **La IL-6 muscular y su efecto en una sesión, `mecanismo`**: humanos (infusión de IL-6, endotoxina en voluntarios sanos), con parte del mecanismo en células y ratones; nunca medido sobre el dolor.
+- **Marcadores en reposo con el ejercicio regular, `discutido`**: las revisiones narrativas dicen que la IL-6 basal baja con el entrenamiento aeróbico (Pedersen y Febbraio 2012); los ensayos leídos no lo ven (Silva 2024, Ho 2013), aunque sí bajan el TNF-α y la PCR.
+- **Que el efecto agudo explique el beneficio a largo plazo, `mecanismo`** (hipótesis): Petersen y Pedersen 2005 dicen que no está demostrado y Gleeson 2011 que no se sabe cuánto pesa cada mecanismo.
+- **IDEA (Messier 2013), `mecanismo`**: la inflamación bajó con la pérdida de peso, no con el ejercicio solo, y no había grupo sin intervención; no permite atribuir el alivio del dolor a una menor inflamación. Una frase del texto («increased… inflammation» en el grupo de ejercicio) no casa con su tabla y no se cita.
+- **Enfermedades reumáticas inflamatorias, `clinico`**: función y fuerza mejoran sin brotes ni subida de PCR o VSG (Benatti y Pedersen 2015, «preliminar» según los autores); una sesión no empeoró el dolor en la artritis reumatoide (Balchin 2022, sin conclusión firme). Es la única población con resultados clínicos.
+- **Dolor musculoesquelético común: sin evidencia directa**, dicho en el propio bloque.
+- **Frases para el paciente**: dos, solo para enfermedades reumáticas inflamatorias. Ninguna para el dolor musculoesquelético común, y el «Ampliar» explica por qué: decirle que el ejercicio «desinflama» prometería más de lo demostrado. Así el bloque cumple la regla de «al menos una frase para el paciente» sin relajarla.
+- **Infecciones en deportistas de élite, `mecanismo`**: asociación con cargas muy altas que los autores atribuyen en parte al estado antiinflamatorio, junto a otros factores (Gleeson 2011).
 
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
