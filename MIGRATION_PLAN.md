@@ -517,3 +517,21 @@ Diseño: `docs/farmacos-paciente.md` (pasos 1 y 2 y su estado: `docs/farmacologi
 - [x] Revisión del usuario en la app (2026-10)
 - [x] physiq-report: leer `fm` con una copia literal de `bloqueFMIA()` (`_bloqueFM`, `FM_CASOS` en los dos repos): physiodevapp/physiq-report#98, fusionada; esta parte, physiodevapp/physiq-assessment#485 (2026-10)
 - [x] Un aviso de la fase 6 por familia revisada: los de fluoroquinolonas, betabloqueantes, antihipertensivos, antidiabéticos y hueso, con su familia o en PR propia (#487–#490); el chip del hueso, marcado también desde la osteoporosis (2026-10). Las 12 familias con chip tienen aviso
+
+## Fase Q — Pronóstico por apartados (fase 5)
+
+**Problema** (detectado por el usuario en la tendinopatía del Aquiles, 2026-10): `pronostico.derivacion` se pinta en la fase 5 como «Derivar si:» (ahora «Reconsiderar o derivar si:») y llega al informe con IA como «Cuándo reconsiderar o derivar», pero en unas 50 de las 80 hipótesis que lo tienen guarda otras cosas: cómo hacer el seguimiento, diagnósticos diferenciales, epidemiología o advertencias de imagen. Leído bajo esa etiqueta no se entiende («Derivar si: VISA-A mes a mes…»), y la IA lo recibe mal etiquetado. `horizonte` a veces tampoco es un pronóstico.
+
+**Esquema** (`pronostico`, decisión del usuario, 2026-10): `horizonte` (pronóstico: plazo o evolución esperable), `seguimiento` (qué medir y cada cuánto; fase 5 «Seguimiento:», fase 6 y el informe con IA como «Seguimiento sugerido»), `notas` (lo demás que conviene saber: diferenciales, imagen, epidemiología; fase 5 «A tener en cuenta:», no va al informe con IA, como el horizonte), `derivacion` (solo criterios para reconsiderar el caso o derivar), `fuente`. Un test unitario («pronóstico: cada cosa en su apartado») rechaza cualquier otra clave.
+
+**Procedimiento por región** (una por sesión, revisión del usuario en la app antes de `main`): cada frase de `horizonte` y `derivacion` va a su apartado **sin añadir afirmaciones** ni cambiar la fuente; se reescribe solo para que se entienda (frases completas, sin flechas ni abreviaturas sueltas); un texto copiado en varias hipótesis se ajusta a cada una (lo que solo vale para una, solo en esa). Si una frase no se puede clasificar sin leer la fuente, se pregunta al usuario.
+
+| Región | Hipótesis con pronóstico | Estado |
+|---|---|---|
+| Tobillo y pie | tp1–tp5, tp7, **tp8–tp11**, tp12, tp14–tp34, tp36, tp37 (34) | Piloto: tendinopatías del Aquiles (tp8–tp11) hechas, pendiente de revisión del usuario; resto pendiente |
+| Rodilla | ro1–ro6, ro8–ro15, ro18–ro20 (17) | Pendiente |
+| Cadera | ca1–ca4, ca11–ca14, ca16–ca19 (12) | Pendiente |
+| Hombro | h1–h5, h7, h11 (7) | Pendiente |
+| Cervical | ce3–ce5, ce12–ce14 (6) | Pendiente |
+| Lumbar | lu3–lu8 (6) | Pendiente |
+| Codo | co3 (1) | Pendiente (su `derivacion` ya es un criterio de cirugía; revisar solo el resto) |
