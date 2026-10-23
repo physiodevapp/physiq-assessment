@@ -433,6 +433,21 @@ test('ampliar con IA: el prompt lleva el contexto, el fragmento y la frase de fu
   assert.equal(ctxTest(undefined, 'Hawkins-Kennedy'), 'el test clínico «Hawkins-Kennedy»');
 });
 
+test('ampliar con IA: pauta y pronóstico de la fase 5 (contexto de la hipótesis y enfoque práctico)', () => {
+  const { promptIA, ctxPauta, ctxPronostico, INSTRUCCION_FUENTES } = ampliarIA;
+  assert.equal(ctxPauta('rodilla', 'Lesión <b>meniscal</b>', 'Rotura traumática, sin cirugía'),
+    'la pauta de tratamiento para la hipótesis «Lesión meniscal», situación «Rotura traumática, sin cirugía» (región rodilla)');
+  assert.equal(ctxPauta('tobillo_pie', 'Esguince'), 'la pauta de tratamiento para la hipótesis «Esguince» (región tobillo y pie)');
+  assert.equal(ctxPronostico('hombro', 'Capsulitis'), 'el pronóstico y los criterios de derivación de la hipótesis «Capsulitis» (región hombro)');
+  const p = promptIA({ contexto: ctxPauta('hombro', 'Capsulitis'), texto: 'Ejercicio dentro del dolor.', tipo: 'plan' });
+  assert.ok(p.includes('«Ejercicio dentro del dolor.»') && p.includes('Qué quiere decir en la práctica clínica'), p);
+  assert.ok(!p.includes('desde la fisiología y la fisiopatología') && p.includes(INSTRUCCION_FUENTES) && p.endsWith('Cita las fuentes con enlace.'), p);
+  // la tarjeta posquirúrgica (pq1: intervención y restricciones del paciente) no lleva «✨ IA»
+  const src = leer('app.js');
+  const pq = src.slice(src.indexOf('function _hipPosqResultadosHTML'), src.indexOf('function _cirugiaResultadosHTML'));
+  assert.ok(pq.length > 0 && !pq.includes('data-ia-ctx') && !pq.includes('iaParrafoHTML'), 'pq1 sin «✨ IA»');
+});
+
 test('ampliar con IA: fragmento recortado, URLs de Perplexity y Google (modo IA) codificadas', () => {
   const { recortarTextoIA, MAX_TEXTO_IA, urlIA, promptIA } = ampliarIA;
   const largo = recortarTextoIA('palabra '.repeat(300));
