@@ -140,7 +140,7 @@ function textosConCitas() {
   const out = [];
   const walk = v => { if (typeof v === 'string') out.push(v); else if (v && typeof v === 'object') Object.values(v).forEach(walk); };
   walk(PLAN); walk(IRR.TEXTOS_IRRITABILIDAD);
-  for (const h of Object.values(HYPOTHESES)) walk([h.dosis, h.dosisRamas, h.dosisComun, h.pronostico?.horizonte, h.pronostico?.derivacion]);
+  for (const h of Object.values(HYPOTHESES)) walk([h.dosis, h.dosisRamas, h.dosisComun, h.pronostico?.horizonte, h.pronostico?.seguimiento, h.pronostico?.notas, h.pronostico?.derivacion]);
   // Fase O3: razonamiento de las fases 2, 4 y 4b (preguntas, banderas, pasos y tests) y el criterio de cada test
   const razon = r => r && walk([r.porque, r.peso, ...(r.detalle || '').split('\n\n'), r.fisiologia?.pasos, r.fisiologia?.nota]);
   for (const reg of Object.values(SYSTEMIC_SCREENING)) for (const sis of reg.sistemas || []) {
