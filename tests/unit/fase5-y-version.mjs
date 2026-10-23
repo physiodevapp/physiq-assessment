@@ -176,7 +176,11 @@ console.log('\nfase 5 plegable');
       if (p.derivacion) assert.match(p.derivacion, /^[a-záéíóú]/, `${id}: continúa «Reconsiderar o derivar si:»`);
     }
     assert.match(HYPOTHESES.lu3.pronostico.derivacion, /: está indicada la RM\.$/);
-    assert.match(HYPOTHESES.lu5.pronostico.derivacion, /: valorar la cirugía\.$/);
+    assert.match(HYPOTHESES.lu5.pronostico.derivacion, /: es una indicación absoluta de cirugía\.$/, 'lu5: p. 311');
+    assert.match(HYPOTHESES.lu3.pronostico.horizonte, /65 % se ha recuperado por completo en seguimientos a 1, 4 y 10 años/, 'lu3: p. 308');
+    assert.match(HYPOTHESES.lu4.pronostico.derivacion, /: puede estar indicada la cirugía\.$/, 'lu4: p. 314');
+    assert.match(HYPOTHESES.lu8.pronostico.notas, /tres veces más frecuente con PRPPP/, 'lu8: p. 322');
+    assert.ok(!/persist/.test(HYPOTHESES.lu8.pronostico.notas), 'lu8: los predictores son del PRPPP, no de que persista');
     assert.match(HYPOTHESES.lu7.pronostico.derivacion, /NICE recomienda considerar derivar para valorar una denervación por radiofrecuencia/);
     for (const id of ['lu4', 'lu7']) assert.ok(!/infiltraciones/.test(HYPOTHESES[id].pronostico.derivacion), `${id}: no ofrecer infiltraciones no es un criterio`);
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
