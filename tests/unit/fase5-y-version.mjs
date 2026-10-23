@@ -65,7 +65,7 @@ console.log('\nfase 5 plegable');
     assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
   });
 
-  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles y rodilla', () => {
+  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles, rodilla y cadera', () => {
     const CLAVES = ['horizonte', 'seguimiento', 'notas', 'derivacion', 'fuente'];
     for (const h of Object.values(HYPOTHESES)) {
       for (const k of Object.keys(h.pronostico || {})) assert.ok(CLAVES.includes(k), `${h.id}: pronostico.${k} no existe`);
@@ -93,6 +93,33 @@ console.log('\nfase 5 plegable');
     assert.ok(!/LLE/.test(HYPOTHESES.ro9.pronostico.notas), 'ro9: lo del LLE, solo en ro10');
     assert.match(HYPOTHESES.ro10.pronostico.notas, /lesión aislada del LLE es rara/, 'ro10: p. 216');
     assert.ok(!/95 %/.test(HYPOTHESES.ro10.pronostico.notas), 'ro10: el 95 % es del LCP (p. 221)');
+    // Cadera (Lluch 2020, cap. 4.1): ningún criterio para reconsiderar o derivar; la imagen, la epidemiología
+    // y los diferenciales, en «a tener en cuenta»; el texto común del dolor inguinal (ca16–ca19), en cada una
+    const CA = ['ca1', 'ca2', 'ca3', 'ca4', 'ca11', 'ca12', 'ca13', 'ca14', 'ca16', 'ca17', 'ca18', 'ca19'];
+    for (const id of CA) {
+      const p = HYPOTHESES[id].pronostico;
+      assert.ok(p.notas, `${id}: sin notas`);
+      assert.ok(!p.derivacion, `${id}: sin derivación`);
+      // Seguimiento: solo el criterio de fuerza para volver al deporte (pp. 172–173), en ca11 y ca16–ca19
+      assert.equal(!!p.seguimiento, ['ca11', 'ca16', 'ca17', 'ca18', 'ca19'].includes(id), `${id}: seguimiento`);
+      if (p.seguimiento) assert.match(p.seguimiento, /^Volver al deporte con un déficit de fuerza menor del 10–20 % respecto al lado sano o al valor previo/, id);
+      assert.ok(!/déficit de fuerza/.test(p.notas), `${id}: el criterio de fuerza, en el seguimiento`);
+      assert.ok(!/\b(RM|artro-RM|artro-TC|ecografía|radiografía|EMG)\b/i.test(p.horizonte || ''), `${id}: la imagen no es un pronóstico`);
+    }
+    for (const id of ['ca16', 'ca17', 'ca18', 'ca19']) {
+      const p = HYPOTHESES[id].pronostico;
+      assert.equal(p.horizonte, 'Con AINE y reposo el dolor se reduce, pero suele volver al retomar el deporte.', id);
+      assert.match(p.seguimiento, /, porque la debilidad de cadera aumenta el riesgo de lesión de ingle\.$/, id);
+      // La imagen, la de cada una: la sínfisis solo en aductor y pubis, la vaina en el psoas, la hernia en el canal
+      assert.equal(/sínfisis/.test(p.notas), id === 'ca16' || id === 'ca19', `${id}: sínfisis`);
+      assert.equal(/vaina sinovial/.test(p.notas), id === 'ca17', `${id}: vaina`);
+      assert.equal(/hernia/.test(p.notas), id === 'ca18', `${id}: hernia`);
+      // p. 177: la hendidura secundaria y los cortes para la inserción son del aductor; el edema de la sínfisis, de los dos
+      assert.equal(/hendidura secundaria|inserción del aductor/.test(p.notas), id === 'ca16', `${id}: hendidura`);
+    }
+    assert.match(HYPOTHESES.ca4.pronostico.notas, /empezar en el glúteo menor y extenderse hacia atrás al glúteo medio/, 'ca4: p. 179');
+    assert.match(HYPOTHESES.ca14.pronostico.notas, /alivio del dolor con un bloqueo nervioso diagnóstico/, 'ca14: p. 172');
+    assert.ok(!/debilidad de cadera/.test(HYPOTHESES.ca11.pronostico.seguimiento), 'ca11: lo de la debilidad, solo en el dolor inguinal de larga evolución');
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
     const t = IA_N.bloquesAmpliados(a).join('\n');
