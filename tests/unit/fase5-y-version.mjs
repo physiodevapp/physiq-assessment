@@ -133,9 +133,11 @@ console.log('\nfase 5 plegable');
       assert.ok(!/→/.test(`${p.horizonte || ''} ${p.notas} ${p.derivacion || ''}`), `${id}: sin flechas`);
       if (p.derivacion) assert.match(p.derivacion, /^[a-záéíóú]/, `${id}: continúa «Reconsiderar o derivar si:»`);
     }
-    assert.equal(HYPOTHESES.h1.pronostico.derivacion, 'los factores psicosociales superan tu competencia: derivar a psicología.');
-    assert.match(HYPOTHESES.h1.pronostico.horizonte, /autoeficacia baja predice una peor evolución/, 'h1: factor pronóstico');
+    assert.match(HYPOTHESES.h1.pronostico.derivacion, /^no te ves con confianza o competencia para abordar los aspectos psicosociales del dolor: derivar a tiempo[^.]*psicología\.$/, 'h1: p. 72');
+    assert.match(HYPOTHESES.h1.pronostico.horizonte, /autoeficacia baja frente al dolor predice una peor evolución/, 'h1: factor pronóstico (p. 71)');
     assert.match(HYPOTHESES.h2.pronostico.derivacion, /^no mejora en un máximo de 12 semanas[^.]*\(Desmeules 2025, grado F\)\.$/);
+    assert.match(HYPOTHESES.h3.pronostico.notas, /^La RM es la prueba de imagen de referencia: en la rotura completa/, 'h3: p. 67');
+    assert.match(HYPOTHESES.h1.pronostico.notas, /diabetes, con cifras descritas de hasta el 30 %/, 'h1: p. 69');
     assert.match(HYPOTHESES.h11.pronostico.derivacion, /radiografía\. No explorar más hasta tenerla\.$/);
     // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
     const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
