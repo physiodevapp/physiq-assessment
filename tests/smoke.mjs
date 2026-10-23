@@ -3740,6 +3740,86 @@ async function checkFase5Plegado(browser, errors) {
   return r;
 }
 
+// «✨ IA» en los textos clínicos de las fases 3 a 6 (ampliar-ia.js): el resumen
+// de irritabilidad, el criterio de un test de la 4b, una línea del recuadro de
+// una condición especial y el plan de la fase 6, cada uno con su contexto y el
+// enfoque práctico; nunca un dato del paciente (la cabecera del recuadro, el
+// signo comparable, las restricciones de la cirugía), ni al tocar «✨ IA» ni al
+// seleccionar texto.
+async function checkIAFases(browser, errors) {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await context.newPage();
+  page.on('pageerror', err => errors.push(`pageerror (IA fases 3–6): ${err.message}`));
+  await abrirApp(page);
+  await walkRegion(page, 'lumbar');
+  await page.evaluate(() => {
+    window.__iaHrefs = [];
+    window.addEventListener('click', e => {
+      const a = e.target.closest?.('a[target="_blank"]');
+      if (a) { window.__iaHrefs.push(a.href); e.preventDefault(); }
+    });
+  });
+  const prompt = sel => page.evaluate(sel => {
+    const a = document.querySelector(sel);
+    if (!a) return null;
+    a.click();
+    return decodeURIComponent(((window.__iaHrefs.at(-1) || '').split('q=')[1] || '').replace(/\+/g, ' '));
+  }, sel);
+  const practica = q => !!q && q.includes('Qué quiere decir en la práctica clínica') && q.includes('(región lumbar)');
+  const r = {};
+  const q3 = await prompt('#irritabilidadResumen .ia-parrafo-ir');
+  r.fase3 = practica(q3) && q3.includes('la irritabilidad baja (modelo SINSS de Maitland)');
+  const q4b = await prompt('#hypothesisCards .test-criterion .ia-parrafo-ir');
+  r.fase4b = practica(q4b) && q4b.includes('el test clínico «');
+  // Recuadro del lupus en la fase 5: la línea sí, la cabecera con los datos no
+  await page.evaluate(() => { Object.assign(state.lupus, { estado: 'diagnosticado', corticoides: 'a' }); buildResults(); });
+  const q5 = await prompt('#resultsContent .les-fase5 .ia-parrafo-ir');
+  r.fase5 = practica(q5) && q5.includes('para un paciente con «lupus eritematoso sistémico»') && !q5.includes('Diagnosticado');
+  // Fase 6: reevaluación con el signo comparable aparte, escalón y lo que nunca sale
+  await page.evaluate(() => { document.getElementById('signoComparable').value = state.signoComparable = 'SECRETO-123'; Object.assign(state.lupus, { estado: '' }); buildResults(); });
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  const qRe = await prompt('#planContenido li:has(.ia-excluir) .ia-parrafo-ir');
+  r.reevaluacion = practica(qRe) && qRe.includes('apartado «Reevaluación') && !qRe.includes('SECRETO')
+    && await page.evaluate(() => document.querySelector('#planContenido li .ia-excluir').textContent.includes('SECRETO-123'));
+  const qEsc = await prompt('#planContenido .plan-escalon .ia-parrafo-ir');
+  r.escalon = practica(qEsc) && qEsc.includes('apartado «terapia manual, ');
+  const seleccionar = sel => page.evaluate(sel => {
+    const el = document.querySelector(sel);
+    el.scrollIntoView({ block: 'center' });
+    const rango = document.createRange();
+    rango.selectNodeContents(el);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(rango);
+  }, sel);
+  await seleccionar('#planContenido li .ia-excluir');
+  await page.waitForTimeout(400);
+  r.seleccionExcluida = await page.evaluate(() => document.getElementById('iaBarra').hidden);
+  await seleccionar('#planContenido .plan-escalon [data-ia-parrafo]');
+  await page.waitForSelector('#iaBarra:not([hidden])');
+  r.seleccionEscalon = true;
+  await page.evaluate(() => getSelection().removeAllRanges());
+  // Posquirúrgico: la pauta de pq1 (restricciones del paciente) sin «✨ IA»
+  await page.evaluate(() => {
+    state.mecanismo = 'Post-quirúrgico';
+    Object.assign(state.cirugia, { intervencion: 'Artrodesis L4-L5', protocolo: 'Escrito', restricciones: 'RESTRICCION-XYZ' });
+    state.planTratamiento = null;
+    goToPhase(5); buildResults();
+  });
+  await page.click('#btnIrPlan');
+  await page.waitForSelector('#planContenido .card');
+  r.nadaDelPaciente = await page.evaluate(() => {
+    const muestra = document.getElementById('planContenido').textContent.includes('RESTRICCION-XYZ');
+    const enIA = [...document.querySelectorAll('#phase3 [data-ia-ctx], #phase5 [data-ia-ctx], #planContenido [data-ia-ctx]')].some(c => {
+      const x = c.cloneNode(true); x.querySelectorAll('.ia-excluir').forEach(e => e.remove());
+      return /RESTRICCION|SECRETO|Artrodesis/.test(x.textContent + c.dataset.iaCtx);
+    });
+    return muestra && !enIA;
+  });
+  await context.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function checkBotonesTactil(browser, errors) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
   const page = await context.newPage();
@@ -6400,6 +6480,12 @@ const SECCIONES = [
   { id: 'fase5', titulo: 'Fase 5: pauta por situación y lo que nunca se pliega:', run: async ({ browser, errors }) => {
     const r = await checkFase5Plegado(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} ro2 traumática: «Para este caso» delante y las otras ramas plegadas; sin rama, la pauta entera; «🚑 Derivación» (co7) y la nota del protocolo del cirujano fuera de todo <details>; imprimir despliega y después deja cada <details> como estaba; «✨ IA» en la pauta (también la plegada y las otras situaciones) y el pronóstico, con su contexto y sin nada del paciente (ni pq1 ni la nota del protocolo)${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+
+  { id: 'ia-fases', titulo: '«✨ IA» en los textos clínicos de las fases 3 a 6:', run: async ({ browser, errors }) => {
+    const r = await checkIAFases(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} resumen de irritabilidad, criterio de un test de la 4b, recuadro del lupus y plan de la fase 6 (reevaluación, escalón) abren la IA con su contexto y el enfoque práctico; la cabecera del recuadro, el signo comparable y la pauta posquirúrgica no salen, ni seleccionando el texto excluido${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
