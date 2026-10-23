@@ -5707,6 +5707,22 @@ async function checkFase6(browser, errors) {
     const t = document.getElementById('planContenido').textContent;
     return t.includes('Para explicárselo al paciente') && getComputedStyle(document.querySelector('.plan-ejercicio')).display !== 'none';
   });
+  // Con riesgo psicosocial alto, también «Efectos centrales» (con su motivo); sin él, no
+  r.enlaceSinExtra = await page.evaluate(() => !document.querySelector('#planSesion .plan-ejercicio [data-bloque-extra]'));
+  await page.evaluate(() => { state.riesgoPsico = 'Alto'; });
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'alta\')"]');
+  r.enlaceCentrales = await page.evaluate(() => {
+    const b = document.querySelector('#planSesion .plan-ejercicio [data-bloque-extra="centrales"]');
+    return !!b && b.nextElementSibling?.textContent.includes('riesgo psicosocial')
+      && !document.querySelector('#planSesion .plan-ejercicio [data-bloque-extra="antiinflamatorio"]');
+  });
+  await page.click('#planSesion .plan-ejercicio [data-bloque-extra="centrales"]');
+  await page.waitForSelector('#ejercicioOverlay.open');
+  r.enlaceCentrales = r.enlaceCentrales && await page.evaluate(() => document.querySelector('#ejercicioCuerpo [data-bloque="centrales"]')?.open === true);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
+  await page.evaluate(() => { state.riesgoPsico = ''; });
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
   await botonNivel('C').click();
   r.bajaConC = await page.evaluate(() => state.planTratamiento.nivel === 'C');
   // Compartir: los tres documentos del plan
@@ -6560,7 +6576,7 @@ const SECCIONES = [
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; el bloque «Educación» enlaza la guía «Efectos del ejercicio» (alta → hipoalgesia, baja → carga y adaptación del tejido), la abre ya en ese bloque y Escape la cierra; la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C, A no se ofrece porque coincide con B, y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; el bloque «Educación» enlaza la guía «Efectos del ejercicio» (alta → hipoalgesia, baja → carga y adaptación del tejido), la abre ya en ese bloque y Escape la cierra, y con riesgo psicosocial alto enlaza también «Efectos centrales»; la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C, A no se ofrece porque coincide con B, y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
