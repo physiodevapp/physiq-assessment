@@ -5583,6 +5583,7 @@ async function checkFase6(browser, errors) {
     return ok;
   };
   const eAlta = await enlaceEj();
+  r.enlaceAltaOtro = await page.evaluate(() => document.querySelector('#planSesion .plan-ejercicio [data-bloque-alternativo]')?.dataset.bloqueAlternativo === 'mecanotransduccion');
   r.enlaceAlta = eAlta?.bloque === 'hipoalgesia' && eAlta.boton === 'Para explicárselo al paciente →'
     && eAlta.ayuda.includes('Hipoalgesia inducida por el ejercicio') && await abrirDesdeEnlace('hipoalgesia');
   await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');

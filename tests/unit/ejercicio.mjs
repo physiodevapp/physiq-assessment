@@ -143,6 +143,19 @@ test('enlace de la fase 6: sin bloque escrito no hay enlace', () => {
   } finally { b.apartados = antes; }
 });
 
+test('enlace de la fase 6: ofrece también el otro bloque, sin cambiar el principal', () => {
+  const alta = E.enlaceEjercicioHTML('alta');
+  assert.ok(alta.includes('data-bloque-alternativo="mecanotransduccion"'));
+  assert.ok(alta.indexOf('data-bloque-ejercicio="hipoalgesia"') < alta.indexOf('data-bloque-alternativo'));
+  assert.ok(E.enlaceEjercicioHTML('baja').includes('data-bloque-alternativo="hipoalgesia"'));
+  assert.ok(E.enlaceEjercicioHTML('moderada').includes('data-bloque-alternativo="hipoalgesia"'));
+  assert.ok(!alta.includes('{titulo}'));
+  const b = BLOQUES_EJERCICIO.find(x => x.id === 'mecanotransduccion');
+  const antes = b.apartados;
+  delete b.apartados;
+  try { assert.ok(!E.enlaceEjercicioHTML('alta').includes('data-bloque-alternativo')); } finally { b.apartados = antes; }
+});
+
 test('enlace de la fase 6: el botón abre el bloque y nombra cuál es', () => {
   const html = E.enlaceEjercicioHTML('alta');
   assert.ok(html.includes('data-bloque-ejercicio="hipoalgesia"'));
