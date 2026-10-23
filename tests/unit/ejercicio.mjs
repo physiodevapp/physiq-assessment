@@ -168,7 +168,7 @@ test('enlace de la fase 6: el botón abre el bloque y nombra cuál es', () => {
 test('enlace de la fase 6: solo en el bloque «Educación», solo en pantalla y nunca en los textos del plan', () => {
   const plan = leer('plan.js');
   assert.equal((plan.match(/enlaceEjercicioHTML\(/g) || []).length, 1);
-  assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion\) \+ enlaceEjercicioHTML\(plan\.irritabilidad\)/.test(plan));
+  assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion, b\.titulo\) \+ enlaceEjercicioHTML\(plan\.irritabilidad\)/.test(plan));
   assert.ok(leer('styles.css').includes('@media print { .plan-ejercicio { display: none !important; } }'));
   // Los textos que se comparten salen de lib/ y data/ del plan, que no conocen la guía
   for (const f of [['lib', 'plan-tratamiento.js'], ['data', 'plan-tratamiento.js'], ['lib', 'plan-ia.js']]) {
