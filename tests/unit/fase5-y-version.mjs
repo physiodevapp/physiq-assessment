@@ -2,6 +2,7 @@
 import { assert, leer, test, HYPOTHESES, CIF_TREES, DOSIS_DERIVAR, withState } from './comun.mjs';
 const IA = await import('../../informe-ia.js');
 const P = await import('../../lib/pauta.js');
+const IA_N = await import('../../lib/informe-narrativo.js');
 
 // ── Fase 5: pauta, pronóstico y tests sin hacer plegados ─────────────────────
 console.log('\nfase 5 plegable');
@@ -62,6 +63,30 @@ console.log('\nfase 5 plegable');
     // co3: el criterio es de cirugía, no de derivación (Andrés, codo)
     assert.ok(!/cirugía/.test(HYPOTHESES.co3.dosis), 'co3: sin criterios de cirugía en la pauta');
     assert.match(HYPOTHESES.co3.pronostico.derivacion, /no mejora más tras 3–6 meses[^.]*cirugía/);
+  });
+
+  test('pronóstico: cada cosa en su apartado (seguimiento, a tener en cuenta, reconsiderar o derivar); Aquiles como piloto', () => {
+    const CLAVES = ['horizonte', 'seguimiento', 'notas', 'derivacion', 'fuente'];
+    for (const h of Object.values(HYPOTHESES)) {
+      for (const k of Object.keys(h.pronostico || {})) assert.ok(CLAVES.includes(k), `${h.id}: pronostico.${k} no existe`);
+    }
+    // Aquiles (Lluch 2020, cap. 4.3): el seguimiento y las notas ya no van bajo «derivar si»
+    for (const id of ['tp8', 'tp9', 'tp10', 'tp11']) {
+      const p = HYPOTHESES[id].pronostico;
+      assert.match(p.seguimiento, /^VISA-A una vez al mes/, id);
+      assert.equal(p.derivacion, 'hay dolor nocturno, que apunta a otro diagnóstico.', id);
+      assert.ok(!p.horizonte && !/VISA-A|bursa/.test(p.derivacion), id);
+      assert.equal(/bursa retrocalcánea/.test(p.notas), id === 'tp9', `${id}: la bursa, solo en la insercional`);
+    }
+    // El informe con IA recibe el seguimiento con su nombre y no las notas (como el horizonte)
+    const a = { pautas: [{ hipotesis: 'Tendinopatía insercional', pauta: 'Excéntrico', pronostico: HYPOTHESES.tp9.pronostico }] };
+    const t = IA_N.bloquesAmpliados(a).join('\n');
+    assert.ok(t.includes('Seguimiento sugerido (contexto para el fisioterapeuta): VISA-A una vez al mes'));
+    assert.ok(t.includes('Cuándo reconsiderar o derivar (contexto para el fisioterapeuta: no es plan ni explicación al paciente): hay dolor nocturno'));
+    assert.ok(!t.includes('bursa'), 'las notas no van al informe');
+    // Fase 5 y fase 6 las pintan con su etiqueta
+    assert.ok(leer('app.js').includes('<strong>Reconsiderar o derivar si:</strong>') && leer('app.js').includes('<strong>A tener en cuenta:</strong>'));
+    assert.ok(leer('plan.js').includes('`Seguimiento: ${p.seguimiento}`'));
   });
 
   test('pauta: el informe con IA recibe solo la rama del caso; sin rama, la pauta entera', () => {
