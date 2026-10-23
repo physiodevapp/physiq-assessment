@@ -439,13 +439,31 @@ test('ampliar con IA: pauta y pronóstico de la fase 5 (contexto de la hipótesi
     'la pauta de tratamiento para la hipótesis «Lesión meniscal», situación «Rotura traumática, sin cirugía» (región rodilla)');
   assert.equal(ctxPauta('tobillo_pie', 'Esguince'), 'la pauta de tratamiento para la hipótesis «Esguince» (región tobillo y pie)');
   assert.equal(ctxPronostico('hombro', 'Capsulitis'), 'el pronóstico y los criterios de derivación de la hipótesis «Capsulitis» (región hombro)');
-  const p = promptIA({ contexto: ctxPauta('hombro', 'Capsulitis'), texto: 'Ejercicio dentro del dolor.', tipo: 'plan' });
+  const p = promptIA({ contexto: ctxPauta('hombro', 'Capsulitis'), texto: 'Ejercicio dentro del dolor.', tipo: 'practica' });
   assert.ok(p.includes('«Ejercicio dentro del dolor.»') && p.includes('Qué quiere decir en la práctica clínica'), p);
   assert.ok(!p.includes('desde la fisiología y la fisiopatología') && p.includes(INSTRUCCION_FUENTES) && p.endsWith('Cita las fuentes con enlace.'), p);
   // la tarjeta posquirúrgica (pq1: intervención y restricciones del paciente) no lleva «✨ IA»
   const src = leer('app.js');
   const pq = src.slice(src.indexOf('function _hipPosqResultadosHTML'), src.indexOf('function _cirugiaResultadosHTML'));
   assert.ok(pq.length > 0 && !pq.includes('data-ia-ctx') && !pq.includes('iaParrafoHTML'), 'pq1 sin «✨ IA»');
+});
+
+test('ampliar con IA: contextos de las fases 3, 5 (condiciones) y 6, y la fase 6 deja fuera lo del paciente', () => {
+  const { ctxPlan, ctxCondicion, ctxIrritabilidad, atributosIA } = ampliarIA;
+  assert.equal(ctxPlan('lumbar', 'Reevaluación'), 'el plan de tratamiento de fisioterapia, apartado «Reevaluación» (región lumbar)');
+  assert.equal(ctxCondicion('cadera', 'embarazo'), 'las recomendaciones de fisioterapia para un paciente con «embarazo» (región cadera)');
+  assert.equal(ctxIrritabilidad('hombro', 'Alta'), 'la irritabilidad alta (modelo SINSS de Maitland) y cómo condiciona la dosis del tratamiento (región hombro)');
+  assert.equal(atributosIA('a "b"'), 'data-ia-ctx="a &quot;b&quot;" data-ia-tipo="practica"');
+  const plan = leer('plan.js');
+  // la pauta de la hipótesis posquirúrgica (restricciones del paciente) sin contexto, y el signo comparable aparte
+  assert.ok(plan.includes('pautaHTML(h.pauta, h.pautaFuente, h.posq ? null : ctxPauta(state.region, h.name))'));
+  assert.ok(plan.includes('s.reevaluacion.map(conSignoAparte)'));
+  assert.ok(/class="ia-excluir">\$\{esc\(paciente\)\}/.test(plan), 'lo del paciente va en .ia-excluir');
+  // los recuadros de condiciones: solo las líneas de recomendación (data/), nunca la cabecera con los datos
+  const app = leer('app.js');
+  for (const f of ['lineasRecomendacionHM', 'lineasRecomendacionDs', 'lineasRecomendacionLES', 'lineasRecomendacionMA', 'lineasRecomendacionAC', 'lineasRecomendacionOP', 'lineasRecomendacionEM']) {
+    assert.ok(app.includes(`_lineasCondicionHTML(${f}(d)`) || app.includes(`_lineasCondicionHTML([...${f}(d)`), f);
+  }
 });
 
 test('ampliar con IA: fragmento recortado, URLs de Perplexity y Google (modo IA) codificadas', () => {
@@ -517,7 +535,7 @@ test('ampliar con IA: el módulo no importa nada (no puede leer datos del pacien
   assert.equal(ampliarIA.attrIA('«a» "b" <c> & d'), '«a» &quot;b&quot; &lt;c&gt; &amp; d');
 });
 
-test('ampliar con IA: solo el razonamiento lleva data-ia-ctx y «✨ IA» (fase 2 y tarjetas 4b)', () => {
+test('ampliar con IA: solo el razonamiento (y el criterio en la 4b) lleva data-ia-ctx y «✨ IA» (fase 2 y tarjetas 4b)', () => {
   const cuenta = (h, t) => h.split(t).length - 1;
   for (const [region, data] of Object.entries(SYSTEMIC_SCREENING)) {
     withState({ region }, () => {
@@ -536,7 +554,8 @@ test('ampliar con IA: solo el razonamiento lleva data-ia-ctx y «✨ IA» (fase 
   }
   for (const { hId, t, i } of TODOS_TESTS) {
     const html = buildTestItem(hId, t, i);
-    const n = t.razonamiento?.porque ? 1 : 0;
+    // el «¿Por qué?» y el criterio (técnica y criterio de positivo)
+    const n = (t.razonamiento?.porque ? 1 : 0) + (t.criterio ? 1 : 0);
     assert.equal(cuenta(html, 'data-ia-ctx='), n, `${hId} «${t.name}»`);
     assert.equal(cuenta(html, 'class="ia-parrafo"'), n, `${hId} «${t.name}»`);
   }

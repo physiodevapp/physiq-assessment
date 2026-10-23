@@ -178,7 +178,7 @@ test('ninguna regla automática (decisión 9): el lupus no marca esta tarjeta; s
     assert.ok(!('op' in buildPhysiQPayload()));
     assert.ok(!IN.contextoValoracion(buildPhysiQPayload()).includes(O.OP.textos.lupus.slice(0, 40)), 'no va en el bloque del lupus que copia physiq-report');
   });
-  assert.ok(leer('app.js').includes('_recordatorioOPLupus(d) ? `<div>${citasEnTexto(OP.textos.lupus)}</div>`'));
+  assert.ok(leer('app.js').includes('...(_recordatorioOPLupus(d) ? [OP.textos.lupus] : [])'));
 });
 
 test('fase 6: avisos, red de la fractura vertebral y tope sin thrust (decisiones 6 y 15)', () => {
