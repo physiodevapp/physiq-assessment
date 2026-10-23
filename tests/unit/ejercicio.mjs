@@ -156,6 +156,28 @@ test('enlace de la fase 6: ofrece también el otro bloque, sin cambiar el princi
   try { assert.ok(!E.enlaceEjercicioHTML('alta').includes('data-bloque-alternativo')); } finally { b.apartados = antes; }
 });
 
+test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuestionario de ánimo con síntomas, «antiinflamatorio» solo con lupus', () => {
+  assert.deepEqual(E.motivosEjercicio({}), { animo: false, reumatica: false });
+  assert.equal(E.motivosEjercicio({ riesgoPsico: 'Bajo' }).animo, false);
+  assert.equal(E.motivosEjercicio({ riesgoPsico: 'Medio' }).animo, true);
+  assert.equal(E.motivosEjercicio({ riesgoPsico: 'Alto' }).animo, true);
+  // PHQ-9: incompleto no cuenta; mínimo (0) no; leve (9 puntos) sí
+  const r = v => ({ r: Object.fromEntries(Array.from({ length: 9 }, (_, i) => [i + 1, v(i)])) });
+  assert.equal(E.motivosEjercicio({ cuestionarios: { phq9: { r: { 1: 3 } } } }).animo, false);
+  assert.equal(E.motivosEjercicio({ cuestionarios: { phq9: r(() => 0) } }).animo, false);
+  assert.equal(E.motivosEjercicio({ cuestionarios: { phq9: r(i => i < 8 ? 1 : 0) } }).animo, true);
+  // Un cuestionario que no es de ánimo no cuenta
+  assert.ok(!E.CUESTIONARIOS_ANIMO.includes('odi'));
+  assert.equal(E.motivosEjercicio({ lupusDiagnosticado: true }).reumatica, true);
+  const sin = E.enlaceEjercicioHTML('alta');
+  assert.ok(!sin.includes('data-bloque-extra'), 'sin motivo, solo los dos de la irritabilidad');
+  const con = E.enlaceEjercicioHTML('alta', { animo: true, reumatica: true });
+  assert.ok(con.includes('data-bloque-extra="centrales"') && con.includes('data-bloque-extra="antiinflamatorio"'));
+  assert.ok(con.includes(TEXTOS_EJERCICIO.enlaceMotivoAnimo) && con.includes(TEXTOS_EJERCICIO.enlaceMotivoReumatica));
+  assert.ok(con.indexOf('data-bloque-alternativo') < con.indexOf('data-bloque-extra'), 'los extra van después');
+  assert.ok(E.enlaceEjercicioHTML('baja', { animo: true }).includes("abrirEjercicio({ bloque: 'centrales' })"));
+});
+
 test('enlace de la fase 6: el botón abre el bloque y nombra cuál es', () => {
   const html = E.enlaceEjercicioHTML('alta');
   assert.ok(html.includes('data-bloque-ejercicio="hipoalgesia"'));
@@ -168,7 +190,7 @@ test('enlace de la fase 6: el botón abre el bloque y nombra cuál es', () => {
 test('enlace de la fase 6: solo en el bloque «Educación», solo en pantalla y nunca en los textos del plan', () => {
   const plan = leer('plan.js');
   assert.equal((plan.match(/enlaceEjercicioHTML\(/g) || []).length, 1);
-  assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion, b\.titulo\) \+ enlaceEjercicioHTML\(plan\.irritabilidad\)/.test(plan));
+  assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion, b\.titulo\) \+ enlaceEjercicioHTML\(plan\.irritabilidad, motivosEjercicio\(/.test(plan));
   assert.ok(leer('styles.css').includes('@media print { .plan-ejercicio { display: none !important; } }'));
   // Los textos que se comparten salen de lib/ y data/ del plan, que no conocen la guía
   for (const f of [['lib', 'plan-tratamiento.js'], ['data', 'plan-tratamiento.js'], ['lib', 'plan-ia.js']]) {
