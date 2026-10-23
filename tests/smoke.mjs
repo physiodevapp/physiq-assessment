@@ -3021,7 +3021,7 @@ async function checkEjercicio(browser, errors) {
     return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
       && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio'
       && !pend.includes('hipoalgesia') && !pend.includes('mecanotransducción') && !pend.includes('antiinflamatorio')
-      && ['mioquinas', 'efectos centrales'].every(t => pend.includes(t))
+      && !pend.includes('mioquinas') && pend.includes('efectos centrales')
       && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
   });
   await page.keyboard.press('Escape');
