@@ -1,6 +1,6 @@
-# Embarazo y posparto — diseño (borrador)
+# Embarazo y posparto — diseño
 
-Estado: **implementado (octubre 2026)** con las decisiones 1–16, los cambios T1–T12 y U1–U5 aceptados por el usuario y revisado por el usuario en la app (2026-10). Detalle en «Implementación», al final.
+Estado: **implementado (octubre 2026)** con las decisiones 1–16, los cambios T1–T12 y U1–U5 aceptados por el usuario y revisado por el usuario en la app (2026-10). Detalle en «Implementación» y en «Cierre de lo pendiente», al final. Las secciones de borrador («Lo que importa al fisioterapeuta», «Forma recomendada») se conservan como registro histórico: donde no coinciden, manda «Implementación».
 
 Reglas, como en las otras condiciones: solo fuentes leídas enteras; ninguna cifra, umbral ni referencia inventada; ninguna regla automática que no esté medida en las fuentes; lo que no tiene fuente va marcado como redacción propia y es una decisión tuya.
 
@@ -78,8 +78,8 @@ Cuatro lectores de esta sesión leyeron las fuentes y devolvieron notas con cita
 
 - **Las posiciones de tratamiento en la camilla** (prono, supino) no las trata ninguna fuente. El supino aparece solo para el ejercicio (OMS, Mottola 2018, ACOG 804) y para el sueño (NG201).
 - **El thrust en el embarazo**: un solo ensayo piloto de 15 mujeres (Peterson 2012, citado en la Cochrane de 2015) y la opinión graduada C de Clinton 2017. Ver T7.
-- **Los síntomas de la trombosis en la embarazada**: no están en ninguna fuente leída como criterio de derivación. NG158 la excluye y la guía del RCOG sigue sin leer. ACOG 804 solo pone el dolor o la hinchazón de pantorrilla entre los signos para parar el ejercicio. En el posparto sí están (NG194, NG192).
-- **La Cochrane de Woodley 2020**: solo el resumen. No se cita.
+- **Los síntomas de la trombosis en la embarazada**: en la tanda 1 no estaban en ninguna fuente leída como criterio de derivación (NG158 la excluye); resuelto con el RCOG en la tanda 2 (U1). ACOG 804 solo pone el dolor o la hinchazón de pantorrilla entre los signos para parar el ejercicio. En el posparto sí están (NG194, NG192).
+- **La Cochrane de Woodley 2020**: en PMC solo el resumen; leída entera del PDF que pasó el usuario en el cierre (W1–W2).
 - **Tanda 1 (sección E)**: en Simonds 2022 las tablas 11, 12 y 14 salieron desordenadas en la extracción; ninguna cita de este documento sale de ellas. Las LR que calcula Clinton 2017 (con SPSS, a partir de otros estudios) no se proponen para la puntuación.
 
 ### E. Tanda 1 de PDF (octubre 2026)
@@ -111,8 +111,8 @@ Si quieres alguna, pásame el PDF y la leo entera antes de cerrar el diseño. Po
 
 | # | Fuente | Enlace | Para qué |
 |---|---|---|---|
-| 8 | Bauersachs 2019, posición de la ESC sobre la miocardiopatía periparto, *Eur J Heart Fail* | [doi:10.1002/ejhf.1493](https://doi.org/10.1002/ejhf.1493) | Opcional: Hameed 2023 y Sambola 2024 ya cubren lo que necesita el fisio |
-| 9 | Woodley 2020, Cochrane del suelo pélvico en el embarazo y el posparto | [doi:10.1002/14651858.CD007471.pub4](https://doi.org/10.1002/14651858.CD007471.pub4) | Opcional: matiza a Beamish 2025 (contradicción 8) |
+| 8 | Bauersachs 2019, posición de la ESC sobre la miocardiopatía periparto, *Eur J Heart Fail* | [doi:10.1002/ejhf.1493](https://doi.org/10.1002/ejhf.1493) | Opcional, no en PMC: Hameed 2023 y Sambola 2024 ya cubren lo que necesita el fisio. No se pide |
+| 9 | ~~Woodley 2020~~, Cochrane del suelo pélvico | [doi:10.1002/14651858.CD007471.pub4](https://doi.org/10.1002/14651858.CD007471.pub4) | **Leída** en el cierre (octubre 2026), del PDF del usuario: ver la contradicción 8 y W1–W2 |
 
 Leídas en la tanda 1 (sección E): Mottola 2018, ACOG 804, Vleeming 2008, Clinton 2017 y Simonds 2022, Liddle y Pennick 2015, Deering 2024. En la tanda 2 (sección F): RCOG GTG 37b y Christopher 2024.
 
@@ -149,9 +149,13 @@ Leídas en la tanda 1 (sección E): Mottola 2018, ACOG 804, Vleeming 2008, Clint
    - Las tres coinciden en que no hay base para que sea el tratamiento principal. *Propongo* ese texto, sin prohibirla (decisión 8).
 8. **El suelo pélvico tras el parto.**
    - Beamish 2025: −37 % de incontinencia, certeza moderada.
-   - La Cochrane de 2020 (solo el resumen): el enfoque poblacional «is not likely to reduce UI».
+   - Woodley 2020 (Cochrane, leída entera en el cierre; búsqueda hasta 2019):
+     - ofrecido a todas tras el parto, sin efecto claro a los 6–12 meses (RR 0,88, certeza moderada): «not likely to reduce UI» (p. 2);
+     - el efecto más claro es la prevención en el embarazo en mujeres sin escapes, con un programa estructurado desde el principio (RR 0,38 al final del embarazo, moderada; 0,71 a los 3–6 meses del parto, alta);
+     - como tratamiento de los escapes en el embarazo o el posparto, incierto (RR 0,55, 0,29–1,07, baja), en contraste con su eficacia fuera del posparto;
+     - «It is possible that a 'high-risk' approach (e.g. women who have an assisted delivery or deliver a large baby) leads to more clinical benefit» (p. 38).
    - NICE: animar a todas y supervisar solo a las de riesgo (NG210 1.3.12).
-   - *Propongo seguir a NICE*, que ya concilia ambas.
+   - *Seguimos a NICE*, que concilia las dos: Woodley apoya el enfoque de riesgo y Beamish es seis años posterior, no la sustituye. Woodley entra solo como una línea en el bloque de suelo pélvico de la fase 2 (W2).
 9. **La diástasis.**
    - No hay un corte de consenso: ≥ 2 dedos, > 2 cm, > 22 mm, o normal hasta 34 mm.
    - La creencia clínica «transverso sí, abdominales no» choca con los datos: el curl-up reduce la distancia al instante y el transverso la aumenta (Gluppe 2021; Beamish 2025).
@@ -383,9 +387,9 @@ Cada pregunta lleva su `razonamiento` (Fase F) y cada bandera su enlace (Fase M)
 
 ## Fuera de este diseño (apuntado, no resuelto)
 
-- **La EPDS** en la calculadora: necesita su validación española leída.
-- **La vuelta a correr y al impacto** con plazos y criterios: pendiente de Deering 2024 (PDF 7).
-- **El aborto o la interrupción reciente**: NG255 los incluye en el grupo de riesgo de sepsis, pero la tarjeta no los pregunta. *Recomiendo* dejarlo fuera, salvo que lo quieras.
+- **La EPDS** en la calculadora: necesita su validación española publicada y leída (otra tarea). Mientras, el PHQ-9 y el GAD-7, las alternativas de CG192 1.5.5.
+- **La vuelta a correr y al impacto**: *cubierta* (U4, `correrPp`, con Christopher 2024 y Deering 2024). Sin cortes de fuerza ni programa de carrera, que las fuentes no dan.
+- **El aborto o la interrupción reciente**: NG255 1.2.1 los incluye en el grupo de alto riesgo de sepsis (6 semanas), pero la tarjeta no los pregunta. Sigue fuera (octubre 2026); el razonamiento de `em_u_infeccion` los nombra.
 - **La región de muñeca y mano** (túnel carpiano y De Quervain del embarazo y el posparto): la app no tiene esa región.
 
 ## Cambios por la tanda 1 de PDF (T1–T12)
@@ -439,7 +443,9 @@ Cada pregunta lleva su `razonamiento` (Fase F) y cada bandera su enlace (Fase M)
   - **Correr:** sin plazos (decisión 13). *Recomiendo* una línea en el posparto: «La vuelta a correr se dosifica por síntomas, no por semanas; con escapes, peso o presión vaginal, parar y caminar (Deering 2024, consenso Delphi).»
 - **Registro:** nuevas claves `Mottola 2018`, `ACOG 804`, `Vleeming 2008`, `Clinton 2017`, `Simonds 2022`, `Liddle y Pennick 2015` y `Deering 2024`. «Peterson 2012» se cita como secundaria («en Liddle y Pennick 2015»), sin entrada propia.
 
-## Cambios por la tanda 2 de PDF (U1–U5), pendientes de ti
+## Cambios por la tanda 2 de PDF (U1–U5)
+
+**Aceptados por el usuario (2026-10).**
 
 - **U1. La trombosis también en el embarazo (cambia T9).** `em_u_tev` pasa a los dos estados, con los síntomas del RCOG:
   - Pregunta: «¿Tiene dolor e hinchazón nuevos en una pierna, sobre todo en una sola; o dolor de espalda o de nalga con toda la pierna hinchada; o le falta el aire de forma nueva, le duele el pecho o ha tosido sangre?»
@@ -481,10 +487,7 @@ Cada pregunta lleva su `razonamiento` (Fase F) y cada bandera su enlace (Fase M)
 
 ## Siguiente paso
 
-1. Tus decisiones (1–16).
-2. Los PDF de la decisión 15, en tandas, y lo que cambien.
-3. La implementación, en la rama de trabajo, y tu revisión en la app antes de `main`.
-4. physiq-report: leer `em` del payload, en otra PR.
+Hechos los cuatro pasos del borrador (decisiones, PDF, implementación con tu revisión, physiq-report#96). Lo que queda, en «Cierre de lo pendiente».
 
 ## Implementación (octubre 2026, rama `claude/new-session-zlsxna`)
 
@@ -500,7 +503,7 @@ Con las decisiones 1–16 y los cambios T1–T12 y U1–U5. Lo que se ve en la a
     - 140/90 o más desde la semana 20 va a `dv`;
     - 140/90 o más sin las semanas pide anotarlas.
 - **Fase 2, sistema `transversal_embarazo`** (séptimo de las 7 regiones, sin embudo):
-  - 12 urgencias y 3 derivaciones, cada una con su `em` (estado y semanas desde o hasta) y su razonamiento.
+  - 12 urgencias y 3 derivaciones (13 urgencias desde el cierre: D), cada una con su `em` (estado y semanas desde o hasta) y su razonamiento.
   - Sin las semanas, salen todas las del estado.
   - `em_u_tev` sale en los dos estados (U1).
   - `em_d_plo` no sale con la PLO ya marcada en la tarjeta de la osteoporosis.
@@ -527,4 +530,21 @@ Con las decisiones 1–16 y los cambios T1–T12 y U1–U5. Lo que se ve en la a
 - **Registro**: 27 referencias nuevas (`ACOG 2020` y `RCOG 2015` por su año, no por su número de documento). «Peterson 2012» no se cita aparte: el texto habla del ensayo piloto recogido en la Cochrane.
 - **Pruebas**: `tests/unit/embarazo.mjs` y la sección `embarazo` de la prueba de humo.
 - **physiq-report** lee `em` con una copia literal de `bloqueEMIA()` (`_bloqueEM`), physiodevapp/physiq-report#96.
+
+## Cierre de lo pendiente (octubre 2026, rama `claude/trusting-mendel-sm0ogw`)
+
+Comprobación de lo implementado contra NICE NG201, NG133, NG194 y NG255, releídas en esta sesión en nice.org.uk. Cambios A–E y W1–W3 aceptados y **revisados por el usuario** (2026-10):
+
+- **A. La preeclampsia en el posparto.** NG133 1.5.15 solo habla de quien ya tuvo preeclampsia («Ask women with pre-eclampsia who have given birth…»). Para todas, tras el parto, vale NG194 1.2.4: «persistent or severe headache, which could indicate… pre-eclampsia» → consejo médico sin demora. El razonamiento de `em_u_preeclampsia` cita ahora las dos, y la pregunta y su bandera añaden «o que no se le pasa». Sin cambio de semanas ni de urgencia.
+- **B. La infección del posparto, 8 semanas.** `em_u_infeccion` salía solo hasta la semana 6 (el grupo de riesgo de NG255). La lista de síntomas de NG194 1.2.4 no tiene plazo, y la guía cubre «the first 8 weeks after the birth». Pasa a `hasta: 8`; el razonamiento lo dice.
+- **C. La tensión antes de la semana 20.** NG201 1.2.25: «For women under 20+0 weeks with hypertension, follow the recommendations on the management of chronic hypertension in pregnancy» (NG133). `reglaTA()` devuelve `'cronica'` con 140/90 o más antes de la semana 20, y la tarjeta pinta una línea (`taCronica`): hipertensión crónica (NG201 1.2.25); sin controlar, contraindica el ejercicio (Mottola 2018, tabla 2); «que lo sepa su médico o su equipo obstétrico» es redacción propia. Ni `ur` ni `dv`.
+- **D. La sepsis en el embarazo.** NG255 1.2.1 pone también a la embarazada en el grupo de alto riesgo, y el sistema solo preguntaba la infección en el posparto. Urgencia nueva `em_u_infeccion_emb` (embarazo, cualquier semana): «¿Tiene fiebre o escalofríos, o se encuentra muy mal?» → consulta médica hoy; con confusión, respiración muy rápida, falta de aire o muy mal estado, 112 (NG255 1.1.2, 1.2.1, 1.4.4, 1.6.1 y tabla 1; «hoy» y el 112, redacción de la app, como en la decisión 4). Con su bandera y su entrada en `CONTRASTE_URGENCIAS` (modo guía).
+- **E. Prueba de las `privada`.** Además del ánimo, comprueba que el texto de `em_u_psicosis` y `em_u_autolesion` no llega al payload, 📋 Notas, 📄 Informe ni `contextoValoracion()`.
+- **Sin cambios**, comprobados: `em_u_sangrado` desde la 13 (NG201 1.4.17–1.4.18), `em_u_movimientos` desde la 24 (1.2.34), la grave ≥ 160/110 en cualquier semana (1.2.27, sin semanas) y la primera ≥ 140/90 desde la 20 en 24 h (1.2.26); `em_d_fractura` hasta 2 semanas (Simonds 2022; con el redondeo de las semanas sale hasta el día 20).
+- **Payload `em` y `bloqueEMIA()`**: sin cambios; `EM_CASOS` igual. D añade un texto posible a `ur[]`.
+- **Fuentes opcionales**: Bauersachs 2019 no está en PMC; no se pide. Woodley 2020 (en PMC solo el resumen): leída entera del PDF del usuario, el texto principal (pp. 1–55: resumen, tablas de resultados, métodos, resultados, discusión y conclusiones); un lector y yo, con las cifras y citas comprobadas en el texto.
+- **W1.** La contradicción 8, reescrita con Woodley 2020.
+- **W2.** Una línea en el bloque de suelo pélvico de la fase 2 (`sueloEvidencia`): «En el embarazo, entrenar el suelo pélvico de forma estructurada desde el principio, sin escapes, probablemente los previene al final del embarazo y los reduce algo tras el parto; como tratamiento de los escapes en el embarazo o el posparto, el efecto aún es incierto (Woodley 2020, Cochrane).» Solo ahí: nunca al payload, 📋 Notas, 📄 Informe ni al prompt (test). Registro: `'Woodley 2020'`.
+- **W3.** Los textos de la fase 5 y la 6 no cambian (irían a `bloqueEMIA()` y a la copia de physiq-report): Woodley matiza la certeza, no lo que se recomienda.
+- Con esto se cierra la condición (casilla madre de MIGRATION_PLAN.md marcada, 2026-10). Quedan fuera a propósito la EPDS, el aborto o la interrupción reciente y la muñeca y mano.
 

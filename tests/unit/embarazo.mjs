@@ -48,13 +48,16 @@ test('tarjeta de la fase 1: «Embarazada» y «Posparto», sus campos y el plega
 });
 
 test('fase 2: cada pregunta por estado y semanas; sin las semanas, salen todas las del estado', () => {
-  assert.deepEqual(ids({ estado: 'embarazada', semanas: 10 }), ['em_u_parto', 'em_u_tev', 'em_u_corazon', 'em_u_autolesion', 'em_d_plo']);
-  assert.deepEqual(ids({ estado: 'embarazada', semanas: 14 }), ['em_u_sangrado', 'em_u_parto', 'em_u_tev', 'em_u_corazon', 'em_u_autolesion', 'em_d_plo']);
+  assert.deepEqual(ids({ estado: 'embarazada', semanas: 10 }), ['em_u_parto', 'em_u_infeccion_emb', 'em_u_tev', 'em_u_corazon', 'em_u_autolesion', 'em_d_plo']);
+  assert.deepEqual(ids({ estado: 'embarazada', semanas: 14 }), ['em_u_sangrado', 'em_u_parto', 'em_u_infeccion_emb', 'em_u_tev', 'em_u_corazon', 'em_u_autolesion', 'em_d_plo']);
   assert.deepEqual(ids({ estado: 'embarazada', semanas: 30 }),
-    ['em_u_preeclampsia', 'em_u_sangrado', 'em_u_movimientos', 'em_u_parto', 'em_u_tev', 'em_u_corazon', 'em_u_autolesion', 'em_d_plo']);
+    ['em_u_preeclampsia', 'em_u_sangrado', 'em_u_movimientos', 'em_u_parto', 'em_u_infeccion_emb', 'em_u_tev', 'em_u_corazon', 'em_u_autolesion', 'em_d_plo']);
   assert.deepEqual(ids({ estado: 'embarazada' }), ids({ estado: 'embarazada', semanas: 30 }), 'sin semanas, todas');
   assert.deepEqual(ids({ estado: 'posparto', fecha: haceSemanas(1) }),
     ['em_u_preeclampsia', 'em_u_sangrado_pp', 'em_u_infeccion', 'em_u_tev', 'em_u_corazon', 'em_u_perine', 'em_u_incontinencia', 'em_u_psicosis', 'em_u_autolesion', 'em_d_plo', 'em_d_fractura', 'em_d_mama']);
+  // B: la infección del posparto, las 8 semanas que cubre NICE NG194
+  assert.ok(ids({ estado: 'posparto', semanasAprox: 8 }).includes('em_u_infeccion'));
+  assert.ok(!ids({ estado: 'posparto', semanasAprox: 9 }).includes('em_u_infeccion'));
   assert.deepEqual(ids({ estado: 'posparto', semanasAprox: 10 }),
     ['em_u_preeclampsia', 'em_u_sangrado_pp', 'em_u_tev', 'em_u_corazon', 'em_u_perine', 'em_u_incontinencia', 'em_u_psicosis', 'em_u_autolesion', 'em_d_plo', 'em_d_mama']);
   // La PLO ya confirmada en la tarjeta de la osteoporosis: su sospecha no sale (H1)
@@ -97,6 +100,10 @@ test('privadas (decisión 11): el ánimo y la psicosis no van a `sq` (informe ni
     assert.equal(p.ur.length, 2);
     const todo = JSON.stringify(p) + buildContextSummaryText() + buildInformeFisioterapiaText() + IN.contextoValoracion(p);
     for (const a of E.EM.animo) assert.ok(!todo.includes(a.texto), a.id);
+    // E: ni el texto de las preguntas privadas, en ninguna salida
+    for (const q of SIS_EMBARAZO.preguntas.filter(x => x.privada)) assert.ok(!todo.includes(q.text), q.id);
+    // W2: la línea de Woodley 2020 es solo del bloque de la fase 2
+    assert.ok(!todo.includes('Woodley') && !todo.includes(E.EM.textos.sueloEvidencia.slice(0, 40)));
     assert.ok(!('animo' in p.em));
   });
 });
@@ -107,7 +114,12 @@ test('regla de la tensión (decisión 5, NICE NG201): ≥ 160/110 urgencia; prim
   assert.equal(r({ estado: 'embarazada', semanas: 25 }, { tas: 120, tad: 112 }), 'grave');
   assert.equal(r({ estado: 'embarazada', semanas: 25 }, { tas: 142, tad: 80 }), 'alta');
   assert.equal(r({ estado: 'embarazada', semanas: 25 }, { tas: 130, tad: 90 }), 'alta');
-  assert.equal(r({ estado: 'embarazada', semanas: 18 }, { tas: 145, tad: 80 }), null, 'antes de la 20, no');
+  assert.equal(r({ estado: 'embarazada', semanas: 18 }, { tas: 145, tad: 80 }), 'cronica', 'antes de la 20, hipertensión crónica (1.2.25)');
+  assert.equal(r({ estado: 'embarazada', semanas: 18 }, { tas: 130, tad: 85 }), null);
+  withState({ region: 'lumbar', ...em({ estado: 'embarazada', semanas: 16 }), signosVitales: { fc: null, fr: null, spo2: null, tas: 150, tad: 95 } }, () => {
+    const p = buildPhysiQPayload();
+    assert.ok(!p.ur.includes(E.EM.textos.taGrave) && !p.dv.includes(E.EM.textos.taAlta), 'la crónica solo se pinta en la tarjeta: ni ur ni dv');
+  });
   assert.equal(r({ estado: 'embarazada' }, { tas: 145, tad: 80 }), 'sinSemanas');
   assert.equal(r({ estado: 'embarazada', semanas: 25 }, { tas: 139, tad: 89 }), null);
   assert.equal(r({ estado: 'embarazada', semanas: 25 }, { tas: null, tad: null }), null);
