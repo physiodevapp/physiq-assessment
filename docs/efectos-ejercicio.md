@@ -117,6 +117,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 4 — Otras mioquinas | Unido al bloque 3 (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10): todo era `mecanismo` o `discutido` (decisión 2). El bloque 3 pasa a llamarse «Efecto antiinflamatorio y mioquinas». 5 fuentes, ver «Mioquinas, dentro del bloque 3» |
 | Bloque 5 — Efectos centrales | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). 8 fuentes, ver «Bloque 5 — decisiones de nivel». Con él no queda ningún bloque pendiente y la guía deja de pintar «Pendientes de fuentes revisadas» |
 | Bloque 6 — Intolerancia ortostática (POTS) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Añadido después del diseño, a petición del usuario, para enlazar la tarjeta de disautonomía. 7 fuentes, ver «Bloque 6 — decisiones de nivel» |
+| Bloque 7 — Hipermovilidad (SEDh / TEH) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet), **pendiente de la revisión del usuario**. Propuesta aceptada antes de leer, ver «Bloque 7 — propuesta»; 14 fuentes, ver «Bloque 7 — decisiones de nivel» |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet; los enlaces a «Efectos centrales» y «antiinflamatorio», Opus) y **revisado por el usuario** (2026-10): `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis (`BLOQUE_POR_HIPOTESIS`, Opus), también hecha y **revisada por el usuario** (2026-10) |
 | Enlace desde los recuadros de la fase 5 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): `enlaceCondicionEjercicioHTML()`; lupus diagnosticado → antiinflamatorio, osteoporosis → mecanotransducción |
 
@@ -260,6 +261,48 @@ Fuentes leídas enteras por un agente Sonnet: Fu y Levine 2015, Cortez 2025, Hog
 - **Para el paciente**: una sola frase, sobre tolerar estar de pie y la parte física de la calidad de vida, que dice que no mejora todos los síntomas. Ninguna sobre «curarse» ni sobre dejar de cumplir criterios.
 - **Erratas de las fuentes**: el resumen de PubMed de Yanagimoto 2025 tiene cifras cambiadas; se usan las del cuerpo del texto. Las revisiones clasifican de forma distinta los mismos estudios (Wheatley-Guy 2023 ensayo en Cortez y Kwok, cohorte en Yanagimoto); se sigue a Cortez y Kwok.
 
+## Bloque 7 — propuesta (aceptada por el usuario, 2026-10)
+
+«Ejercicio en la hipermovilidad (SEDh / TEH)», con el patrón del bloque 6: el recuadro de hipermovilidad de la fase 5 solo dice «ejercicio graduado» (Engelbert 2017) y ningún bloque trataba el tema. La dosis no se repite: es la del recuadro.
+
+**Decisiones**:
+
+1. **Alcance: SEDh y TEH.** El subtipo vascular queda fuera, con una sola línea que remite a Byers 2017 en el recuadro. Motivo: los ensayos que sostendrían las afirmaciones `clinico` (Liaghat, Spanhove, Bale, Susanne) excluyen o no incluyen el subtipo vascular, y su mensaje principal (la fuerza con carga alta se tolera) choca con lo que Byers 2017 (p. 42) pide para él (cargas ligeras, nada isométrico, intensidad que permita conversar); el riesgo ahí es arterial, no articular. Mezclarlos en un bloque invitaría a aplicar al vascular lo probado en el hipermóvil.
+2. **Enlace desde el recuadro `.hm-fase5`** (`CONDICION_EJERCICIO`), en los dos estados, salvo con el subtipo vascular diagnosticado.
+3. **Sin entrada en `BLOQUE_POR_HIPOTESIS`** (la hipermovilidad es una condición, no una hipótesis) y **sin aviso nuevo en la fase 6** (hoy solo `disautonomiaHM`; sería otro paso).
+4. **Fuentes**: las de PMC, leídas por un agente Sonnet; Reychler 2021, Liaghat 2025 y Smith 2013, en PDF del usuario.
+
+**Fuentes candidatas** (sin leer; pistas, no contenido):
+
+| Fuente | PMC | Para qué |
+|---|---|---|
+| Liaghat 2022, BJSM 56:1269 | PMC9626913 | Ensayo de hombro, carga alta frente a baja, 16 semanas (n = 100) |
+| Liaghat 2024, BJSM | PMC10982631 | Seguimiento a 1 año |
+| Liaghat 2025, Scand J Pain, [doi:10.1515/sjpain-2024-0072](https://doi.org/10.1515/sjpain-2024-0072) | No (PDF) | Trayectoria del dolor y dolor provocado por el ejercicio |
+| Christensen 2026, Physiother Res Int | PMC12997522 | Cambio de fuerza frente a síntomas |
+| Spanhove 2022, Disabil Rehabil | No | Inestabilidad multidireccional, dos programas en casa (n = 21); a través de las revisiones si no hay texto |
+| Bale 2019, Pediatr Rheumatol | PMC6325876 | Niños: multidisciplinar frente a atención habitual (n = 119) |
+| Susanne 2024, Clin Rehabil | PMC11776353 | Muñeca: estabilización frente a órtesis (n = 169) |
+| Buryk-Iggers 2022, Arch Rehabil Res Clin Transl | PMC9214343 | Revisión sistemática, 10 estudios |
+| Reychler 2021, Am J Med Genet A, [doi:10.1002/ajmg.a.62393](https://doi.org/10.1002/ajmg.a.62393) | No (PDF) | Revisión sistemática, 6 ensayos |
+| Coussens 2022, J Musculoskelet Neuronal Interact | PMC8919651 | Fuerza y masa muscular en SEDh / TEH |
+| Smith 2013, Rheumatol Int, [doi:10.1007/s00296-013-2790-4](https://doi.org/10.1007/s00296-013-2790-4) | No (PDF) | Metaanálisis de propiocepción |
+| Engelbert 2017 | Ya leída | Marco: carga graduada, ninguna modalidad mejor |
+
+Descartadas: Møller 2014 (3 pacientes, SED clásico), Tudini 2024 (vendaje), Benistan 2023 (prendas de compresión), revisiones narrativas (Carroll 2023, Tofts 2023).
+
+## Bloque 7 — decisiones de nivel (2026-10, Opus)
+
+Fuentes leídas enteras por agentes Sonnet: en PMC, Liaghat 2022, Liaghat 2024, Christensen 2026, Bale 2019, Lindholm 2024 (en PubMed figura como «Susanne L»: nombre y apellido invertidos), Buryk-Iggers 2022 y Coussens 2022 (sin algunas tablas y figuras); en PDF del usuario, Liaghat 2025, Smith 2013, Reychler 2021, Spanhove 2022 y Brittain 2023. Engelbert 2017 y Byers 2017 ya estaban leídas para la tarjeta. **Palmer 2016** (piloto de viabilidad, HTA) no se usa: en PMC solo llegó el resumen, y el NIHR y Europe PMC no respondieron desde la sesión. Pacey 2013 (niños, ejercicio de rodilla en rango hipermóvil o hasta la extensión neutra) se cita a través de Reychler 2021, que lo recoge con sus datos.
+
+- **El ensayo de hombro es de TEH, no de SEDh**: «none with hypermobile Ehlers-Danlos Syndrome» (Liaghat 2022); los autores no saben si vale para el SEDh, sin supervisión o con más dolor de partida (Liaghat 2025). El bloque lo dice en «Qué cambia en la consulta».
+- **`clinico`**: la fuerza con carga alta mejora la función algo más a las 16 semanas, por debajo de la diferencia mínima importante, y al año sin diferencia (Liaghat 2022, 2024); el dolor provocado por la sesión, bajo y sin diferencia entre cargas, con más agujetas y cefaleas pasajeras (Liaghat 2025, 2022); ningún tipo de ejercicio mejor que otro (Spanhove 2022, Lindholm 2024, Pacey vía Reychler 2021, Engelbert 2017); en niños, nada añadido a la atención habitual (Bale 2019); efectos adversos por debajo del 1 % (Buryk-Iggers 2022). También `clinico`, como hecho de los estudios (precedente del bloque 6, la sal y el agua): que ninguno incluye el subtipo vascular.
+- **`discutido`**: cuánto pesa la evidencia de conjunto. Los resúmenes de Reychler 2021 («sea cual sea la intervención», calidad de vida «sistemáticamente» mejor) y de Brittain 2023 («eficaces», «evidencia fuerte» por niveles de Oxford, no GRADE) dicen más que sus datos; Buryk-Iggers 2022 no permite afirmaciones definitivas.
+- **`mecanismo`**: el déficit de fuerza (Coussens 2022, transversal) y de propiocepción de la rodilla (Smith 2013, casos y controles), sin demostrar que causen los síntomas; la estabilidad activa como justificación de la carga, no medida (la fuerza no cambió entre grupos, Liaghat 2022, y explica poco de la mejoría, Christensen 2026); la regla de dolor de 5 sobre 10 (usada, no comparada) y la preferencia por la cadena cerrada para empezar (lo que eligieron, Spanhove 2022).
+- **Para el paciente**: dos frases, sobre la fuerza graduada (no suele aumentar el dolor, mejoría moderada, agujetas que pasan) y sobre que no hay un ejercicio «especial». Ninguna sobre «estabilizar» o «proteger» la articulación, que solo llega a `mecanismo`.
+- **Subtipo vascular**: fuera del bloque (decisión 1 de la propuesta). Una frase remite a la pauta de Byers 2017 del recuadro, y el recuadro no enlaza el bloque con ese subtipo.
+- **Erratas de las fuentes** (en el registro de cada una): Liaghat 2025 da p = 0,614 en el resumen y 0,138 en el texto; Reychler 2021 da una mediana de calidad que no sale de su tabla; Lindholm 2024 no cuadra los números de asignación; Spanhove 2022 tiene un Beighton medio por debajo de los cortes de 2017.
+
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
 - **Dónde**: en el bloque «Educación» de la sesión del plan (`plan.js`), bajo sus frases: un botón «Para explicárselo al paciente →» y una línea que dice a qué bloque lleva («Abre «<título>», el bloque que corresponde a la irritabilidad elegida.»). Texto en `TEXTOS_EJERCICIO` (`data/ejercicio.js`), no en `data/plan-tratamiento.js`, para no tocar las frases del plan ni `docs/plan-tratamiento-frases.md`.
@@ -274,4 +317,5 @@ Fuentes leídas enteras por un agente Sonnet: Fu y Levine 2015, Cortez 2025, Hog
   - **Lupus, solo con «Diagnosticado»** → «Efecto antiinflamatorio y mioquinas»: sus frases clínicas y para el paciente son para las enfermedades reumáticas inflamatorias, lupus incluido.
   - **Osteoporosis, en los dos estados** → «Carga y adaptación del tejido», como lectura para el fisioterapeuta: en el hueso el bloque solo llega a `mecanismo` (la densidad mejora algo) y dice que no está demostrado que el ejercicio reduzca las fracturas; no tiene frase para el paciente sobre el hueso. La pauta de ejercicio sigue siendo la del propio recuadro, con sus fuentes.
   - **Disautonomía, en los dos estados** (2026-10, con el bloque 6, **revisado por el usuario**) → «Ejercicio en la intolerancia ortostática (POTS)»: por qué los programas empiezan tumbado y hasta dónde llega lo demostrado; la dosis sigue siendo la del recuadro.
-  - Sin enlace: hipermovilidad, trastorno mastocitario, embarazo o posparto, anticoagulado y posquirúrgico (ningún bloque trata su tema).
+  - **Hipermovilidad, en los dos estados, salvo con el subtipo vascular diagnosticado** (2026-10, con el bloque 7, pendiente de revisión) → «Ejercicio en la hipermovilidad (SEDh / TEH)»: si se puede cargar con fuerza y cuánto dolor provoca. Con el subtipo vascular no hay enlace: sus ensayos no lo incluyen y su pauta es la de Byers 2017, que ya lleva el recuadro.
+  - Sin enlace: trastorno mastocitario, embarazo o posparto, anticoagulado y posquirúrgico (ningún bloque trata su tema).
