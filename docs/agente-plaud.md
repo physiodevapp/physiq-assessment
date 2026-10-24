@@ -1,6 +1,6 @@
 # Agente Plaud → valoración — documento de diseño
 
-Estado: **borrador, sin decisiones tomadas** (2026-10). No hay código. Las decisiones de abajo llevan la recomendación primero; hasta que el fisio las acepte, nada de esto se programa. Antes de decidir, hacer las comprobaciones de «Por comprobar fuera de la app».
+Estado: **diseño aceptado** (2026-10): las 9 decisiones de abajo, todas según la recomendación. No hay código. Se empieza por la fase 1 (skill + MCP de Plaud + validador), después de las comprobaciones de «Por comprobar fuera de la app» (decisión 1); la fase 3 (agente automático) solo si la medición y el uso real de la fase 1 lo justifican.
 
 Relación con lo que ya existe: es la continuación natural del modo guía (`docs/modo-guia.md`). Allí la grabadora solo aporta el **texto libre** y la lógica depende de toques. Aquí se propone que un agente proponga también los **toques**, a partir de la transcripción, para que el fisio solo revise y complete. Eso reabre dos cosas que el modo guía cerró a propósito: su principio 1 («la lógica clínica no se infiere nunca del audio») y su decisión 14 («sin transcripción de la grabadora en esta versión»). Este documento explica cómo hacerlo sin perder lo que esas dos reglas protegían.
 
@@ -116,13 +116,17 @@ Un `.md` que acompaña al `.json`, pensado para leerlo al lado de la app:
 
 ### Fase 2: MCP propio de PhysiQ
 
-Las mismas tres órdenes como herramientas de un servidor MCP, para usarlo desde Claude Desktop o claude.ai sin el repo. Exige sacar a `lib/` la lógica que hoy vive mezclada con el DOM en `app.js` (`sistemasActivos()`, `getNoPreguntadas()`, `getPendientesBreve()`, `buildPhysiQPayload()`). Es refactor, sin lógica nueva, y lo protegen los tests de siempre.
+Las mismas órdenes como herramientas de un servidor MCP, para usarlo desde Claude Desktop o claude.ai sin el repo. Exige sacar a `lib/` la lógica que hoy vive mezclada con el DOM en `app.js` (`sistemasActivos()`, `getNoPreguntadas()`, `getPendientesBreve()`, `buildPhysiQPayload()`). Es refactor, sin lógica nueva, y lo protegen los tests de siempre.
 
 ### Fase 3: agente automático y bandeja en la app
 
 Al terminar una grabación en Plaud, el agente la procesa solo y en PhysiQ aparece «Valoración pendiente de revisar». Necesita guardar el borrador fuera del navegador (hoy todo vive en IndexedDB) y marcar en la app cada respuesta propuesta por el agente hasta que el fisio la confirme. Es la fase con más trabajo y más implicaciones de privacidad; solo si las fases 1 y 2 funcionan con consultas reales.
 
+**Por qué no empezar directamente por aquí** (2026-10): el núcleo de la fase 3 (reglas de extracción, validador, medición) es el mismo que el de la fase 1, que no se tira: la fase 3 es la fase 1 más un disparador automático, un almacén en servidor y la bandeja en la app. Construir eso antes de saber si la extracción es lo bastante buena es invertir a ciegas (la capa 3 de revisión con IA se aparcó al medirla, `docs/informe-ia.md`). Además, guardar borradores clínicos fuera del navegador abre RGPD y alojamiento, que hoy no existen porque todo vive en IndexedDB; no está comprobado que Plaud avise al terminar una grabación; y sin el paso manual se pierde el momento en que el fisio elige qué grabación es de qué paciente. El paso manual de la fase 1 cuesta un minuto por consulta.
+
 ## Decisiones
+
+Aceptadas por el fisio (2026-10), todas según la recomendación.
 
 1. **Cuándo empezar.**
    - **Recomendado:** después de las comprobaciones de «Por comprobar», puntos 1–3. Si la transcripción de Plaud no separa bien los hablantes en la exploración, o su tratamiento de datos de salud no es aceptable, este proyecto no tiene sentido tal como está.
