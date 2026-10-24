@@ -105,7 +105,7 @@ console.log('\nfase 5 plegable');
       assert.equal(!!p.derivacion, id === 'ca18', `${id}: derivación solo con criterio`);
       // Seguimiento: solo el criterio de fuerza para volver al deporte (pp. 172–173), en ca11 y ca16–ca19
       assert.equal(!!p.seguimiento, ['ca11', 'ca16', 'ca17', 'ca18', 'ca19'].includes(id), `${id}: seguimiento`);
-      if (p.seguimiento) assert.match(p.seguimiento, /^Volver al deporte con un déficit de fuerza menor del 10–20 % respecto al lado sano o al valor previo/, id);
+      if (p.seguimiento) assert.match(p.seguimiento, /^Volver al deporte con un déficit de fuerza menor del 10–20 % respecto al lado sano o al valor previo \(medido con un dinamómetro manual\)/, `${id}: pp. 172–173`);
       assert.ok(!/déficit de fuerza/.test(p.notas), `${id}: el criterio de fuerza, en el seguimiento`);
       assert.ok(!/\b(RM|artro-RM|artro-TC|ecografía|radiografía|EMG)\b/i.test(p.horizonte || ''), `${id}: la imagen no es un pronóstico`);
     }
@@ -121,6 +121,8 @@ console.log('\nfase 5 plegable');
       assert.equal(/hendidura secundaria|inserción del aductor/.test(p.notas), id === 'ca16', `${id}: hendidura`);
     }
     assert.equal(HYPOTHESES.ca18.pronostico.derivacion, 'hay una hernia inguinal palpable: excluye este diagnóstico.');
+    assert.match(HYPOTHESES.ca4.pronostico.horizonte, /^La atrofia grasa de los glúteos medio y menor/, 'ca4: p. 179');
+    assert.match(HYPOTHESES.ro1.pronostico.notas, /uno de los factores de riesgo modificables más potentes de la artrosis de rodilla/, 'ro1: p. 211');
     assert.match(HYPOTHESES.ca4.pronostico.notas, /empezar en el glúteo menor y extenderse hacia atrás al glúteo medio/, 'ca4: p. 179');
     assert.match(HYPOTHESES.ca14.pronostico.notas, /alivio del dolor con un bloqueo nervioso diagnóstico/, 'ca14: p. 172');
     assert.ok(!/debilidad de cadera/.test(HYPOTHESES.ca11.pronostico.seguimiento), 'ca11: lo de la debilidad, solo en el dolor inguinal de larga evolución');
