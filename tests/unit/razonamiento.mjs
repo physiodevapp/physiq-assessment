@@ -516,7 +516,7 @@ test('preguntar a la IA: el contexto es solo la región, nada del estado del pac
 
 test('preguntar a la IA, modalidad «Fármacos»: guion fijo, sin ajustar la medicación', () => {
   const { promptPregunta, INSTRUCCION_FUENTES, GUION_FARMACOS, TIPOS_PREGUNTA, TIPO_PREGUNTA_DEFECTO } = ampliarIA;
-  assert.deepEqual(Object.keys(TIPOS_PREGUNTA), ['libre', 'farmacos']);
+  assert.deepEqual(Object.keys(TIPOS_PREGUNTA), ['libre', 'farmacos', 'ejercicio']);
   assert.equal(TIPO_PREGUNTA_DEFECTO, 'libre');
   const p = promptPregunta({ contexto: 'hombro', pregunta: ' ibuprofeno\n y omeprazol ', tipo: 'farmacos' });
   assert.equal(p, `Soy fisioterapeuta. Contexto: valoración de hombro. Fármacos o duda: «ibuprofeno y omeprazol». ${GUION_FARMACOS} ${INSTRUCCION_FUENTES} Incluye la ficha técnica (CIMA, AEMPS) cuando sea pertinente. Cita las fuentes con enlace.`);
@@ -526,6 +526,21 @@ test('preguntar a la IA, modalidad «Fármacos»: guion fijo, sin ajustar la med
   // Tipo desconocido o ausente = pregunta libre (compatibilidad)
   assert.equal(promptPregunta({ contexto: '', pregunta: 'x y z' }), promptPregunta({ contexto: '', pregunta: 'x y z', tipo: 'otro' }));
   assert.ok(!promptPregunta({ contexto: '', pregunta: 'x y z' }).includes('Fármacos'));
+});
+
+test('preguntar a la IA, modalidad «Ejercicio»: guion de prescripción, sin inventar volumen', () => {
+  const { promptPregunta, INSTRUCCION_FUENTES, GUION_EJERCICIO, TIPOS_PREGUNTA } = ampliarIA;
+  const p = promptPregunta({ contexto: 'rodilla', pregunta: ' excéntrico\n en tendinopatía rotuliana ', tipo: 'ejercicio' });
+  assert.equal(p, `Soy fisioterapeuta. Contexto: valoración de rodilla. Duda de prescripción de ejercicio: «excéntrico en tendinopatía rotuliana». ${GUION_EJERCICIO} ${INSTRUCCION_FUENTES} Cita las fuentes con enlace.`);
+  // Los cinco apartados, y que no invente un volumen sin fuente
+  for (const t of ['intensidad', 'series y repeticiones', 'descanso', 'frecuencia semanal', 'duración del programa',
+    'ensayo clínico o de una guía', 'si ninguna fuente fija el volumen, dilo en lugar de proponer uno',
+    '24 h siguientes', 'progresar y para retroceder', 'cuándo parar o derivar'])
+    assert.ok(GUION_EJERCICIO.includes(t), t);
+  assert.ok(!p.includes('CIMA'));
+  assert.ok(TIPOS_PREGUNTA.ejercicio.guion.includes('fase 6'));
+  // Pregunta libre: etiqueta corta para tres botones a 320 px
+  assert.equal(TIPOS_PREGUNTA.libre.corto, 'Libre');
 });
 
 test('ampliar con IA: el módulo no importa nada (no puede leer datos del paciente)', () => {
