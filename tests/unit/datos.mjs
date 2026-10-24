@@ -205,7 +205,7 @@ test('resolved next-step for every option matches tests/fixtures/cif-tree-naviga
 // sin regenerar el índice, falla.
 console.log('\ndocs/referencias.md y data/referencias.js');
 
-const { construirReferencias, recogerCitas, problemasRegistro } = await import('../referencias.mjs');
+const { construirReferencias, recogerCitas, problemasRegistro, ORDEN_EFECTO } = await import('../referencias.mjs');
 const { REFERENCIAS } = await import('../../data/referencias.js');
 const PLAN_TRATAMIENTO = await import('../../data/plan-tratamiento.js');
 const IRRITABILIDAD = await import('../../data/irritabilidad.js');
@@ -213,6 +213,15 @@ const { CONDICIONES } = await import('../../data/condiciones.js');
 const { FAMILIAS_FARMACO: FARMACOS } = await import('../../data/farmacos.js');
 const { BLOQUES_EJERCICIO: EJERCICIO } = await import('../../data/ejercicio.js');
 const problemas = problemasRegistro(recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, REFERENCIAS, testPuntua }), REFERENCIAS);
+
+test('«Estado de revisión»: todo tipo de uso tiene su prioridad, ninguna referencia sale con «Afecta a: —»', () => {
+  const { lit } = recogerCitas({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES, TIEMPOS_TEJIDO, PLAN_TRATAMIENTO, IRRITABILIDAD, CONDICIONES, FARMACOS, EJERCICIO, REFERENCIAS, testPuntua });
+  const efectos = new Set([...lit.values()].flatMap(v => v.usos.map(u => u.efecto)));
+  const sinOrden = [...efectos].filter(e => !ORDEN_EFECTO.includes(e));
+  assert.deepEqual(sinOrden, [], `añade a ORDEN_EFECTO (tests/referencias.mjs): ${sinOrden.join(', ')}`);
+  const sinEfecto = Object.entries(REFERENCIAS).filter(([k, r]) => !r.tarjetas && !(lit.get(k)?.usos || []).length).map(([k]) => k);
+  assert.deepEqual(sinEfecto, []);
+});
 
 test('toda referencia citada en data/ está en data/referencias.js', () => {
   assert.deepEqual(problemas.sinRegistrar, [], `${problemas.sinRegistrar.join(', ')}: añádelas al registro (clave = «Autor Año» tal como sale en la cita)`);

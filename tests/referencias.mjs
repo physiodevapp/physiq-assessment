@@ -120,7 +120,11 @@ function lugar(hyp, ruta, testPuntua) {
   if (a === 'dosis') return { donde: 'Dosis (en el texto)', fase: '5 · mención en el texto', efecto: 'texto' };
   return { donde: `\`${ruta.join('.')}\``, fase: '—', efecto: 'texto' };
 }
-const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento fase 4', 'razonamiento 4b', 'tiempos de tejido', 'plan de tratamiento', 'texto'];
+// Orden de prioridad de la revisión (y de la columna «Afecta a»). Todo `efecto`
+// que asigne recogerCitas() tiene que estar aquí: si no, la referencia sale
+// con «—» y al final de su grupo (pasó con las guías de fármacos y de
+// ejercicio, 2026-10); un test unitario lo exige.
+export const ORDEN_EFECTO = ['puntuación 4b', 'cribado fase 2', 'pauta', 'pronóstico', 'irritabilidad (fase 3 y fase 6)', 'test 4b sin puntuar', 'razonamiento fase 2', 'razonamiento fase 4', 'razonamiento 4b', 'tiempos de tejido', 'plan de tratamiento', 'condiciones especiales (cabecera)', 'guía de fármacos (cabecera)', 'guía de efectos del ejercicio (cabecera)', 'texto'];
 
 function recorrer(obj, ruta, fn) {
   if (typeof obj === 'string') return fn(obj, ruta);
@@ -420,7 +424,11 @@ export function construirReferencias({ HYPOTHESES, SYSTEMIC_SCREENING, CIF_TREES
     '«razonamiento fase 2» = respalda el «¿Por qué?» de una pregunta de cribado (no cambia ninguna alerta);',
     '«razonamiento fase 4» = respalda el «¿Por qué esta pregunta?» de un paso del árbol CIF (no cambia la navegación ni las hipótesis);',
     '«razonamiento 4b» = respalda el «¿Por qué?» de un test de la fase 4b (no cambia la puntuación);',
+    '«irritabilidad (fase 3 y fase 6)» = respalda la matriz de irritabilidad y sus textos (cambia el nivel que dosifica la fase 6);',
     '«tiempos de tejido» = respalda una fila del panel ⏱ «Tiempos de recuperación» de la cabecera (solo consulta);',
+    '«plan de tratamiento» = respalda un texto de la fase 6 (escalones, avisos, bloques, reglas, red de seguridad);',
+    '«condiciones especiales (cabecera)», «guía de fármacos (cabecera)» y «guía de efectos del ejercicio (cabecera)» =',
+    'respalda una fila o un párrafo de esas guías de lectura (solo consulta; los fármacos también llegan a los avisos de la fase 6);',
     '«texto» = solo se menciona.', '',
     '| Referencia | Afecta a | Usos | Última revisión |', '|---|---|---|---|',
     ...filas.map(f => `| [${f.k}](#${ancla(f.r.tarjetas ? '1. Tarjetas de consulta' : f.k)}) | ${f.efectos.join(' · ') || '—'} | ${f.n} | ${f.r.revision ? `${f.r.revision.fecha} · ${esc(f.r.revision.resultado)}` : '**sin revisar**'} |`), '');

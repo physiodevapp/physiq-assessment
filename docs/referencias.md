@@ -44,7 +44,11 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 «razonamiento fase 2» = respalda el «¿Por qué?» de una pregunta de cribado (no cambia ninguna alerta);
 «razonamiento fase 4» = respalda el «¿Por qué esta pregunta?» de un paso del árbol CIF (no cambia la navegación ni las hipótesis);
 «razonamiento 4b» = respalda el «¿Por qué?» de un test de la fase 4b (no cambia la puntuación);
+«irritabilidad (fase 3 y fase 6)» = respalda la matriz de irritabilidad y sus textos (cambia el nivel que dosifica la fase 6);
 «tiempos de tejido» = respalda una fila del panel ⏱ «Tiempos de recuperación» de la cabecera (solo consulta);
+«plan de tratamiento» = respalda un texto de la fase 6 (escalones, avisos, bloques, reglas, red de seguridad);
+«condiciones especiales (cabecera)», «guía de fármacos (cabecera)» y «guía de efectos del ejercicio (cabecera)» =
+respalda una fila o un párrafo de esas guías de lectura (solo consulta; los fármacos también llegan a los avisos de la fase 6);
 «texto» = solo se menciona.
 
 | Referencia | Afecta a | Usos | Última revisión |
@@ -55,88 +59,91 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Paterson 2021](#paterson-2021) | pauta · texto | 2 | **sin revisar** |
 | [Kamonseki 2022](#kamonseki-2022) | pauta · tiempos de tejido · plan de tratamiento · texto | 4 | **sin revisar** |
 | [Tang 2024](#tang-2024) | pauta · texto | 2 | **sin revisar** |
+| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | irritabilidad (fase 3 y fase 6) · plan de tratamiento | 68 | **sin revisar** |
+| [Maitland 2005](#maitland-2005) | irritabilidad (fase 3 y fase 6) · razonamiento fase 2 · plan de tratamiento · texto | 55 | **sin revisar** |
+| [Barakatt 2009](#barakatt-2009) | irritabilidad (fase 3 y fase 6) · plan de tratamiento | 2 | **sin revisar** |
+| [Petersen 2021](#petersen-2021) | irritabilidad (fase 3 y fase 6) · plan de tratamiento | 10 | **sin revisar** |
 | [NICE CG109](#nice-cg109) | razonamiento fase 2 · plan de tratamiento · texto | 26 | **sin revisar** |
 | [NICE CG151](#nice-cg151) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE CG192](#nice-cg192) | razonamiento fase 2 · texto | 23 | **sin revisar** |
 | [NICE NG133](#nice-ng133) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG156](#nice-ng156) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG192](#nice-ng192) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [NICE NG194](#nice-ng194) | razonamiento fase 2 | 7 | **sin revisar** |
-| [NICE NG201](#nice-ng201) | razonamiento fase 2 · texto | 32 | **sin revisar** |
-| [NICE NG232](#nice-ng232) | razonamiento fase 2 · texto | 18 | **sin revisar** |
+| [NICE NG194](#nice-ng194) | razonamiento fase 2 · condiciones especiales (cabecera) | 7 | **sin revisar** |
+| [NICE NG201](#nice-ng201) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 32 | **sin revisar** |
+| [NICE NG232](#nice-ng232) | razonamiento fase 2 · condiciones especiales (cabecera) · guía de fármacos (cabecera) · texto | 18 | **sin revisar** |
 | [NICE NG255](#nice-ng255) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG258](#nice-ng258) | razonamiento fase 2 · plan de tratamiento · texto | 25 | **sin revisar** |
 | [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Kibbe 2004](#kibbe-2004) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Maitland 2005](#maitland-2005) | razonamiento fase 2 · plan de tratamiento · texto | 55 | **sin revisar** |
 | [Ruperto 2011](#ruperto-2011) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Shelkey 2014](#shelkey-2014) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Giangregorio 2015](#giangregorio-2015) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [RCOG 2015](#rcog-2015) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · texto | 16 | **sin revisar** |
-| [Champaneria 2016](#champaneria-2016) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Dos Santos 2016](#dos-santos-2016) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Llitjos 2016](#llitjos-2016) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Sheldon 2015](#sheldon-2015) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 16 | **sin revisar** |
+| [Champaneria 2016](#champaneria-2016) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | **sin revisar** |
+| [Dos Santos 2016](#dos-santos-2016) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | **sin revisar** |
+| [Llitjos 2016](#llitjos-2016) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [Bahit 2017](#bahit-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Byers 2017](#byers-2017) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Clinton 2017](#clinton-2017) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Henderson 2017](#henderson-2017) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Malfait 2017](#malfait-2017) | razonamiento fase 2 · texto | 62 | **sin revisar** |
+| [Malfait 2017](#malfait-2017) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 62 | **sin revisar** |
 | [Schroeder 2017](#schroeder-2017) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Baker 2018](#baker-2018) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Brignole 2018](#brignole-2018) | razonamiento fase 2 · plan de tratamiento · texto | 42 | **sin revisar** |
-| [Chenoweth 2018](#chenoweth-2018) | razonamiento fase 2 · texto | 9 | **sin revisar** |
+| [Chenoweth 2018](#chenoweth-2018) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
 | [Gordon 2018](#gordon-2018) | razonamiento fase 2 · texto | 12 | **sin revisar** |
-| [Hulens 2018](#hulens-2018) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Mottola 2018](#mottola-2018) | razonamiento fase 2 · texto | 58 | **sin revisar** |
-| [Aringer 2019](#aringer-2019) | razonamiento fase 2 · texto | 17 | **sin revisar** |
+| [Hulens 2018](#hulens-2018) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | **sin revisar** |
+| [Mottola 2018](#mottola-2018) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 58 | **sin revisar** |
+| [Aringer 2019](#aringer-2019) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 17 | **sin revisar** |
 | [Cooper 2019](#cooper-2019) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Kanis 2019](#kanis-2019) | razonamiento fase 2 · texto | 11 | **sin revisar** |
+| [Kanis 2019](#kanis-2019) | razonamiento fase 2 · condiciones especiales (cabecera) · guía de fármacos (cabecera) · texto | 11 | **sin revisar** |
 | [Tektonidou 2019](#tektonidou-2019) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Wiegele 2019](#wiegele-2019) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Amaniyan 2020](#amaniyan-2020) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [Brooker 2020](#brooker-2020) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Cardona 2020](#cardona-2020) | razonamiento fase 2 · texto | 9 | **sin revisar** |
+| [Amaniyan 2020](#amaniyan-2020) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
+| [Brooker 2020](#brooker-2020) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Cardona 2020](#cardona-2020) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 9 | **sin revisar** |
 | [Peker 2020](#peker-2020) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Sahu 2020](#sahu-2020) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Sahu 2020](#sahu-2020) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [Wang 2020](#wang-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [WFH 2020](#wfh-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Yale 2020](#yale-2020) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Colombo 2021](#colombo-2021) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Kaneko 2021](#kaneko-2021) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [Liao 2021](#liao-2021) | razonamiento fase 2 · texto | 9 | **sin revisar** |
+| [Kaneko 2021](#kaneko-2021) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
+| [Liao 2021](#liao-2021) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
 | [Ogrodnik 2021](#ogrodnik-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Pisetsky 2021](#pisetsky-2021) | razonamiento fase 2 | 1 | **sin revisar** |
 | [RCUK 2021](#rcuk-2021) | razonamiento fase 2 · plan de tratamiento · texto | 31 | **sin revisar** |
 | [Thanou 2021](#thanou-2021) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Bałabuszek 2022](#bałabuszek-2022) | razonamiento fase 2 | 3 | **sin revisar** |
-| [Dalrymple 2022](#dalrymple-2022) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Bałabuszek 2022](#bałabuszek-2022) | razonamiento fase 2 · condiciones especiales (cabecera) | 3 | **sin revisar** |
+| [Dalrymple 2022](#dalrymple-2022) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [De Maeseneer 2022](#de-maeseneer-2022) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Drosos 2022](#drosos-2022) | razonamiento fase 2 · texto | 15 | **sin revisar** |
-| [Laurent 2022](#laurent-2022) | razonamiento fase 2 · texto | 10 | **sin revisar** |
-| [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Muñoz 2022](#muñoz-2022) | razonamiento fase 2 · texto | 10 | **sin revisar** |
-| [Nemunaitis 2022](#nemunaitis-2022) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Peng 2022](#peng-2022) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Laurent 2022](#laurent-2022) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 10 | **sin revisar** |
+| [Mathew y Thoppil 2022](#mathew-y-thoppil-2022) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Muñoz 2022](#muñoz-2022) | razonamiento fase 2 · condiciones especiales (cabecera) · guía de fármacos (cabecera) · texto | 10 | **sin revisar** |
+| [Nemunaitis 2022](#nemunaitis-2022) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Peng 2022](#peng-2022) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | **sin revisar** |
 | [Pokhrel 2022](#pokhrel-2022) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Raj 2022](#raj-2022) | razonamiento fase 2 · texto | 37 | **sin revisar** |
 | [Simonds 2022](#simonds-2022) | razonamiento fase 2 · texto | 39 | **sin revisar** |
-| [Valent 2022](#valent-2022) | razonamiento fase 2 · texto | 16 | **sin revisar** |
+| [Valent 2022](#valent-2022) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 16 | **sin revisar** |
 | [Fragoulis 2023](#fragoulis-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Hameed 2023](#hameed-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Hideyama 2023](#hideyama-2023) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Hideyama 2023](#hideyama-2023) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Hodgens y Sharman 2023](#hodgens-y-sharman-2023) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [Lim y Selbi 2023](#lim-y-selbi-2023) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Limaiem 2023](#limaiem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Lukies 2023](#lukies-2023) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Lukies 2023](#lukies-2023) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [Matthews 2023](#matthews-2023) | razonamiento fase 2 · texto | 15 | **sin revisar** |
 | [Murphy 2023](#murphy-2023) | razonamiento fase 2 · razonamiento fase 4 | 2 | **sin revisar** |
-| [Paredes Mogica 2023](#paredes-mogica-2023) | razonamiento fase 2 · razonamiento fase 4 | 4 | **sin revisar** |
+| [Paredes Mogica 2023](#paredes-mogica-2023) | razonamiento fase 2 · razonamiento fase 4 · condiciones especiales (cabecera) | 4 | **sin revisar** |
 | [Punnapuzha 2023](#punnapuzha-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Rao y Mikdashi 2023](#rao-y-mikdashi-2023) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Saleem 2023](#saleem-2023) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Scioscia 2023](#scioscia-2023) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [Yasir 2023](#yasir-2023) | razonamiento fase 2 · texto | 18 | **sin revisar** |
+| [Yasir 2023](#yasir-2023) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 18 | **sin revisar** |
 | [Albrecht 2024](#albrecht-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Deering 2024](#deering-2024) | razonamiento fase 2 · texto | 8 | **sin revisar** |
 | [Fanouriakis 2024](#fanouriakis-2024) | razonamiento fase 2 · texto | 10 | **sin revisar** |
@@ -145,25 +152,25 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Kimyaghalam 2024](#kimyaghalam-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Lim 2024](#lim-2024) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Mangla y Hamad 2024](#mangla-y-hamad-2024) | razonamiento fase 2 · razonamiento fase 4 | 7 | **sin revisar** |
-| [Penfold 2024](#penfold-2024) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Penfold 2024](#penfold-2024) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | **sin revisar** |
 | [Sambola 2024](#sambola-2024) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Capsoni 2025](#capsoni-2025) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Castro y Sharma 2025](#castro-y-sharma-2025) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Castro y Sharma 2025](#castro-y-sharma-2025) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [Goosenberg 2025](#goosenberg-2025) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Gregson 2025](#gregson-2025) | razonamiento fase 2 · texto | 76 | **sin revisar** |
+| [Gregson 2025](#gregson-2025) | razonamiento fase 2 · condiciones especiales (cabecera) · guía de fármacos (cabecera) · texto | 76 | **sin revisar** |
 | [Hulens 2025](#hulens-2025) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kuo 2025](#kuo-2025) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Lee y Picard 2025](#lee-y-picard-2025) | razonamiento fase 2 · texto | 16 | **sin revisar** |
+| [Lee y Picard 2025](#lee-y-picard-2025) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 16 | **sin revisar** |
 | [Lizzo 2025](#lizzo-2025) | razonamiento fase 2 | 1 | **sin revisar** |
-| [Mameli 2025](#mameli-2025) | razonamiento fase 2 | 3 | **sin revisar** |
-| [Saad y Mathew 2025](#saad-y-mathew-2025) | razonamiento fase 2 | 2 | **sin revisar** |
+| [Mameli 2025](#mameli-2025) | razonamiento fase 2 · guía de fármacos (cabecera) | 3 | **sin revisar** |
+| [Saad y Mathew 2025](#saad-y-mathew-2025) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
 | [Sammaritano 2025](#sammaritano-2025) | razonamiento fase 2 | 4 | **sin revisar** |
 | [Bell y Saleh 2026](#bell-y-saleh-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Bowers y Blum 2026](#bowers-y-blum-2026) | razonamiento fase 2 · texto | 14 | **sin revisar** |
-| [Ghosh 2026](#ghosh-2026) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Hadji 2026](#hadji-2026) | razonamiento fase 2 · texto | 17 | **sin revisar** |
+| [Ghosh 2026](#ghosh-2026) | razonamiento fase 2 · guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Hadji 2026](#hadji-2026) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 17 | **sin revisar** |
 | [Hanif 2026](#hanif-2026) | razonamiento fase 2 | 2 | **sin revisar** |
-| [Kim 2026](#kim-2026) | razonamiento fase 2 · texto | 16 | **sin revisar** |
+| [Kim 2026](#kim-2026) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 16 | **sin revisar** |
 | [Regalla y Killeen 2026](#regalla-y-killeen-2026) | razonamiento fase 2 | 2 | **sin revisar** |
 | [Brown 2004](#brown-2004) | razonamiento fase 4 | 1 | **sin revisar** |
 | [Cook y Brown 2010](#cook-y-brown-2010) | razonamiento fase 4 | 1 | **sin revisar** |
@@ -256,19 +263,364 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Butler 1991](#butler-1991) | plan de tratamiento | 1 | **sin revisar** |
 | [Zusman 1998](#zusman-1998) | plan de tratamiento | 1 | **sin revisar** |
 | [Butler 2000](#butler-2000) | plan de tratamiento | 2 | **sin revisar** |
-| [Hengeveld y Banks 2005](#hengeveld-y-banks-2005) | plan de tratamiento | 68 | **sin revisar** |
 | [Silbernagel 2007](#silbernagel-2007) | plan de tratamiento | 1 | **sin revisar** |
-| [Barakatt 2009](#barakatt-2009) | plan de tratamiento | 2 | **sin revisar** |
 | [Fu 2010](#fu-2010) | plan de tratamiento | 1 | **sin revisar** |
-| [George 2016](#george-2016) | plan de tratamiento | 2 | **sin revisar** |
-| [Hakim 2017](#hakim-2017) | plan de tratamiento · texto | 31 | **sin revisar** |
-| [Raj 2020](#raj-2020) | plan de tratamiento · texto | 72 | **sin revisar** |
+| [George 2016](#george-2016) | plan de tratamiento · guía de efectos del ejercicio (cabecera) | 2 | **sin revisar** |
+| [Hakim 2017](#hakim-2017) | plan de tratamiento · condiciones especiales (cabecera) · texto | 31 | **sin revisar** |
+| [Raj 2020](#raj-2020) | plan de tratamiento · condiciones especiales (cabecera) · texto | 72 | **sin revisar** |
 | [Brockow 2021](#brockow-2021) | plan de tratamiento · texto | 15 | **sin revisar** |
-| [Petersen 2021](#petersen-2021) | plan de tratamiento | 10 | **sin revisar** |
 | [Srisuwatchari 2023](#srisuwatchari-2023) | plan de tratamiento | 1 | **sin revisar** |
 | [Muñoz 2024](#muñoz-2024) | plan de tratamiento · texto | 8 | **sin revisar** |
+| [Fedorowski 2019](#fedorowski-2019) | condiciones especiales (cabecera) · texto | 15 | **sin revisar** |
+| [Vernino 2021](#vernino-2021) | condiciones especiales (cabecera) · texto | 29 | **sin revisar** |
+| [NICE NG196](#nice-ng196) | guía de fármacos (cabecera) · texto | 15 | **sin revisar** |
+| [Iacovides 2009](#iacovides-2009) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Diabetes Prevention Program 2012](#diabetes-prevention-program-2012) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bazelier 2013](#bazelier-2013) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Brod 2013](#brod-2013) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Desai 2013](#desai-2013) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Liu 2013](#liu-2013) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Mikus 2013](#mikus-2013) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Parker 2013](#parker-2013) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [EMA 2014](#ema-2014) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Evans 2014](#evans-2014) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Lewis y Cook 2014](#lewis-y-cook-2014) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Shane 2014](#shane-2014) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Broncel 2015](#broncel-2015) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hansen 2015](#hansen-2015) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Irwin 2015](#irwin-2015) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Liu 2015](#liu-2015) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Puentedura 2015](#puentedura-2015) | guía de fármacos (cabecera) · texto | 23 | **sin revisar** |
+| [Stroes 2015](#stroes-2015) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Whedon 2015](#whedon-2015) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Adler 2016](#adler-2016) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Colberg 2016](#colberg-2016) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kelly 2016](#kelly-2016) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Liamis 2016](#liamis-2016) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Paik 2016](#paik-2016) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Teichtahl 2016](#teichtahl-2016) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wang 2016](#wang-2016) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Youssef 2016](#youssef-2016) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bakker 2017](#bakker-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ble 2017](#ble-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Camilleri 2017](#camilleri-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Chou 2017](#chou-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Filippatos 2017](#filippatos-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ham 2017](#ham-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hill 2017](#hill-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kunutsor 2017](#kunutsor-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Men 2017](#men-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Noyes 2017](#noyes-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Riddell 2017](#riddell-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Schadler 2017](#schadler-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Thomas 2017](#thomas-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Thomas Manapurathe 2017](#thomas-manapurathe-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Tsujimoto 2017](#tsujimoto-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wichniak 2017](#wichniak-2017) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Compston 2018](#compston-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [EMA 2018](#ema-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Enke 2018](#enke-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Evans 2018](#evans-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Gradel 2018](#gradel-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hutting 2018](#hutting-2018) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Mach 2018](#mach-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Suárez-Lledó 2018](#suárez-lledó-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wang 2018](#wang-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Welsch 2018](#welsch-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Yang y Qu 2018](#yang-y-qu-2018) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bahendeka 2019](#bahendeka-2019) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Keteyian 2019](#keteyian-2019) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Lebovitz 2019](#lebovitz-2019) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Lucas 2019](#lucas-2019) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Moore 2019](#moore-2019) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Morales 2019](#morales-2019) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Smart 2019](#smart-2019) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Tentolouris 2019](#tentolouris-2019) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Van der Sluiszen 2019](#van-der-sluiszen-2019) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bindu 2020](#bindu-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Black 2020](#black-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [De Vries 2020](#de-vries-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Heyward 2020](#heyward-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Lary 2020](#lary-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Layton 2020](#layton-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Lin 2020](#lin-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Lu 2020](#lu-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [McAnally 2020](#mcanally-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Moser 2020](#moser-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Pitt 2020](#pitt-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Saco-Ledo 2020](#saco-ledo-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Salmasi 2020](#salmasi-2020) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Tchivileva 2020](#tchivileva-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Tenti 2020](#tenti-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wathra 2020](#wathra-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wilcox 2020](#wilcox-2020) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Albasri 2021](#albasri-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Anastasilakis 2021](#anastasilakis-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Baggio y Ananda-Rajah 2021](#baggio-y-ananda-rajah-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bhanu 2021](#bhanu-2021) | guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Cashin 2021](#cashin-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Caulfield 2021](#caulfield-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Dufort y Samaan 2021](#dufort-y-samaan-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Edinoff 2021](#edinoff-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Giménez-Campos 2021](#giménez-campos-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Herrett 2021](#herrett-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Huruba 2021](#huruba-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hyder 2021](#hyder-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Jin 2021](#jin-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Nakafero 2021](#nakafero-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Nakhleh y Shehadeh 2021](#nakhleh-y-shehadeh-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Park 2021](#park-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Roulet 2021](#roulet-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Roy 2021](#roy-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Schug 2021](#schug-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Schweiger 2021](#schweiger-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Slade 2021](#slade-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Smarz 2021](#smarz-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Steffel 2021](#steffel-2021) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Tsourdi 2021](#tsourdi-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Uson 2021](#uson-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Vehmanen 2021](#vehmanen-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wee 2021](#wee-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Xue 2021](#xue-2021) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Abraham 2022](#abraham-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Adolfsson 2022](#adolfsson-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Akin 2022](#akin-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Alam 2022](#alam-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Attardo 2022](#attardo-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Carvalho 2022](#carvalho-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [CTT 2022](#ctt-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [De Filippis 2022](#de-filippis-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Desbiens 2022](#desbiens-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Dowell 2022](#dowell-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Forton 2022](#forton-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [García-Sánchez 2022](#garcía-sánchez-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hahn 2022](#hahn-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Han 2022](#han-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hansen 2022](#hansen-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hanssen 2022](#hanssen-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hershman 2022](#hershman-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Holgado 2022](#holgado-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Johannsen 2022](#johannsen-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kanaley 2022](#kanaley-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kurlander 2022](#kurlander-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Liang 2022](#liang-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Nochaiwong 2022](#nochaiwong-2022) | guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
+| [Pedersini 2022](#pedersini-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ruggiero 2022](#ruggiero-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Shao 2022](#shao-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Shin 2022](#shin-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Shu 2022](#shu-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Tsuchiya 2022](#tsuchiya-2022) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [AEMPS 2023](#aemps-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [AGS 2023](#ags-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Baffour-Awuah 2023](#baffour-awuah-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Baigrie y Nookala 2023](#baigrie-y-nookala-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Barberán 2023](#barberán-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bazroon y Alrashidi 2023](#bazroon-y-alrashidi-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Birkinshaw 2023](#birkinshaw-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Brown 2023](#brown-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Buck 2023](#buck-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Can y Correa 2023](#can-y-correa-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Capiau 2023](#capiau-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Carnovale 2023](#carnovale-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Corcoran y Jacobs 2023](#corcoran-y-jacobs-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Costello 2023](#costello-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Farzam y Jan 2023](#farzam-y-jan-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ferreira 2023](#ferreira-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Garrison 2023](#garrison-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Gehrke 2023](#gehrke-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Gragossian 2023](#gragossian-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Harrington 2023](#harrington-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Herman 2023](#herman-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Horowitz 2023](#horowitz-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hu 2023](#hu-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Humphrey 2023](#humphrey-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Huxel 2023](#huxel-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hwang 2023](#hwang-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Jödicke 2023](#jödicke-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Jones 2023](#jones-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kang 2023](#kang-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kasina y Baradhi 2023](#kasina-y-baradhi-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kast 2023](#kast-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Khan 2023](#khan-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kwak 2023](#kwak-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Lee 2023](#lee-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Leslie y Rawla 2023](#leslie-y-rawla-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Li 2023](#li-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Mancia 2023](#mancia-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Martínez 2023](#martínez-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Meaadi 2023](#meaadi-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Memon y Tiwari 2023](#memon-y-tiwari-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Mitchell 2023](#mitchell-2023) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Moraczewski 2023](#moraczewski-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Morris y Patel 2023](#morris-y-patel-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Nischal y Gupta 2023](#nischal-y-gupta-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Papantoniou 2023](#papantoniou-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Plewa 2023](#plewa-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ploegmakers 2023](#ploegmakers-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Pofi 2023](#pofi-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Rissardo 2023](#rissardo-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Rusu 2023](#rusu-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Talreja y Cassagnol 2023](#talreja-y-cassagnol-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Thai 2023](#thai-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Thota y Akbar 2023](#thota-y-akbar-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Tominaga 2023](#tominaga-2023) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Wewege 2023](#wewege-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wierzbiński 2023](#wierzbiński-2023) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Anziano 2024](#anziano-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Beuschlein 2024](#beuschlein-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bianconi 2024](#bianconi-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bounds y Patel 2024](#bounds-y-patel-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bulsara 2024](#bulsara-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bus 2024](#bus-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Collins y Costello 2024](#collins-y-costello-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Cross 2024](#cross-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Dar y Jacob 2024](#dar-y-jacob-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Dhesi 2024](#dhesi-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Dos Santos 2024](#dos-santos-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Edwards 2024](#edwards-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Engert 2024](#engert-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Farishta 2024](#farishta-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Faruqi 2024](#faruqi-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Gobillot-Morisson 2024](#gobillot-morisson-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Greear 2024](#greear-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Guo 2024](#guo-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hildebrand 2024](#hildebrand-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hospers 2024](#hospers-2024) | guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Humma y Patel 2024](#humma-y-patel-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hwang 2024](#hwang-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kim y Chen 2024](#kim-y-chen-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kim y Jang 2024](#kim-y-jang-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kwon 2024](#kwon-2024) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Lacuesta 2024](#lacuesta-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Leslie y Rout 2024](#leslie-y-rout-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Leung 2024](#leung-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Levy 2024](#levy-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Mangone 2024](#mangone-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [McEvoy 2024](#mcevoy-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [McKeever 2024](#mckeever-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Messineo 2024](#messineo-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Miernik 2024](#miernik-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Minardi 2024](#minardi-2024) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Morris 2024](#morris-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Mulla 2024](#mulla-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Narayan 2024](#narayan-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Oldfield 2024](#oldfield-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Pannone y Abbott 2024](#pannone-y-abbott-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Podder 2024](#podder-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Rehman 2024](#rehman-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Sangiorgio 2024](#sangiorgio-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Scott 2024](#scott-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Sibrack 2024](#sibrack-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Simon 2024](#simon-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Sizar 2024](#sizar-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Spångeus 2024](#spångeus-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Testa 2024](#testa-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wang 2024](#wang-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wong 2024](#wong-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Yang 2024](#yang-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Yasaei 2024](#yasaei-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Zeng 2024](#zeng-2024) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [ADA 2025](#ada-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Alaranji y Reilly 2025](#alaranji-y-reilly-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Alvarez 2025](#alvarez-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Azmi 2025](#azmi-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bhanu 2025](#bhanu-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Borsati 2025](#borsati-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Boudreault 2025](#boudreault-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Brunner 2025](#brunner-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Calvo 2025](#calvo-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Cheatham 2025](#cheatham-2025) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Duman 2025](#duman-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ez Eddin 2025](#ez-eddin-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ferraro 2025](#ferraro-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Fujiwara 2025](#fujiwara-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Goyal 2025](#goyal-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Hadji 2025](#hadji-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [He 2025](#he-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kalfas 2025](#kalfas-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kim 2025](#kim-2025) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Leander 2025](#leander-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Leslie y Foreman 2025](#leslie-y-foreman-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Li y Zhang 2025](#li-y-zhang-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Marko y Pawliczak 2025](#marko-y-pawliczak-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [McIver y Siddique 2025](#mciver-y-siddique-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Mitchell 2025](#mitchell-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Moncrieff 2025](#moncrieff-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Moseley 2025](#moseley-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Padda 2025](#padda-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Patel y Launico 2025](#patel-y-launico-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Patel y Preuss 2025](#patel-y-preuss-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Pathak 2025](#pathak-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Regina 2025](#regina-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ringer 2025](#ringer-2025) | guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Rissardo 2025](#rissardo-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Rout 2025](#rout-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Simon y Rout 2025](#simon-y-rout-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Suenghataiphorn 2025](#suenghataiphorn-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wang 2025](#wang-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wang y Tariq 2025](#wang-y-tariq-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Xia 2025](#xia-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Xiang 2025](#xiang-2025) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Zhou 2025](#zhou-2025) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Anastasopoulou y Goyal 2026](#anastasopoulou-y-goyal-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Awosika y Patel 2026](#awosika-y-patel-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bavishi 2026](#bavishi-2026) | guía de fármacos (cabecera) · texto | 8 | **sin revisar** |
+| [Benzon 2026](#benzon-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bergh Fahlén 2026](#bergh-fahlén-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Bhanu 2026](#bhanu-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Biswas 2026](#biswas-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Blyzniuk 2026](#blyzniuk-2026) | guía de fármacos (cabecera) | 2 | **sin revisar** |
+| [Chang 2026](#chang-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Collins y Bergman 2026](#collins-y-bergman-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Confederat 2026](#confederat-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [CTT 2026](#ctt-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Devi 2026](#devi-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Epelde 2026](#epelde-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Fong y Patel 2026](#fong-y-patel-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Grusky 2026](#grusky-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Guan 2026](#guan-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Harley 2026](#harley-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Iqbal 2026](#iqbal-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Jasti 2026](#jasti-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Jobanputra 2026](#jobanputra-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kershner 2026](#kershner-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Khayyat 2026](#khayyat-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Kishi 2026](#kishi-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Koldenhof 2026](#koldenhof-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Lagina y Tripathy 2026](#lagina-y-tripathy-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Levati 2026](#levati-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Milbourn 2026](#milbourn-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Moiz 2026](#moiz-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Moon 2026](#moon-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Ponna 2026](#ponna-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Rangraze 2026](#rangraze-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Rout y Afzal 2026](#rout-y-afzal-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Rusu 2026](#rusu-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Shamim 2026](#shamim-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Sharma 2026](#sharma-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Shrestha 2026](#shrestha-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Sklepinski 2026](#sklepinski-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Soura 2026](#soura-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Srinivas-Shankar 2026](#srinivas-shankar-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Thompson 2026](#thompson-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Thour 2026](#thour-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Tobaiqy y Alqutub 2026](#tobaiqy-y-alqutub-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Tolla 2026](#tolla-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Waseem 2026](#waseem-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Weber 2026](#weber-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Wu 2026](#wu-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Yang 2026](#yang-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Yuen 2026](#yuen-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
+| [Zhang 2026](#zhang-2026) | guía de fármacos (cabecera) | 1 | **sin revisar** |
 | [NICE NG123](#nice-ng123) | texto | 7 | **sin revisar** |
-| [NICE NG196](#nice-ng196) | texto | 15 | **sin revisar** |
 | [NICE NG210](#nice-ng210) | texto | 28 | **sin revisar** |
 | [NICE NG249](#nice-ng249) | texto | 21 | **sin revisar** |
 | [Sutlive 2008](#sutlive-2008) | texto | 1 | **sin revisar** |
@@ -277,386 +629,38 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Giangregorio 2014](#giangregorio-2014) | texto | 35 | **sin revisar** |
 | [Kovacs y Ralston 2015](#kovacs-y-ralston-2015) | texto | 14 | **sin revisar** |
 | [Liddle y Pennick 2015](#liddle-y-pennick-2015) | texto | 14 | **sin revisar** |
-| [Liu 2015](#liu-2015) | texto | 8 | **sin revisar** |
-| [Puentedura 2015](#puentedura-2015) | texto | 23 | **sin revisar** |
-| [Whedon 2015](#whedon-2015) | texto | 8 | **sin revisar** |
 | [Hall 2016](#hall-2016) | texto | 7 | **sin revisar** |
 | [Sperstad 2016](#sperstad-2016) | texto | 7 | **sin revisar** |
 | [Engelbert 2017](#engelbert-2017) | texto | 14 | **sin revisar** |
 | [González-de-Olano 2017](#gonzález-de-olano-2017) | texto | 7 | **sin revisar** |
-| [Hutting 2018](#hutting-2018) | texto | 8 | **sin revisar** |
-| [Fedorowski 2019](#fedorowski-2019) | texto | 15 | **sin revisar** |
 | [Gibbs 2019](#gibbs-2019) | texto | 7 | **sin revisar** |
 | [Sherrington 2019](#sherrington-2019) | texto | 7 | **sin revisar** |
 | [ACOG 2020](#acog-2020) | texto | 21 | **sin revisar** |
 | [Bull 2020](#bull-2020) | texto | 14 | **sin revisar** |
 | [Miller 2020](#miller-2020) | texto | 7 | **sin revisar** |
-| [Salmasi 2020](#salmasi-2020) | texto | 8 | **sin revisar** |
 | [Gluppe 2021](#gluppe-2021) | texto | 7 | **sin revisar** |
-| [Steffel 2021](#steffel-2021) | texto | 8 | **sin revisar** |
-| [Vernino 2021](#vernino-2021) | texto | 29 | **sin revisar** |
 | [Brooke-Wavell 2022](#brooke-wavell-2022) | texto | 49 | **sin revisar** |
 | [Hardcastle 2022](#hardcastle-2022) | texto | 14 | **sin revisar** |
 | [Montero-Odasso 2022](#montero-odasso-2022) | texto | 21 | **sin revisar** |
 | [Muraro 2022](#muraro-2022) | texto | 14 | **sin revisar** |
-| [Nochaiwong 2022](#nochaiwong-2022) | texto | 9 | **sin revisar** |
 | [Tenforde 2022](#tenforde-2022) | texto | 7 | **sin revisar** |
 | [Burani 2023](#burani-2023) | texto | 7 | **sin revisar** |
 | [Frade 2023](#frade-2023) | texto | 21 | **sin revisar** |
 | [Gülen 2023](#gülen-2023) | texto | 7 | **sin revisar** |
-| [Mitchell 2023](#mitchell-2023) | texto | 8 | **sin revisar** |
-| [Tominaga 2023](#tominaga-2023) | texto | 8 | **sin revisar** |
 | [Anagnostis 2024](#anagnostis-2024) | texto | 7 | **sin revisar** |
 | [Blaess 2024](#blaess-2024) | texto | 63 | **sin revisar** |
 | [Christopher 2024](#christopher-2024) | texto | 7 | **sin revisar** |
 | [Dures 2024](#dures-2024) | texto | 7 | **sin revisar** |
 | [Gak 2024](#gak-2024) | texto | 7 | **sin revisar** |
-| [Kwon 2024](#kwon-2024) | texto | 8 | **sin revisar** |
 | [Malfait 2024](#malfait-2024) | texto | 7 | **sin revisar** |
-| [Minardi 2024](#minardi-2024) | texto | 8 | **sin revisar** |
 | [Parodis 2024](#parodis-2024) | texto | 14 | **sin revisar** |
 | [Beamish 2025](#beamish-2025) | texto | 7 | **sin revisar** |
-| [Cheatham 2025](#cheatham-2025) | texto | 8 | **sin revisar** |
 | [Davenport 2025](#davenport-2025) | texto | 35 | **sin revisar** |
-| [Kim 2025](#kim-2025) | texto | 8 | **sin revisar** |
 | [Rhim 2025](#rhim-2025) | texto | 7 | **sin revisar** |
-| [Xiang 2025](#xiang-2025) | texto | 8 | **sin revisar** |
-| [Bavishi 2026](#bavishi-2026) | texto | 8 | **sin revisar** |
 | [Saliba 2026](#saliba-2026) | texto | 14 | **sin revisar** |
 | [Sivakoti 2026](#sivakoti-2026) | texto | 7 | **sin revisar** |
 | [Valdez 2026](#valdez-2026) | texto | 7 | **sin revisar** |
 | [Waterway 2026](#waterway-2026) | texto | 7 | **sin revisar** |
-| [Iacovides 2009](#iacovides-2009) | — | 1 | **sin revisar** |
-| [Diabetes Prevention Program 2012](#diabetes-prevention-program-2012) | — | 1 | **sin revisar** |
-| [Bazelier 2013](#bazelier-2013) | — | 1 | **sin revisar** |
-| [Brod 2013](#brod-2013) | — | 1 | **sin revisar** |
-| [Desai 2013](#desai-2013) | — | 1 | **sin revisar** |
-| [Liu 2013](#liu-2013) | — | 1 | **sin revisar** |
-| [Mikus 2013](#mikus-2013) | — | 1 | **sin revisar** |
-| [Parker 2013](#parker-2013) | — | 1 | **sin revisar** |
-| [EMA 2014](#ema-2014) | — | 1 | **sin revisar** |
-| [Evans 2014](#evans-2014) | — | 1 | **sin revisar** |
-| [Lewis y Cook 2014](#lewis-y-cook-2014) | — | 1 | **sin revisar** |
-| [Shane 2014](#shane-2014) | — | 1 | **sin revisar** |
-| [Broncel 2015](#broncel-2015) | — | 1 | **sin revisar** |
-| [Hansen 2015](#hansen-2015) | — | 1 | **sin revisar** |
-| [Irwin 2015](#irwin-2015) | — | 1 | **sin revisar** |
-| [Stroes 2015](#stroes-2015) | — | 1 | **sin revisar** |
-| [Adler 2016](#adler-2016) | — | 1 | **sin revisar** |
-| [Colberg 2016](#colberg-2016) | — | 1 | **sin revisar** |
-| [Kelly 2016](#kelly-2016) | — | 1 | **sin revisar** |
-| [Liamis 2016](#liamis-2016) | — | 1 | **sin revisar** |
-| [Paik 2016](#paik-2016) | — | 1 | **sin revisar** |
-| [Teichtahl 2016](#teichtahl-2016) | — | 1 | **sin revisar** |
-| [Wang 2016](#wang-2016) | — | 1 | **sin revisar** |
-| [Youssef 2016](#youssef-2016) | — | 1 | **sin revisar** |
-| [Bakker 2017](#bakker-2017) | — | 1 | **sin revisar** |
-| [Ble 2017](#ble-2017) | — | 1 | **sin revisar** |
-| [Camilleri 2017](#camilleri-2017) | — | 1 | **sin revisar** |
-| [Chou 2017](#chou-2017) | — | 1 | **sin revisar** |
-| [Filippatos 2017](#filippatos-2017) | — | 1 | **sin revisar** |
-| [Ham 2017](#ham-2017) | — | 1 | **sin revisar** |
-| [Hill 2017](#hill-2017) | — | 1 | **sin revisar** |
-| [Kunutsor 2017](#kunutsor-2017) | — | 1 | **sin revisar** |
-| [Men 2017](#men-2017) | — | 1 | **sin revisar** |
-| [Noyes 2017](#noyes-2017) | — | 1 | **sin revisar** |
-| [Riddell 2017](#riddell-2017) | — | 1 | **sin revisar** |
-| [Schadler 2017](#schadler-2017) | — | 1 | **sin revisar** |
-| [Thomas 2017](#thomas-2017) | — | 1 | **sin revisar** |
-| [Thomas Manapurathe 2017](#thomas-manapurathe-2017) | — | 1 | **sin revisar** |
-| [Tsujimoto 2017](#tsujimoto-2017) | — | 1 | **sin revisar** |
-| [Wichniak 2017](#wichniak-2017) | — | 1 | **sin revisar** |
-| [Compston 2018](#compston-2018) | — | 1 | **sin revisar** |
-| [EMA 2018](#ema-2018) | — | 1 | **sin revisar** |
-| [Enke 2018](#enke-2018) | — | 1 | **sin revisar** |
-| [Evans 2018](#evans-2018) | — | 1 | **sin revisar** |
-| [Gradel 2018](#gradel-2018) | — | 1 | **sin revisar** |
-| [Mach 2018](#mach-2018) | — | 1 | **sin revisar** |
-| [Suárez-Lledó 2018](#suárez-lledó-2018) | — | 1 | **sin revisar** |
-| [Wang 2018](#wang-2018) | — | 1 | **sin revisar** |
-| [Welsch 2018](#welsch-2018) | — | 1 | **sin revisar** |
-| [Yang y Qu 2018](#yang-y-qu-2018) | — | 1 | **sin revisar** |
-| [Bahendeka 2019](#bahendeka-2019) | — | 1 | **sin revisar** |
-| [Keteyian 2019](#keteyian-2019) | — | 1 | **sin revisar** |
-| [Lebovitz 2019](#lebovitz-2019) | — | 1 | **sin revisar** |
-| [Lucas 2019](#lucas-2019) | — | 1 | **sin revisar** |
-| [Moore 2019](#moore-2019) | — | 1 | **sin revisar** |
-| [Morales 2019](#morales-2019) | — | 1 | **sin revisar** |
-| [Smart 2019](#smart-2019) | — | 1 | **sin revisar** |
-| [Tentolouris 2019](#tentolouris-2019) | — | 1 | **sin revisar** |
-| [Van der Sluiszen 2019](#van-der-sluiszen-2019) | — | 1 | **sin revisar** |
-| [Bindu 2020](#bindu-2020) | — | 1 | **sin revisar** |
-| [Black 2020](#black-2020) | — | 1 | **sin revisar** |
-| [De Vries 2020](#de-vries-2020) | — | 1 | **sin revisar** |
-| [Heyward 2020](#heyward-2020) | — | 1 | **sin revisar** |
-| [Lary 2020](#lary-2020) | — | 1 | **sin revisar** |
-| [Layton 2020](#layton-2020) | — | 1 | **sin revisar** |
-| [Lin 2020](#lin-2020) | — | 1 | **sin revisar** |
-| [Lu 2020](#lu-2020) | — | 1 | **sin revisar** |
-| [McAnally 2020](#mcanally-2020) | — | 1 | **sin revisar** |
-| [Moser 2020](#moser-2020) | — | 1 | **sin revisar** |
-| [Pitt 2020](#pitt-2020) | — | 1 | **sin revisar** |
-| [Saco-Ledo 2020](#saco-ledo-2020) | — | 1 | **sin revisar** |
-| [Tchivileva 2020](#tchivileva-2020) | — | 1 | **sin revisar** |
-| [Tenti 2020](#tenti-2020) | — | 1 | **sin revisar** |
-| [Wathra 2020](#wathra-2020) | — | 1 | **sin revisar** |
-| [Wilcox 2020](#wilcox-2020) | — | 1 | **sin revisar** |
-| [Albasri 2021](#albasri-2021) | — | 1 | **sin revisar** |
-| [Anastasilakis 2021](#anastasilakis-2021) | — | 1 | **sin revisar** |
-| [Baggio y Ananda-Rajah 2021](#baggio-y-ananda-rajah-2021) | — | 1 | **sin revisar** |
-| [Bhanu 2021](#bhanu-2021) | — | 2 | **sin revisar** |
-| [Cashin 2021](#cashin-2021) | — | 1 | **sin revisar** |
-| [Caulfield 2021](#caulfield-2021) | — | 1 | **sin revisar** |
-| [Dufort y Samaan 2021](#dufort-y-samaan-2021) | — | 1 | **sin revisar** |
-| [Edinoff 2021](#edinoff-2021) | — | 1 | **sin revisar** |
-| [Giménez-Campos 2021](#giménez-campos-2021) | — | 1 | **sin revisar** |
-| [Herrett 2021](#herrett-2021) | — | 1 | **sin revisar** |
-| [Huruba 2021](#huruba-2021) | — | 1 | **sin revisar** |
-| [Hyder 2021](#hyder-2021) | — | 1 | **sin revisar** |
-| [Jin 2021](#jin-2021) | — | 1 | **sin revisar** |
-| [Nakafero 2021](#nakafero-2021) | — | 1 | **sin revisar** |
-| [Nakhleh y Shehadeh 2021](#nakhleh-y-shehadeh-2021) | — | 1 | **sin revisar** |
-| [Park 2021](#park-2021) | — | 1 | **sin revisar** |
-| [Roulet 2021](#roulet-2021) | — | 1 | **sin revisar** |
-| [Roy 2021](#roy-2021) | — | 1 | **sin revisar** |
-| [Schug 2021](#schug-2021) | — | 1 | **sin revisar** |
-| [Schweiger 2021](#schweiger-2021) | — | 1 | **sin revisar** |
-| [Slade 2021](#slade-2021) | — | 1 | **sin revisar** |
-| [Smarz 2021](#smarz-2021) | — | 1 | **sin revisar** |
-| [Tsourdi 2021](#tsourdi-2021) | — | 1 | **sin revisar** |
-| [Uson 2021](#uson-2021) | — | 1 | **sin revisar** |
-| [Vehmanen 2021](#vehmanen-2021) | — | 1 | **sin revisar** |
-| [Wee 2021](#wee-2021) | — | 1 | **sin revisar** |
-| [Xue 2021](#xue-2021) | — | 1 | **sin revisar** |
-| [Abraham 2022](#abraham-2022) | — | 1 | **sin revisar** |
-| [Adolfsson 2022](#adolfsson-2022) | — | 1 | **sin revisar** |
-| [Akin 2022](#akin-2022) | — | 1 | **sin revisar** |
-| [Alam 2022](#alam-2022) | — | 1 | **sin revisar** |
-| [Attardo 2022](#attardo-2022) | — | 1 | **sin revisar** |
-| [Carvalho 2022](#carvalho-2022) | — | 1 | **sin revisar** |
-| [CTT 2022](#ctt-2022) | — | 1 | **sin revisar** |
-| [De Filippis 2022](#de-filippis-2022) | — | 1 | **sin revisar** |
-| [Desbiens 2022](#desbiens-2022) | — | 1 | **sin revisar** |
-| [Dowell 2022](#dowell-2022) | — | 1 | **sin revisar** |
-| [Forton 2022](#forton-2022) | — | 1 | **sin revisar** |
-| [García-Sánchez 2022](#garcía-sánchez-2022) | — | 1 | **sin revisar** |
-| [Hahn 2022](#hahn-2022) | — | 1 | **sin revisar** |
-| [Han 2022](#han-2022) | — | 1 | **sin revisar** |
-| [Hansen 2022](#hansen-2022) | — | 1 | **sin revisar** |
-| [Hanssen 2022](#hanssen-2022) | — | 1 | **sin revisar** |
-| [Hershman 2022](#hershman-2022) | — | 1 | **sin revisar** |
-| [Holgado 2022](#holgado-2022) | — | 1 | **sin revisar** |
-| [Johannsen 2022](#johannsen-2022) | — | 1 | **sin revisar** |
-| [Kanaley 2022](#kanaley-2022) | — | 1 | **sin revisar** |
-| [Kurlander 2022](#kurlander-2022) | — | 1 | **sin revisar** |
-| [Langstengel y Yaggi 2022](#langstengel-y-yaggi-2022) | — | 1 | **sin revisar** |
-| [Liang 2022](#liang-2022) | — | 1 | **sin revisar** |
-| [Pedersini 2022](#pedersini-2022) | — | 1 | **sin revisar** |
-| [Ruggiero 2022](#ruggiero-2022) | — | 1 | **sin revisar** |
-| [Sampaio-Cunha y Martins 2022](#sampaio-cunha-y-martins-2022) | — | 1 | **sin revisar** |
-| [Shao 2022](#shao-2022) | — | 1 | **sin revisar** |
-| [Shin 2022](#shin-2022) | — | 1 | **sin revisar** |
-| [Shu 2022](#shu-2022) | — | 1 | **sin revisar** |
-| [Tsuchiya 2022](#tsuchiya-2022) | — | 1 | **sin revisar** |
-| [AEMPS 2023](#aemps-2023) | — | 1 | **sin revisar** |
-| [AGS 2023](#ags-2023) | — | 1 | **sin revisar** |
-| [Baffour-Awuah 2023](#baffour-awuah-2023) | — | 1 | **sin revisar** |
-| [Baigrie y Nookala 2023](#baigrie-y-nookala-2023) | — | 1 | **sin revisar** |
-| [Barberán 2023](#barberán-2023) | — | 1 | **sin revisar** |
-| [Bazroon y Alrashidi 2023](#bazroon-y-alrashidi-2023) | — | 1 | **sin revisar** |
-| [Birkinshaw 2023](#birkinshaw-2023) | — | 1 | **sin revisar** |
-| [Brown 2023](#brown-2023) | — | 1 | **sin revisar** |
-| [Buck 2023](#buck-2023) | — | 1 | **sin revisar** |
-| [Can y Correa 2023](#can-y-correa-2023) | — | 1 | **sin revisar** |
-| [Capiau 2023](#capiau-2023) | — | 1 | **sin revisar** |
-| [Carnovale 2023](#carnovale-2023) | — | 1 | **sin revisar** |
-| [Chu y Wadhwa 2023](#chu-y-wadhwa-2023) | — | 1 | **sin revisar** |
-| [Corcoran y Jacobs 2023](#corcoran-y-jacobs-2023) | — | 1 | **sin revisar** |
-| [Costello 2023](#costello-2023) | — | 1 | **sin revisar** |
-| [Farzam y Jan 2023](#farzam-y-jan-2023) | — | 1 | **sin revisar** |
-| [Ferreira 2023](#ferreira-2023) | — | 1 | **sin revisar** |
-| [Garrison 2023](#garrison-2023) | — | 1 | **sin revisar** |
-| [Gehrke 2023](#gehrke-2023) | — | 1 | **sin revisar** |
-| [Ghanavatian y Derian 2023](#ghanavatian-y-derian-2023) | — | 1 | **sin revisar** |
-| [Gragossian 2023](#gragossian-2023) | — | 1 | **sin revisar** |
-| [Harrington 2023](#harrington-2023) | — | 1 | **sin revisar** |
-| [Herman 2023](#herman-2023) | — | 1 | **sin revisar** |
-| [Horowitz 2023](#horowitz-2023) | — | 1 | **sin revisar** |
-| [Hu 2023](#hu-2023) | — | 1 | **sin revisar** |
-| [Humphrey 2023](#humphrey-2023) | — | 1 | **sin revisar** |
-| [Huxel 2023](#huxel-2023) | — | 1 | **sin revisar** |
-| [Hwang 2023](#hwang-2023) | — | 1 | **sin revisar** |
-| [Jödicke 2023](#jödicke-2023) | — | 1 | **sin revisar** |
-| [Jones 2023](#jones-2023) | — | 1 | **sin revisar** |
-| [Kang 2023](#kang-2023) | — | 1 | **sin revisar** |
-| [Kasina y Baradhi 2023](#kasina-y-baradhi-2023) | — | 1 | **sin revisar** |
-| [Kast 2023](#kast-2023) | — | 1 | **sin revisar** |
-| [Khan 2023](#khan-2023) | — | 1 | **sin revisar** |
-| [Khan y Kahwaji 2023](#khan-y-kahwaji-2023) | — | 1 | **sin revisar** |
-| [Kwak 2023](#kwak-2023) | — | 1 | **sin revisar** |
-| [Lee 2023](#lee-2023) | — | 1 | **sin revisar** |
-| [Leslie y Rawla 2023](#leslie-y-rawla-2023) | — | 1 | **sin revisar** |
-| [Li 2023](#li-2023) | — | 1 | **sin revisar** |
-| [Mancia 2023](#mancia-2023) | — | 1 | **sin revisar** |
-| [Martínez 2023](#martínez-2023) | — | 1 | **sin revisar** |
-| [Meaadi 2023](#meaadi-2023) | — | 1 | **sin revisar** |
-| [Memon y Tiwari 2023](#memon-y-tiwari-2023) | — | 1 | **sin revisar** |
-| [Moraczewski 2023](#moraczewski-2023) | — | 1 | **sin revisar** |
-| [Morris y Patel 2023](#morris-y-patel-2023) | — | 1 | **sin revisar** |
-| [Nischal y Gupta 2023](#nischal-y-gupta-2023) | — | 1 | **sin revisar** |
-| [Papantoniou 2023](#papantoniou-2023) | — | 1 | **sin revisar** |
-| [Plewa 2023](#plewa-2023) | — | 1 | **sin revisar** |
-| [Ploegmakers 2023](#ploegmakers-2023) | — | 1 | **sin revisar** |
-| [Pofi 2023](#pofi-2023) | — | 1 | **sin revisar** |
-| [Rissardo 2023](#rissardo-2023) | — | 1 | **sin revisar** |
-| [Rusu 2023](#rusu-2023) | — | 1 | **sin revisar** |
-| [Talreja y Cassagnol 2023](#talreja-y-cassagnol-2023) | — | 1 | **sin revisar** |
-| [Thai 2023](#thai-2023) | — | 1 | **sin revisar** |
-| [Thota y Akbar 2023](#thota-y-akbar-2023) | — | 1 | **sin revisar** |
-| [Wewege 2023](#wewege-2023) | — | 1 | **sin revisar** |
-| [Wierzbiński 2023](#wierzbiński-2023) | — | 1 | **sin revisar** |
-| [Anziano 2024](#anziano-2024) | — | 1 | **sin revisar** |
-| [Beuschlein 2024](#beuschlein-2024) | — | 1 | **sin revisar** |
-| [Bianconi 2024](#bianconi-2024) | — | 1 | **sin revisar** |
-| [Bounds y Patel 2024](#bounds-y-patel-2024) | — | 1 | **sin revisar** |
-| [Bulsara 2024](#bulsara-2024) | — | 1 | **sin revisar** |
-| [Bus 2024](#bus-2024) | — | 1 | **sin revisar** |
-| [Collins y Costello 2024](#collins-y-costello-2024) | — | 1 | **sin revisar** |
-| [Cross 2024](#cross-2024) | — | 1 | **sin revisar** |
-| [Dar y Jacob 2024](#dar-y-jacob-2024) | — | 1 | **sin revisar** |
-| [Dhesi 2024](#dhesi-2024) | — | 1 | **sin revisar** |
-| [Dos Santos 2024](#dos-santos-2024) | — | 1 | **sin revisar** |
-| [Edwards 2024](#edwards-2024) | — | 1 | **sin revisar** |
-| [Engert 2024](#engert-2024) | — | 1 | **sin revisar** |
-| [Farishta 2024](#farishta-2024) | — | 1 | **sin revisar** |
-| [Faruqi 2024](#faruqi-2024) | — | 1 | **sin revisar** |
-| [Ghanavatian y Derian 2024](#ghanavatian-y-derian-2024) | — | 1 | **sin revisar** |
-| [Gobillot-Morisson 2024](#gobillot-morisson-2024) | — | 1 | **sin revisar** |
-| [Greear 2024](#greear-2024) | — | 1 | **sin revisar** |
-| [Guo 2024](#guo-2024) | — | 1 | **sin revisar** |
-| [Hildebrand 2024](#hildebrand-2024) | — | 1 | **sin revisar** |
-| [Hospers 2024](#hospers-2024) | — | 2 | **sin revisar** |
-| [Humma y Patel 2024](#humma-y-patel-2024) | — | 1 | **sin revisar** |
-| [Hwang 2024](#hwang-2024) | — | 1 | **sin revisar** |
-| [Kim y Chen 2024](#kim-y-chen-2024) | — | 1 | **sin revisar** |
-| [Kim y Jang 2024](#kim-y-jang-2024) | — | 1 | **sin revisar** |
-| [Lacuesta 2024](#lacuesta-2024) | — | 1 | **sin revisar** |
-| [Leslie y Rout 2024](#leslie-y-rout-2024) | — | 1 | **sin revisar** |
-| [Leung 2024](#leung-2024) | — | 1 | **sin revisar** |
-| [Levy 2024](#levy-2024) | — | 1 | **sin revisar** |
-| [Mangone 2024](#mangone-2024) | — | 1 | **sin revisar** |
-| [McEvoy 2024](#mcevoy-2024) | — | 1 | **sin revisar** |
-| [McKeever 2024](#mckeever-2024) | — | 1 | **sin revisar** |
-| [Messineo 2024](#messineo-2024) | — | 1 | **sin revisar** |
-| [Miernik 2024](#miernik-2024) | — | 1 | **sin revisar** |
-| [Morris 2024](#morris-2024) | — | 1 | **sin revisar** |
-| [Mulla 2024](#mulla-2024) | — | 1 | **sin revisar** |
-| [Narayan 2024](#narayan-2024) | — | 1 | **sin revisar** |
-| [Oldfield 2024](#oldfield-2024) | — | 1 | **sin revisar** |
-| [Pannone y Abbott 2024](#pannone-y-abbott-2024) | — | 1 | **sin revisar** |
-| [Podder 2024](#podder-2024) | — | 1 | **sin revisar** |
-| [Rehman 2024](#rehman-2024) | — | 1 | **sin revisar** |
-| [Sangiorgio 2024](#sangiorgio-2024) | — | 1 | **sin revisar** |
-| [Scott 2024](#scott-2024) | — | 1 | **sin revisar** |
-| [Sibrack 2024](#sibrack-2024) | — | 1 | **sin revisar** |
-| [Simon 2024](#simon-2024) | — | 1 | **sin revisar** |
-| [Singh y Saadabadi 2024](#singh-y-saadabadi-2024) | — | 1 | **sin revisar** |
-| [Sizar 2024](#sizar-2024) | — | 1 | **sin revisar** |
-| [Spångeus 2024](#spångeus-2024) | — | 1 | **sin revisar** |
-| [Testa 2024](#testa-2024) | — | 1 | **sin revisar** |
-| [Wang 2024](#wang-2024) | — | 1 | **sin revisar** |
-| [Wong 2024](#wong-2024) | — | 1 | **sin revisar** |
-| [Yang 2024](#yang-2024) | — | 1 | **sin revisar** |
-| [Yasaei 2024](#yasaei-2024) | — | 1 | **sin revisar** |
-| [Zeng 2024](#zeng-2024) | — | 1 | **sin revisar** |
-| [ADA 2025](#ada-2025) | — | 1 | **sin revisar** |
-| [Alaranji y Reilly 2025](#alaranji-y-reilly-2025) | — | 1 | **sin revisar** |
-| [Alvarez 2025](#alvarez-2025) | — | 1 | **sin revisar** |
-| [Azmi 2025](#azmi-2025) | — | 1 | **sin revisar** |
-| [Bhanu 2025](#bhanu-2025) | — | 1 | **sin revisar** |
-| [Borsati 2025](#borsati-2025) | — | 1 | **sin revisar** |
-| [Boudreault 2025](#boudreault-2025) | — | 1 | **sin revisar** |
-| [Brunner 2025](#brunner-2025) | — | 1 | **sin revisar** |
-| [Calvo 2025](#calvo-2025) | — | 1 | **sin revisar** |
-| [Duman 2025](#duman-2025) | — | 1 | **sin revisar** |
-| [Ez Eddin 2025](#ez-eddin-2025) | — | 1 | **sin revisar** |
-| [Ferraro 2025](#ferraro-2025) | — | 1 | **sin revisar** |
-| [Fujiwara 2025](#fujiwara-2025) | — | 1 | **sin revisar** |
-| [Goyal 2025](#goyal-2025) | — | 1 | **sin revisar** |
-| [Hadji 2025](#hadji-2025) | — | 1 | **sin revisar** |
-| [He 2025](#he-2025) | — | 1 | **sin revisar** |
-| [Kalfas 2025](#kalfas-2025) | — | 1 | **sin revisar** |
-| [Leander 2025](#leander-2025) | — | 1 | **sin revisar** |
-| [Leslie y Foreman 2025](#leslie-y-foreman-2025) | — | 1 | **sin revisar** |
-| [Li y Zhang 2025](#li-y-zhang-2025) | — | 1 | **sin revisar** |
-| [Marko y Pawliczak 2025](#marko-y-pawliczak-2025) | — | 1 | **sin revisar** |
-| [McIver y Siddique 2025](#mciver-y-siddique-2025) | — | 1 | **sin revisar** |
-| [Mitchell 2025](#mitchell-2025) | — | 1 | **sin revisar** |
-| [Moncrieff 2025](#moncrieff-2025) | — | 1 | **sin revisar** |
-| [Moseley 2025](#moseley-2025) | — | 1 | **sin revisar** |
-| [Padda 2025](#padda-2025) | — | 1 | **sin revisar** |
-| [Patel y Launico 2025](#patel-y-launico-2025) | — | 1 | **sin revisar** |
-| [Patel y Preuss 2025](#patel-y-preuss-2025) | — | 1 | **sin revisar** |
-| [Pathak 2025](#pathak-2025) | — | 1 | **sin revisar** |
-| [Regina 2025](#regina-2025) | — | 1 | **sin revisar** |
-| [Ringer 2025](#ringer-2025) | — | 2 | **sin revisar** |
-| [Rissardo 2025](#rissardo-2025) | — | 1 | **sin revisar** |
-| [Rout 2025](#rout-2025) | — | 1 | **sin revisar** |
-| [Simon y Rout 2025](#simon-y-rout-2025) | — | 1 | **sin revisar** |
-| [Suenghataiphorn 2025](#suenghataiphorn-2025) | — | 1 | **sin revisar** |
-| [Wang 2025](#wang-2025) | — | 1 | **sin revisar** |
-| [Wang y Tariq 2025](#wang-y-tariq-2025) | — | 1 | **sin revisar** |
-| [Xia 2025](#xia-2025) | — | 1 | **sin revisar** |
-| [Zhou 2025](#zhou-2025) | — | 1 | **sin revisar** |
-| [Anastasopoulou y Goyal 2026](#anastasopoulou-y-goyal-2026) | — | 1 | **sin revisar** |
-| [Awosika y Patel 2026](#awosika-y-patel-2026) | — | 1 | **sin revisar** |
-| [Benzon 2026](#benzon-2026) | — | 1 | **sin revisar** |
-| [Bergh Fahlén 2026](#bergh-fahlén-2026) | — | 1 | **sin revisar** |
-| [Bhanu 2026](#bhanu-2026) | — | 1 | **sin revisar** |
-| [Biswas 2026](#biswas-2026) | — | 1 | **sin revisar** |
-| [Blyzniuk 2026](#blyzniuk-2026) | — | 2 | **sin revisar** |
-| [Chang 2026](#chang-2026) | — | 1 | **sin revisar** |
-| [Collins y Bergman 2026](#collins-y-bergman-2026) | — | 1 | **sin revisar** |
-| [Confederat 2026](#confederat-2026) | — | 1 | **sin revisar** |
-| [CTT 2026](#ctt-2026) | — | 1 | **sin revisar** |
-| [Devi 2026](#devi-2026) | — | 1 | **sin revisar** |
-| [Epelde 2026](#epelde-2026) | — | 1 | **sin revisar** |
-| [Fong y Patel 2026](#fong-y-patel-2026) | — | 1 | **sin revisar** |
-| [Grusky 2026](#grusky-2026) | — | 1 | **sin revisar** |
-| [Guan 2026](#guan-2026) | — | 1 | **sin revisar** |
-| [Harley 2026](#harley-2026) | — | 1 | **sin revisar** |
-| [Iqbal 2026](#iqbal-2026) | — | 1 | **sin revisar** |
-| [Jasti 2026](#jasti-2026) | — | 1 | **sin revisar** |
-| [Jobanputra 2026](#jobanputra-2026) | — | 1 | **sin revisar** |
-| [Kershner 2026](#kershner-2026) | — | 1 | **sin revisar** |
-| [Khayyat 2026](#khayyat-2026) | — | 1 | **sin revisar** |
-| [Kishi 2026](#kishi-2026) | — | 1 | **sin revisar** |
-| [Koldenhof 2026](#koldenhof-2026) | — | 1 | **sin revisar** |
-| [Lagina y Tripathy 2026](#lagina-y-tripathy-2026) | — | 1 | **sin revisar** |
-| [Levati 2026](#levati-2026) | — | 1 | **sin revisar** |
-| [Milbourn 2026](#milbourn-2026) | — | 1 | **sin revisar** |
-| [Moiz 2026](#moiz-2026) | — | 1 | **sin revisar** |
-| [Moon 2026](#moon-2026) | — | 1 | **sin revisar** |
-| [Ponna 2026](#ponna-2026) | — | 1 | **sin revisar** |
-| [Rangraze 2026](#rangraze-2026) | — | 1 | **sin revisar** |
-| [Rout y Afzal 2026](#rout-y-afzal-2026) | — | 1 | **sin revisar** |
-| [Rusu 2026](#rusu-2026) | — | 1 | **sin revisar** |
-| [Shamim 2026](#shamim-2026) | — | 1 | **sin revisar** |
-| [Sharma 2026](#sharma-2026) | — | 1 | **sin revisar** |
-| [Shrestha 2026](#shrestha-2026) | — | 1 | **sin revisar** |
-| [Sklepinski 2026](#sklepinski-2026) | — | 1 | **sin revisar** |
-| [Soura 2026](#soura-2026) | — | 1 | **sin revisar** |
-| [Srinivas-Shankar 2026](#srinivas-shankar-2026) | — | 1 | **sin revisar** |
-| [Thompson 2026](#thompson-2026) | — | 1 | **sin revisar** |
-| [Thour 2026](#thour-2026) | — | 1 | **sin revisar** |
-| [Tobaiqy y Alqutub 2026](#tobaiqy-y-alqutub-2026) | — | 1 | **sin revisar** |
-| [Tolla 2026](#tolla-2026) | — | 1 | **sin revisar** |
-| [Waseem 2026](#waseem-2026) | — | 1 | **sin revisar** |
-| [Weber 2026](#weber-2026) | — | 1 | **sin revisar** |
-| [Wu 2026](#wu-2026) | — | 1 | **sin revisar** |
-| [Yang 2026](#yang-2026) | — | 1 | **sin revisar** |
-| [Yuen 2026](#yuen-2026) | — | 1 | **sin revisar** |
-| [Zhang 2026](#zhang-2026) | — | 1 | **sin revisar** |
 | [Katz 1995](#katz-1995) | puntuación 4b · test 4b sin puntuar · razonamiento 4b · texto | 10 | 2026-10 · Sin cambios: sus datos (Romberg y dolor de muslo con 30 s de extensión) están en Cook 2019 (PDF del usuario), con riesgo de sesgo bajo y las mismas cifras; los dos tests de lu4 pasan a citar Cook 2019. Su patrón de referencia es el diagnóstico del médico experto, no la RM: se corrige en la cita. |
 | [Maffulli 1998](#maffulli-1998) | puntuación 4b · razonamiento 4b · texto | 6 | 2026-10 · Sin cambios en las cifras: PDF leído entero (2026-10). Tabla 1: Thompson positivo en 128 de 133 roturas operadas (S 96 %), hueco palpable con el paciente despierto en 97 de 133 (S 73 %); tabla 3: 26 de 28 controles sin rotura (los 2 dudosos contados como falsos positivos). Diseño de casos y controles (casos por diagnóstico clínico; controles descartados clínicamente por el autor antes de la ecografía o la RM): se añade como límite en tp3, que sigue puntuando (decisión del usuario). PubMed (2026-10): ninguna revisión posterior de la exploración clínica de la rotura del Aquiles. |
 | [Devillé 2000](#devillé-2000) | puntuación 4b | 2 | 2026-10 · Sustituida por van der Windt 2010 (revisión Cochrane del mismo grupo, con Devillé como autor; PDF del usuario): SLR y SLR cruzado de lu3 pasan a sus cifras agrupadas con LR publicadas. Se menciona como dato anterior. |
@@ -711,7 +715,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Grondin 2026](#grondin-2026) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 | 3 | 2026-10 · Añadida: texto completo leído en PMC (2026-10). Misma cohorte que Grondin 2021 (85 pacientes consecutivos, 27 con radiculopatía; neurocirujano con RM). Tabla 2: ULNT1 LR+ 2,46, LR− 0,54; 1 de 4 ULNT positivo LR− 0,08; SART pasiva modificada LR+ 2,05, LR− 0,36; Spurling con dolor de brazo LR+ 34,4. Sustituye a Grondin 2021 como fuente leída de esa cohorte (el PDF de Grondin 2021 no estaba disponible). |
 | [Thoomes 2026](#thoomes-2026) | puntuación 4b · test 4b sin puntuar · razonamiento fase 4 | 6 | 2026-10 · Sin cambios en las cifras: texto completo y tabla 3 (figura) leídos en Europe PMC (2026-10). Las cifras de ULNT1, SART y la combinación de 4 ULNT coinciden con su tabla 4. Modelo bivariante (GLMM) que, con k ≤ 3, se interpreta como de efecto fijo (los autores avisan de que solo vale para esas poblaciones). La SART agrupa Sleijser-Koehorst 2021 (riesgo bajo; LR+ 1,88 por sí solo) y Viikari-Juntura 1989 (riesgo alto, cuenta lados: la fila dice n = 13 y las celdas suman 28); por eso la SART pasa a hallazgo (decisión del usuario). El ULNT1 se mantiene (decisión del usuario): sus 3 estudios usan diferenciación estructural y clínica más RM como referencia; Albert-Lucena 2025, con estudios de EMG o conducción nerviosa y sin diferenciación estructural, da LR+ 1,51 y LR− 0,53. Revisiones posteriores: Albert-Lucena 2025 (leída), Lin 2025 sobre el Spurling (bivariante aleatorio, 8 estudios; solo el resumen, PDF no disponible) y Shen 2023 sobre el ULNT1 (solo el resumen). |
 | [Rudwaleit 2006](#rudwaleit-2006) | cribado fase 2 · razonamiento fase 2 | 5 | 2026-10 · Añadida (PDF del usuario, leído entero): es el estudio de origen del criterio de dolor lumbar inflamatorio del cribado lumbar (Goodman 2018, cap. 14, da las mismas cifras). Tabla 5: con 2 de 4 (rigidez matutina de más de 30 minutos, mejora con el ejercicio y no con el reposo, despertar en la segunda mitad de la noche, dolor glúteo alternante), S 70,3 %, E 81,2 %, LR+ 3,7; con 3 o 4, S 33,6 %, E 97,3 %, LR+ 12,4 (IC 4,0–39,7). Estudio exploratorio sin validación: 213 menores de 50 años con dolor lumbar de más de 3 meses (101 con espondilitis anquilosante ya establecida, media de 12,9 años de dolor, y 112 con lumbalgia mecánica), muestra de conveniencia no consecutiva; los propios autores piden validarlo en la enfermedad precoz. |
-| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · plan de tratamiento · texto | 190 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
+| [Goodman 2018](#goodman-2018) | cribado fase 2 · razonamiento fase 2 · plan de tratamiento · guía de fármacos (cabecera) · texto | 190 | 2026-10 · Sin cambios en las citas, que siguen en la 6.ª edición (2018), la leída: existe una 7.ª, «Goodman and Snyder's Differential Diagnosis for Physical Therapists» (Heick y Lazaro, Elsevier, 2022 en línea y 2023 impresa, ISBN 9780323722049), sin cotejar; se cotejará región a región si se consigue (decisión del usuario, 2026-10). El «Criterio de Goodman» del cribado lumbar (cap. 14, p. 535, leído en PDF del usuario) cita la revisión de Braun e Inman 2010 (ref. 92, no leída), y sus cifras coinciden con las de Rudwaleit 2006, el estudio de origen del criterio; pasa a citar Rudwaleit 2006 con sus cifras exactas (tabla 5) y sus límites. El corte de 45 años es de Goodman (Rudwaleit estudió menores de 50). |
 | [Consenso de Zúrich IHiPRN](#consenso-de-zúrich-ihiprn) | pauta · tiempos de tejido · texto | 5 | 2026-10 · Sin cambios: PubMed (SIFA y fisioterapia, consensos y revisiones desde 2022) no encuentra un consenso posterior del IHiPRN; el ensayo PhysioFIRST (Kemp 2026) se suma a la pauta de ca2 sin contradecirlo. |
 | [NICE NG226](#nice-ng226) | pauta · test 4b sin puntuar · razonamiento fase 4 · plan de tratamiento | 12 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), la guía sigue siendo la de 2022, sin actualizaciones. Respalda el diagnóstico clínico de ro1 (sin S ni E; no puntúa) y su pauta (recomendaciones 1.3.1–1.3.11). Releídas 1.1.1–1.1.2 y 1.3.1–1.3.11 en la sesión de las pautas de tobillo y pie (2026-10): pauta de tp24 y h10 y notas de los avisos artrosisTobillo y artrosis (la terapia manual, solo en cadera y rodilla, 1.3.6). |
 | [NICE NG59](#nice-ng59) | pauta · pronóstico | 9 | 2026-10 · Sin cambios: nice.org.uk leído (2026-10), última actualización 29 de julio de 2026; las recomendaciones citadas (1.2.1, 1.2.6, 1.2.7 —corregida en 2026—, 1.3.1–1.3.3 y 1.3.6) dicen lo que recoge la app. |
@@ -834,7 +838,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Williams 2025](#williams-2025) | test 4b sin puntuar · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: texto completo leído en PMC (2026-10). PAIVM frente a bloqueo de rama medial: S 0,90 (0,85–0,94), E 0,73 (0,65–0,81), de una de sus revisiones de calidad alta; coincide con ce1. La prueba de extensión-rotación para el dolor facetario (S 0,83, E 0,59, LR+ 2,01, LR− 0,29) no se añade a ce14, cuya diana no es la faceta. |
 | [Grimaldi 2026](#grimaldi-2026) | test 4b sin puntuar | 5 | 2026-10 · Sin cambios: es de 2026 y PubMed no encuentra nada posterior sobre pinzamiento isquiofemoral o dolor glúteo bajo. |
 | [Halliwell 2026](#halliwell-2026) | test 4b sin puntuar | 1 | 2026-10 · Sin cambios: S 94 %, E 100 %, AUC 0,879 comprobadas en el resumen; sigue como hallazgo. |
-| [Menon y Rednam 2026](#menon-y-rednam-2026) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 | 4 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 12 de abril de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Menon y Rednam 2026](#menon-y-rednam-2026) | test 4b sin puntuar · razonamiento fase 2 · razonamiento fase 4 · guía de fármacos (cabecera) | 4 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 12 de abril de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Deeb y Maher 2026 (Raynaud)](#deeb-y-maher-2026-raynaud) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [NICE CG147](#nice-cg147) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: nice.org.uk consultado (2026-10): publicada el 8 de agosto de 2012, última actualización el 11 de diciembre de 2020. |
 | [NICE NG12](#nice-ng12) | razonamiento fase 2 | 5 | 2026-10 · Leída en nice.org.uk (2026-10), última actualización 15 de abril de 2026. |
@@ -854,7 +858,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Finucane 2020](#finucane-2020) | razonamiento fase 2 · plan de tratamiento | 21 | 2026-10 · Sin cambios: PubMed (autor Finucane LM, «red flags») no encuentra una versión posterior del marco IFOMPT. |
 | [Galliker 2020](#galliker-2020) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: PubMed (banderas rojas en lumbalgia en urgencias, revisiones desde 2020) no encuentra ninguna posterior. |
 | [Kim y Chang 2021](#kim-y-chang-2021) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: búsqueda en PubMed (2026-10); leídas enteras en Europe PMC dos fuentes posteriores en acceso abierto: Fares 2026 (Clin Shoulder Elb 29:161–169, revisión narrativa, doi 10.5397/cise.2025.00885) y Holle 2026 (Muscle Nerve 73:56–62, datos de un seguro alemán, doi 10.1002/mus.70059). Coinciden con lo que usa h_n1: infradiagnóstico (incidencia codificada 10,3 por 100 000 frente a unos 100 por 100 000 en el estudio prospectivo de atención primaria, es decir, en torno a 1 por 1000), dolor brusco a menudo nocturno seguido de debilidad y atrofia en parches, desencadenantes (infección, vacuna, cirugía, esfuerzo) y confusión con la patología del manguito y la radiculopatía cervical. La revisión de Gabet 2025 (Muscle Nerve) no se pudo conseguir. |
-| [Klepinowski 2021](#klepinowski-2021) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: PubMed (quiste de Tarlov, metaanálisis de prevalencia) no encuentra otro metaanálisis. |
+| [Klepinowski 2021](#klepinowski-2021) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | 2026-10 · Sin cambios: PubMed (quiste de Tarlov, metaanálisis de prevalencia) no encuentra otro metaanálisis. |
 | [Cabre 2022](#cabre-2022) | razonamiento fase 2 | 1 | 2026-10 · Complementada: el consenso del COI de 2023 (Mountjoy 2023, Br J Sports Med, PDF del usuario) actualiza el marco: REDs en ambos sexos y la fractura de estrés del sacro o la pelvis como de alto riesgo. Se añade a `l_e6`; la cifra de 4,5 veces más lesiones óseas sigue citando Cabre. |
 | [Goodfriend 2022](#goodfriend-2022) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de diciembre de 2022 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Kalakonda 2022](#kalakonda-2022) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de septiembre de 2022 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -883,7 +887,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [LaPelusa y Dave 2023](#lapelusa-y-dave-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de mayo de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leib 2023](#leib-2023) | razonamiento fase 2 · razonamiento fase 4 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de agosto de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Leslie 2023](#leslie-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 4 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Malik 2023](#malik-2023) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Malik 2023](#malik-2023) | razonamiento fase 2 · guía de fármacos (cabecera) | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 5 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Malik y Herron 2023](#malik-y-herron-2023) | razonamiento fase 2 · tiempos de tejido | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 22 de abril de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [May y Marappa-Ganeshan 2023](#may-y-marappa-ganeshan-2023) | razonamiento fase 2 · razonamiento fase 4 · tiempos de tejido · plan de tratamiento | 12 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 10 de julio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [McClary y Massey 2023](#mcclary-y-massey-2023) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 16 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -913,7 +917,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Waheed 2023](#waheed-2023) | razonamiento fase 2 · plan de tratamiento | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Wenker y Quint 2023](#wenker-y-quint-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 20 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Ziu 2023](#ziu-2023) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 1 de junio de 2023 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Antunes 2024](#antunes-2024) | razonamiento fase 2 | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Antunes 2024](#antunes-2024) | razonamiento fase 2 · guía de fármacos (cabecera) | 6 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 17 de agosto de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Belyayeva 2024](#belyayeva-2024) | razonamiento fase 2 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 28 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Bodman 2024](#bodman-2024) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 25 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Brotman 2024](#brotman-2024) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 12 de febrero de 2024 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -957,7 +961,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Pangia 2025](#pangia-2025) | razonamiento fase 2 · plan de tratamiento | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Patel 2025](#patel-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 3 de mayo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Shams 2025](#shams-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 26 de febrero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Shaw 2025](#shaw-2025) | razonamiento fase 2 | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
+| [Shaw 2025](#shaw-2025) | razonamiento fase 2 · guía de fármacos (cabecera) | 3 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 19 de enero de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Suha 2025](#suha-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de diciembre de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Tavakoli 2025](#tavakoli-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 6 de abril de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Vadakekut y Gnugnoli 2025](#vadakekut-y-gnugnoli-2025) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 27 de marzo de 2025 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -974,7 +978,7 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Jogu 2026](#jogu-2026) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 15 de mayo de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Mabrouk y Pilson 2026](#mabrouk-y-pilson-2026) | razonamiento fase 2 · tiempos de tejido | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 14 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Mabrouk y Siwiec 2026](#mabrouk-y-siwiec-2026) | razonamiento fase 2 · razonamiento fase 4 | 2 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 15 de febrero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
-| [Mačionienė 2026](#mačionienė-2026) | razonamiento fase 2 | 2 | 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior. |
+| [Mačionienė 2026](#mačionienė-2026) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | 2026-10 · Sin cambios: publicada en 2026; no se buscó literatura posterior. |
 | [Menon y Cassaro 2026](#menon-y-cassaro-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 13 de septiembre de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Moore y Tafti 2026](#moore-y-tafti-2026) | razonamiento fase 2 | 1 | 2026-10 · Sin cambios: el capítulo sigue en su versión del 15 de febrero de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
 | [Sabry y Li 2026](#sabry-y-li-2026) | razonamiento fase 2 · razonamiento fase 4 | 4 | 2026-10 · Sin cambios: el capítulo de StatPearls no se ha actualizado desde el 25 de marzo de 2026 (fecha del documento en PubMed, consultada en 2026-10). |
@@ -1025,6 +1029,52 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Leschinger 2017](#leschinger-2017) | razonamiento 4b · texto | 2 | 2026-10 · Añadida (2026-10): los dos artículos leídos enteros (el de Eur J Orthop Surg Traumatol, PDF del usuario, DOI 10.1007/s00590-017-1919-7; el de Biomed Res Int, en PMC, DOI 10.1155/2017/2941238; los dos comprobados en Crossref). RM abierta de 1,0 T en 37 sanos de 20–30 años, en decúbito y con férulas de yeso. En Neer (170° de flexión), contacto del supraespinoso con el acromion en 25 (14 sin y 11 con deformación) y con el glenoides posterosuperior en 30 (tabla 1 del segundo). Su posición de Hawkins lleva solo 15° de rotación interna, no la forzada del test: no se usa para el Hawkins (decisión del usuario, 2026-10). Errores internos: el resumen del segundo da 33 contactos del subescapular en Hawkins y su tabla 3, 25 (el 33 es el de Neer); el primero da distintas cifras de deformación del supraespinoso en Neer en resultados y discusión. Solo se citan las cifras que cuadran. |
 | [Pedersen 2017](#pedersen-2017) | razonamiento 4b · texto | 3 | 2026-10 · Añadida: texto completo leído en PMC (2026-10). Serie de casos de 64 artroscopias (60 pacientes) con resección de la plica radiohumeral; indicación por palpación dolorosa de la plica, ecografía y test de flexión-pronación positivo (la plica pasa por encima de la cabeza del radio). No es un estudio de precisión diagnóstica. Advierte de que el test y la ecografía no bastan para indicar la cirugía. |
 | [Couch 2025](#couch-2025) | razonamiento 4b · texto | 2 | 2026-10 · Sin cambios: es la revisión sistemática más reciente de la crepitación de rodilla (búsqueda hasta marzo de 2024; PubMed, 2026-10, nada posterior). |
+| [Petersen y Pedersen 2005](#petersen-y-pedersen-2005) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). Revisión narrativa invitada, sin método de búsqueda; humanos, ratones y células. IL-6 plasmática hasta 100 veces con el ejercicio, según intensidad, duración, masa muscular y glucógeno; después IL-1ra e IL-10; la infusión de IL-6 frena el TNF-α inducido por endotoxina en humanos. El vínculo entre el efecto agudo y el beneficio a largo plazo «no está demostrado» según los propios autores. Nada sobre dolor ni enfermedades musculoesqueléticas. |
+| [Khan y Scott 2009](#khan-y-scott-2009) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin figuras ni referencias numeradas). Texto breve de explicación y opinión: define la mecanotransducción en tres pasos y propone el término «mecanoterapia». Los pasos están bastante resueltos en el hueso y quedan elementos desconocidos en músculo, tendón y cartílago. Sus ejemplos clínicos son débiles (un ensayo de 21 pacientes con fractura de radio distal, una serie de casos en cartílago), y la parte de músculo se basa en estudios animales. |
+| [Gleeson 2011](#gleeson-2011) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). Revisión narrativa. El efecto antiinflamatorio del ejercicio regular se atribuye a menos grasa visceral y a un efecto en cada sesión; no se sabe cuánto pesa cada uno, y con ejercicio suave pesaría sobre todo la grasa. La IL-6 vuelve al reposo en 1 h y no sube con ejercicio corto de intensidad baja o moderada. Paradoja del deportista de élite: cargas muy altas, más infecciones leves. Advierte de que muchas medidas son solo en sangre periférica o in vitro. |
+| [Howe 2011](#howe-2011) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario en dos partes, leído entero; el texto de PMC llegaba vacío). 43 ensayos, 4320 mujeres posmenopáusicas sanas de 45–70 años. Densidad (diferencia de % de cambio): columna 0,85 (24 ensayos, GRADE alta), trocánter 1,03 (10, alta), cuello femoral −0,08 y cadera total 0,41, no significativos. Por tipo: fuerza progresiva, columna 0,86 y cuello femoral 1,03; fuerza de baja carga, nada; caminar y tai chi, columna 0,87; combinado, columna 3,22. Fracturas: OR 0,61 (0,23–1,64), 4 ensayos, 17 frente a 24, no significativo (GRADE alta); con combinado, OR 0,33 (0,13–0,85), dos ensayos, uno con el 89 % del peso. Caídas y efectos adversos registrados sobre todo en los grupos de ejercicio. Discrepancias internas menores entre texto y tablas, anotadas sin cambiar las cifras citadas. |
+| [Naugle 2012](#naugle-2012) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; las tablas no venían). 25 estudios, 622 participantes; dolor experimental, no el dolor clínico del paciente. En sanos, efecto moderado del aeróbico y grande del isométrico y la resistencia dinámica, sobre todo con estímulos de presión y transitorio (hasta unos 15 min). En dolor crónico, efecto muy variable según la condición y la intensidad; hiperalgesia en fibromialgia con ejercicio moderado o intenso. Isométrico: efecto similar en la zona contraída y a distancia. Mecanismos: el apoyo constante a los opioides viene de animales; en humanos, resultados mixtos. Pocos estudios con condición control, solo publicados. La revisión posterior con solo ensayos aleatorizados (Wewege y Jones 2021) no encuentra efecto con el isométrico y atribuye la diferencia a los diseños sin control de esta. |
+| [Pedersen y Febbraio 2012](#pedersen-y-febbraio-2012) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). Revisión narrativa; humanos, ratones y cultivos. La IL-6, primera mioquina: hasta 100 veces con el ejercicio (lo habitual, menos), sin daño muscular, independiente del TNF, más con poco glucógeno; papel probablemente más metabólico que inflamatorio. El entrenamiento aeróbico baja la IL-6 basal y la subida en cada sesión. Campo «nuevo»; IL-15 y otras mioquinas sin confirmar. |
+| [Ho 2013](#ho-2013) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). Ensayo aleatorizado de 12 semanas en sobrepeso y obesidad (97 reclutados, 64 terminaron): control, aeróbico, fuerza o combinado, 30 min 5 días por semana a intensidad moderada. El TNF-α bajó dentro de cada grupo de ejercicio y frente al control solo con el combinado (−22,6 %); la IL-6 no cambió. Marcadores casi normales al inicio; el control tomó un suplemento placebo. |
+| [Messier 2013](#messier-2013) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Ensayo IDEA, 454 personas con artrosis de rodilla y sobrepeso, 18 meses: dieta, ejercicio o ambos, sin grupo sin intervención. La IL-6 bajó más con la pérdida de peso que con el ejercicio solo; el dolor mejoró más con dieta y ejercicio (1,02 puntos WOMAC frente a ejercicio), de importancia clínica incierta según los autores. Sin potencia para las diferencias de IL-6 encontradas; adherencia al ejercicio del 54 % a los 18 meses. Una frase del texto («increased… inflammation» en el grupo de ejercicio) no casa con su tabla; no se cita. |
+| [Albrecht 2015](#albrecht-2015) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Cuatro anticuerpos comerciales con reacciones cruzadas con otras proteínas; dos kits ELISA difirieron 18 veces y sin correlación (r = 0,034); sin irisina detectable por western blot en humanos ni en varias especies. Pone en duda todo lo medido con ELISA comerciales y la llama «un mito»; admite que concentraciones muy bajas podrían tener actividad. Contradicho por Jedrychowski 2015. |
+| [Benatti y Pedersen 2015](#benatti-y-pedersen-2015) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario, leído entero; publicada en línea en 2014). Revisión narrativa con búsqueda en MEDLINE. En artritis reumatoide, lupus, espondilitis anquilosante, esclerosis sistémica y miopatías, el entrenamiento aeróbico y de fuerza mejora capacidad, fuerza y función referida sin brotes ni subida de PCR o VSG; marcadores y citocinas en reposo, sin cambio o con mejoras leves. Datos «todavía preliminares» según los autores. Cautela: con daño articular extenso al empezar, la fuerza de alta intensidad puede aumentar el daño. Ejercicio y endotoxina: 3 h de bicicleta impidieron la subida de TNF en voluntarios sanos. |
+| [Bohm 2015](#bohm-2015) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin tablas ni figuras). 27 estudios, 37 intervenciones, 264 adultos sanos de 18–50 años (237 varones), solo Aquiles y rotuliano. Rigidez SMD 0,70, módulo 0,69, área 0,24. Intensidad alta (más del 70 % de la contracción máxima) frente a baja: 0,90 frente a 0,04 en rigidez (27 frente a 5 intervenciones). Muestras de 6–15 personas; riesgo de sesgo bajo solo en 3 intervenciones. No mide dolor ni función. |
+| [Fu y Levine 2015](#fu-y-levine-2015) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero sin figuras). Revisión narrativa del grupo de Levine: corazón pequeño y volumen de sangre bajo; 3 meses de entrenamiento, empezando tumbado o semirreclinado, aumentaron el VO2 (8 %), la masa del ventrículo izquierdo (12 %) y el volumen de sangre (6 %); el 53 % de quienes completaron dejó de cumplir criterios, en estudios sin control aleatorizado y con sal y agua añadidas. |
+| [Jedrychowski 2015](#jedrychowski-2015) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Espectrometría de masas con cuantificación absoluta en plasma de 10 voluntarios: irisina ~3,6 ng/ml en sedentarios y ~4,3 ng/ml con entrenamiento aeróbico por intervalos; traducida sobre todo desde un codón de inicio no canónico. Cifras probablemente algo infraestimadas según los autores. Contradice a Albrecht 2015. |
+| [Franchi 2017](#franchi-2017) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero con sus tablas; sin figuras). Revisión narrativa en adultos jóvenes sanos: con la misma carga máxima o el mismo trabajo, excéntrico y concéntrico dan una hipertrofia muy parecida; cambia la arquitectura (más longitud de fascículo con excéntrico). La tensión mecánica se presenta como factor establecido de la hipertrofia. Sin valoración formal del riesgo de sesgo. |
+| [Geneen 2017](#geneen-2017) | guía de efectos del ejercicio (cabecera) | 2 | 2026-10 · Añadida (texto completo en PMC, leído entero salvo las tablas de características de cada revisión). 21 revisiones Cochrane, 381 estudios, 37 143 participantes; 264 estudios comparan ejercicio con nada o intervención mínima. Efectos de pequeños a moderados en dolor y función, inconsistentes; calidad baja (su propio sistema de «tiers», tercer nivel; sin GRADE ni tabla de resumen). Efectos adversos solo registrados en el 25 % de los estudios: sobre todo agujetas o dolor muscular que cedieron en unas semanas; el ejercicio no empeoró el dolor. |
+| [Harding y Beck 2017](#harding-y-beck-2017) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin tablas ni figuras). Revisión narrativa de ejercicio y geometría ósea con imagen 3D, sin evaluar el riesgo de sesgo. Parámetros del estímulo (magnitud, velocidad, variedad, pocos ciclos, carga dinámica) sacados sobre todo de modelos animales. Caminar, poco eficaz para la densidad. Pocos ensayos de calidad sobre geometría; las personas con osteoporosis suelen estar excluidas. |
+| [Magnusson y Kjaer 2019](#magnusson-y-kjaer-2019) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario, manuscrito aceptado, leído entero con su figura y tabla; el texto de PMC llegaba vacío). Revisión narrativa. Núcleo del Aquiles sin renovación de colágeno tras los 17 años (carbono 14). Inmovilización de 2–3 semanas: síntesis de colágeno un 80 % menor en jóvenes y mayores; 1–2 semanas de descarga «parecen» reducir la rigidez sin cambiar el área. Tendinopatía: la carga es eficaz y el excéntrico aislado no ha demostrado ser superior. Tras rotura del Aquiles, respuesta a la carga lenta, no normalizada hasta 6–12 meses. Sin recomendaciones de dosis. |
+| [Polaski 2019](#polaski-2019) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Reanálisis de 75 ensayos de Geneen 2017 sobre la dosis del ejercicio regular (no la hipoalgesia de una sesión, pese al título). Evidencia insuficiente de un efecto dosis; única correlación significativa, duración y efecto en dolor cervical (8 estudios). El modelo multivariante (43 estudios) predice más efecto con más sesiones por semana: una predicción para diseñar ensayos, no un resultado. Riesgo de sesgo alto en más del 75 % de los estudios. |
+| [Rice 2019](#rice-2019) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario, manuscrito aceptado, leído entero con sus tablas). Revisión narrativa, sin valorar el riesgo de sesgo. Hipoalgesia variable y más a menudo alterada en dolor crónico, sobre todo en dolor generalizado; falla más con sensibilidad al dolor generalizada o modulación condicionada deficiente (preliminar). Ejercitar zonas no dolorosas puede seguir dándola (interpretación de los autores). Opioides: antagonistas con efecto nulo o escaso; endocannabinoides con datos en humanos y animales. Intensidad elegida frente a prescrita: casi sin diferencia. Factores psicosociales asociados en sanos, no en dolor crónico. Fiabilidad entre sesiones de la hipoalgesia solo regular (CCI 0,45). Brote de dolor tras el ejercicio como barrera para la adherencia; educación en neurociencia del dolor como propuesta, sin demostrar en dolor crónico. |
+| [Hart 2020](#hart-2020) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; la tabla 2 sin valores y sin figuras). Revisión narrativa de fisiología y medición, no de intervenciones. Osteocitos como sensores; la relación entre carga y adaptación «sigue sin entenderse bien». Inmovilización sin lesión: unos 2 % de densidad al mes; con lesión o parálisis completa, unos 7 %; la recuperación es más lenta que la pérdida. La densidad no predice la fractura en cada persona. Recomienda 6–12 meses como mínimo para valorar cambios con densitometría (opinión de los autores). |
+| [Severinsen y Pedersen 2020](#severinsen-y-pedersen-2020) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Revisión narrativa; humanos, roedores y cultivos. Más de 650 mioquinas, función descrita para un 5 %; la IL-6 es la mejor respaldada en humanos (infusión: lipólisis, IL-1ra, IL-10, menos TNF). Tocilizumab anuló la pérdida de grasa visceral del entrenamiento. BDNF muscular no pasa a la sangre; catepsina B: no se sabe si media efectos cognitivos; irisina «controvertida» por los ELISA. Sin datos de dolor ni cartílago. |
+| [Vaegter y Jones 2020](#vaegter-y-jones-2020) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; las tablas 1 y 2 solo en parte). Revisión narrativa. En sanos, una sesión sube el umbral de dolor a la presión un 15–20 % frente al reposo, de 5 a 30 min. En dolor crónico, hipoalgesia, ninguna o hiperalgesia (más en dolor generalizado y con mucha sensibilidad al dolor). Ejercitar una zona que no duele produjo hipoalgesia donde la zona dolorosa no (mialgia de hombro, artrosis de rodilla). Opioides y endocannabinoides: resultados equívocos en humanos. Estudios pequeños, a menudo sin control: probablemente sobrestiman el efecto. Sus recomendaciones clínicas, como algo que «puede merecer la pena considerar». Algunos datos citados están sin publicar. |
+| [Cosio 2021](#cosio-2021) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Metaanálisis de 7 ensayos (282 personas), fuerza ≥8 semanas, irisina por ELISA: aumento no significativo (d = 0,58; −0,25 a 1,40), I² 90 %, sesgo de publicación (0,34 tras ajustar). Subgrupos: mayores y fuerza progresiva al 61–85 %. Los autores piden interpretar con cautela todo lo medido con ELISA hasta validar los anticuerpos. |
+| [Nara y Watanabe 2021](#nara-y-watanabe-2021) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Revisión narrativa centrada en el metabolismo lipídico del hígado. Por qué la IL-6 del músculo actúa distinto de la de la inflamación «no está claro»; se especula que depende de la señalización (sIL-6R, sgp130). Gran parte de los datos, de ratones y células C2C12; incluye datos propios no publicados. |
+| [Wewege y Jones 2021](#wewege-y-jones-2021) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario, manuscrito aceptado, leído entero con figuras y tabla 1; sin los suplementos ni su tabla GRADE). Solo ensayos aleatorizados con condición control y dolor experimental; 13 estudios. Sanos: aeróbico efecto grande (7 estudios, 236 participantes; g −0,85, IC −1,58 a −0,13), fuerza dinámica pequeño (2, 23; g −0,45) y no significativo al bajar la correlación, isométrico sin efecto (3, g −0,16, IC −0,36 a 0,05). Dolor musculoesquelético crónico: isométrico sin efecto (3 estudios, 114; g −0,41, IC −1,08 a 0,25), sin estudios aeróbicos. Calidad muy baja, riesgo de sesgo poco claro, probable sesgo de publicación en sanos. Discrepancias internas menores entre resumen, texto y figuras (participantes del isométrico en sanos, I², un IC), anotadas sin cambiar las cifras citadas. Publicado en línea en 2020. |
+| [Xie 2021](#xie-2021) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin figuras). Adultos sin enfermedad, 22 ECA: PSQI −2,19 puntos, ISI −1,52; con actigrafía solo mejora la eficiencia del sueño (+1,22 %), no la duración ni la latencia. Riesgo de sesgo alto en todos (sin cegamiento); sin GRADE. |
+| [Balchin 2022](#balchin-2022) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Revisión sistemática sin metaanálisis: 11 estudios (5 ensayos, 6 observacionales), 274 personas. Una sesión aeróbica, de fuerza o combinada no pareció empeorar el dolor en la artritis reumatoide; la IL-6 sube tras el ejercicio y vuelve a la basal a las 24 h, con resultados inconsistentes entre estudios. Mucha heterogeneidad, muestras pequeñas, inflamación basal baja; los autores no sacan una conclusión firme. |
+| [Lazarczuk 2022](#lazarczuk-2022) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin tablas, figuras ni suplemento). 61 estudios, 763 participantes, calidad PEDro mediana 4 de 8. Rigidez SMD 0,74, módulo 0,82, área 0,22; fuerza 0,80, saltos 0,49, aeróbico sin efecto (un estudio). Sin diferencias significativas por intensidad relativa (discrepa de Bohm 2015), sí con deformación alta (~5 %, tres estudios). Menor adaptación en mayores. Avisa de no extrapolar a tendones con tendinopatía. |
+| [Lim 2022](#lim-2022) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin figuras). Revisión narrativa de mecanismos, sin dosis. En humanos, los cambios hormonales agudos no explican la hipertrofia, ningún metabolito ha demostrado causarla y el daño muscular es un mal indicador. Las personas mayores ganan fuerza casi siempre con el entrenamiento, con menos hipertrofia que los jóvenes. Gran parte de lo celular (YAP, titina) es animal o in vitro. |
+| [Coburn 2023](#coburn-2023) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin figuras ni suplemento). 40 estudios, 653 participantes; cambios agudos del cartílago con resonancia: reducciones de 0–5 % tras caminar, saltar, flexiones de rodilla o bicicleta, recuperadas en 15–90 min. Certeza muy baja; 9 de 40 estudios con riesgo de sesgo bajo; media de 17 participantes. No mide adaptación crónica ni dolor. |
+| [Lima 2023](#lima-2023) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). 9 análisis de mediación, todos en artrosis de rodilla: la autoeficacia medió en parte el efecto de dieta más ejercicio (Mihalko 2019) y, según el texto pero no la tabla, del ejercicio solo (Rejeski 1998); la fuerza del cuádriceps medió en parte el del ejercicio (Hall 2018). Mediador y resultado medidos a la vez: no permite afirmar causalidad. |
+| [Singh 2023](#singh-2023) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero con las tablas 1–3, sin suplementos). 97 revisiones, 1039 ECA. Mediana SMD depresión −0,43 y ansiedad −0,42; en artritis, depresión −0,40. Más efecto con más intensidad y con programas más cortos (lo segundo, contraintuitivo según los autores). 77 de 97 revisiones con confianza AMSTAR-2 críticamente baja. |
+| [Bettariga 2024](#bettariga-2024) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Metaanálisis de 62 estudios, 1193 adultos sanos, una sesión de ejercicio. Irisina, aumento pequeño a los 60 min (DME 0,38; 0,05–0,71); SPARC, inmediato (0,50; 0,01–0,99); IL-15, oncostatina M y decorina sin cambio significativo; vuelta al nivel basal en 3–24 h; sin diferencia entre aeróbico y fuerza. Sin escala de riesgo de sesgo validada para estudios agudos; sesgo de publicación en IL-15. Los autores: no se pueden sacar conclusiones precisas. |
+| [Gardashli 2024](#gardashli-2024) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC; secciones 3–7 leídas enteras, 1–2 solo barridas por no tratar la carga). Revisión narrativa, sobre todo animal e in vitro; propone una respuesta «en U» del cartílago a la carga como hipótesis. Una frase de su discusión sobre la carrera de baja intensidad no la sostienen los datos que cita. |
+| [Noetel 2024](#noetel-2024) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin suplementos ni tabla CINeMA). Depresión mayor, 218 estudios, 14 170 participantes. Frente a control activo: caminar o correr g −0,63, yoga −0,55, fuerza −0,49, aeróbico mixto −0,43, tai chi −0,42; más efecto cuanto más intenso, aunque la actividad ligera sigue siendo relevante (g −0,58). Confianza CINeMA baja (caminar) o muy baja (resto); solo un estudio con riesgo de sesgo bajo. Mecanismos no aclarados: hipótesis de los autores. |
+| [Silva 2024](#silva-2024) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Metaanálisis de 24 ensayos en sedentarios sin diabetes (18–64 años), entrenamiento combinado de unas 12 semanas. Bajan TNF-α (DME −0,97) y PCR (−0,51); IL-6 sin cambio (−0,51; IC −1,27 a 0,25; I² 87 %). Riesgo de sesgo: 3 bajo, 18 algunas dudas, 3 alto. Los autores piden cautela por los pocos estudios con citocinas y porque pocos dijeron cuándo se sacó la sangre. |
+| [Ziaks 2024](#ziaks-2024) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero sin figuras). Propuesta de expertos (programa Utah ADaPT), pendiente de validar: empezar por debajo del umbral de síntomas (+15–20 lpm o esfuerzo 2/10), progresar por criterios del paciente, cribar el malestar postesfuerzo. Sin datos de eficacia. |
+| [Chen 2025](#chen-2025) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero con sus tablas; sin figuras). 18 estudios, 297 voluntarios sanos de 23–33 años, casi todos varones, en reposo en cama a −6°. Fuerza durante el reposo: volumen muscular g 0,84 y fuerza g 2,26 (GRADE alta), área g 0,95 (moderada; 0,73 tras corregir el sesgo de publicación), contenido mineral óseo g 0,73 (moderada). Algunas cifras de subgrupos no cuadran (anotado; no se citan). No incluye pacientes ni inmovilización de una extremidad. |
+| [Cortez 2025](#cortez-2025) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero sin tablas). Revisión sistemática, 7 estudios (2 aleatorizados), riesgo de sesgo moderado-alto en todos menos uno, sin GRADE ni metaanálisis; mejoras en FC en todos y en calidad de vida en los 4 que la midieron (antes-después); abandonos del 10 al 59 %; sal y agua añadidas en los programas. |
+| [Hogwood 2025](#hogwood-2025) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). 17 estudios: gasto cardiaco en general conservado, el suero no mejora la capacidad de ejercicio, el desacondicionamiento explica solo parte; dos estudios de entrenamiento. Sin evaluación de riesgo de sesgo. |
+| [Hudson 2025](#hudson-2025) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin suplementos). Fibromialgia, 65 estudios en la red del sueño: el aeróbico acuático y el aeróbico en tierra con flexibilidad mejoran el sueño frente a placebo (certeza baja); fuerza, mente-cuerpo y aeróbico solo, no concluyentes. 91 % de estudios con riesgo de sesgo alto; los propios autores no sacan conclusiones fiables sobre la mejor intervención. |
+| [Kwok 2025](#kwok-2025) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). 21 ensayos aleatorizados, todos de menos de 100 pacientes; un ensayo de ejercicio (Wheatley-Guy 2023, riesgo de sesgo alto): mejoró dominios del COMPASS-31 y el componente físico del SF-36, no la puntuación total. Excluye por diseño los estudios sin aleatorizar. |
+| [Yanagimoto 2025](#yanagimoto-2025) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; el resumen de PubMed tiene erratas en las cifras, se usan las del cuerpo). 28 adolescentes ingresados, sin aleatorizar: 4 semanas de bicicleta tumbado aumentaron el volumen sistólico y el gasto de pie, sin cambios en la prueba de bipedestación; síntomas no medidos. |
+| [Haller 2026](#haller-2026) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin el apéndice GRADE). Lumbalgia crónica con síntomas depresivos: 5 ECA, 834 participantes; el mejor resultado (yoga con educación) viene de un solo estudio con un folleto como control. Certeza baja o muy baja. |
+| [Pérez-Romero 2026](#pérez-romero-2026) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin las tablas de características). Fibromialgia: 14 revisiones, 98 ECA; depresión mejora en 8 de 11 revisiones y ansiedad en 5 de 7; síntesis descriptiva, calidad AMSTAR-2 muy variable; no fija la dosis óptima. |
+| [Reyes 2026](#reyes-2026) | guía de efectos del ejercicio (cabecera) | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin figuras). Revisión narrativa de reposo en cama, centrada en mayores hospitalizados; da dos fechas de búsqueda distintas. Diez días de reposo en mayores sanos: fuerza de extensión de rodilla −13,2 % y potencia al subir escaleras −14,1 % (Kortebein); la función cae antes que la masa. Pérdida ósea que sigue tras volver a cargar e incompleta a 12 meses (Rittweger, 56 días). Las vías de señalización, correlacionales en humanos según los propios autores. Propone movilización temprana de baja intensidad (opinión). |
 | [Altman 1986](#altman-1986) | texto | 1 | 2026-10 · Sustituida por Peat 2006 en los criterios del ACR de rodilla (ro1): su S 95 % / E 69 % sale de la muestra de desarrollo, no del ámbito de un fisio. Solo queda citada como contexto en el texto del test. |
 | [Seaberg y Jackson 1994](#seaberg-y-jackson-1994) | texto | 1 | 2026-10 · Sin cambios: estudio de creación de la regla; ver Seaberg 1998. |
 | [Holla 2012](#holla-2012) | texto | 1 | 2026-10 · Sin cambios: es el único estudio de la precisión de la flexión de rodilla en la artrosis inicial (PubMed, 2026-10). Se cita en el detalle de la restricción de movilidad (ro1) como contraste a Zhang 2010, sin cambiar la puntuación: otra población (artrosis sintomática inicial) y otra referencia (hallazgos radiográficos). |
@@ -1036,52 +1086,6 @@ pero no mueve la puntuación; «cribado fase 2» = respalda un criterio que disp
 | [Hu 2024](#hu-2024) | texto | 1 | 2026-10 · Sin cambios: discrepa de Sokal 2022 y de Hesmerg 2024 en la especificidad; incluye el estudio del creador del test y atribuye a Hegedus unas cifras del Lever que no son suyas. Solo se cita en el criterio. |
 | [Norris 2025](#norris-2025) | texto | 1 | 2026-10 · Sin cambios: es el estudio más reciente del lever sign (registrado en ClinicalTrials.gov, NCT05416632) y es posterior a las revisiones Hesmerg 2024 y Hu 2024; ninguna revisión lo incluye todavía (PubMed, 2026-10). |
 | [Rana 2026](#rana-2026) | texto | 1 | 2026-10 · Sin cambios: es la revisión más reciente de la exploración clínica compuesta del menisco; por decisión del usuario no sustituye a Solomon 2001 (sin LR, agrupación univariante, cirujanos ortopédicos, pacientes que iban a artroscopia). |
-| [Petersen y Pedersen 2005](#petersen-y-pedersen-2005) | — | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). Revisión narrativa invitada, sin método de búsqueda; humanos, ratones y células. IL-6 plasmática hasta 100 veces con el ejercicio, según intensidad, duración, masa muscular y glucógeno; después IL-1ra e IL-10; la infusión de IL-6 frena el TNF-α inducido por endotoxina en humanos. El vínculo entre el efecto agudo y el beneficio a largo plazo «no está demostrado» según los propios autores. Nada sobre dolor ni enfermedades musculoesqueléticas. |
-| [Khan y Scott 2009](#khan-y-scott-2009) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin figuras ni referencias numeradas). Texto breve de explicación y opinión: define la mecanotransducción en tres pasos y propone el término «mecanoterapia». Los pasos están bastante resueltos en el hueso y quedan elementos desconocidos en músculo, tendón y cartílago. Sus ejemplos clínicos son débiles (un ensayo de 21 pacientes con fractura de radio distal, una serie de casos en cartílago), y la parte de músculo se basa en estudios animales. |
-| [Gleeson 2011](#gleeson-2011) | — | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). Revisión narrativa. El efecto antiinflamatorio del ejercicio regular se atribuye a menos grasa visceral y a un efecto en cada sesión; no se sabe cuánto pesa cada uno, y con ejercicio suave pesaría sobre todo la grasa. La IL-6 vuelve al reposo en 1 h y no sube con ejercicio corto de intensidad baja o moderada. Paradoja del deportista de élite: cargas muy altas, más infecciones leves. Advierte de que muchas medidas son solo en sangre periférica o in vitro. |
-| [Howe 2011](#howe-2011) | — | 1 | 2026-10 · Añadida (PDF del usuario en dos partes, leído entero; el texto de PMC llegaba vacío). 43 ensayos, 4320 mujeres posmenopáusicas sanas de 45–70 años. Densidad (diferencia de % de cambio): columna 0,85 (24 ensayos, GRADE alta), trocánter 1,03 (10, alta), cuello femoral −0,08 y cadera total 0,41, no significativos. Por tipo: fuerza progresiva, columna 0,86 y cuello femoral 1,03; fuerza de baja carga, nada; caminar y tai chi, columna 0,87; combinado, columna 3,22. Fracturas: OR 0,61 (0,23–1,64), 4 ensayos, 17 frente a 24, no significativo (GRADE alta); con combinado, OR 0,33 (0,13–0,85), dos ensayos, uno con el 89 % del peso. Caídas y efectos adversos registrados sobre todo en los grupos de ejercicio. Discrepancias internas menores entre texto y tablas, anotadas sin cambiar las cifras citadas. |
-| [Naugle 2012](#naugle-2012) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; las tablas no venían). 25 estudios, 622 participantes; dolor experimental, no el dolor clínico del paciente. En sanos, efecto moderado del aeróbico y grande del isométrico y la resistencia dinámica, sobre todo con estímulos de presión y transitorio (hasta unos 15 min). En dolor crónico, efecto muy variable según la condición y la intensidad; hiperalgesia en fibromialgia con ejercicio moderado o intenso. Isométrico: efecto similar en la zona contraída y a distancia. Mecanismos: el apoyo constante a los opioides viene de animales; en humanos, resultados mixtos. Pocos estudios con condición control, solo publicados. La revisión posterior con solo ensayos aleatorizados (Wewege y Jones 2021) no encuentra efecto con el isométrico y atribuye la diferencia a los diseños sin control de esta. |
-| [Pedersen y Febbraio 2012](#pedersen-y-febbraio-2012) | — | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). Revisión narrativa; humanos, ratones y cultivos. La IL-6, primera mioquina: hasta 100 veces con el ejercicio (lo habitual, menos), sin daño muscular, independiente del TNF, más con poco glucógeno; papel probablemente más metabólico que inflamatorio. El entrenamiento aeróbico baja la IL-6 basal y la subida en cada sesión. Campo «nuevo»; IL-15 y otras mioquinas sin confirmar. |
-| [Ho 2013](#ho-2013) | — | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). Ensayo aleatorizado de 12 semanas en sobrepeso y obesidad (97 reclutados, 64 terminaron): control, aeróbico, fuerza o combinado, 30 min 5 días por semana a intensidad moderada. El TNF-α bajó dentro de cada grupo de ejercicio y frente al control solo con el combinado (−22,6 %); la IL-6 no cambió. Marcadores casi normales al inicio; el control tomó un suplemento placebo. |
-| [Messier 2013](#messier-2013) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Ensayo IDEA, 454 personas con artrosis de rodilla y sobrepeso, 18 meses: dieta, ejercicio o ambos, sin grupo sin intervención. La IL-6 bajó más con la pérdida de peso que con el ejercicio solo; el dolor mejoró más con dieta y ejercicio (1,02 puntos WOMAC frente a ejercicio), de importancia clínica incierta según los autores. Sin potencia para las diferencias de IL-6 encontradas; adherencia al ejercicio del 54 % a los 18 meses. Una frase del texto («increased… inflammation» en el grupo de ejercicio) no casa con su tabla; no se cita. |
-| [Albrecht 2015](#albrecht-2015) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Cuatro anticuerpos comerciales con reacciones cruzadas con otras proteínas; dos kits ELISA difirieron 18 veces y sin correlación (r = 0,034); sin irisina detectable por western blot en humanos ni en varias especies. Pone en duda todo lo medido con ELISA comerciales y la llama «un mito»; admite que concentraciones muy bajas podrían tener actividad. Contradicho por Jedrychowski 2015. |
-| [Benatti y Pedersen 2015](#benatti-y-pedersen-2015) | — | 1 | 2026-10 · Añadida (PDF del usuario, leído entero; publicada en línea en 2014). Revisión narrativa con búsqueda en MEDLINE. En artritis reumatoide, lupus, espondilitis anquilosante, esclerosis sistémica y miopatías, el entrenamiento aeróbico y de fuerza mejora capacidad, fuerza y función referida sin brotes ni subida de PCR o VSG; marcadores y citocinas en reposo, sin cambio o con mejoras leves. Datos «todavía preliminares» según los autores. Cautela: con daño articular extenso al empezar, la fuerza de alta intensidad puede aumentar el daño. Ejercicio y endotoxina: 3 h de bicicleta impidieron la subida de TNF en voluntarios sanos. |
-| [Bohm 2015](#bohm-2015) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin tablas ni figuras). 27 estudios, 37 intervenciones, 264 adultos sanos de 18–50 años (237 varones), solo Aquiles y rotuliano. Rigidez SMD 0,70, módulo 0,69, área 0,24. Intensidad alta (más del 70 % de la contracción máxima) frente a baja: 0,90 frente a 0,04 en rigidez (27 frente a 5 intervenciones). Muestras de 6–15 personas; riesgo de sesgo bajo solo en 3 intervenciones. No mide dolor ni función. |
-| [Fu y Levine 2015](#fu-y-levine-2015) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero sin figuras). Revisión narrativa del grupo de Levine: corazón pequeño y volumen de sangre bajo; 3 meses de entrenamiento, empezando tumbado o semirreclinado, aumentaron el VO2 (8 %), la masa del ventrículo izquierdo (12 %) y el volumen de sangre (6 %); el 53 % de quienes completaron dejó de cumplir criterios, en estudios sin control aleatorizado y con sal y agua añadidas. |
-| [Jedrychowski 2015](#jedrychowski-2015) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Espectrometría de masas con cuantificación absoluta en plasma de 10 voluntarios: irisina ~3,6 ng/ml en sedentarios y ~4,3 ng/ml con entrenamiento aeróbico por intervalos; traducida sobre todo desde un codón de inicio no canónico. Cifras probablemente algo infraestimadas según los autores. Contradice a Albrecht 2015. |
-| [Franchi 2017](#franchi-2017) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero con sus tablas; sin figuras). Revisión narrativa en adultos jóvenes sanos: con la misma carga máxima o el mismo trabajo, excéntrico y concéntrico dan una hipertrofia muy parecida; cambia la arquitectura (más longitud de fascículo con excéntrico). La tensión mecánica se presenta como factor establecido de la hipertrofia. Sin valoración formal del riesgo de sesgo. |
-| [Geneen 2017](#geneen-2017) | — | 2 | 2026-10 · Añadida (texto completo en PMC, leído entero salvo las tablas de características de cada revisión). 21 revisiones Cochrane, 381 estudios, 37 143 participantes; 264 estudios comparan ejercicio con nada o intervención mínima. Efectos de pequeños a moderados en dolor y función, inconsistentes; calidad baja (su propio sistema de «tiers», tercer nivel; sin GRADE ni tabla de resumen). Efectos adversos solo registrados en el 25 % de los estudios: sobre todo agujetas o dolor muscular que cedieron en unas semanas; el ejercicio no empeoró el dolor. |
-| [Harding y Beck 2017](#harding-y-beck-2017) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin tablas ni figuras). Revisión narrativa de ejercicio y geometría ósea con imagen 3D, sin evaluar el riesgo de sesgo. Parámetros del estímulo (magnitud, velocidad, variedad, pocos ciclos, carga dinámica) sacados sobre todo de modelos animales. Caminar, poco eficaz para la densidad. Pocos ensayos de calidad sobre geometría; las personas con osteoporosis suelen estar excluidas. |
-| [Magnusson y Kjaer 2019](#magnusson-y-kjaer-2019) | — | 1 | 2026-10 · Añadida (PDF del usuario, manuscrito aceptado, leído entero con su figura y tabla; el texto de PMC llegaba vacío). Revisión narrativa. Núcleo del Aquiles sin renovación de colágeno tras los 17 años (carbono 14). Inmovilización de 2–3 semanas: síntesis de colágeno un 80 % menor en jóvenes y mayores; 1–2 semanas de descarga «parecen» reducir la rigidez sin cambiar el área. Tendinopatía: la carga es eficaz y el excéntrico aislado no ha demostrado ser superior. Tras rotura del Aquiles, respuesta a la carga lenta, no normalizada hasta 6–12 meses. Sin recomendaciones de dosis. |
-| [Polaski 2019](#polaski-2019) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Reanálisis de 75 ensayos de Geneen 2017 sobre la dosis del ejercicio regular (no la hipoalgesia de una sesión, pese al título). Evidencia insuficiente de un efecto dosis; única correlación significativa, duración y efecto en dolor cervical (8 estudios). El modelo multivariante (43 estudios) predice más efecto con más sesiones por semana: una predicción para diseñar ensayos, no un resultado. Riesgo de sesgo alto en más del 75 % de los estudios. |
-| [Rice 2019](#rice-2019) | — | 1 | 2026-10 · Añadida (PDF del usuario, manuscrito aceptado, leído entero con sus tablas). Revisión narrativa, sin valorar el riesgo de sesgo. Hipoalgesia variable y más a menudo alterada en dolor crónico, sobre todo en dolor generalizado; falla más con sensibilidad al dolor generalizada o modulación condicionada deficiente (preliminar). Ejercitar zonas no dolorosas puede seguir dándola (interpretación de los autores). Opioides: antagonistas con efecto nulo o escaso; endocannabinoides con datos en humanos y animales. Intensidad elegida frente a prescrita: casi sin diferencia. Factores psicosociales asociados en sanos, no en dolor crónico. Fiabilidad entre sesiones de la hipoalgesia solo regular (CCI 0,45). Brote de dolor tras el ejercicio como barrera para la adherencia; educación en neurociencia del dolor como propuesta, sin demostrar en dolor crónico. |
-| [Hart 2020](#hart-2020) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; la tabla 2 sin valores y sin figuras). Revisión narrativa de fisiología y medición, no de intervenciones. Osteocitos como sensores; la relación entre carga y adaptación «sigue sin entenderse bien». Inmovilización sin lesión: unos 2 % de densidad al mes; con lesión o parálisis completa, unos 7 %; la recuperación es más lenta que la pérdida. La densidad no predice la fractura en cada persona. Recomienda 6–12 meses como mínimo para valorar cambios con densitometría (opinión de los autores). |
-| [Severinsen y Pedersen 2020](#severinsen-y-pedersen-2020) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Revisión narrativa; humanos, roedores y cultivos. Más de 650 mioquinas, función descrita para un 5 %; la IL-6 es la mejor respaldada en humanos (infusión: lipólisis, IL-1ra, IL-10, menos TNF). Tocilizumab anuló la pérdida de grasa visceral del entrenamiento. BDNF muscular no pasa a la sangre; catepsina B: no se sabe si media efectos cognitivos; irisina «controvertida» por los ELISA. Sin datos de dolor ni cartílago. |
-| [Vaegter y Jones 2020](#vaegter-y-jones-2020) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; las tablas 1 y 2 solo en parte). Revisión narrativa. En sanos, una sesión sube el umbral de dolor a la presión un 15–20 % frente al reposo, de 5 a 30 min. En dolor crónico, hipoalgesia, ninguna o hiperalgesia (más en dolor generalizado y con mucha sensibilidad al dolor). Ejercitar una zona que no duele produjo hipoalgesia donde la zona dolorosa no (mialgia de hombro, artrosis de rodilla). Opioides y endocannabinoides: resultados equívocos en humanos. Estudios pequeños, a menudo sin control: probablemente sobrestiman el efecto. Sus recomendaciones clínicas, como algo que «puede merecer la pena considerar». Algunos datos citados están sin publicar. |
-| [Cosio 2021](#cosio-2021) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Metaanálisis de 7 ensayos (282 personas), fuerza ≥8 semanas, irisina por ELISA: aumento no significativo (d = 0,58; −0,25 a 1,40), I² 90 %, sesgo de publicación (0,34 tras ajustar). Subgrupos: mayores y fuerza progresiva al 61–85 %. Los autores piden interpretar con cautela todo lo medido con ELISA hasta validar los anticuerpos. |
-| [Nara y Watanabe 2021](#nara-y-watanabe-2021) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Revisión narrativa centrada en el metabolismo lipídico del hígado. Por qué la IL-6 del músculo actúa distinto de la de la inflamación «no está claro»; se especula que depende de la señalización (sIL-6R, sgp130). Gran parte de los datos, de ratones y células C2C12; incluye datos propios no publicados. |
-| [Wewege y Jones 2021](#wewege-y-jones-2021) | — | 1 | 2026-10 · Añadida (PDF del usuario, manuscrito aceptado, leído entero con figuras y tabla 1; sin los suplementos ni su tabla GRADE). Solo ensayos aleatorizados con condición control y dolor experimental; 13 estudios. Sanos: aeróbico efecto grande (7 estudios, 236 participantes; g −0,85, IC −1,58 a −0,13), fuerza dinámica pequeño (2, 23; g −0,45) y no significativo al bajar la correlación, isométrico sin efecto (3, g −0,16, IC −0,36 a 0,05). Dolor musculoesquelético crónico: isométrico sin efecto (3 estudios, 114; g −0,41, IC −1,08 a 0,25), sin estudios aeróbicos. Calidad muy baja, riesgo de sesgo poco claro, probable sesgo de publicación en sanos. Discrepancias internas menores entre resumen, texto y figuras (participantes del isométrico en sanos, I², un IC), anotadas sin cambiar las cifras citadas. Publicado en línea en 2020. |
-| [Xie 2021](#xie-2021) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin figuras). Adultos sin enfermedad, 22 ECA: PSQI −2,19 puntos, ISI −1,52; con actigrafía solo mejora la eficiencia del sueño (+1,22 %), no la duración ni la latencia. Riesgo de sesgo alto en todos (sin cegamiento); sin GRADE. |
-| [Balchin 2022](#balchin-2022) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Revisión sistemática sin metaanálisis: 11 estudios (5 ensayos, 6 observacionales), 274 personas. Una sesión aeróbica, de fuerza o combinada no pareció empeorar el dolor en la artritis reumatoide; la IL-6 sube tras el ejercicio y vuelve a la basal a las 24 h, con resultados inconsistentes entre estudios. Mucha heterogeneidad, muestras pequeñas, inflamación basal baja; los autores no sacan una conclusión firme. |
-| [Lazarczuk 2022](#lazarczuk-2022) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin tablas, figuras ni suplemento). 61 estudios, 763 participantes, calidad PEDro mediana 4 de 8. Rigidez SMD 0,74, módulo 0,82, área 0,22; fuerza 0,80, saltos 0,49, aeróbico sin efecto (un estudio). Sin diferencias significativas por intensidad relativa (discrepa de Bohm 2015), sí con deformación alta (~5 %, tres estudios). Menor adaptación en mayores. Avisa de no extrapolar a tendones con tendinopatía. |
-| [Lim 2022](#lim-2022) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin figuras). Revisión narrativa de mecanismos, sin dosis. En humanos, los cambios hormonales agudos no explican la hipertrofia, ningún metabolito ha demostrado causarla y el daño muscular es un mal indicador. Las personas mayores ganan fuerza casi siempre con el entrenamiento, con menos hipertrofia que los jóvenes. Gran parte de lo celular (YAP, titina) es animal o in vitro. |
-| [Coburn 2023](#coburn-2023) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin figuras ni suplemento). 40 estudios, 653 participantes; cambios agudos del cartílago con resonancia: reducciones de 0–5 % tras caminar, saltar, flexiones de rodilla o bicicleta, recuperadas en 15–90 min. Certeza muy baja; 9 de 40 estudios con riesgo de sesgo bajo; media de 17 participantes. No mide adaptación crónica ni dolor. |
-| [Lima 2023](#lima-2023) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). 9 análisis de mediación, todos en artrosis de rodilla: la autoeficacia medió en parte el efecto de dieta más ejercicio (Mihalko 2019) y, según el texto pero no la tabla, del ejercicio solo (Rejeski 1998); la fuerza del cuádriceps medió en parte el del ejercicio (Hall 2018). Mediador y resultado medidos a la vez: no permite afirmar causalidad. |
-| [Singh 2023](#singh-2023) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero con las tablas 1–3, sin suplementos). 97 revisiones, 1039 ECA. Mediana SMD depresión −0,43 y ansiedad −0,42; en artritis, depresión −0,40. Más efecto con más intensidad y con programas más cortos (lo segundo, contraintuitivo según los autores). 77 de 97 revisiones con confianza AMSTAR-2 críticamente baja. |
-| [Bettariga 2024](#bettariga-2024) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Metaanálisis de 62 estudios, 1193 adultos sanos, una sesión de ejercicio. Irisina, aumento pequeño a los 60 min (DME 0,38; 0,05–0,71); SPARC, inmediato (0,50; 0,01–0,99); IL-15, oncostatina M y decorina sin cambio significativo; vuelta al nivel basal en 3–24 h; sin diferencia entre aeróbico y fuerza. Sin escala de riesgo de sesgo validada para estudios agudos; sesgo de publicación en IL-15. Los autores: no se pueden sacar conclusiones precisas. |
-| [Gardashli 2024](#gardashli-2024) | — | 1 | 2026-10 · Añadida (texto completo en PMC; secciones 3–7 leídas enteras, 1–2 solo barridas por no tratar la carga). Revisión narrativa, sobre todo animal e in vitro; propone una respuesta «en U» del cartílago a la carga como hipótesis. Una frase de su discusión sobre la carrera de baja intensidad no la sostienen los datos que cita. |
-| [Noetel 2024](#noetel-2024) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin suplementos ni tabla CINeMA). Depresión mayor, 218 estudios, 14 170 participantes. Frente a control activo: caminar o correr g −0,63, yoga −0,55, fuerza −0,49, aeróbico mixto −0,43, tai chi −0,42; más efecto cuanto más intenso, aunque la actividad ligera sigue siendo relevante (g −0,58). Confianza CINeMA baja (caminar) o muy baja (resto); solo un estudio con riesgo de sesgo bajo. Mecanismos no aclarados: hipótesis de los autores. |
-| [Silva 2024](#silva-2024) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). Metaanálisis de 24 ensayos en sedentarios sin diabetes (18–64 años), entrenamiento combinado de unas 12 semanas. Bajan TNF-α (DME −0,97) y PCR (−0,51); IL-6 sin cambio (−0,51; IC −1,27 a 0,25; I² 87 %). Riesgo de sesgo: 3 bajo, 18 algunas dudas, 3 alto. Los autores piden cautela por los pocos estudios con citocinas y porque pocos dijeron cuándo se sacó la sangre. |
-| [Ziaks 2024](#ziaks-2024) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero sin figuras). Propuesta de expertos (programa Utah ADaPT), pendiente de validar: empezar por debajo del umbral de síntomas (+15–20 lpm o esfuerzo 2/10), progresar por criterios del paciente, cribar el malestar postesfuerzo. Sin datos de eficacia. |
-| [Chen 2025](#chen-2025) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero con sus tablas; sin figuras). 18 estudios, 297 voluntarios sanos de 23–33 años, casi todos varones, en reposo en cama a −6°. Fuerza durante el reposo: volumen muscular g 0,84 y fuerza g 2,26 (GRADE alta), área g 0,95 (moderada; 0,73 tras corregir el sesgo de publicación), contenido mineral óseo g 0,73 (moderada). Algunas cifras de subgrupos no cuadran (anotado; no se citan). No incluye pacientes ni inmovilización de una extremidad. |
-| [Cortez 2025](#cortez-2025) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero sin tablas). Revisión sistemática, 7 estudios (2 aleatorizados), riesgo de sesgo moderado-alto en todos menos uno, sin GRADE ni metaanálisis; mejoras en FC en todos y en calidad de vida en los 4 que la midieron (antes-después); abandonos del 10 al 59 %; sal y agua añadidas en los programas. |
-| [Hogwood 2025](#hogwood-2025) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero). 17 estudios: gasto cardiaco en general conservado, el suero no mejora la capacidad de ejercicio, el desacondicionamiento explica solo parte; dos estudios de entrenamiento. Sin evaluación de riesgo de sesgo. |
-| [Hudson 2025](#hudson-2025) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin suplementos). Fibromialgia, 65 estudios en la red del sueño: el aeróbico acuático y el aeróbico en tierra con flexibilidad mejoran el sueño frente a placebo (certeza baja); fuerza, mente-cuerpo y aeróbico solo, no concluyentes. 91 % de estudios con riesgo de sesgo alto; los propios autores no sacan conclusiones fiables sobre la mejor intervención. |
-| [Kwok 2025](#kwok-2025) | — | 1 | 2026-10 · Añadida (PDF del usuario, leído entero). 21 ensayos aleatorizados, todos de menos de 100 pacientes; un ensayo de ejercicio (Wheatley-Guy 2023, riesgo de sesgo alto): mejoró dominios del COMPASS-31 y el componente físico del SF-36, no la puntuación total. Excluye por diseño los estudios sin aleatorizar. |
-| [Yanagimoto 2025](#yanagimoto-2025) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; el resumen de PubMed tiene erratas en las cifras, se usan las del cuerpo). 28 adolescentes ingresados, sin aleatorizar: 4 semanas de bicicleta tumbado aumentaron el volumen sistólico y el gasto de pie, sin cambios en la prueba de bipedestación; síntomas no medidos. |
-| [Haller 2026](#haller-2026) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin el apéndice GRADE). Lumbalgia crónica con síntomas depresivos: 5 ECA, 834 participantes; el mejor resultado (yoga con educación) viene de un solo estudio con un folleto como control. Certeza baja o muy baja. |
-| [Pérez-Romero 2026](#pérez-romero-2026) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído sin las tablas de características). Fibromialgia: 14 revisiones, 98 ECA; depresión mejora en 8 de 11 revisiones y ansiedad en 5 de 7; síntesis descriptiva, calidad AMSTAR-2 muy variable; no fija la dosis óptima. |
-| [Reyes 2026](#reyes-2026) | — | 1 | 2026-10 · Añadida (texto completo en PMC, leído entero; sin figuras). Revisión narrativa de reposo en cama, centrada en mayores hospitalizados; da dos fechas de búsqueda distintas. Diez días de reposo en mayores sanos: fuerza de extensión de rodilla −13,2 % y potencia al subir escaleras −14,1 % (Kortebein); la función cae antes que la masa. Pérdida ósea que sigue tras volver a cargar e incompleta a 12 meses (Rittweger, 56 días). Las vías de señalización, correlacionales en humanos según los propios autores. Propone movilización temprana de baja intensidad (opinión). |
 
 ## 1. Tarjetas de consulta
 
