@@ -858,7 +858,7 @@ export const hypotheses = {
     dosis: 'Plan en cuatro fases. 1) Control del dolor: educación y consejos de carga. 2) Progresión de fuerza: ejercicio de resistencia progresivo de cuádriceps durante al menos 12 semanas, ajustando la intensidad a cada paciente; de preferencia, resistencia pesada y lenta, aunque pueden usarse otras formas (por ejemplo, isométricos) para reducir la respuesta dolorosa del tendón. 3) Almacenamiento de energía: según el deporte, empezar con pliometría. 4) Mantenimiento de la fuerza. Si a las 12 semanas no hay un cambio clínicamente relevante, valorar una cinta infrarrotuliana. Sin infiltraciones y con prudencia con los analgésicos. Certeza muy baja en la guía; una revisión Cochrane posterior no puede asegurar que el ejercicio de fuerza alivie el dolor frente a no tratar (certeza muy baja; solo deportistas). Ninguna de las dos fija series ni repeticiones: el volumen queda a criterio del clínico.',
     dosisFuente: 'Ophey 2025, Knee Surg Sports Traumatol Arthrosc 33:457–469 (guía multidisciplinar holandesa, módulos 5–7; certeza GRADE muy baja) · Lopes 2025, Cochrane Database Syst Rev 5:CD013078 (revisión sistemática, 7 ensayos, 211 deportistas)',
     pronostico: {
-      seguimiento: 'Si los síntomas aparecen antes y tardan más en irse, progresar el tratamiento con más prudencia. Cuestionario específico: VISA-P.',
+      seguimiento: 'Si los síntomas aparecen antes y tardan más en irse, progresar el tratamiento con más prudencia.',
       notas: 'Pruebas de imagen: ecografía o RM. La alteración del tendón en imagen no se correlaciona de forma constante con el dolor ni con la pérdida de función.',
       fuente: 'Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 192–193'
     },
@@ -1026,8 +1026,8 @@ export const hypotheses = {
     dosis: 'Solo Osgood-Schlatter: el estudio excluyó el Sinding-Larsen-Johansson. Semanas 0–4: dejar el deporte y las actividades que reproducen el dolor; isométrico de cuádriceps contra la pared 10 × 30 s al día con cada pierna, y puente con los dos pies 3 × 10 cada 2 días. Desde la semana 5, cada 2 días: (1) sentadilla apoyado en la pared, 5 repeticiones manteniendo hasta 20 s, y una repetición más por sesión hasta 10; (2) sentadilla de 3 s bajando, 10 s mantenida y 3 s subiendo, añadiendo series hasta 4 × 10; (3) añadir zancadas. En paralelo, escalera de 11 escalones de actividad (caminar o bici suave → caminar rápido o bici media → carrera lenta → escaleras → carrera media → skipping → saltos → carrera rápida, giros y saltos → calentamiento + media sesión → calentamiento + sesión → partido): subir un escalón solo con dolor ≤2/10 durante la actividad y a la mañana siguiente, y bajar uno si empeora; la sentadilla (nivel 2) sin pasar de 2/10 antes del escalón 3; vuelta completa tras 2 semanas de entrenamiento completo sin dolor. 4 visitas en 12 semanas, con los padres. Resultados: 80 % con éxito a las 12 semanas y 90 % al año; vuelta al deporte del 16 % a las 12 semanas y del 69 % al año.',
     dosisFuente: 'Rathleff 2020, Orthop J Sports Med 8(4):2325967120911106 (serie de casos, n = 51, 10–14 años, sin grupo control: nivel de evidencia 4; pauta de su apéndice 1)',
     pronostico: {
-      horizonte: 'En el Osgood-Schlatter, entrenar en otras modalidades o en piscina reduce la intensidad y la duración de los síntomas. El Sinding-Larsen-Johansson suele ser autolimitado.',
-      notas: 'La exploración suele bastar; la radiografía, si hace falta, ayuda a descartar una fractura aguda o un tumor.',
+      horizonte: 'El Sinding-Larsen-Johansson suele ser autolimitado.',
+      notas: 'La exploración suele bastar; la radiografía, si hace falta, ayuda a descartar una fractura aguda o un tumor. En el Osgood-Schlatter, entrenar en otras modalidades o en piscina reduce la intensidad y la duración de los síntomas.',
       fuente: 'Lluch 2020, cap. 4.2 (Courtney, Grindstaff, Hensley y Jayaseelan), pp. 200–201'
     },
     tests: [

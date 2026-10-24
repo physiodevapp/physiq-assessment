@@ -1314,7 +1314,8 @@ export const hypotheses = {
     pronostico: {
       horizonte: 'Con AINE y reposo el dolor se reduce, pero suele volver al retomar el deporte.',
       seguimiento: 'Volver al deporte con un déficit de fuerza menor del 10–20 % respecto al lado sano o al valor previo, porque la debilidad de cadera aumenta el riesgo de lesión de ingle.',
-      notas: 'Prueba de imagen: ecografía. Explorar de pie y con tos: una hernia inguinal palpable excluye este diagnóstico.',
+      notas: 'Prueba de imagen: ecografía. Explorar de pie y con tos.',
+      derivacion: 'hay una hernia inguinal palpable: excluye este diagnóstico.',
       fuente: 'Lluch 2020, cap. 4.1.2 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 138–139; cap. 4.1.3 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), p. 145; cap. 4.1.4 (Llopis San Juan, Molina Martínez, Oviaño y Thorborg), pp. 164 y 173'
     },
     tests: [
