@@ -118,7 +118,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 5 — Efectos centrales | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). 8 fuentes, ver «Bloque 5 — decisiones de nivel». Con él no queda ningún bloque pendiente y la guía deja de pintar «Pendientes de fuentes revisadas» |
 | Bloque 6 — Intolerancia ortostática (POTS) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Añadido después del diseño, a petición del usuario, para enlazar la tarjeta de disautonomía. 7 fuentes, ver «Bloque 6 — decisiones de nivel» |
 | Bloque 7 — Hipermovilidad (SEDh / TEH) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Propuesta aceptada antes de leer, ver «Bloque 7 — propuesta»; 14 fuentes, ver «Bloque 7 — decisiones de nivel» |
-| Bloque 8 — Embarazo y posparto | Propuesta **aceptada por el usuario** con las recomendaciones (2026-10): un bloque, enlace en los dos estados sin excepciones, sin `lu8` ni `ca10` en la tabla. Lectura de fuentes en curso; ver «Bloque 8 — lectura de fuentes» |
+| Bloque 8 — Embarazo y posparto | Propuesta **aceptada por el usuario** con las recomendaciones (2026-10): un bloque, enlace en los dos estados sin excepciones, sin `lu8` ni `ca10` en la tabla. Primera tanda de lectura hecha (2026-10, Sonnet); faltan PDF para el dolor lumbopélvico del posparto, la seguridad y el ánimo con GRADE. Ver «Bloque 8 — lectura de fuentes» |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet; los enlaces a «Efectos centrales» y «antiinflamatorio», Opus) y **revisado por el usuario** (2026-10): `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis (`BLOQUE_POR_HIPOTESIS`, Opus), también hecha y **revisada por el usuario** (2026-10) |
 | Enlace desde los recuadros de la fase 5 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): `enlaceCondicionEjercicioHTML()`; lupus diagnosticado → antiinflamatorio, osteoporosis → mecanotransducción |
 | Condiciones también en la fase 6 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): disautonomía → ortostática e hipermovilidad → su bloque, en «Educación», con la misma regla de estados que el recuadro (`CONDICION_EJERCICIO`, `condicionEnlazaEjercicio()`); la hipermovilidad deja de enlazarse también con la regla de sospecha vascular cumplida, en las dos fases. Ver «Una sola regla de estados» |
@@ -437,6 +437,63 @@ La fase 5 lee `es` del payload `em`; la fase 6, `state.embarazo.estado` (`datosC
 4. Enlaces (`CONDICION_EJERCICIO`, `TEXTOS_EJERCICIO`, `plan.js`, `_embarazoResultadosHTML()`), con los textos de las líneas de motivo propuestos antes de escribirlos.
 5. Tests unitarios (`tests/unit/ejercicio.mjs`: regla por estado, fase 5 = fase 6, orden de las líneas) y `node tests/smoke.mjs --solo ejercicio,embarazo,fase6`.
 6. Este documento y `CLAUDE.md` al día (embarazo sale de «Sin enlace»). Sin fusionar hasta la revisión del usuario.
+
+## Bloque 8 — lectura de fuentes (2026-10, Sonnet; primera tanda)
+
+Solo lectura: nada escrito en `data/` ni en el registro. Dos agentes Sonnet devolvieron citas literales en inglés con su sección; las notas completas están en el scratchpad de la sesión, fuera del repositorio. Lo que no viene en el texto de PMC (figuras, tablas suplementarias, perfiles GRADE) no se cita.
+
+| Tema | Fuente | PMC | Estado de lectura |
+|---|---|---|---|
+| Suelo pélvico y diástasis (posparto) | Beamish 2025 (ya registrada) | PMC12013572 | Entera, sin tablas de características ni GRADE. 65 estudios, n = 21 334 |
+| Diástasis (posparto) | Gluppe 2021 (ya registrada) | PMC8721086 | Entera. 7 ECA, n = 381 |
+| Diástasis (cohorte) | Sperstad 2016 (ya registrada) | PMC5013086 | Entera, con tablas. 300 primíparas, 178 al año |
+| Dolor de cintura pélvica persistente | Burani 2023 (ya registrada) | PMC10744457 | Entera. 10 cohortes, sin metaanálisis ni GRADE |
+| Guías del posparto | Evenson 2024 (ya registrada) | PMC11184298 | Entera, sin las tablas con las citas de cada guía |
+| Ánimo, población general y perinatal | Singh 2023 (ya registrada, bloque 5) | PMC10579187 | Entera. Fila «Pregnancy/postpartum» de su tabla 2 |
+| Ánimo, embarazo y posparto | Dipietro 2019, Med Sci Sports Exerc (revisión paraguas del comité de la guía de EE. UU.) | PMC6527310 | Entera. Sin GRADE; autores truncados en PubMed, completarlos al citar |
+| Ánimo posparto tras ejercicio prenatal | Hicks 2024, Arch Womens Ment Health | PMC12122183 | Entera. **No usar sus cifras** (ver abajo) |
+| Dolor lumbopélvico posparto | Özyurt 2025, BMC Womens Health | PMC12231622 | Entera. 37 ECA, 1739 mujeres. **Solo su conclusión cualitativa** (ver abajo) |
+
+**Sin texto completo** (solo el resumen de PubMed; sirven para decidir qué pedir, no para citar):
+
+| Fuente | DOI | Qué dice el resumen |
+|---|---|---|
+| Deprato 2025, *Br J Sports Med* 59(8):550–561, ánimo posparto | 10.1136/bjsports-2024-108478 | 35 estudios, GRADE; depresión SMD −0,52 (−0,80 a −0,24; 19 ECA), certeza moderada |
+| Ruchat 2025, *Br J Sports Med* 59(8):594–604, dolor musculoesquelético posparto | 10.1136/bjsports-2024-108488 | Ejercicio solo: dolor lumbopélvico −2,21/10 (4 ECA, n = 210), certeza moderada |
+| Mladenovic 2026, *Braz J Phys Ther*, ejercicio en el dolor lumbopélvico del embarazo (31 ECA, GRADE) | 10.1016/j.bjpt.2026.101605 | Tiene PMCID (PMC13380804), pero solo llegan el resumen y los *highlights*: reintentar o PDF. A corto plazo no mejor que la atención obstétrica (baja); a 6–12 semanas, mejor (moderada) |
+| Lu 2026, *J Pain*, dolor de cintura pélvica en el embarazo (11 ECA) | 10.1016/j.jpain.2026.106401 | Dolor y función mejoran, certeza moderada |
+| Las seis compañeras de Mottola 2018 (*Br J Sports Med* 2018–2019) | Las de dolor lumbopélvico (10.1136/bjsports-2018-099400), ánimo (…-099697), incontinencia (…-099780), mortalidad fetal (…-099773), daños maternos (…-099821) y supino (…-099919) | Ni PMC ni Europe PMC; bjsm.bmj.com responde 403 desde la sesión |
+
+**Comprobado**: la Cochrane del dolor lumbopélvico del embarazo (CD001139) no tiene versión posterior a la de 2015 (Liddle y Pennick 2015, ya leída). Relaxina y laxitud articular: nada en una búsqueda; queda fuera, como prevé la propuesta.
+
+### Avisos de lectura (para quien redacte)
+
+- **Beamish 2025**:
+  - suelo pélvico tras el parto e incontinencia urinaria: OR 0,59 (0,39–0,89; 8 ECA, n = 2005; I² 71 %), certeza moderada (rebajada solo por indirecta); el «37 %» del resumen es el de solo suelo pélvico (OR 0,63; 0,41–0,97; 7 ECA). Mujeres con y sin síntomas, medido al terminar la intervención;
+  - la gravedad de la incontinencia no cambia (muy baja); incontinencia anal y prolapso, sin efecto significativo (el OR 0,44 del prolapso es un solo ensayo, que los autores piden no generalizar);
+  - distancia entre rectos −0,52 cm en reposo (baja) y −0,47 cm con la cabeza levantada (moderada); el resumen y el texto no dan la misma certeza;
+  - en agudo, el curl-up la reduce y el transverso la aumenta; el efecto crónico de cada ejercicio no se puede separar;
+  - **no mide dolor, función ni calidad de vida ligados a la diástasis**, y no hay ensayos de ejercicio general (aeróbico o de fuerza) sobre estos desenlaces. Sin efectos adversos en el texto.
+- **Gluppe 2021**: certeza muy baja para cualquier programa; el transverso, −0,63 cm en dos pilotos (n = 30), que los autores piden no llevar a guías; sin efecto sobre el dolor lumbar ni la disfunción del suelo pélvico; el suelo pélvico «should not be discouraged» con diástasis; *highlights* «low» frente a resumen «very low».
+- **Sperstad 2016**: la «no difference» de dolor lumbopélvico con diástasis es 45,6 % frente a 32,5 % (p = 0,10) en 178 mujeres: dicho como «no se vio una asociación clara en un estudio pequeño», no como «la diástasis no duele». Casi toda leve. Erratas en el texto (un IC que no contiene su OR).
+- **Burani 2023**: el ejercicio no se estudia como predictor ni como protector. El miedo-evitación pesa poco (OR 1,06 por punto del FABQ); el catastrofismo, «weak or contradictory». Una «OR = 23» sin respaldo en los resultados.
+- **Evenson 2024**: guías «variable and based on sparse research evidence»; solo Australia y el Reino Unido usaron GRADE; los beneficios que citan son peso, depresión y ánimo, **no el dolor**. Descriptiva: no estima efectos.
+- **Ánimo (Singh 2023, Dipietro 2019)**:
+  - Singh 2023, fila «Pregnancy/postpartum»: 3 revisiones, 43 ECA, 3364 participantes, SMD mediana −0,59 (IQR −0,63 a −0,40); solo posparto, −0,49. Sin GRADE y con la confianza AMSTAR-2 de casi todas las revisiones «critically low» (lo que ya dice el bloque 5). Su frase de que los mayores beneficios son en embarazadas y puérperas no la sostiene su tabla;
+  - Dipietro 2019: «strong evidence» de una relación inversa entre actividad física y síntomas depresivos en el posparto, por la escala del comité de EE. UU., no GRADE; el propio texto dice que no se sabe si es independiente de la medicación o del apoyo social.
+  - Con eso, el ánimo en el posparto llega a `clinico` con certeza baja dicha en la frase, como en el bloque 5. Deprato 2025 (con GRADE) lo afinaría.
+- **Hicks 2024**: un «effect size 7,59» sin unidad e imposible en la EPDS, «causality» en la discusión y recuentos que no cuadran. No se usa.
+- **Özyurt 2025**: marca «High» con riesgo de sesgo e inconsistencia graves (I² 92 %), y calcula con diferencias antes-después, no entre grupos; texto y tabla discrepan. Solo vale su conclusión: «inadequate to draw strong conclusions». El dolor lumbopélvico del posparto queda sin afirmación `clinico` hasta tener Ruchat 2025.
+
+### Para la segunda tanda (PDF del usuario, por prioridad)
+
+1. Deprato 2025 (ánimo posparto, GRADE).
+2. La compañera de Mottola 2018 del dolor lumbopélvico en el embarazo (10.1136/bjsports-2018-099400).
+3. Ruchat 2025 (dolor musculoesquelético posparto, GRADE).
+4. La compañera de mortalidad fetal (10.1136/bjsports-2018-099773): es la base de una frase de seguridad para el paciente; sin ella no habrá frase de seguridad.
+5. Opcionales: Mladenovic 2026 (si el texto no llega al reintentar), la compañera del ánimo prenatal (…-099697), las de daños maternos (…-099821) y supino (…-099919), Lu 2026.
+
+**Lo que ya se puede escribir sin la segunda tanda**: las afirmaciones del embarazo sobre el dolor lumbopélvico (Liddle y Pennick 2015) y el suelo pélvico (Woodley 2020), las del posparto sobre la incontinencia y la diástasis (Beamish 2025, Gluppe 2021, Sperstad 2016), el ánimo con certeza baja (Singh 2023, Dipietro 2019) y los límites (Evenson 2024, Burani 2023). Faltarían el dolor lumbopélvico del posparto, la seguridad para el embarazo y una certeza mejor para el ánimo.
 
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
