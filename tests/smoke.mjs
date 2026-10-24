@@ -789,6 +789,15 @@ async function checkDisautonomia(page) {
   await page.click('#dsEstado .option-btn[data-valor="sospecha"]');
   await walkRegion(page, 'lumbar');
   r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .ds-fase5')?.textContent || ''; return t.includes('Sospecha') && t.includes('semirreclinado') && t.includes('valoración médica urgente'); });
+  // Enlace a la guía de efectos del ejercicio, bloque de intolerancia ortostática
+  r.enlaceEjercicio = !!(await page.$('#resultsContent .ds-fase5 [data-bloque-condicion="ortostatica"] button'));
+  if (r.enlaceEjercicio) {
+    await page.click('#resultsContent .ds-fase5 [data-bloque-condicion="ortostatica"] button');
+    await page.waitForSelector('#ejercicioOverlay.open');
+    r.enlaceEjercicio = await page.evaluate(() => document.querySelector('#ejercicioCuerpo [data-bloque="ortostatica"]')?.open === true);
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
+  }
   await page.evaluate(() => goToPhase('4b'));
   await page.waitForTimeout(200);
   r.nota4b = await page.isVisible('#hypothesisCards .ds-nota-4b');
@@ -799,7 +808,7 @@ async function checkDisautonomia(page) {
   r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent; return t.includes('Disautonomía: empezar el ejercicio semirreclinado') && t.includes('si se desmaya mientras hace ejercicio'); });
   r.ok = r.tipoOculto && r.tipoVisible && r.tipoOcultoSospecha && r.tab && r.urgSinPlegar && r.sospecha && r.urgencia && r.derivacion
     && r.compatible && r.sincronizada && r.payload && r.hipotension && r.notaFase3 && r.ancho1 && r.ancho2 && r.inputs320 && r.sinSistema
-    && r.fase5 && r.nota4b && r.fase6 && r.sincopeRegion;
+    && r.fase5 && r.enlaceEjercicio && r.nota4b && r.fase6 && r.sincopeRegion;
   return r;
 }
 
@@ -3037,7 +3046,7 @@ async function checkEjercicio(browser, errors) {
     const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
     // Los cuatro bloques escritos: ya no se pinta el apartado de pendientes
     return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales'
+      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica'
       && !document.querySelector('#ejercicioCuerpo .ej-pendientes')
       && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
   });
@@ -6398,7 +6407,7 @@ const SECCIONES = [
 
   { id: 'ejercicio', titulo: 'Guía de efectos del ejercicio:', run: async ({ browser, errors }) => {
     const c = await checkEjercicio(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} Efectos del ejercicio (cabecera): diálogo centrado con sus cuatro bloques escritos, sin pendientes, y la leyenda de los tres niveles; la hipoalgesia con sus cuatro apartados, citas, «Ampliar» y un chip de nivel pulsable por afirmación (ninguno en «paciente») con su ficha por encima del velo, Escape cierra primero la ficha, «✨ IA» con el bloque como contexto; oculto al imprimir; cabecera sin desbordar a 769 px; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} Efectos del ejercicio (cabecera): diálogo centrado con sus cinco bloques escritos, sin pendientes, y la leyenda de los tres niveles; la hipoalgesia con sus cuatro apartados, citas, «Ampliar» y un chip de nivel pulsable por afirmación (ninguno en «paciente») con su ficha por encima del velo, Escape cierra primero la ficha, «✨ IA» con el bloque como contexto; oculto al imprimir; cabecera sin desbordar a 769 px; en móvil, desde «Herramientas», hoja inferior que atrás cierra en la misma fase; cabe a 320 px; también en el hub${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
