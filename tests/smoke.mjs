@@ -3105,7 +3105,7 @@ async function checkEjercicio(browser, errors) {
     const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
     // Los cuatro bloques escritos: ya no se pinta el apartado de pendientes
     return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica,hipermovilidad'
+      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica,hipermovilidad,embarazo'
       && !document.querySelector('#ejercicioCuerpo .ej-pendientes')
       && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
   });
