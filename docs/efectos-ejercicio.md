@@ -119,6 +119,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 6 — Intolerancia ortostática (POTS) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Añadido después del diseño, a petición del usuario, para enlazar la tarjeta de disautonomía. 7 fuentes, ver «Bloque 6 — decisiones de nivel» |
 | Bloque 7 — Hipermovilidad (SEDh / TEH) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Propuesta aceptada antes de leer, ver «Bloque 7 — propuesta»; 14 fuentes, ver «Bloque 7 — decisiones de nivel» |
 | Bloque 8 — Embarazo y posparto | Propuesta **aceptada por el usuario** con las recomendaciones (2026-10): un bloque, enlace en los dos estados sin excepciones, sin `lu8` ni `ca10` en la tabla. Lectura hecha (2026-10, Sonnet): 9 fuentes en PMC y 8 PDF del usuario. Escrito (2026-10, Opus) y enlazado desde la tarjeta (textos aceptados por el usuario, 2026-10), **revisado por el usuario** (2026-10). Ver «Bloque 8 — lectura de fuentes» y «Bloque 8 — decisiones de nivel» |
+| Bloque 9 — Trastorno mastocitario y anafilaxia | **No se hace** (usuario, 2026-10, con la recomendación de la propuesta; decisión 2): nada sobre el ejercicio en estas personas llega a `clinico`. Christensen 2019 (PDF del usuario), leído después, no lo cambia. En su lugar, una línea sobre la anafilaxia por ejercicio en el aviso `mastocitos` de la tarjeta, **revisada por el usuario** (2026-10). Ver «Bloque 9 — propuesta» y «Bloque 9 — decisión» |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet; los enlaces a «Efectos centrales» y «antiinflamatorio», Opus) y **revisado por el usuario** (2026-10): `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis (`BLOQUE_POR_HIPOTESIS`, Opus), también hecha y **revisada por el usuario** (2026-10) |
 | Enlace desde los recuadros de la fase 5 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): `enlaceCondicionEjercicioHTML()`; lupus diagnosticado → antiinflamatorio, osteoporosis → mecanotransducción |
 | Condiciones también en la fase 6 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): disautonomía → ortostática e hipermovilidad → su bloque, en «Educación», con la misma regla de estados que el recuadro (`CONDICION_EJERCICIO`, `condicionEnlazaEjercicio()`); la hipermovilidad deja de enlazarse también con la regla de sospecha vascular cumplida, en las dos fases. Ver «Una sola regla de estados» |
@@ -537,6 +538,108 @@ Bloque `embarazo`, «Ejercicio en el embarazo y el posparto», en `data/ejercici
 - **Sin dosis**: ni minutos, ni días, ni MET (las metarregresiones de dosis de `Davenport 2018 (ánimo)` y Deprato 2025 comparan estudios distintos, no dosis). La dosis sigue siendo la del recuadro y los avisos.
 - **No usadas**: Singh 2023 y Dipietro 2019 (las supera Deprato 2025), Hicks 2024 y Özyurt 2025 (cifras no fiables), Burani 2023 (no estudia el ejercicio), y la cesárea y el parto instrumental, solo en «Ampliar».
 
+## Bloque 9 — propuesta (2026-10; no aceptada como bloque: ver «Bloque 9 — decisión»)
+
+«Ejercicio en el trastorno mastocitario y la anafilaxia», con el patrón de las propuestas 7 y 8. Solo la propuesta: no se ha leído ninguna fuente nueva ni se ha escrito contenido. Se apoya en lo leído para la tarjeta (`docs/mastocitaria.md`, «Fuentes leídas enteras», tabla C y «Comprobación de pasajes»).
+
+**Recomendación: no hacer el bloque** (decisión 2 del diseño). Con lo ya leído, lo más probable es que **ninguna afirmación sobre el ejercicio como tratamiento llegue a `clinico`**, y entonces el bloque no tendría frases para el paciente. Lo poco que podría llegar a `clinico` (los cofactores en provocaciones controladas) es materia del alergólogo, y el aviso de la fase 6 ya dice lo que le toca al fisioterapeuta. El razonamiento, punto por punto:
+
+### 1. ¿Merece un bloque? Qué explicaría que no esté ya dicho
+
+Lo que ya dicen la tarjeta, el recuadro `.ma-fase5` y el aviso `mastocitos` sobre el ejercicio:
+
+- **Tarjeta**: el ejercicio y «un alimento con el ejercicio» son dos de los desencadenantes que se marcan.
+- **Recuadro de la fase 5**: qué hacer ante una anafilaxia, desmayo vasovagal o anafilaxia, «evita en la sesión lo que ya le ha provocado episodios; no hace falta evitar una lista de todos los descritos» (Brockow 2021). No habla del ejercicio en sí.
+- **Aviso `mastocitos`**: que traiga el autoinyector; nada de termoterapia ni crioterapia si el calor o el frío le han dado episodios; «No hace falta dejar el ejercicio: en la anafilaxia por ejercicio, las guías piden mantenerlo, acompañado y con el autoinyector a mano (Srisuwatchari 2023, tabla 2; extenderlo a la mastocitosis es una inferencia)»; si un alimento con el ejercicio le ha dado episodios, no tomarlo en las horas de antes y después.
+- **Red `RED_MASTOCITOS`**: la conducta ante una anafilaxia, para la sesión y para casa.
+
+Lo que un bloque podría añadir (y no está):
+
+| Apartado | Contenido posible | Qué nivel alcanzaría con lo leído |
+|---|---|---|
+| `que` | Qué es la anafilaxia inducida por el ejercicio y su forma dependiente de un alimento: suele empezar en los primeros 30 min; basta una actividad cotidiana (caminar, subir escaleras); el mismo ejercicio la da un día y otro no según los cofactores: comida previa, AINE, alcohol, calor o frío, infección, falta de sueño, fase premenstrual (Pravettoni 2016; Srisuwatchari 2023; Cardona 2020, fig. 3 y tabla 5) | Descripción en revisiones narrativas y en un documento de posición sin grados: como mucho `mecanismo`, como el malestar postesfuerzo del bloque 6 |
+| `evidencia` | Con qué frecuencia el ejercicio desencadena episodios en la mastocitosis: el 63 % lo nombra en una encuesta de síntomas (Hamilton 2018) y ninguna anafilaxia por ejercicio en la serie española (González-de-Olano 2017, fig. 1) | `discutido`: las dos fuentes cuentan cosas distintas (síntomas referidos frente a anafilaxias), como ya anota la contradicción 4 de la tarjeta |
+| `evidencia` | Si el ejercicio regular es seguro o útil en la mastocitosis | **Ninguna fuente leída lo estudia.** No conozco ningún ensayo; no lo he comprobado (ver 2) |
+| `evidencia` | Por qué el ejercicio activa los mastocitos (osmolaridad, redistribución del flujo, permeabilidad intestinal y absorción del alérgeno) | Hipótesis citadas en Pravettoni 2016 y Srisuwatchari 2023: `mecanismo`, en parte solo en animales o in vitro |
+| `consulta` | Que el calentamiento corporal de la sesión (ejercicio intenso, sala caliente) cuenta como cofactor; que preguntar por la comida y los AINE de las horas previas es parte del interrogatorio del alergólogo | Las dos cosas ya están, en esencia, en el aviso y en la tabla de desencadenantes de la tarjeta |
+| `paciente` | — | Ninguna frase se sostiene: no hay afirmación `clinico` sobre el ejercicio en estas personas (ver 3) |
+
+Fuera, se haga o no: la conducta ante una anafilaxia (es del recuadro), el diagnóstico de la anafilaxia por ejercicio, las pruebas de provocación, qué alimento evitar y cuántas horas antes (lo decide el alergólogo; el aviso solo recuerda lo que «se lo han dicho»), la premedicación con antihistamínicos o cromoglicato, y el autoinyector (recetarlo o no).
+
+### 2. Fuentes
+
+**Ya leídas para la tarjeta** (en el registro salvo Pravettoni 2016 y Hamilton 2018, que se leyeron pero no se citan):
+
+| Fuente | Qué afirmación daría | Nivel posible |
+|---|---|---|
+| Srisuwatchari 2023 (revisión narrativa, PMC10606284) | Basta actividad cotidiana; mantener el ejercicio regular, acompañado, con autoinyector; sin el alimento 4–6 h antes y 1–4 h después (tabla 2) | Recomendación sin datos comparativos: `mecanismo` en el sentido del diseño («usada, no comparada», como la regla de 5 sobre 10 del bloque 7). Solo para la forma dependiente de alimentos |
+| Pravettoni 2016 (revisión narrativa, PMC5089823) | Inicio en los primeros 30 min; cofactores; tumbado con las piernas elevadas | `mecanismo`; la posición ya está en el recuadro |
+| Cardona 2020 (WAO, sin grados) | Ejercicio, frío y calor como activación directa (fig. 2); cofactores (fig. 3, tabla 5) | `mecanismo` |
+| Valent 2020; Valent 2022 (CIE-10-MC) | Ejercicio y aspirina o alcohol como cofactores; «physical stimuli such as exercise, vibration, or temperature» pueden contribuir a un SAMA | `mecanismo` |
+| Muraro 2022 (EAACI, GRADE) | Autoinyector con anafilaxia previa por ejercicio (recuadro 4); identificar los cofactores no alérgicos en el plan (recuadro 5) | Son del alergólogo; sin certeza propia para el ejercicio |
+| Hamilton 2018 y González-de-Olano 2017 | El ejercicio como desencadenante en encuestas (63 %) frente a anafilaxias registradas (0 %) | `discutido` |
+| Brockow 2021 (niños) | «Physical effort» como cofactor; evitar solo lo que ya le dio reacciones | `mecanismo`, con la salvedad de la población pediátrica |
+| Lee y Picard 2025 | Episodios provocados por ejercicio, calor o estrés; AINE en las 6 h previas | `mecanismo` |
+
+**Candidatas nuevas, sin leer** (pistas, no contenido; títulos y años de memoria, a comprobar):
+
+| Pista | Para qué | Acceso |
+|---|---|---|
+| Christensen MJ et al., provocación con trigo y cofactores (ejercicio, aspirina, alcohol), *J Allergy Clin Immunol Pract* (~2019) | La única pista que podría dar un `clinico` de daño: cuánto aumenta cada cofactor la probabilidad de reacción en personas con alergia al trigo | Probablemente **no** en PMC: PDF |
+| Feldweg AM, anafilaxia por ejercicio dependiente de alimentos en consulta, *J Allergy Clin Immunol Pract* (~2017) | Marco de manejo | Probablemente PDF |
+| Giannetti MP, revisión de la anafilaxia inducida por el ejercicio, *Curr Allergy Asthma Rep* (~2018) | Epidemiología y cofactores | **No sé** si está en PMC |
+| Una búsqueda de ensayos o cohortes de ejercicio o actividad física en la mastocitosis (calidad de vida, tolerancia) | Lo único que podría sostener una frase para el paciente | **No sé si existe ninguno**; si no aparece nada, la conclusión no cambia |
+
+Ninguna de las pistas apunta a un ensayo sobre el beneficio o la seguridad del ejercicio regular en la mastocitosis o el SAMA.
+
+### 3. Niveles esperados (antes de leer; pueden cambiar)
+
+- **`clinico`**: ninguno sobre el efecto del ejercicio. Como mucho, y solo si se leyera Christensen (o equivalente) entero: que en la alergia al trigo dependiente de cofactores, el ejercicio, la aspirina y el alcohol aumentan las reacciones en provocación controlada. Es un dato diagnóstico del alergólogo, de una población estrecha, y no cambia la dosis del fisioterapeuta.
+- **`mecanismo`**: qué es la anafilaxia inducida por el ejercicio, su relación con el tiempo, los cofactores descritos y las hipótesis de por qué ocurre; las recomendaciones de manejo («mantener el ejercicio», acompañado, horas sin el alimento), que son opinión de expertos.
+- **`discutido`**: cuánto desencadena el ejercicio en la mastocitosis (63 % en encuesta frente a 0 % de anafilaxias en la serie española).
+- **Para el paciente**: **ninguna frase**. «Puede seguir haciendo ejercicio» se apoyaría solo en opinión de expertos (y en una inferencia desde otra enfermedad), y el test de la decisión 4 lo impide con razón; «el ejercicio es seguro en la mastocitosis» sería más de lo que dice ninguna fuente.
+
+Un bloque así sería todo `mecanismo` salvo un `discutido`, sin frases para el paciente: exactamente el caso de la decisión 2. A diferencia de las mioquinas, no hay un bloque padre donde fundirlo (ninguno trata la anafilaxia).
+
+### 4. Enlaces, si aun así se hace
+
+Con la misma regla de `CONDICION_EJERCICIO`, que ya da la fase 5 (payload `ma`) y la fase 6 (`state.mastocitos`):
+
+```js
+mastocitos: { id: 'mastocitario', ayuda: 'enlaceCondicionMastocitos', motivo: 'mastocitario', ayudaPlan: 'enlaceMotivoMastocitario',
+  enlaza: ({ estado, desencadenantes }) => estado === 'diagnosticado' && (desencadenantes.ejercicio || desencadenantes.alimento) },
+```
+
+- **Solo «Diagnosticado»** (la tarjeta no tiene otro estado).
+- **Recomendaría solo con «Ejercicio o esfuerzo» o «Un alimento con el ejercicio» marcados**, no con todos los tipos ni con el riesgo alto: es donde el bloque trataría el caso del paciente. Con todos los tipos se mandaría a leer sobre la anafilaxia por ejercicio a quien nunca la ha tenido, que es la puerta a evitar el ejercicio sin motivo (riesgo 5b). Obligaría a que `datosCondicionEjercicio()` pase los desencadenantes (hoy pasa `estado`, `subtipo` y `vs`) y la fase 5 los lea de `ma.de` (texto) o del `state`.
+- Fase 6: la misma regla, como línea «También» tras la del embarazo.
+- Ninguna entrada en `BLOQUE_POR_HIPOTESIS` (es una condición, no una hipótesis), y ninguna otra condición especial la enlazaría (punto 5 de «Mantenimiento»): la hipermovilidad y el POTS no tienen relación demostrada (Lee y Picard 2025; Valdez 2026), y la tarjeta prohíbe la regla automática (decisión 5 de `docs/mastocitaria.md`).
+
+### 5. Riesgos
+
+- **Contradecir el aviso**. El aviso dice «no hace falta dejar el ejercicio»; un bloque sin `clinico` tendría que decir que eso es opinión de expertos e inferencia desde otra enfermedad. Es verdad (el propio aviso ya lo dice), pero repetirlo con chips de `mecanismo` en una guía titulada «Efectos del ejercicio» debilita el mensaje que la tarjeta quiere dar.
+- **Invitar a evitar el ejercicio sin motivo**. Un bloque entero sobre el ejercicio como desencadenante de la anafilaxia, enlazado desde una condición que no siempre lo incluye, se leería como «el ejercicio es peligroso aquí». Las sociedades piden evitar solo lo que ya dio reacciones (Brockow 2021), y la serie española no recoge ninguna anafilaxia por ejercicio en la mastocitosis (González-de-Olano 2017).
+- **Consejos del alergólogo**: horas de ayuno, qué alimento, premedicación, provocaciones, receta del autoinyector. El bloque tendría que remitirlos todos, y entonces casi no queda contenido propio.
+- **Repetir el recuadro**: la conducta ante una anafilaxia ya está, con sus fuentes, en el recuadro, la red y el aviso.
+
+### Qué propongo en su lugar
+
+1. **No hacer el bloque 9** y dejar anotado, en «Desde los recuadros de la fase 5», por qué el trastorno mastocitario sigue sin enlace: ningún bloque podría tener una frase `clinico` sobre el ejercicio en estas personas.
+2. **Opcional, como cambio de la tarjeta y no de esta guía** (`docs/mastocitaria.md`): si se quiere que el fisioterapeuta sepa qué es la anafilaxia por ejercicio, una línea en el aviso `mastocitos` o en el recuadro, con fuentes ya leídas y comprobadas: «suele empezar en los primeros 30 minutos de ejercicio, y el mismo ejercicio puede dar la reacción un día y otro no según lo que haya comido, los AINE, el alcohol o el calor (Pravettoni 2016; Cardona 2020, tabla 5)». Habría que registrar Pravettoni 2016 y regenerar `docs/plan-tratamiento-frases.md`. Es una decisión aparte; no la he hecho.
+3. Si aun así quieres el bloque, primero leer Christensen (o la provocación con cofactores equivalente) y hacer una búsqueda de ejercicio en la mastocitosis: solo si aparece algo `clinico` sobre el ejercicio en estas personas tiene sentido seguir, con los enlaces del punto 4.
+
+### Después de decidir (sesiones siguientes, según «Modelo por etapa»)
+
+- **Si se acepta no hacerlo** (es lo que se decidió): anotarlo en «Estado» y en «Desde los recuadros de la fase 5»; `CLAUDE.md` no cambia (el trastorno mastocitario ya figura entre las condiciones sin bloque).
+- **Si se hace**: lectura con un agente que devuelve citas literales (Sonnet; las que no estén en PMC, en PDF del usuario); decisiones de nivel y redacción (Opus); registro en `data/referencias.js` y `node tests/gen-referencias.mjs`; enlaces con sus líneas de motivo, propuestas antes de escribirlas; tests unitarios (regla por desencadenante, fase 5 = fase 6, orden de las líneas); `node tests/smoke.mjs --solo ejercicio,mastocitos,fase6`; este documento y `CLAUDE.md` al día (el trastorno mastocitario sale de «Sin enlace»). Sin fusionar hasta la revisión del usuario.
+
+
+## Bloque 9 — decisión (usuario, 2026-10)
+
+- **No se hace el bloque.** El usuario aceptó las recomendaciones de la propuesta. Antes pidió comprobar si algún PDF podía cambiarlas: una búsqueda en PubMed (solo títulos, resúmenes y acceso) no encontró ningún ensayo ni cohorte de ejercicio como tratamiento en la mastocitosis; Kulinski 2018 (PMC6344323, histamina y triptasa que suben con el ejercicio en la mastocitosis) solo daría `mecanismo`, y las revisiones de manejo (Feldweg 2015 y 2017, Giannetti 2018, Geller 2020) y la posición de la EAACI sobre los mecanismos (Ansley 2015: «proposed mechanisms lack validity») no pasan de opinión de expertos o `mecanismo`.
+- **Christensen 2019** (PDF del usuario, leído entero) **no cambia la decisión**: 25 adultos con anafilaxia por trigo dependiente del ejercicio, **sin mastocitosis** (triptasa basal y KIT D816V normales); el ejercicio (15 min de cinta) y la aspirina (1000 mg) bajan el umbral de gluten y hacen la reacción más grave, los dos juntos lo bajan más, y el alcohol no da diferencia significativa. Es un dato `clinico` de daño en una población estrecha, del alergólogo, y no dice nada del ejercicio regular ni da una frase para el paciente. Erratas: el resumen, el texto y las figuras dan cifras distintas (registro de la fuente); solo se usan los hallazgos cualitativos.
+- **En su lugar**, una línea en el aviso `mastocitos` de la fase 6 (`data/plan-tratamiento.js`): con un cofactor, la anafilaxia por ejercicio suele empezar en los primeros 30 minutos, la intensidad que la provoca varía incluso en la misma persona y los cofactores descritos (Pravettoni 2016, pasajes comprobados en PMC); en la alergia al trigo, el ejercicio y la aspirina bajan el umbral y agravan la reacción (Christensen 2019). Ver `docs/mastocitaria.md`, «Anafilaxia por ejercicio en el aviso». **Revisado por el usuario** (2026-10).
+- El trastorno mastocitario sigue entre las condiciones sin enlace a la guía (ver «Desde los recuadros de la fase 5»).
 
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
@@ -554,7 +657,7 @@ Bloque `embarazo`, «Ejercicio en el embarazo y el posparto», en `data/ejercici
   - **Disautonomía, en los dos estados** (2026-10, con el bloque 6, **revisado por el usuario**) → «Ejercicio en la intolerancia ortostática (POTS)»: por qué los programas empiezan tumbado y hasta dónde llega lo demostrado; la dosis sigue siendo la del recuadro.
   - **Hipermovilidad, en los dos estados, salvo con el subtipo vascular diagnosticado** (2026-10, con el bloque 7, **revisado por el usuario**) → «Ejercicio en la hipermovilidad (SEDh / TEH)»: si se puede cargar con fuerza y cuánto dolor provoca. Con el subtipo vascular no hay enlace: sus ensayos no lo incluyen y su pauta es la de Byers 2017, que ya lleva el recuadro. **Tampoco con la regla de sospecha del subtipo vascular cumplida** (`vs`; usuario, 2026-10): hasta que genética conteste el paciente puede tener el subtipo vascular, y el mensaje de carga alta del bloque no vale para él; el recuadro, en ese caso, no muestra la línea de Byers (`docs/hipermovilidad.md`), así que nada lo equilibraría. Vuelve solo cuando la sospecha se desmarca.
   - **Embarazo o posparto, en los dos estados, sin excepciones** (2026-10, con el bloque 8; textos aceptados por el usuario) → «Ejercicio en el embarazo y el posparto»: «Por qué se recomienda moverse y hasta dónde llega lo demostrado en el dolor de espalda y pelvis, el ánimo y los escapes; la dosis sigue siendo la de este recuadro.» Sin excepción por urgencias ni contraindicaciones: la tarjeta no las guarda y las urgencias ya bloquean la fase 6; la primera frase de `consulta` del bloque lo cubre.
-  - Sin enlace: trastorno mastocitario, anticoagulado y posquirúrgico (ningún bloque trata su tema).
+  - Sin enlace: trastorno mastocitario, anticoagulado y posquirúrgico (ningún bloque trata su tema). El mastocitario se estudió como bloque 9 y no se hizo: nada sobre el ejercicio en estas personas llega a `clinico` (ver «Bloque 9 — decisión»).
 - **Una sola regla de estados para las fases 5 y 6** (2026-10, Opus, a petición del usuario; **revisado por el usuario**, 2026-10): `CONDICION_EJERCICIO` (`lib/ejercicio.js`) guarda por condición su bloque, la línea del recuadro y, si sale también en la fase 6, su `motivo` y su línea «También»; `condicionEnlazaEjercicio(condicion, { estado, subtipo, vs })` es la regla. La fase 5 la llama con su payload (`es`, `st`, `vs`) a través de `enlaceCondicionEjercicioHTML()`; la fase 6, con las tarjetas del `state` a través de `motivosEjercicio({ riesgoPsico, cuestionarios, tarjetas, respuestas })` (`datosCondicionEjercicio()` calcula `vs` con `reglaVascular()`, como `hmPayload()`). Un test recorre todas las combinaciones de estado, subtipo y regla vascular y exige el mismo resultado en las dos fases.
   - **Fase 6, líneas nuevas** (textos aceptados por el usuario, 2026-10), en este orden tras «Efectos centrales» y «antiinflamatorio»:
     - disautonomía, en los dos estados → «Ejercicio en la intolerancia ortostática (POTS)»: «Por la disautonomía: su frase para el paciente habla de tolerar estar de pie, sin prometer que mejoren todos los síntomas; la dosis es la del aviso de este plan.»
