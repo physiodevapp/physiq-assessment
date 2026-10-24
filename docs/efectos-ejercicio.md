@@ -118,6 +118,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 5 — Efectos centrales | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). 8 fuentes, ver «Bloque 5 — decisiones de nivel». Con él no queda ningún bloque pendiente y la guía deja de pintar «Pendientes de fuentes revisadas» |
 | Bloque 6 — Intolerancia ortostática (POTS) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Añadido después del diseño, a petición del usuario, para enlazar la tarjeta de disautonomía. 7 fuentes, ver «Bloque 6 — decisiones de nivel» |
 | Bloque 7 — Hipermovilidad (SEDh / TEH) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Propuesta aceptada antes de leer, ver «Bloque 7 — propuesta»; 14 fuentes, ver «Bloque 7 — decisiones de nivel» |
+| Bloque 8 — Embarazo y posparto | Propuesta **aceptada por el usuario** con las recomendaciones (2026-10): un bloque, enlace en los dos estados sin excepciones, sin `lu8` ni `ca10` en la tabla. Lectura hecha (2026-10, Sonnet): 9 fuentes en PMC y 8 PDF del usuario. Escrito (2026-10, Opus) y enlazado desde la tarjeta (textos aceptados por el usuario, 2026-10), **revisado por el usuario** (2026-10). Ver «Bloque 8 — lectura de fuentes» y «Bloque 8 — decisiones de nivel» |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet; los enlaces a «Efectos centrales» y «antiinflamatorio», Opus) y **revisado por el usuario** (2026-10): `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis (`BLOQUE_POR_HIPOTESIS`, Opus), también hecha y **revisada por el usuario** (2026-10) |
 | Enlace desde los recuadros de la fase 5 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): `enlaceCondicionEjercicioHTML()`; lupus diagnosticado → antiinflamatorio, osteoporosis → mecanotransducción |
 | Condiciones también en la fase 6 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): disautonomía → ortostática e hipermovilidad → su bloque, en «Educación», con la misma regla de estados que el recuadro (`CONDICION_EJERCICIO`, `condicionEnlazaEjercicio()`); la hipermovilidad deja de enlazarse también con la regla de sospecha vascular cumplida, en las dos fases. Ver «Una sola regla de estados» |
@@ -305,6 +306,238 @@ Fuentes leídas enteras por agentes Sonnet: en PMC, Liaghat 2022, Liaghat 2024, 
 - **Subtipo vascular**: fuera del bloque (decisión 1 de la propuesta). Una frase remite a la pauta de Byers 2017 del recuadro, y el recuadro no enlaza el bloque con ese subtipo.
 - **Erratas de las fuentes** (en el registro de cada una): Liaghat 2025 da p = 0,614 en el resumen y 0,138 en el texto; Reychler 2021 da una mediana de calidad que no sale de su tabla; Lindholm 2024 no cuadra los números de asignación; Spanhove 2022 tiene un Beighton medio por debajo de los cortes de 2017.
 
+## Bloque 8 — propuesta (aceptada por el usuario con las recomendaciones, 2026-10)
+
+«Ejercicio en el embarazo y el posparto», con el patrón de los bloques 6 y 7. La tarjeta «Embarazo o posparto» (`docs/embarazo-posparto.md`) ya da la dosis, las contraindicaciones, los signos para parar, el supino, la vuelta a correr, la diástasis y el suelo pélvico (recuadro `.em-fase5`, avisos `embarazo`, `posparto`, `lactancia`, `terapiaManualEmbarazo` y `sacroiliacaEmbarazo`). Le falta lo que da esta guía: **por qué** se recomienda moverse y **hasta dónde llega lo demostrado** en lo que importa al fisioterapeuta. Hoy es una de las condiciones «sin enlace» (ver «Desde los recuadros de la fase 5»). Nada de esto está escrito ni leído: solo la propuesta.
+
+### 1. Alcance
+
+**Recomiendo un solo bloque, con las frases de cada periodo marcadas en la propia frase** («En el embarazo…», «Tras el parto…»):
+
+- La tarjeta es una, con dos estados, y la regla de enlace (`CONDICION_EJERCICIO`) es más simple con un bloque.
+- El posparto, con lo ya leído, daría un bloque flojo: casi todo es suelo pélvico y diástasis (Beamish 2025, Gluppe 2021, Woodley 2020) y consensos Delphi, que no llegan a `clinico` (ver 3).
+- *Alternativa*: dos bloques («embarazo» y «posparto»). Solo si las fuentes nuevas del posparto (ánimo, dolor lumbopélvico) dan para un `evidencia` propio.
+
+**Qué explica el bloque** (y no da el recuadro):
+
+| Apartado | Contenido previsto |
+|---|---|
+| `que` | Qué cambia en el cuerpo con el embarazo que importe al ejercicio (gasto cardiaco y volumen de sangre, retorno venoso boca arriba, centro de gravedad) y qué hace el ejercicio sobre eso; tras el parto, el suelo pélvico y la pared abdominal |
+| `evidencia` | El ejercicio y el dolor lumbopélvico, el suelo pélvico y los escapes, el ánimo, la diástasis y la seguridad para el embarazo, cada uno con su nivel |
+| `consulta` | Por qué la dosis del recuadro y no otra: que los ensayos excluyen los embarazos con contraindicaciones (como el bloque 7 dice del subtipo vascular), que la diástasis no es un motivo para no ejercitarse, que las reglas de vuelta a correr son consenso y no ensayo. **Sin repetir cifras de dosis**: remite al recuadro |
+| `paciente` | Dos o tres frases, solo sobre afirmaciones `clinico` (ver 3) |
+| `detalle` | Los resultados obstétricos (diabetes gestacional, preeclampsia, peso, tipo de parto), si se leen, solo como contexto |
+
+**Qué queda fuera**:
+
+- **Lo obstétrico**: diagnosticar una contraindicación, la frecuencia cardiaca del feto, objetivos de peso, prevenir la diabetes gestacional o la preeclampsia como mensaje del fisioterapeuta (son de la matrona, el obstetra o el médico). Como mucho, en «Ampliar», dicho como resultado de los estudios y no como consejo.
+- **El suelo pélvico especializado**: la dosis del entrenamiento (8 × 3 al día de NG123), la exploración por tacto, el prolapso y la incontinencia anal. Lo decide la fisioterapia de suelo pélvico (decisión 12 de `docs/embarazo-posparto.md`).
+- **La lactancia y la leche**: solo la línea de Davenport 2025 que ya está en el aviso (contradicción 13 de la tarjeta).
+- **El aborto o la interrupción reciente** y la muñeca y mano: fuera de la tarjeta, fuera del bloque.
+
+### 2. Fuentes
+
+**Ya leídas enteras para la tarjeta** (en el registro). Solo las que aportan efecto o mecanismo; las que solo dan dosis o contraindicaciones no hacen falta aquí:
+
+| Fuente | Para qué afirmación | Cómo |
+|---|---|---|
+| Liddle y Pennick 2015 (Cochrane, es la del dolor lumbopélvico en el embarazo) | Ejercicio de 8–12 semanas: menos mujeres con dolor lumbar y pélvico (RR 0,66, moderada); el dolor pélvico solo no mejora con ejercicio en grupo (baja). Solo embarazo | Tal cual. Comprobar si hay una actualización posterior a 2015 (no lo sé) |
+| Woodley 2020 (Cochrane) | El suelo pélvico estructurado en el embarazo, sin escapes, los previene (moderada al final del embarazo, alta a los 3–6 meses del parto); ofrecido a todas tras el parto, sin efecto claro; como tratamiento, incierto | Tal cual; la frase ya está en el bloque de suelo pélvico de la fase 2, se reutiliza su redacción |
+| Beamish 2025 | Tras el parto, el suelo pélvico reduce la incontinencia un 37 % (moderada); el ejercicio abdominal reduce la distancia entre rectos ~0,5 cm; el curl-up la reduce al instante y el transverso la aumenta | Tal cual. Con Woodley, la contradicción 8 de la tarjeta pasa a `discutido` |
+| Gluppe 2021 y Sperstad 2016 | Diástasis: certeza muy baja para programas concretos; se resuelve sola en buena parte durante el primer año; la leve no se asocia al dolor lumbopélvico | Tal cual |
+| ACOG 2020 | Mecanismo del supino (retorno venoso desde la semana 20) y adaptaciones del embarazo; ejercicio en el agua para el dolor lumbar | Opinión de comité, sin grados: solo `mecanismo` o `consulta` |
+| Mottola 2018 | El marco con GRADE y, si se releen esos pasajes, la certeza que da a cada resultado (dolor, ánimo, seguridad) | La certeza de cada resultado sale de sus metaanálisis acompañantes: mejor leer esos (abajo). El PDF no está en el repositorio: habría que pasarlo otra vez |
+| Vleeming 2008 y Burani 2023 | Ejercicio individualizado en el dolor de cintura pélvica (nivel C); el miedo-evitación entre los predictores de persistencia | Burani es una asociación, no un efecto del ejercicio: `mecanismo` |
+| Evenson 2024 | Que la evidencia del posparto es «sparse» | Para el `evidencia` del posparto |
+| Davenport 2025, Christopher 2024, Deering 2024 | Que las reglas del posparto y de la vuelta a correr son consenso Delphi | Solo para decir de dónde salen; sus cifras ya están en el recuadro y no se repiten |
+| Singh 2023 (bloque 5, ya registrada) | Si su revisión paraguas recoge a embarazadas y puérperas, el ánimo | Comprobar en el texto ya registrado; no lo recuerdo con seguridad |
+
+No sirven aquí: Hall 2016 y Clinton 2017 (terapia manual, no ejercicio), Bull 2020 (recomendaciones, sin los perfiles GRADE), las NICE (derivación y programas, ya en la tarjeta), RCOG 2015.
+
+**Candidatas nuevas, sin leer** (pistas, no contenido; títulos de memoria, a comprobar al buscarlas):
+
+| Pista | Para qué | Acceso |
+|---|---|---|
+| Los metaanálisis que acompañan a Mottola 2018 en el mismo número del *Br J Sports Med* (2018–2019, Davenport, Ruchat y colaboradores): ejercicio y dolor lumbar, pélvico y lumbopélvico en el embarazo; ejercicio prenatal y depresión o ansiedad prenatal y posnatal; ejercicio prenatal e incontinencia; ejercicio prenatal y mortalidad fetal; resultados neonatales | La certeza GRADE de cada resultado; la seguridad para el embarazo | El *BJSM* los publicó en acceso abierto, pero **no sé si están en PMC**: el agente lo comprueba; los que no, en PDF |
+| Una revisión de ejercicio en la depresión posparto (p. ej., Poyatos-León 2017, *Birth*; sin comprobar) | El ánimo tras el parto | Por comprobar; probablemente PDF |
+| La Cochrane de ejercicio para prevenir la diabetes gestacional | Solo para «Ampliar» (fuera de lo que dice el fisioterapeuta) | Cochrane: PDF. **Recomiendo no pedirla**: no cambia nada de la consulta |
+| Una fuente sobre la relaxina y la laxitud articular | Solo si se quiere desmontar la idea de «no estirar porque la relaxina afloja»; sin fuente leída, no entra | Por localizar |
+
+**Recomiendo**: leer primero los metaanálisis acompañantes del dolor lumbopélvico, del ánimo, de la incontinencia y de la seguridad, y decidir con ellos si hace falta algo más del posparto.
+
+### 3. Niveles esperados (antes de leer; pueden cambiar)
+
+- **`clinico`**:
+  - En el embarazo, el ejercicio estructurado hace menos probable el dolor lumbar y pélvico (Liddle y Pennick 2015, moderada); el dolor pélvico solo, sin mejoría demostrada (baja). Es una sola fuente con resultados distintos por desenlace, no `discutido`.
+  - El suelo pélvico estructurado en el embarazo, en mujeres sin escapes, los previene (Woodley 2020).
+  - El ánimo prenatal o posnatal, si los metaanálisis acompañantes lo miden.
+  - La seguridad: que el ejercicio sin contraindicaciones no se asocia a más pérdidas del embarazo ni partos prematuros, si se lee la fuente y con su certeza.
+  - Como hecho de los estudios (precedente de la sal y el agua del bloque 6, y del subtipo vascular del bloque 7): que los ensayos excluyen los embarazos con contraindicaciones.
+- **`mecanismo`**:
+  - Las adaptaciones del embarazo y el retorno venoso boca arriba (ACOG 2020).
+  - **La distancia entre rectos**: es una medida del tejido, como la densidad ósea en el bloque 2. Que el ejercicio abdominal la reduzca ~0,5 cm (Beamish 2025) no dice nada del dolor ni de la función; el curl-up que la reduce al instante y el transverso que la aumenta, tampoco.
+  - Que la diástasis leve no se asocie al dolor lumbopélvico (Sperstad 2016) y el miedo-evitación como predictor (Burani 2023): asociaciones en cohortes, no efectos del ejercicio.
+  - Las reglas de consenso (vuelta a correr, parar y caminar con escapes): usadas, no comparadas, como la regla de 5 sobre 10 del bloque 7. La frase dice «consenso de expertos».
+- **`discutido`**:
+  - El suelo pélvico ofrecido a todas tras el parto: Beamish 2025 (−37 %, moderada) frente a Woodley 2020 (sin efecto claro, moderada). Se dicen las dos, y que NICE supervisa solo a las de riesgo.
+  - La diástasis y los abdominales: en el embarazo, evitar el curl es opinión de expertos (Mottola 2018); tras el parto, los datos dicen que lo reduce (Gluppe 2021, Beamish 2025). No es exactamente una contradicción (distinto periodo): la frase lo explica así.
+  - Cuánto pesa la evidencia del posparto en conjunto («sparse», Evenson 2024).
+
+**Frases para el paciente que podrían sostenerse** (borrador; se reescriben con lo leído):
+
+1. «Hacer ejercicio pensado para ti durante el embarazo hace menos probable que te duela la espalda o la pelvis; si ya te duele, no siempre lo quita.» (apoya: Liddle y Pennick 2015)
+2. «Entrenar el suelo pélvico desde el embarazo ayuda a tener menos escapes de orina al final del embarazo y después del parto.» (apoya: Woodley 2020)
+3. Una sobre la seguridad o el ánimo, solo si alguna fuente nueva la sostiene en `clinico`.
+
+Ninguna sobre «cerrar la diástasis», «un parto más fácil», «proteger al bebé», «tonificar» ni «recuperar la figura».
+
+### 4. Enlaces
+
+**Recuadro de la fase 5 y «Educación» de la fase 6, en los dos estados (embarazada y posparto), con la misma regla** (`CONDICION_EJERCICIO`):
+
+```js
+embarazo: { id: 'embarazo', ayuda: 'enlaceCondicionEmbarazo', motivo: 'embarazo', ayudaPlan: 'enlaceMotivoEmbarazo',
+  enlaza: ({ estado }) => !!estado },
+```
+
+La fase 5 lee `es` del payload `em`; la fase 6, `state.embarazo.estado` (`datosCondicionEjercicio()` no necesita nada más; `plan.js` pasa la tarjeta en `tarjetas.embarazo`). Textos borrador, para aceptarlos después de leer las fuentes:
+
+- Fase 5: «Por qué se recomienda moverse y hasta dónde llega lo demostrado en el dolor lumbopélvico y el suelo pélvico; la dosis sigue siendo la de este recuadro.»
+- Fase 6: «Por el embarazo o el posparto: sus frases para el paciente hablan del dolor de espalda y pelvis y de los escapes, sin prometer más; la dosis es la del aviso de este plan.»
+
+**Sin excepción por estado ni por urgencias** (*recomiendo*): la tarjeta no guarda las contraindicaciones de Mottola (tabla 2; solo texto, T4), así que no hay dato para una regla, y las urgencias de la fase 2 ya bloquean la fase 6. El bloque lo cubre con su primera frase de `consulta` («los ensayos solo incluyen embarazos sin contraindicaciones; con una, el recuadro»). *Alternativa*: no enlazar desde la fase 5 con una urgencia del sistema `transversal_embarazo` en `ur`. Sería la primera condición con esa excepción.
+
+**`lu8` y `ca10` no entran en `BLOQUE_POR_HIPOTESIS`** (*recomiendo*):
+
+- La tabla es por hipótesis, sin mirar las tarjetas: la sacroilíaca de una persona que no está embarazada mandaría a este bloque.
+- Para hacerlo bien haría falta una entrada `{ bloque, condicion: 'embarazo' }`, otro mecanismo, para ganar solo el orden (principal en vez de «También»): con la tarjeta marcada, el enlace ya sale.
+- La pauta específica de la sacroilíaca en el embarazo ya va en `sacroiliacaEmbarazo` (Vleeming 2008).
+
+**Otras condiciones** (punto 5 de «Mantenimiento»): ninguna. La osteoporosis con causa PLO no se enlaza a este bloque: el bloque no hablará del hueso (eso es «Carga y adaptación»), y no hay reglas entre tarjetas (decisión 14 de la tarjeta). Hipermovilidad, disautonomía, lupus, anticoagulado y mastocitos: ninguna fuente leída los cruza con el ejercicio en el embarazo.
+
+### 5. Riesgos de redacción
+
+- **Exceso de promesa**: «el ejercicio previene la diabetes gestacional o la preeclampsia» (no es mensaje del fisioterapeuta, y como mucho va en «Ampliar»); «cierra la diástasis» (es `mecanismo`, ~0,5 cm); «previene el prolapso» (ninguna fuente leída); «todas necesitan un programa de suelo pélvico tras el parto» (`discutido`; NICE solo a las de riesgo).
+- **Consejos que no son del fisioterapeuta**: frecuencia cardiaca objetivo, controles del feto, ganancia de peso, la leche. Diagnosticar una contraindicación: el bloque remite al recuadro y a su equipo obstétrico.
+- **Contradicciones con el recuadro y los avisos**, que mandan:
+  - supino: solo si se marea o se encuentra mal (Mottola 2018), nunca «no boca arriba desde el primer trimestre»;
+  - el posparto sin autorización médica de rutina (Davenport 2025): ninguna frase de «consulte con su médico antes de empezar»;
+  - el curl en el embarazo: el recuadro sigue a Mottola (evitarlo, opinión de expertos); el bloque no lo permite, solo explica por qué tras el parto los datos son otros;
+  - la vuelta a correr: no antes de 3 semanas (Christopher 2024); ningún otro plazo;
+  - el suelo pélvico: la frase de Woodley con la misma redacción que el bloque de la fase 2 (`sueloEvidencia`).
+- **Mezclar periodos**: Liddle y Pennick es solo embarazo; Beamish, solo posparto. Cada frase dice el suyo.
+- **Repetir la dosis**: ni 150 minutos, ni la «talk test», ni los días; el bloque explica y el recuadro dosifica.
+- **Un Delphi no es `clinico`**, aunque venga en *BJSM* y con mucho acuerdo.
+
+### Después de aceptarla (sesiones siguientes, según «Modelo por etapa»)
+
+1. Lectura de fuentes (Sonnet, agente): citas literales con su sección; las que no estén en PMC, en PDF del usuario; el PDF de Mottola 2018 otra vez si hace falta.
+2. Decisiones de nivel y redacción (Opus), en «Bloque 8 — decisiones de nivel».
+3. Registro en `data/referencias.js` (solo las citadas, con su `revision`) y `node tests/gen-referencias.mjs` (Sonnet).
+4. Enlaces (`CONDICION_EJERCICIO`, `TEXTOS_EJERCICIO`, `plan.js`, `_embarazoResultadosHTML()`), con los textos de las líneas de motivo propuestos antes de escribirlos.
+5. Tests unitarios (`tests/unit/ejercicio.mjs`: regla por estado, fase 5 = fase 6, orden de las líneas) y `node tests/smoke.mjs --solo ejercicio,embarazo,fase6`.
+6. Este documento y `CLAUDE.md` al día (embarazo sale de «Sin enlace»). Sin fusionar hasta la revisión del usuario.
+
+## Bloque 8 — lectura de fuentes (2026-10, Sonnet; primera tanda)
+
+Solo lectura: nada escrito en `data/` ni en el registro. Dos agentes Sonnet devolvieron citas literales en inglés con su sección; las notas completas están en el scratchpad de la sesión, fuera del repositorio. Lo que no viene en el texto de PMC (figuras, tablas suplementarias, perfiles GRADE) no se cita.
+
+| Tema | Fuente | PMC | Estado de lectura |
+|---|---|---|---|
+| Suelo pélvico y diástasis (posparto) | Beamish 2025 (ya registrada) | PMC12013572 | Entera, sin tablas de características ni GRADE. 65 estudios, n = 21 334 |
+| Diástasis (posparto) | Gluppe 2021 (ya registrada) | PMC8721086 | Entera. 7 ECA, n = 381 |
+| Diástasis (cohorte) | Sperstad 2016 (ya registrada) | PMC5013086 | Entera, con tablas. 300 primíparas, 178 al año |
+| Dolor de cintura pélvica persistente | Burani 2023 (ya registrada) | PMC10744457 | Entera. 10 cohortes, sin metaanálisis ni GRADE |
+| Guías del posparto | Evenson 2024 (ya registrada) | PMC11184298 | Entera, sin las tablas con las citas de cada guía |
+| Ánimo, población general y perinatal | Singh 2023 (ya registrada, bloque 5) | PMC10579187 | Entera. Fila «Pregnancy/postpartum» de su tabla 2 |
+| Ánimo, embarazo y posparto | Dipietro 2019, Med Sci Sports Exerc (revisión paraguas del comité de la guía de EE. UU.) | PMC6527310 | Entera. Sin GRADE; autores truncados en PubMed, completarlos al citar |
+| Ánimo posparto tras ejercicio prenatal | Hicks 2024, Arch Womens Ment Health | PMC12122183 | Entera. **No usar sus cifras** (ver abajo) |
+| Dolor lumbopélvico posparto | Özyurt 2025, BMC Womens Health | PMC12231622 | Entera. 37 ECA, 1739 mujeres. **Solo su conclusión cualitativa** (ver abajo) |
+
+**Sin texto completo** (solo el resumen de PubMed; sirven para decidir qué pedir, no para citar):
+
+| Fuente | DOI | Qué dice el resumen |
+|---|---|---|
+| Deprato 2025, *Br J Sports Med* 59(8):550–561, ánimo posparto | 10.1136/bjsports-2024-108478 | 35 estudios, GRADE; depresión SMD −0,52 (−0,80 a −0,24; 19 ECA), certeza moderada |
+| Ruchat 2025, *Br J Sports Med* 59(8):594–604, dolor musculoesquelético posparto | 10.1136/bjsports-2024-108488 | Ejercicio solo: dolor lumbopélvico −2,21/10 (4 ECA, n = 210), certeza moderada |
+| Mladenovic 2026, *Braz J Phys Ther*, ejercicio en el dolor lumbopélvico del embarazo (31 ECA, GRADE) | 10.1016/j.bjpt.2026.101605 | Tiene PMCID (PMC13380804), pero solo llegan el resumen y los *highlights*: reintentar o PDF. A corto plazo no mejor que la atención obstétrica (baja); a 6–12 semanas, mejor (moderada) |
+| Lu 2026, *J Pain*, dolor de cintura pélvica en el embarazo (11 ECA) | 10.1016/j.jpain.2026.106401 | Dolor y función mejoran, certeza moderada |
+| Las seis compañeras de Mottola 2018 (*Br J Sports Med* 2018–2019) | Las de dolor lumbopélvico (10.1136/bjsports-2018-099400), ánimo (…-099697), incontinencia (…-099780), mortalidad fetal (…-099773), daños maternos (…-099821) y supino (…-099919) | Ni PMC ni Europe PMC; bjsm.bmj.com responde 403 desde la sesión |
+
+**Comprobado**: la Cochrane del dolor lumbopélvico del embarazo (CD001139) no tiene versión posterior a la de 2015 (Liddle y Pennick 2015, ya leída). Relaxina y laxitud articular: nada en una búsqueda; queda fuera, como prevé la propuesta.
+
+### Avisos de lectura (para quien redacte)
+
+- **Beamish 2025**:
+  - suelo pélvico tras el parto e incontinencia urinaria: OR 0,59 (0,39–0,89; 8 ECA, n = 2005; I² 71 %), certeza moderada (rebajada solo por indirecta); el «37 %» del resumen es el de solo suelo pélvico (OR 0,63; 0,41–0,97; 7 ECA). Mujeres con y sin síntomas, medido al terminar la intervención;
+  - la gravedad de la incontinencia no cambia (muy baja); incontinencia anal y prolapso, sin efecto significativo (el OR 0,44 del prolapso es un solo ensayo, que los autores piden no generalizar);
+  - distancia entre rectos −0,52 cm en reposo (baja) y −0,47 cm con la cabeza levantada (moderada); el resumen y el texto no dan la misma certeza;
+  - en agudo, el curl-up la reduce y el transverso la aumenta; el efecto crónico de cada ejercicio no se puede separar;
+  - **no mide dolor, función ni calidad de vida ligados a la diástasis**, y no hay ensayos de ejercicio general (aeróbico o de fuerza) sobre estos desenlaces. Sin efectos adversos en el texto.
+- **Gluppe 2021**: certeza muy baja para cualquier programa; el transverso, −0,63 cm en dos pilotos (n = 30), que los autores piden no llevar a guías; sin efecto sobre el dolor lumbar ni la disfunción del suelo pélvico; el suelo pélvico «should not be discouraged» con diástasis; *highlights* «low» frente a resumen «very low».
+- **Sperstad 2016**: la «no difference» de dolor lumbopélvico con diástasis es 45,6 % frente a 32,5 % (p = 0,10) en 178 mujeres: dicho como «no se vio una asociación clara en un estudio pequeño», no como «la diástasis no duele». Casi toda leve. Erratas en el texto (un IC que no contiene su OR).
+- **Burani 2023**: el ejercicio no se estudia como predictor ni como protector. El miedo-evitación pesa poco (OR 1,06 por punto del FABQ); el catastrofismo, «weak or contradictory». Una «OR = 23» sin respaldo en los resultados.
+- **Evenson 2024**: guías «variable and based on sparse research evidence»; solo Australia y el Reino Unido usaron GRADE; los beneficios que citan son peso, depresión y ánimo, **no el dolor**. Descriptiva: no estima efectos.
+- **Ánimo (Singh 2023, Dipietro 2019)**:
+  - Singh 2023, fila «Pregnancy/postpartum»: 3 revisiones, 43 ECA, 3364 participantes, SMD mediana −0,59 (IQR −0,63 a −0,40); solo posparto, −0,49. Sin GRADE y con la confianza AMSTAR-2 de casi todas las revisiones «critically low» (lo que ya dice el bloque 5). Su frase de que los mayores beneficios son en embarazadas y puérperas no la sostiene su tabla;
+  - Dipietro 2019: «strong evidence» de una relación inversa entre actividad física y síntomas depresivos en el posparto, por la escala del comité de EE. UU., no GRADE; el propio texto dice que no se sabe si es independiente de la medicación o del apoyo social.
+  - Con eso, el ánimo en el posparto llega a `clinico` con certeza baja dicha en la frase, como en el bloque 5. Deprato 2025 (con GRADE) lo afinaría.
+- **Hicks 2024**: un «effect size 7,59» sin unidad e imposible en la EPDS, «causality» en la discusión y recuentos que no cuadran. No se usa.
+- **Özyurt 2025**: marca «High» con riesgo de sesgo e inconsistencia graves (I² 92 %), y calcula con diferencias antes-después, no entre grupos; texto y tabla discrepan. Solo vale su conclusión: «inadequate to draw strong conclusions». El dolor lumbopélvico del posparto queda sin afirmación `clinico` hasta tener Ruchat 2025.
+
+### Para la segunda tanda (PDF del usuario, por prioridad)
+
+1. Deprato 2025 (ánimo posparto, GRADE).
+2. La compañera de Mottola 2018 del dolor lumbopélvico en el embarazo (10.1136/bjsports-2018-099400).
+3. Ruchat 2025 (dolor musculoesquelético posparto, GRADE).
+4. La compañera de mortalidad fetal (10.1136/bjsports-2018-099773): es la base de una frase de seguridad para el paciente; sin ella no habrá frase de seguridad.
+5. Opcionales: Mladenovic 2026 (si el texto no llega al reintentar), la compañera del ánimo prenatal (…-099697), las de daños maternos (…-099821) y supino (…-099919), Lu 2026.
+
+**Lo que ya se puede escribir sin la segunda tanda**: las afirmaciones del embarazo sobre el dolor lumbopélvico (Liddle y Pennick 2015) y el suelo pélvico (Woodley 2020), las del posparto sobre la incontinencia y la diástasis (Beamish 2025, Gluppe 2021, Sperstad 2016), el ánimo con certeza baja (Singh 2023, Dipietro 2019) y los límites (Evenson 2024, Burani 2023). Faltarían el dolor lumbopélvico del posparto, la seguridad para el embarazo y una certeza mejor para el ánimo.
+
+## Bloque 8 — lectura de fuentes, segunda tanda (2026-10, Sonnet)
+
+Ocho PDF del usuario, leídos enteros por tres agentes Sonnet, con citas literales y página; figuras contrastadas sobre el PDF. **No se han leído los suplementos en línea** (figuras S y perfiles GRADE completos): lo que solo está ahí no se cita. Notas completas en el scratchpad de la sesión.
+
+| Clave propuesta | Fuente | Estudios | Para qué |
+|---|---|---|---|
+| `Davenport 2019 (dolor lumbopélvico)` | Davenport, Marchand, Mottola et al., *Br J Sports Med* 2019;53:90–98, doi:10.1136/bjsports-2018-099400 | 32 (23 ECA) | Dolor lumbar, pélvico y lumbopélvico en el embarazo y el posparto |
+| `Davenport 2018 (ánimo)` | Davenport, McCurdy, Mottola et al., *Br J Sports Med* 2018;52:1376–1385, doi:10.1136/bjsports-2018-099697 | 52 (26 ECA) | Depresión y ansiedad, prenatal y posnatal |
+| `Davenport 2018 (incontinencia)` | Davenport, Nagpal, Mottola et al., *Br J Sports Med* 2018;52:1397–1404, doi:10.1136/bjsports-2018-099780 | 24 (18 ECA) | Incontinencia urinaria en el embarazo y el posparto |
+| `Davenport 2019 (mortalidad fetal)` | Davenport, Kathol, Mottola et al., *Br J Sports Med* 2019;53(2):108–115, doi:10.1136/bjsports-2018-099773 (PDF de la versión en línea de 2018) | 46 (30 ECA) | Aborto y muerte perinatal |
+| `Davenport 2019 (daños maternos)` | Davenport, Ruchat, Sobierajski et al., *Br J Sports Med* 2019;53:99–107, doi:10.1136/bjsports-2018-099821 | 113 (79 ECA) | Daños maternos, parto |
+| `Mottola 2019` | Mottola, Nagpal, Bgeginski et al., *Br J Sports Med* 2019;53(2):82–89, doi:10.1136/bjsports-2018-099919 (PDF de la versión en línea de 2018) | 7 (3 ECA) | Ejercicio en supino. No es la guía canadiense (`Mottola 2018`) |
+| `Deprato 2025` | Deprato, Ruchat, Ali et al., *Br J Sports Med* 2025;59(8):550–561, doi:10.1136/bjsports-2024-108478 (PDF de la versión en línea de 2024) | 35 (26 ECA) | Depresión y ansiedad en el posparto |
+| `Ruchat 2025` | Ruchat, Beamish, Pellerin et al., *Br J Sports Med* 2025;59:594–604, doi:10.1136/bjsports-2024-108488 | 37 (23 ECA) | Dolor musculoesquelético en el posparto |
+
+Las claves con paréntesis siguen el precedente de `'Laslett 2005 (centralización)'`: hay varias Davenport del mismo año.
+
+### Avisos de lectura (para quien redacte)
+
+- **Dolor lumbopélvico en el embarazo: contradicción.** Liddle y Pennick 2015: el ejercicio de 8–12 semanas reduce cuántas mujeres tienen dolor lumbar y pélvico (RR 0,66, moderada). `Davenport 2019 (dolor lumbopélvico)`: no lo reduce (OR 0,78; 0,60–1,02; 12 ECA; muy baja), pero baja su intensidad (SMD −1,03; −1,58 a −0,48; 10 ECA; I² 92 %; muy baja), con un estudio extremo (SMD −5,34) sin análisis de sensibilidad y mujeres contadas dos veces en las figuras. Sus autores lo llaman «effective treatment» con certeza muy baja. **Va como `discutido`**; la frase para el paciente 1 de la propuesta no se sostiene tal cual. Sin datos de discapacidad ni de daños. En el posparto, tras ejercitarse en el embarazo, sin efecto (OR 0,89; 3 ECA; baja).
+- **Dolor lumbopélvico en el posparto** (`Ruchat 2025`, mujeres que ya tienen dolor): el conjunto, −1,35/10 (low, I² 90 %), que los autores llaman «not clinically significant»; solo ejercicio, −2,21/10 (−3,33 a −1,08; 4 ECA, n = 210; moderada), y con cointervención, nada (p = 0,001 entre subgrupos); discapacidad SMD −0,93 (low). El IC del «solo ejercicio» cruza su propio umbral clínico de 2 puntos, hay controles contados dos veces y los grupos control también mejoran solos: el efecto es acelerar la mejoría. Conclusión de los autores: el fortalecimiento del tronco reduce el dolor y la discapacidad. Sin efectos adversos informados. Candidato a `clinico` con la certeza baja del conjunto dicha en la frase.
+- **Ánimo en el embarazo** (`Davenport 2018 (ánimo)`): solo ejercicio, todos supervisados, reduce los síntomas depresivos (SMD −0,38; 13 ECA; moderada; «small») y la probabilidad de superar el corte de depresión de una escala (OR 0,33; 5 ECA; moderada); con cointervención (dieta, etc.), nada; el conjunto, muy baja. El ejercicio en el embarazo **no** cambia el ánimo tras el parto (SMD 0,05). Sin efecto sobre la ansiedad. «Supervisado» y «solo ejercicio» están confundidos. La dosis por metarregresión no es una comparación de dosis: no se usa.
+- **Ánimo en el posparto** (`Deprato 2025`): solo ejercicio, síntomas depresivos SMD −0,52 (−0,80 a −0,24; 19 ECA; moderada) y probabilidad de depresión OR 0,55 (0,32–0,95; 4 ECA, n = 303; «high» en resultados, «moderate» en el resumen, que contradice su propia regla de imprecisión: se usa moderada); con cointervención, nada significativo; ansiedad SMD −0,25 (2 ECA; baja). El suelo pélvico solo no mejora el ánimo. Más efecto si empieza en las 12 primeras semanas, pero es una comparación entre estudios, confundida con la depresión de partida: no se escribe como consejo. **Ninguna comparación con antidepresivos ni psicoterapia**: su «alternativa… comparable a los tratamientos convencionales» viene de otras referencias y no se usa; el bloque dice «junto a», como el bloque 5. Sin efectos adversos informados («safe» sin datos).
+  - Con Deprato 2025 sobra Dipietro 2019 (sin GRADE) y Singh 2023 queda como apoyo; Hicks 2024 sigue fuera.
+- **Incontinencia** (`Davenport 2018 (incontinencia)`): menos probabilidad de escapes en el embarazo (OR 0,50; 15 ECA; baja) y tras el parto (OR 0,63; 10 ECA; moderada), sobre todo en mujeres sin escapes de partida (prevención). «Not effective in treating» se apoya en un solo estudio estimable y una diferencia de subgrupos no significativa: es falta de datos, no falta de efecto. **Ningún estudio mide el ejercicio sin suelo pélvico**, así que el efecto es del suelo pélvico, no del ejercicio general. Una cohorte (n = 10 098) ve más escapes con ejercicio casi diario (OR 1,21 a 6 semanas; 1,63 a 6 meses): asociación, muy baja, que el resumen omite; va en «Ampliar». Coincide con Woodley 2020 (prevención) y no contradice a Beamish 2025.
+- **Seguridad del embarazo** (`Davenport 2019 (mortalidad fetal)`): aborto OR 0,88 (0,63–1,21; 23 ECA) y muerte perinatal OR 0,86 (0,49–1,52; 13 ECA), certeza **muy baja**, con IC que no descartan un aumento; todos los ensayos empezaron después de la semana 8, de intensidad moderada y aeróbicos. Los autores dicen «safe» con esa certeza. Lo más que se puede escribir: «en los estudios, el ejercicio sin contraindicaciones no aumentó el riesgo de aborto ni de muerte perinatal, con certeza muy baja». Una frase para el paciente sobre seguridad apoyada en eso se decide en las decisiones de nivel: es `clinico` (desenlace que importa, medido en personas) pero con certeza muy baja.
+- **Daños y parto** (`Davenport 2019 (daños maternos)`): rotura prematura de membranas sin diferencia (4 ECA; muy baja); parto instrumental menos con solo ejercicio (OR 0,76; moderada; el «24 %» de los autores es ese subgrupo y es un OR, no un riesgo); cesárea OR 0,87 (baja) por los ensayos con cointervención, aunque el resumen dice que no cambia. Lesiones, caídas y diástasis: «no significant associations» sin cifras en el texto principal. Resultados obstétricos: solo, si acaso, en «Ampliar» (propuesta, punto 1).
+- **Supino** (`Mottola 2019`): «insufficient evidence to ascertain whether maternal exercise in the supine position is safe or should be avoided». Solo 4 estudios de una sesión con 12–27 mujeres; en los ensayos, 2–5 minutos por clase. Sin recomendación práctica. Sostiene el recuadro (cambiar de posición solo con síntomas, Mottola 2018 rec. 6) y no permite escribir «no hay que evitarlo» ni «hay que evitarlo». Siete de nueve guías nacionales lo desaconsejan, «primarily based on expert opinion» (España, no).
+
+**Queda sin fuente**: el efecto del ejercicio general (no de suelo pélvico) sobre la incontinencia, la relaxina y las lesiones o caídas con cifras. **Opcionales sin pedir**: Mladenovic 2026 y Lu 2026 (dolor de cintura pélvica del embarazo; no cambiarían el `discutido`, que ya tiene dos revisiones enfrentadas).
+
+## Bloque 8 — decisiones de nivel (2026-10, Opus)
+
+Bloque `embarazo`, «Ejercicio en el embarazo y el posparto», en `data/ejercicio.js`, con 20 fuentes (9 nuevas en el registro: las seis de la guía canadiense, `Deprato 2025`, `Ruchat 2025` y `Evenson 2024`, que se leyó para la tarjeta pero no se citó). Enlaces aparte, con sus textos aceptados por el usuario (2026-10): ver «Desde los recuadros de la fase 5» y «Fase 6, líneas nuevas». Las fechas de publicación de las tres de 2018 en línea son las definitivas de PubMed (2019;53(2)): `Davenport 2019 (mortalidad fetal)`, `Davenport 2019 (daños maternos)` y `Mottola 2019` (sin sufijo: no coincide con otra clave).
+
+- **`discutido`**: el dolor lumbopélvico del embarazo (Liddle y Pennick 2015, moderada, frente a `Davenport 2019 (dolor lumbopélvico)`, muy baja), el suelo pélvico ofrecido a todas tras el parto (Woodley 2020 frente a Beamish 2025) y cuánto pesa lo del posparto en conjunto (Evenson 2024 frente a Deprato 2025 y Ruchat 2025).
+- **`clinico`**: el dolor lumbopélvico tras el parto en quien ya lo tiene (Ruchat 2025: solo ejercicio −2,2/10, moderada; conjunto, baja; los controles también mejoran), el ánimo en el embarazo (solo ejercicio supervisado, moderada; nada después del parto ni en la ansiedad) y tras el parto (Deprato 2025, moderada; sin comparación con tratamientos), los escapes con suelo pélvico en el embarazo (Woodley 2020; `Davenport 2018 (incontinencia)`) y la seguridad (aborto y muerte perinatal sin aumento, certeza muy baja, dicho en la frase). También `clinico`, como hechos de los estudios (precedente de los bloques 6 y 7): que solo incluyen embarazos sin contraindicaciones, que el efecto desaparece con cointervenciones y que ningún estudio mide el ejercicio general sin suelo pélvico.
+- **`mecanismo`**: el supino (retorno venoso, ACOG 2020; cambios agudos en pocos estudios de una sesión, Mottola 2019, que no permite prohibirlo ni darlo por seguro), la diástasis (distancia entre rectos, como la densidad ósea del bloque 2; su relación con el dolor, una diferencia no significativa en 178 mujeres), la recomendación de no dejar el ejercicio con diástasis (Gluppe 2021, certeza baja; Davenport 2025) y las reglas de vuelta a correr (consenso Delphi, como la regla de 5 sobre 10 del bloque 7).
+- **Para el paciente**: tres frases — ánimo en el embarazo y el posparto («es un apoyo… no sustituye a su tratamiento»), suelo pélvico en el embarazo antes de los escapes, y el dolor de espalda o pelvis tras el parto («ayuda a que mejore antes; suele mejorar también con el tiempo»). **Ninguna sobre el dolor del embarazo** (`discutido`), **ni sobre la seguridad**: es `clinico` pero con certeza muy baja y resultados que no descartan un aumento; una frase para la paciente («no aumenta el riesgo») se oiría como «es seguro», que es más de lo que dicen los datos. La tranquilidad la da el recuadro, con la recomendación de Mottola 2018.
+- **Sin dosis**: ni minutos, ni días, ni MET (las metarregresiones de dosis de `Davenport 2018 (ánimo)` y Deprato 2025 comparan estudios distintos, no dosis). La dosis sigue siendo la del recuadro y los avisos.
+- **No usadas**: Singh 2023 y Dipietro 2019 (las supera Deprato 2025), Hicks 2024 y Özyurt 2025 (cifras no fiables), Burani 2023 (no estudia el ejercicio), y la cesárea y el parto instrumental, solo en «Ampliar».
+
+
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
 - **Dónde**: en el bloque «Educación» de la sesión del plan (`plan.js`), bajo sus frases: un botón «Para explicárselo al paciente →» y una línea que dice a qué bloque lleva («Abre «<título>», el bloque que corresponde a la irritabilidad elegida.»). Texto en `TEXTOS_EJERCICIO` (`data/ejercicio.js`), no en `data/plan-tratamiento.js`, para no tocar las frases del plan ni `docs/plan-tratamiento-frases.md`.
@@ -320,10 +553,12 @@ Fuentes leídas enteras por agentes Sonnet: en PMC, Liaghat 2022, Liaghat 2024, 
   - **Osteoporosis, en los dos estados** → «Carga y adaptación del tejido», como lectura para el fisioterapeuta: en el hueso el bloque solo llega a `mecanismo` (la densidad mejora algo) y dice que no está demostrado que el ejercicio reduzca las fracturas; no tiene frase para el paciente sobre el hueso. La pauta de ejercicio sigue siendo la del propio recuadro, con sus fuentes.
   - **Disautonomía, en los dos estados** (2026-10, con el bloque 6, **revisado por el usuario**) → «Ejercicio en la intolerancia ortostática (POTS)»: por qué los programas empiezan tumbado y hasta dónde llega lo demostrado; la dosis sigue siendo la del recuadro.
   - **Hipermovilidad, en los dos estados, salvo con el subtipo vascular diagnosticado** (2026-10, con el bloque 7, **revisado por el usuario**) → «Ejercicio en la hipermovilidad (SEDh / TEH)»: si se puede cargar con fuerza y cuánto dolor provoca. Con el subtipo vascular no hay enlace: sus ensayos no lo incluyen y su pauta es la de Byers 2017, que ya lleva el recuadro. **Tampoco con la regla de sospecha del subtipo vascular cumplida** (`vs`; usuario, 2026-10): hasta que genética conteste el paciente puede tener el subtipo vascular, y el mensaje de carga alta del bloque no vale para él; el recuadro, en ese caso, no muestra la línea de Byers (`docs/hipermovilidad.md`), así que nada lo equilibraría. Vuelve solo cuando la sospecha se desmarca.
-  - Sin enlace: trastorno mastocitario, embarazo o posparto, anticoagulado y posquirúrgico (ningún bloque trata su tema).
+  - **Embarazo o posparto, en los dos estados, sin excepciones** (2026-10, con el bloque 8; textos aceptados por el usuario) → «Ejercicio en el embarazo y el posparto»: «Por qué se recomienda moverse y hasta dónde llega lo demostrado en el dolor de espalda y pelvis, el ánimo y los escapes; la dosis sigue siendo la de este recuadro.» Sin excepción por urgencias ni contraindicaciones: la tarjeta no las guarda y las urgencias ya bloquean la fase 6; la primera frase de `consulta` del bloque lo cubre.
+  - Sin enlace: trastorno mastocitario, anticoagulado y posquirúrgico (ningún bloque trata su tema).
 - **Una sola regla de estados para las fases 5 y 6** (2026-10, Opus, a petición del usuario; **revisado por el usuario**, 2026-10): `CONDICION_EJERCICIO` (`lib/ejercicio.js`) guarda por condición su bloque, la línea del recuadro y, si sale también en la fase 6, su `motivo` y su línea «También»; `condicionEnlazaEjercicio(condicion, { estado, subtipo, vs })` es la regla. La fase 5 la llama con su payload (`es`, `st`, `vs`) a través de `enlaceCondicionEjercicioHTML()`; la fase 6, con las tarjetas del `state` a través de `motivosEjercicio({ riesgoPsico, cuestionarios, tarjetas, respuestas })` (`datosCondicionEjercicio()` calcula `vs` con `reglaVascular()`, como `hmPayload()`). Un test recorre todas las combinaciones de estado, subtipo y regla vascular y exige el mismo resultado en las dos fases.
   - **Fase 6, líneas nuevas** (textos aceptados por el usuario, 2026-10), en este orden tras «Efectos centrales» y «antiinflamatorio»:
     - disautonomía, en los dos estados → «Ejercicio en la intolerancia ortostática (POTS)»: «Por la disautonomía: su frase para el paciente habla de tolerar estar de pie, sin prometer que mejoren todos los síntomas; la dosis es la del aviso de este plan.»
     - hipermovilidad, en los dos estados, salvo subtipo vascular diagnosticado o sospecha vascular cumplida → «Ejercicio en la hipermovilidad (SEDh / TEH)»: «Por la hipermovilidad: sus frases para el paciente dicen que la fuerza graduada no suele aumentar el dolor y que no hay un ejercicio «especial»; vienen de ensayos sin el subtipo vascular.»
+    - embarazo o posparto, en los dos estados (2026-10, bloque 8) → «Ejercicio en el embarazo y el posparto»: «Por el embarazo o el posparto: sus frases para el paciente hablan del ánimo, de los escapes y del dolor de espalda o pelvis tras el parto, sin prometer más; la dosis es la del aviso de este plan.» `lu8` y `ca10` no entran en `BLOQUE_POR_HIPOTESIS` (propuesta del bloque 8, punto 4).
   - **Osteoporosis no sale en la fase 6**: «Carga y adaptación del tejido» ya está siempre allí, como principal o como «También».
   - Tests: `tests/unit/ejercicio.mjs` (regla por estado, subtipo vascular y sospecha vascular sin enlace, fase 5 = fase 6, orden y textos) y las secciones smoke `fase6` (las dos líneas, que abren su bloque, y sin la de hipermovilidad con la sospecha cumplida o el vascular diagnosticado) y `hipermovilidad` (sin enlace con dos rasgos menores; con él al quitar uno).

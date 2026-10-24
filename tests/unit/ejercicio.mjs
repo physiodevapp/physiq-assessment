@@ -26,7 +26,7 @@ const muestra = () => ({
 });
 
 test('los bloques de docs/efectos-ejercicio.md, en su orden (mioquinas dentro del antiinflamatorio), y los tres niveles', () => {
-  assert.deepEqual(BLOQUES_EJERCICIO.map(b => b.id), ['hipoalgesia', 'mecanotransduccion', 'antiinflamatorio', 'centrales', 'ortostatica', 'hipermovilidad']);
+  assert.deepEqual(BLOQUES_EJERCICIO.map(b => b.id), ['hipoalgesia', 'mecanotransduccion', 'antiinflamatorio', 'centrales', 'ortostatica', 'hipermovilidad', 'embarazo']);
   for (const b of BLOQUES_EJERCICIO) assert.ok(b.titulo && b.resumen, b.id);
   assert.deepEqual(Object.keys(NIVELES_EJERCICIO), ['clinico', 'mecanismo', 'discutido']);
   for (const n of Object.values(NIVELES_EJERCICIO)) assert.ok(n.corto && n.explicacion.length > 20);
@@ -159,7 +159,7 @@ test('enlace de la fase 6: ofrece también el otro bloque, sin cambiar el princi
 });
 
 test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuestionario de ánimo con síntomas, «antiinflamatorio» solo con lupus', () => {
-  assert.deepEqual(E.motivosEjercicio({}), { animo: false, reumatica: false, ortostatica: false, hipermovilidad: false });
+  assert.deepEqual(E.motivosEjercicio({}), { animo: false, reumatica: false, ortostatica: false, hipermovilidad: false, embarazo: false });
   assert.equal(E.motivosEjercicio({ riesgoPsico: 'Bajo' }).animo, false);
   assert.equal(E.motivosEjercicio({ riesgoPsico: 'Medio' }).animo, true);
   assert.equal(E.motivosEjercicio({ riesgoPsico: 'Alto' }).animo, true);
@@ -181,7 +181,7 @@ test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuesti
   assert.ok(E.enlaceEjercicioHTML('baja', { animo: true }).includes("abrirEjercicio({ bloque: 'centrales' })"));
 });
 
-test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteoporosis → mecanotransducción, disautonomía → ortostática, hipermovilidad → su bloque, nada más', () => {
+test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteoporosis → mecanotransducción, disautonomía → ortostática, hipermovilidad y embarazo → su bloque, nada más', () => {
   const les = E.enlaceCondicionEjercicioHTML('lupus', { estado: 'diagnosticado' });
   assert.ok(les.includes('data-bloque-condicion="antiinflamatorio"') && les.includes("abrirEjercicio({ bloque: 'antiinflamatorio' })"));
   assert.ok(les.includes(TEXTOS_EJERCICIO.enlaceCondicionLupus));
@@ -191,17 +191,22 @@ test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteopor
   assert.ok(ds.includes('data-bloque-condicion="ortostatica"') && ds.includes(TEXTOS_EJERCICIO.enlaceCondicionDisautonomia));
   const hm = E.enlaceCondicionEjercicioHTML('hipermovilidad', { estado: 'diagnosticada', subtipo: 'hipermovil' });
   assert.ok(hm.includes('data-bloque-condicion="hipermovilidad"') && hm.includes(TEXTOS_EJERCICIO.enlaceCondicionHipermovilidad));
-  for (const c of ['mastocitos', 'embarazo', 'anticoagulado', 'posquirurgico', '']) assert.equal(E.enlaceCondicionEjercicioHTML(c, { estado: 'diagnosticado' }), '', c);
+  for (const estado of ['embarazada', 'posparto']) {
+    const em = E.enlaceCondicionEjercicioHTML('embarazo', { estado });
+    assert.ok(em.includes('data-bloque-condicion="embarazo"') && em.includes(TEXTOS_EJERCICIO.enlaceCondicionEmbarazo), estado);
+  }
+  for (const c of ['mastocitos', 'anticoagulado', 'posquirurgico', '']) assert.equal(E.enlaceCondicionEjercicioHTML(c, { estado: 'diagnosticado' }), '', c);
   // Sin estado, nada
-  for (const c of ['lupus', 'osteoporosis', 'disautonomia', 'hipermovilidad']) assert.equal(E.enlaceCondicionEjercicioHTML(c), '', c);
+  for (const c of ['lupus', 'osteoporosis', 'disautonomia', 'hipermovilidad', 'embarazo']) assert.equal(E.enlaceCondicionEjercicioHTML(c), '', c);
   // La fase 5 pasa el estado del payload y no decide nada por su cuenta
   const app = leer('app.js');
   assert.ok(app.includes("enlaceCondicionEjercicioHTML('lupus', { estado: d.es })"));
   assert.ok(app.includes("enlaceCondicionEjercicioHTML('hipermovilidad', { estado: d.es, subtipo: d.st, vs: d.vs })"));
+  assert.ok(app.includes("enlaceCondicionEjercicioHTML('embarazo', { estado: d.es })"));
   assert.ok(!/\? ''\s*:\s*enlaceCondicionEjercicioHTML|\? enlaceCondicionEjercicioHTML/.test(app), 'sin condiciones sueltas en app.js');
   for (const t of [TEXTOS_EJERCICIO.enlaceCondicionLupus, TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis, TEXTOS_EJERCICIO.enlaceCondicionDisautonomia, TEXTOS_EJERCICIO.enlaceCondicionHipermovilidad,
-    TEXTOS_EJERCICIO.enlaceMotivoOrtostatica, TEXTOS_EJERCICIO.enlaceMotivoHipermovilidad]) {
-    for (const f of ['lib/resumenes.js', 'lib/lupus.js', 'lib/osteoporosis.js', 'lib/disautonomia.js', 'lib/hipermovilidad.js', 'informe-ia.js', 'lib/informe-narrativo.js']) assert.ok(!leer(f).includes(t), f);
+    TEXTOS_EJERCICIO.enlaceMotivoOrtostatica, TEXTOS_EJERCICIO.enlaceMotivoHipermovilidad, TEXTOS_EJERCICIO.enlaceCondicionEmbarazo, TEXTOS_EJERCICIO.enlaceMotivoEmbarazo]) {
+    for (const f of ['lib/resumenes.js', 'lib/lupus.js', 'lib/osteoporosis.js', 'lib/disautonomia.js', 'lib/hipermovilidad.js', 'lib/embarazo.js', 'informe-ia.js', 'lib/informe-narrativo.js']) assert.ok(!leer(f).includes(t), f);
   }
 });
 
@@ -218,7 +223,9 @@ test('condiciones: una sola regla de estados para la fase 5 y la fase 6', () => 
   assert.equal(R('hipermovilidad', { estado: 'diagnosticada', subtipo: 'vascular' }), false);
   assert.equal(R('hipermovilidad', { estado: 'sospecha', vs: true }), false);
   assert.equal(R('hipermovilidad', { estado: 'diagnosticada', subtipo: 'ns', vs: true }), false);
-  for (const c of ['lupus', 'disautonomia', 'osteoporosis', 'hipermovilidad', 'mastocitos']) assert.equal(R(c, {}), false, c);
+  // Embarazo: los dos estados, sin excepciones (propuesta del bloque 8)
+  for (const e of ['embarazada', 'posparto']) assert.equal(R('embarazo', { estado: e }), true, e);
+  for (const c of ['lupus', 'disautonomia', 'osteoporosis', 'hipermovilidad', 'embarazo', 'mastocitos']) assert.equal(R(c, {}), false, c);
 });
 
 test('condiciones: la fase 6 enlaza lo mismo que el recuadro de la fase 5 en cada estado', () => {
@@ -245,6 +252,11 @@ test('condiciones: la fase 6 enlaza lo mismo que el recuadro de la fase 5 en cad
   for (const estado of ['', 'diagnosticado', 'sospecha']) {
     assert.equal(E.motivosEjercicio({ tarjetas: { lupus: { estado } } }).reumatica, E.enlaceCondicionEjercicioHTML('lupus', { estado }) !== '', `lupus ${estado}`);
   }
+  for (const estado of ['', 'embarazada', 'posparto']) {
+    const em = E.motivosEjercicio({ tarjetas: { embarazo: { estado } } }).embarazo;
+    assert.equal(em, !!estado, `embarazo ${estado}`);
+    assert.equal(em, E.enlaceCondicionEjercicioHTML('embarazo', { estado }) !== '', `embarazo f5/f6 ${estado}`);
+  }
 });
 
 test('enlace de la fase 6: ortostática con disautonomía e hipermovilidad con su tarjeta, cada una con su motivo', () => {
@@ -252,9 +264,10 @@ test('enlace de la fase 6: ortostática con disautonomía e hipermovilidad con s
   assert.ok(html.includes('data-bloque-extra="ortostatica"') && html.includes("abrirEjercicio({ bloque: 'ortostatica' })"));
   assert.ok(html.includes('data-bloque-extra="hipermovilidad"') && html.includes("abrirEjercicio({ bloque: 'hipermovilidad' })"));
   assert.ok(html.includes(TEXTOS_EJERCICIO.enlaceMotivoOrtostatica) && html.includes(TEXTOS_EJERCICIO.enlaceMotivoHipermovilidad));
-  // Orden: ánimo, lupus, disautonomía, hipermovilidad
-  const todo = E.enlaceEjercicioHTML('alta', { animo: true, reumatica: true, ortostatica: true, hipermovilidad: true });
-  const pos = ['centrales', 'antiinflamatorio', 'ortostatica', 'hipermovilidad'].map(id => todo.indexOf(`data-bloque-extra="${id}"`));
+  // Orden: ánimo, lupus, disautonomía, hipermovilidad, embarazo
+  const todo = E.enlaceEjercicioHTML('alta', { animo: true, reumatica: true, ortostatica: true, hipermovilidad: true, embarazo: true });
+  assert.ok(todo.includes('data-bloque-extra="embarazo"') && todo.includes(TEXTOS_EJERCICIO.enlaceMotivoEmbarazo));
+  const pos = ['centrales', 'antiinflamatorio', 'ortostatica', 'hipermovilidad', 'embarazo'].map(id => todo.indexOf(`data-bloque-extra="${id}"`));
   assert.ok(pos.every(p => p > 0) && pos.every((p, i) => !i || p > pos[i - 1]), pos.join(','));
   // La osteoporosis no añade línea: «Carga y adaptación» ya sale siempre
   assert.ok(!('osteoporosis' in E.motivosEjercicio({ tarjetas: { osteoporosis: { estado: 'diagnosticada' } } })));

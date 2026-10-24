@@ -1497,6 +1497,15 @@ async function checkEmbarazo(page) {
   r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .em-fase5')?.textContent || '';
     return t.includes('150 min por semana') && t.includes('Parar el ejercicio y consultar') && t.includes('no basta para decir que sea seguro'); });
   r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .em-fase5 .cita[data-cita^="Mottola 2018"]'));
+  // Enlace a la guía de efectos del ejercicio, bloque 8 (docs/efectos-ejercicio.md)
+  r.enlaceEjercicio = !!(await page.$('#resultsContent .em-fase5 [data-bloque-condicion="embarazo"] button'));
+  if (r.enlaceEjercicio) {
+    await page.click('#resultsContent .em-fase5 [data-bloque-condicion="embarazo"] button');
+    await page.waitForSelector('#ejercicioOverlay.open');
+    r.enlaceEjercicio = await page.evaluate(() => document.querySelector('#ejercicioCuerpo [data-bloque="embarazo"]')?.open === true);
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
+  }
   await page.evaluate(() => goToPhase('4b'));
   await page.waitForTimeout(200);
   r.nota4b = await page.evaluate(() => (document.querySelector('#hypothesisCards .em-nota-4b')?.textContent || '').includes('no la dejes mucho rato boca arriba'));
@@ -1506,6 +1515,8 @@ async function checkEmbarazo(page) {
   await page.waitForSelector('#planContenido .card');
   r.fase6 = await page.evaluate(() => { const t = document.getElementById('planContenido').textContent;
     return t.includes('Embarazo: actividad de intensidad moderada') && t.includes('Red de seguridad (embarazo)'); });
+  r.fase6Ejercicio = await page.evaluate(() => !!document.querySelector('#planSesion .plan-ejercicio [data-bloque-extra="embarazo"]')
+    && document.querySelector('#planSesion .plan-ejercicio').textContent.includes('Por el embarazo o el posparto'));
   // Posparto de 2 semanas con la sacroilíaca: línea del Gaenslen en la 4b y de Vleeming en la fase 5
   await abrirApp(page);
   await page.click('#emEstado .option-btn[data-valor="posparto"]');
@@ -1517,7 +1528,7 @@ async function checkEmbarazo(page) {
   r.gaenslen = await page.evaluate(() => [...document.querySelectorAll('#hypothesisCards .em-aviso-test')].some(e => e.textContent.includes('no hagas el Gaenslen')));
   r.ok = r.nota && r.plegada && r.mostrar && r.camposOcultos && r.embWrap && r.sinSemanas && r.sinCasillasNativas && r.ta && r.taUr && r.taQuitada
     && r.tab && r.semana14 && r.sinEmbudo && r.semana30 && r.urgencia && r.animo && r.animoFuera && r.suelo && r.ancho2 && r.ppWrap && r.ancho1
-    && r.sinSistema && r.fase5 && r.fase5Cita && r.nota4b && r.fase6 && r.gaenslen;
+    && r.sinSistema && r.fase5 && r.fase5Cita && r.enlaceEjercicio && r.nota4b && r.fase6 && r.fase6Ejercicio && r.gaenslen;
   return r;
 }
 
@@ -3105,7 +3116,7 @@ async function checkEjercicio(browser, errors) {
     const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
     // Los cuatro bloques escritos: ya no se pinta el apartado de pendientes
     return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica,hipermovilidad'
+      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica,hipermovilidad,embarazo'
       && !document.querySelector('#ejercicioCuerpo .ej-pendientes')
       && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
   });
