@@ -686,6 +686,24 @@ async function checkHipermovilidad(page) {
   await page.evaluate(() => { buildResults(); goToPhase(5); });
   await page.waitForTimeout(200);
   r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .hm-fase5')?.textContent || ''; return t.includes('Sospecha') && t.includes('Ejercicio graduado') && t.includes('derivación preferente a genética'); });
+  // Enlace a la guía de efectos del ejercicio, bloque de hipermovilidad; nunca con el subtipo vascular
+  r.enlaceEjercicio = !!(await page.$('#resultsContent .hm-fase5 [data-bloque-condicion="hipermovilidad"] button'));
+  if (r.enlaceEjercicio) {
+    await page.click('#resultsContent .hm-fase5 [data-bloque-condicion="hipermovilidad"] button');
+    await page.waitForSelector('#ejercicioOverlay.open');
+    r.enlaceEjercicio = await page.evaluate(() => document.querySelector('#ejercicioCuerpo [data-bloque="hipermovilidad"]')?.open === true);
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
+  }
+  r.sinEnlaceVascular = await page.evaluate(() => {
+    const antes = { ...state.hipermovilidad };
+    Object.assign(state.hipermovilidad, { estado: 'diagnosticada', subtipo: 'vascular' });
+    buildResults();
+    const hay = !!document.querySelector('#resultsContent .hm-fase5') && !document.querySelector('#resultsContent .hm-fase5 [data-bloque-condicion]');
+    Object.assign(state.hipermovilidad, antes);
+    buildResults();
+    return hay;
+  });
   // 320 px: fase 1 y fase 2 sin desbordar
   await page.setViewportSize({ width: 320, height: 700 });
   await page.evaluate(() => goToPhase(1));
@@ -702,7 +720,7 @@ async function checkHipermovilidad(page) {
   await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
   r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_hipermovilidad') && !document.getElementById('tab_transversal_hipermovilidad'));
   r.ok = r.subtipoOculto && r.beightonChips && r.subtipoVisible && r.subtipoOcultoSospecha && r.tab && r.cuestionario === 5 && r.hag && r.porCuestionario
-    && r.urgSinPlegar && r.urgencia && r.menorSolo && r.dosMenores && r.avisos === 3 && r.fase5 && r.ancho1 && r.ancho2 && r.sinSistema;
+    && r.urgSinPlegar && r.urgencia && r.menorSolo && r.dosMenores && r.avisos === 3 && r.fase5 && r.enlaceEjercicio && r.sinEnlaceVascular && r.ancho1 && r.ancho2 && r.sinSistema;
   return r;
 }
 
@@ -3046,7 +3064,7 @@ async function checkEjercicio(browser, errors) {
     const p = document.getElementById('ejercicioPanel').getBoundingClientRect();
     // Los cuatro bloques escritos: ya no se pinta el apartado de pendientes
     return document.getElementById('ejercicioOverlay').classList.contains('open') && p.width <= 560 && Math.abs(p.left + p.width / 2 - innerWidth / 2) < 2
-      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica'
+      && [...document.querySelectorAll('#ejercicioCuerpo .ej-bloque')].map(b => b.dataset.bloque).join() === 'hipoalgesia,mecanotransduccion,antiinflamatorio,centrales,ortostatica,hipermovilidad'
       && !document.querySelector('#ejercicioCuerpo .ej-pendientes')
       && document.querySelectorAll('#ejercicioCuerpo .ej-niveles li').length === 3;
   });

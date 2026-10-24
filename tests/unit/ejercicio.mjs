@@ -25,7 +25,7 @@ const muestra = () => ({
 });
 
 test('los bloques de docs/efectos-ejercicio.md, en su orden (mioquinas dentro del antiinflamatorio), y los tres niveles', () => {
-  assert.deepEqual(BLOQUES_EJERCICIO.map(b => b.id), ['hipoalgesia', 'mecanotransduccion', 'antiinflamatorio', 'centrales', 'ortostatica']);
+  assert.deepEqual(BLOQUES_EJERCICIO.map(b => b.id), ['hipoalgesia', 'mecanotransduccion', 'antiinflamatorio', 'centrales', 'ortostatica', 'hipermovilidad']);
   for (const b of BLOQUES_EJERCICIO) assert.ok(b.titulo && b.resumen, b.id);
   assert.deepEqual(Object.keys(NIVELES_EJERCICIO), ['clinico', 'mecanismo', 'discutido']);
   for (const n of Object.values(NIVELES_EJERCICIO)) assert.ok(n.corto && n.explicacion.length > 20);
@@ -179,7 +179,7 @@ test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuesti
   assert.ok(E.enlaceEjercicioHTML('baja', { animo: true }).includes("abrirEjercicio({ bloque: 'centrales' })"));
 });
 
-test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteoporosis → mecanotransducción, disautonomía → ortostática, nada más', () => {
+test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteoporosis → mecanotransducción, disautonomía → ortostática, hipermovilidad → su bloque, nada más', () => {
   const les = E.enlaceCondicionEjercicioHTML('lupus');
   assert.ok(les.includes('data-bloque-condicion="antiinflamatorio"') && les.includes("abrirEjercicio({ bloque: 'antiinflamatorio' })"));
   assert.ok(les.includes(TEXTOS_EJERCICIO.enlaceCondicionLupus));
@@ -187,12 +187,16 @@ test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteopor
   assert.ok(op.includes('data-bloque-condicion="mecanotransduccion"') && op.includes(TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis));
   const ds = E.enlaceCondicionEjercicioHTML('disautonomia');
   assert.ok(ds.includes('data-bloque-condicion="ortostatica"') && ds.includes(TEXTOS_EJERCICIO.enlaceCondicionDisautonomia));
-  for (const c of ['hipermovilidad', 'mastocitos', 'embarazo', 'anticoagulado', 'posquirurgico', '']) assert.equal(E.enlaceCondicionEjercicioHTML(c), '', c);
+  const hm = E.enlaceCondicionEjercicioHTML('hipermovilidad');
+  assert.ok(hm.includes('data-bloque-condicion="hipermovilidad"') && hm.includes(TEXTOS_EJERCICIO.enlaceCondicionHipermovilidad));
+  for (const c of ['mastocitos', 'embarazo', 'anticoagulado', 'posquirurgico', '']) assert.equal(E.enlaceCondicionEjercicioHTML(c), '', c);
   // El lupus solo con «Diagnosticado», y ninguno de los dos llega a lo que se comparte
   const app = leer('app.js');
   assert.ok(app.includes("d.es === 'diagnosticado' ? enlaceCondicionEjercicioHTML('lupus') : ''"));
-  for (const t of [TEXTOS_EJERCICIO.enlaceCondicionLupus, TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis, TEXTOS_EJERCICIO.enlaceCondicionDisautonomia]) {
-    for (const f of ['lib/resumenes.js', 'lib/lupus.js', 'lib/osteoporosis.js', 'lib/disautonomia.js', 'informe-ia.js', 'lib/informe-narrativo.js']) assert.ok(!leer(f).includes(t), f);
+  // La hipermovilidad, nunca con el subtipo vascular: sus ensayos no lo incluyen y su pauta es otra (Byers 2017)
+  assert.ok(app.includes("d.st === 'vascular' ? '' : enlaceCondicionEjercicioHTML('hipermovilidad')"));
+  for (const t of [TEXTOS_EJERCICIO.enlaceCondicionLupus, TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis, TEXTOS_EJERCICIO.enlaceCondicionDisautonomia, TEXTOS_EJERCICIO.enlaceCondicionHipermovilidad]) {
+    for (const f of ['lib/resumenes.js', 'lib/lupus.js', 'lib/osteoporosis.js', 'lib/disautonomia.js', 'lib/hipermovilidad.js', 'informe-ia.js', 'lib/informe-narrativo.js']) assert.ok(!leer(f).includes(t), f);
   }
 });
 
