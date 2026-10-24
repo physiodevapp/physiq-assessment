@@ -717,13 +717,36 @@ async function checkHipermovilidad(page) {
   await page.click('#acc_transversal_hipermovilidad .sistema-accordion-header');
   await page.waitForTimeout(150);
   r.ancho2 = await page.evaluate(() => document.documentElement.scrollWidth <= 320);
+  // Diagnosticada sin saber el subtipo: las urgencias arteriales aparecen al
+  // cumplirse la regla de sospecha vascular, y una marcada SÍ se queda al dejar de cumplirse
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#hmEstado .option-btn[data-valor="diagnosticada"]');
+  await page.click('#hmSubtipo .option-btn[data-valor="ns"]');
+  await page.evaluate(() => goToPhase(2));
+  await page.waitForTimeout(150);
+  await page.click('#tab_transversal_hipermovilidad');
+  const urgVisibles = () => page.$$eval(`${P} .sq2-urg`, els => els.map(e => e.id).join(','));
+  r.reglaSinUrg = await urgVisibles() === '';   // solo un menor (neumotórax)
+  await page.click(`${P} #sq2_hm_s_familia .sq-btn.si`);
+  r.reglaConUrg = await urgVisibles() === 'sq2_hm_v_dolor,sq2_hm_v_ojo,sq2_hm_v_aire';
+  await page.click(`${P} #sq2_hm_v_dolor .sq-btn.si`);
+  await page.click(`${P} #sq2_hm_s_familia .sq-btn.no`);
+  r.urgMarcadaSeQueda = await urgVisibles() === 'sq2_hm_v_dolor'
+    && await page.isVisible('#sistemicoAlert .urgencia-alert')
+    && (await page.textContent('#sistemicoAlert')).includes('disección o rotura arterial');
+  await page.click(`${P} #sq2_hm_v_dolor .sq-btn.no`);
+  await page.evaluate(() => goToPhase(1));
+  await page.waitForTimeout(150);
+  await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
   // Quitar la marca quita el sistema
   await page.evaluate(() => goToPhase(1));
   await page.waitForTimeout(150);
   await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
   r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_hipermovilidad') && !document.getElementById('tab_transversal_hipermovilidad'));
   r.ok = r.subtipoOculto && r.beightonChips && r.subtipoVisible && r.subtipoOcultoSospecha && r.tab && r.cuestionario === 5 && r.hag && r.porCuestionario
-    && r.urgSinPlegar && r.urgencia && r.menorSolo && r.dosMenores && r.avisos === 3 && r.fase5 && r.enlaceEjercicio && r.sinEnlaceSospechaVascular && r.sinEnlaceVascular && r.ancho1 && r.ancho2 && r.sinSistema;
+    && r.urgSinPlegar && r.urgencia && r.menorSolo && r.dosMenores && r.avisos === 3 && r.fase5 && r.enlaceEjercicio && r.sinEnlaceSospechaVascular && r.sinEnlaceVascular && r.ancho1 && r.ancho2 && r.reglaSinUrg && r.reglaConUrg && r.urgMarcadaSeQueda && r.sinSistema;
   return r;
 }
 
@@ -5831,6 +5854,13 @@ async function checkFase6(browser, errors) {
   });
   await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'alta\')"]');
   r.enlaceSinVascular = r.enlaceSinVascular && await extras() === 'ortostatica:Por la disautonomía';
+  // Aviso del subtipo vascular diagnosticado (Byers 2017, p. 42): ahora sí; con la sospecha, no
+  const avisoVascular = () => page.evaluate(() => [...document.querySelectorAll('#phase6 .alert-warning')].some(a => a.textContent.includes('Ehlers-Danlos vascular (diagnosticado)')));
+  r.avisoVascular = await avisoVascular();
+  await page.evaluate(() => { state.hipermovilidad = { ...state.hipermovilidad, estado: 'sospecha', subtipo: '' }; });
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
+  r.avisoVascular = r.avisoVascular && !(await avisoVascular());
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'alta\')"]');
   await page.evaluate(a => { const o = JSON.parse(a); state.disautonomia = o.ds; state.hipermovilidad = o.hm; state.sistemicoAnswers = o.sa; }, antesCond);
   await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
   await botonNivel('C').click();

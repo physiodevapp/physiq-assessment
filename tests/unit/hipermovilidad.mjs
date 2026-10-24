@@ -3,6 +3,8 @@ import { assert, leer, test, HYPOTHESES, SYSTEMIC_SCREENING, buildPhysiQPayload,
   buildContextSummaryText, getPendientesBreve, buildSistemaHTML, sistemasActivos, buildTestItem, withState, VALID_REGIONS } from './comun.mjs';
 const HMX = await import('../../lib/hipermovilidad.js');
 const IN = await import('../../lib/informe-narrativo.js');
+const P = await import('../../lib/plan-tratamiento.js');
+const PD = await import('../../data/plan-tratamiento.js');
 const { SIS_HIPERMOVILIDAD } = await import('../../data/comun.js');
 
 console.log('\nhipermovilidad (Fase P)');
@@ -46,6 +48,75 @@ test('urgencias: las tres llevan `urgencia`, se pintan sin plegar (sq2-urg) y va
   withState({ ...hm(), sistemicoAnswers: { hm_v_ojo: 'SI' } }, () => {
     assert.deepEqual(buildPhysiQPayload().ur, [], 'sin la tarjeta activa, una respuesta guardada no cuenta');
   });
+});
+
+test('urgencias arteriales también con la regla de sospecha vascular cumplida (subtipo otro, no lo sabe o sin marcar)', () => {
+  for (const st of ['otro', 'ns', '']) {
+    withState({ ...hm({ estado: 'diagnosticada', subtipo: st }), sistemicoAnswers: { hm_s_familia: 'SI' } }, () => {
+      assert.deepEqual(idsVisibles(), [...URG, ...SOSP], `«${st}», un mayor: se ven las urgencias`);
+      assert.deepEqual(sistemasActivos().find(s => s.soloHipermovilidad).banderasRojas.map(b => b.pregunta), URG, 'y sus banderas');
+    });
+    withState({ ...hm({ estado: 'diagnosticada', subtipo: st }), sistemicoAnswers: { hm_s_neumo: 'SI', hm_s_piel: 'SI' } }, () =>
+      assert.deepEqual(idsVisibles(), [...URG, ...SOSP], `«${st}», dos menores`));
+    withState({ ...hm({ estado: 'diagnosticada', subtipo: st }), sistemicoAnswers: { hm_s_neumo: 'SI' } }, () =>
+      assert.deepEqual(idsVisibles(), SOSP, `«${st}», un menor solo: sin urgencias`));
+  }
+  withState({ ...hm({ estado: 'diagnosticada', subtipo: 'hipermovil' }), sistemicoAnswers: { hm_s_familia: 'SI' } }, () =>
+    assert.deepEqual(idsVisibles(), [], 'hipermóvil: ni sospecha ni urgencias, aunque quede un «sí» guardado'));
+});
+
+test('una urgencia marcada SÍ nunca desaparece al cambiar las respuestas de sospecha, el subtipo o el estado', () => {
+  const ur = id => SIS_HIPERMOVILIDAD.preguntas.find(q => q.id === id).urgencia;
+  // Quitar el «sí» de sospecha con la urgencia ya marcada
+  withState({ ...hm({ estado: 'diagnosticada', subtipo: 'ns' }), sistemicoAnswers: { hm_s_familia: 'NO', hm_v_dolor: 'SI' } }, () => {
+    assert.deepEqual(idsVisibles(), ['hm_v_dolor', ...SOSP], 'sin la regla, solo sigue la urgencia marcada');
+    assert.deepEqual(buildPhysiQPayload().ur, [ur('hm_v_dolor')]);
+    assert.deepEqual(sistemasActivos().find(s => s.soloHipermovilidad).banderasRojas.map(b => b.pregunta), ['hm_v_dolor'], 'con su bandera');
+  });
+  // Cualquier estado o subtipo con la tarjeta activa
+  for (const extra of [{ estado: 'sospecha' }, ...['hipermovil', 'vascular', 'otro', 'ns', ''].map(subtipo => ({ estado: 'diagnosticada', subtipo }))]) {
+    withState({ ...hm(extra), sistemicoAnswers: { hm_v_ojo: 'SI', hm_v_aire: 'SI' } }, () =>
+      assert.deepEqual(buildPhysiQPayload().ur, [ur('hm_v_ojo'), ur('hm_v_aire')], JSON.stringify(extra)));
+  }
+  // Pasada a NO, sin la regla, deja de verse
+  withState({ ...hm({ estado: 'diagnosticada', subtipo: 'otro' }), sistemicoAnswers: { hm_v_dolor: 'NO' } }, () =>
+    assert.deepEqual(idsVisibles(), SOSP));
+});
+
+test('seguridad: marcar la tarjeta nunca quita ni rebaja una urgencia de otro sistema', () => {
+  for (const r of VALID_REGIONS) {
+    const urgentes = SYSTEMIC_SCREENING[r].sistemas.filter(s => !s.soloHipermovilidad && !s.soloPosquirurgico && !s.soloDisautonomia
+      && !s.soloLupus && !s.soloMastocitos && !s.soloOsteoporosis && !s.soloEmbarazo && !s.soloAnticoagulado)
+      .flatMap(s => s.preguntas).filter(q => q.urgencia);
+    const respuestas = { ...Object.fromEntries(urgentes.map(q => [q.id, 'SI'])), hm_s_familia: 'SI' };
+    let sin, htmlSin;
+    withState({ region: r, ...hm(), sistemicoAnswers: respuestas }, () => {
+      sin = buildPhysiQPayload().ur;
+      htmlSin = sistemasActivos().filter(s => !s.soloHipermovilidad).map(s => buildSistemaHTML(s)).join('');
+    });
+    for (const extra of [{ estado: 'sospecha' }, { estado: 'diagnosticada', subtipo: 'vascular' }, { estado: 'diagnosticada', subtipo: 'ns' }]) {
+      withState({ region: r, ...hm(extra), sistemicoAnswers: respuestas }, () => {
+        const con = buildPhysiQPayload().ur;
+        assert.deepEqual(con.filter(u => sin.includes(u)), sin, `${r} ${JSON.stringify(extra)}: no se pierde ninguna`);
+        assert.equal(sistemasActivos().filter(s => !s.soloHipermovilidad).map(s => buildSistemaHTML(s)).join(''), htmlSin, `${r}: los demás sistemas se pintan igual`);
+      });
+    }
+  }
+});
+
+test('fase 6: aviso del subtipo vascular solo con «Diagnosticada · vascular», en cualquier región', () => {
+  const hs = [{ id: 'x', name: 'X', pauta: 'P.', derivar: false, tratada: false }];
+  const aviso = PD.AVISOS.hipermovilidadVascular;
+  assert.equal(aviso.replace(/^Ehlers-Danlos vascular \(diagnosticado\): /, ''), HMX.HM.textos.vascular.replace(/^Subtipo vascular: /, ''),
+    'el mismo texto que el recuadro de la fase 5');
+  for (const region of VALID_REGIONS) {
+    const base = { region, hipotesis: hs, elegidas: ['x'], severidad: 5, irritabilidadNivel: 'Moderada', irritabilidad: {}, hipermovilidad: true };
+    assert.ok(P.construirPlan({ ...base, hmVascular: true }).avisosHip.includes(aviso), region);
+    assert.ok(!P.construirPlan(base).avisosHip.includes(aviso), `${region}: sin el subtipo vascular, no`);
+  }
+  // plan.js lo calcula del estado y el subtipo: nunca con la sospecha
+  const src = leer('plan.js');
+  assert.match(src, /hmVascular: state\.hipermovilidad\?\.estado === 'diagnosticada' && state\.hipermovilidad\.subtipo === 'vascular'/);
 });
 
 test('Beighton: suma de las 9 casillas y corte por edad de Malfait 2017 (6 / 5 / 4)', () => {
