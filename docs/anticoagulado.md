@@ -583,3 +583,17 @@ PDF del usuario, leídos enteros por seis lectores (sin las listas de referencia
 
 **Fuera de este cambio**: la trombosis del brazo por esfuerzo (Paget-Schroetter) y la trombosis superficial (un 25 % ya llega al sistema profundo al diagnosticarla, Kakkos 2021): encajarían en el cribado vascular de hombro y de las regiones de la pierna, en otra sesión.
 
+## Tanda 3 (octubre 2026): ejercicio tras una TVP
+
+Origen: la propuesta del bloque 10 de la guía de ejercicio (`docs/efectos-ejercicio.md`, «Bloque 10 — propuesta» y «Bloque 10 — decisión»). El bloque no se hace, y sus recomendaciones 2 y 3 cambian esta tarjeta. **No cambian el payload `ac` ni `bloqueACIA()`** (`AC_CASOS` igual), ni la fase 2, ni ninguna regla: solo dos textos. Pendiente de revisión del usuario.
+
+| Fuente | Lectura | Lo que aporta | Dónde va |
+|---|---|---|---|
+| `Jasionowska 2022` (revisión sistemática del ejercicio en el síndrome postrombótico) | Entera en PMC (PMC9720701), cada cita comprobada | Un solo ensayo (Kahn 2011, 39 personas, TVP de media hace 3–4 años): calidad de vida +4,6 (IC 0,54–8,7), gravedad −2,0 (IC −4,6 a 0,6), sin efectos adversos; certeza muy baja | `trasTVP` |
+| `Cosmi 2022` (consenso VAS del síndrome postrombótico) | Entera en PMC (PMC8907532) | Medias apropiadas para prevenir tras TVP iliofemoral o poplítea, con estudios que se contradicen; en la de la pantorrilla, solo para los síntomas. Opinión de expertos | `trasTVP` |
+| `Steiner 2026` (revisión sistemática de ejercicio en los 3 primeros meses tras TEV) | PDF del usuario, entero sin suplemento | 4 ECA, 250 personas, uno tras TVP; sin problemas de seguridad, sin beneficio claro; 3 de 4 con riesgo de sesgo alto, sin GRADE | `trasTVP` |
+
+- **`trasTVP`** (fase 5): tras la frase de las medias, «los estudios de las medias para prevenirlo se contradicen, y en la trombosis de la pantorrilla solo son para los síntomas (Cosmi 2022, consenso de expertos)»; tras «La guía no da pautas de ejercicio», las frases de Steiner 2026 (con «siempre con el anticoagulante» y «solo uno tras una TVP») y de Jasionowska 2022 (síndrome «ya establecido», «certeza muy baja»).
+- **`RED_ANTICOAGULADO`** (fase 6, `alarmaAnticoagulado` y `cierreAnticoagulado`): una frase condicional en el texto, como `trasTVP` (la tarjeta no guarda el motivo; decisión 2 sin cambios). Dice que, si lo toma por una trombosis, la falta de aire brusca, el dolor en el pecho al respirar o la tos con sangre piden el 112, y la pierna que se hincha más, se calienta o duele más pide médico hoy. Redacción propia sobre las fuentes y los niveles de `pq_tep` (112) y `pq_tvp` (derivar hoy): Vyas 2024 y NICE NG158. Regenerado `docs/plan-tratamiento-frases.md`.
+- **Leídas solo con el resumen y no citadas**: Kahn 2011 (el ensayo, PMC3017252), Anderson 2009 (deambulación, PMC2787576) y Ortel 2020 (ASH, PMC7556153), con texto vacío en PMC; la de *Phys Sportsmed* 2020, sin texto. Ninguna Cochrane de ejercicio en el síndrome postrombótico aparece en PubMed.
+

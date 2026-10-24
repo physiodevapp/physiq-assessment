@@ -120,6 +120,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 7 — Hipermovilidad (SEDh / TEH) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Propuesta aceptada antes de leer, ver «Bloque 7 — propuesta»; 14 fuentes, ver «Bloque 7 — decisiones de nivel» |
 | Bloque 8 — Embarazo y posparto | Propuesta **aceptada por el usuario** con las recomendaciones (2026-10): un bloque, enlace en los dos estados sin excepciones, sin `lu8` ni `ca10` en la tabla. Lectura hecha (2026-10, Sonnet): 9 fuentes en PMC y 8 PDF del usuario. Escrito (2026-10, Opus) y enlazado desde la tarjeta (textos aceptados por el usuario, 2026-10), **revisado por el usuario** (2026-10). Ver «Bloque 8 — lectura de fuentes» y «Bloque 8 — decisiones de nivel» |
 | Bloque 9 — Trastorno mastocitario y anafilaxia | **No se hace** (usuario, 2026-10, con la recomendación de la propuesta; decisión 2): nada sobre el ejercicio en estas personas llega a `clinico`. Christensen 2019 (PDF del usuario), leído después, no lo cambia. En su lugar, una línea sobre la anafilaxia por ejercicio en el aviso `mastocitos` de la tarjeta, **revisada por el usuario** (2026-10). Ver «Bloque 9 — propuesta» y «Bloque 9 — decisión» |
+| Bloque 10 — Tras una TVP (síndrome postrombótico) | **No se hace** (usuario, 2026-10, con las recomendaciones de la propuesta, tras leer Steiner 2026 en PDF): nada sobre el ejercicio tras una TVP llega a `clinico` con certeza suficiente ni da una frase para el paciente. En su lugar, cambios en la tarjeta anticoagulado (línea `trasTVP` y `RED_ANTICOAGULADO`), pendientes de revisión del usuario. Ver «Bloque 10 — propuesta» y «Bloque 10 — decisión» |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet; los enlaces a «Efectos centrales» y «antiinflamatorio», Opus) y **revisado por el usuario** (2026-10): `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis (`BLOQUE_POR_HIPOTESIS`, Opus), también hecha y **revisada por el usuario** (2026-10) |
 | Enlace desde los recuadros de la fase 5 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): `enlaceCondicionEjercicioHTML()`; lupus diagnosticado → antiinflamatorio, osteoporosis → mecanotransducción |
 | Condiciones también en la fase 6 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): disautonomía → ortostática e hipermovilidad → su bloque, en «Educación», con la misma regla de estados que el recuadro (`CONDICION_EJERCICIO`, `condicionEnlazaEjercicio()`); la hipermovilidad deja de enlazarse también con la regla de sospecha vascular cumplida, en las dos fases. Ver «Una sola regla de estados» |
@@ -641,6 +642,154 @@ mastocitos: { id: 'mastocitario', ayuda: 'enlaceCondicionMastocitos', motivo: 'm
 - **En su lugar**, una línea en el aviso `mastocitos` de la fase 6 (`data/plan-tratamiento.js`): con un cofactor, la anafilaxia por ejercicio suele empezar en los primeros 30 minutos, la intensidad que la provoca varía incluso en la misma persona y los cofactores descritos (Pravettoni 2016, pasajes comprobados en PMC); en la alergia al trigo, el ejercicio y la aspirina bajan el umbral y agravan la reacción (Christensen 2019). Ver `docs/mastocitaria.md`, «Anafilaxia por ejercicio en el aviso». **Revisado por el usuario** (2026-10).
 - El trastorno mastocitario sigue entre las condiciones sin enlace a la guía (ver «Desde los recuadros de la fase 5»).
 
+## Bloque 10 — propuesta (2026-10; no aceptada como bloque: ver «Bloque 10 — decisión»)
+
+«Ejercicio tras una trombosis venosa profunda (síndrome postrombótico)», con el patrón de la propuesta 9. Es solo la propuesta: no hay nada escrito en `data/`, en el registro ni en el código. Nota: «Desde los recuadros de la fase 5» no apuntaba este tema como posible; decía «anticoagulado… sin enlace (ningún bloque trata su tema)».
+
+**Recomendación: no hacer el bloque por ahora** (decisión 2 del diseño). Lo único que llega a `clinico` sobre el ejercicio tras una TVP es **un ensayo piloto de 39 pacientes con certeza muy baja**, en una población que la tarjeta no recoge. Ninguna frase para el paciente se sostendría con el criterio de los bloques 6 y 8. El razonamiento, punto por punto:
+
+### 1. Lo que ya dice la app
+
+- **Recuadro de la fase 5, línea `trasTVP`** (`data/comun.js`, `anticoagulado.textos`): «Si toma el anticoagulante por una trombosis venosa profunda reciente de la pierna»: tratamiento en casa (Kakkos 2021, I A); compresión de 30–40 mmHg desde las primeras 24 h (I A); medias por debajo de la rodilla contra el síndrome postrombótico (IIa A); sin compresión con enfermedad arterial grave o insuficiencia cardiaca grave; «La guía no da pautas de ejercicio». **Sale con cualquier tarjeta marcada**: la condición está en el texto, no en el estado (`lineasRecomendacionAC()`), porque la tarjeta no guarda el motivo (decisión 2 de `docs/anticoagulado.md`).
+- **Línea `ejercicio` del mismo recuadro**: ninguna fuente da intensidad ni carga; tras una embolia pulmonar el ejercicio es seguro y factible (Xiang 2025); tras una TVP, caminar pronto no aumentó la embolia (Liu 2015, con reservas de calidad); fibrilación auricular (van Gelder 2024).
+- **Aviso `anticoagulado` de la fase 6**: precaución con el riesgo de golpe, sin norma para las técnicas manuales y pregunta antes de cada técnica. No habla de la TVP ni del ejercicio.
+- **`RED_ANTICOAGULADO`** (`cierreAnticoagulado`, `alarmaAnticoagulado`): golpe en la cabeza, hematoma espinal, psoas y abdomen, síndrome compartimental y no saltarse el fármaco. **No nombra los signos de embolia pulmonar** (falta de aire, dolor torácico) **ni los de una TVP nueva o que se extiende**. Las preguntas de TEP y TVP existen en otros sistemas (`pq_tep`, `em_u_tev`, `les_u_tvp`, `les_u_tep_ictus`, `r_v2`, `l_v4`, `ca_v2`, `tp_v2`), según la región o la condición. Ver 5.
+
+### 2. Fuentes (lectura, 2026-10, agente Sonnet; citas literales con su sección en el scratchpad de la sesión, fuera del repositorio)
+
+| Fuente | PMC | Lectura | Para qué |
+|---|---|---|---|
+| Jasionowska 2022, *Phlebology*, revisión sistemática de ejercicio en el SPT (PROSPERO CRD42021220924), [doi:10.1177/02683555221129738](https://doi.org/10.1177/02683555221129738) | PMC9720701 | Entera | Todo lo que hay: **un solo ensayo** (Kahn 2011) |
+| VAS 2022 (European Foundation for Vascular Medicine), *position paper* del SPT, *Front Cardiovasc Med*, [doi:10.3389/fcvm.2022.762443](https://doi.org/10.3389/fcvm.2022.762443) | PMC8907532 | Entera | Consenso RAND/UCLA (15 expertos): ejercicio y compresión en el SPT |
+| Liu 2015, *PLoS One* (ya en el registro) | PMC4393252 | Entera | Caminar pronto frente al reposo: TEP, progresión, dolor, edema, SPT |
+| Kahn 2011, *CMAJ*, ECA piloto de 6 meses, [doi:10.1503/cmaj.100248](https://doi.org/10.1503/cmaj.100248) | PMC3017252 | **Solo resumen** (texto vacío dos veces, una del agente y otra mía) | El ensayo primario; sus cifras, a través de Jasionowska |
+| Anderson 2009, *Physiother Can*, revisión de deambulación tras TVP (4 ECA), [doi:10.3138/physio.61.3.133](https://doi.org/10.3138/physio.61.3.133) | PMC2787576 | **Solo resumen** (texto vacío dos veces) | Deambulación frente a reposo |
+| Ortel 2020, guía ASH de tratamiento de la TEV, [doi:10.1182/bloodadvances.2020001830](https://doi.org/10.1182/bloodadvances.2020001830) | PMC7556153 | **Solo resumen** (texto vacío dos veces) | No se pudo ver si dice algo de deambulación, compresión o ejercicio |
+| Revisión sistemática de ejercicio estructurado tras una TEV aguda (4 ECA, n = 250), *Eur J Prev Cardiol* 2026, [doi:10.1093/eurjpc/zwag096](https://doi.org/10.1093/eurjpc/zwag096) | No | Solo resumen | Seguridad del ejercicio en los 3 primeros meses |
+| Revisión sistemática de ejercicio en la TEV, *Phys Sportsmed* 2020, [doi:10.1080/00913847.2020.1786746](https://doi.org/10.1080/00913847.2020.1786746) | No | No leída | — |
+
+- **No hay revisión Cochrane** de ejercicio en el síndrome postrombótico: no aparece en PubMed en dos búsquedas. La revisión sistemática de referencia es Jasionowska 2022.
+- **Guías fuera de PMC, sin leer**: ESVS 2021 (Kakkos 2021, leída en PDF para la tarjeta y sin pautas de ejercicio), CHEST 2021, NICE NG158 (ya registrada: solo «informar de cómo afectan los anticoagulantes a actividades como el deporte»), AHA 2014 sobre el SPT (Kahn 2014) y la guía ISTH/SSC.
+
+**Avisos de lectura**:
+
+- **Kahn 2011** es el único ensayo de ejercicio en el SPT: 43 aleatorizados y 39 completaron. Eran SPT ya establecidos (Villalta ≥ 5), con la TVP **de media hace 3–4 años** (54,1 y 38,8 meses) y con una población más joven que la habitual. Hubo 15 sesiones con entrenador, más fuerza 3–4 veces por semana, estiramientos a diario y aeróbico 60–120 min por semana, durante 6 meses. El control fue una charla de 1 h con llamadas. Resultados (Jasionowska 2022, «Results»):
+  - calidad de vida específica (VEINES-QOL), +4,6 puntos (IC 0,54–8,7);
+  - gravedad (Villalta), −2,0 (IC −4,6 a 0,6, p = 0,14), **sin diferencia**;
+  - fuerza de pantorrilla, mejor; resistencia en cinta, igual;
+  - «No adverse events were reported».
+
+  Certeza **muy baja** («the outcomes were graded as very low certainty»). Sobre las conclusiones:
+  - la del ensayo, «may improve post-thrombotic syndrome», dice más que su resultado sobre la gravedad;
+  - la de la revisión es «the effectiveness of exercise therapies in PTS remains unclear» y «exercise appears to be a safe intervention» (con 39 personas).
+
+  La compresión no se controló: se registró pero no se pidió, y la llevaba el 57 % del grupo de ejercicio frente al 73 % del de control.
+- **VAS 2022** (`Cosmi 2022`; corrección tras releerlo entero: **no choca con Kakkos**, ver «Bloque 10 — decisión»): «Exercise training is appropriate for PTS treatment». Sus propios autores dicen «merely reflect the consensus opinion of experts based on low quality evidence» y «very limited evidence exists on these approaches for both PTS prevention and treatment». **No dice nada de combinar compresión y ejercicio.** Sobre las medias para **prevenir** el SPT: «Studies on the use of GCS for PTS prevention have produced conflicting results». **Esto choca con la rec. 32 de Kakkos 2021 (IIa A)**, que ya está en `trasTVP`: es un asunto de la tarjeta, no de esta guía (ver «Qué propongo en su lugar», punto 3).
+- **Liu 2015** (ya leída para la tarjeta; releída):
+  - siempre con anticoagulación estándar y a veces con compresión;
+  - el estimador global de TEP, progresión o muerte es incoherente (RD −0,03 con un IC que excluye el 0 y p = 0,22; I² 92 %, un estudio pesa el 63 %); con solo los ECA, RD −0,01 (p = 0,66), que no demuestra seguridad;
+  - casi todos los estudios **excluyeron la TEP ya presente**, y los autores dicen que no se aplica a todas las TVP agudas, «especially for proximal DVT patients»;
+  - dolor: mejor con la deambulación si al inicio era moderado o intenso (SMD 0,42; 0,09–0,74);
+  - edema: sin diferencia;
+  - SPT: un solo estudio, confundido por la compresión (solo el grupo móvil la llevaba), que los autores llaman «controversial».
+- **Contraindicaciones** (TEP inestable, trombo flotante, dolor o hinchazón intensos): **ninguna fuente leída las da**. Liu solo recoge estudios antiguos retrospectivos que inmovilizaban 48–72 h, y los propios autores los consideran «less convincing».
+- **Fase aguda y SPT temprano**: **sin ningún ensayo de ejercicio** (Kahn es SPT de años). El único dato de seguridad en los 3 primeros meses es el resumen de *Eur J Prev Cardiol* 2026 («No trial reported safety concerns»), que no es citable sin el texto.
+
+### 3. Tabla de afirmaciones posibles, por apartado, con su nivel
+
+| Apartado | Afirmación | Nivel propuesto | Fuente |
+|---|---|---|---|
+| `que` | Qué es el síndrome postrombótico (síntomas crónicos de la pierna tras una TVP, medidos con la escala de Villalta) | `mecanismo` (descripción) | Jasionowska 2022; VAS 2022 |
+| `que` | La bomba muscular de la pantorrilla como explicación de por qué el ejercicio ayudaría | **Sin fuente leída que lo mida**: no entra | — |
+| `evidencia` | En un SPT ya establecido, 6 meses de ejercicio supervisado mejoraron algo la calidad de vida de la pierna, sin cambiar la gravedad, en un ensayo piloto de 39 personas; certeza muy baja | `clinico` (certeza muy baja, dicha en la frase) | Jasionowska 2022 (Kahn 2011) |
+| `evidencia` | La fuerza de la pantorrilla mejoró y la resistencia no | `clinico` (mismo ensayo; fuerza, como en el bloque 2) | Jasionowska 2022 |
+| `evidencia` | Sin efectos adversos en ese ensayo | `clinico` como hecho del estudio, **sin frase para el paciente** (precedente de la seguridad del bloque 8) | Jasionowska 2022 |
+| `evidencia` | Caminar pronto con la anticoagulación no aumentó la embolia ni la progresión en los estudios, que excluían la TEP presente y no permiten generalizar a la TVP proximal | `clinico` con reservas, y **la frase ya está en el recuadro** | Liu 2015 |
+| `evidencia` | Con dolor moderado o intenso al inicio, caminar pronto se asoció a menos dolor; el edema, igual | `clinico` con reservas (subgrupo de un metaanálisis con el estimador global incoherente) | Liu 2015 |
+| `evidencia` | Que caminar pronto prevenga el SPT | Un estudio confundido por la compresión: **no entra**, o en «Ampliar» como no demostrado | Liu 2015 |
+| `evidencia` | Los expertos lo consideran «apropiado» en el SPT | `mecanismo` («usada, no comparada», como un Delphi en el bloque 8) | VAS 2022 |
+| `evidencia` | Hechos de los estudios: siempre con anticoagulación efectiva; casi todos sin TEP presente; el ensayo de ejercicio, años después de la TVP y sin controlar la compresión | `clinico` como hechos de los estudios (precedente de la sal y el agua del bloque 6) | Liu 2015; Jasionowska 2022 |
+| `consulta` | La dosis no sale de ninguna fuente comparativa: la de Kahn es la de un ensayo, no una recomendación | `mecanismo` | Jasionowska 2022 |
+| `consulta` | La compresión es de la guía y del médico; el bloque remite al recuadro | — (remite a `trasTVP`) | Kakkos 2021 |
+| `paciente` | — | **Ninguna frase se sostiene** (abajo) | — |
+
+**Frases para el paciente: ninguna.**
+- «El ejercicio puede ayudarte a encontrarte mejor de la pierna» se apoyaría en un piloto de 39 personas con certeza muy baja, sin cambio en la gravedad. Es menos que el ensayo con riesgo de sesgo alto más 4 estudios antes-después que sostuvo la frase del bloque 6, y el bloque 8 rechazó una frase apoyada en certeza muy baja.
+- «Caminar pronto es seguro» es la frase que el bloque 8 evitó: se oye como «es seguro», y los estudios excluían la TEP presente y la proximal.
+- «Caminar ayuda a que duela menos» sale de un subgrupo de un metaanálisis con el estimador principal incoherente.
+
+`problemasBloque()` exige al menos una frase para el paciente, así que el bloque **no cumpliría el esquema** sin rebajar esa regla. La decisión 4 dice no rebajarla.
+
+### 4. Enlace, si aun así se hace
+
+**Solo desde la tarjeta anticoagulado, y solo cuando aplique `trasTVP`.** Hoy no se puede saber, porque la tarjeta no guarda el motivo. Haría falta **un dato nuevo**: un chip o una casilla «Lo toma por una trombosis venosa de la pierna (de los últimos meses)». Eso:
+
+- reabre la decisión 2 de `docs/anticoagulado.md` («sin motivo… no cambia lo que hace la app»), porque ahora cambiaría un enlace y, de paso, permitiría que `trasTVP` saliera solo cuando toca;
+- toca el payload si la fase 5 tiene que leerlo como las demás condiciones (`ac.tv`), con lo que cambian `bloqueACIA()` / `AC_CASOS` y la copia `_bloqueAC` de physiq-report. *Alternativa*: que la regla lea solo el `state` (sin payload), rompiendo el patrón «fase 5 = payload» de `CONDICION_EJERCICIO`.
+
+Regla propuesta (borrador):
+
+```js
+anticoagulado: { id: 'postrombotico', ayuda: 'enlaceCondicionPostrombotico', motivo: 'postrombotico', ayudaPlan: 'enlaceMotivoPostrombotico',
+  enlaza: ({ estado, tvp }) => estado === 'toma' && !!tvp },
+```
+
+`datosCondicionEjercicio()` pasaría `tvp` (de `tarjeta.tvp`) y la fase 5, `ac.tv`. Textos (borrador, para aceptarlos solo si se hace):
+
+- Fase 5: «Qué se sabe del ejercicio tras una trombosis de la pierna y en el síndrome postrombótico, y hasta dónde llega; la compresión y el anticoagulante siguen siendo los de este recuadro.»
+- Fase 6: «Por la trombosis venosa de la pierna: el bloque dice que hay un solo ensayo, pequeño, y ninguna dosis con fuente; no tiene frases para el paciente.»
+
+**Problema de fondo del enlace**: la única evidencia `clinico` es de **SPT de años**, y esa persona muchas veces **ya no toma el anticoagulante**, así que no tendría marcada la tarjeta. La que sí la tiene marcada, con una TVP reciente, está en la fase en la que **no hay ningún ensayo de ejercicio**. El enlace llevaría el bloque justo a quien no cubre. Para el SPT establecido haría falta otra vía (una pregunta de cribado o un antecedente), y no hay ninguna hoy.
+
+`BLOQUE_POR_HIPOTESIS`: nada (ninguna hipótesis es la TVP; se deriva). Otras condiciones (punto 5 de «Mantenimiento»): ninguna. El posquirúrgico (`pq_tvp`), el embarazo (`em_u_tev`) y el lupus (`les_u_tvp`) llevan la TVP como urgencia, no como antecedente, y no hay reglas entre tarjetas (decisión 19 de `docs/anticoagulado.md`).
+
+### 5. Riesgos
+
+- **Permiso para cargar sin confirmar la anticoagulación.** Todo lo leído sobre caminar pronto es **con anticoagulación efectiva** (Liu 2015). Un bloque de «ejercicio tras la TVP» leído sin la tarjeta (la guía se abre desde la cabecera) podría tomarse como permiso con una TVP sin tratar o sin confirmar. Hoy esa persona sale por las preguntas urgentes de TVP, que bloquean la fase 6; el bloque tendría que decirlo en su primera frase de `consulta`.
+- **Choque con la compresión.** El ensayo de ejercicio no la controló y VAS no dice cómo combinarla. Cualquier frase como «con la media puesta» o «sin ella» no tendría fuente. Además, VAS (prevención «conflicting») y Kakkos (IIa A) se contradicen en la prevención con medias: el bloque heredaría una discrepancia que hoy la tarjeta no recoge.
+- **Contraindicaciones inventadas.** Ninguna fuente leída da cuándo **no** moverse (TEP presente o inestable, trombo flotante, dolor intenso). Una lista así sería redacción propia en el punto más delicado.
+- **TEP.** Los estudios excluían la TEP presente y no se generalizan a la TVP proximal. Si el bloque habla de moverse pronto, **la red de seguridad debería nombrar la falta de aire, el dolor torácico y la pierna que se hincha más**, y `RED_ANTICOAGULADO` hoy no lo hace.
+- **Repetir el recuadro**: la línea de caminar pronto ya está (`ejercicio`), y la compresión también (`trasTVP`).
+
+### Qué propongo en su lugar
+
+1. **No hacer el bloque 10** y anotarlo en «Desde los recuadros de la fase 5»: el anticoagulado sigue sin enlace, porque lo único `clinico` sobre el ejercicio tras una TVP es un piloto con certeza muy baja en SPT de años, que no da frase para el paciente ni encaja con quien marca la tarjeta.
+2. **Opcional, como cambio de la tarjeta y no de esta guía** (`docs/anticoagulado.md`, otra decisión tuya): añadir a `trasTVP` una frase con Jasionowska 2022 («En el síndrome postrombótico ya establecido, un ensayo pequeño vio algo más de calidad de vida con 6 meses de ejercicio supervisado, sin cambio en la gravedad y sin efectos adversos; certeza muy baja»), en lugar de «La guía no da pautas de ejercicio» o junto a ella. Habría que registrar Jasionowska 2022.
+3. **Opcional, también de la tarjeta**:
+   - decidir si `trasTVP` recoge la discrepancia sobre las medias para prevenir el SPT (Kakkos 2021, IIa A, frente a VAS 2022, «conflicting results»);
+   - decidir si `RED_ANTICOAGULADO` (o una red propia con la TVP) nombra los signos de TEP y de una TVP que se extiende. Hoy esos signos solo salen por las preguntas de algunas regiones y condiciones.
+
+   Las dos piden su propia revisión.
+4. **Si aun así quieres el bloque**, primero en PDF, por prioridad:
+   1. Kahn 2011 entero;
+   2. la revisión de *Eur J Prev Cardiol* 2026 (ejercicio tras TEV aguda, la única fuente sobre la fase en la que está quien marca la tarjeta);
+   3. Ortel 2020 (ASH);
+   4. la de *Phys Sportsmed* 2020;
+   5. opcional, Kahn 2014 (AHA).
+
+   Solo si la de 2026 da un `clinico` en la fase aguda con certeza al menos baja tiene sentido seguir, con el dato nuevo de la tarjeta del punto 4.
+
+### Después de decidir
+
+- **Si se acepta no hacerlo**: anotarlo en «Estado» y en «Desde los recuadros de la fase 5»; `CLAUDE.md` no cambia (el anticoagulado ya figura sin enlace). Los puntos 2 y 3, si se quieren, van con `docs/anticoagulado.md` en otra sesión.
+- **Si se hace**: los PDF del punto 4, decisiones de nivel y redacción (Opus), el dato nuevo de la tarjeta (con `AC_CASOS` y physiq-report si va al payload), registro y `node tests/gen-referencias.mjs`, enlaces con sus líneas de motivo aceptadas antes, tests (regla, fase 5 = fase 6) y `node tests/smoke.mjs --solo ejercicio,anticoagulado,fase6`. Sin fusionar hasta tu revisión.
+
+## Bloque 10 — decisión (usuario, 2026-10)
+
+- **No se hace el bloque.** El usuario aceptó las recomendaciones de la propuesta y pasó el PDF de la revisión de *Eur J Prev Cardiol* 2026, la única fuente sobre la fase en la que está quien marca la tarjeta.
+- **Steiner 2026** (PDF del usuario, leído entero sin el material suplementario; clave `Steiner 2026`) **no cambia la decisión**:
+  - 4 ECA, 250 personas, con ejercicio estructurado en los 3 primeros meses tras la TEV: dos tras embolia pulmonar (Rolving 2020, n = 137, el único con riesgo de sesgo bajo; Ghram 2021, n = 24), uno tras TVP (Isma 2007, n = 72, con antivitamina K y medias de clase II en los dos grupos, ejercicio desde los días 5–7) y uno tras cualquiera (Lakoski 2015, n = 17);
+  - tres con riesgo de sesgo alto; sin metaanálisis («no quantitative analysis was performed») ni GRADE;
+  - eficacia: «differences between ET and control groups were nonsignificant» salvo en Ghram, con riesgo de sesgo alto; Isma no encontró diferencias en la recanalización, la circunferencia, el dolor ni la fuerza;
+  - seguridad: «No trial reported safety concerns regarding ET initiated within 3 months after VTE», ni recurrencias ni progresión. Es `clinico` como hecho de 4 ensayos pequeños, y no da frase para el paciente por el mismo motivo que la seguridad del bloque 8;
+  - de pasada responde a la duda de la ASH: «most recent guidelines of the American Society of Hematology do not address this topic at all» (p. 12).
+- **Corrección de la propuesta** (releído entero `Cosmi 2022`, el consenso de VAS): no contradice a Kakkos 2021. También considera apropiadas las medias de 30–40 mmHg para prevenir el síndrome tras una TVP iliofemoral o poplítea. Lo que añade es que «Studies on the use of GCS for PTS prevention have produced conflicting results» y que «Calf DVT does not deserve stockings for prevention, but only for symptom relief».
+- **En su lugar** (recomendaciones 2 y 3 de la propuesta, aceptadas; textos **pendientes de revisión del usuario**):
+  - la línea `trasTVP` del recuadro de la fase 5 (`data/comun.js`) añade Cosmi 2022 sobre las medias, y Steiner 2026 y Jasionowska 2022 sobre el ejercicio, cada uno con su límite;
+  - `RED_ANTICOAGULADO` (`alarmaAnticoagulado` y `cierreAnticoagulado`, `data/plan-tratamiento.js`) añade, condicional en el texto («Si lo tomas por una trombosis…»), la falta de aire brusca, el dolor torácico al respirar o la tos con sangre (112) y la pierna que se hincha, se calienta o duele más (médico hoy), sobre las fuentes de `pq_tep` y `pq_tvp` (Vyas 2024, NICE NG158).
+  - Registro: `Jasionowska 2022`, `Cosmi 2022` y `Steiner 2026`. Ver `docs/anticoagulado.md`, «Tanda 3».
+- El anticoagulado sigue entre las condiciones sin enlace a la guía. `CONDICION_EJERCICIO` no cambia y la tarjeta no gana ningún dato nuevo.
+
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
 - **Dónde**: en el bloque «Educación» de la sesión del plan (`plan.js`), bajo sus frases: un botón «Para explicárselo al paciente →» y una línea que dice a qué bloque lleva («Abre «<título>», el bloque que corresponde a la irritabilidad elegida.»). Texto en `TEXTOS_EJERCICIO` (`data/ejercicio.js`), no en `data/plan-tratamiento.js`, para no tocar las frases del plan ni `docs/plan-tratamiento-frases.md`.
@@ -657,7 +806,7 @@ mastocitos: { id: 'mastocitario', ayuda: 'enlaceCondicionMastocitos', motivo: 'm
   - **Disautonomía, en los dos estados** (2026-10, con el bloque 6, **revisado por el usuario**) → «Ejercicio en la intolerancia ortostática (POTS)»: por qué los programas empiezan tumbado y hasta dónde llega lo demostrado; la dosis sigue siendo la del recuadro.
   - **Hipermovilidad, en los dos estados, salvo con el subtipo vascular diagnosticado** (2026-10, con el bloque 7, **revisado por el usuario**) → «Ejercicio en la hipermovilidad (SEDh / TEH)»: si se puede cargar con fuerza y cuánto dolor provoca. Con el subtipo vascular no hay enlace: sus ensayos no lo incluyen y su pauta es la de Byers 2017, que ya lleva el recuadro. **Tampoco con la regla de sospecha del subtipo vascular cumplida** (`vs`; usuario, 2026-10): hasta que genética conteste el paciente puede tener el subtipo vascular, y el mensaje de carga alta del bloque no vale para él; el recuadro, en ese caso, no muestra la línea de Byers (`docs/hipermovilidad.md`), así que nada lo equilibraría. Vuelve solo cuando la sospecha se desmarca.
   - **Embarazo o posparto, en los dos estados, sin excepciones** (2026-10, con el bloque 8; textos aceptados por el usuario) → «Ejercicio en el embarazo y el posparto»: «Por qué se recomienda moverse y hasta dónde llega lo demostrado en el dolor de espalda y pelvis, el ánimo y los escapes; la dosis sigue siendo la de este recuadro.» Sin excepción por urgencias ni contraindicaciones: la tarjeta no las guarda y las urgencias ya bloquean la fase 6; la primera frase de `consulta` del bloque lo cubre.
-  - Sin enlace: trastorno mastocitario, anticoagulado y posquirúrgico (ningún bloque trata su tema). El mastocitario se estudió como bloque 9 y no se hizo: nada sobre el ejercicio en estas personas llega a `clinico` (ver «Bloque 9 — decisión»).
+  - Sin enlace: trastorno mastocitario, anticoagulado y posquirúrgico (ningún bloque trata su tema). El mastocitario se estudió como bloque 9 y no se hizo: nada sobre el ejercicio en estas personas llega a `clinico` (ver «Bloque 9 — decisión»). El ejercicio tras una TVP, desde la tarjeta anticoagulado, se estudió como bloque 10 y tampoco se hizo: un solo ensayo piloto con certeza muy baja en síndrome postrombótico de años, y en los 3 primeros meses, 4 ensayos pequeños sin beneficio claro (ver «Bloque 10 — decisión»).
 - **Una sola regla de estados para las fases 5 y 6** (2026-10, Opus, a petición del usuario; **revisado por el usuario**, 2026-10): `CONDICION_EJERCICIO` (`lib/ejercicio.js`) guarda por condición su bloque, la línea del recuadro y, si sale también en la fase 6, su `motivo` y su línea «También»; `condicionEnlazaEjercicio(condicion, { estado, subtipo, vs })` es la regla. La fase 5 la llama con su payload (`es`, `st`, `vs`) a través de `enlaceCondicionEjercicioHTML()`; la fase 6, con las tarjetas del `state` a través de `motivosEjercicio({ riesgoPsico, cuestionarios, tarjetas, respuestas })` (`datosCondicionEjercicio()` calcula `vs` con `reglaVascular()`, como `hmPayload()`). Un test recorre todas las combinaciones de estado, subtipo y regla vascular y exige el mismo resultado en las dos fases.
   - **Fase 6, líneas nuevas** (textos aceptados por el usuario, 2026-10), en este orden tras «Efectos centrales» y «antiinflamatorio»:
     - disautonomía, en los dos estados → «Ejercicio en la intolerancia ortostática (POTS)»: «Por la disautonomía: su frase para el paciente habla de tolerar estar de pie, sin prometer que mejoren todos los síntomas; la dosis es la del aviso de este plan.»
