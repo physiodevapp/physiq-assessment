@@ -13,7 +13,7 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 
 ## Resumen
 
-- **1045** referencias de literatura, con **4685** usos.
+- **1045** referencias de literatura, con **4701** usos.
 - **4** tarjetas de consulta (repo guia-de-consulta), con **89** usos, basadas en Lluch 2020.
 - **437** de 1045 referencias del registro revisadas. Ver «Estado de revisión».
 - **1** de 484 tests sin `fuente` (0 de ellos puntúan en la fase 4b). Ver «Tests sin fuente».
@@ -69,10 +69,10 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [NICE NG133](#nice-ng133) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG156](#nice-ng156) | razonamiento fase 2 | 1 | **sin revisar** |
 | [NICE NG192](#nice-ng192) | razonamiento fase 2 · texto | 9 | **sin revisar** |
-| [NICE NG194](#nice-ng194) | razonamiento fase 2 · condiciones especiales (cabecera) | 7 | **sin revisar** |
-| [NICE NG201](#nice-ng201) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 32 | **sin revisar** |
+| [NICE NG194](#nice-ng194) | razonamiento fase 2 · condiciones especiales (cabecera) | 8 | **sin revisar** |
+| [NICE NG201](#nice-ng201) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 39 | **sin revisar** |
 | [NICE NG232](#nice-ng232) | razonamiento fase 2 · condiciones especiales (cabecera) · guía de fármacos (cabecera) · texto | 18 | **sin revisar** |
-| [NICE NG255](#nice-ng255) | razonamiento fase 2 | 1 | **sin revisar** |
+| [NICE NG255](#nice-ng255) | razonamiento fase 2 | 2 | **sin revisar** |
 | [NICE NG258](#nice-ng258) | razonamiento fase 2 · plan de tratamiento · texto | 25 | **sin revisar** |
 | [Rout 2024 (síndrome antifosfolípido)](#rout-2024-síndrome-antifosfolípido) | razonamiento fase 2 | 3 | **sin revisar** |
 | [Kibbe 2004](#kibbe-2004) | razonamiento fase 2 | 1 | **sin revisar** |
@@ -95,7 +95,7 @@ respalda una fila o un párrafo de esas guías de lectura (solo consulta; los f�
 | [Chenoweth 2018](#chenoweth-2018) | razonamiento fase 2 · guía de fármacos (cabecera) · texto | 9 | **sin revisar** |
 | [Gordon 2018](#gordon-2018) | razonamiento fase 2 · texto | 12 | **sin revisar** |
 | [Hulens 2018](#hulens-2018) | razonamiento fase 2 · condiciones especiales (cabecera) | 2 | **sin revisar** |
-| [Mottola 2018](#mottola-2018) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 58 | **sin revisar** |
+| [Mottola 2018](#mottola-2018) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 65 | **sin revisar** |
 | [Aringer 2019](#aringer-2019) | razonamiento fase 2 · condiciones especiales (cabecera) · texto | 17 | **sin revisar** |
 | [Cooper 2019](#cooper-2019) | razonamiento fase 2 | 1 | **sin revisar** |
 | [Kanis 2019](#kanis-2019) | razonamiento fase 2 · condiciones especiales (cabecera) · guía de fármacos (cabecera) · texto | 11 | **sin revisar** |
@@ -15994,77 +15994,85 @@ Nota: PDF del usuario, leído entero (2026-10). Recomendaciones con GRADE: 150 m
 
 Citada como:
 
-1. Suelo pélvico a diario, con la técnica aprendida (Mottola 2018; NICE NG210, 1.3.11).
-2. Embarazada de 20 semanas o más: no la dejes mucho rato boca arriba y, si se marea, tiene náuseas o se encuentra mal, ponla de lado (Mottola 2018; ACOG 2020).
-3. Activa durante todo el embarazo si no hay contraindicación: al menos 150 min por semana de intensidad moderada (puede hablar, no cantar), repartidos en 3 días o más, con aeróbico y fuerza; si no llega, empezar poco a poco (Mottola 2018, recomendaciones fuertes; Bull 2020).
-4. Sin buceo, deportes de contacto, riesgo de caída ni bicicleta en movimiento; sin calor excesivo y bien hidratada; la intensidad alta, solo supervisada; si la maniobra de Valsalva le marea, sin aguantar la respiración (Mottola 2018, opinión de expertos).
-5. Boca arriba: si se marea, tiene náuseas o se encuentra mal, cambiar de posición (Mottola 2018, recomendación débil); desde la semana 20 puede bajar el retorno venoso (ACOG 2020).
-6. Parar el ejercicio y consultar si aparece: sangrado vaginal, pérdida de líquido, contracciones regulares y dolorosas, dolor de vientre, dolor en el pecho, falta de aire que no cede en reposo, mareo que no cede, dolor de cabeza, debilidad que afecta al equilibrio, o dolor o hinchazón de pantorrilla (Mottola 2018, recuadro 2; ACOG 2020, recuadro 3).
-7. Con una contraindicación absoluta (rotura de la bolsa, parto prematuro, sangrado persistente sin explicar, placenta previa después de la semana 28, preeclampsia, cuello del útero incompetente, crecimiento fetal restringido, embarazo de trillizos o más, diabetes tipo 1, hipertensión o tiroides sin controlar, u otra enfermedad cardiovascular, respiratoria o sistémica grave), solo las actividades de la vida diaria; con una relativa, que hable con su obstetra o matrona antes de un ejercicio moderado o intenso (Mottola 2018, tabla 2).
-8. Con diástasis en el embarazo, la guía canadiense aconseja consejo de fisioterapia y evitar los abdominales tipo curl (Mottola 2018, opinión de expertos).
-9. Mottola 2018 — Mottola, Davenport, Ruchat et al., «2019 Canadian guideline for physical activity throughout pregnancy», Br J Sports Med 2018;52(21):1339–1346, recuadros 1 y 2.
-10. Mottola 2018
+1. Antes de la semana 20, una tensión de 140/90 o más se trata como hipertensión crónica (NICE NG201, 1.2.25); sin controlar, contraindica el ejercicio (Mottola 2018, tabla 2). Que lo sepa su médico o su equipo obstétrico.
+2. Suelo pélvico a diario, con la técnica aprendida (Mottola 2018; NICE NG210, 1.3.11).
+3. Embarazada de 20 semanas o más: no la dejes mucho rato boca arriba y, si se marea, tiene náuseas o se encuentra mal, ponla de lado (Mottola 2018; ACOG 2020).
+4. Activa durante todo el embarazo si no hay contraindicación: al menos 150 min por semana de intensidad moderada (puede hablar, no cantar), repartidos en 3 días o más, con aeróbico y fuerza; si no llega, empezar poco a poco (Mottola 2018, recomendaciones fuertes; Bull 2020).
+5. Sin buceo, deportes de contacto, riesgo de caída ni bicicleta en movimiento; sin calor excesivo y bien hidratada; la intensidad alta, solo supervisada; si la maniobra de Valsalva le marea, sin aguantar la respiración (Mottola 2018, opinión de expertos).
+6. Boca arriba: si se marea, tiene náuseas o se encuentra mal, cambiar de posición (Mottola 2018, recomendación débil); desde la semana 20 puede bajar el retorno venoso (ACOG 2020).
+7. Parar el ejercicio y consultar si aparece: sangrado vaginal, pérdida de líquido, contracciones regulares y dolorosas, dolor de vientre, dolor en el pecho, falta de aire que no cede en reposo, mareo que no cede, dolor de cabeza, debilidad que afecta al equilibrio, o dolor o hinchazón de pantorrilla (Mottola 2018, recuadro 2; ACOG 2020, recuadro 3).
+8. Con una contraindicación absoluta (rotura de la bolsa, parto prematuro, sangrado persistente sin explicar, placenta previa después de la semana 28, preeclampsia, cuello del útero incompetente, crecimiento fetal restringido, embarazo de trillizos o más, diabetes tipo 1, hipertensión o tiroides sin controlar, u otra enfermedad cardiovascular, respiratoria o sistémica grave), solo las actividades de la vida diaria; con una relativa, que hable con su obstetra o matrona antes de un ejercicio moderado o intenso (Mottola 2018, tabla 2).
+9. Con diástasis en el embarazo, la guía canadiense aconseja consejo de fisioterapia y evitar los abdominales tipo curl (Mottola 2018, opinión de expertos).
+10. Mottola 2018 — Mottola, Davenport, Ruchat et al., «2019 Canadian guideline for physical activity throughout pregnancy», Br J Sports Med 2018;52(21):1339–1346, recuadros 1 y 2.
+11. Mottola 2018
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Pregunta `em_u_parto` · Embarazo y posparto | 2 · razonamiento del cribado | 9 |
-| condiciones | — | Fila «Embarazo o posparto» | guía de condiciones especiales | 10 |
-| Hombro | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 1 |
-| Hombro | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 2 |
-| Hombro | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 3 |
-| Hombro | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 4 |
-| Hombro | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 5 |
-| Hombro | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 6 |
-| Hombro | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 7 |
-| Hombro | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 8 |
-| Cadera | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 1 |
-| Cadera | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 2 |
-| Cadera | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 3 |
-| Cadera | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 4 |
-| Cadera | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 5 |
-| Cadera | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 6 |
-| Cadera | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 7 |
-| Cadera | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 8 |
-| Cervical | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 1 |
-| Cervical | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 2 |
-| Cervical | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 3 |
-| Cervical | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 4 |
-| Cervical | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 5 |
-| Cervical | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 6 |
-| Cervical | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 7 |
-| Cervical | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 8 |
-| Lumbar | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 1 |
-| Lumbar | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 2 |
-| Lumbar | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 3 |
-| Lumbar | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 4 |
-| Lumbar | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 5 |
-| Lumbar | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 6 |
-| Lumbar | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 7 |
-| Lumbar | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 8 |
-| Rodilla | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 1 |
-| Rodilla | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 2 |
-| Rodilla | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 3 |
-| Rodilla | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 4 |
-| Rodilla | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 5 |
-| Rodilla | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 6 |
-| Rodilla | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 7 |
-| Rodilla | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 8 |
-| Codo | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 1 |
-| Codo | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 2 |
-| Codo | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 3 |
-| Codo | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 4 |
-| Codo | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 5 |
-| Codo | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 6 |
-| Codo | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 7 |
-| Codo | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 8 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 2 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 3 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 4 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 5 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 6 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 7 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 8 |
+| Todas (sistemas comunes) | — | Pregunta `em_u_parto` · Embarazo y posparto | 2 · razonamiento del cribado | 10 |
+| condiciones | — | Fila «Embarazo o posparto» | guía de condiciones especiales | 11 |
+| Hombro | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 1 |
+| Hombro | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 5 |
+| Hombro | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 6 |
+| Hombro | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 7 |
+| Hombro | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 8 |
+| Hombro | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 9 |
+| Cadera | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 1 |
+| Cadera | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 5 |
+| Cadera | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 6 |
+| Cadera | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 7 |
+| Cadera | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 8 |
+| Cadera | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 9 |
+| Cervical | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 1 |
+| Cervical | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 5 |
+| Cervical | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 6 |
+| Cervical | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 7 |
+| Cervical | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 8 |
+| Cervical | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 9 |
+| Lumbar | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 1 |
+| Lumbar | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 5 |
+| Lumbar | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 6 |
+| Lumbar | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 7 |
+| Lumbar | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 8 |
+| Lumbar | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 9 |
+| Rodilla | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 1 |
+| Rodilla | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 5 |
+| Rodilla | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 6 |
+| Rodilla | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 7 |
+| Rodilla | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 8 |
+| Rodilla | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 9 |
+| Codo | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 1 |
+| Codo | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 5 |
+| Codo | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 6 |
+| Codo | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 7 |
+| Codo | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 8 |
+| Codo | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 9 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 1 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.sueloDiario` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.supino` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.dosisEmb` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.precaucionesEmb` | 2 · mención en el texto | 5 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.supinoEmb` | 2 · mención en el texto | 6 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.pararEmb` | 2 · mención en el texto | 7 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.contraindicaciones` | 2 · mención en el texto | 8 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.diastasisEmb` | 2 · mención en el texto | 9 |
 
 ### Mountjoy 2023
 
@@ -16845,19 +16853,20 @@ Nota: Capítulo de recomendaciones leído entero en la web de NICE (2026-10). S�
 
 Citada como:
 
-1. NICE NG194 — National Institute for Health and Care Excellence, «Postnatal care», NICE guideline NG194, 2021 (actualizada 2026), 1.2.4 y 1.2.13.
-2. NICE NG194 — National Institute for Health and Care Excellence, «Postnatal care», NICE guideline NG194, 2021 (actualizada 2026), 1.2.4.
+1. NICE NG194 — National Institute for Health and Care Excellence, «Postnatal care», NICE guideline NG194, 2021 (actualizada 2026), 1.2.4.
+2. NICE NG194 — National Institute for Health and Care Excellence, «Postnatal care», NICE guideline NG194, 2021 (actualizada 2026), 1.2.4 y 1.2.13.
 3. NICE NG194 — National Institute for Health and Care Excellence, «Postnatal care», NICE guideline NG194, 2021 (actualizada 2026), 1.2.15 y 1.2.20.
 4. NICE NG194
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Pregunta `em_u_sangrado_pp` · Embarazo y posparto | 2 · razonamiento del cribado | 1 |
-| Todas (sistemas comunes) | — | Pregunta `em_u_infeccion` · Embarazo y posparto | 2 · razonamiento del cribado | 2 |
-| Todas (sistemas comunes) | — | Pregunta `em_u_tev` · Embarazo y posparto | 2 · razonamiento del cribado | 2 |
-| Todas (sistemas comunes) | — | Pregunta `em_u_corazon` · Embarazo y posparto | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `em_u_preeclampsia` · Embarazo y posparto | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `em_u_sangrado_pp` · Embarazo y posparto | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `em_u_infeccion` · Embarazo y posparto | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `em_u_tev` · Embarazo y posparto | 2 · razonamiento del cribado | 1 |
+| Todas (sistemas comunes) | — | Pregunta `em_u_corazon` · Embarazo y posparto | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `em_u_perine` · Embarazo y posparto | 2 · razonamiento del cribado | 3 |
-| Todas (sistemas comunes) | — | Pregunta `em_d_mama` · Embarazo y posparto | 2 · razonamiento del cribado | 2 |
+| Todas (sistemas comunes) | — | Pregunta `em_d_mama` · Embarazo y posparto | 2 · razonamiento del cribado | 1 |
 | condiciones | — | Fila «Embarazo o posparto» | guía de condiciones especiales | 4 |
 
 ### NICE NG196
@@ -16905,48 +16914,56 @@ Nota: Capítulo de recomendaciones leído entero en la web de NICE (2026-10). Te
 Citada como:
 
 1. Tensión de 160/110 o más en el embarazo: valoración el mismo día (NICE NG201, 1.2.27).
-2. Primera tensión de 140/90 o más desde la semana 20: valoración especializada en 24 h, si no la tiene ya en seguimiento (NICE NG201, 1.2.26).
-3. Dolor lumbar o de cintura pélvica: ejercicio o cinturón lumbopélvico no rígido (NICE NG201, 1.4.15). En el embarazo, el ejercicio de 8–12 semanas reduce el dolor lumbar y pélvico, pero en el dolor solo pélvico no mejora más que la atención habitual (Liddle y Pennick 2015).
-4. Embarazo o posparto: primero información (el dolor no es peligroso y probablemente mejorará) y ejercicio individualizado en el embarazo, o estabilización individualizada en el posparto (Vleeming 2008, nivel C); el cinturón, para probar el alivio por periodos cortos (Vleeming 2008, nivel D; NICE NG201, 1.4.15).
-5. NICE NG201 — National Institute for Health and Care Excellence, «Antenatal care», NICE guideline NG201, 2021, 1.2.26–1.2.27.
-6. NICE NG201 — National Institute for Health and Care Excellence, «Antenatal care», NICE guideline NG201, 2021, 1.4.17–1.4.18.
-7. NICE NG201 — National Institute for Health and Care Excellence, «Antenatal care», NICE guideline NG201, 2021, 1.2.34.
-8. NICE NG201
+2. Antes de la semana 20, una tensión de 140/90 o más se trata como hipertensión crónica (NICE NG201, 1.2.25); sin controlar, contraindica el ejercicio (Mottola 2018, tabla 2). Que lo sepa su médico o su equipo obstétrico.
+3. Primera tensión de 140/90 o más desde la semana 20: valoración especializada en 24 h, si no la tiene ya en seguimiento (NICE NG201, 1.2.26).
+4. Dolor lumbar o de cintura pélvica: ejercicio o cinturón lumbopélvico no rígido (NICE NG201, 1.4.15). En el embarazo, el ejercicio de 8–12 semanas reduce el dolor lumbar y pélvico, pero en el dolor solo pélvico no mejora más que la atención habitual (Liddle y Pennick 2015).
+5. Embarazo o posparto: primero información (el dolor no es peligroso y probablemente mejorará) y ejercicio individualizado en el embarazo, o estabilización individualizada en el posparto (Vleeming 2008, nivel C); el cinturón, para probar el alivio por periodos cortos (Vleeming 2008, nivel D; NICE NG201, 1.4.15).
+6. NICE NG201 — National Institute for Health and Care Excellence, «Antenatal care», NICE guideline NG201, 2021, 1.2.26–1.2.27.
+7. NICE NG201 — National Institute for Health and Care Excellence, «Antenatal care», NICE guideline NG201, 2021, 1.4.17–1.4.18.
+8. NICE NG201 — National Institute for Health and Care Excellence, «Antenatal care», NICE guideline NG201, 2021, 1.2.34.
+9. NICE NG201
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
-| Todas (sistemas comunes) | — | Pregunta `em_u_preeclampsia` · Embarazo y posparto | 2 · razonamiento del cribado | 5 |
-| Todas (sistemas comunes) | — | Pregunta `em_u_sangrado` · Embarazo y posparto | 2 · razonamiento del cribado | 6 |
-| Todas (sistemas comunes) | — | Pregunta `em_u_movimientos` · Embarazo y posparto | 2 · razonamiento del cribado | 7 |
-| condiciones | — | Fila «Embarazo o posparto» | guía de condiciones especiales | 8 |
+| Todas (sistemas comunes) | — | Pregunta `em_u_preeclampsia` · Embarazo y posparto | 2 · razonamiento del cribado | 6 |
+| Todas (sistemas comunes) | — | Pregunta `em_u_sangrado` · Embarazo y posparto | 2 · razonamiento del cribado | 7 |
+| Todas (sistemas comunes) | — | Pregunta `em_u_movimientos` · Embarazo y posparto | 2 · razonamiento del cribado | 8 |
+| condiciones | — | Fila «Embarazo o posparto» | guía de condiciones especiales | 9 |
 | Hombro | — | `sistemas.6.embarazo.textos.taGrave` | 2 · mención en el texto | 1 |
-| Hombro | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 2 |
-| Hombro | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 3 |
-| Hombro | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 2 |
+| Hombro | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 3 |
+| Hombro | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 4 |
+| Hombro | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 5 |
 | Cadera | — | `sistemas.6.embarazo.textos.taGrave` | 2 · mención en el texto | 1 |
-| Cadera | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 2 |
-| Cadera | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 3 |
-| Cadera | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 2 |
+| Cadera | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 3 |
+| Cadera | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 4 |
+| Cadera | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 5 |
 | Cervical | — | `sistemas.6.embarazo.textos.taGrave` | 2 · mención en el texto | 1 |
-| Cervical | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 2 |
-| Cervical | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 3 |
-| Cervical | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 2 |
+| Cervical | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 3 |
+| Cervical | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 4 |
+| Cervical | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 5 |
 | Lumbar | — | `sistemas.6.embarazo.textos.taGrave` | 2 · mención en el texto | 1 |
-| Lumbar | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 2 |
-| Lumbar | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 3 |
-| Lumbar | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 2 |
+| Lumbar | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 3 |
+| Lumbar | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 4 |
+| Lumbar | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 5 |
 | Rodilla | — | `sistemas.6.embarazo.textos.taGrave` | 2 · mención en el texto | 1 |
-| Rodilla | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 2 |
-| Rodilla | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 3 |
-| Rodilla | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 2 |
+| Rodilla | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 3 |
+| Rodilla | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 4 |
+| Rodilla | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 5 |
 | Codo | — | `sistemas.6.embarazo.textos.taGrave` | 2 · mención en el texto | 1 |
-| Codo | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 2 |
-| Codo | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 3 |
-| Codo | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 2 |
+| Codo | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 3 |
+| Codo | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 4 |
+| Codo | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 5 |
 | Tobillo y pie | — | `sistemas.6.embarazo.textos.taGrave` | 2 · mención en el texto | 1 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 2 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 3 |
-| Tobillo y pie | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.taCronica` | 2 · mención en el texto | 2 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.taAlta` | 2 · mención en el texto | 3 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.pelvicaEjercicio` | 2 · mención en el texto | 4 |
+| Tobillo y pie | — | `sistemas.6.embarazo.textos.sacroiliaca` | 2 · mención en el texto | 5 |
 
 ### NICE NG210
 
@@ -17119,6 +17136,7 @@ Citada como:
 
 | Región | Hipótesis | Dónde | Fase | Cita |
 |---|---|---|---|---|
+| Todas (sistemas comunes) | — | Pregunta `em_u_infeccion_emb` · Embarazo y posparto | 2 · razonamiento del cribado | 1 |
 | Todas (sistemas comunes) | — | Pregunta `em_u_infeccion` · Embarazo y posparto | 2 · razonamiento del cribado | 1 |
 
 ### NICE NG258

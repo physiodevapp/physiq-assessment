@@ -2315,6 +2315,7 @@ function _pintarEMTA() {
   el.innerHTML = r === 'grave'
     ? `<div class="alert alert-danger"><span class="alert-icon">🚨</span><div>${citasEnTexto(t.taGrave)}</div></div>`
     : r === 'alta' ? `<div class="alert alert-danger"><span class="alert-icon">🩺</span><div>${citasEnTexto(t.taAlta)}</div></div>`
+    : r === 'cronica' ? `<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>${citasEnTexto(t.taCronica)}</div></div>`
     : r === 'sinSemanas' ? `<div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>Tensión de 140/90 o más: anota las semanas. ${citasEnTexto(t.taAlta)}</div></div>`
     : '';
 }

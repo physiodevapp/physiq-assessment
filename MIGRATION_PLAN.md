@@ -505,6 +505,8 @@ Orden propuesto (2026-10, a propuesta del asistente, aceptado por el usuario par
   - [x] Implementación (2026-10, rama `claude/new-session-zlsxna`): tarjeta `#cardEmbarazo` (embarazada con semanas; posparto con fecha, parto, chips y lactancia; plegada con «Hombre»), regla de la tensión de NICE NG201, sistema `transversal_embarazo` (12 urgencias y 3 derivaciones por estado y semanas, ánimo y suelo pélvico), línea del supino encima de la 4b (no un campo por test: ver «Implementación» en el documento) y del Gaenslen en el posparto, recuadro de la fase 5, línea de Vleeming en `lu8`/`ca10`, avisos y red de la fase 6, payload `em`, 📋 Notas, 📄 Informe y bloque de la IA, fila de la guía, 27 referencias. `tests/unit/embarazo.mjs` y sección `embarazo` de la prueba de humo
   - [x] Revisión del usuario en la app (2026-10)
   - [x] physiq-report: lee `em` con una copia literal de `bloqueEMIA()` (`_bloqueEM`; `EM_CASOS` fija el mismo texto en los dos repositorios), physiodevapp/physiq-report#96 (2026-10)
+  - [x] Cierre de lo pendiente (2026-10, rama `claude/trusting-mendel-sm0ogw`): comprobado contra NG201, NG133, NG194 y NG255; cambios A–E aceptados (preeclampsia del posparto con NG194 1.2.4, infección del posparto hasta 8 semanas, línea de hipertensión crónica antes de la semana 20, urgencia de infección en el embarazo `em_u_infeccion_emb`, prueba de las `privada`). Ver «Cierre de lo pendiente» en el documento
+  - [ ] Woodley 2020 (Cochrane del suelo pélvico, opcional): en PMC solo el resumen; pendiente del PDF del usuario. Fuera, a propósito: EPDS (sin validación española leída), aborto o interrupción reciente, muñeca y mano
 
 ## Farmacología para el fisioterapeuta — paso 3: fármacos que toma el paciente
 

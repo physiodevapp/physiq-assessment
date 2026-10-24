@@ -378,7 +378,7 @@ const preguntasUrgentes = condicionales => {
 test('urgencias en la transcripción: todas las preguntas de urgencia, de las 7 regiones y de las condiciones especiales, tienen tema y patrones válidos', () => {
   const regionales = preguntasUrgentes(false), condiciones = preguntasUrgentes(true);
   assert.equal(regionales.size, 36);
-  assert.equal(condiciones.size, 39, 'paso 6: las de las condiciones especiales');
+  assert.equal(condiciones.size, 40, 'paso 6: las de las condiciones especiales');
   assert.deepEqual(Object.keys(CONTRASTE_URGENCIAS).sort(), [...regionales.keys(), ...condiciones.keys()].sort(), 'una entrada por pregunta de urgencia, ni más ni menos');
   for (const [id, c] of Object.entries(CONTRASTE_URGENCIAS)) {
     assert.ok(c.tema && c.patrones.length, id);
@@ -446,6 +446,7 @@ test('urgencias en la transcripción: detecta lo que el paciente cuenta, de cada
     em_u_sangrado: ['Esta mañana he manchado un poco.'],
     em_u_movimientos: ['El bebé se mueve menos desde ayer.'],
     em_u_parto: ['Tengo contracciones cada diez minutos.', 'Creo que he roto aguas.'],
+    em_u_infeccion_emb: ['Desde ayer tengo fiebre y escalofríos.'],
     em_u_sangrado_pp: ['Estoy sangrando mucho y echo coágulos.'],
     em_u_infeccion: ['Tengo un flujo que huele fatal.'],
     em_u_tev: ['Tengo la pierna izquierda hinchada y caliente.'],
@@ -516,7 +517,7 @@ test('urgencias en la transcripción: un SÍ ya marcado no avisa; un NO o sin re
   assert.deepEqual(RI.revisarInforme('Informe.', { datos, transcripcion: tr }).filter(p => p.id === 'urgencia-transcripcion'), []);
 });
 
-test('urgencias en la transcripción: en las transcripciones reales, con las 75 preguntas sin responder, solo la cefalea en trueno de Javier', () => {
+test('urgencias en la transcripción: en las transcripciones reales, con las 76 preguntas sin responder, solo la cefalea en trueno de Javier', () => {
   const dir = 'tests/fixtures/informes';
   const ids = Object.keys(CONTRASTE_URGENCIAS);
   const archivos = readdirSync(join(RAIZ, dir)).filter(f => /transcripcion\.txt$/.test(f));
