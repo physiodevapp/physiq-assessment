@@ -117,6 +117,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 4 — Otras mioquinas | Unido al bloque 3 (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10): todo era `mecanismo` o `discutido` (decisión 2). El bloque 3 pasa a llamarse «Efecto antiinflamatorio y mioquinas». 5 fuentes, ver «Mioquinas, dentro del bloque 3» |
 | Bloque 5 — Efectos centrales | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). 8 fuentes, ver «Bloque 5 — decisiones de nivel». Con él no queda ningún bloque pendiente y la guía deja de pintar «Pendientes de fuentes revisadas» |
 | Bloque 6 — Intolerancia ortostática (POTS) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Añadido después del diseño, a petición del usuario, para enlazar la tarjeta de disautonomía. 7 fuentes, ver «Bloque 6 — decisiones de nivel» |
+| Bloque 7 — Hipermovilidad (SEDh / TEH) | Propuesta aceptada por el usuario (2026-10), ver «Bloque 7 — propuesta». Lectura de fuentes en curso |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet; los enlaces a «Efectos centrales» y «antiinflamatorio», Opus) y **revisado por el usuario** (2026-10): `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis (`BLOQUE_POR_HIPOTESIS`, Opus), también hecha y **revisada por el usuario** (2026-10) |
 | Enlace desde los recuadros de la fase 5 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): `enlaceCondicionEjercicioHTML()`; lupus diagnosticado → antiinflamatorio, osteoporosis → mecanotransducción |
 
@@ -248,6 +249,36 @@ Fuentes leídas enteras por un agente Sonnet: Fu y Levine 2015, Cortez 2025, Hog
 - **`mecanismo`**: lo que el entrenamiento cambia en el corazón y el volumen de sangre (estudios de un solo grupo, sin normalizar), lo que sigue sin aclarar, y las pautas prácticas: empezar tumbado y pasar a de pie (lo hacen los programas, ningún ensayo lo compara), la propuesta de Ziaks 2024 sin validar, el malestar postesfuerzo (opinión de expertos).
 - **Para el paciente**: una sola frase, sobre tolerar estar de pie y la parte física de la calidad de vida, que dice que no mejora todos los síntomas. Ninguna sobre «curarse» ni sobre dejar de cumplir criterios.
 - **Erratas de las fuentes**: el resumen de PubMed de Yanagimoto 2025 tiene cifras cambiadas; se usan las del cuerpo del texto. Las revisiones clasifican de forma distinta los mismos estudios (Wheatley-Guy 2023 ensayo en Cortez y Kwok, cohorte en Yanagimoto); se sigue a Cortez y Kwok.
+
+## Bloque 7 — propuesta (aceptada por el usuario, 2026-10)
+
+«Ejercicio en la hipermovilidad (SEDh / TEH)», con el patrón del bloque 6: el recuadro de hipermovilidad de la fase 5 solo dice «ejercicio graduado» (Engelbert 2017) y ningún bloque trataba el tema. La dosis no se repite: es la del recuadro.
+
+**Decisiones**:
+
+1. **Alcance: SEDh y TEH.** El subtipo vascular queda fuera, con una sola línea que remite a Byers 2017 en el recuadro. Motivo: los ensayos que sostendrían las afirmaciones `clinico` (Liaghat, Spanhove, Bale, Susanne) excluyen o no incluyen el subtipo vascular, y su mensaje principal (la fuerza con carga alta se tolera) choca con lo que Byers 2017 (p. 42) pide para él (cargas ligeras, nada isométrico, intensidad que permita conversar); el riesgo ahí es arterial, no articular. Mezclarlos en un bloque invitaría a aplicar al vascular lo probado en el hipermóvil.
+2. **Enlace desde el recuadro `.hm-fase5`** (`CONDICION_EJERCICIO`), en los dos estados, salvo con el subtipo vascular diagnosticado.
+3. **Sin entrada en `BLOQUE_POR_HIPOTESIS`** (la hipermovilidad es una condición, no una hipótesis) y **sin aviso nuevo en la fase 6** (hoy solo `disautonomiaHM`; sería otro paso).
+4. **Fuentes**: las de PMC, leídas por un agente Sonnet; Reychler 2021, Liaghat 2025 y Smith 2013, en PDF del usuario.
+
+**Fuentes candidatas** (sin leer; pistas, no contenido):
+
+| Fuente | PMC | Para qué |
+|---|---|---|
+| Liaghat 2022, BJSM 56:1269 | PMC9626913 | Ensayo de hombro, carga alta frente a baja, 16 semanas (n = 100) |
+| Liaghat 2024, BJSM | PMC10982631 | Seguimiento a 1 año |
+| Liaghat 2025, Scand J Pain, [doi:10.1515/sjpain-2024-0072](https://doi.org/10.1515/sjpain-2024-0072) | No (PDF) | Trayectoria del dolor y dolor provocado por el ejercicio |
+| Christensen 2026, Physiother Res Int | PMC12997522 | Cambio de fuerza frente a síntomas |
+| Spanhove 2022, Disabil Rehabil | No | Inestabilidad multidireccional, dos programas en casa (n = 21); a través de las revisiones si no hay texto |
+| Bale 2019, Pediatr Rheumatol | PMC6325876 | Niños: multidisciplinar frente a atención habitual (n = 119) |
+| Susanne 2024, Clin Rehabil | PMC11776353 | Muñeca: estabilización frente a órtesis (n = 169) |
+| Buryk-Iggers 2022, Arch Rehabil Res Clin Transl | PMC9214343 | Revisión sistemática, 10 estudios |
+| Reychler 2021, Am J Med Genet A, [doi:10.1002/ajmg.a.62393](https://doi.org/10.1002/ajmg.a.62393) | No (PDF) | Revisión sistemática, 6 ensayos |
+| Coussens 2022, J Musculoskelet Neuronal Interact | PMC8919651 | Fuerza y masa muscular en SEDh / TEH |
+| Smith 2013, Rheumatol Int, [doi:10.1007/s00296-013-2790-4](https://doi.org/10.1007/s00296-013-2790-4) | No (PDF) | Metaanálisis de propiocepción |
+| Engelbert 2017 | Ya leída | Marco: carga graduada, ninguna modalidad mejor |
+
+Descartadas: Møller 2014 (3 pacientes, SED clásico), Tudini 2024 (vendaje), Benistan 2023 (prendas de compresión), revisiones narrativas (Carroll 2023, Tofts 2023).
 
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
