@@ -155,6 +155,8 @@ console.log('\nfase 5 plegable');
       if (p.derivacion) assert.match(p.derivacion, /^[a-záéíóú]/, `${id}: continúa «Reconsiderar o derivar si:»`);
     }
     assert.match(HYPOTHESES.ce3.pronostico.derivacion, /^hay cualquier duda de afectación medular\./);
+    assert.match(HYPOTHESES.ce3.pronostico.fuente, /cap. 5.3.1 .*p. 399/, 'ce3: el aura, p. 399');
+    assert.match(HYPOTHESES.ce4.pronostico.fuente, /cap. 5.3.1 .*pp. 404 y 406–407/, 'ce4: pp. 404 y 406–407');
     // Lluch 2020, cap. 5.3, pp. 370–371 y 383: lo «súbito» de la disección es la cefalea o el dolor de cuello, no el mareo
     assert.match(HYPOTHESES.ce13.pronostico.derivacion, /^hay visión doble verdadera[^.]*cefalea o un dolor de cuello súbito[^.]*disección arterial: derivar a urgencias\.$/);
     assert.ok(!/mareo súbito/.test(HYPOTHESES.ce13.pronostico.derivacion), 'ce13: el mareo no es lo súbito');
