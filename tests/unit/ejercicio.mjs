@@ -198,8 +198,11 @@ test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteopor
 
 test('enlace de la fase 6 por hipótesis: la tabla solo nombra hipótesis y bloques que existen', () => {
   const escritos = E.bloquesConContenido().map(b => b.id);
-  for (const [id, bloque] of Object.entries(BLOQUE_POR_HIPOTESIS)) {
+  const CRONOLOGIAS = ['Agudo (<6 semanas)', 'Subagudo', 'Crónico (>3 meses)'];
+  for (const [id, entrada] of Object.entries(BLOQUE_POR_HIPOTESIS)) {
     assert.ok(HYPOTHESES[id], `${id} no es una hipótesis`);
+    const bloque = typeof entrada === 'string' ? entrada : entrada.bloque;
+    if (typeof entrada !== 'string') assert.ok(CRONOLOGIAS.includes(entrada.cronologia), `${id}: cronología «${entrada.cronologia}»`);
     assert.ok(['hipoalgesia', 'mecanotransduccion'].includes(bloque) && escritos.includes(bloque), `${id} → ${bloque}`);
     // Carga y adaptación del tejido: solo tendinopatías (su frase para el paciente habla del tendón),
     // más el pinzamiento subacromial, que su guía (Desmeules 2025) incluye en la del manguito
@@ -207,8 +210,24 @@ test('enlace de la fase 6 por hipótesis: la tabla solo nombra hipótesis y bloq
   }
   assert.equal(BLOQUE_POR_HIPOTESIS.h2, 'mecanotransduccion');
   assert.ok(/Desmeules 2025/.test(HYPOTHESES.h2.dosisFuente) && /síndrome de dolor subacromial dentro de la tendinopatía del manguito/.test(HYPOTHESES.h2.dosisFuente), 'h2 se apoya en su guía');
-  // Fuera a propósito: la artrosis, la rotura del manguito (parcial y completa) y lo que se deriva
-  for (const id of ['ca1', 'ro1', 'h10', 'h3', 'tp24', 'tp3', 'co7']) assert.ok(!BLOQUE_POR_HIPOTESIS[id], id);
+  // Lo que cubre Geneen 2017 (la fuente de la frase de la hipoalgesia): artrosis de cadera y rodilla, patelofemoral
+  for (const id of ['ca1', 'ro1', 'ro3']) assert.equal(BLOQUE_POR_HIPOTESIS[id], 'hipoalgesia', id);
+  // Fuera a propósito: la artrosis que Geneen no cubre, la rotura del manguito, las radiculares y la estenosis,
+  // las lesiones agudas y lo que se deriva
+  for (const id of ['h10', 'tp24', 'h3', 'lu3', 'lu4', 'lu5', 'ce3', 'ce12', 'tp1', 'ro4', 'ro8', 'tp3', 'co7']) assert.ok(!BLOQUE_POR_HIPOTESIS[id], id);
+});
+
+test('enlace de la fase 6 por hipótesis: la lumbalgia y la cervicalgia mecánicas solo cuentan con dolor crónico', () => {
+  const lumbar = [{ id: 'lu1', name: 'Disfunción Segmentaria' }];
+  assert.equal(E.bloqueDeHipotesis('lu1'), null);
+  assert.equal(E.bloqueDeHipotesis('lu1', { cronologia: 'Subagudo' }), null);
+  assert.equal(E.bloqueDeHipotesis('lu1', { cronologia: 'Crónico (>3 meses)' }), 'hipoalgesia');
+  assert.equal(E.bloqueDeHipotesis('ro5', { cronologia: 'Agudo (<6 semanas)' }), 'mecanotransduccion', 'sin condición vale siempre');
+  const agudo = E.enlaceEjercicioHTML('baja', { hipotesis: lumbar, cronologia: 'Agudo (<6 semanas)' });
+  assert.ok(agudo.includes('data-bloque-ejercicio="mecanotransduccion"') && !agudo.includes('data-por-hipotesis'), 'aguda: la irritabilidad');
+  const cronico = E.enlaceEjercicioHTML('baja', { hipotesis: lumbar, cronologia: 'Crónico (>3 meses)' });
+  assert.ok(cronico.includes('data-bloque-ejercicio="hipoalgesia"') && cronico.includes('data-por-hipotesis'));
+  assert.ok(leer('plan.js').includes('cronologia: state.cronologia'), 'la fase 6 pasa la cronología');
 });
 
 test('enlace de la fase 6 por hipótesis: manda sobre la irritabilidad, y nombra la hipótesis', () => {
@@ -243,7 +262,7 @@ test('enlace de la fase 6: el botón abre el bloque y nombra cuál es', () => {
 test('enlace de la fase 6: solo en el bloque «Educación», solo en pantalla y nunca en los textos del plan', () => {
   const plan = leer('plan.js');
   assert.equal((plan.match(/enlaceEjercicioHTML\(/g) || []).length, 1);
-  assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion, b\.titulo\) \+ enlaceEjercicioHTML\(plan\.irritabilidad, \{ \.\.\.motivosEjercicio\(.*hipotesis: plan\.hipotesis \}\)/.test(plan));
+  assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion, b\.titulo\) \+ enlaceEjercicioHTML\(plan\.irritabilidad, \{ \.\.\.motivosEjercicio\(.*hipotesis: plan\.hipotesis, cronologia: state\.cronologia \}\)/.test(plan));
   assert.ok(leer('styles.css').includes('@media print { .plan-ejercicio, .cond-ejercicio { display: none !important; } }'));
   // Los textos que se comparten salen de lib/ y data/ del plan, que no conocen la guía
   for (const f of [['lib', 'plan-tratamiento.js'], ['data', 'plan-tratamiento.js'], ['lib', 'plan-ia.js']]) {
