@@ -2626,6 +2626,100 @@ async function checkPreguntaIA(browser, errors) {
 // Barra de fase de móvil (user decision, 2026-10): es un solo <button> que abre
 // la hoja de fases; el «≡» va sin caja; en modo breve el chip «Breve» va al
 // principio de la barra en móvil y sigue en la cabecera en escritorio.
+// Atrás con una ventana abierta (móvil, decisión del usuario 2026-10): cierra
+// la ventana (un diálogo = «Cancelar») y nunca cambia de fase; cerrarlas de
+// cualquier otra forma no deja entradas en el historial, así que después un
+// solo atrás cambia de fase; la acción de un diálogo y la fase elegida en la
+// hoja de fases esperan a que se vaya la entrada.
+async function checkAtrasVentanas(browser) {
+  const r = {};
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true });
+  const p = await ctx.newPage();
+  const errores = [];
+  p.on('pageerror', e => errores.push(e.message));
+  await abrirApp(p);
+  await p.evaluate(() => { window.state.maxVisitedIdx = 2; window.goToPhase(2); });
+  const abierto = id => p.evaluate(i => document.getElementById(i)?.classList.contains('open'), id);
+  const espera = (f, arg) => p.waitForFunction(f, arg, { timeout: 3000 }).then(() => true, () => false);
+  const enFase = n => espera(f => String(window.state.currentPhase) === String(f), n);
+  // Panel de sesión (con nombre, para que tenga la papelera)
+  await p.tap('#sessionBtn');
+  await p.waitForSelector('#sessionPanelOverlay.open');
+  await p.fill('#patientName', 'Prueba');
+  await p.goBack();
+  r.panel = await espera(() => !document.getElementById('sessionPanelOverlay').classList.contains('open')) && await enFase(2);
+  // Hoja de fases
+  await p.tap('#mobilePhaseBar');
+  await p.waitForSelector('#phaseSheet.open');
+  await p.goBack();
+  r.hojaFases = await espera(() => !document.getElementById('phaseSheet').classList.contains('open')) && await enFase(2);
+  // Diálogo abierto desde el panel: atrás = cancelar, vuelve el panel; otro atrás lo cierra
+  await p.tap('#sessionBtn');
+  await p.waitForSelector('#sessionPanelOverlay.open');
+  await p.tap('#sessionPanelClear');
+  await p.waitForSelector('#confirmBanner');
+  await p.goBack();
+  r.dialogoCancela = await espera(() => !document.getElementById('confirmBanner')
+    && document.getElementById('sessionPanelOverlay').classList.contains('open')) && await enFase(2)
+    && await p.evaluate(() => window.state.maxVisitedIdx === 2);
+  await p.goBack();
+  r.dialogoPanel = await espera(() => !document.getElementById('sessionPanelOverlay').classList.contains('open')) && await enFase(2);
+  // Teclado numérico (modo guía)
+  await p.evaluate(() => { window.state.registro = 'guia'; window.goToPhase(1); });
+  await enFase(1);
+  await p.evaluate(() => window.goToPhase(2));
+  await enFase(2);
+  await p.evaluate(() => window.goToPhase(1));
+  await enFase(1);
+  await p.click('#edadPaciente');
+  await p.waitForSelector('#tecladoOverlay.open');
+  await p.goBack();
+  r.teclado = await espera(() => !document.getElementById('tecladoOverlay').classList.contains('open')) && await enFase(1);
+  await p.evaluate(() => { window.state.registro = 'teclado'; });
+  await p.tap('#mobilePhaseBar');
+  await p.waitForSelector('#phaseSheet.open');
+  // La fase elegida en la hoja: se navega cuando la entrada de la hoja ya no está
+  await p.tap('.phase-sheet-item:has-text("Fase 2")');
+  r.hojaNavega = await enFase(2) && !(await abierto('phaseSheet'));
+  // Abrir y cerrar de todas las formas no deja entradas: un atrás cambia de fase
+  for (let i = 0; i < 3; i++) {
+    await p.tap('#sessionBtn');
+    await p.waitForSelector('#sessionPanelOverlay.open');
+    if (i === 0) await p.evaluate(() => window.closeSessionPanel());
+    else await p.tap('#sessionPanelOverlay', { position: { x: 20, y: 20 } });
+    await espera(() => !document.getElementById('sessionPanelOverlay').classList.contains('open'));
+  }
+  await p.tap('#mobilePhaseBar');
+  await p.waitForSelector('#phaseSheet.open');
+  await p.tap('#phaseSheetOverlay', { position: { x: 20, y: 20 } });
+  await espera(() => !document.getElementById('phaseSheet').classList.contains('open'));
+  await p.tap('#sessionBtn');
+  await p.waitForSelector('#sessionPanelOverlay.open');
+  await p.tap('#sessionPanelClear');
+  await p.waitForSelector('#confirmBanner');
+  await p.tap('#confirmCancel');
+  await p.waitForSelector('#sessionPanelOverlay.open');
+  await p.tap('#sessionPanelOverlay', { position: { x: 20, y: 20 } });
+  await espera(() => !document.getElementById('sessionPanelOverlay').classList.contains('open'));
+  await p.waitForTimeout(200);
+  await p.goBack();
+  r.sinEntradas = await enFase(1) && !(await abierto('sessionPanelOverlay')) && !(await abierto('phaseSheet'));
+  // La acción de un diálogo: «Borrar sesión» vuelve a la fase 1 y el atrás no reabre nada
+  await p.evaluate(() => window.goToPhase(2));
+  await enFase(2);
+  await p.tap('#sessionBtn');
+  await p.waitForSelector('#sessionPanelOverlay.open');
+  await p.tap('#sessionPanelClear');
+  await p.waitForSelector('#confirmBanner');
+  await p.tap('#confirmAction');
+  r.accion = await enFase(1) && await espera(() => !document.getElementById('confirmBanner')
+    && !document.getElementById('sessionPanelOverlay').classList.contains('open') && window.state.maxVisitedIdx === 0);
+  r.sinErrores = errores.length === 0;
+  await ctx.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function checkBarraFase(page) {
   const r = {};
   r.cerrada = await page.evaluate(() => document.getElementById('mobilePhaseBar').getAttribute('aria-expanded') === 'false');
@@ -6477,6 +6571,11 @@ const SECCIONES = [
 
   // The mobile phase-sheet button (the last real bug found, PHASE_NAV_IDS).
   // Toda la barra de fase es el botón (se pulsa por la izquierda, sobre el título).
+  { id: 'atras-ventanas', titulo: 'Atrás con una ventana abierta (móvil):', run: async ({ browser }) => {
+    const c = await checkAtrasVentanas(browser);
+    console.log(`  ${c.ok ? '✓' : '✗'} el atrás cierra el panel de sesión, la hoja de fases, el teclado numérico y un diálogo (como «Cancelar», volviendo al panel) sin cambiar de fase; la fase elegida en la hoja navega; abrir y cerrar de cualquier forma no deja entradas (un atrás cambia de fase); la acción de un diálogo se ejecuta${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
+  } },
   { id: 'barra-fase', titulo: 'Barra de fase en móvil:', run: async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await abrirApp(page);
