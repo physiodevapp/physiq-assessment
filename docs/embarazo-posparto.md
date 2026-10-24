@@ -533,7 +533,7 @@ Con las decisiones 1–16 y los cambios T1–T12 y U1–U5. Lo que se ve en la a
 
 ## Cierre de lo pendiente (octubre 2026, rama `claude/trusting-mendel-sm0ogw`)
 
-Comprobación de lo implementado contra NICE NG201, NG133, NG194 y NG255, releídas en esta sesión en nice.org.uk. Cambios A–E aceptados por el usuario:
+Comprobación de lo implementado contra NICE NG201, NG133, NG194 y NG255, releídas en esta sesión en nice.org.uk. Cambios A–E y W1–W3 aceptados y **revisados por el usuario** (2026-10):
 
 - **A. La preeclampsia en el posparto.** NG133 1.5.15 solo habla de quien ya tuvo preeclampsia («Ask women with pre-eclampsia who have given birth…»). Para todas, tras el parto, vale NG194 1.2.4: «persistent or severe headache, which could indicate… pre-eclampsia» → consejo médico sin demora. El razonamiento de `em_u_preeclampsia` cita ahora las dos, y la pregunta y su bandera añaden «o que no se le pasa». Sin cambio de semanas ni de urgencia.
 - **B. La infección del posparto, 8 semanas.** `em_u_infeccion` salía solo hasta la semana 6 (el grupo de riesgo de NG255). La lista de síntomas de NG194 1.2.4 no tiene plazo, y la guía cubre «the first 8 weeks after the birth». Pasa a `hasta: 8`; el razonamiento lo dice.
