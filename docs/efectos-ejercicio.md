@@ -67,7 +67,7 @@ Cada bloque tiene la misma estructura (propuesta):
    - baja o moderada → bloque 2, mecanotransducción.
 
    Después, unos pocos casos por hipótesis donde aporte de verdad (por ejemplo, tendinopatías → tendón), en una tabla escrita a mano como `HIP_PUNCION_SECA`, nunca deducida. **Hecho (2026-10)**: `BLOQUE_POR_HIPOTESIS`, ver «Por hipótesis» en «Enlace de la fase 6».
-3. Enlaces de lectura desde las tarjetas donde el mecanismo es central (osteoporosis → mecanotransducción ósea; lupus; disautonomía). Sin reglas automáticas. **Hecho (2026-10) para osteoporosis y lupus**, desde sus recuadros de la fase 5 (ver «Desde los recuadros de la fase 5»); disautonomía sin enlace, porque ningún bloque la trata.
+3. Enlaces de lectura desde las tarjetas donde el mecanismo es central (osteoporosis → mecanotransducción ósea; lupus; disautonomía). Sin reglas automáticas. **Hecho (2026-10) para osteoporosis y lupus**, desde sus recuadros de la fase 5 (ver «Desde los recuadros de la fase 5»); disautonomía, desde su recuadro, con el bloque 6 escrito para ella (2026-10).
 
 ## Fuentes candidatas (sin leer)
 
@@ -116,6 +116,7 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Bloque 3 — Antiinflamatorio sistémico | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10): frases para el paciente solo en enfermedades reumáticas inflamatorias y bloque separado del de mioquinas. 9 fuentes, ver «Bloque 3 — decisiones de nivel» |
 | Bloque 4 — Otras mioquinas | Unido al bloque 3 (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10): todo era `mecanismo` o `discutido` (decisión 2). El bloque 3 pasa a llamarse «Efecto antiinflamatorio y mioquinas». 5 fuentes, ver «Mioquinas, dentro del bloque 3» |
 | Bloque 5 — Efectos centrales | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). 8 fuentes, ver «Bloque 5 — decisiones de nivel». Con él no queda ningún bloque pendiente y la guía deja de pintar «Pendientes de fuentes revisadas» |
+| Bloque 6 — Intolerancia ortostática (POTS) | Escrito (2026-10, Opus; lectura de fuentes con Sonnet) y **revisado por el usuario** (2026-10). Añadido después del diseño, a petición del usuario, para enlazar la tarjeta de disautonomía. 7 fuentes, ver «Bloque 6 — decisiones de nivel» |
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet; los enlaces a «Efectos centrales» y «antiinflamatorio», Opus) y **revisado por el usuario** (2026-10): `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis (`BLOQUE_POR_HIPOTESIS`, Opus), también hecha y **revisada por el usuario** (2026-10) |
 | Enlace desde los recuadros de la fase 5 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): `enlaceCondicionEjercicioHTML()`; lupus diagnosticado → antiinflamatorio, osteoporosis → mecanotransducción |
 
@@ -236,6 +237,18 @@ Fuentes leídas enteras en PMC por dos agentes Sonnet (sin suplementos ni figura
 - **Frases para el paciente**: dos, sobre el ánimo (apoya en depresión, población general e intensidad) y sobre el sueño referido. Ninguna sobre ánimo o sueño en su dolor musculoesquelético en concreto, porque ahí está `discutido`; lo dice el «Ampliar».
 - **Fuera**: la sensibilización central va en el bloque 1 (decisión 2). Lee 2015 (autoeficacia como mediador entre dolor y discapacidad, sin ejercicio) y los análisis de mediación de educación o terapia cognitivo-funcional no se usan: no miden el ejercicio.
 
+## Bloque 6 — decisiones de nivel (2026-10, Opus)
+
+Añadido tras cerrar los cinco bloques previstos (usuario, 2026-10): ninguno trataba la disautonomía, y lo que el ejercicio hace en el POTS es un mecanismo propio. La dosis no se repite aquí: es la del recuadro de la fase 5 y el aviso de la fase 6 de la tarjeta (`docs/pots.md`).
+
+Fuentes leídas enteras por un agente Sonnet: Fu y Levine 2015, Cortez 2025, Hogwood 2025, Ziaks 2024 y Yanagimoto 2025 (PMC, sin figuras ni tablas salvo en Yanagimoto) y Kwok 2025 (PDF del usuario). George 2016 ya estaba leída entera para la tarjeta.
+
+- **`clinico`, con certeza baja**: el único ensayo aleatorizado con criterios actuales (Wheatley-Guy 2023, tal como lo recoge Kwok 2025: mejoran la intolerancia ortostática y los síntomas vasomotores del COMPASS-31 y el componente físico del SF-36, no la puntuación total; riesgo de sesgo alto) y la calidad de vida antes y después en los 4 estudios que la midieron (Cortez 2025, sin GRADE). Que la sal y el agua acompañaban al ejercicio, también `clinico`: es un hecho de los estudios, que los autores señalan.
+- **`discutido`**: dejar de cumplir el criterio de frecuencia cardiaca (53–71 % de quienes completaron 3–6 meses, en estudios sin aleatorizar, con sal y agua y, en George 2016, con el 59 % de abandono; 4 semanas no lo cambian en adolescentes, Yanagimoto 2025), cuánto pesa la evidencia (Hogwood 2025 frente a Cortez 2025 y Kwok 2025) y la explicación cardiaca (corazón pequeño y volumen bajo, Fu y Levine 2015) frente a la de Hogwood 2025 (gasto conservado, el suero no ayuda, respuesta exagerada de la frecuencia y la respiración).
+- **`mecanismo`**: lo que el entrenamiento cambia en el corazón y el volumen de sangre (estudios de un solo grupo, sin normalizar), lo que sigue sin aclarar, y las pautas prácticas: empezar tumbado y pasar a de pie (lo hacen los programas, ningún ensayo lo compara), la propuesta de Ziaks 2024 sin validar, el malestar postesfuerzo (opinión de expertos).
+- **Para el paciente**: una sola frase, sobre tolerar estar de pie y la parte física de la calidad de vida, que dice que no mejora todos los síntomas. Ninguna sobre «curarse» ni sobre dejar de cumplir criterios.
+- **Erratas de las fuentes**: el resumen de PubMed de Yanagimoto 2025 tiene cifras cambiadas; se usan las del cuerpo del texto. Las revisiones clasifican de forma distinta los mismos estudios (Wheatley-Guy 2023 ensayo en Cortez y Kwok, cohorte en Yanagimoto); se sigue a Cortez y Kwok.
+
 ## Enlace de la fase 6 (2026-10, Sonnet)
 
 - **Dónde**: en el bloque «Educación» de la sesión del plan (`plan.js`), bajo sus frases: un botón «Para explicárselo al paciente →» y una línea que dice a qué bloque lleva («Abre «<título>», el bloque que corresponde a la irritabilidad elegida.»). Texto en `TEXTOS_EJERCICIO` (`data/ejercicio.js`), no en `data/plan-tratamiento.js`, para no tocar las frases del plan ni `docs/plan-tratamiento-frases.md`.
@@ -248,4 +261,5 @@ Fuentes leídas enteras en PMC por dos agentes Sonnet (sin suplementos ni figura
 - **Desde los recuadros de la fase 5** (2026-10, **revisado por el usuario**): `enlaceCondicionEjercicioHTML()` (`lib/ejercicio.js`) pinta «Efectos del ejercicio: «…» →» con una línea que dice por qué, solo en pantalla (oculto al imprimir) y nunca en lo que se comparte ni en el prompt. Solo dos condiciones tienen un bloque que les corresponda:
   - **Lupus, solo con «Diagnosticado»** → «Efecto antiinflamatorio y mioquinas»: sus frases clínicas y para el paciente son para las enfermedades reumáticas inflamatorias, lupus incluido.
   - **Osteoporosis, en los dos estados** → «Carga y adaptación del tejido», como lectura para el fisioterapeuta: en el hueso el bloque solo llega a `mecanismo` (la densidad mejora algo) y dice que no está demostrado que el ejercicio reduzca las fracturas; no tiene frase para el paciente sobre el hueso. La pauta de ejercicio sigue siendo la del propio recuadro, con sus fuentes.
-  - Sin enlace: hipermovilidad, disautonomía, trastorno mastocitario, embarazo o posparto, anticoagulado y posquirúrgico (ningún bloque trata su tema).
+  - **Disautonomía, en los dos estados** (2026-10, con el bloque 6, **revisado por el usuario**) → «Ejercicio en la intolerancia ortostática (POTS)»: por qué los programas empiezan tumbado y hasta dónde llega lo demostrado; la dosis sigue siendo la del recuadro.
+  - Sin enlace: hipermovilidad, trastorno mastocitario, embarazo o posparto, anticoagulado y posquirúrgico (ningún bloque trata su tema).
