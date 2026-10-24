@@ -89,20 +89,23 @@ console.log('\nfase 5 plegable');
     }
     assert.match(HYPOTHESES.ro2.pronostico.derivacion, /^persisten [^.]*derivar al traumatólogo \(Prill 2025, grado C\)\.$/);
     assert.equal(HYPOTHESES.ro20.pronostico.derivacion, 'hay duda con una tromboflebitis.');
-    assert.match(HYPOTHESES.ro5.pronostico.seguimiento, /VISA-P/);
+    // ro5: VISA-P ya es el PROM de la hipótesis; ro15: el entrenamiento cruzado es tratamiento, no pronóstico
+    assert.equal(HYPOTHESES.ro5.pronostico.seguimiento, 'Si los síntomas aparecen antes y tardan más en irse, progresar el tratamiento con más prudencia.');
+    assert.equal(HYPOTHESES.ro15.pronostico.horizonte, 'El Sinding-Larsen-Johansson suele ser autolimitado.');
+    assert.match(HYPOTHESES.ro15.pronostico.notas, /En el Osgood-Schlatter, entrenar en otras modalidades o en piscina/);
     assert.ok(!/LLE/.test(HYPOTHESES.ro9.pronostico.notas), 'ro9: lo del LLE, solo en ro10');
     assert.match(HYPOTHESES.ro10.pronostico.notas, /lesión aislada del LLE es rara/, 'ro10: p. 216');
     assert.ok(!/95 %/.test(HYPOTHESES.ro10.pronostico.notas), 'ro10: el 95 % es del LCP (p. 221)');
-    // Cadera (Lluch 2020, cap. 4.1): ningún criterio para reconsiderar o derivar; la imagen, la epidemiología
+    // Cadera (Lluch 2020, cap. 4.1): «reconsiderar o derivar» solo en ca18 (hernia palpable); la imagen, la epidemiología
     // y los diferenciales, en «a tener en cuenta»; el texto común del dolor inguinal (ca16–ca19), en cada una
     const CA = ['ca1', 'ca2', 'ca3', 'ca4', 'ca11', 'ca12', 'ca13', 'ca14', 'ca16', 'ca17', 'ca18', 'ca19'];
     for (const id of CA) {
       const p = HYPOTHESES[id].pronostico;
       assert.ok(p.notas, `${id}: sin notas`);
-      assert.ok(!p.derivacion, `${id}: sin derivación`);
+      assert.equal(!!p.derivacion, id === 'ca18', `${id}: derivación solo con criterio`);
       // Seguimiento: solo el criterio de fuerza para volver al deporte (pp. 172–173), en ca11 y ca16–ca19
       assert.equal(!!p.seguimiento, ['ca11', 'ca16', 'ca17', 'ca18', 'ca19'].includes(id), `${id}: seguimiento`);
-      if (p.seguimiento) assert.match(p.seguimiento, /^Volver al deporte con un déficit de fuerza menor del 10–20 % respecto al lado sano o al valor previo/, id);
+      if (p.seguimiento) assert.match(p.seguimiento, /^Volver al deporte con un déficit de fuerza menor del 10–20 % respecto al lado sano o al valor previo \(medido con un dinamómetro manual\)/, `${id}: pp. 172–173`);
       assert.ok(!/déficit de fuerza/.test(p.notas), `${id}: el criterio de fuerza, en el seguimiento`);
       assert.ok(!/\b(RM|artro-RM|artro-TC|ecografía|radiografía|EMG)\b/i.test(p.horizonte || ''), `${id}: la imagen no es un pronóstico`);
     }
@@ -113,10 +116,13 @@ console.log('\nfase 5 plegable');
       // La imagen, la de cada una: la sínfisis solo en aductor y pubis, la vaina en el psoas, la hernia en el canal
       assert.equal(/sínfisis/.test(p.notas), id === 'ca16' || id === 'ca19', `${id}: sínfisis`);
       assert.equal(/vaina sinovial/.test(p.notas), id === 'ca17', `${id}: vaina`);
-      assert.equal(/hernia/.test(p.notas), id === 'ca18', `${id}: hernia`);
+      assert.ok(!/hernia/.test(p.notas), `${id}: la hernia, en la derivación`);
       // p. 177: la hendidura secundaria y los cortes para la inserción son del aductor; el edema de la sínfisis, de los dos
       assert.equal(/hendidura secundaria|inserción del aductor/.test(p.notas), id === 'ca16', `${id}: hendidura`);
     }
+    assert.equal(HYPOTHESES.ca18.pronostico.derivacion, 'hay una hernia inguinal palpable: excluye este diagnóstico.');
+    assert.match(HYPOTHESES.ca4.pronostico.horizonte, /^La atrofia grasa de los glúteos medio y menor/, 'ca4: p. 179');
+    assert.match(HYPOTHESES.ro1.pronostico.notas, /uno de los factores de riesgo modificables más potentes de la artrosis de rodilla/, 'ro1: p. 211');
     assert.match(HYPOTHESES.ca4.pronostico.notas, /empezar en el glúteo menor y extenderse hacia atrás al glúteo medio/, 'ca4: p. 179');
     assert.match(HYPOTHESES.ca14.pronostico.notas, /alivio del dolor con un bloqueo nervioso diagnóstico/, 'ca14: p. 172');
     assert.ok(!/debilidad de cadera/.test(HYPOTHESES.ca11.pronostico.seguimiento), 'ca11: lo de la debilidad, solo en el dolor inguinal de larga evolución');
