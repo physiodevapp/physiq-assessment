@@ -5026,6 +5026,13 @@ async function checkFase6Codo(browser, errors) {
     && t1.includes(D.PROGRESION_PERIFERICA) && t1.includes(D.REGLAS_MES_PERIFERICAS[0]) && !t1.includes(D.REGLAS_MES[2])
     && Object.values(D.ESCALONES_PERIFERICOS).some(e => t1.includes(e.texto)) && !Object.values(D.ESCALONES).some(e => t1.includes(e.texto))
     && t1.includes(D.TEXTOS_SESION.cierreInfeccion) && !t1.includes(D.TEXTOS_SESION.cierreCardiaco) && !t1.includes(D.TEXTOS_SESION.cierreArterial);
+  // Tabla por hipótesis (docs/efectos-ejercicio.md): la epicondilalgia lateral
+  // enlaza «Carga y adaptación del tejido» aunque la irritabilidad no lo diga
+  r.enlaceHipCo1 = await page.evaluate(() => {
+    const e = document.querySelector('#planSesion .plan-ejercicio');
+    return e?.dataset.bloqueEjercicio === 'mecanotransduccion' && e.hasAttribute('data-por-hipotesis')
+      && e.querySelector('.plan-ayuda').textContent.includes('Tendinopatía Lateral');
+  });
   const c1 = await casa();
   r.casaCo1 = c1.trimEnd().endsWith(D.TEXTOS_CASA.alarmaInfeccion.texto)
     && ![D.TEXTOS_CASA.alarmaCardiaca, D.TEXTOS_CASA.alarmaArterial, D.TEXTOS_CASA.alarmaNeuro, D.TEXTOS_CASA.alarmaMedula].some(a => c1.includes(a.texto));
