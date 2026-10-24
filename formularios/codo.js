@@ -32,8 +32,6 @@ const LANZAR = 'Lanzar (béisbol, balonmano, jabalina, voleibol…)';
 
 export default {
   id: 'codo',
-  titulo: 'Sobre su codo en concreto',
-  intro: 'Marque lo que mejor describa lo que le pasa. Si duda, marque «No sabría decir».',
   secciones: [
     {
       titulo: 'Si empezó con una caída, un golpe o un esfuerzo',

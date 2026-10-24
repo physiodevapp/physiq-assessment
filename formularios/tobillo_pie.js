@@ -13,8 +13,6 @@ const MATRIZ_AYUDA = 'En cada línea, marque Sí o No. Si duda, marque «No sé�
 
 export default {
   id: 'tobillo_pie',
-  titulo: 'Sobre su tobillo o su pie en concreto',
-  intro: 'Marque lo que mejor describa lo que le pasa. Si duda, marque «No sabría decir».',
   secciones: [
     {
       titulo: 'Si empezó con una torcedura, un golpe o una caída',

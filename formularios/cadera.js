@@ -11,8 +11,6 @@ const SNN = ['Sí', 'No', 'No sé'];
 
 export default {
   id: 'cadera',
-  titulo: 'Sobre su cadera o ingle en concreto',
-  intro: 'Marque lo que mejor describa lo que le pasa. Si duda, marque «No sabría decir».',
   secciones: [
     {
       titulo: 'Qué le provoca el dolor',

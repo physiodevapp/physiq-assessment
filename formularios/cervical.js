@@ -12,8 +12,6 @@ const SNN = ['Sí', 'No', 'No sé'];
 
 export default {
   id: 'cervical',
-  titulo: 'Sobre su cuello en concreto',
-  intro: 'Marque lo que mejor describa lo que le pasa. Si duda, marque «No sabría decir». Si un apartado no va con usted, páselo.',
   secciones: [
     {
       titulo: 'Cómo empezó en su caso',
