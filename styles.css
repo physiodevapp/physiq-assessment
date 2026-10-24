@@ -3316,8 +3316,7 @@ body.lupus .solo-les { display: block; }
    (decisión del usuario, 2026-10: con líneas de 32 o 40 px sobraba hueco) */
 @media (pointer: coarse) {
   .tej-fuentes-lista { --tej-sep: 24px; }
-  /* nowrap: la cita pasa entera a la línea siguiente; partida, el enlace medía dos líneas (48 px) */
-  .tej-fuente-enlace { position: relative; display: inline-flex; align-items: center; min-height: 24px; white-space: nowrap; }
+  .tej-fuente-enlace { position: relative; display: inline-flex; align-items: center; min-height: 24px; }
   .tej-fuente-enlace::after { content: ''; position: absolute; inset: -4px 0; }
   .tej-info-datos .tej-info-fuentes dd { margin: -4px 0; padding: 4px 0; }
 }

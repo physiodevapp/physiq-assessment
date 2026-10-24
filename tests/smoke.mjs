@@ -3513,7 +3513,11 @@ async function checkTiemposTejido(browser, errors) {
       && [...i.querySelectorAll('.tej-fuente-enlace')].length > 0
       && [...i.querySelectorAll('.tej-fuente-enlace')].every(a => {
         const r = a.getBoundingClientRect(), x = r.left + r.width / 2;
-        const toca = y => document.elementFromPoint(x, y)?.closest('.tej-fuente-enlace') === a;
+        // Si el punto cae sobre el texto de un enlace de la línea de al lado, gana ese (es lo que
+        // dice el CSS); depende de dónde parta la línea en cada máquina (CI, 2026-10)
+        const enlaces = [...i.querySelectorAll('.tej-fuente-enlace')];
+        const sobreOtro = y => enlaces.some(o => { if (o === a) return false; const q = o.getBoundingClientRect(); return x >= q.left && x <= q.right && y >= q.top && y <= q.bottom; });
+        const toca = y => document.elementFromPoint(x, y)?.closest('.tej-fuente-enlace') === a || sobreOtro(y);
         return r.height >= 24 && r.height < 32 && toca(r.top - 3) && toca(r.bottom + 3) && toca(r.top + r.height / 2) && r.right <= b.right + 1;
       });
   });
