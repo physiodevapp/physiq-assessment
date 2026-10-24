@@ -118,7 +118,7 @@ test('app: botón de cabecera, opción en «Herramientas», funciones expuestas,
   for (const fn of ['abrirEjercicio', 'cerrarEjercicio']) assert.equal(typeof globalThis[fn], 'function', fn);
   const app = leer('app.js');
   assert.ok(/ejercicio: abrirEjercicio/.test(app));
-  assert.ok(/_ejercicioHistorial\) \{ cerrarEjercicio\(\{ desdeHistorial: true \}\)/.test(app), 'Atrás cierra la hoja');
+  assert.ok(/_ejercicioHistorial\) cerrarEjercicio\(\{ desdeHistorial: true \}\)/.test(app), 'Atrás cierra la hoja');
   assert.ok(/cerrarEjercicio\(\{ sinHistorial: true \}\)/.test(app), '_closeAllOverlays la cierra');
   const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
   assert.ok(deploy.includes('lib/ejercicio.js'), 'lib/ejercicio.js en el deploy (data/*.js ya se copia entero)');

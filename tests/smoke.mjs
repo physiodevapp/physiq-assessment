@@ -2597,9 +2597,8 @@ async function checkPreguntaIA(browser, errors) {
     return Math.round(p.width) === innerWidth && Math.round(p.bottom) === innerHeight
       && document.activeElement?.id === 'preguntaPanel';
   });
-  await movil.goBack();
-  await movil.waitForTimeout(300);
-  r.movil = hoja && await movil.evaluate(() => !document.getElementById('preguntaOverlay').classList.contains('open') && state.currentPhase === 2);
+  r.movil = hoja && await atrasDesdeHerramienta(movil, 'preguntaOverlay')
+    && await movil.evaluate(() => !document.getElementById('preguntaOverlay').classList.contains('open') && state.currentPhase === 2);
   // 320 px: los tres destinos y el botón caben sin cortar
   await movil.setViewportSize({ width: 320, height: 640 });
   await abrirHerramienta(movil, 'pregunta');
@@ -2899,9 +2898,39 @@ async function checkCondiciones(browser, errors) {
     return Math.round(p.width) === innerWidth && Math.abs(p.bottom - innerHeight) < 2;
   }, null, { timeout: 3000 }).then(() => true, () => false);
   r.iconoOculto = await m.evaluate(() => getComputedStyle(document.getElementById('condBtn')).display === 'none');
+  r.atras = await atrasDesdeHerramienta(m, 'condOverlay') && await m.evaluate(() => window.state.currentPhase === 2);
+  // «‹ Herramientas» (solo abierta desde el menú) vuelve a él; desde ahí se
+  // abre otra, y Escape cierra las dos sin dejar entradas en el historial
+  await abrirHerramienta(m, 'condiciones');
+  await m.waitForSelector('#condOverlay.open');
+  r.volverVisible = await m.isVisible('#condPanel .herr-volver-btn');
+  await m.tap('#condPanel .herr-volver-btn');
+  r.volverMenu = await m.waitForFunction(() => !document.getElementById('condOverlay').classList.contains('open')
+    && document.getElementById('herramientasOverlay').classList.contains('open'), null, { timeout: 3000 }).then(() => true, () => false);
+  await m.tap('#herramientasOverlay [data-herramienta="farmacos"]');
+  await m.waitForSelector('#farmOverlay.open');
+  // Fijo arriba: solo se desplaza el cuerpo de la hoja, nunca el botón
+  r.volverFijo = await m.evaluate(() => {
+    const b = document.querySelector('#farmPanel .herr-volver-btn');
+    const c = document.getElementById('farmCuerpo');
+    const antes = b.getBoundingClientRect().top;
+    c.scrollTop = c.scrollHeight;
+    return c.scrollTop > 0 && Math.abs(b.getBoundingClientRect().top - antes) < 1;
+  });
+  await m.keyboard.press('Escape');
+  r.escapeCierraTodo = await m.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open')
+    && !document.getElementById('herramientasOverlay').classList.contains('open') && !document.body.classList.contains('herr-volver'), null, { timeout: 3000 }).then(() => true, () => false);
+  await m.waitForTimeout(200);
   await m.goBack();
-  r.atras = await m.waitForFunction(() => !document.getElementById('condOverlay').classList.contains('open'), null, { timeout: 3000 }).then(() => true, () => false)
-    && await m.evaluate(() => window.state.currentPhase === 2);
+  r.sinEntradasSobrantes = await m.waitForFunction(() => window.state.currentPhase === 1, null, { timeout: 3000 }).then(() => true, () => false);
+  await m.evaluate(() => window.goToPhase(2));
+  // Abierta sin pasar por el menú (enlace «Calcular»…), sin «‹ Herramientas»
+  await m.evaluate(() => window.abrirCondiciones());
+  await m.waitForSelector('#condOverlay.open');
+  r.volverOculto = !(await m.isVisible('#condPanel .herr-volver-btn'));
+  await m.goBack();
+  r.atrasDirecto = await m.waitForFunction(() => !document.getElementById('condOverlay').classList.contains('open')
+    && !document.getElementById('herramientasOverlay').classList.contains('open') && window.state.currentPhase === 2, null, { timeout: 3000 }).then(() => true, () => false);
   await abrirHerramienta(m, 'condiciones');
   await m.waitForSelector('#condOverlay.open');
   await m.tap('[data-condicion="hipermovilidad"] .cond-ir');
@@ -3064,9 +3093,7 @@ async function checkFarmacos(browser, errors) {
     return Math.round(p.width) === innerWidth && Math.abs(p.bottom - innerHeight) < 2;
   }, null, { timeout: 3000 }).then(() => true, () => false)
     && await m.evaluate(() => getComputedStyle(document.getElementById('farmBtn')).display === 'none');
-  await m.goBack();
-  r.atras = await m.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open'), null, { timeout: 3000 }).then(() => true, () => false)
-    && await m.evaluate(() => window.state.currentPhase === 2);
+  r.atras = await atrasDesdeHerramienta(m, 'farmOverlay') && await m.evaluate(() => window.state.currentPhase === 2);
   await m.setViewportSize({ width: 320, height: 700 });
   await abrirHerramienta(m, 'farmacos');
   await m.waitForSelector('#farmOverlay.open');
@@ -3174,9 +3201,7 @@ async function checkEjercicio(browser, errors) {
     return Math.round(p.width) === innerWidth && Math.abs(p.bottom - innerHeight) < 2;
   }, null, { timeout: 3000 }).then(() => true, () => false)
     && await m.evaluate(() => getComputedStyle(document.getElementById('ejercicioBtn')).display === 'none');
-  await m.goBack();
-  r.atras = await m.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'), null, { timeout: 3000 }).then(() => true, () => false)
-    && await m.evaluate(() => window.state.currentPhase === 2);
+  r.atras = await atrasDesdeHerramienta(m, 'ejercicioOverlay') && await m.evaluate(() => window.state.currentPhase === 2);
   await m.setViewportSize({ width: 320, height: 700 });
   await abrirHerramienta(m, 'ejercicio');
   await m.waitForSelector('#ejercicioOverlay.open');
@@ -3293,7 +3318,7 @@ async function checkCuestionarios(browser, errors) {
     return Math.round(p.width) === innerWidth && Math.abs(p.bottom - innerHeight) < 2;
   }, null, { timeout: 3000 }).then(() => true, () => false);
   // Cabecera: un solo botón «Herramientas» en vez de tres iconos, y el menú
-  // se cierra al elegir (la herramienta se queda con su entrada del historial)
+  // se cierra al elegir (la herramienta pone su entrada encima de la suya)
   r.herramientas = await m.evaluate(() => {
     const ve = id => getComputedStyle(document.getElementById(id)).display !== 'none';
     return ve('herramientasBtn') && !ve('tejidosBtn') && !ve('cuestBtn') && !ve('preguntaIABtn')
@@ -3309,9 +3334,7 @@ async function checkCuestionarios(browser, errors) {
     return lineas.length > 1 && Math.abs(lineas[1].left - nombre.left) < 2
       && Math.abs(estado.left - nombre.left) < 2 && estado.top >= lineas.at(-1).bottom - 1;
   });
-  await m.goBack();
-  await m.waitForFunction(() => !document.getElementById('cuestOverlay').classList.contains('open'));
-  r.atras = await m.evaluate(() => window.state.currentPhase === 1);
+  r.atras = await atrasDesdeHerramienta(m, 'cuestOverlay') && await m.evaluate(() => window.state.currentPhase === 1);
   await m.setViewportSize({ width: 320, height: 700 });
   await abrirHerramienta(m, 'cuestionarios');
   await m.tap('[data-cuest="cadc"]');
@@ -3532,9 +3555,8 @@ async function checkTiemposTejido(browser, errors) {
     const t = document.getElementById('tejidosTitulo');
     return Math.round(p.width) === innerWidth && Math.round(p.bottom) === innerHeight && t.scrollHeight <= t.clientHeight + 1;
   });
-  await movil.goBack();
-  await movil.waitForTimeout(300);
-  r.movil = hoja && await movil.evaluate(() => !document.getElementById('tejidosOverlay').classList.contains('open') && state.currentPhase === 2);
+  r.movil = hoja && await atrasDesdeHerramienta(movil, 'tejidosOverlay')
+    && await movil.evaluate(() => !document.getElementById('tejidosOverlay').classList.contains('open') && state.currentPhase === 2);
   // 320 px: cabecera y panel sin desbordar, etiquetas del eje enteras
   await movil.setViewportSize({ width: 320, height: 640 });
   await movil.evaluate(() => document.body.classList.add('modo-breve'));
@@ -5978,6 +6000,18 @@ async function abrirHerramienta(page, k) {
   await page.tap('#herramientasBtn');
   await page.waitForSelector('#herramientasOverlay.open');
   await page.tap(`#herramientasOverlay [data-herramienta="${k}"]`);
+}
+// Abierta desde «Herramientas»: el atrás vuelve al menú (con la herramienta ya
+// cerrada) y otro atrás cierra el menú, en la misma fase
+async function atrasDesdeHerramienta(page, overlay) {
+  await page.goBack();
+  const alMenu = await page.waitForFunction(o => !document.getElementById(o).classList.contains('open')
+    && document.getElementById('herramientasOverlay').classList.contains('open')
+    && !document.body.classList.contains('herr-volver'), overlay, { timeout: 3000 }).then(() => true, () => false);
+  await page.goBack();
+  const cerrado = await page.waitForFunction(() => !document.getElementById('herramientasOverlay').classList.contains('open'), null, { timeout: 3000 })
+    .then(() => true, () => false);
+  return alMenu && cerrado;
 }
 
 // Un portapapeles por contexto. El de Chromium es uno para todo el navegador, y
