@@ -208,6 +208,21 @@ test('listas de punción seca y ondas de choque (decisión 12): pautas que las r
   }
 });
 
+test('tanda 2 de PDF (2026-10): TVP, deporte, fibrilación auricular, punción seca y hematoma espinal, sin tocar el bloque de la IA', () => {
+  const t = A.AC.textos;
+  const lineas = A.lineasRecomendacionAC({ es: 'toma', ti: ['do'] });
+  assert.ok(lineas.includes(t.trasTVP) && t.trasTVP.includes('Kakkos 2021'), 'la línea tras la TVP sale en el recuadro');
+  assert.ok(t.deporte.includes('Pelliccia 2020, clase III') && t.deporte.includes('Kim 2025'));
+  assert.ok(t.caidas.includes('van Gelder 2024') && t.otrosFarmacos.includes('alcohol'));
+  assert.ok(t.puncion.includes('APTA 2013') && t.puncion.includes('Boulias 2018') && t.puncion.includes('Kopp 2025'));
+  const esp = SIS_ANTICOAGULADO.preguntas.find(q => q.id === 'ac_u_espinal');
+  assert.equal(esp.ac, 'todos', 'la urgencia sale con cualquier antitrombótico, también el antiagregante');
+  assert.ok(esp.razonamiento.fuentes.includes('Vastani 2023'));
+  // bloqueACIA no lleva estos textos: physiq-report no cambia
+  const bloque = A.bloqueACIA({ es: 'toma', ti: ['do'] });
+  for (const k of ['trasTVP', 'deporte', 'caidas', 'puncion', 'ejercicio']) assert.ok(!bloque.includes(t[k].slice(0, 30)), k);
+});
+
 test('modo breve: «qué toma» sin registrar es un pendiente; el sistema no tiene embudo', () => {
   withState({ ...ac([]), modo: 'breve', region: 'lumbar' }, () => {
     const p = getPendientesBreve();
