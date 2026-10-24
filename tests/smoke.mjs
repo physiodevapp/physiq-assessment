@@ -6774,7 +6774,7 @@ async function main() {
 
   const pass = modulesOk && fallidas.length === 0 && realErrors.length === 0;
   const parcial = elegidas.length < SECCIONES.length;
-  const resumen = parcial ? ` (PARCIAL: ${elegidas.map(s => s.id).join(', ')}; no sustituye a la ejecución completa antes de main)` : '';
+  const resumen = parcial ? ` (PARCIAL: ${elegidas.map(s => s.id).join(', ')}; la completa la ejecuta la CI del PR)` : '';
   console.log(`\n${pass ? '✓ SMOKE TEST PASSED' : '✗ SMOKE TEST FAILED'}${resumen} · ${((Date.now() - inicio) / 1000).toFixed(0)} s`);
   if (fallidas.length) console.log(`Secciones con fallos: ${fallidas.join(', ')}  (repetir con --solo ${fallidas.join(',')})`);
   process.exit(pass ? 0 : 1);
