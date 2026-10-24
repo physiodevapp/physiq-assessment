@@ -1,0 +1,47 @@
+name: Tests
+
+# Unit tests and the full browser smoke test on every PR to main (and on demand).
+# Push to main deploys to the hub (deploy-to-hub.yml), so a PR is merged only
+# with this check green. Playwright is installed here only: the repo still has
+# no dependencies.
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Unit tests
+        run: node tests/unit.js
+
+      - name: Install Playwright (Chromium)
+        run: |
+          npm install --no-save --no-package-lock playwright@1.63.0
+          npx playwright install --with-deps chromium
+
+      - name: Start static server
+        run: |
+          npx --yes serve@14.2.4 -l 3000 . > serve.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -sf -o /dev/null http://localhost:3000/ && exit 0
+            sleep 1
+          done
+          cat serve.log
+          exit 1
+
+      - name: Smoke test (full)
+        run: node tests/smoke.mjs http://localhost:3000

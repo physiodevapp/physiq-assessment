@@ -3513,7 +3513,11 @@ async function checkTiemposTejido(browser, errors) {
       && [...i.querySelectorAll('.tej-fuente-enlace')].length > 0
       && [...i.querySelectorAll('.tej-fuente-enlace')].every(a => {
         const r = a.getBoundingClientRect(), x = r.left + r.width / 2;
-        const toca = y => document.elementFromPoint(x, y)?.closest('.tej-fuente-enlace') === a;
+        // Si el punto cae sobre el texto de un enlace de la línea de al lado, gana ese (es lo que
+        // dice el CSS); depende de dónde parta la línea en cada máquina (CI, 2026-10)
+        const enlaces = [...i.querySelectorAll('.tej-fuente-enlace')];
+        const sobreOtro = y => enlaces.some(o => { if (o === a) return false; const q = o.getBoundingClientRect(); return x >= q.left && x <= q.right && y >= q.top && y <= q.bottom; });
+        const toca = y => document.elementFromPoint(x, y)?.closest('.tej-fuente-enlace') === a || sobreOtro(y);
         return r.height >= 24 && r.height < 32 && toca(r.top - 3) && toca(r.bottom + 3) && toca(r.top + r.height / 2) && r.right <= b.right + 1;
       });
   });
@@ -5551,6 +5555,15 @@ async function checkFilas(browser, errors) {
       const bs = [...g.children].filter(b => b.tagName === 'BUTTON'), caja = g.getBoundingClientRect();
       const tops = new Set(bs.map(b => Math.round(b.getBoundingClientRect().top)));
       if (cols !== pasos.at(-1) && bs.some(b => lineas(b) > 1)) out.push(`${donde}: ${g.id || g.className} con ${cols} columnas y un texto partido`);
+      // Y es la primera disposición que cabe: con la anterior de la lista algún texto parte
+      // (medido como filas.js, en negrita). No depende de la fuente de cada máquina.
+      const i = pasos.indexOf(cols);
+      if (i > 0) {
+        g.classList.add('filas-midiendo'); g.dataset.cols = pasos[i - 1]; g.style.setProperty('--filas-cols', pasos[i - 1]);
+        const parte = bs.some(b => lineas(b) > 1);
+        g.dataset.cols = cols; g.style.setProperty('--filas-cols', cols); g.classList.remove('filas-midiendo');
+        if (!parte) out.push(`${donde}: ${g.id || g.className} con ${cols} columnas cuando cabían ${pasos[i - 1]}`);
+      }
       if (cols === bs.length && tops.size !== 1) out.push(`${donde}: ${g.id || g.className} no está en una fila`);
       if (cols === 2 && bs.length % 2) { const u = bs.at(-1).getBoundingClientRect();
         if (Math.abs(u.left - caja.left) > 1 || Math.abs(u.right - caja.right) > 1) out.push(`${donde}: ${g.id || g.className} impar sin la última a todo el ancho`); }
@@ -5595,11 +5608,11 @@ async function checkFilas(browser, errors) {
     }
     await context.close();
   }
-  // Lo que se esperaba al medirlo (2026-10): cronología una por fila a 320 y dos por fila desde 360;
-  // mecanismo dos por fila; naturaleza dos a 320 y las tres en fila desde 360
-  r.esperado = r.cron320 === '1' && r.cron360 === '2' && r.cron390 === '2'
-    && ['mec320', 'mec360', 'mec390'].every(k => r[k] === '2')
-    && r.nat320 === '2' && r.nat360 === '3' && r.nat390 === '3';
+  // Cuántas columnas salen depende del ancho exacto del texto en cada máquina (a 360 px
+  // naturaleza cabe en tres con 1 px de margen en un entorno y no en otro: CI, 2026-10), así que
+  // no se fijan los valores: revisar() ya comprueba que es la primera disposición que cabe.
+  // Aquí solo que un móvil más ancho nunca pone menos columnas
+  r.esperado = ['cron', 'mec', 'nat'].every(k => Number(r[`${k}320`]) <= Number(r[`${k}360`]) && Number(r[`${k}360`]) <= Number(r[`${k}390`]));
   // Escritorio: sin data-cols, las tres en una fila como siempre
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 860 } });
   const page = await ctx.newPage();
@@ -6774,7 +6787,7 @@ async function main() {
 
   const pass = modulesOk && fallidas.length === 0 && realErrors.length === 0;
   const parcial = elegidas.length < SECCIONES.length;
-  const resumen = parcial ? ` (PARCIAL: ${elegidas.map(s => s.id).join(', ')}; no sustituye a la ejecución completa antes de main)` : '';
+  const resumen = parcial ? ` (PARCIAL: ${elegidas.map(s => s.id).join(', ')}; la completa la ejecuta la CI del PR)` : '';
   console.log(`\n${pass ? '✓ SMOKE TEST PASSED' : '✗ SMOKE TEST FAILED'}${resumen} · ${((Date.now() - inicio) / 1000).toFixed(0)} s`);
   if (fallidas.length) console.log(`Secciones con fallos: ${fallidas.join(', ')}  (repetir con --solo ${fallidas.join(',')})`);
   process.exit(pass ? 0 : 1);
