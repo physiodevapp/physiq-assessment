@@ -420,7 +420,7 @@ Diseño y las 5 decisiones clínicas en `docs/hipermovilidad.md`. Capa transvers
 - [x] Fase 5, 📋 Notas, 📄 Informe, payload `hm`, informe con IA, pendiente en modo breve (pruebas unitarias y sección `hipermovilidad` de la prueba de humo)
 - [x] Revisión del usuario: dada por hecha al fusionar (2026-10)
 - [x] physiq-report: leer `hm` del payload (otro repositorio): `_bloqueHM()` en su `lib/payload.js`, copia literal de `bloqueHMIA()`; un test en cada repositorio fija el mismo texto (2026-10)
-- [x] Enlace a la guía «Efectos del ejercicio» también en la fase 6 y sin enlace con la sospecha vascular cumplida (2026-10; `docs/efectos-ejercicio.md`, «Una sola regla de estados»), pendiente de revisión del usuario
+- [x] Enlace a la guía «Efectos del ejercicio» también en la fase 6 y sin enlace con la sospecha vascular cumplida (2026-10; `docs/efectos-ejercicio.md`, «Una sola regla de estados»), revisado por el usuario (2026-10)
 - [ ] Subtipo vascular, pendiente para otra sesión (usuario, 2026-10; detalle en `docs/hipermovilidad.md`, «Pendientes para otra sesión»): 1) aviso en la fase 6 con el vascular diagnosticado (Byers 2017, p. 42); 2) las 3 urgencias arteriales también con la regla de sospecha vascular cumplida (subtipo «otro» o «no lo sabe»)
 - [x] Después del piloto: POTS / disautonomía y quiste de Tarlov (contenido de lumbar). Antes esta casilla nombraba también el lupus, que tiene la suya abajo (corregida en 2026-10)
   - [x] POTS / disautonomía: diseño en `docs/pots.md` (2026-10), con las 13 fuentes leídas enteras (en abierto y PDF del usuario: ESC 2018, CCS 2020, Sivakoti 2026, Hakim 2017, George 2016, Fedorowski 2019); aceptadas las 12 recomendaciones
