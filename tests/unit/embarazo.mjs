@@ -102,6 +102,8 @@ test('privadas (decisión 11): el ánimo y la psicosis no van a `sq` (informe ni
     for (const a of E.EM.animo) assert.ok(!todo.includes(a.texto), a.id);
     // E: ni el texto de las preguntas privadas, en ninguna salida
     for (const q of SIS_EMBARAZO.preguntas.filter(x => x.privada)) assert.ok(!todo.includes(q.text), q.id);
+    // W2: la línea de Woodley 2020 es solo del bloque de la fase 2
+    assert.ok(!todo.includes('Woodley') && !todo.includes(E.EM.textos.sueloEvidencia.slice(0, 40)));
     assert.ok(!('animo' in p.em));
   });
 });

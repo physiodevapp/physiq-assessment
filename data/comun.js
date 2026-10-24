@@ -1493,6 +1493,8 @@ export const SIS_EMBARAZO = {
       sueloHeces: 'Con escapes de heces, también valoración médica (NICE NG123, 1.3.20).',
       sueloRiesgo: 'Sin síntomas, pero con riesgo (familiar de primer grado con disfunción desde la semana 20, parto instrumental, occipitoposterior o lesión del esfínter anal): puede beneficiarse de un programa supervisado de 3 meses (NICE NG210, 1.3.12).',
       sueloDiario: 'Suelo pélvico a diario, con la técnica aprendida (Mottola 2018; NICE NG210, 1.3.11).',
+      // W2 (Woodley 2020): solo en el bloque de la fase 2; nunca al payload, al informe ni al prompt
+      sueloEvidencia: 'En el embarazo, entrenar el suelo pélvico de forma estructurada desde el principio, sin escapes, probablemente los previene al final del embarazo y los reduce algo tras el parto; como tratamiento de los escapes en el embarazo o el posparto, el efecto aún es incierto (Woodley 2020, Cochrane).',
       sueloFuente: 'Síntomas que preguntar tras el parto (NICE NG210, 1.5.1 y 1.5.3), sin puntuar.',
       // Fase 4b
       supino: 'Embarazada de 20 semanas o más: no la dejes mucho rato boca arriba y, si se marea, tiene náuseas o se encuentra mal, ponla de lado (Mottola 2018; ACOG 2020).',

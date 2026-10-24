@@ -2416,6 +2416,7 @@ function _emBloqueHTML() {
     <div class="screening-section-title">🌸 Suelo pélvico</div>
     ${filas('suelo', EM.suelo)}
     ${suelo}
+    <div class="hm-nota">${citasEnTexto(t.sueloEvidencia)}</div>
     <div class="hm-fuente">${citasEnTexto(t.sueloFuente)}</div>`;
 }
 

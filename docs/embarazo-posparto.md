@@ -79,7 +79,7 @@ Cuatro lectores de esta sesión leyeron las fuentes y devolvieron notas con cita
 - **Las posiciones de tratamiento en la camilla** (prono, supino) no las trata ninguna fuente. El supino aparece solo para el ejercicio (OMS, Mottola 2018, ACOG 804) y para el sueño (NG201).
 - **El thrust en el embarazo**: un solo ensayo piloto de 15 mujeres (Peterson 2012, citado en la Cochrane de 2015) y la opinión graduada C de Clinton 2017. Ver T7.
 - **Los síntomas de la trombosis en la embarazada**: en la tanda 1 no estaban en ninguna fuente leída como criterio de derivación (NG158 la excluye); resuelto con el RCOG en la tanda 2 (U1). ACOG 804 solo pone el dolor o la hinchazón de pantorrilla entre los signos para parar el ejercicio. En el posparto sí están (NG194, NG192).
-- **La Cochrane de Woodley 2020**: solo el resumen (PMC7203602 no tiene el texto completo en abierto; comprobado en octubre de 2026). No se cita hasta leer el PDF.
+- **La Cochrane de Woodley 2020**: en PMC solo el resumen; leída entera del PDF que pasó el usuario en el cierre (W1–W2).
 - **Tanda 1 (sección E)**: en Simonds 2022 las tablas 11, 12 y 14 salieron desordenadas en la extracción; ninguna cita de este documento sale de ellas. Las LR que calcula Clinton 2017 (con SPSS, a partir de otros estudios) no se proponen para la puntuación.
 
 ### E. Tanda 1 de PDF (octubre 2026)
@@ -112,7 +112,7 @@ Si quieres alguna, pásame el PDF y la leo entera antes de cerrar el diseño. Po
 | # | Fuente | Enlace | Para qué |
 |---|---|---|---|
 | 8 | Bauersachs 2019, posición de la ESC sobre la miocardiopatía periparto, *Eur J Heart Fail* | [doi:10.1002/ejhf.1493](https://doi.org/10.1002/ejhf.1493) | Opcional, no en PMC: Hameed 2023 y Sambola 2024 ya cubren lo que necesita el fisio. No se pide |
-| 9 | Woodley 2020, Cochrane del suelo pélvico en el embarazo y el posparto | [doi:10.1002/14651858.CD007471.pub4](https://doi.org/10.1002/14651858.CD007471.pub4) | Opcional: matiza a Beamish 2025 (contradicción 8). Pedido el PDF (octubre 2026): en PMC solo está el resumen |
+| 9 | ~~Woodley 2020~~, Cochrane del suelo pélvico | [doi:10.1002/14651858.CD007471.pub4](https://doi.org/10.1002/14651858.CD007471.pub4) | **Leída** en el cierre (octubre 2026), del PDF del usuario: ver la contradicción 8 y W1–W2 |
 
 Leídas en la tanda 1 (sección E): Mottola 2018, ACOG 804, Vleeming 2008, Clinton 2017 y Simonds 2022, Liddle y Pennick 2015, Deering 2024. En la tanda 2 (sección F): RCOG GTG 37b y Christopher 2024.
 
@@ -149,9 +149,13 @@ Leídas en la tanda 1 (sección E): Mottola 2018, ACOG 804, Vleeming 2008, Clint
    - Las tres coinciden en que no hay base para que sea el tratamiento principal. *Propongo* ese texto, sin prohibirla (decisión 8).
 8. **El suelo pélvico tras el parto.**
    - Beamish 2025: −37 % de incontinencia, certeza moderada.
-   - La Cochrane de 2020 (solo el resumen): el enfoque poblacional «is not likely to reduce UI».
+   - Woodley 2020 (Cochrane, leída entera en el cierre; búsqueda hasta 2019):
+     - ofrecido a todas tras el parto, sin efecto claro a los 6–12 meses (RR 0,88, certeza moderada): «not likely to reduce UI» (p. 2);
+     - el efecto más claro es la prevención en el embarazo en mujeres sin escapes, con un programa estructurado desde el principio (RR 0,38 al final del embarazo, moderada; 0,71 a los 3–6 meses del parto, alta);
+     - como tratamiento de los escapes en el embarazo o el posparto, incierto (RR 0,55, 0,29–1,07, baja), en contraste con su eficacia fuera del posparto;
+     - «It is possible that a 'high-risk' approach (e.g. women who have an assisted delivery or deliver a large baby) leads to more clinical benefit» (p. 38).
    - NICE: animar a todas y supervisar solo a las de riesgo (NG210 1.3.12).
-   - *Propongo seguir a NICE*, que ya concilia ambas.
+   - *Seguimos a NICE*, que concilia las dos: Woodley apoya el enfoque de riesgo y Beamish es seis años posterior, no la sustituye. Woodley entra solo como una línea en el bloque de suelo pélvico de la fase 2 (W2).
 9. **La diástasis.**
    - No hay un corte de consenso: ≥ 2 dedos, > 2 cm, > 22 mm, o normal hasta 34 mm.
    - La creencia clínica «transverso sí, abdominales no» choca con los datos: el curl-up reduce la distancia al instante y el transverso la aumenta (Gluppe 2021; Beamish 2025).
@@ -538,5 +542,9 @@ Comprobación de lo implementado contra NICE NG201, NG133, NG194 y NG255, releí
 - **E. Prueba de las `privada`.** Además del ánimo, comprueba que el texto de `em_u_psicosis` y `em_u_autolesion` no llega al payload, 📋 Notas, 📄 Informe ni `contextoValoracion()`.
 - **Sin cambios**, comprobados: `em_u_sangrado` desde la 13 (NG201 1.4.17–1.4.18), `em_u_movimientos` desde la 24 (1.2.34), la grave ≥ 160/110 en cualquier semana (1.2.27, sin semanas) y la primera ≥ 140/90 desde la 20 en 24 h (1.2.26); `em_d_fractura` hasta 2 semanas (Simonds 2022; con el redondeo de las semanas sale hasta el día 20).
 - **Payload `em` y `bloqueEMIA()`**: sin cambios; `EM_CASOS` igual. D añade un texto posible a `ur[]`.
-- **Fuentes opcionales**: Woodley 2020 no tiene el texto completo en PMC (solo el resumen): pedido el PDF. Bauersachs 2019 no está en PMC; no se pide.
+- **Fuentes opcionales**: Bauersachs 2019 no está en PMC; no se pide. Woodley 2020 (en PMC solo el resumen): leída entera del PDF del usuario, el texto principal (pp. 1–55: resumen, tablas de resultados, métodos, resultados, discusión y conclusiones); un lector y yo, con las cifras y citas comprobadas en el texto.
+- **W1.** La contradicción 8, reescrita con Woodley 2020.
+- **W2.** Una línea en el bloque de suelo pélvico de la fase 2 (`sueloEvidencia`): «En el embarazo, entrenar el suelo pélvico de forma estructurada desde el principio, sin escapes, probablemente los previene al final del embarazo y los reduce algo tras el parto; como tratamiento de los escapes en el embarazo o el posparto, el efecto aún es incierto (Woodley 2020, Cochrane).» Solo ahí: nunca al payload, 📋 Notas, 📄 Informe ni al prompt (test). Registro: `'Woodley 2020'`.
+- **W3.** Los textos de la fase 5 y la 6 no cambian (irían a `bloqueEMIA()` y a la copia de physiq-report): Woodley matiza la certeza, no lo que se recomienda.
+- Con esto se cierra la condición (casilla madre de MIGRATION_PLAN.md marcada, 2026-10). Quedan fuera a propósito la EPDS, el aborto o la interrupción reciente y la muñeca y mano.
 
