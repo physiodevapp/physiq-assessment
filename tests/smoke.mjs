@@ -904,6 +904,15 @@ async function checkLupus(page) {
   await walkRegion(page, 'codo');
   r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .les-fase5')?.textContent || '';
     return t.includes('Diagnosticado') && t.includes('150–300 min') && t.includes('Fotoprotección') && t.includes('Raynaud') && t.includes('valoración médica hoy'); });
+  // Enlace a la guía de efectos del ejercicio (docs/efectos-ejercicio.md)
+  r.enlaceEjercicio = !!(await page.$('#resultsContent .les-fase5 [data-bloque-condicion="antiinflamatorio"] button'));
+  if (r.enlaceEjercicio) {
+    await page.click('#resultsContent .les-fase5 [data-bloque-condicion="antiinflamatorio"] button');
+    await page.waitForSelector('#ejercicioOverlay.open');
+    r.enlaceEjercicio = await page.evaluate(() => document.querySelector('#ejercicioCuerpo [data-bloque="antiinflamatorio"]')?.open === true);
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
+  }
   await page.evaluate(() => goToPhase('4b'));
   await page.waitForTimeout(200);
   r.nota4b = await page.isVisible('#hypothesisCards .les-nota-4b');
@@ -915,7 +924,7 @@ async function checkLupus(page) {
     return t.includes('Lupus: intensidad moderada') && t.includes('Lupus con Raynaud') && t.includes('una infección puede dar poca fiebre') && t.includes('pérdida de visión de golpe'); });
   r.ok = r.filasOcultas && r.filasOcultasSospecha && r.filasVisibles && r.segundoToque && r.estado && r.tab && r.urgSinPlegar && r.sinEmbudo
     && r.urgencia && r.derivacion && r.payloadDv && r.notaNaturaleza && r.notaBrote && r.notaHM && r.sospechaSinUrg && r.rasgos
-    && r.derivarSospecha && r.sincronizada && r.informeSinLupus && r.ancho1 && r.ancho2 && r.sinSistema && r.fase5 && r.nota4b && r.fase6 && r.enlaceAC;
+    && r.derivarSospecha && r.sincronizada && r.informeSinLupus && r.ancho1 && r.ancho2 && r.sinSistema && r.fase5 && r.enlaceEjercicio && r.nota4b && r.fase6 && r.enlaceAC;
   return r;
 }
 
@@ -1313,6 +1322,15 @@ async function checkOsteoporosis(page) {
     return t.includes('Fuerza progresiva') && t.includes('impacto solo hasta caminar') && t.includes('Sin manipulación forzada')
       && t.includes('Osteoporosis del embarazo o la lactancia'); });
   r.fase5Cita = await page.evaluate(() => !!document.querySelector('#resultsContent .op-fase5 .cita[data-cita^="Brooke-Wavell 2022"]'));
+  // Enlace a la guía de efectos del ejercicio (docs/efectos-ejercicio.md)
+  r.enlaceEjercicio = !!(await page.$('#resultsContent .op-fase5 [data-bloque-condicion="mecanotransduccion"] button'));
+  if (r.enlaceEjercicio) {
+    await page.click('#resultsContent .op-fase5 [data-bloque-condicion="mecanotransduccion"] button');
+    await page.waitForSelector('#ejercicioOverlay.open');
+    r.enlaceEjercicio = await page.evaluate(() => document.querySelector('#ejercicioCuerpo [data-bloque="mecanotransduccion"]')?.open === true);
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
+  }
   await page.evaluate(() => goToPhase('4b'));
   await page.waitForTimeout(200);
   r.nota4b = await page.evaluate(async () => {
@@ -1335,7 +1353,7 @@ async function checkOsteoporosis(page) {
   r.ok = r.nota && r.filasOcultas && r.filasVisibles && r.recienteOculta && r.recienteVisible && r.sinCasillasNativas && r.segundoToque && r.derivCorticoides
     && r.tab && r.urgencia && r.sinEmbudo && r.sinTalla && r.derivacion && r.payloadDv && r.caidas && r.caidasCasillas && r.caidaChip
     && r.factores && r.sospecha && r.informeSinPalabra && r.ancho1 && r.ancho2 && r.sinSistema
-    && r.fase5 && r.fase5Cita && r.nota4b && r.fase6 && r.tejidos;
+    && r.fase5 && r.fase5Cita && r.enlaceEjercicio && r.nota4b && r.fase6 && r.tejidos;
   return r;
 }
 

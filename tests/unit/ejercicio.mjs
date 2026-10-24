@@ -179,6 +179,21 @@ test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuesti
   assert.ok(E.enlaceEjercicioHTML('baja', { animo: true }).includes("abrirEjercicio({ bloque: 'centrales' })"));
 });
 
+test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteoporosis → mecanotransducción, nada más', () => {
+  const les = E.enlaceCondicionEjercicioHTML('lupus');
+  assert.ok(les.includes('data-bloque-condicion="antiinflamatorio"') && les.includes("abrirEjercicio({ bloque: 'antiinflamatorio' })"));
+  assert.ok(les.includes(TEXTOS_EJERCICIO.enlaceCondicionLupus));
+  const op = E.enlaceCondicionEjercicioHTML('osteoporosis');
+  assert.ok(op.includes('data-bloque-condicion="mecanotransduccion"') && op.includes(TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis));
+  for (const c of ['hipermovilidad', 'disautonomia', 'mastocitos', 'embarazo', 'anticoagulado', 'posquirurgico', '']) assert.equal(E.enlaceCondicionEjercicioHTML(c), '', c);
+  // El lupus solo con «Diagnosticado», y ninguno de los dos llega a lo que se comparte
+  const app = leer('app.js');
+  assert.ok(app.includes("d.es === 'diagnosticado' ? enlaceCondicionEjercicioHTML('lupus') : ''"));
+  for (const t of [TEXTOS_EJERCICIO.enlaceCondicionLupus, TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis]) {
+    for (const f of ['lib/resumenes.js', 'lib/lupus.js', 'lib/osteoporosis.js', 'informe-ia.js', 'lib/informe-narrativo.js']) assert.ok(!leer(f).includes(t), f);
+  }
+});
+
 test('enlace de la fase 6 por hipótesis: la tabla solo nombra hipótesis y bloques que existen', () => {
   const escritos = E.bloquesConContenido().map(b => b.id);
   for (const [id, bloque] of Object.entries(BLOQUE_POR_HIPOTESIS)) {
@@ -227,7 +242,7 @@ test('enlace de la fase 6: solo en el bloque «Educación», solo en pantalla y 
   const plan = leer('plan.js');
   assert.equal((plan.match(/enlaceEjercicioHTML\(/g) || []).length, 1);
   assert.ok(/b\.id === 'educacion' \? lista\(s\.educacion, b\.titulo\) \+ enlaceEjercicioHTML\(plan\.irritabilidad, \{ \.\.\.motivosEjercicio\(.*hipotesis: plan\.hipotesis \}\)/.test(plan));
-  assert.ok(leer('styles.css').includes('@media print { .plan-ejercicio { display: none !important; } }'));
+  assert.ok(leer('styles.css').includes('@media print { .plan-ejercicio, .cond-ejercicio { display: none !important; } }'));
   // Los textos que se comparten salen de lib/ y data/ del plan, que no conocen la guía
   for (const f of [['lib', 'plan-tratamiento.js'], ['data', 'plan-tratamiento.js'], ['lib', 'plan-ia.js']]) {
     const src = leer(...f).replace(/\/\/.*$/gm, '');
