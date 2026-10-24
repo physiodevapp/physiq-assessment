@@ -2720,6 +2720,72 @@ async function checkAtrasVentanas(browser) {
   return r;
 }
 
+// Atrás que cerraría la app (móvil, fase 1, sin nada abierto): pregunta solo si
+// se pierde algo — datos sin nombre de paciente o la consulta grabándose —;
+// «Seguir aquí» deja la app como estaba y el atrás vuelve a preguntar; «Salir»
+// sale; sin nada que perder sale sin preguntar.
+async function checkSalidaApp(browser) {
+  const r = {};
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true });
+  const p = await ctx.newPage();
+  const errores = [];
+  p.on('pageerror', e => errores.push(e.message));
+  const espera = (f, arg) => p.waitForFunction(f, arg, { timeout: 3000 }).then(() => true, () => false);
+  const fuera = () => p.waitForURL('about:blank', { timeout: 3000 }).then(() => true, () => false);
+  const dialogo = () => espera(() => !!document.querySelector('#confirmBanner.salida-app'));
+  // Sin datos: sale sin preguntar
+  await abrirApp(p);
+  await p.tap('#mobilePhaseBar');
+  await p.waitForSelector('#phaseSheet.open');
+  await p.tap('#phaseSheetOverlay', { position: { x: 20, y: 20 } });
+  await espera(() => !document.getElementById('phaseSheet').classList.contains('open'));
+  await p.goBack();
+  r.sinDatosSale = await fuera();
+  // Datos sin nombre: pregunta; «Seguir aquí» se queda y vuelve a preguntar; «Salir» sale
+  await abrirApp(p);
+  await p.tap('#mecanismo .option-btn >> nth=0');
+  await p.goBack();
+  r.sinNombrePregunta = await dialogo() && await p.evaluate(() =>
+    /no tiene nombre de paciente/.test(document.querySelector('#confirmBanner .confirm-box-text').textContent)
+    && !/grabando/.test(document.querySelector('#confirmBanner .confirm-box-text').textContent)
+    && String(window.state.currentPhase) === '1');
+  await p.tap('#confirmCancel');
+  r.seguir = await espera(() => !document.getElementById('confirmBanner') && history.state?.phase === 1 && !!window.state.mecanismo);
+  await p.goBack();
+  r.vuelvePreguntar = await dialogo();
+  await p.tap('#confirmAction');
+  r.salir = await fuera();
+  // Con nombre y grabando: pregunta solo por la grabación; sin grabar, sale sin preguntar
+  await abrirApp(p);
+  await p.tap('#sessionBtn');
+  await p.waitForSelector('#sessionPanelOverlay.open');
+  await p.fill('#patientName', 'Prueba');
+  await p.goBack();
+  await espera(() => !document.getElementById('sessionPanelOverlay').classList.contains('open'));
+  await p.evaluate(() => document.body.classList.add('grab-activa'));
+  await p.tap('#mecanismo .option-btn >> nth=0');
+  await p.goBack();
+  r.grabandoPregunta = await dialogo() && await p.evaluate(() => {
+    const t = document.querySelector('#confirmBanner .confirm-box-text').textContent;
+    return /grabando/.test(t) && !/no tiene nombre/.test(t);
+  });
+  await p.keyboard.press('Escape');
+  r.escapeSigue = await espera(() => !document.getElementById('confirmBanner') && history.state?.phase === 1);
+  await p.evaluate(() => document.body.classList.remove('grab-activa'));
+  await p.goBack();
+  r.conNombreSale = await fuera();
+  // Fuera de la fase 1, el atrás sigue cambiando de fase
+  await abrirApp(p);
+  await p.tap('#mecanismo .option-btn >> nth=0');
+  await p.evaluate(() => { window.state.maxVisitedIdx = 1; window.goToPhase(2); });
+  await p.goBack();
+  r.faseSinDialogo = await espera(() => String(window.state.currentPhase) === '1' && !document.getElementById('confirmBanner'));
+  r.sinErrores = errores.length === 0;
+  await ctx.close();
+  r.ok = Object.values(r).every(v => v === true);
+  return r;
+}
+
 async function checkBarraFase(page) {
   const r = {};
   r.cerrada = await page.evaluate(() => document.getElementById('mobilePhaseBar').getAttribute('aria-expanded') === 'false');
@@ -6574,6 +6640,11 @@ const SECCIONES = [
   { id: 'atras-ventanas', titulo: 'Atrás con una ventana abierta (móvil):', run: async ({ browser }) => {
     const c = await checkAtrasVentanas(browser);
     console.log(`  ${c.ok ? '✓' : '✗'} el atrás cierra el panel de sesión, la hoja de fases, el teclado numérico y un diálogo (como «Cancelar», volviendo al panel) sin cambiar de fase; la fase elegida en la hoja navega; abrir y cerrar de cualquier forma no deja entradas (un atrás cambia de fase); la acción de un diálogo se ejecuta${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    return c.ok;
+  } },
+  { id: 'salida-app', titulo: 'Atrás que cerraría la app (móvil):', run: async ({ browser }) => {
+    const c = await checkSalidaApp(browser);
+    console.log(`  ${c.ok ? '✓' : '✗'} sin datos sale sin preguntar; con datos sin nombre pregunta, «Seguir aquí» se queda y el atrás vuelve a preguntar, «Salir» sale; con nombre y grabando pregunta por la grabación (Escape se queda) y sin grabar sale; fuera de la fase 1 el atrás cambia de fase${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
   { id: 'barra-fase', titulo: 'Barra de fase en móvil:', run: async ({ page }) => {
