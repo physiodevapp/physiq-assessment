@@ -503,6 +503,17 @@ Hecho según la forma 2 y las 16 decisiones, con estas concreciones:
   - la sección `mastocitos` de la prueba de humo.
 - **physiq-report**: physiodevapp/physiq-report#94 copia `bloqueMAIA()` como `_bloqueMA()` en su `lib/payload.js` y fija los casos de `MA_CASOS` en su test (fusionada, 2026-10).
 
+## Anafilaxia por ejercicio en el aviso (2026-10)
+
+Al estudiar un bloque sobre el trastorno mastocitario en la guía «Efectos del ejercicio» (bloque 9 de `docs/efectos-ejercicio.md`; no se hizo, decisión del usuario) se propuso esta línea para la tarjeta, aceptada por el usuario. Va en el aviso `mastocitos` de la fase 6, después de «No hace falta dejar el ejercicio…» y antes del alimento con el ejercicio:
+
+> «En la anafilaxia por ejercicio, si hay un cofactor, los síntomas suelen empezar en los primeros 30 minutos, y la intensidad que la provoca varía incluso en la misma persona: que haya tolerado una carga no asegura que la tolere otro día; los cofactores descritos son una comida previa, el calor o el frío, la menstruación y los AINE (Pravettoni 2016). En la alergia al trigo dependiente del ejercicio, el ejercicio y la aspirina bajan la cantidad de trigo que provoca la reacción y la hacen más grave, y juntos la bajan más (Christensen 2019).»
+
+- **Pravettoni 2016**: pasajes comprobados en el texto completo de PMC: «anaphylaxis symptoms develop mostly within 30 minutes from the onset of physical activity» (cuando hay un cofactor), «The exercise intensity able to elicit symptoms is variable, even in the same subject», y los cofactores (comida, calor o frío, ciclo menstrual, AINE). «Que haya tolerado una carga no asegura que la tolere otro día» es redacción propia, la consecuencia práctica de la segunda cita.
+- **Christensen 2019** (PDF del usuario, leído entero): 25 adultos con anafilaxia por trigo dependiente del ejercicio, **sin mastocitosis** (triptasa basal y KIT D816V normales). Por eso la frase dice «en la alergia al trigo» y no la extiende a la mastocitosis. El alcohol no se nombra: no dio una diferencia significativa. Cifras distintas entre el resumen, el texto y las figuras: solo se usan los hallazgos cualitativos.
+- **Contradicción nueva, sin resolver** (para el usuario): para la anafilaxia por ejercicio **sin** cofactor, Pravettoni 2016 dice que la mejor prevención es evitar el ejercicio («avoiding the triggers, ie, physical exercise when EIAn without a cofactor is concerned»), mientras que Srisuwatchari 2023 (anafilaxia dependiente de un alimento) pide mantener el ejercicio regular, que es lo que dice el aviso. No se contradicen del todo (son formas distintas: con y sin alimento), pero el aviso habla de «la anafilaxia por ejercicio» en general. No se ha cambiado.
+- Registradas `Pravettoni 2016` y `Christensen 2019` (`data/referencias.js`, `FUENTES_PLAN`); regenerados `docs/referencias.md` y `docs/plan-tratamiento-frases.md`.
+
 ## Siguiente paso
 
 1. ~~Tus decisiones~~ Hecho: las 12 recomendaciones, aceptadas.
