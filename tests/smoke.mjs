@@ -2909,6 +2909,14 @@ async function checkCondiciones(browser, errors) {
     && document.getElementById('herramientasOverlay').classList.contains('open'), null, { timeout: 3000 }).then(() => true, () => false);
   await m.tap('#herramientasOverlay [data-herramienta="farmacos"]');
   await m.waitForSelector('#farmOverlay.open');
+  // Fijo arriba: solo se desplaza el cuerpo de la hoja, nunca el botón
+  r.volverFijo = await m.evaluate(() => {
+    const b = document.querySelector('#farmPanel .herr-volver-btn');
+    const c = document.getElementById('farmCuerpo');
+    const antes = b.getBoundingClientRect().top;
+    c.scrollTop = c.scrollHeight;
+    return c.scrollTop > 0 && Math.abs(b.getBoundingClientRect().top - antes) < 1;
+  });
   await m.keyboard.press('Escape');
   r.escapeCierraTodo = await m.waitForFunction(() => !document.getElementById('farmOverlay').classList.contains('open')
     && !document.getElementById('herramientasOverlay').classList.contains('open') && !document.body.classList.contains('herr-volver'), null, { timeout: 3000 }).then(() => true, () => false);
