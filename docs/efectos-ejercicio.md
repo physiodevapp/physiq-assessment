@@ -121,6 +121,17 @@ El criterio: Sonnet donde hay un patrón que copiar y tests que detectan el fall
 | Enlace desde «Educación» de la fase 6 | Hecho (2026-10, Sonnet; los enlaces a «Efectos centrales» y «antiinflamatorio», Opus) y **revisado por el usuario** (2026-10): `enlaceEjercicioHTML()` / `bloqueEjercicioParaIrritabilidad()` en `lib/ejercicio.js`, `abrirEjercicio({ bloque })` en `app.js`; por irritabilidad (alta → hipoalgesia, baja o moderada → mecanotransducción). La tabla por hipótesis (`BLOQUE_POR_HIPOTESIS`, Opus), también hecha y **revisada por el usuario** (2026-10) |
 | Enlace desde los recuadros de la fase 5 | Hecho (2026-10, Opus) y **revisado por el usuario** (2026-10): `enlaceCondicionEjercicioHTML()`; lupus diagnosticado → antiinflamatorio, osteoporosis → mecanotransducción |
 
+## Mantenimiento de los enlaces por hipótesis y por condición
+
+`BLOQUE_POR_HIPOTESIS` y `CONDICION_EJERCICIO` (`lib/ejercicio.js`) se escriben a mano: un enlace solo existe si la frase para el paciente del bloque, o la fuente de esa frase, trata ese cuadro. Esa relación cambia cuando cambia cualquiera de los dos lados, así que se revisa **cada vez** que ocurra una de estas cosas, en la misma sesión y antes de `main`:
+
+1. **Cambia la pauta de una hipótesis**: su `dosis` o su `dosisFuente` (por la revisión mensual de fuentes, por una región nueva o por una corrección). Si la fuente nueva trata el cuadro como tendinopatía, dolor crónico, artrosis de cadera o rodilla, o enfermedad reumática inflamatoria, la hipótesis puede entrar en la tabla; si la fuente que la justificaba se va, puede salir (por ejemplo, `h2` está por Desmeules 2025).
+2. **Se añade una hipótesis** a una región.
+3. **Se escribe o se cambia un bloque**, sobre todo sus frases para el paciente o la fuente en que se apoyan (lo que cubre Geneen 2017 decidió la ampliación de 2026-10).
+4. **Se añade una condición especial**, o un bloque que trate una que hoy no tiene enlace.
+
+Cómo: mirar las hipótesis afectadas con el criterio de «Por hipótesis» y «Ampliación por hipótesis» (abajo), leer la fuente de la pauta si hace falta y proponer al usuario las altas y bajas antes de tocar la tabla. Los tests de `tests/unit/ejercicio.mjs` fijan las exclusiones deliberadas, así que una baja o un alta de una de ellas obliga a cambiar el test a propósito.
+
 ## Infraestructura hecha (2026-10)
 
 | Pieza | Dónde |

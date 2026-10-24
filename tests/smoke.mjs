@@ -2522,6 +2522,21 @@ async function checkPreguntaIA(browser, errors) {
   r.farmacos = f.n === 3 && f.q.includes('Contexto: valoración de lumbar. Fármacos o duda: «Atorvastatina y bisoprolol».')
     && f.q.includes('No propongas cambiar, suspender ni ajustar la medicación.') && f.q.includes('CIMA, AEMPS')
     && !f.q.includes('Secreta') && !f.q.includes('47');
+  // Modalidad «Ejercicio»: guion visible y prompt con el guion de prescripción
+  await page.waitForTimeout(100);
+  await page.click('#preguntaIABtn');
+  await page.click('#preguntaTipos [data-tipo="ejercicio"]');
+  r.ejercicioUI = await page.evaluate(() => !document.getElementById('preguntaGuion').hidden
+    && document.getElementById('preguntaGuion').textContent.includes('fase 6')
+    && document.getElementById('preguntaTexto').placeholder.includes('excéntrico')
+    && document.getElementById('preguntaNota').textContent.includes('guion'));
+  await page.fill('#preguntaTexto', 'Progresión de carga en tendinopatía aquílea');
+  await page.press('#preguntaTexto', 'Enter');
+  await page.waitForTimeout(150);
+  const e = await ultimo();
+  r.ejercicio = e.n === 4 && e.q.includes('Contexto: valoración de lumbar. Duda de prescripción de ejercicio: «Progresión de carga en tendinopatía aquílea».')
+    && e.q.includes('si ninguna fuente fija el volumen, dilo en lugar de proponer uno') && !e.q.includes('CIMA')
+    && !e.q.includes('Secreta') && !e.q.includes('47');
   await page.waitForTimeout(100);
   await page.click('#preguntaIABtn');
   r.escape = await page.evaluate(() => document.querySelector('#preguntaDestinos .option-btn.selected')?.dataset.destino === 'claude'
@@ -3852,7 +3867,8 @@ async function checkIAFases(browser, errors) {
     goToPhase(5); buildResults();
   });
   await page.click('#btnIrPlan');
-  await page.waitForSelector('#planContenido .card');
+  // El plan anterior sigue pintado hasta que se repinta: esperar al nuevo, no a cualquier tarjeta
+  await page.waitForFunction(() => document.getElementById('planContenido')?.textContent.includes('RESTRICCION-XYZ'), null, { timeout: 5000 }).catch(() => {});
   r.nadaDelPaciente = await page.evaluate(() => {
     const muestra = document.getElementById('planContenido').textContent.includes('RESTRICCION-XYZ');
     const enIA = [...document.querySelectorAll('#phase3 [data-ia-ctx], #phase5 [data-ia-ctx], #planContenido [data-ia-ctx]')].some(c => {
@@ -6395,7 +6411,7 @@ const SECCIONES = [
     const ampliarIA = await checkAmpliarIA(browser);
     console.log(`  ${ampliarIA.ok ? '✓' : '✗'} «✨ IA ↗» por párrafo y barra al seleccionar abren Perplexity con contexto y la frase de fuentes, sin datos del paciente; la barra 8 px bajo la selección con ratón y 32 px en táctil (libres los marcadores); el menú ▾ explica cada IA y recuerda Google; cerrado sin elegir y sin selección, la barra desaparece; al hacer scroll el menú se cierra y la barra no se pinta sobre la cabecera (se esconde y vuelve); fuera del razonamiento no hay barra; en el hub, nada${ampliarIA.ok ? '' : ' ' + JSON.stringify(ampliarIA)}`);
     const preguntaIA = await checkPreguntaIA(browser, errors);
-    console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, 🎤 junto al título que llena el texto, se corta al cerrar y se desactiva grabando, Claude se recuerda, modalidad «Fármacos» con guion (y vuelve a «Pregunta libre» al reabrir), Escape cierra; hoja inferior en móvil sin teclado al abrir que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
+    console.log(`  ${preguntaIA.ok ? '✓' : '✗'} «✨ Preguntar a la IA» (cabecera): diálogo con aviso, vacía no navega, prompt con la región y la frase de fuentes sin datos del paciente, 🎤 junto al título que llena el texto, se corta al cerrar y se desactiva grabando, Claude se recuerda, modalidades «Fármacos» y «Ejercicio» con su guion (y vuelve a «Pregunta libre» al reabrir), Escape cierra; hoja inferior en móvil sin teclado al abrir que atrás cierra; cabe a 320 px; en el hub, nada${preguntaIA.ok ? '' : ' ' + JSON.stringify(preguntaIA)}`);
     return ampliarIA.ok && preguntaIA.ok;
   } },
 
