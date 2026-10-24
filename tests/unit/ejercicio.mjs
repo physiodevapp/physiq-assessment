@@ -5,6 +5,7 @@ const { NIVELES_EJERCICIO, APARTADOS_EJERCICIO, BLOQUES_EJERCICIO, TEXTOS_EJERCI
 const { HYPOTHESES } = await import('../../data.js');
 const E = await import('../../lib/ejercicio.js');
 const { REFERENCIAS } = await import('../../data/referencias.js');
+const HMX = await import('../../lib/hipermovilidad.js');
 
 console.log('\nguía de efectos del ejercicio (cabecera)');
 
@@ -158,7 +159,7 @@ test('enlace de la fase 6: ofrece también el otro bloque, sin cambiar el princi
 });
 
 test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuestionario de ánimo con síntomas, «antiinflamatorio» solo con lupus', () => {
-  assert.deepEqual(E.motivosEjercicio({}), { animo: false, reumatica: false });
+  assert.deepEqual(E.motivosEjercicio({}), { animo: false, reumatica: false, ortostatica: false, hipermovilidad: false });
   assert.equal(E.motivosEjercicio({ riesgoPsico: 'Bajo' }).animo, false);
   assert.equal(E.motivosEjercicio({ riesgoPsico: 'Medio' }).animo, true);
   assert.equal(E.motivosEjercicio({ riesgoPsico: 'Alto' }).animo, true);
@@ -169,7 +170,8 @@ test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuesti
   assert.equal(E.motivosEjercicio({ cuestionarios: { phq9: r(i => i < 8 ? 1 : 0) } }).animo, true);
   // Un cuestionario que no es de ánimo no cuenta
   assert.ok(!E.CUESTIONARIOS_ANIMO.includes('odi'));
-  assert.equal(E.motivosEjercicio({ lupusDiagnosticado: true }).reumatica, true);
+  assert.equal(E.motivosEjercicio({ tarjetas: { lupus: { estado: 'diagnosticado' } } }).reumatica, true);
+  assert.equal(E.motivosEjercicio({ tarjetas: { lupus: { estado: 'sospecha' } } }).reumatica, false);
   const sin = E.enlaceEjercicioHTML('alta');
   assert.ok(!sin.includes('data-bloque-extra'), 'sin motivo, solo los dos de la irritabilidad');
   const con = E.enlaceEjercicioHTML('alta', { animo: true, reumatica: true });
@@ -180,78 +182,85 @@ test('enlace de la fase 6: «Efectos centrales» con riesgo psicosocial o cuesti
 });
 
 test('enlace de los recuadros de la fase 5: lupus → antiinflamatorio, osteoporosis → mecanotransducción, disautonomía → ortostática, hipermovilidad → su bloque, nada más', () => {
-  const les = E.enlaceCondicionEjercicioHTML('lupus');
+  const les = E.enlaceCondicionEjercicioHTML('lupus', { estado: 'diagnosticado' });
   assert.ok(les.includes('data-bloque-condicion="antiinflamatorio"') && les.includes("abrirEjercicio({ bloque: 'antiinflamatorio' })"));
   assert.ok(les.includes(TEXTOS_EJERCICIO.enlaceCondicionLupus));
-  const op = E.enlaceCondicionEjercicioHTML('osteoporosis');
+  const op = E.enlaceCondicionEjercicioHTML('osteoporosis', { estado: 'sospecha' });
   assert.ok(op.includes('data-bloque-condicion="mecanotransduccion"') && op.includes(TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis));
-  const ds = E.enlaceCondicionEjercicioHTML('disautonomia');
+  const ds = E.enlaceCondicionEjercicioHTML('disautonomia', { estado: 'sospecha' });
   assert.ok(ds.includes('data-bloque-condicion="ortostatica"') && ds.includes(TEXTOS_EJERCICIO.enlaceCondicionDisautonomia));
-  const hm = E.enlaceCondicionEjercicioHTML('hipermovilidad');
+  const hm = E.enlaceCondicionEjercicioHTML('hipermovilidad', { estado: 'diagnosticada', subtipo: 'hipermovil' });
   assert.ok(hm.includes('data-bloque-condicion="hipermovilidad"') && hm.includes(TEXTOS_EJERCICIO.enlaceCondicionHipermovilidad));
-  for (const c of ['mastocitos', 'embarazo', 'anticoagulado', 'posquirurgico', '']) assert.equal(E.enlaceCondicionEjercicioHTML(c), '', c);
-  // El lupus solo con «Diagnosticado», y ninguno de los dos llega a lo que se comparte
+  for (const c of ['mastocitos', 'embarazo', 'anticoagulado', 'posquirurgico', '']) assert.equal(E.enlaceCondicionEjercicioHTML(c, { estado: 'diagnosticado' }), '', c);
+  // Sin estado, nada
+  for (const c of ['lupus', 'osteoporosis', 'disautonomia', 'hipermovilidad']) assert.equal(E.enlaceCondicionEjercicioHTML(c), '', c);
+  // La fase 5 pasa el estado del payload y no decide nada por su cuenta
   const app = leer('app.js');
-  assert.ok(app.includes("d.es === 'diagnosticado' ? enlaceCondicionEjercicioHTML('lupus') : ''"));
-  // La hipermovilidad, nunca con el subtipo vascular: sus ensayos no lo incluyen y su pauta es otra (Byers 2017)
-  assert.ok(app.includes("d.st === 'vascular' ? '' : enlaceCondicionEjercicioHTML('hipermovilidad')"));
-  for (const t of [TEXTOS_EJERCICIO.enlaceCondicionLupus, TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis, TEXTOS_EJERCICIO.enlaceCondicionDisautonomia, TEXTOS_EJERCICIO.enlaceCondicionHipermovilidad]) {
+  assert.ok(app.includes("enlaceCondicionEjercicioHTML('lupus', { estado: d.es })"));
+  assert.ok(app.includes("enlaceCondicionEjercicioHTML('hipermovilidad', { estado: d.es, subtipo: d.st, vs: d.vs })"));
+  assert.ok(!/\? ''\s*:\s*enlaceCondicionEjercicioHTML|\? enlaceCondicionEjercicioHTML/.test(app), 'sin condiciones sueltas en app.js');
+  for (const t of [TEXTOS_EJERCICIO.enlaceCondicionLupus, TEXTOS_EJERCICIO.enlaceCondicionOsteoporosis, TEXTOS_EJERCICIO.enlaceCondicionDisautonomia, TEXTOS_EJERCICIO.enlaceCondicionHipermovilidad,
+    TEXTOS_EJERCICIO.enlaceMotivoOrtostatica, TEXTOS_EJERCICIO.enlaceMotivoHipermovilidad]) {
     for (const f of ['lib/resumenes.js', 'lib/lupus.js', 'lib/osteoporosis.js', 'lib/disautonomia.js', 'lib/hipermovilidad.js', 'informe-ia.js', 'lib/informe-narrativo.js']) assert.ok(!leer(f).includes(t), f);
   }
 });
 
-test('enlace de la fase 6 por hipótesis: la tabla solo nombra hipótesis y bloques que existen', () => {
-  const escritos = E.bloquesConContenido().map(b => b.id);
-  const CRONOLOGIAS = ['Agudo (<6 semanas)', 'Subagudo', 'Crónico (>3 meses)'];
-  for (const [id, entrada] of Object.entries(BLOQUE_POR_HIPOTESIS)) {
-    assert.ok(HYPOTHESES[id], `${id} no es una hipótesis`);
-    const bloque = typeof entrada === 'string' ? entrada : entrada.bloque;
-    if (typeof entrada !== 'string') assert.ok(CRONOLOGIAS.includes(entrada.cronologia), `${id}: cronología «${entrada.cronologia}»`);
-    assert.ok(['hipoalgesia', 'mecanotransduccion'].includes(bloque) && escritos.includes(bloque), `${id} → ${bloque}`);
-    // Carga y adaptación del tejido: solo tendinopatías (su frase para el paciente habla del tendón),
-    // más el pinzamiento subacromial, que su guía (Desmeules 2025) incluye en la del manguito
-    if (bloque === 'mecanotransduccion' && id !== 'h2') assert.ok(/tendinopat/i.test(HYPOTHESES[id].name), `${id}: ${HYPOTHESES[id].name}`);
+test('condiciones: una sola regla de estados para la fase 5 y la fase 6', () => {
+  const R = E.condicionEnlazaEjercicio;
+  // Lupus, solo diagnosticado
+  assert.equal(R('lupus', { estado: 'diagnosticado' }), true);
+  assert.equal(R('lupus', { estado: 'sospecha' }), false);
+  // Disautonomía y osteoporosis, en los dos estados
+  for (const c of ['disautonomia', 'osteoporosis']) for (const e of ['diagnosticada', 'sospecha']) assert.equal(R(c, { estado: e }), true, `${c} ${e}`);
+  // Hipermovilidad: los dos estados, nunca con el subtipo vascular diagnosticado ni con la regla vascular cumplida
+  for (const st of ['hipermovil', 'otro', 'ns', '']) assert.equal(R('hipermovilidad', { estado: 'diagnosticada', subtipo: st }), true, st);
+  assert.equal(R('hipermovilidad', { estado: 'sospecha' }), true);
+  assert.equal(R('hipermovilidad', { estado: 'diagnosticada', subtipo: 'vascular' }), false);
+  assert.equal(R('hipermovilidad', { estado: 'sospecha', vs: true }), false);
+  assert.equal(R('hipermovilidad', { estado: 'diagnosticada', subtipo: 'ns', vs: true }), false);
+  for (const c of ['lupus', 'disautonomia', 'osteoporosis', 'hipermovilidad', 'mastocitos']) assert.equal(R(c, {}), false, c);
+});
+
+test('condiciones: la fase 6 enlaza lo mismo que el recuadro de la fase 5 en cada estado', () => {
+  const sinResp = {}, conVascular = { hm_s_familia: 'SI' };
+  const casos = [];
+  for (const estado of ['', 'diagnosticada', 'sospecha']) for (const subtipo of ['', 'hipermovil', 'vascular', 'otro', 'ns'])
+    for (const resp of [sinResp, conVascular]) casos.push({ estado, subtipo, resp });
+  for (const { estado, subtipo, resp } of casos) {
+    const tarjeta = { ...HMX.hipermovilidadVacia(), estado, subtipo };
+    const d = HMX.hmPayload(tarjeta, 40, resp);
+    const f5 = !!d && E.enlaceCondicionEjercicioHTML('hipermovilidad', { estado: d.es, subtipo: d.st, vs: d.vs }) !== '';
+    const f6 = E.motivosEjercicio({ tarjetas: { hipermovilidad: tarjeta }, respuestas: resp }).hipermovilidad;
+    assert.equal(f6, f5, `hipermovilidad ${estado}/${subtipo}/${resp === conVascular ? 'vascular' : '-'}`);
   }
-  assert.equal(BLOQUE_POR_HIPOTESIS.h2, 'mecanotransduccion');
-  assert.ok(/Desmeules 2025/.test(HYPOTHESES.h2.dosisFuente) && /síndrome de dolor subacromial dentro de la tendinopatía del manguito/.test(HYPOTHESES.h2.dosisFuente), 'h2 se apoya en su guía');
-  // Lo que cubre Geneen 2017 (la fuente de la frase de la hipoalgesia): artrosis de cadera y rodilla, patelofemoral
-  for (const id of ['ca1', 'ro1', 'ro3']) assert.equal(BLOQUE_POR_HIPOTESIS[id], 'hipoalgesia', id);
-  // Fuera a propósito: la artrosis que Geneen no cubre, la rotura del manguito, las radiculares y la estenosis,
-  // las lesiones agudas y lo que se deriva
-  for (const id of ['h10', 'tp24', 'h3', 'lu3', 'lu4', 'lu5', 'ce3', 'ce12', 'tp1', 'ro4', 'ro8', 'tp3', 'co7']) assert.ok(!BLOQUE_POR_HIPOTESIS[id], id);
+  // Con la regla vascular cumplida (un «sí» mayor), sin enlace en las dos fases
+  const sosp = { ...HMX.hipermovilidadVacia(), estado: 'sospecha' };
+  assert.equal(HMX.hmPayload(sosp, 40, conVascular).vs, true);
+  assert.equal(E.motivosEjercicio({ tarjetas: { hipermovilidad: sosp }, respuestas: conVascular }).hipermovilidad, false);
+  assert.equal(E.motivosEjercicio({ tarjetas: { hipermovilidad: sosp }, respuestas: sinResp }).hipermovilidad, true);
+  for (const estado of ['', 'diagnosticada', 'sospecha']) {
+    assert.equal(E.motivosEjercicio({ tarjetas: { disautonomia: { estado } } }).ortostatica, !!estado, `ds ${estado}`);
+    assert.equal(E.motivosEjercicio({ tarjetas: { disautonomia: { estado } } }).ortostatica, E.enlaceCondicionEjercicioHTML('disautonomia', { estado }) !== '');
+  }
+  for (const estado of ['', 'diagnosticado', 'sospecha']) {
+    assert.equal(E.motivosEjercicio({ tarjetas: { lupus: { estado } } }).reumatica, E.enlaceCondicionEjercicioHTML('lupus', { estado }) !== '', `lupus ${estado}`);
+  }
 });
 
-test('enlace de la fase 6 por hipótesis: la lumbalgia y la cervicalgia mecánicas solo cuentan con dolor crónico', () => {
-  const lumbar = [{ id: 'lu1', name: 'Disfunción Segmentaria' }];
-  assert.equal(E.bloqueDeHipotesis('lu1'), null);
-  assert.equal(E.bloqueDeHipotesis('lu1', { cronologia: 'Subagudo' }), null);
-  assert.equal(E.bloqueDeHipotesis('lu1', { cronologia: 'Crónico (>3 meses)' }), 'hipoalgesia');
-  assert.equal(E.bloqueDeHipotesis('ro5', { cronologia: 'Agudo (<6 semanas)' }), 'mecanotransduccion', 'sin condición vale siempre');
-  const agudo = E.enlaceEjercicioHTML('baja', { hipotesis: lumbar, cronologia: 'Agudo (<6 semanas)' });
-  assert.ok(agudo.includes('data-bloque-ejercicio="mecanotransduccion"') && !agudo.includes('data-por-hipotesis'), 'aguda: la irritabilidad');
-  const cronico = E.enlaceEjercicioHTML('baja', { hipotesis: lumbar, cronologia: 'Crónico (>3 meses)' });
-  assert.ok(cronico.includes('data-bloque-ejercicio="hipoalgesia"') && cronico.includes('data-por-hipotesis'));
-  assert.ok(leer('plan.js').includes('cronologia: state.cronologia'), 'la fase 6 pasa la cronología');
-});
-
-test('enlace de la fase 6 por hipótesis: manda sobre la irritabilidad, y nombra la hipótesis', () => {
-  const tendon = [{ id: 'ro5', name: 'Tendinopatía Rotuliana' }];
-  const alta = E.enlaceEjercicioHTML('alta', { hipotesis: tendon });
-  assert.ok(alta.includes('data-bloque-ejercicio="mecanotransduccion"') && alta.includes('data-por-hipotesis'));
-  assert.ok(alta.includes('el bloque que corresponde a «Tendinopatía Rotuliana»'));
-  assert.ok(alta.includes('data-bloque-alternativo="hipoalgesia"'), 'el secundario es el otro bloque');
-  const cronico = [{ id: 'ce7', name: 'Dolor Mecánico Cervical Inespecífico Crónico' }];
-  assert.ok(E.enlaceEjercicioHTML('baja', { hipotesis: cronico }).includes('data-bloque-ejercicio="hipoalgesia"'));
-  // Una hipótesis fuera de la tabla no cuenta; las que están deciden
-  assert.ok(E.enlaceEjercicioHTML('baja', { hipotesis: [...cronico, { id: 'ce1', name: 'X' }] }).includes('data-bloque-ejercicio="hipoalgesia"'));
-  // Apuntan a bloques distintos, o ninguna en la tabla: la irritabilidad, como antes
-  const mezcla = E.enlaceEjercicioHTML('alta', { hipotesis: [...tendon, ...cronico] });
-  assert.ok(mezcla.includes('data-bloque-ejercicio="hipoalgesia"') && !mezcla.includes('data-por-hipotesis'));
-  assert.ok(mezcla.includes('la irritabilidad elegida'));
-  assert.ok(E.enlaceEjercicioHTML('baja', { hipotesis: [{ id: 'ce1', name: 'X' }] }).includes('data-bloque-ejercicio="mecanotransduccion"'));
-  // Dos de la tabla con el mismo bloque: las nombra a las dos
-  const dos = E.enlaceEjercicioHTML('alta', { hipotesis: [{ id: 'tp8', name: 'A' }, { id: 'tp9', name: 'B' }] });
-  assert.ok(dos.includes('«A» y «B»'));
+test('enlace de la fase 6: ortostática con disautonomía e hipermovilidad con su tarjeta, cada una con su motivo', () => {
+  const html = E.enlaceEjercicioHTML('alta', { ortostatica: true, hipermovilidad: true });
+  assert.ok(html.includes('data-bloque-extra="ortostatica"') && html.includes("abrirEjercicio({ bloque: 'ortostatica' })"));
+  assert.ok(html.includes('data-bloque-extra="hipermovilidad"') && html.includes("abrirEjercicio({ bloque: 'hipermovilidad' })"));
+  assert.ok(html.includes(TEXTOS_EJERCICIO.enlaceMotivoOrtostatica) && html.includes(TEXTOS_EJERCICIO.enlaceMotivoHipermovilidad));
+  // Orden: ánimo, lupus, disautonomía, hipermovilidad
+  const todo = E.enlaceEjercicioHTML('alta', { animo: true, reumatica: true, ortostatica: true, hipermovilidad: true });
+  const pos = ['centrales', 'antiinflamatorio', 'ortostatica', 'hipermovilidad'].map(id => todo.indexOf(`data-bloque-extra="${id}"`));
+  assert.ok(pos.every(p => p > 0) && pos.every((p, i) => !i || p > pos[i - 1]), pos.join(','));
+  // La osteoporosis no añade línea: «Carga y adaptación» ya sale siempre
+  assert.ok(!('osteoporosis' in E.motivosEjercicio({ tarjetas: { osteoporosis: { estado: 'diagnosticada' } } })));
+  // Subtipo vascular diagnosticado: sin línea de hipermovilidad
+  const vasc = E.motivosEjercicio({ tarjetas: { hipermovilidad: { ...HMX.hipermovilidadVacia(), estado: 'diagnosticada', subtipo: 'vascular' } } });
+  assert.ok(!E.enlaceEjercicioHTML('alta', vasc).includes('data-bloque-extra="hipermovilidad"'));
 });
 
 test('enlace de la fase 6: el botón abre el bloque y nombra cuál es', () => {

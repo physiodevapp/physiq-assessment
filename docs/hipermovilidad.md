@@ -218,6 +218,15 @@ No llevan el aviso: aprensión, recolocación y sorpresa (el positivo es el sín
 - **Modo breve**: con «Sospecha», un Beighton sin hacer es un pendiente (`ancla: 'cardHipermovilidad'`).
 
 ## Ideas no decididas
+
+**Pendientes para otra sesión (usuario, 2026-10; propuestos al revisar el enlace a la guía de ejercicio, no hechos):**
+
+1. **Aviso en la fase 6 con el subtipo vascular diagnosticado.** Hoy la fase 6 no dice nada del subtipo vascular: no hay aviso ni tope, y el plan puede proponer fuerza con carga o isométricos. Propuesta: un aviso con la misma línea de Byers 2017, p. 42, que ya lleva el recuadro de la fase 5 (`HM.textos.vascular`), solo con «Diagnosticada · vascular» (nunca con la sospecha: decisión del recuadro de la fase 5). Habría que pasar el subtipo a `construirPlan()` (hoy solo recibe `hipermovilidad: hmActiva(...)`), añadirlo a `AVISOS` de `data/plan-tratamiento.js`, regenerar `docs/plan-tratamiento-frases.md` y comprobar la sección smoke de la fase 6.
+2. **Urgencias arteriales también con la regla de sospecha vascular cumplida.** `urgenciasVisibles()` (`lib/hipermovilidad.js`) solo enseña las 3 urgencias con «Sospecha» o con el vascular diagnosticado. Con «Diagnosticada» y subtipo «otro» o «no lo sabe» salen las preguntas de sospecha y la regla puede cumplirse (derivación a genética), pero no se pregunta por una disección o rotura aguda, que con «Sospecha» sí. Propuesta: mostrarlas también cuando `reglaVascular()` deriva. Ojo: una respuesta SÍ de una urgencia que se oculta deja de contar (`sistemasActivos()`), así que el test debe cubrir quitar el «sí» de sospecha con la urgencia ya marcada.
+3. (Descartado por ahora, sin fuente) Una pauta de ejercicio mientras se espera a genética con la regla cumplida: ninguna fuente leída dice qué hacer; cualquier frase sería redacción propia.
+
+Hecho en la misma revisión: el enlace a la guía «Efectos del ejercicio» (recuadro de la fase 5 y bloque «Educación» de la fase 6) ya no sale con el subtipo vascular diagnosticado **ni con la regla de sospecha vascular cumplida** (`docs/efectos-ejercicio.md`, «Una sola regla de estados»).
+
 - **TA en el subtipo vascular** (fuera del piloto, decisión de la revisión): Byers 2017 pide mantener la presión arterial en rango normal (pp. 40 y 43). La fase 1 ya recoge la TA (`signosVitales`), pero ningún algoritmo la lee. Se podría avisar en la fase 5 si la TAS es alta y el subtipo es vascular.
 - **Versión española validada del cuestionario**: no comprobado si existe; si existe, sustituye a la traducción propia.
 - **Lupus**: Malfait 2017 (p. 19) muestra que el lupus y el SEDh interactúan en el diagnóstico. Hecho (2026-10): con las tarjetas de hipermovilidad y de lupus marcadas, esa nota sale bajo la escala de Beighton (`docs/lupus.md`).

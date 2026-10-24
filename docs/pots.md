@@ -310,6 +310,7 @@ Al principio, junto a «Paciente posquirúrgico» e «Hipermovilidad». Cada lí
 - **Red de seguridad propia** (`RED_SEGURIDAD`, con cualquier plan y la tarjeta activa), para el cierre de la sesión y el programa para casa: «Si se desmaya mientras hace ejercicio, pare y no vuelva a hacer ejercicio hasta que le vea el médico» (NICE CG109, 1.3.2.2 y 1.5.4.3; Brignole 2018, p. 1911).
 - **No cambian** el nivel A/B/C, la frecuencia ni la irritabilidad. El programa de George 2016 no se copia como pauta: es de 3 meses, con sal y agua añadidas y con un 59 % de abandonos.
 - Con un SÍ urgente del sistema, la fase 6 se bloquea como con cualquier urgencia. `ds_d_paroxistica` no la bloquea.
+- **Guía «Efectos del ejercicio»** (2026-10): el bloque «Educación» enlaza «Ejercicio en la intolerancia ortostática (POTS)» en los dos estados, como el recuadro de la fase 5, con la línea «Por la disautonomía: …». Solo lectura; misma regla en las dos fases (`CONDICION_EJERCICIO`, `docs/efectos-ejercicio.md`).
 
 ## Relación con la hipermovilidad (decisión 5)
 

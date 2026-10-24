@@ -686,7 +686,10 @@ async function checkHipermovilidad(page) {
   await page.evaluate(() => { buildResults(); goToPhase(5); });
   await page.waitForTimeout(200);
   r.fase5 = await page.evaluate(() => { const t = document.querySelector('#resultsContent .hm-fase5')?.textContent || ''; return t.includes('Sospecha') && t.includes('Ejercicio graduado') && t.includes('derivación preferente a genética'); });
-  // Enlace a la guía de efectos del ejercicio, bloque de hipermovilidad; nunca con el subtipo vascular
+  // Enlace a la guía de efectos del ejercicio, bloque de hipermovilidad; nunca con el subtipo
+  // vascular diagnosticado ni con la regla de sospecha vascular cumplida (aquí, dos menores)
+  r.sinEnlaceSospechaVascular = !(await page.$('#resultsContent .hm-fase5 [data-bloque-condicion]'));
+  await page.evaluate(() => { state.sistemicoAnswers.hm_s_varices = 'NO'; buildResults(); });
   r.enlaceEjercicio = !!(await page.$('#resultsContent .hm-fase5 [data-bloque-condicion="hipermovilidad"] button'));
   if (r.enlaceEjercicio) {
     await page.click('#resultsContent .hm-fase5 [data-bloque-condicion="hipermovilidad"] button');
@@ -720,7 +723,7 @@ async function checkHipermovilidad(page) {
   await page.click('#hmEstado .option-btn[data-valor="sospecha"]');
   r.sinSistema = await page.evaluate(() => !document.getElementById('acc_transversal_hipermovilidad') && !document.getElementById('tab_transversal_hipermovilidad'));
   r.ok = r.subtipoOculto && r.beightonChips && r.subtipoVisible && r.subtipoOcultoSospecha && r.tab && r.cuestionario === 5 && r.hag && r.porCuestionario
-    && r.urgSinPlegar && r.urgencia && r.menorSolo && r.dosMenores && r.avisos === 3 && r.fase5 && r.enlaceEjercicio && r.sinEnlaceVascular && r.ancho1 && r.ancho2 && r.sinSistema;
+    && r.urgSinPlegar && r.urgencia && r.menorSolo && r.dosMenores && r.avisos === 3 && r.fase5 && r.enlaceEjercicio && r.sinEnlaceSospechaVascular && r.sinEnlaceVascular && r.ancho1 && r.ancho2 && r.sinSistema;
   return r;
 }
 
@@ -5803,6 +5806,32 @@ async function checkFase6(browser, errors) {
   await page.keyboard.press('Escape');
   await page.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
   await page.evaluate(() => { state.riesgoPsico = ''; });
+  // Con disautonomía e hipermovilidad, también sus bloques (misma regla que el recuadro
+  // de la fase 5); con la regla de sospecha vascular cumplida, sin el de hipermovilidad
+  const extras = () => page.evaluate(() => [...document.querySelectorAll('#planSesion .plan-ejercicio [data-bloque-extra]')]
+    .map(b => `${b.dataset.bloqueExtra}:${b.nextElementSibling?.textContent.split(':')[0]}`).join('|'));
+  const antesCond = await page.evaluate(() => JSON.stringify({ ds: state.disautonomia, hm: state.hipermovilidad, sa: state.sistemicoAnswers }));
+  await page.evaluate(() => {
+    state.disautonomia = { ...state.disautonomia, estado: 'sospecha' };
+    state.hipermovilidad = { ...state.hipermovilidad, estado: 'sospecha', subtipo: '' };
+  });
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'alta\')"]');
+  r.enlaceCondiciones = await extras() === 'ortostatica:Por la disautonomía|hipermovilidad:Por la hipermovilidad';
+  await page.click('#planSesion .plan-ejercicio [data-bloque-extra="hipermovilidad"]');
+  await page.waitForSelector('#ejercicioOverlay.open');
+  r.enlaceCondiciones = r.enlaceCondiciones && await page.evaluate(() => document.querySelector('#ejercicioCuerpo [data-bloque="hipermovilidad"]')?.open === true);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.getElementById('ejercicioOverlay').classList.contains('open'));
+  await page.evaluate(() => { state.sistemicoAnswers = { ...state.sistemicoAnswers, hm_s_familia: 'SI' }; });
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
+  r.enlaceSinVascular = await extras() === 'ortostatica:Por la disautonomía';
+  await page.evaluate(() => {
+    state.sistemicoAnswers = { ...state.sistemicoAnswers, hm_s_familia: 'NO' };
+    state.hipermovilidad = { ...state.hipermovilidad, estado: 'diagnosticada', subtipo: 'vascular' };
+  });
+  await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'alta\')"]');
+  r.enlaceSinVascular = r.enlaceSinVascular && await extras() === 'ortostatica:Por la disautonomía';
+  await page.evaluate(a => { const o = JSON.parse(a); state.disautonomia = o.ds; state.hipermovilidad = o.hm; state.sistemicoAnswers = o.sa; }, antesCond);
   await page.click('.option-btn[onclick="planElegir(\'irritabilidad\',\'baja\')"]');
   await botonNivel('C').click();
   r.bajaConC = await page.evaluate(() => state.planTratamiento.nivel === 'C');
@@ -6657,7 +6686,7 @@ const SECCIONES = [
 
   { id: 'fase6', titulo: 'Fase 6: plan de tratamiento (opcional, lumbar):', run: async ({ browser, errors }) => {
     const r = await checkFase6(browser, errors);
-    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; el bloque «Educación» enlaza la guía «Efectos del ejercicio» (alta → hipoalgesia, baja → carga y adaptación del tejido), la abre ya en ese bloque y Escape la cierra, y con riesgo psicosocial alto enlaza también «Efectos centrales»; la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C, A no se ofrece porque coincide con B, y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    console.log(`  ${r.ok ? '✓' : '✗'} de la 5 a la 6 con «Plan de tratamiento →»; paso 6 en la barra; hipótesis por defecto; con varios síntomas dosifica el más irritable y avisa del independiente; el bloque «Educación» enlaza la guía «Efectos del ejercicio» (alta → hipoalgesia, baja → carga y adaptación del tejido), la abre ya en ese bloque y Escape la cierra, y con riesgo psicosocial alto enlaza también «Efectos centrales», con disautonomía «ortostática» y con hipermovilidad su bloque (nunca con el subtipo vascular diagnosticado ni con su sospecha cumplida); la misma irritabilidad que la fase 3 y, sin registrar, la alta con aviso y enlace a la matriz; gravedad e irritabilidad editables (con irritabilidad alta no hay C, A no se ofrece porque coincide con B, y B es muy suave aunque la gravedad sea mínima); minutos de los bloques editables con aviso si no suman 50; compartir sesión, mes y casa (sin fuentes; sin «qué hacer» o «cuándo parar» pide confirmación; bloqueado, sin programa para casa); sin NRS, enlace a la fase 3; vuelta a la 5; restaurada en la 6 tras recargar; urgencia → sin plan; sin región → elegirla en la fase 2; 320 px sin desbordar y hoja de fases con la 6${r.ok ? '' : ' ' + JSON.stringify(r)}`);
     return r.ok;
   } },
 
