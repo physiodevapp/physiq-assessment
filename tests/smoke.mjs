@@ -3834,7 +3834,8 @@ async function checkIAFases(browser, errors) {
     goToPhase(5); buildResults();
   });
   await page.click('#btnIrPlan');
-  await page.waitForSelector('#planContenido .card');
+  // El plan anterior sigue pintado hasta que se repinta: esperar al nuevo, no a cualquier tarjeta
+  await page.waitForFunction(() => document.getElementById('planContenido')?.textContent.includes('RESTRICCION-XYZ'), null, { timeout: 5000 }).catch(() => {});
   r.nadaDelPaciente = await page.evaluate(() => {
     const muestra = document.getElementById('planContenido').textContent.includes('RESTRICCION-XYZ');
     const enIA = [...document.querySelectorAll('#phase3 [data-ia-ctx], #phase5 [data-ia-ctx], #planContenido [data-ia-ctx]')].some(c => {
