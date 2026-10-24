@@ -34,7 +34,6 @@ export default {
     },
     {
       titulo: 'Dolor de cabeza',
-      intro: 'Si NO tiene dolores de cabeza, salte este apartado y vaya a MAREO.',
       items: [
         { id: 'cefalea', tipo: 'unica', ia: 'sintomas', informe: 'Dolores de cabeza', texto: '¿Tiene también dolores de cabeza?', opciones: SNNS },
         { id: 'cef_lado', tipo: 'unica', ia: 'sintomas', texto: '¿Le dan siempre en el mismo lado de la cabeza?',
@@ -57,7 +56,6 @@ export default {
     },
     {
       titulo: 'Mareo',
-      intro: 'Si NO nota mareo ni inestabilidad, salte este apartado y vaya a QUÉ LO EMPEORA Y QUÉ LO ALIVIA.',
       items: [
         { id: 'mareo', tipo: 'unica', ia: 'sintomas', informe: 'Mareo o inestabilidad', texto: '¿Nota mareo o sensación de inestabilidad?', opciones: SNNS },
         { id: 'mareo_como', tipo: 'unica', ia: 'sintomas', texto: '¿Cómo es?', opciones: ['Me siento aturdido o inestable', 'Todo me da vueltas', NS],

@@ -16,7 +16,6 @@ export default {
   secciones: [
     {
       titulo: 'Si empezó con una torcedura, un golpe o una caída',
-      intro: 'Si en la hoja 1 contestó que NO hubo nada concreto que lo desencadenara, salte el apartado siguiente.',
       items: [
         { id: 'que_paso', tipo: 'multi', ia: 'historia', informe: 'Cómo se lesionó', texto: '¿Qué pasó? (puede marcar varias)',
           opciones: ['Se me torció el tobillo hacia dentro, apoyando el borde de fuera del pie',
@@ -78,7 +77,6 @@ export default {
     },
     {
       titulo: 'Si hace deporte o ejercicio',
-      intro: 'Si NO hace deporte ni ejercicio de forma habitual, salte la última pregunta: ha terminado.',
       items: [
         { id: 'cambios', tipo: 'multi', ia: 'contexto', texto: 'En los últimos meses, ¿ha cambiado algo? (puede marcar varias)',
           opciones: ['Entreno más días u horas', 'Entreno más fuerte', 'Empecé o volví hace poco', 'Cambié de calzado',

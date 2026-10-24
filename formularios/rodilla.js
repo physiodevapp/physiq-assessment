@@ -16,7 +16,6 @@ export default {
   secciones: [
     {
       titulo: 'Si empezó con un golpe, una caída o un mal gesto',
-      intro: 'Si en la hoja 1 contestó que NO hubo nada concreto que lo desencadenara, salte este apartado.',
       items: [
         { id: 'que_paso', tipo: 'multi', ia: 'historia', texto: '¿Qué pasó? (puede marcar varias)',
           opciones: ['Giré o cambié de dirección con el pie apoyado', 'Frené en seco', 'Caí mal de un salto',
@@ -81,7 +80,6 @@ export default {
     },
     {
       titulo: 'Si hace deporte o ejercicio',
-      intro: 'Si NO hace deporte ni ejercicio de forma habitual, salte el resto: ha terminado.',
       items: [
         { id: 'cambios', tipo: 'multi', ia: 'contexto', texto: 'En los últimos meses, ¿ha cambiado algo? (puede marcar varias)',
           opciones: ['Entreno más días u horas', 'Entreno más fuerte', 'Empecé o volví hace poco', 'Cambié de calzado',
