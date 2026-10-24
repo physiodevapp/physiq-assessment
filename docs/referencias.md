@@ -31,6 +31,13 @@ Lo que es de la referencia y no de cada uso (revista, DOI, última revisión) vi
 5. `node tests/gen-referencias.mjs` y `node tests/unit.js`, y comitea `data/` junto con este archivo.
    Cambiar un LR cambia la puntuación de la fase 4b: dilo en el mensaje del commit.
 
+**Revisión mensual automática** (tarea programada del usuario, día 1 de cada mes, desde 2026-10): una sesión
+revisa hasta 40 referencias en el orden de «Estado de revisión» (PubMed y Consensus), anota sola las «Sin cambios»
+(paso 3) y deja el resto como propuestas, sin tocar `fuente`, cifras ni pautas, en una PR en borrador
+«Revisión de fuentes AAAA-MM» (rama `revision-fuentes/AAAA-MM`) que fusiona el usuario. Aplicar una propuesta
+aceptada (paso 4) se hace a mano en otra sesión, leyendo el artículo. Una revisión manual no debe coger
+referencias que toque una PR `revision-fuentes/` abierta.
+
 Columna «Fase»: dónde lo ve el clínico. «4b · cita bajo el test» quiere decir que esa referencia respalda
 las cifras (S, E, LR) del test; que el test puntúe o no depende de las reglas de `calcLRScore` (ver CLAUDE.md).
 Columna «Cita»: número de la forma de citar (lista «Citada como») que usa esa fila.
