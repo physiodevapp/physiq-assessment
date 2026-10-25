@@ -378,7 +378,7 @@ IDB (`lib/session.js`) is the persistence layer for session/clinical data — no
 - `selectTreeOption` — phase 4 CIF tree
 - `setTestResult` — phase 4b test results
 
-`saveSession()` flushes DOM fields into `state` (patient, motivoConsulta, signoComparable), then calls `writeSession({ patient, date, assessmentState: { ...state } })` only if `state.patient` is non-empty. Navigating phases without a patient name does not write to IDB; `SESSION_ASSESSMENT_PARTIAL` is still emitted by `goToPhase()` for real-time report sync.
+`saveSession()` flushes DOM fields into `state` (patient, motivoConsulta, signoComparable), then calls `writeSession({ patient, date, assessmentState: { ...state } })` only if `state.patient` is non-empty. Past phase 1 (`maxVisitedIdx > 0`) with no name, `saveSession()` sets the automatic one, «Paciente DD/MM HH:MM» (`_ponerNombreAuto()`), in both registro modes (user decision, 2026-10: before only in guide mode; without a name a mobile browser closing the app in the background lost the whole assessment) — never while `#patientName` has focus, so it can be emptied to type the real name. In phase 1 without a name nothing is written to IDB (the exit dialog covers Back there); `SESSION_ASSESSMENT_PARTIAL` is still emitted by `goToPhase()` for real-time report sync.
 
 **Ghost-write protection** — two guards prevent a stale `writeSession` from recreating a deleted session:
 - `_sessionGen` (integer) — incremented on every clear. Captured before the async `writeSession` call; if `_sessionGen !== gen` at resolve time, `clearSession()` is called to undo the stale write.

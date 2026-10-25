@@ -2783,8 +2783,18 @@ async function checkSalidaApp(browser) {
   await abrirApp(p);
   await p.tap('#mecanismo .option-btn >> nth=0');
   await p.evaluate(() => { window.state.maxVisitedIdx = 1; window.goToPhase(2); });
+  // Pasada la fase 1 sin nombre, en modo teclado: nombre automático (la sesión se guarda)
+  r.nombreAutoTeclado = await p.evaluate(() => window.state.registro === 'teclado'
+    && /^Paciente \d\d\/\d\d \d\d:\d\d$/.test(window.state.patient));
   await p.goBack();
   r.faseSinDialogo = await espera(() => String(window.state.currentPhase) === '1' && !document.getElementById('confirmBanner'));
+  // Se puede vaciar el campo para escribir el nombre real: mientras tiene el foco no se rellena solo
+  await p.tap('#sessionBtn');
+  await p.waitForSelector('#sessionPanelOverlay.open');
+  await p.fill('#patientName', '');
+  r.vaciarNombre = await p.evaluate(() => document.getElementById('patientName').value === '' && window.state.patient === '');
+  await p.fill('#patientName', 'Ana');
+  r.nombreReal = await p.evaluate(() => window.state.patient === 'Ana');
   r.sinErrores = errores.length === 0;
   await ctx.close();
   r.ok = Object.values(r).every(v => v === true);
@@ -6205,6 +6215,14 @@ async function abrirApp(page, url = BASE_URL) {
     page.on('requestfailed', r => page.__fallidas.push(`${r.url().replace(url, '')} (${r.failure()?.errorText || 'error'})`));
   }
   page.__fallidas.length = 0;
+  // Cada apertura empieza sin sesión guardada: pasada la fase 1 el nombre automático
+  // hace que se guarde, y otra apertura en el mismo contexto la restauraría. Las
+  // pruebas de restauración recargan con page.reload(), que no pasa por aquí.
+  try {
+    const cdp = await page.context().newCDPSession(page);
+    await cdp.send('Storage.clearDataForOrigin', { origin: new URL(url).origin, storageTypes: 'indexeddb' });
+    await cdp.detach();
+  } catch { /* sin CDP (otro navegador): sin limpiar */ }
   await page.goto(url, { waitUntil: 'networkidle' });
   const lista = await page.waitForFunction(() => typeof window.goToPhase === 'function' && !!window.state, null, { timeout: 10000 })
     .then(() => true, () => false);
@@ -6307,7 +6325,8 @@ async function checkIrritabilidad(page) {
   // Se restaura al recargar (con nombre, la sesión se guarda)
   await page.evaluate(() => { document.getElementById('patientName').value = 'Prueba irritabilidad'; saveSession(); });
   await page.waitForTimeout(300);
-  await abrirApp(page);
+  // Recarga (no abrirApp, que empieza sin sesión guardada)
+  await page.reload({ waitUntil: 'networkidle' });
   await page.waitForSelector('#irritabTarjetas .irritab-btn.selected');
   r.restaurada = await page.evaluate(() => state.irritabilidadNivel === 'Baja' && state.irritabilidad.calma === 'Cede en minutos'
     && document.querySelectorAll('#irritabTarjetas .irritab-btn.selected').length === 4);
@@ -6649,7 +6668,7 @@ const SECCIONES = [
   } },
   { id: 'salida-app', titulo: 'Atrás que cerraría la app (móvil):', run: async ({ browser }) => {
     const c = await checkSalidaApp(browser);
-    console.log(`  ${c.ok ? '✓' : '✗'} sin datos sale sin preguntar; con datos sin nombre pregunta, «Seguir aquí» se queda y el atrás vuelve a preguntar, «Salir» sale; con nombre y grabando avisa de la grabación y de que queda guardada (Escape se queda), sin grabar solo de lo segundo y «Salir» sale; fuera de la fase 1 el atrás cambia de fase${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} sin datos sale sin preguntar; con datos sin nombre pregunta, «Seguir aquí» se queda y el atrás vuelve a preguntar, «Salir» sale; con nombre y grabando avisa de la grabación y de que queda guardada (Escape se queda), sin grabar solo de lo segundo y «Salir» sale; fuera de la fase 1 el atrás cambia de fase; pasada la fase 1 sin nombre, también en modo teclado, nombre automático, que se puede vaciar para escribir el real${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
   { id: 'barra-fase', titulo: 'Barra de fase en móvil:', run: async ({ page }) => {

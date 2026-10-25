@@ -974,7 +974,8 @@ function _aplicarRegistro(r) {
   saveSession();
 }
 
-// Sesión sin nombre en modo guía (decisión 1): sin teclear, se guardaría igual
+// Nombre automático cuando no hay ninguno, para que la sesión se guarde (al elegir el
+// modo guía, decisión 1; y pasada la fase 1 en los dos modos)
 function _ponerNombreAuto() {
   state.patient = nombreAuto();
   const el = document.getElementById('patientName');
@@ -6098,9 +6099,12 @@ function saveSession() {
   if (motivoEl) state.motivoConsulta = motivoEl.value;
   const signoEl = document.getElementById('signoComparable');
   if (signoEl) state.signoComparable = signoEl.value;
-  // Modo guía: sin teclear no hay nombre, y sin nombre no se guardaría nada (con la
-  // valoración en marcha; «Borrar sesión» deja maxVisitedIdx en 0 y no se rehace sola)
-  if (esGuia() && !state.patient && state.maxVisitedIdx > 0) _ponerNombreAuto();
+  // Sin nombre no se guardaría nada, y un cierre de la app en segundo plano perdería
+  // la valoración: pasada la fase 1 se pone el automático, en los dos modos (decisión
+  // del usuario, 2026-10; antes solo en modo guía). «Borrar sesión» deja maxVisitedIdx
+  // en 0 y no se rehace sola; mientras se escribe en el campo del nombre no se toca,
+  // para poder vaciarlo y escribir el real.
+  if (!state.patient && state.maxVisitedIdx > 0 && document.activeElement !== patientEl) _ponerNombreAuto();
   _updateSessionPanelTitle();
   // Aviso de pendientes del modo breve: el formulario previo se rellena en la fase 1
   if (state.currentPhase === 1 && state.modo === 'breve') renderBrevePendientes();
