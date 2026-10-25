@@ -6235,6 +6235,26 @@ async function desbordes(page) {
   });
 }
 
+// Panel de sesión: «Reiniciar valoración» y «Borrar sesión» con texto, cada uno en su
+// fila a todo el ancho, Borrar debajo, el texto en una línea; sin papelera junto al nombre
+async function botonesPanelSesion(p) {
+  await p.tap('#sessionBtn');
+  await p.waitForSelector('#sessionPanelOverlay.open');
+  await p.fill('#patientName', 'Prueba');
+  const ok = await p.evaluate(() => {
+    const re = document.getElementById('sessionReset'), bo = document.getElementById('sessionPanelClear');
+    const nombre = document.getElementById('patientName');
+    const a = re.getBoundingClientRect(), b = bo.getBoundingClientRect(), n = nombre.getBoundingClientRect();
+    const unaLinea = el => el.scrollWidth <= el.clientWidth + 1 && el.getBoundingClientRect().height < 50;
+    return /Borrar sesión/.test(bo.textContent) && !bo.disabled
+      && Math.abs(a.width - b.width) < 1 && Math.abs(a.left - b.left) < 1 && b.top >= a.bottom
+      && Math.abs(n.width - a.width) < 1 && unaLinea(re) && unaLinea(bo) && b.right <= innerWidth;
+  });
+  await p.goBack();
+  await p.waitForFunction(() => !document.getElementById('sessionPanelOverlay').classList.contains('open'));
+  return ok;
+}
+
 // Tamaño de letra: el botón, que se recuerda, y que con letra grande nada se desborda
 async function checkLetra(browser, errors) {
   const r = {};
@@ -6244,8 +6264,10 @@ async function checkLetra(browser, errors) {
   await abrirApp(p);
   const raiz = () => p.evaluate(() => getComputedStyle(document.documentElement).fontSize);
   r.normal = await raiz() === '16px' && await p.getAttribute('#letraBtn', 'aria-pressed') === 'false';
+  r.panelNormal = await botonesPanelSesion(p);
   await p.tap('#letraBtn');
   r.grande = await raiz() === '18px' && await p.getAttribute('#letraBtn', 'aria-pressed') === 'true';
+  r.panelGrande = await botonesPanelSesion(p);
   // Se recuerda y se aplica antes de pintar: al terminar de leer el HTML (antes de
   // que corran los módulos de la app) ya está puesta por el script del <head>
   await p.addInitScript(() => document.addEventListener('readystatechange', () => {
