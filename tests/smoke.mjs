@@ -2720,10 +2720,10 @@ async function checkAtrasVentanas(browser) {
   return r;
 }
 
-// Atrás que cerraría la app (móvil, fase 1, sin nada abierto): pregunta solo si
-// se pierde algo — datos sin nombre de paciente o la consulta grabándose —;
-// «Seguir aquí» deja la app como estaba y el atrás vuelve a preguntar; «Salir»
-// sale; sin nada que perder sale sin preguntar.
+// Atrás que cerraría la app (móvil, fase 1, sin nada abierto): pregunta con una
+// valoración en curso (sin nombre: se pierde; con nombre: queda guardada) o
+// grabando; «Seguir aquí» deja la app como estaba y el atrás vuelve a preguntar;
+// «Salir» sale; con la app vacía sale sin preguntar.
 async function checkSalidaApp(browser) {
   const r = {};
   const ctx = await browser.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true });
@@ -2755,7 +2755,7 @@ async function checkSalidaApp(browser) {
   r.vuelvePreguntar = await dialogo();
   await p.tap('#confirmAction');
   r.salir = await fuera();
-  // Con nombre y grabando: pregunta solo por la grabación; sin grabar, sale sin preguntar
+  // Con nombre y grabando: la grabación y que queda guardada; sin grabar, solo lo segundo
   await abrirApp(p);
   await p.tap('#sessionBtn');
   await p.waitForSelector('#sessionPanelOverlay.open');
@@ -2767,12 +2767,17 @@ async function checkSalidaApp(browser) {
   await p.goBack();
   r.grabandoPregunta = await dialogo() && await p.evaluate(() => {
     const t = document.querySelector('#confirmBanner .confirm-box-text').textContent;
-    return /grabando/.test(t) && !/no tiene nombre/.test(t);
+    return /grabando/.test(t) && /queda guardada/.test(t) && !/no tiene nombre/.test(t);
   });
   await p.keyboard.press('Escape');
   r.escapeSigue = await espera(() => !document.getElementById('confirmBanner') && history.state?.phase === 1);
   await p.evaluate(() => document.body.classList.remove('grab-activa'));
   await p.goBack();
+  r.conNombrePregunta = await dialogo() && await p.evaluate(() => {
+    const t = document.querySelector('#confirmBanner .confirm-box-text').textContent;
+    return /queda guardada/.test(t) && !/grabando/.test(t) && !/no tiene nombre/.test(t);
+  });
+  await p.tap('#confirmAction');
   r.conNombreSale = await fuera();
   // Fuera de la fase 1, el atrás sigue cambiando de fase
   await abrirApp(p);
@@ -6644,7 +6649,7 @@ const SECCIONES = [
   } },
   { id: 'salida-app', titulo: 'Atrás que cerraría la app (móvil):', run: async ({ browser }) => {
     const c = await checkSalidaApp(browser);
-    console.log(`  ${c.ok ? '✓' : '✗'} sin datos sale sin preguntar; con datos sin nombre pregunta, «Seguir aquí» se queda y el atrás vuelve a preguntar, «Salir» sale; con nombre y grabando pregunta por la grabación (Escape se queda) y sin grabar sale; fuera de la fase 1 el atrás cambia de fase${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} sin datos sale sin preguntar; con datos sin nombre pregunta, «Seguir aquí» se queda y el atrás vuelve a preguntar, «Salir» sale; con nombre y grabando avisa de la grabación y de que queda guardada (Escape se queda), sin grabar solo de lo segundo y «Salir» sale; fuera de la fase 1 el atrás cambia de fase${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
   { id: 'barra-fase', titulo: 'Barra de fase en móvil:', run: async ({ page }) => {
