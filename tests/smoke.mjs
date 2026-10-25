@@ -6209,6 +6209,80 @@ async function portapapelesPropio(context) {
   });
 }
 
+// El mismo navegador, pero cada contexto que abre empieza con la letra grande
+// elegida (localStorage antes de cargar, como si el usuario la hubiera marcado):
+// para repetir las comprobaciones de pantalla estrecha con letra grande sin copiarlas.
+function conLetraGrande(browser) {
+  const marcar = () => { try { localStorage.setItem('physiq-assessment-letra', 'grande'); } catch {} };
+  const nuevoContexto = async (opts) => { const c = await browser.newContext(opts); await c.addInitScript(marcar); return c; };
+  return new Proxy(browser, {
+    get(b, k) {
+      if (k === 'newContext') return nuevoContexto;
+      if (k === 'newPage') return async (opts) => (await nuevoContexto(opts)).newPage();
+      const v = b[k];
+      return typeof v === 'function' ? v.bind(b) : v;
+    },
+  });
+}
+
+// Botones visibles cuyo texto no cabe (cortado o desbordado) y desborde horizontal de la página
+async function desbordes(page) {
+  return page.evaluate(() => {
+    const cortados = [...document.querySelectorAll('button, .option-btn, a.btn')]
+      .filter(b => b.offsetParent && b.getClientRects().length && b.scrollWidth > b.clientWidth + 1)
+      .map(b => b.textContent.trim().replace(/\s+/g, ' ').slice(0, 40));
+    return { horizontal: document.documentElement.scrollWidth > innerWidth, cortados };
+  });
+}
+
+// Tamaño de letra: el botón, que se recuerda, y que con letra grande nada se desborda
+async function checkLetra(browser, errors) {
+  const r = {};
+  const ctx = await browser.newContext({ viewport: { width: 320, height: 700 }, hasTouch: true, isMobile: true });
+  const p = await ctx.newPage();
+  p.on('pageerror', e => errors.push(`pageerror (letra): ${e.message}`));
+  await abrirApp(p);
+  const raiz = () => p.evaluate(() => getComputedStyle(document.documentElement).fontSize);
+  r.normal = await raiz() === '16px' && await p.getAttribute('#letraBtn', 'aria-pressed') === 'false';
+  await p.tap('#letraBtn');
+  r.grande = await raiz() === '18px' && await p.getAttribute('#letraBtn', 'aria-pressed') === 'true';
+  // Se recuerda y se aplica antes de pintar: al terminar de leer el HTML (antes de
+  // que corran los módulos de la app) ya está puesta por el script del <head>
+  await p.addInitScript(() => document.addEventListener('readystatechange', () => {
+    if (document.readyState === 'interactive') window.__letraAlLeer = document.documentElement.getAttribute('data-letra');
+  }));
+  await p.reload({ waitUntil: 'networkidle' });
+  await p.waitForFunction(() => window.goToPhase);
+  r.recordada = await raiz() === '18px' && await p.evaluate(() => window.__letraAlLeer === 'grande');
+  // Cabecera a 320 y 360 px: los iconos no se montan entre sí ni sobre el logo, y no se salen
+  for (const w of [320, 360]) {
+    await p.setViewportSize({ width: w, height: 700 });
+    r[`cabecera${w}`] = await p.evaluate(() => {
+      const logo = document.querySelector('.logo').getBoundingClientRect();
+      const items = [...document.querySelectorAll('.header-right > *')].filter(e => e.offsetParent).map(e => e.getBoundingClientRect());
+      return items.every((b, i) => b.left >= logo.right - 1 && b.right <= innerWidth + 1 && (i === 0 || b.left >= items[i - 1].right - 1));
+    });
+  }
+  // Fases 1–5 a 320 px con letra grande
+  await p.setViewportSize({ width: 320, height: 700 });
+  await walkRegion(p, 'lumbar');
+  r.fases = {};
+  for (const f of [1, 2, 3, 4, '4b', 5]) {
+    await p.evaluate(n => window.goToPhase(n), f);
+    await p.waitForTimeout(150);
+    const d = await desbordes(p);
+    if (d.horizontal || d.cortados.length) r.fases[f] = d;
+  }
+  r.sinDesbordes = Object.keys(r.fases).length === 0;
+  if (r.sinDesbordes) delete r.fases;
+  // Vuelve a normal
+  await p.tap('#letraBtn');
+  r.vuelve = await raiz() === '16px' && await p.evaluate(() => !document.documentElement.hasAttribute('data-letra') && localStorage.getItem('physiq-assessment-letra') === null);
+  await ctx.close();
+  r.ok = Object.entries(r).every(([, v]) => v === true);
+  return r;
+}
+
 async function abrirApp(page, url = BASE_URL) {
   if (!page.__fallidas) {
     page.__fallidas = [];
@@ -6950,6 +7024,27 @@ const SECCIONES = [
   { id: 'huecos', titulo: 'Sin botones descolgados en pantalla estrecha (320 px, las 7 regiones, fases 1–6):', run: async ({ browser, errors }) => {
     const r = await checkSinHuecos(browser, errors);
     console.log(`  ${r.ok ? '✓' : '✗'} en ningún grupo de botones queda uno solo en la última fila con hueco al lado: la fila se llena o el último ocupa todo el ancho${r.ok ? '' : ' ' + JSON.stringify(r.fallos)}`);
+    return r.ok;
+  } },
+
+  { id: 'letra', titulo: 'Tamaño de letra Normal / Grande:', run: async ({ browser, errors }) => {
+    const r = await checkLetra(browser, errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} el botón «Aa» alterna Normal y Grande (raíz 16 → 18 px, aria-pressed), se recuerda al recargar sin saltar (se aplica antes de pintar) y vuelve a normal; con letra grande, la cabecera cabe a 320 y 360 px y en las fases 1–5 (lumbar) nada desborda en horizontal ni se corta el texto de un botón${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+  { id: 'letra-filas', titulo: 'Letra grande: filas de opciones en pantalla estrecha:', run: async ({ browser, errors }) => {
+    const r = await checkFilas(conLetraGrande(browser), errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} con letra grande, las mismas reglas que «filas»: una fila solo si ningún texto parte, si no dos por fila o una${r.ok ? '' : ' ' + JSON.stringify(r)}`);
+    return r.ok;
+  } },
+  { id: 'letra-huecos', titulo: 'Letra grande: sin botones descolgados (320 px, las 7 regiones, fases 1–6):', run: async ({ browser, errors }) => {
+    const r = await checkSinHuecos(conLetraGrande(browser), errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} con letra grande, ningún grupo deja un botón solo con hueco al lado${r.ok ? '' : ' ' + JSON.stringify(r.fallos)}`);
+    return r.ok;
+  } },
+  { id: 'letra-dialogos', titulo: 'Letra grande: diálogos de confirmación (320 px):', run: async ({ browser, errors }) => {
+    const r = await checkDialogos(conLetraGrande(browser), errors);
+    console.log(`  ${r.ok ? '✓' : '✗'} con letra grande, los botones de todos los diálogos caben en una línea y se cierran igual${r.ok ? '' : ' ' + JSON.stringify({ fallos: r.fallos, cierre: r.cierre })}`);
     return r.ok;
   } },
 

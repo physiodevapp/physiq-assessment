@@ -6471,6 +6471,35 @@ function setThemePref(pref) {
 _themeMQ?.addEventListener?.('change', applyTheme);
 applyTheme();
 
+// Tamaño de letra (decisión del usuario, 2026-10): Normal o Grande (+12,5 %),
+// preferencia del dispositivo en localStorage como el tema. Casi todos los
+// tamaños están en rem, así que basta con el del elemento raíz
+// (html[data-letra="grande"], styles.css); el script del <head> lo aplica antes
+// de pintar. También en el hub (no depende del tema).
+const LETRA_KEY = 'physiq-assessment-letra';
+function getLetra() {
+  try { return localStorage.getItem(LETRA_KEY) === 'grande' ? 'grande' : 'normal'; } catch (e) { return 'normal'; }
+}
+function applyLetra() {
+  const grande = getLetra() === 'grande';
+  if (grande) document.documentElement?.setAttribute('data-letra', 'grande');
+  else document.documentElement?.removeAttribute('data-letra');
+  const btn = document.getElementById('letraBtn');
+  if (btn) {
+    const txt = grande ? 'Letra grande. Pulsa para volver al tamaño normal' : 'Letra normal. Pulsa para agrandarla';
+    btn.title = txt; btn.setAttribute('aria-label', txt);
+    btn.setAttribute('aria-pressed', String(grande));
+  }
+}
+function alternarLetra() {
+  try {
+    if (getLetra() === 'grande') localStorage.removeItem(LETRA_KEY);
+    else localStorage.setItem(LETRA_KEY, 'grande');
+  } catch (e) {}
+  applyLetra();
+}
+applyLetra();
+
 function _initHubIntegration() {
   if (window.self === window.top) return;
   document.body.classList.add('in-hub');
@@ -6521,7 +6550,7 @@ Object.assign(window, {
   selectNRS, selectOption, selectPsico, selectRegion, selectSQ, selectSistQ,
   tocarZonaSilueta, elegirSexoSilueta,
   toggleAccordionRow, toggleDictation, toggleImpact, togglePhaseSheet, toggleSessionPanel,
-  cycleThemePref, selectModo, selectRegistro, togglePreguntado, cerrarTecladoNumerico, toggleBreveVerTodo, completarPendientesBreve, selectEmbudo, selectIrritabDirecta, verResultadosSinConfirmar,
+  cycleThemePref, alternarLetra, selectModo, selectRegistro, togglePreguntado, cerrarTecladoNumerico, toggleBreveVerTodo, completarPendientesBreve, selectEmbudo, selectIrritabDirecta, verResultadosSinConfirmar,
   updateEdadPaciente, updateVital, updateVitalColor,
   updateCirugia, selectCirProtocolo, toggleCirComplicacion, toggleDiagnosticoTratado,
   selectHMEstado, selectHMSubtipo, selectHMCuest, toggleHMBeighton, hmBeightonHacer, hmBeightonQuitar,
