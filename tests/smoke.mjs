@@ -1704,7 +1704,7 @@ async function checkModoGuia(page) {
   await page.setViewportSize({ width: 390, height: 844 });
   await abrirApp(page);
   const r = {};
-  await page.click('#registroConsulta .option-btn:has-text("Guía")');
+  await page.click('#registroConsulta .option-btn:has-text("Grabadora")');
   r.cuerpo = await page.evaluate(() => document.body.classList.contains('modo-guia') && state.registro === 'guia');
   r.nombreAuto = await page.evaluate(() => /^Paciente \d\d\/\d\d \d\d:\d\d$/.test(state.patient) && document.getElementById('patientName').value === state.patient);
   r.verbal = await page.evaluate(() => {
