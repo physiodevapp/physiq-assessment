@@ -589,7 +589,7 @@ console.log('\nrevisión automática del informe con IA');
     assert.equal(RI.comprobacionesManuales().length, 2, 'sin datos ampliados no rompe');
     const disc = RI.comprobacionesManuales({ formularioYAudio: true });
     assert.equal(disc.length, 3);
-    assert.match(disc[2], /difiere del formulario previo.*las dos versiones/, 'con formulario y audio, las discrepancias');
+    assert.match(disc[2], /difiere del formulario del paciente.*las dos versiones/, 'con formulario y audio, las discrepancias');
   });
   test('revisión: cabecera y pie compartidos se quitan; cita la frase', () => {
     const t = RI.quitarCabeceraYPie('INFORME DE FISIOTERAPIA\nPaciente: Pedro Flores\nEdad: 52 años\nFecha: 07/10/2026\n\nTexto.\n\n—\nInforme generado con PhysiQ-Assessment el 07/10/2026 (redacción asistida por IA).');
