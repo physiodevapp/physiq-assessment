@@ -228,7 +228,8 @@ const items = esq => esq.secciones.flatMap(s => s.items);
 test('formulario previo (común y las 7 regiones): toda pregunta de texto y todo `detalle` tiene su frase corta para decir en voz alta', () => {
   for (const esq of FORMULARIOS) {
     for (const it of items(esq)) {
-      if (it.tipo === 'texto') assert.ok(it.verbal, `${esq.id}.${it.id}: falta verbal`);
+      // el `texto` va en tú: solo hace falta `verbal` si no sirve ya dicho tal cual
+      if (it.tipo === 'texto') assert.ok(it.verbal || /^¿.*\?$/.test(it.texto), `${esq.id}.${it.id}: falta verbal`);
       if (it.detalle) assert.ok(it.detalle.verbal, `${esq.id}.${it.id}: falta verbal en el detalle`);
     }
   }
@@ -237,7 +238,7 @@ test('formulario previo (común y las 7 regiones): toda pregunta de texto y todo
 test('frases cortas: preguntas completas, con interrogación y de longitud hablable', () => {
   for (const esq of FORMULARIOS) {
     for (const it of items(esq)) {
-      for (const v of [it.verbal, it.detalle?.verbal].filter(Boolean)) {
+      for (const v of [it.verbal, it.detalle?.verbal, it.tipo === 'texto' && !it.verbal ? it.texto : null].filter(Boolean)) {
         assert.match(v, /^¿.*\?$/, `${esq.id}.${it.id}: «${v}»`);
         assert.ok(v.length <= 75, `${esq.id}.${it.id}: demasiado larga (${v.length})`);
       }
@@ -257,12 +258,25 @@ test('frases cortas: se dicen de «tú» al paciente, nunca de «usted» (ni «l
   const usted = /\b(le|les|usted|su|sus|tiene|toma|hace|quiera)\b/i;
   for (const esq of FORMULARIOS) {
     for (const it of items(esq)) {
-      for (const v of [it.verbal, it.detalle?.verbal].filter(Boolean)) assert.doesNotMatch(v, usted, `${esq.id}.${it.id}: «${v}»`);
+      for (const v of [it.verbal, it.detalle?.verbal, it.tipo === 'texto' && !it.verbal ? it.texto : null].filter(Boolean)) assert.doesNotMatch(v, usted, `${esq.id}.${it.id}: «${v}»`);
     }
   }
   // las de la fase 1 y 3 (la del signo comparable va al fisio, no al paciente)
   for (const [id, v] of Object.entries(VERBALES)) {
     if (id !== 'signoComparable') assert.doesNotMatch(v.frase, usted, `${id}: «${v.frase}»`);
+  }
+});
+
+test('formulario del paciente: preguntas, títulos y ayudas en tú o impersonal, nunca de «usted» (decisión del usuario, 2026-10)', () => {
+  const usted = /\b(le|les|usted|tiene|puede|quiera|duda|marque|deje|fíjese)\b/i;
+  for (const esq of FORMULARIOS) {
+    for (const sec of esq.secciones) {
+      for (const v of [sec.titulo, sec.intro].filter(Boolean)) assert.doesNotMatch(v, usted, `${esq.id} · ${sec.titulo}: «${v}»`);
+      for (const it of sec.items) {
+        const textos = [it.texto, it.ayuda, it.detalle?.etiqueta, ...(it.filas || []).map(f => f.texto)].filter(Boolean);
+        for (const v of textos) assert.doesNotMatch(v, usted, `${esq.id}.${it.id}: «${v}»`);
+      }
+    }
   }
 });
 

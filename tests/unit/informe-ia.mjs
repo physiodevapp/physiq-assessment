@@ -480,19 +480,19 @@ test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de
     assert.ok(!/No sé|No sabría decir/.test(txt), 'sin «No sé»');
     assert.ok(!f.some(x => /tiroides|Si lanza|Desde que empezó/.test(x.q + x.a)), 'sin items que solo tenían «No sé»');
     const g = q => f.find(x => x.q.includes(q))?.g;
-    assert.equal(g('¿Le aparece o le aumenta'), 'actividades');
-    assert.equal(g('¿Nota alguna'), 'sintomas');
-    assert.equal(g('¿Le despierta'), 'sintomas');
+    assert.equal(g('¿Te aparece o te aumenta'), 'actividades');
+    assert.equal(g('¿Notas alguna'), 'sintomas');
+    assert.equal(g('¿Te despierta'), 'sintomas');
     assert.equal(g('En el trabajo'), 'contexto');
     const bloque = IN.bloqueFormulario(f);
     assert.ok(bloque.indexOf('Síntomas que refiere') < bloque.indexOf('Actividades y posturas'), 'grupos en orden');
-    assert.match(bloque, /van en Limitaciones en las Actividades\):\n    · ¿Le aparece o le aumenta el dolor al…\? → Levantar el brazo, por delante o por un lado: Sí\n/);
+    assert.match(bloque, /van en Limitaciones en las Actividades\):\n    · ¿Te aparece o te aumenta el dolor al…\? → Levantar el brazo, por delante o por un lado: Sí\n/);
     const amp = IA.construirAmpliado();
     assert.deepEqual(amp.formulario, f);
     // `iaTexto`: nombre clínico solo para la IA (tradujo la fila como «dedos en resorte»)
     state.formularioPrevio.regiones.hombro.antecedentes = { dupuytren: 'No' };
     assert.ok(FM.resumenFormularioIA().some(x => x.a === 'Contractura de Dupuytren (dedos que se quedan doblados hacia la palma): No'));
-    assert.ok(FM.resumenFormularioPrevio().some(x => x.a === 'Dedos que se le quedan doblados hacia la palma: No'), 'el resumen normal sigue con el texto del papel');
+    assert.ok(FM.resumenFormularioPrevio().some(x => x.a === 'Dedos que se te quedan doblados hacia la palma: No'), 'el resumen normal sigue con el texto del formulario');
     const ctx = IN.contextoValoracion(buildPhysiQPayload(), r => r, amp);
     assert.ok(ctx.includes('agrupado por la sección del informe'));
     assert.ok(!ctx.includes('(pregunta → respuesta):\n  · '), 'con datos ampliados no va el fp plano');
