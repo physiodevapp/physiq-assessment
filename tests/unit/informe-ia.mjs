@@ -482,7 +482,7 @@ test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de
     const g = q => f.find(x => x.q.includes(q))?.g;
     assert.equal(g('¿Le aparece o le aumenta'), 'actividades');
     assert.equal(g('¿Nota alguna'), 'sintomas');
-    assert.equal(g('¿Le despierta'), 'sintomas');
+    assert.equal(g('¿Te despierta'), 'sintomas');
     assert.equal(g('En el trabajo'), 'contexto');
     const bloque = IN.bloqueFormulario(f);
     assert.ok(bloque.indexOf('Síntomas que refiere') < bloque.indexOf('Actividades y posturas'), 'grupos en orden');
