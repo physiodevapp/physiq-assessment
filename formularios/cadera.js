@@ -1,6 +1,6 @@
 // ============================================================
 // Formulario previo a la primera visita · CARA 2 · CADERA
-// Texto literal de guia-de-consulta/data/formulario_cadera.js.
+// Transcrito de guia-de-consulta/data/formulario_cadera.js, con las preguntas en tú (decisión del usuario, 2026-10).
 // Mismo esquema que formularios/comun.js. `pistas` enlaza respuestas con
 // pasos del árbol CIF cadera (data/cadera.js): se muestran como recordatorio
 // en ese paso, nunca lo responden solas. Referencias: 'c:<id>' (cara 1),

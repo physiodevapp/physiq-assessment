@@ -492,7 +492,7 @@ test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de
     // `iaTexto`: nombre clínico solo para la IA (tradujo la fila como «dedos en resorte»)
     state.formularioPrevio.regiones.hombro.antecedentes = { dupuytren: 'No' };
     assert.ok(FM.resumenFormularioIA().some(x => x.a === 'Contractura de Dupuytren (dedos que se quedan doblados hacia la palma): No'));
-    assert.ok(FM.resumenFormularioPrevio().some(x => x.a === 'Dedos que se le quedan doblados hacia la palma: No'), 'el resumen normal sigue con el texto del papel');
+    assert.ok(FM.resumenFormularioPrevio().some(x => x.a === 'Dedos que se te quedan doblados hacia la palma: No'), 'el resumen normal sigue con el texto del formulario');
     const ctx = IN.contextoValoracion(buildPhysiQPayload(), r => r, amp);
     assert.ok(ctx.includes('agrupado por la sección del informe'));
     assert.ok(!ctx.includes('(pregunta → respuesta):\n  · '), 'con datos ampliados no va el fp plano');

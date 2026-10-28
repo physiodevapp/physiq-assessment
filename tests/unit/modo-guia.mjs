@@ -267,6 +267,19 @@ test('frases cortas: se dicen de «tú» al paciente, nunca de «usted» (ni «l
   }
 });
 
+test('formulario del paciente: preguntas, títulos y ayudas en tú o impersonal, nunca de «usted» (decisión del usuario, 2026-10)', () => {
+  const usted = /\b(le|les|usted|tiene|puede|quiera|duda|marque|deje|fíjese)\b/i;
+  for (const esq of FORMULARIOS) {
+    for (const sec of esq.secciones) {
+      for (const v of [sec.titulo, sec.intro].filter(Boolean)) assert.doesNotMatch(v, usted, `${esq.id} · ${sec.titulo}: «${v}»`);
+      for (const it of sec.items) {
+        const textos = [it.texto, it.ayuda, it.detalle?.etiqueta, ...(it.filas || []).map(f => f.texto)].filter(Boolean);
+        for (const v of textos) assert.doesNotMatch(v, usted, `${esq.id}.${it.id}: «${v}»`);
+      }
+    }
+  }
+});
+
 console.log('\nmodo guía (paso 4: consentimiento, aviso del informe y preguntas habladas en el prompt)');
 const IA = await import('../../informe-ia.js');
 const fpMod = await import('../../formulario.js');

@@ -1,6 +1,6 @@
 // ============================================================
 // Formulario previo a la primera visita · CARA 1 (común a todas las regiones)
-// Texto literal de guia-de-consulta/tools/plantilla_formularios.js (cara 1).
+// Transcrito de guia-de-consulta/tools/plantilla_formularios.js (cara 1), con las preguntas en tú (decisión del usuario, 2026-10).
 // Solo datos: lo pinta formulario.js. Los campos de cabecera del papel
 // (nombre, fecha, edad) no se repiten: ya están en la fase 1. Tampoco la
 // casilla final del papel «Hay algo relacionado con esta molestia que prefiero
