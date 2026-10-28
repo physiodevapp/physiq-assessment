@@ -481,7 +481,7 @@ test('formulario para la IA: agrupado por sección y sin «No sé» (ni filas de
     assert.ok(!f.some(x => /tiroides|Si lanza|Desde que empezó/.test(x.q + x.a)), 'sin items que solo tenían «No sé»');
     const g = q => f.find(x => x.q.includes(q))?.g;
     assert.equal(g('¿Te aparece o te aumenta'), 'actividades');
-    assert.equal(g('¿Nota alguna'), 'sintomas');
+    assert.equal(g('¿Notas alguna'), 'sintomas');
     assert.equal(g('¿Te despierta'), 'sintomas');
     assert.equal(g('En el trabajo'), 'contexto');
     const bloque = IN.bloqueFormulario(f);
