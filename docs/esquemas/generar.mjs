@@ -92,10 +92,50 @@ function pasosPrincipales(tree) {
 // la hipótesis que activan. Las flechas se dibujan en el navegador, midiendo
 // dónde ha quedado cada caja, así que sirven para el árbol de cualquier región.
 const POR_BANDA = 4;
+const CSS_A4 = `
+    body { font-size: 10px; }
+    .pagina { padding: 18px 24px 14px; }
+    h1 { font-size: 19px; } .sub { font-size: 10.5px; margin-bottom: 5px; }
+    .aviso { font-size: 10.5px; padding: 4px 8px; margin-bottom: 6px; }
+    .banda { padding-left: 22px; margin-bottom: 12px; }
+    .grid, .drow { column-gap: 40px; }
+    .drow { margin-bottom: 26px; }
+    .dgrupo { padding-left: 40px; }
+    .dnota { font-size: 9.5px; margin-bottom: 2px; }
+    .dcajas { gap: 40px; }
+    .paso { border-width: 2px; border-radius: 10px; padding: 6px 8px; }
+    .paso.desv { width: 250px; }
+    .cab { gap: 6px; }
+    .badge { min-width: 22px; height: 22px; border-radius: 11px; font-size: 11px; padding: 0 4px; }
+    .preg { font-size: 12.5px; line-height: 1.25; }
+    .dops { margin-top: 5px; gap: 3px; font-size: 10.5px; }
+    .dop .hip, .dop .nada, .dop .der { padding: 1px 5px; font-size: 10px; }
+    .resp { margin-top: 8px; }
+    .rt { display: none; }
+    .op { grid-template-columns: 1fr 14px 1fr; margin-bottom: 5px; }
+    .opt { border-width: 1px; border-radius: 7px; padding: 3px 6px; }
+    .opt b { font-size: 11px; } .opt span { font-size: 9.5px; line-height: 1.2; }
+    .fl { font-size: 12px; }
+    .hip { gap: 4px; border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 10.5px; line-height: 1.2; margin: 1px 0; }
+    .nb { min-width: 18px; height: 18px; border-radius: 9px; font-size: 9.5px; padding: 0 3px; }
+    .der { border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 9.5px; margin: 1px 0; }
+    .der span { font-size: 9px; line-height: 1.2; }
+    .ruta { border-width: 1.5px; border-radius: 7px; padding: 3px 6px; font-size: 9.5px; }
+    .nada { border-width: 1px; border-radius: 7px; padding: 3px 6px; font-size: 9px; }
+    .final { display: none; }
+    .final-a4 { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; border-top: 1px solid #cbd5e1; padding-top: 6px; font-size: 10px; }
+    .final-a4 .ley { display: inline-flex; align-items: center; gap: 5px; }
+    .final-a4 .ley i { display: inline-block; width: 18px; height: 11px; border-radius: 3px; border: 1.5px solid; }
+    .final-a4 .txt { flex: 1 1 420px; }
+    .final-a4 .pie { margin: 0; font-size: 8.5px; }
+    .continua { font-size: 10px; margin-top: -8px; }
+`;
 const numHip = h => (h.id.match(/\d+/) || [''])[0];
 function etiquetaPaso(st, i) { const m = /Paso\s+([0-9]+[a-z]?)/i.exec(st.tag || ''); return m ? m[1] : String(i + 1); }
 
-function htmlArbol(region) {
+function htmlArbol(region, { a4 = false } = {}) {
+  // A4: la misma maqueta en una hoja más pequeña, compacta (no reducida) para leerla de un vistazo
+  const W = a4 ? 1123 : 1587, H = a4 ? 794 : 1122;
   const tree = CIF_TREES[region];
   const steps = tree.steps, ids = steps.map(s => s.id);
   const principales = pasosPrincipales(tree);
@@ -180,9 +220,9 @@ function htmlArbol(region) {
   });
 
   return `<style>${CSS}
-    @page { size: A3 landscape; margin: 0; }
+    @page { size: ${a4 ? 'A4' : 'A3'} landscape; margin: 0; }
     body { font-size: 12px; }
-    .pagina { position: relative; width: 1587px; height: 1122px; padding: 34px 40px; overflow: hidden; page-break-after: always; }
+    .pagina { position: relative; width: ${W}px; height: ${H}px; padding: 34px 40px; overflow: hidden; page-break-after: always; }
     .pagina:last-child { page-break-after: auto; }
     h1 { font-size: 28px; } .sub { font-size: 14px; }
     .aviso { font-size: 14px; }
@@ -219,6 +259,8 @@ function htmlArbol(region) {
     .ley i { display: inline-block; width: 26px; height: 16px; border-radius: 5px; border: 2px solid; }
     svg.flechas { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
     .continua { font-size: 12px; font-weight: bold; color: #3567d6; text-align: right; margin-top: -14px; }
+    .final-a4 { display: none; }
+    ${a4 ? CSS_A4 : ''}
   </style>
   <div class="pagina" id="pag0">
     <h1>${esc(tree.title || `Árbol de decisión CIF · ${NOMBRES[region]}`)}</h1>
@@ -234,15 +276,23 @@ function htmlArbol(region) {
       <div style="border:1.5px dashed #94a3b8; background:#f8fafc;"><b>Al terminar sin ninguna hipótesis activa</b><br>La app propone trabajar con «dolor de ${NOMBRES[region].toLowerCase()} inespecífico», revisar los factores psicosociales (fase 1 y SINSS) y reconsiderar las respuestas. Si el cuadro es crónico y el riesgo psicosocial es alto, sugiere considerar también sensibilización central.</div>
       <div style="border:1.5px solid #64748b; background:#f1f5f9;"><b>Fase 4b · confirmar</b><br>Cada hipótesis activa se confirma o descarta con sus tests: ver el esquema de confirmación de ${NOMBRES[region].toLowerCase()}.<div class="pie">Generado desde los datos de la app el ${hoy}.</div></div>
     </div>
+    <div class="final-a4" id="final-a4">
+      <span class="ley"><i style="background:#eaf1ff;border-color:#3567d6"></i>Pregunta</span>
+      <span class="ley"><i style="background:#f1e9ff;border-color:#7c4ddb"></i>Hipótesis que activa</span>
+      <span class="ley"><i style="background:#fde8e8;border-color:#d0342c"></i>Derivación (el recorrido sigue)</span>
+      <span class="ley"><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</span>
+      <span class="txt"><b>Sin ninguna hipótesis al final:</b> dolor ${NOMBRES[region].toLowerCase()} inespecífico; revisar psicosociales y respuestas. <b>Fase 4b:</b> confirmar cada hipótesis con sus tests.</span>
+      <span class="pie">Generado desde los datos de la app el ${hoy}.</span>
+    </div>
   </div>
   <script>
   (() => {
     const FLECHAS = ${JSON.stringify(flechas)};
-    const ALTO = 1122 - 34;
+    const ALTO = ${H} - ${a4 ? 18 : 34};
     // Reparte las bandas en páginas A3: si una no cabe, pasa a una página nueva
     const pags = [document.getElementById('pag0')];
     let pag = pags[0];
-    for (const el of [...pag.querySelectorAll('.banda'), document.getElementById('final')]) {
+    for (const el of [...pag.querySelectorAll('.banda'), document.getElementById('${a4 ? 'final-a4' : 'final'}')]) {
       if (el.parentElement !== pag) pag.appendChild(el);
       // No cabe y en la página ya hay otra banda antes que ella: a una página nueva
       const otras = [...pag.querySelectorAll('.banda')].filter(x => x !== el && (x.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)).length;
@@ -256,8 +306,8 @@ function htmlArbol(region) {
     // Una página que aun así se pasa de alto (una banda muy larga) se reduce lo justo
     for (const p of pags) {
       const alto = p.scrollHeight;
-      p._z = alto > 1122 ? 1122 / alto : 1;
-      if (p._z < 1) { p.style.width = (1587 / p._z) + 'px'; p.style.height = (1122 / p._z) + 'px'; p.style.zoom = p._z; }
+      p._z = alto > ${H} ? ${H} / alto : 1;
+      if (p._z < 1) { p.style.width = (${W} / p._z) + 'px'; p.style.height = (${H} / p._z) + 'px'; p.style.zoom = p._z; }
     }
     const NS = 'http://www.w3.org/2000/svg';
     for (const p of pags) {
@@ -272,10 +322,10 @@ function htmlArbol(region) {
     const linea = (svg, pts, txt, tx, ty) => {
       const d = document.createElementNS(NS, 'path');
       d.setAttribute('d', 'M' + pts.map(q => q.join(' ')).join(' L'));
-      d.setAttribute('fill', 'none'); d.setAttribute('stroke', '#475569'); d.setAttribute('stroke-width', '2.5'); d.setAttribute('stroke-linejoin', 'round'); d.setAttribute('marker-end', 'url(#ah)');
+      d.setAttribute('fill', 'none'); d.setAttribute('stroke', '#475569'); d.setAttribute('stroke-width', '${a4 ? 1.8 : 2.5}'); d.setAttribute('stroke-linejoin', 'round'); d.setAttribute('marker-end', 'url(#ah)');
       svg.appendChild(d);
       if (txt) { const t = document.createElementNS(NS, 'text'); t.setAttribute('x', tx); t.setAttribute('y', ty); t.setAttribute('text-anchor', 'middle');
-        t.setAttribute('font-size', '12'); t.setAttribute('font-weight', 'bold'); t.setAttribute('fill', '#475569'); t.setAttribute('font-family', 'Helvetica, Arial, sans-serif'); t.textContent = txt; svg.appendChild(t); }
+        t.setAttribute('font-size', '${a4 ? 10 : 12}'); t.setAttribute('font-weight', 'bold'); t.setAttribute('fill', '#475569'); t.setAttribute('font-family', 'Helvetica, Arial, sans-serif'); t.textContent = txt; svg.appendChild(t); }
     };
     for (const f of FLECHAS) {
       const a = caja(f.de), b = caja(f.a);
@@ -351,10 +401,11 @@ function htmlConfirmacion(region) {
 
 // ── Render ───────────────────────────────────────────────────────────────────
 // [generador, apaisado, formato]
-const TIPOS = { cribado: [htmlCribado, false, 'A4'], arbol: [htmlArbol, true, 'A3'], confirmacion: [htmlConfirmacion, true, 'A4'] };
+const TIPOS = { cribado: [htmlCribado, false, 'A4'], arbol: [htmlArbol, true, 'A3'], 'arbol-a4': [r => htmlArbol(r, { a4: true }), true, 'A4'], confirmacion: [htmlConfirmacion, true, 'A4'] };
 const [regArg = 'lumbar', tipoArg = 'todos'] = process.argv.slice(2);
 const regiones = regArg === 'todas' ? Object.keys(CIF_TREES) : [regArg];
-const tipos = tipoArg === 'todos' ? Object.keys(TIPOS) : [tipoArg];
+// «todos» no incluye la hoja A4 del árbol mientras sea una prueba (lumbar)
+const tipos = tipoArg === 'todos' ? ['cribado', 'arbol', 'confirmacion'] : [tipoArg];
 
 const browser = await chromium.launch();
 for (const region of regiones) {

@@ -6,6 +6,7 @@ Esquemas para tener a mano en consulta, **generados desde los datos de la app**:
 |---|---|---|---|
 | Cribado sistémico: sistemas y preguntas literales, urgencias en rojo, criterio compuesto | 2 | A4 vertical | `cribado-lumbar.pdf` |
 | Árbol de decisión CIF en flujo con flechas: pasos principales de izquierda a derecha, desvíos encima del paso del que salen, y bajo cada paso sus respuestas con la hipótesis que activan, la derivación o adónde llevan | 4 | A3 apaisado | `arbol-lumbar.pdf` |
+| Árbol de decisión CIF en una sola hoja para consultar en papel: el mismo flujo que el A3, maquetado compacto (no reducido) | 4 | A4 apaisado | `arbol-a4-lumbar.pdf` (prueba: solo lumbar) |
 | Confirmación: tests de cada hipótesis con su LR+/LR− y si puntúan, clústeres | 4b | A4 apaisado | `confirmacion-lumbar.pdf` |
 
 Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, hombro, cadera, rodilla, tobillo y pie, y codo; los de cualquier región se generan con el mismo script.
@@ -16,6 +17,7 @@ Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, 
 node docs/esquemas/generar.mjs                      # lumbar, los tres
 node docs/esquemas/generar.mjs cervical             # otra región
 node docs/esquemas/generar.mjs todas arbol          # un tipo, todas las regiones
+node docs/esquemas/generar.mjs lumbar arbol-a4      # hoja A4 del árbol (no entra en «todos»)
 ```
 
 Necesita Playwright, como `tests/smoke.mjs` (si está instalado globalmente: `NODE_PATH=$(npm root -g) node docs/esquemas/generar.mjs`). Carga los módulos de la app con el mismo shim de DOM que `tests/unit.js` (`tests/dom-shim.mjs`).
