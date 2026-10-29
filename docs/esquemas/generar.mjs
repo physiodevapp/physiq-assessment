@@ -6,7 +6,7 @@
 // Por defecto: lumbar, todos. Escribe en docs/esquemas/<tipo>-<region>.pdf y .png.
 //   cribado      → fase 2, A4 vertical: sistemas y preguntas literales (sin las listas de banderas)
 //   arbol        → fase 4, A3 apaisado: pasos del árbol CIF, respuestas e hipótesis que activan
-//   arbol-a4     → el mismo árbol en A4 apaisado, compacto y a la mayor escala que cabe, para consultar en papel
+//   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
 //   confirmacion → fase 4b, A4 apaisado: tests de cada hipótesis con sus LR y si puntúan
 // Necesita Playwright (como tests/smoke.mjs). Las reglas de LR son las de la app:
 // importa lrEfectiva y testPuntua de phase4b.js, cargado con el mismo shim que tests/unit.js.
@@ -98,7 +98,7 @@ const CSS_A4 = `
     .pagina { padding: 18px 24px 14px; }
     h1 { font-size: 19px; } .sub { font-size: 10.5px; margin-bottom: 5px; }
     .aviso { font-size: 10.5px; padding: 4px 8px; margin-bottom: 6px; }
-    .banda { padding-left: 22px; margin-bottom: 26px; }
+    .banda { padding-left: 22px; padding-right: 30px; margin-bottom: 26px; } /* a la derecha pasan las flechas que bajan */
     .grid, .drow { column-gap: 40px; }
     .drow { margin-bottom: 26px; }
     .dgrupo { padding-left: 40px; }
@@ -134,9 +134,9 @@ const CSS_A4 = `
 const numHip = h => (h.id.match(/\d+/) || [''])[0];
 function etiquetaPaso(st, i) { const m = /Paso\s+([0-9]+[a-z]?)/i.exec(st.tag || ''); return m ? m[1] : String(i + 1); }
 
-function htmlArbol(region, { a4 = false } = {}) {
+function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = {}) {
   // A4: la misma maqueta en una hoja más pequeña, compacta (no reducida) para leerla de un vistazo
-  const W = a4 ? 1123 : 1587, H = a4 ? 794 : 1122;
+  const W = a4 ? (vertical ? 794 : 1123) : 1587, H = a4 ? (vertical ? 1123 : 794) : 1122;
   const tree = CIF_TREES[region];
   const steps = tree.steps, ids = steps.map(s => s.id);
   const principales = pasosPrincipales(tree);
@@ -192,16 +192,19 @@ function htmlArbol(region, { a4 = false } = {}) {
   const M = ids.filter(id => principales.has(id));
   const bandas = [];
   // Bandas equilibradas: 5 pasos → 3 + 2, no 4 + 1
-  const nBandas = Math.ceil(M.length / POR_BANDA), porBanda = Math.ceil(M.length / nBandas);
+  const porFila = a4 ? cols : POR_BANDA;
+  const nBandas = Math.ceil(M.length / porFila), porBanda = Math.ceil(M.length / nBandas);
   // En A4, tantas columnas como pasos por banda: sin columna vacía, más ancho para el texto
   const COLS = a4 ? porBanda : POR_BANDA;
+  // Una cadena de desvíos más larga que las columnas no cabe en su fila: esta distribución no sirve
+  if (grupos.some(g => g.cadena.length > COLS)) return null;
   for (let k = 0; k < M.length; k += porBanda) bandas.push(M.slice(k, k + porBanda));
   const htmlBandas = bandas.map((banda, b) => {
     const gruposBanda = grupos.filter(g => banda.includes(g.entrada));
     const filasDesvio = gruposBanda.map(g => {
       const col = banda.indexOf(g.entrada) + 1;
       const inicio = Math.max(1, Math.min(col, COLS - g.cadena.length + 1));
-      return `<div class="drow"><div class="dgrupo" style="grid-column:${inicio} / ${a4 ? inicio + g.cadena.length : COLS + 1}"><div class="dnota">Desvío desde el paso ${esc(lab(g.entrada))} si «${esc(g.etiquetas.join('» o «'))}»</div><div class="dcajas">${g.cadena.map(id => cajaPaso(id, true)).join('')}</div></div></div>`;
+      return `<div class="drow"><div class="dgrupo" style="grid-column:${inicio} / ${COLS + 1}"><div class="dnota">Desvío desde el paso ${esc(lab(g.entrada))} si «${esc(g.etiquetas.join('» o «'))}»</div><div class="dcajas">${g.cadena.map(id => cajaPaso(id, true)).join('')}</div></div></div>`;
     }).join('');
     return `<div class="banda" data-banda="${b}">${filasDesvio}
       <div class="grid">${banda.map(id => cajaPaso(id, false)).join('')}</div>
@@ -223,7 +226,7 @@ function htmlArbol(region, { a4 = false } = {}) {
   });
 
   return `<style>${CSS}
-    @page { size: ${a4 ? 'A4' : 'A3'} landscape; margin: 0; }
+    @page { size: ${a4 ? 'A4' : 'A3'} ${vertical ? 'portrait' : 'landscape'}; margin: 0; }
     body { font-size: 12px; }
     .pagina { position: relative; width: ${W}px; height: ${H}px; padding: 34px 40px; overflow: hidden; page-break-after: always; }
     .pagina:last-child { page-break-after: auto; }
@@ -355,7 +358,8 @@ function htmlArbol(region, { a4 = false } = {}) {
       } else if (f.tipo === 'sig') { // salto de banda: baja por el hueco y entra por la izquierda
         const fondo = (a.banda.getBoundingClientRect().bottom - a.p.getBoundingClientRect().top) / (a.p._z || 1) + 12;
         const y = b.y + Math.min(b.h / 2, 40);
-        linea(svg, [[a.x + a.w, a.y + 30], [a.x + a.w + 22, a.y + 30], [a.x + a.w + 22, fondo], [b.x - 22, fondo], [b.x - 22, y], [b.x - 4, y]], f.txt, a.x + a.w + 40, fondo - 6);
+        linea(svg, [[a.x + a.w, a.y + 30], [a.x + a.w + 22, a.y + 30], [a.x + a.w + 22, fondo], [b.x - 22, fondo], [b.x - 22, y], [b.x - 4, y]], f.txt, a.x + a.w + ${a4 ? 16 : 40}, fondo - 6);
+        if (${a4}) svg.lastChild.setAttribute('text-anchor', 'end');
       } else if (f.tipo === 'entra') {
         const x0 = a.x + 26, y1 = b.y + Math.min(b.h / 2, 34);
         const xe = b.x > x0 ? b.x - 4 : b.x + b.w + 4;
@@ -424,20 +428,42 @@ const regiones = regArg === 'todas' ? Object.keys(CIF_TREES) : [regArg];
 const tipos = tipoArg === 'todos' ? Object.keys(TIPOS) : [tipoArg];
 
 const browser = await chromium.launch();
+
+// Hoja A4 del árbol: prueba A4 apaisado y vertical con 2, 3 o 4 pasos por fila y se queda con la
+// que deja la letra más grande; cada página de más resta (una hoja de consulta, cuantas menos, mejor).
+const PENALIZA_PAGINA = 0.25;
+async function mejorHojaA4(region) {
+  const pruebas = [];
+  for (const vertical of [false, true]) for (const cols of [2, 3, 4]) {
+    const html = htmlArbol(region, { a4: true, vertical, cols });
+    if (!html) continue;
+    const page = await browser.newPage({ viewport: vertical ? { width: 794, height: 1123 } : { width: 1123, height: 794 } });
+    await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${html}</body></html>`);
+    const { escala, paginas } = await page.evaluate(() => ({ escala: +document.body.dataset.escala, paginas: document.querySelectorAll('.pagina').length }));
+    await page.close();
+    pruebas.push({ html, vertical, cols, escala, paginas, nota: escala - PENALIZA_PAGINA * (paginas - 1) });
+  }
+  const mejor = pruebas.reduce((a, b) => b.nota > a.nota + 0.005 ? b : a);
+  if (process.env.DEBUG_A4) for (const p of pruebas) console.log(`   ${p.vertical ? 'vertical' : 'apaisado'} ${p.cols}/fila: ${p.paginas} pág · escala ${p.escala.toFixed(2)}`);
+  return { html: mejor.html, apaisado: !mejor.vertical, elegida: ` · ${mejor.vertical ? 'vertical' : 'apaisado'}, ${mejor.cols} pasos por fila` };
+}
+
 for (const region of regiones) {
   if (!CIF_TREES[region]) throw new Error(`Región desconocida: ${region}`);
   for (const tipo of tipos) {
-    const [fn, apaisado, formato] = TIPOS[tipo];
+    let [fn, apaisado, formato] = TIPOS[tipo];
+    let html = fn(region), elegida = '';
+    if (tipo === 'arbol-a4') ({ html, apaisado, elegida } = await mejorHojaA4(region));
     const px = formato === 'A3' ? [1587, 1123] : [1123, 794];
     const page = await browser.newPage({ viewport: apaisado ? { width: px[0], height: px[1] } : { width: px[1], height: px[0] } });
-    await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${fn(region)}</body></html>`);
+    await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${html}</body></html>`);
     const base = join(DIR, `${tipo}-${region}`);
     await page.pdf({ path: `${base}.pdf`, format: formato, landscape: apaisado, printBackground: true, preferCSSPageSize: true });
     await page.emulateMedia({ media: 'print' });
     await page.screenshot({ path: `${base}.png`, fullPage: true });
     const paginas = (await page.pdf({ format: formato, landscape: apaisado, preferCSSPageSize: true })).toString('latin1').match(/\/Type\s*\/Page[^s]/g)?.length;
     const esc = await page.evaluate(() => document.body.dataset.escala);
-    console.log(`${tipo}-${region}: ${paginas} página${paginas === 1 ? '' : 's'}${esc ? ` · escala ${esc}` : ''}`);
+    console.log(`${tipo}-${region}: ${paginas} página${paginas === 1 ? '' : 's'}${esc ? ` · escala ${esc}` : ''}${elegida}`);
     await page.close();
   }
 }

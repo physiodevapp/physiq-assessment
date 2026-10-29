@@ -6,7 +6,7 @@ Esquemas para tener a mano en consulta, **generados desde los datos de la app**:
 |---|---|---|---|
 | Cribado sistémico: sistemas y preguntas literales, urgencias en rojo, criterio compuesto | 2 | A4 vertical | `cribado-lumbar.pdf` |
 | Árbol de decisión CIF en flujo con flechas: pasos principales de izquierda a derecha, desvíos encima del paso del que salen, y bajo cada paso sus respuestas con la hipótesis que activan, la derivación o adónde llevan | 4 | A3 apaisado | `arbol-lumbar.pdf` |
-| Árbol de decisión CIF en una sola hoja para consultar en papel: el mismo flujo que el A3, maquetado compacto (no reducido) | 4 | A4 apaisado | `arbol-a4-lumbar.pdf` |
+| Árbol de decisión CIF para consultar en papel: el mismo flujo que el A3, maquetado compacto (no reducido) | 4 | A4, vertical o apaisado según la región | `arbol-a4-lumbar.pdf` |
 | Confirmación: tests de cada hipótesis con su LR+/LR− y si puntúan, clústeres | 4b | A4 apaisado | `confirmacion-lumbar.pdf` |
 
 Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, hombro, cadera, rodilla, tobillo y pie, y codo; los de cualquier región se generan con el mismo script.
@@ -24,6 +24,6 @@ Necesita Playwright, como `tests/smoke.mjs` (si está instalado globalmente: `NO
 
 En el árbol, las flechas las dibuja el navegador midiendo dónde ha quedado cada caja, así que el mismo diseño sirve para cualquier región: los pasos principales van en filas de hasta 4 (si hay más, la siguiente fila continúa debajo), y si una página se pasa de alto se reduce un poco o se abre otra (lumbar y codo: 1 página; hombro, cadera, cervical y rodilla: 2; tobillo y pie: 3). Las hipótesis van todas en el mismo color porque la app no las agrupa por familias.
 
-La hoja A4 del árbol usa la misma maqueta con tantas columnas como pasos por fila y busca la mayor escala con la que todo cabe (también por encima de 1, para no dejar hueco); con varias páginas, todas usan la misma escala. El script imprime la escala de cada región: lumbar 0,94 y cervical 0,91 en letra cómoda; hombro, codo y cadera hacia 0,83; rodilla 0,79 y tobillo y pie 0,74, las más pequeñas, porque una sola fila de pasos ya es muy alta (abrir más páginas no lo mejora). Lumbar, hombro y codo: 1 página; cadera, cervical, rodilla, tobillo y pie: 2.
+La hoja A4 del árbol prueba seis distribuciones (A4 apaisado o vertical, con 2, 3 o 4 pasos por fila) y se queda con la que deja la letra más grande; cada página de más cuenta como 0,25 de escala menos, para que una hoja única gane salvo que la diferencia sea grande. En cada una busca la mayor escala con la que todo cabe (sin pasar de 1,15) y, con varias páginas, usa la misma en todas. Los desvíos se reparten el ancho que queda en su fila. El script imprime la distribución elegida y la escala (`DEBUG_A4=1` muestra las seis): lumbar 1,05, hombro 0,94 y codo 0,88 en 1 página vertical; cadera 0,96 y rodilla 0,93 en 2 páginas verticales; cervical 1,02 y tobillo y pie 0,79 en 2 páginas apaisadas.
 
 Qué no incluye a propósito: en la fase 2, las listas de banderas rojas y amarillas de cada sistema (repiten en gran parte las preguntas; están en la app); en la 4b, los criterios de cada test y sus fuentes (están en la app). En las regiones con más contenido, algunos esquemas ocupan 2–3 páginas.
