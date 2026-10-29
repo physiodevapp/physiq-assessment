@@ -33,6 +33,10 @@ Las hojas se imprimen y se reparten, así que cada una lleva una **huella** (8 c
 
 Condiciones, fármacos e irritabilidad (`node docs/esquemas/generar.mjs condiciones|farmacos|irritabilidad`, o `sueltas` para todas las que no son de una región) llevan su QR a `guia.html#condiciones` (la guía de condiciones de la app sin estado del paciente ni botones), `#farmacos` (la guía completa de fármacos, con la copia del nombre para CIMA) e `#irritabilidad` (la calculadora, sin región).
 
+**Autoría** (decisión del usuario, 2026-10): todas las hojas llevan en el pie, en pequeño, `AUTORIA` (`hojas.mjs`): «PhysiQ · Edu Gamboa, fisioterapeuta · physiodevapp.github.io/physiq · © 2026 · CC BY-NC-ND 4.0» (se puede copiar y repartir citando la autoría, no venderla ni repartirla modificada). La del paciente añade «Su fisioterapeuta: ____» para quien la entrega. Cambiarla cambia todas las hojas: regenerarlas.
+
+**Dónde se descargan:** la página «Hojas para imprimir» de la guía (`guia.html#hojas`), enlazada desde el pie de la guía y desde el panel de sesión de la app («Hojas para imprimir ↗»).
+
 **Qué entra en la guía** (decisión del usuario, 2026-10): solo lo que explica o completa una hoja impresa. Las herramientas de la app que no tienen hoja se quedan en la app; la pestaña Irritabilidad ya tiene su hoja (2026-10).
 
 ## Cómo se generan

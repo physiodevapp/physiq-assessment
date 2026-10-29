@@ -184,3 +184,9 @@ test('hoja de ejercicio para el paciente: todas las frases «Para explicárselo 
   assert.ok(!final.includes('<svg') && final.includes('v. abcd1234'), 'sin QR, con su versión');
   assert.ok(leer('guia.js').includes("'ejercicio-paciente'"), 'listada en «Hojas para imprimir»');
 });
+
+test('guía, confirmación: cada hipótesis con su pauta y su pronóstico de data/, y la derivación siempre a la vista', () => {
+  const src = leer('guia.js');
+  assert.ok(src.includes('pautaHipHTML(h, region)') && src.includes('DOSIS_DERIVAR') && src.includes('TEXTO_PAUTA_COMPATIBLE'));
+  assert.ok(/if \(h\.dosis === DOSIS_DERIVAR\) return `<div class="guia-urg">/.test(src), 'la derivación no va plegada');
+});
