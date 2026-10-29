@@ -130,6 +130,10 @@ const CSS_A4 = `
     .final-a4 .txt { flex: 1 1 420px; }
     .final-a4 .pie { margin: 0; font-size: 8.5px; }
     .continua { font-size: 10px; margin-top: -8px; }
+    .conecta { font-size: 10.5px; font-weight: bold; color: #3567d6; }
+    .conecta-sale { text-align: right; margin-top: 2px; }
+    .conecta-entra { margin: 0 0 5px; }
+    .conecta-vuelta { margin-top: 5px; }
 `;
 const numHip = h => (h.id.match(/\d+/) || [''])[0];
 function etiquetaPaso(st, i) { const m = /Paso\s+([0-9]+[a-z]?)/i.exec(st.tag || ''); return m ? m[1] : String(i + 1); }
@@ -175,7 +179,7 @@ function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = 
   };
   const cajaPaso = (id, desvio) => {
     const i = ids.indexOf(id), st = steps[i];
-    const lineas = desvio ? `<div class="dops">${st.options.map(o => `<div class="dop"><b>${esc(corto(o))}</b> → ${resultado(o)}</div>`).join('')}</div>` : '';
+    const lineas = desvio ? `<div class="dops">${st.options.map(o => `<div class="dop"><b>${esc(corto(o))}</b> → ${resultado(o)}</div>`).join('')}</div>${vueltaDesvio(id)}` : '';
     return `<div class="paso${desvio ? ' desv' : ''}" id="box_${id}"><div class="cab"><span class="badge">${esc(lab(id))}</span><span class="preg">${esc(st.question)}</span></div>${lineas}</div>`;
   };
   const respuestas = (id, sigPrincipal) => {
@@ -199,18 +203,6 @@ function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = 
   // Una cadena de desvíos más larga que las columnas no cabe en su fila: esta distribución no sirve
   if (grupos.some(g => g.cadena.length > COLS)) return null;
   for (let k = 0; k < M.length; k += porBanda) bandas.push(M.slice(k, k + porBanda));
-  const htmlBandas = bandas.map((banda, b) => {
-    const gruposBanda = grupos.filter(g => banda.includes(g.entrada));
-    const filasDesvio = gruposBanda.map(g => {
-      const col = banda.indexOf(g.entrada) + 1;
-      const inicio = Math.max(1, Math.min(col, COLS - g.cadena.length + 1));
-      return `<div class="drow"><div class="dgrupo" style="grid-column:${inicio} / ${COLS + 1}"><div class="dnota">Desvío desde el paso ${esc(lab(g.entrada))} si «${esc(g.etiquetas.join('» o «'))}»</div><div class="dcajas">${g.cadena.map(id => cajaPaso(id, true)).join('')}</div></div></div>`;
-    }).join('');
-    return `<div class="banda" data-banda="${b}">${filasDesvio}
-      <div class="grid">${banda.map(id => cajaPaso(id, false)).join('')}</div>
-      <div class="grid">${banda.map(id => respuestas(id, M[M.indexOf(id) + 1])).join('')}</div></div>`;
-  }).join('');
-
   // Datos para dibujar las flechas en el navegador
   const flechas = [];
   M.forEach((id, k) => {
@@ -222,8 +214,30 @@ function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = 
   grupos.forEach(g => {
     flechas.push({ tipo: 'entra', de: g.entrada, a: g.cadena[0], txt: g.etiquetas.join(' / ') });
     g.cadena.slice(1).forEach((id, k) => flechas.push({ tipo: 'cadena', de: g.cadena[k], a: id }));
-    if (g.vuelta) flechas.push({ tipo: 'vuelve', de: g.cadena[g.cadena.length - 1], a: g.vuelta });
+    if (g.vuelta) flechas.push({ tipo: 'vuelve', de: g.cadena[g.cadena.length - 1], a: g.vuelta, entrada: g.entrada });
   });
+
+  // A4: entre una fila y la siguiente, en lugar de una flecha larga, dos conectores de texto
+  const bandaDe = id => bandas.findIndex(bb => bb.includes(id));
+  // (también la vuelta de un desvío a un paso de otra fila)
+  const bandaOrigen = f => bandaDe(f.tipo === 'vuelve' ? f.entrada : f.de);
+  const saltos = a4 ? flechas.filter(f => (f.tipo === 'sig' || f.tipo === 'vuelve') && bandaOrigen(f) !== bandaDe(f.a)) : [];
+  const conectorSale = b => saltos.filter(f => f.tipo === 'sig' && bandaDe(f.de) === b).map(f => `<div class="conecta conecta-sale">${esc(f.txt === 'todas' ? 'Todas' : f.txt)} → sigue en el paso ${esc(lab(f.a))} ↓</div>`).join('');
+  const vueltaDesvio = id => saltos.filter(f => f.tipo === 'vuelve' && f.de === id).map(f => `<div class="conecta conecta-vuelta">→ sigue en el paso ${esc(lab(f.a))}</div>`).join('');
+  const conectorEntra = b => { const de = saltos.filter(f => bandaDe(f.a) === b);
+    return de.length ? `<div class="conecta conecta-entra">↓ Paso ${esc(lab(de[0].a))}: viene del paso ${de.map(f => esc(lab(f.de))).join(' o del ')}</div>` : ''; };
+  const htmlBandas = bandas.map((banda, b) => {
+    const gruposBanda = grupos.filter(g => banda.includes(g.entrada));
+    const filasDesvio = gruposBanda.map(g => {
+      const col = banda.indexOf(g.entrada) + 1;
+      const inicio = Math.max(1, Math.min(col, COLS - g.cadena.length + 1));
+      return `<div class="drow"><div class="dgrupo" style="grid-column:${inicio} / ${COLS + 1}"><div class="dnota">Desvío desde el paso ${esc(lab(g.entrada))} si «${esc(g.etiquetas.join('» o «'))}»</div><div class="dcajas">${g.cadena.map(id => cajaPaso(id, true)).join('')}</div></div></div>`;
+    }).join('');
+    return `<div class="banda" data-banda="${b}">${conectorEntra(b)}${filasDesvio}
+      <div class="grid">${banda.map(id => cajaPaso(id, false)).join('')}</div>
+      <div class="grid">${banda.map(id => respuestas(id, M[M.indexOf(id) + 1])).join('')}</div>${conectorSale(b)}</div>`;
+  }).join('');
+
 
   return `<style>${CSS}
     @page { size: ${a4 ? 'A4' : 'A3'} ${vertical ? 'portrait' : 'landscape'}; margin: 0; }
@@ -348,6 +362,11 @@ function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = 
     };
     for (const f of FLECHAS) {
       const a = caja(f.de), b = caja(f.a);
+      if (${a4} && f.tipo === 'vuelve' && a.banda !== b.banda) continue; // ya está el conector de texto
+      if (${a4} && f.tipo === 'sig' && a.banda !== b.banda) { // ya está el conector de texto
+        const n = a.banda.querySelector('.conecta-sale');
+        if (a.p !== b.p && n && !n.dataset.pag) { n.dataset.pag = 1; n.textContent = n.textContent.replace(' ↓', ', en la página siguiente →'); }
+        continue; }
       if (a.p !== b.p) { // cambia de página: una nota en lugar de la flecha
         if (!a.banda.querySelector('.continua')) { const n = document.createElement('div'); n.className = 'continua'; n.textContent = 'continúa en la página siguiente →'; a.banda.appendChild(n); }
         continue; }
@@ -431,7 +450,7 @@ const browser = await chromium.launch();
 
 // Hoja A4 del árbol: prueba A4 apaisado y vertical con 2, 3 o 4 pasos por fila y se queda con la
 // que deja la letra más grande; cada página de más resta (una hoja de consulta, cuantas menos, mejor).
-const PENALIZA_PAGINA = 0.25;
+const PENALIZA_PAGINA = 0.3;
 async function mejorHojaA4(region) {
   const pruebas = [];
   for (const vertical of [false, true]) for (const cols of [2, 3, 4]) {
