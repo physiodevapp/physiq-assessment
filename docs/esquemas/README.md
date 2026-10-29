@@ -12,6 +12,7 @@ Esquemas para tener a mano en consulta, **generados desde los datos de la app**:
 | Fármacos: qué vigilar en el plan (`data/farmacos.js` + `data/farmacos-paciente.js`): cada familia con sus ejemplos y las frases literales de su aviso de la fase 6, en dos columnas que pasan de página (2 como máximo) | — | A4 vertical | `farmacos.pdf` |
 | Irritabilidad (fase 3, `data/irritabilidad.js`): la matriz con casillas para marcar en papel, la regla (`reglaIrritabilidad()`, la misma que la guía) y qué implica cada nivel | 3 | A4 vertical | `irritabilidad.pdf` |
 | Tiempos de recuperación de tejidos (`data/tejidos.js`), en dos hojas temáticas de una página: partes blandas (tendón, músculo, ligamento, menisco, nervio) y hueso, articulación y columna. Las barras del panel ⏱ de la app (color = gravedad, relleno = qué mide), la leyenda como pie fijo; no dependen de la región | ⏱ | A4 vertical | `tejidos-blandos.pdf`, `tejidos-hueso.pdf` |
+| Hoja de respuestas del lector de cuestionarios con foto (`respuestas.mjs`, `docs/lector-cuestionarios.md`): una fila por ítem con su número, la etiqueta corta de la calculadora y una casilla por valor; marcas en las esquinas y «v.» de la hoja. Se genera aparte: `node docs/esquemas/generar-respuestas.mjs [id\|todos]` → `respuestas/<id>.pdf`, y su huella va en `respuestas/huellas.json` | calculadora | A4 vertical | `respuestas/phq9.pdf` |
 
 Cada PDF va con su vista previa en PNG. En el repositorio están los de lumbar, hombro, cadera, rodilla, tobillo y pie, y codo; los de cualquier región se generan con el mismo script.
 
