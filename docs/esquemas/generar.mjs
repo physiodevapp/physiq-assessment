@@ -129,6 +129,7 @@ const CSS_A4 = `
     .final-a4 .ley i { display: inline-block; width: 18px; height: 11px; border-radius: 3px; border: 1.5px solid; }
     .final-a4 .txt { flex: 1 1 420px; }
     .final-a4 .pie { margin: 0; font-size: 8.5px; }
+    .final-a4.pie-fijo { position: absolute; left: 24px; right: 24px; bottom: 14px; }
     .continua { font-size: 10px; margin-top: -8px; }
     .conecta { font-size: 10.5px; font-weight: bold; color: #3567d6; }
     .conecta-sale { text-align: right; margin-top: 2px; }
@@ -308,16 +309,20 @@ function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = 
   <script>
   (() => {
     const FLECHAS = ${JSON.stringify(flechas)};
-    const ALTO = ${H} - ${a4 ? 18 : 34};
-    // Reparte las bandas en páginas A3: si una no cabe, pasa a una página nueva
+    // A4: la leyenda es el pie de cada página, fijo abajo; se saca del flujo y se reserva su sitio
+    const pie = ${a4} ? document.getElementById('final-a4') : null;
+    const reserva = pie ? pie.offsetHeight + 12 : 0;
+    if (pie) pie.remove();
+    const ALTO = ${H} - ${a4 ? 18 : 34} - reserva;
+    // Reparte las bandas en páginas: si una no cabe, pasa a una página nueva
     const pags = [document.getElementById('pag0')];
     let pag = pags[0];
-    for (const el of [...pag.querySelectorAll('.banda'), document.getElementById('${a4 ? 'final-a4' : 'final'}')]) {
+    for (const el of [...pag.querySelectorAll('.banda'), ...(${a4} ? [] : [document.getElementById('final')])]) {
       if (el.parentElement !== pag) pag.appendChild(el);
       // No cabe y en la página ya hay otra banda antes que ella: a una página nueva
       const otras = [...pag.querySelectorAll('.banda')].filter(x => x !== el && (x.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)).length;
       // Si se pasa poco (≤ 15 %), se queda y la página se reduce después
-      if ((el.offsetTop + el.offsetHeight) > ALTO * ${a4 ? 1.35 : 1.15} && otras > 0 && el.id !== 'final-a4') { // la leyenda A4 nunca va sola
+      if ((el.offsetTop + el.offsetHeight) > ALTO * ${a4 ? 1.35 : 1.15} && otras > 0) {
         const nueva = document.createElement('div'); nueva.className = 'pagina'; nueva.id = 'pag' + pags.length;
         document.body.insertBefore(nueva, pag.nextSibling); pags.push(nueva); pag = nueva;
         pag.appendChild(el);
@@ -327,7 +332,10 @@ function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BANDA } = 
     // Ninguna caja se sale por la derecha (medido en pantalla, ya con el zoom)
     const cabeAncho = p => { const lim = p.getBoundingClientRect().right - 8;
       return [...p.querySelectorAll('.paso, .op, .opt, .hip, .nada, .der, .ruta')].every(e => e.getBoundingClientRect().right <= lim); };
-    const escala = (p, z) => { p.style.width = (${W} / z) + 'px'; p.style.height = 'auto'; p.style.zoom = z; };
+    if (pie) pags.forEach((p, k) => { const c = k ? pie.cloneNode(true) : pie; c.removeAttribute('id'); c.classList.add('pie-fijo'); p.appendChild(c); });
+    // El pie cambia de alto según el ancho de la página: se le deja su sitio cada vez que cambia la escala
+    const escala = (p, z) => { p.style.width = (${W} / z) + 'px'; p.style.height = 'auto'; p.style.zoom = z;
+      const f = p.querySelector('.pie-fijo'); if (f) p.style.paddingBottom = (f.offsetHeight + 26) + 'px'; };
     for (const p of pags) {
       if (${a4}) {
         // A4: la mayor escala (también por encima de 1) con la que la página cabe entera, para no dejar hueco
