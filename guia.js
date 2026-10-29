@@ -4,7 +4,9 @@
 // nunca pide ni guarda datos del paciente. #<región>/<hoja>[/<elemento>]
 import { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } from './data.js';
 import { citasHTML, citasEnTexto, registroReferencias, enlaceCita } from './lib/citas.js';
-import { iaParrafoHTML, ctxCribado, ctxArbol, ctxTest, attrIA, atributosIA, initAmpliarIA } from './ampliar-ia.js';
+import { iaParrafoHTML, ctxCribado, ctxArbol, ctxTest, ctxIrritabilidad, attrIA, atributosIA, initAmpliarIA } from './ampliar-ia.js';
+import { ITEMS_IRRITABILIDAD, CORTES_OTROS, TEXTOS_IRRITABILIDAD } from './data/irritabilidad.js';
+import { nivelMatriz, NOMBRE_NIVEL } from './lib/irritabilidad.js';
 import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
 import { resolveOptionTargets } from './lib/arbol.js';
 import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA } from './lib/esquemas.js';
@@ -19,6 +21,8 @@ let REF = null;
 // Calculadora de la confirmación: { [hipótesis]: { [test]: 'pos'|'neg' } }. Solo en
 // memoria: no se guarda en ningún sitio y se borra al recargar o con «Borrar».
 const RESULTADOS = {};
+// Calculadora de irritabilidad: { [clave de la matriz]: valor }. Igual: solo en memoria.
+const IRRITABILIDAD = {};
 
 // ── Piezas comunes del «Por qué» ────────────────────────────────────────────
 const seccion = (etq, html) => html ? `<div class="razon-seccion"><div class="razon-etq">${etq}</div>${html}</div>` : '';
@@ -170,7 +174,58 @@ document.addEventListener('click', e => {
   }
 });
 
-const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfirmacion };
+// ── Irritabilidad (fase 3): la matriz y la regla de la app (nivelMatriz, lib/irritabilidad.js) ──
+function resultadoIrritabHTML(region) {
+  const T = TEXTOS_IRRITABILIDAD, m = nivelMatriz(IRRITABILIDAD);
+  if (!m.nivel) return `<div class="guia-irr-res"><span class="guia-irr-icono">⚪</span><span>${citasEnTexto(T.noRegistrada)}</span></div>`;
+  const nivel = NOMBRE_NIVEL[m.nivel];
+  const emoji = { baja: '🟢', moderada: '🟠', alta: '🔴' }[m.nivel];
+  const textos = [m.nivel === 'baja' ? T.hastaLimite : T.hastaDolor, ...(m.nivel === 'alta' ? [T.alta] : [])];
+  const falta = m.incompleta ? (m.sinCalma ? T.sinCalma : T.incompleta) : '';
+  return `<div class="guia-irr-res guia-irr-${m.nivel}"><span class="guia-irr-icono">${emoji}</span>
+    <span ${atributosIA(ctxIrritabilidad(region, nivel))}><strong>Irritabilidad ${nivel}</strong> — <span data-ia-parrafo>${citasEnTexto(textos.join(' '))}${iaParrafoHTML()}</span>
+    ${falta ? `<br><em>${citasEnTexto(falta)}</em>` : ''}<br><span class="guia-irr-margen">${citasEnTexto(T.margen)}</span></span></div>`;
+}
+function filaIrritabHTML(it) {
+  const v = IRRITABILIDAD[it.clave] || '';
+  return `<div class="guia-item guia-irr-fila"><div class="guia-texto">${esc(it.nombre)}</div>
+    ${it.ayuda ? `<div class="guia-criterio">${citasEnTexto(esc(it.ayuda))}</div>` : ''}
+    <div class="option-group guia-irr-ops" role="group" aria-label="${esc(it.nombre)}">${it.opciones.map((o, i) =>
+      `<button type="button" class="option-btn${v === o.valor ? ' selected' : ''}" data-irr="${it.clave}" data-valor="${esc(o.valor)}" aria-pressed="${v === o.valor}"><span class="guia-irr-n">${i}</span> ${esc(o.valor)}</button>`).join('')}</div></div>`;
+}
+function htmlIrritabilidad(region) {
+  const c = CORTES_OTROS;
+  return `<h2>Irritabilidad (fase 3)</h2>
+    <p class="guia-nota">La misma matriz y la misma regla que la fase 3 de la app (y la fase 6). Marca lo que refiere el paciente; un segundo toque desmarca. No se guarda nada: se borra al recargar.</p>
+    <div id="guiaIrrRes">${resultadoIrritabHTML(region)}</div>
+    <section class="guia-bloque">${ITEMS_IRRITABILIDAD.map(filaIrritabHTML).join('')}
+      <div class="guia-irr-pie"><button type="button" class="guia-borrar" data-irr-borrar>Borrar respuestas</button></div></section>
+    <details class="razon guia-irr-regla"><summary>ⓘ Cómo se calcula</summary><div class="razon-cuerpo">
+      <p>El <b>tiempo en calmarse</b> marca el suelo: minutos → baja, horas → moderada, día siguiente → alta (Maitland 2005, cap. 6, p. 117; Petersen 2021).</p>
+      <p><b>Reposo + movimiento + tolerancia</b> (0–2 cada uno, el número de cada botón) solo pueden subirlo: 0–${c.bajaHasta} baja, ${c.bajaHasta + 1}–${c.moderadaHasta} moderada, ${c.moderadaHasta + 1}–6 alta.</p>
+      <p>El nivel es el más alto de los dos. Se calcula con lo contestado y avisa si falta alguna fila, porque quedarse corto es el error peligroso. El impacto en las actividades es gravedad y no cuenta aquí.</p>
+    </div></details>`;
+}
+document.addEventListener('click', e => {
+  const t = e.target instanceof Element ? e.target : null;
+  const b = t?.closest('[data-irr]');
+  if (b) {
+    const { irr, valor } = b.dataset;
+    if (IRRITABILIDAD[irr] === valor) delete IRRITABILIDAD[irr]; else IRRITABILIDAD[irr] = valor;
+    b.closest('.guia-irr-ops').querySelectorAll('[data-irr]').forEach(x => {
+      const on = IRRITABILIDAD[irr] === x.dataset.valor;
+      x.classList.toggle('selected', on); x.setAttribute('aria-pressed', on);
+    });
+    document.getElementById('guiaIrrRes').innerHTML = resultadoIrritabHTML(leerRuta().region);
+    return;
+  }
+  if (t?.closest('[data-irr-borrar]')) {
+    Object.keys(IRRITABILIDAD).forEach(k => delete IRRITABILIDAD[k]);
+    pintar();
+  }
+});
+
+const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfirmacion, irritabilidad: htmlIrritabilidad };
 
 // ── Navegación ──────────────────────────────────────────────────────────────
 function leerRuta() {

@@ -6369,12 +6369,42 @@ async function checkGuia(browser, errors) {
     await page.click('[data-borrar]');
     r.borrar = await page.evaluate(() => !document.querySelector('.guia-resumen-fila') && !document.querySelector('.guia-calc .selected:not(.nd)'));
     r.sinGuardar = await page.evaluate(() => { try { return localStorage.length === 0 || ![...Array(localStorage.length)].some((_, i) => !/^physiq-assessment-(theme|letra|ia-destino)$/.test(localStorage.key(i))); } catch { return true; } });
+    // Irritabilidad: mismo nivel que nivelMatriz (fases 3 y 6) en varias combinaciones; segundo toque y «Borrar»
+    await page.click('.guia-hojas a:has-text("Irritabilidad")');
+    await page.waitForSelector('[data-irr]');
+    r.irritabilidad = await page.evaluate(async () => {
+      const { ITEMS_IRRITABILIDAD } = await import('./data/irritabilidad.js');
+      const { nivelMatriz, NOMBRE_NIVEL } = await import('./lib/irritabilidad.js');
+      const casos = [{}, { calma: 0 }, { calma: 1, reposo: 2, movimiento: 2, tolerancia: 1 }, { reposo: 1, movimiento: 1, tolerancia: 0 }, { calma: 2 }, { calma: 0, reposo: 0, movimiento: 1, tolerancia: 0 }];
+      const fallos = [];
+      for (const caso of casos) {
+        document.querySelector('[data-irr-borrar]').click();
+        const irr = {};
+        for (const [k, i] of Object.entries(caso)) {
+          const v = ITEMS_IRRITABILIDAD.find(x => x.clave === k).opciones[i].valor; irr[k] = v;
+          document.querySelector(`[data-irr="${k}"][data-valor="${v}"]`).click();
+        }
+        const m = nivelMatriz(irr), txt = document.getElementById('guiaIrrRes').textContent;
+        const ok = m.nivel ? txt.includes(`Irritabilidad ${NOMBRE_NIVEL[m.nivel]}`) && (!m.incompleta || /puede quedarse corto/.test(txt)) : /no registrada/.test(txt);
+        if (!ok) fallos.push(JSON.stringify(caso));
+      }
+      return fallos;
+    });
+    await page.click('[data-irr-borrar]');
+    await page.click('[data-irr="calma"][data-valor="Cede en minutos"]');
+    await page.click('[data-irr="calma"][data-valor="Cede en minutos"]');
+    r.irrDesmarca = await page.evaluate(() => !document.querySelector('[data-irr="calma"].selected'));
+    await page.click('[data-irr="reposo"][data-valor="Presente"]');
+    await page.click('[data-irr-borrar]');
+    r.irrBorrar = await page.evaluate(() => !document.querySelector('[data-irr].selected') && /no registrada/.test(document.getElementById('guiaIrrRes').textContent));
     await page.selectOption('#guiaRegion', 'codo');
-    await page.waitForFunction(() => location.hash === '#codo/confirmacion');
+    await page.waitForFunction(() => location.hash === '#codo/irritabilidad');
+    await page.click('.guia-hojas a:has-text("Confirmación")');
+    await page.waitForSelector('#hip-co1');
     r.region = await page.evaluate(() => !!document.getElementById('hip-co1'));
     // Cabe a 320 px sin desbordar
     await page.setViewportSize({ width: 320, height: 700 });
-    for (const h of ['cribado', 'arbol', 'confirmacion']) {
+    for (const h of ['cribado', 'irritabilidad', 'arbol', 'confirmacion']) {
       await page.goto(`${base}#lumbar/${h}`, { waitUntil: 'networkidle' });
       await page.evaluate(() => document.querySelectorAll('details.razon').forEach(d => { d.open = true; }));
       r[`ancho_${h}`] = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
@@ -6385,7 +6415,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.region && r.ancho_cribado && r.ancho_arbol && r.ancho_confirmacion && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.sinSesion && !fallidas.length;
   return r;
 }
 
@@ -6914,7 +6944,7 @@ const SECCIONES = [
 
   { id: 'guia', titulo: 'Guía de consulta (guia.html, la del QR de los esquemas):', run: async ({ browser, errors }) => {
     const c = await checkGuia(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; cambiar de región; cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 
