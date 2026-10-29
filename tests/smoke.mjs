@@ -6352,6 +6352,23 @@ async function checkGuia(browser, errors) {
       const n = Object.values(HYPOTHESES).filter(h => h.region === 'lumbar').reduce((a, h) => a + h.tests.length, 0);
       return document.querySelectorAll('[id^="test-"]').length === n && document.querySelectorAll('.guia-peso').length === n;
     });
+    // Calculadora: misma etiqueta que calcLRScore de la app; segundo toque desmarca; «Borrar» limpia
+    const marcar = async (hip, k, res) => page.click(`#test-${hip}-${k} .guia-calc [data-res="${res}"]`);
+    await marcar('lu3', 1, 'pos'); await marcar('lu3', 0, 'neg'); await marcar('lu4', 6, 'pos');
+    r.calc = await page.evaluate(async () => {
+      const { HYPOTHESES } = await import('./data.js');
+      const { calcLRScore, etiquetaHipHTML } = await import('./lib/tests-4b.js');
+      const esperado = id => etiquetaHipHTML(calcLRScore(HYPOTHESES[id], id === 'lu3' ? { 1: 'pos', 0: 'neg' } : { 6: 'pos' }).label);
+      return document.querySelector('[data-puntua="lu3"]').innerHTML === esperado('lu3')
+        && document.querySelector('[data-puntua="lu4"]').innerHTML === esperado('lu4')
+        && document.querySelectorAll('.guia-resumen-fila').length === 2
+        && document.querySelector('#test-lu3-1 [data-res="pos"]').classList.contains('selected');
+    });
+    await marcar('lu4', 6, 'pos');
+    r.desmarca = await page.evaluate(() => document.querySelectorAll('.guia-resumen-fila').length === 1 && !document.querySelector('#test-lu4-6 .selected:not(.nd)'));
+    await page.click('[data-borrar]');
+    r.borrar = await page.evaluate(() => !document.querySelector('.guia-resumen-fila') && !document.querySelector('.guia-calc .selected:not(.nd)'));
+    r.sinGuardar = await page.evaluate(() => { try { return localStorage.length === 0 || ![...Array(localStorage.length)].some((_, i) => !/^physiq-assessment-(theme|letra|ia-destino)$/.test(localStorage.key(i))); } catch { return true; } });
     await page.selectOption('#guiaRegion', 'codo');
     await page.waitForFunction(() => location.hash === '#codo/confirmacion');
     r.region = await page.evaluate(() => !!document.getElementById('hip-co1'));
@@ -6368,7 +6385,7 @@ async function checkGuia(browser, errors) {
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.region && r.ancho_cribado && r.ancho_arbol && r.ancho_confirmacion && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.region && r.ancho_cribado && r.ancho_arbol && r.ancho_confirmacion && r.sinSesion && !fallidas.length;
   return r;
 }
 
@@ -6897,7 +6914,7 @@ const SECCIONES = [
 
   { id: 'guia', titulo: 'Guía de consulta (guia.html, la del QR de los esquemas):', run: async ({ browser, errors }) => {
     const c = await checkGuia(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; cambiar de región; cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; cambiar de región; cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 

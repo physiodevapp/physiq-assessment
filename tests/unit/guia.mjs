@@ -30,7 +30,7 @@ test('se despliega: guia.html, guia.js y todo lo que importan están en deploy-t
 });
 
 test('phase4b.js y phase4.js reexportan lo que pasó a lib/ (los demás módulos no cambian)', () => {
-  for (const k of ['LR_POS_MIN', 'LR_NEG_MAX', 'parseProporcion', 'parseLR', 'lrEfectiva', 'testPuntua', 'PESO_TEST', 'pesoTest', 'enlacesAnatomia', 'anatomiaLineaHTML', 'anatomiaPanelHTML', 'citasTest'])
+  for (const k of ['LR_POS_MIN', 'LR_NEG_MAX', 'parseProporcion', 'parseLR', 'lrEfectiva', 'testPuntua', 'PESO_TEST', 'pesoTest', 'enlacesAnatomia', 'anatomiaLineaHTML', 'anatomiaPanelHTML', 'citasTest', 'calcLRScore', 'etiquetaHipHTML'])
     assert.equal(P4B[k], T4B[k], k);
   assert.equal(P4.resolveOptionTargets, ARBOL.resolveOptionTargets);
 });

@@ -5,7 +5,7 @@
 import { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } from './data.js';
 import { citasHTML, citasEnTexto, registroReferencias, enlaceCita } from './lib/citas.js';
 import { iaParrafoHTML, ctxCribado, ctxArbol, ctxTest, attrIA, atributosIA, initAmpliarIA } from './ampliar-ia.js';
-import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest } from './lib/tests-4b.js';
+import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etiquetaHipHTML } from './lib/tests-4b.js';
 import { resolveOptionTargets } from './lib/arbol.js';
 import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA } from './lib/esquemas.js';
 import { nombreRegion } from './lib/region.js';
@@ -16,6 +16,9 @@ const REGIONES = Object.keys(CIF_TREES);
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const fmtLR = n => n >= 10 ? n.toFixed(0) : n.toFixed(n < 1 ? 2 : 1);   // como phase4b.js
 let REF = null;
+// Calculadora de la confirmación: { [hipótesis]: { [test]: 'pos'|'neg' } }. Solo en
+// memoria: no se guarda en ningún sitio y se borra al recargar o con «Borrar».
+const RESULTADOS = {};
 
 // ── Piezas comunes del «Por qué» ────────────────────────────────────────────
 const seccion = (etq, html) => html ? `<div class="razon-seccion"><div class="razon-etq">${etq}</div>${html}</div>` : '';
@@ -101,6 +104,7 @@ function htmlConfirmacion(region) {
   };
   return `<h2>Confirmación de hipótesis · ${nombreRegion(region)}</h2>
     <p class="guia-nota">LR en verde: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5). «≈» = calculada de S y E.</p>
+    <div id="guiaResumenCalc">${resumenCalcHTML(region)}</div>
     ${hyps.map(h => {
       const clusters = Object.entries(h.clusters || {}).map(([cid, c]) => {
         const n = h.tests.filter(t => t.cluster === cid).length, lr = lrEfectiva(c);
@@ -115,11 +119,56 @@ function htmlConfirmacion(region) {
           <div class="guia-lr">${t.cluster ? `en el clúster ${esc(h.clusters?.[t.cluster]?.nombre || '')}` : lrTxt(t)}</div>
           <div class="guia-peso">${pesoTest(h, t, k)}</div>
           ${t.criterio ? `<div class="guia-criterio" ${atributosIA(ctxTest(region, t.name, h.name))} data-ia-parrafo>${citasEnTexto(t.criterio)}${iaParrafoHTML()}</div>` : ''}
+          ${botonesTest(h.id, k)}
           ${porQue(ctxTest(region, t.name, h.name), cuerpo)}</div>`;
       }).join('');
-      return `<section class="guia-bloque" id="hip-${h.id}"><h3><span class="guia-num">${esc(h.num || '')}</span>${esc(h.name)}</h3>${clusters}${tests}</section>`;
+      return `<section class="guia-bloque" id="hip-${h.id}"><h3><span class="guia-num">${esc(h.num || '')}</span>${esc(h.name)}</h3>
+        <div class="guia-puntua" data-puntua="${h.id}">${puntuaHTML(h)}</div>${clusters}${tests}</section>`;
     }).join('')}`;
 }
+
+// ── Calculadora (mismas reglas que la fase 4b: calcLRScore, lib/tests-4b.js) ──
+const RES_BTN = [['pos', '✓ Positivo'], ['neg', '✗ Negativo'], ['nd', 'Sin datos']];
+function botonesTest(hId, k) {
+  const r = RESULTADOS[hId]?.[k] || 'nd';
+  return `<div class="test-result-btns guia-calc" role="group" aria-label="Resultado">${RES_BTN.map(([v, t]) =>
+    `<button type="button" class="test-result-btn ${v}${r === v ? ' selected' : ''}" data-hip="${hId}" data-test="${k}" data-res="${v}" aria-pressed="${r === v}">${t}</button>`).join('')}</div>`;
+}
+function puntuaHTML(h) {
+  const res = RESULTADOS[h.id] || {};
+  return Object.keys(res).length ? etiquetaHipHTML(calcLRScore(h, res).label) : '<span class="guia-sin">Sin evaluar: marca los tests hechos</span>';
+}
+function resumenCalcHTML(region) {
+  const hechas = Object.values(HYPOTHESES).filter(h => h.region === region && Object.keys(RESULTADOS[h.id] || {}).length)
+    .map(h => ({ h, p: calcLRScore(h, RESULTADOS[h.id]) })).sort((a, b) => b.p.totalLR - a.p.totalLR);
+  if (!hechas.length) return '<p class="guia-nota">Marca el resultado de los tests que hagas y cada hipótesis se puntúa como en la fase 4b de la app. No se guarda nada: se borra al recargar.</p>';
+  return `<div class="guia-resumen"><div class="guia-resumen-cab"><b>Puntuación</b><button type="button" class="guia-borrar" data-borrar>Borrar resultados</button></div>
+    ${hechas.map(({ h, p }) => `<a href="#${region}/confirmacion/hip-${h.id}" class="guia-resumen-fila"><span>${esc(h.num || '')} ${esc(h.name)}</span>${etiquetaHipHTML(p.label)}</a>`).join('')}
+    <p class="guia-nota">No se guarda nada: se borra al recargar. Para la valoración completa, usa la app.</p></div>`;
+}
+function pintarCalc(region) {
+  const r = document.getElementById('guiaResumenCalc');
+  if (r) r.innerHTML = resumenCalcHTML(region);
+}
+document.addEventListener('click', e => {
+  const t = e.target instanceof Element ? e.target : null;
+  const b = t?.closest('.guia-calc .test-result-btn');
+  if (b) {
+    const { hip, test, res } = b.dataset;
+    const actual = RESULTADOS[hip] || (RESULTADOS[hip] = {});
+    if (res === 'nd' || actual[test] === res) delete actual[test]; else actual[test] = res;
+    if (!Object.keys(actual).length) delete RESULTADOS[hip];
+    b.parentElement.outerHTML = botonesTest(hip, Number(test));
+    const p = document.querySelector(`[data-puntua="${hip}"]`);
+    if (p) p.innerHTML = puntuaHTML(HYPOTHESES[hip]);
+    pintarCalc(HYPOTHESES[hip].region);
+    return;
+  }
+  if (t?.closest('[data-borrar]')) {
+    Object.keys(RESULTADOS).forEach(k => delete RESULTADOS[k]);
+    pintar();
+  }
+});
 
 const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfirmacion };
 

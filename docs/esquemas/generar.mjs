@@ -31,7 +31,7 @@ const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').re
 const fmtLR = n => n >= 10 ? n.toFixed(0) : n.toFixed(n < 1 ? 2 : 1);   // igual que phase4b.js
 const hoy = new Date().toLocaleDateString('es-ES');
 // QR a la página de esta hoja en la guía de consulta (guia.html): el porqué de cada elemento, sus fuentes e IA
-const qrGuia = (region, hoja) => `<div class="qr-guia">${qrSVG(urlGuia(region, hoja), 80)}<span>Porqués, fuentes e IA</span></div>`;
+const qrGuia = (region, hoja) => `<div class="qr-guia">${qrSVG(urlGuia(region, hoja), 80)}<span>${hoja === 'confirmacion' ? 'Porqués, IA y calculadora' : 'Porqués, fuentes e IA'}</span></div>`;
 
 const CSS = `
   * { box-sizing: border-box; }
@@ -540,7 +540,7 @@ function htmlConfirmacion(region, { vertical = false } = {}) {
   <div class="pagina" data-grupo="hipotesis">
     <div class="cab-hoja"><div class="cab-txt">
     <h1>Confirmación de hipótesis · ${NOMBRES[region]}</h1>
-    <div class="sub">PhysiQ-Assessment · fase 4b. Los tests de cada hipótesis, sus LR y si puntúan. El criterio de cada test, por qué se hace, cuánto pesa, sus fuentes y «Ampliar con IA», en la guía de consulta (QR).</div>
+    <div class="sub">PhysiQ-Assessment · fase 4b. Los tests de cada hipótesis, sus LR y si puntúan. El criterio de cada test, por qué se hace, sus fuentes, «Ampliar con IA» y una calculadora que puntúa cada hipótesis con los tests que marques, en la guía de consulta (QR).</div>
     </div>${qrGuia(region, 'confirmacion')}</div>
     <div class="cols">${bloques}</div>
     <div class="pie-fijo">LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en <span class="debil">gris</span>: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. <b class="si">puntúa</b>: puede mover la puntuación · hallazgo: sin LR aplicable · en clúster: solo cuenta con su clúster 🧩 · pronóstico: no entra en la puntuación. Criterios de cada test y fuentes, en la app.
