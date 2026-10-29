@@ -104,24 +104,24 @@ const CSS_A4 = `
     .dnota { font-size: 9.5px; margin-bottom: 2px; }
     .dcajas { gap: 40px; }
     .paso { border-width: 2px; border-radius: 10px; padding: 6px 8px; }
-    .paso.desv { width: 250px; }
+    .paso.desv { width: 260px; }
     .cab { gap: 6px; }
     .badge { min-width: 22px; height: 22px; border-radius: 11px; font-size: 11px; padding: 0 4px; }
-    .preg { font-size: 12.5px; line-height: 1.25; }
-    .dops { margin-top: 5px; gap: 3px; font-size: 10.5px; }
-    .dop .hip, .dop .nada, .dop .der { padding: 1px 5px; font-size: 10px; }
+    .preg { font-size: 13px; line-height: 1.25; }
+    .dops { margin-top: 5px; gap: 3px; font-size: 11.5px; }
+    .dop .hip, .dop .nada, .dop .der { padding: 1px 5px; font-size: 11px; }
     .resp { margin-top: 8px; }
     .rt { display: none; }
     .op { grid-template-columns: 1fr 14px 1fr; margin-bottom: 5px; }
     .opt { border-width: 1px; border-radius: 7px; padding: 3px 6px; }
-    .opt b { font-size: 11px; } .opt span { font-size: 9.5px; line-height: 1.2; }
+    .opt b { font-size: 11.5px; } .opt span { font-size: 10px; line-height: 1.2; }
     .fl { font-size: 12px; }
-    .hip { gap: 4px; border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 10.5px; line-height: 1.2; margin: 1px 0; }
+    .hip { gap: 4px; border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 11px; line-height: 1.2; margin: 1px 0; }
     .nb { min-width: 18px; height: 18px; border-radius: 9px; font-size: 9.5px; padding: 0 3px; }
     .der { border-width: 1.5px; border-radius: 7px; padding: 3px 5px; font-size: 9.5px; margin: 1px 0; }
-    .der span { font-size: 9px; line-height: 1.2; }
+    .der span { font-size: 9.5px; line-height: 1.2; }
     .ruta { border-width: 1.5px; border-radius: 7px; padding: 3px 6px; font-size: 9.5px; }
-    .nada { border-width: 1px; border-radius: 7px; padding: 3px 6px; font-size: 9px; }
+    .nada { border-width: 1px; border-radius: 7px; padding: 3px 6px; font-size: 10px; }
     .final { display: none; }
     .final-a4 { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; border-top: 1px solid #cbd5e1; padding-top: 6px; font-size: 10px; }
     .final-a4 .ley { display: inline-flex; align-items: center; gap: 5px; }
@@ -304,7 +304,15 @@ function htmlArbol(region, { a4 = false } = {}) {
       }
     }
     // Una página que aun así se pasa de alto (una banda muy larga) se reduce lo justo
+    const escala = (p, z) => { p.style.width = (${W} / z) + 'px'; p.style.height = 'auto'; p.style.zoom = z; };
     for (const p of pags) {
+      if (${a4}) {
+        // A4: la mayor escala (también por encima de 1) con la que la página cabe entera, para no dejar hueco
+        let lo = 0.5, hi = 1.5;
+        for (let k = 0; k < 14; k++) { const z = (lo + hi) / 2; escala(p, z); if (p.scrollHeight * z <= ${H}) lo = z; else hi = z; }
+        p._z = lo; escala(p, lo); p.style.height = (${H} / lo) + 'px';
+        continue;
+      }
       const alto = p.scrollHeight;
       p._z = alto > ${H} ? ${H} / alto : 1;
       if (p._z < 1) { p.style.width = (${W} / p._z) + 'px'; p.style.height = (${H} / p._z) + 'px'; p.style.zoom = p._z; }
