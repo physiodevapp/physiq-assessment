@@ -19,6 +19,7 @@ const { qrSVG } = await import('./qr.mjs');
 const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
 const { ITEMS_IRRITABILIDAD, ITEM_IMPACTO, TEXTOS_IRRITABILIDAD } = await import('../../data/irritabilidad.js');
 const { reglaIrritabilidad } = await import('../../lib/irritabilidad.js');
+const { BLOQUES_EJERCICIO, TEXTOS_EJERCICIO } = await import('../../data/ejercicio.js');
 const { FAMILIAS_FARMACO, TEXTOS_FARMACOS } = await import('../../data/farmacos.js');
 const { FAMILIAS_PACIENTE, TEXTOS_FARMACOS_PACIENTE } = await import('../../data/farmacos-paciente.js');
 const { nombreRegion } = await import('../../lib/region.js');
@@ -27,6 +28,13 @@ const { nombreRegion } = await import('../../lib/region.js');
 // queda impreso en unos 21 mm, 0,43 mm por módulo, que un móvil lee sin acercarse mucho.
 const QR_PX = 100;
 const QR = '<!--QR-->', HUELLA = '<!--HUELLA-->', FECHA = '<!--FECHA-->';
+
+// Autoría, en el pie de todas las hojas (decisión del usuario, 2026-10): quién responde del
+// contenido, de dónde sale y qué licencia tiene. CC BY-NC-ND: se puede copiar y repartir citando
+// la autoría, pero no venderla ni repartirla modificada (una copia retocada seguiría pareciendo
+// la original). Cambiarla cambia todas las hojas: regenerarlas.
+export const AUTORIA = 'PhysiQ · Edu Gamboa, fisioterapeuta · physiodevapp.github.io/physiq · © 2026 · CC BY-NC-ND 4.0';
+const AUTORIA_HTML = `<span class="autoria">${AUTORIA}</span>`;
 
 export const NOMBRES = { hombro: 'Hombro', cadera: 'Cadera', cervical: 'Cervical', lumbar: 'Lumbar', rodilla: 'Rodilla', codo: 'Codo', tobillo_pie: 'Tobillo y pie' };
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -48,6 +56,7 @@ const CSS = `
   .cab-txt { flex: 1; min-width: 0; }
   .qr-guia { flex: none; text-align: center; font-size: 8.5px; color: #4b5563; line-height: 1.15; width: 100px; }
   .qr-guia svg { display: block; }
+  .autoria { display: block; color: #6b7280; }
   .qr-huella { display: block; margin-top: 2px; font-family: monospace; font-size: 7.5px; color: #6b7280; }
   .num { display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: #7c4ddb; color: #fff; text-align: center; font-weight: bold; font-size: 10px; line-height: 18px; padding: 0 4px; }
 `;
@@ -131,7 +140,7 @@ export function htmlCribado(region) {
       <span class="ley"><span class="chip der">DERIVACIÓN</span> valoración médica, no urgente</span>
       <span class="ley"><span class="cond">gris</span> cuándo aparece la pregunta</span>
       <span class="txt">Un SÍ aislado no implica derivación automática (salvo URGENCIA y DERIVACIÓN): evaluar en el contexto clínico. Preguntas literales de la app; las banderas rojas y amarillas de cada sistema están en la app.</span>
-      <span class="gen">Generado desde los datos de la app el ${FECHA}.</span></div>`;
+      <span class="gen">Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</span></div>`;
   const W = 794, H = 1123;
   return `<style>${CSS}
     @page { size: A4 portrait; margin: 0; }
@@ -387,7 +396,7 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
         <div><i style="background:#fde8e8;border-color:#d0342c"></i>Derivación médica (el recorrido sigue)</div>
         <div><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</div></div>
       <div style="border:1.5px dashed #94a3b8; background:#f8fafc;"><b>Al terminar sin ninguna hipótesis activa</b><br>La app propone trabajar con «${dolorInespecifico(region)}», revisar los factores psicosociales (fase 1 y SINSS) y reconsiderar las respuestas. Si el cuadro es crónico y el riesgo psicosocial es alto, sugiere considerar también sensibilización central.</div>
-      <div style="border:1.5px solid #64748b; background:#f1f5f9;"><b>Fase 4b · confirmar</b><br>Cada hipótesis activa se confirma o descarta con sus tests: ver el esquema de confirmación de ${NOMBRES[region].toLowerCase()}.<div class="pie">Generado desde los datos de la app el ${FECHA}.</div></div>
+      <div style="border:1.5px solid #64748b; background:#f1f5f9;"><b>Fase 4b · confirmar</b><br>Cada hipótesis activa se confirma o descarta con sus tests: ver el esquema de confirmación de ${NOMBRES[region].toLowerCase()}.<div class="pie">Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</div></div>
     </div>
     <div class="final-a4" id="final-a4">
       <span class="ley"><i style="background:#eaf1ff;border-color:#3567d6"></i>Pregunta</span>
@@ -395,7 +404,7 @@ export function htmlArbol(region, { a4 = false, vertical = false, cols = POR_BAN
       <span class="ley"><i style="background:#fde8e8;border-color:#d0342c"></i>Derivación (el recorrido sigue)</span>
       <span class="ley"><i style="background:#fff;border-color:#94a3b8;border-style:dashed"></i>Sin hipótesis</span>
       <span class="txt"><b>Sin ninguna hipótesis al final:</b> ${dolorInespecifico(region)}; revisar psicosociales y respuestas. <b>Fase 4b:</b> confirmar cada hipótesis con sus tests.</span>
-      <span class="pie">Generado desde los datos de la app el ${FECHA}.</span>
+      <span class="pie">Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</span>
     </div>
   </div>
   <script>
@@ -547,7 +556,7 @@ export function htmlConfirmacion(region, { vertical = false } = {}) {
     </div>${qrGuia(region, 'confirmacion')}</div>
     <div class="cols">${bloques}</div>
     <div class="pie-fijo">LR en <b class="util">verde</b>: multiplica la puntuación (LR+ ≥ 2 o LR− ≤ 0,5); en <span class="debil">gris</span>: no informativa, cuenta como hallazgo. «≈» = calculada de S y E. <b class="si">puntúa</b>: puede mover la puntuación · hallazgo: sin LR aplicable · en clúster: solo cuenta con su clúster 🧩 · pronóstico: no entra en la puntuación. Criterios de cada test y fuentes, en la app.
-      <div class="gen">PhysiQ-Assessment · fase 4b · ${NOMBRES[region]}. Generado desde los datos de la app el ${FECHA}.</div></div>
+      <div class="gen">PhysiQ-Assessment · fase 4b · ${NOMBRES[region]}. Generado desde los datos de la app el ${FECHA}. ${AUTORIA_HTML}</div></div>
   </div>
   ${scriptAjuste(W, H, '.hyp')}`;
 }
@@ -614,7 +623,7 @@ export function htmlTejidos(hoja) {
       <span><b>Color = gravedad:</b>${Object.entries(T.gravedades).map(([k, v]) => muestra(`background:${COLOR_GRAVEDAD[k]}`) + esc(v)).join('')}</span>
       <span><b>Relleno = qué mide:</b>${Object.entries(T.medidas).filter(([, m]) => !m.marca).map(([, m]) => muestra(`background:#7c8796;color:#7c8796;${RELLENO[m.relleno]}`) + esc(m.etiqueta)).join('')}</span>
       <span><b>Fases de reparación:</b>${T.fases.map((f, k) => muestra(`background:${COLOR_FASE[k]}`) + esc(f.nombre)).join('')} · Eje no lineal: cada columna ocupa lo mismo.</span>
-      <span class="pie">Generado desde los datos de la app (data/tejidos.js) el ${FECHA}. La otra hoja: ${esc(Object.entries(HOJAS_TEJIDO).filter(([k]) => k !== hoja).map(([, h]) => h.titulo).join(''))}.</span>
+      <span class="pie">Generado desde los datos de la app (data/tejidos.js) el ${FECHA}. La otra hoja: ${esc(Object.entries(HOJAS_TEJIDO).filter(([k]) => k !== hoja).map(([, h]) => h.titulo).join(''))}. ${AUTORIA_HTML}</span>
     </div>
   </div>
   <script>
@@ -689,7 +698,7 @@ export function htmlCondiciones() {
     sub: `${esc(T.intro)} ${esc(T.diagnostico)}`,
     qr: 'Qué es, fuentes e IA',
     cuerpo,
-    pie: `<span>${esc(T.pie)} Las fuentes de cada condición, en la guía (QR).</span><span class="pie">Generado desde los datos de la app (data/condiciones.js) el ${FECHA}.</span>`,
+    pie: `<span>${esc(T.pie)} Las fuentes de cada condición, en la guía (QR).</span><span class="pie">Generado desde los datos de la app (data/condiciones.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
     css: `
       .rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
       .cond { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 7px 9px; break-inside: avoid; }
@@ -766,7 +775,7 @@ export function htmlFarmacos() {
     sub: `${esc(TEXTOS_FARMACOS_PACIENTE.lineaComun)} Aquí, lo que cambia el plan de tratamiento; cómo afecta cada familia al dolor, los síntomas viscerales, el ejercicio y el sueño, y su ficha técnica (CIMA), en la guía (QR).`,
     qr: 'Guía completa e IA',
     tarjetas: fichas,
-    pie: `<span>${esc(TEXTOS_FARMACOS.limites)}</span><span class="pie">Generado desde los datos de la app (data/farmacos.js, data/farmacos-paciente.js) el ${FECHA}.</span>`,
+    pie: `<span>${esc(TEXTOS_FARMACOS.limites)}</span><span class="pie">Generado desde los datos de la app (data/farmacos.js, data/farmacos-paciente.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
     css: `
       .farm { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 6px 9px; }
       .farm h2 { font-size: 12px; margin: 0 0 1px; color: #1e3a8a; }
@@ -792,7 +801,7 @@ export function htmlIrritabilidad() {
       <h2 class="t-niveles">Qué implica cada nivel</h2>
       <div class="niveles">${nivel('Baja', 'baja', [T.hastaLimite])}${nivel('Moderada', 'moderada', [T.hastaDolor])}${nivel('Alta', 'alta', [T.hastaDolor, T.alta])}</div>
       <p class="margen">${esc(T.margen)} ${esc(T.incompleta)}</p>`,
-    pie: `<span>El impacto en las actividades (${ITEM_IMPACTO.opciones.map(o => esc(o.valor).toLowerCase()).join(' · ')}) es gravedad: se anota aparte, junto al NRS.</span><span class="pie">Generado desde los datos de la app (data/irritabilidad.js, lib/irritabilidad.js) el ${FECHA}.</span>`,
+    pie: `<span>El impacto en las actividades (${ITEM_IMPACTO.opciones.map(o => esc(o.valor).toLowerCase()).join(' · ')}) es gravedad: se anota aparte, junto al NRS.</span><span class="pie">Generado desde los datos de la app (data/irritabilidad.js, lib/irritabilidad.js) el ${FECHA}. ${AUTORIA_HTML}</span>`,
     css: `
       body { font-size: 11.5px; }
       .matriz { width: 100%; border-collapse: collapse; margin: 4px 0 12px; }
@@ -812,6 +821,55 @@ export function htmlIrritabilidad() {
       .nivel.alta { border-color: #dc2626; background: #fef2f2; } .nivel.alta b { color: #b91c1c; }
       .margen { color: #4b5563; font-size: 10px; margin: 10px 0 0; }`,
   });
+}
+
+// ── El ejercicio, para el paciente (data/ejercicio.js) ───────────────────────
+// Las frases «Para explicárselo al paciente» de cada bloque, literales (todas se apoyan en
+// afirmaciones de nivel clínico: lo comprueba problemasBloque), bajo el título en lenguaje
+// llano de su bloque; las de una condición, aparte. Sin QR: la guía es para el fisioterapeuta.
+// Lleva su versión («v.»), así que la prueba de hojas desfasadas la cubre igual.
+export function htmlEjercicioPaciente() {
+  const T = TEXTOS_EJERCICIO;
+  const escritos = BLOQUES_EJERCICIO.filter(b => b.apartados?.paciente?.length);
+  const bloque = b => `<section class="bloque"><h2>${esc(b.tituloPaciente || b.titulo)}</h2>
+    <ul>${b.apartados.paciente.map(f => `<li>${esc(f.t)}</li>`).join('')}</ul></section>`;
+  const generales = escritos.filter(b => b.hojaPaciente !== 'condicion');
+  const condiciones = escritos.filter(b => b.hojaPaciente === 'condicion');
+  return `<style>${CSS}${CSS_UNA}
+    body { font-size: 13px; line-height: 1.45; }
+    h1 { font-size: 24px; } .sub { font-size: 12.5px; color: #4b5563; margin-bottom: 12px; }
+    .bloque { margin-bottom: 12px; break-inside: avoid; }
+    .bloque h2 { font-size: 15px; margin: 0 0 4px; color: #1e3a8a; }
+    .bloque ul { margin: 0; padding-left: 18px; } .bloque li { margin: 0 0 4px; }
+    .grupo-c { font-size: 13px; font-weight: bold; letter-spacing: .5px; text-transform: uppercase; color: #2563eb; margin: 16px 0 8px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 2px; }
+    .condiciones { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+    .condiciones .bloque h2 { font-size: 13.5px; } .condiciones .bloque { font-size: 12px; }
+    .mis { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 8px 12px 10px; margin-top: 10px; }
+    .mis h2 { font-size: 14px; margin: 0 0 4px; color: #1e3a8a; }
+    .linea { border-bottom: 1px solid #94a3b8; height: 26px; }
+    .pie-v .qr-huella { display: inline; margin-left: 4px; }
+    .pie-v .autoria { display: inline; }
+    .su-fisio { font-size: 12px; color: #1f2937; margin: 4px 0 2px; }
+  </style>
+  <div class="pagina">
+    <h1>${esc(T.hojaPacienteTitulo)}</h1>
+    <div class="sub">${esc(T.hojaPacienteIntro)}</div>
+    <div class="cuerpo">
+      ${generales.map(bloque).join('')}
+      ${condiciones.length ? `<div class="grupo-c">${esc(T.hojaPacienteCondiciones)}</div><div class="condiciones">${condiciones.map(bloque).join('')}</div>` : ''}
+      <div class="mis"><h2>${esc(T.hojaPacienteMisEjercicios)}</h2>${'<div class="linea"></div>'.repeat(5)}</div>
+      <div style="height:12px"></div>
+    </div>
+    <div class="pie-fijo"><span>${esc(T.hojaPacientePie)}</span><span class="su-fisio">Su fisioterapeuta: ______________________________</span><span class="pie pie-v">${AUTORIA_HTML} · ${FECHA} ${HUELLA}</span></div>
+  </div>
+  <script>
+  (() => {
+    const p = document.querySelector('.pagina'), c = p.querySelector('.cuerpo');
+    const cabe = z => { p.style.zoom = z; p.style.width = (794 / z) + 'px'; p.style.height = (1123 / z) + 'px'; return c.scrollHeight <= c.clientHeight + 1; };
+    let lo = 0.6, hi = 1.3; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(z)) lo = z; else hi = z; }
+    cabe(lo); document.body.dataset.escala = lo.toFixed(2);
+  })();
+  </script>`;
 }
 
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
@@ -836,6 +894,7 @@ export function hojasImpresas() {
   hojas.push({ clave: 'condiciones', ruta: 'condiciones', html: htmlCondiciones });
   hojas.push({ clave: 'farmacos', ruta: 'farmacos', html: htmlFarmacos });
   hojas.push({ clave: 'irritabilidad', ruta: 'irritabilidad', html: htmlIrritabilidad });
+  hojas.push({ clave: 'ejercicio-paciente', ruta: null, html: htmlEjercicioPaciente, paciente: true });
   return hojas;
 }
 export const huellaHoja = html => fnv(html);
@@ -844,6 +903,6 @@ export function huellasActuales() {
 }
 // Pone los marcadores: el QR a la guía con la huella (?h=), la huella visible y la fecha
 export function rematar(html, { ruta, huella, fecha }) {
-  const url = urlRuta(ruta, huella);
-  return html.replaceAll(QR, qrSVG(url, QR_PX)).replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
+  // Sin ruta (la hoja del paciente) no hay QR, solo la versión
+  return html.replaceAll(QR, ruta ? qrSVG(urlRuta(ruta, huella), QR_PX) : '').replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
 }

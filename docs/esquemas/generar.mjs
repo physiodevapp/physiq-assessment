@@ -9,12 +9,13 @@
 //   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
 //   confirmacion → fase 4b, A4 (vertical o apaisado, la de letra más grande): tests de cada hipótesis con sus LR y si puntúan
 //
-//   node docs/esquemas/generar.mjs tejidos | condiciones | farmacos | irritabilidad | sueltas
+//   node docs/esquemas/generar.mjs tejidos | condiciones | farmacos | irritabilidad | ejercicio-paciente | sueltas
 //   → tejidos-blandos y tejidos-hueso: los tiempos de recuperación de data/tejidos.js en dos A4
 //     verticales temáticas (lib/esquemas.js, HOJAS_TEJIDO). También con «todas todos».
 //   → condiciones: la guía de condiciones especiales (data/condiciones.js) en un A4 vertical.
 //   → farmacos: qué vigilar en el plan por familia (los avisos de la fase 6), dos A4 como máximo.
 //   → irritabilidad: la matriz de la fase 3 para marcar en papel, la regla y qué implica cada nivel.
+//   → ejercicio-paciente: para dar al paciente, las frases «Para explicárselo al paciente» de cada bloque, sin QR.
 //   «sueltas» = todas las que no son de una región.
 // Necesita Playwright (como tests/smoke.mjs). Las reglas de LR son las de la app:
 // importa lrEfectiva y testPuntua de lib/tests-4b.js (las mismas que usa phase4b.js).
@@ -27,7 +28,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 const { CIF_TREES } = await import('../../data.js');
 const { HOJAS_TEJIDO } = await import('../../lib/esquemas.js');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, hojasImpresas, huellaHoja, rematar } = await import('./hojas.mjs');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, htmlFarmacos, htmlIrritabilidad, htmlEjercicioPaciente, hojasImpresas, huellaHoja, rematar } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -42,6 +43,7 @@ const RUTA_HUELLAS = join(DIR, 'huellas.json');
 // sin cambios la deja como estaba. La lee la página «Hojas para imprimir» de la guía.
 const HUELLAS = existsSync(RUTA_HUELLAS) ? JSON.parse(readFileSync(RUTA_HUELLAS, 'utf8')) : {};
 const HOY_ISO = new Date().toISOString().slice(0, 10);
+const fechaCorta = iso => { const [a, m, d] = iso.split('-').map(Number); return `${d}/${m}/${a}`; };   // como toLocaleDateString('es-ES')
 const IMPRESAS = Object.fromEntries(hojasImpresas().map(h => [h.clave, h]));
 // El HTML final de una hoja: si lleva QR, con su huella (la de su HTML canónico) y la fecha
 function rematarHoja(clave, html) {
@@ -49,7 +51,9 @@ function rematarHoja(clave, html) {
   if (!h) return html.replaceAll('<!--FECHA-->', hoy).replaceAll('<!--QR-->', '').replaceAll('<!--HUELLA-->', '');
   const huella = huellaHoja(h.html());
   if (HUELLAS[clave]?.huella !== huella) HUELLAS[clave] = { huella, fecha: HOY_ISO };
-  return rematar(html, { ruta: h.ruta, huella, fecha: hoy });
+  // La fecha impresa es la del último cambio de contenido (la de «Hojas para imprimir»), no la de
+  // generación: regenerar sin cambios no la mueve, y el papel y la lista dicen siempre lo mismo
+  return rematar(html, { ruta: h.ruta, huella, fecha: fechaCorta(HUELLAS[clave].fecha) });
 }
 // ── Render ───────────────────────────────────────────────────────────────────
 // [generador, apaisado, formato]
@@ -107,6 +111,7 @@ const SUELTAS = {
   condiciones: [['condiciones', htmlCondiciones]],
   farmacos: [['farmacos', htmlFarmacos]],
   irritabilidad: [['irritabilidad', htmlIrritabilidad]],
+  'ejercicio-paciente': [['ejercicio-paciente', htmlEjercicioPaciente]],
 };
 for (const [grupo, hojas] of Object.entries(SUELTAS)) {
   if (regArg !== grupo && regArg !== 'sueltas' && !(regArg === 'todas' && tipoArg === 'todos')) continue;
