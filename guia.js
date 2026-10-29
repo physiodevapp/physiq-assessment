@@ -11,6 +11,7 @@ import { lrEfectiva, pesoTest, anatomiaPanelHTML, citasTest, calcLRScore, etique
 import { resolveOptionTargets } from './lib/arbol.js';
 import { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, etiquetaPaso, HOJAS_GUIA, HOJAS_TEJIDO, datosHojaTejido } from './lib/esquemas.js';
 import { TIEMPOS_TEJIDO } from './data/tejidos.js';
+import { condicionesHTML } from './lib/condiciones.js';
 import { tiemposTejidoHTML, infoBarraHTML } from './lib/tejidos.js';
 import { alternarFicha, cerrarFicha } from './ficha.js';
 import { nombreRegion, dolorInespecifico } from './lib/region.js';
@@ -263,7 +264,8 @@ document.addEventListener('click', e => {
 // actual para reimprimirla. Solo en la hoja de la que vino el QR; sin ?h= o sin huellas, nada.
 const HUELLA_PAPEL = new URLSearchParams(location.search).get('h') || '';
 let HOJA_PAPEL = '', HUELLAS = null;
-function claveHoja({ tejidos, region, hoja }) {
+function claveHoja({ tejidos, suelta, region, hoja }) {
+  if (suelta) return suelta;
   if (tejidos) return `tejidos-${hoja}`;
   return hoja === 'arbol' ? `arbol-a4-${region}` : hoja === 'irritabilidad' ? '' : `${hoja}-${region}`;
 }
@@ -303,8 +305,15 @@ function htmlHojas() {
   const recientes = Object.values(HUELLAS).filter(h => (hoy - new Date(`${h.fecha}T12:00:00`).getTime()) / 864e5 <= DIAS_RECIENTE).length;
   return `<p class="guia-nota">Cada hoja impresa lleva su versión bajo el QR («v. …»). Si no coincide con la de esta lista, la hoja ha cambiado: descarga el PDF y reimprímela. «Reciente» = cambió en los últimos ${DIAS_RECIENTE} días (${recientes} de ${Object.keys(HUELLAS).length}).</p>
     ${REGIONES.map(r => grupo(nombreRegion(r), Object.entries(NOMBRE_HOJA).map(([t, n]) => fila(`${t}-${r}`, n)))).join('')}
-    ${grupo('Tiempos de recuperación de tejidos', Object.entries(HOJAS_TEJIDO).map(([k, h]) => fila(`tejidos-${k}`, h.titulo)))}`;
+    ${grupo('Tiempos de recuperación de tejidos', Object.entries(HOJAS_TEJIDO).map(([k, h]) => fila(`tejidos-${k}`, h.titulo)))}
+    ${grupo('Otras hojas', Object.entries(SUELTAS).map(([k, h]) => fila(k, h.titulo)))}`;
 }
+
+// ── Páginas sueltas (#<clave>): el QR de las hojas que no son de una región ──
+// La clave es la de la hoja impresa (docs/esquemas/<clave>.pdf), para el aviso de papel viejo.
+const SUELTAS = {
+  condiciones: { titulo: 'Condiciones especiales', html: () => condicionesHTML({}, { guia: true }) },
+};
 
 const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfirmacion, irritabilidad: htmlIrritabilidad };
 
@@ -312,6 +321,7 @@ const PINTAR = { cribado: htmlCribado, arbol: htmlArbol, confirmacion: htmlConfi
 function leerRuta() {
   const [r, h, el] = decodeURIComponent(location.hash.slice(1)).split('/');
   if (r === 'hojas') return { hojas: true, region: '', hoja: '', elemento: '' };
+  if (SUELTAS[r]) return { suelta: r, region: '', hoja: '', elemento: '' };
   if (r === 'tejidos') return { tejidos: true, region: '', hoja: HOJAS_TEJIDO[h] ? h : 'blandos', elemento: '' };
   return { region: REGIONES.includes(r) ? r : 'lumbar', hoja: PINTAR[h] ? h : 'cribado', elemento: el || '' };
 }
@@ -329,9 +339,18 @@ function anchoRegion() {
 }
 
 function pintar({ sinScroll = false } = {}) {
-  const { tejidos, hojas, region, hoja, elemento } = leerRuta();
-  document.body.classList.toggle('guia-modo-tejidos', !!tejidos || !!hojas);
-  document.body.classList.toggle('guia-modo-hojas', !!hojas);
+  const { tejidos, hojas, suelta, region, hoja, elemento } = leerRuta();
+  document.body.classList.toggle('guia-modo-tejidos', !!tejidos || !!hojas || !!suelta);
+  document.body.classList.toggle('guia-modo-hojas', !!hojas || !!suelta);
+  if (suelta) {
+    const { titulo, html } = SUELTAS[suelta];
+    document.getElementById('guiaTitulo').textContent = titulo;
+    document.getElementById('guiaHojas').innerHTML = '';
+    document.getElementById('guiaContenido').innerHTML = avisoHojaHTML(suelta) + html();
+    document.title = `${titulo} · Guía de consulta`;
+    if (!sinScroll) window.scrollTo(0, 0);
+    return;
+  }
   if (hojas) {
     document.getElementById('guiaTitulo').textContent = 'Hojas para imprimir';
     document.getElementById('guiaHojas').innerHTML = '';
@@ -381,7 +400,7 @@ async function iniciar() {
   document.fonts?.ready.then(anchoRegion);   // la fuente del título llega después
   pintar();
   const v = textoVersion();
-  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a> · <a href="#hojas">Hojas para imprimir</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
+  document.getElementById('guiaPie').innerHTML = `Contenido generado desde los datos de la app (versión ${esc(v)}). Si tu hoja impresa es más antigua, puede haber diferencias: manda lo que dice esta página. <a href="./">Abrir la app →</a> · <a href="#tejidos/blandos">Tiempos de recuperación de tejidos</a> · <a href="#condiciones">Condiciones especiales</a> · <a href="#hojas">Hojas para imprimir</a><br>«✨ IA» abre una búsqueda externa con el texto de la guía, nunca con datos del paciente; PhysiQ no revisa la respuesta.`;
   initAmpliarIA();
 }
 iniciar();

@@ -5,16 +5,19 @@
 // Cada hoja se construye con tres marcadores (QR, huella, fecha) que pone rematar(); la
 // huella es la del HTML con los marcadores, así que solo cambia si cambia lo impreso.
 import '../../tests/dom-shim.mjs';
+import { readFileSync } from 'node:fs';
 
 const { SYSTEMIC_SCREENING, CIF_TREES, HYPOTHESES } = await import('../../data.js');
 const { lrEfectiva, testPuntua } = await import('../../lib/tests-4b.js');
 const { resolveOptionTargets } = await import('../../lib/arbol.js');
 const { CONDICION_SISTEMA, condicionPregunta, soloDeSistema, preguntasDeRegion, sistemasCribado, pasosPrincipales, etiquetaPaso, urlGuia } = await import('../../lib/esquemas.js');
-const { HOJAS_TEJIDO, urlTejidos, datosHojaTejido } = await import('../../lib/esquemas.js');
+const { HOJAS_TEJIDO, urlTejidos, urlRuta, datosHojaTejido } = await import('../../lib/esquemas.js');
 const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
 const { posicionDia, tieneBarra } = await import('../../lib/tejidos.js');
 const { dolorInespecifico } = await import('../../lib/region.js');
 const { qrSVG } = await import('./qr.mjs');
+const { CONDICIONES, TEXTOS_CONDICIONES } = await import('../../data/condiciones.js');
+const { nombreRegion } = await import('../../lib/region.js');
 
 // 100 px: con la huella en la dirección el QR tiene 49 módulos; aun a la escala mínima (0,75–0,8)
 // queda impreso en unos 21 mm, 0,43 mm por módulo, que un móvil lee sin acercarse mucho.
@@ -621,6 +624,83 @@ export function htmlTejidos(hoja) {
   </script>`;
 }
 
+// ── Hojas de una página (condiciones, fármacos, irritabilidad) ───────────────
+// Página A4 vertical con cabecera (título, subtítulo, QR), cuerpo y pie fijo abajo;
+// el script la deja a la mayor escala a la que el cuerpo cabe.
+const CSS_UNA = `
+  @page { size: A4; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pagina { width: 794px; height: 1123px; padding: 34px 38px 0; display: flex; flex-direction: column; overflow: hidden; }
+  .cuerpo { flex: 1 1 auto; min-height: 0; }
+  .pie-fijo { flex: none; border-top: 1.5px solid #cbd5e1; padding: 6px 0 14px; font-size: 9px; color: #334155; display: flex; flex-direction: column; gap: 3px; }
+`;
+function paginaUna({ titulo, sub, qr, cuerpo, pie, css = '' }) {
+  return `<style>${CSS}${CSS_UNA}${css}</style>
+  <div class="pagina">
+    <div class="cab-hoja"><div class="cab-txt"><h1>${titulo}</h1><div class="sub">${sub}</div></div>
+      <div class="qr-guia">${QR}<span>${qr}</span>${HUELLA}</div></div>
+    <div class="cuerpo">${cuerpo}</div>
+    <div class="pie-fijo">${pie}</div>
+  </div>
+  <script>
+  (() => {
+    const p = document.querySelector('.pagina'), c = p.querySelector('.cuerpo');
+    const cabe = z => { p.style.zoom = z; p.style.width = (794 / z) + 'px'; p.style.height = (1123 / z) + 'px'; return c.scrollHeight <= c.clientHeight + 1; };
+    let lo = 0.6, hi = 1.5; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(z)) lo = z; else hi = z; }
+    cabe(lo); document.body.dataset.escala = lo.toFixed(2);
+  })();
+  </script>`;
+}
+
+// Título de una tarjeta de la fase 1 (index.html): dónde se marca cada condición, sin copiarlo a mano
+const INDEX_HTML = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
+function tituloTarjeta(id) {
+  const i = INDEX_HTML.indexOf(`id="${id}"`);
+  const m = i < 0 ? null : /class="card-title"[^>]*>([^<]+)</.exec(INDEX_HTML.slice(i, i + 1500));
+  return m ? m[1].trim() : id;
+}
+
+// ── Condiciones especiales (la guía de la cabecera, data/condiciones.js) ─────
+export function htmlCondiciones() {
+  const T = TEXTOS_CONDICIONES;
+  const donde = c => c.destino?.tarjeta
+    ? `Fase 1 · tarjeta «${esc(tituloTarjeta(c.destino.tarjeta))}»${c.id === 'posquirurgico' ? ' → Post-quirúrgico' : ''}`
+    : `Fase 2 · cribado de ${esc(nombreRegion(c.region).toLowerCase())}`;
+  const tarjeta = c => `<section class="cond">
+    <h2>${esc(c.nombre)}</h2>
+    <p class="que">${esc(c.que)}</p>
+    <div class="piensa">${esc(c.piensa)}</div>
+    <ul>${c.pistas.map(p => `<li>${esc(p.texto)}</li>`).join('')}</ul>
+    <p class="anade"><b>Añade:</b> ${esc(c.anade)}</p>
+    <p class="donde">${donde(c)}</p>
+  </section>`;
+  const transversales = CONDICIONES.filter(c => !c.region);
+  // Las de una sola región, juntas en una fila de tres, con la región en su cabecera
+  const deRegion = CONDICIONES.filter(c => c.region);
+  const cuerpo = `<div class="rejilla">${transversales.map(tarjeta).join('')}</div>`
+    + (deRegion.length ? `<div class="grupo-reg">${esc(T.grupoRegion.replace('{region}', 'una región'))}</div>
+      <div class="rejilla rejilla-3">${deRegion.map(c => tarjeta(c).replace('<h2>', `<h2><span class="reg">${esc(nombreRegion(c.region))}</span>`)).join('')}</div>` : '');
+  return paginaUna({
+    titulo: esc(T.titulo),
+    sub: `${esc(T.intro)} ${esc(T.diagnostico)}`,
+    qr: 'Qué es, fuentes e IA',
+    cuerpo,
+    pie: `<span>${esc(T.pie)} Las fuentes de cada condición, en la guía (QR).</span><span class="pie">Generado desde los datos de la app (data/condiciones.js) el ${FECHA}.</span>`,
+    css: `
+      .rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .cond { border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 7px 9px; break-inside: avoid; }
+      .cond h2 { font-size: 12.5px; margin: 0 0 2px; color: #1e3a8a; }
+      .que { margin: 0 0 4px; color: #374151; }
+      .piensa { font-weight: bold; font-size: 10px; color: #7c4ddb; }
+      .cond ul { margin: 1px 0 4px; padding-left: 15px; } .cond li { margin: 0; }
+      .anade { margin: 0 0 3px; color: #4b5563; font-size: 9.5px; }
+      .donde { margin: 0; font-size: 9.5px; color: #1f2937; background: #eef2ff; border-radius: 4px; padding: 2px 6px; display: inline-block; }
+      .rejilla-3 { grid-template-columns: 1fr 1fr 1fr; }
+      .reg { display: inline-block; font-size: 8.5px; font-weight: bold; text-transform: uppercase; letter-spacing: .5px; color: #fff; background: #2563eb; border-radius: 6px; padding: 0 5px; margin-right: 5px; vertical-align: 1px; }
+      .grupo-reg { font-size: 10.5px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; color: #2563eb; margin: 10px 0 5px; border-bottom: 1.5px solid #bfdbfe; padding-bottom: 1px; }`,
+  });
+}
+
 // ── Huella de cada hoja impresa ──────────────────────────────────────────────
 // FNV-1a de 32 bits, en hexadecimal (8 caracteres): basta para distinguir versiones.
 export function fnv(texto) {
@@ -635,11 +715,12 @@ export function fnv(texto) {
 export function hojasImpresas() {
   const hojas = [];
   for (const region of Object.keys(CIF_TREES)) {
-    hojas.push({ clave: `cribado-${region}`, guia: [region, 'cribado'], html: () => htmlCribado(region) });
-    hojas.push({ clave: `arbol-a4-${region}`, guia: [region, 'arbol'], html: () => htmlArbol(region, { a4: true }) });
-    hojas.push({ clave: `confirmacion-${region}`, guia: [region, 'confirmacion'], html: () => htmlConfirmacion(region) });
+    hojas.push({ clave: `cribado-${region}`, ruta: `${region}/cribado`, html: () => htmlCribado(region) });
+    hojas.push({ clave: `arbol-a4-${region}`, ruta: `${region}/arbol`, html: () => htmlArbol(region, { a4: true }) });
+    hojas.push({ clave: `confirmacion-${region}`, ruta: `${region}/confirmacion`, html: () => htmlConfirmacion(region) });
   }
-  for (const hoja of Object.keys(HOJAS_TEJIDO)) hojas.push({ clave: `tejidos-${hoja}`, guia: ['tejidos', hoja], html: () => htmlTejidos(hoja) });
+  for (const hoja of Object.keys(HOJAS_TEJIDO)) hojas.push({ clave: `tejidos-${hoja}`, ruta: `tejidos/${hoja}`, html: () => htmlTejidos(hoja) });
+  hojas.push({ clave: 'condiciones', ruta: 'condiciones', html: htmlCondiciones, nombre: 'Condiciones especiales' });
   return hojas;
 }
 export const huellaHoja = html => fnv(html);
@@ -647,7 +728,7 @@ export function huellasActuales() {
   return Object.fromEntries(hojasImpresas().map(h => [h.clave, huellaHoja(h.html())]));
 }
 // Pone los marcadores: el QR a la guía con la huella (?h=), la huella visible y la fecha
-export function rematar(html, { guia: [a, b], huella, fecha }) {
-  const url = a === 'tejidos' ? urlTejidos(b, huella) : urlGuia(a, b, huella);
+export function rematar(html, { ruta, huella, fecha }) {
+  const url = urlRuta(ruta, huella);
   return html.replaceAll(QR, qrSVG(url, QR_PX)).replaceAll(HUELLA, `<span class="qr-huella">v. ${huella}</span>`).replaceAll(FECHA, fecha);
 }

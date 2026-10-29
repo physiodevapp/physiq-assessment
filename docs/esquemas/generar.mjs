@@ -9,9 +9,11 @@
 //   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
 //   confirmacion → fase 4b, A4 (vertical o apaisado, la de letra más grande): tests de cada hipótesis con sus LR y si puntúan
 //
-//   node docs/esquemas/generar.mjs tejidos
+//   node docs/esquemas/generar.mjs tejidos | condiciones | sueltas
 //   → tejidos-blandos y tejidos-hueso: los tiempos de recuperación de data/tejidos.js en dos A4
 //     verticales temáticas (lib/esquemas.js, HOJAS_TEJIDO). También con «todas todos».
+//   → condiciones: la guía de condiciones especiales (data/condiciones.js) en un A4 vertical.
+//   «sueltas» = todas las que no son de una región.
 // Necesita Playwright (como tests/smoke.mjs). Las reglas de LR son las de la app:
 // importa lrEfectiva y testPuntua de lib/tests-4b.js (las mismas que usa phase4b.js).
 import { createRequire } from 'node:module';
@@ -23,7 +25,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 const { CIF_TREES } = await import('../../data.js');
 const { HOJAS_TEJIDO } = await import('../../lib/esquemas.js');
-const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, hojasImpresas, huellaHoja, rematar } = await import('./hojas.mjs');
+const { htmlCribado, htmlArbol, htmlConfirmacion, htmlTejidos, htmlCondiciones, hojasImpresas, huellaHoja, rematar } = await import('./hojas.mjs');
 
 const DIR = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(process.cwd() + '/');
@@ -45,13 +47,13 @@ function rematarHoja(clave, html) {
   if (!h) return html.replaceAll('<!--FECHA-->', hoy).replaceAll('<!--QR-->', '').replaceAll('<!--HUELLA-->', '');
   const huella = huellaHoja(h.html());
   if (HUELLAS[clave]?.huella !== huella) HUELLAS[clave] = { huella, fecha: HOY_ISO };
-  return rematar(html, { guia: h.guia, huella, fecha: hoy });
+  return rematar(html, { ruta: h.ruta, huella, fecha: hoy });
 }
 // ── Render ───────────────────────────────────────────────────────────────────
 // [generador, apaisado, formato]
 const TIPOS = { cribado: [htmlCribado, false, 'A4'], arbol: [htmlArbol, true, 'A3'], 'arbol-a4': [r => htmlArbol(r, { a4: true }), true, 'A4'], confirmacion: [htmlConfirmacion, true, 'A4'] };
 const [regArg = 'lumbar', tipoArg = 'todos'] = process.argv.slice(2);
-const regiones = regArg === 'todas' ? Object.keys(CIF_TREES) : regArg === 'tejidos' ? [] : [regArg];
+const regiones = regArg === 'todas' ? Object.keys(CIF_TREES) : CIF_TREES[regArg] ? [regArg] : [];
 const tipos = tipoArg === 'todos' ? Object.keys(TIPOS) : [tipoArg];
 
 const browser = await chromium.launch();
@@ -97,16 +99,22 @@ for (const region of regiones) {
     await page.close();
   }
 }
-if (regArg === 'tejidos' || (regArg === 'todas' && tipoArg === 'todos')) {
-  for (const hoja of Object.keys(HOJAS_TEJIDO)) {
+// Hojas que no son de una región: una página A4 vertical cada una (las de tejidos, dos)
+const SUELTAS = {
+  tejidos: Object.keys(HOJAS_TEJIDO).map(h => [`tejidos-${h}`, () => htmlTejidos(h)]),
+  condiciones: [['condiciones', htmlCondiciones]],
+};
+for (const [grupo, hojas] of Object.entries(SUELTAS)) {
+  if (regArg !== grupo && regArg !== 'sueltas' && !(regArg === 'todas' && tipoArg === 'todos')) continue;
+  for (const [clave, fn] of hojas) {
     const page = await browser.newPage({ viewport: { width: 794, height: 1123 } });
-    await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${rematarHoja(`tejidos-${hoja}`, htmlTejidos(hoja))}</body></html>`);
-    const base = join(DIR, `tejidos-${hoja}`);
+    await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body>${rematarHoja(clave, fn())}</body></html>`);
+    const base = join(DIR, clave);
     await page.pdf({ path: `${base}.pdf`, format: 'A4', printBackground: true, preferCSSPageSize: true });
     await page.emulateMedia({ media: 'print' });
     await page.screenshot({ path: `${base}.png`, fullPage: true });
     const paginas = (await page.pdf({ format: 'A4', preferCSSPageSize: true })).toString('latin1').match(/\/Type\s*\/Page[^s]/g)?.length;
-    console.log(`tejidos-${hoja}: ${paginas} página${paginas === 1 ? '' : 's'} · escala ${await page.evaluate(() => document.body.dataset.escala)}`);
+    console.log(`${clave}: ${paginas} página${paginas === 1 ? '' : 's'} · escala ${await page.evaluate(() => document.body.dataset.escala)}`);
     await page.close();
   }
 }

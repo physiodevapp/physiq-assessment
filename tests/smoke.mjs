@@ -6451,13 +6451,21 @@ async function checkGuia(browser, errors) {
     r.hojas = filasHojas.length === Object.keys(huellas).length
       && filasHojas.every(f => { const k = f.pdf.match(/([^/]+)\.pdf$/)[1]; return f.v === `v. ${huellas[k]?.huella}`; })
       && pdfsOk.every(Boolean) && await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+    // Condiciones especiales (#condiciones, el QR de su hoja): todas las filas, sin estado ni botones
+    await page.goto(`${base}#condiciones`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.cond-fila');
+    r.condiciones = await page.evaluate(async () => {
+      const { CONDICIONES } = await import('./data/condiciones.js');
+      return document.querySelectorAll('.cond-fila').length === CONDICIONES.length && !document.querySelector('.cond-estado, .cond-ir')
+        && document.querySelectorAll('.cond-fila .cita').length > 0 && document.documentElement.scrollWidth <= innerWidth;
+    });
     // No escribe nada del paciente: ni IndexedDB ni el canal de sesión
     r.sinSesion = await page.evaluate(async () => !(await indexedDB.databases?.() || []).some(d => d.name === 'physiq'));
   } catch (e) { r.error = e.message; }
   await context.close();
   r.fallidas = fallidas;
   r.ok = !r.error && r.cribado?.mismo && r.cribado.urgencias > 0 && r.cribado.ia && r.cribado.enlaces > 0 && r.ficha && r.ancla && r.arbol
-    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.sinSesion && !fallidas.length;
+    && r.confirmacion && r.calc && r.desmarca && r.borrar && r.sinGuardar && r.irritabilidad?.length === 0 && r.irrDesmarca && r.irrBorrar && r.region && r.ancho_cribado && r.ancho_irritabilidad && r.ancho_arbol && r.ancho_confirmacion && r.tejidos && r.tejFicha && r.tejFiltro && r.tejHueso && r.papelViejo && r.papelOtraHoja && r.papelAlDia && r.hojas && r.condiciones && r.sinSesion && !fallidas.length;
   return r;
 }
 
@@ -6986,7 +6994,7 @@ const SECCIONES = [
 
   { id: 'guia', titulo: 'Guía de consulta (guia.html, la del QR de los esquemas):', run: async ({ browser, errors }) => {
     const c = await checkGuia(browser, errors);
-    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con la versión de cada hoja y su PDF; cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
+    console.log(`  ${c.ok ? '✓' : '✗'} carga sin errores; cribado con la numeración y el orden de la hoja (lib/esquemas.js), urgencias, «✨ IA» y fuentes enlazadas; una cita abre su ficha; #región/hoja/elemento lo resalta y abre su «Por qué»; pestañas Árbol y Confirmación con todos los pasos y tests; calculadora de la 4b con la misma etiqueta que la app (calcLRScore), resumen ordenado, segundo toque desmarca y «Borrar resultados» limpia, sin guardar nada; pestaña Irritabilidad con el mismo nivel que nivelMatriz (fases 3 y 6) y su aviso de matriz incompleta, segundo toque y «Borrar respuestas»; cambiar de región; tiempos de tejido (#tejidos/hoja, el QR de sus dos hojas) con solo los grupos de cada hoja, la ficha de una barra con fuentes enlazadas y el filtro; hoja impresa desfasada (?h= del QR distinto de huellas.json): aviso con el PDF actual, «al día» si coincide y nada en otra pestaña; «Hojas para imprimir» con la versión de cada hoja y su PDF; condiciones especiales (#condiciones) sin estado del paciente; cabe a 320 px; no crea la sesión del paciente${c.ok ? '' : ' ' + JSON.stringify(c)}`);
     return c.ok;
   } },
 

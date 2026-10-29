@@ -11,6 +11,8 @@ const { qrMatriz } = await import('../../docs/esquemas/qr.mjs');
 const { dolorInespecifico } = await import('../../lib/region.js');
 const { TIEMPOS_TEJIDO } = await import('../../data/tejidos.js');
 const HOJAS = await import('../../docs/esquemas/hojas.mjs');
+const COND_DATOS = await import('../../data/condiciones.js');
+const COND_LIB = await import('../../lib/condiciones.js');
 
 console.log('\nguía de consulta (guia.js, lib/esquemas.js, QR de los esquemas)');
 
@@ -120,11 +122,23 @@ test('hojas impresas al día: docs/esquemas/huellas.json coincide con lo que imp
   assert.deepEqual(Object.keys(guardadas).sort(), Object.keys(actuales).sort(), 'huellas.json tiene hojas que ya no existen');
   // La huella no depende de la fecha ni del QR (marcadores), solo de lo impreso
   const h = H.hojasImpresas()[0];
-  const final = H.rematar(h.html(), { guia: h.guia, huella: actuales[h.clave], fecha: '1/1/2000' });
+  const final = H.rematar(h.html(), { ruta: h.ruta, huella: actuales[h.clave], fecha: '1/1/2000' });
   assert.ok(!final.includes('<!--') || !/<!--(QR|HUELLA|FECHA)-->/.test(final));
   assert.ok(final.includes(`v. ${actuales[h.clave]}`));
   assert.equal(ESQ.urlGuia('lumbar', 'cribado', 'abc12345'), `${ESQ.URL_GUIA}?h=abc12345#lumbar/cribado`);
   assert.equal(ESQ.urlTejidos('hueso', 'abc12345'), `${ESQ.URL_GUIA}?h=abc12345#tejidos/hueso`);
   const deploy = leer('.github', 'workflows', 'deploy-to-hub.yml');
   assert.ok(deploy.includes('docs/esquemas/huellas.json') && deploy.includes('docs/esquemas/*.pdf'), 'huellas y PDF se despliegan para la guía');
+});
+
+test('hoja y página de condiciones especiales: todas las filas de data/condiciones.js, sin estado del paciente en la guía', () => {
+  const { CONDICIONES } = COND_DATOS;
+  const html = HOJAS.htmlCondiciones();
+  for (const c of CONDICIONES) assert.ok(html.includes(c.nombre.replace(/&/g, '&amp;')), c.nombre);
+  assert.ok(!/cardMecanismo|cardLupus/.test(html), 'dónde se marca: el título de la tarjeta, no su id');
+  const guia = COND_LIB.condicionesHTML({ mecanismo: 'Post-quirúrgico', lupus: { estado: 'diagnosticado' } }, { guia: true });
+  assert.ok(!guia.includes('cond-estado') && !guia.includes('irACondicion'), 'la guía no tiene paciente: sin etiqueta ni botón');
+  assert.equal((guia.match(/class="cond-fila"/g) || []).length, CONDICIONES.length);
+  assert.ok(COND_LIB.condicionesHTML({ mecanismo: 'Post-quirúrgico' }).includes('cond-estado-on'), 'la app sigue igual');
+  assert.ok(HOJAS.hojasImpresas().some(h => h.clave === 'condiciones' && h.ruta === 'condiciones'));
 });
