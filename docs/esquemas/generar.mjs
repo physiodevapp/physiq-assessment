@@ -4,7 +4,7 @@
 //   node docs/esquemas/generar.mjs [region|todas] [cribado|arbol|confirmacion|todos]
 //
 // Por defecto: lumbar, todos. Escribe en docs/esquemas/<tipo>-<region>.pdf y .png.
-//   cribado      → fase 2, A4 vertical: sistemas y preguntas literales (sin las listas de banderas)
+//   cribado      → fase 2, A4 vertical: lo que se pregunta siempre y, aparte, las condiciones especiales
 //   arbol        → fase 4, A3 apaisado: pasos del árbol CIF, respuestas e hipótesis que activan
 //   arbol-a4     → el mismo árbol en A4 (vertical o apaisado, la distribución con letra más grande), para consultar en papel
 //   confirmacion → fase 4b, A4 apaisado: tests de cada hipótesis con sus LR y si puntúan
@@ -42,30 +42,134 @@ const CSS = `
 `;
 
 // ── Fase 2 · cribado ─────────────────────────────────────────────────────────
+// A4 vertical. Página 1: lo que se pregunta siempre en la región. Después, las
+// condiciones especiales (solo con su tarjeta o el mecanismo marcados en la fase 1),
+// cada pregunta con la condición que la muestra. Cada página a la mayor escala que
+// cabe; la leyenda es el pie fijo de cada página.
+const CONDICION_SISTEMA = {
+  soloPosquirurgico: 'mecanismo «Post-quirúrgico» en la fase 1',
+  soloHipermovilidad: 'tarjeta «Hipermovilidad / Ehlers-Danlos» marcada',
+  soloDisautonomia: 'tarjeta «Disautonomía / POTS» marcada',
+  soloLupus: 'tarjeta «Lupus (LES)» marcada',
+  soloMastocitos: 'tarjeta «Trastorno mastocitario o anafilaxia» marcada',
+  soloOsteoporosis: 'tarjeta «Osteoporosis o fragilidad ósea» marcada',
+  soloEmbarazo: 'tarjeta «Embarazo o posparto» marcada',
+  soloAnticoagulado: 'tarjeta «Paciente anticoagulado o antiagregado» marcada',
+};
+// Cuándo se ve una pregunta dentro de su sistema (mismas reglas que lib/<condición>.js)
+function condicionPregunta(q) {
+  const t = [];
+  if (q.hm === 'urgencia') t.push('con «Sospecha» o subtipo vascular');
+  if (q.hm === 'sospecha') t.push('con «Sospecha» o subtipo sin saber');
+  if (q.les === 'diagnosticado') t.push('solo «Diagnosticado»');
+  if (q.op === 'sinFractura') t.push('sin fractura vertebral conocida');
+  if (q.op === 'antirresortivo') t.push('con bifosfonato o denosumab');
+  if (q.ac === 'cabeza') t.push('no con aspirina sola');
+  if (q.ac === 'anticoagulante') t.push('solo con anticoagulante');
+  if (q.em) {
+    const tramo = (nombre, r, uds) => r ? nombre + (r.desde ? ` desde la semana ${r.desde}` : '') + (r.hasta ? ` hasta la semana ${r.hasta}${uds}` : '') : null;
+    const partes = [tramo('embarazo', q.em.embarazo, ''), tramo('posparto', q.em.posparto, ' tras el parto')].filter(Boolean);
+    if (partes.length === 1) t.push('solo ' + partes[0]);
+    else if (partes.some(x => /semana/.test(x))) t.push(partes.join(' o '));
+  }
+  return t.join(' · ');
+}
+
 function htmlCribado(region) {
   const sc = SYSTEMIC_SCREENING[region];
-  const sistemas = sc.sistemas.map(s => {
-    const idx = Object.fromEntries(s.preguntas.map((q, i) => [q.id, i + 1]));
+  const soloDe = s => Object.keys(CONDICION_SISTEMA).find(k => s[k]);
+  const seccion = s => {
+    const preguntas = s.preguntas.filter(q => !q.regiones || q.regiones.includes(region));
+    const idx = Object.fromEntries(preguntas.map((q, i) => [q.id, i + 1]));
+    const conds = preguntas.map(condicionPregunta);
+    // Si todas las preguntas comparten condición, va una sola vez en la cabecera
+    const comun = conds.length && conds.every(c => c && c === conds[0]) ? conds[0] : '';
+    const solo = soloDe(s);
+    const cab = solo ? `<div class="cond-sis">Solo con ${esc(CONDICION_SISTEMA[solo])}${comun ? ` · ${esc(comun)}` : ''}</div>` : '';
     const crit = s.criterioCompuesto
       ? `<div class="crit"><b>${esc(s.criterioCompuesto.etiqueta)}</b> — ${s.criterioCompuesto.minPositivas} o más de las preguntas ${s.criterioCompuesto.ids.map(id => idx[id]).join(', ')}${s.criterioCompuesto.filtro?.edadMax ? ` · edad ≤ ${s.criterioCompuesto.filtro.edadMax}` : ''}${s.criterioCompuesto.filtro?.evolucion ? ` · evolución: ${esc(s.criterioCompuesto.filtro.evolucion)}` : ''}</div>` : '';
-    return `<section class="sis"><h2>${esc(s.icon || '')} ${esc(s.nombre)}</h2><ol>${s.preguntas.map(q => `
-      <li class="${q.urgencia ? 'qurg' : ''}">${esc(q.text)} ${q.urgencia ? '<span class="chip urg">URGENCIA · derivar hoy</span>' : ''}</li>`).join('')}</ol>${crit}</section>`;
-  }).join('');
+    return `<section class="sis"><h2>${esc(s.icon || '')} ${esc(s.nombre)}</h2>${cab}<ol>${preguntas.map((q, k) => `
+      <li class="${q.urgencia ? 'qurg' : q.derivacion ? 'qder' : ''}">${esc(q.text)}${q.urgencia ? ' <span class="chip urg">URGENCIA</span>' : q.derivacion ? ' <span class="chip der">DERIVACIÓN</span>' : ''}${conds[k] && !comun ? ` <span class="cond">${esc(conds[k])}</span>` : ''}</li>`).join('')}</ol>${crit}</section>`;
+  };
+  const siempre = sc.sistemas.filter(s => !soloDe(s)), especiales = sc.sistemas.filter(soloDe);
   const urg = sc.urgencia ? `<div class="aviso">${esc(sc.urgencia.titulo)}${sc.urgencia.lineas.map(l => `<div>· ${esc(l)}</div>`).join('')}</div>` : '';
+  const pie = `<div class="pie-fijo">
+      <span class="ley"><span class="chip urg">URGENCIA</span> derivar hoy</span>
+      <span class="ley"><span class="chip der">DERIVACIÓN</span> valoración médica, no urgente</span>
+      <span class="ley"><span class="cond">gris</span> cuándo aparece la pregunta</span>
+      <span class="txt">Un SÍ aislado no implica derivación automática (salvo URGENCIA y DERIVACIÓN): evaluar en el contexto clínico. Preguntas literales de la app; las banderas rojas y amarillas de cada sistema están en la app.</span>
+      <span class="gen">Generado desde los datos de la app el ${hoy}.</span></div>`;
+  const W = 794, H = 1123;
   return `<style>${CSS}
-    @page { size: A4 portrait; margin: 10mm; }
+    @page { size: A4 portrait; margin: 0; }
+    body { font-size: 10.5px; }
+    .pagina { position: relative; width: ${W}px; height: ${H}px; padding: 18px 24px; overflow: hidden; page-break-after: always; }
+    .pagina:last-child { page-break-after: auto; }
+    h1 { font-size: 19px; } .sub { font-size: 10px; margin-bottom: 6px; }
+    .aviso { font-size: 10.5px; padding: 5px 9px; }
+    .grupo { font-size: 14px; margin: 0 0 3px; color: #1f2937; }
+    .grupo-sub { color: #6b7280; font-size: 10px; margin-bottom: 8px; }
     .cols { column-count: 2; column-gap: 10px; }
     .sis { break-inside: avoid; border: 1.5px solid #3567d6; border-radius: 8px; padding: 6px 8px; margin: 0 0 8px; background: #fbfdff; }
-    .sis h2 { font-size: 12px; margin: 0 0 4px; color: #1e3a8a; }
+    .especial .sis { border-color: #7c4ddb; background: #fcfaff; }
+    .sis h2 { font-size: 12px; margin: 0 0 3px; color: #1e3a8a; }
+    .especial .sis h2 { color: #5b21b6; }
+    .cond-sis { font-size: 9.5px; color: #5b21b6; font-weight: bold; margin-bottom: 4px; }
     ol { margin: 0; padding-left: 18px; } li { margin-bottom: 3px; }
     li.qurg { color: #b42318; font-weight: bold; }
+    li.qder { color: #9a4a00; }
+    .chip.der { background: #f59e0b; color: #fff; }
+    .cond { display: inline-block; font-size: 8.5px; font-weight: normal; font-style: italic; color: #4b5563; background: #f1f5f9; border-radius: 6px; padding: 0 5px; }
     .crit { margin-top: 4px; border-top: 1px dashed #94a3b8; padding-top: 4px; font-size: 9.5px; }
+    .pie-fijo { position: absolute; left: 24px; right: 24px; bottom: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 3px 14px; border-top: 1px solid #cbd5e1; padding-top: 5px; font-size: 9.5px; }
+    .pie-fijo .ley { display: inline-flex; align-items: center; gap: 4px; }
+    .pie-fijo .txt { flex: 1 1 100%; color: #374151; }
+    .pie-fijo .gen { color: #6b7280; font-size: 8.5px; }
   </style>
-  <h1>Cribado sistémico · ${NOMBRES[region]}</h1>
-  <div class="sub">PhysiQ-Assessment · fase 2. Preguntas literales de la app. Las listas de banderas rojas y amarillas de cada sistema están en la app.</div>
-  ${urg}
-  <div class="cols">${sistemas}</div>
-  <div class="pie">Un SÍ aislado no implica derivación automática (salvo las preguntas de URGENCIA): evaluar en el contexto clínico completo. Generado desde los datos de la app el ${hoy}.</div>`;
+  <div class="pagina" data-grupo="siempre">
+    <h1>Cribado sistémico · ${NOMBRES[region]}</h1>
+    <div class="sub">PhysiQ-Assessment · fase 2. Lo que se pregunta siempre en ${NOMBRES[region].toLowerCase()}.${especiales.length ? ' Las condiciones especiales, en la página siguiente.' : ''}</div>
+    ${urg}
+    <div class="cols">${siempre.map(seccion).join('')}</div>
+    ${pie}
+  </div>
+  ${especiales.length ? `<div class="pagina especial" data-grupo="especiales">
+    <div class="grupo">Condiciones especiales · ${NOMBRES[region]}</div>
+    <div class="grupo-sub">Estos sistemas solo aparecen en la fase 2 si en la fase 1 está marcada su tarjeta (o el mecanismo «Post-quirúrgico»). Si no, no se preguntan.</div>
+    <div class="cols">${especiales.map(seccion).join('')}</div>
+    ${pie}
+  </div>` : ''}
+  <script>
+  (() => {
+    const W = ${W}, H = ${H}, MIN = 0.75;
+    const escala = (p, z) => { p.style.width = (W / z) + 'px'; p.style.height = 'auto'; p.style.zoom = z;
+      p.style.paddingBottom = (p.querySelector('.pie-fijo').offsetHeight + 24) + 'px'; };
+    const cabe = (p, z) => { escala(p, z); return p.scrollHeight * z <= H; };
+    // Una página que no cabe ni a la escala mínima pasa su último sistema a una página de continuación
+    const pags = [...document.querySelectorAll('.pagina')];
+    for (let k = 0; k < pags.length; k++) {
+      const p = pags[k];
+      while (!cabe(p, MIN) && p.querySelectorAll('.sis').length > 1) {
+        let sig = pags[k + 1];
+        if (!sig || sig.dataset.grupo !== p.dataset.grupo || !sig.dataset.continua) {
+          sig = document.createElement('div'); sig.className = p.className; sig.dataset.grupo = p.dataset.grupo; sig.dataset.continua = 1;
+          sig.innerHTML = '<div class="grupo">' + (p.querySelector('.grupo, h1').textContent) + ' (continuación)</div><div class="cols"></div>';
+          sig.appendChild(p.querySelector('.pie-fijo').cloneNode(true));
+          p.after(sig); pags.splice(k + 1, 0, sig);
+        }
+        const cols = p.querySelector('.cols');
+        sig.querySelector('.cols').prepend(cols.lastElementChild);
+      }
+    }
+    // La mayor escala que cabe; las páginas de un mismo grupo, con la misma
+    const zs = pags.map(p => { let lo = 0.5, hi = 1.3; for (let i = 0; i < 14; i++) { const z = (lo + hi) / 2; if (cabe(p, z)) lo = z; else hi = z; } return lo; });
+    const grupos = [...new Set(pags.map(p => p.dataset.grupo))];
+    const esc = {};
+    for (const g of grupos) esc[g] = Math.min(...pags.map((p, i) => p.dataset.grupo === g ? zs[i] : 9));
+    pags.forEach(p => { const z = esc[p.dataset.grupo]; escala(p, z); p.style.height = (H / z) + 'px'; });
+    document.body.dataset.escala = grupos.map(g => g + ' ' + esc[g].toFixed(2)).join(' · ');
+  })();
+  </script>`;
 }
 
 // ── Fase 4 · árbol ───────────────────────────────────────────────────────────
